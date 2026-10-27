@@ -1,0 +1,75 @@
+입구 재접근 기능 진단 — 미작동 후보와 거부 전달 수정
+
+작성: 2026-10-28T02:35:58.498698+09:00
+
+1. 작업 목표
+
+기록된 입구 위치와 실제 시작 위치의 차이로 출구 지지가 거부되는 문제를 재현하고, 기존 보행을 이용한 지역 재접근 후보를 검증했다. 기능 회귀 묶음이며 애니메이션/성능 최적화 실험과 분리한다.
+
+2. 실제 수행
+
+- 동일 컨테이너에서 실제 LandingSpace/LaneSupport와 기록 포즈를 재생했다. 지지 검사나 정상 접촉 낙하는 완화하지 않았다.
+- 첫 3ECCE4F1 후보로 8명/180초, 64명/300초 클라이언트를 실행하고 화면을 확인했다. 두 실행 모두 정상 종료됐으나 새 분기는 0회였다.
+- Drive가 Follow 이전에 이유 문자열을 지우는 오류를 확인했다. B8FBAB74 후보는 거부 사실을 다음 틱에 명시적으로 전달한다.
+- 추가 엔진 검사는 이유 문자열 삭제 후 보행 의도 생성·위치 비변경·목표 변경 취소를 확인했다. 이 검사에서 보행 실행은 대역이며 실제 이동 성공이 아니다.
+- 높은 구역 성공 ID를 전체 시간이 아닌 HIGH_HOLD 표본 구간에서 집계하도록 분석기를 고쳤다. 원시 자료와 과거 보고서는 보존했다.
+
+3. 측정 결과
+
+|항목|첫 후보 8명·021529|첫 후보 64명·021953|
+|---|---:|---:|
+|최종 도착|8/8|64/64|
+|낙하 후 FOLLOW 복귀|10|77|
+|HIGH_HOLD 내 미도달|0|11|
+|출구 복구 lease 위반|0|0|
+|새 재접근 분기|0|0|
+|미션 frame-time p50/p95/p99|20/33/34ms|25/59/82ms|
+
+이 frame-time은 미션 갱신 간격이며 GPU/Present 지연이 아니다. 인원·실행 길이가 다르고 상세 계측을 포함하므로 두 열의 성능을 비교하지 않는다. 반복 성능 개선/20ms p95 달성은 미검증이다. 이번 시각 확인은 장면 존재·동작 관찰이며 애니메이션 끊김의 정량 수용이 아니다.
+
+기준 3BE0/214810의 HIGH_HOLD 미도달은 9·13·51번이다. 9/51의 첫 높은 면 FOLLOW는 107.453/105.872초로 유지 구간 마지막 표본 104.951초 이후였다. 기존 최종 도착 64/64는 유효하다. 첫 후보 64명의 구간 미도달 ID는 1,15,19,23,31,35,36,39,43,47,54다.
+
+4. 원인 분석
+
+사실: 기록 위치의 출구는 FOOT_X_SUPPORT 실패, 약 0.156m 옆의 선택 입구에 정렬한 가정은 CLEAR였다. 첫 후보는 원래 Drive의 문자열 초기화 때문에 시작 조건을 소비하지 못했다.
+
+추정/미확정: 명시적 거부 전달과 재접근이 실제 혼잡에서 높은 면 도달률을 높일지는 아직 모른다. 모든 낙하·장시간 복구를 입구 오차 하나로 설명하지 않는다.
+
+반증: 첫 후보의 정적 선택 검사 통과가 실제 분기 작동을 입증한다는 가정은 실제 실행에서 반증됐다. 마지막 거부를 단순 개체 예약 문제로 해석하는 것은 FOOT_X_SUPPORT와 맞지 않는다.
+
+5. 검증 수준
+
+|대상|수준|판정 범위|
+|---|---|---|
+|기록 포즈의 출구 불일치|진단 성공|실제 엔진의 정적 지지 검사|
+|첫 후보 8/64 실행|진단 성공|정상 종료·분기 미작동 확인, 개선 성공 아님|
+|B8FB 거부 전달·취소|회귀 통과|엔진 대역 검사, 실제 보행은 미실행|
+|기존 NPC 증거 회귀|회귀 통과|74개 검사, 전체 기능 합격과 별개|
+|B8FB 8/64 이동|미실행|다음 기능 실험|
+|반복 기능 효과/시각 품질/성능|미실행|최종 수용 없음|
+
+6. 변경 사항
+
+- tests/dg_native_probe/subset_footprint_recovery.c: opt-in 지역 접근과 틱 간 거부 전달. 기존 Walk/SurfaceWalk/접촉 검사 유지.
+- tools/run_horde_controlled_investigation.ps1: AdmissionReapproach 플래그와 실행 기록.
+- tools/compile_days_gone_native_runtime_probe.ps1: 전용 진단 미션과 완료 marker 검사.
+- tools/analyze_horde_missed_surface.py: HIGH_HOLD 안의 성공만 집계.
+- 첫 후보 3ECCE4F140E8A5A7F1081D657EEFA3EB875717D9050E0554F23C94E1ABE941EC는 미작동 후보로 보존했다.
+- 다음 후보 B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185는 빌드·서명·서명 검증·엔진 검사 성공, 실제 이동 미검증이다. 원본 453D와 자산 0C6E는 변경하지 않았다. 개인 키는 배포물에 포함하지 않았다.
+
+7. 원시 증거
+
+- 기존 상세 보고서 (ADMISSION_REAPPROACH_2026-10-28.md)
+- 시간 구간 집계 대조 JSON (HIGH_COVERAGE_WINDOW_2026-10-28.json)
+- 8명 실행 폴더 (runtime-20261028-021529), 64명 실행 폴더 (runtime-20261028-021953): launch.json, native-ground.tsv, native-state-contract.tsv, native-traversal-events.tsv, state-contract-report.json, admission-reapproach-analysis.json. 이번 실행 영상은 녹화하지 않았다.
+- B8FB 소스·PBO·서명·엔진 증거 manifest (manifest.json) 및 candidate-engine-compile.json의 검사 profile.
+
+재현: 같은 Chernarus 컨테이너 미션/그래픽 seed/VSync ON에서 activeReference, StateContract, DriveAttribution, EgressRange=extended, EgressFirstStep, EgressNearFirstStep, EndpointLookahead, TerrainContactOwner, PursuitPathRevalidation, AdmissionReapproach를 사용했다. 인원/초는 표와 같으며 launch.json에 전체 조건이 있다.
+
+8. 잔여 문제
+
+B8FB의 8명→64명 실제 이동, 분기 실행과 완료/취소 확인, 같은 PBO의 플래그 OFF/ON 반복 대조가 남았다. 정상 낙하는 유지하고 구간 미도달을 숨기지 않는다. 이 묶음으로 성능 개선이나 화면 부드러움을 수용하지 않는다. 진행 기록 복구는 종료·보존하며 그 작업은 재개하지 않는다.
+
+원본 보고서 ID: 2026-10-28_023558_498698+0900_npc-admission-functional.md
+원본 SHA-256: a2903bfc8fcc146e64bdffc3cf40d602074bb45ba1697f55a879c1ffc3c4d7c0
+이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.

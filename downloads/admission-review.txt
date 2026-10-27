@@ -1,0 +1,347 @@
+다른 세션용 DayZ NPC 검토 패킷
+
+이 파일은 독립 검토용 자료다. 다른 세션이 원본 파일에 접근할 수 있다고 가정하지 않는다.
+코드는 명시된 구간의 원문이며 생략 구간이 있다. 로그 일부는 명시한 필드 투영/대표 표본이다.
+해시는 출처 식별용이다. 이 텍스트만으로 전체 원본 무결성이나 영상 품질을 독립 검증할 수는 없다.
+관측 사실과 가설을 구분하고, 빠진 호출자·수명·물리·GPU 정보가 있으면 요청할 것.
+
+입구 재접근 기능 진단 — 미작동 후보와 거부 전달 수정
+
+작성: 2026-10-28T02:35:58.498698+09:00
+
+1. 작업 목표
+
+기록된 입구 위치와 실제 시작 위치의 차이로 출구 지지가 거부되는 문제를 재현하고, 기존 보행을 이용한 지역 재접근 후보를 검증했다. 기능 회귀 묶음이며 애니메이션/성능 최적화 실험과 분리한다.
+
+2. 실제 수행
+
+- 동일 컨테이너에서 실제 LandingSpace/LaneSupport와 기록 포즈를 재생했다. 지지 검사나 정상 접촉 낙하는 완화하지 않았다.
+- 첫 3ECCE4F1 후보로 8명/180초, 64명/300초 클라이언트를 실행하고 화면을 확인했다. 두 실행 모두 정상 종료됐으나 새 분기는 0회였다.
+- Drive가 Follow 이전에 이유 문자열을 지우는 오류를 확인했다. B8FBAB74 후보는 거부 사실을 다음 틱에 명시적으로 전달한다.
+- 추가 엔진 검사는 이유 문자열 삭제 후 보행 의도 생성·위치 비변경·목표 변경 취소를 확인했다. 이 검사에서 보행 실행은 대역이며 실제 이동 성공이 아니다.
+- 높은 구역 성공 ID를 전체 시간이 아닌 HIGH_HOLD 표본 구간에서 집계하도록 분석기를 고쳤다. 원시 자료와 과거 보고서는 보존했다.
+
+3. 측정 결과
+
+|항목|첫 후보 8명·021529|첫 후보 64명·021953|
+|---|---:|---:|
+|최종 도착|8/8|64/64|
+|낙하 후 FOLLOW 복귀|10|77|
+|HIGH_HOLD 내 미도달|0|11|
+|출구 복구 lease 위반|0|0|
+|새 재접근 분기|0|0|
+|미션 frame-time p50/p95/p99|20/33/34ms|25/59/82ms|
+
+이 frame-time은 미션 갱신 간격이며 GPU/Present 지연이 아니다. 인원·실행 길이가 다르고 상세 계측을 포함하므로 두 열의 성능을 비교하지 않는다. 반복 성능 개선/20ms p95 달성은 미검증이다. 이번 시각 확인은 장면 존재·동작 관찰이며 애니메이션 끊김의 정량 수용이 아니다.
+
+기준 3BE0/214810의 HIGH_HOLD 미도달은 9·13·51번이다. 9/51의 첫 높은 면 FOLLOW는 107.453/105.872초로 유지 구간 마지막 표본 104.951초 이후였다. 기존 최종 도착 64/64는 유효하다. 첫 후보 64명의 구간 미도달 ID는 1,15,19,23,31,35,36,39,43,47,54다.
+
+4. 원인 분석
+
+사실: 기록 위치의 출구는 FOOT_X_SUPPORT 실패, 약 0.156m 옆의 선택 입구에 정렬한 가정은 CLEAR였다. 첫 후보는 원래 Drive의 문자열 초기화 때문에 시작 조건을 소비하지 못했다.
+
+추정/미확정: 명시적 거부 전달과 재접근이 실제 혼잡에서 높은 면 도달률을 높일지는 아직 모른다. 모든 낙하·장시간 복구를 입구 오차 하나로 설명하지 않는다.
+
+반증: 첫 후보의 정적 선택 검사 통과가 실제 분기 작동을 입증한다는 가정은 실제 실행에서 반증됐다. 마지막 거부를 단순 개체 예약 문제로 해석하는 것은 FOOT_X_SUPPORT와 맞지 않는다.
+
+5. 검증 수준
+
+|대상|수준|판정 범위|
+|---|---|---|
+|기록 포즈의 출구 불일치|진단 성공|실제 엔진의 정적 지지 검사|
+|첫 후보 8/64 실행|진단 성공|정상 종료·분기 미작동 확인, 개선 성공 아님|
+|B8FB 거부 전달·취소|회귀 통과|엔진 대역 검사, 실제 보행은 미실행|
+|기존 NPC 증거 회귀|회귀 통과|74개 검사, 전체 기능 합격과 별개|
+|B8FB 8/64 이동|미실행|다음 기능 실험|
+|반복 기능 효과/시각 품질/성능|미실행|최종 수용 없음|
+
+6. 변경 사항
+
+- tests/dg_native_probe/subset_footprint_recovery.c: opt-in 지역 접근과 틱 간 거부 전달. 기존 Walk/SurfaceWalk/접촉 검사 유지.
+- tools/run_horde_controlled_investigation.ps1: AdmissionReapproach 플래그와 실행 기록.
+- tools/compile_days_gone_native_runtime_probe.ps1: 전용 진단 미션과 완료 marker 검사.
+- tools/analyze_horde_missed_surface.py: HIGH_HOLD 안의 성공만 집계.
+- 첫 후보 3ECCE4F140E8A5A7F1081D657EEFA3EB875717D9050E0554F23C94E1ABE941EC는 미작동 후보로 보존했다.
+- 다음 후보 B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185는 빌드·서명·서명 검증·엔진 검사 성공, 실제 이동 미검증이다. 원본 453D와 자산 0C6E는 변경하지 않았다. 개인 키는 배포물에 포함하지 않았다.
+
+7. 원시 증거
+
+- 기존 상세 보고서 (ADMISSION_REAPPROACH_2026-10-28.md)
+- 시간 구간 집계 대조 JSON (HIGH_COVERAGE_WINDOW_2026-10-28.json)
+- 8명 실행 폴더 (runtime-20261028-021529), 64명 실행 폴더 (runtime-20261028-021953): launch.json, native-ground.tsv, native-state-contract.tsv, native-traversal-events.tsv, state-contract-report.json, admission-reapproach-analysis.json. 이번 실행 영상은 녹화하지 않았다.
+- B8FB 소스·PBO·서명·엔진 증거 manifest (manifest.json) 및 candidate-engine-compile.json의 검사 profile.
+
+재현: 같은 Chernarus 컨테이너 미션/그래픽 seed/VSync ON에서 activeReference, StateContract, DriveAttribution, EgressRange=extended, EgressFirstStep, EgressNearFirstStep, EndpointLookahead, TerrainContactOwner, PursuitPathRevalidation, AdmissionReapproach를 사용했다. 인원/초는 표와 같으며 launch.json에 전체 조건이 있다.
+
+8. 잔여 문제
+
+B8FB의 8명→64명 실제 이동, 분기 실행과 완료/취소 확인, 같은 PBO의 플래그 OFF/ON 반복 대조가 남았다. 정상 낙하는 유지하고 구간 미도달을 숨기지 않는다. 이 묶음으로 성능 개선이나 화면 부드러움을 수용하지 않는다. 진행 기록 복구는 종료·보존하며 그 작업은 재개하지 않는다.
+
+원본 보고서 ID: 2026-10-28_023558_498698+0900_npc-admission-functional.md
+원본 SHA-256: a2903bfc8fcc146e64bdffc3cf40d602074bb45ba1697f55a879c1ffc3c4d7c0
+이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
+
+===== 추가 기술 근거 =====
+[F1] 실제 원본 PBO 구성원과 바이트 일치를 확인한 기반 Drive 진입부. 전체 함수 아님.
+
+SOURCE: DGBNativeTraversal.c; lines 1351-1363; SHA256 71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872
+1351:     void Drive(float dt,vector delta,bool available)
+1352:     {
+1353:         Body.Agent.MeasuredSpeed=0;Body.Reason="";Body.HitType="";Body.HitPoint=vector.Zero;
+1354:         Body.HitNormal=vector.Zero;Body.HitFraction=-1;
+1355:         int acceptedBeforeDrive=Body.AcceptedSteps;
+1356:         if(Phase=="FOLLOW")Follow(dt,delta,available);
+1357:         else if(Phase=="MOTION")Motion(dt,delta,available);
+1358:         else if(Phase=="FALL"){Body.NativeFallExecutions++;Fall(dt);}
+1359:         else if(Phase=="LAND" || Phase=="SETTLE")Settle(dt);
+1360:         else if(Phase=="EGRESS")Egress(dt,delta,available);
+1361:         // A source idle pose can touch a fixture after an otherwise valid
+1362:         // traversal/combat endpoint. Recover on the same supported surface,
+1363:         // using the same swept non-deepening checks; never during action locks.
+
+[F2] 기존 Follow의 입구 정렬/출구 재계산 구간. 전체 함수 아님.
+
+SOURCE: DGBNativeTraversal.c; lines 625-649; SHA256 71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872
+625:         {Body.NextRequest=0;Body.Reason="ENTRY_POSE_SETTLE";MotionClearanceDiagnostic="ENTRY_POSE_SETTLE";return;}
+626:         // Fit the immutable source curve to the accepted actual start/heading.
+627:         // Validate its resulting landing before starting; never snap to an exit.
+628:         if(unreserved)
+629:         {
+630:             if(!StartPlacement || vector.Distance(StartPlacement.Entry,agent.Position)>0.005 || Math.AbsFloat(DGBGroundAgent.SignedAngle(StartPlacement.Heading-agent.Heading))>0.1)
+631:                 StartPlacement=DGBNativeAdmission.Place(desired,Body.Id,agent.Position,agent.Heading);
+632:             desired=StartPlacement;
+633:         }
+634:         vector exitSupport;
+635:         bool destinationReady=LandingSpace(desired.Exit,exitSupport,!unreserved);
+636:         if(destinationReady && Fixture().Area(exitSupport)!=desired.TargetArea)
+637:         {destinationReady=false;LandingDiagnostic="TARGET_AREA_MISMATCH";}
+638:         if(destinationReady && unreserved && !Fixture().LaneSupport(desired.Exit,desired.TargetArea))
+639:         {destinationReady=false;LandingDiagnostic="TARGET_FOOTPRINT_AREA";}
+640:         bool capacityReady=true;
+641:         if(!unreserved && destinationReady && desired.TargetArea!="ground")capacityReady=Body.Director.Traffic.SurfaceSeat(Body,desired.TargetArea,true)!=null;
+642:         if(!destinationReady || !capacityReady)
+643:         {
+644:             Body.Reason="EXIT_SPACE_BLOCKED";if(!capacityReady)Body.Reason="TARGET_CAPACITY_WAIT";
+645:             if(ExitBlockedAt<0)ExitBlockedAt=Now();
+646:             if(Now() - ExitBlockedAt>3)Backoff("EXIT_LEASE_BACKOFF");
+647:             return;
+648:         }
+649:         if(desired.Action=="DROP" && agent.Position[1] - exitSupport[1]>3.5)
+
+[F3] 첫 미작동 후보의 ARFollow 전체. Drive에서 Reason을 지운 후 이 함수가 호출된다.
+
+SOURCE: DGSubsetFootprintRecovery.c; lines 56-84; SHA256 529716648581d8ba986f0cf57dfdac5ecb7451cb5eac602a23c3ea609ee924d6
+56:     bool ARFollow(float dt,vector delta,bool available)
+57:     {
+58:         if(!ARPolicyRead){AREnabled=FileExist("$profile:admission-reapproach.flag");ARPolicyRead=true;}
+59:         if(!AREnabled)return false;
+60:         if(!AROwnershipAvailable())
+61:         {if(ARActive)ARFinish("SUCCESSOR_OWNS_MOTION",false);return false;}
+62:         if(ARActive && (GoalRevision!=ARRevision || Area!=ARArea || Active!=ARSource))
+63:         {ARFinish("INTENT_CHANGED");return false;}
+64:         if(ARActive && Now()>=ARUntil){ARFinish("EXPIRED");return false;}
+65:         if(!ARActive)
+66:         {
+67:             if(Now()<ARNextCheck || Body.Reason!="EXIT_SPACE_BLOCKED")return false;
+68:             if(LandingDiagnostic!="FOOT_X_SUPPORT" && LandingDiagnostic!="FOOT_Z_SUPPORT" && LandingDiagnostic!="TARGET_FOOTPRINT_AREA")return false;
+69:             ARNextCheck=Now()+0.25;vector goal;
+70:             if(!ARProposal(goal))return false;
+71:             ARGoal=goal;ARRevision=GoalRevision;ARArea=Area;ARSource=Active;
+72:             ARUntil=Now()+4;ARActive=true;EntryAligning=false;
+73:             Body.Agent.Path.Clear();Body.Agent.PlanAt=0;Body.RetryAt=0;
+74:             SurfaceWaypoints.Clear();NextSurfacePlan=0;ARLog("START");
+75:         }
+76:         if(DGBGroundAgent.FlatDistance(Body.Agent.Position,ARGoal)<=0.045)
+77:         {ARFinish("ARRIVED");return false;}
+78:         // Native walk delta, heading and collision gates remain authoritative.
+79:         SafetyWalk=true;
+80:         if(Area=="ground")Walk(ARGoal,0.04,false,dt,delta,available);
+81:         else SurfaceWalk(ARGoal,0.04,dt,delta,available);
+82:         Body.NextRequest=1;
+83:         return true;
+84:     }
+
+[F4] 수정 B8FB의 지역 재접근 함수군. Drive 오버라이드, 조건, 취소, 보행 호출 포함.
+
+SOURCE: DGSubsetFootprintRecovery.c; lines 1-98; SHA256 6e3bb6f1b1e7b232bed0aa9f9d623e7a8f022a27463f403cf683fb64acfb8fd3
+1: // Local roof safety intent, not player evidence. All root motion still runs
+2: // through Walk -> DriveGround -> MoveTo -> SolveContacts unchanged.
+3: modded class DGBNativeTraversal
+4: {
+5:     bool FRActive;bool FRTurning;bool FRPolicyRead;bool FRPolicyEnabled;
+6:     float FRBlockedAt=-1;float FRNextPlan;float FRUntil;
+7:     vector FRGoal;vector FROrigin;string FRArea;string FRLastStatus;
+8:     int FRPlans;int FRStarts;int FRCompleted;int FRRejected;int FRTurns;
+9:     static float FRBudgetAt=-1;static int FRPlansThisFrame;
+10:     bool ARPolicyRead;bool AREnabled;bool ARActive;
+11:     float ARUntil;float ARNextCheck;int ARRevision;string ARArea;
+12:     vector ARGoal;DGBFixtureLink ARSource;
+13:     bool ARStartRejected;int ARRejectedRevision;DGBFixtureLink ARRejectedSource;
+14:     // Drive clears Body.Reason before Follow, so capture the completed
+15:     // previous decision explicitly rather than reading a stale display field.
+16:     void ARCaptureOutcome()
+17:     {
+18:         ARStartRejected=AREnabled && !ARActive && Phase=="FOLLOW" && Body.Reason=="EXIT_SPACE_BLOCKED";
+19:         if(ARStartRejected)
+20:         {ARRejectedRevision=GoalRevision;ARRejectedSource=Active;}
+21:         else ARRejectedSource=null;
+22:     }
+23:     override void Drive(float dt,vector delta,bool available)
+24:     {
+25:         super.Drive(dt,delta,available);ARCaptureOutcome();
+26:     }
+27:     // A separate local intent only after the ordinary start-placement gate
+28:     // rejects support. It never changes Admission/Active or any position.
+29:     bool ARProposal(out vector goal)
+30:     {
+31:         if(!Body.Director.OpenTraversal || Phase!="FOLLOW" || !Admission || !Active || AdmissionSource!=Active)return false;
+32:         if(Admission.Action!="CLIMB" || Admission.SourceArea!=Area)return false;
+33:         float gap=DGBGroundAgent.FlatDistance(Body.Agent.Position,Admission.Entry);
+34:         if(gap<=0.045 || gap>0.36)return false;
+35:         float error=Math.AbsFloat(DGBGroundAgent.SignedAngle(Body.Agent.Heading-Admission.Heading));
+36:         if(error>1)return false;
+37:         string saved=LandingDiagnostic;vector support;
+38:         ref DGBFixtureLink current=DGBNativeAdmission.Place(Admission,Body.Id,Body.Agent.Position,Body.Agent.Heading);
+39:         bool currentValid=LandingSpace(current.Exit,support,false);
+40:         if(currentValid)currentValid=Fixture().Area(support)==Admission.TargetArea && Fixture().LaneSupport(current.Exit,Admission.TargetArea);
+41:         bool targetValid=false;
+42:         if(!currentValid)targetValid=LandingSpace(Admission.Exit,support,false) && Fixture().Area(support)==Admission.TargetArea && Fixture().LaneSupport(Admission.Exit,Admission.TargetArea);
+43:         LandingDiagnostic=saved;
+44:         if(currentValid || !targetValid)return false;
+45:         goal=Admission.Entry;return true;
+46:     }
+47:     void ARLog(string status)
+48:     {
+49:         FileHandle file=OpenFile("$profile:native-admission-reapproach.tsv",FileMode.APPEND);if(!file)return;
+50:         FPrintln(file,(Now()-Body.Director.Born).ToString()+"\t"+Body.Id+"\t"+status+"\t"+Phase+"\t"+Body.Agent.Position+"\t"+ARGoal+"\t"+GoalRevision+"\t"+Body.Reason);
+51:         CloseFile(file);
+52:     }
+53:     void ARFinish(string status,bool releaseLocalMotion=true)
+54:     {
+55:         ARLog(status);ARActive=false;ARSource=null;ARNextCheck=Now()+0.75;
+56:         if(releaseLocalMotion)
+57:         {
+58:             SafetyWalk=false;ForceWalk=false;EntryAligning=false;StartPlacement=null;
+59:             Body.Agent.Path.Clear();Body.Agent.PlanAt=0;Body.RetryAt=0;
+60:             SurfaceWaypoints.Clear();NextSurfacePlan=0;NextAdmissionPlan=0;
+61:         }
+62:     }
+63:     bool AROwnershipAvailable()
+64:     {
+65:         if(Phase!="FOLLOW" || FRActive || IdleClearing || SurfaceYieldActive || PoseClearanceActive)return false;
+66:         if(Body.YieldActive || Body.SupportBypassActive || Body.PeerBypassActive)return false;
+67:         if(Body.Combat && (Body.Combat.Active || Body.Combat.Dead || Body.Combat.PendingDeath))return false;
+68:         return true;
+69:     }
+70:     bool ARFollow(float dt,vector delta,bool available)
+71:     {
+72:         if(!ARPolicyRead){AREnabled=FileExist("$profile:admission-reapproach.flag");ARPolicyRead=true;}
+73:         if(!AREnabled)return false;
+74:         if(!AROwnershipAvailable())
+75:         {if(ARActive)ARFinish("SUCCESSOR_OWNS_MOTION",false);return false;}
+76:         if(ARActive && (GoalRevision!=ARRevision || Area!=ARArea || Active!=ARSource))
+77:         {ARFinish("INTENT_CHANGED");return false;}
+78:         if(ARActive && Now()>=ARUntil){ARFinish("EXPIRED");return false;}
+79:         if(!ARActive)
+80:         {
+81:             if(Now()<ARNextCheck || !ARStartRejected || ARRejectedRevision!=GoalRevision || ARRejectedSource!=Active)return false;
+82:             if(LandingDiagnostic!="FOOT_X_SUPPORT" && LandingDiagnostic!="FOOT_Z_SUPPORT" && LandingDiagnostic!="TARGET_FOOTPRINT_AREA")return false;
+83:             ARNextCheck=Now()+0.25;vector goal;
+84:             if(!ARProposal(goal))return false;
+85:             ARGoal=goal;ARRevision=GoalRevision;ARArea=Area;ARSource=Active;
+86:             ARUntil=Now()+4;ARActive=true;ARStartRejected=false;EntryAligning=false;
+87:             Body.Agent.Path.Clear();Body.Agent.PlanAt=0;Body.RetryAt=0;
+88:             SurfaceWaypoints.Clear();NextSurfacePlan=0;ARLog("START");
+89:         }
+90:         if(DGBGroundAgent.FlatDistance(Body.Agent.Position,ARGoal)<=0.045)
+91:         {ARFinish("ARRIVED");return false;}
+92:         // Native walk delta, heading and collision gates remain authoritative.
+93:         SafetyWalk=true;
+94:         if(Area=="ground")Walk(ARGoal,0.04,false,dt,delta,available);
+95:         else SurfaceWalk(ARGoal,0.04,dt,delta,available);
+96:         Body.NextRequest=1;
+97:         return true;
+98:     }
+
+[F5] 정적 엔진 재생 TSV 전체. mode0=기록 위치/heading, mode1=선택 입구 완전 정렬 가정. 실제 이동 아님.
+
+SOURCE: recorded-admission.tsv; lines 1-5; SHA256 cd1ad2e61ca41fa5f003e7f1fe42ce9cb465f3bf64bda1c20d66309710c2e22d
+1: stamp	mode	start	heading	admissionEntry	exit	support	valid	diagnostic	laneSupport
+2: 88.099	0	<4508.902344, 339.118286, 10235.236328>	50.469	<4509.067383, 339.123566, 10235.276367>	<4510.416504, 340.132507, 10236.488281>	<0.000000, 0.000000, 0.000000>	false	ROOT_SUPPORT	false
+3: 88.099	1	<4509.067383, 339.123566, 10235.276367>	0	<4509.067383, 339.123566, 10235.276367>	<4509.065430, 340.137787, 10237.241211>	<4509.065430, 340.168762, 10237.241211>	true	CLEAR	true
+4: 102.702	0	<4508.762207, 339.115906, 10235.262695>	0	<4508.917480, 339.123566, 10235.276367>	<4508.760254, 340.130127, 10237.227539>	<4508.760254, 340.163025, 10237.227539>	false	FOOT_X_SUPPORT	false
+5: 102.702	1	<4508.917480, 339.123566, 10235.276367>	0	<4508.917480, 339.123566, 10235.276367>	<4508.915527, 340.137787, 10237.241211>	<4508.915527, 340.165955, 10237.241211>	true	CLEAR	true
+
+[F6] runtime-20261028-021529/launch.json; SHA256 87e4e6baf27dc887839f169f7f0e32a609dd10651b0ffa5692b998ced7acaae1; selected JSON fields (not complete file):
+{
+  "normalQuitVerified": true,
+  "count": 8,
+  "seconds": 180,
+  "subsetIntegrationPboSha256": "3ECCE4F140E8A5A7F1081D657EEFA3EB875717D9050E0554F23C94E1ABE941EC",
+  "admissionReapproach": true,
+  "missionSourcesSha256": "F8356C4F1E0286DCE7ED83F0137E68061249D48ABEB175942D44A8A048D704D3",
+  "frameSync": "on"
+}
+
+[F6] runtime-20261028-021529/state-contract-report.json; SHA256 7cf10a92017c6adc7b52fc899c22ef16e05028c3e7d564abc52b913ae3d2366e; selected JSON fields (not complete file):
+{
+  "terminalArrivals": 8,
+  "fallsLandedAndResumed": 10,
+  "foregroundMissionFrameMs": {
+    "samples": 8748,
+    "p50": 20.0,
+    "p95": 33.0,
+    "p99": 34.0
+  },
+  "newFailureLabelEpisodes": {
+    "CONTACT_SUPPORT_LOST": 2
+  }
+}
+
+[F6] runtime-20261028-021529/admission-reapproach-analysis.json; SHA256 5cdbea49ae86a0e831d51c000b023d4e7b83d702d7a6a182c12d87771278ce3b; selected JSON fields (not complete file):
+{
+  "branchExercised": false,
+  "episodes": [],
+  "violations": []
+}
+
+[F6] runtime-20261028-021953/launch.json; SHA256 4072dd68680e3d15266617635810610b2845a2f64e3449e723ca0a14247c9e5e; selected JSON fields (not complete file):
+{
+  "normalQuitVerified": true,
+  "count": 64,
+  "seconds": 300,
+  "subsetIntegrationPboSha256": "3ECCE4F140E8A5A7F1081D657EEFA3EB875717D9050E0554F23C94E1ABE941EC",
+  "admissionReapproach": true,
+  "missionSourcesSha256": "F8356C4F1E0286DCE7ED83F0137E68061249D48ABEB175942D44A8A048D704D3",
+  "frameSync": "on"
+}
+
+[F6] runtime-20261028-021953/state-contract-report.json; SHA256 77b88d5492d57933833444d1fcebf98fdd485ba66196d864a4f163b60f9b7f76; selected JSON fields (not complete file):
+{
+  "terminalArrivals": 64,
+  "fallsLandedAndResumed": 77,
+  "foregroundMissionFrameMs": {
+    "samples": 9806,
+    "p50": 25.0,
+    "p95": 59.0,
+    "p99": 82.0
+  },
+  "newFailureLabelEpisodes": {
+    "CONTACT_SUPPORT_LOST": 17
+  }
+}
+
+[F6] runtime-20261028-021953/admission-reapproach-analysis.json; SHA256 cfe4c44ba971b403911fc441ab930aac30cb57250d74adc2a77739a739a13609; selected JSON fields (not complete file):
+{
+  "branchExercised": false,
+  "episodes": [],
+  "violations": []
+}
+
+[F7] 누락: 전체 개체 로그, 실제 재접근 동작(B8FB 미실행), 네이티브 물리 내부. 전체 기능 성공을 추론할 수 없다.
+
+===== 검토 요청 =====
+1. 제시한 증거로 확정할 수 있는 결론과 과도한 결론을 나눠라.
+2. 반례·누락된 상태/호출 관계·측정 편향을 찾아라.
+3. 원인을 구분할 다음 최소 실험과 필요한 추가 자료를 제안하라.
+4. 코드 제안은 가설로 표시하고 실제 수정/수용 완료로 표현하지 말라.
