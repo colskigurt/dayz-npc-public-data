@@ -35,11 +35,11 @@ CPU run 반복 주기 A1/B1/B2/A2: 3.24/2.08/2.08/3.22초. 단일 논리 NPC/8�
 
 ## 7. 원시 증거 연결
 이 페이지는 전체 원시 로그가 아닌 선정된 공개 근거에 연결합니다.
-- [상태 JSON](https://dayz-npc-observatory.sappyvole8.chatgpt.site/api/public/status.json)
-- [실험 JSON](https://dayz-npc-observatory.sappyvole8.chatgpt.site/api/public/experiments.json)
-- [지표 JSON](https://dayz-npc-observatory.sappyvole8.chatgpt.site/api/public/metrics.json)
-- [기능 함수·로그 패킷](https://dayz-npc-observatory.sappyvole8.chatgpt.site/downloads/admission-review.txt)
-- [애니메이션 함수·로그 패킷](https://dayz-npc-observatory.sappyvole8.chatgpt.site/downloads/animation-review.txt)
+- [상태 JSON](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/api/public/status.json)
+- [실험 JSON](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/api/public/experiments.json)
+- [지표 JSON](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/api/public/metrics.json)
+- [기능 함수·로그 패킷](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/downloads/admission-review.txt)
+- [애니메이션 함수·로그 패킷](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/downloads/animation-review.txt)
 
 ## 8. 잔여 문제
 B8FB의8→64 실제 이동, CPU와 표시의 시간적 대응, 별도 반복 성능 기여도 실험이 남아 있습니다. 영상/GPU/compiled clip phase는 텍스트만으로 검증할 수 없습니다.

@@ -1,25 +1,15 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-10-27T20:13:22Z",
+  "generatedAt": "2026-10-27T20:26:44.287620+00:00",
   "repository": "colskigurt/dayz-npc-public-data",
   "dataCommitId": "6aa211b92d542b9b34f888986b756de2950b4f12",
   "snapshotId": "snapshot-20261027T185443179320Z-acd7bf8c",
   "sourceGeneratedAt": "2026-10-27T18:54:43.179320Z",
   "verificationStatus": {
     "publication": "succeeded",
-    "http": "passed",
+    "http": "pending-after-link-migration",
     "externalAI": "unverified",
     "npcExperimentFinalAccepted": false
-  },
-  "httpVerification": {
-    "observedAt": "2026-10-27T20:09:48.333267+00:00",
-    "publicFiles": 16,
-    "defaultClientVerified": true,
-    "descriptiveClientVerified": true,
-    "jsonSchemaValidated": true,
-    "allPublishedBytesMatched": true,
-    "staleAtVerification": false,
-    "authenticationSent": false
   },
   "externalAI": {
     "observedError": "Cache miss",
@@ -37,9 +27,11 @@
     "result": "Not readable via the tested ChatGPT web tool; HTTP success is not AI compatibility."
   },
   "dashboard": {
-    "preserved": true,
-    "url": "https://dayz-npc-observatory.sappyvole8.chatgpt.site/",
-    "version": 6
+    "retired": true,
+    "oldPublicRoutesReturn": 410,
+    "observedAt": "2026-10-27T20:23:25.180546+00:00",
+    "projectRecordDeleted": false,
+    "limitation": "Site project deletion is not provided by the available hosting tools."
   },
   "blockers": [
     "ChatGPT web fetch cannot currently read the new Raw URLs; exact internal cause unknown."
@@ -49,7 +41,19 @@
     "rawPrivateLogsIncluded": false,
     "credentialsIncluded": false
   },
-  "independentNetworks": {
+  "immutableDataCommitVerified": true,
+  "hostingMode": "B-only GitHub public repository",
+  "previousHTTPVerification": {
+    "observedAt": "2026-10-27T20:09:48.333267+00:00",
+    "publicFiles": 16,
+    "defaultClientVerified": true,
+    "descriptiveClientVerified": true,
+    "jsonSchemaValidated": true,
+    "allPublishedBytesMatched": true,
+    "staleAtVerification": false,
+    "authenticationSent": false
+  },
+  "previousIndependentNetworks": {
     "measurementId": "2Fb9m2LnZpJZ8F9fQ00021Oai",
     "status": "finished",
     "createdAt": "2026-10-27T20:12:22.269Z",
@@ -93,5 +97,9 @@
       }
     ]
   },
-  "immutableDataCommitVerified": true
+  "links": {
+    "repository": "https://github.com/colskigurt/dayz-npc-public-data",
+    "latestWork": "https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations-latest.md",
+    "latestExperiment": "https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/latest.md"
+  }
 }
