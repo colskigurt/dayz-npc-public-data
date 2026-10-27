@@ -1,15 +1,17 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261027T185443179320Z-acd7bf8c",
-  "generatedAt": "2026-10-27T18:54:43.179320Z",
-  "exportedAt": "2026-10-27T20:26:00.679912+00:00",
+  "snapshotId": "snapshot-20261027T204534-runtime-latch",
+  "generatedAt": "2026-10-27T20:45:34.251741+00:00",
+  "exportedAt": "2026-10-27T20:45:34.251741+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
     "runtime-20261028-014722",
     "runtime-20261028-015001",
     "runtime-20261028-021529",
-    "runtime-20261028-021953"
+    "runtime-20261028-021953",
+    "runtime-20261028-053114",
+    "runtime-20261028-053554"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -17,31 +19,37 @@
     "3ECCE4F140E8A5A7F1081D657EEFA3EB875717D9050E0554F23C94E1ABE941EC",
     "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185"
   ],
+  "freshness": {
+    "sourceUpdatedAt": "2026-10-27T20:45:34.251741+00:00",
+    "staleAfter": "2026-10-28T20:45:34.251741+00:00",
+    "staleAtGeneration": false,
+    "maxAgeSeconds": 86400,
+    "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
+  },
   "verificationStatus": {
     "localValidation": "passed",
     "publicationAtExport": "pending",
     "externalAIAtExport": "unverified",
     "experimentFinalAccepted": false
   },
-  "freshness": {
-    "sourceUpdatedAt": "2026-10-27T17:36:00.756451Z",
-    "staleAfter": "2026-10-28T17:36:00.756451Z",
-    "staleAtGeneration": false,
-    "maxAgeSeconds": 86400,
-    "consumerRule": "Evaluate current UTC time > staleAfter; generatedAt is export time, not a new experiment."
-  },
   "rawBase": "https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main",
   "canonicalOrigin": "https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main",
+  "publicationMode": "B-only public GitHub; closed runtime batch",
   "files": [
     {
+      "path": "AI_REVIEW.md",
+      "bytes": 43443,
+      "sha256": "99fcbc9e746255c3a537b71f69544d7e0b6f2216a3e29924c4e2e9b56bd36863"
+    },
+    {
       "path": "api/public/experiments.json",
-      "bytes": 37404,
-      "sha256": "f18d2d96cb9e4b70e6d5bb4342c718c6cc5c38690de24929629a772f2eb6fc2f"
+      "bytes": 54748,
+      "sha256": "80ffe7a9e1a70f529470b90b7a0769c869cb8225c7577831460456ba815eaea3"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 37400,
-      "sha256": "dc1988a6e7597c6b06332fc54c78fa2a9c93d5cb368d611420c8df7c1ed64e42"
+      "bytes": 54744,
+      "sha256": "94e9cdf396a167e8070663796e0dd93b0b6cf958d60ba071e9affcd5e1960722"
     },
     {
       "path": "api/public/schema.json",
@@ -49,14 +57,34 @@
       "sha256": "27023f145b6633be59752078e868e419983848782d05f16655f4506f448bdf1c"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261027T204534-runtime-latch/experiments.json",
+      "bytes": 54748,
+      "sha256": "80ffe7a9e1a70f529470b90b7a0769c869cb8225c7577831460456ba815eaea3"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261027T204534-runtime-latch/metrics.json",
+      "bytes": 54744,
+      "sha256": "94e9cdf396a167e8070663796e0dd93b0b6cf958d60ba071e9affcd5e1960722"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261027T204534-runtime-latch/status.json",
+      "bytes": 54743,
+      "sha256": "f5b6c02e2f52a2740e4288e5e2d5659d6e66c6a190819e2df8fbc283f3def154"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 37399,
-      "sha256": "4af3733ee82d683656fc0ca374cda1500c9daa06b4f68a047ae2341174173286"
+      "bytes": 54743,
+      "sha256": "f5b6c02e2f52a2740e4288e5e2d5659d6e66c6a190819e2df8fbc283f3def154"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 472,
-      "sha256": "1ce935bf37414fb346c21b017eca14ad1fe98ec6292894d9a2a47ad660488ec4"
+      "bytes": 693,
+      "sha256": "b4716f3cfd5820fcd8e00a23d1982201bb08635b5c831239b6ea4031e340be0e"
+    },
+    {
+      "path": "data/experiments/admission-latch-runtime-20261028.json",
+      "bytes": 63634,
+      "sha256": "419468cbed5ea77485ef8a4fd9ecde5767345b2d5d849b25da00c40bbfb442aa"
     },
     {
       "path": "data/experiments/admission.json",
@@ -89,25 +117,49 @@
       "sha256": "fa80e5c184cc7e5a0ded585c82e9fbc1f1598d90f4f91ca0d6c4c960dd22a967"
     },
     {
+      "path": "downloads/checkpoints/2026-10-28_054435_889391+0900_npc-admission-latch-runtime.txt",
+      "bytes": 6711,
+      "sha256": "dda0a4d086f245071a64c69d10d7b358f74388f8daa6d8eca96d68ee0f300ede"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-28_054435_889391+0900_npc-admission-latch-runtime_evidence.txt",
+      "bytes": 43195,
+      "sha256": "9ed1965693276593950cbd332da62b924aa388fb4ef9d3493d5c5fe5603ccad2"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3251,
+      "sha256": "68d5363855e1b5c360a6e76b8227d65f8535fcc65349fa7e27717419e321fcf2"
+    },
+    {
       "path": "reports/accessibility-20261028.md",
       "bytes": 8467,
       "sha256": "7879f96329fbb2c0f4ee32a1c1b6ac49dd45ba0d1bfa218d93a7e31412a4dc4b"
     },
     {
-      "path": "reports/latest.md",
+      "path": "reports/history/pre-runtime-20261028-latest.md",
       "bytes": 3789,
       "sha256": "bd223121e0c2e16d3b76374a67ab177dfe1069cb31cdbfe224bab20b36372284"
     },
     {
-      "path": "AI_REVIEW.md",
-      "bytes": 42498,
-      "sha256": "6f04a0d863826113e383ecddb9494bf05a1c807dc9d4972593512b6db338ab7a"
+      "path": "reports/history/pre-runtime-20261028-operations-latest.md",
+      "bytes": 5402,
+      "sha256": "b8b6a3ea5169cb0d74be5110932e77622967f89a0846496289d9de935c0186ff"
     },
     {
-      "path": "README.md",
-      "bytes": 2933,
-      "sha256": "9b759a7c2735d6be586060e163daf46b58c9aecc547aaa2c3ba594a1c77bfffe"
+      "path": "reports/latest.md",
+      "bytes": 7039,
+      "sha256": "3d862c6395e44b0a5307f0ea05880cb89124b6f279e9dead1919094472de6203"
+    },
+    {
+      "path": "reports/mirror-publication-20261028.md",
+      "bytes": 6864,
+      "sha256": "4770ce619a372c31c481eb75d7d5ee2a941fdd6802fca0eb775b78736bc7b844"
+    },
+    {
+      "path": "reports/operations-latest.md",
+      "bytes": 7039,
+      "sha256": "3d862c6395e44b0a5307f0ea05880cb89124b6f279e9dead1919094472de6203"
     }
-  ],
-  "publicationMode": "B-only public GitHub repository; original experiment snapshot unchanged"
+  ]
 }

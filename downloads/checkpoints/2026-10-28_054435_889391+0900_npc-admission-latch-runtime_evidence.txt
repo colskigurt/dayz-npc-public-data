@@ -1,0 +1,1083 @@
+B8FB 실제 8→64명 재접근 검증: 최종 도착과 고지대 잔여 2개체
+
+작성: 2026-10-28T05:44:35.889391+09:00
+
+1. 작업 목표
+
+B8FBAB74의 틱 간 입구 거부 전달과 실제 재접근 보행을 8→64명 격리 환경에서 확인한다. 정상 밀림·낙하·복귀를 보존하고 중간 고지대 추적과 최종 도착을 별도 집계한다.
+
+2. 실제 수행
+
+- 후보 보관본 24개 해시 대조 후 기존 서명 PBO 3개를 두 실행에서 검증했다. 새 게임 코드/PBO 변경·재빌드는 없다.
+- activeReference, 8명/180초와 64명/300초. StateContract·DriveAttribution·extended egress·first/near-first step·endpoint lookahead·terrain contact owner·pursuit path revalidation·admission reapproach 사용. VSync on, 동일 그래픽 seed, 자동 정규 종료.
+- 기존 분석기 5개로 상태 전이·출구 lease·재접근·HIGH_HOLD 표본·갱신 간격을 분석했다. 화면 캡처는 8명 장면 존재 확인에 한정되며 시간적 품질 영상은 없다.
+
+3. 측정 결과
+
+|항목|8명 053114|64명 053554|
+|---|---:|---:|
+|최종 FOLLOW/ARRIVED|8/8|64/64|
+|HIGH_HOLD 내 미도달|0|2 (6·32번)|
+|낙하 후 FOLLOW 복귀|10|76|
+|재접근 ARRIVED / 목표변경 취소|1 / 0|15 / 1|
+|재접근 계약 위반|0|0|
+|출구 복구 DONE / 계약 위반|2 / 0|10 / 0|
+|등반 종료 검증 실패|0|0|
+|foreground 미션 dt p50/p95/p99|20/33/35ms|30/72/95ms|
+
+각 조건 반복 1회. 64명 HIGH_HOLD 표본 구간 45.083~104.927초. 물리 전이 916개가 같은 호출 계측과 연결됐다. 미션 dt는 Present/GPU 지연이 아니며 상세 계측 비용을 포함한다. 갱신 콜백 약 13.96/15.27Hz는 화면 애니메이션 프레임률이 아니다. 20ms p95 미달, 최적화 개선 판정 불가.
+
+4. 원인 분석
+
+사실: 새 분기가 두 실행에서 실제로 동작했다. 64명에서 재접근 15회는 4.5cm 허용 간격 안에 도착했고 1회는 INTENT_CHANGED로 취소됐다. 미종료 intent와 출구 lease 위반은 없다. 첫 3ECC 후보의 분기 0회와 달리 B8FB 전달 수정의 실행성은 확인됐다.
+
+사실: 6번은 50.805초 낮은 면에서 PRESSURE_SUPPORT_LOSS로 낙하, 75.382초 LAND, 82.801초 FOLLOW로 복귀했다. 64명 HIGH_HOLD 표본 113개 중 LANDING_SPACE_BLOCKED 45개, NATIVE_JOINT_WORLD_2 25개다. 이는 표본 수이며 지속 시간이나 충돌 원인을 독립 확정하는 수치가 아니다.
+
+사실: 32번은 51.257·78.644·95.218초 낮은 면에서 같은 지지 상실 낙하를 요청했다. 72.874→75.055초와 87.873→89.922초 지면→낮은 면 등반은 완료됐고 이어 다시 낙하했다. 종료 지지 질의 8개는 CLEAR/true다. 정지한 재접근 intent나 CLIMB_EXIT_VALIDATION과 구분된다.
+
+추정: 착지 및 본 포즈의 정적 컨테이너 접촉과 입구 정렬 중 군집 압력이 고지대 복귀를 늦췄을 수 있다. 실패 시점 LandingSpace의 전체 게이트와 실제 접촉 개체를 모두 기록하지 않으므로 근본 원인으로 확정하지 않는다.
+
+반증/한계: 최종 64/64가 중간 고지대 성공을 뜻한다는 해석은 반증된다. 3ECC의 미도달 11명→이번 2명은 실행 간 기술적 관찰이며 통제 반복 A/B의 인과 효과나 안정성 수용이 아니다. 정상 낙하를 실패로 재분류하거나 지지 검사를 완화하지 않았다.
+
+5. 검증 수준
+
+- 진단 성공: B8FB 실제 재접근 실행·완료, 두 잔여 개체의 상태 흐름 분리.
+- 이번 8명 기능 묶음: 해당 한 실행에서 중간/최종 도착 및 계측 계약 통과. 반복 검증 완료 아님.
+- 64명: 최종 도착·출구 계약은 해당 실행 통과, 고지대 중간 기준 미달. 전체 회귀 통과·최종 수용 아님.
+- 과거 74개 회귀 검사는 보존했으며 이번에 재실행하지 않았다.
+- 시각 부드러움·CPU/표시 지연 원인·성능 최적화: 미수용. 네이티브 애니메이션 평가/그래프·GPU·할당/GC 직접 귀속은 이 실험에서 미측정.
+
+6. 변경 사항
+
+게임 코드와 PBO는 변경하지 않았다. Integration build B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185, mission source F8356C4F1E0286DCE7ED83F0137E68061249D48ABEB175942D44A8A048D704D3. 후보 보관본 해시 일치 및 기존 서명 3개 검증 성공. 새 서명 수행은 없다.
+
+새 파일: runtime 두 개의 분석 파생본, checkpoint_horde_admission_runtime_20261028.py, 이번 체크포인트·복사본·선정 근거 패킷. 기존 진행 JSON에 현재 결과를 추가한다. 과거 보고서와 원시 자료는 덮어쓰지 않는다. B안 공개 저장소만 갱신한다.
+
+7. 원시 증거
+
+실행 ID runtime-20261028-053114 및 runtime-20261028-053554. 각 profile의 launch.json, native-ground.tsv, native-natural-player.tsv, native-state-contract.tsv, native-admission-reapproach.tsv, native-pose-cadence.tsv와 state-contract-report.json, missed-surface-analysis.json, admission-reapproach-analysis.json, egress-clearance-analysis.json, controlled-analysis.json. 원문 경로와 SHA-256은 아래 로컬 무결성 목록에 기록한다. 공개본은 선정 필드·함수 발췌만 제공한다. 새 영상은 수집하지 않았다.
+
+8. 잔여 문제
+
+1. 6·32번에 대해 낙하→착지 차단→복귀/재등반 구간을 기록 입력으로 재생하고 LandingSpace 게이트/충돌 대상과 정렬 중 압력 소유권을 확인한다. 정상 낙하를 보존하며 도착 위치 순간이동이나 검사 완화는 하지 않는다.
+2. 동일 B8FB·그래픽·부하에서 재접근 flag OFF/ON 대조와 반복 실행으로 실행 간 변동을 분리한다. 단일 유리한 실행으로 성공 선언하지 않는다.
+3. 애니메이션 별도 실험: 1개체/64개체 AI·이동 OFF, 64개체 정적 포즈 active, 64개체 완전 active. 실제 화면 프레임과 CPU 포즈를 시간으로 맞추고 버퍼 연속성을 조사한다. 추측 보간은 보류한다.
+4. 성능 별도 실험: AI/경로/복구/접촉 및 노출 가능한 갱신 비용을 동일 조건에서 귀속한다. 네이티브 평가·렌더·GC의 계측 불가 부분은 명시한다.
+5. 사용자 요청한 골 재개는 실행 중이며 이 보고서는 안전 종료한 기능 묶음의 체크포인트다. 전체 목표는 미완료다. 운영 서버는 수정하지 않았다.
+
+원본 보고서 ID: 2026-10-28_054435_889391+0900_npc-admission-latch-runtime.md
+원본 SHA-256: f320a6700aaca369f0aa67dd658620d3dff39c577106d600cd3779b668338002
+이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
+
+===== 선정 근거 (전체 원본 아님) =====
+함수 선택: 틱 간 전달·재접근 제안·취소·실제 보행을 포함하는 AR 함수군.
+SOURCE DGSubsetFootprintRecovery.c; SHA256 6e3bb6f1b1e7b232bed0aa9f9d623e7a8f022a27463f403cf683fb64acfb8fd3; lines 1-99
+1: // Local roof safety intent, not player evidence. All root motion still runs
+2: // through Walk -> DriveGround -> MoveTo -> SolveContacts unchanged.
+3: modded class DGBNativeTraversal
+4: {
+5:     bool FRActive;bool FRTurning;bool FRPolicyRead;bool FRPolicyEnabled;
+6:     float FRBlockedAt=-1;float FRNextPlan;float FRUntil;
+7:     vector FRGoal;vector FROrigin;string FRArea;string FRLastStatus;
+8:     int FRPlans;int FRStarts;int FRCompleted;int FRRejected;int FRTurns;
+9:     static float FRBudgetAt=-1;static int FRPlansThisFrame;
+10:     bool ARPolicyRead;bool AREnabled;bool ARActive;
+11:     float ARUntil;float ARNextCheck;int ARRevision;string ARArea;
+12:     vector ARGoal;DGBFixtureLink ARSource;
+13:     bool ARStartRejected;int ARRejectedRevision;DGBFixtureLink ARRejectedSource;
+14:     // Drive clears Body.Reason before Follow, so capture the completed
+15:     // previous decision explicitly rather than reading a stale display field.
+16:     void ARCaptureOutcome()
+17:     {
+18:         ARStartRejected=AREnabled && !ARActive && Phase=="FOLLOW" && Body.Reason=="EXIT_SPACE_BLOCKED";
+19:         if(ARStartRejected)
+20:         {ARRejectedRevision=GoalRevision;ARRejectedSource=Active;}
+21:         else ARRejectedSource=null;
+22:     }
+23:     override void Drive(float dt,vector delta,bool available)
+24:     {
+25:         super.Drive(dt,delta,available);ARCaptureOutcome();
+26:     }
+27:     // A separate local intent only after the ordinary start-placement gate
+28:     // rejects support. It never changes Admission/Active or any position.
+29:     bool ARProposal(out vector goal)
+30:     {
+31:         if(!Body.Director.OpenTraversal || Phase!="FOLLOW" || !Admission || !Active || AdmissionSource!=Active)return false;
+32:         if(Admission.Action!="CLIMB" || Admission.SourceArea!=Area)return false;
+33:         float gap=DGBGroundAgent.FlatDistance(Body.Agent.Position,Admission.Entry);
+34:         if(gap<=0.045 || gap>0.36)return false;
+35:         float error=Math.AbsFloat(DGBGroundAgent.SignedAngle(Body.Agent.Heading-Admission.Heading));
+36:         if(error>1)return false;
+37:         string saved=LandingDiagnostic;vector support;
+38:         ref DGBFixtureLink current=DGBNativeAdmission.Place(Admission,Body.Id,Body.Agent.Position,Body.Agent.Heading);
+39:         bool currentValid=LandingSpace(current.Exit,support,false);
+40:         if(currentValid)currentValid=Fixture().Area(support)==Admission.TargetArea && Fixture().LaneSupport(current.Exit,Admission.TargetArea);
+41:         bool targetValid=false;
+42:         if(!currentValid)targetValid=LandingSpace(Admission.Exit,support,false) && Fixture().Area(support)==Admission.TargetArea && Fixture().LaneSupport(Admission.Exit,Admission.TargetArea);
+43:         LandingDiagnostic=saved;
+44:         if(currentValid || !targetValid)return false;
+45:         goal=Admission.Entry;return true;
+46:     }
+47:     void ARLog(string status)
+48:     {
+49:         FileHandle file=OpenFile("$profile:native-admission-reapproach.tsv",FileMode.APPEND);if(!file)return;
+50:         FPrintln(file,(Now()-Body.Director.Born).ToString()+"\t"+Body.Id+"\t"+status+"\t"+Phase+"\t"+Body.Agent.Position+"\t"+ARGoal+"\t"+GoalRevision+"\t"+Body.Reason);
+51:         CloseFile(file);
+52:     }
+53:     void ARFinish(string status,bool releaseLocalMotion=true)
+54:     {
+55:         ARLog(status);ARActive=false;ARSource=null;ARNextCheck=Now()+0.75;
+56:         if(releaseLocalMotion)
+57:         {
+58:             SafetyWalk=false;ForceWalk=false;EntryAligning=false;StartPlacement=null;
+59:             Body.Agent.Path.Clear();Body.Agent.PlanAt=0;Body.RetryAt=0;
+60:             SurfaceWaypoints.Clear();NextSurfacePlan=0;NextAdmissionPlan=0;
+61:         }
+62:     }
+63:     bool AROwnershipAvailable()
+64:     {
+65:         if(Phase!="FOLLOW" || FRActive || IdleClearing || SurfaceYieldActive || PoseClearanceActive)return false;
+66:         if(Body.YieldActive || Body.SupportBypassActive || Body.PeerBypassActive)return false;
+67:         if(Body.Combat && (Body.Combat.Active || Body.Combat.Dead || Body.Combat.PendingDeath))return false;
+68:         return true;
+69:     }
+70:     bool ARFollow(float dt,vector delta,bool available)
+71:     {
+72:         if(!ARPolicyRead){AREnabled=FileExist("$profile:admission-reapproach.flag");ARPolicyRead=true;}
+73:         if(!AREnabled)return false;
+74:         if(!AROwnershipAvailable())
+75:         {if(ARActive)ARFinish("SUCCESSOR_OWNS_MOTION",false);return false;}
+76:         if(ARActive && (GoalRevision!=ARRevision || Area!=ARArea || Active!=ARSource))
+77:         {ARFinish("INTENT_CHANGED");return false;}
+78:         if(ARActive && Now()>=ARUntil){ARFinish("EXPIRED");return false;}
+79:         if(!ARActive)
+80:         {
+81:             if(Now()<ARNextCheck || !ARStartRejected || ARRejectedRevision!=GoalRevision || ARRejectedSource!=Active)return false;
+82:             if(LandingDiagnostic!="FOOT_X_SUPPORT" && LandingDiagnostic!="FOOT_Z_SUPPORT" && LandingDiagnostic!="TARGET_FOOTPRINT_AREA")return false;
+83:             ARNextCheck=Now()+0.25;vector goal;
+84:             if(!ARProposal(goal))return false;
+85:             ARGoal=goal;ARRevision=GoalRevision;ARArea=Area;ARSource=Active;
+86:             ARUntil=Now()+4;ARActive=true;ARStartRejected=false;EntryAligning=false;
+87:             Body.Agent.Path.Clear();Body.Agent.PlanAt=0;Body.RetryAt=0;
+88:             SurfaceWaypoints.Clear();NextSurfacePlan=0;ARLog("START");
+89:         }
+90:         if(DGBGroundAgent.FlatDistance(Body.Agent.Position,ARGoal)<=0.045)
+91:         {ARFinish("ARRIVED");return false;}
+92:         // Native walk delta, heading and collision gates remain authoritative.
+93:         SafetyWalk=true;
+94:         if(Area=="ground")Walk(ARGoal,0.04,false,dt,delta,available);
+95:         else SurfaceWalk(ARGoal,0.04,dt,delta,available);
+96:         Body.NextRequest=1;
+97:         return true;
+98:     }
+99: 
+
+두 실행의 분석 JSON에서 선택한 결과 필드 (원본에 내부 경로/추가 필드 존재):
+[
+  {
+    "runId": "runtime-20261028-053114",
+    "count": 8,
+    "durationSeconds": 180,
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "terminalArrivals": 8,
+    "unresolvedTerminalAgents": [],
+    "missingHighFollow": [],
+    "highHoldWindow": [
+      45.01,
+      104.987
+    ],
+    "fallsLandedAndResumed": 10,
+    "climbEndFailures": 0,
+    "physicalTransitionsMatched": true,
+    "physicalTransitions": 120,
+    "admissionOutcomes": {
+      "ARRIVED": 1
+    },
+    "admissionViolations": [],
+    "egressOutcomes": {
+      "DONE": 2
+    },
+    "egressViolations": [],
+    "foregroundMissionFrameMs": {
+      "samples": 8684,
+      "p50": 20.0,
+      "p95": 33.0,
+      "p99": 35.0
+    },
+    "foregroundFraction": 0.9995114802149487,
+    "motorCallbackHz": {
+      "minimum": 13.9574374511337,
+      "median": 13.9574374511337,
+      "maximum": 13.9574374511337
+    },
+    "visibleCallbackHz": {
+      "minimum": 13.9574374511337,
+      "median": 13.9574374511337,
+      "maximum": 13.9574374511337
+    },
+    "repetitions": 1
+  },
+  {
+    "runId": "runtime-20261028-053554",
+    "count": 64,
+    "durationSeconds": 300,
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "terminalArrivals": 64,
+    "unresolvedTerminalAgents": [],
+    "missingHighFollow": [
+      6,
+      32
+    ],
+    "highHoldWindow": [
+      45.083,
+      104.927
+    ],
+    "fallsLandedAndResumed": 76,
+    "climbEndFailures": 0,
+    "physicalTransitionsMatched": true,
+    "physicalTransitions": 916,
+    "admissionOutcomes": {
+      "ARRIVED": 15,
+      "INTENT_CHANGED": 1
+    },
+    "admissionViolations": [],
+    "egressOutcomes": {
+      "DONE": 10
+    },
+    "egressViolations": [],
+    "foregroundMissionFrameMs": {
+      "samples": 8246,
+      "p50": 30.0,
+      "p95": 72.0,
+      "p99": 95.0
+    },
+    "foregroundFraction": 1.0,
+    "motorCallbackHz": {
+      "minimum": 15.271427413128773,
+      "median": 15.271427413128773,
+      "maximum": 15.271427413128773
+    },
+    "visibleCallbackHz": {
+      "minimum": 15.271427413128773,
+      "median": 15.271427413128773,
+      "maximum": 15.271427413128773
+    },
+    "repetitions": 1
+  }
+]
+
+미도달 ID 6/32만 선택; HIGH_HOLD 내 모든 TRANSITION의 명시 필드 투영 및 기존 분석기의 약 12개 간격 표본. 표본 이유 빈도는 지속 시간 아님.
+[
+  {
+    "id": 6,
+    "highStageSamples": 113,
+    "reasonSampleCounts": {
+      "ARRIVED": 1,
+      "": 6,
+      "LINK_ALIGN": 2,
+      "ENTRY_POSE_SETTLE": 1,
+      "ALIGN_HEADING": 4,
+      "NATIVE_FALL": 1,
+      "LANDING_SPACE_BLOCKED": 45,
+      "NATIVE_JOINT_WORLD_2": 25,
+      "LAND": 4,
+      "SUPPORTED_POSE_ESCAPE_TURN": 3,
+      "NATIVE_JOINT_WORLD_1": 13,
+      "NATIVE_JOINT_WORLD_0": 2,
+      "RECOVERY_REPLAN_WAIT": 1,
+      "ENTRY_STALL_BACKOFF": 1,
+      "POSE_CLEARANCE_SEPARATION": 3,
+      "NO_GROUND_PATH": 1
+    },
+    "phaseSampleCounts": {
+      "FOLLOW": 53,
+      "FALL": 46,
+      "LAND": 14
+    },
+    "transitions": [
+      {
+        "seconds": "50.805",
+        "previous": "FOLLOW",
+        "next": "FALL",
+        "failure": "CONTACT_SUPPORT_LOST",
+        "recoveryGeneration": "1",
+        "position": "<4511.325195, 340.179993, 10239.465820>",
+        "contactStatus": "",
+        "callContext": "PRESSURE_SUPPORT_LOSS",
+        "areaAtCall": "low"
+      },
+      {
+        "seconds": "75.382",
+        "previous": "FALL",
+        "next": "LAND",
+        "failure": "CONTACT_SUPPORT_LOST",
+        "recoveryGeneration": "1",
+        "position": "<4511.503906, 339.172150, 10236.850586>",
+        "contactStatus": "",
+        "callContext": "OTHER",
+        "areaAtCall": "ground"
+      },
+      {
+        "seconds": "82.749",
+        "previous": "LAND",
+        "next": "EGRESS",
+        "failure": "CONTACT_SUPPORT_LOST",
+        "recoveryGeneration": "1",
+        "position": "<4511.503906, 339.171906, 10236.790039>",
+        "contactStatus": "",
+        "callContext": "OTHER",
+        "areaAtCall": "ground"
+      },
+      {
+        "seconds": "82.801",
+        "previous": "EGRESS",
+        "next": "FOLLOW",
+        "failure": "CONTACT_SUPPORT_LOST",
+        "recoveryGeneration": "1",
+        "position": "<4511.503906, 339.171906, 10236.790039>",
+        "contactStatus": "StaticObj_Container_1C",
+        "callContext": "OTHER",
+        "areaAtCall": "ground"
+      }
+    ],
+    "sampledTimeline": [
+      {
+        "seconds": "45.143",
+        "position": "<4510.031738, 340.192200, 10239.265625>",
+        "heading": "150.276",
+        "area": "low",
+        "traversalPhase": "FOLLOW",
+        "reason": "ARRIVED",
+        "link": "none",
+        "entryDistance": "0",
+        "entryNormalGap": "0.0263672",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "562",
+        "pressureBlocks": "20",
+        "motionContactHeld": "0",
+        "backoffReason": ""
+      },
+      {
+        "seconds": "49.998",
+        "position": "<4510.855469, 340.208252, 10239.519531>",
+        "heading": "69.7345",
+        "area": "low",
+        "traversalPhase": "FOLLOW",
+        "reason": "ALIGN_HEADING",
+        "link": "none",
+        "entryDistance": "0",
+        "entryNormalGap": "0.0439453",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "634",
+        "pressureBlocks": "20",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "54.771",
+        "position": "<4511.487305, 339.278229, 10237.311523>",
+        "heading": "6.7345",
+        "area": "ground",
+        "traversalPhase": "FALL",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "link": "none",
+        "entryDistance": "0",
+        "entryNormalGap": "1.11963",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "646",
+        "pressureBlocks": "20",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "59.606",
+        "position": "<4511.491211, 339.278229, 10236.867188>",
+        "heading": "7.55524",
+        "area": "ground",
+        "traversalPhase": "FALL",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "link": "none",
+        "entryDistance": "0",
+        "entryNormalGap": "1.11963",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "646",
+        "pressureBlocks": "20",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "64.463",
+        "position": "<4511.492676, 339.278229, 10236.862305>",
+        "heading": "8.25586",
+        "area": "ground",
+        "traversalPhase": "FALL",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "link": "none",
+        "entryDistance": "0",
+        "entryNormalGap": "1.11963",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "646",
+        "pressureBlocks": "20",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "69.223",
+        "position": "<4511.492676, 339.278229, 10236.858398>",
+        "heading": "7.75595",
+        "area": "ground",
+        "traversalPhase": "FALL",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "link": "none",
+        "entryDistance": "0",
+        "entryNormalGap": "1.11963",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "646",
+        "pressureBlocks": "20",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "73.932",
+        "position": "<4511.494629, 339.278229, 10236.854492>",
+        "heading": "10.6561",
+        "area": "ground",
+        "traversalPhase": "FALL",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "link": "none",
+        "entryDistance": "0",
+        "entryNormalGap": "1.11963",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "646",
+        "pressureBlocks": "20",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "78.699",
+        "position": "<4511.503906, 339.171906, 10236.790039>",
+        "heading": "8.6561",
+        "area": "ground",
+        "traversalPhase": "LAND",
+        "reason": "LAND",
+        "link": "none",
+        "entryDistance": "0",
+        "entryNormalGap": "1.11963",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "646",
+        "pressureBlocks": "20",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "83.529",
+        "position": "<4511.503906, 339.171906, 10236.790039>",
+        "heading": "5.6561",
+        "area": "ground",
+        "traversalPhase": "FOLLOW",
+        "reason": "NATIVE_JOINT_WORLD_2",
+        "link": "ground_to_low_lane_-1",
+        "entryDistance": "1.66953",
+        "entryNormalGap": "1.51367",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "646",
+        "pressureBlocks": "20",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "88.208",
+        "position": "<4511.503906, 339.171906, 10236.790039>",
+        "heading": "5.6561",
+        "area": "ground",
+        "traversalPhase": "FOLLOW",
+        "reason": "NATIVE_JOINT_WORLD_2",
+        "link": "none",
+        "entryDistance": "0",
+        "entryNormalGap": "1.51367",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "646",
+        "pressureBlocks": "25",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_STALL_BACKOFF"
+      },
+      {
+        "seconds": "92.955",
+        "position": "<4511.510254, 339.171906, 10236.761719>",
+        "heading": "5.6561",
+        "area": "ground",
+        "traversalPhase": "FOLLOW",
+        "reason": "RECOVERY_REPLAN_WAIT",
+        "link": "ground_to_low_lane_-1",
+        "entryDistance": "1.64663",
+        "entryNormalGap": "1.48535",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "647",
+        "pressureBlocks": "30",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_STALL_BACKOFF"
+      },
+      {
+        "seconds": "97.665",
+        "position": "<4511.510254, 339.171906, 10236.761719>",
+        "heading": "5.6561",
+        "area": "ground",
+        "traversalPhase": "FOLLOW",
+        "reason": "NATIVE_JOINT_WORLD_1",
+        "link": "none",
+        "entryDistance": "0",
+        "entryNormalGap": "1.48535",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "647",
+        "pressureBlocks": "30",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_STALL_BACKOFF"
+      },
+      {
+        "seconds": "102.484",
+        "position": "<4511.536621, 339.171326, 10236.488281>",
+        "heading": "-52.3439",
+        "area": "ground",
+        "traversalPhase": "FOLLOW",
+        "reason": "POSE_CLEARANCE_SEPARATION",
+        "link": "ground_to_low_lane_-1",
+        "entryDistance": "1.41844",
+        "entryNormalGap": "1.24219",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "663",
+        "pressureBlocks": "34",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_STALL_BACKOFF"
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "highStageSamples": 113,
+    "reasonSampleCounts": {
+      "": 15,
+      "ENTRY_POSE_SETTLE": 2,
+      "LINK_ALIGN": 9,
+      "ALIGN_HEADING": 17,
+      "NATIVE_FALL": 2,
+      "LANDING_SPACE_BLOCKED": 15,
+      "LAND_CLEARANCE_SEPARATION": 4,
+      "LAND": 20,
+      "SUPPORTED_POSE_ESCAPE_TURN": 1,
+      "NATIVE_JOINT_WORLD_2": 7,
+      "RECOVERY_REPLAN_WAIT": 4,
+      "POSE_CLEARANCE_SEPARATION": 2,
+      "NATIVE_MOTION": 8,
+      "SETTLE": 2,
+      "EGRESS_POSE_CLEARANCE": 3,
+      "EGRESS_POSE_CLEARANCE_DONE": 1,
+      "FALL_CONTACT_AIR_SEPARATION": 1
+    },
+    "phaseSampleCounts": {
+      "FOLLOW": 47,
+      "FALL": 18,
+      "LAND": 30,
+      "EGRESS": 8,
+      "MOTION": 8,
+      "SETTLE": 2
+    },
+    "transitions": [
+      {
+        "seconds": "51.257",
+        "previous": "FOLLOW",
+        "next": "FALL",
+        "failure": "CONTACT_SUPPORT_LOST",
+        "recoveryGeneration": "1",
+        "position": "<4511.312988, 340.176849, 10238.347656>",
+        "contactStatus": "",
+        "callContext": "PRESSURE_SUPPORT_LOSS",
+        "areaAtCall": "low"
+      },
+      {
+        "seconds": "60.05",
+        "previous": "FALL",
+        "next": "LAND",
+        "failure": "CONTACT_SUPPORT_LOST",
+        "recoveryGeneration": "1",
+        "position": "<4511.505371, 339.172150, 10236.846680>",
+        "contactStatus": "",
+        "callContext": "OTHER",
+        "areaAtCall": "ground"
+      },
+      {
+        "seconds": "67.581",
+        "previous": "LAND",
+        "next": "EGRESS",
+        "failure": "CONTACT_SUPPORT_LOST",
+        "recoveryGeneration": "1",
+        "position": "<4511.505371, 339.171936, 10236.786133>",
+        "contactStatus": "",
+        "callContext": "OTHER",
+        "areaAtCall": "ground"
+      },
+      {
+        "seconds": "67.647",
+        "previous": "EGRESS",
+        "next": "FOLLOW",
+        "failure": "CONTACT_SUPPORT_LOST",
+        "recoveryGeneration": "1",
+        "position": "<4511.505371, 339.171936, 10236.786133>",
+        "contactStatus": "",
+        "callContext": "OTHER",
+        "areaAtCall": "ground"
+      },
+      {
+        "seconds": "72.874",
+        "previous": "FOLLOW",
+        "next": "MOTION",
+        "failure": "",
+        "recoveryGeneration": "1",
+        "position": "<4510.155273, 339.140625, 10235.262695>",
+        "contactStatus": "",
+        "callContext": "FOLLOW",
+        "areaAtCall": "ground"
+      },
+      {
+        "seconds": "75.055",
+        "previous": "MOTION",
+        "next": "SETTLE",
+        "failure": "",
+        "recoveryGeneration": "1",
+        "position": "<4509.803223, 340.189056, 10237.227539>",
+        "contactStatus": "",
+        "callContext": "MOTION",
+        "areaAtCall": "low"
+      },
+      {
+        "seconds": "75.816",
+        "previous": "SETTLE",
+        "next": "EGRESS",
+        "failure": "",
+        "recoveryGeneration": "1",
+        "position": "<4509.803223, 340.182495, 10237.227539>",
+        "contactStatus": "",
+        "callContext": "OTHER",
+        "areaAtCall": "low"
+      },
+      {
+        "seconds": "75.871",
+        "previous": "EGRESS",
+        "next": "FOLLOW",
+        "failure": "",
+        "recoveryGeneration": "1",
+        "position": "<4509.803223, 340.182495, 10237.227539>",
+        "contactStatus": "",
+        "callContext": "OTHER",
+        "areaAtCall": "low"
+      },
+      {
+        "seconds": "78.644",
+        "previous": "FOLLOW",
+        "next": "FALL",
+        "failure": "CONTACT_SUPPORT_LOST",
+        "recoveryGeneration": "2",
+        "position": "<4510.210449, 340.152313, 10236.705078>",
+        "contactStatus": "",
+        "callContext": "PRESSURE_SUPPORT_LOSS",
+        "areaAtCall": "low"
+      },
+      {
+        "seconds": "79.197",
+        "previous": "FALL",
+        "next": "LAND",
+        "failure": "CONTACT_SUPPORT_LOST",
+        "recoveryGeneration": "2",
+        "position": "<4510.291504, 339.147583, 10236.365234>",
+        "contactStatus": "",
+        "callContext": "OTHER",
+        "areaAtCall": "ground"
+      },
+      {
+        "seconds": "83.348",
+        "previous": "LAND",
+        "next": "EGRESS",
+        "failure": "CONTACT_SUPPORT_LOST",
+        "recoveryGeneration": "2",
+        "position": "<4510.291504, 339.146271, 10236.032227>",
+        "contactStatus": "",
+        "callContext": "OTHER",
+        "areaAtCall": "ground"
+      },
+      {
+        "seconds": "85.055",
+        "previous": "EGRESS",
+        "next": "FOLLOW",
+        "failure": "CONTACT_SUPPORT_LOST",
+        "recoveryGeneration": "2",
+        "position": "<4509.997559, 339.139709, 10235.764648>",
+        "contactStatus": "",
+        "callContext": "OTHER",
+        "areaAtCall": "ground"
+      },
+      {
+        "seconds": "87.873",
+        "previous": "FOLLOW",
+        "next": "MOTION",
+        "failure": "",
+        "recoveryGeneration": "2",
+        "position": "<4509.783691, 339.133789, 10235.286133>",
+        "contactStatus": "",
+        "callContext": "FOLLOW",
+        "areaAtCall": "ground"
+      },
+      {
+        "seconds": "89.922",
+        "previous": "MOTION",
+        "next": "SETTLE",
+        "failure": "",
+        "recoveryGeneration": "2",
+        "position": "<4509.668945, 340.182190, 10237.250977>",
+        "contactStatus": "",
+        "callContext": "MOTION",
+        "areaAtCall": "low"
+      },
+      {
+        "seconds": "90.557",
+        "previous": "SETTLE",
+        "next": "EGRESS",
+        "failure": "",
+        "recoveryGeneration": "2",
+        "position": "<4509.668945, 340.180054, 10237.250977>",
+        "contactStatus": "",
+        "callContext": "OTHER",
+        "areaAtCall": "low"
+      },
+      {
+        "seconds": "90.621",
+        "previous": "EGRESS",
+        "next": "FOLLOW",
+        "failure": "",
+        "recoveryGeneration": "2",
+        "position": "<4509.668945, 340.180054, 10237.250977>",
+        "contactStatus": "",
+        "callContext": "OTHER",
+        "areaAtCall": "low"
+      },
+      {
+        "seconds": "95.218",
+        "previous": "FOLLOW",
+        "next": "FALL",
+        "failure": "CONTACT_SUPPORT_LOST",
+        "recoveryGeneration": "3",
+        "position": "<4510.179199, 340.151947, 10236.697266>",
+        "contactStatus": "",
+        "callContext": "PRESSURE_SUPPORT_LOSS",
+        "areaAtCall": "low"
+      },
+      {
+        "seconds": "95.819",
+        "previous": "FALL",
+        "next": "LAND",
+        "failure": "CONTACT_SUPPORT_LOST",
+        "recoveryGeneration": "3",
+        "position": "<4510.195801, 339.145721, 10236.348633>",
+        "contactStatus": "",
+        "callContext": "OTHER",
+        "areaAtCall": "ground"
+      },
+      {
+        "seconds": "100.231",
+        "previous": "LAND",
+        "next": "EGRESS",
+        "failure": "CONTACT_SUPPORT_LOST",
+        "recoveryGeneration": "3",
+        "position": "<4510.195801, 339.144501, 10236.045898>",
+        "contactStatus": "",
+        "callContext": "OTHER",
+        "areaAtCall": "ground"
+      },
+      {
+        "seconds": "102.092",
+        "previous": "EGRESS",
+        "next": "FOLLOW",
+        "failure": "CONTACT_SUPPORT_LOST",
+        "recoveryGeneration": "3",
+        "position": "<4509.909668, 339.138092, 10235.772461>",
+        "contactStatus": "",
+        "callContext": "OTHER",
+        "areaAtCall": "ground"
+      }
+    ],
+    "sampledTimeline": [
+      {
+        "seconds": "45.143",
+        "position": "<4509.109863, 340.175171, 10239.338867>",
+        "heading": "62.7204",
+        "area": "low",
+        "traversalPhase": "FOLLOW",
+        "reason": "",
+        "link": "none",
+        "entryDistance": "0",
+        "entryNormalGap": "0.0390625",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "517",
+        "pressureBlocks": "0",
+        "motionContactHeld": "0",
+        "backoffReason": ""
+      },
+      {
+        "seconds": "49.998",
+        "position": "<4510.698730, 340.203125, 10238.698242>",
+        "heading": "40.1424",
+        "area": "low",
+        "traversalPhase": "FOLLOW",
+        "reason": "ALIGN_HEADING",
+        "link": "none",
+        "entryDistance": "0",
+        "entryNormalGap": "0.0551758",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "589",
+        "pressureBlocks": "0",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "54.771",
+        "position": "<4511.482422, 339.275391, 10236.904297>",
+        "heading": "9.1424",
+        "area": "ground",
+        "traversalPhase": "FALL",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "link": "none",
+        "entryDistance": "0",
+        "entryNormalGap": "1.11035",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "608",
+        "pressureBlocks": "0",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "59.606",
+        "position": "<4511.497070, 339.275391, 10236.858398>",
+        "heading": "10.3217",
+        "area": "ground",
+        "traversalPhase": "FALL",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "link": "none",
+        "entryDistance": "0",
+        "entryNormalGap": "1.11035",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "608",
+        "pressureBlocks": "0",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "64.463",
+        "position": "<4511.505371, 339.171936, 10236.786133>",
+        "heading": "7.32166",
+        "area": "ground",
+        "traversalPhase": "LAND",
+        "reason": "NATIVE_JOINT_WORLD_2",
+        "link": "none",
+        "entryDistance": "0",
+        "entryNormalGap": "1.11035",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "608",
+        "pressureBlocks": "0",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "69.223",
+        "position": "<4511.620605, 339.171783, 10236.214844>",
+        "heading": "-28.6783",
+        "area": "ground",
+        "traversalPhase": "FOLLOW",
+        "reason": "POSE_CLEARANCE_SEPARATION",
+        "link": "ground_to_low_lane_-1",
+        "entryDistance": "1.24692",
+        "entryNormalGap": "0.96875",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "629",
+        "pressureBlocks": "2",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "73.932",
+        "position": "<4509.907227, 340.161041, 10236.602539>",
+        "heading": "0",
+        "area": "low",
+        "traversalPhase": "MOTION",
+        "reason": "NATIVE_MOTION",
+        "link": "ground_to_low",
+        "entryDistance": "1.70234",
+        "entryNormalGap": "0.0136719",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "698",
+        "pressureBlocks": "2",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "78.699",
+        "position": "<4510.222656, 340.101868, 10236.678711>",
+        "heading": "24",
+        "area": "low",
+        "traversalPhase": "FALL",
+        "reason": "NATIVE_FALL",
+        "link": "none",
+        "entryDistance": "0",
+        "entryNormalGap": "0.0273438",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "741",
+        "pressureBlocks": "2",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "83.529",
+        "position": "<4510.340332, 339.147461, 10236.107422>",
+        "heading": "12",
+        "area": "ground",
+        "traversalPhase": "EGRESS",
+        "reason": "",
+        "link": "none",
+        "entryDistance": "0",
+        "entryNormalGap": "0.0273438",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "741",
+        "pressureBlocks": "2",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "88.208",
+        "position": "<4509.718750, 339.136200, 10235.835938>",
+        "heading": "0",
+        "area": "ground",
+        "traversalPhase": "MOTION",
+        "reason": "NATIVE_MOTION",
+        "link": "ground_to_low",
+        "entryDistance": "0.553632",
+        "entryNormalGap": "0.00976563",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "779",
+        "pressureBlocks": "2",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "92.955",
+        "position": "<4510.046875, 340.187103, 10237.246094>",
+        "heading": "60",
+        "area": "low",
+        "traversalPhase": "FOLLOW",
+        "reason": "ALIGN_HEADING",
+        "link": "low_to_high_lane_-2",
+        "entryDistance": "0.861969",
+        "entryNormalGap": "0.107422",
+        "entryAlignAge": "1.451",
+        "admissionHeading": "90",
+        "pressureSteps": "825",
+        "pressureBlocks": "2",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "97.665",
+        "position": "<4510.195801, 339.144501, 10236.045898>",
+        "heading": "30",
+        "area": "ground",
+        "traversalPhase": "LAND",
+        "reason": "LAND",
+        "link": "none",
+        "entryDistance": "0",
+        "entryNormalGap": "0.00976566",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "858",
+        "pressureBlocks": "2",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "102.484",
+        "position": "<4509.909668, 339.138092, 10235.772461>",
+        "heading": "55.4673",
+        "area": "ground",
+        "traversalPhase": "FOLLOW",
+        "reason": "ALIGN_HEADING",
+        "link": "ground_to_low",
+        "entryDistance": "0.504251",
+        "entryNormalGap": "0.496094",
+        "entryAlignAge": "-1",
+        "admissionHeading": "0",
+        "pressureSteps": "858",
+        "pressureBlocks": "2",
+        "motionContactHeld": "0",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      }
+    ]
+  }
+]
+
+SOURCE runtime-20261028-053114/native-admission-reapproach.tsv; SHA256 ae0ddfb4701f14c2a5bc5b3cbc1c131c8607fcbd34f473573ceca5cc9d08b453; 모든 행, 전체 8개 열
+23.874	0	START	FOLLOW	<4508.735840, 339.115417, 10235.247070>	<4508.900391, 339.123566, 10235.276367>	1	
+25.615	0	ARRIVED	FOLLOW	<4508.921875, 339.118713, 10235.274414>	<4508.900391, 339.123566, 10235.276367>	1	
+
+SOURCE runtime-20261028-053554/native-admission-reapproach.tsv; SHA256 67c2c7807a61460323db05d25e108db04cd1d18c825b7176c376504a1532c618; 모든 행, 전체 8개 열
+12.461	4	START	FOLLOW	<4508.817383, 339.116791, 10235.239258>	<4508.906250, 339.123566, 10235.276367>	1	
+12.713	7	START	FOLLOW	<4511.176270, 339.159760, 10235.287109>	<4511.056152, 339.152710, 10235.276367>	1	
+13.52	11	START	FOLLOW	<4511.127930, 339.158783, 10235.266602>	<4511.052734, 339.152710, 10235.276367>	1	
+14.328	4	ARRIVED	FOLLOW	<4508.899414, 339.118408, 10235.308594>	<4508.906250, 339.123566, 10235.276367>	1	
+14.695	12	START	FOLLOW	<4508.804688, 339.116638, 10235.255859>	<4508.960938, 339.123566, 10235.276367>	1	
+15.097	7	ARRIVED	FOLLOW	<4511.044434, 339.157318, 10235.288086>	<4511.056152, 339.152710, 10235.276367>	1	
+15.629	11	ARRIVED	FOLLOW	<4511.022461, 339.156952, 10235.304688>	<4511.052734, 339.152710, 10235.276367>	1	
+16.014	12	ARRIVED	FOLLOW	<4508.933105, 339.118958, 10235.296875>	<4508.960938, 339.123566, 10235.276367>	1	
+16.975	24	START	FOLLOW	<4508.823730, 339.116852, 10235.216797>	<4508.928223, 339.123566, 10235.276367>	1	
+17.965	24	ARRIVED	FOLLOW	<4508.891113, 339.118195, 10235.284180>	<4508.928223, 339.123566, 10235.276367>	1	
+19.117	36	START	FOLLOW	<4508.723145, 339.115204, 10235.242188>	<4508.890625, 339.123566, 10235.276367>	1	
+19.682	35	START	FOLLOW	<4511.250000, 339.161285, 10235.317383>	<4511.040039, 339.152710, 10235.276367>	1	
+20.563	47	START	FOLLOW	<4511.194824, 339.159821, 10235.209961>	<4511.020508, 339.152710, 10235.276367>	1	
+20.739	36	ARRIVED	FOLLOW	<4508.880371, 339.118103, 10235.310547>	<4508.890625, 339.123566, 10235.276367>	1	
+21.154	35	ARRIVED	FOLLOW	<4511.068848, 339.157837, 10235.303711>	<4511.040039, 339.152710, 10235.276367>	1	
+21.706	47	ARRIVED	FOLLOW	<4511.042969, 339.157379, 10235.307617>	<4511.020508, 339.152710, 10235.276367>	1	
+35.168	43	START	FOLLOW	<4511.138184, 339.159088, 10235.291016>	<4510.877441, 339.152710, 10235.276367>	1	
+36.755	43	ARRIVED	FOLLOW	<4510.906250, 339.154785, 10235.291992>	<4510.877441, 339.152710, 10235.276367>	1	
+45.143	52	START	FOLLOW	<4508.770020, 339.115936, 10235.212891>	<4508.915527, 339.123566, 10235.276367>	1	
+45.383	52	INTENT_CHANGED	FOLLOW	<4508.664063, 339.113922, 10235.158203>	<4508.915527, 339.123566, 10235.276367>	2	
+54.863	51	START	FOLLOW	<4511.189453, 339.159943, 10235.264648>	<4511.051270, 339.137787, 10235.276367>	2	
+56.199	51	ARRIVED	FOLLOW	<4511.088867, 339.158051, 10235.262695>	<4511.051270, 339.137787, 10235.276367>	2	
+62.038	57	START	FOLLOW	<4511.335938, 339.162598, 10235.248047>	<4510.986816, 339.152710, 10235.276367>	2	
+63.494	57	ARRIVED	FOLLOW	<4511.010742, 339.156494, 10235.243164>	<4510.986816, 339.152710, 10235.276367>	2	
+67.471	56	START	FOLLOW	<4508.753418, 339.115753, 10235.259766>	<4509.080078, 339.123566, 10235.276367>	2	
+68.421	56	ARRIVED	FOLLOW	<4509.060059, 339.121063, 10235.254883>	<4509.080078, 339.123566, 10235.276367>	2	
+70.965	52	START	FOLLOW	<4508.677734, 339.114349, 10235.224609>	<4508.916504, 339.137787, 10235.276367>	2	
+71.686	52	ARRIVED	FOLLOW	<4508.919434, 339.118561, 10235.241211>	<4508.916504, 339.137787, 10235.276367>	2	
+74.332	15	START	FOLLOW	<4508.698242, 339.114655, 10235.206055>	<4508.891113, 339.123566, 10235.276367>	2	
+74.788	15	ARRIVED	FOLLOW	<4508.923828, 339.118713, 10235.254883>	<4508.891113, 339.123566, 10235.276367>	2	
+94.02	45	START	FOLLOW	<4511.284180, 339.161621, 10235.250977>	<4511.054688, 339.152710, 10235.276367>	2	
+95.36	45	ARRIVED	FOLLOW	<4511.010742, 339.156586, 10235.267578>	<4511.054688, 339.152710, 10235.276367>	2	
+
+누락: 전체 프레임 영상, 실패 당시 모든 LandingSpace 게이트/충돌 대상, 네이티브 평가/렌더/GC. 텍스트만으로 시각 품질이나 근본 원인을 확정하지 말 것.

@@ -1,3 +1,11 @@
+# 최신 작업: B8FB 실제 재접근 검증
+
+8/8·64/64 최종 도착, 고지대 6·32번 미도달. 64명 미션 p95 72ms, 시각/성능 미수용.
+
+[최신 보고서](reports/operations-latest.md) · [AI 검토](AI_REVIEW.md) · [JSON](api/public/status.json)
+
+이하 이전 공개 운영 안내는 이력이다.
+
 # DayZ NPC — 작업 기록·공개 연구 자료
 
 앞으로 이 GitHub 저장소(B안)만 사용합니다. GPT 대시보드는 운영을 종료합니다.
