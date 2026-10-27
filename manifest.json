@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261027T210240-landing-corridor-20261028",
-  "generatedAt": "2026-10-27T21:02:40.934537+00:00",
-  "exportedAt": "2026-10-27T21:02:40.934537+00:00",
+  "snapshotId": "snapshot-20261027T212153-window-cadence-20261028",
+  "generatedAt": "2026-10-27T21:21:53.600233+00:00",
+  "exportedAt": "2026-10-27T21:21:53.600233+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -12,7 +12,9 @@
     "runtime-20261028-021953",
     "runtime-20261028-053114",
     "runtime-20261028-053554",
-    "runtime-20261028-055226"
+    "runtime-20261028-055226",
+    "runtime-20261028-061023",
+    "runtime-20261028-061615"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -21,8 +23,8 @@
     "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-27T21:02:40.934537+00:00",
-    "staleAfter": "2026-10-28T21:02:40.934537+00:00",
+    "sourceUpdatedAt": "2026-10-27T21:21:53.600233+00:00",
+    "staleAfter": "2026-10-28T21:21:53.600233+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -39,18 +41,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 24760,
-      "sha256": "777cc8ce155cd116586a8cdef53f0dfcd40151e939a1f84fc798f9d4064dbfc3"
+      "bytes": 20300,
+      "sha256": "ac370a8172a4132e8c69d6ef38ca17e045293b42c65569521cb070c3a4afe002"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 64656,
-      "sha256": "d56fa2b8629f9b672d68885aa5bacff1875367d10c4ad012c42f17bb72ec8b8e"
+      "bytes": 84411,
+      "sha256": "a17eba206cabb8e3052d8b499d79a9ca510674d2c5ab6e4ffe62086b94a85236"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 64652,
-      "sha256": "4948296a2b53bb8b4a405cf86eaaa2725c1bb96ad00b290622995fc81d4f7709"
+      "bytes": 84407,
+      "sha256": "38b5eac5762eb9efdd8e44c8e084dccf385b786d0fb04c8c95b8884b33866482"
     },
     {
       "path": "api/public/schema.json",
@@ -88,14 +90,29 @@
       "sha256": "505580719ac16d5ccee53212ec0ee22e3406c0e7904b1a723351a8c45556bbb0"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261027T212153-window-cadence-20261028/experiments.json",
+      "bytes": 84411,
+      "sha256": "a17eba206cabb8e3052d8b499d79a9ca510674d2c5ab6e4ffe62086b94a85236"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261027T212153-window-cadence-20261028/metrics.json",
+      "bytes": 84407,
+      "sha256": "38b5eac5762eb9efdd8e44c8e084dccf385b786d0fb04c8c95b8884b33866482"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261027T212153-window-cadence-20261028/status.json",
+      "bytes": 84406,
+      "sha256": "e896a508122273e6a67a158785d9846a826caf80705953c55c57a56fa2e4d18c"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 64651,
-      "sha256": "505580719ac16d5ccee53212ec0ee22e3406c0e7904b1a723351a8c45556bbb0"
+      "bytes": 84406,
+      "sha256": "e896a508122273e6a67a158785d9846a826caf80705953c55c57a56fa2e4d18c"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 717,
-      "sha256": "a6c55d33946b3b29c687891a9e0319bcaf0dcb2dd80ba060a2cd413ffbb25462"
+      "bytes": 713,
+      "sha256": "6e6942c9b113db7f53bc3de386122f3de814fe50e8a72ea9b01c553f218da4cf"
     },
     {
       "path": "data/experiments/admission-latch-runtime-20261028.json",
@@ -116,6 +133,11 @@
       "path": "data/experiments/landing-corridor-20261028.json",
       "bytes": 42509,
       "sha256": "2ee421e230c74c8b1d093b5dbf0fd5d230c4b24338f0eb61caf093aaf84cc607"
+    },
+    {
+      "path": "data/experiments/window-cadence-20261028.json",
+      "bytes": 38571,
+      "sha256": "188f59d1a46e1f41d9cdaff207bb10500c4a6a71f4e321e57a5bb411e9e7560d"
     },
     {
       "path": "downloads/admission-report.txt",
@@ -158,9 +180,19 @@
       "sha256": "c194f63025239140b72707b58dd38f1534f5db14ca5e259ba4bc20338527678f"
     },
     {
+      "path": "downloads/checkpoints/2026-10-28_062131_467976+0900_npc-window-cadence.txt",
+      "bytes": 7409,
+      "sha256": "c6f6c6a9071acc39cbd94e44c22bf0ebe5d0311adb55c1e8cd82b45b5e56ba0a"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-28_062131_467976+0900_npc-window-cadence_evidence.txt",
+      "bytes": 20042,
+      "sha256": "d20c328205210017f4461a9290997e16e4f4ed15bb153e44832298f82b435392"
+    },
+    {
       "path": "README.md",
-      "bytes": 3691,
-      "sha256": "29b8a58297e2ea1ee48a2ca4a9eb7c30d7adc19caa342e09eb34b04a218b2a44"
+      "bytes": 4145,
+      "sha256": "57e60cacc60d146671cf324b2bbfe13507ff2fe313482d0043eba6c73d03586b"
     },
     {
       "path": "reports/accessibility-20261028.md",
@@ -188,9 +220,19 @@
       "sha256": "b8b6a3ea5169cb0d74be5110932e77622967f89a0846496289d9de935c0186ff"
     },
     {
-      "path": "reports/latest.md",
+      "path": "reports/history/pre-window-cadence-20261028-latest.md",
       "bytes": 7856,
       "sha256": "4d8a57809cf8eb691b92cc41936f1243da96a63f957e566f192de8657797b38d"
+    },
+    {
+      "path": "reports/history/pre-window-cadence-20261028-operations-latest.md",
+      "bytes": 7856,
+      "sha256": "4d8a57809cf8eb691b92cc41936f1243da96a63f957e566f192de8657797b38d"
+    },
+    {
+      "path": "reports/latest.md",
+      "bytes": 7756,
+      "sha256": "e3d37a1b0120285914f58ea84be5c49270efc07028340ff9c0c0263db1a9f0a1"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -199,8 +241,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 7856,
-      "sha256": "4d8a57809cf8eb691b92cc41936f1243da96a63f957e566f192de8657797b38d"
+      "bytes": 7756,
+      "sha256": "e3d37a1b0120285914f58ea84be5c49270efc07028340ff9c0c0263db1a9f0a1"
     }
   ]
 }

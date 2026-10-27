@@ -1,514 +1,325 @@
 # DayZ NPC AI — 외부 세션 검토 자료
 
-Snapshot: snapshot-20261027T210240-landing-corridor-20261028
+Snapshot: snapshot-20261027T212153-window-cadence-20261028
 
-착지 차단과 첫 걸음 분리: B8FB ON/OFF 및 컨테이너 정적 재생
+관측 환경 진단: 창 활성화와 259→20ms 미션 갱신 반응
 
-작성: 2026-10-28T06:02:06.263048+09:00
+작성: 2026-10-28T06:21:31.467976+09:00
 
 1. 작업 목표
 
-고지대 미도달 6·32번의 착지 지연을 군집 점유와 정적 지형/첫 걸음 검사로 구분한다. 같은 B8FB 수정본에서 재접근 플래그만 OFF한 64명 대조를 실행한다. 정상 낙하·복귀와 기존 이동 검사는 보존한다.
+추가 복귀 방향을 원래 관절·군집·벽 검사에 수동 질의하되 이동을 바꾸지 않는 별도 계측 미션을 준비한다. 실제 실행 도중 예상 밖의 낮은 갱신률이 발견돼 먼저 관측 환경의 영향을 분리했다.
 
 2. 실제 수행
 
-- 원래 ON 64명 runtime-20261028-053554와 같은 빌드·미션·그래픽·300초·8부품/개체·상세 계측을 유지하고 runtime-20261028-055226에서 admission reapproach만 OFF했다. 두 실행 정상 종료. OFF 화면의 군집 존재를 확인했으며 새 동영상은 없다.
-- ON 기록에서 6·32번의 HIGH_HOLD LANDING_SPACE_BLOCKED 첫/중간/마지막 표본 6개를 선택했다. 같은 컨테이너 엔진 씬에 군집 없이 LandingSpace·5개 위치 변형을 정적으로 재생했다.
-- 추가 세부 재생: 150개 바닥 레이 기록, 2위치×33방향×3몸통 높이=198개 3cm 구형 sweep. 8방향과 남쪽 기준 -60~60도 5도 간격을 비교했다. 새 이동 동작은 실행하지 않았다.
-- 첫 확장 미션은 함수 명령 수 초과로 컴파일 실패했다. 실패본·로그를 보존하고 공통 함수로 분리한 별도 compact 미션의 엔진 컴파일/실행을 통과했다. PBO는 변경하지 않았다.
+- B8FB PBO를 그대로 유지한 controlled-escape-shadow 미션을 만들었다. 장시간 막힌 FALL/LAND 개체 최대12명, 초당 최대1묶음으로 원래 LandingSpace/PressureEscapeStepClear를 추가 방향에 질의한다. 이동 명령은 만들지 않고 질의가 쓰는 진단 필드19개와 선택한 위치/상태/목표 불변식을 복원·확인하도록 구성했다. 엔진 컴파일 통과. 실측 발동 검증은 별개다.
+- 이 미션으로 8명/180초 runtime-20261028-061023을 실행·정상 종료했다. 약260ms의 일정한 미션 dt와 최종 도착 실패를 발견했다. 추가 질의는0회였다. 64명 확장은 보류했다.
+- 원래 미션을 8명/60초 runtime-20261028-061615로 실행했다. Sky의 최초 대상 캡처가 Codex 화면을 반환했고, DayZ activate_window 후에는 실제 게임을 반환했다. 활성화는 미션28.323~31.139초 사이였다. 두10초 LOW_HOLD 구간과 넓은20초 구간을 별도 비교했다. 두 실행 모두 정상 종료했다. 새 영상은 없다.
+- 증거가0개인데 관측 복원 성공을 true로 만들던 분석기의 빈 집계 표현을 null로 고쳤다. 초기 JSON을 보존하고 v2 JSON에 정정했다. 합성 자료로 정상/상태 변경/포즈 갱신 중/무관측/잘못된 행의5개 수용 검사를 통과했다. 게임 물리 회귀 검사는 아니다.
 
 3. 측정 결과
 
-|64명 같은 B8FB|ON 053554|OFF 055226|
-|---|---:|---:|
-|최종 도착|64/64|64/64|
-|HIGH_HOLD 미도달|2 (6·32)|5 (3·22·24·41·55)|
-|낙하 후 FOLLOW 복귀|76|86|
-|등반 종료 검증 실패|0|0|
-|출구 저널 계약 위반|0|0|
-|출구 DONE / EXPIRED / 다른 상태 인계|10 / 0 / 0|16 / 2 / 6|
-|미션 dt p50/p95/p99|30/72/95ms|28/57/79ms|
+수동 계측8명/180초: 최종 FOLLOW/ARRIVED 0/8, HIGH_HOLD 미도달4명(0·3·4·7), 낙하 후 복귀9회. 미션 dt p50/p95/p99 259/262/265ms, native motor 콜백 약3.926Hz. 기존 정상8명 결과와 크게 달라 이 실행을 기능·성능 수용에서 제외한다. 원시 수치는 삭제하지 않는다. 발동0회이므로 진단 상태 복원이나 추가 방향 유효성을 입증하지 못했다.
 
-OFF 물리 전이 977개가 같은 호출 계측과 연결됐다. EXPIRED는 bounded lease의 명시적 종료이며 계약 위반 0과 구분한다. 중간 목표 달성이나 물리적 정체 해소 자체를 입증하지 않는다. 전경 로그 비율 두 실행 100%. 조건당 1회이고 상세 계측·이동 결과가 다르므로 p95 차이 15ms를 순수 재접근 비용이나 최적화 효과로 보지 않는다.
+원래 미션60초 창 활성화 대조:
 
-정적 재생: 원위치 6/6 FOOT_X_SUPPORT 거부. 동쪽 발 6/6 정상 바닥. 서쪽 발 6/6은 컨테이너 옆면을 fraction=0에서 맞아 바닥 거부(normalY 약0.014~0.019, 높이차 약0.450m). 이 검사를 완화하지 않았다. 같은 원위치에서 0.3m 남쪽 변형은 4/6 CLEAR였지만 이는 순간 위치 변형 질의이며 실행 가능한 이동을 뜻하지 않는다.
+|구간|초|표본 수|p50/p95/p99 ms|IsAppActive=true|
+|---|---|---:|---|---:|
+|before-wide|5–25|81|259.0/263.0/270.0|81|
+|after-wide|35–55|999|20.0/33.0/35.0|999|
+|before-low-hold|15–25|41|259.0/263.0/263.0|41|
+|after-low-hold|33–43|500|20.0/34.0/35.0|500|
 
-몸통-only sweep: 32번 64.089초 위치는 기존 8방향에서 세 높이를 모두 통과하는 방향 0개, 추가 남쪽 기준 5·10·15·20·25·30·35도 7개였다. 6번 61.23초 위치는 추가 각도에서도 0개다. 후자는 모든 초기 접촉 hit를 막힌 것으로 집계한 결과이며 기존 비침투/초기접촉 이탈 허용을 포함한 전체 PressureEscapeStepClear 결과가 아니다.
+단회이며 미션 frame delta다. 표본은 프레임 수 기준이고 GPU Present/표시 애니메이션 평가율이 아니다. 60초는 HIGH_HOLD 중 종료하므로 최종 추적 성공 여부를 판정하지 않는다. 전체15초 이후 집계만 보면 p95 35ms여서 초기 저주기 구간을 제대로 드러내지 못한다. 벽시계 구간별 분리와 프레임 표본 수를 함께 보존했다.
 
 4. 원인 분석
 
-확인: 선정 착지 차단은 군집이 없어도 정적 컨테이너 옆면과 바닥 발 지지 검사로 재현된다. 현재 위치의 착지 조건 거부와 안전한 목표로 향하는 첫 물리 이동 거부는 별개다. 원시 escape 계획에서 남쪽 목표는 선택됐지만 첫 걸음이 NEW_WORLD_CONTACT로 거부됐다.
+확인: 새 수동 질의가 없는 원래 미션에서도 활성화 전 약259ms 갱신이 발생했다. 따라서 이 현상을 새 추가 방향 질의의 계산 비용으로 단정하는 해석은 지지되지 않는다. 창 활성화 뒤에는 약20ms 중앙값으로 돌아왔다. 활성화 전에도 IsAppActive가 true인 표본이 있어 이 필드 하나로 정상 창 표시/관측 조건을 보장할 수 없다.
 
-확인: 적어도 한 위치의 고정 8방향 몸통 검사에는 빈 방향이 없지만 더 세밀한 각도에는 있다. 목표의 LandingSpace 성공만으로 중간 경로가 통과한다고 볼 수 없다.
+추정: 창의 가림/표시·포커스 또는 OS/엔진 제한과 갱신 저하가 연결됐을 수 있다. 실제 OS 가림 상태, 해당 limiter 함수, GPU Present를 직접 계측하지 않았으므로 특정 제한기의 인과 원인을 확정하지 않는다. 캡처 도구의 다른 화면 반환도 독립적인 도구 한계가 있다. 단회 전후 비교이며 장면 진행/개체 위치 변화가 남는다. 같은 LOW_HOLD 구간 비교를 함께 제공했다.
 
-추정: 접촉 법선/목표 방향으로 제한된 추가 후보를 만들고 기존 전체 sweep·비침투·군집·발판 검사를 유지하면 일부 복귀 정체를 해소할 수 있다. 32번의 몸통 통과는 관절·군집·지면까지 가능한 경로가 아니므로 후보 설계의 근거로만 사용한다. 6번은 초기접촉 이탈과 실제 관절/몸통 sweep의 별도 재현이 더 필요하다.
-
-미입증: ON이 미도달 5→2를 인과적으로 줄였다는 해석, OFF의 낮은 p95가 기능 제거의 순수 비용이라는 해석은 단회 대조로 입증하지 못한다. 낙하를 제거하거나 벽 충돌을 무시하는 수정은 하지 않았다.
+미확인: 이 결과가 사용자가 정상 전경 플레이 중 보았던 감염자 애니메이션 끊김 전체를 설명하지는 않는다. CPU 포즈·표시 시간 불일치와 buffer 연속성은 계속 미해결이다. 기존64명 p95도 다른 실행이므로 이번 결과를 이유로 소급 폐기하거나 성공으로 재분류하지 않는다.
 
 5. 검증 수준
 
-- 진단 성공: 6개 정적 발 지지 거부 재현, 실패 발 레이 원인, 32번의 고정 방향 표본 누락.
-- 엔진 진단 통과: compact 미션의 30착지·150레이·198몸통 sweep 및 기존 바인딩 smoke. 실제 NPC 회귀 통과를 뜻하지 않는다.
-- 64명 OFF: 한 실행 최종 도착/등반 종료·저널 계약은 통과, 고지대 기준 미달. ON/OFF 반복 검증 미완료.
-- 게임 로직 수정·애니메이션 시각 개선·성능 수용: 미실행/미수용. 20ms p95 목표 미달. 원래 골은 진행 중이다.
+- 진단 성공: 원래 미션에서도 낮은 갱신 재현, 창 활성화 전후 반응, IsAppActive 단독 판정의 반례.
+- 수동 질의 코드: 엔진 컴파일 통과. 실제 발동/19필드 복원/추가 방향 통과는 미실행(0표본).
+- 8명 기능 회귀: 이번 저주기 실행은 수용하지 않음. 정상 표시 조건에서 재실행 필요.
+- 합성 분석기 검사5개: 증거 수용 규칙만 통과. 실제 NPC·물리 검증 아님.
+- 반복 환경 반응·64명 기능·시각 부드러움·성능 목표: 미수용. 20ms p95는 목표다.
 
 6. 변경 사항
 
-추가: stage_horde_landing_replay.py, stage_horde_escape_corridor_replay.py, checkpoint_horde_landing_corridor_20261028.py와 별도 validation 미션/파생 분석. compile_days_gone_native_runtime_probe.ps1에 지정된 landing 진단 미션 이름과 완료/실패 표식 검사만 추가했다. 공개 스테이징 도구는 다른 완료 묶음도 같은 B안 구조에 넣을 수 있도록 매개변수화했다.
+별도 미션 source7EA3030F572AAEE24C58C57C633A9F6BEB4C300554DAB437A0FA4C715E7D9D6D. 기존 원래 미션 source F8356C4F1E0286DCE7ED83F0137E68061249D48ABEB175942D44A8A048D704D3와 B8FB PBO 보존. PBO 재빌드/재서명 없음, 기존3개 서명 검증 성공. 운영 서버 변경 없음.
 
-게임 소스·정상 이동 파이프라인·PBO·기존 raw/report는 변경하지 않았다. B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185 유지. 기존 서명 검증 통과, 새 서명/재빌드 없음. 운영 서버 변경 없음.
+추가 escape_shadow.c, stage_horde_escape_shadow.py, analyze_horde_escape_shadow.py, test_horde_escape_shadow_analysis.py. 기존 launcher에 기본 OFF인 EscapeShadow 옵션과 별도 컴파일 경로를 추가했다. 기본 미션/플래그는 보존했다. 실제 실행에 사용한 init.c와 생산 도구 스냅샷을 별도 보존했다. 공개 스테이징은 진단 구간·미실행 항목을 구분하도록 확장했다.
 
 7. 원시 증거
 
-runtime-20261028-053554(ON), runtime-20261028-055226(OFF), 각 native-ground/state-contract/traversal-events/escape-plans 및 분석 JSON. 최초 정적 profile compile-8000a85c453942dba6421b9e81226c55, 실패 확장 compile-15d580d4c42a4a328e0566e573e1a19b, 성공 compact compile-6da3994c2a0049a48806d84d09c4608c. recorded-landing.tsv·recorded-floor-detail.tsv·recorded-core-corridor.tsv와 staged/engine-compile JSON을 보존했다. 아래 로컬 목록에서 경로·SHA-256을 검증한다. 공개 패킷은 선정 함수/결과/레이 표본만 제공하며 내부 경로와 프로세스 정보는 제외한다.
+runtime-20261028-061023/061615의 launch, native-ground, native-pose-cadence, controlled-active와 분석 JSON. 061615/window-activation-observation.json에 UI 전후 관찰과28.323~31.139초 범위를 기록했다. 실제 화면은 채팅의 Computer Use 출력에만 있고 디스크 영상/스크린샷 파일은 새로 저장하지 않았다.
+
+061023/escape-shadow-analysis.json의 빈 집계 true는 v2에서 null로 정정했으며 두 파일을 보존했다. 이번 window-cadence-analysis.json, 별도 staged/engine-compile, 생산 도구 스냅샷의 경로·SHA-256을 아래 로컬 목록에서 검증한다. 공개본은 선정 필드·코드 발췌만 제공한다.
 
 8. 잔여 문제
 
-1. 추가 방향은 접촉 법선 기반의 소수 후보로 제한하고 기존 8방향이 실패할 때만 평가하는 후보를 설계한다. 먼저 기록 입력에서 원래 초기접촉 처리/본 sweep까지 비교해야 한다. 통과 시 opt-in 기능 후보로 빌드·서명·회귀 검증한다. 단순 각도 전수 탐색을 매 틱 추가하지 않는다.
-2. 6번의 실제 world 시작 접촉과 법선·본 위치를 읽기 계측/기록 재생으로 좁힌다. 전체 경로가 물리적으로 없는 경우와 후보 방향 누락을 구분한다.
-3. ON/OFF 순서 교차 반복으로 군집 변동을 측정한다. 기능 기준 64/64 유효 종료와 중간 고지대 도달을 함께 유지한다.
-4. CPU/표시 시간 불일치와 buffer 연속성은 별도 진행한다. 이번 스크린샷·콜백·정적 재생으로 애니메이션 끊김을 해결했다고 보고하지 않는다. 성능 4조건 대조와 직접 계측 불가 범위도 별도 유지한다.
+1. 다음 실행은 창을 실제로 앞으로 가져오고 게임 장면을 확인한 뒤 관측 구간을 시작한다. IsAppActive만으로 관측 유효성을 승인하지 않는다. 높은 frame dt 자체를 임의로 버리는 규칙은 만들지 않는다. 표시가 정상인 상태에서 높은 비용이 남으면 실제 실패 수치로 보존한다.
+2. 정상 창 조건에서 수동 미션8명 재시험 후64명으로 발동 표본을 확보한다. 기존8방향과 접촉 접선/목표 방향 후보를 원래 전체 검사로 비교하고 실제 복원 확인 전 이동에 적용하지 않는다.
+3. 구간별 CPU/표시 시간 조인, buffer 교체 연속성, 직접 얻지 못한 native/GPU 범위는 별도 진단한다. 기존20ms 성능 목표와4조건 대조도 별도 유지한다.
 
-원본 보고서 ID: 2026-10-28_060206_263048+0900_npc-landing-corridor.md
-원본 SHA-256: c482a3e29f0e546c2ca35013094aa80278627c613eae350dacb9a31e4a68cd9f
+원본 보고서 ID: 2026-10-28_062131_467976+0900_npc-window-cadence.md
+원본 SHA-256: 4fa97d0c24cf69169aa2232013c5c4a40ef5c8ce049b83c041ec9bd5013721be
 이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
 
-===== 선정 원시 근거 (전체 원본 아님) =====
-ON/OFF 분석 JSON 선택 필드:
+===== 선정 근거 =====
 {
-  "on": {
-    "runId": "runtime-20261028-053554",
-    "count": 64,
-    "durationSeconds": 300,
-    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-    "terminalArrivals": 64,
-    "unresolvedTerminalAgents": [],
-    "missingHighFollow": [
-      6,
-      32
-    ],
-    "highHoldWindow": [
-      45.083,
-      104.927
-    ],
-    "fallsLandedAndResumed": 76,
-    "climbEndFailures": 0,
-    "physicalTransitionsMatched": true,
-    "physicalTransitions": 916,
-    "admissionOutcomes": {
-      "ARRIVED": 15,
-      "INTENT_CHANGED": 1
+  "controlRun": "runtime-20261028-061615",
+  "activationBounds": [
+    28.323,
+    31.139
+  ],
+  "windows": {
+    "before-wide": {
+      "seconds": [
+        5,
+        25
+      ],
+      "samples": 81,
+      "p50": 259.0,
+      "p95": 263.0,
+      "p99": 270.0,
+      "appActiveTrue": 81,
+      "unit": "ms",
+      "scope": "mission callback delta, not GPU/Present"
     },
-    "admissionViolations": [],
-    "egressOutcomes": {
-      "DONE": 10
+    "after-wide": {
+      "seconds": [
+        35,
+        55
+      ],
+      "samples": 999,
+      "p50": 20.0,
+      "p95": 33.0,
+      "p99": 35.0,
+      "appActiveTrue": 999,
+      "unit": "ms",
+      "scope": "mission callback delta, not GPU/Present"
     },
-    "egressViolations": [],
-    "foregroundMissionFrameMs": {
-      "samples": 8246,
-      "p50": 30.0,
-      "p95": 72.0,
-      "p99": 95.0
+    "before-low-hold": {
+      "seconds": [
+        15,
+        25
+      ],
+      "samples": 41,
+      "p50": 259.0,
+      "p95": 263.0,
+      "p99": 263.0,
+      "appActiveTrue": 41,
+      "unit": "ms",
+      "scope": "mission callback delta, not GPU/Present"
     },
-    "foregroundFraction": 1.0,
-    "motorCallbackHz": {
-      "minimum": 15.271427413128773,
-      "median": 15.271427413128773,
-      "maximum": 15.271427413128773
-    },
-    "visibleCallbackHz": {
-      "minimum": 15.271427413128773,
-      "median": 15.271427413128773,
-      "maximum": 15.271427413128773
-    },
-    "repetitions": 1
+    "after-low-hold": {
+      "seconds": [
+        33,
+        43
+      ],
+      "samples": 500,
+      "p50": 20.0,
+      "p95": 34.0,
+      "p99": 35.0,
+      "appActiveTrue": 500,
+      "unit": "ms",
+      "scope": "mission callback delta, not GPU/Present"
+    }
   },
-  "off": {
-    "runId": "runtime-20261028-055226",
-    "count": 64,
-    "durationSeconds": 300,
-    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-    "admissionEnabled": false,
-    "terminalArrivals": 64,
-    "missingHighFollow": [
-      3,
-      22,
-      24,
-      41,
-      55
-    ],
-    "highHoldWindow": [
-      45.002,
-      104.898
-    ],
-    "fallsLandedAndResumed": 86,
-    "climbEndFailures": 0,
-    "admissionOutcomes": {},
-    "admissionViolations": [],
-    "egressOutcomes": {
-      "DONE": 16,
-      "EXPIRED": 2,
-      "PHASE_HANDOFF:FOLLOW": 6
-    },
-    "egressViolations": [],
-    "foregroundMissionFrameMs": {
-      "samples": 9367,
-      "p50": 28.0,
-      "p95": 57.0,
-      "p99": 79.0
-    },
-    "foregroundFraction": 1.0,
-    "repetitions": 1
-  }
+  "passiveProbeRun": "runtime-20261028-061023",
+  "passiveProbeSamples": 0,
+  "stateRestorationObserved": false,
+  "measuredMotionImprovement": false,
+  "windowResponseRepeated": false,
+  "fullGoalComplete": false
 }
-정적 원위치 6개만 선택 (30개 중 offset0). 추가30cm 변형은 보고서 집계만 제공:
-[
-  {
-    "stamp": "51.644",
-    "id": "6",
-    "root": "<4511.480957, 339.398163, 10239.166016>",
-    "offset": "<0.000000, 0.000000, 0.000000>",
-    "near": "<4511.480957, 339.398163, 10239.166016>",
-    "floorValid": "true",
-    "floor": "<4511.480957, 339.178772, 10239.166016>",
-    "valid": "false",
-    "diagnostic": "FOOT_X_SUPPORT",
-    "support": "<4511.480957, 339.178772, 10239.166016>",
-    "fixture035": "false",
-    "fixture090": "false",
-    "fixture150": "false",
-    "world035": "false:none",
-    "world090": "true:StaticObj_Container_1C",
-    "world150": "false:none"
-  },
-  {
-    "stamp": "63.365",
-    "id": "6",
-    "root": "<4511.492676, 339.278229, 10236.863281>",
-    "offset": "<0.000000, 0.000000, 0.000000>",
-    "near": "<4511.492676, 339.278229, 10236.863281>",
-    "floorValid": "true",
-    "floor": "<4511.492676, 339.171997, 10236.863281>",
-    "valid": "false",
-    "diagnostic": "FOOT_X_SUPPORT",
-    "support": "<4511.492676, 339.171997, 10236.863281>",
-    "fixture035": "false",
-    "fixture090": "false",
-    "fixture150": "false",
-    "world035": "false:none",
-    "world090": "false:none",
-    "world150": "false:none"
-  },
-  {
-    "stamp": "75",
-    "id": "6",
-    "root": "<4511.494629, 339.278229, 10236.852539>",
-    "offset": "<0.000000, 0.000000, 0.000000>",
-    "near": "<4511.494629, 339.278229, 10236.852539>",
-    "floorValid": "true",
-    "floor": "<4511.494629, 339.171967, 10236.852539>",
-    "valid": "false",
-    "diagnostic": "FOOT_X_SUPPORT",
-    "support": "<4511.494629, 339.171967, 10236.852539>",
-    "fixture035": "false",
-    "fixture090": "false",
-    "fixture150": "false",
-    "world035": "false:none",
-    "world090": "false:none",
-    "world150": "false:none"
-  },
-  {
-    "stamp": "52.151",
-    "id": "32",
-    "root": "<4511.481934, 339.290375, 10238.037109>",
-    "offset": "<0.000000, 0.000000, 0.000000>",
-    "near": "<4511.481934, 339.290375, 10238.037109>",
-    "floorValid": "true",
-    "floor": "<4511.481934, 339.175751, 10238.037109>",
-    "valid": "false",
-    "diagnostic": "FOOT_X_SUPPORT",
-    "support": "<4511.481934, 339.175751, 10238.037109>",
-    "fixture035": "false",
-    "fixture090": "false",
-    "fixture150": "false",
-    "world035": "false:none",
-    "world090": "false:none",
-    "world150": "false:none"
-  },
-  {
-    "stamp": "55.845",
-    "id": "32",
-    "root": "<4511.482422, 339.275391, 10236.887695>",
-    "offset": "<0.000000, 0.000000, 0.000000>",
-    "near": "<4511.482422, 339.275391, 10236.887695>",
-    "floorValid": "true",
-    "floor": "<4511.482422, 339.171906, 10236.887695>",
-    "valid": "false",
-    "diagnostic": "FOOT_X_SUPPORT",
-    "support": "<4511.482422, 339.171906, 10236.887695>",
-    "fixture035": "false",
-    "fixture090": "false",
-    "fixture150": "false",
-    "world035": "false:none",
-    "world090": "true:StaticObj_Container_1C",
-    "world150": "false:none"
-  },
-  {
-    "stamp": "59.606",
-    "id": "32",
-    "root": "<4511.497070, 339.275391, 10236.858398>",
-    "offset": "<0.000000, 0.000000, 0.000000>",
-    "near": "<4511.497070, 339.275391, 10236.858398>",
-    "floorValid": "true",
-    "floor": "<4511.497070, 339.172058, 10236.858398>",
-    "valid": "false",
-    "diagnostic": "FOOT_X_SUPPORT",
-    "support": "<4511.497070, 339.172058, 10236.858398>",
-    "fixture035": "false",
-    "fixture090": "false",
-    "fixture150": "false",
-    "world035": "false:none",
-    "world090": "false:none",
-    "world150": "false:none"
-  }
-]
-서쪽 발6개만 선택 (150개 레이 중 원위치/probe2):
-[
-  {
-    "stamp": "51.644",
-    "id": "6",
-    "variant": "<0.000000, 0.000000, 0.000000>",
-    "probe": "2",
-    "near": "<4511.250977, 339.178772, 10239.166016>",
-    "rayHit": "true",
-    "hitType": "StaticObj_Container_1C",
-    "point": "<4511.250977, 339.628784, 10239.166016>",
-    "normal": "<0.999826, 0.018665, 0.000030>",
-    "fraction": "0",
-    "heightDifference": "0.450012",
-    "floorAccepted": "false"
-  },
-  {
-    "stamp": "63.365",
-    "id": "6",
-    "variant": "<0.000000, 0.000000, 0.000000>",
-    "probe": "2",
-    "near": "<4511.262695, 339.171997, 10236.863281>",
-    "rayHit": "true",
-    "hitType": "StaticObj_Container_1C",
-    "point": "<4511.262695, 339.622009, 10236.863281>",
-    "normal": "<0.938230, 0.016593, -0.345615>",
-    "fraction": "0",
-    "heightDifference": "0.450012",
-    "floorAccepted": "false"
-  },
-  {
-    "stamp": "75",
-    "id": "6",
-    "variant": "<0.000000, 0.000000, 0.000000>",
-    "probe": "2",
-    "near": "<4511.264648, 339.171967, 10236.852539>",
-    "rayHit": "true",
-    "hitType": "StaticObj_Container_1C",
-    "point": "<4511.264648, 339.621979, 10236.852539>",
-    "normal": "<0.823402, 0.013858, -0.567289>",
-    "fraction": "0",
-    "heightDifference": "0.450012",
-    "floorAccepted": "false"
-  },
-  {
-    "stamp": "52.151",
-    "id": "32",
-    "variant": "<0.000000, 0.000000, 0.000000>",
-    "probe": "2",
-    "near": "<4511.251953, 339.175751, 10238.037109>",
-    "rayHit": "true",
-    "hitType": "StaticObj_Container_1C",
-    "point": "<4511.251953, 339.625763, 10238.037109>",
-    "normal": "<0.999826, 0.018655, -0.000006>",
-    "fraction": "0",
-    "heightDifference": "0.450012",
-    "floorAccepted": "false"
-  },
-  {
-    "stamp": "55.845",
-    "id": "32",
-    "variant": "<0.000000, 0.000000, 0.000000>",
-    "probe": "2",
-    "near": "<4511.252441, 339.171906, 10236.887695>",
-    "rayHit": "true",
-    "hitType": "StaticObj_Container_1C",
-    "point": "<4511.252441, 339.621918, 10236.887695>",
-    "normal": "<0.999826, 0.018663, 0.000013>",
-    "fraction": "0",
-    "heightDifference": "0.450012",
-    "floorAccepted": "false"
-  },
-  {
-    "stamp": "59.606",
-    "id": "32",
-    "variant": "<0.000000, 0.000000, 0.000000>",
-    "probe": "2",
-    "near": "<4511.267090, 339.172058, 10236.858398>",
-    "rayHit": "true",
-    "hitType": "StaticObj_Container_1C",
-    "point": "<4511.267090, 339.622070, 10236.858398>",
-    "normal": "<0.906577, 0.015795, -0.421745>",
-    "fraction": "0",
-    "heightDifference": "0.450012",
-    "floorAccepted": "false"
-  }
-]
-몸통3높이 모두 unfiltered native sweep hit false인 방향만 선택 (198개 중 그룹 통과). 전체 이동 승인 아님:
-[
-  {
-    "id": "32",
-    "family": "south-angle",
-    "angle": 5.0
-  },
-  {
-    "id": "32",
-    "family": "south-angle",
-    "angle": 10.0
-  },
-  {
-    "id": "32",
-    "family": "south-angle",
-    "angle": 15.0
-  },
-  {
-    "id": "32",
-    "family": "south-angle",
-    "angle": 20.0
-  },
-  {
-    "id": "32",
-    "family": "south-angle",
-    "angle": 25.0
-  },
-  {
-    "id": "32",
-    "family": "south-angle",
-    "angle": 30.0
-  },
-  {
-    "id": "32",
-    "family": "south-angle",
-    "angle": 35.0
-  }
-]
 
-SOURCE DGBNativeTraversal.c; SHA256 71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872; LandingSpace 전체; lines 180-214
-180:     bool LandingSpace(vector nearPoint,out vector supported,bool requireEntitySpace=true)
-181:     {
-182:         LandingChecks++;LandingDiagnostic="ROOT_SUPPORT";
-183:         if(!DGBGroundAgent.Floor(Body.Leader,nearPoint,supported))return false;
-184:         vector left,right;
-185:         LandingDiagnostic="FOOT_X_SUPPORT";
-186:         if(!DGBGroundAgent.Floor(Body.Leader,supported+"0.23 0 0",left))return false;
-187:         if(!DGBGroundAgent.Floor(Body.Leader,supported+"-0.23 0 0",right))return false;
-188:         if(Math.AbsFloat(left[1] - right[1])>0.22)return false;
-189:         LandingDiagnostic="FOOT_Z_SUPPORT";
-190:         if(!DGBGroundAgent.Floor(Body.Leader,supported+"0 0 0.23",left))return false;
-191:         if(!DGBGroundAgent.Floor(Body.Leader,supported+"0 0 -0.23",right))return false;
-192:         if(Math.AbsFloat(left[1] - right[1])>0.22)return false;
-193:         if(requireEntitySpace && !Body.Agent.ManagedPeerContacts)
-194:             foreach(DGBGroundAgent peer:Body.Director.Agents)
-195:                 if(peer!=Body.Agent && peer.State!="DEAD" && Math.AbsFloat(peer.Position[1] - supported[1])<1 && DGBGroundAgent.FlatDistance(peer.Position,supported)<0.85)
-196:                 {LandingDiagnostic="PEER:"+Body.Director.Agents.Find(peer);return false;}
-197:         if(requireEntitySpace && Body.Director.CrowdDynamics)
-198:             foreach(Man physicalPlayer:Body.Director.PerceivedPlayers)
-199:                 if(physicalPlayer && physicalPlayer.IsAlive() && Math.AbsFloat(physicalPlayer.GetPosition()[1] - supported[1])<1.4 && DGBGroundAgent.FlatDistance(physicalPlayer.GetPosition(),supported)<0.7)
-200:                 {LandingDiagnostic="PLAYER";return false;}
-201:         array<float> heights={0.35,0.9,1.5};
-202:         foreach(float height:heights)
-203:         {
-204:             Object hit;vector point,normal;float fraction;
-205:             vector center=supported+Vector(0,height,0);
-206:             if(Fixture().Occupied(center,0.23)){LandingDiagnostic="FIXTURE_VOLUME";return false;}
-207:             if(DayZPhysics.SphereCastBullet(center,center+"0 0.001 0",0.23,DGBGroundAgent.Walls(),Body.Leader,hit,point,normal,fraction))
-208:             {LandingDiagnostic="WORLD";if(hit){ LandingDiagnostic="WORLD:"+hit.GetType(); }return false;}
-209:         }
-210:         LandingDiagnostic="CLEAR";
-211:         return true;
-212:     }
-213:     void Walk(vector goal,float arrival,bool platform,float dt,vector delta,bool available)
-214:     {
+수동 질의 클래스 원문 (다른 미션 코드 생략). SOURCE init.c; SHA256 51bc083967be0a1c9bbf7b003170b2cdc47e246ae5936b432ae8cad891f2257e; lines 4940-5091
+4940: class DGFullEscapeShadow
+4941: {
+4942:     static float NextAt;
+4943:     static int Samples;
+4944:     static ref array<int> Sampled={};
+4945:     static void Sample(DGBNativeGroundDirector director,float dt)
+4946:     {
+4947:         if(!director || !director.OpenTraversal || Samples>=12 || director.Now<NextAt)return;
+4948:         foreach(DGBNativeGroundBody body:director.Bodies)
+4949:         {
+4950:             if(!body || !body.Traversal || Sampled.Find(body.Id)>=0)continue;
+4951:             DGBNativeTraversal t=body.Traversal;
+4952:             if(t.Phase!="FALL" && t.Phase!="LAND")continue;
+4953:             if(director.Now-t.PhaseAt<2)continue;
+4954:             bool blocked=body.Reason=="LANDING_SPACE_BLOCKED" || body.Reason.IndexOf("NATIVE_JOINT_WORLD_")==0;
+4955:             if(!blocked)continue;
+4956:             NextAt=director.Now+1;Sampled.Insert(body.Id);Samples++;
+4957:             SampleBody(body,dt);return;
+4958:         }
+4959:     }
+4960:     static void SampleBody(DGBNativeGroundBody body,float dt)
+4961:     {
+4962:         DGBNativeTraversal t=body.Traversal;
+4963:         // The early OpenTraversal guard makes GroundReservationsClear read-only.
+4964:         // CoreClear and JointWorldPoint have no gameplay-state writes.
+4965:         int saved0=t.LandingChecks;
+4966:         string saved1=t.LandingDiagnostic;
+4967:         int saved2=t.NativeStartOverlapChecks;
+4968:         string saved3=t.PressureEscapeDiagnostic;
+4969:         int saved4=t.PressureEscapeRejectProbe;
+4970:         string saved5=t.PressureEscapeRejectFixture;
+4971:         vector saved6=t.PressureEscapeRejectFixturePosition;
+4972:         float saved7=t.PressureEscapeRejectOldLift;
+4973:         int saved8=t.PressureEscapeRejectFixtureIndex;
+4974:         float saved9=t.PressureEscapeRejectAt;
+4975:         float saved10=t.PressureEscapeRejectBefore;
+4976:         float saved11=t.PressureEscapeRejectAfter;
+4977:         float saved12=t.PressureEscapeRejectLift;
+4978:         float saved13=t.PressureEscapeRejectRadius;
+4979:         vector saved14=t.PressureEscapeRejectStart;
+4980:         vector saved15=t.PressureEscapeRejectEnd;
+4981:         vector saved16=t.PressureEscapeRejectIdleOffset;
+4982:         float saved17=t.PressureEscapeRejectFraction;
+4983:         vector saved18=t.PressureEscapeRejectNormal;
+4984:         vector root=body.Agent.Position;float heading=body.Agent.Heading;
+4985:         string phase=t.Phase;vector originalGoal=t.PressureEscapeGoal;
+4986:         bool originalValid=t.PressureEscapeValid;int request=body.NextRequest;
+4987:         int updates=body.Leader.AnimUpdates;
+4988:         ref array<vector> directions={"0 0 1","0 0 -1","1 0 0","-1 0 0","0.707107 0 0.707107","-0.707107 0 0.707107","0.707107 0 -0.707107","-0.707107 0 -0.707107"};
+4989:         ref array<string> families={"grid","grid","grid","grid","grid","grid","grid","grid"};
+4990:         vector normal=t.PressureEscapeRejectNormal;normal[1]=0;
+4991:         if(normal.Length()>0.5)
+4992:         {
+4993:             normal.Normalize();vector tangent=Vector(normal[2],0,-normal[0]);
+4994:             directions.Insert(tangent);families.Insert("contact_tangent");
+4995:             directions.Insert(-tangent);families.Insert("contact_tangent_reverse");
+4996:         }
+4997:         vector goalDirection=originalGoal-root;goalDirection[1]=0;
+4998:         if(goalDirection.Length()>0.01)
+4999:         {
+5000:             float yaw=Math.Atan2(goalDirection[0],goalDirection[2]);
+5001:             array<float> angles={-20,-10,0,10,20};
+5002:             foreach(float angle:angles)
+5003:             {
+5004:                 float a=yaw+angle*Math.DEG2RAD;
+5005:                 directions.Insert(Vector(Math.Sin(a),0,Math.Cos(a)));families.Insert("goal_offset_"+angle);
+5006:             }
+5007:         }
+5008:         FileHandle log=OpenFile("$profile:escape-full-shadow.tsv",FileMode.APPEND);
+5009:         FileHandle pose=OpenFile("$profile:escape-shadow-pose.tsv",FileMode.APPEND);
+5010:         if(log && pose)
+5011:         {
+5012:             for(int joint=0;joint<body.JointIds.Count();joint++)
+5013:                 FPrintln(pose,Samples.ToString()+"\t"+body.Id+"\t"+joint+"\t"+body.Radii[joint]+"\t"+body.JointWorldPoint(joint,root,heading,body.Lift));
+5014:             for(int i=0;i<directions.Count();i++)
+5015:             {
+5016:                 vector direction=directions[i];vector supported;bool targetValid=false;
+5017:                 string targetReason="NO_TARGET";
+5018:                 for(float distance=0.5;distance<=4;distance+=0.5)
+5019:                 {
+5020:                     vector target=root+direction*distance;
+5021:                     if(phase=="FALL")target=DGBTraversalFixture.Ground(target);
+5022:                     else
+5023:                     {
+5024:                         vector candidate;
+5025:                         if(!DGBGroundAgent.Floor(body.Leader,target,candidate)){targetReason="NO_FLOOR";continue;}
+5026:                         if(t.Fixture().Area(candidate)!=t.Fixture().Area(root)){targetReason="AREA_CHANGED";continue;}
+5027:                         if(Math.AbsFloat(candidate[1]-root[1])>0.08){targetReason="HEIGHT_CHANGED";continue;}
+5028:                         target=candidate;
+5029:                     }
+5030:                     targetValid=t.LandingSpace(target,supported);
+5031:                     targetReason=t.LandingDiagnostic;
+5032:                     if(targetValid)break;
+5033:                 }
+5034:                 vector proposed=root+direction*Math.Min(0.04,Math.Max(0,dt)*0.6);
+5035:                 float lift;ref array<vector> contacts={};
+5036:                 // Query the original complete gate even when the destination
+5037:                 // is invalid; columns distinguish destination from first step.
+5038:                 bool stepValid=t.PressureEscapeStepClear(proposed,lift,contacts);
+5039:                 string row=Samples.ToString()+"\t"+(body.Director.Now-body.Director.Born)+"\t"+body.Id+"\t"+phase;
+5040:                 row+="\t"+root+"\t"+heading+"\t"+i+"\t"+families[i]+"\t"+direction+"\t"+supported;
+5041:                 row+="\t"+targetValid+"\t"+targetReason+"\t"+proposed+"\t"+stepValid+"\t"+t.PressureEscapeDiagnostic;
+5042:                 row+="\t"+lift+"\t"+contacts.Count()+"\t"+t.PressureEscapeRejectProbe+"\t"+t.PressureEscapeRejectFixture;
+5043:                 row+="\t"+t.PressureEscapeRejectNormal+"\t"+updates+"\t"+body.Leader.AnimUpdates;
+5044:                 FPrintln(log,row);
+5045:             }
+5046:         }
+5047:         if(log)CloseFile(log);if(pose)CloseFile(pose);
+5048:         t.LandingChecks=saved0;
+5049:         t.LandingDiagnostic=saved1;
+5050:         t.NativeStartOverlapChecks=saved2;
+5051:         t.PressureEscapeDiagnostic=saved3;
+5052:         t.PressureEscapeRejectProbe=saved4;
+5053:         t.PressureEscapeRejectFixture=saved5;
+5054:         t.PressureEscapeRejectFixturePosition=saved6;
+5055:         t.PressureEscapeRejectOldLift=saved7;
+5056:         t.PressureEscapeRejectFixtureIndex=saved8;
+5057:         t.PressureEscapeRejectAt=saved9;
+5058:         t.PressureEscapeRejectBefore=saved10;
+5059:         t.PressureEscapeRejectAfter=saved11;
+5060:         t.PressureEscapeRejectLift=saved12;
+5061:         t.PressureEscapeRejectRadius=saved13;
+5062:         t.PressureEscapeRejectStart=saved14;
+5063:         t.PressureEscapeRejectEnd=saved15;
+5064:         t.PressureEscapeRejectIdleOffset=saved16;
+5065:         t.PressureEscapeRejectFraction=saved17;
+5066:         t.PressureEscapeRejectNormal=saved18;
+5067:         bool unchanged=body.Agent.Position==root && body.Agent.Heading==heading && t.Phase==phase && t.PressureEscapeGoal==originalGoal && t.PressureEscapeValid==originalValid && body.NextRequest==request;
+5068:         unchanged=unchanged && t.LandingChecks==saved0;
+5069:         unchanged=unchanged && t.LandingDiagnostic==saved1;
+5070:         unchanged=unchanged && t.NativeStartOverlapChecks==saved2;
+5071:         unchanged=unchanged && t.PressureEscapeDiagnostic==saved3;
+5072:         unchanged=unchanged && t.PressureEscapeRejectProbe==saved4;
+5073:         unchanged=unchanged && t.PressureEscapeRejectFixture==saved5;
+5074:         unchanged=unchanged && t.PressureEscapeRejectFixturePosition==saved6;
+5075:         unchanged=unchanged && t.PressureEscapeRejectOldLift==saved7;
+5076:         unchanged=unchanged && t.PressureEscapeRejectFixtureIndex==saved8;
+5077:         unchanged=unchanged && t.PressureEscapeRejectAt==saved9;
+5078:         unchanged=unchanged && t.PressureEscapeRejectBefore==saved10;
+5079:         unchanged=unchanged && t.PressureEscapeRejectAfter==saved11;
+5080:         unchanged=unchanged && t.PressureEscapeRejectLift==saved12;
+5081:         unchanged=unchanged && t.PressureEscapeRejectRadius==saved13;
+5082:         unchanged=unchanged && t.PressureEscapeRejectStart==saved14;
+5083:         unchanged=unchanged && t.PressureEscapeRejectEnd==saved15;
+5084:         unchanged=unchanged && t.PressureEscapeRejectIdleOffset==saved16;
+5085:         unchanged=unchanged && t.PressureEscapeRejectFraction==saved17;
+5086:         unchanged=unchanged && t.PressureEscapeRejectNormal==saved18;
+5087:         FileHandle audit=OpenFile("$profile:escape-shadow-audit.tsv",FileMode.APPEND);
+5088:         if(audit){FPrintln(audit,Samples.ToString()+"\t"+body.Id+"\t"+unchanged+"\t"+updates+"\t"+body.Leader.AnimUpdates);CloseFile(audit);}
+5089:         if(!unchanged)Print("DG_CONTROLLED_FAILED escape_shadow_state_changed");
+5090:     }
+5091: }
 
-SOURCE DGBNativeTraversal.c; SHA256 71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872; 계획 후보 및 실패 기록 일부; lines 880-927
-880:                 // one direction use exactly the same first physical step.
-881:                 if(blockedFirstSteps[directionIndex]){EscapeDuplicateDirectionsAvoided++;continue;}
-882:                 vector direction=directions[directionIndex];
-883:                 vector target=Body.Agent.Position+direction*distance;vector supported;
-884:                 if(Phase=="FALL")target=DGBTraversalFixture.Ground(target);
-885:                 else
-886:                 {
-887:                     vector candidateSupport;
-888:                     if(!DGBGroundAgent.Floor(Body.Leader,target,candidateSupport)){if(tracePlan)outcomes[directionIndex]="TARGET_NO_FLOOR\t"+target;continue;}
-889:                     if(Fixture().Area(candidateSupport)!=Fixture().Area(Body.Agent.Position)){if(tracePlan)outcomes[directionIndex]="TARGET_AREA_CHANGED\t"+target;continue;}
-890:                     if(Math.AbsFloat(candidateSupport[1] - Body.Agent.Position[1])>0.08){if(tracePlan)outcomes[directionIndex]="TARGET_HEIGHT_CHANGED\t"+target;continue;}
-891:                     target=candidateSupport;
-892:                 }
-893:                 if(!LandingSpace(target,supported)){if(tracePlan)outcomes[directionIndex]="TARGET_"+LandingDiagnostic+"\t"+target;continue;}
-894:                 float candidateLift;ref array<vector> points={};
-895:                 if(!PressureEscapeStepClear(Body.Agent.Position+direction*Math.Min(0.04,dt*0.6),candidateLift,points))
-896:                 {
-897:                     PressureEscapeLastStepReject=PressureEscapeDiagnostic;blockedFirstSteps[directionIndex]=true;
-898:                     if(tracePlan)outcomes[directionIndex]=EscapeDirectionFailure(supported);
-899:                     continue;
-900:                 }
-901:                 EscapeNoExitAt=-1;
-902:                 PressureEscapeGoal=supported;PressureEscapeValid=true;LandingDiagnostic=savedLanding;return true;
-903:             }
-904:         }
-905:         if(EscapeNoExitAt<0)EscapeNoExitAt=Now();
-906:         if(tracePlan)TraceEscapePlan(outcomes,dt);
-907:         LandingDiagnostic=savedLanding;PressureEscapeDiagnostic="NO_VALID_LOCAL_EXIT";return false;
-908:     }
-909:     string EscapeDirectionFailure(vector target)
-910:     {
-911:         // Fields are valid for this failed query only, not the previous probe.
-912:         string row=PressureEscapeDiagnostic+"\t"+target;
-913:         if(PressureEscapeDiagnostic!="DEEPER_FIXTURE" && PressureEscapeDiagnostic!="NEW_WORLD_CONTACT")
-914:             return row+"\t-1\t\t0 0 0\t-1\t0\t0\t-1\t0 0 0\t0 0 0\t0 0 0";
-915:         row+="\t"+PressureEscapeRejectProbe+"\t"+PressureEscapeRejectFixture+"\t"+PressureEscapeRejectFixturePosition+"\t"+PressureEscapeRejectFixtureIndex;
-916:         row+="\t"+PressureEscapeRejectBefore+"\t"+PressureEscapeRejectAfter;
-917:         row+="\t"+PressureEscapeRejectFraction+"\t"+PressureEscapeRejectNormal+"\t"+PressureEscapeRejectStart+"\t"+PressureEscapeRejectEnd;
-918:         return row;
-919:     }
-920:     void TraceEscapePlan(array<string> outcomes,float dt)
-921:     {
-922:         NextEscapePlanTrace=Now()+1;EscapePlanTraceBatches++;
-923:         FileHandle log=OpenFile("$profile:native-escape-plans.tsv",FileMode.APPEND);if(!log)return;
-924:         for(int direction=0;direction<outcomes.Count();direction++)
-925:         {
-926:             string detail=outcomes[direction];
-927:             if(detail.IndexOf("TARGET_")==0)detail+="\t-1\t\t0 0 0\t-1\t0\t0\t-1\t0 0 0\t0 0 0\t0 0 0";
+선정 JSON: 관측0개인 v2 분석 (전체 출력, 내부 경로 없음)
+{
+  "runId": "runtime-20261028-061023",
+  "missionSourcesSha256": "7EA3030F572AAEE24C58C57C633A9F6BEB4C300554DAB437A0FA4C715E7D9D6D",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "sampledActors": 0,
+  "observedShadowStateRestored": null,
+  "safetyViolations": [],
+  "stableSamples": 0,
+  "extraOnlyOpportunities": 0,
+  "observations": [],
+  "inputHashes": {
+    "launch.json": "e390f9b5a5c5e73dfbbac9428bd660f19c1c08b3486187131fccd2ccd89696d2"
+  },
+  "limits": [
+    "Post-update pose at queried mission dt, not same invocation as the original rejection.",
+    "Target-valid plus complete first step is not a fully swept connector or executed recovery.",
+    "Queries include original animated joints, current peers/player and world; no movement intent is applied.",
+    "Only named query-written diagnostic fields and selected gameplay invariants are checked; this is not a whole-process memory equivalence proof.",
+    "Probe overhead excludes this trial from performance/visual optimization acceptance."
+  ],
+  "movementFixImplemented": false,
+  "animationAccepted": false,
+  "performanceAccepted": false,
+  "fullGoalComplete": false
+}
 
-SOURCE DGBNativeTraversal.c; SHA256 71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872; Fall 착지 시도 일부; lines 1230-1251
-1230:     void Fall(float dt)
-1231:     {
-1232:         if(!Body.FrameFallPhysicsActive())
-1233:         {
-1234:             if(Recovering && Body.Request!=8)return;
-1235:             if(!Recovering && Body.Request!=6 && Body.Request!=8)return;
-1236:         }
-1237:         bool escaped=EscapeStep(dt);
-1238:         FallVelocity=Math.Max(-15,FallVelocity - 9.81*dt);
-1239:         vector next=Body.Agent.Position+Vector(0,FallVelocity*dt,0);
-1240:         if(PressureFallActive)next+=PressureFallVelocity*dt;
-1241:         Object hit;vector point,normal;float fraction;bool landed=false;
-1242:         if(DayZPhysics.RayCastBullet(Body.Agent.Position+"0 0.12 0",next+"0 -0.1 0",DGBGroundAgent.Floors(),Body.Leader,hit,point,normal,fraction))
-1243:         {
-1244:             if(normal[1]>=0.65 && point[1]<=Body.Agent.Position[1]+0.05 && point[1]>=next[1] - 0.1)
-1245:             {
-1246:                 vector support;if(LandingSpace(point,support,!Body.Agent.ManagedPeerContacts)){next=support;landed=true;}
-1247:                 else{if(!escaped){if(PressureFallActive){if(!PressureSlide(dt))AirEscapeTurn(dt);}else EscapeStep(dt);}Body.Reason="LANDING_SPACE_BLOCKED";return;}
-1248:             }
-1249:         }
-1250:         if(!Accept(next,dt)){if(!escaped){if(PressureFallActive){if(!PressureSlide(dt))AirEscapeTurn(dt);}else EscapeStep(dt);}Body.Reason="FALL_"+Body.Reason;return;}
-1251:         Body.Reason="NATIVE_FALL";
-
-입력 기록/함수 발췌만으로 본/물리 전체 연속성 또는 영상 부드러움을 판정하지 말 것. 실패 확장 코드는 function instruction cap으로 실행되지 않았다. 원본 해시와 선정 기준은 보고서에 있다.
+한 번의 활성화 반응이며 OS 가림/limiter 내부·영상 품질은 미확보다. 코드가 컴파일됐다는 이유로 수동 질의 발동이나 물리 개선을 주장하지 말 것.
 
 이전 애니메이션 진단: [선정 근거](downloads/animation-review.txt). 이번 기능 시험은 시각·성능 해결을 뜻하지 않는다.
