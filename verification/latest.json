@@ -1,8 +1,598 @@
 {
-  "schemaVersion": "1.0.0",
+  "observedAt": "2026-10-27T21:03:53.137532+00:00",
+  "origin": "https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/54027e288ff22db42061fa069191d463978213fa",
+  "passed": true,
   "snapshotId": "snapshot-20261027T210240-landing-corridor-20261028",
-  "status": "pending_external_HTTP_verification",
-  "previousVerifiedSnapshotId": "snapshot-20261027T204534-runtime-latch",
-  "externalAI": "unverified",
+  "generatedAt": "2026-10-27T21:02:40.934537+00:00",
+  "stale": false,
+  "defaultClientVerified": true,
+  "descriptiveClientVerified": true,
+  "jsonSchemaValidated": true,
+  "allPublishedBytesMatched": true,
+  "actualExternalAI": {
+    "status": "unverified",
+    "result": "ChatGPT web fetch Cache miss on fixed latest.md",
+    "causeProven": false
+  },
+  "records": [
+    {
+      "path": "manifest.json",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"607d80eb0aab2124baf36ec2c7d96d7962a1c79be96c388e6bd4bac5d07baa9c\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "3b7c38776ca75cd34358d2d227dcbd9d71192338f8f7a9ca9563b33c3e7c4ed8",
+      "bytes": 7635,
+      "authenticationSent": false
+    },
+    {
+      "path": "AI_REVIEW.md",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"0cbcf6b85c8fd5b78a9c4f761017051bff891ab8f0fa78a6ca7d6335c2234b49\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "777cc8ce155cd116586a8cdef53f0dfcd40151e939a1f84fc798f9d4064dbfc3",
+      "bytes": 24760,
+      "authenticationSent": false
+    },
+    {
+      "path": "api/public/experiments.json",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"12b062d185cc9d78ab5ed1a3f3b01401f8c44caa614a0a7fd9fe68370bed9a9f\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "d56fa2b8629f9b672d68885aa5bacff1875367d10c4ad012c42f17bb72ec8b8e",
+      "bytes": 64656,
+      "authenticationSent": false
+    },
+    {
+      "path": "api/public/metrics.json",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"87842e5e85116c7fa20e0dad57eb9378289bb8959ac6af3b8301505a536dea83\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "4948296a2b53bb8b4a405cf86eaaa2725c1bb96ad00b290622995fc81d4f7709",
+      "bytes": 64652,
+      "authenticationSent": false
+    },
+    {
+      "path": "api/public/schema.json",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"2f43cc6e4754935fe428f07060adba7e50abe646d3cf369c76bd187d9b2afda7\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "27023f145b6633be59752078e868e419983848782d05f16655f4506f448bdf1c",
+      "bytes": 6102,
+      "authenticationSent": false
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261027T204534-runtime-latch/experiments.json",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"94659f59f7ee30046847741f070130c6b19286a7aaed64eb36e98add9f4c8951\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "80ffe7a9e1a70f529470b90b7a0769c869cb8225c7577831460456ba815eaea3",
+      "bytes": 54748,
+      "authenticationSent": false
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261027T204534-runtime-latch/metrics.json",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"75ad9283ec1b3543069f15956c70b9776c4c87f07dbd478f9641f2facfff59e4\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "94e9cdf396a167e8070663796e0dd93b0b6cf958d60ba071e9affcd5e1960722",
+      "bytes": 54744,
+      "authenticationSent": false
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261027T204534-runtime-latch/status.json",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"aa267a14f41e81b63e3c459298fee5251c30aca20e9d324d6cbde6d1418f2674\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "f5b6c02e2f52a2740e4288e5e2d5659d6e66c6a190819e2df8fbc283f3def154",
+      "bytes": 54743,
+      "authenticationSent": false
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261027T210240-landing-corridor-20261028/experiments.json",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"12b062d185cc9d78ab5ed1a3f3b01401f8c44caa614a0a7fd9fe68370bed9a9f\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "d56fa2b8629f9b672d68885aa5bacff1875367d10c4ad012c42f17bb72ec8b8e",
+      "bytes": 64656,
+      "authenticationSent": false
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261027T210240-landing-corridor-20261028/metrics.json",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"87842e5e85116c7fa20e0dad57eb9378289bb8959ac6af3b8301505a536dea83\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "4948296a2b53bb8b4a405cf86eaaa2725c1bb96ad00b290622995fc81d4f7709",
+      "bytes": 64652,
+      "authenticationSent": false
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261027T210240-landing-corridor-20261028/status.json",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"ecf48427c7ef26a7786ed850bb8e0e334d3e9c1c2ccc7b75fba0ca964ff7a48d\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "505580719ac16d5ccee53212ec0ee22e3406c0e7904b1a723351a8c45556bbb0",
+      "bytes": 64651,
+      "authenticationSent": false
+    },
+    {
+      "path": "api/public/status.json",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"ecf48427c7ef26a7786ed850bb8e0e334d3e9c1c2ccc7b75fba0ca964ff7a48d\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "505580719ac16d5ccee53212ec0ee22e3406c0e7904b1a723351a8c45556bbb0",
+      "bytes": 64651,
+      "authenticationSent": false
+    },
+    {
+      "path": "api/public/update-status.json",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"0afc7586ef1b9e807fab62139bc7f1d4bceb571c17f93a2786a1480acd13879e\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "a6c55d33946b3b29c687891a9e0319bcaf0dcb2dd80ba060a2cd413ffbb25462",
+      "bytes": 717,
+      "authenticationSent": false
+    },
+    {
+      "path": "data/experiments/admission-latch-runtime-20261028.json",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"efacb57121be3ed09c3ad2eb1fd9dfb2eee0a609519e8434a5d83b21fee2e586\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "419468cbed5ea77485ef8a4fd9ecde5767345b2d5d849b25da00c40bbfb442aa",
+      "bytes": 63634,
+      "authenticationSent": false
+    },
+    {
+      "path": "data/experiments/admission.json",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"02ebf2293e951a656ba0cf662c33af08c5bdeffbe8355474978a434f73e88c70\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "1d63c1acf430c9c23678bc4e105978bc69f930eb516b6d3fd86ae87d587a79ed",
+      "bytes": 54729,
+      "authenticationSent": false
+    },
+    {
+      "path": "data/experiments/animation.json",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"3660c63b53c19cebb08c409ad36ede90cc866934e482002e5aa7bd17fb60be17\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "f0672b82be399206940d8be1b8d5af73e08bcc8fa0bbb5ea379c9b0632e93148",
+      "bytes": 41757,
+      "authenticationSent": false
+    },
+    {
+      "path": "data/experiments/landing-corridor-20261028.json",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"ff53f0c652aec6d635951b05fbc7df1c0dff127e2c4f11cd9be6cc93723a8b9d\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "2ee421e230c74c8b1d093b5dbf0fd5d230c4b24338f0eb61caf093aaf84cc607",
+      "bytes": 42509,
+      "authenticationSent": false
+    },
+    {
+      "path": "downloads/admission-report.txt",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"bc29c6eb529ec3e9c6378892a0e17d3642e11a9e17ce881710fcbdc3256288f3\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "54593126451adc36da423f349a4d57979d4f679dc9a50ae2f6176edfb7be1b7a",
+      "bytes": 6067,
+      "authenticationSent": false
+    },
+    {
+      "path": "downloads/admission-review.txt",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"334bb834ed88650ef6a7993aa793a2098be8e0d7cbe068c606564ff28c4d415d\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "17ca09c428bf0777463d915a2704cb3a2d6348668f3fae2a10c9dccf2b24cc25",
+      "bytes": 21992,
+      "authenticationSent": false
+    },
+    {
+      "path": "downloads/animation-report.txt",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"510232ffee2d87182afa433abaef0ac66ba6435b6c4dad688845745109a4ee0a\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "a7e33e39e1edd7415c21fc3ea9cace4f5f2ef0667839925623ea77e3219af499",
+      "bytes": 6170,
+      "authenticationSent": false
+    },
+    {
+      "path": "downloads/animation-review.txt",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"8e3be60866170932da8158b32162f76b6593da25eeba1d31367a7f2c7f2e28b5\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "fa80e5c184cc7e5a0ded585c82e9fbc1f1598d90f4f91ca0d6c4c960dd22a967",
+      "bytes": 16043,
+      "authenticationSent": false
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-28_054435_889391+0900_npc-admission-latch-runtime.txt",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"ab980524b48f22324c690abae6e7cf17d268b41ca8bd8fef97e987574547376c\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "dda0a4d086f245071a64c69d10d7b358f74388f8daa6d8eca96d68ee0f300ede",
+      "bytes": 6711,
+      "authenticationSent": false
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-28_054435_889391+0900_npc-admission-latch-runtime_evidence.txt",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"3a4e8b766e77290edbfb01a2948cd4495b75fc318dedcc4c24828aa3f6770e0a\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "9ed1965693276593950cbd332da62b924aa388fb4ef9d3493d5c5fe5603ccad2",
+      "bytes": 43195,
+      "authenticationSent": false
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-28_060206_263048+0900_npc-landing-corridor.txt",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"753443029379ad1c66eb30c1ff386262cbd8097a5fe46e0c9c142c6bdbd9e107\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "fba79cdd3ede25f3d3e29ed5d6553ade8db9a44f396afe5e86f5c171c7dae49c",
+      "bytes": 7521,
+      "authenticationSent": false
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-28_060206_263048+0900_npc-landing-corridor_evidence.txt",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"6a88cf96bd777123f0fbbb7841ad0db2c380ff0e59828fc1a9466b698bef5288\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "c194f63025239140b72707b58dd38f1534f5db14ca5e259ba4bc20338527678f",
+      "bytes": 24500,
+      "authenticationSent": false
+    },
+    {
+      "path": "README.md",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"af6c10f5c781b376462377262685068dbe8c2da788fce106a343dc7a18201a82\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "29b8a58297e2ea1ee48a2ca4a9eb7c30d7adc19caa342e09eb34b04a218b2a44",
+      "bytes": 3691,
+      "authenticationSent": false
+    },
+    {
+      "path": "reports/accessibility-20261028.md",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"818f9cd10a3e9ee0331b7f669d54b66bb6e00de2d7057121816e012e76f75277\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "7879f96329fbb2c0f4ee32a1c1b6ac49dd45ba0d1bfa218d93a7e31412a4dc4b",
+      "bytes": 8467,
+      "authenticationSent": false
+    },
+    {
+      "path": "reports/history/pre-landing-corridor-20261028-latest.md",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"1c93658729a788df7d37bad44889f1d803293ff669e052d4726fb851a4587b52\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "3d862c6395e44b0a5307f0ea05880cb89124b6f279e9dead1919094472de6203",
+      "bytes": 7039,
+      "authenticationSent": false
+    },
+    {
+      "path": "reports/history/pre-landing-corridor-20261028-operations-latest.md",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"1c93658729a788df7d37bad44889f1d803293ff669e052d4726fb851a4587b52\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "3d862c6395e44b0a5307f0ea05880cb89124b6f279e9dead1919094472de6203",
+      "bytes": 7039,
+      "authenticationSent": false
+    },
+    {
+      "path": "reports/history/pre-runtime-20261028-latest.md",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"d0582ca7b65964fe1a9a388b527371bbd01da93a915daf829b2322bb701619f6\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "bd223121e0c2e16d3b76374a67ab177dfe1069cb31cdbfe224bab20b36372284",
+      "bytes": 3789,
+      "authenticationSent": false
+    },
+    {
+      "path": "reports/history/pre-runtime-20261028-operations-latest.md",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"c4bc439ff89684b12ec741e1b6f41128ffc0aa29374e5767224894bedf6dd0bf\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "b8b6a3ea5169cb0d74be5110932e77622967f89a0846496289d9de935c0186ff",
+      "bytes": 5402,
+      "authenticationSent": false
+    },
+    {
+      "path": "reports/latest.md",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"597f6fef7e8738c684a877bf85ceba3ab6398e7424ec4cb8300fa5364969c8be\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "4d8a57809cf8eb691b92cc41936f1243da96a63f957e566f192de8657797b38d",
+      "bytes": 7856,
+      "authenticationSent": false
+    },
+    {
+      "path": "reports/mirror-publication-20261028.md",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"3410cb1475d0c9ed470022d01f0e95ea802c27e0bb602f834312eb60b96db397\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "4770ce619a372c31c481eb75d7d5ee2a941fdd6802fca0eb775b78736bc7b844",
+      "bytes": 6864,
+      "authenticationSent": false
+    },
+    {
+      "path": "reports/operations-latest.md",
+      "userAgent": "Python-urllib/3.11",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"597f6fef7e8738c684a877bf85ceba3ab6398e7424ec4cb8300fa5364969c8be\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "4d8a57809cf8eb691b92cc41936f1243da96a63f957e566f192de8657797b38d",
+      "bytes": 7856,
+      "authenticationSent": false
+    },
+    {
+      "path": "api/public/status.json",
+      "userAgent": "DayZNPC-PublicReader/1.0",
+      "status": 200,
+      "redirects": [],
+      "headers": {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "max-age=300",
+        "etag": "\"ecf48427c7ef26a7786ed850bb8e0e334d3e9c1c2ccc7b75fba0ca964ff7a48d\"",
+        "access-control-allow-origin": "*",
+        "x-content-type-options": "nosniff"
+      },
+      "sha256": "505580719ac16d5ccee53212ec0ee22e3406c0e7904b1a723351a8c45556bbb0",
+      "bytes": 64651,
+      "authenticationSent": false
+    }
+  ],
+  "schemaVersion": "1.0.0",
+  "sourceCommit": "54027e288ff22db42061fa069191d463978213fa",
+  "currentSnapshotVerified": true,
+  "mutableMainConsistency": "latest paths return previous snapshot bytes immediately after publication; fixed commit verified",
+  "mainLatestPaths": [
+    {
+      "path": "reports/operations-latest.md",
+      "status": 200,
+      "sha256": "3d862c6395e44b0a5307f0ea05880cb89124b6f279e9dead1919094472de6203",
+      "matchesStaged": false
+    },
+    {
+      "path": "api/public/status.json",
+      "status": 200,
+      "sha256": "f5b6c02e2f52a2740e4288e5e2d5659d6e66c6a190819e2df8fbc283f3def154",
+      "matchesStaged": false
+    }
+  ],
   "experimentFinalAccepted": false
 }
