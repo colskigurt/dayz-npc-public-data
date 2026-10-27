@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261027T224126-frame-order-20261028",
-  "generatedAt": "2026-10-27T22:41:26.132581+00:00",
-  "exportedAt": "2026-10-27T22:41:26.132581+00:00",
+  "snapshotId": "snapshot-20261027T231858-tickcount-origin-20261028",
+  "generatedAt": "2026-10-27T23:18:58.621644+00:00",
+  "exportedAt": "2026-10-27T23:18:58.621644+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -22,7 +22,10 @@
     "runtime-20261028-070414",
     "runtime-20261028-072238",
     "runtime-20261028-072554",
-    "runtime-20261028-073152"
+    "runtime-20261028-073152",
+    "runtime-20261028-074826",
+    "runtime-20261028-075329",
+    "runtime-20261028-075921"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -31,8 +34,8 @@
     "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-27T22:41:26.132581+00:00",
-    "staleAfter": "2026-10-28T22:41:26.132581+00:00",
+    "sourceUpdatedAt": "2026-10-27T23:18:58.621644+00:00",
+    "staleAfter": "2026-10-28T23:18:58.621644+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -49,18 +52,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 22444,
-      "sha256": "b7595fd5ad8d72a77b7949c60361e19fb1f3ddf31c5f45373cc9aa7d5da4f5c2"
+      "bytes": 34454,
+      "sha256": "c53b3e0d7ea34672128a6ca19e1e4f8d6d427433272a3686b11080a1370ebaf6"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 163419,
-      "sha256": "dddf6a724c31d8bcfdb1cedcf941a58625ef085d6072694c9a99609ec4fc3514"
+      "bytes": 184782,
+      "sha256": "7ec917ea4189b442d2fbe871b85b7907b3a0b9ba0d7e24ec11cc0dfeb31dff94"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 163415,
-      "sha256": "8df64dd975c6f8f8f276dde2939a5a7e8a3e9b93d8ea64b6a4c997aa4a76f8b7"
+      "bytes": 184778,
+      "sha256": "5026c636f84b0dce2a25b08a2e0877d32d0028f44c9e8fc5e97f2558e5d20029"
     },
     {
       "path": "api/public/schema.json",
@@ -158,14 +161,29 @@
       "sha256": "a5834aff06c5e413fbf5e37383f910398017474d2899b945028bf64f1cfb7dc2"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261027T231858-tickcount-origin-20261028/experiments.json",
+      "bytes": 184782,
+      "sha256": "7ec917ea4189b442d2fbe871b85b7907b3a0b9ba0d7e24ec11cc0dfeb31dff94"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261027T231858-tickcount-origin-20261028/metrics.json",
+      "bytes": 184778,
+      "sha256": "5026c636f84b0dce2a25b08a2e0877d32d0028f44c9e8fc5e97f2558e5d20029"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261027T231858-tickcount-origin-20261028/status.json",
+      "bytes": 184777,
+      "sha256": "3314a40c2e9c73cce3ccb5e1e89d939d5e6e570bc7ff77727d325abfe38c61b0"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 163414,
-      "sha256": "a5834aff06c5e413fbf5e37383f910398017474d2899b945028bf64f1cfb7dc2"
+      "bytes": 184777,
+      "sha256": "3314a40c2e9c73cce3ccb5e1e89d939d5e6e570bc7ff77727d325abfe38c61b0"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 707,
-      "sha256": "e23253f9bde7668c47af6444582dc3ef7116c6d7af2824a2788047e07323a9a0"
+      "bytes": 717,
+      "sha256": "83fe4e2d7704daf6249a5e64b024da15f76494b459e05b8dd37f6217cc3415f9"
     },
     {
       "path": "data/experiments/admission-latch-runtime-20261028.json",
@@ -201,6 +219,11 @@
       "path": "data/experiments/pose-buffer-continuity-20261028.json",
       "bytes": 208362,
       "sha256": "824a896f509690677451a846cbe4876d76dc7dc263dbc131a93fdc8020f4528f"
+    },
+    {
+      "path": "data/experiments/tickcount-origin-20261028.json",
+      "bytes": 57423,
+      "sha256": "857db9eb49892fe8dd6612aed8f9c51a328ced383bb2f216d4f49e320abf8ff4"
     },
     {
       "path": "data/experiments/window-cadence-20261028.json",
@@ -288,9 +311,19 @@
       "sha256": "028635d0959ff343e6d8eae550223a567b3e6dd3b73ff49d262e49d6394b53f7"
     },
     {
+      "path": "downloads/checkpoints/2026-10-28_081756_702387+0900_npc-tickcount-origin.txt",
+      "bytes": 8175,
+      "sha256": "eef9c7b1b42e7416552befa8ce13a28b623190d988507461d6d51aa0edb1ea80"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-28_081756_702387+0900_npc-tickcount-origin_evidence.txt",
+      "bytes": 34201,
+      "sha256": "8d2877b41a52a0a6a61fcef7fe8011900a6b94defda5299768931fa0fb50c60a"
+    },
+    {
       "path": "README.md",
-      "bytes": 5365,
-      "sha256": "3fb641e08ef26e36dba9cda7181caaf4aa52ee5d8571f551be93cd8bb50d2a61"
+      "bytes": 5827,
+      "sha256": "39aaf85d302bd4b88f1f9a50a059e9dd8fd351ac107baf20955fae8651a620d5"
     },
     {
       "path": "reports/accessibility-20261028.md",
@@ -348,6 +381,16 @@
       "sha256": "b8b6a3ea5169cb0d74be5110932e77622967f89a0846496289d9de935c0186ff"
     },
     {
+      "path": "reports/history/pre-tickcount-origin-20261028-latest.md",
+      "bytes": 9868,
+      "sha256": "daaac232fdd2c0b78aa253b603ff1898af932e5d460d1d882ff2f89890e8908c"
+    },
+    {
+      "path": "reports/history/pre-tickcount-origin-20261028-operations-latest.md",
+      "bytes": 9868,
+      "sha256": "daaac232fdd2c0b78aa253b603ff1898af932e5d460d1d882ff2f89890e8908c"
+    },
+    {
       "path": "reports/history/pre-window-cadence-20261028-latest.md",
       "bytes": 7856,
       "sha256": "4d8a57809cf8eb691b92cc41936f1243da96a63f957e566f192de8657797b38d"
@@ -359,8 +402,8 @@
     },
     {
       "path": "reports/latest.md",
-      "bytes": 9868,
-      "sha256": "daaac232fdd2c0b78aa253b603ff1898af932e5d460d1d882ff2f89890e8908c"
+      "bytes": 8534,
+      "sha256": "af377cb5b01aa08e50dd9aae96b3ef4773899600c4d12edbb515e49edcbf3a8e"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -369,8 +412,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 9868,
-      "sha256": "daaac232fdd2c0b78aa253b603ff1898af932e5d460d1d882ff2f89890e8908c"
+      "bytes": 8534,
+      "sha256": "af377cb5b01aa08e50dd9aae96b3ef4773899600c4d12edbb515e49edcbf3a8e"
     }
   ]
 }

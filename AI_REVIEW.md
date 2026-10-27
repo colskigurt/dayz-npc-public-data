@@ -1,115 +1,99 @@
 # DayZ NPC AI — 외부 세션 검토 자료
 
-Snapshot: snapshot-20261027T224126-frame-order-20261028
+Snapshot: snapshot-20261027T231858-tickcount-origin-20261028
 
-네이티브 갱신 시각·시계 원점 교정 pilot와 분석기 경계 수정
+애니메이션 갱신 경계와 실제 화면 연결 — 엔진 시계 원점2회 검증
 
-작성: 2026-10-28T07:40:47.287797+09:00
+작성: 2026-10-28T08:17:56.702387+09:00
 
 1. 작업 목표
 
-CPU 포즈·실제 표시의 시간적 불일치 조사에서 네이티브 호출과 HUD/본 조회의 실행 순서를 같은 시계로 연결한다. 기존 파이프라인과 정상 낙하/복구는 보존하고 시각·기능·성능 수용을 분리한다. 원인 특정 전 새 보간이나 강제 갱신 정책은 적용하지 않는다.
+네이티브 갱신과 CPU 포즈·실제 영상 사이의 시계 원점 불확실성을 줄여 애니메이션 끊김의 기여 경로를 조사한다. 정상 낙하·복구와 기존 NPC 파이프라인은 유지한다. 기능·시각 품질·성능 수용을 분리한다.
 
 2. 실제 수행
 
-- 기존 고정 달리기 미션에서 별도 frame-order 미션을 만들고 HUD/6본 조회 앞뒤에 TickCount(0) 읽기2개만 추가했다. 기본 미션/PBO를 바꾸지 않고 B8FB 대상으로 격리 compile pass를 확인했다.
-- 기존 Python Frida 단일 helper 진입 훅에 QPC 읽기만 추가했다. 원본 바이트·두 반환PC·receiver/renderer/73본 조건·saved input dt ABI를 검증했다. 반환/내부 훅이나 native 인자/반환값·게임 상태 override는 없다. REA MCP 직접 Evidence가 아니며 read-only 프로세스 접근만 한 시험도 아니다.
-- 작은 샘플에서 per-thread QPC scratch와 정상 계산24,000호출을 확인했다. 첫 샘플은 과거 non-export 빌드 참조로 실패했다. 다음 실행은 종료 후 metadata 경로 오류로 원시 메시지를 보존하지 못했고 성공으로 재구성하지 않았다. 수정한 세 번째 샘플의 저장된 결과만 수용했다.
-- 동일1개체/8part, AI·이동 OFF, 달리기, 동일 그래픽/VSync로120초3회를 정상 종료했다. 각45초 창 한정 lossless 영상도 finalize했다. 첫 대기 스크립트는 헤더 숫자 변환에 실패해 고친 뒤 실행 후반에 attach했다. 이 준비 실패와 source 한계를 보존했다.
-- 초기 분석기의 TickCount/QPC 원점 동일 가정은 검증되지 않았음을 확인해 해당 결과를 rejected sidecar와 함께 보존하고 도구를 사용 중지했다. 기존 앞선 clock bridge도 nativeTickMatchesSharedQpc=false였다. 같은 속도로 증가하는 시계는 같은 원점을 보장하지 않는다.
-- 세 번째 실행은 외부 파일 nonce/ack만으로75초 동안 두 시계 차이를 교정했다. 해당 수집기는 대상 프로세스 메모리를 읽거나 쓰지 않는다. 모호한 시간 연결은 수용하지 않았다.
+고정 실행파일의 TickCount 문자열 등록, wrapper, QPC leaf와 PE import를 제한된 Capstone 디코드·해시·바이트 검사로 연결했다. REA MCP나 Ghidra 분석 성공으로 보고하지 않는다. TickCount(0)는 초기화된 정상 QPC 경로에서 QPC와 엔진 원점 qword의 차이의 signed low32다. 다른 인자의 일반 의미로 확대하지 않는다.
+
+기존 단일 helper 진입 관측에 원점·주파수 읽기와 실제 QPC import/export 일치 검사를 추가했다. 실제 실행 JS와 driver를 각 실행에 보관했다. native 인자/반환값·원본 상태 override와 내부/반환 hook은 없다. 프로세스 hook을 사용한 관측이며 순수 외부 파일 읽기만 한 실험은 아니다. 별도 nonce/ACK 수집기는 프로세스 메모리를 읽지 않는다.
+
+동일1개체/8 render part·AI/이동 OFF·고정 달리기·VSync ON·120초3실행과45초 녹화를 정상 종료했다. 첫 실행의 파일 시계 watcher는 Seconds 변수 충돌로 실패했고 뒤늦은 수집도0 ACK/4 timeout이었다. 첫 실행은 독립 시계 확인과 native/CPU/영상 연결에서 제외했다. 첫 실행의 약52ms native 호출 간격은 뒤의 실행과 다르므로 같은 비교 반복에 넣지 않는다. 실패 watcher 원본 snapshot은 없으며 console 기록만 남았다.
+
+뒤2회는 각각10초 독립 파일 교정과 실제 engine origin 읽기를 교차 검사했다. 영상21~24초/24~27초의 HUD ID를 저장된 본 조회와 연결했다. 원점 정수의 정확한 일치는 GPU/Present나 전체 관측 오차0을 뜻하지 않는다. 실제 창 활성화 시점은 전 구간에서 동일하게 확립되지 않았으며 녹화는 가려진 창도 담을 수 있다.
 
 3. 측정 결과
 
-|실행 ID|실제 호출/연속쌍|정확 모델 잔차ms|reset|입력 합계ms|초과분 소실ms|frame p50/p95/p99 ms|
-|---|---|---:|---:|---:|---:|---|
-|runtime-20261028-072238|399/398|0.0|101|7960.000|2952.000|20.0684/35.3299/37.2362|
-|runtime-20261028-072554|400/399|0.0|101|7965.000|2909.000|20.0658/35.2539/37.1499|
-|runtime-20261028-073152|400/399|0.0|104|7968.000|2722.000|20.0919/35.0849/36.7441|
+|실행 ID|native 호출/인접쌍|CPU 연결쌍|영상 삼자 연결|HUD dt p50/p95/p99 ms|
+|---|---|---:|---:|---|
+|runtime-20261028-074826|154/153|0|0|20.094/34.643625/36.39955|
+|runtime-20261028-075329|401/400|400|296|20.037/35.22346/37.11252|
+|runtime-20261028-075921|399/398|398|294|19.9695/34.515485/36.332647|
 
-총1,199개 실제 진입,1,196개 인접 호출쌍. 첫2회는 같은 네이티브 계측 조건 반복이며 세 번째는 추가 파일 왕복을 포함한 pilot이다. 세 실행 모두 정확 float32 누적기 모델과 전이 잔차0으로 일치했다. 표의 초과분은 해당 누적기에서 보존되지 않은 시간이며 전체 클립/그래프 또는 모든 끊김의 손실 확정이 아니다. 비율1이상 표본은 없었다.
+뒤2회만 합산하면 native 원점 읽기800개, 연속 native/CPU 연결798쌍, native/CPU/실제 영상 연결590쌍, 정확 영상 HUD720/720프레임이다. 독립 파일 교정 ACK는241/245개, timeout0이며 구간 폭8.1986/7.8583ms 안에 같은 실행의 직접 읽은 원점이 포함됐다. 직접 원점 읽기 bracket 중앙값0.0166/0.0163ms는 읽기 구간이며 전체 observer 비용이 아니다.
 
-세 번째1,846 ACK/timeout0으로 측정한 시계 차이 구간 폭은7.5055ms였고0은 포함되지 않았다.400호출 중205개는 HUD 종료 뒤/다음 HUD 시작 전임이 구간 전체에서 확실했고195개는 시간 경계가 모호해 제외했다. 연속·고유·좋은 FK fit 조건은10쌍으로 최소30쌍 기준 미달이다. 그10쌍의 phase proxy 잔차 RMS1.461ms는 참고 관측이고 충분한 실행순서 수용/상관 인과 증거가 아니다.
+25ms 이상 입력만 구분한 기술적 집계에서 reset 표본73/71쌍의 입력 중앙값은 각각34ms였지만 모델 포즈 진행량은4/3ms,6본 source-FK proxy는 모두4.1667ms였다. 비reset75/74쌍에서는 입력34ms, 모델34ms, proxy37.5/33.3333ms였다. 영상 실루엣 변화 중앙값은 reset797/656px, 비reset3797/3835px였다. 픽셀 변화는 자세 곡률·투영·임계값 영향을 받으며 주관적 품질 점수가 아니다.
 
-세 번째20~23초/25~28초 영상360프레임 모두 HUD 행과 정확히 연결됐다. 별도298 CPU·실루엣 연속쌍의 같은 프레임 상관0.936323. 교정 native·pose·영상3자 중첩은8쌍뿐이며 미수용이다. 첫2회 native/HUD 직접 연결도 교정 부재로 미수용이다. CPU/영상 자체의 연결과 네이티브 호출의 직접 연결은 구분한다.
+native 모델과 실제 픽셀 변화 상관0.94879/0.95140, CPU 포즈와 픽셀 변화 상관0.94864/0.95107. native-6본 proxy 잔차 RMS2.7625/3.1053ms. 직접 graph/clip phase 측정은 아니다. 첫 실행을 포함한3회의 float32 누적기 전이 잔차는0이다. 첫 실행은0→0 reset153개여서 단순 감소 횟수0과 구별해야 한다.
 
-8/64명 기능 회귀·64 비용 귀속은 이번에 미실행이다. 표의 frame dt는15초 이후 전경 HUD callback 시작 간격이며1개체 계측·녹화를 포함한다. GPU/Present나 native 애니메이션 FPS가 아니고20ms p95 또는 성능 개선을 달성한 결과가 아니다.
+8/64 기능 회귀와64 비용 실험은 이번 미실행이다. 표는1개체 관측·녹화 환경의 HUD 간격이며 native animation FPS나 GPU frame time이 아니다. 최대80.6366ms도 필터링하지 않았다.20ms p95 달성이나 성능 개선으로 판정하지 않는다.
 
 4. 원인 분석
 
-확인: 실제 입력 pDt와 누적기 초기화는 원본 ADDSS·COMISS/JB 조건의 float32 모델과 일치한다. 초과분을 버리는 경계를 재확인했지만 그래프 전체 보상/개별 clip phase는 직접 읽지 않았다.
+확인: 정확 float32 누적기 reset 경계에서 긴 입력에 비해 작은 CPU 포즈 진행량이 나타나며 같은 프레임의 실제 영상 변화도 작다. 기존 시계 원점 가정의 불확실성을 뒤2회에서 직접 원점 읽기·독립 교정으로 해소했다. 이전에 연결 표본이10쌍뿐이던 결과는 그대로 보존하며 소급 수정하지 않는다.
 
-분석기 결함 수정: 기존 '-1e-7' 비교 오차 허용은0.03999999910593033+0.009999999776482582가 float32로0.04999999701976776이 된 경우에도 잘못 reset으로 판정했다. 실제 임계값0.05000000074505806보다 작은 값이므로 엔진은 유지하는 것이 맞다. 기계어에 없는 epsilon을 제거한 모델은 세 번째399/399쌍을 정확히 설명했다. 처음의50ms 잔차는 새 엔진 문제로 보고하지 않는다. 기존 결과는 보존하고 수정본을 별도 저장했다.
+추정: 해당 reset 경로가 보이는 시간적 불균등에 기여한다는 관측 근거가 강해졌다. 아직 반사실적 단일요인 개입이 없으므로 단독 원인·모든14동작의 원인·GPU 표시 단계 확정으로 확대하지 않는다. 이전 평균-rate 보정 후보가 부드러움을 해결하지 못했다는 결과도 유지한다.
 
-반증/기각: 원점0을 가정한 프레임 연결 결과는 사용하지 않는다. 그 결과의 다중 호출 bucket·실행순서·포즈 잔차를 실제 엔진 현상으로 해석하지 않는다. 앞선480개 endpoint 연속성 결과는 이 가정을 사용하지 않아 그대로 보존한다.
-
-추정: native50ms 갱신과 실제 벽시계 간격의 차이가 시각적 불균등에 기여할 수 있으나, 이번 교정 정확도는 단독 원인/실행 순서를 충분히 판정하기에 부족하다. 이전 평균-rate 후보가 부드러움을 해결하지 못했다는 기록도 유지한다. 부족한 표본을 이유로 합격선을 낮추거나 업데이트 정책을 변경하지 않는다.
+분석기 수정:0→0 경계를 감소 횟수만으로 세면 누적기 소비량을0으로 오판했다. 모델 threshold crossing으로 계산하도록 수정했고 빈 cycle 통계는 null로 보존했다. 기존 잘못된 분석은 덮어쓰지 않고 v3와 correction sidecar로 교체 범위를 명시했다.11개 오프라인 회귀는 통과했지만 게임 기능 회귀가 아니다.
 
 5. 검증 수준
 
-진단 성공: 단일 진입1,199호출 포착, byte/ABI guard·무오류/누락0·정상 종료, 서로 다른 시계 원점의 실제 교정.
-반복 검증 완료: 첫2회 같은 네이티브 조건의 누적기 전이; 추가 pilot 포함3회 정확 float32 모델 잔차0.
-회귀 통과: 오프라인 시계 원점/low32 wrap/잘못된 ACK/충돌 구간/실제 float32 경계7검사. 게임 기능 회귀를 뜻하지 않는다.
-미수용/미실행: native-HUD/영상 직접 연결 표본 충분성, 지각적 부드러움, 개별 clip phase/GPU/Present,8/64 새 회귀·할당/GC·64 비용 귀속.20ms p95는 목표다.
-최종 수용 미완료. 골은 active로 유지한다.
+진단 성공: 고정 실행파일 clock binding·runtime import/원점 guard와 세 실행의 저장된 관측.
+반복 검증 완료: 뒤2회의 native/CPU/실제 영상 시간 연결 및 reset 경계의 작은 몸 진행량 관측.
+회귀 통과:11개 오프라인 시계·float32·0→0 ledger 검사.
+미실행/미수용: 원인 제거 후보, 모든 애니메이션의 지각적 품질,8/64 새 기능 회귀,64 비용 귀속·할당/GC, GPU/Present. 최종 수용 미완료다.
 
 6. 변경 사항
 
-별도 frame-order 미션과 launcher, entry-QPC 관측, nonce/ack clock 수집기, calibrated analyzer,7개 회귀 검사를 추가했다. 기존 sample probe는 명시적 frameOrder launch일 때만 그 별도 미션을 허용하도록 범위를 확장했다. 컴파일 helper는 그 격리 이름만 추가했다. 기본 경로/동작은 유지했다.
+관측·분석 도구만 수정했다. TickCount binding 검사, guarded origin 단일 entry 관측, watcher 변수 충돌/부족 ACK 거부, 정확 native/CPU/영상 join과0→0 ledger 회귀를 추가했다. 각 실행의 archived source가 실제 실행 범위를 결정하며 이후 추가한 preflight를 과거 실행에 소급하지 않는다.
 
-기존 analyze_horde_frame_order.py는 잘못된 원점 가정을 가진 버전을 보관하고 사용 중지 오류를 내도록 했다. 분석 driver의 archived JS는 과거 LF 실행 text와 CRLF 파일을 구분해 해시 검증하고 미래 archive는LF로 저장한다. 실제 실행 snapshot은 수정하지 않았다.
-
-PBO/그래프/모델/AI 코드 재빌드·재서명 없음. B8FB integration/453D base/0C6E assets 유지, 실행마다 기존3개PBO 서명 검증 성공. 운영 서버 미변경. 원시 로그/영상/기존 보고서 미덮어쓰기.
+B8FB integration/453D base/0C6E assets 유지. PBO·그래프·모델·AI 동작 변경과 재서명은 없고 실행마다 기존3 PBO 서명 검증 성공을 유지했다. 운영 서버·기존 보고서·원시 로그/영상은 변경하지 않았다.
 
 7. 원시 증거
 
-runtime-20261028-072238/072554/073152의 launch, engine compile, mission source, observer driver/실행 JS/configuration/status/calls, HUD/pose TSV, clock bridge, 녹화/실제 창 확인과 분석 JSON을 보존했다. 잘못된 초기 연결은 rejected sidecar, 잘못된 epsilon 모델은 model-correction sidecar로 범위를 명시했다.
-
-QPC 보조 샘플 metadata 실패 실행의 원시 메시지는 저장되지 않았다. 이를 복구/검증한 것처럼 주장하지 않는다. 이후 저장된 exported fixture 결과는 별개다. 전체 파일 SHA·크기·저장 전 두 번 검사 결과는 아래 로컬 목록에 있다. 공개판은 요약·일부 값·해시만 제공하고 내부 경로·프로세스 정보·원본 자산/영상·전체 메모리/로그를 노출하지 않는다.
+실행074826/075329/075921의 mission/launch, 실제 observer JS·driver/config/status/calls, HUD/본/시계 기록, finalize된 영상, 영상 ID·CPU 연결 JSON과 static binding/import 검사를 보존했다. 아래 목록은 저장 전2회 해시·메타데이터 안정성 검사 대상이다. 원본영상·로컬경로·프로세스 정보·원점 정수는 공개하지 않는다. 공개 검토 패킷은 집계와 처음8개 연결행만 발췌하며 전체 trace가 아니다.
 
 8. 잔여 문제
 
-다음은 TickCount native 구현/원점 저장 위치를 고정 실행파일에서 확인해, 가능한 경우 비변경 읽기 근거로 두 시계의 정확한 관계를 확보하는 것이다. 또는 기존 nonce/ack 교정의 불확실성을 실제로 줄일 수 있는 방법을 검토한다. 같은75초 수집을 근거 없이 반복하거나10쌍으로 수용하지 않는다.
+다음은 지원되는 graph/시뮬레이션 시간 제어가 실제로 어디에 적용되는지 확인하고, 필요하면 원본 상태를 바꾸지 않는 격리 단일요인 반사실적 실험을 설계한다. 표시 ratio가 계산되는 위치·인자 수명·원본 비변경을 먼저 확인하며 임의 보간·tick 강제 갱신을 제품에 적용하지 않는다. 후보 비교는 같은 조건의 순서 교차 반복과 영상·CPU 잔차를 함께 평가한다.
 
-지원되는 VSync/시간 정책 대조가 어느 수준까지 이미 반복됐는지도 확인해, 원인 후보를 바꾸기 전에 재현 가능한 비교 조건을 정한다. 원인 특정 전 보간·강제 업데이트를 적용하지 않는다.64 기능 계약과 비용 실험은 별도 상태로 유지하고 기존 고지대13/14/43 미도달·EGRESS_STALL1·최종64/64를 이번 단일 애니메이션 결과로 대체하지 않는다.
+64 기능은 마지막 실제64/64 최종 도착과 고지대13/14/43 미도달·EGRESS_STALL1을 별도로 유지한다. climb-end failure0은 해당 과거 실행 범위다.1개체 진단으로 기능 수용을 대체하지 않는다.64 비용은 정지 애니메이션1/64·활성 정적포즈64·활성 애니메이션64의 별도 통제 실험으로 귀속해야 하며20ms p95는 목표다. 미계측 native graph 세부 비용·GPU/Present·할당/GC는 미확보로 남긴다.
 
-원본 보고서 ID: 2026-10-28_074047_287797+0900_npc-frame-clock-pilot.md
-원본 SHA-256: b006250af74b6ab1f17ff26950db6107c1a91618819fb1243645b3cffeee1784
+원본 보고서 ID: 2026-10-28_081756_702387+0900_npc-tickcount-origin.md
+원본 SHA-256: 735d8c4dacf0d7fed011052e75106dff5cabf0771e89d97f894e0ceddff0fbb7
 이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
 
-선정 결과 (원시 전체 아님)
+선정 집계/대표행 (전체 trace 아님)
 [
   {
     "summary": {
-      "runId": "runtime-20261028-072238",
+      "runId": "runtime-20261028-074826",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
       "scenario": "anim1",
       "count": 1,
       "durationSeconds": 120,
       "highHoldWindow": null,
-      "terminalArrivals": null,
-      "missingHighFollow": null,
-      "fallsLandedAndResumed": null,
-      "admissionOutcomes": null,
-      "egressViolations": null,
-      "climbEndFailures": null,
       "omitGameplayMetrics": true,
       "foregroundMissionFrameMs": {
-        "p50": 20.0684,
-        "p95": 35.3299,
-        "p99": 37.2362
+        "p50": 20.094,
+        "p95": 34.643625,
+        "p99": 36.39955
       },
-      "nativeCalls": 399,
-      "nativeAdjacentPairs": 398,
+      "nativeCalls": 154,
+      "nativeAdjacentPairs": 153,
       "nativeModelMaxResidualMs": 0.0,
-      "resetCrossings": 101,
-      "discardedOvershootSumMs": 2951.9999511539936,
-      "inputSumMs": 7960.000121500343,
-      "clockCalibrationMeasured": false,
-      "clockOffsetWidthMs": null,
-      "definiteFrameEntries": null,
-      "uniquePosePairs": null,
+      "resetCrossings": 153,
       "frameJoinAdmitted": false,
+      "clockAcks": 0,
+      "posePairs": 0,
       "measurementConditions": {
         "logicalAgents": 1,
         "renderParts": 8,
@@ -118,14 +102,425 @@ QPC 보조 샘플 metadata 실패 실행의 원시 메시지는 저장되지 않
         "movement": false,
         "nativeEntryObserver": true,
         "nativeStateOverrides": false,
-        "admissionReapproach": false,
-        "frameOrderMission": true,
-        "clockExchange": false,
+        "frameSync": "on",
+        "fileClockSeconds": 10,
+        "clockBridgeAdmitted": false,
         "performanceAcceptance": false,
         "repetitions": 1,
-        "comparableNativeOnlyRepeats": 2,
-        "frameWindow": "t>=15s consecutive HUD callback begin ticks, foreground; not GPU/Present"
+        "frameWindow": "t>=15s HUD callback begin intervals; app-active, not GPU/Present; actual foreground timing not uniformly established"
       }
+    },
+    "nativeModel": {
+      "adjacentCalls": 153,
+      "thresholdCrossings": 153,
+      "method": "float32 ADDSS followed by exact COMISS/JB threshold; no comparison epsilon",
+      "descriptorDecreases": 0,
+      "maxResidualMs": 0.0,
+      "modelResetToResetWallMs": {
+        "p05": 43.0,
+        "p50": 52.0,
+        "p95": 62.44999999999999,
+        "p99": 69.0
+      },
+      "observedInputSumMs": 7950.000014156103,
+      "consumedThresholdsMs": 7650.000113993883,
+      "retainedAccumulatorDeltaMs": 0,
+      "thresholdOvershootSumMs": 299.99990016222,
+      "thresholdOvershootMs": {
+        "p05": 0.9999983012676239,
+        "p50": 2.0000003278255463,
+        "p95": 2.99999862909317,
+        "p99": 4.0000006556510925
+      },
+      "conservationResidualMs": 0.0,
+      "schedulerAccumulatorOvershootDiscardObserved": true,
+      "graphPhaseLossProven": false,
+      "evaluationTimeArgumentCaptured": false
+    },
+    "analysisSha256": "65eb61d8de300d75c4787def764da8464d5a73bc589642178f31ee372f52dd28",
+    "limitations": [
+      "Observer and file clock exchange can perturb timing; no optimization acceptance.",
+      "Only clock-interval-definite events and consecutive unique HUD pairs are joined. Ambiguous observations remain excluded.",
+      "FK phase is a six-point proxy, not direct clip phase. No graph completion or GPU/Present timestamp.",
+      "No new8/64 functional regression or universal cause/smoothness acceptance."
+    ]
+  },
+  {
+    "summary": {
+      "runId": "runtime-20261028-075329",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "scenario": "anim1",
+      "count": 1,
+      "durationSeconds": 120,
+      "highHoldWindow": null,
+      "omitGameplayMetrics": true,
+      "foregroundMissionFrameMs": {
+        "p50": 20.037,
+        "p95": 35.22346,
+        "p99": 37.11252
+      },
+      "nativeCalls": 401,
+      "nativeAdjacentPairs": 400,
+      "nativeModelMaxResidualMs": 0.0,
+      "resetCrossings": 103,
+      "frameJoinAdmitted": true,
+      "clockAcks": 241,
+      "posePairs": 400,
+      "measurementConditions": {
+        "logicalAgents": 1,
+        "renderParts": 8,
+        "clip": "run",
+        "ai": false,
+        "movement": false,
+        "nativeEntryObserver": true,
+        "nativeStateOverrides": false,
+        "frameSync": "on",
+        "fileClockSeconds": 10,
+        "clockBridgeAdmitted": true,
+        "performanceAcceptance": false,
+        "repetitions": 1,
+        "frameWindow": "t>=15s HUD callback begin intervals; app-active, not GPU/Present; actual foreground timing not uniformly established"
+      },
+      "videoTriples": 296,
+      "exactVideoHudFrames": 360,
+      "modelVisibleCorrelation": 0.9487899146723037,
+      "cpuVisibleCorrelation": 0.9486398459672786
+    },
+    "nativeModel": {
+      "adjacentCalls": 400,
+      "thresholdCrossings": 103,
+      "method": "float32 ADDSS followed by exact COMISS/JB threshold; no comparison epsilon",
+      "descriptorDecreases": 103,
+      "maxResidualMs": 0.0,
+      "observedInputSumMs": 7991.0001661628485,
+      "consumedThresholdsMs": 5150.00007674098,
+      "retainedAccumulatorDeltaMs": 8.00000037997961,
+      "thresholdOvershootSumMs": 2832.999996840954,
+      "thresholdOvershootMs": {
+        "p05": 3.7000022828578985,
+        "p50": 29.999997466802597,
+        "p95": 32.00000151991844,
+        "p99": 33.980005532503135
+      },
+      "conservationResidualMs": 9.220093488693237e-05,
+      "schedulerAccumulatorOvershootDiscardObserved": true,
+      "graphPhaseLossProven": false,
+      "evaluationTimeArgumentCaptured": false
+    },
+    "analysisSha256": "bb374257c72863dcd376542fe8970ca43de7089d30be47043fe8cf56c5bb858d",
+    "limitations": [
+      "Observer and file clock exchange can perturb timing; no optimization acceptance.",
+      "Only clock-interval-definite events and consecutive unique HUD pairs are joined. Ambiguous observations remain excluded.",
+      "FK phase is a six-point proxy, not direct clip phase. No graph completion or GPU/Present timestamp.",
+      "No new8/64 functional regression or universal cause/smoothness acceptance."
+    ],
+    "visibleChain": {
+      "nativeHudPosePairs": 400,
+      "exactVideoHudFrames": 360,
+      "nativePoseVideoTriples": 296,
+      "groups": {
+        "reset": {
+          "pairs": 77,
+          "inputDtMs": {
+            "n": 77,
+            "p50": 34.00000184774399,
+            "p95": 37.00000047683716,
+            "p99": 37.00000047683716,
+            "maximum": 37.00000047683716
+          },
+          "modelPoseDeltaMs": {
+            "n": 77,
+            "p50": 4.0000006556510925,
+            "p95": 11.999998986721039,
+            "p99": 18.68000075221058,
+            "maximum": 24.000000208616257
+          },
+          "sourceProxyDeltaMs": {
+            "n": 77,
+            "p50": 4.166666666666667,
+            "p95": 12.5,
+            "p99": 21.83333333333331,
+            "maximum": 25.0
+          },
+          "visibleMaskChangePixels": {
+            "n": 77,
+            "p50": 798.0,
+            "p95": 1643.0000000000002,
+            "p99": 2961.879999999995,
+            "maximum": 3712
+          }
+        },
+        "nonreset": {
+          "pairs": 219,
+          "inputDtMs": {
+            "n": 219,
+            "p50": 7.000000216066837,
+            "p95": 35.00000014901161,
+            "p99": 37.00000047683716,
+            "maximum": 39.000000804662704
+          },
+          "modelPoseDeltaMs": {
+            "n": 219,
+            "p50": 6.999999284744263,
+            "p95": 34.99999921768904,
+            "p99": 37.000001072883606,
+            "maximum": 39.00000173598528
+          },
+          "sourceProxyDeltaMs": {
+            "n": 219,
+            "p50": 8.333333333333334,
+            "p95": 37.5,
+            "p99": 41.666666666666664,
+            "maximum": 41.666666666666664
+          },
+          "visibleMaskChangePixels": {
+            "n": 219,
+            "p50": 1238.0,
+            "p95": 4480.599999999999,
+            "p99": 5024.999999999999,
+            "maximum": 5128
+          }
+        },
+        "reset_inputAtLeast25ms": {
+          "pairs": 73,
+          "inputDtMs": {
+            "n": 73,
+            "p50": 34.00000184774399,
+            "p95": 37.00000047683716,
+            "p99": 37.00000047683716,
+            "maximum": 37.00000047683716
+          },
+          "modelPoseDeltaMs": {
+            "n": 73,
+            "p50": 4.0000006556510925,
+            "p95": 11.999999731779099,
+            "p99": 18.960000723600395,
+            "maximum": 24.000000208616257
+          },
+          "sourceProxyDeltaMs": {
+            "n": 73,
+            "p50": 4.166666666666667,
+            "p95": 12.5,
+            "p99": 17.83333333333334,
+            "maximum": 20.833333333333332
+          },
+          "visibleMaskChangePixels": {
+            "n": 73,
+            "p50": 797.0,
+            "p95": 1664.999999999999,
+            "p99": 3001.360000000001,
+            "maximum": 3712
+          }
+        },
+        "nonreset_inputAtLeast25ms": {
+          "pairs": 75,
+          "inputDtMs": {
+            "n": 75,
+            "p50": 34.00000184774399,
+            "p95": 37.00000047683716,
+            "p99": 38.25999930500985,
+            "maximum": 39.000000804662704
+          },
+          "modelPoseDeltaMs": {
+            "n": 75,
+            "p50": 34.00000277906656,
+            "p95": 36.999999545514584,
+            "p99": 38.25999885797501,
+            "maximum": 39.00000173598528
+          },
+          "sourceProxyDeltaMs": {
+            "n": 75,
+            "p50": 37.5,
+            "p95": 38.749999999999986,
+            "p99": 41.666666666666664,
+            "maximum": 41.666666666666664
+          },
+          "visibleMaskChangePixels": {
+            "n": 75,
+            "p50": 3797.0,
+            "p95": 4844.599999999999,
+            "p99": 5123.56,
+            "maximum": 5128
+          }
+        }
+      },
+      "nativeModelVsSourceProxyCorrelation": 0.9757207307925541,
+      "nativeModelVsVisibleMaskCorrelation": 0.9487899146723037,
+      "cpuPoseVsVisibleMaskCorrelation": 0.9486398459672786,
+      "limitations": [
+        "One fixed-run diagnostic; cannot generalize to all14 animations or active8/64.",
+        "Source phase is estimated by six positions on a quarter-key FK grid, not direct clip/graph phase.",
+        "Visible changed-pixel count depends on pose curvature, projection and threshold; not a named-joint angular velocity or perceptual quality score.",
+        "Clock origin integer agreement does not mean zero GPU/Present uncertainty. Entry timestamps are read brackets after guards.",
+        "Observational mechanism chain, without a counterfactual intervention; not sole-cause or optimization acceptance."
+      ]
+    },
+    "representativeRows": [
+      {
+        "firstFrame": 1175,
+        "lastFrame": 1176,
+        "reset": false,
+        "inputDtMs": 4.999999888241291,
+        "modelPoseDeltaMs": 4.999999888241291,
+        "sourceProxyDeltaMs": 4.166666666666667,
+        "residualMs": -0.8333332215746244,
+        "callbackDeltaMs": 0.0,
+        "callbackResetResidualMs": 0.0,
+        "videoSeconds": 21.033333333333335,
+        "segment": "21.0",
+        "bodyMaskChangedPixels": 782,
+        "queriedRmsChangeMeters": 0.010573123151021494
+      },
+      {
+        "firstFrame": 1176,
+        "lastFrame": 1177,
+        "reset": false,
+        "inputDtMs": 35.00000014901161,
+        "modelPoseDeltaMs": 34.99999921768904,
+        "sourceProxyDeltaMs": 41.666666666666664,
+        "residualMs": 6.666667448977627,
+        "callbackDeltaMs": 0.0,
+        "callbackResetResidualMs": 0.0,
+        "videoSeconds": 21.05,
+        "segment": "21.0",
+        "bodyMaskChangedPixels": 3575,
+        "queriedRmsChangeMeters": 0.07113419148810694
+      },
+      {
+        "firstFrame": 1177,
+        "lastFrame": 1178,
+        "reset": false,
+        "inputDtMs": 7.000000216066837,
+        "modelPoseDeltaMs": 6.999999284744263,
+        "sourceProxyDeltaMs": 4.166666666666667,
+        "residualMs": -2.833332618077596,
+        "callbackDeltaMs": 0.0,
+        "callbackResetResidualMs": 0.0,
+        "videoSeconds": 21.066666666666666,
+        "segment": "21.0",
+        "bodyMaskChangedPixels": 1079,
+        "queriedRmsChangeMeters": 0.013798021228905723
+      },
+      {
+        "firstFrame": 1178,
+        "lastFrame": 1179,
+        "reset": true,
+        "inputDtMs": 30.99999949336052,
+        "modelPoseDeltaMs": 3.0000023543834686,
+        "sourceProxyDeltaMs": 0.0,
+        "residualMs": -3.0000023543834686,
+        "callbackDeltaMs": 50.00000000000071,
+        "callbackResetResidualMs": 7.45057349149647e-07,
+        "videoSeconds": 21.083333333333332,
+        "segment": "21.0",
+        "bodyMaskChangedPixels": 557,
+        "queriedRmsChangeMeters": 0.005874131893309852
+      },
+      {
+        "firstFrame": 1179,
+        "lastFrame": 1180,
+        "reset": false,
+        "inputDtMs": 7.000000216066837,
+        "modelPoseDeltaMs": 7.000000216066837,
+        "sourceProxyDeltaMs": 8.333333333333334,
+        "residualMs": 1.333333117266496,
+        "callbackDeltaMs": 0.0,
+        "callbackResetResidualMs": 0.0,
+        "videoSeconds": 21.1,
+        "segment": "21.0",
+        "bodyMaskChangedPixels": 1117,
+        "queriedRmsChangeMeters": 0.01476248596386575
+      },
+      {
+        "firstFrame": 1180,
+        "lastFrame": 1181,
+        "reset": false,
+        "inputDtMs": 32.999999821186066,
+        "modelPoseDeltaMs": 32.99999888986349,
+        "sourceProxyDeltaMs": 33.333333333333336,
+        "residualMs": 0.3333344434698418,
+        "callbackDeltaMs": 0.0,
+        "callbackResetResidualMs": 0.0,
+        "videoSeconds": 21.133333333333333,
+        "segment": "21.0",
+        "bodyMaskChangedPixels": 3270,
+        "queriedRmsChangeMeters": 0.07328240388046779
+      },
+      {
+        "firstFrame": 1181,
+        "lastFrame": 1182,
+        "reset": false,
+        "inputDtMs": 8.00000037997961,
+        "modelPoseDeltaMs": 8.000001311302185,
+        "sourceProxyDeltaMs": 8.333333333333334,
+        "residualMs": 0.33333202203114815,
+        "callbackDeltaMs": 0.0,
+        "callbackResetResidualMs": 0.0,
+        "videoSeconds": 21.15,
+        "segment": "21.0",
+        "bodyMaskChangedPixels": 1097,
+        "queriedRmsChangeMeters": 0.018849359697347818
+      },
+      {
+        "firstFrame": 1182,
+        "lastFrame": 1183,
+        "reset": true,
+        "inputDtMs": 32.00000151991844,
+        "modelPoseDeltaMs": 2.0000003278255463,
+        "sourceProxyDeltaMs": 0.0,
+        "residualMs": -2.0000003278255463,
+        "callbackDeltaMs": 49.999999999998934,
+        "callbackResetResidualMs": 7.450591255064865e-07,
+        "videoSeconds": 21.166666666666668,
+        "segment": "21.0",
+        "bodyMaskChangedPixels": 359,
+        "queriedRmsChangeMeters": 0.00477645047777809
+      }
+    ],
+    "rowSelection": "First8 admitted joinedPairs in video-time order; not the complete trace.",
+    "independentClockWidthMs": 8.1986,
+    "poseProxyResidualRmsMs": 2.7625218085915844
+  },
+  {
+    "summary": {
+      "runId": "runtime-20261028-075921",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "scenario": "anim1",
+      "count": 1,
+      "durationSeconds": 120,
+      "highHoldWindow": null,
+      "omitGameplayMetrics": true,
+      "foregroundMissionFrameMs": {
+        "p50": 19.9695,
+        "p95": 34.515485,
+        "p99": 36.332647
+      },
+      "nativeCalls": 399,
+      "nativeAdjacentPairs": 398,
+      "nativeModelMaxResidualMs": 0.0,
+      "resetCrossings": 101,
+      "frameJoinAdmitted": true,
+      "clockAcks": 245,
+      "posePairs": 398,
+      "measurementConditions": {
+        "logicalAgents": 1,
+        "renderParts": 8,
+        "clip": "run",
+        "ai": false,
+        "movement": false,
+        "nativeEntryObserver": true,
+        "nativeStateOverrides": false,
+        "frameSync": "on",
+        "fileClockSeconds": 10,
+        "clockBridgeAdmitted": true,
+        "performanceAcceptance": false,
+        "repetitions": 1,
+        "frameWindow": "t>=15s HUD callback begin intervals; app-active, not GPU/Present; actual foreground timing not uniformly established"
+      },
+      "videoTriples": 294,
+      "exactVideoHudFrames": 360,
+      "modelVisibleCorrelation": 0.9514002046648427,
+      "cpuVisibleCorrelation": 0.9510665784849778
     },
     "nativeModel": {
       "adjacentCalls": 398,
@@ -133,306 +528,300 @@ QPC 보조 샘플 metadata 실패 실행의 원시 메시지는 저장되지 않
       "method": "float32 ADDSS followed by exact COMISS/JB threshold; no comparison epsilon",
       "descriptorDecreases": 101,
       "maxResidualMs": 0.0,
-      "observedInputSumMs": 7960.000121500343,
+      "modelResetToResetWallMs": {
+        "p05": 60.6,
+        "p50": 80.0,
+        "p95": 82.0,
+        "p99": 84.47000000000024
+      },
+      "observedInputSumMs": 7969.0001597628,
       "consumedThresholdsMs": 5050.000075250864,
-      "retainedAccumulatorDeltaMs": -41.999999433755875,
-      "thresholdOvershootSumMs": 2951.9999511539936,
+      "retainedAccumulatorDeltaMs": 46.00000008940697,
+      "thresholdOvershootSumMs": 2873.0000406503677,
       "thresholdOvershootMs": {
-        "p05": 26.999998837709427,
+        "p05": 10.000001639127731,
         "p50": 29.999997466802597,
         "p95": 32.00000151991844,
         "p99": 33.000003546476364
       },
-      "conservationResidualMs": 9.452924132347107e-05,
+      "conservationResidualMs": 4.377216100692749e-05,
       "schedulerAccumulatorOvershootDiscardObserved": true,
       "graphPhaseLossProven": false,
       "evaluationTimeArgumentCaptured": false
     },
-    "clock": {
-      "clockCalibrationMeasured": false,
-      "frameJoinAdmitted": false
-    },
-    "sourceHashes": {
-      "native-call-probe/analysis-float32-exact.json": "eda0ee0e88eb578f53faa10bb73346d815eb873343a561a23965e08cab167369",
-      "native-call-probe/calls.jsonl": "7b9acf2a8f09bc1215d2817b0da5bb9b8801b7376cac73889dccb5728677bf72",
-      "visible-frame-clock.tsv": "fd88a177ba633ee1395c1487bce8ff3fd8a14c412e002e6bcac90aeb549a45e3"
-    }
-  },
-  {
-    "summary": {
-      "runId": "runtime-20261028-072554",
-      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "scenario": "anim1",
-      "count": 1,
-      "durationSeconds": 120,
-      "highHoldWindow": null,
-      "terminalArrivals": null,
-      "missingHighFollow": null,
-      "fallsLandedAndResumed": null,
-      "admissionOutcomes": null,
-      "egressViolations": null,
-      "climbEndFailures": null,
-      "omitGameplayMetrics": true,
-      "foregroundMissionFrameMs": {
-        "p50": 20.0658,
-        "p95": 35.2539,
-        "p99": 37.1499
-      },
-      "nativeCalls": 400,
-      "nativeAdjacentPairs": 399,
-      "nativeModelMaxResidualMs": 0.0,
-      "resetCrossings": 101,
-      "discardedOvershootSumMs": 2909.00007635355,
-      "inputSumMs": 7965.000186115503,
-      "clockCalibrationMeasured": false,
-      "clockOffsetWidthMs": null,
-      "definiteFrameEntries": null,
-      "uniquePosePairs": null,
-      "frameJoinAdmitted": false,
-      "measurementConditions": {
-        "logicalAgents": 1,
-        "renderParts": 8,
-        "clip": "run",
-        "ai": false,
-        "movement": false,
-        "nativeEntryObserver": true,
-        "nativeStateOverrides": false,
-        "admissionReapproach": false,
-        "frameOrderMission": true,
-        "clockExchange": false,
-        "performanceAcceptance": false,
-        "repetitions": 1,
-        "comparableNativeOnlyRepeats": 2,
-        "frameWindow": "t>=15s consecutive HUD callback begin ticks, foreground; not GPU/Present"
-      }
-    },
-    "nativeModel": {
-      "adjacentCalls": 399,
-      "thresholdCrossings": 101,
-      "method": "float32 ADDSS followed by exact COMISS/JB threshold; no comparison epsilon",
-      "descriptorDecreases": 101,
-      "maxResidualMs": 0.0,
-      "observedInputSumMs": 7965.000186115503,
-      "consumedThresholdsMs": 5050.000075250864,
-      "retainedAccumulatorDeltaMs": 6.000000052154064,
-      "thresholdOvershootSumMs": 2909.00007635355,
-      "thresholdOvershootMs": {
-        "p05": 22.999998182058334,
-        "p50": 29.999997466802597,
-        "p95": 33.000003546476364,
-        "p99": 33.000003546476364
-      },
-      "conservationResidualMs": 3.4458935260772705e-05,
-      "schedulerAccumulatorOvershootDiscardObserved": true,
-      "graphPhaseLossProven": false,
-      "evaluationTimeArgumentCaptured": false
-    },
-    "clock": {
-      "clockCalibrationMeasured": false,
-      "frameJoinAdmitted": false
-    },
-    "sourceHashes": {
-      "native-call-probe/analysis-float32-exact.json": "996933069ebeb51ebce1e09297420e8a3758c2d91f4e06ba877cc8341198b33b",
-      "native-call-probe/calls.jsonl": "495cd00ab3c2e9a5dd3f43edb7c7e5dc8909a80394c15aa4f94c8bc7e725e2a2",
-      "visible-frame-clock.tsv": "9f0b6cae101ab6330a22b76e273ad1ebc879b14f1e6eca14928c34b27aadf208"
-    }
-  },
-  {
-    "summary": {
-      "runId": "runtime-20261028-073152",
-      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "scenario": "anim1",
-      "count": 1,
-      "durationSeconds": 120,
-      "highHoldWindow": null,
-      "terminalArrivals": null,
-      "missingHighFollow": null,
-      "fallsLandedAndResumed": null,
-      "admissionOutcomes": null,
-      "egressViolations": null,
-      "climbEndFailures": null,
-      "omitGameplayMetrics": true,
-      "foregroundMissionFrameMs": {
-        "p50": 20.0919,
-        "p95": 35.0849,
-        "p99": 36.7441
-      },
-      "nativeCalls": 400,
-      "nativeAdjacentPairs": 399,
-      "nativeModelMaxResidualMs": 0.0,
-      "resetCrossings": 104,
-      "discardedOvershootSumMs": 2721.999943256378,
-      "inputSumMs": 7968.000095337629,
-      "clockCalibrationMeasured": true,
-      "clockOffsetWidthMs": 7.5055,
-      "definiteFrameEntries": 205,
-      "uniquePosePairs": 10,
-      "frameJoinAdmitted": false,
-      "measurementConditions": {
-        "logicalAgents": 1,
-        "renderParts": 8,
-        "clip": "run",
-        "ai": false,
-        "movement": false,
-        "nativeEntryObserver": true,
-        "nativeStateOverrides": false,
-        "admissionReapproach": false,
-        "frameOrderMission": true,
-        "clockExchange": true,
-        "performanceAcceptance": false,
-        "repetitions": 1,
-        "comparableNativeOnlyRepeats": 0,
-        "frameWindow": "t>=15s consecutive HUD callback begin ticks, foreground; not GPU/Present"
-      }
-    },
-    "nativeModel": {
-      "adjacentCalls": 399,
-      "thresholdCrossings": 104,
-      "method": "float32 ADDSS followed by exact COMISS/JB threshold; no comparison epsilon",
-      "descriptorDecreases": 104,
-      "maxResidualMs": 0.0,
-      "observedInputSumMs": 7968.000095337629,
-      "consumedThresholdsMs": 5200.000077486038,
-      "retainedAccumulatorDeltaMs": 46.000003814697266,
-      "thresholdOvershootSumMs": 2721.999943256378,
-      "thresholdOvershootMs": {
-        "p05": 1.149998046457768,
-        "p50": 29.999997466802597,
-        "p95": 32.00000151991844,
-        "p99": 33.96999828517437
-      },
-      "conservationResidualMs": 7.078051567077637e-05,
-      "schedulerAccumulatorOvershootDiscardObserved": true,
-      "graphPhaseLossProven": false,
-      "evaluationTimeArgumentCaptured": false
-    },
-    "clock": {
-      "clockCalibrationMeasured": true,
-      "frameJoinAdmitted": false
-    },
-    "sourceHashes": {
-      "native-call-probe/analysis-float32-exact.json": "00e6bfca5f27ddd42cab5df8bef59281b3e66d7f5b4beb64fed28809edfaa0d9",
-      "native-call-probe/calls.jsonl": "d8656d7722c398d32efd7bcbb8fd61d919a9fafda40cbf62964ccf5e19a10faf",
-      "visible-frame-clock.tsv": "84f76bb5c72e82ddbb4a8bc9ac027ee2f66a0a74d31fa52c82308f96c1b9fdee"
-    },
-    "calibration": {
-      "clockOffsetWidthMs": 7.5055,
-      "clockAcks": 1846,
-      "clockOriginIsZero": false,
-      "frameJoinCounts": {
-        "clockOrHUDOverlapAmbiguous": 195,
-        "definitelyAfterHUDBeforeNext": 205,
-        "excludedNonuniqueHUDPairs": 194
-      },
-      "uniqueConsecutivePosePairs": 10,
-      "sourceProxyResidualRmsMs": 1.4605939301338546
-    },
-    "videoJoin": {
-      "runId": "runtime-20261028-073152",
-      "calibratedNativePosePairs": 10,
+    "analysisSha256": "80a750324883731e7105eb645cc66705ad8f719b6e49031cd6972785ac5aa27d",
+    "limitations": [
+      "Observer and file clock exchange can perturb timing; no optimization acceptance.",
+      "Only clock-interval-definite events and consecutive unique HUD pairs are joined. Ambiguous observations remain excluded.",
+      "FK phase is a six-point proxy, not direct clip phase. No graph completion or GPU/Present timestamp.",
+      "No new8/64 functional regression or universal cause/smoothness acceptance."
+    ],
+    "visibleChain": {
+      "nativeHudPosePairs": 398,
       "exactVideoHudFrames": 360,
-      "cpuVisible": {
-        "pairs": 298,
-        "correlation": 0.9363230146571965,
-        "queriedRmsChangeMetersP50": 0.022969238000711625,
-        "queriedRmsChangeMetersP95": 0.11201594080977939,
-        "visibleMaskChangePixelsP50": 1288,
-        "visibleMaskChangePixelsP95": 4182
-      },
-      "calibratedNativePoseVisiblePairs": 8,
-      "selectedPairs": [
-        {
-          "firstFrame": 1221,
-          "lastFrame": 1222,
-          "reset": false,
-          "inputDtMs": 28.00000086426735,
-          "modelPoseDeltaMs": 28.0000027269125,
-          "sourceProxyDeltaMs": 29.166666666666668,
-          "residualMs": 1.1666639397541687,
-          "callbackDeltaMs": 0.0,
-          "callbackResetResidualMs": 0.0
+      "nativePoseVideoTriples": 294,
+      "groups": {
+        "reset": {
+          "pairs": 76,
+          "inputDtMs": {
+            "n": 76,
+            "p50": 33.50000083446503,
+            "p95": 35.00000014901161,
+            "p99": 46.99999839067459,
+            "maximum": 79.99999821186066
+          },
+          "modelPoseDeltaMs": {
+            "n": 76,
+            "p50": 3.999996930360794,
+            "p95": 9.999998845160007,
+            "p99": 13.500000350177288,
+            "maximum": 15.000000596046448
+          },
+          "sourceProxyDeltaMs": {
+            "n": 76,
+            "p50": 4.166666666666667,
+            "p95": 12.5,
+            "p99": 20.833333333333332,
+            "maximum": 20.833333333333332
+          },
+          "visibleMaskChangePixels": {
+            "n": 76,
+            "p50": 670.5,
+            "p95": 1517.0,
+            "p99": 2068.75,
+            "maximum": 2683
+          }
         },
-        {
-          "firstFrame": 1222,
-          "lastFrame": 1223,
-          "reset": true,
-          "inputDtMs": 19.999999552965164,
-          "modelPoseDeltaMs": 11.99999824166298,
-          "sourceProxyDeltaMs": 12.5,
-          "residualMs": 0.5000017583370215,
-          "callbackDeltaMs": 50.00000000000071,
-          "callbackResetResidualMs": 7.45057349149647e-07
+        "nonreset": {
+          "pairs": 218,
+          "inputDtMs": {
+            "n": 218,
+            "p50": 7.000000216066837,
+            "p95": 34.00000184774399,
+            "p99": 35.00000014901161,
+            "maximum": 35.999998450279236
+          },
+          "modelPoseDeltaMs": {
+            "n": 218,
+            "p50": 7.000000216066837,
+            "p95": 34.00000277906656,
+            "p99": 35.00000108033419,
+            "maximum": 35.99999938160181
+          },
+          "sourceProxyDeltaMs": {
+            "n": 218,
+            "p50": 8.333333333333334,
+            "p95": 37.5,
+            "p99": 37.5,
+            "maximum": 41.666666666666664
+          },
+          "visibleMaskChangePixels": {
+            "n": 218,
+            "p50": 1321.0,
+            "p95": 4310.5,
+            "p99": 4904.3,
+            "maximum": 5002
+          }
         },
-        {
-          "firstFrame": 1269,
-          "lastFrame": 1270,
-          "reset": false,
-          "inputDtMs": 28.00000086426735,
-          "modelPoseDeltaMs": 28.0000027269125,
-          "sourceProxyDeltaMs": 29.166666666666668,
-          "residualMs": 1.1666639397541687,
-          "callbackDeltaMs": 0.0,
-          "callbackResetResidualMs": 0.0
+        "reset_inputAtLeast25ms": {
+          "pairs": 71,
+          "inputDtMs": {
+            "n": 71,
+            "p50": 34.00000184774399,
+            "p95": 35.00000014901161,
+            "p99": 49.199998378753534,
+            "maximum": 79.99999821186066
+          },
+          "modelPoseDeltaMs": {
+            "n": 71,
+            "p50": 3.0000023543834686,
+            "p95": 5.499999970197678,
+            "p99": 13.60000036656856,
+            "maximum": 15.000000596046448
+          },
+          "sourceProxyDeltaMs": {
+            "n": 71,
+            "p50": 4.166666666666667,
+            "p95": 12.5,
+            "p99": 20.833333333333332,
+            "maximum": 20.833333333333332
+          },
+          "visibleMaskChangePixels": {
+            "n": 71,
+            "p50": 656.0,
+            "p95": 1073.0,
+            "p99": 2109.6999999999975,
+            "maximum": 2683
+          }
         },
-        {
-          "firstFrame": 1270,
-          "lastFrame": 1271,
-          "reset": true,
-          "inputDtMs": 12.000000104308128,
-          "modelPoseDeltaMs": 11.99999824166298,
-          "sourceProxyDeltaMs": 12.5,
-          "residualMs": 0.5000017583370215,
-          "callbackDeltaMs": 49.99999999999716,
-          "callbackResetResidualMs": 7.450609018633259e-07
-        },
-        {
-          "firstFrame": 1273,
-          "lastFrame": 1274,
-          "reset": true,
-          "inputDtMs": 28.999999165534973,
-          "modelPoseDeltaMs": 12.000001966953278,
-          "sourceProxyDeltaMs": 8.333333333333334,
-          "residualMs": -3.6666686336199446,
-          "callbackDeltaMs": 50.00000000000071,
-          "callbackResetResidualMs": 7.45057349149647e-07
-        },
-        {
-          "firstFrame": 1521,
-          "lastFrame": 1522,
-          "reset": true,
-          "inputDtMs": 32.00000151991844,
-          "modelPoseDeltaMs": 4.0000006556510925,
-          "sourceProxyDeltaMs": 4.166666666666667,
-          "residualMs": 0.16666601101557407,
-          "callbackDeltaMs": 50.00000000000071,
-          "callbackResetResidualMs": 7.45057349149647e-07
-        },
-        {
-          "firstFrame": 1522,
-          "lastFrame": 1523,
-          "reset": false,
-          "inputDtMs": 12.000000104308128,
-          "modelPoseDeltaMs": 12.000000104308128,
-          "sourceProxyDeltaMs": 12.5,
-          "residualMs": 0.4999998956918723,
-          "callbackDeltaMs": 0.0,
-          "callbackResetResidualMs": 0.0
-        },
-        {
-          "firstFrame": 1523,
-          "lastFrame": 1524,
-          "reset": false,
-          "inputDtMs": 28.00000086426735,
-          "modelPoseDeltaMs": 27.9999990016222,
-          "sourceProxyDeltaMs": 29.166666666666668,
-          "residualMs": 1.1666676650444672,
-          "callbackDeltaMs": 0.0,
-          "callbackResetResidualMs": 0.0
+        "nonreset_inputAtLeast25ms": {
+          "pairs": 74,
+          "inputDtMs": {
+            "n": 74,
+            "p50": 34.00000184774399,
+            "p95": 35.00000014901161,
+            "p99": 35.999998450279236,
+            "maximum": 35.999998450279236
+          },
+          "modelPoseDeltaMs": {
+            "n": 74,
+            "p50": 34.00000277906656,
+            "p95": 34.99999986961484,
+            "p99": 35.99999938160181,
+            "maximum": 35.99999938160181
+          },
+          "sourceProxyDeltaMs": {
+            "n": 74,
+            "p50": 33.333333333333336,
+            "p95": 37.5,
+            "p99": 41.666666666666664,
+            "maximum": 41.666666666666664
+          },
+          "visibleMaskChangePixels": {
+            "n": 74,
+            "p50": 3835.0,
+            "p95": 4849.2,
+            "p99": 5000.54,
+            "maximum": 5002
+          }
         }
-      ],
-      "accepted": false,
-      "reason": "Only10 consecutive calibrated pose pairs /8 video triples; minimum30 pair gate not met. No causality or perceptual smoothness acceptance."
-    }
+      },
+      "nativeModelVsSourceProxyCorrelation": 0.9726900778199286,
+      "nativeModelVsVisibleMaskCorrelation": 0.9514002046648427,
+      "cpuPoseVsVisibleMaskCorrelation": 0.9510665784849778,
+      "limitations": [
+        "One fixed-run diagnostic; cannot generalize to all14 animations or active8/64.",
+        "Source phase is estimated by six positions on a quarter-key FK grid, not direct clip/graph phase.",
+        "Visible changed-pixel count depends on pose curvature, projection and threshold; not a named-joint angular velocity or perceptual quality score.",
+        "Clock origin integer agreement does not mean zero GPU/Present uncertainty. Entry timestamps are read brackets after guards.",
+        "Observational mechanism chain, without a counterfactual intervention; not sole-cause or optimization acceptance."
+      ]
+    },
+    "representativeRows": [
+      {
+        "firstFrame": 1178,
+        "lastFrame": 1179,
+        "reset": true,
+        "inputDtMs": 34.00000184774399,
+        "modelPoseDeltaMs": 4.0000006556510925,
+        "sourceProxyDeltaMs": 4.166666666666667,
+        "residualMs": 0.16666601101557407,
+        "callbackDeltaMs": 50.00000000000071,
+        "callbackResetResidualMs": 7.45057349149647e-07,
+        "videoSeconds": 21.016666666666666,
+        "segment": "21.0",
+        "bodyMaskChangedPixels": 656,
+        "queriedRmsChangeMeters": 0.012873476460019146
+      },
+      {
+        "firstFrame": 1179,
+        "lastFrame": 1180,
+        "reset": false,
+        "inputDtMs": 6.000000052154064,
+        "modelPoseDeltaMs": 6.000000052154064,
+        "sourceProxyDeltaMs": 4.166666666666667,
+        "residualMs": -1.8333333854873977,
+        "callbackDeltaMs": 0.0,
+        "callbackResetResidualMs": 0.0,
+        "videoSeconds": 21.033333333333335,
+        "segment": "21.0",
+        "bodyMaskChangedPixels": 925,
+        "queriedRmsChangeMeters": 0.017109637123562834
+      },
+      {
+        "firstFrame": 1180,
+        "lastFrame": 1181,
+        "reset": false,
+        "inputDtMs": 34.00000184774399,
+        "modelPoseDeltaMs": 34.00000277906656,
+        "sourceProxyDeltaMs": 37.5,
+        "residualMs": 3.499997220933436,
+        "callbackDeltaMs": 0.0,
+        "callbackResetResidualMs": 0.0,
+        "videoSeconds": 21.05,
+        "segment": "21.0",
+        "bodyMaskChangedPixels": 3465,
+        "queriedRmsChangeMeters": 0.09780925776735042
+      },
+      {
+        "firstFrame": 1181,
+        "lastFrame": 1182,
+        "reset": false,
+        "inputDtMs": 7.000000216066837,
+        "modelPoseDeltaMs": 6.999999284744263,
+        "sourceProxyDeltaMs": 4.166666666666667,
+        "residualMs": -2.833332618077596,
+        "callbackDeltaMs": 0.0,
+        "callbackResetResidualMs": 0.0,
+        "videoSeconds": 21.083333333333332,
+        "segment": "21.0",
+        "bodyMaskChangedPixels": 1322,
+        "queriedRmsChangeMeters": 0.020701840260389088
+      },
+      {
+        "firstFrame": 1182,
+        "lastFrame": 1183,
+        "reset": true,
+        "inputDtMs": 32.00000151991844,
+        "modelPoseDeltaMs": 2.99999862909317,
+        "sourceProxyDeltaMs": 4.166666666666667,
+        "residualMs": 1.1666680375734964,
+        "callbackDeltaMs": 50.00000000000071,
+        "callbackResetResidualMs": 7.45057349149647e-07,
+        "videoSeconds": 21.1,
+        "segment": "21.0",
+        "bodyMaskChangedPixels": 740,
+        "queriedRmsChangeMeters": 0.008926984270551101
+      },
+      {
+        "firstFrame": 1183,
+        "lastFrame": 1184,
+        "reset": false,
+        "inputDtMs": 7.000000216066837,
+        "modelPoseDeltaMs": 7.000000216066837,
+        "sourceProxyDeltaMs": 8.333333333333334,
+        "residualMs": 1.333333117266496,
+        "callbackDeltaMs": 0.0,
+        "callbackResetResidualMs": 0.0,
+        "videoSeconds": 21.116666666666667,
+        "segment": "21.0",
+        "bodyMaskChangedPixels": 1290,
+        "queriedRmsChangeMeters": 0.01990307817901541
+      },
+      {
+        "firstFrame": 1184,
+        "lastFrame": 1185,
+        "reset": false,
+        "inputDtMs": 34.00000184774399,
+        "modelPoseDeltaMs": 34.00000091642141,
+        "sourceProxyDeltaMs": 33.333333333333336,
+        "residualMs": -0.6666675830880806,
+        "callbackDeltaMs": 0.0,
+        "callbackResetResidualMs": 0.0,
+        "videoSeconds": 21.133333333333333,
+        "segment": "21.0",
+        "bodyMaskChangedPixels": 3624,
+        "queriedRmsChangeMeters": 0.1028724070090388
+      },
+      {
+        "firstFrame": 1185,
+        "lastFrame": 1186,
+        "reset": false,
+        "inputDtMs": 6.000000052154064,
+        "modelPoseDeltaMs": 6.000000983476639,
+        "sourceProxyDeltaMs": 4.166666666666667,
+        "residualMs": -1.8333343168099723,
+        "callbackDeltaMs": 0.0,
+        "callbackResetResidualMs": 0.0,
+        "videoSeconds": 21.15,
+        "segment": "21.0",
+        "bodyMaskChangedPixels": 1172,
+        "queriedRmsChangeMeters": 0.019279431090326996
+      }
+    ],
+    "rowSelection": "First8 admitted joinedPairs in video-time order; not the complete trace.",
+    "independentClockWidthMs": 7.858300000000001,
+    "poseProxyResidualRmsMs": 3.1052738133655358
   }
 ]
 
