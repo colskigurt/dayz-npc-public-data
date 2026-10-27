@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261027T214757-escape-shadow-visible-20261028",
-  "generatedAt": "2026-10-27T21:47:57.833258+00:00",
+  "snapshotId": "snapshot-20261027T221044-pose-buffer-continuity-20261028",
+  "generatedAt": "2026-10-27T22:10:44.365401+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -16,7 +16,9 @@
     "runtime-20261028-061615",
     "runtime-20261028-062522",
     "runtime-20261028-063006",
-    "runtime-20261028-063933"
+    "runtime-20261028-063933",
+    "runtime-20261028-070048",
+    "runtime-20261028-070414"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -28,9 +30,9 @@
     "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "Visible8 final8/8 high0; latest64 high missing 3; passive full-gate evidence only, no movement fix or acceptance",
-    "visual": "No new visible-frame quality measurement; CPU/visible mismatch unresolved",
-    "performance": "Detailed passive full-gate instrumentation; no optimization attribution or20ms p95 acceptance",
+    "functional": "No new8/64 run in animation batch; previous visible64 final64/64, HIGH_HOLD missing13/14/43, EGRESS_STALL1; not final accepted",
+    "visual": "Two fixed-run trials:480 endpoint-continuous CPU boundaries;715/720 exact video HUD frames, zero-lag CPU-visible correlations0.9455/0.9395; smoothness unresolved",
+    "performance": "Instrumented1-agent repeated frame p95 35ms; excludes optimization acceptance.64 cost attribution and20ms p95 target remain unresolved",
     "regressionChecks": 74
   },
   "metrics": [
@@ -3255,13 +3257,511 @@
       },
       "repetitions": 1,
       "verificationStatus": "not_accepted"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261028-070048",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 20.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 1,
+        "scenario": "anim1",
+        "durationSeconds": 120,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": null,
+        "ai": false,
+        "movement": false,
+        "renderParts": 8,
+        "clip": "run",
+        "probeSampleMs": 10,
+        "retainedBuffers": true,
+        "readOnly": true,
+        "broadMemoryScanSeconds": 17.357347499928437,
+        "performanceAcceptance": false,
+        "frameWindow": "t>=15s consecutive mission HUD frames, both appActive=true; not GPU/Present",
+        "repetitions": 1,
+        "batchRepeatedRuns": 2
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261028-070048",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 35.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 1,
+        "scenario": "anim1",
+        "durationSeconds": 120,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": null,
+        "ai": false,
+        "movement": false,
+        "renderParts": 8,
+        "clip": "run",
+        "probeSampleMs": 10,
+        "retainedBuffers": true,
+        "readOnly": true,
+        "broadMemoryScanSeconds": 17.357347499928437,
+        "performanceAcceptance": false,
+        "frameWindow": "t>=15s consecutive mission HUD frames, both appActive=true; not GPU/Present",
+        "repetitions": 1,
+        "batchRepeatedRuns": 2
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261028-070048",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 37.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 1,
+        "scenario": "anim1",
+        "durationSeconds": 120,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": null,
+        "ai": false,
+        "movement": false,
+        "renderParts": 8,
+        "clip": "run",
+        "probeSampleMs": 10,
+        "retainedBuffers": true,
+        "readOnly": true,
+        "broadMemoryScanSeconds": 17.357347499928437,
+        "performanceAcceptance": false,
+        "frameWindow": "t>=15s consecutive mission HUD frames, both appActive=true; not GPU/Present",
+        "repetitions": 1,
+        "batchRepeatedRuns": 2
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261028-070414",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 20.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 1,
+        "scenario": "anim1",
+        "durationSeconds": 120,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": null,
+        "ai": false,
+        "movement": false,
+        "renderParts": 8,
+        "clip": "run",
+        "probeSampleMs": 10,
+        "retainedBuffers": true,
+        "readOnly": true,
+        "broadMemoryScanSeconds": 16.587878999998793,
+        "performanceAcceptance": false,
+        "frameWindow": "t>=15s consecutive mission HUD frames, both appActive=true; not GPU/Present",
+        "repetitions": 1,
+        "batchRepeatedRuns": 2
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261028-070414",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 35.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 1,
+        "scenario": "anim1",
+        "durationSeconds": 120,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": null,
+        "ai": false,
+        "movement": false,
+        "renderParts": 8,
+        "clip": "run",
+        "probeSampleMs": 10,
+        "retainedBuffers": true,
+        "readOnly": true,
+        "broadMemoryScanSeconds": 16.587878999998793,
+        "performanceAcceptance": false,
+        "frameWindow": "t>=15s consecutive mission HUD frames, both appActive=true; not GPU/Present",
+        "repetitions": 1,
+        "batchRepeatedRuns": 2
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261028-070414",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 37.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 1,
+        "scenario": "anim1",
+        "durationSeconds": 120,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": null,
+        "ai": false,
+        "movement": false,
+        "renderParts": 8,
+        "clip": "run",
+        "probeSampleMs": 10,
+        "retainedBuffers": true,
+        "readOnly": true,
+        "broadMemoryScanSeconds": 16.587878999998793,
+        "performanceAcceptance": false,
+        "frameWindow": "t>=15s consecutive mission HUD frames, both appActive=true; not GPU/Present",
+        "repetitions": 1,
+        "batchRepeatedRuns": 2
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "bufferBoundarySamples",
+      "sourceRunId": "runtime-20261028-070048",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 235,
+      "unit": "samples",
+      "conditions": {
+        "ai": false,
+        "movement": false,
+        "renderParts": 8,
+        "clip": "run",
+        "normalExit": true,
+        "probeSampleMs": 10,
+        "retainedBuffers": true,
+        "readOnly": true,
+        "admissionReapproach": false,
+        "broadMemoryScanSeconds": 17.357347499928437,
+        "performanceAcceptance": false,
+        "frameWindow": "t>=15s consecutive mission HUD frames, both appActive=true; not GPU/Present",
+        "repetitions": 1,
+        "batchRepeatedRuns": 2
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "endpointContinuityMaxTranslation",
+      "sourceRunId": "runtime-20261028-070048",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 0.0,
+      "unit": "m",
+      "conditions": {
+        "ai": false,
+        "movement": false,
+        "renderParts": 8,
+        "clip": "run",
+        "normalExit": true,
+        "probeSampleMs": 10,
+        "retainedBuffers": true,
+        "readOnly": true,
+        "admissionReapproach": false,
+        "broadMemoryScanSeconds": 17.357347499928437,
+        "performanceAcceptance": false,
+        "frameWindow": "t>=15s consecutive mission HUD frames, both appActive=true; not GPU/Present",
+        "repetitions": 1,
+        "batchRepeatedRuns": 2
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "endpointContinuityMaxRotation",
+      "sourceRunId": "runtime-20261028-070048",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 0.0,
+      "unit": "deg",
+      "conditions": {
+        "ai": false,
+        "movement": false,
+        "renderParts": 8,
+        "clip": "run",
+        "normalExit": true,
+        "probeSampleMs": 10,
+        "retainedBuffers": true,
+        "readOnly": true,
+        "admissionReapproach": false,
+        "broadMemoryScanSeconds": 17.357347499928437,
+        "performanceAcceptance": false,
+        "frameWindow": "t>=15s consecutive mission HUD frames, both appActive=true; not GPU/Present",
+        "repetitions": 1,
+        "batchRepeatedRuns": 2
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "slerpFitMaxError",
+      "sourceRunId": "runtime-20261028-070048",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 0.00016438635029668219,
+      "unit": "deg",
+      "conditions": {
+        "ai": false,
+        "movement": false,
+        "renderParts": 8,
+        "clip": "run",
+        "normalExit": true,
+        "probeSampleMs": 10,
+        "retainedBuffers": true,
+        "readOnly": true,
+        "admissionReapproach": false,
+        "broadMemoryScanSeconds": 17.357347499928437,
+        "performanceAcceptance": false,
+        "frameWindow": "t>=15s consecutive mission HUD frames, both appActive=true; not GPU/Present",
+        "repetitions": 1,
+        "batchRepeatedRuns": 2
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "exactHudFrames",
+      "sourceRunId": "runtime-20261028-070048",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 360,
+      "unit": "frames",
+      "conditions": {
+        "ai": false,
+        "movement": false,
+        "renderParts": 8,
+        "clip": "run",
+        "normalExit": true,
+        "probeSampleMs": 10,
+        "retainedBuffers": true,
+        "readOnly": true,
+        "admissionReapproach": false,
+        "broadMemoryScanSeconds": 17.357347499928437,
+        "performanceAcceptance": false,
+        "frameWindow": "t>=15s consecutive mission HUD frames, both appActive=true; not GPU/Present",
+        "repetitions": 1,
+        "batchRepeatedRuns": 2
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "cpuVisibleZeroLagCorrelation",
+      "sourceRunId": "runtime-20261028-070048",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 0.9455217852000876,
+      "unit": "correlation",
+      "conditions": {
+        "ai": false,
+        "movement": false,
+        "renderParts": 8,
+        "clip": "run",
+        "normalExit": true,
+        "probeSampleMs": 10,
+        "retainedBuffers": true,
+        "readOnly": true,
+        "admissionReapproach": false,
+        "broadMemoryScanSeconds": 17.357347499928437,
+        "performanceAcceptance": false,
+        "frameWindow": "t>=15s consecutive mission HUD frames, both appActive=true; not GPU/Present",
+        "repetitions": 1,
+        "batchRepeatedRuns": 2
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "bufferBoundarySamples",
+      "sourceRunId": "runtime-20261028-070414",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 245,
+      "unit": "samples",
+      "conditions": {
+        "ai": false,
+        "movement": false,
+        "renderParts": 8,
+        "clip": "run",
+        "normalExit": true,
+        "probeSampleMs": 10,
+        "retainedBuffers": true,
+        "readOnly": true,
+        "admissionReapproach": false,
+        "broadMemoryScanSeconds": 16.587878999998793,
+        "performanceAcceptance": false,
+        "frameWindow": "t>=15s consecutive mission HUD frames, both appActive=true; not GPU/Present",
+        "repetitions": 1,
+        "batchRepeatedRuns": 2
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "endpointContinuityMaxTranslation",
+      "sourceRunId": "runtime-20261028-070414",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 0.0,
+      "unit": "m",
+      "conditions": {
+        "ai": false,
+        "movement": false,
+        "renderParts": 8,
+        "clip": "run",
+        "normalExit": true,
+        "probeSampleMs": 10,
+        "retainedBuffers": true,
+        "readOnly": true,
+        "admissionReapproach": false,
+        "broadMemoryScanSeconds": 16.587878999998793,
+        "performanceAcceptance": false,
+        "frameWindow": "t>=15s consecutive mission HUD frames, both appActive=true; not GPU/Present",
+        "repetitions": 1,
+        "batchRepeatedRuns": 2
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "endpointContinuityMaxRotation",
+      "sourceRunId": "runtime-20261028-070414",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 0.0,
+      "unit": "deg",
+      "conditions": {
+        "ai": false,
+        "movement": false,
+        "renderParts": 8,
+        "clip": "run",
+        "normalExit": true,
+        "probeSampleMs": 10,
+        "retainedBuffers": true,
+        "readOnly": true,
+        "admissionReapproach": false,
+        "broadMemoryScanSeconds": 16.587878999998793,
+        "performanceAcceptance": false,
+        "frameWindow": "t>=15s consecutive mission HUD frames, both appActive=true; not GPU/Present",
+        "repetitions": 1,
+        "batchRepeatedRuns": 2
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "slerpFitMaxError",
+      "sourceRunId": "runtime-20261028-070414",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 0.00016517376015626577,
+      "unit": "deg",
+      "conditions": {
+        "ai": false,
+        "movement": false,
+        "renderParts": 8,
+        "clip": "run",
+        "normalExit": true,
+        "probeSampleMs": 10,
+        "retainedBuffers": true,
+        "readOnly": true,
+        "admissionReapproach": false,
+        "broadMemoryScanSeconds": 16.587878999998793,
+        "performanceAcceptance": false,
+        "frameWindow": "t>=15s consecutive mission HUD frames, both appActive=true; not GPU/Present",
+        "repetitions": 1,
+        "batchRepeatedRuns": 2
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "exactHudFrames",
+      "sourceRunId": "runtime-20261028-070414",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 355,
+      "unit": "frames",
+      "conditions": {
+        "ai": false,
+        "movement": false,
+        "renderParts": 8,
+        "clip": "run",
+        "normalExit": true,
+        "probeSampleMs": 10,
+        "retainedBuffers": true,
+        "readOnly": true,
+        "admissionReapproach": false,
+        "broadMemoryScanSeconds": 16.587878999998793,
+        "performanceAcceptance": false,
+        "frameWindow": "t>=15s consecutive mission HUD frames, both appActive=true; not GPU/Present",
+        "repetitions": 1,
+        "batchRepeatedRuns": 2
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "cpuVisibleZeroLagCorrelation",
+      "sourceRunId": "runtime-20261028-070414",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 0.9394848860810691,
+      "unit": "correlation",
+      "conditions": {
+        "ai": false,
+        "movement": false,
+        "renderParts": 8,
+        "clip": "run",
+        "normalExit": true,
+        "probeSampleMs": 10,
+        "retainedBuffers": true,
+        "readOnly": true,
+        "admissionReapproach": false,
+        "broadMemoryScanSeconds": 16.587878999998793,
+        "performanceAcceptance": false,
+        "frameWindow": "t>=15s consecutive mission HUD frames, both appActive=true; not GPU/Present",
+        "repetitions": 1,
+        "batchRepeatedRuns": 2
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
     }
   ],
   "blockers": [
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "64-agent HIGH_HOLD missing ids6/32 despite final64/64; pressure support loss, landing blockage and reclimb cycles need finer gate/contact attribution."
+      "description": "Latest previous64 runtime-20261028-063933: HIGH_HOLD ids13/14/43 missing despite final64/64; EGRESS_STALL1. Animation-only batch does not change these observations."
     },
     {
       "id": "matched-repeats",
@@ -3392,23 +3892,41 @@
       "uri": "/data/experiments/escape-shadow-visible-20261028.json",
       "sha256": "7c8186b3e3df971668b9e2a285064ff8b5e2ec712dcc6f6a5e013f795307c50a",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "pose-buffer-continuity-20261028-report",
+      "uri": "/downloads/checkpoints/2026-10-28_071019_264119+0900_npc-pose-buffer-continuity.txt",
+      "sha256": "a46da133c58c21e717c4db655460a616cdcb6468774cb35a50fc7e248335aaec",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "pose-buffer-continuity-20261028-review",
+      "uri": "/downloads/checkpoints/2026-10-28_071019_264119+0900_npc-pose-buffer-continuity_evidence.txt",
+      "sha256": "d53efa563928824cc3fe574af7f5b1e4e65698d2380975e6c5734571b69dfaec",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "pose-buffer-continuity-20261028-json",
+      "uri": "/data/experiments/pose-buffer-continuity-20261028.json",
+      "sha256": "824a896f509690677451a846cbe4876d76dc7dc263dbc131a93fdc8020f4528f",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-27T21:47:57.833258+00:00",
-    "staleAfter": "2026-10-28T21:47:57.833258+00:00",
+    "sourceUpdatedAt": "2026-10-27T22:10:44.365401+00:00",
+    "staleAfter": "2026-10-28T22:10:44.365401+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261027T214757-escape-shadow-visible-20261028",
-      "generatedAt": "2026-10-27T21:47:57.833258+00:00",
-      "sourceUpdatedAt": "2026-10-27T21:47:57.833258+00:00"
+      "snapshotId": "snapshot-20261027T221044-pose-buffer-continuity-20261028",
+      "generatedAt": "2026-10-27T22:10:44.365401+00:00",
+      "sourceUpdatedAt": "2026-10-27T22:10:44.365401+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-27T21:47:57.833258+00:00",
+      "at": "2026-10-27T22:10:44.365401+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -3423,7 +3941,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261027T214757-escape-shadow-visible-20261028/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261027T221044-pose-buffer-continuity-20261028/"
   },
   "experiments": [
     {
@@ -3666,6 +4184,41 @@
         "matched-repeats"
       ],
       "replication": "single run per population"
+    },
+    {
+      "id": "pose-buffer-continuity-20261028",
+      "title": "달리기 포즈 버퍼 연속성 2회와 CPU·실제 영상 연결",
+      "track": "animation",
+      "sourceRunId": [
+        "runtime-20261028-070048",
+        "runtime-20261028-070414"
+      ],
+      "buildId": [
+        "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [
+        {
+          "count": 1,
+          "seconds": 120,
+          "repetitions": 1
+        },
+        {
+          "count": 1,
+          "seconds": 120,
+          "repetitions": 1
+        }
+      ],
+      "evidenceReferences": [
+        "pose-buffer-continuity-20261028-report",
+        "pose-buffer-continuity-20261028-review",
+        "pose-buffer-continuity-20261028-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "two matched fixed-run1-agent repetitions; no candidate optimization"
     }
   ],
   "kind": "experiments"
