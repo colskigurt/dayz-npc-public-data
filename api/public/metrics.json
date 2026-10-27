@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261027T204534-runtime-latch",
-  "generatedAt": "2026-10-27T20:45:34.251741+00:00",
+  "snapshotId": "snapshot-20261027T210240-landing-corridor-20261028",
+  "generatedAt": "2026-10-27T21:02:40.934537+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -10,7 +10,8 @@
     "runtime-20261028-021529",
     "runtime-20261028-021953",
     "runtime-20261028-053114",
-    "runtime-20261028-053554"
+    "runtime-20261028-053554",
+    "runtime-20261028-055226"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -22,7 +23,7 @@
     "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "B8FB real8/64 executed; final arrivals pass single runs; high hold missing ids6/32; not accepted",
+    "functional": "B8FB matched-build single ON/OFF final64/64; high missing2/5; static landing/core diagnosis succeeded; no new motion fix or acceptance",
     "visual": "No new visible-frame quality measurement; CPU/visible mismatch unresolved",
     "performance": "64 mission dt p95 72ms, single instrumented run; 20ms target unmet; no optimization acceptance",
     "regressionChecks": 74
@@ -1479,6 +1480,246 @@
       },
       "repetitions": 1,
       "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "finalArrivals",
+      "sourceRunId": "runtime-20261028-055226",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 64,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.002,
+          104.898
+        ]
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "missingHighFollow",
+      "sourceRunId": "runtime-20261028-055226",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 5,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.002,
+          104.898
+        ]
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "fallsResumed",
+      "sourceRunId": "runtime-20261028-055226",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 86,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.002,
+          104.898
+        ]
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionArrived",
+      "sourceRunId": "runtime-20261028-055226",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.002,
+          104.898
+        ]
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionIntentChanged",
+      "sourceRunId": "runtime-20261028-055226",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.002,
+          104.898
+        ]
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "egressViolations",
+      "sourceRunId": "runtime-20261028-055226",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 0,
+      "unit": "violations",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.002,
+          104.898
+        ]
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "climbEndFailures",
+      "sourceRunId": "runtime-20261028-055226",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.002,
+          104.898
+        ]
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261028-055226",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 28.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.002,
+          104.898
+        ]
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261028-055226",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 57.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.002,
+          104.898
+        ]
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261028-055226",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 79.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.002,
+          104.898
+        ]
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
     }
   ],
   "blockers": [
@@ -1490,7 +1731,7 @@
     {
       "id": "matched-repeats",
       "status": "unexecuted",
-      "description": "Matched B8FB flag-off/on and repeated runtime runs still required; historical 74 engine checks were not rerun in this batch."
+      "description": "Order-crossed repeated B8FB flag-off/on runtime trials still required; historical 74 checks were not rerun in the latest batch."
     },
     {
       "id": "visual-causality",
@@ -1562,23 +1803,41 @@
       "uri": "/data/experiments/admission-latch-runtime-20261028.json",
       "sha256": "419468cbed5ea77485ef8a4fd9ecde5767345b2d5d849b25da00c40bbfb442aa",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "landing-corridor-20261028-report",
+      "uri": "/downloads/checkpoints/2026-10-28_060206_263048+0900_npc-landing-corridor.txt",
+      "sha256": "fba79cdd3ede25f3d3e29ed5d6553ade8db9a44f396afe5e86f5c171c7dae49c",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "landing-corridor-20261028-review",
+      "uri": "/downloads/checkpoints/2026-10-28_060206_263048+0900_npc-landing-corridor_evidence.txt",
+      "sha256": "c194f63025239140b72707b58dd38f1534f5db14ca5e259ba4bc20338527678f",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "landing-corridor-20261028-json",
+      "uri": "/data/experiments/landing-corridor-20261028.json",
+      "sha256": "2ee421e230c74c8b1d093b5dbf0fd5d230c4b24338f0eb61caf093aaf84cc607",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-27T20:45:34.251741+00:00",
-    "staleAfter": "2026-10-28T20:45:34.251741+00:00",
+    "sourceUpdatedAt": "2026-10-27T21:02:40.934537+00:00",
+    "staleAfter": "2026-10-28T21:02:40.934537+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261027T204534-runtime-latch",
-      "generatedAt": "2026-10-27T20:45:34.251741+00:00",
-      "sourceUpdatedAt": "2026-10-27T20:45:34.251741+00:00"
+      "snapshotId": "snapshot-20261027T210240-landing-corridor-20261028",
+      "generatedAt": "2026-10-27T21:02:40.934537+00:00",
+      "sourceUpdatedAt": "2026-10-27T21:02:40.934537+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-27T20:45:34.251741+00:00",
+      "at": "2026-10-27T21:02:40.934537+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -1593,7 +1852,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261027T204534-runtime-latch/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261027T210240-landing-corridor-20261028/"
   },
   "experiments": [
     {
@@ -1725,6 +1984,35 @@
         "admission-runtime-report",
         "admission-runtime-review",
         "admission-runtime-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "single run per population"
+    },
+    {
+      "id": "landing-corridor-20261028",
+      "title": "착지 차단과 첫 걸음 분리: B8FB ON/OFF 및 정적 재생",
+      "track": "functional",
+      "sourceRunId": [
+        "runtime-20261028-055226"
+      ],
+      "buildId": [
+        "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [
+        {
+          "count": 64,
+          "seconds": 300,
+          "repetitions": 1
+        }
+      ],
+      "evidenceReferences": [
+        "landing-corridor-20261028-report",
+        "landing-corridor-20261028-review",
+        "landing-corridor-20261028-json"
       ],
       "blockers": [
         "high-hold-6-32",

@@ -1,227 +1,82 @@
 # DayZ NPC AI — 외부 세션 검토 자료
 
-Snapshot: snapshot-20261027T204534-runtime-latch
+Snapshot: snapshot-20261027T210240-landing-corridor-20261028
 
-B8FB 실제 8→64명 재접근 검증: 최종 도착과 고지대 잔여 2개체
+착지 차단과 첫 걸음 분리: B8FB ON/OFF 및 컨테이너 정적 재생
 
-작성: 2026-10-28T05:44:35.889391+09:00
+작성: 2026-10-28T06:02:06.263048+09:00
 
 1. 작업 목표
 
-B8FBAB74의 틱 간 입구 거부 전달과 실제 재접근 보행을 8→64명 격리 환경에서 확인한다. 정상 밀림·낙하·복귀를 보존하고 중간 고지대 추적과 최종 도착을 별도 집계한다.
+고지대 미도달 6·32번의 착지 지연을 군집 점유와 정적 지형/첫 걸음 검사로 구분한다. 같은 B8FB 수정본에서 재접근 플래그만 OFF한 64명 대조를 실행한다. 정상 낙하·복귀와 기존 이동 검사는 보존한다.
 
 2. 실제 수행
 
-- 후보 보관본 24개 해시 대조 후 기존 서명 PBO 3개를 두 실행에서 검증했다. 새 게임 코드/PBO 변경·재빌드는 없다.
-- activeReference, 8명/180초와 64명/300초. StateContract·DriveAttribution·extended egress·first/near-first step·endpoint lookahead·terrain contact owner·pursuit path revalidation·admission reapproach 사용. VSync on, 동일 그래픽 seed, 자동 정규 종료.
-- 기존 분석기 5개로 상태 전이·출구 lease·재접근·HIGH_HOLD 표본·갱신 간격을 분석했다. 화면 캡처는 8명 장면 존재 확인에 한정되며 시간적 품질 영상은 없다.
+- 원래 ON 64명 runtime-20261028-053554와 같은 빌드·미션·그래픽·300초·8부품/개체·상세 계측을 유지하고 runtime-20261028-055226에서 admission reapproach만 OFF했다. 두 실행 정상 종료. OFF 화면의 군집 존재를 확인했으며 새 동영상은 없다.
+- ON 기록에서 6·32번의 HIGH_HOLD LANDING_SPACE_BLOCKED 첫/중간/마지막 표본 6개를 선택했다. 같은 컨테이너 엔진 씬에 군집 없이 LandingSpace·5개 위치 변형을 정적으로 재생했다.
+- 추가 세부 재생: 150개 바닥 레이 기록, 2위치×33방향×3몸통 높이=198개 3cm 구형 sweep. 8방향과 남쪽 기준 -60~60도 5도 간격을 비교했다. 새 이동 동작은 실행하지 않았다.
+- 첫 확장 미션은 함수 명령 수 초과로 컴파일 실패했다. 실패본·로그를 보존하고 공통 함수로 분리한 별도 compact 미션의 엔진 컴파일/실행을 통과했다. PBO는 변경하지 않았다.
 
 3. 측정 결과
 
-|항목|8명 053114|64명 053554|
+|64명 같은 B8FB|ON 053554|OFF 055226|
 |---|---:|---:|
-|최종 FOLLOW/ARRIVED|8/8|64/64|
-|HIGH_HOLD 내 미도달|0|2 (6·32번)|
-|낙하 후 FOLLOW 복귀|10|76|
-|재접근 ARRIVED / 목표변경 취소|1 / 0|15 / 1|
-|재접근 계약 위반|0|0|
-|출구 복구 DONE / 계약 위반|2 / 0|10 / 0|
+|최종 도착|64/64|64/64|
+|HIGH_HOLD 미도달|2 (6·32)|5 (3·22·24·41·55)|
+|낙하 후 FOLLOW 복귀|76|86|
 |등반 종료 검증 실패|0|0|
-|foreground 미션 dt p50/p95/p99|20/33/35ms|30/72/95ms|
+|출구 저널 계약 위반|0|0|
+|출구 DONE / EXPIRED / 다른 상태 인계|10 / 0 / 0|16 / 2 / 6|
+|미션 dt p50/p95/p99|30/72/95ms|28/57/79ms|
 
-각 조건 반복 1회. 64명 HIGH_HOLD 표본 구간 45.083~104.927초. 물리 전이 916개가 같은 호출 계측과 연결됐다. 미션 dt는 Present/GPU 지연이 아니며 상세 계측 비용을 포함한다. 갱신 콜백 약 13.96/15.27Hz는 화면 애니메이션 프레임률이 아니다. 20ms p95 미달, 최적화 개선 판정 불가.
+OFF 물리 전이 977개가 같은 호출 계측과 연결됐다. EXPIRED는 bounded lease의 명시적 종료이며 계약 위반 0과 구분한다. 중간 목표 달성이나 물리적 정체 해소 자체를 입증하지 않는다. 전경 로그 비율 두 실행 100%. 조건당 1회이고 상세 계측·이동 결과가 다르므로 p95 차이 15ms를 순수 재접근 비용이나 최적화 효과로 보지 않는다.
+
+정적 재생: 원위치 6/6 FOOT_X_SUPPORT 거부. 동쪽 발 6/6 정상 바닥. 서쪽 발 6/6은 컨테이너 옆면을 fraction=0에서 맞아 바닥 거부(normalY 약0.014~0.019, 높이차 약0.450m). 이 검사를 완화하지 않았다. 같은 원위치에서 0.3m 남쪽 변형은 4/6 CLEAR였지만 이는 순간 위치 변형 질의이며 실행 가능한 이동을 뜻하지 않는다.
+
+몸통-only sweep: 32번 64.089초 위치는 기존 8방향에서 세 높이를 모두 통과하는 방향 0개, 추가 남쪽 기준 5·10·15·20·25·30·35도 7개였다. 6번 61.23초 위치는 추가 각도에서도 0개다. 후자는 모든 초기 접촉 hit를 막힌 것으로 집계한 결과이며 기존 비침투/초기접촉 이탈 허용을 포함한 전체 PressureEscapeStepClear 결과가 아니다.
 
 4. 원인 분석
 
-사실: 새 분기가 두 실행에서 실제로 동작했다. 64명에서 재접근 15회는 4.5cm 허용 간격 안에 도착했고 1회는 INTENT_CHANGED로 취소됐다. 미종료 intent와 출구 lease 위반은 없다. 첫 3ECC 후보의 분기 0회와 달리 B8FB 전달 수정의 실행성은 확인됐다.
+확인: 선정 착지 차단은 군집이 없어도 정적 컨테이너 옆면과 바닥 발 지지 검사로 재현된다. 현재 위치의 착지 조건 거부와 안전한 목표로 향하는 첫 물리 이동 거부는 별개다. 원시 escape 계획에서 남쪽 목표는 선택됐지만 첫 걸음이 NEW_WORLD_CONTACT로 거부됐다.
 
-사실: 6번은 50.805초 낮은 면에서 PRESSURE_SUPPORT_LOSS로 낙하, 75.382초 LAND, 82.801초 FOLLOW로 복귀했다. 64명 HIGH_HOLD 표본 113개 중 LANDING_SPACE_BLOCKED 45개, NATIVE_JOINT_WORLD_2 25개다. 이는 표본 수이며 지속 시간이나 충돌 원인을 독립 확정하는 수치가 아니다.
+확인: 적어도 한 위치의 고정 8방향 몸통 검사에는 빈 방향이 없지만 더 세밀한 각도에는 있다. 목표의 LandingSpace 성공만으로 중간 경로가 통과한다고 볼 수 없다.
 
-사실: 32번은 51.257·78.644·95.218초 낮은 면에서 같은 지지 상실 낙하를 요청했다. 72.874→75.055초와 87.873→89.922초 지면→낮은 면 등반은 완료됐고 이어 다시 낙하했다. 종료 지지 질의 8개는 CLEAR/true다. 정지한 재접근 intent나 CLIMB_EXIT_VALIDATION과 구분된다.
+추정: 접촉 법선/목표 방향으로 제한된 추가 후보를 만들고 기존 전체 sweep·비침투·군집·발판 검사를 유지하면 일부 복귀 정체를 해소할 수 있다. 32번의 몸통 통과는 관절·군집·지면까지 가능한 경로가 아니므로 후보 설계의 근거로만 사용한다. 6번은 초기접촉 이탈과 실제 관절/몸통 sweep의 별도 재현이 더 필요하다.
 
-추정: 착지 및 본 포즈의 정적 컨테이너 접촉과 입구 정렬 중 군집 압력이 고지대 복귀를 늦췄을 수 있다. 실패 시점 LandingSpace의 전체 게이트와 실제 접촉 개체를 모두 기록하지 않으므로 근본 원인으로 확정하지 않는다.
-
-반증/한계: 최종 64/64가 중간 고지대 성공을 뜻한다는 해석은 반증된다. 3ECC의 미도달 11명→이번 2명은 실행 간 기술적 관찰이며 통제 반복 A/B의 인과 효과나 안정성 수용이 아니다. 정상 낙하를 실패로 재분류하거나 지지 검사를 완화하지 않았다.
+미입증: ON이 미도달 5→2를 인과적으로 줄였다는 해석, OFF의 낮은 p95가 기능 제거의 순수 비용이라는 해석은 단회 대조로 입증하지 못한다. 낙하를 제거하거나 벽 충돌을 무시하는 수정은 하지 않았다.
 
 5. 검증 수준
 
-- 진단 성공: B8FB 실제 재접근 실행·완료, 두 잔여 개체의 상태 흐름 분리.
-- 이번 8명 기능 묶음: 해당 한 실행에서 중간/최종 도착 및 계측 계약 통과. 반복 검증 완료 아님.
-- 64명: 최종 도착·출구 계약은 해당 실행 통과, 고지대 중간 기준 미달. 전체 회귀 통과·최종 수용 아님.
-- 과거 74개 회귀 검사는 보존했으며 이번에 재실행하지 않았다.
-- 시각 부드러움·CPU/표시 지연 원인·성능 최적화: 미수용. 네이티브 애니메이션 평가/그래프·GPU·할당/GC 직접 귀속은 이 실험에서 미측정.
+- 진단 성공: 6개 정적 발 지지 거부 재현, 실패 발 레이 원인, 32번의 고정 방향 표본 누락.
+- 엔진 진단 통과: compact 미션의 30착지·150레이·198몸통 sweep 및 기존 바인딩 smoke. 실제 NPC 회귀 통과를 뜻하지 않는다.
+- 64명 OFF: 한 실행 최종 도착/등반 종료·저널 계약은 통과, 고지대 기준 미달. ON/OFF 반복 검증 미완료.
+- 게임 로직 수정·애니메이션 시각 개선·성능 수용: 미실행/미수용. 20ms p95 목표 미달. 원래 골은 진행 중이다.
 
 6. 변경 사항
 
-게임 코드와 PBO는 변경하지 않았다. Integration build B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185, mission source F8356C4F1E0286DCE7ED83F0137E68061249D48ABEB175942D44A8A048D704D3. 후보 보관본 해시 일치 및 기존 서명 3개 검증 성공. 새 서명 수행은 없다.
+추가: stage_horde_landing_replay.py, stage_horde_escape_corridor_replay.py, checkpoint_horde_landing_corridor_20261028.py와 별도 validation 미션/파생 분석. compile_days_gone_native_runtime_probe.ps1에 지정된 landing 진단 미션 이름과 완료/실패 표식 검사만 추가했다. 공개 스테이징 도구는 다른 완료 묶음도 같은 B안 구조에 넣을 수 있도록 매개변수화했다.
 
-새 파일: runtime 두 개의 분석 파생본, checkpoint_horde_admission_runtime_20261028.py, 이번 체크포인트·복사본·선정 근거 패킷. 기존 진행 JSON에 현재 결과를 추가한다. 과거 보고서와 원시 자료는 덮어쓰지 않는다. B안 공개 저장소만 갱신한다.
+게임 소스·정상 이동 파이프라인·PBO·기존 raw/report는 변경하지 않았다. B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185 유지. 기존 서명 검증 통과, 새 서명/재빌드 없음. 운영 서버 변경 없음.
 
 7. 원시 증거
 
-실행 ID runtime-20261028-053114 및 runtime-20261028-053554. 각 profile의 launch.json, native-ground.tsv, native-natural-player.tsv, native-state-contract.tsv, native-admission-reapproach.tsv, native-pose-cadence.tsv와 state-contract-report.json, missed-surface-analysis.json, admission-reapproach-analysis.json, egress-clearance-analysis.json, controlled-analysis.json. 원문 경로와 SHA-256은 아래 로컬 무결성 목록에 기록한다. 공개본은 선정 필드·함수 발췌만 제공한다. 새 영상은 수집하지 않았다.
+runtime-20261028-053554(ON), runtime-20261028-055226(OFF), 각 native-ground/state-contract/traversal-events/escape-plans 및 분석 JSON. 최초 정적 profile compile-8000a85c453942dba6421b9e81226c55, 실패 확장 compile-15d580d4c42a4a328e0566e573e1a19b, 성공 compact compile-6da3994c2a0049a48806d84d09c4608c. recorded-landing.tsv·recorded-floor-detail.tsv·recorded-core-corridor.tsv와 staged/engine-compile JSON을 보존했다. 아래 로컬 목록에서 경로·SHA-256을 검증한다. 공개 패킷은 선정 함수/결과/레이 표본만 제공하며 내부 경로와 프로세스 정보는 제외한다.
 
 8. 잔여 문제
 
-1. 6·32번에 대해 낙하→착지 차단→복귀/재등반 구간을 기록 입력으로 재생하고 LandingSpace 게이트/충돌 대상과 정렬 중 압력 소유권을 확인한다. 정상 낙하를 보존하며 도착 위치 순간이동이나 검사 완화는 하지 않는다.
-2. 동일 B8FB·그래픽·부하에서 재접근 flag OFF/ON 대조와 반복 실행으로 실행 간 변동을 분리한다. 단일 유리한 실행으로 성공 선언하지 않는다.
-3. 애니메이션 별도 실험: 1개체/64개체 AI·이동 OFF, 64개체 정적 포즈 active, 64개체 완전 active. 실제 화면 프레임과 CPU 포즈를 시간으로 맞추고 버퍼 연속성을 조사한다. 추측 보간은 보류한다.
-4. 성능 별도 실험: AI/경로/복구/접촉 및 노출 가능한 갱신 비용을 동일 조건에서 귀속한다. 네이티브 평가·렌더·GC의 계측 불가 부분은 명시한다.
-5. 사용자 요청한 골 재개는 실행 중이며 이 보고서는 안전 종료한 기능 묶음의 체크포인트다. 전체 목표는 미완료다. 운영 서버는 수정하지 않았다.
+1. 추가 방향은 접촉 법선 기반의 소수 후보로 제한하고 기존 8방향이 실패할 때만 평가하는 후보를 설계한다. 먼저 기록 입력에서 원래 초기접촉 처리/본 sweep까지 비교해야 한다. 통과 시 opt-in 기능 후보로 빌드·서명·회귀 검증한다. 단순 각도 전수 탐색을 매 틱 추가하지 않는다.
+2. 6번의 실제 world 시작 접촉과 법선·본 위치를 읽기 계측/기록 재생으로 좁힌다. 전체 경로가 물리적으로 없는 경우와 후보 방향 누락을 구분한다.
+3. ON/OFF 순서 교차 반복으로 군집 변동을 측정한다. 기능 기준 64/64 유효 종료와 중간 고지대 도달을 함께 유지한다.
+4. CPU/표시 시간 불일치와 buffer 연속성은 별도 진행한다. 이번 스크린샷·콜백·정적 재생으로 애니메이션 끊김을 해결했다고 보고하지 않는다. 성능 4조건 대조와 직접 계측 불가 범위도 별도 유지한다.
 
-원본 보고서 ID: 2026-10-28_054435_889391+0900_npc-admission-latch-runtime.md
-원본 SHA-256: f320a6700aaca369f0aa67dd658620d3dff39c577106d600cd3779b668338002
+원본 보고서 ID: 2026-10-28_060206_263048+0900_npc-landing-corridor.md
+원본 SHA-256: c482a3e29f0e546c2ca35013094aa80278627c613eae350dacb9a31e4a68cd9f
 이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
 
-===== 선정 근거 (전체 원본 아님) =====
-함수 선택: 틱 간 전달·재접근 제안·취소·실제 보행을 포함하는 AR 함수군.
-SOURCE DGSubsetFootprintRecovery.c; SHA256 6e3bb6f1b1e7b232bed0aa9f9d623e7a8f022a27463f403cf683fb64acfb8fd3; lines 1-99
-1: // Local roof safety intent, not player evidence. All root motion still runs
-2: // through Walk -> DriveGround -> MoveTo -> SolveContacts unchanged.
-3: modded class DGBNativeTraversal
-4: {
-5:     bool FRActive;bool FRTurning;bool FRPolicyRead;bool FRPolicyEnabled;
-6:     float FRBlockedAt=-1;float FRNextPlan;float FRUntil;
-7:     vector FRGoal;vector FROrigin;string FRArea;string FRLastStatus;
-8:     int FRPlans;int FRStarts;int FRCompleted;int FRRejected;int FRTurns;
-9:     static float FRBudgetAt=-1;static int FRPlansThisFrame;
-10:     bool ARPolicyRead;bool AREnabled;bool ARActive;
-11:     float ARUntil;float ARNextCheck;int ARRevision;string ARArea;
-12:     vector ARGoal;DGBFixtureLink ARSource;
-13:     bool ARStartRejected;int ARRejectedRevision;DGBFixtureLink ARRejectedSource;
-14:     // Drive clears Body.Reason before Follow, so capture the completed
-15:     // previous decision explicitly rather than reading a stale display field.
-16:     void ARCaptureOutcome()
-17:     {
-18:         ARStartRejected=AREnabled && !ARActive && Phase=="FOLLOW" && Body.Reason=="EXIT_SPACE_BLOCKED";
-19:         if(ARStartRejected)
-20:         {ARRejectedRevision=GoalRevision;ARRejectedSource=Active;}
-21:         else ARRejectedSource=null;
-22:     }
-23:     override void Drive(float dt,vector delta,bool available)
-24:     {
-25:         super.Drive(dt,delta,available);ARCaptureOutcome();
-26:     }
-27:     // A separate local intent only after the ordinary start-placement gate
-28:     // rejects support. It never changes Admission/Active or any position.
-29:     bool ARProposal(out vector goal)
-30:     {
-31:         if(!Body.Director.OpenTraversal || Phase!="FOLLOW" || !Admission || !Active || AdmissionSource!=Active)return false;
-32:         if(Admission.Action!="CLIMB" || Admission.SourceArea!=Area)return false;
-33:         float gap=DGBGroundAgent.FlatDistance(Body.Agent.Position,Admission.Entry);
-34:         if(gap<=0.045 || gap>0.36)return false;
-35:         float error=Math.AbsFloat(DGBGroundAgent.SignedAngle(Body.Agent.Heading-Admission.Heading));
-36:         if(error>1)return false;
-37:         string saved=LandingDiagnostic;vector support;
-38:         ref DGBFixtureLink current=DGBNativeAdmission.Place(Admission,Body.Id,Body.Agent.Position,Body.Agent.Heading);
-39:         bool currentValid=LandingSpace(current.Exit,support,false);
-40:         if(currentValid)currentValid=Fixture().Area(support)==Admission.TargetArea && Fixture().LaneSupport(current.Exit,Admission.TargetArea);
-41:         bool targetValid=false;
-42:         if(!currentValid)targetValid=LandingSpace(Admission.Exit,support,false) && Fixture().Area(support)==Admission.TargetArea && Fixture().LaneSupport(Admission.Exit,Admission.TargetArea);
-43:         LandingDiagnostic=saved;
-44:         if(currentValid || !targetValid)return false;
-45:         goal=Admission.Entry;return true;
-46:     }
-47:     void ARLog(string status)
-48:     {
-49:         FileHandle file=OpenFile("$profile:native-admission-reapproach.tsv",FileMode.APPEND);if(!file)return;
-50:         FPrintln(file,(Now()-Body.Director.Born).ToString()+"\t"+Body.Id+"\t"+status+"\t"+Phase+"\t"+Body.Agent.Position+"\t"+ARGoal+"\t"+GoalRevision+"\t"+Body.Reason);
-51:         CloseFile(file);
-52:     }
-53:     void ARFinish(string status,bool releaseLocalMotion=true)
-54:     {
-55:         ARLog(status);ARActive=false;ARSource=null;ARNextCheck=Now()+0.75;
-56:         if(releaseLocalMotion)
-57:         {
-58:             SafetyWalk=false;ForceWalk=false;EntryAligning=false;StartPlacement=null;
-59:             Body.Agent.Path.Clear();Body.Agent.PlanAt=0;Body.RetryAt=0;
-60:             SurfaceWaypoints.Clear();NextSurfacePlan=0;NextAdmissionPlan=0;
-61:         }
-62:     }
-63:     bool AROwnershipAvailable()
-64:     {
-65:         if(Phase!="FOLLOW" || FRActive || IdleClearing || SurfaceYieldActive || PoseClearanceActive)return false;
-66:         if(Body.YieldActive || Body.SupportBypassActive || Body.PeerBypassActive)return false;
-67:         if(Body.Combat && (Body.Combat.Active || Body.Combat.Dead || Body.Combat.PendingDeath))return false;
-68:         return true;
-69:     }
-70:     bool ARFollow(float dt,vector delta,bool available)
-71:     {
-72:         if(!ARPolicyRead){AREnabled=FileExist("$profile:admission-reapproach.flag");ARPolicyRead=true;}
-73:         if(!AREnabled)return false;
-74:         if(!AROwnershipAvailable())
-75:         {if(ARActive)ARFinish("SUCCESSOR_OWNS_MOTION",false);return false;}
-76:         if(ARActive && (GoalRevision!=ARRevision || Area!=ARArea || Active!=ARSource))
-77:         {ARFinish("INTENT_CHANGED");return false;}
-78:         if(ARActive && Now()>=ARUntil){ARFinish("EXPIRED");return false;}
-79:         if(!ARActive)
-80:         {
-81:             if(Now()<ARNextCheck || !ARStartRejected || ARRejectedRevision!=GoalRevision || ARRejectedSource!=Active)return false;
-82:             if(LandingDiagnostic!="FOOT_X_SUPPORT" && LandingDiagnostic!="FOOT_Z_SUPPORT" && LandingDiagnostic!="TARGET_FOOTPRINT_AREA")return false;
-83:             ARNextCheck=Now()+0.25;vector goal;
-84:             if(!ARProposal(goal))return false;
-85:             ARGoal=goal;ARRevision=GoalRevision;ARArea=Area;ARSource=Active;
-86:             ARUntil=Now()+4;ARActive=true;ARStartRejected=false;EntryAligning=false;
-87:             Body.Agent.Path.Clear();Body.Agent.PlanAt=0;Body.RetryAt=0;
-88:             SurfaceWaypoints.Clear();NextSurfacePlan=0;ARLog("START");
-89:         }
-90:         if(DGBGroundAgent.FlatDistance(Body.Agent.Position,ARGoal)<=0.045)
-91:         {ARFinish("ARRIVED");return false;}
-92:         // Native walk delta, heading and collision gates remain authoritative.
-93:         SafetyWalk=true;
-94:         if(Area=="ground")Walk(ARGoal,0.04,false,dt,delta,available);
-95:         else SurfaceWalk(ARGoal,0.04,dt,delta,available);
-96:         Body.NextRequest=1;
-97:         return true;
-98:     }
-99: 
-
-두 실행의 분석 JSON에서 선택한 결과 필드 (원본에 내부 경로/추가 필드 존재):
-[
-  {
-    "runId": "runtime-20261028-053114",
-    "count": 8,
-    "durationSeconds": 180,
-    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-    "terminalArrivals": 8,
-    "unresolvedTerminalAgents": [],
-    "missingHighFollow": [],
-    "highHoldWindow": [
-      45.01,
-      104.987
-    ],
-    "fallsLandedAndResumed": 10,
-    "climbEndFailures": 0,
-    "physicalTransitionsMatched": true,
-    "physicalTransitions": 120,
-    "admissionOutcomes": {
-      "ARRIVED": 1
-    },
-    "admissionViolations": [],
-    "egressOutcomes": {
-      "DONE": 2
-    },
-    "egressViolations": [],
-    "foregroundMissionFrameMs": {
-      "samples": 8684,
-      "p50": 20.0,
-      "p95": 33.0,
-      "p99": 35.0
-    },
-    "foregroundFraction": 0.9995114802149487,
-    "motorCallbackHz": {
-      "minimum": 13.9574374511337,
-      "median": 13.9574374511337,
-      "maximum": 13.9574374511337
-    },
-    "visibleCallbackHz": {
-      "minimum": 13.9574374511337,
-      "median": 13.9574374511337,
-      "maximum": 13.9574374511337
-    },
-    "repetitions": 1
-  },
-  {
+===== 선정 원시 근거 (전체 원본 아님) =====
+ON/OFF 분석 JSON 선택 필드:
+{
+  "on": {
     "runId": "runtime-20261028-053554",
     "count": 64,
     "durationSeconds": 300,
@@ -267,823 +122,393 @@ SOURCE DGSubsetFootprintRecovery.c; SHA256 6e3bb6f1b1e7b232bed0aa9f9d623e7a8f022
       "maximum": 15.271427413128773
     },
     "repetitions": 1
+  },
+  "off": {
+    "runId": "runtime-20261028-055226",
+    "count": 64,
+    "durationSeconds": 300,
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "admissionEnabled": false,
+    "terminalArrivals": 64,
+    "missingHighFollow": [
+      3,
+      22,
+      24,
+      41,
+      55
+    ],
+    "highHoldWindow": [
+      45.002,
+      104.898
+    ],
+    "fallsLandedAndResumed": 86,
+    "climbEndFailures": 0,
+    "admissionOutcomes": {},
+    "admissionViolations": [],
+    "egressOutcomes": {
+      "DONE": 16,
+      "EXPIRED": 2,
+      "PHASE_HANDOFF:FOLLOW": 6
+    },
+    "egressViolations": [],
+    "foregroundMissionFrameMs": {
+      "samples": 9367,
+      "p50": 28.0,
+      "p95": 57.0,
+      "p99": 79.0
+    },
+    "foregroundFraction": 1.0,
+    "repetitions": 1
   }
-]
-
-미도달 ID 6/32만 선택; HIGH_HOLD 내 모든 TRANSITION의 명시 필드 투영 및 기존 분석기의 약 12개 간격 표본. 표본 이유 빈도는 지속 시간 아님.
+}
+정적 원위치 6개만 선택 (30개 중 offset0). 추가30cm 변형은 보고서 집계만 제공:
 [
   {
-    "id": 6,
-    "highStageSamples": 113,
-    "reasonSampleCounts": {
-      "ARRIVED": 1,
-      "": 6,
-      "LINK_ALIGN": 2,
-      "ENTRY_POSE_SETTLE": 1,
-      "ALIGN_HEADING": 4,
-      "NATIVE_FALL": 1,
-      "LANDING_SPACE_BLOCKED": 45,
-      "NATIVE_JOINT_WORLD_2": 25,
-      "LAND": 4,
-      "SUPPORTED_POSE_ESCAPE_TURN": 3,
-      "NATIVE_JOINT_WORLD_1": 13,
-      "NATIVE_JOINT_WORLD_0": 2,
-      "RECOVERY_REPLAN_WAIT": 1,
-      "ENTRY_STALL_BACKOFF": 1,
-      "POSE_CLEARANCE_SEPARATION": 3,
-      "NO_GROUND_PATH": 1
-    },
-    "phaseSampleCounts": {
-      "FOLLOW": 53,
-      "FALL": 46,
-      "LAND": 14
-    },
-    "transitions": [
-      {
-        "seconds": "50.805",
-        "previous": "FOLLOW",
-        "next": "FALL",
-        "failure": "CONTACT_SUPPORT_LOST",
-        "recoveryGeneration": "1",
-        "position": "<4511.325195, 340.179993, 10239.465820>",
-        "contactStatus": "",
-        "callContext": "PRESSURE_SUPPORT_LOSS",
-        "areaAtCall": "low"
-      },
-      {
-        "seconds": "75.382",
-        "previous": "FALL",
-        "next": "LAND",
-        "failure": "CONTACT_SUPPORT_LOST",
-        "recoveryGeneration": "1",
-        "position": "<4511.503906, 339.172150, 10236.850586>",
-        "contactStatus": "",
-        "callContext": "OTHER",
-        "areaAtCall": "ground"
-      },
-      {
-        "seconds": "82.749",
-        "previous": "LAND",
-        "next": "EGRESS",
-        "failure": "CONTACT_SUPPORT_LOST",
-        "recoveryGeneration": "1",
-        "position": "<4511.503906, 339.171906, 10236.790039>",
-        "contactStatus": "",
-        "callContext": "OTHER",
-        "areaAtCall": "ground"
-      },
-      {
-        "seconds": "82.801",
-        "previous": "EGRESS",
-        "next": "FOLLOW",
-        "failure": "CONTACT_SUPPORT_LOST",
-        "recoveryGeneration": "1",
-        "position": "<4511.503906, 339.171906, 10236.790039>",
-        "contactStatus": "StaticObj_Container_1C",
-        "callContext": "OTHER",
-        "areaAtCall": "ground"
-      }
-    ],
-    "sampledTimeline": [
-      {
-        "seconds": "45.143",
-        "position": "<4510.031738, 340.192200, 10239.265625>",
-        "heading": "150.276",
-        "area": "low",
-        "traversalPhase": "FOLLOW",
-        "reason": "ARRIVED",
-        "link": "none",
-        "entryDistance": "0",
-        "entryNormalGap": "0.0263672",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "562",
-        "pressureBlocks": "20",
-        "motionContactHeld": "0",
-        "backoffReason": ""
-      },
-      {
-        "seconds": "49.998",
-        "position": "<4510.855469, 340.208252, 10239.519531>",
-        "heading": "69.7345",
-        "area": "low",
-        "traversalPhase": "FOLLOW",
-        "reason": "ALIGN_HEADING",
-        "link": "none",
-        "entryDistance": "0",
-        "entryNormalGap": "0.0439453",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "634",
-        "pressureBlocks": "20",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      },
-      {
-        "seconds": "54.771",
-        "position": "<4511.487305, 339.278229, 10237.311523>",
-        "heading": "6.7345",
-        "area": "ground",
-        "traversalPhase": "FALL",
-        "reason": "LANDING_SPACE_BLOCKED",
-        "link": "none",
-        "entryDistance": "0",
-        "entryNormalGap": "1.11963",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "646",
-        "pressureBlocks": "20",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      },
-      {
-        "seconds": "59.606",
-        "position": "<4511.491211, 339.278229, 10236.867188>",
-        "heading": "7.55524",
-        "area": "ground",
-        "traversalPhase": "FALL",
-        "reason": "LANDING_SPACE_BLOCKED",
-        "link": "none",
-        "entryDistance": "0",
-        "entryNormalGap": "1.11963",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "646",
-        "pressureBlocks": "20",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      },
-      {
-        "seconds": "64.463",
-        "position": "<4511.492676, 339.278229, 10236.862305>",
-        "heading": "8.25586",
-        "area": "ground",
-        "traversalPhase": "FALL",
-        "reason": "LANDING_SPACE_BLOCKED",
-        "link": "none",
-        "entryDistance": "0",
-        "entryNormalGap": "1.11963",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "646",
-        "pressureBlocks": "20",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      },
-      {
-        "seconds": "69.223",
-        "position": "<4511.492676, 339.278229, 10236.858398>",
-        "heading": "7.75595",
-        "area": "ground",
-        "traversalPhase": "FALL",
-        "reason": "LANDING_SPACE_BLOCKED",
-        "link": "none",
-        "entryDistance": "0",
-        "entryNormalGap": "1.11963",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "646",
-        "pressureBlocks": "20",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      },
-      {
-        "seconds": "73.932",
-        "position": "<4511.494629, 339.278229, 10236.854492>",
-        "heading": "10.6561",
-        "area": "ground",
-        "traversalPhase": "FALL",
-        "reason": "LANDING_SPACE_BLOCKED",
-        "link": "none",
-        "entryDistance": "0",
-        "entryNormalGap": "1.11963",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "646",
-        "pressureBlocks": "20",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      },
-      {
-        "seconds": "78.699",
-        "position": "<4511.503906, 339.171906, 10236.790039>",
-        "heading": "8.6561",
-        "area": "ground",
-        "traversalPhase": "LAND",
-        "reason": "LAND",
-        "link": "none",
-        "entryDistance": "0",
-        "entryNormalGap": "1.11963",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "646",
-        "pressureBlocks": "20",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      },
-      {
-        "seconds": "83.529",
-        "position": "<4511.503906, 339.171906, 10236.790039>",
-        "heading": "5.6561",
-        "area": "ground",
-        "traversalPhase": "FOLLOW",
-        "reason": "NATIVE_JOINT_WORLD_2",
-        "link": "ground_to_low_lane_-1",
-        "entryDistance": "1.66953",
-        "entryNormalGap": "1.51367",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "646",
-        "pressureBlocks": "20",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      },
-      {
-        "seconds": "88.208",
-        "position": "<4511.503906, 339.171906, 10236.790039>",
-        "heading": "5.6561",
-        "area": "ground",
-        "traversalPhase": "FOLLOW",
-        "reason": "NATIVE_JOINT_WORLD_2",
-        "link": "none",
-        "entryDistance": "0",
-        "entryNormalGap": "1.51367",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "646",
-        "pressureBlocks": "25",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_STALL_BACKOFF"
-      },
-      {
-        "seconds": "92.955",
-        "position": "<4511.510254, 339.171906, 10236.761719>",
-        "heading": "5.6561",
-        "area": "ground",
-        "traversalPhase": "FOLLOW",
-        "reason": "RECOVERY_REPLAN_WAIT",
-        "link": "ground_to_low_lane_-1",
-        "entryDistance": "1.64663",
-        "entryNormalGap": "1.48535",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "647",
-        "pressureBlocks": "30",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_STALL_BACKOFF"
-      },
-      {
-        "seconds": "97.665",
-        "position": "<4511.510254, 339.171906, 10236.761719>",
-        "heading": "5.6561",
-        "area": "ground",
-        "traversalPhase": "FOLLOW",
-        "reason": "NATIVE_JOINT_WORLD_1",
-        "link": "none",
-        "entryDistance": "0",
-        "entryNormalGap": "1.48535",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "647",
-        "pressureBlocks": "30",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_STALL_BACKOFF"
-      },
-      {
-        "seconds": "102.484",
-        "position": "<4511.536621, 339.171326, 10236.488281>",
-        "heading": "-52.3439",
-        "area": "ground",
-        "traversalPhase": "FOLLOW",
-        "reason": "POSE_CLEARANCE_SEPARATION",
-        "link": "ground_to_low_lane_-1",
-        "entryDistance": "1.41844",
-        "entryNormalGap": "1.24219",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "663",
-        "pressureBlocks": "34",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_STALL_BACKOFF"
-      }
-    ]
+    "stamp": "51.644",
+    "id": "6",
+    "root": "<4511.480957, 339.398163, 10239.166016>",
+    "offset": "<0.000000, 0.000000, 0.000000>",
+    "near": "<4511.480957, 339.398163, 10239.166016>",
+    "floorValid": "true",
+    "floor": "<4511.480957, 339.178772, 10239.166016>",
+    "valid": "false",
+    "diagnostic": "FOOT_X_SUPPORT",
+    "support": "<4511.480957, 339.178772, 10239.166016>",
+    "fixture035": "false",
+    "fixture090": "false",
+    "fixture150": "false",
+    "world035": "false:none",
+    "world090": "true:StaticObj_Container_1C",
+    "world150": "false:none"
   },
   {
-    "id": 32,
-    "highStageSamples": 113,
-    "reasonSampleCounts": {
-      "": 15,
-      "ENTRY_POSE_SETTLE": 2,
-      "LINK_ALIGN": 9,
-      "ALIGN_HEADING": 17,
-      "NATIVE_FALL": 2,
-      "LANDING_SPACE_BLOCKED": 15,
-      "LAND_CLEARANCE_SEPARATION": 4,
-      "LAND": 20,
-      "SUPPORTED_POSE_ESCAPE_TURN": 1,
-      "NATIVE_JOINT_WORLD_2": 7,
-      "RECOVERY_REPLAN_WAIT": 4,
-      "POSE_CLEARANCE_SEPARATION": 2,
-      "NATIVE_MOTION": 8,
-      "SETTLE": 2,
-      "EGRESS_POSE_CLEARANCE": 3,
-      "EGRESS_POSE_CLEARANCE_DONE": 1,
-      "FALL_CONTACT_AIR_SEPARATION": 1
-    },
-    "phaseSampleCounts": {
-      "FOLLOW": 47,
-      "FALL": 18,
-      "LAND": 30,
-      "EGRESS": 8,
-      "MOTION": 8,
-      "SETTLE": 2
-    },
-    "transitions": [
-      {
-        "seconds": "51.257",
-        "previous": "FOLLOW",
-        "next": "FALL",
-        "failure": "CONTACT_SUPPORT_LOST",
-        "recoveryGeneration": "1",
-        "position": "<4511.312988, 340.176849, 10238.347656>",
-        "contactStatus": "",
-        "callContext": "PRESSURE_SUPPORT_LOSS",
-        "areaAtCall": "low"
-      },
-      {
-        "seconds": "60.05",
-        "previous": "FALL",
-        "next": "LAND",
-        "failure": "CONTACT_SUPPORT_LOST",
-        "recoveryGeneration": "1",
-        "position": "<4511.505371, 339.172150, 10236.846680>",
-        "contactStatus": "",
-        "callContext": "OTHER",
-        "areaAtCall": "ground"
-      },
-      {
-        "seconds": "67.581",
-        "previous": "LAND",
-        "next": "EGRESS",
-        "failure": "CONTACT_SUPPORT_LOST",
-        "recoveryGeneration": "1",
-        "position": "<4511.505371, 339.171936, 10236.786133>",
-        "contactStatus": "",
-        "callContext": "OTHER",
-        "areaAtCall": "ground"
-      },
-      {
-        "seconds": "67.647",
-        "previous": "EGRESS",
-        "next": "FOLLOW",
-        "failure": "CONTACT_SUPPORT_LOST",
-        "recoveryGeneration": "1",
-        "position": "<4511.505371, 339.171936, 10236.786133>",
-        "contactStatus": "",
-        "callContext": "OTHER",
-        "areaAtCall": "ground"
-      },
-      {
-        "seconds": "72.874",
-        "previous": "FOLLOW",
-        "next": "MOTION",
-        "failure": "",
-        "recoveryGeneration": "1",
-        "position": "<4510.155273, 339.140625, 10235.262695>",
-        "contactStatus": "",
-        "callContext": "FOLLOW",
-        "areaAtCall": "ground"
-      },
-      {
-        "seconds": "75.055",
-        "previous": "MOTION",
-        "next": "SETTLE",
-        "failure": "",
-        "recoveryGeneration": "1",
-        "position": "<4509.803223, 340.189056, 10237.227539>",
-        "contactStatus": "",
-        "callContext": "MOTION",
-        "areaAtCall": "low"
-      },
-      {
-        "seconds": "75.816",
-        "previous": "SETTLE",
-        "next": "EGRESS",
-        "failure": "",
-        "recoveryGeneration": "1",
-        "position": "<4509.803223, 340.182495, 10237.227539>",
-        "contactStatus": "",
-        "callContext": "OTHER",
-        "areaAtCall": "low"
-      },
-      {
-        "seconds": "75.871",
-        "previous": "EGRESS",
-        "next": "FOLLOW",
-        "failure": "",
-        "recoveryGeneration": "1",
-        "position": "<4509.803223, 340.182495, 10237.227539>",
-        "contactStatus": "",
-        "callContext": "OTHER",
-        "areaAtCall": "low"
-      },
-      {
-        "seconds": "78.644",
-        "previous": "FOLLOW",
-        "next": "FALL",
-        "failure": "CONTACT_SUPPORT_LOST",
-        "recoveryGeneration": "2",
-        "position": "<4510.210449, 340.152313, 10236.705078>",
-        "contactStatus": "",
-        "callContext": "PRESSURE_SUPPORT_LOSS",
-        "areaAtCall": "low"
-      },
-      {
-        "seconds": "79.197",
-        "previous": "FALL",
-        "next": "LAND",
-        "failure": "CONTACT_SUPPORT_LOST",
-        "recoveryGeneration": "2",
-        "position": "<4510.291504, 339.147583, 10236.365234>",
-        "contactStatus": "",
-        "callContext": "OTHER",
-        "areaAtCall": "ground"
-      },
-      {
-        "seconds": "83.348",
-        "previous": "LAND",
-        "next": "EGRESS",
-        "failure": "CONTACT_SUPPORT_LOST",
-        "recoveryGeneration": "2",
-        "position": "<4510.291504, 339.146271, 10236.032227>",
-        "contactStatus": "",
-        "callContext": "OTHER",
-        "areaAtCall": "ground"
-      },
-      {
-        "seconds": "85.055",
-        "previous": "EGRESS",
-        "next": "FOLLOW",
-        "failure": "CONTACT_SUPPORT_LOST",
-        "recoveryGeneration": "2",
-        "position": "<4509.997559, 339.139709, 10235.764648>",
-        "contactStatus": "",
-        "callContext": "OTHER",
-        "areaAtCall": "ground"
-      },
-      {
-        "seconds": "87.873",
-        "previous": "FOLLOW",
-        "next": "MOTION",
-        "failure": "",
-        "recoveryGeneration": "2",
-        "position": "<4509.783691, 339.133789, 10235.286133>",
-        "contactStatus": "",
-        "callContext": "FOLLOW",
-        "areaAtCall": "ground"
-      },
-      {
-        "seconds": "89.922",
-        "previous": "MOTION",
-        "next": "SETTLE",
-        "failure": "",
-        "recoveryGeneration": "2",
-        "position": "<4509.668945, 340.182190, 10237.250977>",
-        "contactStatus": "",
-        "callContext": "MOTION",
-        "areaAtCall": "low"
-      },
-      {
-        "seconds": "90.557",
-        "previous": "SETTLE",
-        "next": "EGRESS",
-        "failure": "",
-        "recoveryGeneration": "2",
-        "position": "<4509.668945, 340.180054, 10237.250977>",
-        "contactStatus": "",
-        "callContext": "OTHER",
-        "areaAtCall": "low"
-      },
-      {
-        "seconds": "90.621",
-        "previous": "EGRESS",
-        "next": "FOLLOW",
-        "failure": "",
-        "recoveryGeneration": "2",
-        "position": "<4509.668945, 340.180054, 10237.250977>",
-        "contactStatus": "",
-        "callContext": "OTHER",
-        "areaAtCall": "low"
-      },
-      {
-        "seconds": "95.218",
-        "previous": "FOLLOW",
-        "next": "FALL",
-        "failure": "CONTACT_SUPPORT_LOST",
-        "recoveryGeneration": "3",
-        "position": "<4510.179199, 340.151947, 10236.697266>",
-        "contactStatus": "",
-        "callContext": "PRESSURE_SUPPORT_LOSS",
-        "areaAtCall": "low"
-      },
-      {
-        "seconds": "95.819",
-        "previous": "FALL",
-        "next": "LAND",
-        "failure": "CONTACT_SUPPORT_LOST",
-        "recoveryGeneration": "3",
-        "position": "<4510.195801, 339.145721, 10236.348633>",
-        "contactStatus": "",
-        "callContext": "OTHER",
-        "areaAtCall": "ground"
-      },
-      {
-        "seconds": "100.231",
-        "previous": "LAND",
-        "next": "EGRESS",
-        "failure": "CONTACT_SUPPORT_LOST",
-        "recoveryGeneration": "3",
-        "position": "<4510.195801, 339.144501, 10236.045898>",
-        "contactStatus": "",
-        "callContext": "OTHER",
-        "areaAtCall": "ground"
-      },
-      {
-        "seconds": "102.092",
-        "previous": "EGRESS",
-        "next": "FOLLOW",
-        "failure": "CONTACT_SUPPORT_LOST",
-        "recoveryGeneration": "3",
-        "position": "<4509.909668, 339.138092, 10235.772461>",
-        "contactStatus": "",
-        "callContext": "OTHER",
-        "areaAtCall": "ground"
-      }
-    ],
-    "sampledTimeline": [
-      {
-        "seconds": "45.143",
-        "position": "<4509.109863, 340.175171, 10239.338867>",
-        "heading": "62.7204",
-        "area": "low",
-        "traversalPhase": "FOLLOW",
-        "reason": "",
-        "link": "none",
-        "entryDistance": "0",
-        "entryNormalGap": "0.0390625",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "517",
-        "pressureBlocks": "0",
-        "motionContactHeld": "0",
-        "backoffReason": ""
-      },
-      {
-        "seconds": "49.998",
-        "position": "<4510.698730, 340.203125, 10238.698242>",
-        "heading": "40.1424",
-        "area": "low",
-        "traversalPhase": "FOLLOW",
-        "reason": "ALIGN_HEADING",
-        "link": "none",
-        "entryDistance": "0",
-        "entryNormalGap": "0.0551758",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "589",
-        "pressureBlocks": "0",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      },
-      {
-        "seconds": "54.771",
-        "position": "<4511.482422, 339.275391, 10236.904297>",
-        "heading": "9.1424",
-        "area": "ground",
-        "traversalPhase": "FALL",
-        "reason": "LANDING_SPACE_BLOCKED",
-        "link": "none",
-        "entryDistance": "0",
-        "entryNormalGap": "1.11035",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "608",
-        "pressureBlocks": "0",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      },
-      {
-        "seconds": "59.606",
-        "position": "<4511.497070, 339.275391, 10236.858398>",
-        "heading": "10.3217",
-        "area": "ground",
-        "traversalPhase": "FALL",
-        "reason": "LANDING_SPACE_BLOCKED",
-        "link": "none",
-        "entryDistance": "0",
-        "entryNormalGap": "1.11035",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "608",
-        "pressureBlocks": "0",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      },
-      {
-        "seconds": "64.463",
-        "position": "<4511.505371, 339.171936, 10236.786133>",
-        "heading": "7.32166",
-        "area": "ground",
-        "traversalPhase": "LAND",
-        "reason": "NATIVE_JOINT_WORLD_2",
-        "link": "none",
-        "entryDistance": "0",
-        "entryNormalGap": "1.11035",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "608",
-        "pressureBlocks": "0",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      },
-      {
-        "seconds": "69.223",
-        "position": "<4511.620605, 339.171783, 10236.214844>",
-        "heading": "-28.6783",
-        "area": "ground",
-        "traversalPhase": "FOLLOW",
-        "reason": "POSE_CLEARANCE_SEPARATION",
-        "link": "ground_to_low_lane_-1",
-        "entryDistance": "1.24692",
-        "entryNormalGap": "0.96875",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "629",
-        "pressureBlocks": "2",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      },
-      {
-        "seconds": "73.932",
-        "position": "<4509.907227, 340.161041, 10236.602539>",
-        "heading": "0",
-        "area": "low",
-        "traversalPhase": "MOTION",
-        "reason": "NATIVE_MOTION",
-        "link": "ground_to_low",
-        "entryDistance": "1.70234",
-        "entryNormalGap": "0.0136719",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "698",
-        "pressureBlocks": "2",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      },
-      {
-        "seconds": "78.699",
-        "position": "<4510.222656, 340.101868, 10236.678711>",
-        "heading": "24",
-        "area": "low",
-        "traversalPhase": "FALL",
-        "reason": "NATIVE_FALL",
-        "link": "none",
-        "entryDistance": "0",
-        "entryNormalGap": "0.0273438",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "741",
-        "pressureBlocks": "2",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      },
-      {
-        "seconds": "83.529",
-        "position": "<4510.340332, 339.147461, 10236.107422>",
-        "heading": "12",
-        "area": "ground",
-        "traversalPhase": "EGRESS",
-        "reason": "",
-        "link": "none",
-        "entryDistance": "0",
-        "entryNormalGap": "0.0273438",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "741",
-        "pressureBlocks": "2",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      },
-      {
-        "seconds": "88.208",
-        "position": "<4509.718750, 339.136200, 10235.835938>",
-        "heading": "0",
-        "area": "ground",
-        "traversalPhase": "MOTION",
-        "reason": "NATIVE_MOTION",
-        "link": "ground_to_low",
-        "entryDistance": "0.553632",
-        "entryNormalGap": "0.00976563",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "779",
-        "pressureBlocks": "2",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      },
-      {
-        "seconds": "92.955",
-        "position": "<4510.046875, 340.187103, 10237.246094>",
-        "heading": "60",
-        "area": "low",
-        "traversalPhase": "FOLLOW",
-        "reason": "ALIGN_HEADING",
-        "link": "low_to_high_lane_-2",
-        "entryDistance": "0.861969",
-        "entryNormalGap": "0.107422",
-        "entryAlignAge": "1.451",
-        "admissionHeading": "90",
-        "pressureSteps": "825",
-        "pressureBlocks": "2",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      },
-      {
-        "seconds": "97.665",
-        "position": "<4510.195801, 339.144501, 10236.045898>",
-        "heading": "30",
-        "area": "ground",
-        "traversalPhase": "LAND",
-        "reason": "LAND",
-        "link": "none",
-        "entryDistance": "0",
-        "entryNormalGap": "0.00976566",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "858",
-        "pressureBlocks": "2",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      },
-      {
-        "seconds": "102.484",
-        "position": "<4509.909668, 339.138092, 10235.772461>",
-        "heading": "55.4673",
-        "area": "ground",
-        "traversalPhase": "FOLLOW",
-        "reason": "ALIGN_HEADING",
-        "link": "ground_to_low",
-        "entryDistance": "0.504251",
-        "entryNormalGap": "0.496094",
-        "entryAlignAge": "-1",
-        "admissionHeading": "0",
-        "pressureSteps": "858",
-        "pressureBlocks": "2",
-        "motionContactHeld": "0",
-        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
-      }
-    ]
+    "stamp": "63.365",
+    "id": "6",
+    "root": "<4511.492676, 339.278229, 10236.863281>",
+    "offset": "<0.000000, 0.000000, 0.000000>",
+    "near": "<4511.492676, 339.278229, 10236.863281>",
+    "floorValid": "true",
+    "floor": "<4511.492676, 339.171997, 10236.863281>",
+    "valid": "false",
+    "diagnostic": "FOOT_X_SUPPORT",
+    "support": "<4511.492676, 339.171997, 10236.863281>",
+    "fixture035": "false",
+    "fixture090": "false",
+    "fixture150": "false",
+    "world035": "false:none",
+    "world090": "false:none",
+    "world150": "false:none"
+  },
+  {
+    "stamp": "75",
+    "id": "6",
+    "root": "<4511.494629, 339.278229, 10236.852539>",
+    "offset": "<0.000000, 0.000000, 0.000000>",
+    "near": "<4511.494629, 339.278229, 10236.852539>",
+    "floorValid": "true",
+    "floor": "<4511.494629, 339.171967, 10236.852539>",
+    "valid": "false",
+    "diagnostic": "FOOT_X_SUPPORT",
+    "support": "<4511.494629, 339.171967, 10236.852539>",
+    "fixture035": "false",
+    "fixture090": "false",
+    "fixture150": "false",
+    "world035": "false:none",
+    "world090": "false:none",
+    "world150": "false:none"
+  },
+  {
+    "stamp": "52.151",
+    "id": "32",
+    "root": "<4511.481934, 339.290375, 10238.037109>",
+    "offset": "<0.000000, 0.000000, 0.000000>",
+    "near": "<4511.481934, 339.290375, 10238.037109>",
+    "floorValid": "true",
+    "floor": "<4511.481934, 339.175751, 10238.037109>",
+    "valid": "false",
+    "diagnostic": "FOOT_X_SUPPORT",
+    "support": "<4511.481934, 339.175751, 10238.037109>",
+    "fixture035": "false",
+    "fixture090": "false",
+    "fixture150": "false",
+    "world035": "false:none",
+    "world090": "false:none",
+    "world150": "false:none"
+  },
+  {
+    "stamp": "55.845",
+    "id": "32",
+    "root": "<4511.482422, 339.275391, 10236.887695>",
+    "offset": "<0.000000, 0.000000, 0.000000>",
+    "near": "<4511.482422, 339.275391, 10236.887695>",
+    "floorValid": "true",
+    "floor": "<4511.482422, 339.171906, 10236.887695>",
+    "valid": "false",
+    "diagnostic": "FOOT_X_SUPPORT",
+    "support": "<4511.482422, 339.171906, 10236.887695>",
+    "fixture035": "false",
+    "fixture090": "false",
+    "fixture150": "false",
+    "world035": "false:none",
+    "world090": "true:StaticObj_Container_1C",
+    "world150": "false:none"
+  },
+  {
+    "stamp": "59.606",
+    "id": "32",
+    "root": "<4511.497070, 339.275391, 10236.858398>",
+    "offset": "<0.000000, 0.000000, 0.000000>",
+    "near": "<4511.497070, 339.275391, 10236.858398>",
+    "floorValid": "true",
+    "floor": "<4511.497070, 339.172058, 10236.858398>",
+    "valid": "false",
+    "diagnostic": "FOOT_X_SUPPORT",
+    "support": "<4511.497070, 339.172058, 10236.858398>",
+    "fixture035": "false",
+    "fixture090": "false",
+    "fixture150": "false",
+    "world035": "false:none",
+    "world090": "false:none",
+    "world150": "false:none"
+  }
+]
+서쪽 발6개만 선택 (150개 레이 중 원위치/probe2):
+[
+  {
+    "stamp": "51.644",
+    "id": "6",
+    "variant": "<0.000000, 0.000000, 0.000000>",
+    "probe": "2",
+    "near": "<4511.250977, 339.178772, 10239.166016>",
+    "rayHit": "true",
+    "hitType": "StaticObj_Container_1C",
+    "point": "<4511.250977, 339.628784, 10239.166016>",
+    "normal": "<0.999826, 0.018665, 0.000030>",
+    "fraction": "0",
+    "heightDifference": "0.450012",
+    "floorAccepted": "false"
+  },
+  {
+    "stamp": "63.365",
+    "id": "6",
+    "variant": "<0.000000, 0.000000, 0.000000>",
+    "probe": "2",
+    "near": "<4511.262695, 339.171997, 10236.863281>",
+    "rayHit": "true",
+    "hitType": "StaticObj_Container_1C",
+    "point": "<4511.262695, 339.622009, 10236.863281>",
+    "normal": "<0.938230, 0.016593, -0.345615>",
+    "fraction": "0",
+    "heightDifference": "0.450012",
+    "floorAccepted": "false"
+  },
+  {
+    "stamp": "75",
+    "id": "6",
+    "variant": "<0.000000, 0.000000, 0.000000>",
+    "probe": "2",
+    "near": "<4511.264648, 339.171967, 10236.852539>",
+    "rayHit": "true",
+    "hitType": "StaticObj_Container_1C",
+    "point": "<4511.264648, 339.621979, 10236.852539>",
+    "normal": "<0.823402, 0.013858, -0.567289>",
+    "fraction": "0",
+    "heightDifference": "0.450012",
+    "floorAccepted": "false"
+  },
+  {
+    "stamp": "52.151",
+    "id": "32",
+    "variant": "<0.000000, 0.000000, 0.000000>",
+    "probe": "2",
+    "near": "<4511.251953, 339.175751, 10238.037109>",
+    "rayHit": "true",
+    "hitType": "StaticObj_Container_1C",
+    "point": "<4511.251953, 339.625763, 10238.037109>",
+    "normal": "<0.999826, 0.018655, -0.000006>",
+    "fraction": "0",
+    "heightDifference": "0.450012",
+    "floorAccepted": "false"
+  },
+  {
+    "stamp": "55.845",
+    "id": "32",
+    "variant": "<0.000000, 0.000000, 0.000000>",
+    "probe": "2",
+    "near": "<4511.252441, 339.171906, 10236.887695>",
+    "rayHit": "true",
+    "hitType": "StaticObj_Container_1C",
+    "point": "<4511.252441, 339.621918, 10236.887695>",
+    "normal": "<0.999826, 0.018663, 0.000013>",
+    "fraction": "0",
+    "heightDifference": "0.450012",
+    "floorAccepted": "false"
+  },
+  {
+    "stamp": "59.606",
+    "id": "32",
+    "variant": "<0.000000, 0.000000, 0.000000>",
+    "probe": "2",
+    "near": "<4511.267090, 339.172058, 10236.858398>",
+    "rayHit": "true",
+    "hitType": "StaticObj_Container_1C",
+    "point": "<4511.267090, 339.622070, 10236.858398>",
+    "normal": "<0.906577, 0.015795, -0.421745>",
+    "fraction": "0",
+    "heightDifference": "0.450012",
+    "floorAccepted": "false"
+  }
+]
+몸통3높이 모두 unfiltered native sweep hit false인 방향만 선택 (198개 중 그룹 통과). 전체 이동 승인 아님:
+[
+  {
+    "id": "32",
+    "family": "south-angle",
+    "angle": 5.0
+  },
+  {
+    "id": "32",
+    "family": "south-angle",
+    "angle": 10.0
+  },
+  {
+    "id": "32",
+    "family": "south-angle",
+    "angle": 15.0
+  },
+  {
+    "id": "32",
+    "family": "south-angle",
+    "angle": 20.0
+  },
+  {
+    "id": "32",
+    "family": "south-angle",
+    "angle": 25.0
+  },
+  {
+    "id": "32",
+    "family": "south-angle",
+    "angle": 30.0
+  },
+  {
+    "id": "32",
+    "family": "south-angle",
+    "angle": 35.0
   }
 ]
 
-SOURCE runtime-20261028-053114/native-admission-reapproach.tsv; SHA256 ae0ddfb4701f14c2a5bc5b3cbc1c131c8607fcbd34f473573ceca5cc9d08b453; 모든 행, 전체 8개 열
-23.874	0	START	FOLLOW	<4508.735840, 339.115417, 10235.247070>	<4508.900391, 339.123566, 10235.276367>	1	
-25.615	0	ARRIVED	FOLLOW	<4508.921875, 339.118713, 10235.274414>	<4508.900391, 339.123566, 10235.276367>	1	
+SOURCE DGBNativeTraversal.c; SHA256 71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872; LandingSpace 전체; lines 180-214
+180:     bool LandingSpace(vector nearPoint,out vector supported,bool requireEntitySpace=true)
+181:     {
+182:         LandingChecks++;LandingDiagnostic="ROOT_SUPPORT";
+183:         if(!DGBGroundAgent.Floor(Body.Leader,nearPoint,supported))return false;
+184:         vector left,right;
+185:         LandingDiagnostic="FOOT_X_SUPPORT";
+186:         if(!DGBGroundAgent.Floor(Body.Leader,supported+"0.23 0 0",left))return false;
+187:         if(!DGBGroundAgent.Floor(Body.Leader,supported+"-0.23 0 0",right))return false;
+188:         if(Math.AbsFloat(left[1] - right[1])>0.22)return false;
+189:         LandingDiagnostic="FOOT_Z_SUPPORT";
+190:         if(!DGBGroundAgent.Floor(Body.Leader,supported+"0 0 0.23",left))return false;
+191:         if(!DGBGroundAgent.Floor(Body.Leader,supported+"0 0 -0.23",right))return false;
+192:         if(Math.AbsFloat(left[1] - right[1])>0.22)return false;
+193:         if(requireEntitySpace && !Body.Agent.ManagedPeerContacts)
+194:             foreach(DGBGroundAgent peer:Body.Director.Agents)
+195:                 if(peer!=Body.Agent && peer.State!="DEAD" && Math.AbsFloat(peer.Position[1] - supported[1])<1 && DGBGroundAgent.FlatDistance(peer.Position,supported)<0.85)
+196:                 {LandingDiagnostic="PEER:"+Body.Director.Agents.Find(peer);return false;}
+197:         if(requireEntitySpace && Body.Director.CrowdDynamics)
+198:             foreach(Man physicalPlayer:Body.Director.PerceivedPlayers)
+199:                 if(physicalPlayer && physicalPlayer.IsAlive() && Math.AbsFloat(physicalPlayer.GetPosition()[1] - supported[1])<1.4 && DGBGroundAgent.FlatDistance(physicalPlayer.GetPosition(),supported)<0.7)
+200:                 {LandingDiagnostic="PLAYER";return false;}
+201:         array<float> heights={0.35,0.9,1.5};
+202:         foreach(float height:heights)
+203:         {
+204:             Object hit;vector point,normal;float fraction;
+205:             vector center=supported+Vector(0,height,0);
+206:             if(Fixture().Occupied(center,0.23)){LandingDiagnostic="FIXTURE_VOLUME";return false;}
+207:             if(DayZPhysics.SphereCastBullet(center,center+"0 0.001 0",0.23,DGBGroundAgent.Walls(),Body.Leader,hit,point,normal,fraction))
+208:             {LandingDiagnostic="WORLD";if(hit){ LandingDiagnostic="WORLD:"+hit.GetType(); }return false;}
+209:         }
+210:         LandingDiagnostic="CLEAR";
+211:         return true;
+212:     }
+213:     void Walk(vector goal,float arrival,bool platform,float dt,vector delta,bool available)
+214:     {
 
-SOURCE runtime-20261028-053554/native-admission-reapproach.tsv; SHA256 67c2c7807a61460323db05d25e108db04cd1d18c825b7176c376504a1532c618; 모든 행, 전체 8개 열
-12.461	4	START	FOLLOW	<4508.817383, 339.116791, 10235.239258>	<4508.906250, 339.123566, 10235.276367>	1	
-12.713	7	START	FOLLOW	<4511.176270, 339.159760, 10235.287109>	<4511.056152, 339.152710, 10235.276367>	1	
-13.52	11	START	FOLLOW	<4511.127930, 339.158783, 10235.266602>	<4511.052734, 339.152710, 10235.276367>	1	
-14.328	4	ARRIVED	FOLLOW	<4508.899414, 339.118408, 10235.308594>	<4508.906250, 339.123566, 10235.276367>	1	
-14.695	12	START	FOLLOW	<4508.804688, 339.116638, 10235.255859>	<4508.960938, 339.123566, 10235.276367>	1	
-15.097	7	ARRIVED	FOLLOW	<4511.044434, 339.157318, 10235.288086>	<4511.056152, 339.152710, 10235.276367>	1	
-15.629	11	ARRIVED	FOLLOW	<4511.022461, 339.156952, 10235.304688>	<4511.052734, 339.152710, 10235.276367>	1	
-16.014	12	ARRIVED	FOLLOW	<4508.933105, 339.118958, 10235.296875>	<4508.960938, 339.123566, 10235.276367>	1	
-16.975	24	START	FOLLOW	<4508.823730, 339.116852, 10235.216797>	<4508.928223, 339.123566, 10235.276367>	1	
-17.965	24	ARRIVED	FOLLOW	<4508.891113, 339.118195, 10235.284180>	<4508.928223, 339.123566, 10235.276367>	1	
-19.117	36	START	FOLLOW	<4508.723145, 339.115204, 10235.242188>	<4508.890625, 339.123566, 10235.276367>	1	
-19.682	35	START	FOLLOW	<4511.250000, 339.161285, 10235.317383>	<4511.040039, 339.152710, 10235.276367>	1	
-20.563	47	START	FOLLOW	<4511.194824, 339.159821, 10235.209961>	<4511.020508, 339.152710, 10235.276367>	1	
-20.739	36	ARRIVED	FOLLOW	<4508.880371, 339.118103, 10235.310547>	<4508.890625, 339.123566, 10235.276367>	1	
-21.154	35	ARRIVED	FOLLOW	<4511.068848, 339.157837, 10235.303711>	<4511.040039, 339.152710, 10235.276367>	1	
-21.706	47	ARRIVED	FOLLOW	<4511.042969, 339.157379, 10235.307617>	<4511.020508, 339.152710, 10235.276367>	1	
-35.168	43	START	FOLLOW	<4511.138184, 339.159088, 10235.291016>	<4510.877441, 339.152710, 10235.276367>	1	
-36.755	43	ARRIVED	FOLLOW	<4510.906250, 339.154785, 10235.291992>	<4510.877441, 339.152710, 10235.276367>	1	
-45.143	52	START	FOLLOW	<4508.770020, 339.115936, 10235.212891>	<4508.915527, 339.123566, 10235.276367>	1	
-45.383	52	INTENT_CHANGED	FOLLOW	<4508.664063, 339.113922, 10235.158203>	<4508.915527, 339.123566, 10235.276367>	2	
-54.863	51	START	FOLLOW	<4511.189453, 339.159943, 10235.264648>	<4511.051270, 339.137787, 10235.276367>	2	
-56.199	51	ARRIVED	FOLLOW	<4511.088867, 339.158051, 10235.262695>	<4511.051270, 339.137787, 10235.276367>	2	
-62.038	57	START	FOLLOW	<4511.335938, 339.162598, 10235.248047>	<4510.986816, 339.152710, 10235.276367>	2	
-63.494	57	ARRIVED	FOLLOW	<4511.010742, 339.156494, 10235.243164>	<4510.986816, 339.152710, 10235.276367>	2	
-67.471	56	START	FOLLOW	<4508.753418, 339.115753, 10235.259766>	<4509.080078, 339.123566, 10235.276367>	2	
-68.421	56	ARRIVED	FOLLOW	<4509.060059, 339.121063, 10235.254883>	<4509.080078, 339.123566, 10235.276367>	2	
-70.965	52	START	FOLLOW	<4508.677734, 339.114349, 10235.224609>	<4508.916504, 339.137787, 10235.276367>	2	
-71.686	52	ARRIVED	FOLLOW	<4508.919434, 339.118561, 10235.241211>	<4508.916504, 339.137787, 10235.276367>	2	
-74.332	15	START	FOLLOW	<4508.698242, 339.114655, 10235.206055>	<4508.891113, 339.123566, 10235.276367>	2	
-74.788	15	ARRIVED	FOLLOW	<4508.923828, 339.118713, 10235.254883>	<4508.891113, 339.123566, 10235.276367>	2	
-94.02	45	START	FOLLOW	<4511.284180, 339.161621, 10235.250977>	<4511.054688, 339.152710, 10235.276367>	2	
-95.36	45	ARRIVED	FOLLOW	<4511.010742, 339.156586, 10235.267578>	<4511.054688, 339.152710, 10235.276367>	2	
+SOURCE DGBNativeTraversal.c; SHA256 71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872; 계획 후보 및 실패 기록 일부; lines 880-927
+880:                 // one direction use exactly the same first physical step.
+881:                 if(blockedFirstSteps[directionIndex]){EscapeDuplicateDirectionsAvoided++;continue;}
+882:                 vector direction=directions[directionIndex];
+883:                 vector target=Body.Agent.Position+direction*distance;vector supported;
+884:                 if(Phase=="FALL")target=DGBTraversalFixture.Ground(target);
+885:                 else
+886:                 {
+887:                     vector candidateSupport;
+888:                     if(!DGBGroundAgent.Floor(Body.Leader,target,candidateSupport)){if(tracePlan)outcomes[directionIndex]="TARGET_NO_FLOOR\t"+target;continue;}
+889:                     if(Fixture().Area(candidateSupport)!=Fixture().Area(Body.Agent.Position)){if(tracePlan)outcomes[directionIndex]="TARGET_AREA_CHANGED\t"+target;continue;}
+890:                     if(Math.AbsFloat(candidateSupport[1] - Body.Agent.Position[1])>0.08){if(tracePlan)outcomes[directionIndex]="TARGET_HEIGHT_CHANGED\t"+target;continue;}
+891:                     target=candidateSupport;
+892:                 }
+893:                 if(!LandingSpace(target,supported)){if(tracePlan)outcomes[directionIndex]="TARGET_"+LandingDiagnostic+"\t"+target;continue;}
+894:                 float candidateLift;ref array<vector> points={};
+895:                 if(!PressureEscapeStepClear(Body.Agent.Position+direction*Math.Min(0.04,dt*0.6),candidateLift,points))
+896:                 {
+897:                     PressureEscapeLastStepReject=PressureEscapeDiagnostic;blockedFirstSteps[directionIndex]=true;
+898:                     if(tracePlan)outcomes[directionIndex]=EscapeDirectionFailure(supported);
+899:                     continue;
+900:                 }
+901:                 EscapeNoExitAt=-1;
+902:                 PressureEscapeGoal=supported;PressureEscapeValid=true;LandingDiagnostic=savedLanding;return true;
+903:             }
+904:         }
+905:         if(EscapeNoExitAt<0)EscapeNoExitAt=Now();
+906:         if(tracePlan)TraceEscapePlan(outcomes,dt);
+907:         LandingDiagnostic=savedLanding;PressureEscapeDiagnostic="NO_VALID_LOCAL_EXIT";return false;
+908:     }
+909:     string EscapeDirectionFailure(vector target)
+910:     {
+911:         // Fields are valid for this failed query only, not the previous probe.
+912:         string row=PressureEscapeDiagnostic+"\t"+target;
+913:         if(PressureEscapeDiagnostic!="DEEPER_FIXTURE" && PressureEscapeDiagnostic!="NEW_WORLD_CONTACT")
+914:             return row+"\t-1\t\t0 0 0\t-1\t0\t0\t-1\t0 0 0\t0 0 0\t0 0 0";
+915:         row+="\t"+PressureEscapeRejectProbe+"\t"+PressureEscapeRejectFixture+"\t"+PressureEscapeRejectFixturePosition+"\t"+PressureEscapeRejectFixtureIndex;
+916:         row+="\t"+PressureEscapeRejectBefore+"\t"+PressureEscapeRejectAfter;
+917:         row+="\t"+PressureEscapeRejectFraction+"\t"+PressureEscapeRejectNormal+"\t"+PressureEscapeRejectStart+"\t"+PressureEscapeRejectEnd;
+918:         return row;
+919:     }
+920:     void TraceEscapePlan(array<string> outcomes,float dt)
+921:     {
+922:         NextEscapePlanTrace=Now()+1;EscapePlanTraceBatches++;
+923:         FileHandle log=OpenFile("$profile:native-escape-plans.tsv",FileMode.APPEND);if(!log)return;
+924:         for(int direction=0;direction<outcomes.Count();direction++)
+925:         {
+926:             string detail=outcomes[direction];
+927:             if(detail.IndexOf("TARGET_")==0)detail+="\t-1\t\t0 0 0\t-1\t0\t0\t-1\t0 0 0\t0 0 0\t0 0 0";
 
-누락: 전체 프레임 영상, 실패 당시 모든 LandingSpace 게이트/충돌 대상, 네이티브 평가/렌더/GC. 텍스트만으로 시각 품질이나 근본 원인을 확정하지 말 것.
+SOURCE DGBNativeTraversal.c; SHA256 71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872; Fall 착지 시도 일부; lines 1230-1251
+1230:     void Fall(float dt)
+1231:     {
+1232:         if(!Body.FrameFallPhysicsActive())
+1233:         {
+1234:             if(Recovering && Body.Request!=8)return;
+1235:             if(!Recovering && Body.Request!=6 && Body.Request!=8)return;
+1236:         }
+1237:         bool escaped=EscapeStep(dt);
+1238:         FallVelocity=Math.Max(-15,FallVelocity - 9.81*dt);
+1239:         vector next=Body.Agent.Position+Vector(0,FallVelocity*dt,0);
+1240:         if(PressureFallActive)next+=PressureFallVelocity*dt;
+1241:         Object hit;vector point,normal;float fraction;bool landed=false;
+1242:         if(DayZPhysics.RayCastBullet(Body.Agent.Position+"0 0.12 0",next+"0 -0.1 0",DGBGroundAgent.Floors(),Body.Leader,hit,point,normal,fraction))
+1243:         {
+1244:             if(normal[1]>=0.65 && point[1]<=Body.Agent.Position[1]+0.05 && point[1]>=next[1] - 0.1)
+1245:             {
+1246:                 vector support;if(LandingSpace(point,support,!Body.Agent.ManagedPeerContacts)){next=support;landed=true;}
+1247:                 else{if(!escaped){if(PressureFallActive){if(!PressureSlide(dt))AirEscapeTurn(dt);}else EscapeStep(dt);}Body.Reason="LANDING_SPACE_BLOCKED";return;}
+1248:             }
+1249:         }
+1250:         if(!Accept(next,dt)){if(!escaped){if(PressureFallActive){if(!PressureSlide(dt))AirEscapeTurn(dt);}else EscapeStep(dt);}Body.Reason="FALL_"+Body.Reason;return;}
+1251:         Body.Reason="NATIVE_FALL";
+
+입력 기록/함수 발췌만으로 본/물리 전체 연속성 또는 영상 부드러움을 판정하지 말 것. 실패 확장 코드는 function instruction cap으로 실행되지 않았다. 원본 해시와 선정 기준은 보고서에 있다.
 
 이전 애니메이션 진단: [선정 근거](downloads/animation-review.txt). 이번 기능 시험은 시각·성능 해결을 뜻하지 않는다.
