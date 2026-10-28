@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261027T231858-tickcount-origin-20261028",
-  "generatedAt": "2026-10-27T23:18:58.621644+00:00",
-  "exportedAt": "2026-10-27T23:18:58.621644+00:00",
+  "snapshotId": "snapshot-20261028T051538-timing-control-audit-20261028",
+  "generatedAt": "2026-10-28T05:15:38.574744+00:00",
+  "exportedAt": "2026-10-28T05:15:38.574744+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -34,8 +34,8 @@
     "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-27T23:18:58.621644+00:00",
-    "staleAfter": "2026-10-28T23:18:58.621644+00:00",
+    "sourceUpdatedAt": "2026-10-28T05:15:38.574744+00:00",
+    "staleAfter": "2026-10-29T05:15:38.574744+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -52,18 +52,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 34454,
-      "sha256": "c53b3e0d7ea34672128a6ca19e1e4f8d6d427433272a3686b11080a1370ebaf6"
+      "bytes": 15345,
+      "sha256": "00213238dcab02b140dce0472ef251df5d4a08ada719f069b4a1b72d31d7c390"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 184782,
-      "sha256": "7ec917ea4189b442d2fbe871b85b7907b3a0b9ba0d7e24ec11cc0dfeb31dff94"
+      "bytes": 186372,
+      "sha256": "4a988d7b50b001e7366c5a0a2bd0270ff524c70c2cfc1afa9f697299c3c971a7"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 184778,
-      "sha256": "5026c636f84b0dce2a25b08a2e0877d32d0028f44c9e8fc5e97f2558e5d20029"
+      "bytes": 186368,
+      "sha256": "f0c6c52af75bf750f686a98b555df8e258ca1d00b621123406348b91e4366e35"
     },
     {
       "path": "api/public/schema.json",
@@ -176,14 +176,29 @@
       "sha256": "3314a40c2e9c73cce3ccb5e1e89d939d5e6e570bc7ff77727d325abfe38c61b0"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261028T051538-timing-control-audit-20261028/experiments.json",
+      "bytes": 186372,
+      "sha256": "4a988d7b50b001e7366c5a0a2bd0270ff524c70c2cfc1afa9f697299c3c971a7"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261028T051538-timing-control-audit-20261028/metrics.json",
+      "bytes": 186368,
+      "sha256": "f0c6c52af75bf750f686a98b555df8e258ca1d00b621123406348b91e4366e35"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261028T051538-timing-control-audit-20261028/status.json",
+      "bytes": 186367,
+      "sha256": "6c2b806d54764bc8acc78c283e9920e75358167434165edfe6d76975cbb66f22"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 184777,
-      "sha256": "3314a40c2e9c73cce3ccb5e1e89d939d5e6e570bc7ff77727d325abfe38c61b0"
+      "bytes": 186367,
+      "sha256": "6c2b806d54764bc8acc78c283e9920e75358167434165edfe6d76975cbb66f22"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 717,
-      "sha256": "83fe4e2d7704daf6249a5e64b024da15f76494b459e05b8dd37f6217cc3415f9"
+      "bytes": 725,
+      "sha256": "8624ab35fce853fc0d509be6bb4531ff5d47cf45c72c1ea9dbf99343d9779faa"
     },
     {
       "path": "data/experiments/admission-latch-runtime-20261028.json",
@@ -224,6 +239,11 @@
       "path": "data/experiments/tickcount-origin-20261028.json",
       "bytes": 57423,
       "sha256": "857db9eb49892fe8dd6612aed8f9c51a328ced383bb2f216d4f49e320abf8ff4"
+    },
+    {
+      "path": "data/experiments/timing-control-audit-20261028.json",
+      "bytes": 34031,
+      "sha256": "d0ce029966f99886f7aacea9c8964466b486febfb3f587ed9344c22611b8eef1"
     },
     {
       "path": "data/experiments/window-cadence-20261028.json",
@@ -321,9 +341,19 @@
       "sha256": "8d2877b41a52a0a6a61fcef7fe8011900a6b94defda5299768931fa0fb50c60a"
     },
     {
+      "path": "downloads/checkpoints/2026-10-28_141521_759774+0900_npc-timing-control-audit.txt",
+      "bytes": 8789,
+      "sha256": "53669edc5604bdb8f571b31f12919d4cce038ace9d0f4dca9a357bb9f5004a54"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-28_141521_759774+0900_npc-timing-control-audit_evidence.txt",
+      "bytes": 15088,
+      "sha256": "17753957324a6f938bdd1493d69111000e948b314a8423dc675726e4405d5eff"
+    },
+    {
       "path": "README.md",
-      "bytes": 5827,
-      "sha256": "39aaf85d302bd4b88f1f9a50a059e9dd8fd351ac107baf20955fae8651a620d5"
+      "bytes": 6319,
+      "sha256": "641480195e294a21b889c34a490891bbfbb93f1a39596cfbf98c6b88836c4d37"
     },
     {
       "path": "reports/accessibility-20261028.md",
@@ -391,6 +421,16 @@
       "sha256": "daaac232fdd2c0b78aa253b603ff1898af932e5d460d1d882ff2f89890e8908c"
     },
     {
+      "path": "reports/history/pre-timing-control-audit-20261028-latest.md",
+      "bytes": 8534,
+      "sha256": "af377cb5b01aa08e50dd9aae96b3ef4773899600c4d12edbb515e49edcbf3a8e"
+    },
+    {
+      "path": "reports/history/pre-timing-control-audit-20261028-operations-latest.md",
+      "bytes": 8534,
+      "sha256": "af377cb5b01aa08e50dd9aae96b3ef4773899600c4d12edbb515e49edcbf3a8e"
+    },
+    {
       "path": "reports/history/pre-window-cadence-20261028-latest.md",
       "bytes": 7856,
       "sha256": "4d8a57809cf8eb691b92cc41936f1243da96a63f957e566f192de8657797b38d"
@@ -402,8 +442,8 @@
     },
     {
       "path": "reports/latest.md",
-      "bytes": 8534,
-      "sha256": "af377cb5b01aa08e50dd9aae96b3ef4773899600c4d12edbb515e49edcbf3a8e"
+      "bytes": 9151,
+      "sha256": "0a3e76afc878199aef534814d457ce6820e2133b9ed791c3b1392f8d57e18cc9"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -412,8 +452,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 8534,
-      "sha256": "af377cb5b01aa08e50dd9aae96b3ef4773899600c4d12edbb515e49edcbf3a8e"
+      "bytes": 9151,
+      "sha256": "0a3e76afc878199aef534814d457ce6820e2133b9ed791c3b1392f8d57e18cc9"
     }
   ]
 }

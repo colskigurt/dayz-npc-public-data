@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261027T231858-tickcount-origin-20261028",
-  "generatedAt": "2026-10-27T23:18:58.621644+00:00",
+  "snapshotId": "snapshot-20261028T051538-timing-control-audit-20261028",
+  "generatedAt": "2026-10-28T05:15:38.574744+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -36,9 +36,9 @@
     "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "No new8/64 run. Previous64 final64/64; HIGH_HOLD missing13/14/43 and EGRESS_STALL1 remain separate.",
-    "visual": "Two guarded-origin runs join590 native/CPU/video pairs; reset-frame small pose advances correlate with actual visible motion. No smoothness fix accepted.",
-    "performance": "1-agent hook/recording diagnostics only; no64 cost attribution or20ms p95 acceptance.",
+    "functional": "No new accepted8/64 regression. Manual8 user run later logged inventory UI SetTemperature NULL VM exception; not clean pass.",
+    "visual": "No new visible quality acceptance. Existing590 native/CPU/video links remain; mean rate and stutter both unresolved.",
+    "performance": "No new frame-time or64 cost measurements;20ms p95 unmet.",
     "regressionChecks": 74
   },
   "metrics": [
@@ -4842,7 +4842,7 @@
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "Previous64 run063933: HIGH_HOLD ids13/14/43 missing despite final64/64; EGRESS_STALL1. Animation-only diagnosis does not resolve this."
+      "description": "Previous64 HIGH_HOLD ids13/14/43 and EGRESS_STALL1 remain. Manual8 UI VM exception is separate and uncorrected."
     },
     {
       "id": "matched-repeats",
@@ -5027,23 +5027,41 @@
       "uri": "/data/experiments/tickcount-origin-20261028.json",
       "sha256": "857db9eb49892fe8dd6612aed8f9c51a328ced383bb2f216d4f49e320abf8ff4",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "timing-control-audit-20261028-report",
+      "uri": "/downloads/checkpoints/2026-10-28_141521_759774+0900_npc-timing-control-audit.txt",
+      "sha256": "53669edc5604bdb8f571b31f12919d4cce038ace9d0f4dca9a357bb9f5004a54",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "timing-control-audit-20261028-review",
+      "uri": "/downloads/checkpoints/2026-10-28_141521_759774+0900_npc-timing-control-audit_evidence.txt",
+      "sha256": "17753957324a6f938bdd1493d69111000e948b314a8423dc675726e4405d5eff",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "timing-control-audit-20261028-json",
+      "uri": "/data/experiments/timing-control-audit-20261028.json",
+      "sha256": "d0ce029966f99886f7aacea9c8964466b486febfb3f587ed9344c22611b8eef1",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-27T23:18:58.621644+00:00",
-    "staleAfter": "2026-10-28T23:18:58.621644+00:00",
+    "sourceUpdatedAt": "2026-10-28T05:15:38.574744+00:00",
+    "staleAfter": "2026-10-29T05:15:38.574744+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261027T231858-tickcount-origin-20261028",
-      "generatedAt": "2026-10-27T23:18:58.621644+00:00",
-      "sourceUpdatedAt": "2026-10-27T23:18:58.621644+00:00"
+      "snapshotId": "snapshot-20261028T051538-timing-control-audit-20261028",
+      "generatedAt": "2026-10-28T05:15:38.574744+00:00",
+      "sourceUpdatedAt": "2026-10-28T05:15:38.574744+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-27T23:18:58.621644+00:00",
+      "at": "2026-10-28T05:15:38.574744+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -5058,7 +5076,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261027T231858-tickcount-origin-20261028/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261028T051538-timing-control-audit-20261028/"
   },
   "experiments": [
     {
@@ -5418,6 +5436,27 @@
         "matched-repeats"
       ],
       "replication": "Two admitted fixed-run native/CPU/video repeats plus one incomplete slower-cadence pilot; no optimization candidate"
+    },
+    {
+      "id": "timing-control-audit-20261028",
+      "title": "애니메이션 속도 제어 범위·복사본 진단 준비와 사용자 시험 예외",
+      "track": "diagnostic",
+      "sourceRunId": [],
+      "buildId": [
+        "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [],
+      "evidenceReferences": [
+        "timing-control-audit-20261028-report",
+        "timing-control-audit-20261028-review",
+        "timing-control-audit-20261028-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "Own fixture only: baseline/candidate/candidate/baseline4 runs,48000 calls; not DayZ replication"
     }
   ],
   "kind": "status"
