@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261028T192749-period-visible-20261029",
-  "generatedAt": "2026-10-28T19:27:49.190192+00:00",
-  "exportedAt": "2026-10-28T19:27:49.190192+00:00",
+  "snapshotId": "snapshot-20261028T194211-clock-conservation-20261029",
+  "generatedAt": "2026-10-28T19:42:11.845776+00:00",
+  "exportedAt": "2026-10-28T19:42:11.845776+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -30,7 +30,8 @@
     "runtime-20261028-142846",
     "runtime-20261028-143908",
     "runtime-20261029-040750",
-    "runtime-20261029-041212"
+    "runtime-20261029-041212",
+    "runtime-20261029-043225"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -39,8 +40,8 @@
     "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-28T19:27:49.190192+00:00",
-    "staleAfter": "2026-10-29T19:27:49.190192+00:00",
+    "sourceUpdatedAt": "2026-10-28T19:42:11.845776+00:00",
+    "staleAfter": "2026-10-29T19:42:11.845776+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -57,18 +58,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 26890,
-      "sha256": "191fe373572fce7f6ddaeb83d8720274c11940152250f3ed454e148a567ebf7d"
+      "bytes": 15356,
+      "sha256": "3ff8158cb217b23a23263d01145236a39e4a6f1502a7f2e11bee4c9d95fa63e5"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 227873,
-      "sha256": "fa29d0c7fb6d1555f3abd7dcb3e8715988c0689879faef52011dd26b8f4d223c"
+      "bytes": 232901,
+      "sha256": "84d4b64306552e13db18e85c37c805b3e2c3eaafe409ea95c8a416e5e1288f4b"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 227869,
-      "sha256": "77029e64be2f530ba1275ba4e439fbcf4c3d5284916b02985057a8a451c00f46"
+      "bytes": 232897,
+      "sha256": "cf7fb60aa8f3a7a7d0fb4e9b8613aa08ffcdf53d2fd3dbac6806378209ce2848"
     },
     {
       "path": "api/public/schema.json",
@@ -241,14 +242,29 @@
       "sha256": "4ba84ee149d4e5de6090dada286e588d79879b8d40762f6e30bbcc92052f8c20"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261028T194211-clock-conservation-20261029/experiments.json",
+      "bytes": 232901,
+      "sha256": "84d4b64306552e13db18e85c37c805b3e2c3eaafe409ea95c8a416e5e1288f4b"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261028T194211-clock-conservation-20261029/metrics.json",
+      "bytes": 232897,
+      "sha256": "cf7fb60aa8f3a7a7d0fb4e9b8613aa08ffcdf53d2fd3dbac6806378209ce2848"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261028T194211-clock-conservation-20261029/status.json",
+      "bytes": 232896,
+      "sha256": "c722f48247bc3b02634b3d3967cd24f71a5a33eca98e0e9581fd664d50b54012"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 227868,
-      "sha256": "4ba84ee149d4e5de6090dada286e588d79879b8d40762f6e30bbcc92052f8c20"
+      "bytes": 232896,
+      "sha256": "c722f48247bc3b02634b3d3967cd24f71a5a33eca98e0e9581fd664d50b54012"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 713,
-      "sha256": "24b11b3c322d3728f50c959ff4efe1d1ac2c850985d4f5088f33b14869987206"
+      "bytes": 721,
+      "sha256": "af921a90a0ba91ac21411c4cc44a11f6e7797e148027ddf6d2126974ad30e8b2"
     },
     {
       "path": "data/experiments/admission-latch-runtime-20261028.json",
@@ -264,6 +280,11 @@
       "path": "data/experiments/animation.json",
       "bytes": 41757,
       "sha256": "f0672b82be399206940d8be1b8d5af73e08bcc8fa0bbb5ea379c9b0632e93148"
+    },
+    {
+      "path": "data/experiments/clock-conservation-20261029.json",
+      "bytes": 33291,
+      "sha256": "ea87c047a514e6014095376697943a845b3d7e3b4b2621d79dfda4249678e58b"
     },
     {
       "path": "data/experiments/descriptor-copy-20261028.json",
@@ -446,14 +467,34 @@
       "sha256": "6bf16bbb842dbd104d90b5b1f1d42690397417db62af63b0cfd87493b660411e"
     },
     {
+      "path": "downloads/checkpoints/2026-10-29_044134_304460+0900_npc-clock-conservation.txt",
+      "bytes": 7696,
+      "sha256": "e520f11eb07fb1aeb3afd2497fc813dcdd7f048c4ecd79c9d61edfaf764447fa"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-29_044134_304460+0900_npc-clock-conservation_evidence.txt",
+      "bytes": 15101,
+      "sha256": "0c48a8f51252fc00149530f433501216a0f45df4abbffb3ddb887412e2492d22"
+    },
+    {
       "path": "README.md",
-      "bytes": 7575,
-      "sha256": "e4cbe1169971249b3f25dae63d06c9d306b1979f5ccfaef4eada172e6d23e8b9"
+      "bytes": 7966,
+      "sha256": "d7c088a55bcc0466ec26b28c9564d39550ffa6bf958265e27df884dc58ef0d55"
     },
     {
       "path": "reports/accessibility-20261028.md",
       "bytes": 8467,
       "sha256": "7879f96329fbb2c0f4ee32a1c1b6ac49dd45ba0d1bfa218d93a7e31412a4dc4b"
+    },
+    {
+      "path": "reports/history/pre-clock-conservation-20261029-latest.md",
+      "bytes": 8070,
+      "sha256": "b930359088033ca06c1c948f45652da1e0688e909b9cfc9819f60c89bd2ea193"
+    },
+    {
+      "path": "reports/history/pre-clock-conservation-20261029-operations-latest.md",
+      "bytes": 8070,
+      "sha256": "b930359088033ca06c1c948f45652da1e0688e909b9cfc9819f60c89bd2ea193"
     },
     {
       "path": "reports/history/pre-descriptor-copy-20261028-latest.md",
@@ -567,8 +608,8 @@
     },
     {
       "path": "reports/latest.md",
-      "bytes": 8070,
-      "sha256": "b930359088033ca06c1c948f45652da1e0688e909b9cfc9819f60c89bd2ea193"
+      "bytes": 8059,
+      "sha256": "5b982e1446c418c0c99968bdab2d07a8da547f45053f455de3b8d9b4190a9ae0"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -577,8 +618,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 8070,
-      "sha256": "b930359088033ca06c1c948f45652da1e0688e909b9cfc9819f60c89bd2ea193"
+      "bytes": 8059,
+      "sha256": "5b982e1446c418c0c99968bdab2d07a8da547f45053f455de3b8d9b4190a9ae0"
     }
   ]
 }

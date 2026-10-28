@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261028T192749-period-visible-20261029",
-  "generatedAt": "2026-10-28T19:27:49.190192+00:00",
+  "snapshotId": "snapshot-20261028T194211-clock-conservation-20261029",
+  "generatedAt": "2026-10-28T19:42:11.845776+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -29,7 +29,8 @@
     "runtime-20261028-142846",
     "runtime-20261028-143908",
     "runtime-20261029-040750",
-    "runtime-20261029-041212"
+    "runtime-20261029-041212",
+    "runtime-20261029-043225"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -5843,13 +5844,103 @@
       },
       "repetitions": 1,
       "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261029-043225",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 20.006,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 1,
+        "scenario": "anim1",
+        "durationSeconds": 120,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "single helper saved input/accumulator/graph clock; mixed foreground separated; mission callback dt not GPU Present",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": null,
+        "renderParts": 8,
+        "clip": "run",
+        "ai": false,
+        "movement": false,
+        "hookSeconds": 8,
+        "nativeStateOverrides": false,
+        "numericOverrides": false,
+        "performanceAcceptance": false,
+        "repetitions": 1
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261029-043225",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 35.25217,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 1,
+        "scenario": "anim1",
+        "durationSeconds": 120,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "single helper saved input/accumulator/graph clock; mixed foreground separated; mission callback dt not GPU Present",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": null,
+        "renderParts": 8,
+        "clip": "run",
+        "ai": false,
+        "movement": false,
+        "hookSeconds": 8,
+        "nativeStateOverrides": false,
+        "numericOverrides": false,
+        "performanceAcceptance": false,
+        "repetitions": 1
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261029-043225",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 37.16851499999999,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 1,
+        "scenario": "anim1",
+        "durationSeconds": 120,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "single helper saved input/accumulator/graph clock; mixed foreground separated; mission callback dt not GPU Present",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": null,
+        "renderParts": 8,
+        "clip": "run",
+        "ai": false,
+        "movement": false,
+        "hookSeconds": 8,
+        "nativeStateOverrides": false,
+        "numericOverrides": false,
+        "performanceAcceptance": false,
+        "repetitions": 1
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
     }
   ],
   "blockers": [
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "Existing64 final64/64; HIGH_HOLD missing13/14/43, EGRESS_STALL1, climb-end0. No new functional run."
+      "description": "Existing64 final64/64; HIGH_HOLD missing13/14/43, EGRESS_STALL1, climb-end0. Not rerun in clock diagnosis."
     },
     {
       "id": "matched-repeats",
@@ -6106,23 +6197,41 @@
       "uri": "/data/experiments/period-visible-20261029.json",
       "sha256": "98944266b097c6dd684d086b2c2288ca7dace334fdfd9ed46df57ec91aa5553f",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "clock-conservation-20261029-report",
+      "uri": "/downloads/checkpoints/2026-10-29_044134_304460+0900_npc-clock-conservation.txt",
+      "sha256": "e520f11eb07fb1aeb3afd2497fc813dcdd7f048c4ecd79c9d61edfaf764447fa",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "clock-conservation-20261029-review",
+      "uri": "/downloads/checkpoints/2026-10-29_044134_304460+0900_npc-clock-conservation_evidence.txt",
+      "sha256": "0c48a8f51252fc00149530f433501216a0f45df4abbffb3ddb887412e2492d22",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "clock-conservation-20261029-json",
+      "uri": "/data/experiments/clock-conservation-20261029.json",
+      "sha256": "ea87c047a514e6014095376697943a845b3d7e3b4b2621d79dfda4249678e58b",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-28T19:27:49.190192+00:00",
-    "staleAfter": "2026-10-29T19:27:49.190192+00:00",
+    "sourceUpdatedAt": "2026-10-28T19:42:11.845776+00:00",
+    "staleAfter": "2026-10-29T19:42:11.845776+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261028T192749-period-visible-20261029",
-      "generatedAt": "2026-10-28T19:27:49.190192+00:00",
-      "sourceUpdatedAt": "2026-10-28T19:27:49.190192+00:00"
+      "snapshotId": "snapshot-20261028T194211-clock-conservation-20261029",
+      "generatedAt": "2026-10-28T19:42:11.845776+00:00",
+      "sourceUpdatedAt": "2026-10-28T19:42:11.845776+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-28T19:27:49.190192+00:00",
+      "at": "2026-10-28T19:42:11.845776+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -6137,7 +6246,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261028T192749-period-visible-20261029/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261028T194211-clock-conservation-20261029/"
   },
   "experiments": [
     {
@@ -6618,6 +6727,35 @@
         "matched-repeats"
       ],
       "replication": "Offline equal6s reanalysis of previous one baseline/one candidate, not new independent runs."
+    },
+    {
+      "id": "clock-conservation-20261029",
+      "title": "같은 호출의 입력·누적기·그래프 시간 회계 — 느린 진행 구간 확인",
+      "track": "animation",
+      "sourceRunId": [
+        "runtime-20261029-043225"
+      ],
+      "buildId": [
+        "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [
+        {
+          "count": 1,
+          "seconds": 120,
+          "repetitions": 1
+        }
+      ],
+      "evidenceReferences": [
+        "clock-conservation-20261029-report",
+        "clock-conservation-20261029-review",
+        "clock-conservation-20261029-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "One closed same-call read-only trial; prior separate runs not promoted to this same-call replication."
     }
   ],
   "kind": "metrics"

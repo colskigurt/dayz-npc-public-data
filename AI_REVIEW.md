@@ -1,582 +1,274 @@
 # DayZ NPC AI — 외부 세션 검토 자료
 
-Snapshot: snapshot-20261028T192749-period-visible-20261029
+Snapshot: snapshot-20261028T194211-clock-conservation-20261029
 
-표시 비율 후보 거부 — 같은6초 영상에서 세대경계 점프 확인
+같은 호출의 입력·누적기·그래프 시간 회계 — 느린 진행 구간 확인
 
-작성: 2026-10-29T04:27:19.349624+09:00
+작성: 2026-10-29T04:41:34.304460+09:00
 
 1. 작업 목표
 
-이전 단일 대조/후보의 영상 구간 길이와 native 적용 구간의 차이를 제거하고, 표시 비율 후보가 실제 화면·CPU 포즈의 시간 변화에 미치는 영향을 확인한다. 지각 품질·평균 재생속도·64성능을 분리하며 기존 AI/정상 낙하·복구는 보존한다.
+느린 평균 재생에 관한 기존 입력시간/누적기와 그래프시계 관측을 서로 다른 실행끼리 합치지 않고 같은 호출에서 대조한다. 거부한previous-period 표시 비율 후보는 사용하지 않는다. 기존 B8FB AI·정상 낙하/복구와 운영 서버를 보존하고 기능·화면 품질·성능을 별도 판정한다.
 
 2. 실제 수행
 
-새 게임 실행은 하지 않았다. 정상 종료/저장된 runtime-20261029-040750 대조와041212 후보를 다시 분석했다. 정확HUD의 mission-video 시간차와73본 renderer의 ready 구간을 기준으로0.5초 이후부터6초를 선정했다. 대조 video17.152/20.152초, 후보21.032/24.032초에서3초씩 추출했다. 원본 분석은 유지하고 visible-period-window-*로 별도 저장했다. HUD360개씩을 모두 정확frame/T/A로 확인하고, 연속프레임과 실제 native ready 구간의 교집합만 비교했다.
+runtime-20261029-043225:1논리개체/8렌더부품, 고정run·AI/이동OFF·VSyncON,120초, 동일3개 서명PBO. 기존 helper 진입 한 곳에서 원본 바이트/두 반환주소·Animal vtable·receiver/renderer/mode0·73본을 확인하고 입력dt의 기존 stack spill·분자/누적기·retained duration·graph-owner float를 함께 읽었다. 그래프/인자/행렬 쓰기·복사본 교체·반환 hook은 없다. disabled 관측기는 정상 게임 종료까지 유지했다.
 
-프레임 간격에 따른 변화도 보려고 CPU6본 RMS/화면 mask 픽셀 변화량을 native 진입간격으로 나눴다. GPU/실제 표시 지속시간으로 오해하지 않는다. 큰 속도 표본을 원래 native graph 세대 경계·이전/다음 비율·이전/이번 관측 주기에 연결했다. 후보 적용 가드4검사는 실제 함수로 실행했고 통과했다. 같은 해시의 거부 모델은 재적용 전에 차단하며, 변경된 모델을 자동 승인하는 것은 아니다.
+독립 시계272ACK/timeout0으로 엔진 원점을 검증했다.368호출 모두 명확한 두HUD 사이에 있었고4개는 background로 분리했다. 전체368호출 시간회계와 가장 긴 연속foreground336호출을 따로 계산했다. 실제45초 녹화를 정상 종료한 뒤6본 source-FK와 정확영상HUD를 연결했다.
+
+첫 회계 분석은 소수float의0.05ms 고정 허용치로 실패했다. 원시/실패기록/당시 분석기를 보존하고 각 ADDSS 및 graph float32 덧셈의 반올림을 항으로 분리했다. 오차 허용치 확대가 아니다. 입력/누적기/graph 보상과float32 테스트4개는 통과했다. 두번째 분석의 foreground 전체 가정 실패도 구분해 수정하고 모든표본을 foreground처럼 표시하지 않았다.
 
 3. 측정 결과
 
-|관측|대조|후보|
+|항목|전체368호출·367연속쌍|최장연속foreground336호출·335쌍|
 |---|---:|---:|
-|정확 HUD 표본|360|360|
-|연속 실제 프레임 쌍|298|296|
-|동일HUD 반복|60|61|
-|동일HUD 중 몸체 변화≥10px|0|0|
-|CPU 변화 p95 m|0.118919|0.079129|
-|CPU 변화/진입간격 p99 m/s|5.417936|7.423186|
-|화면 mask 변화 p95 px|4264.850000|3401.500000|
-|CPU/화면 변화 상관|0.944018|0.915159|
+|입력dt 합 ms|7964.000149|6887.000138|
+|graph 실제 증가 ms|5249.919891|4549.930573|
+|누적기 마지막−처음 ms|−32.999999|7.000000|
+|누적기에 남지 않은 초과분 ms|2747.000050|2330.000039|
+|초기화 횟수|105|91|
+|graph float32 예측 일치|367/367|335/335|
+|누적기 최대 예측잔차 ms|0|0|
+|명시적float32 반올림 후 회계잔차 ms|0|0|
+|graph 증가/입력dt|0.659206|0.660655|
+|graph 증가/native 진입벽시간|0.658766|0.669576|
 
-두 구간은6초씩이며 native ready 밖 표본0이다. 후보에서 연속HUD가 아닌1쌍은 제외했다. CPU 변화 p95와 화면 변화 p95는 작아졌지만 CPU 변화/진입간격 p99는5.418→7.423m/s로 커졌다. 이것은6본 위치 변화의 파생치이지 개체 이동속도가 아니다. 같은HUD 반복에서 몸체 mask 변화≥10px는 양쪽0이었다.
+전체 회계잔차0.080206897ms는 명시적float32 반올림 합계와 정확히 같았다. foreground는0.069526490ms였다. 입력dt합과graph증가량의 차이를 float 반올림으로 설명할 수 있는 규모가 아니다. 전체 입력dt합/native 진입시간은0.999332. foreground입력dt합과진입간격은 선택 경계·상위시간 공급이 달라 동일벽시간으로 강제치환하지 않는다.
 
-후보 연속296쌍 중 세대 경계77쌍·내부219쌍. 탐색적 기준(전달 phase 증가/(동일실행 평균graph진행률×진입간격)>2.5)을 넘은5쌍 전부 세대 경계였고 CPU 변화율 상위5개도 모두 그 경계였다. 내부 비율p95는1.157, 경계p95는4.176이었다. 대조에서는 기준 초과1쌍이 내부에 있었다. 표본들이 서로 독립인 반복실험은 아니다.
+foreground구간 script callback 증가4549.900ms는graph증가4549.930573ms와0.030573ms 차이였다. callback 출력 문자열의 반올림이 있어 비트일치를 주장하지 않는다.368중4background 제외/364고유HUD 연결,362연속CPU/source쌍,source fit p95 14.357mm·graph/분자 모델과source proxy 상관0.971516·잔차RMS3.005ms. 영상360HUD 모두정확, native/CPU/영상237쌍의CPU변화/몸mask변화 상관0.944887이었다. 이는 지각품질 점수가 아니다.
 
-대표 후보 F1459→1460: 진입간격8.9894ms, 이전 비율0.502388→새 비율0, 표시 phase 증가24.879813ms, 화면 변화3558px. 이전 관측 주기80.5331ms에서 새 주기49.1132ms로 짧아졌다. 나머지4개도7.9411–9.5562ms 간격에23.274–25.316ms 진행했다. 전달 phase 증가 항등식의 수치 잔차는 대표5개 모두0ms다.
-
-이번은 오프라인 재분석이므로 새 미션 p50/p95/p99,8/64 안정성,AI/경로/접촉 비용이나 할당/GC 수치를 생성하지 않는다. 앞선 실행의 전체 미션 p50/p95/p99는 대조20.140/35.267/37.061ms, 후보21.152/34.678/36.374ms이며 새 측정이 아니다.20ms p95 성능 수용은 여전히 미완료다.
+미션foreground p50/p95/p99=20.006/35.252/37.169ms, 최대64.241ms. 관측읽기구간 p50/p95/p99=0.0185/0.0288/0.0322ms. 총hook/본query/녹화 overhead를 분리한 수치가 아니므로 최적화/20ms p95 수용에 쓰지 않는다. 새8/64 이동/혼잡회귀·64비용·GPU Present·할당/GC는 미실행이다.
 
 4. 원인 분석
 
-관찰된 사실: previous-period 예측 후보는 세대 내부의 전달 시간 증가를 평균graph진행률에 가깝게 만들었지만, 세대가 예상보다 일찍 바뀌면 이전 endpoint까지 남은 변화가 짧은 경계 간격에 몰렸다. 대표5건의 실제 입력·CPU 포즈·화면 변화가 함께 연결된다. 이 후보는 거부한다. 낮은 평균 잔차 하나로 성공을 선언하지 않는다.
+관찰된 사실: 같은경로/호출에서 누적입력 임계50ms 초과가 발생하면 누적기는0이 되고 graph-owner는float32(이전시계+50ms)만큼 증가했다. 초과분이 그 시계에 추가보상되는 형태는367쌍에서 나타나지 않았다. 이번경로에서입력약7.964초·graph약5.250초·버린초과분약2.747초가동시에회계로연결됐다. 기존별도실행자료보다강한한실행의시간전달근거다.
 
-추정/한계: 자연 동작의 자세·투영·가림도 mask 변화량에 영향을 준다. source pose 점유를 일치시킨 실험이나 명명된 관절 광학추적이 아니므로 픽셀 p95 감소를 부드러움 점수로 바꾸지 않는다. 거부에 사용한2.5 기준은 이pilot를 본 뒤 정한 탐색 기준이다. 다음 전향적 시험에서는 사전 정의해야 한다. 평균graph속도 약0.64 원인은 이번 분석으로 해결되지 않았다.
+추정과한계: 이구조가느린시각재생에기여한다는가설을지지하지만개별클립normalized phase·다른모드·모든상태의보상이나GPU최종소비를직접측정하지않았다.이번비율은약0.66~0.67로앞선0.64보다달랐지만계측/포커스/프레임조건이다르므로개선으로보고하지않는다.4background표본과270ms최대초과분을숨기지않는다.최장foreground에서도93ms초과분이있었다.
 
-반증: 후보의 전체 평균 시간 잔차가 줄었으므로 모든 구간이 더 부드러워졌다는 가정은 경계 큰 점프와 맞지 않는다. 반대로 전체 렌더러가 CPU와 무관하게 몸체를 정지시키는 현상을 이6초 구간에서 확인한 것도 아니다. CPU/화면 상관과 동일HUD 반복 결과는 제한된 관측 근거이며 GPU scheduling 전체를 증명하지 않는다.
+분석기수정:분자감소만으로reset을판정하면0→0이연속되는5개실제graph증가를놓쳤다.기존분석결과는보존하고conservation plan에서만실제graph시계변화로판정한새분석을저장했다.기존heuristic의callback잔차최대50ms가새분석에서0.100001ms가된것은게임수정이아니라계측해석수정이다.
+
+반증범위:입력과graph의큰차이가단순NativeSeconds이름오해나float32반올림뿐이라는가정과맞지않는다.다만모든끊김의단일원인확정·전체엔진의시간손실일반화·native수정의배포정당화는아니다.
 
 5. 검증 수준
 
-진단 성공: 적용 구간이 같은 길이의 실제 영상/CPU 비교와 후보 세대경계 점프의 수치 연결. 회귀 통과: 거부 가드4개 도구 검사만 해당한다. 반복 검증 완료·시각 품질 최종 수용·배포 수정·8→64 기능 회귀·성능 수용은 미완료다. 후보는 원상 적용 유지가 아니라 비채택이다.
+진단성공:같은호출입력/누적기/graph시계회계,원점·CPU/source·영상의제한된연결.회귀통과:분석산술4개도구검사.반복검증완료:이번동시계측은1회라해당없음.미실행/미수용:배포수정·원속도회복·시각품질·새8→64기능·64성능·최종수용.거부된previous-period표시후보는계속비채택이다.
 
 6. 변경 사항
 
-영상/정확HUD/포즈연결 분석기에 출력 파일명 옵션과 기존 파일 덮어쓰기 거부를 추가했다. 전용 window/boundary 분석기와 candidate-review.json을 추가하고 trace_horde_native_calls.py가 같은 모델 해시의 거부 후보를 적용 전에 차단하게 했다. 기본 관측plan과 기존PBO/AI는 유지한다. B8FB/453D/0C6E PBO는 변경/재빌드/재서명하지 않았고 앞선 두 실행의3개 서명 검증 성공 상태를 인용한다. 이번에는 새 실행·새 서명 검사를 하지 않았다.
+trace_horde_native_calls.py/watch_horde_frame_order_calls.ps1에명시적conservation읽기plan을추가했다.horde_interpolation_dt_entry_probe.js는해당plan에서만graph clock4byte를추가로읽고안정성을검사한다.전용회계분석기/4테스트와기존시계연결분석기의새plan·실제graph reset해석을추가했다.기존default관측/게임구현은유지한다.
 
-공개 스냅샷 도구는 새 실험 없이 기존 실행을 재분석한 경우 기존 sourceRunId를 참조하도록 보완했다. 과거 결과나 원시 로그를 덮어쓰지 않고 새 체크포인트/새 공개실험 항목으로 보존한다.
+실제driver/JS/config는각profile보존본을따른다.PBO B8FB/453D/0C6E는변경·재빌드·재서명하지않았으며실행전기존3개서명검증모두성공.운영서버변경없음.원시기록·실패분석·과거보고서를덮어쓰지않았다.
 
 7. 원시 증거
 
-두 기존 실행의 launch/녹화 종료, native3200행씩·HUD·분석 해시와 새6초 영상 파생3종씩, window-comparison.json, boundary-outliers.json, candidate-review.json을 연결했다. 영상은 재인코딩하지 않고 같은 확정 영상 해시의 입력에서 추출했다. 공개 패킷에는 집계·상위5개 경계 표본·자체 분석 함수 발췌를 싣는다. 전체 내부 trace/영상/설치자산/프로세스 정보는 공개하지 않는다. 기존 게시기로 저장 전/후 무결성 검사한다.
+실행ID runtime-20261029-043225의정상종료/compile/source/native368행·독립ACK·HUD/CPU·45초영상·검사이미지·분석JSON을연결한다.첫분석실패와수정전분석기두개·기존heuristic결과도보존한다.공개패킷은집계·첫6연속쌍·자체회계함수이며전체trace/영상/설치자산/프로세스/내부경로는공개하지않는다.기존게시기로저장전후해시·metadata·JSON을검사한다.
 
 8. 잔여 문제
 
-같은previous-period 후보를 수정안처럼 반복하지 않는다. 다음은 평균graph시간 약0.64가 발생하는 실제dt 전달/소비 지점을 읽기 중심으로 추적하고, 현재평가 주기 변화와 가변 프레임간격의 관계를 확인하는 것이다. 안정된 원인을 확보하기 전에 새 보간/지연/주기 정책을 배포하지 않는다. 새로운 후보를 만들더라도 세대 내부뿐 아니라 경계 큰 점프와 원본 source 적합오차를 함께 수용 기준에 포함해야 한다.
+다음은연속foreground조건에서같은읽기계측을반복해위회계가유지되는지확인하고,입력시간의상위공급과지원되는graph/API소비정책을현재자산/코드와대조하는것이다.새보간/임의배속/누적기패치를배포하지않는다.지원경로를확인한후한요소씩동작전환·root·공격·착지와함께후보를시험해야한다.
 
-64 기능은 기존 최종64/64·HIGH_HOLD 미도달13/14/43·EGRESS_STALL1·climb-end0을 유지하며 새회귀는 별도다.64 비용 귀속·20ms p95·사용자 SetTemperature 예외도 별도 미해결이다. 이번재분석으로 기능/시각/성능 목표를 축소하거나 완료로 바꾸지 않는다.
+기존64최종64/64·HIGH_HOLD미도달13/14/43·EGRESS_STALL1·climb-end0은미해결범위를유지한다.64비용귀속·20ms p95·사용자SetTemperature예외는별도다.이진단완료를전체골완료로바꾸지않는다.
 
-원본 보고서 ID: 2026-10-29_042719_349624+0900_npc-period-visible-boundary.md
-원본 SHA-256: 67447eaa0ba974eb563cfa60c7d816ab7b8d2be94232bc6ea0a33c2b57c8cb0e
+원본 보고서 ID: 2026-10-29_044134_304460+0900_npc-clock-conservation.md
+원본 SHA-256: 6eb5c4f8970b17b37f39a7494bfd603d3d205602801dfe34b0910b1737456959
 이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
 
-선정 집계와 상위5개 CPU변화율 경계 표본 — 전체 trace 아님
+선정 집계/첫6연속 native쌍 — 전체trace아님
 {
-  "runs": [
-    {
-      "runId": "runtime-20261029-040750",
-      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "numericOverride": false,
-      "videoSeconds": 6.000000000000002,
-      "exactHudSamples": 360,
-      "consecutivePairs": 298,
-      "excluded": {},
-      "duplicateHudPairs": 60,
-      "duplicateHudBodyChangesAtLeast10": 0,
-      "nativeIntervalMs": {
-        "n": 298,
-        "p50": 24.81455,
-        "p95": 35.53269499999999,
-        "p99": 37.34161899999999,
-        "maximum": 38.9437
-      },
-      "cpuMovementMeters": {
-        "n": 298,
-        "p50": 0.02019422689337015,
-        "p95": 0.11891939471261913,
-        "p99": 0.13347781184579283,
-        "maximum": 0.14611644960954942
-      },
-      "visibleChangePixels": {
-        "n": 298,
-        "p50": 1164.5,
-        "p95": 4264.849999999999,
-        "p99": 4909.36,
-        "maximum": 5230
-      },
-      "cpuMovementMetersPerSecond": {
-        "n": 298,
-        "p50": 2.965695511608761,
-        "p95": 4.630622399505879,
-        "p99": 5.417935841242184,
-        "maximum": 6.022895801070408
-      },
-      "visibleChangePixelsPerSecond": {
-        "n": 298,
-        "p50": 131295.01871066605,
-        "p95": 267965.2669835505,
-        "p99": 310104.09199691564,
-        "maximum": 372510.09346211323
-      },
-      "cpuVsVisibleCorrelation": 0.944017893276576,
-      "cpuSpeedVsVisibleRateCorrelation": 0.8488732156629769,
-      "intervalVsVisibleChangeCorrelation": 0.40873902162518205,
-      "intervalVsCpuMovementCorrelation": 0.4544316770861031
+  "conservation": {
+    "adjacentCalls": 367,
+    "resets": 105,
+    "exactGraphSteps": 367,
+    "accumulatorMaxResidualMs": 0.0,
+    "inputSumMs": 7964.000149164349,
+    "actualGraphAdvanceMs": 5249.919891357422,
+    "accumulatorDeltaMs": -32.99999888986349,
+    "discardedAccumulatorOvershootMs": 2747.0000497996807,
+    "balanceResidualMs": 0.08020689710974693,
+    "expectedFloat32BalanceRoundingMs": 0.08020689710974693,
+    "residualAfterExplicitFloat32AccountingMs": 0.0,
+    "graphAdvanceVsInputRatio": 0.6592064029416534,
+    "resetOvershootMs": {
+      "n": 105,
+      "p50": 29.999997466802597,
+      "p95": 33.000003546476364,
+      "p99": 91.20000556111307,
+      "maximum": 270.00002190470695
     },
-    {
-      "runId": "runtime-20261029-041212",
-      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "numericOverride": true,
-      "videoSeconds": 6.000000000000002,
-      "exactHudSamples": 360,
-      "consecutivePairs": 296,
-      "excluded": {
-        "nonconsecutiveHUD": 1
+    "runId": "runtime-20261029-043225",
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "calls": 368,
+    "clockAcks": 272,
+    "wallSpanMs": 7969.3204,
+    "inputVsWallRatio": 0.999332408465388,
+    "graphAdvanceVsWallRatio": 0.6587663223274876,
+    "callbackAdvanceMs": 4549.900000000001,
+    "callbackVsGraphAdvanceDifferenceMs": -0.030572509765079303,
+    "callbackScope": "Longest consecutive foreground event segment",
+    "foregroundLongestContiguous": {
+      "adjacentCalls": 335,
+      "resets": 91,
+      "exactGraphSteps": 335,
+      "accumulatorMaxResidualMs": 0.0,
+      "inputSumMs": 6887.0001384057105,
+      "actualGraphAdvanceMs": 4549.930572509766,
+      "accumulatorDeltaMs": 7.000000216066837,
+      "discardedAccumulatorOvershootMs": 2330.000039190054,
+      "balanceResidualMs": 0.06952648982405663,
+      "expectedFloat32BalanceRoundingMs": 0.06952648982405663,
+      "residualAfterExplicitFloat32AccountingMs": 0.0,
+      "graphAdvanceVsInputRatio": 0.6606549268290041,
+      "resetOvershootMs": {
+        "n": 91,
+        "p50": 29.999997466802597,
+        "p95": 33.000003546476364,
+        "p99": 39.0000037848946,
+        "maximum": 93.00000593066216
       },
-      "duplicateHudPairs": 61,
-      "duplicateHudBodyChangesAtLeast10": 0,
-      "nativeIntervalMs": {
-        "n": 296,
-        "p50": 28.4462,
-        "p95": 34.953025000000004,
-        "p99": 36.566885,
-        "maximum": 37.21060000000001
-      },
-      "cpuMovementMeters": {
-        "n": 296,
-        "p50": 0.03468998566575782,
-        "p95": 0.07912919402378113,
-        "p99": 0.09891069009094494,
-        "maximum": 0.13387072661589114
-      },
-      "visibleChangePixels": {
-        "n": 296,
-        "p50": 1629.0,
-        "p95": 3401.5,
-        "p99": 3827.4500000000025,
-        "maximum": 4848
-      },
-      "cpuMovementMetersPerSecond": {
-        "n": 296,
-        "p50": 1.895548318619255,
-        "p95": 2.842559267357699,
-        "p99": 7.42318562797428,
-        "maximum": 10.282814659178865
-      },
-      "visibleChangePixelsPerSecond": {
-        "n": 296,
-        "p50": 95144.20296819034,
-        "p95": 158471.59738768532,
-        "p99": 301727.1205533613,
-        "maximum": 471471.20675976883
-      },
-      "cpuVsVisibleCorrelation": 0.9151588292423861,
-      "cpuSpeedVsVisibleRateCorrelation": 0.7625236739515685,
-      "intervalVsVisibleChangeCorrelation": 0.8713197053475126,
-      "intervalVsCpuMovementCorrelation": 0.8557333072448607
-    }
-  ],
-  "boundary": {
-    "runs": [
-      {
-        "runId": "runtime-20261029-040750",
-        "numericOverride": false,
-        "selectedPairs": 298,
-        "generationBoundaries": 77,
-        "interiorPairs": 221,
-        "boundaryRateVsMean": {
-          "n": 77,
-          "p50": 0.1688205801466316,
-          "p95": 0.5764383876361018,
-          "p99": 1.7976690075063322,
-          "maximum": 2.0734202969758715
-        },
-        "interiorRateVsMean": {
-          "n": 221,
-          "p50": 1.7670942723102332,
-          "p95": 2.222402377105862,
-          "p99": 2.2906101875805183,
-          "maximum": 2.6966863483376895
-        },
-        "boundaryCpuSpeed": {
-          "n": 77,
-          "p50": 0.2880545099876175,
-          "p95": 0.8516258722318636,
-          "p99": 2.9261023422582877,
-          "maximum": 4.211581826629469
-        },
-        "interiorCpuSpeed": {
-          "n": 221,
-          "p50": 3.397910995295295,
-          "p95": 4.759773144227993,
-          "p99": 5.527152144595047,
-          "maximum": 6.022895801070408
-        },
-        "rateSpikesAbove2p5Mean": 1,
-        "rateSpikesAtGenerationBoundary": 0,
-        "topFiveCpuSpeedAllAtBoundary": false,
-        "topFiveCpuSpeed": [
-          {
-            "firstFrame": 1339,
-            "lastFrame": 1340,
-            "videoSeconds": 19.602,
-            "dtMs": 4.4831,
-            "cpuMeters": 0.02700124416577875,
-            "visiblePixels": 1670,
-            "cpuMetersPerSecond": 6.022895801070408,
-            "visiblePixelsPerSecond": 372510.09346211323,
-            "submittedDeltaMs": 7.000000216066837,
-            "generationBoundary": false,
-            "previousFraction": 0.0,
-            "newFraction": 0.14000000223517414,
-            "previousPeriodMs": 80.2036,
-            "newPeriodMs": 80.2036,
-            "phaseRateVsMeanRatio": 2.4400769513485026,
-            "boundaryAdvanceIdentityErrorMs": 0.0
-          },
-          {
-            "firstFrame": 1341,
-            "lastFrame": 1342,
-            "videoSeconds": 19.635333333333335,
-            "dtMs": 5.5556,
-            "cpuMeters": 0.03110536520173544,
-            "visiblePixels": 952,
-            "cpuMetersPerSecond": 5.59892094494482,
-            "visiblePixelsPerSecond": 171358.62913096696,
-            "submittedDeltaMs": 6.999999284744263,
-            "generationBoundary": false,
-            "previousFraction": 0.7999999701976781,
-            "newFraction": 0.939999953806401,
-            "previousPeriodMs": 80.2036,
-            "newPeriodMs": 80.2036,
-            "phaseRateVsMeanRatio": 1.9690236023444683,
-            "boundaryAdvanceIdentityErrorMs": 0.0
-          },
-          {
-            "firstFrame": 1281,
-            "lastFrame": 1282,
-            "videoSeconds": 18.435333333333336,
-            "dtMs": 5.2155,
-            "cpuMeters": 0.028974814641339827,
-            "visiblePixels": 1231,
-            "cpuMetersPerSecond": 5.555520015595787,
-            "visiblePixelsPerSecond": 236027.2265362861,
-            "submittedDeltaMs": 8.999999612569809,
-            "generationBoundary": false,
-            "previousFraction": 0.7600000387430186,
-            "newFraction": 0.9400000283122059,
-            "previousPeriodMs": 82.0951,
-            "newPeriodMs": 82.0951,
-            "phaseRateVsMeanRatio": 2.6966863483376895,
-            "boundaryAdvanceIdentityErrorMs": 0.0
-          },
-          {
-            "firstFrame": 1507,
-            "lastFrame": 1508,
-            "videoSeconds": 22.968666666666667,
-            "dtMs": 5.053,
-            "cpuMeters": 0.027355328377971767,
-            "visiblePixels": 719,
-            "cpuMetersPerSecond": 5.413680660592077,
-            "visiblePixelsPerSecond": 142291.70789629922,
-            "submittedDeltaMs": 6.000000983476639,
-            "generationBoundary": false,
-            "previousFraction": 0.800000044703483,
-            "newFraction": 0.9200000625848761,
-            "previousPeriodMs": 79.7264,
-            "newPeriodMs": 79.7264,
-            "phaseRateVsMeanRatio": 1.8556066443124628,
-            "boundaryAdvanceIdentityErrorMs": 0.0
-          },
-          {
-            "firstFrame": 1231,
-            "lastFrame": 1232,
-            "videoSeconds": 17.435333333333336,
-            "dtMs": 7.9544999999999995,
-            "cpuMeters": 0.04259993563179801,
-            "visiblePixels": 2282,
-            "cpuMetersPerSecond": 5.355451082003647,
-            "visiblePixelsPerSecond": 286881.6393236533,
-            "submittedDeltaMs": 9.999999776482582,
-            "generationBoundary": false,
-            "previousFraction": 0.0,
-            "newFraction": 0.19999999254941953,
-            "previousPeriodMs": 80.2374,
-            "newPeriodMs": 80.2374,
-            "phaseRateVsMeanRatio": 1.9645857957181931,
-            "boundaryAdvanceIdentityErrorMs": 0.0
-          }
-        ],
-        "representativeRateSpikes": [
-          {
-            "firstFrame": 1281,
-            "lastFrame": 1282,
-            "videoSeconds": 18.435333333333336,
-            "dtMs": 5.2155,
-            "cpuMeters": 0.028974814641339827,
-            "visiblePixels": 1231,
-            "cpuMetersPerSecond": 5.555520015595787,
-            "visiblePixelsPerSecond": 236027.2265362861,
-            "submittedDeltaMs": 8.999999612569809,
-            "generationBoundary": false,
-            "previousFraction": 0.7600000387430186,
-            "newFraction": 0.9400000283122059,
-            "previousPeriodMs": 82.0951,
-            "newPeriodMs": 82.0951,
-            "phaseRateVsMeanRatio": 2.6966863483376895,
-            "boundaryAdvanceIdentityErrorMs": 0.0
-          }
-        ]
-      },
-      {
-        "runId": "runtime-20261029-041212",
-        "numericOverride": true,
-        "selectedPairs": 296,
-        "generationBoundaries": 77,
-        "interiorPairs": 219,
-        "boundaryRateVsMean": {
-          "n": 77,
-          "p50": 0.970790313937387,
-          "p95": 4.176184118236071,
-          "p99": 4.573312684099576,
-          "maximum": 4.774810681964716
-        },
-        "interiorRateVsMean": {
-          "n": 219,
-          "p50": 0.9870973750089391,
-          "p95": 1.1574728823696874,
-          "p99": 1.5958348494205692,
-          "maximum": 1.611520980806063
-        },
-        "boundaryCpuSpeed": {
-          "n": 77,
-          "p50": 1.8156914535166297,
-          "p95": 6.898836466032519,
-          "p99": 9.594438615228873,
-          "maximum": 10.282814659178865
-        },
-        "interiorCpuSpeed": {
-          "n": 219,
-          "p50": 1.905298790803315,
-          "p95": 2.739657490981957,
-          "p99": 3.7239583846910236,
-          "maximum": 4.265599660203389
-        },
-        "rateSpikesAbove2p5Mean": 5,
-        "rateSpikesAtGenerationBoundary": 5,
-        "topFiveCpuSpeedAllAtBoundary": true,
-        "topFiveCpuSpeed": [
-          {
-            "firstFrame": 1459,
-            "lastFrame": 1460,
-            "videoSeconds": 26.398666666666667,
-            "dtMs": 8.9894,
-            "cpuMeters": 0.09243633409722248,
-            "visiblePixels": 3558,
-            "cpuMetersPerSecond": 10.282814659178865,
-            "visiblePixelsPerSecond": 395799.49718557415,
-            "submittedDeltaMs": 24.879813194274902,
-            "generationBoundary": true,
-            "previousFraction": 0.5023884698392679,
-            "newFraction": 0.0,
-            "previousPeriodMs": 80.53309999999999,
-            "newPeriodMs": 49.113200000000006,
-            "phaseRateVsMeanRatio": 4.324270851227055,
-            "boundaryAdvanceIdentityErrorMs": 0.0
-          },
-          {
-            "firstFrame": 1209,
-            "lastFrame": 1210,
-            "videoSeconds": 21.398666666666667,
-            "dtMs": 7.9411,
-            "cpuMeters": 0.07446414501288522,
-            "visiblePixels": 3744,
-            "cpuMetersPerSecond": 9.377056706613091,
-            "visiblePixelsPerSecond": 471471.20675976883,
-            "submittedDeltaMs": 24.26835522055626,
-            "generationBoundary": true,
-            "previousFraction": 0.5146176291314121,
-            "newFraction": 0.0,
-            "previousPeriodMs": 79.6298,
-            "newPeriodMs": 48.7492,
-            "phaseRateVsMeanRatio": 4.774810681964716,
-            "boundaryAdvanceIdentityErrorMs": 0.0
-          },
-          {
-            "firstFrame": 1433,
-            "lastFrame": 1434,
-            "videoSeconds": 25.882,
-            "dtMs": 9.5562,
-            "cpuMeters": 0.07489810196081963,
-            "visiblePixels": 3017,
-            "cpuMetersPerSecond": 7.837644875663927,
-            "visiblePixelsPerSecond": 315711.2659843871,
-            "submittedDeltaMs": 25.316357612609863,
-            "generationBoundary": true,
-            "previousFraction": 0.49365758160266904,
-            "newFraction": 0.0,
-            "previousPeriodMs": 81.6564,
-            "newPeriodMs": 49.682700000000004,
-            "phaseRateVsMeanRatio": 4.139162434988324,
-            "boundaryAdvanceIdentityErrorMs": 0.0
-          },
-          {
-            "firstFrame": 1477,
-            "lastFrame": 1478,
-            "videoSeconds": 26.748666666666665,
-            "dtMs": 8.202900000000001,
-            "cpuMeters": 0.060712714242295795,
-            "visiblePixels": 2469,
-            "cpuMetersPerSecond": 7.40137198335903,
-            "visiblePixelsPerSecond": 300991.1128990966,
-            "submittedDeltaMs": 23.27398955821991,
-            "generationBoundary": true,
-            "previousFraction": 0.534504942081795,
-            "newFraction": 0.0,
-            "previousPeriodMs": 79.61609999999999,
-            "newPeriodMs": 50.5732,
-            "phaseRateVsMeanRatio": 4.433022101713031,
-            "boundaryAdvanceIdentityErrorMs": 0.0
-          },
-          {
-            "firstFrame": 1223,
-            "lastFrame": 1224,
-            "videoSeconds": 21.682,
-            "dtMs": 8.1269,
-            "cpuMeters": 0.05504514010185946,
-            "visiblePixels": 2326,
-            "cpuMetersPerSecond": 6.77320258670089,
-            "visiblePixelsPerSecond": 286209.99397064076,
-            "submittedDeltaMs": 23.457100614905357,
-            "generationBoundary": true,
-            "previousFraction": 0.5308427210026574,
-            "newFraction": 0.0,
-            "previousPeriodMs": 79.8276,
-            "newPeriodMs": 50.327799999999996,
-            "phaseRateVsMeanRatio": 4.509681737405322,
-            "boundaryAdvanceIdentityErrorMs": 0.0
-          }
-        ],
-        "representativeRateSpikes": [
-          {
-            "firstFrame": 1209,
-            "lastFrame": 1210,
-            "videoSeconds": 21.398666666666667,
-            "dtMs": 7.9411,
-            "cpuMeters": 0.07446414501288522,
-            "visiblePixels": 3744,
-            "cpuMetersPerSecond": 9.377056706613091,
-            "visiblePixelsPerSecond": 471471.20675976883,
-            "submittedDeltaMs": 24.26835522055626,
-            "generationBoundary": true,
-            "previousFraction": 0.5146176291314121,
-            "newFraction": 0.0,
-            "previousPeriodMs": 79.6298,
-            "newPeriodMs": 48.7492,
-            "phaseRateVsMeanRatio": 4.774810681964716,
-            "boundaryAdvanceIdentityErrorMs": 0.0
-          },
-          {
-            "firstFrame": 1223,
-            "lastFrame": 1224,
-            "videoSeconds": 21.682,
-            "dtMs": 8.1269,
-            "cpuMeters": 0.05504514010185946,
-            "visiblePixels": 2326,
-            "cpuMetersPerSecond": 6.77320258670089,
-            "visiblePixelsPerSecond": 286209.99397064076,
-            "submittedDeltaMs": 23.457100614905357,
-            "generationBoundary": true,
-            "previousFraction": 0.5308427210026574,
-            "newFraction": 0.0,
-            "previousPeriodMs": 79.8276,
-            "newPeriodMs": 50.327799999999996,
-            "phaseRateVsMeanRatio": 4.509681737405322,
-            "boundaryAdvanceIdentityErrorMs": 0.0
-          },
-          {
-            "firstFrame": 1433,
-            "lastFrame": 1434,
-            "videoSeconds": 25.882,
-            "dtMs": 9.5562,
-            "cpuMeters": 0.07489810196081963,
-            "visiblePixels": 3017,
-            "cpuMetersPerSecond": 7.837644875663927,
-            "visiblePixelsPerSecond": 315711.2659843871,
-            "submittedDeltaMs": 25.316357612609863,
-            "generationBoundary": true,
-            "previousFraction": 0.49365758160266904,
-            "newFraction": 0.0,
-            "previousPeriodMs": 81.6564,
-            "newPeriodMs": 49.682700000000004,
-            "phaseRateVsMeanRatio": 4.139162434988324,
-            "boundaryAdvanceIdentityErrorMs": 0.0
-          },
-          {
-            "firstFrame": 1459,
-            "lastFrame": 1460,
-            "videoSeconds": 26.398666666666667,
-            "dtMs": 8.9894,
-            "cpuMeters": 0.09243633409722248,
-            "visiblePixels": 3558,
-            "cpuMetersPerSecond": 10.282814659178865,
-            "visiblePixelsPerSecond": 395799.49718557415,
-            "submittedDeltaMs": 24.879813194274902,
-            "generationBoundary": true,
-            "previousFraction": 0.5023884698392679,
-            "newFraction": 0.0,
-            "previousPeriodMs": 80.53309999999999,
-            "newPeriodMs": 49.113200000000006,
-            "phaseRateVsMeanRatio": 4.324270851227055,
-            "boundaryAdvanceIdentityErrorMs": 0.0
-          },
-          {
-            "firstFrame": 1477,
-            "lastFrame": 1478,
-            "videoSeconds": 26.748666666666665,
-            "dtMs": 8.202900000000001,
-            "cpuMeters": 0.060712714242295795,
-            "visiblePixels": 2469,
-            "cpuMetersPerSecond": 7.40137198335903,
-            "visiblePixelsPerSecond": 300991.1128990966,
-            "submittedDeltaMs": 23.27398955821991,
-            "generationBoundary": true,
-            "previousFraction": 0.534504942081795,
-            "newFraction": 0.0,
-            "previousPeriodMs": 79.61609999999999,
-            "newPeriodMs": 50.5732,
-            "phaseRateVsMeanRatio": 4.433022101713031,
-            "boundaryAdvanceIdentityErrorMs": 0.0
-          }
-        ]
-      }
-    ],
-    "threshold": "submitted phase advance / (same-run mean graph rate * entry interval) >2.5; exploratory, not perceptual threshold",
-    "candidateAccepted": false,
-    "diagnosis": "Test whether previous-period prediction leaves endpoint debt on a short generation-boundary interval.",
-    "limitations": [
-      "Retrospective attribution, not a new timing policy or exact display timestamp.",
-      "The spike threshold was chosen after inspecting this pilot and requires prospective validation.",
-      "Model/source pose fit and unmeasured GPU scheduling limit perceptual claims."
-    ],
-    "inputHashes": {
-      "window-comparison.json": "765a52b9922c2abd239757481d93812860cb362dcac36561f162b6cea5684ebd"
-    }
-  },
-  "review": {
-    "decision": "rejected",
-    "scope": "Previous-period shared display-fraction model; existing B8FB PBO unchanged",
-    "modelSha256": "1f64711e3763b6eca6d1bd20c97786d2cb2a928dfbb6396a5e099b8d5fe6f8bf",
-    "sourceRuns": [
-      "runtime-20261029-040750",
-      "runtime-20261029-041212"
-    ],
-    "reason": "All5 exploratory high phase-rate spikes and top5 CPU-speed outliers occur at generation boundaries; previous fraction about0.5 advances to next buffer on7.94..9.56ms entry intervals.",
-    "boundaryEvidenceSha256": "7083bfc10b4876dcd5e0609e90edcc8aa7acccb80033b7c2845c49d1b6bfc9dc",
-    "repeatedValidation": false,
+      "calls": 336,
+      "firstEventIndex": 32,
+      "lastEventIndex": 367,
+      "wallSpanMs": 6795.236400000001,
+      "graphAdvanceVsWallRatio": 0.6695764951620764
+    },
+    "foregroundJoinedCalls": 364,
+    "exclusions": {
+      "background": 4
+    },
+    "independentClockWidthMs": 7.828099999999999,
+    "missionFrameMs": {
+      "n": 5214,
+      "p50": 20.006,
+      "p95": 35.25217,
+      "p99": 37.16851499999999,
+      "maximum": 64.2406
+    },
+    "nativeReadBracketMs": {
+      "n": 368,
+      "p50": 0.0185,
+      "p95": 0.0288,
+      "p99": 0.032194999999999974,
+      "maximum": 0.1115
+    },
+    "numericOverrides": false,
     "visualAccepted": false,
     "performanceAccepted": false,
-    "next": "Do not repeat unchanged model as a fix. Trace slow graph input/consumption and retain original runtime policy."
+    "limitations": [
+      "Single73-bone renderer of one logical8-part body; not64 agents.",
+      "Graph-owner clock and callback sum, not direct clip normalized phase or GPU Present.",
+      "Accumulator reset accounting is build/mode/observed path specific.",
+      "Hook/pose query/recording overhead excluded from performance acceptance."
+    ]
+  },
+  "pairs": [
+    {
+      "reset": true,
+      "inputDt": 0.019999999552965164,
+      "accumulatorResidualMs": 0.0,
+      "exactGraphStep": true,
+      "graphDelta": 0.049999237060546875,
+      "additionRounding": 0.0,
+      "expectedGraphRounding": -7.636845111846924e-07,
+      "discardedOvershoot": 0.009999997913837433
+    },
+    {
+      "reset": false,
+      "inputDt": 0.019999999552965164,
+      "accumulatorResidualMs": 0.0,
+      "exactGraphStep": true,
+      "graphDelta": 0.0,
+      "additionRounding": 0.0,
+      "expectedGraphRounding": 0.0,
+      "discardedOvershoot": 0.0
+    },
+    {
+      "reset": false,
+      "inputDt": 0.019999999552965164,
+      "accumulatorResidualMs": 0.0,
+      "exactGraphStep": true,
+      "graphDelta": 0.0,
+      "additionRounding": 0.0,
+      "expectedGraphRounding": 0.0,
+      "discardedOvershoot": 0.0
+    },
+    {
+      "reset": true,
+      "inputDt": 0.019999999552965164,
+      "accumulatorResidualMs": 0.0,
+      "exactGraphStep": true,
+      "graphDelta": 0.049999237060546875,
+      "additionRounding": 0.0,
+      "expectedGraphRounding": -7.636845111846924e-07,
+      "discardedOvershoot": 0.009999997913837433
+    },
+    {
+      "reset": false,
+      "inputDt": 0.019999999552965164,
+      "accumulatorResidualMs": 0.0,
+      "exactGraphStep": true,
+      "graphDelta": 0.0,
+      "additionRounding": 0.0,
+      "expectedGraphRounding": 0.0,
+      "discardedOvershoot": 0.0
+    },
+    {
+      "reset": false,
+      "inputDt": 0.019999999552965164,
+      "accumulatorResidualMs": 0.0,
+      "exactGraphStep": true,
+      "graphDelta": 0.0,
+      "additionRounding": 0.0,
+      "expectedGraphRounding": 0.0,
+      "discardedOvershoot": 0.0
+    }
+  ],
+  "visible": {
+    "runId": "runtime-20261029-043225",
+    "nativeCpuPairs": 362,
+    "exactVideoHudFrames": 360,
+    "nativeCpuVideoPairs": 237,
+    "cpuVsVisibleCorrelation": 0.9448867333370273,
+    "sourceProxyCorrelation": 0.9715163663275882,
+    "sourceProxyResidualRmsMs": 3.004886712148295,
+    "poseFitP95Meters": 0.014356811577782557,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "limitations": [
+      "Exact HUD/CPU/native intersection; silhouette change is not perceptual smoothness.",
+      "Native getter may refresh CPU bone caches; no GPU/Present timing.",
+      "One trial with4 background entries excluded from pose/video admission."
+    ]
   }
 }
+
+자체회계함수발췌
+
+    pairs=[]
+    for a,b in zip(events,events[1:]):
+        assert a['primary']==b['primary'] and b['primary']==b['duration']
+        total=f32(a['numerator']+b['savedInputDt']);crossed=total>=b['primary']
+        expected_acc=0.0 if crossed else total
+        expected_graph=f32(a['graphClock']+b['duration']) if crossed else a['graphClock']
+        pairs.append(dict(reset=crossed,inputDt=b['savedInputDt'],accumulatorResidualMs=(b['numerator']-expected_acc)*1000,
+            exactGraphStep=b['graphClock']==expected_graph,graphDelta=b['graphClock']-a['graphClock'],
+            additionRounding=total-(a['numerator']+b['savedInputDt']),
+            expectedGraphRounding=(expected_graph-a['graphClock']-b['primary']) if crossed else 0.0,
+            discardedOvershoot=total-b['primary'] if crossed else 0.0))
+    assert pairs
+    inputs=sum(p['inputDt'] for p in pairs);graph=events[-1]['graphClock']-events[0]['graphClock']
+    accumulator=events[-1]['numerator']-events[0]['numerator'];discarded=sum(p['discardedOvershoot'] for p in pairs)
+    residual=inputs-graph-accumulator-discarded
+    expected_rounding=-sum(p['additionRounding']+p['expectedGraphRounding'] for p in pairs)
+    return dict(adjacentCalls=len(pairs),resets=sum(p['reset'] for p in pairs),
+        exactGraphSteps=sum(p['exactGraphStep'] for p in pairs),
+        accumulatorMaxResidualMs=max(abs(p['accumulatorResidualMs']) for p in pairs),
+        inputSumMs=inputs*1000,actualGraphAdvanceMs=graph*1000,accumulatorDeltaMs=accumulator*1000,
+        discardedAccumulatorOvershootMs=discarded*1000,balanceResidualMs=residual*1000,
+        expectedFloat32BalanceRoundingMs=expected_rounding*1000,
+        residualAfterExplicitFloat32AccountingMs=(residual-expected_rounding)*1000,
+        graphAdvanceVsInputRatio=graph/inputs,
+        resetOvershootMs=distribution([p['discardedOvershoot']*1000 for p in pairs if p['reset']]),
+        pairs=pairs)
+
 
 이전 애니메이션 진단: [선정 근거](downloads/animation-review.txt). 이번 진단은 시각·성능 해결을 뜻하지 않는다.
