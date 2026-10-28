@@ -1,274 +1,164 @@
 # DayZ NPC AI — 외부 세션 검토 자료
 
-Snapshot: snapshot-20261028T194211-clock-conservation-20261029
+Snapshot: snapshot-20261028T195520-clock-conservation-repeat-20261029
 
-같은 호출의 입력·누적기·그래프 시간 회계 — 느린 진행 구간 확인
+활성 창400표본에서 시간 회계 재현 — 수정 경로 한계와43번 출구 실패 분리
 
-작성: 2026-10-29T04:41:34.304460+09:00
+작성: 2026-10-29T04:54:41.007275+09:00
 
 1. 작업 목표
 
-느린 평균 재생에 관한 기존 입력시간/누적기와 그래프시계 관측을 서로 다른 실행끼리 합치지 않고 같은 호출에서 대조한다. 거부한previous-period 표시 비율 후보는 사용하지 않는다. 기존 B8FB AI·정상 낙하/복구와 운영 서버를 보존하고 기능·화면 품질·성능을 별도 판정한다.
+입력 dt·누적기 초기화·graph-owner 시계를 같은 호출에서 읽은 결과가 반복되는지 확인한다. 활성 창 상태가 유지된 표본을 확보하고 실제 영상 대응을 추가한다. 기존 B8FB AI와 정상 낙하·복구는 보존하며, 평균속도·시각 품질·64명 기능·성능을 별도로 판정한다.
 
 2. 실제 수행
 
-runtime-20261029-043225:1논리개체/8렌더부품, 고정run·AI/이동OFF·VSyncON,120초, 동일3개 서명PBO. 기존 helper 진입 한 곳에서 원본 바이트/두 반환주소·Animal vtable·receiver/renderer/mode0·73본을 확인하고 입력dt의 기존 stack spill·분자/누적기·retained duration·graph-owner float를 함께 읽었다. 그래프/인자/행렬 쓰기·복사본 교체·반환 hook은 없다. disabled 관측기는 정상 게임 종료까지 유지했다.
+첫043225 실행을 보존하고 새044620 실행을120초 진행했다. 동일3개 서명PBO·고정run·AI/이동OFF·1논리개체/8부품·VSyncON 조건이다. 로딩 중 창을 전경으로 가져왔고, 이번 observer는 실제 HUD의 appActive=true가5초 유지된 뒤 attach했다. 기본 watcher는0초로 유지하며 이번만5초를 지정했다. helper 진입 한 곳에서 입력 spill·누적기·retained duration·graph clock을 읽었고 숫자/인자/상태 쓰기나 반환 hook은 없다. 게임과45초 녹화는 정상 종료됐다.
 
-독립 시계272ACK/timeout0으로 엔진 원점을 검증했다.368호출 모두 명확한 두HUD 사이에 있었고4개는 background로 분리했다. 전체368호출 시간회계와 가장 긴 연속foreground336호출을 따로 계산했다. 실제45초 녹화를 정상 종료한 뒤6본 source-FK와 정확영상HUD를 연결했다.
+분석기의 callback 연결은 float값을 다시 검색하는 대신 실제 event ordinal로 연결하도록 보완했다. 입력/누적기/graph 산술과 원점/파일ACK/HUD의 검사는 유지했다. 새 원시·기존 보고서는 덮어쓰지 않았다.
 
-첫 회계 분석은 소수float의0.05ms 고정 허용치로 실패했다. 원시/실패기록/당시 분석기를 보존하고 각 ADDSS 및 graph float32 덧셈의 반올림을 항으로 분리했다. 오차 허용치 확대가 아니다. 입력/누적기/graph 보상과float32 테스트4개는 통과했다. 두번째 분석의 foreground 전체 가정 실패도 구분해 수정하고 모든표본을 foreground처럼 표시하지 않았다.
+처음 영상 분석의 두3초 구간에서는 native/CPU/영상 교집합이103쌍이었다. 이를 전체 계측 구간의 화면 증거로 확대하지 않았다. 기존 정확HUD의 mission-video 시간차로 native 첫 활성 연결0.5초 후부터6초를 선정해 video25.413/28.413초에서 다시 추출했다. 새파일은conservation-window-*로 저장했다.
 
 3. 측정 결과
 
-|항목|전체368호출·367연속쌍|최장연속foreground336호출·335쌍|
+|항목|첫 실행043225|반복044620|
 |---|---:|---:|
-|입력dt 합 ms|7964.000149|6887.000138|
-|graph 실제 증가 ms|5249.919891|4549.930573|
-|누적기 마지막−처음 ms|−32.999999|7.000000|
-|누적기에 남지 않은 초과분 ms|2747.000050|2330.000039|
-|초기화 횟수|105|91|
-|graph float32 예측 일치|367/367|335/335|
-|누적기 최대 예측잔차 ms|0|0|
-|명시적float32 반올림 후 회계잔차 ms|0|0|
-|graph 증가/입력dt|0.659206|0.660655|
-|graph 증가/native 진입벽시간|0.658766|0.669576|
+|호출|368|400|
+|연속쌍/정확 graph 증가|367|399|
+|활성 창 호출|364|400|
+|입력 합 ms|7964.000149|7969.000174|
+|graph 증가 ms|5249.919891|5149.921417|
+|버린 초과분 ms|2747.000050|2853.000008|
+|회계 잔차 ms|0.000000|0.000000|
+|graph/진입 벽시간|0.658766|0.646232|
 
-전체 회계잔차0.080206897ms는 명시적float32 반올림 합계와 정확히 같았다. foreground는0.069526490ms였다. 입력dt합과graph증가량의 차이를 float 반올림으로 설명할 수 있는 규모가 아니다. 전체 입력dt합/native 진입시간은0.999332. foreground입력dt합과진입간격은 선택 경계·상위시간 공급이 달라 동일벽시간으로 강제치환하지 않는다.
+두 실행 합768호출·766연속쌍에서 graph 증가가 해당float32 식과 일치했다. 양쪽 누적기 예측잔차와 명시적float32 반올림 후 회계잔차는0이다. 첫 실행은 background4개를 분리한 관측이며, 새 실행은400개 모두 활성 창의 고유HUD에 연결됐다. 서로 다른 포커스 조건을 같은 조건의 완전한 반복으로 숨기지 않는다. 반복된 것은 시간 전달 구조다.
 
-foreground구간 script callback 증가4549.900ms는graph증가4549.930573ms와0.030573ms 차이였다. callback 출력 문자열의 반올림이 있어 비트일치를 주장하지 않는다.368중4background 제외/364고유HUD 연결,362연속CPU/source쌍,source fit p95 14.357mm·graph/분자 모델과source proxy 상관0.971516·잔차RMS3.005ms. 영상360HUD 모두정확, native/CPU/영상237쌍의CPU변화/몸mask변화 상관0.944887이었다. 이는 지각품질 점수가 아니다.
+새 실행 입력/native 진입시간 비율0.999980, graph/입력0.646244.103초과 중 초과분 중앙약30ms·최대33ms였다. script callback 증가5149.900ms와graph5149.921417ms의 차이는−0.021417ms다. callback 문자열 반올림을 고려하며 비트일치를 주장하지 않는다.
 
-미션foreground p50/p95/p99=20.006/35.252/37.169ms, 최대64.241ms. 관측읽기구간 p50/p95/p99=0.0185/0.0288/0.0322ms. 총hook/본query/녹화 overhead를 분리한 수치가 아니므로 최적화/20ms p95 수용에 쓰지 않는다. 새8/64 이동/혼잡회귀·64비용·GPU Present·할당/GC는 미실행이다.
+새 실행399 CPU/source proxy 쌍의 적합p95=11.698mm, 시간잔차RMS=2.834ms, 상관0.977028. 처음분석 영상103쌍 상관0.941203은 보존했고, 추가로 선정한6초는360개HUD 모두정확·298 native/CPU/영상쌍·CPU/몸mask변화 상관0.948443이었다. 지각 품질 점수나 직접 clip phase는 아니다. 단순 마지막A 글자 비교는 평가횟수 증거로 사용하지 않았다.
+
+새 미션foreground p50/p95/p99=19.957/34.713/36.411ms, 최대52.325ms. 원시읽기 p50/p95/p99=0.0175/0.0194/0.0260ms. 계측·본조회·녹화를 포함하므로64명 비용이나 최적화 효과로 해석하지 않는다. 새8/64 기능회귀·GPU/Present·할당/GC는 미실행이다.
 
 4. 원인 분석
 
-관찰된 사실: 같은경로/호출에서 누적입력 임계50ms 초과가 발생하면 누적기는0이 되고 graph-owner는float32(이전시계+50ms)만큼 증가했다. 초과분이 그 시계에 추가보상되는 형태는367쌍에서 나타나지 않았다. 이번경로에서입력약7.964초·graph약5.250초·버린초과분약2.747초가동시에회계로연결됐다. 기존별도실행자료보다강한한실행의시간전달근거다.
+확인: 활성 창만 있는 반복에서도 실제입력이약7.969초 진행하는 동안graph는약5.150초 증가하고 누적기에남지않는 초과분이약2.853초 발생했다. 입력이50ms를넘었을 때graph에50ms만 전달되고 누적기를0으로만드는 이 경로가 느린graph진행에 기여한다는 동일호출 근거가 반복됐다. 모든 클립·모드·GPU단계까지 확대하지 않는다.
 
-추정과한계: 이구조가느린시각재생에기여한다는가설을지지하지만개별클립normalized phase·다른모드·모든상태의보상이나GPU최종소비를직접측정하지않았다.이번비율은약0.66~0.67로앞선0.64보다달랐지만계측/포커스/프레임조건이다르므로개선으로보고하지않는다.4background표본과270ms최대초과분을숨기지않는다.최장foreground에서도93ms초과분이있었다.
+기존지원경로와 대조: TimeScale 변수는 고정run 평균속도를 맞추는 반응이 이미A/B/B/A에서 반복됐다. 하지만 정규화 시간증분RMS는약24ms로 줄지 않았고source fit은약14→29mm로 커졌다. LOD0의20Hz유지포즈나이전세대주기표시후보도 이미 부족한 결과를 보였다. 같은방법을 새수정처럼 반복하지 않는다. 현재지원API조사로는 Creature 평가시간과독립적인 표시보간구간 setter를 확보하지 못했다. 엔진전체에 그런기능이 없다는 증명은 아니다.
 
-분석기수정:분자감소만으로reset을판정하면0→0이연속되는5개실제graph증가를놓쳤다.기존분석결과는보존하고conservation plan에서만실제graph시계변화로판정한새분석을저장했다.기존heuristic의callback잔차최대50ms가새분석에서0.100001ms가된것은게임수정이아니라계측해석수정이다.
-
-반증범위:입력과graph의큰차이가단순NativeSeconds이름오해나float32반올림뿐이라는가정과맞지않는다.다만모든끊김의단일원인확정·전체엔진의시간손실일반화·native수정의배포정당화는아니다.
+별도기능추적의 다음표적을 구체화했다. 기존063933의43번은generation1,60.281초에EGRESS→FOLLOW/EGRESS_STALL로 전환했고 최종결과는ARRIVED였다. 전체미종료개체는0이고좁은clearance lease감사위반도0이지만,timeout/handoff 실패라벨이 사라지는 것은 아니다. 최종도착을중간출구성공으로바꾸지않는다. 이사례의접촉표본은컨테이너/본검사차단을가리키며 다음분석에서실제첫걸음거부와handoff계약을연결한다.
 
 5. 검증 수준
 
-진단성공:같은호출입력/누적기/graph시계회계,원점·CPU/source·영상의제한된연결.회귀통과:분석산술4개도구검사.반복검증완료:이번동시계측은1회라해당없음.미실행/미수용:배포수정·원속도회복·시각품질·새8→64기능·64성능·최종수용.거부된previous-period표시후보는계속비채택이다.
+반복 검증 완료: 이 빌드·관측 경로의 동일호출 시간 회계 구조가 두 실행에서 일치했다는 범위다. 첫 실행의4background를 포함한 조건 차이는 유지한다. 진단 성공: 새 활성400표본과native/CPU/영상298쌍 연결, 기존지원제어의 한계 대조,43번기능실패의다음사례선정.
+
+미실행/미수용: 지원되는배포수정,원속도회복,지각적부드러움,모든14상태,새8→64기능회귀,64비용/20ms p95,최종수용. 진단반복을기능·시각·성능완료로치환하지않는다.
 
 6. 변경 사항
 
-trace_horde_native_calls.py/watch_horde_frame_order_calls.ps1에명시적conservation읽기plan을추가했다.horde_interpolation_dt_entry_probe.js는해당plan에서만graph clock4byte를추가로읽고안정성을검사한다.전용회계분석기/4테스트와기존시계연결분석기의새plan·실제graph reset해석을추가했다.기존default관측/게임구현은유지한다.
+watch_horde_frame_order_calls.ps1에선택적MinForegroundSeconds와실제watcher소스보존을추가했다.기본값0이라기존호출지연은유지한다.analyze_horde_clock_conservation.py는event ordinal로callback을연결한다.재사용가능한conservation 영상교집합도구와파일명옵션을추가했다.기존같은이름의파일을덮어쓰지않는다.
 
-실제driver/JS/config는각profile보존본을따른다.PBO B8FB/453D/0C6E는변경·재빌드·재서명하지않았으며실행전기존3개서명검증모두성공.운영서버변경없음.원시기록·실패분석·과거보고서를덮어쓰지않았다.
+B8FB/453D/0C6E PBO는변경·재빌드·재서명하지않았으며새실행전3개기존서명검증모두성공.개인키는배포하지않았다.운영서버변경없음.실제실행driver/JS/config는각profile보존본이기준이다.
 
 7. 원시 증거
 
-실행ID runtime-20261029-043225의정상종료/compile/source/native368행·독립ACK·HUD/CPU·45초영상·검사이미지·분석JSON을연결한다.첫분석실패와수정전분석기두개·기존heuristic결과도보존한다.공개패킷은집계·첫6연속쌍·자체회계함수이며전체trace/영상/설치자산/프로세스/내부경로는공개하지않는다.기존게시기로저장전후해시·metadata·JSON을검사한다.
+043225와044620의launch/native/원점bridge/HUD/회계·source proxy·영상연결을해시로연결한다.044620의확정영상·검사이미지·watcher소스·새6초선정계획과파생물도보존했다.기능다음사례는기존063933 state-contract/egress journal분석해시로연결한다.이것은새64명시험이아니다.
+
+기존publish 도구로안전종료·저장전후파일안정성·SHA256·JSON을확인한다.공개패킷은집계와선정실패사례만포함하며전체trace/영상/설치자산/내부경로/프로세스정보를공개하지않는다.
 
 8. 잔여 문제
 
-다음은연속foreground조건에서같은읽기계측을반복해위회계가유지되는지확인하고,입력시간의상위공급과지원되는graph/API소비정책을현재자산/코드와대조하는것이다.새보간/임의배속/누적기패치를배포하지않는다.지원경로를확인한후한요소씩동작전환·root·공격·착지와함께후보를시험해야한다.
+애니메이션의느린진행원인은이경로에서더구체화됐지만지원되는수정수단은아직미확보다.지원API/그래프소비정책을확보하기전새보간·임의배속·누적기패치를배포하지않는다.후보가생기면평균속도뿐아니라세대경계점프·source적합·공격/착지시계·8부품동기화를함께검증한다.
 
-기존64최종64/64·HIGH_HOLD미도달13/14/43·EGRESS_STALL1·climb-end0은미해결범위를유지한다.64비용귀속·20ms p95·사용자SetTemperature예외는별도다.이진단완료를전체골완료로바꾸지않는다.
+다음기능작업은43번EGRESS_STALL의동일generation에서현재포즈접촉거부·복구시도·FOLLOW전환을연결하는것이다.기존정상낙하/복구와지원검사는유지한다.HIGH_HOLD13/14/43과stall실패는해결됐다고갱신하지않는다.64비용기여도는별도통제시험으로관리하며20ms p95를계속목표로둔다.
 
-원본 보고서 ID: 2026-10-29_044134_304460+0900_npc-clock-conservation.md
-원본 SHA-256: 6eb5c4f8970b17b37f39a7494bfd603d3d205602801dfe34b0910b1737456959
+원본 보고서 ID: 2026-10-29_045441_007275+0900_npc-clock-conservation-repeat.md
+원본 SHA-256: d736a6ba6cb819287d49163dd3cf6a0a17638d470556f431cd07bbf8827a1dc8
 이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
 
-선정 집계/첫6연속 native쌍 — 전체trace아님
+선정 집계와기존43번실패사례 — 전체trace아님
 {
-  "conservation": {
-    "adjacentCalls": 367,
-    "resets": 105,
-    "exactGraphSteps": 367,
-    "accumulatorMaxResidualMs": 0.0,
-    "inputSumMs": 7964.000149164349,
-    "actualGraphAdvanceMs": 5249.919891357422,
-    "accumulatorDeltaMs": -32.99999888986349,
-    "discardedAccumulatorOvershootMs": 2747.0000497996807,
-    "balanceResidualMs": 0.08020689710974693,
-    "expectedFloat32BalanceRoundingMs": 0.08020689710974693,
-    "residualAfterExplicitFloat32AccountingMs": 0.0,
-    "graphAdvanceVsInputRatio": 0.6592064029416534,
-    "resetOvershootMs": {
-      "n": 105,
-      "p50": 29.999997466802597,
-      "p95": 33.000003546476364,
-      "p99": 91.20000556111307,
-      "maximum": 270.00002190470695
-    },
-    "runId": "runtime-20261029-043225",
-    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-    "calls": 368,
-    "clockAcks": 272,
-    "wallSpanMs": 7969.3204,
-    "inputVsWallRatio": 0.999332408465388,
-    "graphAdvanceVsWallRatio": 0.6587663223274876,
-    "callbackAdvanceMs": 4549.900000000001,
-    "callbackVsGraphAdvanceDifferenceMs": -0.030572509765079303,
-    "callbackScope": "Longest consecutive foreground event segment",
-    "foregroundLongestContiguous": {
-      "adjacentCalls": 335,
-      "resets": 91,
-      "exactGraphSteps": 335,
-      "accumulatorMaxResidualMs": 0.0,
-      "inputSumMs": 6887.0001384057105,
-      "actualGraphAdvanceMs": 4549.930572509766,
-      "accumulatorDeltaMs": 7.000000216066837,
-      "discardedAccumulatorOvershootMs": 2330.000039190054,
-      "balanceResidualMs": 0.06952648982405663,
-      "expectedFloat32BalanceRoundingMs": 0.06952648982405663,
-      "residualAfterExplicitFloat32AccountingMs": 0.0,
-      "graphAdvanceVsInputRatio": 0.6606549268290041,
-      "resetOvershootMs": {
-        "n": 91,
-        "p50": 29.999997466802597,
-        "p95": 33.000003546476364,
-        "p99": 39.0000037848946,
-        "maximum": 93.00000593066216
+  "clockRuns": [
+    {
+      "runId": "runtime-20261029-043225",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "calls": 368,
+      "pairs": 367,
+      "exactGraphSteps": 367,
+      "inputSumMs": 7964.000149164349,
+      "graphAdvanceMs": 5249.919891357422,
+      "overshootMs": 2747.0000497996807,
+      "residualMs": 0.0,
+      "graphVsWall": 0.6587663223274876,
+      "foregroundCalls": 364,
+      "exclusions": {
+        "background": 4
       },
-      "calls": 336,
-      "firstEventIndex": 32,
-      "lastEventIndex": 367,
-      "wallSpanMs": 6795.236400000001,
-      "graphAdvanceVsWallRatio": 0.6695764951620764
-    },
-    "foregroundJoinedCalls": 364,
-    "exclusions": {
-      "background": 4
-    },
-    "independentClockWidthMs": 7.828099999999999,
-    "missionFrameMs": {
-      "n": 5214,
-      "p50": 20.006,
-      "p95": 35.25217,
-      "p99": 37.16851499999999,
-      "maximum": 64.2406
-    },
-    "nativeReadBracketMs": {
-      "n": 368,
-      "p50": 0.0185,
-      "p95": 0.0288,
-      "p99": 0.032194999999999974,
-      "maximum": 0.1115
-    },
-    "numericOverrides": false,
-    "visualAccepted": false,
-    "performanceAccepted": false,
-    "limitations": [
-      "Single73-bone renderer of one logical8-part body; not64 agents.",
-      "Graph-owner clock and callback sum, not direct clip normalized phase or GPU Present.",
-      "Accumulator reset accounting is build/mode/observed path specific.",
-      "Hook/pose query/recording overhead excluded from performance acceptance."
-    ]
-  },
-  "pairs": [
-    {
-      "reset": true,
-      "inputDt": 0.019999999552965164,
-      "accumulatorResidualMs": 0.0,
-      "exactGraphStep": true,
-      "graphDelta": 0.049999237060546875,
-      "additionRounding": 0.0,
-      "expectedGraphRounding": -7.636845111846924e-07,
-      "discardedOvershoot": 0.009999997913837433
+      "missionFrameMs": {
+        "n": 5214,
+        "p50": 20.006,
+        "p95": 35.25217,
+        "p99": 37.16851499999999,
+        "maximum": 64.2406
+      },
+      "nativeCpuVideoPairs": 237,
+      "cpuVisibleCorrelation": 0.9448867333370273,
+      "sourceProxyResidualRmsMs": 3.004886712148295
     },
     {
-      "reset": false,
-      "inputDt": 0.019999999552965164,
-      "accumulatorResidualMs": 0.0,
-      "exactGraphStep": true,
-      "graphDelta": 0.0,
-      "additionRounding": 0.0,
-      "expectedGraphRounding": 0.0,
-      "discardedOvershoot": 0.0
-    },
-    {
-      "reset": false,
-      "inputDt": 0.019999999552965164,
-      "accumulatorResidualMs": 0.0,
-      "exactGraphStep": true,
-      "graphDelta": 0.0,
-      "additionRounding": 0.0,
-      "expectedGraphRounding": 0.0,
-      "discardedOvershoot": 0.0
-    },
-    {
-      "reset": true,
-      "inputDt": 0.019999999552965164,
-      "accumulatorResidualMs": 0.0,
-      "exactGraphStep": true,
-      "graphDelta": 0.049999237060546875,
-      "additionRounding": 0.0,
-      "expectedGraphRounding": -7.636845111846924e-07,
-      "discardedOvershoot": 0.009999997913837433
-    },
-    {
-      "reset": false,
-      "inputDt": 0.019999999552965164,
-      "accumulatorResidualMs": 0.0,
-      "exactGraphStep": true,
-      "graphDelta": 0.0,
-      "additionRounding": 0.0,
-      "expectedGraphRounding": 0.0,
-      "discardedOvershoot": 0.0
-    },
-    {
-      "reset": false,
-      "inputDt": 0.019999999552965164,
-      "accumulatorResidualMs": 0.0,
-      "exactGraphStep": true,
-      "graphDelta": 0.0,
-      "additionRounding": 0.0,
-      "expectedGraphRounding": 0.0,
-      "discardedOvershoot": 0.0
+      "runId": "runtime-20261029-044620",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "calls": 400,
+      "pairs": 399,
+      "exactGraphSteps": 399,
+      "inputSumMs": 7969.000173732638,
+      "graphAdvanceMs": 5149.921417236328,
+      "overshootMs": 2853.00000756979,
+      "residualMs": 0.0,
+      "graphVsWall": 0.646231545163243,
+      "foregroundCalls": 400,
+      "exclusions": {},
+      "missionFrameMs": {
+        "n": 5248,
+        "p50": 19.9568,
+        "p95": 34.712925,
+        "p99": 36.411120000000004,
+        "maximum": 52.3249
+      },
+      "nativeCpuVideoPairs": 298,
+      "cpuVisibleCorrelation": 0.9484434836839188,
+      "sourceProxyResidualRmsMs": 2.8344935263030187
     }
   ],
-  "visible": {
-    "runId": "runtime-20261029-043225",
-    "nativeCpuPairs": 362,
-    "exactVideoHudFrames": 360,
-    "nativeCpuVideoPairs": 237,
-    "cpuVsVisibleCorrelation": 0.9448867333370273,
-    "sourceProxyCorrelation": 0.9715163663275882,
-    "sourceProxyResidualRmsMs": 3.004886712148295,
-    "poseFitP95Meters": 0.014356811577782557,
-    "visualAccepted": false,
-    "performanceAccepted": false,
-    "limitations": [
-      "Exact HUD/CPU/native intersection; silhouette change is not perceptual smoothness.",
-      "Native getter may refresh CPU bone caches; no GPU/Present timing.",
-      "One trial with4 background entries excluded from pose/video admission."
-    ]
+  "functionalCase": {
+    "sourceRunId": "runtime-20261028-063933",
+    "selectedFailure": {
+      "runId": "runtime-20261028-063933",
+      "entityId": 43,
+      "eventOrdinal": 623,
+      "seconds": 60.281,
+      "previousState": "EGRESS",
+      "newState": "FOLLOW",
+      "transitionReason": "EGRESS_STALL",
+      "metadataEvent": false,
+      "recoveryGenerationDerived": 1,
+      "position": "<4511.519043, 339.181152, 10239.804688>",
+      "contactSampleAge": 0.11899999999999977,
+      "contactStatus": "NATIVE_JOINT_WORLD_0",
+      "contactPhase": "EGRESS",
+      "landingDiagnostic": "CLEAR",
+      "nativeSameCallSequence": "818",
+      "nativeRecoveryGeneration": "1",
+      "nativeContactStatus": "StaticObj_Container_1C",
+      "nativeMotionElapsedBeforeTransition": "0",
+      "terminalOutcome": "ARRIVED"
+    },
+    "finalArrivals": 64,
+    "unresolvedTerminalAgents": [],
+    "clearanceLeaseViolations": [],
+    "clearanceScope": "Observed start/end lease limits and handoff only. Existing per-step support/contact functions remain the execution gate; sparse logs do not independently verify every sweep. No performance or animation acceptance.",
+    "interpretation": "Entity43 eventually arrived, but EGRESS_STALL EGRESS->FOLLOW remains an algorithm failure label; narrower lease audit with0violations is not full movement acceptance.",
+    "next": "Trace entity43 generation1 step rejections and timeout/handoff contract; do not relabel recovered timeout as successful egress."
   }
 }
-
-자체회계함수발췌
-
-    pairs=[]
-    for a,b in zip(events,events[1:]):
-        assert a['primary']==b['primary'] and b['primary']==b['duration']
-        total=f32(a['numerator']+b['savedInputDt']);crossed=total>=b['primary']
-        expected_acc=0.0 if crossed else total
-        expected_graph=f32(a['graphClock']+b['duration']) if crossed else a['graphClock']
-        pairs.append(dict(reset=crossed,inputDt=b['savedInputDt'],accumulatorResidualMs=(b['numerator']-expected_acc)*1000,
-            exactGraphStep=b['graphClock']==expected_graph,graphDelta=b['graphClock']-a['graphClock'],
-            additionRounding=total-(a['numerator']+b['savedInputDt']),
-            expectedGraphRounding=(expected_graph-a['graphClock']-b['primary']) if crossed else 0.0,
-            discardedOvershoot=total-b['primary'] if crossed else 0.0))
-    assert pairs
-    inputs=sum(p['inputDt'] for p in pairs);graph=events[-1]['graphClock']-events[0]['graphClock']
-    accumulator=events[-1]['numerator']-events[0]['numerator'];discarded=sum(p['discardedOvershoot'] for p in pairs)
-    residual=inputs-graph-accumulator-discarded
-    expected_rounding=-sum(p['additionRounding']+p['expectedGraphRounding'] for p in pairs)
-    return dict(adjacentCalls=len(pairs),resets=sum(p['reset'] for p in pairs),
-        exactGraphSteps=sum(p['exactGraphStep'] for p in pairs),
-        accumulatorMaxResidualMs=max(abs(p['accumulatorResidualMs']) for p in pairs),
-        inputSumMs=inputs*1000,actualGraphAdvanceMs=graph*1000,accumulatorDeltaMs=accumulator*1000,
-        discardedAccumulatorOvershootMs=discarded*1000,balanceResidualMs=residual*1000,
-        expectedFloat32BalanceRoundingMs=expected_rounding*1000,
-        residualAfterExplicitFloat32AccountingMs=(residual-expected_rounding)*1000,
-        graphAdvanceVsInputRatio=graph/inputs,
-        resetOvershootMs=distribution([p['discardedOvershoot']*1000 for p in pairs if p['reset']]),
-        pairs=pairs)
-
 
 이전 애니메이션 진단: [선정 근거](downloads/animation-review.txt). 이번 진단은 시각·성능 해결을 뜻하지 않는다.

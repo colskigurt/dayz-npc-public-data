@@ -1,0 +1,94 @@
+{
+  "id": "clock-conservation-repeat-20261029",
+  "track": "animation",
+  "title": "활성 창400표본 시간 회계 재현 — 수정 한계와43번 출구 실패 분리",
+  "date": "2026-10-29",
+  "status": "clock_accounting_repeated_supported_fix_and_full_goal_not_accepted",
+  "sections": [
+    {
+      "number": 1,
+      "title": "작업 목표",
+      "body": "입력 dt·누적기 초기화·graph-owner 시계를 같은 호출에서 읽은 결과가 반복되는지 확인한다. 활성 창 상태가 유지된 표본을 확보하고 실제 영상 대응을 추가한다. 기존 B8FB AI와 정상 낙하·복구는 보존하며, 평균속도·시각 품질·64명 기능·성능을 별도로 판정한다."
+    },
+    {
+      "number": 2,
+      "title": "실제 수행",
+      "body": "첫043225 실행을 보존하고 새044620 실행을120초 진행했다. 동일3개 서명PBO·고정run·AI/이동OFF·1논리개체/8부품·VSyncON 조건이다. 로딩 중 창을 전경으로 가져왔고, 이번 observer는 실제 HUD의 appActive=true가5초 유지된 뒤 attach했다. 기본 watcher는0초로 유지하며 이번만5초를 지정했다. helper 진입 한 곳에서 입력 spill·누적기·retained duration·graph clock을 읽었고 숫자/인자/상태 쓰기나 반환 hook은 없다. 게임과45초 녹화는 정상 종료됐다.\n\n분석기의 callback 연결은 float값을 다시 검색하는 대신 실제 event ordinal로 연결하도록 보완했다. 입력/누적기/graph 산술과 원점/파일ACK/HUD의 검사는 유지했다. 새 원시·기존 보고서는 덮어쓰지 않았다.\n\n처음 영상 분석의 두3초 구간에서는 native/CPU/영상 교집합이103쌍이었다. 이를 전체 계측 구간의 화면 증거로 확대하지 않았다. 기존 정확HUD의 mission-video 시간차로 native 첫 활성 연결0.5초 후부터6초를 선정해 video25.413/28.413초에서 다시 추출했다. 새파일은conservation-window-*로 저장했다."
+    },
+    {
+      "number": 3,
+      "title": "측정 결과",
+      "body": "|항목|첫 실행043225|반복044620|\n|---|---:|---:|\n|호출|368|400|\n|연속쌍/정확 graph 증가|367|399|\n|활성 창 호출|364|400|\n|입력 합 ms|7964.000149|7969.000174|\n|graph 증가 ms|5249.919891|5149.921417|\n|버린 초과분 ms|2747.000050|2853.000008|\n|회계 잔차 ms|0.000000|0.000000|\n|graph/진입 벽시간|0.658766|0.646232|\n\n두 실행 합768호출·766연속쌍에서 graph 증가가 해당float32 식과 일치했다. 양쪽 누적기 예측잔차와 명시적float32 반올림 후 회계잔차는0이다. 첫 실행은 background4개를 분리한 관측이며, 새 실행은400개 모두 활성 창의 고유HUD에 연결됐다. 서로 다른 포커스 조건을 같은 조건의 완전한 반복으로 숨기지 않는다. 반복된 것은 시간 전달 구조다.\n\n새 실행 입력/native 진입시간 비율0.999980, graph/입력0.646244.103초과 중 초과분 중앙약30ms·최대33ms였다. script callback 증가5149.900ms와graph5149.921417ms의 차이는−0.021417ms다. callback 문자열 반올림을 고려하며 비트일치를 주장하지 않는다.\n\n새 실행399 CPU/source proxy 쌍의 적합p95=11.698mm, 시간잔차RMS=2.834ms, 상관0.977028. 처음분석 영상103쌍 상관0.941203은 보존했고, 추가로 선정한6초는360개HUD 모두정확·298 native/CPU/영상쌍·CPU/몸mask변화 상관0.948443이었다. 지각 품질 점수나 직접 clip phase는 아니다. 단순 마지막A 글자 비교는 평가횟수 증거로 사용하지 않았다.\n\n새 미션foreground p50/p95/p99=19.957/34.713/36.411ms, 최대52.325ms. 원시읽기 p50/p95/p99=0.0175/0.0194/0.0260ms. 계측·본조회·녹화를 포함하므로64명 비용이나 최적화 효과로 해석하지 않는다. 새8/64 기능회귀·GPU/Present·할당/GC는 미실행이다."
+    },
+    {
+      "number": 4,
+      "title": "원인 분석",
+      "body": "확인: 활성 창만 있는 반복에서도 실제입력이약7.969초 진행하는 동안graph는약5.150초 증가하고 누적기에남지않는 초과분이약2.853초 발생했다. 입력이50ms를넘었을 때graph에50ms만 전달되고 누적기를0으로만드는 이 경로가 느린graph진행에 기여한다는 동일호출 근거가 반복됐다. 모든 클립·모드·GPU단계까지 확대하지 않는다.\n\n기존지원경로와 대조: TimeScale 변수는 고정run 평균속도를 맞추는 반응이 이미A/B/B/A에서 반복됐다. 하지만 정규화 시간증분RMS는약24ms로 줄지 않았고source fit은약14→29mm로 커졌다. LOD0의20Hz유지포즈나이전세대주기표시후보도 이미 부족한 결과를 보였다. 같은방법을 새수정처럼 반복하지 않는다. 현재지원API조사로는 Creature 평가시간과독립적인 표시보간구간 setter를 확보하지 못했다. 엔진전체에 그런기능이 없다는 증명은 아니다.\n\n별도기능추적의 다음표적을 구체화했다. 기존063933의43번은generation1,60.281초에EGRESS→FOLLOW/EGRESS_STALL로 전환했고 최종결과는ARRIVED였다. 전체미종료개체는0이고좁은clearance lease감사위반도0이지만,timeout/handoff 실패라벨이 사라지는 것은 아니다. 최종도착을중간출구성공으로바꾸지않는다. 이사례의접촉표본은컨테이너/본검사차단을가리키며 다음분석에서실제첫걸음거부와handoff계약을연결한다."
+    },
+    {
+      "number": 5,
+      "title": "검증 수준",
+      "body": "반복 검증 완료: 이 빌드·관측 경로의 동일호출 시간 회계 구조가 두 실행에서 일치했다는 범위다. 첫 실행의4background를 포함한 조건 차이는 유지한다. 진단 성공: 새 활성400표본과native/CPU/영상298쌍 연결, 기존지원제어의 한계 대조,43번기능실패의다음사례선정.\n\n미실행/미수용: 지원되는배포수정,원속도회복,지각적부드러움,모든14상태,새8→64기능회귀,64비용/20ms p95,최종수용. 진단반복을기능·시각·성능완료로치환하지않는다."
+    },
+    {
+      "number": 6,
+      "title": "변경 사항",
+      "body": "watch_horde_frame_order_calls.ps1에선택적MinForegroundSeconds와실제watcher소스보존을추가했다.기본값0이라기존호출지연은유지한다.analyze_horde_clock_conservation.py는event ordinal로callback을연결한다.재사용가능한conservation 영상교집합도구와파일명옵션을추가했다.기존같은이름의파일을덮어쓰지않는다.\n\nB8FB/453D/0C6E PBO는변경·재빌드·재서명하지않았으며새실행전3개기존서명검증모두성공.개인키는배포하지않았다.운영서버변경없음.실제실행driver/JS/config는각profile보존본이기준이다."
+    },
+    {
+      "number": 7,
+      "title": "원시 증거",
+      "body": "043225와044620의launch/native/원점bridge/HUD/회계·source proxy·영상연결을해시로연결한다.044620의확정영상·검사이미지·watcher소스·새6초선정계획과파생물도보존했다.기능다음사례는기존063933 state-contract/egress journal분석해시로연결한다.이것은새64명시험이아니다.\n\n기존publish 도구로안전종료·저장전후파일안정성·SHA256·JSON을확인한다.공개패킷은집계와선정실패사례만포함하며전체trace/영상/설치자산/내부경로/프로세스정보를공개하지않는다."
+    },
+    {
+      "number": 8,
+      "title": "잔여 문제",
+      "body": "애니메이션의느린진행원인은이경로에서더구체화됐지만지원되는수정수단은아직미확보다.지원API/그래프소비정책을확보하기전새보간·임의배속·누적기패치를배포하지않는다.후보가생기면평균속도뿐아니라세대경계점프·source적합·공격/착지시계·8부품동기화를함께검증한다.\n\n다음기능작업은43번EGRESS_STALL의동일generation에서현재포즈접촉거부·복구시도·FOLLOW전환을연결하는것이다.기존정상낙하/복구와지원검사는유지한다.HIGH_HOLD13/14/43과stall실패는해결됐다고갱신하지않는다.64비용기여도는별도통제시험으로관리하며20ms p95를계속목표로둔다."
+    }
+  ],
+  "runs": [
+    {
+      "runId": "runtime-20261029-044620",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "scenario": "anim1",
+      "count": 1,
+      "durationSeconds": 120,
+      "highHoldWindow": null,
+      "omitGameplayMetrics": true,
+      "foregroundMissionFrameMs": {
+        "p50": 19.9568,
+        "p95": 34.712925,
+        "p99": 36.411120000000004
+      },
+      "calls": 400,
+      "graphVsWallRatio": 0.646231545163243,
+      "inputSumMs": 7969.000173732638,
+      "graphAdvanceMs": 5149.921417236328,
+      "discardedOvershootMs": 2853.00000756979,
+      "nativeCpuVideoPairs": 298,
+      "measurementConditions": {
+        "logicalAgents": 1,
+        "renderParts": 8,
+        "ai": false,
+        "movement": false,
+        "clip": "run",
+        "frameSync": "on",
+        "nativeStateOverrides": false,
+        "minimumForegroundSecondsBeforeAttach": 5,
+        "foregroundNativeCalls": 400,
+        "admissionReapproach": false,
+        "performanceAcceptance": false,
+        "repetitions": 1,
+        "method": "Same-call clock repeat; paired with prior mixed-focus run, not GPU Present or64 performance"
+      }
+    }
+  ],
+  "report": "활성 창400표본에서 시간 회계 재현 — 수정 경로 한계와43번 출구 실패 분리\n\n작성: 2026-10-29T04:54:41.007275+09:00\n\n1. 작업 목표\n\n입력 dt·누적기 초기화·graph-owner 시계를 같은 호출에서 읽은 결과가 반복되는지 확인한다. 활성 창 상태가 유지된 표본을 확보하고 실제 영상 대응을 추가한다. 기존 B8FB AI와 정상 낙하·복구는 보존하며, 평균속도·시각 품질·64명 기능·성능을 별도로 판정한다.\n\n2. 실제 수행\n\n첫043225 실행을 보존하고 새044620 실행을120초 진행했다. 동일3개 서명PBO·고정run·AI/이동OFF·1논리개체/8부품·VSyncON 조건이다. 로딩 중 창을 전경으로 가져왔고, 이번 observer는 실제 HUD의 appActive=true가5초 유지된 뒤 attach했다. 기본 watcher는0초로 유지하며 이번만5초를 지정했다. helper 진입 한 곳에서 입력 spill·누적기·retained duration·graph clock을 읽었고 숫자/인자/상태 쓰기나 반환 hook은 없다. 게임과45초 녹화는 정상 종료됐다.\n\n분석기의 callback 연결은 float값을 다시 검색하는 대신 실제 event ordinal로 연결하도록 보완했다. 입력/누적기/graph 산술과 원점/파일ACK/HUD의 검사는 유지했다. 새 원시·기존 보고서는 덮어쓰지 않았다.\n\n처음 영상 분석의 두3초 구간에서는 native/CPU/영상 교집합이103쌍이었다. 이를 전체 계측 구간의 화면 증거로 확대하지 않았다. 기존 정확HUD의 mission-video 시간차로 native 첫 활성 연결0.5초 후부터6초를 선정해 video25.413/28.413초에서 다시 추출했다. 새파일은conservation-window-*로 저장했다.\n\n3. 측정 결과\n\n|항목|첫 실행043225|반복044620|\n|---|---:|---:|\n|호출|368|400|\n|연속쌍/정확 graph 증가|367|399|\n|활성 창 호출|364|400|\n|입력 합 ms|7964.000149|7969.000174|\n|graph 증가 ms|5249.919891|5149.921417|\n|버린 초과분 ms|2747.000050|2853.000008|\n|회계 잔차 ms|0.000000|0.000000|\n|graph/진입 벽시간|0.658766|0.646232|\n\n두 실행 합768호출·766연속쌍에서 graph 증가가 해당float32 식과 일치했다. 양쪽 누적기 예측잔차와 명시적float32 반올림 후 회계잔차는0이다. 첫 실행은 background4개를 분리한 관측이며, 새 실행은400개 모두 활성 창의 고유HUD에 연결됐다. 서로 다른 포커스 조건을 같은 조건의 완전한 반복으로 숨기지 않는다. 반복된 것은 시간 전달 구조다.\n\n새 실행 입력/native 진입시간 비율0.999980, graph/입력0.646244.103초과 중 초과분 중앙약30ms·최대33ms였다. script callback 증가5149.900ms와graph5149.921417ms의 차이는−0.021417ms다. callback 문자열 반올림을 고려하며 비트일치를 주장하지 않는다.\n\n새 실행399 CPU/source proxy 쌍의 적합p95=11.698mm, 시간잔차RMS=2.834ms, 상관0.977028. 처음분석 영상103쌍 상관0.941203은 보존했고, 추가로 선정한6초는360개HUD 모두정확·298 native/CPU/영상쌍·CPU/몸mask변화 상관0.948443이었다. 지각 품질 점수나 직접 clip phase는 아니다. 단순 마지막A 글자 비교는 평가횟수 증거로 사용하지 않았다.\n\n새 미션foreground p50/p95/p99=19.957/34.713/36.411ms, 최대52.325ms. 원시읽기 p50/p95/p99=0.0175/0.0194/0.0260ms. 계측·본조회·녹화를 포함하므로64명 비용이나 최적화 효과로 해석하지 않는다. 새8/64 기능회귀·GPU/Present·할당/GC는 미실행이다.\n\n4. 원인 분석\n\n확인: 활성 창만 있는 반복에서도 실제입력이약7.969초 진행하는 동안graph는약5.150초 증가하고 누적기에남지않는 초과분이약2.853초 발생했다. 입력이50ms를넘었을 때graph에50ms만 전달되고 누적기를0으로만드는 이 경로가 느린graph진행에 기여한다는 동일호출 근거가 반복됐다. 모든 클립·모드·GPU단계까지 확대하지 않는다.\n\n기존지원경로와 대조: TimeScale 변수는 고정run 평균속도를 맞추는 반응이 이미A/B/B/A에서 반복됐다. 하지만 정규화 시간증분RMS는약24ms로 줄지 않았고source fit은약14→29mm로 커졌다. LOD0의20Hz유지포즈나이전세대주기표시후보도 이미 부족한 결과를 보였다. 같은방법을 새수정처럼 반복하지 않는다. 현재지원API조사로는 Creature 평가시간과독립적인 표시보간구간 setter를 확보하지 못했다. 엔진전체에 그런기능이 없다는 증명은 아니다.\n\n별도기능추적의 다음표적을 구체화했다. 기존063933의43번은generation1,60.281초에EGRESS→FOLLOW/EGRESS_STALL로 전환했고 최종결과는ARRIVED였다. 전체미종료개체는0이고좁은clearance lease감사위반도0이지만,timeout/handoff 실패라벨이 사라지는 것은 아니다. 최종도착을중간출구성공으로바꾸지않는다. 이사례의접촉표본은컨테이너/본검사차단을가리키며 다음분석에서실제첫걸음거부와handoff계약을연결한다.\n\n5. 검증 수준\n\n반복 검증 완료: 이 빌드·관측 경로의 동일호출 시간 회계 구조가 두 실행에서 일치했다는 범위다. 첫 실행의4background를 포함한 조건 차이는 유지한다. 진단 성공: 새 활성400표본과native/CPU/영상298쌍 연결, 기존지원제어의 한계 대조,43번기능실패의다음사례선정.\n\n미실행/미수용: 지원되는배포수정,원속도회복,지각적부드러움,모든14상태,새8→64기능회귀,64비용/20ms p95,최종수용. 진단반복을기능·시각·성능완료로치환하지않는다.\n\n6. 변경 사항\n\nwatch_horde_frame_order_calls.ps1에선택적MinForegroundSeconds와실제watcher소스보존을추가했다.기본값0이라기존호출지연은유지한다.analyze_horde_clock_conservation.py는event ordinal로callback을연결한다.재사용가능한conservation 영상교집합도구와파일명옵션을추가했다.기존같은이름의파일을덮어쓰지않는다.\n\nB8FB/453D/0C6E PBO는변경·재빌드·재서명하지않았으며새실행전3개기존서명검증모두성공.개인키는배포하지않았다.운영서버변경없음.실제실행driver/JS/config는각profile보존본이기준이다.\n\n7. 원시 증거\n\n043225와044620의launch/native/원점bridge/HUD/회계·source proxy·영상연결을해시로연결한다.044620의확정영상·검사이미지·watcher소스·새6초선정계획과파생물도보존했다.기능다음사례는기존063933 state-contract/egress journal분석해시로연결한다.이것은새64명시험이아니다.\n\n기존publish 도구로안전종료·저장전후파일안정성·SHA256·JSON을확인한다.공개패킷은집계와선정실패사례만포함하며전체trace/영상/설치자산/내부경로/프로세스정보를공개하지않는다.\n\n8. 잔여 문제\n\n애니메이션의느린진행원인은이경로에서더구체화됐지만지원되는수정수단은아직미확보다.지원API/그래프소비정책을확보하기전새보간·임의배속·누적기패치를배포하지않는다.후보가생기면평균속도뿐아니라세대경계점프·source적합·공격/착지시계·8부품동기화를함께검증한다.\n\n다음기능작업은43번EGRESS_STALL의동일generation에서현재포즈접촉거부·복구시도·FOLLOW전환을연결하는것이다.기존정상낙하/복구와지원검사는유지한다.HIGH_HOLD13/14/43과stall실패는해결됐다고갱신하지않는다.64비용기여도는별도통제시험으로관리하며20ms p95를계속목표로둔다.\n\n원본 보고서 ID: 2026-10-29_045441_007275+0900_npc-clock-conservation-repeat.md\n원본 SHA-256: d736a6ba6cb819287d49163dd3cf6a0a17638d470556f431cd07bbf8827a1dc8\n이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.\n",
+  "reviewPacket": "활성 창400표본에서 시간 회계 재현 — 수정 경로 한계와43번 출구 실패 분리\n\n작성: 2026-10-29T04:54:41.007275+09:00\n\n1. 작업 목표\n\n입력 dt·누적기 초기화·graph-owner 시계를 같은 호출에서 읽은 결과가 반복되는지 확인한다. 활성 창 상태가 유지된 표본을 확보하고 실제 영상 대응을 추가한다. 기존 B8FB AI와 정상 낙하·복구는 보존하며, 평균속도·시각 품질·64명 기능·성능을 별도로 판정한다.\n\n2. 실제 수행\n\n첫043225 실행을 보존하고 새044620 실행을120초 진행했다. 동일3개 서명PBO·고정run·AI/이동OFF·1논리개체/8부품·VSyncON 조건이다. 로딩 중 창을 전경으로 가져왔고, 이번 observer는 실제 HUD의 appActive=true가5초 유지된 뒤 attach했다. 기본 watcher는0초로 유지하며 이번만5초를 지정했다. helper 진입 한 곳에서 입력 spill·누적기·retained duration·graph clock을 읽었고 숫자/인자/상태 쓰기나 반환 hook은 없다. 게임과45초 녹화는 정상 종료됐다.\n\n분석기의 callback 연결은 float값을 다시 검색하는 대신 실제 event ordinal로 연결하도록 보완했다. 입력/누적기/graph 산술과 원점/파일ACK/HUD의 검사는 유지했다. 새 원시·기존 보고서는 덮어쓰지 않았다.\n\n처음 영상 분석의 두3초 구간에서는 native/CPU/영상 교집합이103쌍이었다. 이를 전체 계측 구간의 화면 증거로 확대하지 않았다. 기존 정확HUD의 mission-video 시간차로 native 첫 활성 연결0.5초 후부터6초를 선정해 video25.413/28.413초에서 다시 추출했다. 새파일은conservation-window-*로 저장했다.\n\n3. 측정 결과\n\n|항목|첫 실행043225|반복044620|\n|---|---:|---:|\n|호출|368|400|\n|연속쌍/정확 graph 증가|367|399|\n|활성 창 호출|364|400|\n|입력 합 ms|7964.000149|7969.000174|\n|graph 증가 ms|5249.919891|5149.921417|\n|버린 초과분 ms|2747.000050|2853.000008|\n|회계 잔차 ms|0.000000|0.000000|\n|graph/진입 벽시간|0.658766|0.646232|\n\n두 실행 합768호출·766연속쌍에서 graph 증가가 해당float32 식과 일치했다. 양쪽 누적기 예측잔차와 명시적float32 반올림 후 회계잔차는0이다. 첫 실행은 background4개를 분리한 관측이며, 새 실행은400개 모두 활성 창의 고유HUD에 연결됐다. 서로 다른 포커스 조건을 같은 조건의 완전한 반복으로 숨기지 않는다. 반복된 것은 시간 전달 구조다.\n\n새 실행 입력/native 진입시간 비율0.999980, graph/입력0.646244.103초과 중 초과분 중앙약30ms·최대33ms였다. script callback 증가5149.900ms와graph5149.921417ms의 차이는−0.021417ms다. callback 문자열 반올림을 고려하며 비트일치를 주장하지 않는다.\n\n새 실행399 CPU/source proxy 쌍의 적합p95=11.698mm, 시간잔차RMS=2.834ms, 상관0.977028. 처음분석 영상103쌍 상관0.941203은 보존했고, 추가로 선정한6초는360개HUD 모두정확·298 native/CPU/영상쌍·CPU/몸mask변화 상관0.948443이었다. 지각 품질 점수나 직접 clip phase는 아니다. 단순 마지막A 글자 비교는 평가횟수 증거로 사용하지 않았다.\n\n새 미션foreground p50/p95/p99=19.957/34.713/36.411ms, 최대52.325ms. 원시읽기 p50/p95/p99=0.0175/0.0194/0.0260ms. 계측·본조회·녹화를 포함하므로64명 비용이나 최적화 효과로 해석하지 않는다. 새8/64 기능회귀·GPU/Present·할당/GC는 미실행이다.\n\n4. 원인 분석\n\n확인: 활성 창만 있는 반복에서도 실제입력이약7.969초 진행하는 동안graph는약5.150초 증가하고 누적기에남지않는 초과분이약2.853초 발생했다. 입력이50ms를넘었을 때graph에50ms만 전달되고 누적기를0으로만드는 이 경로가 느린graph진행에 기여한다는 동일호출 근거가 반복됐다. 모든 클립·모드·GPU단계까지 확대하지 않는다.\n\n기존지원경로와 대조: TimeScale 변수는 고정run 평균속도를 맞추는 반응이 이미A/B/B/A에서 반복됐다. 하지만 정규화 시간증분RMS는약24ms로 줄지 않았고source fit은약14→29mm로 커졌다. LOD0의20Hz유지포즈나이전세대주기표시후보도 이미 부족한 결과를 보였다. 같은방법을 새수정처럼 반복하지 않는다. 현재지원API조사로는 Creature 평가시간과독립적인 표시보간구간 setter를 확보하지 못했다. 엔진전체에 그런기능이 없다는 증명은 아니다.\n\n별도기능추적의 다음표적을 구체화했다. 기존063933의43번은generation1,60.281초에EGRESS→FOLLOW/EGRESS_STALL로 전환했고 최종결과는ARRIVED였다. 전체미종료개체는0이고좁은clearance lease감사위반도0이지만,timeout/handoff 실패라벨이 사라지는 것은 아니다. 최종도착을중간출구성공으로바꾸지않는다. 이사례의접촉표본은컨테이너/본검사차단을가리키며 다음분석에서실제첫걸음거부와handoff계약을연결한다.\n\n5. 검증 수준\n\n반복 검증 완료: 이 빌드·관측 경로의 동일호출 시간 회계 구조가 두 실행에서 일치했다는 범위다. 첫 실행의4background를 포함한 조건 차이는 유지한다. 진단 성공: 새 활성400표본과native/CPU/영상298쌍 연결, 기존지원제어의 한계 대조,43번기능실패의다음사례선정.\n\n미실행/미수용: 지원되는배포수정,원속도회복,지각적부드러움,모든14상태,새8→64기능회귀,64비용/20ms p95,최종수용. 진단반복을기능·시각·성능완료로치환하지않는다.\n\n6. 변경 사항\n\nwatch_horde_frame_order_calls.ps1에선택적MinForegroundSeconds와실제watcher소스보존을추가했다.기본값0이라기존호출지연은유지한다.analyze_horde_clock_conservation.py는event ordinal로callback을연결한다.재사용가능한conservation 영상교집합도구와파일명옵션을추가했다.기존같은이름의파일을덮어쓰지않는다.\n\nB8FB/453D/0C6E PBO는변경·재빌드·재서명하지않았으며새실행전3개기존서명검증모두성공.개인키는배포하지않았다.운영서버변경없음.실제실행driver/JS/config는각profile보존본이기준이다.\n\n7. 원시 증거\n\n043225와044620의launch/native/원점bridge/HUD/회계·source proxy·영상연결을해시로연결한다.044620의확정영상·검사이미지·watcher소스·새6초선정계획과파생물도보존했다.기능다음사례는기존063933 state-contract/egress journal분석해시로연결한다.이것은새64명시험이아니다.\n\n기존publish 도구로안전종료·저장전후파일안정성·SHA256·JSON을확인한다.공개패킷은집계와선정실패사례만포함하며전체trace/영상/설치자산/내부경로/프로세스정보를공개하지않는다.\n\n8. 잔여 문제\n\n애니메이션의느린진행원인은이경로에서더구체화됐지만지원되는수정수단은아직미확보다.지원API/그래프소비정책을확보하기전새보간·임의배속·누적기패치를배포하지않는다.후보가생기면평균속도뿐아니라세대경계점프·source적합·공격/착지시계·8부품동기화를함께검증한다.\n\n다음기능작업은43번EGRESS_STALL의동일generation에서현재포즈접촉거부·복구시도·FOLLOW전환을연결하는것이다.기존정상낙하/복구와지원검사는유지한다.HIGH_HOLD13/14/43과stall실패는해결됐다고갱신하지않는다.64비용기여도는별도통제시험으로관리하며20ms p95를계속목표로둔다.\n\n원본 보고서 ID: 2026-10-29_045441_007275+0900_npc-clock-conservation-repeat.md\n원본 SHA-256: d736a6ba6cb819287d49163dd3cf6a0a17638d470556f431cd07bbf8827a1dc8\n이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.\n\n선정 집계와기존43번실패사례 — 전체trace아님\n{\n  \"clockRuns\": [\n    {\n      \"runId\": \"runtime-20261029-043225\",\n      \"buildId\": \"B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185\",\n      \"calls\": 368,\n      \"pairs\": 367,\n      \"exactGraphSteps\": 367,\n      \"inputSumMs\": 7964.000149164349,\n      \"graphAdvanceMs\": 5249.919891357422,\n      \"overshootMs\": 2747.0000497996807,\n      \"residualMs\": 0.0,\n      \"graphVsWall\": 0.6587663223274876,\n      \"foregroundCalls\": 364,\n      \"exclusions\": {\n        \"background\": 4\n      },\n      \"missionFrameMs\": {\n        \"n\": 5214,\n        \"p50\": 20.006,\n        \"p95\": 35.25217,\n        \"p99\": 37.16851499999999,\n        \"maximum\": 64.2406\n      },\n      \"nativeCpuVideoPairs\": 237,\n      \"cpuVisibleCorrelation\": 0.9448867333370273,\n      \"sourceProxyResidualRmsMs\": 3.004886712148295\n    },\n    {\n      \"runId\": \"runtime-20261029-044620\",\n      \"buildId\": \"B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185\",\n      \"calls\": 400,\n      \"pairs\": 399,\n      \"exactGraphSteps\": 399,\n      \"inputSumMs\": 7969.000173732638,\n      \"graphAdvanceMs\": 5149.921417236328,\n      \"overshootMs\": 2853.00000756979,\n      \"residualMs\": 0.0,\n      \"graphVsWall\": 0.646231545163243,\n      \"foregroundCalls\": 400,\n      \"exclusions\": {},\n      \"missionFrameMs\": {\n        \"n\": 5248,\n        \"p50\": 19.9568,\n        \"p95\": 34.712925,\n        \"p99\": 36.411120000000004,\n        \"maximum\": 52.3249\n      },\n      \"nativeCpuVideoPairs\": 298,\n      \"cpuVisibleCorrelation\": 0.9484434836839188,\n      \"sourceProxyResidualRmsMs\": 2.8344935263030187\n    }\n  ],\n  \"functionalCase\": {\n    \"sourceRunId\": \"runtime-20261028-063933\",\n    \"selectedFailure\": {\n      \"runId\": \"runtime-20261028-063933\",\n      \"entityId\": 43,\n      \"eventOrdinal\": 623,\n      \"seconds\": 60.281,\n      \"previousState\": \"EGRESS\",\n      \"newState\": \"FOLLOW\",\n      \"transitionReason\": \"EGRESS_STALL\",\n      \"metadataEvent\": false,\n      \"recoveryGenerationDerived\": 1,\n      \"position\": \"<4511.519043, 339.181152, 10239.804688>\",\n      \"contactSampleAge\": 0.11899999999999977,\n      \"contactStatus\": \"NATIVE_JOINT_WORLD_0\",\n      \"contactPhase\": \"EGRESS\",\n      \"landingDiagnostic\": \"CLEAR\",\n      \"nativeSameCallSequence\": \"818\",\n      \"nativeRecoveryGeneration\": \"1\",\n      \"nativeContactStatus\": \"StaticObj_Container_1C\",\n      \"nativeMotionElapsedBeforeTransition\": \"0\",\n      \"terminalOutcome\": \"ARRIVED\"\n    },\n    \"finalArrivals\": 64,\n    \"unresolvedTerminalAgents\": [],\n    \"clearanceLeaseViolations\": [],\n    \"clearanceScope\": \"Observed start/end lease limits and handoff only. Existing per-step support/contact functions remain the execution gate; sparse logs do not independently verify every sweep. No performance or animation acceptance.\",\n    \"interpretation\": \"Entity43 eventually arrived, but EGRESS_STALL EGRESS->FOLLOW remains an algorithm failure label; narrower lease audit with0violations is not full movement acceptance.\",\n    \"next\": \"Trace entity43 generation1 step rejections and timeout/handoff contract; do not relabel recovered timeout as successful egress.\"\n  }\n}\n",
+  "limitations": [
+    "First run4 background entries, repeat0; conditions not identical.",
+    "Repeated accounting, not animation fix acceptance.",
+    "No new8/64 function or64 performance experiment.",
+    "Independent renderer interval setter not established through current supported API audit."
+  ]
+}
