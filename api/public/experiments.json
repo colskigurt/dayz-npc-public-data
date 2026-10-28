@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261028T054557-descriptor-copy-20261028",
-  "generatedAt": "2026-10-28T05:45:57.102289+00:00",
+  "snapshotId": "snapshot-20261028T191735-period-fraction-20261029",
+  "generatedAt": "2026-10-28T19:17:35.469496+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -27,7 +27,9 @@
     "runtime-20261028-075921",
     "runtime-20261028-142406",
     "runtime-20261028-142846",
-    "runtime-20261028-143908"
+    "runtime-20261028-143908",
+    "runtime-20261029-040750",
+    "runtime-20261029-041212"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -5661,13 +5663,193 @@
       },
       "repetitions": 1,
       "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261029-040750",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 20.13995,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 1,
+        "scenario": "anim1",
+        "durationSeconds": 120,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission callbacks; native outer-entry / source-FK proxy / exact video HUD, not GPU Present",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": null,
+        "renderParts": 8,
+        "clip": "run",
+        "ai": false,
+        "movement": false,
+        "repetitions": 1,
+        "descriptorPointerReplacement": true,
+        "descriptorValuesChanged": false,
+        "hookSeconds": 8,
+        "performanceAcceptance": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261029-040750",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 35.26696,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 1,
+        "scenario": "anim1",
+        "durationSeconds": 120,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission callbacks; native outer-entry / source-FK proxy / exact video HUD, not GPU Present",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": null,
+        "renderParts": 8,
+        "clip": "run",
+        "ai": false,
+        "movement": false,
+        "repetitions": 1,
+        "descriptorPointerReplacement": true,
+        "descriptorValuesChanged": false,
+        "hookSeconds": 8,
+        "performanceAcceptance": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261029-040750",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 37.061455,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 1,
+        "scenario": "anim1",
+        "durationSeconds": 120,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission callbacks; native outer-entry / source-FK proxy / exact video HUD, not GPU Present",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": null,
+        "renderParts": 8,
+        "clip": "run",
+        "ai": false,
+        "movement": false,
+        "repetitions": 1,
+        "descriptorPointerReplacement": true,
+        "descriptorValuesChanged": false,
+        "hookSeconds": 8,
+        "performanceAcceptance": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261029-041212",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 21.15195,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 1,
+        "scenario": "anim1",
+        "durationSeconds": 120,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission callbacks; native outer-entry / source-FK proxy / exact video HUD, not GPU Present",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": null,
+        "renderParts": 8,
+        "clip": "run",
+        "ai": false,
+        "movement": false,
+        "repetitions": 1,
+        "descriptorPointerReplacement": true,
+        "descriptorValuesChanged": true,
+        "hookSeconds": 8,
+        "performanceAcceptance": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261029-041212",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 34.67803,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 1,
+        "scenario": "anim1",
+        "durationSeconds": 120,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission callbacks; native outer-entry / source-FK proxy / exact video HUD, not GPU Present",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": null,
+        "renderParts": 8,
+        "clip": "run",
+        "ai": false,
+        "movement": false,
+        "repetitions": 1,
+        "descriptorPointerReplacement": true,
+        "descriptorValuesChanged": true,
+        "hookSeconds": 8,
+        "performanceAcceptance": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261029-041212",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "value": 36.373760999999995,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 1,
+        "scenario": "anim1",
+        "durationSeconds": 120,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission callbacks; native outer-entry / source-FK proxy / exact video HUD, not GPU Present",
+        "normalExit": true,
+        "admissionReapproach": false,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": null,
+        "renderParts": 8,
+        "clip": "run",
+        "ai": false,
+        "movement": false,
+        "repetitions": 1,
+        "descriptorPointerReplacement": true,
+        "descriptorValuesChanged": true,
+        "hookSeconds": 8,
+        "performanceAcceptance": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
     }
   ],
   "blockers": [
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "Previous64 HIGH_HOLD13/14/43 and EGRESS_STALL1; separate manual8 inventory SetTemperature VM exception remain unresolved."
+      "description": "Existing64 final64/64; HIGH_HOLD missing13/14/43, EGRESS_STALL1, climb-end0. Not rerun in this animation batch."
     },
     {
       "id": "matched-repeats",
@@ -5888,23 +6070,41 @@
       "uri": "/data/experiments/descriptor-copy-20261028.json",
       "sha256": "2675ceb3ee40cdd8039d00f982c0f97709668b4c2c774cd102112765dc32a639",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "period-fraction-20261029-report",
+      "uri": "/downloads/checkpoints/2026-10-29_041715_741778+0900_npc-period-fraction.txt",
+      "sha256": "73ccb93c6593bc1c96408a94e4a2d12ff76115ad72aff7cbe332ac3ddc732471",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "period-fraction-20261029-review",
+      "uri": "/downloads/checkpoints/2026-10-29_041715_741778+0900_npc-period-fraction_evidence.txt",
+      "sha256": "a8a83dc7ac695d2e5895061e7d25bcaad0e56acefaa700b611133f1d7105231f",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "period-fraction-20261029-json",
+      "uri": "/data/experiments/period-fraction-20261029.json",
+      "sha256": "36d1a0f9b384497ef7c174c615474af2af83e229e28bde5ffbe70f34b2f5a5d7",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-28T05:45:57.102289+00:00",
-    "staleAfter": "2026-10-29T05:45:57.102289+00:00",
+    "sourceUpdatedAt": "2026-10-28T19:17:35.469496+00:00",
+    "staleAfter": "2026-10-29T19:17:35.469496+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261028T054557-descriptor-copy-20261028",
-      "generatedAt": "2026-10-28T05:45:57.102289+00:00",
-      "sourceUpdatedAt": "2026-10-28T05:45:57.102289+00:00"
+      "snapshotId": "snapshot-20261028T191735-period-fraction-20261029",
+      "generatedAt": "2026-10-28T19:17:35.469496+00:00",
+      "sourceUpdatedAt": "2026-10-28T19:17:35.469496+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-28T05:45:57.102289+00:00",
+      "at": "2026-10-28T19:17:35.469496+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -5919,7 +6119,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261028T054557-descriptor-copy-20261028/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261028T191735-period-fraction-20261029/"
   },
   "experiments": [
     {
@@ -6341,6 +6541,41 @@
         "matched-repeats"
       ],
       "replication": "A collector-failed pilot and inactive A preserved; successful B/B/activeA controls. Identical copy2 runs799 calls, not complete accepted ABBA equivalence."
+    },
+    {
+      "id": "period-fraction-20261029",
+      "title": "8부품 표시 시간 대조와 단일 비율 후보 — 평균 속도 미해결",
+      "track": "animation",
+      "sourceRunId": [
+        "runtime-20261029-040750",
+        "runtime-20261029-041212"
+      ],
+      "buildId": [
+        "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [
+        {
+          "count": 1,
+          "seconds": 120,
+          "repetitions": 1
+        },
+        {
+          "count": 1,
+          "seconds": 120,
+          "repetitions": 1
+        }
+      ],
+      "evidenceReferences": [
+        "period-fraction-20261029-report",
+        "period-fraction-20261029-review",
+        "period-fraction-20261029-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "One normal baseline followed by one numeric candidate; reverse/repeated effects pending."
     }
   ],
   "kind": "experiments"

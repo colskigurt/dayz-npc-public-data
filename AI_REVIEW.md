@@ -1,87 +1,69 @@
 # DayZ NPC AI — 외부 세션 검토 자료
 
-Snapshot: snapshot-20261028T054557-descriptor-copy-20261028
+Snapshot: snapshot-20261028T191735-period-fraction-20261029
 
-DayZ 동일 입력 복사본2회·원본 대조와 수집기 경합 수정
+8부품 표시 시간 대조와 단일 비율 후보 — 느린 평균 진행은 유지
 
-작성: 2026-10-28T14:45:19.839877+09:00
+작성: 2026-10-29T04:17:15.741778+09:00
 
 1. 작업 목표
 
-표시 보간 비율에 관한 반사실적 실험 전에, 실제 DayZ에서 내용이 완전히 같은 descriptor 복사본을 전달하는 진단 수단의 기초 호환성을 확인한다. 기존 AI·이동·정상 낙하/복구와 PBO를 유지하고 숫자 시간값은 바꾸지 않는다. 기능·시각·성능 수용을 분리한다.
+사용자가 보고한 반속도처럼 느린 재생과 포즈 표시 끊김을 구분한다. 기존 B8FB AI·정상 낙하/복구를 유지하고, 동일8부품의 시간 계약을 확인한 뒤 표시 비율만 바꾸는 격리 진단을 한다. 배포 수정이나 시각 수용이 목표 달성된 것으로 바꾸지 않는다.
 
 2. 실제 수행
 
-이전 자체 C fixture4회48000호출 통과 후 고정 run·AI/이동OFF·1개체/8 render part·동일VSync/그래픽·120초5실행을 했다. 순서는 원본A pilot→복사B→복사B→비활성 원본A→활성 조건 원본A다.8초 동안 outer 진입 한 곳만 hook하고 반환/internal hook은 사용하지 않았다. 호출자·owner vtable/renderer/mode·73본·descriptor/output의 실제 스택 위치·원점/import·원본 바이트 guard를 확인했다.
+앞선145503 관측에서3199호출·399완전8부품 그룹의 graph 시계/분자가 정확히 일치했다. 부품마다126세대 경계가 float32 50ms 증가였고 선택6개 TRS의 이전 끝→새 시작은0m/0도, 세대 내부 endpoint 변화0이었다. 모든본/포인터 수명 전체의 증명은 아니다. 상세 읽기는 부품당p50 0.589ms여서 이번에는 시간값만 읽었다.
 
-B는24byte 원문을 고유 slot에 그대로 복사해 인자 포인터만 교체한다. 분자·분모·출력 포인터 등 값과 원본 버퍼는 바꾸지 않았다. slot은 재사용/해제 없이 프로세스 종료까지 유지했다. nativeStateOverrides=true는 인자 포인터 교체를 정직하게 표시한 것이며 read-only 관측으로 보고하지 않는다. 각 실행의 실제 driver/JS/config를 보관했다.
+동일 서명 PBO·그래픽·VSync·고정 run, AI/이동OFF,1논리개체/8렌더부품,120초를 대조1회→후보1회 실행했다. 대조는24byte 복사본에 원래값을 그대로 전달했다. 후보는 이전에 완전히 관측한 세대 주기를 이용해 프레임 첫 진입에서 표시 비율을 하나 정하고8부품에 공유했다. 준비 구간 이후 복사본의 float 한 값만 변경했다. 원본 descriptor·보존 buffer·graph clock·root를 수정하지 않았다.8부품 경계까지 drain한 뒤 계측을 중단했고 script를 실행 중 hot-unload하지 않았다.
 
-첫A pilot142001은 게임·녹화가 정상 종료했고220개 호출/observer 오류0이었지만, launcher가 Set-Content로 launch.json을 쓰는 짧은 빈 파일 구간에 collector가 읽어 JSONDecodeError로 종료 판정에 실패했다. 원본 status의 observationSucceeded=false를 유지하고 postclose-review만 추가했다. 이를 성공한 ABBA4회로 세지 않는다. 첫pilot의 호출 간격 중앙값44.896ms(평균36.424ms)도 뒤 실행과 같다고 가정하지 않는다.
-
-collector의 final launch 읽기에8초 한도 재시도를 추가했다. 빈파일→실행중→빈파일→종료파일의 실제 동시 writer 검사, 계속 깨진JSON 거부, 살아있는 실행을 종료로 승격하지 않는3개 회귀를 통과했다. 후속B/B/A에서는 수정 collector를 사용했다. 모든 게임/영상은 정상 종료 후 분석했다. 무거운 영상 분석은 게임이 닫힌 동안 진행했다.
-
-143220 원본은 정상 종료/collector 성공이었지만152호출 모두 연결 HUD의 appActive=false여서 CPU 연결0쌍으로 제외했다. 원본/복사본의 frame cadence 차이를 인자 포인터 효과로 단정하지 않았다. watcher는22초 이상이면서 실제 appActive=true인 행에서만 attach하도록 보강했다. callback/mission 비율도 활성 행의 양끝 차이 대신 연속 활성쌍의 합으로 계산해 내부 비활성 구간이 섞이지 않게 했고 기존 분석은v2와 함께 보존했다.
-
-나중 활성 원본143908에서는400호출·399연속 CPU 연결쌍을 확보했다. 이것이 기본 실행 호환성 대조이며, 비활성 원본152호출과 합쳐 같은 조건의 반복으로 세지 않는다. 이전 watcher 자체는 각 실행에 별도 source snapshot이 없고 최종본은 producers에 보관했다. native driver/실행JS/config의 실제 snapshot은 각 실행에 있으므로 당시 native 관측 코드를 현행 source와 혼동하지 않는다.
+자체 모델 실제3199행 replay·공유 비율·잘못된 프레임/시계 점프 거부와 구성JS/Python 구문 검사를 수행했다. 새 baseline의 정상 종료·원시 해시·원점/독립 ACK·foreground 연결을 통과해야만 후보 진입이 가능하게 했다. 두 게임/녹화 정상 종료 뒤 영상 분석을 했다.
 
 3. 측정 결과
 
-|실행|내용 동일 복사|호출/CPU 연결|callback/mission|FK p95 mm|proxy 잔차 RMS ms|HUD p50/p95/p99 ms|정확 영상 HUD|CPU/영상 상관|
-|---|---|---|---:|---:|---:|---|---:|---:|
-|runtime-20261028-142406|True|400/399|0.64041|11.837|2.902|20.19205/34.671465/36.140306|354/360|0.94375|
-|runtime-20261028-142846|True|399/398|0.64046|13.227|2.943|19.99145/34.59856/36.217919|351/360|0.94560|
-|runtime-20261028-143908|False|400/399|0.63862|13.079|2.955|20.714/34.56136/36.279616|357/360|0.94199|
+|실행|숫자 변경|호출|graph/실시간 범위|HUD p50/p95/p99 ms|CPU proxy 잔차: 원본/전달 ms|후보 구간 영상쌍|
+|---|---|---:|---|---|---|---:|
+|runtime-20261029-040750|False|3200|0.639901–0.639909|20.140/35.267/37.061|3.058/3.058|0|
+|runtime-20261029-041212|True|3200|0.640014–0.640053|21.152/34.678/36.374|11.295/2.696|297|
 
-복사2회799/799호출에서 진입 전 복사24byte가 원문과 같았고 원문 byte도 진입 시 유지됐다. 고유 slot400/399개, 오류/누락0, 정상 종료를 확인했다. 네이티브 함수가 반환한 뒤 원본 descriptor를 다시 읽은 결과는 없으며, 전역 pointer escape 부재도 증명하지 않는다.
+양쪽3200호출 모두8부품을 확보했고 오류/누락0, 보호20byte/원본24byte는 진입 시 유지됐다. 대조 수치 변경0. 후보는 준비 후3136호출 정책 적용,2328호출 실제 숫자 변경이었다. 같은값이 된 호출도 분리해 기록했다. 계측 읽기 구간 p50은 대조0.0723ms/후보0.0729ms지만 완전한 hook overhead가 아니며 NPC 성능 개선을 뜻하지 않는다.
 
-독립10초 clock ACK·엔진 원점 guard·고유 연속 HUD 연결로 CPU source-FK proxy를 계산했다. source phase는6본/quarter-key 적합이며 직접 graph/clip phase가 아니다. 이번 outer hook에서는 saved scheduler dt를 읽지 못하므로 입력dt를 꾸며내지 않았다. 모델은 callback 누적시간 차이와 descriptor 분자 차이를 사용한다.
+표의 graph/실시간 약0.64는 graph-owner 시계 비율이다. 직접 clip phase나 지금 사용자가 본 화면의 정확한 배속으로 단정하지 않는다. CPU proxy는6본 source-FK 1/4키 grid 적합이며 직접 엔진 clip phase가 아니다. 영상쌍은 정확HUD로 후보 구간과 교집합을 낸 수이며 부드러움 점수가 아니다.8/64 새 기능 회귀·64 비용·GPU Present·할당/GC는 이 묶음에서 미실행이다.
 
-각45초 영상의21~24/24~27초를 기존 다른 실행의 font template으로 식별했다. 모호한 HUD는 보존하고 제외했다. 같은 프레임의 CPU/영상 상관은 실제 body mask 변화와의 대응이며 지각 품질 점수가 아니다. inspection sheet의5/15/30/40초와 실제 게임 창에서 전신·발 표시를 확인했다. screenshot 하나로 부드러움을 판정하지 않았다.
-
-새8/64 기능 회귀·GPU/Present·할당/GC·64 비용 귀속은 미실행이다. 표의 frame dt는1개체 hook·clock bridge·녹화를 포함한 HUD 간격이다. 성능 개선/20ms p95 달성 또는 animation FPS로 해석하지 않는다.
+CPU/source 적합 오차p95는 대조12.005mm→후보20.014mm로 커졌다. 후보 실행 내부 원래 인자/전달 인자의 CPU proxy 잔차는11.295/2.696ms였고 상관은0.435/0.953이었다. 전달값의 downstream 반응 근거는 있으나 포즈 오차 증가와 단일 대조/후보라는 회귀 위험을 함께 남긴다. 후보 표시 비율 기반 시간 증분 잔차 약2.84ms는 입력 모델의 수치이며 지각 품질 개선 수치가 아니다.
 
 4. 원인 분석
 
-확인: 내용 동일 포인터 교체의 실제2회 실행 가능성과 저장된 CPU/영상 대응을 확보했다. 명시적 수치 시간 보정은 없어서 느린 평균 진행과 불균등 포즈가 남는 것이 예상된 대조다. 준비 도구가 동작한 결과를 수정 성공으로 바꾸지 않는다.
+확인: 가벼운 대조에서도8부품의 느린 graph 진행이 함께 나타났다. 후보에서도 평균 시계는 약0.64로 유지되므로 표시 비율 변경을 평균속도 해결로 보고하지 않는다. 원본/전달 인자 모델과 CPU proxy 잔차를 같은 후보 구간에서 비교해 실제 downstream 반응 근거를 남겼다. 수치는 위 표 및 검토 패킷을 따른다.
 
-미확정: 첫A의 collector 실패와 중간A의 비활성 때문에 완전한 성공 ABBA 대조/통계적 무효과 동등성을 선언하지 않는다. 나중 활성A와B/B의 수치를 비교하되 하나의 유리한 실행으로 채택하지 않는다. source-FK fit과 영상 연결이 유지돼도 모든14상태·동작전환·root·combat·64개체에서 안전하다는 뜻은 아니다.
-
-collector 오류는 종료 metadata 읽기 경합으로 재현/수정했다. 게임 애니메이션 원인이나 native crash로 보고하지 않는다. 사용자 수동8명 시험에서 앞서 나온 SetTemperature VM 예외도 별개 미해결로 유지한다.
+추정: 세대 주기와 표시 비율의 시간 기준 차이가 불균등 포즈에 기여할 수 있다. 후보1회는 기여 분리를 위한 시험이며 전체 끊김 원인 확정·배포 API 확보·시각 개선 반복 입증은 아니다. 반증 범위: 원래값을 유지한 대조만으로 평균속도가 정상화된다는 가정은 이번 실행과 맞지 않는다. 전체 애니메이션/전환/64개체로 일반화하지 않는다.
 
 5. 검증 수준
 
-반복 검증 완료: 동일24byte 복사본799호출·두 정상 DayZ 실행의 기초 호환성. 완전한 무효과 동등성·최적화 수용이 아니다.
-진단 성공: 원본 outer 대조와 guarded clock/HUD/source-FK 및 실제 영상 대응.
-회귀 통과: collector read/write 경합3검사만 해당한다.
-미실행/미수용: 보간 비율 숫자 변경 후보, 실제 평균속도/부드러움 수정, 모든14동작, 새8→64 기능/성능. 최종 수용 미완료다.
+진단 성공:8부품 시간 계약, 정상 종료 대조/후보의 원시 수집·CPU/source proxy·실제 녹화 연결. 모델 replay/입력 거부는 도구 검사 통과다. 반복 검증 완료는 원본/후보의 효과에 아직 해당하지 않는다. 시각 품질·평균속도 수정·8→64 회귀·20ms p95·최종 수용은 미수용이다.
 
 6. 변경 사항
 
-기존 entry driver에 별도 outer 관측/동일복사 plan, 고유slot·byte/스택 guard·값 변경 없음의 metadata를 추가했다. outer 분석기는 saved-dt 미계측을 null로 남기고 callback+분자 proxy를 명시했다. launcher 결과파일 재시도와3개 회귀를 추가했다. 기존 plan default는 유지하며 각 실행 snapshot이 실제 사용 코드를 결정한다. 원시 status·로그·영상은 덮어쓰지 않았다.
-
-PBO/모델/그래프/AI 코드 변경·재빌드·재서명은 없다. B8FB integration/453D base/0C6E assets 유지,5실행마다 기존3개PBO DSCheck 서명 검증 성공. 운영 서버 변경 없음.
+trace_horde_native_calls.py와watch_horde_frame_order_calls.ps1에 명시적 periodBaseline/periodCandidate plan을 추가했다. horde_shared_period_model.js·horde_period_fraction_probe.js·전용 분석기/입장 gate가 진단용 변경이다. 기존 기본plan과 게임 실행계층은 유지했다. baseline/candidate의 실제 archived driver/JS/config를 근거로 사용한다. 서명 PBO B8FB/453D/0C6E는 변경·재빌드하지 않았고 두 실행마다3개 DSCheck 서명 검증 성공. 개인키/자산은 공개하지 않는다.
 
 7. 원시 증거
 
-142001/142406/142846/143220/143908의 launch·compile·source·실행 driver/JS/config/status/calls, HUD/본/독립 시계·영상·analysis·창 관찰을 연결했다. 첫pilot 실패는 별도 sidecar로 보존한다. 아래 저장 전 해시/메타데이터2회 검사 목록이 전체 로컬 근거다. 공개 패킷은 집계와 첫6개 연결쌍만 선정하며 원점 정수·실제 프로세스 정보·내부 경로·원본 자산/영상은 공개하지 않는다.
-
-별도64 비용 트랙은 WPR/xperf/WPAExporter의 실제 도움말/프로필/상태를 읽기만 했다. trace 수집·종료·설치·게임 변경은 없다. CPU sampled stacks/Loader와 GPU/DXGI/D3D11/DxgKrnl/Dwm 프로필 경로를 확인했다. WPAExporter는 ETW plugin을 로드했으나 deps.json 경고가 있어 실제 ETL→CSV는 미검증이다. PresentMon은 선택 경로/PATH에서 못 찾았으며 전체 디스크 부재 주장은 아니다. WPR not recording은 다른 ETW 세션 부재를 뜻하지 않는다.
+runtime-20261029-040750과041212의 정상 종료 metadata·실행 source/config·3200행씩 native·HUD/CPU·독립 시계·45초 영상·정확HUD/포즈 연결·분석 JSON을 보존한다. 앞선145503 및 replay도 원시 해시로 연결한다. 공개 패킷은 집계와 첫4개 CPU/source proxy 연결쌍, 자체 순수 모델만 선정한다. 전체 trace나 영상 공개가 아니다. 자료저장 전/후 해시·metadata·JSON을 기존 게시기로 검사하며 원본과 과거 보고서를 덮어쓰지 않는다.
 
 8. 잔여 문제
 
-다음은 원본/복사본 실행의 실제 프레임 cadence가 비교 가능한지 먼저 확인하는 것이다. 다르면 한 실행 안의 순서 교차 블록 등으로 clock/환경 혼동을 구분하고 완전한 무효과 대조로 승인하기 전 숫자 후보를 비교하지 않는다. 그 다음 같은 buffer 세대의 실제 평가 간격을 확인하고, 복사본 표시 비율 한 요소만 바꾸는 격리1개체 pilot을 진행한다. graph 재생속도는 그대로 둬 표시 균등성의 인과 기여를 구분하고 평균속도는 별도 축으로 검증한다. 원본 buffer/행렬·정상 낙하·AI를 수정하지 않는다. 후보가 유효해도 native argument 진단을 그대로 배포해 해결한 것으로 보고하지 않으며 지원 API/PBO 구현 경로가 추가로 필요하다.
+다음은 후보 ON/OFF가 실제영상의 포즈 증분에 미치는 영향을 같은 구간에서 정량 비교하고, 역순 대조/후보를 반복하는 것이다. 평균 graph 속도 원인은 별도로 실제 dt 전달/소비를 추적해야 한다. 후보는 native 진단이라 배포 가능한 수정이 아니다. 지지/접촉·공격/착지 타이밍이나 정상 낙하를 약화하지 않는다.
 
-64 비용은 별도 최소 WPR profile·짧은 fixture·lost events·ASLR module/RVA mapping·ETL→CSV·계측 overhead부터 검증해야 한다. Enforce 함수별AI/경로·native graph 세부비용·할당/GC를 ETW가 자동 구분한다고 주장하지 않는다. DotNET GC provider는 Enforce GC 증거가 아니다. 기존64 최종64/64·HIGH_HOLD13/14/43·EGRESS_STALL1과20ms p95 미달은 유지한다.
+기존64 최종64/64와 HIGH_HOLD 미도달13/14/43, EGRESS_STALL1·climb-end0을 이 새 애니메이션 시험으로 해결됐다고 갱신하지 않는다. 사용자 시험의 SetTemperature 예외도 별개 미해결이다.64 비용은 별도 통제 ETW/함수 계측·반복 비교가 필요하고20ms p95는 계속 목표다.
 
-원본 보고서 ID: 2026-10-28_144519_839877+0900_npc-descriptor-copy-control.md
-원본 SHA-256: 8d393f664d575f286dee7777dc8249732bd30ac757980c46d8b26d4d54c7e7ee
+원본 보고서 ID: 2026-10-29_041715_741778+0900_npc-period-fraction.md
+원본 SHA-256: 765eb60c67b5e71367c1dbeae1dea2f0749a68d12d6e5a4ae61b9243dacf8f00
 이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
 
-선정 집계와 첫6개 연속 연결쌍 (전체 trace 아님)
+선정 집계/첫4개 쌍
 [
   {
     "summary": {
-      "runId": "runtime-20261028-142406",
+      "runId": "runtime-20261029-040750",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
       "scenario": "anim1",
       "count": 1,
@@ -89,117 +71,108 @@ PBO/모델/그래프/AI 코드 변경·재빌드·재서명은 없다. B8FB inte
       "highHoldWindow": null,
       "omitGameplayMetrics": true,
       "foregroundMissionFrameMs": {
-        "p50": 20.19205,
-        "p95": 34.671465,
-        "p99": 36.140306
+        "p50": 20.13995,
+        "p95": 35.26696,
+        "p99": 37.061455
       },
-      "copied": true,
-      "calls": 400,
-      "equalCopies": 400,
-      "nativeHudPosePairs": 399,
-      "callbackRatio": 0.6404119059748199,
-      "poseFitP95Meters": 0.011837438490884917,
-      "proxyResidualRmsMs": 2.902192705586295,
-      "exactVideoHudFrames": 354,
-      "visiblePairs": 286,
-      "cpuVisibleCorrelation": 0.9437468107452821,
-      "clockAcks": 242,
+      "calls": 3200,
+      "completeReadyFrames": 394,
+      "numericOverride": false,
+      "graphClockVsWallRange": [
+        0.6399012123221083,
+        0.6399086633356003
+      ],
+      "entryReadBracketP50Ms": 0.07229999999999999,
+      "clockAcks": 227,
+      "exactVideoHudFrames": 360,
+      "cpuPairs": 393,
+      "sourceFitP95Meters": 0.012004616888442158,
+      "originalVsCpuProxyResidualRmsMs": 3.0577774321032107,
+      "submittedVsCpuProxyResidualRmsMs": 3.0577774321032107,
+      "exactVisiblePairsInsideNumericOverride": 0,
+      "nativeWindowMissionSeconds": [
+        24.652,
+        32.53
+      ],
+      "originalArgumentTimingResidualMsRange": [
+        10.834995538006343,
+        10.98136984788032
+      ],
+      "submittedArgumentTimingResidualMsRange": [
+        10.834995538006343,
+        10.98136984788032
+      ],
       "measurementConditions": {
         "logicalAgents": 1,
         "renderParts": 8,
         "clip": "run",
         "ai": false,
         "movement": false,
-        "singleOuterEntryHook": true,
-        "descriptorPointerReplaced": true,
-        "descriptorValuesChanged": false,
-        "actualSchedulerInputDtRead": false,
-        "frameSync": "on",
-        "fileClockSeconds": 10,
-        "performanceAcceptance": false,
         "repetitions": 1,
-        "frameWindow": "t>=15s app-active HUD callback intervals; not GPU/Present or animation evaluation FPS"
+        "descriptorPointerReplacement": true,
+        "descriptorValuesChanged": false,
+        "durationSeconds": 120,
+        "hookSeconds": 8,
+        "performanceAcceptance": false,
+        "frameSync": "on",
+        "admissionReapproach": false,
+        "method": "foreground mission callbacks; native outer-entry / source-FK proxy / exact video HUD, not GPU Present"
       }
     },
-    "limitations": [
-      "Entry byte equality does not observe original descriptor after native return.",
-      "Unique copy slots remain alive to process exit; DayZ long-term pointer retention not globally proven.",
-      "Saved scheduler input dt is NOT read; phase model uses callback-clock delta plus descriptor numerator delta.",
-      "Six-point source-FK proxy, not direct graph/clip phase. No GPU/Present.",
-      "Hook/recording timings not performance acceptance. Matched repeated controls still required."
+    "consumerLimitations": [
+      "Six-point source-FK phase proxy, not direct clip phase or perceptual quality.",
+      "Visible pair intersection locates candidate coverage; it is not a quality score.",
+      "One baseline and one candidate; repeat/crossover not completed."
     ],
-    "inputHashes": {
-      "launch.json": "a69e1a21899954ab6bf5e8d67ffb0b74aa8b6003d6313cb4df36ed4073c35643",
-      "native-call-probe/status.json": "39510eff2a59675e05e5b9cc6e070bfc977566af4695a34148a3aab348e731c9",
-      "native-call-probe/configuration.json": "68273fe94b5658d9222b9bb5e1e4dd1c1e0b9858961d459cc6bed5d0c3fdad01",
-      "native-call-probe/instrumentation.js": "c7d23a69d1c0dc0b400f102141709316b297381303f0b2149ca0f66b4be2b90a",
-      "native-call-probe/observer-driver-source.py": "d07974208731c7b85de2c6ea3a7be01b0d60230ba295e879a321bfe1c4c5536c",
-      "native-call-probe/calls.jsonl": "5fd550d5c624877a86ce0e9bf2f5a0df2968d7a472d0c1e3f1ac6b1778f61414",
-      "frame-order-clock-bridge.jsonl": "e597ec726f0807ef32c85c8269d244b14201ebfa8aa3fd5df410ffc140450ff4",
-      "visible-frame-clock.tsv": "17ac0df474f17a6eb38efba01cfb10f1356324333613547a8355372e25ee174a"
-    },
+    "selection": "First4 CPU/source proxy pairs, not entire trace; first complete8-part group timing policy is in retained model.",
     "representativePairs": [
       {
-        "firstFrame": 1149,
-        "lastFrame": 1150,
-        "callbackDeltaMs": 0.0,
-        "descriptorPhaseDeltaMs": 8.00000037997961,
-        "sourceProxyDeltaMs": 8.333333333333334,
-        "residualMs": 0.3333329533537235,
-        "nativeSavedInputDtMs": null
+        "firstFrame": 1193,
+        "lastFrame": 1194,
+        "missionSeconds": 24.688,
+        "wallDeltaMs": 4.9281999999999995,
+        "originalDeltaMs": 6.000000052154064,
+        "submittedDeltaMs": 6.000000052154064,
+        "sourceProxyDeltaMs": 8.333333333333334
       },
       {
-        "firstFrame": 1150,
-        "lastFrame": 1151,
-        "callbackDeltaMs": 0.0,
-        "descriptorPhaseDeltaMs": 32.000002451241016,
-        "sourceProxyDeltaMs": 33.333333333333336,
-        "residualMs": 1.3333308820923193,
-        "nativeSavedInputDtMs": null
+        "firstFrame": 1194,
+        "lastFrame": 1195,
+        "missionSeconds": 24.696,
+        "wallDeltaMs": 36.6142,
+        "originalDeltaMs": 35.99999938160181,
+        "submittedDeltaMs": 35.99999938160181,
+        "sourceProxyDeltaMs": 33.333333333333336
       },
       {
-        "firstFrame": 1151,
-        "lastFrame": 1152,
-        "callbackDeltaMs": 0.0,
-        "descriptorPhaseDeltaMs": 6.000000983476639,
-        "sourceProxyDeltaMs": 4.166666666666667,
-        "residualMs": -1.8333343168099718,
-        "nativeSavedInputDtMs": null
+        "firstFrame": 1195,
+        "lastFrame": 1196,
+        "missionSeconds": 24.725,
+        "wallDeltaMs": 8.706,
+        "originalDeltaMs": 7.999237626791,
+        "submittedDeltaMs": 7.999237626791,
+        "sourceProxyDeltaMs": 8.333333333333334
       },
       {
-        "firstFrame": 1152,
-        "lastFrame": 1153,
-        "callbackDeltaMs": 50.00000000000071,
-        "descriptorPhaseDeltaMs": 3.999996185303445,
-        "sourceProxyDeltaMs": 4.166666666666667,
-        "residualMs": 0.16667048136322204,
-        "nativeSavedInputDtMs": null
-      },
-      {
-        "firstFrame": 1153,
-        "lastFrame": 1154,
-        "callbackDeltaMs": 0.0,
-        "descriptorPhaseDeltaMs": 8.999999612569809,
-        "sourceProxyDeltaMs": 8.333333333333334,
-        "residualMs": -0.666666279236475,
-        "nativeSavedInputDtMs": null
-      },
-      {
-        "firstFrame": 1154,
-        "lastFrame": 1155,
-        "callbackDeltaMs": 0.0,
-        "descriptorPhaseDeltaMs": 30.99999949336052,
-        "sourceProxyDeltaMs": 33.333333333333336,
-        "residualMs": 2.3333338399728163,
-        "nativeSavedInputDtMs": null
+        "firstFrame": 1196,
+        "lastFrame": 1197,
+        "missionSeconds": 24.734,
+        "wallDeltaMs": 28.962600000000002,
+        "originalDeltaMs": 28.00000086426735,
+        "submittedDeltaMs": 28.00000086426735,
+        "sourceProxyDeltaMs": 29.166666666666668
       }
     ],
-    "selection": "first6 admitted native/HUD/source-proxy pairs, not all trace",
-    "noEffectEquivalenceAccepted": false
+    "counts": {
+      "interpolate": 3200,
+      "numericApplied": 0,
+      "numericChanged": 0
+    },
+    "proofSha256": "89eef5c7acdead2576f2d88c0201543737a88684c0906ec2d2067407281609ea"
   },
   {
     "summary": {
-      "runId": "runtime-20261028-142846",
+      "runId": "runtime-20261029-041212",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
       "scenario": "anim1",
       "count": 1,
@@ -207,232 +180,142 @@ PBO/모델/그래프/AI 코드 변경·재빌드·재서명은 없다. B8FB inte
       "highHoldWindow": null,
       "omitGameplayMetrics": true,
       "foregroundMissionFrameMs": {
-        "p50": 19.99145,
-        "p95": 34.59856,
-        "p99": 36.217919
+        "p50": 21.15195,
+        "p95": 34.67803,
+        "p99": 36.373760999999995
       },
-      "copied": true,
-      "calls": 399,
-      "equalCopies": 399,
-      "nativeHudPosePairs": 398,
-      "callbackRatio": 0.6404585152838429,
-      "poseFitP95Meters": 0.013226639878735258,
-      "proxyResidualRmsMs": 2.943374877024906,
-      "exactVideoHudFrames": 351,
-      "visiblePairs": 284,
-      "cpuVisibleCorrelation": 0.9456025105093114,
-      "clockAcks": 246,
+      "calls": 3200,
+      "completeReadyFrames": 392,
+      "numericOverride": true,
+      "graphClockVsWallRange": [
+        0.6400141282357875,
+        0.6400527878634629
+      ],
+      "entryReadBracketP50Ms": 0.07289999999999999,
+      "clockAcks": 245,
+      "exactVideoHudFrames": 360,
+      "cpuPairs": 391,
+      "sourceFitP95Meters": 0.020013785144626206,
+      "originalVsCpuProxyResidualRmsMs": 11.294650193576176,
+      "submittedVsCpuProxyResidualRmsMs": 2.6955345557274843,
+      "exactVisiblePairsInsideNumericOverride": 297,
+      "nativeWindowMissionSeconds": [
+        24.173,
+        32.006
+      ],
+      "originalArgumentTimingResidualMsRange": [
+        10.861862747853559,
+        11.010107931195233
+      ],
+      "submittedArgumentTimingResidualMsRange": [
+        2.829187597359413,
+        2.845745712117348
+      ],
       "measurementConditions": {
         "logicalAgents": 1,
         "renderParts": 8,
         "clip": "run",
         "ai": false,
         "movement": false,
-        "singleOuterEntryHook": true,
-        "descriptorPointerReplaced": true,
-        "descriptorValuesChanged": false,
-        "actualSchedulerInputDtRead": false,
-        "frameSync": "on",
-        "fileClockSeconds": 10,
-        "performanceAcceptance": false,
         "repetitions": 1,
-        "frameWindow": "t>=15s app-active HUD callback intervals; not GPU/Present or animation evaluation FPS"
+        "descriptorPointerReplacement": true,
+        "descriptorValuesChanged": true,
+        "durationSeconds": 120,
+        "hookSeconds": 8,
+        "performanceAcceptance": false,
+        "frameSync": "on",
+        "admissionReapproach": false,
+        "method": "foreground mission callbacks; native outer-entry / source-FK proxy / exact video HUD, not GPU Present"
       }
     },
-    "limitations": [
-      "Entry byte equality does not observe original descriptor after native return.",
-      "Unique copy slots remain alive to process exit; DayZ long-term pointer retention not globally proven.",
-      "Saved scheduler input dt is NOT read; phase model uses callback-clock delta plus descriptor numerator delta.",
-      "Six-point source-FK proxy, not direct graph/clip phase. No GPU/Present.",
-      "Hook/recording timings not performance acceptance. Matched repeated controls still required."
+    "consumerLimitations": [
+      "Six-point source-FK phase proxy, not direct clip phase or perceptual quality.",
+      "Visible pair intersection locates candidate coverage; it is not a quality score.",
+      "One baseline and one candidate; repeat/crossover not completed."
     ],
-    "inputHashes": {
-      "launch.json": "705e2e495fdee43299fcff0be39bbdd076e0a6cfed972528076f3df524a0d1f8",
-      "native-call-probe/status.json": "13fb75f05d30002d3fb344a29370e9eb6ad4c022adae64c3a9701b302e76237e",
-      "native-call-probe/configuration.json": "68273fe94b5658d9222b9bb5e1e4dd1c1e0b9858961d459cc6bed5d0c3fdad01",
-      "native-call-probe/instrumentation.js": "c7d23a69d1c0dc0b400f102141709316b297381303f0b2149ca0f66b4be2b90a",
-      "native-call-probe/observer-driver-source.py": "d07974208731c7b85de2c6ea3a7be01b0d60230ba295e879a321bfe1c4c5536c",
-      "native-call-probe/calls.jsonl": "f9fed25bada3e76b3a84c08bfc11a44d0b80db3a7137801077b4c6b879c7198d",
-      "frame-order-clock-bridge.jsonl": "659e87afedc6da49b11de7e897c5257e1beb0fa8662a52c040bcfa75812e2e3f",
-      "visible-frame-clock.tsv": "f35450292c7f0f7cc080473c9fe546cfa561e281ee306268fc1efab0a6db1223"
-    },
+    "selection": "First4 CPU/source proxy pairs, not entire trace; first complete8-part group timing policy is in retained model.",
     "representativePairs": [
       {
-        "firstFrame": 1149,
-        "lastFrame": 1150,
-        "callbackDeltaMs": 0.0,
-        "descriptorPhaseDeltaMs": 6.000000052154064,
-        "sourceProxyDeltaMs": 4.166666666666667,
-        "residualMs": -1.8333333854873972,
-        "nativeSavedInputDtMs": null
+        "firstFrame": 1167,
+        "lastFrame": 1168,
+        "missionSeconds": 24.205,
+        "wallDeltaMs": 8.0343,
+        "originalDeltaMs": 8.999999612569809,
+        "submittedDeltaMs": 5.151071585714817,
+        "sourceProxyDeltaMs": 4.166666666666667
       },
-      {
-        "firstFrame": 1150,
-        "lastFrame": 1151,
-        "callbackDeltaMs": 0.0,
-        "descriptorPhaseDeltaMs": 34.00000277906656,
-        "sourceProxyDeltaMs": 37.5,
-        "residualMs": 3.4999972209334373,
-        "nativeSavedInputDtMs": null
-      },
-      {
-        "firstFrame": 1151,
-        "lastFrame": 1152,
-        "callbackDeltaMs": 0.0,
-        "descriptorPhaseDeltaMs": 6.999999284744263,
-        "sourceProxyDeltaMs": 4.166666666666667,
-        "residualMs": -2.8333326180775957,
-        "nativeSavedInputDtMs": null
-      },
-      {
-        "firstFrame": 1152,
-        "lastFrame": 1153,
-        "callbackDeltaMs": 49.999999999998934,
-        "descriptorPhaseDeltaMs": 2.9999978840340447,
-        "sourceProxyDeltaMs": 4.166666666666667,
-        "residualMs": 1.1666687826326223,
-        "nativeSavedInputDtMs": null
-      },
-      {
-        "firstFrame": 1153,
-        "lastFrame": 1154,
-        "callbackDeltaMs": 0.0,
-        "descriptorPhaseDeltaMs": 6.000000052154064,
-        "sourceProxyDeltaMs": 4.166666666666667,
-        "residualMs": -1.8333333854873972,
-        "nativeSavedInputDtMs": null
-      },
-      {
-        "firstFrame": 1154,
-        "lastFrame": 1155,
-        "callbackDeltaMs": 0.0,
-        "descriptorPhaseDeltaMs": 34.00000277906656,
-        "sourceProxyDeltaMs": 37.5,
-        "residualMs": 3.4999972209334373,
-        "nativeSavedInputDtMs": null
-      }
-    ],
-    "selection": "first6 admitted native/HUD/source-proxy pairs, not all trace",
-    "noEffectEquivalenceAccepted": false
-  },
-  {
-    "summary": {
-      "runId": "runtime-20261028-143908",
-      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "scenario": "anim1",
-      "count": 1,
-      "durationSeconds": 120,
-      "highHoldWindow": null,
-      "omitGameplayMetrics": true,
-      "foregroundMissionFrameMs": {
-        "p50": 20.714,
-        "p95": 34.56136,
-        "p99": 36.279616
-      },
-      "copied": false,
-      "calls": 400,
-      "equalCopies": 0,
-      "nativeHudPosePairs": 399,
-      "callbackRatio": 0.6386157708962558,
-      "poseFitP95Meters": 0.013078670930795051,
-      "proxyResidualRmsMs": 2.9554617214802636,
-      "exactVideoHudFrames": 357,
-      "visiblePairs": 290,
-      "cpuVisibleCorrelation": 0.9419861828577758,
-      "clockAcks": 240,
-      "measurementConditions": {
-        "logicalAgents": 1,
-        "renderParts": 8,
-        "clip": "run",
-        "ai": false,
-        "movement": false,
-        "singleOuterEntryHook": true,
-        "descriptorPointerReplaced": false,
-        "descriptorValuesChanged": false,
-        "actualSchedulerInputDtRead": false,
-        "frameSync": "on",
-        "fileClockSeconds": 10,
-        "performanceAcceptance": false,
-        "repetitions": 1,
-        "frameWindow": "t>=15s app-active HUD callback intervals; not GPU/Present or animation evaluation FPS"
-      }
-    },
-    "limitations": [
-      "Entry byte equality does not observe original descriptor after native return.",
-      "Unique copy slots remain alive to process exit; DayZ long-term pointer retention not globally proven.",
-      "Saved scheduler input dt is NOT read; phase model uses callback-clock delta plus descriptor numerator delta.",
-      "Six-point source-FK proxy, not direct graph/clip phase. No GPU/Present.",
-      "Hook/recording timings not performance acceptance. Matched repeated controls still required."
-    ],
-    "inputHashes": {
-      "launch.json": "5e6acb01d40bef56b4a40b3ce1485b8acff46597696828bc2e31fb9b539fcbd9",
-      "native-call-probe/status.json": "b10970b493df7508a195dc7575d58e8c3ab0b0624e1fb4d2513c7d7707730a91",
-      "native-call-probe/configuration.json": "6a517517a11d2c3ebe63e380fbc4fd83150c39b3b39388aace801b4403048280",
-      "native-call-probe/instrumentation.js": "51b123906dd82bfeb932684875f3dd19d8160add10b76499b6733fb91fd5ab3a",
-      "native-call-probe/observer-driver-source.py": "d07974208731c7b85de2c6ea3a7be01b0d60230ba295e879a321bfe1c4c5536c",
-      "native-call-probe/calls.jsonl": "4dfd9c0e2aa6858bd0d9b14a39d1a44b90fc5ee9c7517e6a0bc42fe9abe99f97",
-      "frame-order-clock-bridge.jsonl": "0244173ed811cc2b90ae58c6609dea4ab8c398f88f9533b0d2dd950d3a864bd5",
-      "visible-frame-clock.tsv": "c51ea07693ce78f01f6b0ef2e06370e8a99900eee55aa92e87c0d8dbdc62ac78"
-    },
-    "representativePairs": [
       {
         "firstFrame": 1168,
         "lastFrame": 1169,
-        "callbackDeltaMs": 0.0,
-        "descriptorPhaseDeltaMs": 6.000000983476639,
-        "sourceProxyDeltaMs": 4.166666666666667,
-        "residualMs": -1.8333343168099718,
-        "nativeSavedInputDtMs": null
+        "missionSeconds": 24.211,
+        "wallDeltaMs": 32.3709,
+        "originalDeltaMs": 32.00000151991844,
+        "submittedDeltaMs": 20.162255503237247,
+        "sourceProxyDeltaMs": 20.833333333333332
       },
       {
         "firstFrame": 1169,
         "lastFrame": 1170,
-        "callbackDeltaMs": 50.00000000000071,
-        "descriptorPhaseDeltaMs": 3.9999999105937434,
-        "sourceProxyDeltaMs": 4.166666666666667,
-        "residualMs": 0.16666675607292358,
-        "nativeSavedInputDtMs": null
+        "missionSeconds": 24.247,
+        "wallDeltaMs": 5.7543999999999995,
+        "originalDeltaMs": 6.000000983476639,
+        "submittedDeltaMs": 3.591693937778473,
+        "sourceProxyDeltaMs": 4.166666666666667
       },
       {
         "firstFrame": 1170,
         "lastFrame": 1171,
-        "callbackDeltaMs": 0.0,
-        "descriptorPhaseDeltaMs": 6.000000052154064,
-        "sourceProxyDeltaMs": 4.166666666666667,
-        "residualMs": -1.8333333854873972,
-        "nativeSavedInputDtMs": null
-      },
-      {
-        "firstFrame": 1171,
-        "lastFrame": 1172,
-        "callbackDeltaMs": 0.0,
-        "descriptorPhaseDeltaMs": 34.00000277906656,
-        "sourceProxyDeltaMs": 37.5,
-        "residualMs": 3.4999972209334373,
-        "nativeSavedInputDtMs": null
-      },
-      {
-        "firstFrame": 1172,
-        "lastFrame": 1173,
-        "callbackDeltaMs": 0.0,
-        "descriptorPhaseDeltaMs": 6.000000983476639,
-        "sourceProxyDeltaMs": 4.166666666666667,
-        "residualMs": -1.8333343168099718,
-        "nativeSavedInputDtMs": null
-      },
-      {
-        "firstFrame": 1173,
-        "lastFrame": 1174,
-        "callbackDeltaMs": 50.00000000000071,
-        "descriptorPhaseDeltaMs": 3.999996185303445,
-        "sourceProxyDeltaMs": 4.166666666666667,
-        "residualMs": 0.16667048136322204,
-        "nativeSavedInputDtMs": null
+        "missionSeconds": 24.256,
+        "wallDeltaMs": 36.889199999999995,
+        "originalDeltaMs": 2.9992349445819855,
+        "submittedDeltaMs": 21.094216033816338,
+        "sourceProxyDeltaMs": 20.833333333333332
       }
     ],
-    "selection": "first6 admitted native/HUD/source-proxy pairs, not all trace",
-    "noEffectEquivalenceAccepted": false
+    "counts": {
+      "interpolate": 3200,
+      "numericApplied": 3136,
+      "numericChanged": 2328
+    },
+    "proofSha256": "de2927a61b1e6ccfad6fa3287cdd53a93e348c1885b7ed3482496bb897299309"
   }
 ]
+
+자체 순수 시간 모델 — 엔진 접근/배포 정책 없음
+// Pure shared-frame timing model. No engine access or deployment policy.
+function SharedPeriodModel(frequency) {
+ this.frequency=frequency;this.key=null;this.seen=new Set();this.parts=new Set();this.fullFrames=0;this.frameIndex=-1;
+ this.graphClock=null;this.generationStart=null;this.trustedBoundary=false;this.previousPeriod=null;this.frameFraction=null;
+ this.frameTick=null;this.completedFrames=0;
+}
+SharedPeriodModel.prototype.step=function(part,graphClock,numerator,duration,tick){
+ if(![graphClock,numerator,duration,tick,this.frequency].every(Number.isFinite)||duration<=0||this.frequency<=0||numerator<0)throw Error('Model bounds');
+ if(!Number.isInteger(part)||part<0||part>7)throw Error('Model part');
+ this.parts.add(part);
+ const key=graphClock+'|'+numerator;
+ if(key!==this.key||this.seen.has(part)){
+  if(this.key!==null){
+   if(this.seen.size===8){this.fullFrames++;this.completedFrames++;}
+   else if(this.fullFrames>0)throw Error('Incomplete frame after complete cohort');
+  }
+  this.key=key;this.seen.clear();this.frameTick=tick;this.frameIndex++;
+  if(this.graphClock===null){this.graphClock=graphClock;this.generationStart=tick;}
+  else if(graphClock!==this.graphClock){
+   const expected=Math.fround(this.graphClock+duration);
+   if(expected!==graphClock)throw Error('Unexpected graph-clock step');
+   if(this.trustedBoundary){
+    const period=(tick-this.generationStart)/this.frequency;
+    if(period<0.02||period>0.25)throw Error('Observed period outside diagnostic bounds');
+    this.previousPeriod=period;
+   }
+   this.graphClock=graphClock;this.generationStart=tick;this.trustedBoundary=true;
+  }
+  this.frameFraction=this.previousPeriod===null?null:Math.max(0,Math.min(1,(tick-this.generationStart)/this.frequency/this.previousPeriod));
+ }
+ this.seen.add(part);
+ const ready=this.parts.size===8&&this.fullFrames>=2&&this.frameFraction!==null;
+ return {frameIndex:this.frameIndex,ready,proposedFraction:ready?this.frameFraction:null,
+         previousPeriodSeconds:this.previousPeriod,completeCurrentFrame:this.seen.size===8};
+};
 
 이전 애니메이션 진단: [선정 근거](downloads/animation-review.txt). 이번 진단은 시각·성능 해결을 뜻하지 않는다.

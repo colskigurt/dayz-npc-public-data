@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261028T054557-descriptor-copy-20261028",
-  "generatedAt": "2026-10-28T05:45:57.102289+00:00",
-  "exportedAt": "2026-10-28T05:45:57.102289+00:00",
+  "snapshotId": "snapshot-20261028T191735-period-fraction-20261029",
+  "generatedAt": "2026-10-28T19:17:35.469496+00:00",
+  "exportedAt": "2026-10-28T19:17:35.469496+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -28,7 +28,9 @@
     "runtime-20261028-075921",
     "runtime-20261028-142406",
     "runtime-20261028-142846",
-    "runtime-20261028-143908"
+    "runtime-20261028-143908",
+    "runtime-20261029-040750",
+    "runtime-20261029-041212"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -37,8 +39,8 @@
     "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-28T05:45:57.102289+00:00",
-    "staleAfter": "2026-10-29T05:45:57.102289+00:00",
+    "sourceUpdatedAt": "2026-10-28T19:17:35.469496+00:00",
+    "staleAfter": "2026-10-29T19:17:35.469496+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -55,18 +57,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 24365,
-      "sha256": "6c6cc79a19679ea2b308cc4ea15376c273f9a96db7febe210e78f464e6b72678"
+      "bytes": 16654,
+      "sha256": "12d761ed07870cc0cbe085a9462738feb4460ce0afd9e2d321e2f83f651d9891"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 217920,
-      "sha256": "08f77279f4ed48ddc489bbb80713b0d237c27717d4a3da5f9310aaf03d33a33a"
+      "bytes": 226232,
+      "sha256": "b0400eda1d12a2a98e6ccac18f4c5c2a4bd1e4db7fc1fc2bae67868e7862ec56"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 217916,
-      "sha256": "cb5ccf813a6fcee1eb6cd85fbdc7a0f7ad90ea4bb779dec83609920eded6c77c"
+      "bytes": 226228,
+      "sha256": "33de57de56e3e25ffc5dd235280e871039b700f1093fbbda28de1a8a5f11203e"
     },
     {
       "path": "api/public/schema.json",
@@ -209,14 +211,29 @@
       "sha256": "5ed97aa8d218d78941a715804026c5eeaadcd371d677c0b0b1097e119c2697ad"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261028T191735-period-fraction-20261029/experiments.json",
+      "bytes": 226232,
+      "sha256": "b0400eda1d12a2a98e6ccac18f4c5c2a4bd1e4db7fc1fc2bae67868e7862ec56"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261028T191735-period-fraction-20261029/metrics.json",
+      "bytes": 226228,
+      "sha256": "33de57de56e3e25ffc5dd235280e871039b700f1093fbbda28de1a8a5f11203e"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261028T191735-period-fraction-20261029/status.json",
+      "bytes": 226227,
+      "sha256": "ee4e5887d1cf83bd6c7f031f44e356de5a4bf38f765d3eea0902abf9c237049b"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 217915,
-      "sha256": "5ed97aa8d218d78941a715804026c5eeaadcd371d677c0b0b1097e119c2697ad"
+      "bytes": 226227,
+      "sha256": "ee4e5887d1cf83bd6c7f031f44e356de5a4bf38f765d3eea0902abf9c237049b"
     },
     {
       "path": "api/public/update-status.json",
       "bytes": 715,
-      "sha256": "cd9e4c53c255cdc6ce312ffa8cc9064d915eaf92e3a51faa3e7fe6114759ea29"
+      "sha256": "8c9f6e8201af3fe8b0b2ee9120f9ee3515141b9d0106f247efee5720e1f67ee6"
     },
     {
       "path": "data/experiments/admission-latch-runtime-20261028.json",
@@ -252,6 +269,11 @@
       "path": "data/experiments/landing-corridor-20261028.json",
       "bytes": 42509,
       "sha256": "2ee421e230c74c8b1d093b5dbf0fd5d230c4b24338f0eb61caf093aaf84cc607"
+    },
+    {
+      "path": "data/experiments/period-fraction-20261029.json",
+      "bytes": 35526,
+      "sha256": "36d1a0f9b384497ef7c174c615474af2af83e229e28bde5ffbe70f34b2f5a5d7"
     },
     {
       "path": "data/experiments/pose-buffer-continuity-20261028.json",
@@ -384,9 +406,19 @@
       "sha256": "962c77ed49b2b6a6f9d56c4053b81cf2034921fa971d3266522f80f155795f8c"
     },
     {
+      "path": "downloads/checkpoints/2026-10-29_041715_741778+0900_npc-period-fraction.txt",
+      "bytes": 7017,
+      "sha256": "73ccb93c6593bc1c96408a94e4a2d12ff76115ad72aff7cbe332ac3ddc732471"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-29_041715_741778+0900_npc-period-fraction_evidence.txt",
+      "bytes": 16402,
+      "sha256": "a8a83dc7ac695d2e5895061e7d25bcaad0e56acefaa700b611133f1d7105231f"
+    },
+    {
       "path": "README.md",
-      "bytes": 6773,
-      "sha256": "0d47bad8484e4c901519b556eef077c6879b34126cb5d6a2116c1538d0f59c28"
+      "bytes": 7163,
+      "sha256": "0933c44db661930d93e091d4ab4f8530e5295a5742428e2de9eccc57fec19092"
     },
     {
       "path": "reports/accessibility-20261028.md",
@@ -432,6 +464,16 @@
       "path": "reports/history/pre-landing-corridor-20261028-operations-latest.md",
       "bytes": 7039,
       "sha256": "3d862c6395e44b0a5307f0ea05880cb89124b6f279e9dead1919094472de6203"
+    },
+    {
+      "path": "reports/history/pre-period-fraction-20261029-latest.md",
+      "bytes": 10426,
+      "sha256": "74e9b81fc9be69d95f6ab566cc2a023d20654e04fc9d44ad43aefe983eb514d8"
+    },
+    {
+      "path": "reports/history/pre-period-fraction-20261029-operations-latest.md",
+      "bytes": 10426,
+      "sha256": "74e9b81fc9be69d95f6ab566cc2a023d20654e04fc9d44ad43aefe983eb514d8"
     },
     {
       "path": "reports/history/pre-pose-buffer-continuity-20261028-latest.md",
@@ -485,8 +527,8 @@
     },
     {
       "path": "reports/latest.md",
-      "bytes": 10426,
-      "sha256": "74e9b81fc9be69d95f6ab566cc2a023d20654e04fc9d44ad43aefe983eb514d8"
+      "bytes": 7366,
+      "sha256": "13a7ca837de1bee2392548dd6fc9cb9aa6a62123e6181db11abdce194444697c"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -495,8 +537,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 10426,
-      "sha256": "74e9b81fc9be69d95f6ab566cc2a023d20654e04fc9d44ad43aefe983eb514d8"
+      "bytes": 7366,
+      "sha256": "13a7ca837de1bee2392548dd6fc9cb9aa6a62123e6181db11abdce194444697c"
     }
   ]
 }
