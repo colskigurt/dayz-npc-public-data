@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261028T051538-timing-control-audit-20261028",
-  "generatedAt": "2026-10-28T05:15:38.574744+00:00",
-  "exportedAt": "2026-10-28T05:15:38.574744+00:00",
+  "snapshotId": "snapshot-20261028T054557-descriptor-copy-20261028",
+  "generatedAt": "2026-10-28T05:45:57.102289+00:00",
+  "exportedAt": "2026-10-28T05:45:57.102289+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -25,7 +25,10 @@
     "runtime-20261028-073152",
     "runtime-20261028-074826",
     "runtime-20261028-075329",
-    "runtime-20261028-075921"
+    "runtime-20261028-075921",
+    "runtime-20261028-142406",
+    "runtime-20261028-142846",
+    "runtime-20261028-143908"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -34,8 +37,8 @@
     "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-28T05:15:38.574744+00:00",
-    "staleAfter": "2026-10-29T05:15:38.574744+00:00",
+    "sourceUpdatedAt": "2026-10-28T05:45:57.102289+00:00",
+    "staleAfter": "2026-10-29T05:45:57.102289+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -52,18 +55,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 15345,
-      "sha256": "00213238dcab02b140dce0472ef251df5d4a08ada719f069b4a1b72d31d7c390"
+      "bytes": 24365,
+      "sha256": "6c6cc79a19679ea2b308cc4ea15376c273f9a96db7febe210e78f464e6b72678"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 186372,
-      "sha256": "4a988d7b50b001e7366c5a0a2bd0270ff524c70c2cfc1afa9f697299c3c971a7"
+      "bytes": 217920,
+      "sha256": "08f77279f4ed48ddc489bbb80713b0d237c27717d4a3da5f9310aaf03d33a33a"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 186368,
-      "sha256": "f0c6c52af75bf750f686a98b555df8e258ca1d00b621123406348b91e4366e35"
+      "bytes": 217916,
+      "sha256": "cb5ccf813a6fcee1eb6cd85fbdc7a0f7ad90ea4bb779dec83609920eded6c77c"
     },
     {
       "path": "api/public/schema.json",
@@ -191,14 +194,29 @@
       "sha256": "6c2b806d54764bc8acc78c283e9920e75358167434165edfe6d76975cbb66f22"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261028T054557-descriptor-copy-20261028/experiments.json",
+      "bytes": 217920,
+      "sha256": "08f77279f4ed48ddc489bbb80713b0d237c27717d4a3da5f9310aaf03d33a33a"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261028T054557-descriptor-copy-20261028/metrics.json",
+      "bytes": 217916,
+      "sha256": "cb5ccf813a6fcee1eb6cd85fbdc7a0f7ad90ea4bb779dec83609920eded6c77c"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261028T054557-descriptor-copy-20261028/status.json",
+      "bytes": 217915,
+      "sha256": "5ed97aa8d218d78941a715804026c5eeaadcd371d677c0b0b1097e119c2697ad"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 186367,
-      "sha256": "6c2b806d54764bc8acc78c283e9920e75358167434165edfe6d76975cbb66f22"
+      "bytes": 217915,
+      "sha256": "5ed97aa8d218d78941a715804026c5eeaadcd371d677c0b0b1097e119c2697ad"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 725,
-      "sha256": "8624ab35fce853fc0d509be6bb4531ff5d47cf45c72c1ea9dbf99343d9779faa"
+      "bytes": 715,
+      "sha256": "cd9e4c53c255cdc6ce312ffa8cc9064d915eaf92e3a51faa3e7fe6114759ea29"
     },
     {
       "path": "data/experiments/admission-latch-runtime-20261028.json",
@@ -214,6 +232,11 @@
       "path": "data/experiments/animation.json",
       "bytes": 41757,
       "sha256": "f0672b82be399206940d8be1b8d5af73e08bcc8fa0bbb5ea379c9b0632e93148"
+    },
+    {
+      "path": "data/experiments/descriptor-copy-20261028.json",
+      "bytes": 50222,
+      "sha256": "2675ceb3ee40cdd8039d00f982c0f97709668b4c2c774cd102112765dc32a639"
     },
     {
       "path": "data/experiments/escape-shadow-visible-20261028.json",
@@ -351,14 +374,34 @@
       "sha256": "17753957324a6f938bdd1493d69111000e948b314a8423dc675726e4405d5eff"
     },
     {
+      "path": "downloads/checkpoints/2026-10-28_144519_839877+0900_npc-descriptor-copy-control.txt",
+      "bytes": 10075,
+      "sha256": "aa4b0bbf48ea5331a00a162525467bd1c9aba6c92cffa6d7887813095f2af5d2"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-28_144519_839877+0900_npc-descriptor-copy-control_evidence.txt",
+      "bytes": 24113,
+      "sha256": "962c77ed49b2b6a6f9d56c4053b81cf2034921fa971d3266522f80f155795f8c"
+    },
+    {
       "path": "README.md",
-      "bytes": 6319,
-      "sha256": "641480195e294a21b889c34a490891bbfbb93f1a39596cfbf98c6b88836c4d37"
+      "bytes": 6773,
+      "sha256": "0d47bad8484e4c901519b556eef077c6879b34126cb5d6a2116c1538d0f59c28"
     },
     {
       "path": "reports/accessibility-20261028.md",
       "bytes": 8467,
       "sha256": "7879f96329fbb2c0f4ee32a1c1b6ac49dd45ba0d1bfa218d93a7e31412a4dc4b"
+    },
+    {
+      "path": "reports/history/pre-descriptor-copy-20261028-latest.md",
+      "bytes": 9151,
+      "sha256": "0a3e76afc878199aef534814d457ce6820e2133b9ed791c3b1392f8d57e18cc9"
+    },
+    {
+      "path": "reports/history/pre-descriptor-copy-20261028-operations-latest.md",
+      "bytes": 9151,
+      "sha256": "0a3e76afc878199aef534814d457ce6820e2133b9ed791c3b1392f8d57e18cc9"
     },
     {
       "path": "reports/history/pre-escape-shadow-visible-20261028-latest.md",
@@ -442,8 +485,8 @@
     },
     {
       "path": "reports/latest.md",
-      "bytes": 9151,
-      "sha256": "0a3e76afc878199aef534814d457ce6820e2133b9ed791c3b1392f8d57e18cc9"
+      "bytes": 10426,
+      "sha256": "74e9b81fc9be69d95f6ab566cc2a023d20654e04fc9d44ad43aefe983eb514d8"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -452,8 +495,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 9151,
-      "sha256": "0a3e76afc878199aef534814d457ce6820e2133b9ed791c3b1392f8d57e18cc9"
+      "bytes": 10426,
+      "sha256": "74e9b81fc9be69d95f6ab566cc2a023d20654e04fc9d44ad43aefe983eb514d8"
     }
   ]
 }

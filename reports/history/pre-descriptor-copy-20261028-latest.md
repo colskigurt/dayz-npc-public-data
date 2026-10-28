@@ -1,0 +1,71 @@
+# 애니메이션 속도 제어 범위·복사본 진단 준비와 사용자 시험 예외
+
+애니메이션 속도 제어 범위·복사본 진단 준비와 사용자 시험 예외
+
+작성: 2026-10-28T14:15:21.759774+09:00
+
+1. 작업 목표
+
+사용자의 “약0.5배 느리게 느껴진다”는 피드백을 반영해 평균 재생 속도 저하와 프레임별 끊김을 구분한다. 지원 API·Workbench 그래프의 제어 범위를 확인하고, 필요한 반사실적 진단의 원본 비변경·입력 복사 수명부터 작은 별도 프로그램에서 시험한다. 정상 낙하·복구와 B8FB 파이프라인을 보존한다.
+
+2. 실제 수행
+
+설치 scripts.pbo의 비압축 C 멤버3056개를 ASCII byte 검색해 관련 선언7개, 선택 API 원문·배포 그래프·기존 LOD/rate 반복 결과를 대조했다. 한 멤버의 UTF8 주석 오류 때문에 파일을 누락하지 않고 바이트 검색으로 보존했다. 입력 해시/메타데이터를2회 검사했다. REA 세션은 닫힌 상태를 확인했으며, 과거 Ghidra900초 timeout과 동일한 전체 분석은 다시 시작하지 않았다. 이번 native 명령 확인은 기존 해시 고정 PE/Capstone 경로이며 REA decompiler 성공으로 보고하지 않는다.
+
+실제 표시 함수의 non-null buffer 분기와 helper를 direct branch traversal로 조사했다. outer24명령과 helper106명령, 각각3/4개 callsite를 보존했다. outer는 descriptor 분자/버퍼+0x38의 비율을 계산해 helper와 후속 함수에 전달한다. helper는 descriptor+0x10의 출력 포인터가 가리키는 원본 출력 공간에 값을 쓴다. descriptor 포인터 자체의 callee 전달/장기 보관은 이 제한된 slice에서 관측되지 않았지만 전체 프로그램의 pointer escape 부재는 증명하지 않았다.
+
+별도 source-reviewed C 프로그램을 빌드했다.24-byte descriptor를 복사해 두 스레드에서 각6000회 호출하고, baseline→copy값변경→copy값변경→baseline 순서4회 실행했다. 모든 복사 slot은 프로세스 종료까지 유지하며 반환 hook과 slot 재사용은 없다. native 게임에는 적용하지 않았다.
+
+사용자 수동 시험084118도 종료 후 검토했다. 준비 시점8개체·HUD·로그 생성을 확인했지만, 이후08:42:37에 ConstructionToolInfoIcon.SetTemperature NULL 참조 VM 예외가 기록됐다.08:43:48 RPT 종료 완료는 확인했으나 안전 retire marker는 없으므로 정상 회귀 통과로 인정하지 않는다. crash 이름 파일만으로 native 접근위반이나 자동 강제 종료를 추론하지 않는다.
+
+3. 측정 결과
+
+지원 제어 조사:3056 C 멤버, 관련 proto 선언7개, 기존 graph binding3개(RequestedState/TraversalReleased/LandingConfirmed). 독립 표시 보간 구간 setter는 확보하지 못했다. 전체 엔진에 없다는 부재 증명은 아니다.
+
+작은 프로그램:4/4실행,48000/48000호출, 실행당 두 스레드6000/6000, 원본 descriptor/버퍼 sentinel 검사 오류0. baseline 출력과 고정0.5 fraction 출력이 각 기대값에 맞았고 프로세스가 종료됐다. 여기서0.5는 작은 도구 검사용 비율이며 DayZ 애니메이션 배율을 설정한 결과가 아니다. DayZ ABI·동시성·포인터 수명·화면 개선·성능은 이 검사로 입증하지 않는다.
+
+사용자 시험의0번 개체에서 미션45.391~64.898초,65.405~84.972초 구간의 콜백 누적시간/미션시간은0.6946/0.7104였다. 초기5.013~24.714초는0.9517였다. 상태·request가 변하는 수동시험이며 직접 clip phase나 정확한0.5배 측정이 아니다. 이후 사망이 섞인 구간도 근거 JSON에 남겼다.0.5배 설정·새 평균-rate 보정 모드는 넣지 않았다.
+
+새8/64 자동 기능 회귀·p50/p95/p99·애니메이션 영상 품질·64 비용 귀속은 미실행이다. 콜백 비율을 frame-time/graph phase로 바꿔 쓰지 않는다. 기존64 최종64/64와 고지대13/14/43·EGRESS_STALL1,20ms p95 미달은 유지한다.
+
+4. 원인 분석
+
+확인: 기존 고정run A/B/B/A는 평균 source-proxy 시간 약0.645/0.649→1.000을 만들었지만 정규화 진행 잔차는약24ms로 남았다. 평균 시간과 표시 균등성을 별도 축으로 다뤄야 한다. 사용자 수동시험도 콜백 시간이 느린 구간을 보였으나 원인 단독 증거는 아니다.
+
+새 단서: DayZPlayerUtils.DebugOverrideAnimationSpeed(string,float)는 total animation speed override 선언이고 주석 예시는 player ANM이다. Creature 적용·공유 자산 범위·복원·release 가용성은 미검증이며 독립 보간 제어가 아니다. IEntity.Animate는 XOB/입자 일반 갱신 설명으로, 활성 Creature graph에 매프레임 호출해도 된다는 근거가 없다. SetAnimationPhase는 config의 named source이며 graph clip phase setter로 확인되지 않았다. Creature instance duration을 Human blendingTime과 같은 의미로 단정하지 않는다.
+
+추정: 표시 비율을 실제 평가 주기에 맞춰 비교하면 끊김의 기여 경계를 더 구분할 수 있다. 아직 DayZ에서 복사 descriptor 무효과 대조도 실행하지 않아 개선책으로 채택하지 않는다. fixture 통과는 제한된 준비 증거다. UI NULL 참조와 속도 저하의 인과 관계도 미확인이다.
+
+5. 검증 수준
+
+진단 성공: 지원 API/배포 graph의 경계와 제한된 native 호출/출력 흐름 조사.
+반복 검증 완료: 자체 작은 프로그램의4회48000호출 복사본·원본 보존 검사만 해당한다.
+회귀 미수용: 사용자8명 시험은 나중에 UI VM 예외가 있어 clean pass가 아니다.
+미실행: DayZ 복사본 무효과 대조/주기 후보, 지원 API 후보 실제 적용, 애니메이션 품질 개선, 새8→64 회귀·성능 귀속.
+최종 수용 미완료. 기능·시각·성능은 독립 판정한다.
+
+6. 변경 사항
+
+설치본 읽기 감사 스크립트, hash-bound native direct-flow slice, 자체 descriptor C fixture와 Frida 검증기를 추가했다. 새 사용자용 launcher는 기존 compile/hash/3개 PBO 서명 guard를 재사용해 고유 profile·8명 manual pursuit·자동 종료OFF로 준비했고 운영 서버는 건드리지 않았다. B안 게시기는 실제 runtime 없는 오프라인 감사에 명시적 build provenance를 허용하도록 확장했으며 가짜 runtime/프레임 수치를 만들지 않는다.
+
+첫 fixture 빌드는 긴 비ASCII 경로의 MSBuild FileTracker 실패를 보였고 새 ASCII fixture 폴더에서 configure가 통과했다. 다음 컴파일은 C11 미지정으로 _Static_assert를 인식하지 못해 C_STANDARD11을 명시했다. 실패 build 디렉토리·CMake 기록과 console 이력은 보존한다. 성공 binary/source hashes는 결과 JSON에 있다.
+
+PBO·그래프·모델·AI 동작 코드는 변경하지 않았다. B8FB/453D/0C6E 유지, 사용자 실행 전 기존3 PBO 서명 검증 성공. 새 빌드·재서명은 없다. 원시 로그와 과거 보고서는 덮어쓰지 않았다.
+
+7. 원시 증거
+
+지원 API 감사 JSON/MD와 재현 스크립트, descriptor-callees/direct-flow JSON, 작은 프로그램 C/CMake·실행4회 결과·source/binary hash, 사용자084118 launch/control/로그/RPT/closure-review·속도 피드백을 보존했다. 사용자 시험은 예외가 있어 clean experiment profile 검증에 넣지 않고 실패 근거로만 연결한다. 공개 패킷은 집계·자체 fixture 함수와 한계를 발췌하며 내부 원시 로그·로컬 경로·프로세스 식별자·설치 자산은 공개하지 않는다.
+
+8. 잔여 문제
+
+다음 순서:1)고정run 단일개체에서 원본과24-byte 동일 복사본의 무효과 대조를 먼저 검증.2)검증된 graph generation을 이용해 실제 평가 간격과 표시 비율을 읽고 원본 상태를 유지하는 한요인 대조 설계.3)평균 속도/균등 증가 잔차/원본 FK fit/실제 영상이 함께 맞는지 순서교차 반복. graph 재생과 표시 양쪽을 고치지 못하면 수정으로 채택하지 않는다. 기존 mean-rate 후보 반복이나 무조건2배/LOD0는 적용하지 않는다.
+
+UI 예외는 설치 script SetTemperature/clear 호출의 null widget 여부와 실제 대상 원인을 별도 조사한다. 예외를 감추는 광범위한 vanilla UI patch는 넣지 않는다.64 기능/비용은 별도 실험을 유지하며, 순수 animation1/64·활성static64·활성animated64 조건과 native/GPU/GC 미계측 범위를 구분해야 한다.
+
+원본 보고서 ID: 2026-10-28_141521_759774+0900_npc-timing-control-audit.md
+원본 SHA-256: a151cfd63b30734cfdd68f6aed130e518f52661ebbae798feba4fe8d013768b2
+이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
+
+선정 함수·대표 기록: [검토 패킷](../downloads/checkpoints/2026-10-28_141521_759774+0900_npc-timing-control-audit_evidence.txt)
+
+[이전 기능 분석](../downloads/admission-report.txt) · [이전 애니메이션 분석](../downloads/animation-report.txt)
