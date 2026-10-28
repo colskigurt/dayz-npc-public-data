@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261028T191735-period-fraction-20261029",
-  "generatedAt": "2026-10-28T19:17:35.469496+00:00",
-  "exportedAt": "2026-10-28T19:17:35.469496+00:00",
+  "snapshotId": "snapshot-20261028T192749-period-visible-20261029",
+  "generatedAt": "2026-10-28T19:27:49.190192+00:00",
+  "exportedAt": "2026-10-28T19:27:49.190192+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -39,8 +39,8 @@
     "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-28T19:17:35.469496+00:00",
-    "staleAfter": "2026-10-29T19:17:35.469496+00:00",
+    "sourceUpdatedAt": "2026-10-28T19:27:49.190192+00:00",
+    "staleAfter": "2026-10-29T19:27:49.190192+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -57,18 +57,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 16654,
-      "sha256": "12d761ed07870cc0cbe085a9462738feb4460ce0afd9e2d321e2f83f651d9891"
+      "bytes": 26890,
+      "sha256": "191fe373572fce7f6ddaeb83d8720274c11940152250f3ed454e148a567ebf7d"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 226232,
-      "sha256": "b0400eda1d12a2a98e6ccac18f4c5c2a4bd1e4db7fc1fc2bae67868e7862ec56"
+      "bytes": 227873,
+      "sha256": "fa29d0c7fb6d1555f3abd7dcb3e8715988c0689879faef52011dd26b8f4d223c"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 226228,
-      "sha256": "33de57de56e3e25ffc5dd235280e871039b700f1093fbbda28de1a8a5f11203e"
+      "bytes": 227869,
+      "sha256": "77029e64be2f530ba1275ba4e439fbcf4c3d5284916b02985057a8a451c00f46"
     },
     {
       "path": "api/public/schema.json",
@@ -226,14 +226,29 @@
       "sha256": "ee4e5887d1cf83bd6c7f031f44e356de5a4bf38f765d3eea0902abf9c237049b"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261028T192749-period-visible-20261029/experiments.json",
+      "bytes": 227873,
+      "sha256": "fa29d0c7fb6d1555f3abd7dcb3e8715988c0689879faef52011dd26b8f4d223c"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261028T192749-period-visible-20261029/metrics.json",
+      "bytes": 227869,
+      "sha256": "77029e64be2f530ba1275ba4e439fbcf4c3d5284916b02985057a8a451c00f46"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261028T192749-period-visible-20261029/status.json",
+      "bytes": 227868,
+      "sha256": "4ba84ee149d4e5de6090dada286e588d79879b8d40762f6e30bbcc92052f8c20"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 226227,
-      "sha256": "ee4e5887d1cf83bd6c7f031f44e356de5a4bf38f765d3eea0902abf9c237049b"
+      "bytes": 227868,
+      "sha256": "4ba84ee149d4e5de6090dada286e588d79879b8d40762f6e30bbcc92052f8c20"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 715,
-      "sha256": "8c9f6e8201af3fe8b0b2ee9120f9ee3515141b9d0106f247efee5720e1f67ee6"
+      "bytes": 713,
+      "sha256": "24b11b3c322d3728f50c959ff4efe1d1ac2c850985d4f5088f33b14869987206"
     },
     {
       "path": "data/experiments/admission-latch-runtime-20261028.json",
@@ -274,6 +289,11 @@
       "path": "data/experiments/period-fraction-20261029.json",
       "bytes": 35526,
       "sha256": "36d1a0f9b384497ef7c174c615474af2af83e229e28bde5ffbe70f34b2f5a5d7"
+    },
+    {
+      "path": "data/experiments/period-visible-20261029.json",
+      "bytes": 44474,
+      "sha256": "98944266b097c6dd684d086b2c2288ca7dace334fdfd9ed46df57ec91aa5553f"
     },
     {
       "path": "data/experiments/pose-buffer-continuity-20261028.json",
@@ -416,9 +436,19 @@
       "sha256": "a8a83dc7ac695d2e5895061e7d25bcaad0e56acefaa700b611133f1d7105231f"
     },
     {
+      "path": "downloads/checkpoints/2026-10-29_042719_349624+0900_npc-period-visible-boundary.txt",
+      "bytes": 7721,
+      "sha256": "d4e010e372409ece211115b856c4737eeb67b13bebfefa21385111a0d42bc07e"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-29_042719_349624+0900_npc-period-visible-boundary_evidence.txt",
+      "bytes": 26639,
+      "sha256": "6bf16bbb842dbd104d90b5b1f1d42690397417db62af63b0cfd87493b660411e"
+    },
+    {
       "path": "README.md",
-      "bytes": 7163,
-      "sha256": "0933c44db661930d93e091d4ab4f8530e5295a5742428e2de9eccc57fec19092"
+      "bytes": 7575,
+      "sha256": "e4cbe1169971249b3f25dae63d06c9d306b1979f5ccfaef4eada172e6d23e8b9"
     },
     {
       "path": "reports/accessibility-20261028.md",
@@ -476,6 +506,16 @@
       "sha256": "74e9b81fc9be69d95f6ab566cc2a023d20654e04fc9d44ad43aefe983eb514d8"
     },
     {
+      "path": "reports/history/pre-period-visible-20261029-latest.md",
+      "bytes": 7366,
+      "sha256": "13a7ca837de1bee2392548dd6fc9cb9aa6a62123e6181db11abdce194444697c"
+    },
+    {
+      "path": "reports/history/pre-period-visible-20261029-operations-latest.md",
+      "bytes": 7366,
+      "sha256": "13a7ca837de1bee2392548dd6fc9cb9aa6a62123e6181db11abdce194444697c"
+    },
+    {
       "path": "reports/history/pre-pose-buffer-continuity-20261028-latest.md",
       "bytes": 8723,
       "sha256": "30346226fdd7fd6a5ca2363e9da6aed42cb50b56a38b195025e2579bfaee8425"
@@ -527,8 +567,8 @@
     },
     {
       "path": "reports/latest.md",
-      "bytes": 7366,
-      "sha256": "13a7ca837de1bee2392548dd6fc9cb9aa6a62123e6181db11abdce194444697c"
+      "bytes": 8070,
+      "sha256": "b930359088033ca06c1c948f45652da1e0688e909b9cfc9819f60c89bd2ea193"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -537,8 +577,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 7366,
-      "sha256": "13a7ca837de1bee2392548dd6fc9cb9aa6a62123e6181db11abdce194444697c"
+      "bytes": 8070,
+      "sha256": "b930359088033ca06c1c948f45652da1e0688e909b9cfc9819f60c89bd2ea193"
     }
   ]
 }

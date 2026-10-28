@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261028T191735-period-fraction-20261029",
-  "generatedAt": "2026-10-28T19:17:35.469496+00:00",
+  "snapshotId": "snapshot-20261028T192749-period-visible-20261029",
+  "generatedAt": "2026-10-28T19:27:49.190192+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -5849,7 +5849,7 @@
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "Existing64 final64/64; HIGH_HOLD missing13/14/43, EGRESS_STALL1, climb-end0. Not rerun in this animation batch."
+      "description": "Existing64 final64/64; HIGH_HOLD missing13/14/43, EGRESS_STALL1, climb-end0. No new functional run."
     },
     {
       "id": "matched-repeats",
@@ -6088,23 +6088,41 @@
       "uri": "/data/experiments/period-fraction-20261029.json",
       "sha256": "36d1a0f9b384497ef7c174c615474af2af83e229e28bde5ffbe70f34b2f5a5d7",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "period-visible-20261029-report",
+      "uri": "/downloads/checkpoints/2026-10-29_042719_349624+0900_npc-period-visible-boundary.txt",
+      "sha256": "d4e010e372409ece211115b856c4737eeb67b13bebfefa21385111a0d42bc07e",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "period-visible-20261029-review",
+      "uri": "/downloads/checkpoints/2026-10-29_042719_349624+0900_npc-period-visible-boundary_evidence.txt",
+      "sha256": "6bf16bbb842dbd104d90b5b1f1d42690397417db62af63b0cfd87493b660411e",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "period-visible-20261029-json",
+      "uri": "/data/experiments/period-visible-20261029.json",
+      "sha256": "98944266b097c6dd684d086b2c2288ca7dace334fdfd9ed46df57ec91aa5553f",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-28T19:17:35.469496+00:00",
-    "staleAfter": "2026-10-29T19:17:35.469496+00:00",
+    "sourceUpdatedAt": "2026-10-28T19:27:49.190192+00:00",
+    "staleAfter": "2026-10-29T19:27:49.190192+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261028T191735-period-fraction-20261029",
-      "generatedAt": "2026-10-28T19:17:35.469496+00:00",
-      "sourceUpdatedAt": "2026-10-28T19:17:35.469496+00:00"
+      "snapshotId": "snapshot-20261028T192749-period-visible-20261029",
+      "generatedAt": "2026-10-28T19:27:49.190192+00:00",
+      "sourceUpdatedAt": "2026-10-28T19:27:49.190192+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-28T19:17:35.469496+00:00",
+      "at": "2026-10-28T19:27:49.190192+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -6119,7 +6137,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261028T191735-period-fraction-20261029/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261028T192749-period-visible-20261029/"
   },
   "experiments": [
     {
@@ -6576,6 +6594,30 @@
         "matched-repeats"
       ],
       "replication": "One normal baseline followed by one numeric candidate; reverse/repeated effects pending."
+    },
+    {
+      "id": "period-visible-20261029",
+      "title": "표시 비율 후보 거부 — 같은6초 영상의 세대경계 점프",
+      "track": "animation",
+      "sourceRunId": [
+        "runtime-20261029-040750",
+        "runtime-20261029-041212"
+      ],
+      "buildId": [
+        "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [],
+      "evidenceReferences": [
+        "period-visible-20261029-report",
+        "period-visible-20261029-review",
+        "period-visible-20261029-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "Offline equal6s reanalysis of previous one baseline/one candidate, not new independent runs."
     }
   ],
   "kind": "experiments"
