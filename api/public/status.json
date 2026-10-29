@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T034646-actor43-wide-handoff-20261029",
-  "generatedAt": "2026-10-29T03:46:46.824911+00:00",
+  "snapshotId": "snapshot-20261029T041731-actor43-owner-runtime-20261029",
+  "generatedAt": "2026-10-29T04:17:31.266450+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -31,13 +31,17 @@
     "runtime-20261029-040750",
     "runtime-20261029-041212",
     "runtime-20261029-043225",
-    "runtime-20261029-044620"
+    "runtime-20261029-044620",
+    "runtime-20261029-130025",
+    "runtime-20261029-130645"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
     "3BE027E66461D9015ACAEEAE6109C5626CE93DBFF363EB0F5B0ACE8F7F5DB6CF",
     "3ECCE4F140E8A5A7F1081D657EEFA3EB875717D9050E0554F23C94E1ABE941EC",
-    "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185"
+    "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "82CCB0EAB79FDFA90D84CEAA4C10A3C23E2742D9480CE229C0579F0D6945151E",
+    "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F"
   ],
   "verificationStatus": {
     "diagnosisSucceeded": true,
@@ -6025,13 +6029,693 @@
       },
       "repetitions": 1,
       "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "finalArrivals",
+      "sourceRunId": "runtime-20261029-130025",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 8,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.008,
+          104.903
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "missingHighFollow",
+      "sourceRunId": "runtime-20261029-130025",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 0,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.008,
+          104.903
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "fallsResumed",
+      "sourceRunId": "runtime-20261029-130025",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 10,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.008,
+          104.903
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionArrived",
+      "sourceRunId": "runtime-20261029-130025",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.008,
+          104.903
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionIntentChanged",
+      "sourceRunId": "runtime-20261029-130025",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.008,
+          104.903
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "egressViolations",
+      "sourceRunId": "runtime-20261029-130025",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 0,
+      "unit": "violations",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.008,
+          104.903
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "climbEndFailures",
+      "sourceRunId": "runtime-20261029-130025",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.008,
+          104.903
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261029-130025",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 20.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.008,
+          104.903
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261029-130025",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 31.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.008,
+          104.903
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261029-130025",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 33.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.008,
+          104.903
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "finalArrivals",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 64,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.012,
+          104.989
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "missingHighFollow",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 24,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.012,
+          104.989
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "fallsResumed",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 56,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.012,
+          104.989
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionArrived",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 16,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.012,
+          104.989
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionIntentChanged",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.012,
+          104.989
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "egressViolations",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 0,
+      "unit": "violations",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.012,
+          104.989
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "climbEndFailures",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.012,
+          104.989
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 79.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.012,
+          104.989
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 194.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.012,
+          104.989
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 271.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.012,
+          104.989
+        ],
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer"
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
     }
   ],
   "blockers": [
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "Existing64 final64/64; HIGH_HOLD missing13/14/43 and actor43 EGRESS_STALL remain. New frozen-pose executor: wide_on4 premature handoffs +1stall,0safe handoffs. Not a live64 regression."
+      "description": "8agents final8/8 highMissing[] labels{'CONTACT_SUPPORT_LOST': 1, 'ENTRY_ALIGNMENT_NO_PROGRESS': 1} climbEnd0 egressViolations0; 64agents final64/64 highMissing[2, 4, 6, 8, 11, 12, 17, 23, 27, 31, 34, 39, 43, 44, 50, 51, 53, 54, 55, 56, 57, 58, 59, 61] labels{'CONTACT_SUPPORT_LOST': 14} climbEnd0 egressViolations0"
     },
     {
       "id": "matched-repeats",
@@ -6342,23 +7026,41 @@
       "uri": "/data/experiments/actor43-wide-handoff-20261029.json",
       "sha256": "a7cbb71f4150329db028f245ccb7206fb2b2b92a8fc974d1a0f8a5ff8c2393c4",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "actor43-owner-runtime-20261029-report",
+      "uri": "/downloads/checkpoints/2026-10-29_131512_255107+0900_npc-actor43-owner-runtime.txt",
+      "sha256": "bc5bd362016541dbb27a47ca50ed4cf37df4652994aa79247201a5374cc58492",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "actor43-owner-runtime-20261029-review",
+      "uri": "/downloads/checkpoints/2026-10-29_131512_255107+0900_npc-actor43-owner-runtime_evidence.txt",
+      "sha256": "250ee377a75e750d6e1be8d977fa9adc9ee9b400b30d49669444e59f13ba8419",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "actor43-owner-runtime-20261029-json",
+      "uri": "/data/experiments/actor43-owner-runtime-20261029.json",
+      "sha256": "d11621ab3ec1876aac7e6c918f1e1b9c27e2f0123d2fd2cfd1f33f61bf09ec53",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T03:46:46.824911+00:00",
-    "staleAfter": "2026-10-30T03:46:46.824911+00:00",
+    "sourceUpdatedAt": "2026-10-29T04:17:31.266450+00:00",
+    "staleAfter": "2026-10-30T04:17:31.266450+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261029T034646-actor43-wide-handoff-20261029",
-      "generatedAt": "2026-10-29T03:46:46.824911+00:00",
-      "sourceUpdatedAt": "2026-10-29T03:46:46.824911+00:00"
+      "snapshotId": "snapshot-20261029T041731-actor43-owner-runtime-20261029",
+      "generatedAt": "2026-10-29T04:17:31.266450+00:00",
+      "sourceUpdatedAt": "2026-10-29T04:17:31.266450+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-29T03:46:46.824911+00:00",
+      "at": "2026-10-29T04:17:31.266450+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -6373,7 +7075,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261029T034646-actor43-wide-handoff-20261029/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261029T041731-actor43-owner-runtime-20261029/"
   },
   "experiments": [
     {
@@ -6936,6 +7638,41 @@
         "matched-repeats"
       ],
       "replication": "One same-build paired frozen-pose planning and one10-case blocked-walk executor diagnostic; no repeated live effect test."
+    },
+    {
+      "id": "actor43-owner-runtime-20261029",
+      "title": "확장 복구 종료 검사와 실제8/64명 시험: 고지대 미도달·성능 미수용",
+      "track": "functional",
+      "sourceRunId": [
+        "runtime-20261029-130025",
+        "runtime-20261029-130645"
+      ],
+      "buildId": [
+        "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [
+        {
+          "count": 8,
+          "seconds": 300,
+          "repetitions": 1
+        },
+        {
+          "count": 64,
+          "seconds": 300,
+          "repetitions": 1
+        }
+      ],
+      "evidenceReferences": [
+        "actor43-owner-runtime-20261029-report",
+        "actor43-owner-runtime-20261029-review",
+        "actor43-owner-runtime-20261029-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "Recorded-pose contact-consistent executor on two builds; actual full300s8/64 each one run."
     }
   ],
   "kind": "status"

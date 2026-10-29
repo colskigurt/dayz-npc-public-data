@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T034646-actor43-wide-handoff-20261029",
-  "generatedAt": "2026-10-29T03:46:46.824911+00:00",
-  "exportedAt": "2026-10-29T03:46:46.824911+00:00",
+  "snapshotId": "snapshot-20261029T041731-actor43-owner-runtime-20261029",
+  "generatedAt": "2026-10-29T04:17:31.266450+00:00",
+  "exportedAt": "2026-10-29T04:17:31.266450+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -32,17 +32,21 @@
     "runtime-20261029-040750",
     "runtime-20261029-041212",
     "runtime-20261029-043225",
-    "runtime-20261029-044620"
+    "runtime-20261029-044620",
+    "runtime-20261029-130025",
+    "runtime-20261029-130645"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
     "3BE027E66461D9015ACAEEAE6109C5626CE93DBFF363EB0F5B0ACE8F7F5DB6CF",
     "3ECCE4F140E8A5A7F1081D657EEFA3EB875717D9050E0554F23C94E1ABE941EC",
-    "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185"
+    "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "82CCB0EAB79FDFA90D84CEAA4C10A3C23E2742D9480CE229C0579F0D6945151E",
+    "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T03:46:46.824911+00:00",
-    "staleAfter": "2026-10-30T03:46:46.824911+00:00",
+    "sourceUpdatedAt": "2026-10-29T04:17:31.266450+00:00",
+    "staleAfter": "2026-10-30T04:17:31.266450+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -59,18 +63,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 19081,
-      "sha256": "18f18fc185f0a87f2ca7ca2d2ae03f8616145b968441101663c95c9c0db99b38"
+      "bytes": 16106,
+      "sha256": "d8536755efc33f74342ca1e4e08d605058a7b74c3585dfb74691e0a1d23f4c68"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 239817,
-      "sha256": "ce1bd6fd7fc47f1e9579ec2d2fc40271341db224a520a4be3253e464a3fe5d57"
+      "bytes": 267227,
+      "sha256": "7c81989adfddc62fa9fae90d002f6a1717456b8ee5e00750c6ef989a8c32e24a"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 239813,
-      "sha256": "86c1d1e4c9d7698e3d9c2ad2e714eb58da58e3b765d4203f8e9460b32fa84f33"
+      "bytes": 267223,
+      "sha256": "b9511cae0a6c6c02103b0c301012f1f0fb7c72cacb93c432c226ee20e6c1aa06"
     },
     {
       "path": "api/public/schema.json",
@@ -288,14 +292,34 @@
       "sha256": "fdc3aa0ce7a3fb7fe45a61e9017fdeff3717dcde3c62143362e096c8874e9592"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261029T041731-actor43-owner-runtime-20261029/experiments.json",
+      "bytes": 267227,
+      "sha256": "7c81989adfddc62fa9fae90d002f6a1717456b8ee5e00750c6ef989a8c32e24a"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T041731-actor43-owner-runtime-20261029/metrics.json",
+      "bytes": 267223,
+      "sha256": "b9511cae0a6c6c02103b0c301012f1f0fb7c72cacb93c432c226ee20e6c1aa06"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T041731-actor43-owner-runtime-20261029/status.json",
+      "bytes": 267222,
+      "sha256": "7a6e410850a6d51f570ee3afbd54d2f7073c2e8fbf99beec67cacd4551e3fe0e"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 239812,
-      "sha256": "fdc3aa0ce7a3fb7fe45a61e9017fdeff3717dcde3c62143362e096c8874e9592"
+      "bytes": 267222,
+      "sha256": "7a6e410850a6d51f570ee3afbd54d2f7073c2e8fbf99beec67cacd4551e3fe0e"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 725,
-      "sha256": "3c10ec6943d213c56b389f01d37db1a7b34177253647fec56340f80f84a7fef3"
+      "bytes": 727,
+      "sha256": "43b3a237169cde4301895c795d6f3fe0a15ed122e522e89143f0592377cd51c2"
+    },
+    {
+      "path": "data/experiments/actor43-owner-runtime-20261029.json",
+      "bytes": 39061,
+      "sha256": "d11621ab3ec1876aac7e6c918f1e1b9c27e2f0123d2fd2cfd1f33f61bf09ec53"
     },
     {
       "path": "data/experiments/actor43-wide-handoff-20261029.json",
@@ -538,14 +562,34 @@
       "sha256": "e6c89a9efa5b369db7c1c20d19307dd20917be1820f7278599a0ff92bf4ff00c"
     },
     {
+      "path": "downloads/checkpoints/2026-10-29_131512_255107+0900_npc-actor43-owner-runtime.txt",
+      "bytes": 7784,
+      "sha256": "bc5bd362016541dbb27a47ca50ed4cf37df4652994aa79247201a5374cc58492"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-29_131512_255107+0900_npc-actor43-owner-runtime_evidence.txt",
+      "bytes": 15848,
+      "sha256": "250ee377a75e750d6e1be8d977fa9adc9ee9b400b30d49669444e59f13ba8419"
+    },
+    {
       "path": "README.md",
-      "bytes": 8719,
-      "sha256": "031f2e95e5ad5931070d2a6f1cd40913a8cd6978d2cb5ee28c0a72dd390554ff"
+      "bytes": 9139,
+      "sha256": "9ad4481333ba1539ba67ecde75108ef70bc0bd50d207db31124c11953c31dc5a"
     },
     {
       "path": "reports/accessibility-20261028.md",
       "bytes": 8467,
       "sha256": "7879f96329fbb2c0f4ee32a1c1b6ac49dd45ba0d1bfa218d93a7e31412a4dc4b"
+    },
+    {
+      "path": "reports/history/pre-actor43-owner-runtime-20261029-latest.md",
+      "bytes": 8027,
+      "sha256": "12c3b0272e8a0111365811dd09e1e2dd0eb8b510de807c971d22c49f601f0025"
+    },
+    {
+      "path": "reports/history/pre-actor43-owner-runtime-20261029-operations-latest.md",
+      "bytes": 8027,
+      "sha256": "12c3b0272e8a0111365811dd09e1e2dd0eb8b510de807c971d22c49f601f0025"
     },
     {
       "path": "reports/history/pre-actor43-wide-handoff-20261029-latest.md",
@@ -689,8 +733,8 @@
     },
     {
       "path": "reports/latest.md",
-      "bytes": 8027,
-      "sha256": "12c3b0272e8a0111365811dd09e1e2dd0eb8b510de807c971d22c49f601f0025"
+      "bytes": 8149,
+      "sha256": "adbe5f2464e89f2d18c1290ce2ef4188a325a8dbac9639da9d4075aac367fa88"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -699,8 +743,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 8027,
-      "sha256": "12c3b0272e8a0111365811dd09e1e2dd0eb8b510de807c971d22c49f601f0025"
+      "bytes": 8149,
+      "sha256": "adbe5f2464e89f2d18c1290ce2ef4188a325a8dbac9639da9d4075aac367fa88"
     }
   ]
 }

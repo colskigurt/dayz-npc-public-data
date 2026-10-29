@@ -1,0 +1,294 @@
+{
+  "id": "actor43-owner-runtime-20261029",
+  "track": "functional",
+  "title": "확장 복구 종료 검사와 실제8/64명 시험: 고지대 미도달·성능 미수용",
+  "date": "2026-10-29",
+  "status": "recovery_owner_diagnosis_and_runtime_regression_full_goal_not_accepted",
+  "sections": [
+    {
+      "number": 1,
+      "title": "작업 목표",
+      "body": "확장 복구의 목표와 기본 Egress 종료 지점을 일치시키고 안전한 끝점·접촉 검사를 통과한 뒤 FOLLOW로 돌아가도록 수정한다. 정상 밀림·낙하·착지·재등반은 유지한다. 기능 회귀, 시각 품질, 성능 목표를 별도로 판정한다."
+    },
+    {
+      "number": 2,
+      "title": "실제 수행",
+      "body": "82CC 원본 후보를 보존하고 ECWideRecovery 소유권을 추가했다. 4.5m 대체 경로를 선택한 뒤에는 기본 Walk와 짧은 복구 helper가 같은 끝점을 향한다. bounded lease가 끝나도 이 소유권은 유지되고, 실제 phase가 바뀔 때 해제된다. CompleteEgress는 해당 복구에 한해 LandingSpace·같은 area·전체 본 끝점·계획 여유·SolveContacts를 모두 확인한다. 기본 플래그 OFF, 다른 이동, 정상 낙하 경로는 유지했다.\n\n처음 owner 시험은 조기 종료를 막았지만 끝점 부근에서 반복 이동했다. 조사 결과 기록 포즈를 쓰는 JointWorldPoint와 달리 SolveContactsInternal은 Leader.GetBonePositionMS를 직접 읽었다. 두 검사에 서로 다른 포즈를 공급한 시험 불일치였다. 게임의 접촉 검사를 제거하지 않고 시험 body에서만 원본 함수의 포즈 getter 한 곳을 기록값으로 대체했다. PBO 내 함수와 원문 일치, getter 교체의 정확한 역변환, 나머지 검사 보존을 검증했다. 이 보정 전의 반복 이동은 NPC live 결함으로 확정하지 않는다.\n\n일치시킨 고정 포즈 시험을 두 빌드에서 실행했다. 이후 8명150초 예비 시험을 정상 종료했다. 예비 시험은 FINAL_HOLD 시작170초 전에 끝났으므로 전체 회귀로 인정하지 않고, 같은 씬의 전체300초 8명과64명 시험을 수행했다. 기존 자동 시나리오가 플레이어를 이동시켰으며 사용자 수동 시험은 아니다. Computer Use는 게임 창 활성화와 화면 확인에 사용했다. 운영 서버는 변경하지 않았다."
+    },
+    {
+      "number": 3,
+      "title": "측정 결과",
+      "body": "고정 포즈: baseline5 stall. wide ON은4개 안전한 handoff·조기 handoff0·경로 없는1개 stall이었다. 성공4개는 각 약9.2초, 실제4.329m,3개 bounded lease로 이동했다. 최대 lease 약1.48341m, 최대 단일 이동 약0.03028m였다. 이는 고정 포즈와 항상 차단되는 Native Walk 대역 조건이며 실제 군집 회귀를 대신하지 않는다.\n\n|실행|개체|최종 도착|고지대 미도달|복귀한 낙하|climb-end 실패|실패 라벨|p50/p95/p99 ms|\n|---|---:|---:|---|---:|---:|---|---|\n|runtime-20261029-130025|8|8/8|[]|10|0|{'CONTACT_SUPPORT_LOST': 1, 'ENTRY_ALIGNMENT_NO_PROGRESS': 1}|20.0/31.0/33.0|\n|runtime-20261029-130645|64|64/64|[2, 4, 6, 8, 11, 12, 17, 23, 27, 31, 34, 39, 43, 44, 50, 51, 53, 54, 55, 56, 57, 58, 59, 61]|56|0|{'CONTACT_SUPPORT_LOST': 14}|79.0/194.0/271.0|\n\n- runtime-20261029-130025: 새 handoff 분기 journal={}, 개체=[].\n- runtime-20261029-130645: 새 handoff 분기 journal={}, 개체=[].\n분기 journal이 빈 경우 해당 실행은 새 handoff 분기를 검증한 증거가 아니다. 최종 도착과 분기 실행 커버리지를 따로 판정한다.\n프레임 수치는 활성 창의 미션 dt이며 상세 포즈·상태 계측을 포함한다. GPU/Present, 실제 표시 포즈의 시간적 연속성, 할당/GC, 평가 그래프와 렌더 비용의 분리 귀속은 이번에 측정하지 않았다. 과거 다른 mission·계측·길이의 결과와 단순 비율로 최적화 효과를 주장하지 않는다. 20ms p95는 목표다."
+    },
+    {
+      "number": 4,
+      "title": "원인 분석",
+      "body": "확인: 이전 확장 후보는 기본 authored EgressGoal과 다른 ECGoal을 실행하면서 authored 지점 도착만으로 handoff할 수 있었다. 소유권과 목표를 일치시킨 시험에서는 안전 검사를 통과한 뒤 handoff했고, 불가능한 포즈는 실패로 남았다. 실패를 성공 라벨로 바꾸거나 접촉 검사를 완화하지 않았다.\n\n추정 및 제한: 실제 군집에서 이 분기가 얼마나 실행됐는지는 각 실행의 wide-handoff journal과 state trace를 함께 확인해야 한다. 전체 최종 도착, 중간 고지대 도달, 개별 복구 분기 성공은 서로 다른 증거다. 한 번의 좋은 결과나 개선된 최종 도착만으로 모든 혼잡이 해결됐다고 판단하지 않는다.\n\n반증/거부: 최종 접촉 검사를 빼면 된다는 해석은 채택하지 않았다. 보정 전 시험의 다른 포즈 입력을 원본 runtime 결함으로 간주하지 않는다. 150초 예비 시험은 전체 최종 도착 근거에서 제외한다."
+    },
+    {
+      "number": 5,
+      "title": "검증 수준",
+      "body": "진단 성공: 목표 불일치와 시험 포즈 불일치를 분리했다. 회귀 통과 범위는 표와 각 실행의 계약 위반·미종료·실패 라벨을 따르며 전체 성공으로 합치지 않는다. 고정 입력에서의 재현 확인과 실제 군집의 반복 검증은 구분한다. 최종 수용: 기능·시각·성능 전체 목표는 아직 미수용이다."
+    },
+    {
+      "number": 6,
+      "title": "변경 사항",
+      "body": "subset_motion_contracts.c: 확장 복구 소유권, 공통 목표, 엄격한 handoff guard와 원래5초 무진행 실패 계약을 추가했다. helper의0.04m step,1.5m/6초 lease, 매 단계 지지·접촉 검사를 유지했다. handoff 판정은 별도 native-egress-wide-handoff.tsv로 기록해 기존 bounded lease journal에 중복 종료를 만들지 않는다. 애니메이션 배속·보간·갱신 방식은 변경하지 않았다.\n\n시험 producer는 기록 포즈와 최종 접촉 입력의 일치 증명을 추가했다. launcher는 명시적 wide switch와 별도 candidate runtime validation을 지원한다. 기존 mission compile 결과를 덮어쓰지 않고 같은 mission 사본의 별도 컴파일 기록을 만들었다. BB45A140 계열 PBO의 빌드·자동 서명·서명 검증은 성공했고 실행 전3개 의존 PBO 서명도 검증했다. 개인 키는 배포·공개 자료에 포함하지 않았다."
+    },
+    {
+      "number": 7,
+      "title": "원시 증거",
+      "body": "actor43 owner/owner-consistent/owner-repeat의 mission·compile·TSV·분석, 보존된82CC/726C 배포물 및 producer를 해시로 연결한다. 실제 실행 ID는 표에 있다. 각 launch, 상태 전환, 샘플, 후보·복구 journal, 포즈 cadence, 분석 결과와 당시 source를 보존했다. 예비150초 실행도 별도 보존했다.\n\n안전 종료 후 기존 publish 도구로 기존 해시·JSON·metadata 안정성을 재검증한다. 공개 패킷에는 선정 집계·자체 수정 함수·검증 범위만 제공하고 전체 trace/영상·내부 경로·프로세스 정보·게임 자산은 공개하지 않는다."
+    },
+    {
+      "number": 8,
+      "title": "잔여 문제",
+      "body": "실제 군집의 미종료·고지대 미도달·stall·climb-end 실패와 wide 분기 커버리지를 이번 표 및 원시 증거로 다음 실험에 연결한다. 같은 조건의 OFF/ON 반복과 순서 교차 없이 효과를 확정하지 않는다. 실패가 남으면 해당 개체의 같은 generation에서 계획·접촉·실행·handoff를 연결한다.\n\n애니메이션이 약0.5배처럼 느리다는 사용자 관찰은 유지한다. 이전 두 실행 graph 진행은 약0.646/0.659배였으나 이번 기능 회귀는 그 시각 품질·원속도를 측정하지 않았다. 지원되는 표시/그래프 시간 전달 수정과64명 비용 귀속은 별도 실험으로 계속한다. 새 보간이나 임의 배속은 적용하지 않았다."
+    }
+  ],
+  "runs": [
+    {
+      "runId": "runtime-20261029-130025",
+      "count": 8,
+      "durationSeconds": 300,
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "terminalArrivals": 8,
+      "unresolvedTerminalAgents": [],
+      "missingHighFollow": [],
+      "highHoldWindow": [
+        45.008,
+        104.903
+      ],
+      "fallsLandedAndResumed": 10,
+      "climbEndFailures": 0,
+      "physicalTransitionsMatched": true,
+      "physicalTransitions": 116,
+      "failureLabels": {
+        "CONTACT_SUPPORT_LOST": 1,
+        "ENTRY_ALIGNMENT_NO_PROGRESS": 1
+      },
+      "admissionOutcomes": {},
+      "wideHandoffOutcomes": {},
+      "wideHandoffEntities": [],
+      "admissionViolations": [],
+      "egressOutcomes": {
+        "DONE": 1
+      },
+      "egressViolations": [],
+      "foregroundMissionFrameMs": {
+        "samples": 14739,
+        "p50": 20.0,
+        "p95": 31.0,
+        "p99": 33.0
+      },
+      "foregroundFraction": 1.0,
+      "repetitions": 1,
+      "stageMissionFrameMs": {
+        "LOW_HOLD": {
+          "samples": 1996,
+          "p50": 20.0,
+          "p95": 31.0,
+          "p99": 34.0,
+          "maximum": 47.0
+        },
+        "HIGH_HOLD": {
+          "samples": 3000,
+          "p50": 20.0,
+          "p95": 31.0,
+          "p99": 33.0,
+          "maximum": 38.0
+        },
+        "GROUND_HOLD": {
+          "samples": 1500,
+          "p50": 20.0,
+          "p95": 31.0,
+          "p99": 33.0,
+          "maximum": 40.0
+        },
+        "GROUND_EAST": {
+          "samples": 495,
+          "p50": 20.0,
+          "p95": 32.0,
+          "p99": 35.0,
+          "maximum": 38.0
+        },
+        "GROUND_EAST_HOLD": {
+          "samples": 745,
+          "p50": 20.0,
+          "p95": 31.0,
+          "p99": 33.0,
+          "maximum": 35.0
+        },
+        "GROUND_NORTH": {
+          "samples": 499,
+          "p50": 20.0,
+          "p95": 31.0,
+          "p99": 34.0,
+          "maximum": 45.0
+        },
+        "FINAL_HOLD": {
+          "samples": 6496,
+          "p50": 20.0,
+          "p95": 31.0,
+          "p99": 33.0,
+          "maximum": 39.0
+        }
+      },
+      "measurementConditions": {
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "admissionReapproach": true,
+        "durationSeconds": 300,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer",
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution"
+      }
+    },
+    {
+      "runId": "runtime-20261029-130645",
+      "count": 64,
+      "durationSeconds": 300,
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "terminalArrivals": 64,
+      "unresolvedTerminalAgents": [],
+      "missingHighFollow": [
+        2,
+        4,
+        6,
+        8,
+        11,
+        12,
+        17,
+        23,
+        27,
+        31,
+        34,
+        39,
+        43,
+        44,
+        50,
+        51,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        61
+      ],
+      "highHoldWindow": [
+        45.012,
+        104.989
+      ],
+      "fallsLandedAndResumed": 56,
+      "climbEndFailures": 0,
+      "physicalTransitionsMatched": true,
+      "physicalTransitions": 646,
+      "failureLabels": {
+        "CONTACT_SUPPORT_LOST": 14
+      },
+      "admissionOutcomes": {
+        "ARRIVED": 16,
+        "EXPIRED": 1
+      },
+      "wideHandoffOutcomes": {},
+      "wideHandoffEntities": [],
+      "admissionViolations": [],
+      "egressOutcomes": {
+        "DONE": 5,
+        "PHASE_HANDOFF:FOLLOW": 1,
+        "EXPIRED": 1
+      },
+      "egressViolations": [],
+      "foregroundMissionFrameMs": {
+        "samples": 3132,
+        "p50": 79.0,
+        "p95": 194.0,
+        "p99": 271.0
+      },
+      "foregroundFraction": 1.0,
+      "repetitions": 1,
+      "stageMissionFrameMs": {
+        "LOW_HOLD": {
+          "samples": 445,
+          "p50": 82.0,
+          "p95": 153.0,
+          "p99": 190.0,
+          "maximum": 215.0
+        },
+        "HIGH_HOLD": {
+          "samples": 576,
+          "p50": 92.0,
+          "p95": 181.0,
+          "p99": 270.0,
+          "maximum": 300.0
+        },
+        "GROUND_HOLD": {
+          "samples": 218,
+          "p50": 130.0,
+          "p95": 218.0,
+          "p99": 240.0,
+          "maximum": 271.0
+        },
+        "GROUND_EAST": {
+          "samples": 62,
+          "p50": 119.0,
+          "p95": 300.0,
+          "p99": 300.0,
+          "maximum": 300.0
+        },
+        "GROUND_EAST_HOLD": {
+          "samples": 124,
+          "p50": 101.0,
+          "p95": 222.0,
+          "p99": 258.0,
+          "maximum": 282.0
+        },
+        "GROUND_NORTH": {
+          "samples": 63,
+          "p50": 112.0,
+          "p95": 300.0,
+          "p99": 300.0,
+          "maximum": 300.0
+        },
+        "FINAL_HOLD": {
+          "samples": 1638,
+          "p50": 65.0,
+          "p95": 184.0,
+          "p99": 218.0,
+          "maximum": 284.0
+        }
+      },
+      "measurementConditions": {
+        "egressWideExit": true,
+        "egressFirstStep": true,
+        "egressNearFirstStep": true,
+        "endpointLookahead": false,
+        "terrainContactOwner": true,
+        "admissionReapproach": true,
+        "durationSeconds": 300,
+        "renderPartsPerAgent": 8,
+        "ai": true,
+        "movement": true,
+        "visualSmoothnessMeasured": false,
+        "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer",
+        "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution"
+      }
+    }
+  ],
+  "report": "확장 복구 소유권·종료 검사 수정과 실제 8→64명 회귀\n\n작성: 2026-10-29T13:15:12.255107+09:00\n\n1. 작업 목표\n\n확장 복구의 목표와 기본 Egress 종료 지점을 일치시키고 안전한 끝점·접촉 검사를 통과한 뒤 FOLLOW로 돌아가도록 수정한다. 정상 밀림·낙하·착지·재등반은 유지한다. 기능 회귀, 시각 품질, 성능 목표를 별도로 판정한다.\n\n2. 실제 수행\n\n82CC 원본 후보를 보존하고 ECWideRecovery 소유권을 추가했다. 4.5m 대체 경로를 선택한 뒤에는 기본 Walk와 짧은 복구 helper가 같은 끝점을 향한다. bounded lease가 끝나도 이 소유권은 유지되고, 실제 phase가 바뀔 때 해제된다. CompleteEgress는 해당 복구에 한해 LandingSpace·같은 area·전체 본 끝점·계획 여유·SolveContacts를 모두 확인한다. 기본 플래그 OFF, 다른 이동, 정상 낙하 경로는 유지했다.\n\n처음 owner 시험은 조기 종료를 막았지만 끝점 부근에서 반복 이동했다. 조사 결과 기록 포즈를 쓰는 JointWorldPoint와 달리 SolveContactsInternal은 Leader.GetBonePositionMS를 직접 읽었다. 두 검사에 서로 다른 포즈를 공급한 시험 불일치였다. 게임의 접촉 검사를 제거하지 않고 시험 body에서만 원본 함수의 포즈 getter 한 곳을 기록값으로 대체했다. PBO 내 함수와 원문 일치, getter 교체의 정확한 역변환, 나머지 검사 보존을 검증했다. 이 보정 전의 반복 이동은 NPC live 결함으로 확정하지 않는다.\n\n일치시킨 고정 포즈 시험을 두 빌드에서 실행했다. 이후 8명150초 예비 시험을 정상 종료했다. 예비 시험은 FINAL_HOLD 시작170초 전에 끝났으므로 전체 회귀로 인정하지 않고, 같은 씬의 전체300초 8명과64명 시험을 수행했다. 기존 자동 시나리오가 플레이어를 이동시켰으며 사용자 수동 시험은 아니다. Computer Use는 게임 창 활성화와 화면 확인에 사용했다. 운영 서버는 변경하지 않았다.\n\n3. 측정 결과\n\n고정 포즈: baseline5 stall. wide ON은4개 안전한 handoff·조기 handoff0·경로 없는1개 stall이었다. 성공4개는 각 약9.2초, 실제4.329m,3개 bounded lease로 이동했다. 최대 lease 약1.48341m, 최대 단일 이동 약0.03028m였다. 이는 고정 포즈와 항상 차단되는 Native Walk 대역 조건이며 실제 군집 회귀를 대신하지 않는다.\n\n|실행|개체|최종 도착|고지대 미도달|복귀한 낙하|climb-end 실패|실패 라벨|p50/p95/p99 ms|\n|---|---:|---:|---|---:|---:|---|---|\n|runtime-20261029-130025|8|8/8|[]|10|0|{'CONTACT_SUPPORT_LOST': 1, 'ENTRY_ALIGNMENT_NO_PROGRESS': 1}|20.0/31.0/33.0|\n|runtime-20261029-130645|64|64/64|[2, 4, 6, 8, 11, 12, 17, 23, 27, 31, 34, 39, 43, 44, 50, 51, 53, 54, 55, 56, 57, 58, 59, 61]|56|0|{'CONTACT_SUPPORT_LOST': 14}|79.0/194.0/271.0|\n\n- runtime-20261029-130025: 새 handoff 분기 journal={}, 개체=[].\n- runtime-20261029-130645: 새 handoff 분기 journal={}, 개체=[].\n분기 journal이 빈 경우 해당 실행은 새 handoff 분기를 검증한 증거가 아니다. 최종 도착과 분기 실행 커버리지를 따로 판정한다.\n프레임 수치는 활성 창의 미션 dt이며 상세 포즈·상태 계측을 포함한다. GPU/Present, 실제 표시 포즈의 시간적 연속성, 할당/GC, 평가 그래프와 렌더 비용의 분리 귀속은 이번에 측정하지 않았다. 과거 다른 mission·계측·길이의 결과와 단순 비율로 최적화 효과를 주장하지 않는다. 20ms p95는 목표다.\n\n4. 원인 분석\n\n확인: 이전 확장 후보는 기본 authored EgressGoal과 다른 ECGoal을 실행하면서 authored 지점 도착만으로 handoff할 수 있었다. 소유권과 목표를 일치시킨 시험에서는 안전 검사를 통과한 뒤 handoff했고, 불가능한 포즈는 실패로 남았다. 실패를 성공 라벨로 바꾸거나 접촉 검사를 완화하지 않았다.\n\n추정 및 제한: 실제 군집에서 이 분기가 얼마나 실행됐는지는 각 실행의 wide-handoff journal과 state trace를 함께 확인해야 한다. 전체 최종 도착, 중간 고지대 도달, 개별 복구 분기 성공은 서로 다른 증거다. 한 번의 좋은 결과나 개선된 최종 도착만으로 모든 혼잡이 해결됐다고 판단하지 않는다.\n\n반증/거부: 최종 접촉 검사를 빼면 된다는 해석은 채택하지 않았다. 보정 전 시험의 다른 포즈 입력을 원본 runtime 결함으로 간주하지 않는다. 150초 예비 시험은 전체 최종 도착 근거에서 제외한다.\n\n5. 검증 수준\n\n진단 성공: 목표 불일치와 시험 포즈 불일치를 분리했다. 회귀 통과 범위는 표와 각 실행의 계약 위반·미종료·실패 라벨을 따르며 전체 성공으로 합치지 않는다. 고정 입력에서의 재현 확인과 실제 군집의 반복 검증은 구분한다. 최종 수용: 기능·시각·성능 전체 목표는 아직 미수용이다.\n\n6. 변경 사항\n\nsubset_motion_contracts.c: 확장 복구 소유권, 공통 목표, 엄격한 handoff guard와 원래5초 무진행 실패 계약을 추가했다. helper의0.04m step,1.5m/6초 lease, 매 단계 지지·접촉 검사를 유지했다. handoff 판정은 별도 native-egress-wide-handoff.tsv로 기록해 기존 bounded lease journal에 중복 종료를 만들지 않는다. 애니메이션 배속·보간·갱신 방식은 변경하지 않았다.\n\n시험 producer는 기록 포즈와 최종 접촉 입력의 일치 증명을 추가했다. launcher는 명시적 wide switch와 별도 candidate runtime validation을 지원한다. 기존 mission compile 결과를 덮어쓰지 않고 같은 mission 사본의 별도 컴파일 기록을 만들었다. BB45A140 계열 PBO의 빌드·자동 서명·서명 검증은 성공했고 실행 전3개 의존 PBO 서명도 검증했다. 개인 키는 배포·공개 자료에 포함하지 않았다.\n\n7. 원시 증거\n\nactor43 owner/owner-consistent/owner-repeat의 mission·compile·TSV·분석, 보존된82CC/726C 배포물 및 producer를 해시로 연결한다. 실제 실행 ID는 표에 있다. 각 launch, 상태 전환, 샘플, 후보·복구 journal, 포즈 cadence, 분석 결과와 당시 source를 보존했다. 예비150초 실행도 별도 보존했다.\n\n안전 종료 후 기존 publish 도구로 기존 해시·JSON·metadata 안정성을 재검증한다. 공개 패킷에는 선정 집계·자체 수정 함수·검증 범위만 제공하고 전체 trace/영상·내부 경로·프로세스 정보·게임 자산은 공개하지 않는다.\n\n8. 잔여 문제\n\n실제 군집의 미종료·고지대 미도달·stall·climb-end 실패와 wide 분기 커버리지를 이번 표 및 원시 증거로 다음 실험에 연결한다. 같은 조건의 OFF/ON 반복과 순서 교차 없이 효과를 확정하지 않는다. 실패가 남으면 해당 개체의 같은 generation에서 계획·접촉·실행·handoff를 연결한다.\n\n애니메이션이 약0.5배처럼 느리다는 사용자 관찰은 유지한다. 이전 두 실행 graph 진행은 약0.646/0.659배였으나 이번 기능 회귀는 그 시각 품질·원속도를 측정하지 않았다. 지원되는 표시/그래프 시간 전달 수정과64명 비용 귀속은 별도 실험으로 계속한다. 새 보간이나 임의 배속은 적용하지 않았다.\n\n원본 보고서 ID: 2026-10-29_131512_255107+0900_npc-actor43-owner-runtime.md\n원본 SHA-256: 5a14e0d3e470c75faf59efdb0e9242d446337aa47706dd628587e8613c328610\n이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.\n",
+  "reviewPacket": "확장 복구 소유권·종료 검사 수정과 실제 8→64명 회귀\n\n작성: 2026-10-29T13:15:12.255107+09:00\n\n1. 작업 목표\n\n확장 복구의 목표와 기본 Egress 종료 지점을 일치시키고 안전한 끝점·접촉 검사를 통과한 뒤 FOLLOW로 돌아가도록 수정한다. 정상 밀림·낙하·착지·재등반은 유지한다. 기능 회귀, 시각 품질, 성능 목표를 별도로 판정한다.\n\n2. 실제 수행\n\n82CC 원본 후보를 보존하고 ECWideRecovery 소유권을 추가했다. 4.5m 대체 경로를 선택한 뒤에는 기본 Walk와 짧은 복구 helper가 같은 끝점을 향한다. bounded lease가 끝나도 이 소유권은 유지되고, 실제 phase가 바뀔 때 해제된다. CompleteEgress는 해당 복구에 한해 LandingSpace·같은 area·전체 본 끝점·계획 여유·SolveContacts를 모두 확인한다. 기본 플래그 OFF, 다른 이동, 정상 낙하 경로는 유지했다.\n\n처음 owner 시험은 조기 종료를 막았지만 끝점 부근에서 반복 이동했다. 조사 결과 기록 포즈를 쓰는 JointWorldPoint와 달리 SolveContactsInternal은 Leader.GetBonePositionMS를 직접 읽었다. 두 검사에 서로 다른 포즈를 공급한 시험 불일치였다. 게임의 접촉 검사를 제거하지 않고 시험 body에서만 원본 함수의 포즈 getter 한 곳을 기록값으로 대체했다. PBO 내 함수와 원문 일치, getter 교체의 정확한 역변환, 나머지 검사 보존을 검증했다. 이 보정 전의 반복 이동은 NPC live 결함으로 확정하지 않는다.\n\n일치시킨 고정 포즈 시험을 두 빌드에서 실행했다. 이후 8명150초 예비 시험을 정상 종료했다. 예비 시험은 FINAL_HOLD 시작170초 전에 끝났으므로 전체 회귀로 인정하지 않고, 같은 씬의 전체300초 8명과64명 시험을 수행했다. 기존 자동 시나리오가 플레이어를 이동시켰으며 사용자 수동 시험은 아니다. Computer Use는 게임 창 활성화와 화면 확인에 사용했다. 운영 서버는 변경하지 않았다.\n\n3. 측정 결과\n\n고정 포즈: baseline5 stall. wide ON은4개 안전한 handoff·조기 handoff0·경로 없는1개 stall이었다. 성공4개는 각 약9.2초, 실제4.329m,3개 bounded lease로 이동했다. 최대 lease 약1.48341m, 최대 단일 이동 약0.03028m였다. 이는 고정 포즈와 항상 차단되는 Native Walk 대역 조건이며 실제 군집 회귀를 대신하지 않는다.\n\n|실행|개체|최종 도착|고지대 미도달|복귀한 낙하|climb-end 실패|실패 라벨|p50/p95/p99 ms|\n|---|---:|---:|---|---:|---:|---|---|\n|runtime-20261029-130025|8|8/8|[]|10|0|{'CONTACT_SUPPORT_LOST': 1, 'ENTRY_ALIGNMENT_NO_PROGRESS': 1}|20.0/31.0/33.0|\n|runtime-20261029-130645|64|64/64|[2, 4, 6, 8, 11, 12, 17, 23, 27, 31, 34, 39, 43, 44, 50, 51, 53, 54, 55, 56, 57, 58, 59, 61]|56|0|{'CONTACT_SUPPORT_LOST': 14}|79.0/194.0/271.0|\n\n- runtime-20261029-130025: 새 handoff 분기 journal={}, 개체=[].\n- runtime-20261029-130645: 새 handoff 분기 journal={}, 개체=[].\n분기 journal이 빈 경우 해당 실행은 새 handoff 분기를 검증한 증거가 아니다. 최종 도착과 분기 실행 커버리지를 따로 판정한다.\n프레임 수치는 활성 창의 미션 dt이며 상세 포즈·상태 계측을 포함한다. GPU/Present, 실제 표시 포즈의 시간적 연속성, 할당/GC, 평가 그래프와 렌더 비용의 분리 귀속은 이번에 측정하지 않았다. 과거 다른 mission·계측·길이의 결과와 단순 비율로 최적화 효과를 주장하지 않는다. 20ms p95는 목표다.\n\n4. 원인 분석\n\n확인: 이전 확장 후보는 기본 authored EgressGoal과 다른 ECGoal을 실행하면서 authored 지점 도착만으로 handoff할 수 있었다. 소유권과 목표를 일치시킨 시험에서는 안전 검사를 통과한 뒤 handoff했고, 불가능한 포즈는 실패로 남았다. 실패를 성공 라벨로 바꾸거나 접촉 검사를 완화하지 않았다.\n\n추정 및 제한: 실제 군집에서 이 분기가 얼마나 실행됐는지는 각 실행의 wide-handoff journal과 state trace를 함께 확인해야 한다. 전체 최종 도착, 중간 고지대 도달, 개별 복구 분기 성공은 서로 다른 증거다. 한 번의 좋은 결과나 개선된 최종 도착만으로 모든 혼잡이 해결됐다고 판단하지 않는다.\n\n반증/거부: 최종 접촉 검사를 빼면 된다는 해석은 채택하지 않았다. 보정 전 시험의 다른 포즈 입력을 원본 runtime 결함으로 간주하지 않는다. 150초 예비 시험은 전체 최종 도착 근거에서 제외한다.\n\n5. 검증 수준\n\n진단 성공: 목표 불일치와 시험 포즈 불일치를 분리했다. 회귀 통과 범위는 표와 각 실행의 계약 위반·미종료·실패 라벨을 따르며 전체 성공으로 합치지 않는다. 고정 입력에서의 재현 확인과 실제 군집의 반복 검증은 구분한다. 최종 수용: 기능·시각·성능 전체 목표는 아직 미수용이다.\n\n6. 변경 사항\n\nsubset_motion_contracts.c: 확장 복구 소유권, 공통 목표, 엄격한 handoff guard와 원래5초 무진행 실패 계약을 추가했다. helper의0.04m step,1.5m/6초 lease, 매 단계 지지·접촉 검사를 유지했다. handoff 판정은 별도 native-egress-wide-handoff.tsv로 기록해 기존 bounded lease journal에 중복 종료를 만들지 않는다. 애니메이션 배속·보간·갱신 방식은 변경하지 않았다.\n\n시험 producer는 기록 포즈와 최종 접촉 입력의 일치 증명을 추가했다. launcher는 명시적 wide switch와 별도 candidate runtime validation을 지원한다. 기존 mission compile 결과를 덮어쓰지 않고 같은 mission 사본의 별도 컴파일 기록을 만들었다. BB45A140 계열 PBO의 빌드·자동 서명·서명 검증은 성공했고 실행 전3개 의존 PBO 서명도 검증했다. 개인 키는 배포·공개 자료에 포함하지 않았다.\n\n7. 원시 증거\n\nactor43 owner/owner-consistent/owner-repeat의 mission·compile·TSV·분석, 보존된82CC/726C 배포물 및 producer를 해시로 연결한다. 실제 실행 ID는 표에 있다. 각 launch, 상태 전환, 샘플, 후보·복구 journal, 포즈 cadence, 분석 결과와 당시 source를 보존했다. 예비150초 실행도 별도 보존했다.\n\n안전 종료 후 기존 publish 도구로 기존 해시·JSON·metadata 안정성을 재검증한다. 공개 패킷에는 선정 집계·자체 수정 함수·검증 범위만 제공하고 전체 trace/영상·내부 경로·프로세스 정보·게임 자산은 공개하지 않는다.\n\n8. 잔여 문제\n\n실제 군집의 미종료·고지대 미도달·stall·climb-end 실패와 wide 분기 커버리지를 이번 표 및 원시 증거로 다음 실험에 연결한다. 같은 조건의 OFF/ON 반복과 순서 교차 없이 효과를 확정하지 않는다. 실패가 남으면 해당 개체의 같은 generation에서 계획·접촉·실행·handoff를 연결한다.\n\n애니메이션이 약0.5배처럼 느리다는 사용자 관찰은 유지한다. 이전 두 실행 graph 진행은 약0.646/0.659배였으나 이번 기능 회귀는 그 시각 품질·원속도를 측정하지 않았다. 지원되는 표시/그래프 시간 전달 수정과64명 비용 귀속은 별도 실험으로 계속한다. 새 보간이나 임의 배속은 적용하지 않았다.\n\n원본 보고서 ID: 2026-10-29_131512_255107+0900_npc-actor43-owner-runtime.md\n원본 SHA-256: 5a14e0d3e470c75faf59efdb0e9242d446337aa47706dd628587e8613c328610\n이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.\n\nSelected full-run aggregates; not full trace\n[\n  {\n    \"runId\": \"runtime-20261029-130025\",\n    \"count\": 8,\n    \"durationSeconds\": 300,\n    \"buildId\": \"BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F\",\n    \"terminalArrivals\": 8,\n    \"missingHighFollow\": [],\n    \"highHoldWindow\": [\n      45.008,\n      104.903\n    ],\n    \"fallsLandedAndResumed\": 10,\n    \"climbEndFailures\": 0,\n    \"physicalTransitionsMatched\": true,\n    \"physicalTransitions\": 116,\n    \"failureLabels\": {\n      \"CONTACT_SUPPORT_LOST\": 1,\n      \"ENTRY_ALIGNMENT_NO_PROGRESS\": 1\n    },\n    \"admissionOutcomes\": {},\n    \"wideHandoffOutcomes\": {},\n    \"wideHandoffEntities\": [],\n    \"admissionViolations\": [],\n    \"egressOutcomes\": {\n      \"DONE\": 1\n    },\n    \"egressViolations\": [],\n    \"foregroundMissionFrameMs\": {\n      \"samples\": 14739,\n      \"p50\": 20.0,\n      \"p95\": 31.0,\n      \"p99\": 33.0\n    },\n    \"foregroundFraction\": 1.0,\n    \"repetitions\": 1,\n    \"stageMissionFrameMs\": {\n      \"LOW_HOLD\": {\n        \"samples\": 1996,\n        \"p50\": 20.0,\n        \"p95\": 31.0,\n        \"p99\": 34.0,\n        \"maximum\": 47.0\n      },\n      \"HIGH_HOLD\": {\n        \"samples\": 3000,\n        \"p50\": 20.0,\n        \"p95\": 31.0,\n        \"p99\": 33.0,\n        \"maximum\": 38.0\n      },\n      \"GROUND_HOLD\": {\n        \"samples\": 1500,\n        \"p50\": 20.0,\n        \"p95\": 31.0,\n        \"p99\": 33.0,\n        \"maximum\": 40.0\n      },\n      \"GROUND_EAST\": {\n        \"samples\": 495,\n        \"p50\": 20.0,\n        \"p95\": 32.0,\n        \"p99\": 35.0,\n        \"maximum\": 38.0\n      },\n      \"GROUND_EAST_HOLD\": {\n        \"samples\": 745,\n        \"p50\": 20.0,\n        \"p95\": 31.0,\n        \"p99\": 33.0,\n        \"maximum\": 35.0\n      },\n      \"GROUND_NORTH\": {\n        \"samples\": 499,\n        \"p50\": 20.0,\n        \"p95\": 31.0,\n        \"p99\": 34.0,\n        \"maximum\": 45.0\n      },\n      \"FINAL_HOLD\": {\n        \"samples\": 6496,\n        \"p50\": 20.0,\n        \"p95\": 31.0,\n        \"p99\": 33.0,\n        \"maximum\": 39.0\n      }\n    },\n    \"measurementConditions\": {\n      \"egressWideExit\": true,\n      \"egressFirstStep\": true,\n      \"egressNearFirstStep\": true,\n      \"endpointLookahead\": false,\n      \"terrainContactOwner\": true,\n      \"admissionReapproach\": true,\n      \"durationSeconds\": 300,\n      \"renderPartsPerAgent\": 8,\n      \"ai\": true,\n      \"movement\": true,\n      \"visualSmoothnessMeasured\": false,\n      \"frameWindow\": \"age>=5 seconds, foreground, unique part0; state-contract analyzer\",\n      \"method\": \"Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution\"\n    }\n  },\n  {\n    \"runId\": \"runtime-20261029-130645\",\n    \"count\": 64,\n    \"durationSeconds\": 300,\n    \"buildId\": \"BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F\",\n    \"terminalArrivals\": 64,\n    \"missingHighFollow\": [\n      2,\n      4,\n      6,\n      8,\n      11,\n      12,\n      17,\n      23,\n      27,\n      31,\n      34,\n      39,\n      43,\n      44,\n      50,\n      51,\n      53,\n      54,\n      55,\n      56,\n      57,\n      58,\n      59,\n      61\n    ],\n    \"highHoldWindow\": [\n      45.012,\n      104.989\n    ],\n    \"fallsLandedAndResumed\": 56,\n    \"climbEndFailures\": 0,\n    \"physicalTransitionsMatched\": true,\n    \"physicalTransitions\": 646,\n    \"failureLabels\": {\n      \"CONTACT_SUPPORT_LOST\": 14\n    },\n    \"admissionOutcomes\": {\n      \"ARRIVED\": 16,\n      \"EXPIRED\": 1\n    },\n    \"wideHandoffOutcomes\": {},\n    \"wideHandoffEntities\": [],\n    \"admissionViolations\": [],\n    \"egressOutcomes\": {\n      \"DONE\": 5,\n      \"PHASE_HANDOFF:FOLLOW\": 1,\n      \"EXPIRED\": 1\n    },\n    \"egressViolations\": [],\n    \"foregroundMissionFrameMs\": {\n      \"samples\": 3132,\n      \"p50\": 79.0,\n      \"p95\": 194.0,\n      \"p99\": 271.0\n    },\n    \"foregroundFraction\": 1.0,\n    \"repetitions\": 1,\n    \"stageMissionFrameMs\": {\n      \"LOW_HOLD\": {\n        \"samples\": 445,\n        \"p50\": 82.0,\n        \"p95\": 153.0,\n        \"p99\": 190.0,\n        \"maximum\": 215.0\n      },\n      \"HIGH_HOLD\": {\n        \"samples\": 576,\n        \"p50\": 92.0,\n        \"p95\": 181.0,\n        \"p99\": 270.0,\n        \"maximum\": 300.0\n      },\n      \"GROUND_HOLD\": {\n        \"samples\": 218,\n        \"p50\": 130.0,\n        \"p95\": 218.0,\n        \"p99\": 240.0,\n        \"maximum\": 271.0\n      },\n      \"GROUND_EAST\": {\n        \"samples\": 62,\n        \"p50\": 119.0,\n        \"p95\": 300.0,\n        \"p99\": 300.0,\n        \"maximum\": 300.0\n      },\n      \"GROUND_EAST_HOLD\": {\n        \"samples\": 124,\n        \"p50\": 101.0,\n        \"p95\": 222.0,\n        \"p99\": 258.0,\n        \"maximum\": 282.0\n      },\n      \"GROUND_NORTH\": {\n        \"samples\": 63,\n        \"p50\": 112.0,\n        \"p95\": 300.0,\n        \"p99\": 300.0,\n        \"maximum\": 300.0\n      },\n      \"FINAL_HOLD\": {\n        \"samples\": 1638,\n        \"p50\": 65.0,\n        \"p95\": 184.0,\n        \"p99\": 218.0,\n        \"maximum\": 284.0\n      }\n    },\n    \"measurementConditions\": {\n      \"egressWideExit\": true,\n      \"egressFirstStep\": true,\n      \"egressNearFirstStep\": true,\n      \"endpointLookahead\": false,\n      \"terrainContactOwner\": true,\n      \"admissionReapproach\": true,\n      \"durationSeconds\": 300,\n      \"renderPartsPerAgent\": 8,\n      \"ai\": true,\n      \"movement\": true,\n      \"visualSmoothnessMeasured\": false,\n      \"frameWindow\": \"age>=5 seconds, foreground, unique part0; state-contract analyzer\",\n      \"method\": \"Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution\"\n    }\n  }\n]\n\nFrozen pose contact input proof\n{\n  \"sourceMatchesPbo\": true,\n  \"sourceSha256\": \"eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82\",\n  \"originalMethodSha256\": \"cc95ab5a90c310a6400d528c6665c338cab89aed38580847cbf0c44909061ebe\",\n  \"restoredExactly\": true,\n  \"onlyChange\": \"Test-body contact raw pose getter uses recorded TablePose; all native acceptance gates unchanged.\"\n}\n\nOwn recovery handoff code excerpt\n    override void SetPhase(string phase)\n    {\n        if(ECActive && phase!=\"EGRESS\"){ECLog(\"PHASE_HANDOFF:\"+phase);ECActive=false;ECBlockedAt=-1;}\n        if(phase!=\"EGRESS\")ECWideRecovery=false;\n        super.SetPhase(phase);\n    }\n    override void CompleteEgress(vector support)\n    {\n        if(ECWideRecovery)\n        {\n            // A short lease expiring or the authored egress point being near\n            // does not establish clearance of the alternative recovery route.\n            vector verified;float lift;ref array<vector> contacts={};\n            string rejection;\n            if(!LandingSpace(Body.Agent.Position,verified,false))rejection=\"LANDING:\"+LandingDiagnostic;\n            else if(Fixture().Area(verified)!=Area)rejection=\"AREA\";\n            else if(!ECEndpointClear(Body.Agent.Position))rejection=\"ENDPOINT_POSE\";\n            else if(!DGBGroundRoute.SegmentClear(Body.Agent.Position,Body.Agent.Position,Body.Agent.ObstacleMin,Body.Agent.ObstacleMax))rejection=\"PLANNING_INFLATION\";\n            else if(!Body.SolveContacts(Body.Agent.Position,Body.Agent.Heading,lift,contacts))rejection=\"CONTACT:\"+Body.Reason;\n            if(rejection!=\"\")\n            {\n                ECWideLog(\"REJECTED:\"+rejection);\n                if(ECActive)ECLog(\"WIDE_HANDOFF_REJECTED\");\n                Body.Reason=\"EGRESS_WIDE_HANDOFF_BLOCKED\";\n                ECActive=false;ECNextPlan=Now();return;\n            }\n            support=verified;Body.Lift=lift;Body.Contacts.Copy(contacts);\n            ECWideLog(\"VALIDATED\");\n        }\n        super.CompleteEgress(support);\n    }\n    void ECWideLog(string status)\n    {\n        // Handoff validation is distinct from a bounded helper lease ending.\n        string path=\"$profile:native-egress-wide-handoff.tsv\";bool exists=FileExist(path);\n        FileHandle file=OpenFile(path,FileMode.APPEND);if(!file)return;\n        if(!exists)FPrintln(file,\"seconds\\tid\\tstatus\\tposition\\tgoal\\tphase\\tleaseActive\\tleaseDistance\");\n        FPrintln(file,(Now()-Body.Director.Born).ToString()+\"\\t\"+Body.Id+\"\\t\"+status+\"\\t\"+Body.Agent.Position+\"\\t\"+ECGoal+\"\\t\"+Phase+\"\\t\"+ECActive+\"\\t\"+ECDistance);\n        CloseFile(file);\n    }\n",
+  "limitations": [
+    "Single full run per population; no matched order-crossed OFF/ON repetition.",
+    "Mission frame pacing with instrumentation, not animation visible-frame or isolated performance attribution.",
+    "Initial owner probe mixed recorded and native contact poses; excluded from gameplay defect inference.",
+    "150s preliminary run excluded from final scenario acceptance."
+  ]
+}

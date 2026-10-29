@@ -1,374 +1,357 @@
 # DayZ NPC AI — 외부 세션 검토 자료
 
-Snapshot: snapshot-20261029T034646-actor43-wide-handoff-20261029
+Snapshot: snapshot-20261029T041731-actor43-owner-runtime-20261029
 
-43번 출구 복구: 범위 확장 뒤 조기 종료를 재현 — 후보 미채택
+확장 복구 소유권·종료 검사 수정과 실제 8→64명 회귀
 
-작성: 2026-10-29T12:46:24.788757+09:00
+작성: 2026-10-29T13:15:12.255107+09:00
 
 1. 작업 목표
 
-기존 64명 시험의 43번 EGRESS_STALL을 실제 기록 포즈와 코드에 연결한다. 정상 낙하·착지·재추적은 유지하고, 출구를 찾은 것과 안전하게 복구를 끝낸 것을 구분한다. 애니메이션 속도·화면 품질·64명 비용은 별도 판정한다.
+확장 복구의 목표와 기본 Egress 종료 지점을 일치시키고 안전한 끝점·접촉 검사를 통과한 뒤 FOLLOW로 돌아가도록 수정한다. 정상 밀림·낙하·착지·재등반은 유지한다. 기능 회귀, 시각 품질, 성능 목표를 별도로 판정한다.
 
 2. 실제 수행
 
-원본 runtime-20261028-063933의 43번, generation1, EGRESS 구간 5개 포즈를 정적 컨테이너 씬에 재현했다. 위치·방향·lift·idle offset과 4개 본 좌표를 고정하고 기존 LandingSpace, 발 지지, 계획 여유, 몸체 끝점, 전체 경로 및 첫 걸음 검사를 호출했다. 살아 있는 군집·플레이어·시간에 따른 애니메이션 변화는 재현하지 않았다.
+82CC 원본 후보를 보존하고 ECWideRecovery 소유권을 추가했다. 4.5m 대체 경로를 선택한 뒤에는 기본 Walk와 짧은 복구 helper가 같은 끝점을 향한다. bounded lease가 끝나도 이 소유권은 유지되고, 실제 phase가 바뀔 때 해제된다. CompleteEgress는 해당 복구에 한해 LandingSpace·같은 area·전체 본 끝점·계획 여유·SolveContacts를 모두 확인한다. 기본 플래그 OFF, 다른 이동, 정상 낙하 경로는 유지했다.
 
-탐색 4m 안에서 유효 끝점이 없음을 확인한 뒤, 기존 범위에 후보가 없을 때만 4.5m 한 링을 더 검사하는 opt-in 후보를 만들었다. 추가 링은 첫 걸음 검사를 반드시 통과해야 한다. 기존 기본값·실행 속도·1.5m 누적 이동 제한·6초 lease·접촉 검사는 유지했다. B8FB 원본 소스와 서명 배포물을 로컬에 보존했다.
+처음 owner 시험은 조기 종료를 막았지만 끝점 부근에서 반복 이동했다. 조사 결과 기록 포즈를 쓰는 JointWorldPoint와 달리 SolveContactsInternal은 Leader.GetBonePositionMS를 직접 읽었다. 두 검사에 서로 다른 포즈를 공급한 시험 불일치였다. 게임의 접촉 검사를 제거하지 않고 시험 body에서만 원본 함수의 포즈 getter 한 곳을 기록값으로 대체했다. PBO 내 함수와 원문 일치, getter 교체의 정확한 역변환, 나머지 검사 보존을 검증했다. 이 보정 전의 반복 이동은 NPC live 결함으로 확정하지 않는다.
 
-같은 새 PBO에서 wide off/on을 비교했다. 이어 실제 Egress/ECPlan/복구 이동 함수를 호출하되 Native DriveGround는 항상 차단되는 명시적 시험 대역으로 교체했다. 이는 복구 실행과 종료 순서의 격리 시험이며 실제 AI 이동 회귀가 아니다. 기존 컴파일용 loopback 서버만 실행·종료했고 클라이언트와 운영 서버는 실행·변경하지 않았다.
+일치시킨 고정 포즈 시험을 두 빌드에서 실행했다. 이후 8명150초 예비 시험을 정상 종료했다. 예비 시험은 FINAL_HOLD 시작170초 전에 끝났으므로 전체 회귀로 인정하지 않고, 같은 씬의 전체300초 8명과64명 시험을 수행했다. 기존 자동 시나리오가 플레이어를 이동시켰으며 사용자 수동 시험은 아니다. Computer Use는 게임 창 활성화와 화면 확인에 사용했다. 운영 서버는 변경하지 않았다.
 
 3. 측정 결과
 
-|검사|결과|검증 범위|
-|---|---|---|
-|원본 기록|43번 60.281초 EGRESS_STALL, 최종 ARRIVED|최종 도착이 중간 실패를 없애지 않음|
-|정적 포즈 원본 탐색|0/5 유효 계획|5개 고정 포즈|
-|4.5m 후보 전체 검사|7개 후보, 4/5 포즈에서 가능|끝점·전체 경로·첫 걸음|
-|같은 PBO off/on 계획|0/5 → 4/5|170+40+40행 무결성 확인|
-|실행 off|5/5 EGRESS_STALL|Native Walk 차단 대역 조건|
-|실행 on|4개 조기 FOLLOW, 1개 EGRESS_STALL|안전한 handoff 0/5|
-|조기 전환 시점|1.5초, 이동 약0.575m|4개 모두 fullEndpoint=false|
-|실행 trace|726행, 10개 케이스|순서·위치 연속성·0.04m step/1.5m lease 경계 검사 통과|
-|분석기 검사|6개 통과|거리 초과·누적 카운터·잘못된 성공 판정 회귀|
+고정 포즈: baseline5 stall. wide ON은4개 안전한 handoff·조기 handoff0·경로 없는1개 stall이었다. 성공4개는 각 약9.2초, 실제4.329m,3개 bounded lease로 이동했다. 최대 lease 약1.48341m, 최대 단일 이동 약0.03028m였다. 이는 고정 포즈와 항상 차단되는 Native Walk 대역 조건이며 실제 군집 회귀를 대신하지 않는다.
 
-이번 새 8/64명 기능 회귀, p50/p95/p99, AI/경로/접촉 비용, 그래프/표시 갱신, GPU/Present, 할당/GC는 미측정이다. 동기 호출의 시험 시간 인자는 실제 벽시간 성능값이 아니다. 20ms p95는 계속 목표다.
+|실행|개체|최종 도착|고지대 미도달|복귀한 낙하|climb-end 실패|실패 라벨|p50/p95/p99 ms|
+|---|---:|---:|---|---:|---:|---|---|
+|runtime-20261029-130025|8|8/8|[]|10|0|{'CONTACT_SUPPORT_LOST': 1, 'ENTRY_ALIGNMENT_NO_PROGRESS': 1}|20.0/31.0/33.0|
+|runtime-20261029-130645|64|64/64|[2, 4, 6, 8, 11, 12, 17, 23, 27, 31, 34, 39, 43, 44, 50, 51, 53, 54, 55, 56, 57, 58, 59, 61]|56|0|{'CONTACT_SUPPORT_LOST': 14}|79.0/194.0/271.0|
+
+- runtime-20261029-130025: 새 handoff 분기 journal={}, 개체=[].
+- runtime-20261029-130645: 새 handoff 분기 journal={}, 개체=[].
+분기 journal이 빈 경우 해당 실행은 새 handoff 분기를 검증한 증거가 아니다. 최종 도착과 분기 실행 커버리지를 따로 판정한다.
+프레임 수치는 활성 창의 미션 dt이며 상세 포즈·상태 계측을 포함한다. GPU/Present, 실제 표시 포즈의 시간적 연속성, 할당/GC, 평가 그래프와 렌더 비용의 분리 귀속은 이번에 측정하지 않았다. 과거 다른 mission·계측·길이의 결과와 단순 비율로 최적화 효과를 주장하지 않는다. 20ms p95는 목표다.
 
 4. 원인 분석
 
-확인된 사실: 기록 위치 주변의 완전한 출구는 4m 범위 밖에 있었다. 4.5m 후보는 여러 포즈에서 기존 물리 검사를 통과했다. 하지만 부모 Egress가 기존 EgressGoal까지 0.15m 이내라는 조건과 Floor만으로 CompleteEgress를 호출했다. 별도 복구 목표까지 도달하기 전 약0.575m 이동 지점에서 FOLLOW가 되었고 전체 끝점 검사는 여전히 실패했다.
+확인: 이전 확장 후보는 기본 authored EgressGoal과 다른 ECGoal을 실행하면서 authored 지점 도착만으로 handoff할 수 있었다. 소유권과 목표를 일치시킨 시험에서는 안전 검사를 통과한 뒤 handoff했고, 불가능한 포즈는 실패로 남았다. 실패를 성공 라벨로 바꾸거나 접촉 검사를 완화하지 않았다.
 
-추정: 확장 복구 경로의 실행 소유권과 기본 종료 조건이 일치하지 않아 실제 군집에서도 복구가 조기에 끝날 수 있다. 이것은 고정 포즈·차단 대역에서 재현한 연결이며 실제 64명에서 발생 빈도나 모든 혼잡의 원인까지 입증하지 않았다.
+추정 및 제한: 실제 군집에서 이 분기가 얼마나 실행됐는지는 각 실행의 wide-handoff journal과 state trace를 함께 확인해야 한다. 전체 최종 도착, 중간 고지대 도달, 개별 복구 분기 성공은 서로 다른 증거다. 한 번의 좋은 결과나 개선된 최종 도착만으로 모든 혼잡이 해결됐다고 판단하지 않는다.
 
-반증된 주장: 탐색 범위 확대만으로 실패가 해결됐다는 해석, Failure가 빈 문자열이면 안전한 종료라는 해석은 이번 증거와 맞지 않는다. 후보는 미채택이다. 다섯 번째 포즈는 전체 경로 검사에 막히므로 검사 완화로 성공시키지 않았다.
-
-이전 진단 코드 실패도 보존했다. unrolled replay의 누적 카운터, float 위치 반올림에 따른 lease 초과, 다중 lease 카운터 불일치, snapshot_count 실패와 externalcount의 일부 행 누락은 의미 검증에서 거부했다. 이들을 게임 엔진 결함이나 NPC 성공 증거로 보고하지 않는다. 이번 staging 도구의 중복 텍스트 검색 실패는 실행 전에 수정했으며 실패 당시에는 새 mission이 생성되지 않았다.
+반증/거부: 최종 접촉 검사를 빼면 된다는 해석은 채택하지 않았다. 보정 전 시험의 다른 포즈 입력을 원본 runtime 결함으로 간주하지 않는다. 150초 예비 시험은 전체 최종 도착 근거에서 제외한다.
 
 5. 검증 수준
 
-진단 성공: 정적 포즈에서 4m 범위 제한과 조기 종료 순서를 분리했다. 회귀 통과: 분석기 6개 검사와 새 PBO의 엔진 컴파일·기존 smoke 검사. 반복 검증 완료: 실제 live 효과에는 해당하지 않음. 최종 수용: 기능·시각·성능 모두 미수용.
-
-같은 빌드에서 off/on을 비교했지만 시간에 따라 움직이는 개체가 아니므로 8명 또는 64명 회귀 통과로 승격하지 않는다. 원본 64명 최종64/64, HIGH_HOLD 미도달13/14/43, EGRESS_STALL1, climb-end0의 기존 판정은 유지한다.
+진단 성공: 목표 불일치와 시험 포즈 불일치를 분리했다. 회귀 통과 범위는 표와 각 실행의 계약 위반·미종료·실패 라벨을 따르며 전체 성공으로 합치지 않는다. 고정 입력에서의 재현 확인과 실제 군집의 반복 검증은 구분한다. 최종 수용: 기능·시각·성능 전체 목표는 아직 미수용이다.
 
 6. 변경 사항
 
-subset_motion_contracts.c에 egress-wide-exit.flag로 제한한 4.5m 후보 링과 추가 링의 필수 첫 걸음 검사를 추가했다. 기본 실행은 이 플래그를 사용하지 않는다. 새 integration 빌드는 82CCB0EA 계열이며 전체 ID는 검토 패킷에 제공한다. 빌드·서명·서명 검증은 성공했다. 개인 키는 배포물이나 공개 자료에 포함하지 않았다. 원본 B8FB와 기존 보고서·원시 로그를 보존했다.
+subset_motion_contracts.c: 확장 복구 소유권, 공통 목표, 엄격한 handoff guard와 원래5초 무진행 실패 계약을 추가했다. helper의0.04m step,1.5m/6초 lease, 매 단계 지지·접촉 검사를 유지했다. handoff 판정은 별도 native-egress-wide-handoff.tsv로 기록해 기존 bounded lease journal에 중복 종료를 만들지 않는다. 애니메이션 배속·보간·갱신 방식은 변경하지 않았다.
 
-전용 data-driven 포즈/동일 빌드 A/B/실행 시험, 행 검증기, 실패 판정 회귀 검사를 추가했다. 애니메이션 배속·보간·본 갱신 방식은 변경하지 않았다.
+시험 producer는 기록 포즈와 최종 접촉 입력의 일치 증명을 추가했다. launcher는 명시적 wide switch와 별도 candidate runtime validation을 지원한다. 기존 mission compile 결과를 덮어쓰지 않고 같은 mission 사본의 별도 컴파일 기록을 만들었다. BB45A140 계열 PBO의 빌드·자동 서명·서명 검증은 성공했고 실행 전3개 의존 PBO 서명도 검증했다. 개인 키는 배포·공개 자료에 포함하지 않았다.
 
 7. 원시 증거
 
-원본 runtime-20261028-063933, actor43의 계획 포즈와 상태 전환을 사용했다. controlled-actor43-table, wide-ab, executor 및 거부된 이전 진단들의 mission·compile 결과·TSV·로그·분석 JSON과 당시 생산 도구를 SHA-256으로 연결했다. 새 컴파일 PID가 종료된 뒤 기존 게시 도구로 파일 안정성·JSON·기존 해시를 재검증했다.
+actor43 owner/owner-consistent/owner-repeat의 mission·compile·TSV·분석, 보존된82CC/726C 배포물 및 producer를 해시로 연결한다. 실제 실행 ID는 표에 있다. 각 launch, 상태 전환, 샘플, 후보·복구 journal, 포즈 cadence, 분석 결과와 당시 source를 보존했다. 예비150초 실행도 별도 보존했다.
 
-공개 검토 패킷에는 선정한 집계·실행 종료행·관련 자체 함수와 조건을 제공한다. 전체 원시 로그·설치 자산·PBO·내부 경로·프로세스 정보는 공개하지 않는다. 텍스트 자료로 애니메이션의 지각 품질을 판정할 수 없다.
+안전 종료 후 기존 publish 도구로 기존 해시·JSON·metadata 안정성을 재검증한다. 공개 패킷에는 선정 집계·자체 수정 함수·검증 범위만 제공하고 전체 trace/영상·내부 경로·프로세스 정보·게임 자산은 공개하지 않는다.
 
 8. 잔여 문제
 
-다음 기능 실험은 확장 복구가 시작된 후에도 안전한 끝점 검사와 실제 추적 재개가 같은 조건을 따르도록 소유권·종료 순서를 최소 수정하는 것이다. 모든 실제 이동 단계의 지지/접촉 검사와 1.5m/6초 제한을 유지하고, 제한 뒤 재계획·새 lease도 별도로 검증한다. 고정 포즈 실행과 실제 8→64명 회귀가 통과하기 전 후보를 채택하지 않는다.
+실제 군집의 미종료·고지대 미도달·stall·climb-end 실패와 wide 분기 커버리지를 이번 표 및 원시 증거로 다음 실험에 연결한다. 같은 조건의 OFF/ON 반복과 순서 교차 없이 효과를 확정하지 않는다. 실패가 남으면 해당 개체의 같은 generation에서 계획·접촉·실행·handoff를 연결한다.
 
-사용자의 “0.5배처럼 느리다”는 피드백은 검토 중이다. 이전 시간 회계 두 실행은 약0.646/0.659배 graph 진행을 보였으나 사용자가 본 장면을 정확히0.5배로 측정한 것은 아니다. 지원되는 독립 표시 갱신 제어를 아직 확보하지 못했고 단순 배속만으로는 시간 증분 불균일이 해결되지 않아 채택하지 않았다. 이 기능 실험에서 속도·시각 개선을 주장하지 않는다. 64명 비용 귀속과 사용자 인벤토리 예외도 별도 미해결이다.
+애니메이션이 약0.5배처럼 느리다는 사용자 관찰은 유지한다. 이전 두 실행 graph 진행은 약0.646/0.659배였으나 이번 기능 회귀는 그 시각 품질·원속도를 측정하지 않았다. 지원되는 표시/그래프 시간 전달 수정과64명 비용 귀속은 별도 실험으로 계속한다. 새 보간이나 임의 배속은 적용하지 않았다.
 
-원본 보고서 ID: 2026-10-29_124624_788757+0900_npc-actor43-wide-handoff.md
-원본 SHA-256: 7366e5b5c326991bfec7f63ae159af1ac7f474ae18894f7963efc7ab5b7db08c
+원본 보고서 ID: 2026-10-29_131512_255107+0900_npc-actor43-owner-runtime.md
+원본 SHA-256: 5a14e0d3e470c75faf59efdb0e9242d446337aa47706dd628587e8613c328610
 이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
 
-Selected aggregate and all10 terminal cases; not full trace
-{
-  "buildId": "82CCB0EAB79FDFA90D84CEAA4C10A3C23E2742D9480CE229C0579F0D6945151E",
-  "sourceRunId": "runtime-20261028-063933",
-  "entityId": 43,
-  "planning": {
-    "baselinePlans": 0,
-    "candidatePlans": 4,
-    "rowCounts": {
-      "actor43-table.tsv": 170,
-      "actor43-table-far.tsv": 40,
-      "actor43-table-corridor.tsv": 40
-    },
-    "snapshotsWithFullFarCandidate": 4
-  },
-  "executor": {
-    "buildId": "82CCB0EAB79FDFA90D84CEAA4C10A3C23E2742D9480CE229C0579F0D6945151E",
-    "engineCompilePassed": true,
-    "traceIntegrityPassed": true,
-    "sourceRunId": "runtime-20261028-063933",
-    "entityId": 43,
-    "rows": 726,
-    "cases": [
-      {
-        "snapshot": 0,
-        "mode": "wide_off",
-        "rows": 101,
-        "terminal": "failure:EGRESS_STALL",
-        "phase": "FOLLOW",
-        "failure": "EGRESS_STALL",
-        "fullEndpoint": false,
-        "seconds": 5.05,
-        "actualTravelMeters": 0.0,
-        "maximumStepMeters": 0,
-        "maximumLeaseMeters": 0,
-        "lastPosition": "<4511.519043, 339.181152, 10239.804688>",
-        "selectedGoal": "<0.000000, 0.000000, 0.000000>"
-      },
-      {
-        "snapshot": 0,
-        "mode": "wide_on",
-        "rows": 30,
-        "terminal": "premature_handoff",
-        "phase": "FOLLOW",
-        "failure": "",
-        "fullEndpoint": false,
-        "seconds": 1.5,
-        "actualTravelMeters": 0.5751980925857311,
-        "maximumStepMeters": 0.03027413979024116,
-        "maximumLeaseMeters": 0.575197,
-        "lastPosition": "<4511.519043, 339.179626, 10239.229492>",
-        "selectedGoal": "<4511.519043, 339.166229, 10235.304688>"
-      },
-      {
-        "snapshot": 1,
-        "mode": "wide_off",
-        "rows": 101,
-        "terminal": "failure:EGRESS_STALL",
-        "phase": "FOLLOW",
-        "failure": "EGRESS_STALL",
-        "fullEndpoint": false,
-        "seconds": 5.05,
-        "actualTravelMeters": 0.0,
-        "maximumStepMeters": 0,
-        "maximumLeaseMeters": 0,
-        "lastPosition": "<4511.519043, 339.181152, 10239.804688>",
-        "selectedGoal": "<0.000000, 0.000000, 0.000000>"
-      },
-      {
-        "snapshot": 1,
-        "mode": "wide_on",
-        "rows": 30,
-        "terminal": "premature_handoff",
-        "phase": "FOLLOW",
-        "failure": "",
-        "fullEndpoint": false,
-        "seconds": 1.5,
-        "actualTravelMeters": 0.5751980925857311,
-        "maximumStepMeters": 0.03027413979024116,
-        "maximumLeaseMeters": 0.575197,
-        "lastPosition": "<4511.519043, 339.179626, 10239.229492>",
-        "selectedGoal": "<4511.519043, 339.166229, 10235.304688>"
-      },
-      {
-        "snapshot": 2,
-        "mode": "wide_off",
-        "rows": 101,
-        "terminal": "failure:EGRESS_STALL",
-        "phase": "FOLLOW",
-        "failure": "EGRESS_STALL",
-        "fullEndpoint": false,
-        "seconds": 5.04999,
-        "actualTravelMeters": 0.0,
-        "maximumStepMeters": 0,
-        "maximumLeaseMeters": 0,
-        "lastPosition": "<4511.519043, 339.181152, 10239.804688>",
-        "selectedGoal": "<0.000000, 0.000000, 0.000000>"
-      },
-      {
-        "snapshot": 2,
-        "mode": "wide_on",
-        "rows": 30,
-        "terminal": "premature_handoff",
-        "phase": "FOLLOW",
-        "failure": "",
-        "fullEndpoint": false,
-        "seconds": 1.5,
-        "actualTravelMeters": 0.5751980925857311,
-        "maximumStepMeters": 0.03027413979024116,
-        "maximumLeaseMeters": 0.575197,
-        "lastPosition": "<4511.519043, 339.179626, 10239.229492>",
-        "selectedGoal": "<4511.519043, 339.166229, 10235.304688>"
-      },
-      {
-        "snapshot": 3,
-        "mode": "wide_off",
-        "rows": 101,
-        "terminal": "failure:EGRESS_STALL",
-        "phase": "FOLLOW",
-        "failure": "EGRESS_STALL",
-        "fullEndpoint": false,
-        "seconds": 5.04999,
-        "actualTravelMeters": 0.0,
-        "maximumStepMeters": 0,
-        "maximumLeaseMeters": 0,
-        "lastPosition": "<4511.519043, 339.181152, 10239.804688>",
-        "selectedGoal": "<0.000000, 0.000000, 0.000000>"
-      },
-      {
-        "snapshot": 3,
-        "mode": "wide_on",
-        "rows": 30,
-        "terminal": "premature_handoff",
-        "phase": "FOLLOW",
-        "failure": "",
-        "fullEndpoint": false,
-        "seconds": 1.5,
-        "actualTravelMeters": 0.5751980925857311,
-        "maximumStepMeters": 0.03027413979024116,
-        "maximumLeaseMeters": 0.575197,
-        "lastPosition": "<4511.519043, 339.179626, 10239.229492>",
-        "selectedGoal": "<4511.519043, 339.166229, 10235.304688>"
-      },
-      {
-        "snapshot": 4,
-        "mode": "wide_off",
-        "rows": 101,
-        "terminal": "failure:EGRESS_STALL",
-        "phase": "FOLLOW",
-        "failure": "EGRESS_STALL",
-        "fullEndpoint": false,
-        "seconds": 5.04999,
-        "actualTravelMeters": 0.0,
-        "maximumStepMeters": 0,
-        "maximumLeaseMeters": 0,
-        "lastPosition": "<4511.519043, 339.181152, 10239.804688>",
-        "selectedGoal": "<0.000000, 0.000000, 0.000000>"
-      },
-      {
-        "snapshot": 4,
-        "mode": "wide_on",
-        "rows": 101,
-        "terminal": "failure:EGRESS_STALL",
-        "phase": "FOLLOW",
-        "failure": "EGRESS_STALL",
-        "fullEndpoint": false,
-        "seconds": 5.04999,
-        "actualTravelMeters": 0.0,
-        "maximumStepMeters": 0,
-        "maximumLeaseMeters": 0,
-        "lastPosition": "<4511.519043, 339.181152, 10239.804688>",
-        "selectedGoal": "<0.000000, 0.000000, 0.000000>"
-      }
+Selected full-run aggregates; not full trace
+[
+  {
+    "runId": "runtime-20261029-130025",
+    "count": 8,
+    "durationSeconds": 300,
+    "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+    "terminalArrivals": 8,
+    "missingHighFollow": [],
+    "highHoldWindow": [
+      45.008,
+      104.903
     ],
-    "baselineStalls": 5,
-    "wideStalls": 1,
-    "widePrematureHandoffs": 4,
-    "wideValidatedHandoffs": 0,
-    "candidateAccepted": false,
-    "liveRecoveryAccepted": false,
-    "visualAccepted": false,
-    "performanceAccepted": false,
-    "limitations": [
-      "Native DriveGround replaced by explicit always-blocked test delegate.",
-      "Five frozen recorded poses; no live player, peers, dynamic animation or normal Walk acceptance.",
-      "Calls run synchronously during engine smoke, not measured wall-time gameplay or performance.",
-      "Observed diagnostic handoff rejection is not a new64-agent regression result."
-    ]
-  },
-  "diagnosticAttempts": [
-    {
-      "probe": "replay",
-      "enginePassed": true,
-      "nativeCrash": false
+    "fallsLandedAndResumed": 10,
+    "climbEndFailures": 0,
+    "physicalTransitionsMatched": true,
+    "physicalTransitions": 116,
+    "failureLabels": {
+      "CONTACT_SUPPORT_LOST": 1,
+      "ENTRY_ALIGNMENT_NO_PROGRESS": 1
     },
-    {
-      "probe": "segmented",
-      "enginePassed": true,
-      "nativeCrash": false
+    "admissionOutcomes": {},
+    "wideHandoffOutcomes": {},
+    "wideHandoffEntities": [],
+    "admissionViolations": [],
+    "egressOutcomes": {
+      "DONE": 1
     },
-    {
-      "probe": "bounded",
-      "enginePassed": false,
-      "nativeCrash": true
+    "egressViolations": [],
+    "foregroundMissionFrameMs": {
+      "samples": 14739,
+      "p50": 20.0,
+      "p95": 31.0,
+      "p99": 33.0
     },
-    {
-      "probe": "bounded2",
-      "enginePassed": false,
-      "nativeCrash": false
+    "foregroundFraction": 1.0,
+    "repetitions": 1,
+    "stageMissionFrameMs": {
+      "LOW_HOLD": {
+        "samples": 1996,
+        "p50": 20.0,
+        "p95": 31.0,
+        "p99": 34.0,
+        "maximum": 47.0
+      },
+      "HIGH_HOLD": {
+        "samples": 3000,
+        "p50": 20.0,
+        "p95": 31.0,
+        "p99": 33.0,
+        "maximum": 38.0
+      },
+      "GROUND_HOLD": {
+        "samples": 1500,
+        "p50": 20.0,
+        "p95": 31.0,
+        "p99": 33.0,
+        "maximum": 40.0
+      },
+      "GROUND_EAST": {
+        "samples": 495,
+        "p50": 20.0,
+        "p95": 32.0,
+        "p99": 35.0,
+        "maximum": 38.0
+      },
+      "GROUND_EAST_HOLD": {
+        "samples": 745,
+        "p50": 20.0,
+        "p95": 31.0,
+        "p99": 33.0,
+        "maximum": 35.0
+      },
+      "GROUND_NORTH": {
+        "samples": 499,
+        "p50": 20.0,
+        "p95": 31.0,
+        "p99": 34.0,
+        "maximum": 45.0
+      },
+      "FINAL_HOLD": {
+        "samples": 6496,
+        "p50": 20.0,
+        "p95": 31.0,
+        "p99": 33.0,
+        "maximum": 39.0
+      }
     },
-    {
-      "probe": "corridor",
-      "enginePassed": false,
-      "nativeCrash": false
-    },
-    {
-      "probe": "externalcount",
-      "enginePassed": true,
-      "nativeCrash": false
-    },
-    {
-      "probe": "table",
-      "enginePassed": true,
-      "nativeCrash": false
-    },
-    {
-      "probe": "wide-ab",
-      "enginePassed": true,
-      "nativeCrash": false
-    },
-    {
-      "probe": "executor",
-      "enginePassed": true,
-      "nativeCrash": false
+    "measurementConditions": {
+      "egressWideExit": true,
+      "egressFirstStep": true,
+      "egressNearFirstStep": true,
+      "endpointLookahead": false,
+      "terrainContactOwner": true,
+      "admissionReapproach": true,
+      "durationSeconds": 300,
+      "renderPartsPerAgent": 8,
+      "ai": true,
+      "movement": true,
+      "visualSmoothnessMeasured": false,
+      "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer",
+      "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution"
     }
-  ]
+  },
+  {
+    "runId": "runtime-20261029-130645",
+    "count": 64,
+    "durationSeconds": 300,
+    "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+    "terminalArrivals": 64,
+    "missingHighFollow": [
+      2,
+      4,
+      6,
+      8,
+      11,
+      12,
+      17,
+      23,
+      27,
+      31,
+      34,
+      39,
+      43,
+      44,
+      50,
+      51,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      61
+    ],
+    "highHoldWindow": [
+      45.012,
+      104.989
+    ],
+    "fallsLandedAndResumed": 56,
+    "climbEndFailures": 0,
+    "physicalTransitionsMatched": true,
+    "physicalTransitions": 646,
+    "failureLabels": {
+      "CONTACT_SUPPORT_LOST": 14
+    },
+    "admissionOutcomes": {
+      "ARRIVED": 16,
+      "EXPIRED": 1
+    },
+    "wideHandoffOutcomes": {},
+    "wideHandoffEntities": [],
+    "admissionViolations": [],
+    "egressOutcomes": {
+      "DONE": 5,
+      "PHASE_HANDOFF:FOLLOW": 1,
+      "EXPIRED": 1
+    },
+    "egressViolations": [],
+    "foregroundMissionFrameMs": {
+      "samples": 3132,
+      "p50": 79.0,
+      "p95": 194.0,
+      "p99": 271.0
+    },
+    "foregroundFraction": 1.0,
+    "repetitions": 1,
+    "stageMissionFrameMs": {
+      "LOW_HOLD": {
+        "samples": 445,
+        "p50": 82.0,
+        "p95": 153.0,
+        "p99": 190.0,
+        "maximum": 215.0
+      },
+      "HIGH_HOLD": {
+        "samples": 576,
+        "p50": 92.0,
+        "p95": 181.0,
+        "p99": 270.0,
+        "maximum": 300.0
+      },
+      "GROUND_HOLD": {
+        "samples": 218,
+        "p50": 130.0,
+        "p95": 218.0,
+        "p99": 240.0,
+        "maximum": 271.0
+      },
+      "GROUND_EAST": {
+        "samples": 62,
+        "p50": 119.0,
+        "p95": 300.0,
+        "p99": 300.0,
+        "maximum": 300.0
+      },
+      "GROUND_EAST_HOLD": {
+        "samples": 124,
+        "p50": 101.0,
+        "p95": 222.0,
+        "p99": 258.0,
+        "maximum": 282.0
+      },
+      "GROUND_NORTH": {
+        "samples": 63,
+        "p50": 112.0,
+        "p95": 300.0,
+        "p99": 300.0,
+        "maximum": 300.0
+      },
+      "FINAL_HOLD": {
+        "samples": 1638,
+        "p50": 65.0,
+        "p95": 184.0,
+        "p99": 218.0,
+        "maximum": 284.0
+      }
+    },
+    "measurementConditions": {
+      "egressWideExit": true,
+      "egressFirstStep": true,
+      "egressNearFirstStep": true,
+      "endpointLookahead": false,
+      "terrainContactOwner": true,
+      "admissionReapproach": true,
+      "durationSeconds": 300,
+      "renderPartsPerAgent": 8,
+      "ai": true,
+      "movement": true,
+      "visualSmoothnessMeasured": false,
+      "frameWindow": "age>=5 seconds, foreground, unique part0; state-contract analyzer",
+      "method": "Foreground mission frame delta with per-frame pose and state instrumentation; not GPU Present or isolated cost attribution"
+    }
+  }
+]
+
+Frozen pose contact input proof
+{
+  "sourceMatchesPbo": true,
+  "sourceSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82",
+  "originalMethodSha256": "cc95ab5a90c310a6400d528c6665c338cab89aed38580847cbf0c44909061ebe",
+  "restoredExactly": true,
+  "onlyChange": "Test-body contact raw pose getter uses recorded TablePose; all native acceptance gates unchanged."
 }
 
-Own ECPlan source excerpt; remainder linked by local immutable evidence inventory
-    bool ECPlan()
+Own recovery handoff code excerpt
+    override void SetPhase(string phase)
     {
-        if(FRBudgetAt!=Body.Director.Now){FRBudgetAt=Body.Director.Now;FRPlansThisFrame=0;}
-        if(FRPlansThisFrame>=2){ECNextPlan=Now()+0.05;return false;}
-        FRPlansThisFrame++;ECNextPlan=Now()+0.75;
-        ECTracePlanPose();
-        array<vector> directions={"0 0 1","0 0 -1","1 0 0","-1 0 0","0.707107 0 0.707107","-0.707107 0 0.707107","0.707107 0 -0.707107","-0.707107 0 -0.707107"};
-        bool found=false;float best=1000000;vector selected;
-        string savedLanding=LandingDiagnostic;
-        if(!ECRangePolicyRead)
+        if(ECActive && phase!="EGRESS"){ECLog("PHASE_HANDOFF:"+phase);ECActive=false;ECBlockedAt=-1;}
+        if(phase!="EGRESS")ECWideRecovery=false;
+        super.SetPhase(phase);
+    }
+    override void CompleteEgress(vector support)
+    {
+        if(ECWideRecovery)
         {
-            ECExtendedRange=FileExist("$profile:egress-extended.flag");
-            ECShadowRange=FileExist("$profile:egress-extended-shadow.flag");ECRangePolicyRead=true;
-            ECFirstStepEnabled=FileExist("$profile:egress-first-step.flag");
-            ECNearFirstStepEnabled=FileExist("$profile:egress-near-first-step.flag");
-            ECWideExit=FileExist("$profile:egress-wide-exit.flag");
+            // A short lease expiring or the authored egress point being near
+            // does not establish clearance of the alternative recovery route.
+            vector verified;float lift;ref array<vector> contacts={};
+            string rejection;
+            if(!LandingSpace(Body.Agent.Position,verified,false))rejection="LANDING:"+LandingDiagnostic;
+            else if(Fixture().Area(verified)!=Area)rejection="AREA";
+            else if(!ECEndpointClear(Body.Agent.Position))rejection="ENDPOINT_POSE";
+            else if(!DGBGroundRoute.SegmentClear(Body.Agent.Position,Body.Agent.Position,Body.Agent.ObstacleMin,Body.Agent.ObstacleMax))rejection="PLANNING_INFLATION";
+            else if(!Body.SolveContacts(Body.Agent.Position,Body.Agent.Heading,lift,contacts))rejection="CONTACT:"+Body.Reason;
+            if(rejection!="")
+            {
+                ECWideLog("REJECTED:"+rejection);
+                if(ECActive)ECLog("WIDE_HANDOFF_REJECTED");
+                Body.Reason="EGRESS_WIDE_HANDOFF_BLOCKED";
+                ECActive=false;ECNextPlan=Now();return;
+            }
+            support=verified;Body.Lift=lift;Body.Contacts.Copy(contacts);
+            ECWideLog("VALIDATED");
         }
-        int maximumRing=2;if(ECExtendedRange || ECShadowRange)maximumRing=8;
-        // Recorded actor43 has no feasible endpoint inside4m, while4.5m
-        // satisfies the existing full chord and first-step gates in4/5 poses.
-        // Only extend after all original rings fail; default policy is unchanged.
-        if(ECExtendedRange && ECWideExit)maximumRing=9;
-        bool extendedSelection;
-        for(int ring=1;ring<=maximumRing;ring++)
-        {
-        // Preserve the original16 candidates and their choice whenever feasible.
-        // Additional range changes no support, sweep, motion or lease limit.
-        if(ring>2 && found)break;
-        foreach(vector direction:directions)
-        {
-            vector candidate=Body.Agent.Position+direction*(ring*0.5);vector support;
-            ECEndpointRejectedJoint=-1;
-            if(!LandingSpace(candidate,support,false)){ECTraceCandidate(candidate,support,"LANDING",LandingDiagnostic);continue;}
-            if(Fixture().Area(support)!=Area){ECTraceCandidate(candidate,support,"AREA",Fixture().Area(support));continue;}
-            if(!DGBGroundRoute.SegmentClear(support,support,Body.Agent.ObstacleMin,Body.Agent.ObstacleMax)){ECTraceCandidate(candidate,support,"PLANNING_INFLATION","");continue;}
-            if(!ECEndpointClear(support)){ECTraceCandidate(candidate,support,"ENDPOINT_POSE","");continue;}
-            float lift;ref array<vector> contacts={};
-            if(!PressureEscapeStepClear(support,lift,contacts)){ECTraceCandidate(candidate,support,"SWEPT_CHORD",PressureEscapeDiagnostic);continue;}
-            // A clear long chord can still fail the first short step because
-            // intermediate support/lift differs. The separate near-candidate
-            // diagnostic also checks the original16 choices, after recorded
-            // actor17 repeatedly selected a1m goal with an impossible first step.
-            // Every endpoint, full chord and execution step gate remains active.
-            string initialDiagnostic;
-            bool requireInitialStep=ECFirstStepEnabled && (ring>2 || ECNearFirstStepEnabled);
-            if(ring>8)requireInitialStep=true;
-            if(requireInitialStep && !ECInitialStepClear(support,initialDiagnostic))
-            {ECTraceCandidate(candidate,support,"FIRST_STEP",initialDiagnostic);continue;}
-            ECTraceCandidate(candidate,support,"FEASIBLE","");
-            float cost=DGBGroundAgent.FlatDistance(support,EgressGoal)+ring*0.1;
-            if(cost<best){best=cost;selected=support;found=true;extendedSelection=ring>2;}
-        }
-        }
-        LandingDiagnostic=savedLanding;
-        if(found && extendedSelection && ECShadowRange && !ECExtendedRange)
-        {ECLog("SHADOW_EXTENDED_ENDPOINT");found=false;}
-        if(!found){ECLog("NO_SWEPT_CLEAR_ENDPOINT");return false;}
-        ECGoal=selected;ECUntil=Now()+6;ECDistance=0;ECActive=true;ECLog("START");return true;
+        super.CompleteEgress(support);
+    }
+    void ECWideLog(string status)
+    {
+        // Handoff validation is distinct from a bounded helper lease ending.
+        string path="$profile:native-egress-wide-handoff.tsv";bool exists=FileExist(path);
+        FileHandle file=OpenFile(path,FileMode.APPEND);if(!file)return;
+        if(!exists)FPrintln(file,"seconds\tid\tstatus\tposition\tgoal\tphase\tleaseActive\tleaseDistance");
+        FPrintln(file,(Now()-Body.Director.Born).ToString()+"\t"+Body.Id+"\t"+status+"\t"+Body.Agent.Position+"\t"+ECGoal+"\t"+Phase+"\t"+ECActive+"\t"+ECDistance);
+        CloseFile(file);
     }
 
 이전 애니메이션 진단: [선정 근거](downloads/animation-review.txt). 이번 진단은 시각·성능 해결을 뜻하지 않는다.
