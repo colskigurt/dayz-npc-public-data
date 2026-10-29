@@ -1,436 +1,1391 @@
 # DayZ NPC AI — 외부 세션 검토 자료
 
-Snapshot: snapshot-20261029T072604-post-touchdown20-visible-20261029
+Snapshot: snapshot-20261029T080442-post-touchdown-owner-runtime-20261029
 
-착지 후 포즈 전환 분리 후보와 단일 NPC 실제 화면 재관측
+착지 복구 소유권 구현 — 접선 길이 수정과 실제8→64 회귀
 
-작성: 2026-10-29T16:25:35.861227+09:00
+작성: 2026-10-29T17:02:40.587456+09:00
 
 1. 작업 목표
 
-20번 개체의 착지 후 정체를 물리 착지와 포즈 전환의 소유권 문제로 나누어 검사한다. 보안 창 해제 후 단일 감염자 화면 관측을 재개해 CPU 시간과 실제 표시를 구분한다. 기존 정상 낙하·복구와 AI 파이프라인은 보존한다.
+앞선 동결 포즈 후보를 실제 패키지의 착지·정착·이탈·FOLLOW 전환에 연결한다. 안전 root로 이탈 목표를 옮기고 최종 full endpoint를 재검사한다. 기존 정상 낙하·재등반과 기본 OFF 경로를 보존하고 실제8→64 회귀를 계측한다. 애니메이션 시간 변경이나 추측 최적화를 하지 않는다.
 
 2. 실제 수행
 
-별도 mission-derived subclass에서 동결 raw4joint 포즈3조건×모터4조건을 비교했다. 원래 물리 착지는 그대로 허용하고 full endpoint가 막힌 경우만 landing pose 요청을 보류했다. 기존 PressureSlide에 현재 sim시각·등록 world contact normal의 접선 제안을 추가했다. Floor·같은 area·높이차0.08m·원래 PressureEscapeStepClear 전 gate·실제 이동거리1.5m 예산을 유지했다. 각 최종 검사는 원래 diagnostic 필드를 복원해 후속 정책에 영향을 주지 않게 했다. 실제 동작 요청/그래프/PBO에는 이 후보를 적용하지 않았다.
+새 opt-in post-touchdown-owner.flag AND footprint-recovery.flag를 추가했다. 실제 FALL→LAND,ground,sustained fall request8 및 실제 native request8일 때만 검사한다. 물리 착지는 원래 Fall/Accept가 허용하고 안전 endpoint가 아니면 landing pose permission만 보류한다. 기존 PressureSlide/SupportedEscapeTurn과 현재 sim시각의 등록 world contact normal 접선 제안을 사용한다. Floor·같은 area·높이차0.08m·원래 swept peer/world/non-deepening gates를 유지하고6초·1.5m·번역 진행 없음5초를 제한한다.
 
-기존 controlled-investigation 미션3파일을 바이트 동일하게 별도 validation으로 복사하고 현재31A 빌드에 대해 새 컴파일 기록을 만들었다. launcher에 관측 전용 opt-in 선택을 추가했고 기존 compile 기록은 보존했다. 단일 logical NPC/8 native hosts, AI·root motion OFF,request0,90초,frame sync ON으로 실행했다. Computer Use로 DayZ창·프레임 표시·서로 다른 실제 포즈를 확인했다. 별도 OBS WGC로 DayZ창만 45초 lossless60fps 출력에 기록했다. 보안 창은 사용자가 닫았고 다른 프로젝트 앱들은 종료하지 않았다.
+안전 endpoint에서 실제 EgressGoal을 새 root로 바꾸고 경유점/경로를 갱신한다. LAND·EGRESS 동안 별도 소유권을 유지하고 CompleteEgress에서 전체 검사를 다시 한다. 실패한 helper lease는 성공으로 기록하지 않으며 기존 이탈 복구와 제한을 사용한다. 사망 대기·재낙하 취소를 검사했다. 기본 정책은 OFF다.
+
+첫9DCB 빌드는 서명됐지만 modded 계층 순서상 부모가 뒤쪽 PTActive/CTPolicy를 참조해 엔진 컴파일에 실패했다. 부모의 ECNeedsGroundHandoff 계약과 후속 override로 바꾸고 자체 recovery generation을 기록했다. 테스트 미션의 숫자 뺄셈 구문 오류도 별도 미션에서 수정했다. 과거 실패 기록은 보존했다.
+
+3F6D/5137 패키지 진단은 접선 Normalize 뒤 실제 길이가 약0.02905로 남아3cm 요청이 약1mm 제안이 되고100번 중 상당수가 제자리였음을 기록했다. 앞선 프로토타입은 뒤에서 direction을 다시 정규화했다. 명시적으로 길이로 나누는 단위 방향과 실제 이동0 거부를 넣은 F6DE 후보를 동일 입력으로2회 재실행했다. 정확한 컴파일러 내부 원인은 아직 별도 최소 재현이 없으며 측정된 길이 오류와 수정 후 값만 확정한다.
+
+그 뒤 동일 빌드·같은 기존 옵션에서8명300초,64명300초 실제 클라이언트를 순서대로 실행하고 정상 종료 후 기존 상태·재접근·이탈·착지·clock 분석기와 새 owner journal 분석기를 사용했다. 새 parser는 journal의 VALIDATED_FOLLOW 문구만으로 성공을 세지 않고 동일 개체·시각·좌표·recovery generation의 실제 EGRESS→FOLLOW와 연결한다.
 
 3. 측정 결과
 
-|동결 낙하 포즈의 모터 조건|결과|
-|---|---|
-|원래 착지|0.05초 LAND,full endpoint=false인 위치에서 포즈 전환 허용|
-|착지 전 경로 거부|15초 FALL,물리 root가 지면 위에 머무름|
-|착지 후 포즈 보류+기존 복구|15초 미완료,0.06055m 이동 후 정체|
-|착지 후 포즈 보류+contact tangent|1.84998초,1.08909m 이동,full endpoint=true에서 포즈 전환 허용|
+동결4joint·수동 native clock·합성 land duration1초·ground Walk stub 조건의2회 반복에서12case 계약 검사를 통과했다. 핵심 case는 두 번 모두1.84998초에1.08909m 이동 후 안전 endpoint를 확보하고4.0초에FOLLOW로 인계했다. 접선2회의 측정 길이는1이었다. 안전 ground OFF/ON은 원래 착지 경로를 유지했고 사망 대기/재낙하는 owner를 취소했다. 시간·거리·무이동 제한3종은 unsafe endpoint를 성공으로 만들지 않았다. 단,짧은 낙하 case는 물리 착지를 못한 음성 대조이고 동적 무효화 case는 LAND에서 CompleteEgress를 직접 호출한 검사라 범위가 제한된다.
 
-성공 후보는 기존 native step34회와 접선2회,계획3회였다. 접선2회는 모두 bias0·요청3cm이며 기존 전체 gate를 통과했다. 안전한 지면 대조군4개는 모두 첫0.05초에 추가 지연 없이 LAND/full endpoint=true였다. 착지 후 idle 포즈를 pre-touchdown 높이에서 시작한 음성 대조군4개는 원래 joint-world 검사에서 물리 착지하지 못하고 FALL로 남았다. 이들을 강제로 내리거나 성공 사례로 집계하지 않았다.
+|실제 개체수|최종 도착|고지대 미도달|등반 종료 실패|낙하 후 복귀 에피소드|미션 p50/p95/p99 ms|새 owner 결과|
+|---|---|---|---|---|---|---|---|
+|8|8/8|0|0|9|20.0/30.0/34.0|{"VALIDATED_FOLLOW": 6}|
+|64|64/64|28|0|52|44.0/181.0/228.0|{"VALIDATED_FOLLOW": 34}|
 
-단일 화면 시험 runtime-20261029-161948은 정상 종료했다.15초 이후 foreground3735프레임의 mission p50/p95/p99=20/32/35ms이다. CPU 누적 clock은74.616초 wall 동안56.2995초 진행,비율0.754523이며1126회/15.0906Hz였다. root correction/drift는0이었다. 이는 script callback 누적 clock이며 GPU/clip 실제 위상이 아니다.
+64명 고지대 미도달 IDs: [0, 4, 9, 11, 12, 16, 17, 19, 20, 23, 24, 31, 35, 36, 37, 39, 47, 51, 52, 53, 54, 55, 58, 59, 60, 61, 62, 63]. 새 owner helper 실패: {}. 새 owner 분석 위반/미종료: []. 전체 failure-label은 선정 JSON에 원문 집계하고 정상 support-loss/낙하와 terminal failure를 동일시하지 않는다.
 
-영상10·20·30초에서3초씩179쌍을 분석했다. 화면 clock이 변한147/149/148쌍 중 silhouette변화10pixel 미만은0/6/4쌍이었다. raw actor low-change 최대 구간은16.7/33.3/33.3ms였으나 녹화 중복과 투영 영향을 포함한다. CPU15.1Hz를 그대로 표시FPS로 볼 수 없다는 근거다. ROI에는 움직이는 풀·조명과 일부 잘린 팔이 있어 개별 관절의 미세 끊김이나 속도 정확성을 판정하지 않는다. OBS2701출력프레임,렌더 지연3프레임(0.1%). 실제 동작 FPS60 보장은 아니다.
+실제 live8/64의 접선 fallback은 각각0회였다. 따라서 명시적 단위 접선의 live 효과가 아니라 pose permission/목표 전달/기존 supported escape의 실제 인계를 확인한 것이다. 접선2회는 동결 재현에서만 검증됐다.
 
-새8/64 기능 회귀는 미실행이다. 기존63/64·64명 p95 120ms·고지대 미도달14개체가 최신 실제 기능 기준으로 남는다. 녹화·다른 사용자 앱이 함께 실행된 이번 단일 시험은 최적화 성능 기준으로 채택하지 않는다.
+플레이어 지면 EAST/NORTH 실제 순변위는 이전8명40.05/40.19m,이전64명39.91/18.72m,현재8명40.13/40.28m,현재64명4.09/13.06m였다. 입력 code2와 단계 시간은 같지만 실제 궤적이 다르므로64/64를 같은 장거리 자극에서63/64보다 개선됐다고 결론내리지 않는다. 군집에 의한 이동 방해는 추정이며 player contact-force는 미계측이다. 후속 비교는 실제 player trajectory를 통제/검증해야 한다.
+
+현재64명 고지대 미도달28개체의 표본 phase 합계는 {'FOLLOW': 2841, 'MOTION': 64, 'FALL': 22, 'LAND': 82, 'EGRESS': 4, 'SETTLE': 11}이다. 이는 표본 수이고 물리 원인/시간 합계가 아니다. 선정 actor timeline과 전체 reason 집계는 별도 증거로 보존한다. 일부는 입구 정렬/시작이 늦었고 최종 인계 실패0과는 다른 문제다.
+
+위 미션 시간은 해당 실행의 foreground callback delta이며 GPU Present/애니메이션 표시 FPS가 아니다. 각 규모 한 실행이고 다른 사용자 앱을 종료하지 않았으며 계측 I/O가 있다. 과거83E94 결과와 이번 F6DE는 동일 시점의 flag-OFF/ON 교차 반복이 아니므로 인과적 성능 개선율을 계산하지 않는다.20ms p95 목표와64 비용 귀속은 미달성/미확정이다.
 
 4. 원인 분석
 
-관찰 사실: 낙하 포즈에서 원래 복구만으로 막히던 위치를 원래 전체 gate를 통과한 접선 이동2개로 벗어났다. 실제 root 착지를 거부하는 방식은 이전과 같이 hover를 만들었다. 단일 idle 영상의 표시 변화는 CPU callback 횟수보다 자주 일어났다.
+관찰 사실: 실제 패키지에 옮긴 첫 접선 방향은 단위 벡터가 아니어서 작은 제안과 제자리 반복을 만들었다. 명시적 정규화 뒤 같은 입력의2회 결과가 일치했다. 안전 root를 이탈 목표로 넘긴 actual8 시험의6개 owner episode는 모두 실제 FOLLOW 전환과 연결됐다.64 결과는 위 수치와 journal로 별도 판단한다.
 
-추정: 착지 전후 포즈의 충돌 가능성 차이와 접선 제안 부재가20번 정체의 일부 원인이다. 물리 착지와 pose permission을 분리하면 해결할 여지가 있다. 네이티브 표시/보간 경로가 CPU callback 사이에도 표시를 바꿀 수 있으나 업로드 시각·정확한 clip위상은 계측되지 않았다.
+추정: 물리 착지 이후 pose 전환 시점과 이전 unsafe EgressGoal의 잔류가 기존20번 정체를 만드는 요인이었다. 이 국소 해결을 전체 군집/모든 접촉 포즈의 완성으로 확대하지 않는다. compact conditional/Normalize 문장의 처리 원인과 전체 native renderer 시간 문제는 미확정이다.
 
-반증/제한: 단순 착지전 full-route 거부만으로 해결할 수 있다는 후보는 실패했다. CPU갱신15Hz=표시15FPS라고 단정할 수 없다. 이번 실루엣 결과로 달리기·등반 끊김 해소나 원인 확정을 선언하지 않는다.
+반증/제외: 서명·패키징 성공만으로 엔진 컴파일이나 기능 성공을 주장할 수 없다. 첫 packaged 후보는 frozen escape를 재현하지 못했다. CPU clock/본 변경은 실제 표시 품질 증거가 아니다. 이번에는 그래프 속도·보간·업데이트 정책을 바꾸지 않았다.
 
 5. 검증 수준
 
-진단 성공:12case 통제 비교와 단일 실제 영상·CPU clock 관측. 회귀 통과/반복 검증 완료/최종 수용은 아니다. 후보의 완료는 안전한 위치에서 landing pose를 허가한 경계이며 SETTLE→EGRESS→FOLLOW의 종단 완료가 아니다. 기능·시각 품질·성능은 모두 별도 미수용이다.
+진단 성공: 계층 참조 오류·접선 길이/좌표 차이와 explicit normalization 후2회 동결 상태 계약 재현. 실제8 회귀 통과는8/8·고지대0·등반 종료0·owner6/6 범위이다.64의 개별 수용 항목은 위 값으로 구분하며 한 번의 실행으로 반복 검증 완료나 최종 수용을 선언하지 않는다. 시각 품질·성능·전체 목표는 모두 미수용이다. live combat 활성→해제 후 final guard와 실제 EGRESS 중 endpoint 변경은 미검증이다.
 
 6. 변경 사항
 
-stage_horde_post_touchdown20.py의 별도 테스트 모터,compiler whitelist/새 관측 compile 선택,launcher ObservationRuntime과 provenance를 추가했다. 새 보고서/분석/선정 증거만 저장한다. 배포 PBO·native graph·보간 정책은 이번에 변경하거나 재빌드/재서명하지 않았다. 현행 integration31A286A3…는 두 새 컴파일과 실제 실행의 서명 검증을 통과했고 base453D6A9E…·render0C6E1855…도 실행 전 검증했다. 후보는 미션 진단에만 존재한다.
+subset_post_touchdown.c를 추가하고 subset_motion_contracts.c의 ground helper 판정을 확장 가능한 메서드로 연결했다. builder는9개 스크립트를 패킹하고 source와 PBO 멤버가 모두 바이트 동일함을 확인했다. compiler/launcher에 별도 validation과 opt-in provenance를 추가했다. 후보 F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8은 자동 서명과 DSCheckSignatures 검증을 통과했다. base453D·render0C6E는 변경하지 않았고 실제 실행 전에3개 모드 서명을 모두 검증했다. 개인 키는 배포물에 없으며 실패/중간 빌드도 별도 해시 archive로 보존했다.
 
 7. 원시 증거
 
-모터 compile-299bcfa9e5d147dbb4709aeb14437d9d의 post-touchdown20.tsv/tangent.tsv,새 validation engine-compile.json,단일 runtime-20261029-161948의 frames/samples/HUD·launch·OBS종료 기록·영상·파생 sheet와 집계를 해시 연결한다. 공개 패킷에는 집계/선정 접선2행을 싣고 내부 전체로그·로컬경로·프로세스 정보·게임 자산은 노출하지 않는다. 원시 로그/과거 보고서/과거 compile 기록은 보존한다.
+새 validation별 engine-compile/staged/init,실패 및 반복 compile profile의 원문 로그/TSV,실제 실행2개의 launch·native-ground·state transitions·landing/backoff·post-touchdown journal·파생 분석·빌드/source/signature inventory를 저장 전 해시 검사한다. 시각 관측은8명 HIGH_HOLD의 가림 없는 한 화면과64의 별도 표본 설명 수준이며 연속 애니메이션 품질 측정은 아니다. 공개 패킷은 집계·첫4개 owner episode와 자체 candidate 함수 원문을 싣고 원시 전체 로그·로컬 경로·프로세스 정보·게임 자산은 공개하지 않는다.
 
 8. 잔여 문제
 
-후보를 runtime에 이식하기 전 recovery ownership,안전 root로 EgressGoal 재지정,CompleteEgress 재검사,전투/사망/재낙하 취소,시간·거리 예산을 연결해야 한다. 이후 opt-in 상태에서8→64 회귀와 순서 교차 반복이 필요하다. 현재 동결 포즈 한 invocation 결과를 live 성공으로 확대하지 않는다.
+최신64의 고지대28개체 미도달과181ms p95를 상세 기록과 대조한다. 동일 입력에도 물리 player 경로가 달랐으므로 실제 경로를 통제한 후속 시험이 필요하다. 같은 빌드의 flag-OFF/ON 순서 교차 반복으로 접촉/등반 회귀를 확인해야 한다. active combat이 helper뿐 아니라 final guard도 취소하는 현재 동작은 재개 시 unsafe FOLLOW 위험이 있어 별도 소유권 분리와 회귀가 필요하다. 사망 대기 취소 통과를 active combat 재개 통과로 확대하지 않는다. 실제 EGRESS 무효화와 실제 짧은 낙하도 보완한다.
 
-애니메이션은 실제 달리기/등반 clip에서 동일HUD·CPU 관절/호출·영상의 정확한 frame join을 수집해 이전 세대경계 후보의 점프와 구분한다. 새로운 보간/배속을 근거 없이 도입하지 않는다.64 비용 귀속과20ms p95는 별도 실험이며 미달성이다.
+애니메이션은 이전 단일 영상/CPU 시간 분리 진단을 유지한다. 달리기·등반 clip의 동일 HUD/CPU 관절·호출/실제 영상 exact frame join을 수집해야 한다.64 성능은 별도 controlled matrix·단계별 비용/빈도·할당/GC와 측정 불가 항목을 구분해 귀속한다. 원인 특정 전 새 보간·배속을 도입하지 않는다. 운영 서버와 원시 기록은 보존하고 골은 계속 활성 상태다.
 
-원본 보고서 ID: 2026-10-29_162535_861227+0900_npc-post-touchdown20-visible.md
-원본 SHA-256: 012b9002f66c31231760ef6c0b127ee99284aaac71e0f4cc13832f2d236b4d6b
+원본 보고서 ID: 2026-10-29_170240_587456+0900_npc-post-touchdown-owner-runtime.md
+원본 SHA-256: 0e63fb3620200f40209daee9871f6f3aa3d1ca257ecff9e11c04892b218c8d0c
 이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
 
-Selected derived evidence;not full raw logs or rendered joint trajectories
+Selected first4 owner episodes per run,not full raw logs
 {
-  "motorCases": [
+  "runs": [
     {
-      "pose": 0,
-      "mode": 0,
-      "rows": 1,
-      "seconds": 0.0499878,
-      "phase": "LAND",
-      "pending": false,
-      "completed": false,
-      "failed": false,
-      "position": "<4511.504395, 339.172150, 10236.848633>",
-      "separationDistance": 0.0,
-      "nativeSteps": 0,
-      "tangentSteps": 0,
-      "wantLanding": true,
-      "fullEndpoint": false
+      "summary": {
+        "runId": "runtime-20261029-164705",
+        "count": 8,
+        "durationSeconds": 300,
+        "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
+        "terminalArrivals": 8,
+        "missingHighFollow": [],
+        "highHoldWindow": [
+          45.006,
+          104.981
+        ],
+        "fallsLandedAndResumed": 9,
+        "climbEndFailures": 0,
+        "admissionOutcomes": {
+          "ARRIVED": 1
+        },
+        "egressViolations": [],
+        "foregroundMissionFrameMs": {
+          "samples": 12976,
+          "p50": 20.0,
+          "p95": 30.0,
+          "p99": 34.0
+        },
+        "admissionEnabled": true,
+        "measurementConditions": {
+          "postTouchdownOwner": true,
+          "endpointLookahead": true,
+          "landingBackoffDetail": true,
+          "recording": false,
+          "unobstructedWholeRunVerified": false,
+          "otherUserApplicationsPreserved": true,
+          "callbackClockNotVisiblePhase": true
+        }
+      },
+      "postTouchdown": {
+        "events": 25,
+        "outcomes": {
+          "VALIDATED_FOLLOW": 6
+        },
+        "helperFailures": {},
+        "violations": [],
+        "episodes": [
+          {
+            "id": 0,
+            "generation": 1,
+            "recoveryGeneration": 1,
+            "startSeconds": 14.8,
+            "start": "<4508.422363, 339.117523, 10237.608398>",
+            "events": [
+              {
+                "sequence": "1",
+                "seconds": "14.8",
+                "phase": "LAND",
+                "outcome": "PHYSICAL_TOUCHDOWN",
+                "reason": "POST_TOUCHDOWN_POSE_PENDING",
+                "position": "<4508.422363, 339.117523, 10237.608398>",
+                "distance": "0",
+                "goal": "<4508.422363, 339.117523, 10237.608398>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "2",
+                "seconds": "14.826",
+                "phase": "LAND",
+                "outcome": "PENDING",
+                "reason": "CONTACT_AIR_SEPARATION",
+                "position": "<4508.392578, 339.116974, 10237.608398>",
+                "distance": "0.0297902",
+                "goal": "<4508.422363, 339.117523, 10237.608398>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "3",
+                "seconds": "15.83",
+                "phase": "LAND",
+                "outcome": "PENDING",
+                "reason": "CONTACT_AIR_SEPARATION",
+                "position": "<4507.886230, 339.107513, 10237.608398>",
+                "distance": "0.536226",
+                "goal": "<4508.422363, 339.117523, 10237.608398>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "4",
+                "seconds": "16.339",
+                "phase": "LAND",
+                "outcome": "POSE_PERMISSION_READY",
+                "reason": "POST_TOUCHDOWN_POSE_READY",
+                "position": "<4507.647949, 339.103088, 10237.608398>",
+                "distance": "0.774549",
+                "goal": "<4507.647949, 339.103088, 10237.608398>",
+                "pending": "false",
+                "active": "true"
+              },
+              {
+                "sequence": "5",
+                "seconds": "20.176",
+                "phase": "EGRESS",
+                "outcome": "VALIDATED_FOLLOW",
+                "reason": "ARRIVED",
+                "position": "<4507.647949, 339.103088, 10237.608398>",
+                "distance": "0.774549",
+                "goal": "<4507.647949, 339.103088, 10237.608398>",
+                "pending": "false",
+                "active": "true"
+              }
+            ],
+            "lastDistance": 0.774549,
+            "clearance": {
+              "seconds": 16.339,
+              "position": "<4507.647949, 339.103088, 10237.608398>",
+              "distance": 0.774549
+            },
+            "terminal": {
+              "outcome": "VALIDATED_FOLLOW",
+              "seconds": 20.176,
+              "position": "<4507.647949, 339.103088, 10237.608398>",
+              "transitionSequence": 69
+            }
+          },
+          {
+            "id": 5,
+            "generation": 1,
+            "recoveryGeneration": 1,
+            "startSeconds": 107.284,
+            "start": "<4515.181641, 339.240173, 10238.830078>",
+            "events": [
+              {
+                "sequence": "6",
+                "seconds": "107.284",
+                "phase": "LAND",
+                "outcome": "PHYSICAL_TOUCHDOWN",
+                "reason": "POST_TOUCHDOWN_POSE_PENDING",
+                "position": "<4515.181641, 339.240173, 10238.830078>",
+                "distance": "0",
+                "goal": "<4516.381836, 339.240173, 10238.830078>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "7",
+                "seconds": "107.284",
+                "phase": "LAND",
+                "outcome": "PENDING",
+                "reason": "CONTACT_AIR_SEPARATION",
+                "position": "<4515.211426, 339.240479, 10238.830078>",
+                "distance": "0.0297867",
+                "goal": "<4516.381836, 339.240173, 10238.830078>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "8",
+                "seconds": "107.578",
+                "phase": "LAND",
+                "outcome": "POSE_PERMISSION_READY",
+                "reason": "POST_TOUCHDOWN_POSE_READY",
+                "position": "<4515.360352, 339.242065, 10238.830078>",
+                "distance": "0.178721",
+                "goal": "<4515.360352, 339.242065, 10238.830078>",
+                "pending": "false",
+                "active": "true"
+              },
+              {
+                "sequence": "21",
+                "seconds": "111.429",
+                "phase": "EGRESS",
+                "outcome": "VALIDATED_FOLLOW",
+                "reason": "ARRIVED",
+                "position": "<4515.360352, 339.242065, 10238.830078>",
+                "distance": "0.178721",
+                "goal": "<4515.360352, 339.242065, 10238.830078>",
+                "pending": "false",
+                "active": "true"
+              }
+            ],
+            "lastDistance": 0.178721,
+            "clearance": {
+              "seconds": 107.578,
+              "position": "<4515.360352, 339.242065, 10238.830078>",
+              "distance": 0.178721
+            },
+            "terminal": {
+              "outcome": "VALIDATED_FOLLOW",
+              "seconds": 111.429,
+              "position": "<4515.360352, 339.242065, 10238.830078>",
+              "transitionSequence": 175
+            }
+          },
+          {
+            "id": 2,
+            "generation": 1,
+            "recoveryGeneration": 1,
+            "startSeconds": 107.786,
+            "start": "<4515.110352, 339.239014, 10239.118164>",
+            "events": [
+              {
+                "sequence": "9",
+                "seconds": "107.786",
+                "phase": "LAND",
+                "outcome": "PHYSICAL_TOUCHDOWN",
+                "reason": "POST_TOUCHDOWN_POSE_PENDING",
+                "position": "<4515.110352, 339.239014, 10239.118164>",
+                "distance": "0",
+                "goal": "<4516.307617, 339.239014, 10239.201172>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "10",
+                "seconds": "107.815",
+                "phase": "LAND",
+                "outcome": "PENDING",
+                "reason": "CONTACT_AIR_SEPARATION",
+                "position": "<4515.140137, 339.239319, 10239.118164>",
+                "distance": "0.0297867",
+                "goal": "<4516.307617, 339.239014, 10239.201172>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "15",
+                "seconds": "108.244",
+                "phase": "LAND",
+                "outcome": "POSE_PERMISSION_READY",
+                "reason": "POST_TOUCHDOWN_POSE_READY",
+                "position": "<4515.348633, 339.241547, 10239.118164>",
+                "distance": "0.238295",
+                "goal": "<4515.348633, 339.241547, 10239.118164>",
+                "pending": "false",
+                "active": "true"
+              },
+              {
+                "sequence": "22",
+                "seconds": "112.076",
+                "phase": "EGRESS",
+                "outcome": "VALIDATED_FOLLOW",
+                "reason": "ARRIVED",
+                "position": "<4515.348633, 339.241547, 10239.118164>",
+                "distance": "0.238295",
+                "goal": "<4515.348633, 339.241547, 10239.118164>",
+                "pending": "false",
+                "active": "true"
+              }
+            ],
+            "lastDistance": 0.238295,
+            "clearance": {
+              "seconds": 108.244,
+              "position": "<4515.348633, 339.241547, 10239.118164>",
+              "distance": 0.238295
+            },
+            "terminal": {
+              "outcome": "VALIDATED_FOLLOW",
+              "seconds": 112.076,
+              "position": "<4515.348633, 339.241547, 10239.118164>",
+              "transitionSequence": 178
+            }
+          },
+          {
+            "id": 1,
+            "generation": 1,
+            "recoveryGeneration": 1,
+            "startSeconds": 107.84,
+            "start": "<4515.127441, 339.238312, 10239.782227>",
+            "events": [
+              {
+                "sequence": "11",
+                "seconds": "107.84",
+                "phase": "LAND",
+                "outcome": "PHYSICAL_TOUCHDOWN",
+                "reason": "POST_TOUCHDOWN_POSE_PENDING",
+                "position": "<4515.127441, 339.238312, 10239.782227>",
+                "distance": "0",
+                "goal": "<4516.327148, 339.238312, 10239.798828>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "13",
+                "seconds": "107.876",
+                "phase": "LAND",
+                "outcome": "PENDING",
+                "reason": "CONTACT_AIR_SEPARATION",
+                "position": "<4515.157227, 339.238617, 10239.782227>",
+                "distance": "0.0297867",
+                "goal": "<4516.327148, 339.238312, 10239.798828>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "16",
+                "seconds": "108.297",
+                "phase": "LAND",
+                "outcome": "POSE_PERMISSION_READY",
+                "reason": "POST_TOUCHDOWN_POSE_READY",
+                "position": "<4515.365723, 339.240845, 10239.782227>",
+                "distance": "0.238295",
+                "goal": "<4515.365723, 339.240845, 10239.782227>",
+                "pending": "false",
+                "active": "true"
+              },
+              {
+                "sequence": "23",
+                "seconds": "112.137",
+                "phase": "EGRESS",
+                "outcome": "VALIDATED_FOLLOW",
+                "reason": "ARRIVED",
+                "position": "<4515.365723, 339.240845, 10239.782227>",
+                "distance": "0.238295",
+                "goal": "<4515.365723, 339.240845, 10239.782227>",
+                "pending": "false",
+                "active": "true"
+              }
+            ],
+            "lastDistance": 0.238295,
+            "clearance": {
+              "seconds": 108.297,
+              "position": "<4515.365723, 339.240845, 10239.782227>",
+              "distance": 0.238295
+            },
+            "terminal": {
+              "outcome": "VALIDATED_FOLLOW",
+              "seconds": 112.137,
+              "position": "<4515.365723, 339.240845, 10239.782227>",
+              "transitionSequence": 180
+            }
+          }
+        ]
+      },
+      "clock": {
+        "observedMissionSeconds": 262.4160000000077,
+        "nativeAdvanceSeconds": 211.60899999999998,
+        "calls": 4232,
+        "nativeClockPerMissionSecond": 0.806387567831206,
+        "callbackCallsPerMissionSecond": 16.127065422839596,
+        "nativeAdvancePerCallback": 0.05000212665406427
+      },
+      "allFailureLabels": {
+        "CONTACT_SUPPORT_LOST": 1
+      },
+      "admissionViolations": [],
+      "climbFailureContexts": []
     },
     {
-      "pose": 0,
-      "mode": 1,
-      "rows": 300,
-      "seconds": 15.0,
-      "phase": "FALL",
-      "pending": false,
-      "completed": false,
-      "failed": false,
-      "position": "<4511.504395, 339.277832, 10236.848633>",
-      "separationDistance": 0.0,
-      "nativeSteps": 0,
-      "tangentSteps": 0,
-      "wantLanding": false,
-      "fullEndpoint": false
-    },
-    {
-      "pose": 0,
-      "mode": 2,
-      "rows": 300,
-      "seconds": 15.0,
-      "phase": "LAND",
-      "pending": true,
-      "completed": false,
-      "failed": false,
-      "position": "<4511.504395, 339.171906, 10236.788086>",
-      "separationDistance": 0.0605474,
-      "nativeSteps": 2,
-      "tangentSteps": 0,
-      "wantLanding": false,
-      "fullEndpoint": false
-    },
-    {
-      "pose": 0,
-      "mode": 3,
-      "rows": 37,
-      "seconds": 1.84998,
-      "phase": "LAND",
-      "pending": false,
-      "completed": true,
-      "failed": false,
-      "position": "<4511.513184, 339.167938, 10235.760742>",
-      "separationDistance": 1.08909,
-      "nativeSteps": 34,
-      "tangentSteps": 2,
-      "wantLanding": true,
-      "fullEndpoint": true
-    },
-    {
-      "pose": 1,
-      "mode": 0,
-      "rows": 300,
-      "seconds": 15.0,
-      "phase": "FALL",
-      "pending": false,
-      "completed": false,
-      "failed": false,
-      "position": "<4511.504395, 339.277832, 10236.848633>",
-      "separationDistance": 0.0,
-      "nativeSteps": 0,
-      "tangentSteps": 0,
-      "wantLanding": false,
-      "fullEndpoint": false
-    },
-    {
-      "pose": 1,
-      "mode": 1,
-      "rows": 300,
-      "seconds": 15.0,
-      "phase": "FALL",
-      "pending": false,
-      "completed": false,
-      "failed": false,
-      "position": "<4511.504395, 339.277832, 10236.848633>",
-      "separationDistance": 0.0,
-      "nativeSteps": 0,
-      "tangentSteps": 0,
-      "wantLanding": false,
-      "fullEndpoint": false
-    },
-    {
-      "pose": 1,
-      "mode": 2,
-      "rows": 300,
-      "seconds": 15.0,
-      "phase": "FALL",
-      "pending": false,
-      "completed": false,
-      "failed": false,
-      "position": "<4511.504395, 339.277832, 10236.848633>",
-      "separationDistance": 0.0,
-      "nativeSteps": 0,
-      "tangentSteps": 0,
-      "wantLanding": false,
-      "fullEndpoint": false
-    },
-    {
-      "pose": 1,
-      "mode": 3,
-      "rows": 300,
-      "seconds": 15.0,
-      "phase": "FALL",
-      "pending": false,
-      "completed": false,
-      "failed": false,
-      "position": "<4511.504395, 339.277832, 10236.848633>",
-      "separationDistance": 0.0,
-      "nativeSteps": 0,
-      "tangentSteps": 0,
-      "wantLanding": false,
-      "fullEndpoint": false
-    },
-    {
-      "pose": 2,
-      "mode": 0,
-      "rows": 1,
-      "seconds": 0.0500488,
-      "phase": "LAND",
-      "pending": false,
-      "completed": false,
-      "failed": false,
-      "position": "<4530.000000, 339.336670, 10240.000000>",
-      "separationDistance": 0.0,
-      "nativeSteps": 0,
-      "tangentSteps": 0,
-      "wantLanding": true,
-      "fullEndpoint": true
-    },
-    {
-      "pose": 2,
-      "mode": 1,
-      "rows": 1,
-      "seconds": 0.0500488,
-      "phase": "LAND",
-      "pending": false,
-      "completed": false,
-      "failed": false,
-      "position": "<4530.000000, 339.336670, 10240.000000>",
-      "separationDistance": 0.0,
-      "nativeSteps": 0,
-      "tangentSteps": 0,
-      "wantLanding": true,
-      "fullEndpoint": true
-    },
-    {
-      "pose": 2,
-      "mode": 2,
-      "rows": 1,
-      "seconds": 0.0500488,
-      "phase": "LAND",
-      "pending": false,
-      "completed": false,
-      "failed": false,
-      "position": "<4530.000000, 339.336670, 10240.000000>",
-      "separationDistance": 0.0,
-      "nativeSteps": 0,
-      "tangentSteps": 0,
-      "wantLanding": true,
-      "fullEndpoint": true
-    },
-    {
-      "pose": 2,
-      "mode": 3,
-      "rows": 1,
-      "seconds": 0.0500488,
-      "phase": "LAND",
-      "pending": false,
-      "completed": false,
-      "failed": false,
-      "position": "<4530.000000, 339.336670, 10240.000000>",
-      "separationDistance": 0.0,
-      "nativeSteps": 0,
-      "tangentSteps": 0,
-      "wantLanding": true,
-      "fullEndpoint": true
+      "summary": {
+        "runId": "runtime-20261029-165343",
+        "count": 64,
+        "durationSeconds": 300,
+        "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
+        "terminalArrivals": 64,
+        "missingHighFollow": [
+          0,
+          4,
+          9,
+          11,
+          12,
+          16,
+          17,
+          19,
+          20,
+          23,
+          24,
+          31,
+          35,
+          36,
+          37,
+          39,
+          47,
+          51,
+          52,
+          53,
+          54,
+          55,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ],
+        "highHoldWindow": [
+          45.007,
+          104.933
+        ],
+        "fallsLandedAndResumed": 52,
+        "climbEndFailures": 0,
+        "admissionOutcomes": {
+          "ARRIVED": 17,
+          "EXPIRED": 1
+        },
+        "egressViolations": [],
+        "foregroundMissionFrameMs": {
+          "samples": 4379,
+          "p50": 44.0,
+          "p95": 181.0,
+          "p99": 228.0
+        },
+        "admissionEnabled": true,
+        "measurementConditions": {
+          "postTouchdownOwner": true,
+          "endpointLookahead": true,
+          "landingBackoffDetail": true,
+          "recording": false,
+          "unobstructedWholeRunVerified": false,
+          "otherUserApplicationsPreserved": true,
+          "callbackClockNotVisiblePhase": true
+        }
+      },
+      "postTouchdown": {
+        "events": 163,
+        "outcomes": {
+          "VALIDATED_FOLLOW": 34
+        },
+        "helperFailures": {},
+        "violations": [],
+        "episodes": [
+          {
+            "id": 0,
+            "generation": 1,
+            "recoveryGeneration": 1,
+            "startSeconds": 25.611,
+            "start": "<4508.426270, 339.117798, 10237.680664>",
+            "events": [
+              {
+                "sequence": "1",
+                "seconds": "25.611",
+                "phase": "LAND",
+                "outcome": "PHYSICAL_TOUCHDOWN",
+                "reason": "POST_TOUCHDOWN_POSE_PENDING",
+                "position": "<4508.426270, 339.117798, 10237.680664>",
+                "distance": "0",
+                "goal": "<4508.426270, 339.117798, 10237.680664>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "2",
+                "seconds": "25.611",
+                "phase": "LAND",
+                "outcome": "PENDING",
+                "reason": "CONTACT_AIR_SEPARATION",
+                "position": "<4508.396484, 339.117218, 10237.680664>",
+                "distance": "0.0297908",
+                "goal": "<4508.426270, 339.117798, 10237.680664>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "3",
+                "seconds": "26.662",
+                "phase": "LAND",
+                "outcome": "PENDING",
+                "reason": "CONTACT_AIR_SEPARATION",
+                "position": "<4508.187988, 339.113342, 10237.680664>",
+                "distance": "0.238323",
+                "goal": "<4508.426270, 339.117798, 10237.680664>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "4",
+                "seconds": "27.677",
+                "phase": "LAND",
+                "outcome": "PENDING",
+                "reason": "CONTACT_AIR_SEPARATION",
+                "position": "<4507.979492, 339.109436, 10237.680664>",
+                "distance": "0.446856",
+                "goal": "<4508.426270, 339.117798, 10237.680664>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "7",
+                "seconds": "28.777",
+                "phase": "LAND",
+                "outcome": "PENDING",
+                "reason": "CONTACT_AIR_SEPARATION",
+                "position": "<4507.770996, 339.105560, 10237.680664>",
+                "distance": "0.655388",
+                "goal": "<4508.426270, 339.117798, 10237.680664>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "8",
+                "seconds": "29.386",
+                "phase": "LAND",
+                "outcome": "POSE_PERMISSION_READY",
+                "reason": "POST_TOUCHDOWN_POSE_READY",
+                "position": "<4507.651855, 339.103333, 10237.680664>",
+                "distance": "0.774549",
+                "goal": "<4507.651855, 339.103333, 10237.680664>",
+                "pending": "false",
+                "active": "true"
+              },
+              {
+                "sequence": "13",
+                "seconds": "37.903",
+                "phase": "EGRESS",
+                "outcome": "VALIDATED_FOLLOW",
+                "reason": "ARRIVED",
+                "position": "<4507.651855, 339.103333, 10237.680664>",
+                "distance": "0.774549",
+                "goal": "<4507.651855, 339.103333, 10237.680664>",
+                "pending": "false",
+                "active": "true"
+              }
+            ],
+            "lastDistance": 0.774549,
+            "clearance": {
+              "seconds": 29.386,
+              "position": "<4507.651855, 339.103333, 10237.680664>",
+              "distance": 0.774549
+            },
+            "terminal": {
+              "outcome": "VALIDATED_FOLLOW",
+              "seconds": 37.903,
+              "position": "<4507.651855, 339.103333, 10237.680664>",
+              "transitionSequence": 257
+            }
+          },
+          {
+            "id": 8,
+            "generation": 1,
+            "recoveryGeneration": 1,
+            "startSeconds": 28.553,
+            "start": "<4508.437500, 339.117950, 10237.662109>",
+            "events": [
+              {
+                "sequence": "5",
+                "seconds": "28.553",
+                "phase": "LAND",
+                "outcome": "PHYSICAL_TOUCHDOWN",
+                "reason": "POST_TOUCHDOWN_POSE_PENDING",
+                "position": "<4508.437500, 339.117950, 10237.662109>",
+                "distance": "0",
+                "goal": "<4508.437500, 339.117950, 10237.662109>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "6",
+                "seconds": "28.553",
+                "phase": "LAND",
+                "outcome": "PENDING",
+                "reason": "CONTACT_AIR_SEPARATION",
+                "position": "<4508.407715, 339.117371, 10237.662109>",
+                "distance": "0.0297908",
+                "goal": "<4508.437500, 339.117950, 10237.662109>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "9",
+                "seconds": "29.622",
+                "phase": "LAND",
+                "outcome": "PENDING",
+                "reason": "CONTACT_AIR_SEPARATION",
+                "position": "<4508.199219, 339.113495, 10237.662109>",
+                "distance": "0.238323",
+                "goal": "<4508.437500, 339.117950, 10237.662109>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "10",
+                "seconds": "30.665",
+                "phase": "LAND",
+                "outcome": "PENDING",
+                "reason": "CONTACT_AIR_SEPARATION",
+                "position": "<4507.990723, 339.109589, 10237.662109>",
+                "distance": "0.446856",
+                "goal": "<4508.437500, 339.117950, 10237.662109>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "11",
+                "seconds": "31.767",
+                "phase": "LAND",
+                "outcome": "PENDING",
+                "reason": "CONTACT_AIR_SEPARATION",
+                "position": "<4507.722656, 339.104584, 10237.662109>",
+                "distance": "0.714969",
+                "goal": "<4508.437500, 339.117950, 10237.662109>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "12",
+                "seconds": "32.007",
+                "phase": "LAND",
+                "outcome": "POSE_PERMISSION_READY",
+                "reason": "POST_TOUCHDOWN_POSE_READY",
+                "position": "<4507.663086, 339.103485, 10237.662109>",
+                "distance": "0.774549",
+                "goal": "<4507.663086, 339.103485, 10237.662109>",
+                "pending": "false",
+                "active": "true"
+              },
+              {
+                "sequence": "14",
+                "seconds": "40.708",
+                "phase": "EGRESS",
+                "outcome": "VALIDATED_FOLLOW",
+                "reason": "ARRIVED",
+                "position": "<4507.663086, 339.103485, 10237.662109>",
+                "distance": "0.774549",
+                "goal": "<4507.663086, 339.103485, 10237.662109>",
+                "pending": "false",
+                "active": "true"
+              }
+            ],
+            "lastDistance": 0.774549,
+            "clearance": {
+              "seconds": 32.007,
+              "position": "<4507.663086, 339.103485, 10237.662109>",
+              "distance": 0.774549
+            },
+            "terminal": {
+              "outcome": "VALIDATED_FOLLOW",
+              "seconds": 40.708,
+              "position": "<4507.663086, 339.103485, 10237.662109>",
+              "transitionSequence": 285
+            }
+          },
+          {
+            "id": 50,
+            "generation": 1,
+            "recoveryGeneration": 1,
+            "startSeconds": 61.151,
+            "start": "<4512.222656, 339.183044, 10236.224609>",
+            "events": [
+              {
+                "sequence": "15",
+                "seconds": "61.151",
+                "phase": "LAND",
+                "outcome": "PHYSICAL_TOUCHDOWN",
+                "reason": "POST_TOUCHDOWN_POSE_PENDING",
+                "position": "<4512.222656, 339.183044, 10236.224609>",
+                "distance": "0",
+                "goal": "<4512.222656, 339.183044, 10236.224609>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "16",
+                "seconds": "61.151",
+                "phase": "LAND",
+                "outcome": "PENDING",
+                "reason": "CONTACT_AIR_SEPARATION",
+                "position": "<4512.222656, 339.182922, 10236.194336>",
+                "distance": "0.0302737",
+                "goal": "<4512.222656, 339.183044, 10236.224609>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "17",
+                "seconds": "62.199",
+                "phase": "LAND",
+                "outcome": "PENDING",
+                "reason": "CONTACT_AIR_SEPARATION",
+                "position": "<4512.222656, 339.181824, 10235.921875>",
+                "distance": "0.302737",
+                "goal": "<4512.222656, 339.183044, 10236.224609>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "18",
+                "seconds": "62.872",
+                "phase": "LAND",
+                "outcome": "POSE_PERMISSION_READY",
+                "reason": "POST_TOUCHDOWN_POSE_READY",
+                "position": "<4512.222656, 339.181213, 10235.770508>",
+                "distance": "0.454105",
+                "goal": "<4512.222656, 339.181213, 10235.770508>",
+                "pending": "false",
+                "active": "true"
+              },
+              {
+                "sequence": "26",
+                "seconds": "70.688",
+                "phase": "EGRESS",
+                "outcome": "VALIDATED_FOLLOW",
+                "reason": "ARRIVED",
+                "position": "<4512.222656, 339.181213, 10235.770508>",
+                "distance": "0.454105",
+                "goal": "<4512.222656, 339.181213, 10235.770508>",
+                "pending": "false",
+                "active": "true"
+              }
+            ],
+            "lastDistance": 0.454105,
+            "clearance": {
+              "seconds": 62.872,
+              "position": "<4512.222656, 339.181213, 10235.770508>",
+              "distance": 0.454105
+            },
+            "terminal": {
+              "outcome": "VALIDATED_FOLLOW",
+              "seconds": 70.688,
+              "position": "<4512.222656, 339.181213, 10235.770508>",
+              "transitionSequence": 539
+            }
+          },
+          {
+            "id": 16,
+            "generation": 1,
+            "recoveryGeneration": 1,
+            "startSeconds": 67.173,
+            "start": "<4508.426270, 339.116058, 10237.183594>",
+            "events": [
+              {
+                "sequence": "19",
+                "seconds": "67.173",
+                "phase": "LAND",
+                "outcome": "PHYSICAL_TOUCHDOWN",
+                "reason": "POST_TOUCHDOWN_POSE_PENDING",
+                "position": "<4508.426270, 339.116058, 10237.183594>",
+                "distance": "0",
+                "goal": "<4508.426270, 339.116058, 10237.183594>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "20",
+                "seconds": "67.173",
+                "phase": "LAND",
+                "outcome": "PENDING",
+                "reason": "CONTACT_AIR_SEPARATION",
+                "position": "<4508.396484, 339.115479, 10237.183594>",
+                "distance": "0.0297908",
+                "goal": "<4508.426270, 339.116058, 10237.183594>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "21",
+                "seconds": "68.257",
+                "phase": "LAND",
+                "outcome": "PENDING",
+                "reason": "CONTACT_AIR_SEPARATION",
+                "position": "<4508.187988, 339.111603, 10237.183594>",
+                "distance": "0.238323",
+                "goal": "<4508.426270, 339.116058, 10237.183594>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "22",
+                "seconds": "69.441",
+                "phase": "LAND",
+                "outcome": "PENDING",
+                "reason": "CONTACT_AIR_SEPARATION",
+                "position": "<4507.860352, 339.105499, 10237.183594>",
+                "distance": "0.566016",
+                "goal": "<4508.426270, 339.116058, 10237.183594>",
+                "pending": "true",
+                "active": "true"
+              },
+              {
+                "sequence": "23",
+                "seconds": "70.142",
+                "phase": "LAND",
+                "outcome": "POSE_PERMISSION_READY",
+                "reason": "POST_TOUCHDOWN_POSE_READY",
+                "position": "<4507.651855, 339.101776, 10237.183594>",
+                "distance": "0.774546",
+                "goal": "<4507.651855, 339.101776, 10237.183594>",
+                "pending": "false",
+                "active": "true"
+              },
+              {
+                "sequence": "30",
+                "seconds": "77.422",
+                "phase": "EGRESS",
+                "outcome": "VALIDATED_FOLLOW",
+                "reason": "ARRIVED",
+                "position": "<4507.651855, 339.101776, 10237.183594>",
+                "distance": "0.774546",
+                "goal": "<4507.651855, 339.101776, 10237.183594>",
+                "pending": "false",
+                "active": "true"
+              }
+            ],
+            "lastDistance": 0.774546,
+            "clearance": {
+              "seconds": 70.142,
+              "position": "<4507.651855, 339.101776, 10237.183594>",
+              "distance": 0.774546
+            },
+            "terminal": {
+              "outcome": "VALIDATED_FOLLOW",
+              "seconds": 77.422,
+              "position": "<4507.651855, 339.101776, 10237.183594>",
+              "transitionSequence": 590
+            }
+          }
+        ]
+      },
+      "clock": {
+        "observedMissionSeconds": 294.9860000000019,
+        "nativeAdvanceSeconds": 155.805,
+        "calls": 3116,
+        "nativeClockPerMissionSecond": 0.5281776084288712,
+        "callbackCallsPerMissionSecond": 10.56321316943848,
+        "nativeAdvancePerCallback": 0.05000160462130937
+      },
+      "allFailureLabels": {
+        "CONTACT_SUPPORT_LOST": 13
+      },
+      "admissionViolations": [],
+      "climbFailureContexts": []
     }
   ],
-  "tangentRows": [
+  "compiler": [
     {
-      "sequence": "1",
-      "pose": "0",
-      "mode": "3",
-      "iteration": "3",
-      "before": "<4511.504395, 339.171906, 10236.788086>",
-      "proposal": "<4511.512695, 339.171906, 10236.759766>",
-      "normal": "<0.959576, 0.000000, 0.281448>",
-      "rejectedDelta": "<0.000000, 0.000000, -0.030273>",
-      "size": "0.03",
-      "bias": "0",
-      "accepted": "true",
-      "diagnostic": "NONDEEPENING_CLEAR",
-      "actual": "<4511.512695, 339.171936, 10236.759766>",
-      "separationDistance": "0.0900591"
+      "validation": "controlled-post-touchdown-owner",
+      "runId": "compile-e9dc1ce99a4f4f8e81231fb32baa6c5c",
+      "passed": false,
+      "buildId": "9DCB0E9072891FEBE88C943FCDA21CE8A5F6F90228D4172D9D7B495F4DA53F79"
     },
     {
-      "sequence": "2",
-      "pose": "0",
-      "mode": "3",
-      "iteration": "5",
-      "before": "<4511.512695, 339.171814, 10236.729492>",
-      "proposal": "<4511.513184, 339.171814, 10236.699219>",
-      "normal": "<0.999917, 0.000000, 0.012895>",
-      "rejectedDelta": "<0.000000, 0.000000, -0.030273>",
-      "size": "0.03",
-      "bias": "0",
-      "accepted": "true",
-      "diagnostic": "NONDEEPENING_CLEAR",
-      "actual": "<4511.513184, 339.171692, 10236.699219>",
-      "separationDistance": "0.15061"
+      "validation": "controlled-post-touchdown-owner-ordered",
+      "runId": "compile-c09d8a35a01d421db298d321da7ea85a",
+      "passed": false,
+      "buildId": "3F6D2F80032051CACFCEB28BDC0589C4138C59227CF0E3E6996820B3F40BCAD0"
+    },
+    {
+      "validation": "controlled-post-touchdown-owner-spaced",
+      "runId": "compile-f35b99fd4c9549d18735d31e25978207",
+      "passed": true,
+      "buildId": "3F6D2F80032051CACFCEB28BDC0589C4138C59227CF0E3E6996820B3F40BCAD0"
+    },
+    {
+      "validation": "controlled-post-touchdown-owner-detail",
+      "runId": "compile-f3df6a0f65a643459eb58ff56378695c",
+      "passed": false,
+      "buildId": "5137B964E856442956C932F8D8584ACE43AEC2E030C172592D5168FAF5E08E55"
+    },
+    {
+      "validation": "controlled-post-touchdown-owner-normalized",
+      "runId": "compile-7ae772259f844e26a0917b6eaff70223",
+      "passed": true,
+      "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8"
+    },
+    {
+      "validation": "controlled-post-touchdown-owner-repeat",
+      "runId": "compile-2e9edeb1119a4f2593f55d9bebea41f4",
+      "passed": true,
+      "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8"
+    },
+    {
+      "validation": "controlled-post-touchdown-live",
+      "runId": "compile-b1efcfac4b4241aea0c20df099ad0187",
+      "passed": true,
+      "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8"
     }
   ],
-  "singleObservation": {
-    "sourceRunId": "runtime-20261029-161948",
-    "logicalAgents": 1,
-    "nativeHosts": 8,
-    "scenario": "AI and movement disabled; idle request0",
-    "repetitions": 1,
-    "frameWarmupSeconds": 15,
-    "foregroundFrames": 3735,
-    "foregroundMissionFrameMs": {
-      "p50": 20.0,
-      "p95": 32.0,
-      "p99": 35.0
+  "playerStimulus": [
+    {
+      "runId": "runtime-20261029-142458",
+      "count": 8,
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "legs": {
+        "GROUND_EAST": {
+          "startSeconds": 135.036,
+          "endSeconds": 145.06,
+          "start": "<4523.000000, 339.306671, 10243.000000>",
+          "end": "<4563.046875, 339.263794, 10243.000000>",
+          "flatDisplacementMeters": 40.046875,
+          "flatPathLengthMeters": 40.046875,
+          "requestedSpeedCode": 2
+        },
+        "GROUND_NORTH": {
+          "startSeconds": 160.104,
+          "endSeconds": 170.044,
+          "start": "<4563.385254, 339.265289, 10243.018555>",
+          "end": "<4563.385254, 339.434540, 10283.206055>",
+          "flatDisplacementMeters": 40.1875,
+          "flatPathLengthMeters": 40.1875,
+          "requestedSpeedCode": 2
+        }
+      },
+      "finalPlayer": "<4563.385254, 339.431549, 10283.485352>"
     },
-    "cpuClockWindow": {
-      "firstSeconds": 15.106,
-      "lastSeconds": 89.722,
-      "wallSeconds": 74.616,
-      "nativeSecondsDelta": 56.29950000000001,
-      "nativeToWallRatio": 0.7545231585718882,
-      "updateDelta": 1126,
-      "updatesPerWallSecond": 15.090597190951003
+    {
+      "runId": "runtime-20261029-143221",
+      "count": 64,
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "legs": {
+        "GROUND_EAST": {
+          "startSeconds": 135.035,
+          "endSeconds": 145.047,
+          "start": "<4523.000000, 339.306671, 10243.000000>",
+          "end": "<4562.906250, 339.264221, 10243.144531>",
+          "flatDisplacementMeters": 39.906511727692525,
+          "flatPathLengthMeters": 39.927408550831764,
+          "requestedSpeedCode": 2
+        },
+        "GROUND_NORTH": {
+          "startSeconds": 160.104,
+          "endSeconds": 170.029,
+          "start": "<4563.290039, 339.265900, 10243.166016>",
+          "end": "<4564.533203, 339.375031, 10261.840820>",
+          "flatDisplacementMeters": 18.716136384663344,
+          "flatPathLengthMeters": 19.318988298863303,
+          "requestedSpeedCode": 2
+        }
+      },
+      "finalPlayer": "<4564.533203, 339.379395, 10262.248047>"
     },
-    "rootFixed": true,
-    "performanceAcceptance": false,
-    "visibleSmoothnessAccepted": false,
-    "recordingOverheadExcludedFromPerformanceAcceptance": true,
-    "otherUserGameAndEditorPreserved": true,
+    {
+      "runId": "runtime-20261029-164705",
+      "count": 8,
+      "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
+      "legs": {
+        "GROUND_EAST": {
+          "startSeconds": 135.012,
+          "endSeconds": 145.058,
+          "start": "<4523.000000, 339.306671, 10243.000000>",
+          "end": "<4563.127441, 339.264130, 10243.000000>",
+          "flatDisplacementMeters": 40.127440999999635,
+          "flatPathLengthMeters": 40.127440999999635,
+          "requestedSpeedCode": 2
+        },
+        "GROUND_NORTH": {
+          "startSeconds": 160.081,
+          "endSeconds": 170.064,
+          "start": "<4563.435547, 339.265442, 10243.012695>",
+          "end": "<4563.435547, 339.433990, 10283.294922>",
+          "flatDisplacementMeters": 40.28222699999969,
+          "flatPathLengthMeters": 40.28222699999969,
+          "requestedSpeedCode": 2
+        }
+      },
+      "finalPlayer": "<4563.435547, 339.431335, 10283.544922>"
+    },
+    {
+      "runId": "runtime-20261029-165343",
+      "count": 64,
+      "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
+      "legs": {
+        "GROUND_EAST": {
+          "startSeconds": 135.115,
+          "endSeconds": 145.114,
+          "start": "<4523.000000, 339.306671, 10243.000000>",
+          "end": "<4527.057617, 339.346436, 10242.504883>",
+          "flatDisplacementMeters": 4.087712876705208,
+          "flatPathLengthMeters": 4.7657662415795725,
+          "requestedSpeedCode": 2
+        },
+        "GROUND_NORTH": {
+          "startSeconds": 160.117,
+          "endSeconds": 170.046,
+          "start": "<4527.191895, 339.346954, 10242.526367>",
+          "end": "<4527.250488, 339.325684, 10255.588867>",
+          "flatDisplacementMeters": 13.062631411382966,
+          "flatPathLengthMeters": 13.335066982258844,
+          "requestedSpeedCode": 2
+        }
+      },
+      "finalPlayer": "<4527.250488, 339.324615, 10256.000977>"
+    }
+  ],
+  "highCoverage": {
+    "sourceRunId": "runtime-20261029-165343",
+    "missingHighFollow": [
+      0,
+      4,
+      9,
+      11,
+      12,
+      16,
+      17,
+      19,
+      20,
+      23,
+      24,
+      31,
+      35,
+      36,
+      37,
+      39,
+      47,
+      51,
+      52,
+      53,
+      54,
+      55,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63
+    ],
+    "missingCount": 28,
+    "sampledPhaseCounts": {
+      "FOLLOW": 2841,
+      "MOTION": 64,
+      "FALL": 22,
+      "LAND": 82,
+      "EGRESS": 4,
+      "SETTLE": 11
+    },
+    "sampledReasonCounts": {
+      "": 1450,
+      "LINK_ALIGN": 346,
+      "ALIGN_HEADING": 642,
+      "SUPPORT_BYPASS_PLANNED": 74,
+      "RECOVERY_REPLAN_WAIT": 201,
+      "ENTRY_POSE_SETTLE": 51,
+      "NO_GROUND_PATH": 41,
+      "NATIVE_TRAVERSAL_START": 3,
+      "ENTRY_ALIGNMENT_NO_PROGRESS": 19,
+      "NATIVE_MOTION": 62,
+      "FALL_CONTACT_AIR_SEPARATION": 3,
+      "LANDING_SPACE_BLOCKED": 15,
+      "POST_TOUCHDOWN_POSE_PENDING": 1,
+      "CONTACT_AIR_SEPARATION": 26,
+      "POST_TOUCHDOWN_POSE_READY": 1,
+      "LAND": 57,
+      "SETTLE": 11,
+      "SUPPORTED_EGRESS_HANDOFF": 1,
+      "NATIVE_FALL": 4,
+      "EXIT_SPACE_BLOCKED": 6,
+      "ARRIVED": 3,
+      "SURFACE_ROUTE_WAIT": 1,
+      "POSE_CLEARANCE_SEPARATION": 4,
+      "SURFACE_YIELD_HOLD": 2
+    },
     "limitations": [
-      "One observed run with recorder and unrelated user applications active.",
-      "CPU NativeSeconds is accumulated script callback time, not independent GPU clip phase.",
-      "No CPU bone trajectory recorded by this idle harness.",
-      "Not a 64-agent performance baseline."
+      "Counts are sampled observations across28 actors,not exact durations or causal attribution.",
+      "High-hold coverage failure is separate from final64/64 and native climb-end validation."
     ]
   },
-  "visibleSegments": {
-    "10": {
-      "videoStart": 10,
-      "seconds": 3,
-      "actorPixelHolds": {
-        "lowChangeFraction": 0.1787709497206704,
-        "maximumLowChangeIntervalMs": 16.666666666666668
+  "offline": [
+    {
+      "runId": "compile-7ae772259f844e26a0917b6eaff70223",
+      "positive": {
+        "case": "1",
+        "iteration": "79",
+        "seconds": "4",
+        "phase": "FOLLOW",
+        "pending": "false",
+        "active": "false",
+        "starts": "1",
+        "clearances": "1",
+        "failures": "0",
+        "position": "<4511.513184, 339.167938, 10235.760742>",
+        "goal": "<4511.513184, 339.167938, 10235.760742>",
+        "wantLanding": "false",
+        "distance": "1.08909",
+        "tangentSteps": "2",
+        "reason": "NATIVE_JOINT_WORLD_REPLAY_STUB"
       },
-      "clockPixelHolds": {
-        "lowChangeFraction": 0.1787709497206704,
-        "maximumLowChangeIntervalMs": 16.666666666666668
+      "firstClearance": {
+        "case": "1",
+        "iteration": "36",
+        "seconds": "1.84998",
+        "phase": "LAND",
+        "pending": "false",
+        "active": "true",
+        "starts": "1",
+        "clearances": "1",
+        "failures": "0",
+        "position": "<4511.513184, 339.167938, 10235.760742>",
+        "goal": "<4511.513184, 339.167938, 10235.760742>",
+        "wantLanding": "true",
+        "distance": "1.08909",
+        "tangentSteps": "2",
+        "reason": "POST_TOUCHDOWN_POSE_READY"
       },
-      "backgroundPixelHolds": {
-        "lowChangeFraction": 0.8435754189944135,
-        "maximumLowChangeIntervalMs": 466.6666666666667
-      },
-      "silhouetteHeldWhileClockChanged": {
-        "1": {
-          "pairs": 0,
-          "clockChangedPairs": 147
-        },
-        "5": {
-          "pairs": 0,
-          "clockChangedPairs": 147
-        },
-        "10": {
-          "pairs": 0,
-          "clockChangedPairs": 147
-        },
-        "20": {
-          "pairs": 0,
-          "clockChangedPairs": 147
-        }
-      }
+      "assertionsPassed": true
     },
-    "20": {
-      "videoStart": 20,
-      "seconds": 3,
-      "actorPixelHolds": {
-        "lowChangeFraction": 0.1787709497206704,
-        "maximumLowChangeIntervalMs": 33.333333333333336
+    {
+      "runId": "compile-2e9edeb1119a4f2593f55d9bebea41f4",
+      "positive": {
+        "case": "1",
+        "iteration": "79",
+        "seconds": "4",
+        "phase": "FOLLOW",
+        "pending": "false",
+        "active": "false",
+        "starts": "1",
+        "clearances": "1",
+        "failures": "0",
+        "position": "<4511.513184, 339.167938, 10235.760742>",
+        "goal": "<4511.513184, 339.167938, 10235.760742>",
+        "wantLanding": "false",
+        "distance": "1.08909",
+        "tangentSteps": "2",
+        "reason": "NATIVE_JOINT_WORLD_REPLAY_STUB"
       },
-      "clockPixelHolds": {
-        "lowChangeFraction": 0.16759776536312848,
-        "maximumLowChangeIntervalMs": 33.333333333333336
+      "firstClearance": {
+        "case": "1",
+        "iteration": "36",
+        "seconds": "1.84998",
+        "phase": "LAND",
+        "pending": "false",
+        "active": "true",
+        "starts": "1",
+        "clearances": "1",
+        "failures": "0",
+        "position": "<4511.513184, 339.167938, 10235.760742>",
+        "goal": "<4511.513184, 339.167938, 10235.760742>",
+        "wantLanding": "true",
+        "distance": "1.08909",
+        "tangentSteps": "2",
+        "reason": "POST_TOUCHDOWN_POSE_READY"
       },
-      "backgroundPixelHolds": {
-        "lowChangeFraction": 0.6480446927374302,
-        "maximumLowChangeIntervalMs": 550.0
-      },
-      "silhouetteHeldWhileClockChanged": {
-        "1": {
-          "pairs": 2,
-          "clockChangedPairs": 149
-        },
-        "5": {
-          "pairs": 5,
-          "clockChangedPairs": 149
-        },
-        "10": {
-          "pairs": 6,
-          "clockChangedPairs": 149
-        },
-        "20": {
-          "pairs": 6,
-          "clockChangedPairs": 149
-        }
-      }
-    },
-    "30": {
-      "videoStart": 30,
-      "seconds": 3,
-      "actorPixelHolds": {
-        "lowChangeFraction": 0.18435754189944134,
-        "maximumLowChangeIntervalMs": 33.333333333333336
-      },
-      "clockPixelHolds": {
-        "lowChangeFraction": 0.17318435754189945,
-        "maximumLowChangeIntervalMs": 16.666666666666668
-      },
-      "backgroundPixelHolds": {
-        "lowChangeFraction": 0.6201117318435754,
-        "maximumLowChangeIntervalMs": 400.0
-      },
-      "silhouetteHeldWhileClockChanged": {
-        "1": {
-          "pairs": 2,
-          "clockChangedPairs": 148
-        },
-        "5": {
-          "pairs": 3,
-          "clockChangedPairs": 148
-        },
-        "10": {
-          "pairs": 4,
-          "clockChangedPairs": 148
-        },
-        "20": {
-          "pairs": 5,
-          "clockChangedPairs": 148
-        }
-      }
+      "assertionsPassed": true
     }
-  }
+  ]
+}
+
+Own candidate implementation
+// Opt-in physical touchdown / landing-pose ownership. No graph timing change.
+// Every proposed translation still uses the original swept contact gates.
+modded class DGBNativeTraversal
+{
+    bool PTRead;bool PTEnabled;bool PTActive;bool PTPending;bool PTPlanning;
+    bool PTPreviousSeparation;bool PTValidatedHandoff;
+    int PTGeneration;int PTRecoveryGeneration;int PTStarts;int PTClearances;int PTFailures;int PTTangentSteps;
+    float PTUntil;float PTLastProgress;float PTNextTrace;
+    static int PTSequence;
+    bool PTPolicy()
+    {
+        if(!PTRead){PTEnabled=FileExist("$profile:post-touchdown-owner.flag") && FileExist("$profile:footprint-recovery.flag");PTRead=true;}
+        return PTEnabled;
+    }
+    bool PTCombatOwns()
+    {return Body.Combat && (Body.Combat.Active || Body.Combat.Dead || Body.Combat.PendingDeath);}
+    void PTLog(string outcome,string previous="")
+    {
+        if(!FileExist("$profile:state-contract.flag"))return;
+        string path="$profile:native-post-touchdown.tsv";bool exists=FileExist(path);
+        FileHandle file=OpenFile(path,FileMode.APPEND);if(!file){Print("DG_POST_TOUCHDOWN_OWNER_LOG_FAILED");return;}
+        if(!exists)FPrintln(file,"sequence\tseconds\tid\tprevious\tphase\toutcome\treason\tgeneration\trecoveryGeneration\tposition\tcontactStatus\tpending\tactive\tdistance\tuntil\tgoal\trequest\tnativeRequest\tnativeSeconds\ttangentSteps");
+        PTSequence++;
+        string row=PTSequence.ToString()+"\t"+(Now()-Body.Director.Born)+"\t"+Body.Id+"\t"+previous+"\t"+Phase+"\t"+outcome+"\t"+Body.Reason;
+        row+="\t"+PTGeneration+"\t"+PTRecoveryGeneration+"\t"+Body.Agent.Position+"\t"+Body.HitType+"\t"+PTPending+"\t"+PTActive;
+        row+="\t"+SeparationEpisodeDistance+"\t"+PTUntil+"\t"+EgressGoal+"\t"+Body.Request+"\t"+Body.Leader.NativeRequest+"\t"+Body.Leader.NativeSeconds+"\t"+PTTangentSteps;
+        FPrintln(file,row);CloseFile(file);
+    }
+    bool PTFullEndpoint(out vector support,out float lift,array<vector> contacts)
+    {
+        // Queries are diagnostic proposals, not owners of the motor's failure.
+        string reason=Body.Reason;string hit=Body.HitType;string landing=LandingDiagnostic;
+        vector point=Body.HitPoint;vector normal=Body.HitNormal;float fraction=Body.HitFraction;
+        int rejectedJoint=ECEndpointRejectedJoint;bool clear=false;
+        if(LandingSpace(Body.Agent.Position,support,false) && Fixture().Area(support)=="ground")
+            if(ECEndpointClear(Body.Agent.Position))
+                if(DGBGroundRoute.SegmentClear(Body.Agent.Position,Body.Agent.Position,Body.Agent.ObstacleMin,Body.Agent.ObstacleMax))
+                    clear=Body.SolveContacts(Body.Agent.Position,Body.Agent.Heading,lift,contacts);
+        Body.Reason=reason;Body.HitType=hit;Body.HitPoint=point;Body.HitNormal=normal;Body.HitFraction=fraction;
+        LandingDiagnostic=landing;ECEndpointRejectedJoint=rejectedJoint;return clear;
+    }
+    void PTCancel(string outcome,bool permitLanding=true)
+    {
+        PTLog(outcome);bool pending=PTPending;PTPending=false;PTActive=false;PTPlanning=false;
+        if(pending)
+        {
+            PressureLandingSeparation=PTPreviousSeparation;PressureEscapeValid=false;
+            if(permitLanding && Phase=="LAND"){WantLanding=true;WantRelease=false;Body.NextRequest=0;NativePhaseAt=Body.Leader.NativeSeconds;}
+        }
+    }
+    void PTReady(vector support,float lift,array<vector> contacts)
+    {
+        PTPending=false;PTClearances++;WantLanding=true;WantRelease=false;Body.NextRequest=0;
+        NativePhaseAt=Body.Leader.NativeSeconds;Body.Lift=lift;Body.Contacts.Copy(contacts);
+        // The old touchdown point may still be inside the blocked pocket.
+        EgressGoal=support;SurfaceWaypoints.Clear();NextSurfacePlan=0;
+        Body.Agent.Path.Clear();Body.Agent.PlanAt=0;LastProgressAt=Now();
+        Body.Reason="POST_TOUCHDOWN_POSE_READY";PTLog("POSE_PERMISSION_READY");
+    }
+    override void SetPhase(string phase)
+    {
+        string previous=Phase;
+        if(phase=="FALL" && previous!="FALL")PTRecoveryGeneration++;
+        if(PTActive && phase!="LAND" && phase!="EGRESS")
+        {
+            string outcome="CANCEL_PHASE_"+phase;if(phase=="FOLLOW" && PTValidatedHandoff)outcome="VALIDATED_FOLLOW";
+            PTCancel(outcome,false);
+        }
+        super.SetPhase(phase);
+        if(!PTPolicy() || previous!="FALL" || phase!="LAND" || PTCombatOwns())return;
+        // Short supported drops and roofs retain their original presentation.
+        if(FallPresentationRequest!=8 || Body.Request!=8 || Body.Leader.NativeRequest!=8 || Fixture().Area(Body.Agent.Position)!="ground")return;
+        vector support;float lift;ref array<vector> contacts={};
+        if(PTFullEndpoint(support,lift,contacts))return;
+        PTActive=true;PTPending=true;PTValidatedHandoff=false;PTGeneration++;PTStarts++;
+        PTPreviousSeparation=PressureLandingSeparation;PressureLandingSeparation=true;
+        PTUntil=Now()+6;PTLastProgress=Now();PTNextTrace=0;
+        SeparationEpisodeDistance=0;SeparationDistanceBudget=1.5;
+        PressureEscapeValid=false;NextPressureEscapePlan=0;
+        WantLanding=false;WantRelease=false;Body.NextRequest=8;
+        Body.Reason="POST_TOUCHDOWN_POSE_PENDING";PTLog("PHYSICAL_TOUCHDOWN",previous);
+    }
+    override bool ECNeedsGroundHandoff(){return super.ECNeedsGroundHandoff() || PTActive;}
+    override void Observe()
+    {
+        super.Observe();
+        if(!PTActive)return;
+        if(PTCombatOwns()){PTCancel("CANCEL_COMBAT");return;}
+        if(PTPending && Phase=="LAND"){WantLanding=false;WantRelease=false;Body.NextRequest=8;}
+    }
+    override bool LandingSpace(vector nearPoint,out vector supported,bool requireEntitySpace=true)
+    {
+        bool accepted=super.LandingSpace(nearPoint,supported,requireEntitySpace);
+        if(accepted && PTPlanning && Fixture().Area(supported)=="ground")
+            if(!DGBGroundRoute.SegmentClear(supported,supported,Body.Agent.ObstacleMin,Body.Agent.ObstacleMax))
+            {LandingDiagnostic="POST_TOUCHDOWN_ROUTE_TARGET_BLOCKED";return false;}
+        return accepted;
+    }
+    override bool PlanPressureEscape(float dt)
+    {
+        PTPlanning=PTPending && Phase=="LAND";
+        bool planned=super.PlanPressureEscape(dt);PTPlanning=false;return planned;
+    }
+    override bool PressureEscapeStepClear(vector next,out float lift,array<vector> contacts,float proposedHeading=10000)
+    {
+        if(PTPending && Phase=="LAND" && vector.Distance(Body.Agent.Position,next)>Math.Max(0,1.5-SeparationEpisodeDistance))
+        {PressureEscapeDiagnostic="POST_TOUCHDOWN_DISTANCE_BOUND";return false;}
+        return super.PressureEscapeStepClear(next,lift,contacts,proposedHeading);
+    }
+    bool PTTangentStep(float dt)
+    {
+        if(PressureEscapeRejectAt!=Now() || PressureEscapeLastStepReject!="NEW_WORLD_CONTACT")return false;
+        if(PressureEscapeRejectFixtureIndex<0 || PressureEscapeRejectNormal.Length()<0.5)return false;
+        vector displacement=PressureEscapeRejectEnd-PressureEscapeRejectStart;displacement[1]=0;
+        vector normal=PressureEscapeRejectNormal;normal[1]=0;
+        if(displacement.Length()<0.00001 || normal.Length()<0.2)return false;
+        normal=normal*(1.0/normal.Length());
+        float inward=vector.Dot(displacement,normal);
+        if(inward>=-0.00000001){return false;}
+        vector tangent=displacement-normal*inward;tangent[1]=0;
+        float tangentLength=tangent.Length();
+        if(tangentLength<0.00001){return false;}
+        // Explicit unit direction: the packaged trace measured the previous
+        // compact conditional/Normalize statement leaving length0.02905.
+        tangent=tangent*(1.0/tangentLength);
+        vector start=Body.Agent.Position;array<float> sizes={0.03,0.01};
+        foreach(float size:sizes)
+        {
+            float remaining=1.5-SeparationEpisodeDistance;float step=Math.Min(remaining,Math.Min(size,Math.Max(dt,0)*0.6));if(step<=0.0001)return false;
+            vector proposal=start+tangent*step;vector support;
+            if(!DGBGroundAgent.Floor(Body.Leader,proposal,support) || Fixture().Area(support)!=Area || Math.AbsFloat(support[1]-start[1])>0.08)continue;
+            PTProjectionLog(start,displacement,normal,inward,tangent,step,proposal,support,dt);
+            float distance=vector.Distance(start,support);if(distance>remaining || distance<=0.0001)continue;
+            float lift;ref array<vector> contacts={};if(!PressureEscapeStepClear(support,lift,contacts))continue;
+            Body.Agent.Position=support;Body.Agent.Moved+=distance;Body.Agent.MeasuredSpeed=distance/Math.Max(dt,0.001);
+            Body.Lift=lift;Body.Contacts.Copy(contacts);SeparationEpisodeDistance+=distance;PTTangentSteps++;
+            PressureEscapeValid=false;NextPressureEscapePlan=0;Body.Reason="POST_TOUCHDOWN_CONTACT_TANGENT";PTLog("TANGENT_ACCEPTED");return true;
+        }
+        return false;
+    }
+    void PTProjectionLog(vector start,vector displacement,vector normal,float inward,vector tangent,float step,vector proposal,vector support,float dt)
+    {
+        if(!FileExist("$profile:post-touchdown-detail.flag"))return;
+        string path="$profile:native-post-touchdown-projection.tsv";bool exists=FileExist(path);
+        FileHandle file=OpenFile(path,FileMode.APPEND);if(!file)return;
+        if(!exists)FPrintln(file,"seconds\tid\tstart\tdisplacement\tnormal\tinward\ttangent\tstep\tproposal\tsupport\tdt\tdistance\trejectAt\treject\tfixture");
+        FPrintln(file,Now().ToString()+"\t"+Body.Id+"\t"+start+"\t"+displacement+"\t"+normal+"\t"+inward+"\t"+tangent+"\t"+step+"\t"+proposal+"\t"+support+"\t"+dt+"\t"+SeparationEpisodeDistance+"\t"+PressureEscapeRejectAt+"\t"+PressureEscapeLastStepReject+"\t"+PressureEscapeRejectFixtureIndex);
+        CloseFile(file);
+    }
+    override void Settle(float dt)
+    {
+        if(!PTPending){super.Settle(dt);return;}
+        if(PTCombatOwns()){PTCancel("CANCEL_COMBAT");return;}
+        vector physical;
+        if(!DGBGroundAgent.Floor(Body.Leader,Body.Agent.Position,physical) || Fixture().Area(physical)!="ground" || Math.AbsFloat(physical[1]-Body.Agent.Position[1])>0.08)
+        {PTCancel("CANCEL_SUPPORT_LOST",false);Failure="SETTLE_SUPPORT_LOST";StartFall(true);return;}
+        vector support;float lift;ref array<vector> contacts={};
+        if(PTFullEndpoint(support,lift,contacts)){PTReady(support,lift,contacts);return;}
+        string expired="";
+        if(Now()>=PTUntil)expired="TIME_BOUND";
+        else if(SeparationEpisodeDistance>=1.5)expired="DISTANCE_BOUND";
+        else if(Now()-PTLastProgress>=5)expired="NO_TRANSLATION_PROGRESS";
+        if(expired!="")
+        {
+            // End only this helper lease. Never label an unsafe endpoint valid.
+            PTPending=false;PTFailures++;WantLanding=true;WantRelease=false;Body.NextRequest=0;
+            NativePhaseAt=Body.Leader.NativeSeconds;Body.Reason="POST_TOUCHDOWN_"+expired;PTLog("LEASE_FAILED:"+expired);return;
+        }
+        vector before=Body.Agent.Position;bool moved=PressureSlide(dt);
+        if(!moved)moved=PTTangentStep(dt);
+        if(!moved)SupportedEscapeTurn(dt);
+        if(vector.Distance(before,Body.Agent.Position)>0.0001)PTLastProgress=Now();
+        WantLanding=false;WantRelease=false;Body.NextRequest=8;
+        if(PTFullEndpoint(support,lift,contacts)){PTReady(support,lift,contacts);return;}
+        if(Now()>=PTNextTrace){PTLog("PENDING");PTNextTrace=Now()+1;}
+    }
+    override void CompleteEgress(vector support)
+    {
+        if(PTActive)
+        {
+            vector verified;float lift;ref array<vector> contacts={};
+            if(!PTFullEndpoint(verified,lift,contacts))
+            {ECGroundPending=true;Body.Reason="EGRESS_GROUND_HANDOFF_BLOCKED";PTLog("HANDOFF_REJECTED");return;}
+            support=verified;Body.Lift=lift;Body.Contacts.Copy(contacts);PTValidatedHandoff=true;
+        }
+        super.CompleteEgress(support);
+        if(PTActive)PTValidatedHandoff=false;
+    }
 }
 
 이전 애니메이션 진단: [선정 근거](downloads/animation-review.txt). 이번 진단은 시각·성능 해결을 뜻하지 않는다.

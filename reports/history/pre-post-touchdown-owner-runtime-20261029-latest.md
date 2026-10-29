@@ -1,0 +1,66 @@
+# 착지 후 포즈 전환 후보와 단일 NPC 실제 화면 재관측
+
+착지 후 포즈 전환 분리 후보와 단일 NPC 실제 화면 재관측
+
+작성: 2026-10-29T16:25:35.861227+09:00
+
+1. 작업 목표
+
+20번 개체의 착지 후 정체를 물리 착지와 포즈 전환의 소유권 문제로 나누어 검사한다. 보안 창 해제 후 단일 감염자 화면 관측을 재개해 CPU 시간과 실제 표시를 구분한다. 기존 정상 낙하·복구와 AI 파이프라인은 보존한다.
+
+2. 실제 수행
+
+별도 mission-derived subclass에서 동결 raw4joint 포즈3조건×모터4조건을 비교했다. 원래 물리 착지는 그대로 허용하고 full endpoint가 막힌 경우만 landing pose 요청을 보류했다. 기존 PressureSlide에 현재 sim시각·등록 world contact normal의 접선 제안을 추가했다. Floor·같은 area·높이차0.08m·원래 PressureEscapeStepClear 전 gate·실제 이동거리1.5m 예산을 유지했다. 각 최종 검사는 원래 diagnostic 필드를 복원해 후속 정책에 영향을 주지 않게 했다. 실제 동작 요청/그래프/PBO에는 이 후보를 적용하지 않았다.
+
+기존 controlled-investigation 미션3파일을 바이트 동일하게 별도 validation으로 복사하고 현재31A 빌드에 대해 새 컴파일 기록을 만들었다. launcher에 관측 전용 opt-in 선택을 추가했고 기존 compile 기록은 보존했다. 단일 logical NPC/8 native hosts, AI·root motion OFF,request0,90초,frame sync ON으로 실행했다. Computer Use로 DayZ창·프레임 표시·서로 다른 실제 포즈를 확인했다. 별도 OBS WGC로 DayZ창만 45초 lossless60fps 출력에 기록했다. 보안 창은 사용자가 닫았고 다른 프로젝트 앱들은 종료하지 않았다.
+
+3. 측정 결과
+
+|동결 낙하 포즈의 모터 조건|결과|
+|---|---|
+|원래 착지|0.05초 LAND,full endpoint=false인 위치에서 포즈 전환 허용|
+|착지 전 경로 거부|15초 FALL,물리 root가 지면 위에 머무름|
+|착지 후 포즈 보류+기존 복구|15초 미완료,0.06055m 이동 후 정체|
+|착지 후 포즈 보류+contact tangent|1.84998초,1.08909m 이동,full endpoint=true에서 포즈 전환 허용|
+
+성공 후보는 기존 native step34회와 접선2회,계획3회였다. 접선2회는 모두 bias0·요청3cm이며 기존 전체 gate를 통과했다. 안전한 지면 대조군4개는 모두 첫0.05초에 추가 지연 없이 LAND/full endpoint=true였다. 착지 후 idle 포즈를 pre-touchdown 높이에서 시작한 음성 대조군4개는 원래 joint-world 검사에서 물리 착지하지 못하고 FALL로 남았다. 이들을 강제로 내리거나 성공 사례로 집계하지 않았다.
+
+단일 화면 시험 runtime-20261029-161948은 정상 종료했다.15초 이후 foreground3735프레임의 mission p50/p95/p99=20/32/35ms이다. CPU 누적 clock은74.616초 wall 동안56.2995초 진행,비율0.754523이며1126회/15.0906Hz였다. root correction/drift는0이었다. 이는 script callback 누적 clock이며 GPU/clip 실제 위상이 아니다.
+
+영상10·20·30초에서3초씩179쌍을 분석했다. 화면 clock이 변한147/149/148쌍 중 silhouette변화10pixel 미만은0/6/4쌍이었다. raw actor low-change 최대 구간은16.7/33.3/33.3ms였으나 녹화 중복과 투영 영향을 포함한다. CPU15.1Hz를 그대로 표시FPS로 볼 수 없다는 근거다. ROI에는 움직이는 풀·조명과 일부 잘린 팔이 있어 개별 관절의 미세 끊김이나 속도 정확성을 판정하지 않는다. OBS2701출력프레임,렌더 지연3프레임(0.1%). 실제 동작 FPS60 보장은 아니다.
+
+새8/64 기능 회귀는 미실행이다. 기존63/64·64명 p95 120ms·고지대 미도달14개체가 최신 실제 기능 기준으로 남는다. 녹화·다른 사용자 앱이 함께 실행된 이번 단일 시험은 최적화 성능 기준으로 채택하지 않는다.
+
+4. 원인 분석
+
+관찰 사실: 낙하 포즈에서 원래 복구만으로 막히던 위치를 원래 전체 gate를 통과한 접선 이동2개로 벗어났다. 실제 root 착지를 거부하는 방식은 이전과 같이 hover를 만들었다. 단일 idle 영상의 표시 변화는 CPU callback 횟수보다 자주 일어났다.
+
+추정: 착지 전후 포즈의 충돌 가능성 차이와 접선 제안 부재가20번 정체의 일부 원인이다. 물리 착지와 pose permission을 분리하면 해결할 여지가 있다. 네이티브 표시/보간 경로가 CPU callback 사이에도 표시를 바꿀 수 있으나 업로드 시각·정확한 clip위상은 계측되지 않았다.
+
+반증/제한: 단순 착지전 full-route 거부만으로 해결할 수 있다는 후보는 실패했다. CPU갱신15Hz=표시15FPS라고 단정할 수 없다. 이번 실루엣 결과로 달리기·등반 끊김 해소나 원인 확정을 선언하지 않는다.
+
+5. 검증 수준
+
+진단 성공:12case 통제 비교와 단일 실제 영상·CPU clock 관측. 회귀 통과/반복 검증 완료/최종 수용은 아니다. 후보의 완료는 안전한 위치에서 landing pose를 허가한 경계이며 SETTLE→EGRESS→FOLLOW의 종단 완료가 아니다. 기능·시각 품질·성능은 모두 별도 미수용이다.
+
+6. 변경 사항
+
+stage_horde_post_touchdown20.py의 별도 테스트 모터,compiler whitelist/새 관측 compile 선택,launcher ObservationRuntime과 provenance를 추가했다. 새 보고서/분석/선정 증거만 저장한다. 배포 PBO·native graph·보간 정책은 이번에 변경하거나 재빌드/재서명하지 않았다. 현행 integration31A286A3…는 두 새 컴파일과 실제 실행의 서명 검증을 통과했고 base453D6A9E…·render0C6E1855…도 실행 전 검증했다. 후보는 미션 진단에만 존재한다.
+
+7. 원시 증거
+
+모터 compile-299bcfa9e5d147dbb4709aeb14437d9d의 post-touchdown20.tsv/tangent.tsv,새 validation engine-compile.json,단일 runtime-20261029-161948의 frames/samples/HUD·launch·OBS종료 기록·영상·파생 sheet와 집계를 해시 연결한다. 공개 패킷에는 집계/선정 접선2행을 싣고 내부 전체로그·로컬경로·프로세스 정보·게임 자산은 노출하지 않는다. 원시 로그/과거 보고서/과거 compile 기록은 보존한다.
+
+8. 잔여 문제
+
+후보를 runtime에 이식하기 전 recovery ownership,안전 root로 EgressGoal 재지정,CompleteEgress 재검사,전투/사망/재낙하 취소,시간·거리 예산을 연결해야 한다. 이후 opt-in 상태에서8→64 회귀와 순서 교차 반복이 필요하다. 현재 동결 포즈 한 invocation 결과를 live 성공으로 확대하지 않는다.
+
+애니메이션은 실제 달리기/등반 clip에서 동일HUD·CPU 관절/호출·영상의 정확한 frame join을 수집해 이전 세대경계 후보의 점프와 구분한다. 새로운 보간/배속을 근거 없이 도입하지 않는다.64 비용 귀속과20ms p95는 별도 실험이며 미달성이다.
+
+원본 보고서 ID: 2026-10-29_162535_861227+0900_npc-post-touchdown20-visible.md
+원본 SHA-256: 012b9002f66c31231760ef6c0b127ee99284aaac71e0f4cc13832f2d236b4d6b
+이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
+
+선정 함수·대표 기록: [검토 패킷](../downloads/checkpoints/2026-10-29_162535_861227+0900_npc-post-touchdown20-visible_evidence.txt)
+
+[이전 기능 분석](../downloads/admission-report.txt) · [이전 애니메이션 분석](../downloads/animation-report.txt)

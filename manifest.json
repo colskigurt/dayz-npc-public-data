@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T072604-post-touchdown20-visible-20261029",
-  "generatedAt": "2026-10-29T07:26:04.675074+00:00",
-  "exportedAt": "2026-10-29T07:26:04.675074+00:00",
+  "snapshotId": "snapshot-20261029T080442-post-touchdown-owner-runtime-20261029",
+  "generatedAt": "2026-10-29T08:04:42.247474+00:00",
+  "exportedAt": "2026-10-29T08:04:42.247474+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -39,7 +39,9 @@
     "runtime-20261029-140405",
     "runtime-20261029-142458",
     "runtime-20261029-143221",
-    "runtime-20261029-161948"
+    "runtime-20261029-161948",
+    "runtime-20261029-164705",
+    "runtime-20261029-165343"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -49,11 +51,12 @@
     "82CCB0EAB79FDFA90D84CEAA4C10A3C23E2742D9480CE229C0579F0D6945151E",
     "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
     "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
-    "31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126"
+    "31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126",
+    "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T07:26:04.675074+00:00",
-    "staleAfter": "2026-10-30T07:26:04.675074+00:00",
+    "sourceUpdatedAt": "2026-10-29T08:04:42.247474+00:00",
+    "staleAfter": "2026-10-30T08:04:42.247474+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -70,18 +73,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 17127,
-      "sha256": "0051a644fc2bef31fef0db404e8d15b3e38573385fc958f9b180ff2bf67b91a5"
+      "bytes": 61505,
+      "sha256": "6d7f92da797fcca09c27dc34cdda73b44d44379ffa2ed5a882cb98e8665ebb08"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 331331,
-      "sha256": "1cd2a4c47f1955bd0da943e4001400cba4539ba6cbc09053f7cef03868ffb0da"
+      "bytes": 355703,
+      "sha256": "aa9d59785f5078a103919e77c2f258423f93b2c6c673805b6b0b84a39e64eb91"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 331327,
-      "sha256": "08510559185943d122a789c825c3c7583161fd60ed125d041084e023ea99edd9"
+      "bytes": 355699,
+      "sha256": "39f6b6fa9a07c6f2e38ea3f1ddc84a66bf9c8ecea541631e6afb858b4ef8d223"
     },
     {
       "path": "api/public/schema.json",
@@ -404,14 +407,29 @@
       "sha256": "511c8a38da62a824f7c233f6a4af1d4e1d3cddacef24a0ca9d79c727190ab21b"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261029T080442-post-touchdown-owner-runtime-20261029/experiments.json",
+      "bytes": 355703,
+      "sha256": "aa9d59785f5078a103919e77c2f258423f93b2c6c673805b6b0b84a39e64eb91"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T080442-post-touchdown-owner-runtime-20261029/metrics.json",
+      "bytes": 355699,
+      "sha256": "39f6b6fa9a07c6f2e38ea3f1ddc84a66bf9c8ecea541631e6afb858b4ef8d223"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T080442-post-touchdown-owner-runtime-20261029/status.json",
+      "bytes": 355698,
+      "sha256": "4159273684de47217b19cdc678ca26c6f5189421224d1ac0379c8ffc5277c12e"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 331326,
-      "sha256": "511c8a38da62a824f7c233f6a4af1d4e1d3cddacef24a0ca9d79c727190ab21b"
+      "bytes": 355698,
+      "sha256": "4159273684de47217b19cdc678ca26c6f5189421224d1ac0379c8ffc5277c12e"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 733,
-      "sha256": "279bd32945512a2223356262e5946ff375252b9702296a49bd842723fda2e592"
+      "bytes": 741,
+      "sha256": "4334a4939046f063bd5c20e62ff17314d28f4fcdd00d8db87e0bb3601ad63d77"
     },
     {
       "path": "data/experiments/actor43-owner-runtime-20261029.json",
@@ -507,6 +525,11 @@
       "path": "data/experiments/pose-buffer-continuity-20261028.json",
       "bytes": 208362,
       "sha256": "824a896f509690677451a846cbe4876d76dc7dc263dbc131a93fdc8020f4528f"
+    },
+    {
+      "path": "data/experiments/post-touchdown-owner-runtime-20261029.json",
+      "bytes": 89519,
+      "sha256": "ceaf9b8cc8adaf4eddba621207d5028523c45f648aac836945a28aa9d2edcc3b"
     },
     {
       "path": "data/experiments/post-touchdown20-visible-20261029.json",
@@ -759,9 +782,19 @@
       "sha256": "186b8594b5dad68d082bc9583aa068d966a0e1322f54696e77c51d1eedba4326"
     },
     {
+      "path": "downloads/checkpoints/2026-10-29_170240_587456+0900_npc-post-touchdown-owner-runtime.txt",
+      "bytes": 10158,
+      "sha256": "758cd47821af0ef9d4835845e3a2cbaf025f1dc39b0004b7a2334b43a7e82629"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-29_170240_587456+0900_npc-post-touchdown-owner-runtime_evidence.txt",
+      "bytes": 61240,
+      "sha256": "1629ce8a67deedc66f2107eae14ba5b2c26829913c790f6dfcac5ba9ee88cafa"
+    },
+    {
       "path": "README.md",
-      "bytes": 11695,
-      "sha256": "4974e4d9cf8accf86f333dbb2a025a14f929e7ed2ac3305ad8346499cd4490db"
+      "bytes": 12118,
+      "sha256": "0e667698ef298f2e85a27f7188c7183f5a35946ce69fbfea8bd54d03f89ee3be"
     },
     {
       "path": "reports/accessibility-20261028.md",
@@ -929,6 +962,16 @@
       "sha256": "30346226fdd7fd6a5ca2363e9da6aed42cb50b56a38b195025e2579bfaee8425"
     },
     {
+      "path": "reports/history/pre-post-touchdown-owner-runtime-20261029-latest.md",
+      "bytes": 7595,
+      "sha256": "2f383f7cd3819f846dccbdcf3e47d2245bdf4ee579b1904cd1c6e5fceee0881f"
+    },
+    {
+      "path": "reports/history/pre-post-touchdown-owner-runtime-20261029-operations-latest.md",
+      "bytes": 7595,
+      "sha256": "2f383f7cd3819f846dccbdcf3e47d2245bdf4ee579b1904cd1c6e5fceee0881f"
+    },
+    {
       "path": "reports/history/pre-post-touchdown20-visible-20261029-latest.md",
       "bytes": 9504,
       "sha256": "d3e76c94451167215e7e1b5a78c6084a55fd8802fd14aa52f6f426eacdf5c9da"
@@ -980,8 +1023,8 @@
     },
     {
       "path": "reports/latest.md",
-      "bytes": 7595,
-      "sha256": "2f383f7cd3819f846dccbdcf3e47d2245bdf4ee579b1904cd1c6e5fceee0881f"
+      "bytes": 10528,
+      "sha256": "61cd5d97547279da74a76fec24f1f27aa62759e020a16e07dce0a68d8f459958"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -990,8 +1033,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 7595,
-      "sha256": "2f383f7cd3819f846dccbdcf3e47d2245bdf4ee579b1904cd1c6e5fceee0881f"
+      "bytes": 10528,
+      "sha256": "61cd5d97547279da74a76fec24f1f27aa62759e020a16e07dce0a68d8f459958"
     }
   ]
 }
