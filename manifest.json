@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T092121-prelanding17-continuous-20261029",
-  "generatedAt": "2026-10-29T09:21:21.023372+00:00",
-  "exportedAt": "2026-10-29T09:21:21.023372+00:00",
+  "snapshotId": "snapshot-20261029T095028-prelanding17-se2-20261029",
+  "generatedAt": "2026-10-29T09:50:28.160495+00:00",
+  "exportedAt": "2026-10-29T09:50:28.160495+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -57,8 +57,8 @@
     "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T09:21:21.023372+00:00",
-    "staleAfter": "2026-10-30T09:21:21.023372+00:00",
+    "sourceUpdatedAt": "2026-10-29T09:50:28.160495+00:00",
+    "staleAfter": "2026-10-30T09:50:28.160495+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -75,18 +75,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 54824,
-      "sha256": "f5aa4765b6cc039cf025069eee85f173b41fb040d4c92c580215a429619c3008"
+      "bytes": 54456,
+      "sha256": "9ed491f9f84da00768954e2e6c0d98fa5a01f7b5dde5cf0453da413346adc052"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 368339,
-      "sha256": "7e12ff814e531cedbdf80816a35fbf175c3fcb5010ee638e3e24e60402e31fdb"
+      "bytes": 369968,
+      "sha256": "b57deb538270d6b65cdc9a5d39f9eba7eebabda9305e7c822e3963d7f703921f"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 368335,
-      "sha256": "513bf56a10987137c880e86082aa2dda528d51307b89a80c6e42a4e61d1c193d"
+      "bytes": 369964,
+      "sha256": "cd6d33602231d2c268aec7eabb08547718e8425de022c5e955e6cb4d37ebd515"
     },
     {
       "path": "api/public/schema.json",
@@ -469,14 +469,29 @@
       "sha256": "c114029d027908728042c255a134ade3fd67256e9625fc05e18a040c184e3125"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261029T095028-prelanding17-se2-20261029/experiments.json",
+      "bytes": 369968,
+      "sha256": "b57deb538270d6b65cdc9a5d39f9eba7eebabda9305e7c822e3963d7f703921f"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T095028-prelanding17-se2-20261029/metrics.json",
+      "bytes": 369964,
+      "sha256": "cd6d33602231d2c268aec7eabb08547718e8425de022c5e955e6cb4d37ebd515"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T095028-prelanding17-se2-20261029/status.json",
+      "bytes": 369963,
+      "sha256": "5355085b6a1f111060624ca2d19d96e43872490c651ac5ca6d04e7064629b4c2"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 368334,
-      "sha256": "c114029d027908728042c255a134ade3fd67256e9625fc05e18a040c184e3125"
+      "bytes": 369963,
+      "sha256": "5355085b6a1f111060624ca2d19d96e43872490c651ac5ca6d04e7064629b4c2"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 731,
-      "sha256": "f2216bc70ec6e956bbdae810943cda7d40414b7eef1265d8725313ae4fad85ef"
+      "bytes": 717,
+      "sha256": "3b5f4709fb22adc3278e710750a4d2bf441cb9c2ddf9dc1fe5feb935be394262"
     },
     {
       "path": "data/experiments/actor43-owner-runtime-20261029.json",
@@ -597,6 +612,11 @@
       "path": "data/experiments/prelanding17-continuous-20261029.json",
       "bytes": 78599,
       "sha256": "e59a0730cf975990fb650afc716a4d4bd66008f53d1846fb99ed24a5f54074c3"
+    },
+    {
+      "path": "data/experiments/prelanding17-se2-20261029.json",
+      "bytes": 77528,
+      "sha256": "6d2a091117d74a9207f20bd949e2d24d29f14d51e442fef10156bd67773c658a"
     },
     {
       "path": "data/experiments/tickcount-origin-20261028.json",
@@ -884,9 +904,19 @@
       "sha256": "d696ab988bd400d06f32ec79cdc4a811447d81b2dad5b790e0a06e919e05ccca"
     },
     {
+      "path": "downloads/checkpoints/2026-10-29_185003_253762+0900_npc-prelanding17-se2.txt",
+      "bytes": 8617,
+      "sha256": "1b4b225ae99ee2a6b4efa3d5178fa94120c111800c98b6ee8686e1d85bd08ac0"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-29_185003_253762+0900_npc-prelanding17-se2_evidence.txt",
+      "bytes": 54203,
+      "sha256": "8e75097d856ddb5afa623198d03677eca014c5d081f7e47ed4b15bce331679f2"
+    },
+    {
       "path": "README.md",
-      "bytes": 13325,
-      "sha256": "5ab53cfc6c92ff1ebfafe4f52c88554c4f373ede363f5afc1be2264de7525b0b"
+      "bytes": 13786,
+      "sha256": "e8417ed2590a9965f88ae7a563197e31b21aaf3560d32dbe5465fbff7552cfe6"
     },
     {
       "path": "reports/accessibility-20261028.md",
@@ -1104,6 +1134,16 @@
       "sha256": "5526d9070feda76f57d470bf4785d61093b87b36946942018945be8f02b95f0a"
     },
     {
+      "path": "reports/history/pre-prelanding17-se2-20261029-latest.md",
+      "bytes": 8820,
+      "sha256": "4742555980c4594b6ee7b4eae503292811e4c63b152258beb1dd547d90c161ed"
+    },
+    {
+      "path": "reports/history/pre-prelanding17-se2-20261029-operations-latest.md",
+      "bytes": 8820,
+      "sha256": "4742555980c4594b6ee7b4eae503292811e4c63b152258beb1dd547d90c161ed"
+    },
+    {
       "path": "reports/history/pre-runtime-20261028-latest.md",
       "bytes": 3789,
       "sha256": "bd223121e0c2e16d3b76374a67ab177dfe1069cb31cdbfe224bab20b36372284"
@@ -1145,8 +1185,8 @@
     },
     {
       "path": "reports/latest.md",
-      "bytes": 8820,
-      "sha256": "4742555980c4594b6ee7b4eae503292811e4c63b152258beb1dd547d90c161ed"
+      "bytes": 8978,
+      "sha256": "38489c8f50d387580e86a90bbb15b5cc53a1c132b4c765c8fe2e03a7dfc2a6c2"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -1155,8 +1195,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 8820,
-      "sha256": "4742555980c4594b6ee7b4eae503292811e4c63b152258beb1dd547d90c161ed"
+      "bytes": 8978,
+      "sha256": "38489c8f50d387580e86a90bbb15b5cc53a1c132b4c765c8fe2e03a7dfc2a6c2"
     }
   ]
 }

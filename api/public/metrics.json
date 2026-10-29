@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T092121-prelanding17-continuous-20261029",
-  "generatedAt": "2026-10-29T09:21:21.023372+00:00",
+  "snapshotId": "snapshot-20261029T095028-prelanding17-se2-20261029",
+  "generatedAt": "2026-10-29T09:50:28.160495+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -59,9 +59,9 @@
     "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "Previous300s natural8 final8/8;64 final64/64 with high misses28. New frozen motor diagnostics do not establish safe LAND-EGRESS-FOLLOW or8/64 regression.",
-    "visual": "No new visible-frame measurement;frozen CPU pose and dedicated motor evidence only. Animation quality unaccepted.",
-    "performance": "No new client performance test. Previous fixed-cost p95 OFF219/ON241ms,20ms unmet. Diagnostic search elapsed0.258-3.145s includesI/O,not client frame time orCPU self-time.",
+    "functional": "Prior natural300s8 final8/8;64 final64/64 but high misses28. New frozen SE2 trials all failed-pose candidates FALL15s;no valid route committed. No new8/64 regression.",
+    "visual": "No new visible-frame observation. Frozen4joint diagnostics do not validate animation smoothness.",
+    "performance": "No new client p50/p95/p99. Prior fixed-cost mission p95 OFF219/ON241ms;20ms target unmet. Dedicated search elapsed includesI/O,not frame-time orCPU self-time.",
     "regressionChecks": 0
   },
   "metrics": [
@@ -9068,7 +9068,7 @@
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "Pre-touchdown17 still unresolved. Last frozen pose horizontal sampled component54nodes;initial-pose7step path ends with joint0 landing rejection. Full endpoint search hit512node cap,not proof of no route."
+      "description": "Pre-touchdown17 unresolved.512state search caps remain;fresh derived contacts did not change this decision projection. Actual previous4contact history andsame-call dt/velocity capture needed."
     },
     {
       "id": "matched-repeats",
@@ -9577,23 +9577,41 @@
       "uri": "/data/experiments/prelanding17-continuous-20261029.json",
       "sha256": "e59a0730cf975990fb650afc716a4d4bd66008f53d1846fb99ed24a5f54074c3",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "prelanding17-se2-20261029-report",
+      "uri": "/downloads/checkpoints/2026-10-29_185003_253762+0900_npc-prelanding17-se2.txt",
+      "sha256": "1b4b225ae99ee2a6b4efa3d5178fa94120c111800c98b6ee8686e1d85bd08ac0",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "prelanding17-se2-20261029-review",
+      "uri": "/downloads/checkpoints/2026-10-29_185003_253762+0900_npc-prelanding17-se2_evidence.txt",
+      "sha256": "8e75097d856ddb5afa623198d03677eca014c5d081f7e47ed4b15bce331679f2",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "prelanding17-se2-20261029-json",
+      "uri": "/data/experiments/prelanding17-se2-20261029.json",
+      "sha256": "6d2a091117d74a9207f20bd949e2d24d29f14d51e442fef10156bd67773c658a",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T09:21:21.023372+00:00",
-    "staleAfter": "2026-10-30T09:21:21.023372+00:00",
+    "sourceUpdatedAt": "2026-10-29T09:50:28.160495+00:00",
+    "staleAfter": "2026-10-30T09:50:28.160495+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261029T092121-prelanding17-continuous-20261029",
-      "generatedAt": "2026-10-29T09:21:21.023372+00:00",
-      "sourceUpdatedAt": "2026-10-29T09:21:21.023372+00:00"
+      "snapshotId": "snapshot-20261029T095028-prelanding17-se2-20261029",
+      "generatedAt": "2026-10-29T09:50:28.160495+00:00",
+      "sourceUpdatedAt": "2026-10-29T09:50:28.160495+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-29T09:21:21.023372+00:00",
+      "at": "2026-10-29T09:50:28.160495+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -9608,7 +9626,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261029T092121-prelanding17-continuous-20261029/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261029T095028-prelanding17-se2-20261029/"
   },
   "experiments": [
     {
@@ -10493,6 +10511,29 @@
         "matched-repeats"
       ],
       "replication": "Each new six-case condition once;source priority-only comparison proven. No repeated live8/64 or visual acceptance."
+    },
+    {
+      "id": "prelanding17-se2-20261029",
+      "title": "회전과 이동으로도 복구하지 못한 이유: 검색 한도와 초기 접촉 상태",
+      "track": "diagnostic",
+      "sourceRunId": [
+        "runtime-20261029-171916"
+      ],
+      "buildId": [
+        "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [],
+      "evidenceReferences": [
+        "prelanding17-se2-20261029-report",
+        "prelanding17-se2-20261029-review",
+        "prelanding17-se2-20261029-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "Three different six-case conditions once;A/B decision projection matched. Not repeated live8/64,visual or performance acceptance."
     }
   ],
   "kind": "metrics"

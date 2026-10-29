@@ -1,1369 +1,1122 @@
 # DayZ NPC AI — 외부 세션 검토 자료
 
-Snapshot: snapshot-20261029T092121-prelanding17-continuous-20261029
+Snapshot: snapshot-20261029T095028-prelanding17-se2-20261029
 
-연속 복구 진단 — 작은 걸음·경로 재생과 실제 착지 계약의 차이
+회전·이동 복구 진단 — 검색 한도와 초기 접촉 상태 확인
 
-작성: 2026-10-29T18:20:59.574339+09:00
+작성: 2026-10-29T18:50:03.253762+09:00
 
 1. 작업 목표
 
-이전17번 질의 진단의1cm 통과 방향5개가 실제 연속 복구로 이어지는지 확인한다. 단일 방향의 탐욕적 진행 실패,수평 경로의 연결성,경로 재생 중 이동 소유권,발판 검사와 실제 하강 수락의 차이를 분리한다. 기존 낙하/충돌/발판 조건을 유지한다.
+직전 고정 포즈 수평 검색을 회전과 결합해 제한된 경로 후보를 찾는다. 기존1cm·36방향 이동/전신 충돌/실제 하강 gate를 유지하고,검색 한도와 실제 도달 불가능을 구분한다. 시험 초기 접촉 상태와 검색 밀도도 함께 점검한다.
 
 2. 실제 수행
 
-실패한 진단용 컴파일1개와 정상 종료된 전용 서버 실험4개를 보존했다. 첫 컴파일은 숫자 앞 뺄셈 공백이 없는 진단 코드의5088행 Broken expression이었다. crash 로그에도 같은 mission compile 오류가 기록됐고 컴파일러 결과nativeCrash=true다. 공백만 정리한 별도 미션을 만들었고 기존 실패 미션/로그는 변경하지 않았다. 실패는 전용 진단 서버에서 발생했으며 클라이언트는 실행하지 않았다.
+정상 종료된 전용 서버3조건×6case와 실패한 진단 컴파일2개를 보존했다. 조건A는 기존 재사용 body에1도 양방향 회전을 추가한512state 검색,조건B는 case마다 새 body와 현재 원시 포즈에서 계산한4개 접촉점을 명시한 같은 검색,조건C는 B의 상태 키만5mm 격자 대표점으로 묶은 검색이다. 실제 위치를 격자 중심으로 옮기지 않았고 모든 제안은 기존 native step gate로 검사한다. 회전 총30도/추가 수평1.5m/episode6m 한도다.512개 상태 한도는 늘리지 않았다.
 
-실험A는 고정된 유효 발판 목표까지 수평 거리를 줄이는36방향·1cm 이동을 선택하고 같은 gate로 재검사 후 적용했다. B는512node·총1.5m 이내의 고정 포즈 수평 경로를 찾고 원본 Fall에서 재생했다. C는 B와 소스에서 이동 호출 우선순위만 다르며 유효한 시험 경로가 있는 동안 그것이 측면 이동을 소유했다. D는 C에 node별 실제 접촉4점/빈 초기 상태를 보관하고 끝점에 CoreClear+SolveContacts라는 원본 Accept의 조건을 추가했다. 원래 Fall·중력·착지·SolveContacts·step gate는 변경하지 않았다.
+node는 위치·heading·lift·이전 Contacts를 보관하고 끝점은 LandingSpace+CoreClear+SolveContacts를 검사한다. 원본 Fall이 실제로 수락해야만 LAND다. 경로 제안의 회전과 이동은 재생 시에도 다시 검사하도록 했지만 이번에는 수용된 경로가 없어서 실제 적용은0회다.
 
-각 조건은 마지막 정체 포즈/첫 거부 포즈/열린 지면×원본/후보=6case,최대300틱·dt0.05초다. 수직속도-15,압력속도0,원시4joint pose 고정이다. 실제 runtime의 미기록 속도/dt까지 복원한 재생은 아니다. 실제 클라이언트/녹화/화면 조작은 실행하지 않았다.
+조건C의 키 함수에서 Broken expression 컴파일 오류가2회 있었다. 처음에는 반올림 반환값의 ToString을 명시적 int 변수로 바꿨으나 실패했고,그 다음local 식별자를relativePosition으로만 바꾼 소스가 통과했다. 이 식별자만 다른 소스 대조도 보존했다. 실패 결과의crash 로그 여부는 원시 compile JSON에 그대로 남겼으며 성공으로 처리하지 않았다. 클라이언트/운영 서버는 실행하거나 수정하지 않았다.
 
 3. 측정 결과
 
-|조건|마지막 정체 포즈|첫 거부 포즈|열린 지면|
-|---|---|---|---|
-|원본 대조|15초 FALL|15초 FALL|LAND|
-|A:거리 감소1cm|1걸음0.00995902m 뒤 정체,15초 FALL|추가5걸음0.0488281m,4.59998초 LAND|LAND|
-|B:수평 경로,원본 이동 우선|경로 미발견,15초 FALL|7걸음 후보 중1걸음 후 원본 이동에 대체,15초 FALL|LAND|
-|C:같은 경로가 측면 이동 소유|경로 미발견,15초 FALL|7걸음0.0698203m 끝까지 적용,그래도15초 FALL|LAND|
-|D:전신 하강 조건까지 끝점 검사|경로 미발견,15초 FALL|512node 한도,이동0,15초 FALL|LAND|
+세 조건 모두 실패 포즈2개에서 후보/원본이15초 FALL로 끝났고 열린 지면은 LAND였다. 실제 경로 이동·회전 적용0회다. 회전 질의의 통과는 실제 회전 재생 성공을 의미하지 않는다. A/B의 마지막 포즈는512상태·19456 step 질의,통과한 회전 질의957개였다. 첫 거부 포즈는512상태·19456질의,통과 회전 질의1024개와 전신 하강 후보15개 거부(NATIVE_JOINT_WORLD_0)였다.
 
-B/C/D의 마지막 포즈에서는54node를 확장하고1944개 step 질의를 실행한 뒤 조사한 수평 연결 집합이 소진됐다. 고정 포즈/높이·1cm·10도 간격·기존 gate·총1.5m 조건의 결과다. 회전/포즈 변화/다른 높이/더 작은 이동까지 모두 불가능하다는 증거는 아니다.
+B는6case의 초기4접촉점을 직접 기록했고 같은 pose의 원본/후보 시작점이 같음을 확인했다. A/B의 시간/보조 잔여진단을 제외한 모든 query 결정 투영이 일치했다. 따라서 이 시험에서 이전 case 접촉점 이월이 실패를 설명한다는 근거는 얻지 못했다. 실제 runtime의 과거4접촉점까지 복원했다는 뜻은 아니다.
 
-B/C의 초기 포즈에서는512node 생성·114확장·4068질의로7걸음 후보를 찾았다. C의87틱은WORLD:StaticObj_Container_1C 발판 거부,이후89틱은FALL_NATIVE_JOINT_WORLD_0이며 LAND는 발생하지 않았다. D는512node 모두 확장·18432질의에서 한도에 도달했다. 발판을 통과한26개의 전신 하강 후보는 전부NATIVE_JOINT_WORLD_0으로 거부됐다. 한도 초과는 경로 없음 판정이 아니다.
+A/B의 node 삽입 순서를 독립적으로 재구성해 모든 parent 위치·heading·step을 대조했다. 마지막 포즈의512상태는 위치15개·heading51개에 몰려 X범위0.003906m,Z범위0.039062m였다. 첫 포즈는 위치450개·heading3개,X범위0.019531m,Z범위0.068594m였다. 조밀한 상태 수와 넓은 탐색 범위는 별개였다.
 
-모든 실제 적용 걸음은 기존 step gate를 통과하고 모터 TSV의 같은 case/틱 위치와 일치했다. episode6m/추가1.5m 이내였다. B/C 소스 차이는 호출 우선순위뿐임을 바이트 정규화 대조로 확인했다. 전용 경로 질의 묶음의 wall elapsed는약0.258~3.145초로 로그 I/O와 대기 등이 포함된다. 이는 클라이언트 프레임 시간이나 CPU self-time/64명 성능 수치가 아니다.
+C도 두 포즈에서512state 한도였다. 마지막 포즈19442질의,첫 포즈19456질의이며 전신 하강 거부165개가 모두관절0이었다. C의 초기 접촉점은 B와 정확히 같고 소스 차이는 상태 키와 그 원점뿐이다. C의 node 삽입 순서 재구성은 native 반올림/키 동작을 완전히 재현하지 못해 검증 실패로 남겼다.512개 parent ID 확장과 raw query 수만 대조했고 생성 node의 정확한 공간 범위가 늘었다고 주장하지 않는다.
 
-새8/64 기능,미션p50/p95/p99,실제 표시 애니메이션은 미측정이다. 이전 자연 입력8/8·64/64와64명 고지대 미도달28명,별도 고정 자극 비용p95 219/241ms는 유지한다.20ms p95는 달성되지 않았다.
+전용 검색 묶음의 wall elapsed는약2.996~4.039초로 I/O 등이 포함된다. 이는 클라이언트 프레임/CPU self-time이나 최적화 성과가 아니다. 새8/64 기능·p50/p95/p99·실제 표시 프레임은 미측정이다. 이전 자연 입력8/8·64/64,64명 고지대 미도달28명과 별도 고정 자극p95 219/241ms는 유지한다.20ms p95는 여전히 목표다.
 
 4. 원인 분석
 
-사실: 작은 단일 이동이 허용돼도 연속 복구가 되지는 않았다. 경로를 유지하는 소유권은 실제로7걸음 재생을 가능하게 했지만 그 끝점의 실제 착지까지 보장하지 않았다. LandingSpace의 발판/상체 검사와 Accept의 실제 관절 sweep은 다른 계약이다. SolveContacts는 이전 Contacts도 사용하므로 node 위치·lift만으로 전신 하강 상태를 표현하면 부족하다. D는 그 접촉 상태를 함께 보관해 원래 계약을 평가했다.
+관찰 사실: 회전 후보를 추가해도 이번 제한 검색은 유효한 끝점 전에 한도에 도달했다. 키를 묶은 경우에도 실제 하강에서 관절0 거부가 남았다. 기존 frozen motor는 case 사이 body를 재사용해 Contacts를 이어받을 수 있었다. B에서 새 body/명시적4점을 사용해 그 통제를 강화했으나 이번 query 결정과 종료 상태는 달라지지 않았다.
 
-추정: 마지막 포즈는 위치와 회전/포즈를 결합해 빠져나와야 하거나 상류에서 그 상태로 들어가지 않도록 해야 할 수 있다. 첫 포즈는 foot-support 목표가 실제 hips 경로를 충분히 반영하지 못한다. 아직 일반 해법이나 원본 게임 알고리즘을 확보한 것은 아니다.
+추정: 조밀한 상태 분기와 목표 순서가 제한된 검색을 소모할 수 있으며,진입 전 상태/포즈 변화/3차원 접촉 해소도 조사 대상이다. 그러나 검색을 무조건 늘리거나 새 이동 방식을 실제 NPC에 적용할 근거는 없다. 실제 이전4접촉점과 같은 Fall 호출의dt/속도가 없는 상태에서 고정 포즈 검색만 반복하는 것은 증거 한계가 있다.
 
-반증: 안전한1cm 방향을 반복하면 반드시 해결된다는 가설,발판 목표에 도달하면 착지가 수락된다는 가설은 이번 후보에서 성립하지 않았다. 경로 소유권만 바꾸면 충분하다는 설명도 맞지 않았다. D의512node 한도로 도달 불가능을 선언하거나 더 무거운 검색을 곧바로 런타임에 넣는 결론은 제외한다.
+반증/보류: 회전 추가만으로 해결된다는 후보와5mm 대표 키만으로 해결된다는 후보는 성공하지 않았다. 초기 접촉점 이월만이 이번 정체 원인이라는 설명은 지지되지 않았다. C의 정확한 공간 확대·인과적 성능 개선·경로 불가능은 검증되지 않았다. 이전 발판 거부/관절 충돌의 원시 질의는 보존하지만 과거 모터의 시작 Contacts는 통제 한계로 추가 기록한다.
 
 5. 검증 수준
 
-진단 성공: 단일 이동/연속 경로/이동 소유권/실제 전신 하강 계약을 분리했다. 원본 대조군과 열린 지면은 보존됐고 모든 적용 걸음의 gate/거리/같은틱 위치를 독립 분석기로 확인했다. 각 새 조건1회이며 반복 검증 완료나8→64 회귀 통과가 아니다. A 초기 포즈의 LAND도 물리 착지만으로서 안전 EGRESS/FOLLOW 수용은 미검증이다. 마지막 포즈 복구·시각 품질·성능·최종 수용은 미완료다.
+진단 성공: 회전 후보/검색 한도·초기 접촉 통제·A/B 결정 일치·B/C 키만 다른 소스 관계를 검증했다. 부분 검증 실패: C의 native 상태 키에 따른 삽입 순서/생성 node 공간 재구성. 미실행: 실제 경로 재생(후보 없음),새8→64,실제 표시 시간 측정. 각 조건1회이며 반복 검증 완료/기능 회귀 통과/시각/성능/최종 수용은 아니다. 컴파일 통과와 실제 복구 성공은 구분했다.
 
 6. 변경 사항
 
-별도 stage_horde_prelanding17_micro.py/stage_horde_prelanding17_graph.py와 연속 결과 분석기,compiler의 진단 이름 허용,보고 도구만 변경했다. D의 접촉 상태와 full endpoint는 시험 전용이다. 기존 NPC/애니메이션/보간/배속·PBO·운영 서버는 변경하지 않았다.
-
-integration F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8 그대로다. 재빌드/재서명은 없으며 이번5개 컴파일 실행 전 의존 PBO 서명 검증은 성공했다. 실패 컴파일은 성공으로 보고하지 않았다. 개인 키와 게임 자산은 공개하지 않았다.
+별도 SE2 stage/분석/보고 도구와 compiler의 진단 이름 허용만 변경했다. 새 body와 명시한 Contacts/5mm 키는 시험 전용이다. NPC 실행 로직·PBO·애니메이션/보간/배속·운영 서버는 변경하지 않았다. integration F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8 그대로다. 재빌드/재서명은 없으며 이번5개 컴파일 실행 전에 의존 PBO 서명 검증은 성공했다. 개인 키는 배포하지 않았다.
 
 7. 원시 증거
 
-validation-controlled-prelanding17-micro의 실패 compile/error와 원본 소스,성공한micro-spaced/micro-graph/micro-graph-owned/micro-graph-owned-full의각 compile profile·motor/query/graph/commit TSV·원시 로그·staged SHA를 보존한다. analysis-full.json은4개 성공 실행의42개 원시 입력 해시와 소유권 비교를 연결한다. 원본 Fall/Accept/SolveContacts 호출 관계와 시험 source도 보존한다. 공개 패킷은 최종행·적용 걸음·graph 결과·26개 전신 거부 표본과 관련 시험 함수로 제한한다.
+validation-controlled-prelanding17-se2-512,동일 fresh,cell5-typed-relative의각 compile profile·motor/SE2/Accept/초기 setup TSV와 source/staged SHA를 보존한다. 실패한cell5/cell5-typed 소스·producer·compile/error/crash 로그도 연결한다. analysis.json은35개 원시 입력 해시와 결정/소스 대조,coverage 검증 수준을 담는다.
+
+기존 sourceRunId runtime-20261029-171916의17번 native-contact-failures에는5개 실패 표본과 해당 관절의previous/target이 있다. 이것만으로 같은 시점의4개 과거 접촉점과 정확한 Fall dt/압력속도를 복원할 수는 없다. 그 로그의seconds와 다른 진단의wall seconds를 임의로 합치지 않았고 nativeSeconds는 원문 식별값으로만 보존했다. 공개 패킷은 최종행/선정 실패/집계와 시험 함수를 제공하며 내부 전체 파일·로컬 경로·프로세스 정보는 제외한다.
 
 8. 잔여 문제
 
-다음은 마지막 포즈의 회전과1cm 이동을 결합한 제한된 configuration-space 진단이다. 같은 관절/월드/fixture 비심화 조건,실제 Contacts와 endpoint predicate를 유지한다. 회전 역시원래 sweep으로 검증하고 거부된 상태를 강제 통과시키지 않는다. 기존 정상 낙하/착지/재등반은 보존한다. 상류의 진입/착지 목표가 이 포즈를 만드는 경로도 함께 검토해야 한다.
+다음은 기존 bounded landing-detail 행과 같은 호출에서 실제 캐시된4개 previousContacts·Fall dt/수직 및 압력속도를 읽기 전용으로 추가 기록하는 작업이다. 기존 sequence로 연결하고 추가 물리/본 query나 gate/애니메이션 변경은 하지 않는다. 구현·빌드·서명·엔진 검증 후 실제8/64 캡처로 초기 이력의 빈칸을 줄인 뒤 다시 재현한다. 계획은next-capture-plan.json이며 이번에 구현/실행한 것으로 보고하지 않는다.
 
-목표를 발판 질의 성공으로 축소하지 않는다. 안전한 실제 LAND→EGRESS→FOLLOW와8→64 재시험까지 필요하다. 검색512node를 무조건 늘려64명 매틱에 넣지 않으며 작업 비용·runtime budget은 별도 설계/실험으로 평가한다. CPU-실제 표시 시간 진단과 FOLLOW 비용 분해,전투 소유권 복귀 검증도 별도 미완료다. 화면 제어 사용 가능 통보는 받았으며 다른 작업의 에디터/프로세스와 공유 입력 런타임은 보존한다. 골은 활성 상태다.
+회전/이동/지지/접촉의 일반 해법과 안전 LAND→EGRESS→FOLLOW,64명 미해결 구간,CPU-표시 시간 불일치,20ms 성능 목표는 남아 있다. 다른 승인된 인서전시 검증 때문에 현재 데스크톱 입력/캡처는 양보했고 공유 입력 런타임/게임 프로세스는 건드리지 않았다. 코드·로그 작업은 계속할 수 있으며 골은 활성 상태다.
 
-원본 보고서 ID: 2026-10-29_182059_574339+0900_npc-prelanding17-continuous.md
-원본 SHA-256: a767e065b9e2ab0291fd3150bf3bfac449f9f276cce9bdd65ceabf1775db5337
+원본 보고서 ID: 2026-10-29_185003_253762+0900_npc-prelanding17-se2.md
+원본 SHA-256: 7df3637cb5ea4aad404739fd8137e97f0f884c1856d46755804e12e8194950b9
 이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
 
-All final rows,all committed steps,all graph results and all full-endpoint queries;not complete raw logs.
-[
-  {
-    "validation": "prelanding17-micro-spaced",
-    "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
-    "finals": [
-      {
-        "pose": "0",
-        "mode": "0",
-        "iteration": "299",
-        "seconds": "15",
-        "phase": "FALL",
-        "position": "<4511.493164, 339.275757, 10236.865234>",
-        "heading": "-161.024",
-        "lift": "0",
-        "reason": "LANDING_SPACE_BLOCKED",
-        "landingGate": "FOOT_X_SUPPORT",
-        "plans": "151",
-        "steps": "0",
-        "separationDistance": "2.81813",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "false",
-        "microGoal": "<0.000000, 0.000000, 0.000000>",
-        "microStatus": "NOT_STARTED",
-        "microQueries": "0",
-        "microPlans": "0"
+Selected projection:all18 final rows,coverage and selected failures;not complete raw logs.
+{
+  "runs": [
+    {
+      "validation": "prelanding17-se2-512",
+      "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
+      "finals": [
+        {
+          "pose": "0",
+          "mode": "0",
+          "iteration": "299",
+          "seconds": "15",
+          "phase": "FALL",
+          "position": "<4511.493164, 339.275757, 10236.865234>",
+          "heading": "-161.024",
+          "lift": "0",
+          "reason": "LANDING_SPACE_BLOCKED",
+          "landingGate": "FOOT_X_SUPPORT",
+          "plans": "151",
+          "steps": "0",
+          "separationDistance": "2.81813",
+          "tangentDistance": "0",
+          "tangentSteps": "0",
+          "wantLanding": "false",
+          "microGoal": "<0.000000, 0.000000, 0.000000>",
+          "microStatus": "NOT_STARTED",
+          "microQueries": "0",
+          "microPlans": "0",
+          "routeTurn": "0",
+          "routeRotationSteps": "0",
+          "graphExpanded": "0",
+          "graphGenerated": "0"
+        },
+        {
+          "pose": "0",
+          "mode": "1",
+          "iteration": "299",
+          "seconds": "15",
+          "phase": "FALL",
+          "position": "<4511.493164, 339.275757, 10236.865234>",
+          "heading": "-161.024",
+          "lift": "0",
+          "reason": "LANDING_SPACE_BLOCKED",
+          "landingGate": "FOOT_X_SUPPORT",
+          "plans": "151",
+          "steps": "0",
+          "separationDistance": "2.81813",
+          "tangentDistance": "0",
+          "tangentSteps": "0",
+          "wantLanding": "false",
+          "microGoal": "<4511.493164, 339.169983, 10236.365234>",
+          "microStatus": "SE2_NODE_CAP",
+          "microQueries": "0",
+          "microPlans": "1",
+          "routeTurn": "0",
+          "routeRotationSteps": "0",
+          "graphExpanded": "512",
+          "graphGenerated": "512"
+        },
+        {
+          "pose": "1",
+          "mode": "0",
+          "iteration": "299",
+          "seconds": "15",
+          "phase": "FALL",
+          "position": "<4511.487305, 339.380249, 10236.833008>",
+          "heading": "-164.304",
+          "lift": "0",
+          "reason": "FALL_AIR_POSE_ESCAPE_TURN",
+          "landingGate": "CLEAR",
+          "plans": "110",
+          "steps": "83",
+          "separationDistance": "2.51246",
+          "tangentDistance": "0",
+          "tangentSteps": "0",
+          "wantLanding": "false",
+          "microGoal": "<0.000000, 0.000000, 0.000000>",
+          "microStatus": "NOT_STARTED",
+          "microQueries": "0",
+          "microPlans": "0",
+          "routeTurn": "0",
+          "routeRotationSteps": "0",
+          "graphExpanded": "0",
+          "graphGenerated": "0"
+        },
+        {
+          "pose": "1",
+          "mode": "1",
+          "iteration": "299",
+          "seconds": "15",
+          "phase": "FALL",
+          "position": "<4511.487305, 339.380249, 10236.833008>",
+          "heading": "-164.304",
+          "lift": "0",
+          "reason": "FALL_AIR_POSE_ESCAPE_TURN",
+          "landingGate": "CLEAR",
+          "plans": "110",
+          "steps": "83",
+          "separationDistance": "2.51246",
+          "tangentDistance": "0",
+          "tangentSteps": "0",
+          "wantLanding": "false",
+          "microGoal": "<4511.466309, 339.169586, 10236.384766>",
+          "microStatus": "SE2_NODE_CAP",
+          "microQueries": "0",
+          "microPlans": "1",
+          "routeTurn": "0",
+          "routeRotationSteps": "0",
+          "graphExpanded": "512",
+          "graphGenerated": "512"
+        },
+        {
+          "pose": "2",
+          "mode": "0",
+          "iteration": "1",
+          "seconds": "0.0999756",
+          "phase": "LAND",
+          "position": "<4530.000000, 339.336609, 10240.030273>",
+          "heading": "166.976",
+          "lift": "0",
+          "reason": "NATIVE_FALL",
+          "landingGate": "CLEAR",
+          "plans": "1",
+          "steps": "1",
+          "separationDistance": "0.0302734",
+          "tangentDistance": "0",
+          "tangentSteps": "0",
+          "wantLanding": "true",
+          "microGoal": "<0.000000, 0.000000, 0.000000>",
+          "microStatus": "NOT_STARTED",
+          "microQueries": "0",
+          "microPlans": "0",
+          "routeTurn": "0",
+          "routeRotationSteps": "0",
+          "graphExpanded": "0",
+          "graphGenerated": "0"
+        },
+        {
+          "pose": "2",
+          "mode": "1",
+          "iteration": "0",
+          "seconds": "0.0500488",
+          "phase": "LAND",
+          "position": "<4530.000000, 339.336670, 10240.000000>",
+          "heading": "166.976",
+          "lift": "0",
+          "reason": "NATIVE_FALL",
+          "landingGate": "CLEAR",
+          "plans": "0",
+          "steps": "0",
+          "separationDistance": "0",
+          "tangentDistance": "0",
+          "tangentSteps": "0",
+          "wantLanding": "true",
+          "microGoal": "<0.000000, 0.000000, 0.000000>",
+          "microStatus": "NOT_STARTED",
+          "microQueries": "0",
+          "microPlans": "0",
+          "routeTurn": "0",
+          "routeRotationSteps": "0",
+          "graphExpanded": "0",
+          "graphGenerated": "0"
+        }
+      ],
+      "setup": [],
+      "coverage": {
+        "0": {
+          "generated": 512,
+          "expanded": 512,
+          "edgeQueries": 19456,
+          "elapsedSeconds": 3.11,
+          "status": "SE2_NODE_CAP",
+          "uniquePositions": 15,
+          "uniqueHeadings": 51,
+          "xRange": [
+            4511.493164,
+            4511.49707
+          ],
+          "zRange": [
+            10236.855469,
+            10236.894531
+          ],
+          "maxTravel": 0.0298777,
+          "maxTurn": 25.0,
+          "representativeCellMillimetres": 0,
+          "parentStateAndStepChecksPassed": true,
+          "fullEndpointRejects": 0,
+          "acceptedRotationQueries": 957
+        },
+        "1": {
+          "generated": 512,
+          "expanded": 512,
+          "edgeQueries": 19456,
+          "elapsedSeconds": 4.039,
+          "status": "SE2_NODE_CAP",
+          "uniquePositions": 450,
+          "uniqueHeadings": 3,
+          "xRange": [
+            4511.466309,
+            4511.48584
+          ],
+          "zRange": [
+            10236.826172,
+            10236.894531
+          ],
+          "maxTravel": 0.0603709,
+          "maxTurn": 1.00002,
+          "representativeCellMillimetres": 0,
+          "parentStateAndStepChecksPassed": true,
+          "fullEndpointRejects": 15,
+          "acceptedRotationQueries": 1024
+        }
       },
-      {
-        "pose": "0",
-        "mode": "1",
-        "iteration": "299",
-        "seconds": "15",
-        "phase": "FALL",
-        "position": "<4511.495117, 339.275757, 10236.855469>",
-        "heading": "-176.024",
-        "lift": "0",
-        "reason": "LANDING_SPACE_BLOCKED",
-        "landingGate": "FOOT_X_SUPPORT",
-        "plans": "151",
-        "steps": "0",
-        "separationDistance": "2.82809",
-        "tangentDistance": "0.00995902",
-        "tangentSteps": "1",
-        "wantLanding": "false",
-        "microGoal": "<4511.493164, 339.169983, 10236.365234>",
-        "microStatus": "NO_PROGRESS_STEP",
-        "microQueries": "5094",
-        "microPlans": "1"
+      "endpointExamples": [
+        {
+          "pose": "1",
+          "mode": "1",
+          "iteration": "81",
+          "kind": "FULL_ENDPOINT_QUERY",
+          "node": "407",
+          "position": "<4511.483887, 339.171692, 10236.829102>",
+          "heading": "178.696",
+          "lift": "0",
+          "distance": "0.0601761",
+          "turn": "0",
+          "angle": "-1",
+          "accepted": "false",
+          "diagnostic": "NATIVE_JOINT_WORLD_0",
+          "probe": "4",
+          "normal": "<0.840131, 0.542382, -0.001403>",
+          "fraction": "0.372798"
+        },
+        {
+          "pose": "1",
+          "mode": "1",
+          "iteration": "81",
+          "kind": "FULL_ENDPOINT_QUERY",
+          "node": "495",
+          "position": "<4511.483398, 339.171661, 10236.829102>",
+          "heading": "178.696",
+          "lift": "0",
+          "distance": "0.0603702",
+          "turn": "0",
+          "angle": "-1",
+          "accepted": "false",
+          "diagnostic": "NATIVE_JOINT_WORLD_0",
+          "probe": "4",
+          "normal": "<0.837668, 0.546179, -0.001410>",
+          "fraction": "0.36915"
+        },
+        {
+          "pose": "1",
+          "mode": "1",
+          "iteration": "81",
+          "kind": "FULL_ENDPOINT_QUERY",
+          "node": "408",
+          "position": "<4511.484863, 339.171692, 10236.831055>",
+          "heading": "178.696",
+          "lift": "0",
+          "distance": "0.0598494",
+          "turn": "0",
+          "angle": "-1",
+          "accepted": "false",
+          "diagnostic": "NATIVE_JOINT_WORLD_0",
+          "probe": "4",
+          "normal": "<0.844880, 0.534953, -0.001382>",
+          "fraction": "0.379927"
+        }
+      ],
+      "actualAcceptCount": 216,
+      "routeCommits": 0
+    },
+    {
+      "validation": "prelanding17-se2-512-fresh",
+      "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
+      "finals": [
+        {
+          "pose": "0",
+          "mode": "0",
+          "iteration": "299",
+          "seconds": "15",
+          "phase": "FALL",
+          "position": "<4511.493164, 339.275757, 10236.865234>",
+          "heading": "-161.024",
+          "lift": "0",
+          "reason": "LANDING_SPACE_BLOCKED",
+          "landingGate": "FOOT_X_SUPPORT",
+          "plans": "151",
+          "steps": "0",
+          "separationDistance": "2.81813",
+          "tangentDistance": "0",
+          "tangentSteps": "0",
+          "wantLanding": "false",
+          "microGoal": "<0.000000, 0.000000, 0.000000>",
+          "microStatus": "NOT_STARTED",
+          "microQueries": "0",
+          "microPlans": "0",
+          "routeTurn": "0",
+          "routeRotationSteps": "0",
+          "graphExpanded": "0",
+          "graphGenerated": "0"
+        },
+        {
+          "pose": "0",
+          "mode": "1",
+          "iteration": "299",
+          "seconds": "15",
+          "phase": "FALL",
+          "position": "<4511.493164, 339.275757, 10236.865234>",
+          "heading": "-161.024",
+          "lift": "0",
+          "reason": "LANDING_SPACE_BLOCKED",
+          "landingGate": "FOOT_X_SUPPORT",
+          "plans": "151",
+          "steps": "0",
+          "separationDistance": "2.81813",
+          "tangentDistance": "0",
+          "tangentSteps": "0",
+          "wantLanding": "false",
+          "microGoal": "<4511.493164, 339.169983, 10236.365234>",
+          "microStatus": "SE2_NODE_CAP",
+          "microQueries": "0",
+          "microPlans": "1",
+          "routeTurn": "0",
+          "routeRotationSteps": "0",
+          "graphExpanded": "512",
+          "graphGenerated": "512"
+        },
+        {
+          "pose": "1",
+          "mode": "0",
+          "iteration": "299",
+          "seconds": "15",
+          "phase": "FALL",
+          "position": "<4511.487305, 339.380249, 10236.833008>",
+          "heading": "-164.304",
+          "lift": "0",
+          "reason": "FALL_AIR_POSE_ESCAPE_TURN",
+          "landingGate": "CLEAR",
+          "plans": "110",
+          "steps": "83",
+          "separationDistance": "2.51246",
+          "tangentDistance": "0",
+          "tangentSteps": "0",
+          "wantLanding": "false",
+          "microGoal": "<0.000000, 0.000000, 0.000000>",
+          "microStatus": "NOT_STARTED",
+          "microQueries": "0",
+          "microPlans": "0",
+          "routeTurn": "0",
+          "routeRotationSteps": "0",
+          "graphExpanded": "0",
+          "graphGenerated": "0"
+        },
+        {
+          "pose": "1",
+          "mode": "1",
+          "iteration": "299",
+          "seconds": "15",
+          "phase": "FALL",
+          "position": "<4511.487305, 339.380249, 10236.833008>",
+          "heading": "-164.304",
+          "lift": "0",
+          "reason": "FALL_AIR_POSE_ESCAPE_TURN",
+          "landingGate": "CLEAR",
+          "plans": "110",
+          "steps": "83",
+          "separationDistance": "2.51246",
+          "tangentDistance": "0",
+          "tangentSteps": "0",
+          "wantLanding": "false",
+          "microGoal": "<4511.466309, 339.169586, 10236.384766>",
+          "microStatus": "SE2_NODE_CAP",
+          "microQueries": "0",
+          "microPlans": "1",
+          "routeTurn": "0",
+          "routeRotationSteps": "0",
+          "graphExpanded": "512",
+          "graphGenerated": "512"
+        },
+        {
+          "pose": "2",
+          "mode": "0",
+          "iteration": "0",
+          "seconds": "0.0500488",
+          "phase": "LAND",
+          "position": "<4530.000000, 339.336670, 10240.000000>",
+          "heading": "166.976",
+          "lift": "0",
+          "reason": "NATIVE_FALL",
+          "landingGate": "CLEAR",
+          "plans": "0",
+          "steps": "0",
+          "separationDistance": "0",
+          "tangentDistance": "0",
+          "tangentSteps": "0",
+          "wantLanding": "true",
+          "microGoal": "<0.000000, 0.000000, 0.000000>",
+          "microStatus": "NOT_STARTED",
+          "microQueries": "0",
+          "microPlans": "0",
+          "routeTurn": "0",
+          "routeRotationSteps": "0",
+          "graphExpanded": "0",
+          "graphGenerated": "0"
+        },
+        {
+          "pose": "2",
+          "mode": "1",
+          "iteration": "0",
+          "seconds": "0.0500488",
+          "phase": "LAND",
+          "position": "<4530.000000, 339.336670, 10240.000000>",
+          "heading": "166.976",
+          "lift": "0",
+          "reason": "NATIVE_FALL",
+          "landingGate": "CLEAR",
+          "plans": "0",
+          "steps": "0",
+          "separationDistance": "0",
+          "tangentDistance": "0",
+          "tangentSteps": "0",
+          "wantLanding": "true",
+          "microGoal": "<0.000000, 0.000000, 0.000000>",
+          "microStatus": "NOT_STARTED",
+          "microQueries": "0",
+          "microPlans": "0",
+          "routeTurn": "0",
+          "routeRotationSteps": "0",
+          "graphExpanded": "0",
+          "graphGenerated": "0"
+        }
+      ],
+      "setup": [
+        {
+          "pose": "0",
+          "mode": "0",
+          "policy": "FRESH_BODY_DERIVED_CURRENT_POSE",
+          "root": "<4511.493164, 339.275757, 10236.865234>",
+          "heading": "166.976",
+          "lift": "0",
+          "count": "4",
+          "hips": "<4511.480469, 340.253967, 10236.864258>",
+          "head": "<4511.487793, 340.909424, 10236.647461>",
+          "left": "<4511.728516, 339.526306, 10236.596680>",
+          "right": "<4511.359863, 339.520111, 10236.895508>"
+        },
+        {
+          "pose": "0",
+          "mode": "1",
+          "policy": "FRESH_BODY_DERIVED_CURRENT_POSE",
+          "root": "<4511.493164, 339.275757, 10236.865234>",
+          "heading": "166.976",
+          "lift": "0",
+          "count": "4",
+          "hips": "<4511.480469, 340.253967, 10236.864258>",
+          "head": "<4511.487793, 340.909424, 10236.647461>",
+          "left": "<4511.728516, 339.526306, 10236.596680>",
+          "right": "<4511.359863, 339.520111, 10236.895508>"
+        },
+        {
+          "pose": "1",
+          "mode": "0",
+          "policy": "FRESH_BODY_DERIVED_CURRENT_POSE",
+          "root": "<4511.466309, 339.380249, 10239.336914>",
+          "heading": "178.696",
+          "lift": "0",
+          "count": "4",
+          "hips": "<4511.456055, 340.359589, 10239.333008>",
+          "head": "<4511.432617, 341.018280, 10239.122070>",
+          "left": "<4511.639648, 339.802948, 10239.124023>",
+          "right": "<4511.285645, 339.541229, 10239.096680>"
+        },
+        {
+          "pose": "1",
+          "mode": "1",
+          "policy": "FRESH_BODY_DERIVED_CURRENT_POSE",
+          "root": "<4511.466309, 339.380249, 10239.336914>",
+          "heading": "178.696",
+          "lift": "0",
+          "count": "4",
+          "hips": "<4511.456055, 340.359589, 10239.333008>",
+          "head": "<4511.432617, 341.018280, 10239.122070>",
+          "left": "<4511.639648, 339.802948, 10239.124023>",
+          "right": "<4511.285645, 339.541229, 10239.096680>"
+        },
+        {
+          "pose": "2",
+          "mode": "0",
+          "policy": "FRESH_BODY_DERIVED_CURRENT_POSE",
+          "root": "<4530.000000, 339.440277, 10240.000000>",
+          "heading": "166.976",
+          "lift": "0",
+          "count": "4",
+          "hips": "<4529.987305, 340.418488, 10239.999023>",
+          "head": "<4529.994629, 341.073944, 10239.782227>",
+          "left": "<4530.235352, 339.690826, 10239.731445>",
+          "right": "<4529.866699, 339.684631, 10240.030273>"
+        },
+        {
+          "pose": "2",
+          "mode": "1",
+          "policy": "FRESH_BODY_DERIVED_CURRENT_POSE",
+          "root": "<4530.000000, 339.440277, 10240.000000>",
+          "heading": "166.976",
+          "lift": "0",
+          "count": "4",
+          "hips": "<4529.987305, 340.418488, 10239.999023>",
+          "head": "<4529.994629, 341.073944, 10239.782227>",
+          "left": "<4530.235352, 339.690826, 10239.731445>",
+          "right": "<4529.866699, 339.684631, 10240.030273>"
+        }
+      ],
+      "coverage": {
+        "0": {
+          "generated": 512,
+          "expanded": 512,
+          "edgeQueries": 19456,
+          "elapsedSeconds": 3.812,
+          "status": "SE2_NODE_CAP",
+          "uniquePositions": 15,
+          "uniqueHeadings": 51,
+          "xRange": [
+            4511.493164,
+            4511.49707
+          ],
+          "zRange": [
+            10236.855469,
+            10236.894531
+          ],
+          "maxTravel": 0.0298777,
+          "maxTurn": 25.0,
+          "representativeCellMillimetres": 0,
+          "parentStateAndStepChecksPassed": true,
+          "fullEndpointRejects": 0,
+          "acceptedRotationQueries": 957
+        },
+        "1": {
+          "generated": 512,
+          "expanded": 512,
+          "edgeQueries": 19456,
+          "elapsedSeconds": 3.903,
+          "status": "SE2_NODE_CAP",
+          "uniquePositions": 450,
+          "uniqueHeadings": 3,
+          "xRange": [
+            4511.466309,
+            4511.48584
+          ],
+          "zRange": [
+            10236.826172,
+            10236.894531
+          ],
+          "maxTravel": 0.0603709,
+          "maxTurn": 1.00002,
+          "representativeCellMillimetres": 0,
+          "parentStateAndStepChecksPassed": true,
+          "fullEndpointRejects": 15,
+          "acceptedRotationQueries": 1024
+        }
       },
-      {
-        "pose": "1",
-        "mode": "0",
-        "iteration": "299",
-        "seconds": "15",
-        "phase": "FALL",
-        "position": "<4511.487305, 339.380249, 10236.833008>",
-        "heading": "-164.304",
-        "lift": "0",
-        "reason": "FALL_AIR_POSE_ESCAPE_TURN",
-        "landingGate": "CLEAR",
-        "plans": "110",
-        "steps": "83",
-        "separationDistance": "2.51246",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "false",
-        "microGoal": "<0.000000, 0.000000, 0.000000>",
-        "microStatus": "NOT_STARTED",
-        "microQueries": "0",
-        "microPlans": "0"
+      "endpointExamples": [
+        {
+          "pose": "1",
+          "mode": "1",
+          "iteration": "81",
+          "kind": "FULL_ENDPOINT_QUERY",
+          "node": "407",
+          "position": "<4511.483887, 339.171692, 10236.829102>",
+          "heading": "178.696",
+          "lift": "0",
+          "distance": "0.0601761",
+          "turn": "0",
+          "angle": "-1",
+          "accepted": "false",
+          "diagnostic": "NATIVE_JOINT_WORLD_0",
+          "probe": "4",
+          "normal": "<0.840131, 0.542382, -0.001403>",
+          "fraction": "0.372798"
+        },
+        {
+          "pose": "1",
+          "mode": "1",
+          "iteration": "81",
+          "kind": "FULL_ENDPOINT_QUERY",
+          "node": "495",
+          "position": "<4511.483398, 339.171661, 10236.829102>",
+          "heading": "178.696",
+          "lift": "0",
+          "distance": "0.0603702",
+          "turn": "0",
+          "angle": "-1",
+          "accepted": "false",
+          "diagnostic": "NATIVE_JOINT_WORLD_0",
+          "probe": "4",
+          "normal": "<0.837668, 0.546179, -0.001410>",
+          "fraction": "0.36915"
+        },
+        {
+          "pose": "1",
+          "mode": "1",
+          "iteration": "81",
+          "kind": "FULL_ENDPOINT_QUERY",
+          "node": "408",
+          "position": "<4511.484863, 339.171692, 10236.831055>",
+          "heading": "178.696",
+          "lift": "0",
+          "distance": "0.0598494",
+          "turn": "0",
+          "angle": "-1",
+          "accepted": "false",
+          "diagnostic": "NATIVE_JOINT_WORLD_0",
+          "probe": "4",
+          "normal": "<0.844880, 0.534953, -0.001382>",
+          "fraction": "0.379927"
+        }
+      ],
+      "actualAcceptCount": 216,
+      "routeCommits": 0
+    },
+    {
+      "validation": "prelanding17-se2-512-fresh-cell5-typed-relative",
+      "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
+      "finals": [
+        {
+          "pose": "0",
+          "mode": "0",
+          "iteration": "299",
+          "seconds": "15",
+          "phase": "FALL",
+          "position": "<4511.493164, 339.275757, 10236.865234>",
+          "heading": "-161.024",
+          "lift": "0",
+          "reason": "LANDING_SPACE_BLOCKED",
+          "landingGate": "FOOT_X_SUPPORT",
+          "plans": "151",
+          "steps": "0",
+          "separationDistance": "2.81813",
+          "tangentDistance": "0",
+          "tangentSteps": "0",
+          "wantLanding": "false",
+          "microGoal": "<0.000000, 0.000000, 0.000000>",
+          "microStatus": "NOT_STARTED",
+          "microQueries": "0",
+          "microPlans": "0",
+          "routeTurn": "0",
+          "routeRotationSteps": "0",
+          "graphExpanded": "0",
+          "graphGenerated": "0"
+        },
+        {
+          "pose": "0",
+          "mode": "1",
+          "iteration": "299",
+          "seconds": "15",
+          "phase": "FALL",
+          "position": "<4511.493164, 339.275757, 10236.865234>",
+          "heading": "-161.024",
+          "lift": "0",
+          "reason": "LANDING_SPACE_BLOCKED",
+          "landingGate": "FOOT_X_SUPPORT",
+          "plans": "151",
+          "steps": "0",
+          "separationDistance": "2.81813",
+          "tangentDistance": "0",
+          "tangentSteps": "0",
+          "wantLanding": "false",
+          "microGoal": "<4511.493164, 339.169983, 10236.365234>",
+          "microStatus": "SE2_NODE_CAP",
+          "microQueries": "0",
+          "microPlans": "1",
+          "routeTurn": "0",
+          "routeRotationSteps": "0",
+          "graphExpanded": "512",
+          "graphGenerated": "512"
+        },
+        {
+          "pose": "1",
+          "mode": "0",
+          "iteration": "299",
+          "seconds": "15",
+          "phase": "FALL",
+          "position": "<4511.487305, 339.380249, 10236.833008>",
+          "heading": "-164.304",
+          "lift": "0",
+          "reason": "FALL_AIR_POSE_ESCAPE_TURN",
+          "landingGate": "CLEAR",
+          "plans": "110",
+          "steps": "83",
+          "separationDistance": "2.51246",
+          "tangentDistance": "0",
+          "tangentSteps": "0",
+          "wantLanding": "false",
+          "microGoal": "<0.000000, 0.000000, 0.000000>",
+          "microStatus": "NOT_STARTED",
+          "microQueries": "0",
+          "microPlans": "0",
+          "routeTurn": "0",
+          "routeRotationSteps": "0",
+          "graphExpanded": "0",
+          "graphGenerated": "0"
+        },
+        {
+          "pose": "1",
+          "mode": "1",
+          "iteration": "299",
+          "seconds": "15",
+          "phase": "FALL",
+          "position": "<4511.487305, 339.380249, 10236.833008>",
+          "heading": "-164.304",
+          "lift": "0",
+          "reason": "FALL_AIR_POSE_ESCAPE_TURN",
+          "landingGate": "CLEAR",
+          "plans": "110",
+          "steps": "83",
+          "separationDistance": "2.51246",
+          "tangentDistance": "0",
+          "tangentSteps": "0",
+          "wantLanding": "false",
+          "microGoal": "<4511.466309, 339.169586, 10236.384766>",
+          "microStatus": "SE2_NODE_CAP",
+          "microQueries": "0",
+          "microPlans": "1",
+          "routeTurn": "0",
+          "routeRotationSteps": "0",
+          "graphExpanded": "512",
+          "graphGenerated": "512"
+        },
+        {
+          "pose": "2",
+          "mode": "0",
+          "iteration": "0",
+          "seconds": "0.0500488",
+          "phase": "LAND",
+          "position": "<4530.000000, 339.336670, 10240.000000>",
+          "heading": "166.976",
+          "lift": "0",
+          "reason": "NATIVE_FALL",
+          "landingGate": "CLEAR",
+          "plans": "0",
+          "steps": "0",
+          "separationDistance": "0",
+          "tangentDistance": "0",
+          "tangentSteps": "0",
+          "wantLanding": "true",
+          "microGoal": "<0.000000, 0.000000, 0.000000>",
+          "microStatus": "NOT_STARTED",
+          "microQueries": "0",
+          "microPlans": "0",
+          "routeTurn": "0",
+          "routeRotationSteps": "0",
+          "graphExpanded": "0",
+          "graphGenerated": "0"
+        },
+        {
+          "pose": "2",
+          "mode": "1",
+          "iteration": "0",
+          "seconds": "0.0500488",
+          "phase": "LAND",
+          "position": "<4530.000000, 339.336670, 10240.000000>",
+          "heading": "166.976",
+          "lift": "0",
+          "reason": "NATIVE_FALL",
+          "landingGate": "CLEAR",
+          "plans": "0",
+          "steps": "0",
+          "separationDistance": "0",
+          "tangentDistance": "0",
+          "tangentSteps": "0",
+          "wantLanding": "true",
+          "microGoal": "<0.000000, 0.000000, 0.000000>",
+          "microStatus": "NOT_STARTED",
+          "microQueries": "0",
+          "microPlans": "0",
+          "routeTurn": "0",
+          "routeRotationSteps": "0",
+          "graphExpanded": "0",
+          "graphGenerated": "0"
+        }
+      ],
+      "setup": [
+        {
+          "pose": "0",
+          "mode": "0",
+          "policy": "FRESH_BODY_DERIVED_CURRENT_POSE",
+          "root": "<4511.493164, 339.275757, 10236.865234>",
+          "heading": "166.976",
+          "lift": "0",
+          "count": "4",
+          "hips": "<4511.480469, 340.253967, 10236.864258>",
+          "head": "<4511.487793, 340.909424, 10236.647461>",
+          "left": "<4511.728516, 339.526306, 10236.596680>",
+          "right": "<4511.359863, 339.520111, 10236.895508>"
+        },
+        {
+          "pose": "0",
+          "mode": "1",
+          "policy": "FRESH_BODY_DERIVED_CURRENT_POSE",
+          "root": "<4511.493164, 339.275757, 10236.865234>",
+          "heading": "166.976",
+          "lift": "0",
+          "count": "4",
+          "hips": "<4511.480469, 340.253967, 10236.864258>",
+          "head": "<4511.487793, 340.909424, 10236.647461>",
+          "left": "<4511.728516, 339.526306, 10236.596680>",
+          "right": "<4511.359863, 339.520111, 10236.895508>"
+        },
+        {
+          "pose": "1",
+          "mode": "0",
+          "policy": "FRESH_BODY_DERIVED_CURRENT_POSE",
+          "root": "<4511.466309, 339.380249, 10239.336914>",
+          "heading": "178.696",
+          "lift": "0",
+          "count": "4",
+          "hips": "<4511.456055, 340.359589, 10239.333008>",
+          "head": "<4511.432617, 341.018280, 10239.122070>",
+          "left": "<4511.639648, 339.802948, 10239.124023>",
+          "right": "<4511.285645, 339.541229, 10239.096680>"
+        },
+        {
+          "pose": "1",
+          "mode": "1",
+          "policy": "FRESH_BODY_DERIVED_CURRENT_POSE",
+          "root": "<4511.466309, 339.380249, 10239.336914>",
+          "heading": "178.696",
+          "lift": "0",
+          "count": "4",
+          "hips": "<4511.456055, 340.359589, 10239.333008>",
+          "head": "<4511.432617, 341.018280, 10239.122070>",
+          "left": "<4511.639648, 339.802948, 10239.124023>",
+          "right": "<4511.285645, 339.541229, 10239.096680>"
+        },
+        {
+          "pose": "2",
+          "mode": "0",
+          "policy": "FRESH_BODY_DERIVED_CURRENT_POSE",
+          "root": "<4530.000000, 339.440277, 10240.000000>",
+          "heading": "166.976",
+          "lift": "0",
+          "count": "4",
+          "hips": "<4529.987305, 340.418488, 10239.999023>",
+          "head": "<4529.994629, 341.073944, 10239.782227>",
+          "left": "<4530.235352, 339.690826, 10239.731445>",
+          "right": "<4529.866699, 339.684631, 10240.030273>"
+        },
+        {
+          "pose": "2",
+          "mode": "1",
+          "policy": "FRESH_BODY_DERIVED_CURRENT_POSE",
+          "root": "<4530.000000, 339.440277, 10240.000000>",
+          "heading": "166.976",
+          "lift": "0",
+          "count": "4",
+          "hips": "<4529.987305, 340.418488, 10239.999023>",
+          "head": "<4529.994629, 341.073944, 10239.782227>",
+          "left": "<4530.235352, 339.690826, 10239.731445>",
+          "right": "<4529.866699, 339.684631, 10240.030273>"
+        }
+      ],
+      "coverage": {
+        "0": {
+          "generatedReported": 512,
+          "expandedParentIdsVerified": 512,
+          "edgeQueries": 19442,
+          "elapsedSeconds": 2.996,
+          "status": "SE2_NODE_CAP",
+          "representativeCellMillimetres": 5,
+          "representativeNodeReconstructionVerified": false,
+          "limitation": "Independent native-rounding/insertion replay diverged;no generated-node coverage extent claimed.",
+          "fullEndpointRejects": 0,
+          "acceptedRotationQueries": 947
+        },
+        "1": {
+          "generatedReported": 512,
+          "expandedParentIdsVerified": 512,
+          "edgeQueries": 19456,
+          "elapsedSeconds": 3.784,
+          "status": "SE2_NODE_CAP",
+          "representativeCellMillimetres": 5,
+          "representativeNodeReconstructionVerified": false,
+          "limitation": "Independent native-rounding/insertion replay diverged;no generated-node coverage extent claimed.",
+          "fullEndpointRejects": 165,
+          "acceptedRotationQueries": 1024
+        }
       },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "91",
-        "seconds": "4.59998",
-        "phase": "LAND",
-        "position": "<4511.529297, 339.172089, 10236.710938>",
-        "heading": "178.696",
-        "lift": "0",
-        "reason": "NATIVE_FALL",
-        "landingGate": "CLEAR",
-        "plans": "6",
-        "steps": "86",
-        "separationDistance": "2.65164",
-        "tangentDistance": "0.0488281",
-        "tangentSteps": "5",
-        "wantLanding": "true",
-        "microGoal": "<4511.466309, 339.169586, 10236.384766>",
-        "microStatus": "MICRO_ACCEPTED",
-        "microQueries": "54",
-        "microPlans": "1"
-      },
-      {
-        "pose": "2",
-        "mode": "0",
-        "iteration": "1",
-        "seconds": "0.0999756",
-        "phase": "LAND",
-        "position": "<4530.000000, 339.336609, 10240.030273>",
-        "heading": "166.976",
-        "lift": "0",
-        "reason": "NATIVE_FALL",
-        "landingGate": "CLEAR",
-        "plans": "1",
-        "steps": "1",
-        "separationDistance": "0.0302734",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "true",
-        "microGoal": "<0.000000, 0.000000, 0.000000>",
-        "microStatus": "NOT_STARTED",
-        "microQueries": "0",
-        "microPlans": "0"
-      },
-      {
-        "pose": "2",
-        "mode": "1",
-        "iteration": "0",
-        "seconds": "0.0500488",
-        "phase": "LAND",
-        "position": "<4530.000000, 339.336670, 10240.000000>",
-        "heading": "166.976",
-        "lift": "0",
-        "reason": "NATIVE_FALL",
-        "landingGate": "CLEAR",
-        "plans": "0",
-        "steps": "0",
-        "separationDistance": "0",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "true",
-        "microGoal": "<0.000000, 0.000000, 0.000000>",
-        "microStatus": "NOT_STARTED",
-        "microQueries": "0",
-        "microPlans": "0"
-      }
+      "endpointExamples": [
+        {
+          "pose": "1",
+          "mode": "1",
+          "iteration": "81",
+          "kind": "FULL_ENDPOINT_QUERY",
+          "node": "110",
+          "position": "<4511.483398, 339.171570, 10236.806641>",
+          "heading": "178.696",
+          "lift": "0",
+          "distance": "0.0810293",
+          "turn": "0",
+          "angle": "-1",
+          "accepted": "false",
+          "diagnostic": "NATIVE_JOINT_WORLD_0",
+          "probe": "4",
+          "normal": "<0.837738, 0.546070, -0.001415>",
+          "fraction": "0.369348"
+        },
+        {
+          "pose": "1",
+          "mode": "1",
+          "iteration": "81",
+          "kind": "FULL_ENDPOINT_QUERY",
+          "node": "154",
+          "position": "<4511.486816, 339.171631, 10236.796875>",
+          "heading": "178.696",
+          "lift": "0",
+          "distance": "0.0913758",
+          "turn": "0",
+          "angle": "-1",
+          "accepted": "false",
+          "diagnostic": "NATIVE_JOINT_WORLD_0",
+          "probe": "4",
+          "normal": "<0.854490, 0.519467, -0.001341>",
+          "fraction": "0.394997"
+        },
+        {
+          "pose": "1",
+          "mode": "1",
+          "iteration": "81",
+          "kind": "FULL_ENDPOINT_QUERY",
+          "node": "111",
+          "position": "<4511.484863, 339.171600, 10236.807617>",
+          "heading": "178.696",
+          "lift": "0",
+          "distance": "0.0807372",
+          "turn": "0",
+          "angle": "-1",
+          "accepted": "false",
+          "diagnostic": "NATIVE_JOINT_WORLD_0",
+          "probe": "4",
+          "normal": "<0.844876, 0.534961, -0.001384>",
+          "fraction": "0.380001"
+        }
+      ],
+      "actualAcceptCount": 216,
+      "routeCommits": 0
+    }
+  ],
+  "failedCompiles": [
+    {
+      "validation": "prelanding17-se2-512-fresh-cell5",
+      "passed": false,
+      "nativeCrashRecorded": true,
+      "compileFailure": "Broken expression at NodeKey"
+    },
+    {
+      "validation": "prelanding17-se2-512-fresh-cell5-typed",
+      "passed": false,
+      "nativeCrashRecorded": true,
+      "compileFailure": "Broken expression at NodeKey"
+    }
+  ],
+  "selectedSourceContactFailures": [
+    {
+      "id": "17",
+      "stage": "LIFT_LIMIT",
+      "traversalPhase": "FALL",
+      "joint": "3",
+      "anchor": "<4511.441406, 339.857788, 10239.683594>",
+      "heading": "178.696",
+      "raw": "<4511.135742, 339.954254, 10240.000977>",
+      "previous": "<4511.081055, 340.334991, 10240.020508>",
+      "target": "<4511.135742, 340.335968, 10240.000977>",
+      "nativeSeconds": "25.8499"
+    },
+    {
+      "id": "17",
+      "stage": "SWEEP",
+      "traversalPhase": "FALL",
+      "joint": "0",
+      "anchor": "<4511.469238, 339.323151, 10239.002930>",
+      "heading": "175.696",
+      "raw": "<4511.453613, 340.301331, 10239.001953>",
+      "previous": "<4511.450684, 340.358429, 10239.002930>",
+      "target": "<4511.453613, 340.301331, 10239.001953>",
+      "nativeSeconds": "26.1499"
+    },
+    {
+      "id": "17",
+      "stage": "SWEEP",
+      "traversalPhase": "FALL",
+      "joint": "2",
+      "anchor": "<4511.492188, 339.290649, 10236.865234>",
+      "heading": "-164.024",
+      "raw": "<4511.700195, 339.517792, 10236.964844>",
+      "previous": "<4511.699219, 339.532654, 10236.964844>",
+      "target": "<4511.700195, 339.517792, 10236.964844>",
+      "nativeSeconds": "28.5998"
+    },
+    {
+      "id": "17",
+      "stage": "SWEEP",
+      "traversalPhase": "FALL",
+      "joint": "0",
+      "anchor": "<4511.492676, 339.275513, 10236.865234>",
+      "heading": "-179.024",
+      "raw": "<4511.478516, 340.254486, 10236.862305>",
+      "previous": "<4511.477051, 340.284485, 10236.862305>",
+      "target": "<4511.478516, 340.254486, 10236.862305>",
+      "nativeSeconds": "29.3498"
+    },
+    {
+      "id": "17",
+      "stage": "SWEEP",
+      "traversalPhase": "FALL",
+      "joint": "0",
+      "anchor": "<4511.493164, 339.275757, 10236.865234>",
+      "heading": "165.976",
+      "raw": "<4511.478027, 340.254272, 10236.859375>",
+      "previous": "<4511.477051, 340.269165, 10236.859375>",
+      "target": "<4511.478027, 340.254272, 10236.859375>",
+      "nativeSeconds": "33.7998"
+    }
+  ],
+  "nextCapturePlan": {
+    "scope": "Next instrumentation,not implemented or executed in this batch",
+    "hook": "Read-only diagnostic extension to existing bounded LDObserveLanding;join by sequence in same call",
+    "fields": [
+      "actual cached previousContacts4worldPoints",
+      "actual Fall dt and pressure/fall velocity",
+      "root/heading/lift/idleOffset",
+      "phase/recoveryGeneration",
+      "nativeRequest/nativeSeconds/AnimUpdates",
+      "original landing sequence and same-call root/pose read"
     ],
-    "commits": [
-      {
-        "pose": "0",
-        "mode": "1",
-        "iteration": "0",
-        "kind": "COMMIT",
-        "angle": "-1",
-        "start": "<4511.493164, 339.275757, 10236.865234>",
-        "proposal": "<4511.495117, 339.275757, 10236.855469>",
-        "goal": "<4511.493164, 339.169983, 10236.365234>",
-        "oldGap": "0.5",
-        "newGap": "0.490238",
-        "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR",
-        "probe": "1",
-        "normal": "<0.926816, 0.013406, 0.375277>",
-        "fraction": "0.583537",
-        "distance": "0.00995902",
-        "budget": "1.5"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "COMMIT",
-        "angle": "-1",
-        "start": "<4511.466309, 339.380249, 10236.884766>",
-        "proposal": "<4511.466309, 339.380249, 10236.875000>",
-        "goal": "<4511.466309, 339.169586, 10236.384766>",
-        "oldGap": "0.5",
-        "newGap": "0.490234",
-        "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR",
-        "probe": "0",
-        "normal": "<0.999826, 0.018662, 0.000002>",
-        "fraction": "0",
-        "distance": "0.00976563",
-        "budget": "1.5"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "83",
-        "kind": "COMMIT",
-        "angle": "-1",
-        "start": "<4511.487305, 339.380249, 10236.853516>",
-        "proposal": "<4511.487305, 339.380249, 10236.843750>",
-        "goal": "<4511.466309, 339.169586, 10236.384766>",
-        "oldGap": "0.46922",
-        "newGap": "0.459464",
-        "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR",
-        "probe": "0",
-        "normal": "<0.996703, 0.018392, -0.079023>",
-        "fraction": "0",
-        "distance": "0.00976563",
-        "budget": "1.49023"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "85",
-        "kind": "COMMIT",
-        "angle": "-1",
-        "start": "<4511.487305, 339.380249, 10236.813477>",
-        "proposal": "<4511.487305, 339.380249, 10236.803711>",
-        "goal": "<4511.466309, 339.169586, 10236.384766>",
-        "oldGap": "0.429225",
-        "newGap": "0.419471",
-        "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR",
-        "probe": "1",
-        "normal": "<0.861838, 0.507182, -0.001309>",
-        "fraction": "0",
-        "distance": "0.00976563",
-        "budget": "1.48047"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "87",
-        "kind": "COMMIT",
-        "angle": "-1",
-        "start": "<4511.508301, 339.380249, 10236.782227>",
-        "proposal": "<4511.508301, 339.380249, 10236.772461>",
-        "goal": "<4511.466309, 339.169586, 10236.384766>",
-        "oldGap": "0.399673",
-        "newGap": "0.389963",
-        "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR",
-        "probe": "1",
-        "normal": "<0.884311, 0.466896, -0.001202>",
-        "fraction": "0",
-        "distance": "0.00976563",
-        "budget": "1.4707"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "89",
-        "kind": "COMMIT",
-        "angle": "-1",
-        "start": "<4511.508301, 339.380249, 10236.742188>",
-        "proposal": "<4511.508301, 339.380249, 10236.732422>",
-        "goal": "<4511.466309, 339.169586, 10236.384766>",
-        "oldGap": "0.35988",
-        "newGap": "0.350183",
-        "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR",
-        "probe": "1",
-        "normal": "<0.884117, 0.467263, -0.001202>",
-        "fraction": "0",
-        "distance": "0.00976563",
-        "budget": "1.46094"
-      }
-    ],
-    "graphResults": [],
-    "fullEndpointQueries": [],
-    "totalCommitCount": 6,
-    "originalBaselinePreserved": true
+    "limits": [
+      "No extra physics queries,bone queries,gate or animation changes.",
+      "Flagged output bound to existing landing-detail sampling budget.",
+      "Build/sign/engine compile before next isolated client8/64 capture.",
+      "Capture actual previous contact history before another frozen replay claim."
+    ]
   },
-  {
-    "validation": "prelanding17-micro-graph",
-    "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
-    "finals": [
-      {
-        "pose": "0",
-        "mode": "0",
-        "iteration": "299",
-        "seconds": "15",
-        "phase": "FALL",
-        "position": "<4511.493164, 339.275757, 10236.865234>",
-        "heading": "-161.024",
-        "lift": "0",
-        "reason": "LANDING_SPACE_BLOCKED",
-        "landingGate": "FOOT_X_SUPPORT",
-        "plans": "151",
-        "steps": "0",
-        "separationDistance": "2.81813",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "false",
-        "microGoal": "<0.000000, 0.000000, 0.000000>",
-        "microStatus": "NOT_STARTED",
-        "microQueries": "0",
-        "microPlans": "0"
-      },
-      {
-        "pose": "0",
-        "mode": "1",
-        "iteration": "299",
-        "seconds": "15",
-        "phase": "FALL",
-        "position": "<4511.493164, 339.275757, 10236.865234>",
-        "heading": "-161.024",
-        "lift": "0",
-        "reason": "LANDING_SPACE_BLOCKED",
-        "landingGate": "FOOT_X_SUPPORT",
-        "plans": "151",
-        "steps": "0",
-        "separationDistance": "2.81813",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "false",
-        "microGoal": "<4511.493164, 339.169983, 10236.365234>",
-        "microStatus": "GRAPH_SAMPLED_COMPONENT_EXHAUSTED",
-        "microQueries": "0",
-        "microPlans": "1"
-      },
-      {
-        "pose": "1",
-        "mode": "0",
-        "iteration": "299",
-        "seconds": "15",
-        "phase": "FALL",
-        "position": "<4511.487305, 339.380249, 10236.833008>",
-        "heading": "-164.304",
-        "lift": "0",
-        "reason": "FALL_AIR_POSE_ESCAPE_TURN",
-        "landingGate": "CLEAR",
-        "plans": "110",
-        "steps": "83",
-        "separationDistance": "2.51246",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "false",
-        "microGoal": "<0.000000, 0.000000, 0.000000>",
-        "microStatus": "NOT_STARTED",
-        "microQueries": "0",
-        "microPlans": "0"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "299",
-        "seconds": "15",
-        "phase": "FALL",
-        "position": "<4511.489258, 339.380249, 10236.823242>",
-        "heading": "-144.304",
-        "lift": "0",
-        "reason": "FALL_AIR_POSE_ESCAPE_TURN",
-        "landingGate": "CLEAR",
-        "plans": "110",
-        "steps": "83",
-        "separationDistance": "2.52242",
-        "tangentDistance": "0.00995902",
-        "tangentSteps": "1",
-        "wantLanding": "false",
-        "microGoal": "<4511.466309, 339.169586, 10236.384766>",
-        "microStatus": "GRAPH_ROUTE_SUPERSEDED",
-        "microQueries": "1",
-        "microPlans": "1"
-      },
-      {
-        "pose": "2",
-        "mode": "0",
-        "iteration": "1",
-        "seconds": "0.0999756",
-        "phase": "LAND",
-        "position": "<4530.000000, 339.336609, 10240.030273>",
-        "heading": "166.976",
-        "lift": "0",
-        "reason": "NATIVE_FALL",
-        "landingGate": "CLEAR",
-        "plans": "1",
-        "steps": "1",
-        "separationDistance": "0.0302734",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "true",
-        "microGoal": "<0.000000, 0.000000, 0.000000>",
-        "microStatus": "NOT_STARTED",
-        "microQueries": "0",
-        "microPlans": "0"
-      },
-      {
-        "pose": "2",
-        "mode": "1",
-        "iteration": "0",
-        "seconds": "0.0500488",
-        "phase": "LAND",
-        "position": "<4530.000000, 339.336670, 10240.000000>",
-        "heading": "166.976",
-        "lift": "0",
-        "reason": "NATIVE_FALL",
-        "landingGate": "CLEAR",
-        "plans": "0",
-        "steps": "0",
-        "separationDistance": "0",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "true",
-        "microGoal": "<0.000000, 0.000000, 0.000000>",
-        "microStatus": "NOT_STARTED",
-        "microQueries": "0",
-        "microPlans": "0"
-      }
-    ],
-    "commits": [
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "index": "0",
-        "start": "<4511.466309, 339.380249, 10236.884766>",
-        "proposal": "<4511.468262, 339.380249, 10236.875000>",
-        "distance": "0.00995902",
-        "budget": "1.5",
-        "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR"
-      }
-    ],
-    "graphResults": [
-      {
-        "pose": 0,
-        "generated": 54,
-        "expanded": 54,
-        "gateQueries": 1944,
-        "routeSteps": 0,
-        "elapsedSeconds": 0.342999,
-        "status": "GRAPH_SAMPLED_COMPONENT_EXHAUSTED",
-        "routeFound": false
-      },
-      {
-        "pose": 1,
-        "generated": 512,
-        "expanded": 114,
-        "gateQueries": 4068,
-        "routeSteps": 7,
-        "elapsedSeconds": 0.869999,
-        "status": "GRAPH_ROUTE_FOUND",
-        "routeFound": true
-      }
-    ],
-    "fullEndpointQueries": [],
-    "totalCommitCount": 1,
-    "originalBaselinePreserved": true
-  },
-  {
-    "validation": "prelanding17-micro-graph-owned",
-    "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
-    "finals": [
-      {
-        "pose": "0",
-        "mode": "0",
-        "iteration": "299",
-        "seconds": "15",
-        "phase": "FALL",
-        "position": "<4511.493164, 339.275757, 10236.865234>",
-        "heading": "-161.024",
-        "lift": "0",
-        "reason": "LANDING_SPACE_BLOCKED",
-        "landingGate": "FOOT_X_SUPPORT",
-        "plans": "151",
-        "steps": "0",
-        "separationDistance": "2.81813",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "false",
-        "microGoal": "<0.000000, 0.000000, 0.000000>",
-        "microStatus": "NOT_STARTED",
-        "microQueries": "0",
-        "microPlans": "0"
-      },
-      {
-        "pose": "0",
-        "mode": "1",
-        "iteration": "299",
-        "seconds": "15",
-        "phase": "FALL",
-        "position": "<4511.493164, 339.275757, 10236.865234>",
-        "heading": "-161.024",
-        "lift": "0",
-        "reason": "LANDING_SPACE_BLOCKED",
-        "landingGate": "FOOT_X_SUPPORT",
-        "plans": "151",
-        "steps": "0",
-        "separationDistance": "2.81813",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "false",
-        "microGoal": "<4511.493164, 339.169983, 10236.365234>",
-        "microStatus": "GRAPH_SAMPLED_COMPONENT_EXHAUSTED",
-        "microQueries": "0",
-        "microPlans": "1"
-      },
-      {
-        "pose": "1",
-        "mode": "0",
-        "iteration": "299",
-        "seconds": "15",
-        "phase": "FALL",
-        "position": "<4511.487305, 339.380249, 10236.833008>",
-        "heading": "-164.304",
-        "lift": "0",
-        "reason": "FALL_AIR_POSE_ESCAPE_TURN",
-        "landingGate": "CLEAR",
-        "plans": "110",
-        "steps": "83",
-        "separationDistance": "2.51246",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "false",
-        "microGoal": "<0.000000, 0.000000, 0.000000>",
-        "microStatus": "NOT_STARTED",
-        "microQueries": "0",
-        "microPlans": "0"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "299",
-        "seconds": "15",
-        "phase": "FALL",
-        "position": "<4511.484375, 339.380249, 10236.818359>",
-        "heading": "-163.304",
-        "lift": "0",
-        "reason": "FALL_NATIVE_JOINT_WORLD_0",
-        "landingGate": "CLEAR",
-        "plans": "1",
-        "steps": "81",
-        "separationDistance": "2.52197",
-        "tangentDistance": "0.0698203",
-        "tangentSteps": "7",
-        "wantLanding": "false",
-        "microGoal": "<4511.466309, 339.169586, 10236.384766>",
-        "microStatus": "GRAPH_STEP_ACCEPTED",
-        "microQueries": "7",
-        "microPlans": "1"
-      },
-      {
-        "pose": "2",
-        "mode": "0",
-        "iteration": "1",
-        "seconds": "0.0999756",
-        "phase": "LAND",
-        "position": "<4530.000000, 339.336609, 10240.030273>",
-        "heading": "166.976",
-        "lift": "0",
-        "reason": "NATIVE_FALL",
-        "landingGate": "CLEAR",
-        "plans": "1",
-        "steps": "1",
-        "separationDistance": "0.0302734",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "true",
-        "microGoal": "<0.000000, 0.000000, 0.000000>",
-        "microStatus": "NOT_STARTED",
-        "microQueries": "0",
-        "microPlans": "0"
-      },
-      {
-        "pose": "2",
-        "mode": "1",
-        "iteration": "0",
-        "seconds": "0.0500488",
-        "phase": "LAND",
-        "position": "<4530.000000, 339.336670, 10240.000000>",
-        "heading": "166.976",
-        "lift": "0",
-        "reason": "NATIVE_FALL",
-        "landingGate": "CLEAR",
-        "plans": "0",
-        "steps": "0",
-        "separationDistance": "0",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "true",
-        "microGoal": "<0.000000, 0.000000, 0.000000>",
-        "microStatus": "NOT_STARTED",
-        "microQueries": "0",
-        "microPlans": "0"
-      }
-    ],
-    "commits": [
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "index": "0",
-        "start": "<4511.466309, 339.380249, 10236.884766>",
-        "proposal": "<4511.468262, 339.380249, 10236.875000>",
-        "distance": "0.00995902",
-        "budget": "1.5",
-        "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "82",
-        "index": "1",
-        "start": "<4511.468262, 339.380249, 10236.875000>",
-        "proposal": "<4511.470215, 339.380249, 10236.865234>",
-        "distance": "0.00995902",
-        "budget": "1.49004",
-        "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "83",
-        "index": "2",
-        "start": "<4511.470215, 339.380249, 10236.865234>",
-        "proposal": "<4511.472168, 339.380249, 10236.855469>",
-        "distance": "0.00995902",
-        "budget": "1.48008",
-        "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "84",
-        "index": "3",
-        "start": "<4511.472168, 339.380249, 10236.855469>",
-        "proposal": "<4511.474121, 339.380249, 10236.845703>",
-        "distance": "0.00995902",
-        "budget": "1.47012",
-        "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "85",
-        "index": "4",
-        "start": "<4511.474121, 339.380249, 10236.845703>",
-        "proposal": "<4511.476074, 339.380249, 10236.835938>",
-        "distance": "0.00995902",
-        "budget": "1.46016",
-        "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "86",
-        "index": "5",
-        "start": "<4511.476074, 339.380249, 10236.835938>",
-        "proposal": "<4511.478027, 339.380249, 10236.826172>",
-        "distance": "0.00995902",
-        "budget": "1.4502",
-        "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "87",
-        "index": "6",
-        "start": "<4511.478027, 339.380249, 10236.826172>",
-        "proposal": "<4511.484375, 339.380249, 10236.818359>",
-        "distance": "0.0100662",
-        "budget": "1.44025",
-        "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR"
-      }
-    ],
-    "graphResults": [
-      {
-        "pose": 0,
-        "generated": 54,
-        "expanded": 54,
-        "gateQueries": 1944,
-        "routeSteps": 0,
-        "elapsedSeconds": 0.363998,
-        "status": "GRAPH_SAMPLED_COMPONENT_EXHAUSTED",
-        "routeFound": false
-      },
-      {
-        "pose": 1,
-        "generated": 512,
-        "expanded": 114,
-        "gateQueries": 4068,
-        "routeSteps": 7,
-        "elapsedSeconds": 0.842999,
-        "status": "GRAPH_ROUTE_FOUND",
-        "routeFound": true
-      }
-    ],
-    "fullEndpointQueries": [],
-    "totalCommitCount": 7,
-    "originalBaselinePreserved": true
-  },
-  {
-    "validation": "prelanding17-micro-graph-owned-full",
-    "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
-    "finals": [
-      {
-        "pose": "0",
-        "mode": "0",
-        "iteration": "299",
-        "seconds": "15",
-        "phase": "FALL",
-        "position": "<4511.493164, 339.275757, 10236.865234>",
-        "heading": "-161.024",
-        "lift": "0",
-        "reason": "LANDING_SPACE_BLOCKED",
-        "landingGate": "FOOT_X_SUPPORT",
-        "plans": "151",
-        "steps": "0",
-        "separationDistance": "2.81813",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "false",
-        "microGoal": "<0.000000, 0.000000, 0.000000>",
-        "microStatus": "NOT_STARTED",
-        "microQueries": "0",
-        "microPlans": "0"
-      },
-      {
-        "pose": "0",
-        "mode": "1",
-        "iteration": "299",
-        "seconds": "15",
-        "phase": "FALL",
-        "position": "<4511.493164, 339.275757, 10236.865234>",
-        "heading": "-161.024",
-        "lift": "0",
-        "reason": "LANDING_SPACE_BLOCKED",
-        "landingGate": "FOOT_X_SUPPORT",
-        "plans": "151",
-        "steps": "0",
-        "separationDistance": "2.81813",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "false",
-        "microGoal": "<4511.493164, 339.169983, 10236.365234>",
-        "microStatus": "GRAPH_SAMPLED_COMPONENT_EXHAUSTED",
-        "microQueries": "0",
-        "microPlans": "1"
-      },
-      {
-        "pose": "1",
-        "mode": "0",
-        "iteration": "299",
-        "seconds": "15",
-        "phase": "FALL",
-        "position": "<4511.487305, 339.380249, 10236.833008>",
-        "heading": "-164.304",
-        "lift": "0",
-        "reason": "FALL_AIR_POSE_ESCAPE_TURN",
-        "landingGate": "CLEAR",
-        "plans": "110",
-        "steps": "83",
-        "separationDistance": "2.51246",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "false",
-        "microGoal": "<0.000000, 0.000000, 0.000000>",
-        "microStatus": "NOT_STARTED",
-        "microQueries": "0",
-        "microPlans": "0"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "299",
-        "seconds": "15",
-        "phase": "FALL",
-        "position": "<4511.487305, 339.380249, 10236.833008>",
-        "heading": "-164.304",
-        "lift": "0",
-        "reason": "FALL_AIR_POSE_ESCAPE_TURN",
-        "landingGate": "CLEAR",
-        "plans": "110",
-        "steps": "83",
-        "separationDistance": "2.51246",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "false",
-        "microGoal": "<4511.466309, 339.169586, 10236.384766>",
-        "microStatus": "GRAPH_NODE_CAP",
-        "microQueries": "0",
-        "microPlans": "1"
-      },
-      {
-        "pose": "2",
-        "mode": "0",
-        "iteration": "1",
-        "seconds": "0.0999756",
-        "phase": "LAND",
-        "position": "<4530.000000, 339.336609, 10240.030273>",
-        "heading": "166.976",
-        "lift": "0",
-        "reason": "NATIVE_FALL",
-        "landingGate": "CLEAR",
-        "plans": "1",
-        "steps": "1",
-        "separationDistance": "0.0302734",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "true",
-        "microGoal": "<0.000000, 0.000000, 0.000000>",
-        "microStatus": "NOT_STARTED",
-        "microQueries": "0",
-        "microPlans": "0"
-      },
-      {
-        "pose": "2",
-        "mode": "1",
-        "iteration": "0",
-        "seconds": "0.0500488",
-        "phase": "LAND",
-        "position": "<4530.000000, 339.336670, 10240.000000>",
-        "heading": "166.976",
-        "lift": "0",
-        "reason": "NATIVE_FALL",
-        "landingGate": "CLEAR",
-        "plans": "0",
-        "steps": "0",
-        "separationDistance": "0",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "true",
-        "microGoal": "<0.000000, 0.000000, 0.000000>",
-        "microStatus": "NOT_STARTED",
-        "microQueries": "0",
-        "microPlans": "0"
-      }
-    ],
-    "commits": [],
-    "graphResults": [
-      {
-        "pose": 0,
-        "generated": 54,
-        "expanded": 54,
-        "gateQueries": 1944,
-        "routeSteps": 0,
-        "elapsedSeconds": 0.257999,
-        "status": "GRAPH_SAMPLED_COMPONENT_EXHAUSTED",
-        "routeFound": false
-      },
-      {
-        "pose": 1,
-        "generated": 512,
-        "expanded": 512,
-        "gateQueries": 18432,
-        "routeSteps": 0,
-        "elapsedSeconds": 3.145,
-        "status": "GRAPH_NODE_CAP",
-        "routeFound": false
-      }
-    ],
-    "fullEndpointQueries": [
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "483",
-        "parent": "355",
-        "position": "<4511.484375, 339.171661, 10236.818359>",
-        "lift": "0",
-        "cost": "0.0698203",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.842512, 0.538676, -0.001391>",
-        "fraction": "0.376477"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "359",
-        "parent": "286",
-        "position": "<4511.483887, 339.171692, 10236.829102>",
-        "lift": "0",
-        "cost": "0.0601761",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.840131, 0.542382, -0.001403>",
-        "fraction": "0.372798"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "435",
-        "parent": "233",
-        "position": "<4511.483398, 339.171661, 10236.829102>",
-        "lift": "0",
-        "cost": "0.0603702",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.837668, 0.546179, -0.001410>",
-        "fraction": "0.36915"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "484",
-        "parent": "355",
-        "position": "<4511.485840, 339.171692, 10236.819336>",
-        "lift": "0",
-        "cost": "0.0701351",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.849685, 0.527289, -0.001363>",
-        "fraction": "0.387386"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "360",
-        "parent": "286",
-        "position": "<4511.484863, 339.171692, 10236.831055>",
-        "lift": "0",
-        "cost": "0.0598494",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.844880, 0.534953, -0.001382>",
-        "fraction": "0.379927"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "436",
-        "parent": "233",
-        "position": "<4511.484375, 339.171692, 10236.831055>",
-        "lift": "0",
-        "cost": "0.0600435",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.842520, 0.538663, -0.001389>",
-        "fraction": "0.37639"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "485",
-        "parent": "355",
-        "position": "<4511.486816, 339.171722, 10236.821289>",
-        "lift": "0",
-        "cost": "0.0698084",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.854500, 0.519450, -0.001343>",
-        "fraction": "0.394912"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "307",
-        "parent": "232",
-        "position": "<4511.483398, 339.171692, 10236.832031>",
-        "lift": "0",
-        "cost": "0.0596679",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.837686, 0.546151, -0.001411>",
-        "fraction": "0.36914"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "361",
-        "parent": "286",
-        "position": "<4511.485352, 339.171753, 10236.832031>",
-        "lift": "0",
-        "cost": "0.0598613",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.847367, 0.531006, -0.001370>",
-        "fraction": "0.383736"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "437",
-        "parent": "233",
-        "position": "<4511.484863, 339.171722, 10236.832031>",
-        "lift": "0",
-        "cost": "0.0600554",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.844886, 0.534944, -0.001382>",
-        "fraction": "0.379961"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "486",
-        "parent": "355",
-        "position": "<4511.487305, 339.171722, 10236.822266>",
-        "lift": "0",
-        "cost": "0.0698203",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.856914, 0.515458, -0.001331>",
-        "fraction": "0.398643"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "308",
-        "parent": "232",
-        "position": "<4511.483887, 339.171722, 10236.833984>",
-        "lift": "0",
-        "cost": "0.0595607",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.840092, 0.542443, -0.001403>",
-        "fraction": "0.372745"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "346",
-        "parent": "151",
-        "position": "<4511.483398, 339.171692, 10236.833984>",
-        "lift": "0",
-        "cost": "0.0597548",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.837628, 0.546239, -0.001415>",
-        "fraction": "0.369096"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "362",
-        "parent": "286",
-        "position": "<4511.485840, 339.171753, 10236.833984>",
-        "lift": "0",
-        "cost": "0.0597541",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.849705, 0.527257, -0.001363>",
-        "fraction": "0.387315"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "438",
-        "parent": "233",
-        "position": "<4511.485352, 339.171753, 10236.833984>",
-        "lift": "0",
-        "cost": "0.0599482",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.847310, 0.531096, -0.001372>",
-        "fraction": "0.383692"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "487",
-        "parent": "355",
-        "position": "<4511.487793, 339.171722, 10236.824219>",
-        "lift": "0",
-        "cost": "0.0697131",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.859315, 0.511446, -0.001319>",
-        "fraction": "0.402398"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "294",
-        "parent": "232",
-        "position": "<4511.483887, 339.171722, 10236.835938>",
-        "lift": "0",
-        "cost": "0.0593673",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.840104, 0.542424, -0.001403>",
-        "fraction": "0.372701"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "335",
-        "parent": "151",
-        "position": "<4511.483398, 339.171692, 10236.835938>",
-        "lift": "0",
-        "cost": "0.0595614",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.837710, 0.546114, -0.001411>",
-        "fraction": "0.369191"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "347",
-        "parent": "286",
-        "position": "<4511.485840, 339.171753, 10236.835938>",
-        "lift": "0",
-        "cost": "0.0595607",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.849717, 0.527238, -0.001363>",
-        "fraction": "0.387273"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "426",
-        "parent": "233",
-        "position": "<4511.485352, 339.171753, 10236.835938>",
-        "lift": "0",
-        "cost": "0.0597548",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.847322, 0.531078, -0.001375>",
-        "fraction": "0.38365"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "472",
-        "parent": "355",
-        "position": "<4511.487793, 339.171753, 10236.826172>",
-        "lift": "0",
-        "cost": "0.0695197",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.859326, 0.511426, -0.001319>",
-        "fraction": "0.402551"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "473",
-        "parent": "355",
-        "position": "<4511.487793, 339.171753, 10236.828125>",
-        "lift": "0",
-        "cost": "0.0697131",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.859338, 0.511407, -0.001319>",
-        "fraction": "0.402509"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "474",
-        "parent": "355",
-        "position": "<4511.487305, 339.171753, 10236.830078>",
-        "lift": "0",
-        "cost": "0.0698203",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.856960, 0.515381, -0.001329>",
-        "fraction": "0.398668"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "475",
-        "parent": "355",
-        "position": "<4511.486816, 339.171753, 10236.831055>",
-        "lift": "0",
-        "cost": "0.0698084",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.854558, 0.519354, -0.001341>",
-        "fraction": "0.394893"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "476",
-        "parent": "355",
-        "position": "<4511.485840, 339.171753, 10236.833008>",
-        "lift": "0",
-        "cost": "0.0701351",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.849699, 0.527267, -0.001365>",
-        "fraction": "0.387337"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "81",
-        "kind": "FULL_ENDPOINT_QUERY",
-        "node": "477",
-        "parent": "355",
-        "position": "<4511.484375, 339.171722, 10236.833984>",
-        "lift": "0",
-        "cost": "0.0698203",
-        "angle": "-1",
-        "accepted": "false",
-        "diagnostic": "NATIVE_JOINT_WORLD_0",
-        "probe": "4",
-        "normal": "<0.842538, 0.538635, -0.001391>",
-        "fraction": "0.37638"
-      }
-    ],
-    "totalCommitCount": 0,
-    "originalBaselinePreserved": true
-  }
-]
+  "limitations": [
+    "Frozen4joint pose,normalized dt=.05/velocity=-15/pressure velocity0;actual previousContacts not reconstructed.",
+    "Legacy seed count4 inferred and parent-state checked;fresh runs log explicit derived4points,not actual source history.",
+    "512state cap,30degree turn budget,1.5m path bound,first-visited ordering and5mm representative cells are incomplete search.",
+    "Accepted rotation queries are proposals,not applied rotations or a successful route.",
+    "No new live8/64,visible-frame or client performance measurement."
+  ]
+}
 
-Full-endpoint test subclass,not deployed code:
+Test-only node and traversal;not deployed NPC:
+class DGPreLandingNode
+{
+ vector Position;float Lift;float Heading;int Parent=-1;float Cost;float Distance;float Turn;bool Closed;ref array<vector> Contacts={};
+}
 class DGPreLandingTangent: DGBNativeTraversal
 {
  int TestMode;int TestPose;int TestIteration;int TangentSteps;int TangentAttempts;float TangentDistance;
@@ -1386,101 +1139,129 @@ class DGPreLandingTangent: DGBNativeTraversal
   LandingDiagnostic=saved;MicroStatus="NO_VALID_GOAL";return false;
  }
 
- bool GraphTried;bool GraphValid;int GraphNext;int GraphExpanded;int GraphGenerated;int GraphQueries;float GraphElapsed;
- ref array<vector> GraphRoute={};
+
+ bool GraphTried;bool GraphValid;bool GraphCapped;int GraphNext;int GraphExpanded;int GraphQueries;int GraphNodeLimit=512;
+ vector GraphGridOrigin;float GraphBudget;float GraphStep;float GraphElapsed;float GraphTurnTotal;int GraphRotationSteps;
+ ref array<ref DGPreLandingNode> GraphNodes={};ref array<ref DGPreLandingNode> GraphRoute={};
+ ref map<string,int> GraphVisited=new map<string,int>;
+ string NodeKey(vector position,float lift,float heading,int count)
+ {vector relativePosition=position - GraphGridOrigin;int cellX=Math.Round(relativePosition[0]/0.005);int cellZ=Math.Round(relativePosition[2]/0.005);return cellX.ToString()+"/"+cellZ.ToString()+"/"+lift.ToString()+"/"+heading.ToString()+"/"+count;}
+ void GraphEdge(int parent,vector next,float heading,FileHandle log,string kind,int angle)
+ {
+  DGPreLandingNode previous=GraphNodes[parent];float distance=vector.Distance(previous.Position,next);
+  float turn=Math.AbsFloat(DGBGroundAgent.SignedAngle(heading - previous.Heading));
+  float totalDistance=previous.Distance+distance;float totalTurn=previous.Turn+turn;
+  if((distance<=0.0001 && turn<=0.0001) || totalDistance>GraphBudget || totalTurn>30.0001)return;
+  float lift;ref array<vector> contacts={};GraphQueries++;
+  bool clear=PressureEscapeStepClear(next,lift,contacts,heading);
+  FPrintln(log,TestPose.ToString()+"\t"+TestMode+"\t"+TestIteration+"\t"+kind+"\t"+parent+"\t"+next+"\t"+heading+"\t"+lift+"\t"+totalDistance+"\t"+totalTurn+"\t"+angle+"\t"+clear+"\t"+PressureEscapeDiagnostic+"\t"+PressureEscapeRejectProbe+"\t"+PressureEscapeRejectNormal+"\t"+PressureEscapeRejectFraction);
+  if(!clear)return;
+  string key=NodeKey(next,lift,heading,contacts.Count());if(GraphVisited.Contains(key))return;
+  if(GraphNodes.Count()>=GraphNodeLimit){GraphCapped=true;return;}
+  ref DGPreLandingNode child=new DGPreLandingNode;child.Position=next;child.Heading=heading;child.Lift=lift;child.Parent=parent;
+  child.Distance=totalDistance;child.Turn=totalTurn;child.Cost=totalDistance+totalTurn*0.002;child.Contacts.Copy(contacts);
+  GraphVisited.Insert(key,GraphNodes.Count());GraphNodes.Insert(child);
+ }
  bool BuildMicroRoute(float dt)
  {
-  GraphTried=true;float started=GetGame().GetTickTime();MicroStatus="GRAPH_SEARCH";
+  GraphTried=true;float started=GetGame().GetTickTime();MicroStatus="SE2_SEARCH";
   if(!PlanMicroGoal())return false;
-  float budget=Math.Min(SeparationDistanceBudget - SeparationEpisodeDistance,1.5 - TangentDistance);
-  float step=Math.Min(0.01,Math.Max(dt,0)*0.6);if(step<=0.0001)return false;
-  vector origin=Body.Agent.Position;float originLift=Body.Lift;string savedLanding=LandingDiagnostic;ref array<vector> originalContacts={};originalContacts.Copy(Body.Contacts);string savedReason=Body.Reason;string savedHit=Body.HitType;vector savedNormal=Body.HitNormal;vector savedPoint=Body.HitPoint;float savedFraction=Body.HitFraction;
-  ref array<ref DGPreLandingNode> nodes={};ref map<string,int> visited=new map<string,int>;
-  ref DGPreLandingNode first=new DGPreLandingNode;first.Position=origin;first.Lift=originLift;first.Contacts.Copy(originalContacts);nodes.Insert(first);
-  visited.Insert(origin.ToString()+"/"+originLift.ToString()+"/"+originalContacts.Count(),0);
-  int goal=-1;bool capped=false;
-  string path="$profile:prelanding17-graph.tsv";bool exists=FileExist(path);FileHandle log=OpenFile(path,FileMode.APPEND);
-  if(!log){Print("DG_PRELAND17_FAILED graph_log");return false;}
-  if(!exists)FPrintln(log,"pose\tmode\titeration\tkind\tnode\tparent\tposition\tlift\tcost\tangle\taccepted\tdiagnostic\tprobe\tnormal\tfraction");
-  while(GraphExpanded<512)
+  GraphBudget=Math.Min(SeparationDistanceBudget - SeparationEpisodeDistance,1.5 - TangentDistance);
+  GraphStep=Math.Min(0.01,Math.Max(dt,0)*0.6);if(GraphStep<=0.0001)return false;
+  vector origin=Body.Agent.Position;float originLift=Body.Lift;float originHeading=Body.Agent.Heading;
+  ref array<vector> originalContacts={};originalContacts.Copy(Body.Contacts);
+  string savedLanding=LandingDiagnostic;string savedReason=Body.Reason;string savedHit=Body.HitType;
+  vector savedNormal=Body.HitNormal;vector savedPoint=Body.HitPoint;float savedFraction=Body.HitFraction;
+  GraphGridOrigin=origin;
+  ref DGPreLandingNode first=new DGPreLandingNode;first.Position=origin;first.Lift=originLift;first.Heading=originHeading;first.Contacts.Copy(originalContacts);
+  GraphVisited.Insert(NodeKey(origin,originLift,originHeading,originalContacts.Count()),0);GraphNodes.Insert(first);
+  int goal=-1;string path="$profile:prelanding17-se2.tsv";bool exists=FileExist(path);FileHandle log=OpenFile(path,FileMode.APPEND);
+  if(!log){Print("DG_PRELAND17_FAILED se2_log");return false;}
+  if(!exists)FPrintln(log,"pose\tmode\titeration\tkind\tnode\tposition\theading\tlift\tdistance\tturn\tangle\taccepted\tdiagnostic\tprobe\tnormal\tfraction");
+  while(GraphExpanded<GraphNodeLimit)
   {
    int best=-1;float score=100000;
-   for(int scan=0;scan<nodes.Count();scan++)
+   for(int scan=0;scan<GraphNodes.Count();scan++)
    {
-    if(nodes[scan].Closed)continue;
-    float candidate=nodes[scan].Cost+FlatGap(nodes[scan].Position,MicroGoal);
+    if(GraphNodes[scan].Closed)continue;
+    float candidate=GraphNodes[scan].Cost+FlatGap(GraphNodes[scan].Position,MicroGoal);
     if(candidate<score){score=candidate;best=scan;}
    }
    if(best<0)break;
-   DGPreLandingNode current=nodes[best];current.Closed=true;GraphExpanded++;
-   Body.Agent.Position=current.Position;Body.Lift=current.Lift;Body.Contacts.Copy(current.Contacts);
+   DGPreLandingNode current=GraphNodes[best];current.Closed=true;GraphExpanded++;
+   Body.Agent.Position=current.Position;Body.Agent.Heading=current.Heading;Body.Lift=current.Lift;Body.Contacts.Copy(current.Contacts);
    vector ground=DGBTraversalFixture.Ground(current.Position);vector support;
    bool landing=LandingSpace(ground,support,false);bool endpoint=false;
    if(landing)
    {
     string core;float endpointLift;ref array<vector> endpointContacts={};
-    endpoint=Body.Director.Crowd.CoreClear(Body,current.Position,support,core) && Body.SolveContacts(support,Body.Agent.Heading,endpointLift,endpointContacts);
-    FPrintln(log,TestPose.ToString()+"\t"+TestMode+"\t"+TestIteration+"\tFULL_ENDPOINT_QUERY\t"+best+"\t"+current.Parent+"\t"+support+"\t"+endpointLift+"\t"+current.Cost+"\t-1\t"+endpoint+"\t"+Body.Reason+"\t"+current.Contacts.Count()+"\t"+Body.HitNormal+"\t"+Body.HitFraction);
+    endpoint=Body.Director.Crowd.CoreClear(Body,current.Position,support,core) && Body.SolveContacts(support,current.Heading,endpointLift,endpointContacts);
+    FPrintln(log,TestPose.ToString()+"\t"+TestMode+"\t"+TestIteration+"\tFULL_ENDPOINT_QUERY\t"+best+"\t"+support+"\t"+current.Heading+"\t"+endpointLift+"\t"+current.Distance+"\t"+current.Turn+"\t-1\t"+endpoint+"\t"+Body.Reason+"\t"+current.Contacts.Count()+"\t"+Body.HitNormal+"\t"+Body.HitFraction);
    }
-   if(landing && endpoint)
-   {
-    goal=best;
-    FPrintln(log,TestPose.ToString()+"\t"+TestMode+"\t"+TestIteration+"\tGOAL_QUERY\t"+best+"\t"+current.Parent+"\t"+current.Position+"\t"+current.Lift+"\t"+current.Cost+"\t-1\ttrue\t"+LandingDiagnostic+"\t-1\t0 0 0\t-1");
-    break;
-   }
+   if(landing && endpoint){goal=best;break;}
    for(int angle=0;angle<360;angle+=10)
    {
-    float radians=angle*Math.DEG2RAD;vector next=current.Position+Vector(Math.Cos(radians),0,Math.Sin(radians))*step;
-    float distance=vector.Distance(current.Position,next);float cost=current.Cost+distance;
-    if(distance<=0.0001 || cost>budget)continue;
-    float lift;ref array<vector> contacts={};GraphQueries++;
-    bool clear=PressureEscapeStepClear(next,lift,contacts);
-    FPrintln(log,TestPose.ToString()+"\t"+TestMode+"\t"+TestIteration+"\tEDGE_QUERY\t"+best+"\t"+current.Parent+"\t"+next+"\t"+lift+"\t"+cost+"\t"+angle+"\t"+clear+"\t"+PressureEscapeDiagnostic+"\t"+PressureEscapeRejectProbe+"\t"+PressureEscapeRejectNormal+"\t"+PressureEscapeRejectFraction);
-    if(!clear)continue;
-    string key=next.ToString()+"/"+lift.ToString()+"/"+contacts.Count();if(visited.Contains(key))continue;
-    if(nodes.Count()>=512){capped=true;continue;}
-    ref DGPreLandingNode child=new DGPreLandingNode;child.Position=next;child.Lift=lift;child.Parent=best;child.Cost=cost;child.Contacts.Copy(contacts);
-    visited.Insert(key,nodes.Count());nodes.Insert(child);
+    float radians=angle*Math.DEG2RAD;vector next=current.Position+Vector(Math.Cos(radians),0,Math.Sin(radians))*GraphStep;
+    GraphEdge(best,next,current.Heading,log,"MOVE_QUERY",angle);
    }
+   GraphEdge(best,current.Position,DGBGroundAgent.SignedAngle(current.Heading+1),log,"TURN_QUERY",1);
+   GraphEdge(best,current.Position,DGBGroundAgent.SignedAngle(current.Heading - 1),log,"TURN_QUERY",-1);
   }
-  GraphGenerated=nodes.Count();GraphElapsed=GetGame().GetTickTime() - started;
+  GraphElapsed=GetGame().GetTickTime() - started;
   if(goal>=0)
   {
    int cursor=goal;
-   while(cursor>0){GraphRoute.InsertAt(nodes[cursor].Position,0);cursor=nodes[cursor].Parent;}
-   MicroStatus="GRAPH_ROUTE_FOUND";GraphValid=GraphRoute.Count()>0;
-   if(!GraphValid)MicroStatus="GRAPH_ROOT_LANDING_QUERY_ONLY";
+   while(cursor>0){GraphRoute.InsertAt(GraphNodes[cursor],0);cursor=GraphNodes[cursor].Parent;}
+   GraphValid=GraphRoute.Count()>0;MicroStatus="SE2_ROUTE_FOUND";
+   if(!GraphValid)MicroStatus="SE2_ROOT_ENDPOINT_QUERY_ONLY";
   }
-  else
-  {
-   MicroStatus="GRAPH_SAMPLED_COMPONENT_EXHAUSTED";if(capped)MicroStatus="GRAPH_NODE_CAP";
-  }
-  FPrintln(log,TestPose.ToString()+"\t"+TestMode+"\t"+TestIteration+"\tRESULT\t"+GraphGenerated+"\t"+GraphExpanded+"\t"+origin+"\t"+originLift+"\t"+GraphElapsed+"\t"+GraphQueries+"\t"+GraphValid+"\t"+MicroStatus+"\t"+GraphRoute.Count()+"\t0 0 0\t-1");
-  CloseFile(log);Body.Agent.Position=origin;Body.Lift=originLift;Body.Contacts.Copy(originalContacts);LandingDiagnostic=savedLanding;Body.Reason=savedReason;Body.HitType=savedHit;Body.HitNormal=savedNormal;Body.HitPoint=savedPoint;Body.HitFraction=savedFraction;
+  else{MicroStatus="SE2_SAMPLED_COMPONENT_EXHAUSTED";if(GraphCapped)MicroStatus="SE2_NODE_CAP";}
+  FPrintln(log,TestPose.ToString()+"\t"+TestMode+"\t"+TestIteration+"\tRESULT\t"+GraphNodes.Count()+"\t"+origin+"\t"+originHeading+"\t"+GraphElapsed+"\t"+GraphExpanded+"\t"+GraphQueries+"\t"+GraphRoute.Count()+"\t"+GraphValid+"\t"+MicroStatus+"\t-1\t0 0 0\t-1");
+  CloseFile(log);Body.Agent.Position=origin;Body.Agent.Heading=originHeading;Body.Lift=originLift;Body.Contacts.Copy(originalContacts);
+  LandingDiagnostic=savedLanding;Body.Reason=savedReason;Body.HitType=savedHit;Body.HitNormal=savedNormal;Body.HitPoint=savedPoint;Body.HitFraction=savedFraction;
   return GraphValid;
  }
  override bool PressureSlide(float dt)
  {
-  bool moved=false;
-  if(!GraphValid)moved=super.PressureSlide(dt);
-  if(moved)return true;
+  bool moved=false;if(!GraphValid)moved=super.PressureSlide(dt);if(moved)return true;
   if(TestMode!=1 || Phase!="FALL" || !PressureFallActive)return false;
   if(!GraphTried && !BuildMicroRoute(dt))return false;
-  if(!GraphValid || GraphNext>=GraphRoute.Count())return false;
-  vector start=Body.Agent.Position;vector next=GraphRoute[GraphNext];float travel=vector.Distance(start,next);
+  if(!GraphValid)return false;
+  if(GraphNext>=GraphRoute.Count()){GraphValid=false;MicroStatus="SE2_ROUTE_COMPLETE_AWAIT_FALL";return false;}
+  DGPreLandingNode next=GraphRoute[GraphNext];DGPreLandingNode previous=GraphNodes[next.Parent];
+  vector start=Body.Agent.Position;float heading=Body.Agent.Heading;float travel=vector.Distance(start,next.Position);
+  float turn=Math.AbsFloat(DGBGroundAgent.SignedAngle(next.Heading - heading));
   float budget=Math.Min(SeparationDistanceBudget - SeparationEpisodeDistance,1.5 - TangentDistance);
-  if(travel>Math.Min(budget,Math.Min(0.012,dt*0.6)) || travel<=0.0001)
-  {MicroStatus="GRAPH_ROUTE_STALE_OR_BOUND";GraphValid=false;return false;}
+  if(vector.Distance(start,previous.Position)>0.000002 || Math.AbsFloat(DGBGroundAgent.SignedAngle(heading - previous.Heading))>0.0001)
+  {MicroStatus="SE2_ROUTE_STATE_STALE";GraphValid=false;return false;}
+  if(travel>Math.Min(budget,Math.Min(0.012,dt*0.6)) || turn>Math.Min(1.001,dt*60) || GraphTurnTotal+turn>30.0001)
+  {MicroStatus="SE2_ROUTE_BOUND";GraphValid=false;return false;}
   float lift;ref array<vector> contacts={};MicroQueries++;
-  bool clear=PressureEscapeStepClear(next,lift,contacts);
-  string path="$profile:prelanding17-graph-commit.tsv";bool exists=FileExist(path);FileHandle log=OpenFile(path,FileMode.APPEND);
-  if(!log){Print("DG_PRELAND17_FAILED graph_commit_log");return false;}
-  if(!exists)FPrintln(log,"pose\tmode\titeration\tindex\tstart\tproposal\tdistance\tbudget\taccepted\tdiagnostic");
-  FPrintln(log,TestPose.ToString()+"\t"+TestMode+"\t"+TestIteration+"\t"+GraphNext+"\t"+start+"\t"+next+"\t"+travel+"\t"+budget+"\t"+clear+"\t"+PressureEscapeDiagnostic);CloseFile(log);
-  if(!clear){MicroStatus="GRAPH_COMMIT_REJECTED";GraphValid=false;return false;}
-  Body.Agent.Position=next;Body.Lift=lift;Body.Contacts.Copy(contacts);Body.Agent.Moved+=travel;Body.Agent.MeasuredSpeed=travel/Math.Max(dt,0.001);
-  TangentDistance+=travel;TangentSteps++;SeparationEpisodeDistance+=travel;Body.PressureAirDistance+=travel;Body.PressureAirSteps++;
-  GraphNext++;PressureEscapeValid=false;NextPressureEscapePlan=0;MicroStatus="GRAPH_STEP_ACCEPTED";return true;
+  bool clear=PressureEscapeStepClear(next.Position,lift,contacts,next.Heading);
+  string path="$profile:prelanding17-se2-commit.tsv";bool exists=FileExist(path);FileHandle log=OpenFile(path,FileMode.APPEND);
+  if(!log){Print("DG_PRELAND17_FAILED se2_commit_log");return false;}
+  if(!exists)FPrintln(log,"pose\tmode\titeration\tindex\tstart\tproposal\toldHeading\tnewHeading\tdistance\tturn\tbudget\taccepted\tdiagnostic");
+  FPrintln(log,TestPose.ToString()+"\t"+TestMode+"\t"+TestIteration+"\t"+GraphNext+"\t"+start+"\t"+next.Position+"\t"+heading+"\t"+next.Heading+"\t"+travel+"\t"+turn+"\t"+budget+"\t"+clear+"\t"+PressureEscapeDiagnostic);CloseFile(log);
+  if(!clear){MicroStatus="SE2_COMMIT_REJECTED";GraphValid=false;return false;}
+  Body.Agent.Position=next.Position;Body.Agent.Heading=next.Heading;Body.Lift=lift;Body.Contacts.Copy(contacts);
+  Body.Agent.Moved+=travel;Body.Agent.MeasuredSpeed=travel/Math.Max(dt,0.001);
+  TangentDistance+=travel;SeparationEpisodeDistance+=travel;Body.PressureAirDistance+=travel;
+  if(travel>0.0001){TangentSteps++;Body.PressureAirSteps++;}
+  if(turn>0.0001){GraphRotationSteps++;AirEscapeTurnSteps++;GraphTurnTotal+=turn;}
+  GraphNext++;PressureEscapeValid=false;NextPressureEscapePlan=0;MicroStatus="SE2_STEP_ACCEPTED";return true;
+ }
+ override bool Accept(vector next,float dt)
+ {
+  vector start=Body.Agent.Position;float heading=Body.Agent.Heading;string phase=Phase;
+  bool accepted=super.Accept(next,dt);
+  if(TestMode==1 && phase=="FALL")
+  {
+   string path="$profile:prelanding17-se2-accept.tsv";bool exists=FileExist(path);FileHandle log=OpenFile(path,FileMode.APPEND);
+   if(!log){Print("DG_PRELAND17_FAILED se2_accept_log");return accepted;}
+   if(!exists)FPrintln(log,"pose\titeration\tstart\tproposal\tafter\theading\taccepted\treason\thitType\tnormal\tfraction\tpoint");
+   FPrintln(log,TestPose.ToString()+"\t"+TestIteration+"\t"+start+"\t"+next+"\t"+Body.Agent.Position+"\t"+heading+"\t"+accepted+"\t"+Body.Reason+"\t"+Body.HitType+"\t"+Body.HitNormal+"\t"+Body.HitFraction+"\t"+Body.HitPoint);CloseFile(log);
+  }
+  return accepted;
  }
 }
 이전 애니메이션 진단: [선정 근거](downloads/animation-review.txt). 이번 진단은 시각·성능 해결을 뜻하지 않는다.
