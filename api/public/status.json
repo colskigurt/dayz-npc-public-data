@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T204207-animation-review-plan-20261030",
-  "generatedAt": "2026-10-29T20:42:07.445530+00:00",
+  "snapshotId": "snapshot-20261029T224237-entry-preparation-resume-20261030",
+  "generatedAt": "2026-10-29T22:42:37.443706+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -48,7 +48,9 @@
     "runtime-20261029-193252",
     "runtime-20261029-210454",
     "runtime-20261029-211146",
-    "runtime-20261029-220337"
+    "runtime-20261029-220337",
+    "runtime-20261030-072332",
+    "runtime-20261030-073005"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -69,9 +71,9 @@
     "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "No newruntime. Historical8OFF8/8/highmiss0/falls10of10retained;711CON/matched8to64unrun.",
-    "visual": "SelectedclocklossrepeatedandCPU/videojoined;previousperiodcandidate rejected. Safecontrol/all14states/repeatedvisibleacceptanceunresolved.",
-    "performance": "Existingnested64costs only. No newmeasurementsoroptimization.20msp95targetunmet.",
+    "functional": "8_pass_single_run_64_failed_fall12_exit50",
+    "visual": "not_measured_this_batch",
+    "performance": "not_accepted_68ms_p95_no_attribution",
     "regressionChecks": 0
   },
   "metrics": [
@@ -11494,28 +11496,593 @@
       },
       "repetitions": 1,
       "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "finalArrivals",
+      "sourceRunId": "runtime-20261030-072332",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 8,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.979
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "missingHighFollow",
+      "sourceRunId": "runtime-20261030-072332",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 0,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.979
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "fallsResumed",
+      "sourceRunId": "runtime-20261030-072332",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 10,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.979
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionArrived",
+      "sourceRunId": "runtime-20261030-072332",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 1,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.979
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionIntentChanged",
+      "sourceRunId": "runtime-20261030-072332",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.979
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "egressViolations",
+      "sourceRunId": "runtime-20261030-072332",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 0,
+      "unit": "violations",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.979
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "climbEndFailures",
+      "sourceRunId": "runtime-20261030-072332",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.979
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261030-072332",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 20.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.979
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261030-072332",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 32.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.979
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261030-072332",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 34.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.979
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "finalArrivals",
+      "sourceRunId": "runtime-20261030-073005",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 63,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.928
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "missingHighFollow",
+      "sourceRunId": "runtime-20261030-073005",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 0,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.928
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "fallsResumed",
+      "sourceRunId": "runtime-20261030-073005",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 86,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.928
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionArrived",
+      "sourceRunId": "runtime-20261030-073005",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 15,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.928
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionIntentChanged",
+      "sourceRunId": "runtime-20261030-073005",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.928
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "egressViolations",
+      "sourceRunId": "runtime-20261030-073005",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 0,
+      "unit": "violations",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.928
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "climbEndFailures",
+      "sourceRunId": "runtime-20261030-073005",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 1,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.928
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261030-073005",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 27.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.928
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261030-073005",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 68.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.928
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261030-073005",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 88.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.928
+        ],
+        "entryPreparationContact": "on",
+        "repetitions": 1,
+        "performanceAttribution": false,
+        "visualVideoMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
     }
   ],
   "blockers": [
     {
-      "id": "animation-supported-control",
+      "id": "fall-12",
       "status": "open",
-      "description": "Observed fixed50ms/reset clock-loss path; safe independent evaluation/display control not yet established."
+      "description": "Third fall107.15s;no LAND before299.753s;exact prior pose/contact replay needed."
     },
     {
-      "id": "animation-visible-acceptance",
-      "status": "unmeasured",
-      "description": "Selected CPU/video timing exists, but all14motions and repeated candidate smoothness acceptance remain incomplete."
+      "id": "climb-exit-50",
+      "status": "open",
+      "description": "FOOT_Z_SUPPORT at native climb end;later arrival does not erase failure."
     },
     {
-      "id": "functional-711c-regression",
+      "id": "matched-repeats",
       "status": "unexecuted",
-      "description": "711C actual8OFF8/8;ON andmatched8/64regression unrun. Finalarrivaldoesnoterasehighstagefailures."
+      "description": "One ON run per population;matched OFF/ON repetitions pending."
     },
     {
-      "id": "performance64-attribution",
+      "id": "animation-visible",
       "status": "unmeasured",
-      "description": "Partial nestedcosts measured;controlled64 attribution and20msp95target unmet."
+      "description": "No continuous video/CPU-versus-visible-time acceptance this batch."
+    },
+    {
+      "id": "cost-attribution",
+      "status": "unexecuted",
+      "description": "Mission p95=68ms is not CPU/GC/render attribution;20ms target unachieved."
     }
   ],
   "evidenceReferences": [
@@ -12148,23 +12715,41 @@
       "uri": "/data/experiments/animation-review-plan-20261030.json",
       "sha256": "b22118eda76616877ada174df22147427868e5d244ed70e3a3110da101810bc3",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "entry-preparation-resume-20261030-report",
+      "uri": "/downloads/checkpoints/2026-10-30_074004_638877+0900_npc-entry-preparation-on-regression.txt",
+      "sha256": "5f743209e84faa3c4c836d9ac8220f972600e0322ff09807edde42f2d060daca",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "entry-preparation-resume-20261030-review",
+      "uri": "/downloads/checkpoints/entry-preparation-on-review.txt",
+      "sha256": "c9771dc793b4986c00856fda33b363c9a6ee6e385cf6e815d538cb005df3d062",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "entry-preparation-resume-20261030-json",
+      "uri": "/data/experiments/entry-preparation-resume-20261030.json",
+      "sha256": "9eb78dbe1b6ad49fb9d383104c1c0571de62ac14aa68183d03f0dd1519a46a06",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T20:42:07.445530+00:00",
-    "staleAfter": "2026-10-30T20:42:07.445530+00:00",
+    "sourceUpdatedAt": "2026-10-29T22:42:37.443706+00:00",
+    "staleAfter": "2026-10-30T22:42:37.443706+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261029T204207-animation-review-plan-20261030",
-      "generatedAt": "2026-10-29T20:42:07.445530+00:00",
-      "sourceUpdatedAt": "2026-10-29T20:42:07.445530+00:00"
+      "snapshotId": "snapshot-20261029T224237-entry-preparation-resume-20261030",
+      "generatedAt": "2026-10-29T22:42:37.443706+00:00",
+      "sourceUpdatedAt": "2026-10-29T22:42:37.443706+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-29T20:42:07.445530+00:00",
+      "at": "2026-10-29T22:42:37.443706+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -12179,7 +12764,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261029T204207-animation-review-plan-20261030/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261029T224237-entry-preparation-resume-20261030/"
   },
   "experiments": [
     {
@@ -13292,6 +13877,44 @@
         "performance64-attribution"
       ],
       "replication": "Historicalclockaccountingtwoobservations;onepriorperiodbaseline/candidatepair. Thisreviewaddsnoindependentrun."
+    },
+    {
+      "id": "entry-preparation-resume-20261030",
+      "title": "711C 8→64 ON 회귀 — 낙하12·등반 종료50 미해결",
+      "track": "functional",
+      "sourceRunId": [
+        "runtime-20261030-072332",
+        "runtime-20261030-073005"
+      ],
+      "buildId": [
+        "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [
+        {
+          "count": 8,
+          "seconds": 300,
+          "repetitions": 1
+        },
+        {
+          "count": 64,
+          "seconds": 300,
+          "repetitions": 1
+        }
+      ],
+      "evidenceReferences": [
+        "entry-preparation-resume-20261030-report",
+        "entry-preparation-resume-20261030-review",
+        "entry-preparation-resume-20261030-json"
+      ],
+      "blockers": [
+        "fall-12",
+        "climb-exit-50",
+        "matched-repeats",
+        "animation-visible",
+        "cost-attribution"
+      ],
+      "replication": "one ON run per population;historical OFF comparison descriptive"
     }
   ],
   "kind": "status"
