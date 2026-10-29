@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T054145-actor59-support-boundary-20261029",
-  "generatedAt": "2026-10-29T05:41:45.782193+00:00",
+  "snapshotId": "snapshot-20261029T061052-ground-handoff20-guard-20261029",
+  "generatedAt": "2026-10-29T06:10:52.011322+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -46,7 +46,8 @@
     "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
     "82CCB0EAB79FDFA90D84CEAA4C10A3C23E2742D9480CE229C0579F0D6945151E",
     "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
-    "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3"
+    "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+    "31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126"
   ],
   "verificationStatus": {
     "diagnosisSucceeded": true,
@@ -8156,7 +8157,7 @@
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "Endpoint candidate ON: final63/64, high-stage missing14,climb-end labels0;1 actual candidate calls. No causal/performance acceptance."
+      "description": "No new live8/64 run. Prior63/64 still unresolved. Opt-in ground completion guard prevents3 unsafe immediate handoffs but frozen recovery0/3;fine straight corridors0/12. Candidate not adopted."
     },
     {
       "id": "matched-repeats",
@@ -8539,23 +8540,41 @@
       "uri": "/data/experiments/actor59-support-boundary-20261029.json",
       "sha256": "aeaa7b0a5682add988f7a425d2ed28be1c7b3f53f93e6bc20cf1d3ffa8ceb231",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "ground-handoff20-guard-20261029-report",
+      "uri": "/downloads/checkpoints/2026-10-29_150958_971281+0900_npc-ground-handoff20-guard.txt",
+      "sha256": "6b7432dae99009feac644f19ab7e14008083e6fa57067cc7637399d4e354b038",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "ground-handoff20-guard-20261029-review",
+      "uri": "/downloads/checkpoints/2026-10-29_150958_971281+0900_npc-ground-handoff20-guard_evidence.txt",
+      "sha256": "b6eda95713954e59b5c94cf52c52e6f2682f0bb3a96bac519edeff872ffeb08d",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "ground-handoff20-guard-20261029-json",
+      "uri": "/data/experiments/ground-handoff20-guard-20261029.json",
+      "sha256": "015c560995e159170f6986552936b80f71b83ec84a90ac0e482d69950a0ddc0f",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T05:41:45.782193+00:00",
-    "staleAfter": "2026-10-30T05:41:45.782193+00:00",
+    "sourceUpdatedAt": "2026-10-29T06:10:52.011322+00:00",
+    "staleAfter": "2026-10-30T06:10:52.011322+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261029T054145-actor59-support-boundary-20261029",
-      "generatedAt": "2026-10-29T05:41:45.782193+00:00",
-      "sourceUpdatedAt": "2026-10-29T05:41:45.782193+00:00"
+      "snapshotId": "snapshot-20261029T061052-ground-handoff20-guard-20261029",
+      "generatedAt": "2026-10-29T06:10:52.011322+00:00",
+      "sourceUpdatedAt": "2026-10-29T06:10:52.011322+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-29T05:41:45.782193+00:00",
+      "at": "2026-10-29T06:10:52.011322+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -8570,7 +8589,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261029T054145-actor59-support-boundary-20261029/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261029T061052-ground-handoff20-guard-20261029/"
   },
   "experiments": [
     {
@@ -9262,6 +9281,30 @@
         "matched-repeats"
       ],
       "replication": "Static detailed64rows twice identical;5 selector cases. Live300sec one trial each8/64, existing PBO with one flag changed."
+    },
+    {
+      "id": "ground-handoff20-guard-20261029",
+      "title": "지면 출구 검사 누락 재현 — 복구0/3으로 후보 미채택",
+      "track": "diagnostic",
+      "sourceRunId": [
+        "runtime-20261029-143221"
+      ],
+      "buildId": [
+        "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+        "31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [],
+      "evidenceReferences": [
+        "ground-handoff20-guard-20261029-report",
+        "ground-handoff20-guard-20261029-review",
+        "ground-handoff20-guard-20261029-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "Frozen same-PBO flag OFF/ON8cases incl.clear control;150 local queries;12 straight cases plus detailed replay. No successful recovery replication."
     }
   ],
   "kind": "metrics"
