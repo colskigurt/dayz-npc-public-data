@@ -1,160 +1,78 @@
 # DayZ NPC AI — 외부 세션 검토 자료
 
-Snapshot: snapshot-20261029T085950-prelanding17-20261029
+Snapshot: snapshot-20261029T092121-prelanding17-continuous-20261029
 
-착지 전 정체17번 — 옆면 지지 거부와1cm 안전 방향 재현
+연속 복구 진단 — 작은 걸음·경로 재생과 실제 착지 계약의 차이
 
-작성: 2026-10-29T17:59:18.891481+09:00
+작성: 2026-10-29T18:20:59.574339+09:00
 
 1. 작업 목표
 
-runtime-20261029-171916에서17번이 착지 전 FALL에 머문 문제를 같은 위치·원시4관절 포즈·지형에서 재현한다. 안전한 미세 이동의 존재와 실제 연속 복구를 구분한다. 기존 착지/충돌 gate를 완화하지 않고 재탐색 후보가 놓치는 조건을 조사한다.
+이전17번 질의 진단의1cm 통과 방향5개가 실제 연속 복구로 이어지는지 확인한다. 단일 방향의 탐욕적 진행 실패,수평 경로의 연결성,경로 재생 중 이동 소유권,발판 검사와 실제 하강 수락의 차이를 분리한다. 기존 낙하/충돌/발판 조건을 유지한다.
 
 2. 실제 수행
 
-전용 서버 시험4개를 정상 종료했다. 첫 시험은 원본 Fall과 시험 전용 접선 이동을 비교했다. 두 번째는 접선에 바깥 법선 성분0/0.05/0.15를 추가했고 원시 Floor ray를 기록했다. 세 번째와 네 번째는 동일 소스의 질의 전용 반복:36방향(10도 간격)×1/3cm×3포즈×2모드=432질의를 각각 실행했다. 마지막 위치/첫 거부 위치/열린 지면 대조군을 사용했다. 모터는각300틱 한도·dt0.05초·초기 수직속도-15로 정규화했다. 원본 실제 dt/속도를 복구한 재생은 아니다.
+실패한 진단용 컴파일1개와 정상 종료된 전용 서버 실험4개를 보존했다. 첫 컴파일은 숫자 앞 뺄셈 공백이 없는 진단 코드의5088행 Broken expression이었다. crash 로그에도 같은 mission compile 오류가 기록됐고 컴파일러 결과nativeCrash=true다. 공백만 정리한 별도 미션을 만들었고 기존 실패 미션/로그는 변경하지 않았다. 실패는 전용 진단 서버에서 발생했으며 클라이언트는 실행하지 않았다.
 
-팬 질의는 각 모터 시험 종료 후 원래 root/heading으로 되돌린 frozen pose에 시행했으며 이동을 적용하지 않는다. 원래 step gate를 그대로 호출한다. 전용 테스트가 통과했다고 실제 클라이언트 게임플레이가 통과한 것으로 취급하지 않는다.
+실험A는 고정된 유효 발판 목표까지 수평 거리를 줄이는36방향·1cm 이동을 선택하고 같은 gate로 재검사 후 적용했다. B는512node·총1.5m 이내의 고정 포즈 수평 경로를 찾고 원본 Fall에서 재생했다. C는 B와 소스에서 이동 호출 우선순위만 다르며 유효한 시험 경로가 있는 동안 그것이 측면 이동을 소유했다. D는 C에 node별 실제 접촉4점/빈 초기 상태를 보관하고 끝점에 CoreClear+SolveContacts라는 원본 Accept의 조건을 추가했다. 원래 Fall·중력·착지·SolveContacts·step gate는 변경하지 않았다.
+
+각 조건은 마지막 정체 포즈/첫 거부 포즈/열린 지면×원본/후보=6case,최대300틱·dt0.05초다. 수직속도-15,압력속도0,원시4joint pose 고정이다. 실제 runtime의 미기록 속도/dt까지 복원한 재생은 아니다. 실제 클라이언트/녹화/화면 조작은 실행하지 않았다.
 
 3. 측정 결과
 
-원래 착지 질의는 실패 포즈2개×모드2개에서 모두 FOOT_X_SUPPORT를 재현했다. 중심/플러스X는 유효 지면이고 마이너스X는 StaticObj_Container_1C에 fraction0으로 닿았다. 그 법선Y는 약0.0171/0.0187,높이차0.450012m로 기존 Floor의 normalY≥0.65,fraction>0.001,높이차≤0.35m 조건을 통과하지 못했다. 이는 실제 옆면/초기 중첩 hit라는 질의 결과이며 지지 조건 자체를 잘못됐다고 단정하지 않는다.
+|조건|마지막 정체 포즈|첫 거부 포즈|열린 지면|
+|---|---|---|---|
+|원본 대조|15초 FALL|15초 FALL|LAND|
+|A:거리 감소1cm|1걸음0.00995902m 뒤 정체,15초 FALL|추가5걸음0.0488281m,4.59998초 LAND|LAND|
+|B:수평 경로,원본 이동 우선|경로 미발견,15초 FALL|7걸음 후보 중1걸음 후 원본 이동에 대체,15초 FALL|LAND|
+|C:같은 경로가 측면 이동 소유|경로 미발견,15초 FALL|7걸음0.0698203m 끝까지 적용,그래도15초 FALL|LAND|
+|D:전신 하강 조건까지 끝점 검사|경로 미발견,15초 FALL|512node 한도,이동0,15초 FALL|LAND|
 
-모터: 마지막 정체 포즈는 원본/접선 모두15초 FALL,추가 이동0. 초기 포즈는 원본15초 FALL,접선 후보4.55005초에 LAND,추가3걸음·0.0899827m였다. 바깥 성분0.05/0.15도 마지막 포즈를 풀지 못했다. 열린 지면 대조군은 모두 LAND였다. 대조군0.05/0.10초 차이는 재사용 actor/정규화 시험 조건에서 기록한 것이며 배속 개선이 아니다. LAND 이후 EGRESS/FOLLOW는 시험하지 않았다.
+B/C/D의 마지막 포즈에서는54node를 확장하고1944개 step 질의를 실행한 뒤 조사한 수평 연결 집합이 소진됐다. 고정 포즈/높이·1cm·10도 간격·기존 gate·총1.5m 조건의 결과다. 회전/포즈 변화/다른 높이/더 작은 이동까지 모두 불가능하다는 증거는 아니다.
 
-질의 팬: 마지막 포즈는 모드별72개 중5개 통과,전부1cm였으며 각도70/80/90/280/290도였다(0도=+X,90도=+Z).3cm는 모두 거부. 초기 포즈25/72,열린 지면72/72가 통과했다. 두 독립 서버 실행에서 전체432질의의 통과 키 집합이 일치했다. 통과 행의 rejectProbe 같은 잔여 진단 필드는 이전 실패값일 수 있으므로 성공 충돌 위치로 해석하지 않았다.
+B/C의 초기 포즈에서는512node 생성·114확장·4068질의로7걸음 후보를 찾았다. C의87틱은WORLD:StaticObj_Container_1C 발판 거부,이후89틱은FALL_NATIVE_JOINT_WORLD_0이며 LAND는 발생하지 않았다. D는512node 모두 확장·18432질의에서 한도에 도달했다. 발판을 통과한26개의 전신 하강 후보는 전부NATIVE_JOINT_WORLD_0으로 거부됐다. 한도 초과는 경로 없음 판정이 아니다.
 
-새8/64 클라이언트 기능·p50/p95/p99·실제 표시 프레임·시각 부드러움·최적화 효과는 미측정이다. 이전300초 자연 입력8/8과64/64,64명 고지대 미도달28명은 그대로다. 별도180초 비용 OFF/ON의p95 219/241ms도 이 진단으로 변경되지 않는다.20ms p95는 미달 목표다.
+모든 실제 적용 걸음은 기존 step gate를 통과하고 모터 TSV의 같은 case/틱 위치와 일치했다. episode6m/추가1.5m 이내였다. B/C 소스 차이는 호출 우선순위뿐임을 바이트 정규화 대조로 확인했다. 전용 경로 질의 묶음의 wall elapsed는약0.258~3.145초로 로그 I/O와 대기 등이 포함된다. 이는 클라이언트 프레임 시간이나 CPU self-time/64명 성능 수치가 아니다.
+
+새8/64 기능,미션p50/p95/p99,실제 표시 애니메이션은 미측정이다. 이전 자연 입력8/8·64/64와64명 고지대 미도달28명,별도 고정 자극 비용p95 219/241ms는 유지한다.20ms p95는 달성되지 않았다.
 
 4. 원인 분석
 
-사실: 원본 Fall은 착지 질의 실패 시 중력 위치 적용 전에 반환한다. 원래 압력 탈출/회전도 마지막 포즈를 풀지 못했다. 단일 접선과 작은 바깥 성분 후보는 다른 신체 probe1의 NEW_WORLD_CONTACT에 막혔다. 그러나 전 방향의 더 짧은1cm 질의에는 기존 gate를 통과하는 방향이 존재했다.
+사실: 작은 단일 이동이 허용돼도 연속 복구가 되지는 않았다. 경로를 유지하는 소유권은 실제로7걸음 재생을 가능하게 했지만 그 끝점의 실제 착지까지 보장하지 않았다. LandingSpace의 발판/상체 검사와 Accept의 실제 관절 sweep은 다른 계약이다. SolveContacts는 이전 Contacts도 사용하므로 node 위치·lift만으로 전신 하강 상태를 표현하면 부족하다. D는 그 접촉 상태를 함께 보관해 원래 계약을 평가했다.
 
-추정: 현재 후보 방향과 이동 폭이 좁은 국소 통로를 놓칠 수 있다. 충돌 법선 하나에서 접선을 구하는 것만으로 모든 관절의 안전한 이동을 찾기는 부족하다. 다음에는 유효한 작은 걸음을 연속 적용하면서 목표 진행·왕복·예산·착지·추적 재개를 함께 기록해야 한다.
+추정: 마지막 포즈는 위치와 회전/포즈를 결합해 빠져나와야 하거나 상류에서 그 상태로 들어가지 않도록 해야 할 수 있다. 첫 포즈는 foot-support 목표가 실제 hips 경로를 충분히 반영하지 못한다. 아직 일반 해법이나 원본 게임 알고리즘을 확보한 것은 아니다.
 
-반증: 이 frozen snapshot에서 어떤 수평 이동도 불가능하다는 설명은 맞지 않는다. 바깥 성분을 조금 추가하면 마지막 포즈가 풀린다는 후보도 효과가 없었다. 반대로5개의 유효한 단일 질의가 연속 복구 경로의 존재나 런타임 안전을 입증하지는 않는다. 착지 후 owner는 물리 LAND 전 정체를 해결하는 계층이 아니다.
+반증: 안전한1cm 방향을 반복하면 반드시 해결된다는 가설,발판 목표에 도달하면 착지가 수락된다는 가설은 이번 후보에서 성립하지 않았다. 경로 소유권만 바꾸면 충분하다는 설명도 맞지 않았다. D의512node 한도로 도달 불가능을 선언하거나 더 무거운 검색을 곧바로 런타임에 넣는 결론은 제외한다.
 
 5. 검증 수준
 
-진단 성공: 원본 착지 거부 재현,원시 Floor 조건 분리,실패 후보 분류. 반복 검증 완료는 두 번의432개 질의 통과 집합 일치에만 적용한다. 초기 포즈 후보의 물리 LAND는 제한된 단일 frozen 모터 결과다. 전체 기능 회귀 통과·실제 연속 복구·화면 품질·성능·최종 수용은 미완료다. 컴파일 marker와 별개로 독립 분석기가 질의 수/키·연속틱·종료 상태·소스SHA를 검증했다.
+진단 성공: 단일 이동/연속 경로/이동 소유권/실제 전신 하강 계약을 분리했다. 원본 대조군과 열린 지면은 보존됐고 모든 적용 걸음의 gate/거리/같은틱 위치를 독립 분석기로 확인했다. 각 새 조건1회이며 반복 검증 완료나8→64 회귀 통과가 아니다. A 초기 포즈의 LAND도 물리 착지만으로서 안전 EGRESS/FOLLOW 수용은 미검증이다. 마지막 포즈 복구·시각 품질·성능·최종 수용은 미완료다.
 
 6. 변경 사항
 
-별도 미션 stage_horde_prelanding17_fan.py,독립 분석기analyze_horde_prelanding17.py,체크포인트 도구를 추가했고 compiler에 명시적 진단 이름만 추가했다. 처음 staging의 줄바꿈 일치 검사 실패는 별도 staging-failed 폴더에 보존했고 원본 파일을 수정하지 않았다. 실제 NPC/PBO·애니메이션·충돌/착지 gate·운영 서버는 변경하지 않았다.
+별도 stage_horde_prelanding17_micro.py/stage_horde_prelanding17_graph.py와 연속 결과 분석기,compiler의 진단 이름 허용,보고 도구만 변경했다. D의 접촉 상태와 full endpoint는 시험 전용이다. 기존 NPC/애니메이션/보간/배속·PBO·운영 서버는 변경하지 않았다.
 
-현재 integration F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8 그대로다. PBO 재빌드/재서명은 없으며4개 전용 서버 진단의 의존 PBO 서명 검증은 성공했다. 개인 키는 공개하지 않았다. 클라이언트/OBS/화면 조작은 실행하지 않았다.
+integration F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8 그대로다. 재빌드/재서명은 없으며 이번5개 컴파일 실행 전 의존 PBO 서명 검증은 성공했다. 실패 컴파일은 성공으로 보고하지 않았다. 개인 키와 게임 자산은 공개하지 않았다.
 
 7. 원시 증거
 
-validation-controlled-prelanding17,prelanding17-outward,prelanding17-fan,prelanding17-fan-repeat의각 compile profile에 motor/query/tangent TSV와 필요한 rawFloor/fan TSV가 있다. 분석JSON은4개미션SHA·compile결과·원시 TSV/로그의해시를 연결한다. 판정의 sourceRunId는runtime-20261029-171916이다. 공개 패킷은 선정 질의와 최종행·시험 함수만 제공하며 전체 내부 원시 기록·프로세스 정보·로컬 경로·게임 자산은 공개하지 않는다.
+validation-controlled-prelanding17-micro의 실패 compile/error와 원본 소스,성공한micro-spaced/micro-graph/micro-graph-owned/micro-graph-owned-full의각 compile profile·motor/query/graph/commit TSV·원시 로그·staged SHA를 보존한다. analysis-full.json은4개 성공 실행의42개 원시 입력 해시와 소유권 비교를 연결한다. 원본 Fall/Accept/SolveContacts 호출 관계와 시험 source도 보존한다. 공개 패킷은 최종행·적용 걸음·graph 결과·26개 전신 거부 표본과 관련 시험 함수로 제한한다.
 
 8. 잔여 문제
 
-우선 마지막 정체 포즈에서 유효1cm 방향을 연속 적용하는 제한된 모터 실험을 한다. 왕복 반복 방지·기존6m episode budget·추가1.5m budget·실제 step/착지 gate를 유지하고 LAND 이후 안전 endpoint와FOLLOW까지 별도 검증한다. 실패하면 첫 거부 관절·법선·위치·목표 진행을 기준으로 다음 가설을 세운다.36방향 팬을 모든 개체의 매틱에 적용하는 런타임 설계는 아니다.
+다음은 마지막 포즈의 회전과1cm 이동을 결합한 제한된 configuration-space 진단이다. 같은 관절/월드/fixture 비심화 조건,실제 Contacts와 endpoint predicate를 유지한다. 회전 역시원래 sweep으로 검증하고 거부된 상태를 강제 통과시키지 않는다. 기존 정상 낙하/착지/재등반은 보존한다. 상류의 진입/착지 목표가 이 포즈를 만드는 경로도 함께 검토해야 한다.
 
-동적 포즈/상호 접촉/전투 재진입/낙하·재등반 보존과 실제8→64 회귀는 남아 있다. 애니메이션 CPU-표시 프레임 join과 FOLLOW 비용 추가 분해도 별도 실험으로 유지한다. 신규 보간·배속·업데이트 방식은 적용하지 않았다. 목표는 활성 상태로 유지한다.
+목표를 발판 질의 성공으로 축소하지 않는다. 안전한 실제 LAND→EGRESS→FOLLOW와8→64 재시험까지 필요하다. 검색512node를 무조건 늘려64명 매틱에 넣지 않으며 작업 비용·runtime budget은 별도 설계/실험으로 평가한다. CPU-실제 표시 시간 진단과 FOLLOW 비용 분해,전투 소유권 복귀 검증도 별도 미완료다. 화면 제어 사용 가능 통보는 받았으며 다른 작업의 에디터/프로세스와 공유 입력 런타임은 보존한다. 골은 활성 상태다.
 
-원본 보고서 ID: 2026-10-29_175918_891481+0900_npc-prelanding17.md
-원본 SHA-256: 4c7cc43f42eff50d45c596ac13c2487139268f01872d2d1cd182e2f8658533a3
+원본 보고서 ID: 2026-10-29_182059_574339+0900_npc-prelanding17-continuous.md
+원본 SHA-256: a767e065b9e2ab0291fd3150bf3bfac449f9f276cce9bdd65ceabf1775db5337
 이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
 
-Selected records,not complete raw logs. All6 final rows per run and accepted fan keys.
+All final rows,all committed steps,all graph results and all full-endpoint queries;not complete raw logs.
 [
   {
-    "validation": "prelanding17",
-    "initSha256": "0e14489e7674aded6960edc44e59ac1792cde1acc75b1fd2652e69ff38b3440b",
-    "queries": [
-      {
-        "pose": "0",
-        "mode": "0",
-        "root": "<4511.493164, 339.275757, 10236.865234>",
-        "tested": "<4511.501953, 339.172150, 10236.862305>",
-        "landing": "false",
-        "gate": "FOOT_X_SUPPORT",
-        "support": "<4511.501953, 339.172150, 10236.862305>",
-        "leftOk": "true",
-        "left": "<4511.731934, 339.176422, 10236.862305>",
-        "rightOk": "false",
-        "right": "<4511.271973, 339.622162, 10236.862305>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
-      },
-      {
-        "pose": "0",
-        "mode": "1",
-        "root": "<4511.493164, 339.275757, 10236.865234>",
-        "tested": "<4511.501953, 339.172150, 10236.862305>",
-        "landing": "false",
-        "gate": "FOOT_X_SUPPORT",
-        "support": "<4511.501953, 339.172150, 10236.862305>",
-        "leftOk": "true",
-        "left": "<4511.731934, 339.176422, 10236.862305>",
-        "rightOk": "false",
-        "right": "<4511.271973, 339.622162, 10236.862305>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
-      },
-      {
-        "pose": "1",
-        "mode": "0",
-        "root": "<4511.466309, 339.380249, 10239.336914>",
-        "tested": "<4511.484375, 339.179260, 10239.331055>",
-        "landing": "false",
-        "gate": "FOOT_X_SUPPORT",
-        "support": "<4511.484375, 339.179260, 10239.331055>",
-        "leftOk": "true",
-        "left": "<4511.714355, 339.183563, 10239.331055>",
-        "rightOk": "false",
-        "right": "<4511.254395, 339.629272, 10239.331055>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "root": "<4511.466309, 339.380249, 10239.336914>",
-        "tested": "<4511.484375, 339.179260, 10239.331055>",
-        "landing": "false",
-        "gate": "FOOT_X_SUPPORT",
-        "support": "<4511.484375, 339.179260, 10239.331055>",
-        "leftOk": "true",
-        "left": "<4511.714355, 339.183563, 10239.331055>",
-        "rightOk": "false",
-        "right": "<4511.254395, 339.629272, 10239.331055>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
-      },
-      {
-        "pose": "2",
-        "mode": "0",
-        "root": "<4530.000000, 339.440277, 10240.000000>",
-        "tested": "<4530.000000, 339.440277, 10240.000000>",
-        "landing": "true",
-        "gate": "CLEAR",
-        "support": "<4530.000000, 339.336670, 10240.000000>",
-        "leftOk": "true",
-        "left": "<4530.229980, 339.336975, 10240.000000>",
-        "rightOk": "true",
-        "right": "<4529.770020, 339.335754, 10240.000000>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
-      },
-      {
-        "pose": "2",
-        "mode": "1",
-        "root": "<4530.000000, 339.440277, 10240.000000>",
-        "tested": "<4530.000000, 339.440277, 10240.000000>",
-        "landing": "true",
-        "gate": "CLEAR",
-        "support": "<4530.000000, 339.336670, 10240.000000>",
-        "leftOk": "true",
-        "left": "<4530.229980, 339.336975, 10240.000000>",
-        "rightOk": "true",
-        "right": "<4529.770020, 339.335754, 10240.000000>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
-      }
-    ],
+    "validation": "prelanding17-micro-spaced",
+    "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
     "finals": [
       {
         "pose": "0",
@@ -172,7 +90,11 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "separationDistance": "2.81813",
         "tangentDistance": "0",
         "tangentSteps": "0",
-        "wantLanding": "false"
+        "wantLanding": "false",
+        "microGoal": "<0.000000, 0.000000, 0.000000>",
+        "microStatus": "NOT_STARTED",
+        "microQueries": "0",
+        "microPlans": "0"
       },
       {
         "pose": "0",
@@ -180,17 +102,21 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "iteration": "299",
         "seconds": "15",
         "phase": "FALL",
-        "position": "<4511.493164, 339.275757, 10236.865234>",
-        "heading": "-161.024",
+        "position": "<4511.495117, 339.275757, 10236.855469>",
+        "heading": "-176.024",
         "lift": "0",
         "reason": "LANDING_SPACE_BLOCKED",
         "landingGate": "FOOT_X_SUPPORT",
         "plans": "151",
         "steps": "0",
-        "separationDistance": "2.81813",
-        "tangentDistance": "0",
-        "tangentSteps": "0",
-        "wantLanding": "false"
+        "separationDistance": "2.82809",
+        "tangentDistance": "0.00995902",
+        "tangentSteps": "1",
+        "wantLanding": "false",
+        "microGoal": "<4511.493164, 339.169983, 10236.365234>",
+        "microStatus": "NO_PROGRESS_STEP",
+        "microQueries": "5094",
+        "microPlans": "1"
       },
       {
         "pose": "1",
@@ -208,25 +134,33 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "separationDistance": "2.51246",
         "tangentDistance": "0",
         "tangentSteps": "0",
-        "wantLanding": "false"
+        "wantLanding": "false",
+        "microGoal": "<0.000000, 0.000000, 0.000000>",
+        "microStatus": "NOT_STARTED",
+        "microQueries": "0",
+        "microPlans": "0"
       },
       {
         "pose": "1",
         "mode": "1",
-        "iteration": "90",
-        "seconds": "4.55005",
+        "iteration": "91",
+        "seconds": "4.59998",
         "phase": "LAND",
-        "position": "<4511.511719, 339.171509, 10236.656250>",
-        "heading": "-178.304",
+        "position": "<4511.529297, 339.172089, 10236.710938>",
+        "heading": "178.696",
         "lift": "0",
         "reason": "NATIVE_FALL",
         "landingGate": "CLEAR",
-        "plans": "5",
+        "plans": "6",
         "steps": "86",
-        "separationDistance": "2.69327",
-        "tangentDistance": "0.0899827",
-        "tangentSteps": "3",
-        "wantLanding": "true"
+        "separationDistance": "2.65164",
+        "tangentDistance": "0.0488281",
+        "tangentSteps": "5",
+        "wantLanding": "true",
+        "microGoal": "<4511.466309, 339.169586, 10236.384766>",
+        "microStatus": "MICRO_ACCEPTED",
+        "microQueries": "54",
+        "microPlans": "1"
       },
       {
         "pose": "2",
@@ -244,7 +178,11 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "separationDistance": "0.0302734",
         "tangentDistance": "0",
         "tangentSteps": "0",
-        "wantLanding": "true"
+        "wantLanding": "true",
+        "microGoal": "<0.000000, 0.000000, 0.000000>",
+        "microStatus": "NOT_STARTED",
+        "microQueries": "0",
+        "microPlans": "0"
       },
       {
         "pose": "2",
@@ -262,151 +200,137 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "separationDistance": "0",
         "tangentDistance": "0",
         "tangentSteps": "0",
-        "wantLanding": "true"
+        "wantLanding": "true",
+        "microGoal": "<0.000000, 0.000000, 0.000000>",
+        "microStatus": "NOT_STARTED",
+        "microQueries": "0",
+        "microPlans": "0"
       }
     ],
-    "acceptedTangentSteps": [
+    "commits": [
+      {
+        "pose": "0",
+        "mode": "1",
+        "iteration": "0",
+        "kind": "COMMIT",
+        "angle": "-1",
+        "start": "<4511.493164, 339.275757, 10236.865234>",
+        "proposal": "<4511.495117, 339.275757, 10236.855469>",
+        "goal": "<4511.493164, 339.169983, 10236.365234>",
+        "oldGap": "0.5",
+        "newGap": "0.490238",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "probe": "1",
+        "normal": "<0.926816, 0.013406, 0.375277>",
+        "fraction": "0.583537",
+        "distance": "0.00995902",
+        "budget": "1.5"
+      },
       {
         "pose": "1",
         "mode": "1",
         "iteration": "81",
+        "kind": "COMMIT",
+        "angle": "-1",
         "start": "<4511.466309, 339.380249, 10236.884766>",
-        "proposal": "<4511.477539, 339.380249, 10236.857422>",
-        "direction": "<0.377478, 0.000000, -0.926019>",
-        "normal": "<0.926018, 0.000000, 0.377478>",
-        "step": "0.0295602",
+        "proposal": "<4511.466309, 339.380249, 10236.875000>",
+        "goal": "<4511.466309, 339.169586, 10236.384766>",
+        "oldGap": "0.5",
+        "newGap": "0.490234",
         "accepted": "true",
         "diagnostic": "NONDEEPENING_CLEAR",
-        "fixture": "0",
-        "probe": "1"
+        "probe": "0",
+        "normal": "<0.999826, 0.018662, 0.000002>",
+        "fraction": "0",
+        "distance": "0.00976563",
+        "budget": "1.5"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "83",
+        "kind": "COMMIT",
+        "angle": "-1",
+        "start": "<4511.487305, 339.380249, 10236.853516>",
+        "proposal": "<4511.487305, 339.380249, 10236.843750>",
+        "goal": "<4511.466309, 339.169586, 10236.384766>",
+        "oldGap": "0.46922",
+        "newGap": "0.459464",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "probe": "0",
+        "normal": "<0.996703, 0.018392, -0.079023>",
+        "fraction": "0",
+        "distance": "0.00976563",
+        "budget": "1.49023"
       },
       {
         "pose": "1",
         "mode": "1",
         "iteration": "85",
-        "start": "<4511.498535, 339.380249, 10236.805664>",
-        "proposal": "<4511.508301, 339.380249, 10236.777344>",
-        "direction": "<0.319882, 0.000000, -0.947457>",
-        "normal": "<0.947457, 0.000000, 0.319882>",
-        "step": "0.0299568",
+        "kind": "COMMIT",
+        "angle": "-1",
+        "start": "<4511.487305, 339.380249, 10236.813477>",
+        "proposal": "<4511.487305, 339.380249, 10236.803711>",
+        "goal": "<4511.466309, 339.169586, 10236.384766>",
+        "oldGap": "0.429225",
+        "newGap": "0.419471",
         "accepted": "true",
         "diagnostic": "NONDEEPENING_CLEAR",
-        "fixture": "0",
-        "probe": "1"
+        "probe": "1",
+        "normal": "<0.861838, 0.507182, -0.001309>",
+        "fraction": "0",
+        "distance": "0.00976563",
+        "budget": "1.48047"
       },
       {
         "pose": "1",
         "mode": "1",
         "iteration": "87",
-        "start": "<4511.508301, 339.380249, 10236.747070>",
-        "proposal": "<4511.511719, 339.380249, 10236.716797>",
-        "direction": "<0.108834, 0.000000, -0.994060>",
-        "normal": "<0.994060, 0.000000, 0.108834>",
-        "step": "0.0304658",
+        "kind": "COMMIT",
+        "angle": "-1",
+        "start": "<4511.508301, 339.380249, 10236.782227>",
+        "proposal": "<4511.508301, 339.380249, 10236.772461>",
+        "goal": "<4511.466309, 339.169586, 10236.384766>",
+        "oldGap": "0.399673",
+        "newGap": "0.389963",
         "accepted": "true",
         "diagnostic": "NONDEEPENING_CLEAR",
-        "fixture": "0",
-        "probe": "1"
+        "probe": "1",
+        "normal": "<0.884311, 0.466896, -0.001202>",
+        "fraction": "0",
+        "distance": "0.00976563",
+        "budget": "1.4707"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "89",
+        "kind": "COMMIT",
+        "angle": "-1",
+        "start": "<4511.508301, 339.380249, 10236.742188>",
+        "proposal": "<4511.508301, 339.380249, 10236.732422>",
+        "goal": "<4511.466309, 339.169586, 10236.384766>",
+        "oldGap": "0.35988",
+        "newGap": "0.350183",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "probe": "1",
+        "normal": "<0.884117, 0.467263, -0.001202>",
+        "fraction": "0",
+        "distance": "0.00976563",
+        "budget": "1.46094"
       }
     ],
-    "motorRows": 994,
-    "tangentRows": 305
+    "graphResults": [],
+    "fullEndpointQueries": [],
+    "totalCommitCount": 6,
+    "originalBaselinePreserved": true
   },
   {
-    "validation": "prelanding17-outward",
-    "initSha256": "72ca6e81e7fc8a36e329d85d2905ea803868544b4c2c815ebd65bfc63c7ef702",
-    "queries": [
-      {
-        "pose": "0",
-        "mode": "0",
-        "root": "<4511.493164, 339.275757, 10236.865234>",
-        "tested": "<4511.501953, 339.172150, 10236.862305>",
-        "landing": "false",
-        "gate": "FOOT_X_SUPPORT",
-        "support": "<4511.501953, 339.172150, 10236.862305>",
-        "leftOk": "true",
-        "left": "<4511.731934, 339.176422, 10236.862305>",
-        "rightOk": "false",
-        "right": "<4511.271973, 339.622162, 10236.862305>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
-      },
-      {
-        "pose": "0",
-        "mode": "1",
-        "root": "<4511.493164, 339.275757, 10236.865234>",
-        "tested": "<4511.501953, 339.172150, 10236.862305>",
-        "landing": "false",
-        "gate": "FOOT_X_SUPPORT",
-        "support": "<4511.501953, 339.172150, 10236.862305>",
-        "leftOk": "true",
-        "left": "<4511.731934, 339.176422, 10236.862305>",
-        "rightOk": "false",
-        "right": "<4511.271973, 339.622162, 10236.862305>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
-      },
-      {
-        "pose": "1",
-        "mode": "0",
-        "root": "<4511.466309, 339.380249, 10239.336914>",
-        "tested": "<4511.484375, 339.179260, 10239.331055>",
-        "landing": "false",
-        "gate": "FOOT_X_SUPPORT",
-        "support": "<4511.484375, 339.179260, 10239.331055>",
-        "leftOk": "true",
-        "left": "<4511.714355, 339.183563, 10239.331055>",
-        "rightOk": "false",
-        "right": "<4511.254395, 339.629272, 10239.331055>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "root": "<4511.466309, 339.380249, 10239.336914>",
-        "tested": "<4511.484375, 339.179260, 10239.331055>",
-        "landing": "false",
-        "gate": "FOOT_X_SUPPORT",
-        "support": "<4511.484375, 339.179260, 10239.331055>",
-        "leftOk": "true",
-        "left": "<4511.714355, 339.183563, 10239.331055>",
-        "rightOk": "false",
-        "right": "<4511.254395, 339.629272, 10239.331055>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
-      },
-      {
-        "pose": "2",
-        "mode": "0",
-        "root": "<4530.000000, 339.440277, 10240.000000>",
-        "tested": "<4530.000000, 339.440277, 10240.000000>",
-        "landing": "true",
-        "gate": "CLEAR",
-        "support": "<4530.000000, 339.336670, 10240.000000>",
-        "leftOk": "true",
-        "left": "<4530.229980, 339.336975, 10240.000000>",
-        "rightOk": "true",
-        "right": "<4529.770020, 339.335754, 10240.000000>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
-      },
-      {
-        "pose": "2",
-        "mode": "1",
-        "root": "<4530.000000, 339.440277, 10240.000000>",
-        "tested": "<4530.000000, 339.440277, 10240.000000>",
-        "landing": "true",
-        "gate": "CLEAR",
-        "support": "<4530.000000, 339.336670, 10240.000000>",
-        "leftOk": "true",
-        "left": "<4530.229980, 339.336975, 10240.000000>",
-        "rightOk": "true",
-        "right": "<4529.770020, 339.335754, 10240.000000>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
-      }
-    ],
+    "validation": "prelanding17-micro-graph",
+    "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
     "finals": [
       {
         "pose": "0",
@@ -424,7 +348,11 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "separationDistance": "2.81813",
         "tangentDistance": "0",
         "tangentSteps": "0",
-        "wantLanding": "false"
+        "wantLanding": "false",
+        "microGoal": "<0.000000, 0.000000, 0.000000>",
+        "microStatus": "NOT_STARTED",
+        "microQueries": "0",
+        "microPlans": "0"
       },
       {
         "pose": "0",
@@ -442,7 +370,11 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "separationDistance": "2.81813",
         "tangentDistance": "0",
         "tangentSteps": "0",
-        "wantLanding": "false"
+        "wantLanding": "false",
+        "microGoal": "<4511.493164, 339.169983, 10236.365234>",
+        "microStatus": "GRAPH_SAMPLED_COMPONENT_EXHAUSTED",
+        "microQueries": "0",
+        "microPlans": "1"
       },
       {
         "pose": "1",
@@ -460,25 +392,33 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "separationDistance": "2.51246",
         "tangentDistance": "0",
         "tangentSteps": "0",
-        "wantLanding": "false"
+        "wantLanding": "false",
+        "microGoal": "<0.000000, 0.000000, 0.000000>",
+        "microStatus": "NOT_STARTED",
+        "microQueries": "0",
+        "microPlans": "0"
       },
       {
         "pose": "1",
         "mode": "1",
-        "iteration": "90",
-        "seconds": "4.55005",
-        "phase": "LAND",
-        "position": "<4511.511719, 339.171509, 10236.656250>",
-        "heading": "-178.304",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.489258, 339.380249, 10236.823242>",
+        "heading": "-144.304",
         "lift": "0",
-        "reason": "NATIVE_FALL",
+        "reason": "FALL_AIR_POSE_ESCAPE_TURN",
         "landingGate": "CLEAR",
-        "plans": "5",
-        "steps": "86",
-        "separationDistance": "2.69327",
-        "tangentDistance": "0.0899827",
-        "tangentSteps": "3",
-        "wantLanding": "true"
+        "plans": "110",
+        "steps": "83",
+        "separationDistance": "2.52242",
+        "tangentDistance": "0.00995902",
+        "tangentSteps": "1",
+        "wantLanding": "false",
+        "microGoal": "<4511.466309, 339.169586, 10236.384766>",
+        "microStatus": "GRAPH_ROUTE_SUPERSEDED",
+        "microQueries": "1",
+        "microPlans": "1"
       },
       {
         "pose": "2",
@@ -496,7 +436,11 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "separationDistance": "0.0302734",
         "tangentDistance": "0",
         "tangentSteps": "0",
-        "wantLanding": "true"
+        "wantLanding": "true",
+        "microGoal": "<0.000000, 0.000000, 0.000000>",
+        "microStatus": "NOT_STARTED",
+        "microQueries": "0",
+        "microPlans": "0"
       },
       {
         "pose": "2",
@@ -514,318 +458,56 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "separationDistance": "0",
         "tangentDistance": "0",
         "tangentSteps": "0",
-        "wantLanding": "true"
+        "wantLanding": "true",
+        "microGoal": "<0.000000, 0.000000, 0.000000>",
+        "microStatus": "NOT_STARTED",
+        "microQueries": "0",
+        "microPlans": "0"
       }
     ],
-    "acceptedTangentSteps": [
+    "commits": [
       {
         "pose": "1",
         "mode": "1",
         "iteration": "81",
+        "index": "0",
         "start": "<4511.466309, 339.380249, 10236.884766>",
-        "proposal": "<4511.477539, 339.380249, 10236.857422>",
-        "direction": "<0.377478, 0.000000, -0.926019>",
-        "normal": "<0.926018, 0.000000, 0.377478>",
-        "step": "0.0295602",
+        "proposal": "<4511.468262, 339.380249, 10236.875000>",
+        "distance": "0.00995902",
+        "budget": "1.5",
         "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR",
-        "fixture": "0",
-        "probe": "1",
-        "bias": "0",
-        "rejectNormal": "<0.818363, 0.467970, 0.333594>",
-        "rejectFraction": "0.987309"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "85",
-        "start": "<4511.498535, 339.380249, 10236.805664>",
-        "proposal": "<4511.508301, 339.380249, 10236.777344>",
-        "direction": "<0.319882, 0.000000, -0.947458>",
-        "normal": "<0.947457, 0.000000, 0.319882>",
-        "step": "0.0299568",
-        "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR",
-        "fixture": "0",
-        "probe": "1",
-        "bias": "0",
-        "rejectNormal": "<0.838359, 0.465873, 0.283048>",
-        "rejectFraction": "0.98595"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "iteration": "87",
-        "start": "<4511.508301, 339.380249, 10236.747070>",
-        "proposal": "<4511.511719, 339.380249, 10236.716797>",
-        "direction": "<0.108834, 0.000000, -0.994060>",
-        "normal": "<0.994060, 0.000000, 0.108834>",
-        "step": "0.0304658",
-        "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR",
-        "fixture": "0",
-        "probe": "1",
-        "bias": "0",
-        "rejectNormal": "<0.879851, 0.465385, 0.096330>",
-        "rejectFraction": "0.491633"
+        "diagnostic": "NONDEEPENING_CLEAR"
       }
     ],
-    "motorRows": 994,
-    "tangentRows": 909,
-    "rawFloorQueries": [
+    "graphResults": [
       {
-        "pose": "0",
-        "mode": "0",
-        "label": "X_PLUS",
-        "near": "<4511.731934, 339.172150, 10236.862305>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4511.731934, 339.176422, 10236.862305>",
-        "normal": "<-0.018661, 0.999818, -0.003999>",
-        "fraction": "0.424507",
-        "heightDifference": "0.00427246",
-        "admissible": "true"
+        "pose": 0,
+        "generated": 54,
+        "expanded": 54,
+        "gateQueries": 1944,
+        "routeSteps": 0,
+        "elapsedSeconds": 0.342999,
+        "status": "GRAPH_SAMPLED_COMPONENT_EXHAUSTED",
+        "routeFound": false
       },
       {
-        "pose": "0",
-        "mode": "0",
-        "label": "X_MINUS",
-        "near": "<4511.271973, 339.172150, 10236.862305>",
-        "hit": "true",
-        "objectType": "StaticObj_Container_1C",
-        "point": "<4511.271973, 339.622162, 10236.862305>",
-        "normal": "<0.956329, 0.017070, -0.291794>",
-        "fraction": "0",
-        "heightDifference": "0.450012",
-        "admissible": "false"
-      },
-      {
-        "pose": "0",
-        "mode": "1",
-        "label": "X_PLUS",
-        "near": "<4511.731934, 339.172150, 10236.862305>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4511.731934, 339.176422, 10236.862305>",
-        "normal": "<-0.018661, 0.999818, -0.003999>",
-        "fraction": "0.424507",
-        "heightDifference": "0.00427246",
-        "admissible": "true"
-      },
-      {
-        "pose": "0",
-        "mode": "1",
-        "label": "X_MINUS",
-        "near": "<4511.271973, 339.172150, 10236.862305>",
-        "hit": "true",
-        "objectType": "StaticObj_Container_1C",
-        "point": "<4511.271973, 339.622162, 10236.862305>",
-        "normal": "<0.956329, 0.017070, -0.291794>",
-        "fraction": "0",
-        "heightDifference": "0.450012",
-        "admissible": "false"
-      },
-      {
-        "pose": "1",
-        "mode": "0",
-        "label": "X_PLUS",
-        "near": "<4511.714355, 339.179260, 10239.331055>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4511.714355, 339.183563, 10239.331055>",
-        "normal": "<-0.018661, 0.999822, -0.002665>",
-        "fraction": "0.424478",
-        "heightDifference": "0.00430298",
-        "admissible": "true"
-      },
-      {
-        "pose": "1",
-        "mode": "0",
-        "label": "X_MINUS",
-        "near": "<4511.254395, 339.179260, 10239.331055>",
-        "hit": "true",
-        "objectType": "StaticObj_Container_1C",
-        "point": "<4511.254395, 339.629272, 10239.331055>",
-        "normal": "<0.999826, 0.018659, 0.000011>",
-        "fraction": "0",
-        "heightDifference": "0.450012",
-        "admissible": "false"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "label": "X_PLUS",
-        "near": "<4511.714355, 339.179260, 10239.331055>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4511.714355, 339.183563, 10239.331055>",
-        "normal": "<-0.018661, 0.999822, -0.002665>",
-        "fraction": "0.424478",
-        "heightDifference": "0.00430298",
-        "admissible": "true"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "label": "X_MINUS",
-        "near": "<4511.254395, 339.179260, 10239.331055>",
-        "hit": "true",
-        "objectType": "StaticObj_Container_1C",
-        "point": "<4511.254395, 339.629272, 10239.331055>",
-        "normal": "<0.999826, 0.018659, 0.000011>",
-        "fraction": "0",
-        "heightDifference": "0.450012",
-        "admissible": "false"
-      },
-      {
-        "pose": "2",
-        "mode": "0",
-        "label": "X_PLUS",
-        "near": "<4530.229980, 339.336670, 10240.000000>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4530.229980, 339.336975, 10240.000000>",
-        "normal": "<-0.001335, 0.999998, 0.001335>",
-        "fraction": "0.428285",
-        "heightDifference": "0.000305176",
-        "admissible": "true"
-      },
-      {
-        "pose": "2",
-        "mode": "0",
-        "label": "X_MINUS",
-        "near": "<4529.770020, 339.336670, 10240.000000>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4529.770020, 339.335754, 10240.000000>",
-        "normal": "<-0.004000, 0.999991, 0.001335>",
-        "fraction": "0.429448",
-        "heightDifference": "0.000915527",
-        "admissible": "true"
-      },
-      {
-        "pose": "2",
-        "mode": "1",
-        "label": "X_PLUS",
-        "near": "<4530.229980, 339.336670, 10240.000000>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4530.229980, 339.336975, 10240.000000>",
-        "normal": "<-0.001335, 0.999998, 0.001335>",
-        "fraction": "0.428285",
-        "heightDifference": "0.000305176",
-        "admissible": "true"
-      },
-      {
-        "pose": "2",
-        "mode": "1",
-        "label": "X_MINUS",
-        "near": "<4529.770020, 339.336670, 10240.000000>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4529.770020, 339.335754, 10240.000000>",
-        "normal": "<-0.004000, 0.999991, 0.001335>",
-        "fraction": "0.429448",
-        "heightDifference": "0.000915527",
-        "admissible": "true"
+        "pose": 1,
+        "generated": 512,
+        "expanded": 114,
+        "gateQueries": 4068,
+        "routeSteps": 7,
+        "elapsedSeconds": 0.869999,
+        "status": "GRAPH_ROUTE_FOUND",
+        "routeFound": true
       }
-    ]
+    ],
+    "fullEndpointQueries": [],
+    "totalCommitCount": 1,
+    "originalBaselinePreserved": true
   },
   {
-    "validation": "prelanding17-fan",
-    "initSha256": "c696cc7536bc587a79f87cc2598943974d5cef241db7aeb96787b477376b7efb",
-    "queries": [
-      {
-        "pose": "0",
-        "mode": "0",
-        "root": "<4511.493164, 339.275757, 10236.865234>",
-        "tested": "<4511.501953, 339.172150, 10236.862305>",
-        "landing": "false",
-        "gate": "FOOT_X_SUPPORT",
-        "support": "<4511.501953, 339.172150, 10236.862305>",
-        "leftOk": "true",
-        "left": "<4511.731934, 339.176422, 10236.862305>",
-        "rightOk": "false",
-        "right": "<4511.271973, 339.622162, 10236.862305>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
-      },
-      {
-        "pose": "0",
-        "mode": "1",
-        "root": "<4511.493164, 339.275757, 10236.865234>",
-        "tested": "<4511.501953, 339.172150, 10236.862305>",
-        "landing": "false",
-        "gate": "FOOT_X_SUPPORT",
-        "support": "<4511.501953, 339.172150, 10236.862305>",
-        "leftOk": "true",
-        "left": "<4511.731934, 339.176422, 10236.862305>",
-        "rightOk": "false",
-        "right": "<4511.271973, 339.622162, 10236.862305>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
-      },
-      {
-        "pose": "1",
-        "mode": "0",
-        "root": "<4511.466309, 339.380249, 10239.336914>",
-        "tested": "<4511.484375, 339.179260, 10239.331055>",
-        "landing": "false",
-        "gate": "FOOT_X_SUPPORT",
-        "support": "<4511.484375, 339.179260, 10239.331055>",
-        "leftOk": "true",
-        "left": "<4511.714355, 339.183563, 10239.331055>",
-        "rightOk": "false",
-        "right": "<4511.254395, 339.629272, 10239.331055>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "root": "<4511.466309, 339.380249, 10239.336914>",
-        "tested": "<4511.484375, 339.179260, 10239.331055>",
-        "landing": "false",
-        "gate": "FOOT_X_SUPPORT",
-        "support": "<4511.484375, 339.179260, 10239.331055>",
-        "leftOk": "true",
-        "left": "<4511.714355, 339.183563, 10239.331055>",
-        "rightOk": "false",
-        "right": "<4511.254395, 339.629272, 10239.331055>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
-      },
-      {
-        "pose": "2",
-        "mode": "0",
-        "root": "<4530.000000, 339.440277, 10240.000000>",
-        "tested": "<4530.000000, 339.440277, 10240.000000>",
-        "landing": "true",
-        "gate": "CLEAR",
-        "support": "<4530.000000, 339.336670, 10240.000000>",
-        "leftOk": "true",
-        "left": "<4530.229980, 339.336975, 10240.000000>",
-        "rightOk": "true",
-        "right": "<4529.770020, 339.335754, 10240.000000>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
-      },
-      {
-        "pose": "2",
-        "mode": "1",
-        "root": "<4530.000000, 339.440277, 10240.000000>",
-        "tested": "<4530.000000, 339.440277, 10240.000000>",
-        "landing": "true",
-        "gate": "CLEAR",
-        "support": "<4530.000000, 339.336670, 10240.000000>",
-        "leftOk": "true",
-        "left": "<4530.229980, 339.336975, 10240.000000>",
-        "rightOk": "true",
-        "right": "<4529.770020, 339.335754, 10240.000000>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
-      }
-    ],
+    "validation": "prelanding17-micro-graph-owned",
+    "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
     "finals": [
       {
         "pose": "0",
@@ -843,7 +525,11 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "separationDistance": "2.81813",
         "tangentDistance": "0",
         "tangentSteps": "0",
-        "wantLanding": "false"
+        "wantLanding": "false",
+        "microGoal": "<0.000000, 0.000000, 0.000000>",
+        "microStatus": "NOT_STARTED",
+        "microQueries": "0",
+        "microPlans": "0"
       },
       {
         "pose": "0",
@@ -861,7 +547,11 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "separationDistance": "2.81813",
         "tangentDistance": "0",
         "tangentSteps": "0",
-        "wantLanding": "false"
+        "wantLanding": "false",
+        "microGoal": "<4511.493164, 339.169983, 10236.365234>",
+        "microStatus": "GRAPH_SAMPLED_COMPONENT_EXHAUSTED",
+        "microQueries": "0",
+        "microPlans": "1"
       },
       {
         "pose": "1",
@@ -879,25 +569,33 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "separationDistance": "2.51246",
         "tangentDistance": "0",
         "tangentSteps": "0",
-        "wantLanding": "false"
+        "wantLanding": "false",
+        "microGoal": "<0.000000, 0.000000, 0.000000>",
+        "microStatus": "NOT_STARTED",
+        "microQueries": "0",
+        "microPlans": "0"
       },
       {
         "pose": "1",
         "mode": "1",
-        "iteration": "90",
-        "seconds": "4.55005",
-        "phase": "LAND",
-        "position": "<4511.511719, 339.171509, 10236.656250>",
-        "heading": "-178.304",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.484375, 339.380249, 10236.818359>",
+        "heading": "-163.304",
         "lift": "0",
-        "reason": "NATIVE_FALL",
+        "reason": "FALL_NATIVE_JOINT_WORLD_0",
         "landingGate": "CLEAR",
-        "plans": "5",
-        "steps": "86",
-        "separationDistance": "2.69327",
-        "tangentDistance": "0.0899827",
-        "tangentSteps": "3",
-        "wantLanding": "true"
+        "plans": "1",
+        "steps": "81",
+        "separationDistance": "2.52197",
+        "tangentDistance": "0.0698203",
+        "tangentSteps": "7",
+        "wantLanding": "false",
+        "microGoal": "<4511.466309, 339.169586, 10236.384766>",
+        "microStatus": "GRAPH_STEP_ACCEPTED",
+        "microQueries": "7",
+        "microPlans": "1"
       },
       {
         "pose": "2",
@@ -915,7 +613,11 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "separationDistance": "0.0302734",
         "tangentDistance": "0",
         "tangentSteps": "0",
-        "wantLanding": "true"
+        "wantLanding": "true",
+        "microGoal": "<0.000000, 0.000000, 0.000000>",
+        "microStatus": "NOT_STARTED",
+        "microQueries": "0",
+        "microPlans": "0"
       },
       {
         "pose": "2",
@@ -933,1552 +635,128 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "separationDistance": "0",
         "tangentDistance": "0",
         "tangentSteps": "0",
-        "wantLanding": "true"
+        "wantLanding": "true",
+        "microGoal": "<0.000000, 0.000000, 0.000000>",
+        "microStatus": "NOT_STARTED",
+        "microQueries": "0",
+        "microPlans": "0"
       }
     ],
-    "acceptedTangentSteps": [
+    "commits": [
       {
         "pose": "1",
         "mode": "1",
         "iteration": "81",
+        "index": "0",
         "start": "<4511.466309, 339.380249, 10236.884766>",
-        "proposal": "<4511.477539, 339.380249, 10236.857422>",
-        "direction": "<0.377478, 0.000000, -0.926019>",
-        "normal": "<0.926018, 0.000000, 0.377478>",
-        "step": "0.0295602",
+        "proposal": "<4511.468262, 339.380249, 10236.875000>",
+        "distance": "0.00995902",
+        "budget": "1.5",
         "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR",
-        "fixture": "0",
-        "probe": "1",
-        "bias": "0",
-        "rejectNormal": "<0.818363, 0.467970, 0.333594>",
-        "rejectFraction": "0.987309"
+        "diagnostic": "NONDEEPENING_CLEAR"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "82",
+        "index": "1",
+        "start": "<4511.468262, 339.380249, 10236.875000>",
+        "proposal": "<4511.470215, 339.380249, 10236.865234>",
+        "distance": "0.00995902",
+        "budget": "1.49004",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "83",
+        "index": "2",
+        "start": "<4511.470215, 339.380249, 10236.865234>",
+        "proposal": "<4511.472168, 339.380249, 10236.855469>",
+        "distance": "0.00995902",
+        "budget": "1.48008",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "84",
+        "index": "3",
+        "start": "<4511.472168, 339.380249, 10236.855469>",
+        "proposal": "<4511.474121, 339.380249, 10236.845703>",
+        "distance": "0.00995902",
+        "budget": "1.47012",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR"
       },
       {
         "pose": "1",
         "mode": "1",
         "iteration": "85",
-        "start": "<4511.498535, 339.380249, 10236.805664>",
-        "proposal": "<4511.508301, 339.380249, 10236.777344>",
-        "direction": "<0.319882, 0.000000, -0.947458>",
-        "normal": "<0.947457, 0.000000, 0.319882>",
-        "step": "0.0299568",
+        "index": "4",
+        "start": "<4511.474121, 339.380249, 10236.845703>",
+        "proposal": "<4511.476074, 339.380249, 10236.835938>",
+        "distance": "0.00995902",
+        "budget": "1.46016",
         "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR",
-        "fixture": "0",
-        "probe": "1",
-        "bias": "0",
-        "rejectNormal": "<0.838359, 0.465873, 0.283048>",
-        "rejectFraction": "0.98595"
+        "diagnostic": "NONDEEPENING_CLEAR"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "86",
+        "index": "5",
+        "start": "<4511.476074, 339.380249, 10236.835938>",
+        "proposal": "<4511.478027, 339.380249, 10236.826172>",
+        "distance": "0.00995902",
+        "budget": "1.4502",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR"
       },
       {
         "pose": "1",
         "mode": "1",
         "iteration": "87",
-        "start": "<4511.508301, 339.380249, 10236.747070>",
-        "proposal": "<4511.511719, 339.380249, 10236.716797>",
-        "direction": "<0.108834, 0.000000, -0.994060>",
-        "normal": "<0.994060, 0.000000, 0.108834>",
-        "step": "0.0304658",
+        "index": "6",
+        "start": "<4511.478027, 339.380249, 10236.826172>",
+        "proposal": "<4511.484375, 339.380249, 10236.818359>",
+        "distance": "0.0100662",
+        "budget": "1.44025",
         "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR",
-        "fixture": "0",
-        "probe": "1",
-        "bias": "0",
-        "rejectNormal": "<0.879851, 0.465385, 0.096330>",
-        "rejectFraction": "0.491633"
+        "diagnostic": "NONDEEPENING_CLEAR"
       }
     ],
-    "motorRows": 994,
-    "tangentRows": 909,
-    "rawFloorQueries": [
+    "graphResults": [
       {
-        "pose": "0",
-        "mode": "0",
-        "label": "X_PLUS",
-        "near": "<4511.731934, 339.172150, 10236.862305>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4511.731934, 339.176422, 10236.862305>",
-        "normal": "<-0.018661, 0.999818, -0.003999>",
-        "fraction": "0.424507",
-        "heightDifference": "0.00427246",
-        "admissible": "true"
+        "pose": 0,
+        "generated": 54,
+        "expanded": 54,
+        "gateQueries": 1944,
+        "routeSteps": 0,
+        "elapsedSeconds": 0.363998,
+        "status": "GRAPH_SAMPLED_COMPONENT_EXHAUSTED",
+        "routeFound": false
       },
       {
-        "pose": "0",
-        "mode": "0",
-        "label": "X_MINUS",
-        "near": "<4511.271973, 339.172150, 10236.862305>",
-        "hit": "true",
-        "objectType": "StaticObj_Container_1C",
-        "point": "<4511.271973, 339.622162, 10236.862305>",
-        "normal": "<0.956329, 0.017070, -0.291794>",
-        "fraction": "0",
-        "heightDifference": "0.450012",
-        "admissible": "false"
-      },
-      {
-        "pose": "0",
-        "mode": "1",
-        "label": "X_PLUS",
-        "near": "<4511.731934, 339.172150, 10236.862305>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4511.731934, 339.176422, 10236.862305>",
-        "normal": "<-0.018661, 0.999818, -0.003999>",
-        "fraction": "0.424507",
-        "heightDifference": "0.00427246",
-        "admissible": "true"
-      },
-      {
-        "pose": "0",
-        "mode": "1",
-        "label": "X_MINUS",
-        "near": "<4511.271973, 339.172150, 10236.862305>",
-        "hit": "true",
-        "objectType": "StaticObj_Container_1C",
-        "point": "<4511.271973, 339.622162, 10236.862305>",
-        "normal": "<0.956329, 0.017070, -0.291794>",
-        "fraction": "0",
-        "heightDifference": "0.450012",
-        "admissible": "false"
-      },
-      {
-        "pose": "1",
-        "mode": "0",
-        "label": "X_PLUS",
-        "near": "<4511.714355, 339.179260, 10239.331055>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4511.714355, 339.183563, 10239.331055>",
-        "normal": "<-0.018661, 0.999822, -0.002665>",
-        "fraction": "0.424478",
-        "heightDifference": "0.00430298",
-        "admissible": "true"
-      },
-      {
-        "pose": "1",
-        "mode": "0",
-        "label": "X_MINUS",
-        "near": "<4511.254395, 339.179260, 10239.331055>",
-        "hit": "true",
-        "objectType": "StaticObj_Container_1C",
-        "point": "<4511.254395, 339.629272, 10239.331055>",
-        "normal": "<0.999826, 0.018659, 0.000011>",
-        "fraction": "0",
-        "heightDifference": "0.450012",
-        "admissible": "false"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "label": "X_PLUS",
-        "near": "<4511.714355, 339.179260, 10239.331055>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4511.714355, 339.183563, 10239.331055>",
-        "normal": "<-0.018661, 0.999822, -0.002665>",
-        "fraction": "0.424478",
-        "heightDifference": "0.00430298",
-        "admissible": "true"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "label": "X_MINUS",
-        "near": "<4511.254395, 339.179260, 10239.331055>",
-        "hit": "true",
-        "objectType": "StaticObj_Container_1C",
-        "point": "<4511.254395, 339.629272, 10239.331055>",
-        "normal": "<0.999826, 0.018659, 0.000011>",
-        "fraction": "0",
-        "heightDifference": "0.450012",
-        "admissible": "false"
-      },
-      {
-        "pose": "2",
-        "mode": "0",
-        "label": "X_PLUS",
-        "near": "<4530.229980, 339.336670, 10240.000000>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4530.229980, 339.336975, 10240.000000>",
-        "normal": "<-0.001335, 0.999998, 0.001335>",
-        "fraction": "0.428285",
-        "heightDifference": "0.000305176",
-        "admissible": "true"
-      },
-      {
-        "pose": "2",
-        "mode": "0",
-        "label": "X_MINUS",
-        "near": "<4529.770020, 339.336670, 10240.000000>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4529.770020, 339.335754, 10240.000000>",
-        "normal": "<-0.004000, 0.999991, 0.001335>",
-        "fraction": "0.429448",
-        "heightDifference": "0.000915527",
-        "admissible": "true"
-      },
-      {
-        "pose": "2",
-        "mode": "1",
-        "label": "X_PLUS",
-        "near": "<4530.229980, 339.336670, 10240.000000>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4530.229980, 339.336975, 10240.000000>",
-        "normal": "<-0.001335, 0.999998, 0.001335>",
-        "fraction": "0.428285",
-        "heightDifference": "0.000305176",
-        "admissible": "true"
-      },
-      {
-        "pose": "2",
-        "mode": "1",
-        "label": "X_MINUS",
-        "near": "<4529.770020, 339.336670, 10240.000000>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4529.770020, 339.335754, 10240.000000>",
-        "normal": "<-0.004000, 0.999991, 0.001335>",
-        "fraction": "0.429448",
-        "heightDifference": "0.000915527",
-        "admissible": "true"
+        "pose": 1,
+        "generated": 512,
+        "expanded": 114,
+        "gateQueries": 4068,
+        "routeSteps": 7,
+        "elapsedSeconds": 0.842999,
+        "status": "GRAPH_ROUTE_FOUND",
+        "routeFound": true
       }
     ],
-    "fanAcceptedCounts": {
-      "0:0": 5,
-      "0:1": 5,
-      "1:0": 25,
-      "1:1": 25,
-      "2:0": 72,
-      "2:1": 72
-    },
-    "fanAcceptedKeys": [
-      [
-        "0",
-        "0",
-        "280",
-        "0.01"
-      ],
-      [
-        "0",
-        "0",
-        "290",
-        "0.01"
-      ],
-      [
-        "0",
-        "0",
-        "70",
-        "0.01"
-      ],
-      [
-        "0",
-        "0",
-        "80",
-        "0.01"
-      ],
-      [
-        "0",
-        "0",
-        "90",
-        "0.01"
-      ],
-      [
-        "0",
-        "1",
-        "280",
-        "0.01"
-      ],
-      [
-        "0",
-        "1",
-        "290",
-        "0.01"
-      ],
-      [
-        "0",
-        "1",
-        "70",
-        "0.01"
-      ],
-      [
-        "0",
-        "1",
-        "80",
-        "0.01"
-      ],
-      [
-        "0",
-        "1",
-        "90",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "0",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "10",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "20",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "270",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "270",
-        "0.03"
-      ],
-      [
-        "1",
-        "0",
-        "280",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "280",
-        "0.03"
-      ],
-      [
-        "1",
-        "0",
-        "290",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "290",
-        "0.03"
-      ],
-      [
-        "1",
-        "0",
-        "30",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "300",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "310",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "320",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "330",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "340",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "350",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "40",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "50",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "60",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "70",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "70",
-        "0.03"
-      ],
-      [
-        "1",
-        "0",
-        "80",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "80",
-        "0.03"
-      ],
-      [
-        "1",
-        "0",
-        "90",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "90",
-        "0.03"
-      ],
-      [
-        "1",
-        "1",
-        "0",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "10",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "20",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "270",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "270",
-        "0.03"
-      ],
-      [
-        "1",
-        "1",
-        "280",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "280",
-        "0.03"
-      ],
-      [
-        "1",
-        "1",
-        "290",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "290",
-        "0.03"
-      ],
-      [
-        "1",
-        "1",
-        "30",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "300",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "310",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "320",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "330",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "340",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "350",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "40",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "50",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "60",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "70",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "70",
-        "0.03"
-      ],
-      [
-        "1",
-        "1",
-        "80",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "80",
-        "0.03"
-      ],
-      [
-        "1",
-        "1",
-        "90",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "90",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "0",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "0",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "10",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "10",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "100",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "100",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "110",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "110",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "120",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "120",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "130",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "130",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "140",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "140",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "150",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "150",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "160",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "160",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "170",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "170",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "180",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "180",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "190",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "190",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "20",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "20",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "200",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "200",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "210",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "210",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "220",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "220",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "230",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "230",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "240",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "240",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "250",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "250",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "260",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "260",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "270",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "270",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "280",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "280",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "290",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "290",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "30",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "30",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "300",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "300",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "310",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "310",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "320",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "320",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "330",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "330",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "340",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "340",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "350",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "350",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "40",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "40",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "50",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "50",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "60",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "60",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "70",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "70",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "80",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "80",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "90",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "90",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "0",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "0",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "10",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "10",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "100",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "100",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "110",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "110",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "120",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "120",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "130",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "130",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "140",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "140",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "150",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "150",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "160",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "160",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "170",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "170",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "180",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "180",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "190",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "190",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "20",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "20",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "200",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "200",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "210",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "210",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "220",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "220",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "230",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "230",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "240",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "240",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "250",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "250",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "260",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "260",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "270",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "270",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "280",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "280",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "290",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "290",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "30",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "30",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "300",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "300",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "310",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "310",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "320",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "320",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "330",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "330",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "340",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "340",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "350",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "350",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "40",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "40",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "50",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "50",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "60",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "60",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "70",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "70",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "80",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "80",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "90",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "90",
-        "0.03"
-      ]
-    ]
+    "fullEndpointQueries": [],
+    "totalCommitCount": 7,
+    "originalBaselinePreserved": true
   },
   {
-    "validation": "prelanding17-fan-repeat",
-    "initSha256": "c696cc7536bc587a79f87cc2598943974d5cef241db7aeb96787b477376b7efb",
-    "queries": [
-      {
-        "pose": "0",
-        "mode": "0",
-        "root": "<4511.493164, 339.275757, 10236.865234>",
-        "tested": "<4511.501953, 339.172150, 10236.862305>",
-        "landing": "false",
-        "gate": "FOOT_X_SUPPORT",
-        "support": "<4511.501953, 339.172150, 10236.862305>",
-        "leftOk": "true",
-        "left": "<4511.731934, 339.176422, 10236.862305>",
-        "rightOk": "false",
-        "right": "<4511.271973, 339.622162, 10236.862305>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
-      },
-      {
-        "pose": "0",
-        "mode": "1",
-        "root": "<4511.493164, 339.275757, 10236.865234>",
-        "tested": "<4511.501953, 339.172150, 10236.862305>",
-        "landing": "false",
-        "gate": "FOOT_X_SUPPORT",
-        "support": "<4511.501953, 339.172150, 10236.862305>",
-        "leftOk": "true",
-        "left": "<4511.731934, 339.176422, 10236.862305>",
-        "rightOk": "false",
-        "right": "<4511.271973, 339.622162, 10236.862305>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
-      },
-      {
-        "pose": "1",
-        "mode": "0",
-        "root": "<4511.466309, 339.380249, 10239.336914>",
-        "tested": "<4511.484375, 339.179260, 10239.331055>",
-        "landing": "false",
-        "gate": "FOOT_X_SUPPORT",
-        "support": "<4511.484375, 339.179260, 10239.331055>",
-        "leftOk": "true",
-        "left": "<4511.714355, 339.183563, 10239.331055>",
-        "rightOk": "false",
-        "right": "<4511.254395, 339.629272, 10239.331055>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "root": "<4511.466309, 339.380249, 10239.336914>",
-        "tested": "<4511.484375, 339.179260, 10239.331055>",
-        "landing": "false",
-        "gate": "FOOT_X_SUPPORT",
-        "support": "<4511.484375, 339.179260, 10239.331055>",
-        "leftOk": "true",
-        "left": "<4511.714355, 339.183563, 10239.331055>",
-        "rightOk": "false",
-        "right": "<4511.254395, 339.629272, 10239.331055>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
-      },
-      {
-        "pose": "2",
-        "mode": "0",
-        "root": "<4530.000000, 339.440277, 10240.000000>",
-        "tested": "<4530.000000, 339.440277, 10240.000000>",
-        "landing": "true",
-        "gate": "CLEAR",
-        "support": "<4530.000000, 339.336670, 10240.000000>",
-        "leftOk": "true",
-        "left": "<4530.229980, 339.336975, 10240.000000>",
-        "rightOk": "true",
-        "right": "<4529.770020, 339.335754, 10240.000000>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
-      },
-      {
-        "pose": "2",
-        "mode": "1",
-        "root": "<4530.000000, 339.440277, 10240.000000>",
-        "tested": "<4530.000000, 339.440277, 10240.000000>",
-        "landing": "true",
-        "gate": "CLEAR",
-        "support": "<4530.000000, 339.336670, 10240.000000>",
-        "leftOk": "true",
-        "left": "<4530.229980, 339.336975, 10240.000000>",
-        "rightOk": "true",
-        "right": "<4529.770020, 339.335754, 10240.000000>",
-        "rootFloorOk": "true",
-        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
-      }
-    ],
+    "validation": "prelanding17-micro-graph-owned-full",
+    "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
     "finals": [
       {
         "pose": "0",
@@ -2496,7 +774,11 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "separationDistance": "2.81813",
         "tangentDistance": "0",
         "tangentSteps": "0",
-        "wantLanding": "false"
+        "wantLanding": "false",
+        "microGoal": "<0.000000, 0.000000, 0.000000>",
+        "microStatus": "NOT_STARTED",
+        "microQueries": "0",
+        "microPlans": "0"
       },
       {
         "pose": "0",
@@ -2514,7 +796,11 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "separationDistance": "2.81813",
         "tangentDistance": "0",
         "tangentSteps": "0",
-        "wantLanding": "false"
+        "wantLanding": "false",
+        "microGoal": "<4511.493164, 339.169983, 10236.365234>",
+        "microStatus": "GRAPH_SAMPLED_COMPONENT_EXHAUSTED",
+        "microQueries": "0",
+        "microPlans": "1"
       },
       {
         "pose": "1",
@@ -2532,25 +818,33 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "separationDistance": "2.51246",
         "tangentDistance": "0",
         "tangentSteps": "0",
-        "wantLanding": "false"
+        "wantLanding": "false",
+        "microGoal": "<0.000000, 0.000000, 0.000000>",
+        "microStatus": "NOT_STARTED",
+        "microQueries": "0",
+        "microPlans": "0"
       },
       {
         "pose": "1",
         "mode": "1",
-        "iteration": "90",
-        "seconds": "4.55005",
-        "phase": "LAND",
-        "position": "<4511.511719, 339.171509, 10236.656250>",
-        "heading": "-178.304",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.487305, 339.380249, 10236.833008>",
+        "heading": "-164.304",
         "lift": "0",
-        "reason": "NATIVE_FALL",
+        "reason": "FALL_AIR_POSE_ESCAPE_TURN",
         "landingGate": "CLEAR",
-        "plans": "5",
-        "steps": "86",
-        "separationDistance": "2.69327",
-        "tangentDistance": "0.0899827",
-        "tangentSteps": "3",
-        "wantLanding": "true"
+        "plans": "110",
+        "steps": "83",
+        "separationDistance": "2.51246",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false",
+        "microGoal": "<4511.466309, 339.169586, 10236.384766>",
+        "microStatus": "GRAPH_NODE_CAP",
+        "microQueries": "0",
+        "microPlans": "1"
       },
       {
         "pose": "2",
@@ -2568,7 +862,11 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "separationDistance": "0.0302734",
         "tangentDistance": "0",
         "tangentSteps": "0",
-        "wantLanding": "true"
+        "wantLanding": "true",
+        "microGoal": "<0.000000, 0.000000, 0.000000>",
+        "microStatus": "NOT_STARTED",
+        "microQueries": "0",
+        "microPlans": "0"
       },
       {
         "pose": "2",
@@ -2586,1502 +884,603 @@ Selected records,not complete raw logs. All6 final rows per run and accepted fan
         "separationDistance": "0",
         "tangentDistance": "0",
         "tangentSteps": "0",
-        "wantLanding": "true"
+        "wantLanding": "true",
+        "microGoal": "<0.000000, 0.000000, 0.000000>",
+        "microStatus": "NOT_STARTED",
+        "microQueries": "0",
+        "microPlans": "0"
       }
     ],
-    "acceptedTangentSteps": [
+    "commits": [],
+    "graphResults": [
+      {
+        "pose": 0,
+        "generated": 54,
+        "expanded": 54,
+        "gateQueries": 1944,
+        "routeSteps": 0,
+        "elapsedSeconds": 0.257999,
+        "status": "GRAPH_SAMPLED_COMPONENT_EXHAUSTED",
+        "routeFound": false
+      },
+      {
+        "pose": 1,
+        "generated": 512,
+        "expanded": 512,
+        "gateQueries": 18432,
+        "routeSteps": 0,
+        "elapsedSeconds": 3.145,
+        "status": "GRAPH_NODE_CAP",
+        "routeFound": false
+      }
+    ],
+    "fullEndpointQueries": [
       {
         "pose": "1",
         "mode": "1",
         "iteration": "81",
-        "start": "<4511.466309, 339.380249, 10236.884766>",
-        "proposal": "<4511.477539, 339.380249, 10236.857422>",
-        "direction": "<0.377478, 0.000000, -0.926019>",
-        "normal": "<0.926018, 0.000000, 0.377478>",
-        "step": "0.0295602",
-        "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR",
-        "fixture": "0",
-        "probe": "1",
-        "bias": "0",
-        "rejectNormal": "<0.818363, 0.467970, 0.333594>",
-        "rejectFraction": "0.987309"
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "483",
+        "parent": "355",
+        "position": "<4511.484375, 339.171661, 10236.818359>",
+        "lift": "0",
+        "cost": "0.0698203",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.842512, 0.538676, -0.001391>",
+        "fraction": "0.376477"
       },
       {
         "pose": "1",
         "mode": "1",
-        "iteration": "85",
-        "start": "<4511.498535, 339.380249, 10236.805664>",
-        "proposal": "<4511.508301, 339.380249, 10236.777344>",
-        "direction": "<0.319882, 0.000000, -0.947458>",
-        "normal": "<0.947457, 0.000000, 0.319882>",
-        "step": "0.0299568",
-        "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR",
-        "fixture": "0",
-        "probe": "1",
-        "bias": "0",
-        "rejectNormal": "<0.838359, 0.465873, 0.283048>",
-        "rejectFraction": "0.98595"
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "359",
+        "parent": "286",
+        "position": "<4511.483887, 339.171692, 10236.829102>",
+        "lift": "0",
+        "cost": "0.0601761",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.840131, 0.542382, -0.001403>",
+        "fraction": "0.372798"
       },
       {
         "pose": "1",
         "mode": "1",
-        "iteration": "87",
-        "start": "<4511.508301, 339.380249, 10236.747070>",
-        "proposal": "<4511.511719, 339.380249, 10236.716797>",
-        "direction": "<0.108834, 0.000000, -0.994060>",
-        "normal": "<0.994060, 0.000000, 0.108834>",
-        "step": "0.0304658",
-        "accepted": "true",
-        "diagnostic": "NONDEEPENING_CLEAR",
-        "fixture": "0",
-        "probe": "1",
-        "bias": "0",
-        "rejectNormal": "<0.879851, 0.465385, 0.096330>",
-        "rejectFraction": "0.491633"
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "435",
+        "parent": "233",
+        "position": "<4511.483398, 339.171661, 10236.829102>",
+        "lift": "0",
+        "cost": "0.0603702",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.837668, 0.546179, -0.001410>",
+        "fraction": "0.36915"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "484",
+        "parent": "355",
+        "position": "<4511.485840, 339.171692, 10236.819336>",
+        "lift": "0",
+        "cost": "0.0701351",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.849685, 0.527289, -0.001363>",
+        "fraction": "0.387386"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "360",
+        "parent": "286",
+        "position": "<4511.484863, 339.171692, 10236.831055>",
+        "lift": "0",
+        "cost": "0.0598494",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.844880, 0.534953, -0.001382>",
+        "fraction": "0.379927"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "436",
+        "parent": "233",
+        "position": "<4511.484375, 339.171692, 10236.831055>",
+        "lift": "0",
+        "cost": "0.0600435",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.842520, 0.538663, -0.001389>",
+        "fraction": "0.37639"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "485",
+        "parent": "355",
+        "position": "<4511.486816, 339.171722, 10236.821289>",
+        "lift": "0",
+        "cost": "0.0698084",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.854500, 0.519450, -0.001343>",
+        "fraction": "0.394912"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "307",
+        "parent": "232",
+        "position": "<4511.483398, 339.171692, 10236.832031>",
+        "lift": "0",
+        "cost": "0.0596679",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.837686, 0.546151, -0.001411>",
+        "fraction": "0.36914"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "361",
+        "parent": "286",
+        "position": "<4511.485352, 339.171753, 10236.832031>",
+        "lift": "0",
+        "cost": "0.0598613",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.847367, 0.531006, -0.001370>",
+        "fraction": "0.383736"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "437",
+        "parent": "233",
+        "position": "<4511.484863, 339.171722, 10236.832031>",
+        "lift": "0",
+        "cost": "0.0600554",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.844886, 0.534944, -0.001382>",
+        "fraction": "0.379961"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "486",
+        "parent": "355",
+        "position": "<4511.487305, 339.171722, 10236.822266>",
+        "lift": "0",
+        "cost": "0.0698203",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.856914, 0.515458, -0.001331>",
+        "fraction": "0.398643"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "308",
+        "parent": "232",
+        "position": "<4511.483887, 339.171722, 10236.833984>",
+        "lift": "0",
+        "cost": "0.0595607",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.840092, 0.542443, -0.001403>",
+        "fraction": "0.372745"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "346",
+        "parent": "151",
+        "position": "<4511.483398, 339.171692, 10236.833984>",
+        "lift": "0",
+        "cost": "0.0597548",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.837628, 0.546239, -0.001415>",
+        "fraction": "0.369096"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "362",
+        "parent": "286",
+        "position": "<4511.485840, 339.171753, 10236.833984>",
+        "lift": "0",
+        "cost": "0.0597541",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.849705, 0.527257, -0.001363>",
+        "fraction": "0.387315"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "438",
+        "parent": "233",
+        "position": "<4511.485352, 339.171753, 10236.833984>",
+        "lift": "0",
+        "cost": "0.0599482",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.847310, 0.531096, -0.001372>",
+        "fraction": "0.383692"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "487",
+        "parent": "355",
+        "position": "<4511.487793, 339.171722, 10236.824219>",
+        "lift": "0",
+        "cost": "0.0697131",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.859315, 0.511446, -0.001319>",
+        "fraction": "0.402398"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "294",
+        "parent": "232",
+        "position": "<4511.483887, 339.171722, 10236.835938>",
+        "lift": "0",
+        "cost": "0.0593673",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.840104, 0.542424, -0.001403>",
+        "fraction": "0.372701"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "335",
+        "parent": "151",
+        "position": "<4511.483398, 339.171692, 10236.835938>",
+        "lift": "0",
+        "cost": "0.0595614",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.837710, 0.546114, -0.001411>",
+        "fraction": "0.369191"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "347",
+        "parent": "286",
+        "position": "<4511.485840, 339.171753, 10236.835938>",
+        "lift": "0",
+        "cost": "0.0595607",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.849717, 0.527238, -0.001363>",
+        "fraction": "0.387273"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "426",
+        "parent": "233",
+        "position": "<4511.485352, 339.171753, 10236.835938>",
+        "lift": "0",
+        "cost": "0.0597548",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.847322, 0.531078, -0.001375>",
+        "fraction": "0.38365"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "472",
+        "parent": "355",
+        "position": "<4511.487793, 339.171753, 10236.826172>",
+        "lift": "0",
+        "cost": "0.0695197",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.859326, 0.511426, -0.001319>",
+        "fraction": "0.402551"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "473",
+        "parent": "355",
+        "position": "<4511.487793, 339.171753, 10236.828125>",
+        "lift": "0",
+        "cost": "0.0697131",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.859338, 0.511407, -0.001319>",
+        "fraction": "0.402509"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "474",
+        "parent": "355",
+        "position": "<4511.487305, 339.171753, 10236.830078>",
+        "lift": "0",
+        "cost": "0.0698203",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.856960, 0.515381, -0.001329>",
+        "fraction": "0.398668"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "475",
+        "parent": "355",
+        "position": "<4511.486816, 339.171753, 10236.831055>",
+        "lift": "0",
+        "cost": "0.0698084",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.854558, 0.519354, -0.001341>",
+        "fraction": "0.394893"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "476",
+        "parent": "355",
+        "position": "<4511.485840, 339.171753, 10236.833008>",
+        "lift": "0",
+        "cost": "0.0701351",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.849699, 0.527267, -0.001365>",
+        "fraction": "0.387337"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "kind": "FULL_ENDPOINT_QUERY",
+        "node": "477",
+        "parent": "355",
+        "position": "<4511.484375, 339.171722, 10236.833984>",
+        "lift": "0",
+        "cost": "0.0698203",
+        "angle": "-1",
+        "accepted": "false",
+        "diagnostic": "NATIVE_JOINT_WORLD_0",
+        "probe": "4",
+        "normal": "<0.842538, 0.538635, -0.001391>",
+        "fraction": "0.37638"
       }
     ],
-    "motorRows": 994,
-    "tangentRows": 909,
-    "rawFloorQueries": [
-      {
-        "pose": "0",
-        "mode": "0",
-        "label": "X_PLUS",
-        "near": "<4511.731934, 339.172150, 10236.862305>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4511.731934, 339.176422, 10236.862305>",
-        "normal": "<-0.018661, 0.999818, -0.003999>",
-        "fraction": "0.424507",
-        "heightDifference": "0.00427246",
-        "admissible": "true"
-      },
-      {
-        "pose": "0",
-        "mode": "0",
-        "label": "X_MINUS",
-        "near": "<4511.271973, 339.172150, 10236.862305>",
-        "hit": "true",
-        "objectType": "StaticObj_Container_1C",
-        "point": "<4511.271973, 339.622162, 10236.862305>",
-        "normal": "<0.956329, 0.017070, -0.291794>",
-        "fraction": "0",
-        "heightDifference": "0.450012",
-        "admissible": "false"
-      },
-      {
-        "pose": "0",
-        "mode": "1",
-        "label": "X_PLUS",
-        "near": "<4511.731934, 339.172150, 10236.862305>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4511.731934, 339.176422, 10236.862305>",
-        "normal": "<-0.018661, 0.999818, -0.003999>",
-        "fraction": "0.424507",
-        "heightDifference": "0.00427246",
-        "admissible": "true"
-      },
-      {
-        "pose": "0",
-        "mode": "1",
-        "label": "X_MINUS",
-        "near": "<4511.271973, 339.172150, 10236.862305>",
-        "hit": "true",
-        "objectType": "StaticObj_Container_1C",
-        "point": "<4511.271973, 339.622162, 10236.862305>",
-        "normal": "<0.956329, 0.017070, -0.291794>",
-        "fraction": "0",
-        "heightDifference": "0.450012",
-        "admissible": "false"
-      },
-      {
-        "pose": "1",
-        "mode": "0",
-        "label": "X_PLUS",
-        "near": "<4511.714355, 339.179260, 10239.331055>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4511.714355, 339.183563, 10239.331055>",
-        "normal": "<-0.018661, 0.999822, -0.002665>",
-        "fraction": "0.424478",
-        "heightDifference": "0.00430298",
-        "admissible": "true"
-      },
-      {
-        "pose": "1",
-        "mode": "0",
-        "label": "X_MINUS",
-        "near": "<4511.254395, 339.179260, 10239.331055>",
-        "hit": "true",
-        "objectType": "StaticObj_Container_1C",
-        "point": "<4511.254395, 339.629272, 10239.331055>",
-        "normal": "<0.999826, 0.018659, 0.000011>",
-        "fraction": "0",
-        "heightDifference": "0.450012",
-        "admissible": "false"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "label": "X_PLUS",
-        "near": "<4511.714355, 339.179260, 10239.331055>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4511.714355, 339.183563, 10239.331055>",
-        "normal": "<-0.018661, 0.999822, -0.002665>",
-        "fraction": "0.424478",
-        "heightDifference": "0.00430298",
-        "admissible": "true"
-      },
-      {
-        "pose": "1",
-        "mode": "1",
-        "label": "X_MINUS",
-        "near": "<4511.254395, 339.179260, 10239.331055>",
-        "hit": "true",
-        "objectType": "StaticObj_Container_1C",
-        "point": "<4511.254395, 339.629272, 10239.331055>",
-        "normal": "<0.999826, 0.018659, 0.000011>",
-        "fraction": "0",
-        "heightDifference": "0.450012",
-        "admissible": "false"
-      },
-      {
-        "pose": "2",
-        "mode": "0",
-        "label": "X_PLUS",
-        "near": "<4530.229980, 339.336670, 10240.000000>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4530.229980, 339.336975, 10240.000000>",
-        "normal": "<-0.001335, 0.999998, 0.001335>",
-        "fraction": "0.428285",
-        "heightDifference": "0.000305176",
-        "admissible": "true"
-      },
-      {
-        "pose": "2",
-        "mode": "0",
-        "label": "X_MINUS",
-        "near": "<4529.770020, 339.336670, 10240.000000>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4529.770020, 339.335754, 10240.000000>",
-        "normal": "<-0.004000, 0.999991, 0.001335>",
-        "fraction": "0.429448",
-        "heightDifference": "0.000915527",
-        "admissible": "true"
-      },
-      {
-        "pose": "2",
-        "mode": "1",
-        "label": "X_PLUS",
-        "near": "<4530.229980, 339.336670, 10240.000000>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4530.229980, 339.336975, 10240.000000>",
-        "normal": "<-0.001335, 0.999998, 0.001335>",
-        "fraction": "0.428285",
-        "heightDifference": "0.000305176",
-        "admissible": "true"
-      },
-      {
-        "pose": "2",
-        "mode": "1",
-        "label": "X_MINUS",
-        "near": "<4529.770020, 339.336670, 10240.000000>",
-        "hit": "true",
-        "objectType": "",
-        "point": "<4529.770020, 339.335754, 10240.000000>",
-        "normal": "<-0.004000, 0.999991, 0.001335>",
-        "fraction": "0.429448",
-        "heightDifference": "0.000915527",
-        "admissible": "true"
-      }
-    ],
-    "fanAcceptedCounts": {
-      "0:0": 5,
-      "0:1": 5,
-      "1:0": 25,
-      "1:1": 25,
-      "2:0": 72,
-      "2:1": 72
-    },
-    "fanAcceptedKeys": [
-      [
-        "0",
-        "0",
-        "280",
-        "0.01"
-      ],
-      [
-        "0",
-        "0",
-        "290",
-        "0.01"
-      ],
-      [
-        "0",
-        "0",
-        "70",
-        "0.01"
-      ],
-      [
-        "0",
-        "0",
-        "80",
-        "0.01"
-      ],
-      [
-        "0",
-        "0",
-        "90",
-        "0.01"
-      ],
-      [
-        "0",
-        "1",
-        "280",
-        "0.01"
-      ],
-      [
-        "0",
-        "1",
-        "290",
-        "0.01"
-      ],
-      [
-        "0",
-        "1",
-        "70",
-        "0.01"
-      ],
-      [
-        "0",
-        "1",
-        "80",
-        "0.01"
-      ],
-      [
-        "0",
-        "1",
-        "90",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "0",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "10",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "20",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "270",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "270",
-        "0.03"
-      ],
-      [
-        "1",
-        "0",
-        "280",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "280",
-        "0.03"
-      ],
-      [
-        "1",
-        "0",
-        "290",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "290",
-        "0.03"
-      ],
-      [
-        "1",
-        "0",
-        "30",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "300",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "310",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "320",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "330",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "340",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "350",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "40",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "50",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "60",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "70",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "70",
-        "0.03"
-      ],
-      [
-        "1",
-        "0",
-        "80",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "80",
-        "0.03"
-      ],
-      [
-        "1",
-        "0",
-        "90",
-        "0.01"
-      ],
-      [
-        "1",
-        "0",
-        "90",
-        "0.03"
-      ],
-      [
-        "1",
-        "1",
-        "0",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "10",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "20",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "270",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "270",
-        "0.03"
-      ],
-      [
-        "1",
-        "1",
-        "280",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "280",
-        "0.03"
-      ],
-      [
-        "1",
-        "1",
-        "290",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "290",
-        "0.03"
-      ],
-      [
-        "1",
-        "1",
-        "30",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "300",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "310",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "320",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "330",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "340",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "350",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "40",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "50",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "60",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "70",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "70",
-        "0.03"
-      ],
-      [
-        "1",
-        "1",
-        "80",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "80",
-        "0.03"
-      ],
-      [
-        "1",
-        "1",
-        "90",
-        "0.01"
-      ],
-      [
-        "1",
-        "1",
-        "90",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "0",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "0",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "10",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "10",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "100",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "100",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "110",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "110",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "120",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "120",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "130",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "130",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "140",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "140",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "150",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "150",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "160",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "160",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "170",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "170",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "180",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "180",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "190",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "190",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "20",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "20",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "200",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "200",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "210",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "210",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "220",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "220",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "230",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "230",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "240",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "240",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "250",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "250",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "260",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "260",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "270",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "270",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "280",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "280",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "290",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "290",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "30",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "30",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "300",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "300",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "310",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "310",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "320",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "320",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "330",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "330",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "340",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "340",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "350",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "350",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "40",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "40",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "50",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "50",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "60",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "60",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "70",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "70",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "80",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "80",
-        "0.03"
-      ],
-      [
-        "2",
-        "0",
-        "90",
-        "0.01"
-      ],
-      [
-        "2",
-        "0",
-        "90",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "0",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "0",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "10",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "10",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "100",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "100",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "110",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "110",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "120",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "120",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "130",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "130",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "140",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "140",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "150",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "150",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "160",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "160",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "170",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "170",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "180",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "180",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "190",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "190",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "20",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "20",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "200",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "200",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "210",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "210",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "220",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "220",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "230",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "230",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "240",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "240",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "250",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "250",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "260",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "260",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "270",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "270",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "280",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "280",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "290",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "290",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "30",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "30",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "300",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "300",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "310",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "310",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "320",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "320",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "330",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "330",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "340",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "340",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "350",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "350",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "40",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "40",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "50",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "50",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "60",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "60",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "70",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "70",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "80",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "80",
-        "0.03"
-      ],
-      [
-        "2",
-        "1",
-        "90",
-        "0.01"
-      ],
-      [
-        "2",
-        "1",
-        "90",
-        "0.03"
-      ]
-    ]
+    "totalCommitCount": 0,
+    "originalBaselinePreserved": true
   }
 ]
 
-Test-only subclass;not deployed NPC code:
+Full-endpoint test subclass,not deployed code:
 class DGPreLandingTangent: DGBNativeTraversal
 {
  int TestMode;int TestPose;int TestIteration;int TangentSteps;int TangentAttempts;float TangentDistance;
+ bool MicroGoalValid;vector MicroGoal;string MicroStatus="NOT_STARTED";int MicroQueries;int MicroPlans;
  void DGPreLandingTangent(DGBNativeGroundBody body){Body=body;PhaseAt=body.Director.Now;}
+ float FlatGap(vector a,vector b){a[1]=0;b[1]=0;return vector.Distance(a,b);}
+ bool PlanMicroGoal()
+ {
+  MicroPlans++;string saved=LandingDiagnostic;
+  array<vector> directions={"0 0 1","0 0 -1","1 0 0","-1 0 0","0.707107 0 0.707107","-0.707107 0 0.707107","0.707107 0 -0.707107","-0.707107 0 -0.707107"};
+  for(float distance=0.5;distance<=4;distance+=0.5)
+  {
+   foreach(vector direction:directions)
+   {
+    vector target=DGBTraversalFixture.Ground(Body.Agent.Position+direction*distance);vector support;
+    if(!LandingSpace(target,support))continue;
+    MicroGoal=support;MicroGoalValid=true;LandingDiagnostic=saved;MicroStatus="GOAL_VALID";return true;
+   }
+  }
+  LandingDiagnostic=saved;MicroStatus="NO_VALID_GOAL";return false;
+ }
+
+ bool GraphTried;bool GraphValid;int GraphNext;int GraphExpanded;int GraphGenerated;int GraphQueries;float GraphElapsed;
+ ref array<vector> GraphRoute={};
+ bool BuildMicroRoute(float dt)
+ {
+  GraphTried=true;float started=GetGame().GetTickTime();MicroStatus="GRAPH_SEARCH";
+  if(!PlanMicroGoal())return false;
+  float budget=Math.Min(SeparationDistanceBudget - SeparationEpisodeDistance,1.5 - TangentDistance);
+  float step=Math.Min(0.01,Math.Max(dt,0)*0.6);if(step<=0.0001)return false;
+  vector origin=Body.Agent.Position;float originLift=Body.Lift;string savedLanding=LandingDiagnostic;ref array<vector> originalContacts={};originalContacts.Copy(Body.Contacts);string savedReason=Body.Reason;string savedHit=Body.HitType;vector savedNormal=Body.HitNormal;vector savedPoint=Body.HitPoint;float savedFraction=Body.HitFraction;
+  ref array<ref DGPreLandingNode> nodes={};ref map<string,int> visited=new map<string,int>;
+  ref DGPreLandingNode first=new DGPreLandingNode;first.Position=origin;first.Lift=originLift;first.Contacts.Copy(originalContacts);nodes.Insert(first);
+  visited.Insert(origin.ToString()+"/"+originLift.ToString()+"/"+originalContacts.Count(),0);
+  int goal=-1;bool capped=false;
+  string path="$profile:prelanding17-graph.tsv";bool exists=FileExist(path);FileHandle log=OpenFile(path,FileMode.APPEND);
+  if(!log){Print("DG_PRELAND17_FAILED graph_log");return false;}
+  if(!exists)FPrintln(log,"pose\tmode\titeration\tkind\tnode\tparent\tposition\tlift\tcost\tangle\taccepted\tdiagnostic\tprobe\tnormal\tfraction");
+  while(GraphExpanded<512)
+  {
+   int best=-1;float score=100000;
+   for(int scan=0;scan<nodes.Count();scan++)
+   {
+    if(nodes[scan].Closed)continue;
+    float candidate=nodes[scan].Cost+FlatGap(nodes[scan].Position,MicroGoal);
+    if(candidate<score){score=candidate;best=scan;}
+   }
+   if(best<0)break;
+   DGPreLandingNode current=nodes[best];current.Closed=true;GraphExpanded++;
+   Body.Agent.Position=current.Position;Body.Lift=current.Lift;Body.Contacts.Copy(current.Contacts);
+   vector ground=DGBTraversalFixture.Ground(current.Position);vector support;
+   bool landing=LandingSpace(ground,support,false);bool endpoint=false;
+   if(landing)
+   {
+    string core;float endpointLift;ref array<vector> endpointContacts={};
+    endpoint=Body.Director.Crowd.CoreClear(Body,current.Position,support,core) && Body.SolveContacts(support,Body.Agent.Heading,endpointLift,endpointContacts);
+    FPrintln(log,TestPose.ToString()+"\t"+TestMode+"\t"+TestIteration+"\tFULL_ENDPOINT_QUERY\t"+best+"\t"+current.Parent+"\t"+support+"\t"+endpointLift+"\t"+current.Cost+"\t-1\t"+endpoint+"\t"+Body.Reason+"\t"+current.Contacts.Count()+"\t"+Body.HitNormal+"\t"+Body.HitFraction);
+   }
+   if(landing && endpoint)
+   {
+    goal=best;
+    FPrintln(log,TestPose.ToString()+"\t"+TestMode+"\t"+TestIteration+"\tGOAL_QUERY\t"+best+"\t"+current.Parent+"\t"+current.Position+"\t"+current.Lift+"\t"+current.Cost+"\t-1\ttrue\t"+LandingDiagnostic+"\t-1\t0 0 0\t-1");
+    break;
+   }
+   for(int angle=0;angle<360;angle+=10)
+   {
+    float radians=angle*Math.DEG2RAD;vector next=current.Position+Vector(Math.Cos(radians),0,Math.Sin(radians))*step;
+    float distance=vector.Distance(current.Position,next);float cost=current.Cost+distance;
+    if(distance<=0.0001 || cost>budget)continue;
+    float lift;ref array<vector> contacts={};GraphQueries++;
+    bool clear=PressureEscapeStepClear(next,lift,contacts);
+    FPrintln(log,TestPose.ToString()+"\t"+TestMode+"\t"+TestIteration+"\tEDGE_QUERY\t"+best+"\t"+current.Parent+"\t"+next+"\t"+lift+"\t"+cost+"\t"+angle+"\t"+clear+"\t"+PressureEscapeDiagnostic+"\t"+PressureEscapeRejectProbe+"\t"+PressureEscapeRejectNormal+"\t"+PressureEscapeRejectFraction);
+    if(!clear)continue;
+    string key=next.ToString()+"/"+lift.ToString()+"/"+contacts.Count();if(visited.Contains(key))continue;
+    if(nodes.Count()>=512){capped=true;continue;}
+    ref DGPreLandingNode child=new DGPreLandingNode;child.Position=next;child.Lift=lift;child.Parent=best;child.Cost=cost;child.Contacts.Copy(contacts);
+    visited.Insert(key,nodes.Count());nodes.Insert(child);
+   }
+  }
+  GraphGenerated=nodes.Count();GraphElapsed=GetGame().GetTickTime() - started;
+  if(goal>=0)
+  {
+   int cursor=goal;
+   while(cursor>0){GraphRoute.InsertAt(nodes[cursor].Position,0);cursor=nodes[cursor].Parent;}
+   MicroStatus="GRAPH_ROUTE_FOUND";GraphValid=GraphRoute.Count()>0;
+   if(!GraphValid)MicroStatus="GRAPH_ROOT_LANDING_QUERY_ONLY";
+  }
+  else
+  {
+   MicroStatus="GRAPH_SAMPLED_COMPONENT_EXHAUSTED";if(capped)MicroStatus="GRAPH_NODE_CAP";
+  }
+  FPrintln(log,TestPose.ToString()+"\t"+TestMode+"\t"+TestIteration+"\tRESULT\t"+GraphGenerated+"\t"+GraphExpanded+"\t"+origin+"\t"+originLift+"\t"+GraphElapsed+"\t"+GraphQueries+"\t"+GraphValid+"\t"+MicroStatus+"\t"+GraphRoute.Count()+"\t0 0 0\t-1");
+  CloseFile(log);Body.Agent.Position=origin;Body.Lift=originLift;Body.Contacts.Copy(originalContacts);LandingDiagnostic=savedLanding;Body.Reason=savedReason;Body.HitType=savedHit;Body.HitNormal=savedNormal;Body.HitPoint=savedPoint;Body.HitFraction=savedFraction;
+  return GraphValid;
+ }
  override bool PressureSlide(float dt)
  {
-  bool moved=super.PressureSlide(dt);
-  if(moved || TestMode!=1 || Phase!="FALL" || !PressureFallActive)return moved;
-  if(PressureEscapeRejectAt!=Now() || PressureEscapeLastStepReject!="NEW_WORLD_CONTACT")return false;
-  if(PressureEscapeRejectFixtureIndex<0 || PressureEscapeRejectNormal.Length()<0.5)return false;
-  vector displacement=PressureEscapeRejectEnd - PressureEscapeRejectStart;displacement[1]=0;
-  vector normal=PressureEscapeRejectNormal;normal[1]=0;
-  if(displacement.Length()<0.00001 || normal.Length()<0.2)return false;
-  normal=normal*(1.0/normal.Length());float inward=vector.Dot(displacement,normal);
-  if(inward>=-0.00000001){return false;}
-  vector tangent=displacement - normal*inward;tangent[1]=0;float length=tangent.Length();
-  if(length<0.00001){return false;}
-  tangent=tangent*(1.0/length);
-  vector start=Body.Agent.Position;array<float> sizes={0.03,0.01};array<float> biases={0,0.05,0.15};
-  foreach(float bias:biases)
-  {
-  foreach(float size:sizes)
-  {
-   float budget=Math.Min(SeparationDistanceBudget - SeparationEpisodeDistance,1.5 - TangentDistance);
-   float step=Math.Min(budget,Math.Min(size,Math.Max(dt,0)*0.6));if(step<=0.0001)return false;
-   vector direction=tangent+normal*bias;direction=direction*(1.0/direction.Length());
-   vector proposed=start+direction*step;float distance=vector.Distance(start,proposed);
-   if(distance<=0.0001 || distance>budget)continue;
-   float lift;ref array<vector> contacts={};TangentAttempts++;
-   bool accepted=PressureEscapeStepClear(proposed,lift,contacts);string diagnostic=PressureEscapeDiagnostic;
-   string path="$profile:prelanding17-tangent.tsv";bool exists=FileExist(path);FileHandle log=OpenFile(path,FileMode.APPEND);
-   if(!log){Print("DG_PRELAND17_FAILED tangent_log");return false;}
-   if(!exists)FPrintln(log,"pose\tmode\titeration\tstart\tproposal\tdirection\tnormal\tstep\taccepted\tdiagnostic\tfixture\tprobe\tbias\trejectNormal\trejectFraction");
-   FPrintln(log,TestPose.ToString()+"\t"+TestMode+"\t"+TestIteration+"\t"+start+"\t"+proposed+"\t"+direction+"\t"+normal+"\t"+distance+"\t"+accepted+"\t"+diagnostic+"\t"+PressureEscapeRejectFixtureIndex+"\t"+PressureEscapeRejectProbe+"\t"+bias+"\t"+PressureEscapeRejectNormal+"\t"+PressureEscapeRejectFraction);CloseFile(log);
-   if(!accepted)continue;
-   Body.Agent.Position=proposed;Body.Agent.Moved+=distance;Body.Agent.MeasuredSpeed=distance/Math.Max(dt,0.001);
-   Body.Lift=lift;Body.Contacts.Copy(contacts);SeparationEpisodeDistance+=distance;
-   TangentDistance+=distance;TangentSteps++;Body.PressureAirDistance+=distance;Body.PressureAirSteps++;
-   PressureEscapeValid=false;NextPressureEscapePlan=0;Body.Reason="TEST_PRELANDING_CONTACT_TANGENT";return true;
-  }
-  }
-  return false;
+  bool moved=false;
+  if(!GraphValid)moved=super.PressureSlide(dt);
+  if(moved)return true;
+  if(TestMode!=1 || Phase!="FALL" || !PressureFallActive)return false;
+  if(!GraphTried && !BuildMicroRoute(dt))return false;
+  if(!GraphValid || GraphNext>=GraphRoute.Count())return false;
+  vector start=Body.Agent.Position;vector next=GraphRoute[GraphNext];float travel=vector.Distance(start,next);
+  float budget=Math.Min(SeparationDistanceBudget - SeparationEpisodeDistance,1.5 - TangentDistance);
+  if(travel>Math.Min(budget,Math.Min(0.012,dt*0.6)) || travel<=0.0001)
+  {MicroStatus="GRAPH_ROUTE_STALE_OR_BOUND";GraphValid=false;return false;}
+  float lift;ref array<vector> contacts={};MicroQueries++;
+  bool clear=PressureEscapeStepClear(next,lift,contacts);
+  string path="$profile:prelanding17-graph-commit.tsv";bool exists=FileExist(path);FileHandle log=OpenFile(path,FileMode.APPEND);
+  if(!log){Print("DG_PRELAND17_FAILED graph_commit_log");return false;}
+  if(!exists)FPrintln(log,"pose\tmode\titeration\tindex\tstart\tproposal\tdistance\tbudget\taccepted\tdiagnostic");
+  FPrintln(log,TestPose.ToString()+"\t"+TestMode+"\t"+TestIteration+"\t"+GraphNext+"\t"+start+"\t"+next+"\t"+travel+"\t"+budget+"\t"+clear+"\t"+PressureEscapeDiagnostic);CloseFile(log);
+  if(!clear){MicroStatus="GRAPH_COMMIT_REJECTED";GraphValid=false;return false;}
+  Body.Agent.Position=next;Body.Lift=lift;Body.Contacts.Copy(contacts);Body.Agent.Moved+=travel;Body.Agent.MeasuredSpeed=travel/Math.Max(dt,0.001);
+  TangentDistance+=travel;TangentSteps++;SeparationEpisodeDistance+=travel;Body.PressureAirDistance+=travel;Body.PressureAirSteps++;
+  GraphNext++;PressureEscapeValid=false;NextPressureEscapePlan=0;MicroStatus="GRAPH_STEP_ACCEPTED";return true;
  }
 }
 이전 애니메이션 진단: [선정 근거](downloads/animation-review.txt). 이번 진단은 시각·성능 해결을 뜻하지 않는다.
