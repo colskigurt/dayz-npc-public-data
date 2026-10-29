@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T105329-previous-contacts-capture-20261029",
-  "generatedAt": "2026-10-29T10:53:29.923771+00:00",
+  "snapshotId": "snapshot-20261029T112003-captured-contact-replay-20261029",
+  "generatedAt": "2026-10-29T11:20:03.542549+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -63,9 +63,9 @@
     "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "NewD61D8 final8/8 high misses0;64 mixed foreground final64/64 high misses25;64 foreground final64/64 high misses27. Owner terminal violations0 but helper leases2/3 failed before later validated FOLLOW. Full acceptance incomplete.",
-    "visual": "Only initial8 scene and64 activation/loading observed. No new temporal visible-frame/video measurement. Callback NativeSeconds/wall ratio isnot graph phase orvisible speed.",
-    "performance": "Foreground64 mission p50/p95/p99=52/149/195ms,4626samples;20ms unmet. Mixed64 p95115ms has only163foregroundsamples. Concurrent workload anddifferent actualplayer displacement;no optimization claim.",
+    "functional": "Diagnostic only:4captured cases reproduced;bounded slide2/4passed twice. No live8/64candidate regression. Existing functional blockers remain.",
+    "visual": "No visible temporal measurement inthisheadlessfixed-inputexperiment;CPU/render temporal mismatch unresolved.",
+    "performance": "No performance measurement inthisexperiment;20ms p95remainsunmet target. Prior149ms isnot a candidate result.",
     "regressionChecks": 0
   },
   "metrics": [
@@ -10222,7 +10222,7 @@
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "High-stage misses25/27 remain. Footprint permission doesnot imply physical LAND;four actual joint0 rejections now linked. Repeated same-time queries still lack exact per-Fall-call attribution."
+      "description": "Two candidates rejected byNEW_WORLD_CONTACT. Need exact rejecting probe attribution andcontinuous recovery before livepromotion. High-stage misses25/27 remainfrom priorruns."
     },
     {
       "id": "matched-repeats",
@@ -10767,23 +10767,41 @@
       "uri": "/data/experiments/previous-contacts-capture-20261029.json",
       "sha256": "b6dd2492f2dcf5af65b078d98673308d6976f09e0ad7501b89a4bd28d19b1cf1",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "captured-contact-replay-20261029-report",
+      "uri": "/downloads/checkpoints/2026-10-29_201906_102348+0900_npc-captured-contact-replay.txt",
+      "sha256": "f71702e4cd5978024e0f41f048a268e8cb939724bcfbb9544fe89aa8d8454e47",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "captured-contact-replay-20261029-review",
+      "uri": "/downloads/checkpoints/public-review.txt",
+      "sha256": "520e7c46af42939c93ec4375e51e555bbcde7ac4c1c1b0a91ce2dca75f8abb64",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "captured-contact-replay-20261029-json",
+      "uri": "/data/experiments/captured-contact-replay-20261029.json",
+      "sha256": "d451105d03f511e0926bf729251148980230c0193dc9b36127aea822a2df27de",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T10:53:29.923771+00:00",
-    "staleAfter": "2026-10-30T10:53:29.923771+00:00",
+    "sourceUpdatedAt": "2026-10-29T11:20:03.542549+00:00",
+    "staleAfter": "2026-10-30T11:20:03.542549+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261029T105329-previous-contacts-capture-20261029",
-      "generatedAt": "2026-10-29T10:53:29.923771+00:00",
-      "sourceUpdatedAt": "2026-10-29T10:53:29.923771+00:00"
+      "snapshotId": "snapshot-20261029T112003-captured-contact-replay-20261029",
+      "generatedAt": "2026-10-29T11:20:03.542549+00:00",
+      "sourceUpdatedAt": "2026-10-29T11:20:03.542549+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-29T10:53:29.923771+00:00",
+      "at": "2026-10-29T11:20:03.542549+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -10798,7 +10816,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261029T105329-previous-contacts-capture-20261029/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261029T112003-captured-contact-replay-20261029/"
   },
   "experiments": [
     {
@@ -11747,6 +11765,30 @@
         "matched-repeats"
       ],
       "replication": "One8 andtwo64 runs onD61D;64 foreground conditions andactualstimulus differ. Not controlled repeated optimization acceptance."
+    },
+    {
+      "id": "captured-contact-replay-20261029",
+      "title": "실제 낙하 입력 재현과 접평면 후보: 2/4 부분 통과",
+      "track": "diagnostic",
+      "sourceRunId": [
+        "runtime-20261029-191331",
+        "runtime-20261029-193252"
+      ],
+      "buildId": [
+        "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [],
+      "evidenceReferences": [
+        "captured-contact-replay-20261029-report",
+        "captured-contact-replay-20261029-review",
+        "captured-contact-replay-20261029-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "Samefrozen candidate missionrun twice withidentical8baselinecontrolrows and4candidateoutcomerows. Not live8/64orperformance repetitions."
     }
   ],
   "kind": "status"
