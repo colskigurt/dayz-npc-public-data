@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T230525-actor50-footprint-diagnosis-20261030",
-  "generatedAt": "2026-10-29T23:05:25.414558+00:00",
+  "snapshotId": "snapshot-20261029T235301-contact-input-observer-20261030",
+  "generatedAt": "2026-10-29T23:53:01.532092+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -50,7 +50,9 @@
     "runtime-20261029-211146",
     "runtime-20261029-220337",
     "runtime-20261030-072332",
-    "runtime-20261030-073005"
+    "runtime-20261030-073005",
+    "runtime-20261030-083934",
+    "runtime-20261030-084554"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -66,15 +68,16 @@
     "47A7C366B29B96CB1F0D789BB36D6DB9459D2AC3D63E7E2EE1B5BEA63287DE32",
     "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
     "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
-    "453D6A9E688D7BF14C5B98C305DD5A45200EC52156949C10691839B43C58BC9A"
+    "453D6A9E688D7BF14C5B98C305DD5A45200EC52156949C10691839B43C58BC9A",
+    "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C"
   ],
   "verificationStatus": {
     "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "previous64_failed_static50_probe_reproduced_not_repaired",
-    "visual": "not_measured_this_static_batch",
-    "performance": "not_measured_previous64p95_68ms_unaccepted",
+    "functional": "observer8to64_diagnosed_not_repaired_or_final_accepted",
+    "visual": "not_measured_this_observer_batch",
+    "performance": "diagnostic_frame_quantiles_not_optimization",
     "regressionChecks": 0
   },
   "metrics": [
@@ -12057,38 +12060,638 @@
       },
       "repetitions": 1,
       "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "finalArrivals",
+      "sourceRunId": "runtime-20261030-083934",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 8,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.978
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "missingHighFollow",
+      "sourceRunId": "runtime-20261030-083934",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 0,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.978
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "fallsResumed",
+      "sourceRunId": "runtime-20261030-083934",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 9,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.978
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionArrived",
+      "sourceRunId": "runtime-20261030-083934",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.978
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionIntentChanged",
+      "sourceRunId": "runtime-20261030-083934",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.978
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "egressViolations",
+      "sourceRunId": "runtime-20261030-083934",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 0,
+      "unit": "violations",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.978
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "climbEndFailures",
+      "sourceRunId": "runtime-20261030-083934",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.978
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261030-083934",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 20.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.978
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261030-083934",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 21.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.978
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261030-083934",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 21.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.0,
+          104.978
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "finalArrivals",
+      "sourceRunId": "runtime-20261030-084554",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 63,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.06,
+          104.987
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "missingHighFollow",
+      "sourceRunId": "runtime-20261030-084554",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 2,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.06,
+          104.987
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "fallsResumed",
+      "sourceRunId": "runtime-20261030-084554",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 81,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.06,
+          104.987
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionArrived",
+      "sourceRunId": "runtime-20261030-084554",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 13,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.06,
+          104.987
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionIntentChanged",
+      "sourceRunId": "runtime-20261030-084554",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 1,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.06,
+          104.987
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "egressViolations",
+      "sourceRunId": "runtime-20261030-084554",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 0,
+      "unit": "violations",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.06,
+          104.987
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "climbEndFailures",
+      "sourceRunId": "runtime-20261030-084554",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.06,
+          104.987
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261030-084554",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 32.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.06,
+          104.987
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261030-084554",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 80.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.06,
+          104.987
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261030-084554",
+      "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
+      "value": 112.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.06,
+          104.987
+        ],
+        "contactInputObserver": true,
+        "diagnosticLogging": true,
+        "baselineComparison": false,
+        "visibleFramesMeasured": false,
+        "timingScope": "foreground mission delta;not PresentMon present latency",
+        "fpsLimit": 60
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
     }
   ],
   "blockers": [
     {
-      "id": "fall-12",
+      "id": "contact-replay",
       "status": "open",
-      "description": "Full same-call priorContacts4/raw4 missing for third fall;bounded observation/parity required."
+      "description": "Frozen same-call inputs captured; unresolved contact replay and minimal repair still required."
+    },
+    {
+      "id": "follow-60",
+      "status": "open",
+      "description": "Latest64 terminal63/64;actor60 remains FOLLOW supported-pose escape after EGRESS_STALL;earlier FALL snapshots do not prove terminal cause."
     },
     {
       "id": "climb-exit-50",
       "status": "open",
-      "description": "Fixed +/-0.23m probe normal0.505<0.65 rejection repeated;actual repair not verified."
-    },
-    {
-      "id": "endpoint-float-budget",
-      "status": "open",
-      "description": "Existing selector emits statically supported point but float32 actual20.047mm exceeds nominal20mm;no accepted movement trial."
+      "description": "Earlier fixed footprint normal rejection remains unrepaired even if not reproduced in this run."
     },
     {
       "id": "matched-repeats",
       "status": "unexecuted",
-      "description": "New repaired8/64 and repeated matched conditions still pending."
+      "description": "One live run per population; matched repaired OFF/ON repetitions still required."
     },
     {
       "id": "animation-visible",
       "status": "unmeasured",
-      "description": "No visible-time/CPU acceptance this static geometry batch."
+      "description": "No temporal visible-frame/CPU alignment acceptance."
     },
     {
       "id": "cost-attribution",
       "status": "unexecuted",
-      "description": "64contribution controls pending;20ms target not reached."
+      "description": "Separate 64-agent cost controls pending;20ms p95 remains target."
     }
   ],
   "evidenceReferences": [
@@ -12757,23 +13360,41 @@
       "uri": "/data/experiments/actor50-footprint-diagnosis-20261030.json",
       "sha256": "8544d42b25e5d182640bd9e3338603dc73d0ed2de646f256900a2a1478f95e82",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "contact-input-observer-20261030-report",
+      "uri": "/downloads/checkpoints/2026-10-30_085242_704829+0900_npc-contact-input-observer.txt",
+      "sha256": "c5324d7379ade0af6c3838deb733bf30a33eda1ab606ba83dce6ce7c77d698a0",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "contact-input-observer-20261030-review",
+      "uri": "/downloads/checkpoints/contact-input-review.txt",
+      "sha256": "54da302db4b1c4d9a894ddeedd06452fec6648012d614aed9cfefc9d92e2766f",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "contact-input-observer-20261030-json",
+      "uri": "/data/experiments/contact-input-observer-20261030.json",
+      "sha256": "06037a6c2828787919ddf7bb327c14a5902de18c2abc7addd5c0693772b423a5",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T23:05:25.414558+00:00",
-    "staleAfter": "2026-10-30T23:05:25.414558+00:00",
+    "sourceUpdatedAt": "2026-10-29T23:53:01.532092+00:00",
+    "staleAfter": "2026-10-30T23:53:01.532092+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261029T230525-actor50-footprint-diagnosis-20261030",
-      "generatedAt": "2026-10-29T23:05:25.414558+00:00",
-      "sourceUpdatedAt": "2026-10-29T23:05:25.414558+00:00"
+      "snapshotId": "snapshot-20261029T235301-contact-input-observer-20261030",
+      "generatedAt": "2026-10-29T23:53:01.532092+00:00",
+      "sourceUpdatedAt": "2026-10-29T23:53:01.532092+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-29T23:05:25.414558+00:00",
+      "at": "2026-10-29T23:53:01.532092+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -12788,7 +13409,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261029T230525-actor50-footprint-diagnosis-20261030/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261029T235301-contact-input-observer-20261030/"
   },
   "experiments": [
     {
@@ -13967,6 +14588,45 @@
         "cost-attribution"
       ],
       "replication": "Two independent17-case static repeats;two context variants once;not8/64 movement repetitions"
+    },
+    {
+      "id": "contact-input-observer-20261030",
+      "title": "접촉 입력 1191행 확보와 실제 8→64개체 잔여 정체",
+      "track": "diagnostic",
+      "sourceRunId": [
+        "runtime-20261030-083934",
+        "runtime-20261030-084554"
+      ],
+      "buildId": [
+        "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [
+        {
+          "count": 8,
+          "seconds": 300,
+          "repetitions": 1
+        },
+        {
+          "count": 64,
+          "seconds": 300,
+          "repetitions": 1
+        }
+      ],
+      "evidenceReferences": [
+        "contact-input-observer-20261030-report",
+        "contact-input-observer-20261030-review",
+        "contact-input-observer-20261030-json"
+      ],
+      "blockers": [
+        "contact-replay",
+        "follow-60",
+        "climb-exit-50",
+        "matched-repeats",
+        "animation-visible",
+        "cost-attribution"
+      ],
+      "replication": "Headless12-case parity twice;one300s live run per population;not causal performance repetition"
     }
   ],
   "kind": "status"

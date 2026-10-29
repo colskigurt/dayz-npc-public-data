@@ -1,59 +1,176 @@
-# 50번 고정 지지 검사 반복 재현 — 실제 이동 수정은 미검증
+# 접촉 입력 1191행 확보와 실제 8→64개체 잔여 정체
 
-50번 고정 지지 거부 반복 재현 — 배치 문맥과 제안 예산 분리
+동일 호출 접촉 입력: 관찰 패리티와 실제 8→64 수집
 
-작성: 2026-10-30T08:04:20.743931+09:00
+작성: 2026-10-30T08:52:42.704829+09:00
 
 1. 작업 목표
 
-64 ON에서 발생한50번 CLIMB_EXIT_VALIDATION을 지지 검사와 실제 배치/경로 문맥으로 분리하고,12번 낙하 재현에 필요한 입력의 누락을 확인한다. 정상 낙하·물리 검사·기존 실행 계층을 보존한다.
+기존 낙하·복구를 보존하면서 실패 호출의 raw4와 previousContacts4를 동시에 확보한다. 기존 64개체 미해결 낙하와 등반 종료 거부를 재현 가능한 입력으로 좁힌다.
 
 2. 실제 수행
 
-기존 기록에서12/50의 pressure pose·landing/previous-contact·state 자료를 확인했다.50번 실패 root를 같은 fixture의 LandingSpace에 넣는17조건을 독립 로컬 headless 서버 두 번에서 반복했다. 같은 Floor 바닥 레이의 hit/법선/높이 조건과 root 비변경을 함께 검사했다. 별도 두 문맥 시험에서 admission-only 복원과 실제 시작 배치를 반영한 복원을 구분했다. 네 서버 시험 모두 종료·엔진 검사 통과했고 활성 PBO는 바꾸지 않았다.
+기존 12개 통합 스크립트는 바이트 동일하게 유지하고 진단 스크립트 1개를 별도 서명 후보에 추가했다. OFF는 원본 super로 즉시 반환하며 ON은 원본 solver의 raw 생성 직후 기존 벡터를 복사한다. 새 본/물리 질의는 추가하지 않았다. 최종 12조건 OFF/ON 시험을 두 번 반복해 총24쌍의 반환값·접촉점·질의 카운터·위치·시계 일치를 확인했다. 비영 이동의 joint0 컨테이너 거부, 미완료 등반 우회, 기록 상한과 기본 OFF도 포함한다.
+
+초기 두 mission 문법 오류 및 그 종료 시 nativeCrash 기록을 보존했다. zero-length 초기 배치 시험은 joint0 sweep 검증으로 간주하지 않고 수정된 swept 두 반복만 최종24쌍에 산입했다. 첫 서명 실패도 보존했으며 최종 ASCII 정규 Windows 경로로 서명·검증했다.
 
 3. 측정 결과
 
-- 기본17조건×2회:34행 모두 반복 일치. 두 문맥 시험에서도17조건을 각각 재실행해 전체 지지 행은68개, 문맥 행은4개다.
-- 정확한 실패 root:FOOT_Z_SUPPORT 재현. +Z 레이는 hit=true지만 법선Y=0.505337<기준0.65. 높이 차이는0.0200195m로 높이 제한0.35m 때문이 아니다.
-- 안쪽5mm 정적 위치는 CLEAR. 바깥10mm도 CLEAR이므로 단순히 더 안쪽이면 항상 안전하다는 규칙이 아니다.
-- admission-only 복원은 목표 거리0.202858m로 기록0.0650423m와 불일치하여 실제 목표 복원으로 채택하지 않았다.
-- 실제 등반 시작 배치 복원:이전 root→목표 거리0.0650423m 일치. 실패 root→목표 거리0.01783245m로 기록0.0178332m와 약0.00000075m 차이. 기존 선택기가 정적 지지 가능한 제안점을 선택했다.
-- 제안의 요청 제한20mm에 대해 출력 좌표 거리20.04719mm, float32 재구성20.04689mm. 처음의20.01mm 허용 검사에 실패했다. 허용 한도를 늘리지 않고 후보 미수용으로 기록했다.
-- 새8/64 클라이언트 회귀·프레임 p50/p95/p99·연속 표시 품질·성능 기여도 측정 없음. 이전8/64 최종 결과8/8 및63/64,64 p95=68ms는 이번 새 측정이 아니다.
+| 개체수 | 최종 도착 | 낙하 후 추적 재개 | 등반 종료 실패 | mission p50/p95/p99 ms |
+|---|---|---|---|---|
+| 8 | 8/8 | 9 | 0 | 20.0/21.0/21.0 |
+| 64 | 63/64 | 81 | 0 | 32.0/80.0/112.0 |
+
+실제 접촉 입력 1191행을 확보했다. 각 규모는300초 한 번이며 대조군 반복이나 비용 기여도 시험이 아니다. 실제 표시 프레임·GPU 시간·엔진 그래프 내부 비용·GC는 이번 시험에서 미측정이다. IO를 포함한 진단 빌드의 mission 수치를 성능 개선으로 해석하지 않는다.
 
 4. 원인 분석
 
-확인된 사실:FOOT_Z_SUPPORT는 root 주변±0.23m 고정 지지점이며 애니메이션 발 본을 직접 검사하지 않는다. ray hit가 있어도 컨테이너 가장자리의 기울어진 표면 법선 때문에 거부될 수 있으며, 정적 재현 두 번에서 동일했다. 지지 함수를 설치 PBO 원문과 대조했다.
+확인된 사실: 전후 root/native time/update counter 불변과 입력 형태 검증을 통과했다. SWEEP 거부일 때만 hit 필드를 해석한다. 허용 행의 hit 값은 과거 값일 수 있다. 표본 제한 때문에 미기록 실패가 없다고 결론 내릴 수 없다.
 
-문맥 복원에서 최초 admission만 사용하면 실제 StartPlacement를 빠뜨린다. 잘못된 복원은 보존하고 실제 동작의 근거로 사용하지 않았다. 실제 시작 root와 지지 높이를 사용한 복원이 기록 거리와 일치하지만 cached StartPlacement의 최대5mm 차이와85ms 앞선 접촉 offset 표본 한계는 유지한다.
+이번64실행은63/64 최종 도착, HIGH_HOLD 미도달53·60번, 낙하 후 재개81건이다. EGRESS_STALL4건 중42·28·10번은 이후 도착했고60번은 미해결이다. 60번은최종 FOLLOW/IDLE, SUPPORTED_POSE_ESCAPE_TURN이며 이전12번의 미착지FALL과 다른 실패다. 이번 낙하 에피소드는 모두 착지·재개됐으므로 기존12번 실패가 재현됐다고 할 수 없다. 60번의초기FALL 입력은 확보됐지만 최종FOLLOW는 observer 자격 밖이므로 그 입력만으로 최종 정체 원인을 확정할 수 없다. CLIMB_EXIT_VALIDATION0건은 기존50번 수정 증거가 아니다.
 
-가설/후보:기존 끝점 접근 선택기를 이용해 기울어진 경계로 들어갈 제안을 피할 가능성이 있다. 그러나 아직 실제 Accept·이전 관절 접촉·시간 제한·군집 동작은 재현하지 않았다. 20mm 부동소수점 초과는 위치 정밀도 계산과 맞으며, 실제 이동 수용 전에 예산 검증이 필요하다. 지지 법선 기준을 낮추거나 순간 위치 보정으로 통과시키지 않는다.
+현재 종료·실패 결과:
+json
+[
+  {
+    "runId": "runtime-20261030-083934",
+    "unresolvedTerminalAgents": [],
+    "algorithmFailureEpisodeDetails": {}
+  },
+  {
+    "runId": "runtime-20261030-084554",
+    "unresolvedTerminalAgents": [
+      {
+        "id": "60",
+        "position": "<4511.504395, 339.171906, 10236.789063>",
+        "state": "IDLE",
+        "traversalPhase": "FOLLOW",
+        "reason": "SUPPORTED_POSE_ESCAPE_TURN",
+        "seenAge": "152.084",
+        "poseEpisodeAge": "208.648",
+        "poseEpisodeStatus": "ESCAPE_TURNED",
+        "pressureEscapeDiagnostic": "NONDEEPENING_CLEAR",
+        "pressureEscapeLastStepReject": "NEW_WORLD_CONTACT",
+        "pressureEscapeRejectProbe": "0",
+        "pressureEscapeRejectFixture": "StaticObj_Container_1C",
+        "pressureEscapeRejectBefore": "0.0519923",
+        "pressureEscapeRejectAfter": "0.0237489"
+      }
+    ],
+    "algorithmFailureEpisodeDetails": {
+      "EGRESS_STALL": [
+        {
+          "runId": "runtime-20261030-084554",
+          "entityId": 42,
+          "eventOrdinal": 1168,
+          "seconds": 90.72,
+          "previousState": "EGRESS",
+          "newState": "FOLLOW",
+          "transitionReason": "EGRESS_STALL",
+          "metadataEvent": false,
+          "recoveryGenerationDerived": 1,
+          "position": "<4515.711426, 339.241821, 10241.843750>",
+          "contactSampleAge": 0.055999999999997385,
+          "contactStatus": "PLAYER_CONTACT",
+          "contactPhase": "EGRESS",
+          "landingDiagnostic": "CLEAR",
+          "nativeSameCallSequence": "1345",
+          "nativeRecoveryGeneration": "1",
+          "nativeContactStatus": "",
+          "nativeMotionElapsedBeforeTransition": "0",
+          "terminalOutcome": "ARRIVED"
+        },
+        {
+          "runId": "runtime-20261030-084554",
+          "entityId": 60,
+          "eventOrdinal": 1171,
+          "seconds": 90.862,
+          "previousState": "EGRESS",
+          "newState": "FOLLOW",
+          "transitionReason": "EGRESS_STALL",
+          "metadataEvent": false,
+          "recoveryGenerationDerived": 1,
+          "position": "<4511.504395, 339.171906, 10236.789063>",
+          "contactSampleAge": 0.1979999999999933,
+          "contactStatus": "EGRESS_GROUND_HANDOFF_BLOCKED",
+          "contactPhase": "EGRESS",
+          "landingDiagnostic": "CLEAR",
+          "nativeSameCallSequence": "1347",
+          "nativeRecoveryGeneration": "1",
+          "nativeContactStatus": "StaticObj_Container_1C",
+          "nativeMotionElapsedBeforeTransition": "0",
+          "terminalOutcome": "UNRESOLVED:FOLLOW:SUPPORTED_POSE_ESCAPE_TURN"
+        },
+        {
+          "runId": "runtime-20261030-084554",
+          "entityId": 28,
+          "eventOrdinal": 1281,
+          "seconds": 100.746,
+          "previousState": "EGRESS",
+          "newState": "FOLLOW",
+          "transitionReason": "EGRESS_STALL",
+          "metadataEvent": false,
+          "recoveryGenerationDerived": 1,
+          "position": "<4515.450195, 339.239349, 10241.589844>",
+          "contactSampleAge": 0.15899999999999181,
+          "contactStatus": "",
+          "contactPhase": "EGRESS",
+          "landingDiagnostic": "CLEAR",
+          "nativeSameCallSequence": "1441",
+          "nativeRecoveryGeneration": "1",
+          "nativeContactStatus": "",
+          "nativeMotionElapsedBeforeTransition": "0",
+          "terminalOutcome": "ARRIVED"
+        },
+        {
+          "runId": "runtime-20261030-084554",
+          "entityId": 10,
+          "eventOrdinal": 1282,
+          "seconds": 102.838,
+          "previousState": "EGRESS",
+          "newState": "FOLLOW",
+          "transitionReason": "EGRESS_STALL",
+          "metadataEvent": false,
+          "recoveryGenerationDerived": 1,
+          "position": "<4515.503418, 339.241211, 10240.621094>",
+          "contactSampleAge": 0.14999999999999147,
+          "contactStatus": "",
+          "contactPhase": "EGRESS",
+          "landingDiagnostic": "CLEAR",
+          "nativeSameCallSequence": "1442",
+          "nativeRecoveryGeneration": "1",
+          "nativeContactStatus": "",
+          "nativeMotionElapsedBeforeTransition": "0",
+          "terminalOutcome": "ARRIVED"
+        }
+      ]
+    }
+  }
+]
 
-12번은 세 번째 낙하 시각107.15초 이후에 전체 네 관절 pose/이전 접촉을 같은 호출로 연결할 입력이 확보됐다고 볼 수 없다. pressure pose는107.358/107.977초 일부만 있고 landing observer는 세 번째 낙하에서0행이다. 이 부재를 분기 미호출의 증명으로 사용하지 않는다. 부족한 구간은 재사용 입력을 통한 제한적 관찰 계측이 필요하다.
+
+가설: 이전 허용 접촉점에서 현재 낙하 포즈로의 sweep이 컨테이너 측면과 충돌하는 동안 낙하 루트 수용이 막힐 수 있다. 정확한 동결 입력 재생으로 시작 겹침과 실제 벽 관통을 구분하기 전에는 지지·충돌 규칙을 완화하지 않는다. 애니메이션 시간 손실·표시 끊김 원인은 이번 계측만으로 특정하지 않았다.
 
 5. 검증 수준
 
-정적50 지지 거부:진단 성공·17조건 두 번 반복 검증 완료(이 범위만). 배치 문맥/제안 선택:정적 단회 진단 성공, 실제 이동 미검증·예산 검사 미수용.12번 근본 원인 미확정.기능 수정/새8→64 회귀/시각/성능/20ms 목표/전체 최종 수용 모두 미완료.
+진단 성공: 실제 입력 확보와 전후 불변 검사. 반복 검증 완료: 최종 headless24쌍의 관찰 OFF/ON 패리티에 한정. 회귀 수치는 위 실제 실행 단위이며 전체 목표 최종 수용은 아니다. 시각 품질과20ms p95 목표는 미수용.
 
 6. 변경 사항
 
-stage_horde_actor50_footprint_replay.py, stage_horde_actor50_endpoint_context.py, analyze_horde_actor50_footprint_replay.py를 추가했다. compile_days_gone_native_runtime_probe.ps1에는 이 네 격리 validation의 허용 이름과 결과 marker 검증만 추가했다. 게임 소스·애니메이션·PBO·운영 서버는 변경하지 않았다. 활성 D61D와 의존 모듈 서명 재검증 성공. 새 PBO 빌드/서명은 수행하지 않았다.
+새 observer 템플릿·staging/build/parity/live 도구·contact-input 분석기를 추가했다. 기존 compile/launcher는 명시 observer 옵션일 때만 별도 아카이브를 사용한다. 후보 PBO F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C는 서명·검증 성공, 개인 키 미포함. 작업용 PBO D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E는 변경하지 않았다. 이동·접촉 정책 수정은 없다.
 
 7. 원시 증거
 
-기준 sourceRunId runtime-20261030-073005의50번 sequence798,52.475초 직전 표본과52.56초 실패를 사용했다. 네 validation의 init.c·staged·engine-compile·profile TSV/log와 분석 JSON,원본 함수/PBO 해시를 연결한다. 첫 분석의 엄격한20.01mm 검사 실패와 잘못된 admission-only 복원을 보존했다. analysis-reviewed는 단위 필드 이름만 명확히 한 파생본이며 원래 analysis를 덮어쓰지 않았다. 공개 패킷은 선정 함수·표본만 포함한다.
+실행ID: runtime-20261030-083934, runtime-20261030-084554. 같은 activeReference,300초, 기존 entry-preparation ON과 명시 contact observer를 사용했다. source-proof, source-members-proof, parity-analysis, engine compile 기록, 원시 접촉 TSV, 상태 계약 및 파생 분석을 보존했다. 검토 패킷에는 선정 함수와 첫 최대8개 SWEEP 거부를 담았다. 표본과 전체 자료를 구분한다.
 
 8. 잔여 문제
 
-다음은12번을 포함한 FALL 거부 호출의 raw4/이전Contacts4·제안·caller dt·낙하 세대·velocity를 같은 호출로 기록하는 최소 관찰 계측이다. 기존 SolveContactsInternal이 이미 읽은 벡터를 재사용하고 새 물리/본 query를 추가하지 않는 방식부터 검토한다. OFF는 원래 경로 그대로,ON은 수용/거부 결과를 바꾸지 않는지 엔진 대조를 선행한다. 측정량과 기록 예산도 제한한다.
+다음은 미해결 낙하가 발생한 호출의 동결 입력을 원본 solver와 비교 재생하고, 루트 이전 접촉점·목표 포즈·충돌 법선을 분리하는 것이다. 재생되지 않으면 누락된 환경/시간 상태를 먼저 조사한다. 작은 입력에서 원인이 확인될 때만 최소 수정 후보를 만들고 같은 조건의8→64 및 순서 교차 반복으로 회귀한다. 정상 낙하/착지를 억제하거나 텔레포트로 도착을 보장하지 않는다. 애니메이션 표시 시간 실험과64개체 비용 기여도 실험은 별도 조건으로 유지한다.
 
-50번은 실제 시작 배치·접촉 offset·마지막 제안과 이전 접촉으로 기존 선택기의 수용까지 검증하고, float32 좌표에서 실제 step budget을 재확인해야 한다. 두 원인의 근거가 확보된 뒤 국소 수정과8→64 회귀를 진행한다. 단순5mm 이동을 보편 해법으로 넣거나 법선 기준을 완화하지 않는다. 애니메이션 시계/표시와64 비용 기여도는 별도 실험으로 유지한다.
-
-원본 보고서 ID: 2026-10-30_080420_743931+0900_npc-actor50-footprint-diagnosis.md
-원본 SHA-256: a06aca05b8a1447a72fbdb826781905da775bd11f121898a1df27c9521e0bcbe
+원본 보고서 ID: 2026-10-30_085242_704829+0900_npc-contact-input-observer.md
+원본 SHA-256: 872f3fa6419142212df106ad77d1aa15374c5b8ec81049e16d4701c9e0378f36
 이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
 
-선정 함수·대표 기록: [검토 패킷](../downloads/checkpoints/actor50-footprint-review.txt)
+선정 함수·대표 기록: [검토 패킷](../downloads/checkpoints/contact-input-review.txt)
 
 [이전 기능 분석](../downloads/admission-report.txt) · [이전 애니메이션 분석](../downloads/animation-report.txt)
