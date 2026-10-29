@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T122932-entry-stage-latency-20261029",
-  "generatedAt": "2026-10-29T12:29:32.042088+00:00",
+  "snapshotId": "snapshot-20261029T131208-entry-preparation-policy-20261029",
+  "generatedAt": "2026-10-29T13:12:08.753742+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -47,7 +47,8 @@
     "runtime-20261029-191331",
     "runtime-20261029-193252",
     "runtime-20261029-210454",
-    "runtime-20261029-211146"
+    "runtime-20261029-211146",
+    "runtime-20261029-220337"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -60,16 +61,17 @@
     "31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126",
     "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
     "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
-    "47A7C366B29B96CB1F0D789BB36D6DB9459D2AC3D63E7E2EE1B5BEA63287DE32"
+    "47A7C366B29B96CB1F0D789BB36D6DB9459D2AC3D63E7E2EE1B5BEA63287DE32",
+    "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1"
   ],
   "verificationStatus": {
     "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "8 partialscenario passed;64final64/64 andclimb-end0 buthigh-stage38missed. No movementfix deployed. Same-callentry/contactdiagnosis succeeded.",
-    "visual": "One8scene snapshot only. No64visualobservation ornewtemporalvisiblemeasurement. Nativewaitclock isnotvisibleclipphase.",
-    "performance": "8foregroundmission20/30/35ms.64allbackground:foregroundp50/p95/p99andcallbackratio unavailable,notzero. Nooptimizationclaim;20msp95targetunmet.",
-    "regressionChecks": 0
+    "functional": "Policy/geometrydiagnosissucceeded.Actual8OFFonly;ONand64notrun.Candidateeffectunproven.",
+    "visual": "Point-in-time8sceneonly.No temporalvisiblemeasurement orsmoothnessacceptance.",
+    "performance": "SingleOFFmissiondtwithsharedload.Noattributionoroptimizationclaim.20msp95remainsunmettarget.",
+    "regressionChecks": 34
   },
   "metrics": [
     {
@@ -11161,13 +11163,343 @@
       },
       "repetitions": 1,
       "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "finalArrivals",
+      "sourceRunId": "runtime-20261029-220337",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 8,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference preparationOFF;sharedload",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.026,
+          104.905
+        ],
+        "repetitions": 1,
+        "flag": "off",
+        "foregroundCadence": {
+          "true": 10373,
+          "false": 899
+        },
+        "otherAuthorizedAppsPreserved": true,
+        "resourceInterferenceObserved": true,
+        "temporalVisibleFramesMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "missingHighFollow",
+      "sourceRunId": "runtime-20261029-220337",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 0,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference preparationOFF;sharedload",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.026,
+          104.905
+        ],
+        "repetitions": 1,
+        "flag": "off",
+        "foregroundCadence": {
+          "true": 10373,
+          "false": 899
+        },
+        "otherAuthorizedAppsPreserved": true,
+        "resourceInterferenceObserved": true,
+        "temporalVisibleFramesMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "fallsResumed",
+      "sourceRunId": "runtime-20261029-220337",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 10,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference preparationOFF;sharedload",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.026,
+          104.905
+        ],
+        "repetitions": 1,
+        "flag": "off",
+        "foregroundCadence": {
+          "true": 10373,
+          "false": 899
+        },
+        "otherAuthorizedAppsPreserved": true,
+        "resourceInterferenceObserved": true,
+        "temporalVisibleFramesMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionArrived",
+      "sourceRunId": "runtime-20261029-220337",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference preparationOFF;sharedload",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.026,
+          104.905
+        ],
+        "repetitions": 1,
+        "flag": "off",
+        "foregroundCadence": {
+          "true": 10373,
+          "false": 899
+        },
+        "otherAuthorizedAppsPreserved": true,
+        "resourceInterferenceObserved": true,
+        "temporalVisibleFramesMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionIntentChanged",
+      "sourceRunId": "runtime-20261029-220337",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference preparationOFF;sharedload",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.026,
+          104.905
+        ],
+        "repetitions": 1,
+        "flag": "off",
+        "foregroundCadence": {
+          "true": 10373,
+          "false": 899
+        },
+        "otherAuthorizedAppsPreserved": true,
+        "resourceInterferenceObserved": true,
+        "temporalVisibleFramesMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "egressViolations",
+      "sourceRunId": "runtime-20261029-220337",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 0,
+      "unit": "violations",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference preparationOFF;sharedload",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.026,
+          104.905
+        ],
+        "repetitions": 1,
+        "flag": "off",
+        "foregroundCadence": {
+          "true": 10373,
+          "false": 899
+        },
+        "otherAuthorizedAppsPreserved": true,
+        "resourceInterferenceObserved": true,
+        "temporalVisibleFramesMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "climbEndFailures",
+      "sourceRunId": "runtime-20261029-220337",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference preparationOFF;sharedload",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.026,
+          104.905
+        ],
+        "repetitions": 1,
+        "flag": "off",
+        "foregroundCadence": {
+          "true": 10373,
+          "false": 899
+        },
+        "otherAuthorizedAppsPreserved": true,
+        "resourceInterferenceObserved": true,
+        "temporalVisibleFramesMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261029-220337",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 21.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference preparationOFF;sharedload",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.026,
+          104.905
+        ],
+        "repetitions": 1,
+        "flag": "off",
+        "foregroundCadence": {
+          "true": 10373,
+          "false": 899
+        },
+        "otherAuthorizedAppsPreserved": true,
+        "resourceInterferenceObserved": true,
+        "temporalVisibleFramesMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261029-220337",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 35.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference preparationOFF;sharedload",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.026,
+          104.905
+        ],
+        "repetitions": 1,
+        "flag": "off",
+        "foregroundCadence": {
+          "true": 10373,
+          "false": 899
+        },
+        "otherAuthorizedAppsPreserved": true,
+        "resourceInterferenceObserved": true,
+        "temporalVisibleFramesMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261029-220337",
+      "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+      "value": 48.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference preparationOFF;sharedload",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.026,
+          104.905
+        ],
+        "repetitions": 1,
+        "flag": "off",
+        "foregroundCadence": {
+          "true": 10373,
+          "false": 899
+        },
+        "otherAuthorizedAppsPreserved": true,
+        "resourceInterferenceObserved": true,
+        "temporalVisibleFramesMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
     }
   ],
   "blockers": [
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "FOLLOWentryoscillation andsame-callnormalreadinessloss observed. Needboundedpreparationcandidate andcontrolledforeground8/64regression;finalarrival doesnoterasehighstage38misses."
+      "description": "Needactual8OFF/ONand64controlledrepetitions.Highstagecoverageandcontractfailuresremainindependentcriteria."
     },
     {
       "id": "matched-repeats",
@@ -11766,23 +12098,41 @@
       "uri": "/data/experiments/entry-stage-latency-20261029.json",
       "sha256": "a976deece89e5c6b132640484f121bad16d08192848853b90bb71ebe0d86214f",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "entry-preparation-policy-20261029-report",
+      "uri": "/downloads/checkpoints/2026-10-29_221145_232625+0900_npc-entry-preparation-policy.txt",
+      "sha256": "2fd0cf84f11cf5db8e45f818129ee4abe93d07216e61dea08892a74857c13430",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "entry-preparation-policy-20261029-review",
+      "uri": "/downloads/checkpoints/2026-10-29_221145_232625+0900_npc-entry-preparation-policy_evidence.txt",
+      "sha256": "e3ba72b0e37ce81254ab21fa7895c8c351420e083aadb9d2b6a739397dd70c45",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "entry-preparation-policy-20261029-json",
+      "uri": "/data/experiments/entry-preparation-policy-20261029.json",
+      "sha256": "90349e867d7a3f72d9f816fbb1b147c3a4ed4195252108177f5c022d5ea555e9",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T12:29:32.042088+00:00",
-    "staleAfter": "2026-10-30T12:29:32.042088+00:00",
+    "sourceUpdatedAt": "2026-10-29T13:12:08.753742+00:00",
+    "staleAfter": "2026-10-30T13:12:08.753742+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261029T122932-entry-stage-latency-20261029",
-      "generatedAt": "2026-10-29T12:29:32.042088+00:00",
-      "sourceUpdatedAt": "2026-10-29T12:29:32.042088+00:00"
+      "snapshotId": "snapshot-20261029T131208-entry-preparation-policy-20261029",
+      "generatedAt": "2026-10-29T13:12:08.753742+00:00",
+      "sourceUpdatedAt": "2026-10-29T13:12:08.753742+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-29T12:29:32.042088+00:00",
+      "at": "2026-10-29T13:12:08.753742+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -11797,7 +12147,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261029T122932-entry-stage-latency-20261029/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261029T131208-entry-preparation-policy-20261029/"
   },
   "experiments": [
     {
@@ -12829,6 +13179,35 @@
         "matched-repeats"
       ],
       "replication": "One8foregroundandone64backgroundrun on47A7;notmatchedforegroundcandidate repetitions."
+    },
+    {
+      "id": "entry-preparation-policy-20261029",
+      "title": "등반 준비 접촉 후보: 정책·기하 통과, 실제8 OFF만 검증",
+      "track": "diagnostic",
+      "sourceRunId": [
+        "runtime-20261029-220337"
+      ],
+      "buildId": [
+        "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [
+        {
+          "count": 8,
+          "seconds": 300,
+          "repetitions": 1
+        }
+      ],
+      "evidenceReferences": [
+        "entry-preparation-policy-20261029-report",
+        "entry-preparation-policy-20261029-review",
+        "entry-preparation-policy-20261029-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "Oneenginepolicy/geometryproofandoneactual8OFF.Notcontrolledrepeatedcandidatecomparison."
     }
   ],
   "kind": "status"

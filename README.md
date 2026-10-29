@@ -1,3 +1,11 @@
+# 최신 작업: 등반 준비 접촉 후보: 정책·기하 통과, 실제8 OFF만 검증
+
+711C候補:26policy/8geometrypassed;actual8OFFonly;ON/64unrun;sharedload,novisual/performanceacceptance.
+
+[최신 보고서](reports/operations-latest.md) · [AI 검토](AI_REVIEW.md) · [JSON](api/public/status.json)
+
+이하 이전 공개 운영 안내는 이력이다.
+
 # 최신 작업: 진입 정렬·밀림 계측: 8/64 종료, 고지대·시각·성능 미수용
 
 같은콜백1192묶음.8최종8/8·64최종64/64이나고지대38미도달.실제65mm정렬교차2/70,yaw정렬교차0/19.64전경frame미측정·후보설계만·전체미수용.
