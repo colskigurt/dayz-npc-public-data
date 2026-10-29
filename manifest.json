@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T080442-post-touchdown-owner-runtime-20261029",
-  "generatedAt": "2026-10-29T08:04:42.247474+00:00",
-  "exportedAt": "2026-10-29T08:04:42.247474+00:00",
+  "snapshotId": "snapshot-20261029T083407-fixed-stimulus-cost-20261029",
+  "generatedAt": "2026-10-29T08:34:07.935072+00:00",
+  "exportedAt": "2026-10-29T08:34:07.935072+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -41,7 +41,9 @@
     "runtime-20261029-143221",
     "runtime-20261029-161948",
     "runtime-20261029-164705",
-    "runtime-20261029-165343"
+    "runtime-20261029-165343",
+    "runtime-20261029-171420",
+    "runtime-20261029-171916"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -55,8 +57,8 @@
     "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T08:04:42.247474+00:00",
-    "staleAfter": "2026-10-30T08:04:42.247474+00:00",
+    "sourceUpdatedAt": "2026-10-29T08:34:07.935072+00:00",
+    "staleAfter": "2026-10-30T08:34:07.935072+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -73,18 +75,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 61505,
-      "sha256": "6d7f92da797fcca09c27dc34cdda73b44d44379ffa2ed5a882cb98e8665ebb08"
+      "bytes": 46115,
+      "sha256": "41f0ff3058ed0f0e0c63cf413e705d000698585f4c22846442563d2080771cdb"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 355703,
-      "sha256": "aa9d59785f5078a103919e77c2f258423f93b2c6c673805b6b0b84a39e64eb91"
+      "bytes": 365121,
+      "sha256": "0f6d774590f1d6d99225ee35e032e207f65c31b26d3afd04e90fd784d9715d72"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 355699,
-      "sha256": "39f6b6fa9a07c6f2e38ea3f1ddc84a66bf9c8ecea541631e6afb858b4ef8d223"
+      "bytes": 365117,
+      "sha256": "178520a306879b995fef01be3932d971c3a0017316a294af819d9545b7257079"
     },
     {
       "path": "api/public/schema.json",
@@ -422,14 +424,29 @@
       "sha256": "4159273684de47217b19cdc678ca26c6f5189421224d1ac0379c8ffc5277c12e"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261029T083407-fixed-stimulus-cost-20261029/experiments.json",
+      "bytes": 365121,
+      "sha256": "0f6d774590f1d6d99225ee35e032e207f65c31b26d3afd04e90fd784d9715d72"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T083407-fixed-stimulus-cost-20261029/metrics.json",
+      "bytes": 365117,
+      "sha256": "178520a306879b995fef01be3932d971c3a0017316a294af819d9545b7257079"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T083407-fixed-stimulus-cost-20261029/status.json",
+      "bytes": 365116,
+      "sha256": "53f3bc818e1a8f8f474b237f9cad4530aa99da0fdea17eb3de6304b31575b73a"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 355698,
-      "sha256": "4159273684de47217b19cdc678ca26c6f5189421224d1ac0379c8ffc5277c12e"
+      "bytes": 365116,
+      "sha256": "53f3bc818e1a8f8f474b237f9cad4530aa99da0fdea17eb3de6304b31575b73a"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 741,
-      "sha256": "4334a4939046f063bd5c20e62ff17314d28f4fcdd00d8db87e0bb3601ad63d77"
+      "bytes": 723,
+      "sha256": "855981d3823fb5b41abf765cb19595737625094d3841bb4dbb2b90213cc92209"
     },
     {
       "path": "data/experiments/actor43-owner-runtime-20261029.json",
@@ -480,6 +497,11 @@
       "path": "data/experiments/escape-shadow-visible-20261028.json",
       "bytes": 141405,
       "sha256": "7c8186b3e3df971668b9e2a285064ff8b5e2ec712dcc6f6a5e013f795307c50a"
+    },
+    {
+      "path": "data/experiments/fixed-stimulus-cost-20261029.json",
+      "bytes": 72336,
+      "sha256": "1d58889abe7f28bf70c91e478ce2c86a1f95a073db174b5602d3107f5790cc9b"
     },
     {
       "path": "data/experiments/frame-order-20261028.json",
@@ -792,9 +814,19 @@
       "sha256": "1629ce8a67deedc66f2107eae14ba5b2c26829913c790f6dfcac5ba9ee88cafa"
     },
     {
+      "path": "downloads/checkpoints/2026-10-29_173258_249618+0900_npc-fixed-stimulus-cost.txt",
+      "bytes": 9593,
+      "sha256": "3f494ee522c453d5334c04d69751b920a3d8be5725a006c5532bafb85524e260"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-29_173258_249618+0900_npc-fixed-stimulus-cost_evidence.txt",
+      "bytes": 45859,
+      "sha256": "9f9c0bb82b28699330b16fbeee37d6e2f8b60ae42eb997bcfc5ab64bd15b7a24"
+    },
+    {
       "path": "README.md",
-      "bytes": 12118,
-      "sha256": "0e667698ef298f2e85a27f7188c7183f5a35946ce69fbfea8bd54d03f89ee3be"
+      "bytes": 12524,
+      "sha256": "69912521845878f852ff95a4b4065b938cf2c64570e378570b849590c1e7736f"
     },
     {
       "path": "reports/accessibility-20261028.md",
@@ -870,6 +902,16 @@
       "path": "reports/history/pre-escape-shadow-visible-20261028-operations-latest.md",
       "bytes": 7756,
       "sha256": "e3d37a1b0120285914f58ea84be5c49270efc07028340ff9c0c0263db1a9f0a1"
+    },
+    {
+      "path": "reports/history/pre-fixed-stimulus-cost-20261029-latest.md",
+      "bytes": 10528,
+      "sha256": "61cd5d97547279da74a76fec24f1f27aa62759e020a16e07dce0a68d8f459958"
+    },
+    {
+      "path": "reports/history/pre-fixed-stimulus-cost-20261029-operations-latest.md",
+      "bytes": 10528,
+      "sha256": "61cd5d97547279da74a76fec24f1f27aa62759e020a16e07dce0a68d8f459958"
     },
     {
       "path": "reports/history/pre-frame-order-20261028-latest.md",
@@ -1023,8 +1065,8 @@
     },
     {
       "path": "reports/latest.md",
-      "bytes": 10528,
-      "sha256": "61cd5d97547279da74a76fec24f1f27aa62759e020a16e07dce0a68d8f459958"
+      "bytes": 9941,
+      "sha256": "f36f8a2b2b5ff736fb51f8a0d0ee32aa3a65de5c26b5f01063e7e5e21b60315a"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -1033,8 +1075,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 10528,
-      "sha256": "61cd5d97547279da74a76fec24f1f27aa62759e020a16e07dce0a68d8f459958"
+      "bytes": 9941,
+      "sha256": "f36f8a2b2b5ff736fb51f8a0d0ee32aa3a65de5c26b5f01063e7e5e21b60315a"
     }
   ]
 }

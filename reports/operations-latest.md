@@ -1,74 +1,94 @@
-# 착지 복구 실제 8→64 회귀 — 최종64 도착·고지대28 미도달·p95 181ms
+# 64명 비용 분리 — FOLLOW·접촉 집중,착지 전 정체17번 확인
 
-착지 복구 소유권 구현 — 접선 길이 수정과 실제8→64 회귀
+64명 비용 분리 — FOLLOW·접촉 집중,착지 전 정체17번 확인
 
-작성: 2026-10-29T17:02:40.587456+09:00
+작성: 2026-10-29T17:32:58.249618+09:00
 
 1. 작업 목표
 
-앞선 동결 포즈 후보를 실제 패키지의 착지·정착·이탈·FOLLOW 전환에 연결한다. 안전 root로 이탈 목표를 옮기고 최종 full endpoint를 재검사한다. 기존 정상 낙하·재등반과 기본 OFF 경로를 보존하고 실제8→64 회귀를 계측한다. 애니메이션 시간 변경이나 추측 최적화를 하지 않는다.
+직전64명 p95 181ms·고지대 미도달28명의 상황에서 누락됐던 전체 이동·상태별·접촉 소비·frame-fall 비용을 측정한다. 본 조회가 큰 병목이라는 추정을 먼저 검증한다. 플레이어 실이동 거리 차이를 줄인 별도 비용 실험을 만들고 기존300초 기능 기준은 보존한다. 새 보간·배속·최적화는 적용하지 않는다.
 
 2. 실제 수행
 
-새 opt-in post-touchdown-owner.flag AND footprint-recovery.flag를 추가했다. 실제 FALL→LAND,ground,sustained fall request8 및 실제 native request8일 때만 검사한다. 물리 착지는 원래 Fall/Accept가 허용하고 안전 endpoint가 아니면 landing pose permission만 보류한다. 기존 PressureSlide/SupportedEscapeTurn과 현재 sim시각의 등록 world contact normal 접선 제안을 사용한다. Floor·같은 area·높이차0.08m·원래 swept peer/world/non-deepening gates를 유지하고6초·1.5m·번역 진행 없음5초를 제한한다.
+기존 F6DE 빌드의 opt-in DriveAttribution과 RuntimeTimingProbe를 사용했다. 새 미션은 기존 자연 입력 클래스만 가역 변환했다. 플레이어의 지붕 배치는 유지하고135초에 지면4563/10243,160초에4563/10283으로 배치하며 이동 입력은0이다. NPC 위치·지식·상태·경로·성공 카운터는 쓰지 않았다. 고정 카메라와 동일 상세 계측으로64명·180초 OFF→ON 순서,각1회 실행했다. 두 실행의 설정·미션·PBO·그래픽·control cfg·clip manifest가 같고 profile flag 차이는 post-touchdown-owner.flag 하나임을 검사했다.
 
-안전 endpoint에서 실제 EgressGoal을 새 root로 바꾸고 경유점/경로를 갱신한다. LAND·EGRESS 동안 별도 소유권을 유지하고 CompleteEgress에서 전체 검사를 다시 한다. 실패한 helper lease는 성공으로 기록하지 않으며 기존 이탈 복구와 제한을 사용한다. 사망 대기·재낙하 취소를 검사했다. 기본 정책은 OFF다.
-
-첫9DCB 빌드는 서명됐지만 modded 계층 순서상 부모가 뒤쪽 PTActive/CTPolicy를 참조해 엔진 컴파일에 실패했다. 부모의 ECNeedsGroundHandoff 계약과 후속 override로 바꾸고 자체 recovery generation을 기록했다. 테스트 미션의 숫자 뺄셈 구문 오류도 별도 미션에서 수정했다. 과거 실패 기록은 보존했다.
-
-3F6D/5137 패키지 진단은 접선 Normalize 뒤 실제 길이가 약0.02905로 남아3cm 요청이 약1mm 제안이 되고100번 중 상당수가 제자리였음을 기록했다. 앞선 프로토타입은 뒤에서 direction을 다시 정규화했다. 명시적으로 길이로 나누는 단위 방향과 실제 이동0 거부를 넣은 F6DE 후보를 동일 입력으로2회 재실행했다. 정확한 컴파일러 내부 원인은 아직 별도 최소 재현이 없으며 측정된 길이 오류와 수정 후 값만 확정한다.
-
-그 뒤 동일 빌드·같은 기존 옵션에서8명300초,64명300초 실제 클라이언트를 순서대로 실행하고 정상 종료 후 기존 상태·재접근·이탈·착지·clock 분석기와 새 owner journal 분석기를 사용했다. 새 parser는 journal의 VALIDATED_FOLLOW 문구만으로 성공을 세지 않고 동일 개체·시각·좌표·recovery generation의 실제 EGRESS→FOLLOW와 연결한다.
+기존8/64명300초 기록의 누적 타이머도 같은 프로세스 TickCount와 실제 foreground 시간으로 보정해 재분석했다. 공통 타이머는 actor0에서1회,개체별 합계는 각 개체에서1회만 집계했다. clock의 unsigned32 wrap·중복 개체 공통값·역순/배경 거부에 대한 기존3개 검사가 통과했다. 새 callback 분석은512개 part의 per-body 합계를 다시 합산하며 Mission 타이머는 한 번만 센다. 중첩 elapsed를 CPU self-time으로 바꾸거나 합산하지 않았다.
 
 3. 측정 결과
 
-동결4joint·수동 native clock·합성 land duration1초·ground Walk stub 조건의2회 반복에서12case 계약 검사를 통과했다. 핵심 case는 두 번 모두1.84998초에1.08909m 이동 후 안전 endpoint를 확보하고4.0초에FOLLOW로 인계했다. 접선2회의 측정 길이는1이었다. 안전 ground OFF/ON은 원래 착지 경로를 유지했고 사망 대기/재낙하는 owner를 취소했다. 시간·거리·무이동 제한3종은 unsafe endpoint를 성공으로 만들지 않았다. 단,짧은 낙하 case는 물리 착지를 못한 음성 대조이고 동적 무효화 case는 LAND에서 CompleteEgress를 직접 호출한 검사라 범위가 제한된다.
+두 실행에서 지정 지면 세 구간의 XZ 오차는 모두0m,이동 입력0이었다. 실제 player 자극은 일치했지만 NPC 경로·상태 분포·호출량은 달랐다. 이 차이를 숨기지 않는다.
 
-|실제 개체수|최종 도착|고지대 미도달|등반 종료 실패|낙하 후 복귀 에피소드|미션 p50/p95/p99 ms|새 owner 결과|
-|---|---|---|---|---|---|---|---|
-|8|8/8|0|0|9|20.0/30.0/34.0|{"VALIDATED_FOLLOW": 6}|
-|64|64/64|28|0|52|44.0/181.0/228.0|{"VALIDATED_FOLLOW": 34}|
+|180초 비용 진단|OFF|ON|
+|---|---:|---:|
+|미션 p50/p95/p99 ms|97/219/267|106/241/300|
+|180초 표본 도착|19/64|13/64|
+|고지대 미도달|33|38|
+|낙하 후 복귀 에피소드|40|47|
+|기록된 등반 종료 실패|0|0|
+|CPU callback clock / 실제 시간|0.429157|0.389960|
 
-64명 고지대 미도달 IDs: [0, 4, 9, 11, 12, 16, 17, 19, 20, 23, 24, 31, 35, 36, 37, 39, 47, 51, 52, 53, 54, 55, 58, 59, 60, 61, 62, 63]. 새 owner helper 실패: {}. 새 owner 분석 위반/미종료: []. 전체 failure-label은 선정 JSON에 원문 집계하고 정상 support-loss/낙하와 terminal failure를 동일시하지 않는다.
+p95 관측 차이는 ON-OFF=22ms(10.05%)다. 순차1회·다른 NPC 궤적·외부 사용자 앱·상세 계측 조건이므로 인과적인 회귀/개선율이나 재현된 최적화로 판정하지 않는다. 실제 timestamp gap의 OFF p99는269ms,ON은307ms였다. 공급 dt는300ms 근처에서 잘리므로 ON의300ms를 실제 전체 gap 상한으로 보지 않는다.
 
-실제 live8/64의 접선 fallback은 각각0회였다. 따라서 명시적 단위 접선의 live 효과가 아니라 pose permission/목표 전달/기존 supported escape의 실제 인계를 확인한 것이다. 접선2회는 동결 재현에서만 검증됐다.
+아래 표는 고지대 구간의 측정 범위별 wall초당 경과 ms다. 부모/자식과 다른 호출자가 중첩된다. 열을 더해 전체 CPU나 renderer 잔여 시간을 계산하면 안 된다.
 
-플레이어 지면 EAST/NORTH 실제 순변위는 이전8명40.05/40.19m,이전64명39.91/18.72m,현재8명40.13/40.28m,현재64명4.09/13.06m였다. 입력 code2와 단계 시간은 같지만 실제 궤적이 다르므로64/64를 같은 장거리 자극에서63/64보다 개선됐다고 결론내리지 않는다. 군집에 의한 이동 방해는 추정이며 player contact-force는 미계측이다. 후속 비교는 실제 player trajectory를 통제/검증해야 한다.
+|측정 범위|OFF ms/s|ON ms/s|
+|---|---:|---:|
+|전체 Body.Drive|559.396|562.676|
+|그 안의 Traversal.Drive|420.594|417.332|
+|그 안의 Contact consumption|129.557|136.289|
+|별도 활성 frame-fall|2.603|19.308|
+|Traversal의 FOLLOW|400.880|398.107|
+|접촉 전체 SolveContacts|198.066|206.287|
+|접촉 안의 발 지지|113.532|119.570|
+|접촉 안의 본 조회|6.031|5.696|
+|접촉 안의 world 검사|69.162|72.511|
+|native 경로 query 범위|4.099|3.637|
+|인식 범위|66.367|62.346|
+|legacy trace 기록|93.691|92.883|
+|Mission.OnUpdate|214.745|224.710|
+|script PrePhys|565.297|568.554|
+|script PreAnim|8.039|7.525|
 
-현재64명 고지대 미도달28개체의 표본 phase 합계는 {'FOLLOW': 2841, 'MOTION': 64, 'FALL': 22, 'LAND': 82, 'EGRESS': 4, 'SETTLE': 11}이다. 이는 표본 수이고 물리 원인/시간 합계가 아니다. 선정 actor timeline과 전체 reason 집계는 별도 증거로 보존한다. 일부는 입구 정렬/시작이 늦었고 최종 인계 실패0과는 다른 문제다.
+FOLLOW 호출은 전 개체 합계365.90/347.27회/초였고 평균1.096/1.146ms/호출이었다. 고지대 Mission.OnUpdate는6.339/6.023회/초였다. 이는 실제 AI 인식 함수의 호출 빈도가 아니다. combined handler/preAnim/prePhys/postPhys 호출은12982.8/12335.1회/초이며 per-type 빈도로 분해할 카운터는 없다.
 
-위 미션 시간은 해당 실행의 foreground callback delta이며 GPU Present/애니메이션 표시 FPS가 아니다. 각 규모 한 실행이고 다른 사용자 앱을 종료하지 않았으며 계측 I/O가 있다. 과거83E94 결과와 이번 F6DE는 동일 시점의 flag-OFF/ON 교차 반복이 아니므로 인과적 성능 개선율을 계산하지 않는다.20ms p95 목표와64 비용 귀속은 미달성/미확정이다.
+PreAnim 종료→PrePhys 시작의 평균 envelope는50.57/52.16ms였다. native 작업과 스케줄 대기가 포함되고 많은 개체의 구간이 서로 겹치므로 native graph self-time이 아니다. 실제 graph 평가·renderer upload·GPU 프레임·할당/GC self-time은 현재 계측에 없다. GPU 전역 메모리 표본은 약8/16GB였지만 다른 앱이 포함되며 ON 표본은 종료 근처/이후라 위상 비교 자료로 쓰지 않는다.
+
+별도 상태 진단: ON의17번은72.937~179.604초 FALL이었고101.2~179.604초 위치가5mm 범위였다. FOOT_X_SUPPORT 표본194회,현재 LANDING_SPACE_BLOCKED/NO_VALID_LOCAL_EXIT였다. 이는 성공한 착지 후 owner24회와 별개인 착지 전 정체다. 180초 끝의 상태는OFF FOLLOW64명,ON FOLLOW63명+FALL1명이었다. 나머지 미도착을 전부 정체로 분류하지 않는다.
+
+새8명 시험과 새로운300초 자연 입력 회귀는 없다. 이전8명8/8·고지대0,64명64/64·고지대28·p95 181ms라는 기록은 그대로 보존하며 이번 비용 자극의19/13 도착으로 덮어쓰지 않는다. 이번 두 비용 진단도 전체 기능 수용 기준을 통과한 것은 아니다.
 
 4. 원인 분석
 
-관찰 사실: 실제 패키지에 옮긴 첫 접선 방향은 단위 벡터가 아니어서 작은 제안과 제자리 반복을 만들었다. 명시적 정규화 뒤 같은 입력의2회 결과가 일치했다. 안전 root를 이탈 목표로 넘긴 actual8 시험의6개 owner episode는 모두 실제 FOLLOW 전환과 연결됐다.64 결과는 위 수치와 journal로 별도 판단한다.
+관찰 사실: 복구 OFF에서도 고지대 Body.Drive 약559ms/s,FOLLOW 약401ms/s가 남았다. ON도 각각563/398ms/s였다. 착지 대기만이 무거운 비용의 필요조건이라는 설명은 맞지 않는다. contact의 발 지지 범위113.5/119.6ms/s는 본 조회6.0/5.7ms/s보다 컸다. native nav query 범위는4.1/3.6ms/s였으나 이것이 전체 경로·접근 비용은 아니다. PrePhys script 범위에 실제 gameplay Drive가 중첩된다는 소스 관계와 측정 크기도 맞았다.
 
-추정: 물리 착지 이후 pose 전환 시점과 이전 unsafe EgressGoal의 잔류가 기존20번 정체를 만드는 요인이었다. 이 국소 해결을 전체 군집/모든 접촉 포즈의 완성으로 확대하지 않는다. compact conditional/Normalize 문장의 처리 원인과 전체 native renderer 시간 문제는 미확정이다.
+추정: FOLLOW 내부의 지면 실행·입구 정렬·반복 접촉/지지 검사가 다음 비용 분해 우선순위다. 실제 인과적 최적화 효과는 미측정이다. 17번은 착지 footprint 거부 이후 중력 진행 전에 반환하는 경로와 관계있을 수 있지만 실제 같은 입력의 분기 재현 전까지 원인을 확정하지 않는다.
 
-반증/제외: 서명·패키징 성공만으로 엔진 컴파일이나 기능 성공을 주장할 수 없다. 첫 packaged 후보는 frozen escape를 재현하지 못했다. CPU clock/본 변경은 실제 표시 품질 증거가 아니다. 이번에는 그래프 속도·보간·업데이트 정책을 바꾸지 않았다.
+반증/제외: CPU 본 조회만 줄이면 대부분 해결된다는 근거는 없다. 부모/자식 scope 합산,그래프 gap 합계의 CPU 해석,한 쌍의 p95 차이로 회귀 확정,일치하는 player target을 일치하는 NPC replay로 해석하는 것은 제외한다. GPU/renderer를 미측정 잔여 시간의 원인으로 지정하지 않는다.
 
 5. 검증 수준
 
-진단 성공: 계층 참조 오류·접선 길이/좌표 차이와 explicit normalization 후2회 동결 상태 계약 재현. 실제8 회귀 통과는8/8·고지대0·등반 종료0·owner6/6 범위이다.64의 개별 수용 항목은 위 값으로 구분하며 한 번의 실행으로 반복 검증 완료나 최종 수용을 선언하지 않는다. 시각 품질·성능·전체 목표는 모두 미수용이다. live combat 활성→해제 후 final guard와 실제 EGRESS 중 endpoint 변경은 미검증이다.
+진단 성공: source 가역 변환·실제 target/config 일치·전체 이동/상태/callback scope·clock3개 검사·정상 종료 및 개체별 정합성 검사. 각 조건1회라 반복 검증 완료/최적화 성공/시각 품질 수용/20ms p95/최종 수용은 아니다. owner ON의24회 안전 인계 journal은 실제 EGRESS→FOLLOW와 연결됐으나17번의 착지 전 정체는 미해결이다. 기존 자연 입력 기능 실패를 비용 실험으로 지우지 않는다.
 
 6. 변경 사항
 
-subset_post_touchdown.c를 추가하고 subset_motion_contracts.c의 ground helper 판정을 확장 가능한 메서드로 연결했다. builder는9개 스크립트를 패킹하고 source와 PBO 멤버가 모두 바이트 동일함을 확인했다. compiler/launcher에 별도 validation과 opt-in provenance를 추가했다. 후보 F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8은 자동 서명과 DSCheckSignatures 검증을 통과했다. base453D·render0C6E는 변경하지 않았고 실제 실행 전에3개 모드 서명을 모두 검증했다. 개인 키는 배포물에 없으며 실패/중간 빌드도 별도 해시 archive로 보존했다.
+stage_horde_fixed_stimulus_cost.py는 별도 미션의 player 자극만 바꾼다. launcher에 FixedStimulusCost selector/provenance와 기존 RuntimeTimingProbe 활성화를 추가했다. compiler에 새 validation을 허용했다. 새 callback/고정 자극 비교 분석기와17번 파생 증거를 추가했다. NPC/PBO·native graph·애니메이션/보간·충돌/착지 gate·운영 서버는 변경하지 않았다.
+
+F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8은 그대로다. 이번에는 재빌드/재서명하지 않았으며 새 엔진 컴파일과 두 실행 전에 기존 base453D/render0C6E/integrationF6DE의 서명 검증을 성공했다. 개인 키는 배포하지 않았다. 두180초 실행 모두 정상 종료했고 raw/이전 보고서를 덮어쓰지 않았다.
 
 7. 원시 증거
 
-새 validation별 engine-compile/staged/init,실패 및 반복 compile profile의 원문 로그/TSV,실제 실행2개의 launch·native-ground·state transitions·landing/backoff·post-touchdown journal·파생 분석·빌드/source/signature inventory를 저장 전 해시 검사한다. 시각 관측은8명 HIGH_HOLD의 가림 없는 한 화면과64의 별도 표본 설명 수준이며 연속 애니메이션 품질 측정은 아니다. 공개 패킷은 집계·첫4개 owner episode와 자체 candidate 함수 원문을 싣고 원시 전체 로그·로컬 경로·프로세스 정보·게임 자산은 공개하지 않는다.
+runtime-20261029-171420 OFF와171916 ON의 native-drive-cost,ground,pose-cadence,player/state/landing/backoff TSV와 launch/config/compile/분석을 연결했다. 이전164705/165343 기록의 post-hoc legacy scopes와 입력 해시도 연결한다. fixed-pair-analysis.json,fall17-diagnosis.json,source coverage,staged source manifest,clock 검사 결과,관측/전역GPU 표본의 한계를 보존한다. 공개 패킷은 고지대 집계·실제 player target·17번 선정 표본·분석 함수만 제공하며 내부 전체 로그·로컬 경로·프로세스 정보·게임 자산은 공개하지 않는다.
 
 8. 잔여 문제
 
-최신64의 고지대28개체 미도달과181ms p95를 상세 기록과 대조한다. 동일 입력에도 물리 player 경로가 달랐으므로 실제 경로를 통제한 후속 시험이 필요하다. 같은 빌드의 flag-OFF/ON 순서 교차 반복으로 접촉/등반 회귀를 확인해야 한다. active combat이 helper뿐 아니라 final guard도 취소하는 현재 동작은 재개 시 unsafe FOLLOW 위험이 있어 별도 소유권 분리와 회귀가 필요하다. 사망 대기 취소 통과를 active combat 재개 통과로 확대하지 않는다. 실제 EGRESS 무효화와 실제 짧은 낙하도 보완한다.
+우선17번의 마지막 실제 touchdown 질의/4joint pose를 재현해 물리 착지 전 반환·압력 탈출·기하학적 support가 어떻게 연결되는지 확인한다. 실제 world/peer/fixture non-deepening gate를 완화하거나 root를 강제로 내려서 성공시키지 않는다. FOLLOW는 지면 실행·입구 정렬·surface approach·contact·nav call을 세분화하고 실제 AI 호출 빈도/계측 오버헤드를 확보한다. 동일한 실제 player 자극에서 순서 교차 반복 후에만 후보 최적화를 평가한다.
 
-애니메이션은 이전 단일 영상/CPU 시간 분리 진단을 유지한다. 달리기·등반 clip의 동일 HUD/CPU 관절·호출/실제 영상 exact frame join을 수집해야 한다.64 성능은 별도 controlled matrix·단계별 비용/빈도·할당/GC와 측정 불가 항목을 구분해 귀속한다. 원인 특정 전 새 보간·배속을 도입하지 않는다. 운영 서버와 원시 기록은 보존하고 골은 계속 활성 상태다.
+애니메이션은 달리기/등반의 정확한 HUD/CPU/영상 frame join을 별도 진행한다. graph/upload/GPU/allocation/GC self-time을 얻을 도구/계측은 아직 미실행이며 미측정을 성공으로 보고하지 않는다. 원인 전 새 보간/배속은 도입하지 않는다. active combat 후 final guard 소유권과 실제 EGRESS 무효화도 이전 미검증 항목으로 유지한다. 목표는 그대로이며 골은 활성 상태다.
 
-원본 보고서 ID: 2026-10-29_170240_587456+0900_npc-post-touchdown-owner-runtime.md
-원본 SHA-256: 0e63fb3620200f40209daee9871f6f3aa3d1ca257ecff9e11c04892b218c8d0c
+원본 보고서 ID: 2026-10-29_173258_249618+0900_npc-fixed-stimulus-cost.md
+원본 SHA-256: 97b0665e23a6311e6073be9a105875c88314de72b2f29940691a3ff673280d1a
 이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
 
-선정 함수·대표 기록: [검토 패킷](../downloads/checkpoints/2026-10-29_170240_587456+0900_npc-post-touchdown-owner-runtime_evidence.txt)
+선정 함수·대표 기록: [검토 패킷](../downloads/checkpoints/2026-10-29_173258_249618+0900_npc-fixed-stimulus-cost_evidence.txt)
 
 [이전 기능 분석](../downloads/admission-report.txt) · [이전 애니메이션 분석](../downloads/animation-report.txt)

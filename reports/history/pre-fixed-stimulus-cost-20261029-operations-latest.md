@@ -1,0 +1,74 @@
+# 착지 복구 실제 8→64 회귀 — 최종64 도착·고지대28 미도달·p95 181ms
+
+착지 복구 소유권 구현 — 접선 길이 수정과 실제8→64 회귀
+
+작성: 2026-10-29T17:02:40.587456+09:00
+
+1. 작업 목표
+
+앞선 동결 포즈 후보를 실제 패키지의 착지·정착·이탈·FOLLOW 전환에 연결한다. 안전 root로 이탈 목표를 옮기고 최종 full endpoint를 재검사한다. 기존 정상 낙하·재등반과 기본 OFF 경로를 보존하고 실제8→64 회귀를 계측한다. 애니메이션 시간 변경이나 추측 최적화를 하지 않는다.
+
+2. 실제 수행
+
+새 opt-in post-touchdown-owner.flag AND footprint-recovery.flag를 추가했다. 실제 FALL→LAND,ground,sustained fall request8 및 실제 native request8일 때만 검사한다. 물리 착지는 원래 Fall/Accept가 허용하고 안전 endpoint가 아니면 landing pose permission만 보류한다. 기존 PressureSlide/SupportedEscapeTurn과 현재 sim시각의 등록 world contact normal 접선 제안을 사용한다. Floor·같은 area·높이차0.08m·원래 swept peer/world/non-deepening gates를 유지하고6초·1.5m·번역 진행 없음5초를 제한한다.
+
+안전 endpoint에서 실제 EgressGoal을 새 root로 바꾸고 경유점/경로를 갱신한다. LAND·EGRESS 동안 별도 소유권을 유지하고 CompleteEgress에서 전체 검사를 다시 한다. 실패한 helper lease는 성공으로 기록하지 않으며 기존 이탈 복구와 제한을 사용한다. 사망 대기·재낙하 취소를 검사했다. 기본 정책은 OFF다.
+
+첫9DCB 빌드는 서명됐지만 modded 계층 순서상 부모가 뒤쪽 PTActive/CTPolicy를 참조해 엔진 컴파일에 실패했다. 부모의 ECNeedsGroundHandoff 계약과 후속 override로 바꾸고 자체 recovery generation을 기록했다. 테스트 미션의 숫자 뺄셈 구문 오류도 별도 미션에서 수정했다. 과거 실패 기록은 보존했다.
+
+3F6D/5137 패키지 진단은 접선 Normalize 뒤 실제 길이가 약0.02905로 남아3cm 요청이 약1mm 제안이 되고100번 중 상당수가 제자리였음을 기록했다. 앞선 프로토타입은 뒤에서 direction을 다시 정규화했다. 명시적으로 길이로 나누는 단위 방향과 실제 이동0 거부를 넣은 F6DE 후보를 동일 입력으로2회 재실행했다. 정확한 컴파일러 내부 원인은 아직 별도 최소 재현이 없으며 측정된 길이 오류와 수정 후 값만 확정한다.
+
+그 뒤 동일 빌드·같은 기존 옵션에서8명300초,64명300초 실제 클라이언트를 순서대로 실행하고 정상 종료 후 기존 상태·재접근·이탈·착지·clock 분석기와 새 owner journal 분석기를 사용했다. 새 parser는 journal의 VALIDATED_FOLLOW 문구만으로 성공을 세지 않고 동일 개체·시각·좌표·recovery generation의 실제 EGRESS→FOLLOW와 연결한다.
+
+3. 측정 결과
+
+동결4joint·수동 native clock·합성 land duration1초·ground Walk stub 조건의2회 반복에서12case 계약 검사를 통과했다. 핵심 case는 두 번 모두1.84998초에1.08909m 이동 후 안전 endpoint를 확보하고4.0초에FOLLOW로 인계했다. 접선2회의 측정 길이는1이었다. 안전 ground OFF/ON은 원래 착지 경로를 유지했고 사망 대기/재낙하는 owner를 취소했다. 시간·거리·무이동 제한3종은 unsafe endpoint를 성공으로 만들지 않았다. 단,짧은 낙하 case는 물리 착지를 못한 음성 대조이고 동적 무효화 case는 LAND에서 CompleteEgress를 직접 호출한 검사라 범위가 제한된다.
+
+|실제 개체수|최종 도착|고지대 미도달|등반 종료 실패|낙하 후 복귀 에피소드|미션 p50/p95/p99 ms|새 owner 결과|
+|---|---|---|---|---|---|---|---|
+|8|8/8|0|0|9|20.0/30.0/34.0|{"VALIDATED_FOLLOW": 6}|
+|64|64/64|28|0|52|44.0/181.0/228.0|{"VALIDATED_FOLLOW": 34}|
+
+64명 고지대 미도달 IDs: [0, 4, 9, 11, 12, 16, 17, 19, 20, 23, 24, 31, 35, 36, 37, 39, 47, 51, 52, 53, 54, 55, 58, 59, 60, 61, 62, 63]. 새 owner helper 실패: {}. 새 owner 분석 위반/미종료: []. 전체 failure-label은 선정 JSON에 원문 집계하고 정상 support-loss/낙하와 terminal failure를 동일시하지 않는다.
+
+실제 live8/64의 접선 fallback은 각각0회였다. 따라서 명시적 단위 접선의 live 효과가 아니라 pose permission/목표 전달/기존 supported escape의 실제 인계를 확인한 것이다. 접선2회는 동결 재현에서만 검증됐다.
+
+플레이어 지면 EAST/NORTH 실제 순변위는 이전8명40.05/40.19m,이전64명39.91/18.72m,현재8명40.13/40.28m,현재64명4.09/13.06m였다. 입력 code2와 단계 시간은 같지만 실제 궤적이 다르므로64/64를 같은 장거리 자극에서63/64보다 개선됐다고 결론내리지 않는다. 군집에 의한 이동 방해는 추정이며 player contact-force는 미계측이다. 후속 비교는 실제 player trajectory를 통제/검증해야 한다.
+
+현재64명 고지대 미도달28개체의 표본 phase 합계는 {'FOLLOW': 2841, 'MOTION': 64, 'FALL': 22, 'LAND': 82, 'EGRESS': 4, 'SETTLE': 11}이다. 이는 표본 수이고 물리 원인/시간 합계가 아니다. 선정 actor timeline과 전체 reason 집계는 별도 증거로 보존한다. 일부는 입구 정렬/시작이 늦었고 최종 인계 실패0과는 다른 문제다.
+
+위 미션 시간은 해당 실행의 foreground callback delta이며 GPU Present/애니메이션 표시 FPS가 아니다. 각 규모 한 실행이고 다른 사용자 앱을 종료하지 않았으며 계측 I/O가 있다. 과거83E94 결과와 이번 F6DE는 동일 시점의 flag-OFF/ON 교차 반복이 아니므로 인과적 성능 개선율을 계산하지 않는다.20ms p95 목표와64 비용 귀속은 미달성/미확정이다.
+
+4. 원인 분석
+
+관찰 사실: 실제 패키지에 옮긴 첫 접선 방향은 단위 벡터가 아니어서 작은 제안과 제자리 반복을 만들었다. 명시적 정규화 뒤 같은 입력의2회 결과가 일치했다. 안전 root를 이탈 목표로 넘긴 actual8 시험의6개 owner episode는 모두 실제 FOLLOW 전환과 연결됐다.64 결과는 위 수치와 journal로 별도 판단한다.
+
+추정: 물리 착지 이후 pose 전환 시점과 이전 unsafe EgressGoal의 잔류가 기존20번 정체를 만드는 요인이었다. 이 국소 해결을 전체 군집/모든 접촉 포즈의 완성으로 확대하지 않는다. compact conditional/Normalize 문장의 처리 원인과 전체 native renderer 시간 문제는 미확정이다.
+
+반증/제외: 서명·패키징 성공만으로 엔진 컴파일이나 기능 성공을 주장할 수 없다. 첫 packaged 후보는 frozen escape를 재현하지 못했다. CPU clock/본 변경은 실제 표시 품질 증거가 아니다. 이번에는 그래프 속도·보간·업데이트 정책을 바꾸지 않았다.
+
+5. 검증 수준
+
+진단 성공: 계층 참조 오류·접선 길이/좌표 차이와 explicit normalization 후2회 동결 상태 계약 재현. 실제8 회귀 통과는8/8·고지대0·등반 종료0·owner6/6 범위이다.64의 개별 수용 항목은 위 값으로 구분하며 한 번의 실행으로 반복 검증 완료나 최종 수용을 선언하지 않는다. 시각 품질·성능·전체 목표는 모두 미수용이다. live combat 활성→해제 후 final guard와 실제 EGRESS 중 endpoint 변경은 미검증이다.
+
+6. 변경 사항
+
+subset_post_touchdown.c를 추가하고 subset_motion_contracts.c의 ground helper 판정을 확장 가능한 메서드로 연결했다. builder는9개 스크립트를 패킹하고 source와 PBO 멤버가 모두 바이트 동일함을 확인했다. compiler/launcher에 별도 validation과 opt-in provenance를 추가했다. 후보 F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8은 자동 서명과 DSCheckSignatures 검증을 통과했다. base453D·render0C6E는 변경하지 않았고 실제 실행 전에3개 모드 서명을 모두 검증했다. 개인 키는 배포물에 없으며 실패/중간 빌드도 별도 해시 archive로 보존했다.
+
+7. 원시 증거
+
+새 validation별 engine-compile/staged/init,실패 및 반복 compile profile의 원문 로그/TSV,실제 실행2개의 launch·native-ground·state transitions·landing/backoff·post-touchdown journal·파생 분석·빌드/source/signature inventory를 저장 전 해시 검사한다. 시각 관측은8명 HIGH_HOLD의 가림 없는 한 화면과64의 별도 표본 설명 수준이며 연속 애니메이션 품질 측정은 아니다. 공개 패킷은 집계·첫4개 owner episode와 자체 candidate 함수 원문을 싣고 원시 전체 로그·로컬 경로·프로세스 정보·게임 자산은 공개하지 않는다.
+
+8. 잔여 문제
+
+최신64의 고지대28개체 미도달과181ms p95를 상세 기록과 대조한다. 동일 입력에도 물리 player 경로가 달랐으므로 실제 경로를 통제한 후속 시험이 필요하다. 같은 빌드의 flag-OFF/ON 순서 교차 반복으로 접촉/등반 회귀를 확인해야 한다. active combat이 helper뿐 아니라 final guard도 취소하는 현재 동작은 재개 시 unsafe FOLLOW 위험이 있어 별도 소유권 분리와 회귀가 필요하다. 사망 대기 취소 통과를 active combat 재개 통과로 확대하지 않는다. 실제 EGRESS 무효화와 실제 짧은 낙하도 보완한다.
+
+애니메이션은 이전 단일 영상/CPU 시간 분리 진단을 유지한다. 달리기·등반 clip의 동일 HUD/CPU 관절·호출/실제 영상 exact frame join을 수집해야 한다.64 성능은 별도 controlled matrix·단계별 비용/빈도·할당/GC와 측정 불가 항목을 구분해 귀속한다. 원인 특정 전 새 보간·배속을 도입하지 않는다. 운영 서버와 원시 기록은 보존하고 골은 계속 활성 상태다.
+
+원본 보고서 ID: 2026-10-29_170240_587456+0900_npc-post-touchdown-owner-runtime.md
+원본 SHA-256: 0e63fb3620200f40209daee9871f6f3aa3d1ca257ecff9e11c04892b218c8d0c
+이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
+
+선정 함수·대표 기록: [검토 패킷](../downloads/checkpoints/2026-10-29_170240_587456+0900_npc-post-touchdown-owner-runtime_evidence.txt)
+
+[이전 기능 분석](../downloads/admission-report.txt) · [이전 애니메이션 분석](../downloads/animation-report.txt)

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T080442-post-touchdown-owner-runtime-20261029",
-  "generatedAt": "2026-10-29T08:04:42.247474+00:00",
+  "snapshotId": "snapshot-20261029T083407-fixed-stimulus-cost-20261029",
+  "generatedAt": "2026-10-29T08:34:07.935072+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -40,7 +40,9 @@
     "runtime-20261029-143221",
     "runtime-20261029-161948",
     "runtime-20261029-164705",
-    "runtime-20261029-165343"
+    "runtime-20261029-165343",
+    "runtime-20261029-171420",
+    "runtime-20261029-171916"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -57,9 +59,9 @@
     "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "Actual8 final8/8,high misses0,owner6 validated. Actual64 final64/64,high misses28,climb-end0,owner34 validated. One run per population;actual player paths differ. Not final accepted;historical74 static checks were not rerun.",
-    "visual": "No new continuous visible-frame measurement in this functional batch. CPU clock ratios8=0.8064 and64=0.5282 are not displayed clip speed or visual smoothness. Prior single-agent video diagnosis preserved;not accepted.",
-    "performance": "Functional diagnostic8 mission p50/p95/p99=20/30/34ms;64=44/181/228ms. Other user applications preserved;single unmatched runs with unequal physical stimulus. No causal optimization or20ms p95 acceptance.",
+    "functional": "Previous300s natural-input8 final8/8 high misses0;64 final64/64 high misses28 remain. New180s fixed-placement cost trials do not supersede that scenario. Cost OFF19/64,ON13/64 at180s;ON17 remains FALL.",
+    "visual": "No new continuous visible-frame measurement. Script callback times and PreAnim-to-PrePhys envelope are not graph self-time or visible clip quality. Initial texture sample limitations retained.",
+    "performance": "Fixed-player64 diagnostics OFF/ON supplied mission p95 219/241ms;one sequential pair. HIGH_HOLD BodyDrive559/563ms/s,FOLLOW401/398ms/s,nested elapsed scopes. No optimization or20ms p95 acceptance.",
     "regressionChecks": 0
   },
   "metrics": [
@@ -8856,13 +8858,217 @@
       },
       "repetitions": 1,
       "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261029-171420",
+      "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
+      "value": 97.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference fixed-player cost diagnostic",
+        "durationSeconds": 180,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Supplied mission dt;can clamp at300ms. Actual timestamp-gap quantiles separately retained.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.192,
+          104.964
+        ],
+        "purpose": "cost diagnosis,not300s natural functional regression",
+        "postTouchdownOwner": false,
+        "fixedPlayerStimulus": true,
+        "actualGroundTargetsMatched": true,
+        "fixedCamera": true,
+        "driveAttribution": true,
+        "runtimeTimingProbe": true,
+        "nativeHosts": 512,
+        "otherUserApplicationsPreserved": true,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261029-171420",
+      "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
+      "value": 219.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference fixed-player cost diagnostic",
+        "durationSeconds": 180,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Supplied mission dt;can clamp at300ms. Actual timestamp-gap quantiles separately retained.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.192,
+          104.964
+        ],
+        "purpose": "cost diagnosis,not300s natural functional regression",
+        "postTouchdownOwner": false,
+        "fixedPlayerStimulus": true,
+        "actualGroundTargetsMatched": true,
+        "fixedCamera": true,
+        "driveAttribution": true,
+        "runtimeTimingProbe": true,
+        "nativeHosts": 512,
+        "otherUserApplicationsPreserved": true,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261029-171420",
+      "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
+      "value": 267.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference fixed-player cost diagnostic",
+        "durationSeconds": 180,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Supplied mission dt;can clamp at300ms. Actual timestamp-gap quantiles separately retained.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.192,
+          104.964
+        ],
+        "purpose": "cost diagnosis,not300s natural functional regression",
+        "postTouchdownOwner": false,
+        "fixedPlayerStimulus": true,
+        "actualGroundTargetsMatched": true,
+        "fixedCamera": true,
+        "driveAttribution": true,
+        "runtimeTimingProbe": true,
+        "nativeHosts": 512,
+        "otherUserApplicationsPreserved": true,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261029-171916",
+      "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
+      "value": 106.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference fixed-player cost diagnostic",
+        "durationSeconds": 180,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Supplied mission dt;can clamp at300ms. Actual timestamp-gap quantiles separately retained.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.066,
+          104.89
+        ],
+        "purpose": "cost diagnosis,not300s natural functional regression",
+        "postTouchdownOwner": true,
+        "fixedPlayerStimulus": true,
+        "actualGroundTargetsMatched": true,
+        "fixedCamera": true,
+        "driveAttribution": true,
+        "runtimeTimingProbe": true,
+        "nativeHosts": 512,
+        "otherUserApplicationsPreserved": true,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261029-171916",
+      "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
+      "value": 241.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference fixed-player cost diagnostic",
+        "durationSeconds": 180,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Supplied mission dt;can clamp at300ms. Actual timestamp-gap quantiles separately retained.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.066,
+          104.89
+        ],
+        "purpose": "cost diagnosis,not300s natural functional regression",
+        "postTouchdownOwner": true,
+        "fixedPlayerStimulus": true,
+        "actualGroundTargetsMatched": true,
+        "fixedCamera": true,
+        "driveAttribution": true,
+        "runtimeTimingProbe": true,
+        "nativeHosts": 512,
+        "otherUserApplicationsPreserved": true,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261029-171916",
+      "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
+      "value": 300.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference fixed-player cost diagnostic",
+        "durationSeconds": 180,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Supplied mission dt;can clamp at300ms. Actual timestamp-gap quantiles separately retained.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.066,
+          104.89
+        ],
+        "purpose": "cost diagnosis,not300s natural functional regression",
+        "postTouchdownOwner": true,
+        "fixedPlayerStimulus": true,
+        "actualGroundTargetsMatched": true,
+        "fixedCamera": true,
+        "driveAttribution": true,
+        "runtimeTimingProbe": true,
+        "nativeHosts": 512,
+        "otherUserApplicationsPreserved": true,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
     }
   ],
   "blockers": [
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "Latest64 terminal64/64,high misses[0, 4, 9, 11, 12, 16, 17, 19, 20, 23, 24, 31, 35, 36, 37, 39, 47, 51, 52, 53, 54, 55, 58, 59, 60, 61, 62, 63],climb-end failures0.Owner violations:[].Active-combat resume and actual EGRESS invalidation remain unverified."
+      "description": "Natural300s high-stage misses28 remain. Fixed-cost ON17 has FALL72.937-179.604s,5mm-stationary101.2-179.604s with FOOT_X_SUPPORT. No collision/landing gate relaxed."
     },
     {
       "id": "matched-repeats",
@@ -9317,23 +9523,41 @@
       "uri": "/data/experiments/post-touchdown-owner-runtime-20261029.json",
       "sha256": "ceaf9b8cc8adaf4eddba621207d5028523c45f648aac836945a28aa9d2edcc3b",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "fixed-stimulus-cost-20261029-report",
+      "uri": "/downloads/checkpoints/2026-10-29_173258_249618+0900_npc-fixed-stimulus-cost.txt",
+      "sha256": "3f494ee522c453d5334c04d69751b920a3d8be5725a006c5532bafb85524e260",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "fixed-stimulus-cost-20261029-review",
+      "uri": "/downloads/checkpoints/2026-10-29_173258_249618+0900_npc-fixed-stimulus-cost_evidence.txt",
+      "sha256": "9f9c0bb82b28699330b16fbeee37d6e2f8b60ae42eb997bcfc5ab64bd15b7a24",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "fixed-stimulus-cost-20261029-json",
+      "uri": "/data/experiments/fixed-stimulus-cost-20261029.json",
+      "sha256": "1d58889abe7f28bf70c91e478ce2c86a1f95a073db174b5602d3107f5790cc9b",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T08:04:42.247474+00:00",
-    "staleAfter": "2026-10-30T08:04:42.247474+00:00",
+    "sourceUpdatedAt": "2026-10-29T08:34:07.935072+00:00",
+    "staleAfter": "2026-10-30T08:34:07.935072+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261029T080442-post-touchdown-owner-runtime-20261029",
-      "generatedAt": "2026-10-29T08:04:42.247474+00:00",
-      "sourceUpdatedAt": "2026-10-29T08:04:42.247474+00:00"
+      "snapshotId": "snapshot-20261029T083407-fixed-stimulus-cost-20261029",
+      "generatedAt": "2026-10-29T08:34:07.935072+00:00",
+      "sourceUpdatedAt": "2026-10-29T08:34:07.935072+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-29T08:04:42.247474+00:00",
+      "at": "2026-10-29T08:34:07.935072+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -9348,7 +9572,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261029T080442-post-touchdown-owner-runtime-20261029/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261029T083407-fixed-stimulus-cost-20261029/"
   },
   "experiments": [
     {
@@ -10152,6 +10376,41 @@
         "matched-repeats"
       ],
       "replication": "Two identical frozen12case invocations;one300s live8 run followed by one300s live64 run."
+    },
+    {
+      "id": "fixed-stimulus-cost-20261029",
+      "title": "64명 비용 분리 — FOLLOW·접촉 집중,착지 전 정체17번 확인",
+      "track": "performance",
+      "sourceRunId": [
+        "runtime-20261029-171420",
+        "runtime-20261029-171916"
+      ],
+      "buildId": [
+        "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [
+        {
+          "count": 64,
+          "seconds": 180,
+          "repetitions": 1
+        },
+        {
+          "count": 64,
+          "seconds": 180,
+          "repetitions": 1
+        }
+      ],
+      "evidenceReferences": [
+        "fixed-stimulus-cost-20261029-report",
+        "fixed-stimulus-cost-20261029-review",
+        "fixed-stimulus-cost-20261029-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "One64 OFF and one64 ON180s sequential diagnostic. Calibration3guards passed;no order-crossed repeated optimization."
     }
   ],
   "kind": "status"
