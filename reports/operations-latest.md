@@ -34,4 +34,4 @@
 
 
 
-此前 기록: [캐시 삭제 차단 검토](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/79d91e578a95534a3413d64390bef081b43428dd/reports/operations/2026-10-30-safe-cache-cleanup-blocked.md). [애니메이션 진단·계획](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/22411e464703ce3bcc3e0d8b16d0bd2c3b798205/reports/operations-latest.md). 이번은 운영 준비이며 실험 API 수치·실험 시각은 갱신하지 않습니다.
+이전 기록: [캐시 삭제 차단 검토](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/79d91e578a95534a3413d64390bef081b43428dd/reports/operations/2026-10-30-safe-cache-cleanup-blocked.md). [애니메이션 진단·계획](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/22411e464703ce3bcc3e0d8b16d0bd2c3b798205/reports/operations-latest.md). 이번은 운영 준비이며 실험 API 수치·실험 시각은 갱신하지 않습니다.
