@@ -1,8 +1,81 @@
 {
   "schemaVersion": "1.0.0",
   "snapshotId": "snapshot-20261029T105329-previous-contacts-capture-20261029",
-  "status": "pending_external_HTTP_verification",
-  "previousVerifiedSnapshotId": "snapshot-20261029T095028-prelanding17-se2-20261029",
-  "externalAI": "unverified",
-  "experimentFinalAccepted": false
+  "observedAt": "2026-10-29T10:56:02.302264+00:00",
+  "status": "fixed_commit_HTTP_hash_schema_verified",
+  "dataCommit": "ddff6faf6a92f78badc67e4e5e67af86fa755476",
+  "origin": "https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/ddff6faf6a92f78badc67e4e5e67af86fa755476",
+  "generatedAt": "2026-10-29T10:53:29.923771+00:00",
+  "http": {
+    "passed": true,
+    "filesVerified": 233,
+    "records": 235,
+    "allHTTP200": true,
+    "authenticationSent": false,
+    "redirectsObserved": false,
+    "jsonSchemaValidated": true,
+    "allPublishedBytesMatched": true,
+    "evidenceReferenceHashesVerified": true,
+    "stale": false
+  },
+  "mainAliasChecks": [
+    {
+      "path": "reports/operations-latest.md",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "finalUrl": "https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations-latest.md",
+      "sha256": "55a5341b433861487ab56421bd78841251ab2b1edf63beb194a5f9cd3f4f8ae1",
+      "matchesStagedBytes": true
+    },
+    {
+      "path": "api/public/status.json",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "finalUrl": "https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/api/public/status.json",
+      "sha256": "c37a90292a5596c5170fb90ca0452346395b9a65d2da39e9337e4d4b86ba7891",
+      "matchesStagedBytes": true
+    }
+  ],
+  "externalAI": {
+    "tool": "ChatGPT web",
+    "result": "Cache miss",
+    "accepted": false,
+    "scope": "New fixed report;not universal AI compatibility"
+  },
+  "otherIndependentNetworkVerified": false,
+  "experimentFinalAccepted": false,
+  "visualSmoothnessAccepted": false,
+  "performanceAccepted": false,
+  "diagnosticScope": {
+    "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+    "signedAndVerified": true,
+    "sourcePackedScripts": 10,
+    "existingNineScriptsByteUnchanged": true,
+    "readOnlyObserverAdded": true,
+    "movementAnimationLogicChanged": false,
+    "engineFourCaseJoinProven": true,
+    "actualContactRowsJoined": 200,
+    "actualClientRuns": [
+      8,
+      64,
+      64
+    ],
+    "allNormalExit": true,
+    "highMisses": [
+      0,
+      25,
+      27
+    ],
+    "foreground64MissionP95Ms": 149,
+    "actualJoint0RejectionLinks": 4,
+    "perFallCallIdentityComplete": false,
+    "temporalVisibleFramesMeasured": false,
+    "instrumentationOverheadMeasured": false
+  },
+  "localStagingIssue": {
+    "type": "Missing derived gameplay summary fields",
+    "resolved": true,
+    "experimentDataChanged": false,
+    "partialLocalStagePreserved": true
+  }
 }
