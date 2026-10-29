@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T065416-ground-search20-pose-20261029",
-  "generatedAt": "2026-10-29T06:54:16.670624+00:00",
+  "snapshotId": "snapshot-20261029T072604-post-touchdown20-visible-20261029",
+  "generatedAt": "2026-10-29T07:26:04.675074+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -37,7 +37,8 @@
     "runtime-20261029-135607",
     "runtime-20261029-140405",
     "runtime-20261029-142458",
-    "runtime-20261029-143221"
+    "runtime-20261029-143221",
+    "runtime-20261029-161948"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -8151,13 +8152,94 @@
       },
       "repetitions": 1,
       "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261029-161948",
+      "buildId": "31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126",
+      "value": 20.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 1,
+        "scenario": "anim1",
+        "durationSeconds": 90,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": null,
+        "customAI": false,
+        "rootMotion": false,
+        "nativeHosts": 8,
+        "recording": true,
+        "performanceBaseline": false,
+        "otherUserApplicationsPreserved": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261029-161948",
+      "buildId": "31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126",
+      "value": 32.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 1,
+        "scenario": "anim1",
+        "durationSeconds": 90,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": null,
+        "customAI": false,
+        "rootMotion": false,
+        "nativeHosts": 8,
+        "recording": true,
+        "performanceBaseline": false,
+        "otherUserApplicationsPreserved": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261029-161948",
+      "buildId": "31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126",
+      "value": 35.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 1,
+        "scenario": "anim1",
+        "durationSeconds": 90,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": null,
+        "customAI": false,
+        "rootMotion": false,
+        "nativeHosts": 8,
+        "recording": true,
+        "performanceBaseline": false,
+        "otherUserApplicationsPreserved": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
     }
   ],
   "blockers": [
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "Prior63/64 remains. Frozen fall pose has two replayed safe paths,postlanding pose discrete search exhausts. Simple route admission holds physical root above floor and recovers0/4;not adopted."
+      "description": "Prior63/64 remains. Frozen motor reached full-clear endpoint after1.08909m;not full live recovery or8/64 regression."
     },
     {
       "id": "matched-repeats",
@@ -8576,23 +8658,41 @@
       "uri": "/data/experiments/ground-search20-pose-20261029.json",
       "sha256": "430145442b18fcfaeab3de74013bdb45973157a506c93381eb30e66d88c18dfb",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "post-touchdown20-visible-20261029-report",
+      "uri": "/downloads/checkpoints/2026-10-29_162535_861227+0900_npc-post-touchdown20-visible.txt",
+      "sha256": "55087aebce912d92f3ae3123bbac7dd008daf4f2a58445773e5848ce63697db9",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "post-touchdown20-visible-20261029-review",
+      "uri": "/downloads/checkpoints/2026-10-29_162535_861227+0900_npc-post-touchdown20-visible_evidence.txt",
+      "sha256": "186b8594b5dad68d082bc9583aa068d966a0e1322f54696e77c51d1eedba4326",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "post-touchdown20-visible-20261029-json",
+      "uri": "/data/experiments/post-touchdown20-visible-20261029.json",
+      "sha256": "522f950acbf9e8a2bc0dbccc63cb735011d325b387fdfb1f757f19dba36ea108",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T06:54:16.670624+00:00",
-    "staleAfter": "2026-10-30T06:54:16.670624+00:00",
+    "sourceUpdatedAt": "2026-10-29T07:26:04.675074+00:00",
+    "staleAfter": "2026-10-30T07:26:04.675074+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261029T065416-ground-search20-pose-20261029",
-      "generatedAt": "2026-10-29T06:54:16.670624+00:00",
-      "sourceUpdatedAt": "2026-10-29T06:54:16.670624+00:00"
+      "snapshotId": "snapshot-20261029T072604-post-touchdown20-visible-20261029",
+      "generatedAt": "2026-10-29T07:26:04.675074+00:00",
+      "sourceUpdatedAt": "2026-10-29T07:26:04.675074+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-29T06:54:16.670624+00:00",
+      "at": "2026-10-29T07:26:04.675074+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -8607,7 +8707,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261029T065416-ground-search20-pose-20261029/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261029T072604-post-touchdown20-visible-20261029/"
   },
   "experiments": [
     {
@@ -9346,6 +9446,36 @@
         "matched-repeats"
       ],
       "replication": "Found2 static paths independently replayed edge-by-edge;not repeated live experiments. Two positive clear controls;four motor cases."
+    },
+    {
+      "id": "post-touchdown20-visible-20261029",
+      "title": "착지 후 포즈 전환 후보와 단일 NPC 실제 화면 재관측",
+      "track": "diagnostic",
+      "sourceRunId": [
+        "runtime-20261029-161948",
+        "runtime-20261029-143221"
+      ],
+      "buildId": [
+        "31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [
+        {
+          "count": 1,
+          "seconds": 90,
+          "repetitions": 1
+        }
+      ],
+      "evidenceReferences": [
+        "post-touchdown20-visible-20261029-report",
+        "post-touchdown20-visible-20261029-review",
+        "post-touchdown20-visible-20261029-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "One12case frozen-motor invocation and one90s single-agent run;45s recording with9s sampled pixels. No repeated causal optimization trial."
     }
   ],
   "kind": "status"

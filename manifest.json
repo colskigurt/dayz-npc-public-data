@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T065416-ground-search20-pose-20261029",
-  "generatedAt": "2026-10-29T06:54:16.670624+00:00",
-  "exportedAt": "2026-10-29T06:54:16.670624+00:00",
+  "snapshotId": "snapshot-20261029T072604-post-touchdown20-visible-20261029",
+  "generatedAt": "2026-10-29T07:26:04.675074+00:00",
+  "exportedAt": "2026-10-29T07:26:04.675074+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -38,7 +38,8 @@
     "runtime-20261029-135607",
     "runtime-20261029-140405",
     "runtime-20261029-142458",
-    "runtime-20261029-143221"
+    "runtime-20261029-143221",
+    "runtime-20261029-161948"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -51,8 +52,8 @@
     "31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T06:54:16.670624+00:00",
-    "staleAfter": "2026-10-30T06:54:16.670624+00:00",
+    "sourceUpdatedAt": "2026-10-29T07:26:04.675074+00:00",
+    "staleAfter": "2026-10-30T07:26:04.675074+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -69,18 +70,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 35946,
-      "sha256": "2b620b072f2762cee5bfa59a2bf1eae06123ddf8a0f4fe9346d1138bb843e469"
+      "bytes": 17127,
+      "sha256": "0051a644fc2bef31fef0db404e8d15b3e38573385fc958f9b180ff2bf67b91a5"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 326643,
-      "sha256": "a661ba81314ff449de739c197122131850db7561295716a61d3700bef4fd7060"
+      "bytes": 331331,
+      "sha256": "1cd2a4c47f1955bd0da943e4001400cba4539ba6cbc09053f7cef03868ffb0da"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 326639,
-      "sha256": "00980e9258235a2d10e9cead76fc0b70a4ddc7cfa8cfe2be1aa3507426980255"
+      "bytes": 331327,
+      "sha256": "08510559185943d122a789c825c3c7583161fd60ed125d041084e023ea99edd9"
     },
     {
       "path": "api/public/schema.json",
@@ -388,14 +389,29 @@
       "sha256": "f37684d0a53400e16c12be013fb359634a46a0c61f8a937d19ae723d80d2278c"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261029T072604-post-touchdown20-visible-20261029/experiments.json",
+      "bytes": 331331,
+      "sha256": "1cd2a4c47f1955bd0da943e4001400cba4539ba6cbc09053f7cef03868ffb0da"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T072604-post-touchdown20-visible-20261029/metrics.json",
+      "bytes": 331327,
+      "sha256": "08510559185943d122a789c825c3c7583161fd60ed125d041084e023ea99edd9"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T072604-post-touchdown20-visible-20261029/status.json",
+      "bytes": 331326,
+      "sha256": "511c8a38da62a824f7c233f6a4af1d4e1d3cddacef24a0ca9d79c727190ab21b"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 326638,
-      "sha256": "f37684d0a53400e16c12be013fb359634a46a0c61f8a937d19ae723d80d2278c"
+      "bytes": 331326,
+      "sha256": "511c8a38da62a824f7c233f6a4af1d4e1d3cddacef24a0ca9d79c727190ab21b"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 725,
-      "sha256": "d1064e18e3b5e78a9deab8a15cd04ef3157cdaf660a3bdf8031581f9ff239ea5"
+      "bytes": 733,
+      "sha256": "279bd32945512a2223356262e5946ff375252b9702296a49bd842723fda2e592"
     },
     {
       "path": "data/experiments/actor43-owner-runtime-20261029.json",
@@ -491,6 +507,11 @@
       "path": "data/experiments/pose-buffer-continuity-20261028.json",
       "bytes": 208362,
       "sha256": "824a896f509690677451a846cbe4876d76dc7dc263dbc131a93fdc8020f4528f"
+    },
+    {
+      "path": "data/experiments/post-touchdown20-visible-20261029.json",
+      "bytes": 34577,
+      "sha256": "522f950acbf9e8a2bc0dbccc63cb735011d325b387fdfb1f757f19dba36ea108"
     },
     {
       "path": "data/experiments/tickcount-origin-20261028.json",
@@ -728,9 +749,19 @@
       "sha256": "56ae05cf36872a5e1854a52ba348af63987b65bdc140915343f99ea965e4f010"
     },
     {
+      "path": "downloads/checkpoints/2026-10-29_162535_861227+0900_npc-post-touchdown20-visible.txt",
+      "bytes": 7248,
+      "sha256": "55087aebce912d92f3ae3123bbac7dd008daf4f2a58445773e5848ce63697db9"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-29_162535_861227+0900_npc-post-touchdown20-visible_evidence.txt",
+      "bytes": 16866,
+      "sha256": "186b8594b5dad68d082bc9583aa068d966a0e1322f54696e77c51d1eedba4326"
+    },
+    {
       "path": "README.md",
-      "bytes": 11312,
-      "sha256": "43464be1aa154f46243e35639ab367da134a67fafde8fb3c440e530f22ef6166"
+      "bytes": 11695,
+      "sha256": "4974e4d9cf8accf86f333dbb2a025a14f929e7ed2ac3305ad8346499cd4490db"
     },
     {
       "path": "reports/accessibility-20261028.md",
@@ -898,6 +929,16 @@
       "sha256": "30346226fdd7fd6a5ca2363e9da6aed42cb50b56a38b195025e2579bfaee8425"
     },
     {
+      "path": "reports/history/pre-post-touchdown20-visible-20261029-latest.md",
+      "bytes": 9504,
+      "sha256": "d3e76c94451167215e7e1b5a78c6084a55fd8802fd14aa52f6f426eacdf5c9da"
+    },
+    {
+      "path": "reports/history/pre-post-touchdown20-visible-20261029-operations-latest.md",
+      "bytes": 9504,
+      "sha256": "d3e76c94451167215e7e1b5a78c6084a55fd8802fd14aa52f6f426eacdf5c9da"
+    },
+    {
       "path": "reports/history/pre-runtime-20261028-latest.md",
       "bytes": 3789,
       "sha256": "bd223121e0c2e16d3b76374a67ab177dfe1069cb31cdbfe224bab20b36372284"
@@ -939,8 +980,8 @@
     },
     {
       "path": "reports/latest.md",
-      "bytes": 9504,
-      "sha256": "d3e76c94451167215e7e1b5a78c6084a55fd8802fd14aa52f6f426eacdf5c9da"
+      "bytes": 7595,
+      "sha256": "2f383f7cd3819f846dccbdcf3e47d2245bdf4ee579b1904cd1c6e5fceee0881f"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -949,8 +990,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 9504,
-      "sha256": "d3e76c94451167215e7e1b5a78c6084a55fd8802fd14aa52f6f426eacdf5c9da"
+      "bytes": 7595,
+      "sha256": "2f383f7cd3819f846dccbdcf3e47d2245bdf4ee579b1904cd1c6e5fceee0881f"
     }
   ]
 }
