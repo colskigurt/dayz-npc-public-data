@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T131208-entry-preparation-policy-20261029",
-  "generatedAt": "2026-10-29T13:12:08.753742+00:00",
+  "snapshotId": "snapshot-20261029T132628-instance-duration-binding-20261029",
+  "generatedAt": "2026-10-29T13:26:28.891413+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -62,16 +62,17 @@
     "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
     "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
     "47A7C366B29B96CB1F0D789BB36D6DB9459D2AC3D63E7E2EE1B5BEA63287DE32",
-    "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1"
+    "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+    "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933"
   ],
   "verificationStatus": {
     "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "Policy/geometrydiagnosissucceeded.Actual8OFFonly;ONand64notrun.Candidateeffectunproven.",
-    "visual": "Point-in-time8sceneonly.No temporalvisiblemeasurement orsmoothnessacceptance.",
-    "performance": "SingleOFFmissiondtwithsharedload.Noattributionoroptimizationclaim.20msp95remainsunmettarget.",
-    "regressionChecks": 34
+    "functional": "No new runtime. Prior8OFF8/8,highmiss0,falls10/10retained;711CONand64stillunrun.",
+    "visual": "Staticduration-to-transition-weightpathonly.No newvideoorvisiblequalitymeasurement;independentrenderintervalcontrolnotestablished.",
+    "performance": "No newperformanceorallocationmeasurement.20msp95remainsunmettarget.",
+    "regressionChecks": 0
   },
   "metrics": [
     {
@@ -11499,7 +11500,7 @@
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "Needactual8OFF/ONand64controlledrepetitions.Highstagecoverageandcontractfailuresremainindependentcriteria."
+      "description": "Needmatched711C8OFF/ONand64regression. StaticAPIinterpretationdoesnotresolveentrycongestion."
     },
     {
       "id": "matched-repeats",
@@ -12116,23 +12117,41 @@
       "uri": "/data/experiments/entry-preparation-policy-20261029.json",
       "sha256": "90349e867d7a3f72d9f816fbb1b147c3a4ed4195252108177f5c022d5ea555e9",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "instance-duration-binding-20261029-report",
+      "uri": "/downloads/checkpoints/2026-10-29_222610_529448+0900_npc-instance-duration-binding.txt",
+      "sha256": "27443efa2361a50a7a8cc2b6f67c9a21609a00c4d60f826f4cce4adabcbca8bf",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "instance-duration-binding-20261029-review",
+      "uri": "/downloads/checkpoints/2026-10-29_222610_529448+0900_npc-instance-duration-binding_evidence.txt",
+      "sha256": "6f33d9fca7a9bdc6c447f6713705866c06f6088d291b8ec22d347c0bda3faba1",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "instance-duration-binding-20261029-json",
+      "uri": "/data/experiments/instance-duration-binding-20261029.json",
+      "sha256": "6489b1c16c260dc38316652e68316da460eebc2947e96273275891ac30ed1fd6",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T13:12:08.753742+00:00",
-    "staleAfter": "2026-10-30T13:12:08.753742+00:00",
+    "sourceUpdatedAt": "2026-10-29T13:26:28.891413+00:00",
+    "staleAfter": "2026-10-30T13:26:28.891413+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261029T131208-entry-preparation-policy-20261029",
-      "generatedAt": "2026-10-29T13:12:08.753742+00:00",
-      "sourceUpdatedAt": "2026-10-29T13:12:08.753742+00:00"
+      "snapshotId": "snapshot-20261029T132628-instance-duration-binding-20261029",
+      "generatedAt": "2026-10-29T13:26:28.891413+00:00",
+      "sourceUpdatedAt": "2026-10-29T13:26:28.891413+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-29T13:12:08.753742+00:00",
+      "at": "2026-10-29T13:26:28.891413+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -12147,7 +12166,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261029T131208-entry-preparation-policy-20261029/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261029T132628-instance-duration-binding-20261029/"
   },
   "experiments": [
     {
@@ -13208,6 +13227,27 @@
         "matched-repeats"
       ],
       "replication": "Oneenginepolicy/geometryproofandoneactual8OFF.Notcontrolledrepeatedcandidatecomparison."
+    },
+    {
+      "id": "instance-duration-binding-20261029",
+      "title": "애니메이션 duration API: 전환 가중치로 연결, 표시 간격 제어는 미확보",
+      "track": "diagnostic",
+      "sourceRunId": [],
+      "buildId": [
+        "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [],
+      "evidenceReferences": [
+        "instance-duration-binding-20261029-report",
+        "instance-duration-binding-20261029-review",
+        "instance-duration-binding-20261029-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "28instructionwitnessesrecheckedagainsthash-boundinstalledbinary;notruntime repetitions."
     }
   ],
   "kind": "experiments"

@@ -1,3 +1,11 @@
+# 최신 작업: 애니메이션 duration API: 전환 가중치로 연결, 표시 간격 제어는 미확보
+
+duration인자는정적경로에서인스턴스전환가중치계산으로연결.지속60Hz/표시간격setter미확보.새실행/PBO변경없음.
+
+[최신 보고서](reports/operations-latest.md) · [AI 검토](AI_REVIEW.md) · [JSON](api/public/status.json)
+
+이하 이전 공개 운영 안내는 이력이다.
+
 # 최신 작업: 등반 준비 접촉 후보: 정책·기하 통과, 실제8 OFF만 검증
 
 711C候補:26policy/8geometrypassed;actual8OFFonly;ON/64unrun;sharedload,novisual/performanceacceptance.

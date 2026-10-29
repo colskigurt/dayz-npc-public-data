@@ -1,95 +1,76 @@
-# 등반 준비 접촉 후보: 정책·기하 통과, 실제8 OFF만 검증
+# 애니메이션 duration API: 전환 가중치로 연결, 표시 간격 제어는 미확보
 
-등반 준비 접촉 후보 — 경계·기하 통과, 실제8 OFF만 검증
+애니메이션 API duration 추적 — 인스턴스 전환 가중치로 연결
 
-작성: 2026-10-29T22:11:45.232625+09:00
+작성: 2026-10-29T22:26:10.529448+09:00
 
 1. 작업 목표
 
-등반 직전 원래 120ms 준비 구간의 정렬을 뒤따르는 접촉 밀림이 무너뜨리는 문제에 한정해 후보를 검증한다. 정상 밀침·지지 상실 낙하·복구와 기존 실행 계층을 보존한다. 애니메이션/성능 목표는 별도로 유지한다.
+기존 지원API 조사에서 미확인이었던 DayZCreature.SetAnimationInstanceByName의 마지막 duration 인자가 지속 재생속도/갱신간격인지, 인스턴스 전환용인지 좁힌다. CPU 포즈와 실제 화면 시간의 불일치 진단을 유지하고 추측 보간/배속을 적용하지 않는다.
 
 2. 실제 수행
 
-711C 후보를 구현·빌드·서명·검증했다. 기존11개 script는 바이트 동일하고 새12번째 모듈만 추가했다. 기본OFF다. unreserved CLIMB, FOLLOW, 유효한 같은 admission, fresh ENTRY_POSE_SETTLE, idle0/0, age<0.12초, 입구 반경0.36m·법선0.065m·yaw1도 이내에서만 접촉 변위를 벽 접선으로 투영한다. 새로운 물리/본 query나 직접 transform은 없다. 실행은 기존 Displace의 충돌·발판·지지 상실 검사를 그대로 거친다.
+현재 설치 DayZ 실행 파일을 해시로 확인하고 정확한 ASCII 문자열·RIP LEA·PE unwind 범위를 검사했다. 같은 이름의 등록 참조2개를 찾고 Creature 등록 클래스 문자열과 handler를 연결했다. 두 handler가 공유 helper로 전달되는 바이트를 읽었다. 추가 분석은 입력 인자→controller 필드→소비 함수의 실제 명령28개와 저장 구간 해시를 다시 검증했다. 대상 실행·attach·hook·메모리 쓰기·PBO 변경·UI 조작은 없다.
 
-정책26개와 실제 inherited 이동/충돌/낙하8개를 엔진에서 확인했다. 첫 컴파일 실패들과 authored edge의 잘못된 낙하 fixture 결과를 모두 보존했다. rim-typed는 바닥 보정 실패 직후 native access violation이 발생했다. 보정 실패 시 정리 누락이 원인일 가능성은 있으나 단독 분리하지 않아 확정하지 않는다. 지원되는 시작점과 4cm/6cm 바깥 미지원점을 직접 찾고 실패 시 정리하는 rim-pair fixture는 정상 통과했다. PBO 자체는 이 과정에서 변경하지 않았다.
-
-실제8명300초 OFF 기준판을 실행·정상 종료했다. ON 및64명은 아직 실행하지 않았다. 다른 승인 작업에서 화면 양보 요청이 들어왔고 OS 여유RAM941996KiB를 확인해 다음 클라이언트 실행을 미뤘다. 다른 프로그램/서버는 변경하지 않았다.
+REA session은 closed, Ghidra provider는 available임을 확인했다. 이전 전체 auto-analysis를 재시작하지 않았으며 이번 결과는 Ghidra decompile이 아니라 설치 바이트의 Capstone 기반 제한 검사다. 반환된 unwind가 함수 전체라는 가정은 하지 않았다. leaf handler에는 unwind가 없었고 reset helper의 첫 unwind는22바이트 조각이어서, 명시적인192/512바이트 연속 범위를 별도 기록했다. 범위에 이웃 코드가 포함되는 한계를 보존했다.
 
 3. 측정 결과
 
-정책26/26, 실제 기하8/8 통과. 접선 지지 상실은 OFF/ON 모두 FALL/CONTACT_FALL, 벽은 두 조건 모두 WORLD 거부였다. 아래 JSON은 실제OFF 한 실행의 결과다. 프레임 수치는 mission dt이며 화면 표시율/GPU Present가 아니다. 다른 작업 부하가 섞여 성능 비교에 사용할 수 없다.
+새 실행 파일 기준 SHA-256: c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933.
+
+정확 문자열1개, RIP 등록 참조2개, 선택 명령28개 재검증. 새1/8/64개체 시험·p50/p95/p99·표시 프레임·GPU Present·비용/할당/GC 측정은 미실행이다. 지난8 OFF 결과나 과거 영상 수치를 이번 새 측정으로 갱신하지 않는다.
 
 json
 {
-  "runId": "runtime-20261029-220337",
-  "count": 8,
-  "flag": "off",
-  "terminalArrivals": 8,
-  "missingHighFollow": [],
-  "fallsResumed": 10,
-  "failureLabels": {
-    "CONTACT_SUPPORT_LOST": 2
-  },
-  "ownerOutcomes": {
-    "VALIDATED_FOLLOW": 7
-  },
-  "helperFailures": {},
-  "ownerViolations": [],
-  "gate": {
-    "callGroups": 444,
-    "climbNormalGateComparisons": 34,
-    "normalBandLost65mmDuringPressure": 10,
-    "normalBandLostWhileHeadingAligned": 1,
-    "entryHeadingWorsenedDuringMotor": 10,
-    "nearEntryApproachBearingConflict": 10,
-    "unknownActiveLinks": {}
-  },
-  "foregroundCadence": {
-    "true": 10373,
-    "false": 899
-  },
-  "missionFrameMs": {
-    "samples": 10170,
-    "p50": 21.0,
-    "p95": 35.0,
-    "p99": 48.0
-  },
-  "callbackClock": {
-    "observedMissionSeconds": 238.8610000000009,
-    "nativeAdvanceSeconds": 181.15599999999998,
-    "calls": 3623,
-    "nativeClockPerMissionSecond": 0.7584159825170258,
-    "callbackCallsPerMissionSecond": 15.167817266108685,
-    "nativeAdvancePerCallback": 0.050001656086116474
-  }
+  "registrationClass": "DayZCreature",
+  "registrationSite": "0x140b6e171",
+  "nativeHandler": "0x140b71f80",
+  "receiverForwardOffset": "0x620",
+  "sharedHelper": "0x140b16b20",
+  "controllerOffset": "0xa0",
+  "incomingFloatRegister": "xmm3",
+  "durationField": "controller+0x24",
+  "elapsedField": "controller+0x20",
+  "weightField": "controller+0x1c",
+  "consumer": "0x140b1cb40",
+  "weightExpression": "smoothstep(clamp((elapsed + updateDelta)/duration,0,1)); weight=1 whenelapsedalready>=duration",
+  "sameInstancePointerSkipsDurationUpdate": true,
+  "controllerFlagCanForceDurationZero": true,
+  "downstreamWeightArgument": "xmm3 atindirectvirtualcall+0x28",
+  "evidenceType": "static bytes + Win64 ABI inference; no runtime invocation"
 }
 
 
 4. 원인 분석
 
-사실: 정책 경계와 기존 충돌/정상 낙하 보존을 시험 범위에서 확인했고 실제OFF 실행에서 후보 계측이 생성됐다. OFF는 원래 입력을 그대로 전달한다. 가설: 준비 구간 정렬 유지가 실제 진입 지연/고지대 미도달을 줄일 수 있다. 미검증: ON 실제 군집 효과,64 회귀, 반복 비교, 실제 표시 애니메이션 개선. 반증된 시험 가정: authored 경계 또는 첫 바닥 미지원 샘플만으로 실제4cm 이동 끝이 낙하점이라고 볼 수 없었다. fixture를 수정했으며 기존 정책을 완화해 통과시키지 않았다.
+관찰: Creature 등록은 handler0x140b71f80으로 연결된다. non-null receiver+0x620을 공유 helper0x140b16b20으로 전달한다. Human 측 handler도 같은 helper로 향한다. Win64 인자 규약에 따라 마지막 float로 해석한 XMM3는 XMM6에 보존되고 controller+0x24에 저장된다. controller+0x1c/+0x20은0으로 초기화된다. 같은 인스턴스 포인터면 이 갱신을 건너뛰고, controller flag에 따라 duration을0으로 만들기도 한다.
+
+소비 함수는 같은 controller receiver를 RSI에 보존한다. +0x20의 누적시간을 +0x24와 비교하고, 미완료일 때 update delta를 더한 뒤 duration으로 나눠0~1로 제한한다. 실제1과3 상수 및 곱셈은 u*u*(3-2*u) 형태다. 그 값은 +0x1c에 저장되고 뒤의 virtual call+0x28에 XMM3로 전달된다.
+
+해석: 이 조사 경로에서 duration은 인스턴스 전환 혼합시간이며, 관찰된 가중치 계산과 맞는다. 이름만으로 blending이라고 추측한 이전 상태보다 구체적인 근거다. 독립적인 지속 평가주기/retained-buffer duration setter로 사용하는 근거는 확보하지 못했다. 실행으로 모든 부수효과나 다른모드를 검증한 것은 아니므로 API 전체에 시간 효과가 전혀 없다고 일반화하지 않는다. 이 인자 조절로 현재 끊김/평균 재생속도를 해결했다는 주장은 하지 않는다.
 
 5. 검증 수준
 
-정책/기하: 진단 성공. 실제OFF: 정상 종료와 개별 결과는 위 수치. 후보ON: 미실행.8→64 회귀: 미완료. 반복 검증 완료/최종 수용: 아님. CPU callback clock과 보이는 애니메이션 시간은 동일하다고 간주하지 않는다. 시각/성능 개선 미수용,20ms p95는 미달성 목표다.
+진단 성공: 제한된 정적 등록·인자·필드·가중치 소비 연결.28개 명령 검증은 실제 게임 회귀28개를 뜻하지 않는다. 런타임 호출 효과/반복 검증/시각 개선/모든14동작/64명 기능/20ms p95/최종 수용은 미실행 또는 미수용이다.
 
 6. 변경 사항
 
-subset_entry_preparation_contact.c를 추가하고 빌더에 연결했다. launcher의 별도 runtime OFF/ON 옵션과 양쪽 공통 detail trace를 추가했다. 기존 audit의 expected-build를 명시할 수 있게 했으며 기존47A7 기본값을 유지했다. 새 실행 trace 검증기와 단일요인 비교기를 준비했다. source-delta/packed source/signature 증거는 candidate-711C에 보존했다. 안전 종료 후 운영 기준 D61D 서명본으로 복원·재검증했다. 후보 source는 남아 있으나 현재 로드되는 PBO는 D61D다.
+literal binding 검사기와 정적 flow witness 검증기를 추가했다. 게임 코드·PBO·그래프·서명은 변경하거나 재생성하지 않았다. 기존3개 PBO의 DSCheck 서명 재검증은 모두 성공했다. 키를 배포하거나 공개하지 않는다. 실제 클라이언트의 동작 차이는 없다.
 
 7. 원시 증거
 
-실행ID runtime-20261029-220337. 각 validation의 실패/성공 engine-compile, profile 로그,26정책·8기하 TSV, 실제OFF state/contact/clock/entry TSV와 분석 JSON을 해시 검증해 아래 목록으로 연결한다. 기존 보고서/로그는 덮어쓰지 않았다. CUA 실제 장면은 한 시점 관찰이며 영상이나 시간적 부드러움 측정이 아니다. 공개 패킷은 선정 함수/대표 행만 제공하고 로컬 raw 전체·경로·키·게임 자산을 공개하지 않는다.
+instance-duration-binding 묶음의 등록 참조, handler 범위, 공유 helper, consumer, 선택 상수/명령 및 witness JSON을 아래해시로 연결한다. 현재 바이너리 해시는 byte 검사 시 확인한 대상 식별자다. 원본 게임 자산 전체를 복사/공개하지 않는다. 공개 패킷은 선택 flow와 명령12개만 포함하며 전체 disassembly나 실행 증거인 것처럼 표시하지 않는다. 원시 JSON·과거 보고서는 보존했다.
 
 8. 잔여 문제
 
-자원/화면 사용이 안정되면 동일711C와 같은 계측으로8 OFF/ON을 비교하고64 OFF/ON 및 반복 검증으로 진행한다. 이번OFF의 자원 간섭 때문에 필요하면 기준판부터 다시 수집한다. 단일 실행의 좋은 수치만으로 최적화 성공을 선언하지 않는다. FOLLOW 목표방위와 진입 정렬 간 간섭은 별도 후보로 남긴다. CPU 포즈 대 실제 표시 시간과64 비용 기여도는 별도 실험이다. 정상 낙하를 실패로 제거하지 않는다.
+새 지원 표시간격 제어는 아직 미확보다. 평균속도 TimeScale 대조는 이미 수행됐고 경계 점프를 만든 previous-period 후보도 거부됐으므로 같은 실험을 새 성과로 반복하지 않는다. 새 후보가 생기면 평균속도·세대 경계 점프·본 source fit·8부품 동기·공격/착지 시계를 함께 검증한다.
 
-원본 보고서 ID: 2026-10-29_221145_232625+0900_npc-entry-preparation-policy.md
-원본 SHA-256: 7c8f48a8561a44cc76daa3bf2906c36d86eb7668afe7cd66ac57398bf6bc7d73
+다른 승인 게임 시험이 실제 화면을 사용 중이라 이번에 새 클라이언트를 실행하지 않았다. 여유 메모리는 회복됐으므로 이전0.9GiB 상태가 계속된다고 보고하지 않는다. 화면 사용이 끝나면 보존한711C로8 OFF/ON 및64 회귀를 이어간다. 최신 완료한8 OFF는 도착8/8·고지대누락0·낙하복귀10/10이며 ON 효과는 여전히 미검증이다.64 비용 통제·실제 표시 품질은 별도 실험으로 유지한다.
+
+원본 보고서 ID: 2026-10-29_222610_529448+0900_npc-instance-duration-binding.md
+원본 SHA-256: 8a3190066b869ee0ef066d6223984811a7886f81a6dced51b1acff7656daccf2
 이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
 
-선정 함수·대표 기록: [검토 패킷](../downloads/checkpoints/2026-10-29_221145_232625+0900_npc-entry-preparation-policy_evidence.txt)
+선정 함수·대표 기록: [검토 패킷](../downloads/checkpoints/2026-10-29_222610_529448+0900_npc-instance-duration-binding_evidence.txt)
 
 [이전 기능 분석](../downloads/admission-report.txt) · [이전 애니메이션 분석](../downloads/animation-report.txt)
