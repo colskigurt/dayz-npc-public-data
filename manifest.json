@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261028T195520-clock-conservation-repeat-20261029",
-  "generatedAt": "2026-10-28T19:55:20.109189+00:00",
-  "exportedAt": "2026-10-28T19:55:20.109189+00:00",
+  "snapshotId": "snapshot-20261029T034646-actor43-wide-handoff-20261029",
+  "generatedAt": "2026-10-29T03:46:46.824911+00:00",
+  "exportedAt": "2026-10-29T03:46:46.824911+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -41,8 +41,8 @@
     "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-28T19:55:20.109189+00:00",
-    "staleAfter": "2026-10-29T19:55:20.109189+00:00",
+    "sourceUpdatedAt": "2026-10-29T03:46:46.824911+00:00",
+    "staleAfter": "2026-10-30T03:46:46.824911+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -59,18 +59,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 11369,
-      "sha256": "4ee1cb52e27702dab81b75f1172e3a0ab0d7bb06f1e973c1234e157249108a3e"
+      "bytes": 19081,
+      "sha256": "18f18fc185f0a87f2ca7ca2d2ae03f8616145b968441101663c95c9c0db99b38"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 238117,
-      "sha256": "bb7597bc05fdd3eca6f6d289fbcfae66eea262bdfb1c35b4d60814d78f96a2ff"
+      "bytes": 239817,
+      "sha256": "ce1bd6fd7fc47f1e9579ec2d2fc40271341db224a520a4be3253e464a3fe5d57"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 238113,
-      "sha256": "7046001205c2bb7bd60bf20b3b9764c16781dced91717170ca4db784fc6a8304"
+      "bytes": 239813,
+      "sha256": "86c1d1e4c9d7698e3d9c2ad2e714eb58da58e3b765d4203f8e9460b32fa84f33"
     },
     {
       "path": "api/public/schema.json",
@@ -273,14 +273,34 @@
       "sha256": "dba78e7ea94dc3a4f2d6f26b21ea2d92ac6ac0ee81ff123dc246b1a1161b6c1a"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261029T034646-actor43-wide-handoff-20261029/experiments.json",
+      "bytes": 239817,
+      "sha256": "ce1bd6fd7fc47f1e9579ec2d2fc40271341db224a520a4be3253e464a3fe5d57"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T034646-actor43-wide-handoff-20261029/metrics.json",
+      "bytes": 239813,
+      "sha256": "86c1d1e4c9d7698e3d9c2ad2e714eb58da58e3b765d4203f8e9460b32fa84f33"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T034646-actor43-wide-handoff-20261029/status.json",
+      "bytes": 239812,
+      "sha256": "fdc3aa0ce7a3fb7fe45a61e9017fdeff3717dcde3c62143362e096c8874e9592"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 238112,
-      "sha256": "dba78e7ea94dc3a4f2d6f26b21ea2d92ac6ac0ee81ff123dc246b1a1161b6c1a"
+      "bytes": 239812,
+      "sha256": "fdc3aa0ce7a3fb7fe45a61e9017fdeff3717dcde3c62143362e096c8874e9592"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 735,
-      "sha256": "824107ce38de69128b132fd217b2e420abfb99b22b0a7b07e617dcdd214e370d"
+      "bytes": 725,
+      "sha256": "3c10ec6943d213c56b389f01d37db1a7b34177253647fec56340f80f84a7fef3"
+    },
+    {
+      "path": "data/experiments/actor43-wide-handoff-20261029.json",
+      "bytes": 36047,
+      "sha256": "a7cbb71f4150329db028f245ccb7206fb2b2b92a8fc974d1a0f8a5ff8c2393c4"
     },
     {
       "path": "data/experiments/admission-latch-runtime-20261028.json",
@@ -508,14 +528,34 @@
       "sha256": "b6aa69aa8476436f8ee976eaff5e49398b76f47f1bc3b1aa5b0d2c57474f070e"
     },
     {
+      "path": "downloads/checkpoints/2026-10-29_124624_788757+0900_npc-actor43-wide-handoff.txt",
+      "bytes": 7694,
+      "sha256": "8600b676631fb3863e85ff8f3d52d4ac01bb8961d322a0e9920b669c5ae56c77"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-29_124624_788757+0900_npc-actor43-wide-handoff_evidence.txt",
+      "bytes": 18824,
+      "sha256": "e6c89a9efa5b369db7c1c20d19307dd20917be1820f7278599a0ff92bf4ff00c"
+    },
+    {
       "path": "README.md",
-      "bytes": 8359,
-      "sha256": "49e12ca210fdc1b83d7322970ec9a126332309e990676fdcb9562e47707877db"
+      "bytes": 8719,
+      "sha256": "031f2e95e5ad5931070d2a6f1cd40913a8cd6978d2cb5ee28c0a72dd390554ff"
     },
     {
       "path": "reports/accessibility-20261028.md",
       "bytes": 8467,
       "sha256": "7879f96329fbb2c0f4ee32a1c1b6ac49dd45ba0d1bfa218d93a7e31412a4dc4b"
+    },
+    {
+      "path": "reports/history/pre-actor43-wide-handoff-20261029-latest.md",
+      "bytes": 8345,
+      "sha256": "ad0fee2d02ed5f3f60fba38eaf4fe6e7878508a17c874121ac77c0e94c2a647f"
+    },
+    {
+      "path": "reports/history/pre-actor43-wide-handoff-20261029-operations-latest.md",
+      "bytes": 8345,
+      "sha256": "ad0fee2d02ed5f3f60fba38eaf4fe6e7878508a17c874121ac77c0e94c2a647f"
     },
     {
       "path": "reports/history/pre-clock-conservation-20261029-latest.md",
@@ -649,8 +689,8 @@
     },
     {
       "path": "reports/latest.md",
-      "bytes": 8345,
-      "sha256": "ad0fee2d02ed5f3f60fba38eaf4fe6e7878508a17c874121ac77c0e94c2a647f"
+      "bytes": 8027,
+      "sha256": "12c3b0272e8a0111365811dd09e1e2dd0eb8b510de807c971d22c49f601f0025"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -659,8 +699,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 8345,
-      "sha256": "ad0fee2d02ed5f3f60fba38eaf4fe6e7878508a17c874121ac77c0e94c2a647f"
+      "bytes": 8027,
+      "sha256": "12c3b0272e8a0111365811dd09e1e2dd0eb8b510de807c971d22c49f601f0025"
     }
   ]
 }

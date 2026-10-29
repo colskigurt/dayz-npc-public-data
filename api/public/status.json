@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261028T195520-clock-conservation-repeat-20261029",
-  "generatedAt": "2026-10-28T19:55:20.109189+00:00",
+  "snapshotId": "snapshot-20261029T034646-actor43-wide-handoff-20261029",
+  "generatedAt": "2026-10-29T03:46:46.824911+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -6031,7 +6031,7 @@
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "Existing64 final64/64; actor43 EGRESS_STALL eventually ARRIVED but timeout handoff remains failure. HIGH_HOLD missing13/14/43. No new functional run."
+      "description": "Existing64 final64/64; HIGH_HOLD missing13/14/43 and actor43 EGRESS_STALL remain. New frozen-pose executor: wide_on4 premature handoffs +1stall,0safe handoffs. Not a live64 regression."
     },
     {
       "id": "matched-repeats",
@@ -6324,23 +6324,41 @@
       "uri": "/data/experiments/clock-conservation-repeat-20261029.json",
       "sha256": "a78818a3b8df68a77d7721c5a059ac855e24ca547c651492070723b48fbf5532",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "actor43-wide-handoff-20261029-report",
+      "uri": "/downloads/checkpoints/2026-10-29_124624_788757+0900_npc-actor43-wide-handoff.txt",
+      "sha256": "8600b676631fb3863e85ff8f3d52d4ac01bb8961d322a0e9920b669c5ae56c77",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "actor43-wide-handoff-20261029-review",
+      "uri": "/downloads/checkpoints/2026-10-29_124624_788757+0900_npc-actor43-wide-handoff_evidence.txt",
+      "sha256": "e6c89a9efa5b369db7c1c20d19307dd20917be1820f7278599a0ff92bf4ff00c",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "actor43-wide-handoff-20261029-json",
+      "uri": "/data/experiments/actor43-wide-handoff-20261029.json",
+      "sha256": "a7cbb71f4150329db028f245ccb7206fb2b2b92a8fc974d1a0f8a5ff8c2393c4",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-28T19:55:20.109189+00:00",
-    "staleAfter": "2026-10-29T19:55:20.109189+00:00",
+    "sourceUpdatedAt": "2026-10-29T03:46:46.824911+00:00",
+    "staleAfter": "2026-10-30T03:46:46.824911+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261028T195520-clock-conservation-repeat-20261029",
-      "generatedAt": "2026-10-28T19:55:20.109189+00:00",
-      "sourceUpdatedAt": "2026-10-28T19:55:20.109189+00:00"
+      "snapshotId": "snapshot-20261029T034646-actor43-wide-handoff-20261029",
+      "generatedAt": "2026-10-29T03:46:46.824911+00:00",
+      "sourceUpdatedAt": "2026-10-29T03:46:46.824911+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-28T19:55:20.109189+00:00",
+      "at": "2026-10-29T03:46:46.824911+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -6355,7 +6373,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261028T195520-clock-conservation-repeat-20261029/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261029T034646-actor43-wide-handoff-20261029/"
   },
   "experiments": [
     {
@@ -6895,6 +6913,29 @@
         "matched-repeats"
       ],
       "replication": "Two same-call clock observations768calls/766pairs; only second is entirely foreground. Existing speed-onlyABBA was not rerun."
+    },
+    {
+      "id": "actor43-wide-handoff-20261029",
+      "title": "43번 출구 복구: 범위 확장 뒤 조기 종료 재현",
+      "track": "functional",
+      "sourceRunId": [
+        "runtime-20261028-063933"
+      ],
+      "buildId": [
+        "82CCB0EAB79FDFA90D84CEAA4C10A3C23E2742D9480CE229C0579F0D6945151E"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [],
+      "evidenceReferences": [
+        "actor43-wide-handoff-20261029-report",
+        "actor43-wide-handoff-20261029-review",
+        "actor43-wide-handoff-20261029-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "One same-build paired frozen-pose planning and one10-case blocked-walk executor diagnostic; no repeated live effect test."
     }
   ],
   "kind": "status"

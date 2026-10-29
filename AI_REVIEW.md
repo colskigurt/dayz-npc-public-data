@@ -1,164 +1,374 @@
 # DayZ NPC AI — 외부 세션 검토 자료
 
-Snapshot: snapshot-20261028T195520-clock-conservation-repeat-20261029
+Snapshot: snapshot-20261029T034646-actor43-wide-handoff-20261029
 
-활성 창400표본에서 시간 회계 재현 — 수정 경로 한계와43번 출구 실패 분리
+43번 출구 복구: 범위 확장 뒤 조기 종료를 재현 — 후보 미채택
 
-작성: 2026-10-29T04:54:41.007275+09:00
+작성: 2026-10-29T12:46:24.788757+09:00
 
 1. 작업 목표
 
-입력 dt·누적기 초기화·graph-owner 시계를 같은 호출에서 읽은 결과가 반복되는지 확인한다. 활성 창 상태가 유지된 표본을 확보하고 실제 영상 대응을 추가한다. 기존 B8FB AI와 정상 낙하·복구는 보존하며, 평균속도·시각 품질·64명 기능·성능을 별도로 판정한다.
+기존 64명 시험의 43번 EGRESS_STALL을 실제 기록 포즈와 코드에 연결한다. 정상 낙하·착지·재추적은 유지하고, 출구를 찾은 것과 안전하게 복구를 끝낸 것을 구분한다. 애니메이션 속도·화면 품질·64명 비용은 별도 판정한다.
 
 2. 실제 수행
 
-첫043225 실행을 보존하고 새044620 실행을120초 진행했다. 동일3개 서명PBO·고정run·AI/이동OFF·1논리개체/8부품·VSyncON 조건이다. 로딩 중 창을 전경으로 가져왔고, 이번 observer는 실제 HUD의 appActive=true가5초 유지된 뒤 attach했다. 기본 watcher는0초로 유지하며 이번만5초를 지정했다. helper 진입 한 곳에서 입력 spill·누적기·retained duration·graph clock을 읽었고 숫자/인자/상태 쓰기나 반환 hook은 없다. 게임과45초 녹화는 정상 종료됐다.
+원본 runtime-20261028-063933의 43번, generation1, EGRESS 구간 5개 포즈를 정적 컨테이너 씬에 재현했다. 위치·방향·lift·idle offset과 4개 본 좌표를 고정하고 기존 LandingSpace, 발 지지, 계획 여유, 몸체 끝점, 전체 경로 및 첫 걸음 검사를 호출했다. 살아 있는 군집·플레이어·시간에 따른 애니메이션 변화는 재현하지 않았다.
 
-분석기의 callback 연결은 float값을 다시 검색하는 대신 실제 event ordinal로 연결하도록 보완했다. 입력/누적기/graph 산술과 원점/파일ACK/HUD의 검사는 유지했다. 새 원시·기존 보고서는 덮어쓰지 않았다.
+탐색 4m 안에서 유효 끝점이 없음을 확인한 뒤, 기존 범위에 후보가 없을 때만 4.5m 한 링을 더 검사하는 opt-in 후보를 만들었다. 추가 링은 첫 걸음 검사를 반드시 통과해야 한다. 기존 기본값·실행 속도·1.5m 누적 이동 제한·6초 lease·접촉 검사는 유지했다. B8FB 원본 소스와 서명 배포물을 로컬에 보존했다.
 
-처음 영상 분석의 두3초 구간에서는 native/CPU/영상 교집합이103쌍이었다. 이를 전체 계측 구간의 화면 증거로 확대하지 않았다. 기존 정확HUD의 mission-video 시간차로 native 첫 활성 연결0.5초 후부터6초를 선정해 video25.413/28.413초에서 다시 추출했다. 새파일은conservation-window-*로 저장했다.
+같은 새 PBO에서 wide off/on을 비교했다. 이어 실제 Egress/ECPlan/복구 이동 함수를 호출하되 Native DriveGround는 항상 차단되는 명시적 시험 대역으로 교체했다. 이는 복구 실행과 종료 순서의 격리 시험이며 실제 AI 이동 회귀가 아니다. 기존 컴파일용 loopback 서버만 실행·종료했고 클라이언트와 운영 서버는 실행·변경하지 않았다.
 
 3. 측정 결과
 
-|항목|첫 실행043225|반복044620|
-|---|---:|---:|
-|호출|368|400|
-|연속쌍/정확 graph 증가|367|399|
-|활성 창 호출|364|400|
-|입력 합 ms|7964.000149|7969.000174|
-|graph 증가 ms|5249.919891|5149.921417|
-|버린 초과분 ms|2747.000050|2853.000008|
-|회계 잔차 ms|0.000000|0.000000|
-|graph/진입 벽시간|0.658766|0.646232|
+|검사|결과|검증 범위|
+|---|---|---|
+|원본 기록|43번 60.281초 EGRESS_STALL, 최종 ARRIVED|최종 도착이 중간 실패를 없애지 않음|
+|정적 포즈 원본 탐색|0/5 유효 계획|5개 고정 포즈|
+|4.5m 후보 전체 검사|7개 후보, 4/5 포즈에서 가능|끝점·전체 경로·첫 걸음|
+|같은 PBO off/on 계획|0/5 → 4/5|170+40+40행 무결성 확인|
+|실행 off|5/5 EGRESS_STALL|Native Walk 차단 대역 조건|
+|실행 on|4개 조기 FOLLOW, 1개 EGRESS_STALL|안전한 handoff 0/5|
+|조기 전환 시점|1.5초, 이동 약0.575m|4개 모두 fullEndpoint=false|
+|실행 trace|726행, 10개 케이스|순서·위치 연속성·0.04m step/1.5m lease 경계 검사 통과|
+|분석기 검사|6개 통과|거리 초과·누적 카운터·잘못된 성공 판정 회귀|
 
-두 실행 합768호출·766연속쌍에서 graph 증가가 해당float32 식과 일치했다. 양쪽 누적기 예측잔차와 명시적float32 반올림 후 회계잔차는0이다. 첫 실행은 background4개를 분리한 관측이며, 새 실행은400개 모두 활성 창의 고유HUD에 연결됐다. 서로 다른 포커스 조건을 같은 조건의 완전한 반복으로 숨기지 않는다. 반복된 것은 시간 전달 구조다.
-
-새 실행 입력/native 진입시간 비율0.999980, graph/입력0.646244.103초과 중 초과분 중앙약30ms·최대33ms였다. script callback 증가5149.900ms와graph5149.921417ms의 차이는−0.021417ms다. callback 문자열 반올림을 고려하며 비트일치를 주장하지 않는다.
-
-새 실행399 CPU/source proxy 쌍의 적합p95=11.698mm, 시간잔차RMS=2.834ms, 상관0.977028. 처음분석 영상103쌍 상관0.941203은 보존했고, 추가로 선정한6초는360개HUD 모두정확·298 native/CPU/영상쌍·CPU/몸mask변화 상관0.948443이었다. 지각 품질 점수나 직접 clip phase는 아니다. 단순 마지막A 글자 비교는 평가횟수 증거로 사용하지 않았다.
-
-새 미션foreground p50/p95/p99=19.957/34.713/36.411ms, 최대52.325ms. 원시읽기 p50/p95/p99=0.0175/0.0194/0.0260ms. 계측·본조회·녹화를 포함하므로64명 비용이나 최적화 효과로 해석하지 않는다. 새8/64 기능회귀·GPU/Present·할당/GC는 미실행이다.
+이번 새 8/64명 기능 회귀, p50/p95/p99, AI/경로/접촉 비용, 그래프/표시 갱신, GPU/Present, 할당/GC는 미측정이다. 동기 호출의 시험 시간 인자는 실제 벽시간 성능값이 아니다. 20ms p95는 계속 목표다.
 
 4. 원인 분석
 
-확인: 활성 창만 있는 반복에서도 실제입력이약7.969초 진행하는 동안graph는약5.150초 증가하고 누적기에남지않는 초과분이약2.853초 발생했다. 입력이50ms를넘었을 때graph에50ms만 전달되고 누적기를0으로만드는 이 경로가 느린graph진행에 기여한다는 동일호출 근거가 반복됐다. 모든 클립·모드·GPU단계까지 확대하지 않는다.
+확인된 사실: 기록 위치 주변의 완전한 출구는 4m 범위 밖에 있었다. 4.5m 후보는 여러 포즈에서 기존 물리 검사를 통과했다. 하지만 부모 Egress가 기존 EgressGoal까지 0.15m 이내라는 조건과 Floor만으로 CompleteEgress를 호출했다. 별도 복구 목표까지 도달하기 전 약0.575m 이동 지점에서 FOLLOW가 되었고 전체 끝점 검사는 여전히 실패했다.
 
-기존지원경로와 대조: TimeScale 변수는 고정run 평균속도를 맞추는 반응이 이미A/B/B/A에서 반복됐다. 하지만 정규화 시간증분RMS는약24ms로 줄지 않았고source fit은약14→29mm로 커졌다. LOD0의20Hz유지포즈나이전세대주기표시후보도 이미 부족한 결과를 보였다. 같은방법을 새수정처럼 반복하지 않는다. 현재지원API조사로는 Creature 평가시간과독립적인 표시보간구간 setter를 확보하지 못했다. 엔진전체에 그런기능이 없다는 증명은 아니다.
+추정: 확장 복구 경로의 실행 소유권과 기본 종료 조건이 일치하지 않아 실제 군집에서도 복구가 조기에 끝날 수 있다. 이것은 고정 포즈·차단 대역에서 재현한 연결이며 실제 64명에서 발생 빈도나 모든 혼잡의 원인까지 입증하지 않았다.
 
-별도기능추적의 다음표적을 구체화했다. 기존063933의43번은generation1,60.281초에EGRESS→FOLLOW/EGRESS_STALL로 전환했고 최종결과는ARRIVED였다. 전체미종료개체는0이고좁은clearance lease감사위반도0이지만,timeout/handoff 실패라벨이 사라지는 것은 아니다. 최종도착을중간출구성공으로바꾸지않는다. 이사례의접촉표본은컨테이너/본검사차단을가리키며 다음분석에서실제첫걸음거부와handoff계약을연결한다.
+반증된 주장: 탐색 범위 확대만으로 실패가 해결됐다는 해석, Failure가 빈 문자열이면 안전한 종료라는 해석은 이번 증거와 맞지 않는다. 후보는 미채택이다. 다섯 번째 포즈는 전체 경로 검사에 막히므로 검사 완화로 성공시키지 않았다.
+
+이전 진단 코드 실패도 보존했다. unrolled replay의 누적 카운터, float 위치 반올림에 따른 lease 초과, 다중 lease 카운터 불일치, snapshot_count 실패와 externalcount의 일부 행 누락은 의미 검증에서 거부했다. 이들을 게임 엔진 결함이나 NPC 성공 증거로 보고하지 않는다. 이번 staging 도구의 중복 텍스트 검색 실패는 실행 전에 수정했으며 실패 당시에는 새 mission이 생성되지 않았다.
 
 5. 검증 수준
 
-반복 검증 완료: 이 빌드·관측 경로의 동일호출 시간 회계 구조가 두 실행에서 일치했다는 범위다. 첫 실행의4background를 포함한 조건 차이는 유지한다. 진단 성공: 새 활성400표본과native/CPU/영상298쌍 연결, 기존지원제어의 한계 대조,43번기능실패의다음사례선정.
+진단 성공: 정적 포즈에서 4m 범위 제한과 조기 종료 순서를 분리했다. 회귀 통과: 분석기 6개 검사와 새 PBO의 엔진 컴파일·기존 smoke 검사. 반복 검증 완료: 실제 live 효과에는 해당하지 않음. 최종 수용: 기능·시각·성능 모두 미수용.
 
-미실행/미수용: 지원되는배포수정,원속도회복,지각적부드러움,모든14상태,새8→64기능회귀,64비용/20ms p95,최종수용. 진단반복을기능·시각·성능완료로치환하지않는다.
+같은 빌드에서 off/on을 비교했지만 시간에 따라 움직이는 개체가 아니므로 8명 또는 64명 회귀 통과로 승격하지 않는다. 원본 64명 최종64/64, HIGH_HOLD 미도달13/14/43, EGRESS_STALL1, climb-end0의 기존 판정은 유지한다.
 
 6. 변경 사항
 
-watch_horde_frame_order_calls.ps1에선택적MinForegroundSeconds와실제watcher소스보존을추가했다.기본값0이라기존호출지연은유지한다.analyze_horde_clock_conservation.py는event ordinal로callback을연결한다.재사용가능한conservation 영상교집합도구와파일명옵션을추가했다.기존같은이름의파일을덮어쓰지않는다.
+subset_motion_contracts.c에 egress-wide-exit.flag로 제한한 4.5m 후보 링과 추가 링의 필수 첫 걸음 검사를 추가했다. 기본 실행은 이 플래그를 사용하지 않는다. 새 integration 빌드는 82CCB0EA 계열이며 전체 ID는 검토 패킷에 제공한다. 빌드·서명·서명 검증은 성공했다. 개인 키는 배포물이나 공개 자료에 포함하지 않았다. 원본 B8FB와 기존 보고서·원시 로그를 보존했다.
 
-B8FB/453D/0C6E PBO는변경·재빌드·재서명하지않았으며새실행전3개기존서명검증모두성공.개인키는배포하지않았다.운영서버변경없음.실제실행driver/JS/config는각profile보존본이기준이다.
+전용 data-driven 포즈/동일 빌드 A/B/실행 시험, 행 검증기, 실패 판정 회귀 검사를 추가했다. 애니메이션 배속·보간·본 갱신 방식은 변경하지 않았다.
 
 7. 원시 증거
 
-043225와044620의launch/native/원점bridge/HUD/회계·source proxy·영상연결을해시로연결한다.044620의확정영상·검사이미지·watcher소스·새6초선정계획과파생물도보존했다.기능다음사례는기존063933 state-contract/egress journal분석해시로연결한다.이것은새64명시험이아니다.
+원본 runtime-20261028-063933, actor43의 계획 포즈와 상태 전환을 사용했다. controlled-actor43-table, wide-ab, executor 및 거부된 이전 진단들의 mission·compile 결과·TSV·로그·분석 JSON과 당시 생산 도구를 SHA-256으로 연결했다. 새 컴파일 PID가 종료된 뒤 기존 게시 도구로 파일 안정성·JSON·기존 해시를 재검증했다.
 
-기존publish 도구로안전종료·저장전후파일안정성·SHA256·JSON을확인한다.공개패킷은집계와선정실패사례만포함하며전체trace/영상/설치자산/내부경로/프로세스정보를공개하지않는다.
+공개 검토 패킷에는 선정한 집계·실행 종료행·관련 자체 함수와 조건을 제공한다. 전체 원시 로그·설치 자산·PBO·내부 경로·프로세스 정보는 공개하지 않는다. 텍스트 자료로 애니메이션의 지각 품질을 판정할 수 없다.
 
 8. 잔여 문제
 
-애니메이션의느린진행원인은이경로에서더구체화됐지만지원되는수정수단은아직미확보다.지원API/그래프소비정책을확보하기전새보간·임의배속·누적기패치를배포하지않는다.후보가생기면평균속도뿐아니라세대경계점프·source적합·공격/착지시계·8부품동기화를함께검증한다.
+다음 기능 실험은 확장 복구가 시작된 후에도 안전한 끝점 검사와 실제 추적 재개가 같은 조건을 따르도록 소유권·종료 순서를 최소 수정하는 것이다. 모든 실제 이동 단계의 지지/접촉 검사와 1.5m/6초 제한을 유지하고, 제한 뒤 재계획·새 lease도 별도로 검증한다. 고정 포즈 실행과 실제 8→64명 회귀가 통과하기 전 후보를 채택하지 않는다.
 
-다음기능작업은43번EGRESS_STALL의동일generation에서현재포즈접촉거부·복구시도·FOLLOW전환을연결하는것이다.기존정상낙하/복구와지원검사는유지한다.HIGH_HOLD13/14/43과stall실패는해결됐다고갱신하지않는다.64비용기여도는별도통제시험으로관리하며20ms p95를계속목표로둔다.
+사용자의 “0.5배처럼 느리다”는 피드백은 검토 중이다. 이전 시간 회계 두 실행은 약0.646/0.659배 graph 진행을 보였으나 사용자가 본 장면을 정확히0.5배로 측정한 것은 아니다. 지원되는 독립 표시 갱신 제어를 아직 확보하지 못했고 단순 배속만으로는 시간 증분 불균일이 해결되지 않아 채택하지 않았다. 이 기능 실험에서 속도·시각 개선을 주장하지 않는다. 64명 비용 귀속과 사용자 인벤토리 예외도 별도 미해결이다.
 
-원본 보고서 ID: 2026-10-29_045441_007275+0900_npc-clock-conservation-repeat.md
-원본 SHA-256: d736a6ba6cb819287d49163dd3cf6a0a17638d470556f431cd07bbf8827a1dc8
+원본 보고서 ID: 2026-10-29_124624_788757+0900_npc-actor43-wide-handoff.md
+원본 SHA-256: 7366e5b5c326991bfec7f63ae159af1ac7f474ae18894f7963efc7ab5b7db08c
 이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
 
-선정 집계와기존43번실패사례 — 전체trace아님
+Selected aggregate and all10 terminal cases; not full trace
 {
-  "clockRuns": [
-    {
-      "runId": "runtime-20261029-043225",
-      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "calls": 368,
-      "pairs": 367,
-      "exactGraphSteps": 367,
-      "inputSumMs": 7964.000149164349,
-      "graphAdvanceMs": 5249.919891357422,
-      "overshootMs": 2747.0000497996807,
-      "residualMs": 0.0,
-      "graphVsWall": 0.6587663223274876,
-      "foregroundCalls": 364,
-      "exclusions": {
-        "background": 4
-      },
-      "missionFrameMs": {
-        "n": 5214,
-        "p50": 20.006,
-        "p95": 35.25217,
-        "p99": 37.16851499999999,
-        "maximum": 64.2406
-      },
-      "nativeCpuVideoPairs": 237,
-      "cpuVisibleCorrelation": 0.9448867333370273,
-      "sourceProxyResidualRmsMs": 3.004886712148295
+  "buildId": "82CCB0EAB79FDFA90D84CEAA4C10A3C23E2742D9480CE229C0579F0D6945151E",
+  "sourceRunId": "runtime-20261028-063933",
+  "entityId": 43,
+  "planning": {
+    "baselinePlans": 0,
+    "candidatePlans": 4,
+    "rowCounts": {
+      "actor43-table.tsv": 170,
+      "actor43-table-far.tsv": 40,
+      "actor43-table-corridor.tsv": 40
     },
-    {
-      "runId": "runtime-20261029-044620",
-      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "calls": 400,
-      "pairs": 399,
-      "exactGraphSteps": 399,
-      "inputSumMs": 7969.000173732638,
-      "graphAdvanceMs": 5149.921417236328,
-      "overshootMs": 2853.00000756979,
-      "residualMs": 0.0,
-      "graphVsWall": 0.646231545163243,
-      "foregroundCalls": 400,
-      "exclusions": {},
-      "missionFrameMs": {
-        "n": 5248,
-        "p50": 19.9568,
-        "p95": 34.712925,
-        "p99": 36.411120000000004,
-        "maximum": 52.3249
-      },
-      "nativeCpuVideoPairs": 298,
-      "cpuVisibleCorrelation": 0.9484434836839188,
-      "sourceProxyResidualRmsMs": 2.8344935263030187
-    }
-  ],
-  "functionalCase": {
+    "snapshotsWithFullFarCandidate": 4
+  },
+  "executor": {
+    "buildId": "82CCB0EAB79FDFA90D84CEAA4C10A3C23E2742D9480CE229C0579F0D6945151E",
+    "engineCompilePassed": true,
+    "traceIntegrityPassed": true,
     "sourceRunId": "runtime-20261028-063933",
-    "selectedFailure": {
-      "runId": "runtime-20261028-063933",
-      "entityId": 43,
-      "eventOrdinal": 623,
-      "seconds": 60.281,
-      "previousState": "EGRESS",
-      "newState": "FOLLOW",
-      "transitionReason": "EGRESS_STALL",
-      "metadataEvent": false,
-      "recoveryGenerationDerived": 1,
-      "position": "<4511.519043, 339.181152, 10239.804688>",
-      "contactSampleAge": 0.11899999999999977,
-      "contactStatus": "NATIVE_JOINT_WORLD_0",
-      "contactPhase": "EGRESS",
-      "landingDiagnostic": "CLEAR",
-      "nativeSameCallSequence": "818",
-      "nativeRecoveryGeneration": "1",
-      "nativeContactStatus": "StaticObj_Container_1C",
-      "nativeMotionElapsedBeforeTransition": "0",
-      "terminalOutcome": "ARRIVED"
+    "entityId": 43,
+    "rows": 726,
+    "cases": [
+      {
+        "snapshot": 0,
+        "mode": "wide_off",
+        "rows": 101,
+        "terminal": "failure:EGRESS_STALL",
+        "phase": "FOLLOW",
+        "failure": "EGRESS_STALL",
+        "fullEndpoint": false,
+        "seconds": 5.05,
+        "actualTravelMeters": 0.0,
+        "maximumStepMeters": 0,
+        "maximumLeaseMeters": 0,
+        "lastPosition": "<4511.519043, 339.181152, 10239.804688>",
+        "selectedGoal": "<0.000000, 0.000000, 0.000000>"
+      },
+      {
+        "snapshot": 0,
+        "mode": "wide_on",
+        "rows": 30,
+        "terminal": "premature_handoff",
+        "phase": "FOLLOW",
+        "failure": "",
+        "fullEndpoint": false,
+        "seconds": 1.5,
+        "actualTravelMeters": 0.5751980925857311,
+        "maximumStepMeters": 0.03027413979024116,
+        "maximumLeaseMeters": 0.575197,
+        "lastPosition": "<4511.519043, 339.179626, 10239.229492>",
+        "selectedGoal": "<4511.519043, 339.166229, 10235.304688>"
+      },
+      {
+        "snapshot": 1,
+        "mode": "wide_off",
+        "rows": 101,
+        "terminal": "failure:EGRESS_STALL",
+        "phase": "FOLLOW",
+        "failure": "EGRESS_STALL",
+        "fullEndpoint": false,
+        "seconds": 5.05,
+        "actualTravelMeters": 0.0,
+        "maximumStepMeters": 0,
+        "maximumLeaseMeters": 0,
+        "lastPosition": "<4511.519043, 339.181152, 10239.804688>",
+        "selectedGoal": "<0.000000, 0.000000, 0.000000>"
+      },
+      {
+        "snapshot": 1,
+        "mode": "wide_on",
+        "rows": 30,
+        "terminal": "premature_handoff",
+        "phase": "FOLLOW",
+        "failure": "",
+        "fullEndpoint": false,
+        "seconds": 1.5,
+        "actualTravelMeters": 0.5751980925857311,
+        "maximumStepMeters": 0.03027413979024116,
+        "maximumLeaseMeters": 0.575197,
+        "lastPosition": "<4511.519043, 339.179626, 10239.229492>",
+        "selectedGoal": "<4511.519043, 339.166229, 10235.304688>"
+      },
+      {
+        "snapshot": 2,
+        "mode": "wide_off",
+        "rows": 101,
+        "terminal": "failure:EGRESS_STALL",
+        "phase": "FOLLOW",
+        "failure": "EGRESS_STALL",
+        "fullEndpoint": false,
+        "seconds": 5.04999,
+        "actualTravelMeters": 0.0,
+        "maximumStepMeters": 0,
+        "maximumLeaseMeters": 0,
+        "lastPosition": "<4511.519043, 339.181152, 10239.804688>",
+        "selectedGoal": "<0.000000, 0.000000, 0.000000>"
+      },
+      {
+        "snapshot": 2,
+        "mode": "wide_on",
+        "rows": 30,
+        "terminal": "premature_handoff",
+        "phase": "FOLLOW",
+        "failure": "",
+        "fullEndpoint": false,
+        "seconds": 1.5,
+        "actualTravelMeters": 0.5751980925857311,
+        "maximumStepMeters": 0.03027413979024116,
+        "maximumLeaseMeters": 0.575197,
+        "lastPosition": "<4511.519043, 339.179626, 10239.229492>",
+        "selectedGoal": "<4511.519043, 339.166229, 10235.304688>"
+      },
+      {
+        "snapshot": 3,
+        "mode": "wide_off",
+        "rows": 101,
+        "terminal": "failure:EGRESS_STALL",
+        "phase": "FOLLOW",
+        "failure": "EGRESS_STALL",
+        "fullEndpoint": false,
+        "seconds": 5.04999,
+        "actualTravelMeters": 0.0,
+        "maximumStepMeters": 0,
+        "maximumLeaseMeters": 0,
+        "lastPosition": "<4511.519043, 339.181152, 10239.804688>",
+        "selectedGoal": "<0.000000, 0.000000, 0.000000>"
+      },
+      {
+        "snapshot": 3,
+        "mode": "wide_on",
+        "rows": 30,
+        "terminal": "premature_handoff",
+        "phase": "FOLLOW",
+        "failure": "",
+        "fullEndpoint": false,
+        "seconds": 1.5,
+        "actualTravelMeters": 0.5751980925857311,
+        "maximumStepMeters": 0.03027413979024116,
+        "maximumLeaseMeters": 0.575197,
+        "lastPosition": "<4511.519043, 339.179626, 10239.229492>",
+        "selectedGoal": "<4511.519043, 339.166229, 10235.304688>"
+      },
+      {
+        "snapshot": 4,
+        "mode": "wide_off",
+        "rows": 101,
+        "terminal": "failure:EGRESS_STALL",
+        "phase": "FOLLOW",
+        "failure": "EGRESS_STALL",
+        "fullEndpoint": false,
+        "seconds": 5.04999,
+        "actualTravelMeters": 0.0,
+        "maximumStepMeters": 0,
+        "maximumLeaseMeters": 0,
+        "lastPosition": "<4511.519043, 339.181152, 10239.804688>",
+        "selectedGoal": "<0.000000, 0.000000, 0.000000>"
+      },
+      {
+        "snapshot": 4,
+        "mode": "wide_on",
+        "rows": 101,
+        "terminal": "failure:EGRESS_STALL",
+        "phase": "FOLLOW",
+        "failure": "EGRESS_STALL",
+        "fullEndpoint": false,
+        "seconds": 5.04999,
+        "actualTravelMeters": 0.0,
+        "maximumStepMeters": 0,
+        "maximumLeaseMeters": 0,
+        "lastPosition": "<4511.519043, 339.181152, 10239.804688>",
+        "selectedGoal": "<0.000000, 0.000000, 0.000000>"
+      }
+    ],
+    "baselineStalls": 5,
+    "wideStalls": 1,
+    "widePrematureHandoffs": 4,
+    "wideValidatedHandoffs": 0,
+    "candidateAccepted": false,
+    "liveRecoveryAccepted": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "limitations": [
+      "Native DriveGround replaced by explicit always-blocked test delegate.",
+      "Five frozen recorded poses; no live player, peers, dynamic animation or normal Walk acceptance.",
+      "Calls run synchronously during engine smoke, not measured wall-time gameplay or performance.",
+      "Observed diagnostic handoff rejection is not a new64-agent regression result."
+    ]
+  },
+  "diagnosticAttempts": [
+    {
+      "probe": "replay",
+      "enginePassed": true,
+      "nativeCrash": false
     },
-    "finalArrivals": 64,
-    "unresolvedTerminalAgents": [],
-    "clearanceLeaseViolations": [],
-    "clearanceScope": "Observed start/end lease limits and handoff only. Existing per-step support/contact functions remain the execution gate; sparse logs do not independently verify every sweep. No performance or animation acceptance.",
-    "interpretation": "Entity43 eventually arrived, but EGRESS_STALL EGRESS->FOLLOW remains an algorithm failure label; narrower lease audit with0violations is not full movement acceptance.",
-    "next": "Trace entity43 generation1 step rejections and timeout/handoff contract; do not relabel recovered timeout as successful egress."
-  }
+    {
+      "probe": "segmented",
+      "enginePassed": true,
+      "nativeCrash": false
+    },
+    {
+      "probe": "bounded",
+      "enginePassed": false,
+      "nativeCrash": true
+    },
+    {
+      "probe": "bounded2",
+      "enginePassed": false,
+      "nativeCrash": false
+    },
+    {
+      "probe": "corridor",
+      "enginePassed": false,
+      "nativeCrash": false
+    },
+    {
+      "probe": "externalcount",
+      "enginePassed": true,
+      "nativeCrash": false
+    },
+    {
+      "probe": "table",
+      "enginePassed": true,
+      "nativeCrash": false
+    },
+    {
+      "probe": "wide-ab",
+      "enginePassed": true,
+      "nativeCrash": false
+    },
+    {
+      "probe": "executor",
+      "enginePassed": true,
+      "nativeCrash": false
+    }
+  ]
 }
+
+Own ECPlan source excerpt; remainder linked by local immutable evidence inventory
+    bool ECPlan()
+    {
+        if(FRBudgetAt!=Body.Director.Now){FRBudgetAt=Body.Director.Now;FRPlansThisFrame=0;}
+        if(FRPlansThisFrame>=2){ECNextPlan=Now()+0.05;return false;}
+        FRPlansThisFrame++;ECNextPlan=Now()+0.75;
+        ECTracePlanPose();
+        array<vector> directions={"0 0 1","0 0 -1","1 0 0","-1 0 0","0.707107 0 0.707107","-0.707107 0 0.707107","0.707107 0 -0.707107","-0.707107 0 -0.707107"};
+        bool found=false;float best=1000000;vector selected;
+        string savedLanding=LandingDiagnostic;
+        if(!ECRangePolicyRead)
+        {
+            ECExtendedRange=FileExist("$profile:egress-extended.flag");
+            ECShadowRange=FileExist("$profile:egress-extended-shadow.flag");ECRangePolicyRead=true;
+            ECFirstStepEnabled=FileExist("$profile:egress-first-step.flag");
+            ECNearFirstStepEnabled=FileExist("$profile:egress-near-first-step.flag");
+            ECWideExit=FileExist("$profile:egress-wide-exit.flag");
+        }
+        int maximumRing=2;if(ECExtendedRange || ECShadowRange)maximumRing=8;
+        // Recorded actor43 has no feasible endpoint inside4m, while4.5m
+        // satisfies the existing full chord and first-step gates in4/5 poses.
+        // Only extend after all original rings fail; default policy is unchanged.
+        if(ECExtendedRange && ECWideExit)maximumRing=9;
+        bool extendedSelection;
+        for(int ring=1;ring<=maximumRing;ring++)
+        {
+        // Preserve the original16 candidates and their choice whenever feasible.
+        // Additional range changes no support, sweep, motion or lease limit.
+        if(ring>2 && found)break;
+        foreach(vector direction:directions)
+        {
+            vector candidate=Body.Agent.Position+direction*(ring*0.5);vector support;
+            ECEndpointRejectedJoint=-1;
+            if(!LandingSpace(candidate,support,false)){ECTraceCandidate(candidate,support,"LANDING",LandingDiagnostic);continue;}
+            if(Fixture().Area(support)!=Area){ECTraceCandidate(candidate,support,"AREA",Fixture().Area(support));continue;}
+            if(!DGBGroundRoute.SegmentClear(support,support,Body.Agent.ObstacleMin,Body.Agent.ObstacleMax)){ECTraceCandidate(candidate,support,"PLANNING_INFLATION","");continue;}
+            if(!ECEndpointClear(support)){ECTraceCandidate(candidate,support,"ENDPOINT_POSE","");continue;}
+            float lift;ref array<vector> contacts={};
+            if(!PressureEscapeStepClear(support,lift,contacts)){ECTraceCandidate(candidate,support,"SWEPT_CHORD",PressureEscapeDiagnostic);continue;}
+            // A clear long chord can still fail the first short step because
+            // intermediate support/lift differs. The separate near-candidate
+            // diagnostic also checks the original16 choices, after recorded
+            // actor17 repeatedly selected a1m goal with an impossible first step.
+            // Every endpoint, full chord and execution step gate remains active.
+            string initialDiagnostic;
+            bool requireInitialStep=ECFirstStepEnabled && (ring>2 || ECNearFirstStepEnabled);
+            if(ring>8)requireInitialStep=true;
+            if(requireInitialStep && !ECInitialStepClear(support,initialDiagnostic))
+            {ECTraceCandidate(candidate,support,"FIRST_STEP",initialDiagnostic);continue;}
+            ECTraceCandidate(candidate,support,"FEASIBLE","");
+            float cost=DGBGroundAgent.FlatDistance(support,EgressGoal)+ring*0.1;
+            if(cost<best){best=cost;selected=support;found=true;extendedSelection=ring>2;}
+        }
+        }
+        LandingDiagnostic=savedLanding;
+        if(found && extendedSelection && ECShadowRange && !ECExtendedRange)
+        {ECLog("SHADOW_EXTENDED_ENDPOINT");found=false;}
+        if(!found){ECLog("NO_SWEPT_CLEAR_ENDPOINT");return false;}
+        ECGoal=selected;ECUntil=Now()+6;ECDistance=0;ECActive=true;ECLog("START");return true;
+    }
 
 이전 애니메이션 진단: [선정 근거](downloads/animation-review.txt). 이번 진단은 시각·성능 해결을 뜻하지 않는다.
