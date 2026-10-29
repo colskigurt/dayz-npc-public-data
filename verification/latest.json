@@ -1,8 +1,77 @@
 {
   "schemaVersion": "1.0.0",
   "snapshotId": "snapshot-20261029T122932-entry-stage-latency-20261029",
-  "status": "pending_external_HTTP_verification",
-  "previousVerifiedSnapshotId": "snapshot-20261029T113929-contact-episode-review-20261029",
-  "externalAI": "unverified",
-  "experimentFinalAccepted": false
+  "observedAt": "2026-10-29T12:33:38.122908+00:00",
+  "status": "fixed_commit_HTTP_hash_schema_verified",
+  "dataCommit": "2cb76caf37895ca199dd80c739a530b73f1993b2",
+  "origin": "https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/2cb76caf37895ca199dd80c739a530b73f1993b2",
+  "generatedAt": "2026-10-29T12:29:32.042088+00:00",
+  "http": {
+    "passed": true,
+    "filesVerified": 257,
+    "records": 259,
+    "allHTTP200": true,
+    "authenticationSent": false,
+    "redirectsObserved": false,
+    "jsonSchemaValidated": true,
+    "allPublishedBytesMatched": true,
+    "evidenceReferenceHashesVerified": true,
+    "stale": false
+  },
+  "mainAliasChecks": [
+    {
+      "path": "reports/operations-latest.md",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "finalUrl": "https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations-latest.md",
+      "sha256": "b5c646485a2f6828b70ac7deed277bfe59b7cd1a3bab047fa7e15712204b503b",
+      "matchesStagedBytes": true
+    },
+    {
+      "path": "api/public/status.json",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "finalUrl": "https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/api/public/status.json",
+      "sha256": "9e956fcc732472a2bbecbb16a1dcfd02236c1d8813be423919bd085cfdf6e951",
+      "matchesStagedBytes": true
+    }
+  ],
+  "externalAI": {
+    "tool": "ChatGPT web",
+    "result": "Cache miss",
+    "accepted": false
+  },
+  "otherIndependentNetworkVerified": false,
+  "experimentFinalAccepted": false,
+  "visualSmoothnessAccepted": false,
+  "performanceAccepted": false,
+  "diagnosticScope": {
+    "observerBuild": "47A7C366B29B96CB1F0D789BB36D6DB9459D2AC3D63E7E2EE1B5BEA63287DE32",
+    "old10ScriptsByteIdentical": true,
+    "signedAndVerified": true,
+    "actualCounts": [
+      8,
+      64
+    ],
+    "allNormalQuit": true,
+    "sameCallGroups": 1192,
+    "correctNormalGateMetres": 0.065,
+    "correctBandLoss": [
+      2,
+      70
+    ],
+    "headingAlignedBandLoss": [
+      0,
+      19
+    ],
+    "highMisses": [
+      0,
+      38
+    ],
+    "foreground64MetricsAvailable": false,
+    "temporalVisibleFramesMeasured": false,
+    "movementFixDeployed": false,
+    "baselineD61DRestored": true
+  },
+  "localStagingIssues": []
 }
