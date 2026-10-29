@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T132628-instance-duration-binding-20261029",
-  "generatedAt": "2026-10-29T13:26:28.891413+00:00",
+  "snapshotId": "snapshot-20261029T204207-animation-review-plan-20261030",
+  "generatedAt": "2026-10-29T20:42:07.445530+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -69,9 +69,9 @@
     "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "No new runtime. Prior8OFF8/8,highmiss0,falls10/10retained;711CONand64stillunrun.",
-    "visual": "Staticduration-to-transition-weightpathonly.No newvideoorvisiblequalitymeasurement;independentrenderintervalcontrolnotestablished.",
-    "performance": "No newperformanceorallocationmeasurement.20msp95remainsunmettarget.",
+    "functional": "No newruntime. Historical8OFF8/8/highmiss0/falls10of10retained;711CON/matched8to64unrun.",
+    "visual": "SelectedclocklossrepeatedandCPU/videojoined;previousperiodcandidate rejected. Safecontrol/all14states/repeatedvisibleacceptanceunresolved.",
+    "performance": "Existingnested64costs only. No newmeasurementsoroptimization.20msp95targetunmet.",
     "regressionChecks": 0
   },
   "metrics": [
@@ -11498,29 +11498,24 @@
   ],
   "blockers": [
     {
-      "id": "high-hold-6-32",
+      "id": "animation-supported-control",
       "status": "open",
-      "description": "Needmatched711C8OFF/ONand64regression. StaticAPIinterpretationdoesnotresolveentrycongestion."
+      "description": "Observed fixed50ms/reset clock-loss path; safe independent evaluation/display control not yet established."
     },
     {
-      "id": "matched-repeats",
-      "status": "unexecuted",
-      "description": "Order-crossed repeated B8FB flag-off/on runtime trials still required; historical 74 checks were not rerun in the latest batch."
-    },
-    {
-      "id": "visual-causality",
-      "status": "open",
-      "description": "CPU/visible temporal mismatch and buffer continuity not causally resolved."
-    },
-    {
-      "id": "performance-target",
-      "status": "open",
-      "description": "20ms p95 target not achieved; repeated comparable optimization acceptance absent."
-    },
-    {
-      "id": "native-timing",
+      "id": "animation-visible-acceptance",
       "status": "unmeasured",
-      "description": "GPU/Present and compiled clip phase not directly measured."
+      "description": "Selected CPU/video timing exists, but all14motions and repeated candidate smoothness acceptance remain incomplete."
+    },
+    {
+      "id": "functional-711c-regression",
+      "status": "unexecuted",
+      "description": "711C actual8OFF8/8;ON andmatched8/64regression unrun. Finalarrivaldoesnoterasehighstagefailures."
+    },
+    {
+      "id": "performance64-attribution",
+      "status": "unmeasured",
+      "description": "Partial nestedcosts measured;controlled64 attribution and20msp95target unmet."
     }
   ],
   "evidenceReferences": [
@@ -12135,23 +12130,41 @@
       "uri": "/data/experiments/instance-duration-binding-20261029.json",
       "sha256": "6489b1c16c260dc38316652e68316da460eebc2947e96273275891ac30ed1fd6",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "animation-review-plan-20261030-report",
+      "uri": "/downloads/checkpoints/2026-10-30_054138_619630+0900_npc-animation-review-plan.txt",
+      "sha256": "b28442104e482621708935d421eb933d22715839782f793378c06e3221fe7950",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "animation-review-plan-20261030-review",
+      "uri": "/downloads/checkpoints/2026-10-30_054138_619630+0900_npc-animation-review-plan_evidence.txt",
+      "sha256": "2c72112e52317c53edad78dd3441760b5a27e5139779272fbba637e0022f65bd",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "animation-review-plan-20261030-json",
+      "uri": "/data/experiments/animation-review-plan-20261030.json",
+      "sha256": "b22118eda76616877ada174df22147427868e5d244ed70e3a3110da101810bc3",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T13:26:28.891413+00:00",
-    "staleAfter": "2026-10-30T13:26:28.891413+00:00",
+    "sourceUpdatedAt": "2026-10-29T20:42:07.445530+00:00",
+    "staleAfter": "2026-10-30T20:42:07.445530+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261029T132628-instance-duration-binding-20261029",
-      "generatedAt": "2026-10-29T13:26:28.891413+00:00",
-      "sourceUpdatedAt": "2026-10-29T13:26:28.891413+00:00"
+      "snapshotId": "snapshot-20261029T204207-animation-review-plan-20261030",
+      "generatedAt": "2026-10-29T20:42:07.445530+00:00",
+      "sourceUpdatedAt": "2026-10-29T20:42:07.445530+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-29T13:26:28.891413+00:00",
+      "at": "2026-10-29T20:42:07.445530+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -12166,7 +12179,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261029T132628-instance-duration-binding-20261029/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261029T204207-animation-review-plan-20261030/"
   },
   "experiments": [
     {
@@ -13248,6 +13261,37 @@
         "matched-repeats"
       ],
       "replication": "28instructionwitnessesrecheckedagainsthash-boundinstalledbinary;notruntime repetitions."
+    },
+    {
+      "id": "animation-review-plan-20261030",
+      "title": "애니메이션 끊김: 확인된 원인·미확인 범위·필요 자원·다음 검증 계획",
+      "track": "animation",
+      "sourceRunId": [
+        "runtime-20261029-043225",
+        "runtime-20261029-044620",
+        "runtime-20261029-040750",
+        "runtime-20261029-041212",
+        "runtime-20261029-220337"
+      ],
+      "buildId": [
+        "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+        "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
+        "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [],
+      "evidenceReferences": [
+        "animation-review-plan-20261030-report",
+        "animation-review-plan-20261030-review",
+        "animation-review-plan-20261030-json"
+      ],
+      "blockers": [
+        "animation-supported-control",
+        "animation-visible-acceptance",
+        "functional-711c-regression",
+        "performance64-attribution"
+      ],
+      "replication": "Historicalclockaccountingtwoobservations;onepriorperiodbaseline/candidatepair. Thisreviewaddsnoindependentrun."
     }
   ],
   "kind": "status"
