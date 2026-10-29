@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T043805-owner-cost-clock-20261029",
-  "generatedAt": "2026-10-29T04:38:05.112260+00:00",
+  "snapshotId": "snapshot-20261029T051737-landing-backoff-detail-20261029",
+  "generatedAt": "2026-10-29T05:17:37.216174+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -33,7 +33,9 @@
     "runtime-20261029-043225",
     "runtime-20261029-044620",
     "runtime-20261029-130025",
-    "runtime-20261029-130645"
+    "runtime-20261029-130645",
+    "runtime-20261029-135607",
+    "runtime-20261029-140405"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -41,7 +43,8 @@
     "3ECCE4F140E8A5A7F1081D657EEFA3EB875717D9050E0554F23C94E1ABE941EC",
     "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
     "82CCB0EAB79FDFA90D84CEAA4C10A3C23E2742D9480CE229C0579F0D6945151E",
-    "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F"
+    "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+    "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3"
   ],
   "verificationStatus": {
     "diagnosisSucceeded": true,
@@ -6935,13 +6938,663 @@
         "cpuSelfTime": false,
         "scope": "Crowd.Update 범위"
       }
+    },
+    {
+      "metricId": "finalArrivals",
+      "sourceRunId": "runtime-20261029-135607",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 8,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.021,
+          104.958
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "missingHighFollow",
+      "sourceRunId": "runtime-20261029-135607",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 0,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.021,
+          104.958
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "fallsResumed",
+      "sourceRunId": "runtime-20261029-135607",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 10,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.021,
+          104.958
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionArrived",
+      "sourceRunId": "runtime-20261029-135607",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 1,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.021,
+          104.958
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionIntentChanged",
+      "sourceRunId": "runtime-20261029-135607",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.021,
+          104.958
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "egressViolations",
+      "sourceRunId": "runtime-20261029-135607",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 0,
+      "unit": "violations",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.021,
+          104.958
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "climbEndFailures",
+      "sourceRunId": "runtime-20261029-135607",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.021,
+          104.958
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261029-135607",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 20.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.021,
+          104.958
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261029-135607",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 33.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.021,
+          104.958
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261029-135607",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 35.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.021,
+          104.958
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "finalArrivals",
+      "sourceRunId": "runtime-20261029-140405",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 64,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.132,
+          104.896
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "missingHighFollow",
+      "sourceRunId": "runtime-20261029-140405",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 17,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.132,
+          104.896
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "fallsResumed",
+      "sourceRunId": "runtime-20261029-140405",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 71,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.132,
+          104.896
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionArrived",
+      "sourceRunId": "runtime-20261029-140405",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 21,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.132,
+          104.896
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionIntentChanged",
+      "sourceRunId": "runtime-20261029-140405",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.132,
+          104.896
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "egressViolations",
+      "sourceRunId": "runtime-20261029-140405",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 0,
+      "unit": "violations",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.132,
+          104.896
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "climbEndFailures",
+      "sourceRunId": "runtime-20261029-140405",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 1,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.132,
+          104.896
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261029-140405",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 40.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.132,
+          104.896
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261029-140405",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 136.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.132,
+          104.896
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261029-140405",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 183.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "foreground mission frame delta; not GPU/Present or visible pose rate",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.132,
+          104.896
+        ],
+        "landingBackoffDetail": true,
+        "unobstructedVisibleObservationVerified": false,
+        "callbackClockNotVisiblePhase": true,
+        "additionalObserverOverhead": true
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "backoffCalls",
+      "sourceRunId": "runtime-20261029-135607",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 5,
+      "unit": "calls",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 8,
+        "seconds": 300,
+        "landingBackoffDetail": true,
+        "visibleSmoothnessMeasured": false
+      }
+    },
+    {
+      "metricId": "callbackClockRatio",
+      "sourceRunId": "runtime-20261029-135607",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 0.7101113691454799,
+      "unit": "ratio",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 8,
+        "seconds": 300,
+        "landingBackoffDetail": true,
+        "visibleSmoothnessMeasured": false
+      }
+    },
+    {
+      "metricId": "callbackFrequency",
+      "sourceRunId": "runtime-20261029-135607",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 14.201684945671284,
+      "unit": "calls/s",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 8,
+        "seconds": 300,
+        "landingBackoffDetail": true,
+        "visibleSmoothnessMeasured": false
+      }
+    },
+    {
+      "metricId": "backoffCalls",
+      "sourceRunId": "runtime-20261029-140405",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 247,
+      "unit": "calls",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 64,
+        "seconds": 300,
+        "landingBackoffDetail": true,
+        "visibleSmoothnessMeasured": false
+      }
+    },
+    {
+      "metricId": "callbackClockRatio",
+      "sourceRunId": "runtime-20261029-140405",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 0.6048706725569433,
+      "unit": "ratio",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 64,
+        "seconds": 300,
+        "landingBackoffDetail": true,
+        "visibleSmoothnessMeasured": false
+      }
+    },
+    {
+      "metricId": "callbackFrequency",
+      "sourceRunId": "runtime-20261029-140405",
+      "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
+      "value": 12.097006601141072,
+      "unit": "calls/s",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 64,
+        "seconds": 300,
+        "landingBackoffDetail": true,
+        "visibleSmoothnessMeasured": false
+      }
     }
   ],
   "blockers": [
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "Existing full8/64 final8/8 and64/64;64 high-stage missing24 (23 no high-climb motion observed, actor44 completes after window). Actor17 long blocked landing needs exact gate. No new runtime test."
+      "description": "Final64/64 does not erase17 high-stage misses or1 climb-end FOOT_Z_SUPPORT rejection.247 exact same-phase Backoff calls are nonterminal retries."
     },
     {
       "id": "matched-repeats",
@@ -7288,23 +7941,41 @@
       "uri": "/data/experiments/owner-cost-clock-20261029.json",
       "sha256": "c2300dc683acf9b1cafbe2dcba291c518ee9226f47b651dd122905e0c017d952",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "landing-backoff-detail-20261029-report",
+      "uri": "/downloads/checkpoints/2026-10-29_141707_482541+0900_npc-landing-backoff-detail.txt",
+      "sha256": "0a7b8c8e7307dd66a2fc8f5a8b560b7141b0db6f8a043e8a4bdd317d90b11666",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "landing-backoff-detail-20261029-review",
+      "uri": "/downloads/checkpoints/2026-10-29_141707_482541+0900_npc-landing-backoff-detail_evidence.txt",
+      "sha256": "23d5b8579ddf8e8908d066435299e3c577065d06ce3bd546632408357d06fed0",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "landing-backoff-detail-20261029-json",
+      "uri": "/data/experiments/landing-backoff-detail-20261029.json",
+      "sha256": "e9f2e1e48c0baccaa828ebda9569b9f7974025b92cab10ffc0b576e45d4b9fd3",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T04:38:05.112260+00:00",
-    "staleAfter": "2026-10-30T04:38:05.112260+00:00",
+    "sourceUpdatedAt": "2026-10-29T05:17:37.216174+00:00",
+    "staleAfter": "2026-10-30T05:17:37.216174+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261029T043805-owner-cost-clock-20261029",
-      "generatedAt": "2026-10-29T04:38:05.112260+00:00",
-      "sourceUpdatedAt": "2026-10-29T04:38:05.112260+00:00"
+      "snapshotId": "snapshot-20261029T051737-landing-backoff-detail-20261029",
+      "generatedAt": "2026-10-29T05:17:37.216174+00:00",
+      "sourceUpdatedAt": "2026-10-29T05:17:37.216174+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-29T04:38:05.112260+00:00",
+      "at": "2026-10-29T05:17:37.216174+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -7319,7 +7990,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261029T043805-owner-cost-clock-20261029/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261029T051737-landing-backoff-detail-20261029/"
   },
   "experiments": [
     {
@@ -7941,6 +8612,41 @@
         "matched-repeats"
       ],
       "replication": "No new runs. Existing two closed300s traces, each population1run. Calibration arithmetic3tests passed."
+    },
+    {
+      "id": "landing-backoff-detail-20261029",
+      "title": "실제 착지 게이트·같은 상태 재시도 — 64명 종료 검사1건 재현",
+      "track": "diagnostic",
+      "sourceRunId": [
+        "runtime-20261029-135607",
+        "runtime-20261029-140405"
+      ],
+      "buildId": [
+        "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [
+        {
+          "count": 8,
+          "seconds": 300,
+          "repetitions": 1
+        },
+        {
+          "count": 64,
+          "seconds": 300,
+          "repetitions": 1
+        }
+      ],
+      "evidenceReferences": [
+        "landing-backoff-detail-20261029-report",
+        "landing-backoff-detail-20261029-review",
+        "landing-backoff-detail-20261029-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "Two new closed300s runs,1 per population;3 journal tests and separate engine observer smoke passed."
     }
   ],
   "kind": "status"

@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T043805-owner-cost-clock-20261029",
-  "generatedAt": "2026-10-29T04:38:05.112260+00:00",
-  "exportedAt": "2026-10-29T04:38:05.112260+00:00",
+  "snapshotId": "snapshot-20261029T051737-landing-backoff-detail-20261029",
+  "generatedAt": "2026-10-29T05:17:37.216174+00:00",
+  "exportedAt": "2026-10-29T05:17:37.216174+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -34,7 +34,9 @@
     "runtime-20261029-043225",
     "runtime-20261029-044620",
     "runtime-20261029-130025",
-    "runtime-20261029-130645"
+    "runtime-20261029-130645",
+    "runtime-20261029-135607",
+    "runtime-20261029-140405"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -42,11 +44,12 @@
     "3ECCE4F140E8A5A7F1081D657EEFA3EB875717D9050E0554F23C94E1ABE941EC",
     "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
     "82CCB0EAB79FDFA90D84CEAA4C10A3C23E2742D9480CE229C0579F0D6945151E",
-    "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F"
+    "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+    "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T04:38:05.112260+00:00",
-    "staleAfter": "2026-10-30T04:38:05.112260+00:00",
+    "sourceUpdatedAt": "2026-10-29T05:17:37.216174+00:00",
+    "staleAfter": "2026-10-30T05:17:37.216174+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -63,18 +66,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 65415,
-      "sha256": "a4fb0c9fe72bdf288b25c33bff52993d4d732e47d38d4c5cb8cbc5076c3f91d3"
+      "bytes": 32606,
+      "sha256": "9a9e5579f970c076d8af0a80e31ede0be510cee1a16be71effcacdb4fda01ee4"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 276399,
-      "sha256": "11c84ccf85b83e3db38b258c81de56124acc1e3d7efad5ef097a3a957d67fc14"
+      "bytes": 301178,
+      "sha256": "8b2722737861e16333f1b326f2308605b07195ac5d9896e5956934d1caeab2c5"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 276395,
-      "sha256": "0cd5e8cc78c991b35d3a45e4ce340d2c7660f21bcc5f6cf6b762de058f813d1e"
+      "bytes": 301174,
+      "sha256": "07cd79122af5360717c2a303931234e0745daf4057b276f88a443a1e3d927a01"
     },
     {
       "path": "api/public/schema.json",
@@ -322,14 +325,29 @@
       "sha256": "6b347e74bd3f0cdd24ff86b395e7f0570b33e570dfea9bf638cf5308c8a830cd"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261029T051737-landing-backoff-detail-20261029/experiments.json",
+      "bytes": 301178,
+      "sha256": "8b2722737861e16333f1b326f2308605b07195ac5d9896e5956934d1caeab2c5"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T051737-landing-backoff-detail-20261029/metrics.json",
+      "bytes": 301174,
+      "sha256": "07cd79122af5360717c2a303931234e0745daf4057b276f88a443a1e3d927a01"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T051737-landing-backoff-detail-20261029/status.json",
+      "bytes": 301173,
+      "sha256": "b806e5bbae83353c8723941947ff33fb92dcc72a91312417e214fe1eaef86273"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 276394,
-      "sha256": "6b347e74bd3f0cdd24ff86b395e7f0570b33e570dfea9bf638cf5308c8a830cd"
+      "bytes": 301173,
+      "sha256": "b806e5bbae83353c8723941947ff33fb92dcc72a91312417e214fe1eaef86273"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 717,
-      "sha256": "d79e6101ed48ee18473b41e75ba6306f28827f5e03f2f1e6c931811a6b4636bc"
+      "bytes": 729,
+      "sha256": "25e587ec0bb4b7aed7ac7e2410687910ebd898b24739c2f494d9fec39b9c2997"
     },
     {
       "path": "data/experiments/actor43-owner-runtime-20261029.json",
@@ -380,6 +398,11 @@
       "path": "data/experiments/frame-order-20261028.json",
       "bytes": 47751,
       "sha256": "ddeb9914722f9c2c7894c830faf9af4a6492ec2a73b0c9f1061ab673ae0e39f5"
+    },
+    {
+      "path": "data/experiments/landing-backoff-detail-20261029.json",
+      "bytes": 54720,
+      "sha256": "e9f2e1e48c0baccaa828ebda9569b9f7974025b92cab10ffc0b576e45d4b9fd3"
     },
     {
       "path": "data/experiments/landing-corridor-20261028.json",
@@ -602,9 +625,19 @@
       "sha256": "e370254cc4cb15b20ece24690fcceec5e5af5022de20bc1e1ae22705bf5620c4"
     },
     {
+      "path": "downloads/checkpoints/2026-10-29_141707_482541+0900_npc-landing-backoff-detail.txt",
+      "bytes": 8630,
+      "sha256": "0a7b8c8e7307dd66a2fc8f5a8b560b7141b0db6f8a043e8a4bdd317d90b11666"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-29_141707_482541+0900_npc-landing-backoff-detail_evidence.txt",
+      "bytes": 32347,
+      "sha256": "23d5b8579ddf8e8908d066435299e3c577065d06ce3bd546632408357d06fed0"
+    },
+    {
       "path": "README.md",
-      "bytes": 9556,
-      "sha256": "376698f46eae3bba37e283037beae65a4fbb3e0ed9bb3aef00c046d7f4e7ceb5"
+      "bytes": 9993,
+      "sha256": "c2dde94f73cf1e461f95e4443e8d7f528c8344a5b8a6d2efbf928adc01040294"
     },
     {
       "path": "reports/accessibility-20261028.md",
@@ -680,6 +713,16 @@
       "path": "reports/history/pre-frame-order-20261028-operations-latest.md",
       "bytes": 9123,
       "sha256": "1ac91d744b2f8102e6e27985a0508df41ae39560b75da0d51de687c6ba14f7ac"
+    },
+    {
+      "path": "reports/history/pre-landing-backoff-detail-20261029-latest.md",
+      "bytes": 9716,
+      "sha256": "b6e03e49c79ffab2b6453b82f19d5169815d0a1c824a001b2bef0ecee1c64e56"
+    },
+    {
+      "path": "reports/history/pre-landing-backoff-detail-20261029-operations-latest.md",
+      "bytes": 9716,
+      "sha256": "b6e03e49c79ffab2b6453b82f19d5169815d0a1c824a001b2bef0ecee1c64e56"
     },
     {
       "path": "reports/history/pre-landing-corridor-20261028-latest.md",
@@ -773,8 +816,8 @@
     },
     {
       "path": "reports/latest.md",
-      "bytes": 9716,
-      "sha256": "b6e03e49c79ffab2b6453b82f19d5169815d0a1c824a001b2bef0ecee1c64e56"
+      "bytes": 8989,
+      "sha256": "ebbb7264e51925214637e3eaa04b97411c40c25f08808d26503cd74f67710b9c"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -783,8 +826,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 9716,
-      "sha256": "b6e03e49c79ffab2b6453b82f19d5169815d0a1c824a001b2bef0ecee1c64e56"
+      "bytes": 8989,
+      "sha256": "ebbb7264e51925214637e3eaa04b97411c40c25f08808d26503cd74f67710b9c"
     }
   ]
 }
