@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T051737-landing-backoff-detail-20261029",
-  "generatedAt": "2026-10-29T05:17:37.216174+00:00",
-  "exportedAt": "2026-10-29T05:17:37.216174+00:00",
+  "snapshotId": "snapshot-20261029T054145-actor59-support-boundary-20261029",
+  "generatedAt": "2026-10-29T05:41:45.782193+00:00",
+  "exportedAt": "2026-10-29T05:41:45.782193+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -36,7 +36,9 @@
     "runtime-20261029-130025",
     "runtime-20261029-130645",
     "runtime-20261029-135607",
-    "runtime-20261029-140405"
+    "runtime-20261029-140405",
+    "runtime-20261029-142458",
+    "runtime-20261029-143221"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -48,8 +50,8 @@
     "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T05:17:37.216174+00:00",
-    "staleAfter": "2026-10-30T05:17:37.216174+00:00",
+    "sourceUpdatedAt": "2026-10-29T05:41:45.782193+00:00",
+    "staleAfter": "2026-10-30T05:41:45.782193+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -66,18 +68,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 32606,
-      "sha256": "9a9e5579f970c076d8af0a80e31ede0be510cee1a16be71effcacdb4fda01ee4"
+      "bytes": 65707,
+      "sha256": "f745885cfd36f2f799ba6cd28276e466064b1b1c743fc77dfd71cf8ba227bf94"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 301178,
-      "sha256": "8b2722737861e16333f1b326f2308605b07195ac5d9896e5956934d1caeab2c5"
+      "bytes": 323001,
+      "sha256": "e3bc5e5257208c5b831b118341ad4e6ba04ecc858e10cc420810f0b91f03becf"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 301174,
-      "sha256": "07cd79122af5360717c2a303931234e0745daf4057b276f88a443a1e3d927a01"
+      "bytes": 322997,
+      "sha256": "5eb92700e41faedae18b77d3e9a7075838bc6989ffd2fb0db364e02ee9a91782"
     },
     {
       "path": "api/public/schema.json",
@@ -340,14 +342,29 @@
       "sha256": "b806e5bbae83353c8723941947ff33fb92dcc72a91312417e214fe1eaef86273"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261029T054145-actor59-support-boundary-20261029/experiments.json",
+      "bytes": 323001,
+      "sha256": "e3bc5e5257208c5b831b118341ad4e6ba04ecc858e10cc420810f0b91f03becf"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T054145-actor59-support-boundary-20261029/metrics.json",
+      "bytes": 322997,
+      "sha256": "5eb92700e41faedae18b77d3e9a7075838bc6989ffd2fb0db364e02ee9a91782"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T054145-actor59-support-boundary-20261029/status.json",
+      "bytes": 322996,
+      "sha256": "7af0f3f0f90a6d882b32b9c1919b7030591f21577b9081c07049607f846945ac"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 301173,
-      "sha256": "b806e5bbae83353c8723941947ff33fb92dcc72a91312417e214fe1eaef86273"
+      "bytes": 322996,
+      "sha256": "7af0f3f0f90a6d882b32b9c1919b7030591f21577b9081c07049607f846945ac"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 729,
-      "sha256": "25e587ec0bb4b7aed7ac7e2410687910ebd898b24739c2f494d9fec39b9c2997"
+      "bytes": 733,
+      "sha256": "c0de919dd4e90867094eb1327b571b4970cde3ba3de6fa487ce6535326d4220e"
     },
     {
       "path": "data/experiments/actor43-owner-runtime-20261029.json",
@@ -358,6 +375,11 @@
       "path": "data/experiments/actor43-wide-handoff-20261029.json",
       "bytes": 36047,
       "sha256": "a7cbb71f4150329db028f245ccb7206fb2b2b92a8fc974d1a0f8a5ff8c2393c4"
+    },
+    {
+      "path": "data/experiments/actor59-support-boundary-20261029.json",
+      "bytes": 91196,
+      "sha256": "aeaa7b0a5682add988f7a425d2ed28be1c7b3f53f93e6bc20cf1d3ffa8ceb231"
     },
     {
       "path": "data/experiments/admission-latch-runtime-20261028.json",
@@ -635,9 +657,19 @@
       "sha256": "23d5b8579ddf8e8908d066435299e3c577065d06ce3bd546632408357d06fed0"
     },
     {
+      "path": "downloads/checkpoints/2026-10-29_144117_363180+0900_npc-actor59-support-boundary.txt",
+      "bytes": 8381,
+      "sha256": "b163e1bec3ac33879bd2b83baa3d80dd4a3329c97bd877b918a43a8c63e5605c"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-29_144117_363180+0900_npc-actor59-support-boundary_evidence.txt",
+      "bytes": 65446,
+      "sha256": "6178715f4c0ae065c576721fc031841cfd97dda35e5e46afc40661bef7666527"
+    },
+    {
       "path": "README.md",
-      "bytes": 9993,
-      "sha256": "c2dde94f73cf1e461f95e4443e8d7f528c8344a5b8a6d2efbf928adc01040294"
+      "bytes": 10411,
+      "sha256": "68ac55869d495eae446309523f7fd2abbd2a1919c2079be8affa3c1d862de60e"
     },
     {
       "path": "reports/accessibility-20261028.md",
@@ -663,6 +695,16 @@
       "path": "reports/history/pre-actor43-wide-handoff-20261029-operations-latest.md",
       "bytes": 8345,
       "sha256": "ad0fee2d02ed5f3f60fba38eaf4fe6e7878508a17c874121ac77c0e94c2a647f"
+    },
+    {
+      "path": "reports/history/pre-actor59-support-boundary-20261029-latest.md",
+      "bytes": 8989,
+      "sha256": "ebbb7264e51925214637e3eaa04b97411c40c25f08808d26503cd74f67710b9c"
+    },
+    {
+      "path": "reports/history/pre-actor59-support-boundary-20261029-operations-latest.md",
+      "bytes": 8989,
+      "sha256": "ebbb7264e51925214637e3eaa04b97411c40c25f08808d26503cd74f67710b9c"
     },
     {
       "path": "reports/history/pre-clock-conservation-20261029-latest.md",
@@ -816,8 +858,8 @@
     },
     {
       "path": "reports/latest.md",
-      "bytes": 8989,
-      "sha256": "ebbb7264e51925214637e3eaa04b97411c40c25f08808d26503cd74f67710b9c"
+      "bytes": 8743,
+      "sha256": "82a8df56b14d9516639a3ecdd6bc9da95d0019cef27034f63d9786ffe528ef19"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -826,8 +868,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 8989,
-      "sha256": "ebbb7264e51925214637e3eaa04b97411c40c25f08808d26503cd74f67710b9c"
+      "bytes": 8743,
+      "sha256": "82a8df56b14d9516639a3ecdd6bc9da95d0019cef27034f63d9786ffe528ef19"
     }
   ]
 }
