@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T041731-actor43-owner-runtime-20261029",
-  "generatedAt": "2026-10-29T04:17:31.266450+00:00",
+  "snapshotId": "snapshot-20261029T043805-owner-cost-clock-20261029",
+  "generatedAt": "2026-10-29T04:38:05.112260+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -6709,13 +6709,239 @@
       },
       "repetitions": 1,
       "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "callbackClockRatio",
+      "sourceRunId": "runtime-20261029-130025",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 0.7709825061024963,
+      "unit": "ratio",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 8,
+        "analysis": "post-hoc existing300s trace",
+        "window": "foreground age>=5s paired part0 samples",
+        "visibleSmoothnessMeasured": false
+      }
+    },
+    {
+      "metricId": "callbackFrequency",
+      "sourceRunId": "runtime-20261029-130025",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 15.419039869812334,
+      "unit": "calls/s",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 8,
+        "analysis": "post-hoc existing300s trace",
+        "window": "foreground age>=5s paired part0 samples",
+        "visibleSmoothnessMeasured": false
+      }
+    },
+    {
+      "metricId": "missionTimestampGapMaximum",
+      "sourceRunId": "runtime-20261029-130025",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 46.999999999997044,
+      "unit": "ms",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 8,
+        "analysis": "post-hoc existing300s trace",
+        "window": "foreground age>=5s paired part0 samples",
+        "visibleSmoothnessMeasured": false
+      }
+    },
+    {
+      "metricId": "callbackClockRatio",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 0.4969566470558313,
+      "unit": "ratio",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 64,
+        "analysis": "post-hoc existing300s trace",
+        "window": "foreground age>=5s paired part0 samples",
+        "visibleSmoothnessMeasured": false
+      }
+    },
+    {
+      "metricId": "callbackFrequency",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 9.938793848866581,
+      "unit": "calls/s",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 64,
+        "analysis": "post-hoc existing300s trace",
+        "window": "foreground age>=5s paired part0 samples",
+        "visibleSmoothnessMeasured": false
+      }
+    },
+    {
+      "metricId": "missionTimestampGapMaximum",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 393.0000000000007,
+      "unit": "ms",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 64,
+        "analysis": "post-hoc existing300s trace",
+        "window": "foreground age>=5s paired part0 samples",
+        "visibleSmoothnessMeasured": false
+      }
+    },
+    {
+      "metricId": "nestedCost_perceptionCpuTicks",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 50.08664755079765,
+      "unit": "elapsed-equivalent ms/wall s",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 64,
+        "stage": "HIGH_HOLD",
+        "eligibleSeconds": 59.675,
+        "nestedScopes": true,
+        "cpuSelfTime": false,
+        "scope": "인식 하위 범위"
+      }
+    },
+    {
+      "metricId": "nestedCost_driveTicks",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 231.47942073360207,
+      "unit": "elapsed-equivalent ms/wall s",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 64,
+        "stage": "HIGH_HOLD",
+        "eligibleSeconds": 59.675,
+        "nestedScopes": true,
+        "cpuSelfTime": false,
+        "scope": "legacy 지면 이동 범위"
+      }
+    },
+    {
+      "metricId": "nestedCost_contactCpuTicks",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 225.67051702900062,
+      "unit": "elapsed-equivalent ms/wall s",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 64,
+        "stage": "HIGH_HOLD",
+        "eligibleSeconds": 59.675,
+        "nestedScopes": true,
+        "cpuSelfTime": false,
+        "scope": "접촉 전체 범위"
+      }
+    },
+    {
+      "metricId": "nestedCost_contactBoneCpuTicks",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 5.900728443191529,
+      "unit": "elapsed-equivalent ms/wall s",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 64,
+        "stage": "HIGH_HOLD",
+        "eligibleSeconds": 59.675,
+        "nestedScopes": true,
+        "cpuSelfTime": false,
+        "scope": "접촉 안의 본 조회"
+      }
+    },
+    {
+      "metricId": "nestedCost_contactFootCpuTicks",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 129.52078516323832,
+      "unit": "elapsed-equivalent ms/wall s",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 64,
+        "stage": "HIGH_HOLD",
+        "eligibleSeconds": 59.675,
+        "nestedScopes": true,
+        "cpuSelfTime": false,
+        "scope": "접촉 안의 발 지지"
+      }
+    },
+    {
+      "metricId": "nestedCost_contactWorldCpuTicks",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 79.92376957757062,
+      "unit": "elapsed-equivalent ms/wall s",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 64,
+        "stage": "HIGH_HOLD",
+        "eligibleSeconds": 59.675,
+        "nestedScopes": true,
+        "cpuSelfTime": false,
+        "scope": "접촉 안의 월드 검사"
+      }
+    },
+    {
+      "metricId": "nestedCost_traceTicks",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 62.2410305906429,
+      "unit": "elapsed-equivalent ms/wall s",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 64,
+        "stage": "HIGH_HOLD",
+        "eligibleSeconds": 59.675,
+        "nestedScopes": true,
+        "cpuSelfTime": false,
+        "scope": "legacy trace 기록 범위"
+      }
+    },
+    {
+      "metricId": "nestedCost_crowdCpuTicks",
+      "sourceRunId": "runtime-20261029-130645",
+      "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
+      "value": 12.28279659321908,
+      "unit": "elapsed-equivalent ms/wall s",
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only",
+      "conditions": {
+        "count": 64,
+        "stage": "HIGH_HOLD",
+        "eligibleSeconds": 59.675,
+        "nestedScopes": true,
+        "cpuSelfTime": false,
+        "scope": "Crowd.Update 범위"
+      }
     }
   ],
   "blockers": [
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "8agents final8/8 highMissing[] labels{'CONTACT_SUPPORT_LOST': 1, 'ENTRY_ALIGNMENT_NO_PROGRESS': 1} climbEnd0 egressViolations0; 64agents final64/64 highMissing[2, 4, 6, 8, 11, 12, 17, 23, 27, 31, 34, 39, 43, 44, 50, 51, 53, 54, 55, 56, 57, 58, 59, 61] labels{'CONTACT_SUPPORT_LOST': 14} climbEnd0 egressViolations0"
+      "description": "Existing full8/64 final8/8 and64/64;64 high-stage missing24 (23 no high-climb motion observed, actor44 completes after window). Actor17 long blocked landing needs exact gate. No new runtime test."
     },
     {
       "id": "matched-repeats",
@@ -7044,23 +7270,41 @@
       "uri": "/data/experiments/actor43-owner-runtime-20261029.json",
       "sha256": "d11621ab3ec1876aac7e6c918f1e1b9c27e2f0123d2fd2cfd1f33f61bf09ec53",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "owner-cost-clock-20261029-report",
+      "uri": "/downloads/checkpoints/2026-10-29_133537_752964+0900_npc-owner-cost-clock.txt",
+      "sha256": "b31f2dbee141260cd5bbde86d12dcef2dedff4b3601df314caabbe93eed2e46b",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "owner-cost-clock-20261029-review",
+      "uri": "/downloads/checkpoints/2026-10-29_133537_752964+0900_npc-owner-cost-clock_evidence.txt",
+      "sha256": "e370254cc4cb15b20ece24690fcceec5e5af5022de20bc1e1ae22705bf5620c4",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "owner-cost-clock-20261029-json",
+      "uri": "/data/experiments/owner-cost-clock-20261029.json",
+      "sha256": "c2300dc683acf9b1cafbe2dcba291c518ee9226f47b651dd122905e0c017d952",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T04:17:31.266450+00:00",
-    "staleAfter": "2026-10-30T04:17:31.266450+00:00",
+    "sourceUpdatedAt": "2026-10-29T04:38:05.112260+00:00",
+    "staleAfter": "2026-10-30T04:38:05.112260+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261029T041731-actor43-owner-runtime-20261029",
-      "generatedAt": "2026-10-29T04:17:31.266450+00:00",
-      "sourceUpdatedAt": "2026-10-29T04:17:31.266450+00:00"
+      "snapshotId": "snapshot-20261029T043805-owner-cost-clock-20261029",
+      "generatedAt": "2026-10-29T04:38:05.112260+00:00",
+      "sourceUpdatedAt": "2026-10-29T04:38:05.112260+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-29T04:17:31.266450+00:00",
+      "at": "2026-10-29T04:38:05.112260+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -7075,7 +7319,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261029T041731-actor43-owner-runtime-20261029/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261029T043805-owner-cost-clock-20261029/"
   },
   "experiments": [
     {
@@ -7673,6 +7917,30 @@
         "matched-repeats"
       ],
       "replication": "Recorded-pose contact-consistent executor on two builds; actual full300s8/64 each one run."
+    },
+    {
+      "id": "owner-cost-clock-20261029",
+      "title": "64명 콜백 시간0.497배: 미도달 유형과 중첩 비용 분리",
+      "track": "diagnostic",
+      "sourceRunId": [
+        "runtime-20261029-130025",
+        "runtime-20261029-130645"
+      ],
+      "buildId": [
+        "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [],
+      "evidenceReferences": [
+        "owner-cost-clock-20261029-report",
+        "owner-cost-clock-20261029-review",
+        "owner-cost-clock-20261029-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "No new runs. Existing two closed300s traces, each population1run. Calibration arithmetic3tests passed."
     }
   ],
   "kind": "metrics"

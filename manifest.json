@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T041731-actor43-owner-runtime-20261029",
-  "generatedAt": "2026-10-29T04:17:31.266450+00:00",
-  "exportedAt": "2026-10-29T04:17:31.266450+00:00",
+  "snapshotId": "snapshot-20261029T043805-owner-cost-clock-20261029",
+  "generatedAt": "2026-10-29T04:38:05.112260+00:00",
+  "exportedAt": "2026-10-29T04:38:05.112260+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -45,8 +45,8 @@
     "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T04:17:31.266450+00:00",
-    "staleAfter": "2026-10-30T04:17:31.266450+00:00",
+    "sourceUpdatedAt": "2026-10-29T04:38:05.112260+00:00",
+    "staleAfter": "2026-10-30T04:38:05.112260+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -63,18 +63,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 16106,
-      "sha256": "d8536755efc33f74342ca1e4e08d605058a7b74c3585dfb74691e0a1d23f4c68"
+      "bytes": 65415,
+      "sha256": "a4fb0c9fe72bdf288b25c33bff52993d4d732e47d38d4c5cb8cbc5076c3f91d3"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 267227,
-      "sha256": "7c81989adfddc62fa9fae90d002f6a1717456b8ee5e00750c6ef989a8c32e24a"
+      "bytes": 276399,
+      "sha256": "11c84ccf85b83e3db38b258c81de56124acc1e3d7efad5ef097a3a957d67fc14"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 267223,
-      "sha256": "b9511cae0a6c6c02103b0c301012f1f0fb7c72cacb93c432c226ee20e6c1aa06"
+      "bytes": 276395,
+      "sha256": "0cd5e8cc78c991b35d3a45e4ce340d2c7660f21bcc5f6cf6b762de058f813d1e"
     },
     {
       "path": "api/public/schema.json",
@@ -307,14 +307,29 @@
       "sha256": "7a6e410850a6d51f570ee3afbd54d2f7073c2e8fbf99beec67cacd4551e3fe0e"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261029T043805-owner-cost-clock-20261029/experiments.json",
+      "bytes": 276399,
+      "sha256": "11c84ccf85b83e3db38b258c81de56124acc1e3d7efad5ef097a3a957d67fc14"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T043805-owner-cost-clock-20261029/metrics.json",
+      "bytes": 276395,
+      "sha256": "0cd5e8cc78c991b35d3a45e4ce340d2c7660f21bcc5f6cf6b762de058f813d1e"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T043805-owner-cost-clock-20261029/status.json",
+      "bytes": 276394,
+      "sha256": "6b347e74bd3f0cdd24ff86b395e7f0570b33e570dfea9bf638cf5308c8a830cd"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 267222,
-      "sha256": "7a6e410850a6d51f570ee3afbd54d2f7073c2e8fbf99beec67cacd4551e3fe0e"
+      "bytes": 276394,
+      "sha256": "6b347e74bd3f0cdd24ff86b395e7f0570b33e570dfea9bf638cf5308c8a830cd"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 727,
-      "sha256": "43b3a237169cde4301895c795d6f3fe0a15ed122e522e89143f0592377cd51c2"
+      "bytes": 717,
+      "sha256": "d79e6101ed48ee18473b41e75ba6306f28827f5e03f2f1e6c931811a6b4636bc"
     },
     {
       "path": "data/experiments/actor43-owner-runtime-20261029.json",
@@ -370,6 +385,11 @@
       "path": "data/experiments/landing-corridor-20261028.json",
       "bytes": 42509,
       "sha256": "2ee421e230c74c8b1d093b5dbf0fd5d230c4b24338f0eb61caf093aaf84cc607"
+    },
+    {
+      "path": "data/experiments/owner-cost-clock-20261029.json",
+      "bytes": 89768,
+      "sha256": "c2300dc683acf9b1cafbe2dcba291c518ee9226f47b651dd122905e0c017d952"
     },
     {
       "path": "data/experiments/period-fraction-20261029.json",
@@ -572,9 +592,19 @@
       "sha256": "250ee377a75e750d6e1be8d977fa9adc9ee9b400b30d49669444e59f13ba8419"
     },
     {
+      "path": "downloads/checkpoints/2026-10-29_133537_752964+0900_npc-owner-cost-clock.txt",
+      "bytes": 9377,
+      "sha256": "b31f2dbee141260cd5bbde86d12dcef2dedff4b3601df314caabbe93eed2e46b"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-29_133537_752964+0900_npc-owner-cost-clock_evidence.txt",
+      "bytes": 65162,
+      "sha256": "e370254cc4cb15b20ece24690fcceec5e5af5022de20bc1e1ae22705bf5620c4"
+    },
+    {
       "path": "README.md",
-      "bytes": 9139,
-      "sha256": "9ad4481333ba1539ba67ecde75108ef70bc0bd50d207db31124c11953c31dc5a"
+      "bytes": 9556,
+      "sha256": "376698f46eae3bba37e283037beae65a4fbb3e0ed9bb3aef00c046d7f4e7ceb5"
     },
     {
       "path": "reports/accessibility-20261028.md",
@@ -662,6 +692,16 @@
       "sha256": "3d862c6395e44b0a5307f0ea05880cb89124b6f279e9dead1919094472de6203"
     },
     {
+      "path": "reports/history/pre-owner-cost-clock-20261029-latest.md",
+      "bytes": 8149,
+      "sha256": "adbe5f2464e89f2d18c1290ce2ef4188a325a8dbac9639da9d4075aac367fa88"
+    },
+    {
+      "path": "reports/history/pre-owner-cost-clock-20261029-operations-latest.md",
+      "bytes": 8149,
+      "sha256": "adbe5f2464e89f2d18c1290ce2ef4188a325a8dbac9639da9d4075aac367fa88"
+    },
+    {
       "path": "reports/history/pre-period-fraction-20261029-latest.md",
       "bytes": 10426,
       "sha256": "74e9b81fc9be69d95f6ab566cc2a023d20654e04fc9d44ad43aefe983eb514d8"
@@ -733,8 +773,8 @@
     },
     {
       "path": "reports/latest.md",
-      "bytes": 8149,
-      "sha256": "adbe5f2464e89f2d18c1290ce2ef4188a325a8dbac9639da9d4075aac367fa88"
+      "bytes": 9716,
+      "sha256": "b6e03e49c79ffab2b6453b82f19d5169815d0a1c824a001b2bef0ecee1c64e56"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -743,8 +783,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 8149,
-      "sha256": "adbe5f2464e89f2d18c1290ce2ef4188a325a8dbac9639da9d4075aac367fa88"
+      "bytes": 9716,
+      "sha256": "b6e03e49c79ffab2b6453b82f19d5169815d0a1c824a001b2bef0ecee1c64e56"
     }
   ]
 }
