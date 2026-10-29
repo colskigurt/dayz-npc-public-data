@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T112003-captured-contact-replay-20261029",
-  "generatedAt": "2026-10-29T11:20:03.542549+00:00",
+  "snapshotId": "snapshot-20261029T113929-contact-episode-review-20261029",
+  "generatedAt": "2026-10-29T11:39:29.386801+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -63,9 +63,9 @@
     "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "Diagnostic only:4captured cases reproduced;bounded slide2/4passed twice. No live8/64candidate regression. Existing functional blockers remain.",
-    "visual": "No visible temporal measurement inthisheadlessfixed-inputexperiment;CPU/render temporal mismatch unresolved.",
-    "performance": "No performance measurement inthisexperiment;20ms p95remainsunmet target. Prior149ms isnot a candidate result.",
+    "functional": "Selected4actualepisodes allrecovered withunchangedoriginalcode. Frozenpose fallback-disabled candidate3/4LANDtwice doesnotproveactualimprovement. No new8/64clientregression.",
+    "visual": "No temporalvisiblemeasurement;CPU/renderclock mismatch unresolved.",
+    "performance": "No newperformancemeasurement;20msp95remains target. Existing149ms isnotcandidate result.",
     "regressionChecks": 0
   },
   "metrics": [
@@ -10222,7 +10222,7 @@
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "Two candidates rejected byNEW_WORLD_CONTACT. Need exact rejecting probe attribution andcontinuous recovery before livepromotion. High-stage misses25/27 remainfrom priorruns."
+      "description": "Do notclassify4rejectedanchors asunresolvedfalls. Existing64high-stage misses25/27 needepisode-level classification;LAND-toFOLLOWlatency remains. Fullacceptance unproven."
     },
     {
       "id": "matched-repeats",
@@ -10785,23 +10785,41 @@
       "uri": "/data/experiments/captured-contact-replay-20261029.json",
       "sha256": "d451105d03f511e0926bf729251148980230c0193dc9b36127aea822a2df27de",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "contact-episode-review-20261029-report",
+      "uri": "/downloads/checkpoints/2026-10-29_203908_181028+0900_npc-contact-episode-review.txt",
+      "sha256": "dcb5958648edef4cbbbbd577c7ebc721709545a41f297262d36f4eea484c7eec",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "contact-episode-review-20261029-review",
+      "uri": "/downloads/checkpoints/2026-10-29_203908_181028+0900_npc-contact-episode-review_evidence.txt",
+      "sha256": "07a991a5cc8eaf9a4fede897784bf408b5d8fa790346816c57a6659b29ff5c4d",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "contact-episode-review-20261029-json",
+      "uri": "/data/experiments/contact-episode-review-20261029.json",
+      "sha256": "64a7bea0255e6245e30e080b68ee96d76a8743facaa5c4aa6c036399590ec60a",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T11:20:03.542549+00:00",
-    "staleAfter": "2026-10-30T11:20:03.542549+00:00",
+    "sourceUpdatedAt": "2026-10-29T11:39:29.386801+00:00",
+    "staleAfter": "2026-10-30T11:39:29.386801+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261029T112003-captured-contact-replay-20261029",
-      "generatedAt": "2026-10-29T11:20:03.542549+00:00",
-      "sourceUpdatedAt": "2026-10-29T11:20:03.542549+00:00"
+      "snapshotId": "snapshot-20261029T113929-contact-episode-review-20261029",
+      "generatedAt": "2026-10-29T11:39:29.386801+00:00",
+      "sourceUpdatedAt": "2026-10-29T11:39:29.386801+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-29T11:20:03.542549+00:00",
+      "at": "2026-10-29T11:39:29.386801+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -10816,7 +10834,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261029T112003-captured-contact-replay-20261029/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261029T113929-contact-episode-review-20261029/"
   },
   "experiments": [
     {
@@ -11789,6 +11807,30 @@
         "matched-repeats"
       ],
       "replication": "Samefrozen candidate missionrun twice withidentical8baselinecontrolrows and4candidateoutcomerows. Not live8/64orperformance repetitions."
+    },
+    {
+      "id": "contact-episode-review-20261029",
+      "title": "낙하 episode 재분류: 실제 4/4 기존 복구, 후보 배포 보류",
+      "track": "diagnostic",
+      "sourceRunId": [
+        "runtime-20261029-191331",
+        "runtime-20261029-193252"
+      ],
+      "buildId": [
+        "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [],
+      "evidenceReferences": [
+        "contact-episode-review-20261029-report",
+        "contact-episode-review-20261029-review",
+        "contact-episode-review-20261029-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "Twoidenticalfrozenposecontinuousruns;actual4episodeaudit usesexistingruns. Notlivecontrolledcandidate repeats."
     }
   ],
   "kind": "experiments"

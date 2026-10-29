@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T112003-captured-contact-replay-20261029",
-  "generatedAt": "2026-10-29T11:20:03.542549+00:00",
-  "exportedAt": "2026-10-29T11:20:03.542549+00:00",
+  "snapshotId": "snapshot-20261029T113929-contact-episode-review-20261029",
+  "generatedAt": "2026-10-29T11:39:29.386801+00:00",
+  "exportedAt": "2026-10-29T11:39:29.386801+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -61,8 +61,8 @@
     "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T11:20:03.542549+00:00",
-    "staleAfter": "2026-10-30T11:20:03.542549+00:00",
+    "sourceUpdatedAt": "2026-10-29T11:39:29.386801+00:00",
+    "staleAfter": "2026-10-30T11:39:29.386801+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -79,18 +79,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 16315,
-      "sha256": "a847850de9fd660c98190ebb1859a8d13ba64faa863ca275187f35c464ff2831"
+      "bytes": 37525,
+      "sha256": "db440e8faf0686fed702f6f1ffebf6390c38c97324952212e3072037cfbad95c"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 418788,
-      "sha256": "f9aa7a2218daaa7c961286de92ab0493438577dfb97a85d528de506c3b218ee3"
+      "bytes": 420487,
+      "sha256": "f620c3b6af13e98a416f673ecd6178fae6edd95fe822f7510b35c1d9a35c7df9"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 418784,
-      "sha256": "cd3158a98b7c655625456c0e825928a6b0b734fc46a4452c07e70f56a43761f9"
+      "bytes": 420483,
+      "sha256": "7084e3a80bcfdc2fd944f13cebe521b7667a873a06ae61f3eae6c189d8da4859"
     },
     {
       "path": "api/public/schema.json",
@@ -518,14 +518,29 @@
       "sha256": "ecf540db7e630987ab38bde29bdfe30c7a71f8b6b21ddb65bf26cade37e3a92e"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261029T113929-contact-episode-review-20261029/experiments.json",
+      "bytes": 420487,
+      "sha256": "f620c3b6af13e98a416f673ecd6178fae6edd95fe822f7510b35c1d9a35c7df9"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T113929-contact-episode-review-20261029/metrics.json",
+      "bytes": 420483,
+      "sha256": "7084e3a80bcfdc2fd944f13cebe521b7667a873a06ae61f3eae6c189d8da4859"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T113929-contact-episode-review-20261029/status.json",
+      "bytes": 420482,
+      "sha256": "ce5173853bd5fdbc1661836831765d23eb7266c6c2c5e01ca7e516dfe7756c65"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 418783,
-      "sha256": "ecf540db7e630987ab38bde29bdfe30c7a71f8b6b21ddb65bf26cade37e3a92e"
+      "bytes": 420482,
+      "sha256": "ce5173853bd5fdbc1661836831765d23eb7266c6c2c5e01ca7e516dfe7756c65"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 731,
-      "sha256": "5935e50a5a0eb914ef9ad157fbf2019518d4781be0c248c7f00455ff50687087"
+      "bytes": 729,
+      "sha256": "9bcee53090952ba9d7e4acb5da8a677ae9d5231258cf5f1999da18b04d124e4b"
     },
     {
       "path": "data/experiments/actor43-owner-runtime-20261029.json",
@@ -571,6 +586,11 @@
       "path": "data/experiments/clock-conservation-repeat-20261029.json",
       "bytes": 29370,
       "sha256": "a78818a3b8df68a77d7721c5a059ac855e24ca547c651492070723b48fbf5532"
+    },
+    {
+      "path": "data/experiments/contact-episode-review-20261029.json",
+      "bytes": 55310,
+      "sha256": "64a7bea0255e6245e30e080b68ee96d76a8743facaa5c4aa6c036399590ec60a"
     },
     {
       "path": "data/experiments/descriptor-copy-20261028.json",
@@ -973,14 +993,24 @@
       "sha256": "f71702e4cd5978024e0f41f048a268e8cb939724bcfbb9544fe89aa8d8454e47"
     },
     {
+      "path": "downloads/checkpoints/2026-10-29_203908_181028+0900_npc-contact-episode-review.txt",
+      "bytes": 6864,
+      "sha256": "dcb5958648edef4cbbbbd577c7ebc721709545a41f297262d36f4eea484c7eec"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-29_203908_181028+0900_npc-contact-episode-review_evidence.txt",
+      "bytes": 37266,
+      "sha256": "07a991a5cc8eaf9a4fede897784bf408b5d8fa790346816c57a6659b29ff5c4d"
+    },
+    {
       "path": "downloads/checkpoints/public-review.txt",
       "bytes": 16055,
       "sha256": "520e7c46af42939c93ec4375e51e555bbcde7ac4c1c1b0a91ce2dca75f8abb64"
     },
     {
       "path": "README.md",
-      "bytes": 14623,
-      "sha256": "54602160170973344a9246b0c82d8c099d857d8c6bd91cdce9744f5917f4092d"
+      "bytes": 15038,
+      "sha256": "8cb1b3d6a2b9a25e7963c86119c81c943995a6171d6cba84c799d0420f931e64"
     },
     {
       "path": "reports/accessibility-20261028.md",
@@ -1046,6 +1076,16 @@
       "path": "reports/history/pre-clock-conservation-repeat-20261029-operations-latest.md",
       "bytes": 8059,
       "sha256": "5b982e1446c418c0c99968bdab2d07a8da547f45053f455de3b8d9b4190a9ae0"
+    },
+    {
+      "path": "reports/history/pre-contact-episode-review-20261029-latest.md",
+      "bytes": 5758,
+      "sha256": "ecccc779528bcf9f4e76fe2756c89ba2bd976f257a4b54e9de3bb72e452eac51"
+    },
+    {
+      "path": "reports/history/pre-contact-episode-review-20261029-operations-latest.md",
+      "bytes": 5758,
+      "sha256": "ecccc779528bcf9f4e76fe2756c89ba2bd976f257a4b54e9de3bb72e452eac51"
     },
     {
       "path": "reports/history/pre-descriptor-copy-20261028-latest.md",
@@ -1269,8 +1309,8 @@
     },
     {
       "path": "reports/latest.md",
-      "bytes": 5758,
-      "sha256": "ecccc779528bcf9f4e76fe2756c89ba2bd976f257a4b54e9de3bb72e452eac51"
+      "bytes": 7212,
+      "sha256": "d2d6fcb5372aaaf3c7e129d1a226b00f0dd6e362f588d8f58a93943a3c6ff62c"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -1279,8 +1319,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 5758,
-      "sha256": "ecccc779528bcf9f4e76fe2756c89ba2bd976f257a4b54e9de3bb72e452eac51"
+      "bytes": 7212,
+      "sha256": "d2d6fcb5372aaaf3c7e129d1a226b00f0dd6e362f588d8f58a93943a3c6ff62c"
     }
   ]
 }
