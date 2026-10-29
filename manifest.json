@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T113929-contact-episode-review-20261029",
-  "generatedAt": "2026-10-29T11:39:29.386801+00:00",
-  "exportedAt": "2026-10-29T11:39:29.386801+00:00",
+  "snapshotId": "snapshot-20261029T122932-entry-stage-latency-20261029",
+  "generatedAt": "2026-10-29T12:29:32.042088+00:00",
+  "exportedAt": "2026-10-29T12:29:32.042088+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -46,7 +46,9 @@
     "runtime-20261029-171916",
     "runtime-20261029-190552",
     "runtime-20261029-191331",
-    "runtime-20261029-193252"
+    "runtime-20261029-193252",
+    "runtime-20261029-210454",
+    "runtime-20261029-211146"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -58,11 +60,12 @@
     "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
     "31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126",
     "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
-    "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E"
+    "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+    "47A7C366B29B96CB1F0D789BB36D6DB9459D2AC3D63E7E2EE1B5BEA63287DE32"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T11:39:29.386801+00:00",
-    "staleAfter": "2026-10-30T11:39:29.386801+00:00",
+    "sourceUpdatedAt": "2026-10-29T12:29:32.042088+00:00",
+    "staleAfter": "2026-10-30T12:29:32.042088+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -79,18 +82,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 37525,
-      "sha256": "db440e8faf0686fed702f6f1ffebf6390c38c97324952212e3072037cfbad95c"
+      "bytes": 188241,
+      "sha256": "961cd781354125c686b9dff6ea2b872f76a8fc3a7260b81c36e1f5e268e7d322"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 420487,
-      "sha256": "f620c3b6af13e98a416f673ecd6178fae6edd95fe822f7510b35c1d9a35c7df9"
+      "bytes": 452616,
+      "sha256": "1773ec2501740724d771f80028a90669fabd8a19762ffc23625b5a7258041744"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 420483,
-      "sha256": "7084e3a80bcfdc2fd944f13cebe521b7667a873a06ae61f3eae6c189d8da4859"
+      "bytes": 452612,
+      "sha256": "19dee3579f1cc20a31817c1b69ed9f98e81d386e015f7e79479729022696eac6"
     },
     {
       "path": "api/public/schema.json",
@@ -533,14 +536,29 @@
       "sha256": "ce5173853bd5fdbc1661836831765d23eb7266c6c2c5e01ca7e516dfe7756c65"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261029T122932-entry-stage-latency-20261029/experiments.json",
+      "bytes": 452616,
+      "sha256": "1773ec2501740724d771f80028a90669fabd8a19762ffc23625b5a7258041744"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T122932-entry-stage-latency-20261029/metrics.json",
+      "bytes": 452612,
+      "sha256": "19dee3579f1cc20a31817c1b69ed9f98e81d386e015f7e79479729022696eac6"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T122932-entry-stage-latency-20261029/status.json",
+      "bytes": 452611,
+      "sha256": "9e956fcc732472a2bbecbb16a1dcfd02236c1d8813be423919bd085cfdf6e951"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 420482,
-      "sha256": "ce5173853bd5fdbc1661836831765d23eb7266c6c2c5e01ca7e516dfe7756c65"
+      "bytes": 452611,
+      "sha256": "9e956fcc732472a2bbecbb16a1dcfd02236c1d8813be423919bd085cfdf6e951"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 729,
-      "sha256": "9bcee53090952ba9d7e4acb5da8a677ae9d5231258cf5f1999da18b04d124e4b"
+      "bytes": 723,
+      "sha256": "3dda96a2102dcbf5d330f2b92931668398743db879c7016918fc9418139d3d2e"
     },
     {
       "path": "data/experiments/actor43-owner-runtime-20261029.json",
@@ -596,6 +614,11 @@
       "path": "data/experiments/descriptor-copy-20261028.json",
       "bytes": 50222,
       "sha256": "2675ceb3ee40cdd8039d00f982c0f97709668b4c2c774cd102112765dc32a639"
+    },
+    {
+      "path": "data/experiments/entry-stage-latency-20261029.json",
+      "bytes": 229389,
+      "sha256": "a976deece89e5c6b132640484f121bad16d08192848853b90bb71ebe0d86214f"
     },
     {
       "path": "data/experiments/escape-shadow-visible-20261028.json",
@@ -1003,14 +1026,24 @@
       "sha256": "07a991a5cc8eaf9a4fede897784bf408b5d8fa790346816c57a6659b29ff5c4d"
     },
     {
+      "path": "downloads/checkpoints/2026-10-29_212837_774994+0900_npc-entry-stage-latency.txt",
+      "bytes": 8702,
+      "sha256": "94de6f5febd0c03de87b016a391998dba205918dfe868b3c1dbf7fb8093b7328"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-29_212837_774994+0900_npc-entry-stage-latency_evidence.txt",
+      "bytes": 187985,
+      "sha256": "801329190c8a9e466c0495e671d66acb4bac54763a1b9983895753b81c5ad9f8"
+    },
+    {
       "path": "downloads/checkpoints/public-review.txt",
       "bytes": 16055,
       "sha256": "520e7c46af42939c93ec4375e51e555bbcde7ac4c1c1b0a91ce2dca75f8abb64"
     },
     {
       "path": "README.md",
-      "bytes": 15038,
-      "sha256": "8cb1b3d6a2b9a25e7963c86119c81c943995a6171d6cba84c799d0420f931e64"
+      "bytes": 15482,
+      "sha256": "d532ed01b2d608d4ab8c7abc75968aa1aa074f319245f4efef9e1038e1f4fa28"
     },
     {
       "path": "reports/accessibility-20261028.md",
@@ -1096,6 +1129,16 @@
       "path": "reports/history/pre-descriptor-copy-20261028-operations-latest.md",
       "bytes": 9151,
       "sha256": "0a3e76afc878199aef534814d457ce6820e2133b9ed791c3b1392f8d57e18cc9"
+    },
+    {
+      "path": "reports/history/pre-entry-stage-latency-20261029-latest.md",
+      "bytes": 7212,
+      "sha256": "d2d6fcb5372aaaf3c7e129d1a226b00f0dd6e362f588d8f58a93943a3c6ff62c"
+    },
+    {
+      "path": "reports/history/pre-entry-stage-latency-20261029-operations-latest.md",
+      "bytes": 7212,
+      "sha256": "d2d6fcb5372aaaf3c7e129d1a226b00f0dd6e362f588d8f58a93943a3c6ff62c"
     },
     {
       "path": "reports/history/pre-escape-shadow-visible-20261028-latest.md",
@@ -1309,8 +1352,8 @@
     },
     {
       "path": "reports/latest.md",
-      "bytes": 7212,
-      "sha256": "d2d6fcb5372aaaf3c7e129d1a226b00f0dd6e362f588d8f58a93943a3c6ff62c"
+      "bytes": 9053,
+      "sha256": "b5c646485a2f6828b70ac7deed277bfe59b7cd1a3bab047fa7e15712204b503b"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -1319,8 +1362,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 7212,
-      "sha256": "d2d6fcb5372aaaf3c7e129d1a226b00f0dd6e362f588d8f58a93943a3c6ff62c"
+      "bytes": 9053,
+      "sha256": "b5c646485a2f6828b70ac7deed277bfe59b7cd1a3bab047fa7e15712204b503b"
     }
   ]
 }
