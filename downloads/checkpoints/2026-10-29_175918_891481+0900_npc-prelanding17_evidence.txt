@@ -1,0 +1,4082 @@
+착지 전 정체17번 — 옆면 지지 거부와1cm 안전 방향 재현
+
+작성: 2026-10-29T17:59:18.891481+09:00
+
+1. 작업 목표
+
+runtime-20261029-171916에서17번이 착지 전 FALL에 머문 문제를 같은 위치·원시4관절 포즈·지형에서 재현한다. 안전한 미세 이동의 존재와 실제 연속 복구를 구분한다. 기존 착지/충돌 gate를 완화하지 않고 재탐색 후보가 놓치는 조건을 조사한다.
+
+2. 실제 수행
+
+전용 서버 시험4개를 정상 종료했다. 첫 시험은 원본 Fall과 시험 전용 접선 이동을 비교했다. 두 번째는 접선에 바깥 법선 성분0/0.05/0.15를 추가했고 원시 Floor ray를 기록했다. 세 번째와 네 번째는 동일 소스의 질의 전용 반복:36방향(10도 간격)×1/3cm×3포즈×2모드=432질의를 각각 실행했다. 마지막 위치/첫 거부 위치/열린 지면 대조군을 사용했다. 모터는각300틱 한도·dt0.05초·초기 수직속도-15로 정규화했다. 원본 실제 dt/속도를 복구한 재생은 아니다.
+
+팬 질의는 각 모터 시험 종료 후 원래 root/heading으로 되돌린 frozen pose에 시행했으며 이동을 적용하지 않는다. 원래 step gate를 그대로 호출한다. 전용 테스트가 통과했다고 실제 클라이언트 게임플레이가 통과한 것으로 취급하지 않는다.
+
+3. 측정 결과
+
+원래 착지 질의는 실패 포즈2개×모드2개에서 모두 FOOT_X_SUPPORT를 재현했다. 중심/플러스X는 유효 지면이고 마이너스X는 StaticObj_Container_1C에 fraction0으로 닿았다. 그 법선Y는 약0.0171/0.0187,높이차0.450012m로 기존 Floor의 normalY≥0.65,fraction>0.001,높이차≤0.35m 조건을 통과하지 못했다. 이는 실제 옆면/초기 중첩 hit라는 질의 결과이며 지지 조건 자체를 잘못됐다고 단정하지 않는다.
+
+모터: 마지막 정체 포즈는 원본/접선 모두15초 FALL,추가 이동0. 초기 포즈는 원본15초 FALL,접선 후보4.55005초에 LAND,추가3걸음·0.0899827m였다. 바깥 성분0.05/0.15도 마지막 포즈를 풀지 못했다. 열린 지면 대조군은 모두 LAND였다. 대조군0.05/0.10초 차이는 재사용 actor/정규화 시험 조건에서 기록한 것이며 배속 개선이 아니다. LAND 이후 EGRESS/FOLLOW는 시험하지 않았다.
+
+질의 팬: 마지막 포즈는 모드별72개 중5개 통과,전부1cm였으며 각도70/80/90/280/290도였다(0도=+X,90도=+Z).3cm는 모두 거부. 초기 포즈25/72,열린 지면72/72가 통과했다. 두 독립 서버 실행에서 전체432질의의 통과 키 집합이 일치했다. 통과 행의 rejectProbe 같은 잔여 진단 필드는 이전 실패값일 수 있으므로 성공 충돌 위치로 해석하지 않았다.
+
+새8/64 클라이언트 기능·p50/p95/p99·실제 표시 프레임·시각 부드러움·최적화 효과는 미측정이다. 이전300초 자연 입력8/8과64/64,64명 고지대 미도달28명은 그대로다. 별도180초 비용 OFF/ON의p95 219/241ms도 이 진단으로 변경되지 않는다.20ms p95는 미달 목표다.
+
+4. 원인 분석
+
+사실: 원본 Fall은 착지 질의 실패 시 중력 위치 적용 전에 반환한다. 원래 압력 탈출/회전도 마지막 포즈를 풀지 못했다. 단일 접선과 작은 바깥 성분 후보는 다른 신체 probe1의 NEW_WORLD_CONTACT에 막혔다. 그러나 전 방향의 더 짧은1cm 질의에는 기존 gate를 통과하는 방향이 존재했다.
+
+추정: 현재 후보 방향과 이동 폭이 좁은 국소 통로를 놓칠 수 있다. 충돌 법선 하나에서 접선을 구하는 것만으로 모든 관절의 안전한 이동을 찾기는 부족하다. 다음에는 유효한 작은 걸음을 연속 적용하면서 목표 진행·왕복·예산·착지·추적 재개를 함께 기록해야 한다.
+
+반증: 이 frozen snapshot에서 어떤 수평 이동도 불가능하다는 설명은 맞지 않는다. 바깥 성분을 조금 추가하면 마지막 포즈가 풀린다는 후보도 효과가 없었다. 반대로5개의 유효한 단일 질의가 연속 복구 경로의 존재나 런타임 안전을 입증하지는 않는다. 착지 후 owner는 물리 LAND 전 정체를 해결하는 계층이 아니다.
+
+5. 검증 수준
+
+진단 성공: 원본 착지 거부 재현,원시 Floor 조건 분리,실패 후보 분류. 반복 검증 완료는 두 번의432개 질의 통과 집합 일치에만 적용한다. 초기 포즈 후보의 물리 LAND는 제한된 단일 frozen 모터 결과다. 전체 기능 회귀 통과·실제 연속 복구·화면 품질·성능·최종 수용은 미완료다. 컴파일 marker와 별개로 독립 분석기가 질의 수/키·연속틱·종료 상태·소스SHA를 검증했다.
+
+6. 변경 사항
+
+별도 미션 stage_horde_prelanding17_fan.py,독립 분석기analyze_horde_prelanding17.py,체크포인트 도구를 추가했고 compiler에 명시적 진단 이름만 추가했다. 처음 staging의 줄바꿈 일치 검사 실패는 별도 staging-failed 폴더에 보존했고 원본 파일을 수정하지 않았다. 실제 NPC/PBO·애니메이션·충돌/착지 gate·운영 서버는 변경하지 않았다.
+
+현재 integration F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8 그대로다. PBO 재빌드/재서명은 없으며4개 전용 서버 진단의 의존 PBO 서명 검증은 성공했다. 개인 키는 공개하지 않았다. 클라이언트/OBS/화면 조작은 실행하지 않았다.
+
+7. 원시 증거
+
+validation-controlled-prelanding17,prelanding17-outward,prelanding17-fan,prelanding17-fan-repeat의각 compile profile에 motor/query/tangent TSV와 필요한 rawFloor/fan TSV가 있다. 분석JSON은4개미션SHA·compile결과·원시 TSV/로그의해시를 연결한다. 판정의 sourceRunId는runtime-20261029-171916이다. 공개 패킷은 선정 질의와 최종행·시험 함수만 제공하며 전체 내부 원시 기록·프로세스 정보·로컬 경로·게임 자산은 공개하지 않는다.
+
+8. 잔여 문제
+
+우선 마지막 정체 포즈에서 유효1cm 방향을 연속 적용하는 제한된 모터 실험을 한다. 왕복 반복 방지·기존6m episode budget·추가1.5m budget·실제 step/착지 gate를 유지하고 LAND 이후 안전 endpoint와FOLLOW까지 별도 검증한다. 실패하면 첫 거부 관절·법선·위치·목표 진행을 기준으로 다음 가설을 세운다.36방향 팬을 모든 개체의 매틱에 적용하는 런타임 설계는 아니다.
+
+동적 포즈/상호 접촉/전투 재진입/낙하·재등반 보존과 실제8→64 회귀는 남아 있다. 애니메이션 CPU-표시 프레임 join과 FOLLOW 비용 추가 분해도 별도 실험으로 유지한다. 신규 보간·배속·업데이트 방식은 적용하지 않았다. 목표는 활성 상태로 유지한다.
+
+원본 보고서 ID: 2026-10-29_175918_891481+0900_npc-prelanding17.md
+원본 SHA-256: 4c7cc43f42eff50d45c596ac13c2487139268f01872d2d1cd182e2f8658533a3
+이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
+
+Selected records,not complete raw logs. All6 final rows per run and accepted fan keys.
+[
+  {
+    "validation": "prelanding17",
+    "initSha256": "0e14489e7674aded6960edc44e59ac1792cde1acc75b1fd2652e69ff38b3440b",
+    "queries": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "root": "<4511.493164, 339.275757, 10236.865234>",
+        "tested": "<4511.501953, 339.172150, 10236.862305>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.501953, 339.172150, 10236.862305>",
+        "leftOk": "true",
+        "left": "<4511.731934, 339.176422, 10236.862305>",
+        "rightOk": "false",
+        "right": "<4511.271973, 339.622162, 10236.862305>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "root": "<4511.493164, 339.275757, 10236.865234>",
+        "tested": "<4511.501953, 339.172150, 10236.862305>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.501953, 339.172150, 10236.862305>",
+        "leftOk": "true",
+        "left": "<4511.731934, 339.176422, 10236.862305>",
+        "rightOk": "false",
+        "right": "<4511.271973, 339.622162, 10236.862305>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "root": "<4511.466309, 339.380249, 10239.336914>",
+        "tested": "<4511.484375, 339.179260, 10239.331055>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.484375, 339.179260, 10239.331055>",
+        "leftOk": "true",
+        "left": "<4511.714355, 339.183563, 10239.331055>",
+        "rightOk": "false",
+        "right": "<4511.254395, 339.629272, 10239.331055>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "root": "<4511.466309, 339.380249, 10239.336914>",
+        "tested": "<4511.484375, 339.179260, 10239.331055>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.484375, 339.179260, 10239.331055>",
+        "leftOk": "true",
+        "left": "<4511.714355, 339.183563, 10239.331055>",
+        "rightOk": "false",
+        "right": "<4511.254395, 339.629272, 10239.331055>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "root": "<4530.000000, 339.440277, 10240.000000>",
+        "tested": "<4530.000000, 339.440277, 10240.000000>",
+        "landing": "true",
+        "gate": "CLEAR",
+        "support": "<4530.000000, 339.336670, 10240.000000>",
+        "leftOk": "true",
+        "left": "<4530.229980, 339.336975, 10240.000000>",
+        "rightOk": "true",
+        "right": "<4529.770020, 339.335754, 10240.000000>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "root": "<4530.000000, 339.440277, 10240.000000>",
+        "tested": "<4530.000000, 339.440277, 10240.000000>",
+        "landing": "true",
+        "gate": "CLEAR",
+        "support": "<4530.000000, 339.336670, 10240.000000>",
+        "leftOk": "true",
+        "left": "<4530.229980, 339.336975, 10240.000000>",
+        "rightOk": "true",
+        "right": "<4529.770020, 339.335754, 10240.000000>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
+      }
+    ],
+    "finals": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.493164, 339.275757, 10236.865234>",
+        "heading": "-161.024",
+        "lift": "0",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "landingGate": "FOOT_X_SUPPORT",
+        "plans": "151",
+        "steps": "0",
+        "separationDistance": "2.81813",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.493164, 339.275757, 10236.865234>",
+        "heading": "-161.024",
+        "lift": "0",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "landingGate": "FOOT_X_SUPPORT",
+        "plans": "151",
+        "steps": "0",
+        "separationDistance": "2.81813",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.487305, 339.380249, 10236.833008>",
+        "heading": "-164.304",
+        "lift": "0",
+        "reason": "FALL_AIR_POSE_ESCAPE_TURN",
+        "landingGate": "CLEAR",
+        "plans": "110",
+        "steps": "83",
+        "separationDistance": "2.51246",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "90",
+        "seconds": "4.55005",
+        "phase": "LAND",
+        "position": "<4511.511719, 339.171509, 10236.656250>",
+        "heading": "-178.304",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "5",
+        "steps": "86",
+        "separationDistance": "2.69327",
+        "tangentDistance": "0.0899827",
+        "tangentSteps": "3",
+        "wantLanding": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "iteration": "1",
+        "seconds": "0.0999756",
+        "phase": "LAND",
+        "position": "<4530.000000, 339.336609, 10240.030273>",
+        "heading": "166.976",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "1",
+        "steps": "1",
+        "separationDistance": "0.0302734",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "iteration": "0",
+        "seconds": "0.0500488",
+        "phase": "LAND",
+        "position": "<4530.000000, 339.336670, 10240.000000>",
+        "heading": "166.976",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "0",
+        "steps": "0",
+        "separationDistance": "0",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "true"
+      }
+    ],
+    "acceptedTangentSteps": [
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "start": "<4511.466309, 339.380249, 10236.884766>",
+        "proposal": "<4511.477539, 339.380249, 10236.857422>",
+        "direction": "<0.377478, 0.000000, -0.926019>",
+        "normal": "<0.926018, 0.000000, 0.377478>",
+        "step": "0.0295602",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "85",
+        "start": "<4511.498535, 339.380249, 10236.805664>",
+        "proposal": "<4511.508301, 339.380249, 10236.777344>",
+        "direction": "<0.319882, 0.000000, -0.947457>",
+        "normal": "<0.947457, 0.000000, 0.319882>",
+        "step": "0.0299568",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "87",
+        "start": "<4511.508301, 339.380249, 10236.747070>",
+        "proposal": "<4511.511719, 339.380249, 10236.716797>",
+        "direction": "<0.108834, 0.000000, -0.994060>",
+        "normal": "<0.994060, 0.000000, 0.108834>",
+        "step": "0.0304658",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1"
+      }
+    ],
+    "motorRows": 994,
+    "tangentRows": 305
+  },
+  {
+    "validation": "prelanding17-outward",
+    "initSha256": "72ca6e81e7fc8a36e329d85d2905ea803868544b4c2c815ebd65bfc63c7ef702",
+    "queries": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "root": "<4511.493164, 339.275757, 10236.865234>",
+        "tested": "<4511.501953, 339.172150, 10236.862305>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.501953, 339.172150, 10236.862305>",
+        "leftOk": "true",
+        "left": "<4511.731934, 339.176422, 10236.862305>",
+        "rightOk": "false",
+        "right": "<4511.271973, 339.622162, 10236.862305>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "root": "<4511.493164, 339.275757, 10236.865234>",
+        "tested": "<4511.501953, 339.172150, 10236.862305>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.501953, 339.172150, 10236.862305>",
+        "leftOk": "true",
+        "left": "<4511.731934, 339.176422, 10236.862305>",
+        "rightOk": "false",
+        "right": "<4511.271973, 339.622162, 10236.862305>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "root": "<4511.466309, 339.380249, 10239.336914>",
+        "tested": "<4511.484375, 339.179260, 10239.331055>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.484375, 339.179260, 10239.331055>",
+        "leftOk": "true",
+        "left": "<4511.714355, 339.183563, 10239.331055>",
+        "rightOk": "false",
+        "right": "<4511.254395, 339.629272, 10239.331055>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "root": "<4511.466309, 339.380249, 10239.336914>",
+        "tested": "<4511.484375, 339.179260, 10239.331055>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.484375, 339.179260, 10239.331055>",
+        "leftOk": "true",
+        "left": "<4511.714355, 339.183563, 10239.331055>",
+        "rightOk": "false",
+        "right": "<4511.254395, 339.629272, 10239.331055>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "root": "<4530.000000, 339.440277, 10240.000000>",
+        "tested": "<4530.000000, 339.440277, 10240.000000>",
+        "landing": "true",
+        "gate": "CLEAR",
+        "support": "<4530.000000, 339.336670, 10240.000000>",
+        "leftOk": "true",
+        "left": "<4530.229980, 339.336975, 10240.000000>",
+        "rightOk": "true",
+        "right": "<4529.770020, 339.335754, 10240.000000>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "root": "<4530.000000, 339.440277, 10240.000000>",
+        "tested": "<4530.000000, 339.440277, 10240.000000>",
+        "landing": "true",
+        "gate": "CLEAR",
+        "support": "<4530.000000, 339.336670, 10240.000000>",
+        "leftOk": "true",
+        "left": "<4530.229980, 339.336975, 10240.000000>",
+        "rightOk": "true",
+        "right": "<4529.770020, 339.335754, 10240.000000>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
+      }
+    ],
+    "finals": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.493164, 339.275757, 10236.865234>",
+        "heading": "-161.024",
+        "lift": "0",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "landingGate": "FOOT_X_SUPPORT",
+        "plans": "151",
+        "steps": "0",
+        "separationDistance": "2.81813",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.493164, 339.275757, 10236.865234>",
+        "heading": "-161.024",
+        "lift": "0",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "landingGate": "FOOT_X_SUPPORT",
+        "plans": "151",
+        "steps": "0",
+        "separationDistance": "2.81813",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.487305, 339.380249, 10236.833008>",
+        "heading": "-164.304",
+        "lift": "0",
+        "reason": "FALL_AIR_POSE_ESCAPE_TURN",
+        "landingGate": "CLEAR",
+        "plans": "110",
+        "steps": "83",
+        "separationDistance": "2.51246",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "90",
+        "seconds": "4.55005",
+        "phase": "LAND",
+        "position": "<4511.511719, 339.171509, 10236.656250>",
+        "heading": "-178.304",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "5",
+        "steps": "86",
+        "separationDistance": "2.69327",
+        "tangentDistance": "0.0899827",
+        "tangentSteps": "3",
+        "wantLanding": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "iteration": "1",
+        "seconds": "0.0999756",
+        "phase": "LAND",
+        "position": "<4530.000000, 339.336609, 10240.030273>",
+        "heading": "166.976",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "1",
+        "steps": "1",
+        "separationDistance": "0.0302734",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "iteration": "0",
+        "seconds": "0.0500488",
+        "phase": "LAND",
+        "position": "<4530.000000, 339.336670, 10240.000000>",
+        "heading": "166.976",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "0",
+        "steps": "0",
+        "separationDistance": "0",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "true"
+      }
+    ],
+    "acceptedTangentSteps": [
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "start": "<4511.466309, 339.380249, 10236.884766>",
+        "proposal": "<4511.477539, 339.380249, 10236.857422>",
+        "direction": "<0.377478, 0.000000, -0.926019>",
+        "normal": "<0.926018, 0.000000, 0.377478>",
+        "step": "0.0295602",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1",
+        "bias": "0",
+        "rejectNormal": "<0.818363, 0.467970, 0.333594>",
+        "rejectFraction": "0.987309"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "85",
+        "start": "<4511.498535, 339.380249, 10236.805664>",
+        "proposal": "<4511.508301, 339.380249, 10236.777344>",
+        "direction": "<0.319882, 0.000000, -0.947458>",
+        "normal": "<0.947457, 0.000000, 0.319882>",
+        "step": "0.0299568",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1",
+        "bias": "0",
+        "rejectNormal": "<0.838359, 0.465873, 0.283048>",
+        "rejectFraction": "0.98595"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "87",
+        "start": "<4511.508301, 339.380249, 10236.747070>",
+        "proposal": "<4511.511719, 339.380249, 10236.716797>",
+        "direction": "<0.108834, 0.000000, -0.994060>",
+        "normal": "<0.994060, 0.000000, 0.108834>",
+        "step": "0.0304658",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1",
+        "bias": "0",
+        "rejectNormal": "<0.879851, 0.465385, 0.096330>",
+        "rejectFraction": "0.491633"
+      }
+    ],
+    "motorRows": 994,
+    "tangentRows": 909,
+    "rawFloorQueries": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "label": "X_PLUS",
+        "near": "<4511.731934, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.731934, 339.176422, 10236.862305>",
+        "normal": "<-0.018661, 0.999818, -0.003999>",
+        "fraction": "0.424507",
+        "heightDifference": "0.00427246",
+        "admissible": "true"
+      },
+      {
+        "pose": "0",
+        "mode": "0",
+        "label": "X_MINUS",
+        "near": "<4511.271973, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.271973, 339.622162, 10236.862305>",
+        "normal": "<0.956329, 0.017070, -0.291794>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "label": "X_PLUS",
+        "near": "<4511.731934, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.731934, 339.176422, 10236.862305>",
+        "normal": "<-0.018661, 0.999818, -0.003999>",
+        "fraction": "0.424507",
+        "heightDifference": "0.00427246",
+        "admissible": "true"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "label": "X_MINUS",
+        "near": "<4511.271973, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.271973, 339.622162, 10236.862305>",
+        "normal": "<0.956329, 0.017070, -0.291794>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "label": "X_PLUS",
+        "near": "<4511.714355, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.714355, 339.183563, 10239.331055>",
+        "normal": "<-0.018661, 0.999822, -0.002665>",
+        "fraction": "0.424478",
+        "heightDifference": "0.00430298",
+        "admissible": "true"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "label": "X_MINUS",
+        "near": "<4511.254395, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.254395, 339.629272, 10239.331055>",
+        "normal": "<0.999826, 0.018659, 0.000011>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "label": "X_PLUS",
+        "near": "<4511.714355, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.714355, 339.183563, 10239.331055>",
+        "normal": "<-0.018661, 0.999822, -0.002665>",
+        "fraction": "0.424478",
+        "heightDifference": "0.00430298",
+        "admissible": "true"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "label": "X_MINUS",
+        "near": "<4511.254395, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.254395, 339.629272, 10239.331055>",
+        "normal": "<0.999826, 0.018659, 0.000011>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "label": "X_PLUS",
+        "near": "<4530.229980, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4530.229980, 339.336975, 10240.000000>",
+        "normal": "<-0.001335, 0.999998, 0.001335>",
+        "fraction": "0.428285",
+        "heightDifference": "0.000305176",
+        "admissible": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "label": "X_MINUS",
+        "near": "<4529.770020, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4529.770020, 339.335754, 10240.000000>",
+        "normal": "<-0.004000, 0.999991, 0.001335>",
+        "fraction": "0.429448",
+        "heightDifference": "0.000915527",
+        "admissible": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "label": "X_PLUS",
+        "near": "<4530.229980, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4530.229980, 339.336975, 10240.000000>",
+        "normal": "<-0.001335, 0.999998, 0.001335>",
+        "fraction": "0.428285",
+        "heightDifference": "0.000305176",
+        "admissible": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "label": "X_MINUS",
+        "near": "<4529.770020, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4529.770020, 339.335754, 10240.000000>",
+        "normal": "<-0.004000, 0.999991, 0.001335>",
+        "fraction": "0.429448",
+        "heightDifference": "0.000915527",
+        "admissible": "true"
+      }
+    ]
+  },
+  {
+    "validation": "prelanding17-fan",
+    "initSha256": "c696cc7536bc587a79f87cc2598943974d5cef241db7aeb96787b477376b7efb",
+    "queries": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "root": "<4511.493164, 339.275757, 10236.865234>",
+        "tested": "<4511.501953, 339.172150, 10236.862305>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.501953, 339.172150, 10236.862305>",
+        "leftOk": "true",
+        "left": "<4511.731934, 339.176422, 10236.862305>",
+        "rightOk": "false",
+        "right": "<4511.271973, 339.622162, 10236.862305>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "root": "<4511.493164, 339.275757, 10236.865234>",
+        "tested": "<4511.501953, 339.172150, 10236.862305>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.501953, 339.172150, 10236.862305>",
+        "leftOk": "true",
+        "left": "<4511.731934, 339.176422, 10236.862305>",
+        "rightOk": "false",
+        "right": "<4511.271973, 339.622162, 10236.862305>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "root": "<4511.466309, 339.380249, 10239.336914>",
+        "tested": "<4511.484375, 339.179260, 10239.331055>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.484375, 339.179260, 10239.331055>",
+        "leftOk": "true",
+        "left": "<4511.714355, 339.183563, 10239.331055>",
+        "rightOk": "false",
+        "right": "<4511.254395, 339.629272, 10239.331055>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "root": "<4511.466309, 339.380249, 10239.336914>",
+        "tested": "<4511.484375, 339.179260, 10239.331055>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.484375, 339.179260, 10239.331055>",
+        "leftOk": "true",
+        "left": "<4511.714355, 339.183563, 10239.331055>",
+        "rightOk": "false",
+        "right": "<4511.254395, 339.629272, 10239.331055>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "root": "<4530.000000, 339.440277, 10240.000000>",
+        "tested": "<4530.000000, 339.440277, 10240.000000>",
+        "landing": "true",
+        "gate": "CLEAR",
+        "support": "<4530.000000, 339.336670, 10240.000000>",
+        "leftOk": "true",
+        "left": "<4530.229980, 339.336975, 10240.000000>",
+        "rightOk": "true",
+        "right": "<4529.770020, 339.335754, 10240.000000>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "root": "<4530.000000, 339.440277, 10240.000000>",
+        "tested": "<4530.000000, 339.440277, 10240.000000>",
+        "landing": "true",
+        "gate": "CLEAR",
+        "support": "<4530.000000, 339.336670, 10240.000000>",
+        "leftOk": "true",
+        "left": "<4530.229980, 339.336975, 10240.000000>",
+        "rightOk": "true",
+        "right": "<4529.770020, 339.335754, 10240.000000>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
+      }
+    ],
+    "finals": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.493164, 339.275757, 10236.865234>",
+        "heading": "-161.024",
+        "lift": "0",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "landingGate": "FOOT_X_SUPPORT",
+        "plans": "151",
+        "steps": "0",
+        "separationDistance": "2.81813",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.493164, 339.275757, 10236.865234>",
+        "heading": "-161.024",
+        "lift": "0",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "landingGate": "FOOT_X_SUPPORT",
+        "plans": "151",
+        "steps": "0",
+        "separationDistance": "2.81813",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.487305, 339.380249, 10236.833008>",
+        "heading": "-164.304",
+        "lift": "0",
+        "reason": "FALL_AIR_POSE_ESCAPE_TURN",
+        "landingGate": "CLEAR",
+        "plans": "110",
+        "steps": "83",
+        "separationDistance": "2.51246",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "90",
+        "seconds": "4.55005",
+        "phase": "LAND",
+        "position": "<4511.511719, 339.171509, 10236.656250>",
+        "heading": "-178.304",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "5",
+        "steps": "86",
+        "separationDistance": "2.69327",
+        "tangentDistance": "0.0899827",
+        "tangentSteps": "3",
+        "wantLanding": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "iteration": "1",
+        "seconds": "0.0999756",
+        "phase": "LAND",
+        "position": "<4530.000000, 339.336609, 10240.030273>",
+        "heading": "166.976",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "1",
+        "steps": "1",
+        "separationDistance": "0.0302734",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "iteration": "0",
+        "seconds": "0.0500488",
+        "phase": "LAND",
+        "position": "<4530.000000, 339.336670, 10240.000000>",
+        "heading": "166.976",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "0",
+        "steps": "0",
+        "separationDistance": "0",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "true"
+      }
+    ],
+    "acceptedTangentSteps": [
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "start": "<4511.466309, 339.380249, 10236.884766>",
+        "proposal": "<4511.477539, 339.380249, 10236.857422>",
+        "direction": "<0.377478, 0.000000, -0.926019>",
+        "normal": "<0.926018, 0.000000, 0.377478>",
+        "step": "0.0295602",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1",
+        "bias": "0",
+        "rejectNormal": "<0.818363, 0.467970, 0.333594>",
+        "rejectFraction": "0.987309"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "85",
+        "start": "<4511.498535, 339.380249, 10236.805664>",
+        "proposal": "<4511.508301, 339.380249, 10236.777344>",
+        "direction": "<0.319882, 0.000000, -0.947458>",
+        "normal": "<0.947457, 0.000000, 0.319882>",
+        "step": "0.0299568",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1",
+        "bias": "0",
+        "rejectNormal": "<0.838359, 0.465873, 0.283048>",
+        "rejectFraction": "0.98595"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "87",
+        "start": "<4511.508301, 339.380249, 10236.747070>",
+        "proposal": "<4511.511719, 339.380249, 10236.716797>",
+        "direction": "<0.108834, 0.000000, -0.994060>",
+        "normal": "<0.994060, 0.000000, 0.108834>",
+        "step": "0.0304658",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1",
+        "bias": "0",
+        "rejectNormal": "<0.879851, 0.465385, 0.096330>",
+        "rejectFraction": "0.491633"
+      }
+    ],
+    "motorRows": 994,
+    "tangentRows": 909,
+    "rawFloorQueries": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "label": "X_PLUS",
+        "near": "<4511.731934, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.731934, 339.176422, 10236.862305>",
+        "normal": "<-0.018661, 0.999818, -0.003999>",
+        "fraction": "0.424507",
+        "heightDifference": "0.00427246",
+        "admissible": "true"
+      },
+      {
+        "pose": "0",
+        "mode": "0",
+        "label": "X_MINUS",
+        "near": "<4511.271973, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.271973, 339.622162, 10236.862305>",
+        "normal": "<0.956329, 0.017070, -0.291794>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "label": "X_PLUS",
+        "near": "<4511.731934, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.731934, 339.176422, 10236.862305>",
+        "normal": "<-0.018661, 0.999818, -0.003999>",
+        "fraction": "0.424507",
+        "heightDifference": "0.00427246",
+        "admissible": "true"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "label": "X_MINUS",
+        "near": "<4511.271973, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.271973, 339.622162, 10236.862305>",
+        "normal": "<0.956329, 0.017070, -0.291794>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "label": "X_PLUS",
+        "near": "<4511.714355, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.714355, 339.183563, 10239.331055>",
+        "normal": "<-0.018661, 0.999822, -0.002665>",
+        "fraction": "0.424478",
+        "heightDifference": "0.00430298",
+        "admissible": "true"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "label": "X_MINUS",
+        "near": "<4511.254395, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.254395, 339.629272, 10239.331055>",
+        "normal": "<0.999826, 0.018659, 0.000011>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "label": "X_PLUS",
+        "near": "<4511.714355, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.714355, 339.183563, 10239.331055>",
+        "normal": "<-0.018661, 0.999822, -0.002665>",
+        "fraction": "0.424478",
+        "heightDifference": "0.00430298",
+        "admissible": "true"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "label": "X_MINUS",
+        "near": "<4511.254395, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.254395, 339.629272, 10239.331055>",
+        "normal": "<0.999826, 0.018659, 0.000011>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "label": "X_PLUS",
+        "near": "<4530.229980, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4530.229980, 339.336975, 10240.000000>",
+        "normal": "<-0.001335, 0.999998, 0.001335>",
+        "fraction": "0.428285",
+        "heightDifference": "0.000305176",
+        "admissible": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "label": "X_MINUS",
+        "near": "<4529.770020, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4529.770020, 339.335754, 10240.000000>",
+        "normal": "<-0.004000, 0.999991, 0.001335>",
+        "fraction": "0.429448",
+        "heightDifference": "0.000915527",
+        "admissible": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "label": "X_PLUS",
+        "near": "<4530.229980, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4530.229980, 339.336975, 10240.000000>",
+        "normal": "<-0.001335, 0.999998, 0.001335>",
+        "fraction": "0.428285",
+        "heightDifference": "0.000305176",
+        "admissible": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "label": "X_MINUS",
+        "near": "<4529.770020, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4529.770020, 339.335754, 10240.000000>",
+        "normal": "<-0.004000, 0.999991, 0.001335>",
+        "fraction": "0.429448",
+        "heightDifference": "0.000915527",
+        "admissible": "true"
+      }
+    ],
+    "fanAcceptedCounts": {
+      "0:0": 5,
+      "0:1": 5,
+      "1:0": 25,
+      "1:1": 25,
+      "2:0": 72,
+      "2:1": 72
+    },
+    "fanAcceptedKeys": [
+      [
+        "0",
+        "0",
+        "280",
+        "0.01"
+      ],
+      [
+        "0",
+        "0",
+        "290",
+        "0.01"
+      ],
+      [
+        "0",
+        "0",
+        "70",
+        "0.01"
+      ],
+      [
+        "0",
+        "0",
+        "80",
+        "0.01"
+      ],
+      [
+        "0",
+        "0",
+        "90",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "280",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "290",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "70",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "80",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "90",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "0",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "10",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "20",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "270",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "270",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "280",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "280",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "290",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "290",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "30",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "300",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "310",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "320",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "330",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "340",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "350",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "40",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "50",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "60",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "70",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "70",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "80",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "80",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "90",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "90",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "0",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "10",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "20",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "270",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "270",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "280",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "280",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "290",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "290",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "30",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "300",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "310",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "320",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "330",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "340",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "350",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "40",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "50",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "60",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "70",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "70",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "80",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "80",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "90",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "90",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "0",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "0",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "10",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "10",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "100",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "100",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "110",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "110",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "120",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "120",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "130",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "130",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "140",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "140",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "150",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "150",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "160",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "160",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "170",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "170",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "180",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "180",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "190",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "190",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "20",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "20",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "200",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "200",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "210",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "210",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "220",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "220",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "230",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "230",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "240",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "240",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "250",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "250",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "260",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "260",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "270",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "270",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "280",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "280",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "290",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "290",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "30",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "30",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "300",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "300",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "310",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "310",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "320",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "320",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "330",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "330",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "340",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "340",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "350",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "350",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "40",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "40",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "50",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "50",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "60",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "60",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "70",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "70",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "80",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "80",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "90",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "90",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "0",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "0",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "10",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "10",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "100",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "100",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "110",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "110",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "120",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "120",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "130",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "130",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "140",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "140",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "150",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "150",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "160",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "160",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "170",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "170",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "180",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "180",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "190",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "190",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "20",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "20",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "200",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "200",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "210",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "210",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "220",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "220",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "230",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "230",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "240",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "240",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "250",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "250",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "260",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "260",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "270",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "270",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "280",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "280",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "290",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "290",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "30",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "30",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "300",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "300",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "310",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "310",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "320",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "320",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "330",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "330",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "340",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "340",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "350",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "350",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "40",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "40",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "50",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "50",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "60",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "60",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "70",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "70",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "80",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "80",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "90",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "90",
+        "0.03"
+      ]
+    ]
+  },
+  {
+    "validation": "prelanding17-fan-repeat",
+    "initSha256": "c696cc7536bc587a79f87cc2598943974d5cef241db7aeb96787b477376b7efb",
+    "queries": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "root": "<4511.493164, 339.275757, 10236.865234>",
+        "tested": "<4511.501953, 339.172150, 10236.862305>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.501953, 339.172150, 10236.862305>",
+        "leftOk": "true",
+        "left": "<4511.731934, 339.176422, 10236.862305>",
+        "rightOk": "false",
+        "right": "<4511.271973, 339.622162, 10236.862305>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "root": "<4511.493164, 339.275757, 10236.865234>",
+        "tested": "<4511.501953, 339.172150, 10236.862305>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.501953, 339.172150, 10236.862305>",
+        "leftOk": "true",
+        "left": "<4511.731934, 339.176422, 10236.862305>",
+        "rightOk": "false",
+        "right": "<4511.271973, 339.622162, 10236.862305>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "root": "<4511.466309, 339.380249, 10239.336914>",
+        "tested": "<4511.484375, 339.179260, 10239.331055>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.484375, 339.179260, 10239.331055>",
+        "leftOk": "true",
+        "left": "<4511.714355, 339.183563, 10239.331055>",
+        "rightOk": "false",
+        "right": "<4511.254395, 339.629272, 10239.331055>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "root": "<4511.466309, 339.380249, 10239.336914>",
+        "tested": "<4511.484375, 339.179260, 10239.331055>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.484375, 339.179260, 10239.331055>",
+        "leftOk": "true",
+        "left": "<4511.714355, 339.183563, 10239.331055>",
+        "rightOk": "false",
+        "right": "<4511.254395, 339.629272, 10239.331055>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "root": "<4530.000000, 339.440277, 10240.000000>",
+        "tested": "<4530.000000, 339.440277, 10240.000000>",
+        "landing": "true",
+        "gate": "CLEAR",
+        "support": "<4530.000000, 339.336670, 10240.000000>",
+        "leftOk": "true",
+        "left": "<4530.229980, 339.336975, 10240.000000>",
+        "rightOk": "true",
+        "right": "<4529.770020, 339.335754, 10240.000000>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "root": "<4530.000000, 339.440277, 10240.000000>",
+        "tested": "<4530.000000, 339.440277, 10240.000000>",
+        "landing": "true",
+        "gate": "CLEAR",
+        "support": "<4530.000000, 339.336670, 10240.000000>",
+        "leftOk": "true",
+        "left": "<4530.229980, 339.336975, 10240.000000>",
+        "rightOk": "true",
+        "right": "<4529.770020, 339.335754, 10240.000000>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
+      }
+    ],
+    "finals": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.493164, 339.275757, 10236.865234>",
+        "heading": "-161.024",
+        "lift": "0",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "landingGate": "FOOT_X_SUPPORT",
+        "plans": "151",
+        "steps": "0",
+        "separationDistance": "2.81813",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.493164, 339.275757, 10236.865234>",
+        "heading": "-161.024",
+        "lift": "0",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "landingGate": "FOOT_X_SUPPORT",
+        "plans": "151",
+        "steps": "0",
+        "separationDistance": "2.81813",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.487305, 339.380249, 10236.833008>",
+        "heading": "-164.304",
+        "lift": "0",
+        "reason": "FALL_AIR_POSE_ESCAPE_TURN",
+        "landingGate": "CLEAR",
+        "plans": "110",
+        "steps": "83",
+        "separationDistance": "2.51246",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "90",
+        "seconds": "4.55005",
+        "phase": "LAND",
+        "position": "<4511.511719, 339.171509, 10236.656250>",
+        "heading": "-178.304",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "5",
+        "steps": "86",
+        "separationDistance": "2.69327",
+        "tangentDistance": "0.0899827",
+        "tangentSteps": "3",
+        "wantLanding": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "iteration": "1",
+        "seconds": "0.0999756",
+        "phase": "LAND",
+        "position": "<4530.000000, 339.336609, 10240.030273>",
+        "heading": "166.976",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "1",
+        "steps": "1",
+        "separationDistance": "0.0302734",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "iteration": "0",
+        "seconds": "0.0500488",
+        "phase": "LAND",
+        "position": "<4530.000000, 339.336670, 10240.000000>",
+        "heading": "166.976",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "0",
+        "steps": "0",
+        "separationDistance": "0",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "true"
+      }
+    ],
+    "acceptedTangentSteps": [
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "start": "<4511.466309, 339.380249, 10236.884766>",
+        "proposal": "<4511.477539, 339.380249, 10236.857422>",
+        "direction": "<0.377478, 0.000000, -0.926019>",
+        "normal": "<0.926018, 0.000000, 0.377478>",
+        "step": "0.0295602",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1",
+        "bias": "0",
+        "rejectNormal": "<0.818363, 0.467970, 0.333594>",
+        "rejectFraction": "0.987309"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "85",
+        "start": "<4511.498535, 339.380249, 10236.805664>",
+        "proposal": "<4511.508301, 339.380249, 10236.777344>",
+        "direction": "<0.319882, 0.000000, -0.947458>",
+        "normal": "<0.947457, 0.000000, 0.319882>",
+        "step": "0.0299568",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1",
+        "bias": "0",
+        "rejectNormal": "<0.838359, 0.465873, 0.283048>",
+        "rejectFraction": "0.98595"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "87",
+        "start": "<4511.508301, 339.380249, 10236.747070>",
+        "proposal": "<4511.511719, 339.380249, 10236.716797>",
+        "direction": "<0.108834, 0.000000, -0.994060>",
+        "normal": "<0.994060, 0.000000, 0.108834>",
+        "step": "0.0304658",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1",
+        "bias": "0",
+        "rejectNormal": "<0.879851, 0.465385, 0.096330>",
+        "rejectFraction": "0.491633"
+      }
+    ],
+    "motorRows": 994,
+    "tangentRows": 909,
+    "rawFloorQueries": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "label": "X_PLUS",
+        "near": "<4511.731934, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.731934, 339.176422, 10236.862305>",
+        "normal": "<-0.018661, 0.999818, -0.003999>",
+        "fraction": "0.424507",
+        "heightDifference": "0.00427246",
+        "admissible": "true"
+      },
+      {
+        "pose": "0",
+        "mode": "0",
+        "label": "X_MINUS",
+        "near": "<4511.271973, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.271973, 339.622162, 10236.862305>",
+        "normal": "<0.956329, 0.017070, -0.291794>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "label": "X_PLUS",
+        "near": "<4511.731934, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.731934, 339.176422, 10236.862305>",
+        "normal": "<-0.018661, 0.999818, -0.003999>",
+        "fraction": "0.424507",
+        "heightDifference": "0.00427246",
+        "admissible": "true"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "label": "X_MINUS",
+        "near": "<4511.271973, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.271973, 339.622162, 10236.862305>",
+        "normal": "<0.956329, 0.017070, -0.291794>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "label": "X_PLUS",
+        "near": "<4511.714355, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.714355, 339.183563, 10239.331055>",
+        "normal": "<-0.018661, 0.999822, -0.002665>",
+        "fraction": "0.424478",
+        "heightDifference": "0.00430298",
+        "admissible": "true"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "label": "X_MINUS",
+        "near": "<4511.254395, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.254395, 339.629272, 10239.331055>",
+        "normal": "<0.999826, 0.018659, 0.000011>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "label": "X_PLUS",
+        "near": "<4511.714355, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.714355, 339.183563, 10239.331055>",
+        "normal": "<-0.018661, 0.999822, -0.002665>",
+        "fraction": "0.424478",
+        "heightDifference": "0.00430298",
+        "admissible": "true"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "label": "X_MINUS",
+        "near": "<4511.254395, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.254395, 339.629272, 10239.331055>",
+        "normal": "<0.999826, 0.018659, 0.000011>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "label": "X_PLUS",
+        "near": "<4530.229980, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4530.229980, 339.336975, 10240.000000>",
+        "normal": "<-0.001335, 0.999998, 0.001335>",
+        "fraction": "0.428285",
+        "heightDifference": "0.000305176",
+        "admissible": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "label": "X_MINUS",
+        "near": "<4529.770020, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4529.770020, 339.335754, 10240.000000>",
+        "normal": "<-0.004000, 0.999991, 0.001335>",
+        "fraction": "0.429448",
+        "heightDifference": "0.000915527",
+        "admissible": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "label": "X_PLUS",
+        "near": "<4530.229980, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4530.229980, 339.336975, 10240.000000>",
+        "normal": "<-0.001335, 0.999998, 0.001335>",
+        "fraction": "0.428285",
+        "heightDifference": "0.000305176",
+        "admissible": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "label": "X_MINUS",
+        "near": "<4529.770020, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4529.770020, 339.335754, 10240.000000>",
+        "normal": "<-0.004000, 0.999991, 0.001335>",
+        "fraction": "0.429448",
+        "heightDifference": "0.000915527",
+        "admissible": "true"
+      }
+    ],
+    "fanAcceptedCounts": {
+      "0:0": 5,
+      "0:1": 5,
+      "1:0": 25,
+      "1:1": 25,
+      "2:0": 72,
+      "2:1": 72
+    },
+    "fanAcceptedKeys": [
+      [
+        "0",
+        "0",
+        "280",
+        "0.01"
+      ],
+      [
+        "0",
+        "0",
+        "290",
+        "0.01"
+      ],
+      [
+        "0",
+        "0",
+        "70",
+        "0.01"
+      ],
+      [
+        "0",
+        "0",
+        "80",
+        "0.01"
+      ],
+      [
+        "0",
+        "0",
+        "90",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "280",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "290",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "70",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "80",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "90",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "0",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "10",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "20",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "270",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "270",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "280",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "280",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "290",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "290",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "30",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "300",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "310",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "320",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "330",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "340",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "350",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "40",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "50",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "60",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "70",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "70",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "80",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "80",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "90",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "90",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "0",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "10",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "20",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "270",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "270",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "280",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "280",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "290",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "290",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "30",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "300",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "310",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "320",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "330",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "340",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "350",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "40",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "50",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "60",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "70",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "70",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "80",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "80",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "90",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "90",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "0",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "0",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "10",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "10",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "100",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "100",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "110",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "110",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "120",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "120",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "130",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "130",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "140",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "140",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "150",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "150",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "160",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "160",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "170",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "170",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "180",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "180",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "190",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "190",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "20",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "20",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "200",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "200",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "210",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "210",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "220",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "220",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "230",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "230",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "240",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "240",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "250",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "250",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "260",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "260",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "270",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "270",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "280",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "280",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "290",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "290",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "30",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "30",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "300",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "300",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "310",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "310",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "320",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "320",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "330",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "330",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "340",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "340",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "350",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "350",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "40",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "40",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "50",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "50",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "60",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "60",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "70",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "70",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "80",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "80",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "90",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "90",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "0",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "0",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "10",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "10",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "100",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "100",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "110",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "110",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "120",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "120",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "130",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "130",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "140",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "140",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "150",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "150",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "160",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "160",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "170",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "170",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "180",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "180",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "190",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "190",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "20",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "20",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "200",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "200",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "210",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "210",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "220",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "220",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "230",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "230",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "240",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "240",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "250",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "250",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "260",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "260",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "270",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "270",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "280",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "280",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "290",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "290",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "30",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "30",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "300",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "300",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "310",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "310",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "320",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "320",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "330",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "330",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "340",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "340",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "350",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "350",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "40",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "40",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "50",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "50",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "60",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "60",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "70",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "70",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "80",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "80",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "90",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "90",
+        "0.03"
+      ]
+    ]
+  }
+]
+
+Test-only subclass;not deployed NPC code:
+class DGPreLandingTangent: DGBNativeTraversal
+{
+ int TestMode;int TestPose;int TestIteration;int TangentSteps;int TangentAttempts;float TangentDistance;
+ void DGPreLandingTangent(DGBNativeGroundBody body){Body=body;PhaseAt=body.Director.Now;}
+ override bool PressureSlide(float dt)
+ {
+  bool moved=super.PressureSlide(dt);
+  if(moved || TestMode!=1 || Phase!="FALL" || !PressureFallActive)return moved;
+  if(PressureEscapeRejectAt!=Now() || PressureEscapeLastStepReject!="NEW_WORLD_CONTACT")return false;
+  if(PressureEscapeRejectFixtureIndex<0 || PressureEscapeRejectNormal.Length()<0.5)return false;
+  vector displacement=PressureEscapeRejectEnd - PressureEscapeRejectStart;displacement[1]=0;
+  vector normal=PressureEscapeRejectNormal;normal[1]=0;
+  if(displacement.Length()<0.00001 || normal.Length()<0.2)return false;
+  normal=normal*(1.0/normal.Length());float inward=vector.Dot(displacement,normal);
+  if(inward>=-0.00000001){return false;}
+  vector tangent=displacement - normal*inward;tangent[1]=0;float length=tangent.Length();
+  if(length<0.00001){return false;}
+  tangent=tangent*(1.0/length);
+  vector start=Body.Agent.Position;array<float> sizes={0.03,0.01};array<float> biases={0,0.05,0.15};
+  foreach(float bias:biases)
+  {
+  foreach(float size:sizes)
+  {
+   float budget=Math.Min(SeparationDistanceBudget - SeparationEpisodeDistance,1.5 - TangentDistance);
+   float step=Math.Min(budget,Math.Min(size,Math.Max(dt,0)*0.6));if(step<=0.0001)return false;
+   vector direction=tangent+normal*bias;direction=direction*(1.0/direction.Length());
+   vector proposed=start+direction*step;float distance=vector.Distance(start,proposed);
+   if(distance<=0.0001 || distance>budget)continue;
+   float lift;ref array<vector> contacts={};TangentAttempts++;
+   bool accepted=PressureEscapeStepClear(proposed,lift,contacts);string diagnostic=PressureEscapeDiagnostic;
+   string path="$profile:prelanding17-tangent.tsv";bool exists=FileExist(path);FileHandle log=OpenFile(path,FileMode.APPEND);
+   if(!log){Print("DG_PRELAND17_FAILED tangent_log");return false;}
+   if(!exists)FPrintln(log,"pose\tmode\titeration\tstart\tproposal\tdirection\tnormal\tstep\taccepted\tdiagnostic\tfixture\tprobe\tbias\trejectNormal\trejectFraction");
+   FPrintln(log,TestPose.ToString()+"\t"+TestMode+"\t"+TestIteration+"\t"+start+"\t"+proposed+"\t"+direction+"\t"+normal+"\t"+distance+"\t"+accepted+"\t"+diagnostic+"\t"+PressureEscapeRejectFixtureIndex+"\t"+PressureEscapeRejectProbe+"\t"+bias+"\t"+PressureEscapeRejectNormal+"\t"+PressureEscapeRejectFraction);CloseFile(log);
+   if(!accepted)continue;
+   Body.Agent.Position=proposed;Body.Agent.Moved+=distance;Body.Agent.MeasuredSpeed=distance/Math.Max(dt,0.001);
+   Body.Lift=lift;Body.Contacts.Copy(contacts);SeparationEpisodeDistance+=distance;
+   TangentDistance+=distance;TangentSteps++;Body.PressureAirDistance+=distance;Body.PressureAirSteps++;
+   PressureEscapeValid=false;NextPressureEscapePlan=0;Body.Reason="TEST_PRELANDING_CONTACT_TANGENT";return true;
+  }
+  }
+  return false;
+ }
+}

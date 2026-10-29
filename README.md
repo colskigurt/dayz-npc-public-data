@@ -1,3 +1,11 @@
+# 최신 작업: 착지 전 정체17번: 옆면 충돌과 안전한1cm 방향 진단
+
+착지 전17번 FOOT_X_SUPPORT 재현.1cm 이동5/72 통과·432질의 반복 일치.연속 복구는 미검증.
+
+[최신 보고서](reports/operations-latest.md) · [AI 검토](AI_REVIEW.md) · [JSON](api/public/status.json)
+
+이하 이전 공개 운영 안내는 이력이다.
+
 # 최신 작업: 64명 비용 분리 — FOLLOW·접촉 집중,착지 전 정체17번 확인
 
 64명 고정 자극 비용 진단:p95 OFF219/ON241ms. FOLLOW/접촉에 비용 집중. ON17번 착지 전 정체. 최적화 미적용·미수용.

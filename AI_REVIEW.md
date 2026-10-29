@@ -1,1083 +1,4087 @@
 # DayZ NPC AI — 외부 세션 검토 자료
 
-Snapshot: snapshot-20261029T083407-fixed-stimulus-cost-20261029
+Snapshot: snapshot-20261029T085950-prelanding17-20261029
 
-64명 비용 분리 — FOLLOW·접촉 집중,착지 전 정체17번 확인
+착지 전 정체17번 — 옆면 지지 거부와1cm 안전 방향 재현
 
-작성: 2026-10-29T17:32:58.249618+09:00
+작성: 2026-10-29T17:59:18.891481+09:00
 
 1. 작업 목표
 
-직전64명 p95 181ms·고지대 미도달28명의 상황에서 누락됐던 전체 이동·상태별·접촉 소비·frame-fall 비용을 측정한다. 본 조회가 큰 병목이라는 추정을 먼저 검증한다. 플레이어 실이동 거리 차이를 줄인 별도 비용 실험을 만들고 기존300초 기능 기준은 보존한다. 새 보간·배속·최적화는 적용하지 않는다.
+runtime-20261029-171916에서17번이 착지 전 FALL에 머문 문제를 같은 위치·원시4관절 포즈·지형에서 재현한다. 안전한 미세 이동의 존재와 실제 연속 복구를 구분한다. 기존 착지/충돌 gate를 완화하지 않고 재탐색 후보가 놓치는 조건을 조사한다.
 
 2. 실제 수행
 
-기존 F6DE 빌드의 opt-in DriveAttribution과 RuntimeTimingProbe를 사용했다. 새 미션은 기존 자연 입력 클래스만 가역 변환했다. 플레이어의 지붕 배치는 유지하고135초에 지면4563/10243,160초에4563/10283으로 배치하며 이동 입력은0이다. NPC 위치·지식·상태·경로·성공 카운터는 쓰지 않았다. 고정 카메라와 동일 상세 계측으로64명·180초 OFF→ON 순서,각1회 실행했다. 두 실행의 설정·미션·PBO·그래픽·control cfg·clip manifest가 같고 profile flag 차이는 post-touchdown-owner.flag 하나임을 검사했다.
+전용 서버 시험4개를 정상 종료했다. 첫 시험은 원본 Fall과 시험 전용 접선 이동을 비교했다. 두 번째는 접선에 바깥 법선 성분0/0.05/0.15를 추가했고 원시 Floor ray를 기록했다. 세 번째와 네 번째는 동일 소스의 질의 전용 반복:36방향(10도 간격)×1/3cm×3포즈×2모드=432질의를 각각 실행했다. 마지막 위치/첫 거부 위치/열린 지면 대조군을 사용했다. 모터는각300틱 한도·dt0.05초·초기 수직속도-15로 정규화했다. 원본 실제 dt/속도를 복구한 재생은 아니다.
 
-기존8/64명300초 기록의 누적 타이머도 같은 프로세스 TickCount와 실제 foreground 시간으로 보정해 재분석했다. 공통 타이머는 actor0에서1회,개체별 합계는 각 개체에서1회만 집계했다. clock의 unsigned32 wrap·중복 개체 공통값·역순/배경 거부에 대한 기존3개 검사가 통과했다. 새 callback 분석은512개 part의 per-body 합계를 다시 합산하며 Mission 타이머는 한 번만 센다. 중첩 elapsed를 CPU self-time으로 바꾸거나 합산하지 않았다.
+팬 질의는 각 모터 시험 종료 후 원래 root/heading으로 되돌린 frozen pose에 시행했으며 이동을 적용하지 않는다. 원래 step gate를 그대로 호출한다. 전용 테스트가 통과했다고 실제 클라이언트 게임플레이가 통과한 것으로 취급하지 않는다.
 
 3. 측정 결과
 
-두 실행에서 지정 지면 세 구간의 XZ 오차는 모두0m,이동 입력0이었다. 실제 player 자극은 일치했지만 NPC 경로·상태 분포·호출량은 달랐다. 이 차이를 숨기지 않는다.
+원래 착지 질의는 실패 포즈2개×모드2개에서 모두 FOOT_X_SUPPORT를 재현했다. 중심/플러스X는 유효 지면이고 마이너스X는 StaticObj_Container_1C에 fraction0으로 닿았다. 그 법선Y는 약0.0171/0.0187,높이차0.450012m로 기존 Floor의 normalY≥0.65,fraction>0.001,높이차≤0.35m 조건을 통과하지 못했다. 이는 실제 옆면/초기 중첩 hit라는 질의 결과이며 지지 조건 자체를 잘못됐다고 단정하지 않는다.
 
-|180초 비용 진단|OFF|ON|
-|---|---:|---:|
-|미션 p50/p95/p99 ms|97/219/267|106/241/300|
-|180초 표본 도착|19/64|13/64|
-|고지대 미도달|33|38|
-|낙하 후 복귀 에피소드|40|47|
-|기록된 등반 종료 실패|0|0|
-|CPU callback clock / 실제 시간|0.429157|0.389960|
+모터: 마지막 정체 포즈는 원본/접선 모두15초 FALL,추가 이동0. 초기 포즈는 원본15초 FALL,접선 후보4.55005초에 LAND,추가3걸음·0.0899827m였다. 바깥 성분0.05/0.15도 마지막 포즈를 풀지 못했다. 열린 지면 대조군은 모두 LAND였다. 대조군0.05/0.10초 차이는 재사용 actor/정규화 시험 조건에서 기록한 것이며 배속 개선이 아니다. LAND 이후 EGRESS/FOLLOW는 시험하지 않았다.
 
-p95 관측 차이는 ON-OFF=22ms(10.05%)다. 순차1회·다른 NPC 궤적·외부 사용자 앱·상세 계측 조건이므로 인과적인 회귀/개선율이나 재현된 최적화로 판정하지 않는다. 실제 timestamp gap의 OFF p99는269ms,ON은307ms였다. 공급 dt는300ms 근처에서 잘리므로 ON의300ms를 실제 전체 gap 상한으로 보지 않는다.
+질의 팬: 마지막 포즈는 모드별72개 중5개 통과,전부1cm였으며 각도70/80/90/280/290도였다(0도=+X,90도=+Z).3cm는 모두 거부. 초기 포즈25/72,열린 지면72/72가 통과했다. 두 독립 서버 실행에서 전체432질의의 통과 키 집합이 일치했다. 통과 행의 rejectProbe 같은 잔여 진단 필드는 이전 실패값일 수 있으므로 성공 충돌 위치로 해석하지 않았다.
 
-아래 표는 고지대 구간의 측정 범위별 wall초당 경과 ms다. 부모/자식과 다른 호출자가 중첩된다. 열을 더해 전체 CPU나 renderer 잔여 시간을 계산하면 안 된다.
-
-|측정 범위|OFF ms/s|ON ms/s|
-|---|---:|---:|
-|전체 Body.Drive|559.396|562.676|
-|그 안의 Traversal.Drive|420.594|417.332|
-|그 안의 Contact consumption|129.557|136.289|
-|별도 활성 frame-fall|2.603|19.308|
-|Traversal의 FOLLOW|400.880|398.107|
-|접촉 전체 SolveContacts|198.066|206.287|
-|접촉 안의 발 지지|113.532|119.570|
-|접촉 안의 본 조회|6.031|5.696|
-|접촉 안의 world 검사|69.162|72.511|
-|native 경로 query 범위|4.099|3.637|
-|인식 범위|66.367|62.346|
-|legacy trace 기록|93.691|92.883|
-|Mission.OnUpdate|214.745|224.710|
-|script PrePhys|565.297|568.554|
-|script PreAnim|8.039|7.525|
-
-FOLLOW 호출은 전 개체 합계365.90/347.27회/초였고 평균1.096/1.146ms/호출이었다. 고지대 Mission.OnUpdate는6.339/6.023회/초였다. 이는 실제 AI 인식 함수의 호출 빈도가 아니다. combined handler/preAnim/prePhys/postPhys 호출은12982.8/12335.1회/초이며 per-type 빈도로 분해할 카운터는 없다.
-
-PreAnim 종료→PrePhys 시작의 평균 envelope는50.57/52.16ms였다. native 작업과 스케줄 대기가 포함되고 많은 개체의 구간이 서로 겹치므로 native graph self-time이 아니다. 실제 graph 평가·renderer upload·GPU 프레임·할당/GC self-time은 현재 계측에 없다. GPU 전역 메모리 표본은 약8/16GB였지만 다른 앱이 포함되며 ON 표본은 종료 근처/이후라 위상 비교 자료로 쓰지 않는다.
-
-별도 상태 진단: ON의17번은72.937~179.604초 FALL이었고101.2~179.604초 위치가5mm 범위였다. FOOT_X_SUPPORT 표본194회,현재 LANDING_SPACE_BLOCKED/NO_VALID_LOCAL_EXIT였다. 이는 성공한 착지 후 owner24회와 별개인 착지 전 정체다. 180초 끝의 상태는OFF FOLLOW64명,ON FOLLOW63명+FALL1명이었다. 나머지 미도착을 전부 정체로 분류하지 않는다.
-
-새8명 시험과 새로운300초 자연 입력 회귀는 없다. 이전8명8/8·고지대0,64명64/64·고지대28·p95 181ms라는 기록은 그대로 보존하며 이번 비용 자극의19/13 도착으로 덮어쓰지 않는다. 이번 두 비용 진단도 전체 기능 수용 기준을 통과한 것은 아니다.
+새8/64 클라이언트 기능·p50/p95/p99·실제 표시 프레임·시각 부드러움·최적화 효과는 미측정이다. 이전300초 자연 입력8/8과64/64,64명 고지대 미도달28명은 그대로다. 별도180초 비용 OFF/ON의p95 219/241ms도 이 진단으로 변경되지 않는다.20ms p95는 미달 목표다.
 
 4. 원인 분석
 
-관찰 사실: 복구 OFF에서도 고지대 Body.Drive 약559ms/s,FOLLOW 약401ms/s가 남았다. ON도 각각563/398ms/s였다. 착지 대기만이 무거운 비용의 필요조건이라는 설명은 맞지 않는다. contact의 발 지지 범위113.5/119.6ms/s는 본 조회6.0/5.7ms/s보다 컸다. native nav query 범위는4.1/3.6ms/s였으나 이것이 전체 경로·접근 비용은 아니다. PrePhys script 범위에 실제 gameplay Drive가 중첩된다는 소스 관계와 측정 크기도 맞았다.
+사실: 원본 Fall은 착지 질의 실패 시 중력 위치 적용 전에 반환한다. 원래 압력 탈출/회전도 마지막 포즈를 풀지 못했다. 단일 접선과 작은 바깥 성분 후보는 다른 신체 probe1의 NEW_WORLD_CONTACT에 막혔다. 그러나 전 방향의 더 짧은1cm 질의에는 기존 gate를 통과하는 방향이 존재했다.
 
-추정: FOLLOW 내부의 지면 실행·입구 정렬·반복 접촉/지지 검사가 다음 비용 분해 우선순위다. 실제 인과적 최적화 효과는 미측정이다. 17번은 착지 footprint 거부 이후 중력 진행 전에 반환하는 경로와 관계있을 수 있지만 실제 같은 입력의 분기 재현 전까지 원인을 확정하지 않는다.
+추정: 현재 후보 방향과 이동 폭이 좁은 국소 통로를 놓칠 수 있다. 충돌 법선 하나에서 접선을 구하는 것만으로 모든 관절의 안전한 이동을 찾기는 부족하다. 다음에는 유효한 작은 걸음을 연속 적용하면서 목표 진행·왕복·예산·착지·추적 재개를 함께 기록해야 한다.
 
-반증/제외: CPU 본 조회만 줄이면 대부분 해결된다는 근거는 없다. 부모/자식 scope 합산,그래프 gap 합계의 CPU 해석,한 쌍의 p95 차이로 회귀 확정,일치하는 player target을 일치하는 NPC replay로 해석하는 것은 제외한다. GPU/renderer를 미측정 잔여 시간의 원인으로 지정하지 않는다.
+반증: 이 frozen snapshot에서 어떤 수평 이동도 불가능하다는 설명은 맞지 않는다. 바깥 성분을 조금 추가하면 마지막 포즈가 풀린다는 후보도 효과가 없었다. 반대로5개의 유효한 단일 질의가 연속 복구 경로의 존재나 런타임 안전을 입증하지는 않는다. 착지 후 owner는 물리 LAND 전 정체를 해결하는 계층이 아니다.
 
 5. 검증 수준
 
-진단 성공: source 가역 변환·실제 target/config 일치·전체 이동/상태/callback scope·clock3개 검사·정상 종료 및 개체별 정합성 검사. 각 조건1회라 반복 검증 완료/최적화 성공/시각 품질 수용/20ms p95/최종 수용은 아니다. owner ON의24회 안전 인계 journal은 실제 EGRESS→FOLLOW와 연결됐으나17번의 착지 전 정체는 미해결이다. 기존 자연 입력 기능 실패를 비용 실험으로 지우지 않는다.
+진단 성공: 원본 착지 거부 재현,원시 Floor 조건 분리,실패 후보 분류. 반복 검증 완료는 두 번의432개 질의 통과 집합 일치에만 적용한다. 초기 포즈 후보의 물리 LAND는 제한된 단일 frozen 모터 결과다. 전체 기능 회귀 통과·실제 연속 복구·화면 품질·성능·최종 수용은 미완료다. 컴파일 marker와 별개로 독립 분석기가 질의 수/키·연속틱·종료 상태·소스SHA를 검증했다.
 
 6. 변경 사항
 
-stage_horde_fixed_stimulus_cost.py는 별도 미션의 player 자극만 바꾼다. launcher에 FixedStimulusCost selector/provenance와 기존 RuntimeTimingProbe 활성화를 추가했다. compiler에 새 validation을 허용했다. 새 callback/고정 자극 비교 분석기와17번 파생 증거를 추가했다. NPC/PBO·native graph·애니메이션/보간·충돌/착지 gate·운영 서버는 변경하지 않았다.
+별도 미션 stage_horde_prelanding17_fan.py,독립 분석기analyze_horde_prelanding17.py,체크포인트 도구를 추가했고 compiler에 명시적 진단 이름만 추가했다. 처음 staging의 줄바꿈 일치 검사 실패는 별도 staging-failed 폴더에 보존했고 원본 파일을 수정하지 않았다. 실제 NPC/PBO·애니메이션·충돌/착지 gate·운영 서버는 변경하지 않았다.
 
-F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8은 그대로다. 이번에는 재빌드/재서명하지 않았으며 새 엔진 컴파일과 두 실행 전에 기존 base453D/render0C6E/integrationF6DE의 서명 검증을 성공했다. 개인 키는 배포하지 않았다. 두180초 실행 모두 정상 종료했고 raw/이전 보고서를 덮어쓰지 않았다.
+현재 integration F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8 그대로다. PBO 재빌드/재서명은 없으며4개 전용 서버 진단의 의존 PBO 서명 검증은 성공했다. 개인 키는 공개하지 않았다. 클라이언트/OBS/화면 조작은 실행하지 않았다.
 
 7. 원시 증거
 
-runtime-20261029-171420 OFF와171916 ON의 native-drive-cost,ground,pose-cadence,player/state/landing/backoff TSV와 launch/config/compile/분석을 연결했다. 이전164705/165343 기록의 post-hoc legacy scopes와 입력 해시도 연결한다. fixed-pair-analysis.json,fall17-diagnosis.json,source coverage,staged source manifest,clock 검사 결과,관측/전역GPU 표본의 한계를 보존한다. 공개 패킷은 고지대 집계·실제 player target·17번 선정 표본·분석 함수만 제공하며 내부 전체 로그·로컬 경로·프로세스 정보·게임 자산은 공개하지 않는다.
+validation-controlled-prelanding17,prelanding17-outward,prelanding17-fan,prelanding17-fan-repeat의각 compile profile에 motor/query/tangent TSV와 필요한 rawFloor/fan TSV가 있다. 분석JSON은4개미션SHA·compile결과·원시 TSV/로그의해시를 연결한다. 판정의 sourceRunId는runtime-20261029-171916이다. 공개 패킷은 선정 질의와 최종행·시험 함수만 제공하며 전체 내부 원시 기록·프로세스 정보·로컬 경로·게임 자산은 공개하지 않는다.
 
 8. 잔여 문제
 
-우선17번의 마지막 실제 touchdown 질의/4joint pose를 재현해 물리 착지 전 반환·압력 탈출·기하학적 support가 어떻게 연결되는지 확인한다. 실제 world/peer/fixture non-deepening gate를 완화하거나 root를 강제로 내려서 성공시키지 않는다. FOLLOW는 지면 실행·입구 정렬·surface approach·contact·nav call을 세분화하고 실제 AI 호출 빈도/계측 오버헤드를 확보한다. 동일한 실제 player 자극에서 순서 교차 반복 후에만 후보 최적화를 평가한다.
+우선 마지막 정체 포즈에서 유효1cm 방향을 연속 적용하는 제한된 모터 실험을 한다. 왕복 반복 방지·기존6m episode budget·추가1.5m budget·실제 step/착지 gate를 유지하고 LAND 이후 안전 endpoint와FOLLOW까지 별도 검증한다. 실패하면 첫 거부 관절·법선·위치·목표 진행을 기준으로 다음 가설을 세운다.36방향 팬을 모든 개체의 매틱에 적용하는 런타임 설계는 아니다.
 
-애니메이션은 달리기/등반의 정확한 HUD/CPU/영상 frame join을 별도 진행한다. graph/upload/GPU/allocation/GC self-time을 얻을 도구/계측은 아직 미실행이며 미측정을 성공으로 보고하지 않는다. 원인 전 새 보간/배속은 도입하지 않는다. active combat 후 final guard 소유권과 실제 EGRESS 무효화도 이전 미검증 항목으로 유지한다. 목표는 그대로이며 골은 활성 상태다.
+동적 포즈/상호 접촉/전투 재진입/낙하·재등반 보존과 실제8→64 회귀는 남아 있다. 애니메이션 CPU-표시 프레임 join과 FOLLOW 비용 추가 분해도 별도 실험으로 유지한다. 신규 보간·배속·업데이트 방식은 적용하지 않았다. 목표는 활성 상태로 유지한다.
 
-원본 보고서 ID: 2026-10-29_173258_249618+0900_npc-fixed-stimulus-cost.md
-원본 SHA-256: 97b0665e23a6311e6073be9a105875c88314de72b2f29940691a3ff673280d1a
+원본 보고서 ID: 2026-10-29_175918_891481+0900_npc-prelanding17.md
+원본 SHA-256: 4c7cc43f42eff50d45c596ac13c2487139268f01872d2d1cd182e2f8658533a3
 이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
 
-Selected diagnostic projection;not complete raw logs
-{
-  "runs": [
-    {
-      "runId": "runtime-20261029-171420",
-      "ownerEnabled": false,
-      "actualStimulus": {
-        "GROUND_EAST": {
-          "samples": 60,
-          "requestedXZ": [
-            4563,
-            10243
-          ],
-          "maximumXZErrorMeters": 0.0,
-          "firstPlayer": "<4563.000000, 339.238617, 10243.000000>",
-          "lastPlayer": "<4563.000000, 339.238617, 10243.000000>",
-          "placementRows": 1,
-          "zeroMovementInput": true,
-          "targetMatched": true
-        },
-        "GROUND_NORTH": {
-          "samples": 67,
-          "requestedXZ": [
-            4563,
-            10283
-          ],
-          "maximumXZErrorMeters": 0.0,
-          "firstPlayer": "<4563.000000, 339.408661, 10283.000000>",
-          "lastPlayer": "<4563.000000, 339.408661, 10283.000000>",
-          "placementRows": 1,
-          "zeroMovementInput": true,
-          "targetMatched": true
-        },
-        "FINAL_HOLD": {
-          "samples": 60,
-          "requestedXZ": [
-            4563,
-            10283
-          ],
-          "maximumXZErrorMeters": 0.0,
-          "firstPlayer": "<4563.000000, 339.408661, 10283.000000>",
-          "lastPlayer": "<4563.000000, 339.408661, 10283.000000>",
-          "placementRows": 0,
-          "zeroMovementInput": true,
-          "targetMatched": true
-        }
-      },
-      "highHoldCost": {
-        "wholeBodyMsPerSecond": 559.3964370589626,
-        "traversalMsPerSecond": 420.59398917498686,
-        "contactConsumptionMsPerSecond": 129.55747232501457,
-        "activeFrameFallMsPerSecond": 2.6027559316306186,
-        "traversalPhases": {
-          "follow": {
-            "calls": 21515,
-            "callsPerSecond": 365.90136054421765,
-            "elapsedEquivalentMsPerWallSecond": 400.88025015063715,
-            "elapsedEquivalentMeanMsPerInvocation": 1.0955965005278858
-          },
-          "climb": {
-            "calls": 1517,
-            "callsPerSecond": 25.799319727891156,
-            "elapsedEquivalentMsPerWallSecond": 11.956253492205308,
-            "elapsedEquivalentMeanMsPerInvocation": 0.46343289739068694
-          },
-          "drop": {
-            "calls": 0,
-            "callsPerSecond": 0.0,
-            "elapsedEquivalentMsPerWallSecond": 0.0,
-            "elapsedEquivalentMeanMsPerInvocation": null
-          },
-          "egress": {
-            "calls": 112,
-            "callsPerSecond": 1.9047619047619047,
-            "elapsedEquivalentMsPerWallSecond": 3.0295939452481595,
-            "elapsedEquivalentMeanMsPerInvocation": 1.590536821255284
-          },
-          "landSettle": {
-            "calls": 610,
-            "callsPerSecond": 10.374149659863944,
-            "elapsedEquivalentMsPerWallSecond": 4.727808253645247,
-            "elapsedEquivalentMeanMsPerInvocation": 0.4557297136300663
-          },
-          "fall": {
-            "calls": 0,
-            "callsPerSecond": 0.0,
-            "elapsedEquivalentMsPerWallSecond": 0.0,
-            "elapsedEquivalentMeanMsPerInvocation": null
-          },
-          "other": {
-            "calls": 0,
-            "callsPerSecond": 0.0,
-            "elapsedEquivalentMsPerWallSecond": 0.0,
-            "elapsedEquivalentMeanMsPerInvocation": null
-          }
-        },
-        "legacyScopes": {
-          "seconds": 59.312999999999995,
-          "intervals": 105,
-          "elapsedEquivalentMsPerWallSecond": {
-            "senseTicks": 70.09300816380107,
-            "perceptionCpuTicks": 66.36684105753214,
-            "socialCpuTicks": 2.9048357873646067,
-            "pursuitCpuTicks": 0.49235204914327096,
-            "crowdCpuTicks": 11.847990864530253,
-            "staticCpuTicks": 2.2797338722379186,
-            "commitTicks": 7.879099449361807,
-            "traceTicks": 93.69060545983355,
-            "missionUpdateTicks": 214.74476066500242,
-            "driveTicks": 287.5392391379387,
-            "navTicks": 4.099238988193243,
-            "bypassTicks": 0.0,
-            "contactCpuTicks": 198.06618854469465,
-            "contactBoneCpuTicks": 6.030733101510666,
-            "contactFootCpuTicks": 113.5319842290495,
-            "contactWorldCpuTicks": 69.16170408780026,
-            "contactFallbackCpuTicks": 0.0,
-            "contactDiagnosticCpuTicks": 0.8509292539741146
-          },
-          "missionUpdatesPerSecond": 6.339251091666246
-        },
-        "callbackScopes": {
-          "seconds": 59.312999999999995,
-          "intervals": 105,
-          "scriptCallbackElapsedEquivalentMsPerWallSecond": {
-            "partHandlerElapsedTicks": 1.1374427275052805,
-            "partPreAnimElapsedTicks": 8.039186566304489,
-            "partPrePhysElapsedTicks": 565.297379813271,
-            "partPostPhysElapsedTicks": 0.7870838933223402
-          },
-          "missionOnUpdateElapsedEquivalentMsPerWallSecond": 214.74476066500242,
-          "missionOnUpdateCallsPerSecond": 6.339251091666246,
-          "combinedScriptCallbackCallsPerSecond": 12982.786235732472,
-          "preAnimEndToPrePhysStartEnvelope": {
-            "samples": 192512,
-            "aggregateElapsedEquivalentMsPerWallSecond": 164134.54226484915,
-            "meanElapsedMsPerSample": 50.56989748875393,
-            "cpuSelfTime": false,
-            "nativeGraphSelfTime": false
-          }
-        }
-      },
-      "clock": {
-        "observedMissionSeconds": 174.87800000000036,
-        "nativeAdvanceSeconds": 75.05009999999999,
-        "calls": 1501,
-        "nativeClockPerMissionSecond": 0.42915689795171397,
-        "callbackCallsPerMissionSecond": 8.583126522489946,
-        "nativeAdvancePerCallback": 0.05000006662225182
-      },
-      "foregroundMissionFrameMs": {
-        "samples": 1502,
-        "p50": 97.0,
-        "p95": 219.0,
-        "p99": 267.0
-      },
-      "terminalArrivalsAt180Seconds": 19,
-      "highMisses": [
-        0,
-        4,
-        7,
-        9,
-        11,
-        12,
-        15,
-        16,
-        19,
-        20,
-        24,
-        26,
-        27,
-        28,
-        33,
-        35,
-        36,
-        39,
-        43,
-        44,
-        47,
-        48,
-        50,
-        51,
-        52,
-        53,
-        55,
-        56,
-        59,
-        60,
-        61,
-        62,
-        63
-      ],
-      "admissionViolations": [],
-      "egressViolations": []
-    },
-    {
-      "runId": "runtime-20261029-171916",
-      "ownerEnabled": true,
-      "actualStimulus": {
-        "GROUND_EAST": {
-          "samples": 55,
-          "requestedXZ": [
-            4563,
-            10243
-          ],
-          "maximumXZErrorMeters": 0.0,
-          "firstPlayer": "<4563.000000, 339.238617, 10243.000000>",
-          "lastPlayer": "<4563.000000, 339.238617, 10243.000000>",
-          "placementRows": 1,
-          "zeroMovementInput": true,
-          "targetMatched": true
-        },
-        "GROUND_NORTH": {
-          "samples": 58,
-          "requestedXZ": [
-            4563,
-            10283
-          ],
-          "maximumXZErrorMeters": 0.0,
-          "firstPlayer": "<4563.000000, 339.408661, 10283.000000>",
-          "lastPlayer": "<4563.000000, 339.408661, 10283.000000>",
-          "placementRows": 1,
-          "zeroMovementInput": true,
-          "targetMatched": true
-        },
-        "FINAL_HOLD": {
-          "samples": 60,
-          "requestedXZ": [
-            4563,
-            10283
-          ],
-          "maximumXZErrorMeters": 0.0,
-          "firstPlayer": "<4563.000000, 339.408661, 10283.000000>",
-          "lastPlayer": "<4563.000000, 339.408661, 10283.000000>",
-          "placementRows": 0,
-          "zeroMovementInput": true,
-          "targetMatched": true
-        }
-      },
-      "highHoldCost": {
-        "wholeBodyMsPerSecond": 562.6757007362971,
-        "traversalMsPerSecond": 417.33163642367754,
-        "contactConsumptionMsPerSecond": 136.28856967046468,
-        "activeFrameFallMsPerSecond": 19.308099645953973,
-        "traversalPhases": {
-          "follow": {
-            "calls": 20335,
-            "callsPerSecond": 347.27440398934357,
-            "elapsedEquivalentMsPerWallSecond": 398.10660914824354,
-            "elapsedEquivalentMeanMsPerInvocation": 1.1463747531489819
-          },
-          "climb": {
-            "calls": 1442,
-            "callsPerSecond": 24.625999043650523,
-            "elapsedEquivalentMsPerWallSecond": 12.332250859336401,
-            "elapsedEquivalentMeanMsPerInvocation": 0.500781748487727
-          },
-          "drop": {
-            "calls": 0,
-            "callsPerSecond": 0.0,
-            "elapsedEquivalentMsPerWallSecond": 0.0,
-            "elapsedEquivalentMeanMsPerInvocation": null
-          },
-          "egress": {
-            "calls": 39,
-            "callsPerSecond": 0.6660291003483845,
-            "elapsedEquivalentMsPerWallSecond": 1.8381119648262252,
-            "elapsedEquivalentMeanMsPerInvocation": 2.759807287496524
-          },
-          "landSettle": {
-            "calls": 583,
-            "callsPerSecond": 9.956281166746363,
-            "elapsedEquivalentMsPerWallSecond": 5.0546661590332995,
-            "elapsedEquivalentMeanMsPerInvocation": 0.5076861605632141
-          },
-          "fall": {
-            "calls": 0,
-            "callsPerSecond": 0.0,
-            "elapsedEquivalentMsPerWallSecond": 0.0,
-            "elapsedEquivalentMeanMsPerInvocation": null
-          },
-          "other": {
-            "calls": 0,
-            "callsPerSecond": 0.0,
-            "elapsedEquivalentMsPerWallSecond": 0.0,
-            "elapsedEquivalentMeanMsPerInvocation": null
-          }
-        },
-        "legacyScopes": {
-          "seconds": 59.107000000000006,
-          "intervals": 105,
-          "elapsedEquivalentMsPerWallSecond": {
-            "senseTicks": 66.29889542327895,
-            "perceptionCpuTicks": 62.345532132405154,
-            "socialCpuTicks": 3.1470761249431387,
-            "pursuitCpuTicks": 0.490877492686759,
-            "crowdCpuTicks": 10.876122127102192,
-            "staticCpuTicks": 2.1812942904072394,
-            "commitTicks": 7.463937712838658,
-            "traceTicks": 92.8828063417817,
-            "missionUpdateTicks": 224.71019124770717,
-            "driveTicks": 282.5013910124531,
-            "navTicks": 3.6368759966720967,
-            "bypassTicks": 0.0,
-            "contactCpuTicks": 206.2869329796585,
-            "contactBoneCpuTicks": 5.696101377421421,
-            "contactFootCpuTicks": 119.56992526561186,
-            "contactWorldCpuTicks": 72.51083720524478,
-            "contactFallbackCpuTicks": 0.0,
-            "contactDiagnosticCpuTicks": 0.4541301105119288
-          },
-          "missionUpdatesPerSecond": 6.0229752821154845
-        },
-        "callbackScopes": {
-          "seconds": 59.107000000000006,
-          "intervals": 105,
-          "scriptCallbackElapsedEquivalentMsPerWallSecond": {
-            "partHandlerElapsedTicks": 1.0700471602693178,
-            "partPreAnimElapsedTicks": 7.524917187006502,
-            "partPrePhysElapsedTicks": 568.5536970267136,
-            "partPostPhysElapsedTicks": 0.7549656792794401
-          },
-          "missionOnUpdateElapsedEquivalentMsPerWallSecond": 224.71019124770717,
-          "missionOnUpdateCallsPerSecond": 6.0229752821154845,
-          "combinedScriptCallbackCallsPerSecond": 12335.053377772512,
-          "preAnimEndToPrePhysStartEnvelope": {
-            "samples": 182272,
-            "aggregateElapsedEquivalentMsPerWallSecond": 160840.5985726936,
-            "meanElapsedMsPerSample": 52.157244446959496,
-            "cpuSelfTime": false,
-            "nativeGraphSelfTime": false
-          }
-        }
-      },
-      "clock": {
-        "observedMissionSeconds": 174.8889999999999,
-        "nativeAdvanceSeconds": 68.19969999999999,
-        "calls": 1364,
-        "nativeClockPerMissionSecond": 0.38995991743334363,
-        "callbackCallsPerMissionSecond": 7.799232656141901,
-        "nativeAdvancePerCallback": 0.04999978005865102
-      },
-      "foregroundMissionFrameMs": {
-        "samples": 1365,
-        "p50": 106.0,
-        "p95": 241.0,
-        "p99": 300.0
-      },
-      "terminalArrivalsAt180Seconds": 13,
-      "highMisses": [
-        3,
-        4,
-        7,
-        8,
-        9,
-        10,
-        12,
-        13,
-        16,
-        17,
-        18,
-        19,
-        22,
-        23,
-        26,
-        27,
-        30,
-        31,
-        34,
-        36,
-        38,
-        39,
-        41,
-        43,
-        46,
-        48,
-        49,
-        50,
-        51,
-        52,
-        54,
-        55,
-        56,
-        58,
-        59,
-        60,
-        61,
-        62
-      ],
-      "admissionViolations": [],
-      "egressViolations": []
-    }
-  ],
-  "observedDifferences": {
-    "GROUND_NORTH": {
-      "wholeBodyMsPerSecond": {
-        "off": 404.6273990599027,
-        "on": 416.70790978786005,
-        "absoluteObservedDifference": 12.080510727957346,
-        "relativeObservedDifference": 0.029855889037729,
-        "causalOptimizationClaim": false
-      },
-      "traversalMsPerSecond": {
-        "off": 234.88634195622697,
-        "on": 239.8067363746686,
-        "absoluteObservedDifference": 4.920394418441617,
-        "relativeObservedDifference": 0.020947980105878502,
-        "causalOptimizationClaim": false
-      },
-      "contactConsumptionMsPerSecond": {
-        "off": 157.1417559665191,
-        "on": 164.73710179544608,
-        "absoluteObservedDifference": 7.59534582892698,
-        "relativeObservedDifference": 0.04833435761367754,
-        "causalOptimizationClaim": false
-      },
-      "activeFrameFallMsPerSecond": {
-        "off": 0.0,
-        "on": 39.40298141372759,
-        "absoluteObservedDifference": 39.40298141372759,
-        "relativeObservedDifference": null,
-        "causalOptimizationClaim": false
-      }
-    },
-    "HIGH_HOLD": {
-      "wholeBodyMsPerSecond": {
-        "off": 559.3964370589626,
-        "on": 562.6757007362971,
-        "absoluteObservedDifference": 3.279263677334484,
-        "relativeObservedDifference": 0.005862146163417262,
-        "causalOptimizationClaim": false
-      },
-      "traversalMsPerSecond": {
-        "off": 420.59398917498686,
-        "on": 417.33163642367754,
-        "absoluteObservedDifference": -3.2623527513093222,
-        "relativeObservedDifference": -0.00775653679147571,
-        "causalOptimizationClaim": false
-      },
-      "contactConsumptionMsPerSecond": {
-        "off": 129.55747232501457,
-        "on": 136.28856967046468,
-        "absoluteObservedDifference": 6.7310973454501095,
-        "relativeObservedDifference": 0.051954528169275566,
-        "causalOptimizationClaim": false
-      },
-      "activeFrameFallMsPerSecond": {
-        "off": 2.6027559316306186,
-        "on": 19.308099645953973,
-        "absoluteObservedDifference": 16.705343714323355,
-        "relativeObservedDifference": 6.41832893791832,
-        "causalOptimizationClaim": false
-      }
-    },
-    "FINAL_HOLD": {
-      "wholeBodyMsPerSecond": {
-        "off": 362.3909855833443,
-        "on": 379.17567120300606,
-        "absoluteObservedDifference": 16.784685619661786,
-        "relativeObservedDifference": 0.04631650975711583,
-        "causalOptimizationClaim": false
-      },
-      "traversalMsPerSecond": {
-        "off": 208.11643897222064,
-        "on": 217.02106460246617,
-        "absoluteObservedDifference": 8.904625630245533,
-        "relativeObservedDifference": 0.04278674800616842,
-        "causalOptimizationClaim": false
-      },
-      "contactConsumptionMsPerSecond": {
-        "off": 142.78756361744945,
-        "on": 151.25616860843982,
-        "absoluteObservedDifference": 8.468604990990372,
-        "relativeObservedDifference": 0.059309121722106756,
-        "causalOptimizationClaim": false
-      },
-      "activeFrameFallMsPerSecond": {
-        "off": 0.0,
-        "on": 39.440155479281835,
-        "absoluteObservedDifference": 39.440155479281835,
-        "relativeObservedDifference": null,
-        "causalOptimizationClaim": false
-      }
-    },
-    "GROUND_EAST_HOLD": {
-      "wholeBodyMsPerSecond": {
-        "off": 385.7298533185165,
-        "on": 385.55488401497354,
-        "absoluteObservedDifference": -0.17496930354298001,
-        "relativeObservedDifference": -0.00045360581255944187,
-        "causalOptimizationClaim": false
-      },
-      "traversalMsPerSecond": {
-        "off": 221.3632741198806,
-        "on": 221.84942950383683,
-        "absoluteObservedDifference": 0.4861553839562305,
-        "relativeObservedDifference": 0.0021961880799294202,
-        "causalOptimizationClaim": false
-      },
-      "contactConsumptionMsPerSecond": {
-        "off": 152.4003354236913,
-        "on": 152.63842327639176,
-        "absoluteObservedDifference": 0.23808785270045973,
-        "relativeObservedDifference": 0.0015622528128861842,
-        "causalOptimizationClaim": false
-      },
-      "activeFrameFallMsPerSecond": {
-        "off": 0.0,
-        "on": 41.62986737875559,
-        "absoluteObservedDifference": 41.62986737875559,
-        "relativeObservedDifference": null,
-        "causalOptimizationClaim": false
-      }
-    },
-    "LOW_HOLD": {
-      "wholeBodyMsPerSecond": {
-        "off": 509.1426975701704,
-        "on": 529.1707377594221,
-        "absoluteObservedDifference": 20.02804018925167,
-        "relativeObservedDifference": 0.03933679160053433,
-        "causalOptimizationClaim": false
-      },
-      "traversalMsPerSecond": {
-        "off": 369.90151191983915,
-        "on": 384.75983946561985,
-        "absoluteObservedDifference": 14.858327545780696,
-        "relativeObservedDifference": 0.040168334183507265,
-        "causalOptimizationClaim": false
-      },
-      "contactConsumptionMsPerSecond": {
-        "off": 128.26915006371678,
-        "on": 133.67243932758126,
-        "absoluteObservedDifference": 5.40328926386448,
-        "relativeObservedDifference": 0.04212462046548554,
-        "causalOptimizationClaim": false
-      },
-      "activeFrameFallMsPerSecond": {
-        "off": 1.2505533797056703,
-        "on": 1.6404410878365225,
-        "absoluteObservedDifference": 0.3898877081308523,
-        "relativeObservedDifference": 0.3117721438029427,
-        "causalOptimizationClaim": false
-      }
-    },
-    "GROUND_EAST": {
-      "wholeBodyMsPerSecond": {
-        "off": 400.0103013997727,
-        "on": 415.93952977317747,
-        "absoluteObservedDifference": 15.929228373404783,
-        "relativeObservedDifference": 0.039822045376488986,
-        "causalOptimizationClaim": false
-      },
-      "traversalMsPerSecond": {
-        "off": 232.73231123796515,
-        "on": 242.60462087808898,
-        "absoluteObservedDifference": 9.87230964012383,
-        "relativeObservedDifference": 0.04241916211638335,
-        "causalOptimizationClaim": false
-      },
-      "contactConsumptionMsPerSecond": {
-        "off": 154.7878986487867,
-        "on": 161.15559378226476,
-        "absoluteObservedDifference": 6.367695133478065,
-        "relativeObservedDifference": 0.04113819742411742,
-        "causalOptimizationClaim": false
-      },
-      "activeFrameFallMsPerSecond": {
-        "off": 0.0,
-        "on": 39.75881694221491,
-        "absoluteObservedDifference": 39.75881694221491,
-        "relativeObservedDifference": null,
-        "causalOptimizationClaim": false
-      }
-    },
-    "GROUND_HOLD": {
-      "wholeBodyMsPerSecond": {
-        "off": 396.8611564391397,
-        "on": 397.69310851163783,
-        "absoluteObservedDifference": 0.8319520724981544,
-        "relativeObservedDifference": 0.0020963303135103817,
-        "causalOptimizationClaim": false
-      },
-      "traversalMsPerSecond": {
-        "off": 253.31142452612775,
-        "on": 254.72604607627537,
-        "absoluteObservedDifference": 1.414621550147615,
-        "relativeObservedDifference": 0.005584515395600344,
-        "causalOptimizationClaim": false
-      },
-      "contactConsumptionMsPerSecond": {
-        "off": 131.5565950878681,
-        "on": 132.10877028341577,
-        "absoluteObservedDifference": 0.5521751955476759,
-        "relativeObservedDifference": 0.0041972445028610845,
-        "causalOptimizationClaim": false
-      },
-      "activeFrameFallMsPerSecond": {
-        "off": 9.952707752714998,
-        "on": 56.87236039801356,
-        "absoluteObservedDifference": 46.91965264529856,
-        "relativeObservedDifference": 4.714260059781154,
-        "causalOptimizationClaim": false
-      }
-    }
-  },
-  "fall17": {
-    "sourceRunId": "runtime-20261029-171916",
-    "id": 17,
-    "continuousFallSampleSeconds": [
-      72.937,
-      179.604
-    ],
-    "stationarySuffixSeconds": [
-      101.2,
-      179.604
-    ],
-    "stationaryDistanceToleranceMeters": 0.005,
-    "first": {
-      "seconds": "72.937",
-      "position": "<4511.428711, 339.799561, 10239.486328>",
-      "heading": "178.696",
-      "reason": "NATIVE_FALL",
-      "traversalPhase": "FALL",
-      "area": "low",
-      "landingDiagnostic": "CLEAR",
-      "pressureEscapeDiagnostic": "NONDEEPENING_CLEAR",
-      "pressureEscapePlans": "1",
-      "pressureEscapeRejected": "0",
-      "pressureEscapeSteps": "7",
-      "pressureEscapeLastStepReject": "DEEPER_FIXTURE",
-      "pressureEscapeRejectNormal": "<0.000000, 0.000000, 0.000000>",
-      "separationEpisodeDistance": "0.201172",
-      "nativeSeconds": "25.8999",
-      "pressureEscapeRejectProbe": "0",
-      "pressureEscapeRejectStart": "<4511.403809, 340.336273, 10239.695313>",
-      "pressureEscapeRejectEnd": "<4511.374023, 340.336273, 10239.695313>"
-    },
-    "last": {
-      "seconds": "179.604",
-      "position": "<4511.493164, 339.275757, 10236.865234>",
-      "heading": "166.976",
-      "reason": "LANDING_SPACE_BLOCKED",
-      "traversalPhase": "FALL",
-      "area": "ground",
-      "landingDiagnostic": "FOOT_X_SUPPORT",
-      "pressureEscapeDiagnostic": "NO_VALID_LOCAL_EXIT",
-      "pressureEscapePlans": "596",
-      "pressureEscapeRejected": "4",
-      "pressureEscapeSteps": "107",
-      "pressureEscapeLastStepReject": "NEW_WORLD_CONTACT",
-      "pressureEscapeRejectNormal": "<0.999249, 0.018560, -0.034028>",
-      "separationEpisodeDistance": "2.81813",
-      "nativeSeconds": "70.1497",
-      "pressureEscapeRejectProbe": "0",
-      "pressureEscapeRejectStart": "<4511.493164, 339.625763, 10236.865234>",
-      "pressureEscapeRejectEnd": "<4511.464844, 339.625763, 10236.865234>"
-    },
-    "lastTransitions": [
+Selected records,not complete raw logs. All6 final rows per run and accepted fan keys.
+[
+  {
+    "validation": "prelanding17",
+    "initSha256": "0e14489e7674aded6960edc44e59ac1792cde1acc75b1fd2652e69ff38b3440b",
+    "queries": [
       {
-        "sequence": "120",
-        "seconds": "27.29",
-        "id": "17",
-        "kind": "TRANSITION",
-        "previous": "MOTION",
-        "next": "SETTLE",
-        "reason": "NATIVE_MOTION",
-        "failure": "",
-        "recoveryGeneration": "0",
-        "position": "<4509.570313, 340.165619, 10237.253906>",
-        "contactStatus": "",
-        "contactBlocked": "false",
-        "lift": "0.0429993",
-        "terminalOutcome": "NONTERMINAL",
-        "detail": "CLEAR",
-        "tested": "<0.000000, 0.000000, 0.000000>",
-        "supported": "<0.000000, 0.000000, 0.000000>",
-        "valid": "false",
-        "motionElapsedBeforeTransition": "1.5",
-        "clipDuration": "1.48333",
-        "nativeCurveEnded": "true",
-        "endpointError": "2.94425e-05",
-        "exitError": "0.0142242",
-        "nativeSeconds": "11.8",
-        "link": "ground_to_low_lane_1",
-        "callContext": "MOTION",
-        "areaAtCall": "low"
-      },
-      {
-        "sequence": "140",
-        "seconds": "28.604",
-        "id": "17",
-        "kind": "TRANSITION",
-        "previous": "SETTLE",
-        "next": "EGRESS",
-        "reason": "SETTLE",
-        "failure": "",
-        "recoveryGeneration": "0",
-        "position": "<4509.570313, 340.178223, 10237.253906>",
-        "contactStatus": "",
-        "contactBlocked": "false",
-        "lift": "0.0327759",
-        "terminalOutcome": "NONTERMINAL",
-        "detail": "CLEAR",
-        "tested": "<0.000000, 0.000000, 0.000000>",
-        "supported": "<0.000000, 0.000000, 0.000000>",
-        "valid": "false",
-        "motionElapsedBeforeTransition": "0",
-        "clipDuration": "1.48333",
-        "nativeCurveEnded": "true",
-        "endpointError": "2.94425e-05",
-        "exitError": "0.0142242",
-        "nativeSeconds": "12.3",
-        "link": "ground_to_low_lane_1",
-        "callContext": "OTHER",
-        "areaAtCall": "low"
-      },
-      {
-        "sequence": "142",
-        "seconds": "28.733",
-        "id": "17",
-        "kind": "TRANSITION",
-        "previous": "EGRESS",
-        "next": "FOLLOW",
-        "reason": "SUPPORTED_EGRESS_HANDOFF",
-        "failure": "",
-        "recoveryGeneration": "0",
-        "position": "<4509.570313, 340.178223, 10237.253906>",
-        "contactStatus": "",
-        "contactBlocked": "false",
-        "lift": "0.0324707",
-        "terminalOutcome": "NONTERMINAL",
-        "detail": "CLEAR",
-        "tested": "<0.000000, 0.000000, 0.000000>",
-        "supported": "<0.000000, 0.000000, 0.000000>",
-        "valid": "false",
-        "motionElapsedBeforeTransition": "0",
-        "clipDuration": "1.48333",
-        "nativeCurveEnded": "true",
-        "endpointError": "2.94425e-05",
-        "exitError": "0.0142242",
-        "nativeSeconds": "12.35",
-        "link": "none",
-        "callContext": "OTHER",
-        "areaAtCall": "low"
-      },
-      {
-        "sequence": "460",
-        "seconds": "72.382",
-        "id": "17",
-        "kind": "TRANSITION",
-        "previous": "FOLLOW",
-        "next": "FALL",
-        "reason": "ALIGN_HEADING",
-        "failure": "CONTACT_SUPPORT_LOST",
-        "recoveryGeneration": "1",
-        "position": "<4511.321289, 340.180634, 10239.720703>",
-        "contactStatus": "",
-        "contactBlocked": "false",
-        "lift": "0.0562744",
-        "terminalOutcome": "NONTERMINAL",
-        "detail": "CLEAR",
-        "tested": "<0.000000, 0.000000, 0.000000>",
-        "supported": "<0.000000, 0.000000, 0.000000>",
-        "valid": "false",
-        "motionElapsedBeforeTransition": "0",
-        "clipDuration": "1.48333",
-        "nativeCurveEnded": "true",
-        "endpointError": "2.94425e-05",
-        "exitError": "0.0142242",
-        "nativeSeconds": "25.7999",
-        "link": "none",
-        "callContext": "PRESSURE_SUPPORT_LOSS",
-        "areaAtCall": "low"
-      }
-    ],
-    "firstLandingDetail": [
-      {
-        "sequence": "200",
-        "seconds": "73.334",
-        "id": "17",
-        "generation": "1",
-        "phase": "FALL",
-        "gate": "FOOT_X_SUPPORT",
-        "valid": "false",
-        "requireEntitySpace": "false",
-        "root": "<4511.466309, 339.380249, 10239.336914>",
-        "tested": "<4511.484375, 339.179260, 10239.331055>",
-        "supported": "<4511.484375, 339.179260, 10239.331055>",
-        "heading": "178.696",
-        "lift": "0",
-        "reason": "NATIVE_FALL",
-        "failure": "CONTACT_SUPPORT_LOST",
-        "checks": "1",
-        "rejected": "1",
-        "budgetSkipped": "0",
-        "poseAvailable": "true",
-        "nativeBefore": "25.9999",
-        "nativeAfter": "25.9999",
-        "updatesBefore": "520",
-        "updatesAfter": "520",
-        "hipsMS": "<-0.010169, 0.979330, -0.003902>",
-        "headMS": "<-0.038455, 1.638029, -0.213963>",
-        "leftFootMS": "<0.168402, 0.422690, -0.216403>",
-        "rightFootMS": "<-0.185973, 0.160976, -0.235643>",
-        "idleOffset": "<0.000000, 0.000000, 0.000000>",
-        "link": "none"
-      }
-    ],
-    "lastLandingDetail": [
-      {
-        "sequence": "472",
-        "seconds": "179.773",
-        "id": "17",
-        "generation": "1",
-        "phase": "FALL",
-        "gate": "FOOT_X_SUPPORT",
-        "valid": "false",
-        "requireEntitySpace": "false",
+        "pose": "0",
+        "mode": "0",
         "root": "<4511.493164, 339.275757, 10236.865234>",
         "tested": "<4511.501953, 339.172150, 10236.862305>",
-        "supported": "<4511.501953, 339.172150, 10236.862305>",
-        "heading": "166.976",
-        "lift": "0",
-        "reason": "FRAME_FALL_PENDING",
-        "failure": "CONTACT_SUPPORT_LOST",
-        "checks": "2533",
-        "rejected": "2533",
-        "budgetSkipped": "0",
-        "poseAvailable": "true",
-        "nativeBefore": "70.1997",
-        "nativeAfter": "70.1997",
-        "updatesBefore": "1404",
-        "updatesAfter": "1404",
-        "hipsMS": "<-0.012731, 0.978220, 0.001843>",
-        "headMS": "<-0.054262, 1.633673, -0.210579>",
-        "leftFootMS": "<0.168536, 0.250544, -0.314792>",
-        "rightFootMS": "<-0.122935, 0.244351, 0.059489>",
-        "idleOffset": "<0.000000, 0.000000, 0.000000>",
-        "link": "none"
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.501953, 339.172150, 10236.862305>",
+        "leftOk": "true",
+        "left": "<4511.731934, 339.176422, 10236.862305>",
+        "rightOk": "false",
+        "right": "<4511.271973, 339.622162, 10236.862305>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "root": "<4511.493164, 339.275757, 10236.865234>",
+        "tested": "<4511.501953, 339.172150, 10236.862305>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.501953, 339.172150, 10236.862305>",
+        "leftOk": "true",
+        "left": "<4511.731934, 339.176422, 10236.862305>",
+        "rightOk": "false",
+        "right": "<4511.271973, 339.622162, 10236.862305>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "root": "<4511.466309, 339.380249, 10239.336914>",
+        "tested": "<4511.484375, 339.179260, 10239.331055>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.484375, 339.179260, 10239.331055>",
+        "leftOk": "true",
+        "left": "<4511.714355, 339.183563, 10239.331055>",
+        "rightOk": "false",
+        "right": "<4511.254395, 339.629272, 10239.331055>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "root": "<4511.466309, 339.380249, 10239.336914>",
+        "tested": "<4511.484375, 339.179260, 10239.331055>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.484375, 339.179260, 10239.331055>",
+        "leftOk": "true",
+        "left": "<4511.714355, 339.183563, 10239.331055>",
+        "rightOk": "false",
+        "right": "<4511.254395, 339.629272, 10239.331055>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "root": "<4530.000000, 339.440277, 10240.000000>",
+        "tested": "<4530.000000, 339.440277, 10240.000000>",
+        "landing": "true",
+        "gate": "CLEAR",
+        "support": "<4530.000000, 339.336670, 10240.000000>",
+        "leftOk": "true",
+        "left": "<4530.229980, 339.336975, 10240.000000>",
+        "rightOk": "true",
+        "right": "<4529.770020, 339.335754, 10240.000000>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "root": "<4530.000000, 339.440277, 10240.000000>",
+        "tested": "<4530.000000, 339.440277, 10240.000000>",
+        "landing": "true",
+        "gate": "CLEAR",
+        "support": "<4530.000000, 339.336670, 10240.000000>",
+        "leftOk": "true",
+        "left": "<4530.229980, 339.336975, 10240.000000>",
+        "rightOk": "true",
+        "right": "<4529.770020, 339.335754, 10240.000000>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
       }
     ],
-    "sampledLandingReasons": {
-      "CLEAR": 1,
-      "FOOT_X_SUPPORT": 194
-    },
-    "limitations": [
-      "Sampled5mm stationary suffix is not proof of zero subframe motion.",
-      "Player-placement cost experiment180s;this is unresolved FALL ownership,not failed native climb completion.",
-      "Post-touchdown owner cannot intervene before physical LAND. No collision gate changed."
+    "finals": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.493164, 339.275757, 10236.865234>",
+        "heading": "-161.024",
+        "lift": "0",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "landingGate": "FOOT_X_SUPPORT",
+        "plans": "151",
+        "steps": "0",
+        "separationDistance": "2.81813",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.493164, 339.275757, 10236.865234>",
+        "heading": "-161.024",
+        "lift": "0",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "landingGate": "FOOT_X_SUPPORT",
+        "plans": "151",
+        "steps": "0",
+        "separationDistance": "2.81813",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.487305, 339.380249, 10236.833008>",
+        "heading": "-164.304",
+        "lift": "0",
+        "reason": "FALL_AIR_POSE_ESCAPE_TURN",
+        "landingGate": "CLEAR",
+        "plans": "110",
+        "steps": "83",
+        "separationDistance": "2.51246",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "90",
+        "seconds": "4.55005",
+        "phase": "LAND",
+        "position": "<4511.511719, 339.171509, 10236.656250>",
+        "heading": "-178.304",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "5",
+        "steps": "86",
+        "separationDistance": "2.69327",
+        "tangentDistance": "0.0899827",
+        "tangentSteps": "3",
+        "wantLanding": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "iteration": "1",
+        "seconds": "0.0999756",
+        "phase": "LAND",
+        "position": "<4530.000000, 339.336609, 10240.030273>",
+        "heading": "166.976",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "1",
+        "steps": "1",
+        "separationDistance": "0.0302734",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "iteration": "0",
+        "seconds": "0.0500488",
+        "phase": "LAND",
+        "position": "<4530.000000, 339.336670, 10240.000000>",
+        "heading": "166.976",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "0",
+        "steps": "0",
+        "separationDistance": "0",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "true"
+      }
+    ],
+    "acceptedTangentSteps": [
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "start": "<4511.466309, 339.380249, 10236.884766>",
+        "proposal": "<4511.477539, 339.380249, 10236.857422>",
+        "direction": "<0.377478, 0.000000, -0.926019>",
+        "normal": "<0.926018, 0.000000, 0.377478>",
+        "step": "0.0295602",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "85",
+        "start": "<4511.498535, 339.380249, 10236.805664>",
+        "proposal": "<4511.508301, 339.380249, 10236.777344>",
+        "direction": "<0.319882, 0.000000, -0.947457>",
+        "normal": "<0.947457, 0.000000, 0.319882>",
+        "step": "0.0299568",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "87",
+        "start": "<4511.508301, 339.380249, 10236.747070>",
+        "proposal": "<4511.511719, 339.380249, 10236.716797>",
+        "direction": "<0.108834, 0.000000, -0.994060>",
+        "normal": "<0.994060, 0.000000, 0.108834>",
+        "step": "0.0304658",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1"
+      }
+    ],
+    "motorRows": 994,
+    "tangentRows": 305
+  },
+  {
+    "validation": "prelanding17-outward",
+    "initSha256": "72ca6e81e7fc8a36e329d85d2905ea803868544b4c2c815ebd65bfc63c7ef702",
+    "queries": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "root": "<4511.493164, 339.275757, 10236.865234>",
+        "tested": "<4511.501953, 339.172150, 10236.862305>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.501953, 339.172150, 10236.862305>",
+        "leftOk": "true",
+        "left": "<4511.731934, 339.176422, 10236.862305>",
+        "rightOk": "false",
+        "right": "<4511.271973, 339.622162, 10236.862305>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "root": "<4511.493164, 339.275757, 10236.865234>",
+        "tested": "<4511.501953, 339.172150, 10236.862305>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.501953, 339.172150, 10236.862305>",
+        "leftOk": "true",
+        "left": "<4511.731934, 339.176422, 10236.862305>",
+        "rightOk": "false",
+        "right": "<4511.271973, 339.622162, 10236.862305>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "root": "<4511.466309, 339.380249, 10239.336914>",
+        "tested": "<4511.484375, 339.179260, 10239.331055>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.484375, 339.179260, 10239.331055>",
+        "leftOk": "true",
+        "left": "<4511.714355, 339.183563, 10239.331055>",
+        "rightOk": "false",
+        "right": "<4511.254395, 339.629272, 10239.331055>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "root": "<4511.466309, 339.380249, 10239.336914>",
+        "tested": "<4511.484375, 339.179260, 10239.331055>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.484375, 339.179260, 10239.331055>",
+        "leftOk": "true",
+        "left": "<4511.714355, 339.183563, 10239.331055>",
+        "rightOk": "false",
+        "right": "<4511.254395, 339.629272, 10239.331055>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "root": "<4530.000000, 339.440277, 10240.000000>",
+        "tested": "<4530.000000, 339.440277, 10240.000000>",
+        "landing": "true",
+        "gate": "CLEAR",
+        "support": "<4530.000000, 339.336670, 10240.000000>",
+        "leftOk": "true",
+        "left": "<4530.229980, 339.336975, 10240.000000>",
+        "rightOk": "true",
+        "right": "<4529.770020, 339.335754, 10240.000000>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "root": "<4530.000000, 339.440277, 10240.000000>",
+        "tested": "<4530.000000, 339.440277, 10240.000000>",
+        "landing": "true",
+        "gate": "CLEAR",
+        "support": "<4530.000000, 339.336670, 10240.000000>",
+        "leftOk": "true",
+        "left": "<4530.229980, 339.336975, 10240.000000>",
+        "rightOk": "true",
+        "right": "<4529.770020, 339.335754, 10240.000000>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
+      }
+    ],
+    "finals": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.493164, 339.275757, 10236.865234>",
+        "heading": "-161.024",
+        "lift": "0",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "landingGate": "FOOT_X_SUPPORT",
+        "plans": "151",
+        "steps": "0",
+        "separationDistance": "2.81813",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.493164, 339.275757, 10236.865234>",
+        "heading": "-161.024",
+        "lift": "0",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "landingGate": "FOOT_X_SUPPORT",
+        "plans": "151",
+        "steps": "0",
+        "separationDistance": "2.81813",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.487305, 339.380249, 10236.833008>",
+        "heading": "-164.304",
+        "lift": "0",
+        "reason": "FALL_AIR_POSE_ESCAPE_TURN",
+        "landingGate": "CLEAR",
+        "plans": "110",
+        "steps": "83",
+        "separationDistance": "2.51246",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "90",
+        "seconds": "4.55005",
+        "phase": "LAND",
+        "position": "<4511.511719, 339.171509, 10236.656250>",
+        "heading": "-178.304",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "5",
+        "steps": "86",
+        "separationDistance": "2.69327",
+        "tangentDistance": "0.0899827",
+        "tangentSteps": "3",
+        "wantLanding": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "iteration": "1",
+        "seconds": "0.0999756",
+        "phase": "LAND",
+        "position": "<4530.000000, 339.336609, 10240.030273>",
+        "heading": "166.976",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "1",
+        "steps": "1",
+        "separationDistance": "0.0302734",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "iteration": "0",
+        "seconds": "0.0500488",
+        "phase": "LAND",
+        "position": "<4530.000000, 339.336670, 10240.000000>",
+        "heading": "166.976",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "0",
+        "steps": "0",
+        "separationDistance": "0",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "true"
+      }
+    ],
+    "acceptedTangentSteps": [
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "start": "<4511.466309, 339.380249, 10236.884766>",
+        "proposal": "<4511.477539, 339.380249, 10236.857422>",
+        "direction": "<0.377478, 0.000000, -0.926019>",
+        "normal": "<0.926018, 0.000000, 0.377478>",
+        "step": "0.0295602",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1",
+        "bias": "0",
+        "rejectNormal": "<0.818363, 0.467970, 0.333594>",
+        "rejectFraction": "0.987309"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "85",
+        "start": "<4511.498535, 339.380249, 10236.805664>",
+        "proposal": "<4511.508301, 339.380249, 10236.777344>",
+        "direction": "<0.319882, 0.000000, -0.947458>",
+        "normal": "<0.947457, 0.000000, 0.319882>",
+        "step": "0.0299568",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1",
+        "bias": "0",
+        "rejectNormal": "<0.838359, 0.465873, 0.283048>",
+        "rejectFraction": "0.98595"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "87",
+        "start": "<4511.508301, 339.380249, 10236.747070>",
+        "proposal": "<4511.511719, 339.380249, 10236.716797>",
+        "direction": "<0.108834, 0.000000, -0.994060>",
+        "normal": "<0.994060, 0.000000, 0.108834>",
+        "step": "0.0304658",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1",
+        "bias": "0",
+        "rejectNormal": "<0.879851, 0.465385, 0.096330>",
+        "rejectFraction": "0.491633"
+      }
+    ],
+    "motorRows": 994,
+    "tangentRows": 909,
+    "rawFloorQueries": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "label": "X_PLUS",
+        "near": "<4511.731934, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.731934, 339.176422, 10236.862305>",
+        "normal": "<-0.018661, 0.999818, -0.003999>",
+        "fraction": "0.424507",
+        "heightDifference": "0.00427246",
+        "admissible": "true"
+      },
+      {
+        "pose": "0",
+        "mode": "0",
+        "label": "X_MINUS",
+        "near": "<4511.271973, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.271973, 339.622162, 10236.862305>",
+        "normal": "<0.956329, 0.017070, -0.291794>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "label": "X_PLUS",
+        "near": "<4511.731934, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.731934, 339.176422, 10236.862305>",
+        "normal": "<-0.018661, 0.999818, -0.003999>",
+        "fraction": "0.424507",
+        "heightDifference": "0.00427246",
+        "admissible": "true"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "label": "X_MINUS",
+        "near": "<4511.271973, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.271973, 339.622162, 10236.862305>",
+        "normal": "<0.956329, 0.017070, -0.291794>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "label": "X_PLUS",
+        "near": "<4511.714355, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.714355, 339.183563, 10239.331055>",
+        "normal": "<-0.018661, 0.999822, -0.002665>",
+        "fraction": "0.424478",
+        "heightDifference": "0.00430298",
+        "admissible": "true"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "label": "X_MINUS",
+        "near": "<4511.254395, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.254395, 339.629272, 10239.331055>",
+        "normal": "<0.999826, 0.018659, 0.000011>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "label": "X_PLUS",
+        "near": "<4511.714355, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.714355, 339.183563, 10239.331055>",
+        "normal": "<-0.018661, 0.999822, -0.002665>",
+        "fraction": "0.424478",
+        "heightDifference": "0.00430298",
+        "admissible": "true"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "label": "X_MINUS",
+        "near": "<4511.254395, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.254395, 339.629272, 10239.331055>",
+        "normal": "<0.999826, 0.018659, 0.000011>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "label": "X_PLUS",
+        "near": "<4530.229980, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4530.229980, 339.336975, 10240.000000>",
+        "normal": "<-0.001335, 0.999998, 0.001335>",
+        "fraction": "0.428285",
+        "heightDifference": "0.000305176",
+        "admissible": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "label": "X_MINUS",
+        "near": "<4529.770020, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4529.770020, 339.335754, 10240.000000>",
+        "normal": "<-0.004000, 0.999991, 0.001335>",
+        "fraction": "0.429448",
+        "heightDifference": "0.000915527",
+        "admissible": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "label": "X_PLUS",
+        "near": "<4530.229980, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4530.229980, 339.336975, 10240.000000>",
+        "normal": "<-0.001335, 0.999998, 0.001335>",
+        "fraction": "0.428285",
+        "heightDifference": "0.000305176",
+        "admissible": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "label": "X_MINUS",
+        "near": "<4529.770020, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4529.770020, 339.335754, 10240.000000>",
+        "normal": "<-0.004000, 0.999991, 0.001335>",
+        "fraction": "0.429448",
+        "heightDifference": "0.000915527",
+        "admissible": "true"
+      }
     ]
   },
-  "previousNaturalRuns": [
-    {
-      "runId": "runtime-20261029-164705",
-      "count": 8,
-      "highHold": {
-        "seconds": 59.358999999999995,
-        "intervals": 116,
-        "elapsedEquivalentMsPerWallSecond": {
-          "senseTicks": 5.990996626033759,
-          "perceptionCpuTicks": 2.7892372452204213,
-          "socialCpuTicks": 2.611354236696486,
-          "pursuitCpuTicks": 0.2030989652583447,
-          "crowdCpuTicks": 9.00496721093685,
-          "staticCpuTicks": 1.0256937441211003,
-          "commitTicks": 9.515940743614138,
-          "traceTicks": 17.485247775365696,
-          "missionUpdateTicks": null,
-          "driveTicks": 35.13131297656429,
-          "navTicks": 0.0,
-          "bypassTicks": 0.0,
-          "contactCpuTicks": 53.391873927258004,
-          "contactBoneCpuTicks": 1.9110588695848771,
-          "contactFootCpuTicks": 32.13056695475347,
-          "contactWorldCpuTicks": 16.60379779444032,
-          "contactFallbackCpuTicks": 0.0,
-          "contactDiagnosticCpuTicks": 0.09225522599476993
-        },
-        "missionUpdatesPerSecond": null
+  {
+    "validation": "prelanding17-fan",
+    "initSha256": "c696cc7536bc587a79f87cc2598943974d5cef241db7aeb96787b477376b7efb",
+    "queries": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "root": "<4511.493164, 339.275757, 10236.865234>",
+        "tested": "<4511.501953, 339.172150, 10236.862305>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.501953, 339.172150, 10236.862305>",
+        "leftOk": "true",
+        "left": "<4511.731934, 339.176422, 10236.862305>",
+        "rightOk": "false",
+        "right": "<4511.271973, 339.622162, 10236.862305>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "root": "<4511.493164, 339.275757, 10236.865234>",
+        "tested": "<4511.501953, 339.172150, 10236.862305>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.501953, 339.172150, 10236.862305>",
+        "leftOk": "true",
+        "left": "<4511.731934, 339.176422, 10236.862305>",
+        "rightOk": "false",
+        "right": "<4511.271973, 339.622162, 10236.862305>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "root": "<4511.466309, 339.380249, 10239.336914>",
+        "tested": "<4511.484375, 339.179260, 10239.331055>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.484375, 339.179260, 10239.331055>",
+        "leftOk": "true",
+        "left": "<4511.714355, 339.183563, 10239.331055>",
+        "rightOk": "false",
+        "right": "<4511.254395, 339.629272, 10239.331055>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "root": "<4511.466309, 339.380249, 10239.336914>",
+        "tested": "<4511.484375, 339.179260, 10239.331055>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.484375, 339.179260, 10239.331055>",
+        "leftOk": "true",
+        "left": "<4511.714355, 339.183563, 10239.331055>",
+        "rightOk": "false",
+        "right": "<4511.254395, 339.629272, 10239.331055>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "root": "<4530.000000, 339.440277, 10240.000000>",
+        "tested": "<4530.000000, 339.440277, 10240.000000>",
+        "landing": "true",
+        "gate": "CLEAR",
+        "support": "<4530.000000, 339.336670, 10240.000000>",
+        "leftOk": "true",
+        "left": "<4530.229980, 339.336975, 10240.000000>",
+        "rightOk": "true",
+        "right": "<4529.770020, 339.335754, 10240.000000>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "root": "<4530.000000, 339.440277, 10240.000000>",
+        "tested": "<4530.000000, 339.440277, 10240.000000>",
+        "landing": "true",
+        "gate": "CLEAR",
+        "support": "<4530.000000, 339.336670, 10240.000000>",
+        "leftOk": "true",
+        "left": "<4530.229980, 339.336975, 10240.000000>",
+        "rightOk": "true",
+        "right": "<4529.770020, 339.335754, 10240.000000>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
       }
+    ],
+    "finals": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.493164, 339.275757, 10236.865234>",
+        "heading": "-161.024",
+        "lift": "0",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "landingGate": "FOOT_X_SUPPORT",
+        "plans": "151",
+        "steps": "0",
+        "separationDistance": "2.81813",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.493164, 339.275757, 10236.865234>",
+        "heading": "-161.024",
+        "lift": "0",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "landingGate": "FOOT_X_SUPPORT",
+        "plans": "151",
+        "steps": "0",
+        "separationDistance": "2.81813",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.487305, 339.380249, 10236.833008>",
+        "heading": "-164.304",
+        "lift": "0",
+        "reason": "FALL_AIR_POSE_ESCAPE_TURN",
+        "landingGate": "CLEAR",
+        "plans": "110",
+        "steps": "83",
+        "separationDistance": "2.51246",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "90",
+        "seconds": "4.55005",
+        "phase": "LAND",
+        "position": "<4511.511719, 339.171509, 10236.656250>",
+        "heading": "-178.304",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "5",
+        "steps": "86",
+        "separationDistance": "2.69327",
+        "tangentDistance": "0.0899827",
+        "tangentSteps": "3",
+        "wantLanding": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "iteration": "1",
+        "seconds": "0.0999756",
+        "phase": "LAND",
+        "position": "<4530.000000, 339.336609, 10240.030273>",
+        "heading": "166.976",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "1",
+        "steps": "1",
+        "separationDistance": "0.0302734",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "iteration": "0",
+        "seconds": "0.0500488",
+        "phase": "LAND",
+        "position": "<4530.000000, 339.336670, 10240.000000>",
+        "heading": "166.976",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "0",
+        "steps": "0",
+        "separationDistance": "0",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "true"
+      }
+    ],
+    "acceptedTangentSteps": [
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "start": "<4511.466309, 339.380249, 10236.884766>",
+        "proposal": "<4511.477539, 339.380249, 10236.857422>",
+        "direction": "<0.377478, 0.000000, -0.926019>",
+        "normal": "<0.926018, 0.000000, 0.377478>",
+        "step": "0.0295602",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1",
+        "bias": "0",
+        "rejectNormal": "<0.818363, 0.467970, 0.333594>",
+        "rejectFraction": "0.987309"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "85",
+        "start": "<4511.498535, 339.380249, 10236.805664>",
+        "proposal": "<4511.508301, 339.380249, 10236.777344>",
+        "direction": "<0.319882, 0.000000, -0.947458>",
+        "normal": "<0.947457, 0.000000, 0.319882>",
+        "step": "0.0299568",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1",
+        "bias": "0",
+        "rejectNormal": "<0.838359, 0.465873, 0.283048>",
+        "rejectFraction": "0.98595"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "87",
+        "start": "<4511.508301, 339.380249, 10236.747070>",
+        "proposal": "<4511.511719, 339.380249, 10236.716797>",
+        "direction": "<0.108834, 0.000000, -0.994060>",
+        "normal": "<0.994060, 0.000000, 0.108834>",
+        "step": "0.0304658",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1",
+        "bias": "0",
+        "rejectNormal": "<0.879851, 0.465385, 0.096330>",
+        "rejectFraction": "0.491633"
+      }
+    ],
+    "motorRows": 994,
+    "tangentRows": 909,
+    "rawFloorQueries": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "label": "X_PLUS",
+        "near": "<4511.731934, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.731934, 339.176422, 10236.862305>",
+        "normal": "<-0.018661, 0.999818, -0.003999>",
+        "fraction": "0.424507",
+        "heightDifference": "0.00427246",
+        "admissible": "true"
+      },
+      {
+        "pose": "0",
+        "mode": "0",
+        "label": "X_MINUS",
+        "near": "<4511.271973, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.271973, 339.622162, 10236.862305>",
+        "normal": "<0.956329, 0.017070, -0.291794>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "label": "X_PLUS",
+        "near": "<4511.731934, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.731934, 339.176422, 10236.862305>",
+        "normal": "<-0.018661, 0.999818, -0.003999>",
+        "fraction": "0.424507",
+        "heightDifference": "0.00427246",
+        "admissible": "true"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "label": "X_MINUS",
+        "near": "<4511.271973, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.271973, 339.622162, 10236.862305>",
+        "normal": "<0.956329, 0.017070, -0.291794>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "label": "X_PLUS",
+        "near": "<4511.714355, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.714355, 339.183563, 10239.331055>",
+        "normal": "<-0.018661, 0.999822, -0.002665>",
+        "fraction": "0.424478",
+        "heightDifference": "0.00430298",
+        "admissible": "true"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "label": "X_MINUS",
+        "near": "<4511.254395, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.254395, 339.629272, 10239.331055>",
+        "normal": "<0.999826, 0.018659, 0.000011>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "label": "X_PLUS",
+        "near": "<4511.714355, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.714355, 339.183563, 10239.331055>",
+        "normal": "<-0.018661, 0.999822, -0.002665>",
+        "fraction": "0.424478",
+        "heightDifference": "0.00430298",
+        "admissible": "true"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "label": "X_MINUS",
+        "near": "<4511.254395, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.254395, 339.629272, 10239.331055>",
+        "normal": "<0.999826, 0.018659, 0.000011>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "label": "X_PLUS",
+        "near": "<4530.229980, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4530.229980, 339.336975, 10240.000000>",
+        "normal": "<-0.001335, 0.999998, 0.001335>",
+        "fraction": "0.428285",
+        "heightDifference": "0.000305176",
+        "admissible": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "label": "X_MINUS",
+        "near": "<4529.770020, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4529.770020, 339.335754, 10240.000000>",
+        "normal": "<-0.004000, 0.999991, 0.001335>",
+        "fraction": "0.429448",
+        "heightDifference": "0.000915527",
+        "admissible": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "label": "X_PLUS",
+        "near": "<4530.229980, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4530.229980, 339.336975, 10240.000000>",
+        "normal": "<-0.001335, 0.999998, 0.001335>",
+        "fraction": "0.428285",
+        "heightDifference": "0.000305176",
+        "admissible": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "label": "X_MINUS",
+        "near": "<4529.770020, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4529.770020, 339.335754, 10240.000000>",
+        "normal": "<-0.004000, 0.999991, 0.001335>",
+        "fraction": "0.429448",
+        "heightDifference": "0.000915527",
+        "admissible": "true"
+      }
+    ],
+    "fanAcceptedCounts": {
+      "0:0": 5,
+      "0:1": 5,
+      "1:0": 25,
+      "1:1": 25,
+      "2:0": 72,
+      "2:1": 72
     },
-    {
-      "runId": "runtime-20261029-165343",
-      "count": 64,
-      "highHold": {
-        "seconds": 59.239,
-        "intervals": 107,
-        "elapsedEquivalentMsPerWallSecond": {
-          "senseTicks": 80.42116381733318,
-          "perceptionCpuTicks": 75.59303782817373,
-          "socialCpuTicks": 3.777828810481377,
-          "pursuitCpuTicks": 0.6032777353016427,
-          "crowdCpuTicks": 15.636311907853932,
-          "staticCpuTicks": 2.7020929007157526,
-          "commitTicks": 11.07444013597654,
-          "traceTicks": 102.66629601009664,
-          "missionUpdateTicks": null,
-          "driveTicks": 225.0828227715919,
-          "navTicks": 4.119852296747908,
-          "bypassTicks": 0.0,
-          "contactCpuTicks": 181.44612150015575,
-          "contactBoneCpuTicks": 7.561494856005937,
-          "contactFootCpuTicks": 103.1044431262935,
-          "contactWorldCpuTicks": 59.93924966398607,
-          "contactFallbackCpuTicks": 0.0,
-          "contactDiagnosticCpuTicks": 0.9859643664366653
-        },
-        "missionUpdatesPerSecond": null
+    "fanAcceptedKeys": [
+      [
+        "0",
+        "0",
+        "280",
+        "0.01"
+      ],
+      [
+        "0",
+        "0",
+        "290",
+        "0.01"
+      ],
+      [
+        "0",
+        "0",
+        "70",
+        "0.01"
+      ],
+      [
+        "0",
+        "0",
+        "80",
+        "0.01"
+      ],
+      [
+        "0",
+        "0",
+        "90",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "280",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "290",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "70",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "80",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "90",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "0",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "10",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "20",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "270",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "270",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "280",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "280",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "290",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "290",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "30",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "300",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "310",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "320",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "330",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "340",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "350",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "40",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "50",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "60",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "70",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "70",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "80",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "80",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "90",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "90",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "0",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "10",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "20",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "270",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "270",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "280",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "280",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "290",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "290",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "30",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "300",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "310",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "320",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "330",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "340",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "350",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "40",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "50",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "60",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "70",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "70",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "80",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "80",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "90",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "90",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "0",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "0",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "10",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "10",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "100",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "100",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "110",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "110",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "120",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "120",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "130",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "130",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "140",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "140",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "150",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "150",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "160",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "160",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "170",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "170",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "180",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "180",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "190",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "190",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "20",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "20",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "200",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "200",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "210",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "210",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "220",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "220",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "230",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "230",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "240",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "240",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "250",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "250",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "260",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "260",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "270",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "270",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "280",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "280",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "290",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "290",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "30",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "30",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "300",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "300",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "310",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "310",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "320",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "320",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "330",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "330",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "340",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "340",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "350",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "350",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "40",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "40",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "50",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "50",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "60",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "60",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "70",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "70",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "80",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "80",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "90",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "90",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "0",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "0",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "10",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "10",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "100",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "100",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "110",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "110",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "120",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "120",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "130",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "130",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "140",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "140",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "150",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "150",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "160",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "160",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "170",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "170",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "180",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "180",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "190",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "190",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "20",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "20",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "200",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "200",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "210",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "210",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "220",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "220",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "230",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "230",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "240",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "240",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "250",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "250",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "260",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "260",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "270",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "270",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "280",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "280",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "290",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "290",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "30",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "30",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "300",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "300",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "310",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "310",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "320",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "320",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "330",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "330",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "340",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "340",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "350",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "350",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "40",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "40",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "50",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "50",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "60",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "60",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "70",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "70",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "80",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "80",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "90",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "90",
+        "0.03"
+      ]
+    ]
+  },
+  {
+    "validation": "prelanding17-fan-repeat",
+    "initSha256": "c696cc7536bc587a79f87cc2598943974d5cef241db7aeb96787b477376b7efb",
+    "queries": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "root": "<4511.493164, 339.275757, 10236.865234>",
+        "tested": "<4511.501953, 339.172150, 10236.862305>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.501953, 339.172150, 10236.862305>",
+        "leftOk": "true",
+        "left": "<4511.731934, 339.176422, 10236.862305>",
+        "rightOk": "false",
+        "right": "<4511.271973, 339.622162, 10236.862305>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "root": "<4511.493164, 339.275757, 10236.865234>",
+        "tested": "<4511.501953, 339.172150, 10236.862305>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.501953, 339.172150, 10236.862305>",
+        "leftOk": "true",
+        "left": "<4511.731934, 339.176422, 10236.862305>",
+        "rightOk": "false",
+        "right": "<4511.271973, 339.622162, 10236.862305>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.501953, 339.172150, 10236.862305>"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "root": "<4511.466309, 339.380249, 10239.336914>",
+        "tested": "<4511.484375, 339.179260, 10239.331055>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.484375, 339.179260, 10239.331055>",
+        "leftOk": "true",
+        "left": "<4511.714355, 339.183563, 10239.331055>",
+        "rightOk": "false",
+        "right": "<4511.254395, 339.629272, 10239.331055>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "root": "<4511.466309, 339.380249, 10239.336914>",
+        "tested": "<4511.484375, 339.179260, 10239.331055>",
+        "landing": "false",
+        "gate": "FOOT_X_SUPPORT",
+        "support": "<4511.484375, 339.179260, 10239.331055>",
+        "leftOk": "true",
+        "left": "<4511.714355, 339.183563, 10239.331055>",
+        "rightOk": "false",
+        "right": "<4511.254395, 339.629272, 10239.331055>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4511.484375, 339.179260, 10239.331055>"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "root": "<4530.000000, 339.440277, 10240.000000>",
+        "tested": "<4530.000000, 339.440277, 10240.000000>",
+        "landing": "true",
+        "gate": "CLEAR",
+        "support": "<4530.000000, 339.336670, 10240.000000>",
+        "leftOk": "true",
+        "left": "<4530.229980, 339.336975, 10240.000000>",
+        "rightOk": "true",
+        "right": "<4529.770020, 339.335754, 10240.000000>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "root": "<4530.000000, 339.440277, 10240.000000>",
+        "tested": "<4530.000000, 339.440277, 10240.000000>",
+        "landing": "true",
+        "gate": "CLEAR",
+        "support": "<4530.000000, 339.336670, 10240.000000>",
+        "leftOk": "true",
+        "left": "<4530.229980, 339.336975, 10240.000000>",
+        "rightOk": "true",
+        "right": "<4529.770020, 339.335754, 10240.000000>",
+        "rootFloorOk": "true",
+        "rootFloor": "<4530.000000, 339.336670, 10240.000000>"
       }
-    }
-  ],
-  "scopeLimits": [
-    "NPC trajectories,phase populations and call counts are not identical;actual target matching is not deterministic NPC replay.",
-    "One sequential pair does not establish causal regression or reproducible optimization.",
-    "Elapsed scopes overlap/nest;never sum Body/Traversal/Contact/PrePhys or call a remainder renderer time.",
-    "No graph/render/GPU self-time or allocation/GC telemetry;mission frequency is not AI-call frequency.",
-    "Other user applications remain running;instrumentation and fixed camera are diagnostic conditions."
-  ]
+    ],
+    "finals": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.493164, 339.275757, 10236.865234>",
+        "heading": "-161.024",
+        "lift": "0",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "landingGate": "FOOT_X_SUPPORT",
+        "plans": "151",
+        "steps": "0",
+        "separationDistance": "2.81813",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.493164, 339.275757, 10236.865234>",
+        "heading": "-161.024",
+        "lift": "0",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "landingGate": "FOOT_X_SUPPORT",
+        "plans": "151",
+        "steps": "0",
+        "separationDistance": "2.81813",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "iteration": "299",
+        "seconds": "15",
+        "phase": "FALL",
+        "position": "<4511.487305, 339.380249, 10236.833008>",
+        "heading": "-164.304",
+        "lift": "0",
+        "reason": "FALL_AIR_POSE_ESCAPE_TURN",
+        "landingGate": "CLEAR",
+        "plans": "110",
+        "steps": "83",
+        "separationDistance": "2.51246",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "90",
+        "seconds": "4.55005",
+        "phase": "LAND",
+        "position": "<4511.511719, 339.171509, 10236.656250>",
+        "heading": "-178.304",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "5",
+        "steps": "86",
+        "separationDistance": "2.69327",
+        "tangentDistance": "0.0899827",
+        "tangentSteps": "3",
+        "wantLanding": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "iteration": "1",
+        "seconds": "0.0999756",
+        "phase": "LAND",
+        "position": "<4530.000000, 339.336609, 10240.030273>",
+        "heading": "166.976",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "1",
+        "steps": "1",
+        "separationDistance": "0.0302734",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "iteration": "0",
+        "seconds": "0.0500488",
+        "phase": "LAND",
+        "position": "<4530.000000, 339.336670, 10240.000000>",
+        "heading": "166.976",
+        "lift": "0",
+        "reason": "NATIVE_FALL",
+        "landingGate": "CLEAR",
+        "plans": "0",
+        "steps": "0",
+        "separationDistance": "0",
+        "tangentDistance": "0",
+        "tangentSteps": "0",
+        "wantLanding": "true"
+      }
+    ],
+    "acceptedTangentSteps": [
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "81",
+        "start": "<4511.466309, 339.380249, 10236.884766>",
+        "proposal": "<4511.477539, 339.380249, 10236.857422>",
+        "direction": "<0.377478, 0.000000, -0.926019>",
+        "normal": "<0.926018, 0.000000, 0.377478>",
+        "step": "0.0295602",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1",
+        "bias": "0",
+        "rejectNormal": "<0.818363, 0.467970, 0.333594>",
+        "rejectFraction": "0.987309"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "85",
+        "start": "<4511.498535, 339.380249, 10236.805664>",
+        "proposal": "<4511.508301, 339.380249, 10236.777344>",
+        "direction": "<0.319882, 0.000000, -0.947458>",
+        "normal": "<0.947457, 0.000000, 0.319882>",
+        "step": "0.0299568",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1",
+        "bias": "0",
+        "rejectNormal": "<0.838359, 0.465873, 0.283048>",
+        "rejectFraction": "0.98595"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "iteration": "87",
+        "start": "<4511.508301, 339.380249, 10236.747070>",
+        "proposal": "<4511.511719, 339.380249, 10236.716797>",
+        "direction": "<0.108834, 0.000000, -0.994060>",
+        "normal": "<0.994060, 0.000000, 0.108834>",
+        "step": "0.0304658",
+        "accepted": "true",
+        "diagnostic": "NONDEEPENING_CLEAR",
+        "fixture": "0",
+        "probe": "1",
+        "bias": "0",
+        "rejectNormal": "<0.879851, 0.465385, 0.096330>",
+        "rejectFraction": "0.491633"
+      }
+    ],
+    "motorRows": 994,
+    "tangentRows": 909,
+    "rawFloorQueries": [
+      {
+        "pose": "0",
+        "mode": "0",
+        "label": "X_PLUS",
+        "near": "<4511.731934, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.731934, 339.176422, 10236.862305>",
+        "normal": "<-0.018661, 0.999818, -0.003999>",
+        "fraction": "0.424507",
+        "heightDifference": "0.00427246",
+        "admissible": "true"
+      },
+      {
+        "pose": "0",
+        "mode": "0",
+        "label": "X_MINUS",
+        "near": "<4511.271973, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.271973, 339.622162, 10236.862305>",
+        "normal": "<0.956329, 0.017070, -0.291794>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "label": "X_PLUS",
+        "near": "<4511.731934, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.731934, 339.176422, 10236.862305>",
+        "normal": "<-0.018661, 0.999818, -0.003999>",
+        "fraction": "0.424507",
+        "heightDifference": "0.00427246",
+        "admissible": "true"
+      },
+      {
+        "pose": "0",
+        "mode": "1",
+        "label": "X_MINUS",
+        "near": "<4511.271973, 339.172150, 10236.862305>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.271973, 339.622162, 10236.862305>",
+        "normal": "<0.956329, 0.017070, -0.291794>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "label": "X_PLUS",
+        "near": "<4511.714355, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.714355, 339.183563, 10239.331055>",
+        "normal": "<-0.018661, 0.999822, -0.002665>",
+        "fraction": "0.424478",
+        "heightDifference": "0.00430298",
+        "admissible": "true"
+      },
+      {
+        "pose": "1",
+        "mode": "0",
+        "label": "X_MINUS",
+        "near": "<4511.254395, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.254395, 339.629272, 10239.331055>",
+        "normal": "<0.999826, 0.018659, 0.000011>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "label": "X_PLUS",
+        "near": "<4511.714355, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4511.714355, 339.183563, 10239.331055>",
+        "normal": "<-0.018661, 0.999822, -0.002665>",
+        "fraction": "0.424478",
+        "heightDifference": "0.00430298",
+        "admissible": "true"
+      },
+      {
+        "pose": "1",
+        "mode": "1",
+        "label": "X_MINUS",
+        "near": "<4511.254395, 339.179260, 10239.331055>",
+        "hit": "true",
+        "objectType": "StaticObj_Container_1C",
+        "point": "<4511.254395, 339.629272, 10239.331055>",
+        "normal": "<0.999826, 0.018659, 0.000011>",
+        "fraction": "0",
+        "heightDifference": "0.450012",
+        "admissible": "false"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "label": "X_PLUS",
+        "near": "<4530.229980, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4530.229980, 339.336975, 10240.000000>",
+        "normal": "<-0.001335, 0.999998, 0.001335>",
+        "fraction": "0.428285",
+        "heightDifference": "0.000305176",
+        "admissible": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "0",
+        "label": "X_MINUS",
+        "near": "<4529.770020, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4529.770020, 339.335754, 10240.000000>",
+        "normal": "<-0.004000, 0.999991, 0.001335>",
+        "fraction": "0.429448",
+        "heightDifference": "0.000915527",
+        "admissible": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "label": "X_PLUS",
+        "near": "<4530.229980, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4530.229980, 339.336975, 10240.000000>",
+        "normal": "<-0.001335, 0.999998, 0.001335>",
+        "fraction": "0.428285",
+        "heightDifference": "0.000305176",
+        "admissible": "true"
+      },
+      {
+        "pose": "2",
+        "mode": "1",
+        "label": "X_MINUS",
+        "near": "<4529.770020, 339.336670, 10240.000000>",
+        "hit": "true",
+        "objectType": "",
+        "point": "<4529.770020, 339.335754, 10240.000000>",
+        "normal": "<-0.004000, 0.999991, 0.001335>",
+        "fraction": "0.429448",
+        "heightDifference": "0.000915527",
+        "admissible": "true"
+      }
+    ],
+    "fanAcceptedCounts": {
+      "0:0": 5,
+      "0:1": 5,
+      "1:0": 25,
+      "1:1": 25,
+      "2:0": 72,
+      "2:1": 72
+    },
+    "fanAcceptedKeys": [
+      [
+        "0",
+        "0",
+        "280",
+        "0.01"
+      ],
+      [
+        "0",
+        "0",
+        "290",
+        "0.01"
+      ],
+      [
+        "0",
+        "0",
+        "70",
+        "0.01"
+      ],
+      [
+        "0",
+        "0",
+        "80",
+        "0.01"
+      ],
+      [
+        "0",
+        "0",
+        "90",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "280",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "290",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "70",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "80",
+        "0.01"
+      ],
+      [
+        "0",
+        "1",
+        "90",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "0",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "10",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "20",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "270",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "270",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "280",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "280",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "290",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "290",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "30",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "300",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "310",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "320",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "330",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "340",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "350",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "40",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "50",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "60",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "70",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "70",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "80",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "80",
+        "0.03"
+      ],
+      [
+        "1",
+        "0",
+        "90",
+        "0.01"
+      ],
+      [
+        "1",
+        "0",
+        "90",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "0",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "10",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "20",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "270",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "270",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "280",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "280",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "290",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "290",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "30",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "300",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "310",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "320",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "330",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "340",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "350",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "40",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "50",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "60",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "70",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "70",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "80",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "80",
+        "0.03"
+      ],
+      [
+        "1",
+        "1",
+        "90",
+        "0.01"
+      ],
+      [
+        "1",
+        "1",
+        "90",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "0",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "0",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "10",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "10",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "100",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "100",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "110",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "110",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "120",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "120",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "130",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "130",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "140",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "140",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "150",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "150",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "160",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "160",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "170",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "170",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "180",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "180",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "190",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "190",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "20",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "20",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "200",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "200",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "210",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "210",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "220",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "220",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "230",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "230",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "240",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "240",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "250",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "250",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "260",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "260",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "270",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "270",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "280",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "280",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "290",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "290",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "30",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "30",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "300",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "300",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "310",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "310",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "320",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "320",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "330",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "330",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "340",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "340",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "350",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "350",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "40",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "40",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "50",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "50",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "60",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "60",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "70",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "70",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "80",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "80",
+        "0.03"
+      ],
+      [
+        "2",
+        "0",
+        "90",
+        "0.01"
+      ],
+      [
+        "2",
+        "0",
+        "90",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "0",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "0",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "10",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "10",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "100",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "100",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "110",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "110",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "120",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "120",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "130",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "130",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "140",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "140",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "150",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "150",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "160",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "160",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "170",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "170",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "180",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "180",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "190",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "190",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "20",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "20",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "200",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "200",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "210",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "210",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "220",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "220",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "230",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "230",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "240",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "240",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "250",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "250",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "260",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "260",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "270",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "270",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "280",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "280",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "290",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "290",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "30",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "30",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "300",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "300",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "310",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "310",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "320",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "320",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "330",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "330",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "340",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "340",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "350",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "350",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "40",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "40",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "50",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "50",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "60",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "60",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "70",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "70",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "80",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "80",
+        "0.03"
+      ],
+      [
+        "2",
+        "1",
+        "90",
+        "0.01"
+      ],
+      [
+        "2",
+        "1",
+        "90",
+        "0.03"
+      ]
+    ]
+  }
+]
+
+Test-only subclass;not deployed NPC code:
+class DGPreLandingTangent: DGBNativeTraversal
+{
+ int TestMode;int TestPose;int TestIteration;int TangentSteps;int TangentAttempts;float TangentDistance;
+ void DGPreLandingTangent(DGBNativeGroundBody body){Body=body;PhaseAt=body.Director.Now;}
+ override bool PressureSlide(float dt)
+ {
+  bool moved=super.PressureSlide(dt);
+  if(moved || TestMode!=1 || Phase!="FALL" || !PressureFallActive)return moved;
+  if(PressureEscapeRejectAt!=Now() || PressureEscapeLastStepReject!="NEW_WORLD_CONTACT")return false;
+  if(PressureEscapeRejectFixtureIndex<0 || PressureEscapeRejectNormal.Length()<0.5)return false;
+  vector displacement=PressureEscapeRejectEnd - PressureEscapeRejectStart;displacement[1]=0;
+  vector normal=PressureEscapeRejectNormal;normal[1]=0;
+  if(displacement.Length()<0.00001 || normal.Length()<0.2)return false;
+  normal=normal*(1.0/normal.Length());float inward=vector.Dot(displacement,normal);
+  if(inward>=-0.00000001){return false;}
+  vector tangent=displacement - normal*inward;tangent[1]=0;float length=tangent.Length();
+  if(length<0.00001){return false;}
+  tangent=tangent*(1.0/length);
+  vector start=Body.Agent.Position;array<float> sizes={0.03,0.01};array<float> biases={0,0.05,0.15};
+  foreach(float bias:biases)
+  {
+  foreach(float size:sizes)
+  {
+   float budget=Math.Min(SeparationDistanceBudget - SeparationEpisodeDistance,1.5 - TangentDistance);
+   float step=Math.Min(budget,Math.Min(size,Math.Max(dt,0)*0.6));if(step<=0.0001)return false;
+   vector direction=tangent+normal*bias;direction=direction*(1.0/direction.Length());
+   vector proposed=start+direction*step;float distance=vector.Distance(start,proposed);
+   if(distance<=0.0001 || distance>budget)continue;
+   float lift;ref array<vector> contacts={};TangentAttempts++;
+   bool accepted=PressureEscapeStepClear(proposed,lift,contacts);string diagnostic=PressureEscapeDiagnostic;
+   string path="$profile:prelanding17-tangent.tsv";bool exists=FileExist(path);FileHandle log=OpenFile(path,FileMode.APPEND);
+   if(!log){Print("DG_PRELAND17_FAILED tangent_log");return false;}
+   if(!exists)FPrintln(log,"pose\tmode\titeration\tstart\tproposal\tdirection\tnormal\tstep\taccepted\tdiagnostic\tfixture\tprobe\tbias\trejectNormal\trejectFraction");
+   FPrintln(log,TestPose.ToString()+"\t"+TestMode+"\t"+TestIteration+"\t"+start+"\t"+proposed+"\t"+direction+"\t"+normal+"\t"+distance+"\t"+accepted+"\t"+diagnostic+"\t"+PressureEscapeRejectFixtureIndex+"\t"+PressureEscapeRejectProbe+"\t"+bias+"\t"+PressureEscapeRejectNormal+"\t"+PressureEscapeRejectFraction);CloseFile(log);
+   if(!accepted)continue;
+   Body.Agent.Position=proposed;Body.Agent.Moved+=distance;Body.Agent.MeasuredSpeed=distance/Math.Max(dt,0.001);
+   Body.Lift=lift;Body.Contacts.Copy(contacts);SeparationEpisodeDistance+=distance;
+   TangentDistance+=distance;TangentSteps++;Body.PressureAirDistance+=distance;Body.PressureAirSteps++;
+   PressureEscapeValid=false;NextPressureEscapePlan=0;Body.Reason="TEST_PRELANDING_CONTACT_TANGENT";return true;
+  }
+  }
+  return false;
+ }
 }
-
-Own callback analysis
-"""Attribute script callback elapsed scopes; never native graph self-time."""
-import argparse
-import bisect
-import csv
-import hashlib
-import json
-from collections import defaultdict
-from pathlib import Path
-from analyze_horde_legacy_cost_scopes import ground_clock_calibration
-
-ACTOR=('partHandlerElapsedTicks','partPreAnimElapsedTicks','partPrePhysElapsedTicks',
-       'partPostPhysElapsedTicks','partTimingCalls','partNativeGapTicks','partNativeGapCount')
-
-def read(p):
-    with p.open(encoding='utf-8-sig') as f:return list(csv.DictReader(f,delimiter='\t'))
-
-def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--profile',type=Path,required=True);a=ap.parse_args();p=a.profile
-    output=p/'callback-elapsed-analysis.json';assert not output.exists()
-    launch=json.loads((p/'launch.json').read_text(encoding='utf-8-sig'))
-    assert launch['clientExited'] and launch['normalQuitVerified'] and not launch['typedFailed']
-    rows=read(p/'native-ground.tsv');assert rows and all(r['runtimeTimingProbe']=='true' for r in rows)
-    expected=set(range(launch['count']));cohorts=defaultdict(dict)
-    for r in rows:
-        c=cohorts[float(r['seconds'])];assert int(r['id']) not in c;c[int(r['id'])]=r
-    stimulus=read(p/'native-natural-player.tsv');times=[float(r['seconds']) for r in stimulus]
-    def stage(t):return stimulus[max(0,bisect.bisect_right(times,t)-1)]['stage']
-    clock=ground_clock_calibration(rows);rate=clock['ticksPerSecond']
-    groups=defaultdict(lambda:dict(seconds=0,intervals=0,deltas=defaultdict(float)))
-    rejected=defaultdict(int)
-    for t0,t1 in zip(sorted(cohorts),sorted(cohorts)[1:]):
-        before,after=cohorts[t0],cohorts[t1]
-        assert set(before)==expected and set(after)==expected
-        if t0<5 or t1-t0>1.5 or stage(t0)!=stage(t1):rejected['warmup_gap_stage_boundary']+=1;continue
-        if any(r['appActive']!='true' for r in [*before.values(),*after.values()]):rejected['background']+=1;continue
-        g=groups[stage(t0)];g['seconds']+=t1-t0;g['intervals']+=1
-        for key in ACTOR:
-            d=[float(after[i][key])-float(before[i][key]) for i in expected];assert all(v>=0 for v in d),key
-            g['deltas'][key]+=sum(d)
-        for key in ['missionUpdateTicks','missionUpdateCalls']:
-            d=float(after[0][key])-float(before[0][key]);assert d>=0;g['deltas'][key]+=d
-    stages={}
-    for name,g in groups.items():
-        seconds=g['seconds'];d=g['deltas'];gaps=d['partNativeGapCount']
-        stages[name]=dict(seconds=seconds,intervals=g['intervals'],
-            scriptCallbackElapsedEquivalentMsPerWallSecond={k:d[k]/rate/seconds*1000 for k in ACTOR[:4]},
-            missionOnUpdateElapsedEquivalentMsPerWallSecond=d['missionUpdateTicks']/rate/seconds*1000,
-            missionOnUpdateCallsPerSecond=d['missionUpdateCalls']/seconds,
-            combinedScriptCallbackCallsPerSecond=d['partTimingCalls']/seconds,
-            preAnimEndToPrePhysStartEnvelope=dict(samples=int(gaps),
-                aggregateElapsedEquivalentMsPerWallSecond=d['partNativeGapTicks']/rate/seconds*1000,
-                meanElapsedMsPerSample=d['partNativeGapTicks']/rate/gaps*1000 if gaps else None,
-                cpuSelfTime=False,nativeGraphSelfTime=False))
-    result=dict(sourceRunId=p.name,buildId=launch['subsetIntegrationPboSha256'],count=launch['count'],
-        clockCalibration=clock,stages=stages,rejectedIntervals=dict(rejected),
-        observedPartTimingActorsMinimum=min(int(r['partTimingObservedActors']) for r in rows if float(r['seconds'])>=5),
-        measuredActorGroups='Per-body sums of part callback counters;mission counter once from actor0.',
-        limitations=['Callback elapsed scopes include delegated gameplay and may nest Body.Drive/contact operations;do not sum them.',
-            'PreAnim-to-PrePhys envelope includes native work and scheduling/wait;many hosts overlap. It is not native graph or renderer CPU self-time.',
-            'MissionOnUpdate frequency is not AI update frequency;perception call counts were not recorded.',
-            'No GPU skinning/upload timestamps,allocation or GC self-time.','Combined callback count includes handler/preAnim/prePhys/postPhys;no invented per-type frequency.'],
-        inputHashes={n:hashlib.sha256((p/n).read_bytes()).hexdigest() for n in ['launch.json','native-ground.tsv','native-natural-player.tsv']},
-        optimizationAccepted=False,visibleSmoothnessAccepted=False,fullGoalComplete=False)
-    with output.open('x',encoding='utf-8') as f:json.dump(result,f,indent=2)
-    print(json.dumps(dict(sourceRunId=p.name,stages=stages),indent=2))
-
-if __name__=='__main__':main()
-
 이전 애니메이션 진단: [선정 근거](downloads/animation-review.txt). 이번 진단은 시각·성능 해결을 뜻하지 않는다.

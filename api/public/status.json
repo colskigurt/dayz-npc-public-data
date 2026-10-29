@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T083407-fixed-stimulus-cost-20261029",
-  "generatedAt": "2026-10-29T08:34:07.935072+00:00",
+  "snapshotId": "snapshot-20261029T085950-prelanding17-20261029",
+  "generatedAt": "2026-10-29T08:59:50.453012+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -59,9 +59,9 @@
     "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "Previous300s natural-input8 final8/8 high misses0;64 final64/64 high misses28 remain. New180s fixed-placement cost trials do not supersede that scenario. Cost OFF19/64,ON13/64 at180s;ON17 remains FALL.",
-    "visual": "No new continuous visible-frame measurement. Script callback times and PreAnim-to-PrePhys envelope are not graph self-time or visible clip quality. Initial texture sample limitations retained.",
-    "performance": "Fixed-player64 diagnostics OFF/ON supplied mission p95 219/241ms;one sequential pair. HIGH_HOLD BodyDrive559/563ms/s,FOLLOW401/398ms/s,nested elapsed scopes. No optimization or20ms p95 acceptance.",
+    "functional": "Previous natural300s8 final8/8;64 final64/64 but high misses28. Headless17 query diagnosis does not change runtime acceptance.",
+    "visual": "No new visible-frame observation or animation update-path result;CPU frozen pose tests only.",
+    "performance": "No new performance measurements. Previous fixed-cost64 supplied mission p95 OFF219/ON241ms;20ms target unmet.",
     "regressionChecks": 0
   },
   "metrics": [
@@ -9068,7 +9068,7 @@
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "Natural300s high-stage misses28 remain. Fixed-cost ON17 has FALL72.937-179.604s,5mm-stationary101.2-179.604s with FOOT_X_SUPPORT. No collision/landing gate relaxed."
+      "description": "Pre-touchdown17 remains unresolved. Original and tangent motor last pose FALL15s. Five safe1cm single steps are not a continuous recovery route."
     },
     {
       "id": "matched-repeats",
@@ -9541,23 +9541,41 @@
       "uri": "/data/experiments/fixed-stimulus-cost-20261029.json",
       "sha256": "1d58889abe7f28bf70c91e478ce2c86a1f95a073db174b5602d3107f5790cc9b",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "prelanding17-20261029-report",
+      "uri": "/downloads/checkpoints/2026-10-29_175918_891481+0900_npc-prelanding17.txt",
+      "sha256": "79693574f0838d6376f2a85f921e6c28345763637c6ec577c0799de02ab4e71a",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "prelanding17-20261029-review",
+      "uri": "/downloads/checkpoints/2026-10-29_175918_891481+0900_npc-prelanding17_evidence.txt",
+      "sha256": "787eab3cfcdb0b0e4ee4c9b32ca7b0467dcd4374ac0b4e50189e882cee3fb700",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "prelanding17-20261029-json",
+      "uri": "/data/experiments/prelanding17-20261029.json",
+      "sha256": "b24498de1e55741973d846f0a91d2e5763226ae4adef05d31badb44f2f2791fc",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T08:34:07.935072+00:00",
-    "staleAfter": "2026-10-30T08:34:07.935072+00:00",
+    "sourceUpdatedAt": "2026-10-29T08:59:50.453012+00:00",
+    "staleAfter": "2026-10-30T08:59:50.453012+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261029T083407-fixed-stimulus-cost-20261029",
-      "generatedAt": "2026-10-29T08:34:07.935072+00:00",
-      "sourceUpdatedAt": "2026-10-29T08:34:07.935072+00:00"
+      "snapshotId": "snapshot-20261029T085950-prelanding17-20261029",
+      "generatedAt": "2026-10-29T08:59:50.453012+00:00",
+      "sourceUpdatedAt": "2026-10-29T08:59:50.453012+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-29T08:34:07.935072+00:00",
+      "at": "2026-10-29T08:59:50.453012+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -9572,7 +9590,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261029T083407-fixed-stimulus-cost-20261029/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261029T085950-prelanding17-20261029/"
   },
   "experiments": [
     {
@@ -10411,6 +10429,29 @@
         "matched-repeats"
       ],
       "replication": "One64 OFF and one64 ON180s sequential diagnostic. Calibration3guards passed;no order-crossed repeated optimization."
+    },
+    {
+      "id": "prelanding17-20261029",
+      "title": "착지 전 정체17번: 옆면 충돌과 안전한1cm 방향 진단",
+      "track": "diagnostic",
+      "sourceRunId": [
+        "runtime-20261029-171916"
+      ],
+      "buildId": [
+        "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [],
+      "evidenceReferences": [
+        "prelanding17-20261029-report",
+        "prelanding17-20261029-review",
+        "prelanding17-20261029-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "Two identical432-query fan maps;one normalized six-case motor batch per variant,not live8/64 regression."
     }
   ],
   "kind": "status"
