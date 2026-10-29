@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T061052-ground-handoff20-guard-20261029",
-  "generatedAt": "2026-10-29T06:10:52.011322+00:00",
-  "exportedAt": "2026-10-29T06:10:52.011322+00:00",
+  "snapshotId": "snapshot-20261029T065416-ground-search20-pose-20261029",
+  "generatedAt": "2026-10-29T06:54:16.670624+00:00",
+  "exportedAt": "2026-10-29T06:54:16.670624+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -51,8 +51,8 @@
     "31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T06:10:52.011322+00:00",
-    "staleAfter": "2026-10-30T06:10:52.011322+00:00",
+    "sourceUpdatedAt": "2026-10-29T06:54:16.670624+00:00",
+    "staleAfter": "2026-10-30T06:54:16.670624+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -69,18 +69,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 36281,
-      "sha256": "629a6c265770d16c1ff535ff099825f29facf8a926e1db47c730fac93261503c"
+      "bytes": 35946,
+      "sha256": "2b620b072f2762cee5bfa59a2bf1eae06123ddf8a0f4fe9346d1138bb843e469"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 324938,
-      "sha256": "f0d9d202fcb709349eac349000e4490b3003b2590a754fd27ae7984f204e274e"
+      "bytes": 326643,
+      "sha256": "a661ba81314ff449de739c197122131850db7561295716a61d3700bef4fd7060"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 324934,
-      "sha256": "8ee81b6d3837c6e7c91a80ab86470957c9a21e362bf50c50b0e53b9c29c78bba"
+      "bytes": 326639,
+      "sha256": "00980e9258235a2d10e9cead76fc0b70a4ddc7cfa8cfe2be1aa3507426980255"
     },
     {
       "path": "api/public/schema.json",
@@ -373,14 +373,29 @@
       "sha256": "91e373dbf17f833a9fbbce22493b4e470401cf017f2ae5920008c7cddabc7186"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261029T065416-ground-search20-pose-20261029/experiments.json",
+      "bytes": 326643,
+      "sha256": "a661ba81314ff449de739c197122131850db7561295716a61d3700bef4fd7060"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T065416-ground-search20-pose-20261029/metrics.json",
+      "bytes": 326639,
+      "sha256": "00980e9258235a2d10e9cead76fc0b70a4ddc7cfa8cfe2be1aa3507426980255"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261029T065416-ground-search20-pose-20261029/status.json",
+      "bytes": 326638,
+      "sha256": "f37684d0a53400e16c12be013fb359634a46a0c61f8a937d19ae723d80d2278c"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 324933,
-      "sha256": "91e373dbf17f833a9fbbce22493b4e470401cf017f2ae5920008c7cddabc7186"
+      "bytes": 326638,
+      "sha256": "f37684d0a53400e16c12be013fb359634a46a0c61f8a937d19ae723d80d2278c"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 729,
-      "sha256": "5b6eb09dad3e4d5a8bc47deabc335fdd890014636e92d4cf2a0d262a96c22bfb"
+      "bytes": 725,
+      "sha256": "d1064e18e3b5e78a9deab8a15cd04ef3157cdaf660a3bdf8031581f9ff239ea5"
     },
     {
       "path": "data/experiments/actor43-owner-runtime-20261029.json",
@@ -441,6 +456,11 @@
       "path": "data/experiments/ground-handoff20-guard-20261029.json",
       "bytes": 58368,
       "sha256": "015c560995e159170f6986552936b80f71b83ec84a90ac0e482d69950a0ddc0f"
+    },
+    {
+      "path": "data/experiments/ground-search20-pose-20261029.json",
+      "bytes": 58260,
+      "sha256": "430145442b18fcfaeab3de74013bdb45973157a506c93381eb30e66d88c18dfb"
     },
     {
       "path": "data/experiments/landing-backoff-detail-20261029.json",
@@ -698,9 +718,19 @@
       "sha256": "b6eda95713954e59b5c94cf52c52e6f2682f0bb3a96bac519edeff872ffeb08d"
     },
     {
+      "path": "downloads/checkpoints/2026-10-29_155248_628940+0900_npc-ground-search20-pose.txt",
+      "bytes": 9151,
+      "sha256": "3307538a033d8cfc41b6022a87cfc259b0abbb785d46715c8c60e013671cfecd"
+    },
+    {
+      "path": "downloads/checkpoints/2026-10-29_155248_628940+0900_npc-ground-search20-pose_evidence.txt",
+      "bytes": 35689,
+      "sha256": "56ae05cf36872a5e1854a52ba348af63987b65bdc140915343f99ea965e4f010"
+    },
+    {
       "path": "README.md",
-      "bytes": 10849,
-      "sha256": "44cf0ebf4f4b777831001f35a2e2309cfae2e0920722e4f41f8dc4414be138e2"
+      "bytes": 11312,
+      "sha256": "43464be1aa154f46243e35639ab367da134a67fafde8fb3c440e530f22ef6166"
     },
     {
       "path": "reports/accessibility-20261028.md",
@@ -796,6 +826,16 @@
       "path": "reports/history/pre-ground-handoff20-guard-20261029-operations-latest.md",
       "bytes": 8743,
       "sha256": "82a8df56b14d9516639a3ecdd6bc9da95d0019cef27034f63d9786ffe528ef19"
+    },
+    {
+      "path": "reports/history/pre-ground-search20-pose-20261029-latest.md",
+      "bytes": 9532,
+      "sha256": "c4dbd4729f4ef1379b5e29d64d21f44fcba2433da2edea5a192fb8aa0f9ea884"
+    },
+    {
+      "path": "reports/history/pre-ground-search20-pose-20261029-operations-latest.md",
+      "bytes": 9532,
+      "sha256": "c4dbd4729f4ef1379b5e29d64d21f44fcba2433da2edea5a192fb8aa0f9ea884"
     },
     {
       "path": "reports/history/pre-landing-backoff-detail-20261029-latest.md",
@@ -899,8 +939,8 @@
     },
     {
       "path": "reports/latest.md",
-      "bytes": 9532,
-      "sha256": "c4dbd4729f4ef1379b5e29d64d21f44fcba2433da2edea5a192fb8aa0f9ea884"
+      "bytes": 9504,
+      "sha256": "d3e76c94451167215e7e1b5a78c6084a55fd8802fd14aa52f6f426eacdf5c9da"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -909,8 +949,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 9532,
-      "sha256": "c4dbd4729f4ef1379b5e29d64d21f44fcba2433da2edea5a192fb8aa0f9ea884"
+      "bytes": 9504,
+      "sha256": "d3e76c94451167215e7e1b5a78c6084a55fd8802fd14aa52f6f426eacdf5c9da"
     }
   ]
 }

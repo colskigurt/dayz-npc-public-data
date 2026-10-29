@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T061052-ground-handoff20-guard-20261029",
-  "generatedAt": "2026-10-29T06:10:52.011322+00:00",
+  "snapshotId": "snapshot-20261029T065416-ground-search20-pose-20261029",
+  "generatedAt": "2026-10-29T06:54:16.670624+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -8157,7 +8157,7 @@
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "No new live8/64 run. Prior63/64 still unresolved. Opt-in ground completion guard prevents3 unsafe immediate handoffs but frozen recovery0/3;fine straight corridors0/12. Candidate not adopted."
+      "description": "Prior63/64 remains. Frozen fall pose has two replayed safe paths,postlanding pose discrete search exhausts. Simple route admission holds physical root above floor and recovers0/4;not adopted."
     },
     {
       "id": "matched-repeats",
@@ -8558,23 +8558,41 @@
       "uri": "/data/experiments/ground-handoff20-guard-20261029.json",
       "sha256": "015c560995e159170f6986552936b80f71b83ec84a90ac0e482d69950a0ddc0f",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "ground-search20-pose-20261029-report",
+      "uri": "/downloads/checkpoints/2026-10-29_155248_628940+0900_npc-ground-search20-pose.txt",
+      "sha256": "3307538a033d8cfc41b6022a87cfc259b0abbb785d46715c8c60e013671cfecd",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "ground-search20-pose-20261029-review",
+      "uri": "/downloads/checkpoints/2026-10-29_155248_628940+0900_npc-ground-search20-pose_evidence.txt",
+      "sha256": "56ae05cf36872a5e1854a52ba348af63987b65bdc140915343f99ea965e4f010",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "ground-search20-pose-20261029-json",
+      "uri": "/data/experiments/ground-search20-pose-20261029.json",
+      "sha256": "430145442b18fcfaeab3de74013bdb45973157a506c93381eb30e66d88c18dfb",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T06:10:52.011322+00:00",
-    "staleAfter": "2026-10-30T06:10:52.011322+00:00",
+    "sourceUpdatedAt": "2026-10-29T06:54:16.670624+00:00",
+    "staleAfter": "2026-10-30T06:54:16.670624+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261029T061052-ground-handoff20-guard-20261029",
-      "generatedAt": "2026-10-29T06:10:52.011322+00:00",
-      "sourceUpdatedAt": "2026-10-29T06:10:52.011322+00:00"
+      "snapshotId": "snapshot-20261029T065416-ground-search20-pose-20261029",
+      "generatedAt": "2026-10-29T06:54:16.670624+00:00",
+      "sourceUpdatedAt": "2026-10-29T06:54:16.670624+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-29T06:10:52.011322+00:00",
+      "at": "2026-10-29T06:54:16.670624+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -8589,7 +8607,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261029T061052-ground-handoff20-guard-20261029/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261029T065416-ground-search20-pose-20261029/"
   },
   "experiments": [
     {
@@ -9305,6 +9323,29 @@
         "matched-repeats"
       ],
       "replication": "Frozen same-PBO flag OFF/ON8cases incl.clear control;150 local queries;12 straight cases plus detailed replay. No successful recovery replication."
+    },
+    {
+      "id": "ground-search20-pose-20261029",
+      "title": "착지 전후 포즈의 탈출 가능성 차이 — 안전 경로2개 재실행",
+      "track": "diagnostic",
+      "sourceRunId": [
+        "runtime-20261029-143221"
+      ],
+      "buildId": [
+        "31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [],
+      "evidenceReferences": [
+        "ground-search20-pose-20261029-report",
+        "ground-search20-pose-20261029-review",
+        "ground-search20-pose-20261029-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "Found2 static paths independently replayed edge-by-edge;not repeated live experiments. Two positive clear controls;four motor cases."
     }
   ],
   "kind": "experiments"

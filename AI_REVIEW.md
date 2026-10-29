@@ -1,866 +1,916 @@
 # DayZ NPC AI — 외부 세션 검토 자료
 
-Snapshot: snapshot-20261029T061052-ground-handoff20-guard-20261029
+Snapshot: snapshot-20261029T065416-ground-search20-pose-20261029
 
-지면 출구 검사 누락 재현 — guard는 작동했지만 복구0/3으로 후보 미채택
+착지 전후 포즈에 따른 탈출 경로 차이 — 경로2개 재실행,단순 착지 보류 미채택
 
-작성: 2026-10-29T15:09:58.971281+09:00
+작성: 2026-10-29T15:52:48.628940+09:00
 
 1. 작업 목표
 
-runtime-20261029-143221에서 최종 미도달한20번의 ground EGRESS→FOLLOW 전환을 재현하고 정상 바닥 확인과 전체 이동 가능 상태를 구분한다. 검사 누락 방지와 실제 복구 성공을 별개로 판정한다. 정상 지붕 handoff와 압력 낙하를 유지한다.
+20번의 고정된 착지 후 포즈에서 짧은 이동·회전을 조합하면 안전한 출구를 찾을 수 있는지 검증한다. 같은 위치에서 낙하 포즈와 착지 후 포즈의 충돌 가능성을 비교하고,기존 Fall 모터에서 단순 착지 보류가 실제 이동을 유지하는지 확인한다. CPU 포즈와 실제 표시/재생 속도는 구분한다.
 
 2. 실제 수행
 
-129.342·130.643·299.491초의 근처 기록 포즈3개와 장애물이 없는 지면 대조군을 별도 엔진 프로브에서 사용했다. 원래 handoff130.142초의 정확한 포즈는 아니며 정적 재현 한계를 유지한다. 본 월드 변환과 실제 SolveContactsInternal의 raw getter만 기록 포즈로 대체했고 역변환 원문·배포 PBO 멤버 일치를 증명했다. 기존 모든 접촉 게이트는 남겼다. native DriveGround는 충돌 거부 stub으로 명시했으므로 실제 AI/군집 재생은 아니다.
+현재 collision representation과 기록된4개 raw joint를 사용하는 별도 엔진 프로브에서16방향 이동과±1도 회전을 탐색했다. 모든 허용 edge는 기존 PressureEscapeStepClear의 core·예약·fixture 비침투/비심화·world 검사를 거쳤다. 목표는 landing/area·fixture endpoint·ground planning inflation·SolveContacts를 모두 통과해야 한다. 찾은 경로는 초기 상태로 되돌려 모든 edge를 독립 재실행하고 마지막 전체 검사도 다시 했다.
 
-프로브의 긴 문자열 표현식 컴파일 오류와 actor binding 누락에 따른 VM 예외를 각각 보존했다. 표현식 분할과 명시적인 actor binding 후 별도 validation에서 통과했다. 이 두 실패는 NPC 클라이언트 런타임 충돌 증거가 아니며 결과 수용에서 제외했다. 실패 프로브가 PASS 문자열을 출력해도 오류 스캔이 거부한 사실을 유지한다.
+초기 방문 키는 float.ToString의 큰 좌표 과학 표기 때문에1cm 다른 위치를 같은 문자열로 만들었다. 실제 로그에서 legacyRoot/legacyNext가 같고 정수 키는 다른 것을 확인했다. 초기 실행은 폐기하지 않고 물리 경로 결론에서 제외했다. 정수 키 수정 후1cm 및2.5mm 이동을 비교했고 안전한 지면 대조군2개를 추가했다. 방문 격자는 XYZ1mm·yaw0.1도·lift1mm이다.
 
-ground-handoff-contact.flag AND footprint-recovery.flag가 있을 때만 nonwide ground 완료에도 기존 landing·area·fixture pose·planning inflation·SolveContacts 검사를 적용하는 후보를 구현했다. 거부 시 기존 bounded helper가 회복 목표를 유지하고 거리/시간 예산을 보존하도록 했다. 기본 OFF,지붕 handoff·경사 조건·낙하·애니메이션 속도는 변경하지 않았다.31A286 PBO를 빌드·서명·검증하고8/8 source member 일치와 엔진 컴파일을 확인했다.
+이후 정확한 touchdown 관측392의 낙하 포즈와129.342초의 착지 후 포즈를2개 root 위치에서 비교했다. 각 쌍은 heading8.8443·lift0.03m·idleOffset0을 같게 했다. 탐색 최대1024확장·4096노드·200동작·1.5m·yaw±45도,남/북2개 heuristic bias였다. 이는 실제 전체 동작 재생이 아닌 통제된 정적 비교다.
 
-이후 동일 포즈에서 flag OFF/ON을 비교했다. 실제 복구가 안 돼 기본 OFF를 유지했다.16방향×1/2/3cm 이동 및 ±1도 회전의150개 질의,±Z방향×1/3cm 직선 경로12개와 상세 충돌 기록을 추가했다. 새8/64 클라이언트 시험은 실행하지 않았다.
+마지막 별도4case는 원래 Fall/PressureSlide/AirEscapeTurn을 사용하고,진단용 subclass에서 ground route가 막히면 LandingSpace를 거부하는 조건만 OFF/ON으로 비교했다. accepted footprint X/Z와 기록된 pre-touchdown 높이,dt0.05·fall velocity-15·pressure velocity0·request8·동결 포즈/clock을 사용했다. 배포 PBO·그래프·네이티브 애니메이션 처리 방식은 변경하지 않았다.
 
 3. 측정 결과
 
-|항목|결과|
-|---|---|
-|기존 ground 완료|포즈3개 모두 전체 pose/planning 실패 상태에서 FOLLOW 전환|
-|root landing / SolveContacts|3개 모두 true|
-|fixture endpoint / planning inflation|3개 모두 false|
-|안전한 지면 대조군|전체 검사 true,정상 FOLLOW 전환|
-|후보 ON 즉시 잘못된 완료 방지|3/3|
-|후보 ON 실제 복구|0/3|
-|후보 ON 실패 경계|3개 모두 기존 약5.05초에서 EGRESS_STALL|
-|미세 이동/회전 질의|150개 고유 행|
-|1cm 이동이 가능한 포즈|3/3,전체 경로 성공을 의미하지 않음|
-|1/3cm 직선 경로 전체 복구|0/12|
-|직선 마지막 거부 대상|12/12 StaticObj_Container_1C|
+수정된1cm 탐색은3개 착지 후 포즈에서 각각6/18/5개의 상태를 탐색하고 open-exhausted로 종료됐다.2.5mm는18/54/15개 상태였다. 이 결과는 설정된 이산 동작/격자 안의 결과이며 모든 연속 경로의 부재가 아니다. 안전한 지면 대조군2개는 즉시 전체 목표 조건을 통과했다. 경로가 없는 행의 replayPassed=true는 재실행 대상 없음의 초기값이라 파생 분석에서는 null로 바꾸어 해석했다. found=false의 goal 값도 이전 case 값일 수 있어 무시했다.
 
-150개 질의의 허용 이동/회전 수는 포즈0=4/0,포즈1=4/1,포즈2=1/0이었다.12개 직선 사례는 최대 약0.030274m 이동 후 거부됐고,거부된 step은 root를 움직이지 않았다. 매 허용 step<=0.04m와 누적<=1.5m를 검증했다. 작은 step만으로 안전한 출구에 도달한다는 가설은 이 사례들에서 반증됐다.
+|Root 위치|낙하 포즈,남쪽 bias|착지 후 포즈,남쪽 bias|
+|---|---|---|
+|touchdown supported 위치|1.08355m·111동작,재실행 통과|9상태 후 탐색 종료,출구 미발견|
+|이후 정체 위치|1.01534m·104동작,재실행 통과|6상태 후 탐색 종료,출구 미발견|
 
-상세 마지막 거부는 고정 root/torso probe1 또는2, hips probe3의 컨테이너 접촉이다. foot/terrain 거부가 아니다. 예:포즈0,+Z3cm 두 번째 step은 probe2, fraction0, normal=(-0.976872,-0.014046,-0.213364).포즈0,-Z3cm 첫 step은 probe1,fraction0.634845로 실제 이동 도중의 새 접촉을 기록했다. 초기 겹침과 중간 충돌을 무조건 같은 것으로 처리하면 안 된다.
+두 경로는 회전0회,각각108/102개의 -Z 이동과3/2개의 약한 +X/-Z 사선 이동으로 구성됐다. 모든 이동≤0.04m·yaw step≤1도·총거리≤1.5m와 마지막 전체 검사 통과를 확인했다. 대표 변경 지점과 원시 전체 path SHA를 보존했다. 남쪽 경로는112/105노드 확장과1998/1872개의 후보 질의 후 발견됐다. 질의 수는 전체 physics 호출 수나 CPU 시간과 같지 않다. 북쪽 낙하 포즈2case는1024확장 제한에 걸려 실패/불가능으로 정의하지 않는다.
 
-이번 8/64 안정성·p50/p95/p99·실제 표시 갱신은 미실행/미측정이다. 이전63/64·고지대14명 미도달·p95120ms는 이전 별도 실행 결과이며 이번 후보의 값이나 개선으로 갱신하지 않는다.20ms는 계속 목표다.
+기존 Fall 모터의 동결4case:낙하 포즈+조건OFF는 첫0.05초에 원래 위치의 LAND로 들어갔으나 전체 출구 조건은 false였다. 조건ON은 root가 바닥보다 약0.1057m 높은 지점에서15초·300회 동안 FALL을 유지하고 lateral step0회였다. 착지 후 포즈의 OFF/ON도300회 동안 이동0이었다. 단순 pre-touchdown route guard는0/4 안전한 복구로 미채택이다.
+
+새8/64 live 안정성·p50/p95/p99·실제 표시 갱신은 미실행/미측정이다. 이전63/64 결과를 변경하지 않는다.20ms는 목표다. 이번에 애니메이션 속도나 부드러움을 고쳤다고 주장하지 않는다.
 
 4. 원인 분석
 
-확인:바닥과 SolveContacts 통과만으로 fixture의 보수적 포즈 공간과 ground route의 여유 영역이 확보되지는 않는다. 기존 nonwide ground 완료 경로가 이를 확인하지 않아 충돌/경로 제약이 남은 위치에서 소유권을 해제할 수 있다. 이미 전체 검사가 있던 wide recovery와의 검사 범위 차이를 재현했다.
+확인:같은 root·heading·lift에서 현재4joint+fixed-core 충돌 계층의 이동 가능성이 포즈에 따라 달라졌다. 낙하 포즈의 두 안전한 경로가 독립 재실행까지 통과한 반면,해당 착지 후 포즈의 이산 탐색은 작은 영역에서 끝났다. 이는 포즈 전환 시 복구 여유가 줄어들 수 있다는 직접적인 정적 근거다. 스킨 전체나 라이브 애니메이션 전환의 인과를 검증한 것은 아니다.
 
-확인:후보는 이 잘못된 성공 전환을 막았지만 기존 ECPlan이 선택할 수 있는 전체 경로를 찾지 못해 물리 복구0/3이었다. 실패 라벨을 새로 보이게 한 것을 복구 성공으로 보고하지 않는다. 근처1cm step의 존재는 전체 출구 경로의 존재와 다르다.
+확인:LandingSpace를 planning 조건으로 미리 거부하면 기존 Fall이 실제 바닥으로 내리는 Accept 전에 반환할 수 있다. 단순 거부는 물리 착지와 다음 포즈 허가를 함께 막아 공중 정체를 만든다. 이 후보를 적용하지 않는다. 안전 경로의 존재만으로 기존 국소 복구 모터가 이를 실행한다고 추론하지 않는다.
 
-반증:직선 step 크기 축소만으로 복구된다는 가설은0/12였다. 지면 아래 방향/발 terrain exit 조건 때문에 이번 직선들이 막혔다는 가설도 상세12개가 전부 컨테이너의 torso/hips 접촉으로 거부돼 반증됐다. 해당 지면 조건을 완화하는 수정은 하지 않았다.
+미확정:라이브 native pose가 계속 변하는 동안 동일 경로를 통과하는지,해당 pose가 실제 표시에서도 유지되는지,경로 탐색 비용이 어느 정도인지는 미검증이다.4joint 기록은 nativeBefore/After와updates가 같은 touchdown query에서 얻었지만 렌더 buffer/visible-frame 일치의 증거는 아니다. 정적 lift0.03·heading 고정도 실제 원본과의 차이다.
 
-추정/미확정:이동·회전 조합의 휘어진 경로,다른 실제 애니메이션 포즈,또는 착지 전 위치 선택에는 안전한 해가 있을 수 있다. 이번 고정 포즈/직선 실험은 모든 경로의 불가능성을 입증하지 않는다. 초기 착지에서 회복하기 어려운 좁은 공간을 허용한 경로도 별도 확인이 필요하다. 동결 포즈와 명시적인 walk stub 때문에 라이브 군집의 복구 효과는 미검증이다.
+반증/제외:float 키가 합쳐진 초기 실행은 경로 부재 근거에서 제외했다. 단순한 착지 전 경로 거부가 문제를 해결한다는 가설은 동결 모터4case에서 반증됐다. 더 큰 탐색 한도를 사용하기만 하면 해결된다고 주장하지 않는다.
 
 5. 검증 수준
 
-진단 성공:전체 footprint가 미확보인 ground handoff 재현과 직접 거부 대상 구분. 도구/한정 계약 검사 통과:기본 OFF 재현,안전한 지면 대조군,거부 step 불변·거리 예산. 후보 미채택:0/3 복구. 반복 검증 완료:일반 실제 군집 회귀·복구 성공에는 해당 없음. 실제8/64 회귀:미실행. 최종 수용:기능·시각·성능 모두 미수용이다.
+진단 성공:정수 방문 키 오류 분리,포즈별 이동 가능성 차이,단순 착지 거부의 공중 정체. 한정 경로 검증 통과:발견한2개 경로의 모든 edge와 최종 endpoint 재실행. 반복 검증 완료:독립 live run 반복은 아니며 해당 없음. 실제8/64 회귀:미실행. 최종 수용:기능·시각·성능 모두 미수용. 새 후보 runtime 적용 없음.
 
 6. 변경 사항
 
-subset_motion_contracts.c에 opt-in ground 완료 검사·회복 목표 유지·제한 로그를 추가했다. stage_horde_ground_handoff20.py와 별도 compile 선택/marker 검사를 추가했다. NPC 기본 flag는 OFF이며 전체 경사/접촉 검사를 완화하거나 순간 이동·새 보간을 적용하지 않았다.
-
-현재 후보 빌드31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126의 서명 및 검증 성공.8개 source script와 packed member의 목록/바이트 일치.엔진 smoke 통과. 새 게임플레이/수정판 준비 완료를 뜻하지 않는다. 이전83E94 배포본·source·증명을 baseline-83E94에 같은 해시로 보존했고31A286 후보도 별도 보존했다. 개인 키는 포함하지 않는다. 운영 서버는 변경하지 않았다.
+stage_horde_ground_search20.py,stage_horde_touchdown_admission20.py 및 별도 compile 선택/marker 검사를 추가했다. 변경은 격리 진단 mission에 한정한다. 이전31A286 opt-in guard PBO는 그대로이고 기본OFF·미채택이다. 새 빌드·서명은 수행하지 않았으며,각 프로브 시작 전 기존 PBO 서명 재검증은 성공했다. 운영 서버·기존 원시 로그·이전 보고서·애니메이션 자산/배속/보간은 변경하지 않았다.
 
 7. 원시 증거
 
-baseline-replay-analysis,candidate-guard-analysis,local-first-step-analysis,corridor-analysis,corridor-detail-analysis는 각각 별도 프로브의 raw TSV·staged source·engine 결과 SHA에 연결된다. 실패한 initial/compact 프로브도 삭제하지 않았다. 저널의 유효하지 않은 out parameter는 해석에서 제외한다. 특히 local 회전의 fullEndpoint는 원래 heading을 사용하므로 회전 후 endpoint 증거로 쓰지 않고,probe<0의 depth 또는 floorFound=false의 normal도 사용하지 않는다.
+search-resolution-analysis는초기 제외 실행과정수 키·1cm/2.5mm·대조군을 연결한다. touchdown-pose-matrix-analysis는2root×2pose×2bias의8행과찾은2개 전체 path를 SHA로 연결한다. 공개 패킷의 pathMoveChangeRows는 시작/방향 변경/끝 지점만 선정한 것으로 전체 path는 아니다. touchdown-admission-analysis는진단용4case와입력 가정을 포함한다.
 
-보고서는 모든 관련 compiler PID가 종료됐고 파일/JSON/해시가 안정된 뒤 저장한다. 공개 패킷은 선정 수치·대표 거부와 자체 모드 함수만 포함하며 원시 로그 전체·프로세스·내부 경로·키·설치 자산은 공개하지 않는다. 과거 보고서가 가리키는 갱신 가능한 build/source 파일의 이전 바이트는 이번 baseline inventory에서 확인할 수 있다. 과거 보고서는 변경하지 않는다.
+motor의 admissionRejects는계획 후보와종료 후 관측 질의까지 포함해 실제 touchdown 횟수로 해석하지 않는다. reason/landingGate도종료 후 진단 질의로덮일수있어phase·position·step counter와함께판정한다. generic marker의 case수문구보다실제summary행·키·경로행검사를우선했다. 보고서 저장 전 관련compiler PID 종료·JSON·입력SHA·파일안정성을 검증한다. 공개 자료는경로·PID·키·설치자산을제외한선정근거다.
 
 8. 잔여 문제
 
-다음 기능 실험:기록된 pose에서 제한된 이동·회전 조합 경로가 존재하는지 검사하고,없으면 라이브 pose 변화 및 낙하/착지 단계에서 좁은 공간 진입을 방지할 수 있는지 계측한다. 새 world contact를 무시하거나 fixture를 통과시키는 복구는 채택하지 않는다. guard만으로 회복되지 않으므로 이를 기본 기능으로 승격하지 않는다. 실제 안전한 복구 후보가 확보되면 별도 동일 조건8→64 회귀와 반복을 진행한다.
+다음 통제 실험은물리적 touchdown을기존Floor/Accept로유지하면서다음포즈로넘기는허가를따로보류하는것이다. 그상태에서기존supported recovery와실제native world-contact normal의tangent방향을새제안으로계산하는후보를구분해비교한다. 모든새제안은기존전체step검사를다시통과해야하며거리/시간예산·실패상태를유지한다. 계획은next-experiment-plan.json에저장했고아직구현하지않았다.
 
-애니메이션의 callback/표시 시간 차이,실제 visible-frame 관측과64명 비용 귀속은 여전히 별도 미완료다. 보안 창 때문에 막힌 UI 관찰을 성공으로 보고하지 않으며 임의 배속/보간을 적용하지 않는다. 현재 후보 PBO와 이전 runtime compile hash가 다르므로 새 클라이언트 시험 전에 별도 runtime validation이 필요하며 무결성 검사 우회를 하지 않는다.
+진단용best-first 탐색을그대로runtime에이식하지않는다. 현재코드는동결포즈와정규화입력의가능성을확인하는도구이며성능검증이없다. 안전한복구후보가확보되면별도runtime compile·8→64실제회귀·반복과실제표시검증을이어간다. CPU/실제표시시간차이와64명비용귀속은독립실험으로계속남는다.
 
-원본 보고서 ID: 2026-10-29_150958_971281+0900_npc-ground-handoff20-guard.md
-원본 SHA-256: 35ce05b0e8b27b4a548d4a88cf75e2e3f6937a61a93e224d50524294d343ccad
+원본 보고서 ID: 2026-10-29_155248_628940+0900_npc-ground-search20-pose.md
+원본 SHA-256: 0be35bee856c1244e6f11815e43ac91dcdea30a4366cbe2a86ef8c66943cdfcf
 이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
 
-Selected derived evidence;not full runtime/visible evidence
+Selected derived evidence;not full trajectories/rendered animation
 {
-  "baseline-replay-analysis.json": {
-    "enginePassed": true,
-    "rows": [
+  "search-resolution-analysis.json": {
+    "results": [
       {
-        "snapshot": "0",
-        "mode": "0",
-        "iteration": "0",
-        "seconds": "0.0500031",
-        "previousPhase": "EGRESS",
-        "phase": "FOLLOW",
-        "before": "<4511.504395, 339.171906, 10236.788086>",
-        "position": "<4511.504395, 339.171906, 10236.788086>",
-        "contactBefore": "true",
-        "contactReasonBefore": "",
-        "contactAfter": "true",
-        "contactReasonAfter": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-        "reason": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-        "failure": "",
-        "wideRecovery": "false",
-        "ecActive": "false",
-        "ecDistance": "0",
-        "landingBefore": "true",
-        "endpointBefore": "false",
-        "planningBefore": "false",
-        "fullAfter": "false"
+        "validation": "controlled-ground-search20-256",
+        "admitted": false,
+        "rows": [
+          {
+            "snapshot": "0",
+            "bias": "0",
+            "expanded": "1",
+            "nodes": "1",
+            "queries": "18",
+            "acceptedEdges": "2",
+            "found": "0",
+            "goal": "<0.000000, 0.000000, 0.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": null,
+            "closestHeuristic": "1",
+            "termination": "OPEN_EXHAUSTED",
+            "pathReplayApplicable": false
+          },
+          {
+            "snapshot": "0",
+            "bias": "1",
+            "expanded": "1",
+            "nodes": "1",
+            "queries": "18",
+            "acceptedEdges": "2",
+            "found": "0",
+            "goal": "<0.000000, 0.000000, 0.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": null,
+            "closestHeuristic": "1",
+            "termination": "OPEN_EXHAUSTED",
+            "pathReplayApplicable": false
+          },
+          {
+            "snapshot": "1",
+            "bias": "0",
+            "expanded": "3",
+            "nodes": "3",
+            "queries": "54",
+            "acceptedEdges": "8",
+            "found": "0",
+            "goal": "<0.000000, 0.000000, 0.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": null,
+            "closestHeuristic": "1",
+            "termination": "OPEN_EXHAUSTED",
+            "pathReplayApplicable": false
+          },
+          {
+            "snapshot": "1",
+            "bias": "1",
+            "expanded": "3",
+            "nodes": "3",
+            "queries": "54",
+            "acceptedEdges": "8",
+            "found": "0",
+            "goal": "<0.000000, 0.000000, 0.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": null,
+            "closestHeuristic": "1",
+            "termination": "OPEN_EXHAUSTED",
+            "pathReplayApplicable": false
+          },
+          {
+            "snapshot": "2",
+            "bias": "0",
+            "expanded": "1",
+            "nodes": "1",
+            "queries": "18",
+            "acceptedEdges": "1",
+            "found": "0",
+            "goal": "<0.000000, 0.000000, 0.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": null,
+            "closestHeuristic": "1",
+            "termination": "OPEN_EXHAUSTED",
+            "pathReplayApplicable": false
+          },
+          {
+            "snapshot": "2",
+            "bias": "1",
+            "expanded": "1",
+            "nodes": "1",
+            "queries": "18",
+            "acceptedEdges": "1",
+            "found": "0",
+            "goal": "<0.000000, 0.000000, 0.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": null,
+            "closestHeuristic": "1",
+            "termination": "OPEN_EXHAUSTED",
+            "pathReplayApplicable": false
+          }
+        ]
       },
       {
-        "snapshot": "1",
-        "mode": "0",
-        "iteration": "0",
-        "seconds": "0.0500031",
-        "previousPhase": "EGRESS",
-        "phase": "FOLLOW",
-        "before": "<4511.504395, 339.171906, 10236.788086>",
-        "position": "<4511.504395, 339.171906, 10236.788086>",
-        "contactBefore": "true",
-        "contactReasonBefore": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-        "contactAfter": "true",
-        "contactReasonAfter": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-        "reason": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-        "failure": "",
-        "wideRecovery": "false",
-        "ecActive": "false",
-        "ecDistance": "0",
-        "landingBefore": "true",
-        "endpointBefore": "false",
-        "planningBefore": "false",
-        "fullAfter": "false"
+        "validation": "controlled-ground-search20-256-intkey",
+        "admitted": true,
+        "rows": [
+          {
+            "snapshot": "0",
+            "bias": "0",
+            "expanded": "6",
+            "nodes": "6",
+            "queries": "108",
+            "acceptedEdges": "10",
+            "found": "0",
+            "goal": "<0.000000, 0.000000, 0.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": null,
+            "closestHeuristic": "0.980469",
+            "termination": "OPEN_EXHAUSTED",
+            "pathReplayApplicable": false
+          },
+          {
+            "snapshot": "0",
+            "bias": "1",
+            "expanded": "6",
+            "nodes": "6",
+            "queries": "108",
+            "acceptedEdges": "10",
+            "found": "0",
+            "goal": "<0.000000, 0.000000, 0.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": null,
+            "closestHeuristic": "0.970703",
+            "termination": "OPEN_EXHAUSTED",
+            "pathReplayApplicable": false
+          },
+          {
+            "snapshot": "1",
+            "bias": "0",
+            "expanded": "18",
+            "nodes": "18",
+            "queries": "324",
+            "acceptedEdges": "42",
+            "found": "0",
+            "goal": "<0.000000, 0.000000, 0.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": null,
+            "closestHeuristic": "0.980469",
+            "termination": "OPEN_EXHAUSTED",
+            "pathReplayApplicable": false
+          },
+          {
+            "snapshot": "1",
+            "bias": "1",
+            "expanded": "18",
+            "nodes": "18",
+            "queries": "324",
+            "acceptedEdges": "42",
+            "found": "0",
+            "goal": "<0.000000, 0.000000, 0.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": null,
+            "closestHeuristic": "0.970703",
+            "termination": "OPEN_EXHAUSTED",
+            "pathReplayApplicable": false
+          },
+          {
+            "snapshot": "2",
+            "bias": "0",
+            "expanded": "5",
+            "nodes": "5",
+            "queries": "90",
+            "acceptedEdges": "8",
+            "found": "0",
+            "goal": "<0.000000, 0.000000, 0.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": null,
+            "closestHeuristic": "0.980469",
+            "termination": "OPEN_EXHAUSTED",
+            "pathReplayApplicable": false
+          },
+          {
+            "snapshot": "2",
+            "bias": "1",
+            "expanded": "5",
+            "nodes": "5",
+            "queries": "90",
+            "acceptedEdges": "8",
+            "found": "0",
+            "goal": "<0.000000, 0.000000, 0.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": null,
+            "closestHeuristic": "1",
+            "termination": "OPEN_EXHAUSTED",
+            "pathReplayApplicable": false
+          }
+        ]
       },
       {
-        "snapshot": "2",
-        "mode": "0",
-        "iteration": "0",
-        "seconds": "0.0499878",
-        "previousPhase": "EGRESS",
-        "phase": "FOLLOW",
-        "before": "<4511.504395, 339.171906, 10236.788086>",
-        "position": "<4511.504395, 339.171906, 10236.788086>",
-        "contactBefore": "true",
-        "contactReasonBefore": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-        "contactAfter": "true",
-        "contactReasonAfter": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-        "reason": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-        "failure": "",
-        "wideRecovery": "false",
-        "ecActive": "false",
-        "ecDistance": "0",
-        "landingBefore": "true",
-        "endpointBefore": "false",
-        "planningBefore": "false",
-        "fullAfter": "false"
-      },
-      {
-        "snapshot": "3",
-        "mode": "0",
-        "iteration": "0",
-        "seconds": "0.0499878",
-        "previousPhase": "EGRESS",
-        "phase": "FOLLOW",
-        "before": "<4530.000000, 339.336670, 10240.000000>",
-        "position": "<4530.000000, 339.336670, 10240.000000>",
-        "contactBefore": "true",
-        "contactReasonBefore": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-        "contactAfter": "true",
-        "contactReasonAfter": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-        "reason": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-        "failure": "",
-        "wideRecovery": "false",
-        "ecActive": "false",
-        "ecDistance": "0",
-        "landingBefore": "true",
-        "endpointBefore": "true",
-        "planningBefore": "true",
-        "fullAfter": "true"
+        "validation": "controlled-ground-search20-256-intkey-step25-controls",
+        "admitted": true,
+        "rows": [
+          {
+            "snapshot": "0",
+            "bias": "0",
+            "expanded": "18",
+            "nodes": "18",
+            "queries": "324",
+            "acceptedEdges": "34",
+            "found": "0",
+            "goal": "<0.000000, 0.000000, 0.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": null,
+            "closestHeuristic": "0.979492",
+            "termination": "OPEN_EXHAUSTED",
+            "pathReplayApplicable": false
+          },
+          {
+            "snapshot": "0",
+            "bias": "1",
+            "expanded": "18",
+            "nodes": "18",
+            "queries": "324",
+            "acceptedEdges": "34",
+            "found": "0",
+            "goal": "<0.000000, 0.000000, 0.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": null,
+            "closestHeuristic": "0.970703",
+            "termination": "OPEN_EXHAUSTED",
+            "pathReplayApplicable": false
+          },
+          {
+            "snapshot": "1",
+            "bias": "0",
+            "expanded": "54",
+            "nodes": "54",
+            "queries": "972",
+            "acceptedEdges": "138",
+            "found": "0",
+            "goal": "<0.000000, 0.000000, 0.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": null,
+            "closestHeuristic": "0.979492",
+            "termination": "OPEN_EXHAUSTED",
+            "pathReplayApplicable": false
+          },
+          {
+            "snapshot": "1",
+            "bias": "1",
+            "expanded": "54",
+            "nodes": "54",
+            "queries": "972",
+            "acceptedEdges": "138",
+            "found": "0",
+            "goal": "<0.000000, 0.000000, 0.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": null,
+            "closestHeuristic": "0.970703",
+            "termination": "OPEN_EXHAUSTED",
+            "pathReplayApplicable": false
+          },
+          {
+            "snapshot": "2",
+            "bias": "0",
+            "expanded": "15",
+            "nodes": "15",
+            "queries": "270",
+            "acceptedEdges": "33",
+            "found": "0",
+            "goal": "<0.000000, 0.000000, 0.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": null,
+            "closestHeuristic": "0.979492",
+            "termination": "OPEN_EXHAUSTED",
+            "pathReplayApplicable": false
+          },
+          {
+            "snapshot": "2",
+            "bias": "1",
+            "expanded": "15",
+            "nodes": "15",
+            "queries": "270",
+            "acceptedEdges": "33",
+            "found": "0",
+            "goal": "<0.000000, 0.000000, 0.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": null,
+            "closestHeuristic": "1",
+            "termination": "OPEN_EXHAUSTED",
+            "pathReplayApplicable": false
+          },
+          {
+            "snapshot": "3",
+            "bias": "0",
+            "expanded": "1",
+            "nodes": "1",
+            "queries": "0",
+            "acceptedEdges": "0",
+            "found": "1",
+            "goal": "<4530.000000, 339.336670, 10240.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": "true",
+            "closestHeuristic": "1",
+            "termination": "FULL_ENDPOINT_CLEAR",
+            "pathReplayApplicable": true
+          },
+          {
+            "snapshot": "3",
+            "bias": "1",
+            "expanded": "1",
+            "nodes": "1",
+            "queries": "0",
+            "acceptedEdges": "0",
+            "found": "1",
+            "goal": "<4530.000000, 339.336670, 10240.000000>",
+            "travel": "0",
+            "depth": "0",
+            "replayPassed": "true",
+            "closestHeuristic": "1",
+            "termination": "FULL_ENDPOINT_CLEAR",
+            "pathReplayApplicable": true
+          }
+        ]
       }
     ],
-    "prematureFullFootprintHandoffs": 3,
-    "clearControlPassed": true,
-    "scope": "Recorded nearby frozen poses, actual ground Egress with blocked-walk stub; not exact original handoff pose or live movement.",
-    "conclusion": "Root support and SolveContacts can pass while fixture-pose footprint and planning inflation fail. Nonwide ground completion released ownership anyway.",
-    "limitations": [
-      "Initial formula compile rejection and unbound-actor VM probe preserved, not admitted.",
-      "A blocked-walk reason alone does not prove final current contact failure.",
-      "No visual/performance acceptance."
-    ],
-    "functionalAccepted": false
-  },
-  "candidate-guard-analysis.json": {
-    "buildId": "31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126",
-    "cases": [
-      {
-        "snapshot": 0,
-        "mode": 0,
-        "count": 1,
-        "last": {
-          "snapshot": "0",
-          "mode": "0",
-          "iteration": "0",
-          "seconds": "0.0500031",
-          "previousPhase": "EGRESS",
-          "phase": "FOLLOW",
-          "before": "<4511.504395, 339.171906, 10236.788086>",
-          "position": "<4511.504395, 339.171906, 10236.788086>",
-          "contactBefore": "true",
-          "contactReasonBefore": "",
-          "contactAfter": "true",
-          "contactReasonAfter": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-          "reason": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-          "failure": "",
-          "wideRecovery": "false",
-          "ecActive": "false",
-          "ecDistance": "0",
-          "landingBefore": "true",
-          "endpointBefore": "false",
-          "planningBefore": "false",
-          "fullAfter": "false"
-        }
-      },
-      {
-        "snapshot": 0,
-        "mode": 1,
-        "count": 101,
-        "last": {
-          "snapshot": "0",
-          "mode": "1",
-          "iteration": "100",
-          "seconds": "5.05",
-          "previousPhase": "EGRESS",
-          "phase": "FOLLOW",
-          "before": "<4511.504395, 339.171906, 10236.788086>",
-          "position": "<4511.504395, 339.171906, 10236.788086>",
-          "contactBefore": "true",
-          "contactReasonBefore": "EGRESS_GROUND_HANDOFF_BLOCKED",
-          "contactAfter": "true",
-          "contactReasonAfter": "EGRESS_GROUND_HANDOFF_BLOCKED",
-          "reason": "EGRESS_GROUND_HANDOFF_BLOCKED",
-          "failure": "EGRESS_STALL",
-          "wideRecovery": "false",
-          "ecActive": "false",
-          "ecDistance": "0",
-          "landingBefore": "true",
-          "endpointBefore": "false",
-          "planningBefore": "false",
-          "fullAfter": "false"
-        }
-      },
-      {
-        "snapshot": 1,
-        "mode": 0,
-        "count": 1,
-        "last": {
-          "snapshot": "1",
-          "mode": "0",
-          "iteration": "0",
-          "seconds": "0.0500031",
-          "previousPhase": "EGRESS",
-          "phase": "FOLLOW",
-          "before": "<4511.504395, 339.171906, 10236.788086>",
-          "position": "<4511.504395, 339.171906, 10236.788086>",
-          "contactBefore": "true",
-          "contactReasonBefore": "EGRESS_GROUND_HANDOFF_BLOCKED",
-          "contactAfter": "true",
-          "contactReasonAfter": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-          "reason": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-          "failure": "",
-          "wideRecovery": "false",
-          "ecActive": "false",
-          "ecDistance": "0",
-          "landingBefore": "true",
-          "endpointBefore": "false",
-          "planningBefore": "false",
-          "fullAfter": "false"
-        }
-      },
-      {
-        "snapshot": 1,
-        "mode": 1,
-        "count": 101,
-        "last": {
-          "snapshot": "1",
-          "mode": "1",
-          "iteration": "100",
-          "seconds": "5.04999",
-          "previousPhase": "EGRESS",
-          "phase": "FOLLOW",
-          "before": "<4511.504395, 339.171906, 10236.788086>",
-          "position": "<4511.504395, 339.171906, 10236.788086>",
-          "contactBefore": "true",
-          "contactReasonBefore": "EGRESS_GROUND_HANDOFF_BLOCKED",
-          "contactAfter": "true",
-          "contactReasonAfter": "EGRESS_GROUND_HANDOFF_BLOCKED",
-          "reason": "EGRESS_GROUND_HANDOFF_BLOCKED",
-          "failure": "EGRESS_STALL",
-          "wideRecovery": "false",
-          "ecActive": "false",
-          "ecDistance": "0",
-          "landingBefore": "true",
-          "endpointBefore": "false",
-          "planningBefore": "false",
-          "fullAfter": "false"
-        }
-      },
-      {
-        "snapshot": 2,
-        "mode": 0,
-        "count": 1,
-        "last": {
-          "snapshot": "2",
-          "mode": "0",
-          "iteration": "0",
-          "seconds": "0.0499878",
-          "previousPhase": "EGRESS",
-          "phase": "FOLLOW",
-          "before": "<4511.504395, 339.171906, 10236.788086>",
-          "position": "<4511.504395, 339.171906, 10236.788086>",
-          "contactBefore": "true",
-          "contactReasonBefore": "EGRESS_GROUND_HANDOFF_BLOCKED",
-          "contactAfter": "true",
-          "contactReasonAfter": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-          "reason": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-          "failure": "",
-          "wideRecovery": "false",
-          "ecActive": "false",
-          "ecDistance": "0",
-          "landingBefore": "true",
-          "endpointBefore": "false",
-          "planningBefore": "false",
-          "fullAfter": "false"
-        }
-      },
-      {
-        "snapshot": 2,
-        "mode": 1,
-        "count": 101,
-        "last": {
-          "snapshot": "2",
-          "mode": "1",
-          "iteration": "100",
-          "seconds": "5.04999",
-          "previousPhase": "EGRESS",
-          "phase": "FOLLOW",
-          "before": "<4511.504395, 339.171906, 10236.788086>",
-          "position": "<4511.504395, 339.171906, 10236.788086>",
-          "contactBefore": "true",
-          "contactReasonBefore": "EGRESS_GROUND_HANDOFF_BLOCKED",
-          "contactAfter": "true",
-          "contactReasonAfter": "EGRESS_GROUND_HANDOFF_BLOCKED",
-          "reason": "EGRESS_GROUND_HANDOFF_BLOCKED",
-          "failure": "EGRESS_STALL",
-          "wideRecovery": "false",
-          "ecActive": "false",
-          "ecDistance": "0",
-          "landingBefore": "true",
-          "endpointBefore": "false",
-          "planningBefore": "false",
-          "fullAfter": "false"
-        }
-      },
-      {
-        "snapshot": 3,
-        "mode": 0,
-        "count": 1,
-        "last": {
-          "snapshot": "3",
-          "mode": "0",
-          "iteration": "0",
-          "seconds": "0.0499878",
-          "previousPhase": "EGRESS",
-          "phase": "FOLLOW",
-          "before": "<4530.000000, 339.336670, 10240.000000>",
-          "position": "<4530.000000, 339.336670, 10240.000000>",
-          "contactBefore": "true",
-          "contactReasonBefore": "EGRESS_GROUND_HANDOFF_BLOCKED",
-          "contactAfter": "true",
-          "contactReasonAfter": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-          "reason": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-          "failure": "",
-          "wideRecovery": "false",
-          "ecActive": "false",
-          "ecDistance": "0",
-          "landingBefore": "true",
-          "endpointBefore": "true",
-          "planningBefore": "true",
-          "fullAfter": "true"
-        }
-      },
-      {
-        "snapshot": 3,
-        "mode": 1,
-        "count": 1,
-        "last": {
-          "snapshot": "3",
-          "mode": "1",
-          "iteration": "0",
-          "seconds": "0.0499878",
-          "previousPhase": "EGRESS",
-          "phase": "FOLLOW",
-          "before": "<4530.000000, 339.336670, 10240.000000>",
-          "position": "<4530.000000, 339.336670, 10240.000000>",
-          "contactBefore": "true",
-          "contactReasonBefore": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-          "contactAfter": "true",
-          "contactReasonAfter": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-          "reason": "NATIVE_JOINT_WORLD_REPLAY_STUB",
-          "failure": "",
-          "wideRecovery": "false",
-          "ecActive": "false",
-          "ecDistance": "0",
-          "landingBefore": "true",
-          "endpointBefore": "true",
-          "planningBefore": "true",
-          "fullAfter": "true"
-        }
-      }
-    ],
-    "unsafeImmediateHandoffPrevented": 3,
-    "physicalRecoveries": 0,
-    "explicitStallFailures": 3,
-    "clearControlPassed": true,
-    "candidateAccepted": false,
-    "conclusion": "Guard corrects premature success but all3 frozen blocked poses remain immobile and expire at existing5sec bound. Not a recovery fix. Default flag remains OFF."
-  },
-  "local-first-step-analysis.json": {
-    "enginePassed": true,
-    "queryRows": 150,
-    "snapshots": [
-      {
-        "snapshot": 0,
-        "clearCounts": {
-          "TRANSLATE": 4
-        },
-        "clearQueries": [
-          {
-            "query": "4",
-            "kind": "TRANSLATE",
-            "direction": "4",
-            "distance": "0.01",
-            "position": "<4511.504395, 339.171936, 10236.797852>",
-            "heading": "7.8443",
-            "diagnostic": "NONDEEPENING_CLEAR"
-          },
-          {
-            "query": "12",
-            "kind": "TRANSLATE",
-            "direction": "12",
-            "distance": "0.01",
-            "position": "<4511.504395, 339.171844, 10236.778320>",
-            "heading": "7.8443",
-            "diagnostic": "NONDEEPENING_CLEAR"
-          },
-          {
-            "query": "20",
-            "kind": "TRANSLATE",
-            "direction": "4",
-            "distance": "0.02",
-            "position": "<4511.504395, 339.171967, 10236.807617>",
-            "heading": "7.8443",
-            "diagnostic": "NONDEEPENING_CLEAR"
-          },
-          {
-            "query": "36",
-            "kind": "TRANSLATE",
-            "direction": "4",
-            "distance": "0.03",
-            "position": "<4511.504395, 339.172028, 10236.818359>",
-            "heading": "7.8443",
-            "diagnostic": "NONDEEPENING_CLEAR"
-          }
-        ],
-        "rejectCounts": {
-          "NEW_WORLD_CONTACT": 38,
-          "DEEPER_FIXTURE": 8
-        }
-      },
-      {
-        "snapshot": 1,
-        "clearCounts": {
-          "TRANSLATE": 4,
-          "ROTATE": 1
-        },
-        "clearQueries": [
-          {
-            "query": "4",
-            "kind": "TRANSLATE",
-            "direction": "4",
-            "distance": "0.01",
-            "position": "<4511.504395, 339.171936, 10236.797852>",
-            "heading": "4.8443",
-            "diagnostic": "NONDEEPENING_CLEAR"
-          },
-          {
-            "query": "12",
-            "kind": "TRANSLATE",
-            "direction": "12",
-            "distance": "0.01",
-            "position": "<4511.504395, 339.171844, 10236.778320>",
-            "heading": "4.8443",
-            "diagnostic": "NONDEEPENING_CLEAR"
-          },
-          {
-            "query": "20",
-            "kind": "TRANSLATE",
-            "direction": "4",
-            "distance": "0.02",
-            "position": "<4511.504395, 339.171967, 10236.807617>",
-            "heading": "4.8443",
-            "diagnostic": "NONDEEPENING_CLEAR"
-          },
-          {
-            "query": "36",
-            "kind": "TRANSLATE",
-            "direction": "4",
-            "distance": "0.03",
-            "position": "<4511.504395, 339.172028, 10236.818359>",
-            "heading": "4.8443",
-            "diagnostic": "NONDEEPENING_CLEAR"
-          },
-          {
-            "query": "49",
-            "kind": "ROTATE",
-            "direction": "-1",
-            "distance": "0",
-            "position": "<4511.504395, 339.171906, 10236.788086>",
-            "heading": "3.8443",
-            "diagnostic": "NONDEEPENING_CLEAR"
-          }
-        ],
-        "rejectCounts": {
-          "NEW_WORLD_CONTACT": 38,
-          "DEEPER_FIXTURE": 7
-        }
-      },
-      {
-        "snapshot": 2,
-        "clearCounts": {
-          "TRANSLATE": 1
-        },
-        "clearQueries": [
-          {
-            "query": "12",
-            "kind": "TRANSLATE",
-            "direction": "12",
-            "distance": "0.01",
-            "position": "<4511.504395, 339.171844, 10236.778320>",
-            "heading": "-2.1557",
-            "diagnostic": "NONDEEPENING_CLEAR"
-          }
-        ],
-        "rejectCounts": {
-          "NEW_WORLD_CONTACT": 45,
-          "DEEPER_FIXTURE": 4
-        }
-      }
-    ],
-    "conclusion": "All3 poses have at least one legal1cm translation, despite no admitted long chord. Fine segmented corridor experiment justified; no runtime change yet.",
-    "limitations": [
-      "FullEndpoint column for ROTATE uses original body heading; do not use it as rotated-endpoint proof.",
-      "Depth fields are valid only on rejected rows with nonnegative probe; unassigned values can retain earlier loop output.",
-      "Small step feasibility is not a full recovery route or performance proof."
+    "integerKeyDiagnosticVerified": true,
+    "legacyKeyAliasWitness": "legacyRoot=4.5115e+06:339172:1.02368e+07:78:27 legacyNext=4.5115e+06:339172:1.02368e+07:78:27 integerRoot=4511504:339172:10236788:78:27 integerNext=4511504:339172:10236798:78:27",
+    "conclusion": "Corrected bounded discrete searches find no exit for3 fixed postlanding poses; clear controls pass. Initial float-key run excluded. No proof all continuous routes impossible.",
+    "limits": [
+      "No-found rows have path replay inapplicable,not passed.",
+      "2.5mm run retains100action depth,1.5m travel and256expansions;all six terminate open-exhausted,not expansion bound.",
+      "No live or visible quality or performance acceptance."
     ]
   },
-  "corridor-analysis.json": {
+  "touchdown-pose-matrix-analysis.json": {
+    "runSourceId": "runtime-20261029-143221",
+    "buildId": "31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126",
+    "matrix": [
+      {
+        "snapshot": 0,
+        "rootCase": "touchdown",
+        "poseCase": "fall",
+        "bias": 0,
+        "found": true,
+        "travel": 1.08355,
+        "depth": 111,
+        "rotationEdges": 0,
+        "moveCounts": {
+          "12": 108,
+          "13": 3
+        },
+        "goal": "<4511.516113, 339.168030, 10235.767578>",
+        "replayPassed": true,
+        "expanded": 112,
+        "nodes": 1690,
+        "queries": 1998,
+        "pathMoveChangeRows": [
+          {
+            "snapshot": "0",
+            "bias": "0",
+            "ordinal": "0",
+            "position": "<4511.504395, 339.172150, 10236.848633>",
+            "heading": "8.8443",
+            "lift": "0.03",
+            "travel": "0",
+            "move": "-1",
+            "stepVerified": "true"
+          },
+          {
+            "snapshot": "0",
+            "bias": "0",
+            "ordinal": "1",
+            "position": "<4511.504395, 339.172089, 10236.838867>",
+            "heading": "8.8443",
+            "lift": "0.03",
+            "travel": "0.00976581",
+            "move": "12",
+            "stepVerified": "true"
+          },
+          {
+            "snapshot": "0",
+            "bias": "0",
+            "ordinal": "9",
+            "position": "<4511.508301, 339.171875, 10236.761719>",
+            "heading": "8.8443",
+            "lift": "0.03",
+            "travel": "0.087744",
+            "move": "13",
+            "stepVerified": "true"
+          },
+          {
+            "snapshot": "0",
+            "bias": "0",
+            "ordinal": "10",
+            "position": "<4511.508301, 339.171844, 10236.751953>",
+            "heading": "8.8443",
+            "lift": "0.03",
+            "travel": "0.0975097",
+            "move": "12",
+            "stepVerified": "true"
+          },
+          {
+            "snapshot": "0",
+            "bias": "0",
+            "ordinal": "11",
+            "position": "<4511.512207, 339.171875, 10236.743164>",
+            "heading": "8.8443",
+            "lift": "0.03",
+            "travel": "0.107128",
+            "move": "13",
+            "stepVerified": "true"
+          },
+          {
+            "snapshot": "0",
+            "bias": "0",
+            "ordinal": "12",
+            "position": "<4511.512207, 339.171844, 10236.733398>",
+            "heading": "8.8443",
+            "lift": "0.03",
+            "travel": "0.116893",
+            "move": "12",
+            "stepVerified": "true"
+          },
+          {
+            "snapshot": "0",
+            "bias": "0",
+            "ordinal": "14",
+            "position": "<4511.516113, 339.171814, 10236.714844>",
+            "heading": "8.8443",
+            "lift": "0.03",
+            "travel": "0.136277",
+            "move": "13",
+            "stepVerified": "true"
+          },
+          {
+            "snapshot": "0",
+            "bias": "0",
+            "ordinal": "15",
+            "position": "<4511.516113, 339.171783, 10236.705078>",
+            "heading": "8.8443",
+            "lift": "0.03",
+            "travel": "0.146043",
+            "move": "12",
+            "stepVerified": "true"
+          },
+          {
+            "snapshot": "0",
+            "bias": "0",
+            "ordinal": "111",
+            "position": "<4511.516113, 339.168030, 10235.767578>",
+            "heading": "8.8443",
+            "lift": "0.03",
+            "travel": "1.08355",
+            "move": "12",
+            "stepVerified": "true"
+          }
+        ]
+      },
+      {
+        "snapshot": 0,
+        "rootCase": "touchdown",
+        "poseCase": "fall",
+        "bias": 1,
+        "found": false,
+        "replayPassed": null,
+        "expanded": 1024,
+        "nodes": 1851,
+        "termination": "EXPANSION_BOUND"
+      },
+      {
+        "snapshot": 1,
+        "rootCase": "touchdown",
+        "poseCase": "postlanding",
+        "bias": 0,
+        "found": false,
+        "replayPassed": null,
+        "expanded": 9,
+        "nodes": 9,
+        "termination": "OPEN_EXHAUSTED"
+      },
+      {
+        "snapshot": 1,
+        "rootCase": "touchdown",
+        "poseCase": "postlanding",
+        "bias": 1,
+        "found": false,
+        "replayPassed": null,
+        "expanded": 9,
+        "nodes": 9,
+        "termination": "OPEN_EXHAUSTED"
+      },
+      {
+        "snapshot": 2,
+        "rootCase": "final",
+        "poseCase": "fall",
+        "bias": 0,
+        "found": true,
+        "travel": 1.01534,
+        "depth": 104,
+        "rotationEdges": 0,
+        "moveCounts": {
+          "12": 102,
+          "13": 2
+        },
+        "goal": "<4511.512207, 339.167999, 10235.774414>",
+        "replayPassed": true,
+        "expanded": 105,
+        "nodes": 1668,
+        "queries": 1872,
+        "pathMoveChangeRows": [
+          {
+            "snapshot": "2",
+            "bias": "0",
+            "ordinal": "0",
+            "position": "<4511.504395, 339.171906, 10236.788086>",
+            "heading": "8.8443",
+            "lift": "0.03",
+            "travel": "0",
+            "move": "-1",
+            "stepVerified": "true"
+          },
+          {
+            "snapshot": "2",
+            "bias": "0",
+            "ordinal": "1",
+            "position": "<4511.504395, 339.171844, 10236.778320>",
+            "heading": "8.8443",
+            "lift": "0.03",
+            "travel": "0.00976581",
+            "move": "12",
+            "stepVerified": "true"
+          },
+          {
+            "snapshot": "2",
+            "bias": "0",
+            "ordinal": "3",
+            "position": "<4511.508301, 339.171875, 10236.759766>",
+            "heading": "8.8443",
+            "lift": "0.03",
+            "travel": "0.0291497",
+            "move": "13",
+            "stepVerified": "true"
+          },
+          {
+            "snapshot": "2",
+            "bias": "0",
+            "ordinal": "5",
+            "position": "<4511.512207, 339.171875, 10236.741211>",
+            "heading": "8.8443",
+            "lift": "0.03",
+            "travel": "0.0485335",
+            "move": "12",
+            "stepVerified": "true"
+          },
+          {
+            "snapshot": "2",
+            "bias": "0",
+            "ordinal": "104",
+            "position": "<4511.512207, 339.167999, 10235.774414>",
+            "heading": "8.8443",
+            "lift": "0.03",
+            "travel": "1.01534",
+            "move": "12",
+            "stepVerified": "true"
+          }
+        ]
+      },
+      {
+        "snapshot": 2,
+        "rootCase": "final",
+        "poseCase": "fall",
+        "bias": 1,
+        "found": false,
+        "replayPassed": null,
+        "expanded": 1024,
+        "nodes": 1859,
+        "termination": "EXPANSION_BOUND"
+      },
+      {
+        "snapshot": 3,
+        "rootCase": "final",
+        "poseCase": "postlanding",
+        "bias": 0,
+        "found": false,
+        "replayPassed": null,
+        "expanded": 6,
+        "nodes": 6,
+        "termination": "OPEN_EXHAUSTED"
+      },
+      {
+        "snapshot": 3,
+        "rootCase": "final",
+        "poseCase": "postlanding",
+        "bias": 1,
+        "found": false,
+        "replayPassed": null,
+        "expanded": 6,
+        "nodes": 6,
+        "termination": "OPEN_EXHAUSTED"
+      }
+    ],
+    "conditions": {
+      "normalizedHeading": 8.8443,
+      "normalizedLift": 0.03,
+      "normalizedIdleOffset": [
+        0,
+        0,
+        0
+      ],
+      "rootPoints": 2,
+      "rawPoses": 2,
+      "discreteActions": "16 translations1cm and2 turns1deg",
+      "depthBound": 200,
+      "expansionBound": 1024,
+      "travelBound": 1.5
+    },
+    "conclusion": "Same root/heading/lift, current collision model admits replayed curved escape paths in recorded fall pose;postlanding frozen pose search exhausts9/6states. Pose-transition feasibility matters. Not proof no other postlanding path exists.",
+    "limitations": [
+      "Frozen4joint/contact representation;not all rendered mesh bones or live animation transitions.",
+      "Heading,lift andidle offset normalized;not exact original motion.",
+      "No-found rows have replay inapplicable;goal vector output can retain previous case and is ignored.",
+      "North-biased fall cases stop at expansion bound,not no-path proof.",
+      "No live8/64 recovery,visual smoothness orperformance acceptance."
+    ]
+  },
+  "touchdown-admission-analysis.json": {
     "cases": [
       {
-        "snapshot": "0",
-        "direction": "0",
-        "stepSize": "0.03",
-        "rows": 2,
-        "acceptedSteps": 1,
-        "travel": 0.0302737,
-        "lastDiagnostic": "NEW_WORLD_CONTACT",
-        "fullEndpoint": false
-      },
-      {
-        "snapshot": "0",
-        "direction": "0",
-        "stepSize": "0.01",
-        "rows": 4,
-        "acceptedSteps": 3,
-        "travel": 0.0292972,
-        "lastDiagnostic": "NEW_WORLD_CONTACT",
-        "fullEndpoint": false
-      },
-      {
-        "snapshot": "0",
-        "direction": "1",
-        "stepSize": "0.03",
+        "pose": 0,
+        "mode": 0,
         "rows": 1,
-        "acceptedSteps": 0,
-        "travel": 0.0,
-        "lastDiagnostic": "NEW_WORLD_CONTACT",
-        "fullEndpoint": false
+        "first": {
+          "pose": "0",
+          "mode": "0",
+          "iteration": "0",
+          "seconds": "0.0499878",
+          "phase": "LAND",
+          "position": "<4511.504395, 339.172150, 10236.848633>",
+          "previous": "<4511.504395, 339.277832, 10236.848633>",
+          "lift": "0",
+          "reason": "NATIVE_FALL",
+          "landingGate": "CLEAR",
+          "pressureDiagnostic": "",
+          "plans": "0",
+          "steps": "0",
+          "separationDistance": "0",
+          "admissionRejects": "0",
+          "wantLanding": "true",
+          "fullEndpoint": "false"
+        },
+        "last": {
+          "pose": "0",
+          "mode": "0",
+          "iteration": "0",
+          "seconds": "0.0499878",
+          "phase": "LAND",
+          "position": "<4511.504395, 339.172150, 10236.848633>",
+          "previous": "<4511.504395, 339.277832, 10236.848633>",
+          "lift": "0",
+          "reason": "NATIVE_FALL",
+          "landingGate": "CLEAR",
+          "pressureDiagnostic": "",
+          "plans": "0",
+          "steps": "0",
+          "separationDistance": "0",
+          "admissionRejects": "0",
+          "wantLanding": "true",
+          "fullEndpoint": "false"
+        },
+        "fullRecovery": false
       },
       {
-        "snapshot": "0",
-        "direction": "1",
-        "stepSize": "0.01",
-        "rows": 3,
-        "acceptedSteps": 2,
-        "travel": 0.0195315,
-        "lastDiagnostic": "NEW_WORLD_CONTACT",
-        "fullEndpoint": false
+        "pose": 0,
+        "mode": 1,
+        "rows": 300,
+        "first": {
+          "pose": "0",
+          "mode": "1",
+          "iteration": "0",
+          "seconds": "0.0499878",
+          "phase": "FALL",
+          "position": "<4511.504395, 339.277832, 10236.848633>",
+          "previous": "<4511.504395, 339.277832, 10236.848633>",
+          "lift": "0",
+          "reason": "LANDING_SPACE_BLOCKED",
+          "landingGate": "TEST_GROUND_ROUTE_ADMISSION",
+          "pressureDiagnostic": "NONDEEPENING_CLEAR",
+          "plans": "1",
+          "steps": "0",
+          "separationDistance": "0",
+          "admissionRejects": "12",
+          "wantLanding": "false",
+          "fullEndpoint": "false"
+        },
+        "last": {
+          "pose": "0",
+          "mode": "1",
+          "iteration": "299",
+          "seconds": "15",
+          "phase": "FALL",
+          "position": "<4511.504395, 339.277832, 10236.848633>",
+          "previous": "<4511.504395, 339.277832, 10236.848633>",
+          "lift": "0",
+          "reason": "LANDING_SPACE_BLOCKED",
+          "landingGate": "TEST_GROUND_ROUTE_ADMISSION",
+          "pressureDiagnostic": "NO_VALID_LOCAL_EXIT",
+          "plans": "151",
+          "steps": "0",
+          "separationDistance": "0",
+          "admissionRejects": "2110",
+          "wantLanding": "false",
+          "fullEndpoint": "false"
+        },
+        "fullRecovery": false
       },
       {
-        "snapshot": "1",
-        "direction": "0",
-        "stepSize": "0.03",
-        "rows": 2,
-        "acceptedSteps": 1,
-        "travel": 0.0302737,
-        "lastDiagnostic": "NEW_WORLD_CONTACT",
-        "fullEndpoint": false
+        "pose": 1,
+        "mode": 0,
+        "rows": 300,
+        "first": {
+          "pose": "1",
+          "mode": "0",
+          "iteration": "0",
+          "seconds": "0.0499878",
+          "phase": "FALL",
+          "position": "<4511.504395, 339.277832, 10236.848633>",
+          "previous": "<4511.504395, 339.277832, 10236.848633>",
+          "lift": "0",
+          "reason": "FALL_NATIVE_JOINT_WORLD_1",
+          "landingGate": "CLEAR",
+          "pressureDiagnostic": "DEEPER_FIXTURE",
+          "plans": "1",
+          "steps": "0",
+          "separationDistance": "0",
+          "admissionRejects": "0",
+          "wantLanding": "false",
+          "fullEndpoint": "false"
+        },
+        "last": {
+          "pose": "1",
+          "mode": "0",
+          "iteration": "299",
+          "seconds": "15",
+          "phase": "FALL",
+          "position": "<4511.504395, 339.277832, 10236.848633>",
+          "previous": "<4511.504395, 339.277832, 10236.848633>",
+          "lift": "0",
+          "reason": "FALL_NATIVE_JOINT_WORLD_1",
+          "landingGate": "CLEAR",
+          "pressureDiagnostic": "DEEPER_FIXTURE",
+          "plans": "20",
+          "steps": "0",
+          "separationDistance": "0",
+          "admissionRejects": "0",
+          "wantLanding": "false",
+          "fullEndpoint": "false"
+        },
+        "fullRecovery": false
       },
       {
-        "snapshot": "1",
-        "direction": "0",
-        "stepSize": "0.01",
-        "rows": 4,
-        "acceptedSteps": 3,
-        "travel": 0.0292972,
-        "lastDiagnostic": "NEW_WORLD_CONTACT",
-        "fullEndpoint": false
-      },
-      {
-        "snapshot": "1",
-        "direction": "1",
-        "stepSize": "0.03",
-        "rows": 1,
-        "acceptedSteps": 0,
-        "travel": 0.0,
-        "lastDiagnostic": "NEW_WORLD_CONTACT",
-        "fullEndpoint": false
-      },
-      {
-        "snapshot": "1",
-        "direction": "1",
-        "stepSize": "0.01",
-        "rows": 3,
-        "acceptedSteps": 2,
-        "travel": 0.0195315,
-        "lastDiagnostic": "NEW_WORLD_CONTACT",
-        "fullEndpoint": false
-      },
-      {
-        "snapshot": "2",
-        "direction": "0",
-        "stepSize": "0.03",
-        "rows": 1,
-        "acceptedSteps": 0,
-        "travel": 0.0,
-        "lastDiagnostic": "NEW_WORLD_CONTACT",
-        "fullEndpoint": false
-      },
-      {
-        "snapshot": "2",
-        "direction": "0",
-        "stepSize": "0.01",
-        "rows": 1,
-        "acceptedSteps": 0,
-        "travel": 0.0,
-        "lastDiagnostic": "NEW_WORLD_CONTACT",
-        "fullEndpoint": false
-      },
-      {
-        "snapshot": "2",
-        "direction": "1",
-        "stepSize": "0.03",
-        "rows": 1,
-        "acceptedSteps": 0,
-        "travel": 0.0,
-        "lastDiagnostic": "NEW_WORLD_CONTACT",
-        "fullEndpoint": false
-      },
-      {
-        "snapshot": "2",
-        "direction": "1",
-        "stepSize": "0.01",
-        "rows": 3,
-        "acceptedSteps": 2,
-        "travel": 0.0195315,
-        "lastDiagnostic": "NEW_WORLD_CONTACT",
-        "fullEndpoint": false
+        "pose": 1,
+        "mode": 1,
+        "rows": 300,
+        "first": {
+          "pose": "1",
+          "mode": "1",
+          "iteration": "0",
+          "seconds": "0.0499878",
+          "phase": "FALL",
+          "position": "<4511.504395, 339.277832, 10236.848633>",
+          "previous": "<4511.504395, 339.277832, 10236.848633>",
+          "lift": "0",
+          "reason": "LANDING_SPACE_BLOCKED",
+          "landingGate": "TEST_GROUND_ROUTE_ADMISSION",
+          "pressureDiagnostic": "DEEPER_FIXTURE",
+          "plans": "1",
+          "steps": "0",
+          "separationDistance": "0",
+          "admissionRejects": "12",
+          "wantLanding": "false",
+          "fullEndpoint": "false"
+        },
+        "last": {
+          "pose": "1",
+          "mode": "1",
+          "iteration": "299",
+          "seconds": "15",
+          "phase": "FALL",
+          "position": "<4511.504395, 339.277832, 10236.848633>",
+          "previous": "<4511.504395, 339.277832, 10236.848633>",
+          "lift": "0",
+          "reason": "LANDING_SPACE_BLOCKED",
+          "landingGate": "TEST_GROUND_ROUTE_ADMISSION",
+          "pressureDiagnostic": "DEEPER_FIXTURE",
+          "plans": "20",
+          "steps": "0",
+          "separationDistance": "0",
+          "admissionRejects": "800",
+          "wantLanding": "false",
+          "fullEndpoint": "false"
+        },
+        "fullRecovery": false
       }
     ],
     "fullRecoveries": 0,
-    "casesVerified": 12,
-    "allRejectedStepsPreserveRoot": true,
-    "maximumStepBound": 0.04,
-    "maximumTravelBound": 1.5,
-    "conclusion": "Fine straight1cm steps do not solve exit. No segmented runtime policy adopted.",
-    "visualAccepted": false,
-    "performanceAccepted": false
-  },
-  "corridor-detail-analysis.json": {
-    "casesVerified": 12,
-    "fullRecoveries": 0,
-    "rejectedProbes": {
-      "2": 4,
-      "1": 6,
-      "3": 2
-    },
-    "rejectedFixtures": {
-      "StaticObj_Container_1C": 12
-    },
-    "rejectedRows": [
-      {
-        "snapshot": "0",
-        "direction": "0",
-        "stepSize": "0.03",
-        "iteration": "1",
-        "accepted": "false",
-        "previous": "<4511.504395, 339.172028, 10236.818359>",
-        "position": "<4511.504395, 339.172028, 10236.818359>",
-        "lift": "0.0270691",
-        "travel": "0.0302737",
-        "fullEndpoint": "false",
-        "diagnostic": "NEW_WORLD_CONTACT",
-        "probe": "2",
-        "fixture": "StaticObj_Container_1C",
-        "fraction": "0",
-        "normal": "<-0.976872, -0.014046, -0.213364>",
-        "oldProbe": "<4511.504395, 340.672028, 10236.818359>",
-        "newProbe": "<4511.504395, 340.672150, 10236.848633>",
-        "radius": "0.23",
-        "floorFound": "false",
-        "floorObject": "NULL",
-        "floorNormal": "<0.000000, 0.000000, 0.000000>",
-        "newFootGap": "-10000",
-        "probeYDelta": "0.00012207"
-      },
-      {
-        "snapshot": "0",
-        "direction": "0",
-        "stepSize": "0.01",
-        "iteration": "3",
-        "accepted": "false",
-        "previous": "<4511.504395, 339.172028, 10236.817383>",
-        "position": "<4511.504395, 339.172028, 10236.817383>",
-        "lift": "0.0270691",
-        "travel": "0.0292972",
-        "fullEndpoint": "false",
-        "diagnostic": "NEW_WORLD_CONTACT",
-        "probe": "2",
-        "fixture": "StaticObj_Container_1C",
-        "fraction": "0",
-        "normal": "<-0.976113, -0.014030, -0.216810>",
-        "oldProbe": "<4511.504395, 340.672028, 10236.817383>",
-        "newProbe": "<4511.504395, 340.672058, 10236.827148>",
-        "radius": "0.23",
-        "floorFound": "false",
-        "floorObject": "NULL",
-        "floorNormal": "<0.000000, 0.000000, 0.000000>",
-        "newFootGap": "-10000",
-        "probeYDelta": "3.05176e-05"
-      },
-      {
-        "snapshot": "0",
-        "direction": "1",
-        "stepSize": "0.03",
-        "iteration": "0",
-        "accepted": "false",
-        "previous": "<4511.504395, 339.171906, 10236.788086>",
-        "position": "<4511.504395, 339.171906, 10236.788086>",
-        "lift": "0.0270691",
-        "travel": "0",
-        "fullEndpoint": "false",
-        "diagnostic": "NEW_WORLD_CONTACT",
-        "probe": "1",
-        "fixture": "StaticObj_Container_1C",
-        "fraction": "0.634845",
-        "normal": "<0.862339, -0.438634, 0.252928>",
-        "oldProbe": "<4511.504395, 340.071899, 10236.788086>",
-        "newProbe": "<4511.504395, 340.071777, 10236.757813>",
-        "radius": "0.23",
-        "floorFound": "true",
-        "floorObject": "",
-        "floorNormal": "<-0.018661, 0.999818, -0.003999>",
-        "newFootGap": "0.669983",
-        "probeYDelta": "-0.00012207"
-      },
-      {
-        "snapshot": "0",
-        "direction": "1",
-        "stepSize": "0.01",
-        "iteration": "2",
-        "accepted": "false",
-        "previous": "<4511.504395, 339.171814, 10236.768555>",
-        "position": "<4511.504395, 339.171814, 10236.768555>",
-        "lift": "0.0270691",
-        "travel": "0.0195315",
-        "fullEndpoint": "false",
-        "diagnostic": "NEW_WORLD_CONTACT",
-        "probe": "1",
-        "fixture": "StaticObj_Container_1C",
-        "fraction": "0",
-        "normal": "<0.862338, -0.438635, 0.252928>",
-        "oldProbe": "<4511.504395, 340.071808, 10236.768555>",
-        "newProbe": "<4511.504395, 340.071777, 10236.758789>",
-        "radius": "0.23",
-        "floorFound": "true",
-        "floorObject": "",
-        "floorNormal": "<-0.018661, 0.999818, -0.003999>",
-        "newFootGap": "0.669983",
-        "probeYDelta": "-3.05176e-05"
-      }
-    ],
-    "conclusion": "All12 terminal rejects are container contact at fixed torso/root probes0..2 or hips3, not foot terrain exit. Terrain-downhill hypothesis contradicted for these witnesses.",
+    "routeAdmissionGuardAccepted": false,
+    "conclusion": "Route-only LandingSpace rejection holds physical root about0.1057m above original floor and does not obtain any lateral step in15simseconds. Do not adopt simple pre-touchdown guard.",
     "limitations": [
-      "Nearby recorded frozen poses only; not proof of all possible curved/combined translation-rotation routes.",
-      "Raycast floorNormal valid only when floorFound true; otherwise ignore reused output.",
-      "No new runtime physical gate changes or visible/performance acceptance."
+      "Frozen poses and forced request8/nativeclock;not live animation.",
+      "Counter admissionRejects includes target planning and end-of-iteration diagnostics,not exact actual touchdown attempts.",
+      "reason/landingGate may be overwritten by end-of-iteration diagnostic query;phase/position/step counters remain authoritative.",
+      "Test input normalizes accepted footprint X/Z and ignores actual pressure velocity."
     ]
   }
 }
 
-Own handoff candidate function
-override void CompleteEgress(vector support)
-    {
-        // Ground arrival radius and a root floor hit do not establish that
-        // the full pose is outside the container or its navigation inflation.
-        // Preserve the existing roof handoff and opt-in wide recovery path.
-        if(!ECWideRecovery && Area=="ground" && ECGroundPolicy())
-        {
-            ECGroundChecks++;
-            vector groundSupport;float groundLift;ref array<vector> groundContacts={};string groundRejection;
-            if(!LandingSpace(Body.Agent.Position,groundSupport,false))groundRejection="LANDING:"+LandingDiagnostic;
-            else if(Fixture().Area(groundSupport)!=Area)groundRejection="AREA";
-            else if(!ECEndpointClear(Body.Agent.Position))groundRejection="ENDPOINT_POSE";
-            else if(!DGBGroundRoute.SegmentClear(Body.Agent.Position,Body.Agent.Position,Body.Agent.ObstacleMin,Body.Agent.ObstacleMax))groundRejection="PLANNING_INFLATION";
-            else if(!Body.SolveContacts(Body.Agent.Position,Body.Agent.Heading,groundLift,groundContacts))groundRejection="CONTACT:"+Body.Reason;
-            if(groundRejection!="")
-            {
-                ECGroundRejected++;ECGroundPending=true;ECGroundLog("REJECTED:"+groundRejection);
-                // Keep an existing bounded lease and its distance accounting.
-                // The helper, not an unsuccessful base arrival, owns recovery.
-                Body.Reason="EGRESS_GROUND_HANDOFF_BLOCKED";return;
-            }
-            support=groundSupport;Body.Lift=groundLift;Body.Contacts.Copy(groundContacts);ECGroundLog("VALIDATED");
-        }
-        if(ECWideRecovery)
-        {
-            // A short lease expiring or the authored egress point being near
-            // does not establish clearance of the alternative recovery route.
-            vector verified;float lift;ref array<vector> contacts={};
-            string rejection;
-            if(!LandingSpace(Body.Agent.Position,verified,false))rejection="LANDING:"+LandingDiagnostic;
-            else if(Fixture().Area(verified)!=Area)rejection="AREA";
-            else if(!ECEndpointClear(Body.Agent.Position))rejection="ENDPOINT_POSE";
-            else if(!DGBGroundRoute.SegmentClear(Body.Agent.Position,Body.Agent.Position,Body.Agent.ObstacleMin,Body.Agent.ObstacleMax))rejection="PLANNING_INFLATION";
-            else if(!Body.SolveContacts(Body.Agent.Position,Body.Agent.Heading,lift,contacts))rejection="CONTACT:"+Body.Reason;
-            if(rejection!="")
-            {
-                ECWideLog("REJECTED:"+rejection);
-                if(ECActive)ECLog("WIDE_HANDOFF_REJECTED");
-                Body.Reason="EGRESS_WIDE_HANDOFF_BLOCKED";
-                ECActive=false;ECNextPlan=Now();return;
-            }
-            support=verified;Body.Lift=lift;Body.Contacts.Copy(contacts);
-            ECWideLog("VALIDATED");
-        }
-        super.CompleteEgress(support);
-    }
+Own final endpoint predicate
+bool DGGroundSearchEndpoint(DGGroundHandoffBody body,DGBTraversalFixture fixture)
+{
+ vector support;float lift;ref array<vector> contacts={};
+ if(!body.Traversal.LandingSpace(body.Agent.Position,support,false) || fixture.Area(support)!="ground")return false;
+ if(!body.Traversal.ECEndpointClear(body.Agent.Position))return false;
+ if(!DGBGroundRoute.SegmentClear(body.Agent.Position,body.Agent.Position,body.Agent.ObstacleMin,body.Agent.ObstacleMax))return false;
+ return body.SolveContacts(body.Agent.Position,body.Agent.Heading,lift,contacts);
+}
 
 이전 애니메이션 진단: [선정 근거](downloads/animation-review.txt). 이번 진단은 시각·성능 해결을 뜻하지 않는다.
