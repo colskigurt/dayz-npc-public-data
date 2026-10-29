@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T095028-prelanding17-se2-20261029",
-  "generatedAt": "2026-10-29T09:50:28.160495+00:00",
+  "snapshotId": "snapshot-20261029T105329-previous-contacts-capture-20261029",
+  "generatedAt": "2026-10-29T10:53:29.923771+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -42,7 +42,10 @@
     "runtime-20261029-164705",
     "runtime-20261029-165343",
     "runtime-20261029-171420",
-    "runtime-20261029-171916"
+    "runtime-20261029-171916",
+    "runtime-20261029-190552",
+    "runtime-20261029-191331",
+    "runtime-20261029-193252"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -53,15 +56,16 @@
     "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
     "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
     "31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126",
-    "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8"
+    "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
+    "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E"
   ],
   "verificationStatus": {
     "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "Prior natural300s8 final8/8;64 final64/64 but high misses28. New frozen SE2 trials all failed-pose candidates FALL15s;no valid route committed. No new8/64 regression.",
-    "visual": "No new visible-frame observation. Frozen4joint diagnostics do not validate animation smoothness.",
-    "performance": "No new client p50/p95/p99. Prior fixed-cost mission p95 OFF219/ON241ms;20ms target unmet. Dedicated search elapsed includesI/O,not frame-time orCPU self-time.",
+    "functional": "NewD61D8 final8/8 high misses0;64 mixed foreground final64/64 high misses25;64 foreground final64/64 high misses27. Owner terminal violations0 but helper leases2/3 failed before later validated FOLLOW. Full acceptance incomplete.",
+    "visual": "Only initial8 scene and64 activation/loading observed. No new temporal visible-frame/video measurement. Callback NativeSeconds/wall ratio isnot graph phase orvisible speed.",
+    "performance": "Foreground64 mission p50/p95/p99=52/149/195ms,4626samples;20ms unmet. Mixed64 p95115ms has only163foregroundsamples. Concurrent workload anddifferent actualplayer displacement;no optimization claim.",
     "regressionChecks": 0
   },
   "metrics": [
@@ -9062,13 +9066,1163 @@
       },
       "repetitions": 1,
       "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "finalArrivals",
+      "sourceRunId": "runtime-20261029-190552",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 8,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.983
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 13980
+        },
+        "foregroundFrameSamples": 13772,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 39.796932666885596,
+          "GROUND_NORTH": 39.80506762432749
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "missingHighFollow",
+      "sourceRunId": "runtime-20261029-190552",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 0,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.983
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 13980
+        },
+        "foregroundFrameSamples": 13772,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 39.796932666885596,
+          "GROUND_NORTH": 39.80506762432749
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "fallsResumed",
+      "sourceRunId": "runtime-20261029-190552",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 9,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.983
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 13980
+        },
+        "foregroundFrameSamples": 13772,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 39.796932666885596,
+          "GROUND_NORTH": 39.80506762432749
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionArrived",
+      "sourceRunId": "runtime-20261029-190552",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.983
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 13980
+        },
+        "foregroundFrameSamples": 13772,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 39.796932666885596,
+          "GROUND_NORTH": 39.80506762432749
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionIntentChanged",
+      "sourceRunId": "runtime-20261029-190552",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.983
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 13980
+        },
+        "foregroundFrameSamples": 13772,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 39.796932666885596,
+          "GROUND_NORTH": 39.80506762432749
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "egressViolations",
+      "sourceRunId": "runtime-20261029-190552",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 0,
+      "unit": "violations",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.983
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 13980
+        },
+        "foregroundFrameSamples": 13772,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 39.796932666885596,
+          "GROUND_NORTH": 39.80506762432749
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "climbEndFailures",
+      "sourceRunId": "runtime-20261029-190552",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.983
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 13980
+        },
+        "foregroundFrameSamples": 13772,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 39.796932666885596,
+          "GROUND_NORTH": 39.80506762432749
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261029-190552",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 22.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.983
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 13980
+        },
+        "foregroundFrameSamples": 13772,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 39.796932666885596,
+          "GROUND_NORTH": 39.80506762432749
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261029-190552",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 33.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.983
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 13980
+        },
+        "foregroundFrameSamples": 13772,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 39.796932666885596,
+          "GROUND_NORTH": 39.80506762432749
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261029-190552",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 38.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 8,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.006,
+          104.983
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 13980
+        },
+        "foregroundFrameSamples": 13772,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 39.796932666885596,
+          "GROUND_NORTH": 39.80506762432749
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "finalArrivals",
+      "sourceRunId": "runtime-20261029-191331",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 64,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.05,
+          104.948
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 266,
+          "false": 2873
+        },
+        "foregroundFrameSamples": 163,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.283877597829026,
+          "GROUND_NORTH": 38.89589386319513
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "missingHighFollow",
+      "sourceRunId": "runtime-20261029-191331",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 25,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.05,
+          104.948
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 266,
+          "false": 2873
+        },
+        "foregroundFrameSamples": 163,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.283877597829026,
+          "GROUND_NORTH": 38.89589386319513
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "fallsResumed",
+      "sourceRunId": "runtime-20261029-191331",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 60,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.05,
+          104.948
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 266,
+          "false": 2873
+        },
+        "foregroundFrameSamples": 163,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.283877597829026,
+          "GROUND_NORTH": 38.89589386319513
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionArrived",
+      "sourceRunId": "runtime-20261029-191331",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 14,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.05,
+          104.948
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 266,
+          "false": 2873
+        },
+        "foregroundFrameSamples": 163,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.283877597829026,
+          "GROUND_NORTH": 38.89589386319513
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionIntentChanged",
+      "sourceRunId": "runtime-20261029-191331",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 1,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.05,
+          104.948
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 266,
+          "false": 2873
+        },
+        "foregroundFrameSamples": 163,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.283877597829026,
+          "GROUND_NORTH": 38.89589386319513
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "egressViolations",
+      "sourceRunId": "runtime-20261029-191331",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 0,
+      "unit": "violations",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.05,
+          104.948
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 266,
+          "false": 2873
+        },
+        "foregroundFrameSamples": 163,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.283877597829026,
+          "GROUND_NORTH": 38.89589386319513
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "climbEndFailures",
+      "sourceRunId": "runtime-20261029-191331",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.05,
+          104.948
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 266,
+          "false": 2873
+        },
+        "foregroundFrameSamples": 163,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.283877597829026,
+          "GROUND_NORTH": 38.89589386319513
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261029-191331",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 65.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.05,
+          104.948
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 266,
+          "false": 2873
+        },
+        "foregroundFrameSamples": 163,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.283877597829026,
+          "GROUND_NORTH": 38.89589386319513
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261029-191331",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 115.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.05,
+          104.948
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 266,
+          "false": 2873
+        },
+        "foregroundFrameSamples": 163,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.283877597829026,
+          "GROUND_NORTH": 38.89589386319513
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261029-191331",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 135.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.05,
+          104.948
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 266,
+          "false": 2873
+        },
+        "foregroundFrameSamples": 163,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.283877597829026,
+          "GROUND_NORTH": 38.89589386319513
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "finalArrivals",
+      "sourceRunId": "runtime-20261029-193252",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 64,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.143,
+          104.962
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 4685
+        },
+        "foregroundFrameSamples": 4626,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.7066742951589,
+          "GROUND_NORTH": 14.635898244626505
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "missingHighFollow",
+      "sourceRunId": "runtime-20261029-193252",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 27,
+      "unit": "agents",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.143,
+          104.962
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 4685
+        },
+        "foregroundFrameSamples": 4626,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.7066742951589,
+          "GROUND_NORTH": 14.635898244626505
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "fallsResumed",
+      "sourceRunId": "runtime-20261029-193252",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 55,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.143,
+          104.962
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 4685
+        },
+        "foregroundFrameSamples": 4626,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.7066742951589,
+          "GROUND_NORTH": 14.635898244626505
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionArrived",
+      "sourceRunId": "runtime-20261029-193252",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 17,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.143,
+          104.962
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 4685
+        },
+        "foregroundFrameSamples": 4626,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.7066742951589,
+          "GROUND_NORTH": 14.635898244626505
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "admissionIntentChanged",
+      "sourceRunId": "runtime-20261029-193252",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.143,
+          104.962
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 4685
+        },
+        "foregroundFrameSamples": 4626,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.7066742951589,
+          "GROUND_NORTH": 14.635898244626505
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "egressViolations",
+      "sourceRunId": "runtime-20261029-193252",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 0,
+      "unit": "violations",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.143,
+          104.962
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 4685
+        },
+        "foregroundFrameSamples": 4626,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.7066742951589,
+          "GROUND_NORTH": 14.635898244626505
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "climbEndFailures",
+      "sourceRunId": "runtime-20261029-193252",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 0,
+      "unit": "episodes",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.143,
+          104.962
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 4685
+        },
+        "foregroundFrameSamples": 4626,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.7066742951589,
+          "GROUND_NORTH": 14.635898244626505
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP50",
+      "sourceRunId": "runtime-20261029-193252",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 52.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.143,
+          104.962
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 4685
+        },
+        "foregroundFrameSamples": 4626,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.7066742951589,
+          "GROUND_NORTH": 14.635898244626505
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP95",
+      "sourceRunId": "runtime-20261029-193252",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 149.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.143,
+          104.962
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 4685
+        },
+        "foregroundFrameSamples": 4626,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.7066742951589,
+          "GROUND_NORTH": 14.635898244626505
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "frameP99",
+      "sourceRunId": "runtime-20261029-193252",
+      "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+      "value": 195.0,
+      "unit": "ms",
+      "conditions": {
+        "logicalAgents": 64,
+        "scenario": "activeReference previous-contact diagnostic;natural player input",
+        "durationSeconds": 300,
+        "frameSync": "on",
+        "detailedInstrumentation": true,
+        "method": "Foreground supplied mission dt only;not GPU/Present orvisible clip time. Mixed foreground64 run has very limited foreground coverage.",
+        "normalExit": true,
+        "admissionReapproach": true,
+        "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
+        "highHoldWindow": [
+          45.143,
+          104.962
+        ],
+        "purpose": "read-only diagnostic capture andpartial functional regression,not controlled optimization",
+        "previousContactDetail": true,
+        "postTouchdownOwner": true,
+        "foregroundCadenceCounts": {
+          "true": 4685
+        },
+        "foregroundFrameSamples": 4626,
+        "otherApprovedWorkloadsPreserved": true,
+        "actualPlayerDisplacementMetres": {
+          "GROUND_EAST": 38.7066742951589,
+          "GROUND_NORTH": 14.635898244626505
+        },
+        "repetitions": 1,
+        "visibleSmoothnessMeasured": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only"
     }
   ],
   "blockers": [
     {
       "id": "high-hold-6-32",
       "status": "open",
-      "description": "Pre-touchdown17 unresolved.512state search caps remain;fresh derived contacts did not change this decision projection. Actual previous4contact history andsame-call dt/velocity capture needed."
+      "description": "High-stage misses25/27 remain. Footprint permission doesnot imply physical LAND;four actual joint0 rejections now linked. Repeated same-time queries still lack exact per-Fall-call attribution."
     },
     {
       "id": "matched-repeats",
@@ -9595,23 +10749,41 @@
       "uri": "/data/experiments/prelanding17-se2-20261029.json",
       "sha256": "6d2a091117d74a9207f20bd949e2d24d29f14d51e442fef10156bd67773c658a",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "previous-contacts-capture-20261029-report",
+      "uri": "/downloads/checkpoints/2026-10-29_194818_541661+0900_npc-previous-contacts-capture.txt",
+      "sha256": "946fb424a0a9e921aba08723a19efe6b8cad5da55b4fec31407f3c22b774735b",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "previous-contacts-capture-20261029-review",
+      "uri": "/downloads/checkpoints/2026-10-29_194818_541661+0900_npc-previous-contacts-capture_evidence.txt",
+      "sha256": "4d3469a360f8a784ace38d3363a5c71a63658dce1618012edff97f79da74ec6e",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "previous-contacts-capture-20261029-json",
+      "uri": "/data/experiments/previous-contacts-capture-20261029.json",
+      "sha256": "b6dd2492f2dcf5af65b078d98673308d6976f09e0ad7501b89a4bd28d19b1cf1",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T09:50:28.160495+00:00",
-    "staleAfter": "2026-10-30T09:50:28.160495+00:00",
+    "sourceUpdatedAt": "2026-10-29T10:53:29.923771+00:00",
+    "staleAfter": "2026-10-30T10:53:29.923771+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261029T095028-prelanding17-se2-20261029",
-      "generatedAt": "2026-10-29T09:50:28.160495+00:00",
-      "sourceUpdatedAt": "2026-10-29T09:50:28.160495+00:00"
+      "snapshotId": "snapshot-20261029T105329-previous-contacts-capture-20261029",
+      "generatedAt": "2026-10-29T10:53:29.923771+00:00",
+      "sourceUpdatedAt": "2026-10-29T10:53:29.923771+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-29T09:50:28.160495+00:00",
+      "at": "2026-10-29T10:53:29.923771+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -9626,7 +10798,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261029T095028-prelanding17-se2-20261029/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261029T105329-previous-contacts-capture-20261029/"
   },
   "experiments": [
     {
@@ -10534,6 +11706,47 @@
         "matched-repeats"
       ],
       "replication": "Three different six-case conditions once;A/B decision projection matched. Not repeated live8/64,visual or performance acceptance."
+    },
+    {
+      "id": "previous-contacts-capture-20261029",
+      "title": "실제 접촉 이력 확보: 8·64개체 기록과 착지 거부 원인",
+      "track": "diagnostic",
+      "sourceRunId": [
+        "runtime-20261029-190552",
+        "runtime-20261029-191331",
+        "runtime-20261029-193252"
+      ],
+      "buildId": [
+        "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [
+        {
+          "count": 8,
+          "seconds": 300,
+          "repetitions": 1
+        },
+        {
+          "count": 64,
+          "seconds": 300,
+          "repetitions": 1
+        },
+        {
+          "count": 64,
+          "seconds": 300,
+          "repetitions": 1
+        }
+      ],
+      "evidenceReferences": [
+        "previous-contacts-capture-20261029-report",
+        "previous-contacts-capture-20261029-review",
+        "previous-contacts-capture-20261029-json"
+      ],
+      "blockers": [
+        "high-hold-6-32",
+        "matched-repeats"
+      ],
+      "replication": "One8 andtwo64 runs onD61D;64 foreground conditions andactualstimulus differ. Not controlled repeated optimization acceptance."
     }
   ],
   "kind": "experiments"

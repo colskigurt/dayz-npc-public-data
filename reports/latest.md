@@ -1,65 +1,69 @@
-# 회전과 이동으로도 복구하지 못한 이유: 검색 한도와 초기 접촉 상태
+# 실제 접촉 이력 확보: 8·64개체 기록과 착지 거부 원인
 
-회전·이동 복구 진단 — 검색 한도와 초기 접촉 상태 확인
+실제 접촉 이력 확보 — 8→64 기록 연결과 착지 거부 분리
 
-작성: 2026-10-29T18:50:03.253762+09:00
+작성: 2026-10-29T19:48:18.541661+09:00
 
 1. 작업 목표
 
-직전 고정 포즈 수평 검색을 회전과 결합해 제한된 경로 후보를 찾는다. 기존1cm·36방향 이동/전신 충돌/실제 하강 gate를 유지하고,검색 한도와 실제 도달 불가능을 구분한다. 시험 초기 접촉 상태와 검색 밀도도 함께 점검한다.
+기존 고정 포즈 재현에서 빠졌던 실제 이전 Contacts4점과 같은 Fall 호출의dt/수직 및압력속도를 확보한다. 착지 질의 허용과 실제 LAND 전환을 구분하고,기존 정상 낙하/복구·추적 동작을 보존한다. NPC 이동/애니메이션 방식이나 성능 최적화는 변경하지 않는다.
 
 2. 실제 수행
 
-정상 종료된 전용 서버3조건×6case와 실패한 진단 컴파일2개를 보존했다. 조건A는 기존 재사용 body에1도 양방향 회전을 추가한512state 검색,조건B는 case마다 새 body와 현재 원시 포즈에서 계산한4개 접촉점을 명시한 같은 검색,조건C는 B의 상태 키만5mm 격자 대표점으로 묶은 검색이다. 실제 위치를 격자 중심으로 옮기지 않았고 모든 제안은 기존 native step gate로 검사한다. 회전 총30도/추가 수평1.5m/episode6m 한도다.512개 상태 한도는 늘리지 않았다.
+기존F6DE 빌드·원본9script를 먼저 보존했다. opt-in previous-contact-detail.flag 계측 파일1개를 추가했다. 원래 bounded LDObserveLanding이 실제로 행을 쓴 경우만 같은 sequence의companion 행을 쓴다. 실제 cached4world contacts·Fall dt/후중력속도·압력속도·root/heading/lift·native요청/clock·directorNow/Born/engineTickTime을 읽으며 추가 물리/본 query와Body 필드 쓰기는 없다. 기존9script는 바이트 동일하다.
 
-node는 위치·heading·lift·이전 Contacts를 보관하고 끝점은 LandingSpace+CoreClear+SolveContacts를 검사한다. 원본 Fall이 실제로 수락해야만 LAND다. 경로 제안의 회전과 이동은 재생 시에도 다시 검사하도록 했지만 이번에는 수용된 경로가 없어서 실제 적용은0회다.
-
-조건C의 키 함수에서 Broken expression 컴파일 오류가2회 있었다. 처음에는 반올림 반환값의 ToString을 명시적 int 변수로 바꿨으나 실패했고,그 다음local 식별자를relativePosition으로만 바꾼 소스가 통과했다. 이 식별자만 다른 소스 대조도 보존했다. 실패 결과의crash 로그 여부는 원시 compile JSON에 그대로 남겼으며 성공으로 처리하지 않았다. 클라이언트/운영 서버는 실행하거나 수정하지 않았다.
+PBO10개 script의source/packed 바이트,서명·검증을 통과했고,별도 엔진4case에서 flagOFF/실제Fall/빈 Contacts/중복 제한을 확인했다. 과거compile 기록을 덮어쓰지 않도록 실제 수집용 미션을 정확히 복제했다.8명300초,64명300초 혼합 전경,같은64명300초 전경 실행을 각각 정상 종료했다. 마지막64 실행은 CUA로 대상 DayZ 창만 활성화했고 다른 작업의 프로세스/공유 입력 런타임은 보존했다.
 
 3. 측정 결과
 
-세 조건 모두 실패 포즈2개에서 후보/원본이15초 FALL로 끝났고 열린 지면은 LAND였다. 실제 경로 이동·회전 적용0회다. 회전 질의의 통과는 실제 회전 재생 성공을 의미하지 않는다. A/B의 마지막 포즈는512상태·19456 step 질의,통과한 회전 질의957개였다. 첫 거부 포즈는512상태·19456질의,통과 회전 질의1024개와 전신 하강 후보15개 거부(NATIVE_JOINT_WORLD_0)였다.
+|실행|개체|최종 도착|고지대 미도달|낙하 후 재개|접촉 기록 연결|미션p50/p95/p99 ms|
+|---|---:|---:|---:|---:|---:|---|
+|runtime-20261029-190552|8|8|0|9|10|22.0/33.0/38.0|
+|runtime-20261029-191331|64|64|25|60|84|65.0/115.0/135.0|
+|runtime-20261029-193252|64|64|27|55|106|52.0/149.0/195.0|
 
-B는6case의 초기4접촉점을 직접 기록했고 같은 pose의 원본/후보 시작점이 같음을 확인했다. A/B의 시간/보조 잔여진단을 제외한 모든 query 결정 투영이 일치했다. 따라서 이 시험에서 이전 case 접촉점 이월이 실패를 설명한다는 근거는 얻지 못했다. 실제 runtime의 과거4접촉점까지 복원했다는 뜻은 아니다.
+200/200 companion 행이 기존 LD행의sequence/id/generation/phase/root/heading/lift/native clock과 일치했다. 이는 샘플링된200행의연결이며 모든 physics 호출을 전수 기록했다는 뜻이 아니다. 엔진 proof는기존4행/companion3행이고 OFF1행은추가출력없음,빈1행은UNAVAILABLE,중복observer1행은억제됨을 확인했다. 실제8 dt는0.0159912~0.0410004초,p50 0.0209961초였다.64는최대/p50 0.05초였고 압력속도는0이 아닌 표본이 있었다. 기존0.05초/압력0 정규화 재현과 구분해야 한다.
 
-A/B의 node 삽입 순서를 독립적으로 재구성해 모든 parent 위치·heading·step을 대조했다. 마지막 포즈의512상태는 위치15개·heading51개에 몰려 X범위0.003906m,Z범위0.039062m였다. 첫 포즈는 위치450개·heading3개,X범위0.019531m,Z범위0.068594m였다. 조밀한 상태 수와 넓은 탐색 범위는 별개였다.
+owner는8명6회/혼합64명44회/전경64명40회의 VALIDATED_FOLLOW가 실제 전환과 연결됐고 위반은검출되지 않았다. 중간helper lease 실패는혼합64 시간2회,전경64 거리2회+시간1회였다. 이들은최종owner미종결과 다르며 모두최종인계로끝났다. CLIMB_EXIT_VALIDATION은이번기록에없다. 고지대 미도달25/27명은최종64/64로지우지 않는다.
 
-C도 두 포즈에서512state 한도였다. 마지막 포즈19442질의,첫 포즈19456질의이며 전신 하강 거부165개가 모두관절0이었다. C의 초기 접촉점은 B와 정확히 같고 소스 차이는 상태 키와 그 원점뿐이다. C의 node 삽입 순서 재구성은 native 반올림/키 동작을 완전히 재현하지 못해 검증 실패로 남겼다.512개 parent ID 확장과 raw query 수만 대조했고 생성 node의 정확한 공간 범위가 늘었다고 주장하지 않는다.
+혼합64의전경cadence266/3139와미션전경표본163개는전구간성능평가로불충분하다. 전경64는cadence4685/4685전경·미션표본4626개였다. 미션dt는GPU Present/표시애니메이션시간이아니고,다른승인작업과동시실행·상세로그·플레이어실이동거리차이가있다. 전경64의GROUND_EAST/NORTH 첫끝표본직선변위는약38.707/14.636m,8명은39.797/39.805m였다. p95149ms를이전181ms나고정자극219/241ms 대비최적화성공으로해석하지 않는다.20ms목표는미달이다.
 
-전용 검색 묶음의 wall elapsed는약2.996~4.039초로 I/O 등이 포함된다. 이는 클라이언트 프레임/CPU self-time이나 최적화 성과가 아니다. 새8/64 기능·p50/p95/p99·실제 표시 프레임은 미측정이다. 이전 자연 입력8/8·64/64,64명 고지대 미도달28명과 별도 고정 자극p95 219/241ms는 유지한다.20ms p95는 여전히 목표다.
+전경64에서callback NativeSeconds 누적은관측294.904초에175.606초,비율0.59547이었다.8명비율0.78587이었다. 이값은script에누적된callback pDt이며direct graph phase나실제화면재생배속이아니다.8명초기장면만직접관찰했고64전경전환시로딩화면을확인했다. 연속영상/실제표시프레임측정은없다.
 
 4. 원인 분석
 
-관찰 사실: 회전 후보를 추가해도 이번 제한 검색은 유효한 끝점 전에 한도에 도달했다. 키를 묶은 경우에도 실제 하강에서 관절0 거부가 남았다. 기존 frozen motor는 case 사이 body를 재사용해 Contacts를 이어받을 수 있었다. B에서 새 body/명시적4점을 사용해 그 통제를 강화했으나 이번 query 결정과 종료 상태는 달라지지 않았다.
+관찰 사실: 혼합64의LandingSpace true66행은물리LAND60회와같지않았다.61개질의행이60개실제전환과호환됐고,동일위치/같은director시각의2개질의가1개전환에대응해호출단위는모호했다. 전경64는허용60행·실제LAND55회이고5개행은직접전환과연결되지않았다. true질의수를물리착지성공수로보고하지 않는다.
 
-추정: 조밀한 상태 분기와 목표 순서가 제한된 검색을 소모할 수 있으며,진입 전 상태/포즈 변화/3차원 접촉 해소도 조사 대상이다. 그러나 검색을 무조건 늘리거나 새 이동 방식을 실제 NPC에 적용할 근거는 없다. 실제 이전4접촉점과 같은 Fall 호출의dt/속도가 없는 상태에서 고정 포즈 검색만 반복하는 것은 증거 한계가 있다.
+혼합64 id4/seq226과전경64 seq152/197/284는허용된발판지점에서관절0 SWEEP 거부기록과연결됐다.컨테이너 충돌의실제normal/fraction·anchor·nativeSeconds·캐시된previous joint가맞았고cached previous차이는0이었다.모델좌표에서재구성한raw와기록된raw의차이는약0.26~0.40mm였으며native bit동일성은아니다. 이4개는실제관절충돌의근거다.나머지미연결행은throttled failure상세가없어원인을확정하지 않는다.
 
-반증/보류: 회전 추가만으로 해결된다는 후보와5mm 대표 키만으로 해결된다는 후보는 성공하지 않았다. 초기 접촉점 이월만이 이번 정체 원인이라는 설명은 지지되지 않았다. C의 정확한 공간 확대·인과적 성능 개선·경로 불가능은 검증되지 않았다. 이전 발판 거부/관절 충돌의 원시 질의는 보존하지만 과거 모터의 시작 Contacts는 통제 한계로 추가 기록한다.
+중요한clock관계도확인했다. contact-failure seconds는절대Director.Now,LD seconds는Now-Born이었다. 새companion의directorNow/Born으로연결했으며예:id4는125.318-41.796=83.522다. 서로다른clock의seconds를그대로맞추지 않는다.
+
+추정: 경사면/모서리의전신하강거부를실제입력으로재현한뒤,신선한native normal/fraction을사용하는제한된contact-plane slide를검토할수있다. 아직그후보는구현/시험/배포하지않았다. NativeSeconds비율과사용자가느낀저속재생의관계도표시영상없이확정할수없다. 원본Days Gone전체알고리즘을확보했다는의미가아니다.
 
 5. 검증 수준
 
-진단 성공: 회전 후보/검색 한도·초기 접촉 통제·A/B 결정 일치·B/C 키만 다른 소스 관계를 검증했다. 부분 검증 실패: C의 native 상태 키에 따른 삽입 순서/생성 node 공간 재구성. 미실행: 실제 경로 재생(후보 없음),새8→64,실제 표시 시간 측정. 각 조건1회이며 반복 검증 완료/기능 회귀 통과/시각/성능/최종 수용은 아니다. 컴파일 통과와 실제 복구 성공은 구분했다.
+진단 성공: 읽기전용source/바이트·서명·엔진4case·실제200행same-call연결·clock변환·물리LAND와질의분리·4개관절거부연결.8명은이번정의된시나리오의부분회귀를통과했다.64명은최종64/64지만고지대25/27과helper실패가남아전체회귀미수용이다. 전경조건/실제자극이다른64실행은통제된반복최적화검증이아니다. 시각품질·20ms·최종수용은미완료다. 동일시각반복질의의정확한Fall호출식별도미완료다.
 
 6. 변경 사항
 
-별도 SE2 stage/분석/보고 도구와 compiler의 진단 이름 허용만 변경했다. 새 body와 명시한 Contacts/5mm 키는 시험 전용이다. NPC 실행 로직·PBO·애니메이션/보간/배속·운영 서버는 변경하지 않았다. integration F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8 그대로다. 재빌드/재서명은 없으며 이번5개 컴파일 실행 전에 의존 PBO 서명 검증은 성공했다. 개인 키는 배포하지 않았다.
+subset_previous_contact_detail.c를DGSubsetZZPreviousContacts로추가했다. builder에복사1개,launcher에명시적flag/검증·격리미션선택,compiler에별도검증이름을추가했다. 기존9script·base453D·render0C6E는동일하며NPC실행/전투/애니메이션/보간/충돌gate를수정하지않았다.
+
+새integration D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E는빌드·자동서명·서명검증·source/packed10개검증성공이다. 엔진compile두종과3개클라이언트시작전의서명검증도성공했다. build.json의engineCompiled=false는빌드시점보수적메타데이터로유지하고후속실제compile결과를별도보존했다. 개인키는배포하지않았다. 운영서버·이전PBO아카이브·raw를보존했다.
 
 7. 원시 증거
 
-validation-controlled-prelanding17-se2-512,동일 fresh,cell5-typed-relative의각 compile profile·motor/SE2/Accept/초기 setup TSV와 source/staged SHA를 보존한다. 실패한cell5/cell5-typed 소스·producer·compile/error/crash 로그도 연결한다. analysis.json은35개 원시 입력 해시와 결정/소스 대조,coverage 검증 수준을 담는다.
-
-기존 sourceRunId runtime-20261029-171916의17번 native-contact-failures에는5개 실패 표본과 해당 관절의previous/target이 있다. 이것만으로 같은 시점의4개 과거 접촉점과 정확한 Fall dt/압력속도를 복원할 수는 없다. 그 로그의seconds와 다른 진단의wall seconds를 임의로 합치지 않았고 nativeSeconds는 원문 식별값으로만 보존했다. 공개 패킷은 최종행/선정 실패/집계와 시험 함수를 제공하며 내부 전체 파일·로컬 경로·프로세스 정보는 제외한다.
+세runtime의launch/compile/config·native-ground/player/state/traversal/pose·landing/previous/contact-failure/owner TSV와분석을연결했다. baseline-F6DE와candidate-D61D의release/source/build/member/signature를보존한다. engine-join-proof와별도previous-contact-proof/live compileprofile도보존했다. 2mm의초기관계분석과엄격좌표분석의모호성기록을덮어쓰지않았고최종outcome-audit에한계를명시했다. 공개패킷은선정표본·집계·새관측/분석함수로제한하며전체내부로그·PBO/게임자산·프로세스/로컬경로는노출하지않는다.
 
 8. 잔여 문제
 
-다음은 기존 bounded landing-detail 행과 같은 호출에서 실제 캐시된4개 previousContacts·Fall dt/수직 및 압력속도를 읽기 전용으로 추가 기록하는 작업이다. 기존 sequence로 연결하고 추가 물리/본 query나 gate/애니메이션 변경은 하지 않는다. 구현·빌드·서명·엔진 검증 후 실제8/64 캡처로 초기 이력의 빈칸을 줄인 뒤 다시 재현한다. 계획은next-capture-plan.json이며 이번에 구현/실행한 것으로 보고하지 않는다.
+우선실제id4/seq226과전경3표본을actual4previousContacts/현재MSpose/dt/속도로재현해발판질의와전신SWEEP거부가맞는지검증한다. 그후에만한가지제한된contact-plane응답을검토하며기존root/관절/월드/peer검사와실제LAND조건을우회하지않는다. 정상낙하·밀침·재등반을보존한8→64실기검증이필요하다.
 
-회전/이동/지지/접촉의 일반 해법과 안전 LAND→EGRESS→FOLLOW,64명 미해결 구간,CPU-표시 시간 불일치,20ms 성능 목표는 남아 있다. 다른 승인된 인서전시 검증 때문에 현재 데스크톱 입력/캡처는 양보했고 공유 입력 런타임/게임 프로세스는 건드리지 않았다. 코드·로그 작업은 계속할 수 있으며 골은 활성 상태다.
+정확한 Fall-call serial/after-result가 없어 중복 질의1건의 호출 배정은 미확정이다. 전체 pre-Fall/peer 이력도 포함하지 않는다. 이는 next-experiment-plan에 남겼다. 고지대 미도달과 helper 거리/시간 한도, 전투 후 owner guard 복귀, CPU-표시 시간 join, 64명 비용 귀속/20ms는 별도 잔여 작업이다. 애니메이션 재생/업데이트 방법을 추측으로 바꾸지 않았다. 모든 실험은 정상 종료했고 골은 활성 상태다.
 
-원본 보고서 ID: 2026-10-29_185003_253762+0900_npc-prelanding17-se2.md
-원본 SHA-256: 7df3637cb5ea4aad404739fd8137e97f0f884c1856d46755804e12e8194950b9
+원본 보고서 ID: 2026-10-29_194818_541661+0900_npc-previous-contacts-capture.md
+원본 SHA-256: 8cc510b8e1dec37e487e901247249a68583c866f292fb46a789877a438ca0b1c
 이 텍스트는 복사용 파생본입니다. 수치·검증 한계는 원본과 같으며 상세 파일 해시 목록은 원본에 보존되어 있습니다.
 
-선정 함수·대표 기록: [검토 패킷](../downloads/checkpoints/2026-10-29_185003_253762+0900_npc-prelanding17-se2_evidence.txt)
+선정 함수·대표 기록: [검토 패킷](../downloads/checkpoints/2026-10-29_194818_541661+0900_npc-previous-contacts-capture_evidence.txt)
 
 [이전 기능 분석](../downloads/admission-report.txt) · [이전 애니메이션 분석](../downloads/animation-report.txt)
