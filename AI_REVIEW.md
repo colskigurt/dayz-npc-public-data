@@ -1,200 +1,181 @@
 # DayZ NPC AI — 외부 세션 검토 자료
 
-Snapshot: snapshot-20261029T224237-entry-preparation-resume-20261030
+Snapshot: snapshot-20261029T230525-actor50-footprint-diagnosis-20261030
 
-# 711C ON 회귀 검토 패킷
+# 50번 지지 검사 — 외부 검토 패킷
 
 ## 1. 작업 목표
 
-미뤄졌던 711C 준비 접촉 ON의 실제 8→64개체 기능 회귀를 수행하고, 정상 낙하와 미해결 낙하·등반 계약 실패를 구분한다. 애니메이션 실제 표시와 성능 기여도는 별도 실험이다. B8FB는 이미 8/64 시험을 거쳤으므로 과거 next의 미실행 문구를 현재 사실로 반복하지 않는다.
+64 ON에서 발생한50번 CLIMB_EXIT_VALIDATION을 지지 검사와 실제 배치/경로 문맥으로 분리하고,12번 낙하 재현에 필요한 입력의 누락을 확인한다. 정상 낙하·물리 검사·기존 실행 계층을 보존한다.
 
 ## 2. 실제 수행
 
-711C 보관본·서명·기존11개 script 동일성·시험 씬·기존14개 클립 검증 기록의 의존성을 재확인했다. 같은 씬·계측·그래픽·300초에서8 ON, 통과 확인 뒤64 ON을 순차 실행했다. 두 실행 정상 종료 후 기존 상태·고지대·접촉·입구·복구·시계 분석기를 실행했다. computer-use로 실제 장면도 한 시점씩 확인했다. 연속 영상/표시 부드러움 검증은 아니다. 원시 실험/운영 서버는 보존하고 D61D 서명본을 복원했다.
+기존 기록에서12/50의 pressure pose·landing/previous-contact·state 자료를 확인했다.50번 실패 root를 같은 fixture의 LandingSpace에 넣는17조건을 독립 로컬 headless 서버 두 번에서 반복했다. 같은 Floor 바닥 레이의 hit/법선/높이 조건과 root 비변경을 함께 검사했다. 별도 두 문맥 시험에서 admission-only 복원과 실제 시작 배치를 반영한 복원을 구분했다. 네 서버 시험 모두 종료·엔진 검사 통과했고 활성 PBO는 바꾸지 않았다.
 
 ## 3. 측정 결과
 
-|항목|8 ON 072332|64 ON 073005|
-|---|---:|---:|
-|최종 도착|8/8|63/64|
-|HIGH_HOLD 안 고지대 누락|0|0|
-|낙하 후 착지·FOLLOW 복귀|10|86|
-|CLIMB_EXIT_VALIDATION|0|1 (50번)|
-|착지 후 owner 계약 위반|0|0|
-|동일 호출 물리 전환 연결|전체 일치|전체 일치|
-|준비 변위 변경/수용 표본|11/11|109/103|
-|전경 미션 p50/p95/p99|20/32/34ms|27/68/88ms|
-
-한 번씩의 기능 시험이다. frame은 미션 갱신 간격이며 GPU Present/본 표시율/self CPU 비용이 아니다. 과거8 OFF와 설정상 단일요인 비교는 같지만 외부 부하·날짜가 달라35→32ms를 정책의 성능 개선으로 귀속하지 않는다. 반복 비교 미완료다.
-
-12번은107.15초 세 번째 낙하에 진입해 마지막299.753초에도 FALL이며 LAND 전환이 없었다.50번은52.56초 CLIMB_EXIT_VALIDATION 후 복귀했다. 최종 도착이 중간 실패를 지우지 않는다.
+- 기본17조건×2회:34행 모두 반복 일치. 두 문맥 시험에서도17조건을 각각 재실행해 전체 지지 행은68개, 문맥 행은4개다.
+- 정확한 실패 root:FOOT_Z_SUPPORT 재현. +Z 레이는 hit=true지만 법선Y=0.505337<기준0.65. 높이 차이는0.0200195m로 높이 제한0.35m 때문이 아니다.
+- 안쪽5mm 정적 위치는 CLEAR. 바깥10mm도 CLEAR이므로 단순히 더 안쪽이면 항상 안전하다는 규칙이 아니다.
+- admission-only 복원은 목표 거리0.202858m로 기록0.0650423m와 불일치하여 실제 목표 복원으로 채택하지 않았다.
+- 실제 등반 시작 배치 복원:이전 root→목표 거리0.0650423m 일치. 실패 root→목표 거리0.01783245m로 기록0.0178332m와 약0.00000075m 차이. 기존 선택기가 정적 지지 가능한 제안점을 선택했다.
+- 제안의 요청 제한20mm에 대해 출력 좌표 거리20.04719mm, float32 재구성20.04689mm. 처음의20.01mm 허용 검사에 실패했다. 허용 한도를 늘리지 않고 후보 미수용으로 기록했다.
+- 새8/64 클라이언트 회귀·프레임 p50/p95/p99·연속 표시 품질·성능 기여도 측정 없음. 이전8/64 최종 결과8/8 및63/64,64 p95=68ms는 이번 새 측정이 아니다.
 
 ## 4. 원인 분석
 
-확인:12번의 세 번째 낙하 후 접촉 실패375표본 중203개는 낮은 컨테이너 대상 joint0 검사다. 나머지에는 foot lift limit와 발 관절 거부가 섞인다. 마지막 위치는 고정됐고 FALL_NATIVE_JOINT_WORLD_0였다. 실제 경로는 previous-contact Fall wrapper → landing-detail Fall → Accept → SolveContacts다. Accept 거부 시 위치를 커밋하지 않고 탈출 시도 후 반환한다.
+확인된 사실:FOOT_Z_SUPPORT는 root 주변±0.23m 고정 지지점이며 애니메이션 발 본을 직접 검사하지 않는다. ray hit가 있어도 컨테이너 가장자리의 기울어진 표면 법선 때문에 거부될 수 있으며, 정적 재현 두 번에서 동일했다. 지지 함수를 설치 PBO 원문과 대조했다.
 
-가설: 컨테이너와 보존된 관절 접촉/포즈 때문에 낙하 후보가 계속 거부될 수 있다. 근본 원인은 미확정이다. 로그는 표본이며 초반 모든 호출을 덮지 않는다. landing observer표본0도 해당 분기가 전혀 실행되지 않았다는 증명이 아니다. 실제 이전 접촉·본·바닥 레이 동결 재생이 필요하다.
+문맥 복원에서 최초 admission만 사용하면 실제 StartPlacement를 빠뜨린다. 잘못된 복원은 보존하고 실제 동작의 근거로 사용하지 않았다. 실제 시작 root와 지지 높이를 사용한 복원이 기록 거리와 일치하지만 cached StartPlacement의 최대5mm 차이와85ms 앞선 접촉 offset 표본 한계는 유지한다.
 
-50번은 endpoint error약0.000038m, exit error약0.017833m인데 FOOT_Z_SUPPORT로 거부됐다. root거리만 완화해서는 안 된다. 마지막 발 지지와 lane2입구·출구·접촉을 별도로 재현해야 한다. 단일 실행으로 ON에 원인을 귀속하지 않는다.
+가설/후보:기존 끝점 접근 선택기를 이용해 기울어진 경계로 들어갈 제안을 피할 가능성이 있다. 그러나 아직 실제 Accept·이전 관절 접촉·시간 제한·군집 동작은 재현하지 않았다. 20mm 부동소수점 초과는 위치 정밀도 계산과 맞으며, 실제 이동 수용 전에 예산 검증이 필요하다. 지지 법선 기준을 낮추거나 순간 위치 보정으로 통과시키지 않는다.
+
+12번은 세 번째 낙하 시각107.15초 이후에 전체 네 관절 pose/이전 접촉을 같은 호출로 연결할 입력이 확보됐다고 볼 수 없다. pressure pose는107.358/107.977초 일부만 있고 landing observer는 세 번째 낙하에서0행이다. 이 부재를 분기 미호출의 증명으로 사용하지 않는다. 부족한 구간은 재사용 입력을 통한 제한적 관찰 계측이 필요하다.
 
 ## 5. 검증 수준
 
-8 ON:해당 씬 단일 기능 회귀 통과.64 ON:진단 성공·기능 회귀 실패.준비 분기 실제 적용은 표본에서 확인.반복 검증 완료·최종 수용 아님.애니메이션 표시 개선 미측정.성능 기여도 미측정.20ms p95 목표 미달.전체 골 미완료.
+정적50 지지 거부:진단 성공·17조건 두 번 반복 검증 완료(이 범위만). 배치 문맥/제안 선택:정적 단회 진단 성공, 실제 이동 미검증·예산 검사 미수용.12번 근본 원인 미확정.기능 수정/새8→64 회귀/시각/성능/20ms 목표/전체 최종 수용 모두 미완료.
 
 ## 6. 변경 사항
 
-게임 코드·그래프·PBO 새 수정/빌드 없음. 기존 서명711C를 시험 중 활성화하고 두 정상 종료 후 서명D61D로 복원·검증했다. 의존PBO3개 서명 검증 성공, 복원본 서명 검증 성공.개인 키 공개/배포 없음.새 분석 결과와 실패 선정 자료만 저장했다.
+stage_horde_actor50_footprint_replay.py, stage_horde_actor50_endpoint_context.py, analyze_horde_actor50_footprint_replay.py를 추가했다. compile_days_gone_native_runtime_probe.ps1에는 이 네 격리 validation의 허용 이름과 결과 marker 검증만 추가했다. 게임 소스·애니메이션·PBO·운영 서버는 변경하지 않았다. 활성 D61D와 의존 모듈 서명 재검증 성공. 새 PBO 빌드/서명은 수행하지 않았다.
 
 ## 7. 원시 증거
 
-runtime-20261030-072332 및 runtime-20261030-073005의 launch/state-contract/native-ground/contact-failures/post-touchdown/entry-preparation/frame-clock과 분석 JSON을 해시 연결한다. 로컬 entry-preparation-resume-20261030에 preflight, 활성화·복원 증거,8단일요인 비교,actor12-50선정 JSON이 있다. 공개본은 집계·선정 기록이며 전체 raw/로컬 경로/키/게임 자산을 공개하지 않는다.
+기준 sourceRunId runtime-20261030-073005의50번 sequence798,52.475초 직전 표본과52.56초 실패를 사용했다. 네 validation의 init.c·staged·engine-compile·profile TSV/log와 분석 JSON,원본 함수/PBO 해시를 연결한다. 첫 분석의 엄격한20.01mm 검사 실패와 잘못된 admission-only 복원을 보존했다. analysis-reviewed는 단위 필드 이름만 명확히 한 파생본이며 원래 analysis를 덮어쓰지 않았다. 공개 패킷은 선정 함수·표본만 포함한다.
 
 ## 8. 잔여 문제
 
-다음 기능 실험:12번 세 번째 낙하의 실제 이전 접촉과 포즈를 동결 재생하고,50번 마지막 발 지지/lane2끝점은 별도 재현한다. 지지 검사·정상 낙하를 끄거나 위치를 강제 보정하지 않는다. 재현 후 최소 수정과 새8→64·반복 OFF/ON 회귀로 확대한다.
+다음은12번을 포함한 FALL 거부 호출의 raw4/이전Contacts4·제안·caller dt·낙하 세대·velocity를 같은 호출로 기록하는 최소 관찰 계측이다. 기존 SolveContactsInternal이 이미 읽은 벡터를 재사용하고 새 물리/본 query를 추가하지 않는 방식부터 검토한다. OFF는 원래 경로 그대로,ON은 수용/거부 결과를 바꾸지 않는지 엔진 대조를 선행한다. 측정량과 기록 예산도 제한한다.
 
-애니메이션은 CPU 포즈/그래프 시계/실제 표시 불일치로 별도 유지한다. 새 지원 제어 소비 지점 확보 전 추측 보간·배속을 적용하지 않는다.64비용은 정지1/64애니메이션 및64 static/animated active 조건으로 별도 측정한다. 현재p95를 AI/충돌/렌더/GC로 나눌 수 없다. 이번은 기능 묶음 종료이며 전체 작업 종료가 아니다.
+50번은 실제 시작 배치·접촉 offset·마지막 제안과 이전 접촉으로 기존 선택기의 수용까지 검증하고, float32 좌표에서 실제 step budget을 재확인해야 한다. 두 원인의 근거가 확보된 뒤 국소 수정과8→64 회귀를 진행한다. 단순5mm 이동을 보편 해법으로 넣거나 법선 기준을 완화하지 않는다. 애니메이션 시계/표시와64 비용 기여도는 별도 실험으로 유지한다.
 
-선정 기준:12번 미해결 낙하와50번 유일한 CLIMB_EXIT_VALIDATION.정상 복구86건 보존.전체 로그가 아니다.
-
-
-선정 함수: DGSubsetZLandingBackoffDetail.c, 시작행 70, 원문 SHA256 11c1f45fc74c8fedfc11779b0e1f69bef8371995e932539ae6be092b9df97168
-선정 이유: 실제 낙하와 위치 커밋/거부 경로. 전체 상속/엔진 구현이 아니다.
+선정 함수 DGBNativeTraversal.c, 시작행180,SHA256 71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872
+고정 지지 검사 원문.전체 엔진/군집 구현이 아니다.
 ```cpp
-override void Fall(float dt)
+bool LandingSpace(vector nearPoint,out vector supported,bool requireEntitySpace=true)
     {
-        if(!LDOn()){super.Fall(dt);return;}
-        if(!Body.FrameFallPhysicsActive())
+        LandingChecks++;LandingDiagnostic="ROOT_SUPPORT";
+        if(!DGBGroundAgent.Floor(Body.Leader,nearPoint,supported))return false;
+        vector left,right;
+        LandingDiagnostic="FOOT_X_SUPPORT";
+        if(!DGBGroundAgent.Floor(Body.Leader,supported+"0.23 0 0",left))return false;
+        if(!DGBGroundAgent.Floor(Body.Leader,supported+"-0.23 0 0",right))return false;
+        if(Math.AbsFloat(left[1] - right[1])>0.22)return false;
+        LandingDiagnostic="FOOT_Z_SUPPORT";
+        if(!DGBGroundAgent.Floor(Body.Leader,supported+"0 0 0.23",left))return false;
+        if(!DGBGroundAgent.Floor(Body.Leader,supported+"0 0 -0.23",right))return false;
+        if(Math.AbsFloat(left[1] - right[1])>0.22)return false;
+        if(requireEntitySpace && !Body.Agent.ManagedPeerContacts)
+            foreach(DGBGroundAgent peer:Body.Director.Agents)
+                if(peer!=Body.Agent && peer.State!="DEAD" && Math.AbsFloat(peer.Position[1] - supported[1])<1 && DGBGroundAgent.FlatDistance(peer.Position,supported)<0.85)
+                {LandingDiagnostic="PEER:"+Body.Director.Agents.Find(peer);return false;}
+        if(requireEntitySpace && Body.Director.CrowdDynamics)
+            foreach(Man physicalPlayer:Body.Director.PerceivedPlayers)
+                if(physicalPlayer && physicalPlayer.IsAlive() && Math.AbsFloat(physicalPlayer.GetPosition()[1] - supported[1])<1.4 && DGBGroundAgent.FlatDistance(physicalPlayer.GetPosition(),supported)<0.7)
+                {LandingDiagnostic="PLAYER";return false;}
+        array<float> heights={0.35,0.9,1.5};
+        foreach(float height:heights)
         {
-            if(Recovering && Body.Request!=8)return;
-            if(!Recovering && Body.Request!=6 && Body.Request!=8)return;
+            Object hit;vector point,normal;float fraction;
+            vector center=supported+Vector(0,height,0);
+            if(Fixture().Occupied(center,0.23)){LandingDiagnostic="FIXTURE_VOLUME";return false;}
+            if(DayZPhysics.SphereCastBullet(center,center+"0 0.001 0",0.23,DGBGroundAgent.Walls(),Body.Leader,hit,point,normal,fraction))
+            {LandingDiagnostic="WORLD";if(hit){ LandingDiagnostic="WORLD:"+hit.GetType(); }return false;}
         }
-        bool escaped=EscapeStep(dt);
-        FallVelocity=Math.Max(-15,FallVelocity - 9.81*dt);
-        vector next=Body.Agent.Position+Vector(0,FallVelocity*dt,0);
-        if(PressureFallActive)next+=PressureFallVelocity*dt;
-        Object hit;vector point,normal;float fraction;bool landed=false;
-        if(DayZPhysics.RayCastBullet(Body.Agent.Position+"0 0.12 0",next+"0 -0.1 0",DGBGroundAgent.Floors(),Body.Leader,hit,point,normal,fraction))
-        {
-            if(normal[1]>=0.65 && point[1]<=Body.Agent.Position[1]+0.05 && point[1]>=next[1] - 0.1)
-            {
-                vector support;bool observedLandingValid=LandingSpace(point,support,!Body.Agent.ManagedPeerContacts);
-                LDObserveLanding(point,support,observedLandingValid,!Body.Agent.ManagedPeerContacts);
-                if(observedLandingValid){next=support;landed=true;}
-                else{if(!escaped){if(PressureFallActive){if(!PressureSlide(dt))AirEscapeTurn(dt);}else EscapeStep(dt);}Body.Reason="LANDING_SPACE_BLOCKED";return;}
-            }
-        }
-        if(!Accept(next,dt)){if(!escaped){if(PressureFallActive){if(!PressureSlide(dt))AirEscapeTurn(dt);}else EscapeStep(dt);}Body.Reason="FALL_"+Body.Reason;return;}
-        Body.Reason="NATIVE_FALL";
-        if(landed)
-        {
-            PressureFallActive=false;PressureFallVelocity=vector.Zero;
-            PressureEscapeValid=false;NextPressureEscapePlan=0;
-            Landings++;WantLanding=true;LandingDelay=0;
-            if(FallPresentationRequest==8 && FallStart-Body.Agent.Position[1]>0.75){LandingDelay=0.7;}
-            Body.NextRequest=0;
-            EgressGoal=Body.Agent.Position;
-            if(Active)
-            {
-                EgressGoal=Body.Agent.Position+DGBNativeGroundBody.Rotate("0 0 -1.2",Active.Heading);
-                if(Recovering && Active.Action=="CLIMB")EgressGoal=Body.Agent.Position - DGBNativeGroundBody.Rotate("0 0 -1.2",Active.Heading);
-            }
-            SetPhase("LAND");
-        }
-    }
-```
-
-
-선정 함수: DGBNativeTraversal.c, 시작행 725, 원문 SHA256 71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872
-선정 이유: 실제 낙하와 위치 커밋/거부 경로. 전체 상속/엔진 구현이 아니다.
-```cpp
-bool Accept(vector next,float dt)
-    {
-        MotionContactBlocked=false;
-        if(Body.Director.Crowd)
-        {
-            string rejection;
-            if(!Body.Director.Crowd.CoreClear(Body,Body.Agent.Position,next,rejection))
-            {
-                Body.Reason="TRAVERSAL_"+rejection;
-                if(Body.Director.OpenTraversal && Phase=="MOTION" && (rejection.IndexOf("PEER_CORE:")==0 || rejection=="PLAYER_CORE"))
-                {
-                    // A rejected proposed step did not move this actor off its
-                    // support. Contact is not evidence of a physical fall.
-                    MotionContactBlocked=true;MotionContactBlocks++;LastEntityContact=rejection;
-                }
-                return false;
-            }
-        }
-        float lift;ref array<vector> points={};
-        if(!Body.SolveContacts(next,Body.Agent.Heading,lift,points))
-        {Body.PoseBlocks++;return false;}
-        float travel=vector.Distance(Body.Agent.Position,next);
-        Body.Agent.Position=next;Body.Agent.Moved+=travel;Body.Agent.MeasuredSpeed=travel/Math.Max(dt,0.001);
-        Body.RootAccepted+=travel;Body.Lift=lift;Body.Contacts.Copy(points);
+        LandingDiagnostic="CLEAR";
         return true;
     }
 ```
 
-선정 기록(전체 로그 아님):
+선정 정적 결과(전체 TSV아님;0원본/1안쪽5mm/15바깥10mm):
 ```json
-{
-  "sourceRunId": "runtime-20261030-073005",
-  "actor12Last": {
-    "seconds": "299.753",
-    "id": "12",
-    "position": "<4511.270020, 339.357056, 10237.890625>",
-    "reason": "FALL_NATIVE_JOINT_WORLD_0",
-    "traversalPhase": "FALL",
-    "pressureEscapeDiagnostic": "SEPARATION_DISTANCE_LIMIT",
-    "pressureEscapeLastStepReject": "NEW_WORLD_CONTACT",
-    "pressureEscapeRejectFixture": "StaticObj_Container_1C"
+[
+  {
+    "case": "0",
+    "dz": "0",
+    "point": "<4512.349609, 342.178192, 10242.894531>",
+    "supported": "<4512.349609, 342.165131, 10242.894531>",
+    "valid": "false",
+    "gate": "FOOT_Z_SUPPORT",
+    "plusValid": "false",
+    "minusValid": "true",
+    "plusFloor": "<4512.349609, 342.145111, 10243.125000>",
+    "minusFloor": "<4512.349609, 342.165436, 10242.664063>",
+    "heightDelta": "-1",
+    "plusHit": "true",
+    "plusPoint": "<4512.349609, 342.145111, 10243.125000>",
+    "plusNormal": "<-0.007414, 0.505337, 0.862890>",
+    "plusFraction": "0.44763",
+    "plusObject": "StaticObj_Container_1C",
+    "plusHeightGap": "0.0200195",
+    "plusPredicateMatches": "true",
+    "minusHit": "true",
+    "minusPoint": "<4512.349609, 342.165436, 10242.664063>",
+    "minusNormal": "<-0.014666, 0.999892, 0.001341>",
+    "minusFraction": "0.428282",
+    "minusObject": "StaticObj_Container_1C",
+    "minusHeightGap": "0.000305176",
+    "minusPredicateMatches": "true",
+    "rootUnchanged": "true"
   },
-  "actor12Counts": {
-    "groundSamples": 375,
-    "contactFailureSamples": 375,
-    "contactFailureJoints": {
-      "3": 115,
-      "0": 203,
-      "2": 57
-    },
-    "landingObserverSamples": 0
+  {
+    "case": "1",
+    "dz": "-0.005",
+    "point": "<4512.349609, 342.178192, 10242.889648>",
+    "supported": "<4512.349609, 342.165131, 10242.889648>",
+    "valid": "true",
+    "gate": "CLEAR",
+    "plusValid": "true",
+    "minusValid": "true",
+    "plusFloor": "<4512.349609, 342.152496, 10243.120117>",
+    "minusFloor": "<4512.349609, 342.165436, 10242.659180>",
+    "heightDelta": "0.0129395",
+    "plusHit": "true",
+    "plusPoint": "<4512.349609, 342.152496, 10243.120117>",
+    "plusNormal": "<-0.009996, 0.681438, 0.731808>",
+    "plusFraction": "0.440615",
+    "plusObject": "StaticObj_Container_1C",
+    "plusHeightGap": "0.0126343",
+    "plusPredicateMatches": "true",
+    "minusHit": "true",
+    "minusPoint": "<4512.349609, 342.165436, 10242.659180>",
+    "minusNormal": "<-0.014667, 0.999892, 0.001335>",
+    "minusFraction": "0.428276",
+    "minusObject": "StaticObj_Container_1C",
+    "minusHeightGap": "0.000305176",
+    "minusPredicateMatches": "true",
+    "rootUnchanged": "true"
   },
-  "actor50Transitions": [
-    {
-      "sequence": "798",
-      "seconds": "52.56",
-      "id": "50",
-      "kind": "FALL_REQUEST",
-      "previous": "MOTION",
-      "next": "FALL",
-      "failure": "CLIMB_EXIT_VALIDATION",
-      "detail": "RECOVERY_FALL",
-      "motionElapsedBeforeTransition": "2.15",
-      "endpointError": "3.8071e-05",
-      "exitError": "0.0178332",
-      "link": "low_to_high_lane_2"
-    },
-    {
-      "sequence": "799",
-      "seconds": "52.56",
-      "id": "50",
-      "kind": "TRANSITION",
-      "previous": "MOTION",
-      "next": "FALL",
-      "failure": "CLIMB_EXIT_VALIDATION",
-      "detail": "FOOT_Z_SUPPORT",
-      "motionElapsedBeforeTransition": "2.15",
-      "endpointError": "3.8071e-05",
-      "exitError": "0.0178332",
-      "link": "low_to_high_lane_2"
-    }
-  ],
-  "limitations": [
-    "Contact failure logging is sampled; absence is not proof that a branch never ran.",
-    "No new replay, physics queries or pose/control changes; same-run correlation is not root-cause proof."
-  ]
-}
+  {
+    "case": "15",
+    "dz": "0.01",
+    "point": "<4512.349609, 342.178192, 10242.904297>",
+    "supported": "<4512.349609, 342.165131, 10242.904297>",
+    "valid": "true",
+    "gate": "CLEAR",
+    "plusValid": "true",
+    "minusValid": "true",
+    "plusFloor": "<4512.349609, 342.128662, 10243.134766>",
+    "minusFloor": "<4512.349609, 342.165436, 10242.673828>",
+    "heightDelta": "0.0367737",
+    "plusHit": "true",
+    "plusPoint": "<4512.349609, 342.128662, 10243.134766>",
+    "plusNormal": "<-0.014667, 0.999891, 0.001330>",
+    "plusFraction": "0.463298",
+    "plusObject": "StaticObj_Container_1C",
+    "plusHeightGap": "0.0364685",
+    "plusPredicateMatches": "true",
+    "minusHit": "true",
+    "minusPoint": "<4512.349609, 342.165436, 10242.673828>",
+    "minusNormal": "<-0.014664, 0.999892, 0.001324>",
+    "minusFraction": "0.428294",
+    "minusObject": "StaticObj_Container_1C",
+    "minusHeightGap": "0.000305176",
+    "minusPredicateMatches": "true",
+    "rootUnchanged": "true"
+  }
+]
 ```
 
 이전 애니메이션 진단: [선정 근거](downloads/animation-review.txt). 이번 진단은 시각·성능 해결을 뜻하지 않는다.

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T224237-entry-preparation-resume-20261030",
-  "generatedAt": "2026-10-29T22:42:37.443706+00:00",
+  "snapshotId": "snapshot-20261029T230525-actor50-footprint-diagnosis-20261030",
+  "generatedAt": "2026-10-29T23:05:25.414558+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -65,15 +65,16 @@
     "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
     "47A7C366B29B96CB1F0D789BB36D6DB9459D2AC3D63E7E2EE1B5BEA63287DE32",
     "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
-    "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933"
+    "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
+    "453D6A9E688D7BF14C5B98C305DD5A45200EC52156949C10691839B43C58BC9A"
   ],
   "verificationStatus": {
     "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "8_pass_single_run_64_failed_fall12_exit50",
-    "visual": "not_measured_this_batch",
-    "performance": "not_accepted_68ms_p95_no_attribution",
+    "functional": "previous64_failed_static50_probe_reproduced_not_repaired",
+    "visual": "not_measured_this_static_batch",
+    "performance": "not_measured_previous64p95_68ms_unaccepted",
     "regressionChecks": 0
   },
   "metrics": [
@@ -12062,27 +12063,32 @@
     {
       "id": "fall-12",
       "status": "open",
-      "description": "Third fall107.15s;no LAND before299.753s;exact prior pose/contact replay needed."
+      "description": "Full same-call priorContacts4/raw4 missing for third fall;bounded observation/parity required."
     },
     {
       "id": "climb-exit-50",
       "status": "open",
-      "description": "FOOT_Z_SUPPORT at native climb end;later arrival does not erase failure."
+      "description": "Fixed +/-0.23m probe normal0.505<0.65 rejection repeated;actual repair not verified."
+    },
+    {
+      "id": "endpoint-float-budget",
+      "status": "open",
+      "description": "Existing selector emits statically supported point but float32 actual20.047mm exceeds nominal20mm;no accepted movement trial."
     },
     {
       "id": "matched-repeats",
       "status": "unexecuted",
-      "description": "One ON run per population;matched OFF/ON repetitions pending."
+      "description": "New repaired8/64 and repeated matched conditions still pending."
     },
     {
       "id": "animation-visible",
       "status": "unmeasured",
-      "description": "No continuous video/CPU-versus-visible-time acceptance this batch."
+      "description": "No visible-time/CPU acceptance this static geometry batch."
     },
     {
       "id": "cost-attribution",
       "status": "unexecuted",
-      "description": "Mission p95=68ms is not CPU/GC/render attribution;20ms target unachieved."
+      "description": "64contribution controls pending;20ms target not reached."
     }
   ],
   "evidenceReferences": [
@@ -12733,23 +12739,41 @@
       "uri": "/data/experiments/entry-preparation-resume-20261030.json",
       "sha256": "9eb78dbe1b6ad49fb9d383104c1c0571de62ac14aa68183d03f0dd1519a46a06",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "actor50-footprint-diagnosis-20261030-report",
+      "uri": "/downloads/checkpoints/2026-10-30_080420_743931+0900_npc-actor50-footprint-diagnosis.txt",
+      "sha256": "dc597405a46e3371138640dbecf6adf5c7d4730b577d81fc98e8b5935a348da2",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "actor50-footprint-diagnosis-20261030-review",
+      "uri": "/downloads/checkpoints/actor50-footprint-review.txt",
+      "sha256": "5789d1ce3ffe8042f03597945b4c740c7e126ea94996e9f7c795e0ef080079a0",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "actor50-footprint-diagnosis-20261030-json",
+      "uri": "/data/experiments/actor50-footprint-diagnosis-20261030.json",
+      "sha256": "8544d42b25e5d182640bd9e3338603dc73d0ed2de646f256900a2a1478f95e82",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T22:42:37.443706+00:00",
-    "staleAfter": "2026-10-30T22:42:37.443706+00:00",
+    "sourceUpdatedAt": "2026-10-29T23:05:25.414558+00:00",
+    "staleAfter": "2026-10-30T23:05:25.414558+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261029T224237-entry-preparation-resume-20261030",
-      "generatedAt": "2026-10-29T22:42:37.443706+00:00",
-      "sourceUpdatedAt": "2026-10-29T22:42:37.443706+00:00"
+      "snapshotId": "snapshot-20261029T230525-actor50-footprint-diagnosis-20261030",
+      "generatedAt": "2026-10-29T23:05:25.414558+00:00",
+      "sourceUpdatedAt": "2026-10-29T23:05:25.414558+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-29T22:42:37.443706+00:00",
+      "at": "2026-10-29T23:05:25.414558+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -12764,7 +12788,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261029T224237-entry-preparation-resume-20261030/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261029T230525-actor50-footprint-diagnosis-20261030/"
   },
   "experiments": [
     {
@@ -13915,6 +13939,34 @@
         "cost-attribution"
       ],
       "replication": "one ON run per population;historical OFF comparison descriptive"
+    },
+    {
+      "id": "actor50-footprint-diagnosis-20261030",
+      "title": "50번 고정 지지 검사 반복 재현 — 실제 이동 수정은 미검증",
+      "track": "diagnostic",
+      "sourceRunId": [
+        "runtime-20261030-073005"
+      ],
+      "buildId": [
+        "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+        "453D6A9E688D7BF14C5B98C305DD5A45200EC52156949C10691839B43C58BC9A"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [],
+      "evidenceReferences": [
+        "actor50-footprint-diagnosis-20261030-report",
+        "actor50-footprint-diagnosis-20261030-review",
+        "actor50-footprint-diagnosis-20261030-json"
+      ],
+      "blockers": [
+        "fall-12",
+        "climb-exit-50",
+        "endpoint-float-budget",
+        "matched-repeats",
+        "animation-visible",
+        "cost-attribution"
+      ],
+      "replication": "Two independent17-case static repeats;two context variants once;not8/64 movement repetitions"
     }
   ],
   "kind": "experiments"
