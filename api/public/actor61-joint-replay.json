@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T08:45:48.681538+09:00",
+  "sourceRunId": "actor61-contact-replay-20261031-083900",
+  "buildId": "E2DC091FB183DB0A656AFA2438DF32FAE0195ED54C8AC75D9AFDED496F64EF5B",
+  "verificationStatus": {
+    "diagnostic": "clock_filter_gap_identified",
+    "jointGateReproduction": "two_engine_runs_passed",
+    "functional": "no_new_gameplay_regression",
+    "previous64FunctionalGatePassed": false,
+    "fullPoseRecovery": false,
+    "visual": "unmeasured",
+    "performance": "unmeasured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "kind": "headless_single_joint_gate_replay",
+    "engineRuns": 2,
+    "rowsTotal": 1862,
+    "samplesPerRun": 19,
+    "rowsPerRun": 931,
+    "targetPerturbationsPerRun": 912,
+    "clearJointTargetsPerRun": [
+      127,
+      127
+    ],
+    "baselineGateMatchesPerRun": [
+      19,
+      19
+    ],
+    "repeatedRowsByteIdentical": true,
+    "clockJoin": {
+      "contactFailuresSeconds": "Director.Now",
+      "contactInputsSeconds": "Director.Now-Director.Born",
+      "derivedBornSeconds": 32.18,
+      "matchingCalls": [
+        {
+          "inputLine": 160,
+          "failureLine": 20,
+          "offset": 32.18
+        },
+        {
+          "inputLine": 191,
+          "failureLine": 25,
+          "offset": 32.18000000000001
+        },
+        {
+          "inputLine": 228,
+          "failureLine": 37,
+          "offset": 32.17999999999999
+        },
+        {
+          "inputLine": 278,
+          "failureLine": 55,
+          "offset": 32.18
+        },
+        {
+          "inputLine": 321,
+          "failureLine": 95,
+          "offset": 32.18000000000001
+        }
+      ],
+      "correction": "Do not join native-contact-failures by raw seconds to mission-relative TSVs."
+    },
+    "foregroundFrameMetrics": null,
+    "visibleFrameMetrics": null,
+    "new8Or64GameplayRun": false,
+    "fullBodySolverReproduced": false
+  },
+  "blockers": [
+    "LAND/EGRESS complete raw4/previous4 missing due FCEligible filter.",
+    "19joint replays do not reproduce full25.45s recovery.",
+    "Clear single-joint target is not safe body movement.",
+    "Prior64 highFOLLOW63/64 functional failure remains unresolved.",
+    "Animation and cost optimization acceptance remain pending."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/actor61-joint-replay-20261031.md",
+      "sha256": "27090bd206bda487941a601cf7b098b0821a2d74eb9f9cca310cc4716d6070d2"
+    },
+    {
+      "path": "evidence/actor61-joint-replay-20261031.txt",
+      "sha256": "94330cdc3e9771d10590cbca5fd7dec6398293c7cc23081279ab1290ba4782d2"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

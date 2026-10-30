@@ -1,3 +1,5 @@
+> 최신 진단(2026-10-31):61번의19개 관절 차단을 실제 엔진2회에서 반복 재현했다. 로그 시간축 차이32.18초와 LAND/EGRESS 전체4관절 입력 누락을 확인했다. 전체 복구·기능 수정은 미검증이다. [재현 범위와 누락 자료](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/actor61-joint-replay-20261031.md). 이전64개체의 고지대63/64 실패는 아래에 보존한다.
+
 > 최신 계측 진단(2026-10-31): 함수별64개체 기록은 확보했지만 고지대 FOLLOW63/64로 기능 게이트 미통과.61번이 낙하/착지 복구에서 지연된 뒤 최종64/64는 도달했다. 비용 반복·시각/성능 수용도 미완료다. [조건·수치·61번 타임라인](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/follow-cost-sixtyfour-20261031.md). 이전 B93D 기능 반복은 아래에 보존한다.
 
 > 最新 계측 진단(2026-10-31): B93D를 보존한 별도 계측 패키지에서 FOLLOW 내부 함수의8개체 실제 기록을 검증했다. 새 패키지64명·대조 반복·시각/성능 수용은 아직 미완료다. [조건·수치·실패 이력](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/follow-cost-eight-20261031.md). 아래의 이전 B93D64명 기준 측정/기능 반복은 보존한다.
