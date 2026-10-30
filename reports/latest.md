@@ -1,3 +1,5 @@
+> 2026-10-31 코드 분석: GPUSkinning과 crowd-simulation을 고정 커밋으로 비교했다. 런타임 변경·신규 실험 없음. [적용 범위와 한계](operations/external-horde-source-review-20261031.md). 아래 실험 시각·측정값은 종전 그대로다.
+
 # 복구 후보 실제 8→64 시험: 최종 도착과 미해결 고지대 도달 구분
 
 > 운영 변경: Steam 최소 작업본을 기존 경로에 세팅했다. 대용량 삭제는 미완료다. 아래 실험 시각·수치는 변경하지 않았다. [최신 작업 상태](operations-latest.md)

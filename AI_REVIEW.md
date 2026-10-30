@@ -1,3 +1,5 @@
+> 최신 분석: GPU 직접 이식 경로 미확보. 공간 색인은 이미 존재하며 이웃 검색 분산은 격리 실험 후보다. 끊김 원인은 이번에 확정하지 않았다. [코드 비교](reports/operations/external-horde-source-review-20261031.md)
+
 # DayZ NPC AI — 외부 세션 검토 자료
 
 > 최신 운영 감사: 완료된 파일이동 사례로 네 원칙을 대조했다. 적용조항은 범위내 충족, 신규설계조항은 N/A. 전체범위·효율성은 미검증이며 새 NPC 실험 없음. [감사 결과](reports/operations-latest.md)
