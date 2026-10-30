@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "actor12-continuous-fall-20261031-065655"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "engineRuns",
+        "newContinuousRows",
+        "newGuardRows",
+        "totalRows",
+        "repetitions",
+        "condition",
+        "frameTime",
+        "visibleAnimation"
+      ],
+      "properties": {
+        "engineRuns": {
+          "const": 4
+        },
+        "newContinuousRows": {
+          "const": 32
+        },
+        "newGuardRows": {
+          "const": 28
+        },
+        "totalRows": {
+          "const": 836
+        },
+        "repetitions": {
+          "const": 2
+        },
+        "frameTime": {
+          "type": "null"
+        },
+        "visibleAnimation": {
+          "type": "null"
+        }
+      }
+    }
+  }
+}
