@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "touchdown-budget-runtime-20261031-071424"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "required": [
+          "sourceRunId",
+          "agents",
+          "postTouchdownBudgetScope",
+          "durationSeconds",
+          "repetitions",
+          "functional",
+          "foregroundMissionFrameMs",
+          "stimulus",
+          "budgetAudit"
+        ],
+        "properties": {
+          "agents": {
+            "enum": [
+              8,
+              64
+            ]
+          },
+          "durationSeconds": {
+            "const": 300
+          },
+          "repetitions": {
+            "const": 1
+          }
+        }
+      }
+    }
+  }
+}
