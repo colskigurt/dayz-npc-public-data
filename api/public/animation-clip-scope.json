@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "1.0.0",
+  "documentType": "animation-clip-diagnostic",
+  "generatedAt": "2026-10-30T19:46:16.276303+00:00",
+  "sourceRunId": "animation-clip-scope-20261031-043404",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "verificationStatus": {
+    "diagnosis": "selected_windows_succeeded",
+    "functionalRegression": "not_executed",
+    "visibleQuality": "not_accepted",
+    "performance": "not_accepted",
+    "fullGoal": "active"
+  },
+  "metrics": [
+    {
+      "runId": "runtime-20261031-043738",
+      "clip": "idle",
+      "previewClip": 0,
+      "normalQuitVerified": true,
+      "logicalAgents": 1,
+      "nativeRenderParts": 8,
+      "seconds": 60,
+      "ai": false,
+      "rootMovement": false,
+      "frameSync": "on",
+      "queryPose": true,
+      "recording": true,
+      "repetitions": 1,
+      "foregroundMissionFrameMs": {
+        "p50": 20.0,
+        "p95": 35.0,
+        "p99": 36.0
+      },
+      "measurementWindowMissionSeconds": [
+        15,
+        55
+      ],
+      "foregroundFraction": 1.0,
+      "callbackHz": 12.80843370426014,
+      "animationClockPerMissionSecond": 0.6404160831147667,
+      "cpuPoseConsecutivePairs": 1998,
+      "cpuPoseExactlyRepeatedPairs": 0,
+      "videoHUDMatchedFrames": 537,
+      "videoHUDFrames": 540,
+      "selectedVideoWindowsSeconds": [
+        [
+          10,
+          13
+        ],
+        [
+          20,
+          23
+        ],
+        [
+          30,
+          33
+        ]
+      ],
+      "uiChangedBodyHeldAt10PixelThreshold": 0,
+      "uiChangedPairs": 446,
+      "joinedPairs": 441,
+      "cpuVisibleIncrementCorrelationLag0": 0.9234337998126579,
+      "videoSha256": "02eae23fc2223e134ed4ff47c8d1af95fd0da822178e6d237c2444994872636c",
+      "videoBytes": 59472798,
+      "visualAccepted": false,
+      "performanceAccepted": false
+    },
+    {
+      "runId": "runtime-20261031-043955",
+      "clip": "walk",
+      "previewClip": 1,
+      "normalQuitVerified": true,
+      "logicalAgents": 1,
+      "nativeRenderParts": 8,
+      "seconds": 60,
+      "ai": false,
+      "rootMovement": false,
+      "frameSync": "on",
+      "queryPose": true,
+      "recording": true,
+      "repetitions": 1,
+      "foregroundMissionFrameMs": {
+        "p50": 20.0,
+        "p95": 34.0,
+        "p99": 36.0
+      },
+      "measurementWindowMissionSeconds": [
+        15,
+        55
+      ],
+      "foregroundFraction": 1.0,
+      "callbackHz": 13.357805649026206,
+      "animationClockPerMissionSecond": 0.6678826348526562,
+      "cpuPoseConsecutivePairs": 1998,
+      "cpuPoseExactlyRepeatedPairs": 3,
+      "videoHUDMatchedFrames": 520,
+      "videoHUDFrames": 540,
+      "selectedVideoWindowsSeconds": [
+        [
+          10,
+          13
+        ],
+        [
+          20,
+          23
+        ],
+        [
+          30,
+          33
+        ]
+      ],
+      "uiChangedBodyHeldAt10PixelThreshold": 3,
+      "uiChangedPairs": 437,
+      "joinedPairs": 407,
+      "cpuVisibleIncrementCorrelationLag0": 0.8883455528034779,
+      "videoSha256": "bba7747d437b8e572b0d7678d5ffe767eb79800d3406756121dc376b1bb42f7d",
+      "videoBytes": 69885874,
+      "visualAccepted": false,
+      "performanceAccepted": false
+    }
+  ],
+  "blockers": [
+    "Independent safe evaluation/display control not established",
+    "Other animation states not covered by these two trials",
+    "No new8/64 functional or64 performance matrix"
+  ],
+  "evidenceReferences": [
+    "reports/operations/idle-walk-visible-20261031.md"
+  ],
+  "limitations": [
+    "Animation callback rate is not visible FPS",
+    "Clock rate denominator is mission elapsed time; no direct clip phase",
+    "No new direct native accumulator observation for idle/walk",
+    "CPU pose queries can affect cached outputs",
+    "Video pixel mask is not optical joint tracking",
+    "CRF0 NV12 recording; no GPU Present timestamps",
+    "Each clip one finalized recorded run; no candidate optimization",
+    "Input-key audit covers upstream complete/combat TXA, not decoded compiled ANM",
+    "One logical agent has eight native render parts, not eight AI agents"
+  ]
+}
