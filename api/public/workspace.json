@@ -1,29 +1,30 @@
 {
   "schemaVersion": "1.0.0",
   "kind": "workspace",
-  "generatedAt": "2026-10-30T17:08:24+09:00",
-  "sourceRunId": "steam-working-set-migration-20261030",
+  "generatedAt": "2026-10-30T17:20:56+09:00",
+  "sourceRunId": "manual-cleanup-staging-20261030",
   "buildId": "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
   "verificationStatus": {
     "workspaceSetup": "diagnosis_succeeded",
     "signatureChecks": "3/3",
     "configSyntaxChecks": "3/3",
     "gitState": "unchanged",
-    "cleanup": "incomplete",
+    "cleanup": "not_executed_by_agent;user_manual_deletion_pending",
     "gameplay": "unexecuted",
     "visualAcceptance": false,
-    "performanceAcceptance": false
+    "performanceAcceptance": false,
+    "manualCleanupStaging": "diagnosis_succeeded"
   },
   "metrics": {
-    "sourceFilesCompared": 149279,
-    "activeFilesBeforeEvidenceCopy": 23147,
-    "activeBytesBeforeEvidenceCopy": 5217733179,
-    "preservedLocalFiles": 12,
+    "movedDirectories": 6,
+    "oldLocationsAbsent": 6,
+    "destinationDirectoriesPresent": 6,
+    "signatureChecksPassed": 3,
+    "configSyntaxChecksPassed": 3,
     "frameTimeMs": null
   },
   "conditions": {
-    "source": "Steam private recovery snapshot",
-    "mode": "minimal working set",
+    "action": "same-volume atomic directory moves only",
     "gameClientExecuted": false,
     "performanceRepetitions": 0
   },
@@ -31,12 +32,7 @@
     {
       "id": "local-cleanup",
       "status": "open",
-      "description": "Automatic approval review rejected a deletion-containing recovery command; no cleanup or reclaimed-space claim."
-    },
-    {
-      "id": "publisher",
-      "status": "open",
-      "description": "Publisher was opened during work and was preserved; use confirmation pending."
+      "description": "Six old directories consolidated for user manual deletion; actual deletion and reclaimed space remain unverified."
     },
     {
       "id": "gameplay-revalidation",
@@ -50,6 +46,29 @@
       "sha256": "5ef4a494684de7c6d59351e6dd1372cde29fb769cbf9de8f8cb72324f84cb86d",
       "scope": "private_original_checkpoint_identifier_only",
       "reportId": "2026-10-30_170824_610467+0900_npc-steam-minimal-workspace.md"
+    },
+    {
+      "id": "manual-cleanup-staging-checkpoint",
+      "sha256": "5c8ef99799a508f65267eaa4ff52f86d29a5a196873228d60b13d5d6160bd620",
+      "scope": "private_original_checkpoint_identifier_only",
+      "reportId": "2026-10-30_172056_668448+0900_npc-manual-cleanup-staging.md"
     }
-  ]
+  ],
+  "previousMetrics": {
+    "sourceRunId": "steam-working-set-migration-20261030",
+    "generatedAt": "2026-10-30T17:08:24+09:00",
+    "metrics": {
+      "sourceFilesCompared": 149279,
+      "activeFilesBeforeEvidenceCopy": 23147,
+      "activeBytesBeforeEvidenceCopy": 5217733179,
+      "preservedLocalFiles": 12,
+      "frameTimeMs": null
+    },
+    "conditions": {
+      "source": "Steam private recovery snapshot",
+      "mode": "minimal working set",
+      "gameClientExecuted": false,
+      "performanceRepetitions": 0
+    }
+  }
 }

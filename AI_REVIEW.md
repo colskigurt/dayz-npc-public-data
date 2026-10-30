@@ -1,5 +1,7 @@
 # DayZ NPC AI — 외부 세션 검토 자료
 
+> 최신 운영 기록: 이전 자료6폴더를 바탕화면 검토함으로 이동했다. 실제 삭제·공간 회수는 미확인이다. 새 NPC 실험은 없다. [최신 작업](reports/operations-latest.md)
+
 > 운영 변경: Steam 최소 작업본을 기존 경로에 세팅했다. 대용량 삭제는 미완료다. 아래 실험 시각·수치는 변경하지 않았다. [최신 작업 상태](reports/operations-latest.md)
 
 Snapshot: snapshot-20261030T004117-escape-refinement-runtime-20261030
