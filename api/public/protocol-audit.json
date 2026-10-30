@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1.0.0",
+  "kind": "protocol-audit",
+  "generatedAt": "2026-10-30T18:00:54+09:00",
+  "sourceRunId": "protocol-audit-20261030-175832",
+  "buildId": null,
+  "conditions": {
+    "sample": "completed manual-cleanup-staging-20261030",
+    "newHelperCases": "read-only; no --restore",
+    "repetitions": 1,
+    "newGameExperiment": false
+  },
+  "verificationStatus": {
+    "applicableClauses": "scoped_pass",
+    "fullFourPrincipleCoverage": "not_established",
+    "efficiency": "unmeasured",
+    "externalAI": "not_retested"
+  },
+  "metrics": {
+    "newReadOnlyCasesPassed": 3,
+    "newReadOnlyCasesTotal": 3,
+    "historicalEvidenceHashesMatched": 3,
+    "watchedFilesUnchanged": 5,
+    "principlesApplicable": 3,
+    "principlesNotApplicable": 1,
+    "frameTimeMs": null
+  },
+  "verdicts": [
+    {
+      "principle": 1,
+      "status": "scoped_pass"
+    },
+    {
+      "principle": 2,
+      "status": "scoped_pass"
+    },
+    {
+      "principle": 3,
+      "status": "not_applicable"
+    },
+    {
+      "principle": 4,
+      "status": "scoped_pass"
+    }
+  ],
+  "correction": {
+    "priorInterpretation": "Principle3 partial due to missing recorded prior rollback/timebox",
+    "finalInterpretation": "Not applicable to simple relocation; prior interpretation preserved and refuted"
+  },
+  "blockers": [
+    {
+      "id": "coverage",
+      "description": "New-design adoption specimen not tested."
+    },
+    {
+      "id": "efficiency",
+      "description": "No controlled comparison of effort or failure rate."
+    }
+  ],
+  "evidenceReferences": [
+    {
+      "reportId": "2026-10-30_180054_701921+0900_npc-four-principles-audit.md",
+      "sha256": "73a770208ddd25368708986b21d3553f95e76f652f157d9ba2520b176da78e26",
+      "scope": "private_original_checkpoint_identifier_only"
+    }
+  ]
+}
