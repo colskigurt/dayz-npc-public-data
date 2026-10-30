@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T06:55:32.346737+09:00",
+  "sourceRunId": "actor12-fall-replay-20261031-064519",
+  "buildId": "E57BFD5C08A6B45B34D503A75B5C7AE606FADE270D4401C58DD59C2F70E1A125",
+  "verificationStatus": {
+    "diagnosis": "repeated_frozen_and_state_calls",
+    "candidate": "mission_subclass_only",
+    "functional": "not_gameplay_accepted",
+    "visual": "unmeasured",
+    "performance": "unmeasured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "engineRuns": 5,
+    "recordedRows": 954,
+    "correctedFrozenRows": 712,
+    "ownerRows": 64,
+    "validatedCorrectedRows": 776,
+    "preliminaryRows": 178,
+    "excludedPreliminaryBudgetRows": 4,
+    "correctedFrozenRowsEqual": true,
+    "ownerRowsEqual": true,
+    "repetitions": 2,
+    "condition": "Frozen recorded2poses;16directions x5lengths,6rotations,baseline,2budgetcases per pose; actual ownercalls4variants x2modes. No activeAI/crowd.",
+    "frameTime": null,
+    "visibleAnimation": null,
+    "actualGameplayNewRuns": 0
+  },
+  "blockers": [
+    "Frozen body,not animation/peer/crowd replay.",
+    "Candidate not packaged or applied to gameplay.",
+    "No continuous fall-to-landing success proved.",
+    "No new8/64,p50/p95/p99,visibleanimation orperformance attribution.",
+    "Simulated combat cancel callsPTCancel directly;not actual damage callback."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/actor12-fall-budget-20261031.md",
+      "sha256": "2d2f3f2c77d3781b6b4ab996bcaf7cc5b6f61ab29c84b536ffc5002419d57ce4"
+    },
+    {
+      "path": "evidence/actor12-fall-budget-20261031.txt",
+      "sha256": "6f1a4480386b56762268541e2abc82ba2b854893fc8f009f48ede81c53b4cf96"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
