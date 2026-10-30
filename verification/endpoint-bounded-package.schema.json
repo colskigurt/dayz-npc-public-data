@@ -1,0 +1,128 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Signed bounded endpoint package public required contract",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sourceRunId": {
+      "type": "string"
+    },
+    "buildId": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{64}$"
+    },
+    "verificationStatus": {
+      "type": "object",
+      "required": [
+        "signatureVerified",
+        "packedSourcesVerified",
+        "liveSceneCompilePassed",
+        "gameplayRegression",
+        "finalAcceptance",
+        "visualAcceptance",
+        "performanceAcceptance"
+      ],
+      "properties": {
+        "signatureVerified": {
+          "const": true
+        },
+        "packedSourcesVerified": {
+          "const": 14
+        },
+        "liveSceneCompilePassed": {
+          "const": true
+        },
+        "gameplayRegression": {
+          "const": "not_executed"
+        },
+        "finalAcceptance": {
+          "const": false
+        },
+        "visualAcceptance": {
+          "const": false
+        },
+        "performanceAcceptance": {
+          "const": false
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "totalRows",
+        "totalEngineRunsIncludingLiveCompile",
+        "newClientRuns",
+        "newFrameTimes",
+        "workingPboChanged",
+        "targetP95Ms"
+      ],
+      "properties": {
+        "totalRows": {
+          "const": 216
+        },
+        "totalEngineRunsIncludingLiveCompile": {
+          "const": 7
+        },
+        "newClientRuns": {
+          "const": 0
+        },
+        "newFrameTimes": {
+          "type": "null"
+        },
+        "workingPboChanged": {
+          "const": false
+        },
+        "targetP95Ms": {
+          "const": 20
+        }
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidenceReferences": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "required": [
+          "validation",
+          "compileSha256",
+          "tsvSha256"
+        ],
+        "properties": {
+          "validation": {
+            "type": "string"
+          },
+          "compileSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "tsvSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    }
+  }
+}
