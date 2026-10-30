@@ -1793,24 +1793,9 @@
       "sha256": "34e8af09acdd0e6680120aeb432702d5651a45bd04bbd1a942bf9f1b9b90c15c"
     },
     {
-      "path": "reports/operations-latest.md",
-      "bytes": 6950,
-      "sha256": "dee64e5cf03ef6e8ab4ff1a4cf9a5970ade8fa9acee0579c745b7f8f2697c7fd"
-    },
-    {
       "path": "reports/operations/actor60-footprint-accept-20261031.md",
       "bytes": 6950,
       "sha256": "dee64e5cf03ef6e8ab4ff1a4cf9a5970ade8fa9acee0579c745b7f8f2697c7fd"
-    },
-    {
-      "path": "reports/latest.md",
-      "bytes": 11131,
-      "sha256": "37aa458bc53beebe5a0730133edac550f5ac5f46a0965405c19110191faf9fba"
-    },
-    {
-      "path": "AI_REVIEW.md",
-      "bytes": 15277,
-      "sha256": "b01e638eeb2cc01b536289083073bd32348b6ec70b4735a11ce40fa042c9bd1e"
     },
     {
       "path": "api/public/actor60-footprint-accept.json",
@@ -1821,6 +1806,36 @@
       "path": "evidence/actor60-footprint-accept-20261031.txt",
       "bytes": 47856,
       "sha256": "cff8a1e675ebc6b3ded46be081a3f6e87b00b04755f6580a0022aba06cb4ba34"
+    },
+    {
+      "path": "reports/operations-latest.md",
+      "bytes": 6487,
+      "sha256": "81cbbd69ea2e73a8aaa6c22027bff9d881cd49e687bdf1dee09eaa2a96f6ee9d"
+    },
+    {
+      "path": "reports/operations/endpoint-bounded-package-20261031.md",
+      "bytes": 6487,
+      "sha256": "81cbbd69ea2e73a8aaa6c22027bff9d881cd49e687bdf1dee09eaa2a96f6ee9d"
+    },
+    {
+      "path": "reports/latest.md",
+      "bytes": 11554,
+      "sha256": "c8d4fdc699632f480ad50dc6a7968b2ee16d397bcc039843bad510762b3d5269"
+    },
+    {
+      "path": "AI_REVIEW.md",
+      "bytes": 15700,
+      "sha256": "01791e8f91dd6bb120ff4e3f8839aa03ab68a319409b49216538b4ffb49c9767"
+    },
+    {
+      "path": "api/public/endpoint-bounded-package.json",
+      "bytes": 4492,
+      "sha256": "8ecf64a70e403aa2f770a59476cb7630eaaecf8f2d8c560a8be8388b0bdc7a1e"
+    },
+    {
+      "path": "evidence/endpoint-bounded-package-20261031.txt",
+      "bytes": 37234,
+      "sha256": "590399a8f22be973e2ce5154d7e9fd49706981cdf5da66d561a014bb0d397c1d"
     }
   ],
   "supplementalPublication": {
@@ -1872,5 +1887,13 @@
     "scope": "Diagnostic replay only,no client/PBO update",
     "gameplayAccepted": false,
     "report": "reports/operations/actor60-footprint-accept-20261031.md"
+  },
+  "endpointBoundedPackagePublication": {
+    "generatedAt": "2026-10-31T06:10:09.786799+09:00",
+    "sourceRunId": "endpoint-bounded-guards-20261031-055401",
+    "buildId": "e57bfd5c08a6b45b34d503a75b5c7ae606fade270d4401c58dd59c2f70e1a125",
+    "scope": "Signed isolated candidate andfrozen tests;no new gameplay",
+    "finalAccepted": false,
+    "report": "reports/operations/endpoint-bounded-package-20261031.md"
   }
 }

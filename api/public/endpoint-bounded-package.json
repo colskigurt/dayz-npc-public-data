@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T06:10:09.786799+09:00",
+  "sourceRunId": "endpoint-bounded-guards-20261031-055401",
+  "sourceGameplayRunId": "runtime-20261031-051732",
+  "buildId": "e57bfd5c08a6b45b34d503a75b5c7ae606fade270d4401c58dd59c2f70e1a125",
+  "verificationStatus": {
+    "diagnostic": "repeated_frozen_guard_and_actual_package_pass",
+    "signatureVerified": true,
+    "packedSourcesVerified": 14,
+    "liveSceneCompilePassed": true,
+    "gameplayRegression": "not_executed",
+    "finalAcceptance": false,
+    "visualAcceptance": false,
+    "performanceAcceptance": false
+  },
+  "metrics": {
+    "conditions": "Recorded single-pose raw4/previous4;actual world/contacts and Accept;direct call contexts;not full fall/peer/graph replay",
+    "prototypeGuardRuns": 2,
+    "prototypeGuardRows": 96,
+    "packagedGuardRuns": 2,
+    "packagedGuardRows": 96,
+    "packagedContactRuns": 2,
+    "packagedContactRows": 24,
+    "totalRows": 216,
+    "totalEngineRunsIncludingLiveCompile": 7,
+    "excludedContextsPerMode": 21,
+    "worldLiftBlockingCases": 2,
+    "newClientRuns": 0,
+    "newFrameTimes": null,
+    "targetP95Ms": 20,
+    "signatureVerified": true,
+    "workingPboChanged": false,
+    "defaultEndpointLookahead": false
+  },
+  "blockers": [
+    "ActualsamePBOOFF/ON8->64 still pending",
+    "Frozen FALL call equivalence doesnot establish full fall/recovery runtime",
+    "Only initial ELResolveProposal numerical bound;native Motion existing-fit path unchanged",
+    "Animation timing/visible quality and64cost attribution unresolved;20ms p95not achieved"
+  ],
+  "evidenceReferences": [
+    {
+      "validation": "controlled-endpoint-bounded-guards",
+      "compileSha256": "c20f644b7f46bfe9ba58cecbc78b4ffc20752e8d5ef33749e9df147020de0210",
+      "tsvSha256": "c725be36f4976b9e84a0c11ca932c92e6b207fae0564a8215a5676ebedece9b3"
+    },
+    {
+      "validation": "controlled-endpoint-bounded-guards-repeat",
+      "compileSha256": "46bf981f709f1f502cf6d04a421317e0e6e1a751c94fc5183571c6544f84e580",
+      "tsvSha256": "c725be36f4976b9e84a0c11ca932c92e6b207fae0564a8215a5676ebedece9b3"
+    },
+    {
+      "validation": "controlled-endpoint-bounded-packaged-guards",
+      "compileSha256": "33a55166a7d7a8aa1b585832af3f5ada96b1d3f72177e678962fa5049a13310f",
+      "tsvSha256": "c725be36f4976b9e84a0c11ca932c92e6b207fae0564a8215a5676ebedece9b3"
+    },
+    {
+      "validation": "controlled-endpoint-bounded-packaged-guards-repeat",
+      "compileSha256": "b8f91d3cef8902128d30ecd71670e4c42d3516a5b1b47b749a38e13154c8e7ea",
+      "tsvSha256": "c725be36f4976b9e84a0c11ca932c92e6b207fae0564a8215a5676ebedece9b3"
+    },
+    {
+      "validation": "controlled-endpoint-bounded-packaged-contact",
+      "compileSha256": "89e5319f43b6b0f29215a2b58ba4a5c199f593e90ed04b8b1640590544093aea",
+      "tsvSha256": "1d4d5c9f6075369cd266b58632e17f743559908562bd195c1d3670d68e68efd2"
+    },
+    {
+      "validation": "controlled-endpoint-bounded-packaged-contact-repeat",
+      "compileSha256": "1c0e68fec76c8f618a52426374ca18d9102024fd3a0c2b38bcb0a845257e759f",
+      "tsvSha256": "1d4d5c9f6075369cd266b58632e17f743559908562bd195c1d3670d68e68efd2"
+    }
+  ],
+  "report": "reports/operations/endpoint-bounded-package-20261031.md",
+  "nextRuntimePlan": {
+    "candidatePboSha256": "E57BFD5C08A6B45B34D503A75B5C7AE606FADE270D4401C58DD59C2F70E1A125",
+    "scope": "Same held-high fixture;existing NPC pipeline;only endpoint-lookahead flag varies",
+    "schedule": [
+      {
+        "count": 8,
+        "endpointLookahead": false,
+        "seconds": 300
+      },
+      {
+        "count": 8,
+        "endpointLookahead": true,
+        "seconds": 300
+      },
+      {
+        "count": 64,
+        "endpointLookahead": false,
+        "seconds": 300
+      },
+      {
+        "count": 64,
+        "endpointLookahead": true,
+        "seconds": 300
+      }
+    ],
+    "requirements": [
+      "All signed-package headless tests pass first",
+      "Each run normalexit+stimulusvalidity+state contracts",
+      "Gate64launch onvalid8fixture;record failures honestly",
+      "Further repeats required before final acceptance"
+    ],
+    "limits": [
+      "Initial ELResolveProposal vector only;native Motion existing-fit arithmetic is unchanged andnot globally budget certified",
+      "No performance attribution fromthis single changing-contact scenario",
+      "No animation clock/visible interpolation change"
+    ],
+    "workingReleasePreserved": true,
+    "goalComplete": false
+  }
+}
