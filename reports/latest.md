@@ -1,3 +1,5 @@
+> 최신 반복 회귀(2026-10-31): B93D 예산 복원 ON은 8명·64명 각각 두 번 기능 게이트 통과. 64명 최종 도착 64/64 두 번, 낙하 복귀 83/81회. p95 66/60ms, 시각·성능·전체 골 미수용. [여섯 실행의 결과와 한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/touchdown-budget-six-20261031.md). 아래는 과거 보존 기록이다.
+
 > 최신 실제8→64비교(2026-10-31): B93D의예산복원OFF/ON각300초를종료하고도착·낙하복귀와실제예산잔류표본을분리했다.후보추가반복·시각·성능수용은아직미완료다. [네실행의결과와한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/touchdown-budget-four-20261031.md). 아래는과거보존기록이다.
 
 > 최신 실제8명비교(2026-10-31): B93D의예산복원OFF/ON각300초를종료하고도착·낙하복귀와실제예산잔류표본을분리했다.64명·추가반복·시각·성능수용은아직미완료다. [두실행의결과와한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/touchdown-budget-eight-20261031.md). 아래는과거보존기록이다.
