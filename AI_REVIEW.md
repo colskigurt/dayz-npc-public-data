@@ -1,3 +1,5 @@
+> 시험 조건 정정(2026-10-31): 기존64개체 HIGH_HOLD의 실제 플레이어 high 유지 약29.5초. 실제 high 유지 중 high+FOLLOW60/64이며, 최종64/64 도착과 별도다. 신규 런타임·수정·시각/성능 수용 아님. [원시 위치 기반 재분석](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/high-stimulus-validity-20261031.md).
+
 > 최신 실측: idle·walk 고정1개체 영상 진단. callback12.8–13.4Hz를 표시fps로 해석하지 말 것. CPU포즈는 대부분 매관측프레임 변화했고 0lag 화면증분과 대응했다. 느린진행은 재현, 해결은 미완료. [결과와 한계](reports/operations/idle-walk-visible-20261031.md)
 
 > 최신 분석: GPU 직접 이식 경로 미확보. 공간 색인은 이미 존재하며 이웃 검색 분산은 격리 실험 후보다. 끊김 원인은 이번에 확정하지 않았다. [코드 비교](reports/operations/external-horde-source-review-20261031.md)

@@ -1,0 +1,160 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T05:05:17.993724+09:00",
+  "sourceRunId": [
+    "runtime-20261030-092351",
+    "runtime-20261030-093001"
+  ],
+  "reanalysisRunId": "stimulus-validity-20261031-050155",
+  "buildId": "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
+  "verificationStatus": {
+    "diagnostic": "success",
+    "runtimeRegression": "not_executed",
+    "repeatRuntime": "not_executed",
+    "finalAcceptance": false,
+    "visualAcceptance": false,
+    "performanceAcceptance": false,
+    "archivedDataReanalysisRepetitions": 2,
+    "independentRuntimeRepetitionsAdded": 0
+  },
+  "metrics": {
+    "conditions": "Archived8/64activeReference trial; sampled player area joined to latest preceding NPC sample,max0.5s. HIGH_HOLD label does not imply fixed physical stimulus.",
+    "cases": [
+      {
+        "sourceRunId": "runtime-20261030-092351",
+        "expectedAgents": 8,
+        "playerAreaSamples": {
+          "high": 519
+        },
+        "highHoldPlayerEpisodes": [
+          {
+            "area": "high",
+            "firstSample": 45.025,
+            "lastSample": 104.902,
+            "intervalEnd": 105.002,
+            "samples": 519,
+            "firstPosition": "<4513.000000, 342.198364, 10240.000000>"
+          }
+        ],
+        "stageLabelHighFollowCoverage": 8,
+        "actualPlayerHighFollowCoverage": 8,
+        "stageLabelMissing": [],
+        "actualHighWindowMissing": []
+      },
+      {
+        "sourceRunId": "runtime-20261030-093001",
+        "expectedAgents": 64,
+        "playerAreaSamples": {
+          "high": 231,
+          "air": 35,
+          "ground": 216
+        },
+        "highHoldPlayerEpisodes": [
+          {
+            "area": "high",
+            "firstSample": 45.058,
+            "lastSample": 74.457,
+            "intervalEnd": 74.559,
+            "samples": 231,
+            "firstPosition": "<4513.000000, 342.198364, 10240.000000>"
+          },
+          {
+            "area": "air",
+            "firstSample": 74.559,
+            "lastSample": 78.956,
+            "intervalEnd": 79.077,
+            "samples": 35,
+            "firstPosition": "<4514.563477, 342.037018, 10240.328125>"
+          },
+          {
+            "area": "ground",
+            "firstSample": 79.077,
+            "lastSample": 104.964,
+            "intervalEnd": 105.024,
+            "samples": 216,
+            "firstPosition": "<4515.233398, 339.545441, 10240.715820>"
+          }
+        ],
+        "stageLabelHighFollowCoverage": 61,
+        "actualPlayerHighFollowCoverage": 60,
+        "stageLabelMissing": [
+          17,
+          33,
+          40
+        ],
+        "actualHighWindowMissing": [
+          17,
+          25,
+          33,
+          40
+        ]
+      }
+    ],
+    "newFrameTimeMeasurements": null,
+    "targetP95Ms": 20
+  },
+  "blockers": [
+    "Actual high stimulus duration differs8vs64; controlled sustained high objective still untested",
+    "Missing high coverage does not identify NPC failure before stimulus departure",
+    "Animation timing/visible cause and64cost work remain separate/incomplete"
+  ],
+  "evidenceReferences": [
+    {
+      "name": "native-natural-player.tsv",
+      "sourceRunId": "runtime-20261030-092351",
+      "sha256": "f188dc7c6eae8c6d3eb8e3165865d5974f879c19211904a43c0bacf8cf94b597"
+    },
+    {
+      "name": "native-ground.tsv",
+      "sourceRunId": "runtime-20261030-092351",
+      "sha256": "4a9fdf0e4427d4151dfbca74ab8aca0c21e234d34785d4a7642816db3eb53525"
+    },
+    {
+      "name": "launch.json",
+      "sourceRunId": "runtime-20261030-092351",
+      "sha256": "0f57e04ab83e919b53fac4b1e8845e2b49bfc49c81801cb15fe9cee7ea8933e5"
+    },
+    {
+      "name": "state-contract-report.json",
+      "sourceRunId": "runtime-20261030-092351",
+      "sha256": "419acda941ee70e580ae779eeab4c6604ebe132bf99e00d57c18ab72358ecae6"
+    },
+    {
+      "name": "missed-surface-analysis.json",
+      "sourceRunId": "runtime-20261030-092351",
+      "sha256": "bc5f43709434372cec86b33adf18d33e90acc874b3e545fd04a224a0731b76ad"
+    },
+    {
+      "name": "native-natural-player.tsv",
+      "sourceRunId": "runtime-20261030-093001",
+      "sha256": "78ed99dfb6676890991ffe515e89970e555586da8bb45211eee6c949323eb14f"
+    },
+    {
+      "name": "native-ground.tsv",
+      "sourceRunId": "runtime-20261030-093001",
+      "sha256": "2b7d8486e41d10de5d95d3d0ec6442983e5da0f37356471c584c15af40b049c3"
+    },
+    {
+      "name": "launch.json",
+      "sourceRunId": "runtime-20261030-093001",
+      "sha256": "1e345436736a65bf55d499ae8502d195110e0b0ad746f6c3c5d9a0e308f21575"
+    },
+    {
+      "name": "state-contract-report.json",
+      "sourceRunId": "runtime-20261030-093001",
+      "sha256": "ab5f6a52c7bdaf591f99d3cbe0b38e452e2acdbf0c0553abfc9d630e1014592b"
+    },
+    {
+      "name": "missed-surface-analysis.json",
+      "sourceRunId": "runtime-20261030-093001",
+      "sha256": "b04476cfa4dd04d9c7985f24a2205f93b46193f8eee4f71e1de57947fe173110"
+    }
+  ],
+  "report": "reports/operations/high-stimulus-validity-20261031.md",
+  "limitations": [
+    "Sampled area/position is not direct support ray evidence.",
+    "Missing coverage before stimulus departure is not automatically a bug or proof of eventual reachability.",
+    "Natural player displacement remains legitimate; controlled hold requires a separately labelled test fixture.",
+    "Final64/64 arrival is not proof of high-platform scenario completion."
+  ]
+}

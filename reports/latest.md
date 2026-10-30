@@ -1,3 +1,5 @@
+> 시험 조건 정정(2026-10-31): 기존64개체 HIGH_HOLD의 실제 플레이어 high 유지 약29.5초. 실제 high 유지 중 high+FOLLOW60/64이며, 최종64/64 도착과 별도다. 신규 런타임·수정·시각/성능 수용 아님. [원시 위치 기반 재분석](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/high-stimulus-validity-20261031.md).
+
 > 새 애니메이션 진단(2026-10-31): idle·walk 1논리개체/8부품 고정시험에서 native 시간 진행률0.640/0.668, CPU/화면 대응 확인. 새 수정·8/64회귀·품질/성능 수용은 아님. [상세 결과](operations/idle-walk-visible-20261031.md). 아래는 이전 기능 실험 기록이다.
 
 > 2026-10-31 코드 분석: GPUSkinning과 crowd-simulation을 고정 커밋으로 비교했다. 런타임 변경·신규 실험 없음. [적용 범위와 한계](operations/external-horde-source-review-20261031.md). 아래 실험 시각·측정값은 종전 그대로다.
