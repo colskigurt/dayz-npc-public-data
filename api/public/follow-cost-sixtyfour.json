@@ -1,0 +1,1208 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T08:34:23.157113+09:00",
+  "sourceRunId": "follow-cost-split-20261031-081400",
+  "buildId": "E2DC091FB183DB0A656AFA2438DF32FAE0195ED54C8AC75D9AFDED496F64EF5B",
+  "verificationStatus": {
+    "diagnostic": "sixtyfour_agent_scope_collection_passed",
+    "functionalSingleTrial": false,
+    "new64TrialExecuted": true,
+    "repeatedCostValidation": false,
+    "visual": "unmeasured",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "logicalAgents": 64,
+    "renderAnimationHosts": 512,
+    "foregroundMissionFrameMs": {
+      "p50": 29.0,
+      "p95": 74.0,
+      "p99": 96.0
+    },
+    "foregroundFraction": 1.0,
+    "functional": {
+      "highFollowCoverage": 63,
+      "missingHigh": [
+        61
+      ],
+      "terminalArrivals": 64,
+      "unresolvedTerminalAgents": [],
+      "fallsLandedAndResumed": 79,
+      "newFailureLabelEpisodes": {
+        "CONTACT_SUPPORT_LOST": 14,
+        "EGRESS_STALL": 1
+      },
+      "unresolvedAlgorithmEpisodes": {},
+      "climbEndFailures": 0,
+      "thisTrialGatePassed": false,
+      "repeatRegressionAccepted": false
+    },
+    "stimulus": {
+      "valid": true,
+      "highSamples": 446,
+      "areaSamples": {
+        "high": 446
+      },
+      "first": 45.043,
+      "last": 104.911,
+      "maxSampleGapSeconds": 0.22299999999999898,
+      "anchorEnabled": true,
+      "recordedCorrections": 69,
+      "supportFailures": 0,
+      "traceOrSupportErrors": [],
+      "maximumRecordedCorrectionHorizontal": 0.223358,
+      "limitation": "Sampled area,not continuous physical support proof. Recorded corrections alter player stimulus;NPC physics remain active."
+    },
+    "sampledBudgetContract": true,
+    "followCost": {
+      "sourceRunId": "runtime-20261031-082600",
+      "buildId": "E2DC091FB183DB0A656AFA2438DF32FAE0195ED54C8AC75D9AFDED496F64EF5B",
+      "logicalAgents": 64,
+      "stages": {
+        "LOW_HOLD": {
+          "durationSeconds": 39.944,
+          "intervals": 743,
+          "clockTicksPerMissionSecond": 9999913.103344683,
+          "methods": {
+            "follow": {
+              "calls": 34520,
+              "callsPerSecond": 864.2098938513919,
+              "elapsedEquivalentMsPerWallSecond": 315.83311199862743,
+              "elapsedEquivalentMeanMsPerInvocation": 0.3654588014389679
+            },
+            "resolveArea": {
+              "calls": 34283,
+              "callsPerSecond": 858.276587222111,
+              "elapsedEquivalentMsPerWallSecond": 0.6323307501002243,
+              "elapsedEquivalentMeanMsPerInvocation": 0.0007367447271826666
+            },
+            "planConnection": {
+              "calls": 15493,
+              "callsPerSecond": 387.8680152213098,
+              "elapsedEquivalentMsPerWallSecond": 1.8540742927395106,
+              "elapsedEquivalentMeanMsPerInvocation": 0.004780168046807398
+            },
+            "searchApproach": {
+              "calls": 515,
+              "callsPerSecond": 12.893050270378529,
+              "elapsedEquivalentMsPerWallSecond": 13.345639702371837,
+              "elapsedEquivalentMeanMsPerInvocation": 1.0351033636340596
+            },
+            "surfaceYield": {
+              "calls": 34283,
+              "callsPerSecond": 858.276587222111,
+              "elapsedEquivalentMsPerWallSecond": 0.3644984607804861,
+              "elapsedEquivalentMeanMsPerInvocation": 0.00042468647777078254
+            },
+            "surfaceWalk": {
+              "calls": 18790,
+              "callsPerSecond": 470.4085720008011,
+              "elapsedEquivalentMsPerWallSecond": 122.21192218501378,
+              "elapsedEquivalentMeanMsPerInvocation": 0.259799522073347
+            },
+            "walk": {
+              "calls": 33547,
+              "callsPerSecond": 839.8507911075505,
+              "elapsedEquivalentMsPerWallSecond": 203.88532617155803,
+              "elapsedEquivalentMeanMsPerInvocation": 0.24276374843046217
+            },
+            "driveGround": {
+              "calls": 33547,
+              "callsPerSecond": 839.8507911075505,
+              "elapsedEquivalentMsPerWallSecond": 201.8147544036965,
+              "elapsedEquivalentMeanMsPerInvocation": 0.24029834411128426
+            }
+          },
+          "foregroundMissionFrameSamples": 481,
+          "foregroundMissionFrameMs": {
+            "p50": 58.0,
+            "p95": 96.0,
+            "p99": 106.0
+          }
+        },
+        "HIGH_HOLD": {
+          "durationSeconds": 59.91199999999999,
+          "intervals": 904,
+          "clockTicksPerMissionSecond": 9999987.19789024,
+          "methods": {
+            "follow": {
+              "calls": 49553,
+              "callsPerSecond": 827.0964080651623,
+              "elapsedEquivalentMsPerWallSecond": 327.2634547520861,
+              "elapsedEquivalentMeanMsPerInvocation": 0.3956775190423784
+            },
+            "resolveArea": {
+              "calls": 49435,
+              "callsPerSecond": 825.1268527173188,
+              "elapsedEquivalentMsPerWallSecond": 0.6119700049756206,
+              "elapsedEquivalentMeanMsPerInvocation": 0.0007416677847294301
+            },
+            "planConnection": {
+              "calls": 5233,
+              "callsPerSecond": 87.34477233275472,
+              "elapsedEquivalentMsPerWallSecond": 0.6564703290037761,
+              "elapsedEquivalentMeanMsPerInvocation": 0.007515851395236811
+            },
+            "searchApproach": {
+              "calls": 672,
+              "callsPerSecond": 11.2164507944986,
+              "elapsedEquivalentMsPerWallSecond": 2.966424548083236,
+              "elapsedEquivalentMeanMsPerInvocation": 0.2644708742928018
+            },
+            "surfaceYield": {
+              "calls": 49495,
+              "callsPerSecond": 826.1283215382563,
+              "elapsedEquivalentMsPerWallSecond": 0.5764945956926073,
+              "elapsedEquivalentMeanMsPerInvocation": 0.0006978269364003533
+            },
+            "surfaceWalk": {
+              "calls": 47551,
+              "callsPerSecond": 793.6807317398852,
+              "elapsedEquivalentMsPerWallSecond": 198.21857062632472,
+              "elapsedEquivalentMeanMsPerInvocation": 0.24974597807331844
+            },
+            "walk": {
+              "calls": 48394,
+              "callsPerSecond": 807.7513686740554,
+              "elapsedEquivalentMsPerWallSecond": 197.98077488859383,
+              "elapsedEquivalentMeanMsPerInvocation": 0.24510113206441775
+            },
+            "driveGround": {
+              "calls": 48394,
+              "callsPerSecond": 807.7513686740554,
+              "elapsedEquivalentMsPerWallSecond": 196.0070976389436,
+              "elapsedEquivalentMeanMsPerInvocation": 0.24265771033071015
+            }
+          },
+          "foregroundMissionFrameSamples": 905,
+          "foregroundMissionFrameMs": {
+            "p50": 62.0,
+            "p95": 96.0,
+            "p99": 113.0
+          }
+        },
+        "GROUND_HOLD": {
+          "durationSeconds": 30.048000000000002,
+          "intervals": 848,
+          "clockTicksPerMissionSecond": 10000080.704206603,
+          "methods": {
+            "follow": {
+              "calls": 23383,
+              "callsPerSecond": 778.1882321618743,
+              "elapsedEquivalentMsPerWallSecond": 149.00861506292756,
+              "elapsedEquivalentMeanMsPerInvocation": 0.19148145513453563
+            },
+            "resolveArea": {
+              "calls": 23336,
+              "callsPerSecond": 776.6240681576145,
+              "elapsedEquivalentMsPerWallSecond": 0.5612274994119872,
+              "elapsedEquivalentMeanMsPerInvocation": 0.0007226501500827645
+            },
+            "planConnection": {
+              "calls": 2107,
+              "callsPerSecond": 70.12113951011715,
+              "elapsedEquivalentMsPerWallSecond": 0.422889957707177,
+              "elapsedEquivalentMeanMsPerInvocation": 0.006030848338483747
+            },
+            "searchApproach": {
+              "calls": 47,
+              "callsPerSecond": 1.5641640042598508,
+              "elapsedEquivalentMsPerWallSecond": 0.38604587273282287,
+              "elapsedEquivalentMeanMsPerInvocation": 0.2468065188058694
+            },
+            "surfaceYield": {
+              "calls": 23382,
+              "callsPerSecond": 778.1549520766773,
+              "elapsedEquivalentMsPerWallSecond": 0.6180794101352184,
+              "elapsedEquivalentMeanMsPerInvocation": 0.0007942883464093338
+            },
+            "surfaceWalk": {
+              "calls": 2270,
+              "callsPerSecond": 75.5457933972311,
+              "elapsedEquivalentMsPerWallSecond": 16.660019300629646,
+              "elapsedEquivalentMeanMsPerInvocation": 0.22052874887459015
+            },
+            "walk": {
+              "calls": 22749,
+              "callsPerSecond": 757.0886581469648,
+              "elapsedEquivalentMsPerWallSecond": 114.07855218154606,
+              "elapsedEquivalentMeanMsPerInvocation": 0.15068057215486816
+            },
+            "driveGround": {
+              "calls": 22749,
+              "callsPerSecond": 757.0886581469648,
+              "elapsedEquivalentMsPerWallSecond": 112.43353084627162,
+              "elapsedEquivalentMeanMsPerInvocation": 0.14850774692816254
+            }
+          },
+          "foregroundMissionFrameSamples": 849,
+          "foregroundMissionFrameMs": {
+            "p50": 32.0,
+            "p95": 65.0,
+            "p99": 82.0
+          }
+        },
+        "GROUND_EAST": {
+          "durationSeconds": 9.990000000000009,
+          "intervals": 263,
+          "clockTicksPerMissionSecond": 9999270.370370362,
+          "methods": {
+            "follow": {
+              "calls": 9216,
+              "callsPerSecond": 922.5225225225216,
+              "elapsedEquivalentMsPerWallSecond": 143.35390296895636,
+              "elapsedEquivalentMeanMsPerInvocation": 0.15539339091361495
+            },
+            "resolveArea": {
+              "calls": 9216,
+              "callsPerSecond": 922.5225225225216,
+              "elapsedEquivalentMsPerWallSecond": 0.6510585141692671,
+              "elapsedEquivalentMeanMsPerInvocation": 0.0007057372565702022
+            },
+            "planConnection": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "searchApproach": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "surfaceYield": {
+              "calls": 9216,
+              "callsPerSecond": 922.5225225225216,
+              "elapsedEquivalentMsPerWallSecond": 0.3505561081428654,
+              "elapsedEquivalentMeanMsPerInvocation": 0.0003799973437876767
+            },
+            "surfaceWalk": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "walk": {
+              "calls": 9216,
+              "callsPerSecond": 922.5225225225216,
+              "elapsedEquivalentMsPerWallSecond": 122.29510919970927,
+              "elapsedEquivalentMeanMsPerInvocation": 0.1325659875114037
+            },
+            "driveGround": {
+              "calls": 9216,
+              "callsPerSecond": 922.5225225225216,
+              "elapsedEquivalentMsPerWallSecond": 120.23600000204219,
+              "elapsedEquivalentMeanMsPerInvocation": 0.13033394531471382
+            }
+          },
+          "foregroundMissionFrameSamples": 264,
+          "foregroundMissionFrameMs": {
+            "p50": 35.0,
+            "p95": 70.0,
+            "p99": 89.0
+          }
+        },
+        "GROUND_EAST_HOLD": {
+          "durationSeconds": 14.975999999999999,
+          "intervals": 463,
+          "clockTicksPerMissionSecond": 10000312.16613248,
+          "methods": {
+            "follow": {
+              "calls": 15168,
+              "callsPerSecond": 1012.8205128205129,
+              "elapsedEquivalentMsPerWallSecond": 146.64566260368142,
+              "elapsedEquivalentMeanMsPerInvocation": 0.1447893883935082
+            },
+            "resolveArea": {
+              "calls": 15168,
+              "callsPerSecond": 1012.8205128205129,
+              "elapsedEquivalentMsPerWallSecond": 0.7129251273706566,
+              "elapsedEquivalentMeanMsPerInvocation": 0.0007039007586697621
+            },
+            "planConnection": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "searchApproach": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "surfaceYield": {
+              "calls": 15168,
+              "callsPerSecond": 1012.8205128205129,
+              "elapsedEquivalentMsPerWallSecond": 0.382333150324,
+              "elapsedEquivalentMeanMsPerInvocation": 0.0003774934901933164
+            },
+            "surfaceWalk": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "walk": {
+              "calls": 15168,
+              "callsPerSecond": 1012.8205128205129,
+              "elapsedEquivalentMsPerWallSecond": 123.24161221596482,
+              "elapsedEquivalentMeanMsPerInvocation": 0.12168159180816777
+            },
+            "driveGround": {
+              "calls": 15168,
+              "callsPerSecond": 1012.8205128205129,
+              "elapsedEquivalentMsPerWallSecond": 121.06412944173918,
+              "elapsedEquivalentMeanMsPerInvocation": 0.11953167210703361
+            }
+          },
+          "foregroundMissionFrameSamples": 464,
+          "foregroundMissionFrameMs": {
+            "p50": 32.0,
+            "p95": 53.0,
+            "p99": 75.0
+          }
+        },
+        "GROUND_NORTH": {
+          "durationSeconds": 9.980999999999995,
+          "intervals": 259,
+          "clockTicksPerMissionSecond": 9999548.141468797,
+          "methods": {
+            "follow": {
+              "calls": 9984,
+              "callsPerSecond": 1000.3005710850622,
+              "elapsedEquivalentMsPerWallSecond": 122.94063182295884,
+              "elapsedEquivalentMeanMsPerInvocation": 0.12290369052733888
+            },
+            "resolveArea": {
+              "calls": 9984,
+              "callsPerSecond": 1000.3005710850622,
+              "elapsedEquivalentMsPerWallSecond": 0.6957933877184512,
+              "elapsedEquivalentMeanMsPerInvocation": 0.0006955843151860835
+            },
+            "planConnection": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "searchApproach": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "surfaceYield": {
+              "calls": 9984,
+              "callsPerSecond": 1000.3005710850622,
+              "elapsedEquivalentMsPerWallSecond": 0.36715415154016073,
+              "elapsedEquivalentMeanMsPerInvocation": 0.00036704382877827946
+            },
+            "surfaceWalk": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "walk": {
+              "calls": 9984,
+              "callsPerSecond": 1000.3005710850622,
+              "elapsedEquivalentMsPerWallSecond": 101.28981882659963,
+              "elapsedEquivalentMeanMsPerInvocation": 0.1012593831839233
+            },
+            "driveGround": {
+              "calls": 9984,
+              "callsPerSecond": 1000.3005710850622,
+              "elapsedEquivalentMsPerWallSecond": 99.17630783637253,
+              "elapsedEquivalentMeanMsPerInvocation": 0.09914650726310432
+            }
+          },
+          "foregroundMissionFrameSamples": 260,
+          "foregroundMissionFrameMs": {
+            "p50": 33.0,
+            "p95": 69.0,
+            "p99": 83.0
+          }
+        },
+        "FINAL_HOLD": {
+          "durationSeconds": 129.891,
+          "intervals": 4853,
+          "clockTicksPerMissionSecond": 9999955.56274107,
+          "methods": {
+            "follow": {
+              "calls": 132352,
+              "callsPerSecond": 1018.9466552724978,
+              "elapsedEquivalentMsPerWallSecond": 123.90499355584514,
+              "elapsedEquivalentMeanMsPerInvocation": 0.12160106018769853
+            },
+            "resolveArea": {
+              "calls": 132352,
+              "callsPerSecond": 1018.9466552724978,
+              "elapsedEquivalentMsPerWallSecond": 0.6802233613177522,
+              "elapsedEquivalentMeanMsPerInvocation": 0.0006675750470330947
+            },
+            "planConnection": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "searchApproach": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "surfaceYield": {
+              "calls": 132352,
+              "callsPerSecond": 1018.9466552724978,
+              "elapsedEquivalentMsPerWallSecond": 0.35858070977038964,
+              "elapsedEquivalentMeanMsPerInvocation": 0.0003519131329544372
+            },
+            "surfaceWalk": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "walk": {
+              "calls": 132352,
+              "callsPerSecond": 1018.9466552724978,
+              "elapsedEquivalentMsPerWallSecond": 100.62406233079103,
+              "elapsedEquivalentMeanMsPerInvocation": 0.0987530228497399
+            },
+            "driveGround": {
+              "calls": 132352,
+              "callsPerSecond": 1018.9466552724978,
+              "elapsedEquivalentMsPerWallSecond": 98.6902553988761,
+              "elapsedEquivalentMeanMsPerInvocation": 0.09685517380935244
+            }
+          },
+          "foregroundMissionFrameSamples": 4853,
+          "foregroundMissionFrameMs": {
+            "p50": 26.0,
+            "p95": 49.0,
+            "p99": 62.0
+          }
+        }
+      },
+      "cohorts": 8479,
+      "observedAgents": 64,
+      "totalFinalCalls": {
+        "follow": 278718,
+        "resolveArea": 277094,
+        "planConnection": 26091,
+        "searchApproach": 1234,
+        "surfaceYield": 278422,
+        "surfaceWalk": 68673,
+        "walk": 275952,
+        "driveGround": 275952
+      },
+      "excludedIntervals": {
+        "warmup": 139,
+        "stageBoundary": 6
+      },
+      "invariants": {
+        "completeActorCohorts": true,
+        "monotonicCounters": true,
+        "childrenBoundedByFollow": true
+      },
+      "sourceSha256": "c9aefd802e6aa53c22d9849e5a0a8e80e69874878cbb4bc3ed3315244a84ab5e",
+      "limits": [
+        "Inclusive nested scopes; SurfaceWalk/SearchApproach may include Walk and DriveGround. Do not sum columns.",
+        "Initial Floor and inline entry alignment remain in FOLLOW residual.",
+        "Elapsed includes native calls/wait plus timer overhead; not CPU self-time.",
+        "Clock scaling uses sampled TickCount, no GPU/Present/native graph/GC timing.",
+        "One trial is instrumentation diagnosis, not reproducible optimization."
+      ],
+      "optimizationAccepted": false,
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false
+    },
+    "durationSeconds": 300,
+    "repetitions": 1,
+    "fixedCamera": true,
+    "driveAttribution": true,
+    "followCostSplit": true,
+    "clockCalibration": {
+      "sourceRunId": "runtime-20261031-082600",
+      "calibrationIntervals": 276,
+      "excludedIntervals": 0,
+      "empiricalTicksPerMissionSecondMedian": 10000146.593741197,
+      "p10": 9994773.226773178,
+      "p90": 10005633.240482807,
+      "relativeP90P10Spread": 0.0010859854510958792,
+      "stableAtTenPercent": true,
+      "inputSha256": "2bee07ccbdfb31fac4f0d04c6b4bdc3bd7b5b5b0ae3a09295bda89f8dffc6c41",
+      "limits": [
+        "Clock scaling only; elapsed scopes remain inclusive wall equivalents, not CPU self-time.",
+        "No allocation/GC/GPU measurement or optimization claim."
+      ],
+      "goalComplete": false
+    },
+    "actor61": {
+      "sourceRunId": "runtime-20261031-082600",
+      "entityId": 61,
+      "functionalGatePassed": false,
+      "highFollowCoverage": 63,
+      "terminalArrivals": 64,
+      "algorithmFailureEpisodes": {
+        "EGRESS_STALL": [
+          {
+            "runId": "runtime-20261031-082600",
+            "entityId": 61,
+            "eventOrdinal": 733,
+            "seconds": 88.858,
+            "previousState": "EGRESS",
+            "newState": "FOLLOW",
+            "transitionReason": "EGRESS_STALL",
+            "metadataEvent": false,
+            "recoveryGenerationDerived": 1,
+            "position": "<4511.505859, 339.171936, 10236.791016>",
+            "contactSampleAge": 0.16200000000000614,
+            "contactStatus": "EGRESS_GROUND_HANDOFF_BLOCKED",
+            "contactPhase": "EGRESS",
+            "landingDiagnostic": "CLEAR",
+            "nativeSameCallSequence": "1168",
+            "nativeRecoveryGeneration": "1",
+            "nativeContactStatus": "",
+            "nativeMotionElapsedBeforeTransition": "0",
+            "terminalOutcome": "ARRIVED"
+          }
+        ]
+      },
+      "phaseAreaLinkChanges": [
+        {
+          "line": 63,
+          "seconds": "0.415001",
+          "position": "<4508.750000, 339.053986, 10182.000000>",
+          "traversalPhase": "FOLLOW",
+          "area": "ground",
+          "link": "none",
+          "reason": "",
+          "goalRevision": "0",
+          "activeRevision": "0",
+          "goal": "<0.000000, 0.000000, 0.000000>",
+          "pendingGoal": "false",
+          "agentStopReason": "",
+          "landingDiagnostic": "",
+          "exitClearanceDiagnostic": "",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0"
+        },
+        {
+          "line": 319,
+          "seconds": "2.496",
+          "position": "<4508.832031, 339.053101, 10182.666016>",
+          "traversalPhase": "FOLLOW",
+          "area": "ground",
+          "link": "ground_to_low_lane_1",
+          "reason": "",
+          "goalRevision": "1",
+          "activeRevision": "1",
+          "goal": "<4509.100098, 339.123566, 10230.776367>",
+          "pendingGoal": "false",
+          "agentStopReason": "",
+          "landingDiagnostic": "",
+          "exitClearanceDiagnostic": "",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0"
+        },
+        {
+          "line": 703,
+          "seconds": "5.577",
+          "position": "<4509.948242, 339.053253, 10193.988281>",
+          "traversalPhase": "FOLLOW",
+          "area": "ground",
+          "link": "ground_to_low",
+          "reason": "",
+          "goalRevision": "1",
+          "activeRevision": "1",
+          "goal": "<4509.897461, 339.137787, 10230.776367>",
+          "pendingGoal": "false",
+          "agentStopReason": "",
+          "landingDiagnostic": "",
+          "exitClearanceDiagnostic": "",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0"
+        },
+        {
+          "line": 2111,
+          "seconds": "16.929",
+          "position": "<4509.610840, 339.092438, 10227.987305>",
+          "traversalPhase": "FOLLOW",
+          "area": "ground",
+          "link": "ground_to_low_lane_1",
+          "reason": "",
+          "goalRevision": "1",
+          "activeRevision": "1",
+          "goal": "<4509.565918, 339.123566, 10230.776367>",
+          "pendingGoal": "false",
+          "agentStopReason": "",
+          "landingDiagnostic": "",
+          "exitClearanceDiagnostic": "",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0"
+        },
+        {
+          "line": 2367,
+          "seconds": "19.019",
+          "position": "<4509.712891, 339.113190, 10229.570313>",
+          "traversalPhase": "FOLLOW",
+          "area": "ground",
+          "link": "ground_to_low",
+          "reason": "",
+          "goalRevision": "1",
+          "activeRevision": "1",
+          "goal": "<4509.666992, 339.137787, 10230.776367>",
+          "pendingGoal": "false",
+          "agentStopReason": "",
+          "landingDiagnostic": "",
+          "exitClearanceDiagnostic": "",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0"
+        },
+        {
+          "line": 2943,
+          "seconds": "23.806",
+          "position": "<4509.377441, 339.128693, 10235.568359>",
+          "traversalPhase": "MOTION",
+          "area": "ground",
+          "link": "ground_to_low",
+          "reason": "NATIVE_MOTION",
+          "goalRevision": "1",
+          "activeRevision": "1",
+          "goal": "<4509.544434, 339.137787, 10235.276367>",
+          "pendingGoal": "false",
+          "agentStopReason": "",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0"
+        },
+        {
+          "line": 3071,
+          "seconds": "24.845",
+          "position": "<4509.536621, 340.154999, 10236.643555>",
+          "traversalPhase": "MOTION",
+          "area": "low",
+          "link": "ground_to_low",
+          "reason": "NATIVE_MOTION",
+          "goalRevision": "1",
+          "activeRevision": "1",
+          "goal": "<4509.544434, 339.137787, 10235.276367>",
+          "pendingGoal": "false",
+          "agentStopReason": "",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0"
+        },
+        {
+          "line": 3199,
+          "seconds": "25.906",
+          "position": "<4509.416504, 340.175140, 10237.179688>",
+          "traversalPhase": "SETTLE",
+          "area": "low",
+          "link": "ground_to_low",
+          "reason": "SETTLE",
+          "goalRevision": "1",
+          "activeRevision": "1",
+          "goal": "<4509.544434, 339.137787, 10235.276367>",
+          "pendingGoal": "false",
+          "agentStopReason": "",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "CLIMB_END:CLEAR,area=low,expected=low,gap=0.000489234",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0"
+        },
+        {
+          "line": 3327,
+          "seconds": "26.938",
+          "position": "<4509.482422, 340.176849, 10237.361328>",
+          "traversalPhase": "FOLLOW",
+          "area": "low",
+          "link": "none",
+          "reason": "",
+          "goalRevision": "1",
+          "activeRevision": "1",
+          "goal": "<4509.817871, 340.187805, 10239.119141>",
+          "pendingGoal": "false",
+          "agentStopReason": "",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "CLIMB_END:CLEAR,area=low,expected=low,gap=0.000489234",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0"
+        },
+        {
+          "line": 5567,
+          "seconds": "45.58",
+          "position": "<4509.729980, 340.185608, 10238.913086>",
+          "traversalPhase": "FOLLOW",
+          "area": "low",
+          "link": "low_to_high_lane_-1",
+          "reason": "ALIGN_HEADING",
+          "goalRevision": "2",
+          "activeRevision": "2",
+          "goal": "<4510.166504, 340.173309, 10238.987305>",
+          "pendingGoal": "false",
+          "agentStopReason": "ALIGN_HEADING",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "CLIMB_END:CLEAR,area=low,expected=low,gap=0.000489234",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0"
+        },
+        {
+          "line": 5951,
+          "seconds": "48.771",
+          "position": "<4510.373047, 340.196320, 10238.428711>",
+          "traversalPhase": "FOLLOW",
+          "area": "low",
+          "link": "none",
+          "reason": "",
+          "goalRevision": "2",
+          "activeRevision": "2",
+          "goal": "<4510.948242, 340.208008, 10238.784180>",
+          "pendingGoal": "false",
+          "agentStopReason": "",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "CLIMB_END:CLEAR,area=low,expected=low,gap=0.000489234",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0"
+        },
+        {
+          "line": 6143,
+          "seconds": "50.336",
+          "position": "<4511.428711, 339.643982, 10238.446289>",
+          "traversalPhase": "FALL",
+          "area": "air",
+          "link": "none",
+          "reason": "FALL_NATIVE_JOINT_WORLD_1",
+          "goalRevision": "2",
+          "activeRevision": "2",
+          "goal": "<4510.948242, 340.217255, 10242.250977>",
+          "pendingGoal": "false",
+          "agentStopReason": "FOOTPRINT_UNSUPPORTED",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "CLIMB_END:CLEAR,area=low,expected=low,gap=0.000489234",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0.110352"
+        },
+        {
+          "line": 6207,
+          "seconds": "50.858",
+          "position": "<4511.449707, 339.427582, 10238.339844>",
+          "traversalPhase": "FALL",
+          "area": "ground",
+          "link": "none",
+          "reason": "LANDING_SPACE_BLOCKED",
+          "goalRevision": "2",
+          "activeRevision": "2",
+          "goal": "<4510.948242, 340.217255, 10242.250977>",
+          "pendingGoal": "false",
+          "agentStopReason": "FOOTPRINT_UNSUPPORTED",
+          "landingDiagnostic": "FIXTURE_VOLUME",
+          "exitClearanceDiagnostic": "CLIMB_END:CLEAR,area=low,expected=low,gap=0.000489234",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0.222656"
+        },
+        {
+          "line": 8703,
+          "seconds": "71.656",
+          "position": "<4511.505859, 339.171936, 10236.791016>",
+          "traversalPhase": "LAND",
+          "area": "ground",
+          "link": "none",
+          "reason": "",
+          "goalRevision": "2",
+          "activeRevision": "2",
+          "goal": "<4510.948242, 340.217255, 10242.250977>",
+          "pendingGoal": "false",
+          "agentStopReason": "FOOTPRINT_UNSUPPORTED",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "CLIMB_END:CLEAR,area=low,expected=low,gap=0.000489234",
+          "separationDistanceBudget": "1.5",
+          "separationEpisodeDistance": "0.0605474"
+        },
+        {
+          "line": 10175,
+          "seconds": "83.88",
+          "position": "<4511.505859, 339.171936, 10236.791016>",
+          "traversalPhase": "EGRESS",
+          "area": "ground",
+          "link": "none",
+          "reason": "LAND",
+          "goalRevision": "2",
+          "activeRevision": "2",
+          "goal": "<4510.948242, 340.217255, 10242.250977>",
+          "pendingGoal": "false",
+          "agentStopReason": "FOOTPRINT_UNSUPPORTED",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "CLIMB_END:CLEAR,area=low,expected=low,gap=0.000489234",
+          "separationDistanceBudget": "1.5",
+          "separationEpisodeDistance": "0.0605474"
+        },
+        {
+          "line": 10815,
+          "seconds": "89.233",
+          "position": "<4511.505859, 339.171936, 10236.791016>",
+          "traversalPhase": "FOLLOW",
+          "area": "ground",
+          "link": "none",
+          "reason": "NATIVE_JOINT_WORLD_1",
+          "goalRevision": "2",
+          "activeRevision": "2",
+          "goal": "<4512.048340, 339.181427, 10236.631836>",
+          "pendingGoal": "false",
+          "agentStopReason": "ARRIVED",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "CLIMB_END:CLEAR,area=low,expected=low,gap=0.000489234",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0.0605474"
+        },
+        {
+          "line": 11199,
+          "seconds": "92.389",
+          "position": "<4511.505859, 339.171936, 10236.791016>",
+          "traversalPhase": "FOLLOW",
+          "area": "ground",
+          "link": "ground_to_low_lane_-1",
+          "reason": "NATIVE_JOINT_WORLD_2",
+          "goalRevision": "2",
+          "activeRevision": "2",
+          "goal": "<4510.799805, 339.152710, 10235.276367>",
+          "pendingGoal": "false",
+          "agentStopReason": "ARRIVED",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "CLIMB_END:CLEAR,area=low,expected=low,gap=0.000489234",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0"
+        },
+        {
+          "line": 11839,
+          "seconds": "97.61",
+          "position": "<4511.517578, 339.172058, 10236.763672>",
+          "traversalPhase": "FOLLOW",
+          "area": "ground",
+          "link": "none",
+          "reason": "NATIVE_JOINT_WORLD_1",
+          "goalRevision": "2",
+          "activeRevision": "2",
+          "goal": "<4511.588379, 339.183868, 10242.063477>",
+          "pendingGoal": "false",
+          "agentStopReason": "ARRIVED",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "CLIMB_END:CLEAR,area=low,expected=low,gap=0.000489234",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0.0297494"
+        },
+        {
+          "line": 12095,
+          "seconds": "99.694",
+          "position": "<4511.517578, 339.170593, 10236.400391>",
+          "traversalPhase": "FOLLOW",
+          "area": "ground",
+          "link": "ground_to_low",
+          "reason": "NATIVE_JOINT_WORLD_1",
+          "goalRevision": "2",
+          "activeRevision": "2",
+          "goal": "<4510.799805, 339.137787, 10235.276367>",
+          "pendingGoal": "false",
+          "agentStopReason": "ARRIVED",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "CLIMB_END:CLEAR,area=low,expected=low,gap=0.000489234",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0.635223"
+        },
+        {
+          "line": 12351,
+          "seconds": "101.814",
+          "position": "<4511.517578, 339.169495, 10236.127930>",
+          "traversalPhase": "FOLLOW",
+          "area": "ground",
+          "link": "ground_to_low_lane_-1",
+          "reason": "POSE_CLEARANCE_SEPARATION",
+          "goalRevision": "2",
+          "activeRevision": "2",
+          "goal": "<4510.799805, 339.152710, 10235.276367>",
+          "pendingGoal": "false",
+          "agentStopReason": "ALIGN_HEADING",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "CLIMB_END:CLEAR,area=low,expected=low,gap=0.000489234",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "1.33152"
+        },
+        {
+          "line": 12735,
+          "seconds": "104.958",
+          "position": "<4510.811035, 339.156097, 10235.801758>",
+          "traversalPhase": "MOTION",
+          "area": "ground",
+          "link": "ground_to_low_lane_-1",
+          "reason": "NATIVE_MOTION",
+          "goalRevision": "2",
+          "activeRevision": "2",
+          "goal": "<4510.884766, 339.152710, 10235.276367>",
+          "pendingGoal": "false",
+          "agentStopReason": "",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "1.63425"
+        },
+        {
+          "line": 12799,
+          "seconds": "105.472",
+          "position": "<4510.867676, 339.539429, 10236.518555>",
+          "traversalPhase": "MOTION",
+          "area": "air",
+          "link": "ground_to_low_lane_-1",
+          "reason": "NATIVE_MOTION",
+          "goalRevision": "2",
+          "activeRevision": "2",
+          "goal": "<4510.884766, 339.152710, 10235.276367>",
+          "pendingGoal": "false",
+          "agentStopReason": "",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "1.63425"
+        },
+        {
+          "line": 12863,
+          "seconds": "105.983",
+          "position": "<4511.032715, 340.195892, 10236.836914>",
+          "traversalPhase": "MOTION",
+          "area": "low",
+          "link": "ground_to_low_lane_-1",
+          "reason": "NATIVE_MOTION",
+          "goalRevision": "3",
+          "activeRevision": "2",
+          "goal": "<4510.884766, 339.152710, 10235.276367>",
+          "pendingGoal": "true",
+          "agentStopReason": "",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "1.63425"
+        },
+        {
+          "line": 12991,
+          "seconds": "107.041",
+          "position": "<4510.868164, 340.202576, 10237.302734>",
+          "traversalPhase": "SETTLE",
+          "area": "low",
+          "link": "ground_to_low_lane_-1",
+          "reason": "SETTLE",
+          "goalRevision": "3",
+          "activeRevision": "2",
+          "goal": "<4510.884766, 339.152710, 10235.276367>",
+          "pendingGoal": "true",
+          "agentStopReason": "",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "CLIMB_END:CLEAR,area=low,expected=low,gap=0.0149855",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "1.63425"
+        },
+        {
+          "line": 13055,
+          "seconds": "107.569",
+          "position": "<4510.868164, 340.202576, 10237.302734>",
+          "traversalPhase": "FOLLOW",
+          "area": "low",
+          "link": "none",
+          "reason": "SUPPORTED_EGRESS_HANDOFF",
+          "goalRevision": "3",
+          "activeRevision": "3",
+          "goal": "<4510.884766, 339.152710, 10235.276367>",
+          "pendingGoal": "false",
+          "agentStopReason": "",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "CLIMB_END:CLEAR,area=low,expected=low,gap=0.0149855",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "1.63425"
+        },
+        {
+          "line": 13119,
+          "seconds": "108.108",
+          "position": "<4510.868164, 340.202576, 10237.302734>",
+          "traversalPhase": "FOLLOW",
+          "area": "low",
+          "link": "low_to_ground_lane_2",
+          "reason": "ALIGN_HEADING",
+          "goalRevision": "3",
+          "activeRevision": "3",
+          "goal": "<4509.766602, 340.173309, 10237.449219>",
+          "pendingGoal": "false",
+          "agentStopReason": "ALIGN_HEADING",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "CLIMB_END:CLEAR,area=low,expected=low,gap=0.0149855",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "1.63425"
+        },
+        {
+          "line": 13311,
+          "seconds": "109.668",
+          "position": "<4508.847656, 340.184784, 10237.525391>",
+          "traversalPhase": "MOTION",
+          "area": "low",
+          "link": "low_to_ground_lane_2",
+          "reason": "NATIVE_MOTION",
+          "goalRevision": "3",
+          "activeRevision": "3",
+          "goal": "<4509.766602, 340.173309, 10237.449219>",
+          "pendingGoal": "false",
+          "agentStopReason": "",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "1.63425"
+        },
+        {
+          "line": 13375,
+          "seconds": "110.173",
+          "position": "<4507.830566, 339.424988, 10237.568359>",
+          "traversalPhase": "MOTION",
+          "area": "ground",
+          "link": "low_to_ground_lane_2",
+          "reason": "NATIVE_MOTION",
+          "goalRevision": "3",
+          "activeRevision": "3",
+          "goal": "<4509.766602, 340.173309, 10237.449219>",
+          "pendingGoal": "false",
+          "agentStopReason": "",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "1.63425"
+        },
+        {
+          "line": 13439,
+          "seconds": "110.674",
+          "position": "<4507.827637, 339.106293, 10237.568359>",
+          "traversalPhase": "LAND",
+          "area": "ground",
+          "link": "low_to_ground_lane_2",
+          "reason": "LAND",
+          "goalRevision": "3",
+          "activeRevision": "3",
+          "goal": "<4509.766602, 340.173309, 10237.449219>",
+          "pendingGoal": "false",
+          "agentStopReason": "",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0"
+        },
+        {
+          "line": 13503,
+          "seconds": "111.185",
+          "position": "<4507.245117, 339.099030, 10237.634766>",
+          "traversalPhase": "EGRESS",
+          "area": "ground",
+          "link": "low_to_ground_lane_2",
+          "reason": "",
+          "goalRevision": "3",
+          "activeRevision": "3",
+          "goal": "<4506.627930, 339.106293, 10237.543945>",
+          "pendingGoal": "false",
+          "agentStopReason": "",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0"
+        },
+        {
+          "line": 13567,
+          "seconds": "111.714",
+          "position": "<4506.687500, 339.096100, 10237.664063>",
+          "traversalPhase": "FOLLOW",
+          "area": "ground",
+          "link": "none",
+          "reason": "ALIGN_HEADING",
+          "goalRevision": "3",
+          "activeRevision": "3",
+          "goal": "<4523.000000, 339.306671, 10243.000000>",
+          "pendingGoal": "false",
+          "agentStopReason": "ALIGN_HEADING",
+          "landingDiagnostic": "CLEAR",
+          "exitClearanceDiagnostic": "",
+          "separationDistanceBudget": "6",
+          "separationEpisodeDistance": "0"
+        }
+      ],
+      "stationaryRootIntervals": [
+        {
+          "first": 71.656,
+          "last": 97.106,
+          "duration": 25.44999999999999,
+          "position": "<4511.505859, 339.171936, 10236.791016>",
+          "firstLine": 8703,
+          "lastLine": 11775
+        },
+        {
+          "first": 124.657,
+          "last": 135.428,
+          "duration": 10.771,
+          "position": "<4524.359375, 339.322876, 10238.279297>",
+          "firstLine": 15167,
+          "lastLine": 16511
+        },
+        {
+          "first": 60.475,
+          "last": 64.741,
+          "duration": 4.265999999999998,
+          "position": "<4511.494629, 339.285004, 10236.858398>",
+          "firstLine": 7359,
+          "lastLine": 7871
+        },
+        {
+          "first": 66.812,
+          "last": 70.047,
+          "duration": 3.2349999999999994,
+          "position": "<4511.497070, 339.285004, 10236.853516>",
+          "firstLine": 8127,
+          "lastLine": 8511
+        }
+      ],
+      "facts": [
+        "Entity61 absent from high FOLLOW during valid player high-hold window; final terminal arrived.",
+        "EGRESS_STALL episode is later recovered and must not be called unresolved terminal failure.",
+        "Budget samples restore6m after recovery owner end; prior1.5m persistence is not observed here."
+      ],
+      "hypotheses": [
+        "Supported pose/egress handoff nearcontainer caused a long delay; same-call collision and geometry replay needed for cause.",
+        "Timing overhead may alter contacts but is not proven causal by this single run."
+      ],
+      "limits": [
+        "Same root text at sampled precision is not continuous zero-motion proof.",
+        "Old diagnostic fields may be retained; event/call context required.",
+        "No fix or repeated causal validation; do not relax high-platform gate."
+      ]
+    }
+  },
+  "blockers": [
+    "Functional gate failed:63/64 high FOLLOW,actor61 delayed then recovered; final64/64 does not override miss.",
+    "OFF/ON comparable cost repeats pending.",
+    "Initial floor/inline entry alignment remain in FOLLOW residual.",
+    "Animation graph/render temporal mismatch unresolved; native evaluation/GPU/GC self-time unavailable."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/follow-cost-sixtyfour-20261031.md",
+      "sha256": "858126ad00dc14b1aec4407997f6ab669efea16aca419125e6d53c64ead51ed4"
+    },
+    {
+      "path": "evidence/follow-cost-sixtyfour-20261031.txt",
+      "sha256": "b62eb8408dfeddd262300ec8be587bb5eeb1b0c07eefc029cddb49dbb3ac8baf"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

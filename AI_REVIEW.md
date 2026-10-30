@@ -1,3 +1,5 @@
+> 최신 계측 진단(2026-10-31): 함수별64개체 기록은 확보했지만 고지대 FOLLOW63/64로 기능 게이트 미통과.61번이 낙하/착지 복구에서 지연된 뒤 최종64/64는 도달했다. 비용 반복·시각/성능 수용도 미완료다. [조건·수치·61번 타임라인](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/follow-cost-sixtyfour-20261031.md). 이전 B93D 기능 반복은 아래에 보존한다.
+
 > 最新 계측 진단(2026-10-31): B93D를 보존한 별도 계측 패키지에서 FOLLOW 내부 함수의8개체 실제 기록을 검증했다. 새 패키지64명·대조 반복·시각/성능 수용은 아직 미완료다. [조건·수치·실패 이력](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/follow-cost-eight-20261031.md). 아래의 이전 B93D64명 기준 측정/기능 반복은 보존한다.
 
 > 最新 비용 진단(2026-10-31): B93D 고정 카메라·64개체 300초의 중첩 경과 타이머 기준 측정을 완료했다. 최적화 대조나 시각 품질 수용이 아니다. [측정값·조건·한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/b93d-cost-baseline-20261031.md). 앞선 8/64 기능 반복 기록은 아래에 보존한다.
