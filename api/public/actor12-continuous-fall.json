@@ -1,0 +1,65 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T07:03:51.230545+09:00",
+  "sourceRunId": "actor12-continuous-fall-20261031-065655",
+  "buildId": "E57BFD5C08A6B45B34D503A75B5C7AE606FADE270D4401C58DD59C2F70E1A125",
+  "verificationStatus": {
+    "diagnosis": "repeated_frozen_physical_landings_and_guards",
+    "candidate": "not_packaged",
+    "functional": "no_new_gameplay_acceptance",
+    "visual": "unmeasured",
+    "performance": "unmeasured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "engineRuns": 4,
+    "newContinuousRows": 32,
+    "newGuardRows": 28,
+    "inheritedRecheckRows": 776,
+    "totalRows": 836,
+    "repeatedRowsEqual": true,
+    "blockedBaselineTimeouts": 8,
+    "restoredBudgetLandings": 8,
+    "freeFallControlLandings": 16,
+    "restoredSimulatedLandingSeconds": [
+      3.44,
+      4.06607
+    ],
+    "freeFallSimulatedLandingSeconds": [
+      0.528,
+      0.54
+    ],
+    "evidenceScope": "Frozen pose physicalFall toLAND andowner boundaries;not animclock/AI/peers/continuous game capture.",
+    "candidatePackaged": false,
+    "newGameplayRuns": 0,
+    "functionalAccepted": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "repetitions": 2,
+    "condition": "2recorded poses xstuck/free x1.5/6m budgets xdeclared2/20msdt;physical Fall toLAND orboundedtimeout;7owner boundaries x2modes.",
+    "frameTime": null,
+    "visibleAnimation": null
+  },
+  "blockers": [
+    "No changing animation/peer/AI replay.",
+    "Synthetic director time,not measured real recovery latency.",
+    "Stops atphysicalLAND;no postlanding graph release orpursuit proof.",
+    "No new signed candidatePBO or8/64gameplay."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/actor12-continuous-fall-20261031.md",
+      "sha256": "8ada729ca80ba8f9829281f7e287e9e7742532d88d252be23849be6595755f9b"
+    },
+    {
+      "path": "evidence/actor12-continuous-fall-20261031.txt",
+      "sha256": "b4693e16372bbbab240eb9f961b124cb753134ca92ec7c56684c3388bc3522f4"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
