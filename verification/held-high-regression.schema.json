@@ -1,0 +1,195 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Held-high regression public evidence required-contract schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sourceRunId": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "string"
+      }
+    },
+    "buildId": {
+      "type": "string",
+      "pattern": "^[0-9A-F]{64}$"
+    },
+    "verificationStatus": {
+      "type": "object",
+      "required": [
+        "eightTrial",
+        "sixtyFourTrial",
+        "repeatVerificationCompleted",
+        "finalAcceptance",
+        "visualAcceptance",
+        "performanceAcceptance"
+      ],
+      "properties": {
+        "repeatVerificationCompleted": {
+          "const": false
+        },
+        "finalAcceptance": {
+          "const": false
+        },
+        "visualAcceptance": {
+          "const": false
+        },
+        "performanceAcceptance": {
+          "const": false
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "conditions",
+        "cases",
+        "targetP95Ms"
+      ],
+      "properties": {
+        "targetP95Ms": {
+          "const": 20
+        },
+        "cases": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "required": [
+              "sourceRunId",
+              "expectedAgents",
+              "stimulus",
+              "functional",
+              "foregroundMissionFrameMs",
+              "visualAccepted",
+              "performanceAccepted"
+            ],
+            "properties": {
+              "expectedAgents": {
+                "enum": [
+                  8,
+                  64
+                ]
+              },
+              "stimulus": {
+                "type": "object",
+                "required": [
+                  "valid",
+                  "recordedCorrections",
+                  "supportFailures"
+                ],
+                "properties": {
+                  "valid": {
+                    "type": "boolean"
+                  },
+                  "recordedCorrections": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "supportFailures": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "functional": {
+                "type": "object",
+                "required": [
+                  "highFollowCoverage",
+                  "terminalArrivals",
+                  "climbEndFailures",
+                  "thisTrialGatePassed"
+                ],
+                "properties": {
+                  "highFollowCoverage": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "terminalArrivals": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "climbEndFailures": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "foregroundMissionFrameMs": {
+                "type": "object",
+                "required": [
+                  "p50",
+                  "p95",
+                  "p99"
+                ],
+                "properties": {
+                  "p50": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "p95": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "p99": {
+                    "type": "number",
+                    "minimum": 0
+                  }
+                }
+              },
+              "visualAccepted": {
+                "const": false
+              },
+              "performanceAccepted": {
+                "const": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidenceReferences": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "sourceRunId",
+          "file",
+          "sha256"
+        ],
+        "properties": {
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    }
+  }
+}
