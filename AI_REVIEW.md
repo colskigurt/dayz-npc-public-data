@@ -1,3 +1,5 @@
+> 최신 실제8명비교(2026-10-31): B93D의예산복원OFF/ON각300초를종료하고도착·낙하복귀와실제예산잔류표본을분리했다.64명·추가반복·시각·성능수용은아직미완료다. [두실행의결과와한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/touchdown-budget-eight-20261031.md). 아래는과거보존기록이다.
+
 > 최신 후보 패키지(2026-10-31): B93D 착지예산복원후보빌드·서명·검증성공. 실제PBO1,288행대조와실플레이씬컴파일통과. 기본OFF·원작업본보존. 새8/64·시각·성능은미수용이다. [검증범위와다음시험](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/touchdown-budget-package-20261031.md). 아래는과거보존기록이다.
 
 > 최신 진단(2026-10-31): 동결 정체 입력에서 예산 복원8조건이 실제착지까지진행했고,정상낙하16조건은변화가없었다. 추가상태경계28행반복통과. 합성시간·동결포즈시험이며신규PBO·실제8/64·화면·성능은미수용이다. [조건과미확인범위](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/actor12-continuous-fall-20261031.md). 아래는과거보존기록이다.
