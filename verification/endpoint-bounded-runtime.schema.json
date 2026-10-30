@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "metrics": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "required": [
+          "sourceRunId",
+          "agents",
+          "endpointLookahead",
+          "durationSeconds",
+          "repetitions",
+          "foregroundMissionFrameMs",
+          "functional",
+          "stimulus",
+          "endpointAudit"
+        ],
+        "properties": {
+          "durationSeconds": {
+            "const": 300
+          },
+          "repetitions": {
+            "const": 1
+          },
+          "agents": {
+            "enum": [
+              8,
+              64
+            ]
+          },
+          "endpointLookahead": {
+            "type": "boolean"
+          },
+          "foregroundMissionFrameMs": {
+            "type": "object",
+            "required": [
+              "samples",
+              "p50",
+              "p95",
+              "p99"
+            ],
+            "properties": {
+              "samples": {
+                "type": "number",
+                "minimum": 0
+              },
+              "p50": {
+                "type": "number",
+                "minimum": 0
+              },
+              "p95": {
+                "type": "number",
+                "minimum": 0
+              },
+              "p99": {
+                "type": "number",
+                "minimum": 0
+              }
+            }
+          },
+          "functional": {
+            "type": "object",
+            "required": [
+              "terminalArrivals",
+              "unresolvedTerminalAgents",
+              "climbEndFailures",
+              "thisTrialGatePassed"
+            ]
+          },
+          "stimulus": {
+            "type": "object",
+            "required": [
+              "valid",
+              "highSamples",
+              "recordedCorrections"
+            ]
+          }
+        }
+      }
+    },
+    "goalComplete": {
+      "const": false
+    }
+  }
+}
