@@ -1,0 +1,346 @@
+Signed escape refinement package;selected source and diagnostics,not full raw evidence.
+F1 DGSubsetZZZZZZEscapeRefinement.c SHA256 76256733b5dd8f9b282fdc848005ec30072812845232e6f00b9e8a5fd8a0c332
+F1:1: // Opt-in archive candidate. Preserve the original eight directions first.
+F1:2: modded class DGBNativeTraversal
+F1:3: {
+F1:4:     bool ERRead;bool EREnabled;int ERPlans;int ERTargets;int ERSweeps;int ERSelected;
+F1:5:     int ERRows;static int ERGlobalRows;
+F1:6:     bool EROn()
+F1:7:     {
+F1:8:         if(!ERRead){EREnabled=FileExist("$profile:escape-direction-refinement.flag");ERRead=true;}
+F1:9:         return EREnabled;
+F1:10:     }
+F1:11:     override bool PlanPressureEscape(float dt)
+F1:12:     {
+F1:13:         if(!EROn())return super.PlanPressureEscape(dt);
+F1:14:         bool planned=super.PlanPressureEscape(dt);
+F1:15:         if(planned || Phase!="FOLLOW" || !PoseClearanceActive || Active || EntryAligning)return planned;
+F1:16:         bool refined=ERPlan(dt);ERTrace(refined);return refined;
+F1:17:     }
+F1:18:     bool ERPlan(float dt)
+F1:19:     {
+F1:20:         ERPlans++;
+F1:21:         array<bool> blocked={false,false,false,false,false,false,false,false};
+F1:22:         string savedLanding=LandingDiagnostic;string savedDiagnostic=PressureEscapeDiagnostic;
+F1:23:         for(float distance=0.5;distance<=4;distance+=0.5)
+F1:24:         for(int index=0;index<8;index++)
+F1:25:         {
+F1:26:             if(blocked[index])continue;
+F1:27:             float angle=(22.5+45*index)*Math.DEG2RAD;
+F1:28:             vector direction=Vector(Math.Sin(angle),0,Math.Cos(angle));
+F1:29:             vector candidate=Body.Agent.Position+direction*distance;
+F1:30:             vector floor,supported;ERTargets++;
+F1:31:             if(!DGBGroundAgent.Floor(Body.Leader,candidate,floor))continue;
+F1:32:             if(Fixture().Area(floor)!=Fixture().Area(Body.Agent.Position))continue;
+F1:33:             if(Math.AbsFloat(floor[1] - Body.Agent.Position[1])>0.08)continue;
+F1:34:             if(!LandingSpace(floor,supported))continue;
+F1:35:             float lift;ref array<vector> points={};ERSweeps++;
+F1:36:             if(!PressureEscapeStepClear(Body.Agent.Position+direction*Math.Min(0.04,dt*0.6),lift,points))
+F1:37:             {PressureEscapeLastStepReject=PressureEscapeDiagnostic;blocked[index]=true;continue;}
+F1:38:             EscapeNoExitAt=-1;PressureEscapeGoal=supported;PressureEscapeValid=true;
+F1:39:             LandingDiagnostic=savedLanding;ERSelected++;return true;
+F1:40:         }
+F1:41:         LandingDiagnostic=savedLanding;PressureEscapeDiagnostic=savedDiagnostic;return false;
+F1:42:     }
+F1:43:     void ERTrace(bool selected)
+F1:44:     {
+F1:45:         if(ERRows>=128 || ERGlobalRows>=2048 || !FileExist("$profile:state-contract.flag"))return;
+F1:46:         string path="$profile:native-escape-refinement.tsv";bool exists=FileExist(path);
+F1:47:         FileHandle file=OpenFile(path,FileMode.APPEND);if(!file)return;
+F1:48:         if(!exists)FPrintln(file,"sequence\tseconds\tid\tphase\tposition\tselected\tgoal\tplans\ttargets\tsweeps\taccepted\trequest\tnativeRequest");
+F1:49:         ERRows++;ERGlobalRows++;
+F1:50:         string row=ERGlobalRows.ToString()+"\t"+(Now()-Body.Director.Born)+"\t"+Body.Id+"\t"+Phase+"\t"+Body.Agent.Position;
+F1:51:         row+="\t"+selected+"\t"+PressureEscapeGoal+"\t"+ERPlans+"\t"+ERTargets+"\t"+ERSweeps+"\t"+ERSelected;
+F1:52:         row+="\t"+Body.Request+"\t"+Body.Leader.NativeRequest;
+F1:53:         FPrintln(file,row);CloseFile(file);
+F1:54:     }
+F1:55: }
+Selection: closed run summaries and first up to12 selected refinement plan rows per source order.
+{
+  "buildId": "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
+  "summaries": [
+    {
+      "runId": "runtime-20261030-092351",
+      "buildId": "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
+      "count": 8,
+      "durationSeconds": 300,
+      "scenario": "activeReference",
+      "terminalArrivals": 8,
+      "missingHighFollow": [],
+      "highHoldWindow": [
+        45.025,
+        104.902
+      ],
+      "fallsLandedAndResumed": 9,
+      "climbEndFailures": 0,
+      "admissionOutcomes": {
+        "ARRIVED": 1
+      },
+      "egressViolations": [],
+      "foregroundMissionFrameMs": {
+        "samples": 14734,
+        "p50": 20.0,
+        "p95": 33.0,
+        "p99": 34.0
+      },
+      "refinementTrace": {
+        "status": "activation_unobserved",
+        "rows": 0,
+        "actors": 0,
+        "selectedRows": 0
+      },
+      "measurementConditions": {
+        "escapeRefinement": "on",
+        "contactInputObserver": true,
+        "entryPreparationContact": "on",
+        "diagnosticLogging": true,
+        "timingScope": "foreground mission dt;not PresentMon or visual animation cadence",
+        "baselineComparison": false
+      }
+    },
+    {
+      "runId": "runtime-20261030-093001",
+      "buildId": "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
+      "count": 64,
+      "durationSeconds": 300,
+      "scenario": "activeReference",
+      "terminalArrivals": 64,
+      "missingHighFollow": [
+        17,
+        33,
+        40
+      ],
+      "highHoldWindow": [
+        45.058,
+        104.964
+      ],
+      "fallsLandedAndResumed": 77,
+      "climbEndFailures": 0,
+      "admissionOutcomes": {
+        "ARRIVED": 9,
+        "EXPIRED": 1
+      },
+      "egressViolations": [],
+      "foregroundMissionFrameMs": {
+        "samples": 9786,
+        "p50": 26.0,
+        "p95": 64.0,
+        "p99": 86.0
+      },
+      "refinementTrace": {
+        "status": "activation_unobserved",
+        "rows": 0,
+        "actors": 0,
+        "selectedRows": 0
+      },
+      "measurementConditions": {
+        "escapeRefinement": "on",
+        "contactInputObserver": true,
+        "entryPreparationContact": "on",
+        "diagnosticLogging": true,
+        "timingScope": "foreground mission dt;not PresentMon or visual animation cadence",
+        "baselineComparison": false
+      }
+    }
+  ],
+  "details": [
+    {
+      "runId": "runtime-20261030-092351",
+      "unresolvedTerminalAgents": [],
+      "failureLabels": {
+        "CONTACT_SUPPORT_LOST": 1
+      },
+      "algorithmFailureEpisodes": {},
+      "allPhysicalTransitionsMatched": true,
+      "refinementTrace": {
+        "verificationStatus": "activation_unobserved",
+        "sourceRunId": "runtime-20261030-092351",
+        "buildId": "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
+        "mode": "on",
+        "rows": 0,
+        "actors": 0,
+        "selectedRows": 0,
+        "perActor": {},
+        "representativeSelected": [],
+        "visualAcceptance": false,
+        "performanceAcceptance": false,
+        "limitations": [
+          "Selected goals are plan outputs,not root commits or proof of eventual arrival.",
+          "128/body2048global cap;last counters are lower bounds,not final totals.",
+          "No trace can mean no eligible call or unobserved IO failure;not proof of branch absence.",
+          "Original retry timing includes supported-turn resets;not a guaranteed0.75s minimum interval.",
+          "Logical guards are source/headless evidence;live trace directly records FOLLOW only.",
+          "Plan/target/sweep counts are not CPU,GPU or wall-clock cost attribution."
+        ]
+      }
+    },
+    {
+      "runId": "runtime-20261030-093001",
+      "unresolvedTerminalAgents": [],
+      "failureLabels": {
+        "CONTACT_SUPPORT_LOST": 51,
+        "EGRESS_STALL": 1
+      },
+      "algorithmFailureEpisodes": {
+        "EGRESS_STALL": [
+          {
+            "runId": "runtime-20261030-093001",
+            "entityId": 14,
+            "eventOrdinal": 1203,
+            "seconds": 87.279,
+            "previousState": "EGRESS",
+            "newState": "FOLLOW",
+            "transitionReason": "EGRESS_STALL",
+            "metadataEvent": false,
+            "recoveryGenerationDerived": 1,
+            "position": "<4515.811035, 339.243652, 10241.250000>",
+            "contactSampleAge": 0.14399999999999125,
+            "contactStatus": "PLAYER_CONTACT",
+            "contactPhase": "EGRESS",
+            "landingDiagnostic": "CLEAR",
+            "nativeSameCallSequence": "1342",
+            "nativeRecoveryGeneration": "1",
+            "nativeContactStatus": "",
+            "nativeMotionElapsedBeforeTransition": "0",
+            "terminalOutcome": "ARRIVED"
+          }
+        ]
+      },
+      "allPhysicalTransitionsMatched": true,
+      "refinementTrace": {
+        "verificationStatus": "activation_unobserved",
+        "sourceRunId": "runtime-20261030-093001",
+        "buildId": "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
+        "mode": "on",
+        "rows": 0,
+        "actors": 0,
+        "selectedRows": 0,
+        "perActor": {},
+        "representativeSelected": [],
+        "visualAcceptance": false,
+        "performanceAcceptance": false,
+        "limitations": [
+          "Selected goals are plan outputs,not root commits or proof of eventual arrival.",
+          "128/body2048global cap;last counters are lower bounds,not final totals.",
+          "No trace can mean no eligible call or unobserved IO failure;not proof of branch absence.",
+          "Original retry timing includes supported-turn resets;not a guaranteed0.75s minimum interval.",
+          "Logical guards are source/headless evidence;live trace directly records FOLLOW only.",
+          "Plan/target/sweep counts are not CPU,GPU or wall-clock cost attribution."
+        ]
+      }
+    }
+  ],
+  "packagedModeSummaries": [
+    {
+      "mode": 0,
+      "rows": 600,
+      "movedSteps": 0,
+      "displacementMetres": 0.0,
+      "supported": true,
+      "diagnosticHalfMetreReached": false,
+      "maximum3DStepMetres": 0,
+      "refinementPlans": 0,
+      "refinementTargets": 0,
+      "refinementSweeps": 0,
+      "refinementSelected": 0
+    },
+    {
+      "mode": 1,
+      "rows": 29,
+      "movedSteps": 17,
+      "displacementMetres": 0.507013,
+      "supported": true,
+      "diagnosticHalfMetreReached": true,
+      "maximum3DStepMetres": 0.030274245821144283,
+      "refinementPlans": 1,
+      "refinementTargets": 4,
+      "refinementSweeps": 2,
+      "refinementSelected": 1
+    },
+    {
+      "mode": 2,
+      "rows": 600,
+      "movedSteps": 0,
+      "displacementMetres": 0.0,
+      "supported": true,
+      "diagnosticHalfMetreReached": false,
+      "maximum3DStepMetres": 0,
+      "refinementPlans": 0,
+      "refinementTargets": 0,
+      "refinementSweeps": 0,
+      "refinementSelected": 0
+    }
+  ],
+  "positiveFileReadModes": [
+    {
+      "mode": 0,
+      "rows": 600,
+      "movedSteps": 0,
+      "displacementMetres": 0.0,
+      "supported": true,
+      "diagnosticHalfMetreReached": false,
+      "maximum3DStepMetres": 0,
+      "refinementPlans": 0,
+      "refinementTargets": 0,
+      "refinementSweeps": 0,
+      "refinementSelected": 0
+    },
+    {
+      "mode": 1,
+      "rows": 29,
+      "movedSteps": 17,
+      "displacementMetres": 0.507013,
+      "supported": true,
+      "diagnosticHalfMetreReached": true,
+      "maximum3DStepMetres": 0.030274245821144283,
+      "refinementPlans": 1,
+      "refinementTargets": 4,
+      "refinementSweeps": 2,
+      "refinementSelected": 1
+    },
+    {
+      "mode": 2,
+      "rows": 29,
+      "movedSteps": 17,
+      "displacementMetres": 0.507013,
+      "supported": true,
+      "diagnosticHalfMetreReached": true,
+      "maximum3DStepMetres": 0.030274245821144283,
+      "refinementPlans": 1,
+      "refinementTargets": 4,
+      "refinementSweeps": 2,
+      "refinementSelected": 1
+    }
+  ],
+  "negativeGuards": [
+    {
+      "case": "7",
+      "mode": "0",
+      "phase": "WALL",
+      "poseActive": "true",
+      "entryAlign": "false",
+      "active": "false",
+      "planned": "false",
+      "erPlans": "0",
+      "goal": "0 0 0",
+      "valid": "false",
+      "rootUnchanged": "true",
+      "gate": "DEEPER_FIXTURE"
+    },
+    {
+      "case": "8",
+      "mode": "0",
+      "phase": "FOOTPRINT",
+      "poseActive": "true",
+      "entryAlign": "false",
+      "active": "false",
+      "planned": "false",
+      "erPlans": "0",
+      "goal": "0 0 0",
+      "valid": "false",
+      "rootUnchanged": "true",
+      "gate": "FOOT_Z_SUPPORT"
+    }
+  ]
+}
+Not proved: causal performance gain,visual animation smoothness,repeatable full acceptance from one live run per condition.
