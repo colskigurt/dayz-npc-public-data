@@ -1,3 +1,5 @@
+> 최신 실제 비교(2026-10-31): 같은 E57B 후보의8/64 OFF·ON 각300초 결과를 기록했다. 실패·후보 호출·정상 낙하 복귀를 구분하며,반복 회귀·화면 품질·성능 수용은 미완료다. [실행별 결과와 한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/endpoint-bounded-runtime-20261031.md). 아래는 과거 보존 기록이다.
+
 > 새 후보 패키지(2026-10-31): E57B 끝점 선택기 벡터 한도만 수정. 빌드·서명·검증 및 동결 대조216행 통과. 기본 작업본 보존,새8→64·시각·성능 수용은 미실행이다. [후보 범위와 검증](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/endpoint-bounded-package-20261031.md). 아래는 이전 실제 시험/진단 기록이다.
 
 > 최신 진단(2026-10-31): 60번의 −Z 표면 법선 거부를 17조건×2회 재현. 같은 호출의 raw4/이전접촉4로 실제 Accept 출력도 일치했다. 기존 선택기의 수치 한도 후보는 6dt×2회 통과했지만 게임 PBO·새8→64에는 미반영이다. [원인·후보·한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/actor60-footprint-accept-20261031.md). 아래 실제 기능 수치는 기존 시험 기록이다.

@@ -1,0 +1,301 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T06:42:19.595749+09:00",
+  "sourceRunId": "endpoint-bounded-runtime-20261031-061358",
+  "buildId": "E57BFD5C08A6B45B34D503A75B5C7AE606FADE270D4401C58DD59C2F70E1A125",
+  "verificationStatus": {
+    "diagnosis": "completed_four_trials",
+    "functional": "regression_failures_remain",
+    "visual": "unmeasured",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": [
+    {
+      "sourceRunId": "runtime-20261031-061358",
+      "agents": 8,
+      "endpointLookahead": false,
+      "scenario": "activeReference held-high anchor",
+      "durationSeconds": 300,
+      "repetitions": 1,
+      "foregroundMissionFrameMs": {
+        "samples": 14746,
+        "p50": 20.0,
+        "p95": 33.0,
+        "p99": 35.0
+      },
+      "functional": {
+        "highFollowCoverage": 8,
+        "missingHigh": [],
+        "terminalArrivals": 8,
+        "unresolvedTerminalAgents": [],
+        "fallsLandedAndResumed": 9,
+        "newFailureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 1
+        },
+        "unresolvedAlgorithmEpisodes": {},
+        "climbEndFailures": 0,
+        "thisTrialGatePassed": true,
+        "repeatRegressionAccepted": false
+      },
+      "stimulus": {
+        "valid": true,
+        "highSamples": 521,
+        "areaSamples": {
+          "high": 521
+        },
+        "first": 45.024,
+        "last": 104.941,
+        "maxSampleGapSeconds": 0.12300000000000466,
+        "anchorEnabled": true,
+        "recordedCorrections": 0,
+        "supportFailures": 0,
+        "traceOrSupportErrors": [],
+        "maximumRecordedCorrectionHorizontal": 0,
+        "limitation": "Sampled area,not continuous physical support proof. Recorded corrections alter player stimulus;NPC physics remain active."
+      },
+      "endpointAudit": {
+        "sourceRunId": "runtime-20261031-061358",
+        "buildId": "E57BFD5C08A6B45B34D503A75B5C7AE606FADE270D4401C58DD59C2F70E1A125",
+        "endpointLookahead": false,
+        "status": "off_control_no_events",
+        "interventions": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "maximumObservedInitialStepMeters": 0,
+        "initialTerminalAndTwentyMmViolations": [],
+        "maximumReportedAnyEndpointFitMeters": 0.0142851,
+        "anyEndpointFitOver80Mm": false,
+        "gameplayAccepted": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false
+      }
+    },
+    {
+      "sourceRunId": "runtime-20261031-062332",
+      "agents": 8,
+      "endpointLookahead": true,
+      "scenario": "activeReference held-high anchor",
+      "durationSeconds": 300,
+      "repetitions": 1,
+      "foregroundMissionFrameMs": {
+        "samples": 14747,
+        "p50": 20.0,
+        "p95": 33.0,
+        "p99": 35.0
+      },
+      "functional": {
+        "highFollowCoverage": 8,
+        "missingHigh": [],
+        "terminalArrivals": 8,
+        "unresolvedTerminalAgents": [],
+        "fallsLandedAndResumed": 9,
+        "newFailureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 1
+        },
+        "unresolvedAlgorithmEpisodes": {},
+        "climbEndFailures": 0,
+        "thisTrialGatePassed": true,
+        "repeatRegressionAccepted": false
+      },
+      "stimulus": {
+        "valid": true,
+        "highSamples": 521,
+        "areaSamples": {
+          "high": 521
+        },
+        "first": 45.005,
+        "last": 104.933,
+        "maxSampleGapSeconds": 0.12999999999999545,
+        "anchorEnabled": true,
+        "recordedCorrections": 4,
+        "supportFailures": 0,
+        "traceOrSupportErrors": [],
+        "maximumRecordedCorrectionHorizontal": 0.136915,
+        "limitation": "Sampled area,not continuous physical support proof. Recorded corrections alter player stimulus;NPC physics remain active."
+      },
+      "endpointAudit": {
+        "sourceRunId": "runtime-20261031-062332",
+        "buildId": "E57BFD5C08A6B45B34D503A75B5C7AE606FADE270D4401C58DD59C2F70E1A125",
+        "endpointLookahead": true,
+        "status": "activation_unobserved",
+        "interventions": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "maximumObservedInitialStepMeters": 0,
+        "initialTerminalAndTwentyMmViolations": [],
+        "maximumReportedAnyEndpointFitMeters": 0.0142851,
+        "anyEndpointFitOver80Mm": false,
+        "gameplayAccepted": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false
+      }
+    },
+    {
+      "sourceRunId": "runtime-20261031-062947",
+      "agents": 64,
+      "endpointLookahead": false,
+      "scenario": "activeReference held-high anchor",
+      "durationSeconds": 300,
+      "repetitions": 1,
+      "foregroundMissionFrameMs": {
+        "samples": 8498,
+        "p50": 30.0,
+        "p95": 68.0,
+        "p99": 94.0
+      },
+      "functional": {
+        "highFollowCoverage": 63,
+        "missingHigh": [
+          12
+        ],
+        "terminalArrivals": 63,
+        "unresolvedTerminalAgents": [
+          {
+            "id": "12",
+            "position": "<4511.381836, 339.316162, 10241.486328>",
+            "state": "IDLE",
+            "traversalPhase": "FALL",
+            "reason": "FALL_NATIVE_JOINT_WORLD_0",
+            "seenAge": "152.306",
+            "poseEpisodeAge": "-1",
+            "poseEpisodeStatus": "CURRENT_BLOCKED",
+            "pressureEscapeDiagnostic": "SEPARATION_DISTANCE_LIMIT",
+            "pressureEscapeLastStepReject": "DEEPER_FIXTURE",
+            "pressureEscapeRejectProbe": "5",
+            "pressureEscapeRejectFixture": "StaticObj_Container_1C",
+            "pressureEscapeRejectBefore": "0.0191205",
+            "pressureEscapeRejectAfter": "0.0147267"
+          }
+        ],
+        "fallsLandedAndResumed": 75,
+        "newFailureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 15,
+          "ENTRY_ALIGNMENT_NO_PROGRESS": 1
+        },
+        "unresolvedAlgorithmEpisodes": {},
+        "climbEndFailures": 0,
+        "thisTrialGatePassed": false,
+        "repeatRegressionAccepted": false
+      },
+      "stimulus": {
+        "valid": true,
+        "highSamples": 474,
+        "areaSamples": {
+          "high": 474
+        },
+        "first": 45.046,
+        "last": 104.954,
+        "maxSampleGapSeconds": 0.19699999999999562,
+        "anchorEnabled": true,
+        "recordedCorrections": 52,
+        "supportFailures": 0,
+        "traceOrSupportErrors": [],
+        "maximumRecordedCorrectionHorizontal": 0.279926,
+        "limitation": "Sampled area,not continuous physical support proof. Recorded corrections alter player stimulus;NPC physics remain active."
+      },
+      "endpointAudit": {
+        "sourceRunId": "runtime-20261031-062947",
+        "buildId": "E57BFD5C08A6B45B34D503A75B5C7AE606FADE270D4401C58DD59C2F70E1A125",
+        "endpointLookahead": false,
+        "status": "off_control_no_events",
+        "interventions": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "maximumObservedInitialStepMeters": 0,
+        "initialTerminalAndTwentyMmViolations": [],
+        "maximumReportedAnyEndpointFitMeters": 0.0142851,
+        "anyEndpointFitOver80Mm": false,
+        "gameplayAccepted": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false
+      }
+    },
+    {
+      "sourceRunId": "runtime-20261031-063601",
+      "agents": 64,
+      "endpointLookahead": true,
+      "scenario": "activeReference held-high anchor",
+      "durationSeconds": 300,
+      "repetitions": 1,
+      "foregroundMissionFrameMs": {
+        "samples": 9546,
+        "p50": 26.0,
+        "p95": 60.0,
+        "p99": 80.0
+      },
+      "functional": {
+        "highFollowCoverage": 64,
+        "missingHigh": [],
+        "terminalArrivals": 64,
+        "unresolvedTerminalAgents": [],
+        "fallsLandedAndResumed": 83,
+        "newFailureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 19,
+          "SUPPORTED_CONTACT_REPLAN": 1
+        },
+        "unresolvedAlgorithmEpisodes": {},
+        "climbEndFailures": 0,
+        "thisTrialGatePassed": true,
+        "repeatRegressionAccepted": false
+      },
+      "stimulus": {
+        "valid": true,
+        "highSamples": 482,
+        "areaSamples": {
+          "high": 482
+        },
+        "first": 45.016,
+        "last": 104.88,
+        "maxSampleGapSeconds": 0.2219999999999942,
+        "anchorEnabled": true,
+        "recordedCorrections": 37,
+        "supportFailures": 0,
+        "traceOrSupportErrors": [],
+        "maximumRecordedCorrectionHorizontal": 0.202696,
+        "limitation": "Sampled area,not continuous physical support proof. Recorded corrections alter player stimulus;NPC physics remain active."
+      },
+      "endpointAudit": {
+        "sourceRunId": "runtime-20261031-063601",
+        "buildId": "E57BFD5C08A6B45B34D503A75B5C7AE606FADE270D4401C58DD59C2F70E1A125",
+        "endpointLookahead": true,
+        "status": "activation_observed",
+        "interventions": 1,
+        "accepted": 1,
+        "rejected": 0,
+        "maximumObservedInitialStepMeters": 0.005569896318875664,
+        "initialTerminalAndTwentyMmViolations": [],
+        "maximumReportedAnyEndpointFitMeters": 0.0142851,
+        "anyEndpointFitOver80Mm": false,
+        "gameplayAccepted": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false
+      }
+    }
+  ],
+  "blockers": [
+    "Unresolved failures must be replayed and repaired.",
+    "One repetition per condition; no reproducible optimization claim.",
+    "Visible animation timing not measured in this bundle.",
+    "Progress index partially reconstructed; exact pre-incident fields not fully restored."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/endpoint-bounded-runtime-20261031.md",
+      "sha256": "35ae11aa9a7f6f6ebde12a9b6abd173a7d3de02f2b77b38e864e775a7b12c877"
+    },
+    {
+      "path": "evidence/endpoint-bounded-runtime-20261031.txt",
+      "sha256": "8b9314c488373ad1dbe44d05a91b9b5c123e79d3fde37cd747e6e8630b1def63"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
