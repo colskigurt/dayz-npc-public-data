@@ -1,0 +1,415 @@
+B93D actual8/64 initialOFF/ONcomparison — selected evidence
+
+Selection: full per-run summaries andsampled budget audit counts/representativeviolations;not all raw samples orcontinuousvideo. SamePBO/scene/graphics,endpointlookaheadON;onlybudgetscopeflag differs. Boundary6ms rows skipped.
+
+{
+  "trials": [
+    {
+      "sourceRunId": "runtime-20261031-071558",
+      "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+      "count": 8,
+      "endpointLookahead": true,
+      "postTouchdownBudgetScope": false,
+      "normalQuitVerified": true,
+      "stimulus": {
+        "valid": true,
+        "highSamples": 523,
+        "areaSamples": {
+          "high": 523
+        },
+        "first": 45.012,
+        "last": 104.889,
+        "maxSampleGapSeconds": 0.12699999999999534,
+        "anchorEnabled": true,
+        "recordedCorrections": 0,
+        "supportFailures": 0,
+        "traceOrSupportErrors": [],
+        "maximumRecordedCorrectionHorizontal": 0,
+        "limitation": "Sampled area,not continuous physical support proof. Recorded corrections alter player stimulus;NPC physics remain active."
+      },
+      "functional": {
+        "highFollowCoverage": 8,
+        "missingHigh": [],
+        "terminalArrivals": 8,
+        "unresolvedTerminalAgents": [],
+        "fallsLandedAndResumed": 9,
+        "newFailureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 1
+        },
+        "unresolvedAlgorithmEpisodes": {},
+        "climbEndFailures": 0,
+        "thisTrialGatePassed": true,
+        "repeatRegressionAccepted": false
+      },
+      "foregroundMissionFrameMs": {
+        "samples": 14747,
+        "p50": 20.0,
+        "p95": 33.0,
+        "p99": 34.0
+      },
+      "foregroundFraction": 1.0,
+      "endpointAudit": {
+        "sourceRunId": "runtime-20261031-071558",
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "endpointLookahead": true,
+        "status": "activation_unobserved",
+        "interventions": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "maximumObservedInitialStepMeters": 0,
+        "initialTerminalAndTwentyMmViolations": [],
+        "maximumReportedAnyEndpointFitMeters": 0.0,
+        "anyEndpointFitOver80Mm": false,
+        "gameplayAccepted": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false
+      },
+      "budgetAudit": {
+        "sourceRunId": "runtime-20261031-071558",
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "postTouchdownBudgetScope": false,
+        "ownerStarts": 5,
+        "ownerEnds": 5,
+        "checkedSamples": 4663,
+        "boundarySamplesSkipped": 1,
+        "ownedSamples": 52,
+        "inactiveLoweredBudgetSamples": 1613,
+        "ownedBudgetMismatches": 0,
+        "inactiveBudgetMismatches": 0,
+        "sampledContractPassed": true,
+        "activationObserved": true,
+        "representativeViolations": [],
+        "limits": [
+          "Owner active inferred fromcompletePTstart/cancel events;not same-call proof.",
+          "Rows within6ms ofowner edges excluded due3decimal timestamp precision.",
+          "Expectednormal6m is this authored livefixture default,not general custombudget policy.",
+          "OFF inactive1.5m samples are control behavior,not candidate failure.",
+          "No animation/performance inference."
+        ],
+        "inputHashes": {
+          "launch.json": "e6e50f70673c47438ef556b376569c5198c7aa69ac78a69ef6b7d59fbfdedae4",
+          "native-ground.tsv": "46a076610ab34ab529606032e1e7b9c0a01571b8cd63ccd1c3e52c9c2e65cd5b",
+          "native-post-touchdown.tsv": "4e0398db4739c62b845d044f7a55ea6ce2060630698de2811c0685815b130453"
+        },
+        "goalComplete": false
+      },
+      "endpointEvents": [],
+      "signatureChecks": "Three existing dependency signatures checked by launcher before this run",
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false,
+      "combinedTrialGatePassed": true,
+      "budgetOwnerExposureObserved": true
+    },
+    {
+      "sourceRunId": "runtime-20261031-072210",
+      "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+      "count": 8,
+      "endpointLookahead": true,
+      "postTouchdownBudgetScope": true,
+      "normalQuitVerified": true,
+      "stimulus": {
+        "valid": true,
+        "highSamples": 521,
+        "areaSamples": {
+          "high": 521
+        },
+        "first": 45.001,
+        "last": 104.898,
+        "maxSampleGapSeconds": 0.12300000000000466,
+        "anchorEnabled": true,
+        "recordedCorrections": 0,
+        "supportFailures": 0,
+        "traceOrSupportErrors": [],
+        "maximumRecordedCorrectionHorizontal": 0,
+        "limitation": "Sampled area,not continuous physical support proof. Recorded corrections alter player stimulus;NPC physics remain active."
+      },
+      "functional": {
+        "highFollowCoverage": 8,
+        "missingHigh": [],
+        "terminalArrivals": 8,
+        "unresolvedTerminalAgents": [],
+        "fallsLandedAndResumed": 9,
+        "newFailureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 1
+        },
+        "unresolvedAlgorithmEpisodes": {},
+        "climbEndFailures": 0,
+        "thisTrialGatePassed": true,
+        "repeatRegressionAccepted": false
+      },
+      "foregroundMissionFrameMs": {
+        "samples": 14746,
+        "p50": 20.0,
+        "p95": 33.0,
+        "p99": 34.0
+      },
+      "foregroundFraction": 1.0,
+      "endpointAudit": {
+        "sourceRunId": "runtime-20261031-072210",
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "endpointLookahead": true,
+        "status": "activation_unobserved",
+        "interventions": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "maximumObservedInitialStepMeters": 0,
+        "initialTerminalAndTwentyMmViolations": [],
+        "maximumReportedAnyEndpointFitMeters": 0.0,
+        "anyEndpointFitOver80Mm": false,
+        "gameplayAccepted": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false
+      },
+      "budgetAudit": {
+        "sourceRunId": "runtime-20261031-072210",
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "postTouchdownBudgetScope": true,
+        "ownerStarts": 5,
+        "ownerEnds": 5,
+        "checkedSamples": 4664,
+        "boundarySamplesSkipped": 0,
+        "ownedSamples": 53,
+        "inactiveLoweredBudgetSamples": 0,
+        "ownedBudgetMismatches": 0,
+        "inactiveBudgetMismatches": 0,
+        "sampledContractPassed": true,
+        "activationObserved": true,
+        "representativeViolations": [],
+        "limits": [
+          "Owner active inferred fromcompletePTstart/cancel events;not same-call proof.",
+          "Rows within6ms ofowner edges excluded due3decimal timestamp precision.",
+          "Expectednormal6m is this authored livefixture default,not general custombudget policy.",
+          "OFF inactive1.5m samples are control behavior,not candidate failure.",
+          "No animation/performance inference."
+        ],
+        "inputHashes": {
+          "launch.json": "d25ab39c2b73a71d68cc491e18539ee3e09f2d8d4975a70c853288a7a05a3290",
+          "native-ground.tsv": "60716079114e713660a93bee6b34f67b24267167e7efb7ac7bb82c046c96efe9",
+          "native-post-touchdown.tsv": "bf8fe320a97d92af630c810912676154a1531a0c30db5100bdc4b91e42ed2e23"
+        },
+        "goalComplete": false
+      },
+      "endpointEvents": [],
+      "signatureChecks": "Three existing dependency signatures checked by launcher before this run",
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false,
+      "combinedTrialGatePassed": true,
+      "budgetOwnerExposureObserved": true
+    },
+    {
+      "sourceRunId": "runtime-20261031-072956",
+      "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+      "count": 64,
+      "endpointLookahead": true,
+      "postTouchdownBudgetScope": false,
+      "normalQuitVerified": true,
+      "stimulus": {
+        "valid": true,
+        "highSamples": 478,
+        "areaSamples": {
+          "high": 478
+        },
+        "first": 45.021,
+        "last": 104.973,
+        "maxSampleGapSeconds": 0.18900000000000716,
+        "anchorEnabled": true,
+        "recordedCorrections": 41,
+        "supportFailures": 0,
+        "traceOrSupportErrors": [],
+        "maximumRecordedCorrectionHorizontal": 0.211734,
+        "limitation": "Sampled area,not continuous physical support proof. Recorded corrections alter player stimulus;NPC physics remain active."
+      },
+      "functional": {
+        "highFollowCoverage": 64,
+        "missingHigh": [],
+        "terminalArrivals": 64,
+        "unresolvedTerminalAgents": [],
+        "fallsLandedAndResumed": 80,
+        "newFailureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 18
+        },
+        "unresolvedAlgorithmEpisodes": {},
+        "climbEndFailures": 0,
+        "thisTrialGatePassed": true,
+        "repeatRegressionAccepted": false
+      },
+      "foregroundMissionFrameMs": {
+        "samples": 9649,
+        "p50": 26.0,
+        "p95": 60.0,
+        "p99": 80.0
+      },
+      "foregroundFraction": 1.0,
+      "endpointAudit": {
+        "sourceRunId": "runtime-20261031-072956",
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "endpointLookahead": true,
+        "status": "activation_unobserved",
+        "interventions": 0,
+        "accepted": 0,
+        "rejected": 0,
+        "maximumObservedInitialStepMeters": 0,
+        "initialTerminalAndTwentyMmViolations": [],
+        "maximumReportedAnyEndpointFitMeters": 0.0142851,
+        "anyEndpointFitOver80Mm": false,
+        "gameplayAccepted": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false
+      },
+      "budgetAudit": {
+        "sourceRunId": "runtime-20261031-072956",
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "postTouchdownBudgetScope": false,
+        "ownerStarts": 61,
+        "ownerEnds": 61,
+        "checkedSamples": 37238,
+        "boundarySamplesSkipped": 10,
+        "ownedSamples": 562,
+        "inactiveLoweredBudgetSamples": 20056,
+        "ownedBudgetMismatches": 0,
+        "inactiveBudgetMismatches": 0,
+        "sampledContractPassed": true,
+        "activationObserved": true,
+        "representativeViolations": [],
+        "limits": [
+          "Owner active inferred fromcompletePTstart/cancel events;not same-call proof.",
+          "Rows within6ms ofowner edges excluded due3decimal timestamp precision.",
+          "Expectednormal6m is this authored livefixture default,not general custombudget policy.",
+          "OFF inactive1.5m samples are control behavior,not candidate failure.",
+          "No animation/performance inference."
+        ],
+        "inputHashes": {
+          "launch.json": "41a816b9db38768fffe5c5923b7adc49bec2270394d29b017e7bf6520e98e9b2",
+          "native-ground.tsv": "def22f3a83126acc6b43b951bda9ecc4dba6ce40cd79acb67223f21963eb8b29",
+          "native-post-touchdown.tsv": "d914d9cf97255cd70413434ad08050cb9cf70f2ed700f4989d3dd7087cea3bdf"
+        },
+        "goalComplete": false
+      },
+      "endpointEvents": [],
+      "signatureChecks": "Three existing dependency signatures checked by launcher before this run",
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false,
+      "combinedTrialGatePassed": true,
+      "budgetOwnerExposureObserved": true
+    },
+    {
+      "sourceRunId": "runtime-20261031-073621",
+      "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+      "count": 64,
+      "endpointLookahead": true,
+      "postTouchdownBudgetScope": true,
+      "normalQuitVerified": true,
+      "stimulus": {
+        "valid": true,
+        "highSamples": 471,
+        "areaSamples": {
+          "high": 471
+        },
+        "first": 45.06,
+        "last": 104.927,
+        "maxSampleGapSeconds": 0.20000000000000284,
+        "anchorEnabled": true,
+        "recordedCorrections": 618,
+        "supportFailures": 0,
+        "traceOrSupportErrors": [],
+        "maximumRecordedCorrectionHorizontal": 0.359821,
+        "limitation": "Sampled area,not continuous physical support proof. Recorded corrections alter player stimulus;NPC physics remain active."
+      },
+      "functional": {
+        "highFollowCoverage": 64,
+        "missingHigh": [],
+        "terminalArrivals": 64,
+        "unresolvedTerminalAgents": [],
+        "fallsLandedAndResumed": 83,
+        "newFailureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 21
+        },
+        "unresolvedAlgorithmEpisodes": {},
+        "climbEndFailures": 0,
+        "thisTrialGatePassed": true,
+        "repeatRegressionAccepted": false
+      },
+      "foregroundMissionFrameMs": {
+        "samples": 9467,
+        "p50": 25.0,
+        "p95": 66.0,
+        "p99": 92.0
+      },
+      "foregroundFraction": 1.0,
+      "endpointAudit": {
+        "sourceRunId": "runtime-20261031-073621",
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "endpointLookahead": true,
+        "status": "activation_observed",
+        "interventions": 1,
+        "accepted": 1,
+        "rejected": 0,
+        "maximumObservedInitialStepMeters": 0.005569896317918799,
+        "initialTerminalAndTwentyMmViolations": [],
+        "maximumReportedAnyEndpointFitMeters": 0.0142851,
+        "anyEndpointFitOver80Mm": false,
+        "gameplayAccepted": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false
+      },
+      "budgetAudit": {
+        "sourceRunId": "runtime-20261031-073621",
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "postTouchdownBudgetScope": true,
+        "ownerStarts": 66,
+        "ownerEnds": 66,
+        "checkedSamples": 37236,
+        "boundarySamplesSkipped": 12,
+        "ownedSamples": 633,
+        "inactiveLoweredBudgetSamples": 0,
+        "ownedBudgetMismatches": 0,
+        "inactiveBudgetMismatches": 0,
+        "sampledContractPassed": true,
+        "activationObserved": true,
+        "representativeViolations": [],
+        "limits": [
+          "Owner active inferred fromcompletePTstart/cancel events;not same-call proof.",
+          "Rows within6ms ofowner edges excluded due3decimal timestamp precision.",
+          "Expectednormal6m is this authored livefixture default,not general custombudget policy.",
+          "OFF inactive1.5m samples are control behavior,not candidate failure.",
+          "No animation/performance inference."
+        ],
+        "inputHashes": {
+          "launch.json": "eee064b06365a70370aee4900fc2d5fb2668eaab65a359ec42748bc251d60d8f",
+          "native-ground.tsv": "535f05be2a8e32e0e6608e935162a844c8ae05ec67ca4b95b63000211280eeca",
+          "native-post-touchdown.tsv": "03532bd80f0cd084cd60db61b6792fcf94a8c5feacb8d749c8a9cb50d6eb9275"
+        },
+        "goalComplete": false
+      },
+      "endpointEvents": [
+        {
+          "entityId": 34,
+          "seconds": 50.989,
+          "beforeLine": 776,
+          "resultLine": 777,
+          "before": "<4512.285156, 342.160614, 10242.881836>",
+          "proposed": "<4512.294922, 342.177673, 10242.894531>",
+          "targetSupport": "<4512.287598, 342.164246, 10242.884766>",
+          "after": "<4512.287598, 342.164673, 10242.884766>",
+          "accepted": true,
+          "stepMeters": 0.005569896317918799,
+          "twentyMmAndTerminalContract": true
+        }
+      ],
+      "signatureChecks": "Three existing dependency signatures checked by launcher before this run",
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false,
+      "combinedTrialGatePassed": true,
+      "budgetOwnerExposureObserved": true
+    }
+  ],
+  "fullPlanComplete": false
+}
