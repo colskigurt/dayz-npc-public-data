@@ -1,0 +1,1147 @@
+Selected complete baseline summary plus8-part clock cohorts; not raw logs or video. One instrumented current-build64 run, no optimization comparison.
+
+{
+  "results": {
+    "sourceRunId": "cost-attribution-b93d-20261031-080600",
+    "runtimeRunId": "runtime-20261031-080339",
+    "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+    "normalQuitVerified": true,
+    "actualRenderAnimationHosts": 512,
+    "logicalAgents": 64,
+    "frameSync": "on",
+    "fixedCamera": true,
+    "driveAttribution": true,
+    "foregroundMissionFrameMs": {
+      "p50": 24.0,
+      "p95": 65.0,
+      "p99": 85.0
+    },
+    "foregroundFraction": 1.0,
+    "functional": {
+      "highFollowCoverage": 64,
+      "missingHigh": [],
+      "terminalArrivals": 64,
+      "unresolvedTerminalAgents": [],
+      "fallsLandedAndResumed": 92,
+      "newFailureLabelEpisodes": {
+        "CONTACT_SUPPORT_LOST": 31
+      },
+      "unresolvedAlgorithmEpisodes": {},
+      "climbEndFailures": 0,
+      "thisTrialGatePassed": true,
+      "repeatRegressionAccepted": false
+    },
+    "stimulus": {
+      "valid": true,
+      "highSamples": 484,
+      "areaSamples": {
+        "high": 484
+      },
+      "first": 45.062,
+      "last": 104.951,
+      "maxSampleGapSeconds": 0.18099999999999739,
+      "anchorEnabled": true,
+      "recordedCorrections": 50,
+      "supportFailures": 0,
+      "traceOrSupportErrors": [],
+      "maximumRecordedCorrectionHorizontal": 0.204473,
+      "limitation": "Sampled area,not continuous physical support proof. Recorded corrections alter player stimulus;NPC physics remain active."
+    },
+    "sampledBudgetContract": true,
+    "cost": {
+      "stages": {
+        "LOW_HOLD": {
+          "durationSeconds": 39.00599999999999,
+          "pairedForegroundIntervals": 38,
+          "empiricalClockTicksPerSecond": 9999943.008767884,
+          "scopes": {
+            "body": {
+              "calls": 37632,
+              "callsPerSecond": 964.7746500538381,
+              "elapsedEquivalentMsPerWallSecond": 417.2180138328584,
+              "elapsedEquivalentMeanMsPerInvocation": 0.43245126083026336
+            },
+            "traversal": {
+              "calls": 37446,
+              "callsPerSecond": 960.0061528995541,
+              "elapsedEquivalentMsPerWallSecond": 280.5504811150067,
+              "elapsedEquivalentMeanMsPerInvocation": 0.2922382114610893
+            },
+            "contactConsumption": {
+              "calls": 37446,
+              "callsPerSecond": 960.0061528995541,
+              "elapsedEquivalentMsPerWallSecond": 126.83287173633254,
+              "elapsedEquivalentMeanMsPerInvocation": 0.1321167279535167
+            },
+            "frameFallAll": {
+              "calls": 61056,
+              "callsPerSecond": 1565.2976465159209,
+              "elapsedEquivalentMsPerWallSecond": 7.476738503793504,
+              "elapsedEquivalentMeanMsPerInvocation": 0.004776560241073266
+            },
+            "frameFallActive": {
+              "calls": 300,
+              "callsPerSecond": 7.6911244423934795,
+              "elapsedEquivalentMsPerWallSecond": 7.150617586583846,
+              "elapsedEquivalentMeanMsPerInvocation": 0.9297232986076315
+            }
+          },
+          "traversalPhaseAtEntry": {
+            "follow": {
+              "calls": 33912,
+              "callsPerSecond": 869.4047069681588,
+              "elapsedEquivalentMsPerWallSecond": 254.5629720901578,
+              "elapsedEquivalentMeanMsPerInvocation": 0.292801465243828
+            },
+            "climb": {
+              "calls": 2069,
+              "callsPerSecond": 53.04312157104036,
+              "elapsedEquivalentMsPerWallSecond": 13.894118562850755,
+              "elapsedEquivalentMeanMsPerInvocation": 0.26194006218586585
+            },
+            "drop": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "egress": {
+              "calls": 77,
+              "callsPerSecond": 1.9740552735476598,
+              "elapsedEquivalentMsPerWallSecond": 3.0337864536412,
+              "elapsedEquivalentMeanMsPerInvocation": 1.5368295378016703
+            },
+            "landSettle": {
+              "calls": 1388,
+              "callsPerSecond": 35.58426908680716,
+              "elapsedEquivalentMsPerWallSecond": 9.05946813105075,
+              "elapsedEquivalentMeanMsPerInvocation": 0.25459194086438436
+            },
+            "fall": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "other": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            }
+          },
+          "legacyGroundDriveElapsedEquivalentMsPerWallSecond": 161.2336625709683,
+          "legacyContactElapsedEquivalentMsPerWallSecond": 205.18575636552427
+        },
+        "HIGH_HOLD": {
+          "durationSeconds": 59.32399999999999,
+          "pairedForegroundIntervals": 57,
+          "empiricalClockTicksPerSecond": 9999906.783089476,
+          "scopes": {
+            "body": {
+              "calls": 57024,
+              "callsPerSecond": 961.2298563819029,
+              "elapsedEquivalentMsPerWallSecond": 403.81926896459674,
+              "elapsedEquivalentMeanMsPerInvocation": 0.42010687275630854
+            },
+            "traversal": {
+              "calls": 56534,
+              "callsPerSecond": 952.97013013283,
+              "elapsedEquivalentMsPerWallSecond": 263.1999620655893,
+              "elapsedEquivalentMeanMsPerInvocation": 0.2761890994725125
+            },
+            "contactConsumption": {
+              "calls": 56534,
+              "callsPerSecond": 952.97013013283,
+              "elapsedEquivalentMsPerWallSecond": 120.28955768534489,
+              "elapsedEquivalentMeanMsPerInvocation": 0.1262259475735911
+            },
+            "frameFallAll": {
+              "calls": 89984,
+              "callsPerSecond": 1516.822871013418,
+              "elapsedEquivalentMsPerWallSecond": 10.007752921033061,
+              "elapsedEquivalentMeanMsPerInvocation": 0.0065978388856615085
+            },
+            "frameFallActive": {
+              "calls": 776,
+              "callsPerSecond": 13.08070932506237,
+              "elapsedEquivalentMsPerWallSecond": 9.69305610309529,
+              "elapsedEquivalentMeanMsPerInvocation": 0.7410191498196198
+            }
+          },
+          "traversalPhaseAtEntry": {
+            "follow": {
+              "calls": 50368,
+              "callsPerSecond": 849.0324320679658,
+              "elapsedEquivalentMsPerWallSecond": 236.9848198470328,
+              "elapsedEquivalentMeanMsPerInvocation": 0.2791234008220571
+            },
+            "climb": {
+              "calls": 3597,
+              "callsPerSecond": 60.633133301867716,
+              "elapsedEquivalentMsPerWallSecond": 13.396246175647885,
+              "elapsedEquivalentMeanMsPerInvocation": 0.22093936839703504
+            },
+            "drop": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "egress": {
+              "calls": 221,
+              "callsPerSecond": 3.7253051041736907,
+              "elapsedEquivalentMsPerWallSecond": 3.8130757978375733,
+              "elapsedEquivalentMeanMsPerInvocation": 1.0235606725380824
+            },
+            "landSettle": {
+              "calls": 2348,
+              "callsPerSecond": 39.57925965882274,
+              "elapsedEquivalentMsPerWallSecond": 9.00587755799153,
+              "elapsedEquivalentMeanMsPerInvocation": 0.22754032378632433
+            },
+            "fall": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "other": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            }
+          },
+          "legacyGroundDriveElapsedEquivalentMsPerWallSecond": 139.6456025220517,
+          "legacyContactElapsedEquivalentMsPerWallSecond": 202.82577308766295
+        },
+        "GROUND_HOLD": {
+          "durationSeconds": 28.74799999999999,
+          "pairedForegroundIntervals": 28,
+          "empiricalClockTicksPerSecond": 10000004.695978854,
+          "scopes": {
+            "body": {
+              "calls": 28224,
+              "callsPerSecond": 981.7726450535692,
+              "elapsedEquivalentMsPerWallSecond": 193.63588374549775,
+              "elapsedEquivalentMeanMsPerInvocation": 0.19723088102025113
+            },
+            "traversal": {
+              "calls": 27583,
+              "callsPerSecond": 959.4754417698625,
+              "elapsedEquivalentMsPerWallSecond": 136.8557170045854,
+              "elapsedEquivalentMeanMsPerInvocation": 0.14263597695855487
+            },
+            "contactConsumption": {
+              "calls": 27583,
+              "callsPerSecond": 959.4754417698625,
+              "elapsedEquivalentMsPerWallSecond": 48.3455317703952,
+              "elapsedEquivalentMeanMsPerInvocation": 0.050387461383291185
+            },
+            "frameFallAll": {
+              "calls": 62656,
+              "callsPerSecond": 2179.4907471824135,
+              "elapsedEquivalentMsPerWallSecond": 22.82015764324029,
+              "elapsedEquivalentMeanMsPerInvocation": 0.010470408132148105
+            },
+            "frameFallActive": {
+              "calls": 1374,
+              "callsPerSecond": 47.79462919159595,
+              "elapsedEquivalentMsPerWallSecond": 22.372258869295436,
+              "elapsedEquivalentMeanMsPerInvocation": 0.46809148324199784
+            }
+          },
+          "traversalPhaseAtEntry": {
+            "follow": {
+              "calls": 22026,
+              "callsPerSecond": 766.1750382635316,
+              "elapsedEquivalentMsPerWallSecond": 101.00256144655003,
+              "elapsedEquivalentMeanMsPerInvocation": 0.1318270061048497
+            },
+            "climb": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "drop": {
+              "calls": 900,
+              "callsPerSecond": 31.30652567135106,
+              "elapsedEquivalentMsPerWallSecond": 6.286834392922489,
+              "elapsedEquivalentMeanMsPerInvocation": 0.20081546125303962
+            },
+            "egress": {
+              "calls": 284,
+              "callsPerSecond": 9.878948100737446,
+              "elapsedEquivalentMsPerWallSecond": 5.450554000887748,
+              "elapsedEquivalentMeanMsPerInvocation": 0.5517342479490174
+            },
+            "landSettle": {
+              "calls": 4373,
+              "callsPerSecond": 152.11492973424242,
+              "elapsedEquivalentMsPerWallSecond": 24.115840212750697,
+              "elapsedEquivalentMeanMsPerInvocation": 0.15853697105789089
+            },
+            "fall": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "other": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            }
+          },
+          "legacyGroundDriveElapsedEquivalentMsPerWallSecond": 76.00013823563843,
+          "legacyContactElapsedEquivalentMsPerWallSecond": 114.28264425992425
+        },
+        "GROUND_EAST": {
+          "durationSeconds": 9.238,
+          "pairedForegroundIntervals": 9,
+          "empiricalClockTicksPerSecond": 10000830.591037022,
+          "scopes": {
+            "body": {
+              "calls": 8448,
+              "callsPerSecond": 914.4836544706646,
+              "elapsedEquivalentMsPerWallSecond": 212.78033488298811,
+              "elapsedEquivalentMeanMsPerInvocation": 0.23267811714595693
+            },
+            "traversal": {
+              "calls": 8448,
+              "callsPerSecond": 914.4836544706646,
+              "elapsedEquivalentMsPerWallSecond": 123.63759827569204,
+              "elapsedEquivalentMeanMsPerInvocation": 0.13519935284929485
+            },
+            "contactConsumption": {
+              "calls": 8448,
+              "callsPerSecond": 914.4836544706646,
+              "elapsedEquivalentMsPerWallSecond": 81.81210495473785,
+              "elapsedEquivalentMeanMsPerInvocation": 0.08946262139818516
+            },
+            "frameFallAll": {
+              "calls": 15808,
+              "callsPerSecond": 1711.192898895865,
+              "elapsedEquivalentMsPerWallSecond": 0.3505013055150767,
+              "elapsedEquivalentMeanMsPerInvocation": 0.00020482863489045282
+            },
+            "frameFallActive": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            }
+          },
+          "traversalPhaseAtEntry": {
+            "follow": {
+              "calls": 8448,
+              "callsPerSecond": 914.4836544706646,
+              "elapsedEquivalentMsPerWallSecond": 123.63749003614367,
+              "elapsedEquivalentMeanMsPerInvocation": 0.13519923448791374
+            },
+            "climb": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "drop": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "egress": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "landSettle": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "fall": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "other": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            }
+          },
+          "legacyGroundDriveElapsedEquivalentMsPerWallSecond": 103.99969701585623,
+          "legacyContactElapsedEquivalentMsPerWallSecond": 114.85547427956108
+        },
+        "GROUND_EAST_HOLD": {
+          "durationSeconds": 13.34299999999999,
+          "pairedForegroundIntervals": 13,
+          "empiricalClockTicksPerSecond": 10000293.78700443,
+          "scopes": {
+            "body": {
+              "calls": 13248,
+              "callsPerSecond": 992.8801618826359,
+              "elapsedEquivalentMsPerWallSecond": 228.21011329053363,
+              "elapsedEquivalentMeanMsPerInvocation": 0.2298465837587249
+            },
+            "traversal": {
+              "calls": 13248,
+              "callsPerSecond": 992.8801618826359,
+              "elapsedEquivalentMsPerWallSecond": 136.2212097193877,
+              "elapsedEquivalentMeanMsPerInvocation": 0.13719803753666882
+            },
+            "contactConsumption": {
+              "calls": 13248,
+              "callsPerSecond": 992.8801618826359,
+              "elapsedEquivalentMsPerWallSecond": 84.01626812732475,
+              "elapsedEquivalentMeanMsPerInvocation": 0.0846187398568005
+            },
+            "frameFallAll": {
+              "calls": 27456,
+              "callsPerSecond": 2057.7081615828542,
+              "elapsedEquivalentMsPerWallSecond": 0.42536410531894736,
+              "elapsedEquivalentMeanMsPerInvocation": 0.0002067174117595684
+            },
+            "frameFallActive": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            }
+          },
+          "traversalPhaseAtEntry": {
+            "follow": {
+              "calls": 13248,
+              "callsPerSecond": 992.8801618826359,
+              "elapsedEquivalentMsPerWallSecond": 136.22128466285037,
+              "elapsedEquivalentMeanMsPerInvocation": 0.1371981130175431
+            },
+            "climb": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "drop": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "egress": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "landSettle": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "fall": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "other": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            }
+          },
+          "legacyGroundDriveElapsedEquivalentMsPerWallSecond": 113.93384830483882,
+          "legacyContactElapsedEquivalentMsPerWallSecond": 136.3355734433943
+        },
+        "GROUND_NORTH": {
+          "durationSeconds": 9.222999999999985,
+          "pairedForegroundIntervals": 9,
+          "empiricalClockTicksPerSecond": 9999659.655209819,
+          "scopes": {
+            "body": {
+              "calls": 8768,
+              "callsPerSecond": 950.6668112327892,
+              "elapsedEquivalentMsPerWallSecond": 223.0663580754418,
+              "elapsedEquivalentMeanMsPerInvocation": 0.2346419959545844
+            },
+            "traversal": {
+              "calls": 8768,
+              "callsPerSecond": 950.6668112327892,
+              "elapsedEquivalentMsPerWallSecond": 127.91750550850905,
+              "elapsedEquivalentMeanMsPerInvocation": 0.13455556036781216
+            },
+            "contactConsumption": {
+              "calls": 8768,
+              "callsPerSecond": 950.6668112327892,
+              "elapsedEquivalentMsPerWallSecond": 87.48720180338785,
+              "elapsedEquivalentMeanMsPerInvocation": 0.09202719687872317
+            },
+            "frameFallAll": {
+              "calls": 15680,
+              "callsPerSecond": 1700.0975821316304,
+              "elapsedEquivalentMsPerWallSecond": 0.34420557802569035,
+              "elapsedEquivalentMeanMsPerInvocation": 0.00020246224783998322
+            },
+            "frameFallActive": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            }
+          },
+          "traversalPhaseAtEntry": {
+            "follow": {
+              "calls": 8768,
+              "callsPerSecond": 950.6668112327892,
+              "elapsedEquivalentMsPerWallSecond": 127.91674651054208,
+              "elapsedEquivalentMeanMsPerInvocation": 0.1345547619829753
+            },
+            "climb": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "drop": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "egress": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "landSettle": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "fall": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "other": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            }
+          },
+          "legacyGroundDriveElapsedEquivalentMsPerWallSecond": 106.99605183353253,
+          "legacyContactElapsedEquivalentMsPerWallSecond": 127.03782686477858
+        },
+        "FINAL_HOLD": {
+          "durationSeconds": 128.44400000000002,
+          "pairedForegroundIntervals": 126,
+          "empiricalClockTicksPerSecond": 9999959.079443181,
+          "scopes": {
+            "body": {
+              "calls": 129024,
+              "callsPerSecond": 1004.5155865591229,
+              "elapsedEquivalentMsPerWallSecond": 115.66020048426843,
+              "elapsedEquivalentMeanMsPerInvocation": 0.11514027460783556
+            },
+            "traversal": {
+              "calls": 129024,
+              "callsPerSecond": 1004.5155865591229,
+              "elapsedEquivalentMsPerWallSecond": 97.1779069221441,
+              "elapsedEquivalentMeanMsPerInvocation": 0.0967410642725995
+            },
+            "contactConsumption": {
+              "calls": 129024,
+              "callsPerSecond": 1004.5155865591229,
+              "elapsedEquivalentMsPerWallSecond": 11.115854710949801,
+              "elapsedEquivalentMeanMsPerInvocation": 0.011065885746010324
+            },
+            "frameFallAll": {
+              "calls": 346496,
+              "callsPerSecond": 2697.642552396375,
+              "elapsedEquivalentMsPerWallSecond": 0.5525154184088312,
+              "elapsedEquivalentMeanMsPerInvocation": 0.0002048141692894115
+            },
+            "frameFallActive": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            }
+          },
+          "traversalPhaseAtEntry": {
+            "follow": {
+              "calls": 129024,
+              "callsPerSecond": 1004.5155865591229,
+              "elapsedEquivalentMsPerWallSecond": 97.1778991366182,
+              "elapsedEquivalentMeanMsPerInvocation": 0.09674105652207177
+            },
+            "climb": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "drop": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "egress": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "landSettle": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "fall": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            },
+            "other": {
+              "calls": 0,
+              "callsPerSecond": 0.0,
+              "elapsedEquivalentMsPerWallSecond": 0.0,
+              "elapsedEquivalentMeanMsPerInvocation": null
+            }
+          },
+          "legacyGroundDriveElapsedEquivalentMsPerWallSecond": 76.55700724333566,
+          "legacyContactElapsedEquivalentMsPerWallSecond": 68.56761732069745
+        }
+      },
+      "coverage": {
+        "observedPlayerStages": [
+          "FINAL_HOLD",
+          "GROUND_EAST",
+          "GROUND_EAST_HOLD",
+          "GROUND_HOLD",
+          "GROUND_NORTH",
+          "HIGH_HOLD",
+          "LOW_HOLD"
+        ],
+        "stagesWithoutEligibleForegroundIntervals": [],
+        "rawActiveFallInvocationsBetweenFirstAndLastSamples": 2470,
+        "eligibleForegroundActiveFallInvocations": 2450,
+        "excludedActiveFallInvocations": 20,
+        "activeFallCostMeasured": true
+      },
+      "invariants": {
+        "uniqueAgents": 64,
+        "phaseCountsMatchTraversal": true,
+        "sequentialNestedScopesBounded": true,
+        "countersMonotonic": true
+      },
+      "excludedIntervals": {
+        "warmup": 5,
+        "stageBoundary": 6
+      }
+    },
+    "animation": {
+      "motorCallbackHz": {
+        "minimum": 15.349167087151514,
+        "median": 15.349167087151514,
+        "maximum": 15.349167087151514
+      },
+      "visibleCallbackHz": {
+        "minimum": 15.349167087151514,
+        "median": 15.349167087151514,
+        "maximum": 15.349167087151514
+      },
+      "directGraphPhase": false,
+      "visibleFrameEvidenceCollected": false
+    },
+    "limitations": [
+      "One instrumented baseline, no causal performance claim or reproducibility acceptance.",
+      "Nested elapsed timers must not be summed.",
+      "Fixed camera changes rendering workload versus earlier functional trials.",
+      "Logging and instrumentation overhead included.",
+      "Animated/static variants have9 hosts per logical agent and hidden animated motor; do not compare as pure animation cost.",
+      "Body includes traversal/contact consumption/presentation; phase scopes partition traversal only.",
+      "Frame-fall integration has a separate owner; active is a subset of frameFallAll.",
+      "Legacy contact totals can include calls outside an actor own Drive; do not subtract them as disjoint time.",
+      "TickCount calibration yields elapsed equivalents, not CPU self-time or GPU timing.",
+      "Instrumentation and periodic TSV have overhead. Compare OFF/ON on this same build.",
+      "Only consecutive cohorts with all actors foreground and the same player stage are timed; boundary/background intervals excluded.",
+      "Zero eligible active-fall calls means no foreground cost sample, not no physical falls. Calls are integration invocations, not fall episodes.",
+      "Native graph evaluation, skinning upload, allocation and GC remain unavailable."
+    ],
+    "optimizationAccepted": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "p95TargetMs": 20,
+    "goalComplete": false
+  },
+  "partClockCohorts": [
+    {
+      "sourceRunId": "runtime-20261031-043738",
+      "clip": "idle",
+      "logicalAgents": 1,
+      "nativeHostsObserved": 8,
+      "windowSeconds": [
+        15,
+        55
+      ],
+      "cohorts": 40,
+      "maximumCallbackDtSumSpreadSeconds": 0.0,
+      "maximumCallbackCountSpread": 0,
+      "nonzeroClockSpreadCohorts": 0,
+      "samples": [
+        {
+          "seconds": 15.107,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 16.108,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 17.113,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 18.116,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 19.148,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 20.148,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 21.149,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 22.149,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 23.152,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 24.169,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 25.17,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 26.19,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 27.21,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 28.21,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 29.211,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 30.212,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 31.218,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 32.22,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 33.221,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 34.222,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 35.256,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 36.262,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 37.275,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 38.28,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 39.314,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 40.314,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 41.314,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 42.334,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 43.335,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 44.335,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 45.335,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 46.336,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 47.336,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 48.336,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 49.339,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 50.345,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 51.345,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 52.345,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 53.377,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 54.378,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        }
+      ]
+    },
+    {
+      "sourceRunId": "runtime-20261031-043955",
+      "clip": "walk",
+      "logicalAgents": 1,
+      "nativeHostsObserved": 8,
+      "windowSeconds": [
+        15,
+        55
+      ],
+      "cohorts": 40,
+      "maximumCallbackDtSumSpreadSeconds": 0.0,
+      "maximumCallbackCountSpread": 0,
+      "nonzeroClockSpreadCohorts": 0,
+      "samples": [
+        {
+          "seconds": 15.128,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 16.145,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 17.146,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 18.165,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 19.166,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 20.166,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 21.166,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 22.166,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 23.167,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 24.169,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 25.17,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 26.178,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 27.208,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 28.208,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 29.209,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 30.21,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 31.229,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 32.229,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 33.23,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 34.23,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 35.23,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 36.232,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 37.251,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 38.252,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 39.252,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 40.252,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 41.252,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 42.252,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 43.253,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 44.277,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 45.293,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 46.293,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 47.294,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 48.294,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 49.296,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 50.298,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 51.303,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 52.318,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 53.325,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        },
+        {
+          "seconds": 54.356,
+          "callbackDtSumSpreadSeconds": 0.0,
+          "callbackCountSpread": 0
+        }
+      ]
+    }
+  ],
+  "clockCalibration": {
+    "sourceRunId": "runtime-20261031-080339",
+    "calibrationIntervals": 276,
+    "excludedIntervals": 0,
+    "empiricalTicksPerMissionSecondMedian": 9999848.380765403,
+    "p10": 9994559.45419093,
+    "p90": 10005376.227897832,
+    "relativeP90P10Spread": 0.0010816937712483483,
+    "stableAtTenPercent": true,
+    "inputSha256": "885cbe6eed0ff27508c15da9152a77be37d0e0df826d3591954ffb7becd1d540",
+    "limits": [
+      "Clock scaling only; elapsed scopes remain inclusive wall equivalents, not CPU self-time.",
+      "No allocation/GC/GPU measurement or optimization claim."
+    ],
+    "goalComplete": false
+  }
+}
