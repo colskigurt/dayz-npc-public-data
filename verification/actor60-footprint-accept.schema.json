@@ -1,0 +1,133 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Actor60recorded-contact diagnostic public required contract",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sourceRunId": {
+      "type": "string"
+    },
+    "buildId": {
+      "type": "string",
+      "pattern": "^[0-9A-F]{64}$"
+    },
+    "verificationStatus": {
+      "type": "object",
+      "required": [
+        "diagnostic",
+        "gameplayRegression",
+        "finalAcceptance",
+        "visualAcceptance",
+        "performanceAcceptance"
+      ],
+      "properties": {
+        "diagnostic": {
+          "const": "success"
+        },
+        "gameplayRegression": {
+          "const": "not_executed"
+        },
+        "finalAcceptance": {
+          "const": false
+        },
+        "visualAcceptance": {
+          "const": false
+        },
+        "performanceAcceptance": {
+          "const": false
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "staticRows",
+        "contactRows",
+        "boundedTrials",
+        "boundedCasesEach",
+        "scenarioDts",
+        "scenarioDtsAreMeasuredCaller",
+        "candidateOnlyInDiagnosticSubclass",
+        "newRuntimeFrameTime",
+        "targetP95Ms"
+      ],
+      "properties": {
+        "staticRows": {
+          "const": 34
+        },
+        "contactRows": {
+          "const": 48
+        },
+        "boundedTrials": {
+          "const": 2
+        },
+        "boundedCasesEach": {
+          "const": 6
+        },
+        "scenarioDts": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        },
+        "scenarioDtsAreMeasuredCaller": {
+          "const": false
+        },
+        "candidateOnlyInDiagnosticSubclass": {
+          "const": true
+        },
+        "newRuntimeFrameTime": {
+          "type": "null"
+        },
+        "targetP95Ms": {
+          "const": 20
+        }
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidenceReferences": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "file",
+          "sha256"
+        ],
+        "properties": {
+          "file": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    }
+  }
+}
