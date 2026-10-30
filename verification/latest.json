@@ -67,10 +67,19 @@
   },
   "operationalUpdate": {
     "sourceRunId": "steam-working-set-migration-20261030",
-    "status": "pending_external_HTTP_verification",
+    "status": "changed_files_HTTP_hash_verified",
+    "observedAt": "2026-10-30T17:12:05.348199+09:00",
+    "dataCommit": "e9ce6fbb5e7b9f084dc47e3593cd3cafaa0909f2",
+    "changedPathsVerified": 8,
+    "httpChecks": 16,
+    "authenticationSent": false,
+    "jsonParsingPassed": true,
+    "allPublishedBytesMatched": true,
+    "fullSchemaValidatorExecuted": false,
+    "statusSchemaIncrementalCheck": "Only allowed links.workspace added; original fields preserved",
     "experimentDataUnchanged": true,
     "localCleanupCompleted": false,
-    "statusSchemaCheck": "Existing fields preserved; added links.workspace string beginning with / allowed by existing schema. Full validator unavailable in current Python.",
-    "externalAI": "not_retested"
+    "externalAI": "not_retested",
+    "proof": "verification/workspace-20261030-http.json"
   }
 }
