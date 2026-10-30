@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T07:12:46.190360+09:00",
+  "sourceRunId": "touchdown-budget-package-20261031-070512",
+  "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+  "verificationStatus": {
+    "package": "built_signed_verified",
+    "diagnosis": "actual_package_repeated_frozen_and_guard_tests",
+    "functional": "new_gameplay_unmeasured",
+    "visual": "unmeasured",
+    "performance": "unmeasured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "engineRuns": 6,
+    "totalRows": 1288,
+    "frozenRows": 1068,
+    "ownerRows": 128,
+    "guardRows": 56,
+    "continuousRows": 32,
+    "policyRows": 4,
+    "allMatchMissionPrototype": true,
+    "flagAbsentOff": true,
+    "flagPresentOn": true,
+    "passed": true,
+    "scope": "Actual signed PBO class;mission candidate removed;forced policy comparisons plusseparateflag reads;frozen poses/physical gates,not gameplay",
+    "newClientRuns": 0,
+    "functionalAccepted": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "repetitions": 2,
+    "liveSceneCompileRuns": 1,
+    "totalHeadlessEngineRuns": 7,
+    "signatureVerified": true,
+    "packedScriptCount": 14,
+    "changedScriptCount": 1,
+    "condition": "Actual signedPBO;guardsprofileflagabsent/present each2runs;continuous2runs;forcedOFF/ONcaches compared toprototype. No liveNPC AI.",
+    "frameTime": null,
+    "visibleAnimation": null
+  },
+  "blockers": [
+    "Actual8/64OFF/ONandcandidate repeats pending.",
+    "No visualanimation orcostattribution measurement.",
+    "Existingpartialprogressindexrecoverylimit remains."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/touchdown-budget-package-20261031.md",
+      "sha256": "a6bad80cd6b5144094f3a40f7031840f1acafea0ca2d666d69572a0f07a1ea4b"
+    },
+    {
+      "path": "evidence/touchdown-budget-package-20261031.txt",
+      "sha256": "47c3c3cd77a08308392a565ab9c5a041146e421fc2d2be570e3ff86b94372fea"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
