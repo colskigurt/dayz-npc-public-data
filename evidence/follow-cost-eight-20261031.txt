@@ -1,0 +1,628 @@
+Selected full8-agent result and newly added timing module. Not full original game scripts/logs/video. Timing scopes nested; one liveON run, no64/repeated cost acceptance.
+
+{
+  "sourceRunId": "follow-cost-split-20261031-081400",
+  "runtimeRunId": "runtime-20261031-081814",
+  "buildId": "E2DC091FB183DB0A656AFA2438DF32FAE0195ED54C8AC75D9AFDED496F64EF5B",
+  "normalQuitVerified": true,
+  "logicalAgents": 8,
+  "renderAnimationHosts": 64,
+  "functional": {
+    "highFollowCoverage": 8,
+    "missingHigh": [],
+    "terminalArrivals": 8,
+    "unresolvedTerminalAgents": [],
+    "fallsLandedAndResumed": 9,
+    "newFailureLabelEpisodes": {
+      "CONTACT_SUPPORT_LOST": 1
+    },
+    "unresolvedAlgorithmEpisodes": {},
+    "climbEndFailures": 0,
+    "thisTrialGatePassed": true,
+    "repeatRegressionAccepted": false
+  },
+  "stimulus": {
+    "valid": true,
+    "highSamples": 518,
+    "areaSamples": {
+      "high": 518
+    },
+    "first": 45.007,
+    "last": 104.904,
+    "maxSampleGapSeconds": 0.12300000000000466,
+    "anchorEnabled": true,
+    "recordedCorrections": 0,
+    "supportFailures": 0,
+    "traceOrSupportErrors": [],
+    "maximumRecordedCorrectionHorizontal": 0,
+    "limitation": "Sampled area,not continuous physical support proof. Recorded corrections alter player stimulus;NPC physics remain active."
+  },
+  "foregroundMissionFrameMs": {
+    "p50": 20.0,
+    "p95": 34.0,
+    "p99": 35.0
+  },
+  "foregroundFraction": 1.0,
+  "followCost": {
+    "sourceRunId": "runtime-20261031-081814",
+    "buildId": "E2DC091FB183DB0A656AFA2438DF32FAE0195ED54C8AC75D9AFDED496F64EF5B",
+    "logicalAgents": 8,
+    "stages": {
+      "LOW_HOLD": {
+        "durationSeconds": 39.975,
+        "intervals": 1998,
+        "clockTicksPerMissionSecond": 9999994.346466541,
+        "methods": {
+          "follow": {
+            "calls": 3931,
+            "callsPerSecond": 98.3364602876798,
+            "elapsedEquivalentMsPerWallSecond": 28.801522224250213,
+            "elapsedEquivalentMeanMsPerInvocation": 0.29288752249158034
+          },
+          "resolveArea": {
+            "calls": 3913,
+            "callsPerSecond": 97.88617886178861,
+            "elapsedEquivalentMsPerWallSecond": 0.07507196239215384,
+            "elapsedEquivalentMeanMsPerInvocation": 0.0007669311772620367
+          },
+          "planConnection": {
+            "calls": 979,
+            "callsPerSecond": 24.490306441525952,
+            "elapsedEquivalentMsPerWallSecond": 0.15217769704104947,
+            "elapsedEquivalentMeanMsPerInvocation": 0.006213793094194028
+          },
+          "searchApproach": {
+            "calls": 0,
+            "callsPerSecond": 0.0,
+            "elapsedEquivalentMsPerWallSecond": 0.0,
+            "elapsedEquivalentMeanMsPerInvocation": null
+          },
+          "surfaceYield": {
+            "calls": 3913,
+            "callsPerSecond": 97.88617886178861,
+            "elapsedEquivalentMsPerWallSecond": 0.04501566022148645,
+            "elapsedEquivalentMeanMsPerInvocation": 0.0004598775919636905
+          },
+          "surfaceWalk": {
+            "calls": 2934,
+            "callsPerSecond": 73.39587242026266,
+            "elapsedEquivalentMsPerWallSecond": 12.218433424305076,
+            "elapsedEquivalentMeanMsPerInvocation": 0.1664730320847292
+          },
+          "walk": {
+            "calls": 3888,
+            "callsPerSecond": 97.26078799249531,
+            "elapsedEquivalentMsPerWallSecond": 16.33547139916582,
+            "elapsedEquivalentMeanMsPerInvocation": 0.16795536758787388
+          },
+          "driveGround": {
+            "calls": 3888,
+            "callsPerSecond": 97.26078799249531,
+            "elapsedEquivalentMsPerWallSecond": 16.095393714969305,
+            "elapsedEquivalentMeanMsPerInvocation": 0.16548697627466513
+          }
+        },
+        "foregroundMissionFrameSamples": 1499,
+        "foregroundMissionFrameMs": {
+          "p50": 20.0,
+          "p95": 33.0,
+          "p99": 34.0
+        }
+      },
+      "HIGH_HOLD": {
+        "durationSeconds": 59.99,
+        "intervals": 2999,
+        "clockTicksPerMissionSecond": 10000012.752125354,
+        "methods": {
+          "follow": {
+            "calls": 6088,
+            "callsPerSecond": 101.48358059676612,
+            "elapsedEquivalentMsPerWallSecond": 27.32725303325793,
+            "elapsedEquivalentMeanMsPerInvocation": 0.26927758039834804
+          },
+          "resolveArea": {
+            "calls": 6063,
+            "callsPerSecond": 101.066844474079,
+            "elapsedEquivalentMsPerWallSecond": 0.08078836172179243,
+            "elapsedEquivalentMeanMsPerInvocation": 0.0007993557347336842
+          },
+          "planConnection": {
+            "calls": 482,
+            "callsPerSecond": 8.034672445407567,
+            "elapsedEquivalentMsPerWallSecond": 0.06078505334128054,
+            "elapsedEquivalentMeanMsPerInvocation": 0.007565343049675144
+          },
+          "searchApproach": {
+            "calls": 28,
+            "callsPerSecond": 0.46674445740956827,
+            "elapsedEquivalentMsPerWallSecond": 0.0973477671761262,
+            "elapsedEquivalentMeanMsPerInvocation": 0.20856759117485038
+          },
+          "surfaceYield": {
+            "calls": 6088,
+            "callsPerSecond": 101.48358059676612,
+            "elapsedEquivalentMsPerWallSecond": 0.10318873322323568,
+            "elapsedEquivalentMeanMsPerInvocation": 0.0010168022513242293
+          },
+          "surfaceWalk": {
+            "calls": 5969,
+            "callsPerSecond": 99.49991665277545,
+            "elapsedEquivalentMsPerWallSecond": 14.837510667285114,
+            "elapsedEquivalentMeanMsPerInvocation": 0.14912083513661148
+          },
+          "walk": {
+            "calls": 5966,
+            "callsPerSecond": 99.449908318053,
+            "elapsedEquivalentMsPerWallSecond": 14.516262535521186,
+            "elapsedEquivalentMeanMsPerInvocation": 0.14596556981326114
+          },
+          "driveGround": {
+            "calls": 5966,
+            "callsPerSecond": 99.449908318053,
+            "elapsedEquivalentMsPerWallSecond": 14.274407534719513,
+            "elapsedEquivalentMeanMsPerInvocation": 0.14353364197248134
+          }
+        },
+        "foregroundMissionFrameSamples": 3000,
+        "foregroundMissionFrameMs": {
+          "p50": 20.0,
+          "p95": 33.0,
+          "p99": 35.0
+        }
+      },
+      "GROUND_HOLD": {
+        "durationSeconds": 30.01599999999999,
+        "intervals": 1501,
+        "clockTicksPerMissionSecond": 9999843.117004268,
+        "methods": {
+          "follow": {
+            "calls": 2510,
+            "callsPerSecond": 83.62206823027721,
+            "elapsedEquivalentMsPerWallSecond": 11.43784601817997,
+            "elapsedEquivalentMeanMsPerInvocation": 0.13678023349868124
+          },
+          "resolveArea": {
+            "calls": 2510,
+            "callsPerSecond": 83.62206823027721,
+            "elapsedEquivalentMsPerWallSecond": 0.06173137890812659,
+            "elapsedEquivalentMeanMsPerInvocation": 0.0007382187527116842
+          },
+          "planConnection": {
+            "calls": 137,
+            "callsPerSecond": 4.564232409381664,
+            "elapsedEquivalentMsPerWallSecond": 0.028971669868048402,
+            "elapsedEquivalentMeanMsPerInvocation": 0.006347544837659419
+          },
+          "searchApproach": {
+            "calls": 0,
+            "callsPerSecond": 0.0,
+            "elapsedEquivalentMsPerWallSecond": 0.0,
+            "elapsedEquivalentMeanMsPerInvocation": null
+          },
+          "surfaceYield": {
+            "calls": 2510,
+            "callsPerSecond": 83.62206823027721,
+            "elapsedEquivalentMsPerWallSecond": 0.03408568933072714,
+            "elapsedEquivalentMeanMsPerInvocation": 0.00040761595655422527
+          },
+          "surfaceWalk": {
+            "calls": 169,
+            "callsPerSecond": 5.630330490405119,
+            "elapsedEquivalentMsPerWallSecond": 0.8435966567719108,
+            "elapsedEquivalentMeanMsPerInvocation": 0.14983075295660156
+          },
+          "walk": {
+            "calls": 2454,
+            "callsPerSecond": 81.75639658848617,
+            "elapsedEquivalentMsPerWallSecond": 8.080383963646337,
+            "elapsedEquivalentMeanMsPerInvocation": 0.0988348838846
+          },
+          "driveGround": {
+            "calls": 2454,
+            "callsPerSecond": 81.75639658848617,
+            "elapsedEquivalentMsPerWallSecond": 7.906607250178376,
+            "elapsedEquivalentMeanMsPerInvocation": 0.09670934116599593
+          }
+        },
+        "foregroundMissionFrameSamples": 1502,
+        "foregroundMissionFrameMs": {
+          "p50": 20.0,
+          "p95": 33.0,
+          "p99": 35.0
+        }
+      },
+      "GROUND_EAST": {
+        "durationSeconds": 9.948999999999984,
+        "intervals": 498,
+        "clockTicksPerMissionSecond": 10000100.613126963,
+        "methods": {
+          "follow": {
+            "calls": 1064,
+            "callsPerSecond": 106.9454216504173,
+            "elapsedEquivalentMsPerWallSecond": 15.114733844119227,
+            "elapsedEquivalentMeanMsPerInvocation": 0.14133128478866727
+          },
+          "resolveArea": {
+            "calls": 1064,
+            "callsPerSecond": 106.9454216504173,
+            "elapsedEquivalentMsPerWallSecond": 0.07994692906949442,
+            "elapsedEquivalentMeanMsPerInvocation": 0.0007475488696545102
+          },
+          "planConnection": {
+            "calls": 0,
+            "callsPerSecond": 0.0,
+            "elapsedEquivalentMsPerWallSecond": 0.0,
+            "elapsedEquivalentMeanMsPerInvocation": null
+          },
+          "searchApproach": {
+            "calls": 0,
+            "callsPerSecond": 0.0,
+            "elapsedEquivalentMsPerWallSecond": 0.0,
+            "elapsedEquivalentMeanMsPerInvocation": null
+          },
+          "surfaceYield": {
+            "calls": 1064,
+            "callsPerSecond": 106.9454216504173,
+            "elapsedEquivalentMsPerWallSecond": 0.045179965572966746,
+            "elapsedEquivalentMeanMsPerInvocation": 0.00042245815553143367
+          },
+          "surfaceWalk": {
+            "calls": 0,
+            "callsPerSecond": 0.0,
+            "elapsedEquivalentMsPerWallSecond": 0.0,
+            "elapsedEquivalentMeanMsPerInvocation": null
+          },
+          "walk": {
+            "calls": 1064,
+            "callsPerSecond": 106.9454216504173,
+            "elapsedEquivalentMsPerWallSecond": 12.442532365314126,
+            "elapsedEquivalentMeanMsPerInvocation": 0.11634469408130643
+          },
+          "driveGround": {
+            "calls": 1064,
+            "callsPerSecond": 106.9454216504173,
+            "elapsedEquivalentMsPerWallSecond": 12.193464612945245,
+            "elapsedEquivalentMeanMsPerInvocation": 0.11401577014491734
+          }
+        },
+        "foregroundMissionFrameSamples": 499,
+        "foregroundMissionFrameMs": {
+          "p50": 20.0,
+          "p95": 33.0,
+          "p99": 34.0
+        }
+      },
+      "GROUND_EAST_HOLD": {
+        "durationSeconds": 14.951999999999998,
+        "intervals": 748,
+        "clockTicksPerMissionSecond": 9999904.761904763,
+        "methods": {
+          "follow": {
+            "calls": 1632,
+            "callsPerSecond": 109.14927768860355,
+            "elapsedEquivalentMsPerWallSecond": 14.084336918778574,
+            "elapsedEquivalentMeanMsPerInvocation": 0.12903738088822134
+          },
+          "resolveArea": {
+            "calls": 1632,
+            "callsPerSecond": 109.14927768860355,
+            "elapsedEquivalentMsPerWallSecond": 0.0819697480264927,
+            "elapsedEquivalentMeanMsPerInvocation": 0.0007509875444191904
+          },
+          "planConnection": {
+            "calls": 0,
+            "callsPerSecond": 0.0,
+            "elapsedEquivalentMsPerWallSecond": 0.0,
+            "elapsedEquivalentMeanMsPerInvocation": null
+          },
+          "searchApproach": {
+            "calls": 0,
+            "callsPerSecond": 0.0,
+            "elapsedEquivalentMsPerWallSecond": 0.0,
+            "elapsedEquivalentMeanMsPerInvocation": null
+          },
+          "surfaceYield": {
+            "calls": 1632,
+            "callsPerSecond": 109.14927768860355,
+            "elapsedEquivalentMsPerWallSecond": 0.04692393539114498,
+            "elapsedEquivalentMeanMsPerInvocation": 0.00042990605512769584
+          },
+          "surfaceWalk": {
+            "calls": 0,
+            "callsPerSecond": 0.0,
+            "elapsedEquivalentMsPerWallSecond": 0.0,
+            "elapsedEquivalentMeanMsPerInvocation": null
+          },
+          "walk": {
+            "calls": 1632,
+            "callsPerSecond": 109.14927768860355,
+            "elapsedEquivalentMsPerWallSecond": 11.290837868867879,
+            "elapsedEquivalentMeanMsPerInvocation": 0.10344399988683363
+          },
+          "driveGround": {
+            "calls": 1632,
+            "callsPerSecond": 109.14927768860355,
+            "elapsedEquivalentMsPerWallSecond": 11.048058670649727,
+            "elapsedEquivalentMeanMsPerInvocation": 0.10121971399727617
+          }
+        },
+        "foregroundMissionFrameSamples": 749,
+        "foregroundMissionFrameMs": {
+          "p50": 20.0,
+          "p95": 33.0,
+          "p99": 35.0
+        }
+      },
+      "GROUND_NORTH": {
+        "durationSeconds": 9.97399999999999,
+        "intervals": 499,
+        "clockTicksPerMissionSecond": 9999551.13294567,
+        "methods": {
+          "follow": {
+            "calls": 1104,
+            "callsPerSecond": 110.68778824944869,
+            "elapsedEquivalentMsPerWallSecond": 14.82581085978764,
+            "elapsedEquivalentMeanMsPerInvocation": 0.133942606445219
+          },
+          "resolveArea": {
+            "calls": 1104,
+            "callsPerSecond": 110.68778824944869,
+            "elapsedEquivalentMsPerWallSecond": 0.08260848043078893,
+            "elapsedEquivalentMeanMsPerInvocation": 0.0007463197317180145
+          },
+          "planConnection": {
+            "calls": 0,
+            "callsPerSecond": 0.0,
+            "elapsedEquivalentMsPerWallSecond": 0.0,
+            "elapsedEquivalentMeanMsPerInvocation": null
+          },
+          "searchApproach": {
+            "calls": 0,
+            "callsPerSecond": 0.0,
+            "elapsedEquivalentMsPerWallSecond": 0.0,
+            "elapsedEquivalentMeanMsPerInvocation": null
+          },
+          "surfaceYield": {
+            "calls": 1104,
+            "callsPerSecond": 110.68778824944869,
+            "elapsedEquivalentMsPerWallSecond": 0.0461520615879259,
+            "elapsedEquivalentMeanMsPerInvocation": 0.00041695712162859817
+          },
+          "surfaceWalk": {
+            "calls": 0,
+            "callsPerSecond": 0.0,
+            "elapsedEquivalentMsPerWallSecond": 0.0,
+            "elapsedEquivalentMeanMsPerInvocation": null
+          },
+          "walk": {
+            "calls": 1104,
+            "callsPerSecond": 110.68778824944869,
+            "elapsedEquivalentMsPerWallSecond": 12.03422776456489,
+            "elapsedEquivalentMeanMsPerInvocation": 0.10872227148892215
+          },
+          "driveGround": {
+            "calls": 1104,
+            "callsPerSecond": 110.68778824944869,
+            "elapsedEquivalentMsPerWallSecond": 11.775744134815437,
+            "elapsedEquivalentMeanMsPerInvocation": 0.10638702173971833
+          }
+        },
+        "foregroundMissionFrameSamples": 500,
+        "foregroundMissionFrameMs": {
+          "p50": 20.0,
+          "p95": 33.0,
+          "p99": 35.0
+        }
+      },
+      "FINAL_HOLD": {
+        "durationSeconds": 129.97500000000002,
+        "intervals": 6497,
+        "clockTicksPerMissionSecond": 10000022.08886324,
+        "methods": {
+          "follow": {
+            "calls": 14096,
+            "callsPerSecond": 108.45162531256008,
+            "elapsedEquivalentMsPerWallSecond": 11.289507665184454,
+            "elapsedEquivalentMeanMsPerInvocation": 0.10409717357990564
+          },
+          "resolveArea": {
+            "calls": 14096,
+            "callsPerSecond": 108.45162531256008,
+            "elapsedEquivalentMsPerWallSecond": 0.07738009451182817,
+            "elapsedEquivalentMeanMsPerInvocation": 0.0007134987077309072
+          },
+          "planConnection": {
+            "calls": 0,
+            "callsPerSecond": 0.0,
+            "elapsedEquivalentMsPerWallSecond": 0.0,
+            "elapsedEquivalentMeanMsPerInvocation": null
+          },
+          "searchApproach": {
+            "calls": 0,
+            "callsPerSecond": 0.0,
+            "elapsedEquivalentMsPerWallSecond": 0.0,
+            "elapsedEquivalentMeanMsPerInvocation": null
+          },
+          "surfaceYield": {
+            "calls": 14096,
+            "callsPerSecond": 108.45162531256008,
+            "elapsedEquivalentMsPerWallSecond": 0.04272427569809923,
+            "elapsedEquivalentMeanMsPerInvocation": 0.00039394776772562766
+          },
+          "surfaceWalk": {
+            "calls": 0,
+            "callsPerSecond": 0.0,
+            "elapsedEquivalentMsPerWallSecond": 0.0,
+            "elapsedEquivalentMeanMsPerInvocation": null
+          },
+          "walk": {
+            "calls": 14096,
+            "callsPerSecond": 108.45162531256008,
+            "elapsedEquivalentMsPerWallSecond": 8.574606949262126,
+            "elapsedEquivalentMeanMsPerInvocation": 0.07906388608331053
+          },
+          "driveGround": {
+            "calls": 14096,
+            "callsPerSecond": 108.45162531256008,
+            "elapsedEquivalentMsPerWallSecond": 8.355249865033766,
+            "elapsedEquivalentMeanMsPerInvocation": 0.07704126001757691
+          }
+        },
+        "foregroundMissionFrameSamples": 6497,
+        "foregroundMissionFrameMs": {
+          "p50": 20.0,
+          "p95": 34.0,
+          "p99": 35.0
+        }
+      }
+    },
+    "cohorts": 14977,
+    "observedAgents": 8,
+    "totalFinalCalls": {
+      "follow": 30953,
+      "resolveArea": 30798,
+      "planConnection": 2006,
+      "searchApproach": 28,
+      "surfaceYield": 30935,
+      "surfaceWalk": 9080,
+      "walk": 30732,
+      "driveGround": 30732
+    },
+    "excludedIntervals": {
+      "warmup": 230,
+      "stageBoundary": 6
+    },
+    "invariants": {
+      "completeActorCohorts": true,
+      "monotonicCounters": true,
+      "childrenBoundedByFollow": true
+    },
+    "sourceSha256": "34fbc0d64d77162a09a4257dd80084b0318eeef38c1b8f696bf6ea9686876ad6",
+    "limits": [
+      "Inclusive nested scopes; SurfaceWalk/SearchApproach may include Walk and DriveGround. Do not sum columns.",
+      "Initial Floor and inline entry alignment remain in FOLLOW residual.",
+      "Elapsed includes native calls/wait plus timer overhead; not CPU self-time.",
+      "Clock scaling uses sampled TickCount, no GPU/Present/native graph/GC timing.",
+      "One trial is instrumentation diagnosis, not reproducible optimization."
+    ],
+    "optimizationAccepted": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "sampledBudgetContract": true,
+  "diagnosticAccepted": true,
+  "new64TrialExecuted": false,
+  "repeatedCostValidation": false,
+  "visualAccepted": false,
+  "optimizationAccepted": false,
+  "performanceAccepted": false,
+  "goalComplete": false
+}
+
+Timing source member: DGSubsetZZZZZZZFollowCost.c; complete new module; SHA256 6f631c7f645a5650c5ae854e523e1a6d1922676f02b512c774ff9cb00ba4d046
+// Opt-in inclusive elapsed scopes. Same super arguments/results, no movement policy.
+class DGFollowCostRow
+{
+    ref array<int> Calls={0,0,0,0,0,0,0,0};
+    ref array<float> Ticks={0,0,0,0,0,0,0,0};
+}
+class DGFollowCost
+{
+    static bool Read;static bool Enabled;static FileHandle Log;static float NextSample;
+    static ref array<ref DGFollowCostRow> Rows={};
+    static bool On()
+    {
+        if(!Read){Enabled=FileExist("$profile:follow-cost-split.flag");Read=true;}
+        return Enabled;
+    }
+    static void Record(DGBNativeGroundBody body,int slot,int elapsed)
+    {
+        if(!body || body.Id<0 || body.Id>=64)return;
+        while(Rows.Count()<=body.Id)Rows.Insert(new DGFollowCostRow);
+        DGFollowCostRow row=Rows[body.Id];row.Calls[slot]=row.Calls[slot]+1;row.Ticks[slot]=row.Ticks[slot]+elapsed;
+    }
+    static void Sample(DGBNativeGroundDirector director)
+    {
+        if(!On() || !director)return;
+        float age=GetGame().GetTickTime()-director.Born;
+        if(age<NextSample)return;NextSample=age+1;
+        if(!Log)
+        {
+            Log=OpenFile("$profile:native-follow-cost.tsv",FileMode.WRITE);
+            if(!Log){Print("DG_FOLLOW_COST_FAILED log");return;}
+            string header="seconds\tid";
+            array<string> names={"follow","resolveArea","planConnection","searchApproach","surfaceYield","surfaceWalk","walk","driveGround"};
+            foreach(string name:names)header+="\t"+name+"Calls\t"+name+"Ticks";
+            FPrintln(Log,header+"\tclockCounter\tappActive");Print("DG_FOLLOW_COST_READY default_off_nested_elapsed_only");
+        }
+        foreach(DGBNativeGroundBody body:director.Bodies)
+        {
+            while(Rows.Count()<=body.Id)Rows.Insert(new DGFollowCostRow);
+            DGFollowCostRow row=Rows[body.Id];string line=age.ToString()+"\t"+body.Id;
+            for(int slot=0;slot<8;slot++)line+="\t"+row.Calls[slot]+"\t"+row.Ticks[slot];
+            FPrintln(Log,line+"\t"+TickCount(0)+"\t"+GetGame().IsAppActive());
+        }
+    }
+}
+modded class DGBNativeTraversal
+{
+    bool FCInFollow;
+    override void Follow(float dt,vector delta,bool available)
+    {
+        if(!DGFollowCost.On()){super.Follow(dt,delta,available);return;}
+        bool prior=FCInFollow;FCInFollow=true;int started=TickCount(0);
+        super.Follow(dt,delta,available);
+        DGFollowCost.Record(Body,0,TickCount(started));FCInFollow=prior;
+    }
+    override string ResolveApproachArea(string targetArea)
+    {
+        if(!FCInFollow){return super.ResolveApproachArea(targetArea);}
+        int started=TickCount(0);string result=super.ResolveApproachArea(targetArea);
+        DGFollowCost.Record(Body,1,TickCount(started));return result;
+    }
+    override DGBFixtureLink PlanConnection(string targetArea)
+    {
+        if(!FCInFollow){return super.PlanConnection(targetArea);}
+        int started=TickCount(0);DGBFixtureLink result=super.PlanConnection(targetArea);
+        DGFollowCost.Record(Body,2,TickCount(started));return result;
+    }
+    override void SearchApproach(float dt,vector delta,bool available)
+    {
+        if(!FCInFollow){super.SearchApproach(dt,delta,available);return;}
+        int started=TickCount(0);super.SearchApproach(dt,delta,available);
+        DGFollowCost.Record(Body,3,TickCount(started));
+    }
+    override bool FollowSurfaceYield(float dt,vector delta,bool available)
+    {
+        if(!FCInFollow){return super.FollowSurfaceYield(dt,delta,available);}
+        int started=TickCount(0);bool result=super.FollowSurfaceYield(dt,delta,available);
+        DGFollowCost.Record(Body,4,TickCount(started));return result;
+    }
+    override void SurfaceWalk(vector goal,float arrival,float dt,vector delta,bool available)
+    {
+        if(!FCInFollow){super.SurfaceWalk(goal,arrival,dt,delta,available);return;}
+        int started=TickCount(0);super.SurfaceWalk(goal,arrival,dt,delta,available);
+        DGFollowCost.Record(Body,5,TickCount(started));
+    }
+    override void Walk(vector goal,float arrival,bool platform,float dt,vector delta,bool available)
+    {
+        if(!FCInFollow){super.Walk(goal,arrival,platform,dt,delta,available);return;}
+        int started=TickCount(0);super.Walk(goal,arrival,platform,dt,delta,available);
+        DGFollowCost.Record(Body,6,TickCount(started));
+    }
+}
+modded class DGBNativeGroundBody
+{
+    override void DriveGround(float dt,vector delta,bool available)
+    {
+        if(!Traversal || !Traversal.FCInFollow){super.DriveGround(dt,delta,available);return;}
+        int started=TickCount(0);super.DriveGround(dt,delta,available);
+        DGFollowCost.Record(this,7,TickCount(started));
+    }
+    override void AdvanceFrameFall(float now)
+    {
+        super.AdvanceFrameFall(now);
+        if(DGFollowCost.On() && Director && Id==Director.Bodies.Count() - 1)DGFollowCost.Sample(Director);
+    }
+}
