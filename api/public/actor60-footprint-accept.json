@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T05:48:27.970716+09:00",
+  "sourceRunId": "runtime-20261031-051732",
+  "diagnosticRunId": "actor60-footprint-diagnosis-20261031-053144",
+  "buildId": "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
+  "verificationStatus": {
+    "diagnostic": "success",
+    "repeatedScope": "17static support cases twice;6bounded frozen-contact dt cases twice",
+    "gameplayRegression": "not_executed",
+    "finalAcceptance": false,
+    "visualAcceptance": false,
+    "performanceAcceptance": false
+  },
+  "metrics": {
+    "conditions": "Static fixture and captured single-frame raw4/previous4;actual world solver and Accept;peer crowd and graph clock not replayed;callerDt unknown",
+    "staticTrials": 2,
+    "staticRows": 34,
+    "contactTrials": 3,
+    "contactRows": 48,
+    "baselineContactRowsExact": 18,
+    "boundedTrials": 2,
+    "boundedCasesEach": 6,
+    "scenarioDts": [
+      0.01,
+      0.02,
+      0.0333333,
+      0.05,
+      0.1,
+      0.2
+    ],
+    "scenarioDtsAreMeasuredCaller": false,
+    "oldSelectorBudgetBreachM": 2.647e-05,
+    "correctedSmallDtStepM": 0.00381018,
+    "smallDtLimitM": 0.004,
+    "candidateOnlyInDiagnosticSubclass": true,
+    "newRuntimeFrameTime": null,
+    "targetP95Ms": 20,
+    "lastActual64FrameMs": {
+      "p50": 28,
+      "p95": 76,
+      "p99": 93,
+      "sourceRunId": "runtime-20261031-051732",
+      "notRemeasured": true
+    }
+  },
+  "blockers": [
+    "Negative controls and other failure inputs remain",
+    "Candidate not packaged or tested8/64;normal fall preservation not runtime accepted",
+    "No visual timing or cost optimization acceptance;20ms p95 remains target"
+  ],
+  "evidenceReferences": [
+    {
+      "file": "engine-compile.json",
+      "sha256": "294717319edf0ab1bd19b76a89434bf7fd429ba352ca72ed709b7614890f44f1"
+    },
+    {
+      "file": "staged.json",
+      "sha256": "cbf9b4bfdd6fc62b1617f13f002cbad120491ef93857526018bf9b79d70f4998"
+    },
+    {
+      "file": "init.c",
+      "sha256": "893c7323317d8d271ca02cdd4dd632d0207337f42f231dda78e5a226b713ecbd"
+    },
+    {
+      "file": "actor60-end-accept.tsv",
+      "sha256": "9fa9a261b744ea6c89467bfabf9801545ea5ecf3064df66deb5e9aa65cf5a462"
+    },
+    {
+      "file": "engine-compile.json",
+      "sha256": "c22ff153a3d4e8a4d00662f873f39e6b03136aef137762fe4fdb5597c784fd06"
+    },
+    {
+      "file": "staged.json",
+      "sha256": "c439569b3f41f96fa3c41d6cfb88daf0d7adf2601054d2cb729f38e3284c105b"
+    },
+    {
+      "file": "init.c",
+      "sha256": "705ee9d517c9e8ef14f6d60a56a8257cfdd7482f7ad68a22688a8a55d6cfe655"
+    },
+    {
+      "file": "actor60-end-accept.tsv",
+      "sha256": "dc08a26532f2c82d7cead15063cb9716df9741c0110a5a39d65eb841297ccc01"
+    },
+    {
+      "file": "engine-compile.json",
+      "sha256": "e482b6daf98cbd42e4180d8e438f1665f7deb6a415746a71b093c567cdacad08"
+    },
+    {
+      "file": "staged.json",
+      "sha256": "a1e78af7bf5a21df220da2e95773a1f6fd18e54072d4517f46e67c496e1cd4af"
+    },
+    {
+      "file": "init.c",
+      "sha256": "705ee9d517c9e8ef14f6d60a56a8257cfdd7482f7ad68a22688a8a55d6cfe655"
+    },
+    {
+      "file": "actor60-end-accept.tsv",
+      "sha256": "dc08a26532f2c82d7cead15063cb9716df9741c0110a5a39d65eb841297ccc01"
+    },
+    {
+      "file": "engine-compile.json",
+      "sha256": "466b127ad540f90b5dd3f9b6e1d039b89adbbb8bb183eca6e6250179f6b8dcfd"
+    },
+    {
+      "file": "engine-compile.json",
+      "sha256": "5ac3567e69a40a84bf607b5e04ea6d4dc080d2c85370460c767aa82687042d1d"
+    }
+  ],
+  "report": "reports/operations/actor60-footprint-accept-20261031.md"
+}

@@ -1,3 +1,5 @@
+> 최신 진단(2026-10-31): 60번의 −Z 표면 법선 거부를 17조건×2회 재현. 같은 호출의 raw4/이전접촉4로 실제 Accept 출력도 일치했다. 기존 선택기의 수치 한도 후보는 6dt×2회 통과했지만 게임 PBO·새8→64에는 미반영이다. [원인·후보·한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/actor60-footprint-accept-20261031.md). 아래 실제 기능 수치는 기존 시험 기록이다.
+
 > 최신 실제 시험(2026-10-31): 고지대 목표 유지 조건에서8/8·64/64고지대 및 최종 도착.64개체 종료 검사1건,낙하 복귀73건,p95 76ms.반복 기능·화면 품질·성능 미수용. [실행 조건과 실패 증거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/held-high-eight-sixtyfour-20261031.md). 아래 과거 수치는 원본 이력이다.
 
 > 시험 조건 정정(2026-10-31): 기존64개체 HIGH_HOLD의 실제 플레이어 high 유지 약29.5초. 실제 high 유지 중 high+FOLLOW60/64이며, 최종64/64 도착과 별도다. 신규 런타임·수정·시각/성능 수용 아님. [원시 위치 기반 재분석](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/high-stimulus-validity-20261031.md).
