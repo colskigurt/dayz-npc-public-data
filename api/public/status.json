@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T235301-contact-input-observer-20261030",
-  "generatedAt": "2026-10-29T23:53:01.532092+00:00",
+  "snapshotId": "snapshot-20261030T001442-actor60-direction-diagnosis-20261030",
+  "generatedAt": "2026-10-30T00:14:42.546690+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -75,9 +75,9 @@
     "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "observer8to64_diagnosed_not_repaired_or_final_accepted",
-    "visual": "not_measured_this_observer_batch",
-    "performance": "diagnostic_frame_quantiles_not_optimization",
+    "functional": "frozen_direction_diagnosed_prior_live63of64_unrepaired",
+    "visual": "unmeasured_this_frozen_bundle",
+    "performance": "unmeasured_prior_live64_p95_80ms_target20ms",
     "regressionChecks": 0
   },
   "metrics": [
@@ -12664,34 +12664,29 @@
   ],
   "blockers": [
     {
-      "id": "contact-replay",
-      "status": "open",
-      "description": "Frozen same-call inputs captured; unresolved contact replay and minimal repair still required."
+      "id": "direction-live",
+      "status": "unexecuted",
+      "description": "Frozen pose refinement passed;defaultOFF/action-lock controls and live8to64 still required."
     },
     {
-      "id": "follow-60",
+      "id": "prior-fall-climb",
       "status": "open",
-      "description": "Latest64 terminal63/64;actor60 remains FOLLOW supported-pose escape after EGRESS_STALL;earlier FALL snapshots do not prove terminal cause."
-    },
-    {
-      "id": "climb-exit-50",
-      "status": "open",
-      "description": "Earlier fixed footprint normal rejection remains unrepaired even if not reproduced in this run."
+      "description": "Earlier actor12 unresolved fall and actor50 climb exit remain unrepaired."
     },
     {
       "id": "matched-repeats",
       "status": "unexecuted",
-      "description": "One live run per population; matched repaired OFF/ON repetitions still required."
+      "description": "Repeated actual matched8/64 conditions still pending."
     },
     {
       "id": "animation-visible",
       "status": "unmeasured",
-      "description": "No temporal visible-frame/CPU alignment acceptance."
+      "description": "No visible animation temporal quality acceptance."
     },
     {
       "id": "cost-attribution",
       "status": "unexecuted",
-      "description": "Separate 64-agent cost controls pending;20ms p95 remains target."
+      "description": "Separate64 cost controls pending;20ms p95 remains target."
     }
   ],
   "evidenceReferences": [
@@ -13378,23 +13373,41 @@
       "uri": "/data/experiments/contact-input-observer-20261030.json",
       "sha256": "06037a6c2828787919ddf7bb327c14a5902de18c2abc7addd5c0693772b423a5",
       "scope": "curated_public_projection"
+    },
+    {
+      "id": "actor60-direction-diagnosis-20261030-report",
+      "uri": "/downloads/checkpoints/2026-10-30_091427_851444+0900_npc-actor60-direction-diagnosis.txt",
+      "sha256": "e47b5ea7f9d76e13d025e4f1cdce301e94949f5bec301195ba4bc2fed2b97482",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "actor60-direction-diagnosis-20261030-review",
+      "uri": "/downloads/checkpoints/actor60-direction-review.txt",
+      "sha256": "f61b18a240d8c0078f7f263564ef4a282661635c1751f49fbd8d2eca3ea965d6",
+      "scope": "curated_public_projection"
+    },
+    {
+      "id": "actor60-direction-diagnosis-20261030-json",
+      "uri": "/data/experiments/actor60-direction-diagnosis-20261030.json",
+      "sha256": "5b31cc937686c2523d31729172775837abdca17a97011e5dd941962874d839cb",
+      "scope": "curated_public_projection"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T23:53:01.532092+00:00",
-    "staleAfter": "2026-10-30T23:53:01.532092+00:00",
+    "sourceUpdatedAt": "2026-10-30T00:14:42.546690+00:00",
+    "staleAfter": "2026-10-31T00:14:42.546690+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
   },
   "updateState": {
     "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261029T235301-contact-input-observer-20261030",
-      "generatedAt": "2026-10-29T23:53:01.532092+00:00",
-      "sourceUpdatedAt": "2026-10-29T23:53:01.532092+00:00"
+      "snapshotId": "snapshot-20261030T001442-actor60-direction-diagnosis-20261030",
+      "generatedAt": "2026-10-30T00:14:42.546690+00:00",
+      "sourceUpdatedAt": "2026-10-30T00:14:42.546690+00:00"
     },
     "lastAttempt": {
-      "at": "2026-10-29T23:53:01.532092+00:00",
+      "at": "2026-10-30T00:14:42.546690+00:00",
       "result": "local validated, remote publication pending"
     },
     "lastFailure": {
@@ -13409,7 +13422,7 @@
     "metrics": "/api/public/metrics.json",
     "markdown": "/reports/latest.md",
     "schema": "/api/public/schema.json",
-    "immutableBase": "/api/public/snapshots/snapshot-20261029T235301-contact-input-observer-20261030/"
+    "immutableBase": "/api/public/snapshots/snapshot-20261030T001442-actor60-direction-diagnosis-20261030/"
   },
   "experiments": [
     {
@@ -14627,6 +14640,33 @@
         "cost-attribution"
       ],
       "replication": "Headless12-case parity twice;one300s live run per population;not causal performance repetition"
+    },
+    {
+      "id": "actor60-direction-diagnosis-20261030",
+      "title": "60번 정체 원인: 좁은 탈출 방향과 재탐색 비교",
+      "track": "diagnostic",
+      "sourceRunId": [
+        "runtime-20261030-084554"
+      ],
+      "buildId": [
+        "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
+        "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C"
+      ],
+      "verificationStatus": "diagnosis_success_not_final_accepted",
+      "conditions": [],
+      "evidenceReferences": [
+        "actor60-direction-diagnosis-20261030-report",
+        "actor60-direction-diagnosis-20261030-review",
+        "actor60-direction-diagnosis-20261030-json"
+      ],
+      "blockers": [
+        "direction-live",
+        "prior-fall-climb",
+        "matched-repeats",
+        "animation-visible",
+        "cost-attribution"
+      ],
+      "replication": "Two primitive repeats and two frozen rolling comparisons;not actual8/64 repeats"
     }
   ],
   "kind": "status"

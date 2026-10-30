@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261029T235301-contact-input-observer-20261030",
-  "generatedAt": "2026-10-29T23:53:01.532092+00:00",
-  "exportedAt": "2026-10-29T23:53:01.532092+00:00",
+  "snapshotId": "snapshot-20261030T001442-actor60-direction-diagnosis-20261030",
+  "generatedAt": "2026-10-30T00:14:42.546690+00:00",
+  "exportedAt": "2026-10-30T00:14:42.546690+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -73,8 +73,8 @@
     "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C"
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-29T23:53:01.532092+00:00",
-    "staleAfter": "2026-10-30T23:53:01.532092+00:00",
+    "sourceUpdatedAt": "2026-10-30T00:14:42.546690+00:00",
+    "staleAfter": "2026-10-31T00:14:42.546690+00:00",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
     "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
@@ -91,18 +91,18 @@
   "files": [
     {
       "path": "AI_REVIEW.md",
-      "bytes": 55773,
-      "sha256": "6fa6246320a246ff2c947460af36f5a64e0720362f5bf4ce15dd1a2cc6f830c9"
+      "bytes": 33350,
+      "sha256": "0f5877b32e0d1b3b165a477eabf1316c87c5ebdd6300ddaf5e53054cceb900fd"
     },
     {
       "path": "api/public/experiments.json",
-      "bytes": 515968,
-      "sha256": "627a6eb872a65999dca7211bddfa094d544d59507c0800b1783eabf21b431372"
+      "bytes": 517529,
+      "sha256": "d064db2edb1b09b501da720e6f8cc16ed7f2d5c0b7b18fd4f109e3844e25c6b4"
     },
     {
       "path": "api/public/metrics.json",
-      "bytes": 515964,
-      "sha256": "f4b7d59e0d694e905a568cc8ae5eb948b8e6b24a849714f2ca3e7ce950fdd274"
+      "bytes": 517525,
+      "sha256": "e1cf6da2cad4dd7ced00dbd03ea54b1e15e9ca3aa173368291940bb025598696"
     },
     {
       "path": "api/public/schema.json",
@@ -650,14 +650,29 @@
       "sha256": "30d010e2760c7e0335f94d527bbe723ed926fbb112ed256bd3d195418ccb0b46"
     },
     {
+      "path": "api/public/snapshots/snapshot-20261030T001442-actor60-direction-diagnosis-20261030/experiments.json",
+      "bytes": 517529,
+      "sha256": "d064db2edb1b09b501da720e6f8cc16ed7f2d5c0b7b18fd4f109e3844e25c6b4"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261030T001442-actor60-direction-diagnosis-20261030/metrics.json",
+      "bytes": 517525,
+      "sha256": "e1cf6da2cad4dd7ced00dbd03ea54b1e15e9ca3aa173368291940bb025598696"
+    },
+    {
+      "path": "api/public/snapshots/snapshot-20261030T001442-actor60-direction-diagnosis-20261030/status.json",
+      "bytes": 517524,
+      "sha256": "dd330db233bbde5a056b35df0df0cf7c5e480bf43636e2d5080a0d69321c8c02"
+    },
+    {
       "path": "api/public/status.json",
-      "bytes": 515963,
-      "sha256": "30d010e2760c7e0335f94d527bbe723ed926fbb112ed256bd3d195418ccb0b46"
+      "bytes": 517524,
+      "sha256": "dd330db233bbde5a056b35df0df0cf7c5e480bf43636e2d5080a0d69321c8c02"
     },
     {
       "path": "api/public/update-status.json",
-      "bytes": 729,
-      "sha256": "003d1314be514035fe9bdcf1bbf3e7d57717311731124b683dcc70b4d6d11332"
+      "bytes": 739,
+      "sha256": "1c182c46f993a8ea9e6e08363e6998ed5e311c74aab1a270d288c1e8b8589d32"
     },
     {
       "path": "data/experiments/actor43-owner-runtime-20261029.json",
@@ -678,6 +693,11 @@
       "path": "data/experiments/actor59-support-boundary-20261029.json",
       "bytes": 91196,
       "sha256": "aeaa7b0a5682add988f7a425d2ed28be1c7b3f53f93e6bc20cf1d3ffa8ceb231"
+    },
+    {
+      "path": "data/experiments/actor60-direction-diagnosis-20261030.json",
+      "bytes": 47246,
+      "sha256": "5b31cc937686c2523d31729172775837abdca17a97011e5dd941962874d839cb"
     },
     {
       "path": "data/experiments/admission-latch-runtime-20261028.json",
@@ -1210,9 +1230,19 @@
       "sha256": "c5324d7379ade0af6c3838deb733bf30a33eda1ab606ba83dce6ce7c77d698a0"
     },
     {
+      "path": "downloads/checkpoints/2026-10-30_091427_851444+0900_npc-actor60-direction-diagnosis.txt",
+      "bytes": 5763,
+      "sha256": "e47b5ea7f9d76e13d025e4f1cdce301e94949f5bec301195ba4bc2fed2b97482"
+    },
+    {
       "path": "downloads/checkpoints/actor50-footprint-review.txt",
       "bytes": 11653,
       "sha256": "5789d1ce3ffe8042f03597945b4c740c7e126ea94996e9f7c795e0ef080079a0"
+    },
+    {
+      "path": "downloads/checkpoints/actor60-direction-review.txt",
+      "bytes": 33086,
+      "sha256": "f61b18a240d8c0078f7f263564ef4a282661635c1751f49fbd8d2eca3ea965d6"
     },
     {
       "path": "downloads/checkpoints/contact-input-review.txt",
@@ -1231,8 +1261,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 17932,
-      "sha256": "ca331c86745deff6793a47f4985dc1ab9876648edff14da01d838a12da551076"
+      "bytes": 18295,
+      "sha256": "9502e406c4169db02013ab3b365512184ca66c2e87c650a8f425317a36dc58ed"
     },
     {
       "path": "reports/accessibility-20261028.md",
@@ -1278,6 +1308,16 @@
       "path": "reports/history/pre-actor59-support-boundary-20261029-operations-latest.md",
       "bytes": 8989,
       "sha256": "ebbb7264e51925214637e3eaa04b97411c40c25f08808d26503cd74f67710b9c"
+    },
+    {
+      "path": "reports/history/pre-actor60-direction-diagnosis-20261030-latest.md",
+      "bytes": 9874,
+      "sha256": "f4adfb42f991c342ced5b9c172ef6cde719443d7949f99f77d517563c4d51868"
+    },
+    {
+      "path": "reports/history/pre-actor60-direction-diagnosis-20261030-operations-latest.md",
+      "bytes": 9874,
+      "sha256": "f4adfb42f991c342ced5b9c172ef6cde719443d7949f99f77d517563c4d51868"
     },
     {
       "path": "reports/history/pre-animation-review-plan-20261030-latest.md",
@@ -1606,8 +1646,8 @@
     },
     {
       "path": "reports/latest.md",
-      "bytes": 9874,
-      "sha256": "f4adfb42f991c342ced5b9c172ef6cde719443d7949f99f77d517563c4d51868"
+      "bytes": 6059,
+      "sha256": "72fd68ababadb9412a6202d517188dcf2a0001f1215ab3f7fdd1c73232d6a94c"
     },
     {
       "path": "reports/mirror-publication-20261028.md",
@@ -1626,8 +1666,8 @@
     },
     {
       "path": "reports/operations-latest.md",
-      "bytes": 9874,
-      "sha256": "f4adfb42f991c342ced5b9c172ef6cde719443d7949f99f77d517563c4d51868"
+      "bytes": 6059,
+      "sha256": "72fd68ababadb9412a6202d517188dcf2a0001f1215ab3f7fdd1c73232d6a94c"
     }
   ]
 }

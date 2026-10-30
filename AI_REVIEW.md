@@ -1,1557 +1,798 @@
 # DayZ NPC AI — 외부 세션 검토 자료
 
-Snapshot: snapshot-20261029T235301-contact-input-observer-20261030
+Snapshot: snapshot-20261030T001442-actor60-direction-diagnosis-20261030
 
-Contact-input observer review packet; selected excerpt, not complete raw evidence.
-One 300s live run per population; observer only, no movement policy repair.
-CPU and root invariants do not establish visual animation smoothness.
-Build F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C
-Source F1 SHA256 dd8a8b3b89a33b9c933f71ad414f6c141eb666dcafddd970119ab85acb523b13
-F1 selection: complete observer wrapper/hook plus original solver body; line numbers below.
-F1:1: // Diagnostic only. Generated solver is byte-reversible to the accepted base.
-F1:2: // Capture existing vectors, never add bone/physics queries or commit movement.
-F1:3: modded class DGBNativeGroundBody
-F1:4: {
-F1:5:     bool FCRead;bool FCEnabled;
-F1:6:     int FCCalls;int FCRows;int FCSuppressed;int FCWriteFailures;
-F1:7:     float FCNextAt;string FCLastKey;
-F1:8:     static int FCGlobalRows;static int FCGlobalSuppressed;
-F1:9:     static float FCFrameAt=-1;static int FCFrameRows;
-F1:10:     ref array<vector> FCRaw={};ref array<vector> FCPrevious={};
-F1:11:     vector FCAnchor;float FCHeading;float FCMinimumLift;vector FCPositionBefore;
-F1:12:     bool FCInside;string FCFailureStage;int FCFailureJoint=-1;
-F1:13:     float FCNativeBefore;int FCUpdatesBefore;
-F1:14:     bool FCOn()
-F1:15:     {
-F1:16:         if(!FCRead){FCEnabled=FileExist("$profile:fall-contact-inputs.flag");FCRead=true;}
-F1:17:         return FCEnabled;
-F1:18:     }
-F1:19:     bool FCEligible()
-F1:20:     {
-F1:21:         if(!Director || !Traversal || !Leader)return false;
-F1:22:         if(Traversal.Phase=="FALL")return true;
-F1:23:         return Traversal.Phase=="MOTION" && Traversal.Active && Traversal.Active.Action=="CLIMB" && Traversal.Clip && Traversal.NativeCurveEnded && Traversal.MotionElapsed>=Traversal.Clip.duration;
-F1:24:     }
-F1:25:     void FCObserveRaw(vector anchor,float heading,array<vector> raw,float minimumLift)
-F1:26:     {
-F1:27:         FCAnchor=anchor;FCHeading=heading;FCMinimumLift=minimumLift;
-F1:28:         FCRaw.Copy(raw);FCPrevious.Copy(Contacts);
-F1:29:     }
-F1:30:     string FCPoint(array<vector> values,int index)
-F1:31:     {
-F1:32:         if(index>=values.Count())return "UNAVAILABLE";
-F1:33:         return values[index].ToString();
-F1:34:     }
-F1:35:     override void RecordContactFailure(string stage,int joint,vector anchor,float heading,vector raw,vector previous,vector target,float proposedLift,Object collision)
-F1:36:     {
-F1:37:         if(FCInside){FCFailureStage=stage;FCFailureJoint=joint;}
-F1:38:         super.RecordContactFailure(stage,joint,anchor,heading,raw,previous,target,proposedLift,collision);
-F1:39:     }
-F1:40:     void FCObserveResult(bool accepted,float lift,array<vector> points)
-F1:41:     {
-F1:42:         string key=Traversal.Phase+":"+Reason+":"+accepted;
-F1:43:         bool changed=key!=FCLastKey;
-F1:44:         if(!changed && Director.Now<FCNextAt){FCSuppressed++;FCGlobalSuppressed++;return;}
-F1:45:         if(FCFrameAt!=Director.Now){FCFrameAt=Director.Now;FCFrameRows=0;}
-F1:46:         if(FCRows>=128 || FCGlobalRows>=2048 || FCFrameRows>=4){FCSuppressed++;FCGlobalSuppressed++;return;}
-F1:47:         FileHandle file=OpenFile("$profile:native-contact-inputs.tsv",FileMode.APPEND);
-F1:48:         if(!file){FCWriteFailures++;return;}
-F1:49:         if(FCGlobalRows==0)
-F1:50:         {
-F1:51:             FPrintln(file,"sequence\tseconds\tid\tcall\tphase\trecoveryGeneration\taccepted\treason\trootBefore\tanchor\theading\tminimumLift\treturnedLift\tidleOffset\trawCount\tpreviousCount\toutputCount\traw0\traw1\traw2\traw3\tprevious0\tprevious1\tprevious2\tprevious3\toutput0\toutput1\toutput2\toutput3\tnativeBefore\tnativeAfter\tupdatesBefore\tupdatesAfter\trequest\tnativeRequest\tcallerFall\tcallerDt\tframeFall\tfallVelocity\tpressureActive\tpressureVelocity\tactiveLink\tactiveExit\tmotionContactOffset\tmotionElapsed\tnativeCurveEnded\tstartPlacementEntry\trootUnchanged\tactorRows\tsuppressedSoFar\tglobalSuppressedSoFar\twriteFailuresSoFar\thitType\thitPoint\thitNormal\thitFraction\tfailureStage\tfailureJoint\trootAfter");
-F1:52:         }
-F1:53:         FCGlobalRows++;FCFrameRows++;FCRows++;FCNextAt=Director.Now+2;FCLastKey=key;
-F1:54:         string active="none";vector exit,placement;
-F1:55:         if(Traversal.Active){active=Traversal.Active.Id;exit=Traversal.Active.Exit;}
-F1:56:         if(Traversal.StartPlacement)placement=Traversal.StartPlacement.Entry;
-F1:57:         string row=FCGlobalRows.ToString()+"\t"+(Director.Now-Director.Born)+"\t"+Id+"\t"+FCCalls+"\t"+Traversal.Phase+"\t"+Traversal.CTRecoveryGeneration;
-F1:58:         row+="\t"+accepted+"\t"+Reason+"\t"+FCPositionBefore+"\t"+FCAnchor+"\t"+FCHeading+"\t"+FCMinimumLift+"\t"+lift+"\t"+IdleOffset;
-F1:59:         row+="\t"+FCRaw.Count()+"\t"+FCPrevious.Count()+"\t"+points.Count();
-F1:60:         for(int j=0;j<4;j++)row+="\t"+FCPoint(FCRaw,j);
-F1:61:         for(int k=0;k<4;k++)row+="\t"+FCPoint(FCPrevious,k);
-F1:62:         for(int n=0;n<4;n++)row+="\t"+FCPoint(points,n);
-F1:63:         row+="\t"+FCNativeBefore+"\t"+Leader.NativeSeconds+"\t"+FCUpdatesBefore+"\t"+Leader.AnimUpdates;
-F1:64:         row+="\t"+Request+"\t"+Leader.NativeRequest+"\t"+Traversal.PCInsideFall+"\t"+Traversal.PCFallDt+"\t"+FrameFallPhysicsActive();
-F1:65:         row+="\t"+Traversal.FallVelocity+"\t"+Traversal.PressureFallActive+"\t"+Traversal.PressureFallVelocity;
-F1:66:         row+="\t"+active+"\t"+exit+"\t"+Traversal.MotionContactOffset+"\t"+Traversal.MotionElapsed+"\t"+Traversal.NativeCurveEnded+"\t"+placement;
-F1:67:         // This is a solver-input snapshot, before Accept can commit its root.
-F1:68:         bool rootUnchanged=Agent.Position==FCPositionBefore;
-F1:69:         row+="\t"+rootUnchanged+"\t"+FCRows+"\t"+FCSuppressed+"\t"+FCGlobalSuppressed+"\t"+FCWriteFailures;
-F1:70:         row+="\t"+HitType+"\t"+HitPoint+"\t"+HitNormal+"\t"+HitFraction;
-F1:71:         row+="\t"+FCFailureStage+"\t"+FCFailureJoint+"\t"+Agent.Position;
-F1:72:         FPrintln(file,row);CloseFile(file);
-F1:73:     }
-F1:74:     override bool SolveContactsInternal(vector anchor,float heading,out float proposedLift,out array<vector> points,float minimumLift=0)
-F1:75:     {
-F1:76:         if(!FCOn() || !FCEligible())return super.SolveContactsInternal(anchor,heading,proposedLift,points,minimumLift);
-F1:77:         FCCalls++;FCNativeBefore=Leader.NativeSeconds;FCUpdatesBefore=Leader.AnimUpdates;
-F1:78:         FCPositionBefore=Agent.Position;FCFailureStage="";FCFailureJoint=-1;
-F1:79:         bool oldInside=FCInside;FCInside=true;
-F1:80:         bool accepted=FCExecuteSolve(anchor,heading,proposedLift,points,minimumLift);
-F1:81:         FCInside=oldInside;
-F1:82:         FCObserveResult(accepted,proposedLift,points);
-F1:83:         return accepted;
-F1:84:     }
-F1:85:     bool FCExecuteSolve(vector anchor,float heading,out float proposedLift,out array<vector> points,float minimumLift=0)
-F1:86:     {
-F1:87:         proposedLift=0;points=new array<vector>;
-F1:88:         ref array<vector> raw={};
-F1:89:         int boneStarted=TickCount(0);
-F1:90:         for(int j=0;j<JointIds.Count();j++)raw.Insert(anchor+Rotate(Leader.GetBonePositionMS(JointIds[j])+IdleOffset,heading));
-F1:91:         ContactBoneTicks+=TickCount(boneStarted);
-F1:92:         FCObserveRaw(anchor,heading,raw,minimumLift);
-F1:93:         array<vector> supportOffsets={"0 0 0","0.065 0 0","-0.065 0 0","0 0 0.065","0 0 -0.065"};
-F1:94:         int liftFoot=2;
-F1:95:         int footStarted=TickCount(0);
-F1:96:         float shadowBefore=SupportShadowTicks;
-F1:97:         for(int foot=2;foot<4;foot++)
-F1:98:         {
-F1:99:             bool referenceFound=false;float referenceY=-100000;
-F1:100:             bool centerTested=false;bool centerFound=false;
-F1:101:             Object centerObject;vector centerPoint,centerNormal;float centerFraction;
-F1:102:             bool fastEligible=false;float supportBound;
-F1:103:             if(Director.SupportSweepFast || Director.SupportSweepShadow)
-F1:104:             {
-F1:105:                 centerTested=true;ContactFootRays++;
-F1:106:                 centerFound=DayZPhysics.RayCastBullet(raw[foot]+"0 0.3 0",raw[foot]+"0 -1.2 0",DGBGroundAgent.Floors(),Leader,centerObject,centerPoint,centerNormal,centerFraction);
-F1:107:                 if(centerFound && centerNormal[1]>=0.65){referenceFound=true;referenceY=centerPoint[1];}
-F1:108:                 int fastStarted=TickCount(0);
-F1:109:                 if(referenceFound)fastEligible=StructureSupportBound(raw[foot],centerObject,centerPoint,centerNormal,centerFraction,supportBound);
-F1:110:                 SupportFastTicks+=TickCount(fastStarted);
-F1:111:             }
-F1:112:             bool useBound=Director.SupportSweepFast && fastEligible && !Director.SupportSweepShadow;
-F1:113:             if(useBound)
-F1:114:             {referenceFound=true;referenceY=supportBound;SupportFastUsed++;SupportFastSkippedRays+=4;}
-F1:115:             else
-F1:116:             foreach(vector offset:supportOffsets)
-F1:117:             {
-F1:118:                 if(centerTested && offset==vector.Zero)continue;
-F1:119:                 Object hit;vector point,normal;float fraction;
-F1:120:                 vector origin=raw[foot]+offset;
-F1:121:                 ContactFootRays++;
-F1:122:                 if(DayZPhysics.RayCastBullet(origin+"0 0.3 0",origin+"0 -1.2 0",DGBGroundAgent.Floors(),Leader,hit,point,normal,fraction) && normal[1]>=0.65)
-F1:123:                 {
-F1:124:                     referenceFound=true;referenceY=Math.Max(referenceY,point[1]);
-F1:125:                 }
-F1:126:             }
-F1:127:             if(Director.SupportSweepShadow && fastEligible && referenceFound)
-F1:128:             {
-F1:129:                 SupportFastReferenceChecks++;
-F1:130:                 float fastError=referenceY - supportBound;
-F1:131:                 if(fastError>0.001)SupportFastUnder++;
-F1:132:                 SupportFastMaxUnder=Math.Max(SupportFastMaxUnder,fastError);
-F1:133:                 SupportFastMaxOver=Math.Max(SupportFastMaxOver, -fastError);
-F1:134:             }
-F1:135:             if(referenceFound)
-F1:136:             {
-F1:137:                 float required=referenceY+Radii[foot]+0.03 - raw[foot][1];
-F1:138:                 if(required>proposedLift){proposedLift=required;liftFoot=foot;}
-F1:139:             }
-F1:140:             if(Director.SupportSweepShadow)ObserveSupportSweep(raw[foot],referenceFound,referenceY);
-F1:141:         }
-F1:142:         proposedLift=Math.Max(proposedLift,minimumLift);
-F1:143:         ContactFootTicks+=TickCount(footStarted) - (SupportShadowTicks - shadowBefore);
-F1:144:         if(proposedLift>0.25)
-F1:145:         {
-F1:146:             Reason="NATIVE_FOOT_LIFT_LIMIT";
-F1:147:             vector oldFoot=raw[liftFoot];if(Contacts.Count()==4)oldFoot=Contacts[liftFoot];
-F1:148:             int liftDiagnosticStarted=TickCount(0);
-F1:149:             RecordContactFailure("LIFT_LIMIT",liftFoot,anchor,heading,raw[liftFoot],oldFoot,raw[liftFoot]+Vector(0,proposedLift,0),proposedLift,null);
-F1:150:             ContactDiagnosticTicks+=TickCount(liftDiagnosticStarted);
-F1:151:             return false;
-F1:152:         }
-F1:153:         for(int joint=0;joint<raw.Count();joint++)
-F1:154:         {
-F1:155:             vector target=raw[joint]+Vector(0,proposedLift,0);
-F1:156:             vector previous=target;if(Contacts.Count()==4)previous=Contacts[joint];
-F1:157:             Object collision;vector contact,normalHit;float hitFraction;
-F1:158:             JointSweeps++;
-F1:159:             int worldStarted=TickCount(0);
-F1:160:             bool worldContact=DayZPhysics.SphereCastBullet(previous,target,Radii[joint],DGBGroundAgent.Walls(),Leader,collision,contact,normalHit,hitFraction);
-F1:161:             ContactWorldTicks+=TickCount(worldStarted);
-F1:162:             if(worldContact)
-F1:163:             {
-F1:164:                 // A tangent/start-overlap with a walkable support is not a wall.
-F1:165:                 // Recheck support beneath the proposed foot; side faces still block.
-F1:166:                 bool supportedFoot=false;
-F1:167:                 if(joint>=2 && normalHit[1]>=0.65)
-F1:168:                 {
-F1:169:                     Object floorObject;vector floorPoint,floorNormal;float floorFraction;
-F1:170:                     bool hasFloor=DayZPhysics.RayCastBullet(target+"0 0.3 0",target+"0 -1.2 0",DGBGroundAgent.Floors(),Leader,floorObject,floorPoint,floorNormal,floorFraction);
-F1:171:                     if(!hasFloor)
-F1:172:                     {
-F1:173:                         hasFloor=DayZPhysics.RayCastBullet(contact+"0 0.3 0",contact+"0 -0.3 0",DGBGroundAgent.Floors(),Leader,floorObject,floorPoint,floorNormal,floorFraction);
-F1:174:                     }
-F1:175:                     supportedFoot=hasFloor && floorNormal[1]>=0.65 && target[1] - Radii[joint]>=floorPoint[1] - 0.005;
-F1:176:                 }
-F1:177:                 if(joint>=2 && !supportedFoot && !collision)
-F1:178:                 {
-F1:179:                     int fallbackStarted=TickCount(0);
-F1:180:                     supportedFoot=WalkableFootSweep(previous,target,Radii[joint],collision);
-F1:181:                     ContactFallbackTicks+=TickCount(fallbackStarted);
-F1:182:                 }
-F1:183:                 if(!supportedFoot)
-F1:184:                 {
-F1:185:                     Reason="NATIVE_JOINT_WORLD_"+joint;
-F1:186:                     HitType="terrain";if(collision && collision.GetType()!="")HitType=collision.GetType();
-F1:187:                     HitNormal=normalHit;HitFraction=hitFraction;HitPoint=contact;
-F1:188:                     int sweepDiagnosticStarted=TickCount(0);
-F1:189:                     RecordContactFailure("SWEEP",joint,anchor,heading,raw[joint],previous,target,proposedLift,collision);
-F1:190:                     ContactDiagnosticTicks+=TickCount(sweepDiagnosticStarted);
-F1:191:                     return false;
-F1:192:                 }
-F1:193:             }
-F1:194:             points.Insert(target);
-F1:195:         }
-F1:196:         return true;
-F1:197:     }
-F1:198: }
+Actor60 direction diagnosis;selected frozen inputs and functions,not full gameplay evidence.
+Source run runtime-20261030-084554. No new client run in this bundle.
+CPU pose frozen,other agents absent. Direct rays and checked diagnostic movement only.
+Primitive and rolling repeats byte-identical. Failed initial and syntax trials preserved separately.
 
-Representative rejection selection: first up to eight rejected SWEEP rows in source order.
-{
-  "sourceRunId": "runtime-20261030-083934",
-  "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
-  "verificationStatus": "diagnostic_success",
-  "rows": 32,
-  "actors": 8,
-  "phaseCounts": {
-    "MOTION": 17,
-    "FALL": 15
+F1 DGBNativeTraversal.c SHA256 71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872
+F1:867: bool PlanPressureEscape(float dt)
+F1:868:     {
+F1:869:         PressureEscapePlans++;PressureEscapeValid=false;NextPressureEscapePlan=Now()+0.75;
+F1:870:         array<vector> directions={"0 0 1","0 0 -1","1 0 0","-1 0 0","0.707107 0 0.707107","-0.707107 0 0.707107","0.707107 0 -0.707107","-0.707107 0 -0.707107"};
+F1:871:         array<bool> blockedFirstSteps={false,false,false,false,false,false,false,false};
+F1:872:         ref array<string> outcomes={"TARGET_NONE\t0 0 0","TARGET_NONE\t0 0 0","TARGET_NONE\t0 0 0","TARGET_NONE\t0 0 0","TARGET_NONE\t0 0 0","TARGET_NONE\t0 0 0","TARGET_NONE\t0 0 0","TARGET_NONE\t0 0 0"};
+F1:873:         bool tracePlan=EscapeNoExitAt>=0 && Now() - EscapeNoExitAt>=2 && Now()>=NextEscapePlanTrace;
+F1:874:         string savedLanding=LandingDiagnostic;
+F1:875:         for(float distance=0.5;distance<=4;distance+=0.5)
+F1:876:         {
+F1:877:             for(int directionIndex=0;directionIndex<directions.Count();directionIndex++)
+F1:878:             {
+F1:879:                 // Only within this immutable plan call: farther targets along
+F1:880:                 // one direction use exactly the same first physical step.
+F1:881:                 if(blockedFirstSteps[directionIndex]){EscapeDuplicateDirectionsAvoided++;continue;}
+F1:882:                 vector direction=directions[directionIndex];
+F1:883:                 vector target=Body.Agent.Position+direction*distance;vector supported;
+F1:884:                 if(Phase=="FALL")target=DGBTraversalFixture.Ground(target);
+F1:885:                 else
+F1:886:                 {
+F1:887:                     vector candidateSupport;
+F1:888:                     if(!DGBGroundAgent.Floor(Body.Leader,target,candidateSupport)){if(tracePlan)outcomes[directionIndex]="TARGET_NO_FLOOR\t"+target;continue;}
+F1:889:                     if(Fixture().Area(candidateSupport)!=Fixture().Area(Body.Agent.Position)){if(tracePlan)outcomes[directionIndex]="TARGET_AREA_CHANGED\t"+target;continue;}
+F1:890:                     if(Math.AbsFloat(candidateSupport[1] - Body.Agent.Position[1])>0.08){if(tracePlan)outcomes[directionIndex]="TARGET_HEIGHT_CHANGED\t"+target;continue;}
+F1:891:                     target=candidateSupport;
+F1:892:                 }
+F1:893:                 if(!LandingSpace(target,supported)){if(tracePlan)outcomes[directionIndex]="TARGET_"+LandingDiagnostic+"\t"+target;continue;}
+F1:894:                 float candidateLift;ref array<vector> points={};
+F1:895:                 if(!PressureEscapeStepClear(Body.Agent.Position+direction*Math.Min(0.04,dt*0.6),candidateLift,points))
+F1:896:                 {
+F1:897:                     PressureEscapeLastStepReject=PressureEscapeDiagnostic;blockedFirstSteps[directionIndex]=true;
+F1:898:                     if(tracePlan)outcomes[directionIndex]=EscapeDirectionFailure(supported);
+F1:899:                     continue;
+F1:900:                 }
+F1:901:                 EscapeNoExitAt=-1;
+F1:902:                 PressureEscapeGoal=supported;PressureEscapeValid=true;LandingDiagnostic=savedLanding;return true;
+F1:903:             }
+F1:904:         }
+F1:905:         if(EscapeNoExitAt<0)EscapeNoExitAt=Now();
+F1:906:         if(tracePlan)TraceEscapePlan(outcomes,dt);
+F1:907:         LandingDiagnostic=savedLanding;PressureEscapeDiagnostic="NO_VALID_LOCAL_EXIT";return false;
+F1:908:     }
+F1:934: bool PressureSlide(float dt)
+F1:935:     {
+F1:936:         if(!PressureFallActive && !(Phase=="LAND" && PressureLandingSeparation) && !(Phase=="FOLLOW" && PoseClearanceActive))return false;
+F1:937:         if(SeparationEpisodeDistance>=SeparationDistanceBudget){PressureEscapeDiagnostic="SEPARATION_DISTANCE_LIMIT";return false;}
+F1:938:         if(!PressureEscapeValid && Now()<NextPressureEscapePlan)return false;
+F1:939:         if(!PressureEscapeValid && !PlanPressureEscape(dt))return false;
+F1:940:         vector start=Body.Agent.Position;vector direction=PressureEscapeGoal - start;direction[1]=0;
+F1:941:         float remaining=direction.Length();
+F1:942:         if(remaining<0.04){PressureEscapeValid=false;NextPressureEscapePlan=0;return false;}
+F1:943:         direction.Normalize();float step=Math.Min(SeparationDistanceBudget - SeparationEpisodeDistance,Math.Min(remaining,Math.Min(0.04,dt*0.6)));
+F1:944:         vector next=start+direction*step;
+F1:945:         if(Phase!="FALL")
+F1:946:         {
+F1:947:             vector support;
+F1:948:             bool sameSupport=DGBGroundAgent.Floor(Body.Leader,next,support) && Fixture().Area(support)==Fixture().Area(start) && Math.AbsFloat(support[1] - start[1])<=0.08;
+F1:949:             if(!sameSupport && Fixture().Area(next)==Fixture().Area(start) && (Fixture().Area(start)=="low" || Fixture().Area(start)=="high"))
+F1:950:             {
+F1:951:                 // The accepted root may straddle a rim. Preserve its height
+F1:952:                 // only when an actual animated foot still hits that roof and
+F1:953:                 // this step approaches the already validated interior target.
+F1:954:                 for(int supportFoot=2;supportFoot<Body.JointIds.Count();supportFoot++)
+F1:955:                 {
+F1:956:                     vector supportProbe=Body.JointWorldPoint(supportFoot,next,Body.Agent.Heading,Body.Lift);
+F1:957:                     Object supportObject;vector footSupport,footNormal;float footFraction;
+F1:958:                     if(DayZPhysics.RayCastBullet(supportProbe+"0 0.3 0",supportProbe+"0 -1.2 0",DGBGroundAgent.Floors(),Body.Leader,supportObject,footSupport,footNormal,footFraction) && footNormal[1]>=0.65 && Fixture().Area(footSupport)==Fixture().Area(start) && Math.AbsFloat(footSupport[1] - start[1])<=0.08 && supportProbe[1] - Body.Radii[supportFoot]>=footSupport[1] - 0.005 && supportProbe[1] - Body.Radii[supportFoot]<=footSupport[1]+0.06)
+F1:959:                     {sameSupport=true;support=next;PartialSupportChecks++;break;}
+F1:960:                 }
+F1:961:             }
+F1:962:             if(!sameSupport)
+F1:963:             {PressureEscapeDiagnostic="SUPPORTED_SURFACE_CHANGED";PressureEscapeValid=false;return false;}
+F1:964:             next=support;
+F1:965:         }
+F1:966:         float lift;ref array<vector> contacts={};
+F1:967:         if(!PressureEscapeStepClear(next,lift,contacts))
+F1:968:         {PressureEscapeRejected++;PressureEscapeLastStepReject=PressureEscapeDiagnostic;PressureEscapeValid=false;return false;}
+F1:969:         float travel=vector.Distance(start,next);Body.Agent.Position=next;Body.Agent.Moved+=travel;
+F1:970:         SeparationEpisodeDistance+=travel;PressureEscapeSteps++;Body.Lift=lift;Body.Contacts.Copy(contacts);
+F1:971:         if(Phase=="FALL"){Body.PressureAirDistance+=travel;Body.PressureAirSteps++;}
+F1:972:         if(Phase=="LAND")LandingSeparationSteps++;
+F1:973:         if(Phase=="FOLLOW")PoseClearanceSteps++;
+F1:974:         Body.Reason="CONTACT_AIR_SEPARATION";return true;
+F1:975:     }
+F1:976: bool SupportedEscapeTurn(float dt)
+F1:977:     {
+F1:978:         // Supported recovery still requires a real landing footprint.
+F1:979:         bool supportedMode=Phase=="LAND" && PressureLandingSeparation;
+F1:980:         if(Phase=="FOLLOW" && PoseClearanceActive && !EntryAligning && !Active)supportedMode=true;
+F1:981:         if(!supportedMode || Now()<NextSupportedEscapeTurn)return false;
+F1:982:         vector supported;
+F1:983:         if(!LandingSpace(Body.Agent.Position,supported,false) || vector.Distance(supported,Body.Agent.Position)>0.03)return false;
+F1:984:         return SweepEscapeTurn(dt,false);
+F1:985:     }
+
+F2 actor60_refined_escape_traversal.c SHA256 f49d3b5f5f0a919213a65cf9cbff78a993e10d07bffee914e9f892fe582bf50d
+F2:1: // Isolated frozen-pose experiment. This class is not in a deployed PBO.
+F2:2: class DGActor60RefinedTraversal: DGBNativeTraversal
+F2:3: {
+F2:4:     bool RefineEnabled;int RefinementPlans;int RefinementTargets;int RefinementSweeps;int RefinementAccepted;
+F2:5:     void DGActor60RefinedTraversal(DGBNativeGroundBody body){Body=body;PhaseAt=body.Director.Now;}
+F2:6:     override bool PlanPressureEscape(float dt)
+F2:7:     {
+F2:8:         bool planned=super.PlanPressureEscape(dt);
+F2:9:         if(planned || !RefineEnabled || Phase!="FOLLOW" || Active || EntryAligning)return planned;
+F2:10:         RefinementPlans++;
+F2:11:         array<bool> blocked={false,false,false,false,false,false,false,false};
+F2:12:         string savedLanding=LandingDiagnostic;
+F2:13:         for(float distance=0.5;distance<=4;distance+=0.5)
+F2:14:         for(int index=0;index<8;index++)
+F2:15:         {
+F2:16:             if(blocked[index])continue;
+F2:17:             float angle=(22.5+45*index)*Math.DEG2RAD;
+F2:18:             vector direction=Vector(Math.Sin(angle),0,Math.Cos(angle));
+F2:19:             vector candidate=Body.Agent.Position+direction*distance;
+F2:20:             vector floor,supported;RefinementTargets++;
+F2:21:             if(!DGBGroundAgent.Floor(Body.Leader,candidate,floor))continue;
+F2:22:             if(Fixture().Area(floor)!=Fixture().Area(Body.Agent.Position))continue;
+F2:23:             if(Math.AbsFloat(floor[1] - Body.Agent.Position[1])>0.08)continue;
+F2:24:             if(!LandingSpace(floor,supported))continue;
+F2:25:             float lift;ref array<vector> points={};RefinementSweeps++;
+F2:26:             if(!PressureEscapeStepClear(Body.Agent.Position+direction*Math.Min(0.04,dt*0.6),lift,points))
+F2:27:             {blocked[index]=true;continue;}
+F2:28:             EscapeNoExitAt=-1;PressureEscapeGoal=supported;PressureEscapeValid=true;
+F2:29:             LandingDiagnostic=savedLanding;RefinementAccepted++;return true;
+F2:30:         }
+F2:31:         LandingDiagnostic=savedLanding;return false;
+F2:32:     }
+F2:33: }
+
+F3 DGSubsetTerrainContact.c SHA256 f2cfc65f634e086af116688e287ae1694f9dca3b324985a6e7fdda5045fe54be
+F3:43: bool TCTerrainAwareStepClear(vector next,out float lift,array<vector> contacts,float proposedHeading=10000)
+F3:44:     {
+F3:45:         if(proposedHeading==10000)proposedHeading=Body.Agent.Heading;
+F3:46:         vector start=Body.Agent.Position;string rejection;
+F3:47:         PressureEscapeDiagnostic="CORE";
+F3:48:         if(!Body.Director.Crowd.CoreClear(Body,start,next,rejection))return false;
+F3:49:         PressureEscapeDiagnostic="RESERVATION";
+F3:50:         if(!Body.Director.Traffic.GroundReservationsClear(Body,start,next))return false;
+F3:51:         // Airborne lateral motion must not plant a foot on an adjacent roof.
+F3:52:         // Keep the existing bounded render lift, adding only terrain clearance.
+F3:53:         lift=Body.Lift;
+F3:54:         for(int foot=2;foot<Body.JointIds.Count();foot++)
+F3:55:         {
+F3:56:             vector raw=Body.JointWorldPoint(foot,next,proposedHeading,0);
+F3:57:             Object terrain;vector floor,normal;float fraction;
+F3:58:             if(DayZPhysics.RayCastBullet(raw+"0 0.3 0",raw+"0 -1.2 0",PhxInteractionLayers.TERRAIN,Body.Leader,terrain,floor,normal,fraction) && normal[1]>=0.65)
+F3:59:                 lift=Math.Max(lift,floor[1]+Body.Radii[foot]+0.005 - raw[1]);
+F3:60:         }
+F3:61:         if(lift>0.28){PressureEscapeDiagnostic="LIFT_LIMIT";return false;}
+F3:62:         ref array<vector> oldPoints={};ref array<vector> newPoints={};ref array<float> radii={};
+F3:63:         array<float> heights={0.35,0.9,1.5};
+F3:64:         foreach(float height:heights){oldPoints.Insert(start+Vector(0,height,0));newPoints.Insert(next+Vector(0,height,0));radii.Insert(0.23);}
+F3:65:         contacts.Clear();
+F3:66:         for(int joint=0;joint<Body.JointIds.Count();joint++)
+F3:67:         {
+F3:68:             vector oldJoint=Body.JointWorldPoint(joint,start,Body.Agent.Heading,Body.Lift);
+F3:69:             vector newJoint=Body.JointWorldPoint(joint,next,proposedHeading,lift);
+F3:70:             oldPoints.Insert(oldJoint);newPoints.Insert(newJoint);radii.Insert(Body.Radii[joint]);
+F3:71:             contacts.Insert(newJoint);
+F3:72:         }
+F3:73:         for(int probe=0;probe<oldPoints.Count();probe++)
+F3:74:         {
+F3:75:             foreach(Object registered:Fixture().Objects)
+F3:76:             {
+F3:77:                 if(!registered)continue;
+F3:78:                 float before=FixtureClearance(registered,oldPoints[probe],radii[probe]);
+F3:79:                 float after=FixtureClearance(registered,newPoints[probe],radii[probe]);
+F3:80:                 // Existing conservative-volume overlap may slide or leave;
+F3:81:                 // a new overlap or a deeper one is never introduced.
+F3:82:                 if(after<Math.Min(before,0) - 0.0001)
+F3:83:                 {
+F3:84:                     PressureEscapeRejectProbe=probe;PressureEscapeRejectFixture=registered.GetType();
+F3:85:                     PressureEscapeRejectFixturePosition=registered.GetPosition();PressureEscapeRejectOldLift=Body.Lift;
+F3:86:                     PressureEscapeRejectFixtureIndex=Fixture().Objects.Find(registered);
+F3:87:                     PressureEscapeRejectAt=Now();PressureEscapeRejectBefore=before;PressureEscapeRejectAfter=after;
+F3:88:                     PressureEscapeRejectLift=lift;PressureEscapeRejectRadius=radii[probe];
+F3:89:                     PressureEscapeRejectStart=oldPoints[probe];PressureEscapeRejectEnd=newPoints[probe];PressureEscapeRejectIdleOffset=Body.IdleOffset;
+F3:90:                     PressureEscapeRejectFraction=-1;PressureEscapeRejectNormal=vector.Zero;
+F3:91:                     PressureEscapeDiagnostic="DEEPER_FIXTURE";return false;
+F3:92:                 }
+F3:93:             }
+F3:94:             Object hit;vector point,hitNormal;float hitFraction;
+F3:95:             if(DayZPhysics.SphereCastBullet(oldPoints[probe],newPoints[probe],radii[probe],DGBGroundAgent.Walls(),Body.Leader,hit,point,hitNormal,hitFraction))
+F3:96:             {
+F3:97:                 bool oldOverlap=hit && Fixture().Objects.Find(hit)>=0 && FixtureClearance(hit,oldPoints[probe],radii[probe])<0;
+F3:98:                 // Bullet can report an initial overlap outside a conservative
+F3:99:                 // object box. Require native start-contact and outward/tangent
+F3:100:                 // travel as well as the non-deepening box checks above.
+F3:101:                 if(!oldOverlap && hit && Fixture().Objects.Find(hit)>=0 && hitFraction>=0 && hitFraction<=0.001 && hitNormal.Length()>0.5 && vector.Dot(newPoints[probe] - oldPoints[probe],hitNormal)>=-0.000001)
+F3:102:                 {oldOverlap=true;NativeStartOverlapChecks++;}
+F3:103:                 bool terrainExit=false;
+F3:104:                 if(!hit && probe>=5)
+F3:105:                 {
+F3:106:                     Object floorObject;vector floorPoint,floorNormal;float floorFraction;
+F3:107:                     if(DayZPhysics.RayCastBullet(newPoints[probe]+"0 0.3 0",newPoints[probe]+"0 -1.2 0",DGBGroundAgent.Floors(),Body.Leader,floorObject,floorPoint,floorNormal,floorFraction))
+F3:108:                     {
+F3:109:                         vector oldProbe=oldPoints[probe];vector newProbe=newPoints[probe];
+F3:110:                         terrainExit=!floorObject && floorNormal[1]>=0.65 && newProbe[1] - radii[probe]>=floorPoint[1]+0.004 && newProbe[1]>=oldProbe[1];
+F3:111:                     }
+F3:112:                 }
+F3:113:                 if(!oldOverlap && !terrainExit && probe>=5 && hit)
+F3:114:                 {
+F3:115:                     float terrainGap;
+F3:116:                     if(DGSubsetTerrainContactProof.InitialExit(Body.Leader,hit,oldPoints[probe],newPoints[probe],radii[probe],hitFraction,hitNormal,terrainGap))
+F3:117:                     {terrainExit=true;TCLog(probe,oldPoints[probe],newPoints[probe],radii[probe],terrainGap);}
+F3:118:                 }
+F3:119:                 if(!oldOverlap && !terrainExit)
+F3:120:                 {
+F3:121:                     PressureEscapeRejectProbe=probe;PressureEscapeRejectFixture="terrain";
+F3:122:                     PressureEscapeRejectFixturePosition=vector.Zero;
+F3:123:                     PressureEscapeRejectFixtureIndex=-1;
+F3:124:                     if(hit){PressureEscapeRejectFixture=hit.GetType();PressureEscapeRejectFixturePosition=hit.GetPosition();PressureEscapeRejectFixtureIndex=Fixture().Objects.Find(hit);}
+F3:125:                     PressureEscapeRejectAt=Now();PressureEscapeRejectOldLift=Body.Lift;
+F3:126:                     PressureEscapeRejectBefore=FixtureClearance(hit,oldPoints[probe],radii[probe]);
+F3:127:                     PressureEscapeRejectAfter=FixtureClearance(hit,newPoints[probe],radii[probe]);
+F3:128:                     PressureEscapeRejectLift=lift;PressureEscapeRejectRadius=radii[probe];
+F3:129:                     PressureEscapeRejectStart=oldPoints[probe];PressureEscapeRejectEnd=newPoints[probe];PressureEscapeRejectIdleOffset=Body.IdleOffset;
+F3:130:                     PressureEscapeRejectFraction=hitFraction;PressureEscapeRejectNormal=hitNormal;
+F3:131:                     PressureEscapeDiagnostic="NEW_WORLD_CONTACT";return false;
+F3:132:                 }
+F3:133:             }
+F3:134:         }
+F3:135:         PressureEscapeDiagnostic="NONDEEPENING_CLEAR";return true;
+F3:136:     }
+
+Selection: five NEW_WORLD_CONTACT core rows of latest actor60 FOLLOW plan590.
+[
+  {
+    "sourceLine": 1299,
+    "seconds": "299.466",
+    "id": "60",
+    "phase": "FOLLOW",
+    "plan": "590",
+    "direction": "1",
+    "position": "<4511.504395, 339.171906, 10236.789063>",
+    "heading": "-9.83054",
+    "dt": "0.05",
+    "outcome": "NEW_WORLD_CONTACT",
+    "target": "<4511.504395, 339.169891, 10236.289063>",
+    "probe": "1",
+    "fixture": "StaticObj_Container_1C",
+    "fixturePosition": "<4510.000000, 338.823303, 10240.000000>",
+    "registeredFixtureIndex": "0",
+    "before": "0.0613742",
+    "after": "0.0714334",
+    "fraction": "0.656634",
+    "normal": "<0.861558, -0.437841, 0.256930>",
+    "start": "<4511.504395, 340.071899, 10236.789063>",
+    "end": "<4511.504395, 340.071899, 10236.758789>"
   },
-  "reasonCounts": {
-    "ACCEPTED_NO_REASON": 17,
-    "FRAME_FALL_PENDING": 12,
-    "NATIVE_JOINT_WORLD_2": 1,
-    "NATIVE_JOINT_WORLD_0": 2
+  {
+    "sourceLine": 1300,
+    "seconds": "299.466",
+    "id": "60",
+    "phase": "FOLLOW",
+    "plan": "590",
+    "direction": "2",
+    "position": "<4511.504395, 339.171906, 10236.789063>",
+    "heading": "-9.83054",
+    "dt": "0.05",
+    "outcome": "NEW_WORLD_CONTACT",
+    "target": "<4514.504395, 339.227905, 10236.789063>",
+    "probe": "0",
+    "fixture": "StaticObj_Container_1C",
+    "fixturePosition": "<4513.000000, 340.808350, 10240.000000>",
+    "registeredFixtureIndex": "1",
+    "before": "0.0635533",
+    "after": "0.0351848",
+    "fraction": "0.826095",
+    "normal": "<-0.948473, -0.013492, -0.316571>",
+    "start": "<4511.504395, 339.521912, 10236.789063>",
+    "end": "<4511.534180, 339.521912, 10236.789063>"
   },
-  "rejectedSweepCounts": {
-    "StaticObj_Container_1C:2": 1,
-    "StaticObj_Container_1C:0": 2
+  {
+    "sourceLine": 1301,
+    "seconds": "299.466",
+    "id": "60",
+    "phase": "FOLLOW",
+    "plan": "590",
+    "direction": "3",
+    "position": "<4511.504395, 339.171906, 10236.789063>",
+    "heading": "-9.83054",
+    "dt": "0.05",
+    "outcome": "NEW_WORLD_CONTACT",
+    "target": "<4508.004395, 339.106873, 10236.789063>",
+    "probe": "0",
+    "fixture": "StaticObj_Container_1C",
+    "fixturePosition": "<4510.000000, 338.823303, 10240.000000>",
+    "registeredFixtureIndex": "0",
+    "before": "0.0519923",
+    "after": "0.0237489",
+    "fraction": "0.433271",
+    "normal": "<0.948549, 0.016861, -0.316180>",
+    "start": "<4511.504395, 339.521912, 10236.789063>",
+    "end": "<4511.474609, 339.521912, 10236.789063>"
   },
-  "completePreviousContactRows": 32,
-  "fallCallerAvailableRows": 15,
-  "perActor": {
-    "2": {
-      "rows": 3,
-      "lastCall": 3,
-      "suppressedThroughLastRow": 0
-    },
-    "1": {
-      "rows": 3,
-      "lastCall": 3,
-      "suppressedThroughLastRow": 0
-    },
-    "0": {
-      "rows": 3,
-      "lastCall": 3,
-      "suppressedThroughLastRow": 0
-    },
-    "3": {
-      "rows": 11,
-      "lastCall": 26,
-      "suppressedThroughLastRow": 15
-    },
-    "6": {
-      "rows": 3,
-      "lastCall": 3,
-      "suppressedThroughLastRow": 0
-    },
-    "5": {
-      "rows": 3,
-      "lastCall": 3,
-      "suppressedThroughLastRow": 0
-    },
-    "7": {
-      "rows": 3,
-      "lastCall": 3,
-      "suppressedThroughLastRow": 0
-    },
-    "4": {
-      "rows": 3,
-      "lastCall": 3,
-      "suppressedThroughLastRow": 0
-    }
+  {
+    "sourceLine": 1304,
+    "seconds": "299.466",
+    "id": "60",
+    "phase": "FOLLOW",
+    "plan": "590",
+    "direction": "6",
+    "position": "<4511.504395, 339.171906, 10236.789063>",
+    "heading": "-9.83054",
+    "dt": "0.05",
+    "outcome": "NEW_WORLD_CONTACT",
+    "target": "<4511.857910, 339.177124, 10236.435547>",
+    "probe": "2",
+    "fixture": "StaticObj_Container_1C",
+    "fixturePosition": "<4513.000000, 340.808350, 10240.000000>",
+    "registeredFixtureIndex": "1",
+    "before": "0.0479225",
+    "after": "0.0360224",
+    "fraction": "0.599072",
+    "normal": "<-0.928248, -0.013121, -0.371731>",
+    "start": "<4511.504395, 340.671906, 10236.789063>",
+    "end": "<4511.525391, 340.671906, 10236.767578>"
   },
-  "representativeRejectedSweeps": [
-    {
-      "sequence": "10",
-      "seconds": "15.573",
-      "id": "3",
-      "call": "4",
-      "phase": "FALL",
-      "recoveryGeneration": "1",
-      "accepted": "false",
-      "reason": "NATIVE_JOINT_WORLD_2",
-      "rootBefore": "<4511.265625, 340.151337, 10236.701172>",
-      "anchor": "<4511.270508, 339.909424, 10236.701172>",
-      "heading": "-6",
-      "minimumLift": "0",
-      "returnedLift": "0",
-      "idleOffset": "<0.000000, 0.000000, 0.000000>",
-      "rawCount": "4",
-      "previousCount": "4",
-      "outputCount": "2",
-      "raw0": "<4511.270508, 340.785614, 10236.701172>",
-      "raw1": "<4511.236328, 341.307922, 10237.080078>",
-      "raw2": "<4511.063965, 340.055511, 10236.634766>",
-      "raw3": "<4511.458008, 339.930908, 10236.886719>",
-      "previous0": "<4511.265625, 341.064911, 10236.701172>",
-      "previous1": "<4511.231445, 341.587891, 10237.079102>",
-      "previous2": "<4511.058594, 340.334717, 10236.635742>",
-      "previous3": "<4511.454102, 340.209503, 10236.882813>",
-      "output0": "<4511.270508, 340.785614, 10236.701172>",
-      "output1": "<4511.236328, 341.307922, 10237.080078>",
-      "output2": "UNAVAILABLE",
-      "output3": "UNAVAILABLE",
-      "nativeBefore": "12.65",
-      "nativeAfter": "12.65",
-      "updatesBefore": "253",
-      "updatesAfter": "253",
-      "request": "6",
-      "nativeRequest": "6",
-      "callerFall": "true",
-      "callerDt": "0.0200005",
-      "frameFall": "true",
-      "fallVelocity": "-12.0951",
-      "pressureActive": "true",
-      "pressureVelocity": "<0.249793, 0.000000, 0.001165>",
-      "activeLink": "none",
-      "activeExit": "<0.000000, 0.000000, 0.000000>",
-      "motionContactOffset": "<0.016113, 0.000000, 0.000000>",
-      "motionElapsed": "0",
-      "nativeCurveEnded": "true",
-      "startPlacementEntry": "<0.000000, 0.000000, 0.000000>",
-      "rootUnchanged": "true",
-      "actorRows": "3",
-      "suppressedSoFar": "1",
-      "globalSuppressedSoFar": "1",
-      "writeFailuresSoFar": "0",
-      "hitType": "StaticObj_Container_1C",
-      "hitPoint": "<4511.062012, 340.168427, 10236.709961>",
-      "hitNormal": "<-0.010612, 0.568569, -0.822567>",
-      "hitFraction": "0.41119",
-      "failureStage": "SWEEP",
-      "failureJoint": "2",
-      "rootAfter": "<4511.265625, 340.151337, 10236.701172>"
-    },
-    {
-      "sequence": "12",
-      "seconds": "15.652",
-      "id": "3",
-      "call": "8",
-      "phase": "FALL",
-      "recoveryGeneration": "1",
-      "accepted": "false",
-      "reason": "NATIVE_JOINT_WORLD_0",
-      "rootBefore": "<4511.275391, 339.648285, 10236.677734>",
-      "anchor": "<4511.280273, 339.390869, 10236.677734>",
-      "heading": "-6",
-      "minimumLift": "0",
-      "returnedLift": "0",
-      "idleOffset": "<0.000000, 0.000000, 0.000000>",
-      "rawCount": "4",
-      "previousCount": "4",
-      "outputCount": "0",
-      "raw0": "<4511.280273, 340.267059, 10236.677734>",
-      "raw1": "<4511.246582, 340.787567, 10237.057617>",
-      "raw2": "<4511.075195, 339.537262, 10236.608398>",
-      "raw3": "<4511.463867, 339.414398, 10236.871094>",
-      "previous0": "<4511.275391, 340.524475, 10236.677734>",
-      "previous1": "<4511.241699, 341.045319, 10237.057617>",
-      "previous2": "<4511.070313, 339.794617, 10236.609375>",
-      "previous3": "<4511.459473, 339.671417, 10236.870117>",
-      "output0": "UNAVAILABLE",
-      "output1": "UNAVAILABLE",
-      "output2": "UNAVAILABLE",
-      "output3": "UNAVAILABLE",
-      "nativeBefore": "12.75",
-      "nativeAfter": "12.75",
-      "updatesBefore": "255",
-      "updatesAfter": "255",
-      "request": "6",
-      "nativeRequest": "6",
-      "callerFall": "true",
-      "callerDt": "0.0200005",
-      "frameFall": "true",
-      "fallVelocity": "-12.8701",
-      "pressureActive": "true",
-      "pressureVelocity": "<0.249793, 0.000000, 0.001165>",
-      "activeLink": "none",
-      "activeExit": "<0.000000, 0.000000, 0.000000>",
-      "motionContactOffset": "<0.016113, 0.000000, 0.000000>",
-      "motionElapsed": "0",
-      "nativeCurveEnded": "true",
-      "startPlacementEntry": "<0.000000, 0.000000, 0.000000>",
-      "rootUnchanged": "true",
-      "actorRows": "5",
-      "suppressedSoFar": "3",
-      "globalSuppressedSoFar": "3",
-      "writeFailuresSoFar": "0",
-      "hitType": "StaticObj_Container_1C",
-      "hitPoint": "<4511.282227, 340.172546, 10236.709961>",
-      "hitNormal": "<-0.018415, 0.986617, -0.162010>",
-      "hitFraction": "0.598722",
-      "failureStage": "SWEEP",
-      "failureJoint": "0",
-      "rootAfter": "<4511.275391, 339.648285, 10236.677734>"
-    },
-    {
-      "sequence": "14",
-      "seconds": "15.932",
-      "id": "3",
-      "call": "22",
-      "phase": "FALL",
-      "recoveryGeneration": "1",
-      "accepted": "false",
-      "reason": "NATIVE_JOINT_WORLD_0",
-      "rootBefore": "<4511.273438, 339.393311, 10236.520508>",
-      "anchor": "<4511.276855, 339.166595, 10236.520508>",
-      "heading": "-6",
-      "minimumLift": "0",
-      "returnedLift": "0.0919189",
-      "idleOffset": "<0.000000, 0.000000, 0.000000>",
-      "rawCount": "4",
-      "previousCount": "4",
-      "outputCount": "0",
-      "raw0": "<4511.276855, 340.042786, 10236.520508>",
-      "raw1": "<4511.253418, 340.565582, 10236.901367>",
-      "raw2": "<4511.083496, 339.324554, 10236.429688>",
-      "raw3": "<4511.443359, 339.199890, 10236.748047>",
-      "previous0": "<4511.273438, 340.269501, 10236.520508>",
-      "previous1": "<4511.249023, 340.792023, 10236.901367>",
-      "previous2": "<4511.079102, 339.549805, 10236.431641>",
-      "previous3": "<4511.441406, 339.425812, 10236.746094>",
-      "output0": "UNAVAILABLE",
-      "output1": "UNAVAILABLE",
-      "output2": "UNAVAILABLE",
-      "output3": "UNAVAILABLE",
-      "nativeBefore": "12.95",
-      "nativeAfter": "12.95",
-      "updatesBefore": "259",
-      "updatesAfter": "259",
-      "request": "6",
-      "nativeRequest": "6",
-      "callerFall": "true",
-      "callerDt": "0.0200005",
-      "frameFall": "true",
-      "fallVelocity": "-15",
-      "pressureActive": "true",
-      "pressureVelocity": "<0.249793, 0.000000, 0.001165>",
-      "activeLink": "none",
-      "activeExit": "<0.000000, 0.000000, 0.000000>",
-      "motionContactOffset": "<0.016113, 0.000000, 0.000000>",
-      "motionElapsed": "0",
-      "nativeCurveEnded": "true",
-      "startPlacementEntry": "<0.000000, 0.000000, 0.000000>",
-      "rootUnchanged": "true",
-      "actorRows": "7",
-      "suppressedSoFar": "15",
-      "globalSuppressedSoFar": "15",
-      "writeFailuresSoFar": "0",
-      "hitType": "StaticObj_Container_1C",
-      "hitPoint": "<4511.275391, 340.172424, 10236.709961>",
-      "hitNormal": "<-0.005920, 0.317194, -0.948342>",
-      "hitFraction": "0.249424",
-      "failureStage": "SWEEP",
-      "failureJoint": "0",
-      "rootAfter": "<4511.273438, 339.393311, 10236.520508>"
-    }
-  ],
-  "errors": [],
-  "limitations": [
-    "Bounded sampling; suppression/write-failure counters stop at last emitted row.",
-    "Printed seconds do not prove exact frame identity; four-per-frame cap is source/parity evidence.",
-    "Snapshots precede root acceptance; matching CPU counters do not prove visible smoothness.",
-    "Accepted rows may contain stale hit fields; those fields are not interpreted.",
-    "No performance improvement or absence of unsampled failures is asserted."
-  ],
-  "functionalAcceptance": false,
-  "visualAcceptance": false,
-  "performanceAcceptance": false,
-  "rejectedSweepGeometrySelection": [
-    {
-      "sequence": 10,
-      "id": "3",
-      "seconds": 15.573,
-      "phase": "FALL",
-      "recoveryGeneration": 1,
-      "joint": 2,
-      "hitType": "StaticObj_Container_1C",
-      "hitFraction": 0.41119,
-      "hitNormal": [
-        -0.010612,
-        0.568569,
-        -0.822567
-      ],
-      "previousToTargetMetres": 0.2792593609048721,
-      "previousToTargetY": -0.27920599999998785,
-      "proposalRootDistanceMetres": 0.2419622765184719,
-      "previousAvailable": true
-    },
-    {
-      "sequence": 12,
-      "id": "3",
-      "seconds": 15.652,
-      "phase": "FALL",
-      "recoveryGeneration": 1,
-      "joint": 0,
-      "hitType": "StaticObj_Container_1C",
-      "hitFraction": 0.598722,
-      "hitNormal": [
-        -0.018415,
-        0.986617,
-        -0.16201
-      ],
-      "previousToTargetMetres": 0.2574622904038383,
-      "previousToTargetY": -0.2574159999999779,
-      "proposalRootDistanceMetres": 0.2574622904038383,
-      "previousAvailable": true
-    },
-    {
-      "sequence": 14,
-      "id": "3",
-      "seconds": 15.932,
-      "phase": "FALL",
-      "recoveryGeneration": 1,
-      "joint": 0,
-      "hitType": "StaticObj_Container_1C",
-      "hitFraction": 0.249424,
-      "hitNormal": [
-        -0.00592,
-        0.317194,
-        -0.948342
-      ],
-      "previousToTargetMetres": 0.13483940249131132,
-      "previousToTargetY": -0.13479610000001685,
-      "proposalRootDistanceMetres": 0.22674174857093257,
-      "previousAvailable": true
-    }
-  ],
-  "rejectedSweepGeometryTotalRows": 3,
-  "sourceEvidence": {
-    "fileId": "runtime-20261030-083934-contact-inputs",
-    "sha256": "31bafbfdec3d083eab9882c596fc935f9c717bf11ebb8c64d014e889d85d0812",
-    "bytes": 32116
+  {
+    "sourceLine": 1305,
+    "seconds": "299.466",
+    "id": "60",
+    "phase": "FOLLOW",
+    "plan": "590",
+    "direction": "7",
+    "position": "<4511.504395, 339.171906, 10236.789063>",
+    "heading": "-9.83054",
+    "dt": "0.05",
+    "outcome": "NEW_WORLD_CONTACT",
+    "target": "<4511.150879, 339.163910, 10236.435547>",
+    "probe": "1",
+    "fixture": "StaticObj_Container_1C",
+    "fixturePosition": "<4510.000000, 338.823303, 10240.000000>",
+    "registeredFixtureIndex": "0",
+    "before": "0.0613742",
+    "after": "0.0486761",
+    "fraction": "0",
+    "normal": "<0.891109, -0.453788, 0.001252>",
+    "start": "<4511.504395, 340.071899, 10236.789063>",
+    "end": "<4511.483398, 340.071899, 10236.767578>"
   }
+]
+
+Same-plan CPU pose,original TSV line number retained:
+{
+  "sourceLine": 786,
+  "seconds": "299.466",
+  "id": "60",
+  "position": "<4511.504395, 339.171906, 10236.789063>",
+  "heading": "-9.83054",
+  "lift": "0.032959",
+  "idleOffset": "<-0.057440, 0.000000, 0.042833>",
+  "hipsMS": "<0.000000, 0.818751, 0.000000>",
+  "headMS": "<-0.086715, 1.147758, -0.606594>",
+  "leftFootMS": "<0.197794, 0.096155, -0.397011>",
+  "rightFootMS": "<-0.306493, 0.099342, 0.327834>",
+  "nativeSeconds": "220.959",
+  "nativeRequest": "0",
+  "phase": "FOLLOW",
+  "area": "ground",
+  "egressGoal": "<4511.504395, 339.172150, 10236.849609>"
 }
 
-Representative rejection selection: first up to eight rejected SWEEP rows in source order.
-{
-  "sourceRunId": "runtime-20261030-084554",
-  "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
-  "verificationStatus": "diagnostic_success",
-  "rows": 1159,
-  "actors": 64,
-  "phaseCounts": {
-    "MOTION": 134,
-    "FALL": 1025
+Verified diagnostic summaries (input hash paths excluded;original local reports retain them):
+[
+  {
+    "validation": "controlled-actor60-core-replay-first",
+    "verificationStatus": "primitive_diagnostic_success_not_agent_or_path_acceptance",
+    "sourceRunId": "runtime-20261030-084554",
+    "sourceEntityId": 60,
+    "primitiveRows": 313,
+    "originalMatches": 5,
+    "angularDirections": 32,
+    "distancesMetres": [
+      0.005,
+      0.015,
+      0.03
+    ],
+    "clearThreeCoreDirections": {
+      "0": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "1": [
+        0,
+        1,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "2": [
+        13,
+        14,
+        15
+      ]
+    },
+    "originalEightClearAt30mm": [],
+    "additionalClearAt30mm": [
+      {
+        "direction": 13,
+        "degrees": 146.25
+      },
+      {
+        "direction": 14,
+        "degrees": 157.5
+      },
+      {
+        "direction": 15,
+        "degrees": 168.75
+      }
+    ],
+    "zeroLengthControls": [
+      {
+        "case": "0",
+        "hit": "false"
+      },
+      {
+        "case": "1",
+        "hit": "false"
+      },
+      {
+        "case": "2",
+        "hit": "false"
+      },
+      {
+        "case": "3",
+        "hit": "false"
+      },
+      {
+        "case": "4",
+        "hit": "false"
+      }
+    ],
+    "fullBodyClearanceTested": false,
+    "movementCommitted": false,
+    "visualAcceptance": false,
+    "performanceAcceptance": false,
+    "limitations": [
+      "Three core spheres only;full bone contacts,landing footprint,peers and actual trajectory not verified.",
+      "False-hit rows can contain stale native output fields;only hit boolean is interpreted.",
+      "First-order test moved before other geometry smokes to avoid stale deleted fixture owners."
+    ]
   },
-  "reasonCounts": {
-    "ACCEPTED_NO_REASON": 134,
-    "LANDING_SPACE_BLOCKED": 22,
-    "NATIVE_FOOT_LIFT_LIMIT": 174,
-    "FALL_CONTACT_AIR_SEPARATION": 129,
-    "FRAME_FALL_PENDING": 272,
-    "NATIVE_FALL": 187,
-    "NATIVE_JOINT_WORLD_0": 55,
-    "NATIVE_JOINT_WORLD_3": 62,
-    "FALL_NATIVE_FOOT_LIFT_LIMIT": 3,
-    "NATIVE_JOINT_WORLD_2": 88,
-    "FALL_AIR_POSE_ESCAPE_TURN": 4,
-    "FALL_NATIVE_JOINT_WORLD_2": 1,
-    "NATIVE_JOINT_WORLD_1": 28
+  {
+    "validation": "controlled-actor60-core-replay-first-repeat",
+    "verificationStatus": "primitive_diagnostic_success_not_agent_or_path_acceptance",
+    "sourceRunId": "runtime-20261030-084554",
+    "sourceEntityId": 60,
+    "primitiveRows": 313,
+    "originalMatches": 5,
+    "angularDirections": 32,
+    "distancesMetres": [
+      0.005,
+      0.015,
+      0.03
+    ],
+    "clearThreeCoreDirections": {
+      "0": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "1": [
+        0,
+        1,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "2": [
+        13,
+        14,
+        15
+      ]
+    },
+    "originalEightClearAt30mm": [],
+    "additionalClearAt30mm": [
+      {
+        "direction": 13,
+        "degrees": 146.25
+      },
+      {
+        "direction": 14,
+        "degrees": 157.5
+      },
+      {
+        "direction": 15,
+        "degrees": 168.75
+      }
+    ],
+    "zeroLengthControls": [
+      {
+        "case": "0",
+        "hit": "false"
+      },
+      {
+        "case": "1",
+        "hit": "false"
+      },
+      {
+        "case": "2",
+        "hit": "false"
+      },
+      {
+        "case": "3",
+        "hit": "false"
+      },
+      {
+        "case": "4",
+        "hit": "false"
+      }
+    ],
+    "fullBodyClearanceTested": false,
+    "movementCommitted": false,
+    "visualAcceptance": false,
+    "performanceAcceptance": false,
+    "limitations": [
+      "Three core spheres only;full bone contacts,landing footprint,peers and actual trajectory not verified.",
+      "False-hit rows can contain stale native output fields;only hit boolean is interpreted.",
+      "First-order test moved before other geometry smokes to avoid stale deleted fixture owners."
+    ]
   },
-  "rejectedSweepCounts": {
-    "StaticObj_Container_1C:0": 55,
-    "StaticObj_Container_1C:3": 62,
-    "StaticObj_Container_1C:2": 88,
-    "StaticObj_Container_1C:1": 28
+  {
+    "validation": "controlled-actor60-pose-replay",
+    "verificationStatus": "frozen_pose_diagnostic_success_not_live_acceptance",
+    "sourceRunId": "runtime-20261030-084554",
+    "rows": 96,
+    "gateCounts": {
+      "NEW_WORLD_CONTACT": 88,
+      "NONDEEPENING_CLEAR": 8
+    },
+    "fullClear30mmDirections": [
+      {
+        "direction": 14,
+        "degrees": 157.5
+      },
+      {
+        "direction": 15,
+        "degrees": 168.75
+      }
+    ],
+    "originalEightClearAt30mm": [],
+    "frozenTrajectories": [],
+    "deployedSourceOrPboChanged": false,
+    "liveRegressionPassed": false,
+    "visualAcceptance": false,
+    "performanceAcceptance": false,
+    "limitations": [
+      "Same-plan CPU pose frozen;not actual animation or 64-peer replay.",
+      "False/accepted queries may leave old rejection fields;only rejection fields of rejected queries are interpreted.",
+      "Actual 3D rounded steps may exceed nominal horizontal30mm;no strict30mm world-distance claim.",
+      "Safe frozen path does not prove live route success or cost reduction."
+    ]
   },
-  "completePreviousContactRows": 1159,
-  "fallCallerAvailableRows": 1025,
-  "perActor": {
-    "1": {
-      "rows": 14,
-      "lastCall": 18,
-      "suppressedThroughLastRow": 4
+  {
+    "validation": "controlled-actor60-pose-replay-trajectory",
+    "verificationStatus": "frozen_pose_diagnostic_success_not_live_acceptance",
+    "sourceRunId": "runtime-20261030-084554",
+    "rows": 96,
+    "gateCounts": {
+      "NEW_WORLD_CONTACT": 88,
+      "NONDEEPENING_CLEAR": 8
     },
-    "2": {
-      "rows": 12,
-      "lastCall": 15,
-      "suppressedThroughLastRow": 3
-    },
-    "0": {
-      "rows": 14,
-      "lastCall": 22,
-      "suppressedThroughLastRow": 8
-    },
-    "6": {
-      "rows": 25,
-      "lastCall": 28,
-      "suppressedThroughLastRow": 3
-    },
-    "5": {
-      "rows": 11,
-      "lastCall": 13,
-      "suppressedThroughLastRow": 2
-    },
-    "10": {
-      "rows": 8,
-      "lastCall": 13,
-      "suppressedThroughLastRow": 5
-    },
-    "9": {
-      "rows": 23,
-      "lastCall": 27,
-      "suppressedThroughLastRow": 4
-    },
-    "14": {
-      "rows": 34,
-      "lastCall": 45,
-      "suppressedThroughLastRow": 11
-    },
-    "8": {
-      "rows": 24,
-      "lastCall": 32,
-      "suppressedThroughLastRow": 8
-    },
-    "13": {
-      "rows": 25,
-      "lastCall": 32,
-      "suppressedThroughLastRow": 7
-    },
-    "11": {
-      "rows": 29,
-      "lastCall": 49,
-      "suppressedThroughLastRow": 20
-    },
-    "18": {
-      "rows": 9,
-      "lastCall": 16,
-      "suppressedThroughLastRow": 7
-    },
-    "17": {
-      "rows": 24,
-      "lastCall": 38,
-      "suppressedThroughLastRow": 14
-    },
-    "16": {
-      "rows": 19,
-      "lastCall": 30,
-      "suppressedThroughLastRow": 11
-    },
-    "15": {
-      "rows": 20,
-      "lastCall": 39,
-      "suppressedThroughLastRow": 19
-    },
-    "22": {
-      "rows": 31,
-      "lastCall": 87,
-      "suppressedThroughLastRow": 56
-    },
-    "12": {
-      "rows": 37,
-      "lastCall": 51,
-      "suppressedThroughLastRow": 14
-    },
-    "21": {
-      "rows": 37,
-      "lastCall": 66,
-      "suppressedThroughLastRow": 29
-    },
-    "26": {
-      "rows": 18,
-      "lastCall": 36,
-      "suppressedThroughLastRow": 18
-    },
-    "25": {
-      "rows": 19,
-      "lastCall": 31,
-      "suppressedThroughLastRow": 12
-    },
-    "29": {
-      "rows": 9,
-      "lastCall": 14,
-      "suppressedThroughLastRow": 5
-    },
-    "30": {
-      "rows": 14,
-      "lastCall": 27,
-      "suppressedThroughLastRow": 13
-    },
-    "24": {
-      "rows": 24,
-      "lastCall": 32,
-      "suppressedThroughLastRow": 8
-    },
-    "33": {
-      "rows": 9,
-      "lastCall": 18,
-      "suppressedThroughLastRow": 9
-    },
-    "31": {
-      "rows": 25,
-      "lastCall": 28,
-      "suppressedThroughLastRow": 3
-    },
-    "34": {
-      "rows": 13,
-      "lastCall": 28,
-      "suppressedThroughLastRow": 15
-    },
-    "37": {
-      "rows": 11,
-      "lastCall": 26,
-      "suppressedThroughLastRow": 15
-    },
-    "38": {
-      "rows": 13,
-      "lastCall": 17,
-      "suppressedThroughLastRow": 4
-    },
-    "32": {
-      "rows": 40,
-      "lastCall": 49,
-      "suppressedThroughLastRow": 9
-    },
-    "28": {
-      "rows": 9,
-      "lastCall": 15,
-      "suppressedThroughLastRow": 6
-    },
-    "41": {
-      "rows": 9,
-      "lastCall": 18,
-      "suppressedThroughLastRow": 9
-    },
-    "36": {
-      "rows": 30,
-      "lastCall": 36,
-      "suppressedThroughLastRow": 6
-    },
-    "42": {
-      "rows": 28,
-      "lastCall": 34,
-      "suppressedThroughLastRow": 6
-    },
-    "46": {
-      "rows": 33,
-      "lastCall": 47,
-      "suppressedThroughLastRow": 14
-    },
-    "40": {
-      "rows": 28,
-      "lastCall": 31,
-      "suppressedThroughLastRow": 3
-    },
-    "44": {
-      "rows": 14,
-      "lastCall": 20,
-      "suppressedThroughLastRow": 6
-    },
-    "49": {
-      "rows": 8,
-      "lastCall": 20,
-      "suppressedThroughLastRow": 12
-    },
-    "54": {
-      "rows": 4,
-      "lastCall": 16,
-      "suppressedThroughLastRow": 12
-    },
-    "50": {
-      "rows": 2,
-      "lastCall": 2,
-      "suppressedThroughLastRow": 0
-    },
-    "52": {
-      "rows": 13,
-      "lastCall": 19,
-      "suppressedThroughLastRow": 6
-    },
-    "53": {
-      "rows": 19,
-      "lastCall": 30,
-      "suppressedThroughLastRow": 11
-    },
-    "57": {
-      "rows": 5,
-      "lastCall": 21,
-      "suppressedThroughLastRow": 16
-    },
-    "58": {
-      "rows": 4,
-      "lastCall": 5,
-      "suppressedThroughLastRow": 1
-    },
-    "55": {
-      "rows": 4,
-      "lastCall": 13,
-      "suppressedThroughLastRow": 9
-    },
-    "56": {
-      "rows": 16,
-      "lastCall": 26,
-      "suppressedThroughLastRow": 10
-    },
-    "62": {
-      "rows": 46,
-      "lastCall": 58,
-      "suppressedThroughLastRow": 12
-    },
-    "19": {
-      "rows": 12,
-      "lastCall": 29,
-      "suppressedThroughLastRow": 17
-    },
-    "61": {
-      "rows": 23,
-      "lastCall": 29,
-      "suppressedThroughLastRow": 6
-    },
-    "45": {
-      "rows": 22,
-      "lastCall": 27,
-      "suppressedThroughLastRow": 5
-    },
-    "48": {
-      "rows": 8,
-      "lastCall": 14,
-      "suppressedThroughLastRow": 6
-    },
-    "35": {
-      "rows": 15,
-      "lastCall": 19,
-      "suppressedThroughLastRow": 4
-    },
-    "7": {
-      "rows": 21,
-      "lastCall": 25,
-      "suppressedThroughLastRow": 4
-    },
-    "4": {
-      "rows": 24,
-      "lastCall": 28,
-      "suppressedThroughLastRow": 4
-    },
-    "27": {
-      "rows": 41,
-      "lastCall": 80,
-      "suppressedThroughLastRow": 39
-    },
-    "47": {
-      "rows": 3,
-      "lastCall": 10,
-      "suppressedThroughLastRow": 7
-    },
-    "39": {
-      "rows": 8,
-      "lastCall": 26,
-      "suppressedThroughLastRow": 18
-    },
-    "63": {
-      "rows": 15,
-      "lastCall": 20,
-      "suppressedThroughLastRow": 5
-    },
-    "43": {
-      "rows": 10,
-      "lastCall": 16,
-      "suppressedThroughLastRow": 6
-    },
-    "59": {
-      "rows": 4,
-      "lastCall": 18,
-      "suppressedThroughLastRow": 14
-    },
-    "20": {
-      "rows": 23,
-      "lastCall": 28,
-      "suppressedThroughLastRow": 5
-    },
-    "51": {
-      "rows": 16,
-      "lastCall": 30,
-      "suppressedThroughLastRow": 14
-    },
-    "3": {
-      "rows": 7,
-      "lastCall": 16,
-      "suppressedThroughLastRow": 9
-    },
-    "23": {
-      "rows": 23,
-      "lastCall": 32,
-      "suppressedThroughLastRow": 9
-    },
-    "60": {
-      "rows": 21,
-      "lastCall": 25,
-      "suppressedThroughLastRow": 4
-    }
+    "fullClear30mmDirections": [
+      {
+        "direction": 14,
+        "degrees": 157.5
+      },
+      {
+        "direction": 15,
+        "degrees": 168.75
+      }
+    ],
+    "originalEightClearAt30mm": [],
+    "frozenTrajectories": [
+      {
+        "case": 0,
+        "degrees": 180.0,
+        "rows": 1,
+        "acceptedSteps": 0,
+        "remainingMetres": 0.5,
+        "travelledMetres": 0.0,
+        "maximumActual3DStepMetres": 0,
+        "reachedOriginal40mmGoalRadius": false,
+        "lastGate": "NEW_WORLD_CONTACT"
+      },
+      {
+        "case": 1,
+        "degrees": 157.5,
+        "rows": 4,
+        "acceptedSteps": 3,
+        "remainingMetres": 0.411134,
+        "travelledMetres": 0.08887,
+        "maximumActual3DStepMetres": 0.029749187232572884,
+        "reachedOriginal40mmGoalRadius": false,
+        "lastGate": "NEW_WORLD_CONTACT"
+      },
+      {
+        "case": 2,
+        "degrees": 168.75,
+        "rows": 8,
+        "acceptedSteps": 7,
+        "remainingMetres": 0.290727,
+        "travelledMetres": 0.209139,
+        "maximumActual3DStepMetres": 0.029877312614394393,
+        "reachedOriginal40mmGoalRadius": false,
+        "lastGate": "NEW_WORLD_CONTACT"
+      }
+    ],
+    "deployedSourceOrPboChanged": false,
+    "liveRegressionPassed": false,
+    "visualAcceptance": false,
+    "performanceAcceptance": false,
+    "limitations": [
+      "Same-plan CPU pose frozen;not actual animation or 64-peer replay.",
+      "False/accepted queries may leave old rejection fields;only rejection fields of rejected queries are interpreted.",
+      "Actual 3D rounded steps may exceed nominal horizontal30mm;no strict30mm world-distance claim.",
+      "Safe frozen path does not prove live route success or cost reduction."
+    ]
   },
-  "representativeRejectedSweeps": [
-    {
-      "sequence": "27",
-      "seconds": "18.006",
-      "id": "8",
-      "call": "13",
-      "phase": "FALL",
-      "recoveryGeneration": "1",
-      "accepted": "false",
-      "reason": "NATIVE_JOINT_WORLD_0",
-      "rootBefore": "<4508.466309, 339.398102, 10237.564453>",
-      "anchor": "<4508.451660, 339.118011, 10237.587891>",
-      "heading": "24",
-      "minimumLift": "0",
-      "returnedLift": "0",
-      "idleOffset": "<0.000000, 0.000000, 0.000000>",
-      "rawCount": "4",
-      "previousCount": "4",
-      "outputCount": "0",
-      "raw0": "<4508.462402, 340.097351, 10237.586914>",
-      "raw1": "<4508.573730, 340.756042, 10237.767578>",
-      "raw2": "<4508.385742, 339.540710, 10237.854492>",
-      "raw3": "<4508.717285, 339.278992, 10237.727539>",
-      "previous0": "<4508.473633, 340.377563, 10237.565430>",
-      "previous1": "<4508.571777, 341.033630, 10237.758789>",
-      "previous2": "<4508.363770, 339.780792, 10237.723633>",
-      "previous3": "<4508.781738, 339.621887, 10237.796875>",
-      "output0": "UNAVAILABLE",
-      "output1": "UNAVAILABLE",
-      "output2": "UNAVAILABLE",
-      "output3": "UNAVAILABLE",
-      "nativeBefore": "12.9",
-      "nativeAfter": "12.9",
-      "updatesBefore": "258",
-      "updatesAfter": "258",
-      "request": "8",
-      "nativeRequest": "8",
-      "callerFall": "true",
-      "callerDt": "0.05",
-      "frameFall": "true",
-      "fallVelocity": "-6.08162",
-      "pressureActive": "true",
-      "pressureVelocity": "<-0.381835, 0.000000, 0.621766>",
-      "activeLink": "none",
-      "activeExit": "<0.000000, 0.000000, 0.000000>",
-      "motionContactOffset": "<-0.084473, 0.000000, 0.000000>",
-      "motionElapsed": "0",
-      "nativeCurveEnded": "true",
-      "startPlacementEntry": "<0.000000, 0.000000, 0.000000>",
-      "rootUnchanged": "true",
-      "actorRows": "10",
-      "suppressedSoFar": "3",
-      "globalSuppressedSoFar": "3",
-      "writeFailuresSoFar": "0",
-      "hitType": "StaticObj_Container_1C",
-      "hitPoint": "<4508.645020, 340.125641, 10237.578125>",
-      "hitNormal": "<-0.888950, 0.458003, -0.001265>",
-      "hitFraction": "0.572341",
-      "failureStage": "SWEEP",
-      "failureJoint": "0",
-      "rootAfter": "<4508.466309, 339.398102, 10237.564453>"
+  {
+    "validation": "controlled-actor60-pose-replay-rolling-typed",
+    "verificationStatus": "frozen_pose_diagnostic_success_not_live_acceptance",
+    "sourceRunId": "runtime-20261030-084554",
+    "rows": 96,
+    "gateCounts": {
+      "NEW_WORLD_CONTACT": 88,
+      "NONDEEPENING_CLEAR": 8
     },
-    {
-      "sequence": "59",
-      "seconds": "23.059",
-      "id": "32",
-      "call": "10",
-      "phase": "FALL",
-      "recoveryGeneration": "1",
-      "accepted": "false",
-      "reason": "NATIVE_JOINT_WORLD_3",
-      "rootBefore": "<4508.458008, 339.516785, 10237.421875>",
-      "anchor": "<4508.431152, 339.228394, 10237.444336>",
-      "heading": "18",
-      "minimumLift": "0",
-      "returnedLift": "0",
-      "idleOffset": "<0.000000, 0.000000, 0.000000>",
-      "rawCount": "4",
-      "previousCount": "4",
-      "outputCount": "3",
-      "raw0": "<4508.435059, 340.207520, 10237.445313>",
-      "raw1": "<4508.499023, 340.858704, 10237.661133>",
-      "raw2": "<4508.290527, 339.538696, 10237.517578>",
-      "raw3": "<4508.721191, 339.527466, 10237.737305>",
-      "previous0": "<4508.458008, 340.392975, 10237.421875>",
-      "previous1": "<4508.614746, 340.924255, 10237.769531>",
-      "previous2": "<4508.241699, 339.738831, 10237.341797>",
-      "previous3": "<4508.666504, 339.556183, 10237.547852>",
-      "output0": "<4508.435059, 340.207520, 10237.445313>",
-      "output1": "<4508.499023, 340.858704, 10237.661133>",
-      "output2": "<4508.290527, 339.538696, 10237.517578>",
-      "output3": "UNAVAILABLE",
-      "nativeBefore": "16.35",
-      "nativeAfter": "16.35",
-      "updatesBefore": "327",
-      "updatesAfter": "327",
-      "request": "8",
-      "nativeRequest": "8",
-      "callerFall": "true",
-      "callerDt": "0.05",
-      "frameFall": "true",
-      "fallVelocity": "-5.76767",
-      "pressureActive": "true",
-      "pressureVelocity": "<-0.533829, 0.000000, 0.440615>",
-      "activeLink": "none",
-      "activeExit": "<0.000000, 0.000000, 0.000000>",
-      "motionContactOffset": "<-0.040527, 0.000000, 0.000000>",
-      "motionElapsed": "0",
-      "nativeCurveEnded": "true",
-      "startPlacementEntry": "<0.000000, 0.000000, 0.000000>",
-      "rootUnchanged": "true",
-      "actorRows": "7",
-      "suppressedSoFar": "3",
-      "globalSuppressedSoFar": "7",
-      "writeFailuresSoFar": "0",
-      "hitType": "StaticObj_Container_1C",
-      "hitPoint": "<4508.712402, 339.557037, 10237.547852>",
-      "hitNormal": "<-0.999826, -0.018661, -0.000001>",
-      "hitFraction": "0",
-      "failureStage": "SWEEP",
-      "failureJoint": "3",
-      "rootAfter": "<4508.458008, 339.516785, 10237.421875>"
+    "fullClear30mmDirections": [
+      {
+        "direction": 14,
+        "degrees": 157.5
+      },
+      {
+        "direction": 15,
+        "degrees": 168.75
+      }
+    ],
+    "originalEightClearAt30mm": [],
+    "frozenTrajectories": [],
+    "rollingComparisons": [
+      {
+        "mode": 0,
+        "rows": 600,
+        "movedSteps": 0,
+        "turnSteps": 2,
+        "displacementMetres": 0.0,
+        "travelledMetres": 0.0,
+        "maximumActual3DStepMetres": 0,
+        "supported": true,
+        "reachedDiagnosticHalfMetreDisplacement": false,
+        "refinementPlans": 0,
+        "refinementTargets": 0,
+        "refinementSweeps": 0,
+        "refinementAccepted": 0
+      },
+      {
+        "mode": 1,
+        "rows": 29,
+        "movedSteps": 17,
+        "turnSteps": 0,
+        "displacementMetres": 0.507013,
+        "travelledMetres": 0.512701,
+        "maximumActual3DStepMetres": 0.030274245821144283,
+        "supported": true,
+        "reachedDiagnosticHalfMetreDisplacement": true,
+        "refinementPlans": 1,
+        "refinementTargets": 4,
+        "refinementSweeps": 2,
+        "refinementAccepted": 1
+      }
+    ],
+    "deployedSourceOrPboChanged": false,
+    "liveRegressionPassed": false,
+    "visualAcceptance": false,
+    "performanceAcceptance": false,
+    "limitations": [
+      "Same-plan CPU pose frozen;not actual animation or 64-peer replay.",
+      "False/accepted queries may leave old rejection fields;only rejection fields of rejected queries are interpreted.",
+      "Actual 3D rounded steps may exceed nominal horizontal30mm;no strict30mm world-distance claim.",
+      "Safe frozen path does not prove live route success or cost reduction."
+    ]
+  },
+  {
+    "validation": "controlled-actor60-pose-replay-rolling-typed-repeat",
+    "verificationStatus": "frozen_pose_diagnostic_success_not_live_acceptance",
+    "sourceRunId": "runtime-20261030-084554",
+    "rows": 96,
+    "gateCounts": {
+      "NEW_WORLD_CONTACT": 88,
+      "NONDEEPENING_CLEAR": 8
     },
-    {
-      "sequence": "69",
-      "seconds": "23.687",
-      "id": "36",
-      "call": "11",
-      "phase": "FALL",
-      "recoveryGeneration": "1",
-      "accepted": "false",
-      "reason": "NATIVE_JOINT_WORLD_3",
-      "rootBefore": "<4508.437500, 339.561035, 10237.105469>",
-      "anchor": "<4508.410645, 339.258423, 10237.088867>",
-      "heading": "12",
-      "minimumLift": "0",
-      "returnedLift": "0",
-      "idleOffset": "<0.000000, 0.000000, 0.000000>",
-      "rawCount": "4",
-      "previousCount": "4",
-      "outputCount": "3",
-      "raw0": "<4508.414063, 340.237549, 10237.089844>",
-      "raw1": "<4508.455566, 340.888733, 10237.311523>",
-      "raw2": "<4508.263184, 339.568726, 10237.147461>",
-      "raw3": "<4508.668457, 339.557495, 10237.411133>",
-      "previous0": "<4508.437500, 340.437225, 10237.105469>",
-      "previous1": "<4508.560059, 340.968872, 10237.466797>",
-      "previous2": "<4508.232910, 339.784760, 10236.999023>",
-      "previous3": "<4508.629395, 339.604797, 10237.270508>",
-      "output0": "<4508.414063, 340.237549, 10237.089844>",
-      "output1": "<4508.455566, 340.888733, 10237.311523>",
-      "output2": "<4508.263184, 339.568726, 10237.147461>",
-      "output3": "UNAVAILABLE",
-      "nativeBefore": "16.65",
-      "nativeAfter": "16.65",
-      "updatesBefore": "333",
-      "updatesAfter": "333",
-      "request": "8",
-      "nativeRequest": "8",
-      "callerFall": "true",
-      "callerDt": "0.05",
-      "frameFall": "true",
-      "fallVelocity": "-6.0522",
-      "pressureActive": "true",
-      "pressureVelocity": "<-0.535435, 0.000000, -0.323995>",
-      "activeLink": "none",
-      "activeExit": "<0.000000, 0.000000, 0.000000>",
-      "motionContactOffset": "<-0.107910, 0.000000, 0.000000>",
-      "motionElapsed": "0",
-      "nativeCurveEnded": "true",
-      "startPlacementEntry": "<0.000000, 0.000000, 0.000000>",
-      "rootUnchanged": "true",
-      "actorRows": "8",
-      "suppressedSoFar": "3",
-      "globalSuppressedSoFar": "10",
-      "writeFailuresSoFar": "0",
-      "hitType": "StaticObj_Container_1C",
-      "hitPoint": "<4508.711914, 339.606323, 10237.270508>",
-      "hitNormal": "<-0.999826, -0.018661, 0.000001>",
-      "hitFraction": "0",
-      "failureStage": "SWEEP",
-      "failureJoint": "3",
-      "rootAfter": "<4508.437500, 339.561035, 10237.105469>"
-    },
-    {
-      "sequence": "128",
-      "seconds": "49.859",
-      "id": "60",
-      "call": "4",
-      "phase": "FALL",
-      "recoveryGeneration": "1",
-      "accepted": "false",
-      "reason": "NATIVE_JOINT_WORLD_3",
-      "rootBefore": "<4511.355469, 340.050079, 10238.050781>",
-      "anchor": "<4511.364746, 340.021271, 10238.046875>",
-      "heading": "-1.83054",
-      "minimumLift": "0",
-      "returnedLift": "0.213623",
-      "idleOffset": "<0.000000, 0.000000, 0.000000>",
-      "rawCount": "4",
-      "previousCount": "4",
-      "outputCount": "3",
-      "raw0": "<4511.364746, 340.848877, 10238.046875>",
-      "raw1": "<4511.369141, 341.178772, 10238.662109>",
-      "raw2": "<4511.121094, 340.117950, 10238.453125>",
-      "raw3": "<4511.646973, 340.115387, 10237.741211>",
-      "previous0": "<4511.355469, 341.062317, 10238.050781>",
-      "previous1": "<4511.359863, 341.392212, 10238.666016>",
-      "previous2": "<4511.111816, 340.331390, 10238.457031>",
-      "previous3": "<4511.637695, 340.328827, 10237.745117>",
-      "output0": "<4511.364746, 341.062500, 10238.046875>",
-      "output1": "<4511.369141, 341.392395, 10238.662109>",
-      "output2": "<4511.121094, 340.331573, 10238.453125>",
-      "output3": "UNAVAILABLE",
-      "nativeBefore": "33.8998",
-      "nativeAfter": "33.8998",
-      "updatesBefore": "678",
-      "updatesAfter": "678",
-      "request": "8",
-      "nativeRequest": "8",
-      "callerFall": "true",
-      "callerDt": "0.0149918",
-      "frameFall": "true",
-      "fallVelocity": "-1.92205",
-      "pressureActive": "true",
-      "pressureVelocity": "<0.626243, 0.000000, -0.265109>",
-      "activeLink": "none",
-      "activeExit": "<0.000000, 0.000000, 0.000000>",
-      "motionContactOffset": "<0.200195, 0.000000, 0.000000>",
-      "motionElapsed": "0",
-      "nativeCurveEnded": "true",
-      "startPlacementEntry": "<0.000000, 0.000000, 0.000000>",
-      "rootUnchanged": "true",
-      "actorRows": "3",
-      "suppressedSoFar": "1",
-      "globalSuppressedSoFar": "13",
-      "writeFailuresSoFar": "0",
-      "hitType": "StaticObj_Container_1C",
-      "hitPoint": "<4511.733398, 340.330261, 10237.742188>",
-      "hitNormal": "<-0.999892, -0.014669, 0.000002>",
-      "hitFraction": "0.615835",
-      "failureStage": "SWEEP",
-      "failureJoint": "3",
-      "rootAfter": "<4511.355469, 340.050079, 10238.050781>"
-    },
-    {
-      "sequence": "137",
-      "seconds": "50.233",
-      "id": "60",
-      "call": "14",
-      "phase": "FALL",
-      "recoveryGeneration": "1",
-      "accepted": "false",
-      "reason": "NATIVE_JOINT_WORLD_2",
-      "rootBefore": "<4511.431641, 339.693878, 10238.008789>",
-      "anchor": "<4511.462891, 339.425140, 10237.995117>",
-      "heading": "-1.83054",
-      "minimumLift": "0",
-      "returnedLift": "0",
-      "idleOffset": "<0.000000, 0.000000, 0.000000>",
-      "rawCount": "4",
-      "previousCount": "4",
-      "outputCount": "2",
-      "raw0": "<4511.478516, 340.403656, 10237.997070>",
-      "raw1": "<4511.535156, 341.058868, 10238.205078>",
-      "raw2": "<4511.273438, 339.808441, 10238.350586>",
-      "raw3": "<4511.615723, 339.568146, 10238.003906>",
-      "previous0": "<4511.445313, 340.887543, 10238.012695>",
-      "previous1": "<4511.485352, 341.545624, 10238.219727>",
-      "previous2": "<4511.246582, 340.331116, 10238.315430>",
-      "previous3": "<4511.599609, 340.043243, 10238.125977>",
-      "output0": "<4511.478516, 340.403656, 10237.997070>",
-      "output1": "<4511.535156, 341.058868, 10238.205078>",
-      "output2": "UNAVAILABLE",
-      "output3": "UNAVAILABLE",
-      "nativeBefore": "34.1498",
-      "nativeAfter": "34.1498",
-      "updatesBefore": "683",
-      "updatesAfter": "683",
-      "request": "8",
-      "nativeRequest": "8",
-      "callerFall": "true",
-      "callerDt": "0.05",
-      "frameFall": "true",
-      "fallVelocity": "-5.37504",
-      "pressureActive": "true",
-      "pressureVelocity": "<0.626243, 0.000000, -0.265109>",
-      "activeLink": "none",
-      "activeExit": "<0.000000, 0.000000, 0.000000>",
-      "motionContactOffset": "<0.200195, 0.000000, 0.000000>",
-      "motionElapsed": "0",
-      "nativeCurveEnded": "true",
-      "startPlacementEntry": "<0.000000, 0.000000, 0.000000>",
-      "rootUnchanged": "true",
-      "actorRows": "11",
-      "suppressedSoFar": "3",
-      "globalSuppressedSoFar": "15",
-      "writeFailuresSoFar": "0",
-      "hitType": "StaticObj_Container_1C",
-      "hitPoint": "<4511.230957, 340.211151, 10238.317383>",
-      "hitNormal": "<0.191656, 0.981459, -0.002608>",
-      "hitFraction": "0.0603023",
-      "failureStage": "SWEEP",
-      "failureJoint": "2",
-      "rootAfter": "<4511.431641, 339.693878, 10238.008789>"
-    },
-    {
-      "sequence": "139",
-      "seconds": "50.298",
-      "id": "60",
-      "call": "16",
-      "phase": "FALL",
-      "recoveryGeneration": "1",
-      "accepted": "false",
-      "reason": "NATIVE_JOINT_WORLD_2",
-      "rootBefore": "<4511.431641, 339.693878, 10238.008789>",
-      "anchor": "<4511.462891, 339.389801, 10237.995117>",
-      "heading": "-1.83054",
-      "minimumLift": "0",
-      "returnedLift": "0",
-      "idleOffset": "<0.000000, 0.000000, 0.000000>",
-      "rawCount": "4",
-      "previousCount": "4",
-      "outputCount": "2",
-      "raw0": "<4511.478516, 340.367981, 10237.995117>",
-      "raw1": "<4511.532715, 341.021759, 10238.206055>",
-      "raw2": "<4511.277832, 339.708557, 10238.350586>",
-      "raw3": "<4511.601563, 339.570831, 10237.940430>",
-      "previous0": "<4511.445313, 340.887543, 10238.012695>",
-      "previous1": "<4511.485352, 341.545624, 10238.219727>",
-      "previous2": "<4511.246582, 340.331116, 10238.315430>",
-      "previous3": "<4511.599609, 340.043243, 10238.125977>",
-      "output0": "<4511.478516, 340.367981, 10237.995117>",
-      "output1": "<4511.532715, 341.021759, 10238.206055>",
-      "output2": "UNAVAILABLE",
-      "output3": "UNAVAILABLE",
-      "nativeBefore": "34.1998",
-      "nativeAfter": "34.1998",
-      "updatesBefore": "684",
-      "updatesAfter": "684",
-      "request": "8",
-      "nativeRequest": "8",
-      "callerFall": "true",
-      "callerDt": "0.05",
-      "frameFall": "true",
-      "fallVelocity": "-6.08132",
-      "pressureActive": "true",
-      "pressureVelocity": "<0.626243, 0.000000, -0.265109>",
-      "activeLink": "none",
-      "activeExit": "<0.000000, 0.000000, 0.000000>",
-      "motionContactOffset": "<0.200195, 0.000000, 0.000000>",
-      "motionElapsed": "0",
-      "nativeCurveEnded": "true",
-      "startPlacementEntry": "<0.000000, 0.000000, 0.000000>",
-      "rootUnchanged": "true",
-      "actorRows": "13",
-      "suppressedSoFar": "3",
-      "globalSuppressedSoFar": "15",
-      "writeFailuresSoFar": "0",
-      "hitType": "StaticObj_Container_1C",
-      "hitPoint": "<4511.230957, 340.211121, 10238.317383>",
-      "hitNormal": "<0.195222, 0.980756, -0.002605>",
-      "hitFraction": "0.0506199",
-      "failureStage": "SWEEP",
-      "failureJoint": "2",
-      "rootAfter": "<4511.431641, 339.693878, 10238.008789>"
-    },
-    {
-      "sequence": "144",
-      "seconds": "50.437",
-      "id": "60",
-      "call": "19",
-      "phase": "FALL",
-      "recoveryGeneration": "1",
-      "accepted": "false",
-      "reason": "NATIVE_JOINT_WORLD_0",
-      "rootBefore": "<4511.462891, 339.357941, 10237.986328>",
-      "anchor": "<4511.468750, 339.289642, 10237.984375>",
-      "heading": "4.16946",
-      "minimumLift": "0",
-      "returnedLift": "0",
-      "idleOffset": "<0.000000, 0.000000, 0.000000>",
-      "rawCount": "4",
-      "previousCount": "4",
-      "outputCount": "0",
-      "raw0": "<4511.477539, 340.268036, 10237.982422>",
-      "raw1": "<4511.514648, 340.923492, 10238.197266>",
-      "raw2": "<4511.323242, 339.495056, 10238.238281>",
-      "raw3": "<4511.594727, 339.599030, 10237.987305>",
-      "previous0": "<4511.471680, 340.336334, 10237.984375>",
-      "previous1": "<4511.508789, 340.991791, 10238.199219>",
-      "previous2": "<4511.317383, 339.563354, 10238.240234>",
-      "previous3": "<4511.588867, 339.667328, 10237.989258>",
-      "output0": "UNAVAILABLE",
-      "output1": "UNAVAILABLE",
-      "output2": "UNAVAILABLE",
-      "output3": "UNAVAILABLE",
-      "nativeBefore": "34.2998",
-      "nativeAfter": "34.2998",
-      "updatesBefore": "686",
-      "updatesAfter": "686",
-      "request": "8",
-      "nativeRequest": "8",
-      "callerFall": "true",
-      "callerDt": "0.00899506",
-      "frameFall": "true",
-      "fallVelocity": "-7.59199",
-      "pressureActive": "true",
-      "pressureVelocity": "<0.626243, 0.000000, -0.265109>",
-      "activeLink": "none",
-      "activeExit": "<0.000000, 0.000000, 0.000000>",
-      "motionContactOffset": "<0.200195, 0.000000, 0.000000>",
-      "motionElapsed": "0",
-      "nativeCurveEnded": "true",
-      "startPlacementEntry": "<0.000000, 0.000000, 0.000000>",
-      "rootUnchanged": "true",
-      "actorRows": "16",
-      "suppressedSoFar": "3",
-      "globalSuppressedSoFar": "15",
-      "writeFailuresSoFar": "0",
-      "hitType": "StaticObj_Container_1C",
-      "hitPoint": "<4511.305664, 340.176361, 10237.982422>",
-      "hitNormal": "<0.855776, 0.517346, -0.001335>",
-      "hitFraction": "0.827674",
-      "failureStage": "SWEEP",
-      "failureJoint": "0",
-      "rootAfter": "<4511.462891, 339.357941, 10237.986328>"
-    },
-    {
-      "sequence": "145",
-      "seconds": "50.588",
-      "id": "14",
-      "call": "2",
-      "phase": "FALL",
-      "recoveryGeneration": "1",
-      "accepted": "false",
-      "reason": "NATIVE_JOINT_WORLD_2",
-      "rootBefore": "<4511.336914, 340.183960, 10240.844727>",
-      "anchor": "<4511.369141, 340.109436, 10240.862305>",
-      "heading": "166.584",
-      "minimumLift": "0",
-      "returnedLift": "0.123779",
-      "idleOffset": "<0.000000, 0.000000, 0.000000>",
-      "rawCount": "4",
-      "previousCount": "4",
-      "outputCount": "2",
-      "raw0": "<4511.369141, 340.925507, 10240.862305>",
-      "raw1": "<4511.404785, 341.251343, 10240.250000>",
-      "raw2": "<4511.645020, 340.205627, 10240.526367>",
-      "raw3": "<4510.985352, 340.212341, 10241.112305>",
-      "previous0": "<4511.336914, 341.060547, 10240.844727>",
-      "previous1": "<4511.411621, 341.392578, 10240.237305>",
-      "previous2": "<4511.629395, 340.335999, 10240.500977>",
-      "previous3": "<4510.971680, 340.335815, 10241.090820>",
-      "output0": "<4511.369141, 341.049286, 10240.862305>",
-      "output1": "<4511.404785, 341.375122, 10240.250000>",
-      "output2": "UNAVAILABLE",
-      "output3": "UNAVAILABLE",
-      "nativeBefore": "34.3998",
-      "nativeAfter": "34.3998",
-      "updatesBefore": "688",
-      "updatesAfter": "688",
-      "request": "8",
-      "nativeRequest": "0",
-      "callerFall": "true",
-      "callerDt": "0.05",
-      "frameFall": "true",
-      "fallVelocity": "-1.4905",
-      "pressureActive": "true",
-      "pressureVelocity": "<0.644179, 0.000000, 0.344240>",
-      "activeLink": "none",
-      "activeExit": "<0.000000, 0.000000, 0.000000>",
-      "motionContactOffset": "<0.114746, 0.000000, 0.000000>",
-      "motionElapsed": "0",
-      "nativeCurveEnded": "true",
-      "startPlacementEntry": "<0.000000, 0.000000, 0.000000>",
-      "rootUnchanged": "true",
-      "actorRows": "2",
-      "suppressedSoFar": "0",
-      "globalSuppressedSoFar": "15",
-      "writeFailuresSoFar": "0",
-      "hitType": "StaticObj_Container_1C",
-      "hitPoint": "<4511.733398, 340.331421, 10240.523438>",
-      "hitNormal": "<-0.999892, -0.014667, 0.000000>",
-      "hitFraction": "0.895812",
-      "failureStage": "SWEEP",
-      "failureJoint": "2",
-      "rootAfter": "<4511.336914, 340.183960, 10240.844727>"
-    }
-  ],
-  "errors": [],
-  "limitations": [
-    "Bounded sampling; suppression/write-failure counters stop at last emitted row.",
-    "Printed seconds do not prove exact frame identity; four-per-frame cap is source/parity evidence.",
-    "Snapshots precede root acceptance; matching CPU counters do not prove visible smoothness.",
-    "Accepted rows may contain stale hit fields; those fields are not interpreted.",
-    "No performance improvement or absence of unsampled failures is asserted."
-  ],
-  "functionalAcceptance": false,
-  "visualAcceptance": false,
-  "performanceAcceptance": false,
-  "rejectedSweepGeometrySelection": [
-    {
-      "sequence": 27,
-      "id": "8",
-      "seconds": 18.006,
-      "phase": "FALL",
-      "recoveryGeneration": 1,
-      "joint": 0,
-      "hitType": "StaticObj_Container_1C",
-      "hitFraction": 0.572341,
-      "hitNormal": [
-        -0.88895,
-        0.458003,
-        -0.001265
-      ],
-      "previousToTargetMetres": 0.28125871108455913,
-      "previousToTargetY": -0.2802120000000059,
-      "proposalRootDistanceMetres": 0.2814514191222438,
-      "previousAvailable": true
-    },
-    {
-      "sequence": 59,
-      "id": "32",
-      "seconds": 23.059,
-      "phase": "FALL",
-      "recoveryGeneration": 1,
-      "joint": 3,
-      "hitType": "StaticObj_Container_1C",
-      "hitFraction": 0.0,
-      "hitNormal": [
-        -0.999826,
-        -0.018661,
-        -1e-06
-      ],
-      "previousToTargetMetres": 0.1992680939521138,
-      "previousToTargetY": -0.028716999999971904,
-      "proposalRootDistanceMetres": 0.2905083650052464,
-      "previousAvailable": true
-    },
-    {
-      "sequence": 69,
-      "id": "36",
-      "seconds": 23.687,
-      "phase": "FALL",
-      "recoveryGeneration": 1,
-      "joint": 3,
-      "hitType": "StaticObj_Container_1C",
-      "hitFraction": 0.0,
-      "hitNormal": [
-        -0.999826,
-        -0.018661,
-        1e-06
-      ],
-      "previousToTargetMetres": 0.15342330224899658,
-      "previousToTargetY": -0.047302000000001954,
-      "proposalRootDistanceMetres": 0.30425456442426607,
-      "previousAvailable": true
-    },
-    {
-      "sequence": 128,
-      "id": "60",
-      "seconds": 49.859,
-      "phase": "FALL",
-      "recoveryGeneration": 1,
-      "joint": 3,
-      "hitType": "StaticObj_Container_1C",
-      "hitFraction": 0.615835,
-      "hitNormal": [
-        -0.999892,
-        -0.014669,
-        2e-06
-      ],
-      "previousToTargetMetres": 0.0100683468847076,
-      "previousToTargetY": 0.00018299999999271677,
-      "proposalRootDistanceMetres": 0.03051590452533961,
-      "previousAvailable": true
-    },
-    {
-      "sequence": 137,
-      "id": "60",
-      "seconds": 50.233,
-      "phase": "FALL",
-      "recoveryGeneration": 1,
-      "joint": 2,
-      "hitType": "StaticObj_Container_1C",
-      "hitFraction": 0.0603023,
-      "hitNormal": [
-        0.191656,
-        0.981459,
-        -0.002608
-      ],
-      "previousToTargetMetres": 0.5245439397200277,
-      "previousToTargetY": -0.5226749999999925,
-      "proposalRootDistanceMetres": 0.27089407289191125,
-      "previousAvailable": true
-    },
-    {
-      "sequence": 139,
-      "id": "60",
-      "seconds": 50.298,
-      "phase": "FALL",
-      "recoveryGeneration": 1,
-      "joint": 2,
-      "hitType": "StaticObj_Container_1C",
-      "hitFraction": 0.0506199,
-      "hitNormal": [
-        0.195222,
-        0.980756,
-        -0.002605
-      ],
-      "previousToTargetMetres": 0.6243334167870752,
-      "previousToTargetY": -0.6225590000000238,
-      "proposalRootDistanceMetres": 0.3059841630100818,
-      "previousAvailable": true
-    },
-    {
-      "sequence": 144,
-      "id": "60",
-      "seconds": 50.437,
-      "phase": "FALL",
-      "recoveryGeneration": 1,
-      "joint": 0,
-      "hitType": "StaticObj_Container_1C",
-      "hitFraction": 0.827674,
-      "hitNormal": [
-        0.855776,
-        0.517346,
-        -0.001335
-      ],
-      "previousToTargetMetres": 0.06857666435469323,
-      "previousToTargetY": -0.06829800000002706,
-      "proposalRootDistanceMetres": 0.06857766029107064,
-      "previousAvailable": true
-    },
-    {
-      "sequence": 145,
-      "id": "14",
-      "seconds": 50.588,
-      "phase": "FALL",
-      "recoveryGeneration": 1,
-      "joint": 2,
-      "hitType": "StaticObj_Container_1C",
-      "hitFraction": 0.895812,
-      "hitNormal": [
-        -0.999892,
-        -0.014667,
-        0.0
-      ],
-      "previousToTargetMetres": 0.030532939164704793,
-      "previousToTargetY": -0.006593000000009397,
-      "proposalRootDistanceMetres": 0.08307461819960553,
-      "previousAvailable": true
-    }
-  ],
-  "rejectedSweepGeometryTotalRows": 233,
-  "sourceEvidence": {
-    "fileId": "runtime-20261030-084554-contact-inputs",
-    "sha256": "a711125de7cb888c4067e87a7f3f38a4af8575c2ad0fe994e23ad5d7e9c860e7",
-    "bytes": 1129104
+    "fullClear30mmDirections": [
+      {
+        "direction": 14,
+        "degrees": 157.5
+      },
+      {
+        "direction": 15,
+        "degrees": 168.75
+      }
+    ],
+    "originalEightClearAt30mm": [],
+    "frozenTrajectories": [],
+    "rollingComparisons": [
+      {
+        "mode": 0,
+        "rows": 600,
+        "movedSteps": 0,
+        "turnSteps": 2,
+        "displacementMetres": 0.0,
+        "travelledMetres": 0.0,
+        "maximumActual3DStepMetres": 0,
+        "supported": true,
+        "reachedDiagnosticHalfMetreDisplacement": false,
+        "refinementPlans": 0,
+        "refinementTargets": 0,
+        "refinementSweeps": 0,
+        "refinementAccepted": 0
+      },
+      {
+        "mode": 1,
+        "rows": 29,
+        "movedSteps": 17,
+        "turnSteps": 0,
+        "displacementMetres": 0.507013,
+        "travelledMetres": 0.512701,
+        "maximumActual3DStepMetres": 0.030274245821144283,
+        "supported": true,
+        "reachedDiagnosticHalfMetreDisplacement": true,
+        "refinementPlans": 1,
+        "refinementTargets": 4,
+        "refinementSweeps": 2,
+        "refinementAccepted": 1
+      }
+    ],
+    "deployedSourceOrPboChanged": false,
+    "liveRegressionPassed": false,
+    "visualAcceptance": false,
+    "performanceAcceptance": false,
+    "limitations": [
+      "Same-plan CPU pose frozen;not actual animation or 64-peer replay.",
+      "False/accepted queries may leave old rejection fields;only rejection fields of rejected queries are interpreted.",
+      "Actual 3D rounded steps may exceed nominal horizontal30mm;no strict30mm world-distance claim.",
+      "Safe frozen path does not prove live route success or cost reduction."
+    ]
   }
-}
+]
+
+Not proved: live recovery,64/64,visible animation quality,20ms p95 or CPU/GPU cost improvement.
 
 이전 애니메이션 진단: [선정 근거](downloads/animation-review.txt). 이번 진단은 시각·성능 해결을 뜻하지 않는다.
