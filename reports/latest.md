@@ -1,3 +1,5 @@
+> 최신 실제 시험(2026-10-31): 고지대 목표 유지 조건에서8/8·64/64고지대 및 최종 도착.64개체 종료 검사1건,낙하 복귀73건,p95 76ms.반복 기능·화면 품질·성능 미수용. [실행 조건과 실패 증거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/held-high-eight-sixtyfour-20261031.md). 아래 과거 수치는 원본 이력이다.
+
 > 시험 조건 정정(2026-10-31): 기존64개체 HIGH_HOLD의 실제 플레이어 high 유지 약29.5초. 실제 high 유지 중 high+FOLLOW60/64이며, 최종64/64 도착과 별도다. 신규 런타임·수정·시각/성능 수용 아님. [원시 위치 기반 재분석](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/high-stimulus-validity-20261031.md).
 
 > 새 애니메이션 진단(2026-10-31): idle·walk 1논리개체/8부품 고정시험에서 native 시간 진행률0.640/0.668, CPU/화면 대응 확인. 새 수정·8/64회귀·품질/성능 수용은 아님. [상세 결과](operations/idle-walk-visible-20261031.md). 아래는 이전 기능 실험 기록이다.

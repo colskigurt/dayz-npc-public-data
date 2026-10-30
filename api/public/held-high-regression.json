@@ -1,0 +1,251 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T05:27:35.865619+09:00",
+  "sourceRunId": [
+    "runtime-20261031-051109",
+    "runtime-20261031-051732"
+  ],
+  "buildId": "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
+  "verificationStatus": {
+    "eightTrial": "regression_pass",
+    "sixtyFourTrial": "climb_contract_failure_recorded",
+    "repeatVerificationCompleted": false,
+    "finalAcceptance": false,
+    "visualAcceptance": false,
+    "performanceAcceptance": false
+  },
+  "metrics": {
+    "conditions": {
+      "scenario": "activeReference",
+      "secondsPerRun": 300,
+      "repetitionsPerCount": 1,
+      "frameSync": "on",
+      "aiAndMovement": true,
+      "nativePartsPerLogicalAgent": 8,
+      "statePoseContactDiagnostics": true,
+      "playerAnchor": "HIGH_HOLD only,correction if horizontal or vertical drift>0.1m;support checked",
+      "npcPipelineChanged": false,
+      "pboChanged": false,
+      "continuousVideoRecorded": false,
+      "frameTimeKind": "foreground mission callback dt,not GPU Present"
+    },
+    "cases": [
+      {
+        "sourceRunId": "runtime-20261031-051109",
+        "expectedAgents": 8,
+        "buildId": "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
+        "missionSourcesSha256": "BC6C4E17269BCF2767D16BB1041BF3E1791B6961EC38784BB71D67254D5A5F8C",
+        "stimulus": {
+          "valid": true,
+          "highSamples": 522,
+          "areaSamples": {
+            "high": 522
+          },
+          "first": 45.008,
+          "last": 104.941,
+          "maxSampleGapSeconds": 0.12999999999999545,
+          "anchorEnabled": true,
+          "recordedCorrections": 0,
+          "supportFailures": 0,
+          "traceOrSupportErrors": [],
+          "maximumRecordedCorrectionHorizontal": 0,
+          "limitation": "Sampled area,not continuous physical support proof. Recorded corrections alter player stimulus;NPC physics remain active."
+        },
+        "functional": {
+          "highFollowCoverage": 8,
+          "missingHigh": [],
+          "terminalArrivals": 8,
+          "unresolvedTerminalAgents": [],
+          "fallsLandedAndResumed": 9,
+          "newFailureLabelEpisodes": {
+            "CONTACT_SUPPORT_LOST": 1
+          },
+          "unresolvedAlgorithmEpisodes": {},
+          "climbEndFailures": 0,
+          "thisTrialGatePassed": true,
+          "repeatRegressionAccepted": false
+        },
+        "foregroundMissionFrameMs": {
+          "samples": 14745,
+          "p50": 20.0,
+          "p95": 33.0,
+          "p99": 35.0
+        },
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "newOptimization": false,
+        "goalComplete": false,
+        "inputs": [
+          {
+            "file": "launch.json",
+            "sha256": "df50ab3d2b628b98aeef9e22ab73fd009520f096c11155b9e1cb8067576fbab4"
+          },
+          {
+            "file": "native-natural-player.tsv",
+            "sha256": "b9f4c63f430f86354c2160a022bc205cfddb64e9960a0367e69957a27aea7296"
+          },
+          {
+            "file": "native-high-anchor.tsv",
+            "sha256": "71d408a985badcfdfc554d9f2f57be7d6ac30104fe60244ffb39c2b7a1ba8b1b"
+          },
+          {
+            "file": "native-ground.tsv",
+            "sha256": "8d24ca207d4edf168d22f81d44a5ab99f92a461507989edbf70b31edc842d1d9"
+          },
+          {
+            "file": "state-contract-report.json",
+            "sha256": "40ee640fa37cae796c4739f0ea73303ae6deab3189f7e2a369cf6f51e180b3d2"
+          },
+          {
+            "file": "controlled-analysis.json",
+            "sha256": "3de72b842846afc65095f165ae4498189ca066b26efe4378573e9491de2ff662"
+          }
+        ]
+      },
+      {
+        "sourceRunId": "runtime-20261031-051732",
+        "expectedAgents": 64,
+        "buildId": "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
+        "missionSourcesSha256": "BC6C4E17269BCF2767D16BB1041BF3E1791B6961EC38784BB71D67254D5A5F8C",
+        "stimulus": {
+          "valid": true,
+          "highSamples": 457,
+          "areaSamples": {
+            "high": 457
+          },
+          "first": 45.051,
+          "last": 104.979,
+          "maxSampleGapSeconds": 0.18999999999999773,
+          "anchorEnabled": true,
+          "recordedCorrections": 172,
+          "supportFailures": 0,
+          "traceOrSupportErrors": [],
+          "maximumRecordedCorrectionHorizontal": 0.431445,
+          "limitation": "Sampled area,not continuous physical support proof. Recorded corrections alter player stimulus;NPC physics remain active."
+        },
+        "functional": {
+          "highFollowCoverage": 64,
+          "missingHigh": [],
+          "terminalArrivals": 64,
+          "unresolvedTerminalAgents": [],
+          "fallsLandedAndResumed": 73,
+          "newFailureLabelEpisodes": {
+            "CONTACT_SUPPORT_LOST": 8,
+            "CLIMB_EXIT_VALIDATION": 1
+          },
+          "unresolvedAlgorithmEpisodes": {},
+          "climbEndFailures": 1,
+          "thisTrialGatePassed": false,
+          "repeatRegressionAccepted": false
+        },
+        "foregroundMissionFrameMs": {
+          "samples": 8506,
+          "p50": 28.0,
+          "p95": 76.0,
+          "p99": 93.0
+        },
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "newOptimization": false,
+        "goalComplete": false,
+        "inputs": [
+          {
+            "file": "launch.json",
+            "sha256": "0d716dc05476d3e8cc4c2856726e2b8fcfc0d8dee592e236cb38136bdbd32568"
+          },
+          {
+            "file": "native-natural-player.tsv",
+            "sha256": "19c4626a7945e07021fd6af914edcf6179d226199cc8eaff3b6a2e6c356434d0"
+          },
+          {
+            "file": "native-high-anchor.tsv",
+            "sha256": "8325dfa31ee977eef076d6496c8a2b11e40e695372a55deabcbc8d7c2c94cb20"
+          },
+          {
+            "file": "native-ground.tsv",
+            "sha256": "5c1d60aeeef221f1612de68ed9ba670ac606ed952e6fbb9d6d8952995a972e92"
+          },
+          {
+            "file": "state-contract-report.json",
+            "sha256": "5deb65c153dbeb12df32c3eacf3714f3110c9ce8ab8d78be969cb1c78b0cdb68"
+          },
+          {
+            "file": "controlled-analysis.json",
+            "sha256": "0758c6b48d039d99e9a953a2cd5629e49fbff9e026bb5c8e238ea660a4e8d4ad"
+          }
+        ]
+      }
+    ],
+    "targetP95Ms": 20
+  },
+  "blockers": [
+    "Actor60FOOT_Z_SUPPORT at climb end;exact probe/height-difference condition unknown",
+    "Recovered and arrived does not resolve climb-end classification",
+    "No repeated8/64acceptance;natural-interaction test remains separate",
+    "Animation evaluation/display cause unresolved;Ghidra startup900000ms timed out",
+    "No reproducible64cost optimization;20ms p95 not achieved"
+  ],
+  "evidenceReferences": [
+    {
+      "sourceRunId": "runtime-20261031-051109",
+      "file": "launch.json",
+      "sha256": "df50ab3d2b628b98aeef9e22ab73fd009520f096c11155b9e1cb8067576fbab4"
+    },
+    {
+      "sourceRunId": "runtime-20261031-051109",
+      "file": "native-natural-player.tsv",
+      "sha256": "b9f4c63f430f86354c2160a022bc205cfddb64e9960a0367e69957a27aea7296"
+    },
+    {
+      "sourceRunId": "runtime-20261031-051109",
+      "file": "native-high-anchor.tsv",
+      "sha256": "71d408a985badcfdfc554d9f2f57be7d6ac30104fe60244ffb39c2b7a1ba8b1b"
+    },
+    {
+      "sourceRunId": "runtime-20261031-051109",
+      "file": "native-ground.tsv",
+      "sha256": "8d24ca207d4edf168d22f81d44a5ab99f92a461507989edbf70b31edc842d1d9"
+    },
+    {
+      "sourceRunId": "runtime-20261031-051109",
+      "file": "state-contract-report.json",
+      "sha256": "40ee640fa37cae796c4739f0ea73303ae6deab3189f7e2a369cf6f51e180b3d2"
+    },
+    {
+      "sourceRunId": "runtime-20261031-051109",
+      "file": "controlled-analysis.json",
+      "sha256": "3de72b842846afc65095f165ae4498189ca066b26efe4378573e9491de2ff662"
+    },
+    {
+      "sourceRunId": "runtime-20261031-051732",
+      "file": "launch.json",
+      "sha256": "0d716dc05476d3e8cc4c2856726e2b8fcfc0d8dee592e236cb38136bdbd32568"
+    },
+    {
+      "sourceRunId": "runtime-20261031-051732",
+      "file": "native-natural-player.tsv",
+      "sha256": "19c4626a7945e07021fd6af914edcf6179d226199cc8eaff3b6a2e6c356434d0"
+    },
+    {
+      "sourceRunId": "runtime-20261031-051732",
+      "file": "native-high-anchor.tsv",
+      "sha256": "8325dfa31ee977eef076d6496c8a2b11e40e695372a55deabcbc8d7c2c94cb20"
+    },
+    {
+      "sourceRunId": "runtime-20261031-051732",
+      "file": "native-ground.tsv",
+      "sha256": "5c1d60aeeef221f1612de68ed9ba670ac606ed952e6fbb9d6d8952995a972e92"
+    },
+    {
+      "sourceRunId": "runtime-20261031-051732",
+      "file": "state-contract-report.json",
+      "sha256": "5deb65c153dbeb12df32c3eacf3714f3110c9ce8ab8d78be969cb1c78b0cdb68"
+    },
+    {
+      "sourceRunId": "runtime-20261031-051732",
+      "file": "controlled-analysis.json",
+      "sha256": "0758c6b48d039d99e9a953a2cd5629e49fbff9e026bb5c8e238ea660a4e8d4ad"
+    }
+  ],
+  "report": "reports/operations/held-high-eight-sixtyfour-20261031.md"
+}
