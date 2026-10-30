@@ -1,5 +1,7 @@
 # DayZ NPC AI — 외부 세션 검토 자료
 
+> 운영 변경: Steam 최소 작업본을 기존 경로에 세팅했다. 대용량 삭제는 미완료다. 아래 실험 시각·수치는 변경하지 않았다. [최신 작업 상태](reports/operations-latest.md)
+
 Snapshot: snapshot-20261030T004117-escape-refinement-runtime-20261030
 
 Signed escape refinement package;selected source and diagnostics,not full raw evidence.

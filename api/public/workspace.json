@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0.0",
+  "kind": "workspace",
+  "generatedAt": "2026-10-30T17:08:24+09:00",
+  "sourceRunId": "steam-working-set-migration-20261030",
+  "buildId": "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
+  "verificationStatus": {
+    "workspaceSetup": "diagnosis_succeeded",
+    "signatureChecks": "3/3",
+    "configSyntaxChecks": "3/3",
+    "gitState": "unchanged",
+    "cleanup": "incomplete",
+    "gameplay": "unexecuted",
+    "visualAcceptance": false,
+    "performanceAcceptance": false
+  },
+  "metrics": {
+    "sourceFilesCompared": 149279,
+    "activeFilesBeforeEvidenceCopy": 23147,
+    "activeBytesBeforeEvidenceCopy": 5217733179,
+    "preservedLocalFiles": 12,
+    "frameTimeMs": null
+  },
+  "conditions": {
+    "source": "Steam private recovery snapshot",
+    "mode": "minimal working set",
+    "gameClientExecuted": false,
+    "performanceRepetitions": 0
+  },
+  "blockers": [
+    {
+      "id": "local-cleanup",
+      "status": "open",
+      "description": "Automatic approval review rejected a deletion-containing recovery command; no cleanup or reclaimed-space claim."
+    },
+    {
+      "id": "publisher",
+      "status": "open",
+      "description": "Publisher was opened during work and was preserved; use confirmation pending."
+    },
+    {
+      "id": "gameplay-revalidation",
+      "status": "unexecuted",
+      "description": "No new engine compile or gameplay test."
+    }
+  ],
+  "evidenceReferences": [
+    {
+      "id": "checkpoint",
+      "sha256": "5ef4a494684de7c6d59351e6dd1372cde29fb769cbf9de8f8cb72324f84cb86d",
+      "scope": "private_original_checkpoint_identifier_only",
+      "reportId": "2026-10-30_170824_610467+0900_npc-steam-minimal-workspace.md"
+    }
+  ]
+}
