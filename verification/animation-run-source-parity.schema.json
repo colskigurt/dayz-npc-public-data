@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "animation-source-run-20261101-0652"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "psaKeyParity",
+        "sourceTxaParity",
+        "rootFactoredTxaParity",
+        "newRuntime",
+        "newPbo"
+      ],
+      "properties": {
+        "newRuntime": {
+          "const": false
+        },
+        "newPbo": {
+          "const": false
+        },
+        "psaKeyParity": {
+          "type": "object",
+          "properties": {
+            "matchedWithin1e6": {
+              "const": true
+            },
+            "components": {
+              "const": 36736
+            }
+          }
+        }
+      }
+    }
+  }
+}
