@@ -1,0 +1,383 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T15:57:12.406181+09:00",
+  "sourceRunId": "ground-landing-lease-20261031-1525-repeat",
+  "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+  "verificationStatus": {
+    "diagnostic": "closed_64_agent_trial_and_generation_join",
+    "scopedFunctionalPass": false,
+    "repeatVerified": false,
+    "liveRecoveryObservedAfterGrant": false,
+    "visibleSmoothness": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "ground-landing-lease-20261031-1525-repeat",
+    "sourceRuntimeId": "runtime-20261031-155047",
+    "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+    "trial": {
+      "analysisVersion": 3,
+      "producerSha256": "a41737f209cce15dd5c01e815b536f5d923c63a49c2976daa2bb9b88a0fafff6",
+      "foregroundFraction": 1.0,
+      "sourceRunId": "ground-landing-lease-20261031-1525",
+      "label": "fast64repeat",
+      "runtimeRunId": "runtime-20261031-155047",
+      "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+      "count": 64,
+      "seconds": 300,
+      "mode": "fast",
+      "normalQuitVerified": true,
+      "supportCounters": {
+        "supportFastAttempts": 972873.0,
+        "supportFastSweeps": 313488.0,
+        "supportFastEligible": 313470.0,
+        "supportFastUsed": 313470.0,
+        "supportFastSkippedRays": 1253880.0,
+        "supportFastReferenceChecks": 0.0,
+        "supportFastUnder": 0.0,
+        "supportShadowQueries": 0.0,
+        "supportShadowCompared": 0.0,
+        "supportShadowUnder": 0.0,
+        "supportShadowWithoutReference": 0.0,
+        "contactSolves": 490115.0,
+        "contactFootRays": 3647270.0
+      },
+      "errorMaximaMeters": {
+        "supportFastMaxUnder": 0.0,
+        "supportFastMaxOver": 0.0,
+        "supportShadowMaxUnder": 0.0,
+        "supportShadowMaxOver": 0.0
+      },
+      "eligibleBoundComparisonPassed": false,
+      "eightAgentGatePassed": false,
+      "stateDiagnostic": {
+        "terminalArrivals": 64,
+        "unresolvedTerminalAgents": [],
+        "fallEpisodes": 94,
+        "fallsLandedAndResumed": 94,
+        "allPhysicalTransitionsMatched": true,
+        "climbEndFailures": 0,
+        "newFailureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 32
+        },
+        "algorithmFailureLabels": []
+      },
+      "observedFollowCoverage": {
+        "low": 64,
+        "high": 64,
+        "ground": 64
+      },
+      "actualPlayerStimulus": {
+        "FINAL_HOLD": {
+          "samples": 1137,
+          "areas": {
+            "ground": 1137
+          },
+          "maximumDisplacementFromFirstMeters": 0.3662315007564867
+        },
+        "GROUND_EAST": {
+          "samples": 80,
+          "areas": {
+            "ground": 80
+          },
+          "maximumDisplacementFromFirstMeters": 39.50755602724621
+        },
+        "GROUND_EAST_HOLD": {
+          "samples": 128,
+          "areas": {
+            "ground": 128
+          },
+          "maximumDisplacementFromFirstMeters": 0.32031556548676854
+        },
+        "GROUND_HOLD": {
+          "samples": 253,
+          "areas": {
+            "ground": 253
+          },
+          "maximumDisplacementFromFirstMeters": 0.0
+        },
+        "GROUND_NORTH": {
+          "samples": 82,
+          "areas": {
+            "ground": 82
+          },
+          "maximumDisplacementFromFirstMeters": 17.147643083371573
+        },
+        "HIGH_HOLD": {
+          "samples": 480,
+          "areas": {
+            "high": 480
+          },
+          "maximumDisplacementFromFirstMeters": 0.4061773258427749
+        },
+        "LOW_HOLD": {
+          "samples": 362,
+          "areas": {
+            "low": 358,
+            "air": 4
+          },
+          "maximumDisplacementFromFirstMeters": 2.052143899837086
+        }
+      },
+      "missionFrameMs": {
+        "samples": 9857,
+        "p50": 25.0,
+        "p95": 58.0,
+        "p99": 78.0
+      },
+      "baseSupportQueriesPerSolve": 8.081282964202279,
+      "newPbo": true,
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "finalFunctionalAcceptance": false,
+      "goalComplete": false,
+      "limits": [
+        "Full-run cumulative sampled counters, not a matched cost-window causal contrast.",
+        "Shadow keeps original support authoritative and adds work; cannot prove performance gain.",
+        "Fast mode does not perform reference comparison: zero under counter is not accuracy proof.",
+        "Actual player movement is physically free; stage target departures are reported separately.",
+        "Roof simultaneous occupancy is not a pass requirement. Legitimate falls require valid landing/reacquisition.",
+        "Mission frame timing is not visible pose smoothness or GPU Present."
+      ]
+    },
+    "leaseEvents": {
+      "sourceRunId": "ground-landing-lease-20261031-1525",
+      "runtimeRunId": "runtime-20261031-155047",
+      "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+      "count": 64,
+      "events": 94,
+      "outcomes": {
+        "NEW_FALL": 94
+      },
+      "grants": [],
+      "cancellations": [],
+      "checks": {
+        "atMostOneGrantPerFall": true,
+        "usedWithinBound": true,
+        "loggedBudgetsRestored": true,
+        "generationMatchesStateContract": true,
+        "noRevokedRegrant": true
+      },
+      "contractsPass": true,
+      "candidateActuallyGranted": false,
+      "sourceSha256": "f9c476b566a5fdb138551a15528d5520eb783fbfd1fe06328db231a574dd785a",
+      "limits": [
+        "Event log does not prove every internal step or support check.",
+        "No grant means preservation observation only, not live recovery efficacy.",
+        "Phase LAND cancellation is not FOLLOW completion; use state-contract episodes separately."
+      ],
+      "goalComplete": false
+    },
+    "admission": {
+      "sourceRunId": "ground-landing-lease-20261031-1525",
+      "runtimeRunId": "runtime-20261031-155047",
+      "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+      "checks": {
+        "all64ValidFinalStates": true,
+        "allFallsResumed": true,
+        "allPhysicalTransitionsMatched": true,
+        "noClimbEndFailure": true,
+        "noAlgorithmFailureLabels": true,
+        "foregroundCollected": true,
+        "actualTargetStagesValid": false,
+        "leaseEventContracts": true
+      },
+      "targetStageChecks": {
+        "LOW_HOLD": false,
+        "HIGH_HOLD": true,
+        "GROUND_HOLD": true,
+        "FINAL_HOLD": true
+      },
+      "scopedFunctionalPass": false,
+      "simultaneousRoofOccupancyRequired": false,
+      "unresolved": [],
+      "unresumedFalls": [],
+      "algorithmFailures": {},
+      "grantRecovery": [],
+      "selectedGroundRows": [],
+      "finalSelectedRows": {},
+      "lastSelectedLandingDetail": {},
+      "selection": "All unresolved, failed-contract and granted-lease actors; nearest sampled ground rows to listed event-relative/fixed times, last landing detail per selected actor. Not complete raw logs.",
+      "candidateActuallyGranted": false,
+      "liveRecoveryObservedAfterGrant": false,
+      "causalLimits": [
+        "Single live candidate run, no matched OFF execution: recovery after grant is not population-wide causal or optimization proof.",
+        "No grant means candidate efficacy unexercised.",
+        "Arrival does not erase watchdog/egress/climb contract failures.",
+        "Normal falls and repeated reclimb are accepted when valid recovery completes."
+      ],
+      "performanceAccepted": false,
+      "visualAccepted": false,
+      "finalAcceptance": false,
+      "goalComplete": false
+    },
+    "repeatComparison": {
+      "firstRunId": "runtime-20261031-154150",
+      "repeatRunId": "runtime-20261031-155047",
+      "identityKeysMatched": [
+        "missionSourcesSha256",
+        "subsetIntegrationPboSha256",
+        "subsetComparisonPboSha256",
+        "pboSha256",
+        "count",
+        "seconds",
+        "groundLandingContinuation",
+        "supportMode",
+        "fixedCamera",
+        "fixedCostStimulus",
+        "initialGraphicsSha256",
+        "frameSync",
+        "escapeRefinement",
+        "entryPreparationContact",
+        "postTouchdownBudgetScope",
+        "terrainContactOwner"
+      ],
+      "bothFunctionalPass": false,
+      "firstState": {
+        "terminalArrivals": 64,
+        "unresolvedTerminalAgents": [],
+        "fallEpisodes": 90,
+        "fallsLandedAndResumed": 90,
+        "allPhysicalTransitionsMatched": true,
+        "climbEndFailures": 0,
+        "newFailureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 26
+        },
+        "algorithmFailureLabels": []
+      },
+      "repeatState": {
+        "terminalArrivals": 64,
+        "unresolvedTerminalAgents": [],
+        "fallEpisodes": 94,
+        "fallsLandedAndResumed": 94,
+        "allPhysicalTransitionsMatched": true,
+        "climbEndFailures": 0,
+        "newFailureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 32
+        },
+        "algorithmFailureLabels": []
+      },
+      "firstFrameMs": {
+        "samples": 9365,
+        "p50": 24.0,
+        "p95": 68.0,
+        "p99": 93.0
+      },
+      "repeatFrameMs": {
+        "samples": 9857,
+        "p50": 25.0,
+        "p95": 58.0,
+        "p99": 78.0
+      },
+      "firstBuildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+      "repeatBuildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+      "firstForeground": 1.0,
+      "repeatForeground": 1.0,
+      "limits": "Two free-physics functional repetitions, not a deterministic trajectory, OFF/ON contrast, performance improvement or universal safety proof."
+    },
+    "next": [
+      "If gate false: diagnose remaining actual failed episodes, retain normal falls.",
+      "If gate true: assess repeat functional coverage, then separate controlled cost experiment.",
+      "Continue animation CPU/native/display diagnosis independently."
+    ],
+    "goalComplete": false,
+    "conditions": {
+      "count": 64,
+      "seconds": 300,
+      "repetitions": 2,
+      "supportMode": "fast",
+      "continuation": "on",
+      "fixedCamera": true,
+      "physicallyFreePlayer": true
+    },
+    "performanceAccepted": false,
+    "visualAccepted": false,
+    "stimulusReview": {
+      "strictRepeatedStimulusAccepted": false,
+      "lowStageCounts": {
+        "low": 358,
+        "air": 4
+      },
+      "nonLowRows": [
+        {
+          "seconds": "44.411",
+          "stage": "LOW_HOLD",
+          "player": "<4508.490723, 340.094177, 10241.269531>",
+          "area": "air",
+          "inputSpeed": "0",
+          "placement": "false",
+          "groundBodies": "8",
+          "lowBodies": "56",
+          "highBodies": "0",
+          "motionBodies": "0",
+          "admittedBodies": "64",
+          "combatEnabled": "false"
+        },
+        {
+          "seconds": "44.698",
+          "stage": "LOW_HOLD",
+          "player": "<4508.412598, 340.035156, 10241.257813>",
+          "area": "air",
+          "inputSpeed": "0",
+          "placement": "false",
+          "groundBodies": "8",
+          "lowBodies": "56",
+          "highBodies": "0",
+          "motionBodies": "0",
+          "admittedBodies": "64",
+          "combatEnabled": "false"
+        },
+        {
+          "seconds": "44.805",
+          "stage": "LOW_HOLD",
+          "player": "<4508.380371, 339.995392, 10241.241211>",
+          "area": "air",
+          "inputSpeed": "0",
+          "placement": "false",
+          "groundBodies": "8",
+          "lowBodies": "56",
+          "highBodies": "0",
+          "motionBodies": "0",
+          "admittedBodies": "64",
+          "combatEnabled": "false"
+        },
+        {
+          "seconds": "44.94",
+          "stage": "LOW_HOLD",
+          "player": "<4508.380371, 339.995392, 10241.241211>",
+          "area": "air",
+          "inputSpeed": "0",
+          "placement": "false",
+          "groundBodies": "8",
+          "lowBodies": "56",
+          "highBodies": "0",
+          "motionBodies": "0",
+          "admittedBodies": "64",
+          "combatEnabled": "false"
+        }
+      ],
+      "nonLowFirstSeconds": 44.411,
+      "nonLowLastSeconds": 44.94,
+      "interpretation": "Actual free-player position left low area near the end of LOW_HOLD. This is not a startup/warmup issue and samples are not removed. Cause of displacement is not isolated; peer contact is a hypothesis, not proven.",
+      "functionalOutcome": "Final64/64 and94/94 fall recovery with zero algorithm/climb failures remain observations. Strict all-stage target comparator stays False.",
+      "reportCorrection": "Initial generated checkpoint incorrectly said actual target stages matched, while its own stage checks showed False. Preserve initial report and supersede that sentence before any public publication.",
+      "next": "Do not fish for a favorable free-player repetition or anchor gameplay merely to pass. Keep actual target trajectory and stimulus comparability separate from NPC failure. Isolated fixed-input cost diagnosis may proceed independently; no performance promotion."
+    }
+  },
+  "blockers": [
+    "Two free-physics functional runs are not an OFF/ON performance contrast or universal safety proof.",
+    "Visible/native clock alignment and20ms p95 remain unaccepted."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/ground-landing-lease-repeat-20261031.md",
+      "sha256": "95c3ceaa67b2b6d6b4d6ddd39878b9254a9385ca7b20db62eeb021d859371820"
+    },
+    {
+      "path": "evidence/ground-landing-lease-repeat-20261031.txt",
+      "sha256": "c883ba3159645da2ddec13533af3933cf718fb116f3bc14f05c82a46634bfce2"
+    }
+  ],
+  "goalComplete": false
+}

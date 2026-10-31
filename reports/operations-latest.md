@@ -1,6 +1,6 @@
-# 유한 지면 복구 후보: 실제64명 회귀와 발급·낙하 복귀 대조
+# 64개체 반복 자극 검토: 기능 결과 보존·목표 위치 비교 미수용
 
-작성: 2026-10-31T15:48:56.604053+09:00
+작성: 2026-10-31T16:00:23.316743+09:00
 
 ## 1. 작업 목표
 
@@ -14,13 +14,19 @@
 
 ## 3. 측정 결과
 
-실행 runtime-20261031-154150,64명300초, 전경비율 1.0000. 최종 유효 ARRIVED 64/64, 낙하 착지·FOLLOW 복귀 90/90, 등반 종료 실패 0, 알고리즘 실패라벨 [].
+실행 runtime-20261031-155047,64명300초, 전경비율 1.0000. 최종 유효 ARRIVED 64/64, 낙하 착지·FOLLOW 복귀 94/94, 등반 종료 실패 0, 알고리즘 실패라벨 [].
 
-낮은/높은/지면 FOLLOW 관측 개체수 {'low': 64, 'high': 64, 'ground': 64}. 동시 점유 수가 아니다. 실제 목표 단계 {'LOW_HOLD': True, 'HIGH_HOLD': True, 'GROUND_HOLD': True, 'FINAL_HOLD': True}. 기능gate True, 세부 {'all64ValidFinalStates': True, 'allFallsResumed': True, 'allPhysicalTransitionsMatched': True, 'noClimbEndFailure': True, 'noAlgorithmFailureLabels': True, 'foregroundCollected': True, 'actualTargetStagesValid': True, 'leaseEventContracts': True}.
+낮은/높은/지면 FOLLOW 관측 개체수 {'low': 64, 'high': 64, 'ground': 64}. 동시 점유 수가 아니다. 실제 목표 단계 {'LOW_HOLD': False, 'HIGH_HOLD': True, 'GROUND_HOLD': True, 'FINAL_HOLD': True}. 기능gate False, 세부 {'all64ValidFinalStates': True, 'allFallsResumed': True, 'allPhysicalTransitionsMatched': True, 'noClimbEndFailure': True, 'noAlgorithmFailureLabels': True, 'foregroundCollected': True, 'actualTargetStagesValid': False, 'leaseEventContracts': True}.
 
-새 복구 여유 GRANTED 0회, 결과별 이벤트 {'NEW_FALL': 90}. 같은 세대의 발급 후 착지·FOLLOW 연결 []. 수명/한도/원래 예산 복원/세대 로그 검사 {'atMostOneGrantPerFall': True, 'usedWithinBound': True, 'loggedBudgetsRestored': True, 'generationMatchesStateContract': True, 'noRevokedRegrant': True}. 발급이 없으면 실제 소진 복구 효능은 미확인이다.
+새 복구 여유 GRANTED 0회, 결과별 이벤트 {'NEW_FALL': 94}. 같은 세대의 발급 후 착지·FOLLOW 연결 []. 수명/한도/원래 예산 복원/세대 로그 검사 {'atMostOneGrantPerFall': True, 'usedWithinBound': True, 'loggedBudgetsRestored': True, 'generationMatchesStateContract': True, 'noRevokedRegrant': True}. 발급이 없으면 실제 소진 복구 효능은 미확인이다.
 
-mission frame p50/p95/p99=24.0/68.0/93.0ms. 단일 기능 실행의 경과시간이며 GPU Present·애니메이션 cadence·순수CPU self-time이 아니다. 이전 다른 궤적 실행과 차감해 최적화 효과를 주장하지 않는다.20ms p95는 여전히 목표다.
+mission frame p50/p95/p99=25.0/58.0/78.0ms. 단일 기능 실행의 경과시간이며 GPU Present·애니메이션 cadence·순수CPU self-time이 아니다. 이전 다른 궤적 실행과 차감해 최적화 효과를 주장하지 않는다.20ms p95는 여전히 목표다.
+
+두 독립 실행의 기능 반복 판정=False. 첫 실행 runtime-20261031-154150: 최종64/64·낙하복귀90/90·p50/p95/p99={'samples': 9365, 'p50': 24.0, 'p95': 68.0, 'p99': 93.0}. 반복 실행 runtime-20261031-155047: 최종64/64·낙하복귀94/94·frame={'samples': 9857, 'p50': 25.0, 'p95': 58.0, 'p99': 78.0}. 빌드·미션·그래픽·옵션은 일치하지만 낮은 발판의 실제 목표 위치 조건은 일치하지 않았고 개체의 동적 궤적과 접촉 작업량은 다르다. 이 차이를 성능 개선으로 해석하지 않는다.
+
+목표 자극 추가 검토: 반복 실행 LOW_HOLD의362표본 중358개는low,4개는air다.44.411/44.698/44.805/44.940초에 플레이어가낮은면밖으로나갔다.초기화/워밍업표본이아니므로제외하지않는다.첫위치4510m에서마지막x4508.380371m로옮겨졌고inputSpeed는0이었다.변위원인은격리되지않았으며접촉은가설이다.45초다음단계진입전까지의마지막구간이첫실행과달랐다.최종64/64·94/94복귀·실패0과엄격한자극비교False를동시에보존한다.
+
+보고 문장 정정: 최초 자동 생성 보고서의 추가 비교문장에 '실제 목표 단계 일치'가 잘못 들어갔다.같은 보고서의원시stage검사값은False였고이를바꾸지않았다.최초MD/TXT/receipt는보존하고이정정보고서로대체한다.최초보고서SHA-256: `3ddaa695e998ad821be2f803925423b6c028983d98a8c9c619abab1bca370533`. 공개 전 정정했으며 기존 원시 기록은 수정하지 않았다.
 
 ## 4. 원인 분석
 
@@ -32,7 +38,7 @@ mission frame p50/p95/p99=24.0/68.0/93.0ms. 단일 기능 실행의 경과시간
 
 ## 5. 검증 수준
 
-정상 종료·서명·옵션·진단 연결은 확인했다. 이번 단일64명 기능gate=True. 반복 기능 검증 완료·시각 품질·성능 목표·최종 전체 수용과 구분한다. 실제 발급 후 복구 관측=False, 광범위한 인과/안전성 수용은 아니다.
+정상 종료·서명·옵션·진단 연결은 확인했다. 이번 단일64명 기능gate=False. 두 실행의 기능 결과는 보존하되, 엄격한 목표 위치 비교를 포함한 반복 수용은 보류한다. 시각 품질·성능 목표·최종 전체 수용은 별개다. 실제 발급 후 복구 관측=False, 광범위한 인과/안전성 수용은 아니다.
 
 ## 6. 변경 사항
 
@@ -40,10 +46,10 @@ mission frame p50/p95/p99=24.0/68.0/93.0ms. 단일 기능 실행의 경과시간
 
 ## 7. 원시 증거
 
-fast64-launch/results/lease-events/admission과 실제 profile의 launch/ground/player/state-contract/traversal/landing/lease/pose를 연결한다. 앞선8명 checkpoint·계약·packed source 증거도 보존한다. 기존 해시·JSON·파일 안정성·클라이언트 정상 종료를 검증한 뒤 저장했다. 공개는 집계·실패/발급 선정 문맥이며 전체raw·키·로컬 경로·자산·영상은 제외한다.
+fast64repeat-launch/results/lease-events/admission과 실제 profile의 launch/ground/player/state-contract/traversal/landing/lease/pose를 연결한다. 앞선8명 checkpoint·계약·packed source 증거도 보존한다. 기존 해시·JSON·파일 안정성·클라이언트 정상 종료를 검증한 뒤 저장했다. 공개는 집계·실패/발급 선정 문맥이며 전체raw·키·로컬 경로·자산·영상은 제외한다.
 
 ## 8. 잔여 문제
 
-이번 기능gate가 False면 해당 미복귀·잘못된 전이·입구/출구 계약을 기존 격리 입력으로 재현한 뒤 최소 변경을 검토한다. guard 삭제·거리 무한갱신·낙하 자체 억제로 통과시키지 않는다. True여도 단일 실행이므로 동적 기능 반복과 실제 후보 경로가 충분히 행사됐는지 확인한다. 기능이 안정되면 같은 목표/카메라/계측의 비용 통제 반복을 별도로 재개한다. CPU/native 시계와 실제 표시 불일치 연구도 유지한다.
+이번 기능gate가 False면 해당 미복귀·잘못된 전이·입구/출구 계약을 기존 격리 입력으로 재현한 뒤 최소 변경을 검토한다. guard 삭제·거리 무한갱신·낙하 자체 억제로 통과시키지 않는다. True여도 단일 실행이므로 동적 기능 반복과 실제 후보 경로가 충분히 행사됐는지 확인한다. 실제 목표 이탈을 NPC 실패와 구분하며, 유리한 반복만 선택하거나 플레이어 고정으로 기능 통과를 만들지 않는다. 현재 자료의 같은 입력 지지/충돌 비용 진단은 별도 연구로 검토하되 live 성능 수용은 주장하지 않는다. CPU/native 시계와 실제 표시 불일치 연구도 유지한다.
 
-선정 공개 본문.로컬 보고서 SHA-256:`aa34fb5306197e45d522858b5119ca66692bd6b1411c4f0de99f0bff8b259c90`.전체 원시 기록이 아니다.
+선정 공개 본문.정정된 로컬 보고서 SHA-256:`650d55fe21abdc7c1fa60b5891462aadd9a5ace93ca0ee2e86f065021b4c5017`.전체 원시 자료가 아니다.

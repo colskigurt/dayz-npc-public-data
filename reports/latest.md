@@ -1,3 +1,7 @@
+> 비교 조건 정정: 두 실행 모두64/64·모든낙하복귀·계약실패0이지만,반복LOW끝4개air로엄격한목표자극비교는False다.단순반복통과나후보효능/성능개선으로보고하지않는다.
+
+> 최신64명 유한지면복구 후보:최종64/64,낙하복귀94/94,기능gate=False,여유발급0.단일실행·시각/성능미수용.[조건과근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/ground-landing-lease-repeat-20261031.md).이전기록은아래보존한다.
+
 > 최신64명 유한지면복구 후보:최종64/64,낙하복귀90/90,기능gate=True,여유발급0.단일실행·시각/성능미수용.[조건과근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/ground-landing-lease-sixtyfour-20261031.md).이전기록은아래보존한다.
 
 > 최신:유한지면복구서명후보·낙하세대계약반복,실제8명최종8/8·낙하복귀10/10.64/시각/성능수용은미완료.[조건과근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/ground-landing-lease-eight-20261031.md).이전기록은아래보존한다.
