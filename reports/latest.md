@@ -1,3 +1,5 @@
+> 최신 역순 반복(2026-10-31): A/B/B/A·조건당2회에서 기본 clock약0.654~0.659배, 후보약1.000배로 시간 보존 효과를 재현했다. 후보 step은 직전 script interval과강하게연관되지만 인과확정·시각부드러움·지원배포·8/64회귀·성능수용은 미완료다. [조건·수치·한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-residual-repeat-20261031.md). 이전 기록은 아래 보존한다.
+
 > 최신 잔여시간 인과시험(2026-10-31): 기본 clock0.659441→후보1.000003, 독립 pose 진행0.657746→0.999111. 조건당1회·논리1명/8파트이며, 평가 횟수는약52% 증가했다. 시각 부드러움·지원 배포 경로·8/64회귀·성능 수용은 미완료다. [조건·수치·한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-residual-carry-20261031.md). 이전 기록은 아래 보존한다.
 
 > 최신 TRS·초기화 경계 진단(2026-10-31): 초기화121개를 포함해 native/CPU/영상390쌍의 시간 순서를 연결했다.397표본 모두 캐시dirty였고,123번 쌍 교체에서 끝→시작 위치/회전 차이는0이었다. 관찰부하 약4.3ms를 포함하므로 개선·최종시각·64수용은 미완료다. [조건·수치·한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-trs-reset-20261031.md). 이전 기록은 아래에 보존한다.

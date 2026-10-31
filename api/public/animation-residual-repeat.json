@@ -1,0 +1,597 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T11:33:53.048760+09:00",
+  "sourceRunId": "animation-residual-repeat-20261031-112400",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "verificationStatus": {
+    "diagnostic": "clock_conservation_replicated_ABBA",
+    "clockRepeated": true,
+    "visual": "measured_not_accepted",
+    "functional": "8_64_not_run_in_this_bundle",
+    "performance": "not_accepted",
+    "supportedDeployableFix": false,
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-residual-repeat-20261031-112400",
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "order": "A/B/B/A",
+    "runs": [
+      {
+        "bundle": "animation-residual-carry-20261031-105147",
+        "mode": "baseline30",
+        "runtimeRunId": "runtime-20261031-110449",
+        "clockPerWall": {
+          "p50": 0.6594407292383948,
+          "p95": 0.6594420365187569,
+          "p99": 0.6594421567337203,
+          "maximum": 0.6594421867874611
+        },
+        "sourcePosePhasePerMission": 0.6577457772947464,
+        "sourcePoseFitErrorMeters": {
+          "n": 1472,
+          "p50": 0.005580181691157802,
+          "p95": 0.013071864256939873,
+          "p99": 0.018524923771001955,
+          "maximum": 0.029208276277800302
+        },
+        "sourcePoseStepMs": {
+          "n": 1471,
+          "p50": 8.333333333333334,
+          "p95": 37.5,
+          "p99": 37.5,
+          "maximum": 45.83333333333333
+        },
+        "sourceNegativeSteps": 0,
+        "nativeEvaluationsPerPart": 395,
+        "nativeReadBracketMs": {
+          "p50": 0.0103,
+          "p95": 0.0177,
+          "p99": 0.02,
+          "maximum": 1.6983
+        },
+        "numericApplied": 0,
+        "hudExactFrames": 536,
+        "hudTotalFrames": 540,
+        "activeConsecutiveCpuVideoPairs": 437,
+        "cpuVideoIncrementCorrelation": 0.943663188700162,
+        "cpuJointRmsStepMeters": {
+          "n": 437,
+          "p50": 0.02155612808847329,
+          "p95": 0.11723638438412724,
+          "p99": 0.12802455742059599,
+          "maximum": 0.14697950161388715
+        },
+        "visibleSilhouetteChangedPixels": {
+          "n": 437,
+          "p50": 1222.0,
+          "p95": 4247.2,
+          "p99": 4739.359999999997,
+          "maximum": 5111
+        },
+        "bodyHeldBelow10Pixels": 1,
+        "cpuStepAbove75mm": 95,
+        "missionPacing": {
+          "n": 1472,
+          "p50": 20.0,
+          "p95": 34.0,
+          "p99": 36.0,
+          "maximum": 38.0
+        },
+        "pacingScope": "Trimmed treatment active mission interval, observer and recording present; not GPU or64cost"
+      },
+      {
+        "bundle": "animation-residual-carry-20261031-105147",
+        "mode": "candidate30",
+        "runtimeRunId": "runtime-20261031-111204",
+        "clockPerWall": {
+          "p50": 1.0000030604317525,
+          "p95": 1.0000091837404168,
+          "p99": 1.000009462298839,
+          "maximum": 1.0000095319384443
+        },
+        "sourcePosePhasePerMission": 0.999110642829628,
+        "sourcePoseFitErrorMeters": {
+          "n": 1471,
+          "p50": 0.008316684205222162,
+          "p95": 0.020888885684296348,
+          "p99": 0.026660685531888505,
+          "maximum": 0.032123522170610104
+        },
+        "sourcePoseStepMs": {
+          "n": 1470,
+          "p50": 16.666666666666668,
+          "p95": 37.5,
+          "p99": 41.666666666666664,
+          "maximum": 66.66666666666667
+        },
+        "sourceNegativeSteps": 0,
+        "nativeEvaluationsPerPart": 600,
+        "nativeReadBracketMs": {
+          "p50": 0.0113,
+          "p95": 0.0493,
+          "p99": 0.052309000000000015,
+          "maximum": 0.1342
+        },
+        "numericApplied": 4800,
+        "hudExactFrames": 527,
+        "hudTotalFrames": 540,
+        "activeConsecutiveCpuVideoPairs": 431,
+        "cpuVideoIncrementCorrelation": 0.9153112061809081,
+        "cpuJointRmsStepMeters": {
+          "n": 431,
+          "p50": 0.041253302176916674,
+          "p95": 0.12103866607965197,
+          "p99": 0.14086876967152542,
+          "maximum": 0.1559759096644949
+        },
+        "visibleSilhouetteChangedPixels": {
+          "n": 431,
+          "p50": 2111.0,
+          "p95": 4441.5,
+          "p99": 4854.099999999999,
+          "maximum": 5160
+        },
+        "bodyHeldBelow10Pixels": 0,
+        "cpuStepAbove75mm": 171,
+        "missionPacing": {
+          "n": 1471,
+          "p50": 20.0,
+          "p95": 34.0,
+          "p99": 36.0,
+          "maximum": 38.0
+        },
+        "pacingScope": "Trimmed treatment active mission interval, observer and recording present; not GPU or64cost"
+      },
+      {
+        "bundle": "animation-residual-repeat-20261031-112400",
+        "mode": "candidate30",
+        "runtimeRunId": "runtime-20261031-112434",
+        "clockPerWall": {
+          "p50": 0.9999698048285686,
+          "p95": 0.999969985523924,
+          "p99": 0.9999700238320114,
+          "maximum": 0.9999700334090332
+        },
+        "sourcePosePhasePerMission": 0.9989980300251338,
+        "sourcePoseFitErrorMeters": {
+          "n": 1472,
+          "p50": 0.00842221579646861,
+          "p95": 0.02048378409802607,
+          "p99": 0.027085651665930646,
+          "maximum": 0.030846996391660556
+        },
+        "sourcePoseStepMs": {
+          "n": 1471,
+          "p50": 16.666666666666668,
+          "p95": 37.5,
+          "p99": 41.666666666666664,
+          "maximum": 66.66666666666667
+        },
+        "sourceNegativeSteps": 0,
+        "nativeEvaluationsPerPart": 600,
+        "nativeReadBracketMs": {
+          "p50": 0.0115,
+          "p95": 0.0497,
+          "p99": 0.0538,
+          "maximum": 0.0919
+        },
+        "numericApplied": 4800,
+        "hudExactFrames": 506,
+        "hudTotalFrames": 540,
+        "activeConsecutiveCpuVideoPairs": 381,
+        "cpuVideoIncrementCorrelation": 0.9185926623884644,
+        "cpuJointRmsStepMeters": {
+          "n": 381,
+          "p50": 0.04145959395805355,
+          "p95": 0.1194906618687558,
+          "p99": 0.13698301907052987,
+          "maximum": 0.14486363347472683
+        },
+        "visibleSilhouetteChangedPixels": {
+          "n": 381,
+          "p50": 1998.0,
+          "p95": 4378.0,
+          "p99": 4954.2,
+          "maximum": 5178
+        },
+        "bodyHeldBelow10Pixels": 0,
+        "cpuStepAbove75mm": 155,
+        "missionPacing": {
+          "n": 1472,
+          "p50": 20.0,
+          "p95": 34.0,
+          "p99": 36.0,
+          "maximum": 37.0
+        },
+        "pacingScope": "Trimmed treatment active mission interval, observer and recording present; not GPU or64cost"
+      },
+      {
+        "bundle": "animation-residual-repeat-20261031-112400",
+        "mode": "baseline30",
+        "runtimeRunId": "runtime-20261031-112900",
+        "clockPerWall": {
+          "p50": 0.6535880276282495,
+          "p95": 0.6535892424756168,
+          "p99": 0.6535893315732922,
+          "maximum": 0.6535893538477111
+        },
+        "sourcePosePhasePerMission": 0.6532204233558427,
+        "sourcePoseFitErrorMeters": {
+          "n": 1473,
+          "p50": 0.0053419717919106395,
+          "p95": 0.01294132112528208,
+          "p99": 0.01946748606784384,
+          "maximum": 0.027210488833737136
+        },
+        "sourcePoseStepMs": {
+          "n": 1472,
+          "p50": 4.166666666666667,
+          "p95": 37.5,
+          "p99": 37.5,
+          "maximum": 41.666666666666664
+        },
+        "sourceNegativeSteps": 0,
+        "nativeEvaluationsPerPart": 393,
+        "nativeReadBracketMs": {
+          "p50": 0.0104,
+          "p95": 0.018,
+          "p99": 0.0209,
+          "maximum": 0.163
+        },
+        "numericApplied": 0,
+        "hudExactFrames": 528,
+        "hudTotalFrames": 540,
+        "activeConsecutiveCpuVideoPairs": 420,
+        "cpuVideoIncrementCorrelation": 0.9433944743904682,
+        "cpuJointRmsStepMeters": {
+          "n": 420,
+          "p50": 0.02033021820900211,
+          "p95": 0.1113796935987938,
+          "p99": 0.13565345167044665,
+          "maximum": 0.15225826456933844
+        },
+        "visibleSilhouetteChangedPixels": {
+          "n": 420,
+          "p50": 1180.0,
+          "p95": 4286.5,
+          "p99": 4693.29,
+          "maximum": 5147
+        },
+        "bodyHeldBelow10Pixels": 0,
+        "cpuStepAbove75mm": 97,
+        "missionPacing": {
+          "n": 1473,
+          "p50": 21.0,
+          "p95": 35.0,
+          "p99": 37.0,
+          "maximum": 38.0
+        },
+        "pacingScope": "Trimmed treatment active mission interval, observer and recording present; not GPU or64cost"
+      }
+    ],
+    "summary": {
+      "baseline": {
+        "repetitions": 2,
+        "clockPerWallRange": [
+          0.6535880276282495,
+          0.6594407292383948
+        ],
+        "sourcePosePhasePerMissionRange": [
+          0.6532204233558427,
+          0.6577457772947464
+        ],
+        "nativeEvaluationsPerPart": [
+          395,
+          393
+        ],
+        "cpuVideoCorrelations": [
+          0.943663188700162,
+          0.9433944743904682
+        ],
+        "videoAdmittedPairs": [
+          437,
+          420
+        ],
+        "missionPacing": [
+          {
+            "n": 1472,
+            "p50": 20.0,
+            "p95": 34.0,
+            "p99": 36.0,
+            "maximum": 38.0
+          },
+          {
+            "n": 1473,
+            "p50": 21.0,
+            "p95": 35.0,
+            "p99": 37.0,
+            "maximum": 38.0
+          }
+        ]
+      },
+      "candidate": {
+        "repetitions": 2,
+        "clockPerWallRange": [
+          0.9999698048285686,
+          1.0000030604317525
+        ],
+        "sourcePosePhasePerMissionRange": [
+          0.9989980300251338,
+          0.999110642829628
+        ],
+        "nativeEvaluationsPerPart": [
+          600,
+          600
+        ],
+        "cpuVideoCorrelations": [
+          0.9153112061809081,
+          0.9185926623884644
+        ],
+        "videoAdmittedPairs": [
+          431,
+          381
+        ],
+        "missionPacing": [
+          {
+            "n": 1471,
+            "p50": 20.0,
+            "p95": 34.0,
+            "p99": 36.0,
+            "maximum": 38.0
+          },
+          {
+            "n": 1472,
+            "p50": 20.0,
+            "p95": 34.0,
+            "p99": 36.0,
+            "maximum": 37.0
+          }
+        ]
+      }
+    },
+    "clockCandidateTolerance": 0.005,
+    "clockRepeatedDiagnosisPassed": true,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "functionalRegressionPassed": false,
+    "supportedDeployableFix": false,
+    "goalComplete": false,
+    "limits": [
+      "Two runs per condition on same machine/build/fixed run clip; not14clip or8/64AI regression.",
+      "Candidate isolated native memory writes remain nondeployable through a demonstrated supported PBO contract.",
+      "Silhouette and6joint source FK are proxies; no final GPU/Present time or perceptual acceptance.",
+      "Frame-step tails remain, and evaluation count increases; no performance improvement claimed.",
+      "Temporal alignment is exploratory; correlated neighboring intervals do not identify unique update-loop causality."
+    ]
+  },
+  "temporalExploration": {
+    "sourceRunId": "animation-residual-repeat-20261031-112400",
+    "analysis": "post-hoc temporal alignment; positive lag compares step with earlier script interval",
+    "runs": {
+      "runtime-20261031-110449": {
+        "bundle": "animation-residual-carry-20261031-105147",
+        "mode": "baseline30",
+        "offsets": {
+          "-2": {
+            "pairs": 1471,
+            "effectiveStepCorrelation": -0.4932566370002619,
+            "effectiveStepRmsResidualMs": 22.229882950157403,
+            "sourcePhaseCorrelation": -0.5121994008921243,
+            "sourcePhaseRmsResidualMs": 23.01532427419802
+          },
+          "-1": {
+            "pairs": 1471,
+            "effectiveStepCorrelation": 0.491260087744954,
+            "effectiveStepRmsResidualMs": 14.137370675204592,
+            "sourcePhaseCorrelation": 0.5098783643414337,
+            "sourcePhaseRmsResidualMs": 14.255588615802194
+          },
+          "0": {
+            "pairs": 1471,
+            "effectiveStepCorrelation": -0.5025952393125923,
+            "effectiveStepRmsResidualMs": 22.291327890369065,
+            "sourcePhaseCorrelation": -0.5199784644956634,
+            "sourcePhaseRmsResidualMs": 23.068002768302527
+          },
+          "1": {
+            "pairs": 1471,
+            "effectiveStepCorrelation": 0.4961778665156154,
+            "effectiveStepRmsResidualMs": 14.08461724697631,
+            "sourcePhaseCorrelation": 0.5158113898150597,
+            "sourcePhaseRmsResidualMs": 14.188373953159768
+          },
+          "2": {
+            "pairs": 1471,
+            "effectiveStepCorrelation": -0.4878805510009156,
+            "effectiveStepRmsResidualMs": 22.191349449052055,
+            "sourcePhaseCorrelation": -0.5084794812638075,
+            "sourcePhaseRmsResidualMs": 22.987128455463886
+          }
+        },
+        "effectiveStepMs": {
+          "n": 1471,
+          "p50": 7.000000216066837,
+          "p95": 34.00000277906656,
+          "p99": 34.99999921768904,
+          "maximum": 37.99999970942736
+        }
+      },
+      "runtime-20261031-111204": {
+        "bundle": "animation-residual-carry-20261031-105147",
+        "mode": "candidate30",
+        "offsets": {
+          "-2": {
+            "pairs": 1470,
+            "effectiveStepCorrelation": -0.9665794981839108,
+            "effectiveStepRmsResidualMs": 24.948711773244302,
+            "sourcePhaseCorrelation": -0.9256495424944965,
+            "sourcePhaseRmsResidualMs": 25.152404317137027
+          },
+          "-1": {
+            "pairs": 1470,
+            "effectiveStepCorrelation": 0.9739425091547984,
+            "effectiveStepRmsResidualMs": 2.871863407921967,
+            "sourcePhaseCorrelation": 0.9318838211839984,
+            "sourcePhaseRmsResidualMs": 4.752075172272824
+          },
+          "0": {
+            "pairs": 1470,
+            "effectiveStepCorrelation": -0.9863131116957623,
+            "effectiveStepRmsResidualMs": 25.074299749285448,
+            "sourcePhaseCorrelation": -0.9437326978089835,
+            "sourcePhaseRmsResidualMs": 25.270906718585422
+          },
+          "1": {
+            "pairs": 1470,
+            "effectiveStepCorrelation": 0.9984299561174842,
+            "effectiveStepRmsResidualMs": 0.7051764567382544,
+            "sourcePhaseCorrelation": 0.9550620980087078,
+            "sourcePhaseRmsResidualMs": 3.8691636124248903
+          },
+          "2": {
+            "pairs": 1470,
+            "effectiveStepCorrelation": -0.9859123752586214,
+            "effectiveStepRmsResidualMs": 25.07457029274489,
+            "sourcePhaseCorrelation": -0.9421933554546151,
+            "sourcePhaseRmsResidualMs": 25.263668908973933
+          }
+        },
+        "effectiveStepMs": {
+          "n": 1470,
+          "p50": 20.000092685222626,
+          "p95": 34.00019183754921,
+          "p99": 35.99923476576805,
+          "maximum": 37.99999970942736
+        }
+      },
+      "runtime-20261031-112900": {
+        "bundle": "animation-residual-repeat-20261031-112400",
+        "mode": "baseline30",
+        "offsets": {
+          "-2": {
+            "pairs": 1472,
+            "effectiveStepCorrelation": -0.5234223711321546,
+            "effectiveStepRmsResidualMs": 23.393714255904086,
+            "sourcePhaseCorrelation": -0.530763339298295,
+            "sourcePhaseRmsResidualMs": 24.182134058823138
+          },
+          "-1": {
+            "pairs": 1472,
+            "effectiveStepCorrelation": 0.5263570139695273,
+            "effectiveStepRmsResidualMs": 14.303364518231481,
+            "sourcePhaseCorrelation": 0.5315778929456291,
+            "sourcePhaseRmsResidualMs": 14.571957908138893
+          },
+          "0": {
+            "pairs": 1472,
+            "effectiveStepCorrelation": -0.5332317713405428,
+            "effectiveStepRmsResidualMs": 23.46075863263199,
+            "sourcePhaseCorrelation": -0.5393702707631854,
+            "sourcePhaseRmsResidualMs": 24.243163925767778
+          },
+          "1": {
+            "pairs": 1472,
+            "effectiveStepCorrelation": 0.528709589171341,
+            "effectiveStepRmsResidualMs": 14.276482060620797,
+            "sourcePhaseCorrelation": 0.5363074642918376,
+            "sourcePhaseRmsResidualMs": 14.51499321146043
+          },
+          "2": {
+            "pairs": 1472,
+            "effectiveStepCorrelation": -0.5239617745672038,
+            "effectiveStepRmsResidualMs": 23.39473043402529,
+            "sourcePhaseCorrelation": -0.5313358578118632,
+            "sourcePhaseRmsResidualMs": 24.183562075671997
+          }
+        },
+        "effectiveStepMs": {
+          "n": 1472,
+          "p50": 6.000000983476639,
+          "p95": 34.00000277906656,
+          "p99": 35.00000108033419,
+          "maximum": 37.99999784678221
+        }
+      },
+      "runtime-20261031-112434": {
+        "bundle": "animation-residual-repeat-20261031-112400",
+        "mode": "candidate30",
+        "offsets": {
+          "-2": {
+            "pairs": 1471,
+            "effectiveStepCorrelation": -0.9754783147868811,
+            "effectiveStepRmsResidualMs": 25.07577710100993,
+            "sourcePhaseCorrelation": -0.931997927125146,
+            "sourcePhaseRmsResidualMs": 25.35374884026642
+          },
+          "-1": {
+            "pairs": 1471,
+            "effectiveStepCorrelation": 0.9764984751700327,
+            "effectiveStepRmsResidualMs": 2.7358056869452576,
+            "sourcePhaseCorrelation": 0.933572538297784,
+            "sourcePhaseRmsResidualMs": 4.727395716682106
+          },
+          "0": {
+            "pairs": 1471,
+            "effectiveStepCorrelation": -0.9864307265175912,
+            "effectiveStepRmsResidualMs": 25.148245879802857,
+            "sourcePhaseCorrelation": -0.9419659521760543,
+            "sourcePhaseRmsResidualMs": 25.422061201044468
+          },
+          "1": {
+            "pairs": 1471,
+            "effectiveStepCorrelation": 0.9983474507675784,
+            "effectiveStepRmsResidualMs": 0.7281860549084812,
+            "sourcePhaseCorrelation": 0.9520502822620385,
+            "sourcePhaseRmsResidualMs": 4.025325353649632
+          },
+          "2": {
+            "pairs": 1471,
+            "effectiveStepCorrelation": -0.984776942614123,
+            "effectiveStepRmsResidualMs": 25.138498391449648,
+            "sourcePhaseCorrelation": -0.9388331723413633,
+            "sourcePhaseRmsResidualMs": 25.402269662886184
+          }
+        },
+        "effectiveStepMs": {
+          "n": 1471,
+          "p50": 19.999999552965164,
+          "p95": 34.00019183754921,
+          "p99": 35.99999872967601,
+          "maximum": 37.00000047683716
+        }
+      }
+    },
+    "limits": [
+      "Neighbor intervals are serially correlated; strongest lag is not unique causality.",
+      "Mission seconds are rounded and source FK phase is a proxy.",
+      "Effective graph+numerator is not a final GPU timestamp.",
+      "Candidate restores total time but does not establish even per-frame presentation."
+    ],
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "blockers": [
+    "Two runs per condition on same machine/build/fixed run clip; not14clip or8/64AI regression.",
+    "Candidate isolated native memory writes remain nondeployable through a demonstrated supported PBO contract.",
+    "Silhouette and6joint source FK are proxies; no final GPU/Present time or perceptual acceptance.",
+    "Frame-step tails remain, and evaluation count increases; no performance improvement claimed.",
+    "Temporal alignment is exploratory; correlated neighboring intervals do not identify unique update-loop causality."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-residual-repeat-20261031.md",
+      "sha256": "ef7c1fb0b4ee06e653fb88ff26daa0526340e3914b55e735205cde6c2e12638c"
+    },
+    {
+      "path": "evidence/animation-residual-repeat-20261031.txt",
+      "sha256": "8d9ab8aed8417897821977cae975bb24da49ad740f1fc7fb4b3fc688391a5239"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
