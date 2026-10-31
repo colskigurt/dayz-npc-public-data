@@ -1,3 +1,5 @@
+> 최신64명 유한지면복구 후보:최종64/64,낙하복귀90/90,기능gate=True,여유발급0.단일실행·시각/성능미수용.[조건과근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/ground-landing-lease-sixtyfour-20261031.md).이전기록은아래보존한다.
+
 > 최신:유한지면복구서명후보·낙하세대계약반복,실제8명최종8/8·낙하복귀10/10.64/시각/성능수용은미완료.[조건과근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/ground-landing-lease-eight-20261031.md).이전기록은아래보존한다.
 
 > 최신 작업:5번 소진 예산 차단을 기존 planner/Fall로 재현. 누계 유지·유한 지면 여유에서3포즈×2회 LAND. live FOLLOW/64회귀/시각/성능수용은 미완료. [진단과 제외한 오류](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/actor5-planner-fall-20261031.md). 이전 기록은 아래 보존한다.

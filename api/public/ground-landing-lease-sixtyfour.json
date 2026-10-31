@@ -1,0 +1,247 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T15:48:59.198487+09:00",
+  "sourceRunId": "ground-landing-lease-20261031-1525-sixtyfour",
+  "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+  "verificationStatus": {
+    "diagnostic": "closed_64_agent_trial_and_generation_join",
+    "scopedFunctionalPass": true,
+    "repeatVerified": false,
+    "liveRecoveryObservedAfterGrant": false,
+    "visibleSmoothness": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "ground-landing-lease-20261031-1525-sixtyfour",
+    "sourceRuntimeId": "runtime-20261031-154150",
+    "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+    "trial": {
+      "analysisVersion": 3,
+      "producerSha256": "08aa199016058b864e114c6409afacb92094f65f2291f1fabdfc9dae6e22bdfd",
+      "foregroundFraction": 1.0,
+      "sourceRunId": "ground-landing-lease-20261031-1525",
+      "label": "fast64",
+      "runtimeRunId": "runtime-20261031-154150",
+      "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+      "count": 64,
+      "seconds": 300,
+      "mode": "fast",
+      "normalQuitVerified": true,
+      "supportCounters": {
+        "supportFastAttempts": 925370.0,
+        "supportFastSweeps": 303198.0,
+        "supportFastEligible": 303170.0,
+        "supportFastUsed": 303170.0,
+        "supportFastSkippedRays": 1212680.0,
+        "supportFastReferenceChecks": 0.0,
+        "supportFastUnder": 0.0,
+        "supportShadowQueries": 0.0,
+        "supportShadowCompared": 0.0,
+        "supportShadowUnder": 0.0,
+        "supportShadowWithoutReference": 0.0,
+        "contactSolves": 466718.0,
+        "contactFootRays": 3454500.0
+      },
+      "errorMaximaMeters": {
+        "supportFastMaxUnder": 0.0,
+        "supportFastMaxOver": 0.0,
+        "supportShadowMaxUnder": 0.0,
+        "supportShadowMaxOver": 0.0
+      },
+      "eligibleBoundComparisonPassed": false,
+      "eightAgentGatePassed": false,
+      "stateDiagnostic": {
+        "terminalArrivals": 64,
+        "unresolvedTerminalAgents": [],
+        "fallEpisodes": 90,
+        "fallsLandedAndResumed": 90,
+        "allPhysicalTransitionsMatched": true,
+        "climbEndFailures": 0,
+        "newFailureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 26
+        },
+        "algorithmFailureLabels": []
+      },
+      "observedFollowCoverage": {
+        "low": 64,
+        "high": 64,
+        "ground": 64
+      },
+      "actualPlayerStimulus": {
+        "FINAL_HOLD": {
+          "samples": 1123,
+          "areas": {
+            "ground": 1123
+          },
+          "maximumDisplacementFromFirstMeters": 0.4062557741817342
+        },
+        "GROUND_EAST": {
+          "samples": 79,
+          "areas": {
+            "ground": 79
+          },
+          "maximumDisplacementFromFirstMeters": 26.004156437344964
+        },
+        "GROUND_EAST_HOLD": {
+          "samples": 123,
+          "areas": {
+            "ground": 123
+          },
+          "maximumDisplacementFromFirstMeters": 0.1650413728307023
+        },
+        "GROUND_HOLD": {
+          "samples": 246,
+          "areas": {
+            "ground": 246
+          },
+          "maximumDisplacementFromFirstMeters": 0.0
+        },
+        "GROUND_NORTH": {
+          "samples": 82,
+          "areas": {
+            "ground": 82
+          },
+          "maximumDisplacementFromFirstMeters": 18.958073460544657
+        },
+        "HIGH_HOLD": {
+          "samples": 465,
+          "areas": {
+            "high": 465
+          },
+          "maximumDisplacementFromFirstMeters": 0.4098061797316075
+        },
+        "LOW_HOLD": {
+          "samples": 358,
+          "areas": {
+            "low": 358
+          },
+          "maximumDisplacementFromFirstMeters": 1.7995351378177473
+        }
+      },
+      "missionFrameMs": {
+        "samples": 9365,
+        "p50": 24.0,
+        "p95": 68.0,
+        "p99": 93.0
+      },
+      "baseSupportQueriesPerSolve": 8.051324354321025,
+      "newPbo": true,
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "finalFunctionalAcceptance": false,
+      "goalComplete": false,
+      "limits": [
+        "Full-run cumulative sampled counters, not a matched cost-window causal contrast.",
+        "Shadow keeps original support authoritative and adds work; cannot prove performance gain.",
+        "Fast mode does not perform reference comparison: zero under counter is not accuracy proof.",
+        "Actual player movement is physically free; stage target departures are reported separately.",
+        "Roof simultaneous occupancy is not a pass requirement. Legitimate falls require valid landing/reacquisition.",
+        "Mission frame timing is not visible pose smoothness or GPU Present."
+      ]
+    },
+    "leaseEvents": {
+      "sourceRunId": "ground-landing-lease-20261031-1525",
+      "runtimeRunId": "runtime-20261031-154150",
+      "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+      "count": 64,
+      "events": 90,
+      "outcomes": {
+        "NEW_FALL": 90
+      },
+      "grants": [],
+      "cancellations": [],
+      "checks": {
+        "atMostOneGrantPerFall": true,
+        "usedWithinBound": true,
+        "loggedBudgetsRestored": true,
+        "generationMatchesStateContract": true,
+        "noRevokedRegrant": true
+      },
+      "contractsPass": true,
+      "candidateActuallyGranted": false,
+      "sourceSha256": "73a910ddfeb231ed6c7d1b0b6eb5301313b4b2641fccbce23832fd74755b2368",
+      "limits": [
+        "Event log does not prove every internal step or support check.",
+        "No grant means preservation observation only, not live recovery efficacy.",
+        "Phase LAND cancellation is not FOLLOW completion; use state-contract episodes separately."
+      ],
+      "goalComplete": false
+    },
+    "admission": {
+      "sourceRunId": "ground-landing-lease-20261031-1525",
+      "runtimeRunId": "runtime-20261031-154150",
+      "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+      "checks": {
+        "all64ValidFinalStates": true,
+        "allFallsResumed": true,
+        "allPhysicalTransitionsMatched": true,
+        "noClimbEndFailure": true,
+        "noAlgorithmFailureLabels": true,
+        "foregroundCollected": true,
+        "actualTargetStagesValid": true,
+        "leaseEventContracts": true
+      },
+      "targetStageChecks": {
+        "LOW_HOLD": true,
+        "HIGH_HOLD": true,
+        "GROUND_HOLD": true,
+        "FINAL_HOLD": true
+      },
+      "scopedFunctionalPass": true,
+      "simultaneousRoofOccupancyRequired": false,
+      "unresolved": [],
+      "unresumedFalls": [],
+      "algorithmFailures": {},
+      "grantRecovery": [],
+      "selectedGroundRows": [],
+      "finalSelectedRows": {},
+      "lastSelectedLandingDetail": {},
+      "selection": "All unresolved, failed-contract and granted-lease actors; nearest sampled ground rows to listed event-relative/fixed times, last landing detail per selected actor. Not complete raw logs.",
+      "candidateActuallyGranted": false,
+      "liveRecoveryObservedAfterGrant": false,
+      "causalLimits": [
+        "Single live candidate run, no matched OFF execution: recovery after grant is not population-wide causal or optimization proof.",
+        "No grant means candidate efficacy unexercised.",
+        "Arrival does not erase watchdog/egress/climb contract failures.",
+        "Normal falls and repeated reclimb are accepted when valid recovery completes."
+      ],
+      "performanceAccepted": false,
+      "visualAccepted": false,
+      "finalAcceptance": false,
+      "goalComplete": false
+    },
+    "next": [
+      "If gate false: diagnose remaining actual failed episodes, retain normal falls.",
+      "If gate true: assess repeat functional coverage, then separate controlled cost experiment.",
+      "Continue animation CPU/native/display diagnosis independently."
+    ],
+    "goalComplete": false,
+    "conditions": {
+      "count": 64,
+      "seconds": 300,
+      "repetitions": 1,
+      "supportMode": "fast",
+      "continuation": "on",
+      "fixedCamera": true,
+      "physicallyFreePlayer": true
+    },
+    "performanceAccepted": false,
+    "visualAccepted": false
+  },
+  "blockers": [
+    "Single live functional run is not repeated performance or universal safety proof.",
+    "Visible/native clock alignment and20ms p95 remain unaccepted."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/ground-landing-lease-sixtyfour-20261031.md",
+      "sha256": "bd25b200310238fc828851a35f3e62613345c4d1e54d497c385a697b580547d1"
+    },
+    {
+      "path": "evidence/ground-landing-lease-sixtyfour-20261031.txt",
+      "sha256": "9be8b6a0fbaecf3d2acda13fee722823384ab3bc55f5dbc139804251f71256b0"
+    }
+  ],
+  "goalComplete": false
+}
