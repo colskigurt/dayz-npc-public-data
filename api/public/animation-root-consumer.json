@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T09:55:35.581667+09:00",
+  "sourceRunId": "animation-root-consumer-20261031-094900",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "verificationStatus": {
+    "diagnostic": "actual_selected_root_entry_timecontext_verified",
+    "downstreamFinalClipTime": "unmeasured",
+    "supportedClockControl": "not_established",
+    "repeatAcceptance": false,
+    "visual": "unmeasured_in_bundle",
+    "performance": "excluded_hook_overhead",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "consumerCalls": 100,
+    "uniqueEvaluatorObjects": 8,
+    "contextDtMs": {
+      "p05": 50.00019073486328,
+      "p50": 50.00019073486328,
+      "p95": 50.00019073486328,
+      "p99": 50.00019073486328
+    },
+    "graphDescriptorDtMs": {
+      "p05": 50.00000074505806,
+      "p50": 50.00000074505806,
+      "p95": 50.00000074505806,
+      "p99": 50.00000074505806
+    },
+    "contextOldClockVsOwnerMaxAbsoluteMs": 0.0,
+    "contextDtFloat32DifferenceMaxResidualMs": 0.0,
+    "exactFloat32DifferenceCalls": 100,
+    "contextOldClockAdvanceMs": 4950.018882751465,
+    "observedHostSpanMs": 7882,
+    "contextClockVsHostRate": 0.628015590300871,
+    "callerEntryIntervalMs": {
+      "p05": 77.9,
+      "p50": 80,
+      "p95": 82.0,
+      "p99": 83.02
+    },
+    "scenario": "one fixedrun,AI/rootmovementoff,eight nativeparts",
+    "runtimeSeconds": 120,
+    "observerSeconds": 8,
+    "repetitions": 1,
+    "logicalAgents": 1,
+    "nativeParts": 8,
+    "pacing": {
+      "steady": {
+        "frames": 1998,
+        "foregroundFrames": 1998,
+        "foregroundFraction": 1.0,
+        "missionFrameMs": {
+          "p50": 9.0,
+          "p95": 35.0,
+          "p99": 37.0
+        },
+        "hostCallbackHz": {
+          "minimum": 12.558829547779824,
+          "median": 12.558829547779824,
+          "maximum": 12.558829547779824
+        },
+        "nativeClockSecondsPerWallSecond": {
+          "minimum": 0.6279358502148558,
+          "median": 0.6279358502148558,
+          "maximum": 0.6279358502148558
+        }
+      }
+    },
+    "nativeHooks": true,
+    "numericOverrides": false,
+    "videoRecorded": false
+  },
+  "blockers": [
+    "Finalstate/clip sampletime afterroot evaluator not linked.",
+    "No newvideo/GPU presentation timing orsmoothness acceptance.",
+    "No supportedscheduler residual/independent displayclock control established.",
+    "PublicUpdate documentation/selectedtail ordering doesnot prove allvirtualeffects.",
+    "64function/cost acceptance remains separate andincomplete."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-root-consumer-20261031.md",
+      "sha256": "38804f748827964be1785d05698fb5c5654c7abbcdb99e3027aeab49b69292ef"
+    },
+    {
+      "path": "evidence/animation-root-consumer-20261031.txt",
+      "sha256": "70975c93c8093b3581c8abb5cf0d2794f003a2404513b2949a4d708ae2f11387"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
