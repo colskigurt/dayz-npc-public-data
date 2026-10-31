@@ -1,0 +1,224 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T14:39:28.774101+09:00",
+  "sourceRunId": "b93d-support-fast-20261031-135720-sixtyfour",
+  "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+  "verificationStatus": {
+    "diagnostic": "closed_64_trial",
+    "scopedFunctionalPass": false,
+    "repeatVerified": false,
+    "visibleSmoothness": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "trial": {
+      "analysisVersion": 3,
+      "producerSha256": "401d29a5b819a81ef620ab96bfd9cab06a555a17d13d459d431cf0afb321ab5f",
+      "foregroundFraction": 1.0,
+      "sourceRunId": "b93d-support-fast-20261031-135720",
+      "label": "fast64",
+      "runtimeRunId": "runtime-20261031-143044",
+      "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+      "count": 64,
+      "seconds": 300,
+      "mode": "fast",
+      "normalQuitVerified": true,
+      "supportCounters": {
+        "supportFastAttempts": 915257.0,
+        "supportFastSweeps": 270096.0,
+        "supportFastEligible": 270046.0,
+        "supportFastUsed": 270046.0,
+        "supportFastSkippedRays": 1080184.0,
+        "supportFastReferenceChecks": 0.0,
+        "supportFastUnder": 0.0,
+        "supportShadowQueries": 0.0,
+        "supportShadowCompared": 0.0,
+        "supportShadowUnder": 0.0,
+        "supportShadowWithoutReference": 0.0,
+        "contactSolves": 463605.0,
+        "contactFootRays": 3555866.0
+      },
+      "errorMaximaMeters": {
+        "supportFastMaxUnder": 0.0,
+        "supportFastMaxOver": 0.0,
+        "supportShadowMaxUnder": 0.0,
+        "supportShadowMaxOver": 0.0
+      },
+      "eligibleBoundComparisonPassed": false,
+      "eightAgentGatePassed": false,
+      "stateDiagnostic": {
+        "terminalArrivals": 63,
+        "unresolvedTerminalAgents": [
+          {
+            "id": "5",
+            "position": "<4511.376465, 339.296173, 10243.033203>",
+            "state": "CHASE",
+            "traversalPhase": "FALL",
+            "reason": "LANDING_SPACE_BLOCKED",
+            "seenAge": "0",
+            "poseEpisodeAge": "-1",
+            "poseEpisodeStatus": "INACTIVE",
+            "pressureEscapeDiagnostic": "SEPARATION_DISTANCE_LIMIT",
+            "pressureEscapeLastStepReject": "DEEPER_FIXTURE",
+            "pressureEscapeRejectProbe": "6",
+            "pressureEscapeRejectFixture": "StaticObj_Container_1C",
+            "pressureEscapeRejectBefore": "0.0426154",
+            "pressureEscapeRejectAfter": "0.0360654"
+          }
+        ],
+        "fallEpisodes": 96,
+        "fallsLandedAndResumed": 95,
+        "allPhysicalTransitionsMatched": true,
+        "climbEndFailures": 0,
+        "newFailureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 39,
+          "ENTRY_ALIGNMENT_NO_PROGRESS": 1,
+          "EGRESS_STALL": 1
+        },
+        "algorithmFailureLabels": [
+          "ENTRY_ALIGNMENT_NO_PROGRESS",
+          "EGRESS_STALL"
+        ]
+      },
+      "observedFollowCoverage": {
+        "low": 64,
+        "high": 63,
+        "ground": 64
+      },
+      "actualPlayerStimulus": {
+        "FINAL_HOLD": {
+          "samples": 1117,
+          "areas": {
+            "ground": 1117
+          },
+          "maximumDisplacementFromFirstMeters": 0.3232600706679577
+        },
+        "GROUND_EAST": {
+          "samples": 78,
+          "areas": {
+            "ground": 78
+          },
+          "maximumDisplacementFromFirstMeters": 39.60571669340037
+        },
+        "GROUND_EAST_HOLD": {
+          "samples": 122,
+          "areas": {
+            "ground": 122
+          },
+          "maximumDisplacementFromFirstMeters": 0.3491238231016851
+        },
+        "GROUND_HOLD": {
+          "samples": 245,
+          "areas": {
+            "ground": 245
+          },
+          "maximumDisplacementFromFirstMeters": 0.0
+        },
+        "GROUND_NORTH": {
+          "samples": 81,
+          "areas": {
+            "ground": 81
+          },
+          "maximumDisplacementFromFirstMeters": 19.688904780732983
+        },
+        "HIGH_HOLD": {
+          "samples": 482,
+          "areas": {
+            "high": 482
+          },
+          "maximumDisplacementFromFirstMeters": 1.5050298060765517
+        },
+        "LOW_HOLD": {
+          "samples": 362,
+          "areas": {
+            "low": 362
+          },
+          "maximumDisplacementFromFirstMeters": 0.37708727226572775
+        }
+      },
+      "missionFrameMs": {
+        "samples": 9889,
+        "p50": 24.0,
+        "p95": 65.0,
+        "p99": 86.0
+      },
+      "baseSupportQueriesPerSolve": 8.252633168322172,
+      "newPbo": false,
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "finalFunctionalAcceptance": false,
+      "goalComplete": false,
+      "limits": [
+        "Full-run cumulative sampled counters, not a matched cost-window causal contrast.",
+        "Shadow keeps original support authoritative and adds work; cannot prove performance gain.",
+        "Fast mode does not perform reference comparison: zero under counter is not accuracy proof.",
+        "Actual player movement is physically free; stage target departures are reported separately.",
+        "Roof simultaneous occupancy is not a pass requirement. Legitimate falls require valid landing/reacquisition.",
+        "Mission frame timing is not visible pose smoothness or GPU Present."
+      ]
+    },
+    "admission": {
+      "sourceRunId": "b93d-support-fast-20261031-135720",
+      "runtimeRunId": "runtime-20261031-143044",
+      "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+      "checks": {
+        "all64ValidFinalStates": false,
+        "allFallsResumed": false,
+        "allPhysicalTransitionsMatched": true,
+        "noClimbEndFailure": true,
+        "noAlgorithmFailureLabels": false,
+        "foregroundCollected": true,
+        "actualTargetStagesValid": true,
+        "activeBoundActuallyUsed": true
+      },
+      "targetStageChecks": {
+        "LOW_HOLD": true,
+        "HIGH_HOLD": true,
+        "GROUND_HOLD": true,
+        "FINAL_HOLD": true
+      },
+      "scopedFunctionalPass": false,
+      "all64SimultaneousRoofOccupancyRequired": false,
+      "highFollowCoverage": 63,
+      "performanceAccepted": false,
+      "visibleAccepted": false,
+      "finalAccepted": false,
+      "goalComplete": false,
+      "sourceResultSha256": "7e80242735da5f3b7b365fefa9cf42cc39834c70e8f65566727a12e11871664d",
+      "next": "If pass: same fixed-target OFF/FAST/FAST/OFF cost contrast. If fail: preserve trial and diagnose the failed gate; no larger batch or guard weakening."
+    },
+    "conditions": {
+      "count": 64,
+      "seconds": 300,
+      "repetitions": 1,
+      "mode": "fast",
+      "fixedTarget": false,
+      "fixedCamera": true,
+      "newPbo": false
+    },
+    "performanceAccepted": false,
+    "visibleAccepted": false,
+    "goalComplete": false
+  },
+  "blockers": [
+    "Single active run, not a matched OFF/FAST performance contrast.",
+    "No original-ray references in active Fast mode.",
+    "Animation GPU/visible timing and20ms p95 remain unaccepted."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/b93d-support-fast-sixtyfour-20261031.md",
+      "sha256": "e5159f15265401e32762fd1129bcf26d50669d589db49184b6daba6a39b74483"
+    },
+    {
+      "path": "evidence/b93d-support-fast-sixtyfour-20261031.txt",
+      "sha256": "cebc748c26acb828f979a45308d32e90ca28c9e1fa3ff8f972e6e850389be5c3"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

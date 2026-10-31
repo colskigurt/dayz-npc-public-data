@@ -1,3 +1,5 @@
+> 최신 B93D 제한적 지지 검사64명: 최종63/64, 낙하복귀95/96, 등반종료실패0, 기능gate=False. 단일실행이며 반복성능·시각수용은별도. [조건과 근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/b93d-support-fast-sixtyfour-20261031.md). 이전 기록은 아래 보존한다.
+
 > 최신 B93D 지지 검사 검증: shadow 적격56,648건 과소0·과대최대4.36mm,8명 활성 회귀 통과. shadow는비활성창조건으로성능대조불가.64명·반복성능·시각수용은별도미완료. [조건과 한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/b93d-support-fast-eight-20261031.md). 이전 기록은 아래 보존한다.
 
 > 최신 B93D 64개체 고정 목표 비용 진단(2026-10-31): OFF/ON/ON/OFF p95=73.0/74.0/71.0/86.0ms. 4회 목표 검증 통과. NPC 밀침·낙하·재등반 보존. 순수 오버헤드·최적화·시각·최종 기능 수용은 별도 미해결. [조건과 근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/b93d-fixed-cost-fixture-20261031.md). 이전 기록은 아래 보존한다.
