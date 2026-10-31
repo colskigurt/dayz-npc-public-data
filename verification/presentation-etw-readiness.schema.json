@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "presentation-etw-readiness-20261031-1720"
+    },
+    "buildId": {
+      "const": "not_executed"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "verificationStatus": {
+      "type": "object",
+      "required": [
+        "displayMetricsMeasured"
+      ],
+      "properties": {
+        "displayMetricsMeasured": {
+          "const": false
+        }
+      }
+    }
+  }
+}
