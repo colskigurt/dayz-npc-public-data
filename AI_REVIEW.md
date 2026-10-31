@@ -1,3 +1,5 @@
+> 최신 B93D64 비용 진단(2026-10-31):OFF/ON/ON/OFF p95=96/80/64/100ms.두번째ON에서플레이어가고지대에서추락해순수계측부담/최적화수용은거부했다.발지지·관절world검사범위를관측했고전역counter64중복을배제했다.180초최종51/50/53/47명으로기능통과아님. [조건·증거·미수용이유](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/b93d-cost-instrumentation-20261031.md). 이전 기록은 아래 보존한다.
+
 > 최신 그래프 소비 대조(2026-10-31): 기본14상태는 상태/해제/착지3변수를 소비하며 speed배속을사용하지않는다.격리TimeScale평균속도보정은과거반복시험에서확인됐지만pacing개선과전체14상태적용은미수용이다.지원되는배속제어와미확보residual/표시해결경로를구분한다.새실행없음. [근거와한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-graph-consumers-20261031.md). 이전 기록은 아래 보존한다.
 
 > 최신 공개 애니메이션 API 진단(2026-10-31): DebugOverrideAnimationSpeed의 실제 속도헬퍼는3바이트 return뿐이었다. 전역frame/slot경로도기존Animal의null시각컴포넌트가드를사용한다.새실행·배포해결·시각/성능수용은없으며전체API부재를주장하지않는다. [근거와한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-public-controls-20261031.md). 이전 기록은 아래 보존한다.
