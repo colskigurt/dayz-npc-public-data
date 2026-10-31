@@ -1,0 +1,2209 @@
+Selection: complete four-trial pacing/workload/stimulus aggregates; both ON nested elapsed stages; selected state observations; player-only mission diff; previously hashed selected packed timing implementation (same PBO). Not raw full logs, video, native CPU self-time or visual smoothness evidence. Global counters counted once.
+
+{
+  "metrics": {
+    "sourceRunId": "b93d-fixed-cost-fixture-20261031-133038",
+    "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+    "order": [
+      "a1-off",
+      "b1-on",
+      "b2-on",
+      "a2-off"
+    ],
+    "comparisons": [
+      {
+        "off": "a1-off",
+        "on": "b1-on",
+        "offP95ms": 73.0,
+        "onP95ms": 74.0,
+        "onMinusOffP95ms": 1.0,
+        "onRelativeDifference": 0.0136986301369863,
+        "workloadDifferences": {
+          "jointSweeps": {
+            "off": 1260795.0,
+            "on": 1244083.0,
+            "absoluteDifference": -16712.0,
+            "relativeDifference": -0.013255128708473621
+          },
+          "positionWrites": {
+            "off": 2087280.0,
+            "on": 2161160.0,
+            "absoluteDifference": 73880.0,
+            "relativeDifference": 0.03539534705453988
+          },
+          "contactFallbackRays": {
+            "off": 0.0,
+            "on": 0.0,
+            "absoluteDifference": 0.0,
+            "relativeDifference": null
+          },
+          "climbs": {
+            "off": 133.0,
+            "on": 135.0,
+            "absoluteDifference": 2.0,
+            "relativeDifference": 0.015037593984962405
+          },
+          "orientationWrites": {
+            "off": 1565064.0,
+            "on": 1601624.0,
+            "absoluteDifference": 36560.0,
+            "relativeDifference": 0.023360067064350083
+          },
+          "plans": {
+            "off": 638.0,
+            "on": 781.0,
+            "absoluteDifference": 143.0,
+            "relativeDifference": 0.22413793103448276
+          },
+          "failures": {
+            "off": 0.0,
+            "on": 0.0,
+            "absoluteDifference": 0.0,
+            "relativeDifference": null
+          },
+          "landings": {
+            "off": 74.0,
+            "on": 76.0,
+            "absoluteDifference": 2.0,
+            "relativeDifference": 0.02702702702702703
+          },
+          "pressureSteps": {
+            "off": 126568.0,
+            "on": 123301.0,
+            "absoluteDifference": -3267.0,
+            "relativeDifference": -0.02581221161747045
+          },
+          "contactFootRays": {
+            "off": 3153930.0,
+            "on": 3113940.0,
+            "absoluteDifference": -39990.0,
+            "relativeDifference": -0.012679419010567768
+          },
+          "worldSweeps": {
+            "off": 250878.0,
+            "on": 243414.0,
+            "absoluteDifference": -7464.0,
+            "relativeDifference": -0.029751512687441705
+          },
+          "drops": {
+            "off": 61.0,
+            "on": 61.0,
+            "absoluteDifference": 0.0,
+            "relativeDifference": 0.0
+          },
+          "poseBlocks": {
+            "off": 324.0,
+            "on": 638.0,
+            "absoluteDifference": 314.0,
+            "relativeDifference": 0.9691358024691358
+          },
+          "surfacePlans": {
+            "off": 8938.0,
+            "on": 8766.0,
+            "absoluteDifference": -172.0,
+            "relativeDifference": -0.019243678675318864
+          },
+          "pressureFalls": {
+            "off": 13.0,
+            "on": 15.0,
+            "absoluteDifference": 2.0,
+            "relativeDifference": 0.15384615384615385
+          },
+          "contactSolves": {
+            "off": 315393.0,
+            "on": 311394.0,
+            "absoluteDifference": -3999.0,
+            "relativeDifference": -0.012679419010567768
+          }
+        },
+        "actualStimulusIdentical": false,
+        "pureInstrumentationOverheadIsolated": false
+      },
+      {
+        "off": "a2-off",
+        "on": "b2-on",
+        "offP95ms": 86.0,
+        "onP95ms": 71.0,
+        "onMinusOffP95ms": -15.0,
+        "onRelativeDifference": -0.1744186046511628,
+        "workloadDifferences": {
+          "jointSweeps": {
+            "off": 1216700.0,
+            "on": 1254435.0,
+            "absoluteDifference": 37735.0,
+            "relativeDifference": 0.03101421878852634
+          },
+          "positionWrites": {
+            "off": 2007832.0,
+            "on": 2128680.0,
+            "absoluteDifference": 120848.0,
+            "relativeDifference": 0.060188302606991026
+          },
+          "contactFallbackRays": {
+            "off": 0.0,
+            "on": 0.0,
+            "absoluteDifference": 0.0,
+            "relativeDifference": null
+          },
+          "climbs": {
+            "off": 136.0,
+            "on": 137.0,
+            "absoluteDifference": 1.0,
+            "relativeDifference": 0.007352941176470588
+          },
+          "orientationWrites": {
+            "off": 1479392.0,
+            "on": 1579264.0,
+            "absoluteDifference": 99872.0,
+            "relativeDifference": 0.06750881443187472
+          },
+          "plans": {
+            "off": 789.0,
+            "on": 717.0,
+            "absoluteDifference": -72.0,
+            "relativeDifference": -0.09125475285171103
+          },
+          "failures": {
+            "off": 0.0,
+            "on": 2.0,
+            "absoluteDifference": 2.0,
+            "relativeDifference": null
+          },
+          "landings": {
+            "off": 80.0,
+            "on": 81.0,
+            "absoluteDifference": 1.0,
+            "relativeDifference": 0.0125
+          },
+          "pressureSteps": {
+            "off": 121009.0,
+            "on": 125044.0,
+            "absoluteDifference": 4035.0,
+            "relativeDifference": 0.03334462725912948
+          },
+          "contactFootRays": {
+            "off": 3046490.0,
+            "on": 3139800.0,
+            "absoluteDifference": 93310.0,
+            "relativeDifference": 0.0306286907227662
+          },
+          "worldSweeps": {
+            "off": 239958.0,
+            "on": 247863.0,
+            "absoluteDifference": 7905.0,
+            "relativeDifference": 0.03294326507138749
+          },
+          "drops": {
+            "off": 62.0,
+            "on": 60.0,
+            "absoluteDifference": -2.0,
+            "relativeDifference": -0.03225806451612903
+          },
+          "poseBlocks": {
+            "off": 808.0,
+            "on": 586.0,
+            "absoluteDifference": -222.0,
+            "relativeDifference": -0.2747524752475248
+          },
+          "surfacePlans": {
+            "off": 8562.0,
+            "on": 8592.0,
+            "absoluteDifference": 30.0,
+            "relativeDifference": 0.00350385423966363
+          },
+          "pressureFalls": {
+            "off": 17.0,
+            "on": 20.0,
+            "absoluteDifference": 3.0,
+            "relativeDifference": 0.17647058823529413
+          },
+          "contactSolves": {
+            "off": 304649.0,
+            "on": 313980.0,
+            "absoluteDifference": 9331.0,
+            "relativeDifference": 0.0306286907227662
+          }
+        },
+        "actualStimulusIdentical": false,
+        "pureInstrumentationOverheadIsolated": false
+      }
+    ],
+    "stageAttribution": {
+      "FINAL_HOLD": [
+        {
+          "label": "b1-on",
+          "bodyElapsedMsPerWallSecond": 247.4905607233234,
+          "traversalElapsedMsPerWallSecond": 140.7265453669685,
+          "consumeElapsedMsPerWallSecond": 98.42144921632055,
+          "frameFallActiveElapsedMsPerWallSecond": 0.0,
+          "bodyCallsPerSecond": 1037.8378378378322,
+          "contactComponents": {
+            "contactCpuTicks": 140.57664097236065,
+            "contactBoneCpuTicks": 7.8970551792700086,
+            "contactFootCpuTicks": 69.69670408072395,
+            "contactWorldCpuTicks": 51.09505814518603,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.0,
+            "navTicks": 0.018735541296109604
+          },
+          "directorComponents": {
+            "senseTicks": 149.98242220812347,
+            "perceptionCpuTicks": 53.906370257994936,
+            "socialCpuTicks": 4.313833860469424,
+            "pursuitCpuTicks": 90.6196933920338,
+            "crowdCpuTicks": 36.46073664797874,
+            "crowdUpdateTicks": 36.377358584619095
+          },
+          "contactCoveredActors": 64,
+          "coveredSeconds": 4.070000000000022
+        },
+        {
+          "label": "b2-on",
+          "bodyElapsedMsPerWallSecond": 221.0169615838271,
+          "traversalElapsedMsPerWallSecond": 125.92768681614089,
+          "consumeElapsedMsPerWallSecond": 87.36571510977515,
+          "frameFallActiveElapsedMsPerWallSecond": 0.0,
+          "bodyCallsPerSecond": 970.3971119133571,
+          "contactComponents": {
+            "contactCpuTicks": 124.81173001220145,
+            "contactBoneCpuTicks": 7.601110339326588,
+            "contactFootCpuTicks": 61.89140636767531,
+            "contactWorldCpuTicks": 44.19980483296737,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.0,
+            "navTicks": 0.011979078483086216
+          },
+          "directorComponents": {
+            "senseTicks": 144.21954845172726,
+            "perceptionCpuTicks": 53.47802894234917,
+            "socialCpuTicks": 4.19802527197441,
+            "pursuitCpuTicks": 85.39157749398548,
+            "crowdCpuTicks": 34.200269069211146,
+            "crowdUpdateTicks": 34.11684334406108
+          },
+          "contactCoveredActors": 64,
+          "coveredSeconds": 4.155000000000001
+        }
+      ],
+      "GROUND_EAST": [
+        {
+          "label": "b1-on",
+          "bodyElapsedMsPerWallSecond": 248.27830283541513,
+          "traversalElapsedMsPerWallSecond": 141.53047618426186,
+          "consumeElapsedMsPerWallSecond": 98.72406627857637,
+          "frameFallActiveElapsedMsPerWallSecond": 0.0,
+          "bodyCallsPerSecond": 1004.220322475921,
+          "contactComponents": {
+            "contactCpuTicks": 135.33115527033536,
+            "contactBoneCpuTicks": 7.579082444343395,
+            "contactFootCpuTicks": 69.2134538285252,
+            "contactWorldCpuTicks": 47.64085428144978,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.0,
+            "navTicks": 0.08540360459537966
+          },
+          "directorComponents": {
+            "senseTicks": 67.14886632882578,
+            "perceptionCpuTicks": 56.41235453746718,
+            "socialCpuTicks": 6.637713464586825,
+            "pursuitCpuTicks": 2.906513926159988,
+            "crowdCpuTicks": 32.665185463481535,
+            "crowdUpdateTicks": 32.575902675692575
+          },
+          "contactCoveredActors": 64,
+          "coveredSeconds": 9.241000000000014
+        },
+        {
+          "label": "b2-on",
+          "bodyElapsedMsPerWallSecond": 242.62111656537112,
+          "traversalElapsedMsPerWallSecond": 139.65349466597047,
+          "consumeElapsedMsPerWallSecond": 94.88871832669167,
+          "frameFallActiveElapsedMsPerWallSecond": 0.0,
+          "bodyCallsPerSecond": 1009.9437959360127,
+          "contactComponents": {
+            "contactCpuTicks": 134.05593793679193,
+            "contactBoneCpuTicks": 7.841171482732995,
+            "contactFootCpuTicks": 68.58849403573011,
+            "contactWorldCpuTicks": 46.50058059045611,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.0,
+            "navTicks": 0.06901595675914916
+          },
+          "directorComponents": {
+            "senseTicks": 65.80701709256297,
+            "perceptionCpuTicks": 56.2406626356471,
+            "socialCpuTicks": 5.7131434918599195,
+            "pursuitCpuTicks": 2.6904562117091353,
+            "crowdCpuTicks": 29.514254975146166,
+            "crowdUpdateTicks": 29.42895678077863
+          },
+          "contactCoveredActors": 64,
+          "coveredSeconds": 9.25200000000001
+        }
+      ],
+      "GROUND_EAST_HOLD": [
+        {
+          "label": "b1-on",
+          "bodyElapsedMsPerWallSecond": 209.13096697387334,
+          "traversalElapsedMsPerWallSecond": 131.39150497637837,
+          "consumeElapsedMsPerWallSecond": 69.76942224892298,
+          "frameFallActiveElapsedMsPerWallSecond": 0.0,
+          "bodyCallsPerSecond": 1013.9569973594873,
+          "contactComponents": {
+            "contactCpuTicks": 126.82652177593923,
+            "contactBoneCpuTicks": 6.352925589525016,
+            "contactFootCpuTicks": 64.05860984348463,
+            "contactWorldCpuTicks": 45.98890900769511,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.0,
+            "navTicks": 0.0013354458342726121
+          },
+          "directorComponents": {
+            "senseTicks": 93.69306184818475,
+            "perceptionCpuTicks": 51.299998066186305,
+            "socialCpuTicks": 5.065255155176932,
+            "pursuitCpuTicks": 35.919227905499206,
+            "crowdCpuTicks": 32.91489429016623,
+            "crowdUpdateTicks": 32.81700820807295
+          },
+          "contactCoveredActors": 64,
+          "coveredSeconds": 13.254999999999995
+        },
+        {
+          "label": "b2-on",
+          "bodyElapsedMsPerWallSecond": 214.6133216687443,
+          "traversalElapsedMsPerWallSecond": 135.1548306491735,
+          "consumeElapsedMsPerWallSecond": 71.33362028967684,
+          "frameFallActiveElapsedMsPerWallSecond": 0.0,
+          "bodyCallsPerSecond": 1024.0357741755163,
+          "contactComponents": {
+            "contactCpuTicks": 131.53234363441572,
+            "contactBoneCpuTicks": 6.679784580420047,
+            "contactFootCpuTicks": 66.49535098856309,
+            "contactWorldCpuTicks": 47.51084923321845,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.0,
+            "navTicks": 0.005755701042576192
+          },
+          "directorComponents": {
+            "senseTicks": 100.22747027692641,
+            "perceptionCpuTicks": 50.64679537570063,
+            "socialCpuTicks": 4.849363687313784,
+            "pursuitCpuTicks": 43.374301792256084,
+            "crowdCpuTicks": 30.134772398763506,
+            "crowdUpdateTicks": 30.04098078740148
+          },
+          "contactCoveredActors": 64,
+          "coveredSeconds": 14.312000000000012
+        }
+      ],
+      "GROUND_HOLD": [
+        {
+          "label": "b1-on",
+          "bodyElapsedMsPerWallSecond": 209.37649550939804,
+          "traversalElapsedMsPerWallSecond": 146.63568074702448,
+          "consumeElapsedMsPerWallSecond": 53.35898660321308,
+          "frameFallActiveElapsedMsPerWallSecond": 26.580985185419113,
+          "bodyCallsPerSecond": 1000.6616290002438,
+          "contactComponents": {
+            "contactCpuTicks": 129.47230576940342,
+            "contactBoneCpuTicks": 5.899213848672085,
+            "contactFootCpuTicks": 64.30409712120863,
+            "contactWorldCpuTicks": 42.13434754564843,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.4959604138008591,
+            "navTicks": 0.0861170394626946
+          },
+          "directorComponents": {
+            "senseTicks": 78.3466361680205,
+            "perceptionCpuTicks": 51.30018818776872,
+            "socialCpuTicks": 6.863816344546391,
+            "pursuitCpuTicks": 18.984732365238077,
+            "crowdCpuTicks": 34.67971242887314,
+            "crowdUpdateTicks": 34.58395463113058
+          },
+          "contactCoveredActors": 64,
+          "coveredSeconds": 28.717
+        },
+        {
+          "label": "b2-on",
+          "bodyElapsedMsPerWallSecond": 210.71173422711317,
+          "traversalElapsedMsPerWallSecond": 147.48752843766067,
+          "consumeElapsedMsPerWallSecond": 54.145986815653615,
+          "frameFallActiveElapsedMsPerWallSecond": 25.35886031787961,
+          "bodyCallsPerSecond": 997.7279876961792,
+          "contactComponents": {
+            "contactCpuTicks": 128.85965951856636,
+            "contactBoneCpuTicks": 6.04069415862986,
+            "contactFootCpuTicks": 64.63625380133246,
+            "contactWorldCpuTicks": 41.575075123912995,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.38976087363736417,
+            "navTicks": 0.08551081329647447
+          },
+          "directorComponents": {
+            "senseTicks": 80.62153846442592,
+            "perceptionCpuTicks": 51.988940111013356,
+            "socialCpuTicks": 6.752798009625945,
+            "pursuitCpuTicks": 20.673538339846854,
+            "crowdCpuTicks": 32.044183658211686,
+            "crowdUpdateTicks": 31.946594016215553
+          },
+          "contactCoveredActors": 64,
+          "coveredSeconds": 28.60900000000001
+        }
+      ],
+      "GROUND_NORTH": [
+        {
+          "label": "b1-on",
+          "bodyElapsedMsPerWallSecond": 228.50081541420937,
+          "traversalElapsedMsPerWallSecond": 132.74273607716574,
+          "consumeElapsedMsPerWallSecond": 87.74591017858694,
+          "frameFallActiveElapsedMsPerWallSecond": 0.0,
+          "bodyCallsPerSecond": 1009.5735422106203,
+          "contactComponents": {
+            "contactCpuTicks": 126.10204831873013,
+            "contactBoneCpuTicks": 7.310535020502471,
+            "contactFootCpuTicks": 63.68363933576091,
+            "contactWorldCpuTicks": 44.43047483642709,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.0,
+            "navTicks": 0.07684224132038368
+          },
+          "directorComponents": {
+            "senseTicks": 67.68182914525941,
+            "perceptionCpuTicks": 56.01261940145246,
+            "socialCpuTicks": 6.766222916425408,
+            "pursuitCpuTicks": 3.6528175126255693,
+            "crowdCpuTicks": 35.2809973875479,
+            "crowdUpdateTicks": 35.19021852815477
+          },
+          "contactCoveredActors": 64,
+          "coveredSeconds": 9.191999999999979
+        },
+        {
+          "label": "b2-on",
+          "bodyElapsedMsPerWallSecond": 233.2268765665273,
+          "traversalElapsedMsPerWallSecond": 133.77676175365255,
+          "consumeElapsedMsPerWallSecond": 91.37888705387603,
+          "frameFallActiveElapsedMsPerWallSecond": 0.0,
+          "bodyCallsPerSecond": 1018.3408235151215,
+          "contactComponents": {
+            "contactCpuTicks": 125.64429158700425,
+            "contactBoneCpuTicks": 7.503985969082608,
+            "contactFootCpuTicks": 63.398961171372655,
+            "contactWorldCpuTicks": 43.88502925422935,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.0,
+            "navTicks": 0.06979207023411059
+          },
+          "directorComponents": {
+            "senseTicks": 66.12221191682053,
+            "perceptionCpuTicks": 55.703052405996694,
+            "socialCpuTicks": 6.357813660686386,
+            "pursuitCpuTicks": 2.8279496444999968,
+            "crowdCpuTicks": 32.14148263890111,
+            "crowdUpdateTicks": 32.05405366134214
+          },
+          "contactCoveredActors": 64,
+          "coveredSeconds": 8.233000000000004
+        }
+      ],
+      "HIGH_HOLD": [
+        {
+          "label": "b1-on",
+          "bodyElapsedMsPerWallSecond": 412.53723602694544,
+          "traversalElapsedMsPerWallSecond": 271.2979953762376,
+          "consumeElapsedMsPerWallSecond": 122.13811783296255,
+          "frameFallActiveElapsedMsPerWallSecond": 5.549345503133681,
+          "bodyCallsPerSecond": 948.5473684210526,
+          "contactComponents": {
+            "contactCpuTicks": 209.33183095744226,
+            "contactBoneCpuTicks": 7.9285001895636755,
+            "contactFootCpuTicks": 124.44680763015616,
+            "contactWorldCpuTicks": 61.8773018756832,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.7314347044708955,
+            "navTicks": 0.05212251791503108
+          },
+          "directorComponents": {
+            "senseTicks": 53.31838867339825,
+            "perceptionCpuTicks": 48.13442955720927,
+            "socialCpuTicks": 4.214379237700415,
+            "pursuitCpuTicks": 0.4250401876091449,
+            "crowdCpuTicks": 45.165719554604536,
+            "crowdUpdateTicks": 45.09481945753756
+          },
+          "contactCoveredActors": 64,
+          "coveredSeconds": 59.375
+        },
+        {
+          "label": "b2-on",
+          "bodyElapsedMsPerWallSecond": 437.85971610084357,
+          "traversalElapsedMsPerWallSecond": 285.9592713535314,
+          "consumeElapsedMsPerWallSecond": 130.96451301485914,
+          "frameFallActiveElapsedMsPerWallSecond": 12.906188021721526,
+          "bodyCallsPerSecond": 953.3929652296725,
+          "contactComponents": {
+            "contactCpuTicks": 220.10324210584238,
+            "contactBoneCpuTicks": 8.295309796592027,
+            "contactFootCpuTicks": 130.33571263934988,
+            "contactWorldCpuTicks": 65.29828885934711,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 1.1973237414628015,
+            "navTicks": 0.20138758571148202
+          },
+          "directorComponents": {
+            "senseTicks": 53.051274749367565,
+            "perceptionCpuTicks": 47.851995626489405,
+            "socialCpuTicks": 4.259353826357849,
+            "pursuitCpuTicks": 0.4292254910376061,
+            "crowdCpuTicks": 38.25486542117673,
+            "crowdUpdateTicks": 38.18963486114062
+          },
+          "contactCoveredActors": 64,
+          "coveredSeconds": 59.476
+        }
+      ],
+      "LOW_HOLD": [
+        {
+          "label": "b1-on",
+          "bodyElapsedMsPerWallSecond": 456.6144516538242,
+          "traversalElapsedMsPerWallSecond": 303.7540067841966,
+          "consumeElapsedMsPerWallSecond": 142.86705184429573,
+          "frameFallActiveElapsedMsPerWallSecond": 4.086973250029248,
+          "bodyCallsPerSecond": 947.4347308742211,
+          "contactComponents": {
+            "contactCpuTicks": 232.96159187938687,
+            "contactBoneCpuTicks": 8.077968050385776,
+            "contactFootCpuTicks": 132.08269651255017,
+            "contactWorldCpuTicks": 74.80355531022145,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.4476757355462669,
+            "navTicks": 0.7538307199340324
+          },
+          "directorComponents": {
+            "senseTicks": 56.478449440531094,
+            "perceptionCpuTicks": 50.909931666812774,
+            "socialCpuTicks": 4.459353945644321,
+            "pursuitCpuTicks": 0.4447920310124128,
+            "crowdCpuTicks": 31.97498805691213,
+            "crowdUpdateTicks": 31.908173803326576
+          },
+          "contactCoveredActors": 64,
+          "coveredSeconds": 28.574000000000005
+        },
+        {
+          "label": "b2-on",
+          "bodyElapsedMsPerWallSecond": 463.6462256745559,
+          "traversalElapsedMsPerWallSecond": 308.8802497419025,
+          "consumeElapsedMsPerWallSecond": 144.56157235817554,
+          "frameFallActiveElapsedMsPerWallSecond": 3.377117090966044,
+          "bodyCallsPerSecond": 958.0973952434881,
+          "contactComponents": {
+            "contactCpuTicks": 234.2744442464405,
+            "contactBoneCpuTicks": 8.357242970776023,
+            "contactFootCpuTicks": 135.08879377658366,
+            "contactWorldCpuTicks": 75.2619381903336,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.5134468038976815,
+            "navTicks": 0.6822633426438869
+          },
+          "directorComponents": {
+            "senseTicks": 56.63182365020349,
+            "perceptionCpuTicks": 51.18374507360964,
+            "socialCpuTicks": 4.3439906292387755,
+            "pursuitCpuTicks": 0.46248338490377555,
+            "crowdCpuTicks": 31.981243516656626,
+            "crowdUpdateTicks": 31.915333422170498
+          },
+          "contactCoveredActors": 64,
+          "coveredSeconds": 28.256
+        }
+      ]
+    },
+    "conditionFingerprintMatchedExceptDriveFlagAndRunIdentity": true,
+    "fixedStimulusValidAll": true,
+    "observedTargetAnchorsMatched": true,
+    "stimulusValidation": [
+      {
+        "sourceRunId": "b93d-fixed-cost-fixture-20261031-133038",
+        "label": "a1-off",
+        "runtimeRunId": "runtime-20261031-133610",
+        "fixedCostStimulus": true,
+        "npcCodeChanged": false,
+        "valid": true,
+        "stages": {
+          "LOW_HOLD": {
+            "samples": 358,
+            "target": "<4510.000000, 340.233551, 10240.000000>",
+            "areas": {
+              "low": 358
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 0.424999,
+            "lastSeconds": 44.912
+          },
+          "HIGH_HOLD": {
+            "samples": 472,
+            "target": "<4513.000000, 342.218536, 10240.000000>",
+            "areas": {
+              "high": 472
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 45.034,
+            "lastSeconds": 104.883
+          },
+          "GROUND_HOLD": {
+            "samples": 245,
+            "target": "<4523.000000, 339.346680, 10243.000000>",
+            "areas": {
+              "ground": 245
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 105.003,
+            "lastSeconds": 134.929
+          },
+          "GROUND_EAST": {
+            "samples": 79,
+            "target": "<4563.000000, 339.278656, 10243.000000>",
+            "areas": {
+              "ground": 79
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 135.032,
+            "lastSeconds": 144.954
+          },
+          "GROUND_EAST_HOLD": {
+            "samples": 126,
+            "target": "<4563.000000, 339.278656, 10243.000000>",
+            "areas": {
+              "ground": 126
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 145.074,
+            "lastSeconds": 159.918
+          },
+          "GROUND_NORTH": {
+            "samples": 83,
+            "target": "<4563.000000, 339.448669, 10283.000000>",
+            "areas": {
+              "ground": 83
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 160.035,
+            "lastSeconds": 169.93
+          },
+          "FINAL_HOLD": {
+            "samples": 85,
+            "target": "<4563.000000, 339.448669, 10283.000000>",
+            "areas": {
+              "ground": 85
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 170.048,
+            "lastSeconds": 179.922
+          }
+        },
+        "badFixedSamples": [],
+        "badNaturalSamples": [],
+        "finalChecks": 4719,
+        "finalCorrections": 184,
+        "finalFailures": 0,
+        "sourceHashes": {
+          "launch.json": "c645bb8a1589c0430f0350da0b8cc9d2b3cc149f67a94efb75cf86e97e79928a",
+          "native-fixed-cost-stimulus.tsv": "d33e327406c3226c78002e451f71b99679b0502351e7d4698ad16a05efc5f13f",
+          "native-natural-player.tsv": "a2d2dbc2aa5ce346c8535d0ebb7696ebed1916a04edb82659f18b620eb703109"
+        },
+        "limits": [
+          "Samples after anchoring prove teststimulus at those updates, not continuous physical support betweenupdates.",
+          "OnlyPlayertransform is constrained. NPCcontacts/falls/paths andworkload may still differ.",
+          "This is a costfixture, not naturalplayer functional orvisible acceptance."
+        ]
+      },
+      {
+        "sourceRunId": "b93d-fixed-cost-fixture-20261031-133038",
+        "label": "b1-on",
+        "runtimeRunId": "runtime-20261031-134030",
+        "fixedCostStimulus": true,
+        "npcCodeChanged": false,
+        "valid": true,
+        "stages": {
+          "LOW_HOLD": {
+            "samples": 359,
+            "target": "<4510.000000, 340.233551, 10240.000000>",
+            "areas": {
+              "low": 359
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 0.414001,
+            "lastSeconds": 44.87
+          },
+          "HIGH_HOLD": {
+            "samples": 470,
+            "target": "<4513.000000, 342.218536, 10240.000000>",
+            "areas": {
+              "high": 470
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 45.06,
+            "lastSeconds": 104.96
+          },
+          "GROUND_HOLD": {
+            "samples": 252,
+            "target": "<4523.000000, 339.346680, 10243.000000>",
+            "areas": {
+              "ground": 252
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 105.011,
+            "lastSeconds": 134.934
+          },
+          "GROUND_EAST": {
+            "samples": 83,
+            "target": "<4563.000000, 339.278656, 10243.000000>",
+            "areas": {
+              "ground": 83
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 135.053,
+            "lastSeconds": 144.975
+          },
+          "GROUND_EAST_HOLD": {
+            "samples": 127,
+            "target": "<4563.000000, 339.278656, 10243.000000>",
+            "areas": {
+              "ground": 127
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 145.076,
+            "lastSeconds": 159.88
+          },
+          "GROUND_NORTH": {
+            "samples": 82,
+            "target": "<4563.000000, 339.448669, 10283.000000>",
+            "areas": {
+              "ground": 82
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 160.001,
+            "lastSeconds": 169.998
+          },
+          "FINAL_HOLD": {
+            "samples": 83,
+            "target": "<4563.000000, 339.448669, 10283.000000>",
+            "areas": {
+              "ground": 83
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 170.123,
+            "lastSeconds": 179.942
+          }
+        },
+        "badFixedSamples": [],
+        "badNaturalSamples": [],
+        "finalChecks": 4882,
+        "finalCorrections": 1122,
+        "finalFailures": 0,
+        "sourceHashes": {
+          "launch.json": "bbbb87569405e113809f3fcf90af5e7016bb65a8fbc60db2d6cb5356b448884f",
+          "native-fixed-cost-stimulus.tsv": "cb653e8094362aa4171fbeb2df198d46aaa7c8614b1583b5242eccca7f081bdf",
+          "native-natural-player.tsv": "eba9fa8cedebb325975ab737ed53b9efe815730977e01928068d255375c377e4"
+        },
+        "limits": [
+          "Samples after anchoring prove teststimulus at those updates, not continuous physical support betweenupdates.",
+          "OnlyPlayertransform is constrained. NPCcontacts/falls/paths andworkload may still differ.",
+          "This is a costfixture, not naturalplayer functional orvisible acceptance."
+        ]
+      },
+      {
+        "sourceRunId": "b93d-fixed-cost-fixture-20261031-133038",
+        "label": "b2-on",
+        "runtimeRunId": "runtime-20261031-134523",
+        "fixedCostStimulus": true,
+        "npcCodeChanged": false,
+        "valid": true,
+        "stages": {
+          "LOW_HOLD": {
+            "samples": 362,
+            "target": "<4510.000000, 340.233551, 10240.000000>",
+            "areas": {
+              "low": 362
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 0.417,
+            "lastSeconds": 44.897
+          },
+          "HIGH_HOLD": {
+            "samples": 478,
+            "target": "<4513.000000, 342.218536, 10240.000000>",
+            "areas": {
+              "high": 478
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 45.019,
+            "lastSeconds": 104.88
+          },
+          "GROUND_HOLD": {
+            "samples": 252,
+            "target": "<4523.000000, 339.346680, 10243.000000>",
+            "areas": {
+              "ground": 252
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 105.0,
+            "lastSeconds": 134.909
+          },
+          "GROUND_EAST": {
+            "samples": 81,
+            "target": "<4563.000000, 339.278656, 10243.000000>",
+            "areas": {
+              "ground": 81
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 135.029,
+            "lastSeconds": 144.98
+          },
+          "GROUND_EAST_HOLD": {
+            "samples": 127,
+            "target": "<4563.000000, 339.278656, 10243.000000>",
+            "areas": {
+              "ground": 127
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 145.083,
+            "lastSeconds": 159.904
+          },
+          "GROUND_NORTH": {
+            "samples": 84,
+            "target": "<4563.000000, 339.448669, 10283.000000>",
+            "areas": {
+              "ground": 84
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 160.016,
+            "lastSeconds": 169.999
+          },
+          "FINAL_HOLD": {
+            "samples": 84,
+            "target": "<4563.000000, 339.448669, 10283.000000>",
+            "areas": {
+              "ground": 84
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 170.119,
+            "lastSeconds": 180.002
+          }
+        },
+        "badFixedSamples": [],
+        "badNaturalSamples": [],
+        "finalChecks": 4806,
+        "finalCorrections": 59,
+        "finalFailures": 0,
+        "sourceHashes": {
+          "launch.json": "45eae647e267471e80097ed420a60e3bcb9cb10dc7ac4a8cc4c9b6e5ad0678f7",
+          "native-fixed-cost-stimulus.tsv": "723cf9866c5c875ce99b08b3dc9b180356ace38aab6a9853c4767d218d6af95b",
+          "native-natural-player.tsv": "9ebddfd1f4f6e3dc1048859fdb683b6e0e14d90101496cb91b5bc15e5bd16676"
+        },
+        "limits": [
+          "Samples after anchoring prove teststimulus at those updates, not continuous physical support betweenupdates.",
+          "OnlyPlayertransform is constrained. NPCcontacts/falls/paths andworkload may still differ.",
+          "This is a costfixture, not naturalplayer functional orvisible acceptance."
+        ]
+      },
+      {
+        "sourceRunId": "b93d-fixed-cost-fixture-20261031-133038",
+        "label": "a2-off",
+        "runtimeRunId": "runtime-20261031-134934",
+        "fixedCostStimulus": true,
+        "npcCodeChanged": false,
+        "valid": true,
+        "stages": {
+          "LOW_HOLD": {
+            "samples": 355,
+            "target": "<4510.000000, 340.233551, 10240.000000>",
+            "areas": {
+              "low": 355
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 0.431,
+            "lastSeconds": 44.931
+          },
+          "HIGH_HOLD": {
+            "samples": 480,
+            "target": "<4513.000000, 342.218536, 10240.000000>",
+            "areas": {
+              "high": 480
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 45.03,
+            "lastSeconds": 104.974
+          },
+          "GROUND_HOLD": {
+            "samples": 243,
+            "target": "<4523.000000, 339.346680, 10243.000000>",
+            "areas": {
+              "ground": 243
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 105.026,
+            "lastSeconds": 134.97
+          },
+          "GROUND_EAST": {
+            "samples": 79,
+            "target": "<4563.000000, 339.278656, 10243.000000>",
+            "areas": {
+              "ground": 79
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 135.161,
+            "lastSeconds": 144.98
+          },
+          "GROUND_EAST_HOLD": {
+            "samples": 125,
+            "target": "<4563.000000, 339.278656, 10243.000000>",
+            "areas": {
+              "ground": 125
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 145.106,
+            "lastSeconds": 159.952
+          },
+          "GROUND_NORTH": {
+            "samples": 79,
+            "target": "<4563.000000, 339.448669, 10283.000000>",
+            "areas": {
+              "ground": 79
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 160.072,
+            "lastSeconds": 169.933
+          },
+          "FINAL_HOLD": {
+            "samples": 81,
+            "target": "<4563.000000, 339.448669, 10283.000000>",
+            "areas": {
+              "ground": 81
+            },
+            "maximumNaturalPositionErrorMeters": 0.0,
+            "firstSeconds": 170.053,
+            "lastSeconds": 179.912
+          }
+        },
+        "badFixedSamples": [],
+        "badNaturalSamples": [],
+        "finalChecks": 4566,
+        "finalCorrections": 169,
+        "finalFailures": 0,
+        "sourceHashes": {
+          "launch.json": "56153e0a6e8ced58a785bb9400dfcc61978ff40a78e7540d13a98c1fa3611838",
+          "native-fixed-cost-stimulus.tsv": "c3d7995424ca27a992efd9cb690f9d636d30960c7140dcc6c5f1ff9b5aee3766",
+          "native-natural-player.tsv": "371cf040eaa73177fd3a86053e1ab92080e4958fcbf5a2c8b847456cda28eeb6"
+        },
+        "limits": [
+          "Samples after anchoring prove teststimulus at those updates, not continuous physical support betweenupdates.",
+          "OnlyPlayertransform is constrained. NPCcontacts/falls/paths andworkload may still differ.",
+          "This is a costfixture, not naturalplayer functional orvisible acceptance."
+        ]
+      }
+    ],
+    "repetitionsEachCondition": 2,
+    "pureInstrumentationOverheadIsolated": false,
+    "optimizedCode": false,
+    "newPbo": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "functionalAccepted": false,
+    "goalComplete": false,
+    "scope": "CurrentB93D active64 fixedtestplayer/fixedcamera15..175s OFF/ON/ON/OFF. Includes teststimulus/diagnostic/logging overhead; not productioncost.",
+    "limits": [
+      "Body includes traversal/contact consumption/presentation; phase scopes partition traversal, frameFall is separately owned. Do not sum overlapping scopes.",
+      "ElapsedTickCount is not CPUselftime, GPU presentation, native graph evaluation or allocation/GC.",
+      "Existing posequeries/state/contact logs remain in both conditions; OFF is only drive-attribution OFF, not a production no-diagnostics baseline.",
+      "180sec cost trial is not300sec functional acceptance or a change to prior functional gates.",
+      "Historical1/64idle andstatic/animated matrix retained separately; not claimed rerun onB93D.",
+      "Fixed testplayer is a costcontrol, not normalgameplay. NPCdynamics andwork can still vary; reportworkload andtimingnormalization.",
+      "No stage control is accepted until actual postanchor andnaturalplayercoordinates/support match expected targets.",
+      "Final180secarrival observations remain separate from300secfunctional acceptance.",
+      "Observed postanchor targets match. Emergent NPC workload may differ; no favorable OFF/ON difference is optimization or negative overhead proof.",
+      "GlobalSense/perception/social/pursuit/crowd counters countedonce, not64fold.",
+      "Globalcounter ownership uses corrected actor0 once semantics from priorbundle; no64foldSense sum.",
+      "Elapsed rate ms/wallsecond is neither CPUselftime nor a p95frame-time saving."
+    ],
+    "trials": [
+      {
+        "sourceRunId": "b93d-fixed-cost-fixture-20261031-133038",
+        "label": "a1-off",
+        "runtimeRunId": "runtime-20261031-133610",
+        "count": 64,
+        "seconds": 180,
+        "driveAttribution": false,
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "missionSourcesSha256": "B6270DC73F6B7BDDEE626C8965E9A251144BEC4873A9BD123B97414CFE57F149",
+        "fixedCamera": true,
+        "legacyHighAnchor": false,
+        "fixedCostStimulus": true,
+        "foregroundFraction": 1.0,
+        "missionFrameMs": {
+          "samples": 4127,
+          "p50": 32.0,
+          "p95": 73.0,
+          "p99": 94.0,
+          "maximum": 110.0
+        },
+        "missionFrameMsByStage": {
+          "LOW_HOLD": {
+            "samples": 583,
+            "p50": 51.0,
+            "p95": 84.0,
+            "p99": 96.0,
+            "maximum": 100.0
+          },
+          "HIGH_HOLD": {
+            "samples": 1209,
+            "p50": 50.0,
+            "p95": 87.0,
+            "p99": 96.0,
+            "maximum": 110.0
+          },
+          "GROUND_HOLD": {
+            "samples": 979,
+            "p50": 28.0,
+            "p95": 66.0,
+            "p99": 88.0,
+            "maximum": 110.0
+          },
+          "GROUND_EAST": {
+            "samples": 315,
+            "p50": 30.0,
+            "p95": 64.0,
+            "p99": 70.0,
+            "maximum": 75.0
+          },
+          "GROUND_EAST_HOLD": {
+            "samples": 538,
+            "p50": 27.0,
+            "p95": 58.0,
+            "p99": 75.0,
+            "maximum": 93.0
+          },
+          "GROUND_NORTH": {
+            "samples": 343,
+            "p50": 29.0,
+            "p95": 55.0,
+            "p99": 69.0,
+            "maximum": 70.0
+          },
+          "FINAL_HOLD": {
+            "samples": 160,
+            "p50": 29.0,
+            "p95": 65.0,
+            "p99": 84.0,
+            "maximum": 95.0
+          }
+        },
+        "workload": {
+          "worldSweeps": {
+            "sumDelta": 250878.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "jointSweeps": {
+            "sumDelta": 1260795.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "contactSolves": {
+            "sumDelta": 315393.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "contactFootRays": {
+            "sumDelta": 3153930.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "contactFallbackRays": {
+            "sumDelta": 0.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "plans": {
+            "sumDelta": 638.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "surfacePlans": {
+            "sumDelta": 8938.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "climbs": {
+            "sumDelta": 133.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "drops": {
+            "sumDelta": 61.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "landings": {
+            "sumDelta": 74.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "failures": {
+            "sumDelta": 0.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "pressureSteps": {
+            "sumDelta": 126568.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "pressureFalls": {
+            "sumDelta": 13.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "poseBlocks": {
+            "sumDelta": 324.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "positionWrites": {
+            "sumDelta": 2087280.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "orientationWrites": {
+            "sumDelta": 1565064.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          }
+        },
+        "actorBoundaryTimes": {
+          "firstMinimum": 15.422,
+          "firstMaximum": 15.422,
+          "lastMinimum": 174.72,
+          "lastMaximum": 174.72
+        },
+        "stimulus": {
+          "FINAL_HOLD": {
+            "samples": 42,
+            "firstPosition": "<4563.000000, 339.448669, 10283.000000>",
+            "lastPosition": "<4563.000000, 339.448669, 10283.000000>",
+            "areas": {
+              "ground": 42
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "GROUND_EAST": {
+            "samples": 79,
+            "firstPosition": "<4563.000000, 339.278656, 10243.000000>",
+            "lastPosition": "<4563.000000, 339.278656, 10243.000000>",
+            "areas": {
+              "ground": 79
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "GROUND_EAST_HOLD": {
+            "samples": 126,
+            "firstPosition": "<4563.000000, 339.278656, 10243.000000>",
+            "lastPosition": "<4563.000000, 339.278656, 10243.000000>",
+            "areas": {
+              "ground": 126
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "GROUND_HOLD": {
+            "samples": 245,
+            "firstPosition": "<4523.000000, 339.346680, 10243.000000>",
+            "lastPosition": "<4523.000000, 339.346680, 10243.000000>",
+            "areas": {
+              "ground": 245
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "GROUND_NORTH": {
+            "samples": 83,
+            "firstPosition": "<4563.000000, 339.448669, 10283.000000>",
+            "lastPosition": "<4563.000000, 339.448669, 10283.000000>",
+            "areas": {
+              "ground": 83
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "HIGH_HOLD": {
+            "samples": 472,
+            "firstPosition": "<4513.000000, 342.218536, 10240.000000>",
+            "lastPosition": "<4513.000000, 342.218536, 10240.000000>",
+            "areas": {
+              "high": 472
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "LOW_HOLD": {
+            "samples": 236,
+            "firstPosition": "<4510.000000, 340.233551, 10240.000000>",
+            "lastPosition": "<4510.000000, 340.233551, 10240.000000>",
+            "areas": {
+              "low": 236
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          }
+        },
+        "normalQuitVerified": true,
+        "optimizationAccepted": false,
+        "functionalAccepted": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false,
+        "unavailable": [
+          "native graph/animation selftime",
+          "GPU palette/upload/present selftime",
+          "allocation/GC activity",
+          "exactAI sightcheck invocation count; body/native callback rate is not that count"
+        ],
+        "limits": [
+          "Body includes traversal/contact consumption/presentation; phase scopes partition traversal, frameFall is separately owned. Do not sum overlapping scopes.",
+          "ElapsedTickCount is not CPUselftime, GPU presentation, native graph evaluation or allocation/GC.",
+          "Existing posequeries/state/contact logs remain in both conditions; OFF is only drive-attribution OFF, not a production no-diagnostics baseline.",
+          "180sec cost trial is not300sec functional acceptance or a change to prior functional gates.",
+          "Historical1/64idle andstatic/animated matrix retained separately; not claimed rerun onB93D.",
+          "Fixed testplayer is a costcontrol, not normalgameplay. NPCdynamics andwork can still vary; reportworkload andtimingnormalization.",
+          "No stage control is accepted until actual postanchor andnaturalplayercoordinates/support match expected targets.",
+          "Final180secarrival observations remain separate from300secfunctional acceptance.",
+          "nearest-rank frame percentiles; missioncallback pacing, not GPU presentation.",
+          "Workload deltas use each actors first/last foregroundsamples in15..175; boundary coverage reported, not exact shared instant."
+        ]
+      },
+      {
+        "sourceRunId": "b93d-fixed-cost-fixture-20261031-133038",
+        "label": "b1-on",
+        "runtimeRunId": "runtime-20261031-134030",
+        "count": 64,
+        "seconds": 180,
+        "driveAttribution": true,
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "missionSourcesSha256": "B6270DC73F6B7BDDEE626C8965E9A251144BEC4873A9BD123B97414CFE57F149",
+        "fixedCamera": true,
+        "legacyHighAnchor": false,
+        "fixedCostStimulus": true,
+        "foregroundFraction": 1.0,
+        "missionFrameMs": {
+          "samples": 4279,
+          "p50": 32.0,
+          "p95": 74.0,
+          "p99": 92.0,
+          "maximum": 119.0
+        },
+        "missionFrameMsByStage": {
+          "LOW_HOLD": {
+            "samples": 652,
+            "p50": 46.0,
+            "p95": 86.0,
+            "p99": 112.0,
+            "maximum": 119.0
+          },
+          "HIGH_HOLD": {
+            "samples": 1360,
+            "p50": 43.0,
+            "p95": 82.0,
+            "p99": 94.0,
+            "maximum": 116.0
+          },
+          "GROUND_HOLD": {
+            "samples": 977,
+            "p50": 29.0,
+            "p95": 57.0,
+            "p99": 74.0,
+            "maximum": 92.0
+          },
+          "GROUND_EAST": {
+            "samples": 306,
+            "p50": 31.0,
+            "p95": 56.0,
+            "p99": 78.0,
+            "maximum": 79.0
+          },
+          "GROUND_EAST_HOLD": {
+            "samples": 515,
+            "p50": 28.0,
+            "p95": 53.0,
+            "p99": 72.0,
+            "maximum": 92.0
+          },
+          "GROUND_NORTH": {
+            "samples": 325,
+            "p50": 30.0,
+            "p95": 54.0,
+            "p99": 76.0,
+            "maximum": 78.0
+          },
+          "FINAL_HOLD": {
+            "samples": 144,
+            "p50": 31.0,
+            "p95": 55.0,
+            "p99": 79.0,
+            "maximum": 83.0
+          }
+        },
+        "workload": {
+          "worldSweeps": {
+            "sumDelta": 243414.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "jointSweeps": {
+            "sumDelta": 1244083.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "contactSolves": {
+            "sumDelta": 311394.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "contactFootRays": {
+            "sumDelta": 3113940.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "contactFallbackRays": {
+            "sumDelta": 0.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "plans": {
+            "sumDelta": 781.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "surfacePlans": {
+            "sumDelta": 8766.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "climbs": {
+            "sumDelta": 135.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "drops": {
+            "sumDelta": 61.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "landings": {
+            "sumDelta": 76.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "failures": {
+            "sumDelta": 0.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "pressureSteps": {
+            "sumDelta": 123301.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "pressureFalls": {
+            "sumDelta": 15.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "poseBlocks": {
+            "sumDelta": 638.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "positionWrites": {
+            "sumDelta": 2161160.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "orientationWrites": {
+            "sumDelta": 1601624.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          }
+        },
+        "actorBoundaryTimes": {
+          "firstMinimum": 15.31,
+          "firstMaximum": 15.31,
+          "lastMinimum": 174.501,
+          "lastMaximum": 174.501
+        },
+        "stimulus": {
+          "FINAL_HOLD": {
+            "samples": 42,
+            "firstPosition": "<4563.000000, 339.448669, 10283.000000>",
+            "lastPosition": "<4563.000000, 339.448669, 10283.000000>",
+            "areas": {
+              "ground": 42
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "GROUND_EAST": {
+            "samples": 83,
+            "firstPosition": "<4563.000000, 339.278656, 10243.000000>",
+            "lastPosition": "<4563.000000, 339.278656, 10243.000000>",
+            "areas": {
+              "ground": 83
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "GROUND_EAST_HOLD": {
+            "samples": 127,
+            "firstPosition": "<4563.000000, 339.278656, 10243.000000>",
+            "lastPosition": "<4563.000000, 339.278656, 10243.000000>",
+            "areas": {
+              "ground": 127
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "GROUND_HOLD": {
+            "samples": 252,
+            "firstPosition": "<4523.000000, 339.346680, 10243.000000>",
+            "lastPosition": "<4523.000000, 339.346680, 10243.000000>",
+            "areas": {
+              "ground": 252
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "GROUND_NORTH": {
+            "samples": 82,
+            "firstPosition": "<4563.000000, 339.448669, 10283.000000>",
+            "lastPosition": "<4563.000000, 339.448669, 10283.000000>",
+            "areas": {
+              "ground": 82
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "HIGH_HOLD": {
+            "samples": 470,
+            "firstPosition": "<4513.000000, 342.218536, 10240.000000>",
+            "lastPosition": "<4513.000000, 342.218536, 10240.000000>",
+            "areas": {
+              "high": 470
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "LOW_HOLD": {
+            "samples": 237,
+            "firstPosition": "<4510.000000, 340.233551, 10240.000000>",
+            "lastPosition": "<4510.000000, 340.233551, 10240.000000>",
+            "areas": {
+              "low": 237
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          }
+        },
+        "normalQuitVerified": true,
+        "optimizationAccepted": false,
+        "functionalAccepted": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false,
+        "unavailable": [
+          "native graph/animation selftime",
+          "GPU palette/upload/present selftime",
+          "allocation/GC activity",
+          "exactAI sightcheck invocation count; body/native callback rate is not that count"
+        ],
+        "limits": [
+          "Body includes traversal/contact consumption/presentation; phase scopes partition traversal, frameFall is separately owned. Do not sum overlapping scopes.",
+          "ElapsedTickCount is not CPUselftime, GPU presentation, native graph evaluation or allocation/GC.",
+          "Existing posequeries/state/contact logs remain in both conditions; OFF is only drive-attribution OFF, not a production no-diagnostics baseline.",
+          "180sec cost trial is not300sec functional acceptance or a change to prior functional gates.",
+          "Historical1/64idle andstatic/animated matrix retained separately; not claimed rerun onB93D.",
+          "Fixed testplayer is a costcontrol, not normalgameplay. NPCdynamics andwork can still vary; reportworkload andtimingnormalization.",
+          "No stage control is accepted until actual postanchor andnaturalplayercoordinates/support match expected targets.",
+          "Final180secarrival observations remain separate from300secfunctional acceptance.",
+          "nearest-rank frame percentiles; missioncallback pacing, not GPU presentation.",
+          "Workload deltas use each actors first/last foregroundsamples in15..175; boundary coverage reported, not exact shared instant."
+        ]
+      },
+      {
+        "sourceRunId": "b93d-fixed-cost-fixture-20261031-133038",
+        "label": "b2-on",
+        "runtimeRunId": "runtime-20261031-134523",
+        "count": 64,
+        "seconds": 180,
+        "driveAttribution": true,
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "missionSourcesSha256": "B6270DC73F6B7BDDEE626C8965E9A251144BEC4873A9BD123B97414CFE57F149",
+        "fixedCamera": true,
+        "legacyHighAnchor": false,
+        "fixedCostStimulus": true,
+        "foregroundFraction": 1.0,
+        "missionFrameMs": {
+          "samples": 4207,
+          "p50": 33.0,
+          "p95": 71.0,
+          "p99": 88.0,
+          "maximum": 116.0
+        },
+        "missionFrameMsByStage": {
+          "LOW_HOLD": {
+            "samples": 652,
+            "p50": 47.0,
+            "p95": 76.0,
+            "p99": 89.0,
+            "maximum": 113.0
+          },
+          "HIGH_HOLD": {
+            "samples": 1284,
+            "p50": 46.0,
+            "p95": 82.0,
+            "p99": 95.0,
+            "maximum": 116.0
+          },
+          "GROUND_HOLD": {
+            "samples": 990,
+            "p50": 28.0,
+            "p95": 54.0,
+            "p99": 75.0,
+            "maximum": 90.0
+          },
+          "GROUND_EAST": {
+            "samples": 307,
+            "p50": 31.0,
+            "p95": 56.0,
+            "p99": 77.0,
+            "maximum": 83.0
+          },
+          "GROUND_EAST_HOLD": {
+            "samples": 505,
+            "p50": 28.0,
+            "p95": 54.0,
+            "p99": 62.0,
+            "maximum": 79.0
+          },
+          "GROUND_NORTH": {
+            "samples": 324,
+            "p50": 30.0,
+            "p95": 52.0,
+            "p99": 66.0,
+            "maximum": 73.0
+          },
+          "FINAL_HOLD": {
+            "samples": 145,
+            "p50": 31.0,
+            "p95": 55.0,
+            "p99": 71.0,
+            "maximum": 90.0
+          }
+        },
+        "workload": {
+          "worldSweeps": {
+            "sumDelta": 247863.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "jointSweeps": {
+            "sumDelta": 1254435.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "contactSolves": {
+            "sumDelta": 313980.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "contactFootRays": {
+            "sumDelta": 3139800.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "contactFallbackRays": {
+            "sumDelta": 0.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "plans": {
+            "sumDelta": 717.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "surfacePlans": {
+            "sumDelta": 8592.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "climbs": {
+            "sumDelta": 137.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "drops": {
+            "sumDelta": 60.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "landings": {
+            "sumDelta": 81.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "failures": {
+            "sumDelta": 2.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "pressureSteps": {
+            "sumDelta": 125044.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "pressureFalls": {
+            "sumDelta": 20.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "poseBlocks": {
+            "sumDelta": 586.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "positionWrites": {
+            "sumDelta": 2128680.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "orientationWrites": {
+            "sumDelta": 1579264.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          }
+        },
+        "actorBoundaryTimes": {
+          "firstMinimum": 15.337,
+          "firstMaximum": 15.337,
+          "lastMinimum": 174.892,
+          "lastMaximum": 174.892
+        },
+        "stimulus": {
+          "FINAL_HOLD": {
+            "samples": 41,
+            "firstPosition": "<4563.000000, 339.448669, 10283.000000>",
+            "lastPosition": "<4563.000000, 339.448669, 10283.000000>",
+            "areas": {
+              "ground": 41
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "GROUND_EAST": {
+            "samples": 81,
+            "firstPosition": "<4563.000000, 339.278656, 10243.000000>",
+            "lastPosition": "<4563.000000, 339.278656, 10243.000000>",
+            "areas": {
+              "ground": 81
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "GROUND_EAST_HOLD": {
+            "samples": 127,
+            "firstPosition": "<4563.000000, 339.278656, 10243.000000>",
+            "lastPosition": "<4563.000000, 339.278656, 10243.000000>",
+            "areas": {
+              "ground": 127
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "GROUND_HOLD": {
+            "samples": 252,
+            "firstPosition": "<4523.000000, 339.346680, 10243.000000>",
+            "lastPosition": "<4523.000000, 339.346680, 10243.000000>",
+            "areas": {
+              "ground": 252
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "GROUND_NORTH": {
+            "samples": 84,
+            "firstPosition": "<4563.000000, 339.448669, 10283.000000>",
+            "lastPosition": "<4563.000000, 339.448669, 10283.000000>",
+            "areas": {
+              "ground": 84
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "HIGH_HOLD": {
+            "samples": 478,
+            "firstPosition": "<4513.000000, 342.218536, 10240.000000>",
+            "lastPosition": "<4513.000000, 342.218536, 10240.000000>",
+            "areas": {
+              "high": 478
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "LOW_HOLD": {
+            "samples": 240,
+            "firstPosition": "<4510.000000, 340.233551, 10240.000000>",
+            "lastPosition": "<4510.000000, 340.233551, 10240.000000>",
+            "areas": {
+              "low": 240
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          }
+        },
+        "normalQuitVerified": true,
+        "optimizationAccepted": false,
+        "functionalAccepted": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false,
+        "unavailable": [
+          "native graph/animation selftime",
+          "GPU palette/upload/present selftime",
+          "allocation/GC activity",
+          "exactAI sightcheck invocation count; body/native callback rate is not that count"
+        ],
+        "limits": [
+          "Body includes traversal/contact consumption/presentation; phase scopes partition traversal, frameFall is separately owned. Do not sum overlapping scopes.",
+          "ElapsedTickCount is not CPUselftime, GPU presentation, native graph evaluation or allocation/GC.",
+          "Existing posequeries/state/contact logs remain in both conditions; OFF is only drive-attribution OFF, not a production no-diagnostics baseline.",
+          "180sec cost trial is not300sec functional acceptance or a change to prior functional gates.",
+          "Historical1/64idle andstatic/animated matrix retained separately; not claimed rerun onB93D.",
+          "Fixed testplayer is a costcontrol, not normalgameplay. NPCdynamics andwork can still vary; reportworkload andtimingnormalization.",
+          "No stage control is accepted until actual postanchor andnaturalplayercoordinates/support match expected targets.",
+          "Final180secarrival observations remain separate from300secfunctional acceptance.",
+          "nearest-rank frame percentiles; missioncallback pacing, not GPU presentation.",
+          "Workload deltas use each actors first/last foregroundsamples in15..175; boundary coverage reported, not exact shared instant."
+        ]
+      },
+      {
+        "sourceRunId": "b93d-fixed-cost-fixture-20261031-133038",
+        "label": "a2-off",
+        "runtimeRunId": "runtime-20261031-134934",
+        "count": 64,
+        "seconds": 180,
+        "driveAttribution": false,
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "missionSourcesSha256": "B6270DC73F6B7BDDEE626C8965E9A251144BEC4873A9BD123B97414CFE57F149",
+        "fixedCamera": true,
+        "legacyHighAnchor": false,
+        "fixedCostStimulus": true,
+        "foregroundFraction": 1.0,
+        "missionFrameMs": {
+          "samples": 3974,
+          "p50": 33.0,
+          "p95": 86.0,
+          "p99": 102.0,
+          "maximum": 141.0
+        },
+        "missionFrameMsByStage": {
+          "LOW_HOLD": {
+            "samples": 534,
+            "p50": 55.0,
+            "p95": 95.0,
+            "p99": 109.0,
+            "maximum": 130.0
+          },
+          "HIGH_HOLD": {
+            "samples": 1163,
+            "p50": 50.0,
+            "p95": 94.0,
+            "p99": 107.0,
+            "maximum": 141.0
+          },
+          "GROUND_HOLD": {
+            "samples": 946,
+            "p50": 29.0,
+            "p95": 71.0,
+            "p99": 89.0,
+            "maximum": 122.0
+          },
+          "GROUND_EAST": {
+            "samples": 317,
+            "p50": 30.0,
+            "p95": 66.0,
+            "p99": 77.0,
+            "maximum": 95.0
+          },
+          "GROUND_EAST_HOLD": {
+            "samples": 535,
+            "p50": 27.0,
+            "p95": 57.0,
+            "p99": 70.0,
+            "maximum": 87.0
+          },
+          "GROUND_NORTH": {
+            "samples": 331,
+            "p50": 30.0,
+            "p95": 64.0,
+            "p99": 69.0,
+            "maximum": 71.0
+          },
+          "FINAL_HOLD": {
+            "samples": 148,
+            "p50": 30.0,
+            "p95": 64.0,
+            "p99": 89.0,
+            "maximum": 95.0
+          }
+        },
+        "workload": {
+          "worldSweeps": {
+            "sumDelta": 239958.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "jointSweeps": {
+            "sumDelta": 1216700.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "contactSolves": {
+            "sumDelta": 304649.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "contactFootRays": {
+            "sumDelta": 3046490.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "contactFallbackRays": {
+            "sumDelta": 0.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "plans": {
+            "sumDelta": 789.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "surfacePlans": {
+            "sumDelta": 8562.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "climbs": {
+            "sumDelta": 136.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "drops": {
+            "sumDelta": 62.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "landings": {
+            "sumDelta": 80.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "failures": {
+            "sumDelta": 0.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "pressureSteps": {
+            "sumDelta": 121009.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "pressureFalls": {
+            "sumDelta": 17.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "poseBlocks": {
+            "sumDelta": 808.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "positionWrites": {
+            "sumDelta": 2007832.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          },
+          "orientationWrites": {
+            "sumDelta": 1479392.0,
+            "negativeDeltas": 0,
+            "boundarySampleCount": 64
+          }
+        },
+        "actorBoundaryTimes": {
+          "firstMinimum": 15.341,
+          "firstMaximum": 15.341,
+          "lastMinimum": 174.765,
+          "lastMaximum": 174.765
+        },
+        "stimulus": {
+          "FINAL_HOLD": {
+            "samples": 41,
+            "firstPosition": "<4563.000000, 339.448669, 10283.000000>",
+            "lastPosition": "<4563.000000, 339.448669, 10283.000000>",
+            "areas": {
+              "ground": 41
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "GROUND_EAST": {
+            "samples": 79,
+            "firstPosition": "<4563.000000, 339.278656, 10243.000000>",
+            "lastPosition": "<4563.000000, 339.278656, 10243.000000>",
+            "areas": {
+              "ground": 79
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "GROUND_EAST_HOLD": {
+            "samples": 125,
+            "firstPosition": "<4563.000000, 339.278656, 10243.000000>",
+            "lastPosition": "<4563.000000, 339.278656, 10243.000000>",
+            "areas": {
+              "ground": 125
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "GROUND_HOLD": {
+            "samples": 243,
+            "firstPosition": "<4523.000000, 339.346680, 10243.000000>",
+            "lastPosition": "<4523.000000, 339.346680, 10243.000000>",
+            "areas": {
+              "ground": 243
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "GROUND_NORTH": {
+            "samples": 79,
+            "firstPosition": "<4563.000000, 339.448669, 10283.000000>",
+            "lastPosition": "<4563.000000, 339.448669, 10283.000000>",
+            "areas": {
+              "ground": 79
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "HIGH_HOLD": {
+            "samples": 480,
+            "firstPosition": "<4513.000000, 342.218536, 10240.000000>",
+            "lastPosition": "<4513.000000, 342.218536, 10240.000000>",
+            "areas": {
+              "high": 480
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          },
+          "LOW_HOLD": {
+            "samples": 232,
+            "firstPosition": "<4510.000000, 340.233551, 10240.000000>",
+            "lastPosition": "<4510.000000, 340.233551, 10240.000000>",
+            "areas": {
+              "low": 232
+            },
+            "maximumDisplacementFromFirstMeters": 0.0,
+            "sampledPathMeters": 0.0
+          }
+        },
+        "normalQuitVerified": true,
+        "optimizationAccepted": false,
+        "functionalAccepted": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false,
+        "unavailable": [
+          "native graph/animation selftime",
+          "GPU palette/upload/present selftime",
+          "allocation/GC activity",
+          "exactAI sightcheck invocation count; body/native callback rate is not that count"
+        ],
+        "limits": [
+          "Body includes traversal/contact consumption/presentation; phase scopes partition traversal, frameFall is separately owned. Do not sum overlapping scopes.",
+          "ElapsedTickCount is not CPUselftime, GPU presentation, native graph evaluation or allocation/GC.",
+          "Existing posequeries/state/contact logs remain in both conditions; OFF is only drive-attribution OFF, not a production no-diagnostics baseline.",
+          "180sec cost trial is not300sec functional acceptance or a change to prior functional gates.",
+          "Historical1/64idle andstatic/animated matrix retained separately; not claimed rerun onB93D.",
+          "Fixed testplayer is a costcontrol, not normalgameplay. NPCdynamics andwork can still vary; reportworkload andtimingnormalization.",
+          "No stage control is accepted until actual postanchor andnaturalplayercoordinates/support match expected targets.",
+          "Final180secarrival observations remain separate from300secfunctional acceptance.",
+          "nearest-rank frame percentiles; missioncallback pacing, not GPU presentation.",
+          "Workload deltas use each actors first/last foregroundsamples in15..175; boundary coverage reported, not exact shared instant."
+        ]
+      }
+    ],
+    "stateObservations": [
+      {
+        "label": "a1-off",
+        "runtimeRunId": "runtime-20261031-133610",
+        "analyzerExitCode": 0,
+        "terminalArrivals": 52,
+        "fallEpisodes": 75,
+        "fallsLandedAndResumed": 75,
+        "physicalTransitions": 921,
+        "allPhysicalTransitionsMatched": true,
+        "stateReportSha256": "282253abfbcdcdf983c88d8f155a34489fa4e3572e3d3ee2f57c2c6cf477f249",
+        "scope": "180sec cost trial observations, not300sec functional acceptance.",
+        "unresolvedTerminalIds": [
+          0,
+          2,
+          4,
+          31,
+          32,
+          34,
+          37,
+          42,
+          43,
+          46,
+          53,
+          54
+        ],
+        "climbEndFailureCount": 0
+      },
+      {
+        "label": "b1-on",
+        "runtimeRunId": "runtime-20261031-134030",
+        "analyzerExitCode": 0,
+        "terminalArrivals": 59,
+        "fallEpisodes": 76,
+        "fallsLandedAndResumed": 76,
+        "physicalTransitions": 937,
+        "allPhysicalTransitionsMatched": true,
+        "stateReportSha256": "ac391fdf5946b2420b1fced213366f7ac4cf488b974ca24e8de5d9ec71af338c",
+        "scope": "180sec cost trial observations, not300sec functional acceptance.",
+        "unresolvedTerminalIds": [
+          0,
+          9,
+          19,
+          49,
+          61
+        ],
+        "climbEndFailureCount": 0
+      },
+      {
+        "label": "b2-on",
+        "runtimeRunId": "runtime-20261031-134523",
+        "analyzerExitCode": 0,
+        "terminalArrivals": 53,
+        "fallEpisodes": 81,
+        "fallsLandedAndResumed": 81,
+        "physicalTransitions": 960,
+        "allPhysicalTransitionsMatched": true,
+        "stateReportSha256": "c39fcfe2cb5e76c00a7bb3c8acdc2fefef0ca4f0eeb959aba79623e763158dcc",
+        "scope": "180sec cost trial observations, not300sec functional acceptance.",
+        "unresolvedTerminalIds": [
+          1,
+          3,
+          11,
+          13,
+          34,
+          38,
+          39,
+          42,
+          44,
+          48,
+          62
+        ],
+        "climbEndFailureCount": 0
+      },
+      {
+        "label": "a2-off",
+        "runtimeRunId": "runtime-20261031-134934",
+        "analyzerExitCode": 0,
+        "terminalArrivals": 56,
+        "fallEpisodes": 80,
+        "fallsLandedAndResumed": 80,
+        "physicalTransitions": 950,
+        "allPhysicalTransitionsMatched": true,
+        "stateReportSha256": "2e0ce2f7298556eb1a378aaa71fa07ae7c4e38f23cfd66925d5060cb97ea3f0e",
+        "scope": "180sec cost trial observations, not300sec functional acceptance.",
+        "unresolvedTerminalIds": [
+          9,
+          11,
+          19,
+          29,
+          31,
+          36,
+          45,
+          50
+        ],
+        "climbEndFailureCount": 0
+      }
+    ],
+    "conditions": {
+      "count": 64,
+      "nativeHosts": 512,
+      "seconds": 180,
+      "measurementWindow": [
+        15,
+        175
+      ],
+      "repetitionsEachCondition": 2,
+      "fixedCamera": true,
+      "fixedCostStimulus": true,
+      "legacyHighAnchor": false,
+      "visualCapture": false,
+      "driveScopesOnlyToggled": true
+    }
+  },
+  "timingSource": {
+    "originalArchiveSha256": "453d6a9e688d7bf14c5b98c305dd5a45200ec52156949c10691839b43c58bc9a",
+    "bodyMember": "scripts/4_world/dgbnativeground.c",
+    "bodyTimerExcerpts": [
+      {
+        "startLine": 264,
+        "endLine": 270,
+        "text": "    bool SolveContacts(vector anchor,float heading,out float proposedLift,out array<vector> points,float minimumLift=0)\n    {\n        int contactStarted=TickCount(0);\n        ContactSolves++;\n        bool accepted=SolveContactsInternal(anchor,heading,proposedLift,points,minimumLift);\n        ProposedLift=proposedLift;MaximumProposedLift=Math.Max(MaximumProposedLift,proposedLift);\n        ContactTicks+=TickCount(contactStarted);return accepted;"
+      },
+      {
+        "startLine": 359,
+        "endLine": 434,
+        "text": "    bool SolveContactsInternal(vector anchor,float heading,out float proposedLift,out array<vector> points,float minimumLift=0)\n    {\n        proposedLift=0;points=new array<vector>;\n        ref array<vector> raw={};\n        int boneStarted=TickCount(0);\n        for(int j=0;j<JointIds.Count();j++)raw.Insert(anchor+Rotate(Leader.GetBonePositionMS(JointIds[j])+IdleOffset,heading));\n        ContactBoneTicks+=TickCount(boneStarted);\n        array<vector> supportOffsets={\"0 0 0\",\"0.065 0 0\",\"-0.065 0 0\",\"0 0 0.065\",\"0 0 -0.065\"};\n        int liftFoot=2;\n        int footStarted=TickCount(0);\n        float shadowBefore=SupportShadowTicks;\n        for(int foot=2;foot<4;foot++)\n        {\n            bool referenceFound=false;float referenceY=-100000;\n            bool centerTested=false;bool centerFound=false;\n            Object centerObject;vector centerPoint,centerNormal;float centerFraction;\n            bool fastEligible=false;float supportBound;\n            if(Director.SupportSweepFast || Director.SupportSweepShadow)\n            {\n                centerTested=true;ContactFootRays++;\n                centerFound=DayZPhysics.RayCastBullet(raw[foot]+\"0 0.3 0\",raw[foot]+\"0 -1.2 0\",DGBGroundAgent.Floors(),Leader,centerObject,centerPoint,centerNormal,centerFraction);\n                if(centerFound && centerNormal[1]>=0.65){referenceFound=true;referenceY=centerPoint[1];}\n                int fastStarted=TickCount(0);\n                if(referenceFound)fastEligible=StructureSupportBound(raw[foot],centerObject,centerPoint,centerNormal,centerFraction,supportBound);\n                SupportFastTicks+=TickCount(fastStarted);\n            }\n            bool useBound=Director.SupportSweepFast && fastEligible && !Director.SupportSweepShadow;\n            if(useBound)\n            {referenceFound=true;referenceY=supportBound;SupportFastUsed++;SupportFastSkippedRays+=4;}\n            else\n            foreach(vector offset:supportOffsets)\n            {\n                if(centerTested && offset==vector.Zero)continue;\n                Object hit;vector point,normal;float fraction;\n                vector origin=raw[foot]+offset;\n                ContactFootRays++;\n                if(DayZPhysics.RayCastBullet(origin+\"0 0.3 0\",origin+\"0 -1.2 0\",DGBGroundAgent.Floors(),Leader,hit,point,normal,fraction) && normal[1]>=0.65)\n                {\n                    referenceFound=true;referenceY=Math.Max(referenceY,point[1]);\n                }\n            }\n            if(Director.SupportSweepShadow && fastEligible && referenceFound)\n            {\n                SupportFastReferenceChecks++;\n                float fastError=referenceY - supportBound;\n                if(fastError>0.001)SupportFastUnder++;\n                SupportFastMaxUnder=Math.Max(SupportFastMaxUnder,fastError);\n                SupportFastMaxOver=Math.Max(SupportFastMaxOver, -fastError);\n            }\n            if(referenceFound)\n            {\n                float required=referenceY+Radii[foot]+0.03 - raw[foot][1];\n                if(required>proposedLift){proposedLift=required;liftFoot=foot;}\n            }\n            if(Director.SupportSweepShadow)ObserveSupportSweep(raw[foot],referenceFound,referenceY);\n        }\n        proposedLift=Math.Max(proposedLift,minimumLift);\n        ContactFootTicks+=TickCount(footStarted) - (SupportShadowTicks - shadowBefore);\n        if(proposedLift>0.25)\n        {\n            Reason=\"NATIVE_FOOT_LIFT_LIMIT\";\n            vector oldFoot=raw[liftFoot];if(Contacts.Count()==4)oldFoot=Contacts[liftFoot];\n            int liftDiagnosticStarted=TickCount(0);\n            RecordContactFailure(\"LIFT_LIMIT\",liftFoot,anchor,heading,raw[liftFoot],oldFoot,raw[liftFoot]+Vector(0,proposedLift,0),proposedLift,null);\n            ContactDiagnosticTicks+=TickCount(liftDiagnosticStarted);\n            return false;\n        }\n        for(int joint=0;joint<raw.Count();joint++)\n        {\n            vector target=raw[joint]+Vector(0,proposedLift,0);\n            vector previous=target;if(Contacts.Count()==4)previous=Contacts[joint];\n            Object collision;vector contact,normalHit;float hitFraction;\n            JointSweeps++;\n            int worldStarted=TickCount(0);\n            bool worldContact=DayZPhysics.SphereCastBullet(previous,target,Radii[joint],DGBGroundAgent.Walls(),Leader,collision,contact,normalHit,hitFraction);\n            ContactWorldTicks+=TickCount(worldStarted);"
+      },
+      {
+        "startLine": 450,
+        "endLine": 454,
+        "text": "                if(joint>=2 && !supportedFoot && !collision)\n                {\n                    int fallbackStarted=TickCount(0);\n                    supportedFoot=WalkableFootSweep(previous,target,Radii[joint],collision);\n                    ContactFallbackTicks+=TickCount(fallbackStarted);"
+      }
+    ],
+    "candidateArchiveSha256": "b93d2e713fe7aeb41570c2b21839ff1ada148be0eac090747220b6a4f78ad0d1",
+    "observerOverride": {
+      "member": "scripts/4_world/dgsubsetzzzzzcontactinputs.c",
+      "startLine": 74,
+      "endLine": 112,
+      "text": "    override bool SolveContactsInternal(vector anchor,float heading,out float proposedLift,out array<vector> points,float minimumLift=0)\n    {\n        if(!FCOn() || !FCEligible())return super.SolveContactsInternal(anchor,heading,proposedLift,points,minimumLift);\n        FCCalls++;FCNativeBefore=Leader.NativeSeconds;FCUpdatesBefore=Leader.AnimUpdates;\n        FCPositionBefore=Agent.Position;FCFailureStage=\"\";FCFailureJoint=-1;\n        bool oldInside=FCInside;FCInside=true;\n        bool accepted=FCExecuteSolve(anchor,heading,proposedLift,points,minimumLift);\n        FCInside=oldInside;\n        FCObserveResult(accepted,proposedLift,points);\n        return accepted;\n    }\n    bool FCExecuteSolve(vector anchor,float heading,out float proposedLift,out array<vector> points,float minimumLift=0)\n    {\n        proposedLift=0;points=new array<vector>;\n        ref array<vector> raw={};\n        int boneStarted=TickCount(0);\n        for(int j=0;j<JointIds.Count();j++)raw.Insert(anchor+Rotate(Leader.GetBonePositionMS(JointIds[j])+IdleOffset,heading));\n        ContactBoneTicks+=TickCount(boneStarted);\n        FCObserveRaw(anchor,heading,raw,minimumLift);\n        array<vector> supportOffsets={\"0 0 0\",\"0.065 0 0\",\"-0.065 0 0\",\"0 0 0.065\",\"0 0 -0.065\"};\n        int liftFoot=2;\n        int footStarted=TickCount(0);\n        float shadowBefore=SupportShadowTicks;\n        for(int foot=2;foot<4;foot++)\n        {\n            bool referenceFound=false;float referenceY=-100000;\n            bool centerTested=false;bool centerFound=false;\n            Object centerObject;vector centerPoint,centerNormal;float centerFraction;\n            bool fastEligible=false;float supportBound;\n            if(Director.SupportSweepFast || Director.SupportSweepShadow)\n            {\n                centerTested=true;ContactFootRays++;\n                centerFound=DayZPhysics.RayCastBullet(raw[foot]+\"0 0.3 0\",raw[foot]+\"0 -1.2 0\",DGBGroundAgent.Floors(),Leader,centerObject,centerPoint,centerNormal,centerFraction);\n                if(centerFound && centerNormal[1]>=0.65){referenceFound=true;referenceY=centerPoint[1];}\n                int fastStarted=TickCount(0);\n                if(referenceFound)fastEligible=StructureSupportBound(raw[foot],centerObject,centerPoint,centerNormal,centerFraction,supportBound);\n                SupportFastTicks+=TickCount(fastStarted);\n            }\n            bool useBound=Director.SupportSweepFast && fastEligible && !Director.SupportSweepShadow;"
+    },
+    "driveAttribution": {
+      "member": "scripts/4_world/dgsubsetdriveattribution.c",
+      "text": "// Opt-in elapsed scopes only. Every original operation and decision goes through\n// super unchanged. Nested scopes must never be added into CPU self-time.\nclass DGNativeDriveCostRow\n{\n    int BodyCalls;float BodyTicks;\n    int TraversalCalls;float TraversalTicks;\n    int ConsumeCalls;float ConsumeTicks;\n    int FrameFallCalls;float FrameFallTicks;\n    int ActiveFallCalls;float ActiveFallTicks;\n    ref array<int> PhaseCalls={0,0,0,0,0,0,0};\n    ref array<float> PhaseTicks={0,0,0,0,0,0,0};\n}\nclass DGNativeDriveAttribution\n{\n    static bool PolicyRead;static bool Enabled;static bool Closed;\n    static ref array<ref DGNativeDriveCostRow> Rows={};\n    static FileHandle Log;\n    static float NextSample;\n    static bool On()\n    {\n        if(!PolicyRead){Enabled=FileExist(\"$profile:drive-attribution.flag\");PolicyRead=true;}\n        return Enabled;\n    }\n    static DGNativeDriveCostRow Get(DGBNativeGroundBody body)\n    {\n        if(!body || body.Id<0 || body.Id>=64)return null;\n        while(Rows.Count()<=body.Id)Rows.Insert(new DGNativeDriveCostRow);\n        return Rows[body.Id];\n    }\n    static int PhaseSlot(DGBNativeTraversal traversal)\n    {\n        if(!traversal)return 6;\n        if(traversal.Phase==\"FOLLOW\")return 0;\n        if(traversal.Phase==\"MOTION\" && traversal.Active)\n        {\n            if(traversal.Active.Action==\"CLIMB\")return 1;\n            if(traversal.Active.Action==\"DROP\")return 2;\n        }\n        if(traversal.Phase==\"EGRESS\")return 3;\n        if(traversal.Phase==\"LAND\" || traversal.Phase==\"SETTLE\")return 4;\n        if(traversal.Phase==\"FALL\")return 5;\n        return 6;\n    }\n    static void Sample(DGBNativeGroundDirector director)\n    {\n        if(!On() || Closed || !director)return;\n        float seconds=GetGame().GetTickTime()-director.Born;\n        if(seconds<NextSample)return;\n        NextSample=seconds+1;\n        if(!Log)\n        {\n            Log=OpenFile(\"$profile:native-drive-cost.tsv\",FileMode.WRITE);\n            if(!Log){Print(\"DG_DRIVE_COST_FAILED log\");return;}\n            string header=\"seconds\\tid\\tbodyCalls\\tbodyTicks\\ttraversalCalls\\ttraversalTicks\\tconsumeCalls\\tconsumeTicks\\tframeFallCalls\\tframeFallTicks\\tactiveFallCalls\\tactiveFallTicks\\tlegacyGroundDriveTicks\\tcontactTicks\";\n            array<string> phases={\"follow\",\"climb\",\"drop\",\"egress\",\"landSettle\",\"fall\",\"other\"};\n            foreach(string phase:phases)header+=\"\\t\"+phase+\"Calls\\t\"+phase+\"Ticks\";\n            FPrintln(Log,header+\"\\tclockCounter\\tappActive\");\n            Print(\"DG_DRIVE_COST_READY default_off_nested_elapsed_scopes\");\n        }\n        foreach(DGBNativeGroundBody body:director.Bodies)\n        {\n            DGNativeDriveCostRow stats=Get(body);if(!stats)continue;\n            string row=seconds.ToString()+\"\\t\"+body.Id+\"\\t\"+stats.BodyCalls+\"\\t\"+stats.BodyTicks;\n            row+=\"\\t\"+stats.TraversalCalls+\"\\t\"+stats.TraversalTicks+\"\\t\"+stats.ConsumeCalls+\"\\t\"+stats.ConsumeTicks;\n            row+=\"\\t\"+stats.FrameFallCalls+\"\\t\"+stats.FrameFallTicks+\"\\t\"+stats.ActiveFallCalls+\"\\t\"+stats.ActiveFallTicks;\n            row+=\"\\t\"+body.DriveTicks+\"\\t\"+body.ContactTicks;\n            for(int index=0;index<7;index++)row+=\"\\t\"+stats.PhaseCalls[index]+\"\\t\"+stats.PhaseTicks[index];\n            FPrintln(Log,row+\"\\t\"+TickCount(0)+\"\\t\"+GetGame().IsAppActive());\n        }\n    }\n    static void Close()\n    {\n        if(Log)CloseFile(Log);\n        Closed=true;\n    }\n}\nmodded class DGBNativeGroundBody\n{\n    override void Drive(float dt,vector delta,bool available)\n    {\n        if(!DGNativeDriveAttribution.On()){super.Drive(dt,delta,available);return;}\n        DGNativeDriveCostRow stats=DGNativeDriveAttribution.Get(this);\n        if(!stats){super.Drive(dt,delta,available);return;}\n        stats.BodyCalls++;int started=TickCount(0);\n        super.Drive(dt,delta,available);\n        stats.BodyTicks+=TickCount(started);\n    }\n    override void AdvanceFrameFall(float now)\n    {\n        if(!DGNativeDriveAttribution.On()){super.AdvanceFrameFall(now);return;}\n        DGNativeDriveCostRow stats=DGNativeDriveAttribution.Get(this);\n        if(!stats){super.AdvanceFrameFall(now);return;}\n        bool active=FrameFallPhysicsActive();stats.FrameFallCalls++;\n        int started=TickCount(0);\n        super.AdvanceFrameFall(now);\n        int elapsed=TickCount(started);stats.FrameFallTicks+=elapsed;\n        if(active){stats.ActiveFallCalls++;stats.ActiveFallTicks+=elapsed;}\n    }\n}\nmodded class DGBNativeTraversal\n{\n    override void Drive(float dt,vector delta,bool available)\n    {\n        if(!DGNativeDriveAttribution.On()){super.Drive(dt,delta,available);return;}\n        DGNativeDriveCostRow stats=DGNativeDriveAttribution.Get(Body);\n        if(!stats){super.Drive(dt,delta,available);return;}\n        int slot=DGNativeDriveAttribution.PhaseSlot(this);\n        stats.TraversalCalls++;stats.PhaseCalls[slot]=stats.PhaseCalls[slot]+1;\n        int started=TickCount(0);\n        super.Drive(dt,delta,available);\n        int elapsed=TickCount(started);stats.TraversalTicks+=elapsed;stats.PhaseTicks[slot]=stats.PhaseTicks[slot]+elapsed;\n    }\n}\nmodded class DGBNativeCrowd\n{\n    override void ConsumeContact(DGBNativeGroundBody body,float timeslice)\n    {\n        if(!DGNativeDriveAttribution.On()){super.ConsumeContact(body,timeslice);return;}\n        DGNativeDriveCostRow stats=DGNativeDriveAttribution.Get(body);\n        if(!stats){super.ConsumeContact(body,timeslice);return;}\n        stats.ConsumeCalls++;int started=TickCount(0);\n        super.ConsumeContact(body,timeslice);\n        stats.ConsumeTicks+=TickCount(started);\n    }\n}\n"
+    },
+    "newPbo": false
+  },
+  "missionAdapterDiff": "@@ -2,9 +2,18 @@\n {\n     DGBNativeGroundDirector Director;PlayerBase Player;\n     float NextSample;string LastStage;bool MaintainHighStimulus;int HighAnchorChecks;int HighAnchorCorrections;int HighAnchorFailures;\n+    bool FixedCostStimulus;string FixedStage;vector FixedTarget;string FixedArea;float FixedNextLog;int FixedChecks;int FixedCorrections;int FixedFailures;\n     bool Initialize(DGBNativeGroundDirector director,PlayerBase player)\n     {\n         Director=director;Player=player;\n+        FixedCostStimulus=FileExist(\"$profile:fixed-cost-stimulus.flag\");\n+        if(FixedCostStimulus)\n+        {\n+            FileHandle fixedLog=OpenFile(\"$profile:native-fixed-cost-stimulus.tsv\",FileMode.WRITE);if(!fixedLog)return false;\n+            FPrintln(fixedLog,\"seconds\\tstage\\ttarget\\tbefore\\tafter\\texpectedArea\\tactualArea\\terror\\tchecks\\tcorrections\\tfailures\");CloseFile(fixedLog);\n+            Print(\"DG_FIXED_COST_STIMULUS_READY player_only_no_NPC_writes\");\n+        }\n+\n         MaintainHighStimulus=FileExist(\"$profile:high-player-anchor.flag\");\n         if(MaintainHighStimulus)\n         {\n@@ -36,6 +45,45 @@\n         row+=\"\\t\"+flatGap+\"\\t\"+verticalGap+\"\\t\"+valid+\"\\t\"+HighAnchorChecks+\"\\t\"+HighAnchorCorrections+\"\\t\"+HighAnchorFailures;\n         FPrintln(anchor,row);CloseFile(anchor);\n     }\n+\n+    // Dedicated cost fixture: cache one validated static support per stage.\n+    // Only the test Player is anchored. No NPC state/transform/route is written.\n+    bool HoldFixedCostStimulus(float age,string stage)\n+    {\n+        if(!FixedCostStimulus)return true;\n+        if(stage!=FixedStage)\n+        {\n+            vector wanted;string expected=\"ground\";\n+            if(stage==\"LOW_HOLD\"){wanted=Director.Fixture.Spec.LowPoint+\"0 0.04 0\";expected=\"low\";}\n+            else if(stage==\"HIGH_HOLD\"){wanted=Director.Fixture.Spec.HighPoint+\"0 0.04 0\";expected=\"high\";}\n+            else if(stage==\"GROUND_HOLD\")wanted=DGBNativeGroundDirector.Ground(Director.Fixture.HighCenter+\"10 0 3\");\n+            else if(stage==\"GROUND_EAST\" || stage==\"GROUND_EAST_HOLD\")wanted=DGBNativeGroundDirector.Ground(\"4563 0 10243\");\n+            else if(stage==\"GROUND_NORTH\" || stage==\"FINAL_HOLD\")wanted=DGBNativeGroundDirector.Ground(\"4563 0 10283\");\n+            else{FixedFailures++;Print(\"DG_CONTROLLED_FAILED fixed_cost_unknown_stage\");return false;}\n+            vector support;\n+            if(!DGBGroundAgent.Floor(Player,wanted,support) || Director.Fixture.Area(support)!=expected)\n+            {FixedFailures++;Print(\"DG_CONTROLLED_FAILED fixed_cost_support\");return false;}\n+            FixedTarget=support+\"0 0.04 0\";FixedArea=expected;FixedStage=stage;\n+        }\n+        FixedChecks++;\n+        vector before=Player.GetPosition();\n+        if(vector.Distance(before,FixedTarget)>0.01)FixedCorrections++;\n+        Player.SetPosition(FixedTarget);\n+        vector after=Player.GetPosition();float error=vector.Distance(after,FixedTarget);\n+        string actual=Director.Fixture.Area(after);\n+        if(error>0.01 || actual!=FixedArea)\n+        {FixedFailures++;Print(\"DG_CONTROLLED_FAILED fixed_cost_anchor\");return false;}\n+        if(age>=FixedNextLog)\n+        {\n+            FixedNextLog=age+0.1;\n+            FileHandle fixedLog=OpenFile(\"$profile:native-fixed-cost-stimulus.tsv\",FileMode.APPEND);\n+            if(!fixedLog){Print(\"DG_CONTROLLED_FAILED fixed_cost_trace\");return false;}\n+            FPrintln(fixedLog,age.ToString()+\"\\t\"+stage+\"\\t\"+FixedTarget+\"\\t\"+before+\"\\t\"+after+\"\\t\"+FixedArea+\"\\t\"+actual+\"\\t\"+error+\"\\t\"+FixedChecks+\"\\t\"+FixedCorrections+\"\\t\"+FixedFailures);\n+            CloseFile(fixedLog);\n+        }\n+        return true;\n+    }\n+\n     void Update()\n     {\n         float age=GetGame().GetTickTime() - Director.Born;\n@@ -57,7 +105,8 @@\n             if(stage==\"GROUND_HOLD\"){Player.SetPosition(DGBNativeGroundDirector.Ground(Director.Fixture.HighCenter+\"10 0 3\"));placed=true;}\n             Player.SetOrientation(Vector(heading,0,0));LastStage=stage;\n         }\n-        HoldHighStimulus(age,stage);\n+        if(FixedCostStimulus){speed=0;if(!HoldFixedCostStimulus(age,stage))return;}\n+        else HoldHighStimulus(age,stage);\n         HumanInputController input=Player.GetInputController();\n         input.OverrideMovementSpeed(HumanInputControllerOverrideType.ENABLED,speed);\n         input.OverrideMovementAngle(HumanInputControllerOverrideType.ENABLED,0);",
+  "missionSourcesSha256": "B6270DC73F6B7BDDEE626C8965E9A251144BEC4873A9BD123B97414CFE57F149",
+  "adapterProofSha256": "acba23c02e9a18c22031056651839064177568cded40d8350778701651fd57e1"
+}

@@ -1,3 +1,5 @@
+> 최신 B93D 64개체 고정 목표 비용 진단(2026-10-31): OFF/ON/ON/OFF p95=73.0/74.0/71.0/86.0ms. 4회 목표 검증 통과. NPC 밀침·낙하·재등반 보존. 순수 오버헤드·최적화·시각·최종 기능 수용은 별도 미해결. [조건과 근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/b93d-fixed-cost-fixture-20261031.md). 이전 기록은 아래 보존한다.
+
 > 최신 B93D64 비용 진단(2026-10-31):OFF/ON/ON/OFF p95=96/80/64/100ms.두번째ON에서플레이어가고지대에서추락해순수계측부담/최적화수용은거부했다.발지지·관절world검사범위를관측했고전역counter64중복을배제했다.180초최종51/50/53/47명으로기능통과아님. [조건·증거·미수용이유](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/b93d-cost-instrumentation-20261031.md). 이전 기록은 아래 보존한다.
 
 > 최신 그래프 소비 대조(2026-10-31): 기본14상태는 상태/해제/착지3변수를 소비하며 speed배속을사용하지않는다.격리TimeScale평균속도보정은과거반복시험에서확인됐지만pacing개선과전체14상태적용은미수용이다.지원되는배속제어와미확보residual/표시해결경로를구분한다.새실행없음. [근거와한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-graph-consumers-20261031.md). 이전 기록은 아래 보존한다.
