@@ -1,3 +1,5 @@
+> 최신 작업:5번 소진 예산 차단을 기존 planner/Fall로 재현. 누계 유지·유한 지면 여유에서3포즈×2회 LAND. live FOLLOW/64회귀/시각/성능수용은 미완료. [진단과 제외한 오류](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/actor5-planner-fall-20261031.md). 이전 기록은 아래 보존한다.
+
 > 최신 5번 복구 정적 재현:3포즈 착지 거부 재현,소진예산48/48 차단,새예산 진단21/48 작은이동 통과. 기존6m내1.18~1.28m 정적경로 발견. live수정/64회귀/성능수용 아님. [근거와 제외한 진단오류](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/actor5-landing-replay-20261031.md). 이전 기록은 아래 보존한다.
 
 > 최신 B93D 제한적 지지 검사64명: 최종63/64, 낙하복귀95/96, 등반종료실패0, 기능gate=False. 단일실행이며 반복성능·시각수용은별도. [조건과 근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/b93d-support-fast-sixtyfour-20261031.md). 이전 기록은 아래 보존한다.
