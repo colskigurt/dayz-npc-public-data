@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T13:04:48.304612+09:00",
+  "sourceRunId": "animation-graph-consumers-20261031-130100",
+  "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+  "verificationStatus": {
+    "diagnostic": "packaged_graph_consumer_and_historical_rate_scope_complete",
+    "newRuntime": false,
+    "functional": "not_rerun",
+    "visibleSmoothness": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-graph-consumers-20261031-130100",
+    "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+    "originalAssetBuildId": "453D6A9E688D7BF14C5B98C305DD5A45200EC52156949C10691839B43C58BC9A",
+    "currentClassBindings": 9,
+    "currentStates": 14,
+    "mainTransitionCount": 82,
+    "usedMainControlVariables": [
+      "RequestedState",
+      "TraversalReleased",
+      "LandingConfirmed"
+    ],
+    "declaredSpeedConsumedByMainExpressions": false,
+    "currentMainTimeScaleNodeCount": 0,
+    "historicalRateProbe": {
+      "chronologicalOrder": "A/B/B/A",
+      "baselinePeriods": [
+        3.24,
+        3.22
+      ],
+      "candidatePeriods": [
+        2.08,
+        2.08
+      ],
+      "baselinePacingResidualsMs": [
+        24.06655708378331,
+        23.709165277368058
+      ],
+      "candidatePacingResidualsMs": [
+        24.262001051063844,
+        24.053531383586446
+      ],
+      "actualCompiledClipPhaseMeasured": false,
+      "eightPartPhaseSynchronizationAccepted": false,
+      "all14StateTimingVerified": false,
+      "animationSmoothnessAccepted": false,
+      "performanceAccepted": false,
+      "fullControllerAdopted": false
+    },
+    "meanRateControlExists": true,
+    "residualClockConservationControlEstablished": false,
+    "supportedSmoothnessFixEstablished": false,
+    "graphVariableConsumerKnownInIsolatedRunProbe": true,
+    "newRuntime": false,
+    "newPbo": false,
+    "functionalNewlyTested": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "clarification": "A supported graph rate multiplier exists and was historically tested; a supported residual-conserving evaluation/display fix is still unestablished. Do not conflate these claims."
+  },
+  "blockers": [
+    "Balanced-block extraction and exact expression identifier matching, not a general engine graph compiler.",
+    "Static unused variables do not prove all engine implicit consumers absent.",
+    "HistoricalCPUrecurrence andphaseproxy are not directGPU phase or finalvisiblequality.",
+    "No rerun, speedadjustment, fullcontrolleradoption orclock conservation fix in this bundle.",
+    "Supported residual-conserving evaluation/display fix remains unestablished; this does not mean graph rate control is absent."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-graph-consumers-20261031.md",
+      "sha256": "a603cdbe907b82e5f6a925a45a8d528ad0925814f6936a0393f0019b96b3182a"
+    },
+    {
+      "path": "evidence/animation-graph-consumers-20261031.txt",
+      "sha256": "3998d7e422b23144fc7a7597068a832792fdf48512b1d8e169720b01c88279ee"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

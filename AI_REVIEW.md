@@ -1,3 +1,5 @@
+> 최신 그래프 소비 대조(2026-10-31): 기본14상태는 상태/해제/착지3변수를 소비하며 speed배속을사용하지않는다.격리TimeScale평균속도보정은과거반복시험에서확인됐지만pacing개선과전체14상태적용은미수용이다.지원되는배속제어와미확보residual/표시해결경로를구분한다.새실행없음. [근거와한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-graph-consumers-20261031.md). 이전 기록은 아래 보존한다.
+
 > 최신 공개 애니메이션 API 진단(2026-10-31): DebugOverrideAnimationSpeed의 실제 속도헬퍼는3바이트 return뿐이었다. 전역frame/slot경로도기존Animal의null시각컴포넌트가드를사용한다.새실행·배포해결·시각/성능수용은없으며전체API부재를주장하지않는다. [근거와한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-public-controls-20261031.md). 이전 기록은 아래 보존한다.
 
 > 최신 접촉 낙하 진단(2026-10-31):64명 접촉지원상실19회 모두 추적복귀,고지대목표16회 모두 후속재등반(1회는재낙하후다음세대).자세허가후약3.10초native대기가wall약4초이상으로늘어났다.새실행·수정·시각/성능수용은아니다. [근거와한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/contact-recovery-chain-20261031.md). 이전 기록은 아래 보존한다.
