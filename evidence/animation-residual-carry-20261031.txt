@@ -1,0 +1,190 @@
+Selection: complete aggregate comparison, input/model source, run IDs, matched launch hashes. Excludes raw video, pointers, process IDs and local paths. Source phase is a six-joint FK proxy; no GPU phase or final visual acceptance. One logical NPC/eight parts, not eight agents.
+
+{
+  "baseline30": {
+    "runtimeRunId": "runtime-20261031-110449",
+    "clockPerWall": {
+      "p50": 0.6594407292383948,
+      "p95": 0.6594420365187569,
+      "p99": 0.6594421567337203,
+      "maximum": 0.6594421867874611
+    },
+    "sourcePosePhasePerMission": 0.6577457772947464,
+    "sourcePoseFitErrorMeters": {
+      "n": 1472,
+      "p50": 0.005580181691157802,
+      "p95": 0.013071864256939873,
+      "p99": 0.018524923771001955,
+      "maximum": 0.029208276277800302
+    },
+    "sourcePoseStepMs": {
+      "n": 1471,
+      "p50": 8.333333333333334,
+      "p95": 37.5,
+      "p99": 37.5,
+      "maximum": 45.83333333333333
+    },
+    "sourceNegativeSteps": 0,
+    "nativeEvaluationsPerPart": 395,
+    "nativeReadBracketMs": {
+      "p50": 0.0103,
+      "p95": 0.0177,
+      "p99": 0.02,
+      "maximum": 1.6983
+    },
+    "numericApplied": 0,
+    "hudExactFrames": 536,
+    "hudTotalFrames": 540,
+    "activeConsecutiveCpuVideoPairs": 437,
+    "cpuVideoIncrementCorrelation": 0.943663188700162,
+    "cpuJointRmsStepMeters": {
+      "n": 437,
+      "p50": 0.02155612808847329,
+      "p95": 0.11723638438412724,
+      "p99": 0.12802455742059599,
+      "maximum": 0.14697950161388715
+    },
+    "visibleSilhouetteChangedPixels": {
+      "n": 437,
+      "p50": 1222.0,
+      "p95": 4247.2,
+      "p99": 4739.359999999997,
+      "maximum": 5111
+    },
+    "bodyHeldBelow10Pixels": 1,
+    "cpuStepAbove75mm": 95,
+    "missionPacing": {
+      "n": 1472,
+      "p50": 20.0,
+      "p95": 34.0,
+      "p99": 36.0,
+      "maximum": 38.0
+    },
+    "pacingScope": "Trimmed treatment active mission interval, observer and recording present; not GPU or64cost"
+  },
+  "candidate30": {
+    "runtimeRunId": "runtime-20261031-111204",
+    "clockPerWall": {
+      "p50": 1.0000030604317525,
+      "p95": 1.0000091837404168,
+      "p99": 1.000009462298839,
+      "maximum": 1.0000095319384443
+    },
+    "sourcePosePhasePerMission": 0.999110642829628,
+    "sourcePoseFitErrorMeters": {
+      "n": 1471,
+      "p50": 0.008316684205222162,
+      "p95": 0.020888885684296348,
+      "p99": 0.026660685531888505,
+      "maximum": 0.032123522170610104
+    },
+    "sourcePoseStepMs": {
+      "n": 1470,
+      "p50": 16.666666666666668,
+      "p95": 37.5,
+      "p99": 41.666666666666664,
+      "maximum": 66.66666666666667
+    },
+    "sourceNegativeSteps": 0,
+    "nativeEvaluationsPerPart": 600,
+    "nativeReadBracketMs": {
+      "p50": 0.0113,
+      "p95": 0.0493,
+      "p99": 0.052309000000000015,
+      "maximum": 0.1342
+    },
+    "numericApplied": 4800,
+    "hudExactFrames": 527,
+    "hudTotalFrames": 540,
+    "activeConsecutiveCpuVideoPairs": 431,
+    "cpuVideoIncrementCorrelation": 0.9153112061809081,
+    "cpuJointRmsStepMeters": {
+      "n": 431,
+      "p50": 0.041253302176916674,
+      "p95": 0.12103866607965197,
+      "p99": 0.14086876967152542,
+      "maximum": 0.1559759096644949
+    },
+    "visibleSilhouetteChangedPixels": {
+      "n": 431,
+      "p50": 2111.0,
+      "p95": 4441.5,
+      "p99": 4854.099999999999,
+      "maximum": 5160
+    },
+    "bodyHeldBelow10Pixels": 0,
+    "cpuStepAbove75mm": 171,
+    "missionPacing": {
+      "n": 1471,
+      "p50": 20.0,
+      "p95": 34.0,
+      "p99": 36.0,
+      "maximum": 38.0
+    },
+    "pacingScope": "Trimmed treatment active mission interval, observer and recording present; not GPU or64cost"
+  },
+  "sourceRunId": "animation-residual-carry-20261031-105147",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "repetitionsPerCondition": 1,
+  "order": [
+    "baseline30",
+    "candidate30"
+  ],
+  "clockAbsoluteChange": 0.34056233119335766,
+  "clockRelativeChange": 0.5164411539861693,
+  "sourcePoseRateAbsoluteChange": 0.34136486553488166,
+  "nativeEvaluationRelativeIncrease": 0.518987341772152,
+  "diagnosticStatus": "causal_clock_conservation_supported_one_pair",
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "functionalRegressionPassed": false,
+  "supportedDeployableFix": false,
+  "goalComplete": false,
+  "limits": [
+    "One logical NPC/eight native skeleton parts, not eight agents.",
+    "One ordered A/B pair; not repeated acceptance.",
+    "Candidate makes isolated native accumulator/descriptor numeric writes; not a supported PBO implementation.",
+    "Both source-phase fit and silhouette pixels are proxies; no final GPU/Present timestamps.",
+    "Video pair endpoints restricted to trimmed native-active window and consecutive script frames.",
+    "Low held-frame count does not imply smooth timing; candidate CPU step tail/fit errors remain.",
+    "More native evaluations may increase cost; one-agent observer recordings cannot accept64 performance.",
+    "Long-frame backlog guards were not exercised in these runs.",
+    "8/64 movement, legitimate fall/recovery and original actor61 failure remain separate requirements."
+  ],
+  "conditions": {
+    "missionSourcesSha256": "B7F869B943667E3FBD8A907A99616E0FA0CA090E4CDCB918D0780A17641A8147",
+    "pboSha256": "453D6A9E688D7BF14C5B98C305DD5A45200EC52156949C10691839B43C58BC9A",
+    "seconds": 120,
+    "count": 1,
+    "mode": "legacy",
+    "diagnosticScenario": "anim1",
+    "previewClip": 2,
+    "queryPose": true,
+    "nativeClockProbe": true,
+    "frameOrderProbe": true,
+    "frameSync": "on",
+    "subsetComparisonPboSha256": "0C6E1855E7B24F038B165003352F1122936E8AED17242661A9A7AC927125C002",
+    "subsetIntegrationPboSha256": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "finalVSyncLine": "VSync=1;"
+  }
+}
+
+Pure float32 model SHA256 f0589746bbb45853e4fd3055df288dec0f8ce39338f755a9b60a984a73935cd9
+'use strict';
+// Offline/isolated causal candidate only. No interpolation-fraction estimation.
+const SchedulerResidualModel={
+ compute(total,primary){
+  total=Math.fround(total);primary=Math.fround(primary);
+  if(!Number.isFinite(total)||!Number.isFinite(primary)||primary<=0||total<primary)return {eligible:false,reason:'invalid_or_no_evaluation',carry:0};
+  const carry=Math.fround(total-primary);
+  if(carry<0||carry>=primary)return {eligible:false,reason:'more_than_one_step_backlog',carry:0};
+  return {eligible:true,reason:'one_step_residual',carry};
+ },
+ step(accumulator,inputDt,primary,enabled){
+  const total=Math.fround(Math.fround(accumulator)+Math.fround(inputDt));primary=Math.fround(primary);
+  if(total<primary)return {total,evaluate:false,accumulator:total,eligible:true,reason:'no_evaluation'};
+  const proposal=this.compute(total,primary);
+  return {total,evaluate:true,accumulator:enabled&&proposal.eligible?proposal.carry:0,eligible:proposal.eligible,reason:proposal.reason};
+ }
+};
+if(typeof module!=='undefined'&&module.exports)module.exports=SchedulerResidualModel;
