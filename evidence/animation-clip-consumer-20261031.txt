@@ -1,0 +1,265 @@
+Selection: complete derived runtime summary; first3/last3 sanitized sample events with raw source line and sequence; bounded static instruction excerpts with selection lines and file hashes; complete entry-only observer source. Raw pointers, local paths, thread/process IDs, full memory, original game assets and videos excluded. CPU clip sample operands are not displayed GPU frames.
+
+{
+  "sourceRunId": "animation-clip-consumer-20261031-095700",
+  "runtimeRunId": "runtime-20261031-100536",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "normalQuitVerified": true,
+  "logicalAgents": 1,
+  "nativeParts": 8,
+  "repetitions": 1,
+  "observerSeconds": 8,
+  "runtimeSeconds": 120,
+  "rootCalls": 100,
+  "dispatchCalls": 100,
+  "clipKernelCalls": 100,
+  "opcodes": {
+    "2": 100
+  },
+  "resourceInteger64": 60,
+  "resourceFloat68": 2.0833332538604736,
+  "manifestClipIndex": 2,
+  "manifestFps": 60.0,
+  "manifestFrames": 126,
+  "manifestDurationSeconds": 2.0833333333333335,
+  "manifestPeriodResidualSeconds": -7.947285984855057e-08,
+  "wrappedPairs": 2,
+  "phaseAdvanceSeconds": 4.950018882751465,
+  "rootClockAdvanceSeconds": 4.950018882751465,
+  "hostSpanMs": 7922,
+  "phaseSecondsPerHostSecond": 0.6248445951466126,
+  "phaseVsRootMaxResidualSeconds": 0.0,
+  "commandFloatCEqualsRootDtCount": 100,
+  "rootContextDtMs": {
+    "p50": 50.00019073486328,
+    "p95": 50.00019073486328,
+    "p99": 50.00019073486328
+  },
+  "clipUnwrappedStepMs": {
+    "p50": 50.00019073486328,
+    "p95": 50.00019073486328,
+    "p99": 50.00019073486328
+  },
+  "clipEntryIntervalMs": {
+    "p50": 80.0,
+    "p95": 82.0,
+    "p99": 82.03999999999999
+  },
+  "errors": 0,
+  "droppedEvents": 0,
+  "numericOverrides": false,
+  "nativeHooks": true,
+  "gameCodeChanged": false,
+  "newPbo": false,
+  "videoRecorded": false,
+  "actualFpRegistersCaptured": false,
+  "actualLowerDecoderEntryCaptured": false,
+  "finalPoseOutputCaptured": false,
+  "gpuPresentedPhaseMeasured": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "goalComplete": false,
+  "selectedEvents": [
+    {
+      "sourceLine": 2,
+      "sequence": 3,
+      "rootSequence": 1,
+      "oldClock": 4.399998664855957,
+      "contextDt": 0.05000019073486328,
+      "opcode": 2,
+      "callerRva": "0x492129",
+      "commandIndex": 12,
+      "commandFloat8": 0.28333234786987305,
+      "commandFloatC": 0.05000019073486328,
+      "resourceInteger64": 60,
+      "resourceFloat68": 2.0833332538604736,
+      "scaledCommand8": 16.999940872192383,
+      "actualFpRegisterCaptured": false
+    },
+    {
+      "sourceLine": 2,
+      "sequence": 6,
+      "rootSequence": 4,
+      "oldClock": 4.44999885559082,
+      "contextDt": 0.05000019073486328,
+      "opcode": 2,
+      "callerRva": "0x492129",
+      "commandIndex": 12,
+      "commandFloat8": 0.33333253860473633,
+      "commandFloatC": 0.05000019073486328,
+      "resourceInteger64": 60,
+      "resourceFloat68": 2.0833332538604736,
+      "scaledCommand8": 19.99995231628418,
+      "actualFpRegisterCaptured": false
+    },
+    {
+      "sourceLine": 3,
+      "sequence": 9,
+      "rootSequence": 7,
+      "oldClock": 4.499999046325684,
+      "contextDt": 0.05000019073486328,
+      "opcode": 2,
+      "callerRva": "0x492129",
+      "commandIndex": 12,
+      "commandFloat8": 0.3833327293395996,
+      "commandFloatC": 0.05000019073486328,
+      "resourceInteger64": 60,
+      "resourceFloat68": 2.0833332538604736,
+      "scaledCommand8": 22.999963760375977,
+      "actualFpRegisterCaptured": false
+    },
+    {
+      "sourceLine": 41,
+      "sequence": 294,
+      "rootSequence": 292,
+      "oldClock": 9.250017166137695,
+      "contextDt": 0.05000019073486328,
+      "opcode": 2,
+      "callerRva": "0x492129",
+      "commandIndex": 12,
+      "commandFloat8": 0.9666843414306641,
+      "commandFloatC": 0.05000019073486328,
+      "resourceInteger64": 60,
+      "resourceFloat68": 2.0833332538604736,
+      "scaledCommand8": 58.001060485839844,
+      "actualFpRegisterCaptured": false
+    },
+    {
+      "sourceLine": 41,
+      "sequence": 297,
+      "rootSequence": 295,
+      "oldClock": 9.300017356872559,
+      "contextDt": 0.05000019073486328,
+      "opcode": 2,
+      "callerRva": "0x492129",
+      "commandIndex": 12,
+      "commandFloat8": 1.0166845321655273,
+      "commandFloatC": 0.05000019073486328,
+      "resourceInteger64": 60,
+      "resourceFloat68": 2.0833332538604736,
+      "scaledCommand8": 61.00107192993164,
+      "actualFpRegisterCaptured": false
+    },
+    {
+      "sourceLine": 41,
+      "sequence": 300,
+      "rootSequence": 298,
+      "oldClock": 9.350017547607422,
+      "contextDt": 0.05000019073486328,
+      "opcode": 2,
+      "callerRva": "0x492129",
+      "commandIndex": 12,
+      "commandFloat8": 1.0666847229003906,
+      "commandFloatC": 0.05000019073486328,
+      "resourceInteger64": 60,
+      "resourceFloat68": 2.0833332538604736,
+      "scaledCommand8": 64.00108337402344,
+      "actualFpRegisterCaptured": false
+    }
+  ],
+  "sourceHashes": {
+    "launch.json": "941c3cdca39e2efdd2db90b2c6293f557c0cc9b3eb66ac7cf8aa342c6064a0b5",
+    "native-traversal-manifest.json": "5d72e80bb527830c337cf8e98b171538424ad06c6e410d20fb514f060f6d2fdc",
+    "native-call-probe/calls.jsonl": "7c42012ee320a6915c69fba959587a45fc48edc25e192a3fd8a8816c87948f55",
+    "native-call-probe/status.json": "7ce21f7d5491aa9b344123f26040b4fb93560377b757459a345708ff972799cf",
+    "native-call-probe/configuration.json": "90f7c8ec895f3fee9b8019ef419a9fe477bf2ac203eb5c7b95698a54fbcd46b1",
+    "native-call-probe/instrumentation.js": "45cab8f55c8db8b8844048f83ccb1242e866f6b30788a7140326eebf97ae3e8c",
+    "native-call-probe/observer-driver-source.py": "8ed896aa9391dc2c0a6165c4730248ed0caeb0e34331d265a270e0294644f270"
+  },
+  "limitations": [
+    "Stored operands are linked by exact entry/caller and runtime context checks; FP argument registers themselves were not sampled.",
+    "Static dataflow connects command+8 to resource+64 scaling and downstream integer-index/adjacent-key interpolation. Lower decoder was not dynamically hooked.",
+    "Matching converted run duration/FPS plus wrapped progression supports sample-time seconds; this is not proof of GPU or displayed-frame smoothness.",
+    "Entry-only thread scope has no return hook; dispatcher validates evaluator ownership and copied clock before admitting sample callers.",
+    "No animation fix, 8/64 functional rerun or performance optimization was executed."
+  ]
+}
+
+Static excerpts:
+[
+  {
+    "fileId": "0x140492080.samples.asm.txt",
+    "sha256": "bbd3154e99141f3d76d770a83a834afaca24cd59edd79fe87d68d2897e913911",
+    "firstLine": 35,
+    "lastLine": 59,
+    "text": "0x140492102 lea rdx, [rsp + 0x50]\n0x140492107 mov byte ptr [rsp + 0x41], cl\n0x14049210b mov rcx, rbp\n0x14049210e movsd xmm1, qword ptr [rsp + 0x40]\n0x140492114 movsd qword ptr [rsp + 0x60], xmm1\n0x14049211a movaps xmmword ptr [rsp + 0x50], xmm0\n0x14049211f mov qword ptr [rsp + 0x20], rax\n0x140492124 call 0x140493ee0\n0x140492129 movups xmm0, xmmword ptr [rsp + 0x30]\n0x14049212e lea rdx, [rsp + 0x50]\n0x140492133 mov rcx, rbp\n0x140492136 movsd xmm1, qword ptr [rsp + 0x40]\n0x14049213c movss xmm2, dword ptr [rdi + 8]\n0x140492141 movaps xmmword ptr [rsp + 0x50], xmm0\n0x140492146 movsd qword ptr [rsp + 0x60], xmm1\n0x14049214c call 0x140492d70\n0x140492151 xor ebx, ebx\n0x140492153 cmp byte ptr [rdi + 0x11], bl\n0x140492156 jbe 0x140492192\n0x140492158 nop dword ptr [rax + rax]\n0x140492160 mov rax, qword ptr [rdi + 0x18]\n0x140492164 xorps xmm3, xmm3\n0x140492167 movss xmm2, dword ptr [rdi + 8]\n0x14049216c mov qword ptr [rsp + 0x20], rbp\n0x140492171 mov ecx, dword ptr [rax + rbx*4]"
+  },
+  {
+    "fileId": "0x140493ee0.kernels.asm.txt",
+    "sha256": "9faf86c3994804e1a6935fba4c28d51f61171bf4135743f9986bd10cb9088ea8",
+    "firstLine": 1,
+    "lastLine": 95,
+    "text": "0x140493ee0 mov r11, rsp\n0x140493ee3 push rbp\n0x140493ee4 push rbx\n0x140493ee5 push r15\n0x140493ee7 lea rbp, [r11 - 0xa8]\n0x140493eee sub rsp, 0x190\n0x140493ef5 mov r15, qword ptr [rdx]\n0x140493ef8 mov rbx, rcx\n0x140493efb movaps xmmword ptr [r11 - 0x38], xmm6\n0x140493f00 xorps xmm6, xmm6\n0x140493f03 movaps xmmword ptr [r11 - 0xa8], xmm13\n0x140493f0b movaps xmm13, xmm2\n0x140493f0f movaps xmmword ptr [r11 - 0xb8], xmm14\n0x140493f17 movss xmm14, dword ptr [r15 + 0x68]\n0x140493f1d comiss xmm6, xmm14\n0x140493f21 movaps xmmword ptr [r11 - 0xc8], xmm15\n0x140493f29 movaps xmm15, xmm3\n0x140493f2d jae 0x140494c12\n0x140493f33 mov rax, qword ptr [rdx + 8]\n0x140493f37 mov edx, 0xffff\n0x140493f3c movzx ecx, word ptr [rax + 0x1c]\n0x140493f40 cmp cx, dx\n0x140493f43 je 0x140494c12\n0x140493f49 mov rax, qword ptr [rax]\n0x140493f4c mov qword ptr [r11 + 8], rsi\n0x140493f50 xor esi, esi\n0x140493f52 mov qword ptr [r11 + 0x18], rdi\n0x140493f56 mov qword ptr [r11 - 0x20], r12\n0x140493f5a movaps xmmword ptr [r11 - 0x48], xmm7\n0x140493f5f movss xmm7, dword ptr [rip + 0xcbcdf9]\n0x140493f67 movaps xmmword ptr [r11 - 0x58], xmm8\n0x140493f6c movaps xmmword ptr [r11 - 0x68], xmm9\n0x140493f71 movaps xmmword ptr [r11 - 0x78], xmm10\n0x140493f76 movzx ecx, cx\n0x140493f79 movaps xmmword ptr [r11 - 0x88], xmm11\n0x140493f81 movaps xmmword ptr [r11 - 0x98], xmm12\n0x140493f89 mov r12d, dword ptr [rax + rcx*4]\n0x140493f8d mov eax, r12d\n0x140493f90 shr rax, 0x10\n0x140493f94 imul rdi, rax, 0x70\n0x140493f98 add rdi, qword ptr [r15 + 0x50]\n0x140493f9c je 0x140494996\n0x140493fa2 cmp dword ptr [rdi + 0x18], esi\n0x140493fa5 ja 0x140493fb0\n0x140493fa7 cmp dword ptr [rdi + 0x38], esi\n0x140493faa jbe 0x140494996\n0x140493fb0 movaps xmm0, xmmword ptr [rip + 0xcd1d09]\n0x140493fb7 xorps xmm1, xmm1\n0x140493fba movaps xmmword ptr [rsp + 0x20], xmm0\n0x140493fbf xorps xmm3, xmm3\n0x140493fc2 movaps xmmword ptr [rsp + 0x70], xmm0\n0x140493fc7 movaps xmmword ptr [rsp + 0x30], xmm1\n0x140493fcc movaps xmmword ptr [rbp - 0x80], xmm1\n0x140493fd0 mov eax, dword ptr [r15 + 0x64]\n0x140493fd4 mov qword ptr [rsp + 0x180], r14\n0x140493fdc mov r14d, 0x17\n0x140493fe2 mov ecx, r14d\n0x140493fe5 cvtsi2ss xmm3, rax\n0x140493fea mulss xmm3, xmm13\n0x140493fef movss dword ptr [rbp + 0xb8], xmm3\n0x140493ff7 mov r9d, dword ptr [rbp + 0xb8]\n0x140493ffe mov r8d, r9d\n0x140494001 mov eax, r9d\n0x140494004 shr eax, 0x17\n0x140494007 movzx edx, al\n0x14049400a sub edx, 0x7f\n0x14049400d sub ecx, edx\n0x14049400f shr edx, 0x1f\n0x140494012 shr r8d, cl\n0x140494015 dec edx\n0x140494017 shl r8d, cl\n0x14049401a mov rcx, rdi\n0x14049401d and r8d, edx\n0x140494020 lea rdx, [rsp + 0x20]\n0x140494025 mov dword ptr [rsp + 0x60], r8d\n0x14049402a sub r8d, r9d\n0x14049402d mov eax, r8d\n0x140494030 sar r9d, 0x1f\n0x140494034 neg eax\n0x140494036 or eax, r8d\n0x140494039 sar eax, 0x1f\n0x14049403c and eax, r9d\n0x14049403f and eax, 0xbf800000\n0x140494044 mov dword ptr [rbp + 0xb8], eax\n0x14049404a movss xmm0, dword ptr [rbp + 0xb8]\n0x140494052 addss xmm0, dword ptr [rsp + 0x60]\n0x140494058 cvttss2si r8, xmm0\n0x14049405d call 0x1404aa1f0\n0x140494062 comiss xmm15, xmm6\n0x140494066 movss xmm8, dword ptr [rsp + 0x20]\n0x14049406d movss xmm9, dword ptr [rsp + 0x24]\n0x140494074 movss xmm10, dword ptr [rsp + 0x28]\n0x14049407b movss xmm11, dword ptr [rsp + 0x2c]\n0x140494082 movss dword ptr [rbp - 0x70], xmm8\n0x140494088 movss dword ptr [rbp - 0x6c], xmm9"
+  },
+  {
+    "fileId": "0x1404aa1f0.decoders.asm.txt",
+    "sha256": "f45dc79733f98ea79045116119e9aad3181dfcca723c48d07d08a1b9f82408ec",
+    "firstLine": 53,
+    "lastLine": 108,
+    "text": "0x1404aa297 lea r8d, [rsi - 1]\n0x1404aa29b cmovbe r8d, r15d\n0x1404aa29f jmp 0x1404aa2a6\n0x1404aa2a1 movzx r8d, word ptr [rcx + 0x1c]\n0x1404aa2a6 lea r9d, [r8 + 1]\n0x1404aa2aa xorps xmm3, xmm3\n0x1404aa2ad cmp r9d, esi\n0x1404aa2b0 jae 0x1404aa2fa\n0x1404aa2b2 mov rcx, qword ptr [rdi + 0x10]\n0x1404aa2b6 movaps xmm2, xmm6\n0x1404aa2b9 movss xmm3, dword ptr [rip + 0xca6a4f]\n0x1404aa2c1 mov eax, r8d\n0x1404aa2c4 movzx edx, word ptr [rcx + rax*2]\n0x1404aa2c8 movzx ecx, word ptr [rcx + r9*2]\n0x1404aa2cd sub ecx, edx\n0x1404aa2cf movd xmm1, edx\n0x1404aa2d3 cvtdq2ps xmm1, xmm1\n0x1404aa2d6 movd xmm0, ecx\n0x1404aa2da cvtdq2ps xmm0, xmm0\n0x1404aa2dd subss xmm2, xmm1\n0x1404aa2e1 divss xmm3, xmm0\n0x1404aa2e5 mulss xmm3, xmm2\n0x1404aa2e9 jmp 0x1404aa2fa\n0x1404aa2eb xorps xmm0, xmm0\n0x1404aa2ee mov r8d, ebx\n0x1404aa2f1 cvtsi2ss xmm0, rbx\n0x1404aa2f6 subss xmm3, xmm0\n0x1404aa2fa comiss xmm3, xmm7\n0x1404aa2fd mov rax, qword ptr [rdi + 8]\n0x1404aa301 lea ecx, [r8 + r8*2]\n0x1404aa305 movq xmm0, qword ptr [rax + rcx*2]\n0x1404aa30a xorps xmm2, xmm2\n0x1404aa30d punpcklwd xmm0, xmm2\n0x1404aa311 jbe 0x1404aa36d\n0x1404aa313 movq xmm1, qword ptr [rax + rcx*2 + 6]\n0x1404aa319 punpcklwd xmm1, xmm2\n0x1404aa31d movaps xmm2, xmm3\n0x1404aa320 movaps xmm3, xmmword ptr [rip + 0xd1f789]\n0x1404aa327 cvtdq2ps xmm0, xmm0\n0x1404aa32a cvtdq2ps xmm1, xmm1\n0x1404aa32d shufps xmm2, xmm2, 0\n0x1404aa331 subps xmm3, xmm2\n0x1404aa334 mulps xmm1, xmm2\n0x1404aa337 mulps xmm3, xmm0\n0x1404aa33a movss xmm0, dword ptr [rdi + 4]\n0x1404aa33f shufps xmm0, xmm0, 0\n0x1404aa343 addps xmm3, xmm1\n0x1404aa346 movss xmm1, dword ptr [rdi]\n0x1404aa34a shufps xmm1, xmm1, 0\n0x1404aa34e mulps xmm3, xmm0\n0x1404aa351 addps xmm3, xmm1\n0x1404aa354 movaps xmm0, xmm3\n0x1404aa357 movss dword ptr [r14 + 0x10], xmm3\n0x1404aa35d shufps xmm0, xmm3, 0x55\n0x1404aa361 shufps xmm3, xmm3, 0xaa\n0x1404aa365 movss dword ptr [r14 + 0x18], xmm3"
+  }
+]
+
+Observer source SHA256 2d79292dbfe7f8189e1c38766e4dcce6c0ba8c5d029acd16cab2282f8aaa8eee; source follows:
+'use strict';
+// Entry-only observations. No arguments, clocks, return values or poses changed.
+const cfg=__CONFIG__,mod=Process.getModuleByName('DayZ_x64.exe');
+function hex(p,n){return Array.from(new Uint8Array(p.readByteArray(n))).map(v=>v.toString(16).padStart(2,'0')).join('');}
+for(const [name,rva] of Object.entries(cfg.rvas))if(hex(mod.base.add(rva),16)!==cfg.entries[name])throw Error('Entry mismatch: '+name);
+for(const g of cfg.guards)if(hex(mod.base.add(g.rva),g.size)!==g.hex)throw Error('Caller mismatch');
+let enabled=false,renderer=null,sequence=0,pending=[],dropped=0;
+const scopes=new Map(),counts={evaluate:0,totalEntries:0,nonselectedSkeletons:0,dispatch:0,samples:0,rejectedCaller:0};
+function emit(type,data){if(pending.length>=3000){dropped++;return;}pending.push({sequence:++sequence,timeMs:Date.now(),thread:Process.getCurrentThreadId(),type,...data});}
+function flush(){if(pending.length||dropped){send({events:pending,dropped,counts});pending=[];dropped=0;}}
+function stop(){enabled=false;flush();return {enabled,counts,events:sequence,activeReturnHooks:0};}
+function fail(site,error){enabled=false;emit('error',{site,message:String(error)});}
+rpc.exports={stop,status(){return {enabled,counts,events:sequence};}};
+Interceptor.attach(mod.base.add(cfg.rvas.interpolate),{onEnter(args){
+ if(!enabled)return;
+ const thread=Process.getCurrentThreadId();scopes.delete(thread);counts.totalEntries++;
+ try{
+  if(!this.context.rsp.readPointer().equals(mod.base.add(0xb1d1f1))){counts.rejectedCaller++;return;}
+  if(!args[0].readPointer().equals(mod.base.add(0x11c7cc8)))throw Error('Evaluator vtable mismatch');
+  const graph=this.context.rsi,animation=graph.sub(0xa0),pose=animation.add(0x188).readPointer();
+  if(pose.isNull()||pose.add(0x68).readU32()!==73){counts.nonselectedSkeletons++;return;}
+  if(renderer&&!renderer.equals(animation))throw Error('Multiple selected renderers');
+  renderer=animation;
+  if(!args[1].equals(this.context.rsp.add(0x58)))throw Error('Root time stack mismatch');
+  const oldClock=args[1].readFloat(),contextDt=args[1].add(4).readFloat();
+  if(![oldClock,contextDt].every(Number.isFinite)||contextDt<=0||contextDt>1)throw Error('Root time invalid');
+  counts.evaluate++;
+  emit('root',{evaluator:args[0].toString(),oldClock,contextDt});
+  scopes.set(thread,{evaluator:args[0],oldClock,contextDt,rootSequence:sequence,dispatch:false});
+ }catch(e){fail('root',e);}
+}});
+Interceptor.attach(mod.base.add(cfg.rvas.dispatch),{onEnter(args){
+ if(!enabled)return;
+ const s=scopes.get(Process.getCurrentThreadId());if(!s)return;
+ s.dispatch=false;
+ try{
+  if(!this.context.rsp.readPointer().equals(mod.base.add(0x490d3f))||!args[0].equals(s.evaluator.add(0x20)))return;
+  // Root local evalContext is rbp+0x10: clock/delta are +0xb8/+0xc0.
+  const oldClock=args[2].add(0xb8).readFloat(),contextDt=args[2].add(0xc0).readFloat();
+  if(oldClock!==s.oldClock||contextDt!==s.contextDt)throw Error('Dispatch time context mismatch');
+  s.dispatch=true;counts.dispatch++;
+  emit('dispatch',{rootSequence:s.rootSequence,oldClock,contextDt});
+ }catch(e){fail('dispatch',e);}
+}});
+const callers=new Map([[0x492129,2],[0x4924d8,3],[0x4925f9,4]]);
+Interceptor.attach(mod.base.add(cfg.rvas.kernel),{onEnter(args){
+ if(!enabled)return;
+ const s=scopes.get(Process.getCurrentThreadId());if(!s?.dispatch)return;
+ try{
+  const caller=parseInt(this.context.rsp.readPointer().sub(mod.base).toString(),16),opcode=callers.get(caller);
+  if(opcode===undefined)return;
+  const command=this.context.rdi;
+  if(command.add(3).readU8()!==opcode)throw Error('Opcode/caller mismatch');
+  const resource=args[1].readPointer(),commandFloat8=command.add(8).readFloat(),commandFloatC=command.add(12).readFloat();
+  const resourceInteger64=resource.add(0x64).readU32(),resourceFloat68=resource.add(0x68).readFloat();
+  if(![commandFloat8,commandFloatC,resourceFloat68].every(Number.isFinite)||resourceInteger64>100000)throw Error('Sample fields invalid');
+  counts.samples++;
+  emit('clip_kernel_entry',{rootSequence:s.rootSequence,oldClock:s.oldClock,contextDt:s.contextDt,opcode,callerRva:'0x'+caller.toString(16),resource:resource.toString(),commandIndex:command.add(4).readU32(),commandFloat8,commandFloatC,resourceInteger64,resourceFloat68,scaledCommand8:commandFloat8*resourceInteger64,actualFpRegisterCaptured:false,unitsEstablished:false});
+ }catch(e){fail('kernel',e);}
+}});
+enabled=true;setInterval(flush,200);setTimeout(()=>send({type:'observation_watchdog_disabled',result:stop()}),cfg.observeMs);
+send({type:'armed',plan:cfg.plan,scope:'Root, command-dispatch and candidate clip-kernel entries; stored operands only; no numeric overrides.'});

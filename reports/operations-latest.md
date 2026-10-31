@@ -1,57 +1,52 @@
-# 실제 root evaluator 시간 문맥:50ms 입력과80ms 호출 간격
+# 클립 샘플 시간까지 연결: 느린 시계 진행의 하류 확인
 
-작성: 2026-10-31T09:54:39.852231+09:00
+작성: 2026-10-31T10:08:55.987348+09:00
 
 ## 1. 작업 목표
 
-실제 스켈레톤 evaluator의 가상 호출 진입에서 받은 시간 문맥을 포착해 기존50ms 시간 소비·초과분 reset 증거를 한 단계 하류와 연결한다. 일반 IEntity.Update를 스켈레톤 시계 setter로 오인하지 않도록 설치 API·바인딩·호출 순서도 대조한다. 기존 구현·낙하/복구·운영 서버를 보존한다.
+선택한 NPC root evaluator의 시간 문맥이 실제 클립 처리 직전까지 어떻게 전달되는지 확인한다. CPU 포즈/최종 화면은 별개로 판정한다. 기존 정상 낙하·복구·게임 구현과 운영 서버는 보존한다.
 
 ## 2. 실제 수행
 
-기존 B8FB 고정 run clip2·논리1개체/네이티브8파트·AI/루트 이동OFF·120초 클라이언트를 실행했다. 전경5초 이상을 확인한 뒤 기존 Frida entry-only 관찰기를8초 연결했다. NativeAnimal receiver를 추측해 일반 Animate를 호출한 것이 아니다. 선택73본 renderer의 실제 호출 반환주소0xb1d1f1·실시간 vtable0x11c7cc8·첫 가상 함수0x4906b0·stack timeContext 위치를 검사했다. 관찰 뒤 훅을 비활성화하고 클라이언트의 정상 종료까지 유지해 hot unload하지 않았다. 인자·결과·누적시간을 덮어쓰지 않았다. 도구는 기존 Python Frida이며 REA MCP가 디컴파일한 결과로 표현하지 않는다.
+원본 EXE SHA-256 c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933의 bounded Capstone 명령 분석으로 root evaluator → 23종 명령 분기 → opcode 2/3/4 helper → clip kernel 후보를 좁혔다. 호출을 재귀적으로 모두 분석하거나 Ghidra 전체 함수 복원을 완료한 것은 아니다. 미해결 간접 호출은 남아 있다.
 
-정적 보조 분석은 설치 EXE 원본 바이트와 scripts.pbo를 사용했다. IEntity 부근 등록에서 GetVObject/Update/Animate/AnimateEx의 서로 다른 두 등록 helper 형식과 LEA rax→mov r8 형식을 확인했다. Update handler0x2cfe80는 entity+0x78의 가상 slot0x338을 선택적으로 호출하고0x4356b0로 tail jump한다. 같은0x4356b0가 선택 스켈레톤 경로의 평가/보간 뒤에도 호출된다. helper의 모든 분기/virtual effect는 해석하지 않았다.
+기존 B8FB 고정 run2, 논리1개체/네이티브8파트, AI/루트 이동 OFF, VSync ON,120초 실행에 entry-only Frida 관찰8초를 연결했다. root의 실제 caller/vtable/73본 renderer를 검증하고, dispatcher에서 evaluator+0x20 소유와 복사된 oldClock/dt를 재검사했다. kernel에서는 검증된 helper 반환주소와 command+3 opcode를 대조했다. FP 레지스터를 직접 읽은 것이 아니라 정적 movss 출처인 command+8/+12와 리소스+0x64/+0x68을 읽었다. 인자/결과/시간/포즈 override는 없다. 관찰 종료 후 훅을 비활성화하고 게임 정상 종료까지 유지했다.
 
-실제 scheduler의 선택17개 명령 바이트도 재확인했다. mode0 경로는 입력과entity+0x66c를 더해 interval+0x250과 비교하고,임계값 도달 시 평가 wrapper 호출 뒤+0x66c에0을 쓴다. 상위 가상 슬롯0x880이0xb6d390을 가리키는 것도 확인했다. 새 Ghidra startup은 실행하지 않았다.
+일반 launcher는 공용 D61D와 씬 요구 B8FB 불일치로 실행 전에 중단됐다. 공용본을 교체하지 않고 별도 launcher에서 기존 B8FB archive를 직접 지정했다. 첫 archive 서명 검사에는 슬래시 경로 형식 오류가 있어 파일을 열지 못했고 실행 전 중단됐다. Windows 경로 형식으로 바로잡은 후3개 의존 PBO 서명 검증이 모두 성공했다. 실패한 사전검사를 게임 실행/회귀 실패로 세지 않는다.
 
 ## 3. 측정 결과
 
-- 새 실행 runtime-20261031-094846,정상 종료.8초 관찰1회,선택 root 가상 진입 **100회**.
-- 관측 전체 진입1040회 중 다른 skeleton940회 제외. 선택 renderer1개,evaluator 객체8개. RTTI는 IAnimEvaluator이며8개 객체를8개 논리 NPC로 해석하지 않는다.
-- graph descriptor dt p50/p95 **50.000000745/50.000000745ms**. 실제 timeContext dt p50/p95 **50.000190735/50.000190735ms**.
--100회 모두 contextDt=float32(float32(oldClock+graphDt)-oldClock)와 정확히 일치,최대 잔차0ms. oldClock와owner clock 차이도0ms.
-- 호출 간격 p50/p95/p99 **80/82/83.02ms**. context oldClock 증가4950.018883ms,host Date.now span7882ms,진행 비율 **0.628016**.
-- observer/script 오류·drop **0**,실행 파일 해시 불변. 관찰 훅 사용이며 read-only VM 표본화만 한 것은 아니다.
--15~55초 전경 mission frame p50/p95/p99 **9.0/35.0/37.0ms**,전경 비율1.0,콜백 12.558830Hz,script nativeSeconds/missionSeconds 0.627936.
+- 실행 ID runtime-20261031-100536, 정상 종료, 반복1회. root/dispatcher/kernel 각각 **100/100/100회**, 선택 opcode2. 오류·drop0.
+- 리소스 정수+0x64 **60**, float+0x68 **2.083333254**. 변환 manifest run2의 **60.0fps / 126frames / 2.083333333초**와 일치 범위.
+- command+12는 **100/100회** root contextDt와 정확히 일치했다.
+- command+8의 주기 되감김 **2회**를 길이로 풀었을 때 증가 **4.950018883초**, root oldClock 증가 **4.950018883초**, 인접 증가 최대 잔차 **0초**.
+- kernel 호출 간격 p50/p95/p99 **80.0/82.0/82.03999999999999ms**. clip 위치 증가/host 시간 비율 **0.624845**. host는 Date.now 밀리초이며 QPC가 아니다.
+-15~55초 mission frame p50/p95/p99 **20.0/35.0/37.0ms**. 훅 포함 진단 실행으로 성능 개선 근거에 사용하지 않는다.
 
-이번에는 동영상 녹화·GPU Present·최종 clip sample time·8/64 기능·64비용 대조를 측정하지 않았다. HUD visualCapture 플래그는 실제 영상 저장을 의미하지 않는다. 위frame 수치를 최적화 개선 또는64개체20ms목표 달성으로 사용하지 않는다.
+실제 영상·GPU Present·최종 표시 포즈·64개체 기능/비용은 이번에 측정하지 않았다. visualCapture는 HUD 플래그이며 녹화 완료 증거가 아니다.
 
 ## 4. 원인 분석
 
-확인: root evaluator에 도달한 시간 문맥도 약50ms이며 약80ms 간격 호출과 함께 문맥 시계 진행이host의62.8%로 관측됐다. 이전 descriptor/owner clock 표본을 넘어 실제 가상 메서드 진입 인자까지 연결했다. 단순한 CPU 로그 이름만으로 해당 인자라고 가정한 것이 아니다.
+확인된 사실: opcode2 저장 operand command+8은 kernel에서 정수 리소스+0x64와 곱해져 정수 index와 fractional 위치 계산에 사용된다. 하류4aa1f0은 인접 key 데이터와 fractional 가중치로 보간하는 분기를 포함한다. 런타임의60 및2.083333초 주기와 manifest를 대조하면 command+8을 run 클립 샘플 시간(초)로 해석할 근거가 생겼다. 별도 float+12는 동일한 root dt다. 실제 lower decoder 진입/출력은 이번에 훅하지 않았다.
 
-범위: 포착한 것은 **받은 시간 문맥**이다. 이 함수 이후 state/clip node가 어떻게 시간을 소비하거나 보정하는지,최종 clip phase와GPU 표시까지 같은 손실이 그대로 이어지는지는 미확인이다. 과거 CPU/영상 연결 증거가 있더라도 이번에 실제 영상 동기화를 수행했다고 주장하지 않는다. float32 차이의미세오차를 수십ms 호출 간격 차이의 원인으로 단정하지 않는다.
+원인 범위를 좁힌 결과: root 입력에서 확인한 느린 시계 진행이 클립 샘플 입력까지 이어진다. 하류에서 시간 부족을 완전히 보충한다는 가설을 이 선택 경로에서는 지지하지 않는다. 다만 최종 GPU 표시에서 얼마나 추가 hold/보간되는지, 느린 재생과 시각적 계단 현상이 얼마나 나뉘는지는 미확인이다. 이 결과만으로 모든 끊김 원인을 완전히 특정하거나60fps 자산이 항상 부드럽다고 주장하지 않는다.
 
-IEntity.Update의 설치 주석은 위치·상태 변경을trace전에 commit하는 계약이다. 확인된 tail helper는 스켈레톤 처리 뒤와 공유하지만 그 사실만으로 Update가 다른 경로에서 평가를 절대로 하지 않는다고 증명하지는 못한다. 독립16.67ms 평가/잔여시간 setter는 확보되지 않았다. 일반 Update/Animate 호출이나 새시간 변수를 무작정 적용할 근거로 사용하지 않는다.
+가설/다음 질문: 엔진의 평가 주기·누적기 reset 경로를 보존하면서 충분한 시간을 전달할 수 있는 지원 계약이 있는가? 현재 확보되지 않았다. 새로운 시간 주입·프레임 생략·보간을 적용하지 않았다.
 
 ## 5. 검증 수준
 
-- 선택 실제 root 가상 진입/수신 시간 문맥: 진단 성공,1회100표본.
-- 기존 scheduler/reset 및 public Update의 선택 바인딩/순서: 원본 바이트 정적 대조. 전체 CFG/모든 virtual target 검증 아님.
-- 최종 clip time·실제 표시·지원 제어·수정 효과·반복 회귀·64비용·20ms p95·전체 골: 미완료.
+선택 클립 샘플 저장 인자의 root 시간 연결: **진단 성공,1회100표본**. lower decoder index/출력·실제 표시 시간 동기화: 미실행. 수정 효과·반복 검증·8/64 회귀·시각 최종 수용·64비용·20ms p95: 미완료. 과거64/64 결과와 이번1개체 진단을 합쳐 전체 수용으로 간주하지 않는다.
 
 ## 6. 변경 사항
 
-기존 빌드 B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185 유지. 실제8/64 기능시험의 CBFB observer와 다른 격리 clip 환경이다. 새 PBO·서명·배포는 없으며 실행 전3개 의존 서명 검증은 통과했다. 관찰기·분석·계획과 정적 보조 파일만 추가했다. 인자/descriptor/numeric override는OFF다. 운영 working D61D·운영 서버·원시 기록·개인키는 보존했다.
+빌드 B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185 유지. 새 PBO/재서명/배포 없음. 기존 서명3개 검증 성공, 개인키 미포함. 새 entry 관찰기·격리 driver/launcher·bounded static 분석·결과 분석만 추가했다. 공용 D61D와 원시 기록은 변경하지 않았다.
 
 ## 7. 원시 증거
 
-plan.json·attach-readiness.json·scheduler-link.json·evaluator-rtti.json·results.json,profile의 native-call-probe/calls.jsonl·status.json·configuration.json·instrumentation.js·root-time-context-analysis.json·launch.json·controlled-analysis.json·visible-frame-clock.tsv를 연결했다. source plan의3개 도구 SHA와실제 사용한5개 raw해시를대조했다. animation-update-contract-20261031-094500의 registry-region.json/results.json과 원본 설치API 문맥·바인딩도 포함한다. .pdata가 없는leaf는 범위를추측해fullfunction으로표시하지않았다. 공개본은 선정 이벤트6개와 요약/코드근거이며 실제주소·스레드/프로세스정보·원시전체·게임자산은 제외한다.
+plan.json, launch-preflight-block.json, attach-readiness.json, consumer-static*.json과 대응 asm, results.json, pacing-driver.json을 보존했다. raw calls.jsonl/status/configuration/instrumentation/observer driver/launch/manifest 해시를 분석 때 대조하고 보고서 저장 때 다시 확인한다. 공개본은 원시 전체 대신 첫3/마지막3 이벤트와 선택 명령 근거를 제공하며 로컬 경로·프로세스/스레드 ID·실행 포인터를 제외한다.
 
 ## 8. 잔여 문제
 
-다음은 evaluator 이후 실제 state/clip sample-time 소비 지점을 좁혀 문맥 시계 손실이 최종 포즈 시간에 어떻게 반영되는지 확인하는 것이다. 그 지점이 확인되고 지원 제어 후보의 단위·reset·보간 세대 계약이 확보되기 전 새로운 보간·프레임 생략·float 시간 주입을 적용하지 않는다. 평균만 정상이고 세대 경계 jump/held frame이 악화된 과거 모델은 다시 사용하지 않는다.
+다음은 클립 시간과 실제 표시 프레임을 동일 실행에서 연결하는 측정, 지원되는 평가/시간 전달 제어의 단위·reset·세대 계약 조사다. lower decoder 입력/결과 관찰이 필요하면 별도 bounded observer로 진행한다. 표시 경로가 계측 불가능하면 그 한계와 필요한 영상/도구를 명시한다.64 동적 혼잡 실패 재현과 성능 귀속은 독립 조건으로 계속 관리한다. 비교 조건이 흐려지는 새 최적화는 보류한다.
 
-public Update의 위치commit 계약은 즉시fixture검사의 환경순서 진단에 참고할 수 있으나 이번에는 호출 시험을 하지 않았다. 필요하면 별도 격리 시험으로 검증한다. 기능 실패·동적 복구 재현과64비용 대조는 각각 별도 조건으로 이어가며 이번1개체hook비용을 섞지 않는다.
-
-선정 공개 본문. 로컬 보고서 SHA-256: `376445c725305a8673cf743a8c2c90cf231d0f59b1065c9af0d4e9dea90e61d3`. 원시 전체가 아니다.
+선정 공개 본문. 로컬 보고서 SHA-256: `12fc84bd2256869da72403ba8f781d0aed22eb164e4428b746e730b7e284dd3d`. 원시 전체가 아니다.

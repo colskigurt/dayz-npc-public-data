@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T10:08:58.207315+09:00",
+  "sourceRunId": "animation-clip-consumer-20261031-095700",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "verificationStatus": {
+    "diagnostic": "root_to_clip_sample_operand_link_verified",
+    "repeatAcceptance": false,
+    "lowerDecoderOutput": "unmeasured",
+    "visual": "unmeasured_in_bundle",
+    "performance": "excluded_hook_overhead",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "runtimeRunId": "runtime-20261031-100536",
+    "normalQuitVerified": true,
+    "logicalAgents": 1,
+    "nativeParts": 8,
+    "repetitions": 1,
+    "observerSeconds": 8,
+    "runtimeSeconds": 120,
+    "rootCalls": 100,
+    "dispatchCalls": 100,
+    "clipKernelCalls": 100,
+    "opcodes": {
+      "2": 100
+    },
+    "resourceInteger64": 60,
+    "resourceFloat68": 2.0833332538604736,
+    "manifestClipIndex": 2,
+    "manifestFps": 60.0,
+    "manifestFrames": 126,
+    "manifestDurationSeconds": 2.0833333333333335,
+    "manifestPeriodResidualSeconds": -7.947285984855057e-08,
+    "wrappedPairs": 2,
+    "phaseAdvanceSeconds": 4.950018882751465,
+    "rootClockAdvanceSeconds": 4.950018882751465,
+    "hostSpanMs": 7922,
+    "phaseSecondsPerHostSecond": 0.6248445951466126,
+    "phaseVsRootMaxResidualSeconds": 0.0,
+    "commandFloatCEqualsRootDtCount": 100,
+    "rootContextDtMs": {
+      "p50": 50.00019073486328,
+      "p95": 50.00019073486328,
+      "p99": 50.00019073486328
+    },
+    "clipUnwrappedStepMs": {
+      "p50": 50.00019073486328,
+      "p95": 50.00019073486328,
+      "p99": 50.00019073486328
+    },
+    "clipEntryIntervalMs": {
+      "p50": 80.0,
+      "p95": 82.0,
+      "p99": 82.03999999999999
+    },
+    "errors": 0,
+    "droppedEvents": 0,
+    "numericOverrides": false,
+    "nativeHooks": true,
+    "gameCodeChanged": false,
+    "newPbo": false,
+    "videoRecorded": false,
+    "actualFpRegistersCaptured": false,
+    "actualLowerDecoderEntryCaptured": false,
+    "finalPoseOutputCaptured": false,
+    "gpuPresentedPhaseMeasured": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "pacing": {
+      "steady": {
+        "frames": 1998,
+        "foregroundFrames": 1998,
+        "foregroundFraction": 1.0,
+        "missionFrameMs": {
+          "p50": 20.0,
+          "p95": 35.0,
+          "p99": 37.0
+        },
+        "hostCallbackHz": {
+          "minimum": 12.574605927664132,
+          "median": 12.574605927664132,
+          "maximum": 12.574605927664132
+        },
+        "nativeClockSecondsPerWallSecond": {
+          "minimum": 0.6287246849971942,
+          "median": 0.6287246849971942,
+          "maximum": 0.6287246849971942
+        }
+      }
+    }
+  },
+  "blockers": [
+    "Stored operands are linked by exact entry/caller and runtime context checks; FP argument registers themselves were not sampled.",
+    "Static dataflow connects command+8 to resource+64 scaling and downstream integer-index/adjacent-key interpolation. Lower decoder was not dynamically hooked.",
+    "Matching converted run duration/FPS plus wrapped progression supports sample-time seconds; this is not proof of GPU or displayed-frame smoothness.",
+    "Entry-only thread scope has no return hook; dispatcher validates evaluator ownership and copied clock before admitting sample callers.",
+    "No animation fix, 8/64 functional rerun or performance optimization was executed.",
+    "No supported evaluation/reset timing fix established;64function/cost work remains separate."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-clip-consumer-20261031.md",
+      "sha256": "cce948490df19383a8bf51188342b3ca7e084ec71ebc8f50b868543895b7abdc"
+    },
+    {
+      "path": "evidence/animation-clip-consumer-20261031.txt",
+      "sha256": "5367d3b0680805eb68a970afb83a45ef1363f03708a6d998d05c226ae8fa84d4"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
