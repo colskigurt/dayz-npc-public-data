@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "b93d-support-fast-20261031-135720-sixtyfour"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "trial",
+        "admission",
+        "conditions"
+      ],
+      "properties": {
+        "conditions": {
+          "type": "object",
+          "properties": {
+            "count": {
+              "const": 64
+            },
+            "repetitions": {
+              "const": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}
