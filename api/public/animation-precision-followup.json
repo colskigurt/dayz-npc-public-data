@@ -1,0 +1,239 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T18:15:32.535682+09:00",
+  "sourceRunId": "animation-precision-followup-20261031-1812",
+  "buildId": "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
+  "verificationStatus": {
+    "diagnostic": "precision_candidate_closed_visible_pairs_audited",
+    "newRuntime": false,
+    "reaDeepDossier": false,
+    "functional": "not_rerun",
+    "visibleSmoothness": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-precision-followup-20261031-1812",
+    "buildId": "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
+    "newRuntime": false,
+    "newPbo": false,
+    "newVideo": false,
+    "methodClass": "HelicopterAuto",
+    "methodVtableOffset": "0x880",
+    "methodDirectBranchesFound": 0,
+    "methodAlignedPointersFound": 1,
+    "globalReferencesFound": 7,
+    "globalReferenceRanges": 2,
+    "publicClockControlEstablished": false,
+    "supportedClockControlEstablished": false,
+    "visiblePairs": {
+      "sourceRunId": "animation-precision-followup-20261031-1812",
+      "reusedRuntimeRunId": "runtime-20261031-113849",
+      "newRuntime": false,
+      "newVideo": false,
+      "videoSha256": "29fe7450995911065a510ba7f37997fbeb1191716616f3d7b1008444841a637d",
+      "segments": [
+        "5.0",
+        "12.0",
+        "20.0"
+      ],
+      "allMatchedChangingPairs": 446,
+      "nativeFrameGap1Pairs": 444,
+      "conditionalLowChangeMatrix": [
+        {
+          "pixelChangeBelow": 1,
+          "cpuStepAtLeastMm": 0.1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 1,
+          "cpuStepAtLeastMm": 1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 1,
+          "cpuStepAtLeastMm": 5,
+          "eligiblePairs": 437,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 1,
+          "cpuStepAtLeastMm": 10,
+          "eligiblePairs": 409,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 5,
+          "cpuStepAtLeastMm": 0.1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 5,
+          "cpuStepAtLeastMm": 1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 5,
+          "cpuStepAtLeastMm": 5,
+          "eligiblePairs": 437,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 5,
+          "cpuStepAtLeastMm": 10,
+          "eligiblePairs": 409,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 10,
+          "cpuStepAtLeastMm": 0.1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 10,
+          "cpuStepAtLeastMm": 1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 10,
+          "cpuStepAtLeastMm": 5,
+          "eligiblePairs": 437,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 10,
+          "cpuStepAtLeastMm": 10,
+          "eligiblePairs": 409,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 25,
+          "cpuStepAtLeastMm": 0.1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 25,
+          "cpuStepAtLeastMm": 1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 25,
+          "cpuStepAtLeastMm": 5,
+          "eligiblePairs": 437,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 25,
+          "cpuStepAtLeastMm": 10,
+          "eligiblePairs": 409,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 50,
+          "cpuStepAtLeastMm": 0.1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 50,
+          "cpuStepAtLeastMm": 1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 50,
+          "cpuStepAtLeastMm": 5,
+          "eligiblePairs": 437,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 50,
+          "cpuStepAtLeastMm": 10,
+          "eligiblePairs": 409,
+          "lowVisibleChangePairs": 0
+        }
+      ],
+      "duplicateHudPairs": 91,
+      "duplicateHudBodyChangeAtLeast10": 0,
+      "evidenceReferences": [
+        {
+          "file": "visible-pose-alignment.json",
+          "sha256": "230190498e912f2873402053227cb6e6037574181e337fbaa55a479f3c2dc272"
+        },
+        {
+          "file": "visible-frame-ids.json",
+          "sha256": "2fedf4db770661db9d743485df721db983d03a707d912d073b8802aa4f48addc"
+        },
+        {
+          "file": "visible-clip-analysis.json",
+          "sha256": "e401378a95859410021e9227e75664a8092938af5379fa88a7e5fe475e9b6e1c"
+        },
+        {
+          "file": "launch.json",
+          "sha256": "77a54383a7e75e69c4f76214624b3084216e366bdf468d58c87dc787fea37caa"
+        },
+        {
+          "file": "obs-capture.json",
+          "sha256": "4fbcdf7c92ac41d72ff66e46a7a9246a7373487c69e9a4cf5d1a7d054ddfb968"
+        }
+      ],
+      "limits": [
+        "Threshold sensitivity audit on previously selected three 3second windows; not new independent repetition.",
+        "Six queried joint-position RMS is not visible silhouette displacement; depth motion, occlusion and natural curvature can suppress silhouette change.",
+        "Exact HUD match is not GPU skinning identity or Present identity.",
+        "Capture at60fps can repeat complete game frames. DuplicateHUD and advancingHUD are distinguished, not blindly counted as animation stalls.",
+        "No direct pixel joint trajectories, new GPU timing, 64 regression, perceptual smoothness or improvement acceptance."
+      ],
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false
+    },
+    "limits": [
+      "Threshold sensitivity audit on previously selected three 3second windows; not new independent repetition.",
+      "Six queried joint-position RMS is not visible silhouette displacement; depth motion, occlusion and natural curvature can suppress silhouette change.",
+      "Exact HUD match is not GPU skinning identity or Present identity.",
+      "Capture at60fps can repeat complete game frames. DuplicateHUD and advancingHUD are distinguished, not blindly counted as animation stalls.",
+      "No direct pixel joint trajectories, new GPU timing, 64 regression, perceptual smoothness or improvement acceptance.",
+      "Regex-seeded globals audit is incomplete, especially register-carried references; no exhaustive settings absence.",
+      "RTTI and file vtable establish this dispatch table, not all possible dynamic receiver use."
+    ],
+    "next": "Close the25ms setter candidate for currentAnimal. Next design projected/identified screen-joint trajectories with capture cadence control, separating mean playback slowdown and uneven within-cycle speed; do not infer stutter directly from nearest-source phase jumps.",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "blockers": [
+    "Threshold sensitivity audit on previously selected three 3second windows; not new independent repetition.",
+    "Six queried joint-position RMS is not visible silhouette displacement; depth motion, occlusion and natural curvature can suppress silhouette change.",
+    "Exact HUD match is not GPU skinning identity or Present identity.",
+    "Capture at60fps can repeat complete game frames. DuplicateHUD and advancingHUD are distinguished, not blindly counted as animation stalls.",
+    "No direct pixel joint trajectories, new GPU timing, 64 regression, perceptual smoothness or improvement acceptance.",
+    "Regex-seeded globals audit is incomplete, especially register-carried references; no exhaustive settings absence.",
+    "RTTI and file vtable establish this dispatch table, not all possible dynamic receiver use.",
+    "Supported clock control remains unestablished; graphconsumer verification still required.",
+    "REA Rizin Windows native command unavailable; no deepdossier claimed."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-precision-followup-20261031.md",
+      "sha256": "3fa8e93efde7a4ce190617e1475cc19aa6d7c2abdee00a343235cc854f6731eb"
+    },
+    {
+      "path": "evidence/animation-precision-followup-20261031.txt",
+      "sha256": "f395475423c08e8ec8d2919310d2af228ebb042fd6391161383cdbd01cd2141a"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

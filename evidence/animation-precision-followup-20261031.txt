@@ -1,0 +1,398 @@
+Selection: exact method table RTTI, bounded method/global xrefs and aggregate20 threshold combinations on previously HUDmatched video. No raw video/localpaths, no new runtime or fullCFG proof.
+
+{
+  "results": {
+    "sourceRunId": "animation-precision-followup-20261031-1812",
+    "buildId": "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
+    "newRuntime": false,
+    "newPbo": false,
+    "newVideo": false,
+    "methodClass": "HelicopterAuto",
+    "methodVtableOffset": "0x880",
+    "methodDirectBranchesFound": 0,
+    "methodAlignedPointersFound": 1,
+    "globalReferencesFound": 7,
+    "globalReferenceRanges": 2,
+    "publicClockControlEstablished": false,
+    "supportedClockControlEstablished": false,
+    "visiblePairs": {
+      "sourceRunId": "animation-precision-followup-20261031-1812",
+      "reusedRuntimeRunId": "runtime-20261031-113849",
+      "newRuntime": false,
+      "newVideo": false,
+      "videoSha256": "29fe7450995911065a510ba7f37997fbeb1191716616f3d7b1008444841a637d",
+      "segments": [
+        "5.0",
+        "12.0",
+        "20.0"
+      ],
+      "allMatchedChangingPairs": 446,
+      "nativeFrameGap1Pairs": 444,
+      "conditionalLowChangeMatrix": [
+        {
+          "pixelChangeBelow": 1,
+          "cpuStepAtLeastMm": 0.1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 1,
+          "cpuStepAtLeastMm": 1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 1,
+          "cpuStepAtLeastMm": 5,
+          "eligiblePairs": 437,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 1,
+          "cpuStepAtLeastMm": 10,
+          "eligiblePairs": 409,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 5,
+          "cpuStepAtLeastMm": 0.1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 5,
+          "cpuStepAtLeastMm": 1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 5,
+          "cpuStepAtLeastMm": 5,
+          "eligiblePairs": 437,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 5,
+          "cpuStepAtLeastMm": 10,
+          "eligiblePairs": 409,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 10,
+          "cpuStepAtLeastMm": 0.1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 10,
+          "cpuStepAtLeastMm": 1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 10,
+          "cpuStepAtLeastMm": 5,
+          "eligiblePairs": 437,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 10,
+          "cpuStepAtLeastMm": 10,
+          "eligiblePairs": 409,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 25,
+          "cpuStepAtLeastMm": 0.1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 25,
+          "cpuStepAtLeastMm": 1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 25,
+          "cpuStepAtLeastMm": 5,
+          "eligiblePairs": 437,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 25,
+          "cpuStepAtLeastMm": 10,
+          "eligiblePairs": 409,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 50,
+          "cpuStepAtLeastMm": 0.1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 50,
+          "cpuStepAtLeastMm": 1,
+          "eligiblePairs": 444,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 50,
+          "cpuStepAtLeastMm": 5,
+          "eligiblePairs": 437,
+          "lowVisibleChangePairs": 0
+        },
+        {
+          "pixelChangeBelow": 50,
+          "cpuStepAtLeastMm": 10,
+          "eligiblePairs": 409,
+          "lowVisibleChangePairs": 0
+        }
+      ],
+      "duplicateHudPairs": 91,
+      "duplicateHudBodyChangeAtLeast10": 0,
+      "evidenceReferences": [
+        {
+          "file": "visible-pose-alignment.json",
+          "sha256": "230190498e912f2873402053227cb6e6037574181e337fbaa55a479f3c2dc272"
+        },
+        {
+          "file": "visible-frame-ids.json",
+          "sha256": "2fedf4db770661db9d743485df721db983d03a707d912d073b8802aa4f48addc"
+        },
+        {
+          "file": "visible-clip-analysis.json",
+          "sha256": "e401378a95859410021e9227e75664a8092938af5379fa88a7e5fe475e9b6e1c"
+        },
+        {
+          "file": "launch.json",
+          "sha256": "77a54383a7e75e69c4f76214624b3084216e366bdf468d58c87dc787fea37caa"
+        },
+        {
+          "file": "obs-capture.json",
+          "sha256": "4fbcdf7c92ac41d72ff66e46a7a9246a7373487c69e9a4cf5d1a7d054ddfb968"
+        }
+      ],
+      "limits": [
+        "Threshold sensitivity audit on previously selected three 3second windows; not new independent repetition.",
+        "Six queried joint-position RMS is not visible silhouette displacement; depth motion, occlusion and natural curvature can suppress silhouette change.",
+        "Exact HUD match is not GPU skinning identity or Present identity.",
+        "Capture at60fps can repeat complete game frames. DuplicateHUD and advancingHUD are distinguished, not blindly counted as animation stalls.",
+        "No direct pixel joint trajectories, new GPU timing, 64 regression, perceptual smoothness or improvement acceptance."
+      ],
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false
+    },
+    "limits": [
+      "Threshold sensitivity audit on previously selected three 3second windows; not new independent repetition.",
+      "Six queried joint-position RMS is not visible silhouette displacement; depth motion, occlusion and natural curvature can suppress silhouette change.",
+      "Exact HUD match is not GPU skinning identity or Present identity.",
+      "Capture at60fps can repeat complete game frames. DuplicateHUD and advancingHUD are distinguished, not blindly counted as animation stalls.",
+      "No direct pixel joint trajectories, new GPU timing, 64 regression, perceptual smoothness or improvement acceptance.",
+      "Regex-seeded globals audit is incomplete, especially register-carried references; no exhaustive settings absence.",
+      "RTTI and file vtable establish this dispatch table, not all possible dynamic receiver use."
+    ],
+    "next": "Close the25ms setter candidate for currentAnimal. Next design projected/identified screen-joint trajectories with capture cadence control, separating mean playback slowdown and uneven within-cycle speed; do not infer stutter directly from nearest-source phase jumps.",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "methodTable": {
+    "buildId": "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
+    "method": "0x1407bcdc0",
+    "slot": "0x14124b8a0",
+    "nearestVerifiedRttiTable": {
+      "table": "0x14124b020",
+      "typeName": ".?AVHelicopterAuto@@",
+      "objectOffset": 0,
+      "methodOffset": "0x880",
+      "contiguousCodePointersThroughSlot": true
+    },
+    "boundary": "File RTTI and contiguous code-pointer table through exact method slot. No live receiver or source-level method name; cannot prove every dynamic dispatch."
+  },
+  "references": {
+    "sourceRunId": "animation-precision-followup-20261031-1812",
+    "buildId": "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
+    "methodDirectBranches": [],
+    "methodAlignedDataPointers": [
+      {
+        "address": "0x14124b8a0",
+        "section": ".rdata"
+      }
+    ],
+    "periodGlobalReferences": [
+      {
+        "address": "0x1407b71ef",
+        "global": "0x141740408",
+        "range": [
+          "0x1407b7010",
+          "0x1407b7255"
+        ],
+        "instruction": "movss xmm1, dword ptr [rip + 0xf89211]",
+        "access": 1,
+        "context": [
+          "0x1407b71d2 mov rcx, qword ptr [rip + 0x109ddc7]",
+          "0x1407b71d9 test rcx, rcx",
+          "0x1407b71dc je 0x1407b71e7",
+          "0x1407b71de mov rax, qword ptr [rcx]",
+          "0x1407b71e1 mov rdx, rdi",
+          "0x1407b71e4 call qword ptr [rax + 0x48]",
+          "0x1407b71e7 movss xmm2, dword ptr [rip + 0x9a3231]",
+          "0x1407b71ef movss xmm1, dword ptr [rip + 0xf89211]",
+          "0x1407b71f7 mov rcx, rdi",
+          "0x1407b71fa call 0x140a6a500",
+          "0x1407b71ff mov rcx, rdi",
+          "0x1407b7202 call 0x140a69270"
+        ]
+      },
+      {
+        "address": "0x1407b7207",
+        "global": "0x141740408",
+        "range": [
+          "0x1407b7010",
+          "0x1407b7255"
+        ],
+        "instruction": "movss xmm1, dword ptr [rip + 0xf891f9]",
+        "access": 1,
+        "context": [
+          "0x1407b71e4 call qword ptr [rax + 0x48]",
+          "0x1407b71e7 movss xmm2, dword ptr [rip + 0x9a3231]",
+          "0x1407b71ef movss xmm1, dword ptr [rip + 0xf89211]",
+          "0x1407b71f7 mov rcx, rdi",
+          "0x1407b71fa call 0x140a6a500",
+          "0x1407b71ff mov rcx, rdi",
+          "0x1407b7202 call 0x140a69270",
+          "0x1407b7207 movss xmm1, dword ptr [rip + 0xf891f9]",
+          "0x1407b720f maxss xmm1, dword ptr [rip + 0xf891ad]",
+          "0x1407b7217 maxss xmm1, dword ptr [rip + 0xf891f1]",
+          "0x1407b721f mov rcx, rdi",
+          "0x1407b7222 call 0x140a6a600"
+        ]
+      },
+      {
+        "address": "0x1407b7217",
+        "global": "0x141740410",
+        "range": [
+          "0x1407b7010",
+          "0x1407b7255"
+        ],
+        "instruction": "maxss xmm1, dword ptr [rip + 0xf891f1]",
+        "access": 1,
+        "context": [
+          "0x1407b71ef movss xmm1, dword ptr [rip + 0xf89211]",
+          "0x1407b71f7 mov rcx, rdi",
+          "0x1407b71fa call 0x140a6a500",
+          "0x1407b71ff mov rcx, rdi",
+          "0x1407b7202 call 0x140a69270",
+          "0x1407b7207 movss xmm1, dword ptr [rip + 0xf891f9]",
+          "0x1407b720f maxss xmm1, dword ptr [rip + 0xf891ad]",
+          "0x1407b7217 maxss xmm1, dword ptr [rip + 0xf891f1]",
+          "0x1407b721f mov rcx, rdi",
+          "0x1407b7222 call 0x140a6a600",
+          "0x1407b7227 mov byte ptr [rdi + 0x5cd], 1",
+          "0x1407b722e mov r8d, 0x4800"
+        ]
+      },
+      {
+        "address": "0x1407bdf98",
+        "global": "0x14174040c",
+        "range": [
+          "0x1407bcdc0",
+          "0x1407be015"
+        ],
+        "instruction": "movss xmm2, dword ptr [rip + 0xf8246c]",
+        "access": 1,
+        "context": [
+          "0x1407bdf80 jmp 0x1407bdfbd",
+          "0x1407bdf82 mov rax, qword ptr [rdi]",
+          "0x1407bdf85 call qword ptr [rax + 0xa80]",
+          "0x1407bdf8b test al, al",
+          "0x1407bdf8d jne 0x1407bdfaa",
+          "0x1407bdf8f cmp dword ptr [rdi + 0x988], 3",
+          "0x1407bdf96 jge 0x1407bdfaa",
+          "0x1407bdf98 movss xmm2, dword ptr [rip + 0xf8246c]",
+          "0x1407bdfa0 movss xmm1, dword ptr [rip + 0xf82460]",
+          "0x1407bdfa8 jmp 0x1407bdfba",
+          "0x1407bdfaa movss xmm2, dword ptr [rip + 0xf82462]",
+          "0x1407bdfb2 movss xmm1, dword ptr [rip + 0xf82456]"
+        ]
+      },
+      {
+        "address": "0x1407bdfa0",
+        "global": "0x141740408",
+        "range": [
+          "0x1407bcdc0",
+          "0x1407be015"
+        ],
+        "instruction": "movss xmm1, dword ptr [rip + 0xf82460]",
+        "access": 1,
+        "context": [
+          "0x1407bdf82 mov rax, qword ptr [rdi]",
+          "0x1407bdf85 call qword ptr [rax + 0xa80]",
+          "0x1407bdf8b test al, al",
+          "0x1407bdf8d jne 0x1407bdfaa",
+          "0x1407bdf8f cmp dword ptr [rdi + 0x988], 3",
+          "0x1407bdf96 jge 0x1407bdfaa",
+          "0x1407bdf98 movss xmm2, dword ptr [rip + 0xf8246c]",
+          "0x1407bdfa0 movss xmm1, dword ptr [rip + 0xf82460]",
+          "0x1407bdfa8 jmp 0x1407bdfba",
+          "0x1407bdfaa movss xmm2, dword ptr [rip + 0xf82462]",
+          "0x1407bdfb2 movss xmm1, dword ptr [rip + 0xf82456]",
+          "0x1407bdfba mov rcx, rdi"
+        ]
+      },
+      {
+        "address": "0x1407bdfaa",
+        "global": "0x141740414",
+        "range": [
+          "0x1407bcdc0",
+          "0x1407be015"
+        ],
+        "instruction": "movss xmm2, dword ptr [rip + 0xf82462]",
+        "access": 1,
+        "context": [
+          "0x1407bdf8b test al, al",
+          "0x1407bdf8d jne 0x1407bdfaa",
+          "0x1407bdf8f cmp dword ptr [rdi + 0x988], 3",
+          "0x1407bdf96 jge 0x1407bdfaa",
+          "0x1407bdf98 movss xmm2, dword ptr [rip + 0xf8246c]",
+          "0x1407bdfa0 movss xmm1, dword ptr [rip + 0xf82460]",
+          "0x1407bdfa8 jmp 0x1407bdfba",
+          "0x1407bdfaa movss xmm2, dword ptr [rip + 0xf82462]",
+          "0x1407bdfb2 movss xmm1, dword ptr [rip + 0xf82456]",
+          "0x1407bdfba mov rcx, rdi",
+          "0x1407bdfbd call 0x140a6a500",
+          "0x1407bdfc2 lea r11, [rsp + 0x1f0]"
+        ]
+      },
+      {
+        "address": "0x1407bdfb2",
+        "global": "0x141740410",
+        "range": [
+          "0x1407bcdc0",
+          "0x1407be015"
+        ],
+        "instruction": "movss xmm1, dword ptr [rip + 0xf82456]",
+        "access": 1,
+        "context": [
+          "0x1407bdf8d jne 0x1407bdfaa",
+          "0x1407bdf8f cmp dword ptr [rdi + 0x988], 3",
+          "0x1407bdf96 jge 0x1407bdfaa",
+          "0x1407bdf98 movss xmm2, dword ptr [rip + 0xf8246c]",
+          "0x1407bdfa0 movss xmm1, dword ptr [rip + 0xf82460]",
+          "0x1407bdfa8 jmp 0x1407bdfba",
+          "0x1407bdfaa movss xmm2, dword ptr [rip + 0xf82462]",
+          "0x1407bdfb2 movss xmm1, dword ptr [rip + 0xf82456]",
+          "0x1407bdfba mov rcx, rdi",
+          "0x1407bdfbd call 0x140a6a500",
+          "0x1407bdfc2 lea r11, [rsp + 0x1f0]",
+          "0x1407bdfca mov rbx, qword ptr [r11 + 0x50]"
+        ]
+      }
+    ],
+    "candidateUnwindRanges": 4,
+    "boundary": "Validated bounded direct branches/RIP memory operands from PE unwind starts. Regex seeding incomplete for instruction encodings and references through registers; no full CFG/live receiver/public setting proof. No game execution or mutation."
+  }
+}
