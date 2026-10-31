@@ -1,3 +1,5 @@
+> 최신 공개 애니메이션 API 진단(2026-10-31): DebugOverrideAnimationSpeed의 실제 속도헬퍼는3바이트 return뿐이었다. 전역frame/slot경로도기존Animal의null시각컴포넌트가드를사용한다.새실행·배포해결·시각/성능수용은없으며전체API부재를주장하지않는다. [근거와한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-public-controls-20261031.md). 이전 기록은 아래 보존한다.
+
 > 최신 접촉 낙하 진단(2026-10-31):64명 접촉지원상실19회 모두 추적복귀,고지대목표16회 모두 후속재등반(1회는재낙하후다음세대).자세허가후약3.10초native대기가wall약4초이상으로늘어났다.새실행·수정·시각/성능수용은아니다. [근거와한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/contact-recovery-chain-20261031.md). 이전 기록은 아래 보존한다.
 
 > 최신 B93D 보정없는 기능시험(2026-10-31): 8명:최종8/8,고지대누락[],등반실패0; 64명:최종64/64,고지대누락[],등반실패0. 각조건1회이며 반복수용·시각·성능은 미완료다. 과거B8FB실패는 보존한다. [조건과한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/b93d-free-high-20261031.md). 이전 기록은 아래 보존한다.

@@ -1,0 +1,193 @@
+Selection: complete bounded results; actualDebugOverrideAnimationSpeedhandler anddirectcallee decodes; exact3byte helper provenance; both globalframe/slotbinding decodes; selected public declarations for these APIs. Static module addresses are not liveprocess pointers. No gamefiles or private paths. Not fullCFG/decompiled source and no runtimeeffectivenessclaim.
+
+{
+  "results": {
+    "sourceRunId": "animation-public-controls-20261031-125131",
+    "buildId": "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
+    "scriptsPboSha256": "ff0ad7ee5297c75da74364569a830bc0223315c0131579a0c11a7875d64cb2e2",
+    "scope": "Bounded installedAPI/registration/helper eligibility, not runtime effectiveness or exhaustive public API absence.",
+    "newRuntime": false,
+    "newPbo": false,
+    "declarationsScanned": 104,
+    "scriptMembersScanned": 3056,
+    "nonUtf8MemberFallback": [
+      "3_Game\\Global\\World.c"
+    ],
+    "debugSpeed": {
+      "registeredHandler": "0x140aeba50",
+      "helper": "0x14017a950",
+      "helperBytes": "c20000",
+      "helperLength": 3,
+      "helperIsReturnOnly": true,
+      "resourceLookupCanReturnTrueWithoutSpeedChange": true,
+      "deployableClockFix": false
+    },
+    "globalFrameSlot": {
+      "registered": true,
+      "receiverOffset": "0x60",
+      "SetAnimFrameDispatch": "vtable+0xc8",
+      "SetAnimSlotHelper": "0x1402e8e70",
+      "priorReceiverEvidence": {
+        "runtimeRunId": "runtime-20261031-093649",
+        "logicalAgents": 1,
+        "renderParts": 8,
+        "selectedReceiverRecords": 1840,
+        "stableNullComponentRecords": 1839,
+        "readableTargetChains": 0
+      },
+      "newRuntimeEffectivenessTested": false,
+      "boundedConclusion": "Same component guard as the previous inaccessible generic visual path on selectedAnimal. Not global absence or proof for every entity type."
+    },
+    "preAnimFloat": {
+      "registeredHandlers": [
+        "0x140ae8b60",
+        "0x140b66650"
+      ],
+      "scope": "Public graph variable write, not proof of a clock/residual setter. Graph consumer and phase/evaluation effects remain unverified."
+    },
+    "rea": {
+      "rawFragmentAccepted": false,
+      "reason": "Windows Ghidra P0 raw target admission excludes x86_64; no new fullEXE import attempted because previous wholeanalysis timed out.",
+      "deepDossierCompleted": false,
+      "fallback": "Exact immutable bytes with PEhash/offset and bounded Capstone decode; not decompiled source or full CFG."
+    },
+    "supportedClockControlEstablished": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "Line regex search does not cover all APIs, comments or multiline declarations as a semantic parser.",
+      "Native static branches do not establish livecalls or finalGPU rendering.",
+      "Existing stableNull receiver observations are one priorB8FB idle diagnostic, not newB93D runtime evidence.",
+      "No rate multiplier, duration misuse, forcedLOD or newinterpolation deployed."
+    ],
+    "next": "Do not run debugSpeed as an optimization candidate or repeat generic+60 null path. Graph variable consumers remain a bounded open path, requiring actual graph binding and effect evidence before control changes. Separate64cost attribution remains pending."
+  },
+  "debugSpeedBinding": {
+    "name": "DebugOverrideAnimationSpeed",
+    "nameAddress": "0x1412ed218",
+    "reference": "0x140aed060",
+    "registrationRange": [
+      "0x140aece20",
+      "0x140aed0a8"
+    ],
+    "handler": "0x140aeba50",
+    "registrationCall": "0x140aed04f",
+    "registrationHelper": "0x1402724e0",
+    "handlerDecode": {
+      "entry": "0x140aeba50",
+      "endExclusive": "0x140aebb03",
+      "bytesSha256": "fcf0414191673a42f7ffad879f72bdde59602005f84f759881692721d7e135ac",
+      "scope": "pdata unwind range, not full CFG proof",
+      "decodedToEnd": true,
+      "assembly": "0x140aeba50 push rbx\n0x140aeba52 push rsi\n0x140aeba53 push rdi\n0x140aeba54 sub rsp, 0x40\n0x140aeba58 mov qword ptr [rsp + 0x28], 0xfffffffffffffffe\n0x140aeba61 movaps xmmword ptr [rsp + 0x30], xmm6\n0x140aeba66 movaps xmm6, xmm1\n0x140aeba69 mov r8, rcx\n0x140aeba6c xor edx, edx\n0x140aeba6e lea rcx, [rsp + 0x78]\n0x140aeba73 call 0x1402fb220\n0x140aeba78 nop \n0x140aeba79 xor ebx, ebx\n0x140aeba7b mov dword ptr [rsp + 0x60], ebx\n0x140aeba7f mov r9d, ebx\n0x140aeba82 mov r8, rax\n0x140aeba85 lea rdx, [rsp + 0x20]\n0x140aeba8a mov rcx, qword ptr [rip + 0xcc771f]\n0x140aeba91 call 0x14044f2f0\n0x140aeba96 nop \n0x140aeba97 lea edi, [rbx - 1]\n0x140aeba9a mov rcx, qword ptr [rsp + 0x78]\n0x140aeba9f test rcx, rcx\n0x140aebaa2 je 0x140aebabb\n0x140aebaa4 mov eax, edi\n0x140aebaa6 lock xadd dword ptr [rcx + 8], eax\n0x140aebaab sub eax, 1\n0x140aebaae jne 0x140aebab6\n0x140aebab0 mov rax, qword ptr [rcx]\n0x140aebab3 call qword ptr [rax + 8]\n0x140aebab6 mov qword ptr [rsp + 0x78], rbx\n0x140aebabb mov rbx, qword ptr [rsp + 0x20]\n0x140aebac0 test rbx, rbx\n0x140aebac3 jne 0x140aebaca\n0x140aebac5 xor sil, sil\n0x140aebac8 jmp 0x140aebad8\n0x140aebaca movaps xmm1, xmm6\n0x140aebacd mov rcx, rbx\n0x140aebad0 call 0x14017a950\n0x140aebad5 mov sil, 1\n0x140aebad8 test rbx, rbx\n0x140aebadb je 0x140aebaf2\n0x140aebadd lea rcx, [rbx + 8]\n0x140aebae1 lock xadd dword ptr [rcx + 8], edi\n0x140aebae6 cmp edi, 1\n0x140aebae9 jne 0x140aebaf2\n0x140aebaeb mov rdx, qword ptr [rcx]\n0x140aebaee call qword ptr [rdx + 8]\n0x140aebaf1 nop \n0x140aebaf2 movzx eax, sil\n0x140aebaf6 movaps xmm6, xmmword ptr [rsp + 0x30]\n0x140aebafb add rsp, 0x40\n0x140aebaff pop rdi\n0x140aebb00 pop rsi\n0x140aebb01 pop rbx\n0x140aebb02 ret "
+    },
+    "directCallees": [
+      {
+        "entry": "0x1402fb220",
+        "endExclusive": "0x1402fb507",
+        "bytesSha256": "f23433a93b56add609859f39aadd7a65902533433f2ebf8a1e7985a10147d641",
+        "scope": "pdata unwind range, not full CFG proof",
+        "decodedToEnd": true,
+        "assembly": "0x1402fb220 mov qword ptr [rsp + 8], rcx\n0x1402fb225 push rbp\n0x1402fb226 push rsi\n0x1402fb227 push rdi\n0x1402fb228 push r14\n0x1402fb22a push r15\n0x1402fb22c mov rbp, rsp\n0x1402fb22f sub rsp, 0x40\n0x1402fb233 mov qword ptr [rbp - 8], 0xfffffffffffffffe\n0x1402fb23b mov qword ptr [rsp + 0x78], rbx\n0x1402fb240 mov rbx, r8\n0x1402fb243 mov r14, rcx\n0x1402fb246 xor edi, edi\n0x1402fb248 mov dword ptr [rbp + 0x40], edi\n0x1402fb24b mov qword ptr [rcx], rdi\n0x1402fb24e test r8, r8\n0x1402fb251 je 0x1402fb3d6\n0x1402fb257 movzx eax, byte ptr [r8]\n0x1402fb25b test al, al\n0x1402fb25d je 0x1402fb3d6\n0x1402fb263 mov qword ptr [rbp - 0x20], rdi\n0x1402fb267 lea rdx, [r8 + 1]\n0x1402fb26b cmp al, 0x7b\n0x1402fb26d jne 0x1402fb2c0\n0x1402fb26f mov r8d, edi\n0x1402fb272 movzx ecx, byte ptr [rdx]\n0x1402fb275 test cl, cl\n0x1402fb277 je 0x1402fb3ea\n0x1402fb27d lea r9d, [rdi + 0x30]\n0x1402fb281 cmp cl, 0x7d\n0x1402fb284 je 0x1402fb3f3\n0x1402fb28a inc rdx\n0x1402fb28d lea eax, [rcx - 0x30]\n0x1402fb290 cmp al, 9\n0x1402fb292 jbe 0x1402fb29b\n0x1402fb294 lea eax, [rcx - 0x41]\n0x1402fb297 cmp al, 5\n0x1402fb299 ja 0x1402fb2c0\n0x1402fb29b mov eax, 0x37\n0x1402fb2a0 cmp cl, 0x41\n0x1402fb2a3 cmovb eax, r9d\n0x1402fb2a7 sub cl, al\n0x1402fb2a9 and ecx, 0xf\n0x1402fb2ac mov rax, r8\n0x1402fb2af shl rax, 4\n0x1402fb2b3 mov r8d, ecx\n0x1402fb2b6 or r8, rax\n0x1402fb2b9 movzx ecx, byte ptr [rdx]\n0x1402fb2bc test cl, cl\n0x1402fb2be jne 0x1402fb281\n0x1402fb2c0 mov rdx, rbx\n0x1402fb2c3 lea rcx, [rbp + 0x48]\n0x1402fb2c7 call 0x1402fa8a0\n0x1402fb2cc mov rcx, qword ptr [rax]\n0x1402fb2cf mov qword ptr [rbp - 0x20], rcx\n0x1402fb2d3 mov rcx, qword ptr [rip + 0x14b7ed6]\n0x1402fb2da test rcx, rcx\n0x1402fb2dd je 0x1402fb300\n0x1402fb2df mov rax, qword ptr [rcx]\n0x1402fb2e2 call qword ptr [rax + 0xa0]\n0x1402fb2e8 lea rcx, [rax + 8]\n0x1402fb2ec mov r8, r14\n0x1402fb2ef lea rdx, [rbp - 0x20]\n0x1402fb2f3 call 0x140305fe0\n0x1402fb2f8 test al, al\n0x1402fb2fa jne 0x1402fb3d6\n0x1402fb300 mov rcx, qword ptr [rip + 0x141b111]\n0x1402fb307 mov rax, qword ptr [rcx]\n0x1402fb30a xor r8d, r8d\n0x1402fb30d lea edx, [r8 + 0x20]\n0x1402fb311 call qword ptr [rax + 8]\n0x1402fb314 mov rsi, rax\n0x1402fb317 mov qword ptr [rbp - 0x18], rax\n0x1402fb31b test rax, rax\n0x1402fb31e je 0x1402fb36d\n0x1402fb320 mov qword ptr [rbp - 0x10], rdi\n0x1402fb324 mov rdx, rbx\n0x1402fb327 nop word ptr [rax + rax]\n0x1402fb330 movzx ecx, byte ptr [rdx]\n0x1402fb333 inc rdx\n0x1402fb336 test cl, cl\n0x1402fb338 jne 0x1402fb330\n0x1402fb33a sub edx, ebx\n0x1402fb33c lea r8d, [rdx - 1]\n0x1402fb340 mov rdx, rbx\n0x1402fb343 lea rcx, [rbp - 0x10]\n0x1402fb347 call 0x140182410\n0x1402fb34c nop \n0x1402fb34d mov dword ptr [rbp + 0x40], 2\n0x1402fb354 mov r9d, 0xffffffff\n0x1402fb35a lea r8, [rbp - 0x10]\n0x1402fb35e lea rdx, [rbp - 0x20]\n0x1402fb362 mov rcx, rsi\n0x1402fb365 call 0x1402fb8f0\n0x1402fb36a mov rdi, rax\n0x1402fb36d mov rsi, qword ptr [r14]\n0x1402fb370 test rdi, rdi\n0x1402fb373 je 0x1402fb38f\n0x1402fb375 mov ebx, 1\n0x1402fb37a lock xadd dword ptr [rdi + 8], ebx\n0x1402fb37f inc ebx\n0x1402fb381 cmp ebx, 1\n0x1402fb384 jne 0x1402fb38f\n0x1402fb386 mov rax, qword ptr [rdi]\n0x1402fb389 mov rcx, rdi\n0x1402fb38c call qword ptr [rax + 0x10]\n0x1402fb38f mov qword ptr [r14], rdi\n0x1402fb392 test rsi, rsi\n0x1402fb395 je 0x1402fb3b0\n0x1402fb397 mov eax, 0xffffffff\n0x1402fb39c lock xadd dword ptr [rsi + 8], eax\n0x1402fb3a1 cmp eax, 1\n0x1402fb3a4 jne 0x1402fb3b0\n0x1402fb3a6 mov rax, qword ptr [rsi]\n0x1402fb3a9 mov rcx, rsi\n0x1402fb3ac call qword ptr [rax + 8]\n0x1402fb3af nop \n0x1402fb3b0 test byte ptr [rbp + 0x40], 2\n0x1402fb3b4 je 0x1402fb3d6\n0x1402fb3b6 mov rax, qword ptr [rbp - 0x10]\n0x1402fb3ba test rax, rax\n0x1402fb3bd je 0x1402fb3d6\n0x1402fb3bf lea rcx, [rax - 6]\n0x1402fb3c3 mov eax, 0xffff\n0x1402fb3c8 add word ptr [rcx + 4], ax\n0x1402fb3cc jne 0x1402fb3d6\n0x1402fb3ce xor edx, edx\n0x1402fb3d0 call 0x140236950\n0x1402fb3d5 nop \n0x1402fb3d6 mov rax, r14\n0x1402fb3d9 mov rbx, qword ptr [rsp + 0x78]\n0x1402fb3de add rsp, 0x40\n0x1402fb3e2 pop r15\n0x1402fb3e4 pop r14\n0x1402fb3e6 pop rdi\n0x1402fb3e7 pop rsi\n0x1402fb3e8 pop rbp\n0x1402fb3e9 ret \n0x1402fb3ea cmp cl, 0x7d\n0x1402fb3ed jne 0x1402fb2c0\n0x1402fb3f3 mov qword ptr [rbp - 0x20], r8\n0x1402fb3f7 lea rsi, [rdx + 1]\n0x1402fb3fb test rsi, rsi\n0x1402fb3fe je 0x1402fb2c0\n0x1402fb404 mov rcx, qword ptr [rip + 0x14b7da5]\n0x1402fb40b test rcx, rcx\n0x1402fb40e je 0x1402fb42d\n0x1402fb410 mov rax, qword ptr [rcx]\n0x1402fb413 call qword ptr [rax + 0xa0]\n0x1402fb419 lea rcx, [rax + 8]\n0x1402fb41d mov r8, r14\n0x1402fb420 lea rdx, [rbp - 0x20]\n0x1402fb424 call 0x140305fe0\n0x1402fb429 test al, al\n0x1402fb42b jne 0x1402fb3d6\n0x1402fb42d mov rcx, qword ptr [rip + 0x141afe4]\n0x1402fb434 mov rax, qword ptr [rcx]\n0x1402fb437 xor r8d, r8d\n0x1402fb43a lea edx, [r8 + 0x20]\n0x1402fb43e call qword ptr [rax + 8]\n0x1402fb441 mov r15, rax\n0x1402fb444 mov qword ptr [rbp + 0x48], rax\n0x1402fb448 mov ebx, 1\n0x1402fb44d test rax, rax\n0x1402fb450 je 0x1402fb499\n0x1402fb452 mov qword ptr [rbp - 0x18], rdi\n0x1402fb456 mov rcx, rsi\n0x1402fb459 nop dword ptr [rax]\n0x1402fb460 movzx eax, byte ptr [rcx]\n0x1402fb463 inc rcx\n0x1402fb466 test al, al\n0x1402fb468 jne 0x1402fb460\n0x1402fb46a sub ecx, esi\n0x1402fb46c lea r8d, [rcx - 1]\n0x1402fb470 mov rdx, rsi\n0x1402fb473 lea rcx, [rbp - 0x18]\n0x1402fb477 call 0x140182410\n0x1402fb47c nop \n0x1402fb47d mov dword ptr [rbp + 0x40], ebx\n0x1402fb480 mov r9d, 0xffffffff\n0x1402fb486 lea r8, [rbp - 0x18]\n0x1402fb48a lea rdx, [rbp - 0x20]\n0x1402fb48e mov rcx, r15\n0x1402fb491 call 0x1402fb8f0\n0x1402fb496 mov rdi, rax\n0x1402fb499 mov rsi, qword ptr [r14]\n0x1402fb49c test rdi, rdi\n0x1402fb49f je 0x1402fb4b6\n0x1402fb4a1 lock xadd dword ptr [rdi + 8], ebx\n0x1402fb4a6 inc ebx\n0x1402fb4a8 cmp ebx, 1\n0x1402fb4ab jne 0x1402fb4b6\n0x1402fb4ad mov rax, qword ptr [rdi]\n0x1402fb4b0 mov rcx, rdi\n0x1402fb4b3 call qword ptr [rax + 0x10]\n0x1402fb4b6 mov qword ptr [r14], rdi\n0x1402fb4b9 test rsi, rsi\n0x1402fb4bc je 0x1402fb4d7\n0x1402fb4be mov eax, 0xffffffff\n0x1402fb4c3 lock xadd dword ptr [rsi + 8], eax\n0x1402fb4c8 cmp eax, 1\n0x1402fb4cb jne 0x1402fb4d7\n0x1402fb4cd mov rax, qword ptr [rsi]\n0x1402fb4d0 mov rcx, rsi\n0x1402fb4d3 call qword ptr [rax + 8]\n0x1402fb4d6 nop \n0x1402fb4d7 test byte ptr [rbp + 0x40], 1\n0x1402fb4db je 0x1402fb3d6\n0x1402fb4e1 mov rax, qword ptr [rbp - 0x18]\n0x1402fb4e5 test rax, rax\n0x1402fb4e8 je 0x1402fb501\n0x1402fb4ea lea rcx, [rax - 6]\n0x1402fb4ee mov eax, 0xffff\n0x1402fb4f3 add word ptr [rcx + 4], ax\n0x1402fb4f7 jne 0x1402fb501\n0x1402fb4f9 xor edx, edx\n0x1402fb4fb call 0x140236950\n0x1402fb500 nop \n0x1402fb501 jmp 0x1402fb3d6\n0x1402fb506 int3 "
+      },
+      {
+        "entry": "0x14044f2f0",
+        "endExclusive": "0x14044f38c",
+        "bytesSha256": "433c92e58676e43b3414547d5b64f4585df229cb5a22e2fbc05f6159c2ebc690",
+        "scope": "pdata unwind range, not full CFG proof",
+        "decodedToEnd": true,
+        "assembly": "0x14044f2f0 push rbx\n0x14044f2f2 sub rsp, 0x40\n0x14044f2f6 mov qword ptr [rsp + 0x30], 0xfffffffffffffffe\n0x14044f2ff mov rbx, rdx\n0x14044f302 cmp qword ptr [r8], 0\n0x14044f306 jne 0x14044f318\n0x14044f308 mov qword ptr [rdx], 0\n0x14044f30f mov rax, rdx\n0x14044f312 add rsp, 0x40\n0x14044f316 pop rbx\n0x14044f317 ret \n0x14044f318 mov rax, qword ptr [rcx]\n0x14044f31b lea rdx, [rsp + 0x20]\n0x14044f320 call qword ptr [rax + 0x1e0]\n0x14044f326 nop \n0x14044f327 cmp qword ptr [rsp + 0x20], 0\n0x14044f32d jne 0x14044f33f\n0x14044f32f mov qword ptr [rbx], 0\n0x14044f336 mov rax, rbx\n0x14044f339 add rsp, 0x40\n0x14044f33d pop rbx\n0x14044f33e ret \n0x14044f33f lea rdx, [rsp + 0x28]\n0x14044f344 lea rcx, [rsp + 0x20]\n0x14044f349 call 0x14044f390\n0x14044f34e mov rax, qword ptr [rsp + 0x28]\n0x14044f353 mov qword ptr [rsp + 0x28], 0\n0x14044f35c mov qword ptr [rbx], rax\n0x14044f35f mov rax, qword ptr [rsp + 0x20]\n0x14044f364 test rax, rax\n0x14044f367 je 0x14044f383\n0x14044f369 lea rcx, [rax + 8]\n0x14044f36d mov eax, 0xffffffff\n0x14044f372 lock xadd dword ptr [rcx + 8], eax\n0x14044f377 cmp eax, 1\n0x14044f37a jne 0x14044f383\n0x14044f37c mov rax, qword ptr [rcx]\n0x14044f37f call qword ptr [rax + 8]\n0x14044f382 nop \n0x14044f383 mov rax, rbx\n0x14044f386 add rsp, 0x40\n0x14044f38a pop rbx\n0x14044f38b ret "
+      },
+      {
+        "entry": "0x14017a950",
+        "endExclusive": "0x14017a953",
+        "bytesSha256": "b6cbececf1b07e74f37d57710c68c31f0b92cb08d51093252b321b07542e177b",
+        "scope": "bounded first return/jump/int3",
+        "decodedToEnd": true,
+        "assembly": "0x14017a950 ret 0"
+      }
+    ]
+  },
+  "helper": {
+    "targetSha256": "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
+    "originalAddress": "0x14017a950",
+    "originalFileOffset": 1547600,
+    "length": 3,
+    "bytesHex": "c20000",
+    "sha256": "b6cbececf1b07e74f37d57710c68c31f0b92cb08d51093252b321b07542e177b",
+    "handler": "0x140aeba50",
+    "directCall": "0x140aebad0",
+    "selection": "Exact3byte helper reached by selected public handler; no execution or patch."
+  },
+  "globalBindings": {
+    "targetSha256": "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
+    "registryRange": [
+      "0x1402c7320",
+      "0x1402c8e75"
+    ],
+    "bindings": [
+      {
+        "name": "SetAnimFrame",
+        "handler": "0x1402dda60",
+        "registrationCall": "0x1402c7dbe",
+        "registrationHelper": "0x140272650",
+        "decode": {
+          "entry": "0x1402dda60",
+          "endExclusive": "0x1402ddb07",
+          "bytesSha256": "53d33f0bba8140806812ba2a9439421690d4eda1cc3ebcb676593f25e1b8f901",
+          "scope": "pdata unwind range, not full CFG proof",
+          "decodedToEnd": true,
+          "assembly": "0x1402dda60 mov qword ptr [rsp + 8], rbx\n0x1402dda65 mov qword ptr [rsp + 0x10], rsi\n0x1402dda6a push rdi\n0x1402dda6b sub rsp, 0x30\n0x1402dda6f cmp dword ptr [rcx + 0x38], 0\n0x1402dda73 mov esi, edx\n0x1402dda75 movaps xmmword ptr [rsp + 0x20], xmm6\n0x1402dda7a mov rdi, rcx\n0x1402dda7d movaps xmm6, xmm2\n0x1402dda80 jge 0x1402dda9b\n0x1402dda82 mov rcx, qword ptr [rip + 0x14d9657]\n0x1402dda89 lea rdx, [rip + 0xeab680]\n0x1402dda90 mov r8d, 1\n0x1402dda96 call 0x14026f0b0\n0x1402dda9b mov rbx, qword ptr [rdi + 0x60]\n0x1402dda9f test rbx, rbx\n0x1402ddaa2 je 0x1402ddaf2\n0x1402ddaa4 lea rcx, [rip + 0x1487fc5]\n0x1402ddaab call 0x1410e2406\n0x1402ddab0 mov r9, qword ptr [rbx]\n0x1402ddab3 mov rcx, rbx\n0x1402ddab6 mov edx, eax\n0x1402ddab8 call qword ptr [r9]\n0x1402ddabb test al, al\n0x1402ddabd je 0x1402ddaf2\n0x1402ddabf cmp esi, 8\n0x1402ddac2 jb 0x1402ddadd\n0x1402ddac4 mov rcx, qword ptr [rip + 0x14d9615]\n0x1402ddacb lea rdx, [rip + 0xe9565e]\n0x1402ddad2 mov r8d, 1\n0x1402ddad8 call 0x14026f0b0\n0x1402ddadd mov rax, qword ptr [rbx]\n0x1402ddae0 movaps xmm3, xmm6\n0x1402ddae3 mov r8d, esi\n0x1402ddae6 mov rdx, rdi\n0x1402ddae9 mov rcx, rbx\n0x1402ddaec call qword ptr [rax + 0xc8]\n0x1402ddaf2 mov rbx, qword ptr [rsp + 0x40]\n0x1402ddaf7 mov rsi, qword ptr [rsp + 0x48]\n0x1402ddafc movaps xmm6, xmmword ptr [rsp + 0x20]\n0x1402ddb01 add rsp, 0x30\n0x1402ddb05 pop rdi\n0x1402ddb06 ret "
+        }
+      },
+      {
+        "name": "SetAnimSlot",
+        "handler": "0x1402ddb80",
+        "registrationCall": "0x1402c7e6d",
+        "registrationHelper": "0x140272650",
+        "decode": {
+          "entry": "0x1402ddb80",
+          "endExclusive": "0x1402ddcef",
+          "bytesSha256": "43ac7cd86601dda8a61a46b4d7e0afc034fb2ef354d78e4fbea0b8a37eee8f56",
+          "scope": "pdata unwind range, not full CFG proof",
+          "decodedToEnd": true,
+          "assembly": "0x1402ddb80 mov qword ptr [rsp + 8], rbx\n0x1402ddb85 mov qword ptr [rsp + 0x10], rbp\n0x1402ddb8a mov qword ptr [rsp + 0x18], rsi\n0x1402ddb8f push rdi\n0x1402ddb90 sub rsp, 0x80\n0x1402ddb97 cmp dword ptr [rcx + 0x38], 0\n0x1402ddb9b mov rbp, r8\n0x1402ddb9e movaps xmmword ptr [rsp + 0x70], xmm6\n0x1402ddba3 mov esi, edx\n0x1402ddba5 movaps xmm6, xmm3\n0x1402ddba8 mov rdi, rcx\n0x1402ddbab jge 0x1402ddbc6\n0x1402ddbad mov rcx, qword ptr [rip + 0x14d952c]\n0x1402ddbb4 lea rdx, [rip + 0xeab555]\n0x1402ddbbb mov r8d, 1\n0x1402ddbc1 call 0x14026f0b0\n0x1402ddbc6 mov rbx, qword ptr [rdi + 0x60]\n0x1402ddbca test rbx, rbx\n0x1402ddbcd je 0x1402ddcd1\n0x1402ddbd3 lea rcx, [rip + 0x1487e96]\n0x1402ddbda call 0x1410e2406\n0x1402ddbdf mov r9, qword ptr [rbx]\n0x1402ddbe2 mov rcx, rbx\n0x1402ddbe5 mov edx, eax\n0x1402ddbe7 call qword ptr [r9]\n0x1402ddbea test al, al\n0x1402ddbec je 0x1402ddcd1\n0x1402ddbf2 cmp esi, 8\n0x1402ddbf5 jb 0x1402ddc15\n0x1402ddbf7 mov rcx, qword ptr [rip + 0x14d94e2]\n0x1402ddbfe lea rdx, [rip + 0xe9552b]\n0x1402ddc05 mov r8d, 1\n0x1402ddc0b call 0x14026f0b0\n0x1402ddc10 jmp 0x1402ddcd1\n0x1402ddc15 mov r8, qword ptr [rsp + 0xb8]\n0x1402ddc1d xor ecx, ecx\n0x1402ddc1f mov qword ptr [rsp + 0x50], rcx\n0x1402ddc24 mov qword ptr [rsp + 0x58], rcx\n0x1402ddc29 mov qword ptr [rsp + 0x60], rcx\n0x1402ddc2e mov qword ptr [rsp + 0x68], rcx\n0x1402ddc33 test r8, r8\n0x1402ddc36 je 0x1402ddc78\n0x1402ddc38 mov eax, dword ptr [r8 + 0x18]\n0x1402ddc3c mov dword ptr [rsp + 0x50], eax\n0x1402ddc40 mov eax, dword ptr [r8 + 0x1c]\n0x1402ddc44 mov dword ptr [rsp + 0x54], eax\n0x1402ddc48 mov eax, dword ptr [r8 + 0x20]\n0x1402ddc4c mov dword ptr [rsp + 0x58], eax\n0x1402ddc50 mov eax, dword ptr [r8 + 0x24]\n0x1402ddc54 mov dword ptr [rsp + 0x5c], eax\n0x1402ddc58 mov eax, dword ptr [r8 + 0x28]\n0x1402ddc5c mov dword ptr [rsp + 0x60], eax\n0x1402ddc60 mov eax, dword ptr [r8 + 0x2c]\n0x1402ddc64 mov dword ptr [rsp + 0x64], eax\n0x1402ddc68 mov eax, dword ptr [r8 + 0x30]\n0x1402ddc6c mov dword ptr [rsp + 0x68], eax\n0x1402ddc70 mov eax, dword ptr [r8 + 0x34]\n0x1402ddc74 mov dword ptr [rsp + 0x6c], eax\n0x1402ddc78 movd xmm0, dword ptr [rsp + 0xc0]\n0x1402ddc81 lea rdx, [rsp + 0x50]\n0x1402ddc86 mov eax, dword ptr [rsp + 0xc8]\n0x1402ddc8d test r8, r8\n0x1402ddc90 mov dword ptr [rsp + 0x48], eax\n0x1402ddc94 mov r9, rbp\n0x1402ddc97 cmove rdx, rcx\n0x1402ddc9b mov r8d, esi\n0x1402ddc9e cvtdq2ps xmm0, xmm0\n0x1402ddca1 movss dword ptr [rsp + 0x40], xmm0\n0x1402ddca7 movss xmm0, dword ptr [rsp + 0xb0]\n0x1402ddcb0 mov qword ptr [rsp + 0x38], rdx\n0x1402ddcb5 mov rdx, rdi\n0x1402ddcb8 movss dword ptr [rsp + 0x30], xmm0\n0x1402ddcbe movss dword ptr [rsp + 0x28], xmm6\n0x1402ddcc4 mov qword ptr [rsp + 0x20], rcx\n0x1402ddcc9 mov rcx, rbx\n0x1402ddccc call 0x1402e8e70\n0x1402ddcd1 movaps xmm6, xmmword ptr [rsp + 0x70]\n0x1402ddcd6 lea r11, [rsp + 0x80]\n0x1402ddcde mov rbx, qword ptr [r11 + 0x10]\n0x1402ddce2 mov rbp, qword ptr [r11 + 0x18]\n0x1402ddce6 mov rsi, qword ptr [r11 + 0x20]\n0x1402ddcea mov rsp, r11\n0x1402ddced pop rdi\n0x1402ddcee ret "
+        }
+      }
+    ],
+    "scope": "Explicit global registration ABI rdx=name/r8=handler, distinct from creature registration; linear decode only."
+  },
+  "declarations": [
+    {
+      "member": "1_Core\\proto\\EnVisual.c",
+      "memberSha256": "c5b7c8be254fdc682ca67b861d51998be79f9fe7ba3a3e9aa4a16a0994ad1ec2",
+      "line": 44,
+      "text": "proto native void\tSetAnimFrame(notnull IEntity ent, int slot, float frame);"
+    },
+    {
+      "member": "1_Core\\proto\\EnVisual.c",
+      "memberSha256": "c5b7c8be254fdc682ca67b861d51998be79f9fe7ba3a3e9aa4a16a0994ad1ec2",
+      "line": 81,
+      "text": "proto native void\tSetAnimSlot(notnull IEntity ent, int slot, vobject anim, float blendin, float blendout, BoneMask mask, int fps, AnimFlags flags);"
+    },
+    {
+      "member": "3_Game\\Anim\\AnimCommand.c",
+      "memberSha256": "98b5e7aa44f632d66dc954940154c523d08decc24a5ef7fcc6fa14568a85e70c",
+      "line": 28,
+      "text": "proto native void PreAnim_SetFloat(int pVar, float pFlt);"
+    },
+    {
+      "member": "3_Game\\human.c",
+      "memberSha256": "3e334646d91a5975525884d3119d0580e59dad107af053481019fab2b281fc4d",
+      "line": 1292,
+      "text": "proto native \tvoid\tPreAnim_SetFloat(int pVar, float pFlt);"
+    },
+    {
+      "member": "4_World\\Entities\\DayZPlayerUtils.c",
+      "memberSha256": "4af59762186fd3dae2f8610e16277c0b936eeeb118504144ef6c5340e19355dc",
+      "line": 42,
+      "text": "static proto native bool\t\tDebugOverrideAnimationSpeed(string pAnimName, float pSpeed);"
+    }
+  ]
+}

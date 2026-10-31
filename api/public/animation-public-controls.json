@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T12:56:24.748078+09:00",
+  "sourceRunId": "animation-public-controls-20261031-125131",
+  "buildId": "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
+  "verificationStatus": {
+    "diagnostic": "bounded_public_controls_static_eligibility_complete",
+    "newRuntime": false,
+    "reaDeepDossier": false,
+    "functional": "not_rerun",
+    "visibleSmoothness": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-public-controls-20261031-125131",
+    "buildId": "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
+    "scriptsPboSha256": "ff0ad7ee5297c75da74364569a830bc0223315c0131579a0c11a7875d64cb2e2",
+    "scope": "Bounded installedAPI/registration/helper eligibility, not runtime effectiveness or exhaustive public API absence.",
+    "newRuntime": false,
+    "newPbo": false,
+    "declarationsScanned": 104,
+    "scriptMembersScanned": 3056,
+    "nonUtf8MemberFallback": [
+      "3_Game\\Global\\World.c"
+    ],
+    "debugSpeed": {
+      "registeredHandler": "0x140aeba50",
+      "helper": "0x14017a950",
+      "helperBytes": "c20000",
+      "helperLength": 3,
+      "helperIsReturnOnly": true,
+      "resourceLookupCanReturnTrueWithoutSpeedChange": true,
+      "deployableClockFix": false
+    },
+    "globalFrameSlot": {
+      "registered": true,
+      "receiverOffset": "0x60",
+      "SetAnimFrameDispatch": "vtable+0xc8",
+      "SetAnimSlotHelper": "0x1402e8e70",
+      "priorReceiverEvidence": {
+        "runtimeRunId": "runtime-20261031-093649",
+        "logicalAgents": 1,
+        "renderParts": 8,
+        "selectedReceiverRecords": 1840,
+        "stableNullComponentRecords": 1839,
+        "readableTargetChains": 0
+      },
+      "newRuntimeEffectivenessTested": false,
+      "boundedConclusion": "Same component guard as the previous inaccessible generic visual path on selectedAnimal. Not global absence or proof for every entity type."
+    },
+    "preAnimFloat": {
+      "registeredHandlers": [
+        "0x140ae8b60",
+        "0x140b66650"
+      ],
+      "scope": "Public graph variable write, not proof of a clock/residual setter. Graph consumer and phase/evaluation effects remain unverified."
+    },
+    "rea": {
+      "rawFragmentAccepted": false,
+      "reason": "Windows Ghidra P0 raw target admission excludes x86_64; no new fullEXE import attempted because previous wholeanalysis timed out.",
+      "deepDossierCompleted": false,
+      "fallback": "Exact immutable bytes with PEhash/offset and bounded Capstone decode; not decompiled source or full CFG."
+    },
+    "supportedClockControlEstablished": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "Line regex search does not cover all APIs, comments or multiline declarations as a semantic parser.",
+      "Native static branches do not establish livecalls or finalGPU rendering.",
+      "Existing stableNull receiver observations are one priorB8FB idle diagnostic, not newB93D runtime evidence.",
+      "No rate multiplier, duration misuse, forcedLOD or newinterpolation deployed."
+    ],
+    "next": "Do not run debugSpeed as an optimization candidate or repeat generic+60 null path. Graph variable consumers remain a bounded open path, requiring actual graph binding and effect evidence before control changes. Separate64cost attribution remains pending."
+  },
+  "blockers": [
+    "Line regex search does not cover all APIs, comments or multiline declarations as a semantic parser.",
+    "Native static branches do not establish livecalls or finalGPU rendering.",
+    "Existing stableNull receiver observations are one priorB8FB idle diagnostic, not newB93D runtime evidence.",
+    "No rate multiplier, duration misuse, forcedLOD or newinterpolation deployed.",
+    "Supported clock control remains unestablished; graphconsumer verification still required.",
+    "REAWindowsprovider rejected rawx86_64fragment; no deepdossier claimed."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-public-controls-20261031.md",
+      "sha256": "5abb31c5e77cd64d449946420f64a651883f17c5560b2c0a70156ad7cf989cd5"
+    },
+    {
+      "path": "evidence/animation-public-controls-20261031.txt",
+      "sha256": "5753bfdee9be60b5ce4c223eb81dc8559a535430adb43f899e835c94fde29146"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
