@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T19:10:55.757909+09:00",
+  "sourceRunId": "presentation-etw-64-20261031-1904",
+  "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+  "verificationStatus": {
+    "diagnostic": "prepared_etw64_waiting_user_uac",
+    "newRuntime": false,
+    "reaDeepDossier": false,
+    "functional": "not_rerun",
+    "visibleSmoothness": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "presentation-etw-64-20261031-1904",
+    "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+    "preparedAt": "2026-10-31T19:09:56.929586+09:00",
+    "plannedConditions": {
+      "count": 64,
+      "scenario": "activeReference",
+      "seconds": 300,
+      "captureSeconds": 30,
+      "stage": "LOW_HOLD",
+      "captureStartMissionAgeSeconds": [
+        8,
+        10
+      ],
+      "latestStartGuardSeconds": 12,
+      "supportMode": "fast",
+      "driveAttribution": false,
+      "frameSync": "on",
+      "fixedCostTarget": false,
+      "highPlayerAnchored": false,
+      "video": false,
+      "nativeHooks": false
+    },
+    "newRuntime": false,
+    "newCapture": false,
+    "newVideo": false,
+    "newPbo": false,
+    "adminReadyAtInspection": false,
+    "permissionStatus": "user_uac_pending",
+    "shortcutName": "DayZ NPC 64개체 표시 계측 (관리자 승인).lnk",
+    "syntaxChecksPassed": 3,
+    "pythonSyntaxPassed": true,
+    "parserCalibration": {
+      "sourceRuntimeRunId": "runtime-20261031-174120",
+      "sourceCsvSha256": "7acccfd901139784a398c9387fd21701665afa7d16f1a5fb0021f88bd6a04c61",
+      "parserSha256": "971273c2e2fb400d88353a41639aa300dddc4490b3523401382b05e37db4b526",
+      "actualPriorCsvRows": 1495,
+      "quantileChecks": 36,
+      "allMatchedPriorAnalysis": true,
+      "newCapture": false,
+      "not64Result": true
+    },
+    "priorFunctionalGates": {
+      "eightAdmitted": true,
+      "sixtyFourScopedFunctionalPass": true,
+      "launcherHashMatched": true
+    },
+    "metrics": null,
+    "limits": [
+      "Adminready file alone is insufficient; verify exactlive helper process before client launch.",
+      "Capture phase is bracketed by scripttrace snapshots, not exactperframe phase/QPC matching.",
+      "Natural target/contacts can differ between runs; validateactualstimulus and all64outcomes separately.",
+      "1agentbaseline uses anotherbuild/AIconditions; do not attribute all difference to agentcount.",
+      "PresentMon MsAnimationError is not NPC animationerror; nativeCPU/GPUduration fields are not scripting self-time.",
+      "No64 ETWmeasurement or newfunctional result exists; preparation and priorCSVparity are not performance success.",
+      "Administrator approval must be performed by the user; an adminready file alone is not proof of a live helper."
+    ],
+    "next": "After userUAC, verify exactlive helper; start existing64workload and request one30sec capture in LOW_HOLD8..10s. Finish full300sec functional run before reporting outcomes. No forced target anchoring or repeated capture for favorable data.",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "blockers": [
+    "Adminready file alone is insufficient; verify exactlive helper process before client launch.",
+    "Capture phase is bracketed by scripttrace snapshots, not exactperframe phase/QPC matching.",
+    "Natural target/contacts can differ between runs; validateactualstimulus and all64outcomes separately.",
+    "1agentbaseline uses anotherbuild/AIconditions; do not attribute all difference to agentcount.",
+    "PresentMon MsAnimationError is not NPC animationerror; nativeCPU/GPUduration fields are not scripting self-time.",
+    "No64 ETWmeasurement or newfunctional result exists; preparation and priorCSVparity are not performance success.",
+    "Administrator approval must be performed by the user; an adminready file alone is not proof of a live helper.",
+    "Supported clock control remains unestablished; graphconsumer verification still required.",
+    "REA Rizin Windows native command unavailable; no deepdossier claimed."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/presentation-etw-64-readiness-20261031.md",
+      "sha256": "e2f5f3608d5a294e66e39945b91d8622c78d21b605f0801c19c9c87d7ff077c6"
+    },
+    {
+      "path": "evidence/presentation-etw-64-readiness-20261031.txt",
+      "sha256": "f61d9895f720dfd323a5a607e1022034329df37a3bc8a4d044f53e4fb5fd3b27"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

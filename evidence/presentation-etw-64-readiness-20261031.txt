@@ -1,0 +1,106 @@
+Selection: preparation results and actualCSV parser, not a64measurement. Private shortcutarguments/PID/rawCSV and adminhelper paths excluded.
+
+{
+  "results": {
+    "sourceRunId": "presentation-etw-64-20261031-1904",
+    "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+    "preparedAt": "2026-10-31T19:09:56.929586+09:00",
+    "plannedConditions": {
+      "count": 64,
+      "scenario": "activeReference",
+      "seconds": 300,
+      "captureSeconds": 30,
+      "stage": "LOW_HOLD",
+      "captureStartMissionAgeSeconds": [
+        8,
+        10
+      ],
+      "latestStartGuardSeconds": 12,
+      "supportMode": "fast",
+      "driveAttribution": false,
+      "frameSync": "on",
+      "fixedCostTarget": false,
+      "highPlayerAnchored": false,
+      "video": false,
+      "nativeHooks": false
+    },
+    "newRuntime": false,
+    "newCapture": false,
+    "newVideo": false,
+    "newPbo": false,
+    "adminReadyAtInspection": false,
+    "permissionStatus": "user_uac_pending",
+    "shortcutName": "DayZ NPC 64개체 표시 계측 (관리자 승인).lnk",
+    "syntaxChecksPassed": 3,
+    "pythonSyntaxPassed": true,
+    "parserCalibration": {
+      "sourceRuntimeRunId": "runtime-20261031-174120",
+      "sourceCsvSha256": "7acccfd901139784a398c9387fd21701665afa7d16f1a5fb0021f88bd6a04c61",
+      "parserSha256": "971273c2e2fb400d88353a41639aa300dddc4490b3523401382b05e37db4b526",
+      "actualPriorCsvRows": 1495,
+      "quantileChecks": 36,
+      "allMatchedPriorAnalysis": true,
+      "newCapture": false,
+      "not64Result": true
+    },
+    "priorFunctionalGates": {
+      "eightAdmitted": true,
+      "sixtyFourScopedFunctionalPass": true,
+      "launcherHashMatched": true
+    },
+    "metrics": null,
+    "limits": [
+      "Adminready file alone is insufficient; verify exactlive helper process before client launch.",
+      "Capture phase is bracketed by scripttrace snapshots, not exactperframe phase/QPC matching.",
+      "Natural target/contacts can differ between runs; validateactualstimulus and all64outcomes separately.",
+      "1agentbaseline uses anotherbuild/AIconditions; do not attribute all difference to agentcount.",
+      "PresentMon MsAnimationError is not NPC animationerror; nativeCPU/GPUduration fields are not scripting self-time.",
+      "No64 ETWmeasurement or newfunctional result exists; preparation and priorCSVparity are not performance success.",
+      "Administrator approval must be performed by the user; an adminready file alone is not proof of a live helper."
+    ],
+    "next": "After userUAC, verify exactlive helper; start existing64workload and request one30sec capture in LOW_HOLD8..10s. Finish full300sec functional run before reporting outcomes. No forced target anchoring or repeated capture for favorable data.",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  }
+}
+
+Exact parser source (PID is function argument; no live process IDs):
+"""Actual PresentMon2.6 CSV contract; no pose/smoothness claim."""
+import csv,math,collections
+def number(v):
+ if v in [None,'','NA','N/A']:return None
+ x=float(v);assert math.isfinite(x);return x
+def distribution(v):
+ if not v:return None
+ a=sorted(v)
+ def q(f):
+  x=(len(a)-1)*f;i=int(x);return a[i]+(a[min(i+1,len(a)-1)]-a[i])*(x-i)
+ return dict(samples=len(v),p50=q(.5),p95=q(.95),p99=q(.99),minimum=a[0],maximum=a[-1])
+def parse(path,frequency,expectedPid):
+ with path.open(encoding='utf-8-sig',newline='') as f:r=csv.DictReader(f);rows=list(r);columns=r.fieldnames
+ required={'Application','ProcessID','SwapChainAddress','PresentRuntime','TimeInQPC','CPUStartQPC','MsBetweenPresents','MsBetweenDisplayChange','MsUntilDisplayed'}
+ assert required.issubset(columns) and rows
+ assert all(int(r['ProcessID'])==expectedPid and r['Application'].lower()=='dayz_x64.exe' for r in rows)
+ groups=collections.defaultdict(list)
+ for r in rows:groups[(r['SwapChainAddress'],r['PresentRuntime'])].append(r)
+ metrics=['MsBetweenPresents','MsBetweenDisplayChange','MsInPresentAPI','MsRenderPresentLatency','MsUntilDisplayed','MsBetweenAppStart','MsCPUBusy','MsCPUWait','MsGPULatency','MsGPUTime','MsGPUBusy','MsGPUWait','MsBetweenSimulationStart','MsFlipDelay']
+ out=[]
+ for i,(key,group) in enumerate(sorted(groups.items(),key=lambda x:len(x[1]),reverse=True)):
+  present=[int(r['TimeInQPC']) for r in group];cpu=[int(r['CPUStartQPC']) for r in group];assert len(present)>1 and all(b>a for a,b in zip(present,present[1:]))
+  pe=[abs((b-a)*1000/frequency-number(group[j]['MsBetweenPresents'])) for j,(a,b) in enumerate(zip(present,present[1:]),1)]
+  ce=[abs((b-a)*1000/frequency-number(group[j]['MsBetweenAppStart'])) for j,(a,b) in enumerate(zip(cpu,cpu[1:])) if number(group[j]['MsBetweenAppStart']) is not None]
+  display=[];de=[]
+  for r,t in zip(group,present):
+   delay=number(r['MsUntilDisplayed'])
+   if delay is None:continue
+   stamp=t+delay*frequency/1000
+   if display and number(r['MsBetweenDisplayChange']) is not None:de.append(abs((stamp-display[-1])*1000/frequency-number(r['MsBetweenDisplayChange'])))
+   display.append(stamp)
+  assert max(pe)<.001 and (not ce or max(ce)<.001) and (not de or max(de)<.001)
+  values={};missing={}
+  for name in metrics:
+   if name not in columns:continue
+   vs=[number(r[name]) for r in group];values[name]=distribution([x for x in vs if x is not None]);missing[name]=sum(x is None for x in vs)
+  out.append(dict(alias='chain-'+str(i),runtime=key[1],rows=len(group),presentSpanSeconds=(present[-1]-present[0])/frequency,presentModes=dict(collections.Counter(r['PresentMode'] for r in group)),syncIntervals=dict(collections.Counter(r['SyncInterval'] for r in group)),metricsMs=values,missingValues=missing,missingDisplayTimingRows=sum(number(r['MsUntilDisplayed']) is None for r in group),presentIntervalIdentityMaxErrorMs=max(pe),cpuIntervalIdentityMaxErrorMs=max(ce) if ce else None,displayIntervalIdentityMaxErrorMs=max(de) if de else None))
+ return dict(csvRows=len(rows),columns=columns,processFilterVerified=True,swapChainsMerged=False,chains=out,scope='App/CPU/GPU/presentation telemetry only. MsAnimationError deliberately excluded from NPC animation diagnosis. No self-time, GC, bone upload, optical smoothness or zero ETWloss claim.')

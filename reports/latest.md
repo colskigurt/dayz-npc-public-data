@@ -1,3 +1,5 @@
+> 최신64계측준비: 기존서명빌드/기능gate와동일시험용ETWhelper를준비했다. 이전실제CSV1495행의36분위수정합. 사용자UAC대기이며새64실행/측정/성능수용없음. [준비보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/presentation-etw-64-readiness-20261031.md). 이전기록보존.
+
 > 최신 기존영상 대조: A/B/B/A 머리궤적의강한반복간격3.167/2.083/2.083/3.150초. 내부평균시간차이가화면에도나타남. 부드러움개선·숫자쓰기배포해결·64성능수용은아님. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-optical-carry-20261031.md). 이전기록보존.
 
 > 최신 영상 진단: 이미지독립머리추적3종을기존영상에서대조했다. 초기2종은어깨/손가락오검출로지연평가에서기각. cap433쌍의화면/CPU이동상관은약0.982, 세임계값모두lag0최소였으나GPU지연0이나끊김해결을의미하지않음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-optical-head-20261031.md). 이전기록보존.
