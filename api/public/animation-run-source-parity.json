@@ -1,0 +1,196 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T07:00:02.537484+09:00",
+  "sourceRunId": "animation-source-run-20261101-0652",
+  "buildId": "NO_NEW_BUILD_SOURCE_AUDIT",
+  "verificationStatus": {
+    "diagnostic": "scoped_source_key_and_explicit_txa_parity_pass",
+    "functional": "not_rerun",
+    "visibleSmoothness": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-source-run-20261101-0652",
+    "buildId": "NO_NEW_BUILD_SOURCE_AUDIT",
+    "clip": "swm_h_run_09",
+    "newRuntime": false,
+    "newPbo": false,
+    "verificationStatus": "scoped_source_key_and_explicit_txa_parity_pass",
+    "timing": {
+      "exportedSourceSequenceLengthSeconds": 2.1,
+      "sourceRateScale": 1.0,
+      "sourceFrames": 64,
+      "psaRate": 30.476192474365234,
+      "psaNominalFramesOverFpsSeconds": 2.0999998623132794,
+      "psaEndpointSeconds": 2.0671873644646346,
+      "txaFrames": 126,
+      "txaRate": 60,
+      "txaNominalFramesOverFpsSeconds": 2.1,
+      "txaEndpointSeconds": 2.0833333333333335,
+      "definitionLimit": "Nominal frame-count/rate and last-key endpoint are different. Native loop duration semantics remain to be measured, not assumed from either."
+    },
+    "psaKeyParity": {
+      "sourceRunId": "animation-source-run-20261101-0652",
+      "comparison": "raw PSA -> archived importer formula -> saved active fcurve keys",
+      "components": 36736,
+      "activeBones": 82,
+      "componentError": {
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0.0
+      },
+      "shiftedOneSourceFrameNegativeControl": {
+        "p50": 0.0,
+        "p95": 0.04558440297842026,
+        "p99": 1.9454593658447266,
+        "max": 1012.5885636806488
+      },
+      "matchedWithin1e6": true,
+      "unchangedSourceBlend": true,
+      "limits": [
+        "Reuses archived importer coordinate formula; validates stored implementation parity, not independent mathematical correctness of that formula.",
+        "Only active keyed channels; omitted/default tracks and final skinned geometry not certified.",
+        "No comparison to original game pose or Workbench-decoded native keys."
+      ]
+    },
+    "sourceTxaParity": {
+      "sourceRunId": "animation-source-run-20261101-0652",
+      "stage": "explicit_source_rig_txa_sample_parity",
+      "frames": 126,
+      "bones": 248,
+      "counts": {
+        "translation": 31243,
+        "rotation": 31248,
+        "heldTranslation": 23181,
+        "heldRotation": 23181
+      },
+      "translationErrorMeters": {
+        "p50": 3.399623393837895e-07,
+        "p95": 1.1924759858578308e-06,
+        "p99": 1.7286868755864278e-06,
+        "max": 3.267918417742495e-06
+      },
+      "rotationAngleRadians": {
+        "p50": 0.0,
+        "p95": 0.00030671985575324686,
+        "p99": 0.0004824092278910093,
+        "max": 0.0008831920287449828
+      },
+      "signInvariantQuaternionComponentError": {
+        "p50": 2.942979335784912e-07,
+        "p95": 1.430511474609375e-06,
+        "p99": 1.958636566996554e-06,
+        "max": 0.0001000724732875824
+      },
+      "translationToleranceMeters": 5e-06,
+      "rotationComponentTolerance": 0.0002,
+      "explicitChannelParityPassed": true,
+      "overToleranceCount": 0,
+      "omittedTranslationSamplesNotCertified": 5,
+      "sourceBlendUnchanged": true,
+      "limits": [
+        "FB reference-axis matrix formula independently coded; same intended exporter convention, not independent game reference.",
+        "Only explicit TXA properties and their declared hold ranges; omitted-property native evaluation not certified.",
+        "Float32 quaternion dot angle has a numerical floor; component error is the gate.",
+        "Does not certify compiled ANM, runtime subset/root factoring or original game extraction."
+      ]
+    },
+    "rootFactoredTxaParity": {
+      "sourceRunId": "animation-source-run-20261101-0652",
+      "stage": "explicit_root_factored_txa_sample_parity",
+      "frames": 126,
+      "bones": 249,
+      "counts": {
+        "translation": 31243,
+        "rotation": 31374,
+        "heldTranslation": 23901,
+        "heldRotation": 24027
+      },
+      "translationErrorMeters": {
+        "p50": 1.90473113001754e-07,
+        "p95": 6.765219961484542e-07,
+        "p99": 9.022552654603623e-07,
+        "max": 1.4417836030225616e-06
+      },
+      "rotationAngleRadians": {
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0003732766962771328,
+        "max": 0.0009851010794243692
+      },
+      "signInvariantQuaternionComponentError": {
+        "p50": 2.2351741790771484e-08,
+        "p95": 2.6898938358499436e-05,
+        "p99": 4.389975219964981e-05,
+        "max": 9.901076555252075e-05
+      },
+      "translationToleranceMeters": 5e-06,
+      "rotationComponentTolerance": 0.0002,
+      "explicitChannelParityPassed": true,
+      "overToleranceCount": 0,
+      "omittedTranslationSamplesNotCertified": 131,
+      "sourceBlendUnchanged": true,
+      "limits": [
+        "FB reference-axis matrix formula independently coded; same intended exporter convention, not independent game reference.",
+        "Only explicit TXA properties and their declared hold ranges; omitted-property native evaluation not certified.",
+        "Float32 quaternion dot angle has a numerical floor; component error is the gate.",
+        "Root factoring sampled in memory; does not certify compiled ANM, runtime subsets or original game extraction."
+      ]
+    },
+    "savedActionCurvesExact": true,
+    "savedActionKeys": 36736,
+    "omittedRawTracks": {
+      "withoutRemoveAll": 141,
+      "changingFaceTracks": 139,
+      "ancestorsOfOtherRawBones": 0,
+      "scope": [
+        "Ancestry test covers omitted tracks without remove-all flags, not every removed master bone.",
+        "Not a skinned vertex or original-game reference comparison.",
+        "Face track exclusion does not establish the cause of whole-body playback slowdown."
+      ]
+    },
+    "sourceAssetIntegrity": {
+      "restoredPsaHashMatchesSteam": true,
+      "allFourTxaHashesMatch": true,
+      "compiledOriginalRunAnmHashMatches": true
+    },
+    "limits": [
+      "Uses archived importer formula: stored-key parity does not independently prove formula correctness.",
+      "Initial PAK decoding/extraction not compared with original running game or independent decoder.",
+      "Face tracks omitted by248-bone model; full original skeleton/face/cloth fidelity not claimed.",
+      "Five source and131 root-factored translation samples omit explicit properties; native defaults not certified.",
+      "Compiled ANM hash is integrity, not decoded animation equivalence. Runtime subsets, clock and actual visible smoothness remain separate.",
+      "No new8/64 test, ETW, frame-time or performance improvement measured."
+    ],
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "next": "Follow root-factored TXA into actual runtime subset/ANM provenance and retained native pose observations. Separately diagnose ETW helper lifecycle before another capture."
+  },
+  "blockers": [
+    "Uses archived importer formula: stored-key parity does not independently prove formula correctness.",
+    "Initial PAK decoding/extraction not compared with original running game or independent decoder.",
+    "Face tracks omitted by248-bone model; full original skeleton/face/cloth fidelity not claimed.",
+    "Five source and131 root-factored translation samples omit explicit properties; native defaults not certified.",
+    "Compiled ANM hash is integrity, not decoded animation equivalence. Runtime subsets, clock and actual visible smoothness remain separate.",
+    "No new8/64 test, ETW, frame-time or performance improvement measured.",
+    "Runtime subset/compiled ANM pose equivalence remains unverified."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-run-source-parity-20261101.md",
+      "sha256": "e005adf69f8516aba57c569e9b0f622b0c8efcd36c514cdc8b4e85871e6d30c7"
+    },
+    {
+      "path": "evidence/animation-run-source-parity-20261101.txt",
+      "sha256": "c1deff77a1ebe2ec9c06ef7d3d078dc0a25d21ee8e1bcbe6b432f1c413c3122a"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

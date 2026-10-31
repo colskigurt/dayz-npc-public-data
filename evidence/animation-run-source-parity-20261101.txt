@@ -1,0 +1,238 @@
+Selection: representative run timing, raw-PSA active-key parity and explicit TXA channel summaries. No source assets, full raw logs or video.
+{
+  "sourceRunId": "animation-source-run-20261101-0652",
+  "buildId": "NO_NEW_BUILD_SOURCE_AUDIT",
+  "clip": "swm_h_run_09",
+  "newRuntime": false,
+  "newPbo": false,
+  "verificationStatus": "scoped_source_key_and_explicit_txa_parity_pass",
+  "timing": {
+    "exportedSourceSequenceLengthSeconds": 2.1,
+    "sourceRateScale": 1.0,
+    "sourceFrames": 64,
+    "psaRate": 30.476192474365234,
+    "psaNominalFramesOverFpsSeconds": 2.0999998623132794,
+    "psaEndpointSeconds": 2.0671873644646346,
+    "txaFrames": 126,
+    "txaRate": 60,
+    "txaNominalFramesOverFpsSeconds": 2.1,
+    "txaEndpointSeconds": 2.0833333333333335,
+    "definitionLimit": "Nominal frame-count/rate and last-key endpoint are different. Native loop duration semantics remain to be measured, not assumed from either."
+  },
+  "psaKeyParity": {
+    "sourceRunId": "animation-source-run-20261101-0652",
+    "comparison": "raw PSA -> archived importer formula -> saved active fcurve keys",
+    "components": 36736,
+    "activeBones": 82,
+    "componentError": {
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "max": 0.0
+    },
+    "shiftedOneSourceFrameNegativeControl": {
+      "p50": 0.0,
+      "p95": 0.04558440297842026,
+      "p99": 1.9454593658447266,
+      "max": 1012.5885636806488
+    },
+    "matchedWithin1e6": true,
+    "unchangedSourceBlend": true,
+    "limits": [
+      "Reuses archived importer coordinate formula; validates stored implementation parity, not independent mathematical correctness of that formula.",
+      "Only active keyed channels; omitted/default tracks and final skinned geometry not certified.",
+      "No comparison to original game pose or Workbench-decoded native keys."
+    ]
+  },
+  "sourceTxaParity": {
+    "sourceRunId": "animation-source-run-20261101-0652",
+    "stage": "explicit_source_rig_txa_sample_parity",
+    "frames": 126,
+    "bones": 248,
+    "counts": {
+      "translation": 31243,
+      "rotation": 31248,
+      "heldTranslation": 23181,
+      "heldRotation": 23181
+    },
+    "translationErrorMeters": {
+      "p50": 3.399623393837895e-07,
+      "p95": 1.1924759858578308e-06,
+      "p99": 1.7286868755864278e-06,
+      "max": 3.267918417742495e-06
+    },
+    "rotationAngleRadians": {
+      "p50": 0.0,
+      "p95": 0.00030671985575324686,
+      "p99": 0.0004824092278910093,
+      "max": 0.0008831920287449828
+    },
+    "signInvariantQuaternionComponentError": {
+      "p50": 2.942979335784912e-07,
+      "p95": 1.430511474609375e-06,
+      "p99": 1.958636566996554e-06,
+      "max": 0.0001000724732875824
+    },
+    "translationToleranceMeters": 5e-06,
+    "rotationComponentTolerance": 0.0002,
+    "explicitChannelParityPassed": true,
+    "overToleranceCount": 0,
+    "omittedTranslationSamplesNotCertified": 5,
+    "sourceBlendUnchanged": true,
+    "limits": [
+      "FB reference-axis matrix formula independently coded; same intended exporter convention, not independent game reference.",
+      "Only explicit TXA properties and their declared hold ranges; omitted-property native evaluation not certified.",
+      "Float32 quaternion dot angle has a numerical floor; component error is the gate.",
+      "Does not certify compiled ANM, runtime subset/root factoring or original game extraction."
+    ]
+  },
+  "rootFactoredTxaParity": {
+    "sourceRunId": "animation-source-run-20261101-0652",
+    "stage": "explicit_root_factored_txa_sample_parity",
+    "frames": 126,
+    "bones": 249,
+    "counts": {
+      "translation": 31243,
+      "rotation": 31374,
+      "heldTranslation": 23901,
+      "heldRotation": 24027
+    },
+    "translationErrorMeters": {
+      "p50": 1.90473113001754e-07,
+      "p95": 6.765219961484542e-07,
+      "p99": 9.022552654603623e-07,
+      "max": 1.4417836030225616e-06
+    },
+    "rotationAngleRadians": {
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0003732766962771328,
+      "max": 0.0009851010794243692
+    },
+    "signInvariantQuaternionComponentError": {
+      "p50": 2.2351741790771484e-08,
+      "p95": 2.6898938358499436e-05,
+      "p99": 4.389975219964981e-05,
+      "max": 9.901076555252075e-05
+    },
+    "translationToleranceMeters": 5e-06,
+    "rotationComponentTolerance": 0.0002,
+    "explicitChannelParityPassed": true,
+    "overToleranceCount": 0,
+    "omittedTranslationSamplesNotCertified": 131,
+    "sourceBlendUnchanged": true,
+    "limits": [
+      "FB reference-axis matrix formula independently coded; same intended exporter convention, not independent game reference.",
+      "Only explicit TXA properties and their declared hold ranges; omitted-property native evaluation not certified.",
+      "Float32 quaternion dot angle has a numerical floor; component error is the gate.",
+      "Root factoring sampled in memory; does not certify compiled ANM, runtime subsets or original game extraction."
+    ]
+  },
+  "savedActionCurvesExact": true,
+  "savedActionKeys": 36736,
+  "omittedRawTracks": {
+    "withoutRemoveAll": 141,
+    "changingFaceTracks": 139,
+    "ancestorsOfOtherRawBones": 0,
+    "scope": [
+      "Ancestry test covers omitted tracks without remove-all flags, not every removed master bone.",
+      "Not a skinned vertex or original-game reference comparison.",
+      "Face track exclusion does not establish the cause of whole-body playback slowdown."
+    ]
+  },
+  "sourceAssetIntegrity": {
+    "restoredPsaHashMatchesSteam": true,
+    "allFourTxaHashesMatch": true,
+    "compiledOriginalRunAnmHashMatches": true
+  },
+  "limits": [
+    "Uses archived importer formula: stored-key parity does not independently prove formula correctness.",
+    "Initial PAK decoding/extraction not compared with original running game or independent decoder.",
+    "Face tracks omitted by248-bone model; full original skeleton/face/cloth fidelity not claimed.",
+    "Five source and131 root-factored translation samples omit explicit properties; native defaults not certified.",
+    "Compiled ANM hash is integrity, not decoded animation equivalence. Runtime subsets, clock and actual visible smoothness remain separate.",
+    "No new8/64 test, ETW, frame-time or performance improvement measured."
+  ],
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "goalComplete": false,
+  "next": "Follow root-factored TXA into actual runtime subset/ANM provenance and retained native pose observations. Separately diagnose ETW helper lifecycle before another capture."
+}
+
+Exact read-only active-key verifier:
+"""Reconstruct archived importer's expected active keys from raw PSA, without importing/saving."""
+import ast,bpy,json,struct,math,hashlib
+import numpy as np
+from pathlib import Path
+from types import SimpleNamespace
+from mathutils import Vector,Quaternion
+H=Path(__file__).resolve().parent;R=H.parents[1];L=R/'research/track_b_dayz_2026-10-23';O=R/'research/track_b_original_2026-10-23';P=O/'exports/Animation/Horde/swm_h_run_09.psa';I=O/'tools/io_scene_psk_psa/io_scene_psk_psa/psa/importer.py'
+b=P.read_bytes();o=0;c={}
+while o<len(b):
+ n,_,s,k=struct.unpack_from('<20s3i',b,o);o+=32;c[n.split(b'\0')[0].decode()]=(s,k,b[o:o+s*k]);o+=s*k
+raw=np.frombuffer(c['ANIMKEYS'][2],dtype='<f4').reshape(64,659,8);bb=c['BONENAMES'][2];names=[bb[i*120:i*120+64].split(b'\0')[0].decode() for i in range(659)];mapping={n.casefold():i for i,n in enumerate(names)}
+node=next(x for x in ast.parse(I.read_text(encoding='utf-8')).body if isinstance(x,ast.FunctionDef) and x.name=='_calculate_fcurve_data')
+for a in node.args.args:a.annotation=None
+node.returns=None;env=dict(Vector=Vector,Quaternion=Quaternion);exec(compile(ast.fix_missing_locations(ast.Module(body=[node],type_ignores=[])),str(I),'exec'),env);calculate=env['_calculate_fcurve_data']
+bp=L/'DG_original_walk_run_climb.blend';before=hashlib.sha256(bp.read_bytes()).hexdigest();bpy.ops.wm.open_mainfile(filepath=str(bp));arm=next(x for x in bpy.data.objects if x.type=='ARMATURE');act=bpy.data.actions['swm_h_run_09'];curves={}
+for layer in act.layers:
+ for strip in layer.strips:
+  for bag in strip.channelbags:
+   for f in bag.fcurves:curves[(f.data_path,f.array_index)]=f
+errors=[];bybone=[];controls=[]
+for bone in arm.data.bones:
+ pb=arm.pose.bones[bone.name];paths=[pb.path_from_id('rotation_quaternion'),pb.path_from_id('location')];active=[(channel,j) for channel,path in enumerate(paths) for j in range(4 if channel==0 else 3) if (path,j) in curves]
+ if not active:continue
+ if bone.parent:
+  loc=bone.matrix_local.translation-bone.parent.matrix_local.translation;loc.rotate(bone.parent.matrix_local.to_quaternion().conjugated());rot=bone.matrix_local.to_quaternion();rot.rotate(bone.parent.matrix_local.to_quaternion().conjugated());rot.conjugate()
+ else:loc=bone.matrix_local.translation.copy();rot=bone.matrix_local.to_quaternion().conjugated()
+ item=SimpleNamespace(original_location=loc,original_rotation=rot,post_rotation=rot.conjugated(),parent=bone.parent)
+ index=mapping[bone.name.casefold()];expected=[]
+ for f in range(64):
+  k=raw[f,index];expected.append(calculate(item,[float(k[6]),*map(float,k[3:6]),*map(float,k[:3]),1.,1.,1.]))
+ local=[]
+ for channel,j in active:
+  curve=curves[(paths[channel],j)];component=j if channel==0 else j+4;assert len(curve.keyframe_points)==64
+  for f,key in enumerate(curve.keyframe_points):
+   assert key.co.x==f
+   e=abs(float(key.co.y)-expected[f][component]);local.append(e);errors.append(e)
+   controls.append(abs(float(key.co.y)-expected[(f+1)%64][component]))
+ bybone.append(dict(name=bone.name,psaIndex=index,channels=len(active),maximumComponentError=max(local)))
+assert len(errors)==36736 and hashlib.sha256(bp.read_bytes()).hexdigest()==before
+q=lambda x:{k:float(v) for k,v in zip(['p50','p95','p99','max'],np.percentile(x,[50,95,99,100]))}
+out=dict(sourceRunId=H.name,comparison='raw PSA -> archived importer formula -> saved active fcurve keys',components=len(errors),activeBones=len(bybone),componentError=q(errors),shiftedOneSourceFrameNegativeControl=q(controls),matchedWithin1e6=all(x<=1e-6 for x in errors),bones=bybone,unchangedSourceBlend=True,sourceHashes={P.name:hashlib.sha256(b).hexdigest(),'importer.py':hashlib.sha256(I.read_bytes()).hexdigest(),bp.name:before},limits=['Reuses archived importer coordinate formula; validates stored implementation parity, not independent mathematical correctness of that formula.','Only active keyed channels; omitted/default tracks and final skinned geometry not certified.','No comparison to original game pose or Workbench-decoded native keys.'])
+with (H/'psa-key-parity.json').open('x',encoding='utf-8') as f:json.dump(out,f,indent=2)
+print(json.dumps({k:v for k,v in out.items() if k not in ['bones','sourceHashes']},ensure_ascii=False))
+
+Exact explicit-channel verifier (single-frame reader workaround):
+"""Compare explicit TXA held-key channels with independently sampled saved FB transforms."""
+import bpy,sys,json,math,hashlib
+import numpy as np
+from pathlib import Path
+from mathutils import Matrix,Vector,Quaternion
+H=Path(__file__).resolve().parent;R=H.parents[1];L=R/'research/track_b_dayz_2026-10-23';PLUGIN=L/'native-tools/DayZAnimationPluginDemo/BlenderPlugin'
+sys.path.insert(0,str(PLUGIN));from DayzAnimationTools.Types.Txa import Txa
+tp=L/'native-inputs/complete_inputs/run.txa';tx=Txa.CreateFromFile(str(tp));anim=next(iter(tx.animations.values()));nodes={}
+def walk(d):
+ for name,node in d.items():nodes[name]=node;walk(node.children)
+walk(anim.rootBones)
+bp=L/'DG_traversal_idle.blend';before=hashlib.sha256(bp.read_bytes()).hexdigest();bpy.ops.wm.open_mainfile(filepath=str(bp));arm=next(o for o in bpy.data.objects if o.type=='ARMATURE');a=bpy.data.actions['swm_h_run_09'];arm.animation_data.action=a;arm.animation_data.action_slot=a.slots[0]
+fix=Matrix(((0,1,0,0),(-1,0,0,0),(0,0,1,0),(0,0,0,1))).inverted();fps=30.476192474365234;position=[];rotation=[];component=[];worst=[];missing=0;counts=dict(translation=0,rotation=0,heldTranslation=0,heldRotation=0)
+for frame in range(126):
+ sf=min(63.,frame*fps/60);bpy.context.scene.frame_set(math.floor(sf),subframe=sf-math.floor(sf));bpy.context.view_layer.update()
+ for bone in arm.pose.bones:
+  node=nodes[bone.name];keys=[k for k in node.keyframes if k.frameStart<=frame<=max(k.frameStart,k.frameEnd)];assert len(keys)==1,(bone.name,frame,len(keys));k=keys[0]
+  m=bone.matrix@fix
+  if bone.parent:m=(bone.parent.matrix@fix).inverted()@m
+  if k.HasTranslation():
+   expected=m.translation*.01;actual=Vector(k.translation.toTuple());e=(actual-expected).length;position.append(e);counts['translation']+=1;counts['heldTranslation']+=max(k.frameStart,k.frameEnd)>k.frameStart
+   if e>5e-6:worst.append(dict(frame=frame,bone=bone.name,channel='translation',errorMeters=e))
+  else:missing+=1
+  if k.HasRotation():
+   expected=m.to_quaternion().normalized();actual=Quaternion((k.rotation.w,k.rotation.x,k.rotation.y,k.rotation.z)).normalized();v=np.array(expected,dtype=float);w=np.array(actual,dtype=float);ce=min(float(np.max(np.abs(v-w))),float(np.max(np.abs(v+w))));dp=abs(float(np.dot(v,w)));angle=2*math.acos(min(1.,dp));rotation.append(angle);component.append(ce);counts['rotation']+=1;counts['heldRotation']+=max(k.frameStart,k.frameEnd)>k.frameStart
+   if ce>2e-4:worst.append(dict(frame=frame,bone=bone.name,channel='rotation',signInvariantComponentError=ce))
+q=lambda x:{n:float(v) for n,v in zip(['p50','p95','p99','max'],np.percentile(x,[50,95,99,100]))}
+assert hashlib.sha256(bp.read_bytes()).hexdigest()==before
+out=dict(sourceRunId=H.name,stage='explicit_source_rig_txa_sample_parity',frames=126,bones=248,counts=counts,translationErrorMeters=q(position),rotationAngleRadians=q(rotation),signInvariantQuaternionComponentError=q(component),translationToleranceMeters=5e-6,rotationComponentTolerance=2e-4,explicitChannelParityPassed=not worst,overTolerance=worst[:20],overToleranceCount=len(worst),omittedTranslationSamplesNotCertified=missing,sourceBlendUnchanged=True,sourceHashes={tp.name:hashlib.sha256(tp.read_bytes()).hexdigest(),bp.name:before},limits=['FB reference-axis matrix formula independently coded; same intended exporter convention, not independent game reference.','Only explicit TXA properties and their declared hold ranges; omitted-property native evaluation not certified.','Float32 quaternion dot angle has a numerical floor; component error is the gate.','Does not certify compiled ANM, runtime subset/root factoring or original game extraction.'])
+with (H/'txa-explicit-sample-parity.json').open('x',encoding='utf-8') as f:json.dump(out,f,indent=2)
+print(json.dumps({k:v for k,v in out.items() if k not in ['sourceHashes','overTolerance']},ensure_ascii=False))
