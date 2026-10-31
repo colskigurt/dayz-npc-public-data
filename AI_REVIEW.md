@@ -1,3 +1,5 @@
+> 최신 씬 순서 진단(2026-10-31): 컨테이너 생성 후1000ms 대기한 두 고정 접촉 시험은 각각21/21이 실제 기록과 일치했다. 이전 즉시 시험18/21은 보존하며 물리 갱신의 정확한 내부 단계는 미확인이다. 게임 이동에 대기를 추가한 것이 아니다. [조건·선정 입력·한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/recovery-scene-settle-20261031.md). 아래는 이전 기록이다.
+
 > 최신 고정4관절 재현(2026-10-31): 두 번의42행은 바이트 동일하지만 실시간 판정은18/21만 일치했다. LAND3건은 정적 컨테이너 충돌로 판정이 달라 환경 동등성은 미수용이다. [선정 입력·실패한 가설·다음 검사](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/recovery-frozen-solver-20261031.md). 이전 실제8/64 결과는 아래에 보존한다.
 
 > 최신 실제8→64 관측(2026-10-31): 각300초 실행의 기능 결과와 같은 호출 복구 입력을 분리해 검사했다. 전체 복구 수정·시각/성능 수용은 미완료다. [결과와 한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/recovery-input-runtime-20261031.md). 아래 과거 기록은 보존한다.
