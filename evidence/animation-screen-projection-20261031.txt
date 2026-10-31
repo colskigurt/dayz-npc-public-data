@@ -1,0 +1,135 @@
+Selection: complete bounded numeric results, diagnostic projection loop and method. No raw video,localpaths orprocessmetadata. ProjectedCPUjoint is not opticaljoint orGPUidentity.
+
+{
+  "results": {
+    "sourceRunId": "animation-screen-projection-20261031-1823",
+    "runtimeRunId": "runtime-20261031-182324",
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "rows": 29910,
+    "completeSixBoneFrames": 4985,
+    "modelReadDisagreementMaxMeters": 0.0,
+    "screenBoundsRows": 29910,
+    "screenPixelPerRelativeMedian": [
+      1600.0,
+      900.0000020366292
+    ],
+    "screenPixelPerRelativeP01P99": [
+      [
+        1599.99840440646,
+        1600.001594856531
+      ],
+      [
+        899.9989866284246,
+        900.001010477504
+      ]
+    ],
+    "callbackIntervalMs": {
+      "n": 4497,
+      "p50": 20.000000000010232,
+      "p95": 35.0000000000108,
+      "p99": 37.00000000000614
+    },
+    "activeAnalysisSeconds": 89.96600000000001,
+    "commandSeconds": 56.949400000000004,
+    "commandSecondsPerWall": 0.6330102483160305,
+    "videoSha256": "79fc21bb46233fa58c6f25cfa46a6edb57aedb77a944f79252bae85f8d99be22",
+    "newPbo": false,
+    "newNativeHooks": false,
+    "projectionNumericallyChecked": true,
+    "projectionVisibleJointAlignmentChecked": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "Native screen projection of queried CPU bone is not a visible pixel joint or GPU skinning output.",
+      "Extra6 world and12 projection calls/frame plus recording may change pacing; no uninstrumented cost attribution.",
+      "Pixel/relative scale agreement is numeric calibration, not image alignment or perceptual smoothness.",
+      "One runtime only; no8/64 functional regression or optimization claim."
+    ],
+    "sources": [
+      {
+        "file": "launch.json",
+        "sha256": "099824354f0e753315cd48bbc29e11d0e1b30b6aa8888d0cfbe63dc0b0abd5d9"
+      },
+      {
+        "file": "obs-capture.json",
+        "sha256": "8ea83eaf3261752805202817bf6063f09d367bb54bea09872664b62cdbbad8ba"
+      },
+      {
+        "file": "obs-capture.log",
+        "sha256": "ca5e44f69ab08896c9330ddc57a8ad7ab1a8a41c2b9e05a2692cda0ddc7c7716"
+      },
+      {
+        "file": "visible-screen-joints.tsv",
+        "sha256": "0c6cd304b3da58e3a284d9e895b4b2e2b71fc23c2c1c375fc7190421b9f42d60"
+      },
+      {
+        "file": "visible-frame-clock.tsv",
+        "sha256": "9748b6651126891269f740fc41d2040b9dbeaa04dba891032375695e1900e586"
+      }
+    ],
+    "hudMatchFrames": 532,
+    "hudSampleFrames": 540,
+    "ambiguousHudSamples": 8,
+    "spatialOverlaySamples": 12,
+    "spatialSanityReviewed": true,
+    "spatialReview": "Twelve evenly spaced exactHUD samples manually viewed. CPU projected Head/Hands/Feet are broadly at their corresponding mesh regions; bone origins are not optical surface keypoints. No numerical optical residual or display latency accepted.",
+    "method": "one logicalNPC,8parts,AI/rootmovementOFF,run,VSyncON,existing default scheduler,no Frida numeric or hook changes,45sec WGC lossless-declared gamewindow only",
+    "analysisFailures": [
+      "First signature verification with slash paths remained live; exact owned verifier stopped, no client/server launched. Backslash path attempt completed successfully. Root cause not independently isolated.",
+      "Image analysis import failed because imageio_ffmpeg was absent in selected interpreter. Reused existing UVcached imageio_ffmpeg and bundled Pillow via PYTHONPATH; no download/install or runtime rerun."
+    ],
+    "next": "Use the spatially checked screen projections to select independent visible landmark trajectories and calibrate tracking/capture error before temporal lag attribution. Do not equate skeleton origin with optical joint center or nearest-source phase jump with stutter.",
+    "evidenceReferences": [
+      {
+        "kind": "local_image",
+        "file": "projected-cpu-joints-sheet.png",
+        "sha256": "114f74702f627877e43200caa5a196f78c79f68b6e4ceda4e9efded0da64417b"
+      },
+      {
+        "kind": "runtime",
+        "file": "visible-frame-ids.json",
+        "sha256": "e4bae0ef0de2da5b71892323dda4400487f2a3149cb6e4cb62d3435a1944e065"
+      }
+    ],
+    "newRuntime": true,
+    "newVideo": true,
+    "newAlgorithm": false,
+    "supportedClockControlEstablished": false
+  },
+  "boneOrder": [
+    "Head",
+    "Hips",
+    "LeftHand",
+    "RightHand",
+    "LeftFoot",
+    "RightFoot"
+  ],
+  "apiDeclarations": [
+    {
+      "member": "3_Game/Global/Game.c",
+      "line": 963,
+      "text": "proto native vector GetScreenPos(vector world_pos);"
+    },
+    {
+      "member": "3_Game/Global/Game.c",
+      "line": 965,
+      "text": "proto native vector GetScreenPosRelative(vector world_pos);"
+    }
+  ]
+}
+
+
+Exact diagnostic projection loop, source SHA256 d5dc5c7baf7802a7d91714c71a6e339eb0ab5d708a5761e89d99e00cc446a74f, excerpt not complete NPC pipeline:
+for(int bone=0;bone<ClipBones.Count();bone++)
+            {
+                vector modelPoint=BoneSources[bone].GetBonePositionMS(ClipBones[bone]);
+                row+="\t"+modelPoint;
+                vector worldPoint=BoneSources[bone].GetBonePositionWS(ClipBones[bone]);
+                vector pixels=GetGame().GetScreenPos(worldPoint);
+                vector relative=GetGame().GetScreenPosRelative(worldPoint);
+                string screenRow=Frames.ToString()+"\t"+seconds+"\t"+bone+"\t"+BoneSources[bone].GetType();
+                screenRow+="\t"+modelPoint+"\t"+worldPoint+"\t"+pixels+"\t"+relative;
+                FPrintln(ScreenLog,screenRow);
+            }
+        }
