@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "b8fb-functional-repeat-20261031-115200"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "original180TrialPreserved",
+        "equalDurationPairPassed",
+        "allTrialsPassed",
+        "visualSmoothnessAccepted",
+        "performanceAccepted",
+        "newPbo",
+        "trials"
+      ],
+      "properties": {
+        "original180TrialPreserved": {
+          "const": true
+        },
+        "equalDurationPairPassed": {
+          "const": false
+        },
+        "allTrialsPassed": {
+          "const": false
+        },
+        "visualSmoothnessAccepted": {
+          "const": false
+        },
+        "performanceAccepted": {
+          "const": false
+        },
+        "newPbo": {
+          "const": false
+        },
+        "trials": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3
+        }
+      }
+    }
+  }
+}
