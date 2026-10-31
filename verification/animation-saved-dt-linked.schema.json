@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "animation-saved-dt-linked-20261031-1700"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "verificationStatus": {
+      "type": "object",
+      "required": [
+        "directInputAccounting",
+        "repetitions",
+        "visualAccepted"
+      ],
+      "properties": {
+        "directInputAccounting": {
+          "const": true
+        },
+        "repetitions": {
+          "const": 1
+        },
+        "visualAccepted": {
+          "const": false
+        }
+      }
+    }
+  }
+}
