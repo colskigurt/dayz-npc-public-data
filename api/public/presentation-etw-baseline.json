@@ -1,0 +1,350 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T17:48:50.072303+09:00",
+  "sourceRunId": "presentation-etw-baseline-20261031-1740",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "verificationStatus": {
+    "diagnostic": "first_actual_etw_present_display_baseline",
+    "displayMetricsMeasured": true,
+    "permissionResolvedForThisCapture": true,
+    "repetitions": 1,
+    "exactPresentToPoseJoin": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "presentation-etw-baseline-20261031-1740",
+    "runtimeRunId": "runtime-20261031-174120",
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "conditions": {
+      "logicalAgents": 1,
+      "previewClip": "run",
+      "ai": false,
+      "movement": false,
+      "nativeHooks": false,
+      "video": false,
+      "captureSeconds": 30,
+      "frameSync": "on"
+    },
+    "observedCsvColumns": [
+      "Application",
+      "ProcessID",
+      "SwapChainAddress",
+      "PresentRuntime",
+      "SyncInterval",
+      "PresentFlags",
+      "AllowsTearing",
+      "PresentMode",
+      "TimeInQPC",
+      "MsBetweenSimulationStart",
+      "MsBetweenPresents",
+      "MsBetweenDisplayChange",
+      "MsInPresentAPI",
+      "MsRenderPresentLatency",
+      "MsUntilDisplayed",
+      "CPUStartQPC",
+      "MsBetweenAppStart",
+      "MsCPUBusy",
+      "MsCPUWait",
+      "MsGPULatency",
+      "MsGPUTime",
+      "MsGPUBusy",
+      "MsGPUWait",
+      "MsAnimationError",
+      "AnimationTime",
+      "MsFlipDelay"
+    ],
+    "initialParserRejectedMissingDisplayedTime": true,
+    "cpu": {
+      "clockBridgeAcks": 39,
+      "clockOffsetUncertaintyMs": 12.62,
+      "joinedCallbacks": 1493,
+      "spanSeconds": 29.834062,
+      "foregroundFraction": 1.0,
+      "callbackIntervalMs": {
+        "samples": 1492,
+        "p50": 20.2601,
+        "p95": 34.55623,
+        "p99": 36.468709,
+        "minimum": 4.9723,
+        "maximum": 37.2451
+      },
+      "missionActorCommandSecondsPerWall": 0.6536116335750727,
+      "missionActorAnimUpdatesPerWall": 13.072306412717115,
+      "missionActorCommandSecondsDelta": 19.49989,
+      "missionActorAnimUpdatesDelta": 390,
+      "queriedJointRmsStepMeters": {
+        "samples": 1492,
+        "p50": 0.019903723159207045,
+        "p95": 0.1163438406047239,
+        "p99": 0.12988790931346714,
+        "minimum": 0.0,
+        "maximum": 0.15937672960368668
+      },
+      "queriedPositionStepsBelow1Micrometer": 1,
+      "notRendererGraphClock": true,
+      "notOneToOnePresentToPoseJoin": true
+    },
+    "trace": {
+      "toolExitCode": 0,
+      "toolExited": true,
+      "csvRows": 1495,
+      "processFilterVerified": true,
+      "swapChainsMerged": false,
+      "lossWarnings": [],
+      "lostEventCountDirectlyMeasured": false
+    },
+    "limits": [
+      "One1-agent ETW baseline, not repeated performance validation or64 workload.",
+      "MsBetweenPresents, CPU start intervals and display intervals are distinct; do not substitute them.",
+      "MsBetweenDisplayChange is prior display duration, not the absent DisplayedTime column.",
+      "Missing display timing is not automatically a counted dropped frame.",
+      "No loss warning observed is not proof of zero ETW event loss.",
+      "Mission actor NativeSeconds/AnimUpdates are script command observations, not captured per-renderer graph clocks.",
+      "Clock calibration joins overlapping windows only; no unique Present-to-NPC-pose or GPU palette identity.",
+      "No video, pixels, final bone phase or NPC smoothness acceptance.",
+      "No observerOFF/ON overhead comparison and no optimization effect measured."
+    ],
+    "next": [
+      "Use actual display cadence as a separate axis from NPC pose progression.",
+      "Correlate with independent visible NPC evidence without reusing source-FK spikes as stutter durations.",
+      "Repeat under controlled conditions before attributing pipeline/GPU cost; preserve64 workload as separate test."
+    ],
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "chains": [
+      {
+        "alias": "chain-0",
+        "runtime": "DXGI",
+        "rows": 1495,
+        "presentModes": {
+          "Hardware Composed: Independent Flip": 1495
+        },
+        "syncIntervals": {
+          "1": 1495
+        },
+        "presentSpanSeconds": 29.8803583,
+        "metricsMs": {
+          "MsBetweenPresents": {
+            "samples": 1495,
+            "p50": 19.0927,
+            "p95": 28.43046,
+            "p99": 32.258356,
+            "minimum": 5.8877,
+            "maximum": 43.03590000000001
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 1495,
+            "p50": 20.0048,
+            "p95": 20.08513,
+            "p99": 20.1149,
+            "minimum": 19.8273,
+            "maximum": 20.1546
+          },
+          "MsInPresentAPI": {
+            "samples": 1495,
+            "p50": 11.4048,
+            "p95": 19.76893,
+            "p99": 19.84233,
+            "minimum": 0.1032,
+            "maximum": 19.9156
+          },
+          "MsRenderPresentLatency": {
+            "samples": 1495,
+            "p50": 35.9407,
+            "p95": 40.30017,
+            "p99": 41.834686,
+            "minimum": 17.1434,
+            "maximum": 42.8975
+          },
+          "MsUntilDisplayed": {
+            "samples": 1495,
+            "p50": 54.026,
+            "p95": 59.70323,
+            "p99": 59.77816,
+            "minimum": 36.6792,
+            "maximum": 59.9174
+          },
+          "MsBetweenAppStart": {
+            "samples": 1495,
+            "p50": 20.0128,
+            "p95": 33.61087,
+            "p99": 33.877924,
+            "minimum": 5.4782,
+            "maximum": 34.6056
+          },
+          "MsCPUBusy": {
+            "samples": 1495,
+            "p50": 10.7429,
+            "p95": 15.810699999999997,
+            "p99": 16.849804,
+            "minimum": 5.363,
+            "maximum": 23.2756
+          },
+          "MsCPUWait": {
+            "samples": 1495,
+            "p50": 11.4048,
+            "p95": 19.76893,
+            "p99": 19.84233,
+            "minimum": 0.1032,
+            "maximum": 19.9156
+          },
+          "MsGPULatency": {
+            "samples": 1495,
+            "p50": 23.135,
+            "p95": 34.78555,
+            "p99": 35.88000399999999,
+            "minimum": 16.9958,
+            "maximum": 36.9288
+          },
+          "MsGPUTime": {
+            "samples": 1495,
+            "p50": 20.0072,
+            "p95": 21.343269999999997,
+            "p99": 22.049201999999998,
+            "minimum": 15.9631,
+            "maximum": 23.3609
+          },
+          "MsGPUBusy": {
+            "samples": 1495,
+            "p50": 3.3306,
+            "p95": 7.597519999999999,
+            "p99": 9.340468,
+            "minimum": 0.9748,
+            "maximum": 17.7311
+          },
+          "MsGPUWait": {
+            "samples": 1495,
+            "p50": 16.6977,
+            "p95": 18.912889999999997,
+            "p99": 18.972818,
+            "minimum": 0.0,
+            "maximum": 19.0909
+          },
+          "MsAnimationError": {
+            "samples": 1494,
+            "p50": 0.0026500000000000004,
+            "p95": 13.6512,
+            "p99": 13.882055,
+            "minimum": -14.6209,
+            "maximum": 14.6582
+          },
+          "AnimationTime": {
+            "samples": 1495,
+            "p50": 14957.0369,
+            "p95": 28413.77177,
+            "p99": 29612.459686,
+            "minimum": 23.4958,
+            "maximum": 29898.805
+          },
+          "MsBetweenSimulationStart": null,
+          "MsFlipDelay": null
+        },
+        "missingValues": {
+          "MsBetweenPresents": 0,
+          "MsBetweenDisplayChange": 0,
+          "MsInPresentAPI": 0,
+          "MsRenderPresentLatency": 0,
+          "MsUntilDisplayed": 0,
+          "MsBetweenAppStart": 0,
+          "MsCPUBusy": 0,
+          "MsCPUWait": 0,
+          "MsGPULatency": 0,
+          "MsGPUTime": 0,
+          "MsGPUBusy": 0,
+          "MsGPUWait": 0,
+          "MsAnimationError": 1,
+          "AnimationTime": 0,
+          "MsBetweenSimulationStart": 1495,
+          "MsFlipDelay": 1495
+        },
+        "missingDisplayTimingRows": 0,
+        "presentQpcVsMetricMaxErrorMs": 1.4210854715202004e-14,
+        "cpuQpcVsNextIntervalMaxErrorMs": 0.0,
+        "displayQpcVsMetricMaxErrorMs": 0.0,
+        "selectedRows": [
+          {
+            "relativePresentMs": 0.0,
+            "MsBetweenPresents": 24.7723,
+            "MsBetweenDisplayChange": 20.0214,
+            "MsUntilDisplayed": 51.4252,
+            "MsGPUBusy": 1.1657
+          },
+          {
+            "relativePresentMs": 13.667,
+            "MsBetweenPresents": 13.667,
+            "MsBetweenDisplayChange": 19.997,
+            "MsUntilDisplayed": 57.7552,
+            "MsGPUBusy": 1.1903
+          },
+          {
+            "relativePresentMs": 38.52,
+            "MsBetweenPresents": 24.853,
+            "MsBetweenDisplayChange": 19.9155,
+            "MsUntilDisplayed": 52.8177,
+            "MsGPUBusy": 1.1509
+          },
+          {
+            "relativePresentMs": 55.193,
+            "MsBetweenPresents": 16.673,
+            "MsBetweenDisplayChange": 19.9933,
+            "MsUntilDisplayed": 56.138,
+            "MsGPUBusy": 1.2276
+          },
+          {
+            "relativePresentMs": 29826.6029,
+            "MsBetweenPresents": 26.3057,
+            "MsBetweenDisplayChange": 19.9539,
+            "MsUntilDisplayed": 53.2384,
+            "MsGPUBusy": 3.1223
+          },
+          {
+            "relativePresentMs": 29840.2875,
+            "MsBetweenPresents": 13.6846,
+            "MsBetweenDisplayChange": 20.0555,
+            "MsUntilDisplayed": 59.6093,
+            "MsGPUBusy": 3.2792
+          },
+          {
+            "relativePresentMs": 29866.5263,
+            "MsBetweenPresents": 26.2388,
+            "MsBetweenDisplayChange": 19.9441,
+            "MsUntilDisplayed": 53.3146,
+            "MsGPUBusy": 3.2394
+          },
+          {
+            "relativePresentMs": 29880.3583,
+            "MsBetweenPresents": 13.832,
+            "MsBetweenDisplayChange": 20.0787,
+            "MsUntilDisplayed": 59.5613,
+            "MsGPUBusy": 4.0656
+          }
+        ]
+      }
+    ]
+  },
+  "blockers": [
+    "One1-agent ETW baseline, not repeated performance validation or64 workload.",
+    "MsBetweenPresents, CPU start intervals and display intervals are distinct; do not substitute them.",
+    "MsBetweenDisplayChange is prior display duration, not the absent DisplayedTime column.",
+    "Missing display timing is not automatically a counted dropped frame.",
+    "No loss warning observed is not proof of zero ETW event loss.",
+    "Mission actor NativeSeconds/AnimUpdates are script command observations, not captured per-renderer graph clocks.",
+    "Clock calibration joins overlapping windows only; no unique Present-to-NPC-pose or GPU palette identity.",
+    "No video, pixels, final bone phase or NPC smoothness acceptance.",
+    "No observerOFF/ON overhead comparison and no optimization effect measured."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/presentation-etw-baseline-20261031.md",
+      "sha256": "5702bb0be5f91ae45b8e0b322954b51e9ba38d4dd2e559bea9cc40f595595b11"
+    },
+    {
+      "path": "evidence/presentation-etw-baseline-20261031.txt",
+      "sha256": "892a1493799fa83bdfdf82623ddd1ee1db2fb33cb8ab88185406b938404be3f4"
+    }
+  ],
+  "goalComplete": false
+}

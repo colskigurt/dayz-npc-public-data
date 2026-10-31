@@ -1,3 +1,5 @@
+> 최신:ETW권한제한은이단일측정에서해소됐다.1495 Present·실제표시간격확보,표시p95 20.09ms와NPC명령진행0.654배는서로다른측정이다.최종시각/64성능수용아님.[실제결과](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/presentation-etw-baseline-20261031.md).이전권한거부는과거기록으로아래보존한다.
+
 > 최신운영준비:PresentMon출처/서명확인,ETW권한거부로실제표시측정은없음.기존실험수치나실험시각을새측정으로바꾸지않는다.[제한과다음단계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/presentation-etw-readiness-20261031.md).이전실험은아래보존한다.
 
 > 최신:정답시간합성에서도최근접FK위상도약58.33ms재현.이값을실제끊김시간으로직접해석하지않는다.CPU로컬버퍼모델의오차감소는공간기하진단이며품질/성능수용이아니다.[교정과한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-phase-estimator-calibration-20261031.md).이전기록은아래보존한다.
