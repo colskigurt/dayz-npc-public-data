@@ -1,0 +1,660 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T18:46:07.644053+09:00",
+  "sourceRunId": "animation-optical-head-20261031-1834",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "verificationStatus": {
+    "diagnostic": "independent_head_landmark_increment_comparison_complete",
+    "newRuntime": false,
+    "reaDeepDossier": false,
+    "functional": "not_rerun",
+    "visibleSmoothness": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-optical-head-20261031-1834",
+    "sourceRuntimeRunId": "runtime-20261031-182324",
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "newRuntime": false,
+    "newVideo": false,
+    "newPbo": false,
+    "analysisScope": "Three offline exploratory detectors on same retained9sec video windows; no NPC implementation changes.",
+    "hudMatches": 532,
+    "hudTotal": 540,
+    "trainFrames": 180,
+    "holdoutFrames": 352,
+    "detectorComparisons": [
+      {
+        "detector": "largest_component",
+        "threshold": "140",
+        "bestLag": 1,
+        "sameFrameRmsPixels": 17.262469436373955,
+        "sameFrameErrorPixels": {
+          "n": 352,
+          "p50": 3.560872658670635,
+          "p95": 29.748219422548775,
+          "p99": 36.83993476994155,
+          "maximum": 39.59072586073349
+        }
+      },
+      {
+        "detector": "largest_component",
+        "threshold": "145",
+        "bestLag": 2,
+        "sameFrameRmsPixels": 17.910564228171534,
+        "sameFrameErrorPixels": {
+          "n": 352,
+          "p50": 5.774564379940191,
+          "p95": 29.603138393167132,
+          "p99": 38.750975407179546,
+          "maximum": 39.33703730399842
+        }
+      },
+      {
+        "detector": "largest_component",
+        "threshold": "150",
+        "bestLag": 1,
+        "sameFrameRmsPixels": 16.192294715172903,
+        "sameFrameErrorPixels": {
+          "n": 352,
+          "p50": 14.48059583669556,
+          "p95": 29.889989340538044,
+          "p99": 37.167073372504504,
+          "maximum": 39.8277732556564
+        }
+      },
+      {
+        "detector": "uppermost_component",
+        "threshold": "140",
+        "bestLag": 0,
+        "sameFrameRmsPixels": 6.18597923351097,
+        "sameFrameErrorPixels": {
+          "n": 352,
+          "p50": 1.646250771517973,
+          "p95": 19.133536704890634,
+          "p99": 23.096510306403708,
+          "maximum": 24.478297113976687
+        }
+      },
+      {
+        "detector": "uppermost_component",
+        "threshold": "145",
+        "bestLag": 0,
+        "sameFrameRmsPixels": 6.20452107896811,
+        "sameFrameErrorPixels": {
+          "n": 352,
+          "p50": 1.5819777424379737,
+          "p95": 19.608647169813583,
+          "p99": 23.137820722397567,
+          "maximum": 25.541243088568336
+        }
+      },
+      {
+        "detector": "uppermost_component",
+        "threshold": "150",
+        "bestLag": 0,
+        "sameFrameRmsPixels": 6.113235004512049,
+        "sameFrameErrorPixels": {
+          "n": 352,
+          "p50": 1.585461216098547,
+          "p95": 19.30160320759577,
+          "p99": 23.10481647738422,
+          "maximum": 24.364601368508378
+        }
+      },
+      {
+        "detector": "circular_cap",
+        "threshold": "140",
+        "bestLag": 0,
+        "sameFrameRmsPixels": 2.652513004663777,
+        "sameFrameErrorPixels": {
+          "n": 352,
+          "p50": 1.7016921280290283,
+          "p95": 6.188834175260417,
+          "p99": 6.863775047649221,
+          "maximum": 7.2784740028172
+        }
+      },
+      {
+        "detector": "circular_cap",
+        "threshold": "145",
+        "bestLag": 0,
+        "sameFrameRmsPixels": 2.6373914895742727,
+        "sameFrameErrorPixels": {
+          "n": 352,
+          "p50": 1.6595795561030933,
+          "p95": 6.181241743987382,
+          "p99": 6.890065901413819,
+          "maximum": 7.266098198093118
+        }
+      },
+      {
+        "detector": "circular_cap",
+        "threshold": "150",
+        "bestLag": 0,
+        "sameFrameRmsPixels": 2.660558909361188,
+        "sameFrameErrorPixels": {
+          "n": 352,
+          "p50": 1.617813858585164,
+          "p95": 6.211857630791684,
+          "p99": 7.089895162764897,
+          "maximum": 7.252353760285497
+        }
+      }
+    ],
+    "capCalibration": {
+      "n": 48,
+      "p50": 0.0,
+      "p95": 0.6499999999999986,
+      "p99": 1.0,
+      "maximum": 1.0
+    },
+    "duplicateHudLandmarkStepPixels": {
+      "n": 89,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "maximum": 0.0
+    },
+    "motionIncrementComparisons": [
+      {
+        "threshold": "140",
+        "consecutiveHudPairs": 433,
+        "xIncrementCorrelation": 0.9887417479930702,
+        "yIncrementCorrelation": 0.9252794097342898,
+        "stepNormCorrelation": 0.982388999742113,
+        "imageStepPixels": {
+          "p50": 1.4142135623730951,
+          "p95": 8.98871720125446,
+          "p99": 13.776652224137054,
+          "maximum": 16.0
+        },
+        "cpuStepPixels": {
+          "p50": 1.1649952897162212,
+          "p95": 8.779923590330032,
+          "p99": 11.920710981570311,
+          "maximum": 13.520892857507544
+        },
+        "imageStepBelow1WhileCpuAtLeast2": 0,
+        "imageStepBelow1WhileCpuAtLeast5": 0
+      },
+      {
+        "threshold": "145",
+        "consecutiveHudPairs": 433,
+        "xIncrementCorrelation": 0.9885680890982274,
+        "yIncrementCorrelation": 0.9272938674490425,
+        "stepNormCorrelation": 0.9818983230804922,
+        "imageStepPixels": {
+          "p50": 1.4142135623730951,
+          "p95": 8.98871720125446,
+          "p99": 13.788941763466749,
+          "maximum": 15.811388300841896
+        },
+        "cpuStepPixels": {
+          "p50": 1.1649952897162212,
+          "p95": 8.779923590330032,
+          "p99": 11.920710981570311,
+          "maximum": 13.520892857507544
+        },
+        "imageStepBelow1WhileCpuAtLeast2": 0,
+        "imageStepBelow1WhileCpuAtLeast5": 0
+      },
+      {
+        "threshold": "150",
+        "consecutiveHudPairs": 433,
+        "xIncrementCorrelation": 0.9875943904555637,
+        "yIncrementCorrelation": 0.923616053741881,
+        "stepNormCorrelation": 0.9813917802593148,
+        "imageStepPixels": {
+          "p50": 1.4142135623730951,
+          "p95": 9.055385138137417,
+          "p99": 14.096652224137047,
+          "maximum": 15.811388300841896
+        },
+        "cpuStepPixels": {
+          "p50": 1.1649952897162212,
+          "p95": 8.779923590330032,
+          "p99": 11.920710981570311,
+          "maximum": 13.520892857507544
+        },
+        "imageStepBelow1WhileCpuAtLeast2": 0,
+        "imageStepBelow1WhileCpuAtLeast5": 0
+      }
+    ],
+    "capFits": [
+      {
+        "threshold": "140",
+        "cpuMissionFrameLag": -3,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          -0.4070740000000228,
+          -24.130402000000004
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 6.16818449055556,
+          "p95": 17.592217330903377,
+          "p99": 19.006866627946273,
+          "maximum": 20.366953322709502
+        },
+        "holdoutRmsPixels": 8.563209947622132
+      },
+      {
+        "threshold": "140",
+        "cpuMissionFrameLag": -2,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.17138699999998153,
+          -24.428680499999984
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 3.582836547177928,
+          "p95": 11.412001679006936,
+          "p99": 17.19463862243725,
+          "maximum": 17.66076605642255
+        },
+        "holdoutRmsPixels": 6.355830399258472
+      },
+      {
+        "threshold": "140",
+        "cpuMissionFrameLag": -1,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.4697570000000155,
+          -24.589950500000015
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 2.103312655859372,
+          "p95": 8.321310836624393,
+          "p99": 13.597146133527323,
+          "maximum": 16.01878676144289
+        },
+        "holdoutRmsPixels": 4.198052208538906
+      },
+      {
+        "threshold": "140",
+        "cpuMissionFrameLag": 0,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.4673765000000003,
+          -24.63969399999999
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 1.7016921280290283,
+          "p95": 6.188834175260417,
+          "p99": 6.863775047649221,
+          "maximum": 7.2784740028172
+        },
+        "holdoutRmsPixels": 2.652513004663777
+      },
+      {
+        "threshold": "140",
+        "cpuMissionFrameLag": 1,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.44476350000002185,
+          -24.5921175
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 2.8348828220744906,
+          "p95": 9.194100961671628,
+          "p99": 14.053821520217163,
+          "maximum": 16.677749000472172
+        },
+        "holdoutRmsPixels": 4.749626238937058
+      },
+      {
+        "threshold": "140",
+        "cpuMissionFrameLag": 2,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.6116944999999987,
+          -24.697052000000014
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 4.700404479917775,
+          "p95": 14.073467457144407,
+          "p99": 18.621910397418116,
+          "maximum": 20.63691601503918
+        },
+        "holdoutRmsPixels": 7.1100411192003765
+      },
+      {
+        "threshold": "140",
+        "cpuMissionFrameLag": 3,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          1.317169500000034,
+          -24.882720999999975
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 6.962980199149067,
+          "p95": 17.222863030040802,
+          "p99": 22.31573020804705,
+          "maximum": 23.453508946690274
+        },
+        "holdoutRmsPixels": 9.558864855555296
+      },
+      {
+        "threshold": "145",
+        "cpuMissionFrameLag": -3,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          -0.4070740000000228,
+          -24.115478499999995
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 6.167662637386719,
+          "p95": 17.58380522343777,
+          "p99": 19.00483523655551,
+          "maximum": 20.365929456761723
+        },
+        "holdoutRmsPixels": 8.521066060987701
+      },
+      {
+        "threshold": "145",
+        "cpuMissionFrameLag": -2,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.07922400000001062,
+          -24.424530000000004
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 3.602654312335197,
+          "p95": 11.438061355261869,
+          "p99": 16.914654923630323,
+          "maximum": 17.56927106847759
+        },
+        "holdoutRmsPixels": 6.329366411774652
+      },
+      {
+        "threshold": "145",
+        "cpuMissionFrameLag": -1,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.4348755000000324,
+          -24.599929500000002
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 2.0722460707677652,
+          "p95": 8.372040708744994,
+          "p99": 13.59862811821187,
+          "maximum": 15.986616410452235
+        },
+        "holdoutRmsPixels": 4.1603612977164675
+      },
+      {
+        "threshold": "145",
+        "cpuMissionFrameLag": 0,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.4305115000000228,
+          -24.65806599999999
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 1.6595795561030933,
+          "p95": 6.181241743987382,
+          "p99": 6.890065901413819,
+          "maximum": 7.266098198093118
+        },
+        "holdoutRmsPixels": 2.6373914895742727
+      },
+      {
+        "threshold": "145",
+        "cpuMissionFrameLag": 1,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.3851319999999987,
+          -24.5921175
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 2.694869484448801,
+          "p95": 9.233501694015656,
+          "p99": 13.630610254636952,
+          "maximum": 17.485742183727876
+        },
+        "holdoutRmsPixels": 4.756757864988593
+      },
+      {
+        "threshold": "145",
+        "cpuMissionFrameLag": 2,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.4704590000000053,
+          -24.65806599999999
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 4.585008560294045,
+          "p95": 13.934112292178852,
+          "p99": 18.897486625904452,
+          "maximum": 20.49127911767914
+        },
+        "holdoutRmsPixels": 7.111547211622626
+      },
+      {
+        "threshold": "145",
+        "cpuMissionFrameLag": 3,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          1.317169500000034,
+          -24.952515000000005
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 7.104466132801139,
+          "p95": 16.756859366470657,
+          "p99": 22.3283154594517,
+          "maximum": 23.477773894878222
+        },
+        "holdoutRmsPixels": 9.578493056098052
+      },
+      {
+        "threshold": "150",
+        "cpuMissionFrameLag": -3,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          -0.4070740000000228,
+          -24.096419999999995
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 6.259186724475761,
+          "p95": 17.58080046864833,
+          "p99": 19.00225771324149,
+          "maximum": 20.36463772466703
+        },
+        "holdoutRmsPixels": 8.523649536441603
+      },
+      {
+        "threshold": "150",
+        "cpuMissionFrameLag": -2,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.17138699999998153,
+          -24.409821000000022
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 3.547104408882775,
+          "p95": 11.41907990468335,
+          "p99": 17.000340228058676,
+          "maximum": 17.657525013338557
+        },
+        "holdoutRmsPixels": 6.3238368254957384
+      },
+      {
+        "threshold": "150",
+        "cpuMissionFrameLag": -1,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.4697570000000155,
+          -24.576415999999995
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 2.047048175783451,
+          "p95": 8.374448327232153,
+          "p99": 13.596283929165729,
+          "maximum": 16.01608391299392
+        },
+        "holdoutRmsPixels": 4.1775754365810425
+      },
+      {
+        "threshold": "150",
+        "cpuMissionFrameLag": 0,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.4673765000000003,
+          -24.603241000000025
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 1.617813858585164,
+          "p95": 6.211857630791684,
+          "p99": 7.089895162764897,
+          "maximum": 7.252353760285497
+        },
+        "holdoutRmsPixels": 2.660558909361188
+      },
+      {
+        "threshold": "150",
+        "cpuMissionFrameLag": 1,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.5314329999999927,
+          -24.5921175
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 2.6776408696430516,
+          "p95": 9.32507215635829,
+          "p99": 13.368359561299993,
+          "maximum": 17.61262971235356
+        },
+        "holdoutRmsPixels": 4.797712813618624
+      },
+      {
+        "threshold": "150",
+        "cpuMissionFrameLag": 2,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.8673709999999915,
+          -24.646438499999988
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 4.725231236960609,
+          "p95": 14.331135260916042,
+          "p99": 19.30089599710469,
+          "maximum": 20.85625435226807
+        },
+        "holdoutRmsPixels": 7.161752473544832
+      },
+      {
+        "threshold": "150",
+        "cpuMissionFrameLag": 3,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          1.317169500000034,
+          -24.835784999999987
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 7.157948245028507,
+          "p95": 16.87038631548843,
+          "p99": 21.798388120123406,
+          "maximum": 23.437293686085535
+        },
+        "holdoutRmsPixels": 9.564390622638335
+      }
+    ],
+    "review": {
+      "equallySpacedSamples": 12,
+      "largestRetainedResidualSamples": 8,
+      "visuallyReviewed": true,
+      "naiveTrackerMisidentifiedRaisedHands": true,
+      "capTrackedHeadRegionsInReviewedSamples": true,
+      "exhaustiveOpticalGroundTruth": false
+    },
+    "limits": [
+      "Exploratory detector after inspecting prior spatial sheet; not preregistered or general purpose NPC tracking.",
+      "Headcap is an image silhouette landmark, not head bone origin; head rotation/skin deformation may change its offset.",
+      "Fixed ROI/color can confuse limbs/background; review required. Synthetic shift tests equivariance, not correct target selection.",
+      "Temporal holdout shares same video/scene, not independent runtime repetition.",
+      "Mission frame lag is not uniform milliseconds, a GPU timestamp, or proven causal render latency.",
+      "No visual smoothness acceptance or deployable fix.",
+      "Largest/uppermost component trackers are rejected for latency estimation because shoulders/raised fingers create false lags.",
+      "Cap lag0 fit does not establish zero GPU latency or no stutter; it is the best coarse observational HUD correspondence under a two-parameter constant spatial offset.",
+      "Natural pose curvature and variable mission-frame intervals prevent step quantiles from being directly labeled stutter duration."
+    ],
+    "next": "Apply the bounded image-only landmark method to already-recorded baseline/residual-carry comparisons for mean playback and pacing evidence, with pose/phase confounds explicit; do not deploy numeric carry or infer GPU cause from coarse lag0. Existing8/64 functional and cost work remains separate.",
+    "supportedClockControlEstablished": false,
+    "subframeDisplayLatencyMeasured": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "newNpcAlgorithm": false
+  },
+  "blockers": [
+    "Exploratory detector after inspecting prior spatial sheet; not preregistered or general purpose NPC tracking.",
+    "Headcap is an image silhouette landmark, not head bone origin; head rotation/skin deformation may change its offset.",
+    "Fixed ROI/color can confuse limbs/background; review required. Synthetic shift tests equivariance, not correct target selection.",
+    "Temporal holdout shares same video/scene, not independent runtime repetition.",
+    "Mission frame lag is not uniform milliseconds, a GPU timestamp, or proven causal render latency.",
+    "No visual smoothness acceptance or deployable fix.",
+    "Largest/uppermost component trackers are rejected for latency estimation because shoulders/raised fingers create false lags.",
+    "Cap lag0 fit does not establish zero GPU latency or no stutter; it is the best coarse observational HUD correspondence under a two-parameter constant spatial offset.",
+    "Natural pose curvature and variable mission-frame intervals prevent step quantiles from being directly labeled stutter duration.",
+    "Supported clock control remains unestablished; graphconsumer verification still required.",
+    "REA Rizin Windows native command unavailable; no deepdossier claimed."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-optical-head-20261031.md",
+      "sha256": "de6b37f5b7cbf83abc44fccf5bdee7fc858d3d542fd0ef98520ec8add9b2c201"
+    },
+    {
+      "path": "evidence/animation-optical-head-20261031.txt",
+      "sha256": "d7df44bd419162be2373ee4f3fb10e7e451b6b1f723b41e3aaed4bfc97285681"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

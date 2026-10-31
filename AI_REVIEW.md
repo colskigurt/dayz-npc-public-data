@@ -1,3 +1,5 @@
+> 최신 영상 진단: 이미지독립머리추적3종을기존영상에서대조했다. 초기2종은어깨/손가락오검출로지연평가에서기각. cap433쌍의화면/CPU이동상관은약0.982, 세임계값모두lag0최소였으나GPU지연0이나끊김해결을의미하지않음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-optical-head-20261031.md). 이전기록보존.
+
 > 최신 애니메이션 계측: 1개체 고정run 시험에서4985프레임/29910행의6본 화면투영을 확보했다. pixel/relative는1600x900, HUD532/540 대응.12표본 공간 sanity만 확인했으며 optical궤적·시각품질·성능은미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-screen-projection-20261031.md). 이전기록보존.
 
 > 최신 애니메이션 진단: 25ms 후보는 HelicopterAuto vtable+0x880로 연결됐다. 기존영상 HUD한칸진행444쌍에서 CPU/윤곽은모두변화했고 HUD반복91쌍은몸윤곽도반복했다. 몸만정지근거없음은시각수용이나속도불균일해결이아니다. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-precision-followup-20261031.md). 이전기록보존.

@@ -1,0 +1,1008 @@
+Selection: complete bounded bundle results, exact image-only cap detector, every40th paired increment plus all CPU steps>=10px. Not full video or allframes; no localpaths/processdata. Headcap is not bone origin or GPUtime.
+
+{
+  "results": {
+    "sourceRunId": "animation-optical-head-20261031-1834",
+    "sourceRuntimeRunId": "runtime-20261031-182324",
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "newRuntime": false,
+    "newVideo": false,
+    "newPbo": false,
+    "analysisScope": "Three offline exploratory detectors on same retained9sec video windows; no NPC implementation changes.",
+    "hudMatches": 532,
+    "hudTotal": 540,
+    "trainFrames": 180,
+    "holdoutFrames": 352,
+    "detectorComparisons": [
+      {
+        "detector": "largest_component",
+        "threshold": "140",
+        "bestLag": 1,
+        "sameFrameRmsPixels": 17.262469436373955,
+        "sameFrameErrorPixels": {
+          "n": 352,
+          "p50": 3.560872658670635,
+          "p95": 29.748219422548775,
+          "p99": 36.83993476994155,
+          "maximum": 39.59072586073349
+        }
+      },
+      {
+        "detector": "largest_component",
+        "threshold": "145",
+        "bestLag": 2,
+        "sameFrameRmsPixels": 17.910564228171534,
+        "sameFrameErrorPixels": {
+          "n": 352,
+          "p50": 5.774564379940191,
+          "p95": 29.603138393167132,
+          "p99": 38.750975407179546,
+          "maximum": 39.33703730399842
+        }
+      },
+      {
+        "detector": "largest_component",
+        "threshold": "150",
+        "bestLag": 1,
+        "sameFrameRmsPixels": 16.192294715172903,
+        "sameFrameErrorPixels": {
+          "n": 352,
+          "p50": 14.48059583669556,
+          "p95": 29.889989340538044,
+          "p99": 37.167073372504504,
+          "maximum": 39.8277732556564
+        }
+      },
+      {
+        "detector": "uppermost_component",
+        "threshold": "140",
+        "bestLag": 0,
+        "sameFrameRmsPixels": 6.18597923351097,
+        "sameFrameErrorPixels": {
+          "n": 352,
+          "p50": 1.646250771517973,
+          "p95": 19.133536704890634,
+          "p99": 23.096510306403708,
+          "maximum": 24.478297113976687
+        }
+      },
+      {
+        "detector": "uppermost_component",
+        "threshold": "145",
+        "bestLag": 0,
+        "sameFrameRmsPixels": 6.20452107896811,
+        "sameFrameErrorPixels": {
+          "n": 352,
+          "p50": 1.5819777424379737,
+          "p95": 19.608647169813583,
+          "p99": 23.137820722397567,
+          "maximum": 25.541243088568336
+        }
+      },
+      {
+        "detector": "uppermost_component",
+        "threshold": "150",
+        "bestLag": 0,
+        "sameFrameRmsPixels": 6.113235004512049,
+        "sameFrameErrorPixels": {
+          "n": 352,
+          "p50": 1.585461216098547,
+          "p95": 19.30160320759577,
+          "p99": 23.10481647738422,
+          "maximum": 24.364601368508378
+        }
+      },
+      {
+        "detector": "circular_cap",
+        "threshold": "140",
+        "bestLag": 0,
+        "sameFrameRmsPixels": 2.652513004663777,
+        "sameFrameErrorPixels": {
+          "n": 352,
+          "p50": 1.7016921280290283,
+          "p95": 6.188834175260417,
+          "p99": 6.863775047649221,
+          "maximum": 7.2784740028172
+        }
+      },
+      {
+        "detector": "circular_cap",
+        "threshold": "145",
+        "bestLag": 0,
+        "sameFrameRmsPixels": 2.6373914895742727,
+        "sameFrameErrorPixels": {
+          "n": 352,
+          "p50": 1.6595795561030933,
+          "p95": 6.181241743987382,
+          "p99": 6.890065901413819,
+          "maximum": 7.266098198093118
+        }
+      },
+      {
+        "detector": "circular_cap",
+        "threshold": "150",
+        "bestLag": 0,
+        "sameFrameRmsPixels": 2.660558909361188,
+        "sameFrameErrorPixels": {
+          "n": 352,
+          "p50": 1.617813858585164,
+          "p95": 6.211857630791684,
+          "p99": 7.089895162764897,
+          "maximum": 7.252353760285497
+        }
+      }
+    ],
+    "capCalibration": {
+      "n": 48,
+      "p50": 0.0,
+      "p95": 0.6499999999999986,
+      "p99": 1.0,
+      "maximum": 1.0
+    },
+    "duplicateHudLandmarkStepPixels": {
+      "n": 89,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "maximum": 0.0
+    },
+    "motionIncrementComparisons": [
+      {
+        "threshold": "140",
+        "consecutiveHudPairs": 433,
+        "xIncrementCorrelation": 0.9887417479930702,
+        "yIncrementCorrelation": 0.9252794097342898,
+        "stepNormCorrelation": 0.982388999742113,
+        "imageStepPixels": {
+          "p50": 1.4142135623730951,
+          "p95": 8.98871720125446,
+          "p99": 13.776652224137054,
+          "maximum": 16.0
+        },
+        "cpuStepPixels": {
+          "p50": 1.1649952897162212,
+          "p95": 8.779923590330032,
+          "p99": 11.920710981570311,
+          "maximum": 13.520892857507544
+        },
+        "imageStepBelow1WhileCpuAtLeast2": 0,
+        "imageStepBelow1WhileCpuAtLeast5": 0
+      },
+      {
+        "threshold": "145",
+        "consecutiveHudPairs": 433,
+        "xIncrementCorrelation": 0.9885680890982274,
+        "yIncrementCorrelation": 0.9272938674490425,
+        "stepNormCorrelation": 0.9818983230804922,
+        "imageStepPixels": {
+          "p50": 1.4142135623730951,
+          "p95": 8.98871720125446,
+          "p99": 13.788941763466749,
+          "maximum": 15.811388300841896
+        },
+        "cpuStepPixels": {
+          "p50": 1.1649952897162212,
+          "p95": 8.779923590330032,
+          "p99": 11.920710981570311,
+          "maximum": 13.520892857507544
+        },
+        "imageStepBelow1WhileCpuAtLeast2": 0,
+        "imageStepBelow1WhileCpuAtLeast5": 0
+      },
+      {
+        "threshold": "150",
+        "consecutiveHudPairs": 433,
+        "xIncrementCorrelation": 0.9875943904555637,
+        "yIncrementCorrelation": 0.923616053741881,
+        "stepNormCorrelation": 0.9813917802593148,
+        "imageStepPixels": {
+          "p50": 1.4142135623730951,
+          "p95": 9.055385138137417,
+          "p99": 14.096652224137047,
+          "maximum": 15.811388300841896
+        },
+        "cpuStepPixels": {
+          "p50": 1.1649952897162212,
+          "p95": 8.779923590330032,
+          "p99": 11.920710981570311,
+          "maximum": 13.520892857507544
+        },
+        "imageStepBelow1WhileCpuAtLeast2": 0,
+        "imageStepBelow1WhileCpuAtLeast5": 0
+      }
+    ],
+    "capFits": [
+      {
+        "threshold": "140",
+        "cpuMissionFrameLag": -3,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          -0.4070740000000228,
+          -24.130402000000004
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 6.16818449055556,
+          "p95": 17.592217330903377,
+          "p99": 19.006866627946273,
+          "maximum": 20.366953322709502
+        },
+        "holdoutRmsPixels": 8.563209947622132
+      },
+      {
+        "threshold": "140",
+        "cpuMissionFrameLag": -2,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.17138699999998153,
+          -24.428680499999984
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 3.582836547177928,
+          "p95": 11.412001679006936,
+          "p99": 17.19463862243725,
+          "maximum": 17.66076605642255
+        },
+        "holdoutRmsPixels": 6.355830399258472
+      },
+      {
+        "threshold": "140",
+        "cpuMissionFrameLag": -1,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.4697570000000155,
+          -24.589950500000015
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 2.103312655859372,
+          "p95": 8.321310836624393,
+          "p99": 13.597146133527323,
+          "maximum": 16.01878676144289
+        },
+        "holdoutRmsPixels": 4.198052208538906
+      },
+      {
+        "threshold": "140",
+        "cpuMissionFrameLag": 0,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.4673765000000003,
+          -24.63969399999999
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 1.7016921280290283,
+          "p95": 6.188834175260417,
+          "p99": 6.863775047649221,
+          "maximum": 7.2784740028172
+        },
+        "holdoutRmsPixels": 2.652513004663777
+      },
+      {
+        "threshold": "140",
+        "cpuMissionFrameLag": 1,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.44476350000002185,
+          -24.5921175
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 2.8348828220744906,
+          "p95": 9.194100961671628,
+          "p99": 14.053821520217163,
+          "maximum": 16.677749000472172
+        },
+        "holdoutRmsPixels": 4.749626238937058
+      },
+      {
+        "threshold": "140",
+        "cpuMissionFrameLag": 2,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.6116944999999987,
+          -24.697052000000014
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 4.700404479917775,
+          "p95": 14.073467457144407,
+          "p99": 18.621910397418116,
+          "maximum": 20.63691601503918
+        },
+        "holdoutRmsPixels": 7.1100411192003765
+      },
+      {
+        "threshold": "140",
+        "cpuMissionFrameLag": 3,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          1.317169500000034,
+          -24.882720999999975
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 6.962980199149067,
+          "p95": 17.222863030040802,
+          "p99": 22.31573020804705,
+          "maximum": 23.453508946690274
+        },
+        "holdoutRmsPixels": 9.558864855555296
+      },
+      {
+        "threshold": "145",
+        "cpuMissionFrameLag": -3,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          -0.4070740000000228,
+          -24.115478499999995
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 6.167662637386719,
+          "p95": 17.58380522343777,
+          "p99": 19.00483523655551,
+          "maximum": 20.365929456761723
+        },
+        "holdoutRmsPixels": 8.521066060987701
+      },
+      {
+        "threshold": "145",
+        "cpuMissionFrameLag": -2,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.07922400000001062,
+          -24.424530000000004
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 3.602654312335197,
+          "p95": 11.438061355261869,
+          "p99": 16.914654923630323,
+          "maximum": 17.56927106847759
+        },
+        "holdoutRmsPixels": 6.329366411774652
+      },
+      {
+        "threshold": "145",
+        "cpuMissionFrameLag": -1,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.4348755000000324,
+          -24.599929500000002
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 2.0722460707677652,
+          "p95": 8.372040708744994,
+          "p99": 13.59862811821187,
+          "maximum": 15.986616410452235
+        },
+        "holdoutRmsPixels": 4.1603612977164675
+      },
+      {
+        "threshold": "145",
+        "cpuMissionFrameLag": 0,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.4305115000000228,
+          -24.65806599999999
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 1.6595795561030933,
+          "p95": 6.181241743987382,
+          "p99": 6.890065901413819,
+          "maximum": 7.266098198093118
+        },
+        "holdoutRmsPixels": 2.6373914895742727
+      },
+      {
+        "threshold": "145",
+        "cpuMissionFrameLag": 1,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.3851319999999987,
+          -24.5921175
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 2.694869484448801,
+          "p95": 9.233501694015656,
+          "p99": 13.630610254636952,
+          "maximum": 17.485742183727876
+        },
+        "holdoutRmsPixels": 4.756757864988593
+      },
+      {
+        "threshold": "145",
+        "cpuMissionFrameLag": 2,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.4704590000000053,
+          -24.65806599999999
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 4.585008560294045,
+          "p95": 13.934112292178852,
+          "p99": 18.897486625904452,
+          "maximum": 20.49127911767914
+        },
+        "holdoutRmsPixels": 7.111547211622626
+      },
+      {
+        "threshold": "145",
+        "cpuMissionFrameLag": 3,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          1.317169500000034,
+          -24.952515000000005
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 7.104466132801139,
+          "p95": 16.756859366470657,
+          "p99": 22.3283154594517,
+          "maximum": 23.477773894878222
+        },
+        "holdoutRmsPixels": 9.578493056098052
+      },
+      {
+        "threshold": "150",
+        "cpuMissionFrameLag": -3,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          -0.4070740000000228,
+          -24.096419999999995
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 6.259186724475761,
+          "p95": 17.58080046864833,
+          "p99": 19.00225771324149,
+          "maximum": 20.36463772466703
+        },
+        "holdoutRmsPixels": 8.523649536441603
+      },
+      {
+        "threshold": "150",
+        "cpuMissionFrameLag": -2,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.17138699999998153,
+          -24.409821000000022
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 3.547104408882775,
+          "p95": 11.41907990468335,
+          "p99": 17.000340228058676,
+          "maximum": 17.657525013338557
+        },
+        "holdoutRmsPixels": 6.3238368254957384
+      },
+      {
+        "threshold": "150",
+        "cpuMissionFrameLag": -1,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.4697570000000155,
+          -24.576415999999995
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 2.047048175783451,
+          "p95": 8.374448327232153,
+          "p99": 13.596283929165729,
+          "maximum": 16.01608391299392
+        },
+        "holdoutRmsPixels": 4.1775754365810425
+      },
+      {
+        "threshold": "150",
+        "cpuMissionFrameLag": 0,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.4673765000000003,
+          -24.603241000000025
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 1.617813858585164,
+          "p95": 6.211857630791684,
+          "p99": 7.089895162764897,
+          "maximum": 7.252353760285497
+        },
+        "holdoutRmsPixels": 2.660558909361188
+      },
+      {
+        "threshold": "150",
+        "cpuMissionFrameLag": 1,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.5314329999999927,
+          -24.5921175
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 2.6776408696430516,
+          "p95": 9.32507215635829,
+          "p99": 13.368359561299993,
+          "maximum": 17.61262971235356
+        },
+        "holdoutRmsPixels": 4.797712813618624
+      },
+      {
+        "threshold": "150",
+        "cpuMissionFrameLag": 2,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          0.8673709999999915,
+          -24.646438499999988
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 4.725231236960609,
+          "p95": 14.331135260916042,
+          "p99": 19.30089599710469,
+          "maximum": 20.85625435226807
+        },
+        "holdoutRmsPixels": 7.161752473544832
+      },
+      {
+        "threshold": "150",
+        "cpuMissionFrameLag": 3,
+        "trainFrames": 180,
+        "holdoutFrames": 352,
+        "constantOffsetPixels": [
+          1.317169500000034,
+          -24.835784999999987
+        ],
+        "holdoutErrorPixels": {
+          "n": 352,
+          "p50": 7.157948245028507,
+          "p95": 16.87038631548843,
+          "p99": 21.798388120123406,
+          "maximum": 23.437293686085535
+        },
+        "holdoutRmsPixels": 9.564390622638335
+      }
+    ],
+    "review": {
+      "equallySpacedSamples": 12,
+      "largestRetainedResidualSamples": 8,
+      "visuallyReviewed": true,
+      "naiveTrackerMisidentifiedRaisedHands": true,
+      "capTrackedHeadRegionsInReviewedSamples": true,
+      "exhaustiveOpticalGroundTruth": false
+    },
+    "limits": [
+      "Exploratory detector after inspecting prior spatial sheet; not preregistered or general purpose NPC tracking.",
+      "Headcap is an image silhouette landmark, not head bone origin; head rotation/skin deformation may change its offset.",
+      "Fixed ROI/color can confuse limbs/background; review required. Synthetic shift tests equivariance, not correct target selection.",
+      "Temporal holdout shares same video/scene, not independent runtime repetition.",
+      "Mission frame lag is not uniform milliseconds, a GPU timestamp, or proven causal render latency.",
+      "No visual smoothness acceptance or deployable fix.",
+      "Largest/uppermost component trackers are rejected for latency estimation because shoulders/raised fingers create false lags.",
+      "Cap lag0 fit does not establish zero GPU latency or no stutter; it is the best coarse observational HUD correspondence under a two-parameter constant spatial offset.",
+      "Natural pose curvature and variable mission-frame intervals prevent step quantiles from being directly labeled stutter duration."
+    ],
+    "next": "Apply the bounded image-only landmark method to already-recorded baseline/residual-carry comparisons for mean playback and pacing evidence, with pose/phase confounds explicit; do not deploy numeric carry or infer GPU cause from coarse lag0. Existing8/64 functional and cost work remains separate.",
+    "supportedClockControlEstablished": false,
+    "subframeDisplayLatencyMeasured": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "newNpcAlgorithm": false
+  },
+  "roi": [
+    730,
+    300,
+    150,
+    115
+  ],
+  "selectedPairs": [
+    {
+      "firstFrame": 361,
+      "lastFrame": 362,
+      "videoSeconds": 5.016666666666667,
+      "imageDeltaPixels": [
+        0.0,
+        0.0
+      ],
+      "cpuDeltaPixels": [
+        0.7755129999999326,
+        -0.5716859999999997
+      ],
+      "imageStepPixels": 0.0,
+      "cpuStepPixels": 0.9634548747942974
+    },
+    {
+      "firstFrame": 401,
+      "lastFrame": 402,
+      "videoSeconds": 5.816666666666666,
+      "imageDeltaPixels": [
+        1.0,
+        0.0
+      ],
+      "cpuDeltaPixels": [
+        0.7032469999999194,
+        0.1729429999999752
+      ],
+      "imageStepPixels": 1.0,
+      "cpuStepPixels": 0.7241999891313711
+    },
+    {
+      "firstFrame": 441,
+      "lastFrame": 442,
+      "videoSeconds": 6.616666666666667,
+      "imageDeltaPixels": [
+        0.0,
+        -1.0
+      ],
+      "cpuDeltaPixels": [
+        0.3360600000000886,
+        0.03524800000002415
+      ],
+      "imageStepPixels": 1.0,
+      "cpuStepPixels": 0.3379034553005655
+    },
+    {
+      "firstFrame": 481,
+      "lastFrame": 482,
+      "videoSeconds": 7.416666666666666,
+      "imageDeltaPixels": [
+        1.0,
+        0.0
+      ],
+      "cpuDeltaPixels": [
+        0.7169190000000754,
+        0.17031900000000633
+      ],
+      "imageStepPixels": 1.0,
+      "cpuStepPixels": 0.7368727259996194
+    },
+    {
+      "firstFrame": 499,
+      "lastFrame": 500,
+      "videoSeconds": 7.783333333333333,
+      "imageDeltaPixels": [
+        -13.0,
+        -1.0
+      ],
+      "cpuDeltaPixels": [
+        -11.663208000000054,
+        -0.9553219999999669
+      ],
+      "imageStepPixels": 13.038404810405298,
+      "cpuStepPixels": 11.702267343337752
+    },
+    {
+      "firstFrame": 503,
+      "lastFrame": 504,
+      "videoSeconds": 7.85,
+      "imageDeltaPixels": [
+        -15.0,
+        1.0
+      ],
+      "cpuDeltaPixels": [
+        -12.475219000000038,
+        0.5524290000000178
+      ],
+      "imageStepPixels": 15.033296378372908,
+      "cpuStepPixels": 12.487444370166498
+    },
+    {
+      "firstFrame": 721,
+      "lastFrame": 722,
+      "videoSeconds": 12.216666666666667,
+      "imageDeltaPixels": [
+        11.0,
+        1.0
+      ],
+      "cpuDeltaPixels": [
+        10.333191000000056,
+        0.5183410000000208
+      ],
+      "imageStepPixels": 11.045361017187261,
+      "cpuStepPixels": 10.346183529918807
+    },
+    {
+      "firstFrame": 726,
+      "lastFrame": 727,
+      "videoSeconds": 12.316666666666666,
+      "imageDeltaPixels": [
+        1.0,
+        0.0
+      ],
+      "cpuDeltaPixels": [
+        0.830016999999998,
+        0.3318479999999795
+      ],
+      "imageStepPixels": 1.0,
+      "cpuStepPixels": 0.8938967028650363
+    },
+    {
+      "firstFrame": 774,
+      "lastFrame": 775,
+      "videoSeconds": 13.283333333333333,
+      "imageDeltaPixels": [
+        -1.0,
+        0.0
+      ],
+      "cpuDeltaPixels": [
+        -1.9907230000000027,
+        -0.37658699999997225
+      ],
+      "imageStepPixels": 1.0,
+      "cpuStepPixels": 2.0260295731548417
+    },
+    {
+      "firstFrame": 814,
+      "lastFrame": 815,
+      "videoSeconds": 14.083333333333334,
+      "imageDeltaPixels": [
+        0.0,
+        0.0
+      ],
+      "cpuDeltaPixels": [
+        0.6277469999999994,
+        0.5587770000000205
+      ],
+      "imageStepPixels": 0.0,
+      "cpuStepPixels": 0.8404153923733323
+    },
+    {
+      "firstFrame": 823,
+      "lastFrame": 824,
+      "videoSeconds": 14.25,
+      "imageDeltaPixels": [
+        -10.0,
+        1.0
+      ],
+      "cpuDeltaPixels": [
+        -10.01074200000005,
+        -0.3656920000000241
+      ],
+      "imageStepPixels": 10.04987562112089,
+      "cpuStepPixels": 10.017419130166664
+    },
+    {
+      "firstFrame": 827,
+      "lastFrame": 828,
+      "videoSeconds": 14.333333333333334,
+      "imageDeltaPixels": [
+        -15.0,
+        0.0
+      ],
+      "cpuDeltaPixels": [
+        -13.511536000000092,
+        -0.502930000000049
+      ],
+      "imageStepPixels": 15.0,
+      "cpuStepPixels": 13.520892857507544
+    },
+    {
+      "firstFrame": 831,
+      "lastFrame": 832,
+      "videoSeconds": 14.416666666666666,
+      "imageDeltaPixels": [
+        -11.0,
+        3.0
+      ],
+      "cpuDeltaPixels": [
+        -9.703796000000011,
+        2.802917999999977
+      ],
+      "imageStepPixels": 11.40175425099138,
+      "cpuStepPixels": 10.100495340543457
+    },
+    {
+      "firstFrame": 841,
+      "lastFrame": 842,
+      "videoSeconds": 14.616666666666667,
+      "imageDeltaPixels": [
+        14.0,
+        -2.0
+      ],
+      "cpuDeltaPixels": [
+        11.866149999999948,
+        -1.938873000000001
+      ],
+      "imageStepPixels": 14.142135623730951,
+      "cpuStepPixels": 12.023507987797394
+    },
+    {
+      "firstFrame": 845,
+      "lastFrame": 846,
+      "videoSeconds": 14.7,
+      "imageDeltaPixels": [
+        11.0,
+        -5.0
+      ],
+      "cpuDeltaPixels": [
+        9.895690999999943,
+        -3.6390690000000063
+      ],
+      "imageStepPixels": 12.083045973594572,
+      "cpuStepPixels": 10.54360107146704
+    },
+    {
+      "firstFrame": 854,
+      "lastFrame": 855,
+      "videoSeconds": 14.883333333333333,
+      "imageDeltaPixels": [
+        0.0,
+        0.0
+      ],
+      "cpuDeltaPixels": [
+        -0.2463989999999967,
+        -0.4918519999999944
+      ],
+      "imageStepPixels": 0.0,
+      "cpuStepPixels": 0.5501189481421204
+    },
+    {
+      "firstFrame": 1145,
+      "lastFrame": 1146,
+      "videoSeconds": 20.7,
+      "imageDeltaPixels": [
+        0.0,
+        0.0
+      ],
+      "cpuDeltaPixels": [
+        0.3150630000000092,
+        0.1737370000000169
+      ],
+      "imageStepPixels": 0.0,
+      "cpuStepPixels": 0.35979054898372703
+    },
+    {
+      "firstFrame": 1155,
+      "lastFrame": 1156,
+      "videoSeconds": 20.9,
+      "imageDeltaPixels": [
+        -15.0,
+        -1.0
+      ],
+      "cpuDeltaPixels": [
+        -12.67181400000004,
+        -1.0209659999999872
+      ],
+      "imageStepPixels": 15.033296378372908,
+      "cpuStepPixels": 12.712877000260523
+    },
+    {
+      "firstFrame": 1159,
+      "lastFrame": 1160,
+      "videoSeconds": 20.983333333333334,
+      "imageDeltaPixels": [
+        -12.0,
+        1.0
+      ],
+      "cpuDeltaPixels": [
+        -10.373901000000046,
+        1.7091980000000149
+      ],
+      "imageStepPixels": 12.041594578792296,
+      "cpuStepPixels": 10.513761446837474
+    },
+    {
+      "firstFrame": 1171,
+      "lastFrame": 1172,
+      "videoSeconds": 21.216666666666665,
+      "imageDeltaPixels": [
+        13.0,
+        -1.0
+      ],
+      "cpuDeltaPixels": [
+        10.472351000000003,
+        -0.9230959999999868
+      ],
+      "imageStepPixels": 13.038404810405298,
+      "cpuStepPixels": 10.512955897007133
+    },
+    {
+      "firstFrame": 1175,
+      "lastFrame": 1176,
+      "videoSeconds": 21.3,
+      "imageDeltaPixels": [
+        15.0,
+        -5.0
+      ],
+      "cpuDeltaPixels": [
+        12.882140999999933,
+        -3.6846009999999865
+      ],
+      "imageStepPixels": 15.811388300841896,
+      "cpuStepPixels": 13.398725360013922
+    },
+    {
+      "firstFrame": 1185,
+      "lastFrame": 1186,
+      "videoSeconds": 21.5,
+      "imageDeltaPixels": [
+        1.0,
+        -1.0
+      ],
+      "cpuDeltaPixels": [
+        0.13653599999997823,
+        -0.3709410000000162
+      ],
+      "imageStepPixels": 1.4142135623730951,
+      "cpuStepPixels": 0.39527117878363716
+    },
+    {
+      "firstFrame": 1191,
+      "lastFrame": 1192,
+      "videoSeconds": 21.616666666666667,
+      "imageDeltaPixels": [
+        -9.0,
+        -4.0
+      ],
+      "cpuDeltaPixels": [
+        -10.13250800000003,
+        -3.2441709999999944
+      ],
+      "imageStepPixels": 9.848857801796104,
+      "cpuStepPixels": 10.639189999586696
+    },
+    {
+      "firstFrame": 1225,
+      "lastFrame": 1226,
+      "videoSeconds": 22.3,
+      "imageDeltaPixels": [
+        0.0,
+        0.0
+      ],
+      "cpuDeltaPixels": [
+        0.38263000000006286,
+        0.17172199999998838
+      ],
+      "imageStepPixels": 0.0,
+      "cpuStepPixels": 0.4193973798011191
+    }
+  ]
+}
+
+Exact detector excerpt (NumPy required; no CPU/HUD inputs):
+CAP_KERNELS=[]
+for radius in [9,10,11,12,13]:
+ yy,xx=np.mgrid[:radius+6,:2*radius+7];cx=radius+3;cy=radius+3
+ inside=(xx-cx)**2+(yy-cy)**2<=radius*radius
+ kernel=inside/inside.sum()-(~inside)/(~inside).sum()
+ CAP_KERNELS.append((radius,kernel.shape,np.fft.rfft2(kernel[::-1,::-1],s=(256,256))))
+def track(rgb,threshold=145):
+ # Image-only circular upper-head silhouette contrast. No CPU/HUD/previous-point input.
+ a=rgb.astype(np.int16);r,g,b=a[:,:,0],a[:,:,1],a[:,:,2]
+ mask=(r>=threshold)&(g>=threshold+5)&(b>=threshold-25)&(g>=r)&((g-b)>=10)&((g-b)<=70)
+ spectrum=np.fft.rfft2(mask.astype(float),s=(256,256));best=None
+ for radius,(kh,kw),kernel in CAP_KERNELS:
+  conv=np.fft.irfft2(spectrum*kernel,s=(256,256))[kh-1:mask.shape[0],kw-1:mask.shape[1]]
+  idx=np.unravel_index(np.argmax(conv),conv.shape);score=float(conv[idx])
+  row=dict(x=float(idx[1]+radius+3)+ROI[0],y=float(idx[0]+3)+ROI[1],radius=radius,score=score)
+  if best is None or score>best['score']:best=row
+ return best
