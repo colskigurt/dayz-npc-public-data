@@ -1,57 +1,56 @@
-# 실제 영상과 CPU 포즈 연결: 느린 클립 시간과 주기적 큰 step
+# 보간 상태·CPU·영상144쌍 부분 연결: reset 경계104개는 미확인
 
-작성: 2026-10-31T10:18:35.885886+09:00
+작성: 2026-10-31T10:31:57.253419+09:00
 
 ## 1. 작업 목표
 
-느린 root 시계가 clip sample 입력까지 이어진 기존 결과를 실제 녹화가 있는 실행에서 재관측하고, CPU 본 포즈와 화면 표시가 서로 다른 시점에 갱신되는지 구분한다. 원인 확인 전 새 시간 주입·보간·업데이트 생략을 적용하지 않는다.64 기능·성능은 독립 실험으로 유지한다.
+큰 포즈 step이 발생한 영상 프레임을 실제 native 보간 상태·클립 입력과 연결한다. 기존 느린 clip 시계 진단 이후의 실행 계층 문제를 좁히되 캐시와 최종 표시를 혼동하지 않는다. 기존 NPC 구현·정상 낙하/복구·운영 서버는 보존한다.
 
 ## 2. 실제 수행
 
-기존 서명된 B8FB archive를 직접 사용하는 격리 launcher로 논리1개체/네이티브8파트·고정 run2·AI/루트 이동 OFF·queryPose ON·VSync ON·120초를 실행했다. 공용 D61D는 교체하지 않았다. 기존 entry-only Frida로 root/dispatcher/clip kernel을8초 관찰했고 인자/시간/결과를 변경하지 않았다.
+기존 B8FB archive,1논리개체/8파트,고정 run2,AI/루트 이동 OFF,queryPose ON,VSync ON,120초 실행. 기존3개 root/dispatcher/clip entry 관찰에 보간·transform 적용 뒤4356b0 진입1개를 추가했다. return b72578·animal vtable·renderer 소유·73본·scheduler mode0를 검증하고 query188의6관절 캐시 좌표와 graphClock/accumulator/duration/최근 clip sample을8초 기록했다. 인자/시간/포즈 override와 return hook은 없다. 훅은 비활성화 후 정상 종료까지 유지했다.
 
-기존 공식 portable OBS의 DayZ 창 전용 WGC·음성/바탕화면 OFF·1600×900·60fps·CRF0 설정을 재사용했다. 이번 출력 폴더만 지정했고 설정 변경 전 ini를 보존했다.45초 녹화 정상 완료 후 diagnostic recorder를 닫았으며, 게임의120초 정상 종료를 기다렸다. 실제 영상4개 시점의 contact sheet를 직접 확인해 actor ROI와 HUD 가시성을 검토했다.
+기존 OBS WGC로 DayZ 창만45초·1600×900·60fps·CRF0 녹화,음성/바탕화면 제외. 녹화와게임 모두 정상 종료했다. contact sheet4시점을 직접 검토했다. 영상5/8/11초부터 각3초를 기존 glyph/HUD·CPU/윤곽 분석으로 연결했다. Steam 알림이40초 화면 우하단에 보이지만 선정 actor/HUD ROI나 공개 자료에는 포함하지 않는다.
 
-기존 도구로 영상1/4/7/20/30초부터 각3초 구간을 분석했다. 다른 실행의 수동 확인 glyph anchor로 HUD F/T/A를 해독하고 이번 CPU TSV와 정확히 일치한 프레임만 사용했다. 임계값5/10/25/50pixel과0.1/1mm CPU RMS를 함께 보존했다. callback counter 기준±2frame 분류는 결과 확인 후 추가한 탐색 분석이며 사전 확정 검정이나 native 경계의 증명이 아니다.
+독립6관절 교정의 raw 파일2개가 최소 작업본에 없어 Steam 복구본에서20,405,871bytes와1,025,718bytes만 복원했다. 기존 복원 도구가 archive/member 해시를 검증했고 기존 파일을 덮어쓰지 않았다. 교정은 background448frame의6관절 매핑을 재검증한 것으로 foreground 표시 시간의 교정은 아니다.
 
-영상 분석 기본 Python에 imageio_ffmpeg가 없어 첫 sheet 추출이 실행되지 않았다. 설치된 uv의 기존 캐시를 offline으로 사용해 imageio-ffmpeg0.7.0/Pillow 환경에서 성공했다. inherited analyzer의 videoRecorded=false 기본값은 정상 녹화 메타데이터로 수정했고 수정 전 파생본도 보존했다. 원시 기록을 수정한 것은 아니다.
+시계 bridge는 기존 nonce/ACK 프로토콜을 재사용했지만 새 helper의 마지막 검사가 TickCount를 절대 QPC와 동일시해 실패했다. 원시38ACK를 보존하고 기존 도구의 offset interval 방식을 별도 분석기로 적용했다. 원점 차이가 있는 두 시계에서 unwrap·ACK 전후 QPC 구간의 교집합을 검증했다. helper 원본/오류는 보존했고 성공으로 바꾸지 않았다. 게임을 재시작하거나 raw를 수정하지 않았다.
 
 ## 3. 측정 결과
 
-- 실행 runtime-20261031-101131, 정상 종료. root/dispatcher/kernel 각각 **103/103/103회**, observer 오류/drop0.
-- clip 시간 증가 **5.100019455초 / host 7.883초 = 0.646964배**. root 증가량과 최대 잔차0. command+12는103회 모두 root dt와 일치.
-- 이전 무녹화 실행의0.624845배와 이번0.646964배는 모두 느린 진행을 보였다. OBS 유무가 다르므로 엄격한 동일 조건 반복이나 개선 비교로 취급하지 않는다.
-- 영상 **70926041bytes**, OBS output2701frames, rendering lag1frame, CRF0·60/1 확인. 실제 녹화이지 HUD 플래그만 있는 실행이 아니다.
-- 선정 **900영상프레임 중883개 HUD 정확 일치**,17개 모호/불일치 제외. 인접714쌍 수용, 그중710쌍은 연속 mission frame. 중복 HUD150쌍에서10pixel 이상 몸 변화0.
-- CPU RMS와 화면 윤곽 변화량 상관 **0.943549**(714쌍),연속710쌍 **0.942423**. lag±1/±2는 각각 음의 상관이었으며 전체 값을 보존했다.
--714쌍 모두5/10/25pixel 기준 몸 변화가 관측됐다.50pixel 기준1쌍만 작은 CPU 변화와 함께 기준 아래였다. HUD는 바뀌는데 몸만10pixel 기준으로 멈춘 구간은 이번5개 창에서0.
-- 연속710쌍 중75mm 초과 CPU RMS step **158개**. callback counter 증가2frame 뒤 분류에는149개,나머지에는9개. 해당 두 집단 RMS 중앙값 **97.355/17.789mm**,화면 변화 중앙값 **3765.0/1068.0pixel**. 이 주기 때문에 미래2frame 분류에서도 유사 패턴이 생기므로 지연의 인과 확정은 금지한다.
--15~55초 전경 비율1.0,mission frame p50/p95/p99 **20.0/35.0/36.0ms**. OBS/훅 포함으로 최적화 수용에 사용하지 않는다.
+- 실행 runtime-20261031-102334,정상 종료. root/dispatcher/clip 각 **104회**,post-stage 캐시 좌표 **401개**,native observer 오류/drop0.
+- clip 시계 **0.648535배**,root와 clip 증가량 잔차0. 새 영상은75644630bytes이며 최종 해시를 기록했다.
+- bridge **38ACK**의 frame/T/A가 CPU TSV와 정확히 일치. offset 허용폭 **14.2873ms**,epoch spread **7.7975ms**. 절대 QPC 동일성 검사는 실패 상태로 유지하며 원점 변환 검증과 구분한다.
+- 영상540frame 중 **484개 HUD 정확 일치**,56개 제외. CPU/화면353쌍,변화량 상관 **0.946186**.
+- 추가100ms 여유를 쓰는 기존 매칭 방식은399표본/297frame을 연결했으나102frame에 서로 다른 native 상태가 섞였다. 미래/다른 시점의 반복 포즈를 동일 frame 증거로 수용하지 않았다.
+- 추가 여유0ms의 ACK 시간 범위에서는 **296표본/296frame**만 유일하게 일치.25ms 여유에서도 같은 선택이다.104개 불일치와1개 모호 표본은 제외했다. 연속 native 상태192쌍 중 영상까지 연결된 것은 **144쌍**이다.
+- 불일치104개는 모두 **accumulator=0** 표본. positive accumulator는296개 일치,1개 모호.144쌍에는 새 clip sample/reset 경계 **0개**다. 따라서 목표 경계를 아직 연결하지 못했다.
+- mission15~55초 p50/p95/p99 **20.0/35.0/37.0ms**. 녹화/훅 비용 포함이며64성능 또는 최적화 개선으로 사용하지 않는다.
 
 ## 4. 원인 분석
 
-확인: CPU 본 변화와 실제 화면 윤곽 변화가 같은 HUD 프레임에서 강하게 연결됐다. 선택 고정 run의 이번 구간에서는 CPU만 움직이고 표시 포즈가 별도로 오래 멈추는 현상을 재현하지 못했다. clip 샘플 입력의 느린 진행은 영상이 있는 실행에서도 관측됐다.
+확인: 누적기가 양수인 구간에서는 native stage의 캐시 좌표와 CPU/영상 포즈를 부분 연결했다. 반면 새로운 평가 뒤0으로 초기화된 경계에서는 같은 방식이 성립하지 않았다. 넓은 시간 여유와 위치 지문만으로 reset 순간의 frame identity를 선언하면 오판할 수 있다.144쌍 수용이 목표 경계의 성공을 의미하지 않는다.
 
-관측된 큰 step은 화면에도 나타나며 callback 주기 주변의 특정 frame 위치에 집중된다. 따라서 정지 프레임 수만 세는 방법으로 사용자가 느낀 끊김을 모두 설명할 수 없다. 느린 전체 재생,프레임 간 시간 간격,주기적 포즈 증분의 불연속을 구분해야 한다.
+정적 선택: b13380는 renderer+a0를 b13410에 전달하고,b13410의 해당 경로는 renderer+190 skeleton의 dirtyA8을1로 표시하며+30의 local TRS 배열에 접근한다. 이는 선택 명령의 dataflow이며 모든 함수/virtual effect를 복원한 것은 아니다. query188+38 행렬 캐시의 신선도나 renderer+190과의 현재 alias 관계를 이번 native observer는 기록하지 않았다.
 
-가설: 평가·보간 세대 전환과 누적기 reset이 표시 step에 기여할 수 있다. 기존 정적/런타임 clock 증거와 양립하지만 이번 영상만으로 해당 명령의 인과를 확정하지 않는다. counter A는 스크립트 업데이트이며 실제 graph 평가 이벤트와 동일하지 않다. 영상 HUD와 CPU frame의 연결은 정확하지만 **native clip 호출 각각을 동일 영상 frame에 연결하지는 않았다**. GPU Present·관절 optical tracking·주관적 부드러움은 미측정이다.
+가설: 평가/보간 세대 전환에서 캐시 행렬·새 TRS·CPU getter가 서로 다른 시점의 값을 보일 수 있다. 정상적인 lazy cache와 실제 시각 불연속을 아직 구분하지 못했다. 이 현상을 곧바로 엔진 버그 또는 확정된 끊김 원인으로 부르지 않는다. 느린 clip 시계 증거는 유지되지만 reset 경계의 표시 인과는 미확인이다.
 
 ## 5. 검증 수준
 
-실제 녹화·HUD/CPU 포즈/화면 변화 연결: **진단 성공,1개체1회·선정5구간**. 느린 clip 시계: 서로 다른 OBS 조건의2실행에서 관측,엄격한 반복 수용 아님. callback lag: 탐색 가설. 수정 효과·전14clip·8/64 기능 회귀·64비용·20ms p95·시각 최종 수용: 미완료.
+native observer/게임·녹화 종료/독립 좌표 매핑/38ACK offset: 진단 성공. bridge producer의 절대원점 assertion: 실패,오프라인 변환 검증과 별도 표기. native/CPU/영상144쌍: 부분 진단. reset 경계/캐시 신선도/최종 GPU 표시: 미확인. 수정 효과·반복 기능 회귀·64비용·20ms p95·전체 수용: 미완료.
 
 ## 6. 변경 사항
 
-빌드 B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185 유지. 새 PBO/재서명/배포 없음. 실행 전3개 의존 PBO의 기존 서명 검증 성공. 원시 기록·운영 서버·공용 D61D·개인키 보존. 기존 분석기 재사용과 격리 finish/join/counter 분류 및 출력만 추가했다. OBS 출력 위치 변경 전 설정을 보존했고 desktop/audio source는 추가하지 않았다.
+빌드 B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185 유지,새 PBO/서명/배포 없음. 실행 전3개 의존 PBO의 기존 서명 검증 성공. 새 entry observer/driver·bridge·정적 선택·분석/보고서만 추가했고 공용 D61D·원시 기록·운영 서버·개인키는 보존했다. 이전 관찰기와 보고서를 덮어쓰지 않았다. OBS 출력 위치 변경 전 설정도 보존했다.
 
 ## 7. 원시 증거
 
-plan/attach-readiness/results/visible-join/callback-boundaries/callback-lag-exploration/pacing-driver와 profile의 launch/native-call-probe/visible-frame-clock/visible-frame-ids/visible-clip-analysis/visible-pose-alignment/obs-capture 기록 및 finalized MKV를 연결했다. 원시와 이전 보고서를 덮어쓰지 않았다. 각 입력 해시를 분석 때 대조하고 체크포인트 저장 전 재검증한다. 공개본은 선정 event/요약/분류와 함수만 포함하며 영상 전체·로컬 경로·실행 포인터·프로세스 정보·키를 제외한다.
+plan/preflight/six-point-calibration/post-stage-static/interpolated-trs-writer-selection/bridge stderr/clock-bridge-calibration/native-pose-join/native-pose-strict/native-pose-margin25/joined-summary/results를 연결했다. profile의 raw calls/status/configuration/launch/native-clock-bridge/visible-frame-clock/HUD/윤곽/포즈 분석과 finalized MKV를 보존했다. 새 observer의 source hash 및 분석 입력 hash를 대조했고 checkpoint 저장 때 재검증한다. 공개 자료는 요약·선정 표본·선정 함수이며 raw 전체·영상·로컬 경로·프로세스/스레드/실행 포인터·개인키는 제외한다.
 
 ## 8. 잔여 문제
 
-다음은 **큰 포즈 step이 발생한 frame의 실제 native 보간 세대/누적기와 clip sample 시간을 함께 연결**하는 것이다. 이미 검증한 기존 native-clock/pose-frame 연결 도구를 우선 재사용하고,새 observer는 필요한 데이터만 제한적으로 추가한다. 정확한 native↔영상 frame 연결 없이±2frame 탐색 상관을 지연의 확정 원인으로 사용하지 않는다.
+다음 observer는 **dirtyA8,query188/interpolated190 alias,실제 보간 local TRS(+30)**를 함께 기록해0누적기 경계를 확인해야 한다. 기존 cached matrix만 다시 같은 방식으로 읽는 실험은 반복하지 않는다. 실제 matrix refresh 계약과 출력 소유가 확인되면 같은 영상의 reset frame을 연결한다. getter를 강제 호출해 캐시를 갱신하면 관찰 대상이 바뀌므로 우선 passive 데이터와 원본 함수 순서를 사용한다.
 
-그 뒤 지원되는 시계/평가 제어가 존재하는지 계약을 확인하고 최소 후보1개를 별도 실행에서 비교한다. 현재 무작정 playback 배수·dt주입·프레임 생략은 적용하지 않는다.64 혼잡 원인 재현과 비용 귀속은 각각 별도 조건을 유지한다. 미지원 API/표시 단계가 확인되면 필요한 도구 또는 사용자 관찰을 명시한다.
+지원되는 평가/시간 전달 계약이 확보되기 전 새 보간·float dt주입·고정 playback 배수는 적용하지 않는다.64 동적 혼잡 재현/기능 회귀와 비용 귀속은 각각 별도 조건으로 계속 관리한다. 이 실험의 partial join이나 bridge 보정만으로 애니메이션 개선을 선언하지 않는다.
 
-선정 공개 본문. 로컬 보고서 SHA-256: `c58a69b2bce645db599506d382d8c4bf542436dac02cd33c13436ebf118c4a48`. 원시 전체가 아니다.
+선정 공개 본문. 로컬 보고서 SHA-256: `b591fee43ec67d8557dae56348ce79ac250f089dbd12abc0af02d33b781b6add`. 원시 전체가 아니다.

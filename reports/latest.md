@@ -1,3 +1,5 @@
+> 최신 native/CPU/영상 부분 진단(2026-10-31): 296개 엄격 캐시 포즈 일치와144개 영상 쌍을 연결했지만,0누적기104표본/reset 경계는 일치하지 않았다.38ACK 원점 변환은 별도 검증했으며 초기 절대QPC assertion 실패를 보존했다. [조건·한계·선정 근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-native-pose-join-20261031.md). 이전 기록은 아래에 보존한다.
+
 > 최신 실제 영상 진단(2026-10-31): 883/900 HUD프레임 일치,714 CPU/화면 쌍의 변화량 상관0.943549. 클립 시간0.646964배 진행 및 주기적 큰 포즈 step 관측. 정확한 native↔영상 frame 연결·수정·64수용은 미완료다. [조건·선정 근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-clip-visible-20261031.md). 이전 기록은 아래에 보존한다.
 
 > 최신 클립 시간 진단(2026-10-31): root/dispatcher/clip kernel 각100회 연결. 클립 시간은 실제7.922초 동안4.950초 진행(0.624845배),root 증가량과 정확히 일치했다. 실제 표시·수정 효과·64비용은 미수용이다. [조건·선정 근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-clip-consumer-20261031.md). 이전 기록은 아래에 보존한다.
@@ -18,9 +20,9 @@
 
 > 최신 계측 진단(2026-10-31): 함수별64개체 기록은 확보했지만 고지대 FOLLOW63/64로 기능 게이트 미통과.61번이 낙하/착지 복구에서 지연된 뒤 최종64/64는 도달했다. 비용 반복·시각/성능 수용도 미완료다. [조건·수치·61번 타임라인](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/follow-cost-sixtyfour-20261031.md). 이전 B93D 기능 반복은 아래에 보존한다.
 
-> 最新 계측 진단(2026-10-31): B93D를 보존한 별도 계측 패키지에서 FOLLOW 내부 함수의8개체 실제 기록을 검증했다. 새 패키지64명·대조 반복·시각/성능 수용은 아직 미완료다. [조건·수치·실패 이력](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/follow-cost-eight-20261031.md). 아래의 이전 B93D64명 기준 측정/기능 반복은 보존한다.
+> 최신 계측 진단(2026-10-31): B93D를 보존한 별도 계측 패키지에서 FOLLOW 내부 함수의8개체 실제 기록을 검증했다. 새 패키지64명·대조 반복·시각/성능 수용은 아직 미완료다. [조건·수치·실패 이력](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/follow-cost-eight-20261031.md). 아래의 이전 B93D64명 기준 측정/기능 반복은 보존한다.
 
-> 最新 비용 진단(2026-10-31): B93D 고정 카메라·64개체 300초의 중첩 경과 타이머 기준 측정을 완료했다. 최적화 대조나 시각 품질 수용이 아니다. [측정값·조건·한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/b93d-cost-baseline-20261031.md). 앞선 8/64 기능 반복 기록은 아래에 보존한다.
+> 최신 비용 진단(2026-10-31): B93D 고정 카메라·64개체 300초의 중첩 경과 타이머 기준 측정을 완료했다. 최적화 대조나 시각 품질 수용이 아니다. [측정값·조건·한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/b93d-cost-baseline-20261031.md). 앞선 8/64 기능 반복 기록은 아래에 보존한다.
 
 > 최신 반복 회귀(2026-10-31): B93D 예산 복원 ON은 8명·64명 각각 두 번 기능 게이트 통과. 64명 최종 도착 64/64 두 번, 낙하 복귀 83/81회. p95 66/60ms, 시각·성능·전체 골 미수용. [여섯 실행의 결과와 한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/touchdown-budget-six-20261031.md). 아래는 과거 보존 기록이다.
 

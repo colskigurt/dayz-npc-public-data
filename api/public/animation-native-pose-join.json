@@ -1,0 +1,422 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T10:31:59.696485+09:00",
+  "sourceRunId": "animation-native-pose-join-20261031-102143",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "verificationStatus": {
+    "diagnostic": "partial_native_cpu_video_join_reset_missing",
+    "repeatAcceptance": false,
+    "resetBoundary": "not_joined",
+    "bridgeProducer": "failed_absolute_origin_assertion",
+    "bridgeOffset": "offline_validated",
+    "visual": "measured_partial_not_accepted",
+    "performance": "excluded_hook_overhead",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "runtimeRunId": "runtime-20261031-102334",
+    "normalQuitVerified": true,
+    "logicalAgents": 1,
+    "nativeParts": 8,
+    "repetitions": 1,
+    "observerSeconds": 8,
+    "runtimeSeconds": 120,
+    "rootCalls": 104,
+    "dispatchCalls": 104,
+    "clipKernelCalls": 104,
+    "opcodes": {
+      "2": 104
+    },
+    "resourceInteger64": 60,
+    "resourceFloat68": 2.0833332538604736,
+    "manifestClipIndex": 2,
+    "manifestFps": 60.0,
+    "manifestFrames": 126,
+    "manifestDurationSeconds": 2.0833333333333335,
+    "manifestPeriodResidualSeconds": -7.947285984855057e-08,
+    "wrappedPairs": 2,
+    "phaseAdvanceSeconds": 5.150019645690918,
+    "rootClockAdvanceSeconds": 5.150019645690918,
+    "hostSpanMs": 7941,
+    "phaseSecondsPerHostSecond": 0.6485354043182116,
+    "phaseVsRootMaxResidualSeconds": 0.0,
+    "commandFloatCEqualsRootDtCount": 104,
+    "rootContextDtMs": {
+      "p50": 50.00019073486328,
+      "p95": 50.00019073486328,
+      "p99": 50.00019073486328
+    },
+    "clipUnwrappedStepMs": {
+      "p50": 50.00019073486328,
+      "p95": 50.00019073486328,
+      "p99": 50.00019073486328
+    },
+    "clipEntryIntervalMs": {
+      "p50": 80.0,
+      "p95": 83.0,
+      "p99": 87.98
+    },
+    "errors": 0,
+    "droppedEvents": 0,
+    "numericOverrides": false,
+    "nativeHooks": true,
+    "gameCodeChanged": false,
+    "newPbo": false,
+    "videoRecorded": true,
+    "actualFpRegistersCaptured": false,
+    "actualLowerDecoderEntryCaptured": false,
+    "finalPoseOutputCaptured": false,
+    "gpuPresentedPhaseMeasured": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "partialNativeJoin": {
+      "sourceRunId": "animation-native-pose-join-20261031-102143",
+      "runtimeRunId": "runtime-20261031-102334",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "normalQuitVerified": true,
+      "clipKernelCalls": 104,
+      "clipClockRate": 0.6485354043182116,
+      "postStageSamples": 401,
+      "strictMatchedSamples": 296,
+      "strictMatchedFrames": 296,
+      "strictUnambiguousNativePairs": 192,
+      "outcomes": {
+        "no_exact_match": 104,
+        "unique_exact_foreground": 296,
+        "ambiguous_exact_matches": 1
+      },
+      "resetBoundaryClassification": {
+        "zeroAccum_notMatched": 104,
+        "positiveAccum_matched": 296,
+        "positiveAccum_notMatched": 1
+      },
+      "margin0And25SelectionsIdentical": true,
+      "relaxed100ms": {
+        "matchedSamples": 399,
+        "uniqueFrames": 297,
+        "ambiguousStateFrames": 102
+      },
+      "exactHudFrames": 484,
+      "testedVideoFrames": 540,
+      "cpuVideoPairs": 353,
+      "cpuVideoCorrelation": 0.9461864262575002,
+      "nativeCpuVideoTriples": 144,
+      "resetTriples": 0,
+      "selectedNativeSamples": [
+        {
+          "sequence": 5,
+          "sourceLine": 2,
+          "frame": 345,
+          "missionSeconds": 6.977,
+          "appActive": true,
+          "sampleMissionBoundsSeconds": [
+            6.958996199999994,
+            6.981115099999997
+          ],
+          "rmsPositionErrorMeters": 4.832369809929668e-07,
+          "nextBestErrorMeters": 0.013540240046716705,
+          "graphClock": 4.59999942779541,
+          "accumulator": 0.00800000037997961,
+          "duration": 0.05000000074505806,
+          "latestClipSequence": 3,
+          "clipOldClock": 4.549999237060547,
+          "clipDt": 0.05000019073486328,
+          "clipPhase": 0.4333329200744629,
+          "clipPeriod": 2.0833332538604736,
+          "nativeSeconds": 4.6,
+          "animUpdates": 92,
+          "clockMinusScriptSeconds": -5.722045894884786e-07,
+          "cachedPoseFreshnessEstablished": false
+        },
+        {
+          "sequence": 6,
+          "sourceLine": 2,
+          "frame": 346,
+          "missionSeconds": 7.009,
+          "appActive": true,
+          "sampleMissionBoundsSeconds": [
+            6.9918043999999995,
+            7.013924099999997
+          ],
+          "rmsPositionErrorMeters": 4.710366368865052e-07,
+          "nextBestErrorMeters": null,
+          "graphClock": 4.59999942779541,
+          "accumulator": 0.04000000283122063,
+          "duration": 0.05000000074505806,
+          "latestClipSequence": 3,
+          "clipOldClock": 4.549999237060547,
+          "clipDt": 0.05000019073486328,
+          "clipPhase": 0.4333329200744629,
+          "clipPeriod": 2.0833332538604736,
+          "nativeSeconds": 4.6,
+          "animUpdates": 92,
+          "clockMinusScriptSeconds": -5.722045894884786e-07,
+          "cachedPoseFreshnessEstablished": false
+        },
+        {
+          "sequence": 7,
+          "sourceLine": 2,
+          "frame": 347,
+          "missionSeconds": 7.014,
+          "appActive": true,
+          "sampleMissionBoundsSeconds": [
+            6.996746499999993,
+            7.0188682
+          ],
+          "rmsPositionErrorMeters": 4.777374197415155e-07,
+          "nextBestErrorMeters": 0.06993346197212887,
+          "graphClock": 4.59999942779541,
+          "accumulator": 0.046000003814697266,
+          "duration": 0.05000000074505806,
+          "latestClipSequence": 3,
+          "clipOldClock": 4.549999237060547,
+          "clipDt": 0.05000019073486328,
+          "clipPhase": 0.4333329200744629,
+          "clipPeriod": 2.0833332538604736,
+          "nativeSeconds": 4.6,
+          "animUpdates": 92,
+          "clockMinusScriptSeconds": -5.722045894884786e-07,
+          "cachedPoseFreshnessEstablished": false
+        },
+        {
+          "sequence": 711,
+          "sourceLine": 41,
+          "frame": 742,
+          "missionSeconds": 14.917,
+          "appActive": true,
+          "sampleMissionBoundsSeconds": [
+            14.899120999999994,
+            14.921241199999997
+          ],
+          "rmsPositionErrorMeters": 4.92228869510809e-07,
+          "nextBestErrorMeters": 0.01817658083625503,
+          "graphClock": 9.750019073486328,
+          "accumulator": 0.006000000052154064,
+          "duration": 0.05000000074505806,
+          "latestClipSequence": 709,
+          "clipOldClock": 9.700018882751465,
+          "clipDt": 0.05000019073486328,
+          "clipPhase": 1.4166860580444336,
+          "clipPeriod": 2.0833332538604736,
+          "nativeSeconds": 9.75002,
+          "animUpdates": 195,
+          "clockMinusScriptSeconds": -9.265136711178457e-07,
+          "cachedPoseFreshnessEstablished": false
+        },
+        {
+          "sequence": 712,
+          "sourceLine": 41,
+          "frame": 743,
+          "missionSeconds": 14.951,
+          "appActive": true,
+          "sampleMissionBoundsSeconds": [
+            14.933606599999997,
+            14.955725600000001
+          ],
+          "rmsPositionErrorMeters": 4.2990500338555584e-07,
+          "nextBestErrorMeters": null,
+          "graphClock": 9.750019073486328,
+          "accumulator": 0.04000000283122063,
+          "duration": 0.05000000074505806,
+          "latestClipSequence": 709,
+          "clipOldClock": 9.700018882751465,
+          "clipDt": 0.05000019073486328,
+          "clipPhase": 1.4166860580444336,
+          "clipPeriod": 2.0833332538604736,
+          "nativeSeconds": 9.75002,
+          "animUpdates": 195,
+          "clockMinusScriptSeconds": -9.265136711178457e-07,
+          "cachedPoseFreshnessEstablished": false
+        },
+        {
+          "sequence": 713,
+          "sourceLine": 41,
+          "frame": 744,
+          "missionSeconds": 14.956,
+          "appActive": true,
+          "sampleMissionBoundsSeconds": [
+            14.938937899999999,
+            14.961055899999998
+          ],
+          "rmsPositionErrorMeters": 4.86035979611027e-07,
+          "nextBestErrorMeters": 0.10988298403806247,
+          "graphClock": 9.750019073486328,
+          "accumulator": 0.046000003814697266,
+          "duration": 0.05000000074505806,
+          "latestClipSequence": 709,
+          "clipOldClock": 9.700018882751465,
+          "clipDt": 0.05000019073486328,
+          "clipPhase": 1.4166860580444336,
+          "clipPeriod": 2.0833332538604736,
+          "nativeSeconds": 9.75002,
+          "animUpdates": 195,
+          "clockMinusScriptSeconds": -9.265136711178457e-07,
+          "cachedPoseFreshnessEstablished": false
+        }
+      ],
+      "cacheFreshnessEstablished": false,
+      "exactResetBoundaryJoin": false,
+      "clockBridgeProducerValidation": "failed_absolute_origin_assumption",
+      "clockBridgeOffsetCalibration": "validated38ACK",
+      "nativeObserverStatus": "succeeded",
+      "gameCodeChanged": false,
+      "newPbo": false,
+      "numericOverrides": false,
+      "videoRecorded": true,
+      "gpuPresentMeasured": false,
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false,
+      "limits": [
+        "Partial match only: all104 zero-accumulator reset samples lack a strict same-time cached-pose match.",
+        "Loose100ms matching admitted future/different-state poses and is not accepted as exact frame identity.",
+        "296 strict matches associate observed query-cache coordinates with script frame; fresh interpolated TRS/final matrix ownership remains unproven.",
+        "No causal intervention; same-run partial native/CPU/video observations do not prove a specific fix."
+      ],
+      "selectedTriples": [
+        {
+          "firstFrame": 345,
+          "lastFrame": 346,
+          "graphDelta": 0.0,
+          "accumulatorDelta": 0.032000002451241016,
+          "predictedClockPlusAccumulatorDelta": 0.032000002451241016,
+          "newClipSample": false,
+          "firstGraphClock": 4.59999942779541,
+          "lastGraphClock": 4.59999942779541,
+          "firstAccum": 0.00800000037997961,
+          "lastAccum": 0.04000000283122063,
+          "bodyMaskChangedPixels": 1611,
+          "queriedRmsChangeMeters": 0.016852689117763962
+        },
+        {
+          "firstFrame": 346,
+          "lastFrame": 347,
+          "graphDelta": 0.0,
+          "accumulatorDelta": 0.006000000983476639,
+          "predictedClockPlusAccumulatorDelta": 0.006000000983476639,
+          "newClipSample": false,
+          "firstGraphClock": 4.59999942779541,
+          "lastGraphClock": 4.59999942779541,
+          "firstAccum": 0.04000000283122063,
+          "lastAccum": 0.046000003814697266,
+          "bodyMaskChangedPixels": 4584,
+          "queriedRmsChangeMeters": 0.06993337670001834
+        },
+        {
+          "firstFrame": 349,
+          "lastFrame": 350,
+          "graphDelta": 0.0,
+          "accumulatorDelta": 0.020999999716877937,
+          "predictedClockPlusAccumulatorDelta": 0.020999999716877937,
+          "newClipSample": false,
+          "firstGraphClock": 4.649999618530273,
+          "lastGraphClock": 4.649999618530273,
+          "firstAccum": 0.01600000075995922,
+          "lastAccum": 0.03700000047683716,
+          "bodyMaskChangedPixels": 2177,
+          "queriedRmsChangeMeters": 0.04130307953409768
+        },
+        {
+          "firstFrame": 739,
+          "lastFrame": 740,
+          "graphDelta": 0.0,
+          "accumulatorDelta": 0.006000000983476639,
+          "predictedClockPlusAccumulatorDelta": 0.006000000983476639,
+          "newClipSample": false,
+          "firstGraphClock": 9.700018882751465,
+          "lastGraphClock": 9.700018882751465,
+          "firstAccum": 0.04000000283122063,
+          "lastAccum": 0.046000003814697266,
+          "bodyMaskChangedPixels": 3049,
+          "queriedRmsChangeMeters": 0.14817387384646002
+        },
+        {
+          "firstFrame": 742,
+          "lastFrame": 743,
+          "graphDelta": 0.0,
+          "accumulatorDelta": 0.03400000277906656,
+          "predictedClockPlusAccumulatorDelta": 0.03400000277906656,
+          "newClipSample": false,
+          "firstGraphClock": 9.750019073486328,
+          "lastGraphClock": 9.750019073486328,
+          "firstAccum": 0.006000000052154064,
+          "lastAccum": 0.04000000283122063,
+          "bodyMaskChangedPixels": 803,
+          "queriedRmsChangeMeters": 0.020032372400691847
+        },
+        {
+          "firstFrame": 743,
+          "lastFrame": 744,
+          "graphDelta": 0.0,
+          "accumulatorDelta": 0.006000000983476639,
+          "predictedClockPlusAccumulatorDelta": 0.006000000983476639,
+          "newClipSample": false,
+          "firstGraphClock": 9.750019073486328,
+          "lastGraphClock": 9.750019073486328,
+          "firstAccum": 0.04000000283122063,
+          "lastAccum": 0.046000003814697266,
+          "bodyMaskChangedPixels": 3240,
+          "queriedRmsChangeMeters": 0.10988301492496463
+        }
+      ]
+    },
+    "clockCalibration": {
+      "sourceRunId": "animation-native-pose-join-20261031-102143",
+      "acks": 38,
+      "frequency": 10000000,
+      "offsetWidthMs": 14.2873,
+      "epochSpreadMs": 7.797500000002344,
+      "sharedAbsoluteQpcAssertionPassed": false,
+      "offsetModelValidated": true,
+      "ackFrameFieldsExact": true,
+      "method": "Existing native-matrix-pose-match offset interval: unwrap TickCount32, intersect beforeQpc-nativeTick .. afterQpc-nativeTick, shared frequency; not equality of absolute origins",
+      "originalProducerFailurePreserved": true,
+      "goalComplete": false
+    },
+    "pacing": {
+      "steady": {
+        "frames": 1999,
+        "foregroundFrames": 1999,
+        "foregroundFraction": 1.0,
+        "missionFrameMs": {
+          "p50": 20.0,
+          "p95": 35.0,
+          "p99": 37.0
+        },
+        "hostCallbackHz": {
+          "minimum": 12.755949794217644,
+          "median": 12.755949794217644,
+          "maximum": 12.755949794217644
+        },
+        "nativeClockSecondsPerWallSecond": {
+          "minimum": 0.6377918658452414,
+          "median": 0.6377918658452414,
+          "maximum": 0.6377918658452414
+        }
+      }
+    }
+  },
+  "blockers": [
+    "Partial match only: all104 zero-accumulator reset samples lack a strict same-time cached-pose match.",
+    "Loose100ms matching admitted future/different-state poses and is not accepted as exact frame identity.",
+    "296 strict matches associate observed query-cache coordinates with script frame; fresh interpolated TRS/final matrix ownership remains unproven.",
+    "No causal intervention; same-run partial native/CPU/video observations do not prove a specific fix.",
+    "No supported evaluation/reset timing fix established;64function/cost work remains separate."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-native-pose-join-20261031.md",
+      "sha256": "7b65f7a371028e8af0dfd5139804a2e2824450dd69094b1c4f96b9ecfbe7a3a0"
+    },
+    {
+      "path": "evidence/animation-native-pose-join-20261031.txt",
+      "sha256": "0b101c9bf223567d155c19b6f3be3e2aeff9c1b30a93866d016c0ba804b33747"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
