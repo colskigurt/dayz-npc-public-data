@@ -1,3 +1,5 @@
+> 최신:같은8포즈의기본/Fast32블록×3실행.구조물일부비용단축·지면추가비용·변동성보존.질의감소를64프레임개선으로간주하지않는다.[조건과원시선정](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/support-frozen-cost-20261031.md).이전기록은아래보존한다.
+
 > 비교 조건 정정: 두 실행 모두64/64·모든낙하복귀·계약실패0이지만,반복LOW끝4개air로엄격한목표자극비교는False다.단순반복통과나후보효능/성능개선으로보고하지않는다.
 
 > 최신64명 유한지면복구 후보:최종64/64,낙하복귀94/94,기능gate=False,여유발급0.단일실행·시각/성능미수용.[조건과근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/ground-landing-lease-repeat-20261031.md).이전기록은아래보존한다.

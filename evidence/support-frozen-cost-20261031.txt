@@ -1,0 +1,4256 @@
+Selection: all three32-block outputs and calibrations, eight input pose selections, original guard/solver excerpts. Initial diagnostic retained. Synthetic stationary prior contacts and frozen getter; not live64 or exact dynamic replay.
+{
+  "metrics": {
+    "sourceRunId": "support-frozen-cost-20261031-1603",
+    "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+    "sourceSolverMatchesExceptFrozenGetter": true,
+    "independentScopeExecutions": 2,
+    "initialDiagnosticExecutions": 1,
+    "geometryOutcomesIdenticalAcrossAllThree": true,
+    "allRootUnchanged": true,
+    "summary": [
+      {
+        "sample": 0,
+        "area": "ground",
+        "acceptedPer1000": 1000,
+        "fastUsedPerSolve": 0.0,
+        "liftDifferenceMeters": 0.0,
+        "offMsPer1000": [
+          60.629453147935116,
+          63.41407821488723
+        ],
+        "fastMsPer1000": [
+          63.82542904724009,
+          64.28758507961103
+        ],
+        "differenceMsPer1000": [
+          3.195975899304976,
+          0.8735068647238009
+        ],
+        "differencePercent": [
+          5.271325623714329,
+          1.3774652085358774
+        ],
+        "directionRepeated": true,
+        "fasterInBoth": false
+      },
+      {
+        "sample": 1,
+        "area": "ground",
+        "acceptedPer1000": 0,
+        "fastUsedPerSolve": 0.0,
+        "liftDifferenceMeters": 0.0,
+        "offMsPer1000": [
+          61.16285698347678,
+          61.947432737228866
+        ],
+        "fastMsPer1000": [
+          64.1368269585371,
+          66.05940042362748
+        ],
+        "differenceMsPer1000": [
+          2.973969975060321,
+          4.111967686398614
+        ],
+        "differencePercent": [
+          4.862379100217207,
+          6.637833893522149
+        ],
+        "directionRepeated": true,
+        "fasterInBoth": false
+      },
+      {
+        "sample": 2,
+        "area": "ground",
+        "acceptedPer1000": 1000,
+        "fastUsedPerSolve": 0.0,
+        "liftDifferenceMeters": 0.0,
+        "offMsPer1000": [
+          73.94930892688991,
+          75.85383803509008
+        ],
+        "fastMsPer1000": [
+          98.09009222069888,
+          78.99999284770426
+        ],
+        "differenceMsPer1000": [
+          24.140783293808965,
+          3.146154812614185
+        ],
+        "differencePercent": [
+          32.64504245425171,
+          4.147654085952479
+        ],
+        "directionRepeated": true,
+        "fasterInBoth": false
+      },
+      {
+        "sample": 3,
+        "area": "low",
+        "acceptedPer1000": 1000,
+        "fastUsedPerSolve": 1.0,
+        "liftDifferenceMeters": 0.0041503999999999985,
+        "offMsPer1000": [
+          92.1591912127721,
+          94.45244879244825
+        ],
+        "fastMsPer1000": [
+          91.18187546388597,
+          90.18757115171194
+        ],
+        "differenceMsPer1000": [
+          -0.9773157488861273,
+          -4.264877640736316
+        ],
+        "differencePercent": [
+          -1.060464763226654,
+          -4.515370109787254
+        ],
+        "directionRepeated": true,
+        "fasterInBoth": true
+      },
+      {
+        "sample": 4,
+        "area": "high",
+        "acceptedPer1000": 1000,
+        "fastUsedPerSolve": 2.0,
+        "liftDifferenceMeters": 0.004363999999999993,
+        "offMsPer1000": [
+          90.23498996660123,
+          91.44090274277622
+        ],
+        "fastMsPer1000": [
+          71.73149822520215,
+          71.34669462301099
+        ],
+        "differenceMsPer1000": [
+          -18.50349174139909,
+          -20.094208119765227
+        ],
+        "differencePercent": [
+          -20.505894385590118,
+          -21.975076270069582
+        ],
+        "directionRepeated": true,
+        "fasterInBoth": true
+      },
+      {
+        "sample": 5,
+        "area": "high",
+        "acceptedPer1000": 1000,
+        "fastUsedPerSolve": 2.0,
+        "liftDifferenceMeters": 0.004333500000000004,
+        "offMsPer1000": [
+          92.15924118034452,
+          91.83737855309136
+        ],
+        "fastMsPer1000": [
+          72.39151988924617,
+          71.50760509817735
+        ],
+        "differenceMsPer1000": [
+          -19.767721291098354,
+          -20.329773454914005
+        ],
+        "differencePercent": [
+          -21.44952696866862,
+          -22.136709230176166
+        ],
+        "directionRepeated": true,
+        "fasterInBoth": true
+      },
+      {
+        "sample": 6,
+        "area": "low",
+        "acceptedPer1000": 1000,
+        "fastUsedPerSolve": 1.0,
+        "liftDifferenceMeters": 0.004119800000000007,
+        "offMsPer1000": [
+          97.24594005230159,
+          93.9784679366055
+        ],
+        "fastMsPer1000": [
+          88.26112095344877,
+          88.46380893592261
+        ],
+        "differenceMsPer1000": [
+          -8.984819098852824,
+          -5.514659000682883
+        ],
+        "differencePercent": [
+          -9.239274250442264,
+          -5.868002662485273
+        ],
+        "directionRepeated": true,
+        "fasterInBoth": true
+      },
+      {
+        "sample": 7,
+        "area": "low",
+        "acceptedPer1000": 1000,
+        "fastUsedPerSolve": 1.0,
+        "liftDifferenceMeters": 0.0,
+        "offMsPer1000": [
+          58.406295915998825,
+          60.139565046228284
+        ],
+        "fastMsPer1000": [
+          48.931194996599395,
+          54.09677166434366
+        ],
+        "differenceMsPer1000": [
+          -9.47510091939943,
+          -6.042793381884621
+        ],
+        "differencePercent": [
+          -16.22273895442149,
+          -10.047949926541078
+        ],
+        "directionRepeated": true,
+        "fasterInBoth": true
+      }
+    ],
+    "runs": [
+      {
+        "validation": "controlled-support-frozen-cost",
+        "profileId": "compile-ebf8c9cd2a3d4696aa916df7d070f92b",
+        "clockCalibration": [
+          {
+            "label": "before",
+            "ticks": 8592705.0,
+            "wallSeconds": 0.859001,
+            "ticksPerSecond": 10003137.365381414
+          },
+          {
+            "label": "after",
+            "ticks": 10619542.0,
+            "wallSeconds": 1.062,
+            "ticksPerSecond": 9999568.738229755
+          }
+        ],
+        "clockRelativeSpread": 0.0003568144363241431,
+        "samples": [
+          {
+            "sample": 0,
+            "area": "ground",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.0,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 60.15776034337474,
+                  "footTicks": 51.53522701680337,
+                  "worldTicks": 2.277391857083575,
+                  "frozenTransformTicks": 2.023876159070869,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  60.45052073137759,
+                  59.8649999553719
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 62.99912589189617,
+                  "footTicks": 54.301552718604796,
+                  "worldTicks": 2.279141620331542,
+                  "frozenTransformTicks": 2.0564217554830697,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  63.409120417512845,
+                  62.58913136627949
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": 2.8413655485214306,
+            "totalDifferencePercent": 4.7231903786031815
+          },
+          {
+            "sample": 1,
+            "area": "ground",
+            "acceptedPer1000": 0,
+            "liftDifferenceMeters": 0.0,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 61.64010977381741,
+                  "footTicks": 45.14374181786224,
+                  "worldTicks": 9.420575347351662,
+                  "frozenTransformTicks": 2.055721850183883,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.5399269450872065
+                },
+                "individualTotalMsPer1000": [
+                  61.25181231247552,
+                  62.028407235159285
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 1.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 63.99944054414153,
+                  "footTicks": 47.53551819812726,
+                  "worldTicks": 9.4309239471325,
+                  "frozenTransformTicks": 2.0489727633702928,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.5321280003248358
+                },
+                "individualTotalMsPer1000": [
+                  63.95214694321075,
+                  64.0467341450723
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 1.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": 2.359330770324121,
+            "totalDifferencePercent": 3.827590150279514
+          },
+          {
+            "sample": 2,
+            "area": "ground",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.0,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 74.55416243559027,
+                  "footTicks": 42.78576086490084,
+                  "worldTicks": 24.818041990347385,
+                  "frozenTransformTicks": 2.1141639426660075,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  74.93436099275584,
+                  74.17396387842469
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 77.05467410340756,
+                  "footTicks": 45.27572395999467,
+                  "worldTicks": 24.82539099598885,
+                  "frozenTransformTicks": 2.1044652549487,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  76.89319595223795,
+                  77.21615225457717
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": 2.5005116678172925,
+            "totalDifferencePercent": 3.3539531343773854
+          },
+          {
+            "sample": 3,
+            "area": "low",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.0041503999999999985,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 91.98935336393363,
+                  "footTicks": 61.36464704535162,
+                  "worldTicks": 23.586258657013712,
+                  "frozenTransformTicks": 2.1945530656012133,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  92.19192595481265,
+                  91.78678077305462
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 88.61885940922674,
+                  "footTicks": 57.25800269560685,
+                  "worldTicks": 24.172279365375957,
+                  "frozenTransformTicks": 2.226548736421196,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  89.01515578827363,
+                  88.22256303017986
+                ],
+                "countsPerSolve": {
+                  "footRays": 6.0,
+                  "fastSweeps": 1.0,
+                  "fastUsed": 1.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": -3.3704939547068875,
+            "totalDifferencePercent": -3.6640043999139116
+          },
+          {
+            "sample": 4,
+            "area": "high",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.004363999999999993,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 91.55501213255236,
+                  "footTicks": 60.50156382498258,
+                  "worldTicks": 23.939860812810178,
+                  "frozenTransformTicks": 2.21485031927764,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  91.57190984620416,
+                  91.53811441890056
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 91.1388184457143,
+                  "footTicks": 51.196322872289834,
+                  "worldTicks": 30.563514598138795,
+                  "frozenTransformTicks": 2.8497144188760135,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  88.82908096516117,
+                  93.44855592626746
+                ],
+                "countsPerSolve": {
+                  "footRays": 2.0,
+                  "fastSweeps": 2.0,
+                  "fastUsed": 2.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": -0.41619368683805646,
+            "totalDifferencePercent": -0.4545831813505652
+          },
+          {
+            "sample": 5,
+            "area": "high",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.004333500000000004,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 92.75689951096362,
+                  "footTicks": 61.26950991789783,
+                  "worldTicks": 24.168079933580835,
+                  "frozenTransformTicks": 2.2070513745152693,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  90.98768889432554,
+                  94.52611012760168
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 71.78633693671914,
+                  "footTicks": 40.523216998807165,
+                  "worldTicks": 24.004752032691954,
+                  "frozenTransformTicks": 2.2356475053106286,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  71.94976482407934,
+                  71.62290904935895
+                ],
+                "countsPerSolve": {
+                  "footRays": 2.0,
+                  "fastSweeps": 2.0,
+                  "fastUsed": 2.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": -20.970562574244482,
+            "totalDifferencePercent": -22.608089193155724
+          },
+          {
+            "sample": 6,
+            "area": "low",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.004119800000000007,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 94.5273599584931,
+                  "footTicks": 62.885041328128665,
+                  "worldTicks": 24.376851685681217,
+                  "frozenTransformTicks": 2.236797349730722,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  97.2568406456159,
+                  91.7978792713703
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 88.31815009675456,
+                  "footTicks": 56.92614759732084,
+                  "worldTicks": 24.167829967402554,
+                  "frozenTransformTicks": 2.222699257275667,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  88.36544369768534,
+                  88.27085649582378
+                ],
+                "countsPerSolve": {
+                  "footRays": 6.0,
+                  "fastSweeps": 1.0,
+                  "fastUsed": 1.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": -6.209209861738529,
+            "totalDifferencePercent": -6.568690656826748
+          },
+          {
+            "sample": 7,
+            "area": "low",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.0,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 58.06164395878063,
+                  "footTicks": 49.38736763330506,
+                  "worldTicks": 2.265493466997394,
+                  "frozenTransformTicks": 2.1207130565369723,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  57.885167836914164,
+                  58.2381200806471
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 49.837106781268446,
+                  "footTicks": 40.82987550632243,
+                  "worldTicks": 2.31663654707371,
+                  "frozenTransformTicks": 2.1672567589329157,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  49.59668931099767,
+                  50.07752425153922
+                ],
+                "countsPerSolve": {
+                  "footRays": 6.0,
+                  "fastSweeps": 1.0,
+                  "fastUsed": 1.0,
+                  "fastAttempts": 1.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": -8.224537177512182,
+            "totalDifferencePercent": -14.165181377487313
+          }
+        ],
+        "rawRows": [
+          {
+            "sample": "0",
+            "area": "ground",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "604587",
+            "footTicks": "517849",
+            "worldTicks": "22645",
+            "frozenTransformTicks": "20612",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "0",
+            "area": "ground",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "634177",
+            "footTicks": "546572",
+            "worldTicks": "22943",
+            "frozenTransformTicks": "20739",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "0",
+            "area": "ground",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "625976",
+            "footTicks": "539606",
+            "worldTicks": "22646",
+            "frozenTransformTicks": "20395",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "0",
+            "area": "ground",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "598731",
+            "footTicks": "512995",
+            "worldTicks": "22909",
+            "frozenTransformTicks": "19871",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "1",
+            "area": "ground",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "0",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "612601",
+            "footTicks": "449264",
+            "worldTicks": "93737",
+            "frozenTransformTicks": "20301",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "5385",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "1000",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "1",
+            "area": "ground",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "0",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "639608",
+            "footTicks": "474852",
+            "worldTicks": "94422",
+            "frozenTransformTicks": "20422",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "5357",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "2000",
+            "rejected": "1000",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "1",
+            "area": "ground",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "0",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "640554",
+            "footTicks": "475987",
+            "worldTicks": "94222",
+            "frozenTransformTicks": "20563",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "5287",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "2000",
+            "rejected": "1000",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "1",
+            "area": "ground",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "0",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "620368",
+            "footTicks": "453733",
+            "worldTicks": "94700",
+            "frozenTransformTicks": "20819",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "5415",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "1000",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "2",
+            "area": "ground",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "749445",
+            "footTicks": "430156",
+            "worldTicks": "249247",
+            "frozenTransformTicks": "21245",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "2",
+            "area": "ground",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "769036",
+            "footTicks": "451821",
+            "worldTicks": "247803",
+            "frozenTransformTicks": "21008",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "2",
+            "area": "ground",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "772266",
+            "footTicks": "453816",
+            "worldTicks": "248772",
+            "frozenTransformTicks": "21087",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "2",
+            "area": "ground",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "741840",
+            "footTicks": "425675",
+            "worldTicks": "247181",
+            "frozenTransformTicks": "21044",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "3",
+            "area": "low",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0772095",
+            "maximumLift": "0.0772095",
+            "elapsedTicks": "922044",
+            "footTicks": "614972",
+            "worldTicks": "236243",
+            "frozenTransformTicks": "22100",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "3",
+            "area": "low",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0813599",
+            "maximumLift": "0.0813599",
+            "elapsedTicks": "890272",
+            "footTicks": "575502",
+            "worldTicks": "242662",
+            "frozenTransformTicks": "22360",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "6000",
+            "fastSweeps": "1000",
+            "fastUsed": "1000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "3",
+            "area": "low",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0813599",
+            "maximumLift": "0.0813599",
+            "elapsedTicks": "882345",
+            "footTicks": "569813",
+            "worldTicks": "240849",
+            "frozenTransformTicks": "22177",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "6000",
+            "fastSweeps": "1000",
+            "fastUsed": "1000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "3",
+            "area": "low",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0772095",
+            "maximumLift": "0.0772095",
+            "elapsedTicks": "917992",
+            "footTicks": "612487",
+            "worldTicks": "235546",
+            "frozenTransformTicks": "21797",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "4",
+            "area": "high",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0820618",
+            "maximumLift": "0.0820618",
+            "elapsedTicks": "915843",
+            "footTicks": "606327",
+            "worldTicks": "238567",
+            "frozenTransformTicks": "22050",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "4",
+            "area": "high",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0864258",
+            "maximumLift": "0.0864258",
+            "elapsedTicks": "888411",
+            "footTicks": "501159",
+            "worldTicks": "295304",
+            "frozenTransformTicks": "27489",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "2000",
+            "fastSweeps": "2000",
+            "fastUsed": "2000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "4",
+            "area": "high",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0864258",
+            "maximumLift": "0.0864258",
+            "elapsedTicks": "934612",
+            "footTicks": "522906",
+            "worldTicks": "316049",
+            "frozenTransformTicks": "29513",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "2000",
+            "fastSweeps": "2000",
+            "fastUsed": "2000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "4",
+            "area": "high",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0820618",
+            "maximumLift": "0.0820618",
+            "elapsedTicks": "915505",
+            "footTicks": "603868",
+            "worldTicks": "240295",
+            "frozenTransformTicks": "22253",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "5",
+            "area": "high",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0746155",
+            "maximumLift": "0.0746155",
+            "elapsedTicks": "910000",
+            "footTicks": "602079",
+            "worldTicks": "237749",
+            "frozenTransformTicks": "21870",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "5",
+            "area": "high",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.078949",
+            "maximumLift": "0.078949",
+            "elapsedTicks": "719595",
+            "footTicks": "406577",
+            "worldTicks": "240519",
+            "frozenTransformTicks": "22277",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "2000",
+            "fastSweeps": "2000",
+            "fastUsed": "2000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "5",
+            "area": "high",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.078949",
+            "maximumLift": "0.078949",
+            "elapsedTicks": "716326",
+            "footTicks": "403997",
+            "worldTicks": "239641",
+            "frozenTransformTicks": "22442",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "2000",
+            "fastSweeps": "2000",
+            "fastUsed": "2000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "5",
+            "area": "high",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0746155",
+            "maximumLift": "0.0746155",
+            "elapsedTicks": "945389",
+            "footTicks": "623477",
+            "worldTicks": "245678",
+            "frozenTransformTicks": "22277",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "6",
+            "area": "low",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0782166",
+            "maximumLift": "0.0782166",
+            "elapsedTicks": "972700",
+            "footTicks": "645615",
+            "worldTicks": "252113",
+            "frozenTransformTicks": "22805",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "6",
+            "area": "low",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0823364",
+            "maximumLift": "0.0823364",
+            "elapsedTicks": "883774",
+            "footTicks": "570022",
+            "worldTicks": "241658",
+            "frozenTransformTicks": "22071",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "6000",
+            "fastSweeps": "1000",
+            "fastUsed": "1000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "6",
+            "area": "low",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0823364",
+            "maximumLift": "0.0823364",
+            "elapsedTicks": "882828",
+            "footTicks": "568655",
+            "worldTicks": "241764",
+            "frozenTransformTicks": "22389",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "6000",
+            "fastSweeps": "1000",
+            "fastUsed": "1000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "6",
+            "area": "low",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0782166",
+            "maximumLift": "0.0782166",
+            "elapsedTicks": "918103",
+            "footTicks": "612256",
+            "worldTicks": "235490",
+            "frozenTransformTicks": "21937",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "7",
+            "area": "low",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "578930",
+            "footTicks": "492693",
+            "worldTicks": "22677",
+            "frozenTransformTicks": "21092",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "7",
+            "area": "low",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "496034",
+            "footTicks": "406187",
+            "worldTicks": "23123",
+            "frozenTransformTicks": "21652",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "6000",
+            "fastSweeps": "1000",
+            "fastUsed": "1000",
+            "fastAttempts": "1000",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "7",
+            "area": "low",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "500843",
+            "footTicks": "410521",
+            "worldTicks": "23216",
+            "frozenTransformTicks": "21699",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "6000",
+            "fastSweeps": "1000",
+            "fastUsed": "1000",
+            "fastAttempts": "1000",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          },
+          {
+            "sample": "7",
+            "area": "low",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "582460",
+            "footTicks": "495188",
+            "worldTicks": "22639",
+            "frozenTransformTicks": "21328",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true"
+          }
+        ]
+      },
+      {
+        "validation": "controlled-support-frozen-cost-scopes",
+        "profileId": "compile-fbe85c486ff4458aa20a4a6a5347431c",
+        "clockCalibration": [
+          {
+            "label": "before",
+            "ticks": 7836434.0,
+            "wallSeconds": 0.783001,
+            "ticksPerSecond": 10008204.331795234
+          },
+          {
+            "label": "after",
+            "ticks": 10454990.0,
+            "wallSeconds": 1.045,
+            "ticksPerSecond": 10004775.119617226
+          }
+        ],
+        "clockRelativeSpread": 0.00034269881566950856,
+        "samples": [
+          {
+            "sample": 0,
+            "area": "ground",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.0,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 60.629453147935116,
+                  "footTicks": 51.9286996982677,
+                  "worldTicks": 2.295460309222361,
+                  "frozenTransformTicks": 2.0869456295300535,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  61.25934436581223,
+                  59.999561930057986
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 63.82542904724009,
+                  "footTicks": 55.072459484397875,
+                  "worldTicks": 2.2853668595943124,
+                  "frozenTransformTicks": 2.121023513917821,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 2.0005017292502325
+                },
+                "individualTotalMsPer1000": [
+                  63.72214607505605,
+                  63.928712019424125
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": 3.195975899304976,
+            "totalDifferencePercent": 5.271325623714329
+          },
+          {
+            "sample": 1,
+            "area": "ground",
+            "acceptedPer1000": 0,
+            "liftDifferenceMeters": 0.0,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 61.16285698347678,
+                  "footTicks": 44.88916816114533,
+                  "worldTicks": 9.258591428120544,
+                  "frozenTransformTicks": 2.065859313970467,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.5606361625084326,
+                  "fastGuardTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  60.532715927737584,
+                  61.79299803921598
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 1.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 64.1368269585371,
+                  "footTicks": 47.77239702469806,
+                  "worldTicks": 9.325597942730509,
+                  "frozenTransformTicks": 2.090443359599179,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.5460456313629368,
+                  "fastGuardTicks": 1.9688722559108534
+                },
+                "individualTotalMsPer1000": [
+                  64.46576348775217,
+                  63.80789042932204
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 1.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": 2.973969975060321,
+            "totalDifferencePercent": 4.862379100217207
+          },
+          {
+            "sample": 2,
+            "area": "ground",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.0,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 73.94930892688991,
+                  "footTicks": 42.66251319913991,
+                  "worldTicks": 24.37618052746112,
+                  "frozenTransformTicks": 2.147056619146599,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  74.13588784229157,
+                  73.76273001148827
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 98.09009222069888,
+                  "footTicks": 58.31190717170484,
+                  "worldTicks": 30.871865006406864,
+                  "frozenTransformTicks": 2.757560418926281,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 2.5269101046536493
+                },
+                "individualTotalMsPer1000": [
+                  77.58245111726319,
+                  118.59773332413457
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": 24.140783293808965,
+            "totalDifferencePercent": 32.64504245425171
+          },
+          {
+            "sample": 3,
+            "area": "low",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.0041503999999999985,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 92.1591912127721,
+                  "footTicks": 61.658135561264984,
+                  "worldTicks": 23.491654560551652,
+                  "frozenTransformTicks": 2.263630965593317,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  93.10817534809831,
+                  91.21020707744589
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 91.18187546388597,
+                  "footTicks": 59.11273745481738,
+                  "worldTicks": 24.60228379264389,
+                  "frozenTransformTicks": 2.364515494301385,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 18.79670145633665
+                },
+                "individualTotalMsPer1000": [
+                  94.98825522782579,
+                  87.37549569994614
+                ],
+                "countsPerSolve": {
+                  "footRays": 6.0,
+                  "fastSweeps": 1.0,
+                  "fastUsed": 1.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": -0.9773157488861273,
+            "totalDifferencePercent": -1.060464763226654
+          },
+          {
+            "sample": 4,
+            "area": "high",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.004363999999999993,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 90.23498996660123,
+                  "footTicks": 59.938451588993125,
+                  "worldTicks": 23.36758507824252,
+                  "frozenTransformTicks": 2.243544001482052,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  90.09143313104983,
+                  90.37854680215263
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 71.73149822520215,
+                  "footTicks": 40.63033202897789,
+                  "worldTicks": 23.831933728705163,
+                  "frozenTransformTicks": 2.268427852545261,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 26.246716600857127
+                },
+                "individualTotalMsPer1000": [
+                  70.38662101362333,
+                  73.07637543678098
+                ],
+                "countsPerSolve": {
+                  "footRays": 2.0,
+                  "fastSweeps": 2.0,
+                  "fastUsed": 2.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": -18.50349174139909,
+            "totalDifferencePercent": -20.505894385590118
+          },
+          {
+            "sample": 5,
+            "area": "high",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.004333500000000004,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 92.15924118034452,
+                  "footTicks": 61.123132763406,
+                  "worldTicks": 23.930469781509675,
+                  "frozenTransformTicks": 2.282068999814851,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  92.29350404742654,
+                  92.02497831326251
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 72.39151988924617,
+                  "footTicks": 40.982903219945754,
+                  "worldTicks": 24.0306047966315,
+                  "frozenTransformTicks": 2.3273396204238206,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 26.586046385134736
+                },
+                "individualTotalMsPer1000": [
+                  71.4299439256711,
+                  73.35309585282124
+                ],
+                "countsPerSolve": {
+                  "footRays": 2.0,
+                  "fastSweeps": 2.0,
+                  "fastUsed": 2.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": -19.767721291098354,
+            "totalDifferencePercent": -21.44952696866862
+          },
+          {
+            "sample": 6,
+            "area": "low",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.004119800000000007,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 97.24594005230159,
+                  "footTicks": 65.04798564154434,
+                  "worldTicks": 24.683830870826935,
+                  "frozenTransformTicks": 2.3819541770745976,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  92.58151713483282,
+                  101.91036296977038
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 88.26112095344877,
+                  "footTicks": 57.22806055842762,
+                  "worldTicks": 23.818292581435575,
+                  "frozenTransformTicks": 2.272725063773044,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 18.118191790498678
+                },
+                "individualTotalMsPer1000": [
+                  88.72681872836664,
+                  87.79542317853088
+                ],
+                "countsPerSolve": {
+                  "footRays": 6.0,
+                  "fastSweeps": 1.0,
+                  "fastUsed": 1.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": -8.984819098852824,
+            "totalDifferencePercent": -9.239274250442264
+          },
+          {
+            "sample": 7,
+            "area": "low",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.0,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 58.406295915998825,
+                  "footTicks": 49.662620321625994,
+                  "worldTicks": 2.284267573001159,
+                  "frozenTransformTicks": 2.184132557879331,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  59.07066475884304,
+                  57.741927073154606
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 48.931194996599395,
+                  "footTicks": 39.98809882071399,
+                  "worldTicks": 2.311749737830003,
+                  "frozenTransformTicks": 2.2009216622111345,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 13.251450172317188
+                },
+                "individualTotalMsPer1000": [
+                  49.00040008439567,
+                  48.861989908803125
+                ],
+                "countsPerSolve": {
+                  "footRays": 6.0,
+                  "fastSweeps": 1.0,
+                  "fastUsed": 1.0,
+                  "fastAttempts": 1.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": -9.47510091939943,
+            "totalDifferencePercent": -16.22273895442149
+          }
+        ],
+        "rawRows": [
+          {
+            "sample": "0",
+            "area": "ground",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "612991",
+            "footTicks": "525287",
+            "worldTicks": "23209",
+            "frozenTransformTicks": "20997",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "0",
+            "area": "ground",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "637635",
+            "footTicks": "550022",
+            "worldTicks": "22869",
+            "frozenTransformTicks": "21225",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "20141"
+          },
+          {
+            "sample": "0",
+            "area": "ground",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "639702",
+            "footTicks": "552142",
+            "worldTicks": "22868",
+            "frozenTransformTicks": "21223",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "19895"
+          },
+          {
+            "sample": "0",
+            "area": "ground",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "600385",
+            "footTicks": "513961",
+            "worldTicks": "22730",
+            "frozenTransformTicks": "20769",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "1",
+            "area": "ground",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "0",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "605720",
+            "footTicks": "444982",
+            "worldTicks": "91685",
+            "frozenTransformTicks": "20384",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "5504",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "1000",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "1",
+            "area": "ground",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "0",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "645076",
+            "footTicks": "480551",
+            "worldTicks": "93795",
+            "frozenTransformTicks": "20897",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "5490",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "2000",
+            "rejected": "1000",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "19949"
+          },
+          {
+            "sample": "1",
+            "area": "ground",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "0",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "638493",
+            "footTicks": "475517",
+            "worldTicks": "92838",
+            "frozenTransformTicks": "20939",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "5438",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "2000",
+            "rejected": "1000",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "19454"
+          },
+          {
+            "sample": "1",
+            "area": "ground",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "0",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "618331",
+            "footTicks": "453384",
+            "worldTicks": "93607",
+            "frozenTransformTicks": "20960",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "5716",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "1000",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "2",
+            "area": "ground",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "741840",
+            "footTicks": "428585",
+            "worldTicks": "243967",
+            "frozenTransformTicks": "21439",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "2",
+            "area": "ground",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "776328",
+            "footTicks": "463124",
+            "worldTicks": "243411",
+            "frozenTransformTicks": "21567",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "20082"
+          },
+          {
+            "sample": "2",
+            "area": "ground",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "1186747",
+            "footTicks": "703871",
+            "worldTicks": "374427",
+            "frozenTransformTicks": "33620",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "30489"
+          },
+          {
+            "sample": "2",
+            "area": "ground",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "738106",
+            "footTicks": "425219",
+            "worldTicks": "243873",
+            "frozenTransformTicks": "21530",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "3",
+            "area": "low",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0772095",
+            "maximumLift": "0.0772095",
+            "elapsedTicks": "931686",
+            "footTicks": "622995",
+            "worldTicks": "237939",
+            "frozenTransformTicks": "22731",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "3",
+            "area": "low",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0813599",
+            "maximumLift": "0.0813599",
+            "elapsedTicks": "950499",
+            "footTicks": "616220",
+            "worldTicks": "255867",
+            "frozenTransformTicks": "24719",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "6000",
+            "fastSweeps": "1000",
+            "fastUsed": "1000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "196874"
+          },
+          {
+            "sample": "3",
+            "area": "low",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0813599",
+            "maximumLift": "0.0813599",
+            "elapsedTicks": "874322",
+            "footTicks": "566802",
+            "worldTicks": "236498",
+            "frozenTransformTicks": "22602",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "6000",
+            "fastSweeps": "1000",
+            "fastUsed": "1000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "179304"
+          },
+          {
+            "sample": "3",
+            "area": "low",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0772095",
+            "maximumLift": "0.0772095",
+            "elapsedTicks": "912694",
+            "footTicks": "610968",
+            "worldTicks": "232199",
+            "frozenTransformTicks": "22571",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "4",
+            "area": "high",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0820618",
+            "maximumLift": "0.0820618",
+            "elapsedTicks": "901499",
+            "footTicks": "598087",
+            "worldTicks": "233945",
+            "frozenTransformTicks": "22674",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "4",
+            "area": "high",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0864258",
+            "maximumLift": "0.0864258",
+            "elapsedTicks": "704323",
+            "footTicks": "398365",
+            "worldTicks": "234869",
+            "frozenTransformTicks": "22181",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "2000",
+            "fastSweeps": "2000",
+            "fastUsed": "2000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "257404"
+          },
+          {
+            "sample": "4",
+            "area": "high",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0864258",
+            "maximumLift": "0.0864258",
+            "elapsedTicks": "731238",
+            "footTicks": "414769",
+            "worldTicks": "242079",
+            "frozenTransformTicks": "23217",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "2000",
+            "fastSweeps": "2000",
+            "fastUsed": "2000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "267871"
+          },
+          {
+            "sample": "4",
+            "area": "high",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0820618",
+            "maximumLift": "0.0820618",
+            "elapsedTicks": "904372",
+            "footTicks": "601460",
+            "worldTicks": "233710",
+            "frozenTransformTicks": "22226",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "5",
+            "area": "high",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0746155",
+            "maximumLift": "0.0746155",
+            "elapsedTicks": "923534",
+            "footTicks": "613145",
+            "worldTicks": "239631",
+            "frozenTransformTicks": "22889",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "5",
+            "area": "high",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.078949",
+            "maximumLift": "0.078949",
+            "elapsedTicks": "714763",
+            "footTicks": "404848",
+            "worldTicks": "237200",
+            "frozenTransformTicks": "23022",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "2000",
+            "fastSweeps": "2000",
+            "fastUsed": "2000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "262428"
+          },
+          {
+            "sample": "5",
+            "area": "high",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.078949",
+            "maximumLift": "0.078949",
+            "elapsedTicks": "734007",
+            "footTicks": "415342",
+            "worldTicks": "243724",
+            "frozenTransformTicks": "23555",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "2000",
+            "fastSweeps": "2000",
+            "fastUsed": "2000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "269638"
+          },
+          {
+            "sample": "5",
+            "area": "high",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0746155",
+            "maximumLift": "0.0746155",
+            "elapsedTicks": "920847",
+            "footTicks": "610111",
+            "worldTicks": "239289",
+            "frozenTransformTicks": "22782",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "6",
+            "area": "low",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0782166",
+            "maximumLift": "0.0782166",
+            "elapsedTicks": "926416",
+            "footTicks": "621721",
+            "worldTicks": "233832",
+            "frozenTransformTicks": "22546",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "6",
+            "area": "low",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0823364",
+            "maximumLift": "0.0823364",
+            "elapsedTicks": "887844",
+            "footTicks": "576408",
+            "worldTicks": "239109",
+            "frozenTransformTicks": "22753",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "6000",
+            "fastSweeps": "1000",
+            "fastUsed": "1000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "182869"
+          },
+          {
+            "sample": "6",
+            "area": "low",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0823364",
+            "maximumLift": "0.0823364",
+            "elapsedTicks": "878524",
+            "footTicks": "568896",
+            "worldTicks": "237566",
+            "frozenTransformTicks": "22731",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "6000",
+            "fastSweeps": "1000",
+            "fastUsed": "1000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "179730"
+          },
+          {
+            "sample": "6",
+            "area": "low",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0782166",
+            "maximumLift": "0.0782166",
+            "elapsedTicks": "1019765",
+            "footTicks": "680083",
+            "worldTicks": "260165",
+            "frozenTransformTicks": "25124",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "7",
+            "area": "low",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "591090",
+            "footTicks": "502853",
+            "worldTicks": "23026",
+            "frozenTransformTicks": "22050",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "7",
+            "area": "low",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "490322",
+            "footTicks": "400659",
+            "worldTicks": "23059",
+            "frozenTransformTicks": "22138",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "6000",
+            "fastSweeps": "1000",
+            "fastUsed": "1000",
+            "fastAttempts": "1000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "132863"
+          },
+          {
+            "sample": "7",
+            "area": "low",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "488937",
+            "footTicks": "399622",
+            "worldTicks": "23206",
+            "frozenTransformTicks": "21909",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "6000",
+            "fastSweeps": "1000",
+            "fastUsed": "1000",
+            "fastAttempts": "1000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "132338"
+          },
+          {
+            "sample": "7",
+            "area": "low",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "577794",
+            "footTicks": "491044",
+            "worldTicks": "22689",
+            "frozenTransformTicks": "21661",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          }
+        ]
+      },
+      {
+        "validation": "controlled-support-frozen-cost-scopes-repeat",
+        "profileId": "compile-564565eedb1d4259ba522482e6555563",
+        "clockCalibration": [
+          {
+            "label": "before",
+            "ticks": 8047576.0,
+            "wallSeconds": 0.805,
+            "ticksPerSecond": 9996988.819875775
+          },
+          {
+            "label": "after",
+            "ticks": 10661822.0,
+            "wallSeconds": 1.066,
+            "ticksPerSecond": 10001709.193245778
+          }
+        ],
+        "clockRelativeSpread": 0.00047206806832183,
+        "samples": [
+          {
+            "sample": 0,
+            "area": "ground",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.0,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 63.41407821488723,
+                  "footTicks": 54.31533589273154,
+                  "worldTicks": 2.3914056789407514,
+                  "frozenTransformTicks": 2.142039445362549,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  66.6739404297787,
+                  60.15421599999576
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 64.28758507961103,
+                  "footTicks": 55.518414212340836,
+                  "worldTicks": 2.3205510663519577,
+                  "frozenTransformTicks": 2.0673845853801436,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 1.9914296407630814
+                },
+                "individualTotalMsPer1000": [
+                  64.58190423959526,
+                  63.993265919626815
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": 0.8735068647238009,
+            "totalDifferencePercent": 1.3774652085358774
+          },
+          {
+            "sample": 1,
+            "area": "ground",
+            "acceptedPer1000": 0,
+            "liftDifferenceMeters": 0.0,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 61.947432737228866,
+                  "footTicks": 45.73017700452045,
+                  "worldTicks": 9.334007637773384,
+                  "frozenTransformTicks": 2.007880711717007,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.5251341858909727,
+                  "fastGuardTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  61.91543065391424,
+                  61.979434820543496
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 1.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 66.05940042362748,
+                  "footTicks": 49.43051789428466,
+                  "worldTicks": 9.505968832334332,
+                  "frozenTransformTicks": 2.066084500745487,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.5286344137535102,
+                  "fastGuardTicks": 1.9990301355503055
+                },
+                "individualTotalMsPer1000": [
+                  67.29938114555895,
+                  64.819419701696
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 1.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": 4.111967686398614,
+            "totalDifferencePercent": 6.637833893522149
+          },
+          {
+            "sample": 2,
+            "area": "ground",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.0,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 75.85383803509008,
+                  "footTicks": 44.06371851916638,
+                  "worldTicks": 24.879069611109085,
+                  "frozenTransformTicks": 2.1097373425168464,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  75.36830642730095,
+                  76.3393696428792
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 78.99999284770426,
+                  "footTicks": 46.993709259641285,
+                  "worldTicks": 25.008578042022968,
+                  "frozenTransformTicks": 2.1668910631865645,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 1.981378986472081
+                },
+                "individualTotalMsPer1000": [
+                  78.33899981749165,
+                  79.66098587791687
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": 3.146154812614185,
+            "totalDifferencePercent": 4.147654085952479
+          },
+          {
+            "sample": 3,
+            "area": "low",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.0041503999999999985,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 94.45244879244825,
+                  "footTicks": 63.596890115822035,
+                  "worldTicks": 23.809950012124613,
+                  "frozenTransformTicks": 2.2019933483222975,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  94.89847782864587,
+                  94.00641975625062
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 90.18757115171194,
+                  "footTicks": 58.78442682761933,
+                  "worldTicks": 24.22732718310461,
+                  "frozenTransformTicks": 2.235195509761224,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 18.439700412398974
+                },
+                "individualTotalMsPer1000": [
+                  90.26457616468775,
+                  90.1105661387361
+                ],
+                "countsPerSolve": {
+                  "footRays": 6.0,
+                  "fastSweeps": 1.0,
+                  "fastUsed": 1.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": -4.264877640736316,
+            "totalDifferencePercent": -4.515370109787254
+          },
+          {
+            "sample": 4,
+            "area": "high",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.004363999999999993,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 91.44090274277622,
+                  "footTicks": 60.85556165713791,
+                  "worldTicks": 23.647639445813237,
+                  "frozenTransformTicks": 2.180691961615998,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  91.67306785657281,
+                  91.20873762897963
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 71.34669462301099,
+                  "footTicks": 40.30172361576633,
+                  "worldTicks": 23.923857427422618,
+                  "frozenTransformTicks": 2.2063436315228797,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 26.040195199623106
+                },
+                "individualTotalMsPer1000": [
+                  71.36954611062784,
+                  71.32384313539414
+                ],
+                "countsPerSolve": {
+                  "footRays": 2.0,
+                  "fastSweeps": 2.0,
+                  "fastUsed": 2.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": -20.094208119765227,
+            "totalDifferencePercent": -21.975076270069582
+          },
+          {
+            "sample": 5,
+            "area": "high",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.004333500000000004,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 91.83737855309136,
+                  "footTicks": 61.222835566428444,
+                  "worldTicks": 23.735145142376673,
+                  "frozenTransformTicks": 2.1645409101931463,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  92.05659282379655,
+                  91.61816428238616
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 71.50760509817735,
+                  "footTicks": 40.47663500238284,
+                  "worldTicks": 23.91250668849696,
+                  "frozenTransformTicks": 2.1870923782789236,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 26.210756303039037
+                },
+                "individualTotalMsPer1000": [
+                  71.49235410534773,
+                  71.52285609100697
+                ],
+                "countsPerSolve": {
+                  "footRays": 2.0,
+                  "fastSweeps": 2.0,
+                  "fastUsed": 2.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": -20.329773454914005,
+            "totalDifferencePercent": -22.136709230176166
+          },
+          {
+            "sample": 6,
+            "area": "low",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.004119800000000007,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 93.9784679366055,
+                  "footTicks": 63.183263188980476,
+                  "worldTicks": 23.733595041466117,
+                  "frozenTransformTicks": 2.1880424401273264,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  93.96991737996987,
+                  93.98701849324114
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 88.46380893592261,
+                  "footTicks": 57.43948927306691,
+                  "worldTicks": 23.922257323256886,
+                  "frozenTransformTicks": 2.226494943360059,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 18.041474488152573
+                },
+                "individualTotalMsPer1000": [
+                  88.53596363314605,
+                  88.39165423869916
+                ],
+                "countsPerSolve": {
+                  "footRays": 6.0,
+                  "fastSweeps": 1.0,
+                  "fastUsed": 1.0,
+                  "fastAttempts": 2.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": -5.514659000682883,
+            "totalDifferencePercent": -5.868002662485273
+          },
+          {
+            "sample": 7,
+            "area": "low",
+            "acceptedPer1000": 1000,
+            "liftDifferenceMeters": 0.0,
+            "modes": {
+              "off": {
+                "blocks": [
+                  0,
+                  3
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 60.139565046228284,
+                  "footTicks": 51.23823557551971,
+                  "worldTicks": 2.359553605391661,
+                  "frozenTransformTicks": 2.148789884811728,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 0.0
+                },
+                "individualTotalMsPer1000": [
+                  58.951237686896825,
+                  61.32789240555974
+                ],
+                "countsPerSolve": {
+                  "footRays": 10.0,
+                  "fastSweeps": 0.0,
+                  "fastUsed": 0.0,
+                  "fastAttempts": 0.0,
+                  "rejected": 0.0
+                }
+              },
+              "fast": {
+                "blocks": [
+                  1,
+                  2
+                ],
+                "msPer1000": {
+                  "elapsedTicks": 54.09677166434366,
+                  "footTicks": 44.443543245506866,
+                  "worldTicks": 2.5120135304327555,
+                  "frozenTransformTicks": 2.290149087203061,
+                  "fallbackTicks": 0.0,
+                  "diagnosticTicks": 0.0,
+                  "fastGuardTicks": 14.672805189991369
+                },
+                "individualTotalMsPer1000": [
+                  56.83509992771705,
+                  51.35844340097027
+                ],
+                "countsPerSolve": {
+                  "footRays": 6.0,
+                  "fastSweeps": 1.0,
+                  "fastUsed": 1.0,
+                  "fastAttempts": 1.0,
+                  "rejected": 0.0
+                }
+              }
+            },
+            "totalDifferenceMsPer1000": -6.042793381884621,
+            "totalDifferencePercent": -10.047949926541078
+          }
+        ],
+        "rawRows": [
+          {
+            "sample": "0",
+            "area": "ground",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "666696",
+            "footTicks": "570572",
+            "worldTicks": "25254",
+            "frozenTransformTicks": "22597",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "0",
+            "area": "ground",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "645777",
+            "footTicks": "557681",
+            "worldTicks": "23233",
+            "frozenTransformTicks": "20842",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "20065"
+          },
+          {
+            "sample": "0",
+            "area": "ground",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "639891",
+            "footTicks": "552615",
+            "worldTicks": "23175",
+            "frozenTransformTicks": "20503",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "19761"
+          },
+          {
+            "sample": "0",
+            "area": "ground",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "601503",
+            "footTicks": "515664",
+            "worldTicks": "22571",
+            "frozenTransformTicks": "20241",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "1",
+            "area": "ground",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "0",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "619114",
+            "footTicks": "456705",
+            "worldTicks": "93144",
+            "frozenTransformTicks": "20053",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "5290",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "1000",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "1",
+            "area": "ground",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "0",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "672950",
+            "footTicks": "503285",
+            "worldTicks": "96152",
+            "frozenTransformTicks": "21163",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "5418",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "2000",
+            "rejected": "1000",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "20704"
+          },
+          {
+            "sample": "1",
+            "area": "ground",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "0",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "648152",
+            "footTicks": "485261",
+            "worldTicks": "93955",
+            "frozenTransformTicks": "20156",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "5154",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "2000",
+            "rejected": "1000",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "19274"
+          },
+          {
+            "sample": "1",
+            "area": "ground",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "0",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "619754",
+            "footTicks": "457839",
+            "worldTicks": "93524",
+            "frozenTransformTicks": "20102",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "5212",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "1000",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "2",
+            "area": "ground",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "753634",
+            "footTicks": "437479",
+            "worldTicks": "247425",
+            "frozenTransformTicks": "20972",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "2",
+            "area": "ground",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "783339",
+            "footTicks": "465419",
+            "worldTicks": "248223",
+            "frozenTransformTicks": "21622",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "19655"
+          },
+          {
+            "sample": "2",
+            "area": "ground",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "796558",
+            "footTicks": "474394",
+            "worldTicks": "251916",
+            "frozenTransformTicks": "21713",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "19970"
+          },
+          {
+            "sample": "2",
+            "area": "ground",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0707703",
+            "maximumLift": "0.0707703",
+            "elapsedTicks": "763344",
+            "footTicks": "443738",
+            "worldTicks": "250124",
+            "frozenTransformTicks": "21220",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "3",
+            "area": "low",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0772095",
+            "maximumLift": "0.0772095",
+            "elapsedTicks": "948923",
+            "footTicks": "639454",
+            "worldTicks": "238874",
+            "frozenTransformTicks": "22076",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "3",
+            "area": "low",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0813599",
+            "maximumLift": "0.0813599",
+            "elapsedTicks": "902587",
+            "footTicks": "588349",
+            "worldTicks": "242133",
+            "frozenTransformTicks": "22652",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "6000",
+            "fastSweeps": "1000",
+            "fastUsed": "1000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "184667"
+          },
+          {
+            "sample": "3",
+            "area": "low",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0813599",
+            "maximumLift": "0.0813599",
+            "elapsedTicks": "901047",
+            "footTicks": "587263",
+            "worldTicks": "242382",
+            "frozenTransformTicks": "22049",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "6000",
+            "fastSweeps": "1000",
+            "fastUsed": "1000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "184103"
+          },
+          {
+            "sample": "3",
+            "area": "low",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0772095",
+            "maximumLift": "0.0772095",
+            "elapsedTicks": "940003",
+            "footTicks": "632401",
+            "worldTicks": "237294",
+            "frozenTransformTicks": "21961",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "4",
+            "area": "high",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0820618",
+            "maximumLift": "0.0820618",
+            "elapsedTicks": "916671",
+            "footTicks": "609016",
+            "worldTicks": "237654",
+            "frozenTransformTicks": "22037",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "4",
+            "area": "high",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0864258",
+            "maximumLift": "0.0864258",
+            "elapsedTicks": "713649",
+            "footTicks": "403081",
+            "worldTicks": "239249",
+            "frozenTransformTicks": "21977",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "2000",
+            "fastSweeps": "2000",
+            "fastUsed": "2000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "260382"
+          },
+          {
+            "sample": "4",
+            "area": "high",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0864258",
+            "maximumLift": "0.0864258",
+            "elapsedTicks": "713192",
+            "footTicks": "402901",
+            "worldTicks": "239197",
+            "frozenTransformTicks": "22147",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "2000",
+            "fastSweeps": "2000",
+            "fastUsed": "2000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "260388"
+          },
+          {
+            "sample": "4",
+            "area": "high",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0820618",
+            "maximumLift": "0.0820618",
+            "elapsedTicks": "912028",
+            "footTicks": "608016",
+            "worldTicks": "235268",
+            "frozenTransformTicks": "21574",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "5",
+            "area": "high",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0746155",
+            "maximumLift": "0.0746155",
+            "elapsedTicks": "920506",
+            "footTicks": "613349",
+            "worldTicks": "237878",
+            "frozenTransformTicks": "21802",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "5",
+            "area": "high",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.078949",
+            "maximumLift": "0.078949",
+            "elapsedTicks": "714877",
+            "footTicks": "404581",
+            "worldTicks": "239208",
+            "frozenTransformTicks": "21844",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "2000",
+            "fastSweeps": "2000",
+            "fastUsed": "2000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "262086"
+          },
+          {
+            "sample": "5",
+            "area": "high",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.078949",
+            "maximumLift": "0.078949",
+            "elapsedTicks": "715182",
+            "footTicks": "404899",
+            "worldTicks": "239011",
+            "frozenTransformTicks": "21895",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "2000",
+            "fastSweeps": "2000",
+            "fastUsed": "2000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "262095"
+          },
+          {
+            "sample": "5",
+            "area": "high",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0746155",
+            "maximumLift": "0.0746155",
+            "elapsedTicks": "916122",
+            "footTicks": "611028",
+            "worldTicks": "236794",
+            "frozenTransformTicks": "21486",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "6",
+            "area": "low",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0782166",
+            "maximumLift": "0.0782166",
+            "elapsedTicks": "939638",
+            "footTicks": "631740",
+            "worldTicks": "236766",
+            "frozenTransformTicks": "21992",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "6",
+            "area": "low",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0823364",
+            "maximumLift": "0.0823364",
+            "elapsedTicks": "885302",
+            "footTicks": "574865",
+            "worldTicks": "239267",
+            "frozenTransformTicks": "22252",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "6000",
+            "fastSweeps": "1000",
+            "fastUsed": "1000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "180835"
+          },
+          {
+            "sample": "6",
+            "area": "low",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0823364",
+            "maximumLift": "0.0823364",
+            "elapsedTicks": "883859",
+            "footTicks": "573850",
+            "worldTicks": "239147",
+            "frozenTransformTicks": "22275",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "6000",
+            "fastSweeps": "1000",
+            "fastUsed": "1000",
+            "fastAttempts": "2000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "179971"
+          },
+          {
+            "sample": "6",
+            "area": "low",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0.0782166",
+            "maximumLift": "0.0782166",
+            "elapsedTicks": "939809",
+            "footTicks": "631843",
+            "worldTicks": "237875",
+            "frozenTransformTicks": "21766",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "7",
+            "area": "low",
+            "block": "0",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "589474",
+            "footTicks": "502942",
+            "worldTicks": "22888",
+            "frozenTransformTicks": "21072",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          },
+          {
+            "sample": "7",
+            "area": "low",
+            "block": "1",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "568314",
+            "footTicks": "466929",
+            "worldTicks": "26348",
+            "frozenTransformTicks": "24008",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "6000",
+            "fastSweeps": "1000",
+            "fastUsed": "1000",
+            "fastAttempts": "1000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "154208"
+          },
+          {
+            "sample": "7",
+            "area": "low",
+            "block": "2",
+            "fast": "true",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "513551",
+            "footTicks": "421884",
+            "worldTicks": "23889",
+            "frozenTransformTicks": "21792",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "6000",
+            "fastSweeps": "1000",
+            "fastUsed": "1000",
+            "fastAttempts": "1000",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "139229"
+          },
+          {
+            "sample": "7",
+            "area": "low",
+            "block": "3",
+            "fast": "false",
+            "iterations": "1000",
+            "accepted": "1000",
+            "minimumLift": "0",
+            "maximumLift": "0",
+            "elapsedTicks": "613239",
+            "footTicks": "521756",
+            "worldTicks": "24300",
+            "frozenTransformTicks": "21901",
+            "fallbackTicks": "0",
+            "diagnosticTicks": "0",
+            "footRays": "10000",
+            "fastSweeps": "0",
+            "fastUsed": "0",
+            "fastAttempts": "0",
+            "rejected": "0",
+            "rootUnchanged": "true",
+            "fastGuardTicks": "0"
+          }
+        ]
+      }
+    ],
+    "conditions": {
+      "poses": 8,
+      "areaCounts": {
+        "ground": 3,
+        "low": 3,
+        "high": 2
+      },
+      "blocksPerExecution": 32,
+      "iterationsPerBlock": 1000,
+      "order": [
+        "OFF",
+        "FAST",
+        "FAST",
+        "OFF"
+      ],
+      "warmupPerMode": 64,
+      "previousContacts": "stationary synthesized from current pose",
+      "minimumLift": 0,
+      "nativeBoneGetter": "frozen table",
+      "failureDiagnostic": "counter only"
+    },
+    "limits": [
+      "Frozen getter excludes native bone lookup/graph time.",
+      "Previous joints set to current frozen pose, no movement, not original dynamic previous contacts.",
+      "Only diagnostic failure logger replaced with counter; geometry decisions unchanged.",
+      "Repeated identical queries are cache-hot, not64-agent frame attribution or GPU Present.",
+      "Allocations and inclusive timers retained; not CPUselftime.",
+      "Elapsed timer components overlap; guard is nested in foot scope. Do not sum.",
+      "Two scope executions supply four blocks per mode/pose, not a64-agent performance trial.",
+      "All8 selected poses retained, including one rejected by both modes.",
+      "No p50/p95/p99, frame-smoothness, allocations/GC or nativegraph/GPU attribution.",
+      "Conservative lift can alter downstream world-contact work; total difference is not pure ray selftime."
+    ],
+    "livePerformanceAccepted": false,
+    "visualAccepted": false,
+    "goalComplete": false,
+    "next": [
+      "Check where guard/SphereCast overhead consumes ray-count savings before widening Fast.",
+      "Ground fallback already avoids duplicate center ray but still has added guard/branch overhead.",
+      "Do not infer64-frame improvement from these cache-hot per-pose results.",
+      "Continue separate animation clock/display investigation and controlled live cost work."
+    ]
+  },
+  "selectedPoses": [
+    {
+      "area": "ground",
+      "inputRunId": "runtime-20261031-154150",
+      "sequence": "1",
+      "seconds": "15.587",
+      "id": "0",
+      "generation": "1",
+      "phase": "FALL",
+      "gate": "CLEAR",
+      "valid": "true",
+      "requireEntitySpace": "false",
+      "root": "<4508.410156, 339.423981, 10237.143555>",
+      "tested": "<4508.376953, 339.114960, 10237.142578>",
+      "supported": "<4508.376953, 339.114929, 10237.142578>",
+      "heading": "12",
+      "lift": "0",
+      "reason": "FRAME_FALL_PENDING",
+      "failure": "CONTACT_SUPPORT_LOST",
+      "checks": "1",
+      "rejected": "0",
+      "budgetSkipped": "0",
+      "poseAvailable": "true",
+      "nativeBefore": "11.25",
+      "nativeAfter": "11.25",
+      "updatesBefore": "225",
+      "updatesAfter": "225",
+      "hipsMS": "<-0.013916, 0.978965, -0.003309>",
+      "headMS": "<-0.060618, 1.637057, -0.209090>",
+      "leftFootMS": "<0.175260, 0.422554, -0.312519>",
+      "rightFootMS": "<-0.171679, 0.134665, -0.111527>",
+      "idleOffset": "<0.000000, 0.000000, 0.000000>",
+      "link": "none"
+    },
+    {
+      "area": "ground",
+      "inputRunId": "runtime-20261031-154150",
+      "sequence": "9",
+      "seconds": "18.867",
+      "id": "11",
+      "generation": "1",
+      "phase": "FALL",
+      "gate": "CLEAR",
+      "valid": "true",
+      "requireEntitySpace": "false",
+      "root": "<4511.272461, 339.429260, 10236.514648>",
+      "tested": "<4511.281738, 339.166687, 10236.524414>",
+      "supported": "<4511.281738, 339.166687, 10236.524414>",
+      "heading": "-24",
+      "lift": "0",
+      "reason": "FRAME_FALL_PENDING",
+      "failure": "CONTACT_SUPPORT_LOST",
+      "checks": "46",
+      "rejected": "45",
+      "budgetSkipped": "0",
+      "poseAvailable": "true",
+      "nativeBefore": "13.7",
+      "nativeAfter": "13.7",
+      "updatesBefore": "274",
+      "updatesAfter": "274",
+      "hipsMS": "<0.000000, 0.876198, 0.000000>",
+      "headMS": "<-0.050839, 1.408517, -0.379067>",
+      "leftFootMS": "<0.172712, 0.227151, 0.153251>",
+      "rightFootMS": "<-0.142326, 0.052159, -0.240494>",
+      "idleOffset": "<0.000000, 0.000000, 0.000000>",
+      "link": "none"
+    },
+    {
+      "area": "ground",
+      "inputRunId": "runtime-20261031-154150",
+      "sequence": "10",
+      "seconds": "18.867",
+      "id": "11",
+      "generation": "1",
+      "phase": "FALL",
+      "gate": "CLEAR",
+      "valid": "true",
+      "requireEntitySpace": "false",
+      "root": "<4511.265625, 339.429260, 10236.485352>",
+      "tested": "<4511.271973, 339.166382, 10236.492188>",
+      "supported": "<4511.271973, 339.166382, 10236.492188>",
+      "heading": "-24",
+      "lift": "0",
+      "reason": "FALL_CONTACT_AIR_SEPARATION",
+      "failure": "CONTACT_SUPPORT_LOST",
+      "checks": "47",
+      "rejected": "45",
+      "budgetSkipped": "0",
+      "poseAvailable": "true",
+      "nativeBefore": "13.7",
+      "nativeAfter": "13.7",
+      "updatesBefore": "274",
+      "updatesAfter": "274",
+      "hipsMS": "<0.000000, 0.876198, 0.000000>",
+      "headMS": "<-0.050839, 1.408517, -0.379067>",
+      "leftFootMS": "<0.172712, 0.227151, 0.153251>",
+      "rightFootMS": "<-0.142326, 0.052159, -0.240494>",
+      "idleOffset": "<0.000000, 0.000000, 0.000000>",
+      "link": "none"
+    },
+    {
+      "area": "low",
+      "inputRunId": "runtime-20261031-154150",
+      "sequence": "57",
+      "seconds": "51.31",
+      "id": "31",
+      "generation": "1",
+      "phase": "FALL",
+      "gate": "CLEAR",
+      "valid": "true",
+      "requireEntitySpace": "false",
+      "root": "<4511.060547, 340.215820, 10239.788086>",
+      "tested": "<4511.061523, 340.212799, 10239.787109>",
+      "supported": "<4511.061523, 340.212799, 10239.787109>",
+      "heading": "-138.416",
+      "lift": "0.026123",
+      "reason": "LANDING_SPACE_BLOCKED",
+      "failure": "CONTACT_SUPPORT_LOST",
+      "checks": "11",
+      "rejected": "10",
+      "budgetSkipped": "0",
+      "poseAvailable": "true",
+      "nativeBefore": "38.3497",
+      "nativeAfter": "38.3497",
+      "updatesBefore": "767",
+      "updatesAfter": "767",
+      "hipsMS": "<0.000000, 0.876199, 0.000000>",
+      "headMS": "<-0.041848, 1.407464, -0.379127>",
+      "leftFootMS": "<0.180948, 0.222040, 0.142912>",
+      "rightFootMS": "<-0.159087, 0.039399, -0.184371>",
+      "idleOffset": "<0.000000, 0.000000, 0.000000>",
+      "link": "none"
+    },
+    {
+      "area": "high",
+      "inputRunId": "runtime-20261031-154150",
+      "sequence": "107",
+      "seconds": "107.508",
+      "id": "36",
+      "generation": "1",
+      "phase": "FALL",
+      "gate": "CLEAR",
+      "valid": "true",
+      "requireEntitySpace": "false",
+      "root": "<4511.899902, 342.128784, 10240.219727>",
+      "tested": "<4511.892578, 342.161987, 10240.218750>",
+      "supported": "<4511.892578, 342.161987, 10240.218750>",
+      "heading": "136.008",
+      "lift": "0.0668945",
+      "reason": "FRAME_FALL_PENDING",
+      "failure": "CONTACT_SUPPORT_LOST",
+      "checks": "11",
+      "rejected": "10",
+      "budgetSkipped": "0",
+      "poseAvailable": "true",
+      "nativeBefore": "79.5003",
+      "nativeAfter": "79.5003",
+      "updatesBefore": "1590",
+      "updatesAfter": "1590",
+      "hipsMS": "<0.000000, 0.876198, 0.000000>",
+      "headMS": "<-0.041847, 1.407464, -0.379127>",
+      "leftFootMS": "<0.180949, 0.222040, 0.142911>",
+      "rightFootMS": "<-0.159089, 0.039397, -0.184366>",
+      "idleOffset": "<0.000000, 0.000000, 0.000000>",
+      "link": "none"
+    },
+    {
+      "area": "high",
+      "inputRunId": "runtime-20261031-154150",
+      "sequence": "131",
+      "seconds": "108.555",
+      "id": "12",
+      "generation": "1",
+      "phase": "FALL",
+      "gate": "CLEAR",
+      "valid": "true",
+      "requireEntitySpace": "false",
+      "root": "<4511.882324, 342.158386, 10239.962891>",
+      "tested": "<4511.880859, 342.162170, 10239.961914>",
+      "supported": "<4511.880859, 342.162170, 10239.961914>",
+      "heading": "121.777",
+      "lift": "0.0371094",
+      "reason": "LANDING_SPACE_BLOCKED",
+      "failure": "CONTACT_SUPPORT_LOST",
+      "checks": "8",
+      "rejected": "7",
+      "budgetSkipped": "0",
+      "poseAvailable": "true",
+      "nativeBefore": "80.2003",
+      "nativeAfter": "80.2003",
+      "updatesBefore": "1604",
+      "updatesAfter": "1604",
+      "hipsMS": "<0.000000, 0.876198, 0.000000>",
+      "headMS": "<-0.047834, 1.408195, -0.379092>",
+      "leftFootMS": "<0.175490, 0.225438, 0.149875>",
+      "rightFootMS": "<-0.147660, 0.048293, -0.221741>",
+      "idleOffset": "<0.000000, 0.000000, 0.000000>",
+      "link": "none"
+    },
+    {
+      "area": "low",
+      "inputRunId": "runtime-20261031-155047",
+      "sequence": "26",
+      "seconds": "34.418",
+      "id": "50",
+      "generation": "1",
+      "phase": "FALL",
+      "gate": "CLEAR",
+      "valid": "true",
+      "requireEntitySpace": "false",
+      "root": "<4511.041504, 340.216522, 10240.072266>",
+      "tested": "<4511.046875, 340.213287, 10240.074219>",
+      "supported": "<4511.046875, 340.213287, 10240.074219>",
+      "heading": "-100.52",
+      "lift": "0.0218201",
+      "reason": "LANDING_SPACE_BLOCKED",
+      "failure": "CONTACT_SUPPORT_LOST",
+      "checks": "13",
+      "rejected": "12",
+      "budgetSkipped": "0",
+      "poseAvailable": "true",
+      "nativeBefore": "25.5999",
+      "nativeAfter": "25.5999",
+      "updatesBefore": "512",
+      "updatesAfter": "512",
+      "hipsMS": "<0.000000, 0.876199, 0.000000>",
+      "headMS": "<-0.041848, 1.407464, -0.379127>",
+      "leftFootMS": "<0.180948, 0.222040, 0.142912>",
+      "rightFootMS": "<-0.159087, 0.039399, -0.184371>",
+      "idleOffset": "<0.000000, 0.000000, 0.000000>",
+      "link": "none"
+    },
+    {
+      "area": "low",
+      "inputRunId": "runtime-20261031-155047",
+      "sequence": "113",
+      "seconds": "108.124",
+      "id": "63",
+      "generation": "1",
+      "phase": "FALL",
+      "gate": "CLEAR",
+      "valid": "true",
+      "requireEntitySpace": "false",
+      "root": "<4511.075195, 340.337097, 10240.198242>",
+      "tested": "<4511.066406, 340.213989, 10240.196289>",
+      "supported": "<4511.066406, 340.213989, 10240.196289>",
+      "heading": "125.834",
+      "lift": "0",
+      "reason": "FRAME_FALL_PENDING",
+      "failure": "CONTACT_SUPPORT_LOST",
+      "checks": "10",
+      "rejected": "9",
+      "budgetSkipped": "0",
+      "poseAvailable": "true",
+      "nativeBefore": "81.1003",
+      "nativeAfter": "81.1003",
+      "updatesBefore": "1622",
+      "updatesAfter": "1622",
+      "hipsMS": "<-0.012731, 0.978220, 0.001843>",
+      "headMS": "<-0.054262, 1.633673, -0.210579>",
+      "leftFootMS": "<0.168536, 0.250544, -0.314792>",
+      "rightFootMS": "<-0.122935, 0.244351, 0.059489>",
+      "idleOffset": "<0.000000, 0.000000, 0.000000>",
+      "link": "none"
+    }
+  ],
+  "sourceExcerpts": [
+    {
+      "member": "DGBNativeGround.c",
+      "startLine": 298,
+      "endLine": 331,
+      "text": "    bool StructureSupportBound(vector footPoint,Object centerObject,vector centerPoint,vector centerNormal,float centerFraction,out float upperY)\n    {\n        SupportFastAttempts++;SupportFastLastGuard=\"CENTER_SURFACE\";\n        if(!centerObject || !Director.Fixture || centerObject.GetType()!=\"StaticObj_Container_1C\")return false;\n        if(Director.Fixture.Objects.Find(centerObject)<0 || !(centerNormal[1]>=0.995) || !(centerFraction>0.001 && centerFraction<=1))return false;\n        vector bounds[2];if(!centerObject.GetCollisionBox(bounds))return false;\n        vector footLocal=centerObject.WorldToModel(footPoint);\n        // Keep the complete sample footprint inside the authored collision box.\n        // The sweep below still checks actual geometry; the box is no support proof.\n        if(footLocal[0]<bounds[0][0]+0.065 || footLocal[0]>bounds[1][0] - 0.065)return false;\n        if(footLocal[2]<bounds[0][2]+0.065 || footLocal[2]>bounds[1][2] - 0.065)return false;\n        SupportFastSweeps++;\n        vector begin=footPoint+\"0 0.8 0\";vector end=footPoint+\"0 -0.7 0\";\n        Object hit;vector point,normal;float fraction;\n        bool found=DayZPhysics.SphereCastBullet(begin,end,0.5,DGBGroundAgent.Floors(),Leader,hit,point,normal,fraction);\n        SupportFastLastGuard=\"SWEEP_SURFACE\";\n        if(!found || hit!=centerObject || !(fraction>0.001 && fraction<=1) || !(normal[1]>=0.995))return false;\n        SupportFastLastGuard=\"FOOTPRINT\";\n        float dx=point[0] - footPoint[0];float dz=point[2] - footPoint[2];\n        if(dx*dx+dz*dz>0.065*0.065)return false;\n        vector center=begin+(end - begin)*fraction;\n        upperY=center[1] - Math.Sqrt(0.25 - 0.065*0.065)+0.001;\n        SupportFastLastGuard=\"HEIGHT_CONSISTENCY\";\n        if(!(upperY>=centerPoint[1] && upperY - centerPoint[1]<=0.008))return false;\n        if(!(upperY>=footPoint[1] - 1.2 && upperY<=footPoint[1]+0.13))return false;\n        SupportFastLastGuard=\"\";SupportFastEligible++;\n        return true;\n    }\n    // Observation only: this value must never feed proposedLift or acceptance.\n    void ObserveSupportSweep(vector footPoint,bool referenceFound,float referenceY)\n    {\n        int started=TickCount(0);\n        SupportShadowQueries++;\n        vector begin=footPoint+\"0 0.8 0\";vector end=footPoint+\"0 -0.7 0\";"
+    },
+    {
+      "member": "DGBNativeGround.c",
+      "startLine": 359,
+      "endLine": 469,
+      "text": "    bool SolveContactsInternal(vector anchor,float heading,out float proposedLift,out array<vector> points,float minimumLift=0)\n    {\n        proposedLift=0;points=new array<vector>;\n        ref array<vector> raw={};\n        int boneStarted=TickCount(0);\n        for(int j=0;j<JointIds.Count();j++)raw.Insert(anchor+Rotate(Leader.GetBonePositionMS(JointIds[j])+IdleOffset,heading));\n        ContactBoneTicks+=TickCount(boneStarted);\n        array<vector> supportOffsets={\"0 0 0\",\"0.065 0 0\",\"-0.065 0 0\",\"0 0 0.065\",\"0 0 -0.065\"};\n        int liftFoot=2;\n        int footStarted=TickCount(0);\n        float shadowBefore=SupportShadowTicks;\n        for(int foot=2;foot<4;foot++)\n        {\n            bool referenceFound=false;float referenceY=-100000;\n            bool centerTested=false;bool centerFound=false;\n            Object centerObject;vector centerPoint,centerNormal;float centerFraction;\n            bool fastEligible=false;float supportBound;\n            if(Director.SupportSweepFast || Director.SupportSweepShadow)\n            {\n                centerTested=true;ContactFootRays++;\n                centerFound=DayZPhysics.RayCastBullet(raw[foot]+\"0 0.3 0\",raw[foot]+\"0 -1.2 0\",DGBGroundAgent.Floors(),Leader,centerObject,centerPoint,centerNormal,centerFraction);\n                if(centerFound && centerNormal[1]>=0.65){referenceFound=true;referenceY=centerPoint[1];}\n                int fastStarted=TickCount(0);\n                if(referenceFound)fastEligible=StructureSupportBound(raw[foot],centerObject,centerPoint,centerNormal,centerFraction,supportBound);\n                SupportFastTicks+=TickCount(fastStarted);\n            }\n            bool useBound=Director.SupportSweepFast && fastEligible && !Director.SupportSweepShadow;\n            if(useBound)\n            {referenceFound=true;referenceY=supportBound;SupportFastUsed++;SupportFastSkippedRays+=4;}\n            else\n            foreach(vector offset:supportOffsets)\n            {\n                if(centerTested && offset==vector.Zero)continue;\n                Object hit;vector point,normal;float fraction;\n                vector origin=raw[foot]+offset;\n                ContactFootRays++;\n                if(DayZPhysics.RayCastBullet(origin+\"0 0.3 0\",origin+\"0 -1.2 0\",DGBGroundAgent.Floors(),Leader,hit,point,normal,fraction) && normal[1]>=0.65)\n                {\n                    referenceFound=true;referenceY=Math.Max(referenceY,point[1]);\n                }\n            }\n            if(Director.SupportSweepShadow && fastEligible && referenceFound)\n            {\n                SupportFastReferenceChecks++;\n                float fastError=referenceY - supportBound;\n                if(fastError>0.001)SupportFastUnder++;\n                SupportFastMaxUnder=Math.Max(SupportFastMaxUnder,fastError);\n                SupportFastMaxOver=Math.Max(SupportFastMaxOver, -fastError);\n            }\n            if(referenceFound)\n            {\n                float required=referenceY+Radii[foot]+0.03 - raw[foot][1];\n                if(required>proposedLift){proposedLift=required;liftFoot=foot;}\n            }\n            if(Director.SupportSweepShadow)ObserveSupportSweep(raw[foot],referenceFound,referenceY);\n        }\n        proposedLift=Math.Max(proposedLift,minimumLift);\n        ContactFootTicks+=TickCount(footStarted) - (SupportShadowTicks - shadowBefore);\n        if(proposedLift>0.25)\n        {\n            Reason=\"NATIVE_FOOT_LIFT_LIMIT\";\n            vector oldFoot=raw[liftFoot];if(Contacts.Count()==4)oldFoot=Contacts[liftFoot];\n            int liftDiagnosticStarted=TickCount(0);\n            RecordContactFailure(\"LIFT_LIMIT\",liftFoot,anchor,heading,raw[liftFoot],oldFoot,raw[liftFoot]+Vector(0,proposedLift,0),proposedLift,null);\n            ContactDiagnosticTicks+=TickCount(liftDiagnosticStarted);\n            return false;\n        }\n        for(int joint=0;joint<raw.Count();joint++)\n        {\n            vector target=raw[joint]+Vector(0,proposedLift,0);\n            vector previous=target;if(Contacts.Count()==4)previous=Contacts[joint];\n            Object collision;vector contact,normalHit;float hitFraction;\n            JointSweeps++;\n            int worldStarted=TickCount(0);\n            bool worldContact=DayZPhysics.SphereCastBullet(previous,target,Radii[joint],DGBGroundAgent.Walls(),Leader,collision,contact,normalHit,hitFraction);\n            ContactWorldTicks+=TickCount(worldStarted);\n            if(worldContact)\n            {\n                // A tangent/start-overlap with a walkable support is not a wall.\n                // Recheck support beneath the proposed foot; side faces still block.\n                bool supportedFoot=false;\n                if(joint>=2 && normalHit[1]>=0.65)\n                {\n                    Object floorObject;vector floorPoint,floorNormal;float floorFraction;\n                    bool hasFloor=DayZPhysics.RayCastBullet(target+\"0 0.3 0\",target+\"0 -1.2 0\",DGBGroundAgent.Floors(),Leader,floorObject,floorPoint,floorNormal,floorFraction);\n                    if(!hasFloor)\n                    {\n                        hasFloor=DayZPhysics.RayCastBullet(contact+\"0 0.3 0\",contact+\"0 -0.3 0\",DGBGroundAgent.Floors(),Leader,floorObject,floorPoint,floorNormal,floorFraction);\n                    }\n                    supportedFoot=hasFloor && floorNormal[1]>=0.65 && target[1] - Radii[joint]>=floorPoint[1] - 0.005;\n                }\n                if(joint>=2 && !supportedFoot && !collision)\n                {\n                    int fallbackStarted=TickCount(0);\n                    supportedFoot=WalkableFootSweep(previous,target,Radii[joint],collision);\n                    ContactFallbackTicks+=TickCount(fallbackStarted);\n                }\n                if(!supportedFoot)\n                {\n                    Reason=\"NATIVE_JOINT_WORLD_\"+joint;\n                    HitType=\"terrain\";if(collision && collision.GetType()!=\"\")HitType=collision.GetType();\n                    HitNormal=normalHit;HitFraction=hitFraction;HitPoint=contact;\n                    int sweepDiagnosticStarted=TickCount(0);\n                    RecordContactFailure(\"SWEEP\",joint,anchor,heading,raw[joint],previous,target,proposedLift,collision);\n                    ContactDiagnosticTicks+=TickCount(sweepDiagnosticStarted);\n                    return false;\n                }\n            }\n            points.Insert(target);\n        }\n        return true;"
+    }
+  ],
+  "sourceSha256": "f7c04446cd2b7cacf6033e8c7af5abebd6a87400c9e4fbbd12af813678954f8e"
+}
