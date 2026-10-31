@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "animation-residual-repeat-20261031-112400"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "order",
+        "clockRepeatedDiagnosisPassed",
+        "supportedDeployableFix",
+        "visualAccepted",
+        "performanceAccepted",
+        "summary"
+      ],
+      "properties": {
+        "order": {
+          "const": "A/B/B/A"
+        },
+        "clockRepeatedDiagnosisPassed": {
+          "const": true
+        },
+        "supportedDeployableFix": {
+          "const": false
+        },
+        "visualAccepted": {
+          "const": false
+        },
+        "performanceAccepted": {
+          "const": false
+        },
+        "summary": {
+          "type": "object",
+          "required": [
+            "baseline",
+            "candidate"
+          ],
+          "properties": {
+            "baseline": {
+              "type": "object",
+              "required": [
+                "repetitions"
+              ],
+              "properties": {
+                "repetitions": {
+                  "const": 2
+                }
+              }
+            },
+            "candidate": {
+              "type": "object",
+              "required": [
+                "repetitions"
+              ],
+              "properties": {
+                "repetitions": {
+                  "const": 2
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
