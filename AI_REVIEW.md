@@ -1,3 +1,5 @@
+> 최신 5번 복구 정적 재현:3포즈 착지 거부 재현,소진예산48/48 차단,새예산 진단21/48 작은이동 통과. 기존6m내1.18~1.28m 정적경로 발견. live수정/64회귀/성능수용 아님. [근거와 제외한 진단오류](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/actor5-landing-replay-20261031.md). 이전 기록은 아래 보존한다.
+
 > 최신 B93D 제한적 지지 검사64명: 최종63/64, 낙하복귀95/96, 등반종료실패0, 기능gate=False. 단일실행이며 반복성능·시각수용은별도. [조건과 근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/b93d-support-fast-sixtyfour-20261031.md). 이전 기록은 아래 보존한다.
 
 > 최신 B93D 지지 검사 검증: shadow 적격56,648건 과소0·과대최대4.36mm,8명 활성 회귀 통과. shadow는비활성창조건으로성능대조불가.64명·반복성능·시각수용은별도미완료. [조건과 한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/b93d-support-fast-eight-20261031.md). 이전 기록은 아래 보존한다.

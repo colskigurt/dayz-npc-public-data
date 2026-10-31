@@ -1,0 +1,241 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T14:54:47.152157+09:00",
+  "sourceRunId": "actor5-landing-replay-20261031-144324",
+  "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+  "verificationStatus": {
+    "diagnostic": "recorded_landing_and_budget_guards_reproduced_static_paths_found",
+    "liveRecoveryFixAccepted": false,
+    "sixtyFourAgentFunctional": "previous_failure_preserved",
+    "visibleSmoothness": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "actor5-landing-replay-20261031-144324",
+    "sourceRuntimeId": "runtime-20261031-143044",
+    "runs": [
+      {
+        "validation": "controlled-actor5-frozen-replay",
+        "compileProfileId": "compile-7628ead671ed4860817bb6f21569bbf1",
+        "baselineLandingMatches": 3,
+        "firstStepsAccepted": 21,
+        "freshBudgetMovesAccepted": 21,
+        "exhaustedBudgetMovesAccepted": 0,
+        "chainCountersValid": false,
+        "fullStaticEndpoints": [],
+        "chainTermination": {
+          "STEP_LIMIT": 7,
+          "NEW_WORLD_CONTACT": 17,
+          "DEEPER_FIXTURE": 24
+        },
+        "rawSha256": "1d990b33909d780f0c2415e4cd91db2dfcb2dcb5a56965376e6cde852d2d0173",
+        "compileRecordSha256": "c1d6db5f9f09f0cd6474443a7a8734a4340c8cc01514d5ef1b044e44c26cfcb9"
+      },
+      {
+        "validation": "controlled-actor5-frozen-replay-reset",
+        "compileProfileId": "compile-34151ebafa1a46bd8707f99f3e1db153",
+        "baselineLandingMatches": 3,
+        "firstStepsAccepted": 21,
+        "freshBudgetMovesAccepted": 21,
+        "exhaustedBudgetMovesAccepted": 0,
+        "chainCountersValid": true,
+        "fullStaticEndpoints": [],
+        "chainTermination": {
+          "STEP_LIMIT": 7,
+          "NEW_WORLD_CONTACT": 17,
+          "DEEPER_FIXTURE": 24
+        },
+        "rawSha256": "6f5cf726e48730aa6fe7e375572ecdb782d2fc2980db8d6e7bfdd03a8ea0dd64",
+        "compileRecordSha256": "03a453df9bc29cc839b8a9e0abbe4bf0078978992fe47eea30df621a18761b5d"
+      },
+      {
+        "validation": "controlled-actor5-frozen-replay-corridor",
+        "compileProfileId": "compile-117b1077f8d14049818cebec971a189b",
+        "baselineLandingMatches": 3,
+        "firstStepsAccepted": 21,
+        "freshBudgetMovesAccepted": 21,
+        "exhaustedBudgetMovesAccepted": 0,
+        "chainCountersValid": true,
+        "fullStaticEndpoints": [
+          {
+            "snapshot": "0",
+            "kind": "CHAIN",
+            "direction": "0",
+            "distance": "1.18066",
+            "clear": "1",
+            "gate": "FULL_STATIC_ENDPOINT",
+            "root": "<4511.381348, 339.400787, 10243.036133>",
+            "point": "<4511.381348, 339.400787, 10244.216797>",
+            "lift": "0",
+            "steps": "39",
+            "endpointClear": "true",
+            "rootUnchanged": "false",
+            "budgetBefore": "6.00022",
+            "budgetAfter": "6.00022"
+          },
+          {
+            "snapshot": "0",
+            "kind": "CHAIN",
+            "direction": "1",
+            "distance": "1.27921",
+            "clear": "1",
+            "gate": "FULL_STATIC_ENDPOINT",
+            "root": "<4511.381348, 339.400787, 10243.036133>",
+            "point": "<4511.885254, 339.400787, 10244.211914>",
+            "lift": "0",
+            "steps": "43",
+            "endpointClear": "true",
+            "rootUnchanged": "false",
+            "budgetBefore": "6.00022",
+            "budgetAfter": "6.00022"
+          },
+          {
+            "snapshot": "1",
+            "kind": "CHAIN",
+            "direction": "0",
+            "distance": "1.18066",
+            "clear": "1",
+            "gate": "FULL_STATIC_ENDPOINT",
+            "root": "<4511.377930, 339.325928, 10243.034180>",
+            "point": "<4511.377930, 339.325928, 10244.214844>",
+            "lift": "0",
+            "steps": "39",
+            "endpointClear": "true",
+            "rootUnchanged": "false",
+            "budgetBefore": "6.00022",
+            "budgetAfter": "6.00022"
+          },
+          {
+            "snapshot": "1",
+            "kind": "CHAIN",
+            "direction": "1",
+            "distance": "1.27921",
+            "clear": "1",
+            "gate": "FULL_STATIC_ENDPOINT",
+            "root": "<4511.377930, 339.325928, 10243.034180>",
+            "point": "<4511.881836, 339.325928, 10244.209961>",
+            "lift": "0",
+            "steps": "43",
+            "endpointClear": "true",
+            "rootUnchanged": "false",
+            "budgetBefore": "6.00022",
+            "budgetAfter": "6.00022"
+          },
+          {
+            "snapshot": "2",
+            "kind": "CHAIN",
+            "direction": "0",
+            "distance": "1.18066",
+            "clear": "1",
+            "gate": "FULL_STATIC_ENDPOINT",
+            "root": "<4511.376465, 339.296173, 10243.033203>",
+            "point": "<4511.376465, 339.296173, 10244.213867>",
+            "lift": "0",
+            "steps": "39",
+            "endpointClear": "true",
+            "rootUnchanged": "false",
+            "budgetBefore": "6.00022",
+            "budgetAfter": "6.00022"
+          },
+          {
+            "snapshot": "2",
+            "kind": "CHAIN",
+            "direction": "1",
+            "distance": "1.27921",
+            "clear": "1",
+            "gate": "FULL_STATIC_ENDPOINT",
+            "root": "<4511.376465, 339.296173, 10243.033203>",
+            "point": "<4511.880371, 339.296173, 10244.208984>",
+            "lift": "0",
+            "steps": "43",
+            "endpointClear": "true",
+            "rootUnchanged": "false",
+            "budgetBefore": "6.00022",
+            "budgetAfter": "6.00022"
+          }
+        ],
+        "chainTermination": {
+          "FULL_STATIC_ENDPOINT": 6,
+          "NEW_WORLD_CONTACT": 17,
+          "DEEPER_FIXTURE": 24,
+          "TRAVEL_BOUND": 1
+        },
+        "rawSha256": "7180d499aa81ddc625ae230baf09b5f85c2c6f71cbff078c589b4dc6f5e80073",
+        "compileRecordSha256": "3a3b84107a28fdeaa603fafe98ac17b4d2328fe1c139ed1aabf4a863fed35d49"
+      }
+    ],
+    "independentControlsIdenticalAcrossThreeExecutions": true,
+    "baselineLandingReproducedAll": true,
+    "firstChainCounterMetricsRejected": true,
+    "shortestFoundStaticPathMeters": 1.18066,
+    "maximumFoundStaticPathMeters": 1.27921,
+    "foundEndpoints": 6,
+    "geometry": [
+      {
+        "object": "StaticObj_Container_1C",
+        "position": "<4510.000000, 338.823303, 10240.000000>",
+        "modelMin": "<-1.233314, -1.333837, -3.124322>",
+        "modelMax": "<1.248235, 1.330017, 3.088201>",
+        "worldMin": "<4508.741699, 337.458374, 10236.872070>",
+        "worldMax": "<4511.272949, 340.184601, 10243.091797>"
+      },
+      {
+        "object": "StaticObj_Container_1C",
+        "position": "<4513.000000, 340.808350, 10240.000000>",
+        "modelMin": "<-1.233314, -1.333837, -3.124322>",
+        "modelMax": "<1.248235, 1.330017, 3.088201>",
+        "worldMin": "<4511.747070, 339.452454, 10236.874023>",
+        "worldMax": "<4514.267578, 342.160675, 10243.089844>"
+      }
+    ],
+    "worldAndSupportChecksPreserved": true,
+    "runtimeBudgetChanged": false,
+    "newPbo": false,
+    "nativeHooks": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "liveRecoveryFixAccepted": false,
+    "goalComplete": false,
+    "next": "Verify original/refined planner selection and full fall-to-landing transition on recorded inputs before designing a bounded recovery lease. Do not reset budgets indefinitely or equate an externally chosen static path with AI execution.",
+    "limits": [
+      "Same-call pose fields are rounded textual vectors; frozen source and selections recorded.",
+      "No player/peer collision or live pose change in frozen replay.",
+      "Full static endpoint includes conservative1.1m ground-route inflation, not minimal distance for physical landing alone.",
+      "Counterfactual fresh budget proves guard influence on small moves, not safety of runtime unconditional resets.",
+      "16 straight directions and finite bounds do not prove absence of other routes when a case fails.",
+      "Original CHAIN cumulative distances/step counts invalid; independent baseline and budget rows reproduced after correction."
+    ],
+    "conditions": {
+      "frozenPoses": 3,
+      "independentControlExecutions": 3,
+      "directions": 16,
+      "stepMaxMeters": 0.03,
+      "existingEpisodeBoundMeters": 6,
+      "livePeers": false,
+      "newClientRun": false,
+      "newEngineProbe": true,
+      "newPbo": false
+    }
+  },
+  "blockers": [
+    "Same-call pose fields are rounded textual vectors; frozen source and selections recorded.",
+    "No player/peer collision or live pose change in frozen replay.",
+    "Full static endpoint includes conservative1.1m ground-route inflation, not minimal distance for physical landing alone.",
+    "Counterfactual fresh budget proves guard influence on small moves, not safety of runtime unconditional resets.",
+    "16 straight directions and finite bounds do not prove absence of other routes when a case fails.",
+    "Original CHAIN cumulative distances/step counts invalid; independent baseline and budget rows reproduced after correction.",
+    "Original/refined planner selection and live Fall-to-Landing transition not yet demonstrated."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/actor5-landing-replay-20261031.md",
+      "sha256": "b6af4390525b0dd4135836b640a4adaa43beaabba90d2d5d3afbc837a8785f9b"
+    },
+    {
+      "path": "evidence/actor5-landing-replay-20261031.txt",
+      "sha256": "8e6e8fba0e9cc6d166e9bdf854be1bfae906ada538464e30ed1a654b8474591a"
+    }
+  ],
+  "goalComplete": false
+}
