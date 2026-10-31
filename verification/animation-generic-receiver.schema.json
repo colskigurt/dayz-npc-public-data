@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "animation-generic-receiver-20261031-093700"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "repetitions",
+        "probeSamples",
+        "stableSelectedReceiverRecords",
+        "readableTargetChains",
+        "nativeHooks",
+        "numericOverrides",
+        "videoRecorded"
+      ],
+      "properties": {
+        "repetitions": {
+          "const": 1
+        },
+        "probeSamples": {
+          "const": 1840
+        },
+        "stableSelectedReceiverRecords": {
+          "const": 1839
+        },
+        "readableTargetChains": {
+          "const": 0
+        },
+        "nativeHooks": {
+          "const": false
+        },
+        "numericOverrides": {
+          "const": false
+        },
+        "videoRecorded": {
+          "const": false
+        }
+      }
+    }
+  }
+}
