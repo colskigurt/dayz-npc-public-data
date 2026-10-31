@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "presentation-etw-baseline-20261031-1740"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "verificationStatus": {
+      "type": "object",
+      "required": [
+        "displayMetricsMeasured",
+        "repetitions",
+        "exactPresentToPoseJoin"
+      ],
+      "properties": {
+        "displayMetricsMeasured": {
+          "const": true
+        },
+        "repetitions": {
+          "const": 1
+        },
+        "exactPresentToPoseJoin": {
+          "const": false
+        }
+      }
+    }
+  }
+}
