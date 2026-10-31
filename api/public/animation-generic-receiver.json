@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T09:42:43.600592+09:00",
+  "sourceRunId": "animation-generic-receiver-20261031-093700",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "verificationStatus": {
+    "diagnostic": "selected_native_receiver_null_observed",
+    "supportedClockControl": "not_established",
+    "repeatAcceptance": false,
+    "visual": "unmeasured_in_bundle",
+    "performance": "excluded_readonly_probe_overhead",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "scenario": {
+      "logicalAgents": 1,
+      "nativeParts": 8,
+      "clip": "run",
+      "previewClip": 2,
+      "ai": false,
+      "rootMovement": false,
+      "repetitions": 1,
+      "seconds": 120,
+      "videoRecorded": false,
+      "hudFlagNotActualRecording": true
+    },
+    "probeSeconds": 20,
+    "repetitions": 1,
+    "probeSamples": 1840,
+    "selectedReceiverRecords": 1840,
+    "stableSelectedReceiverRecords": 1839,
+    "unstableSelectedReceiverRecords": 1,
+    "stableNullComponentRecords": 1839,
+    "readableTargetChains": 0,
+    "selectedBoneCount": 73,
+    "nativePrimaryIntervals": [
+      0.05000000074505806
+    ],
+    "nativeSecondaryIntervals": [
+      0.20000000298023224
+    ],
+    "pacing": {
+      "steady": {
+        "frames": 1999,
+        "foregroundFrames": 1999,
+        "foregroundFraction": 1.0,
+        "missionFrameMs": {
+          "p50": 20.0,
+          "p95": 35.0,
+          "p99": 37.0
+        },
+        "hostCallbackHz": {
+          "minimum": 12.835920120688332,
+          "median": 12.835920120688332,
+          "maximum": 12.835920120688332
+        },
+        "nativeClockSecondsPerWallSecond": {
+          "minimum": 0.641790380730778,
+          "median": 0.641790380730778,
+          "maximum": 0.641790380730778
+        }
+      }
+    },
+    "nativeHooks": false,
+    "numericOverrides": false,
+    "videoRecorded": false
+  },
+  "blockers": [
+    "NativeAnimal candidate isnot demonstratedactual script handler rcx.",
+    "No genericcomponent chain observed;no supported skeletalclock control established.",
+    "No newgraph phase trace,video orGPU timings.",
+    "Existing50ms consumption/overshoot evidence andvisual timing do notsupplyanaccepted control.",
+    "64 functional/cost acceptance remains separate andincomplete."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-generic-receiver-20261031.md",
+      "sha256": "6cb3e477290c761f6748366fc987e29109d1073800aa7e753cec8eb67f3885a4"
+    },
+    {
+      "path": "evidence/animation-generic-receiver-20261031.txt",
+      "sha256": "0fe3395c0814178ea98a44e7281d9a0f466cd02017ec00f89734e4f22ae9c437"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

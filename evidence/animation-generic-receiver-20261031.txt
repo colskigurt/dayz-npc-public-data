@@ -1,0 +1,249 @@
+Selected diagnostic summary andexact added query function;no livepointers,processID,localpaths,rawmemory dump orvideo. Count scope: one selected73-bone nativeAnimal root,one trial. No actualAnimate invocation orproven scriptreceiver linkage.
+
+{
+  "sourceRunId": "animation-generic-receiver-20261031-093700",
+  "runtimeRunId": "runtime-20261031-093649",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "normalQuitVerified": true,
+  "scenario": {
+    "logicalAgents": 1,
+    "nativeParts": 8,
+    "clip": "run",
+    "previewClip": 2,
+    "ai": false,
+    "rootMovement": false,
+    "repetitions": 1,
+    "seconds": 120,
+    "videoRecorded": false,
+    "hudFlagNotActualRecording": true
+  },
+  "readOnly": true,
+  "nativeHooks": false,
+  "numericOverrides": false,
+  "queryReadMask": "0x410 (query/read only)",
+  "probeSamples": 1840,
+  "selectedReceiverRecords": 1840,
+  "stableSelectedReceiverRecords": 1839,
+  "unstableSelectedReceiverRecords": 1,
+  "selectedStops": {
+    "NULL_COMPONENT": 1840
+  },
+  "stableNullComponentRecords": 1839,
+  "readableTargetChains": 0,
+  "selectedBoneCount": 73,
+  "firstSampleElapsed": 0.006525500095449388,
+  "lastSampleElapsed": 19.995484700077213,
+  "scanBytes": 5721317376,
+  "scanSeconds": 16.867086799931712,
+  "pacing": {
+    "steady": {
+      "frames": 1999,
+      "foregroundFrames": 1999,
+      "foregroundFraction": 1.0,
+      "missionFrameMs": {
+        "p50": 20.0,
+        "p95": 35.0,
+        "p99": 37.0
+      },
+      "hostCallbackHz": {
+        "minimum": 12.835920120688332,
+        "median": 12.835920120688332,
+        "maximum": 12.835920120688332
+      },
+      "nativeClockSecondsPerWallSecond": {
+        "minimum": 0.641790380730778,
+        "median": 0.641790380730778,
+        "maximum": 0.641790380730778
+      }
+    }
+  },
+  "nativePrimaryIntervals": [
+    0.05000000074505806
+  ],
+  "nativeSecondaryIntervals": [
+    0.20000000298023224
+  ],
+  "installedApi": {
+    "scriptsPboSha256": "ff0ad7ee5297c75da74364569a830bc0223315c0131579a0c11a7875d64cb2e2",
+    "selected": [
+      {
+        "member": "1_Core\\proto\\EnEntity.c",
+        "sha256": "8c54e810605c758c852713cca6ea4cc4e3a81311f22601bce101231e05ea246a",
+        "selectedDeclarations": [
+          {
+            "line": 15,
+            "text": "class IEntitySource: BaseContainer"
+          },
+          {
+            "line": 164,
+            "text": "class IEntity: Managed"
+          },
+          {
+            "line": 742,
+            "text": "\tproto native vobject GetVObject();"
+          },
+          {
+            "line": 745,
+            "text": "\tproto native external int Animate(float speed, int loop);"
+          },
+          {
+            "line": 747,
+            "text": "\tproto native external int AnimateEx(float speed, int loop, out vector lin, out vector ang);"
+          }
+        ]
+      },
+      {
+        "member": "3_Game\\Entities\\DayZAnimal.c",
+        "sha256": "c1600a8c4c1bd112245024c9dd3a4ce90e519e0441b24ab06af715c361f896e8",
+        "selectedDeclarations": [
+          {
+            "line": 1,
+            "text": "class DayZCreatureAnimInterface"
+          },
+          {
+            "line": 24,
+            "text": "class DayZCreature extends EntityAI "
+          },
+          {
+            "line": 191,
+            "text": "class DayZCreatureAI extends DayZCreature "
+          },
+          {
+            "line": 572,
+            "text": "class DayZAnimalCommandMove extends AnimCommandBase"
+          },
+          {
+            "line": 577,
+            "text": "class DayZAnimalCommandAttack extends AnimCommandBase"
+          },
+          {
+            "line": 582,
+            "text": "class DayZAnimalCommandJump extends AnimCommandBase"
+          },
+          {
+            "line": 587,
+            "text": "class DayZAnimalCommandLookAt extends AnimCommandBase"
+          },
+          {
+            "line": 592,
+            "text": "class DayZAnimalCommandBehaviourModifier extends AnimCommandBase"
+          },
+          {
+            "line": 597,
+            "text": "class DayZAnimalCommandHit extends AnimCommandBase"
+          },
+          {
+            "line": 602,
+            "text": "class DayZAnimalCommandDeath extends AnimCommandBase"
+          },
+          {
+            "line": 607,
+            "text": "class DayZAnimalCommandAnimCallback extends AnimCommandBase"
+          },
+          {
+            "line": 619,
+            "text": "class DayZAnimalCommandScript extends AnimCommandBase"
+          },
+          {
+            "line": 655,
+            "text": "class DayZAnimal extends DayZCreatureAI"
+          }
+        ]
+      },
+      {
+        "member": "3_Game\\Entities\\Entity.c",
+        "sha256": "d881ffba527b38d83eeae43cc828785bfa5df541ee3999d078ff7f5e86daba0b",
+        "selectedDeclarations": [
+          {
+            "line": 1,
+            "text": "class Entity extends ObjectTyped"
+          }
+        ]
+      },
+      {
+        "member": "3_Game\\Entities\\EntityAI.c",
+        "sha256": "c56a1ed22224f31766bf80b8c547eb265f98a2b7997a73f00f8b89933d6cbbe3",
+        "selectedDeclarations": [
+          {
+            "line": 115,
+            "text": "class EntityAI extends Entity"
+          }
+        ]
+      },
+      {
+        "member": "3_Game\\Entities\\Object.c",
+        "sha256": "1b1b031948b82c111e9be8b9b0bbef8495c07842d7436d9c3111950e8a3ee95b",
+        "selectedDeclarations": [
+          {
+            "line": 9,
+            "text": "class ObjectSnapCallback"
+          },
+          {
+            "line": 64,
+            "text": "class Object extends IEntity"
+          }
+        ]
+      },
+      {
+        "member": "3_Game\\Entities\\ObjectTyped.c",
+        "sha256": "a4ff1f0405de9fcef6d92be2dcd97f4c4be5492bd42184893b5364e1240ec049",
+        "selectedDeclarations": [
+          {
+            "line": 1,
+            "text": "class ObjectTyped extends Object"
+          }
+        ]
+      }
+    ],
+    "scope": "Installed shipped declarations only;not runtime behavior."
+  },
+  "nativeRootRtti": {
+    "targetSha256": "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
+    "receiverVtableRva": "0x130f170",
+    "typeDescriptorName": ".?AVDayZAnimal@@",
+    "subobjectOffset": 0,
+    "constructorDisplacement": 0,
+    "locatorRva": "0x151ea00",
+    "scope": "Static RTTI for sampled root candidate only;not script handler runtime linkage."
+  },
+  "sourceHashes": {
+    "memory": "c4a280df1f9a777d5900566fa90ecdd9add47727e69984c93fc29a4b6d973183",
+    "probe": "afabf29f98b0de2117ce9830e82097d0848e5e89234586bcf1add5e33b850ebb",
+    "clock": "d6f24369c4b1c588dadb95af31028889f44fcb3d8f46c64a133d04a7b1a5b127"
+  },
+  "supportedClockControlEstablished": false,
+  "limits": [
+    "One selected73-bone nativeAnimal root,one run;not allparts or APIreceivers.",
+    "Double-readstability is not atomic andcanmiss changesbetweenreads.",
+    "Script inheritance andnative RTTI do not prove actualhandler rcx pointer;Animate notinvoked.",
+    "Static handler nullbranch wouldreturn withoutdispatch onlyif actualreceiver isthisobject.",
+    "No actual video/GPU timings ornewnativegraph phase trace inthisbundle.",
+    "Read-only VM scan and10ms sampling contaminate performance attribution;frame metrics diagnostic only.",
+    "Do not repeat old rendererowner route ornull chain withoutnewinputs."
+  ],
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "goalComplete": false
+}
+
+Derived probe SHA256 afabf29f98b0de2117ce9830e82097d0848e5e89234586bcf1add5e33b850ebb; selected function:
+        def generic_receiver(point):
+            # Native Animal root candidate, distinct from old renderer-owner ancestry.
+            entity_before=read(point,0x78)
+            result=dict(entity=hex(point),scope='entity+60 component+10 dispatch chain;no method invocation',readOnly=True)
+            if not entity_before:return dict(result,stop='ENTITY_READ_FAILED')
+            component=struct.unpack_from('<Q',entity_before,0x60)[0]
+            result['component60']=hex(component)
+            if not component:return dict(result,stop='NULL_COMPONENT',stable=read(point,0x78)==entity_before)
+            component_before=read(component,0x18)
+            if not component_before:return dict(result,stop='COMPONENT_READ_FAILED')
+            target=struct.unpack_from('<Q',component_before,0x10)[0]
+            result['target10']=hex(target)
+            if not target:return dict(result,stop='NULL_TARGET',stable=read(point,0x78)==entity_before and read(component,0x18)==component_before)
+            target_before=read(target,8)
+            table=struct.unpack('<Q',target_before)[0] if target_before else 0
+            result['targetVtable']=hex(table)
+            slot=read(table+0xa8,8) if base<=table<base+module.modBaseSize else None
+            dispatch=struct.unpack('<Q',slot)[0] if slot else 0
+            result.update(slotA8=hex(dispatch),slotA8Rva=hex(dispatch-base) if base<=dispatch<base+module.modBaseSize else None,stop='CHAIN_READ' if slot else 'UNADMITTED_VTABLE',stable=read(point,0x78)==entity_before and read(component,0x18)==component_before and read(target,8)==target_before)
+            return result
