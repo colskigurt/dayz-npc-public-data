@@ -1,3 +1,5 @@
+> 최신 실제8→64 관측(2026-10-31): 각300초 실행의 기능 결과와 같은 호출 복구 입력을 분리해 검사했다. 전체 복구 수정·시각/성능 수용은 미완료다. [결과와 한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/recovery-input-runtime-20261031.md). 아래 과거 기록은 보존한다.
+
 > 최신 관측기 준비(2026-10-31):단일 대상 LAND/EGRESS 확장을 만들고48쌍 엔진 비교를 통과했다. 제어 시험에서 입력5행을 기록했지만 실제8/64 관측·복구 수정은 아직 미실행이다. [조건·동등성 검사·남은 한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/recovery-input-observer-20261031.md). 이전 실패/충돌 재현 기록은 아래에 보존한다.
 
 > 최신 진단(2026-10-31):61번의19개 관절 차단을 실제 엔진2회에서 반복 재현했다. 로그 시간축 차이32.18초와 LAND/EGRESS 전체4관절 입력 누락을 확인했다. 전체 복구·기능 수정은 미검증이다. [재현 범위와 누락 자료](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/actor61-joint-replay-20261031.md). 이전64개체의 고지대63/64 실패는 아래에 보존한다.

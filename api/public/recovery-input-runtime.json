@@ -1,0 +1,199 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T09:16:37.715453+09:00",
+  "sourceRunId": "recovery-input-runtime-20261031-090317",
+  "buildId": "CBFB79C5ED0880C60A9AF9ABB0E95F6BF0B2AD786FC79B0C7C07B1DCD7EE6755",
+  "verificationStatus": {
+    "functional": "single_trial_gates_passed",
+    "capture": "same_call_coverage_passed",
+    "repeatAcceptance": false,
+    "visual": "unmeasured_in_this_bundle",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": [
+    {
+      "sourceRunId": "runtime-20261031-090317",
+      "agents": 8,
+      "targetId": 7,
+      "durationSeconds": 300,
+      "repetitions": 1,
+      "scenario": "activeReference held-high anchor",
+      "functional": {
+        "highFollowCoverage": 8,
+        "missingHigh": [],
+        "terminalArrivals": 8,
+        "unresolvedTerminalAgents": [],
+        "fallsLandedAndResumed": 9,
+        "newFailureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 1
+        },
+        "unresolvedAlgorithmEpisodes": {},
+        "climbEndFailures": 0,
+        "thisTrialGatePassed": true,
+        "repeatRegressionAccepted": false
+      },
+      "foregroundMissionFrameMs": {
+        "p50": 20.0,
+        "p95": 33.0,
+        "p99": 35.0
+      },
+      "stimulus": {
+        "valid": true,
+        "highSamples": 543,
+        "areaSamples": {
+          "high": 543
+        },
+        "first": 45.019,
+        "last": 104.953,
+        "maxSampleGapSeconds": 0.269999999999996,
+        "anchorEnabled": true,
+        "recordedCorrections": 0,
+        "supportFailures": 0,
+        "traceOrSupportErrors": [],
+        "maximumRecordedCorrectionHorizontal": 0,
+        "limitation": "Sampled area,not continuous physical support proof. Recorded corrections alter player stimulus;NPC physics remain active."
+      },
+      "captureAudit": {
+        "sourceRunId": "runtime-20261031-090317",
+        "buildId": "CBFB79C5ED0880C60A9AF9ABB0E95F6BF0B2AD786FC79B0C7C07B1DCD7EE6755",
+        "targetId": 7,
+        "totalRows": 37,
+        "recoveryRows": 7,
+        "phaseRows": {
+          "EGRESS": 3,
+          "LAND": 4
+        },
+        "callerRows": {
+          "OTHER_SOLVE": 6,
+          "POST_TOUCHDOWN_ENDPOINT": 1
+        },
+        "completeStableRawPrevious4Rows": 6,
+        "endpointRows": 1,
+        "completeEndpointRows": 1,
+        "completeRejectedEndpointRows": 0,
+        "invalidSnapshotRows": [],
+        "maximumRecordedTargetRows": 10,
+        "maximumRecordedTargetSuppressed": 85,
+        "maximumRecordedWriteFailures": 0,
+        "coverageGatePassed": true,
+        "inputSha256": "2d780a97203fabe1a7ab8ca6f72a98f4697e4d895c89be33e7aed2bb9d2787f3",
+        "limits": [
+          "Bounded snapshots only;not every solve. Suppression counters are last-recorded lower bounds.",
+          "Old callerDt is currentonlywhen callerFall=true;LAND/EGRESS motor dt not yet captured.",
+          "Endpoint tag separates that helper only;other callers remainOTHER_SOLVE.",
+          "Native clock equality is same-call scriptcounter stability,not visible animation timing.",
+          "Per-run target ID is a new spawn slot;original missing raw4 cannot be recovered."
+        ],
+        "fullRecoveryReproduced": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false
+      },
+      "sampledBudgetContract": true,
+      "combinedTrialGatePassed": true
+    },
+    {
+      "sourceRunId": "runtime-20261031-090957",
+      "agents": 64,
+      "targetId": 61,
+      "durationSeconds": 300,
+      "repetitions": 1,
+      "scenario": "activeReference held-high anchor",
+      "functional": {
+        "highFollowCoverage": 64,
+        "missingHigh": [],
+        "terminalArrivals": 64,
+        "unresolvedTerminalAgents": [],
+        "fallsLandedAndResumed": 76,
+        "newFailureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 14
+        },
+        "unresolvedAlgorithmEpisodes": {},
+        "climbEndFailures": 0,
+        "thisTrialGatePassed": true,
+        "repeatRegressionAccepted": false
+      },
+      "foregroundMissionFrameMs": {
+        "p50": 30.0,
+        "p95": 70.0,
+        "p99": 90.0
+      },
+      "stimulus": {
+        "valid": true,
+        "highSamples": 481,
+        "areaSamples": {
+          "high": 481
+        },
+        "first": 45.016,
+        "last": 104.923,
+        "maxSampleGapSeconds": 0.1950000000000074,
+        "anchorEnabled": true,
+        "recordedCorrections": 13,
+        "supportFailures": 0,
+        "traceOrSupportErrors": [],
+        "maximumRecordedCorrectionHorizontal": 0.205499,
+        "limitation": "Sampled area,not continuous physical support proof. Recorded corrections alter player stimulus;NPC physics remain active."
+      },
+      "captureAudit": {
+        "sourceRunId": "runtime-20261031-090957",
+        "buildId": "CBFB79C5ED0880C60A9AF9ABB0E95F6BF0B2AD786FC79B0C7C07B1DCD7EE6755",
+        "targetId": 61,
+        "totalRows": 460,
+        "recoveryRows": 7,
+        "phaseRows": {
+          "EGRESS": 3,
+          "LAND": 4
+        },
+        "callerRows": {
+          "OTHER_SOLVE": 6,
+          "POST_TOUCHDOWN_ENDPOINT": 1
+        },
+        "completeStableRawPrevious4Rows": 7,
+        "endpointRows": 1,
+        "completeEndpointRows": 1,
+        "completeRejectedEndpointRows": 0,
+        "invalidSnapshotRows": [],
+        "maximumRecordedTargetRows": 17,
+        "maximumRecordedTargetSuppressed": 68,
+        "maximumRecordedWriteFailures": 0,
+        "coverageGatePassed": true,
+        "inputSha256": "682a6ec7b3dcb51fba0d47b544c4d73db678dd1a0ac21fe9f183814753265ed2",
+        "limits": [
+          "Bounded snapshots only;not every solve. Suppression counters are last-recorded lower bounds.",
+          "Old callerDt is currentonlywhen callerFall=true;LAND/EGRESS motor dt not yet captured.",
+          "Endpoint tag separates that helper only;other callers remainOTHER_SOLVE.",
+          "Native clock equality is same-call scriptcounter stability,not visible animation timing.",
+          "Per-run target ID is a new spawn slot;original missing raw4 cannot be recovered."
+        ],
+        "fullRecoveryReproduced": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false
+      },
+      "sampledBudgetContract": true,
+      "combinedTrialGatePassed": true
+    }
+  ],
+  "blockers": [
+    "Full four-joint solver replay and physical recovery reproduction pending.",
+    "Original missing raw inputs cannot be restored;new slot61 is not original entity.",
+    "Bounded observation omits calls;LAND/EGRESS motor dt not captured.",
+    "Visible animation cause and reproducible performance improvements unresolved."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/recovery-input-runtime-20261031.md",
+      "sha256": "de263202c5d6b5ee516dcfedec31318fb9d0ada58f6c7a4ddbd5ff8568cd7448"
+    },
+    {
+      "path": "evidence/recovery-input-runtime-20261031.txt",
+      "sha256": "afa693f0a4d8484f15a67bfaffa63c9fea6e93a5ddf67a9d44b5ababc6a25baa"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
