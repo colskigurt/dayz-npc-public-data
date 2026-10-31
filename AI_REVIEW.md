@@ -1,3 +1,5 @@
+> 최신:정답시간합성에서도최근접FK위상도약58.33ms재현.이값을실제끊김시간으로직접해석하지않는다.CPU로컬버퍼모델의오차감소는공간기하진단이며품질/성능수용이아니다.[교정과한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-phase-estimator-calibration-20261031.md).이전기록은아래보존한다.
+
 > 최신:직접입력dt연결1498/1498 f32회계일치·CPU평균진행약1배.단일진단이며최종표시/지원배포/64비용은미수용.[측정과한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-saved-dt-linked-20261031.md).실패시도도아래보존한다.
 
 > 최신:후보saved-dt연결시도는미수용.선택조건과준비전관찰창실패를분리하고동일프로세스passive400호출을확인했다.[실패와제한](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-saved-dt-selector-20261031.md).기존결과는아래보존한다.

@@ -1,0 +1,1917 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T17:16:43.769579+09:00",
+  "sourceRunId": "animation-phase-estimator-calibration-20261031-1710",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "verificationStatus": {
+    "diagnostic": "synthetic_estimator_counterexample_and_exploratory_geometry_holdout",
+    "newRuntime": false,
+    "syntheticCases": 12,
+    "independentLiveRepetitions": 0,
+    "nativeImplementationIdentified": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-phase-estimator-calibration-20261031-1710",
+    "sourceRuntimeRunId": "runtime-20261031-170014",
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "conditions": {
+      "synthetic": true,
+      "newRuntime": false,
+      "newPbo": false,
+      "newVideo": false,
+      "sourceClip": "run",
+      "samplesPerCase": 1473,
+      "offsetsSeconds": [
+        0,
+        0.125,
+        0.25,
+        0.375
+      ],
+      "sourceFrames": 126,
+      "loopPeriodSeconds": 2.0833333333333335,
+      "estimatorGridKeys": 0.25,
+      "geometryModels": [
+        "global_60hz_reference",
+        "local_60hz_nlerp",
+        "global_50ms_chord"
+      ],
+      "noiseAdded": false,
+      "actualSavedDtPatternReused": true
+    },
+    "trueStepMs": {
+      "n": 1472,
+      "p50": 19.999999552965164,
+      "p95": 19.999999552965164,
+      "p99": 20.999999716877937,
+      "minimum": 17.000000923871994,
+      "maximum": 23.000000044703484
+    },
+    "syntheticModelSummary": [
+      {
+        "model": "global_60hz_reference",
+        "offsetCases": 4,
+        "maxFittedStepMs": 25.000000000000355,
+        "maxAbsoluteKnownPhaseErrorMs": 3.8331532229975984,
+        "fitErrorP95MetersRange": [
+          0.0065658118849123105,
+          0.0066429021897709915
+        ],
+        "stepsAbove33ms": 0,
+        "stepsAbove40ms": 0,
+        "maxStepErrorRmsMs": 1.6705457562891004
+      },
+      {
+        "model": "local_60hz_nlerp",
+        "offsetCases": 4,
+        "maxFittedStepMs": 25.000000000000355,
+        "maxAbsoluteKnownPhaseErrorMs": 3.8331532229975984,
+        "fitErrorP95MetersRange": [
+          0.006717784183163473,
+          0.0068333332339244515
+        ],
+        "stepsAbove33ms": 0,
+        "stepsAbove40ms": 0,
+        "maxStepErrorRmsMs": 1.6705457562891006
+      },
+      {
+        "model": "global_50ms_chord",
+        "offsetCases": 4,
+        "maxFittedStepMs": 58.33333333333357,
+        "maxAbsoluteKnownPhaseErrorMs": 27.333795403442274,
+        "fitErrorP95MetersRange": [
+          0.019267792363255962,
+          0.019458319455241513
+        ],
+        "stepsAbove33ms": 68,
+        "stepsAbove40ms": 33,
+        "maxStepErrorRmsMs": 4.437072598878906
+      }
+    ],
+    "syntheticCases": [
+      {
+        "model": "global_60hz_reference",
+        "startPhaseSeconds": 0,
+        "samples": 1473,
+        "fitErrorMeters": {
+          "n": 1473,
+          "p50": 0.0030544436190125313,
+          "p95": 0.0066429021897709915,
+          "p99": 0.007926798818352985,
+          "minimum": 0.0,
+          "maximum": 0.008797358161091595
+        },
+        "absoluteKnownPhaseErrorMs": {
+          "n": 1473,
+          "p50": 1.000319421292195,
+          "p95": 1.999898403882705,
+          "p99": 2.000601843001144,
+          "minimum": 0.0,
+          "maximum": 2.4996284395446544
+        },
+        "knownPhaseErrorRmsMs": 1.2016505423410704,
+        "fittedStepMs": {
+          "n": 1472,
+          "p50": 20.833333333333258,
+          "p95": 20.83333333333348,
+          "p99": 20.83333333333348,
+          "minimum": 16.666666666666607,
+          "maximum": 25.000000000000135
+        },
+        "stepErrorRmsMs": 1.6563653556774158,
+        "negativeSteps": 0,
+        "stepsAbove33ms": 0,
+        "stepsAbove40ms": 0,
+        "worstSteps": [
+          {
+            "index": 380,
+            "trueStepMs": 20.999999716877937,
+            "fittedStepMs": 24.99999999999991,
+            "errorMs": 4.000000283121974,
+            "leftFitErrorMeters": 0.008742187652481533,
+            "rightFitErrorMeters": 0.007952069018980826
+          },
+          {
+            "index": 1246,
+            "trueStepMs": 20.999999716877937,
+            "fittedStepMs": 24.99999999999991,
+            "errorMs": 4.000000283121974,
+            "leftFitErrorMeters": 0.008267494356233767,
+            "rightFitErrorMeters": 0.007943834738295505
+          },
+          {
+            "index": 2,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.004294837372797019,
+            "rightFitErrorMeters": 0.004251344293222165
+          },
+          {
+            "index": 17,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.006437226123671494,
+            "rightFitErrorMeters": 0.005800598844852123
+          },
+          {
+            "index": 23,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.003991118420868362,
+            "rightFitErrorMeters": 0.006271456392412505
+          },
+          {
+            "index": 43,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.005348539987499365,
+            "rightFitErrorMeters": 0.006024848804311603
+          }
+        ]
+      },
+      {
+        "model": "global_60hz_reference",
+        "startPhaseSeconds": 0.125,
+        "samples": 1473,
+        "fitErrorMeters": {
+          "n": 1473,
+          "p50": 0.003075075224026921,
+          "p95": 0.006637016669269721,
+          "p99": 0.007744015323039841,
+          "minimum": 0.0,
+          "maximum": 0.008792425673293153
+        },
+        "absoluteKnownPhaseErrorMs": {
+          "n": 1473,
+          "p50": 1.000319421292195,
+          "p95": 1.9998961687084371,
+          "p99": 2.000599607827196,
+          "minimum": 0.0,
+          "maximum": 2.000630646946
+        },
+        "knownPhaseErrorRmsMs": 1.2006701806664135,
+        "fittedStepMs": {
+          "n": 1472,
+          "p50": 20.833333333333258,
+          "p95": 20.83333333333348,
+          "p99": 20.83333333333348,
+          "minimum": 16.666666666666607,
+          "maximum": 25.000000000000135
+        },
+        "stepErrorRmsMs": 1.6563653556774156,
+        "negativeSteps": 0,
+        "stepsAbove33ms": 0,
+        "stepsAbove40ms": 0,
+        "worstSteps": [
+          {
+            "index": 380,
+            "trueStepMs": 20.999999716877937,
+            "fittedStepMs": 24.99999999999991,
+            "errorMs": 4.000000283121974,
+            "leftFitErrorMeters": 0.005881611100937118,
+            "rightFitErrorMeters": 0.007115614275614735
+          },
+          {
+            "index": 1246,
+            "trueStepMs": 20.999999716877937,
+            "fittedStepMs": 24.99999999999991,
+            "errorMs": 4.000000283121974,
+            "leftFitErrorMeters": 0.005100204120771037,
+            "rightFitErrorMeters": 0.006300937624831175
+          },
+          {
+            "index": 2,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.00505995176467482,
+            "rightFitErrorMeters": 0.0039464019888296245
+          },
+          {
+            "index": 17,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.004434566331470393,
+            "rightFitErrorMeters": 0.005618358622702227
+          },
+          {
+            "index": 23,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.004899754176428672,
+            "rightFitErrorMeters": 0.006516593872942932
+          },
+          {
+            "index": 43,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.00580774322750349,
+            "rightFitErrorMeters": 0.007101987520311234
+          }
+        ]
+      },
+      {
+        "model": "global_60hz_reference",
+        "startPhaseSeconds": 0.25,
+        "samples": 1473,
+        "fitErrorMeters": {
+          "n": 1473,
+          "p50": 0.003081546379220374,
+          "p95": 0.0065658118849123105,
+          "p99": 0.007743617244291913,
+          "minimum": 0.0,
+          "maximum": 0.008795706899814992
+        },
+        "absoluteKnownPhaseErrorMs": {
+          "n": 1473,
+          "p50": 1.000321656466463,
+          "p95": 1.999898403882705,
+          "p99": 2.000601843001304,
+          "minimum": 0.0,
+          "maximum": 3.8331532229975984
+        },
+        "knownPhaseErrorRmsMs": 1.2047855799887779,
+        "fittedStepMs": {
+          "n": 1472,
+          "p50": 20.833333333333258,
+          "p95": 20.83333333333348,
+          "p99": 20.83333333333348,
+          "minimum": 16.666666666666607,
+          "maximum": 25.000000000000355
+        },
+        "stepErrorRmsMs": 1.66347066630943,
+        "negativeSteps": 0,
+        "stepsAbove33ms": 0,
+        "stepsAbove40ms": 0,
+        "worstSteps": [
+          {
+            "index": 404,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 25.000000000000355,
+            "errorMs": 5.000000447035191,
+            "leftFitErrorMeters": 2.0860439821998256e-05,
+            "rightFitErrorMeters": 0.003049874704610391
+          },
+          {
+            "index": 1246,
+            "trueStepMs": 20.999999716877937,
+            "fittedStepMs": 25.000000000000135,
+            "errorMs": 4.000000283122198,
+            "leftFitErrorMeters": 0.005289521680438406,
+            "rightFitErrorMeters": 0.004736998641734002
+          },
+          {
+            "index": 380,
+            "trueStepMs": 20.999999716877937,
+            "fittedStepMs": 24.99999999999991,
+            "errorMs": 4.000000283121974,
+            "leftFitErrorMeters": 0.006297703752754944,
+            "rightFitErrorMeters": 0.006563653039016129
+          },
+          {
+            "index": 2,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.005943481088271372,
+            "rightFitErrorMeters": 0.005783839793101271
+          },
+          {
+            "index": 17,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.0054441594089670005,
+            "rightFitErrorMeters": 0.005924181785543886
+          },
+          {
+            "index": 23,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.0037380001644661594,
+            "rightFitErrorMeters": 0.005795996765593415
+          }
+        ]
+      },
+      {
+        "model": "global_60hz_reference",
+        "startPhaseSeconds": 0.375,
+        "samples": 1473,
+        "fitErrorMeters": {
+          "n": 1473,
+          "p50": 0.003048191268485148,
+          "p95": 0.006636804636592683,
+          "p99": 0.0077435423451403,
+          "minimum": 0.0,
+          "maximum": 0.008797517062225759
+        },
+        "absoluteKnownPhaseErrorMs": {
+          "n": 1473,
+          "p50": 1.0006327182072727,
+          "p95": 1.999900639056973,
+          "p99": 2.000604078175572,
+          "minimum": 0.0,
+          "maximum": 3.832739715773137
+        },
+        "knownPhaseErrorRmsMs": 1.2073248374311716,
+        "fittedStepMs": {
+          "n": 1472,
+          "p50": 20.833333333333258,
+          "p95": 20.83333333333348,
+          "p99": 20.83333333333348,
+          "minimum": 16.666666666666607,
+          "maximum": 25.000000000000355
+        },
+        "stepErrorRmsMs": 1.6705457562891004,
+        "negativeSteps": 0,
+        "stepsAbove33ms": 0,
+        "stepsAbove40ms": 0,
+        "worstSteps": [
+          {
+            "index": 606,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 25.000000000000355,
+            "errorMs": 5.000000447035191,
+            "leftFitErrorMeters": 1.723187624200794e-05,
+            "rightFitErrorMeters": 0.004792626170370301
+          },
+          {
+            "index": 1335,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 25.000000000000355,
+            "errorMs": 5.000000447035191,
+            "leftFitErrorMeters": 2.0858189470345286e-05,
+            "rightFitErrorMeters": 0.0030509555189604555
+          },
+          {
+            "index": 1246,
+            "trueStepMs": 20.999999716877937,
+            "fittedStepMs": 25.000000000000135,
+            "errorMs": 4.000000283122198,
+            "leftFitErrorMeters": 0.0069386908027383246,
+            "rightFitErrorMeters": 0.006918398098477392
+          },
+          {
+            "index": 380,
+            "trueStepMs": 20.999999716877937,
+            "fittedStepMs": 24.99999999999991,
+            "errorMs": 4.000000283121974,
+            "leftFitErrorMeters": 0.006839447646045594,
+            "rightFitErrorMeters": 0.007343482178119257
+          },
+          {
+            "index": 2,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.003941089711105632,
+            "rightFitErrorMeters": 0.003739334194231857
+          },
+          {
+            "index": 17,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.004153324439009202,
+            "rightFitErrorMeters": 0.0059332830709057744
+          }
+        ]
+      },
+      {
+        "model": "local_60hz_nlerp",
+        "startPhaseSeconds": 0,
+        "samples": 1473,
+        "fitErrorMeters": {
+          "n": 1473,
+          "p50": 0.0032143160930486925,
+          "p95": 0.006817459125041843,
+          "p99": 0.00794406483788721,
+          "minimum": 0.0,
+          "maximum": 0.008936590744450593
+        },
+        "absoluteKnownPhaseErrorMs": {
+          "n": 1473,
+          "p50": 1.000319421292195,
+          "p95": 2.0001684874300096,
+          "p99": 2.0006223320979455,
+          "minimum": 0.0,
+          "maximum": 2.4996284395446544
+        },
+        "knownPhaseErrorRmsMs": 1.2036143271616278,
+        "fittedStepMs": {
+          "n": 1472,
+          "p50": 20.833333333333258,
+          "p95": 20.83333333333348,
+          "p99": 20.83333333333348,
+          "minimum": 16.666666666666607,
+          "maximum": 25.000000000000135
+        },
+        "stepErrorRmsMs": 1.6526585221783743,
+        "negativeSteps": 0,
+        "stepsAbove33ms": 0,
+        "stepsAbove40ms": 0,
+        "worstSteps": [
+          {
+            "index": 380,
+            "trueStepMs": 20.999999716877937,
+            "fittedStepMs": 24.99999999999991,
+            "errorMs": 4.000000283121974,
+            "leftFitErrorMeters": 0.00874857740795114,
+            "rightFitErrorMeters": 0.008072927959146867
+          },
+          {
+            "index": 2,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.004490638673795899,
+            "rightFitErrorMeters": 0.004182284031155994
+          },
+          {
+            "index": 17,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.006649775778272019,
+            "rightFitErrorMeters": 0.006113364470160139
+          },
+          {
+            "index": 23,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.004246363173582976,
+            "rightFitErrorMeters": 0.00631233382975824
+          },
+          {
+            "index": 43,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.005250042243991022,
+            "rightFitErrorMeters": 0.006480521118674035
+          },
+          {
+            "index": 48,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.005377664320755954,
+            "rightFitErrorMeters": 0.006754552045946397
+          }
+        ]
+      },
+      {
+        "model": "local_60hz_nlerp",
+        "startPhaseSeconds": 0.125,
+        "samples": 1473,
+        "fitErrorMeters": {
+          "n": 1473,
+          "p50": 0.0031967321660282687,
+          "p95": 0.0067762631198924955,
+          "p99": 0.007878857182827948,
+          "minimum": 8.567027958364908e-08,
+          "maximum": 0.00909069105132031
+        },
+        "absoluteKnownPhaseErrorMs": {
+          "n": 1473,
+          "p50": 1.000319421292195,
+          "p95": 1.999906003474905,
+          "p99": 2.000611782075845,
+          "minimum": 0.0,
+          "maximum": 2.166822801034085
+        },
+        "knownPhaseErrorRmsMs": 1.2024299772378593,
+        "fittedStepMs": {
+          "n": 1472,
+          "p50": 20.833333333333258,
+          "p95": 20.83333333333348,
+          "p99": 20.83333333333348,
+          "minimum": 16.666666666666607,
+          "maximum": 25.000000000000135
+        },
+        "stepErrorRmsMs": 1.6546555407928145,
+        "negativeSteps": 0,
+        "stepsAbove33ms": 0,
+        "stepsAbove40ms": 0,
+        "worstSteps": [
+          {
+            "index": 380,
+            "trueStepMs": 20.999999716877937,
+            "fittedStepMs": 24.99999999999991,
+            "errorMs": 4.000000283121974,
+            "leftFitErrorMeters": 0.005723683061893069,
+            "rightFitErrorMeters": 0.007143787755676156
+          },
+          {
+            "index": 1246,
+            "trueStepMs": 20.999999716877937,
+            "fittedStepMs": 24.99999999999991,
+            "errorMs": 4.000000283121974,
+            "leftFitErrorMeters": 0.005045582903635138,
+            "rightFitErrorMeters": 0.0061422626018003395
+          },
+          {
+            "index": 2,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.004951255674891213,
+            "rightFitErrorMeters": 0.004008236397391728
+          },
+          {
+            "index": 17,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.004516280771448777,
+            "rightFitErrorMeters": 0.005683870963426163
+          },
+          {
+            "index": 23,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.005135529756622149,
+            "rightFitErrorMeters": 0.006375086164186143
+          },
+          {
+            "index": 43,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.005911295353013369,
+            "rightFitErrorMeters": 0.00730142020263056
+          }
+        ]
+      },
+      {
+        "model": "local_60hz_nlerp",
+        "startPhaseSeconds": 0.25,
+        "samples": 1473,
+        "fitErrorMeters": {
+          "n": 1473,
+          "p50": 0.003261160244308916,
+          "p95": 0.006717784183163473,
+          "p99": 0.007794555603108574,
+          "minimum": 0.0,
+          "maximum": 0.009339249360881723
+        },
+        "absoluteKnownPhaseErrorMs": {
+          "n": 1473,
+          "p50": 1.000321656466463,
+          "p95": 2.000012248754457,
+          "p99": 2.0006178617496317,
+          "minimum": 0.0,
+          "maximum": 3.8331532229975984
+        },
+        "knownPhaseErrorRmsMs": 1.2063528877671297,
+        "fittedStepMs": {
+          "n": 1472,
+          "p50": 20.833333333333258,
+          "p95": 20.83333333333348,
+          "p99": 20.83333333333348,
+          "minimum": 16.666666666666607,
+          "maximum": 25.000000000000355
+        },
+        "stepErrorRmsMs": 1.6597797013797875,
+        "negativeSteps": 0,
+        "stepsAbove33ms": 0,
+        "stepsAbove40ms": 0,
+        "worstSteps": [
+          {
+            "index": 404,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 25.000000000000355,
+            "errorMs": 5.000000447035191,
+            "leftFitErrorMeters": 2.0860602934453432e-05,
+            "rightFitErrorMeters": 0.0031719090616911497
+          },
+          {
+            "index": 380,
+            "trueStepMs": 20.999999716877937,
+            "fittedStepMs": 24.99999999999991,
+            "errorMs": 4.000000283121974,
+            "leftFitErrorMeters": 0.006275714579027294,
+            "rightFitErrorMeters": 0.006772324568639338
+          },
+          {
+            "index": 2,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.0061629203404613645,
+            "rightFitErrorMeters": 0.006052793125821536
+          },
+          {
+            "index": 17,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.005899827700738984,
+            "rightFitErrorMeters": 0.005854714355226358
+          },
+          {
+            "index": 23,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.0041007937614376605,
+            "rightFitErrorMeters": 0.00573507866049708
+          },
+          {
+            "index": 38,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.00593258343242344,
+            "rightFitErrorMeters": 0.006880755960956453
+          }
+        ]
+      },
+      {
+        "model": "local_60hz_nlerp",
+        "startPhaseSeconds": 0.375,
+        "samples": 1473,
+        "fitErrorMeters": {
+          "n": 1473,
+          "p50": 0.0031810545253763683,
+          "p95": 0.0068333332339244515,
+          "p99": 0.007870829908534563,
+          "minimum": 7.901824025945066e-07,
+          "maximum": 0.009341003317425758
+        },
+        "absoluteKnownPhaseErrorMs": {
+          "n": 1473,
+          "p50": 1.0006327182072727,
+          "p95": 2.0001729577784566,
+          "p99": 2.046946028869221,
+          "minimum": 0.0,
+          "maximum": 3.832739715773137
+        },
+        "knownPhaseErrorRmsMs": 1.2098525091667593,
+        "fittedStepMs": {
+          "n": 1472,
+          "p50": 20.833333333333258,
+          "p95": 20.83333333333348,
+          "p99": 20.83333333333348,
+          "minimum": 16.666666666666607,
+          "maximum": 25.000000000000355
+        },
+        "stepErrorRmsMs": 1.6705457562891006,
+        "negativeSteps": 0,
+        "stepsAbove33ms": 0,
+        "stepsAbove40ms": 0,
+        "worstSteps": [
+          {
+            "index": 606,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 25.000000000000355,
+            "errorMs": 5.000000447035191,
+            "leftFitErrorMeters": 1.723234550836238e-05,
+            "rightFitErrorMeters": 0.004879700370948166
+          },
+          {
+            "index": 1335,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 25.000000000000355,
+            "errorMs": 5.000000447035191,
+            "leftFitErrorMeters": 2.0858352781044787e-05,
+            "rightFitErrorMeters": 0.0031729620034809786
+          },
+          {
+            "index": 1246,
+            "trueStepMs": 20.999999716877937,
+            "fittedStepMs": 25.000000000000135,
+            "errorMs": 4.000000283122198,
+            "leftFitErrorMeters": 0.00697218208002908,
+            "rightFitErrorMeters": 0.007019611770124938
+          },
+          {
+            "index": 380,
+            "trueStepMs": 20.999999716877937,
+            "fittedStepMs": 24.99999999999991,
+            "errorMs": 4.000000283121974,
+            "leftFitErrorMeters": 0.006934735132294082,
+            "rightFitErrorMeters": 0.007313484319999922
+          },
+          {
+            "index": 2,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.004034750407261867,
+            "rightFitErrorMeters": 0.003622644181440605
+          },
+          {
+            "index": 17,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 16.666666666666607,
+            "errorMs": -3.3333328862985567,
+            "leftFitErrorMeters": 0.0042679065326261196,
+            "rightFitErrorMeters": 0.005853528368943586
+          }
+        ]
+      },
+      {
+        "model": "global_50ms_chord",
+        "startPhaseSeconds": 0,
+        "samples": 1473,
+        "fitErrorMeters": {
+          "n": 1473,
+          "p50": 0.009293150450590603,
+          "p95": 0.019458319455241513,
+          "p99": 0.024570744226737884,
+          "minimum": 0.0,
+          "maximum": 0.028939399747248806
+        },
+        "absoluteKnownPhaseErrorMs": {
+          "n": 1473,
+          "p50": 1.333134000499614,
+          "p95": 5.5001132190231505,
+          "p99": 15.806844184796581,
+          "minimum": 0.0,
+          "maximum": 27.333795403442274
+        },
+        "knownPhaseErrorRmsMs": 3.2953431893133343,
+        "fittedStepMs": {
+          "n": 1472,
+          "p50": 20.833333333333258,
+          "p95": 25.000000000000135,
+          "p99": 33.333333333333435,
+          "minimum": 4.166666666666652,
+          "maximum": 58.33333333333357
+        },
+        "stepErrorRmsMs": 4.3135041349151475,
+        "negativeSteps": 0,
+        "stepsAbove33ms": 17,
+        "stepsAbove40ms": 8,
+        "worstSteps": [
+          {
+            "index": 102,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 58.33333333333357,
+            "errorMs": 38.333333780368406,
+            "leftFitErrorMeters": 0.004021474537325207,
+            "rightFitErrorMeters": 0.004136935429288245
+          },
+          {
+            "index": 207,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 58.33333333333357,
+            "errorMs": 38.333333780368406,
+            "leftFitErrorMeters": 0.0017476926630646714,
+            "rightFitErrorMeters": 0.0016875632044695945
+          },
+          {
+            "index": 1039,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 58.33333333333357,
+            "errorMs": 38.333333780368406,
+            "leftFitErrorMeters": 0.00553361606175631,
+            "rightFitErrorMeters": 0.0035801658268838
+          },
+          {
+            "index": 1144,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 58.33333333333357,
+            "errorMs": 38.333333780368406,
+            "leftFitErrorMeters": 0.007897855961531194,
+            "rightFitErrorMeters": 0.0015273925767394392
+          },
+          {
+            "index": 727,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 54.16666666666714,
+            "errorMs": 34.166667113701976,
+            "leftFitErrorMeters": 0.006980474851896395,
+            "rightFitErrorMeters": 0.00197030404730604
+          },
+          {
+            "index": 519,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 54.1666666666667,
+            "errorMs": 34.166667113701536,
+            "leftFitErrorMeters": 0.0019494707579905688,
+            "rightFitErrorMeters": 0.005060137181937412
+          }
+        ]
+      },
+      {
+        "model": "global_50ms_chord",
+        "startPhaseSeconds": 0.125,
+        "samples": 1473,
+        "fitErrorMeters": {
+          "n": 1473,
+          "p50": 0.0093231137140037,
+          "p95": 0.01937773393535602,
+          "p99": 0.02434760499347006,
+          "minimum": 5.720158397902428e-07,
+          "maximum": 0.02975392009497902
+        },
+        "absoluteKnownPhaseErrorMs": {
+          "n": 1473,
+          "p50": 1.333096002538392,
+          "p95": 5.567001054685305,
+          "p99": 14.37966462969697,
+          "minimum": 0.0,
+          "maximum": 26.500459387900133
+        },
+        "knownPhaseErrorRmsMs": 3.245751381117809,
+        "fittedStepMs": {
+          "n": 1472,
+          "p50": 20.833333333333258,
+          "p95": 25.000000000000135,
+          "p99": 33.33333333333328,
+          "minimum": 4.16666666666643,
+          "maximum": 58.33333333333357
+        },
+        "stepErrorRmsMs": 4.2569166142472765,
+        "negativeSteps": 0,
+        "stepsAbove33ms": 16,
+        "stepsAbove40ms": 8,
+        "worstSteps": [
+          {
+            "index": 408,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 58.33333333333357,
+            "errorMs": 38.333333780368406,
+            "leftFitErrorMeters": 0.00840269618453091,
+            "rightFitErrorMeters": 0.004999170316615969
+          },
+          {
+            "index": 1033,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 58.33333333333357,
+            "errorMs": 38.333333780368406,
+            "leftFitErrorMeters": 0.004021938194663366,
+            "rightFitErrorMeters": 0.004137266433367583
+          },
+          {
+            "index": 1138,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 58.33333333333357,
+            "errorMs": 38.333333780368406,
+            "leftFitErrorMeters": 0.0017480440146618698,
+            "rightFitErrorMeters": 0.0016878524384538185
+          },
+          {
+            "index": 1450,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 58.33333333333357,
+            "errorMs": 38.333333780368406,
+            "leftFitErrorMeters": 0.003348217801666281,
+            "rightFitErrorMeters": 0.0039086160140541105
+          },
+          {
+            "index": 96,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 54.16666666666714,
+            "errorMs": 34.166667113701976,
+            "leftFitErrorMeters": 0.00432489506859678,
+            "rightFitErrorMeters": 0.002172040965730942
+          },
+          {
+            "index": 513,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 54.16666666666714,
+            "errorMs": 34.166667113701976,
+            "leftFitErrorMeters": 0.007314524241927983,
+            "rightFitErrorMeters": 0.0031395297905676164
+          }
+        ]
+      },
+      {
+        "model": "global_50ms_chord",
+        "startPhaseSeconds": 0.25,
+        "samples": 1473,
+        "fitErrorMeters": {
+          "n": 1473,
+          "p50": 0.009339143627571406,
+          "p95": 0.019267792363255962,
+          "p99": 0.02466511713804239,
+          "minimum": 0.0,
+          "maximum": 0.030607888464242623
+        },
+        "absoluteKnownPhaseErrorMs": {
+          "n": 1473,
+          "p50": 1.3334487875305001,
+          "p95": 5.566620777050501,
+          "p99": 14.713094403345805,
+          "minimum": 0.0,
+          "maximum": 26.33310717840942
+        },
+        "knownPhaseErrorRmsMs": 3.3221939610581517,
+        "fittedStepMs": {
+          "n": 1472,
+          "p50": 20.833333333333258,
+          "p95": 25.000000000000135,
+          "p99": 33.333333333333435,
+          "minimum": 4.166666666666652,
+          "maximum": 58.33333333333357
+        },
+        "stepErrorRmsMs": 4.424935006964286,
+        "negativeSteps": 0,
+        "stepsAbove33ms": 17,
+        "stepsAbove40ms": 8,
+        "worstSteps": [
+          {
+            "index": 402,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 58.33333333333357,
+            "errorMs": 38.333333780368406,
+            "leftFitErrorMeters": 0.00549467999947992,
+            "rightFitErrorMeters": 0.0026802344779457148
+          },
+          {
+            "index": 507,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 58.33333333333357,
+            "errorMs": 38.333333780368406,
+            "leftFitErrorMeters": 0.0015796759107790902,
+            "rightFitErrorMeters": 0.0018564416172877406
+          },
+          {
+            "index": 819,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 58.33333333333357,
+            "errorMs": 38.333333780368406,
+            "leftFitErrorMeters": 0.004842289858008627,
+            "rightFitErrorMeters": 0.002245613619526387
+          },
+          {
+            "index": 1339,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 58.33333333333357,
+            "errorMs": 38.333333780368406,
+            "leftFitErrorMeters": 0.008401809963658396,
+            "rightFitErrorMeters": 0.004998850050891259
+          },
+          {
+            "index": 194,
+            "trueStepMs": 18.99999938905239,
+            "fittedStepMs": 54.1666666666667,
+            "errorMs": 35.16666727761431,
+            "leftFitErrorMeters": 0.0010987499973298216,
+            "rightFitErrorMeters": 0.0016216940191007034
+          },
+          {
+            "index": 1027,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 54.16666666666714,
+            "errorMs": 34.166667113701976,
+            "leftFitErrorMeters": 0.004325946734480789,
+            "rightFitErrorMeters": 0.002171882560584996
+          }
+        ]
+      },
+      {
+        "model": "global_50ms_chord",
+        "startPhaseSeconds": 0.375,
+        "samples": 1473,
+        "fitErrorMeters": {
+          "n": 1473,
+          "p50": 0.009232208458483106,
+          "p95": 0.019338743842450882,
+          "p99": 0.024427077701294538,
+          "minimum": 6.260492143062622e-07,
+          "maximum": 0.028766990067238915
+        },
+        "absoluteKnownPhaseErrorMs": {
+          "n": 1473,
+          "p50": 1.3334644337499313,
+          "p95": 5.4998158663505325,
+          "p99": 15.379543825982752,
+          "minimum": 2.2351740458503855e-06,
+          "maximum": 27.333370720346917
+        },
+        "knownPhaseErrorRmsMs": 3.3477025478008797,
+        "fittedStepMs": {
+          "n": 1472,
+          "p50": 20.833333333333258,
+          "p95": 25.000000000000135,
+          "p99": 33.333333333333435,
+          "minimum": 4.166666666666652,
+          "maximum": 58.33333333333357
+        },
+        "stepErrorRmsMs": 4.437072598878906,
+        "negativeSteps": 0,
+        "stepsAbove33ms": 18,
+        "stepsAbove40ms": 9,
+        "worstSteps": [
+          {
+            "index": 83,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 58.33333333333357,
+            "errorMs": 38.333333780368406,
+            "leftFitErrorMeters": 0.005533768162412901,
+            "rightFitErrorMeters": 0.003580428494744637
+          },
+          {
+            "index": 188,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 58.33333333333357,
+            "errorMs": 38.333333780368406,
+            "leftFitErrorMeters": 0.006364643535234645,
+            "rightFitErrorMeters": 0.00085384686310578
+          },
+          {
+            "index": 813,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 58.33333333333357,
+            "errorMs": 38.333333780368406,
+            "leftFitErrorMeters": 0.0043172124119995915,
+            "rightFitErrorMeters": 0.0044052485927988
+          },
+          {
+            "index": 1333,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 58.33333333333357,
+            "errorMs": 38.333333780368406,
+            "leftFitErrorMeters": 0.005493813265888161,
+            "rightFitErrorMeters": 0.0026804896914564232
+          },
+          {
+            "index": 1125,
+            "trueStepMs": 17.999999225139618,
+            "fittedStepMs": 54.1666666666667,
+            "errorMs": 36.16666744152708,
+            "leftFitErrorMeters": 0.0033484281834123414,
+            "rightFitErrorMeters": 0.0033399412943064333
+          },
+          {
+            "index": 708,
+            "trueStepMs": 19.999999552965164,
+            "fittedStepMs": 54.1666666666667,
+            "errorMs": 34.166667113701536,
+            "leftFitErrorMeters": 0.00814052271506092,
+            "rightFitErrorMeters": 0.005793366741924613
+          }
+        ]
+      }
+    ],
+    "liveModels": [
+      {
+        "model": "continuous_source_curve",
+        "fittedParameters": 1,
+        "offsetSeconds": 2.033333333333333,
+        "offsetGridSeconds": 0.004166666666666667,
+        "trainFrames": 491,
+        "holdoutFrames": 982,
+        "scores": [
+          {
+            "offsetSeconds": 2.033333333333333,
+            "trainMeanSquaredJointError": 0.0001417464853577513
+          },
+          {
+            "offsetSeconds": 2.029166666666667,
+            "trainMeanSquaredJointError": 0.0002947655718024033
+          },
+          {
+            "offsetSeconds": 2.0375,
+            "trainMeanSquaredJointError": 0.0003111422349971395
+          },
+          {
+            "offsetSeconds": 2.025,
+            "trainMeanSquaredJointError": 0.0007647228754255995
+          },
+          {
+            "offsetSeconds": 2.0416666666666665,
+            "trainMeanSquaredJointError": 0.0007922665318783745
+          }
+        ],
+        "errors": {
+          "train": {
+            "jointRmsMeters": {
+              "n": 491,
+              "p50": 0.00839935171466446,
+              "p95": 0.02265839321491131,
+              "p99": 0.03224951022982001,
+              "minimum": 0.00028638863348859236,
+              "maximum": 0.03638275893609583
+            },
+            "overallJointRmsMeters": 0.01190573329777513,
+            "perBoneRmsMeters": {
+              "head": 0.006906492085095554,
+              "hips": 0.0011573975683840387,
+              "lefthand": 0.015019780561556995,
+              "righthand": 0.01180239522196318,
+              "leftfoot": 0.01377621759208654,
+              "rightfoot": 0.015708761818057478
+            },
+            "selectedWorst": [
+              {
+                "frame": 477,
+                "jointRmsMeters": 0.03638275893609583,
+                "perBoneMeters": [
+                  0.019012146061554765,
+                  0.0022836656701021862,
+                  0.05453140179052506,
+                  0.02736275410610406,
+                  0.04850110168253574,
+                  0.03874020007851281
+                ]
+              },
+              {
+                "frame": 587,
+                "jointRmsMeters": 0.03636209724445486,
+                "perBoneMeters": [
+                  0.008820349437564065,
+                  0.0037276948607141147,
+                  0.057878118225797394,
+                  0.05257576986164634,
+                  0.007272542021073328,
+                  0.04092114868333198
+                ]
+              },
+              {
+                "frame": 682,
+                "jointRmsMeters": 0.03401724916969787,
+                "perBoneMeters": [
+                  0.009221502169216491,
+                  0.00246839924514608,
+                  0.055312062697142284,
+                  0.01151741580990392,
+                  0.02526036512040853,
+                  0.0549704389338705
+                ]
+              },
+              {
+                "frame": 474,
+                "jointRmsMeters": 0.03395683428049499,
+                "perBoneMeters": [
+                  0.00899313589227598,
+                  0.002315010447877297,
+                  0.05525697029016235,
+                  0.01206361372687107,
+                  0.02436542173582412,
+                  0.05513280766842614
+                ]
+              },
+              {
+                "frame": 379,
+                "jointRmsMeters": 0.03280347679658434,
+                "perBoneMeters": [
+                  0.00802494239750295,
+                  0.0034093639210971416,
+                  0.05234465106799825,
+                  0.046773650727658087,
+                  0.006936658906488639,
+                  0.03747707222057446
+                ]
+              }
+            ]
+          },
+          "holdout": {
+            "jointRmsMeters": {
+              "n": 982,
+              "p50": 0.008233434644045825,
+              "p95": 0.023267489571753182,
+              "p99": 0.03109599372267176,
+              "minimum": 0.000469774220572707,
+              "maximum": 0.03799674214933691
+            },
+            "overallJointRmsMeters": 0.011988676365621002,
+            "perBoneRmsMeters": {
+              "head": 0.006899257651397555,
+              "hips": 0.0012011675586166349,
+              "lefthand": 0.015136191184593922,
+              "righthand": 0.01188581906958688,
+              "leftfoot": 0.014013744642535275,
+              "rightfoot": 0.01570240710577957
+            },
+            "selectedWorst": [
+              {
+                "frame": 1831,
+                "jointRmsMeters": 0.03799674214933691,
+                "perBoneMeters": [
+                  0.019525447965156564,
+                  0.0023405145291340856,
+                  0.0567364420309539,
+                  0.027789461008192684,
+                  0.05111593927469739,
+                  0.040886135937330245
+                ]
+              },
+              {
+                "frame": 1102,
+                "jointRmsMeters": 0.03755988019321753,
+                "perBoneMeters": [
+                  0.019672593002009214,
+                  0.0023623361481676097,
+                  0.05621820581073982,
+                  0.028448399446099733,
+                  0.05011590458399606,
+                  0.0398807480543901
+                ]
+              },
+              {
+                "frame": 1411,
+                "jointRmsMeters": 0.03608435956408758,
+                "perBoneMeters": [
+                  0.009759254635002282,
+                  0.0024599549368792273,
+                  0.05878853928656012,
+                  0.01246760143890092,
+                  0.02601213437652128,
+                  0.05850664090230232
+                ]
+              },
+              {
+                "frame": 1206,
+                "jointRmsMeters": 0.03591117554573489,
+                "perBoneMeters": [
+                  0.018369092086251863,
+                  0.00220215362439935,
+                  0.05368692178340852,
+                  0.02605335233139147,
+                  0.04828660211128327,
+                  0.03876523530260118
+                ]
+              },
+              {
+                "frame": 1316,
+                "jointRmsMeters": 0.0347091883781703,
+                "perBoneMeters": [
+                  0.008703638572389448,
+                  0.003697139340964384,
+                  0.055409710493994284,
+                  0.04993741191416088,
+                  0.007161417018311005,
+                  0.03903431008868466
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "model": "global_retained_chord_50ms",
+        "fittedParameters": 1,
+        "offsetSeconds": 0.0,
+        "offsetGridSeconds": 0.004166666666666667,
+        "trainFrames": 491,
+        "holdoutFrames": 982,
+        "scores": [
+          {
+            "offsetSeconds": 0.0,
+            "trainMeanSquaredJointError": 7.399634049190986e-05
+          },
+          {
+            "offsetSeconds": 2.0791666666666666,
+            "trainMeanSquaredJointError": 0.00022489243499620876
+          },
+          {
+            "offsetSeconds": 0.004166666666666667,
+            "trainMeanSquaredJointError": 0.0002406490525404407
+          },
+          {
+            "offsetSeconds": 2.075,
+            "trainMeanSquaredJointError": 0.0006768830589449128
+          },
+          {
+            "offsetSeconds": 0.008333333333333333,
+            "trainMeanSquaredJointError": 0.0007085864201469057
+          }
+        ],
+        "errors": {
+          "train": {
+            "jointRmsMeters": {
+              "n": 491,
+              "p50": 0.007057025251328905,
+              "p95": 0.014888221827582818,
+              "p99": 0.01867747750272292,
+              "minimum": 7.796319986001939e-05,
+              "maximum": 0.02007541050916745
+            },
+            "overallJointRmsMeters": 0.008602112559825629,
+            "perBoneRmsMeters": {
+              "head": 0.00331354008760624,
+              "hips": 0.00018037307656296704,
+              "lefthand": 0.011675613099018767,
+              "righthand": 0.011776418127139246,
+              "leftfoot": 0.008283286340082118,
+              "rightfoot": 0.00945246861182587
+            },
+            "selectedWorst": [
+              {
+                "frame": 627,
+                "jointRmsMeters": 0.02007541050916745,
+                "perBoneMeters": [
+                  0.004743248274173291,
+                  8.637027648306095e-06,
+                  0.012485902940812513,
+                  0.04474893440580174,
+                  0.01207872445119137,
+                  0.00955895793540834
+                ]
+              },
+              {
+                "frame": 834,
+                "jointRmsMeters": 0.01964817326464392,
+                "perBoneMeters": [
+                  0.005820711179172247,
+                  0.0003176861508202844,
+                  0.01296539862548014,
+                  0.04256366416748773,
+                  0.013023566114252233,
+                  0.011530061989879499
+                ]
+              },
+              {
+                "frame": 859,
+                "jointRmsMeters": 0.01961857554036066,
+                "perBoneMeters": [
+                  0.004313655570366736,
+                  0.00015489106624921867,
+                  0.028663616910848545,
+                  0.030065469021589842,
+                  0.01867227992021694,
+                  0.014714279542535146
+                ]
+              },
+              {
+                "frame": 754,
+                "jointRmsMeters": 0.0191088922140086,
+                "perBoneMeters": [
+                  0.004338211088637105,
+                  7.665193975392448e-05,
+                  0.02754111054426163,
+                  0.028727787362632793,
+                  0.017929898495653903,
+                  0.01633379386676022
+                ]
+              },
+              {
+                "frame": 649,
+                "jointRmsMeters": 0.018857954603843874,
+                "perBoneMeters": [
+                  0.004054469296010901,
+                  0.00018624838568159774,
+                  0.027971931912916175,
+                  0.027157342225717817,
+                  0.01724530810513142,
+                  0.0173179224494126
+                ]
+              }
+            ]
+          },
+          "holdout": {
+            "jointRmsMeters": {
+              "n": 982,
+              "p50": 0.006813149506086073,
+              "p95": 0.015338624012010874,
+              "p99": 0.018288349189862527,
+              "minimum": 6.999970127653727e-05,
+              "maximum": 0.02172628290088515
+            },
+            "overallJointRmsMeters": 0.008553975455976371,
+            "perBoneRmsMeters": {
+              "head": 0.003264066139799925,
+              "hips": 0.0001837048491866923,
+              "lefthand": 0.011765964374185414,
+              "righthand": 0.01145398696270502,
+              "leftfoot": 0.00833084974131607,
+              "rightfoot": 0.009449884071419666
+            },
+            "selectedWorst": [
+              {
+                "frame": 939,
+                "jointRmsMeters": 0.02172628290088515,
+                "perBoneMeters": [
+                  0.005338392860004607,
+                  6.758827413966273e-06,
+                  0.013735565003019758,
+                  0.0483386630946526,
+                  0.013053192384662834,
+                  0.01039287260408498
+                ]
+              },
+              {
+                "frame": 1564,
+                "jointRmsMeters": 0.0216910980926079,
+                "perBoneMeters": [
+                  0.005249936243837021,
+                  1.0066839658540161e-05,
+                  0.013613032251722907,
+                  0.04828591755296774,
+                  0.01306427725637058,
+                  0.01038944972669133
+                ]
+              },
+              {
+                "frame": 1459,
+                "jointRmsMeters": 0.019671787284151903,
+                "perBoneMeters": [
+                  0.005793234230116539,
+                  0.0002893960953431751,
+                  0.012890990538033349,
+                  0.042603502925523506,
+                  0.013147114952698396,
+                  0.011582195241676255
+                ]
+              },
+              {
+                "frame": 1484,
+                "jointRmsMeters": 0.019671110972084984,
+                "perBoneMeters": [
+                  0.004229524826114468,
+                  0.00017919907703445315,
+                  0.02867099282504225,
+                  0.03017697127440187,
+                  0.018740843633906105,
+                  0.014829025716895455
+                ]
+              },
+              {
+                "frame": 964,
+                "jointRmsMeters": 0.019198544282448465,
+                "perBoneMeters": [
+                  0.0042342417134899725,
+                  0.00021491121737959862,
+                  0.025746838146167277,
+                  0.03212617354079335,
+                  0.018178793669869773,
+                  0.012964196291378492
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "model": "local_retained_nlerp",
+        "offsetSeconds": 0.0,
+        "offsetInheritedFromTrainingModel": "global_retained_chord_50ms",
+        "additionalParametersFit": 0,
+        "errors": {
+          "train": {
+            "samples": 491,
+            "jointRmsMeters": {
+              "n": 491,
+              "p50": 0.0012553716536223964,
+              "p95": 0.0033950055979312848,
+              "p99": 0.004288167380874586,
+              "minimum": 4.732354486190015e-05,
+              "maximum": 0.0051994647399446516
+            },
+            "overallJointRmsMeters": 0.0017445354597885475,
+            "perBoneRmsMeters": {
+              "head": 0.0022152713855765464,
+              "hips": 0.00018037307656296704,
+              "lefthand": 0.0026730528835112086,
+              "righthand": 0.002353052317239601,
+              "leftfoot": 0.0005700920393782251,
+              "rightfoot": 0.0005598126518560882
+            },
+            "selectedWorst": [
+              {
+                "frame": 618,
+                "jointRmsMeters": 0.0051994647399446516,
+                "perBoneMeters": [
+                  0.007925064690134903,
+                  0.0001932502179512463,
+                  0.003389917453669994,
+                  0.00926351532359178,
+                  0.0014237669342620893,
+                  0.00017673914617524303
+                ]
+              },
+              {
+                "frame": 513,
+                "jointRmsMeters": 0.005142153496350342,
+                "perBoneMeters": [
+                  0.007850188603443766,
+                  5.87174951693914e-06,
+                  0.0035829295670958355,
+                  0.009105112641470367,
+                  0.0001779749146346167,
+                  0.0011192963531680372
+                ]
+              },
+              {
+                "frame": 826,
+                "jointRmsMeters": 0.004572017825172144,
+                "perBoneMeters": [
+                  0.006970739871661549,
+                  6.070944030289738e-05,
+                  0.003017139361956952,
+                  0.008147376869236715,
+                  0.0007020301843394256,
+                  0.0009216592695079104
+                ]
+              },
+              {
+                "frame": 825,
+                "jointRmsMeters": 0.004518972136294357,
+                "perBoneMeters": [
+                  0.0069281017503758004,
+                  2.6832920071440114e-06,
+                  0.0032407589588478746,
+                  0.00791098113205052,
+                  7.087445456133471e-05,
+                  0.0011987033238842024
+                ]
+              },
+              {
+                "frame": 617,
+                "jointRmsMeters": 0.004517884389311253,
+                "perBoneMeters": [
+                  0.0069301712551837705,
+                  0.00012703630056876136,
+                  0.0030614766706758196,
+                  0.00802670517423844,
+                  0.000778080718373737,
+                  0.00013497896025997132
+                ]
+              }
+            ]
+          },
+          "holdout": {
+            "samples": 982,
+            "jointRmsMeters": {
+              "n": 982,
+              "p50": 0.0012045746726579679,
+              "p95": 0.003493878122173788,
+              "p99": 0.004255891899988277,
+              "minimum": 5.768609924090424e-05,
+              "maximum": 0.005175883858322104
+            },
+            "overallJointRmsMeters": 0.0017072672621683926,
+            "perBoneRmsMeters": {
+              "head": 0.0021766243304007283,
+              "hips": 0.0001837048491866923,
+              "lefthand": 0.0026032534279861992,
+              "righthand": 0.0022835639731328757,
+              "leftfoot": 0.0005807976951895942,
+              "rightfoot": 0.0006230644325226591
+            },
+            "selectedWorst": [
+              {
+                "frame": 1555,
+                "jointRmsMeters": 0.005175883858322104,
+                "perBoneMeters": [
+                  0.007937347631287636,
+                  0.00018216224113321022,
+                  0.0033689139668411595,
+                  0.009215083639942601,
+                  0.00118557708644717,
+                  0.0001761560444889023
+                ]
+              },
+              {
+                "frame": 930,
+                "jointRmsMeters": 0.005029969283680112,
+                "perBoneMeters": [
+                  0.0077342556618587004,
+                  0.0001723416484908924,
+                  0.003252534983321681,
+                  0.008955265320920258,
+                  0.0010703956498111186,
+                  0.0001833740681002894
+                ]
+              },
+              {
+                "frame": 1243,
+                "jointRmsMeters": 0.004990954984828371,
+                "perBoneMeters": [
+                  0.007588750699304842,
+                  0.00018884063092283743,
+                  0.0032118470118272695,
+                  0.008905764238451202,
+                  0.0014744434198776916,
+                  0.00017438665869625982
+                ]
+              },
+              {
+                "frame": 1138,
+                "jointRmsMeters": 0.004950568962011642,
+                "perBoneMeters": [
+                  0.0075493123098421735,
+                  2.4306935906270866e-05,
+                  0.003384022623571143,
+                  0.008787464529731726,
+                  0.00047323869915882416,
+                  0.0010774944373937115
+                ]
+              },
+              {
+                "frame": 1763,
+                "jointRmsMeters": 0.004796966051500727,
+                "perBoneMeters": [
+                  0.007310861625639132,
+                  3.838986992521498e-05,
+                  0.003238646306711425,
+                  0.008527056509384,
+                  0.0006118454764200732,
+                  0.0010204169750292476
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "model": "local_retained_slerp",
+        "offsetSeconds": 0.0,
+        "offsetInheritedFromTrainingModel": "global_retained_chord_50ms",
+        "additionalParametersFit": 0,
+        "errors": {
+          "train": {
+            "samples": 491,
+            "jointRmsMeters": {
+              "n": 491,
+              "p50": 0.0012240828436670278,
+              "p95": 0.0034513259771749754,
+              "p99": 0.004296135299106333,
+              "minimum": 4.28512270731862e-05,
+              "maximum": 0.005194368252397261
+            },
+            "overallJointRmsMeters": 0.0017434010632122693,
+            "perBoneRmsMeters": {
+              "head": 0.0022149469014135542,
+              "hips": 0.00018037307656296704,
+              "lefthand": 0.002678986556298012,
+              "righthand": 0.0023540742027140294,
+              "leftfoot": 0.000553619894175724,
+              "rightfoot": 0.0005225227961452181
+            },
+            "selectedWorst": [
+              {
+                "frame": 618,
+                "jointRmsMeters": 0.005194368252397261,
+                "perBoneMeters": [
+                  0.007924419652037284,
+                  0.0001932502179512463,
+                  0.0034011415343425523,
+                  0.009261702229646415,
+                  0.0012961412266615654,
+                  0.0001676984616010963
+                ]
+              },
+              {
+                "frame": 513,
+                "jointRmsMeters": 0.005140229000396743,
+                "perBoneMeters": [
+                  0.007850204827621365,
+                  5.87174951693914e-06,
+                  0.003585234734067031,
+                  0.009100887931107972,
+                  0.00010755125245395213,
+                  0.0011019701634863756
+                ]
+              },
+              {
+                "frame": 826,
+                "jointRmsMeters": 0.004557359901016024,
+                "perBoneMeters": [
+                  0.006970780487225709,
+                  6.070944030289738e-05,
+                  0.003028490140242873,
+                  0.008128222638660011,
+                  0.0003126334827320611,
+                  0.0008271722187099444
+                ]
+              },
+              {
+                "frame": 825,
+                "jointRmsMeters": 0.004532842867160542,
+                "perBoneMeters": [
+                  0.0069246610663200635,
+                  2.6832920071440114e-06,
+                  0.0033322434355962656,
+                  0.007954738600578855,
+                  9.033619135873272e-05,
+                  0.0009691106859701037
+                ]
+              },
+              {
+                "frame": 617,
+                "jointRmsMeters": 0.004531230086139017,
+                "perBoneMeters": [
+                  0.006928822513691222,
+                  0.00012703630056876136,
+                  0.00308467457367829,
+                  0.008053981875460966,
+                  0.0008787971063499126,
+                  0.0001158934140138574
+                ]
+              }
+            ]
+          },
+          "holdout": {
+            "samples": 982,
+            "jointRmsMeters": {
+              "n": 982,
+              "p50": 0.0011920601816305552,
+              "p95": 0.003498212339510918,
+              "p99": 0.004252138989496204,
+              "minimum": 4.795484646952879e-05,
+              "maximum": 0.00518605178517386
+            },
+            "overallJointRmsMeters": 0.0017058625543498827,
+            "perBoneRmsMeters": {
+              "head": 0.002176264602272756,
+              "hips": 0.0001837048491866923,
+              "lefthand": 0.0026092985234528235,
+              "righthand": 0.002284556658749887,
+              "leftfoot": 0.0005644849888885001,
+              "rightfoot": 0.0005862132897389421
+            },
+            "selectedWorst": [
+              {
+                "frame": 1555,
+                "jointRmsMeters": 0.00518605178517386,
+                "perBoneMeters": [
+                  0.007936427685710078,
+                  0.00018216224113321022,
+                  0.0033796418777561612,
+                  0.009236209929544109,
+                  0.0012616830886368958,
+                  0.00017127147393841802
+                ]
+              },
+              {
+                "frame": 930,
+                "jointRmsMeters": 0.0050463064428636385,
+                "perBoneMeters": [
+                  0.007732743710134742,
+                  0.0001723416484908924,
+                  0.0032717276355734293,
+                  0.00898928925260199,
+                  0.001195337611213577,
+                  0.00016084268148442213
+                ]
+              },
+              {
+                "frame": 1243,
+                "jointRmsMeters": 0.0049808000270262056,
+                "perBoneMeters": [
+                  0.007587455664773334,
+                  0.00018884063092283743,
+                  0.003236158025826944,
+                  0.008903580353419416,
+                  0.00121135993826109,
+                  0.0001766760555732147
+                ]
+              },
+              {
+                "frame": 1138,
+                "jointRmsMeters": 0.00494123777921064,
+                "perBoneMeters": [
+                  0.007549367480104015,
+                  2.4306935906270866e-05,
+                  0.003392831435293905,
+                  0.008771680032488346,
+                  0.0001759436165856848,
+                  0.0010083712959596172
+                ]
+              },
+              {
+                "frame": 1450,
+                "jointRmsMeters": 0.004802952043532731,
+                "perBoneMeters": [
+                  0.007332929159234934,
+                  1.556697300064691e-06,
+                  0.003463189464518676,
+                  0.008460327328485926,
+                  9.059631259932003e-05,
+                  0.0010291793104466368
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "modelSourceKeyValidation": [
+      {
+        "sourceKey": 0,
+        "maxAxisErrorMeters": 0.0
+      },
+      {
+        "sourceKey": 1,
+        "maxAxisErrorMeters": 0.0
+      },
+      {
+        "sourceKey": 31,
+        "maxAxisErrorMeters": 4.440892098500626e-16
+      },
+      {
+        "sourceKey": 62,
+        "maxAxisErrorMeters": 4.440892098500626e-16
+      },
+      {
+        "sourceKey": 94,
+        "maxAxisErrorMeters": 0.0
+      },
+      {
+        "sourceKey": 124,
+        "maxAxisErrorMeters": 0.0
+      }
+    ],
+    "limits": [
+      "Synthetic source geometry controls are not actual native interpolation, GPU output, or independent live replications.",
+      "Exact source interpolation control uses the estimator reference and tests quantization only; it is deliberately not an independent engine model.",
+      "Local nlerp and50ms global chord are alternative geometry hypotheses, not confirmed engine code.",
+      "Only6joint global positions and four selected phase offsets are tested; no complete skeleton or14clip acceptance.",
+      "The actual saved dt pattern is reused; no capture workload or performance effect measured.",
+      "A source-phase proxy tail cannot by itself establish a visual stutter duration.",
+      "Same existing single run; temporal holdout is not an independent replication.",
+      "Geometry hypotheses were chosen after earlier diagnostics; not preregistered model discovery.",
+      "Both models fit only one constant phase offset on a quarter-source-key grid.",
+      "A global chord fit does not identify engine local/world interpolation code or final GPU pose.",
+      "No GPU, visible smoothness, gameplay or performance acceptance.",
+      "Reuses same single run and same temporal holdout; hypotheses were explored after previous model results.",
+      "Source endpoint interpolation is nlerp; engine source interpolation mode not independently established.",
+      "Only six global joint positions, no orientation/skin/GPU comparison.",
+      "Model agreement does not prove exact native helper implementation, visual acceptance or a supported fix."
+    ],
+    "next": [
+      "Do not treat nearest-source phase spikes as direct stutter durations.",
+      "Keep CPU/native average-clock evidence, but model retained local-transform interpolation before per-frame phase interpretation.",
+      "Use independent visible-frame evidence and a supported deployment path before accepting visual improvement."
+    ],
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "blockers": [
+    "Synthetic source geometry controls are not actual native interpolation, GPU output, or independent live replications.",
+    "Exact source interpolation control uses the estimator reference and tests quantization only; it is deliberately not an independent engine model.",
+    "Local nlerp and50ms global chord are alternative geometry hypotheses, not confirmed engine code.",
+    "Only6joint global positions and four selected phase offsets are tested; no complete skeleton or14clip acceptance.",
+    "The actual saved dt pattern is reused; no capture workload or performance effect measured.",
+    "A source-phase proxy tail cannot by itself establish a visual stutter duration.",
+    "Same existing single run; temporal holdout is not an independent replication.",
+    "Geometry hypotheses were chosen after earlier diagnostics; not preregistered model discovery.",
+    "Both models fit only one constant phase offset on a quarter-source-key grid.",
+    "A global chord fit does not identify engine local/world interpolation code or final GPU pose.",
+    "No GPU, visible smoothness, gameplay or performance acceptance.",
+    "Reuses same single run and same temporal holdout; hypotheses were explored after previous model results.",
+    "Source endpoint interpolation is nlerp; engine source interpolation mode not independently established.",
+    "Only six global joint positions, no orientation/skin/GPU comparison.",
+    "Model agreement does not prove exact native helper implementation, visual acceptance or a supported fix."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-phase-estimator-calibration-20261031.md",
+      "sha256": "7df64d6339d4286464bc6442c7c94c1c01433a598f224e915bbbf2bf95e36c11"
+    },
+    {
+      "path": "evidence/animation-phase-estimator-calibration-20261031.txt",
+      "sha256": "9afc35743f8a1e15b34dc030c83d9ed40122c622b6ba1502efe4bca28d85fe85"
+    }
+  ],
+  "goalComplete": false
+}
