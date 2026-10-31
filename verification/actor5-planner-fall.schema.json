@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "actor5-planner-fall-20261031-145958"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "leaseLandings",
+        "leaseCases",
+        "leaseRowsExactlyRepeated",
+        "liveRecoveryFixAccepted"
+      ],
+      "properties": {
+        "leaseLandings": {
+          "const": 6
+        },
+        "leaseCases": {
+          "const": 6
+        },
+        "leaseRowsExactlyRepeated": {
+          "const": true
+        },
+        "liveRecoveryFixAccepted": {
+          "const": false
+        }
+      }
+    }
+  }
+}
