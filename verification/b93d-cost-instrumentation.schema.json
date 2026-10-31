@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "b93d-cost-instrumentation-20261031-130708"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "verificationStatus": {
+      "type": "object",
+      "required": [
+        "costRepeatAccepted",
+        "pureInstrumentationOverheadIsolated"
+      ],
+      "properties": {
+        "costRepeatAccepted": {
+          "const": false
+        },
+        "pureInstrumentationOverheadIsolated": {
+          "const": false
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "trials",
+        "optimizedCode",
+        "newPbo",
+        "stimulusValidity"
+      ],
+      "properties": {
+        "trials": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "newPbo": {
+          "const": false
+        },
+        "optimizedCode": {
+          "const": false
+        }
+      }
+    }
+  }
+}
