@@ -1,3 +1,5 @@
+> 최신 기존영상 대조: A/B/B/A 머리궤적의강한반복간격3.167/2.083/2.083/3.150초. 내부평균시간차이가화면에도나타남. 부드러움개선·숫자쓰기배포해결·64성능수용은아님. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-optical-carry-20261031.md). 이전기록보존.
+
 > 최신 영상 진단: 이미지독립머리추적3종을기존영상에서대조했다. 초기2종은어깨/손가락오검출로지연평가에서기각. cap433쌍의화면/CPU이동상관은약0.982, 세임계값모두lag0최소였으나GPU지연0이나끊김해결을의미하지않음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-optical-head-20261031.md). 이전기록보존.
 
 > 최신 애니메이션 계측: 1개체 고정run 시험에서4985프레임/29910행의6본 화면투영을 확보했다. pixel/relative는1600x900, HUD532/540 대응.12표본 공간 sanity만 확인했으며 optical궤적·시각품질·성능은미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-screen-projection-20261031.md). 이전기록보존.

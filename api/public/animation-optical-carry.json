@@ -1,0 +1,483 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T18:57:05.904448+09:00",
+  "sourceRunId": "animation-optical-carry-20261031-1850",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "verificationStatus": {
+    "diagnostic": "historical_four_run_optical_carry_comparison_complete",
+    "newRuntime": false,
+    "reaDeepDossier": false,
+    "functional": "not_rerun",
+    "visibleSmoothness": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-optical-carry-20261031-1850",
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "newRuntime": false,
+    "newVideo": false,
+    "newPbo": false,
+    "order": "A/B/B/A",
+    "calibration": {
+      "sourceRuntimeRunId": "runtime-20261031-182324",
+      "sourceSha256": "0c6cd304b3da58e3a284d9e895b4b2e2b71fc23c2c1c375fc7190421b9f42d60",
+      "trainPoints": 5940,
+      "holdoutPoints": 23970,
+      "matrix": [
+        [
+          -705.8656922347819,
+          0.002135148061326685,
+          5.755100372619895e-06
+        ],
+        [
+          -171.88641988993413,
+          -786.0803966213354,
+          -0.21485041181489528
+        ],
+        [
+          -781.2966311887119,
+          -287.81350639149827,
+          -0.9766153281466975
+        ],
+        [
+          4250.36050101938,
+          3011.2766427012693,
+          5.312942218243626
+        ]
+      ],
+      "holdoutErrorPixels": {
+        "n": 23970,
+        "p50": 0.016374979721652874,
+        "p95": 0.033115968336282706,
+        "p99": 0.03784501697532036,
+        "maximum": 0.04645112044641884
+      },
+      "scope": "Linear camera-depth mapping learned from recent modelPoint/screen/depth; transferred to old matching fixed camera. Not directly recorded oldGPU orscreenpoints."
+    },
+    "runs": [
+      {
+        "runtimeRunId": "runtime-20261031-110449",
+        "mode": "baseline30",
+        "newRuntime": false,
+        "videoSha256": "3e9f5ea7d9a98d233f62d6e59e2fbc6546f23d609508ec5d2c3c85339ea5f283",
+        "windowVideoSeconds": [
+          5,
+          23
+        ],
+        "imageFrames": 1080,
+        "exactJoinedSamples": 536,
+        "observerCoveredAllExactJoins": true,
+        "nativeNumericApplied": false,
+        "nativeCoveredFrameBounds": [
+          351,
+          1822
+        ],
+        "visibleJoinedFrameBounds": [
+          672,
+          1571
+        ],
+        "trainOffsetPixels": [
+          0.3354395340525116,
+          -24.468955421730584
+        ],
+        "spatialHoldoutErrorPixels": {
+          "n": 359,
+          "p50": 1.7342099191408904,
+          "p95": 5.88761436319081,
+          "p99": 6.435980951001326,
+          "maximum": 7.069803030469829
+        },
+        "consecutiveHudPairs": 437,
+        "stepNormCorrelation": 0.979999605259172,
+        "xIncrementCorrelation": 0.9875767182359287,
+        "yIncrementCorrelation": 0.9213345691269923,
+        "opticalStepPixels": {
+          "n": 437,
+          "p50": 1.4142135623730951,
+          "p95": 9.219544457292887,
+          "p99": 13.762999063085472,
+          "maximum": 15.033296378372908
+        },
+        "projectedStepPixels": {
+          "n": 437,
+          "p50": 1.363298154317858,
+          "p95": 8.866873216358634,
+          "p99": 11.141287252143261,
+          "maximum": 12.749520512645075
+        },
+        "recurrenceLocalMinima": [
+          {
+            "lagFrames": 190,
+            "lagSeconds": 3.1666666666666665,
+            "meanSquaredDistancePixels": 100.76516853932584,
+            "pairs": 890
+          },
+          {
+            "lagFrames": 144,
+            "lagSeconds": 2.4,
+            "meanSquaredDistancePixels": 510.7371794871795,
+            "pairs": 936
+          },
+          {
+            "lagFrames": 95,
+            "lagSeconds": 1.5833333333333333,
+            "meanSquaredDistancePixels": 524.1888324873097,
+            "pairs": 985
+          },
+          {
+            "lagFrames": 236,
+            "lagSeconds": 3.933333333333333,
+            "meanSquaredDistancePixels": 533.6457345971564,
+            "pairs": 844
+          },
+          {
+            "lagFrames": 285,
+            "lagSeconds": 4.75,
+            "meanSquaredDistancePixels": 579.8125786163522,
+            "pairs": 795
+          }
+        ]
+      },
+      {
+        "runtimeRunId": "runtime-20261031-111204",
+        "mode": "candidate30",
+        "newRuntime": false,
+        "videoSha256": "192367bb90f0e39633055b13644cd6b3222994ac3a9b05e6e054c3514013f836",
+        "windowVideoSeconds": [
+          5,
+          23
+        ],
+        "imageFrames": 1080,
+        "exactJoinedSamples": 527,
+        "observerCoveredAllExactJoins": true,
+        "nativeNumericApplied": true,
+        "nativeCoveredFrameBounds": [
+          354,
+          1824
+        ],
+        "visibleJoinedFrameBounds": [
+          677,
+          1576
+        ],
+        "trainOffsetPixels": [
+          0.41859302612408555,
+          -24.61578491961376
+        ],
+        "spatialHoldoutErrorPixels": {
+          "n": 350,
+          "p50": 1.497795344001504,
+          "p95": 5.85353638783836,
+          "p99": 6.96631077961023,
+          "maximum": 7.201344525877559
+        },
+        "consecutiveHudPairs": 431,
+        "stepNormCorrelation": 0.9823518744258354,
+        "xIncrementCorrelation": 0.990804575613672,
+        "yIncrementCorrelation": 0.9550943115968008,
+        "opticalStepPixels": {
+          "n": 431,
+          "p50": 2.23606797749979,
+          "p95": 10.04987562112089,
+          "p99": 13.038404810405298,
+          "maximum": 14.560219778561036
+        },
+        "projectedStepPixels": {
+          "n": 431,
+          "p50": 2.2166754113357254,
+          "p95": 9.592296820100184,
+          "p99": 12.019034944713058,
+          "maximum": 12.38644187515779
+        },
+        "recurrenceLocalMinima": [
+          {
+            "lagFrames": 125,
+            "lagSeconds": 2.0833333333333335,
+            "meanSquaredDistancePixels": 6.040837696335078,
+            "pairs": 955
+          },
+          {
+            "lagFrames": 250,
+            "lagSeconds": 4.166666666666667,
+            "meanSquaredDistancePixels": 8.051807228915663,
+            "pairs": 830
+          },
+          {
+            "lagFrames": 156,
+            "lagSeconds": 2.6,
+            "meanSquaredDistancePixels": 476.20887445887445,
+            "pairs": 924
+          },
+          {
+            "lagFrames": 281,
+            "lagSeconds": 4.683333333333334,
+            "meanSquaredDistancePixels": 476.27659574468083,
+            "pairs": 799
+          },
+          {
+            "lagFrames": 95,
+            "lagSeconds": 1.5833333333333333,
+            "meanSquaredDistancePixels": 483.91269035532997,
+            "pairs": 985
+          },
+          {
+            "lagFrames": 220,
+            "lagSeconds": 3.6666666666666665,
+            "meanSquaredDistancePixels": 484.27906976744185,
+            "pairs": 860
+          },
+          {
+            "lagFrames": 187,
+            "lagSeconds": 3.1166666666666667,
+            "meanSquaredDistancePixels": 542.1444568868981,
+            "pairs": 893
+          },
+          {
+            "lagFrames": 63,
+            "lagSeconds": 1.05,
+            "meanSquaredDistancePixels": 543.9469026548672,
+            "pairs": 1017
+          }
+        ]
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112434",
+        "mode": "candidate30",
+        "newRuntime": false,
+        "videoSha256": "eb57383e1c7025fd45cb4e04e7d27abeb815cec14101ea6112445af497d48975",
+        "windowVideoSeconds": [
+          5,
+          23
+        ],
+        "imageFrames": 1080,
+        "exactJoinedSamples": 506,
+        "observerCoveredAllExactJoins": true,
+        "nativeNumericApplied": true,
+        "nativeCoveredFrameBounds": [
+          351,
+          1822
+        ],
+        "visibleJoinedFrameBounds": [
+          694,
+          1593
+        ],
+        "trainOffsetPixels": [
+          0.5905889571845364,
+          -24.537143572044187
+        ],
+        "spatialHoldoutErrorPixels": {
+          "n": 358,
+          "p50": 1.6352273487241258,
+          "p95": 6.138099902850683,
+          "p99": 6.995005425200357,
+          "maximum": 7.34708737571685
+        },
+        "consecutiveHudPairs": 381,
+        "stepNormCorrelation": 0.9813209383381272,
+        "xIncrementCorrelation": 0.9911440965461812,
+        "yIncrementCorrelation": 0.9520926289308774,
+        "opticalStepPixels": {
+          "n": 381,
+          "p50": 3.0,
+          "p95": 11.0,
+          "p99": 14.007133769523639,
+          "maximum": 15.033296378372908
+        },
+        "projectedStepPixels": {
+          "n": 381,
+          "p50": 2.300112149303329,
+          "p95": 9.604332349045631,
+          "p99": 11.975369202534948,
+          "maximum": 13.930071755523892
+        },
+        "recurrenceLocalMinima": [
+          {
+            "lagFrames": 125,
+            "lagSeconds": 2.0833333333333335,
+            "meanSquaredDistancePixels": 5.928795811518325,
+            "pairs": 955
+          },
+          {
+            "lagFrames": 250,
+            "lagSeconds": 4.166666666666667,
+            "meanSquaredDistancePixels": 8.913253012048193,
+            "pairs": 830
+          },
+          {
+            "lagFrames": 220,
+            "lagSeconds": 3.6666666666666665,
+            "meanSquaredDistancePixels": 479.3279069767442,
+            "pairs": 860
+          },
+          {
+            "lagFrames": 95,
+            "lagSeconds": 1.5833333333333333,
+            "meanSquaredDistancePixels": 480.34923857868023,
+            "pairs": 985
+          },
+          {
+            "lagFrames": 156,
+            "lagSeconds": 2.6,
+            "meanSquaredDistancePixels": 482.39285714285717,
+            "pairs": 924
+          },
+          {
+            "lagFrames": 281,
+            "lagSeconds": 4.683333333333334,
+            "meanSquaredDistancePixels": 486.10012515644553,
+            "pairs": 799
+          },
+          {
+            "lagFrames": 187,
+            "lagSeconds": 3.1166666666666667,
+            "meanSquaredDistancePixels": 540.0716685330348,
+            "pairs": 893
+          },
+          {
+            "lagFrames": 62,
+            "lagSeconds": 1.0333333333333334,
+            "meanSquaredDistancePixels": 541.549115913556,
+            "pairs": 1018
+          }
+        ]
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112900",
+        "mode": "baseline30",
+        "newRuntime": false,
+        "videoSha256": "0d6c6b01a343a5274d68a2f3de0935c5e150453977a6448c2709460f7eea9339",
+        "windowVideoSeconds": [
+          5,
+          23
+        ],
+        "imageFrames": 1080,
+        "exactJoinedSamples": 528,
+        "observerCoveredAllExactJoins": true,
+        "nativeNumericApplied": false,
+        "nativeCoveredFrameBounds": [
+          364,
+          1836
+        ],
+        "visibleJoinedFrameBounds": [
+          678,
+          1576
+        ],
+        "trainOffsetPixels": [
+          0.5376142078459907,
+          -24.540950393634006
+        ],
+        "spatialHoldoutErrorPixels": {
+          "n": 360,
+          "p50": 1.6016116487140266,
+          "p95": 6.13632936051458,
+          "p99": 6.8869319708494805,
+          "maximum": 7.263290222439687
+        },
+        "consecutiveHudPairs": 420,
+        "stepNormCorrelation": 0.9799701198386438,
+        "xIncrementCorrelation": 0.9882537982548748,
+        "yIncrementCorrelation": 0.934591678342279,
+        "opticalStepPixels": {
+          "n": 420,
+          "p50": 1.4142135623730951,
+          "p95": 9.219544457292887,
+          "p99": 13.284044805919338,
+          "maximum": 16.492422502470642
+        },
+        "projectedStepPixels": {
+          "n": 420,
+          "p50": 1.2990293692282198,
+          "p95": 8.57601439306605,
+          "p99": 11.279379625895182,
+          "maximum": 13.891781607044463
+        },
+        "recurrenceLocalMinima": [
+          {
+            "lagFrames": 189,
+            "lagSeconds": 3.15,
+            "meanSquaredDistancePixels": 157.88215488215488,
+            "pairs": 891
+          },
+          {
+            "lagFrames": 143,
+            "lagSeconds": 2.3833333333333333,
+            "meanSquaredDistancePixels": 516.6851654215582,
+            "pairs": 937
+          },
+          {
+            "lagFrames": 95,
+            "lagSeconds": 1.5833333333333333,
+            "meanSquaredDistancePixels": 551.117766497462,
+            "pairs": 985
+          },
+          {
+            "lagFrames": 235,
+            "lagSeconds": 3.9166666666666665,
+            "meanSquaredDistancePixels": 598.3727810650887,
+            "pairs": 845
+          },
+          {
+            "lagFrames": 285,
+            "lagSeconds": 4.75,
+            "meanSquaredDistancePixels": 707.9433962264151,
+            "pairs": 795
+          }
+        ]
+      }
+    ],
+    "reviewImageSha256": "5a7d5f8e9dca742d7116062c855a40b3dc5b526e01b6e85682f068740dc72175",
+    "limits": [
+      "Recent camera calibration transferred to old matching source settings; oldscreen positions are derived, not directly measured.",
+      "Detector fixed before these four videos but developed after another video; same assets/scene, not independent detector generalization.",
+      "Image recurrence may have harmonics; strongest minimum is not automatically fundamental clip period.",
+      "Nine-second HUD joins lie within original native observer windows.18second recurrence uses outervideo window bounded by these joins, not newcontinuous HUD decoding.",
+      "Frame motion depends on pose curvature, playback rate and capture cadence. Larger steps are not automatically more stutter.",
+      "Native numeric carry remains diagnostic and nondeployable; no new correction, visual smoothness or performance acceptance."
+    ],
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "newNpcAlgorithm": false,
+    "supportedClockControlEstablished": false,
+    "sourceRuntimeRunIds": [
+      "runtime-20261031-110449",
+      "runtime-20261031-111204",
+      "runtime-20261031-112434",
+      "runtime-20261031-112900"
+    ],
+    "meanPlaybackEvidence": "Image-only head recurrence independently corroborates prior native-clock slowdown/restoration; not a newruntime or deployed fix.",
+    "smoothnessMeasured": false,
+    "next": "Use phase/pose-matched and capture-error-calibrated reference before interpreting frame steps as stutter. Do not repeat mean-rate correction as a newfix or deploy numeric carry. Continue supported clock/output-consumer investigation, with8/64 stability and64cost separate.",
+    "review": {
+      "sampleImages": 16,
+      "visuallyReviewed": true,
+      "allReviewedLandmarksAtHeadRegion": true,
+      "exhaustiveOpticalGroundTruth": false
+    }
+  },
+  "blockers": [
+    "Recent camera calibration transferred to old matching source settings; oldscreen positions are derived, not directly measured.",
+    "Detector fixed before these four videos but developed after another video; same assets/scene, not independent detector generalization.",
+    "Image recurrence may have harmonics; strongest minimum is not automatically fundamental clip period.",
+    "Nine-second HUD joins lie within original native observer windows.18second recurrence uses outervideo window bounded by these joins, not newcontinuous HUD decoding.",
+    "Frame motion depends on pose curvature, playback rate and capture cadence. Larger steps are not automatically more stutter.",
+    "Native numeric carry remains diagnostic and nondeployable; no new correction, visual smoothness or performance acceptance.",
+    "Supported clock control remains unestablished; graphconsumer verification still required.",
+    "REA Rizin Windows native command unavailable; no deepdossier claimed."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-optical-carry-20261031.md",
+      "sha256": "000a19a23008e6831db2a8ae4de5f1c08394b0ae3abc4dfebd7eaadb33b86db8"
+    },
+    {
+      "path": "evidence/animation-optical-carry-20261031.txt",
+      "sha256": "5097a15964a103b1198f608d49e71e70779af3e4c46ba881a52237af8723b014"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
