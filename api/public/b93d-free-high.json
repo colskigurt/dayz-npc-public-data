@@ -1,0 +1,175 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T12:40:41.775453+09:00",
+  "sourceRunId": "current-build-lineage-20261031-121827",
+  "buildId": "b93d2e713fe7aeb41570c2b21839ff1ada148be0eac090747220b6a4f78ad0d1",
+  "verificationStatus": {
+    "diagnostic": "packaged_lineage_and_anchor_control_complete",
+    "functional": "per_trial_results_one_per_count",
+    "visualSmoothness": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "current-build-lineage-20261031-121827",
+    "buildId": "b93d2e713fe7aeb41570c2b21839ff1ada148be0eac090747220b6a4f78ad0d1",
+    "allTrialsPassed": true,
+    "newPbo": false,
+    "commonPreserved": true,
+    "visualSmoothnessAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "One unanchored trial per count; not repeated final acceptance.",
+      "B8FB andB93D differ in package and scene; no single-patch causal claim.",
+      "Prior anchorON and currentOFF are separate runs with different physical trajectories.",
+      "Mission frame times include diagnostics and are not cost attribution or GPU timings.",
+      "Screenshots show scene context only; no temporal visual quality acceptance."
+    ],
+    "trials": [
+      {
+        "label": "eight",
+        "runtimeRunId": "runtime-20261031-122659",
+        "count": 8,
+        "seconds": 300,
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "missionSourcesSha256": "BC6C4E17269BCF2767D16BB1041BF3E1791B6961EC38784BB71D67254D5A5F8C",
+        "normalQuitVerified": true,
+        "terminalArrivals": 8,
+        "unresolvedTerminalAgents": [],
+        "missingHighFollow": [],
+        "highHoldWindow": [
+          45.008,
+          104.945
+        ],
+        "fallsLandedAndResumed": 10,
+        "admissionOutcomes": {
+          "ARRIVED": 1
+        },
+        "admissionViolations": [],
+        "egressOutcomes": {},
+        "egressViolations": [],
+        "physicalTransitions": 116,
+        "allPhysicalTransitionsMatched": true,
+        "foregroundMissionFrameMs": {
+          "samples": 12900,
+          "p50": 20.0,
+          "p95": 33.0,
+          "p99": 34.0
+        },
+        "functionalScenarioPassed": true,
+        "visualSmoothnessAccepted": false,
+        "performanceAccepted": false,
+        "stimulus": {
+          "runtimeRunId": "runtime-20261031-122659",
+          "count": 8,
+          "highPlayerAnchored": false,
+          "settingsDifferenceExceptCountAndIdentity": {},
+          "highHoldSamples": 519,
+          "areas": {
+            "high": 519
+          },
+          "distinctPositions": 1,
+          "maxSampledDisplacementMeters": 0.0,
+          "firstPosition": "<4513.000000, 342.198364, 10240.000000>",
+          "lastPosition": "<4513.000000, 342.198364, 10240.000000>",
+          "firstSeconds": 45.008,
+          "lastSeconds": 104.945,
+          "heldHighStimulusValid": true,
+          "sourceSha256": "8781dd3c8a47c74d3fad488e48a8b6de13b34eb3e1227cc8e312f476717ddd52",
+          "limits": [
+            "Sampled high area does not prove continuous support.",
+            "Compared against prior64 anchorONrepeat; count is explicitly excluded for8 trial.",
+            "No NPC code change; this comparison does not isolate all B8FB-to-B93D package differences."
+          ]
+        },
+        "climbEndFailureCount": 0,
+        "unresolvedEgressStallCount": 0,
+        "repetitionsForThisCondition": 1
+      },
+      {
+        "label": "sixty-four",
+        "runtimeRunId": "runtime-20261031-123319",
+        "count": 64,
+        "seconds": 300,
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "missionSourcesSha256": "BC6C4E17269BCF2767D16BB1041BF3E1791B6961EC38784BB71D67254D5A5F8C",
+        "normalQuitVerified": true,
+        "terminalArrivals": 64,
+        "unresolvedTerminalAgents": [],
+        "missingHighFollow": [],
+        "highHoldWindow": [
+          45.039,
+          104.868
+        ],
+        "fallsLandedAndResumed": 81,
+        "admissionOutcomes": {
+          "ARRIVED": 10
+        },
+        "admissionViolations": [],
+        "egressOutcomes": {},
+        "egressViolations": [],
+        "physicalTransitions": 966,
+        "allPhysicalTransitionsMatched": true,
+        "foregroundMissionFrameMs": {
+          "samples": 2375,
+          "p50": 57.0,
+          "p95": 111.0,
+          "p99": 125.0
+        },
+        "functionalScenarioPassed": true,
+        "visualSmoothnessAccepted": false,
+        "performanceAccepted": false,
+        "stimulus": {
+          "runtimeRunId": "runtime-20261031-123319",
+          "count": 64,
+          "highPlayerAnchored": false,
+          "settingsDifferenceExceptCountAndIdentity": {},
+          "highHoldSamples": 459,
+          "areas": {
+            "high": 459
+          },
+          "distinctPositions": 31,
+          "maxSampledDisplacementMeters": 0.43837253874074844,
+          "firstPosition": "<4513.000000, 342.198364, 10240.000000>",
+          "lastPosition": "<4513.172363, 342.181091, 10239.964844>",
+          "firstSeconds": 45.039,
+          "lastSeconds": 104.868,
+          "heldHighStimulusValid": true,
+          "sourceSha256": "554a7932aa8f1a7673e91ccdce25bf4b36a295380d3ea6972d372815c0300c0c",
+          "limits": [
+            "Sampled high area does not prove continuous support.",
+            "Compared against prior64 anchorONrepeat; count is explicitly excluded for8 trial.",
+            "No NPC code change; this comparison does not isolate all B8FB-to-B93D package differences."
+          ]
+        },
+        "climbEndFailureCount": 0,
+        "unresolvedEgressStallCount": 0,
+        "repetitionsForThisCondition": 1
+      }
+    ]
+  },
+  "blockers": [
+    "One unanchored trial per count; not repeated final acceptance.",
+    "B8FB andB93D differ in package and scene; no single-patch causal claim.",
+    "Prior anchorON and currentOFF are separate runs with different physical trajectories.",
+    "Mission frame times include diagnostics and are not cost attribution or GPU timings.",
+    "Screenshots show scene context only; no temporal visual quality acceptance.",
+    "Supported animation-clock deployment, final visible smoothness and64cost attribution remain open."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/b93d-free-high-20261031.md",
+      "sha256": "a01104b7fa388d0d3336b5373e64222c86f91bd09e66f27529130867263166aa"
+    },
+    {
+      "path": "evidence/b93d-free-high-20261031.txt",
+      "sha256": "0f870ce8ccc1508ca0df2fd1095335e78c3e59199b2e27c87ae1dc80f6fc297a"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
