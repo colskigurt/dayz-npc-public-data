@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "animation-optical-carry-20261031-1850"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "runs",
+        "order",
+        "smoothnessMeasured",
+        "newRuntime",
+        "newPbo"
+      ],
+      "properties": {
+        "runs": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "order": {
+          "const": "A/B/B/A"
+        },
+        "smoothnessMeasured": {
+          "const": false
+        },
+        "newRuntime": {
+          "const": false
+        },
+        "newPbo": {
+          "const": false
+        }
+      }
+    }
+  }
+}
