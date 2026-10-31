@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "current-build-lineage-20261031-121827"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "trials",
+        "newPbo",
+        "commonPreserved",
+        "visualSmoothnessAccepted",
+        "performanceAccepted"
+      ],
+      "properties": {
+        "trials": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "newPbo": {
+          "const": false
+        },
+        "commonPreserved": {
+          "const": true
+        },
+        "visualSmoothnessAccepted": {
+          "const": false
+        },
+        "performanceAccepted": {
+          "const": false
+        }
+      }
+    }
+  }
+}
