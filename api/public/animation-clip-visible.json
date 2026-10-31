@@ -1,0 +1,660 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T10:18:38.292937+09:00",
+  "sourceRunId": "animation-clip-visible-20261031-101112",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "verificationStatus": {
+    "diagnostic": "same_run_clip_clock_and_cpu_video_frame_join_diagnosed",
+    "repeatAcceptance": false,
+    "lowerDecoderOutput": "unmeasured",
+    "visual": "measured_proxies_not_final_accepted",
+    "performance": "excluded_hook_overhead",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "runtimeRunId": "runtime-20261031-101131",
+    "normalQuitVerified": true,
+    "logicalAgents": 1,
+    "nativeParts": 8,
+    "repetitions": 1,
+    "observerSeconds": 8,
+    "runtimeSeconds": 120,
+    "rootCalls": 103,
+    "dispatchCalls": 103,
+    "clipKernelCalls": 103,
+    "opcodes": {
+      "2": 103
+    },
+    "resourceInteger64": 60,
+    "resourceFloat68": 2.0833332538604736,
+    "manifestClipIndex": 2,
+    "manifestFps": 60.0,
+    "manifestFrames": 126,
+    "manifestDurationSeconds": 2.0833333333333335,
+    "manifestPeriodResidualSeconds": -7.947285984855057e-08,
+    "wrappedPairs": 2,
+    "phaseAdvanceSeconds": 5.100019454956055,
+    "rootClockAdvanceSeconds": 5.100019454956055,
+    "hostSpanMs": 7883,
+    "phaseSecondsPerHostSecond": 0.6469642845307694,
+    "phaseVsRootMaxResidualSeconds": 0.0,
+    "commandFloatCEqualsRootDtCount": 103,
+    "rootContextDtMs": {
+      "p50": 50.00019073486328,
+      "p95": 50.00019073486328,
+      "p99": 50.00019073486328
+    },
+    "clipUnwrappedStepMs": {
+      "p50": 50.00019073486328,
+      "p95": 50.00019073486328,
+      "p99": 50.00019073486328
+    },
+    "clipEntryIntervalMs": {
+      "p50": 80.0,
+      "p95": 82.0,
+      "p99": 84.99
+    },
+    "errors": 0,
+    "droppedEvents": 0,
+    "numericOverrides": false,
+    "nativeHooks": true,
+    "gameCodeChanged": false,
+    "newPbo": false,
+    "videoRecorded": true,
+    "actualFpRegistersCaptured": false,
+    "actualLowerDecoderEntryCaptured": false,
+    "finalPoseOutputCaptured": false,
+    "gpuPresentedPhaseMeasured": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "captureMetadataSource": "obs-capture.json verified finalized; fixed inherited analyzer default",
+    "visibleJoin": {
+      "sourceRunId": "animation-clip-visible-20261031-101112",
+      "runtimeRunId": "runtime-20261031-101131",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "videoSha256": "8173b8e64a1b3b965fe5f0ff03e69cc69b41d4c926aa64eb7bd0916e9e1afc82",
+      "recordedVideo": true,
+      "videoFps": 60,
+      "videoFpsIsNotAnimationFps": true,
+      "logicalAgents": 1,
+      "nativeParts": 8,
+      "repetitions": 1,
+      "nativeClipCalls": 103,
+      "phaseSecondsPerHostSecond": 0.6469642845307694,
+      "phaseVsRootMaxResidualSeconds": 0.0,
+      "nativeClockRepeatedFromPriorRun": true,
+      "exactHudFrames": 883,
+      "testedVideoFrames": 900,
+      "segments": {
+        "1.0": {
+          "pairs": 150,
+          "duplicateHudPairs": 29,
+          "duplicateHudPairsWithBodyChange": 0,
+          "excluded": {}
+        },
+        "4.0": {
+          "pairs": 137,
+          "duplicateHudPairs": 32,
+          "duplicateHudPairsWithBodyChange": 0,
+          "excluded": {
+            "unmatched_or_ambiguous_HUD": 10
+          }
+        },
+        "7.0": {
+          "pairs": 129,
+          "duplicateHudPairs": 29,
+          "duplicateHudPairsWithBodyChange": 0,
+          "excluded": {
+            "unmatched_or_ambiguous_HUD": 21
+          }
+        },
+        "20.0": {
+          "pairs": 149,
+          "duplicateHudPairs": 30,
+          "duplicateHudPairsWithBodyChange": 0,
+          "excluded": {}
+        },
+        "30.0": {
+          "pairs": 149,
+          "duplicateHudPairs": 30,
+          "duplicateHudPairsWithBodyChange": 0,
+          "excluded": {}
+        }
+      },
+      "admittedPairs": 714,
+      "frameGap1Pairs": 710,
+      "thresholdSensitivityAll": {
+        "5": {
+          "changed_gt_1mm__body_changed": 712,
+          "small_0.1_to_1mm__body_changed": 2
+        },
+        "10": {
+          "changed_gt_1mm__body_changed": 712,
+          "small_0.1_to_1mm__body_changed": 2
+        },
+        "25": {
+          "changed_gt_1mm__body_changed": 712,
+          "small_0.1_to_1mm__body_changed": 2
+        },
+        "50": {
+          "changed_gt_1mm__body_changed": 712,
+          "small_0.1_to_1mm__body_changed": 1,
+          "small_0.1_to_1mm__body_held": 1
+        }
+      },
+      "thresholdSensitivityGap1": {
+        "5": {
+          "changed_gt_1mm__body_changed": 708,
+          "small_0.1_to_1mm__body_changed": 2
+        },
+        "10": {
+          "changed_gt_1mm__body_changed": 708,
+          "small_0.1_to_1mm__body_changed": 2
+        },
+        "25": {
+          "changed_gt_1mm__body_changed": 708,
+          "small_0.1_to_1mm__body_changed": 2
+        },
+        "50": {
+          "changed_gt_1mm__body_changed": 708,
+          "small_0.1_to_1mm__body_changed": 1,
+          "small_0.1_to_1mm__body_held": 1
+        }
+      },
+      "correlations": {
+        "-2": {
+          "all": {
+            "pairs": 714,
+            "correlation": -0.41860472290979717,
+            "queriedRmsChangeMetersP50": 0.020505003751117273,
+            "queriedRmsChangeMetersP95": 0.11401680290275935,
+            "visibleMaskChangePixelsP50": 1212,
+            "visibleMaskChangePixelsP95": 4285
+          },
+          "nativeFrameGap1": {
+            "pairs": 710,
+            "correlation": -0.4276555064495081,
+            "queriedRmsChangeMetersP50": 0.02029899707292621,
+            "queriedRmsChangeMetersP95": 0.11375442747573979,
+            "visibleMaskChangePixelsP50": 1210,
+            "visibleMaskChangePixelsP95": 4271
+          }
+        },
+        "-1": {
+          "all": {
+            "pairs": 714,
+            "correlation": -0.1592034934465097,
+            "queriedRmsChangeMetersP50": 0.02066337668839889,
+            "queriedRmsChangeMetersP95": 0.11432921770046361,
+            "visibleMaskChangePixelsP50": 1212,
+            "visibleMaskChangePixelsP95": 4285
+          },
+          "nativeFrameGap1": {
+            "pairs": 710,
+            "correlation": -0.17388021520204827,
+            "queriedRmsChangeMetersP50": 0.020516733564743345,
+            "queriedRmsChangeMetersP95": 0.1138481762502149,
+            "visibleMaskChangePixelsP50": 1210,
+            "visibleMaskChangePixelsP95": 4271
+          }
+        },
+        "0": {
+          "all": {
+            "pairs": 714,
+            "correlation": 0.943548547418232,
+            "queriedRmsChangeMetersP50": 0.02051798709263005,
+            "queriedRmsChangeMetersP95": 0.11508413603461311,
+            "visibleMaskChangePixelsP50": 1212,
+            "visibleMaskChangePixelsP95": 4285
+          },
+          "nativeFrameGap1": {
+            "pairs": 710,
+            "correlation": 0.9424225401114967,
+            "queriedRmsChangeMetersP50": 0.020505003751117273,
+            "queriedRmsChangeMetersP95": 0.11401680290275935,
+            "visibleMaskChangePixelsP50": 1210,
+            "visibleMaskChangePixelsP95": 4271
+          }
+        },
+        "1": {
+          "all": {
+            "pairs": 714,
+            "correlation": -0.1793036112127951,
+            "queriedRmsChangeMetersP50": 0.020742550851651137,
+            "queriedRmsChangeMetersP95": 0.11508413603461311,
+            "visibleMaskChangePixelsP50": 1212,
+            "visibleMaskChangePixelsP95": 4285
+          },
+          "nativeFrameGap1": {
+            "pairs": 710,
+            "correlation": -0.19185645512461777,
+            "queriedRmsChangeMetersP50": 0.020676834815802948,
+            "queriedRmsChangeMetersP95": 0.11401680290275935,
+            "visibleMaskChangePixelsP50": 1210,
+            "visibleMaskChangePixelsP95": 4271
+          }
+        },
+        "2": {
+          "all": {
+            "pairs": 714,
+            "correlation": -0.4345695174052162,
+            "queriedRmsChangeMetersP50": 0.020742550851651137,
+            "queriedRmsChangeMetersP95": 0.11634625320567911,
+            "visibleMaskChangePixelsP50": 1212,
+            "visibleMaskChangePixelsP95": 4285
+          },
+          "nativeFrameGap1": {
+            "pairs": 710,
+            "correlation": -0.44086743115291893,
+            "queriedRmsChangeMetersP50": 0.020676834815802948,
+            "queriedRmsChangeMetersP95": 0.11432921770046361,
+            "visibleMaskChangePixelsP50": 1210,
+            "visibleMaskChangePixelsP95": 4271
+          }
+        }
+      },
+      "cpuVideoExactHudJoin": true,
+      "nativeClipToExactVideoFrameJoin": false,
+      "gpuPresentMeasured": false,
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false,
+      "sourceHashes": {
+        "visible-frame-ids.json": "f7acdf0907162543886ed6a9c0344ee122f7bbfa82d497d646a319b8a421c79e",
+        "visible-clip-analysis.json": "af11008d3ea08c5c1972830c002d010cbb5812fe2b3655a872552afe0ffab488",
+        "visible-pose-alignment.json": "37ed7a0af1f8dc05140da19cfceae753533093f7d5f03a045054d88e7e494653",
+        "visible-frame-clock.tsv": "0ddf126add3901096ef1522bf654c7ae84f3a99cd5589046d447f3176ea50dd1",
+        "obs-capture.json": "01ae98c30dafae819aa198159fb2cce1fcfcc3659ca5033fa0e4988785e17b73",
+        "obs-capture.log": "fdd0cf7991c3afd046aa89453f17cbdba36edd1ce56abfb9c6849744625fb868"
+      },
+      "limits": [
+        "Exact frame/T/A match joins CPU records and captured HUD; body draw scheduling may differ.",
+        "Silhouette change and RMS thresholds are diagnostic proxies, not perceptual smoothness or optical joint tracking.",
+        "Same-run native clip operands are not assigned to exact video frame IDs.",
+        "5 selected3-second windows; not all120seconds, all14clips or64agents.",
+        "OBS and native hooks contaminate performance; no optimization claim."
+      ]
+    },
+    "callbackBoundaries": {
+      "sourceRunId": "animation-clip-visible-20261031-101112",
+      "runtimeRunId": "runtime-20261031-101131",
+      "scope": "710 admitted consecutive mission-frame pairs only; grouping by script A counter, not a proven exact native evaluation boundary",
+      "groups": {
+        "callback_counter_unchanged": {
+          "pairs": 525,
+          "dtMs": {
+            "p50": 32.00000000000003,
+            "p95": 35.00000000000014,
+            "p99": 36.999999999999034
+          },
+          "queriedRmsMillimeters": {
+            "p50": 24.1420082325394,
+            "p95": 119.47755913763635,
+            "p99": 140.21657239175968
+          },
+          "queriedRmsSpeedMetersPerSecond": {
+            "p50": 0.7418236471894044,
+            "p95": 19.17111431378361,
+            "p99": 22.70520540926506
+          },
+          "visibleMaskChangedPixels": {
+            "p50": 1402.0,
+            "p95": 4358.8,
+            "p99": 4919.5599999999995
+          },
+          "bodyHeldBelow10Pixels": 0
+        },
+        "callback_counter_advanced": {
+          "pairs": 185,
+          "dtMs": {
+            "p50": 6.999999999999673,
+            "p95": 29.000000000002757,
+            "p99": 32.00000000000003
+          },
+          "queriedRmsMillimeters": {
+            "p50": 11.673156899485237,
+            "p95": 32.02344347182301,
+            "p99": 41.19825860642782
+          },
+          "queriedRmsSpeedMetersPerSecond": {
+            "p50": 1.5476676583024447,
+            "p95": 3.830427771669265,
+            "p99": 5.965568120036506
+          },
+          "visibleMaskChangedPixels": {
+            "p50": 726.0,
+            "p95": 1724.7999999999988,
+            "p99": 2119.7599999999993
+          },
+          "bodyHeldBelow10Pixels": 0
+        }
+      },
+      "selectedPairs": {
+        "callback_counter_unchanged": [
+          {
+            "firstFrame": 370,
+            "lastFrame": 371,
+            "counterAdvance": 0,
+            "dt": 0.020999999999999908,
+            "rms": 0.05080503821472827,
+            "speed": 2.41928753403469,
+            "pixels": 3138
+          },
+          {
+            "firstFrame": 372,
+            "lastFrame": 373,
+            "counterAdvance": 0,
+            "dt": 0.019000000000000128,
+            "rms": 0.06926461400190818,
+            "speed": 3.645506000100406,
+            "pixels": 3264
+          },
+          {
+            "firstFrame": 373,
+            "lastFrame": 374,
+            "counterAdvance": 0,
+            "dt": 0.007000000000000561,
+            "rms": 0.07094339890128376,
+            "speed": 10.134771271611154,
+            "pixels": 3136
+          }
+        ],
+        "callback_counter_advanced": [
+          {
+            "firstFrame": 371,
+            "lastFrame": 372,
+            "counterAdvance": 1,
+            "dt": 0.019999999999999574,
+            "rms": 0.0268041808803527,
+            "speed": 1.3402090440176637,
+            "pixels": 1848
+          },
+          {
+            "firstFrame": 375,
+            "lastFrame": 376,
+            "counterAdvance": 1,
+            "dt": 0.007000000000000561,
+            "rms": 0.014485827947802378,
+            "speed": 2.0694039925430308,
+            "pixels": 959
+          },
+          {
+            "firstFrame": 379,
+            "lastFrame": 380,
+            "counterAdvance": 1,
+            "dt": 0.006999999999999673,
+            "rms": 0.01910769408728677,
+            "speed": 2.7296705838982374,
+            "pixels": 935
+          }
+        ]
+      },
+      "sourceHashes": {
+        "visible-pose-alignment.json": "37ed7a0af1f8dc05140da19cfceae753533093f7d5f03a045054d88e7e494653",
+        "visible-frame-clock.tsv": "0ddf126add3901096ef1522bf654c7ae84f3a99cd5589046d447f3176ea50dd1"
+      },
+      "limits": [
+        "Counter advance is script update evidence; it is not directly captured graph-evaluation identity.",
+        "RMS scalar magnitude cannot distinguish backtracking, intended acceleration or rotational curvature.",
+        "Observational grouping, not causal proof or an optimization result."
+      ],
+      "visualAccepted": false,
+      "goalComplete": false
+    },
+    "exploratoryLag": {
+      "sourceRunId": "animation-clip-visible-20261031-101112",
+      "exploratory": true,
+      "offsetMeaning": "0=current frame counter changed; 1=counter changed one mission frame earlier; negative=future counter; not native evaluation identity",
+      "offsets": {
+        "-2": {
+          "counter_changed": {
+            "pairs": 182,
+            "rmsMillimeters": {
+              "p50": 96.54223285472474,
+              "p95": 127.66960573056477,
+              "p99": 141.37286240296638
+            },
+            "visiblePixels": {
+              "p50": 3723.5,
+              "p95": 4680.65,
+              "p99": 5048.0
+            },
+            "frameDtMs": {
+              "p50": 6.000000000000227,
+              "p95": 32.950000000001175,
+              "p99": 36.38000000000047
+            },
+            "poseStepsOver75mm": 146
+          },
+          "counter_unchanged": {
+            "pairs": 528,
+            "rmsMillimeters": {
+              "p50": 17.80161439103751,
+              "p95": 34.20954070793847,
+              "p99": 100.17954796197782
+            },
+            "visiblePixels": {
+              "p50": 1072.0,
+              "p95": 1849.3,
+              "p99": 3751.150000000003
+            },
+            "frameDtMs": {
+              "p50": 32.00000000000003,
+              "p95": 35.00000000000014,
+              "p99": 36.000000000001364
+            },
+            "poseStepsOver75mm": 12
+          }
+        },
+        "-1": {
+          "counter_changed": {
+            "pairs": 184,
+            "rmsMillimeters": {
+              "p50": 20.161537277834142,
+              "p95": 84.3795637839106,
+              "p99": 139.91995340385083
+            },
+            "visiblePixels": {
+              "p50": 1207.0,
+              "p95": 3433.0999999999995,
+              "p99": 4032.579999999999
+            },
+            "frameDtMs": {
+              "p50": 33.99999999999892,
+              "p95": 35.84999999999567,
+              "p99": 36.99999999999933
+            },
+            "poseStepsOver75mm": 12
+          },
+          "counter_unchanged": {
+            "pairs": 526,
+            "rmsMillimeters": {
+              "p50": 21.16505594672178,
+              "p95": 118.15654366913034,
+              "p99": 137.23616451182716
+            },
+            "visiblePixels": {
+              "p50": 1217.5,
+              "p95": 4358.75,
+              "p99": 4918.75
+            },
+            "frameDtMs": {
+              "p50": 7.999999999999119,
+              "p95": 34.000000000000696,
+              "p99": 36.000000000001144
+            },
+            "poseStepsOver75mm": 146
+          }
+        },
+        "0": {
+          "counter_changed": {
+            "pairs": 185,
+            "rmsMillimeters": {
+              "p50": 11.673156899485237,
+              "p95": 32.02344347182301,
+              "p99": 41.19825860642782
+            },
+            "visiblePixels": {
+              "p50": 726.0,
+              "p95": 1724.7999999999988,
+              "p99": 2119.7599999999993
+            },
+            "frameDtMs": {
+              "p50": 6.999999999999673,
+              "p95": 29.000000000002757,
+              "p99": 32.00000000000003
+            },
+            "poseStepsOver75mm": 0
+          },
+          "counter_unchanged": {
+            "pairs": 525,
+            "rmsMillimeters": {
+              "p50": 24.1420082325394,
+              "p95": 119.47755913763635,
+              "p99": 140.21657239175968
+            },
+            "visiblePixels": {
+              "p50": 1402.0,
+              "p95": 4358.8,
+              "p99": 4919.5599999999995
+            },
+            "frameDtMs": {
+              "p50": 32.00000000000003,
+              "p95": 35.00000000000014,
+              "p99": 36.999999999999034
+            },
+            "poseStepsOver75mm": 158
+          }
+        },
+        "1": {
+          "counter_changed": {
+            "pairs": 183,
+            "rmsMillimeters": {
+              "p50": 20.4057367383129,
+              "p95": 69.44369910608276,
+              "p99": 110.62528518988147
+            },
+            "visiblePixels": {
+              "p50": 1197.0,
+              "p95": 2769.1000000000004,
+              "p99": 3819.600000000005
+            },
+            "frameDtMs": {
+              "p50": 33.00000000000125,
+              "p95": 35.000000000003695,
+              "p99": 36.36000000000054
+            },
+            "poseStepsOver75mm": 9
+          },
+          "counter_unchanged": {
+            "pairs": 527,
+            "rmsMillimeters": {
+              "p50": 20.51798709263005,
+              "p95": 119.17301526268098,
+              "p99": 140.2147955057186
+            },
+            "visiblePixels": {
+              "p50": 1216.0,
+              "p95": 4344.4,
+              "p99": 4917.9400000000005
+            },
+            "frameDtMs": {
+              "p50": 7.999999999999119,
+              "p95": 34.99999999999961,
+              "p99": 36.000000000001364
+            },
+            "poseStepsOver75mm": 149
+          }
+        },
+        "2": {
+          "counter_changed": {
+            "pairs": 183,
+            "rmsMillimeters": {
+              "p50": 97.35479611452124,
+              "p95": 134.358888485518,
+              "p99": 145.03950957759145
+            },
+            "visiblePixels": {
+              "p50": 3765.0,
+              "p95": 4679.3,
+              "p99": 5047.000000000001
+            },
+            "frameDtMs": {
+              "p50": 6.000000000000227,
+              "p95": 30.89999999999928,
+              "p99": 33.99999999999924
+            },
+            "poseStepsOver75mm": 149
+          },
+          "counter_unchanged": {
+            "pairs": 527,
+            "rmsMillimeters": {
+              "p50": 17.789108147028234,
+              "p95": 33.226870754333646,
+              "p99": 81.65302678867518
+            },
+            "visiblePixels": {
+              "p50": 1068.0,
+              "p95": 1809.1999999999998,
+              "p99": 3322.460000000001
+            },
+            "frameDtMs": {
+              "p50": 32.00000000000003,
+              "p95": 35.00000000000014,
+              "p99": 36.999999999999034
+            },
+            "poseStepsOver75mm": 9
+          }
+        }
+      },
+      "notCausalProof": true,
+      "goalComplete": false
+    },
+    "pacing": {
+      "steady": {
+        "frames": 1999,
+        "foregroundFrames": 1999,
+        "foregroundFraction": 1.0,
+        "missionFrameMs": {
+          "p50": 20.0,
+          "p95": 35.0,
+          "p99": 36.0
+        },
+        "hostCallbackHz": {
+          "minimum": 12.9644309202956,
+          "median": 12.9644309202956,
+          "maximum": 12.9644309202956
+        },
+        "nativeClockSecondsPerWallSecond": {
+          "minimum": 0.6482133633364872,
+          "median": 0.6482133633364872,
+          "maximum": 0.6482133633364872
+        }
+      }
+    }
+  },
+  "blockers": [
+    "Stored operands are linked by exact entry/caller and runtime context checks; FP argument registers themselves were not sampled.",
+    "Static dataflow connects command+8 to resource+64 scaling and downstream integer-index/adjacent-key interpolation. Lower decoder was not dynamically hooked.",
+    "Matching converted run duration/FPS plus wrapped progression supports sample-time seconds; this is not proof of GPU or displayed-frame smoothness.",
+    "Entry-only thread scope has no return hook; dispatcher validates evaluator ownership and copied clock before admitting sample callers.",
+    "No animation fix, 8/64 functional rerun or performance optimization was executed.",
+    "No supported evaluation/reset timing fix established;64function/cost work remains separate."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-clip-visible-20261031.md",
+      "sha256": "626117d071cabc62e8bec8eb3f713d136ac9abda38bac3859dabfcbe4ab39332"
+    },
+    {
+      "path": "evidence/animation-clip-visible-20261031.txt",
+      "sha256": "c588fe4f8dca75410e4be77ea33bae95f678d4022a1f2f37493ea2d237ca5e8d"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

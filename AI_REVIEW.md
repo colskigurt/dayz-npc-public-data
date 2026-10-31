@@ -1,3 +1,5 @@
+> 최신 실제 영상 진단(2026-10-31): 883/900 HUD프레임 일치,714 CPU/화면 쌍의 변화량 상관0.943549. 클립 시간0.646964배 진행 및 주기적 큰 포즈 step 관측. 정확한 native↔영상 frame 연결·수정·64수용은 미완료다. [조건·선정 근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-clip-visible-20261031.md). 이전 기록은 아래에 보존한다.
+
 > 최신 클립 시간 진단(2026-10-31): root/dispatcher/clip kernel 각100회 연결. 클립 시간은 실제7.922초 동안4.950초 진행(0.624845배),root 증가량과 정확히 일치했다. 실제 표시·수정 효과·64비용은 미수용이다. [조건·선정 근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-clip-consumer-20261031.md). 이전 기록은 아래에 보존한다.
 
 > 최신 실제evaluator 시간 문맥(2026-10-31): 선택root 진입100회에서 약50ms dt와호출간격 중앙값80ms,문맥시계/host0.628을 확인했다. 최종clip/표시시간·지원제어·수정효과는 미완료다. [조건·선정이벤트·관찰기코드](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-root-consumer-20261031.md). 이전 기록은 아래에 보존한다.
