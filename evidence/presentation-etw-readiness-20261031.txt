@@ -1,0 +1,75 @@
+Tool readiness only. Actual ETW preflight was denied; no graphics CSV exists. No game runtime or visual/performance success.
+{
+  "sourceRunId": "presentation-etw-readiness-20261031-1720",
+  "sourceRuntimeRunId": null,
+  "buildId": "not_executed",
+  "tool": {
+    "tool": "PresentMon",
+    "version": "2.6.0",
+    "releaseUrl": "https://github.com/GameTechDev/PresentMon/releases/tag/v2.6.0",
+    "assetUrl": "https://github.com/GameTechDev/PresentMon/releases/download/v2.6.0/PresentMon-2.6.0-x64.exe",
+    "expectedBytes": 980320,
+    "actualBytes": 980320,
+    "sha256": "b2a706bc6ad475749e3b7e3409263aa1e6906d45bdcf993f6dbc0f660188f1af",
+    "releaseDigestMatched": true,
+    "authenticodeStatus": "Valid",
+    "signer": "CN=Intel Corporation, O=Intel Corporation, S=California, C=US",
+    "licenseId": "MIT",
+    "licenseUrl": "https://github.com/GameTechDev/PresentMon/blob/v2.6.0/LICENSE.txt"
+  },
+  "preflight": {
+    "exitCode": 6,
+    "processExited": true,
+    "csvCreated": false,
+    "observedFailure": "ETW trace session access denied",
+    "isAdministrator": false,
+    "performanceLogUsers": false,
+    "gameLaunched": false
+  },
+  "parserChecks": {
+    "passed": true,
+    "checks": [
+      "PID isolation",
+      "separate swap chains",
+      "NA not zero",
+      "all-NA remains unmeasured",
+      "QPC unit conversion",
+      "non-finite rejection"
+    ],
+    "scope": "Synthetic parser checks only; no graphics frame measurement",
+    "realCapture": false
+  },
+  "manualPreparation": {
+    "scriptSha256": "7056ffe0913b6afc49977459c776f2e205d3e2d1ff5bb576c483a3aad88e7bfb",
+    "scriptParsePassed": true,
+    "shortcutCreated": true,
+    "shortcutLaunched": false,
+    "singleUse": true,
+    "requiresUserUacApproval": true,
+    "captureSeconds": 30
+  },
+  "qpcFrequency": 10000000,
+  "displayMetricsMeasured": false,
+  "frameP50Ms": null,
+  "frameP95Ms": null,
+  "frameP99Ms": null,
+  "gpuPoseMeasured": false,
+  "permissionStatus": "user_action_pending_at_report_time",
+  "limits": [
+    "Portable tool acquisition and parser self-tests are not measurement success.",
+    "ETW access failed in this execution context; no frame CSV or graphics timing was obtained.",
+    "PresentMon frame CPU/display delta metrics are not NPC skeletal animation errors.",
+    "Process/frame GPU busy would not isolate NPC skinning or animation evaluation.",
+    "PID/swap-chain filtering and NA preservation must be verified on actual data after permission is available.",
+    "One-use administrator script is prepared, not executed; no privileges/groups/services were changed."
+  ],
+  "next": [
+    "User must launch prepared shortcut and approve Windows UAC themselves.",
+    "After actual ready state, prepare fresh PID/profile-bound30sec capture request for an isolated one-agent run.",
+    "Validate actual CSV process/swap-chain/columns/data completeness before correlating with CPU/native QPC.",
+    "Continue separating visible pose quality from global presentation cadence and64 costs."
+  ],
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "goalComplete": false
+}
