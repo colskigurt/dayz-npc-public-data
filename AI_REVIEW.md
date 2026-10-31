@@ -1,3 +1,5 @@
+> 최신 입력·표시 순서 진단(2026-10-31): 실제 saved dt합/native시간1.000029·11992개 누적산술오차0.직전script상관을잘못된엔진입력으로확정할수없다.독립영상recurrence도기본3.13초→후보2.10초/4.17초패턴을지지하지만부드러움·지원배포·8/64기능·성능은미완료다.[조건·한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-input-order-20261031.md). 이전 기록은 아래 보존한다.
+
 > 최신 역순 반복(2026-10-31): A/B/B/A·조건당2회에서 기본 clock약0.654~0.659배, 후보약1.000배로 시간 보존 효과를 재현했다. 후보 step은 직전 script interval과강하게연관되지만 인과확정·시각부드러움·지원배포·8/64회귀·성능수용은 미완료다. [조건·수치·한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-residual-repeat-20261031.md). 이전 기록은 아래 보존한다.
 
 > 최신 잔여시간 인과시험(2026-10-31): 기본 clock0.659441→후보1.000003, 독립 pose 진행0.657746→0.999111. 조건당1회·논리1명/8파트이며, 평가 횟수는약52% 증가했다. 시각 부드러움·지원 배포 경로·8/64회귀·성능 수용은 미완료다. [조건·수치·한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-residual-carry-20261031.md). 이전 기록은 아래 보존한다.

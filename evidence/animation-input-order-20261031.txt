@@ -1,0 +1,1130 @@
+Selection: inputdt and accumulator aggregate; first8/last8 native input entries without pointers; CPU/video aggregate; full4video recurrence summary. No raw video, process IDs, runtime pointers or local paths. Neither script-lag correlation nor silhouette period provesGPU timing/smoothness.
+
+{
+  "input": {
+    "sourceRunId": "animation-input-order-20261031-113830",
+    "runtimeRunId": "runtime-20261031-113849",
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "nativeEntries": 12000,
+    "nativeFrames": 1500,
+    "orderedCpuFrames": 1472,
+    "eightPartInputSpreadMs": 0.0,
+    "actualSavedInputDtRead": true,
+    "actualFpRegisterCaptured": false,
+    "savedDtStackOffset": "0x88",
+    "numericOverrides": false,
+    "accumulatorConservationErrorMs": {
+      "n": 11992,
+      "p50": 0.0,
+      "p95": 0.0,
+      "p99": 0.0,
+      "maximum": 0.0
+    },
+    "savedInputDtMs": {
+      "n": 1472,
+      "p50": 19.999999552965164,
+      "p95": 35.00000014901161,
+      "p99": 37.00000047683716,
+      "maximum": 37.99999877810478
+    },
+    "nativeIntervalMs": {
+      "n": 1471,
+      "p50": 19.9728,
+      "p95": 36.300349999999995,
+      "p99": 41.23858,
+      "maximum": 45.1762
+    },
+    "inputSumPerNativeWall": 1.0000291164292268,
+    "inputVsSameNativeIntervalCorrelation": 0.9933537726079402,
+    "scriptIntervalOffsets": {
+      "-2": {
+        "pairs": 1472,
+        "correlation": -0.9756396209485244,
+        "rmsResidualMs": 26.746622523726437
+      },
+      "-1": {
+        "pairs": 1472,
+        "correlation": 0.9779841561891012,
+        "rmsResidualMs": 2.8277064996221664
+      },
+      "0": {
+        "pairs": 1472,
+        "correlation": -0.9878622426831326,
+        "rmsResidualMs": 26.832031296724303
+      },
+      "1": {
+        "pairs": 1472,
+        "correlation": 0.9987027514208061,
+        "rmsResidualMs": 0.7027700345098451
+      },
+      "2": {
+        "pairs": 1472,
+        "correlation": -0.9881617998586287,
+        "rmsResidualMs": 26.83477822104548
+      }
+    },
+    "graphPlusAccumulatorPerWall": {
+      "p50": 0.6506760590487682,
+      "p95": 0.6506763178541076,
+      "p99": 0.650676328796888,
+      "maximum": 0.6506763315325831
+    },
+    "sourcePosePhasePerMission": 0.6506922981127325,
+    "limits": [
+      "Saved XMM6 stack spill validated by callsite bytes, caller return and accumulator arithmetic; not direct FP register capture.",
+      "Positive lag compares input with earlier script interval; serial correlation prevents unique delay attribution from correlation alone.",
+      "Previous-frame delta can be intentional engine scheduling and is not itself proof of a bug.",
+      "No GPU/Present clock, native parameter setter, or visible smoothness acceptance.",
+      "One fixed run logicalNPC/eight parts, not8/64AI regression."
+    ],
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "supportedDeployableFix": false,
+    "goalComplete": false
+  },
+  "selectedInputEntries": [
+    {
+      "cpuFrame": 353,
+      "missionSeconds": 7.149,
+      "nativeSequence": 128,
+      "savedInputDtMs": 35.00000014901161,
+      "hadEvaluation": true,
+      "preResetTotal": 0.07999999821186066,
+      "expectedTotal": 0.07999999821186066
+    },
+    {
+      "cpuFrame": 354,
+      "missionSeconds": 7.184,
+      "nativeSequence": 134,
+      "savedInputDtMs": 4.999999888241291,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "expectedTotal": 0.004999999888241291
+    },
+    {
+      "cpuFrame": 355,
+      "missionSeconds": 7.189,
+      "nativeSequence": 142,
+      "savedInputDtMs": 35.00000014901161,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "expectedTotal": 0.03999999910593033
+    },
+    {
+      "cpuFrame": 356,
+      "missionSeconds": 7.224,
+      "nativeSequence": 150,
+      "savedInputDtMs": 4.999999888241291,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "expectedTotal": 0.044999998062849045
+    },
+    {
+      "cpuFrame": 357,
+      "missionSeconds": 7.229,
+      "nativeSequence": 160,
+      "savedInputDtMs": 35.00000014901161,
+      "hadEvaluation": true,
+      "preResetTotal": 0.07999999821186066,
+      "expectedTotal": 0.07999999821186066
+    },
+    {
+      "cpuFrame": 358,
+      "missionSeconds": 7.264,
+      "nativeSequence": 166,
+      "savedInputDtMs": 6.000000052154064,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "expectedTotal": 0.006000000052154064
+    },
+    {
+      "cpuFrame": 359,
+      "missionSeconds": 7.27,
+      "nativeSequence": 174,
+      "savedInputDtMs": 34.00000184774399,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "expectedTotal": 0.04000000283122063
+    },
+    {
+      "cpuFrame": 360,
+      "missionSeconds": 7.306,
+      "nativeSequence": 182,
+      "savedInputDtMs": 7.000000216066837,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "expectedTotal": 0.04700000211596489
+    },
+    {
+      "cpuFrame": 1817,
+      "missionSeconds": 36.437,
+      "nativeSequence": 11838,
+      "savedInputDtMs": 34.00000184774399,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "expectedTotal": 0.04000000283122063
+    },
+    {
+      "cpuFrame": 1818,
+      "missionSeconds": 36.473,
+      "nativeSequence": 11846,
+      "savedInputDtMs": 6.000000052154064,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "expectedTotal": 0.046000003814697266
+    },
+    {
+      "cpuFrame": 1819,
+      "missionSeconds": 36.478,
+      "nativeSequence": 11856,
+      "savedInputDtMs": 34.00000184774399,
+      "hadEvaluation": true,
+      "preResetTotal": 0.08000000566244125,
+      "expectedTotal": 0.08000000566244125
+    },
+    {
+      "cpuFrame": 1820,
+      "missionSeconds": 36.512,
+      "nativeSequence": 11862,
+      "savedInputDtMs": 7.000000216066837,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "expectedTotal": 0.007000000216066837
+    },
+    {
+      "cpuFrame": 1821,
+      "missionSeconds": 36.518,
+      "nativeSequence": 11870,
+      "savedInputDtMs": 32.999999821186066,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "expectedTotal": 0.03999999910593033
+    },
+    {
+      "cpuFrame": 1822,
+      "missionSeconds": 36.552,
+      "nativeSequence": 11878,
+      "savedInputDtMs": 6.000000052154064,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "expectedTotal": 0.04600000008940697
+    },
+    {
+      "cpuFrame": 1823,
+      "missionSeconds": 36.558,
+      "nativeSequence": 11888,
+      "savedInputDtMs": 34.00000184774399,
+      "hadEvaluation": true,
+      "preResetTotal": 0.07999999821186066,
+      "expectedTotal": 0.07999999821186066
+    },
+    {
+      "cpuFrame": 1824,
+      "missionSeconds": 36.592,
+      "nativeSequence": 11894,
+      "savedInputDtMs": 7.000000216066837,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "expectedTotal": 0.007000000216066837
+    }
+  ],
+  "queryVideo": {
+    "runtimeRunId": "runtime-20261031-113849",
+    "hudExactFrames": 540,
+    "hudTotalFrames": 540,
+    "activeConsecutivePairs": 444,
+    "cpuVideoIncrementCorrelation": 0.9432768082830507,
+    "missionPacing": {
+      "n": 1472,
+      "p50": 20.0,
+      "p95": 35.0,
+      "p99": 37.0,
+      "maximum": 38.0
+    },
+    "pacingScope": "Native active trimmed window,oneNPC observer+recording; notGPU/64performance",
+    "limits": [
+      "Exact HUD frame/T/A identification joins observations, but HUD and body draw scheduling could differ.",
+      "Silhouette changed pixels are not named-joint optical tracking; natural pose curvature affects both measures.",
+      "Lag correlations are observational, correlated frame pairs are not independent trials.",
+      "No GPU/Present timestamp, native instruction causality or perceptual smoothness acceptance."
+    ],
+    "goalComplete": false
+  },
+  "visibleRecurrence": {
+    "sourceRunId": "animation-input-order-20261031-113830",
+    "analysis": "Exploratory independent video recurrence, no CPU period used to select peaks",
+    "runs": [
+      {
+        "runtimeRunId": "runtime-20261031-110449",
+        "mode": "baseline30",
+        "videoSha256": "3e9f5ea7d9a98d233f62d6e59e2fbc6546f23d609508ec5d2c3c85339ea5f283",
+        "windowVideoSeconds": [
+          5,
+          23
+        ],
+        "sampleFps": 30,
+        "actor": {
+          "140": {
+            "variablePixels": 8460,
+            "minima": [
+              {
+                "lagVideoFrames": 94,
+                "lagSeconds": 3.1333333333333333,
+                "meanChangedPixels": 1032.645739910314,
+                "meanFractionOfVariablePixels": 0.12206214419743663,
+                "pairs": 446
+              },
+              {
+                "lagVideoFrames": 48,
+                "lagSeconds": 1.6,
+                "meanChangedPixels": 1797.1666666666667,
+                "meanFractionOfVariablePixels": 0.21243104806934596,
+                "pairs": 492
+              },
+              {
+                "lagVideoFrames": 24,
+                "lagSeconds": 0.8,
+                "meanChangedPixels": 1818.610465116279,
+                "meanFractionOfVariablePixels": 0.21496577601847272,
+                "pairs": 516
+              }
+            ]
+          },
+          "150": {
+            "variablePixels": 8214,
+            "minima": [
+              {
+                "lagVideoFrames": 94,
+                "lagSeconds": 3.1333333333333333,
+                "meanChangedPixels": 973.4439461883408,
+                "meanFractionOfVariablePixels": 0.11851034163481139,
+                "pairs": 446
+              },
+              {
+                "lagVideoFrames": 48,
+                "lagSeconds": 1.6,
+                "meanChangedPixels": 1737.94918699187,
+                "meanFractionOfVariablePixels": 0.21158378220013027,
+                "pairs": 492
+              },
+              {
+                "lagVideoFrames": 24,
+                "lagSeconds": 0.8,
+                "meanChangedPixels": 1753.6821705426357,
+                "meanFractionOfVariablePixels": 0.21349916855887943,
+                "pairs": 516
+              }
+            ]
+          },
+          "160": {
+            "variablePixels": 7891,
+            "minima": [
+              {
+                "lagVideoFrames": 94,
+                "lagSeconds": 3.1333333333333333,
+                "meanChangedPixels": 884.0695067264573,
+                "meanFractionOfVariablePixels": 0.11203516749796696,
+                "pairs": 446
+              },
+              {
+                "lagVideoFrames": 48,
+                "lagSeconds": 1.6,
+                "meanChangedPixels": 1599.0995934959349,
+                "meanFractionOfVariablePixels": 0.202648535482947,
+                "pairs": 492
+              },
+              {
+                "lagVideoFrames": 24,
+                "lagSeconds": 0.8,
+                "meanChangedPixels": 1601.4418604651162,
+                "meanFractionOfVariablePixels": 0.2029453631307966,
+                "pairs": 516
+              }
+            ]
+          }
+        },
+        "background": {
+          "140": {
+            "variablePixels": 311,
+            "minima": [
+              {
+                "lagVideoFrames": 42,
+                "lagSeconds": 1.4,
+                "meanChangedPixels": 1.6004016064257027,
+                "meanFractionOfVariablePixels": 0.005145985872751456,
+                "pairs": 498
+              },
+              {
+                "lagVideoFrames": 84,
+                "lagSeconds": 2.8,
+                "meanChangedPixels": 2.0548245614035086,
+                "meanFractionOfVariablePixels": 0.006607152930557906,
+                "pairs": 456
+              },
+              {
+                "lagVideoFrames": 126,
+                "lagSeconds": 4.2,
+                "meanChangedPixels": 2.5217391304347827,
+                "meanFractionOfVariablePixels": 0.00810848594995107,
+                "pairs": 414
+              }
+            ]
+          },
+          "150": {
+            "variablePixels": 259,
+            "minima": [
+              {
+                "lagVideoFrames": 25,
+                "lagSeconds": 0.8333333333333334,
+                "meanChangedPixels": 1.0194174757281553,
+                "meanFractionOfVariablePixels": 0.003935974809761217,
+                "pairs": 515
+              },
+              {
+                "lagVideoFrames": 68,
+                "lagSeconds": 2.2666666666666666,
+                "meanChangedPixels": 1.146186440677966,
+                "meanFractionOfVariablePixels": 0.0044254302728879,
+                "pairs": 472
+              },
+              {
+                "lagVideoFrames": 65,
+                "lagSeconds": 2.1666666666666665,
+                "meanChangedPixels": 1.1473684210526316,
+                "meanFractionOfVariablePixels": 0.004429993903678114,
+                "pairs": 475
+              }
+            ]
+          },
+          "160": {
+            "variablePixels": 194,
+            "minima": [
+              {
+                "lagVideoFrames": 26,
+                "lagSeconds": 0.8666666666666667,
+                "meanChangedPixels": 0.7276264591439688,
+                "meanFractionOfVariablePixels": 0.003750651851257571,
+                "pairs": 514
+              },
+              {
+                "lagVideoFrames": 30,
+                "lagSeconds": 1.0,
+                "meanChangedPixels": 0.7294117647058823,
+                "meanFractionOfVariablePixels": 0.003759854457246816,
+                "pairs": 510
+              },
+              {
+                "lagVideoFrames": 33,
+                "lagSeconds": 1.1,
+                "meanChangedPixels": 0.7317554240631163,
+                "meanFractionOfVariablePixels": 0.003771935175583074,
+                "pairs": 507
+              }
+            ]
+          }
+        },
+        "sourceSha256": "06eb27e29718af2f8534dde08053676ff8a8b9dc851cd45fd71555e65be247a5"
+      },
+      {
+        "runtimeRunId": "runtime-20261031-111204",
+        "mode": "candidate30",
+        "videoSha256": "192367bb90f0e39633055b13644cd6b3222994ac3a9b05e6e054c3514013f836",
+        "windowVideoSeconds": [
+          5,
+          23
+        ],
+        "sampleFps": 30,
+        "actor": {
+          "140": {
+            "variablePixels": 8390,
+            "minima": [
+              {
+                "lagVideoFrames": 125,
+                "lagSeconds": 4.166666666666667,
+                "meanChangedPixels": 423.0457831325301,
+                "meanFractionOfVariablePixels": 0.050422620158823615,
+                "pairs": 415
+              },
+              {
+                "lagVideoFrames": 63,
+                "lagSeconds": 2.1,
+                "meanChangedPixels": 589.8050314465409,
+                "meanFractionOfVariablePixels": 0.07029857347396196,
+                "pairs": 477
+              },
+              {
+                "lagVideoFrames": 156,
+                "lagSeconds": 5.2,
+                "meanChangedPixels": 1783.2005208333333,
+                "meanFractionOfVariablePixels": 0.21253879866905045,
+                "pairs": 384
+              }
+            ]
+          },
+          "150": {
+            "variablePixels": 8138,
+            "minima": [
+              {
+                "lagVideoFrames": 125,
+                "lagSeconds": 4.166666666666667,
+                "meanChangedPixels": 394.421686746988,
+                "meanFractionOfVariablePixels": 0.048466660942121896,
+                "pairs": 415
+              },
+              {
+                "lagVideoFrames": 63,
+                "lagSeconds": 2.1,
+                "meanChangedPixels": 551.5744234800839,
+                "meanFractionOfVariablePixels": 0.0677776386679877,
+                "pairs": 477
+              },
+              {
+                "lagVideoFrames": 156,
+                "lagSeconds": 5.2,
+                "meanChangedPixels": 1724.9817708333333,
+                "meanFractionOfVariablePixels": 0.21196630263373473,
+                "pairs": 384
+              }
+            ]
+          },
+          "160": {
+            "variablePixels": 7802,
+            "minima": [
+              {
+                "lagVideoFrames": 125,
+                "lagSeconds": 4.166666666666667,
+                "meanChangedPixels": 358.0240963855422,
+                "meanFractionOfVariablePixels": 0.045888758829215864,
+                "pairs": 415
+              },
+              {
+                "lagVideoFrames": 63,
+                "lagSeconds": 2.1,
+                "meanChangedPixels": 502.54088050314465,
+                "meanFractionOfVariablePixels": 0.0644118021665143,
+                "pairs": 477
+              },
+              {
+                "lagVideoFrames": 78,
+                "lagSeconds": 2.6,
+                "meanChangedPixels": 1577.0064935064936,
+                "meanFractionOfVariablePixels": 0.20212849186189358,
+                "pairs": 462
+              }
+            ]
+          }
+        },
+        "background": {
+          "140": {
+            "variablePixels": 361,
+            "minima": [
+              {
+                "lagVideoFrames": 41,
+                "lagSeconds": 1.3666666666666667,
+                "meanChangedPixels": 1.8857715430861723,
+                "meanFractionOfVariablePixels": 0.005223743886665297,
+                "pairs": 499
+              },
+              {
+                "lagVideoFrames": 83,
+                "lagSeconds": 2.7666666666666666,
+                "meanChangedPixels": 2.3807439824945296,
+                "meanFractionOfVariablePixels": 0.006594858677270165,
+                "pairs": 457
+              },
+              {
+                "lagVideoFrames": 124,
+                "lagSeconds": 4.133333333333334,
+                "meanChangedPixels": 2.8677884615384617,
+                "meanFractionOfVariablePixels": 0.007944012358832304,
+                "pairs": 416
+              }
+            ]
+          },
+          "150": {
+            "variablePixels": 271,
+            "minima": [
+              {
+                "lagVideoFrames": 38,
+                "lagSeconds": 1.2666666666666666,
+                "meanChangedPixels": 1.1454183266932272,
+                "meanFractionOfVariablePixels": 0.004226635891856927,
+                "pairs": 502
+              },
+              {
+                "lagVideoFrames": 65,
+                "lagSeconds": 2.1666666666666665,
+                "meanChangedPixels": 1.2442105263157894,
+                "meanFractionOfVariablePixels": 0.0045911827539328025,
+                "pairs": 475
+              },
+              {
+                "lagVideoFrames": 95,
+                "lagSeconds": 3.1666666666666665,
+                "meanChangedPixels": 1.3168539325842696,
+                "meanFractionOfVariablePixels": 0.004859239603631991,
+                "pairs": 445
+              }
+            ]
+          },
+          "160": {
+            "variablePixels": 218,
+            "minima": [
+              {
+                "lagVideoFrames": 25,
+                "lagSeconds": 0.8333333333333334,
+                "meanChangedPixels": 0.8427184466019417,
+                "meanFractionOfVariablePixels": 0.003865680947715329,
+                "pairs": 515
+              },
+              {
+                "lagVideoFrames": 38,
+                "lagSeconds": 1.2666666666666666,
+                "meanChangedPixels": 0.8585657370517928,
+                "meanFractionOfVariablePixels": 0.003938374940604554,
+                "pairs": 502
+              },
+              {
+                "lagVideoFrames": 47,
+                "lagSeconds": 1.5666666666666667,
+                "meanChangedPixels": 0.8722109533468559,
+                "meanFractionOfVariablePixels": 0.004000967675903009,
+                "pairs": 493
+              }
+            ]
+          }
+        },
+        "sourceSha256": "1d6e045af75631a259d69ad096b6ec9f8c09599dbde3b47d4a96a4830159303b"
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112434",
+        "mode": "candidate30",
+        "videoSha256": "eb57383e1c7025fd45cb4e04e7d27abeb815cec14101ea6112445af497d48975",
+        "windowVideoSeconds": [
+          5,
+          23
+        ],
+        "sampleFps": 30,
+        "actor": {
+          "140": {
+            "variablePixels": 8455,
+            "minima": [
+              {
+                "lagVideoFrames": 125,
+                "lagSeconds": 4.166666666666667,
+                "meanChangedPixels": 461.5686746987952,
+                "meanFractionOfVariablePixels": 0.054591209307959215,
+                "pairs": 415
+              },
+              {
+                "lagVideoFrames": 63,
+                "lagSeconds": 2.1,
+                "meanChangedPixels": 590.5744234800839,
+                "meanFractionOfVariablePixels": 0.0698491334689632,
+                "pairs": 477
+              },
+              {
+                "lagVideoFrames": 94,
+                "lagSeconds": 3.1333333333333333,
+                "meanChangedPixels": 1787.3363228699552,
+                "meanFractionOfVariablePixels": 0.21139400625309937,
+                "pairs": 446
+              }
+            ]
+          },
+          "150": {
+            "variablePixels": 8231,
+            "minima": [
+              {
+                "lagVideoFrames": 125,
+                "lagSeconds": 4.166666666666667,
+                "meanChangedPixels": 432.34216867469877,
+                "meanFractionOfVariablePixels": 0.05252608050962201,
+                "pairs": 415
+              },
+              {
+                "lagVideoFrames": 63,
+                "lagSeconds": 2.1,
+                "meanChangedPixels": 553.0943396226415,
+                "meanFractionOfVariablePixels": 0.06719649369732007,
+                "pairs": 477
+              },
+              {
+                "lagVideoFrames": 47,
+                "lagSeconds": 1.5666666666666667,
+                "meanChangedPixels": 1728.8032454361055,
+                "meanFractionOfVariablePixels": 0.21003562695129455,
+                "pairs": 493
+              }
+            ]
+          },
+          "160": {
+            "variablePixels": 7909,
+            "minima": [
+              {
+                "lagVideoFrames": 125,
+                "lagSeconds": 4.166666666666667,
+                "meanChangedPixels": 391.25060240963853,
+                "meanFractionOfVariablePixels": 0.04946903558093799,
+                "pairs": 415
+              },
+              {
+                "lagVideoFrames": 63,
+                "lagSeconds": 2.1,
+                "meanChangedPixels": 503.31236897274636,
+                "meanFractionOfVariablePixels": 0.06363792754744549,
+                "pairs": 477
+              },
+              {
+                "lagVideoFrames": 47,
+                "lagSeconds": 1.5666666666666667,
+                "meanChangedPixels": 1578.0182555780932,
+                "meanFractionOfVariablePixels": 0.19952184291036706,
+                "pairs": 493
+              }
+            ]
+          }
+        },
+        "background": {
+          "140": {
+            "variablePixels": 396,
+            "minima": [
+              {
+                "lagVideoFrames": 42,
+                "lagSeconds": 1.4,
+                "meanChangedPixels": 1.9779116465863453,
+                "meanFractionOfVariablePixels": 0.004994726380268549,
+                "pairs": 498
+              },
+              {
+                "lagVideoFrames": 84,
+                "lagSeconds": 2.8,
+                "meanChangedPixels": 2.504385964912281,
+                "meanFractionOfVariablePixels": 0.006324206982101719,
+                "pairs": 456
+              },
+              {
+                "lagVideoFrames": 126,
+                "lagSeconds": 4.2,
+                "meanChangedPixels": 3.0193236714975846,
+                "meanFractionOfVariablePixels": 0.007624554726004001,
+                "pairs": 414
+              }
+            ]
+          },
+          "150": {
+            "variablePixels": 325,
+            "minima": [
+              {
+                "lagVideoFrames": 38,
+                "lagSeconds": 1.2666666666666666,
+                "meanChangedPixels": 1.3525896414342629,
+                "meanFractionOfVariablePixels": 0.004161814281336194,
+                "pairs": 502
+              },
+              {
+                "lagVideoFrames": 41,
+                "lagSeconds": 1.3666666666666667,
+                "meanChangedPixels": 1.3527054108216432,
+                "meanFractionOfVariablePixels": 0.004162170494835825,
+                "pairs": 499
+              },
+              {
+                "lagVideoFrames": 173,
+                "lagSeconds": 5.766666666666667,
+                "meanChangedPixels": 1.5667574931880108,
+                "meanFractionOfVariablePixels": 0.004820792286732341,
+                "pairs": 367
+              }
+            ]
+          },
+          "160": {
+            "variablePixels": 238,
+            "minima": [
+              {
+                "lagVideoFrames": 173,
+                "lagSeconds": 5.766666666666667,
+                "meanChangedPixels": 0.8010899182561307,
+                "meanFractionOfVariablePixels": 0.0033659240262862637,
+                "pairs": 367
+              },
+              {
+                "lagVideoFrames": 27,
+                "lagSeconds": 0.9,
+                "meanChangedPixels": 0.9259259259259259,
+                "meanFractionOfVariablePixels": 0.003890445066915655,
+                "pairs": 513
+              },
+              {
+                "lagVideoFrames": 42,
+                "lagSeconds": 1.4,
+                "meanChangedPixels": 0.929718875502008,
+                "meanFractionOfVariablePixels": 0.00390638182984037,
+                "pairs": 498
+              }
+            ]
+          }
+        },
+        "sourceSha256": "c5774acdd662bbaef591a4f5b56eafd8b4694499cd5b31b2e2b362d8d6b0c7dc"
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112900",
+        "mode": "baseline30",
+        "videoSha256": "0d6c6b01a343a5274d68a2f3de0935c5e150453977a6448c2709460f7eea9339",
+        "windowVideoSeconds": [
+          5,
+          23
+        ],
+        "sampleFps": 30,
+        "actor": {
+          "140": {
+            "variablePixels": 8523,
+            "minima": [
+              {
+                "lagVideoFrames": 94,
+                "lagSeconds": 3.1333333333333333,
+                "meanChangedPixels": 1262.3026905829597,
+                "meanFractionOfVariablePixels": 0.14810544298755834,
+                "pairs": 446
+              },
+              {
+                "lagVideoFrames": 48,
+                "lagSeconds": 1.6,
+                "meanChangedPixels": 1819.1605691056911,
+                "meanFractionOfVariablePixels": 0.21344134331874823,
+                "pairs": 492
+              },
+              {
+                "lagVideoFrames": 24,
+                "lagSeconds": 0.8,
+                "meanChangedPixels": 1833.1705426356589,
+                "meanFractionOfVariablePixels": 0.21508512761183374,
+                "pairs": 516
+              }
+            ]
+          },
+          "150": {
+            "variablePixels": 8291,
+            "minima": [
+              {
+                "lagVideoFrames": 94,
+                "lagSeconds": 3.1333333333333333,
+                "meanChangedPixels": 1192.4798206278026,
+                "meanFractionOfVariablePixels": 0.14382822586271893,
+                "pairs": 446
+              },
+              {
+                "lagVideoFrames": 48,
+                "lagSeconds": 1.6,
+                "meanChangedPixels": 1757.2987804878048,
+                "meanFractionOfVariablePixels": 0.21195257272799478,
+                "pairs": 492
+              },
+              {
+                "lagVideoFrames": 24,
+                "lagSeconds": 0.8,
+                "meanChangedPixels": 1771.1182170542636,
+                "meanFractionOfVariablePixels": 0.21361937245860133,
+                "pairs": 516
+              }
+            ]
+          },
+          "160": {
+            "variablePixels": 7949,
+            "minima": [
+              {
+                "lagVideoFrames": 94,
+                "lagSeconds": 3.1333333333333333,
+                "meanChangedPixels": 1086.6121076233185,
+                "meanFractionOfVariablePixels": 0.13669796296682835,
+                "pairs": 446
+              },
+              {
+                "lagVideoFrames": 48,
+                "lagSeconds": 1.6,
+                "meanChangedPixels": 1613.3841463414635,
+                "meanFractionOfVariablePixels": 0.20296693248728942,
+                "pairs": 492
+              },
+              {
+                "lagVideoFrames": 24,
+                "lagSeconds": 0.8,
+                "meanChangedPixels": 1617.3875968992247,
+                "meanFractionOfVariablePixels": 0.20347057452499998,
+                "pairs": 516
+              }
+            ]
+          }
+        },
+        "background": {
+          "140": {
+            "variablePixels": 581,
+            "minima": [
+              {
+                "lagVideoFrames": 42,
+                "lagSeconds": 1.4,
+                "meanChangedPixels": 2.6706827309236947,
+                "meanFractionOfVariablePixels": 0.0045967000532249475,
+                "pairs": 498
+              },
+              {
+                "lagVideoFrames": 84,
+                "lagSeconds": 2.8,
+                "meanChangedPixels": 2.9671052631578947,
+                "meanFractionOfVariablePixels": 0.005106893740375034,
+                "pairs": 456
+              },
+              {
+                "lagVideoFrames": 126,
+                "lagSeconds": 4.2,
+                "meanChangedPixels": 3.4347826086956523,
+                "meanFractionOfVariablePixels": 0.0059118461423333084,
+                "pairs": 414
+              }
+            ]
+          },
+          "150": {
+            "variablePixels": 438,
+            "minima": [
+              {
+                "lagVideoFrames": 67,
+                "lagSeconds": 2.2333333333333334,
+                "meanChangedPixels": 1.6490486257928119,
+                "meanFractionOfVariablePixels": 0.00376495120044021,
+                "pairs": 473
+              },
+              {
+                "lagVideoFrames": 65,
+                "lagSeconds": 2.1666666666666665,
+                "meanChangedPixels": 1.6505263157894736,
+                "meanFractionOfVariablePixels": 0.0037683249218937753,
+                "pairs": 475
+              },
+              {
+                "lagVideoFrames": 28,
+                "lagSeconds": 0.9333333333333333,
+                "meanChangedPixels": 1.689453125,
+                "meanFractionOfVariablePixels": 0.003857198915525114,
+                "pairs": 512
+              }
+            ]
+          },
+          "160": {
+            "variablePixels": 322,
+            "minima": [
+              {
+                "lagVideoFrames": 152,
+                "lagSeconds": 5.066666666666666,
+                "meanChangedPixels": 1.0025773195876289,
+                "meanFractionOfVariablePixels": 0.0031135941602100274,
+                "pairs": 388
+              },
+              {
+                "lagVideoFrames": 172,
+                "lagSeconds": 5.733333333333333,
+                "meanChangedPixels": 1.0298913043478262,
+                "meanFractionOfVariablePixels": 0.0031984201998379695,
+                "pairs": 368
+              },
+              {
+                "lagVideoFrames": 168,
+                "lagSeconds": 5.6,
+                "meanChangedPixels": 1.032258064516129,
+                "meanFractionOfVariablePixels": 0.003205770386696053,
+                "pairs": 372
+              }
+            ]
+          }
+        },
+        "sourceSha256": "e3e688505cf432e2b4e5f2fc3fe0ba440711c119b3ca4b855eda72c8742302fd"
+      }
+    ],
+    "conclusion": "Baseline minima3.133s at all3thresholds in2runs; candidate minima4.167s and2.100s at all3thresholds in2runs. Multiple-cycle ambiguity retained; supports visible rate change, not smoothness.",
+    "sourcePeriodSeconds": 2.0833333333333335,
+    "sourcePeriodComparisonIsPostHoc": true,
+    "sourceHashes": {
+      "animation-residual-repeat-20261031-112400/repeated-results.json": "db462d597bd6f61ad5e5e887d8e146ebb1c0d6992dacb7312c33d79e6665c326"
+    },
+    "visualSmoothnessAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "supportedApiInventory": {
+    "installedScriptsPboSha256": "ff0ad7ee5297c75da74364569a830bc0223315c0131579a0c11a7875d64cb2e2",
+    "selection": "Named dayzanimal/animcommand/enentity/object script members; native declarations matchingAnim|Bone|Precision|Update|Simulation only",
+    "members": {
+      "1_core/proto/enentity.c": {
+        "sha256": "8c54e810605c758c852713cca6ea4cc4e3a81311f22601bce101231e05ea246a",
+        "selectedDeclarations": [
+          {
+            "line": 745,
+            "text": "proto native external int Animate(float speed, int loop);"
+          },
+          {
+            "line": 747,
+            "text": "proto native external int AnimateEx(float speed, int loop, out vector lin, out vector ang);"
+          },
+          {
+            "line": 766,
+            "text": "proto native external int Update();"
+          }
+        ]
+      },
+      "3_game/anim/animcommand.c": {
+        "sha256": "98b5e7aa44f632d66dc954940154c523d08decc24a5ef7fcc6fa14568a85e70c",
+        "selectedDeclarations": [
+          {
+            "line": 27,
+            "text": "proto native void PreAnim_CallCommand(int pCommand, int pParamInt, float pParamFloat);"
+          },
+          {
+            "line": 28,
+            "text": "proto native void PreAnim_SetFloat(int pVar, float pFlt);"
+          },
+          {
+            "line": 29,
+            "text": "proto native void PreAnim_SetInt(int pVar, int pInt);"
+          },
+          {
+            "line": 30,
+            "text": "proto native void PreAnim_SetBool(int pVar, bool pBool);"
+          }
+        ]
+      },
+      "3_game/entities/dayzanimal.c": {
+        "sha256": "c1600a8c4c1bd112245024c9dd3a4ce90e519e0441b24ab06af715c361f896e8",
+        "selectedDeclarations": [
+          {
+            "line": 10,
+            "text": "proto native TAnimGraphCommand\t\tBindCommand(string pCommandName);"
+          },
+          {
+            "line": 13,
+            "text": "proto native TAnimGraphVariable \tBindVariableFloat(string pVariable);"
+          },
+          {
+            "line": 14,
+            "text": "proto native TAnimGraphVariable \tBindVariableInt(string pVariable);"
+          },
+          {
+            "line": 15,
+            "text": "proto native TAnimGraphVariable \tBindVariableBool(string pVariable);"
+          },
+          {
+            "line": 18,
+            "text": "proto native TAnimGraphTag \t\t\tBindTag(string pTagName);"
+          },
+          {
+            "line": 21,
+            "text": "proto native TAnimGraphEvent\t\tBindEvent(string pEventName);"
+          },
+          {
+            "line": 30,
+            "text": "proto native bool RegisterAnimationEvent(string event_name, string function_name);"
+          },
+          {
+            "line": 32,
+            "text": "proto native void SetAnimationInstanceByName(string animation_instance_name, int instance_uuid, float duration);"
+          },
+          {
+            "line": 33,
+            "text": "proto native int GetCurrentAnimationInstanceUUID();"
+          },
+          {
+            "line": 35,
+            "text": "proto native DayZCreatureAnimInterface GetAnimInterface();"
+          },
+          {
+            "line": 38,
+            "text": "proto native void UpdateSimulationPrecision(int simLOD);"
+          },
+          {
+            "line": 53,
+            "text": "proto native \tint \t\tGetBoneIndexByName(string pBoneName);"
+          },
+          {
+            "line": 664,
+            "text": "proto native DayZAnimalInputController GetInputController();"
+          },
+          {
+            "line": 673,
+            "text": "proto native DayZAnimalCommandScript StartCommand_Script(DayZAnimalCommandScript pInfectedCommand);"
+          },
+          {
+            "line": 674,
+            "text": "proto native DayZAnimalCommandScript StartCommand_ScriptInst(typename pCallbackClass);"
+          },
+          {
+            "line": 675,
+            "text": "proto native DayZAnimalCommandScript GetCommand_Script();"
+          }
+        ]
+      },
+      "3_game/entities/object.c": {
+        "sha256": "1b1b031948b82c111e9be8b9b0bbef8495c07842d7436d9c3111950e8a3ee95b",
+        "selectedDeclarations": [
+          {
+            "line": 225,
+            "text": "proto \t\t\tbool\t\tToBonePivot(out int pivot, int level, int bone);"
+          },
+          {
+            "line": 226,
+            "text": "proto \t\t\tbool\t\tFromBonePivot(int pivot, out int level, out int bone);"
+          },
+          {
+            "line": 230,
+            "text": "proto \t\t\tint\t\t\tGetBonePivot(int level, int component);"
+          },
+          {
+            "line": 233,
+            "text": "proto native\tvoid\t\tGetBonePivotsForAnimationSource(int level, string animationSource, out TIntArray pivots);"
+          },
+          {
+            "line": 236,
+            "text": "proto native\tvector\t\tGetBonePositionLS(int pivot);"
+          },
+          {
+            "line": 237,
+            "text": "proto native \tvector\t\tGetBonePositionMS(int pivot);"
+          },
+          {
+            "line": 238,
+            "text": "proto native \tvector\t\tGetBonePositionWS(int pivot);"
+          },
+          {
+            "line": 241,
+            "text": "proto native\tvoid \t\tGetBoneRotationLS(int pivot, out float quaternion[4]);"
+          },
+          {
+            "line": 242,
+            "text": "proto native \tvoid \t\tGetBoneRotationMS(int pivot, out float quaternion[4]);"
+          },
+          {
+            "line": 243,
+            "text": "proto native \tvoid \t\tGetBoneRotationWS(int pivot, out float quaternion[4]);"
+          },
+          {
+            "line": 246,
+            "text": "proto native\tvoid \t\tGetBoneTransformLS(int pivot, out vector transform[4]);"
+          },
+          {
+            "line": 247,
+            "text": "proto native \tvoid \t\tGetBoneTransformMS(int pivot, out vector transform[4]);"
+          },
+          {
+            "line": 248,
+            "text": "proto native \tvoid \t\tGetBoneTransformWS(int pivot, out vector transform[4]);"
+          }
+        ]
+      }
+    },
+    "directSkeletalGraphClockSetterEstablished": false,
+    "limits": [
+      "Bounded declaration inventory is not all engine APIs.",
+      "PreAnim_SetFloat needs an actual graph variable; name alone does not establish clock control.",
+      "Object SetAnimationPhase is not established here as skeletal graph phase setter.",
+      "Duration argument already established as transition blending denominator; notdt.",
+      "No source/PBO changes or runtime API calls."
+    ]
+  }
+}
