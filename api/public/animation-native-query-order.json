@@ -1,0 +1,1023 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T16:42:58.207077+09:00",
+  "sourceRunId": "animation-native-query-order-20261031-1641",
+  "buildId": "B8FB-existing-diagnostic-records",
+  "verificationStatus": {
+    "diagnostic": "direct_qpc_native_cpu_order_reanalysis",
+    "nativeCpuOrderingValidated": true,
+    "gpuTimingMeasured": false,
+    "newRuntime": false,
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-native-query-order-20261031-1641",
+    "analysis": "Existing A/B/B/A direct-QPC native-entry to next CPU query ordering",
+    "runs": [
+      {
+        "runtimeRunId": "runtime-20261031-110449",
+        "mode": "baseline30",
+        "selectedFrames": 1472,
+        "consecutivePairs": 1471,
+        "timelineFits": {
+          "query_begin": {
+            "fittedRate": 0.6597260196375626,
+            "detrendedRmsMs": 71.10291037591067,
+            "absoluteDetrendedResidualMs": {
+              "n": 1472,
+              "p50": 54.3591252776352,
+              "p95": 132.24309733318302,
+              "p99": 152.4278021487345,
+              "minimum": 0.011541430097850025,
+              "maximum": 172.99777668446836
+            }
+          },
+          "previous_query_begin": {
+            "fittedRate": 0.659727813452153,
+            "detrendedRmsMs": 70.73938254067872,
+            "absoluteDetrendedResidualMs": {
+              "n": 1472,
+              "p50": 54.27400829065121,
+              "p95": 132.1248942318679,
+              "p99": 148.78999554456888,
+              "minimum": 0.17723364515731532,
+              "maximum": 165.38897807196662
+            }
+          },
+          "native_entry": {
+            "fittedRate": 0.6597365744370239,
+            "detrendedRmsMs": 70.74593893423847,
+            "absoluteDetrendedResidualMs": {
+              "n": 1472,
+              "p50": 54.22796527193796,
+              "p95": 132.0304678237296,
+              "p99": 148.8161623316003,
+              "minimum": 0.19595234791935923,
+              "maximum": 165.68828313899786
+            }
+          },
+          "previous_native_entry": {
+            "fittedRate": 0.6597347395905886,
+            "detrendedRmsMs": 71.09247107805479,
+            "absoluteDetrendedResidualMs": {
+              "n": 1472,
+              "p50": 54.43081699425534,
+              "p95": 132.04854637736432,
+              "p99": 152.428155219838,
+              "minimum": 0.0015978111491676827,
+              "maximum": 171.8607538157073
+            }
+          }
+        },
+        "intervalComparisons": {
+          "currentNativeIntervalMs": {
+            "intervalMs": {
+              "n": 1471,
+              "p50": 20.0656,
+              "p95": 35.5012,
+              "p99": 40.344319999999996,
+              "minimum": 4.9915,
+              "maximum": 42.212
+            },
+            "effectiveStepCorrelation": 0.4933623686703999,
+            "effectiveStepRmsDifferenceMs": 14.584256609379855,
+            "sourcePhaseStepCorrelation": 0.5136671623191925
+          },
+          "previousNativeIntervalMs": {
+            "intervalMs": {
+              "n": 1471,
+              "p50": 20.4571,
+              "p95": 35.5012,
+              "p99": 40.344319999999996,
+              "minimum": 4.9915,
+              "maximum": 42.212
+            },
+            "effectiveStepCorrelation": -0.49553452994429437,
+            "effectiveStepRmsDifferenceMs": 23.000157444039196,
+            "sourcePhaseStepCorrelation": -0.515213257394037
+          },
+          "queryIntervalMs": {
+            "intervalMs": {
+              "n": 1471,
+              "p50": 20.2363,
+              "p95": 34.20195,
+              "p99": 35.80786,
+              "minimum": 5.1981,
+              "maximum": 38.9765
+            },
+            "effectiveStepCorrelation": -0.5038076622502706,
+            "effectiveStepRmsDifferenceMs": 22.279339037894196,
+            "sourcePhaseStepCorrelation": -0.5209364179472105
+          },
+          "previousQueryIntervalMs": {
+            "intervalMs": {
+              "n": 1471,
+              "p50": 20.223,
+              "p95": 34.20195,
+              "p99": 35.80786,
+              "minimum": 5.1981,
+              "maximum": 38.9765
+            },
+            "effectiveStepCorrelation": 0.4954910334567614,
+            "effectiveStepRmsDifferenceMs": 14.080259371996512,
+            "sourcePhaseStepCorrelation": 0.5152546805988337
+          }
+        },
+        "nativeToNextQueryBeginMs": {
+          "n": 1472,
+          "p50": 19.0621,
+          "p95": 33.5039,
+          "p99": 34.996306,
+          "minimum": 4.4042,
+          "maximum": 38.3835
+        },
+        "previousQueryEndToNativeMs": {
+          "n": 1472,
+          "p50": 1.1191499999999999,
+          "p95": 1.56344,
+          "p99": 2.5908959999999976,
+          "minimum": 0.4148,
+          "maximum": 5.7976
+        },
+        "cpuQueryBracketMs": {
+          "n": 1472,
+          "p50": 0.1509,
+          "p95": 0.20222500000000004,
+          "p99": 6.5944129999999985,
+          "minimum": 0.1223,
+          "maximum": 8.062
+        },
+        "nativeReadBracketMs": {
+          "n": 1472,
+          "p50": 0.0096,
+          "p95": 0.0115,
+          "p99": 0.017328999999999997,
+          "minimum": 0.0092,
+          "maximum": 0.0226
+        },
+        "selectedPairs": [
+          {
+            "phaseStepMs": 6.000000983476639,
+            "currentNativeIntervalMs": 6.3728,
+            "previousNativeIntervalMs": 34.0833,
+            "queryIntervalMs": 33.1571,
+            "previousQueryIntervalMs": 6.5309,
+            "sourcePhaseStepMs": 4.166666666666667
+          },
+          {
+            "phaseStepMs": 10.000187903642654,
+            "currentNativeIntervalMs": 33.4562,
+            "previousNativeIntervalMs": 6.3728,
+            "queryIntervalMs": 6.4447,
+            "previousQueryIntervalMs": 33.1571,
+            "sourcePhaseStepMs": 8.333333333333334
+          },
+          {
+            "phaseStepMs": 6.000000052154064,
+            "currentNativeIntervalMs": 5.5093,
+            "previousNativeIntervalMs": 33.4562,
+            "queryIntervalMs": 34.1195,
+            "previousQueryIntervalMs": 6.4447,
+            "sourcePhaseStepMs": 4.166666666666667
+          },
+          {
+            "phaseStepMs": 34.00000277906656,
+            "currentNativeIntervalMs": 35.0605,
+            "previousNativeIntervalMs": 5.5093,
+            "queryIntervalMs": 7.8533,
+            "previousQueryIntervalMs": 34.1195,
+            "sourcePhaseStepMs": 37.5
+          },
+          {
+            "phaseStepMs": 8.000001311302185,
+            "currentNativeIntervalMs": 7.0975,
+            "previousNativeIntervalMs": 35.0605,
+            "queryIntervalMs": 31.747,
+            "previousQueryIntervalMs": 7.8533,
+            "sourcePhaseStepMs": 4.166666666666667
+          },
+          {
+            "phaseStepMs": 2.0001865923404694,
+            "currentNativeIntervalMs": 32.6805,
+            "previousNativeIntervalMs": 7.0975,
+            "queryIntervalMs": 6.6619,
+            "previousQueryIntervalMs": 31.747,
+            "sourcePhaseStepMs": 4.166666666666667
+          },
+          {
+            "phaseStepMs": 34.99999921768904,
+            "currentNativeIntervalMs": 35.9273,
+            "previousNativeIntervalMs": 5.9519,
+            "queryIntervalMs": 8.0927,
+            "previousQueryIntervalMs": 35.303,
+            "sourcePhaseStepMs": 37.5
+          },
+          {
+            "phaseStepMs": 7.999237626791,
+            "currentNativeIntervalMs": 8.2461,
+            "previousNativeIntervalMs": 35.9273,
+            "queryIntervalMs": 29.9717,
+            "previousQueryIntervalMs": 8.0927,
+            "sourcePhaseStepMs": 8.333333333333334
+          },
+          {
+            "phaseStepMs": 29.999999329447746,
+            "currentNativeIntervalMs": 29.9397,
+            "previousNativeIntervalMs": 8.2461,
+            "queryIntervalMs": 8.5835,
+            "previousQueryIntervalMs": 29.9717,
+            "sourcePhaseStepMs": 29.166666666666668
+          },
+          {
+            "phaseStepMs": 8.99999774992466,
+            "currentNativeIntervalMs": 7.8138,
+            "previousNativeIntervalMs": 29.9397,
+            "queryIntervalMs": 33.6206,
+            "previousQueryIntervalMs": 8.5835,
+            "sourcePhaseStepMs": 8.333333333333334
+          },
+          {
+            "phaseStepMs": 10.999239981174469,
+            "currentNativeIntervalMs": 34.4951,
+            "previousNativeIntervalMs": 7.8138,
+            "queryIntervalMs": 6.1427,
+            "previousQueryIntervalMs": 33.6206,
+            "sourcePhaseStepMs": 12.5
+          },
+          {
+            "phaseStepMs": 6.000000052154064,
+            "currentNativeIntervalMs": 5.2645,
+            "previousNativeIntervalMs": 34.4951,
+            "queryIntervalMs": 33.5023,
+            "previousQueryIntervalMs": 6.1427,
+            "sourcePhaseStepMs": 4.166666666666667
+          }
+        ]
+      },
+      {
+        "runtimeRunId": "runtime-20261031-111204",
+        "mode": "candidate30",
+        "selectedFrames": 1471,
+        "consecutivePairs": 1470,
+        "timelineFits": {
+          "query_begin": {
+            "fittedRate": 0.999991179318517,
+            "detrendedRmsMs": 12.600728107506862,
+            "absoluteDetrendedResidualMs": {
+              "n": 1471,
+              "p50": 13.090461028838263,
+              "p95": 14.22627707072266,
+              "p99": 15.625728479879086,
+              "minimum": 0.002239067065090694,
+              "maximum": 17.445463773292147
+            }
+          },
+          "previous_query_begin": {
+            "fittedRate": 0.9999938919366517,
+            "detrendedRmsMs": 0.45503238758490283,
+            "absoluteDetrendedResidualMs": {
+              "n": 1471,
+              "p50": 0.24613386629823708,
+              "p95": 0.5514048024615192,
+              "p99": 0.6897871483673154,
+              "minimum": 3.755004485128666e-05,
+              "maximum": 8.517010249626367
+            }
+          },
+          "native_entry": {
+            "fittedRate": 1.0000082412112534,
+            "detrendedRmsMs": 1.2564598650853027,
+            "absoluteDetrendedResidualMs": {
+              "n": 1471,
+              "p50": 0.5198993754760295,
+              "p95": 1.3899787625852866,
+              "p99": 6.621311282330558,
+              "minimum": 0.00123624764825081,
+              "maximum": 11.39538793113104
+            }
+          },
+          "previous_native_entry": {
+            "fittedRate": 1.0000049509835023,
+            "detrendedRmsMs": 13.073273959874047,
+            "absoluteDetrendedResidualMs": {
+              "n": 1471,
+              "p50": 13.478803400310824,
+              "p95": 14.701012560777826,
+              "p99": 16.14086574663176,
+              "minimum": 0.07655031512854293,
+              "maximum": 18.855209640364023
+            }
+          }
+        },
+        "intervalComparisons": {
+          "currentNativeIntervalMs": {
+            "intervalMs": {
+              "n": 1470,
+              "p50": 20.37205,
+              "p95": 35.234404999999995,
+              "p99": 39.659927999999994,
+              "minimum": 5.0208,
+              "maximum": 45.3097
+            },
+            "effectiveStepCorrelation": 0.9928169276681434,
+            "effectiveStepRmsDifferenceMs": 1.8951250711292245,
+            "sourcePhaseStepCorrelation": 0.9488025580696917
+          },
+          "previousNativeIntervalMs": {
+            "intervalMs": {
+              "n": 1470,
+              "p50": 20.57915,
+              "p95": 35.234404999999995,
+              "p99": 39.659927999999994,
+              "minimum": 5.0208,
+              "maximum": 45.3097
+            },
+            "effectiveStepCorrelation": -0.9761466435830793,
+            "effectiveStepRmsDifferenceMs": 26.053208164672164,
+            "sourcePhaseStepCorrelation": -0.9335731084690786
+          },
+          "queryIntervalMs": {
+            "intervalMs": {
+              "n": 1470,
+              "p50": 20.28575,
+              "p95": 33.958149999999996,
+              "p99": 35.569292,
+              "minimum": 5.8506,
+              "maximum": 37.4793
+            },
+            "effectiveStepCorrelation": -0.9870186761301455,
+            "effectiveStepRmsDifferenceMs": 25.112057351850307,
+            "sourcePhaseStepCorrelation": -0.9445242711898036
+          },
+          "previousQueryIntervalMs": {
+            "intervalMs": {
+              "n": 1470,
+              "p50": 20.16785,
+              "p95": 33.958149999999996,
+              "p99": 35.569292,
+              "minimum": 5.8506,
+              "maximum": 37.4793
+            },
+            "effectiveStepCorrelation": 0.9992464991372215,
+            "effectiveStepRmsDifferenceMs": 0.4914834853739709,
+            "sourcePhaseStepCorrelation": 0.9560142613999109
+          }
+        },
+        "nativeToNextQueryBeginMs": {
+          "n": 1471,
+          "p50": 18.8813,
+          "p95": 33.18945,
+          "p99": 34.73155,
+          "minimum": 4.3717,
+          "maximum": 36.8612
+        },
+        "previousQueryEndToNativeMs": {
+          "n": 1471,
+          "p50": 1.1432,
+          "p95": 1.75975,
+          "p99": 2.3417999999999997,
+          "minimum": 0.423,
+          "maximum": 3.7846
+        },
+        "cpuQueryBracketMs": {
+          "n": 1471,
+          "p50": 0.1516,
+          "p95": 0.2094,
+          "p99": 6.651709999999999,
+          "minimum": 0.1224,
+          "maximum": 10.9603
+        },
+        "nativeReadBracketMs": {
+          "n": 1471,
+          "p50": 0.0097,
+          "p95": 0.0337,
+          "p99": 0.03975999999999999,
+          "minimum": 0.0091,
+          "maximum": 0.0627
+        },
+        "selectedPairs": [
+          {
+            "phaseStepMs": 6.999999284744263,
+            "currentNativeIntervalMs": 6.069,
+            "previousNativeIntervalMs": 34.7704,
+            "queryIntervalMs": 33.6117,
+            "previousQueryIntervalMs": 6.47,
+            "sourcePhaseStepMs": 8.333333333333334
+          },
+          {
+            "phaseStepMs": 32.999999821186066,
+            "currentNativeIntervalMs": 33.6594,
+            "previousNativeIntervalMs": 6.069,
+            "queryIntervalMs": 6.7634,
+            "previousQueryIntervalMs": 33.6117,
+            "sourcePhaseStepMs": 33.333333333333336
+          },
+          {
+            "phaseStepMs": 7.000189274549484,
+            "currentNativeIntervalMs": 6.4735,
+            "previousNativeIntervalMs": 33.6594,
+            "queryIntervalMs": 33.5651,
+            "previousQueryIntervalMs": 6.7634,
+            "sourcePhaseStepMs": 8.333333333333334
+          },
+          {
+            "phaseStepMs": 32.999999821186066,
+            "currentNativeIntervalMs": 34.5059,
+            "previousNativeIntervalMs": 6.4735,
+            "queryIntervalMs": 7.4783,
+            "previousQueryIntervalMs": 33.5651,
+            "sourcePhaseStepMs": 33.333333333333336
+          },
+          {
+            "phaseStepMs": 8.000001311302185,
+            "currentNativeIntervalMs": 6.2236,
+            "previousNativeIntervalMs": 34.5059,
+            "queryIntervalMs": 32.0811,
+            "previousQueryIntervalMs": 7.4783,
+            "sourcePhaseStepMs": 8.333333333333334
+          },
+          {
+            "phaseStepMs": 32.00019523501396,
+            "currentNativeIntervalMs": 33.0691,
+            "previousNativeIntervalMs": 6.2236,
+            "queryIntervalMs": 6.6022,
+            "previousQueryIntervalMs": 32.0811,
+            "sourcePhaseStepMs": 29.166666666666668
+          },
+          {
+            "phaseStepMs": 33.9992381632328,
+            "currentNativeIntervalMs": 33.3527,
+            "previousNativeIntervalMs": 7.0037,
+            "queryIntervalMs": 6.6916,
+            "previousQueryIntervalMs": 33.4616,
+            "sourcePhaseStepMs": 37.5
+          },
+          {
+            "phaseStepMs": 6.999999284744263,
+            "currentNativeIntervalMs": 5.5453,
+            "previousNativeIntervalMs": 33.3527,
+            "queryIntervalMs": 32.9312,
+            "previousQueryIntervalMs": 6.6916,
+            "sourcePhaseStepMs": 4.166666666666667
+          },
+          {
+            "phaseStepMs": 32.99923613667488,
+            "currentNativeIntervalMs": 34.0072,
+            "previousNativeIntervalMs": 5.5453,
+            "queryIntervalMs": 6.7635,
+            "previousQueryIntervalMs": 32.9312,
+            "sourcePhaseStepMs": 33.333333333333336
+          },
+          {
+            "phaseStepMs": 6.000000052154064,
+            "currentNativeIntervalMs": 5.7074,
+            "previousNativeIntervalMs": 34.0072,
+            "queryIntervalMs": 33.2257,
+            "previousQueryIntervalMs": 6.7635,
+            "sourcePhaseStepMs": 8.333333333333334
+          },
+          {
+            "phaseStepMs": 34.00000277906656,
+            "currentNativeIntervalMs": 34.4184,
+            "previousNativeIntervalMs": 5.7074,
+            "queryIntervalMs": 8.015,
+            "previousQueryIntervalMs": 33.2257,
+            "sourcePhaseStepMs": 33.333333333333336
+          },
+          {
+            "phaseStepMs": 7.999237626791,
+            "currentNativeIntervalMs": 7.3666,
+            "previousNativeIntervalMs": 34.4184,
+            "queryIntervalMs": 32.1649,
+            "previousQueryIntervalMs": 8.015,
+            "sourcePhaseStepMs": 4.166666666666667
+          }
+        ]
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112434",
+        "mode": "candidate30",
+        "selectedFrames": 1472,
+        "consecutivePairs": 1471,
+        "timelineFits": {
+          "query_begin": {
+            "fittedRate": 0.9999923419844542,
+            "detrendedRmsMs": 12.61676964308917,
+            "absoluteDetrendedResidualMs": {
+              "n": 1472,
+              "p50": 13.02891147232188,
+              "p95": 14.306370369404675,
+              "p99": 15.890298733556492,
+              "minimum": 0.19571959202124845,
+              "maximum": 24.99084781165095
+            }
+          },
+          "previous_query_begin": {
+            "fittedRate": 0.9999950899112741,
+            "detrendedRmsMs": 0.4400670663962061,
+            "absoluteDetrendedResidualMs": {
+              "n": 1472,
+              "p50": 0.25214063121836716,
+              "p95": 0.545300349297051,
+              "p99": 0.6973196942485057,
+              "minimum": 0.00010408672324047075,
+              "maximum": 8.963721206093567
+            }
+          },
+          "native_entry": {
+            "fittedRate": 1.0000091483131404,
+            "detrendedRmsMs": 1.2530905847657563,
+            "absoluteDetrendedResidualMs": {
+              "n": 1472,
+              "p50": 0.4982393329449053,
+              "p95": 1.4441015332945293,
+              "p99": 6.3461454816677945,
+              "minimum": 0.0006290357532634516,
+              "maximum": 13.43140996507941
+            }
+          },
+          "previous_native_entry": {
+            "fittedRate": 1.0000057898675399,
+            "detrendedRmsMs": 13.04425790214731,
+            "absoluteDetrendedResidualMs": {
+              "n": 1472,
+              "p50": 13.42369068029825,
+              "p95": 14.820524078457353,
+              "p99": 16.469730764425208,
+              "minimum": 0.030923129244797565,
+              "maximum": 17.38856038933534
+            }
+          }
+        },
+        "intervalComparisons": {
+          "currentNativeIntervalMs": {
+            "intervalMs": {
+              "n": 1471,
+              "p50": 19.8028,
+              "p95": 35.404300000000006,
+              "p99": 39.49435999999999,
+              "minimum": 5.0457,
+              "maximum": 50.2971
+            },
+            "effectiveStepCorrelation": 0.9923382485989005,
+            "effectiveStepRmsDifferenceMs": 1.891436742583659,
+            "sourcePhaseStepCorrelation": 0.9451013393298973
+          },
+          "previousNativeIntervalMs": {
+            "intervalMs": {
+              "n": 1471,
+              "p50": 19.9951,
+              "p95": 35.404300000000006,
+              "p99": 39.49435999999999,
+              "minimum": 5.0457,
+              "maximum": 50.2971
+            },
+            "effectiveStepCorrelation": -0.9747245028058198,
+            "effectiveStepRmsDifferenceMs": 25.985472001680872,
+            "sourcePhaseStepCorrelation": -0.9287162186642671
+          },
+          "queryIntervalMs": {
+            "intervalMs": {
+              "n": 1471,
+              "p50": 20.0064,
+              "p95": 34.0496,
+              "p99": 35.768570000000004,
+              "minimum": 5.452,
+              "maximum": 44.83
+            },
+            "effectiveStepCorrelation": -0.986897880481849,
+            "effectiveStepRmsDifferenceMs": 25.135157545647544,
+            "sourcePhaseStepCorrelation": -0.9424908853980323
+          },
+          "previousQueryIntervalMs": {
+            "intervalMs": {
+              "n": 1471,
+              "p50": 19.9465,
+              "p95": 34.0496,
+              "p99": 35.768570000000004,
+              "minimum": 5.452,
+              "maximum": 44.83
+            },
+            "effectiveStepCorrelation": 0.9991766633497788,
+            "effectiveStepRmsDifferenceMs": 0.5138578981221857,
+            "sourcePhaseStepCorrelation": 0.9527896312978688
+          }
+        },
+        "nativeToNextQueryBeginMs": {
+          "n": 1472,
+          "p50": 18.357950000000002,
+          "p95": 33.239645,
+          "p99": 34.898347,
+          "minimum": 4.2255,
+          "maximum": 44.2174
+        },
+        "previousQueryEndToNativeMs": {
+          "n": 1472,
+          "p50": 1.145,
+          "p95": 1.8048899999999999,
+          "p99": 3.598525999999997,
+          "minimum": 0.4197,
+          "maximum": 5.9278
+        },
+        "cpuQueryBracketMs": {
+          "n": 1472,
+          "p50": 0.1533,
+          "p95": 0.20532000000000009,
+          "p99": 6.618275,
+          "minimum": 0.122,
+          "maximum": 7.9098
+        },
+        "nativeReadBracketMs": {
+          "n": 1472,
+          "p50": 0.0097,
+          "p95": 0.0342,
+          "p99": 0.046431999999999966,
+          "minimum": 0.0091,
+          "maximum": 0.0639
+        },
+        "selectedPairs": [
+          {
+            "phaseStepMs": 6.000000983476639,
+            "currentNativeIntervalMs": 5.829,
+            "previousNativeIntervalMs": 33.9918,
+            "queryIntervalMs": 35.7046,
+            "previousQueryIntervalMs": 6.3718,
+            "sourcePhaseStepMs": 4.166666666666667
+          },
+          {
+            "phaseStepMs": 36.00018844008446,
+            "currentNativeIntervalMs": 36.1122,
+            "previousNativeIntervalMs": 5.829,
+            "queryIntervalMs": 6.7336,
+            "previousQueryIntervalMs": 35.7046,
+            "sourcePhaseStepMs": 37.5
+          },
+          {
+            "phaseStepMs": 6.999999284744263,
+            "currentNativeIntervalMs": 5.7823,
+            "previousNativeIntervalMs": 36.1122,
+            "queryIntervalMs": 33.4629,
+            "previousQueryIntervalMs": 6.7336,
+            "sourcePhaseStepMs": 4.166666666666667
+          },
+          {
+            "phaseStepMs": 33.00018981099129,
+            "currentNativeIntervalMs": 34.446,
+            "previousNativeIntervalMs": 5.7823,
+            "queryIntervalMs": 6.617,
+            "previousQueryIntervalMs": 33.4629,
+            "sourcePhaseStepMs": 33.333333333333336
+          },
+          {
+            "phaseStepMs": 7.000000216066837,
+            "currentNativeIntervalMs": 5.5754,
+            "previousNativeIntervalMs": 34.446,
+            "queryIntervalMs": 31.115,
+            "previousQueryIntervalMs": 6.617,
+            "sourcePhaseStepMs": 8.333333333333334
+          },
+          {
+            "phaseStepMs": 30.999998562037945,
+            "currentNativeIntervalMs": 31.8371,
+            "previousNativeIntervalMs": 5.5754,
+            "queryIntervalMs": 9.1936,
+            "previousQueryIntervalMs": 31.115,
+            "sourcePhaseStepMs": 29.166666666666668
+          },
+          {
+            "phaseStepMs": 32.99999888986349,
+            "currentNativeIntervalMs": 34.5404,
+            "previousNativeIntervalMs": 5.32,
+            "queryIntervalMs": 6.959,
+            "previousQueryIntervalMs": 33.4325,
+            "sourcePhaseStepMs": 33.333333333333336
+          },
+          {
+            "phaseStepMs": 6.999235600233078,
+            "currentNativeIntervalMs": 6.2476,
+            "previousNativeIntervalMs": 34.5404,
+            "queryIntervalMs": 33.0186,
+            "previousQueryIntervalMs": 6.959,
+            "sourcePhaseStepMs": 8.333333333333334
+          },
+          {
+            "phaseStepMs": 32.999999821186066,
+            "currentNativeIntervalMs": 33.3585,
+            "previousNativeIntervalMs": 6.2476,
+            "queryIntervalMs": 6.1406,
+            "previousQueryIntervalMs": 33.0186,
+            "sourcePhaseStepMs": 37.5
+          },
+          {
+            "phaseStepMs": 6.000000983476639,
+            "currentNativeIntervalMs": 6.0109,
+            "previousNativeIntervalMs": 33.3585,
+            "queryIntervalMs": 33.9986,
+            "previousQueryIntervalMs": 6.1406,
+            "sourcePhaseStepMs": 4.166666666666667
+          },
+          {
+            "phaseStepMs": 33.9992381632328,
+            "currentNativeIntervalMs": 34.4996,
+            "previousNativeIntervalMs": 6.0109,
+            "queryIntervalMs": 6.839,
+            "previousQueryIntervalMs": 33.9986,
+            "sourcePhaseStepMs": 33.333333333333336
+          },
+          {
+            "phaseStepMs": 6.999999284744263,
+            "currentNativeIntervalMs": 5.7228,
+            "previousNativeIntervalMs": 34.4996,
+            "queryIntervalMs": 33.2765,
+            "previousQueryIntervalMs": 6.839,
+            "sourcePhaseStepMs": 4.166666666666667
+          }
+        ]
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112900",
+        "mode": "baseline30",
+        "selectedFrames": 1473,
+        "consecutivePairs": 1472,
+        "timelineFits": {
+          "query_begin": {
+            "fittedRate": 0.6577829659272822,
+            "detrendedRmsMs": 81.37963594650192,
+            "absoluteDetrendedResidualMs": {
+              "n": 1473,
+              "p50": 63.73748536395851,
+              "p95": 147.33074690896612,
+              "p99": 163.2688298368501,
+              "minimum": 0.016352991579537957,
+              "maximum": 182.1717064055406
+            }
+          },
+          "previous_query_begin": {
+            "fittedRate": 0.6577847361235996,
+            "detrendedRmsMs": 81.0147995505905,
+            "absoluteDetrendedResidualMs": {
+              "n": 1473,
+              "p50": 62.72993981840358,
+              "p95": 145.48140944540359,
+              "p99": 160.13422116692792,
+              "minimum": 0.07958076537306624,
+              "maximum": 175.00903878587337
+            }
+          },
+          "native_entry": {
+            "fittedRate": 0.6577945040995531,
+            "detrendedRmsMs": 81.00852411250753,
+            "absoluteDetrendedResidualMs": {
+              "n": 1473,
+              "p50": 62.93264909633223,
+              "p95": 145.29170594033047,
+              "p99": 160.45142093239178,
+              "minimum": 0.06528286767348845,
+              "maximum": 175.4363616964838
+            }
+          },
+          "previous_native_entry": {
+            "fittedRate": 0.6577924889226241,
+            "detrendedRmsMs": 81.3766216497315,
+            "absoluteDetrendedResidualMs": {
+              "n": 1473,
+              "p50": 62.73836302041502,
+              "p95": 147.32219227564514,
+              "p99": 163.5787022955273,
+              "minimum": 0.09148955611948395,
+              "maximum": 182.5656623067502
+            }
+          }
+        },
+        "intervalComparisons": {
+          "currentNativeIntervalMs": {
+            "intervalMs": {
+              "n": 1472,
+              "p50": 20.13,
+              "p95": 36.187345,
+              "p99": 41.065904,
+              "minimum": 4.1298,
+              "maximum": 44.1451
+            },
+            "effectiveStepCorrelation": 0.5276043543316794,
+            "effectiveStepRmsDifferenceMs": 14.832640182501006,
+            "sourcePhaseStepCorrelation": 0.5356540312147551
+          },
+          "previousNativeIntervalMs": {
+            "intervalMs": {
+              "n": 1472,
+              "p50": 20.6936,
+              "p95": 36.187345,
+              "p99": 41.065904,
+              "minimum": 4.1298,
+              "maximum": 44.1451
+            },
+            "effectiveStepCorrelation": -0.5317691578563162,
+            "effectiveStepRmsDifferenceMs": 24.331246726348308,
+            "sourcePhaseStepCorrelation": -0.5384710943549406
+          },
+          "queryIntervalMs": {
+            "intervalMs": {
+              "n": 1472,
+              "p50": 20.869,
+              "p95": 34.82977,
+              "p99": 36.714473999999996,
+              "minimum": 4.8287,
+              "maximum": 38.175
+            },
+            "effectiveStepCorrelation": -0.5331437806527582,
+            "effectiveStepRmsDifferenceMs": 23.451728880944746,
+            "sourcePhaseStepCorrelation": -0.5392321738286944
+          },
+          "previousQueryIntervalMs": {
+            "intervalMs": {
+              "n": 1472,
+              "p50": 20.27465,
+              "p95": 34.82977,
+              "p99": 36.714473999999996,
+              "minimum": 4.8287,
+              "maximum": 38.175
+            },
+            "effectiveStepCorrelation": 0.5290029908876189,
+            "effectiveStepRmsDifferenceMs": 14.268115072240706,
+            "sourcePhaseStepCorrelation": 0.5363664838821435
+          }
+        },
+        "nativeToNextQueryBeginMs": {
+          "n": 1473,
+          "p50": 19.3853,
+          "p95": 34.11254,
+          "p99": 36.006504,
+          "minimum": 3.5264,
+          "maximum": 36.8794
+        },
+        "previousQueryEndToNativeMs": {
+          "n": 1473,
+          "p50": 1.2098,
+          "p95": 1.8123999999999996,
+          "p99": 2.647675999999994,
+          "minimum": 0.4256,
+          "maximum": 4.5053
+        },
+        "cpuQueryBracketMs": {
+          "n": 1473,
+          "p50": 0.1504,
+          "p95": 0.21197999999999997,
+          "p99": 6.956211999999999,
+          "minimum": 0.1236,
+          "maximum": 11.2276
+        },
+        "nativeReadBracketMs": {
+          "n": 1473,
+          "p50": 0.0097,
+          "p95": 0.0116,
+          "p99": 0.017427999999999996,
+          "minimum": 0.0092,
+          "maximum": 0.163
+        },
+        "selectedPairs": [
+          {
+            "phaseStepMs": 6.000000052154064,
+            "currentNativeIntervalMs": 4.6055,
+            "previousNativeIntervalMs": 33.2888,
+            "queryIntervalMs": 34.2894,
+            "previousQueryIntervalMs": 5.5856,
+            "sourcePhaseStepMs": 4.166666666666667
+          },
+          {
+            "phaseStepMs": 34.00000277906656,
+            "currentNativeIntervalMs": 35.0677,
+            "previousNativeIntervalMs": 4.6055,
+            "queryIntervalMs": 5.6058,
+            "previousQueryIntervalMs": 34.2894,
+            "sourcePhaseStepMs": 33.333333333333336
+          },
+          {
+            "phaseStepMs": 6.000000983476639,
+            "currentNativeIntervalMs": 5.6109,
+            "previousNativeIntervalMs": 35.0677,
+            "queryIntervalMs": 34.8287,
+            "previousQueryIntervalMs": 5.6058,
+            "sourcePhaseStepMs": 8.333333333333334
+          },
+          {
+            "phaseStepMs": 4.000186920166016,
+            "currentNativeIntervalMs": 35.4653,
+            "previousNativeIntervalMs": 5.6109,
+            "queryIntervalMs": 6.5542,
+            "previousQueryIntervalMs": 34.8287,
+            "sourcePhaseStepMs": 4.166666666666667
+          },
+          {
+            "phaseStepMs": 6.000000052154064,
+            "currentNativeIntervalMs": 5.1472,
+            "previousNativeIntervalMs": 35.4653,
+            "queryIntervalMs": 32.9994,
+            "previousQueryIntervalMs": 6.5542,
+            "sourcePhaseStepMs": 4.166666666666667
+          },
+          {
+            "phaseStepMs": 33.00000075250864,
+            "currentNativeIntervalMs": 33.843,
+            "previousNativeIntervalMs": 5.1472,
+            "queryIntervalMs": 5.6194,
+            "previousQueryIntervalMs": 32.9994,
+            "sourcePhaseStepMs": 33.333333333333336
+          },
+          {
+            "phaseStepMs": 34.99999921768904,
+            "currentNativeIntervalMs": 35.0882,
+            "previousNativeIntervalMs": 5.1743,
+            "queryIntervalMs": 6.2342,
+            "previousQueryIntervalMs": 34.814,
+            "sourcePhaseStepMs": 37.5
+          },
+          {
+            "phaseStepMs": 6.000000983476639,
+            "currentNativeIntervalMs": 5.2714,
+            "previousNativeIntervalMs": 35.0882,
+            "queryIntervalMs": 33.601,
+            "previousQueryIntervalMs": 6.2342,
+            "sourcePhaseStepMs": 4.166666666666667
+          },
+          {
+            "phaseStepMs": 3.999236971139908,
+            "currentNativeIntervalMs": 34.7617,
+            "previousNativeIntervalMs": 5.2714,
+            "queryIntervalMs": 5.9642,
+            "previousQueryIntervalMs": 33.601,
+            "sourcePhaseStepMs": 4.166666666666667
+          },
+          {
+            "phaseStepMs": 6.000000052154064,
+            "currentNativeIntervalMs": 4.7507,
+            "previousNativeIntervalMs": 34.7617,
+            "queryIntervalMs": 34.0917,
+            "previousQueryIntervalMs": 5.9642,
+            "sourcePhaseStepMs": 4.166666666666667
+          },
+          {
+            "phaseStepMs": 34.00000277906656,
+            "currentNativeIntervalMs": 34.9003,
+            "previousNativeIntervalMs": 4.7507,
+            "queryIntervalMs": 5.9662,
+            "previousQueryIntervalMs": 34.0917,
+            "sourcePhaseStepMs": 37.5
+          },
+          {
+            "phaseStepMs": 6.000000983476639,
+            "currentNativeIntervalMs": 5.1901,
+            "previousNativeIntervalMs": 34.9003,
+            "queryIntervalMs": 34.0665,
+            "previousQueryIntervalMs": 5.9662,
+            "sourcePhaseStepMs": 4.166666666666667
+          }
+        ]
+      }
+    ],
+    "conditions": {
+      "logicalAgents": 1,
+      "nativeParts": 8,
+      "ai": false,
+      "movement": false,
+      "clip": "run",
+      "sourceRuns": 4,
+      "newRuntime": false,
+      "newPbo": false
+    },
+    "limits": [
+      "Reuses earlier four diagnostic runs; not four new independent repetitions.",
+      "Native memory candidate was a diagnostic, not a deployable script solution.",
+      "Detrending separates average rate from residual timing and is analysis only, not a proposed clock correction.",
+      "CPU query bracket includes HUD/log preparation and six getter operations; not exact individual getter timestamp.",
+      "Strong previous-interval agreement does not uniquely prove saved input dt ownership or which render buffer consumes the pose.",
+      "Native graph plus numerator is a reconstructed timeline, not direct final GPU phase.",
+      "No new video decoding or final Present measurement; prior video linkage is preserved but does not certify perceptual smoothness.",
+      "Observer, VSync and capture scheduling are part of these runs; not an uninstrumented performance baseline."
+    ],
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "blockers": [
+    "Reuses earlier four diagnostic runs; not four new independent repetitions.",
+    "Native memory candidate was a diagnostic, not a deployable script solution.",
+    "Detrending separates average rate from residual timing and is analysis only, not a proposed clock correction.",
+    "CPU query bracket includes HUD/log preparation and six getter operations; not exact individual getter timestamp.",
+    "Strong previous-interval agreement does not uniquely prove saved input dt ownership or which render buffer consumes the pose.",
+    "Native graph plus numerator is a reconstructed timeline, not direct final GPU phase.",
+    "No new video decoding or final Present measurement; prior video linkage is preserved but does not certify perceptual smoothness.",
+    "Observer, VSync and capture scheduling are part of these runs; not an uninstrumented performance baseline."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-native-query-order-20261031.md",
+      "sha256": "f6bec3344917b49e243cb592dc836171ebc7b6e9b316dab04ea3389c99dd5868"
+    },
+    {
+      "path": "evidence/animation-native-query-order-20261031.txt",
+      "sha256": "82c945a262501bb9f28c080f7b46ce87f610ed9cbf4ea734d3b0a0415818a51b"
+    }
+  ],
+  "goalComplete": false
+}

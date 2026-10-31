@@ -1,3 +1,5 @@
+> 최신:기존4실행의native/CPU조회직접QPC대조.후보native진행과현재native간격일치,다음CPU조회지연은별도.최종GPU/시각/성능수용아님.[근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-native-query-order-20261031.md).이전기록은아래보존한다.
+
 > 최신:기존6실행2482보존행의질의재사용감사.안전한cache hit·전체중복률·절감률미확립.기존반복억제표본으로중복부재를주장하지않는다.[감사범위](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/contact-query-reuse-audit-20261031.md).이전기록은아래보존한다.
 
 > 최신:같은8포즈의기본/Fast32블록×3실행.구조물일부비용단축·지면추가비용·변동성보존.질의감소를64프레임개선으로간주하지않는다.[조건과원시선정](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/support-frozen-cost-20261031.md).이전기록은아래보존한다.
