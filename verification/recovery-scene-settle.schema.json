@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "recovery-scene-settle-20261031-092800"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "repetitions",
+        "recordedInputs",
+        "solverInvocations",
+        "matchingBaselinesPerRun",
+        "rawRepeatByteIdentical",
+        "waitMilliseconds"
+      ],
+      "properties": {
+        "repetitions": {
+          "const": 2
+        },
+        "recordedInputs": {
+          "const": 21
+        },
+        "solverInvocations": {
+          "const": 84
+        },
+        "matchingBaselinesPerRun": {
+          "const": 21
+        },
+        "waitMilliseconds": {
+          "const": 1000
+        },
+        "rawRepeatByteIdentical": {
+          "const": true
+        }
+      }
+    }
+  }
+}
