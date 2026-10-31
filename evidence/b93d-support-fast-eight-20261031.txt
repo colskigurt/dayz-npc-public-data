@@ -1,0 +1,291 @@
+Selection: complete two-trial aggregates, known foreground limitation, v1 coverage error correction, and selected same-PBO guard/solver source. No raw full trace, video, GPU self-time or 64-agent effect proof.
+
+{
+  "metrics": {
+    "trials": [
+      {
+        "analysisVersion": 2,
+        "foregroundFraction": 0.0,
+        "sourceRunId": "b93d-support-fast-20261031-135720",
+        "label": "shadow8",
+        "runtimeRunId": "runtime-20261031-135845",
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "count": 8,
+        "seconds": 300,
+        "mode": "shadow",
+        "normalQuitVerified": true,
+        "supportCounters": {
+          "supportFastAttempts": 136359.0,
+          "supportFastSweeps": 56648.0,
+          "supportFastEligible": 56648.0,
+          "supportFastUsed": 0.0,
+          "supportFastSkippedRays": 0.0,
+          "supportFastReferenceChecks": 56648.0,
+          "supportFastUnder": 0.0,
+          "supportShadowQueries": 139860.0,
+          "supportShadowCompared": 134001.0,
+          "supportShadowUnder": 0.0,
+          "supportShadowWithoutReference": 9.0,
+          "contactSolves": 69930.0,
+          "contactFootRays": 699300.0
+        },
+        "errorMaximaMeters": {
+          "supportFastMaxUnder": 0.0,
+          "supportFastMaxOver": 0.00436401,
+          "supportShadowMaxUnder": 0.0,
+          "supportShadowMaxOver": 0.0302734
+        },
+        "eligibleBoundComparisonPassed": true,
+        "eightAgentGatePassed": true,
+        "stateDiagnostic": {
+          "terminalArrivals": 8,
+          "unresolvedTerminalAgents": [],
+          "fallEpisodes": 8,
+          "fallsLandedAndResumed": 8,
+          "allPhysicalTransitionsMatched": true,
+          "climbEndFailures": 0,
+          "newFailureLabelEpisodes": {}
+        },
+        "observedFollowCoverage": {
+          "low": 8,
+          "high": 8,
+          "ground": 8
+        },
+        "actualPlayerStimulus": {
+          "FINAL_HOLD": {
+            "samples": 1219,
+            "areas": {
+              "ground": 1219
+            },
+            "maximumDisplacementFromFirstMeters": 0.40627310689854956
+          },
+          "GROUND_EAST": {
+            "samples": 94,
+            "areas": {
+              "ground": 94
+            },
+            "maximumDisplacementFromFirstMeters": 39.52102159993236
+          },
+          "GROUND_EAST_HOLD": {
+            "samples": 140,
+            "areas": {
+              "ground": 140
+            },
+            "maximumDisplacementFromFirstMeters": 0.4062532180660235
+          },
+          "GROUND_HOLD": {
+            "samples": 280,
+            "areas": {
+              "ground": 280
+            },
+            "maximumDisplacementFromFirstMeters": 0.0
+          },
+          "GROUND_NORTH": {
+            "samples": 93,
+            "areas": {
+              "ground": 93
+            },
+            "maximumDisplacementFromFirstMeters": 39.73574083274493
+          },
+          "HIGH_HOLD": {
+            "samples": 562,
+            "areas": {
+              "high": 562
+            },
+            "maximumDisplacementFromFirstMeters": 0.0
+          },
+          "LOW_HOLD": {
+            "samples": 415,
+            "areas": {
+              "low": 415
+            },
+            "maximumDisplacementFromFirstMeters": 0.1238534132672053
+          }
+        },
+        "missionFrameMs": {
+          "samples": 0,
+          "p50": null,
+          "p95": null,
+          "p99": null
+        },
+        "baseSupportQueriesPerSolve": 10.81006721006721,
+        "newPbo": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "finalFunctionalAcceptance": false,
+        "goalComplete": false,
+        "limits": [
+          "Full-run cumulative sampled counters, not a matched cost-window causal contrast.",
+          "Shadow keeps original support authoritative and adds work; cannot prove performance gain.",
+          "Fast mode does not perform reference comparison: zero under counter is not accuracy proof.",
+          "Actual player movement is physically free; stage target departures are reported separately.",
+          "Roof simultaneous occupancy is not a pass requirement. Legitimate falls require valid landing/reacquisition.",
+          "Mission frame timing is not visible pose smoothness or GPU Present."
+        ]
+      },
+      {
+        "analysisVersion": 3,
+        "producerSha256": "401d29a5b819a81ef620ab96bfd9cab06a555a17d13d459d431cf0afb321ab5f",
+        "foregroundFraction": 1.0,
+        "sourceRunId": "b93d-support-fast-20261031-135720",
+        "label": "fast8",
+        "runtimeRunId": "runtime-20261031-142248",
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "count": 8,
+        "seconds": 300,
+        "mode": "fast",
+        "normalQuitVerified": true,
+        "supportCounters": {
+          "supportFastAttempts": 97008.0,
+          "supportFastSweeps": 37271.0,
+          "supportFastEligible": 37271.0,
+          "supportFastUsed": 37271.0,
+          "supportFastSkippedRays": 149084.0,
+          "supportFastReferenceChecks": 0.0,
+          "supportFastUnder": 0.0,
+          "supportShadowQueries": 0.0,
+          "supportShadowCompared": 0.0,
+          "supportShadowUnder": 0.0,
+          "supportShadowWithoutReference": 0.0,
+          "contactSolves": 49860.0,
+          "contactFootRays": 349516.0
+        },
+        "errorMaximaMeters": {
+          "supportFastMaxUnder": 0.0,
+          "supportFastMaxOver": 0.0,
+          "supportShadowMaxUnder": 0.0,
+          "supportShadowMaxOver": 0.0
+        },
+        "eligibleBoundComparisonPassed": false,
+        "eightAgentGatePassed": true,
+        "stateDiagnostic": {
+          "terminalArrivals": 8,
+          "unresolvedTerminalAgents": [],
+          "fallEpisodes": 9,
+          "fallsLandedAndResumed": 9,
+          "allPhysicalTransitionsMatched": true,
+          "climbEndFailures": 0,
+          "newFailureLabelEpisodes": {
+            "CONTACT_SUPPORT_LOST": 1
+          },
+          "algorithmFailureLabels": []
+        },
+        "observedFollowCoverage": {
+          "low": 8,
+          "high": 8,
+          "ground": 8
+        },
+        "actualPlayerStimulus": {
+          "FINAL_HOLD": {
+            "samples": 1088,
+            "areas": {
+              "ground": 1088
+            },
+            "maximumDisplacementFromFirstMeters": 0.3457230465811352
+          },
+          "GROUND_EAST": {
+            "samples": 86,
+            "areas": {
+              "ground": 86
+            },
+            "maximumDisplacementFromFirstMeters": 39.7959221960226
+          },
+          "GROUND_EAST_HOLD": {
+            "samples": 126,
+            "areas": {
+              "ground": 126
+            },
+            "maximumDisplacementFromFirstMeters": 0.25683797410970444
+          },
+          "GROUND_HOLD": {
+            "samples": 253,
+            "areas": {
+              "ground": 253
+            },
+            "maximumDisplacementFromFirstMeters": 0.0
+          },
+          "GROUND_NORTH": {
+            "samples": 86,
+            "areas": {
+              "ground": 86
+            },
+            "maximumDisplacementFromFirstMeters": 40.01313547076171
+          },
+          "HIGH_HOLD": {
+            "samples": 519,
+            "areas": {
+              "high": 519
+            },
+            "maximumDisplacementFromFirstMeters": 0.0
+          },
+          "LOW_HOLD": {
+            "samples": 381,
+            "areas": {
+              "low": 381
+            },
+            "maximumDisplacementFromFirstMeters": 0.0
+          }
+        },
+        "missionFrameMs": {
+          "samples": 14746,
+          "p50": 20.0,
+          "p95": 34.0,
+          "p99": 35.0
+        },
+        "baseSupportQueriesPerSolve": 7.757460890493381,
+        "newPbo": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "finalFunctionalAcceptance": false,
+        "goalComplete": false,
+        "limits": [
+          "Full-run cumulative sampled counters, not a matched cost-window causal contrast.",
+          "Shadow keeps original support authoritative and adds work; cannot prove performance gain.",
+          "Fast mode does not perform reference comparison: zero under counter is not accuracy proof.",
+          "Actual player movement is physically free; stage target departures are reported separately.",
+          "Roof simultaneous occupancy is not a pass requirement. Legitimate falls require valid landing/reacquisition.",
+          "Mission frame timing is not visible pose smoothness or GPU Present."
+        ]
+      }
+    ],
+    "repetitionsEachCondition": 1,
+    "matchedCostComparison": false,
+    "baselineShadowForeground": false,
+    "legitimateRepeatedFallsAccepted": true,
+    "all64SimultaneousRoofOccupancyRequired": false,
+    "newPbo": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "sourceAudit": {
+    "originalArchiveSha256": "453d6a9e688d7bf14c5b98c305dd5a45200ec52156949c10691839b43c58bc9a",
+    "candidateArchiveSha256": "b93d2e713fe7aeb41570c2b21839ff1ada148be0eac090747220b6a4f78ad0d1",
+    "localMatchesPacked": true,
+    "guard": "    bool StructureSupportBound(vector footPoint,Object centerObject,vector centerPoint,vector centerNormal,float centerFraction,out float upperY)\r\n    {\r\n        SupportFastAttempts++;SupportFastLastGuard=\"CENTER_SURFACE\";\r\n        if(!centerObject || !Director.Fixture || centerObject.GetType()!=\"StaticObj_Container_1C\")return false;\r\n        if(Director.Fixture.Objects.Find(centerObject)<0 || !(centerNormal[1]>=0.995) || !(centerFraction>0.001 && centerFraction<=1))return false;\r\n        vector bounds[2];if(!centerObject.GetCollisionBox(bounds))return false;\r\n        vector footLocal=centerObject.WorldToModel(footPoint);\r\n        // Keep the complete sample footprint inside the authored collision box.\r\n        // The sweep below still checks actual geometry; the box is no support proof.\r\n        if(footLocal[0]<bounds[0][0]+0.065 || footLocal[0]>bounds[1][0] - 0.065)return false;\r\n        if(footLocal[2]<bounds[0][2]+0.065 || footLocal[2]>bounds[1][2] - 0.065)return false;\r\n        SupportFastSweeps++;\r\n        vector begin=footPoint+\"0 0.8 0\";vector end=footPoint+\"0 -0.7 0\";\r\n        Object hit;vector point,normal;float fraction;\r\n        bool found=DayZPhysics.SphereCastBullet(begin,end,0.5,DGBGroundAgent.Floors(),Leader,hit,point,normal,fraction);\r\n        SupportFastLastGuard=\"SWEEP_SURFACE\";\r\n        if(!found || hit!=centerObject || !(fraction>0.001 && fraction<=1) || !(normal[1]>=0.995))return false;\r\n        SupportFastLastGuard=\"FOOTPRINT\";\r\n        float dx=point[0] - footPoint[0];float dz=point[2] - footPoint[2];\r\n        if(dx*dx+dz*dz>0.065*0.065)return false;\r\n        vector center=begin+(end - begin)*fraction;\r\n        upperY=center[1] - Math.Sqrt(0.25 - 0.065*0.065)+0.001;\r\n        SupportFastLastGuard=\"HEIGHT_CONSISTENCY\";\r\n        if(!(upperY>=centerPoint[1] && upperY - centerPoint[1]<=0.008))return false;\r\n        if(!(upperY>=footPoint[1] - 1.2 && upperY<=footPoint[1]+0.13))return false;\r\n        SupportFastLastGuard=\"\";SupportFastEligible++;\r\n        return true;\r\n    }\r\n",
+    "selectedSource": [
+      {
+        "member": "scripts/4_world/dgbnativeground.c",
+        "startLine": 298,
+        "endLine": 331,
+        "text": "    bool StructureSupportBound(vector footPoint,Object centerObject,vector centerPoint,vector centerNormal,float centerFraction,out float upperY)\n    {\n        SupportFastAttempts++;SupportFastLastGuard=\"CENTER_SURFACE\";\n        if(!centerObject || !Director.Fixture || centerObject.GetType()!=\"StaticObj_Container_1C\")return false;\n        if(Director.Fixture.Objects.Find(centerObject)<0 || !(centerNormal[1]>=0.995) || !(centerFraction>0.001 && centerFraction<=1))return false;\n        vector bounds[2];if(!centerObject.GetCollisionBox(bounds))return false;\n        vector footLocal=centerObject.WorldToModel(footPoint);\n        // Keep the complete sample footprint inside the authored collision box.\n        // The sweep below still checks actual geometry; the box is no support proof.\n        if(footLocal[0]<bounds[0][0]+0.065 || footLocal[0]>bounds[1][0] - 0.065)return false;\n        if(footLocal[2]<bounds[0][2]+0.065 || footLocal[2]>bounds[1][2] - 0.065)return false;\n        SupportFastSweeps++;\n        vector begin=footPoint+\"0 0.8 0\";vector end=footPoint+\"0 -0.7 0\";\n        Object hit;vector point,normal;float fraction;\n        bool found=DayZPhysics.SphereCastBullet(begin,end,0.5,DGBGroundAgent.Floors(),Leader,hit,point,normal,fraction);\n        SupportFastLastGuard=\"SWEEP_SURFACE\";\n        if(!found || hit!=centerObject || !(fraction>0.001 && fraction<=1) || !(normal[1]>=0.995))return false;\n        SupportFastLastGuard=\"FOOTPRINT\";\n        float dx=point[0] - footPoint[0];float dz=point[2] - footPoint[2];\n        if(dx*dx+dz*dz>0.065*0.065)return false;\n        vector center=begin+(end - begin)*fraction;\n        upperY=center[1] - Math.Sqrt(0.25 - 0.065*0.065)+0.001;\n        SupportFastLastGuard=\"HEIGHT_CONSISTENCY\";\n        if(!(upperY>=centerPoint[1] && upperY - centerPoint[1]<=0.008))return false;\n        if(!(upperY>=footPoint[1] - 1.2 && upperY<=footPoint[1]+0.13))return false;\n        SupportFastLastGuard=\"\";SupportFastEligible++;\n        return true;\n    }\n    // Observation only: this value must never feed proposedLift or acceptance.\n    void ObserveSupportSweep(vector footPoint,bool referenceFound,float referenceY)\n    {\n        int started=TickCount(0);\n        SupportShadowQueries++;\n        vector begin=footPoint+\"0 0.8 0\";vector end=footPoint+\"0 -0.7 0\";"
+      },
+      {
+        "member": "scripts/4_world/dgbnativeground.c",
+        "startLine": 359,
+        "endLine": 416,
+        "text": "    bool SolveContactsInternal(vector anchor,float heading,out float proposedLift,out array<vector> points,float minimumLift=0)\n    {\n        proposedLift=0;points=new array<vector>;\n        ref array<vector> raw={};\n        int boneStarted=TickCount(0);\n        for(int j=0;j<JointIds.Count();j++)raw.Insert(anchor+Rotate(Leader.GetBonePositionMS(JointIds[j])+IdleOffset,heading));\n        ContactBoneTicks+=TickCount(boneStarted);\n        array<vector> supportOffsets={\"0 0 0\",\"0.065 0 0\",\"-0.065 0 0\",\"0 0 0.065\",\"0 0 -0.065\"};\n        int liftFoot=2;\n        int footStarted=TickCount(0);\n        float shadowBefore=SupportShadowTicks;\n        for(int foot=2;foot<4;foot++)\n        {\n            bool referenceFound=false;float referenceY=-100000;\n            bool centerTested=false;bool centerFound=false;\n            Object centerObject;vector centerPoint,centerNormal;float centerFraction;\n            bool fastEligible=false;float supportBound;\n            if(Director.SupportSweepFast || Director.SupportSweepShadow)\n            {\n                centerTested=true;ContactFootRays++;\n                centerFound=DayZPhysics.RayCastBullet(raw[foot]+\"0 0.3 0\",raw[foot]+\"0 -1.2 0\",DGBGroundAgent.Floors(),Leader,centerObject,centerPoint,centerNormal,centerFraction);\n                if(centerFound && centerNormal[1]>=0.65){referenceFound=true;referenceY=centerPoint[1];}\n                int fastStarted=TickCount(0);\n                if(referenceFound)fastEligible=StructureSupportBound(raw[foot],centerObject,centerPoint,centerNormal,centerFraction,supportBound);\n                SupportFastTicks+=TickCount(fastStarted);\n            }\n            bool useBound=Director.SupportSweepFast && fastEligible && !Director.SupportSweepShadow;\n            if(useBound)\n            {referenceFound=true;referenceY=supportBound;SupportFastUsed++;SupportFastSkippedRays+=4;}\n            else\n            foreach(vector offset:supportOffsets)\n            {\n                if(centerTested && offset==vector.Zero)continue;\n                Object hit;vector point,normal;float fraction;\n                vector origin=raw[foot]+offset;\n                ContactFootRays++;\n                if(DayZPhysics.RayCastBullet(origin+\"0 0.3 0\",origin+\"0 -1.2 0\",DGBGroundAgent.Floors(),Leader,hit,point,normal,fraction) && normal[1]>=0.65)\n                {\n                    referenceFound=true;referenceY=Math.Max(referenceY,point[1]);\n                }\n            }\n            if(Director.SupportSweepShadow && fastEligible && referenceFound)\n            {\n                SupportFastReferenceChecks++;\n                float fastError=referenceY - supportBound;\n                if(fastError>0.001)SupportFastUnder++;\n                SupportFastMaxUnder=Math.Max(SupportFastMaxUnder,fastError);\n                SupportFastMaxOver=Math.Max(SupportFastMaxOver, -fastError);\n            }\n            if(referenceFound)\n            {\n                float required=referenceY+Radii[foot]+0.03 - raw[foot][1];\n                if(required>proposedLift){proposedLift=required;liftFoot=foot;}\n            }\n            if(Director.SupportSweepShadow)ObserveSupportSweep(raw[foot],referenceFound,referenceY);\n        }\n        proposedLift=Math.Max(proposedLift,minimumLift);\n        ContactFootTicks+=TickCount(footStarted) - (SupportShadowTicks - shadowBefore);"
+      }
+    ],
+    "observerCallsInheritedContactSolver": true,
+    "fastUsesBoundOnlyWhenEligible": true,
+    "shadowUsesOriginalRays": true,
+    "worldJointSweepsPreserved": true,
+    "limits": [
+      "Guard restricted to registered StaticObj_Container_1C; no general surface equivalence claim.",
+      "Geometric conservative bound must still be compared against actual reference rays; class/box alone are not support proof.",
+      "Generic shadow misses/underbounds are distinct from eligible FastReferenceChecks/FastUnder.",
+      "Existing static source is not a runtime quality result."
+    ]
+  }
+}

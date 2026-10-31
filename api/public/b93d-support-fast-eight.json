@@ -1,0 +1,293 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T14:29:11.370127+09:00",
+  "sourceRunId": "b93d-support-fast-20261031-135720",
+  "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+  "verificationStatus": {
+    "diagnostic": "eligible_bound_reference_comparison_passed",
+    "eightAgentFunctional": "single_active_run_scoped_pass",
+    "shadowForeground": "zero_foreground_samples",
+    "sixtyFourAgentFunctional": "not_tested_this_candidate",
+    "visibleSmoothness": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "trials": [
+      {
+        "analysisVersion": 2,
+        "foregroundFraction": 0.0,
+        "sourceRunId": "b93d-support-fast-20261031-135720",
+        "label": "shadow8",
+        "runtimeRunId": "runtime-20261031-135845",
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "count": 8,
+        "seconds": 300,
+        "mode": "shadow",
+        "normalQuitVerified": true,
+        "supportCounters": {
+          "supportFastAttempts": 136359.0,
+          "supportFastSweeps": 56648.0,
+          "supportFastEligible": 56648.0,
+          "supportFastUsed": 0.0,
+          "supportFastSkippedRays": 0.0,
+          "supportFastReferenceChecks": 56648.0,
+          "supportFastUnder": 0.0,
+          "supportShadowQueries": 139860.0,
+          "supportShadowCompared": 134001.0,
+          "supportShadowUnder": 0.0,
+          "supportShadowWithoutReference": 9.0,
+          "contactSolves": 69930.0,
+          "contactFootRays": 699300.0
+        },
+        "errorMaximaMeters": {
+          "supportFastMaxUnder": 0.0,
+          "supportFastMaxOver": 0.00436401,
+          "supportShadowMaxUnder": 0.0,
+          "supportShadowMaxOver": 0.0302734
+        },
+        "eligibleBoundComparisonPassed": true,
+        "eightAgentGatePassed": true,
+        "stateDiagnostic": {
+          "terminalArrivals": 8,
+          "unresolvedTerminalAgents": [],
+          "fallEpisodes": 8,
+          "fallsLandedAndResumed": 8,
+          "allPhysicalTransitionsMatched": true,
+          "climbEndFailures": 0,
+          "newFailureLabelEpisodes": {}
+        },
+        "observedFollowCoverage": {
+          "low": 8,
+          "high": 8,
+          "ground": 8
+        },
+        "actualPlayerStimulus": {
+          "FINAL_HOLD": {
+            "samples": 1219,
+            "areas": {
+              "ground": 1219
+            },
+            "maximumDisplacementFromFirstMeters": 0.40627310689854956
+          },
+          "GROUND_EAST": {
+            "samples": 94,
+            "areas": {
+              "ground": 94
+            },
+            "maximumDisplacementFromFirstMeters": 39.52102159993236
+          },
+          "GROUND_EAST_HOLD": {
+            "samples": 140,
+            "areas": {
+              "ground": 140
+            },
+            "maximumDisplacementFromFirstMeters": 0.4062532180660235
+          },
+          "GROUND_HOLD": {
+            "samples": 280,
+            "areas": {
+              "ground": 280
+            },
+            "maximumDisplacementFromFirstMeters": 0.0
+          },
+          "GROUND_NORTH": {
+            "samples": 93,
+            "areas": {
+              "ground": 93
+            },
+            "maximumDisplacementFromFirstMeters": 39.73574083274493
+          },
+          "HIGH_HOLD": {
+            "samples": 562,
+            "areas": {
+              "high": 562
+            },
+            "maximumDisplacementFromFirstMeters": 0.0
+          },
+          "LOW_HOLD": {
+            "samples": 415,
+            "areas": {
+              "low": 415
+            },
+            "maximumDisplacementFromFirstMeters": 0.1238534132672053
+          }
+        },
+        "missionFrameMs": {
+          "samples": 0,
+          "p50": null,
+          "p95": null,
+          "p99": null
+        },
+        "baseSupportQueriesPerSolve": 10.81006721006721,
+        "newPbo": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "finalFunctionalAcceptance": false,
+        "goalComplete": false,
+        "limits": [
+          "Full-run cumulative sampled counters, not a matched cost-window causal contrast.",
+          "Shadow keeps original support authoritative and adds work; cannot prove performance gain.",
+          "Fast mode does not perform reference comparison: zero under counter is not accuracy proof.",
+          "Actual player movement is physically free; stage target departures are reported separately.",
+          "Roof simultaneous occupancy is not a pass requirement. Legitimate falls require valid landing/reacquisition.",
+          "Mission frame timing is not visible pose smoothness or GPU Present."
+        ]
+      },
+      {
+        "analysisVersion": 3,
+        "producerSha256": "401d29a5b819a81ef620ab96bfd9cab06a555a17d13d459d431cf0afb321ab5f",
+        "foregroundFraction": 1.0,
+        "sourceRunId": "b93d-support-fast-20261031-135720",
+        "label": "fast8",
+        "runtimeRunId": "runtime-20261031-142248",
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "count": 8,
+        "seconds": 300,
+        "mode": "fast",
+        "normalQuitVerified": true,
+        "supportCounters": {
+          "supportFastAttempts": 97008.0,
+          "supportFastSweeps": 37271.0,
+          "supportFastEligible": 37271.0,
+          "supportFastUsed": 37271.0,
+          "supportFastSkippedRays": 149084.0,
+          "supportFastReferenceChecks": 0.0,
+          "supportFastUnder": 0.0,
+          "supportShadowQueries": 0.0,
+          "supportShadowCompared": 0.0,
+          "supportShadowUnder": 0.0,
+          "supportShadowWithoutReference": 0.0,
+          "contactSolves": 49860.0,
+          "contactFootRays": 349516.0
+        },
+        "errorMaximaMeters": {
+          "supportFastMaxUnder": 0.0,
+          "supportFastMaxOver": 0.0,
+          "supportShadowMaxUnder": 0.0,
+          "supportShadowMaxOver": 0.0
+        },
+        "eligibleBoundComparisonPassed": false,
+        "eightAgentGatePassed": true,
+        "stateDiagnostic": {
+          "terminalArrivals": 8,
+          "unresolvedTerminalAgents": [],
+          "fallEpisodes": 9,
+          "fallsLandedAndResumed": 9,
+          "allPhysicalTransitionsMatched": true,
+          "climbEndFailures": 0,
+          "newFailureLabelEpisodes": {
+            "CONTACT_SUPPORT_LOST": 1
+          },
+          "algorithmFailureLabels": []
+        },
+        "observedFollowCoverage": {
+          "low": 8,
+          "high": 8,
+          "ground": 8
+        },
+        "actualPlayerStimulus": {
+          "FINAL_HOLD": {
+            "samples": 1088,
+            "areas": {
+              "ground": 1088
+            },
+            "maximumDisplacementFromFirstMeters": 0.3457230465811352
+          },
+          "GROUND_EAST": {
+            "samples": 86,
+            "areas": {
+              "ground": 86
+            },
+            "maximumDisplacementFromFirstMeters": 39.7959221960226
+          },
+          "GROUND_EAST_HOLD": {
+            "samples": 126,
+            "areas": {
+              "ground": 126
+            },
+            "maximumDisplacementFromFirstMeters": 0.25683797410970444
+          },
+          "GROUND_HOLD": {
+            "samples": 253,
+            "areas": {
+              "ground": 253
+            },
+            "maximumDisplacementFromFirstMeters": 0.0
+          },
+          "GROUND_NORTH": {
+            "samples": 86,
+            "areas": {
+              "ground": 86
+            },
+            "maximumDisplacementFromFirstMeters": 40.01313547076171
+          },
+          "HIGH_HOLD": {
+            "samples": 519,
+            "areas": {
+              "high": 519
+            },
+            "maximumDisplacementFromFirstMeters": 0.0
+          },
+          "LOW_HOLD": {
+            "samples": 381,
+            "areas": {
+              "low": 381
+            },
+            "maximumDisplacementFromFirstMeters": 0.0
+          }
+        },
+        "missionFrameMs": {
+          "samples": 14746,
+          "p50": 20.0,
+          "p95": 34.0,
+          "p99": 35.0
+        },
+        "baseSupportQueriesPerSolve": 7.757460890493381,
+        "newPbo": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "finalFunctionalAcceptance": false,
+        "goalComplete": false,
+        "limits": [
+          "Full-run cumulative sampled counters, not a matched cost-window causal contrast.",
+          "Shadow keeps original support authoritative and adds work; cannot prove performance gain.",
+          "Fast mode does not perform reference comparison: zero under counter is not accuracy proof.",
+          "Actual player movement is physically free; stage target departures are reported separately.",
+          "Roof simultaneous occupancy is not a pass requirement. Legitimate falls require valid landing/reacquisition.",
+          "Mission frame timing is not visible pose smoothness or GPU Present."
+        ]
+      }
+    ],
+    "repetitionsEachCondition": 1,
+    "matchedCostComparison": false,
+    "baselineShadowForeground": false,
+    "legitimateRepeatedFallsAccepted": true,
+    "all64SimultaneousRoofOccupancyRequired": false,
+    "newPbo": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "blockers": [
+    "Shadow background exposure prevents matched foreground cost comparison.",
+    "Current active mode has no simultaneous original-ray reference; under=0 is not an accuracy proof.",
+    "Current64 functional and repeated cost tests pending.",
+    "Native graph/GPU/GC self-time and perceptual smoothness remain unaccepted."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/b93d-support-fast-eight-20261031.md",
+      "sha256": "ff5e597853cf470a80f482406e1b5d2fdc6234f52937f4e6991a26f5ba5171a9"
+    },
+    {
+      "path": "evidence/b93d-support-fast-eight-20261031.txt",
+      "sha256": "a38c327a831e7b5ec8c342deaae9a24abded8bb47b68ba9156adb70f135461c1"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
