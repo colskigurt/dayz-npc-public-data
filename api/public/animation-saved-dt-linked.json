@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T17:06:28.004267+09:00",
+  "sourceRunId": "animation-saved-dt-linked-20261031-1700",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "verificationStatus": {
+    "diagnostic": "single_saved_dt_accounting_and_cpu_proxy",
+    "directInputAccounting": true,
+    "repetitions": 1,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "supportedDeployment": false,
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-saved-dt-linked-20261031-1700",
+    "runtimeRunId": "runtime-20261031-170014",
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "conditions": {
+      "logicalAgents": 1,
+      "nativeParts": 8,
+      "ai": false,
+      "movement": false,
+      "clip": "run",
+      "frameSync": "on",
+      "video": false,
+      "nativeCarry": "previous diagnostic unchanged",
+      "addedHook": "read-only inner saved XMM6 stack input"
+    },
+    "summary": {
+      "activeLinkedEntries": 1499,
+      "consecutiveModelSteps": 1498,
+      "float32ModelExactSteps": 1498,
+      "evaluations": 599,
+      "clockBridgeAcks": 39,
+      "cpuJoinedEntries": 1499,
+      "savedInputDtMs": {
+        "n": 1499,
+        "p50": 19.999999552965164,
+        "p95": 19.999999552965164,
+        "p99": 20.999999716877937,
+        "minimum": 17.000000923871994,
+        "maximum": 23.000000044703484
+      },
+      "inputVsEffectiveStepRmsMs": 0.0004007303675749394,
+      "inputVsNativeInterval": {
+        "correlation": 0.07472651328527222,
+        "rmsDifferenceMs": 1.8228629252768054
+      },
+      "cpuIntervals": {
+        "previousCpuIntervalMs": {
+          "correlation": 0.6275645218088272,
+          "rmsDifferenceMs": 0.24622038790834794
+        },
+        "currentCpuIntervalMs": {
+          "correlation": -0.28898085883276936,
+          "rmsDifferenceMs": 0.4501771688138969
+        }
+      },
+      "innerToNextCpuMs": {
+        "n": 1499,
+        "p50": 18.5874,
+        "p95": 19.37304,
+        "p99": 19.512486,
+        "minimum": 7.87,
+        "maximum": 20.4704
+      },
+      "outerToInnerMs": {
+        "n": 1499,
+        "p50": 0.0189,
+        "p95": 0.0217,
+        "p99": 0.03634399999999996,
+        "minimum": 0.0173,
+        "maximum": 0.1039
+      },
+      "foregroundFraction": 1.0
+    },
+    "cpuPoseProxy": {
+      "sourceRunId": "animation-saved-dt-linked-20261031-1700",
+      "mode": "candidate30",
+      "runtimeRunId": "runtime-20261031-170014",
+      "sourceSha256": "b96de948e5b91a5fdd6566e660fc4f92a9938c7e7dc40fdfc8e85ccc9adf2360",
+      "sourceFileId": "dg_subset_p0_run.txa",
+      "trimmedNativeWindowSeconds": 0.25,
+      "selectedFrames": 1473,
+      "consecutivePairs": 1472,
+      "fitErrorMeters": {
+        "n": 1473,
+        "p50": 0.008298577846706798,
+        "p95": 0.020318011610082544,
+        "p99": 0.026462879109377117,
+        "maximum": 0.03148626419140602
+      },
+      "negativeSteps": 0,
+      "negativeStepsBeyond16ms": 0,
+      "phaseStepsMs": {
+        "n": 1472,
+        "p50": 20.833333333333332,
+        "p95": 25.0,
+        "p99": 33.333333333333336,
+        "maximum": 58.333333333333336
+      },
+      "phaseAdvanceSeconds": 29.441666666666134,
+      "pairedMissionSeconds": 29.448999999999995,
+      "phaseSecondsPerMissionSecond": 0.9997509819235335,
+      "nativeOrderingWindowOnly": true,
+      "phaseDirectlyMeasured": false,
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false,
+      "limits": [
+        "Nearest quarter-key six-joint source FK is a proxy, not decoded final GPU phase or direct native clip operand.",
+        "Source curve/global-position interpolation differs from local quaternion interpolation; retain fit errors and ambiguity limits.",
+        "Independent nearest curve fit does not use candidate graph clock to choose phase.",
+        "Trims first/last250ms of active observer and excludes nonconsecutive frame pairs."
+      ]
+    },
+    "limits": [
+      "One new diagnostic, not a performance A/B or smoothness acceptance.",
+      "Direct stack value is saved incoming scalar under validated return-address/ABI guards; actual FP register not captured.",
+      "Observer hooks and numeric carry are isolated diagnostics, not a deployable PBO fix.",
+      "Exact float32 recurrence establishes measured scheduler accounting, not which GPU buffer is presented.",
+      "CPU bracket is callback-level, not exact getter or GPU timestamp.",
+      "No native graph self-time, GPU/Present, new video or64 functional regression in this run.",
+      "Source FK quarter-key phase is an estimator; pose step tails are not direct native/GPU frame timings.",
+      "No OBS capture in this run; prior recorded trials are not matched overhead controls."
+    ],
+    "next": [
+      "Keep actual readiness and owned descriptor checks in future observers.",
+      "Calibrate source-phase estimator error and distinguish capture/observer scheduling from display consumption before another correction.",
+      "Establish supported deployment route and final visual evidence separately; current exact accounting is diagnostic only."
+    ],
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "blockers": [
+    "One new diagnostic, not a performance A/B or smoothness acceptance.",
+    "Direct stack value is saved incoming scalar under validated return-address/ABI guards; actual FP register not captured.",
+    "Observer hooks and numeric carry are isolated diagnostics, not a deployable PBO fix.",
+    "Exact float32 recurrence establishes measured scheduler accounting, not which GPU buffer is presented.",
+    "CPU bracket is callback-level, not exact getter or GPU timestamp.",
+    "No native graph self-time, GPU/Present, new video or64 functional regression in this run.",
+    "Source FK quarter-key phase is an estimator; pose step tails are not direct native/GPU frame timings.",
+    "No OBS capture in this run; prior recorded trials are not matched overhead controls."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-saved-dt-linked-20261031.md",
+      "sha256": "e0517deb747f4bdf4a6ed6c4d2054b8f5f9d759c6953d623a453c08101c2b776"
+    },
+    {
+      "path": "evidence/animation-saved-dt-linked-20261031.txt",
+      "sha256": "1718caa163e5bbf54bef141bcaa914089b3dd2a2a1349c851a327b3eee2c5089"
+    }
+  ],
+  "goalComplete": false
+}

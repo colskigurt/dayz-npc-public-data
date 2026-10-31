@@ -1,3 +1,5 @@
+> 최신:직접입력dt연결1498/1498 f32회계일치·CPU평균진행약1배.단일진단이며최종표시/지원배포/64비용은미수용.[측정과한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-saved-dt-linked-20261031.md).실패시도도아래보존한다.
+
 > 최신:후보saved-dt연결시도는미수용.선택조건과준비전관찰창실패를분리하고동일프로세스passive400호출을확인했다.[실패와제한](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-saved-dt-selector-20261031.md).기존결과는아래보존한다.
 
 > 최신:기존4실행의native/CPU조회직접QPC대조.후보native진행과현재native간격일치,다음CPU조회지연은별도.최종GPU/시각/성능수용아님.[근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-native-query-order-20261031.md).이전기록은아래보존한다.

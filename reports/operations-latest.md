@@ -1,51 +1,61 @@
-# 애니메이션 dt 연결 계측 실패와 선택조건 진단
+# 실제 입력 dt와 native 시간 회계 연결: 단일 진단
 
-작성: 2026-10-31T16:57:35.662385+09:00
+작성: 2026-10-31T17:06:25.833036+09:00
 
 ## 1. 작업 목표
 
-기존 잔여시간 보존 후보에서 실제 저장 입력dt와 외부 보간 분자를 연결하려 했다. 제품 코드는 수정하지 않고 이전 진단용 numeric carry는 그대로 유지했다. 신규 시각·성능 성공을 목표와 혼동하지 않는다.
+수정한선택조건으로실제저장입력dt→누계→평가→잔여시간→보간분자를연결한다.이전수치보정은그대로유지하고,CPU포즈도독립source FK와대조한다.새제품보간이나배속을추가하지않는다.
 
 ## 2. 실제 수행
 
-서명된 기존B8FB·원본453D·부분골격0C6E로 고정1개체100초 두 실행을 정상 종료했다. 각 실행 launcher의3개 서명 검사가 통과했고 새PBO/서명 생성은 없다. REA Frida attach는frida_binding.node 누락으로실패했다. 설정설치없이기존Python Frida를사용했고REA Evidence로표시하지않는다.
+기존서명B8FB·453D·0C6E로고정1개체100초실행 runtime-20261031-170014를진행했다.미션6.167초·본갱신102회·실제queried/전경포즈를확인한뒤30초native관찰과20초독립nonce/ACK시계연결을시작했다.선택된8파트의기존carry진단은동일하며inner에서saved XMM6 stack scalar를읽었다.직접caller ABI·동일frame소유renderer/descriptor/graph/numerator를대조했고,다른hook이있는상위반환주소를원본주소로가정하지않았다.
 
-첫30초관찰은기존preReset/outer에읽기전용inner-entry를추가했다.두번째10초관찰은반환주소거부카운터와소유renderer대조를추가했으나준비상태gate없이시작돼호출0이었다.같은두번째프로세스에서CPU본갱신시작을확인한뒤8초passive관찰을추가했다.이마지막관찰에는numeric carry가없고이전관찰자도disabled상태였다.영상녹화없음.모든hook은비활성화후프로세스정상종료까지유지했다.
+REA Frida는앞선바인딩누락상태를복구하거나재설치하지않고기존Python Frida를사용했다.REA Evidence가아니다.관찰후hook비활성화·게임정상종료·원시입력무결성을확인했다.영상녹화없음.CPU6관절source FK는기존quarter-key독립fitter의경로만맞춰재사용했고candidate graph clock으로phase를선택하지않았다.
+
+분석파일목록에configuration.json sidecar가빠져최초분석저장이실패했다.실행된instrumentation의정확한inline JSON을추출해보완했으며실험을다시실행하거나원시로그를수정하지않았다.파생경위를별도로보존한다.
 
 ## 3. 측정 결과
 
-| 관찰 | outer | 선택73본 inner | 오류/누락 | 판정 |
-|---|---:|---:|---|---|
-| runtime-20261031-164810/30초 |12000|0|script0/observer0/dropped0|후보dt연결실패|
-| runtime-20261031-165237/초기10초 |0|0|script0/observer0/dropped0|준비미검증관찰창제외|
-| 같은165237/준비후passive8초 |3600,선택73본400|400|script0/observer0|선택조건진단성공|
+| 항목 | 결과 |
+|---|---|
+| active linked outer/inner |1499건|
+| 연속float32회계 |1498/1498 정확일치|
+| 연속구간evaluation |599회|
+| 독립clock ACK |39건|
+| CPU callback과QPC결합 |1499건|
+| 입력dt p50/p95/p99 |20.000/20.000/21.000ms|
+| 입력dt범위 |17.000~23.000ms|
+| 입력dt와effective step차이RMS |0.000400730ms|
+| inner→다음CPU callback p50/p95/p99 |18.5874/19.3730/19.5125ms|
+| outer→inner p50/p95/p99 |0.0189/0.0217/0.0363ms|
+| script/observer오류·drop·long-frame guard |0/0/0/0|
 
-passive helper raw4000중예상직접호출반환3600,선택된소유73본400이었다.outer총수는9host/motor문맥을포함하며8파트각450회라는식으로계산하지않는다.선정8개inner표본은직접반환0xb133d8·상위반환outside_module·stack receiver일치였고저장dt는각0.01999999955초다.이는선정8개예시이며전체400건dt분포가아니다.
+실제입력dt는이전CPU interval과차이RMS0.2462ms,다음CPU interval과0.4502ms였다.현재native-entry wall interval과는1.8229ms이고상관0.0747이다.입력대부분이20ms인좁은분산조건이므로상관계수만으로동기화성패를판정하지않는다.콜백타이밍과스케줄러에전달된dt는다른측정이다.
 
-후보의직접saved-dt시간연결·정확한float32회계는아직수용되지않았다.100초미션전체와30/10/8초관찰창을구분한다.frame p50/p95/p99·GPU표시·64기능·개선률은이번미측정이다.
+독립CPU포즈추정:앞뒤250ms제외1473표본/1472연속쌍,phase/mission=0.999750982,역방향단계0.6관절FK오차p50/p95/p99=8.299/20.318/26.463mm.추정phase step p50/p95/p99=20.833/25.000/33.333ms,최대58.333ms다.이것은4.167ms해상도최근접source FK추정치이며실제표시frame지연이나확정된정지시간이아니다.100초중관찰30초만분석하며1개체를8개체로세지않는다.
 
 ## 4. 원인 분석
 
-확인:준비후inner함수호출은존재했다.동시에계측된스택의상위반환은기존관찰자가가정한모듈내주소와달랐다.따라서첫관찰의inner0을함수미호출이나dt부재로해석할수없다.기존outer관찰이존재하는문맥에서단일inner관찰의스택가정을그대로사용한선택조건이문제였다.정확한trampoline소유권이나Frida내부구현까지확정하지는않는다.
+확인:직접읽은저장입력dt를float32로더한누계가평가전total과같고,threshold교차·50ms graph step·잔여시간·보간분자가1498단계모두맞았다.따라서기존후보에서미확인이었던입력회계연결은이1회표본범위에서확인했다.독립CPU포즈추정평균진행도약1배이며숫자graph clock만맞춘결과와구분한다.
 
-두번째호출0은준비gate가없는유한관찰창의실패다.이후같은프로세스에서정상갱신과호출을확인했으므로재시작하지않고범위를좁혔다.로딩시간의정확한시계경계는추가확정하지않으며타이밍결과에서제외한다.
+미확인:source phase추정의tail에는FK모델·보간·phase양자화오차가섞인다.이를화면끊김으로단정하지않는다.이번영상없는실행의p95 callback대기19.37ms와이전녹화실행약33ms를차감해OBS가원인이라고주장하지않는다.녹화/계측/실행순서조건이다르며matched comparison이아니다.지원제품경로·GPU palette/Present소비·실제smoothness는여전히미확보다.
 
-미확인:후보의입력dt→누계→평가→보간→CPU조회전체연결은여전히미완료다.기본상태passive선택진단을후보검증성공으로대체하지않는다.기존CPU/nativeQPC진단과GPU소비미확인판정도보존한다.
+반증범위:후보의시간회계가실제incoming dt와맞지않는다는해석은이측정에맞지않는다.이것이모든고부하/긴frame/전투/14클립에서맞는다는의미는아니다.입력17~23ms조건으로긴framebacklog안전성을수용하지않는다.
 
 ## 5. 검증 수준
 
-프로세스종료·기존서명검사·관찰자실패보존·준비후호출선택조건진단:확인.후보dt연결:실패/미수용.제품수정·8/64회귀·시각품질·성능·최종수용:미완료.20ms p95는목표다.
+갱신준비gate·observer소유권·saved-dt f32회계·독립CPU평균진행:단일진단성공.기존4회carry인과진단과연결하지만이번새직접dt관찰의반복수는1이다.시각품질·GPU소비·지원배포수정·8/64회귀·성능목표·최종수용:미완료.20ms p95는목표다.
 
 ## 6. 변경 사항
 
-별도진단observer/driver/분석·보고파생물만추가했다.게임Source·PBO·공통배포본·운영서버·원시과거기록·키는보존했다.기존진단native carry는첫실행에서4800회기록됐으며두번째초기관찰에서는0회,준비후passive는쓰기없음이다.실제실행은2회이며동일프로세스passive를세번째게임실행으로세지않는다.
+새observer/driver준비gate와분석·보고파생물만추가했다.기존게임Source·미션·PBO·운영서버·원시과거자료·개인키는보존했다.새PBO/서명생성없음.실행전기존3모드서명검사통과.후보carry는격리native진단이며제품배포가아니다.8파트4800회numeric carry기록,descriptor pointer교체없음,active return hook없음이다.
 
 ## 7. 원시 증거
 
-각prepare/observersource·configuration/plan·calls/status,passive선정관찰과별도closed기록,두launch/CPUclock/기존compile기록을연결한다.passive observation의normalQuitVerified=false는관찰당시중간값이며최종closed.json의true와구분해둘다보존했다.원시로그나실패status를고쳐성공으로만들지않았다.저장전hash·JSON·정상종료·현재프로세스부재를확인한다.
+plan/readiness/inline configuration/observer/driver/calls/status/clockbridge/result와profile launch/CPUclock을연결한다.source FK TXA는기존manifest해시검증후사용했다.패킷은집계와선정처음/마지막모델·CPU쌍이며전체raw/영상이아니다.소스파일text정규화해시와디스크byte해시는구분하며publisher는실제byte해시를검증한다.실험정상종료뒤저장한다.
 
 ## 8. 잔여 문제
 
-다음관찰은본갱신준비후시작하고,직접caller ABI와동일frame의소유renderer/descriptor를대조한다.다른hook이있는문맥에서상위반환이원본주소라는가정을다시사용하지않는다.후보의직접dt회계와CPU/QPC연결을별도수용해야한다.이를위해아직새제품보간·배속·frame skip을넣지않는다.원거리LOD·64접촉비용과도섞지않는다.
+다음은source-phase추정기자체오차와실제buffer/화면소비를구분하는일이다.추정phase tail을근거로새보간을추가하지않는다.녹화없는실행과기존녹화자료의차이는후속통제연구후보일뿐이다.지원되는실행경로와14동작·8/64안전성·부하비용은별도gate다.정상낙하·착지·FOLLOW·재등반및이전LOW자극반복미수용판정은변경하지않는다.
 
-선정공개본문.로컬보고서SHA-256:`03c7161c775ffbcb5134e3d7ada6fa72ed451ba90a26e37f5baf6647511d42c5`.전체raw가아니다.
+선정공개본문.로컬보고서SHA-256:`0a3d2f3a150540c14344d5856c3dbd1bdec29cb0c50291fdf0c0df013d05dd3c`.전체raw가아니다.
