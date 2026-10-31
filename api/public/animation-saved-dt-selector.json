@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T16:57:37.780113+09:00",
+  "sourceRunId": "animation-saved-dt-link-20261031-1650",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "verificationStatus": {
+    "diagnostic": "selector_repaired_timing_not_admitted",
+    "candidateSavedDtTimingAdmitted": false,
+    "selectorDiagnosisSucceeded": true,
+    "normalClosures": 2,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-saved-dt-link-20261031-1650",
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "summary": {
+      "newRuntimeRuns": 2,
+      "normalClientClosures": 2,
+      "newVideo": false,
+      "newPbo": false,
+      "v1": {
+        "runtimeRunId": "runtime-20261031-164810",
+        "outerEntries": 12000,
+        "innerDtEntries": 0,
+        "admitted": false,
+        "reason": "Nested parent-return assumption unresolved in v1; no rejection counters"
+      },
+      "v2": {
+        "runtimeRunId": "runtime-20261031-165237",
+        "outerEntries": 0,
+        "innerDtEntries": 0,
+        "admitted": false,
+        "reason": "No update calls in finite observer window; readiness was not gated, excluded"
+      },
+      "passive": {
+        "runtimeRunId": "runtime-20261031-165237",
+        "sameProcessAsV2": true,
+        "durationSeconds": 8,
+        "counts": {
+          "outer": 3600,
+          "outer73": 400,
+          "innerRaw": 4000,
+          "innerExpectedReturn": 3600,
+          "innerOwned": 400,
+          "errors": 0
+        },
+        "selectedSavedDtCount": 8,
+        "selectedSavedInputDtMs": [
+          19.999999552965164,
+          19.999999552965164,
+          19.999999552965164,
+          19.999999552965164,
+          19.999999552965164,
+          19.999999552965164,
+          19.999999552965164,
+          19.999999552965164
+        ],
+        "selectedParentReturnOutsideModule": 8,
+        "selectedStackReceiverMatches": 8,
+        "nativeStateOverrides": false,
+        "normalQuitVerified": true
+      },
+      "candidateSavedDtTimingAdmitted": false,
+      "selectorDiagnosisSucceeded": true
+    },
+    "limits": [
+      "Candidate direct saved-dt accounting was not admitted.",
+      "Passive selected8 are examples, not a400-entry dt distribution.",
+      "Observed nested return mismatch is in a process with existing disabled hooks; exact trampoline ownership is not proven.",
+      "The startup-invalid window is excluded, not recast as an engine failure.",
+      "REA MCP failed due missing native binding; Python Frida was the fallback and is not REA Evidence.",
+      "No new video, GPU/Present,64 functional regression, performance acceptance or production clock fix."
+    ],
+    "next": [
+      "Use actual readiness before timing observers.",
+      "Validate same-frame owned renderer/descriptor identity rather than assuming an untouched nested parent return under another hook.",
+      "A future candidate saved-dt run still needs exact f32 accounting and CPU/QPC linkage; do not treat this selector diagnosis as that result."
+    ],
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "blockers": [
+    "Candidate direct saved-dt accounting was not admitted.",
+    "Passive selected8 are examples, not a400-entry dt distribution.",
+    "Observed nested return mismatch is in a process with existing disabled hooks; exact trampoline ownership is not proven.",
+    "The startup-invalid window is excluded, not recast as an engine failure.",
+    "REA MCP failed due missing native binding; Python Frida was the fallback and is not REA Evidence.",
+    "No new video, GPU/Present,64 functional regression, performance acceptance or production clock fix."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-saved-dt-selector-20261031.md",
+      "sha256": "56f988a7ba99374ae0cec415c543ea1e0072ccb9d8be09ab30fa3a669c9adc81"
+    },
+    {
+      "path": "evidence/animation-saved-dt-selector-20261031.txt",
+      "sha256": "3025af498cb361258987909431230bebb129d324ea1050c4d2cc553b880935c7"
+    }
+  ],
+  "goalComplete": false
+}

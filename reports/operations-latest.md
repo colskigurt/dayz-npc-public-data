@@ -1,52 +1,51 @@
-# 애니메이션 native 호출과 CPU 조회의 직접 QPC 순서
+# 애니메이션 dt 연결 계측 실패와 선택조건 진단
 
-작성: 2026-10-31T16:42:56.052769+09:00
+작성: 2026-10-31T16:57:35.662385+09:00
 
 ## 1. 작업 목표
 
-기존 잔여시간 보존 진단의 평균 속도 복원과 최종 표시 끊김을 구분한다. 인접 script frame 상관관계를 실제 native QPC 순서와 대조하고, CPU 조회까지의 지연을 측정한다. 새 보간·frame skip·배속 수정은 적용하지 않는다.
+기존 잔여시간 보존 후보에서 실제 저장 입력dt와 외부 보간 분자를 연결하려 했다. 제품 코드는 수정하지 않고 이전 진단용 numeric carry는 그대로 유지했다. 신규 시각·성능 성공을 목표와 혼동하지 않는다.
 
 ## 2. 실제 수행
 
-기존 A/B/B/A 네 실행의 residual_entry, 독립 clock bridge, visible-frame-clock, source pose fit을 재분석했다. 각 fit의 nativeSequence를 정확한 event에 연결하고 이전 CPU callback 종료≤native read≤다음 callback 시작을 검증했다. source fit을 그래프 시계에 맞춰 재선택하지 않았다. 기존 입력 hash를 다시 대조했다. native clock+submitted numerator를 동일 QPC에 배치하고 평균 기울기/상수 offset을 회귀로 제거한 잔차를 비교했다. 이 detrending은 분석이며 실행 보정이 아니다. 새 runtime·메모리 쓰기·PBO·영상은 없다.
+서명된 기존B8FB·원본453D·부분골격0C6E로 고정1개체100초 두 실행을 정상 종료했다. 각 실행 launcher의3개 서명 검사가 통과했고 새PBO/서명 생성은 없다. REA Frida attach는frida_binding.node 누락으로실패했다. 설정설치없이기존Python Frida를사용했고REA Evidence로표시하지않는다.
+
+첫30초관찰은기존preReset/outer에읽기전용inner-entry를추가했다.두번째10초관찰은반환주소거부카운터와소유renderer대조를추가했으나준비상태gate없이시작돼호출0이었다.같은두번째프로세스에서CPU본갱신시작을확인한뒤8초passive관찰을추가했다.이마지막관찰에는numeric carry가없고이전관찰자도disabled상태였다.영상녹화없음.모든hook은비활성화후프로세스정상종료까지유지했다.
 
 ## 3. 측정 결과
 
-| 기존 실행/조건 | 표본 | native 간격과 단계 상관 | native→다음 CPU 조회 p50/p95/p99 ms | query 시점 잔차 RMS ms | 이전 query 시점 잔차 RMS ms |
-|---|---:|---:|---|---:|---:|
-| runtime-20261031-110449/baseline30 | 1472 | 0.493362 | 19.062/33.504/34.996 | 71.103 | 70.739 |
-| runtime-20261031-111204/candidate30 | 1471 | 0.992817 | 18.881/33.189/34.732 | 12.601 | 0.455 |
-| runtime-20261031-112434/candidate30 | 1472 | 0.992338 | 18.358/33.240/34.898 | 12.617 | 0.440 |
-| runtime-20261031-112900/baseline30 | 1473 | 0.527604 | 19.385/34.113/36.007 | 81.380 | 81.015 |
+| 관찰 | outer | 선택73본 inner | 오류/누락 | 판정 |
+|---|---:|---:|---|---|
+| runtime-20261031-164810/30초 |12000|0|script0/observer0/dropped0|후보dt연결실패|
+| runtime-20261031-165237/초기10초 |0|0|script0/observer0/dropped0|준비미검증관찰창제외|
+| 같은165237/준비후passive8초 |3600,선택73본400|400|script0/observer0|선택조건진단성공|
 
-후보 두 실행에서 유효 단계와 현재 native-entry 간격 상관은0.99282/0.99234, 차이RMS1.895/1.891ms다. 이전 native-entry 간격과는 음의 상관이므로 단순히 모든 자료를 한 native frame 옮기는 설명은 맞지 않는다. 이전 CPU-query 간격과는0.99925/0.99918, 차이RMS0.491/0.514ms다. CPU query 시점에서 회귀 잔차RMS는12.601/12.617ms지만 이전 query 시점에선0.455/0.440ms, native-entry 시점에선1.256/1.253ms다.
+passive helper raw4000중예상직접호출반환3600,선택된소유73본400이었다.outer총수는9host/motor문맥을포함하며8파트각450회라는식으로계산하지않는다.선정8개inner표본은직접반환0xb133d8·상위반환outside_module·stack receiver일치였고저장dt는각0.01999999955초다.이는선정8개예시이며전체400건dt분포가아니다.
 
-기본 두 실행 native-entry 잔차RMS70.746/81.009ms는 평균 속도 차를 회귀로 제거한 뒤에도 남는다. 후보와 기본의 native→다음 query 지연 분포는 비슷한 넓이를 갖는다. 이 지연은 engine interpolation 함수 실행시간이나 GPU latency가 아니다. 모든 선택 event는 CPU 조회 바깥에 있고, 다음 callback까지의 대기 구간을 측정한 것이다.
-
-실제 frame p50/p95/p99·64기능·GPU/Present·새 시각 품질 시험은 없다. 표의 p50/p95/p99는 native→query 지연 분포다. 기존1개체8native파트 조건을8개체로 세지 않는다.
+후보의직접saved-dt시간연결·정확한float32회계는아직수용되지않았다.100초미션전체와30/10/8초관찰창을구분한다.frame p50/p95/p99·GPU표시·64기능·개선률은이번미측정이다.
 
 ## 4. 원인 분석
 
-확인: 잔여시간 보존 후보는 실제 native QPC 진행과 강하게 일치한다. 이전 script 간격과의 높은 일치는 native 호출이 이전 query 뒤/다음 query 전에 있기 때문에, script 표본번호와 native 표본번호의 단계 차를 포함한다. 후보의 CPU query 시점에서 보이는 약12.6ms 잔차를 그대로 native clock 자체의 불규칙성으로 귀속할 수 없다. 다른 시간 기준을 썼을 때 잔차가 다르게 보인다는 구체적 근거다.
+확인:준비후inner함수호출은존재했다.동시에계측된스택의상위반환은기존관찰자가가정한모듈내주소와달랐다.따라서첫관찰의inner0을함수미호출이나dt부재로해석할수없다.기존outer관찰이존재하는문맥에서단일inner관찰의스택가정을그대로사용한선택조건이문제였다.정확한trampoline소유권이나Frida내부구현까지확정하지는않는다.
 
-미확인: 이 결과가 render buffer 한 프레임 지연·saved dt 소유권·GPU pose 소비 순서를 유일하게 증명하지 않는다. 네이티브 entry보다 늦게 queried pose가 보였다는 순서와 실제 GPU 소비는 다르다. CPU 조회 bracket은HUD/로그 준비·여섯 getter를 포함하므로 각 getter의 정확한 시각도 아니다. VSync·계측·녹화 scheduling 영향은 아직 분리하지 않았다. 기존 영상의 silhouette/HUD 연계는 보존하되 이번에 새 decoding을 하거나 smoothness를 수용하지 않는다.
+두번째호출0은준비gate가없는유한관찰창의실패다.이후같은프로세스에서정상갱신과호출을확인했으므로재시작하지않고범위를좁혔다.로딩시간의정확한시계경계는추가확정하지않으며타이밍결과에서제외한다.
 
-반증 범위: 후보가 평균 속도만 맞고 native-entry 시간에서도 같은 정도로 심하게 흔들린다는 해석은 이 표본에 맞지 않는다. 반대로 현재 query interval과 높은 상관이 없으므로 후보가 잘못됐다는 해석도 시간 순서 확인 없이 성립하지 않는다. 이 진단을 제품용 native memory patch 승인으로 확대하지 않는다.
+미확인:후보의입력dt→누계→평가→보간→CPU조회전체연결은여전히미완료다.기본상태passive선택진단을후보검증성공으로대체하지않는다.기존CPU/nativeQPC진단과GPU소비미확인판정도보존한다.
 
 ## 5. 검증 수준
 
-기존 입력 무결성·event/CPU bracket 순서·direct-QPC 재분석:진단 성공. 기존 네 실행을 재사용했으며 새4회 반복이 아니다. 지원 배포 경로·최종 표시 품질·64비용·기능 회귀·20ms p95·최종 수용:미완료.
+프로세스종료·기존서명검사·관찰자실패보존·준비후호출선택조건진단:확인.후보dt연결:실패/미수용.제품수정·8/64회귀·시각품질·성능·최종수용:미완료.20ms p95는목표다.
 
 ## 6. 변경 사항
 
-분석 스크립트·결과·보고 파생물만 추가했다. 기존Source·미션·PBO·운영 서버·원시로그·영상·키는 변경하지 않았다. 기존B8FB 빌드의 격리 진단을 읽었으며 새 서명 대상은 없다.
+별도진단observer/driver/분석·보고파생물만추가했다.게임Source·PBO·공통배포본·운영서버·원시과거기록·키는보존했다.기존진단native carry는첫실행에서4800회기록됐으며두번째초기관찰에서는0회,준비후passive는쓰기없음이다.실제실행은2회이며동일프로세스passive를세번째게임실행으로세지않는다.
 
 ## 7. 원시 증거
 
-네 실행 launch·native calls·visible-frame-clock·clock bridge·기존analysis/pose-window를 연결한다. 원시 event와 quarter-key source pose는 서로 다른 측정/추정 층이다. 파생 패킷은분포·선정 처음/마지막 pairs이며 전체raw가 아니다. 저장 전 기존 hash 대조와 안전 종료를 확인한다.
+각prepare/observersource·configuration/plan·calls/status,passive선정관찰과별도closed기록,두launch/CPUclock/기존compile기록을연결한다.passive observation의normalQuitVerified=false는관찰당시중간값이며최종closed.json의true와구분해둘다보존했다.원시로그나실패status를고쳐성공으로만들지않았다.저장전hash·JSON·정상종료·현재프로세스부재를확인한다.
 
 ## 8. 잔여 문제
 
-다음은 실제 native dt 저장·평가·보간 소비 시점과 queried pose의 연결을 좁히는 일이다. 현재 자료의지연을보정하는새보간을먼저적용하지않는다. 필요시 기존 하네스에서 최소한의 비변경 관찰자로 입력dt/조회 순서를 측정하되 실제 GPU/Present 접근 가능성과 계측부담을 먼저 확인한다. 지원되는 asset/API 경로 확보와64비용은 별도 gate다. 정상낙하·착지·FOLLOW·재등반과 반복LOW 자극 불일치 판정은 변경하지 않는다.
+다음관찰은본갱신준비후시작하고,직접caller ABI와동일frame의소유renderer/descriptor를대조한다.다른hook이있는문맥에서상위반환이원본주소라는가정을다시사용하지않는다.후보의직접dt회계와CPU/QPC연결을별도수용해야한다.이를위해아직새제품보간·배속·frame skip을넣지않는다.원거리LOD·64접촉비용과도섞지않는다.
 
-선정 공개 본문.로컬 보고서 SHA-256:`f1de17aac3d303f87ba710227c4c54f2901bf8ee303c079cbfd1f57139f624b6`.전체 원시 자료가 아니다.
+선정공개본문.로컬보고서SHA-256:`03c7161c775ffbcb5134e3d7ada6fa72ed451ba90a26e37f5baf6647511d42c5`.전체raw가아니다.
