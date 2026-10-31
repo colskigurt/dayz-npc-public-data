@@ -1,3 +1,5 @@
+> 최신 접촉 낙하 진단(2026-10-31):64명 접촉지원상실19회 모두 추적복귀,고지대목표16회 모두 후속재등반(1회는재낙하후다음세대).자세허가후약3.10초native대기가wall약4초이상으로늘어났다.새실행·수정·시각/성능수용은아니다. [근거와한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/contact-recovery-chain-20261031.md). 이전 기록은 아래 보존한다.
+
 > 최신 B93D 보정없는 기능시험(2026-10-31): 8명:최종8/8,고지대누락[],등반실패0; 64명:최종64/64,고지대누락[],등반실패0. 각조건1회이며 반복수용·시각·성능은 미완료다. 과거B8FB실패는 보존한다. [조건과한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/b93d-free-high-20261031.md). 이전 기록은 아래 보존한다.
 
 > 최신 B8FB 기능 대조(2026-10-31): 8/180은 최종7/8로 실패를 보존했다. 8/300은 고지대·최종8/8,64/300은 최종64/64이나 고지대52/64여서 전체 미통과다. 등반 종료/출구 계약 위반0, 정상 낙하 복귀9/9/71회를 기록했다. 새 gameplay수정이나 성능 개선을 주장하지 않는다. [조건·누락12명·한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/b8fb-functional-repeat-20261031.md). 이전 기록은 아래 보존한다.

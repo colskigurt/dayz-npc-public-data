@@ -1,0 +1,238 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T12:48:11.300634+09:00",
+  "sourceRunId": "contact-recovery-chain-20261031-124314",
+  "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+  "verificationStatus": {
+    "diagnostic": "same_call_recovery_chains_and_landing_clock_decomposed",
+    "newRuntime": false,
+    "functional": "prior_run_results_preserved",
+    "visibleSmoothness": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "contact-recovery-chain-20261031-124314",
+    "sourceBatch": "current-build-lineage-20261031-121827",
+    "trials": [
+      {
+        "runtimeRunId": "runtime-20261031-122659",
+        "count": 8,
+        "seconds": 300,
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "fallCount": 10,
+        "fallCallContexts": {
+          "PRESSURE_SUPPORT_LOSS": 2,
+          "MOTION": 8
+        },
+        "allFallsLandedAndResumed": true,
+        "unresolvedFallGenerations": [],
+        "pressureFallCount": 2,
+        "pressureFallCounter": 2,
+        "pressureResumed": 2,
+        "pressureReclimbStarts": 2,
+        "pressureCompletedReclimbs": 2,
+        "pressureReturnedHigh": 2,
+        "pressureReclimbBeforeStageChange": 2,
+        "pressureStages": {
+          "LOW_HOLD": 1,
+          "HIGH_HOLD": 1
+        },
+        "pressureFallToLandSeconds": {
+          "p50": 0.35600000000000165,
+          "p95": 0.44099999999999895,
+          "maximum": 0.44099999999999895
+        },
+        "pressureLandToResumeSeconds": {
+          "p50": 0.5910000000000011,
+          "p95": 6.302,
+          "maximum": 6.302
+        },
+        "pressureResumeToClimbSeconds": {
+          "p50": 5.141000000000002,
+          "p95": 5.381999999999998,
+          "maximum": 5.381999999999998
+        },
+        "terminalArrivals": 8,
+        "climbEndFailures": 0,
+        "functionalOriginalGate": true,
+        "visibleQualityAccepted": false,
+        "performanceAccepted": false,
+        "pressureElevatedAtFall": 2,
+        "pressureElevatedEventuallyClimbed": 2,
+        "pressureClimbedAfterAnotherGeneration": 0,
+        "postTouchdownOutcomes": {
+          "PHYSICAL_TOUCHDOWN": 5,
+          "PENDING": 6,
+          "POSE_PERMISSION_READY": 5,
+          "VALIDATED_FOLLOW": 5
+        },
+        "pressurePermissionToResumeWallSeconds": {
+          "samples": 1,
+          "p50": 4.661999999999999,
+          "p95": 4.661999999999999
+        },
+        "percentileMethod": "nearest rank ceil(n*q), units seconds; small cohorts descriptive only"
+      },
+      {
+        "runtimeRunId": "runtime-20261031-123319",
+        "count": 64,
+        "seconds": 300,
+        "buildId": "B93D2E713FE7AEB41570C2B21839FF1ADA148BE0EAC090747220B6A4F78AD0D1",
+        "fallCount": 81,
+        "fallCallContexts": {
+          "PRESSURE_SUPPORT_LOSS": 19,
+          "MOTION": 62
+        },
+        "allFallsLandedAndResumed": true,
+        "unresolvedFallGenerations": [],
+        "pressureFallCount": 19,
+        "pressureFallCounter": 19,
+        "pressureResumed": 19,
+        "pressureReclimbStarts": 15,
+        "pressureCompletedReclimbs": 15,
+        "pressureReturnedHigh": 13,
+        "pressureReclimbBeforeStageChange": 14,
+        "pressureStages": {
+          "LOW_HOLD": 6,
+          "GROUND_HOLD": 3,
+          "HIGH_HOLD": 10
+        },
+        "pressureFallToLandSeconds": {
+          "p50": 1.9969999999999999,
+          "p95": 6.300000000000011,
+          "maximum": 6.300000000000011
+        },
+        "pressureLandToResumeSeconds": {
+          "p50": 6.143999999999998,
+          "p95": 6.838000000000001,
+          "maximum": 6.838000000000001
+        },
+        "pressureResumeToClimbSeconds": {
+          "p50": 6.379999999999999,
+          "p95": 14.329999999999991,
+          "maximum": 14.329999999999991
+        },
+        "terminalArrivals": 64,
+        "climbEndFailures": 0,
+        "functionalOriginalGate": true,
+        "visibleQualityAccepted": false,
+        "performanceAccepted": false,
+        "pressureElevatedAtFall": 16,
+        "pressureElevatedEventuallyClimbed": 16,
+        "pressureClimbedAfterAnotherGeneration": 1,
+        "postTouchdownOutcomes": {
+          "PHYSICAL_TOUCHDOWN": 63,
+          "PENDING": 78,
+          "POSE_PERMISSION_READY": 63,
+          "VALIDATED_FOLLOW": 63
+        },
+        "pressurePermissionToResumeWallSeconds": {
+          "samples": 16,
+          "p50": 4.5,
+          "p95": 4.75
+        },
+        "percentileMethod": "nearest rank ceil(n*q), units seconds; small cohorts descriptive only"
+      }
+    ],
+    "newRuntime": false,
+    "newPbo": false,
+    "goalComplete": false,
+    "selection": "All fall transitions in both runs, not only favorable examples. Perentity nextfall bounds prevent crossgeneration joins. PRESSURE_SUPPORT_LOSS is a source-path label, not identified peer causality.",
+    "limits": [
+      "No exact pusher identity is recorded; pressure may include player and peer contributions.",
+      "Same-call state transitions prove execution sequence, not frame-by-frame visual quality.",
+      "Reclimb attempts after the player changes stage are labeled separately.",
+      "Successful chains do not prove unrestricted airborne peer contact: active climb constraints remain.",
+      "One run per count; no new performance or smoothness result."
+    ],
+    "landingClock": [
+      {
+        "runtimeRunId": "runtime-20261031-122659",
+        "count": 8,
+        "landClip": {
+          "request": 7,
+          "label": "land",
+          "fps": 60.0,
+          "frames": 120,
+          "duration": 1.9833333333333334
+        },
+        "postOwnerPermissionCount": 5,
+        "leaseFailureCount": 0,
+        "afterPermissionWallSeconds": {
+          "samples": 5,
+          "p50": 4.602000000000004,
+          "p95": 4.618000000000009,
+          "maximum": 4.618000000000009
+        },
+        "afterPermissionNativeSeconds": {
+          "samples": 5,
+          "p50": 3.100100000000012,
+          "p95": 3.100200000000001,
+          "maximum": 3.100200000000001
+        },
+        "nativeToWallRate": {
+          "samples": 5,
+          "p50": 0.6736636245110817,
+          "p95": 0.6768777292576417,
+          "maximum": 0.6768777292576417
+        }
+      },
+      {
+        "runtimeRunId": "runtime-20261031-123319",
+        "count": 64,
+        "landClip": {
+          "request": 7,
+          "label": "land",
+          "fps": 60.0,
+          "frames": 120,
+          "duration": 1.9833333333333334
+        },
+        "postOwnerPermissionCount": 63,
+        "leaseFailureCount": 0,
+        "afterPermissionWallSeconds": {
+          "samples": 63,
+          "p50": 4.219999999999999,
+          "p95": 4.540000000000003,
+          "maximum": 4.68
+        },
+        "afterPermissionNativeSeconds": {
+          "samples": 63,
+          "p50": 3.100200000000001,
+          "p95": 3.100200000000001,
+          "maximum": 3.100200000000001
+        },
+        "nativeToWallRate": {
+          "samples": 63,
+          "p50": 0.7346445497630336,
+          "p95": 0.7416746411483269,
+          "maximum": 0.7486355952668422
+        }
+      }
+    ]
+  },
+  "blockers": [
+    "No exact pusher identity is recorded; pressure may include player and peer contributions.",
+    "Same-call state transitions prove execution sequence, not frame-by-frame visual quality.",
+    "Reclimb attempts after the player changes stage are labeled separately.",
+    "Successful chains do not prove unrestricted airborne peer contact: active climb constraints remain.",
+    "One run per count; no new performance or smoothness result.",
+    "Supported animation clock control and final GPU visible quality remain unverified.",
+    "Active climb peer pressure remains constrained; no airborne-contact redesign claimed."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/contact-recovery-chain-20261031.md",
+      "sha256": "8bd75b996305ee232e316df7ac28b706804cd7e5b767cb42223daa440e099f7d"
+    },
+    {
+      "path": "evidence/contact-recovery-chain-20261031.txt",
+      "sha256": "e8d70a1058c6826ea89deded390e92d27a3c0fae24d9d64fd56953421dcb1b20"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
