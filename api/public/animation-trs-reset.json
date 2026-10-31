@@ -1,0 +1,545 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T10:48:19.964208+09:00",
+  "sourceRunId": "animation-trs-reset-20261031-103557",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "verificationStatus": {
+    "diagnostic": "reset_trs_and_exact_query_video_order_verified_one_run",
+    "repeatAcceptance": false,
+    "resetBoundary": "121_video_pairs_ordered",
+    "finalGpuConsumer": "not_recovered",
+    "visual": "measured_not_final_accepted",
+    "performance": "excluded_hook_overhead",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "runtimeRunId": "runtime-20261031-103631",
+    "normalQuitVerified": true,
+    "logicalAgents": 1,
+    "nativeParts": 8,
+    "repetitions": 1,
+    "observerSeconds": 8,
+    "runtimeSeconds": 120,
+    "rootCalls": 124,
+    "dispatchCalls": 124,
+    "clipKernelCalls": 124,
+    "opcodes": {
+      "2": 124
+    },
+    "resourceInteger64": 60,
+    "resourceFloat68": 2.0833332538604736,
+    "manifestClipIndex": 2,
+    "manifestFps": 60.0,
+    "manifestFrames": 126,
+    "manifestDurationSeconds": 2.0833333333333335,
+    "manifestPeriodResidualSeconds": -7.947285984855057e-08,
+    "wrappedPairs": 3,
+    "phaseAdvanceSeconds": 6.150023460388184,
+    "rootClockAdvanceSeconds": 6.150023460388184,
+    "hostSpanMs": 7882,
+    "phaseSecondsPerHostSecond": 0.780261794010173,
+    "phaseVsRootMaxResidualSeconds": 0.0,
+    "commandFloatCEqualsRootDtCount": 124,
+    "rootContextDtMs": {
+      "p50": 50.00019073486328,
+      "p95": 50.00019073486328,
+      "p99": 50.00019073486328
+    },
+    "clipUnwrappedStepMs": {
+      "p50": 50.00019073486328,
+      "p95": 50.00019073486328,
+      "p99": 50.00019073486328
+    },
+    "clipEntryIntervalMs": {
+      "p50": 67.0,
+      "p95": 81.0,
+      "p99": 85.9
+    },
+    "errors": 0,
+    "droppedEvents": 0,
+    "numericOverrides": false,
+    "nativeHooks": true,
+    "gameCodeChanged": false,
+    "newPbo": false,
+    "videoRecorded": true,
+    "actualFpRegistersCaptured": false,
+    "actualLowerDecoderEntryCaptured": false,
+    "finalPoseOutputCaptured": false,
+    "gpuPresentedPhaseMeasured": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "resetTrsJoin": {
+      "sourceRunId": "animation-trs-reset-20261031-103557",
+      "runtimeRunId": "runtime-20261031-103631",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "normalQuitVerified": true,
+      "postSamples": 397,
+      "nativeClipCalls": 124,
+      "clipClockRate": 0.780261794010173,
+      "counts": {
+        "alias": 397,
+        "dirtyBoth1": 397,
+        "zero": 124,
+        "ordered_zero": 124,
+        "positive": 273,
+        "ordered_positive": 273
+      },
+      "verifiedNativeClockOrigin": true,
+      "acksValidatedAgainstOrigin": 38,
+      "fitDistributions": {
+        "translationMaxM": {
+          "n": 397,
+          "p50": 2.6218289317370136e-08,
+          "p95": 2.6945196443214546e-07,
+          "p99": 4.0163388302586164e-07,
+          "maximum": 6.545166453911335e-07
+        },
+        "slerpMaxDeg": {
+          "n": 397,
+          "p50": 6.056379229554465e-05,
+          "p95": 0.0001570237285904984,
+          "p99": 0.0001636475365858221,
+          "maximum": 0.0001653325556681746
+        },
+        "zeroTranslationMaxM": {
+          "n": 124,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "maximum": 0.0
+        },
+        "zeroSlerpMaxDeg": {
+          "n": 124,
+          "p50": 2.4148365394514667e-06,
+          "p95": 2.4148365394514667e-06,
+          "p99": 2.4148365394514667e-06,
+          "maximum": 2.4148365394514667e-06
+        },
+        "positiveTranslationMaxM": {
+          "n": 273,
+          "p50": 7.540450558753596e-08,
+          "p95": 3.2824205469095407e-07,
+          "p99": 4.236541028601092e-07,
+          "maximum": 6.545166453911335e-07
+        },
+        "positiveSlerpMaxDeg": {
+          "n": 273,
+          "p50": 0.00010534335185407035,
+          "p95": 0.00015857219748918226,
+          "p99": 0.0001638654697534496,
+          "maximum": 0.0001653325556681746
+        },
+        "boundaryStepMaxM": {
+          "n": 123,
+          "p50": 0.04761533894848512,
+          "p95": 0.07040229596200973,
+          "p99": 1.9218119716892148,
+          "maximum": 3.224515440483787
+        },
+        "boundaryStepMaxDeg": {
+          "n": 123,
+          "p50": 6.544670962129186,
+          "p95": 9.97110352911705,
+          "p99": 11.395475553859335,
+          "maximum": 11.465079737972756
+        },
+        "withinStepMaxM": {
+          "n": 273,
+          "p50": 0.07273391696825246,
+          "p95": 0.17673021681586104,
+          "p99": 2.9557236889245813,
+          "maximum": 6.268214709247443
+        },
+        "withinStepMaxDeg": {
+          "n": 273,
+          "p50": 10.06550975719523,
+          "p95": 25.093553003722054,
+          "p99": 26.791651986335026,
+          "maximum": 28.680236127090197
+        },
+        "newStartVsOldEndMaxM": {
+          "n": 123,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "maximum": 0.0
+        },
+        "newStartVsOldEndMaxDeg": {
+          "n": 123,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "maximum": 0.0
+        },
+        "nativeReadBracketMs": {
+          "n": 397,
+          "p50": 4.2922,
+          "p95": 4.5504,
+          "p99": 6.92938,
+          "maximum": 7.1632
+        }
+      },
+      "exactHudFrames": 536,
+      "testedVideoFrames": 540,
+      "cpuVideoPairs": 442,
+      "cpuVideoCorrelation": 0.9078359795878024,
+      "nativeCpuVideoPairs": 390,
+      "zeroAccumulatorNativeVideoPairs": 121,
+      "positiveAccumulatorNativeVideoPairs": 269,
+      "largeCpuStepsOver75mmByGroup": {
+        "positive": 83
+      },
+      "bodyHeldBelow10Pixels": 7,
+      "allObservedCachesDirty": true,
+      "cacheFreshnessEstablished": false,
+      "finalGpuConsumerRecovered": false,
+      "selectedNativeVideoPairs": [
+        {
+          "firstFrame": 347,
+          "lastFrame": 348,
+          "nativeSequence": 10,
+          "zeroAccumulator": true,
+          "accumulator": 0,
+          "graphDelta": 0.05000019073486328,
+          "clipPhase": 0.5333333015441895,
+          "nativeTrsStepMaxM": 0.03907685428218297,
+          "queriedRmsChangeMeters": 0.028077588162091157,
+          "visibleChangedPixels": 1661,
+          "cacheDirty": true,
+          "matchedByExactOriginAndQueryOrdering": true
+        },
+        {
+          "firstFrame": 348,
+          "lastFrame": 349,
+          "nativeSequence": 11,
+          "zeroAccumulator": false,
+          "accumulator": 0.019999999552965164,
+          "graphDelta": 0.0,
+          "clipPhase": 0.5333333015441895,
+          "nativeTrsStepMaxM": 0.0775130993707977,
+          "queriedRmsChangeMeters": 0.07070285431414115,
+          "visibleChangedPixels": 3575,
+          "cacheDirty": true,
+          "matchedByExactOriginAndQueryOrdering": true
+        },
+        {
+          "firstFrame": 349,
+          "lastFrame": 350,
+          "nativeSequence": 12,
+          "zeroAccumulator": false,
+          "accumulator": 0.041999999433755875,
+          "graphDelta": 0.0,
+          "clipPhase": 0.5333333015441895,
+          "nativeTrsStepMaxM": 0.08526436196062581,
+          "queriedRmsChangeMeters": 0.07338170266490142,
+          "visibleChangedPixels": 2977,
+          "cacheDirty": true,
+          "matchedByExactOriginAndQueryOrdering": true
+        },
+        {
+          "firstFrame": 347,
+          "lastFrame": 348,
+          "nativeSequence": 10,
+          "zeroAccumulator": true,
+          "accumulator": 0,
+          "graphDelta": 0.05000019073486328,
+          "clipPhase": 0.5333333015441895,
+          "nativeTrsStepMaxM": 0.03907685428218297,
+          "queriedRmsChangeMeters": 0.028077588162091157,
+          "visibleChangedPixels": 1661,
+          "cacheDirty": true,
+          "matchedByExactOriginAndQueryOrdering": true
+        },
+        {
+          "firstFrame": 350,
+          "lastFrame": 351,
+          "nativeSequence": 16,
+          "zeroAccumulator": true,
+          "accumulator": 0,
+          "graphDelta": 0.05000019073486328,
+          "clipPhase": 0.5833334922790527,
+          "nativeTrsStepMaxM": 0.03100528728964958,
+          "queriedRmsChangeMeters": 0.025450221439770104,
+          "visibleChangedPixels": 1218,
+          "cacheDirty": true,
+          "matchedByExactOriginAndQueryOrdering": true
+        },
+        {
+          "firstFrame": 353,
+          "lastFrame": 354,
+          "nativeSequence": 22,
+          "zeroAccumulator": true,
+          "accumulator": 0,
+          "graphDelta": 0.05000019073486328,
+          "clipPhase": 0.633333683013916,
+          "nativeTrsStepMaxM": 0.051806496918950166,
+          "queriedRmsChangeMeters": 0.038963517737750496,
+          "visibleChangedPixels": 1708,
+          "cacheDirty": true,
+          "matchedByExactOriginAndQueryOrdering": true
+        },
+        {
+          "firstFrame": 732,
+          "lastFrame": 733,
+          "nativeSequence": 755,
+          "zeroAccumulator": true,
+          "accumulator": 0,
+          "graphDelta": 0.05000019073486328,
+          "clipPhase": 0.2833564281463623,
+          "nativeTrsStepMaxM": 0.03906723323939433,
+          "queriedRmsChangeMeters": 0.025581147192154367,
+          "visibleChangedPixels": 1824,
+          "cacheDirty": true,
+          "matchedByExactOriginAndQueryOrdering": true
+        },
+        {
+          "firstFrame": 735,
+          "lastFrame": 736,
+          "nativeSequence": 761,
+          "zeroAccumulator": true,
+          "accumulator": 0,
+          "graphDelta": 0.05000019073486328,
+          "clipPhase": 0.3333566188812256,
+          "nativeTrsStepMaxM": 0.025341839930645982,
+          "queriedRmsChangeMeters": 0.02063406494529537,
+          "visibleChangedPixels": 1037,
+          "cacheDirty": true,
+          "matchedByExactOriginAndQueryOrdering": true
+        },
+        {
+          "firstFrame": 738,
+          "lastFrame": 739,
+          "nativeSequence": 767,
+          "zeroAccumulator": true,
+          "accumulator": 0,
+          "graphDelta": 0.05000019073486328,
+          "clipPhase": 0.38335680961608887,
+          "nativeTrsStepMaxM": 0.0555135691877442,
+          "queriedRmsChangeMeters": 0.04842466408935291,
+          "visibleChangedPixels": 1579,
+          "cacheDirty": true,
+          "matchedByExactOriginAndQueryOrdering": true
+        },
+        {
+          "firstFrame": 738,
+          "lastFrame": 739,
+          "nativeSequence": 767,
+          "zeroAccumulator": true,
+          "accumulator": 0,
+          "graphDelta": 0.05000019073486328,
+          "clipPhase": 0.38335680961608887,
+          "nativeTrsStepMaxM": 0.0555135691877442,
+          "queriedRmsChangeMeters": 0.04842466408935291,
+          "visibleChangedPixels": 1579,
+          "cacheDirty": true,
+          "matchedByExactOriginAndQueryOrdering": true
+        },
+        {
+          "firstFrame": 739,
+          "lastFrame": 740,
+          "nativeSequence": 768,
+          "zeroAccumulator": false,
+          "accumulator": 0.012000000104308128,
+          "graphDelta": 0.0,
+          "clipPhase": 0.38335680961608887,
+          "nativeTrsStepMaxM": 0.05277288258465967,
+          "queriedRmsChangeMeters": 0.04128953860442941,
+          "visibleChangedPixels": 1879,
+          "cacheDirty": true,
+          "matchedByExactOriginAndQueryOrdering": true
+        },
+        {
+          "firstFrame": 740,
+          "lastFrame": 741,
+          "nativeSequence": 769,
+          "zeroAccumulator": false,
+          "accumulator": 0.03999999910593033,
+          "graphDelta": 0.0,
+          "clipPhase": 0.38335680961608887,
+          "nativeTrsStepMaxM": 0.12313664802188505,
+          "queriedRmsChangeMeters": 0.09455695121548,
+          "visibleChangedPixels": 3654,
+          "cacheDirty": true,
+          "matchedByExactOriginAndQueryOrdering": true
+        }
+      ],
+      "videoRecorded": true,
+      "numericOverrides": false,
+      "newPbo": false,
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false,
+      "limits": [
+        "Native stage is ordered before exact CPU query/HUD frames, not a captured GPU read.",
+        "Dirty cached matrices are distinguished from fresh local TRS; freshness of matrix consumers remains unproven.",
+        "Readback bracket around4ms changes diagnostic scheduling; clip rate is not a measured improvement.",
+        "All-bone local step maxima and six-joint RMS have different meanings."
+      ]
+    },
+    "exploratoryFrameLag": {
+      "sourceRunId": "animation-trs-reset-20261031-103557",
+      "method": "Within-generation positive accumulator differences, not directly captured incoming dt; compare retained script frame intervals by offset",
+      "samples": 273,
+      "offsets": {
+        "-1": {
+          "samples": 273,
+          "correlation": 0.9495480091887244,
+          "rmsResidualMs": 2.777460290120624,
+          "absoluteResidualMs": {
+            "n": 273,
+            "p50": 1.0000009983777147,
+            "p95": 6.399999737739725,
+            "p99": 8.999999866485346,
+            "maximum": 9.999999716876928
+          }
+        },
+        "0": {
+          "samples": 273,
+          "correlation": -0.9739800459577851,
+          "rmsResidualMs": 17.462361423558708,
+          "absoluteResidualMs": {
+            "n": 273,
+            "p50": 18.00000005960456,
+            "p95": 20.999999493360733,
+            "p99": 22.00000256717253,
+            "maximum": 23.000002086163818
+          }
+        },
+        "1": {
+          "samples": 273,
+          "correlation": 0.9974705495055581,
+          "rmsResidualMs": 0.6201737812903024,
+          "absoluteResidualMs": {
+            "n": 273,
+            "p50": 1.1920935349962747e-06,
+            "p95": 1.0000011920929808,
+            "p99": 1.0000020861629366,
+            "maximum": 1.000002250075127
+          }
+        },
+        "2": {
+          "samples": 273,
+          "correlation": -0.9754021546357116,
+          "rmsResidualMs": 17.213058343091344,
+          "absoluteResidualMs": {
+            "n": 273,
+            "p50": 17.99999916553574,
+            "p95": 20.000002086162283,
+            "p99": 21.280001111030955,
+            "maximum": 22.000003382563804
+          }
+        }
+      },
+      "directDtArgumentCaptured": false,
+      "causalProof": false,
+      "goalComplete": false,
+      "selectedRecords": [
+        {
+          "frame": 346,
+          "nativeAccumulatorDelta": 0.010999999940395355,
+          "scriptFrameDt": {
+            "-1": 0.020000000000000462,
+            "0": 0.02799999999999958,
+            "1": 0.012000000000000455,
+            "2": 0.032999999999999474
+          }
+        },
+        {
+          "frame": 347,
+          "nativeAccumulatorDelta": 0.028999999165534973,
+          "scriptFrameDt": {
+            "-1": 0.019999999999999574,
+            "0": 0.020000000000000462,
+            "1": 0.02799999999999958,
+            "2": 0.012000000000000455
+          }
+        },
+        {
+          "frame": 349,
+          "nativeAccumulatorDelta": 0.019999999552965164,
+          "scriptFrameDt": {
+            "-1": 0.011999999999999567,
+            "0": 0.023000000000000576,
+            "1": 0.019999999999999574,
+            "2": 0.020000000000000462
+          }
+        },
+        {
+          "frame": 738,
+          "nativeAccumulatorDelta": 0.010999998077750206,
+          "scriptFrameDt": {
+            "-1": 0.012000000000000455,
+            "0": 0.02999999999999936,
+            "1": 0.009999999999999787,
+            "2": 0.025000000000000355
+          }
+        },
+        {
+          "frame": 740,
+          "nativeAccumulatorDelta": 0.012000000104308128,
+          "scriptFrameDt": {
+            "-1": 0.012000000000000455,
+            "0": 0.026999999999999247,
+            "1": 0.012000000000000455,
+            "2": 0.02999999999999936
+          }
+        },
+        {
+          "frame": 741,
+          "nativeAccumulatorDelta": 0.0279999990016222,
+          "scriptFrameDt": {
+            "-1": 0.028999999999999915,
+            "0": 0.012000000000000455,
+            "1": 0.026999999999999247,
+            "2": 0.012000000000000455
+          }
+        }
+      ]
+    },
+    "pacing": {
+      "steady": {
+        "frames": 1999,
+        "foregroundFrames": 1999,
+        "foregroundFraction": 1.0,
+        "missionFrameMs": {
+          "p50": 20.0,
+          "p95": 35.0,
+          "p99": 36.0
+        },
+        "hostCallbackHz": {
+          "minimum": 12.917719741645607,
+          "median": 12.917719741645607,
+          "maximum": 12.917719741645607
+        },
+        "nativeClockSecondsPerWallSecond": {
+          "minimum": 0.6458783283551608,
+          "median": 0.6458783283551608,
+          "maximum": 0.6458783283551608
+        }
+      }
+    }
+  },
+  "blockers": [
+    "Native stage is ordered before exact CPU query/HUD frames, not a captured GPU read.",
+    "Dirty cached matrices are distinguished from fresh local TRS; freshness of matrix consumers remains unproven.",
+    "Readback bracket around4ms changes diagnostic scheduling; clip rate is not a measured improvement.",
+    "All-bone local step maxima and six-joint RMS have different meanings.",
+    "No supported evaluation/reset timing fix established;64function/cost work remains separate."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-trs-reset-20261031.md",
+      "sha256": "047d12f795a475ccb715fbb3bb184c6ed66e9b91fc106de8519dfb499f1507bc"
+    },
+    {
+      "path": "evidence/animation-trs-reset-20261031.txt",
+      "sha256": "9e6a7d492640c784da293b5b8d10d64522dd92e8d77ef8547fb383371dd27926"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

@@ -1,3 +1,5 @@
+> 최신 TRS·초기화 경계 진단(2026-10-31): 초기화121개를 포함해 native/CPU/영상390쌍의 시간 순서를 연결했다.397표본 모두 캐시dirty였고,123번 쌍 교체에서 끝→시작 위치/회전 차이는0이었다. 관찰부하 약4.3ms를 포함하므로 개선·최종시각·64수용은 미완료다. [조건·수치·한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-trs-reset-20261031.md). 이전 기록은 아래에 보존한다.
+
 > 최신 native/CPU/영상 부분 진단(2026-10-31): 296개 엄격 캐시 포즈 일치와144개 영상 쌍을 연결했지만,0누적기104표본/reset 경계는 일치하지 않았다.38ACK 원점 변환은 별도 검증했으며 초기 절대QPC assertion 실패를 보존했다. [조건·한계·선정 근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-native-pose-join-20261031.md). 이전 기록은 아래에 보존한다.
 
 > 최신 실제 영상 진단(2026-10-31): 883/900 HUD프레임 일치,714 CPU/화면 쌍의 변화량 상관0.943549. 클립 시간0.646964배 진행 및 주기적 큰 포즈 step 관측. 정확한 native↔영상 frame 연결·수정·64수용은 미완료다. [조건·선정 근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-clip-visible-20261031.md). 이전 기록은 아래에 보존한다.

@@ -1,0 +1,898 @@
+Selection: derived clip timing; native TRS/dirty and exact origin/query-order aggregate; first3/last3 pair transitions; selected native/video pairs; exploratory frame-offset results; observer source. Full TRS hex, videos, raw logs, local paths, runtime pointers and process/thread IDs excluded. No final GPU ownership or optimization acceptance.
+
+{
+  "runtime": {
+    "sourceRunId": "animation-trs-reset-20261031-103557",
+    "runtimeRunId": "runtime-20261031-103631",
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "normalQuitVerified": true,
+    "logicalAgents": 1,
+    "nativeParts": 8,
+    "repetitions": 1,
+    "observerSeconds": 8,
+    "runtimeSeconds": 120,
+    "rootCalls": 124,
+    "dispatchCalls": 124,
+    "clipKernelCalls": 124,
+    "opcodes": {
+      "2": 124
+    },
+    "resourceInteger64": 60,
+    "resourceFloat68": 2.0833332538604736,
+    "manifestClipIndex": 2,
+    "manifestFps": 60.0,
+    "manifestFrames": 126,
+    "manifestDurationSeconds": 2.0833333333333335,
+    "manifestPeriodResidualSeconds": -7.947285984855057e-08,
+    "wrappedPairs": 3,
+    "phaseAdvanceSeconds": 6.150023460388184,
+    "rootClockAdvanceSeconds": 6.150023460388184,
+    "hostSpanMs": 7882,
+    "phaseSecondsPerHostSecond": 0.780261794010173,
+    "phaseVsRootMaxResidualSeconds": 0.0,
+    "commandFloatCEqualsRootDtCount": 124,
+    "rootContextDtMs": {
+      "p50": 50.00019073486328,
+      "p95": 50.00019073486328,
+      "p99": 50.00019073486328
+    },
+    "clipUnwrappedStepMs": {
+      "p50": 50.00019073486328,
+      "p95": 50.00019073486328,
+      "p99": 50.00019073486328
+    },
+    "clipEntryIntervalMs": {
+      "p50": 67.0,
+      "p95": 81.0,
+      "p99": 85.9
+    },
+    "errors": 0,
+    "droppedEvents": 0,
+    "numericOverrides": false,
+    "nativeHooks": true,
+    "gameCodeChanged": false,
+    "newPbo": false,
+    "videoRecorded": true,
+    "actualFpRegistersCaptured": false,
+    "actualLowerDecoderEntryCaptured": false,
+    "finalPoseOutputCaptured": false,
+    "gpuPresentedPhaseMeasured": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "selectedEvents": [
+      {
+        "sourceLine": 2,
+        "sequence": 3,
+        "rootSequence": 1,
+        "oldClock": 4.59999942779541,
+        "contextDt": 0.05000019073486328,
+        "opcode": 2,
+        "callerRva": "0x492129",
+        "commandIndex": 12,
+        "commandFloat8": 0.48333311080932617,
+        "commandFloatC": 0.05000019073486328,
+        "resourceInteger64": 60,
+        "resourceFloat68": 2.0833332538604736,
+        "scaledCommand8": 28.99998664855957,
+        "actualFpRegisterCaptured": false
+      },
+      {
+        "sourceLine": 2,
+        "sequence": 9,
+        "rootSequence": 7,
+        "oldClock": 4.649999618530273,
+        "contextDt": 0.05000019073486328,
+        "opcode": 2,
+        "callerRva": "0x492129",
+        "commandIndex": 12,
+        "commandFloat8": 0.5333333015441895,
+        "commandFloatC": 0.05000019073486328,
+        "resourceInteger64": 60,
+        "resourceFloat68": 2.0833332538604736,
+        "scaledCommand8": 31.999998092651367,
+        "actualFpRegisterCaptured": false
+      },
+      {
+        "sourceLine": 2,
+        "sequence": 15,
+        "rootSequence": 13,
+        "oldClock": 4.699999809265137,
+        "contextDt": 0.05000019073486328,
+        "opcode": 2,
+        "callerRva": "0x492129",
+        "commandIndex": 12,
+        "commandFloat8": 0.5833334922790527,
+        "commandFloatC": 0.05000019073486328,
+        "resourceInteger64": 60,
+        "resourceFloat68": 2.0833332538604736,
+        "scaledCommand8": 35.000009536743164,
+        "actualFpRegisterCaptured": false
+      },
+      {
+        "sourceLine": 41,
+        "sequence": 754,
+        "rootSequence": 752,
+        "oldClock": 10.650022506713867,
+        "contextDt": 0.05000019073486328,
+        "opcode": 2,
+        "callerRva": "0x492129",
+        "commandIndex": 12,
+        "commandFloat8": 0.2833564281463623,
+        "commandFloatC": 0.05000019073486328,
+        "resourceInteger64": 60,
+        "resourceFloat68": 2.0833332538604736,
+        "scaledCommand8": 17.00138568878174,
+        "actualFpRegisterCaptured": false
+      },
+      {
+        "sourceLine": 41,
+        "sequence": 760,
+        "rootSequence": 758,
+        "oldClock": 10.70002269744873,
+        "contextDt": 0.05000019073486328,
+        "opcode": 2,
+        "callerRva": "0x492129",
+        "commandIndex": 12,
+        "commandFloat8": 0.3333566188812256,
+        "commandFloatC": 0.05000019073486328,
+        "resourceInteger64": 60,
+        "resourceFloat68": 2.0833332538604736,
+        "scaledCommand8": 20.001397132873535,
+        "actualFpRegisterCaptured": false
+      },
+      {
+        "sourceLine": 41,
+        "sequence": 766,
+        "rootSequence": 764,
+        "oldClock": 10.750022888183594,
+        "contextDt": 0.05000019073486328,
+        "opcode": 2,
+        "callerRva": "0x492129",
+        "commandIndex": 12,
+        "commandFloat8": 0.38335680961608887,
+        "commandFloatC": 0.05000019073486328,
+        "resourceInteger64": 60,
+        "resourceFloat68": 2.0833332538604736,
+        "scaledCommand8": 23.001408576965332,
+        "actualFpRegisterCaptured": false
+      }
+    ],
+    "sourceHashes": {
+      "launch.json": "4f67892ac38823ea3454fc12d5a1c53b0df7ddfa42b50f8272f98edb7a190b8f",
+      "native-traversal-manifest.json": "5d72e80bb527830c337cf8e98b171538424ad06c6e410d20fb514f060f6d2fdc",
+      "native-call-probe/calls.jsonl": "a77624470f8d524c9ccc214b80949d184e7445ded78f7092bc8473490b8a228b",
+      "native-call-probe/status.json": "f454ddc8ca2529d13b82b4e961853fb4c9b9bc7d6b2697cd9ab91e0028cf3435",
+      "native-call-probe/configuration.json": "3471e1aca3e02b6d288551f8b0956b982467223da1f5be3388df506851c9a695",
+      "native-call-probe/instrumentation.js": "0d3ae1be46355f595bc4d2123255f830e3c20ba5ea54463350b2e311a39411e7",
+      "native-call-probe/observer-driver-source.py": "c4994a6c2e60f8b9980f25c45ee4034545da5578347f3745e4b33b6942d087c6"
+    },
+    "limitations": [
+      "Stored operands are linked by exact entry/caller and runtime context checks; FP argument registers themselves were not sampled.",
+      "Static dataflow connects command+8 to resource+64 scaling and downstream integer-index/adjacent-key interpolation. Lower decoder was not dynamically hooked.",
+      "Matching converted run duration/FPS plus wrapped progression supports sample-time seconds; this is not proof of GPU or displayed-frame smoothness.",
+      "Entry-only thread scope has no return hook; dispatcher validates evaluator ownership and copied clock before admitting sample callers.",
+      "No animation fix, 8/64 functional rerun or performance optimization was executed."
+    ]
+  },
+  "joined": {
+    "sourceRunId": "animation-trs-reset-20261031-103557",
+    "runtimeRunId": "runtime-20261031-103631",
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "normalQuitVerified": true,
+    "postSamples": 397,
+    "nativeClipCalls": 124,
+    "clipClockRate": 0.780261794010173,
+    "counts": {
+      "alias": 397,
+      "dirtyBoth1": 397,
+      "zero": 124,
+      "ordered_zero": 124,
+      "positive": 273,
+      "ordered_positive": 273
+    },
+    "verifiedNativeClockOrigin": true,
+    "acksValidatedAgainstOrigin": 38,
+    "fitDistributions": {
+      "translationMaxM": {
+        "n": 397,
+        "p50": 2.6218289317370136e-08,
+        "p95": 2.6945196443214546e-07,
+        "p99": 4.0163388302586164e-07,
+        "maximum": 6.545166453911335e-07
+      },
+      "slerpMaxDeg": {
+        "n": 397,
+        "p50": 6.056379229554465e-05,
+        "p95": 0.0001570237285904984,
+        "p99": 0.0001636475365858221,
+        "maximum": 0.0001653325556681746
+      },
+      "zeroTranslationMaxM": {
+        "n": 124,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "maximum": 0.0
+      },
+      "zeroSlerpMaxDeg": {
+        "n": 124,
+        "p50": 2.4148365394514667e-06,
+        "p95": 2.4148365394514667e-06,
+        "p99": 2.4148365394514667e-06,
+        "maximum": 2.4148365394514667e-06
+      },
+      "positiveTranslationMaxM": {
+        "n": 273,
+        "p50": 7.540450558753596e-08,
+        "p95": 3.2824205469095407e-07,
+        "p99": 4.236541028601092e-07,
+        "maximum": 6.545166453911335e-07
+      },
+      "positiveSlerpMaxDeg": {
+        "n": 273,
+        "p50": 0.00010534335185407035,
+        "p95": 0.00015857219748918226,
+        "p99": 0.0001638654697534496,
+        "maximum": 0.0001653325556681746
+      },
+      "boundaryStepMaxM": {
+        "n": 123,
+        "p50": 0.04761533894848512,
+        "p95": 0.07040229596200973,
+        "p99": 1.9218119716892148,
+        "maximum": 3.224515440483787
+      },
+      "boundaryStepMaxDeg": {
+        "n": 123,
+        "p50": 6.544670962129186,
+        "p95": 9.97110352911705,
+        "p99": 11.395475553859335,
+        "maximum": 11.465079737972756
+      },
+      "withinStepMaxM": {
+        "n": 273,
+        "p50": 0.07273391696825246,
+        "p95": 0.17673021681586104,
+        "p99": 2.9557236889245813,
+        "maximum": 6.268214709247443
+      },
+      "withinStepMaxDeg": {
+        "n": 273,
+        "p50": 10.06550975719523,
+        "p95": 25.093553003722054,
+        "p99": 26.791651986335026,
+        "maximum": 28.680236127090197
+      },
+      "newStartVsOldEndMaxM": {
+        "n": 123,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "maximum": 0.0
+      },
+      "newStartVsOldEndMaxDeg": {
+        "n": 123,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "maximum": 0.0
+      },
+      "nativeReadBracketMs": {
+        "n": 397,
+        "p50": 4.2922,
+        "p95": 4.5504,
+        "p99": 6.92938,
+        "maximum": 7.1632
+      }
+    },
+    "exactHudFrames": 536,
+    "testedVideoFrames": 540,
+    "cpuVideoPairs": 442,
+    "cpuVideoCorrelation": 0.9078359795878024,
+    "nativeCpuVideoPairs": 390,
+    "zeroAccumulatorNativeVideoPairs": 121,
+    "positiveAccumulatorNativeVideoPairs": 269,
+    "largeCpuStepsOver75mmByGroup": {
+      "positive": 83
+    },
+    "bodyHeldBelow10Pixels": 7,
+    "allObservedCachesDirty": true,
+    "cacheFreshnessEstablished": false,
+    "finalGpuConsumerRecovered": false,
+    "selectedNativeVideoPairs": [
+      {
+        "firstFrame": 347,
+        "lastFrame": 348,
+        "nativeSequence": 10,
+        "zeroAccumulator": true,
+        "accumulator": 0,
+        "graphDelta": 0.05000019073486328,
+        "clipPhase": 0.5333333015441895,
+        "nativeTrsStepMaxM": 0.03907685428218297,
+        "queriedRmsChangeMeters": 0.028077588162091157,
+        "visibleChangedPixels": 1661,
+        "cacheDirty": true,
+        "matchedByExactOriginAndQueryOrdering": true
+      },
+      {
+        "firstFrame": 348,
+        "lastFrame": 349,
+        "nativeSequence": 11,
+        "zeroAccumulator": false,
+        "accumulator": 0.019999999552965164,
+        "graphDelta": 0.0,
+        "clipPhase": 0.5333333015441895,
+        "nativeTrsStepMaxM": 0.0775130993707977,
+        "queriedRmsChangeMeters": 0.07070285431414115,
+        "visibleChangedPixels": 3575,
+        "cacheDirty": true,
+        "matchedByExactOriginAndQueryOrdering": true
+      },
+      {
+        "firstFrame": 349,
+        "lastFrame": 350,
+        "nativeSequence": 12,
+        "zeroAccumulator": false,
+        "accumulator": 0.041999999433755875,
+        "graphDelta": 0.0,
+        "clipPhase": 0.5333333015441895,
+        "nativeTrsStepMaxM": 0.08526436196062581,
+        "queriedRmsChangeMeters": 0.07338170266490142,
+        "visibleChangedPixels": 2977,
+        "cacheDirty": true,
+        "matchedByExactOriginAndQueryOrdering": true
+      },
+      {
+        "firstFrame": 347,
+        "lastFrame": 348,
+        "nativeSequence": 10,
+        "zeroAccumulator": true,
+        "accumulator": 0,
+        "graphDelta": 0.05000019073486328,
+        "clipPhase": 0.5333333015441895,
+        "nativeTrsStepMaxM": 0.03907685428218297,
+        "queriedRmsChangeMeters": 0.028077588162091157,
+        "visibleChangedPixels": 1661,
+        "cacheDirty": true,
+        "matchedByExactOriginAndQueryOrdering": true
+      },
+      {
+        "firstFrame": 350,
+        "lastFrame": 351,
+        "nativeSequence": 16,
+        "zeroAccumulator": true,
+        "accumulator": 0,
+        "graphDelta": 0.05000019073486328,
+        "clipPhase": 0.5833334922790527,
+        "nativeTrsStepMaxM": 0.03100528728964958,
+        "queriedRmsChangeMeters": 0.025450221439770104,
+        "visibleChangedPixels": 1218,
+        "cacheDirty": true,
+        "matchedByExactOriginAndQueryOrdering": true
+      },
+      {
+        "firstFrame": 353,
+        "lastFrame": 354,
+        "nativeSequence": 22,
+        "zeroAccumulator": true,
+        "accumulator": 0,
+        "graphDelta": 0.05000019073486328,
+        "clipPhase": 0.633333683013916,
+        "nativeTrsStepMaxM": 0.051806496918950166,
+        "queriedRmsChangeMeters": 0.038963517737750496,
+        "visibleChangedPixels": 1708,
+        "cacheDirty": true,
+        "matchedByExactOriginAndQueryOrdering": true
+      },
+      {
+        "firstFrame": 732,
+        "lastFrame": 733,
+        "nativeSequence": 755,
+        "zeroAccumulator": true,
+        "accumulator": 0,
+        "graphDelta": 0.05000019073486328,
+        "clipPhase": 0.2833564281463623,
+        "nativeTrsStepMaxM": 0.03906723323939433,
+        "queriedRmsChangeMeters": 0.025581147192154367,
+        "visibleChangedPixels": 1824,
+        "cacheDirty": true,
+        "matchedByExactOriginAndQueryOrdering": true
+      },
+      {
+        "firstFrame": 735,
+        "lastFrame": 736,
+        "nativeSequence": 761,
+        "zeroAccumulator": true,
+        "accumulator": 0,
+        "graphDelta": 0.05000019073486328,
+        "clipPhase": 0.3333566188812256,
+        "nativeTrsStepMaxM": 0.025341839930645982,
+        "queriedRmsChangeMeters": 0.02063406494529537,
+        "visibleChangedPixels": 1037,
+        "cacheDirty": true,
+        "matchedByExactOriginAndQueryOrdering": true
+      },
+      {
+        "firstFrame": 738,
+        "lastFrame": 739,
+        "nativeSequence": 767,
+        "zeroAccumulator": true,
+        "accumulator": 0,
+        "graphDelta": 0.05000019073486328,
+        "clipPhase": 0.38335680961608887,
+        "nativeTrsStepMaxM": 0.0555135691877442,
+        "queriedRmsChangeMeters": 0.04842466408935291,
+        "visibleChangedPixels": 1579,
+        "cacheDirty": true,
+        "matchedByExactOriginAndQueryOrdering": true
+      },
+      {
+        "firstFrame": 738,
+        "lastFrame": 739,
+        "nativeSequence": 767,
+        "zeroAccumulator": true,
+        "accumulator": 0,
+        "graphDelta": 0.05000019073486328,
+        "clipPhase": 0.38335680961608887,
+        "nativeTrsStepMaxM": 0.0555135691877442,
+        "queriedRmsChangeMeters": 0.04842466408935291,
+        "visibleChangedPixels": 1579,
+        "cacheDirty": true,
+        "matchedByExactOriginAndQueryOrdering": true
+      },
+      {
+        "firstFrame": 739,
+        "lastFrame": 740,
+        "nativeSequence": 768,
+        "zeroAccumulator": false,
+        "accumulator": 0.012000000104308128,
+        "graphDelta": 0.0,
+        "clipPhase": 0.38335680961608887,
+        "nativeTrsStepMaxM": 0.05277288258465967,
+        "queriedRmsChangeMeters": 0.04128953860442941,
+        "visibleChangedPixels": 1879,
+        "cacheDirty": true,
+        "matchedByExactOriginAndQueryOrdering": true
+      },
+      {
+        "firstFrame": 740,
+        "lastFrame": 741,
+        "nativeSequence": 769,
+        "zeroAccumulator": false,
+        "accumulator": 0.03999999910593033,
+        "graphDelta": 0.0,
+        "clipPhase": 0.38335680961608887,
+        "nativeTrsStepMaxM": 0.12313664802188505,
+        "queriedRmsChangeMeters": 0.09455695121548,
+        "visibleChangedPixels": 3654,
+        "cacheDirty": true,
+        "matchedByExactOriginAndQueryOrdering": true
+      }
+    ],
+    "videoRecorded": true,
+    "numericOverrides": false,
+    "newPbo": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "Native stage is ordered before exact CPU query/HUD frames, not a captured GPU read.",
+      "Dirty cached matrices are distinguished from fresh local TRS; freshness of matrix consumers remains unproven.",
+      "Readback bracket around4ms changes diagnostic scheduling; clip rate is not a measured improvement.",
+      "All-bone local step maxima and six-joint RMS have different meanings."
+    ]
+  },
+  "native": {
+    "sourceRunId": "animation-trs-reset-20261031-103557",
+    "runtimeRunId": "runtime-20261031-103631",
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "postSamples": 397,
+    "counts": {
+      "alias": 397,
+      "dirtyBoth1": 397,
+      "zero": 124,
+      "ordered_zero": 124,
+      "positive": 273,
+      "ordered_positive": 273
+    },
+    "verifiedClockOrigin": true,
+    "acksValidatedAgainstActualOrigin": 38,
+    "frequency": 10000000,
+    "fitDistributions": {
+      "translationMaxM": {
+        "n": 397,
+        "p50": 2.6218289317370136e-08,
+        "p95": 2.6945196443214546e-07,
+        "p99": 4.0163388302586164e-07,
+        "maximum": 6.545166453911335e-07
+      },
+      "slerpMaxDeg": {
+        "n": 397,
+        "p50": 6.056379229554465e-05,
+        "p95": 0.0001570237285904984,
+        "p99": 0.0001636475365858221,
+        "maximum": 0.0001653325556681746
+      },
+      "zeroTranslationMaxM": {
+        "n": 124,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "maximum": 0.0
+      },
+      "zeroSlerpMaxDeg": {
+        "n": 124,
+        "p50": 2.4148365394514667e-06,
+        "p95": 2.4148365394514667e-06,
+        "p99": 2.4148365394514667e-06,
+        "maximum": 2.4148365394514667e-06
+      },
+      "positiveTranslationMaxM": {
+        "n": 273,
+        "p50": 7.540450558753596e-08,
+        "p95": 3.2824205469095407e-07,
+        "p99": 4.236541028601092e-07,
+        "maximum": 6.545166453911335e-07
+      },
+      "positiveSlerpMaxDeg": {
+        "n": 273,
+        "p50": 0.00010534335185407035,
+        "p95": 0.00015857219748918226,
+        "p99": 0.0001638654697534496,
+        "maximum": 0.0001653325556681746
+      },
+      "boundaryStepMaxM": {
+        "n": 123,
+        "p50": 0.04761533894848512,
+        "p95": 0.07040229596200973,
+        "p99": 1.9218119716892148,
+        "maximum": 3.224515440483787
+      },
+      "boundaryStepMaxDeg": {
+        "n": 123,
+        "p50": 6.544670962129186,
+        "p95": 9.97110352911705,
+        "p99": 11.395475553859335,
+        "maximum": 11.465079737972756
+      },
+      "withinStepMaxM": {
+        "n": 273,
+        "p50": 0.07273391696825246,
+        "p95": 0.17673021681586104,
+        "p99": 2.9557236889245813,
+        "maximum": 6.268214709247443
+      },
+      "withinStepMaxDeg": {
+        "n": 273,
+        "p50": 10.06550975719523,
+        "p95": 25.093553003722054,
+        "p99": 26.791651986335026,
+        "maximum": 28.680236127090197
+      },
+      "newStartVsOldEndMaxM": {
+        "n": 123,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "maximum": 0.0
+      },
+      "newStartVsOldEndMaxDeg": {
+        "n": 123,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "maximum": 0.0
+      },
+      "nativeReadBracketMs": {
+        "n": 397,
+        "p50": 4.2922,
+        "p95": 4.5504,
+        "p99": 6.92938,
+        "maximum": 7.1632
+      }
+    },
+    "followingFrameMultiplicity": {
+      "1": 397
+    },
+    "numericOverrides": false,
+    "newPbo": false,
+    "videoRecorded": true,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "TRS interpretation/fit reuses existing32byte local transform and68byte pair contract; not GPU matrices.",
+      "Exact ordering between two script query brackets does not prove which buffer a later renderer consumed.",
+      "All-bone maximum local steps are not six-joint world RMS or perceived mesh jumps.",
+      "Hooks/readback alter scheduling; no performance comparison."
+    ],
+    "selectedTransitions": [
+      {
+        "sequence": 10,
+        "oldRatio": 0.7999999701976781,
+        "newRatio": 0.0,
+        "newStartVsOldEndMaxM": 0.0,
+        "newStartVsOldEndMaxDeg": 0.0,
+        "stepMaxM": 0.03907685428218297,
+        "stepMaxDeg": 8.134068023988625
+      },
+      {
+        "sequence": 16,
+        "oldRatio": 0.8399999761581425,
+        "newRatio": 0.0,
+        "newStartVsOldEndMaxM": 0.0,
+        "newStartVsOldEndMaxDeg": 0.0,
+        "stepMaxM": 0.03100528728964958,
+        "stepMaxDeg": 5.7685921027454015
+      },
+      {
+        "sequence": 22,
+        "oldRatio": 0.7600000387430186,
+        "newRatio": 0.0,
+        "newStartVsOldEndMaxM": 0.0,
+        "newStartVsOldEndMaxDeg": 0.0,
+        "stepMaxM": 0.051806496918950166,
+        "stepMaxDeg": 11.465079737972756
+      },
+      {
+        "sequence": 755,
+        "oldRatio": 0.7800000044703483,
+        "newRatio": 0.0,
+        "newStartVsOldEndMaxM": 0.0,
+        "newStartVsOldEndMaxDeg": 0.0,
+        "stepMaxM": 0.03906723323939433,
+        "stepMaxDeg": 8.17234753200521
+      },
+      {
+        "sequence": 761,
+        "oldRatio": 0.8599999418854722,
+        "newRatio": 0.0,
+        "newStartVsOldEndMaxM": 0.0,
+        "newStartVsOldEndMaxDeg": 0.0,
+        "stepMaxM": 0.025341839930645982,
+        "stepMaxDeg": 3.728565047574875
+      },
+      {
+        "sequence": 767,
+        "oldRatio": 0.7199999582767492,
+        "newRatio": 0.0,
+        "newStartVsOldEndMaxM": 0.0,
+        "newStartVsOldEndMaxDeg": 0.0,
+        "stepMaxM": 0.0555135691877442,
+        "stepMaxDeg": 11.17876631306251
+      }
+    ]
+  },
+  "exploratoryFrameLag": {
+    "sourceRunId": "animation-trs-reset-20261031-103557",
+    "method": "Within-generation positive accumulator differences, not directly captured incoming dt; compare retained script frame intervals by offset",
+    "samples": 273,
+    "offsets": {
+      "-1": {
+        "samples": 273,
+        "correlation": 0.9495480091887244,
+        "rmsResidualMs": 2.777460290120624,
+        "absoluteResidualMs": {
+          "n": 273,
+          "p50": 1.0000009983777147,
+          "p95": 6.399999737739725,
+          "p99": 8.999999866485346,
+          "maximum": 9.999999716876928
+        }
+      },
+      "0": {
+        "samples": 273,
+        "correlation": -0.9739800459577851,
+        "rmsResidualMs": 17.462361423558708,
+        "absoluteResidualMs": {
+          "n": 273,
+          "p50": 18.00000005960456,
+          "p95": 20.999999493360733,
+          "p99": 22.00000256717253,
+          "maximum": 23.000002086163818
+        }
+      },
+      "1": {
+        "samples": 273,
+        "correlation": 0.9974705495055581,
+        "rmsResidualMs": 0.6201737812903024,
+        "absoluteResidualMs": {
+          "n": 273,
+          "p50": 1.1920935349962747e-06,
+          "p95": 1.0000011920929808,
+          "p99": 1.0000020861629366,
+          "maximum": 1.000002250075127
+        }
+      },
+      "2": {
+        "samples": 273,
+        "correlation": -0.9754021546357116,
+        "rmsResidualMs": 17.213058343091344,
+        "absoluteResidualMs": {
+          "n": 273,
+          "p50": 17.99999916553574,
+          "p95": 20.000002086162283,
+          "p99": 21.280001111030955,
+          "maximum": 22.000003382563804
+        }
+      }
+    },
+    "directDtArgumentCaptured": false,
+    "causalProof": false,
+    "goalComplete": false,
+    "selectedRecords": [
+      {
+        "frame": 346,
+        "nativeAccumulatorDelta": 0.010999999940395355,
+        "scriptFrameDt": {
+          "-1": 0.020000000000000462,
+          "0": 0.02799999999999958,
+          "1": 0.012000000000000455,
+          "2": 0.032999999999999474
+        }
+      },
+      {
+        "frame": 347,
+        "nativeAccumulatorDelta": 0.028999999165534973,
+        "scriptFrameDt": {
+          "-1": 0.019999999999999574,
+          "0": 0.020000000000000462,
+          "1": 0.02799999999999958,
+          "2": 0.012000000000000455
+        }
+      },
+      {
+        "frame": 349,
+        "nativeAccumulatorDelta": 0.019999999552965164,
+        "scriptFrameDt": {
+          "-1": 0.011999999999999567,
+          "0": 0.023000000000000576,
+          "1": 0.019999999999999574,
+          "2": 0.020000000000000462
+        }
+      },
+      {
+        "frame": 738,
+        "nativeAccumulatorDelta": 0.010999998077750206,
+        "scriptFrameDt": {
+          "-1": 0.012000000000000455,
+          "0": 0.02999999999999936,
+          "1": 0.009999999999999787,
+          "2": 0.025000000000000355
+        }
+      },
+      {
+        "frame": 740,
+        "nativeAccumulatorDelta": 0.012000000104308128,
+        "scriptFrameDt": {
+          "-1": 0.012000000000000455,
+          "0": 0.026999999999999247,
+          "1": 0.012000000000000455,
+          "2": 0.02999999999999936
+        }
+      },
+      {
+        "frame": 741,
+        "nativeAccumulatorDelta": 0.0279999990016222,
+        "scriptFrameDt": {
+          "-1": 0.028999999999999915,
+          "0": 0.012000000000000455,
+          "1": 0.026999999999999247,
+          "2": 0.012000000000000455
+        }
+      }
+    ]
+  }
+}
+
+Observer source SHA256 c66cf10b8161b42140d00faab9e232ceb37f9e1451bd7108c34cc7385b324d90; source follows:
+'use strict';
+// Entry-only observations. No arguments, clocks, return values or poses changed.
+const cfg=__CONFIG__,mod=Process.getModuleByName('DayZ_x64.exe');
+function hex(p,n){return Array.from(new Uint8Array(p.readByteArray(n))).map(v=>v.toString(16).padStart(2,'0')).join('');}
+for(const [name,rva] of Object.entries(cfg.rvas))if(hex(mod.base.add(rva),16)!==cfg.entries[name])throw Error('Entry mismatch: '+name);
+for(const g of cfg.guards)if(hex(mod.base.add(g.rva),g.size)!==g.hex)throw Error('Caller mismatch');
+let enabled=false,renderer=null,sequence=0,pending=[],dropped=0,latestClip=null;
+const kernel32=Process.getModuleByName('kernel32.dll');
+const qpcTarget=kernel32.getExportByName('QueryPerformanceCounter');
+const counter=new NativeFunction(qpcTarget,'int',['pointer']);
+const frequencyFn=new NativeFunction(kernel32.getExportByName('QueryPerformanceFrequency'),'int',['pointer']);
+const scratch=Memory.alloc(8),threadQpc=new Map();if(!frequencyFn(scratch))throw Error('QPF');
+const frequency=scratch.readS64().toNumber();
+function qpc(){const tid=Process.getCurrentThreadId();if(!threadQpc.has(tid)){if(threadQpc.size>=64)throw Error('QPC thread limit');threadQpc.set(tid,Memory.alloc(8));}const p=threadQpc.get(tid);if(!counter(p))throw Error('QPC');const v=p.readS64().toNumber();if(!Number.isSafeInteger(v))throw Error('QPC range');return v;}
+
+const scopes=new Map(),counts={evaluate:0,totalEntries:0,nonselectedSkeletons:0,dispatch:0,samples:0,commits:0,rejectedCaller:0};
+function emit(type,data){if(pending.length>=3000){dropped++;return;}pending.push({sequence:++sequence,timeMs:Date.now(),thread:Process.getCurrentThreadId(),type,...data});}
+function flush(){if(pending.length||dropped){send({events:pending,dropped,counts});pending=[];dropped=0;}}
+function stop(){enabled=false;flush();return {enabled,counts,events:sequence,activeReturnHooks:0};}
+function fail(site,error){enabled=false;emit('error',{site,message:String(error)});}
+rpc.exports={stop,status(){return {enabled,counts,events:sequence};}};
+Interceptor.attach(mod.base.add(cfg.rvas.interpolate),{onEnter(args){
+ if(!enabled)return;
+ const thread=Process.getCurrentThreadId();scopes.delete(thread);counts.totalEntries++;
+ try{
+  if(!this.context.rsp.readPointer().equals(mod.base.add(0xb1d1f1))){counts.rejectedCaller++;return;}
+  if(!args[0].readPointer().equals(mod.base.add(0x11c7cc8)))throw Error('Evaluator vtable mismatch');
+  const graph=this.context.rsi,animation=graph.sub(0xa0),pose=animation.add(0x188).readPointer();
+  if(pose.isNull()||pose.add(0x68).readU32()!==73){counts.nonselectedSkeletons++;return;}
+  if(renderer&&!renderer.equals(animation))throw Error('Multiple selected renderers');
+  renderer=animation;
+  if(!args[1].equals(this.context.rsp.add(0x58)))throw Error('Root time stack mismatch');
+  const oldClock=args[1].readFloat(),contextDt=args[1].add(4).readFloat();
+  if(![oldClock,contextDt].every(Number.isFinite)||contextDt<=0||contextDt>1)throw Error('Root time invalid');
+  counts.evaluate++;
+  emit('root',{evaluator:args[0].toString(),oldClock,contextDt});
+  scopes.set(thread,{evaluator:args[0],oldClock,contextDt,rootSequence:sequence,dispatch:false});
+ }catch(e){fail('root',e);}
+}});
+Interceptor.attach(mod.base.add(cfg.rvas.dispatch),{onEnter(args){
+ if(!enabled)return;
+ const s=scopes.get(Process.getCurrentThreadId());if(!s)return;
+ s.dispatch=false;
+ try{
+  if(!this.context.rsp.readPointer().equals(mod.base.add(0x490d3f))||!args[0].equals(s.evaluator.add(0x20)))return;
+  // Root local evalContext is rbp+0x10: clock/delta are +0xb8/+0xc0.
+  const oldClock=args[2].add(0xb8).readFloat(),contextDt=args[2].add(0xc0).readFloat();
+  if(oldClock!==s.oldClock||contextDt!==s.contextDt)throw Error('Dispatch time context mismatch');
+  s.dispatch=true;counts.dispatch++;
+  emit('dispatch',{rootSequence:s.rootSequence,oldClock,contextDt});
+ }catch(e){fail('dispatch',e);}
+}});
+const callers=new Map([[0x492129,2],[0x4924d8,3],[0x4925f9,4]]);
+Interceptor.attach(mod.base.add(cfg.rvas.kernel),{onEnter(args){
+ if(!enabled)return;
+ const s=scopes.get(Process.getCurrentThreadId());if(!s?.dispatch)return;
+ try{
+  const caller=parseInt(this.context.rsp.readPointer().sub(mod.base).toString(),16),opcode=callers.get(caller);
+  if(opcode===undefined)return;
+  const command=this.context.rdi;
+  if(command.add(3).readU8()!==opcode)throw Error('Opcode/caller mismatch');
+  const resource=args[1].readPointer(),commandFloat8=command.add(8).readFloat(),commandFloatC=command.add(12).readFloat();
+  const resourceInteger64=resource.add(0x64).readU32(),resourceFloat68=resource.add(0x68).readFloat();
+  if(![commandFloat8,commandFloatC,resourceFloat68].every(Number.isFinite)||resourceInteger64>100000)throw Error('Sample fields invalid');
+  counts.samples++;
+  const sampleQpc=qpc();
+  emit('clip_kernel_entry',{qpc:sampleQpc,qpcFrequency:frequency,rootSequence:s.rootSequence,oldClock:s.oldClock,contextDt:s.contextDt,opcode,callerRva:'0x'+caller.toString(16),resource:resource.toString(),commandIndex:command.add(4).readU32(),commandFloat8,commandFloatC,resourceInteger64,resourceFloat68,scaledCommand8:commandFloat8*resourceInteger64,actualFpRegisterCaptured:false,unitsEstablished:false});
+  latestClip={sequence,oldClock:s.oldClock,contextDt:s.contextDt,phase:commandFloat8,period:resourceFloat68,qpc:sampleQpc};
+ }catch(e){fail('kernel',e);}
+}});
+
+Interceptor.attach(mod.base.add(cfg.rvas.commit),{onEnter(args){
+ if(!enabled||!renderer)return;
+ try{
+  if(!this.context.rsp.readPointer().equals(mod.base.add(0xb72578)))return;
+  const entity=args[0];if(!entity.readPointer().equals(mod.base.add(0x130f170)))return;
+  if(!entity.add(0x620).readPointer().equals(renderer))return;
+  if(entity.add(0x668).readU32()!==0)throw Error('Commit scheduler mode');
+  const before=qpc(),pose=renderer.add(0x188).readPointer();
+  if(pose.isNull()||pose.add(0x68).readU32()!==73)throw Error('Commit skeleton mismatch');
+  const matrices=pose.add(0x38).readPointer();if(matrices.isNull())throw Error('Commit matrices absent');
+  const points=[];
+  for(const slot of [23,3,21,51,8,10])for(let axis=0;axis<3;axis++){const x=matrices.add(slot*48+36+axis*4).readFloat();if(!Number.isFinite(x)||Math.abs(x)>100)throw Error('Commit pose bounds');points.push(x);}
+  const graphClock=renderer.add(0x198).readFloat(),accumulator=entity.add(0x66c).readFloat(),primary=entity.add(0x250).readFloat(),buffer=entity.add(0x660).readPointer();
+  const duration=buffer.isNull()?null:buffer.add(0x38).readFloat();
+  const interp=renderer.add(0x190).readPointer();
+  if(interp.isNull()||interp.add(0x68).readU32()!==73)throw Error('Interpolated skeleton mismatch');
+  const trsPointer=interp.add(0x30).readPointer(),pairPointer=renderer.add(0xa0).readPointer(),pairCount=renderer.add(0xac).readU32();
+  if(trsPointer.isNull()||pairPointer.isNull()||pairCount===0||pairCount>512)throw Error('TRS/pair layout bounds');
+  const dirtyQuery=pose.add(0xa8).readU8(),dirtyInterpolated=interp.add(0xa8).readU8();
+  const trsHex=hex(trsPointer,73*32),pairsHex=hex(pairPointer,pairCount*68);
+  const trsStable=trsHex===hex(trsPointer,73*32),pairsStable=pairsHex===hex(pairPointer,pairCount*68);
+  const trsHeaderStable=interp.equals(renderer.add(0x190).readPointer())&&trsPointer.equals(interp.add(0x30).readPointer())&&pairPointer.equals(renderer.add(0xa0).readPointer())&&pairCount===renderer.add(0xac).readU32();
+  if(!trsHeaderStable||!trsStable||!pairsStable)throw Error('TRS/pair changed at stage entry');
+  const clock=cfg.engineClock;
+  if(!mod.base.add(clock.qpcIatRva).readPointer().equals(qpcTarget)||mod.base.add(clock.frequencyRva).readS64().toNumber()!==frequency)throw Error('Engine QPC import/frequency mismatch');
+  const engineClockOrigin=mod.base.add(clock.originRva).readS64().toNumber();
+  if(!Number.isSafeInteger(engineClockOrigin)||engineClockOrigin<=0||engineClockOrigin>=before)throw Error('Engine origin bounds');
+
+  if(![graphClock,accumulator,primary,duration].every(Number.isFinite)||primary<=0||duration<=0)throw Error('Commit clocks invalid');
+  const stable=pose.equals(renderer.add(0x188).readPointer())&&matrices.equals(pose.add(0x38).readPointer())&&pose.add(0x68).readU32()===73;
+  if(!stable)throw Error('Commit matrix header changed');
+  const after=qpc();counts.commits++;
+  emit('post_interpolation_pose',{qpcBefore:before,qpcAfter:after,qpcFrequency:frequency,points,graphClock,accumulator,primary,duration,matrixHeaderStable:stable,latestClip:latestClip?{...latestClip}:null,callerRva:'0xb72578',poseStage:'after interpolation and4347c0;before4356b0 body',actualGpuOutput:false,engineClockOrigin,engineQpcImportVerified:true,skeletonsAlias:pose.equals(interp),dirtyQuery,dirtyInterpolated,dirtyQueryAfter:pose.add(0xa8).readU8(),dirtyInterpolatedAfter:interp.add(0xa8).readU8(),trsHex,pairsHex,pairCount,trsStable,pairsStable,trsHeaderStable,trsStride:32,pairStride:68});
+ }catch(e){fail('post_interpolation_pose',e);}
+}});
+
+enabled=true;setInterval(flush,200);setTimeout(()=>send({type:'observation_watchdog_disabled',result:stop()}),cfg.observeMs);
+send({type:'armed',plan:cfg.plan,scope:'Root, command-dispatch and candidate clip-kernel entries; stored operands only; no numeric overrides.'});
