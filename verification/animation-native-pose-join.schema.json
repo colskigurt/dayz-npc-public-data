@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "animation-native-pose-join-20261031-102143"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "repetitions",
+        "clipKernelCalls",
+        "phaseSecondsPerHostSecond",
+        "phaseVsRootMaxResidualSeconds",
+        "nativeHooks",
+        "numericOverrides",
+        "videoRecorded"
+      ],
+      "properties": {
+        "repetitions": {
+          "const": 1
+        },
+        "clipKernelCalls": {
+          "const": 104
+        },
+        "phaseVsRootMaxResidualSeconds": {
+          "const": 0
+        },
+        "nativeHooks": {
+          "const": true
+        },
+        "numericOverrides": {
+          "const": false
+        },
+        "videoRecorded": {
+          "const": true
+        }
+      }
+    }
+  }
+}
