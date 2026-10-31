@@ -1,0 +1,502 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T06:49:30.593332+09:00",
+  "sourceRunId": "presentation-etw-64-20261031-1904",
+  "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+  "verificationStatus": {
+    "diagnostic": "closed_functional_regression_pass_etw_unavailable",
+    "functional": "scoped_64_agent_pass",
+    "visibleSmoothness": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "presentation-etw-64-20261031-1904",
+    "sourceRuntimeRunId": "runtime-20261031-191311",
+    "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+    "executionRequestedAt": "2026-10-31T19:13:11.9808265+09:00",
+    "closedAt": "2026-11-01T06:46:25.341120+09:00",
+    "newRuntimeThisTurn": false,
+    "runtimeSincePriorPublicReport": true,
+    "newPbo": false,
+    "closure": {
+      "observedAt": "2026-11-01T06:46:25.341120+09:00",
+      "clientClosedNormally": true,
+      "administratorHelperAbsent": true,
+      "presentMonAbsent": true,
+      "captureFiles": [],
+      "validEtwMeasurement": false,
+      "userReportedHelperClosed": true,
+      "expiredConsumedRequestNeverReused": true,
+      "reason": "No validCSV or capture completion; helper later closed byuser. Exact blockingcause unresolved."
+    },
+    "functionalGate": {
+      "runtimeRunId": "runtime-20261031-191311",
+      "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+      "checks": {
+        "all64ValidFinalStates": true,
+        "allFallsLandedAndResumed": true,
+        "allPhysicalTransitionsMatched": true,
+        "noClimbEndFailures": true,
+        "noAlgorithmFailures": true,
+        "noUnresolvedTerminalAgents": true,
+        "actualTargetStagesValid": true,
+        "foregroundMaintained": true,
+        "leaseContracts": true
+      },
+      "scopedFunctionalPass": true,
+      "fallEpisodes": 92,
+      "leaseActuallyGranted": false,
+      "newLeaseLiveEfficacyProven": false,
+      "missionFrameMs": {
+        "samples": 9952,
+        "p50": 25.0,
+        "p95": 58.0,
+        "p99": 78.0
+      },
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false
+    },
+    "followCoverage": {
+      "low": 64,
+      "high": 64,
+      "ground": 64
+    },
+    "actualPlayerStimulus": {
+      "FINAL_HOLD": {
+        "samples": 1143,
+        "areas": {
+          "ground": 1143
+        },
+        "maximumDisplacementFromFirstMeters": 0.5390404514319912
+      },
+      "GROUND_EAST": {
+        "samples": 80,
+        "areas": {
+          "ground": 80
+        },
+        "maximumDisplacementFromFirstMeters": 32.43444276256698
+      },
+      "GROUND_EAST_HOLD": {
+        "samples": 124,
+        "areas": {
+          "ground": 124
+        },
+        "maximumDisplacementFromFirstMeters": 0.28369199999997363
+      },
+      "GROUND_HOLD": {
+        "samples": 252,
+        "areas": {
+          "ground": 252
+        },
+        "maximumDisplacementFromFirstMeters": 0.0
+      },
+      "GROUND_NORTH": {
+        "samples": 85,
+        "areas": {
+          "ground": 85
+        },
+        "maximumDisplacementFromFirstMeters": 5.762307920260092
+      },
+      "HIGH_HOLD": {
+        "samples": 476,
+        "areas": {
+          "high": 476
+        },
+        "maximumDisplacementFromFirstMeters": 0.725340994008429
+      },
+      "LOW_HOLD": {
+        "samples": 364,
+        "areas": {
+          "low": 364
+        },
+        "maximumDisplacementFromFirstMeters": 0.2522328377235766
+      }
+    },
+    "missionFrameMs": {
+      "samples": 9952,
+      "p50": 25.0,
+      "p95": 58.0,
+      "p99": 78.0
+    },
+    "leaseActuallyGranted": false,
+    "newLeaseLiveEfficacyProven": false,
+    "phaseCost": {
+      "sourceRunId": "presentation-etw-64-20261031-1904",
+      "runtimeRunId": "runtime-20261031-191311",
+      "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+      "qpcFrequency": 10000000,
+      "newRuntime": false,
+      "newPbo": false,
+      "phases": [
+        {
+          "stage": "LOW_HOLD",
+          "requestedSeconds": [
+            5,
+            44
+          ],
+          "counterSpanSeconds": 38.75,
+          "globalCountersOwner": "Director once, usingid0 row toavoid64fold duplication",
+          "globalElapsedMsPerWallSecond": {
+            "perceptionCpuTicks": 54.98239999999999,
+            "socialCpuTicks": 4.931695483870968,
+            "pursuitCpuTicks": 0.47354064516129035,
+            "crowdCpuTicks": 30.743976774193545
+          },
+          "bodyCountersOwner": "Sum64 perbody rates over their actualsample spans",
+          "bodyElapsedMsPerWallSecond": {
+            "contactCpuTicks": 206.27955096774193,
+            "contactBoneCpuTicks": 7.864836129032258,
+            "contactFootCpuTicks": 114.04787354838709,
+            "contactWorldCpuTicks": 69.99905032258064,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.3325316129032258,
+            "supportFastCpuTicks": 45.854,
+            "supportShadowCpuTicks": 0.0
+          },
+          "missionFrameMs": {
+            "samples": 943,
+            "p50": 42.0,
+            "p95": 68.0,
+            "p99": 84.0,
+            "maximum": 103.0
+          },
+          "actualPlayerAreas": {
+            "low": 318
+          },
+          "logicalPhaseSampleCounts": {
+            "FOLLOW": 4350,
+            "MOTION": 258,
+            "SETTLE": 102,
+            "EGRESS": 5,
+            "FALL": 10,
+            "LAND": 75
+          },
+          "nativeAnimationCostMeasured": false
+        },
+        {
+          "stage": "HIGH_HOLD",
+          "requestedSeconds": [
+            50,
+            104
+          ],
+          "counterSpanSeconds": 53.114000000000004,
+          "globalCountersOwner": "Director once, usingid0 row toavoid64fold duplication",
+          "globalElapsedMsPerWallSecond": {
+            "perceptionCpuTicks": 48.7564483940204,
+            "socialCpuTicks": 5.143408517528335,
+            "pursuitCpuTicks": 0.4527337425160974,
+            "crowdCpuTicks": 43.36351997590089
+          },
+          "bodyCountersOwner": "Sum64 perbody rates over their actualsample spans",
+          "bodyElapsedMsPerWallSecond": {
+            "contactCpuTicks": 177.32767255337575,
+            "contactBoneCpuTicks": 7.701760364499002,
+            "contactFootCpuTicks": 94.74394321647776,
+            "contactWorldCpuTicks": 55.588848514515945,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 1.6118386865986367,
+            "supportFastCpuTicks": 55.066419399781594,
+            "supportShadowCpuTicks": 0.0
+          },
+          "missionFrameMs": {
+            "samples": 1337,
+            "p50": 39.0,
+            "p95": 74.0,
+            "p99": 86.6400000000001,
+            "maximum": 120.0
+          },
+          "actualPlayerAreas": {
+            "high": 428
+          },
+          "logicalPhaseSampleCounts": {
+            "FOLLOW": 5692,
+            "MOTION": 354,
+            "SETTLE": 107,
+            "EGRESS": 46,
+            "FALL": 97,
+            "LAND": 232
+          },
+          "nativeAnimationCostMeasured": false
+        },
+        {
+          "stage": "GROUND_HOLD",
+          "requestedSeconds": [
+            110,
+            134
+          ],
+          "counterSpanSeconds": 23.55900000000001,
+          "globalCountersOwner": "Director once, usingid0 row toavoid64fold duplication",
+          "globalElapsedMsPerWallSecond": {
+            "perceptionCpuTicks": 54.099919351415565,
+            "socialCpuTicks": 5.763614754446281,
+            "pursuitCpuTicks": 24.948749946941703,
+            "crowdCpuTicks": 34.458168852667754
+          },
+          "bodyCountersOwner": "Sum64 perbody rates over their actualsample spans",
+          "bodyElapsedMsPerWallSecond": {
+            "contactCpuTicks": 113.50910480071305,
+            "contactBoneCpuTicks": 5.792236512585421,
+            "contactFootCpuTicks": 60.174285835561754,
+            "contactWorldCpuTicks": 37.91965278662081,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.0,
+            "supportFastCpuTicks": 3.9896769811961437,
+            "supportShadowCpuTicks": 0.0
+          },
+          "missionFrameMs": {
+            "samples": 852,
+            "p50": 27.0,
+            "p95": 51.0,
+            "p99": 69.0,
+            "maximum": 79.0
+          },
+          "actualPlayerAreas": {
+            "ground": 202
+          },
+          "logicalPhaseSampleCounts": {
+            "FOLLOW": 2669,
+            "MOTION": 10,
+            "FALL": 9,
+            "LAND": 294,
+            "EGRESS": 26
+          },
+          "nativeAnimationCostMeasured": false
+        },
+        {
+          "stage": "GROUND_EAST",
+          "requestedSeconds": [
+            136,
+            144
+          ],
+          "counterSpanSeconds": 7.236999999999995,
+          "globalCountersOwner": "Director once, usingid0 row toavoid64fold duplication",
+          "globalElapsedMsPerWallSecond": {
+            "perceptionCpuTicks": 55.53820643913228,
+            "socialCpuTicks": 59.346137902445804,
+            "pursuitCpuTicks": 103.05195523006779,
+            "crowdCpuTicks": 37.818156694763054
+          },
+          "bodyCountersOwner": "Sum64 perbody rates over their actualsample spans",
+          "bodyElapsedMsPerWallSecond": {
+            "contactCpuTicks": 129.396020450463,
+            "contactBoneCpuTicks": 7.563285891944181,
+            "contactFootCpuTicks": 69.02224678734287,
+            "contactWorldCpuTicks": 42.30426972502421,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.0,
+            "supportFastCpuTicks": 4.342545253558107,
+            "supportShadowCpuTicks": 0.0
+          },
+          "missionFrameMs": {
+            "samples": 209,
+            "p50": 32.0,
+            "p95": 68.19999999999999,
+            "p99": 87.83999999999997,
+            "maximum": 115.0
+          },
+          "actualPlayerAreas": {
+            "ground": 64
+          },
+          "logicalPhaseSampleCounts": {
+            "FOLLOW": 960
+          },
+          "nativeAnimationCostMeasured": false
+        },
+        {
+          "stage": "GROUND_EAST_HOLD",
+          "requestedSeconds": [
+            146,
+            159
+          ],
+          "counterSpanSeconds": 12.27600000000001,
+          "globalCountersOwner": "Director once, usingid0 row toavoid64fold duplication",
+          "globalElapsedMsPerWallSecond": {
+            "perceptionCpuTicks": 49.195992179863104,
+            "socialCpuTicks": 4.769468882372104,
+            "pursuitCpuTicks": 43.24617139133264,
+            "crowdCpuTicks": 34.528347996089906
+          },
+          "bodyCountersOwner": "Sum64 perbody rates over their actualsample spans",
+          "bodyElapsedMsPerWallSecond": {
+            "contactCpuTicks": 148.3239654610621,
+            "contactBoneCpuTicks": 7.33511730205278,
+            "contactFootCpuTicks": 77.66137178233946,
+            "contactWorldCpuTicks": 52.00692407950468,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.0,
+            "supportFastCpuTicks": 4.649804496578686,
+            "supportShadowCpuTicks": 0.0
+          },
+          "missionFrameMs": {
+            "samples": 415,
+            "p50": 30.0,
+            "p95": 55.0,
+            "p99": 72.86000000000001,
+            "maximum": 74.0
+          },
+          "actualPlayerAreas": {
+            "ground": 107
+          },
+          "logicalPhaseSampleCounts": {
+            "FOLLOW": 1600
+          },
+          "nativeAnimationCostMeasured": false
+        },
+        {
+          "stage": "GROUND_NORTH",
+          "requestedSeconds": [
+            161,
+            169
+          ],
+          "counterSpanSeconds": 7.6769999999999925,
+          "globalCountersOwner": "Director once, usingid0 row toavoid64fold duplication",
+          "globalElapsedMsPerWallSecond": {
+            "perceptionCpuTicks": 40.21232252181846,
+            "socialCpuTicks": 17.001432851374254,
+            "pursuitCpuTicks": 139.62224827406553,
+            "crowdCpuTicks": 26.361860101602215
+          },
+          "bodyCountersOwner": "Sum64 perbody rates over their actualsample spans",
+          "bodyElapsedMsPerWallSecond": {
+            "contactCpuTicks": 148.03126221180162,
+            "contactBoneCpuTicks": 7.5802917806434875,
+            "contactFootCpuTicks": 77.91559202813607,
+            "contactWorldCpuTicks": 51.00989970040386,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.0,
+            "supportFastCpuTicks": 4.72902175328905,
+            "supportShadowCpuTicks": 0.0
+          },
+          "missionFrameMs": {
+            "samples": 219,
+            "p50": 32.0,
+            "p95": 66.0,
+            "p99": 76.0,
+            "maximum": 114.0
+          },
+          "actualPlayerAreas": {
+            "ground": 68
+          },
+          "logicalPhaseSampleCounts": {
+            "FOLLOW": 1024
+          },
+          "nativeAnimationCostMeasured": false
+        },
+        {
+          "stage": "FINAL_HOLD",
+          "requestedSeconds": [
+            175,
+            299
+          ],
+          "counterSpanSeconds": 123.42699999999999,
+          "globalCountersOwner": "Director once, usingid0 row toavoid64fold duplication",
+          "globalElapsedMsPerWallSecond": {
+            "perceptionCpuTicks": 60.65269349494033,
+            "socialCpuTicks": 6.437894463934148,
+            "pursuitCpuTicks": 12.422403525970818,
+            "crowdCpuTicks": 34.091244217229615
+          },
+          "bodyCountersOwner": "Sum64 perbody rates over their actualsample spans",
+          "bodyElapsedMsPerWallSecond": {
+            "contactCpuTicks": 75.102295283852,
+            "contactBoneCpuTicks": 3.546817146977566,
+            "contactFootCpuTicks": 40.09655909971076,
+            "contactWorldCpuTicks": 25.031305954126733,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.0,
+            "supportFastCpuTicks": 2.5899317005193354,
+            "supportShadowCpuTicks": 0.0
+          },
+          "missionFrameMs": {
+            "samples": 5258,
+            "p50": 22.0,
+            "p95": 42.0,
+            "p99": 56.0,
+            "maximum": 94.0
+          },
+          "actualPlayerAreas": {
+            "ground": 1092
+          },
+          "logicalPhaseSampleCounts": {
+            "FOLLOW": 15552
+          },
+          "nativeAnimationCostMeasured": false
+        }
+      ],
+      "process": {
+        "samples": 341,
+        "wholeDetectedClientWallSeconds": 346.902,
+        "processCpuSecondsDelta": 501.3125,
+        "meanBusyCores": 1.4451127407740516,
+        "scope": "All clientthreads from detection through shutdown, including loading. Not same phasewindow or GPUtime."
+      },
+      "sourceHashes": {
+        "native-ground.tsv": "f9b81eaad93a0e227e62038b8e7712f42add05ae3fb56b88e420ecae2d5f5a06",
+        "native-pose-cadence.tsv": "d482376eb93a1be074f2513ca0d0d10ffb29d2e8409d0caf0713b5deb76e744f",
+        "native-natural-player.tsv": "1db812574c7f5cc340803e905e0b7b71a00fb3b0fc5d5295131c2869c34d4468",
+        "native-process-cost.tsv": "b6c3020c92944df0e68c0a9ffa7688f454c6dbcc9a7daa5eadd65203870990b2",
+        "mission-source/init.c": "94c5468d2f2b9d45d8716ffb6b436e66d7c1a697a90ee66d318de8e896ee88bd"
+      },
+      "limits": [
+        "All timers are inclusive elapsed ranges. Do not sum overlapping parent/child fields orcall them CPU self-time.",
+        "Director perception/social/pursuit/crowd counters are global repeated inbody rows, not64 perentity counters.",
+        "Perbody rates use slightly different actualsample endpoints; rows/phase occupancy andworkload differ.",
+        "RuntimeTimingProbe isfalse; nativegraph/skin/evaluation self-time is unavailable, not zero.",
+        "Stage frame quantiles are script renderDt frompart0 telemetry, not actual Present/display intervals.",
+        "This is a newclosed functional run but phase extraction is offline and not a controlledoptimization contrast."
+      ],
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false
+    },
+    "etwMetrics": null,
+    "etwMeasurementAccepted": false,
+    "limits": [
+      "All timers are inclusive elapsed ranges. Do not sum overlapping parent/child fields orcall them CPU self-time.",
+      "Director perception/social/pursuit/crowd counters are global repeated inbody rows, not64 perentity counters.",
+      "Perbody rates use slightly different actualsample endpoints; rows/phase occupancy andworkload differ.",
+      "RuntimeTimingProbe isfalse; nativegraph/skin/evaluation self-time is unavailable, not zero.",
+      "Stage frame quantiles are script renderDt frompart0 telemetry, not actual Present/display intervals.",
+      "This is a newclosed functional run but phase extraction is offline and not a controlledoptimization contrast.",
+      "No actual64Present/CPU/GPU/display CSV was captured. No repeated capture was substituted after its intendedwindow expired.",
+      "64functional pass applies to the declared300sec scene/build; not allmaps or proof of unused landinglease efficacy.",
+      "Administrator helper blocked after request consumption; consoleoutput wait is a hypothesis, not an establishedcause.",
+      "Original extraction and conversion fidelity remains a separate unexcluded hypothesis; nativeclock evidence does not prove all14clips are clean."
+    ],
+    "next": "Audit one runclip through retained extraction/Blender/TXA/ANM provenance before new animation changes; do not redo all14. Repair and independently check ETW helper lifecycle before another client run. Preserve functional pipeline and separate64cost/visual verdicts.",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "blockers": [
+    "All timers are inclusive elapsed ranges. Do not sum overlapping parent/child fields orcall them CPU self-time.",
+    "Director perception/social/pursuit/crowd counters are global repeated inbody rows, not64 perentity counters.",
+    "Perbody rates use slightly different actualsample endpoints; rows/phase occupancy andworkload differ.",
+    "RuntimeTimingProbe isfalse; nativegraph/skin/evaluation self-time is unavailable, not zero.",
+    "Stage frame quantiles are script renderDt frompart0 telemetry, not actual Present/display intervals.",
+    "This is a newclosed functional run but phase extraction is offline and not a controlledoptimization contrast.",
+    "No actual64Present/CPU/GPU/display CSV was captured. No repeated capture was substituted after its intendedwindow expired.",
+    "64functional pass applies to the declared300sec scene/build; not allmaps or proof of unused landinglease efficacy.",
+    "Administrator helper blocked after request consumption; consoleoutput wait is a hypothesis, not an establishedcause.",
+    "Original extraction and conversion fidelity remains a separate unexcluded hypothesis; nativeclock evidence does not prove all14clips are clean.",
+    "64-agent ETW capture unavailable; no CPU/GPU/display attribution.",
+    "Representative extraction/conversion fidelity audit pending."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/presentation-etw-64-closed-20261101.md",
+      "sha256": "05ae8c9f4935dc04dcba277112950b7681a69f5dfa2846c626941e6bf2bc3a66"
+    },
+    {
+      "path": "evidence/presentation-etw-64-closed-20261101.txt",
+      "sha256": "ec4a862ed35bea051fd1beb7b5f26d274416372e22b731b84e05cbaa1264bbfb"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

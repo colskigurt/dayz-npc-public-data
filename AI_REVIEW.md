@@ -1,3 +1,5 @@
+> 최신 마감: 2026-10-31 실행에서 64/64 유효 종료·92/92 낙하 복구. script p50/p95/p99 25/58/78ms. ETW 자료 미확보, 시각·성능 목표 미수용. 2026-11-01은 종료 확인·보고일이다. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/presentation-etw-64-closed-20261101.md). 이전 기록 보존.
+
 > 최신64계측준비: 기존서명빌드/기능gate와동일시험용ETWhelper를준비했다. 이전실제CSV1495행의36분위수정합. 사용자UAC대기이며새64실행/측정/성능수용없음. [준비보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/presentation-etw-64-readiness-20261031.md). 이전기록보존.
 
 > 최신 기존영상 대조: A/B/B/A 머리궤적의강한반복간격3.167/2.083/2.083/3.150초. 내부평균시간차이가화면에도나타남. 부드러움개선·숫자쓰기배포해결·64성능수용은아님. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-optical-carry-20261031.md). 이전기록보존.
