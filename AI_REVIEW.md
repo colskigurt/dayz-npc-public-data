@@ -1,3 +1,5 @@
+> 최신 간격 setter 호출 진단: 직접 후보5곳을 대조했다. 추가 생성자 RTTI는 Helicopter/Man이며 인접25ms 분기는 Animal 지원 제어로 수용하지 않았다. 새 실행·시각/성능 수용 없음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-precision-callers-20261031.md). 이전 기록은 보존한다.
+
 > 최신:SupportFast표면prefix를같은입력에서두번비교했다.기하동등·분기노출은확인했으나비용은작고혼합적이어서제품에는미반영.[부정결과와제한](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/support-surface-prefix-20261031.md).실제ETW첫측정등이전기록은아래보존한다.
 
 > 최신:ETW권한제한은이단일측정에서해소됐다.1495 Present·실제표시간격확보,표시p95 20.09ms와NPC명령진행0.654배는서로다른측정이다.최종시각/64성능수용아님.[실제결과](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/presentation-etw-baseline-20261031.md).이전권한거부는과거기록으로아래보존한다.

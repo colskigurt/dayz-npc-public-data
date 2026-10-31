@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T18:09:13.860174+09:00",
+  "sourceRunId": "animation-precision-callers-20261031-1806",
+  "buildId": "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
+  "verificationStatus": {
+    "diagnostic": "bounded_precision_caller_audit_complete",
+    "newRuntime": false,
+    "reaDeepDossier": false,
+    "functional": "not_rerun",
+    "visibleSmoothness": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-precision-callers-20261031-1806",
+    "buildId": "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
+    "newRuntime": false,
+    "newPbo": false,
+    "directCallersExamined": 5,
+    "unwindDecodesReachedEnd": 5,
+    "classesResolved": [
+      "Helicopter",
+      "Man"
+    ],
+    "shorter25msBranchOwner": "not proven for selected Animal; adjacent Helicopter constructor uses same globals",
+    "supportedClockControlEstablished": false,
+    "diagnostic": "bounded setter caller exclusion; not a complete call graph",
+    "limits": [
+      "No complete CFG or indirect reference coverage. The third nonLOD function receiver is not resolved by adjacency.",
+      "RTTI resolves constructor-written vtables, not a live Animal receiver.",
+      "The 25ms branch is not a supported NPC control; static file constants are not live settings.",
+      "No visible pose, performance, 8/64 regression or frame-time measurements this bundle.",
+      "REA Rizin unavailable on current Windows provider; bounded Capstone fallback only.",
+      "First serialization failed on nonfinite float from nonnumeric RIP data; partial file excluded and preserved."
+    ],
+    "next": "Resolve remaining nonLOD receiver and references to scheduling global data before considering a supported control; preserve current NPC pipeline. No period or residual write authorized by these static findings.",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "blockers": [
+    "No complete CFG or indirect reference coverage. The third nonLOD function receiver is not resolved by adjacency.",
+    "RTTI resolves constructor-written vtables, not a live Animal receiver.",
+    "The 25ms branch is not a supported NPC control; static file constants are not live settings.",
+    "No visible pose, performance, 8/64 regression or frame-time measurements this bundle.",
+    "REA Rizin unavailable on current Windows provider; bounded Capstone fallback only.",
+    "First serialization failed on nonfinite float from nonnumeric RIP data; partial file excluded and preserved.",
+    "Supported clock control remains unestablished; graphconsumer verification still required.",
+    "REA Rizin Windows native command unavailable; no deepdossier claimed."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-precision-callers-20261031.md",
+      "sha256": "3d0cf508cb398af194a6f85f5465a2ef3dc32ff9fd860ec9d33ad6603b2dcc5b"
+    },
+    {
+      "path": "evidence/animation-precision-callers-20261031.txt",
+      "sha256": "85fb982a2c3c681d99c9d0b923a7bf7142e178c30136e591579a5635446be65d"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
