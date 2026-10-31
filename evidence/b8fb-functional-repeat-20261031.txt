@@ -1,0 +1,1612 @@
+Selection: all3trial aggregates; complete12actor high-miss classification without full raw transition list; terminal snapshot timing aggregate; selected installed pursuit arrival function lines18..37. Original180sec failure retained. No raw video, runtime pointers, process IDs or local paths.
+
+{
+  "functional": {
+    "sourceRunId": "b8fb-functional-repeat-20261031-115200",
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "original180TrialPreserved": true,
+    "equalDurationPairPassed": false,
+    "allTrialsPassed": false,
+    "visualSmoothnessAccepted": false,
+    "performanceAccepted": false,
+    "newPbo": false,
+    "goalComplete": false,
+    "limits": [
+      "300sec followup cannot retroactively pass180sec trial.",
+      "Final sampled outcome and missed intermediateHIGH_HOLD coverage are separately reported.",
+      "Legitimate falls remain accepted; recording/logging overhead present.",
+      "Equal duration/flags/build do not make nondeterministic physical outcomes identical.",
+      "No optimized or new gameplay candidate tested in this bundle; original B8FB archive is a preserved reference, common D61D unchanged.",
+      "Native graph/renderer/GC costs not directly attributed by this functional batch."
+    ],
+    "trials": [
+      {
+        "sourceRunId": "b8fb-functional-repeat-20261031-115200",
+        "runtimeRunId": "runtime-20261031-115150",
+        "count": 8,
+        "seconds": 180,
+        "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+        "missionSourcesSha256": "F8356C4F1E0286DCE7ED83F0137E68061249D48ABEB175942D44A8A048D704D3",
+        "normalQuitVerified": true,
+        "terminalArrivals": 7,
+        "unresolvedTerminalAgents": [
+          {
+            "id": "5",
+            "position": "<4564.152832, 339.419189, 10282.879883>",
+            "state": "CHASE",
+            "traversalPhase": "FOLLOW",
+            "reason": "",
+            "seenAge": "0",
+            "poseEpisodeAge": "-1",
+            "poseEpisodeStatus": "ESCAPE_MOVED",
+            "pressureEscapeDiagnostic": "NONDEEPENING_CLEAR",
+            "pressureEscapeLastStepReject": "",
+            "pressureEscapeRejectProbe": "-1",
+            "pressureEscapeRejectFixture": "",
+            "pressureEscapeRejectBefore": "0",
+            "pressureEscapeRejectAfter": "0"
+          }
+        ],
+        "missingHighFollow": [],
+        "highHoldWindow": [
+          45.007,
+          104.904
+        ],
+        "fallsLandedAndResumed": 9,
+        "egressStallEpisodes": [],
+        "admissionBranchExercised": true,
+        "admissionOutcomes": {
+          "ARRIVED": 2
+        },
+        "admissionViolations": [],
+        "egressOutcomes": {},
+        "egressViolations": [],
+        "physicalTransitions": 112,
+        "allPhysicalTransitionsMatched": true,
+        "failureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 1
+        },
+        "foregroundMissionFrameMs": {
+          "samples": 8748,
+          "p50": 20.0,
+          "p95": 33.0,
+          "p99": 34.0
+        },
+        "analyzersSucceeded": true,
+        "functionalScenarioPassed": false,
+        "visualSmoothnessAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false,
+        "limits": [
+          "A valid final arrival does not erase missed intermediateHIGH_HOLD coverage.",
+          "LaterARRIVED afterEGRESS_STALL is observed recovery, not a proved root-cause fix or same support target.",
+          "Legitimate falls remain accepted and their return counts stay separate.",
+          "Same-call transition contacts differ from preceding sampled snapshots; report both ages.",
+          "One trial per count in this bundle; recording/logging overhead present.",
+          "No native memory timing override, new PBO, performance optimization or final animation acceptance."
+        ],
+        "label": "eight",
+        "climbEndFailureCount": 0,
+        "fallEpisodeCount": 9,
+        "repetitionsForThisCountDuration": 1
+      },
+      {
+        "sourceRunId": "b8fb-functional-repeat-20261031-115200",
+        "runtimeRunId": "runtime-20261031-115839",
+        "count": 8,
+        "seconds": 300,
+        "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+        "missionSourcesSha256": "F8356C4F1E0286DCE7ED83F0137E68061249D48ABEB175942D44A8A048D704D3",
+        "normalQuitVerified": true,
+        "terminalArrivals": 8,
+        "unresolvedTerminalAgents": [],
+        "missingHighFollow": [],
+        "highHoldWindow": [
+          45.006,
+          104.994
+        ],
+        "fallsLandedAndResumed": 9,
+        "egressStallEpisodes": [],
+        "admissionBranchExercised": true,
+        "admissionOutcomes": {
+          "ARRIVED": 1
+        },
+        "admissionViolations": [],
+        "egressOutcomes": {
+          "PHASE_HANDOFF:FOLLOW": 1
+        },
+        "egressViolations": [],
+        "physicalTransitions": 112,
+        "allPhysicalTransitionsMatched": true,
+        "failureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 1
+        },
+        "foregroundMissionFrameMs": {
+          "samples": 14747,
+          "p50": 20.0,
+          "p95": 33.0,
+          "p99": 34.0
+        },
+        "analyzersSucceeded": true,
+        "functionalScenarioPassed": true,
+        "visualSmoothnessAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false,
+        "limits": [
+          "A valid final arrival does not erase missed intermediateHIGH_HOLD coverage.",
+          "LaterARRIVED afterEGRESS_STALL is observed recovery, not a proved root-cause fix or same support target.",
+          "Legitimate falls remain accepted and their return counts stay separate.",
+          "Same-call transition contacts differ from preceding sampled snapshots; report both ages.",
+          "One trial per count in this bundle; recording/logging overhead present.",
+          "No native memory timing override, new PBO, performance optimization or final animation acceptance."
+        ],
+        "label": "eight-long",
+        "climbEndFailureCount": 0,
+        "fallEpisodeCount": 9,
+        "repetitionsForThisCountDuration": 1
+      },
+      {
+        "sourceRunId": "b8fb-functional-repeat-20261031-115200",
+        "runtimeRunId": "runtime-20261031-120524",
+        "count": 64,
+        "seconds": 300,
+        "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+        "missionSourcesSha256": "F8356C4F1E0286DCE7ED83F0137E68061249D48ABEB175942D44A8A048D704D3",
+        "normalQuitVerified": true,
+        "terminalArrivals": 64,
+        "unresolvedTerminalAgents": [],
+        "missingHighFollow": [
+          5,
+          8,
+          11,
+          18,
+          22,
+          31,
+          39,
+          45,
+          49,
+          50,
+          53,
+          56
+        ],
+        "highHoldWindow": [
+          45.073,
+          104.982
+        ],
+        "fallsLandedAndResumed": 71,
+        "egressStallEpisodes": [],
+        "admissionBranchExercised": true,
+        "admissionOutcomes": {
+          "ARRIVED": 18
+        },
+        "admissionViolations": [],
+        "egressOutcomes": {
+          "DONE": 16,
+          "PHASE_HANDOFF:FOLLOW": 2,
+          "STEP_REJECTED:DEEPER_FIXTURE": 3
+        },
+        "egressViolations": [],
+        "physicalTransitions": 815,
+        "allPhysicalTransitionsMatched": true,
+        "failureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 35
+        },
+        "foregroundMissionFrameMs": {
+          "samples": 4951,
+          "p50": 33.0,
+          "p95": 69.0,
+          "p99": 97.0
+        },
+        "analyzersSucceeded": true,
+        "functionalScenarioPassed": false,
+        "visualSmoothnessAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false,
+        "limits": [
+          "A valid final arrival does not erase missed intermediateHIGH_HOLD coverage.",
+          "LaterARRIVED afterEGRESS_STALL is observed recovery, not a proved root-cause fix or same support target.",
+          "Legitimate falls remain accepted and their return counts stay separate.",
+          "Same-call transition contacts differ from preceding sampled snapshots; report both ages.",
+          "One trial per count in this bundle; recording/logging overhead present.",
+          "No native memory timing override, new PBO, performance optimization or final animation acceptance."
+        ],
+        "label": "sixty-four",
+        "climbEndFailureCount": 0,
+        "fallEpisodeCount": 71,
+        "repetitionsForThisCountDuration": 1
+      }
+    ]
+  },
+  "highMiss": {
+    "runtimeRunId": "runtime-20261031-120524",
+    "holdWindow": [
+      45.073,
+      104.982
+    ],
+    "missingIds": [
+      5,
+      8,
+      11,
+      18,
+      22,
+      31,
+      39,
+      45,
+      49,
+      50,
+      53,
+      56
+    ],
+    "groups": {
+      "alignment_follow_without_motion_start_in_hold": [
+        5,
+        11,
+        50
+      ],
+      "upper_started_without_high_end_before_deadline": [
+        8
+      ],
+      "fall_recovery_without_motion_start_in_hold": [
+        18,
+        22,
+        49
+      ],
+      "lower_climb_only_in_hold": [
+        31,
+        39,
+        45,
+        53,
+        56
+      ]
+    },
+    "originalMissingCriterionUnchanged": true,
+    "limits": [
+      "Categories describe recorded progression, not physical root causes.",
+      "Sampled path length omits intersample motion and is not exact travel distance.",
+      "Same-call area and sampledFOLLOW coverage are distinct observations.",
+      "No original deadline extension, fall removal, or arrival tolerance change."
+    ],
+    "goalComplete": false,
+    "actors": [
+      {
+        "id": 5,
+        "category": "alignment_follow_without_motion_start_in_hold",
+        "holdMotionStarts": 0,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 0,
+        "holdFallStarts": 0,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "ground": 115
+        },
+        "holdSampledReasonCounts": {
+          "LINK_ALIGN": 20,
+          "": 54,
+          "ALIGN_HEADING": 26,
+          "SUPPORT_BYPASS_DONE": 1,
+          "ENTRY_POSE_SETTLE": 4,
+          "RECOVERY_REPLAN_WAIT": 7,
+          "ENTRY_ALIGNMENT_NO_PROGRESS": 1,
+          "NO_GROUND_PATH": 1,
+          "SUPPORT_BYPASS_PLANNED": 1
+        },
+        "holdSampledPathLengthMeters": 26.96794439537047,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4565.960938, 339.363251, 10262.534180>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 8,
+        "category": "upper_started_without_high_end_before_deadline",
+        "holdMotionStarts": 2,
+        "holdUpperStarts": 1,
+        "holdLowerStarts": 1,
+        "holdFallStarts": 0,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": 106.968,
+        "firstAnyHighFollow": 107.838,
+        "holdSampledAreaCounts": {
+          "ground": 102,
+          "low": 11,
+          "air": 2
+        },
+        "holdSampledReasonCounts": {
+          "NO_GROUND_PATH": 2,
+          "SUPPORT_BYPASS_PLANNED": 3,
+          "RECOVERY_REPLAN_WAIT": 6,
+          "POSE_CLEARANCE_SEPARATION": 5,
+          "": 57,
+          "LINK_ALIGN": 13,
+          "ALIGN_HEADING": 20,
+          "ENTRY_POSE_SETTLE": 1,
+          "NATIVE_MOTION": 6,
+          "SETTLE": 2
+        },
+        "holdSampledPathLengthMeters": 26.928680589470765,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4567.040039, 339.364105, 10262.210938>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 11,
+        "category": "alignment_follow_without_motion_start_in_hold",
+        "holdMotionStarts": 0,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 0,
+        "holdFallStarts": 0,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "ground": 115
+        },
+        "holdSampledReasonCounts": {
+          "": 55,
+          "ALIGN_HEADING": 37,
+          "LINK_ALIGN": 13,
+          "NO_GROUND_PATH": 1,
+          "SUPPORT_BYPASS_PLANNED": 1,
+          "ENTRY_POSE_SETTLE": 1,
+          "RECOVERY_REPLAN_WAIT": 6,
+          "ENTRY_ALIGNMENT_NO_PROGRESS": 1
+        },
+        "holdSampledPathLengthMeters": 26.918112574774806,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4566.618652, 339.355042, 10259.401367>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 18,
+        "category": "fall_recovery_without_motion_start_in_hold",
+        "holdMotionStarts": 0,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 0,
+        "holdFallStarts": 1,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "low": 10,
+          "air": 1,
+          "ground": 104
+        },
+        "holdSampledReasonCounts": {
+          "ARRIVED": 1,
+          "": 56,
+          "ALIGN_HEADING": 15,
+          "FALL_CONTACT_AIR_SEPARATION": 1,
+          "LAND": 6,
+          "LAND_CLEARANCE_SEPARATION": 2,
+          "NATIVE_JOINT_WORLD_3": 2,
+          "EGRESS_POSE_CLEARANCE": 13,
+          "NATIVE_JOINT_WORLD_1": 3,
+          "NATIVE_JOINT_WORLD_0": 4,
+          "RECOVERY_REPLAN_WAIT": 4,
+          "LINK_ALIGN": 3,
+          "ENTRY_POSE_SETTLE": 2,
+          "NO_GROUND_PATH": 2,
+          "SUPPORT_BYPASS_PLANNED": 1
+        },
+        "holdSampledPathLengthMeters": 31.3923495120006,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4560.881348, 339.276550, 10258.747070>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 22,
+        "category": "fall_recovery_without_motion_start_in_hold",
+        "holdMotionStarts": 0,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 0,
+        "holdFallStarts": 1,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "low": 24,
+          "ground": 91
+        },
+        "holdSampledReasonCounts": {
+          "ALIGN_HEADING": 23,
+          "": 58,
+          "LINK_ALIGN": 5,
+          "ARRIVED": 1,
+          "LANDING_SPACE_BLOCKED": 6,
+          "NATIVE_FALL": 1,
+          "FALL_CONTACT_AIR_SEPARATION": 1,
+          "LAND_CLEARANCE_SEPARATION": 2,
+          "LAND": 6,
+          "NATIVE_JOINT_WORLD_1": 1,
+          "EGRESS_POSE_CLEARANCE": 2,
+          "ENTRY_POSE_SETTLE": 1,
+          "SUPPORT_BYPASS_PLANNED": 3,
+          "RECOVERY_REPLAN_WAIT": 3,
+          "NO_GROUND_PATH": 2
+        },
+        "holdSampledPathLengthMeters": 31.956203221359434,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4567.332520, 339.369324, 10260.249023>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 31,
+        "category": "lower_climb_only_in_hold",
+        "holdMotionStarts": 1,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 1,
+        "holdFallStarts": 1,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "ground": 109,
+          "low": 5,
+          "air": 1
+        },
+        "holdSampledReasonCounts": {
+          "": 55,
+          "LINK_ALIGN": 8,
+          "ALIGN_HEADING": 18,
+          "ENTRY_POSE_SETTLE": 3,
+          "NO_GROUND_PATH": 3,
+          "SUPPORT_BYPASS_PLANNED": 2,
+          "RECOVERY_REPLAN_WAIT": 5,
+          "NATIVE_MOTION": 4,
+          "SETTLE": 2,
+          "FALL_CONTACT_AIR_SEPARATION": 1,
+          "LAND": 6,
+          "LAND_CLEARANCE_SEPARATION": 2,
+          "NATIVE_JOINT_WORLD_1": 1,
+          "EGRESS_POSE_CLEARANCE": 5
+        },
+        "holdSampledPathLengthMeters": 24.718727522369278,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4564.072266, 339.326782, 10260.230469>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 39,
+        "category": "lower_climb_only_in_hold",
+        "holdMotionStarts": 1,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 1,
+        "holdFallStarts": 0,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "ground": 112,
+          "low": 3
+        },
+        "holdSampledReasonCounts": {
+          "LINK_ALIGN": 20,
+          "": 57,
+          "SUPPORT_BYPASS_PLANNED": 2,
+          "RECOVERY_REPLAN_WAIT": 5,
+          "NO_GROUND_PATH": 3,
+          "ALIGN_HEADING": 18,
+          "ENTRY_POSE_SETTLE": 4,
+          "ENTRY_ALIGNMENT_NO_PROGRESS": 1,
+          "NATIVE_MOTION": 4,
+          "SETTLE": 1
+        },
+        "holdSampledPathLengthMeters": 23.91563971885095,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4559.789063, 339.280334, 10261.205078>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 45,
+        "category": "lower_climb_only_in_hold",
+        "holdMotionStarts": 1,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 1,
+        "holdFallStarts": 0,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": 108.548,
+        "firstAnyHighFollow": 109.401,
+        "holdSampledAreaCounts": {
+          "ground": 110,
+          "low": 5
+        },
+        "holdSampledReasonCounts": {
+          "": 48,
+          "LINK_ALIGN": 15,
+          "ALIGN_HEADING": 28,
+          "NO_GROUND_PATH": 3,
+          "SUPPORT_BYPASS_PLANNED": 3,
+          "RECOVERY_REPLAN_WAIT": 9,
+          "ENTRY_ALIGNMENT_NO_PROGRESS": 1,
+          "ENTRY_POSE_SETTLE": 3,
+          "NATIVE_MOTION": 4,
+          "SETTLE": 1
+        },
+        "holdSampledPathLengthMeters": 28.174477100238615,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4561.902832, 339.325531, 10262.828125>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 49,
+        "category": "fall_recovery_without_motion_start_in_hold",
+        "holdMotionStarts": 0,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 0,
+        "holdFallStarts": 1,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "low": 20,
+          "ground": 95
+        },
+        "holdSampledReasonCounts": {
+          "": 47,
+          "ARRIVED": 1,
+          "ALIGN_HEADING": 20,
+          "LINK_ALIGN": 14,
+          "LANDING_SPACE_BLOCKED": 7,
+          "NATIVE_FALL": 1,
+          "LAND": 8,
+          "NATIVE_JOINT_WORLD_1": 1,
+          "POSE_CLEARANCE_SEPARATION": 7,
+          "SUPPORT_BYPASS_PLANNED": 2,
+          "RECOVERY_REPLAN_WAIT": 4,
+          "ENTRY_POSE_SETTLE": 2,
+          "NO_GROUND_PATH": 1
+        },
+        "holdSampledPathLengthMeters": 23.154495748266285,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4558.304199, 339.282593, 10263.088867>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 50,
+        "category": "alignment_follow_without_motion_start_in_hold",
+        "holdMotionStarts": 0,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 0,
+        "holdFallStarts": 0,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "ground": 115
+        },
+        "holdSampledReasonCounts": {
+          "": 50,
+          "ENTRY_POSE_SETTLE": 1,
+          "SUPPORT_BYPASS_PLANNED": 3,
+          "RECOVERY_REPLAN_WAIT": 4,
+          "NO_GROUND_PATH": 2,
+          "LINK_ALIGN": 24,
+          "ALIGN_HEADING": 31
+        },
+        "holdSampledPathLengthMeters": 25.870280645453644,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4563.599121, 339.300934, 10256.801758>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 53,
+        "category": "lower_climb_only_in_hold",
+        "holdMotionStarts": 1,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 1,
+        "holdFallStarts": 0,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "ground": 108,
+          "air": 1,
+          "low": 6
+        },
+        "holdSampledReasonCounts": {
+          "": 60,
+          "RECOVERY_REPLAN_WAIT": 8,
+          "ALIGN_HEADING": 25,
+          "LINK_ALIGN": 11,
+          "SUPPORT_BYPASS_PLANNED": 2,
+          "NO_GROUND_PATH": 1,
+          "ENTRY_POSE_SETTLE": 2,
+          "NATIVE_MOTION": 4,
+          "SETTLE": 2
+        },
+        "holdSampledPathLengthMeters": 26.40111492669984,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4560.290039, 339.311798, 10263.555664>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 56,
+        "category": "lower_climb_only_in_hold",
+        "holdMotionStarts": 1,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 1,
+        "holdFallStarts": 0,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "ground": 98,
+          "air": 1,
+          "low": 16
+        },
+        "holdSampledReasonCounts": {
+          "ENTRY_POSE_SETTLE": 5,
+          "": 52,
+          "ALIGN_HEADING": 30,
+          "RECOVERY_REPLAN_WAIT": 5,
+          "SUPPORT_BYPASS_PLANNED": 2,
+          "LINK_ALIGN": 14,
+          "NO_GROUND_PATH": 1,
+          "NATIVE_MOTION": 4,
+          "SETTLE": 1,
+          "SUPPORTED_EGRESS_HANDOFF": 1
+        },
+        "holdSampledPathLengthMeters": 26.096946022103317,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4559.668457, 339.318817, 10264.948242>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      }
+    ]
+  },
+  "terminalWindows": {
+    "eight": {
+      "finalHoldStartsAtRecordedSeconds": 170.104,
+      "actors": [
+        {
+          "id": 0,
+          "lastSnapshotSeconds": 179.706,
+          "secondsBeforeRequestedEnd": 0.29400000000001114,
+          "finalHoldFirstArrivedSeconds": 177.146,
+          "finalHoldLastArrivedSeconds": 179.706,
+          "finalHoldArrivedSamples": 6,
+          "finalHoldSamples": 19,
+          "last30SecondsSampleCount": 19,
+          "last30SecondsArrivedSamples": 6
+        },
+        {
+          "id": 1,
+          "lastSnapshotSeconds": 179.706,
+          "secondsBeforeRequestedEnd": 0.29400000000001114,
+          "finalHoldFirstArrivedSeconds": 179.206,
+          "finalHoldLastArrivedSeconds": 179.706,
+          "finalHoldArrivedSamples": 2,
+          "finalHoldSamples": 19,
+          "last30SecondsSampleCount": 19,
+          "last30SecondsArrivedSamples": 2
+        },
+        {
+          "id": 2,
+          "lastSnapshotSeconds": 179.706,
+          "secondsBeforeRequestedEnd": 0.29400000000001114,
+          "finalHoldFirstArrivedSeconds": 177.146,
+          "finalHoldLastArrivedSeconds": 179.706,
+          "finalHoldArrivedSamples": 6,
+          "finalHoldSamples": 19,
+          "last30SecondsSampleCount": 19,
+          "last30SecondsArrivedSamples": 6
+        },
+        {
+          "id": 3,
+          "lastSnapshotSeconds": 179.706,
+          "secondsBeforeRequestedEnd": 0.29400000000001114,
+          "finalHoldFirstArrivedSeconds": 178.186,
+          "finalHoldLastArrivedSeconds": 179.706,
+          "finalHoldArrivedSamples": 4,
+          "finalHoldSamples": 19,
+          "last30SecondsSampleCount": 19,
+          "last30SecondsArrivedSamples": 4
+        },
+        {
+          "id": 4,
+          "lastSnapshotSeconds": 179.706,
+          "secondsBeforeRequestedEnd": 0.29400000000001114,
+          "finalHoldFirstArrivedSeconds": 177.146,
+          "finalHoldLastArrivedSeconds": 179.706,
+          "finalHoldArrivedSamples": 6,
+          "finalHoldSamples": 19,
+          "last30SecondsSampleCount": 19,
+          "last30SecondsArrivedSamples": 6
+        },
+        {
+          "id": 5,
+          "lastSnapshotSeconds": 179.706,
+          "secondsBeforeRequestedEnd": 0.29400000000001114,
+          "finalHoldFirstArrivedSeconds": null,
+          "finalHoldLastArrivedSeconds": null,
+          "finalHoldArrivedSamples": 0,
+          "finalHoldSamples": 19,
+          "last30SecondsSampleCount": 19,
+          "last30SecondsArrivedSamples": 0
+        },
+        {
+          "id": 6,
+          "lastSnapshotSeconds": 179.706,
+          "secondsBeforeRequestedEnd": 0.29400000000001114,
+          "finalHoldFirstArrivedSeconds": 178.186,
+          "finalHoldLastArrivedSeconds": 179.706,
+          "finalHoldArrivedSamples": 4,
+          "finalHoldSamples": 19,
+          "last30SecondsSampleCount": 19,
+          "last30SecondsArrivedSamples": 4
+        },
+        {
+          "id": 7,
+          "lastSnapshotSeconds": 179.706,
+          "secondsBeforeRequestedEnd": 0.29400000000001114,
+          "finalHoldFirstArrivedSeconds": 178.686,
+          "finalHoldLastArrivedSeconds": 179.706,
+          "finalHoldArrivedSamples": 3,
+          "finalHoldSamples": 19,
+          "last30SecondsSampleCount": 19,
+          "last30SecondsArrivedSamples": 3
+        }
+      ]
+    },
+    "eight-long": {
+      "finalHoldStartsAtRecordedSeconds": 170.11,
+      "actors": [
+        {
+          "id": 0,
+          "lastSnapshotSeconds": 299.947,
+          "secondsBeforeRequestedEnd": 0.05299999999999727,
+          "finalHoldFirstArrivedSeconds": 178.932,
+          "finalHoldLastArrivedSeconds": 299.947,
+          "finalHoldArrivedSamples": 235,
+          "finalHoldSamples": 252,
+          "last30SecondsSampleCount": 59,
+          "last30SecondsArrivedSamples": 59
+        },
+        {
+          "id": 1,
+          "lastSnapshotSeconds": 299.947,
+          "secondsBeforeRequestedEnd": 0.05299999999999727,
+          "finalHoldFirstArrivedSeconds": 177.372,
+          "finalHoldLastArrivedSeconds": 299.947,
+          "finalHoldArrivedSamples": 238,
+          "finalHoldSamples": 252,
+          "last30SecondsSampleCount": 59,
+          "last30SecondsArrivedSamples": 59
+        },
+        {
+          "id": 2,
+          "lastSnapshotSeconds": 299.947,
+          "secondsBeforeRequestedEnd": 0.05299999999999727,
+          "finalHoldFirstArrivedSeconds": 177.372,
+          "finalHoldLastArrivedSeconds": 299.947,
+          "finalHoldArrivedSamples": 238,
+          "finalHoldSamples": 252,
+          "last30SecondsSampleCount": 59,
+          "last30SecondsArrivedSamples": 59
+        },
+        {
+          "id": 3,
+          "lastSnapshotSeconds": 299.947,
+          "secondsBeforeRequestedEnd": 0.05299999999999727,
+          "finalHoldFirstArrivedSeconds": 176.872,
+          "finalHoldLastArrivedSeconds": 299.947,
+          "finalHoldArrivedSamples": 239,
+          "finalHoldSamples": 252,
+          "last30SecondsSampleCount": 59,
+          "last30SecondsArrivedSamples": 59
+        },
+        {
+          "id": 4,
+          "lastSnapshotSeconds": 299.947,
+          "secondsBeforeRequestedEnd": 0.05299999999999727,
+          "finalHoldFirstArrivedSeconds": 178.932,
+          "finalHoldLastArrivedSeconds": 299.947,
+          "finalHoldArrivedSamples": 235,
+          "finalHoldSamples": 252,
+          "last30SecondsSampleCount": 59,
+          "last30SecondsArrivedSamples": 59
+        },
+        {
+          "id": 5,
+          "lastSnapshotSeconds": 299.947,
+          "secondsBeforeRequestedEnd": 0.05299999999999727,
+          "finalHoldFirstArrivedSeconds": 177.893,
+          "finalHoldLastArrivedSeconds": 299.947,
+          "finalHoldArrivedSamples": 237,
+          "finalHoldSamples": 252,
+          "last30SecondsSampleCount": 59,
+          "last30SecondsArrivedSamples": 59
+        },
+        {
+          "id": 6,
+          "lastSnapshotSeconds": 299.947,
+          "secondsBeforeRequestedEnd": 0.05299999999999727,
+          "finalHoldFirstArrivedSeconds": 177.893,
+          "finalHoldLastArrivedSeconds": 299.947,
+          "finalHoldArrivedSamples": 237,
+          "finalHoldSamples": 252,
+          "last30SecondsSampleCount": 59,
+          "last30SecondsArrivedSamples": 59
+        },
+        {
+          "id": 7,
+          "lastSnapshotSeconds": 299.947,
+          "secondsBeforeRequestedEnd": 0.05299999999999727,
+          "finalHoldFirstArrivedSeconds": 177.372,
+          "finalHoldLastArrivedSeconds": 299.947,
+          "finalHoldArrivedSamples": 236,
+          "finalHoldSamples": 252,
+          "last30SecondsSampleCount": 59,
+          "last30SecondsArrivedSamples": 59
+        }
+      ]
+    },
+    "sixty-four": {
+      "finalHoldStartsAtRecordedSeconds": 170.099,
+      "actors": [
+        {
+          "id": 0,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 175.345,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 228,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 1,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 179.467,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 223,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 2,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 178.44,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 225,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 3,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 174.327,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 232,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 4,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 178.967,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 226,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 5,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 179.969,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 224,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 6,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 174.845,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 228,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 7,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 175.345,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 228,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 8,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 179.467,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 224,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 9,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 179.467,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 225,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 10,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 177.409,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 229,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 11,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 174.845,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 231,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 12,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 177.927,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 228,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 13,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 176.901,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 227,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 14,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 179.467,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 225,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 15,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 173.816,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 231,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 16,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 173.287,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 232,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 17,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 176.901,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 228,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 18,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 175.345,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 229,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 19,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 175.345,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 233,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 20,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 175.345,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 233,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 21,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 178.44,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 225,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 22,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 176.901,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 230,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 23,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 174.845,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 230,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 24,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 174.845,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 233,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 25,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 178.44,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 227,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 26,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 175.866,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 232,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 27,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 176.901,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 229,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 28,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 179.969,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 224,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 29,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 180.499,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 223,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 30,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 176.368,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 229,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 31,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 175.345,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 230,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 32,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 175.866,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 228,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 33,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 174.845,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 232,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 34,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 180.499,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 222,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 35,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 178.44,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 227,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 36,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 180.499,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 223,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 37,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 173.816,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 229,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 38,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 174.327,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 230,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 39,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 178.44,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 225,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 40,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 173.816,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 229,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 41,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 175.866,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 232,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 42,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 176.901,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 227,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 43,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 175.866,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 231,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 44,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 178.967,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 226,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 45,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 178.44,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 225,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 46,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 176.368,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 230,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 47,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 174.845,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 230,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 48,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 179.969,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 216,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 49,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 184.133,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 216,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 50,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 173.287,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 233,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 51,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 176.368,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 229,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 52,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 175.866,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 231,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 53,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 180.499,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 223,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 54,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 174.327,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 233,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 55,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 178.44,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 226,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 56,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 183.097,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 218,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 57,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 175.345,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 233,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 58,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 175.345,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 232,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 59,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 181.017,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 222,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 60,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 175.345,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 231,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 61,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 180.499,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 222,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 62,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 181.538,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 221,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        },
+        {
+          "id": 63,
+          "lastSnapshotSeconds": 299.848,
+          "secondsBeforeRequestedEnd": 0.1519999999999868,
+          "finalHoldFirstArrivedSeconds": 174.327,
+          "finalHoldLastArrivedSeconds": 299.848,
+          "finalHoldArrivedSamples": 232,
+          "finalHoldSamples": 243,
+          "last30SecondsSampleCount": 56,
+          "last30SecondsArrivedSamples": 56
+        }
+      ]
+    }
+  }
+}
+
+Selected source archive SHA256 453d6a9e688d7bf14c5b98c305dd5a45200ec52156949c10691839b43c58bc9a member scripts/4_world/dgbnativepursuit.c lines18..37:
+    static bool ArrivalAllowed(bool held,float gap,bool sameGoal)
+    {
+        // Enter at the original precise endpoint. Once physically reached,
+        // bounded crowd pressure may move the actor within this terminal band
+        // without repeatedly restarting locomotion. No goal/root is rewritten.
+        return gap<0.18 || (held && sameGoal && gap<0.45);
+    }
+    float ArrivalRadius(DGBNativeGroundBody body)
+    {
+        DGBNativeApproachState state=body.Approach;
+        float gap=DGBGroundAgent.FlatDistance(body.Agent.Position,state.Goal);
+        bool same=vector.Distance(state.ArrivalGoal,state.Goal)<0.05;
+        bool held=state.Arrived && same;
+        bool arrived=ArrivalAllowed(held,gap,same) && Math.AbsFloat(body.Agent.Position[1] - state.Goal[1])<0.2;
+        if(arrived && !held)
+        {state.ArrivalEntries++;state.ArrivalGoal=state.Goal;state.ArrivalPosition=body.Agent.Position;state.ArrivalEntryGap=gap;}
+        state.Arrived=arrived;
+        if(arrived){state.ArrivalHolds++;return 0.45;}
+        return 0.18;
+    }

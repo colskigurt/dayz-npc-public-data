@@ -1,63 +1,69 @@
-# 실제 입력 dt는 native 시간과 일치: 조회 순서와 영상 반복 속도 분리
+# B8FB 기능 재관측: 180초 잔여 개체를 보존하고 동일300초8→64를 대조
 
-작성: 2026-10-31T11:46:41.585906+09:00
+작성: 2026-10-31T12:14:40.135827+09:00
 
 ## 1. 작업 목표
 
-직전 frame interval과 pose step의 상관을 실제 native 입력 dt·누적기·CPU 조회 순서와 대조한다. 잘못된 시간 전달이라는 가설을 확인 없이 수정으로 바꾸지 않는다. 별도로 저장된 A/B/B/A 영상에서 CPU phase를 사용하지 않고 윤곽 반복 주기를 측정한다. 기존 NPC·정상 낙하·복구·운영 서버를 보존한다.
+보존된 B8FB 재접근 전달 수정의 실제8→64기능 회귀를 다시 관측한다. 정상 군집 밀림·낙하·복귀를 미해결 출구 혼잡/등반 종료 실패와 구분한다. 애니메이션 시간 실험과64성능 최적화는 별도 판정한다.
 
 ## 2. 실제 수행
 
-설치 EXE 해시를 검증하고 기존 함수 시작에서 bounded Capstone decode를 수행했다. b6d390의 XMM1→XMM6→b72410 전달과 b72410 prologue의 caller XMM6 저장을 대조했다. outer observer에서 반환 주소 b72563과 상위 caller b6d42d를 확인한 뒤 RSP+0x88 저장본을 읽었다. 직접 FP register 포착이라고 표기하지 않는다. 이전8파트 entry-only 관찰기에 읽기와 산술 검증만 추가했다. 후보 숫자 변경은 금지했고, 원래 reset 분기와 누적 분기를 모두 검사했다.
+당시 B8FB 보관 파일24개 hash와 기존 미션 F8356C4F1E0286DCE7ED83F0137E68061249D48ABEB175942D44A8A048D704D3를 대조했다. 보관된 실행기를 파생해 signed B8FB 경로를 직접 사용했다. 공용 D61D를 되돌리거나 덮어쓰지 않았다. activeReference, StateContract/DriveAttribution/extended egress/first·near first step/endpoint lookahead/terrain contact owner/pursuit path revalidation/admission reapproach,VSyncON·같은 graphics seed를 유지했다.8명180초 후8명300초를 추가하고64명300초를 실행했다.
 
-runtime-20261031-113849에서 논리 NPC1명/native8파트·고정 run2·AI/루트 이동 OFF·query/frame-order ON·VSync ON·관찰30초·녹화45초·미션120초 조건으로 실행했다. 기존3개 PBO 서명 검증 성공, 게임과 녹화 정상 종료, observer/drop 오류0이었다. 컴퓨터 유즈로 창을 선택·활성화했고 저장된4시점 이미지의 actor/HUD를 확인했다. 영상5/12/20초부터 각3초를 기존 분석으로 연결했다.
+첫8/180에서 마지막 관측상7/8만ARRIVED여서 통과시키지 않았다.5번은175.095초 gap4.31662m에서179.706초0.334036m까지 이동 중이었고, 마지막 표본과 종료 요청 사이 약0.294초가 남았다. 그 이후 상태를 추정해 통과로 바꾸지 않았다. 고지대8/8·출구/등반 위반0과 최종 미도착을 분리했다.300초 추가는64시험과 기간을 맞추고 마지막 정지 후 시간을 더 관측하기 위한 별도 시험이다. 원래180초 판정을 유지하고 plan-adjustment에 기록했다.
 
-추가 게임 실행 없이 이전4개 영상의5~23초를30fps·고정 actor/background ROI로 재표본화했다.120×170 grayscale의140/150/160 threshold, 시간상 변하는 pixel mask,0.767~6초 lag 전체의 XOR local minima를 기록했다. CPU/source phase를 peak 선택에 쓰지 않았다. 원본 clip 길이와의 대조는 결과 확인 후 해석이다. 배경 대조와 전체 lag curve를 보존한다.
-
-설치 scripts.pbo의 dayzanimal/animcommand/enentity/object 네 member에서 관련 native 선언을 범위 지정해 기록했다. REA session은 open=false였으며 새 Ghidra 분석을 수행하지 않았다. 정적 ABI 결과는 로컬 Capstone이고 실행은 기존 Python Frida이며 REA MCP 디컴파일/실행 Evidence로 표시하지 않는다.
+세 실행 모두 정상 종료 후 기존 분석기5개와 별도 terminal-window 분석을 사용했다. entityID/이전·다음상태/이유/recovery generation/위치/같은 호출 contact와 snapshot age/최종 결과를 기존CSV·JSON에 연결했다. 고지대 판정은 실제HIGH_HOLD 표본 경계를 유지했다. 각HIGH_HOLD에서 게임 창만45초 녹화했고 컴퓨터 유즈·4시점 이미지로 장면을 확인했다. 사람용 시각 확인이며 프레임별 부드러움 수용 시험은 아니다.
 
 ## 3. 측정 결과
 
-- native 12000 entries /1500 frame, 실제 순서로 다음 CPU 조회와 연결된1472 frame.
--8파트 입력 dt spread0ms.11992개 누적기 비교에서 float32 예상 합과 실제 pre-reset total/비평가 분자 차이 최대0ms. 숫자 변경0.
-- 저장 입력 dt p50/p95/p99:20/35/37ms. 같은 native 관측 간격 p50/p95/p99:19.9728/36.30035/41.23858ms.
-- 입력 합/같은 native 관측 시간:1.000029116. 입력 dt와 같은 native interval 상관:0.993354.
-- CPU 조회에서 현재 script interval과 상관 -0.987862, RMS 잔차 26.832031ms. 직전 interval과 상관 0.998703, RMS 잔차 0.702770ms.
-- 원래 graph+accumulator/실제 시간 0.650676059, 독립 source-pose 진행/mission 0.650692298. 입력 시간 자체는 보존돼 들어오지만 이후 reset에서 손실되는 앞선 진단과 구분된다.
-- 새 영상 HUD540/540 정확 일치. 활성·연속 CPU/화면444쌍, 변화량 상관 0.943277.
-- 활성 구간 mission p50/p95/p99:20/35/37ms. observer 읽기 구간0.0126/0.0212/0.0244ms, 최대2.8073ms. 원래 함수 비용 또는GPU/64개체 성능으로 해석하지 않는다.
-- 이전 baseline2run 모두 윤곽 recurrence minima3.1333초. 후보2run 모두 minima2.1000초와4.1667초.3개 threshold에서 같은 lag가 나왔다. 후보의 global minimum은 두 cycle에 해당할 수 있어4.1667초를 기본 cycle이라고 단정하지 않는다.
--150 threshold의 후보 lag4.1667 평균 actor XOR394.42/432.34pixel, 같은 영상 배경 변화는 수pixel 수준이다. 전체 배경 curve·다중 peak·원시 video hash를 보존한다.
+| 실행 | 명/초 | 최종 ARRIVED | HIGH_HOLD 누락ID | 낙하 후 복귀 | 출구 stall 표본 episode | 등반 종료 실패 | 해당 실행 기능 기준 |
+|---|---:|---:|---|---:|---:|---:|---|
+|runtime-20261031-115150|8/180|7/8|[]|9|0|0|False|
+|runtime-20261031-115839|8/300|8/8|[]|9|0|0|True|
+|runtime-20261031-120524|64/300|64/64|[5, 8, 11, 18, 22, 31, 39, 45, 49, 50, 53, 56]|71|0|0|False|
+
+- runtime-20261031-115150: mission p50/p95/p99 20.0/33.0/34.0ms; 재접근 {"ARRIVED": 2}, 위반 0; 출구 {}, 위반 0; 전이 112개 same-call 연결 True.
+- runtime-20261031-115839: mission p50/p95/p99 20.0/33.0/34.0ms; 재접근 {"ARRIVED": 1}, 위반 0; 출구 {"PHASE_HANDOFF:FOLLOW": 1}, 위반 0; 전이 112개 same-call 연결 True.
+- runtime-20261031-120524: mission p50/p95/p99 33.0/69.0/97.0ms; 재접근 {"ARRIVED": 18}, 위반 0; 출구 {"DONE": 16, "PHASE_HANDOFF:FOLLOW": 2, "STEP_REJECTED:DEEPER_FIXTURE": 3}, 위반 0; 전이 815개 same-call 연결 True.
+
+잔여 분리:
+- eight: 최종 미도착 [{"id": "5", "position": "<4564.152832, 339.419189, 10282.879883>", "state": "CHASE", "traversalPhase": "FOLLOW", "reason": "", "seenAge": "0", "poseEpisodeAge": "-1", "poseEpisodeStatus": "ESCAPE_MOVED", "pressureEscapeDiagnostic": "NONDEEPENING_CLEAR", "pressureEscapeLastStepReject": "", "pressureEscapeRejectProbe": "-1", "pressureEscapeRejectFixture": "", "pressureEscapeRejectBefore": "0", "pressureEscapeRejectAfter": "0"}]; 고지대 누락 []; 미해결 출구 stall [].
+- eight-long: 최종 미도착 []; 고지대 누락 []; 미해결 출구 stall [].
+- sixty-four: 최종 미도착 []; 고지대 누락 [5, 8, 11, 18, 22, 31, 39, 45, 49, 50, 53, 56]; 미해결 출구 stall [].
+
+동일300초8→64쌍 전체 통과 여부:False. 전체3시험 모두 통과:False. 마지막 표본은 동기화된 shutdown 엔진 snapshot이 아니며, terminal-window JSON에 개체별 마지막시각·남은시간·FINAL_HOLD 도착시각/표본비율을 보존했다. 반복성을 입증한 최종 수용으로 확대하지 않는다.20ms p95는 목표다.
 
 ## 4. 원인 분석
 
-확인된 사실: 입력 dt가 실제 native interval과 높은 상관을 보이고 총합도 약1배다.8파트 입력은 같았고 누적 산술과 정확히 맞았다. CPU 조회에서 직전 script interval과 맞는 패턴은 실제 입력에서도 확인됐지만, native 시간 자체가 누수되거나 무작위로 잘못 전달됐다는 증거가 아니다. 이후 고정50ms 소비와 overshoot reset에 의한 느린 진행은 별도 확인된 문제다.
+확인: 첫8/180의5번은 terminal이 유효하다는 근거가 부족해 실패로 유지했다. 이동 거리 감소와 이전 도착 기록은 계속 추격하는 상태라는 증거이며, 종료 후 도착했을 것이라는 추정은 수용하지 않았다. 추가300초는 별도 실행이므로 동일5번의 과거 상태를 복원하거나 원인을 확정하지 않는다. sample cadence에 따른 관측 공백과 실제 추격 지연을 구분한다.
 
-기존 가설의 수정: 직전 frame 상관만으로 엔진 clock 지연 버그를 확정할 수 없다. native 호출과 다음 CPU 조회 사이의 순서, 의도된 이전-frame dt 사용으로 설명될 수 있다. 현재 자료로 이 구간에 새 clock 주입이나 보간을 추가할 근거는 부족하다.
+낙하 episode는 generation별 착지/추적 복귀를 집계했다. 출구 stall 이후ARRIVED가 관측되면 복구로 표시하되 근본 원인 수정이나 같은 원래 목표 도달의 증명으로 쓰지 않는다. 고지대에 늦게 도착했거나 플레이어가 내려온 뒤 최종 도착했다고 해서HIGH_HOLD 누락을 지우지 않는다. 등반 종료 계약 실패는 회복했더라도 별도로 남긴다.
 
-화면 확인: CPU 본을 쓰지 않은 recurrence도 A/B/B/A 후보의 가시적 반복 속도 변화를 뒷받침한다. source125/60=2.0833초와 후보2.1초·4.1667초 minima가 일관되지만 해상도33.33ms, 다중 cycle/대칭, 잔여 phase 변동을 유지한다. 평균 속도가 정상에 가까워졌다는 근거와 매 frame 부드러움은 다르다.
-
-미확인: GPU upload/Present·HUD와 body draw의 정확한 동기, 실제 최종 bone matrix 소비 계약, 지원되는 scheduler 잔여시간 setter. API 네 파일의 제한적 검색을 전체 엔진에 setter가 없다는 증명으로 쓰지 않는다. 일반 Animate/Update/PreAnim_SetFloat/SetAnimationPhase를 임의 skeletal clock API로 취급하지 않는다.
+고지대 누락12명의 진행 분류:5·11·50번은해당구간MOTION시작0회,18·22·49번은낙하/착지복구후새MOTION시작0회,31·39·45·53·56번은해당구간지면→낮은면등반만시작했고,8번은상부등반을시작했으나기한안에마치지못했다.12명모두같은호출의고지대MOTION→SETTLE전이도기한안에는0회여서단순FOLLOW표본누락으로통과시키지않는다.8번은106.968초상부동작을마치고107.838초highFOLLOW,45번은108.548초/109.401초로늦게이어졌다.원래기한104.982초를연장하지않았다.
++
++12명모두고지대구간표본간이동거리가약23.15~31.96m였다.따라서가만히멈춰있었다는설명은지지되지않고,움직이면서정렬·접근·복구를반복한것으로기록된다.이는경로또는접촉의물리근본원인을확정한분류가아니다.진행중플레이어명령은같았지만실제지면궤적은인원수에따라달랐으므로순수성능대조로쓰지않는다.
++
++미확인: 앞서 기록된 actor61 원래4접촉 입력이 이번에 동일하게 재현됐다는 증거, 모든 sparse episode의 물리 sweep별 원인, 녹화/로깅 없는64성능, 최종GPU표시. 새로운 실패가 있으면 해당ID·세대·후속경로를 원문과 대조하고 기존 현재 구현과 격리 후보에서 원인 한 요소씩 시험해야 한다.
 
 ## 5. 검증 수준
 
-- saved 입력 dt·caller/stack·누적기·CPU 순서: 진단 성공, 새1run.
-- 잔여시간 보존 clock 효과: 이전 A/B/B/A 조건당2회 반복 결과 유지.
-- 실제 영상 recurrence 속도 변화: 이전4영상 재분석으로 관측 성공. 최종 부드러움 수용 아님.
-- 지원 배포 수정·14clip·8/64기능 회귀·혼잡/등반 종료 실패 해소·64비용·20ms p95: 미완료.
+- 이 묶음은 보존 B8FB의 기능 재관측이며 새 gameplay수정 효과 검증이 아니다.
+-8/180은 원래 실패를 보존.300초8/64는 표에 따라 개별 판정. 성공한 일부 실행으로 전체 안정성을 선언하지 않는다.
+- 정상 낙하·복구와 상태/출구/재접근 연결은 측정된 범위에서 진단 성공. 판정하지 못한 원인은 미확인으로 유지한다.
+- 애니메이션 부드러움·지원 clock 배포·반복64수용·성능 최적화/20ms p95·최종 골: 미완료.
 
 ## 6. 변경 사항
 
-빌드 B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185 유지. input-order entry observer/driver·ABI/입력 분석·영상 recurrence 분석을 격리 추가했다. 원본 probe/driver/보고서를 덮어쓰지 않았다. 이번 runtime은 numeric override0이고 EXE/PBO 변경·신규 PBO/재서명/배포는 없다. 기존3개 PBO 서명 검증 성공. 운영 서버·정상 낙하·복구·개인키를 보존했다.
+기존 빌드 B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185 유지, 미션/게임코드/PBO/개인키 변경 없음. 실행3회마다3개 기존 PBO 서명 검증 성공. 신규 PBO·재서명·배포 없음. archive 실행기·HIGH_HOLD 녹화 gate·분석/terminal-window·집계를 추가했다. 최초180초 결과/원문 분석을 덮어쓰지 않고 별도300초 결과와 연결했다. 운영 서버·공용 D61D·기존 증거는 보존했다.
 
 ## 7. 원시 증거
 
-input-stack-abi,plan/source hash,baseline30 runtime/pose 분석,input-order-results,query-video-summary,supported-api-inventory,rea-session-summary, 네 visible-recurrence JSON과summary를 연결한다. profile에는 source snapshot/calls/status/ACK/CPU TSV/HUD/윤곽/정상 MKV를 보존한다. 기존 hash와 파일 안정성·정상 종료를 확인하고 기존 checkpoint/TXT·B안으로 게시한다. 공개본은 선정 함수·집계·대표값이며 전체 raw/영상·주소·프로세스·로컬 경로·개인키는 제외한다.
+plan·추가시험 adjustment·세 launch reference, native-ground/natural-player/state-contract/traversal-events/admission/egress/pose-cadence/drive-cost·원본 source snapshots·서명 검증 출력·정상MKV·inspection sheet·분석기 실행log·개체별 terminal-window·batch-results를 기존 profile/이번 폴더에 보존한다. evidence hash·JSON·파일 안정성·정상 종료를 검증 후 기존 checkpoint/TXT·B안에 게시한다. 공개본은 선정 집계·관련 함수/대표로그이며 전체raw/영상·주소·로컬경로·프로세스·개인키를 제외한다.
 
 ## 8. 잔여 문제
 
-애니메이션 축은 지원되는 그래프/자산·API에서 시간 보존을 구현할 계약과 최종 표시 단계가 남았다. 현재 자료만으로 새로운 보간·외부 clock을 더하지 않는다. 필요하면 GPU/Present 측정 도구의 실제 사용 가능성과 권한을 별도 확인하고, 직접 관찰 요청에는 판정 질문을 명시한다. 긴-frame backlog와14clip·상태 전환 동기 검증도 남는다.
+이번에 남은 최종/중간/계약 실패가 있으면 해당개체의 원시전이와 support/contact/목표변경을 연결하고, 복구 중인 움직임과 미해결 정체를 구분해 최소 변경 후보를 만든다. 성능은 별도 통제 실험에서 actor/host수·계측조건을 맞추고 inclusive비용 중첩을 분리한다.이 batch의p95를 최적화 성공이나native/GPU/GC 비용 귀속으로 쓰지 않는다.
 
-다음 실행 우선순위는 보존된 B8FB8→64기능 회귀를 다시 확인해 원래 actor61 출구 혼잡·등반 종료 실패를 현재 상태와 구분하는 것이다. 시간 진단이 진행됐다는 이유로 기능/비용 축을 계속 미루거나 통과 처리하지 않는다.64개체 비용 귀속은 같은 actor/host 수·관측 조건을 맞춘 별도 대조로 진행하며20ms p95는 목표로 남긴다. 새 군집 설계·대량 자산 확장은 현재 원인 귀속을 흐리지 않도록 보류한다.
+애니메이션의 입력dt는 native시간과 일치한다는 최신 진단을 유지하고, 확인된 overshoot reset·배포가능 setter/최종표시 계약을 별도 조사한다. 임의clock/보간이나 정상낙하 제거로 기능/성능 성공을 만들지 않는다. 새로운 분기에서 필요해진 도구/자료·중단 기준은 다음 격리 계획에 기록한다.
 
-선정 공개 본문. 로컬 보고서 SHA-256: `ba2e3cb1bf7e41aa363deaccb53cbc335424371c83495cf81ee55cf8a3dc7d79`. 원시 전체가 아니다.
+선정 공개 본문. 로컬 보고서 SHA-256: `49b5f54343f078f8dfb80fa53cf9f5dbc6a0069c319d8ef9cee9cc427ceb8096`. 원시 전체가 아니다.

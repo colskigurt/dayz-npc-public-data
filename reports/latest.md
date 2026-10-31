@@ -1,3 +1,5 @@
+> 최신 B8FB 기능 대조(2026-10-31): 8/180은 최종7/8로 실패를 보존했다. 8/300은 고지대·최종8/8,64/300은 최종64/64이나 고지대52/64여서 전체 미통과다. 등반 종료/출구 계약 위반0, 정상 낙하 복귀9/9/71회를 기록했다. 새 gameplay수정이나 성능 개선을 주장하지 않는다. [조건·누락12명·한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/b8fb-functional-repeat-20261031.md). 이전 기록은 아래 보존한다.
+
 > 최신 입력·표시 순서 진단(2026-10-31): 실제 saved dt합/native시간1.000029·11992개 누적산술오차0.직전script상관을잘못된엔진입력으로확정할수없다.독립영상recurrence도기본3.13초→후보2.10초/4.17초패턴을지지하지만부드러움·지원배포·8/64기능·성능은미완료다.[조건·한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-input-order-20261031.md). 이전 기록은 아래 보존한다.
 
 > 최신 역순 반복(2026-10-31): A/B/B/A·조건당2회에서 기본 clock약0.654~0.659배, 후보약1.000배로 시간 보존 효과를 재현했다. 후보 step은 직전 script interval과강하게연관되지만 인과확정·시각부드러움·지원배포·8/64회귀·성능수용은 미완료다. [조건·수치·한계](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-residual-repeat-20261031.md). 이전 기록은 아래 보존한다.

@@ -1,0 +1,730 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-31T12:15:43.445935+09:00",
+  "sourceRunId": "b8fb-functional-repeat-20261031-115200",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "verificationStatus": {
+    "diagnostic": "frozen_B8FB_three_functional_trials_complete",
+    "eight180": "failed_final_sample7of8",
+    "eight300": "scenario_passed_one_run",
+    "sixtyFour300": "final64of64_high52of64_not_full_pass",
+    "visualSmoothness": "not_accepted",
+    "performance": "not_accepted",
+    "currentD61DRegression": "not_tested_in_this_bundle",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "b8fb-functional-repeat-20261031-115200",
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "original180TrialPreserved": true,
+    "equalDurationPairPassed": false,
+    "allTrialsPassed": false,
+    "visualSmoothnessAccepted": false,
+    "performanceAccepted": false,
+    "newPbo": false,
+    "goalComplete": false,
+    "limits": [
+      "300sec followup cannot retroactively pass180sec trial.",
+      "Final sampled outcome and missed intermediateHIGH_HOLD coverage are separately reported.",
+      "Legitimate falls remain accepted; recording/logging overhead present.",
+      "Equal duration/flags/build do not make nondeterministic physical outcomes identical.",
+      "No optimized or new gameplay candidate tested in this bundle; original B8FB archive is a preserved reference, common D61D unchanged.",
+      "Native graph/renderer/GC costs not directly attributed by this functional batch."
+    ],
+    "trials": [
+      {
+        "sourceRunId": "b8fb-functional-repeat-20261031-115200",
+        "runtimeRunId": "runtime-20261031-115150",
+        "count": 8,
+        "seconds": 180,
+        "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+        "missionSourcesSha256": "F8356C4F1E0286DCE7ED83F0137E68061249D48ABEB175942D44A8A048D704D3",
+        "normalQuitVerified": true,
+        "terminalArrivals": 7,
+        "unresolvedTerminalAgents": [
+          {
+            "id": "5",
+            "position": "<4564.152832, 339.419189, 10282.879883>",
+            "state": "CHASE",
+            "traversalPhase": "FOLLOW",
+            "reason": "",
+            "seenAge": "0",
+            "poseEpisodeAge": "-1",
+            "poseEpisodeStatus": "ESCAPE_MOVED",
+            "pressureEscapeDiagnostic": "NONDEEPENING_CLEAR",
+            "pressureEscapeLastStepReject": "",
+            "pressureEscapeRejectProbe": "-1",
+            "pressureEscapeRejectFixture": "",
+            "pressureEscapeRejectBefore": "0",
+            "pressureEscapeRejectAfter": "0"
+          }
+        ],
+        "missingHighFollow": [],
+        "highHoldWindow": [
+          45.007,
+          104.904
+        ],
+        "fallsLandedAndResumed": 9,
+        "egressStallEpisodes": [],
+        "admissionBranchExercised": true,
+        "admissionOutcomes": {
+          "ARRIVED": 2
+        },
+        "admissionViolations": [],
+        "egressOutcomes": {},
+        "egressViolations": [],
+        "physicalTransitions": 112,
+        "allPhysicalTransitionsMatched": true,
+        "failureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 1
+        },
+        "foregroundMissionFrameMs": {
+          "samples": 8748,
+          "p50": 20.0,
+          "p95": 33.0,
+          "p99": 34.0
+        },
+        "analyzersSucceeded": true,
+        "functionalScenarioPassed": false,
+        "visualSmoothnessAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false,
+        "limits": [
+          "A valid final arrival does not erase missed intermediateHIGH_HOLD coverage.",
+          "LaterARRIVED afterEGRESS_STALL is observed recovery, not a proved root-cause fix or same support target.",
+          "Legitimate falls remain accepted and their return counts stay separate.",
+          "Same-call transition contacts differ from preceding sampled snapshots; report both ages.",
+          "One trial per count in this bundle; recording/logging overhead present.",
+          "No native memory timing override, new PBO, performance optimization or final animation acceptance."
+        ],
+        "label": "eight",
+        "climbEndFailureCount": 0,
+        "fallEpisodeCount": 9,
+        "repetitionsForThisCountDuration": 1
+      },
+      {
+        "sourceRunId": "b8fb-functional-repeat-20261031-115200",
+        "runtimeRunId": "runtime-20261031-115839",
+        "count": 8,
+        "seconds": 300,
+        "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+        "missionSourcesSha256": "F8356C4F1E0286DCE7ED83F0137E68061249D48ABEB175942D44A8A048D704D3",
+        "normalQuitVerified": true,
+        "terminalArrivals": 8,
+        "unresolvedTerminalAgents": [],
+        "missingHighFollow": [],
+        "highHoldWindow": [
+          45.006,
+          104.994
+        ],
+        "fallsLandedAndResumed": 9,
+        "egressStallEpisodes": [],
+        "admissionBranchExercised": true,
+        "admissionOutcomes": {
+          "ARRIVED": 1
+        },
+        "admissionViolations": [],
+        "egressOutcomes": {
+          "PHASE_HANDOFF:FOLLOW": 1
+        },
+        "egressViolations": [],
+        "physicalTransitions": 112,
+        "allPhysicalTransitionsMatched": true,
+        "failureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 1
+        },
+        "foregroundMissionFrameMs": {
+          "samples": 14747,
+          "p50": 20.0,
+          "p95": 33.0,
+          "p99": 34.0
+        },
+        "analyzersSucceeded": true,
+        "functionalScenarioPassed": true,
+        "visualSmoothnessAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false,
+        "limits": [
+          "A valid final arrival does not erase missed intermediateHIGH_HOLD coverage.",
+          "LaterARRIVED afterEGRESS_STALL is observed recovery, not a proved root-cause fix or same support target.",
+          "Legitimate falls remain accepted and their return counts stay separate.",
+          "Same-call transition contacts differ from preceding sampled snapshots; report both ages.",
+          "One trial per count in this bundle; recording/logging overhead present.",
+          "No native memory timing override, new PBO, performance optimization or final animation acceptance."
+        ],
+        "label": "eight-long",
+        "climbEndFailureCount": 0,
+        "fallEpisodeCount": 9,
+        "repetitionsForThisCountDuration": 1
+      },
+      {
+        "sourceRunId": "b8fb-functional-repeat-20261031-115200",
+        "runtimeRunId": "runtime-20261031-120524",
+        "count": 64,
+        "seconds": 300,
+        "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+        "missionSourcesSha256": "F8356C4F1E0286DCE7ED83F0137E68061249D48ABEB175942D44A8A048D704D3",
+        "normalQuitVerified": true,
+        "terminalArrivals": 64,
+        "unresolvedTerminalAgents": [],
+        "missingHighFollow": [
+          5,
+          8,
+          11,
+          18,
+          22,
+          31,
+          39,
+          45,
+          49,
+          50,
+          53,
+          56
+        ],
+        "highHoldWindow": [
+          45.073,
+          104.982
+        ],
+        "fallsLandedAndResumed": 71,
+        "egressStallEpisodes": [],
+        "admissionBranchExercised": true,
+        "admissionOutcomes": {
+          "ARRIVED": 18
+        },
+        "admissionViolations": [],
+        "egressOutcomes": {
+          "DONE": 16,
+          "PHASE_HANDOFF:FOLLOW": 2,
+          "STEP_REJECTED:DEEPER_FIXTURE": 3
+        },
+        "egressViolations": [],
+        "physicalTransitions": 815,
+        "allPhysicalTransitionsMatched": true,
+        "failureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 35
+        },
+        "foregroundMissionFrameMs": {
+          "samples": 4951,
+          "p50": 33.0,
+          "p95": 69.0,
+          "p99": 97.0
+        },
+        "analyzersSucceeded": true,
+        "functionalScenarioPassed": false,
+        "visualSmoothnessAccepted": false,
+        "performanceAccepted": false,
+        "goalComplete": false,
+        "limits": [
+          "A valid final arrival does not erase missed intermediateHIGH_HOLD coverage.",
+          "LaterARRIVED afterEGRESS_STALL is observed recovery, not a proved root-cause fix or same support target.",
+          "Legitimate falls remain accepted and their return counts stay separate.",
+          "Same-call transition contacts differ from preceding sampled snapshots; report both ages.",
+          "One trial per count in this bundle; recording/logging overhead present.",
+          "No native memory timing override, new PBO, performance optimization or final animation acceptance."
+        ],
+        "label": "sixty-four",
+        "climbEndFailureCount": 0,
+        "fallEpisodeCount": 71,
+        "repetitionsForThisCountDuration": 1
+      }
+    ]
+  },
+  "highMissDiagnosis": {
+    "runtimeRunId": "runtime-20261031-120524",
+    "holdWindow": [
+      45.073,
+      104.982
+    ],
+    "missingIds": [
+      5,
+      8,
+      11,
+      18,
+      22,
+      31,
+      39,
+      45,
+      49,
+      50,
+      53,
+      56
+    ],
+    "groups": {
+      "alignment_follow_without_motion_start_in_hold": [
+        5,
+        11,
+        50
+      ],
+      "upper_started_without_high_end_before_deadline": [
+        8
+      ],
+      "fall_recovery_without_motion_start_in_hold": [
+        18,
+        22,
+        49
+      ],
+      "lower_climb_only_in_hold": [
+        31,
+        39,
+        45,
+        53,
+        56
+      ]
+    },
+    "originalMissingCriterionUnchanged": true,
+    "limits": [
+      "Categories describe recorded progression, not physical root causes.",
+      "Sampled path length omits intersample motion and is not exact travel distance.",
+      "Same-call area and sampledFOLLOW coverage are distinct observations.",
+      "No original deadline extension, fall removal, or arrival tolerance change."
+    ],
+    "goalComplete": false,
+    "actors": [
+      {
+        "id": 5,
+        "category": "alignment_follow_without_motion_start_in_hold",
+        "holdMotionStarts": 0,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 0,
+        "holdFallStarts": 0,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "ground": 115
+        },
+        "holdSampledReasonCounts": {
+          "LINK_ALIGN": 20,
+          "": 54,
+          "ALIGN_HEADING": 26,
+          "SUPPORT_BYPASS_DONE": 1,
+          "ENTRY_POSE_SETTLE": 4,
+          "RECOVERY_REPLAN_WAIT": 7,
+          "ENTRY_ALIGNMENT_NO_PROGRESS": 1,
+          "NO_GROUND_PATH": 1,
+          "SUPPORT_BYPASS_PLANNED": 1
+        },
+        "holdSampledPathLengthMeters": 26.96794439537047,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4565.960938, 339.363251, 10262.534180>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 8,
+        "category": "upper_started_without_high_end_before_deadline",
+        "holdMotionStarts": 2,
+        "holdUpperStarts": 1,
+        "holdLowerStarts": 1,
+        "holdFallStarts": 0,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": 106.968,
+        "firstAnyHighFollow": 107.838,
+        "holdSampledAreaCounts": {
+          "ground": 102,
+          "low": 11,
+          "air": 2
+        },
+        "holdSampledReasonCounts": {
+          "NO_GROUND_PATH": 2,
+          "SUPPORT_BYPASS_PLANNED": 3,
+          "RECOVERY_REPLAN_WAIT": 6,
+          "POSE_CLEARANCE_SEPARATION": 5,
+          "": 57,
+          "LINK_ALIGN": 13,
+          "ALIGN_HEADING": 20,
+          "ENTRY_POSE_SETTLE": 1,
+          "NATIVE_MOTION": 6,
+          "SETTLE": 2
+        },
+        "holdSampledPathLengthMeters": 26.928680589470765,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4567.040039, 339.364105, 10262.210938>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 11,
+        "category": "alignment_follow_without_motion_start_in_hold",
+        "holdMotionStarts": 0,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 0,
+        "holdFallStarts": 0,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "ground": 115
+        },
+        "holdSampledReasonCounts": {
+          "": 55,
+          "ALIGN_HEADING": 37,
+          "LINK_ALIGN": 13,
+          "NO_GROUND_PATH": 1,
+          "SUPPORT_BYPASS_PLANNED": 1,
+          "ENTRY_POSE_SETTLE": 1,
+          "RECOVERY_REPLAN_WAIT": 6,
+          "ENTRY_ALIGNMENT_NO_PROGRESS": 1
+        },
+        "holdSampledPathLengthMeters": 26.918112574774806,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4566.618652, 339.355042, 10259.401367>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 18,
+        "category": "fall_recovery_without_motion_start_in_hold",
+        "holdMotionStarts": 0,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 0,
+        "holdFallStarts": 1,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "low": 10,
+          "air": 1,
+          "ground": 104
+        },
+        "holdSampledReasonCounts": {
+          "ARRIVED": 1,
+          "": 56,
+          "ALIGN_HEADING": 15,
+          "FALL_CONTACT_AIR_SEPARATION": 1,
+          "LAND": 6,
+          "LAND_CLEARANCE_SEPARATION": 2,
+          "NATIVE_JOINT_WORLD_3": 2,
+          "EGRESS_POSE_CLEARANCE": 13,
+          "NATIVE_JOINT_WORLD_1": 3,
+          "NATIVE_JOINT_WORLD_0": 4,
+          "RECOVERY_REPLAN_WAIT": 4,
+          "LINK_ALIGN": 3,
+          "ENTRY_POSE_SETTLE": 2,
+          "NO_GROUND_PATH": 2,
+          "SUPPORT_BYPASS_PLANNED": 1
+        },
+        "holdSampledPathLengthMeters": 31.3923495120006,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4560.881348, 339.276550, 10258.747070>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 22,
+        "category": "fall_recovery_without_motion_start_in_hold",
+        "holdMotionStarts": 0,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 0,
+        "holdFallStarts": 1,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "low": 24,
+          "ground": 91
+        },
+        "holdSampledReasonCounts": {
+          "ALIGN_HEADING": 23,
+          "": 58,
+          "LINK_ALIGN": 5,
+          "ARRIVED": 1,
+          "LANDING_SPACE_BLOCKED": 6,
+          "NATIVE_FALL": 1,
+          "FALL_CONTACT_AIR_SEPARATION": 1,
+          "LAND_CLEARANCE_SEPARATION": 2,
+          "LAND": 6,
+          "NATIVE_JOINT_WORLD_1": 1,
+          "EGRESS_POSE_CLEARANCE": 2,
+          "ENTRY_POSE_SETTLE": 1,
+          "SUPPORT_BYPASS_PLANNED": 3,
+          "RECOVERY_REPLAN_WAIT": 3,
+          "NO_GROUND_PATH": 2
+        },
+        "holdSampledPathLengthMeters": 31.956203221359434,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4567.332520, 339.369324, 10260.249023>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 31,
+        "category": "lower_climb_only_in_hold",
+        "holdMotionStarts": 1,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 1,
+        "holdFallStarts": 1,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "ground": 109,
+          "low": 5,
+          "air": 1
+        },
+        "holdSampledReasonCounts": {
+          "": 55,
+          "LINK_ALIGN": 8,
+          "ALIGN_HEADING": 18,
+          "ENTRY_POSE_SETTLE": 3,
+          "NO_GROUND_PATH": 3,
+          "SUPPORT_BYPASS_PLANNED": 2,
+          "RECOVERY_REPLAN_WAIT": 5,
+          "NATIVE_MOTION": 4,
+          "SETTLE": 2,
+          "FALL_CONTACT_AIR_SEPARATION": 1,
+          "LAND": 6,
+          "LAND_CLEARANCE_SEPARATION": 2,
+          "NATIVE_JOINT_WORLD_1": 1,
+          "EGRESS_POSE_CLEARANCE": 5
+        },
+        "holdSampledPathLengthMeters": 24.718727522369278,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4564.072266, 339.326782, 10260.230469>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 39,
+        "category": "lower_climb_only_in_hold",
+        "holdMotionStarts": 1,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 1,
+        "holdFallStarts": 0,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "ground": 112,
+          "low": 3
+        },
+        "holdSampledReasonCounts": {
+          "LINK_ALIGN": 20,
+          "": 57,
+          "SUPPORT_BYPASS_PLANNED": 2,
+          "RECOVERY_REPLAN_WAIT": 5,
+          "NO_GROUND_PATH": 3,
+          "ALIGN_HEADING": 18,
+          "ENTRY_POSE_SETTLE": 4,
+          "ENTRY_ALIGNMENT_NO_PROGRESS": 1,
+          "NATIVE_MOTION": 4,
+          "SETTLE": 1
+        },
+        "holdSampledPathLengthMeters": 23.91563971885095,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4559.789063, 339.280334, 10261.205078>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 45,
+        "category": "lower_climb_only_in_hold",
+        "holdMotionStarts": 1,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 1,
+        "holdFallStarts": 0,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": 108.548,
+        "firstAnyHighFollow": 109.401,
+        "holdSampledAreaCounts": {
+          "ground": 110,
+          "low": 5
+        },
+        "holdSampledReasonCounts": {
+          "": 48,
+          "LINK_ALIGN": 15,
+          "ALIGN_HEADING": 28,
+          "NO_GROUND_PATH": 3,
+          "SUPPORT_BYPASS_PLANNED": 3,
+          "RECOVERY_REPLAN_WAIT": 9,
+          "ENTRY_ALIGNMENT_NO_PROGRESS": 1,
+          "ENTRY_POSE_SETTLE": 3,
+          "NATIVE_MOTION": 4,
+          "SETTLE": 1
+        },
+        "holdSampledPathLengthMeters": 28.174477100238615,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4561.902832, 339.325531, 10262.828125>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 49,
+        "category": "fall_recovery_without_motion_start_in_hold",
+        "holdMotionStarts": 0,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 0,
+        "holdFallStarts": 1,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "low": 20,
+          "ground": 95
+        },
+        "holdSampledReasonCounts": {
+          "": 47,
+          "ARRIVED": 1,
+          "ALIGN_HEADING": 20,
+          "LINK_ALIGN": 14,
+          "LANDING_SPACE_BLOCKED": 7,
+          "NATIVE_FALL": 1,
+          "LAND": 8,
+          "NATIVE_JOINT_WORLD_1": 1,
+          "POSE_CLEARANCE_SEPARATION": 7,
+          "SUPPORT_BYPASS_PLANNED": 2,
+          "RECOVERY_REPLAN_WAIT": 4,
+          "ENTRY_POSE_SETTLE": 2,
+          "NO_GROUND_PATH": 1
+        },
+        "holdSampledPathLengthMeters": 23.154495748266285,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4558.304199, 339.282593, 10263.088867>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 50,
+        "category": "alignment_follow_without_motion_start_in_hold",
+        "holdMotionStarts": 0,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 0,
+        "holdFallStarts": 0,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "ground": 115
+        },
+        "holdSampledReasonCounts": {
+          "": 50,
+          "ENTRY_POSE_SETTLE": 1,
+          "SUPPORT_BYPASS_PLANNED": 3,
+          "RECOVERY_REPLAN_WAIT": 4,
+          "NO_GROUND_PATH": 2,
+          "LINK_ALIGN": 24,
+          "ALIGN_HEADING": 31
+        },
+        "holdSampledPathLengthMeters": 25.870280645453644,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4563.599121, 339.300934, 10256.801758>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 53,
+        "category": "lower_climb_only_in_hold",
+        "holdMotionStarts": 1,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 1,
+        "holdFallStarts": 0,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "ground": 108,
+          "air": 1,
+          "low": 6
+        },
+        "holdSampledReasonCounts": {
+          "": 60,
+          "RECOVERY_REPLAN_WAIT": 8,
+          "ALIGN_HEADING": 25,
+          "LINK_ALIGN": 11,
+          "SUPPORT_BYPASS_PLANNED": 2,
+          "NO_GROUND_PATH": 1,
+          "ENTRY_POSE_SETTLE": 2,
+          "NATIVE_MOTION": 4,
+          "SETTLE": 2
+        },
+        "holdSampledPathLengthMeters": 26.40111492669984,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4560.290039, 339.311798, 10263.555664>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      },
+      {
+        "id": 56,
+        "category": "lower_climb_only_in_hold",
+        "holdMotionStarts": 1,
+        "holdUpperStarts": 0,
+        "holdLowerStarts": 1,
+        "holdFallStarts": 0,
+        "sameCallHighMotionEndsInHold": 0,
+        "firstAnyHighMotionEnd": null,
+        "firstAnyHighFollow": null,
+        "holdSampledAreaCounts": {
+          "ground": 98,
+          "air": 1,
+          "low": 16
+        },
+        "holdSampledReasonCounts": {
+          "ENTRY_POSE_SETTLE": 5,
+          "": 52,
+          "ALIGN_HEADING": 30,
+          "RECOVERY_REPLAN_WAIT": 5,
+          "SUPPORT_BYPASS_PLANNED": 2,
+          "LINK_ALIGN": 14,
+          "NO_GROUND_PATH": 1,
+          "NATIVE_MOTION": 4,
+          "SETTLE": 1,
+          "SUPPORTED_EGRESS_HANDOFF": 1
+        },
+        "holdSampledPathLengthMeters": 26.096946022103317,
+        "terminal": {
+          "seconds": "299.848",
+          "position": "<4559.668457, 339.318817, 10264.948242>",
+          "traversalPhase": "FOLLOW",
+          "reason": "ARRIVED"
+        }
+      }
+    ]
+  },
+  "blockers": [
+    "300sec followup cannot retroactively pass180sec trial.",
+    "Final sampled outcome and missed intermediateHIGH_HOLD coverage are separately reported.",
+    "Legitimate falls remain accepted; recording/logging overhead present.",
+    "Equal duration/flags/build do not make nondeterministic physical outcomes identical.",
+    "No optimized or new gameplay candidate tested in this bundle; original B8FB archive is a preserved reference, common D61D unchanged.",
+    "Native graph/renderer/GC costs not directly attributed by this functional batch.",
+    "12agents missed recordedHIGH_HOLD deadline; alignment/recovery progress classified but root cause not established.",
+    "Animation smoothness/supportedclock deployment and64cost attribution remain separate."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/b8fb-functional-repeat-20261031.md",
+      "sha256": "0708ae0728b866946b05ed75f95c7d7ddc742a6d6c7f14d93ffb63efd2b5286d"
+    },
+    {
+      "path": "evidence/b8fb-functional-repeat-20261031.txt",
+      "sha256": "fea4142c3bb253b379b0cf9b9cc8aeacea7e09e6082f2d88c37ef7bc648216f4"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
