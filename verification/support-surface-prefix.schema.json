@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "support-surface-prefix-20261031-1752"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "verificationStatus": {
+      "type": "object",
+      "required": [
+        "candidateBranchExposed",
+        "liveOptimizationAccepted"
+      ],
+      "properties": {
+        "candidateBranchExposed": {
+          "const": true
+        },
+        "liveOptimizationAccepted": {
+          "const": false
+        }
+      }
+    }
+  }
+}
