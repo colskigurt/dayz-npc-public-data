@@ -1,3 +1,5 @@
+> 최신 진단·명칭 정정: A500 GetBonePositionMS는slot618이며이전진단slot610 MS명칭은철회한다(일반exe610은유효). 15.4939초772표본에서query/interp의skeleton·변환·행렬저장소alias를확인했다. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-diag-pose-identity-20261101.md). dirty1은자동결함판정이아니며실제표시시각은미측정이다.
+
 > 최신 진단: A500 mode2 실제4경로689회·25.2109초229표본·오류0을확보했다. query/interp값229/229같지만pointer identity·좌표공간은미확인이다. 실제화면은미확보다. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-diag-trace-20261101.md). CPU 변화만으로시각/성능성공을판정하지않는다.
 
 > 최신 진단: A500 전용 scheduler·buffer·interpolation과 객체 필드를 정적으로 연결했다. animation context+628/mode+670/subobject+600이며 일반exe 오프셋을재사용하지않는다. graphClock writer는미확인이다. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-diag-map-20261101.md). 새runtime·시각/성능수용없음.

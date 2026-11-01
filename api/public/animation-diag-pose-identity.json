@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T17:45:16.475285+09:00",
+  "sourceRunId": "animation-diag-pose-identity-20261101-1740",
+  "buildId": "diagnostic-A500-fixed-453D-0C6E-B8FB",
+  "verificationStatus": {
+    "diagnostic": "diagnostic_ms_binding_corrected_and_shared_pose_storage_confirmed",
+    "repetitions": 1,
+    "fullNpcRegression": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "schemaVersion": "1.0.0",
+    "sourceRunId": "animation-diag-pose-identity-20261101-1740",
+    "buildId": "diagnostic-A500-fixed-453D-0C6E-B8FB",
+    "newRuntimeTrials": 1,
+    "newPbo": false,
+    "newVideo": false,
+    "nativeObserverAttached": true,
+    "usesObserverHooks": true,
+    "numericOverrides": false,
+    "performanceExcluded": true,
+    "selected": {
+      "type": "selected",
+      "mode": 2,
+      "bones": 65,
+      "primaryVtableRva": 22337056,
+      "subobjectVtableRva": 22340552,
+      "qpc": 10332940277633,
+      "qpcFrequency": 10000000,
+      "mapping": {
+        "capacity": 128,
+        "slots": {
+          "Head": {
+            "hash": 2090324343,
+            "slot": 31
+          },
+          "Hips": {
+            "hash": 2090329209,
+            "slot": 3
+          },
+          "spine2": {
+            "hash": 474378870,
+            "slot": 13
+          },
+          "Neck": {
+            "hash": 2090540038,
+            "slot": 22
+          },
+          "LeftHand": {
+            "hash": 2089750091,
+            "slot": 29
+          },
+          "RightHand": {
+            "hash": 2889608574,
+            "slot": 64
+          }
+        }
+      },
+      "graphClockAvailable": false
+    },
+    "observerSummary": {
+      "enabled": false,
+      "errors": 0,
+      "counts": {
+        "scheduler": 772,
+        "buffer": 772,
+        "consumer": 772,
+        "interpolate": 772
+      },
+      "selected": true,
+      "elapsed": 17.5424132
+    },
+    "observerScriptErrors": 0,
+    "samples": 772,
+    "validSampleSeconds": 15.4938916,
+    "callbackIntervalMilliseconds": {
+      "p50": 19.986,
+      "p95": 22.941100000000002,
+      "p99": 24.528099999999977
+    },
+    "pointerIdentity": {
+      "skeletonPointersEqual": {
+        "equal": 772,
+        "samples": 772
+      },
+      "transformArraysEqual": {
+        "equal": 772,
+        "samples": 772
+      },
+      "matrixArraysEqual": {
+        "equal": 772,
+        "samples": 772
+      },
+      "typeDataPointersEqual": {
+        "equal": 772,
+        "samples": 772
+      }
+    },
+    "cacheDirtyValues": {
+      "queryCacheDirty": [
+        1
+      ],
+      "interpolatedCacheDirty": [
+        1
+      ]
+    },
+    "queryInterpolatedExactEqualSamples": 772,
+    "poseChanges": {
+      "Head": {
+        "rotationChangedPairs": 724,
+        "matrixTranslationChangedPairs": 735,
+        "pairs": 771
+      },
+      "Hips": {
+        "rotationChangedPairs": 724,
+        "matrixTranslationChangedPairs": 735,
+        "pairs": 771
+      },
+      "spine2": {
+        "rotationChangedPairs": 724,
+        "matrixTranslationChangedPairs": 735,
+        "pairs": 771
+      },
+      "Neck": {
+        "rotationChangedPairs": 724,
+        "matrixTranslationChangedPairs": 735,
+        "pairs": 771
+      },
+      "LeftHand": {
+        "rotationChangedPairs": 724,
+        "matrixTranslationChangedPairs": 735,
+        "pairs": 771
+      },
+      "RightHand": {
+        "rotationChangedPairs": 724,
+        "matrixTranslationChangedPairs": 735,
+        "pairs": 771
+      }
+    },
+    "graphClockAvailable": false,
+    "apiContract": {
+      "handlerRva": "0x6e3240",
+      "virtualSlot": "0x618",
+      "animalWrapperRva": "0xc67b10",
+      "helperRva": "0xc04840",
+      "matrixCopyRva": "0xc06c50",
+      "cacheBuilderRva": "0xc10ff0",
+      "skeleton": "context+0x188",
+      "compressedArray": "skeleton+0x30 stride32, hierarchy input transforms",
+      "matrixArray": "skeleton+0x38 stride48, API model-space matrices",
+      "dirtyFlag": "skeleton+0xa8: builder returns if zero and clears after rebuild",
+      "previousDiagSlot610MsLabelWithdrawn": true,
+      "releaseMsSlot": "0x610",
+      "cachedCurrentnessForced": false
+    },
+    "foreground": {
+      "requestedBeforeObserver": true,
+      "requestedAt": "2026-11-01T08:40:26.651Z",
+      "continuousAppActiveMeasured": false
+    },
+    "visibleObservation": {
+      "stillCaptured": true,
+      "duringTrace": true,
+      "sha256": "6a3dc8efba72d8007c1db79ec1f394de22071e3a2586aa664d87c33d9f0a56e6",
+      "visualCadenceMeasured": false
+    },
+    "server": {
+      "completed": true,
+      "earlyDisconnectCount": 0,
+      "battleyeKickCount": 0,
+      "guardDecision": {
+        "status": "known-warning",
+        "reason": "complete reviewed warning",
+        "completeErrorLines": 8,
+        "completeWarningBlocks": 1,
+        "partialWarning": false,
+        "pendingMilliseconds": 0
+      }
+    },
+    "client": {
+      "closed": true,
+      "forcedStop": false,
+      "terminationMarker": true,
+      "signatureChecksPassed": 3,
+      "crashLogs": 0
+    },
+    "functionalRegression": "not_retested",
+    "frameTimeP50P95P99": null,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "Alias is confirmed only for the selected diagnostic actor at the sampled scheduler-exit stage; no all-build/all-actor alias claim.",
+      "Cache dirty=1 at that stage is consistent with normal post-pose pre-render invalidation and does not prove missed rebuild or visible lag.",
+      "No forced API/native cache-builder calls. Cache translations may represent an earlier natural rebuild; no same-time server MS equality or latency claim.",
+      "One still proves model-part visibility, not visual cadence or smoothness. QPC and screenshot wall timestamps are not exact frame joins.",
+      "Foreground was requested before attachment, but continuous appActive was not measured. Prior trace differs in focus, sample rate and cache reads; not a controlled A/B.",
+      "Initial reused producer still selected release SHA; that result was rejected for diagnostic interpretation and preserved as release comparison. Unrelated C06520 candidate in space-paths is not used in the proven MS chain.",
+      "No new 8/64 regression, actual display/frame-time cost or 20ms-p95 acceptance."
+    ],
+    "next": "Observe the mapped natural cache-builder entry/exit for the selected shared skeleton and its return sites, without forcing rebuilds; synchronize with actual visible frames using existing capture infrastructure. Preserve diagnostic/release separation and correct the earlier slot610 MS label wherever current summaries rely on it.",
+    "localEvidenceIntegrity": {
+      "filesVerified": 58,
+      "privateManifestPublished": false,
+      "checkpointSha256": "fbccfb87c1dafc324b66d77ceb46a9c75a6a2a602c51c7d2239185ac24dc45fd"
+    }
+  },
+  "blockers": [
+    "Alias is confirmed only for the selected diagnostic actor at the sampled scheduler-exit stage; no all-build/all-actor alias claim.",
+    "Cache dirty=1 at that stage is consistent with normal post-pose pre-render invalidation and does not prove missed rebuild or visible lag.",
+    "No forced API/native cache-builder calls. Cache translations may represent an earlier natural rebuild; no same-time server MS equality or latency claim.",
+    "One still proves model-part visibility, not visual cadence or smoothness. QPC and screenshot wall timestamps are not exact frame joins.",
+    "Foreground was requested before attachment, but continuous appActive was not measured. Prior trace differs in focus, sample rate and cache reads; not a controlled A/B.",
+    "Initial reused producer still selected release SHA; that result was rejected for diagnostic interpretation and preserved as release comparison. Unrelated C06520 candidate in space-paths is not used in the proven MS chain.",
+    "No new 8/64 regression, actual display/frame-time cost or 20ms-p95 acceptance."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-diag-pose-identity-20261101.md",
+      "sha256": "3dbdbbdca9ab27cdcea67a624068d1b87694d63fa1801f84f810d51d7ca85a4d"
+    },
+    {
+      "path": "evidence/animation-diag-pose-identity-20261101.txt",
+      "sha256": "05e35d2c50e28e305e3fe89813d11face69ec88e52313d015b9ce017d17fbf82"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

@@ -1,0 +1,1162 @@
+{
+  "selection": "Exact MS registration/handler, actual wrapper/helper/matrix-copy, selected cache-builder entry/dirty/parent/output/clear instructions, aggregate pointer identity and first/last pose/cache projection. Not full raw logs/screenshots or all algorithm.",
+  "apiContract": {
+    "handlerRva": "0x6e3240",
+    "virtualSlot": "0x618",
+    "animalWrapperRva": "0xc67b10",
+    "helperRva": "0xc04840",
+    "matrixCopyRva": "0xc06c50",
+    "cacheBuilderRva": "0xc10ff0",
+    "skeleton": "context+0x188",
+    "compressedArray": "skeleton+0x30 stride32, hierarchy input transforms",
+    "matrixArray": "skeleton+0x38 stride48, API model-space matrices",
+    "dirtyFlag": "skeleton+0xa8: builder returns if zero and clears after rebuild",
+    "previousDiagSlot610MsLabelWithdrawn": true,
+    "releaseMsSlot": "0x610",
+    "cachedCurrentnessForced": false
+  },
+  "binding": {
+    "name": "GetBonePositionMS",
+    "handler": "0x1406e3240",
+    "registration": "0x1406df14e",
+    "context": [
+      {
+        "address": "0x1406df124",
+        "instruction": "lea r8, [rip + 0xd65875]"
+      },
+      {
+        "address": "0x1406df12b",
+        "instruction": "mov rdx, rdi"
+      },
+      {
+        "address": "0x1406df12e",
+        "instruction": "mov rcx, rbx"
+      },
+      {
+        "address": "0x1406df131",
+        "instruction": "call 0x1402925f0"
+      },
+      {
+        "address": "0x1406df136",
+        "instruction": "lea r9, [rip + 0x4103]"
+      },
+      {
+        "address": "0x1406df13d",
+        "instruction": "mov dword ptr [rsp + 0x20], esi"
+      },
+      {
+        "address": "0x1406df141",
+        "instruction": "lea r8, [rip + 0xd65870]"
+      },
+      {
+        "address": "0x1406df148",
+        "instruction": "mov rdx, rdi"
+      },
+      {
+        "address": "0x1406df14b",
+        "instruction": "mov rcx, rbx"
+      },
+      {
+        "address": "0x1406df14e",
+        "instruction": "call 0x1402925f0"
+      }
+    ],
+    "handlerDecode": {
+      "start": "0x1406e3240",
+      "end": "0x1406e3286",
+      "boundary": "unwind",
+      "sha256": "d32a98c750e2a675fc8defb1fc46466f4774e1168fef958ef3578dc01e2aa50a",
+      "instructions": [
+        {
+          "address": "0x1406e3240",
+          "instruction": "push rbx"
+        },
+        {
+          "address": "0x1406e3242",
+          "instruction": "sub rsp, 0x50"
+        },
+        {
+          "address": "0x1406e3246",
+          "instruction": "mov rax, qword ptr [rcx]"
+        },
+        {
+          "address": "0x1406e3249",
+          "instruction": "mov r9d, r8d"
+        },
+        {
+          "address": "0x1406e324c",
+          "instruction": "mov rbx, rdx"
+        },
+        {
+          "address": "0x1406e324f",
+          "instruction": "lea r8, [rsp + 0x20]"
+        },
+        {
+          "address": "0x1406e3254",
+          "instruction": "mov edx, r9d"
+        },
+        {
+          "address": "0x1406e3257",
+          "instruction": "call qword ptr [rax + 0x618]"
+        },
+        {
+          "address": "0x1406e325d",
+          "instruction": "movss xmm0, dword ptr [rsp + 0x44]"
+        },
+        {
+          "address": "0x1406e3263",
+          "instruction": "mov rax, rbx"
+        },
+        {
+          "address": "0x1406e3266",
+          "instruction": "movss xmm1, dword ptr [rsp + 0x48]"
+        },
+        {
+          "address": "0x1406e326c",
+          "instruction": "movss dword ptr [rbx], xmm0"
+        },
+        {
+          "address": "0x1406e3270",
+          "instruction": "movss xmm0, dword ptr [rsp + 0x4c]"
+        },
+        {
+          "address": "0x1406e3276",
+          "instruction": "movss dword ptr [rbx + 8], xmm0"
+        },
+        {
+          "address": "0x1406e327b",
+          "instruction": "movss dword ptr [rbx + 4], xmm1"
+        },
+        {
+          "address": "0x1406e3280",
+          "instruction": "add rsp, 0x50"
+        },
+        {
+          "address": "0x1406e3284",
+          "instruction": "pop rbx"
+        },
+        {
+          "address": "0x1406e3285",
+          "instruction": "ret "
+        }
+      ]
+    },
+    "oneLevelCallees": []
+  },
+  "spaceFunctions": {
+    "actualMSWrapper": {
+      "entry": "0x140c67b10",
+      "windowBytes": 16,
+      "instructions": [
+        {
+          "address": "0x140c67b10",
+          "text": "mov rcx, qword ptr [rcx + 0x628]",
+          "bytes": "488b8928060000"
+        },
+        {
+          "address": "0x140c67b17",
+          "text": "jmp 0x140c04840",
+          "bytes": "e924cdf9ff"
+        }
+      ],
+      "directBranches": [
+        [
+          "0x140c67b17",
+          "0x140c04840"
+        ]
+      ],
+      "outside": [
+        "0x140c04840"
+      ],
+      "calls": [],
+      "scope": "Direct-branch reachable bounded window. Calls not recursively proven, outside targets explicit. Not provider-complete decompilation."
+    },
+    "actualMSHelper": {
+      "entry": "0x140c04840",
+      "windowBytes": 384,
+      "instructions": [
+        {
+          "address": "0x140c04840",
+          "text": "mov qword ptr [rsp + 8], rbx",
+          "bytes": "48895c2408"
+        },
+        {
+          "address": "0x140c04845",
+          "text": "push rdi",
+          "bytes": "57"
+        },
+        {
+          "address": "0x140c04846",
+          "text": "sub rsp, 0x20",
+          "bytes": "4883ec20"
+        },
+        {
+          "address": "0x140c0484a",
+          "text": "mov rbx, qword ptr [rcx + 0x188]",
+          "bytes": "488b9988010000"
+        },
+        {
+          "address": "0x140c04851",
+          "text": "mov rdi, r8",
+          "bytes": "498bf8"
+        },
+        {
+          "address": "0x140c04854",
+          "text": "mov rcx, qword ptr [rbx + 0x20]",
+          "bytes": "488b4b20"
+        },
+        {
+          "address": "0x140c04858",
+          "text": "add rcx, 0xe0",
+          "bytes": "4881c1e0000000"
+        },
+        {
+          "address": "0x140c0485f",
+          "text": "call 0x140310320",
+          "bytes": "e8bcba70ff"
+        },
+        {
+          "address": "0x140c04864",
+          "text": "mov r8, rdi",
+          "bytes": "4c8bc7"
+        },
+        {
+          "address": "0x140c04867",
+          "text": "mov edx, eax",
+          "bytes": "8bd0"
+        },
+        {
+          "address": "0x140c04869",
+          "text": "mov rcx, rbx",
+          "bytes": "488bcb"
+        },
+        {
+          "address": "0x140c0486c",
+          "text": "mov rbx, qword ptr [rsp + 0x30]",
+          "bytes": "488b5c2430"
+        },
+        {
+          "address": "0x140c04871",
+          "text": "add rsp, 0x20",
+          "bytes": "4883c420"
+        },
+        {
+          "address": "0x140c04875",
+          "text": "pop rdi",
+          "bytes": "5f"
+        },
+        {
+          "address": "0x140c04876",
+          "text": "jmp 0x140c06c50",
+          "bytes": "e9d5230000"
+        }
+      ],
+      "directBranches": [
+        [
+          "0x140c04876",
+          "0x140c06c50"
+        ]
+      ],
+      "outside": [
+        "0x140c06c50"
+      ],
+      "calls": [
+        {
+          "at": "0x140c0485f",
+          "target": "0x140310320",
+          "text": "0x140310320"
+        }
+      ],
+      "scope": "Direct-branch reachable bounded window. Calls not recursively proven, outside targets explicit. Not provider-complete decompilation."
+    }
+  },
+  "matrixCopy": {
+    "entry": "0x140c06c50",
+    "windowBytes": 2048,
+    "instructions": [
+      {
+        "address": "0x140c06c50",
+        "text": "mov qword ptr [rsp + 8], rbx",
+        "bytes": "48895c2408"
+      },
+      {
+        "address": "0x140c06c55",
+        "text": "mov qword ptr [rsp + 0x10], rsi",
+        "bytes": "4889742410"
+      },
+      {
+        "address": "0x140c06c5a",
+        "text": "push rdi",
+        "bytes": "57"
+      },
+      {
+        "address": "0x140c06c5b",
+        "text": "sub rsp, 0x20",
+        "bytes": "4883ec20"
+      },
+      {
+        "address": "0x140c06c5f",
+        "text": "mov rbx, r8",
+        "bytes": "498bd8"
+      },
+      {
+        "address": "0x140c06c62",
+        "text": "mov esi, edx",
+        "bytes": "8bf2"
+      },
+      {
+        "address": "0x140c06c64",
+        "text": "mov rdi, rcx",
+        "bytes": "488bf9"
+      },
+      {
+        "address": "0x140c06c67",
+        "text": "cmp edx, dword ptr [rcx + 0x68]",
+        "bytes": "3b5168"
+      },
+      {
+        "address": "0x140c06c6a",
+        "text": "jae 0x140c06cc3",
+        "bytes": "7357"
+      },
+      {
+        "address": "0x140c06c6c",
+        "text": "call 0x140c10ff0",
+        "bytes": "e87fa30000"
+      },
+      {
+        "address": "0x140c06c71",
+        "text": "lea rdx, [rsi + rsi*2]",
+        "bytes": "488d1476"
+      },
+      {
+        "address": "0x140c06c75",
+        "text": "shl rdx, 4",
+        "bytes": "48c1e204"
+      },
+      {
+        "address": "0x140c06c79",
+        "text": "add rdx, qword ptr [rdi + 0x38]",
+        "bytes": "48035738"
+      },
+      {
+        "address": "0x140c06c7d",
+        "text": "mov eax, dword ptr [rdx]",
+        "bytes": "8b02"
+      },
+      {
+        "address": "0x140c06c7f",
+        "text": "mov dword ptr [rbx], eax",
+        "bytes": "8903"
+      },
+      {
+        "address": "0x140c06c81",
+        "text": "mov eax, dword ptr [rdx + 4]",
+        "bytes": "8b4204"
+      },
+      {
+        "address": "0x140c06c84",
+        "text": "mov dword ptr [rbx + 4], eax",
+        "bytes": "894304"
+      },
+      {
+        "address": "0x140c06c87",
+        "text": "mov eax, dword ptr [rdx + 8]",
+        "bytes": "8b4208"
+      },
+      {
+        "address": "0x140c06c8a",
+        "text": "mov dword ptr [rbx + 8], eax",
+        "bytes": "894308"
+      },
+      {
+        "address": "0x140c06c8d",
+        "text": "mov eax, dword ptr [rdx + 0xc]",
+        "bytes": "8b420c"
+      },
+      {
+        "address": "0x140c06c90",
+        "text": "mov dword ptr [rbx + 0xc], eax",
+        "bytes": "89430c"
+      },
+      {
+        "address": "0x140c06c93",
+        "text": "mov eax, dword ptr [rdx + 0x10]",
+        "bytes": "8b4210"
+      },
+      {
+        "address": "0x140c06c96",
+        "text": "mov dword ptr [rbx + 0x10], eax",
+        "bytes": "894310"
+      },
+      {
+        "address": "0x140c06c99",
+        "text": "mov eax, dword ptr [rdx + 0x14]",
+        "bytes": "8b4214"
+      },
+      {
+        "address": "0x140c06c9c",
+        "text": "mov dword ptr [rbx + 0x14], eax",
+        "bytes": "894314"
+      },
+      {
+        "address": "0x140c06c9f",
+        "text": "mov eax, dword ptr [rdx + 0x18]",
+        "bytes": "8b4218"
+      },
+      {
+        "address": "0x140c06ca2",
+        "text": "mov dword ptr [rbx + 0x18], eax",
+        "bytes": "894318"
+      },
+      {
+        "address": "0x140c06ca5",
+        "text": "mov eax, dword ptr [rdx + 0x1c]",
+        "bytes": "8b421c"
+      },
+      {
+        "address": "0x140c06ca8",
+        "text": "mov dword ptr [rbx + 0x1c], eax",
+        "bytes": "89431c"
+      },
+      {
+        "address": "0x140c06cab",
+        "text": "mov eax, dword ptr [rdx + 0x20]",
+        "bytes": "8b4220"
+      },
+      {
+        "address": "0x140c06cae",
+        "text": "mov dword ptr [rbx + 0x20], eax",
+        "bytes": "894320"
+      },
+      {
+        "address": "0x140c06cb1",
+        "text": "mov eax, dword ptr [rdx + 0x24]",
+        "bytes": "8b4224"
+      },
+      {
+        "address": "0x140c06cb4",
+        "text": "mov dword ptr [rbx + 0x24], eax",
+        "bytes": "894324"
+      },
+      {
+        "address": "0x140c06cb7",
+        "text": "mov eax, dword ptr [rdx + 0x28]",
+        "bytes": "8b4228"
+      },
+      {
+        "address": "0x140c06cba",
+        "text": "mov dword ptr [rbx + 0x28], eax",
+        "bytes": "894328"
+      },
+      {
+        "address": "0x140c06cbd",
+        "text": "mov eax, dword ptr [rdx + 0x2c]",
+        "bytes": "8b422c"
+      },
+      {
+        "address": "0x140c06cc0",
+        "text": "mov dword ptr [rbx + 0x2c], eax",
+        "bytes": "89432c"
+      },
+      {
+        "address": "0x140c06cc3",
+        "text": "mov rbx, qword ptr [rsp + 0x30]",
+        "bytes": "488b5c2430"
+      },
+      {
+        "address": "0x140c06cc8",
+        "text": "mov rsi, qword ptr [rsp + 0x38]",
+        "bytes": "488b742438"
+      },
+      {
+        "address": "0x140c06ccd",
+        "text": "add rsp, 0x20",
+        "bytes": "4883c420"
+      },
+      {
+        "address": "0x140c06cd1",
+        "text": "pop rdi",
+        "bytes": "5f"
+      },
+      {
+        "address": "0x140c06cd2",
+        "text": "ret ",
+        "bytes": "c3"
+      }
+    ],
+    "directBranches": [
+      [
+        "0x140c06c6a",
+        "0x140c06cc3"
+      ]
+    ],
+    "outside": [],
+    "calls": [
+      {
+        "at": "0x140c06c6c",
+        "target": "0x140c10ff0",
+        "text": "0x140c10ff0"
+      }
+    ],
+    "scope": "Direct-branch reachable bounded window. Calls not recursively proven, outside targets explicit. Not provider-complete decompilation."
+  },
+  "cacheBuilderSelected": [
+    {
+      "address": "0x140c11004",
+      "text": "cmp byte ptr [rcx + 0xa8], 0",
+      "bytes": "80b9a800000000"
+    },
+    {
+      "address": "0x140c11025",
+      "text": "mov r8, qword ptr [rcx + 0x30]",
+      "bytes": "4c8b4130"
+    },
+    {
+      "address": "0x140c11031",
+      "text": "mov r13, qword ptr [rcx + 0x38]",
+      "bytes": "4c8b6938"
+    },
+    {
+      "address": "0x140c11223",
+      "text": "movaps xmmword ptr [r11 - 0xa8], xmm13",
+      "bytes": "450f29ab58ffffff"
+    },
+    {
+      "address": "0x140c11255",
+      "text": "lea r10, [rdx + 0x100]",
+      "bytes": "4c8d9200010000"
+    },
+    {
+      "address": "0x140c11475",
+      "text": "lea rdx, [rdx + rdx*2]",
+      "bytes": "488d1452"
+    },
+    {
+      "address": "0x140c11647",
+      "text": "movups xmmword ptr [r8 - 0x30], xmm3",
+      "bytes": "410f1158d0"
+    },
+    {
+      "address": "0x140c11654",
+      "text": "movups xmmword ptr [r8 - 0x20], xmm1",
+      "bytes": "410f1148e0"
+    },
+    {
+      "address": "0x140c1165d",
+      "text": "movups xmmword ptr [r8 - 0x10], xmm2",
+      "bytes": "410f1150f0"
+    },
+    {
+      "address": "0x140c11705",
+      "text": "lea rcx, [rdx + 0x100]",
+      "bytes": "488d8a00010000"
+    },
+    {
+      "address": "0x140c11ea1",
+      "text": "mov byte ptr [r14 + 0xa8], 0",
+      "bytes": "41c686a800000000"
+    }
+  ],
+  "pointerIdentity": {
+    "skeletonPointersEqual": {
+      "equal": 772,
+      "samples": 772
+    },
+    "transformArraysEqual": {
+      "equal": 772,
+      "samples": 772
+    },
+    "matrixArraysEqual": {
+      "equal": 772,
+      "samples": 772
+    },
+    "typeDataPointersEqual": {
+      "equal": 772,
+      "samples": 772
+    }
+  },
+  "cacheDirtyValues": {
+    "queryCacheDirty": [
+      1
+    ],
+    "interpolatedCacheDirty": [
+      1
+    ]
+  },
+  "limits": [
+    "Alias is confirmed only for the selected diagnostic actor at the sampled scheduler-exit stage; no all-build/all-actor alias claim.",
+    "Cache dirty=1 at that stage is consistent with normal post-pose pre-render invalidation and does not prove missed rebuild or visible lag.",
+    "No forced API/native cache-builder calls. Cache translations may represent an earlier natural rebuild; no same-time server MS equality or latency claim.",
+    "One still proves model-part visibility, not visual cadence or smoothness. QPC and screenshot wall timestamps are not exact frame joins.",
+    "Foreground was requested before attachment, but continuous appActive was not measured. Prior trace differs in focus, sample rate and cache reads; not a controlled A/B.",
+    "Initial reused producer still selected release SHA; that result was rejected for diagnostic interpretation and preserved as release comparison. Unrelated C06520 candidate in space-paths is not used in the proven MS chain.",
+    "No new 8/64 regression, actual display/frame-time cost or 20ms-p95 acceptance."
+  ],
+  "firstLastSample": [
+    {
+      "type": "sample",
+      "schedulerSequence": 1,
+      "poses": {
+        "query188": {
+          "storage": "compressed_transform32",
+          "boneCount": 65,
+          "values": {
+            "Head": {
+              "quaternion": [
+                0.06109585240483284,
+                -0.01547820121049881,
+                0.0826973095536232,
+                0.9945797324180603
+              ],
+              "translation": [
+                -7.078051567077637e-07,
+                0.07574737817049026,
+                -0.014465995132923126
+              ],
+              "rawWord1C": 0
+            },
+            "Hips": {
+              "quaternion": [
+                -0.2455068677663803,
+                0.07604087144136429,
+                -0.01932893879711628,
+                0.966214656829834
+              ],
+              "translation": [
+                0,
+                0.861503541469574,
+                0
+              ],
+              "rawWord1C": 0
+            },
+            "spine2": {
+              "quaternion": [
+                -0.03280060365796089,
+                0.026331929489970207,
+                0.007625154219567776,
+                0.9990859627723694
+              ],
+              "translation": [
+                0,
+                0.08558706939220428,
+                0.010948156006634235
+              ],
+              "rawWord1C": 0
+            },
+            "Neck": {
+              "quaternion": [
+                0.035333096981048584,
+                0.00234330166131258,
+                0.02636248990893364,
+                0.9990251660346985
+              ],
+              "translation": [
+                -1.385807991027832e-06,
+                0.08157461881637573,
+                -0.017856283113360405
+              ],
+              "rawWord1C": 0
+            },
+            "LeftHand": {
+              "quaternion": [
+                0.33394452929496765,
+                -0.20150145888328552,
+                -0.2857723534107208,
+                0.8753355741500854
+              ],
+              "translation": [
+                0.1895383894443512,
+                -0.08179009705781937,
+                -0.19736358523368835
+              ],
+              "rawWord1C": 0
+            },
+            "RightHand": {
+              "quaternion": [
+                0.3324486017227173,
+                0.3068031966686249,
+                0.10879979282617569,
+                0.8851622939109802
+              ],
+              "translation": [
+                -0.1895456612110138,
+                -0.08178964257240295,
+                -0.19736357033252716
+              ],
+              "rawWord1C": 0
+            }
+          }
+        },
+        "interpolated190": {
+          "storage": "compressed_transform32",
+          "boneCount": 65,
+          "values": {
+            "Head": {
+              "quaternion": [
+                0.06109585240483284,
+                -0.01547820121049881,
+                0.0826973095536232,
+                0.9945797324180603
+              ],
+              "translation": [
+                -7.078051567077637e-07,
+                0.07574737817049026,
+                -0.014465995132923126
+              ],
+              "rawWord1C": 0
+            },
+            "Hips": {
+              "quaternion": [
+                -0.2455068677663803,
+                0.07604087144136429,
+                -0.01932893879711628,
+                0.966214656829834
+              ],
+              "translation": [
+                0,
+                0.861503541469574,
+                0
+              ],
+              "rawWord1C": 0
+            },
+            "spine2": {
+              "quaternion": [
+                -0.03280060365796089,
+                0.026331929489970207,
+                0.007625154219567776,
+                0.9990859627723694
+              ],
+              "translation": [
+                0,
+                0.08558706939220428,
+                0.010948156006634235
+              ],
+              "rawWord1C": 0
+            },
+            "Neck": {
+              "quaternion": [
+                0.035333096981048584,
+                0.00234330166131258,
+                0.02636248990893364,
+                0.9990251660346985
+              ],
+              "translation": [
+                -1.385807991027832e-06,
+                0.08157461881637573,
+                -0.017856283113360405
+              ],
+              "rawWord1C": 0
+            },
+            "LeftHand": {
+              "quaternion": [
+                0.33394452929496765,
+                -0.20150145888328552,
+                -0.2857723534107208,
+                0.8753355741500854
+              ],
+              "translation": [
+                0.1895383894443512,
+                -0.08179009705781937,
+                -0.19736358523368835
+              ],
+              "rawWord1C": 0
+            },
+            "RightHand": {
+              "quaternion": [
+                0.3324486017227173,
+                0.3068031966686249,
+                0.10879979282617569,
+                0.8851622939109802
+              ],
+              "translation": [
+                -0.1895456612110138,
+                -0.08178964257240295,
+                -0.19736357033252716
+              ],
+              "rawWord1C": 0
+            }
+          }
+        }
+      },
+      "cachedMatrices": {
+        "query188": {
+          "available": true,
+          "storage": "model_matrix_cache48",
+          "cacheDirty": 1,
+          "currentnessNotForced": true,
+          "translation": {
+            "Head": [
+              -0.05969284847378731,
+              1.438123345375061,
+              -0.4052272439002991
+            ],
+            "Hips": [
+              0,
+              0.861503541469574,
+              0
+            ],
+            "spine2": [
+              0.00155003578402102,
+              1.1111503839492798,
+              -0.11439274996519089
+            ],
+            "Neck": [
+              -0.026251783594489098,
+              1.32549250125885,
+              -0.2966156005859375
+            ],
+            "LeftHand": [
+              0.1970098316669464,
+              0.7699657678604126,
+              -0.2998018264770508
+            ],
+            "RightHand": [
+              -0.24773162603378296,
+              1.4972728490829468,
+              -0.4898186922073364
+            ]
+          }
+        },
+        "interpolated190": {
+          "available": true,
+          "storage": "model_matrix_cache48",
+          "cacheDirty": 1,
+          "currentnessNotForced": true,
+          "translation": {
+            "Head": [
+              -0.05969284847378731,
+              1.438123345375061,
+              -0.4052272439002991
+            ],
+            "Hips": [
+              0,
+              0.861503541469574,
+              0
+            ],
+            "spine2": [
+              0.00155003578402102,
+              1.1111503839492798,
+              -0.11439274996519089
+            ],
+            "Neck": [
+              -0.026251783594489098,
+              1.32549250125885,
+              -0.2966156005859375
+            ],
+            "LeftHand": [
+              0.1970098316669464,
+              0.7699657678604126,
+              -0.2998018264770508
+            ],
+            "RightHand": [
+              -0.24773162603378296,
+              1.4972728490829468,
+              -0.4898186922073364
+            ]
+          }
+        }
+      },
+      "skeletonPointersEqual": true,
+      "transformArraysEqual": true,
+      "matrixArraysEqual": true,
+      "typeDataPointersEqual": true,
+      "queryCacheDirty": 1,
+      "interpolatedCacheDirty": 1,
+      "qpc": 10332940286416,
+      "qpcFrequency": 10000000,
+      "mode": 2,
+      "primaryInterval": 0.05000000074505806,
+      "mode0Accumulator": 0,
+      "bufferClock": 14.950030326843262,
+      "bufferCount": 0,
+      "bufferEnabled": 1,
+      "bufferFlag21": 1,
+      "retainedBufferPresent": true,
+      "graphClock": null,
+      "graphClockAvailable": false
+    },
+    {
+      "type": "sample",
+      "schedulerSequence": 772,
+      "poses": {
+        "query188": {
+          "storage": "compressed_transform32",
+          "boneCount": 65,
+          "values": {
+            "Head": {
+              "quaternion": [
+                0.09553492069244385,
+                0.0670689195394516,
+                0.05883047729730606,
+                0.9914200901985168
+              ],
+              "translation": [
+                -7.078051567077637e-07,
+                0.07574658840894699,
+                -0.014465995132923126
+              ],
+              "rawWord1C": 0
+            },
+            "Hips": {
+              "quaternion": [
+                -0.22196419537067413,
+                -0.21017809212207794,
+                -0.061137955635786057,
+                0.9501680731773376
+              ],
+              "translation": [
+                0,
+                0.8852416276931763,
+                0
+              ],
+              "rawWord1C": 0
+            },
+            "spine2": {
+              "quaternion": [
+                -0.01258009858429432,
+                0.021688787266612053,
+                -0.0072326380759477615,
+                0.999659538269043
+              ],
+              "translation": [
+                0,
+                0.08558706939220428,
+                0.010948156006634235
+              ],
+              "rawWord1C": 0
+            },
+            "Neck": {
+              "quaternion": [
+                0.041005939245224,
+                0.02453720010817051,
+                0.011411361396312714,
+                0.9987924695014954
+              ],
+              "translation": [
+                -1.385807991027832e-06,
+                0.08157461881637573,
+                -0.017856283113360405
+              ],
+              "rawWord1C": 0
+            },
+            "LeftHand": {
+              "quaternion": [
+                0.580429196357727,
+                -0.23570436239242554,
+                -0.24520906805992126,
+                0.7398769855499268
+              ],
+              "translation": [
+                0.1895383894443512,
+                -0.08179010450839996,
+                -0.19736358523368835
+              ],
+              "rawWord1C": 0
+            },
+            "RightHand": {
+              "quaternion": [
+                0.4072555899620056,
+                0.21606022119522095,
+                0.14678636193275452,
+                0.8751655220985413
+              ],
+              "translation": [
+                -0.1895456612110138,
+                -0.08178964257240295,
+                -0.19736357033252716
+              ],
+              "rawWord1C": 0
+            }
+          }
+        },
+        "interpolated190": {
+          "storage": "compressed_transform32",
+          "boneCount": 65,
+          "values": {
+            "Head": {
+              "quaternion": [
+                0.09553492069244385,
+                0.0670689195394516,
+                0.05883047729730606,
+                0.9914200901985168
+              ],
+              "translation": [
+                -7.078051567077637e-07,
+                0.07574658840894699,
+                -0.014465995132923126
+              ],
+              "rawWord1C": 0
+            },
+            "Hips": {
+              "quaternion": [
+                -0.22196419537067413,
+                -0.21017809212207794,
+                -0.061137955635786057,
+                0.9501680731773376
+              ],
+              "translation": [
+                0,
+                0.8852416276931763,
+                0
+              ],
+              "rawWord1C": 0
+            },
+            "spine2": {
+              "quaternion": [
+                -0.01258009858429432,
+                0.021688787266612053,
+                -0.0072326380759477615,
+                0.999659538269043
+              ],
+              "translation": [
+                0,
+                0.08558706939220428,
+                0.010948156006634235
+              ],
+              "rawWord1C": 0
+            },
+            "Neck": {
+              "quaternion": [
+                0.041005939245224,
+                0.02453720010817051,
+                0.011411361396312714,
+                0.9987924695014954
+              ],
+              "translation": [
+                -1.385807991027832e-06,
+                0.08157461881637573,
+                -0.017856283113360405
+              ],
+              "rawWord1C": 0
+            },
+            "LeftHand": {
+              "quaternion": [
+                0.580429196357727,
+                -0.23570436239242554,
+                -0.24520906805992126,
+                0.7398769855499268
+              ],
+              "translation": [
+                0.1895383894443512,
+                -0.08179010450839996,
+                -0.19736358523368835
+              ],
+              "rawWord1C": 0
+            },
+            "RightHand": {
+              "quaternion": [
+                0.4072555899620056,
+                0.21606022119522095,
+                0.14678636193275452,
+                0.8751655220985413
+              ],
+              "translation": [
+                -0.1895456612110138,
+                -0.08178964257240295,
+                -0.19736357033252716
+              ],
+              "rawWord1C": 0
+            }
+          }
+        }
+      },
+      "cachedMatrices": {
+        "query188": {
+          "available": true,
+          "storage": "model_matrix_cache48",
+          "cacheDirty": 1,
+          "currentnessNotForced": true,
+          "translation": {
+            "Head": [
+              0.18337421119213104,
+              1.525493860244751,
+              -0.2628314197063446
+            ],
+            "Hips": [
+              0,
+              0.886509120464325,
+              0
+            ],
+            "spine2": [
+              0.050865959376096725,
+              1.1452425718307495,
+              -0.07678758352994919
+            ],
+            "Neck": [
+              0.13659225404262543,
+              1.3899784088134766,
+              -0.19221417605876923
+            ],
+            "LeftHand": [
+              0.5261501669883728,
+              1.2667135000228882,
+              -0.24084876477718353
+            ],
+            "RightHand": [
+              -0.47927582263946533,
+              1.1458804607391357,
+              -0.12303165346384048
+            ]
+          }
+        },
+        "interpolated190": {
+          "available": true,
+          "storage": "model_matrix_cache48",
+          "cacheDirty": 1,
+          "currentnessNotForced": true,
+          "translation": {
+            "Head": [
+              0.18337421119213104,
+              1.525493860244751,
+              -0.2628314197063446
+            ],
+            "Hips": [
+              0,
+              0.886509120464325,
+              0
+            ],
+            "spine2": [
+              0.050865959376096725,
+              1.1452425718307495,
+              -0.07678758352994919
+            ],
+            "Neck": [
+              0.13659225404262543,
+              1.3899784088134766,
+              -0.19221417605876923
+            ],
+            "LeftHand": [
+              0.5261501669883728,
+              1.2667135000228882,
+              -0.24084876477718353
+            ],
+            "RightHand": [
+              -0.47927582263946533,
+              1.1458804607391357,
+              -0.12303165346384048
+            ]
+          }
+        }
+      },
+      "skeletonPointersEqual": true,
+      "transformArraysEqual": true,
+      "matrixArraysEqual": true,
+      "typeDataPointersEqual": true,
+      "queryCacheDirty": 1,
+      "interpolatedCacheDirty": 1,
+      "qpc": 10333095225332,
+      "qpcFrequency": 10000000,
+      "mode": 2,
+      "primaryInterval": 0.05000000074505806,
+      "mode0Accumulator": 0,
+      "bufferClock": 0.028826311230659485,
+      "bufferCount": 0,
+      "bufferEnabled": 1,
+      "bufferFlag21": 1,
+      "retainedBufferPresent": true,
+      "graphClock": null,
+      "graphClockAvailable": false
+    }
+  ]
+}
