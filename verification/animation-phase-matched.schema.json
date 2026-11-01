@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "animation-phase-matched-20261101-1316"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "newRuntime",
+        "newPbo",
+        "newVideo",
+        "runs",
+        "selectedHarmonics",
+        "visualAccepted",
+        "performanceAccepted"
+      ],
+      "properties": {
+        "newRuntime": {
+          "const": false
+        },
+        "newPbo": {
+          "const": false
+        },
+        "newVideo": {
+          "const": false
+        },
+        "runs": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "visualAccepted": {
+          "const": false
+        },
+        "performanceAccepted": {
+          "const": false
+        }
+      }
+    }
+  }
+}
