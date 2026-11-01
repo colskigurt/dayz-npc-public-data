@@ -1,0 +1,246 @@
+{
+  "selection": "All3 trial aggregates/disconnectflags and relative timelines,exact visibleerror transcription with localimageSHA; installed callback/ErrorModule selected contexts only. No fullrawlogs/screenshots/launchline/IDs.",
+  "sourceRunId": "network-continuity-20261101-1630",
+  "trials": [
+    {
+      "case": "matrix-off",
+      "observerSummary": {
+        "enabled": false,
+        "errors": 0,
+        "counts": {
+          "scheduler": 1261,
+          "buffer": 1261,
+          "consumer": 1261,
+          "interpolate": 1261
+        },
+        "selected": true,
+        "elapsed": 56.6240975
+      },
+      "validSamples": 420,
+      "validSampleSpanSeconds": 25.1167022,
+      "continuous25SecondGatePassed": true,
+      "callbackGapObserved": false,
+      "callbackGapSeconds": null,
+      "disconnectEvents": [
+        {
+          "age": "69.9483",
+          "logout": "15",
+          "authFailed": "false",
+          "alive": "true",
+          "health": "100"
+        }
+      ],
+      "clientTerminationMarker": true,
+      "serverCompleted": true,
+      "serverForcedOwnedStop": true,
+      "clientForcedStop": false,
+      "observerFinished": true,
+      "signatureChecksPassed": 3,
+      "newPbo": false,
+      "crashLogs": 0,
+      "foregroundActivationRecorded": true,
+      "disconnectTimeline": {
+        "secondsAfterNpcReady": 30.69499999999971,
+        "secondsAfterObserverDisabled": 2.474130000002333,
+        "secondsBeforeServerDone": 14.027999999998428,
+        "basis": "Samehost walllog chronology,not QPC synchronized latency"
+      }
+    },
+    {
+      "case": "matrix-on",
+      "observerSummary": {
+        "enabled": false,
+        "errors": 0,
+        "counts": {
+          "scheduler": 264,
+          "buffer": 264,
+          "consumer": 264,
+          "interpolate": 264
+        },
+        "selected": true,
+        "elapsed": 37.0853892
+      },
+      "validSamples": 88,
+      "validSampleSpanSeconds": 5.204623,
+      "continuous25SecondGatePassed": false,
+      "callbackGapObserved": true,
+      "callbackGapSeconds": 2.0,
+      "disconnectEvents": [
+        {
+          "age": "39.2237",
+          "logout": "15",
+          "authFailed": "false",
+          "alive": "true",
+          "health": "100"
+        }
+      ],
+      "clientTerminationMarker": true,
+      "serverCompleted": true,
+      "serverForcedOwnedStop": true,
+      "clientForcedStop": false,
+      "observerFinished": true,
+      "signatureChecksPassed": 3,
+      "newPbo": false,
+      "crashLogs": 0,
+      "foregroundActivationRecorded": true,
+      "disconnectTimeline": {
+        "secondsAfterNpcReady": 8.347999999998137,
+        "secondsAfterObserverDisabled": -2.1467459999985294,
+        "secondsBeforeServerDone": 36.358000000000175,
+        "basis": "Samehost walllog chronology,not QPC synchronized latency"
+      }
+    },
+    {
+      "case": "matrix-on-capture",
+      "observerSummary": {
+        "enabled": false,
+        "errors": 0,
+        "counts": {
+          "scheduler": 877,
+          "buffer": 877,
+          "consumer": 877,
+          "interpolate": 877
+        },
+        "selected": true,
+        "elapsed": 50.1125654
+      },
+      "validSamples": 292,
+      "validSampleSpanSeconds": 17.4420918,
+      "continuous25SecondGatePassed": false,
+      "callbackGapObserved": true,
+      "callbackGapSeconds": 2.0,
+      "disconnectEvents": [
+        {
+          "age": "52.0731",
+          "logout": "15",
+          "authFailed": "false",
+          "alive": "true",
+          "health": "100"
+        }
+      ],
+      "clientTerminationMarker": true,
+      "serverCompleted": true,
+      "serverForcedOwnedStop": true,
+      "clientForcedStop": false,
+      "observerFinished": true,
+      "signatureChecksPassed": 3,
+      "newPbo": false,
+      "crashLogs": 0,
+      "foregroundActivationRecorded": true,
+      "disconnectTimeline": {
+        "secondsAfterNpcReady": 20.676999999996042,
+        "secondsAfterObserverDisabled": -2.3669020000015735,
+        "secondsBeforeServerDone": 24.04099999999744,
+        "basis": "Samehost walllog chronology,not QPC synchronized latency"
+      }
+    }
+  ],
+  "capturedError": {
+    "source": "Prearmed exact selected DayZ WGC screenshot; visible text transcribed after viewing",
+    "errorCode": "0x000400F0",
+    "visibleText": "You were kicked off the game. BattlEye (Game restart required)",
+    "screenshotSha256": "76e480e7059bd98334c8c1a4b03421ee471412125a9845812fa71cf4ac9eefca",
+    "captureTrigger": "callback_gap",
+    "gapMarkerToCaptureHostSeconds": 0.6206660270690918,
+    "limits": [
+      "Not native BattlEye logs; does not identify exact active module,service or engine decision.",
+      "Servercfg BattlEye=0 is configured input,not verified live client anti-cheat state.",
+      "Script enum says BattlEye category may also be used for admin kick; local test requested no admin kick."
+    ]
+  },
+  "disconnectSource": [
+    {
+      "member": "3_Game\\DayZGame.c",
+      "memberSha256": "c4d636570b28ceffb4e32334aa60a249f573fbc3416064409ccdfc20135f2913",
+      "firstLine": 2729,
+      "text": "\t\tif (Connect(GetUIManager().GetMenu(), connectAddress, m_ConnectPort, m_ConnectPassword) != 0)\n\t\t\tDisconnectSessionScript(true);\n\t}\n\t\n\tvoid DisconnectSessionScript(bool displayJoinError = false)\n\t{\n\t\tDisconnectSessionFlags flags = DisconnectSessionFlags.SELECT_USER | DisconnectSessionFlags.IGNORE_WHEN_IN_GAME;\n\t\tif (displayJoinError)\n\t\t{\n\t\t\tflags |= DisconnectSessionFlags.JOIN_ERROR_ENABLED;\n\t\t\tflags |= DisconnectSessionFlags.JOIN_ERROR_CHECK;\n\t\t}\n\t\t\n\t\tDisconnectSessionEx(flags);\n\t}\n\t\n\tvoid DisconnectSessionEx(DisconnectSessionFlags flags)"
+    },
+    {
+      "member": "3_Game\\gameplay.c",
+      "memberSha256": "9c406c3015a141c567e943908b1f4cc6b3c39b20854c374d3e8226bbceaa3f27",
+      "firstLine": 422,
+      "text": "typedef Param2<PlayerIdentity, Man> ClientReadyEventParams;\n//! PlayerIdentity, Man\ntypedef Param2<PlayerIdentity, Man> ClientReconnectEventParams; \n//! PlayerIdentity, Man, LogoutTime, AuthFailed\ntypedef Param4<PlayerIdentity, Man, int, bool> ClientDisconnectedEventParams; \n\n//! LoginTime\ntypedef Param1<int> LoginTimeEventParams; \n//! RespawnTime\ntypedef Param1<int> RespawnEventParams; \n//! Position\ntypedef Param1<vector> PreloadEventParams; \n//! Player\ntypedef Param1<Man> LogoutCancelEventParams; \n//! PlayerIdentity\ntypedef Param1<PlayerIdentity> ConnectivityStatsUpdatedEventParams; \n//! average server fps, highest frame time, skipped physics simulation steps server/client"
+    },
+    {
+      "member": "3_Game\\gameplay.c",
+      "memberSha256": "9c406c3015a141c567e943908b1f4cc6b3c39b20854c374d3e8226bbceaa3f27",
+      "firstLine": 514,
+      "text": "//! params: \\ref ClientReconnectEventParams\nconst EventType\tClientReconnectEventTypeID;\n//! params: \\ref ClientReadyEventParams\nconst EventType\tClientReadyEventTypeID;\n//! params: \\ref ClientDisconnectedEventParams\nconst EventType\tClientDisconnectedEventTypeID;\n//! no params\nconst EventType\tClientRemovedEventTypeID;\n\t\n//-----------------------------------------------------------------------------\n//! params: \\ref ConnectivityStatsUpdatedEventParams\nconst EventType\tConnectivityStatsUpdatedEventTypeID;\n//! params: \\ref ServerFpsStatsUpdatedEventParams\nconst EventType\tServerFpsStatsUpdatedEventTypeID;\n//! params: \\ref LogoutCancelEventParams\nconst EventType\tLogoutCancelEventTypeID;\n//! params: \\ref LoginTimeEventParams"
+    },
+    {
+      "member": "3_Game\\gameplay.c",
+      "memberSha256": "9c406c3015a141c567e943908b1f4cc6b3c39b20854c374d3e8226bbceaa3f27",
+      "firstLine": 515,
+      "text": "const EventType\tClientReconnectEventTypeID;\n//! params: \\ref ClientReadyEventParams\nconst EventType\tClientReadyEventTypeID;\n//! params: \\ref ClientDisconnectedEventParams\nconst EventType\tClientDisconnectedEventTypeID;\n//! no params\nconst EventType\tClientRemovedEventTypeID;\n\t\n//-----------------------------------------------------------------------------\n//! params: \\ref ConnectivityStatsUpdatedEventParams\nconst EventType\tConnectivityStatsUpdatedEventTypeID;\n//! params: \\ref ServerFpsStatsUpdatedEventParams\nconst EventType\tServerFpsStatsUpdatedEventTypeID;\n//! params: \\ref LogoutCancelEventParams\nconst EventType\tLogoutCancelEventTypeID;\n//! params: \\ref LoginTimeEventParams\nconst EventType\tLoginTimeEventTypeID;"
+    },
+    {
+      "member": "5_Mission\\mission\\missionServer.c",
+      "memberSha256": "8c6c37ca641ca0d912918665a0da580d7c2110b54fdf0223e6f2097dab8e2b58",
+      "firstLine": 391,
+      "text": "\t\t\t\n\t\t\tOnClientReconnectEvent(identity, player);\n\t\t\tbreak;\n\t\t\n\t\tcase ClientDisconnectedEventTypeID:\n\t\t\tClientDisconnectedEventParams discoParams;\n\t\t\tClass.CastTo(discoParams, params);\t\t\n\t\t\t\n\t\t\tidentity = discoParams.param1;\n\t\t\tClass.CastTo(player, discoParams.param2);\t\t\t\n\t\t\tint logoutTime = discoParams.param3;\n\t\t\tbool authFailed = discoParams.param4;\n\n\t\t\tif (!player)\n\t\t\t{\n\t\t\t\tDebug.Log(\"ClientDisconnectenEvent: Player is empty\");\n\t\t\t\treturn;"
+    },
+    {
+      "member": "5_Mission\\mission\\missionServer.c",
+      "memberSha256": "8c6c37ca641ca0d912918665a0da580d7c2110b54fdf0223e6f2097dab8e2b58",
+      "firstLine": 392,
+      "text": "\t\t\tOnClientReconnectEvent(identity, player);\n\t\t\tbreak;\n\t\t\n\t\tcase ClientDisconnectedEventTypeID:\n\t\t\tClientDisconnectedEventParams discoParams;\n\t\t\tClass.CastTo(discoParams, params);\t\t\n\t\t\t\n\t\t\tidentity = discoParams.param1;\n\t\t\tClass.CastTo(player, discoParams.param2);\t\t\t\n\t\t\tint logoutTime = discoParams.param3;\n\t\t\tbool authFailed = discoParams.param4;\n\n\t\t\tif (!player)\n\t\t\t{\n\t\t\t\tDebug.Log(\"ClientDisconnectenEvent: Player is empty\");\n\t\t\t\treturn;\n\t\t\t}"
+    },
+    {
+      "member": "5_Mission\\mission\\missionServer.c",
+      "memberSha256": "8c6c37ca641ca0d912918665a0da580d7c2110b54fdf0223e6f2097dab8e2b58",
+      "firstLine": 398,
+      "text": "\t\t\t\n\t\t\tidentity = discoParams.param1;\n\t\t\tClass.CastTo(player, discoParams.param2);\t\t\t\n\t\t\tint logoutTime = discoParams.param3;\n\t\t\tbool authFailed = discoParams.param4;\n\n\t\t\tif (!player)\n\t\t\t{\n\t\t\t\tDebug.Log(\"ClientDisconnectenEvent: Player is empty\");\n\t\t\t\treturn;\n\t\t\t}\n\t\t\t\n\t\t\tOnClientDisconnectedEvent(identity, player, logoutTime, authFailed);\n\t\t\tbreak;\n\t\t\t\n\t\tcase LogoutCancelEventTypeID:\n\t\t\tLogoutCancelEventParams logoutCancelParams;"
+    },
+    {
+      "member": "5_Mission\\mission\\missionServer.c",
+      "memberSha256": "8c6c37ca641ca0d912918665a0da580d7c2110b54fdf0223e6f2097dab8e2b58",
+      "firstLine": 406,
+      "text": "\t\t\t\tDebug.Log(\"ClientDisconnectenEvent: Player is empty\");\n\t\t\t\treturn;\n\t\t\t}\n\t\t\t\n\t\t\tOnClientDisconnectedEvent(identity, player, logoutTime, authFailed);\n\t\t\tbreak;\n\t\t\t\n\t\tcase LogoutCancelEventTypeID:\n\t\t\tLogoutCancelEventParams logoutCancelParams;\n\t\t\t\n\t\t\tClass.CastTo(logoutCancelParams, params);\t\t\t\t\n\t\t\tClass.CastTo(player, logoutCancelParams.param1);\n\t\t\tidentity = player.GetIdentity();\n\t\t\tif (identity)\n\t\t\t{\n\t\t\t\t// disable reconnecting to old char\n\t\t\t\t// g_Game.RemoveFromReconnectCache(identity.GetId());"
+    },
+    {
+      "member": "5_Mission\\mission\\missionServer.c",
+      "memberSha256": "8c6c37ca641ca0d912918665a0da580d7c2110b54fdf0223e6f2097dab8e2b58",
+      "firstLine": 637,
+      "text": "\t\t\tplayer.OnReconnect();\n\t\t}\n\t}\t\n\t\n\tvoid OnClientDisconnectedEvent(PlayerIdentity identity, PlayerBase player, int logoutTime, bool authFailed)\n\t{\n\t\tbool disconnectNow = true;\n\t\t\n\t\t// TODO: get out of vehicle\n\t\t// using database and no saving if authorization failed\n\t\tif (GetHive() && !authFailed)\n\t\t{\t\t\t\n\t\t\tif (player.IsAlive())\n\t\t\t{\t\n\t\t\t\tif (!m_LogoutPlayers.Contains(player) && !m_NewLogoutPlayers.Contains(player))\n\t\t\t\t{\n\t\t\t\t\tPrint(\"[Logout]: New player \" + identity.GetId() + \" with logout time \" + logoutTime.ToString());"
+    },
+    {
+      "member": "5_Mission\\mission\\missionServer.c",
+      "memberSha256": "8c6c37ca641ca0d912918665a0da580d7c2110b54fdf0223e6f2097dab8e2b58",
+      "firstLine": 643,
+      "text": "\t\tbool disconnectNow = true;\n\t\t\n\t\t// TODO: get out of vehicle\n\t\t// using database and no saving if authorization failed\n\t\tif (GetHive() && !authFailed)\n\t\t{\t\t\t\n\t\t\tif (player.IsAlive())\n\t\t\t{\t\n\t\t\t\tif (!m_LogoutPlayers.Contains(player) && !m_NewLogoutPlayers.Contains(player))\n\t\t\t\t{\n\t\t\t\t\tPrint(\"[Logout]: New player \" + identity.GetId() + \" with logout time \" + logoutTime.ToString());\n\t\t\t\t\t\n\t\t\t\t\t// send statistics to client\n\t\t\t\t\tplayer.StatSyncToClient();\n\t\t\t\t\t\n\t\t\t\t\t// inform client about logout time\n\t\t\t\t\tg_Game.SendLogoutTime(player, logoutTime);"
+    }
+  ],
+  "errorSource": [
+    {
+      "member": "3_Game\\Global\\ErrorModuleHandler\\ClientKickedModule.c",
+      "sha256": "4afba7c241d3591aa622e9255cac5d625ce9cbbcaccfb03d088634b50b119828",
+      "firstLine": 137,
+      "text": "\tAUTH_INVALID_BIOS_ONVALIDATE = 224,\t\t// Unknown error (API update needed?)\n\tAUTH_BIOS_WRONG_RESPONSE,\t\t\t\t// Response has unexpected format\n\tAUTH_UNKNOWN_BIOS_ONVALIDATE,\t\t\t// Unknown error\n\n\t// BattlEye Kicks (0x00F0)\n\tBATTLEYE = 240,\t\t\t\t// Kick administred by BattlEye (Can also be Admin Kick)\n\t\n\t// Unauthorized Network Message (0x0100)\n\tUNM1 = 256,\n\tUNM2,\n\tUNM3,"
+    },
+    {
+      "member": "3_Game\\Global\\ErrorModuleHandler\\ClientKickedModule.c",
+      "sha256": "4afba7c241d3591aa622e9255cac5d625ce9cbbcaccfb03d088634b50b119828",
+      "firstLine": 138,
+      "text": "\tAUTH_BIOS_WRONG_RESPONSE,\t\t\t\t// Response has unexpected format\n\tAUTH_UNKNOWN_BIOS_ONVALIDATE,\t\t\t// Unknown error\n\n\t// BattlEye Kicks (0x00F0)\n\tBATTLEYE = 240,\t\t\t\t// Kick administred by BattlEye (Can also be Admin Kick)\n\t\n\t// Unauthorized Network Message (0x0100)\n\tUNM1 = 256,\n\tUNM2,\n\tUNM3,\n\tUNM4,"
+    },
+    {
+      "member": "3_Game\\Global\\ErrorModuleHandler\\ClientKickedModule.c",
+      "sha256": "4afba7c241d3591aa622e9255cac5d625ce9cbbcaccfb03d088634b50b119828",
+      "firstLine": 333,
+      "text": "\t\tInsertPrefixDialogueErrorProperties(EClientKicked.AUTH_INVALID_BIOS_ONVALIDATE,\t\"#server_browser_error_unknown\", AUTH_PREFIX);\n\t\tInsertPrefixDialogueErrorProperties(EClientKicked.AUTH_BIOS_WRONG_RESPONSE,\t\t\"#STR_auth_bios_wrong_response\", AUTH_PREFIX);\n\t\tInsertPrefixDialogueErrorProperties(EClientKicked.AUTH_UNKNOWN_BIOS_ONVALIDATE,\t\"#server_browser_error_unknown\", AUTH_PREFIX);\n\n\t\t// BattlEye Kicks\n\t\tInsertExtendedPrefixDialogueErrorProperties(EClientKicked.BATTLEYE,\t\"\", \"BattlEye\\n\");\n\t\t\n\t\t// Unauthorized Network Message\n\t\tInsertDialogueErrorProperties(EClientKicked.UNM1, UNM_MESSAGE);\n\t\tInsertDialogueErrorProperties(EClientKicked.UNM2, UNM_MESSAGE);\n\t\tInsertDialogueErrorProperties(EClientKicked.UNM3, UNM_MESSAGE);"
+    },
+    {
+      "member": "3_Game\\Global\\ErrorModuleHandler\\ClientKickedModule.c",
+      "sha256": "4afba7c241d3591aa622e9255cac5d625ce9cbbcaccfb03d088634b50b119828",
+      "firstLine": 334,
+      "text": "\t\tInsertPrefixDialogueErrorProperties(EClientKicked.AUTH_BIOS_WRONG_RESPONSE,\t\t\"#STR_auth_bios_wrong_response\", AUTH_PREFIX);\n\t\tInsertPrefixDialogueErrorProperties(EClientKicked.AUTH_UNKNOWN_BIOS_ONVALIDATE,\t\"#server_browser_error_unknown\", AUTH_PREFIX);\n\n\t\t// BattlEye Kicks\n\t\tInsertExtendedPrefixDialogueErrorProperties(EClientKicked.BATTLEYE,\t\"\", \"BattlEye\\n\");\n\t\t\n\t\t// Unauthorized Network Message\n\t\tInsertDialogueErrorProperties(EClientKicked.UNM1, UNM_MESSAGE);\n\t\tInsertDialogueErrorProperties(EClientKicked.UNM2, UNM_MESSAGE);\n\t\tInsertDialogueErrorProperties(EClientKicked.UNM3, UNM_MESSAGE);\n\t\tInsertDialogueErrorProperties(EClientKicked.UNM4, UNM_MESSAGE);"
+    }
+  ],
+  "limits": [
+    "MatrixOFF/ON are single compatibility cases,not randomized repeated causal/performance A/B.",
+    "Foreground activation recorded but continuous appActive/native focus telemetry not collected; timing varied.",
+    "BattlEye warning captured only finalcase; do notretroactively assign all earlierdepartures tosamecause.",
+    "No live BE-disabled client mode proved. No new hooks/native attached trials until supported testing launch is verified.",
+    "No fullpose/visible smoothness/8/64regression/frametime p50/p95/p99/CPU/GPU/GC measurement;20ms p95 remains target."
+  ]
+}

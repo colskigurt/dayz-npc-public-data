@@ -1,0 +1,282 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T16:43:14.404025+09:00",
+  "sourceRunId": "network-continuity-20261101-1630",
+  "buildId": "453D-0C6E-B8FB-clientc670-serveree1a",
+  "verificationStatus": {
+    "diagnostic": "world_departure_battleye_warning_captured_client_mode_unverified",
+    "repetitions": 0,
+    "fullNpcRegression": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "network-continuity-20261101-1630",
+    "buildId": "453D-0C6E-B8FB-clientc670-serveree1a",
+    "verificationStatus": "world_departure_battleye_warning_captured_client_mode_unverified",
+    "newRuntimeTrials": 3,
+    "newPbo": false,
+    "newVideo": false,
+    "numericOverrides": false,
+    "trials": [
+      {
+        "case": "matrix-off",
+        "observerSummary": {
+          "enabled": false,
+          "errors": 0,
+          "counts": {
+            "scheduler": 1261,
+            "buffer": 1261,
+            "consumer": 1261,
+            "interpolate": 1261
+          },
+          "selected": true,
+          "elapsed": 56.6240975
+        },
+        "validSamples": 420,
+        "validSampleSpanSeconds": 25.1167022,
+        "continuous25SecondGatePassed": true,
+        "callbackGapObserved": false,
+        "callbackGapSeconds": null,
+        "disconnectEvents": [
+          {
+            "age": "69.9483",
+            "logout": "15",
+            "authFailed": "false",
+            "alive": "true",
+            "health": "100"
+          }
+        ],
+        "clientTerminationMarker": true,
+        "serverCompleted": true,
+        "serverForcedOwnedStop": true,
+        "clientForcedStop": false,
+        "observerFinished": true,
+        "signatureChecksPassed": 3,
+        "newPbo": false,
+        "crashLogs": 0,
+        "foregroundActivationRecorded": true,
+        "disconnectTimeline": {
+          "secondsAfterNpcReady": 30.69499999999971,
+          "secondsAfterObserverDisabled": 2.474130000002333,
+          "secondsBeforeServerDone": 14.027999999998428,
+          "basis": "Samehost walllog chronology,not QPC synchronized latency"
+        }
+      },
+      {
+        "case": "matrix-on",
+        "observerSummary": {
+          "enabled": false,
+          "errors": 0,
+          "counts": {
+            "scheduler": 264,
+            "buffer": 264,
+            "consumer": 264,
+            "interpolate": 264
+          },
+          "selected": true,
+          "elapsed": 37.0853892
+        },
+        "validSamples": 88,
+        "validSampleSpanSeconds": 5.204623,
+        "continuous25SecondGatePassed": false,
+        "callbackGapObserved": true,
+        "callbackGapSeconds": 2.0,
+        "disconnectEvents": [
+          {
+            "age": "39.2237",
+            "logout": "15",
+            "authFailed": "false",
+            "alive": "true",
+            "health": "100"
+          }
+        ],
+        "clientTerminationMarker": true,
+        "serverCompleted": true,
+        "serverForcedOwnedStop": true,
+        "clientForcedStop": false,
+        "observerFinished": true,
+        "signatureChecksPassed": 3,
+        "newPbo": false,
+        "crashLogs": 0,
+        "foregroundActivationRecorded": true,
+        "disconnectTimeline": {
+          "secondsAfterNpcReady": 8.347999999998137,
+          "secondsAfterObserverDisabled": -2.1467459999985294,
+          "secondsBeforeServerDone": 36.358000000000175,
+          "basis": "Samehost walllog chronology,not QPC synchronized latency"
+        }
+      },
+      {
+        "case": "matrix-on-capture",
+        "observerSummary": {
+          "enabled": false,
+          "errors": 0,
+          "counts": {
+            "scheduler": 877,
+            "buffer": 877,
+            "consumer": 877,
+            "interpolate": 877
+          },
+          "selected": true,
+          "elapsed": 50.1125654
+        },
+        "validSamples": 292,
+        "validSampleSpanSeconds": 17.4420918,
+        "continuous25SecondGatePassed": false,
+        "callbackGapObserved": true,
+        "callbackGapSeconds": 2.0,
+        "disconnectEvents": [
+          {
+            "age": "52.0731",
+            "logout": "15",
+            "authFailed": "false",
+            "alive": "true",
+            "health": "100"
+          }
+        ],
+        "clientTerminationMarker": true,
+        "serverCompleted": true,
+        "serverForcedOwnedStop": true,
+        "clientForcedStop": false,
+        "observerFinished": true,
+        "signatureChecksPassed": 3,
+        "newPbo": false,
+        "crashLogs": 0,
+        "foregroundActivationRecorded": true,
+        "disconnectTimeline": {
+          "secondsAfterNpcReady": 20.676999999996042,
+          "secondsAfterObserverDisabled": -2.3669020000015735,
+          "secondsBeforeServerDone": 24.04099999999744,
+          "basis": "Samehost walllog chronology,not QPC synchronized latency"
+        }
+      }
+    ],
+    "capturedError": {
+      "source": "Prearmed exact selected DayZ WGC screenshot; visible text transcribed after viewing",
+      "errorCode": "0x000400F0",
+      "visibleText": "You were kicked off the game. BattlEye (Game restart required)",
+      "screenshotSha256": "76e480e7059bd98334c8c1a4b03421ee471412125a9845812fa71cf4ac9eefca",
+      "captureTrigger": "callback_gap",
+      "gapMarkerToCaptureHostSeconds": 0.6206660270690918,
+      "limits": [
+        "Not native BattlEye logs; does not identify exact active module,service or engine decision.",
+        "Servercfg BattlEye=0 is configured input,not verified live client anti-cheat state.",
+        "Script enum says BattlEye category may also be used for admin kick; local test requested no admin kick."
+      ]
+    },
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "MatrixOFF/ON are single compatibility cases,not randomized repeated causal/performance A/B.",
+      "Foreground activation recorded but continuous appActive/native focus telemetry not collected; timing varied.",
+      "BattlEye warning captured only finalcase; do notretroactively assign all earlierdepartures tosamecause.",
+      "No live BE-disabled client mode proved. No new hooks/native attached trials until supported testing launch is verified.",
+      "No fullpose/visible smoothness/8/64regression/frametime p50/p95/p99/CPU/GPU/GC measurement;20ms p95 remains target."
+    ],
+    "next": "Inspect supported client launch path to establish an explicit BE-disabled isolated mod-test session while preserving system services/drivers/security settings. Verify actual client state before native observation. Do not patch anti-cheat or infer matrix cost from warning. Retain previous mode0 and64cost results independently.",
+    "sourceHashes": {
+      "research/network-continuity-20261101-1630/battleye-launch-string-candidates.json": "9267d35f2ebccf0814c3e12fcad8ee25fefe35679243ff08f5ab79a6486762c0",
+      "research/network-continuity-20261101-1630/battleye-script-contexts.json": "cf8bc38de2104b7f8d7ac7c12439394c7239dd44af83e5c1af4dad451eaf0b91",
+      "research/network-continuity-20261101-1630/captured-error-diagnosis.json": "85d2244305d561f6fd6d4d6e2105daa435a594cc06636693528dc79e4e6e863b",
+      "research/network-continuity-20261101-1630/client-launch.json": "d7bd12103e1b727c885c121f2d5e77f7c111b33f4b381836fffc013e66320265",
+      "research/network-continuity-20261101-1630/connected-world.png": "f7b0437f2d218aeea63d5bb3530d41357dfa7bff1b7b492f58a8837976e29c6f",
+      "research/network-continuity-20261101-1630/disconnect-script-contexts.json": "e5568b5812f8ca03411b1fca81333aad7ed1cb45506dde7a36274694f34ffa25",
+      "research/network-continuity-20261101-1630/heartbeat.jsonl": "fbc70be9ff9d5836d6d1cd173b53aa401d38c64593c029a0368eeb54ba8548bf",
+      "research/network-continuity-20261101-1630/network-observer.js": "cd766914e237c8b322505c5d735fd99cc6cd10f6a47c972beeae3b92f3d5c6fe",
+      "research/network-continuity-20261101-1630/network-observer.json": "9284f31f7cf6d66b345a68bf232fa11569e423e5d89241ae4dd33924b79e3b58",
+      "research/network-continuity-20261101-1630/observer-finished.json": "0a4dad5dcd21518ffbe9332852750b30565105c819929ce1f21a021957b121da",
+      "research/network-continuity-20261101-1630/observe_network.py": "1a60ac3204c08f80005ac72d2d5391328880bddbc7da3693dff60c2c0208ffc9",
+      "research/network-continuity-20261101-1630/plan.json": "557439a17fd7e6e2a4ae9ef1fe92313320fcf1c62a006296803627a73c9df1f8",
+      "research/network-continuity-20261101-1630/results-timeline.json": "598b143e049cf7b43358550d719f3a7115c9f9165750f7adce4f46fe8316cbca",
+      "research/network-continuity-20261101-1630/results.json": "158d2ab7184590120c77ee035c0d862190b0110940bd5545f59d875d3112f154",
+      "research/network-continuity-20261101-1630/run_client.ps1": "99cdc05c1b048d734c3948cb921f7b51724e79f323074e745f9046ddf0eccbb8",
+      "research/network-continuity-20261101-1630/run_server.ps1": "1ac354850258302bbc858bf18312b05de3b272436801346c8db55db22708692e",
+      "research/network-continuity-20261101-1630/server-launch-BProbe.json": "8e89a4d42f377407e1a47336c4e4d1f41ee01849672014d02fdcda9813a8bf04",
+      "research/network-continuity-20261101-1630/ui-observation.json": "6dde7c131c422c135d1f88d17400a870ef8b829e4150fea77307ee1f0bc0190e",
+      "research/network-continuity-20261101-1630/client-profile/DayZ_x64_2026-11-01_16-30-53.RPT": "932cc55f9985708514db6fead1481075d318db3bc8b4d10efb67e740b0130563",
+      "research/network-continuity-20261101-1630/client-profile/error_2026-11-01_16-30-53.log": "656b7688a282410ab79a54564b42820ff01b800d1a238e3c0e6726c0a9376626",
+      "research/network-continuity-20261101-1630/client-profile/script_2026-11-01_16-30-53.log": "56b21e16a219aa700481c4256ba17b6233b84569c7c7aebefba13e9cdb0276f0",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/callback-gap.json": "bc5854104b1ea4ba48c3d833d320d3e16db0bfd38f2090c87d58882af08be32a",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/case.json": "45df8a54971c82a40bab1933ffdbf8af035290ad4acd9d34c68776d77777e8b8",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/client-launch.json": "50d1228054d9182c01f71a6e1deaf243927b78c617a9767f779ff28947b6c702",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/event-ui-observation.json": "ee6b6144abcca8eb108ef10b46d1e75148a63f2bf71722f5963a3775cb49baab",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/event-window.png": "76e480e7059bd98334c8c1a4b03421ee471412125a9845812fa71cf4ac9eefca",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/heartbeat.jsonl": "ff19c0fc368e180fe9e1456bedbcf354932ed5b27bddf273d647ea766f7d74f3",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/network-observer.js": "89dea24d8339dc1b4f2f295cacf0717b3ec513dfecd9973d2f50c1b0f5c6eee3",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/network-observer.json": "6285c08833da9941decc35524aa84a37a950e061f158830061762f4158c7348e",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/observer-finished.json": "492bd5f61957d0ae9f2a8034b6c471794342f1cd754f9ea573ded44adca8eaf6",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/observe_network.py": "e94b0d7e99355b7527e7ebd68a0729af5240225b8b8c62fa25085ef7884066bf",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/run_client.ps1": "5d52641511f3ba481ae0a4d438c5b639b67c6f61d6cc1475d08369f874b841f5",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/run_server.ps1": "1ac354850258302bbc858bf18312b05de3b272436801346c8db55db22708692e",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/server-launch-BProbe.json": "5f39c8bf39d546678d2b28d80a5cd5c27db91272fda2043b4f25d723bd799d2a",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/ui-observation.json": "bd53d8afd7707d4da5a74e65fe7495bc7791be0074f809e2b23151ad671515ff",
+      "research/network-continuity-20261101-1630/matrix-on-trial/callback-gap.json": "61baf8e56437decdab5e3fb2fbe34fe0ae56090d0390c4fe5149d24f84368f7d",
+      "research/network-continuity-20261101-1630/matrix-on-trial/case.json": "0b59754e00b862cbd8a608b3bd46b762f8ba4fac854ad633434deace29c0bce4",
+      "research/network-continuity-20261101-1630/matrix-on-trial/client-launch.json": "efedeb3356c9eaec824e2121b1f90c04b6e0836058f1105a80bb7d63315156e8",
+      "research/network-continuity-20261101-1630/matrix-on-trial/heartbeat.jsonl": "651e44badc1961c6e10e464bc22fc070b7539134db11746796cdf30fa27506b1",
+      "research/network-continuity-20261101-1630/matrix-on-trial/network-observer.js": "89dea24d8339dc1b4f2f295cacf0717b3ec513dfecd9973d2f50c1b0f5c6eee3",
+      "research/network-continuity-20261101-1630/matrix-on-trial/network-observer.json": "0cf3862bc7a3c20879c34e52d9c9991699b3fb20ba24c7cc64677309c8c5364c",
+      "research/network-continuity-20261101-1630/matrix-on-trial/observer-finished.json": "8a52102572adec8f72ebd572dee49f4048f16aa14ea3aa80c9575b867edb8f4e",
+      "research/network-continuity-20261101-1630/matrix-on-trial/observe_network.py": "e94b0d7e99355b7527e7ebd68a0729af5240225b8b8c62fa25085ef7884066bf",
+      "research/network-continuity-20261101-1630/matrix-on-trial/run_client.ps1": "99cdc05c1b048d734c3948cb921f7b51724e79f323074e745f9046ddf0eccbb8",
+      "research/network-continuity-20261101-1630/matrix-on-trial/run_server.ps1": "1ac354850258302bbc858bf18312b05de3b272436801346c8db55db22708692e",
+      "research/network-continuity-20261101-1630/matrix-on-trial/server-launch-BProbe.json": "e3bce09b7aeff88838b452c8b7a46d9410a1336d08e50bec93c753709b0ead7b",
+      "research/network-continuity-20261101-1630/matrix-on-trial/ui-observation.json": "dcc221145265d72842b6a897e0930b049cb1889e08d987c1a07b37b70ef0663e",
+      "research/network-continuity-20261101-1630/server-profile-BProbe/DayZServer_x64_2026-11-01_16-30-25.RPT": "d79ccd68a865f081e67d47ed8ad91ebc3b71fb3ef08477b3d15d09066308abea",
+      "research/network-continuity-20261101-1630/server-profile-BProbe/error_2026-11-01_16-30-25.log": "c5a3606e3dcd257c4113e6b2671a9f6144aaeeac94503cb28e8e8d46e7b666fa",
+      "research/network-continuity-20261101-1630/server-profile-BProbe/role-pose.tsv": "64fe200a76d13560d22e841f20e2947509237b1c99ec5b9d1f20cae769ce69c0",
+      "research/network-continuity-20261101-1630/server-profile-BProbe/script_2026-11-01_16-30-25.log": "5084d44126d341b9bf2365b9307b7ae61b22c0a8165289816043a52694dd6ebf",
+      "research/network-continuity-20261101-1630/server-profile-BProbe/server.cfg": "801e11abc24e0a2b1276750ad8f4de8149089bb9578e0191ba130fc38fc03a4f",
+      "research/network-continuity-20261101-1630/server-role-lod0.chernarusplus/init.c": "a1fffd8b00aba1a285313b5c5f587b4f0812a4b828239d312d3e8cfe8a7e01c8",
+      "research/network-continuity-20261101-1630/client-profile/Users/colsk/DayZ.cfg": "c18b04a1c2d67a0aae7bb294f53dba34b4ba41894fb8f0c6d6887bb43883d796",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/client-profile/DayZ_x64_2026-11-01_16-36-13.RPT": "0fa918f1e30f5ca43a97704d8128ea7309ab849dd7d1238042d519a6c2396ff5",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/client-profile/error_2026-11-01_16-36-13.log": "470a7144a7fbd613f9dd0d8cf75ad74267255de5c0add297ac472c184519f6e3",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/client-profile/script_2026-11-01_16-36-13.log": "5322f4e837051af4cea514ab734eb7cb08d957a108fc384c55bf705dfc8373a2",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/server-profile-BProbe/DayZServer_x64_2026-11-01_16-35-52.RPT": "fabf1122e56b487923f2893b8d50953c44ca2b8f071066168994a05d103eac8d",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/server-profile-BProbe/error_2026-11-01_16-35-52.log": "65475fdd31b4764d32377ecbe58d2f0c2d30e89e5686be5d8a0afbb6f4d46fe8",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/server-profile-BProbe/role-pose.tsv": "964ef87cc99eab3ab11aafb30343e599ed35605c833d9a8c4043c1dad2a9094b",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/server-profile-BProbe/script_2026-11-01_16-35-52.log": "24587a93021275e102a7afa9be2846de942f27cb6c05a7a76b3c2b2e0203e509",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/server-profile-BProbe/server.cfg": "801e11abc24e0a2b1276750ad8f4de8149089bb9578e0191ba130fc38fc03a4f",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/server-role-lod0.chernarusplus/init.c": "a1fffd8b00aba1a285313b5c5f587b4f0812a4b828239d312d3e8cfe8a7e01c8",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/client-profile/Users/colsk/DayZ.cfg": "c18b04a1c2d67a0aae7bb294f53dba34b4ba41894fb8f0c6d6887bb43883d796",
+      "research/network-continuity-20261101-1630/matrix-on-capture-trial/server-profile-BProbe/Users/Server/DayZ.cfg": "3f6936691f027e96f57831896dd7b522a8dddff16de86df77a3019123db08ac7",
+      "research/network-continuity-20261101-1630/matrix-on-trial/client-profile/DayZ_x64_2026-11-01_16-33-16.RPT": "80005ea3ffcabaeb08072814225eed5f21923fa720b39cc2485e5217c3008088",
+      "research/network-continuity-20261101-1630/matrix-on-trial/client-profile/error_2026-11-01_16-33-16.log": "e52083ca3868a5df426af2d869d9c97abbe2e7b0c1a171d6fffd66028ae619f9",
+      "research/network-continuity-20261101-1630/matrix-on-trial/client-profile/script_2026-11-01_16-33-16.log": "82805f05719551bd23b97e753f88c9932af1fc3c090f137cb7433ff2a15a7b8e",
+      "research/network-continuity-20261101-1630/matrix-on-trial/server-profile-BProbe/DayZServer_x64_2026-11-01_16-32-55.RPT": "d16e25e98d83be40cc8d6ea68db35c34f89b749ad1fbb6fc5da53a56a886129b",
+      "research/network-continuity-20261101-1630/matrix-on-trial/server-profile-BProbe/error_2026-11-01_16-32-55.log": "d545a75750454280d39889c6d125e0304efa55bd4b8524d878a53ec3e2289a5c",
+      "research/network-continuity-20261101-1630/matrix-on-trial/server-profile-BProbe/role-pose.tsv": "17be1b1e6cfa8508257681cb50c177abe17598b3ff3621d3fb4fd970451ed0f1",
+      "research/network-continuity-20261101-1630/matrix-on-trial/server-profile-BProbe/script_2026-11-01_16-32-55.log": "055903d663fd5f1849d500bc0398f062e056b3e861f6c754c4be6cf3660dab80",
+      "research/network-continuity-20261101-1630/matrix-on-trial/server-profile-BProbe/server.cfg": "801e11abc24e0a2b1276750ad8f4de8149089bb9578e0191ba130fc38fc03a4f",
+      "research/network-continuity-20261101-1630/matrix-on-trial/server-role-lod0.chernarusplus/init.c": "a1fffd8b00aba1a285313b5c5f587b4f0812a4b828239d312d3e8cfe8a7e01c8",
+      "research/network-continuity-20261101-1630/matrix-on-trial/client-profile/Users/colsk/DayZ.cfg": "c18b04a1c2d67a0aae7bb294f53dba34b4ba41894fb8f0c6d6887bb43883d796",
+      "research/network-continuity-20261101-1630/matrix-on-trial/server-profile-BProbe/Users/Server/DayZ.cfg": "250e9c988f18d80066f0e575264358504ec74d7a654939662884d4474b3ae7c2",
+      "research/network-continuity-20261101-1630/server-profile-BProbe/Users/Server/DayZ.cfg": "250e9c988f18d80066f0e575264358504ec74d7a654939662884d4474b3ae7c2"
+    }
+  },
+  "blockers": [
+    "MatrixOFF/ON are single compatibility cases,not randomized repeated causal/performance A/B.",
+    "Foreground activation recorded but continuous appActive/native focus telemetry not collected; timing varied.",
+    "BattlEye warning captured only finalcase; do notretroactively assign all earlierdepartures tosamecause.",
+    "No live BE-disabled client mode proved. No new hooks/native attached trials until supported testing launch is verified.",
+    "No fullpose/visible smoothness/8/64regression/frametime p50/p95/p99/CPU/GPU/GC measurement;20ms p95 remains target."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/network-continuity-20261101.md",
+      "sha256": "3810c0a5fa54dc3fc2c462e2fd0478396fa9864453c147697dc55f7e2be57880"
+    },
+    {
+      "path": "evidence/network-continuity-20261101.txt",
+      "sha256": "bbb9ddaf4840a307159ee6777dfa643f5587f1019856ebc1d579c41da974b067"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

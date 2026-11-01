@@ -1,3 +1,5 @@
+> 최신 진단: 마지막 월드 이탈에서0x000400F0 BattlEye restart-required경고를 확보했다. matrix OFF도관찰종료뒤예정서버종료전에이탈해matrix읽기만의문제로단정할수없다. client실행상태확인전추가native시험보류. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/network-continuity-20261101.md). 시각·성능 개선 미수용.
+
 > 최신 진단: live 이름hash→slot과부분6점pose대응을확인했다. 수정계측123표본의유효구간은7.286초로25초연속gate실패다. 기존실행본은이미opaque signedID계약을지켰으며새계측오류만수정했다. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-network-pose-20261101.md). 전체포즈·시각·성능미수용.
 
 > 최신 실행 진단: 연결 시도3회 중 마지막1회에서 실제 mode2/retained buffer/1273호출을 포착했다. graph/QPC 비율1.000053이나 client 요청·포즈 동등성과 시각·성능 개선은 미검증이다. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-network-role-20261101.md). 실패 기록 보존.
