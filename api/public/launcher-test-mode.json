@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T16:56:23.805822+09:00",
+  "sourceRunId": "launcher-test-mode-20261101",
+  "buildId": "launcher-1.6.164.64-fixed-PBO-453D-0C6E-B8FB",
+  "verificationStatus": {
+    "diagnostic": "official_launcher_branch_and_no_observer_disconnect_observed",
+    "repetitions": 1,
+    "fullNpcRegression": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "schemaVersion": "1.0.0",
+    "sourceRunId": "launcher-test-mode-20261101",
+    "buildId": "launcher-1.6.164.64-fixed-PBO-453D-0C6E-B8FB",
+    "newRuntimeTrials": 1,
+    "failedLaunchPreparation": 1,
+    "newPbo": false,
+    "newVideo": false,
+    "nativeObserverAttached": false,
+    "launcher": {
+      "sha256": "592ceb0cc675e734fb89eb6db22694ae87d26299cae501ce856db268d03d821b",
+      "mvid": "d0a02078-db97-445f-a4d7-f2bff607bebd",
+      "staticOnly": true,
+      "methods": [
+        {
+          "token": "0x060002f1",
+          "name": "ReRunGameWithLastParametersWithoutBattlEye",
+          "ilSize": 15,
+          "ilSha256": "7a230c125afa4db705f733d872e14c2b1eb7ca35a2741d040e4a5beeeb6ebf64",
+          "instructions": 7,
+          "matched": true
+        },
+        {
+          "token": "0x060002f2",
+          "name": "RunGame",
+          "ilSize": 616,
+          "ilSha256": "85515fa2a19959d15b2b66ef3d49410443249610c4640a484afbf06096fbbc32",
+          "instructions": 217,
+          "matched": true
+        },
+        {
+          "token": "0x0600026a",
+          "name": "Parse",
+          "ilSize": 195,
+          "ilSha256": "6d89ff75951ce81a888f42415fe6b76670f2a74f466d55e190209cff8f5a21aa",
+          "instructions": 63,
+          "matched": true
+        }
+      ],
+      "withoutBattlEyeBranch": "ReRunGameWithLastParametersWithoutBattlEye -> RunGame(lastParameters,false,0); false selects GameExecutablePath64, true selects BattlEyeExecutablePath",
+      "runtimeDisabledVerified": false
+    },
+    "baseline": {
+      "serverCompleted": true,
+      "clientTerminationMarker": true,
+      "clientForcedStop": false,
+      "serverOwnedStop": true,
+      "serverPoseRows": 2151,
+      "readyToDisconnectSeconds": 37.331,
+      "disconnectBeforeServerDoneSeconds": 7.386,
+      "authFailed": false,
+      "alive": true,
+      "health": 100,
+      "logoutTime": 15,
+      "beClientModuleLoaded": [
+        "BEClient_x64.dll"
+      ],
+      "beUpdateLog": [
+        "16:53:15.377 BattlEye client updated to version: 249"
+      ],
+      "processEnumerationError": null,
+      "earlyCachedModuleListsInvalidForAbsenceClaim": true,
+      "errorScreenCaptured": false,
+      "disconnectCode": null,
+      "signatureChecksPassed": 3,
+      "crashLogs": 0
+    },
+    "functionalRegression": "not_retested",
+    "frameTimeP50P95P99": null,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "No-observer disconnect establishes that native attachment is not necessary for all observed world departures; identical cause to the prior BattlEye warning is unproven.",
+      "Loaded BEClient DLL and update log do not establish the complete anti-cheat active/inactive state.",
+      "Early module snapshots used a cached Process.Modules list and cannot prove DLL absence.",
+      "End-window capture missed after the owned client closed; this trial has no captured disconnect error code.",
+      "No new 8/64 regression, GPU/display timing, smoothness acceptance or 20ms-p95 achievement."
+    ],
+    "next": "Pre-arm supported UI capture on the server disconnect marker in a no-native-observer baseline; classify the visible error before further native attachment. Do not patch anti-cheat or infer client state from server cfg alone.",
+    "sourceHashes": {
+      "research/launcher-test-mode-20261101/decoded-cil.json": "41437c70c262b08af18890c8cf4ecadad3b7d65f92ca1b27c86cccb78b72d501",
+      "research/launcher-test-mode-20261101/decoded-entry-cil.json": "d5297f57ec4f543b61c69d02a5d8043233521909b0bfb1264155e5ccc2ad46ad",
+      "research/launcher-test-mode-20261101/decode_cil.ps1": "d05f4e7d4b2871196bfc76deed3688863f67f181cc47dd2381c8b80f9881f65d",
+      "research/launcher-test-mode-20261101/decode_entry_cil.ps1": "c8df815b70bc2d9ee116da4a347f4917602a989e6930d55ec3785f1a318ceea3",
+      "research/launcher-test-mode-20261101/rea-caller-evidence.json": "9f6c7d1bfc57d4f2ef0efc5df35c9868b976e2c6a1d9a9b612ab7cadee3da5b3",
+      "research/launcher-test-mode-20261101/rea-managed-evidence.json": "35d0f4d898407169d222a771c5cf9f2b3e8e0dd473dd8df0146903c0ecffab63",
+      "research/launcher-test-mode-20261101/selected-evidence.json": "ee8026293774adb2f7ca9cc2188b5eff46103db7fdab287aa55dfb3d0170e2c5",
+      "research/launcher-test-mode-20261101/direct-no-observer/direct-client-launch.json": "b99139161bee9a0c50fbcaf9949b2ee4527bb0da672c772561e9fb3761d4fde7",
+      "research/launcher-test-mode-20261101/direct-no-observer/ingame-modules.json": "d30d095dfed2229d1aa21fd65a0aa9c19643949c13eab01787f828a19cbd06e2",
+      "research/launcher-test-mode-20261101/direct-no-observer/ingame-window.jpg": "03dba0bab83ff4356a74f9537d0613228d481a96271a2a2d3706d1d1e54dabe9",
+      "research/launcher-test-mode-20261101/direct-no-observer/run_client.ps1": "f8108ed17f25b0823bd1f9d5b64a0b22d26700f76c9bd44e68900727a450868b",
+      "research/launcher-test-mode-20261101/direct-no-observer/run_direct_client.ps1": "6ac239bc9e75de9e42a46562fe0c9fa36b6044193094732e722fdbf6e7449d20",
+      "research/launcher-test-mode-20261101/direct-no-observer/run_server.ps1": "1ac354850258302bbc858bf18312b05de3b272436801346c8db55db22708692e",
+      "research/launcher-test-mode-20261101/direct-no-observer/server-launch-BProbe.json": "efa7d7cbf7c7f7c56e7c8b7c305fed75cf98217be0522cd712993eba835f8277",
+      "research/launcher-test-mode-20261101/direct-no-observer/direct-client-profile/DayZ_x64_2026-11-01_16-52-59.RPT": "fb97b6098f9c768b219bb8610e4f53754aaeea559f569ef82b0cc2a2681ac248",
+      "research/launcher-test-mode-20261101/direct-no-observer/direct-client-profile/error_2026-11-01_16-52-59.log": "e3cf16e98be6098d0727d10d5b9aca8db5a29a0292eca8eb5b5839cefade305f",
+      "research/launcher-test-mode-20261101/direct-no-observer/direct-client-profile/script_2026-11-01_16-52-59.log": "42dd87b1f24f96af90effc11d43dae16a68911b0e905f84a643642645355d5bc",
+      "research/launcher-test-mode-20261101/direct-no-observer/server-profile-BProbe/DayZServer_x64_2026-11-01_16-51-47.RPT": "e8459b1a42e7b102915a9c75930dd53bef692655088807c35288a2e4e1bad044",
+      "research/launcher-test-mode-20261101/direct-no-observer/server-profile-BProbe/error_2026-11-01_16-51-47.log": "66c9df5c2778c840d3b9addc73e6b4f1cc0a8d7afd74cf6b708f021d578aeece",
+      "research/launcher-test-mode-20261101/direct-no-observer/server-profile-BProbe/role-pose.tsv": "b7f39ad2c2b367b49692beec9f571ec3ebbb686cfa116babc973a480a6999094",
+      "research/launcher-test-mode-20261101/direct-no-observer/server-profile-BProbe/script_2026-11-01_16-51-47.log": "099bc81088fba04347e094cb67f68052aea32b657064f252571622c1d997cece",
+      "research/launcher-test-mode-20261101/direct-no-observer/server-profile-BProbe/server.cfg": "801e11abc24e0a2b1276750ad8f4de8149089bb9578e0191ba130fc38fc03a4f",
+      "research/launcher-test-mode-20261101/direct-no-observer/server-role-lod0.chernarusplus/init.c": "a1fffd8b00aba1a285313b5c5f587b4f0812a4b828239d312d3e8cfe8a7e01c8",
+      "research/launcher-test-mode-20261101/direct-no-observer/client-profile/Users/colsk/DayZ.cfg": "c18b04a1c2d67a0aae7bb294f53dba34b4ba41894fb8f0c6d6887bb43883d796",
+      "research/launcher-test-mode-20261101/direct-no-observer/direct-client-profile/BattlEye/BEClient_x64.dll": "f9be153d5876c14e8416b984039aecf2a81bf9b2b1fb92378b8e7e845ad14962",
+      "research/launcher-test-mode-20261101/direct-no-observer/direct-client-profile/DataCache/cache.ch": "1d1801de72c8dd57bf9e103a5a63ec579c11019a8318714c35c87106c2610b3d",
+      "research/launcher-test-mode-20261101/direct-no-observer/direct-client-profile/Users/colsk/chars.DayZProfile": "819917f9456a79961ae6f896317325ea803e230f6960f0e3c5e10b2427694f6b",
+      "research/launcher-test-mode-20261101/direct-no-observer/direct-client-profile/Users/colsk/DayZ.cfg": "c18b04a1c2d67a0aae7bb294f53dba34b4ba41894fb8f0c6d6887bb43883d796",
+      "research/launcher-test-mode-20261101/direct-no-observer/direct-client-profile/Users/DGNetworkRole/chars.DayZProfile": "d65592833a7e06aae353d16aec3099dc14395e3259dfd97e859298e19ae840a1",
+      "research/launcher-test-mode-20261101/direct-no-observer/direct-client-profile/Users/DGNetworkRole/colsk.core.xml": "133213af73b70c1e364c4b9805ef015292838864b5bac182cb53bc85eba269d2",
+      "research/launcher-test-mode-20261101/direct-no-observer/direct-client-profile/Users/DGNetworkRole/colsk.dayz_preset_User.xml": "2289a1a5784003458b5bae2204623f4d00b82d743eb40d1ea51309f9585bf055",
+      "research/launcher-test-mode-20261101/direct-no-observer/direct-client-profile/Users/DGNetworkRole/colsk_settings.DayZProfile": "c1b433bb1b579b2f7f83334b44fd234e8c79c6fd5ba41c5db80d113a13d2f479",
+      "research/launcher-test-mode-20261101/direct-no-observer/direct-client-profile/Users/DGNetworkRole/profile.vars.DayZProfile": "fb605ce3dead5464db61cb271c523702a096ab992807224fc8f51dbee910a658",
+      "research/launcher-test-mode-20261101/direct-no-observer/server-profile-BProbe/BattlEye/BEServer_x64.dll": "224ab091fd806245ac4f0c3ec896f45f4682ae97ebef599ea546a1bbe37531bc",
+      "research/launcher-test-mode-20261101/direct-no-observer/server-profile-BProbe/DataCache/cache.ch": "0f3ce6f946ee7aab9dd003d9d6975e6b63e84dd0ef81757cd7da10b5f6e7bdbf",
+      "research/launcher-test-mode-20261101/direct-no-observer/server-profile-BProbe/Users/Server/DayZ.cfg": "250e9c988f18d80066f0e575264358504ec74d7a654939662884d4474b3ae7c2",
+      "research/launcher-test-mode-20261101/direct-no-observer/server-profile-BProbe/Users/Survivor/Server.core.xml": "133213af73b70c1e364c4b9805ef015292838864b5bac182cb53bc85eba269d2",
+      "research/launcher-test-mode-20261101/direct-no-observer/server-profile-BProbe/Users/Survivor/Server.dayz_preset_User.xml": "2289a1a5784003458b5bae2204623f4d00b82d743eb40d1ea51309f9585bf055",
+      "research/launcher-test-mode-20261101/direct-no-observer/server-profile-BProbe/Users/Survivor/Server_settings.DayZProfile": "9b53e9e41a59690166eb27926961c802cc3f34f7efbd55260c2ca07360d00706"
+    }
+  },
+  "blockers": [
+    "No-observer disconnect establishes that native attachment is not necessary for all observed world departures; identical cause to the prior BattlEye warning is unproven.",
+    "Loaded BEClient DLL and update log do not establish the complete anti-cheat active/inactive state.",
+    "Early module snapshots used a cached Process.Modules list and cannot prove DLL absence.",
+    "End-window capture missed after the owned client closed; this trial has no captured disconnect error code.",
+    "No new 8/64 regression, GPU/display timing, smoothness acceptance or 20ms-p95 achievement."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/launcher-test-mode-20261101.md",
+      "sha256": "bedc0e8bb3981f6c693be3dbe25c9b914f2e65f78ab7268b281c6121df8c7fd6"
+    },
+    {
+      "path": "evidence/launcher-test-mode-20261101.txt",
+      "sha256": "37fee80bb7af659178a9ba30f48fc6f82c6105676613618a6c685ebad317fa41"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

@@ -1,3 +1,5 @@
+> 최신 진단: 공식 런처 직접 실행 분기를 확인했지만 native 관찰기 없는 기준 실행도37.331초 뒤 이탈했다. 서버 DONE보다7.386초 앞섰으며 이번 오류 코드는 미포착이다. BEClient 모듈·갱신 로그 확인. client 비활성 상태·이전 오류와 동일성 미확인. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/launcher-test-mode-20261101.md). 기능·시각·성능 개선 미수용.
+
 > 최신 진단: 마지막 월드 이탈에서0x000400F0 BattlEye restart-required경고를 확보했다. matrix OFF도관찰종료뒤예정서버종료전에이탈해matrix읽기만의문제로단정할수없다. client실행상태확인전추가native시험보류. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/network-continuity-20261101.md). 시각·성능 개선 미수용.
 
 > 최신 진단: live 이름hash→slot과부분6점pose대응을확인했다. 수정계측123표본의유효구간은7.286초로25초연속gate실패다. 기존실행본은이미opaque signedID계약을지켰으며새계측오류만수정했다. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-network-pose-20261101.md). 전체포즈·시각·성능미수용.

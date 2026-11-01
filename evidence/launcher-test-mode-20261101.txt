@@ -1,0 +1,640 @@
+{
+  "scope": "Full selected RunGame IL offsets 0..186 and 474..499, full 15-byte WithoutBattlEye method, selected parser useBE binding; selected non-identifying runtime events, no full raw logs.",
+  "launcherSha256": "592ceb0cc675e734fb89eb6db22694ae87d26299cae501ce856db268d03d821b",
+  "mvid": "d0a02078-db97-445f-a4d7-f2bff607bebd",
+  "methods": [
+    {
+      "token": "0x060002f1",
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.0",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 1,
+          "opcode": "ldarg.0",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 2,
+          "opcode": "call",
+          "operand": "0x060002e6",
+          "resolved": "System.String get_LastParameters()"
+        },
+        {
+          "offset": 7,
+          "opcode": "ldc.i4.0",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 8,
+          "opcode": "ldc.i4.0",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 9,
+          "opcode": "call",
+          "operand": "0x060002f2",
+          "resolved": "Launcher.RunError RunGame(System.String, Boolean, Launcher.BattlEyeLogMode)"
+        },
+        {
+          "offset": 14,
+          "opcode": "ret",
+          "operand": null,
+          "resolved": null
+        }
+      ]
+    },
+    {
+      "token": "0x060002f2",
+      "instructions": [
+        {
+          "offset": 0,
+          "opcode": "ldarg.3",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 1,
+          "opcode": "brfalse.s",
+          "operand": 10,
+          "resolved": null
+        },
+        {
+          "offset": 3,
+          "opcode": "ldstr",
+          "operand": "0x700025e7",
+          "resolved": "1"
+        },
+        {
+          "offset": 8,
+          "opcode": "br.s",
+          "operand": 15,
+          "resolved": null
+        },
+        {
+          "offset": 10,
+          "opcode": "ldstr",
+          "operand": "0x70000e7f",
+          "resolved": "0"
+        },
+        {
+          "offset": 15,
+          "opcode": "stloc.0",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 16,
+          "opcode": "ldarg.1",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 17,
+          "opcode": "stloc.1",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 18,
+          "opcode": "ldarg.0",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 19,
+          "opcode": "ldarg.1",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 20,
+          "opcode": "call",
+          "operand": "0x060002e7",
+          "resolved": "Void set_LastParameters(System.String)"
+        },
+        {
+          "offset": 25,
+          "opcode": "ldc.i4.0",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 26,
+          "opcode": "stloc.2",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 27,
+          "opcode": "ldarg.2",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 28,
+          "opcode": "brfalse.s",
+          "operand": 47,
+          "resolved": null
+        },
+        {
+          "offset": 30,
+          "opcode": "ldarg.1",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 31,
+          "opcode": "call",
+          "operand": "0x060001e9",
+          "resolved": "Boolean ParametersContainsServerParameter(System.String)"
+        },
+        {
+          "offset": 36,
+          "opcode": "stloc.s",
+          "operand": 6,
+          "resolved": null
+        },
+        {
+          "offset": 38,
+          "opcode": "ldarg.2",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 39,
+          "opcode": "ldloc.s",
+          "operand": 6,
+          "resolved": null
+        },
+        {
+          "offset": 41,
+          "opcode": "ldc.i4.0",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 42,
+          "opcode": "ceq",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 44,
+          "opcode": "and",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 45,
+          "opcode": "starg.s",
+          "operand": 2,
+          "resolved": null
+        },
+        {
+          "offset": 47,
+          "opcode": "ldarg.0",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 48,
+          "opcode": "ldfld",
+          "operand": "0x04000194",
+          "resolved": "Launcher.IGameLocator _locator"
+        },
+        {
+          "offset": 53,
+          "opcode": "callvirt",
+          "operand": "0x06000266",
+          "resolved": "Launcher.GameLocatorResult GetGameExecutablePath()"
+        },
+        {
+          "offset": 58,
+          "opcode": "stloc.3",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 59,
+          "opcode": "ldloca.s",
+          "operand": 3,
+          "resolved": null
+        },
+        {
+          "offset": 61,
+          "opcode": "call",
+          "operand": "0x06000195",
+          "resolved": "Launcher.RunError get_RunError()"
+        },
+        {
+          "offset": 66,
+          "opcode": "brfalse.s",
+          "operand": 76,
+          "resolved": null
+        },
+        {
+          "offset": 68,
+          "opcode": "ldloca.s",
+          "operand": 3,
+          "resolved": null
+        },
+        {
+          "offset": 70,
+          "opcode": "call",
+          "operand": "0x06000195",
+          "resolved": "Launcher.RunError get_RunError()"
+        },
+        {
+          "offset": 75,
+          "opcode": "ret",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 76,
+          "opcode": "ldloca.s",
+          "operand": 3,
+          "resolved": null
+        },
+        {
+          "offset": 78,
+          "opcode": "call",
+          "operand": "0x06000197",
+          "resolved": "System.String get_GameExecutablePath64()"
+        },
+        {
+          "offset": 83,
+          "opcode": "stloc.s",
+          "operand": 4,
+          "resolved": null
+        },
+        {
+          "offset": 85,
+          "opcode": "ldloc.s",
+          "operand": 4,
+          "resolved": null
+        },
+        {
+          "offset": 87,
+          "opcode": "call",
+          "operand": "0x0a0001b7",
+          "resolved": "Boolean Exists(System.String)"
+        },
+        {
+          "offset": 92,
+          "opcode": "brtrue.s",
+          "operand": 96,
+          "resolved": null
+        },
+        {
+          "offset": 94,
+          "opcode": "ldc.i4.4",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 95,
+          "opcode": "ret",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 96,
+          "opcode": "ldarg.2",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 97,
+          "opcode": "brfalse.s",
+          "operand": 115,
+          "resolved": null
+        },
+        {
+          "offset": 99,
+          "opcode": "ldloca.s",
+          "operand": 3,
+          "resolved": null
+        },
+        {
+          "offset": 101,
+          "opcode": "call",
+          "operand": "0x06000199",
+          "resolved": "System.String get_BattlEyeExecutablePath()"
+        },
+        {
+          "offset": 106,
+          "opcode": "call",
+          "operand": "0x0a0001b7",
+          "resolved": "Boolean Exists(System.String)"
+        },
+        {
+          "offset": 111,
+          "opcode": "brtrue.s",
+          "operand": 115,
+          "resolved": null
+        },
+        {
+          "offset": 113,
+          "opcode": "ldc.i4.5",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 114,
+          "opcode": "ret",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 115,
+          "opcode": "ldarg.2",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 116,
+          "opcode": "brtrue.s",
+          "operand": 122,
+          "resolved": null
+        },
+        {
+          "offset": 118,
+          "opcode": "ldloc.s",
+          "operand": 4,
+          "resolved": null
+        },
+        {
+          "offset": 120,
+          "opcode": "br.s",
+          "operand": 129,
+          "resolved": null
+        },
+        {
+          "offset": 122,
+          "opcode": "ldloca.s",
+          "operand": 3,
+          "resolved": null
+        },
+        {
+          "offset": 124,
+          "opcode": "call",
+          "operand": "0x06000199",
+          "resolved": "System.String get_BattlEyeExecutablePath()"
+        },
+        {
+          "offset": 129,
+          "opcode": "stloc.s",
+          "operand": 5,
+          "resolved": null
+        },
+        {
+          "offset": 131,
+          "opcode": "ldarg.2",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 132,
+          "opcode": "brfalse.s",
+          "operand": 174,
+          "resolved": null
+        },
+        {
+          "offset": 134,
+          "opcode": "ldstr",
+          "operand": "0x70006222",
+          "resolved": "{0} 1 {1} -exe {2} "
+        },
+        {
+          "offset": 139,
+          "opcode": "ldstr",
+          "operand": "0x70000e7f",
+          "resolved": "0"
+        },
+        {
+          "offset": 144,
+          "opcode": "ldloc.0",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 145,
+          "opcode": "ldarg.0",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 146,
+          "opcode": "ldfld",
+          "operand": "0x04000194",
+          "resolved": "Launcher.IGameLocator _locator"
+        },
+        {
+          "offset": 151,
+          "opcode": "callvirt",
+          "operand": "0x06000267",
+          "resolved": "Launcher.GameLocatorSettings get_Settings()"
+        },
+        {
+          "offset": 156,
+          "opcode": "callvirt",
+          "operand": "0x0600019e",
+          "resolved": "System.String get_GameExecutableName64()"
+        },
+        {
+          "offset": 161,
+          "opcode": "call",
+          "operand": "0x0a0002a7",
+          "resolved": "System.String Format(System.String, System.Object, System.Object, System.Object)"
+        },
+        {
+          "offset": 166,
+          "opcode": "ldarg.1",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 167,
+          "opcode": "call",
+          "operand": "0x0a0000ea",
+          "resolved": "System.String Concat(System.String, System.String)"
+        },
+        {
+          "offset": 172,
+          "opcode": "starg.s",
+          "operand": 1,
+          "resolved": null
+        },
+        {
+          "offset": 174,
+          "opcode": "nop",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 175,
+          "opcode": "ldloc.s",
+          "operand": 5,
+          "resolved": null
+        },
+        {
+          "offset": 177,
+          "opcode": "ldarg.1",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 178,
+          "opcode": "newobj",
+          "operand": "0x0a0002a8",
+          "resolved": "Void .ctor(System.String, System.String)"
+        },
+        {
+          "offset": 183,
+          "opcode": "stloc.s",
+          "operand": 7,
+          "resolved": null
+        },
+        {
+          "offset": 185,
+          "opcode": "ldarg.2",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 186,
+          "opcode": "brfalse.s",
+          "operand": 227,
+          "resolved": null
+        },
+        {
+          "offset": 474,
+          "opcode": "ldloc.s",
+          "operand": 8,
+          "resolved": null
+        },
+        {
+          "offset": 476,
+          "opcode": "brfalse.s",
+          "operand": 517,
+          "resolved": null
+        },
+        {
+          "offset": 478,
+          "opcode": "ldarg.2",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 479,
+          "opcode": "brfalse.s",
+          "operand": 491,
+          "resolved": null
+        },
+        {
+          "offset": 481,
+          "opcode": "ldarg.0",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 482,
+          "opcode": "ldloc.s",
+          "operand": 8,
+          "resolved": null
+        },
+        {
+          "offset": 484,
+          "opcode": "call",
+          "operand": "0x060002f5",
+          "resolved": "Void MonitorBattlEyeProcess(System.Diagnostics.Process)"
+        },
+        {
+          "offset": 489,
+          "opcode": "br.s",
+          "operand": 499,
+          "resolved": null
+        },
+        {
+          "offset": 491,
+          "opcode": "ldarg.0",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 492,
+          "opcode": "ldloc.s",
+          "operand": 8,
+          "resolved": null
+        },
+        {
+          "offset": 494,
+          "opcode": "call",
+          "operand": "0x060002f4",
+          "resolved": "Void MonitorGameProcess(System.Diagnostics.Process)"
+        },
+        {
+          "offset": 499,
+          "opcode": "leave.s",
+          "operand": 517,
+          "resolved": null
+        }
+      ]
+    },
+    {
+      "token": "0x0600026a",
+      "instructions": [
+        {
+          "offset": 131,
+          "opcode": "dup",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 132,
+          "opcode": "ldarg.1",
+          "operand": null,
+          "resolved": null
+        },
+        {
+          "offset": 133,
+          "opcode": "ldstr",
+          "operand": "0x7000577c",
+          "resolved": "-useBE"
+        },
+        {
+          "offset": 138,
+          "opcode": "call",
+          "operand": "0x06000268",
+          "resolved": "Boolean IsParameterPresent(System.Collections.Generic.IEnumerable`1[System.String], System.String)"
+        },
+        {
+          "offset": 143,
+          "opcode": "callvirt",
+          "operand": "0x060001f8",
+          "resolved": "Void set_IsUseBattleEyeParameterPresent(Boolean)"
+        }
+      ]
+    }
+  ],
+  "events": [
+    "16:53:28.538  SCRIPT       : DG_NETWORK_CHARACTER_CREATED",
+    "16:53:28.552 SCRIPT       : DG_ROLE_READY parts=1 server=true client=false multiplayer=true dedicated=true",
+    "16:54:05.883  SCRIPT       : DG_CONTINUITY_DISCONNECT age=120.271 logout=15 authFailed=false alive=true health=100",
+    "16:54:13.269 SCRIPT       : DG_ROLE_DONE parts=1 seconds=44.8997 updates=793"
+  ],
+  "beUpdateLog": [
+    "16:53:15.377 BattlEye client updated to version: 249"
+  ],
+  "moduleNames": [
+    "BEClient_x64.dll"
+  ]
+}
