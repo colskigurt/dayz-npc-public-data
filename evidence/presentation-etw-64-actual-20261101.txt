@@ -1,0 +1,1190 @@
+Selection: actual64 ETW distributions, phase elapsed aggregates and explicitly bounded recovered alignment case. No raw CSV, source game assets, private worker metadata or fulllogs.
+{
+  "results": {
+    "sourceRunId": "presentation-etw-worker-20261101-0712",
+    "sourceRuntimeRunId": "runtime-20261101-122619",
+    "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+    "executionRequestedAt": "2026-11-01T12:26:19.6239428+09:00",
+    "newRuntime": true,
+    "newPbo": false,
+    "conditions": {
+      "count": 64,
+      "scenario": "activeReference",
+      "seconds": 300,
+      "captureSeconds": 30,
+      "stage": "LOW_HOLD",
+      "captureStartMissionAgeSeconds": [
+        8,
+        10
+      ],
+      "latestStartGuardSeconds": 12,
+      "supportMode": "fast",
+      "driveAttribution": false,
+      "frameSync": "on",
+      "fixedCostTarget": false,
+      "highPlayerAnchored": false,
+      "video": false,
+      "nativeHooks": false
+    },
+    "functional": {
+      "state": {
+        "terminalArrivals": 64,
+        "unresolvedTerminalAgents": [],
+        "fallEpisodes": 87,
+        "fallsLandedAndResumed": 87,
+        "allPhysicalTransitionsMatched": true,
+        "climbEndFailures": 0,
+        "newFailureLabelEpisodes": {
+          "CONTACT_SUPPORT_LOST": 25,
+          "ENTRY_ALIGNMENT_NO_PROGRESS": 1
+        },
+        "algorithmFailureLabels": [
+          "ENTRY_ALIGNMENT_NO_PROGRESS"
+        ]
+      },
+      "strictLegacyAlgorithmLabelGatePassed": false,
+      "followCoverage": {
+        "low": 64,
+        "high": 64,
+        "ground": 64
+      },
+      "foregroundFraction": 1.0,
+      "actualPlayerStimulus": {
+        "FINAL_HOLD": {
+          "samples": 1137,
+          "areas": {
+            "ground": 1137
+          },
+          "maximumDisplacementFromFirstMeters": 0.39062534478192784
+        },
+        "GROUND_EAST": {
+          "samples": 78,
+          "areas": {
+            "ground": 78
+          },
+          "maximumDisplacementFromFirstMeters": 39.28811280998065
+        },
+        "GROUND_EAST_HOLD": {
+          "samples": 124,
+          "areas": {
+            "ground": 124
+          },
+          "maximumDisplacementFromFirstMeters": 0.4082062066320958
+        },
+        "GROUND_HOLD": {
+          "samples": 246,
+          "areas": {
+            "ground": 246
+          },
+          "maximumDisplacementFromFirstMeters": 0.0
+        },
+        "GROUND_NORTH": {
+          "samples": 83,
+          "areas": {
+            "ground": 83
+          },
+          "maximumDisplacementFromFirstMeters": 12.575533566662482
+        },
+        "HIGH_HOLD": {
+          "samples": 476,
+          "areas": {
+            "high": 476
+          },
+          "maximumDisplacementFromFirstMeters": 0.4441194322469778
+        },
+        "LOW_HOLD": {
+          "samples": 348,
+          "areas": {
+            "low": 348
+          },
+          "maximumDisplacementFromFirstMeters": 0.32877560102637615
+        }
+      },
+      "missionFrameMs": {
+        "samples": 10095,
+        "p50": 22.0,
+        "p95": 65.0,
+        "p99": 94.0
+      }
+    },
+    "presentation": {
+      "csvRows": 631,
+      "columns": [
+        "Application",
+        "ProcessID",
+        "SwapChainAddress",
+        "PresentRuntime",
+        "SyncInterval",
+        "PresentFlags",
+        "AllowsTearing",
+        "PresentMode",
+        "TimeInQPC",
+        "MsBetweenSimulationStart",
+        "MsBetweenPresents",
+        "MsBetweenDisplayChange",
+        "MsInPresentAPI",
+        "MsRenderPresentLatency",
+        "MsUntilDisplayed",
+        "CPUStartQPC",
+        "MsBetweenAppStart",
+        "MsCPUBusy",
+        "MsCPUWait",
+        "MsGPULatency",
+        "MsGPUTime",
+        "MsGPUBusy",
+        "MsGPUWait",
+        "MsAnimationError",
+        "AnimationTime",
+        "MsFlipDelay"
+      ],
+      "processFilterVerified": true,
+      "swapChainsMerged": false,
+      "chains": [
+        {
+          "alias": "chain-0",
+          "runtime": "DXGI",
+          "rows": 631,
+          "presentSpanSeconds": 29.7803544,
+          "presentModes": {
+            "Hardware Composed: Independent Flip": 617,
+            "Composed: Flip": 14
+          },
+          "syncIntervals": {
+            "1": 631
+          },
+          "metricsMs": {
+            "MsBetweenPresents": {
+              "samples": 631,
+              "p50": 48.2222,
+              "p95": 93.06955,
+              "p99": 115.18994000000039,
+              "minimum": 11.8708,
+              "maximum": 152.1659
+            },
+            "MsBetweenDisplayChange": {
+              "samples": 626,
+              "p50": 40.04415,
+              "p95": 95.006325,
+              "p99": 120.02667500000001,
+              "minimum": 19.8741,
+              "maximum": 299.96160000000003
+            },
+            "MsInPresentAPI": {
+              "samples": 631,
+              "p50": 0.1433,
+              "p95": 16.289949999999997,
+              "p99": 19.370150000000002,
+              "minimum": 0.1205,
+              "maximum": 20.1984
+            },
+            "MsRenderPresentLatency": {
+              "samples": 631,
+              "p50": 0.9231,
+              "p95": 5.23015,
+              "p99": 7.307480000000009,
+              "minimum": 0.3458,
+              "maximum": 9.8671
+            },
+            "MsUntilDisplayed": {
+              "samples": 626,
+              "p50": 15.7833,
+              "p95": 24.96895,
+              "p99": 28.1404,
+              "minimum": 0.9346,
+              "maximum": 39.448
+            },
+            "MsBetweenAppStart": {
+              "samples": 631,
+              "p50": 45.3138,
+              "p95": 91.21539999999999,
+              "p99": 105.80631000000007,
+              "minimum": 12.0841,
+              "maximum": 152.1699
+            },
+            "MsCPUBusy": {
+              "samples": 631,
+              "p50": 45.1436,
+              "p95": 91.0883,
+              "p99": 105.65625000000007,
+              "minimum": 11.7411,
+              "maximum": 152.01
+            },
+            "MsCPUWait": {
+              "samples": 631,
+              "p50": 0.1433,
+              "p95": 16.289949999999997,
+              "p99": 19.370150000000002,
+              "minimum": 0.1205,
+              "maximum": 20.1984
+            },
+            "MsGPULatency": {
+              "samples": 631,
+              "p50": 0.6389,
+              "p95": 1.7624499999999999,
+              "p99": 2.80781000000001,
+              "minimum": 0.0,
+              "maximum": 3.4561
+            },
+            "MsGPUTime": {
+              "samples": 631,
+              "p50": 47.7312,
+              "p95": 93.2012,
+              "p99": 114.56176000000033,
+              "minimum": 11.9518,
+              "maximum": 152.1731
+            },
+            "MsGPUBusy": {
+              "samples": 631,
+              "p50": 6.6663,
+              "p95": 12.2073,
+              "p99": 13.837500000000006,
+              "minimum": 2.6911,
+              "maximum": 20.061
+            },
+            "MsGPUWait": {
+              "samples": 631,
+              "p50": 40.9422,
+              "p95": 85.30205000000001,
+              "p99": 105.99630000000005,
+              "minimum": 0.0045,
+              "maximum": 149.1168
+            },
+            "MsBetweenSimulationStart": null,
+            "MsFlipDelay": null
+          },
+          "missingValues": {
+            "MsBetweenPresents": 0,
+            "MsBetweenDisplayChange": 5,
+            "MsInPresentAPI": 0,
+            "MsRenderPresentLatency": 0,
+            "MsUntilDisplayed": 5,
+            "MsBetweenAppStart": 0,
+            "MsCPUBusy": 0,
+            "MsCPUWait": 0,
+            "MsGPULatency": 0,
+            "MsGPUTime": 0,
+            "MsGPUBusy": 0,
+            "MsGPUWait": 0,
+            "MsBetweenSimulationStart": 631,
+            "MsFlipDelay": 631
+          },
+          "missingDisplayTimingRows": 5,
+          "presentIntervalIdentityMaxErrorMs": 1.4210854715202004e-14,
+          "cpuIntervalIdentityMaxErrorMs": 0.0,
+          "displayIntervalIdentityMaxErrorMs": 5.684341886080802e-14
+        }
+      ],
+      "scope": "App/CPU/GPU/presentation telemetry only. MsAnimationError deliberately excluded from NPC animation diagnosis. No self-time, GC, bone upload, optical smoothness or zero ETWloss claim."
+    },
+    "captureStage": {
+      "startSeconds": 8.844,
+      "endSeconds": 39.07,
+      "samples": 235,
+      "stages": {
+        "LOW_HOLD": 235
+      },
+      "areas": {
+        "low": 235
+      },
+      "singleLowPhase": true,
+      "playerRemainedLow": true,
+      "scope": "Script trace brackets a30sec ETW request; not exactperframe script/Present mapping."
+    },
+    "captureScope": {
+      "sourceRunId": "presentation-etw-worker-20261101-0712",
+      "runtimeRunId": "runtime-20261101-122619",
+      "captureCsvSha256": "983a1f54567d88226b139b0cd12ea24aa77070a490f2acb4223a455a306fe6e0",
+      "rows": 631,
+      "singlePidAndChainValidatedSeparately": true,
+      "elapsedCaptureSeconds": 30.2044101,
+      "cpuBusyPlusWaitIdentityMaxErrorMs": 2.842170943040401e-14,
+      "gpuBusyPlusWaitIdentityMaxErrorMs": 1.4210854715202004e-14,
+      "workerStartAfterConsumedSeconds": 0.029151,
+      "exactPerFrameScriptJoin": false,
+      "fullFunctionalRunClosed": false,
+      "limits": [
+        "CPUBusy is PresentMon frame timing, not summed process-thread CPU self-time.",
+        "GPUWait does not identify which CPU function starved the queue.",
+        "Missing display timing is not by itself a verified dropped-frame count."
+      ]
+    },
+    "phaseCost": {
+      "sourceRunId": "presentation-etw-worker-20261101-0712",
+      "runtimeRunId": "runtime-20261101-122619",
+      "buildId": "7E16C9B559F8BA3EA336FCC8D13DAB1E28F536CE9F89D1FB4E19934D123A0CDC",
+      "qpcFrequency": 10000000,
+      "newRuntime": false,
+      "newPbo": false,
+      "phases": [
+        {
+          "stage": "LOW_HOLD",
+          "requestedSeconds": [
+            5,
+            44
+          ],
+          "counterSpanSeconds": 38.663000000000004,
+          "globalCountersOwner": "Director once, usingid0 row toavoid64fold duplication",
+          "globalElapsedMsPerWallSecond": {
+            "perceptionCpuTicks": 53.61172180120528,
+            "socialCpuTicks": 4.431761632568605,
+            "pursuitCpuTicks": 0.45954271525748125,
+            "crowdCpuTicks": 27.58839458914207
+          },
+          "bodyCountersOwner": "Sum64 perbody rates over their actualsample spans",
+          "bodyElapsedMsPerWallSecond": {
+            "contactCpuTicks": 231.05288518738843,
+            "contactBoneCpuTicks": 7.907560199674106,
+            "contactFootCpuTicks": 127.06785815896333,
+            "contactWorldCpuTicks": 80.85712179603237,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.3514600522463337,
+            "supportFastCpuTicks": 48.4235056772625,
+            "supportShadowCpuTicks": 0.0
+          },
+          "missionFrameMs": {
+            "samples": 856,
+            "p50": 44.0,
+            "p95": 88.25,
+            "p99": 105.0,
+            "maximum": 153.0
+          },
+          "actualPlayerAreas": {
+            "low": 302
+          },
+          "logicalPhaseSampleCounts": {
+            "FOLLOW": 4347,
+            "MOTION": 270,
+            "SETTLE": 97,
+            "LAND": 69,
+            "EGRESS": 11,
+            "FALL": 6
+          },
+          "nativeAnimationCostMeasured": false
+        },
+        {
+          "stage": "HIGH_HOLD",
+          "requestedSeconds": [
+            50,
+            104
+          ],
+          "counterSpanSeconds": 53.309999999999995,
+          "globalCountersOwner": "Director once, usingid0 row toavoid64fold duplication",
+          "globalElapsedMsPerWallSecond": {
+            "perceptionCpuTicks": 45.6505346088914,
+            "socialCpuTicks": 4.268223597824048,
+            "pursuitCpuTicks": 0.43141999624835864,
+            "crowdCpuTicks": 41.65597448883888
+          },
+          "bodyCountersOwner": "Sum64 perbody rates over their actualsample spans",
+          "bodyElapsedMsPerWallSecond": {
+            "contactCpuTicks": 210.6318326767961,
+            "contactBoneCpuTicks": 8.142427311948978,
+            "contactFootCpuTicks": 112.59818420558996,
+            "contactWorldCpuTicks": 73.03169761770775,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.8921609454136186,
+            "supportFastCpuTicks": 67.28700431438754,
+            "supportShadowCpuTicks": 0.0
+          },
+          "missionFrameMs": {
+            "samples": 1259,
+            "p50": 41.0,
+            "p95": 88.0,
+            "p99": 101.42000000000007,
+            "maximum": 119.0
+          },
+          "actualPlayerAreas": {
+            "high": 426
+          },
+          "logicalPhaseSampleCounts": {
+            "MOTION": 348,
+            "SETTLE": 115,
+            "FOLLOW": 5931,
+            "FALL": 53,
+            "LAND": 138,
+            "EGRESS": 7
+          },
+          "nativeAnimationCostMeasured": false
+        },
+        {
+          "stage": "GROUND_HOLD",
+          "requestedSeconds": [
+            110,
+            134
+          ],
+          "counterSpanSeconds": 23.875,
+          "globalCountersOwner": "Director once, usingid0 row toavoid64fold duplication",
+          "globalElapsedMsPerWallSecond": {
+            "perceptionCpuTicks": 52.43853403141362,
+            "socialCpuTicks": 5.583623036649215,
+            "pursuitCpuTicks": 22.98599790575916,
+            "crowdCpuTicks": 32.36774869109948
+          },
+          "bodyCountersOwner": "Sum64 perbody rates over their actualsample spans",
+          "bodyElapsedMsPerWallSecond": {
+            "contactCpuTicks": 120.97202094240838,
+            "contactBoneCpuTicks": 5.944117277486911,
+            "contactFootCpuTicks": 63.14642931937173,
+            "contactWorldCpuTicks": 39.90559162303665,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.3406785340314136,
+            "supportFastCpuTicks": 3.9694910994764396,
+            "supportShadowCpuTicks": 0.0
+          },
+          "missionFrameMs": {
+            "samples": 858,
+            "p50": 25.0,
+            "p95": 63.14999999999998,
+            "p99": 78.0,
+            "maximum": 98.0
+          },
+          "actualPlayerAreas": {
+            "ground": 197
+          },
+          "logicalPhaseSampleCounts": {
+            "LAND": 468,
+            "FOLLOW": 2515,
+            "MOTION": 20,
+            "FALL": 34,
+            "EGRESS": 35
+          },
+          "nativeAnimationCostMeasured": false
+        },
+        {
+          "stage": "GROUND_EAST",
+          "requestedSeconds": [
+            136,
+            144
+          ],
+          "counterSpanSeconds": 7.272999999999996,
+          "globalCountersOwner": "Director once, usingid0 row toavoid64fold duplication",
+          "globalElapsedMsPerWallSecond": {
+            "perceptionCpuTicks": 58.01044960813972,
+            "socialCpuTicks": 72.66093771483574,
+            "pursuitCpuTicks": 49.17200604977316,
+            "crowdCpuTicks": 34.60057747834458
+          },
+          "bodyCountersOwner": "Sum64 perbody rates over their actualsample spans",
+          "bodyElapsedMsPerWallSecond": {
+            "contactCpuTicks": 129.1809432146295,
+            "contactBoneCpuTicks": 7.567111233328754,
+            "contactFootCpuTicks": 68.82593152756775,
+            "contactWorldCpuTicks": 42.24309088409187,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.0,
+            "supportFastCpuTicks": 4.0689124157844105,
+            "supportShadowCpuTicks": 0.0
+          },
+          "missionFrameMs": {
+            "samples": 207,
+            "p50": 32.0,
+            "p95": 114.69999999999987,
+            "p99": 130.76,
+            "maximum": 137.0
+          },
+          "actualPlayerAreas": {
+            "ground": 62
+          },
+          "logicalPhaseSampleCounts": {
+            "FOLLOW": 960
+          },
+          "nativeAnimationCostMeasured": false
+        },
+        {
+          "stage": "GROUND_EAST_HOLD",
+          "requestedSeconds": [
+            146,
+            159
+          ],
+          "counterSpanSeconds": 12.198000000000008,
+          "globalCountersOwner": "Director once, usingid0 row toavoid64fold duplication",
+          "globalElapsedMsPerWallSecond": {
+            "perceptionCpuTicks": 48.752254467945534,
+            "socialCpuTicks": 4.887686505984584,
+            "pursuitCpuTicks": 40.727168388260345,
+            "crowdCpuTicks": 33.879324479422834
+          },
+          "bodyCountersOwner": "Sum64 perbody rates over their actualsample spans",
+          "bodyElapsedMsPerWallSecond": {
+            "contactCpuTicks": 127.00286932283973,
+            "contactBoneCpuTicks": 7.341523200524672,
+            "contactFootCpuTicks": 65.52508607968515,
+            "contactWorldCpuTicks": 42.86497786522378,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.0,
+            "supportFastCpuTicks": 4.234259714707327,
+            "supportShadowCpuTicks": 0.0
+          },
+          "missionFrameMs": {
+            "samples": 450,
+            "p50": 29.0,
+            "p95": 55.649999999999864,
+            "p99": 78.0,
+            "maximum": 85.0
+          },
+          "actualPlayerAreas": {
+            "ground": 108
+          },
+          "logicalPhaseSampleCounts": {
+            "FOLLOW": 1600
+          },
+          "nativeAnimationCostMeasured": false
+        },
+        {
+          "stage": "GROUND_NORTH",
+          "requestedSeconds": [
+            161,
+            169
+          ],
+          "counterSpanSeconds": 7.694999999999993,
+          "globalCountersOwner": "Director once, usingid0 row toavoid64fold duplication",
+          "globalElapsedMsPerWallSecond": {
+            "perceptionCpuTicks": 46.22092267706307,
+            "socialCpuTicks": 21.00844704353478,
+            "pursuitCpuTicks": 163.4658869395713,
+            "crowdCpuTicks": 28.205328135152723
+          },
+          "bodyCountersOwner": "Sum64 perbody rates over their actualsample spans",
+          "bodyElapsedMsPerWallSecond": {
+            "contactCpuTicks": 128.95152696556218,
+            "contactBoneCpuTicks": 7.387004548408064,
+            "contactFootCpuTicks": 65.6176738141651,
+            "contactWorldCpuTicks": 44.78440545808971,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.0,
+            "supportFastCpuTicks": 4.216504223521771,
+            "supportShadowCpuTicks": 0.0
+          },
+          "missionFrameMs": {
+            "samples": 222,
+            "p50": 31.0,
+            "p95": 69.0,
+            "p99": 95.94999999999996,
+            "maximum": 101.0
+          },
+          "actualPlayerAreas": {
+            "ground": 66
+          },
+          "logicalPhaseSampleCounts": {
+            "FOLLOW": 1024
+          },
+          "nativeAnimationCostMeasured": false
+        },
+        {
+          "stage": "FINAL_HOLD",
+          "requestedSeconds": [
+            175,
+            299
+          ],
+          "counterSpanSeconds": 123.596,
+          "globalCountersOwner": "Director once, usingid0 row toavoid64fold duplication",
+          "globalElapsedMsPerWallSecond": {
+            "perceptionCpuTicks": 59.3528107705751,
+            "socialCpuTicks": 6.236690507783424,
+            "pursuitCpuTicks": 11.890190621055698,
+            "crowdCpuTicks": 32.56683064176834
+          },
+          "bodyCountersOwner": "Sum64 perbody rates over their actualsample spans",
+          "bodyElapsedMsPerWallSecond": {
+            "contactCpuTicks": 68.06228356904754,
+            "contactBoneCpuTicks": 3.9638167901873844,
+            "contactFootCpuTicks": 35.39028771157643,
+            "contactWorldCpuTicks": 21.569338813553838,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.0,
+            "supportFastCpuTicks": 2.6941235962328878,
+            "supportShadowCpuTicks": 0.0
+          },
+          "missionFrameMs": {
+            "samples": 5533,
+            "p50": 20.0,
+            "p95": 32.0,
+            "p99": 66.68000000000029,
+            "maximum": 82.0
+          },
+          "actualPlayerAreas": {
+            "ground": 1088
+          },
+          "logicalPhaseSampleCounts": {
+            "FOLLOW": 15680
+          },
+          "nativeAnimationCostMeasured": false
+        },
+        {
+          "stage": "ETW_LOW_BRACKET",
+          "requestedSeconds": [
+            8.844,
+            39.07
+          ],
+          "counterSpanSeconds": 29.729999999999997,
+          "globalCountersOwner": "Director once, usingid0 row toavoid64fold duplication",
+          "globalElapsedMsPerWallSecond": {
+            "perceptionCpuTicks": 53.44813319878911,
+            "socialCpuTicks": 4.577796838210562,
+            "pursuitCpuTicks": 0.4659266733938783,
+            "crowdCpuTicks": 27.244063235788765
+          },
+          "bodyCountersOwner": "Sum64 perbody rates over their actualsample spans",
+          "bodyElapsedMsPerWallSecond": {
+            "contactCpuTicks": 238.34927346115037,
+            "contactBoneCpuTicks": 8.077285570131181,
+            "contactFootCpuTicks": 130.98314497140936,
+            "contactWorldCpuTicks": 83.32080053817694,
+            "contactFallbackCpuTicks": 0.0,
+            "contactDiagnosticCpuTicks": 0.3413017154389506,
+            "supportFastCpuTicks": 49.40585940127818,
+            "supportShadowCpuTicks": 0.0
+          },
+          "missionFrameMs": {
+            "samples": 642,
+            "p50": 45.0,
+            "p95": 90.89999999999986,
+            "p99": 105.59000000000003,
+            "maximum": 153.0
+          },
+          "actualPlayerAreas": {
+            "low": 235
+          },
+          "logicalPhaseSampleCounts": {
+            "FOLLOW": 3297,
+            "MOTION": 256,
+            "SETTLE": 90,
+            "LAND": 60,
+            "EGRESS": 5,
+            "FALL": 4
+          },
+          "nativeAnimationCostMeasured": false
+        }
+      ],
+      "process": {
+        "samples": 342,
+        "wholeDetectedClientWallSeconds": 347.961,
+        "processCpuSecondsDelta": 479.984375,
+        "meanBusyCores": 1.3794200355786999,
+        "scope": "All clientthreads from detection through shutdown, including loading. Not same phasewindow or GPUtime."
+      },
+      "sourceHashes": {
+        "native-ground.tsv": "c014eb876dc3a1ca7a05a9c1b5103dafd75901649ce0653e64f47f4fb86b495d",
+        "native-pose-cadence.tsv": "9860231ccd24d034a093a53dccfe0a06977574c1820528ab0059c0f26626bb13",
+        "native-natural-player.tsv": "0e71eeb8e5963fe81293101fc5ea182d9a99fa86d675219eb570751f049f902a",
+        "native-process-cost.tsv": "ed9188ac0d7d3b75cef997e873fb2e7f9ba90f116960b77fcfbe778e61d487b5",
+        "mission-source/init.c": "94c5468d2f2b9d45d8716ffb6b436e66d7c1a697a90ee66d318de8e896ee88bd"
+      },
+      "limits": [
+        "All timers are inclusive elapsed ranges. Do not sum overlapping parent/child fields orcall them CPU self-time.",
+        "Director perception/social/pursuit/crowd counters are global repeated inbody rows, not64 perentity counters.",
+        "Perbody rates use slightly different actualsample endpoints; rows/phase occupancy andworkload differ.",
+        "RuntimeTimingProbe isfalse; nativegraph/skin/evaluation self-time is unavailable, not zero.",
+        "Stage frame quantiles are script renderDt frompart0 telemetry, not actual Present/display intervals.",
+        "This is a newclosed functional run but phase extraction is offline and not a controlledoptimization contrast."
+      ],
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false
+    },
+    "lease": {
+      "events": 87,
+      "outcomes": {
+        "NEW_FALL": 87
+      },
+      "candidateActuallyGranted": false,
+      "contractsPass": true
+    },
+    "recoveredAlignment": {
+      "entityId": 16,
+      "watchdogObservedBetweenSeconds": [
+        48.374,
+        48.923
+      ],
+      "laterFallSeconds": 51.971,
+      "laterFallSameCallDetail": "FOLLOW_AREA_OR_FLOOR_GUARD",
+      "terminalOutcome": "ARRIVED",
+      "classification": "Recovered alignment watchdog; later floor/area guard fall carries prior failure label. Do not equate failure field with same-call fall cause."
+    },
+    "etwMeasurementAccepted": true,
+    "strictFunctionalPass": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "Adminready file alone is insufficient; verify exactlive helper process before client launch.",
+      "Capture phase is bracketed by scripttrace snapshots, not exactperframe phase/QPC matching.",
+      "Natural target/contacts can differ between runs; validateactualstimulus and all64outcomes separately.",
+      "1agentbaseline uses anotherbuild/AIconditions; do not attribute all difference to agentcount.",
+      "PresentMon MsAnimationError is not NPC animationerror; nativeCPU/GPUduration fields are not scripting self-time.",
+      "CPU/GPUbusy and wait fields do not separate script/path/contact/nativeanimation self-time.",
+      "No controlledOFF/ON ETWoverhead repeat; one64diagnostic cannot establish optimization.",
+      "Actual functional outcomes must be assessed from full300sec state contract, not this30sec capture.",
+      "All timers are inclusive elapsed ranges. Do not sum overlapping parent/child fields orcall them CPU self-time.",
+      "Director perception/social/pursuit/crowd counters are global repeated inbody rows, not64 perentity counters.",
+      "Perbody rates use slightly different actualsample endpoints; rows/phase occupancy andworkload differ.",
+      "RuntimeTimingProbe isfalse; nativegraph/skin/evaluation self-time is unavailable, not zero.",
+      "Stage frame quantiles are script renderDt frompart0 telemetry, not actual Present/display intervals.",
+      "This is a newclosed functional run but phase extraction is offline and not a controlledoptimization contrast.",
+      "Snapshot bounds do not identify the exact original Backoff call timestamp.",
+      "Native callback/pose settling versus wall watchdog is a hypothesis to test, not a confirmed cause.",
+      "Existing strict gate stays failed; no acceptance rule relaxed.",
+      "PresentMon frame CPU timing is not sampled thread/function CPU self-time.",
+      "One64 measurement and no matched ETW OFF/ON contrast; no overhead estimate or optimization claim.",
+      "Actual perNPC surface/pose smoothness was not measured in this run.",
+      "Initial status commentary incorrectly inferred a stall; actual tool started29.151ms after request consumption and exited normally. Old failed capture cause remains unresolved."
+    ],
+    "next": "Separate recovered alignment watchdog from later floor-guard fall in diagnostic attribution; retain strict failure until justified. Use existing frozen fixtures to isolate alignment progress/pose settling and CPU scope work, without deleting physical checks or speculative animation changes."
+  },
+  "alignmentSelectedEvidence": {
+    "selection": "All native contract events for entity16 in46..53sec; ground snapshots same window; every fourth DRIVE_BEFORE entry row, not all raw rows.",
+    "nativeContractEvents": [
+      {
+        "sequence": "793",
+        "seconds": "51.971",
+        "id": "16",
+        "kind": "FALL_REQUEST",
+        "previous": "FOLLOW",
+        "next": "FALL",
+        "reason": "",
+        "failure": "ENTRY_ALIGNMENT_NO_PROGRESS",
+        "recoveryGeneration": "0",
+        "position": "<4511.263672, 340.181580, 10240.221680>",
+        "contactStatus": "",
+        "contactBlocked": "false",
+        "lift": "0.0605469",
+        "terminalOutcome": "NONTERMINAL",
+        "detail": "FOLLOW_AREA_OR_FLOOR_GUARD",
+        "tested": "<4511.263672, 340.181580, 10240.221680>",
+        "supported": "<0.000000, 0.000000, 0.000000>",
+        "valid": "false",
+        "motionElapsedBeforeTransition": "0",
+        "clipDuration": "1.48333",
+        "nativeCurveEnded": "true",
+        "endpointError": "2.94425e-05",
+        "exitError": "0.0142242",
+        "nativeSeconds": "37.8497",
+        "link": "low_to_high_lane_1",
+        "callContext": "FOLLOW",
+        "areaAtCall": "low"
+      },
+      {
+        "sequence": "794",
+        "seconds": "51.971",
+        "id": "16",
+        "kind": "TRANSITION",
+        "previous": "FOLLOW",
+        "next": "FALL",
+        "reason": "",
+        "failure": "ENTRY_ALIGNMENT_NO_PROGRESS",
+        "recoveryGeneration": "1",
+        "position": "<4511.263672, 340.181580, 10240.221680>",
+        "contactStatus": "",
+        "contactBlocked": "false",
+        "lift": "0.0605469",
+        "terminalOutcome": "NONTERMINAL",
+        "detail": "CLEAR",
+        "tested": "<0.000000, 0.000000, 0.000000>",
+        "supported": "<0.000000, 0.000000, 0.000000>",
+        "valid": "false",
+        "motionElapsedBeforeTransition": "0",
+        "clipDuration": "1.48333",
+        "nativeCurveEnded": "true",
+        "endpointError": "2.94425e-05",
+        "exitError": "0.0142242",
+        "nativeSeconds": "37.8497",
+        "link": "low_to_high_lane_1",
+        "callContext": "FOLLOW",
+        "areaAtCall": "low"
+      },
+      {
+        "sequence": "800",
+        "seconds": "52.214",
+        "id": "16",
+        "kind": "TRANSITION",
+        "previous": "FALL",
+        "next": "LAND",
+        "reason": "NATIVE_FALL",
+        "failure": "ENTRY_ALIGNMENT_NO_PROGRESS",
+        "recoveryGeneration": "1",
+        "position": "<4510.988770, 340.212585, 10240.221680>",
+        "contactStatus": "",
+        "contactBlocked": "false",
+        "lift": "0.0796204",
+        "terminalOutcome": "NONTERMINAL",
+        "detail": "CLEAR",
+        "tested": "<0.000000, 0.000000, 0.000000>",
+        "supported": "<0.000000, 0.000000, 0.000000>",
+        "valid": "false",
+        "motionElapsedBeforeTransition": "0",
+        "clipDuration": "1.48333",
+        "nativeCurveEnded": "true",
+        "endpointError": "2.94425e-05",
+        "exitError": "0.0142242",
+        "nativeSeconds": "37.9497",
+        "link": "low_to_high_lane_1",
+        "callContext": "OTHER",
+        "areaAtCall": "low"
+      },
+      {
+        "sequence": "810",
+        "seconds": "52.714",
+        "id": "16",
+        "kind": "TRANSITION",
+        "previous": "LAND",
+        "next": "EGRESS",
+        "reason": "LAND",
+        "failure": "ENTRY_ALIGNMENT_NO_PROGRESS",
+        "recoveryGeneration": "1",
+        "position": "<4510.988770, 340.212585, 10240.221680>",
+        "contactStatus": "",
+        "contactBlocked": "false",
+        "lift": "0.0257874",
+        "terminalOutcome": "NONTERMINAL",
+        "detail": "CLEAR",
+        "tested": "<0.000000, 0.000000, 0.000000>",
+        "supported": "<0.000000, 0.000000, 0.000000>",
+        "valid": "false",
+        "motionElapsedBeforeTransition": "0",
+        "clipDuration": "1.48333",
+        "nativeCurveEnded": "true",
+        "endpointError": "2.94425e-05",
+        "exitError": "0.0142242",
+        "nativeSeconds": "38.3497",
+        "link": "low_to_high_lane_1",
+        "callContext": "OTHER",
+        "areaAtCall": "low"
+      },
+      {
+        "sequence": "812",
+        "seconds": "52.794",
+        "id": "16",
+        "kind": "TRANSITION",
+        "previous": "EGRESS",
+        "next": "FOLLOW",
+        "reason": "SUPPORTED_EGRESS_HANDOFF",
+        "failure": "ENTRY_ALIGNMENT_NO_PROGRESS",
+        "recoveryGeneration": "1",
+        "position": "<4510.988770, 340.212585, 10240.221680>",
+        "contactStatus": "",
+        "contactBlocked": "false",
+        "lift": "0.0250854",
+        "terminalOutcome": "NONTERMINAL",
+        "detail": "CLEAR",
+        "tested": "<0.000000, 0.000000, 0.000000>",
+        "supported": "<0.000000, 0.000000, 0.000000>",
+        "valid": "false",
+        "motionElapsedBeforeTransition": "0",
+        "clipDuration": "1.48333",
+        "nativeCurveEnded": "true",
+        "endpointError": "2.94425e-05",
+        "exitError": "0.0142242",
+        "nativeSeconds": "38.3997",
+        "link": "none",
+        "callContext": "OTHER",
+        "areaAtCall": "low"
+      }
+    ],
+    "snapshots": [
+      {
+        "seconds": "46.298",
+        "id": "16",
+        "position": "<4509.954590, 340.191498, 10239.550781>",
+        "reason": "",
+        "traversalPhase": "FOLLOW",
+        "entryAligning": "false",
+        "entryAlignAge": "-1",
+        "leaseBackoffs": "0",
+        "backoffReason": ""
+      },
+      {
+        "seconds": "46.813",
+        "id": "16",
+        "position": "<4510.083984, 340.194000, 10239.579102>",
+        "reason": "LINK_ALIGN",
+        "traversalPhase": "FOLLOW",
+        "entryAligning": "true",
+        "entryAlignAge": "0.393005",
+        "leaseBackoffs": "0",
+        "backoffReason": ""
+      },
+      {
+        "seconds": "47.339",
+        "id": "16",
+        "position": "<4510.087891, 340.194000, 10239.549805>",
+        "reason": "ENTRY_POSE_SETTLE",
+        "traversalPhase": "FOLLOW",
+        "entryAligning": "true",
+        "entryAlignAge": "0.918999",
+        "leaseBackoffs": "0",
+        "backoffReason": ""
+      },
+      {
+        "seconds": "47.855",
+        "id": "16",
+        "position": "<4510.125977, 340.194672, 10239.533203>",
+        "reason": "",
+        "traversalPhase": "FOLLOW",
+        "entryAligning": "true",
+        "entryAlignAge": "1.43501",
+        "leaseBackoffs": "0",
+        "backoffReason": ""
+      },
+      {
+        "seconds": "48.374",
+        "id": "16",
+        "position": "<4510.088379, 340.193939, 10239.523438>",
+        "reason": "",
+        "traversalPhase": "FOLLOW",
+        "entryAligning": "true",
+        "entryAlignAge": "1.954",
+        "leaseBackoffs": "0",
+        "backoffReason": ""
+      },
+      {
+        "seconds": "48.923",
+        "id": "16",
+        "position": "<4510.125000, 340.194885, 10239.628906>",
+        "reason": "",
+        "traversalPhase": "FOLLOW",
+        "entryAligning": "false",
+        "entryAlignAge": "-1",
+        "leaseBackoffs": "1",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "49.437",
+        "id": "16",
+        "position": "<4510.372559, 340.200195, 10239.880859>",
+        "reason": "ALIGN_HEADING",
+        "traversalPhase": "FOLLOW",
+        "entryAligning": "false",
+        "entryAlignAge": "-1",
+        "leaseBackoffs": "1",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "49.954",
+        "id": "16",
+        "position": "<4510.599121, 340.204346, 10239.858398>",
+        "reason": "ALIGN_HEADING",
+        "traversalPhase": "FOLLOW",
+        "entryAligning": "false",
+        "entryAlignAge": "-1",
+        "leaseBackoffs": "1",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "50.507",
+        "id": "16",
+        "position": "<4510.908203, 340.210297, 10239.925781>",
+        "reason": "ALIGN_HEADING",
+        "traversalPhase": "FOLLOW",
+        "entryAligning": "false",
+        "entryAlignAge": "-1",
+        "leaseBackoffs": "1",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "51.013",
+        "id": "16",
+        "position": "<4511.112305, 340.214539, 10240.082031>",
+        "reason": "ALIGN_HEADING",
+        "traversalPhase": "FOLLOW",
+        "entryAligning": "false",
+        "entryAlignAge": "-1",
+        "leaseBackoffs": "1",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "51.534",
+        "id": "16",
+        "position": "<4511.270996, 340.181671, 10240.208984>",
+        "reason": "NATIVE_JOINT_WORLD_3",
+        "traversalPhase": "FOLLOW",
+        "entryAligning": "false",
+        "entryAlignAge": "-1",
+        "leaseBackoffs": "1",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "52.034",
+        "id": "16",
+        "position": "<4511.174805, 340.181580, 10240.221680>",
+        "reason": "LANDING_SPACE_BLOCKED",
+        "traversalPhase": "FALL",
+        "entryAligning": "false",
+        "entryAlignAge": "-1",
+        "leaseBackoffs": "1",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      },
+      {
+        "seconds": "52.554",
+        "id": "16",
+        "position": "<4510.988770, 340.212585, 10240.221680>",
+        "reason": "LAND",
+        "traversalPhase": "LAND",
+        "entryAligning": "false",
+        "entryAlignAge": "-1",
+        "leaseBackoffs": "1",
+        "backoffReason": "ENTRY_ALIGNMENT_NO_PROGRESS"
+      }
+    ],
+    "entryCalls": [
+      {
+        "seconds": "46.127",
+        "id": "16",
+        "callId": "27",
+        "stage": "DRIVE_BEFORE",
+        "tickTime": "80.905",
+        "phase": "FOLLOW",
+        "reason": "",
+        "position": "<4509.773438, 340.187958, 10239.484375>",
+        "heading": "88.0327",
+        "request": "1",
+        "nativeRequest": "1",
+        "nativeSeconds": "33.6998",
+        "activeLink": "low_to_high_lane_-1",
+        "actualEntryGap": "0.400566",
+        "actualNormalGap": "0.393066",
+        "actualHeadingGap": "1.96729",
+        "entryAligning": "false",
+        "alignAtAbsolute": "50.282",
+        "progressAtAbsolute": "50.74",
+        "bestHeading": "2.87025",
+        "stopReason": "",
+        "landingGate": "CLEAR",
+        "arActive": "false"
+      },
+      {
+        "seconds": "47.032",
+        "id": "16",
+        "callId": "31",
+        "stage": "DRIVE_BEFORE",
+        "tickTime": "81.806",
+        "phase": "FOLLOW",
+        "reason": "",
+        "position": "<4510.121094, 340.194580, 10239.538086>",
+        "heading": "102",
+        "request": "1",
+        "nativeRequest": "1",
+        "nativeSeconds": "34.3498",
+        "activeLink": "low_to_high",
+        "actualEntryGap": "0.0471514",
+        "actualNormalGap": "0.0454102",
+        "actualHeadingGap": "12",
+        "entryAligning": "true",
+        "alignAtAbsolute": "81.177",
+        "progressAtAbsolute": "81.177",
+        "bestHeading": "0",
+        "stopReason": "",
+        "landingGate": "CLEAR",
+        "arActive": "false"
+      },
+      {
+        "seconds": "47.918",
+        "id": "16",
+        "callId": "35",
+        "stage": "DRIVE_BEFORE",
+        "tickTime": "82.694",
+        "phase": "FOLLOW",
+        "reason": "",
+        "position": "<4510.125977, 340.194672, 10239.533203>",
+        "heading": "94.3432",
+        "request": "1",
+        "nativeRequest": "1",
+        "nativeSeconds": "34.9498",
+        "activeLink": "low_to_high",
+        "actualEntryGap": "0.0441753",
+        "actualNormalGap": "0.0405273",
+        "actualHeadingGap": "4.34323",
+        "entryAligning": "true",
+        "alignAtAbsolute": "81.177",
+        "progressAtAbsolute": "81.177",
+        "bestHeading": "0",
+        "stopReason": "",
+        "landingGate": "CLEAR",
+        "arActive": "false"
+      },
+      {
+        "seconds": "48.873",
+        "id": "16",
+        "callId": "39",
+        "stage": "DRIVE_BEFORE",
+        "tickTime": "83.644",
+        "phase": "FOLLOW",
+        "reason": "",
+        "position": "<4510.069824, 340.193756, 10239.583984>",
+        "heading": "51.6909",
+        "request": "1",
+        "nativeRequest": "1",
+        "nativeSeconds": "35.6497",
+        "activeLink": "none",
+        "actualEntryGap": "-1",
+        "actualNormalGap": "-1",
+        "actualHeadingGap": "-1",
+        "entryAligning": "false",
+        "alignAtAbsolute": "81.177",
+        "progressAtAbsolute": "81.177",
+        "bestHeading": "0",
+        "stopReason": "",
+        "landingGate": "CLEAR",
+        "arActive": "false"
+      }
+    ],
+    "sourceHashes": {
+      "native-ground.tsv": "c014eb876dc3a1ca7a05a9c1b5103dafd75901649ce0653e64f47f4fb86b495d",
+      "native-entry-ownership.tsv": "d511f021985f613f7eeb3ea5ca74324b586b2e8075a47b9f56746e5e3c4e9053",
+      "native-state-contract.tsv": "f34efb8bf2a90fb4d2e67a62875005990f9d4f3378e6b6d046850ba95aa580f5"
+    }
+  },
+  "metricDefinitions": {
+    "source": "https://raw.githubusercontent.com/GameTechDev/PresentMon/v2.6.0/README-ConsoleApplication.md",
+    "status": 200,
+    "sha256": "070f94cdcbbb096677cbd6d2e72eed1a4016d1bbbb86091c278bc4b37226ba81",
+    "fetchedAt": "2026-11-01T12:31:48.849049+09:00",
+    "scope": "Official version-pinned metric definitions; summaries below are paraphrases.",
+    "notes": {
+      "MsCPUBusy": "Application CPU frame-work timing before presentation; not an Enforce/native function profiler.",
+      "MsGPUBusy": "Duration when at least one GPU engine runs work for the measured process.",
+      "MsGPUWait": "Idle portion inside the frame GPU interval; not a function-level cause.",
+      "MsBetweenDisplayChange": "Previous displayed-frame duration, independent of NPC pose changes.",
+      "MsAnimationError": "CPU/display delta mismatch metric; excluded from NPC pose diagnosis."
+    }
+  }
+}
+
+Exact existing PresentMon CSV parser (not an NPC pose estimator):
+"""Actual PresentMon2.6 CSV contract; no pose/smoothness claim."""
+import csv,math,collections
+def number(v):
+ if v in [None,'','NA','N/A']:return None
+ x=float(v);assert math.isfinite(x);return x
+def distribution(v):
+ if not v:return None
+ a=sorted(v)
+ def q(f):
+  x=(len(a)-1)*f;i=int(x);return a[i]+(a[min(i+1,len(a)-1)]-a[i])*(x-i)
+ return dict(samples=len(v),p50=q(.5),p95=q(.95),p99=q(.99),minimum=a[0],maximum=a[-1])
+def parse(path,frequency,expectedPid):
+ with path.open(encoding='utf-8-sig',newline='') as f:r=csv.DictReader(f);rows=list(r);columns=r.fieldnames
+ required={'Application','ProcessID','SwapChainAddress','PresentRuntime','TimeInQPC','CPUStartQPC','MsBetweenPresents','MsBetweenDisplayChange','MsUntilDisplayed'}
+ assert required.issubset(columns) and rows
+ assert all(int(r['ProcessID'])==expectedPid and r['Application'].lower()=='dayz_x64.exe' for r in rows)
+ groups=collections.defaultdict(list)
+ for r in rows:groups[(r['SwapChainAddress'],r['PresentRuntime'])].append(r)
+ metrics=['MsBetweenPresents','MsBetweenDisplayChange','MsInPresentAPI','MsRenderPresentLatency','MsUntilDisplayed','MsBetweenAppStart','MsCPUBusy','MsCPUWait','MsGPULatency','MsGPUTime','MsGPUBusy','MsGPUWait','MsBetweenSimulationStart','MsFlipDelay']
+ out=[]
+ for i,(key,group) in enumerate(sorted(groups.items(),key=lambda x:len(x[1]),reverse=True)):
+  present=[int(r['TimeInQPC']) for r in group];cpu=[int(r['CPUStartQPC']) for r in group];assert len(present)>1 and all(b>a for a,b in zip(present,present[1:]))
+  pe=[abs((b-a)*1000/frequency-number(group[j]['MsBetweenPresents'])) for j,(a,b) in enumerate(zip(present,present[1:]),1)]
+  ce=[abs((b-a)*1000/frequency-number(group[j]['MsBetweenAppStart'])) for j,(a,b) in enumerate(zip(cpu,cpu[1:])) if number(group[j]['MsBetweenAppStart']) is not None]
+  display=[];de=[]
+  for r,t in zip(group,present):
+   delay=number(r['MsUntilDisplayed'])
+   if delay is None:continue
+   stamp=t+delay*frequency/1000
+   if display and number(r['MsBetweenDisplayChange']) is not None:de.append(abs((stamp-display[-1])*1000/frequency-number(r['MsBetweenDisplayChange'])))
+   display.append(stamp)
+  assert max(pe)<.001 and (not ce or max(ce)<.001) and (not de or max(de)<.001)
+  values={};missing={}
+  for name in metrics:
+   if name not in columns:continue
+   vs=[number(r[name]) for r in group];values[name]=distribution([x for x in vs if x is not None]);missing[name]=sum(x is None for x in vs)
+  out.append(dict(alias='chain-'+str(i),runtime=key[1],rows=len(group),presentSpanSeconds=(present[-1]-present[0])/frequency,presentModes=dict(collections.Counter(r['PresentMode'] for r in group)),syncIntervals=dict(collections.Counter(r['SyncInterval'] for r in group)),metricsMs=values,missingValues=missing,missingDisplayTimingRows=sum(number(r['MsUntilDisplayed']) is None for r in group),presentIntervalIdentityMaxErrorMs=max(pe),cpuIntervalIdentityMaxErrorMs=max(ce) if ce else None,displayIntervalIdentityMaxErrorMs=max(de) if de else None))
+ return dict(csvRows=len(rows),columns=columns,processFilterVerified=True,swapChainsMerged=False,chains=out,scope='App/CPU/GPU/presentation telemetry only. MsAnimationError deliberately excluded from NPC animation diagnosis. No self-time, GC, bone upload, optical smoothness or zero ETWloss claim.')

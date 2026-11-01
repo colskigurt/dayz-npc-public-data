@@ -1,3 +1,5 @@
+> 최신 실제64계측: Present631건, p95 93.070ms·CPUbusy91.088·GPUbusy12.207ms. 64/64도달·87/87낙하복구, 정렬watchdog1건으로 기존엄격기능gate실패. 시각품질 미측정·20ms미달·개선주장없음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/presentation-etw-64-actual-20261101.md). 이전기록보존.
+
 > 최신 실행자산 대조: 대표run535 retained node·8ANM 포장 일치. 기존 전체/subset 본 transform차0 trace 재확인. 새64 ETW worker는 준비·도구수명/권한거부 시험만 통과. GPU/표시/성능 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-runtime-chain-20261101.md). 이전 기록 보존.
 
 > 최신 대표run 대조: PSA 활성키36,736개 저장값 일치. Blender→일반/root TXA 명시채널 오차 허용범위 내. 최초 게임 추출·ANM·실제 시각품질은 미인증. 새게임 실행/PBO 변경 없음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-run-source-parity-20261101.md). 이전 기록 보존.
