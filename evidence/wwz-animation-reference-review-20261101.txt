@@ -1,0 +1,66 @@
+{
+  "sourcePdf": {
+    "sourceUrl": "https://gpuopen.com/gdc-presentations/2019/gdc-2019-agtd4-high-zombie-throughput-in-modern-graphics.pdf",
+    "bytes": 91944601,
+    "sha256": "f8cc7e80b4d1745fd9931b9a3d1ce612a2ee19bfd4ccca179ca290e78522a0b1",
+    "pages": 63,
+    "retrievedAt": "2026-11-01T14:30:14.318963+00:00",
+    "pdfRetained": false,
+    "scope": "Public presentation read only; no game execution or code changes"
+  },
+  "repositorySources": [
+    {
+      "repository": "CrystalFerrai/UeBlueprintDumper",
+      "commit": "9726294772458eb6114946e967e204925f8b1b66",
+      "path": "readme.md",
+      "url": "https://raw.githubusercontent.com/CrystalFerrai/UeBlueprintDumper/9726294772458eb6114946e967e204925f8b1b66/readme.md",
+      "sha256": "e3ea36151e35b5bdb871a7ab581686cb8e9040c8084e8fc9566a1dc3e4570a3a",
+      "bytes": 8285
+    },
+    {
+      "repository": "CrystalFerrai/UeBlueprintDumper",
+      "commit": "9726294772458eb6114946e967e204925f8b1b66",
+      "path": "UeBlueprintDumper/Program.cs",
+      "url": "https://raw.githubusercontent.com/CrystalFerrai/UeBlueprintDumper/9726294772458eb6114946e967e204925f8b1b66/UeBlueprintDumper/Program.cs",
+      "sha256": "00c994ff77c3f7fb84bc3c71377c609b375d27dcf7946380378f4650aa648fb8",
+      "bytes": 5277
+    },
+    {
+      "repository": "CrystalFerrai/UeBlueprintDumper",
+      "commit": "9726294772458eb6114946e967e204925f8b1b66",
+      "path": "UeBlueprintDumper/FunctionDumper.cs",
+      "url": "https://raw.githubusercontent.com/CrystalFerrai/UeBlueprintDumper/9726294772458eb6114946e967e204925f8b1b66/UeBlueprintDumper/FunctionDumper.cs",
+      "sha256": "f60cefdfadb24ca2b87cbd7040270e1c6168e36e16136cde981e464eb078b194",
+      "bytes": 32785
+    },
+    {
+      "repository": "TetzkatLipHoka/ps4-unreal-dumper",
+      "commit": "65fb84b83b30c98478a178f81ea26d6ddf51b38a",
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/TetzkatLipHoka/ps4-unreal-dumper/65fb84b83b30c98478a178f81ea26d6ddf51b38a/README.md",
+      "sha256": "a59cb9e80251bd1fe11470a03e7637e6192666131d2478bce99ab6e2387dd959",
+      "bytes": 11120
+    },
+    {
+      "repository": "TetzkatLipHoka/ps4-unreal-dumper",
+      "commit": "65fb84b83b30c98478a178f81ea26d6ddf51b38a",
+      "path": "examples/DaysGone.md",
+      "url": "https://raw.githubusercontent.com/TetzkatLipHoka/ps4-unreal-dumper/65fb84b83b30c98478a178f81ea26d6ddf51b38a/examples/DaysGone.md",
+      "sha256": "5d0053b8c68d2ccab7004dc03473d511ad130a4b417819cbae69a700c23926ef",
+      "bytes": 7005
+    }
+  ],
+  "scope": "Reference audit only; no third party source/slides redistribution",
+  "findings": [
+    "Foreground batching is distinct from background VAT",
+    "Two-frame bone data does not prove interpolation",
+    "Rendering submission cost is not animation evaluation self-time",
+    "Blueprint disassembly does not recover native implementation"
+  ],
+  "limits": [
+    "No new runtime or performance measurements",
+    "WWZ 2019 presentation only; current Aftermath implementation not verified",
+    "No Days Gone native animation optimization reconstruction",
+    "DayZ renderer/animation sharing/VAT control path not established"
+  ]
+}

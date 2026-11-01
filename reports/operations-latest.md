@@ -1,59 +1,76 @@
-# 그려지는 HUD 표식 확인·반복 이미지 coverage 재판정·외부 호드 자료 검토
-
-작성: 2026-11-01T19:04:25.372467+09:00
-
 ## 1. 작업 목표
 
-계측용 HUD binary 막대를 실제로 칠하고 checksum/client log와 연결한다. 동작/갱신 정책을 유지해 레이아웃 변경을 분리하며, 반복 캡처 이미지를 독립 pose 표본으로 세지 않는다. 중간에 사용자가 전달한6개 대량호드 참고자료는 설계후보로 분리 검토하고 현재 구현에 섞지 않는다.
+World War Z 원개발자 발표와 Days Gone 공개 분석 도구를 자세히 읽어, 현재 DayZ 애니메이션 비용/표시 진단에 유효한 근거와 엔진 제약을 구분한다. 외부 자료 검토이며 현재 게임 실험을 대체하지 않는다.
 
 ## 2. 실제 수행
 
-설치된 GUI style XML을 파싱해 Colorable 소유 위젯을 조사했다. Window/Button/GridSpacer 등에 정의가 있고 Panel에는 없었다. 이전 Panel에style만 추가한 준비v4는 실행하지 않고 보존했다. 별도후보는 root WindowWidget/24개ButtonWidget에 명시Colorable을 사용한다. script는이전v3와동일SHA fe9d763994e870157f367907b40f7aed3907ab8dbf315f2fd87e105350b2cfb5다. build/pbo source일치·서명검증을 마쳤다.
+AMD 공식 링크의 GDC 2019 PDF 63쪽을 텍스트로 읽고 핵심 34·36·41·42·44·45·46·47쪽을 렌더링했다. 34·42·46·47쪽은 직접 이미지로 재확인했다. 약 92MB PDF는 메모리에서 처리하고 원본 파일은 보관하지 않았다. 렌더 이미지 8장과 메타데이터, 공개 저장소의 선정 소스만 보관했다. PDF 파서는 잘못된 객체 offset 경고를 냈지만 63쪽 추출과 선정 페이지 렌더는 완료됐다.
 
-동일기본1part·고정run·network 진단에서2회시험했다. 시도1은녹화초반 검은화면이었고 활성화뒤구간에서막대를확인했다. 원본을보존했다. 시도2는실제foreground gate가준비돼야recorder가시작되도록 순서를수정했다. CU활성화실패뒤 실제창/프로세스를재확인해한번재시도했고성공했다. 새게임을관찰timeout만으로재시작하지않았다. 이후사용자메시지로turn이중단됐으나회수시두실행의client/server/recorder가모두종료됨을실제상태로확인했다.
-
-영상해독첫crop은YUV의홀수높이반올림으로shape오류가났다. exact crop으로고쳤고원래생산자를보존했다. 고정120프레임geometry검사는시도1의검은화면이라거부됐다. 실제후반600프레임에서검은root사각형만으로scale/좌표를구한별도revision을사용했다. 프레임번호/native시계는geometry보정에쓰지않았다. 각24bit의16bit ID/8bit XOR checksum·밝기·로그멤버십·단조성을검사했다.
+별도 Vulkan 발표 67쪽의 추출 본문을 확인했다. Days Gone 관련 두 저장소는 커밋을 고정해 README/예제와 Program.cs·FunctionDumper.cs를 읽었다. 설치·빌드·게임 주입·게임 실행·새 성능 측정은 하지 않았다. ModLoader/UEViewer는 앞선 지원 범위 확인을 넘어 전체 소스 감사를 수행하지 않았다.
 
 ## 3. 측정 결과
 
-두영상각723프레임이며OBS출력표식/QPC는각723/723연결됐다. 시도1 gameHUD209/723 valid·서로다른ID162개·양쪽TickCount native bracket이직접일치한ID30개다. native776표본/15.5036303초·TickCount bracket1553회검증,오류0이다. 시도2는gameHUD670/723 valid지만서로다른ID169개·직접bracket ID156개에그쳤다. native156표본/8.0785038초·bracket312회검증,이후callback2초공백으로관찰이끝났다. source-run/coverage차를보존하며15초완주로세지않는다.
+아래는 개발진 발표의 설명/예시이며 이 PC의 독립 재현 측정이 아니다.
 
-단순해독이미지수>500의시도2 flag는true였지만이값을시간coverage수용으로쓰지않았다. 같은ID최대144이미지·반복501쌍이포함됐기때문이다. 독립ID/직접bracket 기준250개로다시검사해두실행모두temporalCoverage=false로기록했다. 이전flag도삭제하지않았다. 시도1반복47쌍중body/background ROI전체동일2쌍, 시도2반복501쌍중동일11쌍이다. 다른픽셀변화는바람/TAA/표시등을포함하므로본pose갱신증명도아니다.
+| 발표 페이지 | 확인된 내용 |
+|---|---|
+| 34 | 5천 이상 표시 중 대부분 비상호작용 배경. 전경 300+ 캐릭터, 완전한 brain 50개라고 명시 |
+| 36 | 3종 골격, 골격당 약 50본, 4개 메시 영역으로 외형 조합 |
+| 41–42 | 동일 영역 메시/LOD별 instancing. 예시 전경 310개, draw 1240→223. LOD별 본/삼각형 수도 감소 |
+| 42 | 2프레임분 본 데이터 표기. 이것만으로 시간 보간 방식을 확정할 수 없음. 2.5ms×6 threads는 렌더 명령 생성 예시이며 애니메이션 평가 self-time 아님 |
+| 44–47 | 배경은 약 400삼각형 메시, 두 타입 각각 단일 달리기 동작을 정점 offset/normal 텍스처로 베이크. 풀 렌더 시스템을 재사용하고 제작된 spline 경로를 위치 텍스처로 샘플링 |
 
-scheduler callback간격p50/p95/p99는시도1 20.1018/22.86221/23.356104ms,시도2 52.1743/56.80475/60.129414ms다. 계측·focus·capture/lifetime조건이달라성능A/B로쓰지않는다. 실제game/display frame-time·8/64기능회귀·GPU/할당/GC는미측정이다.20ms p95는여전히목표다.
+출처: [High Zombie Throughput in Modern Graphics, PDF](https://gpuopen.com/gdc-presentations/2019/gdc-2019-agtd4-high-zombie-throughput-in-modern-graphics.pdf).
 
-실행1영상44163058bytes/SHA87a5b90c3142cde032e8976c5b6f0cd96157eac7efd071e5c13ff02d2b8de789,실행2영상93043181bytes/SHA1bf67efc795621c7fc8360b851c351342728a9705ab98a4d08f3f91b18275850이다. 둘다CRF12·12초이며원시증거를보존하고추가full영상복사는없다. 두client정상종료marker·강제client종료없음·VM/crash0,serverDONE뒤소유server정리,recorder정상stop·basic/scene/encoder3설정원래bytes복원을확인했다.
+별도 [Vulkan 발표](https://gpuopen.com/presentations/2019/World-War-Z-Using-Vulkan-to-tame-the-zombie-swarm_Oct19.pdf) 11–18쪽은 CPU 명령 제출/동기화와 병렬 command buffer 기록을 설명한다. 그 렌더 CPU 개선 수치를 골격 평가 개선률로 사용하지 않는다.
+
+신규 8/64개체 안정성, p50/p95/p99, 애니메이션 갱신률, 시각 품질 수치는 모두 미측정이다. 기존 측정값/실험 시각을 갱신하지 않았다. 20ms p95는 계속 목표다.
 
 ## 4. 원인 분석
 
-확인된사실: 등록된painted위젯을쓰는레이아웃에서는binary막대가보인다. 다만widget class와style를함께바꿨으므로style단독원인까지분리한결과는아니다. 계측script/animation동작은같다.
+### 확인된 사실과 해석
 
-확인된한계: 체크섬통과이미지수만으로시간적관측량을판정하면같은HUD상태재표시를새관측으로오인한다. log/state ID가같으면서다른ROI픽셀이변하는경우도있어'동일HUD=전체게임프레임정지'로단정할수없다. callback/HUD유효기간·WGC비동기texture·UI갱신시점의관계는미확정이다. 사용자turn중단을엔진원인으로단정하지않는다.
+전경의 개별 캐릭터 처리와 배경의 연출용 다량 표시는 다른 문제다. 배경 VAT의 단일 달리기·제작 경로는 임의 플레이어 추적, 개별 피격, 컨테이너 접촉·낙하·재등반을 그대로 충족하는 구조가 아니다. 배경에서 전경으로 자동 승격하는 구체적 계약은 이 발표에서 확인하지 못했다. brain 50의 선택/갱신 정책도 미확인이다.
 
-다음계측에는실제foreground/HUD준비후남은fixture유효기간이native15초및독립ID250개를수집하기에충분한지확인해야한다. 부족하면녹화/attachment를시작하지않아야한다. 이번두실행의coverage를성공으로낮춰정의하지않는다.
+인스턴싱은 그리기 제출을 묶는 기법이다. 포즈 평가 공유와 동일하지 않다. 두 프레임 본 데이터는 이전/현재 자료, 모션 계산 또는 보간 등 여러 용도가 가능하므로 구체 소비 경로 없이 추정하지 않는다. 현재 DayZ의 시계 손실과 최종 표시 불일치 원인이 이 발표로 해결된 것은 아니다.
+
+### Days Gone 도구 판정
+
+- ps4-unreal-dumper: README와 DaysGone 예제는 PS4 SDK/객체 정보 생성 및 내장 디버그 메뉴 접근 사례다. 호드 애니메이션 최적화의 복원 보고서가 아니다. PS4 주소/레이아웃을 PC에 그대로 적용할 수 없다. 도구 실행/SDK 샘플 압축본 내부 검증은 하지 않았다.
+- UeBlueprintDumper: Program.cs는 CUE4Parse로 자산을 검색해 출력한다. FunctionDumper.Process는 ScriptBytecode와 KismetExpression을 처리한다. Blueprint bytecode의 제어 흐름 조사에는 후보 가치가 있으나, 네이티브 C++ 평가 루프 본문이나 실제 실행 비용을 이 도구 하나로 확보하지는 못한다. DaysGone 옵션의 존재와 설치본 실제 호환성은 별도다.
+- DaysGoneUnrealModLoader/UEViewer: 모드 연결/자산 해석 도구라는 앞선 분류를 유지한다. 현재 빌드 호환성, 호드 최적화 효과, 전체 소스 안전성은 미검증이다.
+
+### 우리 작업에서의 활용도
+
+| 후보 | 활용 가치 | 제한/회귀 위험 |
+|---|---|---|
+| 현재 8파트의 평가·렌더 제출 비용 분리 | 높음. 행렬 동등성과 비용 감소를 따로 판정 | 합치거나 재배치하기 전에 동일 조건 계측 필요 |
+| 본/메시 LOD | 이미 부분 골격 연구와 연결 가능 | 전경 충돌용 포즈·모델 연결 보존. WWZ 약50본과 DayZ 합계535본은 동일 기능/골격 조건 아님 |
+| 근거리 정밀 NPC와 원거리 저비용 표현 | 향후 수백 개체 연구에 높음 | 별도 연구. 피격/사망/전환 상태 보존 비용 필요 |
+| VAT·GPU instancing·command buffer 제어 | 원리 참고 | 현재 DayZ 공개 모드 경로에 실행 가능한 제어 API를 확보하지 못함. 불가능함을 증명한 것은 아님 |
+| 단순 애니메이션 갱신 생략 | 현재 채택 근거 부족 | 표시 보간이 미확인인 상황에서 끊김 악화 가능 |
+| Days Gone SDK/Blueprint 조사 | 탐색할 클래스·설정 후보 좁히기 | 원본 native 시간/LOD/표시 함수는 별도 계측 필요 |
+
+반증/정정: '표시 5천=5천 정밀 AI·충돌·골격 평가', 'instancing=포즈 공유', '2프레임 데이터=특정 보간 방식', '렌더 CPU 절감=애니메이션 비용 절감'으로 해석할 근거가 없다. WWZ의 원거리 VAT 사실을 Days Gone에 전이하지 않는다.
 
 ## 5. 검증 수준
 
-진단성공: 막대실제표시·checksum/log decode·기존QPC연결,반복표본에의한coverage오판방지. 미완료: 충분한독립시간coverage,render pose identity·texture age·physical scanout,최종애니메이션시각품질. 전체NPC회귀/반복시각검증/성능목표/최종수용은아니다. 기존mode0손실·변환경로·64개체비용실험을대체하지않는다.
+자료 조사/페이지 확인 성공. 도구 실제 호환성은 미실행. DayZ 기능 회귀·시각 품질·반복 성능 검증·최종 수용은 이번 범위에서 미실행이다. 원본 역분석 완료 또는 이식 가능 확정으로 보고하지 않는다.
 
 ## 6. 변경 사항
 
-새계측PBO 1B130510D7C1A212384E41BD2A7984BAD1C226D74CABAC185B2C00C090A706DD는packed script/layout 일치및서명·검증성공이다. 개인키는release에없다. 기존453D/0C6E/B8FB 세게임PBO는변경없고각실행4개signature검증은성공이다. gameplay코드·ANM·운영서버·Steam배포는변경하지않았다. 기존준비v4/실패decode/black영상도보존했다.
+공개 참고자료 읽기 결과와 선정 소스/페이지 이미지/해시만 신규 보관했다. 게임 코드·PBO·애니메이션 시계·클라이언트 설정은 변경하지 않았다. 새 PBO가 없어 신규 서명 대상도 없다. 현재 B안의 기존 실험 이력을 유지하고 외부 참고 검토를 별도 항목으로 연결한다.
 
 ## 7. 원시 증거
 
-묶음 animation-diag-painted-label-20261101-1850의style-investigation/plan/source/build/packed proof/signature, runtime및runtime-2의launch/profile/native/heartbeat/callback-gap/marker/decode/geometry/hud-native-joined/recorder와analysis를보존한다. source/public해시검증·JSON파싱·종료확인후기존MD/TXT/checkpoint/진행JSON/B안에연결한다. 공개본은집계·선정geometry/대표join·한계만노출하며raw영상·실제networkID·PID·CLI·로컬절대경로·키·게임자산은제외한다.
+검토 ID: wwz-animation-reference-review-20261101. PDF SHA-256 f8cc7e80b4d1745fd9931b9a3d1ce612a2ee19bfd4ccca179ca290e78522a0b1, 91,944,601bytes, 63쪽. 원본 미보관으로 추후 공식 URL에서 재취득 필요. 페이지 PNG는 로컬 검토용이며 공개 저장소에 재배포하지 않는다.
+
+UeBlueprintDumper 커밋 9726294772458eb6114946e967e204925f8b1b66, ps4-unreal-dumper 커밋 65fb84b83b30c98478a178f81ea26d6ddf51b38a. 선정 파일별 URL/해시는 repository-sources.json에 연결한다. 공개 패킷은 메타데이터와 자체 해석만 제공하고 타사 소스/슬라이드 전체를 재게시하지 않는다.
 
 ## 8. 잔여 문제
 
-우선현재capture의남은유효기간gate와충분한독립frame/native대응을확보한다. 새시간보정·보간·frame skipping을적용하지않는다. 이후pose/world/projection·실제이미지를동일ID에서대조한다.64개체비용최적화는별도통제실험이다.
+현재 표시 표식의 충분한 독립 시간 표본을 확보하는 진단을 우선 유지한다. 다음 비용 실험은 기존 하네스의 실제 조건을 점검한 뒤 AI/이동 없는 1/64 애니메이션, 64 정적 포즈, 64 활성 애니메이션 조건의 비교 가능성을 평가한다. 실험 자체는 이번에 시작하지 않았다. callback 간격·CPU pose 변화·Present 간격·GPU 활동을 독립 판정한다.
 
-사용자가제공한6개호드자료의공식listing/README를이번에확인했다. 소스전체검토·데모실행·구매/설치는하지않았다. [SwarmZ](https://www.fab.com/listings/b4f706c9-125d-493a-9620-db5b0b0ee980)는근거리skeletal/원거리GPU·baked animation과통합행동명세참고다. [Pioneer](https://www.fab.com/listings/463bd9f2-766c-4e09-8169-8e9ce1b781ac)는Actor-Mass연계·VAT/LOD전환경계참고다. 제작자수천개체수치를우리full NPC64개와동일정밀도로비교하지않는다.
+Days Gone 추가 연구가 필요하면 기존 로컬 SDK/자산 조사 이력을 먼저 찾고 선택한 animation/LOD 관련 클래스와 Blueprint만 읽는다. 성과 기준은 구체 갱신 정책 또는 소비 경로의 증거이며 도구 설치만으로 성공 판정하지 않는다. 전체 덤프·배경 VAT 이식·새 LOD·무작정 보간은 보류한다. 원본 갱신 정책을 확인해도 DayZ에서 대응하는 제어 경로가 없으면 원리 참고로 종료한다.
 
-[MiHordeTraffic](https://github.com/innocentmiau/MiHordeTraffic)는shared flow field·혼잡비용·spatial hash의공개연구후보다. README의5천개체18.68/12.08ms는editor/Collections checks조건이며우리성능근거가아니다. settling/경사거부/문대기는보존할낙하·재등반행동과충돌여부를검토해야한다. GitHub MIT표시는확인했으나이번turn에서라이선스파일/전체코드를다읽었다고하지않는다.
-
-[crowd-simulation](https://github.com/gianmarcopicarella/crowd-simulation)은광장목표·일정속도NavMesh/회피UE5.3프로젝트로기존소스검토기록을먼저재사용한다. [MassZombies](https://github.com/stopthem/MassZombies)는UE5.2·단일AnimToTexture·static instances·hardcoded처치박스로표현/충돌타협을보는사례다. README의5600X/3060Ti25~30FPS는제작자관찰이다. [Massive Swarm System](https://assetstore.unity.com/packages/tools/game-toolkits/massive-swarm-system-384066)은store의가격/URP메타데이터를확인했으나추출된상세설명은비어기능검증을보류한다.
-
-현DayZ모딩경로에서이들의Mass/Burst/GPU애니메이션·native multithread실행을직접연결하는경로는확보되지않았다. 이를불가능증명으로확대하지않고기능·API·비용검증미확보로표시한다. 신규검토순서는공유경로/혼잡소스(MiHordeTraffic),통합행동/근원거리전환명세(SwarmZ/Pioneer),표현비용사례(MassZombies)이며현재애니메이션진단의선회를뜻하지않는다.
-
-선정 공개 본문. 로컬 보고서 SHA-256: `e229e74b669b2e0eaf1953c9619d8802a537c362036bf2f4882cb613309db3b0`. 원시 전체가 아니다.
+로컬 checkpoint SHA-256: b92aa704b368b144612371f8e955f5e95844d93c362f9da3889626651e4af3a2
