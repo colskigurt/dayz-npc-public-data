@@ -1,55 +1,57 @@
-# 진단 빌드의 애니메이션 호출·객체 배치 정적 매핑
+# 진단 mode2의 연속 호출·compressed pose 수집과 미확인 공간/alias
 
-작성: 2026-11-01T17:24:24.273437+09:00
+작성: 2026-11-01T17:33:35.429807+09:00
 
 ## 1. 작업 목표
 
-연결 기준 시험을 통과한 진단 exe에서 네트워크 애니메이션 계측 주소와 필드 소유자를 별도로 확인한다. 일반 exe의 주소·객체 배치를 검증 없이 재사용하지 않는다. 기존 게임 구현과 시간 손실·표시 연구를 보존한다.
+정적 매핑한 A500 진단 함수·필드가 실제 mode2 개체에서 이어지는지 확인하고, 오래된 행렬 캐시와 구분되는 compressed pose를 수집한다. 수치 변경 없이 기존 NPC 파이프라인·일반 exe 시계 근거·64개체 기능/비용 연구를 보존한다.
 
 ## 2. 실제 수행
 
-기존 PE RTTI·Capstone 분석 도구를 한정된 함수/직접 분기 창에 사용했다. 실행·부착·패치 없이 파일을 읽었다. 각 원시 명령 바이트·범위·해시·외부/간접 경계를 저장했다. 이는 REA native provider의 완전한 decompilation/runtime Evidence가 아니다. 기존 provider 전체 분석 실패를 이유 없이 반복하거나 새 도구를 설치하지 않았다.
+검증된 진단 client/server fixture를 물리1파트·고정run·루트/AI 이동OFF 조건으로1회 실행했다. 실제 서버 NPC READY 뒤에만 같은 profile·PID·실행 파일SHA를 대조해 Python Frida로 연결했다. 진단 모듈에 BEClient/BEServer/BattlEye 이름이 있으면 거부하고, 함수4개의 첫16바이트를 파일과 대조했다. 데이터 수치를 바꾸지는 않았지만 Interceptor hook과 injected 관찰 코드가 있으므로 무침습/무오버헤드가 아니며 성능 비교에서 제외한다.
 
-DayZAnimal RTTI의 primary/subobject 표를 각각 찾고, 동일 primary slot 후보를 실제 명령으로 확인했다. buffer subobject의 반환-owner thunk·slot0x48 소비 함수·일반 dispatcher·scheduler의 직접 호출·mode 분기를 연결했다. descriptor의 numerator/duration과 joint-transform 보간 경로 및 API query 경로를 별도 확인했다.
+진단 scheduler C6A020→dispatcher A7E7A0→consumer C680A0→interpolation C08340을 관찰했다. vtable·mode2·65본·포인터 shape 조건으로 대상1개를 고정했고 graphClock은 읽지 않았다. 매3번째 scheduler 종료에 두 skeleton의 이름6개에 대응하는32-byte transform을 기록했다. shader/renderer/GPU pose는 읽지 않았다. CU 활성화는 기록 종료 뒤로 미뤘지만 실제 시도 때 client가 이미 닫혀 화면을 확보하지 못했다. 실패를 보존한다.
 
 ## 3. 측정 결과
 
-입력은 일반 C6709ECE5468FADEB7EDA085355A7DC5157601DDC589FB2BEAC6F5726A99F933, 진단 A500BE804FFED5CDE369337AEB6AB477EF5EE0B5015764BE2B1953C85EC3060D다. primary 표에서 연속 code-pointer prefix는365/369개로 달랐다. 완전한 class ABI 동등성 판정은 아니다.
+25.2109006초 유효 표본 범위,229표본, 네 함수 각689회, 계측 오류0·script 관찰 오류0을 확보했다. SDK 이름 해시→slot은 Head31/Hips3/spine2=13/Neck22/LeftHand29/RightHand64였다. capacity128, mode2,65본과 진단 vtable 조건이 실제로 맞았다. graphClock unavailable은 그대로다.
 
-진단 객체의 animation context는+0x628, mode는+0x670, mode0 누적기는+0x674, buffer subobject는+0x600이다. 일반 exe의 대응 근거는 각각+0x620/+0x668/+0x66c/+0x5f8였다. 진단 mode0 threshold는+0x258에서 읽는다. secondary interval과 graph-clock 필드는 아직 독립적으로 매핑하지 않았다.
+interpolation callback 간격 p50/p95/p99는36.737/38.503/42.076ms, 매3회 pose 표본 간격은110.089/114.822/120.542ms다. 이는 계측 callback/sample 간격이지 game frame-time이나 native self-time이 아니다. foreground/appActive를 연속 기록하지 않아 갱신 빈도의 원인을 특정하지 않는다. CU 활성화는 관찰 기간 중 요청하지 않았다.
 
-진단 RVA: scheduler C6A020, dispatcher A7E7A0, descriptor consumer C680A0, item consumer C69700, interpolation C08340, joint state interpolation C083D0, MS query wrapper C67B00/helper C04760, hash-to-slot310320이다. scheduler97명령, dispatcher257명령, 선택 interpolation79명령(명시 창 안의 직접 tail 경로 포함), joint helper148명령을 보존했다. 숫자는 런타임 호출 횟수가 아니다.
+retained duration은50.0000007ms였다. numerator/duration의 p50/p95/p99는0.577408/1.906318/2.0, 최대2.0이며689개 중67개가1을 넘었다.1초과 기록은 선택 후 약0.00055~22.93703초 범위에 있어 전부 시작 직후 현상이라고 단정할 수 없다. bufferCount 표본은0/1이다. 입력 비율이1을 넘는 것과 joint helper에서0..1로 clamp하는 것은 별개이며 실제 화면 정지 판정은 아니다.
 
-새 runtime/8·64 회귀/frame-time p50/p95/p99/CPU·GPU·표시/할당·GC 측정은 없다.20ms p95는 목표다. 새 PBO·영상·덤프·클라이언트 실행은 없다.
+Head 회전 성분은 인접228/228 표본에서 바뀌었다. 여섯 본을 포함한 query188/interpolated190 값은229/229 표본에서 정확히 같았다. skeleton/array pointer identity를 기록하지 않아 alias와 별도 저장소의 같은 결과를 구분하지 못한다.
+
+서버 DONE·pose2151행·요청 상태2·최종commandSeconds44.9496/updates899다. 조기disconnect0·BE kick0·crash0, client 종료 marker·강제 종료 없음, 기존3개 PBO 서명 검증 성공이다. 기본 진단 플러그인 경고8줄은 남고 알려진 완결 경고로 구분했다. 새8/64 회귀·frame-time p50/p95/p99·GPU/display·할당/GC는 미측정이며20ms p95는 목표다.
 
 ## 4. 원인 분석
 
-확인된 사실: 진단 scheduler의 mode2는 entity+0x600을 dispatcher에 넘긴다. dispatcher는 subobject+0x18에 dt를 더하고 처리한 interval을 빼며, slot0x48이 retained descriptor 소비로 이어진다. mode0에는 누적기+0x674를0으로 초기화하는 분기가 남아 있다. 이는 정적 구조이며 진단 live mode나 개선 효과의 확인은 아니다.
+확인된 사실: 이 진단 환경에서는 native 관찰기를 붙인 채25초 이상 선택된 실제 mode2 경로와 pose 변화가 이어졌다. 기존 일반 exe의 BattlEye restart 이탈 문제를 해결했다고 소급하지 않는다. 진단1회 feasibility를 통과한 것이다.
 
-확인된 사실: descriptor 소비는 animation context를 sub+0x28에서 읽고 interpolation에 넘긴다. interpolation은 numerator를 retained+0x38 duration으로 나누며 context+0xA0의 joint helper를 호출한다. helper는 그 상태+0xF0, 즉 context+0x190의 skeleton에서 +0x30 배열에32-byte transform slot을 쓴다. query MS helper는 context+0x188의32-byte transform을 읽고 matrix로 변환한다.
+확인된 사실: CPU storage 값은 변한다. 그러나 query와 interpolation 값의 일치는 저장소 alias일 수도 있어 현재 자료만으로 보간이 정상 작동한다거나 실패했다고 결론 내리지 않는다. 입력 비율1초과가 일부 시점에 있으므로 다음에는 queue/포인터/갱신 전후를 함께 봐야 한다.
 
-따라서 압축 transform 갱신, cached matrix 조회와 실제 표시를 구분해야 한다. 이전 일반 빌드의 matrix 관찰을 소급 무효화하거나 반대로 이번 진단 배치를 그대로 대입하지 않는다. cache 생성·무효화와 일반 빌드 대응은 추가 확인 대상이다.
+기록 라벨 보정: 원시 JS가 word+0x1c를 scale로 명명했지만 의미는 검증되지 않았고 모든 표본이0이었다. 선정 파생본은 rawWord1C로만 제공한다. 세 positional component의 공간도 미확인이다. 예를 들어 첫 Head 성분 y약0.07575와 서버 API model-space Head y약1.60은 서로 다른 의미/시점일 수 있으므로 직접 MS 오차·지연을 계산하지 않는다. bone-local 후보지만 hierarchy나 정확한 API binding 확인 전 확정하지 않는다.
 
-미확인: 진단 context+0x198을 graph clock으로 사용할 근거는 아직 없으므로 읽기 계획에서 제외한다. diag-pose.json의 poseAndClock이라는 중간 라벨은 후보명이며 C08660 원문은 root-transform 보간을 보여준다. graph-clock writer를 확보했다고 취급하지 않는다. 전부8byte 이동한다는 일반 규칙도 만들지 않는다.
+화면 관찰 실패로 CPU 변화와 실제 표시의 시간적 일치를 이번에 검증하지 못했다. 변경되는 본 값·callback 기록만으로 사용자가 본 낮은 프레임 문제가 해결됐다고 보고하지 않는다.
 
 ## 5. 검증 수준
 
-선택 정적 호출·필드 관계 매핑은 진단 성공이다. 진단 live object/call 계측은 미실행이다. 일반 exe 수정, 전체 기능 회귀·반복 수용·애니메이션 부드러움·성능 최종 수용은 미완료다.
+진단 live object 선택·4단계 호출·25초 compressed pose 수집은 진단 성공이다.1회이며 반복 검증 완료는 아니다. 공간/alias/graphClock·실제 표시 연결은 미확인이다. 전체 NPC 기능 회귀, 일반 exe 해결, 시각 품질·성능 목표·최종 수용은 미완료다.
 
 ## 6. 변경 사항
 
-기존 research에 SHA-bound 정적 분석 생산자와 결과만 추가했다. 분석 모듈의 target/hash는 해당 Python 프로세스 메모리에서만 바꿨고 공용 도구 원문이나 게임/PBO/ANM/9350 후보/운영 서버는 변경하지 않았다. 새 PBO가 없어 새 서명 대상은 없다. 직전 진단 기준 시험에서 기존3개 PBO 서명 검증은 성공했으며 이번에는 게임을 실행하지 않았다.
+새 격리 research의 launch·observer JS/Python·분석·선정 projection만 추가했다. 게임 코드·PBO·ANM·9350 후보·운영 서버는 변경하지 않았다.3개 PBO 기존 서명 검증은 성공했고 신규 PBO가 없어 새 서명 대상은 없다. hook 외의 게임 수치 쓰기/배율 보정·시계 패치·서비스/드라이버/보안 설정 변경은 없다. 새 영상·대용량dump·도구 설치는 없다.
 
 ## 7. 원시 증거
 
-분석 ID animation-diag-map-20261101-1720. diag-map/paths/callers/clock/pose/interpolation-state 및 생산자.py를 보존한다. direct-call byte 후보는 명령 해독·unwind 소유 범위와 대조했다. unwind가 함수 fragment일 수 있음을 표시했다. 본문·선정 evidence는 외부 호출을 재귀적으로 전부 검증했다는 주장이 아니다.
+분석 ID animation-diag-trace-20261101-1730. runtime/native-observer.json·주입 JS·heartbeat·observer-finished·launch/profile·role-pose와 analyze.py를 보존한다. Python Frida이며 REA runtime Evidence가 아니다. 화면 저장 시도는 Unique diagnostic window absent로 실패했고 이미지가 없다. 이전 진단 기준 시험의 화면을 이번 실행 화면으로 대신 사용하지 않는다.
 
-공개본에는 정적 RVA/필드·선정 함수와 한계만 포함한다. 실행 중 ASLR 주소·프로세스·CLI·전체 바이너리/게임 자산·키·원시 영상은 없다. 입력 해시·JSON·증거 해시·파일 안정성과 종료 상태를 확인하고 기존 체크포인트를 갱신했다.
+공개본은 집계와 처음/중간/마지막 표본3개의 필드 투영 및 한계다. 절대 프로세스 주소·PID/CLI·로컬 경로·사용자 식별자·전체 raw 로그·게임 자산·키는 제외한다. QPC tick은 동일 host의 시각 비교 좌표이며 UTC·영상시각과 자동 동기화된 것은 아니다. 종료·JSON·해시·파일 안정성 확인 뒤 기존 체크포인트를 저장했다.
 
 ## 8. 잔여 문제
 
-다음은 검증된 진단 fixture에서 이 SHA-bound 함수4개와 객체/스켈레톤 조건을 사용한 bounded 읽기 전용 trace1회다. 잘못된 vtable·mode·shape면 중단한다. graphClock은 writer가 확인될 때까지 unavailable로 남긴다. compressed pose를 cached matrix와 구분해 기록하고 이후 실제 표시 관찰과 연결한다.
+다음은 skeleton/transform-array pointer equality와 정확한 GetBonePositionMS binding/좌표 공간을 확인하는 것이다. 확인 전 compressed 값과 SDK MS값을 직접 비교하지 않는다. 이후 foreground를 통제하고 기존 영상 인프라로 실제 표시와 동기화한 관찰을 설계한다. 단순히 새 보간/배율/업데이트 방식을 적용하지 않는다.
 
-진단 결과가 나오더라도 일반 exe의 별도 검증을 대신하지 않는다. mode0 손실 원인, 추출/변환 대조,64개체 기능/비용은 유지하며 새 보간·시간 배율·충돌 검사 생략을 적용하지 않는다.
+진단 조건과 일반 exe의 차이·계측 오버헤드를 유지하며 기존 mode0 손실·원본 변환 검증·64개체 회귀/비용을 별도 관리한다. 성능 목표는 이번 callback 통계로 판정하지 않는다.
 
-선정 공개 본문. 로컬 보고서 SHA-256: `068bc7495cefea1b44e6e7c745355fb45e51b949662e9b139db890a7e4ff542a`. 원시 전체가 아니다.
+선정 공개 본문. 로컬 보고서 SHA-256: `a2e4c4939e63e5df3cdf7fb6f594689f67de38abe0236e7d122a98fa486299c9`. 원시 전체가 아니다.

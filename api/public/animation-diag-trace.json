@@ -1,0 +1,335 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T17:33:58.912440+09:00",
+  "sourceRunId": "animation-diag-trace-20261101-1730",
+  "buildId": "diagnostic-A500-fixed-453D-0C6E-B8FB",
+  "verificationStatus": {
+    "diagnostic": "diagnostic_mode2_continuous_pose_trace_acquired_space_alias_and_visual_unverified",
+    "repetitions": 1,
+    "fullNpcRegression": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "schemaVersion": "1.0.0",
+    "sourceRunId": "animation-diag-trace-20261101-1730",
+    "buildId": "diagnostic-A500-fixed-453D-0C6E-B8FB",
+    "newRuntimeTrials": 1,
+    "newPbo": false,
+    "newVideo": false,
+    "nativeObserverAttached": true,
+    "numericOverrides": false,
+    "usesObserverHooks": true,
+    "performanceExcluded": true,
+    "selected": {
+      "type": "selected",
+      "mode": 2,
+      "bones": 65,
+      "primaryVtableRva": 22337056,
+      "subobjectVtableRva": 22340552,
+      "qpc": 10325723046030,
+      "qpcFrequency": 10000000,
+      "mapping": {
+        "capacity": 128,
+        "slots": {
+          "Head": {
+            "hash": 2090324343,
+            "slot": 31
+          },
+          "Hips": {
+            "hash": 2090329209,
+            "slot": 3
+          },
+          "spine2": {
+            "hash": 474378870,
+            "slot": 13
+          },
+          "Neck": {
+            "hash": 2090540038,
+            "slot": 22
+          },
+          "LeftHand": {
+            "hash": 2089750091,
+            "slot": 29
+          },
+          "RightHand": {
+            "hash": 2889608574,
+            "slot": 64
+          }
+        }
+      },
+      "graphClockAvailable": false
+    },
+    "observerSummary": {
+      "enabled": false,
+      "errors": 0,
+      "counts": {
+        "scheduler": 689,
+        "buffer": 689,
+        "consumer": 689,
+        "interpolate": 689
+      },
+      "selected": true,
+      "elapsed": 27.5588326
+    },
+    "observerScriptErrors": 0,
+    "samples": 229,
+    "validSampleSeconds": 25.2109006,
+    "selectedToLastSampleSeconds": 25.3542986,
+    "interpolationRecords": 689,
+    "interpolationCallIntervalMilliseconds": {
+      "p50": 36.736999999999995,
+      "p95": 38.502534999999995,
+      "p99": 42.076159999999994
+    },
+    "sampleIntervalMilliseconds": {
+      "p50": 110.0891,
+      "p95": 114.82150999999998,
+      "p99": 120.54231699999995
+    },
+    "durationValues": [
+      0.05000000074505806
+    ],
+    "alpha": {
+      "percentiles": {
+        "p50": 0.5774076941995666,
+        "p95": 1.9063184871328156,
+        "p99": 2.0
+      },
+      "minimum": 0.00037774443063520746,
+      "maximum": 2.0,
+      "aboveOneCount": 67,
+      "aboveOneObservedRelativeSeconds": [
+        0.0005545,
+        22.9370347
+      ]
+    },
+    "sampleBufferCounts": [
+      0,
+      1
+    ],
+    "bufferClockFirst": 15.050036430358887,
+    "bufferClockLast": 0.022558819502592087,
+    "primaryIntervalValues": [
+      0.05000000074505806
+    ],
+    "queryInterpolatedExactEqualSamples": 229,
+    "pointerIdentityRecorded": false,
+    "poseStats": {
+      "Head": {
+        "changedQuaternionPairs": 228,
+        "pairs": 228,
+        "quaternionNormRange": [
+          0.9999999764592016,
+          1.0000001158807286
+        ],
+        "angularStepDegrees": {
+          "p50": 9.20822501259841,
+          "p95": 19.680753487994746,
+          "p99": 28.795422801867264
+        },
+        "translationStepStorageUnits": {
+          "p50": 7.450580596923828e-08,
+          "p95": 7.919967174529789e-07,
+          "p99": 1.3038516050049558e-06
+        },
+        "rawWord1CValues": [
+          0
+        ],
+        "coordinateSpace": "not established; not directly comparable with server API MS positions"
+      },
+      "Hips": {
+        "changedQuaternionPairs": 228,
+        "pairs": 228,
+        "quaternionNormRange": [
+          0.9999999704698005,
+          1.0000001290710379
+        ],
+        "angularStepDegrees": {
+          "p50": 17.889154459537824,
+          "p95": 27.44967877981081,
+          "p99": 28.702944285833407
+        },
+        "translationStepStorageUnits": {
+          "p50": 0.013423293828964233,
+          "p95": 0.03293555378913879,
+          "p99": 0.03745920717716217
+        },
+        "rawWord1CValues": [
+          0
+        ],
+        "coordinateSpace": "not established; not directly comparable with server API MS positions"
+      },
+      "spine2": {
+        "changedQuaternionPairs": 228,
+        "pairs": 228,
+        "quaternionNormRange": [
+          0.9999999708959848,
+          1.0000001149974307
+        ],
+        "angularStepDegrees": {
+          "p50": 3.9291348199677505,
+          "p95": 5.884688456539003,
+          "p99": 6.153340782630879
+        },
+        "translationStepStorageUnits": {
+          "p50": 0.0,
+          "p95": 7.450580596923828e-09,
+          "p99": 7.450580596923828e-09
+        },
+        "rawWord1CValues": [
+          0
+        ],
+        "coordinateSpace": "not established; not directly comparable with server API MS positions"
+      },
+      "Neck": {
+        "changedQuaternionPairs": 228,
+        "pairs": 228,
+        "quaternionNormRange": [
+          0.9999999744785149,
+          1.000000115269568
+        ],
+        "angularStepDegrees": {
+          "p50": 2.7224632773437603,
+          "p95": 5.800396256888159,
+          "p99": 8.629798124511307
+        },
+        "translationStepStorageUnits": {
+          "p50": 0.0,
+          "p95": 7.450580596923828e-09,
+          "p99": 7.514927576455968e-09
+        },
+        "rawWord1CValues": [
+          0
+        ],
+        "coordinateSpace": "not established; not directly comparable with server API MS positions"
+      },
+      "LeftHand": {
+        "changedQuaternionPairs": 228,
+        "pairs": 228,
+        "quaternionNormRange": [
+          0.9999999713444205,
+          1.0000001290314742
+        ],
+        "angularStepDegrees": {
+          "p50": 12.540664386773031,
+          "p95": 26.778087834420653,
+          "p99": 28.99233681772376
+        },
+        "translationStepStorageUnits": {
+          "p50": 0.0,
+          "p95": 2.9802322387695312e-08,
+          "p99": 3.047188450918265e-08
+        },
+        "rawWord1CValues": [
+          0
+        ],
+        "coordinateSpace": "not established; not directly comparable with server API MS positions"
+      },
+      "RightHand": {
+        "changedQuaternionPairs": 228,
+        "pairs": 228,
+        "quaternionNormRange": [
+          0.9999999681937641,
+          1.0000001256938558
+        ],
+        "angularStepDegrees": {
+          "p50": 10.939164582316906,
+          "p95": 38.52328335500188,
+          "p99": 45.109747030094574
+        },
+        "translationStepStorageUnits": {
+          "p50": 0.0,
+          "p95": 7.450580596923828e-09,
+          "p99": 7.450580596923828e-09
+        },
+        "rawWord1CValues": [
+          0
+        ],
+        "coordinateSpace": "not established; not directly comparable with server API MS positions"
+      }
+    },
+    "graphClockAvailable": false,
+    "server": {
+      "completed": true,
+      "poseRows": 2151,
+      "events": [
+        "17:28:28.574 SCRIPT       : DG_ROLE_READY parts=1 server=true client=false multiplayer=true dedicated=true",
+        "17:29:13.283 SCRIPT       : DG_ROLE_DONE parts=1 seconds=44.9496 updates=899"
+      ],
+      "lastCommandSeconds": 44.9496,
+      "lastAnimUpdates": 899,
+      "requestedStateValues": [
+        "2"
+      ],
+      "earlyDisconnectCount": 0,
+      "battleyeKickCount": 0,
+      "guardDecision": {
+        "status": "known-warning",
+        "reason": "complete reviewed warning",
+        "completeErrorLines": 8,
+        "completeWarningBlocks": 1,
+        "partialWarning": false,
+        "pendingMilliseconds": 0
+      }
+    },
+    "client": {
+      "closed": true,
+      "forcedStop": false,
+      "terminationMarker": true,
+      "battleyeUpdateLogCount": 0,
+      "signatureChecksPassed": 3,
+      "crashLogs": 0
+    },
+    "uiObservation": {
+      "attemptedAfterObserverStop": true,
+      "captured": false,
+      "reason": "Unique diagnostic window absent; client had already closed; no activation or screenshot happened"
+    },
+    "functionalRegression": "not_retested",
+    "frameTimeP50P95P99": null,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "Single diagnostic Animal physical part0 fixed run, root/AI movement off; not the full NPC pipeline or release executable.",
+      "No direct graphClock, renderer cadence, GPU matrix upload or actual visible-frame sequence.",
+      "No continuous appActive/foreground capture; no CU activation occurred during the trace. Callback interval is not frame-time or proof of an animation-only bottleneck.",
+      "Six compressed transform records change and query/interpolated values match, but pointer/storage identity was not recorded.",
+      "The raw scale label for offset0x1c is unverified. All sampled words are zero; projection treats it as rawWord1C, not a valid measured scale.",
+      "Compressed translation coordinate space is unverified and differs in magnitude from server API model-space results; no direct MS error/latency claim.",
+      "One trace does not establish repeated stability or visible smoothness; 20ms-p95 remains unmet."
+    ],
+    "next": "Record skeleton and transform-array pointer equality and resolve the exact diagnostic GetBonePositionMS binding/space before pose comparisons. Then plan a foreground-controlled trace synchronized to visible frames using existing capture infrastructure; do not infer smoothness from changing CPU data.",
+    "localEvidenceIntegrity": {
+      "filesVerified": 41,
+      "privateManifestPublished": false,
+      "checkpointSha256": "a2e4c4939e63e5df3cdf7fb6f594689f67de38abe0236e7d122a98fa486299c9"
+    }
+  },
+  "blockers": [
+    "Single diagnostic Animal physical part0 fixed run, root/AI movement off; not the full NPC pipeline or release executable.",
+    "No direct graphClock, renderer cadence, GPU matrix upload or actual visible-frame sequence.",
+    "No continuous appActive/foreground capture; no CU activation occurred during the trace. Callback interval is not frame-time or proof of an animation-only bottleneck.",
+    "Six compressed transform records change and query/interpolated values match, but pointer/storage identity was not recorded.",
+    "The raw scale label for offset0x1c is unverified. All sampled words are zero; projection treats it as rawWord1C, not a valid measured scale.",
+    "Compressed translation coordinate space is unverified and differs in magnitude from server API model-space results; no direct MS error/latency claim.",
+    "One trace does not establish repeated stability or visible smoothness; 20ms-p95 remains unmet."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-diag-trace-20261101.md",
+      "sha256": "23e4bc949aef2baafc88f419a83958ff21e247acda75198538a1fa8f5e243689"
+    },
+    {
+      "path": "evidence/animation-diag-trace-20261101.txt",
+      "sha256": "23834485458d6c7270c0b9fc8cb036908a0d4a71b2598844b4b1bdda42d0b26d"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
