@@ -1,0 +1,1761 @@
+{
+  "selection": "All4 role API bindings and their bounded handler/one-level callees;3 selected constructor/scheduler/singleton spans; complete11-instruction small role helper;8 decoded-policy truth rows; projected historical mode0 guard/status. Not an all-writer or live role transition proof.",
+  "metrics": {
+    "sourceRunId": "animation-scheduler-mode-20261101-1424",
+    "buildId": "native-c6709ece",
+    "verificationStatus": "constructor_mode_policy_and_public_role_queries_linked",
+    "newRuntimeTrials": 0,
+    "newPbo": false,
+    "newVideo": false,
+    "numericOverrides": false,
+    "metrics": {
+      "candidateUnwindFragments": 88,
+      "classifiedMemoryStores": 26,
+      "incompleteDecodeFragments": 3,
+      "unmappedByteHits": 13,
+      "publicRoleBindings": 4,
+      "truthTableRows": 8,
+      "reachableRoleHelperInstructions": 11
+    },
+    "findings": {
+      "modeSelection": "Creature construction selects mode1 when engine singleton+0x48 nonnull; otherwise mode2 if+0x50 nonnull, elsemode0.",
+      "publicRoleCorrelation": "Registered IsMultiplayer checks+0x50. Registered IsServer uses both engine+0x48 and+0x50 plus object48+0x648; IsClient negates it.",
+      "noSimpleClientServerModeIdentity": "mode1 is not synonymous with every IsServer=true result: offline mode0 can also IsServer=true.",
+      "consumerDifference": "Mode0 uses interval threshold/reset and retained descriptor. Mode1 immediately invokes evaluator with current input in both xmm1 andxmm2 then queues work. Mode2 follows separate path; cannot assume it is same evaluator.",
+      "supportedPerNpcModeSetterIdentified": false
+    },
+    "reusedObservation": {
+      "reusedRuntimeRunId": "runtime-20261101-135048",
+      "observerSourceSha256": "e51e512a93474e3bc9b243a034706767d778bbe30752176d9a4a5ffbeba78fa1",
+      "selectorGuard": "if(entity.add(0x668).readU32()!==0)throw Error('Scheduler mode');",
+      "scope": "Guard runs for selected Animal receiver on observed scheduler calls; not direct constructor-time engine-pointer observation.",
+      "observationSucceeded": true,
+      "observerErrors": 0,
+      "scriptErrors": 0,
+      "observedParts": 8,
+      "completeFrames": 1499,
+      "nativeStateOverrides": false,
+      "normalClientQuitVerified": true
+    },
+    "sourceHashes": {
+      "research/animation-scheduler-mode-20261101-1424/derive_scanner.py": "67248d4f526fea29a068241c226ddc569b8e3e51e8d9c1f0d9153b22a329fa92",
+      "research/animation-scheduler-mode-20261101-1424/inspect_mode_writers.py": "7745b955a1296dfe0af3f1b02d8bf199eddd1899f005fc3a08b3cb379600e00a",
+      "research/animation-scheduler-mode-20261101-1424/resolve_modes.py": "fddd6e8f84eb0cf9993febfcf8715cf5fa95c22ebfcd8c5dce8b18f6f0dc82c5",
+      "research/animation-scheduler-mode-20261101-1424/classify_policy.py": "fa745c1721365606ff098c652abeb021d39ae075945d1d4427e14851c2ba8114",
+      "research/animation-scheduler-mode-20261101-1424/derivation.json": "1e15778020b8bd9ba5a14dd3f720d0c72c9f83bb57ce20c3bd31fe51cfc1ccf3",
+      "research/animation-scheduler-mode-20261101-1424/writer-inventory.json": "47c5880e6aa980a49b21d44c1715db97b98337c869775a9aaf344916a0668575",
+      "research/animation-scheduler-mode-20261101-1424/mode-policy.json": "d11cfe71421f94c16e1b997bc3e0d846bef86538e4746a282b6f1777a5c6c328",
+      "research/animation-scheduler-mode-20261101-1424/policy-classification.json": "9e2084ae030128feffee6ebdfa5a4830099a790e16771877417e9c85f7760e0c",
+      "research/animation-scheduler-mode-20261101-1424/reused-mode-observation.json": "46d7e3c36f4c1fb7adb56fd62b995fcdb3fa83b49e0a14c79524358b8d5289e0",
+      "research/track_b_dayz_2026-10-23/native-runtime/controlled-investigation/runtime-20261101-135048/native-call-probe/instrumentation.js": "e51e512a93474e3bc9b243a034706767d778bbe30752176d9a4a5ffbeba78fa1",
+      "research/track_b_dayz_2026-10-23/native-runtime/controlled-investigation/runtime-20261101-135048/native-call-probe/status.json": "409d6a84d4825d84542812547bb986db9a47e2f2090d905f90fedf04d07cd362",
+      "tools/start_single_agent_server.ps1": "c3ab8aac9a98c2b6114e280195695f7cadc4896b4a16a71cf23104c6593c9f8f"
+    },
+    "limits": [
+      "Static mode selection is construction-time evidence, not a dynamic setter or live role switch.",
+      "Truth table is a decoded-policy model, not8 runtime experiments.",
+      "A memory mode/global-pointer write is not a supported fix.",
+      "Unmapped field hits and indirect/alias writes remain outside inventory coverage.",
+      "No new8/64 stability,visible animation,frame-time,CPU/GPU or performance measurements.",
+      "Old single-agent server uses NHSingleProbe, not the current eight-part animation fixture; it is not an interchangeable A/B control."
+    ],
+    "next": "Inspect actual Animal constructor and configuration consumer for additional mode ownership, then assess a separately isolated real engine-role comparison. Do not force entity/global mode bytes or reuse unrelated server harness as matched control.",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "modePolicy": {
+    "sourceRunId": "animation-scheduler-mode-20261101-1424",
+    "targetSha256": "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
+    "bindings": [
+      {
+        "name": "IsMultiplayer",
+        "handler": "0x140b30df0",
+        "registration": "0x140b360e2",
+        "context": [
+          {
+            "address": "0x140b360b8",
+            "instruction": "lea r8, [rip + 0x7c0ca1]"
+          },
+          {
+            "address": "0x140b360bf",
+            "instruction": "mov rdx, rdi"
+          },
+          {
+            "address": "0x140b360c2",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b360c5",
+            "instruction": "call 0x1402725a0"
+          },
+          {
+            "address": "0x140b360ca",
+            "instruction": "lea r9, [rip - 0x52e1]"
+          },
+          {
+            "address": "0x140b360d1",
+            "instruction": "mov dword ptr [rsp + 0x20], esi"
+          },
+          {
+            "address": "0x140b360d5",
+            "instruction": "lea r8, [rip + 0x7c0ca4]"
+          },
+          {
+            "address": "0x140b360dc",
+            "instruction": "mov rdx, rdi"
+          },
+          {
+            "address": "0x140b360df",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b360e2",
+            "instruction": "call 0x1402725a0"
+          }
+        ],
+        "handlerDecode": {
+          "start": "0x140b30df0",
+          "end": "0x140b30e06",
+          "boundary": "unwind",
+          "sha256": "412cc807814b28cec013c7b6d7a7554bde1cf9b84037f1618a6b3d980fdfe3bf",
+          "instructions": [
+            {
+              "address": "0x140b30df0",
+              "instruction": "sub rsp, 0x28"
+            },
+            {
+              "address": "0x140b30df4",
+              "instruction": "call 0x14094b410"
+            },
+            {
+              "address": "0x140b30df9",
+              "instruction": "cmp qword ptr [rax + 0x50], 0"
+            },
+            {
+              "address": "0x140b30dfe",
+              "instruction": "setne al"
+            },
+            {
+              "address": "0x140b30e01",
+              "instruction": "add rsp, 0x28"
+            },
+            {
+              "address": "0x140b30e05",
+              "instruction": "ret "
+            }
+          ]
+        },
+        "oneLevelCallees": [
+          {
+            "start": "0x14094b410",
+            "end": "0x14094b418",
+            "boundary": "first ret/jmp/int3, not full CFG",
+            "sha256": "928d290421a0efcec19860244254cd836c09068e679a256201f407f9e7fc6f54",
+            "instructions": [
+              {
+                "address": "0x14094b410",
+                "instruction": "lea rax, [rip + 0x4141069]"
+              },
+              {
+                "address": "0x14094b417",
+                "instruction": "ret "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "IsClient",
+        "handler": "0x140b30d40",
+        "registration": "0x140b360ff",
+        "context": [
+          {
+            "address": "0x140b360d5",
+            "instruction": "lea r8, [rip + 0x7c0ca4]"
+          },
+          {
+            "address": "0x140b360dc",
+            "instruction": "mov rdx, rdi"
+          },
+          {
+            "address": "0x140b360df",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b360e2",
+            "instruction": "call 0x1402725a0"
+          },
+          {
+            "address": "0x140b360e7",
+            "instruction": "lea r9, [rip - 0x53ae]"
+          },
+          {
+            "address": "0x140b360ee",
+            "instruction": "mov dword ptr [rsp + 0x20], esi"
+          },
+          {
+            "address": "0x140b360f2",
+            "instruction": "lea r8, [rip + 0x7c0d0f]"
+          },
+          {
+            "address": "0x140b360f9",
+            "instruction": "mov rdx, rdi"
+          },
+          {
+            "address": "0x140b360fc",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b360ff",
+            "instruction": "call 0x1402725a0"
+          }
+        ],
+        "handlerDecode": {
+          "start": "0x140b30d40",
+          "end": "0x140b30d5b",
+          "boundary": "unwind",
+          "sha256": "597ee08ac5bef1a4aae37f1b68230cbfcce10d2d28094c3ca2471d56cd294069",
+          "instructions": [
+            {
+              "address": "0x140b30d40",
+              "instruction": "sub rsp, 0x28"
+            },
+            {
+              "address": "0x140b30d44",
+              "instruction": "call 0x14094b410"
+            },
+            {
+              "address": "0x140b30d49",
+              "instruction": "mov rcx, rax"
+            },
+            {
+              "address": "0x140b30d4c",
+              "instruction": "call 0x14094c060"
+            },
+            {
+              "address": "0x140b30d51",
+              "instruction": "test al, al"
+            },
+            {
+              "address": "0x140b30d53",
+              "instruction": "sete al"
+            },
+            {
+              "address": "0x140b30d56",
+              "instruction": "add rsp, 0x28"
+            },
+            {
+              "address": "0x140b30d5a",
+              "instruction": "ret "
+            }
+          ]
+        },
+        "oneLevelCallees": [
+          {
+            "start": "0x14094b410",
+            "end": "0x14094b418",
+            "boundary": "first ret/jmp/int3, not full CFG",
+            "sha256": "928d290421a0efcec19860244254cd836c09068e679a256201f407f9e7fc6f54",
+            "instructions": [
+              {
+                "address": "0x14094b410",
+                "instruction": "lea rax, [rip + 0x4141069]"
+              },
+              {
+                "address": "0x14094b417",
+                "instruction": "ret "
+              }
+            ]
+          },
+          {
+            "start": "0x14094c060",
+            "end": "0x14094c07c",
+            "boundary": "first ret/jmp/int3, not full CFG",
+            "sha256": "edfa08c70ddf8f793362f60376125eac584371b449e9271baf66ca990f9e071e",
+            "instructions": [
+              {
+                "address": "0x14094c060",
+                "instruction": "mov rax, qword ptr [rcx + 0x48]"
+              },
+              {
+                "address": "0x14094c064",
+                "instruction": "test rax, rax"
+              },
+              {
+                "address": "0x14094c067",
+                "instruction": "je 0x14094c072"
+              },
+              {
+                "address": "0x14094c069",
+                "instruction": "cmp dword ptr [rax + 0x648], 0"
+              },
+              {
+                "address": "0x14094c070",
+                "instruction": "jne 0x14094c07c"
+              },
+              {
+                "address": "0x14094c072",
+                "instruction": "cmp qword ptr [rcx + 0x50], 0"
+              },
+              {
+                "address": "0x14094c077",
+                "instruction": "je 0x14094c07c"
+              },
+              {
+                "address": "0x14094c079",
+                "instruction": "xor al, al"
+              },
+              {
+                "address": "0x14094c07b",
+                "instruction": "ret "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "IsServer",
+        "handler": "0x140b31060",
+        "registration": "0x140b3611c",
+        "context": [
+          {
+            "address": "0x140b360f2",
+            "instruction": "lea r8, [rip + 0x7c0d0f]"
+          },
+          {
+            "address": "0x140b360f9",
+            "instruction": "mov rdx, rdi"
+          },
+          {
+            "address": "0x140b360fc",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b360ff",
+            "instruction": "call 0x1402725a0"
+          },
+          {
+            "address": "0x140b36104",
+            "instruction": "lea r9, [rip - 0x50ab]"
+          },
+          {
+            "address": "0x140b3610b",
+            "instruction": "mov dword ptr [rsp + 0x20], esi"
+          },
+          {
+            "address": "0x140b3610f",
+            "instruction": "lea r8, [rip + 0x7c0d02]"
+          },
+          {
+            "address": "0x140b36116",
+            "instruction": "mov rdx, rdi"
+          },
+          {
+            "address": "0x140b36119",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b3611c",
+            "instruction": "call 0x1402725a0"
+          }
+        ],
+        "handlerDecode": {
+          "start": "0x140b31060",
+          "end": "0x140b31075",
+          "boundary": "unwind",
+          "sha256": "233dea35571927741b4ba9ada059309849e4842b9b236fb4de90a60a167a870d",
+          "instructions": [
+            {
+              "address": "0x140b31060",
+              "instruction": "sub rsp, 0x28"
+            },
+            {
+              "address": "0x140b31064",
+              "instruction": "call 0x14094b410"
+            },
+            {
+              "address": "0x140b31069",
+              "instruction": "mov rcx, rax"
+            },
+            {
+              "address": "0x140b3106c",
+              "instruction": "add rsp, 0x28"
+            },
+            {
+              "address": "0x140b31070",
+              "instruction": "jmp 0x14094c060"
+            }
+          ]
+        },
+        "oneLevelCallees": [
+          {
+            "start": "0x14094b410",
+            "end": "0x14094b418",
+            "boundary": "first ret/jmp/int3, not full CFG",
+            "sha256": "928d290421a0efcec19860244254cd836c09068e679a256201f407f9e7fc6f54",
+            "instructions": [
+              {
+                "address": "0x14094b410",
+                "instruction": "lea rax, [rip + 0x4141069]"
+              },
+              {
+                "address": "0x14094b417",
+                "instruction": "ret "
+              }
+            ]
+          },
+          {
+            "start": "0x14094c060",
+            "end": "0x14094c07c",
+            "boundary": "first ret/jmp/int3, not full CFG",
+            "sha256": "edfa08c70ddf8f793362f60376125eac584371b449e9271baf66ca990f9e071e",
+            "instructions": [
+              {
+                "address": "0x14094c060",
+                "instruction": "mov rax, qword ptr [rcx + 0x48]"
+              },
+              {
+                "address": "0x14094c064",
+                "instruction": "test rax, rax"
+              },
+              {
+                "address": "0x14094c067",
+                "instruction": "je 0x14094c072"
+              },
+              {
+                "address": "0x14094c069",
+                "instruction": "cmp dword ptr [rax + 0x648], 0"
+              },
+              {
+                "address": "0x14094c070",
+                "instruction": "jne 0x14094c07c"
+              },
+              {
+                "address": "0x14094c072",
+                "instruction": "cmp qword ptr [rcx + 0x50], 0"
+              },
+              {
+                "address": "0x14094c077",
+                "instruction": "je 0x14094c07c"
+              },
+              {
+                "address": "0x14094c079",
+                "instruction": "xor al, al"
+              },
+              {
+                "address": "0x14094c07b",
+                "instruction": "ret "
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "IsDedicatedServer",
+        "handler": "0x140b30d60",
+        "registration": "0x140b36139",
+        "context": [
+          {
+            "address": "0x140b3610f",
+            "instruction": "lea r8, [rip + 0x7c0d02]"
+          },
+          {
+            "address": "0x140b36116",
+            "instruction": "mov rdx, rdi"
+          },
+          {
+            "address": "0x140b36119",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b3611c",
+            "instruction": "call 0x1402725a0"
+          },
+          {
+            "address": "0x140b36121",
+            "instruction": "lea r9, [rip - 0x53c8]"
+          },
+          {
+            "address": "0x140b36128",
+            "instruction": "mov dword ptr [rsp + 0x20], esi"
+          },
+          {
+            "address": "0x140b3612c",
+            "instruction": "lea r8, [rip + 0x7c0cf5]"
+          },
+          {
+            "address": "0x140b36133",
+            "instruction": "mov rdx, rdi"
+          },
+          {
+            "address": "0x140b36136",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b36139",
+            "instruction": "call 0x1402725a0"
+          }
+        ],
+        "handlerDecode": {
+          "start": "0x140b30d60",
+          "end": "0x140b30d75",
+          "boundary": "unwind",
+          "sha256": "c385f8fc8292bbec460220cb99f4a9446b56e86b9c150a34c2c4ad58b8859b41",
+          "instructions": [
+            {
+              "address": "0x140b30d60",
+              "instruction": "sub rsp, 0x28"
+            },
+            {
+              "address": "0x140b30d64",
+              "instruction": "call 0x140b5a8a0"
+            },
+            {
+              "address": "0x140b30d69",
+              "instruction": "mov rcx, rax"
+            },
+            {
+              "address": "0x140b30d6c",
+              "instruction": "add rsp, 0x28"
+            },
+            {
+              "address": "0x140b30d70",
+              "instruction": "jmp 0x14017a940"
+            }
+          ]
+        },
+        "oneLevelCallees": [
+          {
+            "start": "0x140b5a8a0",
+            "end": "0x140b5a8a8",
+            "boundary": "first ret/jmp/int3, not full CFG",
+            "sha256": "ced0446e706e8a88eb44d70721639e3bfaf6214b145ddf0a13b3a4ae0b765d36",
+            "instructions": [
+              {
+                "address": "0x140b5a8a0",
+                "instruction": "mov rax, qword ptr [rip + 0x3f38471]"
+              },
+              {
+                "address": "0x140b5a8a7",
+                "instruction": "ret "
+              }
+            ]
+          },
+          {
+            "start": "0x14017a940",
+            "end": "0x14017a943",
+            "boundary": "first ret/jmp/int3, not full CFG",
+            "sha256": "01cb47d078b4841b8408ec4fe278efa83115c6f6e101972987507d2b2b57dcf0",
+            "instructions": [
+              {
+                "address": "0x14017a940",
+                "instruction": "xor al, al"
+              },
+              {
+                "address": "0x14017a942",
+                "instruction": "ret "
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "selectedFunctions": [
+      {
+        "start": "0x140b6e7e0",
+        "end": "0x140b6ea36",
+        "boundary": "unwind",
+        "sha256": "402b033990204a1fa6b9062fee9899cde9993fcca3143db4fe7a6efc36c3fde1",
+        "instructions": [
+          {
+            "address": "0x140b6e7e0",
+            "instruction": "mov qword ptr [rsp + 8], rcx"
+          },
+          {
+            "address": "0x140b6e7e5",
+            "instruction": "push rsi"
+          },
+          {
+            "address": "0x140b6e7e6",
+            "instruction": "push rdi"
+          },
+          {
+            "address": "0x140b6e7e7",
+            "instruction": "push r14"
+          },
+          {
+            "address": "0x140b6e7e9",
+            "instruction": "sub rsp, 0x40"
+          },
+          {
+            "address": "0x140b6e7ed",
+            "instruction": "mov qword ptr [rsp + 0x30], 0xfffffffffffffffe"
+          },
+          {
+            "address": "0x140b6e7f6",
+            "instruction": "mov qword ptr [rsp + 0x68], rbx"
+          },
+          {
+            "address": "0x140b6e7fb",
+            "instruction": "mov qword ptr [rsp + 0x70], rbp"
+          },
+          {
+            "address": "0x140b6e800",
+            "instruction": "mov rbx, rcx"
+          },
+          {
+            "address": "0x140b6e803",
+            "instruction": "call 0x140a51380"
+          },
+          {
+            "address": "0x140b6e808",
+            "instruction": "nop "
+          },
+          {
+            "address": "0x140b6e809",
+            "instruction": "lea rcx, [rbx + 0x5f8]"
+          },
+          {
+            "address": "0x140b6e810",
+            "instruction": "call 0x140997000"
+          },
+          {
+            "address": "0x140b6e815",
+            "instruction": "nop "
+          },
+          {
+            "address": "0x140b6e816",
+            "instruction": "lea rax, [rip + 0x79ec6b]"
+          },
+          {
+            "address": "0x140b6e81d",
+            "instruction": "mov qword ptr [rbx], rax"
+          },
+          {
+            "address": "0x140b6e820",
+            "instruction": "lea rax, [rip + 0x79f7d1]"
+          },
+          {
+            "address": "0x140b6e827",
+            "instruction": "mov qword ptr [rbx + 0x10], rax"
+          },
+          {
+            "address": "0x140b6e82b",
+            "instruction": "lea rax, [rip + 0x79f7e6]"
+          },
+          {
+            "address": "0x140b6e832",
+            "instruction": "mov qword ptr [rbx + 0x28], rax"
+          },
+          {
+            "address": "0x140b6e836",
+            "instruction": "lea rax, [rip + 0x79f89b]"
+          },
+          {
+            "address": "0x140b6e83d",
+            "instruction": "mov qword ptr [rbx + 0x30], rax"
+          },
+          {
+            "address": "0x140b6e841",
+            "instruction": "lea rax, [rip + 0x79f8d0]"
+          },
+          {
+            "address": "0x140b6e848",
+            "instruction": "mov qword ptr [rbx + 0xa8], rax"
+          },
+          {
+            "address": "0x140b6e84f",
+            "instruction": "lea rax, [rip + 0x79f972]"
+          },
+          {
+            "address": "0x140b6e856",
+            "instruction": "mov qword ptr [rbx + 0xb8], rax"
+          },
+          {
+            "address": "0x140b6e85d",
+            "instruction": "lea rax, [rip + 0x79f98c]"
+          },
+          {
+            "address": "0x140b6e864",
+            "instruction": "mov qword ptr [rbx + 0x1d8], rax"
+          },
+          {
+            "address": "0x140b6e86b",
+            "instruction": "lea rax, [rip + 0x79f98e]"
+          },
+          {
+            "address": "0x140b6e872",
+            "instruction": "mov qword ptr [rbx + 0x408], rax"
+          },
+          {
+            "address": "0x140b6e879",
+            "instruction": "lea rax, [rip + 0x79f990]"
+          },
+          {
+            "address": "0x140b6e880",
+            "instruction": "mov qword ptr [rbx + 0x5f8], rax"
+          },
+          {
+            "address": "0x140b6e887",
+            "instruction": "xor r14d, r14d"
+          },
+          {
+            "address": "0x140b6e88a",
+            "instruction": "mov qword ptr [rbx + 0x620], r14"
+          },
+          {
+            "address": "0x140b6e891",
+            "instruction": "mov rdx, rbx"
+          },
+          {
+            "address": "0x140b6e894",
+            "instruction": "lea rcx, [rbx + 0x628]"
+          },
+          {
+            "address": "0x140b6e89b",
+            "instruction": "call 0x140b695f0"
+          },
+          {
+            "address": "0x140b6e8a0",
+            "instruction": "nop "
+          },
+          {
+            "address": "0x140b6e8a1",
+            "instruction": "mov qword ptr [rbx + 0x650], r14"
+          },
+          {
+            "address": "0x140b6e8a8",
+            "instruction": "mov qword ptr [rbx + 0x658], r14"
+          },
+          {
+            "address": "0x140b6e8af",
+            "instruction": "mov qword ptr [rbx + 0x660], r14"
+          },
+          {
+            "address": "0x140b6e8b6",
+            "instruction": "mov qword ptr [rbx + 0x668], r14"
+          },
+          {
+            "address": "0x140b6e8bd",
+            "instruction": "mov qword ptr [rbx + 0x670], r14"
+          },
+          {
+            "address": "0x140b6e8c4",
+            "instruction": "mov qword ptr [rbx + 0x678], r14"
+          },
+          {
+            "address": "0x140b6e8cb",
+            "instruction": "mov qword ptr [rbx + 0x680], r14"
+          },
+          {
+            "address": "0x140b6e8d2",
+            "instruction": "mov dword ptr [rbx + 0x688], 0xffffffff"
+          },
+          {
+            "address": "0x140b6e8dc",
+            "instruction": "mov dword ptr [rbx + 0x68c], 1"
+          },
+          {
+            "address": "0x140b6e8e6",
+            "instruction": "mov byte ptr [rbx + 0xc4], 0xfd"
+          },
+          {
+            "address": "0x140b6e8ed",
+            "instruction": "mov byte ptr [rbx + 0x1c6], 5"
+          },
+          {
+            "address": "0x140b6e8f4",
+            "instruction": "call 0x14094b410"
+          },
+          {
+            "address": "0x140b6e8f9",
+            "instruction": "lea edi, [r14 + 1]"
+          },
+          {
+            "address": "0x140b6e8fd",
+            "instruction": "cmp qword ptr [rax + 0x48], r14"
+          },
+          {
+            "address": "0x140b6e901",
+            "instruction": "jne 0x140b6e916"
+          },
+          {
+            "address": "0x140b6e903",
+            "instruction": "call 0x14094b410"
+          },
+          {
+            "address": "0x140b6e908",
+            "instruction": "mov rcx, qword ptr [rax + 0x50]"
+          },
+          {
+            "address": "0x140b6e90c",
+            "instruction": "neg rcx"
+          },
+          {
+            "address": "0x140b6e90f",
+            "instruction": "sbb eax, eax"
+          },
+          {
+            "address": "0x140b6e911",
+            "instruction": "and eax, 2"
+          },
+          {
+            "address": "0x140b6e914",
+            "instruction": "jmp 0x140b6e918"
+          },
+          {
+            "address": "0x140b6e916",
+            "instruction": "mov eax, edi"
+          },
+          {
+            "address": "0x140b6e918",
+            "instruction": "test eax, eax"
+          },
+          {
+            "address": "0x140b6e91a",
+            "instruction": "je 0x140b6e949"
+          },
+          {
+            "address": "0x140b6e91c",
+            "instruction": "sub eax, edi"
+          },
+          {
+            "address": "0x140b6e91e",
+            "instruction": "je 0x140b6e939"
+          },
+          {
+            "address": "0x140b6e920",
+            "instruction": "cmp eax, edi"
+          },
+          {
+            "address": "0x140b6e922",
+            "instruction": "jne 0x140b6e965"
+          },
+          {
+            "address": "0x140b6e924",
+            "instruction": "cmp dword ptr [rbx + 0x668], 2"
+          },
+          {
+            "address": "0x140b6e92b",
+            "instruction": "je 0x140b6e965"
+          },
+          {
+            "address": "0x140b6e92d",
+            "instruction": "mov dword ptr [rbx + 0x668], 2"
+          },
+          {
+            "address": "0x140b6e937",
+            "instruction": "jmp 0x140b6e959"
+          },
+          {
+            "address": "0x140b6e939",
+            "instruction": "cmp dword ptr [rbx + 0x668], edi"
+          },
+          {
+            "address": "0x140b6e93f",
+            "instruction": "je 0x140b6e965"
+          },
+          {
+            "address": "0x140b6e941",
+            "instruction": "mov dword ptr [rbx + 0x668], edi"
+          },
+          {
+            "address": "0x140b6e947",
+            "instruction": "jmp 0x140b6e959"
+          },
+          {
+            "address": "0x140b6e949",
+            "instruction": "cmp dword ptr [rbx + 0x668], 0"
+          },
+          {
+            "address": "0x140b6e950",
+            "instruction": "je 0x140b6e965"
+          },
+          {
+            "address": "0x140b6e952",
+            "instruction": "mov dword ptr [rbx + 0x668], r14d"
+          },
+          {
+            "address": "0x140b6e959",
+            "instruction": "lea rcx, [rbx + 0x5f8]"
+          },
+          {
+            "address": "0x140b6e960",
+            "instruction": "call 0x140997310"
+          },
+          {
+            "address": "0x140b6e965",
+            "instruction": "mov rax, qword ptr [rbx]"
+          },
+          {
+            "address": "0x140b6e968",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b6e96b",
+            "instruction": "call qword ptr [rax + 0xa10]"
+          },
+          {
+            "address": "0x140b6e971",
+            "instruction": "mov rsi, rax"
+          },
+          {
+            "address": "0x140b6e974",
+            "instruction": "cmp qword ptr [rax + 0x630], 0"
+          },
+          {
+            "address": "0x140b6e97c",
+            "instruction": "je 0x140b6e9ce"
+          },
+          {
+            "address": "0x140b6e97e",
+            "instruction": "mov ecx, 0x370"
+          },
+          {
+            "address": "0x140b6e983",
+            "instruction": "call 0x1410de858"
+          },
+          {
+            "address": "0x140b6e988",
+            "instruction": "mov qword ptr [rsp + 0x78], rax"
+          },
+          {
+            "address": "0x140b6e98d",
+            "instruction": "test rax, rax"
+          },
+          {
+            "address": "0x140b6e990",
+            "instruction": "je 0x140b6e9a9"
+          },
+          {
+            "address": "0x140b6e992",
+            "instruction": "mov r8, rbx"
+          },
+          {
+            "address": "0x140b6e995",
+            "instruction": "mov rdx, qword ptr [rsi + 0x630]"
+          },
+          {
+            "address": "0x140b6e99c",
+            "instruction": "mov rcx, rax"
+          },
+          {
+            "address": "0x140b6e99f",
+            "instruction": "call 0x140b0cbe0"
+          },
+          {
+            "address": "0x140b6e9a4",
+            "instruction": "mov rcx, rax"
+          },
+          {
+            "address": "0x140b6e9a7",
+            "instruction": "jmp 0x140b6e9ac"
+          },
+          {
+            "address": "0x140b6e9a9",
+            "instruction": "mov rcx, r14"
+          },
+          {
+            "address": "0x140b6e9ac",
+            "instruction": "mov qword ptr [rbx + 0x620], rcx"
+          },
+          {
+            "address": "0x140b6e9b3",
+            "instruction": "mov rax, qword ptr [rsi + 0x630]"
+          },
+          {
+            "address": "0x140b6e9ba",
+            "instruction": "mov qword ptr [rsp + 0x20], r14"
+          },
+          {
+            "address": "0x140b6e9bf",
+            "instruction": "xor r9d, r9d"
+          },
+          {
+            "address": "0x140b6e9c2",
+            "instruction": "mov r8, qword ptr [rax + 0x28]"
+          },
+          {
+            "address": "0x140b6e9c6",
+            "instruction": "mov rdx, rbx"
+          },
+          {
+            "address": "0x140b6e9c9",
+            "instruction": "call 0x140b0f8d0"
+          },
+          {
+            "address": "0x140b6e9ce",
+            "instruction": "xorps xmm1, xmm1"
+          },
+          {
+            "address": "0x140b6e9d1",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b6e9d4",
+            "instruction": "call 0x140a6a600"
+          },
+          {
+            "address": "0x140b6e9d9",
+            "instruction": "call 0x14094b410"
+          },
+          {
+            "address": "0x140b6e9de",
+            "instruction": "cmp qword ptr [rax + 0x48], 0"
+          },
+          {
+            "address": "0x140b6e9e3",
+            "instruction": "jne 0x140b6e9f6"
+          },
+          {
+            "address": "0x140b6e9e5",
+            "instruction": "call 0x14094b410"
+          },
+          {
+            "address": "0x140b6e9ea",
+            "instruction": "mov rcx, qword ptr [rax + 0x50]"
+          },
+          {
+            "address": "0x140b6e9ee",
+            "instruction": "neg rcx"
+          },
+          {
+            "address": "0x140b6e9f1",
+            "instruction": "sbb edi, edi"
+          },
+          {
+            "address": "0x140b6e9f3",
+            "instruction": "and edi, 2"
+          },
+          {
+            "address": "0x140b6e9f6",
+            "instruction": "cmp edi, 1"
+          },
+          {
+            "address": "0x140b6e9f9",
+            "instruction": "sete r8b"
+          },
+          {
+            "address": "0x140b6e9fd",
+            "instruction": "mov edx, dword ptr [rbx + 0x684]"
+          },
+          {
+            "address": "0x140b6ea03",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b6ea06",
+            "instruction": "call 0x140b72d90"
+          },
+          {
+            "address": "0x140b6ea0b",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b6ea0e",
+            "instruction": "call 0x140b6f420"
+          },
+          {
+            "address": "0x140b6ea13",
+            "instruction": "lea rcx, [rbx + 0x628]"
+          },
+          {
+            "address": "0x140b6ea1a",
+            "instruction": "call 0x140b69700"
+          },
+          {
+            "address": "0x140b6ea1f",
+            "instruction": "nop "
+          },
+          {
+            "address": "0x140b6ea20",
+            "instruction": "mov rax, rbx"
+          },
+          {
+            "address": "0x140b6ea23",
+            "instruction": "mov rbx, qword ptr [rsp + 0x68]"
+          },
+          {
+            "address": "0x140b6ea28",
+            "instruction": "mov rbp, qword ptr [rsp + 0x70]"
+          },
+          {
+            "address": "0x140b6ea2d",
+            "instruction": "add rsp, 0x40"
+          },
+          {
+            "address": "0x140b6ea31",
+            "instruction": "pop r14"
+          },
+          {
+            "address": "0x140b6ea33",
+            "instruction": "pop rdi"
+          },
+          {
+            "address": "0x140b6ea34",
+            "instruction": "pop rsi"
+          },
+          {
+            "address": "0x140b6ea35",
+            "instruction": "ret "
+          }
+        ]
+      },
+      {
+        "start": "0x140b72410",
+        "end": "0x140b725c9",
+        "boundary": "unwind",
+        "sha256": "9b3af365e72be294b859e7d044a09ebe0dd66b80cbb1559d3e83b7d89de083ce",
+        "instructions": [
+          {
+            "address": "0x140b72410",
+            "instruction": "mov qword ptr [rsp + 8], rbx"
+          },
+          {
+            "address": "0x140b72415",
+            "instruction": "push rdi"
+          },
+          {
+            "address": "0x140b72416",
+            "instruction": "sub rsp, 0x90"
+          },
+          {
+            "address": "0x140b7241d",
+            "instruction": "cmp byte ptr [rcx + 0x264], 0"
+          },
+          {
+            "address": "0x140b72424",
+            "instruction": "mov edi, r8d"
+          },
+          {
+            "address": "0x140b72427",
+            "instruction": "movaps xmmword ptr [rsp + 0x80], xmm6"
+          },
+          {
+            "address": "0x140b7242f",
+            "instruction": "mov rbx, rcx"
+          },
+          {
+            "address": "0x140b72432",
+            "instruction": "movaps xmm6, xmm1"
+          },
+          {
+            "address": "0x140b72435",
+            "instruction": "jne 0x140b725b0"
+          },
+          {
+            "address": "0x140b7243b",
+            "instruction": "cmp qword ptr [rcx + 0x620], 0"
+          },
+          {
+            "address": "0x140b72443",
+            "instruction": "je 0x140b725b0"
+          },
+          {
+            "address": "0x140b72449",
+            "instruction": "mov ecx, dword ptr [rcx + 0x668]"
+          },
+          {
+            "address": "0x140b7244f",
+            "instruction": "test ecx, ecx"
+          },
+          {
+            "address": "0x140b72451",
+            "instruction": "je 0x140b724ea"
+          },
+          {
+            "address": "0x140b72457",
+            "instruction": "sub ecx, 1"
+          },
+          {
+            "address": "0x140b7245a",
+            "instruction": "je 0x140b724bc"
+          },
+          {
+            "address": "0x140b7245c",
+            "instruction": "cmp ecx, 1"
+          },
+          {
+            "address": "0x140b7245f",
+            "instruction": "jne 0x140b72578"
+          },
+          {
+            "address": "0x140b72465",
+            "instruction": "lea rcx, [rbx + 0x5f8]"
+          },
+          {
+            "address": "0x140b7246c",
+            "instruction": "xor r8d, r8d"
+          },
+          {
+            "address": "0x140b7246f",
+            "instruction": "call 0x140997b70"
+          },
+          {
+            "address": "0x140b72474",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b72477",
+            "instruction": "call 0x140b72e80"
+          },
+          {
+            "address": "0x140b7247c",
+            "instruction": "cmp byte ptr [rbx + 0x68f], 0"
+          },
+          {
+            "address": "0x140b72483",
+            "instruction": "je 0x140b72578"
+          },
+          {
+            "address": "0x140b72489",
+            "instruction": "cmp byte ptr [rbx + 0x264], 0"
+          },
+          {
+            "address": "0x140b72490",
+            "instruction": "jne 0x140b72578"
+          },
+          {
+            "address": "0x140b72496",
+            "instruction": "mov rax, qword ptr [rbx]"
+          },
+          {
+            "address": "0x140b72499",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b7249c",
+            "instruction": "call qword ptr [rax + 0x500]"
+          },
+          {
+            "address": "0x140b724a2",
+            "instruction": "mov rax, qword ptr [rbx]"
+          },
+          {
+            "address": "0x140b724a5",
+            "instruction": "mov dl, 1"
+          },
+          {
+            "address": "0x140b724a7",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b724aa",
+            "instruction": "mov byte ptr [rbx + 0x263], 1"
+          },
+          {
+            "address": "0x140b724b1",
+            "instruction": "call qword ptr [rax + 0x728]"
+          },
+          {
+            "address": "0x140b724b7",
+            "instruction": "jmp 0x140b72578"
+          },
+          {
+            "address": "0x140b724bc",
+            "instruction": "xor r9d, r9d"
+          },
+          {
+            "address": "0x140b724bf",
+            "instruction": "mov byte ptr [rsp + 0x20], 1"
+          },
+          {
+            "address": "0x140b724c4",
+            "instruction": "movaps xmm2, xmm6"
+          },
+          {
+            "address": "0x140b724c7",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b724ca",
+            "instruction": "call 0x140b725d0"
+          },
+          {
+            "address": "0x140b724cf",
+            "instruction": "call 0x14094b410"
+          },
+          {
+            "address": "0x140b724d4",
+            "instruction": "mov rcx, rax"
+          },
+          {
+            "address": "0x140b724d7",
+            "instruction": "mov r8d, 2"
+          },
+          {
+            "address": "0x140b724dd",
+            "instruction": "mov rdx, rbx"
+          },
+          {
+            "address": "0x140b724e0",
+            "instruction": "call 0x1409391e0"
+          },
+          {
+            "address": "0x140b724e5",
+            "instruction": "jmp 0x140b72578"
+          },
+          {
+            "address": "0x140b724ea",
+            "instruction": "movss xmm1, dword ptr [rbx + 0x250]"
+          },
+          {
+            "address": "0x140b724f2",
+            "instruction": "movaps xmm0, xmm6"
+          },
+          {
+            "address": "0x140b724f5",
+            "instruction": "addss xmm0, dword ptr [rbx + 0x66c]"
+          },
+          {
+            "address": "0x140b724fd",
+            "instruction": "comiss xmm0, xmm1"
+          },
+          {
+            "address": "0x140b72500",
+            "instruction": "movss dword ptr [rbx + 0x66c], xmm0"
+          },
+          {
+            "address": "0x140b72508",
+            "instruction": "jb 0x140b7252a"
+          },
+          {
+            "address": "0x140b7250a",
+            "instruction": "mov r9b, 1"
+          },
+          {
+            "address": "0x140b7250d",
+            "instruction": "mov byte ptr [rsp + 0x20], 0"
+          },
+          {
+            "address": "0x140b72512",
+            "instruction": "movaps xmm2, xmm6"
+          },
+          {
+            "address": "0x140b72515",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b72518",
+            "instruction": "call 0x140b725d0"
+          },
+          {
+            "address": "0x140b7251d",
+            "instruction": "xorps xmm0, xmm0"
+          },
+          {
+            "address": "0x140b72520",
+            "instruction": "mov dword ptr [rbx + 0x66c], 0"
+          },
+          {
+            "address": "0x140b7252a",
+            "instruction": "mov rax, qword ptr [rbx + 0x660]"
+          },
+          {
+            "address": "0x140b72531",
+            "instruction": "test rax, rax"
+          },
+          {
+            "address": "0x140b72534",
+            "instruction": "je 0x140b72578"
+          },
+          {
+            "address": "0x140b72536",
+            "instruction": "mov rcx, qword ptr [rbx + 0x620]"
+          },
+          {
+            "address": "0x140b7253d",
+            "instruction": "lea rdx, [rsp + 0x30]"
+          },
+          {
+            "address": "0x140b72542",
+            "instruction": "mov qword ptr [rsp + 0x38], rax"
+          },
+          {
+            "address": "0x140b72547",
+            "instruction": "lea rax, [rsp + 0x48]"
+          },
+          {
+            "address": "0x140b7254c",
+            "instruction": "mov qword ptr [rsp + 0x40], rax"
+          },
+          {
+            "address": "0x140b72551",
+            "instruction": "movss dword ptr [rsp + 0x30], xmm0"
+          },
+          {
+            "address": "0x140b72557",
+            "instruction": "mov word ptr [rsp + 0x34], 0x101"
+          },
+          {
+            "address": "0x140b7255e",
+            "instruction": "call 0x140b13380"
+          },
+          {
+            "address": "0x140b72563",
+            "instruction": "lea rdx, [rsp + 0x48]"
+          },
+          {
+            "address": "0x140b72568",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b7256b",
+            "instruction": "call 0x1404347c0"
+          },
+          {
+            "address": "0x140b72570",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b72573",
+            "instruction": "call 0x1404356b0"
+          },
+          {
+            "address": "0x140b72578",
+            "instruction": "mov rax, qword ptr [rbx]"
+          },
+          {
+            "address": "0x140b7257b",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b7257e",
+            "instruction": "call qword ptr [rax + 0x840]"
+          },
+          {
+            "address": "0x140b72584",
+            "instruction": "test al, al"
+          },
+          {
+            "address": "0x140b72586",
+            "instruction": "je 0x140b72594"
+          },
+          {
+            "address": "0x140b72588",
+            "instruction": "mov rax, qword ptr [rbx]"
+          },
+          {
+            "address": "0x140b7258b",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b7258e",
+            "instruction": "call qword ptr [rax + 0x848]"
+          },
+          {
+            "address": "0x140b72594",
+            "instruction": "mov r8d, edi"
+          },
+          {
+            "address": "0x140b72597",
+            "instruction": "movaps xmm1, xmm6"
+          },
+          {
+            "address": "0x140b7259a",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b7259d",
+            "instruction": "call 0x140a5b7d0"
+          },
+          {
+            "address": "0x140b725a2",
+            "instruction": "mov r8d, edi"
+          },
+          {
+            "address": "0x140b725a5",
+            "instruction": "movaps xmm1, xmm6"
+          },
+          {
+            "address": "0x140b725a8",
+            "instruction": "mov rcx, rbx"
+          },
+          {
+            "address": "0x140b725ab",
+            "instruction": "call 0x140a5c430"
+          },
+          {
+            "address": "0x140b725b0",
+            "instruction": "mov rbx, qword ptr [rsp + 0xa0]"
+          },
+          {
+            "address": "0x140b725b8",
+            "instruction": "movaps xmm6, xmmword ptr [rsp + 0x80]"
+          },
+          {
+            "address": "0x140b725c0",
+            "instruction": "add rsp, 0x90"
+          },
+          {
+            "address": "0x140b725c7",
+            "instruction": "pop rdi"
+          },
+          {
+            "address": "0x140b725c8",
+            "instruction": "ret "
+          }
+        ]
+      },
+      {
+        "start": "0x14094b410",
+        "end": "0x14094b418",
+        "boundary": "first ret/jmp/int3, not full CFG",
+        "sha256": "928d290421a0efcec19860244254cd836c09068e679a256201f407f9e7fc6f54",
+        "instructions": [
+          {
+            "address": "0x14094b410",
+            "instruction": "lea rax, [rip + 0x4141069]"
+          },
+          {
+            "address": "0x14094b417",
+            "instruction": "ret "
+          }
+        ]
+      }
+    ],
+    "constructorTypes": [
+      {
+        "instruction": "0x140b6e816",
+        "vtable": "0x14130d488",
+        "type": ".?AVDayZCreature@@",
+        "subobjectOffset": 0
+      },
+      {
+        "instruction": "0x140b6e820",
+        "vtable": "0x14130dff8",
+        "type": ".?AVDayZCreature@@",
+        "subobjectOffset": 16
+      },
+      {
+        "instruction": "0x140b6e82b",
+        "vtable": "0x14130e018",
+        "type": ".?AVDayZCreature@@",
+        "subobjectOffset": 40
+      },
+      {
+        "instruction": "0x140b6e836",
+        "vtable": "0x14130e0d8",
+        "type": ".?AVDayZCreature@@",
+        "subobjectOffset": 48
+      },
+      {
+        "instruction": "0x140b6e841",
+        "vtable": "0x14130e118",
+        "type": ".?AVDayZCreature@@",
+        "subobjectOffset": 168
+      },
+      {
+        "instruction": "0x140b6e84f",
+        "vtable": "0x14130e1c8",
+        "type": ".?AVDayZCreature@@",
+        "subobjectOffset": 184
+      },
+      {
+        "instruction": "0x140b6e85d",
+        "vtable": "0x14130e1f0",
+        "type": ".?AVDayZCreature@@",
+        "subobjectOffset": 472
+      },
+      {
+        "instruction": "0x140b6e86b",
+        "vtable": "0x14130e200",
+        "type": ".?AVDayZCreature@@",
+        "subobjectOffset": 1032
+      },
+      {
+        "instruction": "0x140b6e879",
+        "vtable": "0x14130e210",
+        "type": ".?AVDayZCreature@@",
+        "subobjectOffset": 1528
+      }
+    ],
+    "limits": [
+      "Read-only static registry patterns and bounded function bytes; no live engine-role transition.",
+      "One-level callees may omit tail/inlined policies.",
+      "Same field offset does not prove object ownership."
+    ]
+  },
+  "classification": {
+    "sourceRunId": "animation-scheduler-mode-20261101-1424",
+    "targetSha256": "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
+    "completeSmallRoleHelper": {
+      "entry": "0x14094c060",
+      "coverage": "Reachable direct branches within128 bytes; returns terminate blocks; no indirect edges present in this helper.",
+      "instructions": [
+        {
+          "address": "0x14094c060",
+          "instruction": "mov rax, qword ptr [rcx + 0x48]",
+          "bytes": "488b4148"
+        },
+        {
+          "address": "0x14094c064",
+          "instruction": "test rax, rax",
+          "bytes": "4885c0"
+        },
+        {
+          "address": "0x14094c067",
+          "instruction": "je 0x14094c072",
+          "bytes": "7409"
+        },
+        {
+          "address": "0x14094c069",
+          "instruction": "cmp dword ptr [rax + 0x648], 0",
+          "bytes": "83b84806000000"
+        },
+        {
+          "address": "0x14094c070",
+          "instruction": "jne 0x14094c07c",
+          "bytes": "750a"
+        },
+        {
+          "address": "0x14094c072",
+          "instruction": "cmp qword ptr [rcx + 0x50], 0",
+          "bytes": "4883795000"
+        },
+        {
+          "address": "0x14094c077",
+          "instruction": "je 0x14094c07c",
+          "bytes": "7403"
+        },
+        {
+          "address": "0x14094c079",
+          "instruction": "xor al, al",
+          "bytes": "32c0"
+        },
+        {
+          "address": "0x14094c07b",
+          "instruction": "ret ",
+          "bytes": "c3"
+        },
+        {
+          "address": "0x14094c07c",
+          "instruction": "mov al, 1",
+          "bytes": "b001"
+        },
+        {
+          "address": "0x14094c07e",
+          "instruction": "ret ",
+          "bytes": "c3"
+        }
+      ],
+      "edges": [
+        [
+          "0x14094c067",
+          "0x14094c072"
+        ],
+        [
+          "0x14094c070",
+          "0x14094c07c"
+        ],
+        [
+          "0x14094c077",
+          "0x14094c07c"
+        ]
+      ],
+      "referencedByteSha256": "3547e5f068584bb0583a0dcbe1333bb9dc13afbd5841d9ff43fe61ac7d0c1fed"
+    },
+    "truthTable": [
+      {
+        "global48NonNull": false,
+        "global50NonNull": false,
+        "object48Flag648": 0,
+        "constructorMode": 0,
+        "isMultiplayer": false,
+        "isServer": true,
+        "isClient": false
+      },
+      {
+        "global48NonNull": false,
+        "global50NonNull": false,
+        "object48Flag648": 1,
+        "constructorMode": 0,
+        "isMultiplayer": false,
+        "isServer": true,
+        "isClient": false
+      },
+      {
+        "global48NonNull": false,
+        "global50NonNull": true,
+        "object48Flag648": 0,
+        "constructorMode": 2,
+        "isMultiplayer": true,
+        "isServer": false,
+        "isClient": true
+      },
+      {
+        "global48NonNull": false,
+        "global50NonNull": true,
+        "object48Flag648": 1,
+        "constructorMode": 2,
+        "isMultiplayer": true,
+        "isServer": false,
+        "isClient": true
+      },
+      {
+        "global48NonNull": true,
+        "global50NonNull": false,
+        "object48Flag648": 0,
+        "constructorMode": 1,
+        "isMultiplayer": false,
+        "isServer": true,
+        "isClient": false
+      },
+      {
+        "global48NonNull": true,
+        "global50NonNull": false,
+        "object48Flag648": 1,
+        "constructorMode": 1,
+        "isMultiplayer": false,
+        "isServer": true,
+        "isClient": false
+      },
+      {
+        "global48NonNull": true,
+        "global50NonNull": true,
+        "object48Flag648": 0,
+        "constructorMode": 1,
+        "isMultiplayer": true,
+        "isServer": false,
+        "isClient": true
+      },
+      {
+        "global48NonNull": true,
+        "global50NonNull": true,
+        "object48Flag648": 1,
+        "constructorMode": 1,
+        "isMultiplayer": true,
+        "isServer": true,
+        "isClient": false
+      }
+    ],
+    "findings": {
+      "modeSelection": "Creature construction selects mode1 when engine singleton+0x48 nonnull; otherwise mode2 if+0x50 nonnull, elsemode0.",
+      "publicRoleCorrelation": "Registered IsMultiplayer checks+0x50. Registered IsServer uses both engine+0x48 and+0x50 plus object48+0x648; IsClient negates it.",
+      "noSimpleClientServerModeIdentity": "mode1 is not synonymous with every IsServer=true result: offline mode0 can also IsServer=true.",
+      "consumerDifference": "Mode0 uses interval threshold/reset and retained descriptor. Mode1 immediately invokes evaluator with current input in both xmm1 andxmm2 then queues work. Mode2 follows separate path; cannot assume it is same evaluator.",
+      "supportedPerNpcModeSetterIdentified": false
+    },
+    "limits": [
+      "Static mode selection is construction-time evidence, not a dynamic setter or live role switch.",
+      "Truth table is a decoded-policy model, not8 runtime experiments.",
+      "A memory mode/global-pointer write is not a supported fix.",
+      "Unmapped field hits and indirect/alias writes remain outside inventory coverage."
+    ],
+    "next": "Reconcile current offline harness role with selected scheduler mode and identify whether a real supported hosting mode can be compared without changing the NPC pipeline. Do not force globals or entity mode bytes."
+  },
+  "reusedObservation": {
+    "reusedRuntimeRunId": "runtime-20261101-135048",
+    "observerSourceSha256": "e51e512a93474e3bc9b243a034706767d778bbe30752176d9a4a5ffbeba78fa1",
+    "selectorGuard": "if(entity.add(0x668).readU32()!==0)throw Error('Scheduler mode');",
+    "scope": "Guard runs for selected Animal receiver on observed scheduler calls; not direct constructor-time engine-pointer observation.",
+    "observationSucceeded": true,
+    "observerErrors": 0,
+    "scriptErrors": 0,
+    "observedParts": 8,
+    "completeFrames": 1499,
+    "nativeStateOverrides": false,
+    "normalClientQuitVerified": true
+  }
+}

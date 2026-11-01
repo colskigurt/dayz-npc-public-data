@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T14:28:23.594583+09:00",
+  "sourceRunId": "animation-scheduler-mode-20261101-1424",
+  "buildId": "native-c6709ece",
+  "verificationStatus": {
+    "diagnostic": "constructor_mode_policy_public_role_queries_and_existing_mode0_link",
+    "functional": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "supportedClockFix": "not_established",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-scheduler-mode-20261101-1424",
+    "buildId": "native-c6709ece",
+    "verificationStatus": "constructor_mode_policy_and_public_role_queries_linked",
+    "newRuntimeTrials": 0,
+    "newPbo": false,
+    "newVideo": false,
+    "numericOverrides": false,
+    "metrics": {
+      "candidateUnwindFragments": 88,
+      "classifiedMemoryStores": 26,
+      "incompleteDecodeFragments": 3,
+      "unmappedByteHits": 13,
+      "publicRoleBindings": 4,
+      "truthTableRows": 8,
+      "reachableRoleHelperInstructions": 11
+    },
+    "findings": {
+      "modeSelection": "Creature construction selects mode1 when engine singleton+0x48 nonnull; otherwise mode2 if+0x50 nonnull, elsemode0.",
+      "publicRoleCorrelation": "Registered IsMultiplayer checks+0x50. Registered IsServer uses both engine+0x48 and+0x50 plus object48+0x648; IsClient negates it.",
+      "noSimpleClientServerModeIdentity": "mode1 is not synonymous with every IsServer=true result: offline mode0 can also IsServer=true.",
+      "consumerDifference": "Mode0 uses interval threshold/reset and retained descriptor. Mode1 immediately invokes evaluator with current input in both xmm1 andxmm2 then queues work. Mode2 follows separate path; cannot assume it is same evaluator.",
+      "supportedPerNpcModeSetterIdentified": false
+    },
+    "reusedObservation": {
+      "reusedRuntimeRunId": "runtime-20261101-135048",
+      "observerSourceSha256": "e51e512a93474e3bc9b243a034706767d778bbe30752176d9a4a5ffbeba78fa1",
+      "selectorGuard": "if(entity.add(0x668).readU32()!==0)throw Error('Scheduler mode');",
+      "scope": "Guard runs for selected Animal receiver on observed scheduler calls; not direct constructor-time engine-pointer observation.",
+      "observationSucceeded": true,
+      "observerErrors": 0,
+      "scriptErrors": 0,
+      "observedParts": 8,
+      "completeFrames": 1499,
+      "nativeStateOverrides": false,
+      "normalClientQuitVerified": true
+    },
+    "sourceHashes": {
+      "research/animation-scheduler-mode-20261101-1424/derive_scanner.py": "67248d4f526fea29a068241c226ddc569b8e3e51e8d9c1f0d9153b22a329fa92",
+      "research/animation-scheduler-mode-20261101-1424/inspect_mode_writers.py": "7745b955a1296dfe0af3f1b02d8bf199eddd1899f005fc3a08b3cb379600e00a",
+      "research/animation-scheduler-mode-20261101-1424/resolve_modes.py": "fddd6e8f84eb0cf9993febfcf8715cf5fa95c22ebfcd8c5dce8b18f6f0dc82c5",
+      "research/animation-scheduler-mode-20261101-1424/classify_policy.py": "fa745c1721365606ff098c652abeb021d39ae075945d1d4427e14851c2ba8114",
+      "research/animation-scheduler-mode-20261101-1424/derivation.json": "1e15778020b8bd9ba5a14dd3f720d0c72c9f83bb57ce20c3bd31fe51cfc1ccf3",
+      "research/animation-scheduler-mode-20261101-1424/writer-inventory.json": "47c5880e6aa980a49b21d44c1715db97b98337c869775a9aaf344916a0668575",
+      "research/animation-scheduler-mode-20261101-1424/mode-policy.json": "d11cfe71421f94c16e1b997bc3e0d846bef86538e4746a282b6f1777a5c6c328",
+      "research/animation-scheduler-mode-20261101-1424/policy-classification.json": "9e2084ae030128feffee6ebdfa5a4830099a790e16771877417e9c85f7760e0c",
+      "research/animation-scheduler-mode-20261101-1424/reused-mode-observation.json": "46d7e3c36f4c1fb7adb56fd62b995fcdb3fa83b49e0a14c79524358b8d5289e0",
+      "research/track_b_dayz_2026-10-23/native-runtime/controlled-investigation/runtime-20261101-135048/native-call-probe/instrumentation.js": "e51e512a93474e3bc9b243a034706767d778bbe30752176d9a4a5ffbeba78fa1",
+      "research/track_b_dayz_2026-10-23/native-runtime/controlled-investigation/runtime-20261101-135048/native-call-probe/status.json": "409d6a84d4825d84542812547bb986db9a47e2f2090d905f90fedf04d07cd362",
+      "tools/start_single_agent_server.ps1": "c3ab8aac9a98c2b6114e280195695f7cadc4896b4a16a71cf23104c6593c9f8f"
+    },
+    "limits": [
+      "Static mode selection is construction-time evidence, not a dynamic setter or live role switch.",
+      "Truth table is a decoded-policy model, not8 runtime experiments.",
+      "A memory mode/global-pointer write is not a supported fix.",
+      "Unmapped field hits and indirect/alias writes remain outside inventory coverage.",
+      "No new8/64 stability,visible animation,frame-time,CPU/GPU or performance measurements.",
+      "Old single-agent server uses NHSingleProbe, not the current eight-part animation fixture; it is not an interchangeable A/B control."
+    ],
+    "next": "Inspect actual Animal constructor and configuration consumer for additional mode ownership, then assess a separately isolated real engine-role comparison. Do not force entity/global mode bytes or reuse unrelated server harness as matched control.",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "blockers": [
+    "Static mode selection is construction-time evidence, not a dynamic setter or live role switch.",
+    "Truth table is a decoded-policy model, not8 runtime experiments.",
+    "A memory mode/global-pointer write is not a supported fix.",
+    "Unmapped field hits and indirect/alias writes remain outside inventory coverage.",
+    "No new8/64 stability,visible animation,frame-time,CPU/GPU or performance measurements.",
+    "Old single-agent server uses NHSingleProbe, not the current eight-part animation fixture; it is not an interchangeable A/B control."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-scheduler-mode-20261101.md",
+      "sha256": "f080f1c4be64e362d42cddf93f0d7ee183a7cf300f719bcf6daeb74281be06e2"
+    },
+    {
+      "path": "evidence/animation-scheduler-mode-20261101.txt",
+      "sha256": "03808582535602929c8c6fed9b09b22163fd045fa383c5ab8392f5976bbeb0a1"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

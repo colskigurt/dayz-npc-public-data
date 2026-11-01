@@ -1,3 +1,5 @@
+> 최신 진단: Creature 생성자에서 엔진 전역 상태에 따른mode0/1/2 선택 확인. 공개 역할 판정4개와 연결하고 기존8파트mode0 guard 재대조. mode1의 별도 평가 경로는 시각·성능 개선 증거가 아님. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-scheduler-mode-20261101.md). 이전 기록 보존.
+
 > 최신 진단: UpdateSimulationPrecision 등록 연결·13입력/7분기 대조. 이 API가 즉시 선택하는 primary 최솟값50ms. 음수 requested0도 actual50ms. 60Hz 제어·시각·성능 수용 미확보. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-precision-contract-20261101.md). 이전 기록 보존.
 
 > 최신 진단: 시간 필드 정적 쓰기 후보913구간/140개 분류. Head 동일오프셋과 Entity 초기66.7ms를 실제 Animal50ms에서 구분. 새 지원 수정 접점 미확보. 클라이언트/PBO 변경 없음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-field-writers-20261101.md). 이전 기록 보존.
