@@ -1,0 +1,196 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T18:09:37.450927+09:00",
+  "sourceRunId": "animation-diag-cache-visible-20261101-1750",
+  "buildId": "diagnostic-A500-fixed-453D-0C6E-B8FB",
+  "verificationStatus": {
+    "diagnostic": "natural_cache_rebuild_and_obs_output_qpc_join_observed",
+    "repetitions": 1,
+    "attempts": 2,
+    "fullNpcRegression": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "schemaVersion": "1.0.0",
+    "sourceRunId": "animation-diag-cache-visible-20261101-1750",
+    "buildId": "diagnostic-A500-fixed-453D-0C6E-B8FB",
+    "newRuntimeTrials": 2,
+    "successfulCombinedTrials": 1,
+    "newPbo": false,
+    "newVideo": true,
+    "numericOverrides": false,
+    "usesObserverHooks": true,
+    "performanceExcluded": true,
+    "samples": 777,
+    "sampleSeconds": 15.5226175,
+    "observerSummary": {
+      "enabled": false,
+      "errors": 0,
+      "counts": {
+        "scheduler": 777,
+        "buffer": 777,
+        "consumer": 777,
+        "interpolate": 777,
+        "cache": 1553,
+        "cacheDirty": 1088,
+        "cacheClean": 465
+      },
+      "selected": true,
+      "elapsed": 15.5371579
+    },
+    "callbackIntervalMilliseconds": {
+      "p50": 19.9226,
+      "p95": 22.83305,
+      "p99": 23.838725
+    },
+    "cache": {
+      "dirtyRebuildEvents": 1088,
+      "dirtyBeforeCounts": {
+        "1": 1088
+      },
+      "dirtyAfterCounts": {
+        "0": 1088
+      },
+      "returnRvaCounts": {
+        "0xc127b8": 311,
+        "0xc07264": 777
+      },
+      "headTranslationChangedEvents": 1088,
+      "cacheFunctionObservedWallMicroseconds": {
+        "p50": 17.099999999999998,
+        "p95": 29.129999999999974,
+        "p99": 36.32599999999998
+      },
+      "timeSincePreviousSchedulerExitMilliseconds": {
+        "p50": 2.0507,
+        "p95": 21.36502,
+        "p99": 23.19352600000001
+      },
+      "forcedCalls": 0
+    },
+    "recording": {
+      "case": "runtime-2",
+      "video": {
+        "file": "DG-WGC-2026-11-01_18-05-32.mkv",
+        "bytes": 534735132,
+        "sha256": "9354604a9746687934ce25f431784f70a9b3c240d0da7c7f2071dbd6257cc592"
+      },
+      "frames": 1443,
+      "sidecarRows": 1464,
+      "matchedFrames": 1443,
+      "unmatchedFrames": 0,
+      "duplicateMatchedMarkerIds": 6,
+      "markerIdsMonotonic": true,
+      "bitConfidenceMinimum": 127.0,
+      "qpcWriteWindowMaximumTicks": 2894,
+      "qpcFrequency": 10000000,
+      "physicalScanoutMeasured": false,
+      "gameFrameIdentityMeasured": false,
+      "limits": [
+        "OBS frame marker identifies output-scene tick with host QPC, not the age of the asynchronously captured game texture or physical display time.",
+        "Initial unmarked recording frames are retained as unmatched; duplicate marker IDs are output observations, not proven game-frame drops."
+      ]
+    },
+    "visibleRoi": {
+      "crop": [
+        800,
+        410,
+        100,
+        100
+      ],
+      "overlapFrames": 931,
+      "exactRepeatPairs": 156,
+      "pixelDelta": {
+        "p50": 4.7585,
+        "p95": 9.10745,
+        "p99": 10.491230000000003
+      },
+      "changedPixelFraction": {
+        "p50": 0.2198,
+        "p95": 0.3553,
+        "p99": 0.38899
+      },
+      "boneOrGameFrameIdentityMeasured": false,
+      "visualSmoothnessAccepted": false
+    },
+    "server": {
+      "completed": true,
+      "earlyDisconnectCount": 0,
+      "guardDecision": {
+        "status": "known-warning",
+        "reason": "complete reviewed warning",
+        "completeErrorLines": 8,
+        "completeWarningBlocks": 1,
+        "partialWarning": false,
+        "pendingMilliseconds": 0
+      }
+    },
+    "client": {
+      "closed": true,
+      "forcedStop": false,
+      "terminationMarker": true,
+      "signatureChecksPassed": 3
+    },
+    "recorder": {
+      "closed": true,
+      "configurationRestored": true,
+      "normalStop": true
+    },
+    "failedAttempt": {
+      "id": "runtime",
+      "failure": "Transient empty/partial launcher JSON read prevented recorder start; no foreground gate, native observer did not attach. Server completed. Not an NPC failure."
+    },
+    "harnessValidation": {
+      "passed": true,
+      "writes": 100,
+      "readSamples": 982,
+      "sequencesSeen": 100,
+      "jsonErrors": [],
+      "lastSequence": 99
+    },
+    "functionalRegression": "not_retested",
+    "frameTimeP50P95P99": null,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "One selected diagnostic skeleton65 in fixed-run AI/root-motion-off fixture; not full NPC or retail acceptance.",
+      "Hooks and lossless OBS recording alter workload. Callback/cache wall durations are inclusive instrumented observations, not CPU self-time or performance baseline.",
+      "OBS marker maps output scene tick to QPC; asynchronously captured game texture age and physical scanout are not measured.",
+      "ROI includes head/upper-body/background and cursor, not a calibrated bone tracker. Image differences/repeats cannot by themselves establish bone cadence or cache-to-display latency.",
+      "Query/interpolated shared storage identity remains scoped to selected actor/time. Dirty flag transitions are not themselves visual defects.",
+      "GraphClock, native render submission, GPU upload and GC unavailable in this measurement; no new 8/64 regression or 20ms p95 claim."
+    ],
+    "next": "Use the synchronized recording and natural-cache events to calibrate a visible head/pose feature against model-space transforms and camera projection. Establish game-texture-age bounds before interpreting cache-to-image delay. No new interpolation, speed scale or cache forcing.",
+    "localEvidenceIntegrity": {
+      "filesVerified": 129,
+      "privateManifestPublished": false,
+      "checkpointSha256": "78cf30bb7c92a1fb39073d6b4c0120500fe00d4bbec7e780e8f354df54f77341"
+    }
+  },
+  "blockers": [
+    "One selected diagnostic skeleton65 in fixed-run AI/root-motion-off fixture; not full NPC or retail acceptance.",
+    "Hooks and lossless OBS recording alter workload. Callback/cache wall durations are inclusive instrumented observations, not CPU self-time or performance baseline.",
+    "OBS marker maps output scene tick to QPC; asynchronously captured game texture age and physical scanout are not measured.",
+    "ROI includes head/upper-body/background and cursor, not a calibrated bone tracker. Image differences/repeats cannot by themselves establish bone cadence or cache-to-display latency.",
+    "Query/interpolated shared storage identity remains scoped to selected actor/time. Dirty flag transitions are not themselves visual defects.",
+    "GraphClock, native render submission, GPU upload and GC unavailable in this measurement; no new 8/64 regression or 20ms p95 claim."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-diag-cache-visible-20261101.md",
+      "sha256": "28944cca371af0efa31242668a8d99159be47c3d76ff49d3807bb953c4039af5"
+    },
+    {
+      "path": "evidence/animation-diag-cache-visible-20261101.txt",
+      "sha256": "cf38ab552357952ff7d2de352946ed5e2d3b13cf33eeba4261776b65de58fb7b"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

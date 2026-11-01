@@ -1,0 +1,107 @@
+{
+  "cache": {
+    "dirtyRebuildEvents": 1088,
+    "dirtyBeforeCounts": {
+      "1": 1088
+    },
+    "dirtyAfterCounts": {
+      "0": 1088
+    },
+    "returnRvaCounts": {
+      "0xc127b8": 311,
+      "0xc07264": 777
+    },
+    "headTranslationChangedEvents": 1088,
+    "cacheFunctionObservedWallMicroseconds": {
+      "p50": 17.099999999999998,
+      "p95": 29.129999999999974,
+      "p99": 36.32599999999998
+    },
+    "timeSincePreviousSchedulerExitMilliseconds": {
+      "p50": 2.0507,
+      "p95": 21.36502,
+      "p99": 23.19352600000001
+    },
+    "forcedCalls": 0
+  },
+  "recording": {
+    "case": "runtime-2",
+    "video": {
+      "file": "DG-WGC-2026-11-01_18-05-32.mkv",
+      "bytes": 534735132,
+      "sha256": "9354604a9746687934ce25f431784f70a9b3c240d0da7c7f2071dbd6257cc592"
+    },
+    "frames": 1443,
+    "sidecarRows": 1464,
+    "matchedFrames": 1443,
+    "unmatchedFrames": 0,
+    "duplicateMatchedMarkerIds": 6,
+    "markerIdsMonotonic": true,
+    "bitConfidenceMinimum": 127.0,
+    "qpcWriteWindowMaximumTicks": 2894,
+    "qpcFrequency": 10000000,
+    "physicalScanoutMeasured": false,
+    "gameFrameIdentityMeasured": false,
+    "limits": [
+      "OBS frame marker identifies output-scene tick with host QPC, not the age of the asynchronously captured game texture or physical display time.",
+      "Initial unmarked recording frames are retained as unmatched; duplicate marker IDs are output observations, not proven game-frame drops."
+    ]
+  },
+  "visibleRoi": {
+    "crop": [
+      800,
+      410,
+      100,
+      100
+    ],
+    "overlapFrames": 931,
+    "exactRepeatPairs": 156,
+    "pixelDelta": {
+      "p50": 4.7585,
+      "p95": 9.10745,
+      "p99": 10.491230000000003
+    },
+    "changedPixelFraction": {
+      "p50": 0.2198,
+      "p95": 0.3553,
+      "p99": 0.38899
+    },
+    "boneOrGameFrameIdentityMeasured": false,
+    "visualSmoothnessAccepted": false
+  },
+  "callbackIntervalMilliseconds": {
+    "p50": 19.9226,
+    "p95": 22.83305,
+    "p99": 23.838725
+  },
+  "returnSiteRanges": [
+    {
+      "returnRva": "0xc127b8",
+      "unwindFunctionBegin": "0xc11ec0",
+      "unwindFunctionEnd": "0xc12a69",
+      "precedingCall": {
+        "rva": "0xc127b3",
+        "size": 5,
+        "text": "call 0x140c10ff0"
+      }
+    },
+    {
+      "returnRva": "0xc07264",
+      "unwindFunctionBegin": "0xc07230",
+      "unwindFunctionEnd": "0xc07554",
+      "precedingCall": {
+        "rva": "0xc0725f",
+        "size": 5,
+        "text": "call 0x140c10ff0"
+      }
+    }
+  ],
+  "limits": [
+    "One selected diagnostic skeleton65 in fixed-run AI/root-motion-off fixture; not full NPC or retail acceptance.",
+    "Hooks and lossless OBS recording alter workload. Callback/cache wall durations are inclusive instrumented observations, not CPU self-time or performance baseline.",
+    "OBS marker maps output scene tick to QPC; asynchronously captured game texture age and physical scanout are not measured.",
+    "ROI includes head/upper-body/background and cursor, not a calibrated bone tracker. Image differences/repeats cannot by themselves establish bone cadence or cache-to-display latency.",
+    "Query/interpolated shared storage identity remains scoped to selected actor/time. Dirty flag transitions are not themselves visual defects.",
+    "GraphClock, native render submission, GPU upload and GC unavailable in this measurement; no new 8/64 regression or 20ms p95 claim."
+  ]
+}

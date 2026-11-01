@@ -1,59 +1,55 @@
-# MS API 경로 정정과 포즈 저장소 alias·캐시 상태 확인
+# 자연 캐시 갱신과 실제 창 녹화의 시간 연결·한계
 
-작성: 2026-11-01T17:44:40.427193+09:00
+작성: 2026-11-01T18:09:09.544231+09:00
 
 ## 1. 작업 목표
 
-진단 query188/interpolated190 값의 일치가 독립적인 포즈 결과인지 같은 저장소 alias인지 구분하고, compressed transform과 GetBonePositionMS의 정확한 좌표·캐시 경로를 확인한다. 원인 확인 전 새 보간/업데이트 방식은 적용하지 않는다.
+이전 진단에서 확인한 공유 스켈레톤의 자연 캐시 갱신 시점을 관찰하고, 실제 게임 창 녹화와 QPC 시간축을 연결한다. 캐시 강제 갱신·시간 배율·새 보간은 적용하지 않는다.
 
 ## 2. 실제 수행
 
-설치 A500 exe의 GetBonePositionMS 등록 문자열에서 실제 handler와 virtual dispatch를 다시 추적했다. 첫 재사용 생산자는 target override가 적용되지 않아 C670 해시를 반환했다. 이를 진단 근거로 쓰지 않고 보존한 뒤, A500 고정 생산자를 별도로 실행했다. C670 결과는 두 빌드의 slot 차이 비교에만 사용했다.
+기존 OBS portable의 게임 창 전용·무음 60fps 녹화에 16비트 출력 프레임 표식과 QPC sidecar를 추가했다. Lua 경로의 Unicode 처리 실패와 scene 초기화 순서 실패는 각각 보존했다. 2초 preflight에서 123/123 영상 프레임 표식 해독에 성공했으나 게임 없는 배관 검사로만 취급한다.
 
-A500 handler RVA6E3240→virtual slot618→Animal C67B10→helper C04840→matrix copy C06C50→cache builder C10FF0을 확인했다. 이전 같은-slot 후보610에 붙였던 진단 MS 조회 명칭은 철회한다.610의 원시 명령은 유효하지만 진단 MS API binding은 아니었다. space-paths의 C06520 후보는 이 증명 경로에서 사용하지 않는다.
+첫 본시험은 launcher JSON 쓰기와 읽기가 겹쳐 기록기가 시작되지 않았다. 네이티브 hook도 연결되지 않았으며 게임 자체는 예정대로 종료됐다. 이를 NPC 실패로 분류하지 않는다. PS5 원자적 JSON 교체 helper와 읽기 재시도를 추가했다. 첫 null backup 인자 실패도 보존하고, 수정 후 실제 PS5 100회 쓰기·982회 읽기·JSON 오류0을 확인했다. v2는 sequence99 도달만 확인했고 정식 검사 영수증이 없어 성공 횟수로 쓰지 않았다.
 
-이후 동일1파트·고정run·root/AI 이동OFF·진단 fixture에서15초 읽기 중심 hook 관찰을1회 진행했다. 이번에는 CU 활성화와 readiness marker를 계측 전에 연결했다. 매 scheduler 종료에 pointer equality, compressed pose, 기존 matrix cache와 dirty flag를 기록했다. API/cache builder를 직접 호출해 결과를 갱신하지 않았다. 계측 중 실제 모델 화면1장도 확보했다.
+두 번째 본시험은 기존 A500 진단 client/server, 1파트·고정run·AI/root 이동OFF 조건에서 수행했다. selected skeleton65의 scheduler·buffer·consumer·interpolation 및 자연 cache builder entry/exit를 hook 관찰했다. 24초 OBS 녹화와 동시 수집 후 정상 종료했다. 게임 PBO·ANM·AI 코드는 바꾸지 않았다. 호출 return site 두 곳의 PE unwind 범위를 기존 Capstone으로 제한 역어셈블했다.
 
 ## 3. 측정 결과
 
-15.4938916초 범위·772표본,4경로 각각772회, 계측 오류0·script 관찰 오류0이다. scheduler-exit callback 간격 p50/p95/p99는19.986/22.941/24.528ms다. 실제 game frame-time·display interval·CPU self-time은 아니며 이전 실행과 focus/표본 빈도/캐시 읽기 조건이 달라 성능 A/B로 사용하지 않는다.
+본시험2회 중 녹화+native 결합 성공1회다. 성공 실행의 표본 구간은15.5226175초·777표본이다. scheduler/buffer/consumer/interpolation 각777회, observer오류0이다. scheduler-exit callback 간격 p50/p95/p99=19.9226/22.83305/23.838725ms이며 실제 게임 frame-time이 아니다.
 
-skeleton, transform array, matrix array, type-data pointer equality는 각각772/772 true다. 두 경로의 포즈 값도772/772 같다. 이번 대상·샘플링 시점에는 같은 저장소를 보고 있었다. 별도 두 pose 경로의 독립 검증으로 쓰지 않는다.
+cache 함수1,553회: dirty진입1,088·clean진입465회. dirty 사건1,088/1,088에서 exit dirty0 및 Head MS translation 변화가 확인됐다. return RVA C07264에서777회, C127B8에서311회다. 각 직전 call이 C10FF0임을 확인했지만 상위 의미·renderer 소유권은 미확정이다. cache hook 경과시간 p50/p95/p99=17.1/29.13/36.326µs는 계측을 포함하는 wall 범위이며 self-time/최적화 근거로 쓰지 않는다.
 
-query와 interpolation skeleton의 dirty flag는772표본 모두1이었다.6개 본의 회전은 각724/771 인접쌍에서, 기존 MS cache translation은 각735/771쌍에서 변했다. 이 count 차이로 지연이나 버그를 계산하지 않는다. flag1은 포즈 갱신 후 캐시 재계산 전의 정상 상태일 수 있다.
+영상24초·1,443프레임 모두 QPC sidecar 표식에 연결됐다. 표식 중복6건은 게임 프레임 드롭 증거가 아니다. 자연 cache·영상 겹침 구간931프레임의 고정100x100 ROI에서 직전과 완전 동일한156쌍을 관찰했다. ROI에는 머리·상체·배경·커서가 포함되므로 본 포즈의 갱신 빈도나 시각적 끊김 판정으로 쓰지 않는다. 비동기 game texture 나이·물리 scanout은 측정하지 못했다.
 
-서버 DONE·조기disconnect0·BattlEye kick0·crash0, client 종료 marker 확보·강제 종료 없음, 기존3개 PBO 서명 검증 성공이다. 알려진 기본 진단 플러그인 경고8줄은 보존했다. foreground는 요청했고 계측 중 모델 표시를 확인했으나 continuous appActive나 영상 cadence는 측정하지 않았다. 새8/64 회귀·frame-time p50/p95/p99·GPU/표시/할당/GC는 미측정이다.20ms p95는 목표다.
+서버DONE·조기disconnect0, client 정상 종료 marker·강제종료없음, 기존3개 PBO 서명 검증 성공이다. OBS 정상 녹화종료·소유 recorder 종료·기존 profile/scene byte 복원 확인을 마쳤다. 기본 진단 plugin 경고는 보존했다. 새8/64 기능 회귀·실제 frame-time p50/p95/p99·GPU/할당/GC는 미측정이고20ms p95는 목표다.
 
 ## 4. 원인 분석
 
-확인된 사실: 이번 query/interpolated 일치는 alias 때문이다. 단, 현재 선택한 진단 개체·관찰 단계의 결과이며 모든 일반 빌드/개체로 확대하지 않는다. alias는 원래 설계일 수 있고 결함이라는 뜻은 아니다.
+확인된 사실: 선택 대상에서 자연 cache rebuild가 실행되고 dirty1→0 및 행렬 변화가 발생한다. 이전 scheduler-exit의 dirty1을 캐시가 영구 정지한 결함으로 해석할 수 없다. 다만 이 결과는 전체 일반 실행의 stutter 원인을 반증하는 것은 아니다.
 
-확인된 사실: 실제 MS API는 slot618이며 cache builder를 거친 skeleton+38의48-byte matrix translation을 반환한다. builder는 skeleton+A8이0이면 반환하고, 필요하면 skeleton+30의32-byte 변환 및 계층 정보를 바탕으로 행렬을 만들고 A8을0으로 내린다.873개 직접 도달 명령과 명시 창을 보존했으며 무한한 전역 알고리즘 확보 주장은 아니다.
+확인된 사실: OBS 출력 scene tick과 QPC의 연결은 가능하다. 그러나 이 표식은 비동기 Window Capture가 가져온 게임 texture의 생성시각을 표시하지 않는다. ROI 반복을 native 정지나 렌더 지연으로 곧바로 연결할 수 없다.
 
-따라서 compressed 성분과 MS cache를 직접 같은 좌표로 비교한 오차 계산은 부적합하다. 첫 Head의 계층 입력 y약0.07575와 기존 MS cache y약1.43812는 같은 의미의 좌표가 아니다. 기존 cache는 dirty1이므로 그 순간 최신 모델 포즈라는 보장도 없다. 관찰자가 강제 갱신하지 않았다는 점을 유지한다.
-
-미확인: 자연적인 cache rebuild가 실제로 언제 실행되는지, 그 뒤 렌더·표시에 어떤 포즈가 쓰이는지, 일반 mode0의 시간 손실과 진단 mode2의 표시가 얼마나 다른지는 아직 연결되지 않았다. 이번 still로 움직임의 부드러움을 판정하지 않는다.
+미확인: 두 cache 호출자의 상위 의미, render submission에 쓰인 포즈의 식별자, captured texture의 나이, 화면에서 추적한 동일 본 특징과 모델 좌표 투영의 관계다. 강제 cache 갱신·새 clock 주입·프레임 생략 등 해결책을 이번 근거로 정당화하지 않는다.
 
 ## 5. 검증 수준
 
-실제 MS API binding·cache 경로 정정과 live pointer identity 확인은 진단 성공이다.15초1회이며 반복 안정성·전체 NPC 회귀가 아니다. 자연 캐시 갱신→렌더→표시 연결, 일반 exe 해결, 시각·성능 및 최종 수용은 미완료다.
+자연 캐시 갱신 관찰과 OBS 출력 표식/QPC 연결은 진단 성공이다. 결합 성공1회이며 반복 검증 완료·전체 NPC 회귀·시각 품질·성능·최종 수용은 아니다. ROI 영상 내용은 직접 측정했지만 개별 애니메이션의 부드러움 개선은 확인하지 못했다.
 
 ## 6. 변경 사항
 
-격리 observer와 producer·fixture·분석만 추가했다. 게임 코드·PBO·ANM·9350 후보·운영 서버는 변경하지 않았다. 기존3개 PBO 해시·서명 검증은 성공했고 새 PBO가 없어 신규 서명 대상은 없다. hook/injected 코드의 오버헤드가 있어 성능 비교에서 제외한다. 게임 수치 보정·cache 강제 호출·서비스/드라이버/보안 변경·새 설치·영상·대용량dump는 없다.
-
-과거 원시 보고서/분석 결과는 덮어쓰지 않고 현재 해석에서 진단 slot610 MS 명칭을 철회했다. 이번 canonical 진행·공개 최신 요약에는 이 정정을 명시한다. 일반 exe의 MS slot610 자체를 잘못됐다고 하는 것은 아니다.
+기존 격리 fixture의 상태 파일 출력을 원자적 교체로 수정하고 retry 읽기를 추가했다. 별도 cache observer·OBS Lua·해독/분석 스크립트를 추가했다. 녹화 중 임시 portable 설정은 원래 bytes로 복원했다. 기존 game/PBO·9350 후보·운영 서버·Steam 배포본은 변경하지 않았다. 신규 PBO 서명 대상은 없으며 고정3개 서명 검증은 성공이다.
 
 ## 7. 원시 증거
 
-분석 ID animation-diag-pose-identity-20261101-1740. bone-api-bindings-diag, space-paths의 선택 함수, ms-matrix-path, ms-cache-builder-expanded, runtime native-observer/heartbeat/launch/profile, foreground-ready/ui-observation/during-trace-window를 보존한다. 화면 SHA 6a3dc8efba72d8007c1db79ec1f394de22071e3a2586aa664d87c33d9f0a56e6이다. 정적 분석은 기존 bounded Capstone, runtime은 Python Frida이며 REA provider 전체 decompilation/runtime Evidence가 아니다.
+실행 묶음 animation-diag-cache-visible-20261101-1750. runtime는 오케스트레이션 실패, runtime-2는 결합 성공이다. launch/profile/native-observer/heartbeat/markers/decoded-markers/roi-frame-observations/recorder-result/분석 및 return-sites를 보존한다. 본영상 SHA256=9354604a9746687934ce25f431784f70a9b3c240d0da7c7f2071dbd6257cc592, 크기534735132bytes다. 새 손실 없는 영상이 약510MiB이므로 추가 full-frame 파생 영상은 만들지 않고 작은 ROI 관측값만 생성했다. 이번 영상은 원시 증거로 보존하며 자동 삭제하지 않는다.
 
-공개본은 실제 binding·선택 함수·포인터 동일성 boolean·처음/마지막 표본과 한계를 제공한다. 포인터 절대 주소·PID·CLI·사용자 식별자·로컬 경로·전체 raw 로그/이미지·게임 자산·키는 제외한다. 입력/파일 해시·JSON·종료·안정성 확인 뒤 기존 체크포인트 체계에 저장했다.
+정적 경로는 bounded Capstone, runtime hook은 기존 Python Frida이며 REA의 전체 runtime Evidence가 아니다. 공개본에는 집계·선정 호출 명령·해시·한계만 포함하고 로컬 경로·PID·CLI·절대 런타임 포인터·원시 영상·게임 자산·키를 제외한다. 저장 전 해시와 JSON 및 종료 상태를 검증했다.
 
 ## 8. 잔여 문제
 
-다음은 해당 shared skeleton에 자연적으로 호출되는 C10FF0의 entry/exit와 return site를 관찰해 dirty flag·matrix 갱신 시점을 잇는 것이다. 강제로 API/cache 갱신을 호출하지 않는다. 기존 capture 인프라로 실제 표시와 동기화할 수 있는 재현 조건을 함께 준비한다.
+다음은 확보 영상에서 머리의 동일 시각 특징을 보정하고 카메라 투영과 MS 좌표를 연결하는 분석이다. 동시에 두 cache caller의 상위 역할과 WGC texture 나이의 측정 가능 범위를 좁힌다. 출력표식만으로 실제 GPU/scanout까지 연결됐다고 보고하지 않는다. 새 녹화보다 기존 영상의 국소 분석을 먼저 활용한다.
 
-단순 frame skipping·보간·시간 배율 변경은 보류한다. 진단/일반 빌드,1파트/전체 NPC,시각/기능/성능의 구분을 유지하며 기존 mode0 손실·원본 변환·64개체 비용 연구는 그대로 보존한다.
+일반 mode0 누적기 손실·진단 mode2·전체8파트·64개체 비용은 별도 실험으로 유지한다. 이번 hook/녹화 부하는 성능 비교에서 제외하고20ms p95나 시각 개선을 주장하지 않는다.
 
-선정 공개 본문. 로컬 보고서 SHA-256: `fbccfb87c1dafc324b66d77ceb46a9c75a6a2a602c51c7d2239185ac24dc45fd`. 원시 전체가 아니다.
+선정 공개 본문. 로컬 보고서 SHA-256: `78cf30bb7c92a1fb39073d6b4c0120500fe00d4bbec7e780e8f354df54f77341`. 원시 전체가 아니다.
