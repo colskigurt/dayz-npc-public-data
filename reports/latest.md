@@ -1,3 +1,5 @@
+> 최신 실시간 검증: 8개체: 8도달, 9/9낙하복구, 엄격gate True; 64개체: 64도달, 78/78낙하복구, 엄격gate True. 새pending분기 실제사용. 단일시험 기능결과이며 반복·시각·성능 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/entry-idle-handoff-live-20261101.md). 이전기록보존.
+
 > 최신 후보: 등반idle 인계 단일파일9350, 서명검증·46고정조건·live엔진사전검증 통과. 기존frozen도우미 최종flag실패 보존. 실제8/64효능·시각·성능은 이체크포인트에서 미검증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/entry-idle-handoff-candidate-20261101.md). 이전기록보존.
 
 > 최신 실제64계측: Present631건, p95 93.070ms·CPUbusy91.088·GPUbusy12.207ms. 64/64도달·87/87낙하복구, 정렬watchdog1건으로 기존엄격기능gate실패. 시각품질 미측정·20ms미달·개선주장없음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/presentation-etw-64-actual-20261101.md). 이전기록보존.
