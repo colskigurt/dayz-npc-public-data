@@ -1,0 +1,698 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T15:11:38.224689+09:00",
+  "sourceRunId": "animation-context-attachment-20261101-1449",
+  "buildId": "453D-0C6E-B8FB-server-ee1add8b",
+  "verificationStatus": {
+    "diagnostic": "physical_controller_attachment_and_command_pose_cadence",
+    "scopedOnePartRoleFixture": "three_completed_two_without_observer_one_with_observer",
+    "fullNpcRegression": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-context-attachment-20261101-1449",
+    "buildId": "453D-0C6E-B8FB-server-ee1add8b",
+    "verificationStatus": "physics_controller_attachment_and_scoped_leader_role_repeats_diagnosed",
+    "newRuntimeTrials": 4,
+    "newPbo": false,
+    "newVideo": false,
+    "numericOverrides": false,
+    "metrics": {
+      "sourceRunId": "animation-context-attachment-20261101-1449",
+      "actualServerStarts": 4,
+      "completedOnePartLeaderTrials": 3,
+      "failedRenderPartPhysicsTrials": 1,
+      "trialResults": [
+        {
+          "tag": "physics",
+          "completed": false,
+          "forcedOwnedStop": true,
+          "normalExit": false,
+          "newPbo": false,
+          "poseRows": 0,
+          "crashLogs": 1,
+          "sourceLaunchSha256": "7cfe4c3b26e53a45174fcefd5e8be2c086e0fcac78ccaabd146c7e35cf53aa53",
+          "existingSignaturesVerified": true
+        },
+        {
+          "tag": "leader",
+          "completed": true,
+          "forcedOwnedStop": true,
+          "normalExit": false,
+          "newPbo": false,
+          "poseRows": 1251,
+          "crashLogs": 0,
+          "sourceLaunchSha256": "37f385fc4f995d6f9d83143754a00100323d3e512fafefd51b57e25b58536072",
+          "existingSignaturesVerified": true,
+          "missionSpanSeconds": 25.0,
+          "nativeCommandSecondsPerMissionSecond": 1.0,
+          "missionInputDtMs": {
+            "samples": 1251,
+            "p50": 15.0,
+            "p95": 31.0,
+            "p99": 31.0,
+            "minimum": 14.0,
+            "maximum": 32.0
+          },
+          "observedCommandStepMs": {
+            "samples": 125,
+            "p50": 199.9999999999993,
+            "p95": 200.00000000000284,
+            "p99": 200.00000000000284,
+            "minimum": 199.9999999999993,
+            "maximum": 200.00000000000284
+          },
+          "cpuHeadStepMeters": {
+            "samples": 1250,
+            "p50": 0.0,
+            "p95": 0.25960852902876397,
+            "p99": 0.3766724226823414,
+            "minimum": 0.0,
+            "maximum": 0.4201000885753298
+          },
+          "cpuHeadRepeatPairs": 1125,
+          "consecutivePosePairs": 1250,
+          "scriptCommandActiveFraction": 1.0,
+          "poseTraceSha256": "ee218879f546a649e94c08e8bf483aa99cede6e6822223384c31168e2d001ae0"
+        },
+        {
+          "tag": "leader-observed",
+          "completed": true,
+          "forcedOwnedStop": true,
+          "normalExit": false,
+          "newPbo": false,
+          "poseRows": 1251,
+          "crashLogs": 0,
+          "sourceLaunchSha256": "d72d4d27a873fc1c9bc4163eb8c416145ba85241fcf4743e8745f4885fb1d8ad",
+          "existingSignaturesVerified": true,
+          "missionSpanSeconds": 25.002,
+          "nativeCommandSecondsPerMissionSecond": 0.9999200063994881,
+          "missionInputDtMs": {
+            "samples": 1251,
+            "p50": 15.0,
+            "p95": 31.0,
+            "p99": 31.0,
+            "minimum": 14.0,
+            "maximum": 32.0
+          },
+          "observedCommandStepMs": {
+            "samples": 125,
+            "p50": 199.9999999999993,
+            "p95": 200.00000000000284,
+            "p99": 200.00000000000284,
+            "minimum": 199.9999999999993,
+            "maximum": 200.00000000000284
+          },
+          "cpuHeadStepMeters": {
+            "samples": 1250,
+            "p50": 0.0,
+            "p95": 0.25960852902876397,
+            "p99": 0.3766724226823414,
+            "minimum": 0.0,
+            "maximum": 0.4201000885753298
+          },
+          "cpuHeadRepeatPairs": 1125,
+          "consecutivePosePairs": 1250,
+          "scriptCommandActiveFraction": 1.0,
+          "poseTraceSha256": "d917823c4b9e92249abd88dd80b9476b447602648e3db9710b98fbc0b018f30b"
+        },
+        {
+          "tag": "leader-observed2",
+          "completed": true,
+          "forcedOwnedStop": true,
+          "normalExit": false,
+          "newPbo": false,
+          "poseRows": 1252,
+          "crashLogs": 0,
+          "sourceLaunchSha256": "8409e286cacc40860534977b09f7d65ad1e1390ea8a8f181ef45e254455bf40e",
+          "existingSignaturesVerified": true,
+          "missionSpanSeconds": 25.009,
+          "nativeCommandSecondsPerMissionSecond": 0.9996401295533608,
+          "missionInputDtMs": {
+            "samples": 1252,
+            "p50": 15.0,
+            "p95": 31.0,
+            "p99": 31.0,
+            "minimum": 14.0,
+            "maximum": 32.0
+          },
+          "observedCommandStepMs": {
+            "samples": 125,
+            "p50": 199.9999999999993,
+            "p95": 200.00000000000284,
+            "p99": 200.00000000000284,
+            "minimum": 199.99000000000143,
+            "maximum": 200.01000000000067
+          },
+          "cpuHeadStepMeters": {
+            "samples": 1251,
+            "p50": 0.0,
+            "p95": 0.25962510575498676,
+            "p99": 0.37664849846020987,
+            "minimum": 0.0,
+            "maximum": 0.4200977319636467
+          },
+          "cpuHeadRepeatPairs": 1126,
+          "consecutivePosePairs": 1251,
+          "scriptCommandActiveFraction": 1.0,
+          "poseTraceSha256": "d68d6cb319d5284c579d1435de4f5a63ebb7c1c7530666f4848a2bec1bc13ee5"
+        }
+      ],
+      "observer": {
+        "samples": 72,
+        "errors": 0,
+        "selectedEntities": 1,
+        "controllerPresentAll": true,
+        "controllerType": "BulletCharacterCtrlSimple",
+        "nativeStateOverrides": false,
+        "provider": "existing Python Frida, not REA MCP",
+        "performanceExcluded": true,
+        "hooksDisabledThenRetainedUntilOwnedServerExit": true
+      },
+      "limits": [
+        "Mission inputdt is not measured CPU or Present frame time.",
+        "NativeSeconds is script command accumulated time, not direct native graph clock.",
+        "CPU head repeated samples do not measure visible animation smoothness.",
+        "First two leader completions had no successful observer attachment; third included observer overhead.",
+        "Three successful leader fixtures are scoped one-native-part compatibility evidence, not8/64 NPC regressions or performance optimization."
+      ]
+    },
+    "physicsFailure": {
+      "sourceRunId": "animation-context-attachment-20261101-1449",
+      "serverExecutableSha256": "ee1add8bb6ded0b6e913f31d62c93d1326d5a44106d558bbd3d19adb78b73bb1",
+      "missionSha256": "2460DC1D8002846C29C7EA6993075BBD42A7862BF3F9D1AE55261A360560BB6A",
+      "faultRva": "0xaa8ae9",
+      "faultReadAddress": "0x54",
+      "faultInstruction": "movss xmm0, dword ptr [rax + 0x54]",
+      "context": [
+        {
+          "address": "0x140aa8a50",
+          "instruction": "mov qword ptr [rsp + 8], rbx"
+        },
+        {
+          "address": "0x140aa8a55",
+          "instruction": "mov qword ptr [rsp + 0x10], rbp"
+        },
+        {
+          "address": "0x140aa8a5a",
+          "instruction": "mov qword ptr [rsp + 0x18], rsi"
+        },
+        {
+          "address": "0x140aa8a5f",
+          "instruction": "push rdi"
+        },
+        {
+          "address": "0x140aa8a60",
+          "instruction": "sub rsp, 0x20"
+        },
+        {
+          "address": "0x140aa8a64",
+          "instruction": "cmp dword ptr [rdx + 8], 2"
+        },
+        {
+          "address": "0x140aa8a68",
+          "instruction": "mov rdi, rdx"
+        },
+        {
+          "address": "0x140aa8a6b",
+          "instruction": "mov rsi, qword ptr [rdx]"
+        },
+        {
+          "address": "0x140aa8a6e",
+          "instruction": "mov rbp, rcx"
+        },
+        {
+          "address": "0x140aa8a71",
+          "instruction": "jae 0x140aa8ab1"
+        },
+        {
+          "address": "0x140aa8a73",
+          "instruction": "xor edx, edx"
+        },
+        {
+          "address": "0x140aa8a75",
+          "instruction": "lea ecx, [rdx + 0x18]"
+        },
+        {
+          "address": "0x140aa8a78",
+          "instruction": "call 0x14020e5f0"
+        },
+        {
+          "address": "0x140aa8a7d",
+          "instruction": "mov rbx, rax"
+        },
+        {
+          "address": "0x140aa8a80",
+          "instruction": "test rsi, rsi"
+        },
+        {
+          "address": "0x140aa8a83",
+          "instruction": "je 0x140aa8aa5"
+        },
+        {
+          "address": "0x140aa8a85",
+          "instruction": "mov edx, dword ptr [rdi + 0xc]"
+        },
+        {
+          "address": "0x140aa8a88",
+          "instruction": "mov rcx, rax"
+        },
+        {
+          "address": "0x140aa8a8b",
+          "instruction": "lea r8, [rdx + rdx*2]"
+        },
+        {
+          "address": "0x140aa8a8f",
+          "instruction": "mov rdx, rsi"
+        },
+        {
+          "address": "0x140aa8a92",
+          "instruction": "shl r8, 2"
+        },
+        {
+          "address": "0x140aa8a96",
+          "instruction": "call 0x14101a7ba"
+        },
+        {
+          "address": "0x140aa8a9b",
+          "instruction": "xor edx, edx"
+        },
+        {
+          "address": "0x140aa8a9d",
+          "instruction": "mov rcx, rsi"
+        },
+        {
+          "address": "0x140aa8aa0",
+          "instruction": "call 0x14020e850"
+        },
+        {
+          "address": "0x140aa8aa5",
+          "instruction": "mov qword ptr [rdi], rbx"
+        },
+        {
+          "address": "0x140aa8aa8",
+          "instruction": "mov dword ptr [rdi + 8], 2"
+        },
+        {
+          "address": "0x140aa8aaf",
+          "instruction": "jmp 0x140aa8ab4"
+        },
+        {
+          "address": "0x140aa8ab1",
+          "instruction": "mov rbx, rsi"
+        },
+        {
+          "address": "0x140aa8ab4",
+          "instruction": "mov dword ptr [rdi + 0xc], 2"
+        },
+        {
+          "address": "0x140aa8abb",
+          "instruction": "mov rax, qword ptr [rbp + 0x1a0]"
+        },
+        {
+          "address": "0x140aa8ac2",
+          "instruction": "movzx ecx, byte ptr [rax + 0x1ca]"
+        },
+        {
+          "address": "0x140aa8ac9",
+          "instruction": "test cl, cl"
+        },
+        {
+          "address": "0x140aa8acb",
+          "instruction": "js 0x140aa8ae7"
+        },
+        {
+          "address": "0x140aa8acd",
+          "instruction": "mov rax, qword ptr [rax + 0xe0]"
+        },
+        {
+          "address": "0x140aa8ad4",
+          "instruction": "movsx rcx, cl"
+        },
+        {
+          "address": "0x140aa8ad8",
+          "instruction": "mov rax, qword ptr [rax + rcx*8]"
+        },
+        {
+          "address": "0x140aa8adc",
+          "instruction": "test rax, rax"
+        },
+        {
+          "address": "0x140aa8adf",
+          "instruction": "je 0x140aa8ae7"
+        },
+        {
+          "address": "0x140aa8ae1",
+          "instruction": "mov rax, qword ptr [rax + 0x10]"
+        },
+        {
+          "address": "0x140aa8ae5",
+          "instruction": "jmp 0x140aa8ae9"
+        },
+        {
+          "address": "0x140aa8ae7",
+          "instruction": "xor eax, eax"
+        },
+        {
+          "address": "0x140aa8ae9",
+          "instruction": "movss xmm0, dword ptr [rax + 0x54]"
+        },
+        {
+          "address": "0x140aa8aee",
+          "instruction": "movss xmm1, dword ptr [rax + 0x5c]"
+        },
+        {
+          "address": "0x140aa8af3",
+          "instruction": "mov rbp, qword ptr [rsp + 0x38]"
+        },
+        {
+          "address": "0x140aa8af8",
+          "instruction": "mov rsi, qword ptr [rsp + 0x40]"
+        },
+        {
+          "address": "0x140aa8afd",
+          "instruction": "movss dword ptr [rbx], xmm0"
+        },
+        {
+          "address": "0x140aa8b01",
+          "instruction": "movss dword ptr [rbx + 8], xmm1"
+        },
+        {
+          "address": "0x140aa8b06",
+          "instruction": "mov dword ptr [rbx + 4], 0x3ecccccd"
+        }
+      ],
+      "minidump": {
+        "bytes": 701264,
+        "sha256": "3d6a0dd71232f02d5b72e2e423446b900d5773fb20e1a6cd303337b4caa7b920",
+        "topLevelStreamBoundsValid": true,
+        "exceptionContextBytes": 1232,
+        "registerZeroMask": {
+          "rax": true,
+          "rcx": false,
+          "rdx": false,
+          "rbx": false,
+          "rsi": true,
+          "rdi": false,
+          "r8": false,
+          "r9": false,
+          "r10": true,
+          "r11": false,
+          "r12": false,
+          "r13": false,
+          "r14": false,
+          "r15": false
+        },
+        "ripMatchesCrashLog": true
+      },
+      "rootCause": "not_established",
+      "indexRegisterLow8Signed": -1,
+      "limits": [
+        "Top-level directory/exception context bounds checked; all nested memory payloads not certified.",
+        "Register zero mask only; no process pointers or raw dump published.",
+        "New creation-time fault differs from prior post-spawn evaluator fault."
+      ]
+    },
+    "modelRoleAudit": {
+      "sourceRunId": "animation-context-attachment-20261101-1449",
+      "pboSha256": "453d6a9e688d7bf14c5b98c305dd5a45200ec52156949c10691839b43c58bc9a",
+      "models": [
+        {
+          "member": "dg_repartition_crowd_body.p3d",
+          "packedSha256": "29ea8838368fed2147fd30b2d4d8452a8c2c678eeac52ed0f3045eebd3607de2",
+          "packedBytes": 418723,
+          "packedMagic": "ODOL",
+          "sourceSha256": "e1acf4f69fc384d3ba31837e2eea515951a22b7b18a918d72e7b85207a651cc2",
+          "sourceBytes": 3860940,
+          "sourceDeclaredLods": 3,
+          "sourceTagEndpointResolutions": [
+            1.0,
+            999999986991104.0,
+            9999999827968.0
+          ],
+          "sourceHasGeometryResolution": true,
+          "packedGeometryValidated": false
+        },
+        {
+          "member": "dg_repartition_part_0.p3d",
+          "packedSha256": "d82c07a4c44d782778774b5d5059bdbaf907c1e3e7a965747f715e3f50d9a440",
+          "packedBytes": 418248,
+          "packedMagic": "ODOL",
+          "sourceSha256": "f9edad4c8ae3d886d61a7954d2c45728132805c1dd89dbcb9ea28a53c89e48cc",
+          "sourceBytes": 3857860,
+          "sourceDeclaredLods": 3,
+          "sourceTagEndpointResolutions": [
+            1.0,
+            999999986991104.0,
+            6999999976046592.0
+          ],
+          "sourceHasGeometryResolution": false,
+          "packedGeometryValidated": false
+        }
+      ],
+      "limits": [
+        "Packed model is compiled ODOL; geometry was not decoded. MLOD endpoint checks refer to current source only, not proof of compiled equivalence.",
+        "A missing signed native index is not assigned to a named LOD without further native producer mapping.",
+        "CrowdLeader model differs physically; using it would be a model-role counterfactual, not unchanged full NPC pipeline."
+      ]
+    },
+    "cpuHeadSpectrum": {
+      "sourceRunId": "animation-context-attachment-20261101-1449",
+      "trials": [
+        {
+          "trial": "leader",
+          "traceSha256": "ee218879f546a649e94c08e8bf483aa99cede6e6822223384c31168e2d001ae0",
+          "uniformResampleStepSeconds": 0.02,
+          "window": "Hann",
+          "frequencyResolutionHz": 0.04,
+          "dominantPeaks": [
+            {
+              "hz": 0.48,
+              "periodSeconds": 2.0833333333333335,
+              "relativePower": 1.0
+            },
+            {
+              "hz": 1.92,
+              "periodSeconds": 0.5208333333333334,
+              "relativePower": 0.7179747033030505
+            },
+            {
+              "hz": 0.96,
+              "periodSeconds": 1.0416666666666667,
+              "relativePower": 0.5764848903357164
+            },
+            {
+              "hz": 0.52,
+              "periodSeconds": 1.923076923076923,
+              "relativePower": 0.2537601649607496
+            },
+            {
+              "hz": 0.44,
+              "periodSeconds": 2.272727272727273,
+              "relativePower": 0.2514927885452822
+            },
+            {
+              "hz": 1.8800000000000001,
+              "periodSeconds": 0.5319148936170213,
+              "relativePower": 0.1798859852702431
+            }
+          ]
+        },
+        {
+          "trial": "leader-observed",
+          "traceSha256": "d917823c4b9e92249abd88dd80b9476b447602648e3db9710b98fbc0b018f30b",
+          "uniformResampleStepSeconds": 0.02,
+          "window": "Hann",
+          "frequencyResolutionHz": 0.039968025579536375,
+          "dominantPeaks": [
+            {
+              "hz": 0.47961630695443647,
+              "periodSeconds": 2.085,
+              "relativePower": 1.0
+            },
+            {
+              "hz": 1.9184652278177459,
+              "periodSeconds": 0.52125,
+              "relativePower": 0.7965626400256488
+            },
+            {
+              "hz": 0.9592326139088729,
+              "periodSeconds": 1.0425,
+              "relativePower": 0.5731808471496798
+            },
+            {
+              "hz": 0.5195843325339728,
+              "periodSeconds": 1.9246153846153846,
+              "relativePower": 0.2587826473885126
+            },
+            {
+              "hz": 0.43964828137490014,
+              "periodSeconds": 2.2745454545454544,
+              "relativePower": 0.24205953345385184
+            },
+            {
+              "hz": 1.9584332533972824,
+              "periodSeconds": 0.5106122448979591,
+              "relativePower": 0.20485951700860755
+            }
+          ]
+        },
+        {
+          "trial": "leader-observed2",
+          "traceSha256": "d68d6cb319d5284c579d1435de4f5a63ebb7c1c7530666f4848a2bec1bc13ee5",
+          "uniformResampleStepSeconds": 0.02,
+          "window": "Hann",
+          "frequencyResolutionHz": 0.039968025579536375,
+          "dominantPeaks": [
+            {
+              "hz": 0.47961630695443647,
+              "periodSeconds": 2.085,
+              "relativePower": 1.0
+            },
+            {
+              "hz": 1.9184652278177459,
+              "periodSeconds": 0.52125,
+              "relativePower": 0.7305767291109428
+            },
+            {
+              "hz": 0.9592326139088729,
+              "periodSeconds": 1.0425,
+              "relativePower": 0.5524704858059261
+            },
+            {
+              "hz": 0.5195843325339728,
+              "periodSeconds": 1.9246153846153846,
+              "relativePower": 0.25535206450892783
+            },
+            {
+              "hz": 0.43964828137490014,
+              "periodSeconds": 2.2745454545454544,
+              "relativePower": 0.24252727114198386
+            },
+            {
+              "hz": 1.9584332533972824,
+              "periodSeconds": 0.5106122448979591,
+              "relativePower": 0.1935693191614985
+            }
+          ]
+        }
+      ],
+      "limits": [
+        "Exploratory spectrum of queried CPU Head positions, not native graph-clock or visible frame measurement.",
+        "Dominant oscillation can be a harmonic of clip phase; do not infer exact clip clock from one joint.",
+        "Resampling held CPU positions does not interpolate native or visible animation."
+      ]
+    },
+    "sourceHashes": {
+      "research/animation-context-attachment-20261101-1449/analyze_physics_failure.py": "ca2ca062ebc56e76dc981ce3b47972c2cde8d7593a338989bbd818fca1dc902a",
+      "research/animation-context-attachment-20261101-1449/analyze_physics_failure_detailed.py": "c22f87d331d87597e88ab89a365f8fc2d18d02b5e8b049e151659198f3744392",
+      "research/animation-context-attachment-20261101-1449/analyze_roles.py": "9a6100201a044eeb1600e04883fb6ef58872b19e3e288aa935d7f81dd15e0e41",
+      "research/animation-context-attachment-20261101-1449/attachment-candidates.json": "88629d5453f1dcff362d3475964411617a2ad4289150ccf49eaab1707c3ccb42",
+      "research/animation-context-attachment-20261101-1449/audit_models.py": "d6b4fd5719bdb4f14c730c673e214cccbcdfb815c1282cee3b77b9ff5a207031",
+      "research/animation-context-attachment-20261101-1449/body-types.json": "2228588de6b15236e6fe5445d76be07ab7a322db2d5ad281e51b02b48e8a478f",
+      "research/animation-context-attachment-20261101-1449/controller-observer.js": "a6cafac9d602b8932723fc0170c70f1587ab34c71111eac87b220442ed8db220",
+      "research/animation-context-attachment-20261101-1449/controller-observer.json": "6922b8222064dabaf73c3c8d7a9c73f102ba0aa0b7e3286b51a04bf3a579b818",
+      "research/animation-context-attachment-20261101-1449/focused-attachment.json": "480761d499c3cfe4d4b7924d9156b4dd7edfd70fdd5d138b4e87f6d21932b0b9",
+      "research/animation-context-attachment-20261101-1449/head-spectrum.json": "f9ea3035d008a1a2e6ccb65fabc0a90a3ad4394b9a7b4d98d1dda0f54e8aea5a",
+      "research/animation-context-attachment-20261101-1449/head_spectrum.py": "11b735869596856b3eebba59278d42b0ca6da6d93312a5ec5e95a5ac5496b54a",
+      "research/animation-context-attachment-20261101-1449/inspect_attachment.py": "d607938efa8c1d3813131b5921ac6d15753d83cc9363102660d3bbb9a72da23c",
+      "research/animation-context-attachment-20261101-1449/inspect_body_types.py": "7dc3cdac6d6c6680d8e813fb820589c87f5d4714c7875ecaa936a081c4489b8a",
+      "research/animation-context-attachment-20261101-1449/inspect_instance_setter.py": "5fa89a98f95a519e7342c94dcfde1d2fe98a30ca59c69aebb52fc9455d82c3ef",
+      "research/animation-context-attachment-20261101-1449/instance-setter-binding.json": "e97370edc1f02338852605f04438967f5e27d239d3e5cd2308de58001165162e",
+      "research/animation-context-attachment-20261101-1449/model-role-audit.json": "d647792af9c5a67a49fc987cc0475a4439d1f5c80ebf454b776b487f74a85e1e",
+      "research/animation-context-attachment-20261101-1449/observer-preflight-failure.json": "a51235e5832ee4b87e4246ca673b606a2b2188b801acd8d35b96b3dd24b32ffa",
+      "research/animation-context-attachment-20261101-1449/observe_controller.py": "d346a330d4684f3132fc8273745bdd7f213a261dbcdccfa9e69588956baf7ec5",
+      "research/animation-context-attachment-20261101-1449/physics-failure-detailed.json": "9847bb9dceaeffd837f18ac86d9b1364cf83ed43a3dd12d8fb8773dd16f73401",
+      "research/animation-context-attachment-20261101-1449/physics-failure.json": "c15b00c73cca026961a60c11c6be8ece3ddda3d1b0d0db90d886472ba9c64a5b",
+      "research/animation-context-attachment-20261101-1449/role-results.json": "d1ba282c178de975c6ee436fdb08647dc8197996475993265f62275763ed398e",
+      "research/animation-context-attachment-20261101-1449/run_server_leader.ps1": "b0d93e27a1cdaf2664e5ae505d9e4215d114207b7b3c46fcf92caa721734bc7d",
+      "research/animation-context-attachment-20261101-1449/run_server_leader_observed.ps1": "06cacf0a0be7d53dce78fc1bf2ab8ac31276afa187282643f908f815d7043150",
+      "research/animation-context-attachment-20261101-1449/run_server_leader_observed2.ps1": "4e5581ce96b0500a4de2e6a4355adb1c671752eb9822980c5504352e2dddcfb8",
+      "research/animation-context-attachment-20261101-1449/run_server_physics.ps1": "7f4924a5e0f09facb8e75fc74cfb47c260d8682e909b1e547bc90b481f7ad728",
+      "research/animation-context-attachment-20261101-1449/scan_attachment.py": "9de8483ea600eb4d8e0f1efe5023f414ddceb2dc1d93f2ad40dafa25efd08603",
+      "research/animation-context-attachment-20261101-1449/server-launch-leader-observed.json": "d72d4d27a873fc1c9bc4163eb8c416145ba85241fcf4743e8745f4885fb1d8ad",
+      "research/animation-context-attachment-20261101-1449/server-launch-leader-observed2.json": "8409e286cacc40860534977b09f7d65ad1e1390ea8a8f181ef45e254455bf40e",
+      "research/animation-context-attachment-20261101-1449/server-launch-leader.json": "37f385fc4f995d6f9d83143754a00100323d3e512fafefd51b57e25b58536072",
+      "research/animation-context-attachment-20261101-1449/server-launch-physics.json": "7cfe4c3b26e53a45174fcefd5e8be2c086e0fcac78ccaabd146c7e35cf53aa53",
+      "research/animation-context-attachment-20261101-1449/server-profile-leader/DayZServer_x64_2026-11-01_14-59-36.RPT": "a16b3c7beca834ecf63987bf5d1ef377b9e4f6c26e271167451a17d1d4bf1de3",
+      "research/animation-context-attachment-20261101-1449/server-profile-leader/error_2026-11-01_14-59-36.log": "a1798c1017b2b6d0d671d78f477b192f91c6d8ecb54d1b80fbeb247a1a5ac3d9",
+      "research/animation-context-attachment-20261101-1449/server-profile-leader/role-pose.tsv": "ee218879f546a649e94c08e8bf483aa99cede6e6822223384c31168e2d001ae0",
+      "research/animation-context-attachment-20261101-1449/server-profile-leader/script_2026-11-01_14-59-36.log": "e3128206613384f26b0016ab88d49150ab7ab18106d3a69504430162974f09da",
+      "research/animation-context-attachment-20261101-1449/server-profile-leader/server.cfg": "7d21af0adf41b9ba6aa407dc26ace18936fdc0eaf416cf6f31c0c8da86019103",
+      "research/animation-context-attachment-20261101-1449/server-profile-leader-observed/DayZServer_x64_2026-11-01_15-02-52.RPT": "3265e364f551ae07da2447032491b1c64298e720c071cc2d064e5850bb744d2c",
+      "research/animation-context-attachment-20261101-1449/server-profile-leader-observed/error_2026-11-01_15-02-52.log": "6a6bbe52f805bf0708a34c29dee4a257f4434353b46c5b4c6d3021fca3706f55",
+      "research/animation-context-attachment-20261101-1449/server-profile-leader-observed/role-pose.tsv": "d917823c4b9e92249abd88dd80b9476b447602648e3db9710b98fbc0b018f30b",
+      "research/animation-context-attachment-20261101-1449/server-profile-leader-observed/script_2026-11-01_15-02-52.log": "b95ff83dfaafd8d31879935a1d2ad9d32a53812358f85788a045d27f22462f62",
+      "research/animation-context-attachment-20261101-1449/server-profile-leader-observed/server.cfg": "7d21af0adf41b9ba6aa407dc26ace18936fdc0eaf416cf6f31c0c8da86019103",
+      "research/animation-context-attachment-20261101-1449/server-profile-leader-observed2/DayZServer_x64_2026-11-01_15-05-02.RPT": "92341d54db52faf47d134072dda29a5102ef5722ae1676bfc51d95d0f623f71c",
+      "research/animation-context-attachment-20261101-1449/server-profile-leader-observed2/error_2026-11-01_15-05-02.log": "bb317f8ebc19075d87f41906e904dfd8859088ea90730f2bc26f4686f5373349",
+      "research/animation-context-attachment-20261101-1449/server-profile-leader-observed2/role-pose.tsv": "d68d6cb319d5284c579d1435de4f5a63ebb7c1c7530666f4848a2bec1bc13ee5",
+      "research/animation-context-attachment-20261101-1449/server-profile-leader-observed2/script_2026-11-01_15-05-02.log": "195987186e6378487bd550ab094f044ddbe077556181d4378d957807c3a1ace0",
+      "research/animation-context-attachment-20261101-1449/server-profile-leader-observed2/server.cfg": "7d21af0adf41b9ba6aa407dc26ace18936fdc0eaf416cf6f31c0c8da86019103",
+      "research/animation-context-attachment-20261101-1449/server-profile-physics/crash_2026-11-01_14-53-59.log": "b66f48299ff1d0527e1b41465e2d476cacbf4cb1fb210abdd28a0928a757cce3",
+      "research/animation-context-attachment-20261101-1449/server-profile-physics/DayZServer_x64_2026-11-01_14-53-59.RPT": "fd1147269d4352dfb7baa925b2b0234b1b8993bcabb77718107eac25d6a85a32",
+      "research/animation-context-attachment-20261101-1449/server-profile-physics/DayZServer_x64_2026-11-01_14-54-18.mdmp": "3d6a0dd71232f02d5b72e2e423446b900d5773fb20e1a6cd303337b4caa7b920",
+      "research/animation-context-attachment-20261101-1449/server-profile-physics/error_2026-11-01_14-53-59.log": "f4823d62f6732d99f20532a5ace5504c56c08b2f48eeb07cab2f2456ba034307",
+      "research/animation-context-attachment-20261101-1449/server-profile-physics/script_2026-11-01_14-53-59.log": "3c6f57bfd32be276f564966d9c76b86f749f8f21aed16dd52a26f224adfc7928",
+      "research/animation-context-attachment-20261101-1449/server-profile-physics/server.cfg": "fc251c4daf5c3e697ca9379ecfbf29c9f468491afb320b6d42fca6c1ad549022",
+      "research/animation-context-attachment-20261101-1449/server-role-leader.chernarusplus/init.c": "cec2694879133c8fd4cbde47135d458c9bdc786e97cea0e63e01a583e533eccf",
+      "research/animation-context-attachment-20261101-1449/server-role-physics.chernarusplus/init.c": "2460dc1d8002846c29c7ea6993075bbd42a7862bf3f9d1ae55261a360560bb6a",
+      "research/animation-context-attachment-20261101-1449/server-profile-leader/Users/Server/DayZ.cfg": "3f6936691f027e96f57831896dd7b522a8dddff16de86df77a3019123db08ac7",
+      "research/animation-context-attachment-20261101-1449/server-profile-leader-observed/Users/Server/DayZ.cfg": "250e9c988f18d80066f0e575264358504ec74d7a654939662884d4474b3ae7c2",
+      "research/animation-context-attachment-20261101-1449/server-profile-leader-observed2/Users/Server/DayZ.cfg": "250e9c988f18d80066f0e575264358504ec74d7a654939662884d4474b3ae7c2",
+      "research/animation-context-attachment-20261101-1449/server-profile-physics/Users/Server/DayZ.cfg": "3f6936691f027e96f57831896dd7b522a8dddff16de86df77a3019123db08ac7"
+    },
+    "signatureVerification": {
+      "existingPbos": 3,
+      "allVerifiedBeforeEachServerStart": true,
+      "newPbo": false
+    },
+    "limits": [
+      "Mission inputdt is not measured CPU or Present frame time.",
+      "NativeSeconds is script command accumulated time, not direct native graph clock.",
+      "CPU head repeated samples do not measure visible animation smoothness.",
+      "First two leader completions had no successful observer attachment; third included observer overhead.",
+      "Three successful leader fixtures are scoped one-native-part compatibility evidence, not8/64 NPC regressions or performance optimization.",
+      "Packed model is compiled ODOL; geometry was not decoded. MLOD endpoint checks refer to current source only, not proof of compiled equivalence.",
+      "A missing signed native index is not assigned to a named LOD without further native producer mapping.",
+      "CrowdLeader model differs physically; using it would be a model-role counterfactual, not unchanged full NPC pipeline.",
+      "Render-part physics trial failed at creation RVA AA8AE9,not prior evaluator RVA A52EE4.",
+      "No current64 cost or visible client acceptance; no production NPC pipeline change.",
+      "Observer preflight import initially failed before any attachment; cached module path fixed without installation."
+    ],
+    "next": "Use the same validated physical leader in a separately controlled automaticLOD versus explicit UpdateSimulationPrecision(0) comparison, measuring command cadence and CPU pose independently. Do not infer client smoothness or adopt per-part physics across the NPC pipeline.",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "blockers": [
+    "Mission inputdt is not measured CPU or Present frame time.",
+    "NativeSeconds is script command accumulated time, not direct native graph clock.",
+    "CPU head repeated samples do not measure visible animation smoothness.",
+    "First two leader completions had no successful observer attachment; third included observer overhead.",
+    "Three successful leader fixtures are scoped one-native-part compatibility evidence, not8/64 NPC regressions or performance optimization.",
+    "Packed model is compiled ODOL; geometry was not decoded. MLOD endpoint checks refer to current source only, not proof of compiled equivalence.",
+    "A missing signed native index is not assigned to a named LOD without further native producer mapping.",
+    "CrowdLeader model differs physically; using it would be a model-role counterfactual, not unchanged full NPC pipeline.",
+    "Render-part physics trial failed at creation RVA AA8AE9,not prior evaluator RVA A52EE4.",
+    "No current64 cost or visible client acceptance; no production NPC pipeline change.",
+    "Observer preflight import initially failed before any attachment; cached module path fixed without installation."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-context-attachment-20261101.md",
+      "sha256": "cdf115762d734ec501b41750eb75d2228bb7ca64bc1a92dd8896eeecd49fb1d6"
+    },
+    {
+      "path": "evidence/animation-context-attachment-20261101.txt",
+      "sha256": "ad26c5f554e5e19ec0e7495d1221a9de7f7d3c7c0f8ee333c7adce5cb0d5dd98"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
