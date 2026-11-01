@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T14:17:17.137026+09:00",
+  "sourceRunId": "animation-field-writers-20261101-1414",
+  "buildId": "unchanged-native-c6709ece",
+  "verificationStatus": {
+    "diagnostic": "bounded_static_classification",
+    "functional": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "supportedClockFix": "not_established",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-field-writers-20261101-1414",
+    "buildId": "unchanged-native-c6709ece",
+    "verificationStatus": "bounded_static_writer_classification_diagnosed",
+    "newRuntimeTrials": 0,
+    "newPbo": false,
+    "newVideo": false,
+    "numericOverrides": false,
+    "metrics": {
+      "candidateUnwindFragments": 913,
+      "classifiedMemoryStores": 140,
+      "incompleteDecodeFragments": 35,
+      "unmappedByteHits": 75,
+      "headStaticVtableSlot": "0x880",
+      "entityBaseInitialPrimarySeconds": 0.06666667014360428,
+      "entityBaseInitialSecondarySeconds": 0.20000000298023224
+    },
+    "findings": {
+      "headCounterIsNotAnimalAccumulator": "Head RTTI constructor and Head vtable reference distinguish equal-offset field writes.",
+      "entityBaseInitialPrimarySeconds": 0.06666667014360428,
+      "entityBaseInitialSecondarySeconds": 0.20000000298023224,
+      "runtimeAnimalPeriodStillSeparate": "Base constructor defaults do not override the established live 50ms period evidence.",
+      "supportedNewControlIdentified": false
+    },
+    "sourceHashes": {
+      "research/animation-field-writers-20261101-1414/inspect_writers.py": "aaeba2b489b018266b55a4954f93f2a5e003b36297deee520bebec1d7019da32",
+      "research/animation-field-writers-20261101-1414/focus_candidates.py": "9930214e9bab28f40e1936c599b4d30baa13d163f61d8c98cf8f4c7c6ab086e2",
+      "research/animation-field-writers-20261101-1414/classify_candidates.py": "9347c2e9abfc05cdae80a00cd7e08ffbc027dfca7784a1868bd8fb957ae91215",
+      "research/animation-field-writers-20261101-1414/writer-inventory.json": "8336b8162b9362cc384b6cf9f9defc0802eb4881b4dda86a717de9995e7ce5c0",
+      "research/animation-field-writers-20261101-1414/focused-functions.json": "f597a49c10b27a135d1aca020415f6c4b7191caebf638e487f8f8b438ae44903",
+      "research/animation-field-writers-20261101-1414/classification.json": "356192b022fb93dece47512947e002470d3fa44216b08df68cff2582a06d406e"
+    },
+    "limits": [
+      "Not a complete CFG or all-writer proof.",
+      "Same offset in unrelated object layouts is not ownership evidence.",
+      "Unwind fragment boundaries may include data or miss unregistered code.",
+      "Aliasing, indirect writes, vector stores beginning at adjacent offsets and unsupported decodes may be omitted.",
+      "No new live measurement, supported setter, fix, visual acceptance or performance improvement established.",
+      "No new animation smoothness,8/64 regression,frame-time or performance measurement.",
+      "No new supported mod-level clock control established; lack of proof is not proof of API impossibility.",
+      "LOD dispatcher short prefix stops at first guard return and is not a full dispatcher decode."
+    ],
+    "next": "Trace actual Animal interval writer ownership/configuration from existing caller evidence before another runtime control experiment. If no eligible interface is identified, retain native-only diagnostic limit and compare admissible graph-side presentation options in a separate experiment.",
+    "functionalAcceptance": "not_retested_existing8and64_preserved",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "blockers": [
+    "Not a complete CFG or all-writer proof.",
+    "Same offset in unrelated object layouts is not ownership evidence.",
+    "Unwind fragment boundaries may include data or miss unregistered code.",
+    "Aliasing, indirect writes, vector stores beginning at adjacent offsets and unsupported decodes may be omitted.",
+    "No new live measurement, supported setter, fix, visual acceptance or performance improvement established.",
+    "No new animation smoothness,8/64 regression,frame-time or performance measurement.",
+    "No new supported mod-level clock control established; lack of proof is not proof of API impossibility.",
+    "LOD dispatcher short prefix stops at first guard return and is not a full dispatcher decode."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-field-writers-20261101.md",
+      "sha256": "c5400aa97b3e064a491ece8e53e541bfa2181899cba557b4102743bc4aa0aeb2"
+    },
+    {
+      "path": "evidence/animation-field-writers-20261101.txt",
+      "sha256": "edfb49f5a35993eaa0380111d901bc7990c0d0ba49c7959d7934e0661b068267"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

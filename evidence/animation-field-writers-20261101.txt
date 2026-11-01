@@ -1,0 +1,958 @@
+{
+  "selection": "All nine selected write sites in Head constructor/update, Entity base constructor and established Animal scheduler. Selection is by explicit function ownership question, not frequency sampling. Other same-offset writes are not assigned to Animal.",
+  "sourceRunId": "animation-field-writers-20261101-1414",
+  "targetSha256": "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
+  "metrics": {
+    "candidateUnwindFragments": 913,
+    "classifiedMemoryStores": 140,
+    "incompleteDecodeFragments": 35,
+    "unmappedByteHits": 75,
+    "headStaticVtableSlot": "0x880",
+    "entityBaseInitialPrimarySeconds": 0.06666667014360428,
+    "entityBaseInitialSecondarySeconds": 0.20000000298023224
+  },
+  "sourceHashes": {
+    "research/animation-field-writers-20261101-1414/inspect_writers.py": "aaeba2b489b018266b55a4954f93f2a5e003b36297deee520bebec1d7019da32",
+    "research/animation-field-writers-20261101-1414/focus_candidates.py": "9930214e9bab28f40e1936c599b4d30baa13d163f61d8c98cf8f4c7c6ab086e2",
+    "research/animation-field-writers-20261101-1414/classify_candidates.py": "9347c2e9abfc05cdae80a00cd7e08ffbc027dfca7784a1868bd8fb957ae91215",
+    "research/animation-field-writers-20261101-1414/writer-inventory.json": "8336b8162b9362cc384b6cf9f9defc0802eb4881b4dda86a717de9995e7ce5c0",
+    "research/animation-field-writers-20261101-1414/focused-functions.json": "f597a49c10b27a135d1aca020415f6c4b7191caebf638e487f8f8b438ae44903",
+    "research/animation-field-writers-20261101-1414/classification.json": "356192b022fb93dece47512947e002470d3fa44216b08df68cff2582a06d406e"
+  },
+  "selectedStores": [
+    {
+      "address": "0x140a28aaa",
+      "fieldOffset": "0x66c",
+      "fieldLabelHypothesis": "accumulator",
+      "baseRegister": "rbx",
+      "instruction": "mov dword ptr [rbx + 0x66c], ebp",
+      "access": 2,
+      "unwindRange": [
+        "0x140a289c0",
+        "0x140a28b68"
+      ],
+      "rangeSha256": "e329fdef5982690352389f21bdab2a8447f90deee0b49d1a49b7ffcbaa49e0c4",
+      "context": [
+        {
+          "address": "0x140a28a5d",
+          "instruction": "mov qword ptr [rbx + 0x638], rbp"
+        },
+        {
+          "address": "0x140a28a64",
+          "instruction": "mov qword ptr [rbx + 0x640], rbp"
+        },
+        {
+          "address": "0x140a28a6b",
+          "instruction": "mov qword ptr [rbx + 0x648], 0xffffffffffffffff"
+        },
+        {
+          "address": "0x140a28a76",
+          "instruction": "mov qword ptr [rbx + 0x650], 0xffffffffffffffff"
+        },
+        {
+          "address": "0x140a28a81",
+          "instruction": "mov dword ptr [rbx + 0x658], 0xffffffff"
+        },
+        {
+          "address": "0x140a28a8b",
+          "instruction": "mov qword ptr [rbx + 0x65c], 0x3f800000"
+        },
+        {
+          "address": "0x140a28a96",
+          "instruction": "mov dword ptr [rbx + 0x664], 0x40000000"
+        },
+        {
+          "address": "0x140a28aa0",
+          "instruction": "mov dword ptr [rbx + 0x668], 0xbf800000"
+        },
+        {
+          "address": "0x140a28aaa",
+          "instruction": "mov dword ptr [rbx + 0x66c], ebp"
+        },
+        {
+          "address": "0x140a28ab0",
+          "instruction": "mov qword ptr [rbx + 0x670], rbp"
+        },
+        {
+          "address": "0x140a28ab7",
+          "instruction": "lea rax, [rbx + 0x678]"
+        },
+        {
+          "address": "0x140a28abe",
+          "instruction": "mov qword ptr [rsp + 0x68], rax"
+        },
+        {
+          "address": "0x140a28ac3",
+          "instruction": "mov qword ptr [rax], rbp"
+        },
+        {
+          "address": "0x140a28ac6",
+          "instruction": "lea rsi, [rax + 8]"
+        }
+      ],
+      "ownerTypeConfirmed": false
+    },
+    {
+      "address": "0x140a298b8",
+      "fieldOffset": "0x66c",
+      "fieldLabelHypothesis": "accumulator",
+      "baseRegister": "rbx",
+      "instruction": "movss dword ptr [rbx + 0x66c], xmm0",
+      "access": 2,
+      "unwindRange": [
+        "0x140a29830",
+        "0x140a29a09"
+      ],
+      "rangeSha256": "f20872d545d60a81bf187da4bb7563659eb85aedbee0612c58b202258bf20e27",
+      "context": [
+        {
+          "address": "0x140a29896",
+          "instruction": "movss xmm7, dword ptr [rip + 0x727472]"
+        },
+        {
+          "address": "0x140a2989e",
+          "instruction": "xor edi, edi"
+        },
+        {
+          "address": "0x140a298a0",
+          "instruction": "xorps xmm8, xmm8"
+        },
+        {
+          "address": "0x140a298a4",
+          "instruction": "test al, al"
+        },
+        {
+          "address": "0x140a298a6",
+          "instruction": "jne 0x140a29908"
+        },
+        {
+          "address": "0x140a298a8",
+          "instruction": "movss xmm0, dword ptr [rbx + 0x66c]"
+        },
+        {
+          "address": "0x140a298b0",
+          "instruction": "subss xmm0, xmm6"
+        },
+        {
+          "address": "0x140a298b4",
+          "instruction": "comiss xmm8, xmm0"
+        },
+        {
+          "address": "0x140a298b8",
+          "instruction": "movss dword ptr [rbx + 0x66c], xmm0"
+        },
+        {
+          "address": "0x140a298c0",
+          "instruction": "jb 0x140a29908"
+        },
+        {
+          "address": "0x140a298c2",
+          "instruction": "movaps xmm0, xmm6"
+        },
+        {
+          "address": "0x140a298c5",
+          "instruction": "mulss xmm0, dword ptr [rip + 0x73c3a7]"
+        },
+        {
+          "address": "0x140a298cd",
+          "instruction": "addss xmm0, dword ptr [rbx + 0x664]"
+        },
+        {
+          "address": "0x140a298d5",
+          "instruction": "comiss xmm0, xmm7"
+        }
+      ],
+      "ownerTypeConfirmed": false
+    },
+    {
+      "address": "0x140a29900",
+      "fieldOffset": "0x66c",
+      "fieldLabelHypothesis": "accumulator",
+      "baseRegister": "rbx",
+      "instruction": "movss dword ptr [rbx + 0x66c], xmm0",
+      "access": 2,
+      "unwindRange": [
+        "0x140a29830",
+        "0x140a29a09"
+      ],
+      "rangeSha256": "f20872d545d60a81bf187da4bb7563659eb85aedbee0612c58b202258bf20e27",
+      "context": [
+        {
+          "address": "0x140a298d5",
+          "instruction": "comiss xmm0, xmm7"
+        },
+        {
+          "address": "0x140a298d8",
+          "instruction": "movss dword ptr [rbx + 0x664], xmm0"
+        },
+        {
+          "address": "0x140a298e0",
+          "instruction": "jb 0x140a29908"
+        },
+        {
+          "address": "0x140a298e2",
+          "instruction": "lea rcx, [rip + 0x406d05f]"
+        },
+        {
+          "address": "0x140a298e9",
+          "instruction": "mov dword ptr [rbx + 0x664], edi"
+        },
+        {
+          "address": "0x140a298ef",
+          "instruction": "call 0x140bc91c0"
+        },
+        {
+          "address": "0x140a298f4",
+          "instruction": "mulss xmm0, dword ptr [rip + 0x72b3d0]"
+        },
+        {
+          "address": "0x140a298fc",
+          "instruction": "addss xmm0, xmm7"
+        },
+        {
+          "address": "0x140a29900",
+          "instruction": "movss dword ptr [rbx + 0x66c], xmm0"
+        },
+        {
+          "address": "0x140a29908",
+          "instruction": "mov ecx, dword ptr [rbx + 0x658]"
+        },
+        {
+          "address": "0x140a2990e",
+          "instruction": "mov eax, dword ptr [rbx + 0x650]"
+        },
+        {
+          "address": "0x140a29914",
+          "instruction": "test ecx, ecx"
+        },
+        {
+          "address": "0x140a29916",
+          "instruction": "js 0x140a29934"
+        },
+        {
+          "address": "0x140a29918",
+          "instruction": "cmp ecx, eax"
+        }
+      ],
+      "ownerTypeConfirmed": false
+    },
+    {
+      "address": "0x140a5de69",
+      "fieldOffset": "0x228",
+      "fieldLabelHypothesis": "requestedPrimary",
+      "baseRegister": "rbx",
+      "instruction": "mov dword ptr [rbx + 0x228], 0x3d888889",
+      "access": 2,
+      "unwindRange": [
+        "0x140a5dda0",
+        "0x140a5e4e8"
+      ],
+      "rangeSha256": "0b6bdc6fdf679767c8c63517343df838c9e9a71c5d810756fe32e59675bb20e9",
+      "context": [
+        {
+          "address": "0x140a5de38",
+          "instruction": "mov qword ptr [rax], r12"
+        },
+        {
+          "address": "0x140a5de3b",
+          "instruction": "mov qword ptr [rax + 8], r12"
+        },
+        {
+          "address": "0x140a5de3f",
+          "instruction": "mov qword ptr [rbx + 0x1f8], r12"
+        },
+        {
+          "address": "0x140a5de46",
+          "instruction": "mov qword ptr [rbx + 0x200], r12"
+        },
+        {
+          "address": "0x140a5de4d",
+          "instruction": "mov qword ptr [rbx + 0x208], r12"
+        },
+        {
+          "address": "0x140a5de54",
+          "instruction": "mov qword ptr [rbx + 0x210], r12"
+        },
+        {
+          "address": "0x140a5de5b",
+          "instruction": "mov qword ptr [rbx + 0x218], r12"
+        },
+        {
+          "address": "0x140a5de62",
+          "instruction": "mov qword ptr [rbx + 0x220], r12"
+        },
+        {
+          "address": "0x140a5de69",
+          "instruction": "mov dword ptr [rbx + 0x228], 0x3d888889"
+        },
+        {
+          "address": "0x140a5de73",
+          "instruction": "mov dword ptr [rbx + 0x22c], 0x3d888889"
+        },
+        {
+          "address": "0x140a5de7d",
+          "instruction": "mov dword ptr [rbx + 0x230], 0xffffffff"
+        },
+        {
+          "address": "0x140a5de87",
+          "instruction": "mov qword ptr [rbx + 0x238], r12"
+        },
+        {
+          "address": "0x140a5de8e",
+          "instruction": "mov qword ptr [rbx + 0x240], r12"
+        },
+        {
+          "address": "0x140a5de95",
+          "instruction": "mov dword ptr [rbx + 0x248], r12d"
+        }
+      ],
+      "ownerTypeConfirmed": false
+    },
+    {
+      "address": "0x140a5de73",
+      "fieldOffset": "0x22c",
+      "fieldLabelHypothesis": "requestedSecondary",
+      "baseRegister": "rbx",
+      "instruction": "mov dword ptr [rbx + 0x22c], 0x3d888889",
+      "access": 2,
+      "unwindRange": [
+        "0x140a5dda0",
+        "0x140a5e4e8"
+      ],
+      "rangeSha256": "0b6bdc6fdf679767c8c63517343df838c9e9a71c5d810756fe32e59675bb20e9",
+      "context": [
+        {
+          "address": "0x140a5de3b",
+          "instruction": "mov qword ptr [rax + 8], r12"
+        },
+        {
+          "address": "0x140a5de3f",
+          "instruction": "mov qword ptr [rbx + 0x1f8], r12"
+        },
+        {
+          "address": "0x140a5de46",
+          "instruction": "mov qword ptr [rbx + 0x200], r12"
+        },
+        {
+          "address": "0x140a5de4d",
+          "instruction": "mov qword ptr [rbx + 0x208], r12"
+        },
+        {
+          "address": "0x140a5de54",
+          "instruction": "mov qword ptr [rbx + 0x210], r12"
+        },
+        {
+          "address": "0x140a5de5b",
+          "instruction": "mov qword ptr [rbx + 0x218], r12"
+        },
+        {
+          "address": "0x140a5de62",
+          "instruction": "mov qword ptr [rbx + 0x220], r12"
+        },
+        {
+          "address": "0x140a5de69",
+          "instruction": "mov dword ptr [rbx + 0x228], 0x3d888889"
+        },
+        {
+          "address": "0x140a5de73",
+          "instruction": "mov dword ptr [rbx + 0x22c], 0x3d888889"
+        },
+        {
+          "address": "0x140a5de7d",
+          "instruction": "mov dword ptr [rbx + 0x230], 0xffffffff"
+        },
+        {
+          "address": "0x140a5de87",
+          "instruction": "mov qword ptr [rbx + 0x238], r12"
+        },
+        {
+          "address": "0x140a5de8e",
+          "instruction": "mov qword ptr [rbx + 0x240], r12"
+        },
+        {
+          "address": "0x140a5de95",
+          "instruction": "mov dword ptr [rbx + 0x248], r12d"
+        },
+        {
+          "address": "0x140a5de9c",
+          "instruction": "mov eax, dword ptr [rip + 0xdd8ca6]"
+        }
+      ],
+      "ownerTypeConfirmed": false
+    },
+    {
+      "address": "0x140a5deaa",
+      "fieldOffset": "0x250",
+      "fieldLabelHypothesis": "actualPrimary",
+      "baseRegister": "rbx",
+      "instruction": "mov dword ptr [rbx + 0x250], 0x3d888889",
+      "access": 2,
+      "unwindRange": [
+        "0x140a5dda0",
+        "0x140a5e4e8"
+      ],
+      "rangeSha256": "0b6bdc6fdf679767c8c63517343df838c9e9a71c5d810756fe32e59675bb20e9",
+      "context": [
+        {
+          "address": "0x140a5de73",
+          "instruction": "mov dword ptr [rbx + 0x22c], 0x3d888889"
+        },
+        {
+          "address": "0x140a5de7d",
+          "instruction": "mov dword ptr [rbx + 0x230], 0xffffffff"
+        },
+        {
+          "address": "0x140a5de87",
+          "instruction": "mov qword ptr [rbx + 0x238], r12"
+        },
+        {
+          "address": "0x140a5de8e",
+          "instruction": "mov qword ptr [rbx + 0x240], r12"
+        },
+        {
+          "address": "0x140a5de95",
+          "instruction": "mov dword ptr [rbx + 0x248], r12d"
+        },
+        {
+          "address": "0x140a5de9c",
+          "instruction": "mov eax, dword ptr [rip + 0xdd8ca6]"
+        },
+        {
+          "address": "0x140a5dea2",
+          "instruction": "dec eax"
+        },
+        {
+          "address": "0x140a5dea4",
+          "instruction": "mov dword ptr [rbx + 0x24c], eax"
+        },
+        {
+          "address": "0x140a5deaa",
+          "instruction": "mov dword ptr [rbx + 0x250], 0x3d888889"
+        },
+        {
+          "address": "0x140a5deb4",
+          "instruction": "mov qword ptr [rbx + 0x254], 0x3e4ccccd"
+        },
+        {
+          "address": "0x140a5debf",
+          "instruction": "mov dword ptr [rbx + 0x25c], r12d"
+        },
+        {
+          "address": "0x140a5dec6",
+          "instruction": "mov dword ptr [rbx + 0x260], 4"
+        },
+        {
+          "address": "0x140a5ded0",
+          "instruction": "mov dword ptr [rbx + 0x264], 0x100"
+        },
+        {
+          "address": "0x140a5deda",
+          "instruction": "mov dword ptr [rbx + 0x268], 1"
+        }
+      ],
+      "ownerTypeConfirmed": false
+    },
+    {
+      "address": "0x140a5deb4",
+      "fieldOffset": "0x254",
+      "fieldLabelHypothesis": "actualSecondary",
+      "baseRegister": "rbx",
+      "instruction": "mov qword ptr [rbx + 0x254], 0x3e4ccccd",
+      "access": 2,
+      "unwindRange": [
+        "0x140a5dda0",
+        "0x140a5e4e8"
+      ],
+      "rangeSha256": "0b6bdc6fdf679767c8c63517343df838c9e9a71c5d810756fe32e59675bb20e9",
+      "context": [
+        {
+          "address": "0x140a5de7d",
+          "instruction": "mov dword ptr [rbx + 0x230], 0xffffffff"
+        },
+        {
+          "address": "0x140a5de87",
+          "instruction": "mov qword ptr [rbx + 0x238], r12"
+        },
+        {
+          "address": "0x140a5de8e",
+          "instruction": "mov qword ptr [rbx + 0x240], r12"
+        },
+        {
+          "address": "0x140a5de95",
+          "instruction": "mov dword ptr [rbx + 0x248], r12d"
+        },
+        {
+          "address": "0x140a5de9c",
+          "instruction": "mov eax, dword ptr [rip + 0xdd8ca6]"
+        },
+        {
+          "address": "0x140a5dea2",
+          "instruction": "dec eax"
+        },
+        {
+          "address": "0x140a5dea4",
+          "instruction": "mov dword ptr [rbx + 0x24c], eax"
+        },
+        {
+          "address": "0x140a5deaa",
+          "instruction": "mov dword ptr [rbx + 0x250], 0x3d888889"
+        },
+        {
+          "address": "0x140a5deb4",
+          "instruction": "mov qword ptr [rbx + 0x254], 0x3e4ccccd"
+        },
+        {
+          "address": "0x140a5debf",
+          "instruction": "mov dword ptr [rbx + 0x25c], r12d"
+        },
+        {
+          "address": "0x140a5dec6",
+          "instruction": "mov dword ptr [rbx + 0x260], 4"
+        },
+        {
+          "address": "0x140a5ded0",
+          "instruction": "mov dword ptr [rbx + 0x264], 0x100"
+        },
+        {
+          "address": "0x140a5deda",
+          "instruction": "mov dword ptr [rbx + 0x268], 1"
+        },
+        {
+          "address": "0x140a5dee4",
+          "instruction": "mov dword ptr [rbx + 0x26c], 0xffffffff"
+        }
+      ],
+      "ownerTypeConfirmed": false
+    },
+    {
+      "address": "0x140b72500",
+      "fieldOffset": "0x66c",
+      "fieldLabelHypothesis": "accumulator",
+      "baseRegister": "rbx",
+      "instruction": "movss dword ptr [rbx + 0x66c], xmm0",
+      "access": 2,
+      "unwindRange": [
+        "0x140b72410",
+        "0x140b725c9"
+      ],
+      "rangeSha256": "9b3af365e72be294b859e7d044a09ebe0dd66b80cbb1559d3e83b7d89de083ce",
+      "context": [
+        {
+          "address": "0x140b724d7",
+          "instruction": "mov r8d, 2"
+        },
+        {
+          "address": "0x140b724dd",
+          "instruction": "mov rdx, rbx"
+        },
+        {
+          "address": "0x140b724e0",
+          "instruction": "call 0x1409391e0"
+        },
+        {
+          "address": "0x140b724e5",
+          "instruction": "jmp 0x140b72578"
+        },
+        {
+          "address": "0x140b724ea",
+          "instruction": "movss xmm1, dword ptr [rbx + 0x250]"
+        },
+        {
+          "address": "0x140b724f2",
+          "instruction": "movaps xmm0, xmm6"
+        },
+        {
+          "address": "0x140b724f5",
+          "instruction": "addss xmm0, dword ptr [rbx + 0x66c]"
+        },
+        {
+          "address": "0x140b724fd",
+          "instruction": "comiss xmm0, xmm1"
+        },
+        {
+          "address": "0x140b72500",
+          "instruction": "movss dword ptr [rbx + 0x66c], xmm0"
+        },
+        {
+          "address": "0x140b72508",
+          "instruction": "jb 0x140b7252a"
+        },
+        {
+          "address": "0x140b7250a",
+          "instruction": "mov r9b, 1"
+        },
+        {
+          "address": "0x140b7250d",
+          "instruction": "mov byte ptr [rsp + 0x20], 0"
+        },
+        {
+          "address": "0x140b72512",
+          "instruction": "movaps xmm2, xmm6"
+        },
+        {
+          "address": "0x140b72515",
+          "instruction": "mov rcx, rbx"
+        }
+      ],
+      "ownerTypeConfirmed": false
+    },
+    {
+      "address": "0x140b72520",
+      "fieldOffset": "0x66c",
+      "fieldLabelHypothesis": "accumulator",
+      "baseRegister": "rbx",
+      "instruction": "mov dword ptr [rbx + 0x66c], 0",
+      "access": 2,
+      "unwindRange": [
+        "0x140b72410",
+        "0x140b725c9"
+      ],
+      "rangeSha256": "9b3af365e72be294b859e7d044a09ebe0dd66b80cbb1559d3e83b7d89de083ce",
+      "context": [
+        {
+          "address": "0x140b72500",
+          "instruction": "movss dword ptr [rbx + 0x66c], xmm0"
+        },
+        {
+          "address": "0x140b72508",
+          "instruction": "jb 0x140b7252a"
+        },
+        {
+          "address": "0x140b7250a",
+          "instruction": "mov r9b, 1"
+        },
+        {
+          "address": "0x140b7250d",
+          "instruction": "mov byte ptr [rsp + 0x20], 0"
+        },
+        {
+          "address": "0x140b72512",
+          "instruction": "movaps xmm2, xmm6"
+        },
+        {
+          "address": "0x140b72515",
+          "instruction": "mov rcx, rbx"
+        },
+        {
+          "address": "0x140b72518",
+          "instruction": "call 0x140b725d0"
+        },
+        {
+          "address": "0x140b7251d",
+          "instruction": "xorps xmm0, xmm0"
+        },
+        {
+          "address": "0x140b72520",
+          "instruction": "mov dword ptr [rbx + 0x66c], 0"
+        },
+        {
+          "address": "0x140b7252a",
+          "instruction": "mov rax, qword ptr [rbx + 0x660]"
+        },
+        {
+          "address": "0x140b72531",
+          "instruction": "test rax, rax"
+        },
+        {
+          "address": "0x140b72534",
+          "instruction": "je 0x140b72578"
+        },
+        {
+          "address": "0x140b72536",
+          "instruction": "mov rcx, qword ptr [rbx + 0x620]"
+        },
+        {
+          "address": "0x140b7253d",
+          "instruction": "lea rdx, [rsp + 0x30]"
+        }
+      ],
+      "ownerTypeConfirmed": false
+    }
+  ],
+  "focusedStaticTypes": [
+    {
+      "start": "0x140a289c0",
+      "sha256": "e329fdef5982690352389f21bdab2a8447f90deee0b49d1a49b7ffcbaa49e0c4",
+      "vtableReferences": [
+        {
+          "instruction": "0x140a289e3",
+          "vtable": "0x1412c6b80",
+          "type": ".?AUHead@@",
+          "subobjectOffset": 0
+        },
+        {
+          "instruction": "0x140a289ed",
+          "vtable": "0x1412c7710",
+          "type": ".?AUHead@@",
+          "subobjectOffset": 16
+        },
+        {
+          "instruction": "0x140a289f8",
+          "vtable": "0x1412c7730",
+          "type": ".?AUHead@@",
+          "subobjectOffset": 40
+        },
+        {
+          "instruction": "0x140a28a03",
+          "vtable": "0x1412c77f0",
+          "type": ".?AUHead@@",
+          "subobjectOffset": 48
+        },
+        {
+          "instruction": "0x140a28a0e",
+          "vtable": "0x1412c7830",
+          "type": ".?AUHead@@",
+          "subobjectOffset": 168
+        },
+        {
+          "instruction": "0x140a28a1c",
+          "vtable": "0x1412c78e0",
+          "type": ".?AUHead@@",
+          "subobjectOffset": 184
+        },
+        {
+          "instruction": "0x140a28a2a",
+          "vtable": "0x1412c7908",
+          "type": ".?AUHead@@",
+          "subobjectOffset": 472
+        },
+        {
+          "instruction": "0x140a28a38",
+          "vtable": "0x1412c7918",
+          "type": ".?AUHead@@",
+          "subobjectOffset": 1032
+        }
+      ]
+    },
+    {
+      "start": "0x140a29830",
+      "sha256": "f20872d545d60a81bf187da4bb7563659eb85aedbee0612c58b202258bf20e27",
+      "vtableReferences": []
+    },
+    {
+      "start": "0x140a5dda0",
+      "sha256": "0b6bdc6fdf679767c8c63517343df838c9e9a71c5d810756fe32e59675bb20e9",
+      "vtableReferences": [
+        {
+          "instruction": "0x140a5ddd5",
+          "vtable": "0x1412d25c8",
+          "type": ".?AVEntity@@",
+          "subobjectOffset": 0
+        },
+        {
+          "instruction": "0x140a5dddf",
+          "vtable": "0x1412d2f28",
+          "type": ".?AVEntity@@",
+          "subobjectOffset": 16
+        },
+        {
+          "instruction": "0x140a5ddea",
+          "vtable": "0x1412d2f48",
+          "type": ".?AVEntity@@",
+          "subobjectOffset": 40
+        },
+        {
+          "instruction": "0x140a5ddf5",
+          "vtable": "0x1412d3008",
+          "type": ".?AVEntity@@",
+          "subobjectOffset": 48
+        },
+        {
+          "instruction": "0x140a5de00",
+          "vtable": "0x1412d3048",
+          "type": ".?AVEntity@@",
+          "subobjectOffset": 168
+        },
+        {
+          "instruction": "0x140a5de0e",
+          "vtable": "0x1412d30f8",
+          "type": ".?AVEntity@@",
+          "subobjectOffset": 184
+        },
+        {
+          "instruction": "0x140a5de1c",
+          "vtable": "0x1412d3120",
+          "type": ".?AVEntity@@",
+          "subobjectOffset": 472
+        }
+      ]
+    },
+    {
+      "start": "0x140a6a500",
+      "sha256": "da83f954b1414ebf84445baa6dcf0f020be17f46178abfd24f9712304a9d925c",
+      "vtableReferences": []
+    },
+    {
+      "start": "0x140a6a600",
+      "sha256": "63bc368b2812ac342ded550d5345f310639f90bf92c98740de99d06334799919",
+      "vtableReferences": []
+    }
+  ],
+  "classification": {
+    "sourceRunId": "animation-field-writers-20261101-1414",
+    "targetSha256": "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
+    "headUpdateStaticVtableOffsets": [
+      "0x880"
+    ],
+    "boundedFunctions": [
+      {
+        "start": "0x140a6a4f0",
+        "bytes": 9,
+        "sha256": "860b442f478ddb5c7a0a8394bcb85c051722f6a994ba33dfb9db98a60c6fd656",
+        "instructions": [
+          {
+            "address": "0x140a6a4f0",
+            "instruction": "movss dword ptr [rcx + 0x250], xmm1"
+          },
+          {
+            "address": "0x140a6a4f8",
+            "instruction": "ret "
+          }
+        ],
+        "constants": []
+      },
+      {
+        "start": "0x140a6a500",
+        "bytes": 17,
+        "sha256": "da83f954b1414ebf84445baa6dcf0f020be17f46178abfd24f9712304a9d925c",
+        "instructions": [
+          {
+            "address": "0x140a6a500",
+            "instruction": "movss dword ptr [rcx + 0x250], xmm1"
+          },
+          {
+            "address": "0x140a6a508",
+            "instruction": "movss dword ptr [rcx + 0x254], xmm2"
+          },
+          {
+            "address": "0x140a6a510",
+            "instruction": "ret "
+          }
+        ],
+        "constants": []
+      },
+      {
+        "start": "0x140a6a520",
+        "bytes": 9,
+        "sha256": "057206d0859c4a76d949c85086e9bb6a733a6b730b04463a20c1b16927055ff5",
+        "instructions": [
+          {
+            "address": "0x140a6a520",
+            "instruction": "movss dword ptr [rcx + 0x254], xmm1"
+          },
+          {
+            "address": "0x140a6a528",
+            "instruction": "ret "
+          }
+        ],
+        "constants": []
+      },
+      {
+        "start": "0x140a6a600",
+        "bytes": 17,
+        "sha256": "63bc368b2812ac342ded550d5345f310639f90bf92c98740de99d06334799919",
+        "instructions": [
+          {
+            "address": "0x140a6a600",
+            "instruction": "movss dword ptr [rcx + 0x228], xmm1"
+          },
+          {
+            "address": "0x140a6a608",
+            "instruction": "movss dword ptr [rcx + 0x22c], xmm1"
+          },
+          {
+            "address": "0x140a6a610",
+            "instruction": "ret "
+          }
+        ],
+        "constants": []
+      },
+      {
+        "start": "0x140b72d90",
+        "bytes": 46,
+        "sha256": "fe6ca4e6c5e2d756c5d70fb9389284e80ab30f0b754d77ed2a907cfce119f0de",
+        "instructions": [
+          {
+            "address": "0x140b72d90",
+            "instruction": "mov qword ptr [rsp + 8], rbx"
+          },
+          {
+            "address": "0x140b72d95",
+            "instruction": "mov qword ptr [rsp + 0x10], rsi"
+          },
+          {
+            "address": "0x140b72d9a",
+            "instruction": "push rdi"
+          },
+          {
+            "address": "0x140b72d9b",
+            "instruction": "sub rsp, 0x30"
+          },
+          {
+            "address": "0x140b72d9f",
+            "instruction": "movzx esi, r8b"
+          },
+          {
+            "address": "0x140b72da3",
+            "instruction": "mov ebx, edx"
+          },
+          {
+            "address": "0x140b72da5",
+            "instruction": "mov rdi, rcx"
+          },
+          {
+            "address": "0x140b72da8",
+            "instruction": "test edx, edx"
+          },
+          {
+            "address": "0x140b72daa",
+            "instruction": "jns 0x140b72dbe"
+          },
+          {
+            "address": "0x140b72dac",
+            "instruction": "xor al, al"
+          },
+          {
+            "address": "0x140b72dae",
+            "instruction": "mov rbx, qword ptr [rsp + 0x40]"
+          },
+          {
+            "address": "0x140b72db3",
+            "instruction": "mov rsi, qword ptr [rsp + 0x48]"
+          },
+          {
+            "address": "0x140b72db8",
+            "instruction": "add rsp, 0x30"
+          },
+          {
+            "address": "0x140b72dbc",
+            "instruction": "pop rdi"
+          },
+          {
+            "address": "0x140b72dbd",
+            "instruction": "ret "
+          }
+        ],
+        "constants": []
+      }
+    ],
+    "findings": {
+      "headCounterIsNotAnimalAccumulator": "Head RTTI constructor and Head vtable reference distinguish equal-offset field writes.",
+      "entityBaseInitialPrimarySeconds": 0.06666667014360428,
+      "entityBaseInitialSecondarySeconds": 0.20000000298023224,
+      "runtimeAnimalPeriodStillSeparate": "Base constructor defaults do not override the established live 50ms period evidence.",
+      "supportedNewControlIdentified": false
+    },
+    "next": "Before any new client test, trace configuration or caller ownership to a genuinely script-accessible control; otherwise explicitly retain native-only diagnostic limit."
+  },
+  "limits": [
+    "Not a complete CFG or all-writer proof.",
+    "Same offset in unrelated object layouts is not ownership evidence.",
+    "Unwind fragment boundaries may include data or miss unregistered code.",
+    "Aliasing, indirect writes, vector stores beginning at adjacent offsets and unsupported decodes may be omitted.",
+    "No new live measurement, supported setter, fix, visual acceptance or performance improvement established.",
+    "No new animation smoothness,8/64 regression,frame-time or performance measurement.",
+    "No new supported mod-level clock control established; lack of proof is not proof of API impossibility.",
+    "LOD dispatcher short prefix stops at first guard return and is not a full dispatcher decode."
+  ]
+}

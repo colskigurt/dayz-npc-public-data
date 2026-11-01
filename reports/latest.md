@@ -1,3 +1,5 @@
+> 최신 진단: 시간 필드 정적 쓰기 후보913구간/140개 분류. Head 동일오프셋과 Entity 초기66.7ms를 실제 Animal50ms에서 구분. 새 지원 수정 접점 미확보. 클라이언트/PBO 변경 없음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-field-writers-20261101.md). 이전 기록 보존.
+
 > 최신 시간 진단: 과거교대는활성관찰전부터존재. 현재결합조건조회p95 20.289ms에서도native리셋경계진행손실·CPU/화면증분연결.539HUD정합,418연속쌍.지원수정·시각·64성능미완료. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-joint-stable-phase-20261101.md). 이전기록보존.
 
 > 최신 관찰환경 분리: 관찰기단독/녹화단독 CPU조회p95약20.2ms로과거교대패턴미재현. native평균0.833·새영상재귀2.5초로속도손실은남음. 결합조건미실행,시각/성능미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-observer-controls-20261101.md). 이전기록보존.
