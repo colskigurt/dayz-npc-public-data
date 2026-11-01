@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "entry-idle-handoff-20261101-1244-live"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "newRuntime",
+        "newPbo",
+        "signedAndVerified",
+        "trials"
+      ],
+      "properties": {
+        "newRuntime": {
+          "const": true
+        },
+        "newPbo": {
+          "const": false
+        },
+        "signedAndVerified": {
+          "const": true
+        },
+        "trials": {
+          "type": "object",
+          "required": [
+            "fast8"
+          ]
+        }
+      }
+    }
+  }
+}
