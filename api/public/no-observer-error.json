@@ -1,0 +1,210 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T17:09:20.787762+09:00",
+  "sourceRunId": "no-observer-error-20261101-1700",
+  "buildId": "release-C670-server-EE1A-diagnostic-A500-fixed-453D-0C6E-B8FB",
+  "verificationStatus": {
+    "diagnostic": "same_battleye_restart_warning_without_native_attachment_confirmed",
+    "releaseRepetitions": 1,
+    "diagnosticSetupAttempts": 3,
+    "fullNpcRegression": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "schemaVersion": "1.0.0",
+    "sourceRunId": "no-observer-error-20261101-1700",
+    "buildId": "release-C670-server-EE1A-diagnostic-A500-fixed-453D-0C6E-B8FB",
+    "newRuntimeTrials": 4,
+    "releaseTrials": 1,
+    "diagnosticSetupAttempts": 3,
+    "newPbo": false,
+    "newVideo": false,
+    "nativeObserverAttached": false,
+    "trials": [
+      {
+        "trial": "release-capture",
+        "serverExecutableSha256": "EE1ADD8BB6DED0B6E913F31D62C93D1326D5A44106D558BBD3D19ADB78B73BB1",
+        "nativeObserverAttached": false,
+        "serverCompleted": true,
+        "npcReady": true,
+        "characterCreated": true,
+        "serverClosed": true,
+        "clientClosed": true,
+        "clientForcedStop": false,
+        "clientExitCode": -1,
+        "clientTerminationMarker": true,
+        "signatureChecksPassed": 3,
+        "scriptErrorLines": 0,
+        "scriptErrorsSelected": [],
+        "crashLogs": 0,
+        "newPbo": false,
+        "events": [
+          "16:58:28.121  SCRIPT       : DG_NETWORK_CHARACTER_CREATED",
+          "16:58:28.135 SCRIPT       : DG_ROLE_READY parts=1 server=true client=false multiplayer=true dedicated=true",
+          "16:59:00.305  SCRIPT       : DG_CONTINUITY_DISCONNECT age=50.9982 logout=15 authFailed=false alive=true health=100",
+          "16:59:12.843 SCRIPT       : DG_ROLE_DONE parts=1 seconds=44.8998 updates=730"
+        ],
+        "readyToDisconnectSeconds": 32.17,
+        "disconnectBeforeServerDoneSeconds": 12.538,
+        "serverKickReason": "Game restart required",
+        "errorCode": "0x000400F0",
+        "visibleError": "You were kicked off the game. BattlEye (Game restart required)",
+        "authFailed": false,
+        "alive": true,
+        "health": 100,
+        "logoutTime": 15,
+        "uiDetectedAt": "2026-11-01T07:59:00.482Z",
+        "uiImages": [
+          {
+            "file": "disconnect-0.jpg",
+            "sha256": "2c9e6176af17fc561b734d964d124a6e396fd3ef4e2edf33d82d3401610a1860",
+            "observedAt": "2026-11-01T07:59:00.579Z"
+          },
+          {
+            "file": "disconnect-1.jpg",
+            "sha256": "3668e8cc0f348eac2a12e45cce04c840d3ccad8e0edc8d7cbbb495e4207ec140",
+            "observedAt": "2026-11-01T07:59:01.892Z"
+          }
+        ],
+        "serverPoseRows": 2151,
+        "beClientModuleSeen": true
+      },
+      {
+        "trial": "diag-baseline",
+        "serverExecutableSha256": "A500BE804FFED5CDE369337AEB6AB477EF5EE0B5015764BE2B1953C85EC3060D",
+        "nativeObserverAttached": false,
+        "serverCompleted": false,
+        "npcReady": false,
+        "characterCreated": false,
+        "serverClosed": true,
+        "clientClosed": true,
+        "clientForcedStop": true,
+        "clientExitCode": -1,
+        "clientTerminationMarker": false,
+        "signatureChecksPassed": 3,
+        "scriptErrorLines": 8,
+        "scriptErrorsSelected": [
+          "-- Stack trace --",
+          "GetPlugin() scripts/4_World/plugins/pluginmanager.c : 341",
+          "OnInit() scripts/4_World/plugins/pluginbase/pluginitemdiagnostic.c : 94",
+          "PluginsInit() scripts/4_World/plugins/pluginmanager.c : 136",
+          "PluginManagerInit() scripts/4_World/plugins/pluginmanager.c : 304",
+          "MissionBase() scripts/5_Mission/mission/missionbase.c : 21",
+          "CreateCustomMission() [trial mission]/init.c : 87",
+          "-----------------"
+        ],
+        "crashLogs": 0,
+        "newPbo": false,
+        "knownWarningGateRecorded": null,
+        "nativeClientModeVerified": false
+      },
+      {
+        "trial": "diag-known-warning",
+        "serverExecutableSha256": "A500BE804FFED5CDE369337AEB6AB477EF5EE0B5015764BE2B1953C85EC3060D",
+        "nativeObserverAttached": false,
+        "serverCompleted": false,
+        "npcReady": false,
+        "characterCreated": false,
+        "serverClosed": true,
+        "clientClosed": true,
+        "clientForcedStop": true,
+        "clientExitCode": -1,
+        "clientTerminationMarker": false,
+        "signatureChecksPassed": 3,
+        "scriptErrorLines": 8,
+        "scriptErrorsSelected": [
+          "-- Stack trace --",
+          "GetPlugin() scripts/4_World/plugins/pluginmanager.c : 341",
+          "OnInit() scripts/4_World/plugins/pluginbase/pluginitemdiagnostic.c : 94",
+          "PluginsInit() scripts/4_World/plugins/pluginmanager.c : 136",
+          "PluginManagerInit() scripts/4_World/plugins/pluginmanager.c : 304",
+          "MissionBase() scripts/5_Mission/mission/missionbase.c : 21",
+          "CreateCustomMission() [trial mission]/init.c : 87",
+          "-----------------"
+        ],
+        "crashLogs": 0,
+        "newPbo": false,
+        "knownWarningGateRecorded": false,
+        "nativeClientModeVerified": false
+      },
+      {
+        "trial": "diag-known-warning-v2",
+        "serverExecutableSha256": "A500BE804FFED5CDE369337AEB6AB477EF5EE0B5015764BE2B1953C85EC3060D",
+        "nativeObserverAttached": false,
+        "serverCompleted": false,
+        "npcReady": false,
+        "characterCreated": false,
+        "serverClosed": true,
+        "clientClosed": true,
+        "clientForcedStop": true,
+        "clientExitCode": -1,
+        "clientTerminationMarker": false,
+        "signatureChecksPassed": 3,
+        "scriptErrorLines": 8,
+        "scriptErrorsSelected": [
+          "-- Stack trace --",
+          "GetPlugin() scripts/4_World/plugins/pluginmanager.c : 341",
+          "OnInit() scripts/4_World/plugins/pluginbase/pluginitemdiagnostic.c : 94",
+          "PluginsInit() scripts/4_World/plugins/pluginmanager.c : 136",
+          "PluginManagerInit() scripts/4_World/plugins/pluginmanager.c : 304",
+          "MissionBase() scripts/5_Mission/mission/missionbase.c : 21",
+          "CreateCustomMission() [trial mission]/init.c : 87",
+          "-----------------"
+        ],
+        "crashLogs": 0,
+        "newPbo": false,
+        "knownWarningGateRecorded": false,
+        "nativeClientModeVerified": false
+      }
+    ],
+    "guardReplay": {
+      "knownOnly": true,
+      "count": 24,
+      "expected": 8,
+      "compileOrRoleFailure": false,
+      "crashLogs": 0
+    },
+    "functionalRegression": "not_retested",
+    "frameTimeP50P95P99": null,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "Same visible BattlEye restart-required category is now confirmed without native attachment. It does not identify the internal condition that requests restart.",
+      "Diagnostic executable setup did not reach NPC creation in three attempts. Not a completed diagnostic-client baseline or valid performance comparison.",
+      "Completed saved logs match the whitelist while the live v2 gate recorded false. Partial/interleaved log observation is a hypothesis; the actual rejecting snapshot was not preserved.",
+      "Diagnostic executable differs from release; its future timings cannot substitute for release acceptance.",
+      "No new 8/64 regression, GPU/display timing, visible smoothness acceptance or 20ms-p95 achievement."
+    ],
+    "next": "Offline-test the real PowerShell guard with complete, duplicated, partial and unexpected records; preserve the exact rejecting snapshot and decision on the next bounded diagnostic attempt. Verify supported diagnostic connection before native attachment. Preserve main animation and 64-agent branches.",
+    "localEvidenceIntegrity": {
+      "filesVerified": 116,
+      "privateManifestPublished": false,
+      "checkpointSha256": "620a63292f7702765f88288e39ca9d0b169741315b35cb055ca33baddce936cf"
+    }
+  },
+  "blockers": [
+    "Same visible BattlEye restart-required category is now confirmed without native attachment. It does not identify the internal condition that requests restart.",
+    "Diagnostic executable setup did not reach NPC creation in three attempts. Not a completed diagnostic-client baseline or valid performance comparison.",
+    "Completed saved logs match the whitelist while the live v2 gate recorded false. Partial/interleaved log observation is a hypothesis; the actual rejecting snapshot was not preserved.",
+    "Diagnostic executable differs from release; its future timings cannot substitute for release acceptance.",
+    "No new 8/64 regression, GPU/display timing, visible smoothness acceptance or 20ms-p95 achievement."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/no-observer-error-20261101.md",
+      "sha256": "b0c2cccd6674aeb158be6bf2ede973f57d9f66e114a82e54fc0b3256f2cf6af4"
+    },
+    {
+      "path": "evidence/no-observer-error-20261101.txt",
+      "sha256": "30c1d50ea85d6a94abfa7f3cf4ff0d82c33a2e4e1ee179a73564ea2a5939ddae"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

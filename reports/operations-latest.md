@@ -1,51 +1,57 @@
-# 런처 실행 분기와 native 계측 없는 월드 이탈 재현
+# native 계측 없는 동일 BattlEye 경고 확인과 진단 실행 준비 한계
 
-작성: 2026-11-01T16:55:59.097959+09:00
+작성: 2026-11-01T17:08:55.078036+09:00
 
 ## 1. 작업 목표
 
-네트워크 애니메이션 시험의 월드 이탈을 계측기 문제와 실행 환경 문제로 분리한다. 설치 런처의 지원 실행 분기를 확인하고 native 관찰기 없는 기준 실행을 수행한다. NPC 시간 손실·표시 연구와 기존 기능은 보존한다.
+계측 없는 기준 실행의 실제 오류를 확보해 이전 native 계측 시험의 BattlEye 경고와 같은 범주인지 확인한다. 지원되는 진단 실행 경로를 조사하되 기존 NPC 구현·50ms 시계 손실 근거·64개체 비용 실험은 보존한다.
 
 ## 2. 실제 수행
 
-REA의 managed 정적 분석으로 설치 DayZLauncher 1.6.164.64의 타입·메서드·호출·문자열을 보존했다. SHA 592ceb0cc675e734fb89eb6db22694ae87d26299cae501ce856db268d03d821b, MVID d0a02078-db97-445f-a4d7-f2bff607bebd에만 해당한다. 선택 CIL은 ReflectionOnly 메타데이터와 명령 바이트로 대조했으며 대상 메서드를 실행하지 않았다. 세 메서드의 원시 IL 해시와 명령 수가 REA 근거와 일치했다. 첫 디코더 실행의 실행 정책·의존성·opcode prefix 오류는 조사 도구의 준비 실패이며 NPC 변경이 아니다. 현재 디코더는 성공했다. PowerShell 실행 정책은 해당 프로세스 인자로만 지정했고 영구 정책은 변경하지 않았다.
+일반 client/server를 고정 run·루트 이동 OFF·물리1파트 조건으로1회 실행했다. 네이티브 관찰기는 붙이지 않았다. 서버 disconnect 로그를250ms 간격으로 확인하는 bounded CU를 미리 연결했고 marker 직후와1.2초 뒤의 화면2장을 저장했다. 첫 CU 준비는 include_text/include_screenshot을 모두 끈 잘못된 요청으로 실패해 수정했으며, 수정 후 포착에 성공했다.
 
-ReRunGameWithLastParametersWithoutBattlEye는 RunGame(lastParameters,false,0)을 호출한다. RunGame의 false 분기는 64bit 게임 실행 파일을, true는 BattlEye 실행 파일을 선택하고 BE용 인자와 별도 모니터링을 구성한다. 파서의 -useBE는 실제 bool 설정에 연결된다. 임의의 -noBE 인자는 만들지 않았다. 다만 UI·Steam 설정 전체의 의미나 실행 후 상태를 이 정적 사실로 확정하지 않는다.
+공식 [Modding Basics](https://community.bistudio.com/wiki/DayZ:Modding_Basics)의 검색 발췌에서 진단 exe를 이용한 서버 실행과 BattlEye=0 안내를 확인했다. 본문 GET은403이므로 전체 문서를 읽었다고 주장하지 않는다. 설치된 DayZDiag 1.30.164200.56, SHA A500BE804FFED5CDE369337AEB6AB477EF5EE0B5015764BE2B1953C85EC3060D로 별도 서버·client 환경을 준비했다.
 
-계측 없는 기준 실행을 준비했다. 첫 준비 스크립트는 문자열 치환 실패로 Steam에 잘못된 인자를 전달했고 클라이언트가 생성되지 않았다. 실패 스크립트를 보존하고 별도 명시적 직접 실행 스크립트로 수정했다. 같은 격리 서버에 실제 접속해 고정 run·루트 이동 OFF·물리 1파트 조건으로 실행했다. Python Frida/네이티브 관찰기는 전혀 연결하지 않았다. 컴퓨터 유즈로 실제 월드와 한 모델 파트 표시를 확인했다.
+진단 환경은3회 모두 NPC 생성 전에 하네스가 멈췄다. 첫 회는 기본 PluginItemDiagnostic의 미등록 PluginConfigDebugProfile 조회 스택을 SCRIPT(E) 중단 조건이 잡았다. 설치 scripts.pbo를 읽어 OnInit의 조회 뒤 null 검사와 Diag/Debug 등록 분기를 확인했다. 두 번째는 해당8줄 스택의 정확 일치만 허용했지만 같은 스택이 여러 로그에 복제된 경우를 처리하지 못했다. 세 번째는 반복 스택도 비교했지만 live gate는 다시 false였다. 종료된 전체 로그24줄은 같은8줄 스택3복사와 정확히 일치한다는 것을 실제 PowerShell 식으로 재현했다. 중단 시점의 정확한 로그 snapshot은 없어 원인을 확정하지 않는다. 준비 스크립트의 로그 선택·개수 assert 실패는 runtime 횟수에 더하지 않았다.
 
 ## 3. 측정 결과
 
-성공적으로 시작된 기준 실행은 1회다. 서버 pose 2151행, DONE 완료, 클라이언트 종료 marker 확보, 클라이언트 강제 종료 없음, crash log 0개다. 서버는 DONE 후 소유 프로세스만 정지했다. NPC retirement 계약 검증은 아니다.
+일반 실행: 서버 pose 2151행, READY부터 disconnect 32.17초, 서버 DONE보다 12.538초 앞선 이탈이다. 서버는 Game restart required라는 BattlEye kick 사유를 기록했고 두 번째 CU 화면에서0x000400F0, BattlEye, Game restart required를 직접 확인했다. 첫 화면은 아직 월드였으므로 marker 직후 한 장만으로 오류가 없다고 판단하면 놓칠 수 있다. 두 프레임은 시각 품질·FPS 측정이 아니다.
 
-NPC READY에서 disconnect까지 37.331초이며 서버 DONE보다 7.386초 앞선다. authFailed=false, alive=true, health=100, logoutTime=15다. 이는 해당 이벤트 값일 뿐 인증 전반의 정상 증명이 아니다.
+서버 disconnect flags는 authFailed=false, alive=true, health=100, logoutTime=15다. 이번에도 그 값만으로 인증 전반의 정상을 입증하지 않는다. BEClient 모듈을 fresh 조회에서도 확인했다. 일반 실행은 DONE·client 종료 marker 확보, client 강제 종료 없음, SCRIPT(E)0줄, crash log0개다.
 
-게임 내 fresh Process 조회는 121개 모듈 중 BEClient_x64.dll을 확인했고 RPT에는 BattlEye client updated to version:249가 있다. 초기 반복 module snapshot의 52개 목록은 Process 객체 캐시였으므로 DLL 부재 근거로 사용할 수 없다. 다른 프로세스 검색에서는 해당 이름의 BE 실행기/서비스를 발견하지 않았으나 엔진 내부 활성 상태까지 증명하지 않는다. 마지막 오류 화면은 client 종료 후라 저장하지 못했고 이번 disconnect 코드는 미확인이다.
+진단3회는 모두 NPC READY 없음·DONE 없음이다. 해당 실패 후 소유 서버를 정지하고 client도 닫았으며 일부 client는 강제 종료였다. 유효한 네트워크/애니메이션 측정으로 취급하지 않는다. known-warning-v2의 완료 로그 replay는24/8줄 일치, compile/role-failure 없음, crash0이다. live gate의 false와 불일치가 남는다.
 
-새 8/64 회귀, frame-time p50/p95/p99, GPU/실제 표시 시각, CPU self-time, 할당/GC 및 시각 품질은 측정하지 않았다.20ms p95는 목표다.
+총 runtime 준비/실행4회이며 실제 NPC 실행은 일반 환경1회다. 각 회 기존3개 PBO 해시·서명을 검증했다. 새8/64 회귀, frame-time p50/p95/p99, CPU self-time, GPU/display 시간, 할당/GC는 측정하지 않았다.20ms p95는 목표다.
 
 ## 4. 원인 분석
 
-확인된 사실: 네이티브 관찰기를 붙이지 않은 실행도 예정 서버 종료 전에 월드를 떠났다. 따라서 모든 이탈에 native attachment가 필요하다는 설명은 반증됐다. 이전 hook ON 시험에서 포착한 BattlEye restart-required 화면과 이번 이탈이 같은 원인인지는 아직 모른다.
+확인된 사실: native attachment가 없는 상태에서도 이전 계측 시험과 같은 오류 코드·문구 및 서버 BattlEye kick 사유가 발생했다. 따라서 이 경고의 발생에 native attachment가 반드시 필요하다는 가설은 반증됐다. 그러나 내부 어떤 조건이 재시작을 요청하는지는 미확인이다. 서버cfg값·직접 실행·DLL 로드만으로 client의 전체 active/inactive 상태를 확정하지 않는다.
 
-추정: 실행 환경이나 플랫폼 연결 상태가 공통 원인일 수 있지만 현재는 후보일 뿐이다. BEClient DLL 로드·갱신 로그만으로 active/inactive를 확정하거나 바로 DLL을 제거·변경해서는 안 된다. 서버 cfg BattlEye=0 또는 런처의 직접 실행 분기만으로 client 비활성 검증을 대신할 수 없다.
+확인된 사실: 진단 전용 기본 플러그인 조회 경로는 null 결과를 검사한다. 동일 스택이3종 로그에 반복되어 전체 SCRIPT(E) 줄수24를 만든다. 이 경고를 무시하고 진단 성공이라고 보고하지 않는다. NPC 실패가 아니라 시험 하네스 중단 단계로 분류한다.
 
-도구 한계: cached module snapshot의 부재 판단은 기각했다. fresh 조회로 수정했다. CU의 종료 시점 화면 확인은 실패했으므로 오류 코드나 시각 품질 판정에 사용하지 않는다. 원래 오프라인 mode0의50ms 누적기 reset 손실 근거를 이번 연결 이슈로 대체하지 않는다.
+가설: 세 번째 live gate와 완료 로그 replay의 차이는 쓰기 중이거나 소스별 갱신이 어긋난 스냅샷 때문일 수 있다. 다만 실제 거부 snapshot이 없어 확정하지 않는다. 이 상태에서 게임 재실행을 반복하기보다 오프라인에서 실제 PowerShell guard와 partial/duplicate/unexpected 입력을 검증해야 한다. Python 모델 검사만으로 실제 PowerShell 실행을 대신하지 않는다.
 
 ## 5. 검증 수준
 
-런처 분기 식별과 원시 IL 대조는 진단 성공이다. 계측 없는 이탈 재현은 1회 관찰이며 반복 검증·해결 성공이 아니다. client BattlEye 비활성 상태, 원인 동일성, 전체 기능 회귀, 시각 품질과 성능의 최종 수용은 미완료다.
+계측 없는 동일 오류 화면·서버 사유 포착은 진단 성공이다. 연결 문제 해결·client 비활성 검증은 미완료다. 진단 exe의 연결 기준 시험은 미실행 수준이다. 전체8/64 회귀, 시각 품질, 성능 목표와 최종 수용은 미완료다.
 
 ## 6. 변경 사항
 
-기존 research 하위에 작은 정적 분석 파일·격리 launch/mission/profile·집계만 추가했다. 게임 코드·PBO·ANM·9350 후보·운영 서버는 변경하지 않았다. 기존3개 PBO 해시와 서명은 시험 전 모두 검증 성공했다. 새 PBO가 없어 신규 서명 대상은 없다. 서비스·드라이버·영구 보안 설정·anti-cheat 바이너리를 변경하지 않았다. 새 영상·대용량 dump·도구 설치는 없다.
+기존 research 하위의 격리 미션·launch·bounded CU 저장·진단 경고 guard만 추가했다. 원래 게임 코드·PBO·ANM·9350 후보·운영 서버는 변경하지 않았다.3개 PBO의 기존 서명·검증은 각 시도에서 성공했다. 새 PBO가 없어 신규 서명 대상은 없다.
+
+서비스·드라이버·영구 보안 설정·anti-cheat 바이너리를 변경하지 않았다. 새 도구 설치·영상·대용량 dump는 없다. 진단 exe의 해시·역할·기본 플러그인 경고는 일반 실행과 구분해 남겼다.
 
 ## 7. 원시 증거
 
-분석 ID launcher-test-mode-20261101. rea-managed-evidence/rea-caller-evidence는 선택 정적 Evidence 원본이다. decoded-cil/decoded-entry-cil은 별도 ReflectionOnly 파생본이다. selected-evidence는 공개용 선택 범위를 명시한다. direct-no-observer에는 처음 실패한 준비본과 성공한 명시적 실행본, 서버 미션·로그·pose·ingame-modules·게임 내 화면을 보존한다. 해시와 JSON·파일 안정성을 확인한 후 기존 체크포인트 체계로 저장했다. 전체 원시 로그·화면·프로세스 정보·로컬 절대 경로·키·게임 자산은 공개하지 않는다.
+분석 ID no-observer-error-20261101-1700. root의 client/server profile·pose·ui-observation·capture-disconnect.js·disconnect-0/1.jpg를 보존한다. 두 번째 화면 SHA 3668e8cc0f348eac2a12e45cce04c840d3ccad8e0edc8d7cbbb495e4207ec140이다. diag-baseline/diag-known-warning/diag-known-warning-v2에는 실패 당시 파일을 유지했다. shipped-diag-plugin-context는 설치 PBO/멤버 해시와 선정 소스이며 diag-guard-complete-replay는 실제 PowerShell 종료 로그 재검사다.
+
+공개본은 이벤트 투영·사유·화면 전사·화면 해시·소스 발췌만 포함한다. 사용자 ID가 들어간 서버 kick 원문·로컬 절대 경로·CLI·프로세스 정보·이미지·전체 원시 로그·게임 자산·키는 제외한다. 원본 해시와 종료·JSON·파일 안정성을 확인한 뒤 기존 보고서 체계에 저장했다.
 
 ## 8. 잔여 문제
 
-다음 최소 시험은 서버 disconnect marker를 기다리는 CU 오류 화면 저장을 먼저 연결한 뒤, native 관찰기 없는 기준 실행의 실제 메시지를 확인하는 것이다. 같은 native 부착 시험을 반복하지 않는다. 메시지가 다르면 원인을 분리하고 같으면 지원 실행 설정과 플랫폼 연결 경로를 더 확인한다. client 상태가 검증되지 않으면 네트워크 애니메이션 계측은 보류하고 확보된 오프라인 시계·표시/64개체 비용 분석을 이어간다. 새로운 시간 배율·보간·충돌 완화 구현은 보류한다.
+다음은 live gate의 실제 PowerShell 판정식을 오프라인에서 완결·중복·부분·예상 밖 오류 입력으로 검증하고, 다음1회 bounded 진단 시험이 거부될 때 그 정확한 snapshot과 판정 이유를 저장하도록 만드는 것이다. 미완결 경고를 무기한 허용하거나 일반 오류 검사를 없애지 않는다. 지원 진단 연결이 검증되기 전 native 연결은 재개하지 않는다.
 
-선정 공개 본문. 로컬 보고서 SHA-256: `9da62626cfafa746662a3ff565a86ed97ca9990232141043b6332792011201c4`. 원시 전체가 아니다.
+진단 exe는 일반 exe와 다른 빌드이므로 연결이 되더라도 일반 client 성능·시각 수용을 대신하지 않는다. 연결 gate 해결과 오프라인 mode0/표시 진단,64개체 기능/비용은 별도 실험으로 유지한다. 새 보간·시간 배율·충돌 검사 생략은 적용하지 않는다.
+
+선정 공개 본문. 로컬 보고서 SHA-256: `620a63292f7702765f88288e39ca9d0b169741315b35cb055ca33baddce936cf`. 원시 전체가 아니다.
