@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "animation-diag-pose-identity-20261101-1740"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "newRuntimeTrials",
+        "newPbo",
+        "pointerIdentity",
+        "apiContract",
+        "samples"
+      ],
+      "properties": {
+        "newRuntimeTrials": {
+          "const": 1
+        },
+        "newPbo": {
+          "const": false
+        },
+        "apiContract": {
+          "type": "object",
+          "properties": {
+            "virtualSlot": {
+              "const": "0x618"
+            },
+            "previousDiagSlot610MsLabelWithdrawn": {
+              "const": true
+            }
+          }
+        },
+        "visualAccepted": {
+          "const": false
+        },
+        "performanceAccepted": {
+          "const": false
+        }
+      }
+    }
+  }
+}
