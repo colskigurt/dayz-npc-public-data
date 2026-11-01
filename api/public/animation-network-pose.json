@@ -1,0 +1,305 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T16:28:03.239850+09:00",
+  "sourceRunId": "animation-network-pose-20261101-1616",
+  "buildId": "453D-0C6E-B8FB-clientc670-serveree1a",
+  "verificationStatus": {
+    "diagnostic": "opaque_bone_handle_map_and_short_six_position_correspondence_diagnosed",
+    "repetitions": 0,
+    "fullNpcRegression": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-network-pose-20261101-1616",
+    "buildId": "453D-0C6E-B8FB-clientc670-serveree1a",
+    "verificationStatus": "opaque_bone_handle_map_and_short_six_position_correspondence_diagnosed",
+    "newRuntimeTrials": 2,
+    "newPbo": false,
+    "newVideo": false,
+    "numericOverrides": false,
+    "trials": [
+      {
+        "trial": "initial",
+        "summary": {
+          "enabled": false,
+          "errors": 0,
+          "counts": {
+            "scheduler": 32,
+            "buffer": 32,
+            "consumer": 32,
+            "interpolate": 32
+          },
+          "selected": true,
+          "elapsed": 55.6123545
+        },
+        "clientPoseRecords": 10,
+        "validPoseSpanSeconds": 0.4968012,
+        "selectedToObserverStopSeconds": 25,
+        "clientWorldLogoutObserved": true,
+        "serverPoseRows": 2152,
+        "serverRequestValues": [
+          "2"
+        ],
+        "serverDone": true,
+        "clientTerminationMarker": true,
+        "serverOwnedForcedStop": true,
+        "clientForcedStop": false,
+        "crashLogCount": 0,
+        "signaturesVerified": 3
+      },
+      {
+        "trial": "lookup",
+        "summary": {
+          "enabled": false,
+          "errors": 0,
+          "counts": {
+            "scheduler": 369,
+            "buffer": 369,
+            "consumer": 369,
+            "interpolate": 369
+          },
+          "selected": true,
+          "elapsed": 55.6103647
+        },
+        "clientPoseRecords": 123,
+        "validPoseSpanSeconds": 7.2863136,
+        "selectedToObserverStopSeconds": 25,
+        "clientWorldLogoutObserved": true,
+        "serverPoseRows": 2151,
+        "serverRequestValues": [
+          "2"
+        ],
+        "serverDone": true,
+        "clientTerminationMarker": true,
+        "serverOwnedForcedStop": true,
+        "clientForcedStop": false,
+        "crashLogCount": 0,
+        "signaturesVerified": 3
+      }
+    ],
+    "mapping": {
+      "capacity": 128,
+      "slots": {
+        "Head": {
+          "handleSigned": 2090324343,
+          "handleUnsigned": 2090324343,
+          "slot": 31
+        },
+        "Hips": {
+          "handleSigned": 2090329209,
+          "handleUnsigned": 2090329209,
+          "slot": 3
+        },
+        "spine2": {
+          "handleSigned": 474378870,
+          "handleUnsigned": 474378870,
+          "slot": 13
+        },
+        "Neck": {
+          "handleSigned": 2090540038,
+          "handleUnsigned": 2090540038,
+          "slot": 22
+        },
+        "LeftHand": {
+          "handleSigned": 2089750091,
+          "handleUnsigned": 2089750091,
+          "slot": 29
+        },
+        "RightHand": {
+          "handleSigned": -1405358722,
+          "handleUnsigned": 2889608574,
+          "slot": 64
+        }
+      }
+    },
+    "names": [
+      "Head",
+      "Hips",
+      "spine2",
+      "Neck",
+      "LeftHand",
+      "RightHand"
+    ],
+    "comparisons": {
+      "query188": {
+        "records": 123,
+        "nearestSixPositionRmsMeters": {
+          "min": 3.4778124163616183e-07,
+          "p50": 5.317520198403656e-07,
+          "p95": 0.0215241251124586,
+          "p99": 0.024073902951627632,
+          "max": 0.025617529971968894
+        },
+        "matchesWithin2Micrometers": 67,
+        "perBonePeakToPeakMeters": [
+          [
+            0.44208693504333496,
+            0.3190101385116577,
+            0.4050169214606285
+          ],
+          [
+            0.0,
+            0.07436180114746094,
+            0.0
+          ],
+          [
+            0.11971055716276169,
+            0.10603213310241699,
+            0.11183978617191315
+          ],
+          [
+            0.32046952843666077,
+            0.22070443630218506,
+            0.2737535983324051
+          ],
+          [
+            0.34775330126285553,
+            0.7998582124710083,
+            0.9618403017520905
+          ],
+          [
+            0.6716499477624893,
+            0.6143052577972412,
+            0.7029701322317123
+          ]
+        ],
+        "mappingProvenance": "Live name map obtained from interpolated190. Same ordinal use forquery188 remains a cross-buffer assumption; identical observed six-position arrays corroborate but do not prove type-data identity."
+      },
+      "interpolated190": {
+        "records": 123,
+        "nearestSixPositionRmsMeters": {
+          "min": 3.4778124163616183e-07,
+          "p50": 5.317520198403656e-07,
+          "p95": 0.0215241251124586,
+          "p99": 0.024073902951627632,
+          "max": 0.025617529971968894
+        },
+        "matchesWithin2Micrometers": 67,
+        "perBonePeakToPeakMeters": [
+          [
+            0.44208693504333496,
+            0.3190101385116577,
+            0.4050169214606285
+          ],
+          [
+            0.0,
+            0.07436180114746094,
+            0.0
+          ],
+          [
+            0.11971055716276169,
+            0.10603213310241699,
+            0.11183978617191315
+          ],
+          [
+            0.32046952843666077,
+            0.22070443630218506,
+            0.2737535983324051
+          ],
+          [
+            0.34775330126285553,
+            0.7998582124710083,
+            0.9618403017520905
+          ],
+          [
+            0.6716499477624893,
+            0.6143052577972412,
+            0.7029701322317123
+          ]
+        ],
+        "mappingProvenance": "Live name map obtained from interpolated190. Same ordinal use forquery188 remains a cross-buffer assumption; identical observed six-position arrays corroborate but do not prove type-data identity."
+      }
+    },
+    "buffersSixPositionsExactlyEqual": true,
+    "continuous25SecondGatePassed": false,
+    "clientRequestedState": "not_read",
+    "fullPoseEquivalent": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "Nearest-pose matching over all server rows is phase-free shape evidence,not same-time equality,latency or clock sync.",
+      "Only6translation points,not65rotations/full pose/GPU/visible smoothness.",
+      "Corrected valid span7.286sec versus planned25sec. Client world departure reason unproven.",
+      "First test wrongly treated opaque signed handle as nonnegative ordinal; invalid comparison andRightHand zero are excluded. Production code already usedcorrect-1contract.",
+      "No matched performance A/B,8/64 regression,frame-time p50/p95/p99,CPU/GPU orGCmeasurement.20ms p95 remains target."
+    ],
+    "next": "Keep verified name-hash-to-slot mapping. Diagnose loss ofclientworld continuity before another pose acceptance run: preserve last callback time and capture departure dialog/reason before automatic window closure. Compare existing successful baseline with added server/API and clientmatrix instrumentation as separate factors; do not attribute departure without evidence.",
+    "sourceHashes": {
+      "research/animation-network-pose-20261101-1616/analyze.py": "f259d9697e083f0029f6fd3c3aa6f7573da5f8f7368b84bdcfb7bd02a426e0d1",
+      "research/animation-network-pose-20261101-1616/animal-bone-lookup-complete.json": "e24b7d532244d8a12ad8d9406b387ea2c2f4cb31404d04f53ac2e9446e5bea92",
+      "research/animation-network-pose-20261101-1616/bone-api-bindings.json": "746e091b38647323c36b550feb2b384d5a454824e5bcf441310466cb6ecbd2a8",
+      "research/animation-network-pose-20261101-1616/bone-api-declarations.json": "10153b7cd2adb427c91dc57b3f086b760908225d4d2ac11f5cb25f9e6877eff3",
+      "research/animation-network-pose-20261101-1616/bone-lookup-contract.json": "533447e098a220711d89f37132ce5ff7918ba9d51af976dd1aed40cfee385024",
+      "research/animation-network-pose-20261101-1616/bone-matrix-consumer.json": "7139a86343fc62d1b0909049a471e13499311ef5a3504550d24186659249881f",
+      "research/animation-network-pose-20261101-1616/client-launch.json": "a35dd70124ebc58d18fe429140b8c81d8aca683887554541d25272e1bba4eb8b",
+      "research/animation-network-pose-20261101-1616/existing-packed-handle-contract.json": "892e215e12083a090c4e3af90333e8ff570f3cfe3691c7dcf01d4914c3166600",
+      "research/animation-network-pose-20261101-1616/inspect_bone_binding.py": "fa69c2e67dda6fdb0e276a0680a5147b04692f1f5e68acbda67eca9b303c9f5d",
+      "research/animation-network-pose-20261101-1616/network-observer.js": "78c23b9f5f578687e0c214a7f7f23e394d85ef8a2bec45a5652e35f3b7b8528b",
+      "research/animation-network-pose-20261101-1616/network-observer.json": "a7a137e4494011ec5e2297041ceb371efd60a4497e87d2d4e1d335c3374215c8",
+      "research/animation-network-pose-20261101-1616/observer-finished.json": "806f2929d923e9e0389394ea3fc74f8cc1784664022aa4211d1f110656de66c4",
+      "research/animation-network-pose-20261101-1616/observe_network.py": "b24e0248b5684e0b49d0baf2e4292d19bc74084f82c8e6eaa9284fee5eab93d7",
+      "research/animation-network-pose-20261101-1616/plan.json": "62b47b96dae646169d302bfa7b4fbd99fc3603eede3a5488a6f286db347fedfe",
+      "research/animation-network-pose-20261101-1616/pose-nearest-joins.json": "c90947efa32d821e593e369960081833e1410fc1b3134a4496638c1194f9e9b5",
+      "research/animation-network-pose-20261101-1616/results.json": "1b6e873da3bf719919b63e56727edf5230e73bee6405c5d89f09ef71b2d72719",
+      "research/animation-network-pose-20261101-1616/run_client.ps1": "ea27109b020ea1bdb3c128104b7fa3e495584c92823109bbc278c8017ab38b57",
+      "research/animation-network-pose-20261101-1616/run_server.ps1": "1ac354850258302bbc858bf18312b05de3b272436801346c8db55db22708692e",
+      "research/animation-network-pose-20261101-1616/server-launch-BProbe.json": "f8459505baa8bbb721ed2e6e6cb113f5c902ff88866a992f520faae5a35264ba",
+      "research/animation-network-pose-20261101-1616/client-profile/DayZ_x64_2026-11-01_16-16-51.RPT": "14bf84dde08663d891b71ea5f3e700cc8bd1246500bc50082eb27c08121b488a",
+      "research/animation-network-pose-20261101-1616/client-profile/error_2026-11-01_16-16-51.log": "2b94e143816f2680431ad8d9d12b828df7d86e12f1379327a53166e0aac9522d",
+      "research/animation-network-pose-20261101-1616/client-profile/script_2026-11-01_16-16-51.log": "06cf7ecfd48f03f9d780961ca7ae3e0f5b4a494d44a061db20ad5e923a0c1b85",
+      "research/animation-network-pose-20261101-1616/lookup-trial/client-launch.json": "de8c6b17d974b3c94ad55f2ab52783b07192befd0411c0f5dfe552387a80c516",
+      "research/animation-network-pose-20261101-1616/lookup-trial/network-observer.js": "89dea24d8339dc1b4f2f295cacf0717b3ec513dfecd9973d2f50c1b0f5c6eee3",
+      "research/animation-network-pose-20261101-1616/lookup-trial/network-observer.json": "ad9b1698f33c65926850ab5b2e1568feb50de89cee2819c12efc563260887e31",
+      "research/animation-network-pose-20261101-1616/lookup-trial/observer-finished.json": "b95d0f1b2885dbd0552b1c34f71e09f57278a37614599f4b09f0be88de85c7ba",
+      "research/animation-network-pose-20261101-1616/lookup-trial/observe_network.py": "aa5a22cc5123ce799c224ec3735f50e8c85d87cdcce2f0303b61b224e41e6dde",
+      "research/animation-network-pose-20261101-1616/lookup-trial/preflight-change.json": "2fbaa8ce9633447d8b0c8322b7c59a06500ef573b389c324daf593fea88edf51",
+      "research/animation-network-pose-20261101-1616/lookup-trial/run_client.ps1": "ea27109b020ea1bdb3c128104b7fa3e495584c92823109bbc278c8017ab38b57",
+      "research/animation-network-pose-20261101-1616/lookup-trial/run_server.ps1": "1ac354850258302bbc858bf18312b05de3b272436801346c8db55db22708692e",
+      "research/animation-network-pose-20261101-1616/lookup-trial/server-launch-BProbe.json": "aa82bd75ad0543bedf13f351edf56f2ca5a2d8ed110192eb554019f27cbb924b",
+      "research/animation-network-pose-20261101-1616/server-profile-BProbe/DayZServer_x64_2026-11-01_16-16-22.RPT": "d40b66d2e27562b04055a7e18c283389f5f37681c964283e1f5ea83cc0249040",
+      "research/animation-network-pose-20261101-1616/server-profile-BProbe/error_2026-11-01_16-16-22.log": "7091db596b2938b5d7d3744fb3fe830b327c5d98f85b822ac1a3e21222aa94df",
+      "research/animation-network-pose-20261101-1616/server-profile-BProbe/role-pose.tsv": "d6fc9d9ed6744c03ae761ae18a94c19a8a74d9d7ce859a21316718b4c7ac083a",
+      "research/animation-network-pose-20261101-1616/server-profile-BProbe/script_2026-11-01_16-16-22.log": "125e4f918a9176fdf60f450c7e87f7064744ef74b228bdae5617714e44d36165",
+      "research/animation-network-pose-20261101-1616/server-profile-BProbe/server.cfg": "801e11abc24e0a2b1276750ad8f4de8149089bb9578e0191ba130fc38fc03a4f",
+      "research/animation-network-pose-20261101-1616/server-role-lod0.chernarusplus/init.c": "68b5b61e115f9efaac333a15ad1a1eda765aeccda693ff824c2a32e0f33d157a",
+      "research/animation-network-pose-20261101-1616/client-profile/Users/colsk/DayZ.cfg": "c18b04a1c2d67a0aae7bb294f53dba34b4ba41894fb8f0c6d6887bb43883d796",
+      "research/animation-network-pose-20261101-1616/lookup-trial/client-profile/DayZ_x64_2026-11-01_16-22-33.RPT": "2d7267a8cd428b89295ee4e5eee2cf713be11762cf64f9f6dc1cd723677ea113",
+      "research/animation-network-pose-20261101-1616/lookup-trial/client-profile/error_2026-11-01_16-22-33.log": "ec81dfdd54b85af358f911049abb8e7f5db0773b8647b63eb149aa6291f9aadc",
+      "research/animation-network-pose-20261101-1616/lookup-trial/client-profile/script_2026-11-01_16-22-33.log": "9381a9a005900a1e8137d2a86880ff68c65ceca3d4bcbb556964cfdd8a0b7cb0",
+      "research/animation-network-pose-20261101-1616/lookup-trial/server-profile-BProbe/DayZServer_x64_2026-11-01_16-22-04.RPT": "964f01ed0fd86ff3b6a13644b8e2be346541c4a7f5e549f0cbff1e7f975455c4",
+      "research/animation-network-pose-20261101-1616/lookup-trial/server-profile-BProbe/error_2026-11-01_16-22-04.log": "9fd4bdda67b7eb9db3f762910c1b99c58851e84289af75ede1c2bfccc717a2bd",
+      "research/animation-network-pose-20261101-1616/lookup-trial/server-profile-BProbe/role-pose.tsv": "40038be1e2e5ce347d3af37720990a4b2648d1840189a5f8421bef6e3917e6c9",
+      "research/animation-network-pose-20261101-1616/lookup-trial/server-profile-BProbe/script_2026-11-01_16-22-04.log": "353086735588b433e37863e25ad7e9d0da0e17e09284a80427cdc8dfec3dde0a",
+      "research/animation-network-pose-20261101-1616/lookup-trial/server-profile-BProbe/server.cfg": "801e11abc24e0a2b1276750ad8f4de8149089bb9578e0191ba130fc38fc03a4f",
+      "research/animation-network-pose-20261101-1616/lookup-trial/server-role-lod0.chernarusplus/init.c": "09bd6ff972c5f9cdcbcc46ba8ea0748e0231235e80cae8211569c5c73d247a3b",
+      "research/animation-network-pose-20261101-1616/lookup-trial/client-profile/Users/colsk/DayZ.cfg": "c18b04a1c2d67a0aae7bb294f53dba34b4ba41894fb8f0c6d6887bb43883d796",
+      "research/animation-network-pose-20261101-1616/lookup-trial/server-profile-BProbe/Users/Server/DayZ.cfg": "250e9c988f18d80066f0e575264358504ec74d7a654939662884d4474b3ae7c2",
+      "research/animation-network-pose-20261101-1616/server-profile-BProbe/Users/Server/DayZ.cfg": "250e9c988f18d80066f0e575264358504ec74d7a654939662884d4474b3ae7c2"
+    }
+  },
+  "blockers": [
+    "Nearest-pose matching over all server rows is phase-free shape evidence,not same-time equality,latency or clock sync.",
+    "Only6translation points,not65rotations/full pose/GPU/visible smoothness.",
+    "Corrected valid span7.286sec versus planned25sec. Client world departure reason unproven.",
+    "First test wrongly treated opaque signed handle as nonnegative ordinal; invalid comparison andRightHand zero are excluded. Production code already usedcorrect-1contract.",
+    "No matched performance A/B,8/64 regression,frame-time p50/p95/p99,CPU/GPU orGCmeasurement.20ms p95 remains target."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-network-pose-20261101.md",
+      "sha256": "43c8ffa7fa4d1ea15b9a3eeb4207070eb0074a3ad935eef5da1575b4372710ee"
+    },
+    {
+      "path": "evidence/animation-network-pose-20261101.txt",
+      "sha256": "39d053376ace56b9a658c0598bf3f286e9148b12aa538380e2d5a07262164ed4"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
