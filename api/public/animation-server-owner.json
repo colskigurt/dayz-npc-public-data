@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T14:48:26.518124+09:00",
+  "sourceRunId": "animation-server-owner-20261101-1442",
+  "buildId": "server-ee1add8b",
+  "verificationStatus": {
+    "diagnostic": "server_mode1_stack_context_initialization_link",
+    "functional": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "supportedClockFix": "not_established",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-server-owner-20261101-1442",
+    "buildId": "server-ee1add8b",
+    "verificationStatus": "server_mode1_stack_and_context_initialization_static_linked",
+    "newRuntimeTrials": 0,
+    "newPbo": false,
+    "newVideo": false,
+    "numericOverrides": false,
+    "metrics": {
+      "chainedUnwindRecords": 3,
+      "validatedAdjacentDirectCallEdges": 3,
+      "roleTrialsReused": 1,
+      "newPoseSamples": 0
+    },
+    "facts": {
+      "serverModeOffset": "0x5f8",
+      "serverContextOffset": "0x5b0",
+      "clientOffsetsMustNotBeReused": [
+        "0x668",
+        "0x620"
+      ],
+      "faultFunctionRoot": "0x140a52400",
+      "mode1ReturnRva": "0xaaab8f",
+      "validatedDirectCallChain": [
+        "0x140aaaad0 ->0x140aaac90",
+        "0x140aaac90 ->0x140a53d30",
+        "0x140a53d30 ->0x140a52400"
+      ],
+      "contextConstruction": {
+        "function": "0x140a45c40",
+        "entityArgumentStoredAt": "context+0",
+        "secondaryPointerInitiallyZeroAt": "context+8",
+        "typeDataAt": "context+0x2b0"
+      },
+      "nullFieldMeaning": "Secondary pointer type and later producer still unestablished; not the same field as core entity pointer at+0.",
+      "publicAnimInterface": "Separate wrapper constructor/vtable found; do not identify it with raw context merely by similar name."
+    },
+    "sourceHashes": {
+      "research/animation-server-owner-20261101-1442/context-producer.json": "6c7758b71d412d88091a440b99a6dd1ae166938db5a45adccdff518ff83a3d2f",
+      "research/animation-server-owner-20261101-1442/context-types.json": "fa3c4440a5e0618489f2a5388880973130f822c652335ae76ec91cf4046b7093",
+      "research/animation-server-owner-20261101-1442/factory.json": "557b2d7f31b7f527eaf921076814be17b157f1d98f6f8fd41c3f9e650d1bd09e",
+      "research/animation-server-owner-20261101-1442/find_context_types.py": "30b1feb51c8599af54f35a8e12c9e6117d691e78885ae14e39f885396f7f1a26",
+      "research/animation-server-owner-20261101-1442/graph-context.json": "8a54c3dfb443cb1b1dd3fe5bc95108ea37a7bd2ca86e1c351c3764e57be61bb9",
+      "research/animation-server-owner-20261101-1442/inspect_factory.py": "a8f3d2c1560dc8857509bdc2965e64642bfd1976da0c81e0550946ed7cf97bed",
+      "research/animation-server-owner-20261101-1442/inspect_owner.py": "28c33302b76b232a84aea26ee0457558bf88e6466b57ba936ff4c96c95c31167",
+      "research/animation-server-owner-20261101-1442/interface-link.json": "d307ddd466dda087b21118f88348fa3a429f5415fdaeb22350017d46f372b521",
+      "research/animation-server-owner-20261101-1442/link_interface.py": "65f8f2046061d3d44d52b77e3a9d4dd1714887f40f1b937084bf4cbced7208b0",
+      "research/animation-server-owner-20261101-1442/owner-analysis.json": "afea876477f0c3ca42049c9ebaa7eb574c07dde39d21fd5ab708dd9e86fba418",
+      "research/animation-server-owner-20261101-1442/trace_graph_context.py": "cc41e3d537e42b7521fe55bd5e0d12f5ab8319ca0012b358cdca77ee7b630b27",
+      "research/animation-server-owner-20261101-1442/trace_producer.py": "5191bb25c66df3a3d20501142a3d59fbf4ba3bbd46c5bcf389cd1dc79fe57485",
+      "research/animation-animal-role-20261101-1429/server-launch-one.json": "c4e2efdcb6520f41f8615acebecb17a756fa4b21e2210aad488e43c0ac9f4b91",
+      "research/animation-animal-role-20261101-1429/server-crash-analysis.json": "12dc8b975296911c0da2e7067e138698e86c6b1444952fa4998d84f0d95ad85b",
+      "research/animation-animal-role-20261101-1429/server-profile-one/crash_2026-11-01_14-37-35.log": "92152368cf5c406034def1c5b95edf60b7524b1f2d9a292f18795eb2c13c63d1"
+    },
+    "limits": [
+      "No register dump or new process execution.",
+      "Chained unwind metadata groups prologue/stack layout; contiguous decoded bytes are not full semantic CFG proof.",
+      "Stack addresses reported by crash handler are not all independently unwound/validated call frames.",
+      "Static pointer provenance is not proof of live allocation/type.",
+      "Core entity+0 and secondary context+8 are distinct; no supported setter or root-cause fix established.",
+      "No fresh game/pose/display8/64/frame p50/p95/p99 or performance measurement.",
+      "Mode1 is inferred from validated reported return-address branch, not a new direct memory field sample."
+    ],
+    "next": "Locate the producer/attachment of context+8 before another server trial. Keep this bounded compatibility diagnosis separate from offline residual-loss and64 cost work; no mode forcing or pointer injection.",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "blockers": [
+    "No register dump or new process execution.",
+    "Chained unwind metadata groups prologue/stack layout; contiguous decoded bytes are not full semantic CFG proof.",
+    "Stack addresses reported by crash handler are not all independently unwound/validated call frames.",
+    "Static pointer provenance is not proof of live allocation/type.",
+    "Core entity+0 and secondary context+8 are distinct; no supported setter or root-cause fix established.",
+    "No fresh game/pose/display8/64/frame p50/p95/p99 or performance measurement.",
+    "Mode1 is inferred from validated reported return-address branch, not a new direct memory field sample."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-server-owner-20261101.md",
+      "sha256": "bddab8d577804a6e3d3ae63e122bc3b130ad45758b7e966cdd3d86df84d24e11"
+    },
+    {
+      "path": "evidence/animation-server-owner-20261101.txt",
+      "sha256": "d18c2d259280c917e2c8075fb7e5be2c4e9481ab8ee196a2775f0eb195f95488"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
