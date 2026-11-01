@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "animation-diag-painted-label-20261101-1850"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "newRuntimeTrials",
+        "newPbo",
+        "results",
+        "externalReferenceReview"
+      ],
+      "properties": {
+        "newRuntimeTrials": {
+          "const": 2
+        },
+        "newPbo": {
+          "const": true
+        },
+        "newGameplayPbo": {
+          "const": false
+        },
+        "results": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "properties": {
+              "temporalCoverage": {
+                "type": "object",
+                "properties": {
+                  "temporalCoverageAdmitted": {
+                    "const": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "visualAccepted": {
+          "const": false
+        },
+        "performanceAccepted": {
+          "const": false
+        }
+      }
+    }
+  }
+}
