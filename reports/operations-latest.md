@@ -1,61 +1,59 @@
-# 진단 클라이언트 시계·희소 HUD 프레임·화면 투영 연결
+# 그려지는 HUD 표식 확인·반복 이미지 coverage 재판정·외부 호드 자료 검토
 
-작성: 2026-11-01T18:44:17.397539+09:00
+작성: 2026-11-01T19:04:25.372467+09:00
 
 ## 1. 작업 목표
 
-색상 detector의 머리/어깨 혼동을 우회할 수 있도록 network 진단 client의 HUD frame ID·실제 시계·개체변환·화면투영 기준을 수집한다. production NPC·애니메이션 시계를 보정하거나 기존 게임 PBO를 바꾸지 않는다. 추가 본 getter로 lazy cache 갱신을 강제하지 않는다.
+계측용 HUD binary 막대를 실제로 칠하고 checksum/client log와 연결한다. 동작/갱신 정책을 유지해 레이아웃 변경을 분리하며, 반복 캡처 이미지를 독립 pose 표본으로 세지 않는다. 중간에 사용자가 전달한6개 대량호드 참고자료는 설계후보로 분리 검토하고 현재 구현에 섞지 않는다.
 
 ## 2. 실제 수행
 
-기존 도구로 작은 계측 전용 Mission 모듈을 별도 제작했다. 진단 빌드·명시 profile flag·network client에만 활성화하며 DGSubsetIntegratedCrowdLeader 하나를 찾는다. 매 callback에 frame ID, appActive, network ID, 개체 transform, camera 위치/방향, 고정8개 model reference의 engine screen projection을 기록한다. 본/애니메이션 getter·개체 위치쓰기·시뮬레이션 변경은 없다.
+설치된 GUI style XML을 파싱해 Colorable 소유 위젯을 조사했다. Window/Button/GridSpacer 등에 정의가 있고 Panel에는 없었다. 이전 Panel에style만 추가한 준비v4는 실행하지 않고 보존했다. 별도후보는 root WindowWidget/24개ButtonWidget에 명시Colorable을 사용한다. script는이전v3와동일SHA fe9d763994e870157f367907b40f7aed3907ab8dbf315f2fd87e105350b2cfb5다. build/pbo source일치·서명검증을 마쳤다.
 
-기존 정적 registry 분석을 A500의 자유함수 등록 규약(RDX name/R8 handler)에 맞춰 TickCount를 찾았다. method규약 첫 조회 결과0건을 보존하고 자유함수 handler308CD0→getter239EB0, QPC IAT13684F0·원점1A49D70·빈도1A49D68을 확인했다. 이 빌드에서 실제 TickCount(0) 반환을 QPC entry/exit bracket과 대조했다. REA 전체 decompilation/runtime Evidence가 아닌 기존 bounded Capstone·Python Frida 관찰이다.
+동일기본1part·고정run·network 진단에서2회시험했다. 시도1은녹화초반 검은화면이었고 활성화뒤구간에서막대를확인했다. 원본을보존했다. 시도2는실제foreground gate가준비돼야recorder가시작되도록 순서를수정했다. CU활성화실패뒤 실제창/프로세스를재확인해한번재시도했고성공했다. 새게임을관찰timeout만으로재시작하지않았다. 이후사용자메시지로turn이중단됐으나회수시두실행의client/server/recorder가모두종료됨을실제상태로확인했다.
 
-시도1은 FileHandle에0을 대입한 컴파일 오류로 guard가 거부했다. 새 client·녹화·native 관찰은 시작되지 않았다. FileHandle이 typedef int[]임을 확인하고 null 대입으로 바꾼 v2를 별도 보존했다. 시도2는 컴파일됐지만 Widget.Show null VM 오류가 났다. client를 닫고 실패 영상/로그를 보존했으며 native는 연결하지 않았다. v3에서는 HUD 생성을 대상 준비 이후로 늦추고 매 bit를 root에서 직접 재조회·null 검사하며 READY를 첫 완성행 이후로 보냈다. 두 변경을 함께 적용했으므로 위젯 수명의 단일 원인이 확정됐다고 하지 않는다.
-
-시도3은 client 실행·native15초·창 전용 무음12초녹화를 진행했다. CRF12로 파일을 제한했고 이전 CRF0와 화질/성능 비교에서 제외했다. 녹화 후 portable basic/scene/encoder의 원래bytes를 복원했다. HUD 텍스트는 실제 화면에서 확인했으나24개 binary Panel 막대는 보이지 않았다.9개 고정 영상 index에서 HUD 글자를 직접 읽어 로그와 연결했다. 차기 v4는 vanilla의style Colorable을 명시하는 layout만 준비했고 아직 build/실행하지 않았다.
+영상해독첫crop은YUV의홀수높이반올림으로shape오류가났다. exact crop으로고쳤고원래생산자를보존했다. 고정120프레임geometry검사는시도1의검은화면이라거부됐다. 실제후반600프레임에서검은root사각형만으로scale/좌표를구한별도revision을사용했다. 프레임번호/native시계는geometry보정에쓰지않았다. 각24bit의16bit ID/8bit XOR checksum·밝기·로그멤버십·단조성을검사했다.
 
 ## 3. 측정 결과
 
-새 runtime3회: 컴파일 실패1·HUD VM 실패1·최종 계측 실행 성공1이다. 마지막 native435표본, scheduler/buffer/consumer/interpolation 각435회, cache1,212회(dirty746·clean466), observer/script오류0이다. TickCount(0)872회 모두 engine 원점+반환값이 host QPC bracket 안에 들었다. graph clock은 여전히 미확보다.
+두영상각723프레임이며OBS출력표식/QPC는각723/723연결됐다. 시도1 gameHUD209/723 valid·서로다른ID162개·양쪽TickCount native bracket이직접일치한ID30개다. native776표본/15.5036303초·TickCount bracket1553회검증,오류0이다. 시도2는gameHUD670/723 valid지만서로다른ID169개·직접bracket ID156개에그쳤다. native156표본/8.0785038초·bracket312회검증,이후callback2초공백으로관찰이끝났다. source-run/coverage차를보존하며15초완주로세지않는다.
 
-client frame log2,234행은 frame ID가 순차적이고 network ID/type은 하나다.436개행의 begin/end 양쪽 TickCount가 native hook과 직접 일치했다. HUD를 읽은9장 중8장이 이 직접 bracket 구간에 포함됐다.9장 모두appActive=true이며 전체행의 활성 여부는 별도JSON 집계를 보존한다. HUD문자만 희소 수동 검증했으며 전체 영상 game frame decode 성공은 아니다.
+단순해독이미지수>500의시도2 flag는true였지만이값을시간coverage수용으로쓰지않았다. 같은ID최대144이미지·반복501쌍이포함됐기때문이다. 독립ID/직접bracket 기준250개로다시검사해두실행모두temporalCoverage=false로기록했다. 이전flag도삭제하지않았다. 시도1반복47쌍중body/background ROI전체동일2쌍, 시도2반복501쌍중동일11쌍이다. 다른픽셀변화는바람/TAA/표시등을포함하므로본pose갱신증명도아니다.
 
-영상723프레임 모두 OBS출력표식/QPC에 연결됐다. 표식중복5건은 game drop으로 단정하지 않는다. 새 성공 영상105922872bytes·SHA694b33578504180f48770559ef5cbb396d502f39f73fb7f348050c347e2a2211이다.9개 HUD의 callback완료→OBS marker 간격 p50/p95/p99=25.8501/47.88284/50.719928ms다. 이는 물리 scanout·NPC render latency가 아니며9개 희소표본의 output-age 관찰이다.
+scheduler callback간격p50/p95/p99는시도1 20.1018/22.86221/23.356104ms,시도2 52.1743/56.80475/60.129414ms다. 계측·focus·capture/lifetime조건이달라성능A/B로쓰지않는다. 실제game/display frame-time·8/64기능회귀·GPU/할당/GC는미측정이다.20ms p95는여전히목표다.
 
-8고정 model reference 중6개로 계산한 projective matrix를 다른2개에서 검사한 오차 p50/p95/p99=0.00003755/0.00011544/0.00011756px다. 실제 engine projection의 수치적 자기일관성이고 렌더된 vertex 위치의 독립 검증은 아니다.8장에는 직전 자연 Head MS cache를 화면에 투영한 검토 그림도 보존했다.9장 중첫장은 native 시작 전이므로 cache projection이 없고 임의로 채우지 않았다.
-
-scheduler callback 간격 p50/p95/p99=23.08915/55.88782/61.313229ms다. HUD 위젯 조회/즉시업데이트·파일 기록·hook·OBS의 부하가 섞여 성능 baseline이나20ms p95 달성 여부에 쓰지 않는다. 실제 game/display frame-time, 새8/64 회귀·14clip 품질·GPU/할당/GC는 미측정이다.
+실행1영상44163058bytes/SHA87a5b90c3142cde032e8976c5b6f0cd96157eac7efd071e5c13ff02d2b8de789,실행2영상93043181bytes/SHA1bf67efc795621c7fc8360b851c351342728a9705ab98a4d08f3f91b18275850이다. 둘다CRF12·12초이며원시증거를보존하고추가full영상복사는없다. 두client정상종료marker·강제client종료없음·VM/crash0,serverDONE뒤소유server정리,recorder정상stop·basic/scene/encoder3설정원래bytes복원을확인했다.
 
 ## 4. 원인 분석
 
-확인된 사실: 실제 진단 TickCount를 QPC에 직접 연결했고, HUD 텍스트9개와 해당 log ID를 대응시켰다. camera/모델 좌표를 engine projection 기준으로 화면에 옮기는 수치적 경로도 확보했다. 따라서 이전 실행의 empirical affine50ms를 엔진 지연으로 취급할 이유가 없다.
+확인된사실: 등록된painted위젯을쓰는레이아웃에서는binary막대가보인다. 다만widget class와style를함께바꿨으므로style단독원인까지분리한결과는아니다. 계측script/animation동작은같다.
 
-확인된 실패: 처음에는 핸들 형식 불일치가 compile을 막았고 v2는Widget.Show VM오류였다. v3는 해당 VM오류가 없지만 binary Panel은 보이지 않는다. 로컬 vanilla layout의 Colorable 스타일 누락을 후보로 잡았을 뿐 아직 원인 확정/해결 완료는 아니다. v4 script는v3와byte동일하고 layout에style25개만 추가했다.
+확인된한계: 체크섬통과이미지수만으로시간적관측량을판정하면같은HUD상태재표시를새관측으로오인한다. log/state ID가같으면서다른ROI픽셀이변하는경우도있어'동일HUD=전체게임프레임정지'로단정할수없다. callback/HUD유효기간·WGC비동기texture·UI갱신시점의관계는미확정이다. 사용자turn중단을엔진원인으로단정하지않는다.
 
-미확인: binary막대의 완전 렌더·자동decode, 실제 game draw에 사용된 포즈 식별자, WGC texture 생성시각, 물리 scanout, 실제14동작 부드러움이다. HUD갱신·8reference projection·hook/recording의 추가비용은 별도 귀속하지 못했다. 즉시UI갱신 오버헤드는 가설이며 이번에 production 최적화로 반영하지 않는다.
+다음계측에는실제foreground/HUD준비후남은fixture유효기간이native15초및독립ID250개를수집하기에충분한지확인해야한다. 부족하면녹화/attachment를시작하지않아야한다. 이번두실행의coverage를성공으로낮춰정의하지않는다.
 
 ## 5. 검증 수준
 
-진단성공: 실제client 스크립트 실행,872개 clock bracket,9개 수동HUD 대응,고정기준점 projection 수치 검증. 미완료: 전체 자동frame identification·pose-to-render/display 시간 판정·시각 품질. 기능회귀/반복검증완료/최종수용은 아니다. 모듈 build시점의engineCompiled=false 영수증은 당시 상태로 보존하고 이후 실제compile/runtime 결과를 이번 보고서에서 별도 연결한다.
+진단성공: 막대실제표시·checksum/log decode·기존QPC연결,반복표본에의한coverage오판방지. 미완료: 충분한독립시간coverage,render pose identity·texture age·physical scanout,최종애니메이션시각품질. 전체NPC회귀/반복시각검증/성능목표/최종수용은아니다. 기존mode0손실·변환경로·64개체비용실험을대체하지않는다.
 
 ## 6. 변경 사항
 
-새 계측PBO v1/v2/v3의 packed script/layout source 일치 검사와 자동 서명·검증은 모두 성공했다. v1/v2의 runtime 실패를 서명 성공과 혼동하지 않는다. 최종v3 PBO SHA=F6B12FB380994D43D4AEE906E319BB739756F3D69F8D5DF92677F9BD7740D182이다. 원래453D/0C6E/B8FB 세 PBO는 변경하지 않았고 마지막 실행의4개 signature 검증은 성공했다. 개인키는 배포물에 없다. v4는 source만 준비, PBO없음·실행미검증이다.
-
-처음 AddonBuilder는 PBO를 만들었지만 PS5가 시작 stderr를 terminating error로 처리해 wrapper가 중단됐다. live builder가 없음을 확인하고 기존PBO의 packed member를 직접 검증한 뒤 서명했으며 중복 build하지 않았다. 후속build는 기존PS7에서 정상 완료했다. 이 운영실패도 보존한다. 운영서버·Steam 배포·기존NPC 움직임·ANM은 변경하지 않았다.
+새계측PBO 1B130510D7C1A212384E41BD2A7984BAD1C226D74CABAC185B2C00C090A706DD는packed script/layout 일치및서명·검증성공이다. 개인키는release에없다. 기존453D/0C6E/B8FB 세게임PBO는변경없고각실행4개signature검증은성공이다. gameplay코드·ANM·운영서버·Steam배포는변경하지않았다. 기존준비v4/실패decode/black영상도보존했다.
 
 ## 7. 원시 증거
 
-묶음 animation-diag-frame-label-20261101-1825. source/v2/v3·build/packed proof/signature·runtime1/2/3의guard/launch/profile/crash·최종client-frame-label.tsv/native-observer/markers/decoded-markers/recorder 및수동HUD/QC그림·TickCount binding/clock-map을 보존한다. 최종 client 정상 종료 marker·강제종료없음·VM/crash0, serverDONE 뒤 소유server 종료를 확인했다. 실패2의 정상quit요청을 crash없음으로 보고하지 않는다. recorder정상종료 및3설정bytes복원을 확인했다.
-
-공개본은 선정함수/집계/9개frame투영/한계를 제공하며 실제networkID·PID·CLI·절대runtime주소·로컬경로·원시영상·게임자산·키를 제외한다. 파일해시/JSON/종료검사 후 기존MD/TXT·진행JSON·B안 미러를 갱신한다. 원시보고서·실패본은 덮어쓰지 않는다.
+묶음 animation-diag-painted-label-20261101-1850의style-investigation/plan/source/build/packed proof/signature, runtime및runtime-2의launch/profile/native/heartbeat/callback-gap/marker/decode/geometry/hud-native-joined/recorder와analysis를보존한다. source/public해시검증·JSON파싱·종료확인후기존MD/TXT/checkpoint/진행JSON/B안에연결한다. 공개본은집계·선정geometry/대표join·한계만노출하며raw영상·실제networkID·PID·CLI·로컬절대경로·키·게임자산은제외한다.
 
 ## 8. 잔여 문제
 
-다음은style만 바꾼v4를 별도서명한 뒤 checksum이 있는 막대가 실제로 칠해지는지 확인하는 것이다. 성공하면 같은client frameID를 전영상에서 decode해 native/cache/HUD 사이 순서를 확대한다. 실패하면 실제칠해지는vanilla HUD요소 또는기존텍스트decode를 사용하되 또다른추측을 main에 섞지 않는다.
+우선현재capture의남은유효기간gate와충분한독립frame/native대응을확보한다. 새시간보정·보간·frame skipping을적용하지않는다. 이후pose/world/projection·실제이미지를동일ID에서대조한다.64개체비용최적화는별도통제실험이다.
 
-위젯의Show(bool,immedUpdate)빈도/기록의 오버헤드는 다음에 따로 측정한다. style확인과동시에갱신정책을바꾸지 않는다. actor/frame/clock/projection 중하나라도불명확하면정확한latency판정을중단한다. 값싸게신뢰할수있는계측을확보하기전64개체성능비교·시간배율/새보간·프레임생략은보류한다.
+사용자가제공한6개호드자료의공식listing/README를이번에확인했다. 소스전체검토·데모실행·구매/설치는하지않았다. [SwarmZ](https://www.fab.com/listings/b4f706c9-125d-493a-9620-db5b0b0ee980)는근거리skeletal/원거리GPU·baked animation과통합행동명세참고다. [Pioneer](https://www.fab.com/listings/463bd9f2-766c-4e09-8169-8e9ce1b781ac)는Actor-Mass연계·VAT/LOD전환경계참고다. 제작자수천개체수치를우리full NPC64개와동일정밀도로비교하지않는다.
 
-선정 공개 본문. 로컬 보고서 SHA-256: `42e50b97f5f28807a0732da209ccd5603cca29943a17b6fc3d1ac8e67ea1a008`. 원시 전체가 아니다.
+[MiHordeTraffic](https://github.com/innocentmiau/MiHordeTraffic)는shared flow field·혼잡비용·spatial hash의공개연구후보다. README의5천개체18.68/12.08ms는editor/Collections checks조건이며우리성능근거가아니다. settling/경사거부/문대기는보존할낙하·재등반행동과충돌여부를검토해야한다. GitHub MIT표시는확인했으나이번turn에서라이선스파일/전체코드를다읽었다고하지않는다.
+
+[crowd-simulation](https://github.com/gianmarcopicarella/crowd-simulation)은광장목표·일정속도NavMesh/회피UE5.3프로젝트로기존소스검토기록을먼저재사용한다. [MassZombies](https://github.com/stopthem/MassZombies)는UE5.2·단일AnimToTexture·static instances·hardcoded처치박스로표현/충돌타협을보는사례다. README의5600X/3060Ti25~30FPS는제작자관찰이다. [Massive Swarm System](https://assetstore.unity.com/packages/tools/game-toolkits/massive-swarm-system-384066)은store의가격/URP메타데이터를확인했으나추출된상세설명은비어기능검증을보류한다.
+
+현DayZ모딩경로에서이들의Mass/Burst/GPU애니메이션·native multithread실행을직접연결하는경로는확보되지않았다. 이를불가능증명으로확대하지않고기능·API·비용검증미확보로표시한다. 신규검토순서는공유경로/혼잡소스(MiHordeTraffic),통합행동/근원거리전환명세(SwarmZ/Pioneer),표현비용사례(MassZombies)이며현재애니메이션진단의선회를뜻하지않는다.
+
+선정 공개 본문. 로컬 보고서 SHA-256: `e229e74b669b2e0eaf1953c9619d8802a537c362036bf2f4882cb613309db3b0`. 원시 전체가 아니다.

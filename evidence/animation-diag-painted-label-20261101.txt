@@ -1,0 +1,823 @@
+{
+  "selection": "Style ownership, unchanged script hash, aggregate decode/clock/coverage audit and first/last join projections; public reference-review metadata. No raw video/full logs or runtime identifiers.",
+  "style": {
+    "inputSha256": "5f7dd4dec94fac2b937a3ed1209ed4d17b15220bbcd74a77fb28fa5f0d286240",
+    "colorableWidgetDefinitions": [
+      {
+        "widget": "WindowWidget",
+        "states": [
+          {
+            "state": "Disabled",
+            "images": []
+          },
+          {
+            "state": "Normal",
+            "images": [
+              {
+                "name": "Center",
+                "image": "WhitePixel"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "widget": "ButtonWidget",
+        "states": [
+          {
+            "state": "Disabled",
+            "images": [
+              {
+                "name": "Center",
+                "image": "WhitePixel"
+              }
+            ]
+          },
+          {
+            "state": "Focus",
+            "images": [
+              {
+                "name": "Center",
+                "image": "WhitePixel"
+              }
+            ]
+          },
+          {
+            "state": "Highlight",
+            "images": [
+              {
+                "name": "Center",
+                "image": "WhitePixel"
+              }
+            ]
+          },
+          {
+            "state": "Normal",
+            "images": [
+              {
+                "name": "Center",
+                "image": "WhitePixel"
+              }
+            ]
+          },
+          {
+            "state": "Pushed",
+            "images": [
+              {
+                "name": "Center",
+                "image": "WhitePixel"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "widget": "ScrollWidget",
+        "states": [
+          {
+            "state": "Disabled",
+            "images": []
+          },
+          {
+            "state": "Normal",
+            "images": [
+              {
+                "name": "Center",
+                "image": "DayZDefaultPanelCorner"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "widget": "GridSpacerWidget",
+        "states": [
+          {
+            "state": "Disabled",
+            "images": [
+              {
+                "name": "Bottom",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "Center",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "Left",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "LeftBottom",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "LeftTop",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "Right",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "RightBottom",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "RightTop",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "Top",
+                "image": "WhitePixel"
+              }
+            ]
+          },
+          {
+            "state": "Normal",
+            "images": [
+              {
+                "name": "Bottom",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "Center",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "Left",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "LeftBottom",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "LeftTop",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "Right",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "RightBottom",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "RightTop",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "Top",
+                "image": "WhitePixel"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "widget": "WrapSpacerWidget",
+        "states": [
+          {
+            "state": "Disabled",
+            "images": [
+              {
+                "name": "Bottom",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "Center",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "Left",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "LeftBottom",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "LeftTop",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "Right",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "RightBottom",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "RightTop",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "Top",
+                "image": "WhitePixel"
+              }
+            ]
+          },
+          {
+            "state": "Normal",
+            "images": [
+              {
+                "name": "Bottom",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "Center",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "Left",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "LeftBottom",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "LeftTop",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "Right",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "RightBottom",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "RightTop",
+                "image": "WhitePixel"
+              },
+              {
+                "name": "Top",
+                "image": "WhitePixel"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "panelColorableDefined": false,
+    "oldPreparedV4Runtime": false,
+    "oldV4Decision": "Do not run unregistered PanelWidget Colorable assumption; preserve old candidate.",
+    "candidate": "Layout-only WindowWidget root /24ButtonWidget bit bars with explicit Colorable and no focus; unchanged v3 scripts.",
+    "scriptSha256": "fe9d763994e870157f367907b40f7aed3907ab8dbf315f2fd87e105350b2cfb5"
+  },
+  "results": [
+    {
+      "case": "runtime",
+      "serverCompleted": true,
+      "serverOwnedStoppedAfterDone": true,
+      "clientNormalTerminationMarker": true,
+      "clientForcedStop": false,
+      "clientVmErrors": 0,
+      "crashLogs": 0,
+      "signatureChecksPassed": 4,
+      "recorderNormalStop": true,
+      "threeConfigsRestored": true,
+      "nativeSummary": {
+        "enabled": false,
+        "errors": 0,
+        "counts": {
+          "scheduler": 776,
+          "buffer": 776,
+          "consumer": 776,
+          "interpolate": 776,
+          "cache": 1551,
+          "cacheDirty": 1086,
+          "cacheClean": 465,
+          "tickCountZero": 1553,
+          "clockBracketsVerified": 1553
+        },
+        "selected": true,
+        "elapsed": 15.5374522
+      },
+      "nativeSampleSeconds": 15.5036303,
+      "callbackIntervalsMilliseconds": {
+        "p50": 20.1018,
+        "p95": 22.862209999999997,
+        "p99": 23.356104
+      },
+      "clockBracketsVerified": 1553,
+      "gap": null,
+      "video": {
+        "case": "runtime",
+        "video": {
+          "file": "DG-WGC-2026-11-01_18-50-37.mkv",
+          "bytes": 44163058,
+          "sha256": "87a5b90c3142cde032e8976c5b6f0cd96157eac7efd071e5c13ff02d2b8de789"
+        },
+        "frames": 723,
+        "sidecarRows": 731,
+        "matchedFrames": 723,
+        "unmatchedFrames": 0,
+        "duplicateMatchedMarkerIds": 20,
+        "markerIdsMonotonic": true,
+        "bitConfidenceMinimum": 126.84375,
+        "qpcWriteWindowMaximumTicks": 80674,
+        "qpcFrequency": 10000000,
+        "physicalScanoutMeasured": false,
+        "gameFrameIdentityMeasured": false,
+        "limits": [
+          "OBS frame marker identifies output-scene tick with host QPC, not the age of the asynchronously captured game texture or physical display time.",
+          "Initial unmarked recording frames are retained as unmatched; duplicate marker IDs are output observations, not proven game-frame drops."
+        ]
+      },
+      "hudDecode": {
+        "videoSha256": "87a5b90c3142cde032e8976c5b6f0cd96157eac7efd071e5c13ff02d2b8de789",
+        "frames": 723,
+        "validFrames": 209,
+        "invalidFrames": 514,
+        "distinctClientFrames": 162,
+        "repeatedClientFrameImages": 47,
+        "clientFrameIdsMonotonic": true,
+        "minimumBitConfidence": 126.33333333333333,
+        "checksumBits": 8,
+        "wholeVideoCoverageAdmitted": false,
+        "coverageCriterionMinimumFrames": 501,
+        "geometricCalibrationUsesClocks": false,
+        "physicalScanoutMeasured": false,
+        "limits": [
+          "Barcode identifies recorded game HUD state, not final skeletal render pose or physical scanout.",
+          "Repeated HUD IDs can reflect source cadence or asynchronous capture repeats; not automatically game frame drops.",
+          "8bit XOR checksum is an error detector, not proof against every possible mixed-bit pattern. Log membership/monotonicity/confidence are additional checks."
+        ]
+      },
+      "temporalCoverage": {
+        "validImages": 209,
+        "distinctHudFrames": 162,
+        "directBracketImages": 36,
+        "distinctDirectBracketFrames": 30,
+        "maximumImagesPerHudID": 8,
+        "temporalCoverageAdmitted": false,
+        "criterion": "At least250 distinct HUD frames with both native TickCount brackets; decoded-image count alone does not qualify temporal coverage.",
+        "decoderImageCountFlag": false,
+        "originalImageCountFlagIsNotTemporalAcceptance": true
+      },
+      "outputMarkerMinusHudEndMilliseconds": {
+        "p50": 45.4277,
+        "p95": 86.8388599999999,
+        "p99": 317.0851439999998
+      },
+      "directBracketOutputAgeMilliseconds": {
+        "p50": 45.454899999999995,
+        "p95": 55.42965,
+        "p99": 55.59656
+      },
+      "repeatedHudAdjacentPairs": 47,
+      "repeatedHudPairsWithIdenticalBodyRoi": 2,
+      "repeatedHudRoiMeanDelta": {
+        "p50": 0.4195029239766082,
+        "p95": 0.5089385964912281,
+        "p99": 0.5712233918128654
+      },
+      "hudLogRows": 2380,
+      "hudFalseAppActiveRows": 5,
+      "labelDoneLines": []
+    },
+    {
+      "case": "runtime-2",
+      "serverCompleted": true,
+      "serverOwnedStoppedAfterDone": true,
+      "clientNormalTerminationMarker": true,
+      "clientForcedStop": false,
+      "clientVmErrors": 0,
+      "crashLogs": 0,
+      "signatureChecksPassed": 4,
+      "recorderNormalStop": true,
+      "threeConfigsRestored": true,
+      "nativeSummary": {
+        "enabled": false,
+        "errors": 0,
+        "counts": {
+          "scheduler": 156,
+          "buffer": 156,
+          "consumer": 156,
+          "interpolate": 156,
+          "cache": 529,
+          "cacheDirty": 287,
+          "cacheClean": 242,
+          "tickCountZero": 312,
+          "clockBracketsVerified": 312
+        },
+        "selected": true,
+        "elapsed": 10.5344534
+      },
+      "nativeSampleSeconds": 8.0785038,
+      "callbackIntervalsMilliseconds": {
+        "p50": 52.1743,
+        "p95": 56.80475,
+        "p99": 60.129414000000004
+      },
+      "clockBracketsVerified": 312,
+      "gap": 2.0,
+      "video": {
+        "case": "runtime-2",
+        "video": {
+          "file": "DG-WGC-2026-11-01_18-56-27.mkv",
+          "bytes": 93043181,
+          "sha256": "1bf67efc795621c7fc8360b851c351342728a9705ab98a4d08f3f91b18275850"
+        },
+        "frames": 723,
+        "sidecarRows": 745,
+        "matchedFrames": 723,
+        "unmatchedFrames": 0,
+        "duplicateMatchedMarkerIds": 5,
+        "markerIdsMonotonic": true,
+        "bitConfidenceMinimum": 126.96875,
+        "qpcWriteWindowMaximumTicks": 15634,
+        "qpcFrequency": 10000000,
+        "physicalScanoutMeasured": false,
+        "gameFrameIdentityMeasured": false,
+        "limits": [
+          "OBS frame marker identifies output-scene tick with host QPC, not the age of the asynchronously captured game texture or physical display time.",
+          "Initial unmarked recording frames are retained as unmatched; duplicate marker IDs are output observations, not proven game-frame drops."
+        ]
+      },
+      "hudDecode": {
+        "videoSha256": "1bf67efc795621c7fc8360b851c351342728a9705ab98a4d08f3f91b18275850",
+        "frames": 723,
+        "validFrames": 670,
+        "invalidFrames": 53,
+        "distinctClientFrames": 169,
+        "repeatedClientFrameImages": 501,
+        "clientFrameIdsMonotonic": true,
+        "minimumBitConfidence": 126.0,
+        "checksumBits": 8,
+        "wholeVideoCoverageAdmitted": true,
+        "coverageCriterionMinimumFrames": 501,
+        "geometricCalibrationUsesClocks": false,
+        "physicalScanoutMeasured": false,
+        "limits": [
+          "Barcode identifies recorded game HUD state, not final skeletal render pose or physical scanout.",
+          "Repeated HUD IDs can reflect source cadence or asynchronous capture repeats; not automatically game frame drops.",
+          "8bit XOR checksum is an error detector, not proof against every possible mixed-bit pattern. Log membership/monotonicity/confidence are additional checks."
+        ]
+      },
+      "temporalCoverage": {
+        "validImages": 670,
+        "distinctHudFrames": 169,
+        "directBracketImages": 628,
+        "distinctDirectBracketFrames": 156,
+        "maximumImagesPerHudID": 144,
+        "temporalCoverageAdmitted": false,
+        "criterion": "At least250 distinct HUD frames with both native TickCount brackets; decoded-image count alone does not qualify temporal coverage.",
+        "decoderImageCountFlag": true,
+        "originalImageCountFlagIsNotTemporalAcceptance": true
+      },
+      "outputMarkerMinusHudEndMilliseconds": {
+        "p50": 54.54545,
+        "p95": 1852.6288899999993,
+        "p99": 2298.622967999999
+      },
+      "directBracketOutputAgeMilliseconds": {
+        "p50": 55.3852,
+        "p95": 1887.6315899999997,
+        "p99": 2305.621344
+      },
+      "repeatedHudAdjacentPairs": 501,
+      "repeatedHudPairsWithIdenticalBodyRoi": 11,
+      "repeatedHudRoiMeanDelta": {
+        "p50": 0.2137719298245614,
+        "p95": 0.3886842105263158,
+        "p99": 0.4580701754385965
+      },
+      "hudLogRows": 2074,
+      "hudFalseAppActiveRows": 373,
+      "labelDoneLines": []
+    }
+  ],
+  "firstLastJoins": [
+    {
+      "case": "runtime",
+      "firstLastValidFrames": [
+        {
+          "videoFrame": 514,
+          "clientFrameId": 299,
+          "appActive": false,
+          "withinNativeTime": false,
+          "directTickBrackets": false,
+          "outputMarkerMinusHudEndMs": 268.4173
+        },
+        {
+          "videoFrame": 515,
+          "clientFrameId": 299,
+          "appActive": false,
+          "withinNativeTime": false,
+          "directTickBrackets": false,
+          "outputMarkerMinusHudEndMs": 285.0836
+        },
+        {
+          "videoFrame": 516,
+          "clientFrameId": 299,
+          "appActive": false,
+          "withinNativeTime": false,
+          "directTickBrackets": false,
+          "outputMarkerMinusHudEndMs": 301.7481
+        },
+        {
+          "videoFrame": 720,
+          "clientFrameId": 459,
+          "appActive": true,
+          "withinNativeTime": true,
+          "directTickBrackets": true,
+          "outputMarkerMinusHudEndMs": 41.808400000000006
+        },
+        {
+          "videoFrame": 721,
+          "clientFrameId": 460,
+          "appActive": true,
+          "withinNativeTime": true,
+          "directTickBrackets": true,
+          "outputMarkerMinusHudEndMs": 38.648500000000006
+        },
+        {
+          "videoFrame": 722,
+          "clientFrameId": 460,
+          "appActive": true,
+          "withinNativeTime": true,
+          "directTickBrackets": true,
+          "outputMarkerMinusHudEndMs": 55.314099999999996
+        }
+      ],
+      "firstLastDirectBracketFrames": [
+        {
+          "videoFrame": 687,
+          "clientFrameId": 431,
+          "appActive": true,
+          "withinNativeTime": false,
+          "directTickBrackets": true,
+          "outputMarkerMinusHudEndMs": 51.9705
+        },
+        {
+          "videoFrame": 688,
+          "clientFrameId": 432,
+          "appActive": true,
+          "withinNativeTime": true,
+          "directTickBrackets": true,
+          "outputMarkerMinusHudEndMs": 47.8939
+        },
+        {
+          "videoFrame": 689,
+          "clientFrameId": 433,
+          "appActive": true,
+          "withinNativeTime": true,
+          "directTickBrackets": true,
+          "outputMarkerMinusHudEndMs": 45.1641
+        },
+        {
+          "videoFrame": 720,
+          "clientFrameId": 459,
+          "appActive": true,
+          "withinNativeTime": true,
+          "directTickBrackets": true,
+          "outputMarkerMinusHudEndMs": 41.808400000000006
+        },
+        {
+          "videoFrame": 721,
+          "clientFrameId": 460,
+          "appActive": true,
+          "withinNativeTime": true,
+          "directTickBrackets": true,
+          "outputMarkerMinusHudEndMs": 38.648500000000006
+        },
+        {
+          "videoFrame": 722,
+          "clientFrameId": 460,
+          "appActive": true,
+          "withinNativeTime": true,
+          "directTickBrackets": true,
+          "outputMarkerMinusHudEndMs": 55.314099999999996
+        }
+      ]
+    },
+    {
+      "case": "runtime-2",
+      "firstLastValidFrames": [
+        {
+          "videoFrame": 53,
+          "clientFrameId": 1906,
+          "appActive": false,
+          "withinNativeTime": false,
+          "directTickBrackets": false,
+          "outputMarkerMinusHudEndMs": 18.2452
+        },
+        {
+          "videoFrame": 54,
+          "clientFrameId": 1906,
+          "appActive": false,
+          "withinNativeTime": false,
+          "directTickBrackets": false,
+          "outputMarkerMinusHudEndMs": 34.912400000000005
+        },
+        {
+          "videoFrame": 55,
+          "clientFrameId": 1906,
+          "appActive": false,
+          "withinNativeTime": false,
+          "directTickBrackets": false,
+          "outputMarkerMinusHudEndMs": 51.5814
+        },
+        {
+          "videoFrame": 720,
+          "clientFrameId": 2074,
+          "appActive": false,
+          "withinNativeTime": true,
+          "directTickBrackets": true,
+          "outputMarkerMinusHudEndMs": 2376.7897
+        },
+        {
+          "videoFrame": 721,
+          "clientFrameId": 2074,
+          "appActive": false,
+          "withinNativeTime": true,
+          "directTickBrackets": true,
+          "outputMarkerMinusHudEndMs": 2393.4513
+        },
+        {
+          "videoFrame": 722,
+          "clientFrameId": 2074,
+          "appActive": false,
+          "withinNativeTime": true,
+          "directTickBrackets": true,
+          "outputMarkerMinusHudEndMs": 2410.1176
+        }
+      ],
+      "firstLastDirectBracketFrames": [
+        {
+          "videoFrame": 95,
+          "clientFrameId": 1919,
+          "appActive": false,
+          "withinNativeTime": false,
+          "directTickBrackets": true,
+          "outputMarkerMinusHudEndMs": 39.7488
+        },
+        {
+          "videoFrame": 96,
+          "clientFrameId": 1919,
+          "appActive": false,
+          "withinNativeTime": false,
+          "directTickBrackets": true,
+          "outputMarkerMinusHudEndMs": 56.4236
+        },
+        {
+          "videoFrame": 97,
+          "clientFrameId": 1920,
+          "appActive": false,
+          "withinNativeTime": true,
+          "directTickBrackets": true,
+          "outputMarkerMinusHudEndMs": 21.0136
+        },
+        {
+          "videoFrame": 720,
+          "clientFrameId": 2074,
+          "appActive": false,
+          "withinNativeTime": true,
+          "directTickBrackets": true,
+          "outputMarkerMinusHudEndMs": 2376.7897
+        },
+        {
+          "videoFrame": 721,
+          "clientFrameId": 2074,
+          "appActive": false,
+          "withinNativeTime": true,
+          "directTickBrackets": true,
+          "outputMarkerMinusHudEndMs": 2393.4513
+        },
+        {
+          "videoFrame": 722,
+          "clientFrameId": 2074,
+          "appActive": false,
+          "withinNativeTime": true,
+          "directTickBrackets": true,
+          "outputMarkerMinusHudEndMs": 2410.1176
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Layout-only painted widget candidate is verified in this diagnostic setup; original no-style hypothesis alone was not tested.",
+    "Run1 had leading black capture frames; run2 activated late and native callbacks ended with2sec gap. Neither is admitted as full temporal/native coverage.",
+    "An earlier decoder flag counted repeated HUD images; its true value is not full temporal acceptance. Both original flags and stronger distinct-frame audit are preserved.",
+    "Checksum and scene QPC identify recorded HUD state only; skeletal render pose, texture creation time and physical scanout remain unmeasured.",
+    "No performance or visual smoothness improvement claim from widget rendering or callback interval changes; hooks/UI/file/projection/OBS workload differs."
+  ],
+  "referenceReview": {
+    "reviewedAt": "2026-11-01T19:02:57.781762+09:00",
+    "scope": "User-supplied reference candidates; no purchase/download/install or game code changes. Listings/README reviewed, not full source or independent benchmark.",
+    "references": [
+      {
+        "name": "SwarmZ",
+        "url": "https://www.fab.com/listings/b4f706c9-125d-493a-9620-db5b0b0ee980",
+        "reviewed": "Official listing description; not source/demo execution",
+        "confirmedPublisherClaims": [
+          "Near-camera skeletal meshes and distant GPU-instanced baked bone animation",
+          "Multithread C++, navmesh-derived flow fields, ledge climb/fallback, server-authoritative bandwidth limits"
+        ],
+        "value": "Integrated horde behavior and near/far fidelity transition reference",
+        "unverified": [
+          "Actual FPS/hardware/scenes",
+          "Number of full-detail combat/collision actors",
+          "DayZ implementation route",
+          "Package source/license compatibility"
+        ]
+      },
+      {
+        "name": "crowd-simulation",
+        "url": "https://github.com/gianmarcopicarella/crowd-simulation",
+        "reviewed": "Repository README only in this turn; existing local earlier code review should be reused",
+        "confirmedPublisherClaims": [
+          "UE5.3/UMass course project,20k+ agents",
+          "Constant-speed navigation/avoidance toward city square, rocket defense"
+        ],
+        "value": "Shared simulation organization and benchmark scope",
+        "unverified": [
+          "General player pursuit/climb/fall/combat equivalence",
+          "Whole source and resource reuse rights"
+        ]
+      },
+      {
+        "name": "Pioneer",
+        "url": "https://www.fab.com/listings/463bd9f2-766c-4e09-8169-8e9ce1b781ac",
+        "reviewed": "Official listing description; not package source/demo",
+        "confirmedPublisherClaims": [
+          "Actor-Mass Bridge, instanced rendering/LOD and baked vertex animation",
+          "Combat and10k tested units with suitable hardware/maps"
+        ],
+        "value": "Detailed actor/lightweight unit interaction boundary",
+        "unverified": [
+          "Reproducible near-contact multiplayer cost",
+          "DayZ runtime bindings"
+        ]
+      },
+      {
+        "name": "MiHordeTraffic",
+        "url": "https://github.com/innocentmiau/MiHordeTraffic",
+        "reviewed": "Repository README, GitHub identifies MIT; full code/license-file review not performed in this turn",
+        "confirmedPublisherClaims": [
+          "Shared goal flow field, congestion-aware costs, spatial-hash separation, Burst jobs",
+          "5k comparison18.68ms versus12.08ms means; editor/collections checks",
+          "Settling, gates and optional slope refusal policies"
+        ],
+        "value": "First new public-code candidate for shared path/route congestion study",
+        "conflictsToReview": [
+          "Settling/ledge refusal and gate queues must not remove desired continuous fall/reclimb"
+        ],
+        "unverified": [
+          "Our DayZ implementation benefit",
+          "Combat/animation/network equivalence"
+        ]
+      },
+      {
+        "name": "Massive Swarm System",
+        "url": "https://assetstore.unity.com/packages/tools/game-toolkits/massive-swarm-system-384066",
+        "reviewed": "Official store metadata; description/technical body was empty in web extraction",
+        "confirmedPublisherClaims": [
+          "URP compatible for2022.3.62f2",
+          "79.99USD shown, checkout taxes separate"
+        ],
+        "value": "Future Unity integration candidate, currently lower review priority",
+        "unverified": [
+          "Detailed behavior/animation/replication claims",
+          "DayZ route",
+          "Demo/source performance"
+        ]
+      },
+      {
+        "name": "MassZombies",
+        "url": "https://github.com/stopthem/MassZombies",
+        "reviewed": "Repository README only; not execution",
+        "confirmedPublisherClaims": [
+          "UE5.2,5k instanced meshes, one AnimToTexture clip",
+          "Author reports25-30FPS on5600X/3060Ti",
+          "Actor collision attempt reduced FPS; actual kill logic uses hardcoded box"
+        ],
+        "value": "Concrete fidelity/collision tradeoff and animation representation case study",
+        "unverified": [
+          "Reusable licenses/resources",
+          "Equivalent detailed NPC combat/traversal cost"
+        ]
+      }
+    ],
+    "dayzAssessment": {
+      "studyFirst": [
+        "MiHordeTraffic shared-field/congestion algorithm",
+        "SwarmZ integrated near/far behavior requirements",
+        "MassZombies/Pioneer representation transition and cost scope"
+      ],
+      "notEstablished": [
+        "Supported DayZ VAT/GPU instance/native thread/Mass execution route",
+        "Direct plugin portability",
+        "Improvement of current1part animation clock/display issue"
+      ],
+      "currentTaskUnchanged": "Finish exact HUD/native/display diagnosis first; any new crowd architecture remains separately scoped research."
+    }
+  }
+}

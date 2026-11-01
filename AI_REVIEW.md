@@ -1,3 +1,5 @@
+> 최신 진단: painted HUD 막대해독은 확인했으나 반복이미지를 제외한 직접독립ID30/156개로 두실행 모두시간coverage미수용이다. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-diag-painted-label-20261101.md). 외부6개호드자료는README/listing만검토했고구현에반영하지않았다. 기존NPC PBO유지,시각·성능미수용.
+
 > 최신 진단: client TickCount872개/QPC bracket·수동HUD9개(직접native구간8개)·고정점 projection을 연결했다. binary막대 미표시로 전체자동frameID는미완료이며 output-age를NPC/물리표시지연으로취급하지 않는다. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-diag-frame-label-20261101.md). 새계측PBO만추가·기존게임PBO유지,시각·성능미수용.
 
 > 최신 영상 분석: 기존931프레임을 재사용했다. 두 색상 기준이 함께 어깨를 머리로 오검출한 사례를 확인했다. 탐색모델의50ms시프트는 실측 렌더지연이 아니며 정확한 표시지연은 미확정이다. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-diag-optical-association-20261101.md). 새runtime/PBO/영상0, 시각·성능미수용.
