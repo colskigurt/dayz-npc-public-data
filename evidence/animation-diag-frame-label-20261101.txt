@@ -1,0 +1,404 @@
+{
+  "selection": "Exact diagnostic TickCount registration/handler/getter and own client observer Update snippet, aggregate clocks, nine manually read frame joins, fixed-point projection errors and limitations. No raw video/full logs/identifiers.",
+  "clockBinding": {
+    "name": "TickCount",
+    "handler": "0x140308cd0",
+    "registration": "0x1402ed916",
+    "context": [
+      {
+        "address": "0x1402ed8e9",
+        "instruction": "xor r9d, r9d"
+      },
+      {
+        "address": "0x1402ed8ec",
+        "instruction": "lea r8, [rip + 0xb3bd]"
+      },
+      {
+        "address": "0x1402ed8f3",
+        "instruction": "lea rdx, [rip + 0x10be0d6]"
+      },
+      {
+        "address": "0x1402ed8fa",
+        "instruction": "mov rcx, rbx"
+      },
+      {
+        "address": "0x1402ed8fd",
+        "instruction": "call 0x1402926a0"
+      },
+      {
+        "address": "0x1402ed902",
+        "instruction": "xor r9d, r9d"
+      },
+      {
+        "address": "0x1402ed905",
+        "instruction": "lea r8, [rip + 0x1b3c4]"
+      },
+      {
+        "address": "0x1402ed90c",
+        "instruction": "lea rdx, [rip + 0x10be0cd]"
+      },
+      {
+        "address": "0x1402ed913",
+        "instruction": "mov rcx, rbx"
+      },
+      {
+        "address": "0x1402ed916",
+        "instruction": "call 0x1402926a0"
+      }
+    ],
+    "handlerDecode": {
+      "start": "0x140308cd0",
+      "end": "0x140308cfa",
+      "boundary": "unwind",
+      "sha256": "e5aefae98dac614d794bcd4444f8cce9d6570af6c69acc6b7576a7231e324507",
+      "instructions": [
+        {
+          "address": "0x140308cd0",
+          "instruction": "push rbx"
+        },
+        {
+          "address": "0x140308cd2",
+          "instruction": "sub rsp, 0x20"
+        },
+        {
+          "address": "0x140308cd6",
+          "instruction": "mov ebx, ecx"
+        },
+        {
+          "address": "0x140308cd8",
+          "instruction": "call 0x140239eb0"
+        },
+        {
+          "address": "0x140308cdd",
+          "instruction": "mov rcx, rax"
+        },
+        {
+          "address": "0x140308ce0",
+          "instruction": "sub rcx, rbx"
+        },
+        {
+          "address": "0x140308ce3",
+          "instruction": "cmp rax, rbx"
+        },
+        {
+          "address": "0x140308ce6",
+          "instruction": "jae 0x140308cf2"
+        },
+        {
+          "address": "0x140308ce8",
+          "instruction": "lea rax, [rcx - 1]"
+        },
+        {
+          "address": "0x140308cec",
+          "instruction": "add rsp, 0x20"
+        },
+        {
+          "address": "0x140308cf0",
+          "instruction": "pop rbx"
+        },
+        {
+          "address": "0x140308cf1",
+          "instruction": "ret "
+        },
+        {
+          "address": "0x140308cf2",
+          "instruction": "mov eax, ecx"
+        },
+        {
+          "address": "0x140308cf4",
+          "instruction": "add rsp, 0x20"
+        },
+        {
+          "address": "0x140308cf8",
+          "instruction": "pop rbx"
+        },
+        {
+          "address": "0x140308cf9",
+          "instruction": "ret "
+        }
+      ]
+    },
+    "oneLevelCallees": [
+      {
+        "start": "0x140239eb0",
+        "end": "0x140239f15",
+        "boundary": "unwind",
+        "sha256": "511b3f2c5e8306ec4f75c7be7f89656ac48bbb18c9dc5c2a9bfc456cfac9bf80",
+        "instructions": [
+          {
+            "address": "0x140239eb0",
+            "instruction": "sub rsp, 0x28"
+          },
+          {
+            "address": "0x140239eb4",
+            "instruction": "cmp qword ptr [rip + 0x180feac], 0"
+          },
+          {
+            "address": "0x140239ebc",
+            "instruction": "jne 0x140239ef9"
+          },
+          {
+            "address": "0x140239ebe",
+            "instruction": "lea rcx, [rsp + 0x30]"
+          },
+          {
+            "address": "0x140239ec3",
+            "instruction": "call qword ptr [rip + 0x112e62f]"
+          },
+          {
+            "address": "0x140239ec9",
+            "instruction": "mov rcx, qword ptr [rip + 0x180fe98]"
+          },
+          {
+            "address": "0x140239ed0",
+            "instruction": "test eax, eax"
+          },
+          {
+            "address": "0x140239ed2",
+            "instruction": "cmovne rcx, qword ptr [rsp + 0x30]"
+          },
+          {
+            "address": "0x140239ed8",
+            "instruction": "mov qword ptr [rip + 0x180fe89], rcx"
+          },
+          {
+            "address": "0x140239edf",
+            "instruction": "lea rcx, [rip + 0x180fe8a]"
+          },
+          {
+            "address": "0x140239ee6",
+            "instruction": "call qword ptr [rip + 0x112e604]"
+          },
+          {
+            "address": "0x140239eec",
+            "instruction": "call qword ptr [rip + 0x112e616]"
+          },
+          {
+            "address": "0x140239ef2",
+            "instruction": "mov qword ptr [rip + 0x180fe7f], rax"
+          },
+          {
+            "address": "0x140239ef9",
+            "instruction": "lea rcx, [rsp + 0x38]"
+          },
+          {
+            "address": "0x140239efe",
+            "instruction": "call qword ptr [rip + 0x112e5ec]"
+          },
+          {
+            "address": "0x140239f04",
+            "instruction": "mov rax, qword ptr [rsp + 0x38]"
+          },
+          {
+            "address": "0x140239f09",
+            "instruction": "sub rax, qword ptr [rip + 0x180fe60]"
+          },
+          {
+            "address": "0x140239f10",
+            "instruction": "add rsp, 0x28"
+          },
+          {
+            "address": "0x140239f14",
+            "instruction": "ret "
+          }
+        ]
+      }
+    ]
+  },
+  "clientUpdateSnippet": " void Update(float dt)\n {\n  if(Finished)return;Age+=dt;\n  if(!Actor)\n  {\n   if(Age<SearchAt)return;SearchAt=Age+0.5;\n   vector point=\"4550 0 10220\";point[1]=GetGame().SurfaceY(point[0],point[2]);\n   array<Object> objects=new array<Object>;array<CargoBase> cargos=new array<CargoBase>;\n   GetGame().GetObjectsAtPosition3D(point,10,objects,cargos);int matches;\n   foreach(Object object:objects)if(object && object.GetType()==\"DGSubsetIntegratedCrowdLeader\"){Actor=Animal_DGNativeProbe.Cast(object);matches++;}\n   if(matches>1){Print(\"DG_FRAME_LABEL_FAILED multiple_targets\");Finished=true;Close();return;}\n   if(!Actor){if(Age>65){Print(\"DG_FRAME_LABEL_FAILED no_target\");Finished=true;Close();}return;}\n   Actor.GetNetworkID(NetLow,NetHigh);ActiveAt=Age;Print(\"DG_FRAME_TARGET_SELECTED type=\"+Actor.GetType());\n  }\n  if(!Root && !InitializeHud()){Print(\"DG_FRAME_LABEL_FAILED hud_initialize\");Finished=true;Close();return;}\n  if(!Stamp){Print(\"DG_FRAME_LABEL_FAILED hud_stamp_lost\");Finished=true;Close();return;}\n  int begin=TickCount(0);Frames++;\n  vector transform[4];Actor.GetTransform(transform);int width;int height;GetScreenSize(width,height);\n  vector camera=GetGame().GetCurrentCameraPosition();vector direction=GetGame().GetCurrentCameraDirection();\n  string row=Frames.ToString()+\"\t\"+begin+\"\tEND_TICK\t\"+dt+\"\t\"+GetGame().IsAppActive()+\"\t\"+NetLow+\"\t\"+NetHigh+\"\t\"+Actor.GetType()+\"\t\"+Actor.GetPosition().ToString(false)+\"\t\"+Actor.GetOrientation().ToString(false);\n  for(int k=0;k<4;k++)row+=\"\t\"+transform[k].ToString(false);\n  row+=\"\t\"+camera.ToString(false)+\"\t\"+direction.ToString(false)+\"\t\"+width+\"\t\"+height;\n  for(int refIndex=0;refIndex<8;refIndex++){vector world=Actor.ModelToWorld(References[refIndex]);vector screen=GetGame().GetScreenPos(world);row+=\"\t\"+world.ToString(false)+\"\t\"+screen.ToString(false);}\n  int checksum=((Frames & 255) ^ ((Frames >> 8) & 255) ^ 165) & 255;\n  int code=Frames | (checksum << 16);\n  for(int bitIndex=0;bitIndex<24;bitIndex++){Widget liveBit=Root.FindAnyWidget(\"Bit\"+bitIndex);if(!liveBit){Print(\"DG_FRAME_LABEL_FAILED hud_bit_lost index=\"+bitIndex);Finished=true;Close();return;}liveBit.Show((code & (1 << bitIndex))!=0);}\n  Stamp.SetText(\"F=\"+Frames+\" DG projection probe\");int end=TickCount(0);row.Replace(\"END_TICK\",end.ToString());FPrintln(Log,row);if(Frames==1)Print(\"DG_FRAME_LABEL_READY first_complete_frame\");\n  if(Age-ActiveAt>=45 || Frames>=3000){Print(\"DG_FRAME_LABEL_DONE frames=\"+Frames);Finished=true;Close();}\n }\n}\n",
+  "metrics": {
+    "nativeSamples": 435,
+    "tickCountZeroCalls": 872,
+    "clockBracketsVerified": 872,
+    "hudLogRows": 2234,
+    "hudRowsWithBothNativeTickBrackets": 436,
+    "manualHudJoinedSamples": 9,
+    "manualSamplesClockBracketsMatched": 8,
+    "manualOutputMarkerMinusHudEndMilliseconds": {
+      "p50": 25.8501,
+      "p95": 47.882839999999995,
+      "p99": 50.719928
+    },
+    "projectionSixReferenceFitTwoReferenceHoldoutPixels": {
+      "p50": 3.7550655350300155e-05,
+      "p95": 0.00011543809822417615,
+      "p99": 0.00011755775768799566
+    },
+    "joinedSamples": [
+      {
+        "videoFrame": 60,
+        "hudFrame": 165,
+        "appActive": false,
+        "obsMarkerId": 56,
+        "hudBodyMicroseconds": 80.2,
+        "outputMarkerMinusHudEndMilliseconds": 35.615300000000005,
+        "projectionHoldoutErrorsPixels": [
+          1.3396968429732606e-05,
+          7.173237552243791e-07
+        ],
+        "previousCacheProjectedHead": null,
+        "clockBracketMatched": false
+      },
+      {
+        "videoFrame": 140,
+        "hudFrame": 191,
+        "appActive": false,
+        "obsMarkerId": 136,
+        "hudBodyMicroseconds": 122.0,
+        "outputMarkerMinusHudEndMilliseconds": 19.031200000000002,
+        "projectionHoldoutErrorsPixels": [
+          2.571154095796096e-05,
+          3.990020667461131e-05
+        ],
+        "previousCacheProjectedHead": [
+          793.8830988365385,
+          449.1014511152488
+        ],
+        "clockBracketMatched": true
+      },
+      {
+        "videoFrame": 220,
+        "hudFrame": 216,
+        "appActive": false,
+        "obsMarkerId": 216,
+        "hudBodyMicroseconds": 117.7,
+        "outputMarkerMinusHudEndMilliseconds": 51.4292,
+        "projectionHoldoutErrorsPixels": [
+          2.8456190764105223e-05,
+          8.06386555700354e-06
+        ],
+        "previousCacheProjectedHead": [
+          824.2972696464992,
+          433.6353402888641
+        ],
+        "clockBracketMatched": true
+      },
+      {
+        "videoFrame": 300,
+        "hudFrame": 242,
+        "appActive": false,
+        "obsMarkerId": 296,
+        "hudBodyMicroseconds": 195.89999999999998,
+        "outputMarkerMinusHudEndMilliseconds": 18.9507,
+        "projectionHoldoutErrorsPixels": [
+          4.962461356832579e-06,
+          5.015311497068345e-05
+        ],
+        "previousCacheProjectedHead": [
+          784.7675192830483,
+          446.7444641770703
+        ],
+        "clockBracketMatched": true
+      },
+      {
+        "videoFrame": 380,
+        "hudFrame": 268,
+        "appActive": false,
+        "obsMarkerId": 376,
+        "hudBodyMicroseconds": 218.6,
+        "outputMarkerMinusHudEndMilliseconds": 3.3892,
+        "projectionHoldoutErrorsPixels": [
+          0.00011497052628362773,
+          9.267210606472296e-05
+        ],
+        "previousCacheProjectedHead": [
+          828.3134415219806,
+          436.7285871911136
+        ],
+        "clockBracketMatched": true
+      },
+      {
+        "videoFrame": 460,
+        "hudFrame": 293,
+        "appActive": false,
+        "obsMarkerId": 456,
+        "hudBodyMicroseconds": 127.50000000000001,
+        "outputMarkerMinusHudEndMilliseconds": 42.0574,
+        "projectionHoldoutErrorsPixels": [
+          3.7869523226275186e-05,
+          1.0104386271074056e-06
+        ],
+        "previousCacheProjectedHead": [
+          799.7765662416991,
+          448.07135236031957
+        ],
+        "clockBracketMatched": true
+      },
+      {
+        "videoFrame": 540,
+        "hudFrame": 319,
+        "appActive": false,
+        "obsMarkerId": 536,
+        "hudBodyMicroseconds": 330.7,
+        "outputMarkerMinusHudEndMilliseconds": 10.055100000000001,
+        "projectionHoldoutErrorsPixels": [
+          6.714697231171172e-05,
+          0.00011808767255395056
+        ],
+        "previousCacheProjectedHead": [
+          813.5583483945853,
+          472.15396625699174
+        ],
+        "clockBracketMatched": true
+      },
+      {
+        "videoFrame": 620,
+        "hudFrame": 344,
+        "appActive": false,
+        "obsMarkerId": 616,
+        "hudBodyMicroseconds": 219.8,
+        "outputMarkerMinusHudEndMilliseconds": 42.5633,
+        "projectionHoldoutErrorsPixels": [
+          3.723178747432512e-05,
+          2.2948173184521324e-05
+        ],
+        "previousCacheProjectedHead": [
+          813.8501866555027,
+          420.83364660428197
+        ],
+        "clockBracketMatched": true
+      },
+      {
+        "videoFrame": 700,
+        "hudFrame": 370,
+        "appActive": false,
+        "obsMarkerId": 696,
+        "hudBodyMicroseconds": 119.8,
+        "outputMarkerMinusHudEndMilliseconds": 25.8501,
+        "projectionHoldoutErrorsPixels": [
+          7.075240649241563e-05,
+          5.9432755454452036e-05
+        ],
+        "previousCacheProjectedHead": [
+          795.2847982562541,
+          448.8882754692448
+        ],
+        "clockBracketMatched": true
+      }
+    ],
+    "recording": {
+      "crf": 12,
+      "lossless": false,
+      "normalStop": true,
+      "threeConfigurationsRestored": true,
+      "qualityComparisonExcluded": true
+    },
+    "limits": [
+      "Nine manually read HUD labels, not full automatic game-frame identification. Binary PanelWidget bars did not visibly render; renderer/style cause not yet proven.",
+      "QPC-bracket verification establishes client TickCount clock origin for this diagnostic build. HUD output age is OBS scene timestamp minus script callback completion, not physical scanout or measured NPC animation/render delay.",
+      "Projection uses fixed model points, six fitted and two held out. It is current engine-projection consistency, not identification of final rendered vertex positions.",
+      "No bone getters in new module. Widget lifetime failure root cause remains uncertain; delayed creation and guarded direct lookup were changed together in v3.",
+      "Instrumentation/24widget queries, projection/file logging, hooks and OBS affect workload. Callback timings are not baseline frame-time/cost or improvement claims.",
+      "One successful diagnostic1part run; no14clip/all8part/8or64agent acceptance. Original gameplayPBOs unchanged."
+    ]
+  },
+  "nextCandidate": {
+    "candidate": "source-v4",
+    "change": "Explicit style Colorable on root and24bit PanelWidgetClass only; scripts byte-identical to v3.",
+    "basis": "Installed vanilla GUI layouts use PanelWidgetClass with style Colorable. No runtime proof of root cause yet.",
+    "newPbo": false,
+    "runtimeVerified": false,
+    "scriptSha256": "fe9d763994e870157f367907b40f7aed3907ab8dbf315f2fd87e105350b2cfb5",
+    "next": "Build/sign separately, test painting and checksum. Preserve v3; do not change immediate-update policy in same comparison."
+  }
+}

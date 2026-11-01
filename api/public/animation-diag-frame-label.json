@@ -1,0 +1,342 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T18:45:02.344935+09:00",
+  "sourceRunId": "animation-diag-frame-label-20261101-1825",
+  "buildId": "diagnostic-A500-fixed-453D-0C6E-B8FB-frame-label-F6B1",
+  "verificationStatus": {
+    "diagnostic": "client_clock_sparse_hud_projection_verified_binary_labels_incomplete",
+    "newRuntimeTrials": 3,
+    "successfulInstrumentedTrials": 1,
+    "fullNpcRegression": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "schemaVersion": "1.0.0",
+    "sourceRunId": "animation-diag-frame-label-20261101-1825",
+    "buildId": "diagnostic-A500-fixed-453D-0C6E-B8FB-frame-label-F6B1",
+    "newRuntimeTrials": 3,
+    "successfulInstrumentedTrials": 1,
+    "newPbo": true,
+    "newGameplayPbo": false,
+    "newVideo": true,
+    "attempts": [
+      {
+        "id": "runtime",
+        "outcome": "Rejected module compile: FileHandle assigned integer0; no client/recording/native attachment."
+      },
+      {
+        "id": "runtime-2",
+        "outcome": "Module compiled but Widget.Show null VM errors; client closed, server DONE. Video not admitted; native did not attach."
+      },
+      {
+        "id": "runtime-3",
+        "outcome": "Module/client execution and clock brackets verified; HUD text displayed. Binary bars not visibly rendered; no full automatic game-frame decode."
+      }
+    ],
+    "observerSummary": {
+      "enabled": false,
+      "errors": 0,
+      "counts": {
+        "scheduler": 435,
+        "buffer": 435,
+        "consumer": 435,
+        "interpolate": 435,
+        "cache": 1212,
+        "cacheDirty": 746,
+        "cacheClean": 466,
+        "tickCountZero": 872,
+        "clockBracketsVerified": 872
+      },
+      "selected": true,
+      "elapsed": 15.5437821
+    },
+    "nativeSamples": 435,
+    "tickCountZeroCalls": 872,
+    "clockBracketsVerified": 872,
+    "hudLogRows": 2234,
+    "hudRowsWithBothNativeTickBrackets": 436,
+    "hudFramesSequential": true,
+    "hudAppActiveFalseRows": 244,
+    "singleTargetType": "DGSubsetIntegratedCrowdLeader",
+    "singleNetworkId": true,
+    "schedulerCallbackIntervalMilliseconds": {
+      "p50": 23.089149999999997,
+      "p95": 55.88782,
+      "p99": 61.313229000000014
+    },
+    "hudCallbackIntervalMilliseconds": {
+      "p50": 20.0446,
+      "p95": 52.263740000000006,
+      "p99": 54.75647999999998
+    },
+    "manualHudJoinedSamples": 9,
+    "manualSamplesAppActive": 0,
+    "manualSamplesClockBracketsMatched": 8,
+    "manualOutputMarkerMinusHudEndMilliseconds": {
+      "p50": 25.8501,
+      "p95": 47.882839999999995,
+      "p99": 50.719928
+    },
+    "projectionSixReferenceFitTwoReferenceHoldoutPixels": {
+      "p50": 3.7550655350300155e-05,
+      "p95": 0.00011543809822417615,
+      "p99": 0.00011755775768799566
+    },
+    "joinedSamples": [
+      {
+        "videoFrame": 60,
+        "hudFrame": 165,
+        "appActive": false,
+        "obsMarkerId": 56,
+        "hudBodyMicroseconds": 80.2,
+        "outputMarkerMinusHudEndMilliseconds": 35.615300000000005,
+        "projectionHoldoutErrorsPixels": [
+          1.3396968429732606e-05,
+          7.173237552243791e-07
+        ],
+        "previousCacheProjectedHead": null,
+        "clockBracketMatched": false
+      },
+      {
+        "videoFrame": 140,
+        "hudFrame": 191,
+        "appActive": false,
+        "obsMarkerId": 136,
+        "hudBodyMicroseconds": 122.0,
+        "outputMarkerMinusHudEndMilliseconds": 19.031200000000002,
+        "projectionHoldoutErrorsPixels": [
+          2.571154095796096e-05,
+          3.990020667461131e-05
+        ],
+        "previousCacheProjectedHead": [
+          793.8830988365385,
+          449.1014511152488
+        ],
+        "clockBracketMatched": true
+      },
+      {
+        "videoFrame": 220,
+        "hudFrame": 216,
+        "appActive": false,
+        "obsMarkerId": 216,
+        "hudBodyMicroseconds": 117.7,
+        "outputMarkerMinusHudEndMilliseconds": 51.4292,
+        "projectionHoldoutErrorsPixels": [
+          2.8456190764105223e-05,
+          8.06386555700354e-06
+        ],
+        "previousCacheProjectedHead": [
+          824.2972696464992,
+          433.6353402888641
+        ],
+        "clockBracketMatched": true
+      },
+      {
+        "videoFrame": 300,
+        "hudFrame": 242,
+        "appActive": false,
+        "obsMarkerId": 296,
+        "hudBodyMicroseconds": 195.89999999999998,
+        "outputMarkerMinusHudEndMilliseconds": 18.9507,
+        "projectionHoldoutErrorsPixels": [
+          4.962461356832579e-06,
+          5.015311497068345e-05
+        ],
+        "previousCacheProjectedHead": [
+          784.7675192830483,
+          446.7444641770703
+        ],
+        "clockBracketMatched": true
+      },
+      {
+        "videoFrame": 380,
+        "hudFrame": 268,
+        "appActive": false,
+        "obsMarkerId": 376,
+        "hudBodyMicroseconds": 218.6,
+        "outputMarkerMinusHudEndMilliseconds": 3.3892,
+        "projectionHoldoutErrorsPixels": [
+          0.00011497052628362773,
+          9.267210606472296e-05
+        ],
+        "previousCacheProjectedHead": [
+          828.3134415219806,
+          436.7285871911136
+        ],
+        "clockBracketMatched": true
+      },
+      {
+        "videoFrame": 460,
+        "hudFrame": 293,
+        "appActive": false,
+        "obsMarkerId": 456,
+        "hudBodyMicroseconds": 127.50000000000001,
+        "outputMarkerMinusHudEndMilliseconds": 42.0574,
+        "projectionHoldoutErrorsPixels": [
+          3.7869523226275186e-05,
+          1.0104386271074056e-06
+        ],
+        "previousCacheProjectedHead": [
+          799.7765662416991,
+          448.07135236031957
+        ],
+        "clockBracketMatched": true
+      },
+      {
+        "videoFrame": 540,
+        "hudFrame": 319,
+        "appActive": false,
+        "obsMarkerId": 536,
+        "hudBodyMicroseconds": 330.7,
+        "outputMarkerMinusHudEndMilliseconds": 10.055100000000001,
+        "projectionHoldoutErrorsPixels": [
+          6.714697231171172e-05,
+          0.00011808767255395056
+        ],
+        "previousCacheProjectedHead": [
+          813.5583483945853,
+          472.15396625699174
+        ],
+        "clockBracketMatched": true
+      },
+      {
+        "videoFrame": 620,
+        "hudFrame": 344,
+        "appActive": false,
+        "obsMarkerId": 616,
+        "hudBodyMicroseconds": 219.8,
+        "outputMarkerMinusHudEndMilliseconds": 42.5633,
+        "projectionHoldoutErrorsPixels": [
+          3.723178747432512e-05,
+          2.2948173184521324e-05
+        ],
+        "previousCacheProjectedHead": [
+          813.8501866555027,
+          420.83364660428197
+        ],
+        "clockBracketMatched": true
+      },
+      {
+        "videoFrame": 700,
+        "hudFrame": 370,
+        "appActive": false,
+        "obsMarkerId": 696,
+        "hudBodyMicroseconds": 119.8,
+        "outputMarkerMinusHudEndMilliseconds": 25.8501,
+        "projectionHoldoutErrorsPixels": [
+          7.075240649241563e-05,
+          5.9432755454452036e-05
+        ],
+        "previousCacheProjectedHead": [
+          795.2847982562541,
+          448.8882754692448
+        ],
+        "clockBracketMatched": true
+      }
+    ],
+    "video": {
+      "case": "runtime-3",
+      "video": {
+        "file": "DG-WGC-2026-11-01_18-37-09.mkv",
+        "bytes": 105922872,
+        "sha256": "694b33578504180f48770559ef5cbb396d502f39f73fb7f348050c347e2a2211"
+      },
+      "frames": 723,
+      "sidecarRows": 745,
+      "matchedFrames": 723,
+      "unmatchedFrames": 0,
+      "duplicateMatchedMarkerIds": 5,
+      "markerIdsMonotonic": true,
+      "bitConfidenceMinimum": 126.96875,
+      "qpcWriteWindowMaximumTicks": 3652,
+      "qpcFrequency": 10000000,
+      "physicalScanoutMeasured": false,
+      "gameFrameIdentityMeasured": false,
+      "limits": [
+        "OBS frame marker identifies output-scene tick with host QPC, not the age of the asynchronously captured game texture or physical display time.",
+        "Initial unmarked recording frames are retained as unmatched; duplicate marker IDs are output observations, not proven game-frame drops."
+      ]
+    },
+    "recording": {
+      "crf": 12,
+      "lossless": false,
+      "normalStop": true,
+      "threeConfigurationsRestored": true,
+      "qualityComparisonExcluded": true
+    },
+    "client": {
+      "closed": true,
+      "forcedOwnedStop": false,
+      "terminationMarker": true,
+      "vmExceptions": 0,
+      "crashLogs": 0
+    },
+    "server": {
+      "completed": true,
+      "ownedStoppedAfterDone": true,
+      "signatureChecksPassed": 4
+    },
+    "newModuleBuilds": [
+      {
+        "version": 1,
+        "sha256": "BDCEB95C7083EF7B61BBEC8C5111BC343F4C8ED8B0F62F6AE8A567ACE07F61FB",
+        "signatureVerified": true
+      },
+      {
+        "version": 2,
+        "sha256": "D4D8DFDA21D7EAF15161036566046F40273F2F5AF28E827F488F53B89288F631",
+        "signatureVerified": true
+      },
+      {
+        "version": 3,
+        "sha256": "F6B12FB380994D43D4AEE906E319BB739756F3D69F8D5DF92677F9BD7740D182",
+        "signatureVerified": true
+      }
+    ],
+    "verificationStatus": "client_clock_and_sparse_hud_projection_diagnostic_success_full_frame_labels_incomplete",
+    "functionalRegression": "not_retested",
+    "frameTimeP50P95P99": null,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "Nine manually read HUD labels, not full automatic game-frame identification. Binary PanelWidget bars did not visibly render; renderer/style cause not yet proven.",
+      "QPC-bracket verification establishes client TickCount clock origin for this diagnostic build. HUD output age is OBS scene timestamp minus script callback completion, not physical scanout or measured NPC animation/render delay.",
+      "Projection uses fixed model points, six fitted and two held out. It is current engine-projection consistency, not identification of final rendered vertex positions.",
+      "No bone getters in new module. Widget lifetime failure root cause remains uncertain; delayed creation and guarded direct lookup were changed together in v3.",
+      "Instrumentation/24widget queries, projection/file logging, hooks and OBS affect workload. Callback timings are not baseline frame-time/cost or improvement claims.",
+      "One successful diagnostic1part run; no14clip/all8part/8or64agent acceptance. Original gameplayPBOs unchanged."
+    ],
+    "next": "Correct or replace binary-panel painting using existing supported HUD rendering before another run, then decode exact client frame IDs across existing/native intervals. Batch widget visibility updates and measure diagnostic overhead separately; no production animation/clock fix from this run.",
+    "localEvidenceIntegrity": {
+      "filesVerified": 196,
+      "privateManifestPublished": false,
+      "checkpointSha256": "42e50b97f5f28807a0732da209ccd5603cca29943a17b6fc3d1ac8e67ea1a008"
+    }
+  },
+  "blockers": [
+    "Nine manually read HUD labels, not full automatic game-frame identification. Binary PanelWidget bars did not visibly render; renderer/style cause not yet proven.",
+    "QPC-bracket verification establishes client TickCount clock origin for this diagnostic build. HUD output age is OBS scene timestamp minus script callback completion, not physical scanout or measured NPC animation/render delay.",
+    "Projection uses fixed model points, six fitted and two held out. It is current engine-projection consistency, not identification of final rendered vertex positions.",
+    "No bone getters in new module. Widget lifetime failure root cause remains uncertain; delayed creation and guarded direct lookup were changed together in v3.",
+    "Instrumentation/24widget queries, projection/file logging, hooks and OBS affect workload. Callback timings are not baseline frame-time/cost or improvement claims.",
+    "One successful diagnostic1part run; no14clip/all8part/8or64agent acceptance. Original gameplayPBOs unchanged."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-diag-frame-label-20261101.md",
+      "sha256": "28f53130468c8ba84e833454daa37b5cad49d931256e3fbc4e2fd84b0eed938f"
+    },
+    {
+      "path": "evidence/animation-diag-frame-label-20261101.txt",
+      "sha256": "bfdd9069c7eaabdb627b79a47bcf83311ddf7fbddd051c214f3da97205cd9380"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
