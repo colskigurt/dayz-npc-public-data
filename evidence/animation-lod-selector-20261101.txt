@@ -1,0 +1,403 @@
+{
+  "selection": "All6 selector events plus counts, selected producer and complete getter instructions. No whole raw logs, live identifiers, full stacks or performance capture.",
+  "sourceRunId": "animation-lod-selector-20261101-1547",
+  "targetSha256": "ee1add8bb6ded0b6e913f31d62c93d1326d5a44106d558bbd3d19adb78b73bb1",
+  "provider": "existing Python Frida,not REA MCP",
+  "summary": {
+    "errors": 0,
+    "evaluationSamples": 91,
+    "publicCounts": {
+      "0": 1
+    },
+    "policyCounts": {
+      "0": 1,
+      "2": 6
+    },
+    "writerCounts": {
+      "actual": 7,
+      "requested": 7
+    },
+    "sentEvents": 22,
+    "selectorCount": 6,
+    "inputCount": 6
+  },
+  "selectorEvents": [
+    {
+      "type": "selector",
+      "millisecondsSinceArm": 11230,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.05000000074505806,
+        "requestedSecondary": 0.05000000074505806,
+        "actualPrimary": 0.05000000074505806,
+        "actualSecondary": 0.20000000298023224
+      },
+      "selectorReturnRva": 5441756,
+      "vtableRva": 19088960,
+      "slotB10Rva": 11194656,
+      "flag61e": 0,
+      "connected35": 0,
+      "connectedF4": 0,
+      "connectedF5": 0,
+      "input": {
+        "position": [
+          4550.0009765625,
+          339.316650390625,
+          10219.9990234375
+        ],
+        "referenceCount": 0,
+        "referencePoints": [],
+        "reconstructedFloat32Input": 3.4028234663852886e+38,
+        "inputDirectlyRead": false,
+        "formula": "min(initial sentinel,sum squared XYZ displacement to reference point); points semantic ownership not yet proven"
+      },
+      "simdContextAvailable": false,
+      "selectedLod": 2
+    },
+    {
+      "type": "selector",
+      "millisecondsSinceArm": 13243,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.20000000298023224,
+        "requestedSecondary": 0.20000000298023224,
+        "actualPrimary": 0.20000000298023224,
+        "actualSecondary": 0.5
+      },
+      "selectorReturnRva": 5441756,
+      "vtableRva": 19088960,
+      "slotB10Rva": 11194656,
+      "flag61e": 0,
+      "connected35": 0,
+      "connectedF4": 0,
+      "connectedF5": 0,
+      "input": {
+        "position": [
+          4550.0009765625,
+          339.316650390625,
+          10219.9990234375
+        ],
+        "referenceCount": 0,
+        "referencePoints": [],
+        "reconstructedFloat32Input": 3.4028234663852886e+38,
+        "inputDirectlyRead": false,
+        "formula": "min(initial sentinel,sum squared XYZ displacement to reference point); points semantic ownership not yet proven"
+      },
+      "simdContextAvailable": false,
+      "selectedLod": 2
+    },
+    {
+      "type": "selector",
+      "millisecondsSinceArm": 15272,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.20000000298023224,
+        "requestedSecondary": 0.20000000298023224,
+        "actualPrimary": 0.20000000298023224,
+        "actualSecondary": 0.5
+      },
+      "selectorReturnRva": 5441756,
+      "vtableRva": 19088960,
+      "slotB10Rva": 11194656,
+      "flag61e": 0,
+      "connected35": 0,
+      "connectedF4": 0,
+      "connectedF5": 0,
+      "input": {
+        "position": [
+          4550.0009765625,
+          339.316650390625,
+          10219.9990234375
+        ],
+        "referenceCount": 0,
+        "referencePoints": [],
+        "reconstructedFloat32Input": 3.4028234663852886e+38,
+        "inputDirectlyRead": false,
+        "formula": "min(initial sentinel,sum squared XYZ displacement to reference point); points semantic ownership not yet proven"
+      },
+      "simdContextAvailable": false,
+      "selectedLod": 2
+    },
+    {
+      "type": "selector",
+      "millisecondsSinceArm": 17283,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.20000000298023224,
+        "requestedSecondary": 0.20000000298023224,
+        "actualPrimary": 0.20000000298023224,
+        "actualSecondary": 0.5
+      },
+      "selectorReturnRva": 5441756,
+      "vtableRva": 19088960,
+      "slotB10Rva": 11194656,
+      "flag61e": 0,
+      "connected35": 0,
+      "connectedF4": 0,
+      "connectedF5": 0,
+      "input": {
+        "position": [
+          4550.0009765625,
+          339.316650390625,
+          10219.9990234375
+        ],
+        "referenceCount": 0,
+        "referencePoints": [],
+        "reconstructedFloat32Input": 3.4028234663852886e+38,
+        "inputDirectlyRead": false,
+        "formula": "min(initial sentinel,sum squared XYZ displacement to reference point); points semantic ownership not yet proven"
+      },
+      "simdContextAvailable": false,
+      "selectedLod": 2
+    },
+    {
+      "type": "selector",
+      "millisecondsSinceArm": 19309,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.20000000298023224,
+        "requestedSecondary": 0.20000000298023224,
+        "actualPrimary": 0.20000000298023224,
+        "actualSecondary": 0.5
+      },
+      "selectorReturnRva": 5441756,
+      "vtableRva": 19088960,
+      "slotB10Rva": 11194656,
+      "flag61e": 0,
+      "connected35": 0,
+      "connectedF4": 0,
+      "connectedF5": 0,
+      "input": {
+        "position": [
+          4550.0009765625,
+          339.316650390625,
+          10219.9990234375
+        ],
+        "referenceCount": 0,
+        "referencePoints": [],
+        "reconstructedFloat32Input": 3.4028234663852886e+38,
+        "inputDirectlyRead": false,
+        "formula": "min(initial sentinel,sum squared XYZ displacement to reference point); points semantic ownership not yet proven"
+      },
+      "simdContextAvailable": false,
+      "selectedLod": 2
+    },
+    {
+      "type": "selector",
+      "millisecondsSinceArm": 21334,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.20000000298023224,
+        "requestedSecondary": 0.20000000298023224,
+        "actualPrimary": 0.20000000298023224,
+        "actualSecondary": 0.5
+      },
+      "selectorReturnRva": 5441756,
+      "vtableRva": 19088960,
+      "slotB10Rva": 11194656,
+      "flag61e": 0,
+      "connected35": 0,
+      "connectedF4": 0,
+      "connectedF5": 0,
+      "input": {
+        "position": [
+          4550.0009765625,
+          339.316650390625,
+          10219.9990234375
+        ],
+        "referenceCount": 0,
+        "referencePoints": [],
+        "reconstructedFloat32Input": 3.4028234663852886e+38,
+        "inputDirectlyRead": false,
+        "formula": "min(initial sentinel,sum squared XYZ displacement to reference point); points semantic ownership not yet proven"
+      },
+      "simdContextAvailable": false,
+      "selectedLod": 2
+    }
+  ],
+  "liveType": {
+    "vtableRva": "0x1234640",
+    "slotB10Rva": "0xaad120",
+    "type": "DayZAnimal",
+    "typeEvidence": "Prior RTTI table and current live vtable+slot match"
+  },
+  "sentinel": {
+    "preferredVa": "0x141086db0",
+    "bytes": "ffff7f7f",
+    "float32": 3.4028234663852886e+38
+  },
+  "producerInstructions": [
+    {
+      "address": "0x140530623",
+      "instruction": "movss xmm7, dword ptr [rip + 0xb56785]"
+    },
+    {
+      "address": "0x140530758",
+      "instruction": "movaps xmm3, xmm7"
+    },
+    {
+      "address": "0x14053076a",
+      "instruction": "movsxd rax, dword ptr [r13 + 8]"
+    },
+    {
+      "address": "0x14053076e",
+      "instruction": "test eax, eax"
+    },
+    {
+      "address": "0x140530770",
+      "instruction": "je 0x1405308cd"
+    },
+    {
+      "address": "0x1405308cd",
+      "instruction": "mov rax, qword ptr [rdi]"
+    },
+    {
+      "address": "0x1405308d0",
+      "instruction": "movaps xmm1, xmm3"
+    },
+    {
+      "address": "0x1405308d3",
+      "instruction": "mov rcx, rdi"
+    },
+    {
+      "address": "0x1405308d6",
+      "instruction": "call qword ptr [rax + 0xb10]"
+    }
+  ],
+  "selectorInstructions": [
+    {
+      "address": "0x140aad120",
+      "instruction": "cmp byte ptr [rcx + 0x61e], 0",
+      "bytes": "80b91e06000000"
+    },
+    {
+      "address": "0x140aad127",
+      "instruction": "je 0x140aad12f",
+      "bytes": "7406"
+    },
+    {
+      "address": "0x140aad129",
+      "instruction": "mov eax, 0xffffffff",
+      "bytes": "b8ffffffff"
+    },
+    {
+      "address": "0x140aad12e",
+      "instruction": "ret ",
+      "bytes": "c3"
+    },
+    {
+      "address": "0x140aad12f",
+      "instruction": "movss xmm0, dword ptr [rip + 0x68c631]",
+      "bytes": "f30f100531c66800",
+      "float32Literal": 6400.0
+    },
+    {
+      "address": "0x140aad137",
+      "instruction": "xor eax, eax",
+      "bytes": "33c0"
+    },
+    {
+      "address": "0x140aad139",
+      "instruction": "comiss xmm0, xmm1",
+      "bytes": "0f2fc1"
+    },
+    {
+      "address": "0x140aad13c",
+      "instruction": "ja 0x140aad14e",
+      "bytes": "7710"
+    },
+    {
+      "address": "0x140aad13e",
+      "instruction": "movss xmm0, dword ptr [rip + 0x5f4952]",
+      "bytes": "f30f100552495f00",
+      "float32Literal": 40000.0
+    },
+    {
+      "address": "0x140aad146",
+      "instruction": "comiss xmm0, xmm1",
+      "bytes": "0f2fc1"
+    },
+    {
+      "address": "0x140aad149",
+      "instruction": "setbe al",
+      "bytes": "0f96c0"
+    },
+    {
+      "address": "0x140aad14c",
+      "instruction": "inc eax",
+      "bytes": "ffc0"
+    },
+    {
+      "address": "0x140aad14e",
+      "instruction": "mov rcx, qword ptr [rcx + 0x658]",
+      "bytes": "488b8958060000"
+    },
+    {
+      "address": "0x140aad155",
+      "instruction": "cmp byte ptr [rcx + 0x35], 0",
+      "bytes": "80793500"
+    },
+    {
+      "address": "0x140aad159",
+      "instruction": "je 0x140aad164",
+      "bytes": "7409"
+    },
+    {
+      "address": "0x140aad15b",
+      "instruction": "movzx edx, byte ptr [rcx + 0xf5]",
+      "bytes": "0fb691f5000000"
+    },
+    {
+      "address": "0x140aad162",
+      "instruction": "jmp 0x140aad16b",
+      "bytes": "eb07"
+    },
+    {
+      "address": "0x140aad164",
+      "instruction": "movzx edx, byte ptr [rcx + 0xf4]",
+      "bytes": "0fb691f4000000"
+    },
+    {
+      "address": "0x140aad16b",
+      "instruction": "test dl, dl",
+      "bytes": "84d2"
+    },
+    {
+      "address": "0x140aad16d",
+      "instruction": "je 0x140aad17b",
+      "bytes": "740c"
+    },
+    {
+      "address": "0x140aad16f",
+      "instruction": "mov ecx, 1",
+      "bytes": "b901000000"
+    },
+    {
+      "address": "0x140aad174",
+      "instruction": "cmp eax, ecx",
+      "bytes": "3bc1"
+    },
+    {
+      "address": "0x140aad176",
+      "instruction": "cmovb ecx, eax",
+      "bytes": "0f42c8"
+    },
+    {
+      "address": "0x140aad179",
+      "instruction": "mov eax, ecx",
+      "bytes": "8bc1"
+    },
+    {
+      "address": "0x140aad17b",
+      "instruction": "ret ",
+      "bytes": "c3"
+    }
+  ],
+  "scope": "Input not directly read from SIMD; runtime count0 plus validated producer branch reconstructs unchanged FLT_MAX at selector. No reference-list semantic owner name established.",
+  "limits": [
+    "One headless one-part mode1 fixture,no player/client. Reference list semantic ownership not proven.",
+    "SIMD context unavailable; input reconstructed from observed count0 plus validated producer branch,not direct XMM1 capture.",
+    "Hooked run excluded from performance comparison. Date.now gaps are chronology,not frame-time or universal cadence.",
+    "No new8/64 regression,visible-frame capture,p50/p95/p99 or GPU/GC measurement;20ms p95 remains target."
+  ]
+}

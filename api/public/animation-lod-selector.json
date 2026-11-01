@@ -1,0 +1,112 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T15:48:50.394947+09:00",
+  "sourceRunId": "animation-lod-selector-20261101-1547",
+  "buildId": "453D-0C6E-B8FB-server-ee1add8b",
+  "verificationStatus": {
+    "diagnostic": "empty_reference_list_native_animal_lod2_diagnosed",
+    "repetitions": 1,
+    "fullNpcRegression": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-lod-selector-20261101-1547",
+    "buildId": "453D-0C6E-B8FB-server-ee1add8b",
+    "verificationStatus": "empty_reference_list_native_animal_lod2_diagnosed",
+    "newRuntimeTrials": 1,
+    "newPbo": false,
+    "newVideo": false,
+    "numericOverrides": false,
+    "observerSummary": {
+      "errors": 0,
+      "evaluationSamples": 91,
+      "publicCounts": {
+        "0": 1
+      },
+      "policyCounts": {
+        "0": 1,
+        "2": 6
+      },
+      "writerCounts": {
+        "actual": 7,
+        "requested": 7
+      },
+      "sentEvents": 22,
+      "selectorCount": 6,
+      "inputCount": 6
+    },
+    "liveSelector": {
+      "vtableRva": "0x1234640",
+      "slotB10Rva": "0xaad120",
+      "type": "DayZAnimal",
+      "typeEvidence": "Prior RTTI table and current live vtable+slot match"
+    },
+    "sentinel": {
+      "preferredVa": "0x141086db0",
+      "bytes": "ffff7f7f",
+      "float32": 3.4028234663852886e+38
+    },
+    "observedSelectorGapsMs": [
+      2013,
+      2029,
+      2011,
+      2026,
+      2025
+    ],
+    "allSixReferenceCountsZero": true,
+    "allSixSelectedLod2": true,
+    "inputDirectlySampledFromSIMD": false,
+    "sourceHashes": {
+      "research/animation-lod-selector-20261101-1547/observe_selector.py": "0ae29c43dbfb81d4d689c9206873a14c4638942e048279163f8a4fda1e0e1e31",
+      "research/animation-lod-selector-20261101-1547/run_probe.ps1": "ca75341aa97cd3a0a17d525442bc8241f3641147ea91ee34bb878049a96025d3",
+      "research/animation-lod-selector-20261101-1547/selector-analysis.json": "c077e989aedc0bf9cc75e3c21ed022d9d1920f78e8aae670cd0b2808f9cd04d4",
+      "research/animation-lod-selector-20261101-1547/selector-observer.js": "9d0ce60015a8f73406c6e057b86e344b7da4b180825b568d7c0a2e657168fee6",
+      "research/animation-lod-selector-20261101-1547/selector-observer.json": "02ddb9e09b5e39fa481ae128cba23b5184230497a733a07d369d3c352e92f770",
+      "research/animation-lod-selector-20261101-1547/server-launch-BProbe.json": "6c456b5146614adf67d012ecd817fc5f68ccecdc445f3be2645b8af9fdd2dc41",
+      "research/animation-lod-selector-20261101-1547/server-profile-BProbe/DayZServer_x64_2026-11-01_15-46-28.RPT": "680424faf7fcde07a1605971479c76bc6832920f0ece32bf328fd8aa9735fdb6",
+      "research/animation-lod-selector-20261101-1547/server-profile-BProbe/error_2026-11-01_15-46-28.log": "318847a8a45e17d337a8b5e4f9620aa68d3a599d310197f2f86140877cf32744",
+      "research/animation-lod-selector-20261101-1547/server-profile-BProbe/role-pose.tsv": "88391ba193a24918464eb5967afacd461633d10a0f7c4a427f151d3e196b0b0a",
+      "research/animation-lod-selector-20261101-1547/server-profile-BProbe/script_2026-11-01_15-46-28.log": "63e032774898f8fa17e373a9ee807f12f3473269fc9ed5aacdd63ac65247c213",
+      "research/animation-lod-selector-20261101-1547/server-profile-BProbe/server.cfg": "37dd80bbed28d49ea90b55ff1c4262112bf5239fd766c11aedb84f3a8ab55276",
+      "research/animation-lod-selector-20261101-1547/server-role-lod0.chernarusplus/init.c": "0ace8eaa6d11fac0bdddb517a80a3000fc749d639d7bb7d230efa073aa397bf1",
+      "research/animation-lod-selector-20261101-1547/server-profile-BProbe/Users/Server/DayZ.cfg": "5b4030f2ac3cc4eeb1263ee30f566e926f425d8b93ffb083812ba0f966cd5011"
+    },
+    "signatureVerification": {
+      "existingPbos": 3,
+      "allVerified": true
+    },
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "One headless one-part mode1 fixture,no player/client. Reference list semantic ownership not proven.",
+      "SIMD context unavailable; input reconstructed from observed count0 plus validated producer branch,not direct XMM1 capture.",
+      "Hooked run excluded from performance comparison. Date.now gaps are chronology,not frame-time or universal cadence.",
+      "No new8/64 regression,visible-frame capture,p50/p95/p99 or GPU/GC measurement;20ms p95 remains target."
+    ],
+    "next": "Close headless empty-list LOD2 as an explained fixture condition. Return to existing client mode0 reset-loss evidence: inspect actual client precision/mode and supported scheduler inputs before any new correction. Do not port server200ms finding to offline/client stutter or forceLOD0 every tick."
+  },
+  "blockers": [
+    "One headless one-part mode1 fixture,no player/client. Reference list semantic ownership not proven.",
+    "SIMD context unavailable; input reconstructed from observed count0 plus validated producer branch,not direct XMM1 capture.",
+    "Hooked run excluded from performance comparison. Date.now gaps are chronology,not frame-time or universal cadence.",
+    "No new8/64 regression,visible-frame capture,p50/p95/p99 or GPU/GC measurement;20ms p95 remains target."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-lod-selector-20261101.md",
+      "sha256": "3c79009c1e09c078a35d8ff7668d4b9f9d79683b106229de370f182f406ca968"
+    },
+    {
+      "path": "evidence/animation-lod-selector-20261101.txt",
+      "sha256": "4e4625feae3568e0e68ba17ab602b4e733955d43a4afd02f1034025989ca2047"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
