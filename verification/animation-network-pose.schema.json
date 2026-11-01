@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "animation-network-pose-20261101-1616"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "newRuntimeTrials",
+        "newPbo",
+        "continuous25SecondGatePassed",
+        "comparisons"
+      ],
+      "properties": {
+        "newRuntimeTrials": {
+          "const": 2
+        },
+        "newPbo": {
+          "const": false
+        },
+        "continuous25SecondGatePassed": {
+          "const": false
+        },
+        "clientRequestedState": {
+          "const": "not_read"
+        },
+        "comparisons": {
+          "type": "object",
+          "properties": {
+            "interpolated190": {
+              "type": "object",
+              "properties": {
+                "records": {
+                  "const": 123
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
