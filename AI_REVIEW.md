@@ -1,3 +1,5 @@
+> 최신 관찰환경 분리: 관찰기단독/녹화단독 CPU조회p95약20.2ms로과거교대패턴미재현. native평균0.833·새영상재귀2.5초로속도손실은남음. 결합조건미실행,시각/성능미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-observer-controls-20261101.md). 이전기록보존.
+
 > 최신 애니메이션 진단: 기존4영상 위상·QPC 재분석. 학습외후보 화면증분 p95오차는현재query9.408px/이전query1.904px/native1.931px. 평균배속회복과시각부드러움수용은별개. 새게임/PBO/최적화없음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-phase-matched-20261101.md). 이전기록보존.
 
 > 최신 실시간 검증: 8개체: 8도달, 9/9낙하복구, 엄격gate True; 64개체: 64도달, 78/78낙하복구, 엄격gate True. 새pending분기 실제사용. 단일시험 기능결과이며 반복·시각·성능 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/entry-idle-handoff-live-20261101.md). 이전기록보존.

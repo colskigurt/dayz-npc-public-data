@@ -1,0 +1,520 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T13:46:39.597148+09:00",
+  "sourceRunId": "animation-observer-cost-20261101-1328",
+  "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+  "verificationStatus": {
+    "diagnostic": "observer_only_and_recording_only_trials_closed",
+    "functional": "not_retested_existing8and64_preserved",
+    "visibleSmoothness": "not_accepted_mean_recurrence_only",
+    "performance": "not_accepted_no_self_time_attribution",
+    "combinedFactor": "not_tested",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-observer-cost-20261101-1328",
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "newRuntime": true,
+    "newRuntimeTrials": 2,
+    "newPbo": false,
+    "newVideo": true,
+    "numericOverrides": false,
+    "signatureVerification": "Three existing PBO signatures reported OK before each client; no new PBO/signing.",
+    "observerOnly": {
+      "sourceRunId": "animation-observer-cost-20261101-1328",
+      "runtimeRunId": "runtime-20261101-132801",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "newRuntime": true,
+      "newPbo": false,
+      "newVideo": false,
+      "signatureVerifiedBeforeLaunch": true,
+      "conditions": {
+        "logicalAgents": 1,
+        "nativeParts": 8,
+        "clip": "run",
+        "AI": false,
+        "movement": false,
+        "queryPose": true,
+        "frameSync": "on",
+        "recordingStarted": false,
+        "launcherVisualCaptureFlagMeaning": "HUD and frame logging; no recorder launched"
+      },
+      "stages": {
+        "A_before_injection": {
+          "firstMissionSeconds": 10.013,
+          "lastMissionSeconds": 36.441,
+          "frameCount": 1322,
+          "windowSeconds": 26.427782,
+          "queryIntervalMs": {
+            "samples": 1321,
+            "p50": 20.009,
+            "p95": 20.2105,
+            "p99": 20.8063,
+            "minimum": 17.6336,
+            "maximum": 22.3128,
+            "mean": 20.005890991672974,
+            "standardDeviation": 0.25533187378484024
+          },
+          "queryBodyBracketMs": {
+            "samples": 1322,
+            "p50": 0.1439,
+            "p95": 0.17207500000000003,
+            "p99": 0.3114329999999999,
+            "minimum": 0.1292,
+            "maximum": 0.358,
+            "mean": 0.14961626323751892,
+            "standardDeviation": 0.025080608628043625
+          },
+          "adjacentIntervalDifferenceMs": {
+            "samples": 1320,
+            "p50": 0.13134999999999764,
+            "p95": 0.5985099999999989,
+            "p99": 2.1133770000000007,
+            "minimum": 0.00010000000000331966,
+            "maximum": 4.679199999999998,
+            "mean": 0.21000530303030307,
+            "standardDeviation": 0.3713954307975966
+          },
+          "lag1IntervalCorrelation": -0.39510018966752014,
+          "fractionBelow10ms": 0.0,
+          "fractionAbove30ms": 0.0,
+          "commandSecondsPerQueryQpcSecond": 0.8330785722846206,
+          "foregroundFraction": 1.0,
+          "boundaryQpcRelativeSeconds": [
+            41.5628068,
+            67.9976499
+          ]
+        },
+        "B_observer_work": {
+          "firstMissionSeconds": 57.927,
+          "lastMissionSeconds": 83.915,
+          "frameCount": 1300,
+          "windowSeconds": 25.9875655,
+          "queryIntervalMs": {
+            "samples": 1299,
+            "p50": 20.007,
+            "p95": 20.19047,
+            "p99": 20.38057,
+            "minimum": 17.707,
+            "maximum": 22.3076,
+            "mean": 20.005824095458046,
+            "standardDeviation": 0.23306590532431745
+          },
+          "queryBodyBracketMs": {
+            "samples": 1300,
+            "p50": 0.1451,
+            "p95": 0.169405,
+            "p99": 0.278802,
+            "minimum": 0.1304,
+            "maximum": 0.352,
+            "mean": 0.1494886153846154,
+            "standardDeviation": 0.020071225318229777
+          },
+          "adjacentIntervalDifferenceMs": {
+            "samples": 1298,
+            "p50": 0.1203000000000003,
+            "p95": 0.4532999999999987,
+            "p99": 2.0546079999999987,
+            "minimum": 0.00019999999999953388,
+            "maximum": 4.567399999999999,
+            "mean": 0.18806926040061636,
+            "standardDeviation": 0.3510363208038308
+          },
+          "lag1IntervalCorrelation": -0.45896762516347095,
+          "fractionBelow10ms": 0.0,
+          "fractionAbove30ms": 0.0,
+          "commandSecondsPerQueryQpcSecond": 0.8330863717036223,
+          "foregroundFraction": 1.0,
+          "boundaryQpcRelativeSeconds": [
+            89.4767803,
+            115.4666151
+          ]
+        },
+        "C_disabled_hooks_retained": {
+          "firstMissionSeconds": 87.936,
+          "lastMissionSeconds": 115.004,
+          "frameCount": 1354,
+          "windowSeconds": 27.0679835,
+          "queryIntervalMs": {
+            "samples": 1353,
+            "p50": 20.0062,
+            "p95": 20.197680000000002,
+            "p99": 20.394328,
+            "minimum": 17.6004,
+            "maximum": 23.489,
+            "mean": 20.005900591278643,
+            "standardDeviation": 0.26132470749834597
+          },
+          "queryBodyBracketMs": {
+            "samples": 1354,
+            "p50": 0.1462,
+            "p95": 0.166735,
+            "p99": 0.23976800000000012,
+            "minimum": 0.1296,
+            "maximum": 0.4158,
+            "mean": 0.1501434268833087,
+            "standardDeviation": 0.020494592479492937
+          },
+          "adjacentIntervalDifferenceMs": {
+            "samples": 1352,
+            "p50": 0.12685000000000102,
+            "p95": 0.4650049999999996,
+            "p99": 2.0276170000000024,
+            "minimum": 0.0,
+            "maximum": 5.8886,
+            "mean": 0.20272093195266283,
+            "standardDeviation": 0.38903395974203
+          },
+          "lag1IntervalCorrelation": -0.4083718632255528,
+          "fractionBelow10ms": 0.0,
+          "fractionAbove30ms": 0.0,
+          "commandSecondsPerQueryQpcSecond": 0.8331371887058967,
+          "foregroundFraction": 1.0,
+          "boundaryQpcRelativeSeconds": [
+            119.4666151,
+            146.5551999
+          ]
+        }
+      },
+      "nativeObservation": {
+        "durationSeconds": 29.9898348,
+        "entries": 12000,
+        "completeFrames": 1500,
+        "parts": 8,
+        "numericApplied": 0,
+        "numericChanged": 0,
+        "errors": 0,
+        "dropped": 0,
+        "graphPlusNumeratorPerHostQpcSecond": 0.8330888532453418,
+        "readBracketMicroseconds": {
+          "samples": 12000,
+          "p50": 11.0,
+          "p95": 17.9,
+          "p99": 22.4,
+          "minimum": 9.1,
+          "maximum": 78.0,
+          "mean": 11.829791666666667,
+          "standardDeviation": 3.252085990549843
+        }
+      },
+      "provider": {
+        "reaRuntime": "unavailable_node_binding",
+        "actual": "existing Python Frida17.2.17",
+        "probeIdenticalToHistorical": true
+      },
+      "sourceHashes": {
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-132801\\launch.json": "c5f618ad8bc36307c3bbcdd71ad80ed7349e33be474da172051efd28591c35ce",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-132801\\mission-source\\init.c": "cb80c89b3fb398e091cc3b2330db8e27ffaf6e8a340a7e80bae879d6f25e4ce6",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-132801\\native-call-probe\\status.json": "1f303e3909299e42dc93f75627495a84d3f9aaa2dc8a5dd137e2c3c52010554d",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-132801\\native-call-probe\\calls.jsonl": "6524f45adddb859a31a349619dff6e0b10e818c363190f062f3bcbdf0de9f1d8",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-132801\\native-call-probe\\configuration.json": "5a7c5d9654cbe4e6e38f93331fd3d5851035ce49ebb40fe5f6e0d047cb5fce89",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-132801\\native-call-probe\\instrumentation.js": "e51e512a93474e3bc9b243a034706767d778bbe30752176d9a4a5ffbeba78fa1",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-132801\\visible-frame-clock.tsv": "5fd3041a6e071e1624767e35828d3ffc68acdab76330135c04f44808fc2db836",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-132801\\native-process-cost.tsv": "397450af3cb18e980265947334c9ada66b40a248eaed3ea94c3d0472fe30bbd2"
+      },
+      "verificationStatus": "one_within_run_cadence_contrast_closed",
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false,
+      "limits": [
+        "C retains injected agent and hook entry branches; not a return to uninstrumented A.",
+        "One temporal A/B/C sequence with warmup/order/background confounds; no randomized repeated estimate.",
+        "Query cadence is CPU-side, not final Present/GPU/scanout or visible pose quality.",
+        "Fixed frame pacing may absorb extra work into waits; similar cadence does not prove zero CPU overhead.",
+        "Native read brackets exclude entry/guard/serialization and are inclusive elapsed, not total observer self-time.",
+        "Process cost samples lack a directly recorded QPC zero; not promoted to exact phase CPU self-time.",
+        "Historical recorded runs differ in recording, bridge activity, date and host conditions; no causal recording attribution from cross-run differences.",
+        "No8/64 functionality or performance target was tested here."
+      ],
+      "next": "If cadence differs, repeat comparable controls before attribution. If observer-only cost does not explain historical cadence, isolate capture/recording under same harness and CPU/QPC markers, preserving unsupported-clock and display-consumer limits."
+    },
+    "recordingOnly": {
+      "sourceRunId": "animation-observer-cost-20261101-1328-capture",
+      "runtimeRunId": "runtime-20261101-133655",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "newRuntime": true,
+      "newPbo": false,
+      "newVideo": true,
+      "nativeHooks": false,
+      "numericOverride": false,
+      "conditions": {
+        "logicalAgents": 1,
+        "nativeParts": 8,
+        "clip": "run",
+        "AI": false,
+        "movement": false,
+        "queryPose": true,
+        "frameSync": "on",
+        "gameOnlyWindowCapture": true,
+        "audioCapture": false,
+        "recordingMode": "existing portable OBS WGC+x264 CRF0,60fps; whole recorder process is the treatment"
+      },
+      "stages": {
+        "A_no_recorder": {
+          "firstMissionSeconds": 10.017,
+          "lastMissionSeconds": 28.703,
+          "frameCount": 935,
+          "windowSeconds": 18.6855271,
+          "queryIntervalMs": {
+            "samples": 934,
+            "p50": 20.0063,
+            "p95": 20.189035,
+            "p99": 20.369121,
+            "minimum": 17.5086,
+            "maximum": 22.4443,
+            "mean": 20.00591766595289,
+            "standardDeviation": 0.21824452397895489
+          },
+          "queryBodyBracketMs": {
+            "samples": 935,
+            "p50": 0.145,
+            "p95": 0.16945999999999994,
+            "p99": 0.2773839999999999,
+            "minimum": 0.1313,
+            "maximum": 0.3441,
+            "mean": 0.1496731550802139,
+            "standardDeviation": 0.020713300286580274
+          },
+          "adjacentIntervalDifferenceMs": {
+            "samples": 933,
+            "p50": 0.11730000000000018,
+            "p95": 0.4717200000000004,
+            "p99": 1.2132160000000003,
+            "minimum": 9.999999999976694e-05,
+            "maximum": 4.935699999999997,
+            "mean": 0.17849292604501613,
+            "standardDeviation": 0.3205508223074873
+          },
+          "lag1IntervalCorrelation": -0.4117510186392023,
+          "fractionBelow10ms": 0.0,
+          "fractionAbove30ms": 0.0,
+          "commandSecondsPerQueryQpcSecond": 0.8330900047978717,
+          "foregroundFraction": 1.0
+        },
+        "B_recording": {
+          "firstMissionSeconds": 39.806,
+          "lastMissionSeconds": 80.798,
+          "frameCount": 2050,
+          "windowSeconds": 40.9920508,
+          "queryIntervalMs": {
+            "samples": 2049,
+            "p50": 20.0039,
+            "p95": 20.29068,
+            "p99": 20.549476000000002,
+            "minimum": 17.0878,
+            "maximum": 22.9895,
+            "mean": 20.0058813079551,
+            "standardDeviation": 0.3224570188814511
+          },
+          "queryBodyBracketMs": {
+            "samples": 2050,
+            "p50": 0.1528,
+            "p95": 0.19027499999999997,
+            "p99": 0.24325899999999998,
+            "minimum": 0.1304,
+            "maximum": 0.6626,
+            "mean": 0.15853356097560975,
+            "standardDeviation": 0.02545529386701395
+          },
+          "adjacentIntervalDifferenceMs": {
+            "samples": 2048,
+            "p50": 0.1692499999999999,
+            "p95": 0.6588250000000001,
+            "p99": 2.482201999999999,
+            "minimum": 0.0,
+            "maximum": 5.901699999999998,
+            "mean": 0.27044111328125003,
+            "standardDeviation": 0.47644737103108514
+          },
+          "lag1IntervalCorrelation": -0.4428328831906708,
+          "fractionBelow10ms": 0.0,
+          "fractionAbove30ms": 0.0,
+          "commandSecondsPerQueryQpcSecond": 0.8330773843162496,
+          "foregroundFraction": 1.0
+        },
+        "C_post_recording_descriptive": {
+          "firstMissionSeconds": 88.28,
+          "lastMissionSeconds": 115.008,
+          "frameCount": 1337,
+          "windowSeconds": 26.7278796,
+          "queryIntervalMs": {
+            "samples": 1336,
+            "p50": 20.00415,
+            "p95": 20.192899999999998,
+            "p99": 20.434440000000002,
+            "minimum": 17.4114,
+            "maximum": 22.5173,
+            "mean": 20.005897904191617,
+            "standardDeviation": 0.23948935704186552
+          },
+          "queryBodyBracketMs": {
+            "samples": 1337,
+            "p50": 0.1446,
+            "p95": 0.16568000000000002,
+            "p99": 0.27112800000000026,
+            "minimum": 0.13,
+            "maximum": 0.4714,
+            "mean": 0.1487983545250561,
+            "standardDeviation": 0.021014295386850363
+          },
+          "adjacentIntervalDifferenceMs": {
+            "samples": 1335,
+            "p50": 0.12890000000000157,
+            "p95": 0.45945999999999954,
+            "p99": 2.007810000000003,
+            "minimum": 0.0,
+            "maximum": 5.105899999999998,
+            "mean": 0.1984402996254681,
+            "standardDeviation": 0.36081763095835145
+          },
+          "lag1IntervalCorrelation": -0.477464044239946,
+          "fractionBelow10ms": 0.0,
+          "fractionAbove30ms": 0.0,
+          "commandSecondsPerQueryQpcSecond": 0.8331392182208329,
+          "foregroundFraction": 1.0
+        }
+      },
+      "clockAlignment": {
+        "bridgeBracketMs": 22.8964,
+        "hostQpcUnixDriftMs": -0.15357962340090126,
+        "trimSeconds": 2,
+        "actualRecordingSeconds": 45.00900006289063
+      },
+      "video": {
+        "file": "DG-WGC-2026-11-01_13-38-14.mkv",
+        "bytes": 61966815,
+        "sha256": "7017a477ca6c86f753c8b2617a0a773bdf3526b2ae79bfb40b881d209c8e3255"
+      },
+      "portableOutputPathsRestored": true,
+      "postRecorderBoundary": "Original QPC marker lost at controller postcheck; C is descriptive after recording-stop log+5s, not exact verified exit.",
+      "verificationStatus": "one_no_hook_recording_cadence_contrast_closed",
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false,
+      "sourceHashes": {
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-133655\\launch.json": "72231e4f489fdd11193ff2ea5dac1a028bea4f6ce734b31c35bc886506d3ea01",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-133655\\mission-source\\init.c": "cb80c89b3fb398e091cc3b2330db8e27ffaf6e8a340a7e80bae879d6f25e4ce6",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-133655\\visible-frame-clock.tsv": "c6c2ade779a2bbd53361f8de07d197cec93679eff7895ed4306a8f13b8563d7f",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-133655\\obs-capture.json": "17dc51e24c34619ed052dbb5a70dfc857d2cf5bcf4898b1f61bc423a19e58bab",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-133655\\obs-capture.log": "ad5fb6f119cffabe2a46704b515ba0a36c81b93acbc1560c69e1755ec1183cf7",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-133655\\native-process-cost.tsv": "6fdb3bdb066a6e83ca262bfbd06e66a6469dcc86427aa6e4a6954fb5d15dac67"
+      },
+      "limits": [
+        "One within-run A/B/C; not randomized repeated recording experiment.",
+        "Treatment includes OBS startup, capture, compositing, encoding and disk I/O; components are not isolated.",
+        "CommandSeconds is script command-clock activity, not direct native graph time without a hook.",
+        "No ETW/Present/GPU self-time or final displayed NPC smoothness acceptance.",
+        "CPU query time and process frame cadence are not per-bone animation sample rate.",
+        "No8/64 feature/performance regression in this isolated one-agent diagnostic."
+      ],
+      "next": "If effect appears, repeat or isolate recorder components before blaming a particular capture/encoder API. Keep product stutter and64 workload separate; do not change animation scheduling based only on recorded diagnostic cadence."
+    },
+    "recordedRecurrence": {
+      "sourceRunId": "animation-observer-cost-20261101-1328-recorded-recurrence",
+      "runtimeRunId": "runtime-20261101-133655",
+      "videoSha256": "7017a477ca6c86f753c8b2617a0a773bdf3526b2ae79bfb40b881d209c8e3255",
+      "detectorSha256": "142ebd1d7e11922f7fe3d9608206cdb923a3201e3db446a7054182e67df052cc",
+      "windowVideoSeconds": [
+        5,
+        23
+      ],
+      "imageFrames": 1080,
+      "threshold": 145,
+      "detectorRetuned": false,
+      "minimumDetectorScore": 0.7424154589371981,
+      "meanDetectorScore": 0.9185415662377198,
+      "recurrenceLocalMinima": [
+        {
+          "lagFrames": 150,
+          "lagSeconds": 2.5,
+          "meanSquaredDistancePixels": 7.244086021505376,
+          "pairs": 930
+        },
+        {
+          "lagFrames": 187,
+          "lagSeconds": 3.1166666666666667,
+          "meanSquaredDistancePixels": 477.99776035834265,
+          "pairs": 893
+        },
+        {
+          "lagFrames": 264,
+          "lagSeconds": 4.4,
+          "meanSquaredDistancePixels": 492.9276960784314,
+          "pairs": 816
+        },
+        {
+          "lagFrames": 114,
+          "lagSeconds": 1.9,
+          "meanSquaredDistancePixels": 493.2991718426501,
+          "pairs": 966
+        },
+        {
+          "lagFrames": 75,
+          "lagSeconds": 1.25,
+          "meanSquaredDistancePixels": 540.5124378109452,
+          "pairs": 1005
+        },
+        {
+          "lagFrames": 225,
+          "lagSeconds": 3.75,
+          "meanSquaredDistancePixels": 540.5263157894736,
+          "pairs": 855
+        }
+      ],
+      "newVideoAlreadyCountedInCapture": true,
+      "notNewRuntime": true,
+      "visibleSmoothnessAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false,
+      "limits": [
+        "Image recurrence is not direct final GPU phase or perceptual smoothness.",
+        "One head landmark may have harmonics; strongest minimum is not universally the clip fundamental.",
+        "No newly decoded HUD/frame-level CPU join in this recurrence-only analysis.",
+        "Cannot attribute difference from historical recordings to one factor without matched combined observer+recording test."
+      ]
+    },
+    "verificationStatus": "two_scoped_single_factor_diagnostics_closed_combined_factor_unmeasured",
+    "functionalAcceptance": "not_retested_existing8and64_preserved",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "Neither isolated factor reproduced historical6/34ms alternation in these individual trials.",
+      "Do not infer zero observer CPU cost or general irrelevance from near20ms frame pacing.",
+      "Recording trial post-return controller failed; C has descriptive timing scope only.",
+      "Combined observer+recording and changed host conditions remain untested explanations.",
+      "Mean native time still progresses near0.833/s in observer-only trial; no clock fix or full-speed acceptance.",
+      "Current64 workload/20ms target and final perNPC GPU display timing remain separate unaccepted requirements."
+    ],
+    "next": "Run the predeclared joint observer+recording condition only after this bundle is archived/publicly verified; do not modify animation scheduling. Keep exact source and actual lifecycle/clock overlap gates, then decide whether repetition or another host/capture factor is needed."
+  },
+  "metricUnits": {
+    "queryInterval": "milliseconds",
+    "nativeReadBracket": "microseconds",
+    "nativeRate": "animationSeconds/hostQpcSecond",
+    "recurrence": "seconds"
+  },
+  "blockers": [
+    "Neither isolated factor reproduced historical6/34ms alternation in these individual trials.",
+    "Do not infer zero observer CPU cost or general irrelevance from near20ms frame pacing.",
+    "Recording trial post-return controller failed; C has descriptive timing scope only.",
+    "Combined observer+recording and changed host conditions remain untested explanations.",
+    "Mean native time still progresses near0.833/s in observer-only trial; no clock fix or full-speed acceptance.",
+    "Current64 workload/20ms target and final perNPC GPU display timing remain separate unaccepted requirements."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-observer-controls-20261101.md",
+      "sha256": "8f280ccb7d50a08b5c78783930c80cbcabb68dd6ebff08bf2048501343ed43f1"
+    },
+    {
+      "path": "evidence/animation-observer-controls-20261101.txt",
+      "sha256": "8db12a0fc1e6ec746bce71b1a6a29443657a4c0db4a6a545f6de92c780fc2915"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
