@@ -1,0 +1,245 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T18:20:49.420734+09:00",
+  "sourceRunId": "animation-diag-optical-association-20261101-1810",
+  "buildId": "diagnostic-A500-fixed-453D-0C6E-B8FB",
+  "verificationStatus": {
+    "diagnostic": "tracker_failure_identified_render_latency_unresolved",
+    "newRuntimeTrials": 0,
+    "sourceVideoRuns": 1,
+    "fullNpcRegression": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "schemaVersion": "1.0.0",
+    "sourceRunId": "animation-diag-optical-association-20261101-1810",
+    "buildId": "diagnostic-A500-fixed-453D-0C6E-B8FB",
+    "inputRunId": "animation-diag-cache-visible-20261101-1750",
+    "newRuntimeTrials": 0,
+    "newPbo": false,
+    "newVideo": false,
+    "imageFrames": 931,
+    "visuallyQualifiedFrames": 861,
+    "rejectedFrames": 70,
+    "commonComparisonFrames": 776,
+    "trainingFrames": 398,
+    "holdoutFrames": 378,
+    "sensitivityDistancePixels": {
+      "110": {
+        "p50": 0.0,
+        "p95": 1.4142135623730951,
+        "p99": 45.53867189664346
+      },
+      "130": {
+        "p50": 1.0,
+        "p95": 45.49699251853592,
+        "p99": 49.33558553417604
+      }
+    },
+    "selectedByTraining": {
+      "lagMilliseconds": 50.0,
+      "trainingRmsPixels": 5.393513271729309,
+      "holdoutRmsPixels": 7.937582272001888,
+      "holdoutMedianPixels": 2.555634736437007,
+      "holdoutP95Pixels": 8.8675447732849,
+      "rank": 8
+    },
+    "zeroLag": {
+      "lagMilliseconds": 0.0,
+      "trainingRmsPixels": 12.544294223568048,
+      "holdoutRmsPixels": 12.967326248193803,
+      "holdoutMedianPixels": 9.59222051125343,
+      "holdoutP95Pixels": 27.039573576893993,
+      "rank": 8
+    },
+    "shiftControls": [
+      {
+        "lagMilliseconds": -700.0,
+        "trainingRmsPixels": 18.81642047054359,
+        "holdoutRmsPixels": 19.99083260315855,
+        "holdoutMedianPixels": 15.510969499130535,
+        "holdoutP95Pixels": 32.2613392256414,
+        "rank": 8
+      },
+      {
+        "lagMilliseconds": -500.0,
+        "trainingRmsPixels": 20.15637049235374,
+        "holdoutRmsPixels": 20.652214935378296,
+        "holdoutMedianPixels": 15.751455629055544,
+        "holdoutP95Pixels": 36.48128968055842,
+        "rank": 8
+      },
+      {
+        "lagMilliseconds": 500.0,
+        "trainingRmsPixels": 19.69305535727773,
+        "holdoutRmsPixels": 20.8043640181507,
+        "holdoutMedianPixels": 17.238269343865447,
+        "holdoutP95Pixels": 31.019287780307252,
+        "rank": 8
+      },
+      {
+        "lagMilliseconds": 700.0,
+        "trainingRmsPixels": 18.756684350324214,
+        "holdoutRmsPixels": 18.83677677786331,
+        "holdoutMedianPixels": 15.786482581720662,
+        "holdoutP95Pixels": 32.28939245174157,
+        "rank": 8
+      }
+    ],
+    "associationProtocol": {
+      "status": "exploratory_not_calibrated",
+      "splitSeconds": 7.7640386,
+      "training": "earlier half",
+      "holdout": "later half",
+      "admission": "Threshold120/110 scores >=0.75 and landmark distance <=3px. No native input in admission.",
+      "highThreshold130": "Sensitivity failure preserved; full-frame landmark certification withheld.",
+      "lagSign": "positive means compare output-marker time to earlier native feature",
+      "features": "Latest natural cache Head MS xyz and latest scheduler Head local quaternion xyzw, affine with intercept; mixed observation phases retained as limitation.",
+      "scanMilliseconds": [
+        -200,
+        -195,
+        -190,
+        -185,
+        -180,
+        -175,
+        -170,
+        -165,
+        -160,
+        -155,
+        -150,
+        -145,
+        -140,
+        -135,
+        -130,
+        -125,
+        -120,
+        -115,
+        -110,
+        -105,
+        -100,
+        -95,
+        -90,
+        -85,
+        -80,
+        -75,
+        -70,
+        -65,
+        -60,
+        -55,
+        -50,
+        -45,
+        -40,
+        -35,
+        -30,
+        -25,
+        -20,
+        -15,
+        -10,
+        -5,
+        0,
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35,
+        40,
+        45,
+        50,
+        55,
+        60,
+        65,
+        70,
+        75,
+        80,
+        85,
+        90,
+        95,
+        100,
+        105,
+        110,
+        115,
+        120,
+        125,
+        130,
+        135,
+        140,
+        145,
+        150,
+        155,
+        160,
+        165,
+        170,
+        175,
+        180,
+        185,
+        190,
+        195,
+        200
+      ],
+      "score": "Training RMS 2D residual only selects lag; holdout evaluated once. No physical-latency or renderer attribution."
+    },
+    "visualReview": {
+      "v1": {
+        "accepted": false,
+        "reason": "ROI clips head; no association fit on v1."
+      },
+      "v2": {
+        "primaryQc": "Six evenly spaced primary120 landmarks lie on upper-head surface in corrected-coordinate sheet. Not all931 frames manually verified.",
+        "allFrameCertification": false,
+        "highThreshold130Failed": true,
+        "lowThreshold110GenerallyAgrees": true,
+        "overlayCorrection": "Initial v2 QC overlay retained erroneous2x coordinate scale from90px crop. Corrected-coordinate sheet uses1:1; observations unchanged.",
+        "associationScope": "Only independent visual-quality-filtered subset; exploratory, no causal cache-to-display latency."
+      }
+    },
+    "diagnostic": "tracker_failure_identified_render_latency_unresolved",
+    "frameTimeP50P95P99": null,
+    "functionalRegression": "not_retested",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "Camera matrix/exact projection was not recorded. Affine fit is empirical and fitted to this run, not independent geometric calibration.",
+      "OBS marker time describes output scene tick, not game texture creation or physical scanout. Selected lag is not measured rendering delay.",
+      "Head cap is a surface feature not bone origin. Threshold130 disagrees on some phases; only qualified subset is analyzed and phase-dependent selection bias is possible.",
+      "Native features combine latest cache MS translation and latest scheduler local quaternion at different observation stages. No graph clock or render pose identity measured.",
+      "One already recorded diagnostic1part run. No repeated runtime,14clip coverage,8/64 regression,cost improvement or visual-quality acceptance."
+    ],
+    "next": "Prefer recording active-camera projection and exact client-frame/pose labels into a minimal diagnostic HUD using the existing frame-clock mechanism. Compare new run independently; do not treat affine-selected lag as engine defect or clock correction.",
+    "postFitReview": {
+      "acceptedAsLatency": false,
+      "observedFailure": "All six largest holdout residual frames tracked shoulder/neck rather than head despite threshold110/120 agreement. No rows removed or model refitted after this review."
+    },
+    "localEvidenceIntegrity": {
+      "filesVerified": 26,
+      "privateManifestPublished": false,
+      "checkpointSha256": "d5b9d6290a78cb2bb5d2cadab0d046104050e6ba833bf103e63b7c615e8232f4"
+    }
+  },
+  "blockers": [
+    "Camera matrix/exact projection was not recorded. Affine fit is empirical and fitted to this run, not independent geometric calibration.",
+    "OBS marker time describes output scene tick, not game texture creation or physical scanout. Selected lag is not measured rendering delay.",
+    "Head cap is a surface feature not bone origin. Threshold130 disagrees on some phases; only qualified subset is analyzed and phase-dependent selection bias is possible.",
+    "Native features combine latest cache MS translation and latest scheduler local quaternion at different observation stages. No graph clock or render pose identity measured.",
+    "One already recorded diagnostic1part run. No repeated runtime,14clip coverage,8/64 regression,cost improvement or visual-quality acceptance."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-diag-optical-association-20261101.md",
+      "sha256": "8ab9ee98c6fc574cbf001247de57fddff46a08a0d541f36ec87a26f661bd85bd"
+    },
+    {
+      "path": "evidence/animation-diag-optical-association-20261101.txt",
+      "sha256": "d7bb65b964072bde5e9fb8fbc1bf2200d61e9e3d988162a526a04af9ab0b43e2"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

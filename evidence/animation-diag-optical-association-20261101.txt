@@ -1,0 +1,279 @@
+{
+  "inputRunId": "animation-diag-cache-visible-20261101-1750",
+  "inputVideo": {
+    "file": "DG-WGC-2026-11-01_18-05-32.mkv",
+    "bytes": 534735132,
+    "sha256": "9354604a9746687934ce25f431784f70a9b3c240d0da7c7f2071dbd6257cc592"
+  },
+  "landmarkReview": {
+    "v1": {
+      "accepted": false,
+      "reason": "ROI clips head; no association fit on v1."
+    },
+    "v2": {
+      "primaryQc": "Six evenly spaced primary120 landmarks lie on upper-head surface in corrected-coordinate sheet. Not all931 frames manually verified.",
+      "allFrameCertification": false,
+      "highThreshold130Failed": true,
+      "lowThreshold110GenerallyAgrees": true,
+      "overlayCorrection": "Initial v2 QC overlay retained erroneous2x coordinate scale from90px crop. Corrected-coordinate sheet uses1:1; observations unchanged.",
+      "associationScope": "Only independent visual-quality-filtered subset; exploratory, no causal cache-to-display latency."
+    }
+  },
+  "thresholdSensitivity": {
+    "110": {
+      "p50": 0.0,
+      "p95": 1.4142135623730951,
+      "p99": 45.53867189664346
+    },
+    "130": {
+      "p50": 1.0,
+      "p95": 45.49699251853592,
+      "p99": 49.33558553417604
+    }
+  },
+  "associationProtocol": {
+    "status": "exploratory_not_calibrated",
+    "splitSeconds": 7.7640386,
+    "training": "earlier half",
+    "holdout": "later half",
+    "admission": "Threshold120/110 scores >=0.75 and landmark distance <=3px. No native input in admission.",
+    "highThreshold130": "Sensitivity failure preserved; full-frame landmark certification withheld.",
+    "lagSign": "positive means compare output-marker time to earlier native feature",
+    "features": "Latest natural cache Head MS xyz and latest scheduler Head local quaternion xyzw, affine with intercept; mixed observation phases retained as limitation.",
+    "scanMilliseconds": [
+      -200,
+      -195,
+      -190,
+      -185,
+      -180,
+      -175,
+      -170,
+      -165,
+      -160,
+      -155,
+      -150,
+      -145,
+      -140,
+      -135,
+      -130,
+      -125,
+      -120,
+      -115,
+      -110,
+      -105,
+      -100,
+      -95,
+      -90,
+      -85,
+      -80,
+      -75,
+      -70,
+      -65,
+      -60,
+      -55,
+      -50,
+      -45,
+      -40,
+      -35,
+      -30,
+      -25,
+      -20,
+      -15,
+      -10,
+      -5,
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      95,
+      100,
+      105,
+      110,
+      115,
+      120,
+      125,
+      130,
+      135,
+      140,
+      145,
+      150,
+      155,
+      160,
+      165,
+      170,
+      175,
+      180,
+      185,
+      190,
+      195,
+      200
+    ],
+    "score": "Training RMS 2D residual only selects lag; holdout evaluated once. No physical-latency or renderer attribution."
+  },
+  "selectedByTraining": {
+    "lagMilliseconds": 50.0,
+    "trainingRmsPixels": 5.393513271729309,
+    "holdoutRmsPixels": 7.937582272001888,
+    "holdoutMedianPixels": 2.555634736437007,
+    "holdoutP95Pixels": 8.8675447732849,
+    "rank": 8
+  },
+  "zeroLag": {
+    "lagMilliseconds": 0.0,
+    "trainingRmsPixels": 12.544294223568048,
+    "holdoutRmsPixels": 12.967326248193803,
+    "holdoutMedianPixels": 9.59222051125343,
+    "holdoutP95Pixels": 27.039573576893993,
+    "rank": 8
+  },
+  "shiftControls": [
+    {
+      "lagMilliseconds": -700.0,
+      "trainingRmsPixels": 18.81642047054359,
+      "holdoutRmsPixels": 19.99083260315855,
+      "holdoutMedianPixels": 15.510969499130535,
+      "holdoutP95Pixels": 32.2613392256414,
+      "rank": 8
+    },
+    {
+      "lagMilliseconds": -500.0,
+      "trainingRmsPixels": 20.15637049235374,
+      "holdoutRmsPixels": 20.652214935378296,
+      "holdoutMedianPixels": 15.751455629055544,
+      "holdoutP95Pixels": 36.48128968055842,
+      "rank": 8
+    },
+    {
+      "lagMilliseconds": 500.0,
+      "trainingRmsPixels": 19.69305535727773,
+      "holdoutRmsPixels": 20.8043640181507,
+      "holdoutMedianPixels": 17.238269343865447,
+      "holdoutP95Pixels": 31.019287780307252,
+      "rank": 8
+    },
+    {
+      "lagMilliseconds": 700.0,
+      "trainingRmsPixels": 18.756684350324214,
+      "holdoutRmsPixels": 18.83677677786331,
+      "holdoutMedianPixels": 15.786482581720662,
+      "holdoutP95Pixels": 32.28939245174157,
+      "rank": 8
+    }
+  ],
+  "worstHeldout": {
+    "selection": "Six largest holdout model residuals; post-fit QC only, not excluded or used to refit.",
+    "rows": [
+      {
+        "videoFrame": 1171,
+        "observed": [
+          767.0,
+          432.0
+        ],
+        "predicted": [
+          787.146245716236,
+          394.04697371638133
+        ],
+        "residualPixels": 42.96863298435273,
+        "seconds": 12.5807047
+      },
+      {
+        "videoFrame": 1296,
+        "observed": [
+          768.0,
+          432.0
+        ],
+        "predicted": [
+          788.6548010614798,
+          394.3480011027192
+        ],
+        "residualPixels": 42.94524220271837,
+        "seconds": 14.6640367
+      },
+      {
+        "videoFrame": 1044,
+        "observed": [
+          778.0,
+          432.0
+        ],
+        "predicted": [
+          800.6168404406412,
+          396.2218147701757
+        ],
+        "residualPixels": 42.32729627388269,
+        "seconds": 10.4640374
+      },
+      {
+        "videoFrame": 1170,
+        "observed": [
+          772.0,
+          431.0
+        ],
+        "predicted": [
+          794.3256162073282,
+          395.2355058970875
+        ],
+        "residualPixels": 42.16078957365692,
+        "seconds": 12.5640378
+      },
+      {
+        "videoFrame": 1045,
+        "observed": [
+          774.0,
+          432.0
+        ],
+        "predicted": [
+          794.1625904127753,
+          395.16576277674534
+        ],
+        "residualPixels": 41.99155967539595,
+        "seconds": 10.4807046
+      },
+      {
+        "videoFrame": 1295,
+        "observed": [
+          773.0,
+          431.0
+        ],
+        "predicted": [
+          795.3803146753003,
+          395.49106472008606
+        ],
+        "residualPixels": 41.97336023811505,
+        "seconds": 14.6473705
+      }
+    ]
+  },
+  "admission": {
+    "imageFrames": 931,
+    "visuallyQualifiedFrames": 861,
+    "rejectedFrames": 70,
+    "trainingFrames": 398,
+    "holdoutFrames": 378
+  },
+  "postFitReview": {
+    "acceptedAsLatency": false,
+    "observedFailure": "All six largest holdout residual frames tracked shoulder/neck rather than head despite threshold110/120 agreement. No rows removed or model refitted after this review."
+  },
+  "limits": [
+    "Camera matrix/exact projection was not recorded. Affine fit is empirical and fitted to this run, not independent geometric calibration.",
+    "OBS marker time describes output scene tick, not game texture creation or physical scanout. Selected lag is not measured rendering delay.",
+    "Head cap is a surface feature not bone origin. Threshold130 disagrees on some phases; only qualified subset is analyzed and phase-dependent selection bias is possible.",
+    "Native features combine latest cache MS translation and latest scheduler local quaternion at different observation stages. No graph clock or render pose identity measured.",
+    "One already recorded diagnostic1part run. No repeated runtime,14clip coverage,8/64 regression,cost improvement or visual-quality acceptance."
+  ]
+}
