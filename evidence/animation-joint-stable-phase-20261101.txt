@@ -1,0 +1,1561 @@
+{
+  "selection": "All final stage/history/phase aggregates; first12 fully active native part0 entries at video>=5s; first12 eligible exact-HUD pairs;8 uniformly spaced joined examples. Selection is not frequency sampling; complete counts are in aggregates.",
+  "metrics": {
+    "sourceRunId": "animation-observer-joint-20261101-1348",
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "newRuntime": true,
+    "newRuntimeTrials": 1,
+    "newPbo": false,
+    "newVideo": true,
+    "numericOverrides": false,
+    "signatureVerification": "Three existing PBO signatures reported OK before the client; no new signing target.",
+    "joint": {
+      "sourceRunId": "animation-observer-joint-20261101-1348",
+      "runtimeRunId": "runtime-20261101-135048",
+      "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+      "newRuntime": true,
+      "newRuntimeTrials": 1,
+      "newPbo": false,
+      "newVideo": true,
+      "numericOverrides": false,
+      "signatureVerifiedBeforeLaunch": true,
+      "conditions": {
+        "logicalAgents": 1,
+        "nativeParts": 8,
+        "clip": "run",
+        "AI": false,
+        "movement": false,
+        "queryPose": true,
+        "frameSync": "on",
+        "recording": "Existing game-only WGC/x264 CRF0,60fps,45sec",
+        "nativeObserver": "Exact historical baseline30 via existing Python Frida17.2.17",
+        "startOrder": "Recorder before native observer",
+        "clockBridgeWorker": false
+      },
+      "stages": {
+        "A_no_hook_no_recorder": {
+          "firstMissionSeconds": 10.004,
+          "lastMissionSeconds": 28.97,
+          "frameCount": 949,
+          "windowSeconds": 18.9657632,
+          "queryIntervalMs": {
+            "samples": 948,
+            "p50": 20.0039,
+            "p95": 20.20122,
+            "p99": 20.434124,
+            "minimum": 17.6892,
+            "maximum": 22.4081,
+            "mean": 20.006079324894515,
+            "standardDeviation": 0.2488366649375967
+          },
+          "queryBodyBracketMs": {
+            "samples": 949,
+            "p50": 0.1459,
+            "p95": 0.16859999999999997,
+            "p99": 0.23786799999999972,
+            "minimum": 0.134,
+            "maximum": 0.3523,
+            "mean": 0.15084351949420438,
+            "standardDeviation": 0.020010103681949533
+          },
+          "adjacentIntervalDifferenceMs": {
+            "samples": 947,
+            "p50": 0.12809999999999988,
+            "p95": 0.4790300000000005,
+            "p99": 2.112037999999997,
+            "minimum": 0.0002999999999993008,
+            "maximum": 4.718900000000001,
+            "mean": 0.20082302006335803,
+            "standardDeviation": 0.37173100852812013
+          },
+          "lag1IntervalCorrelation": -0.440095671156016,
+          "fractionBelow10ms": 0.0,
+          "fractionAbove30ms": 0.0,
+          "commandSecondsPerQueryQpcSecond": 0.833079787312759,
+          "foregroundFraction": 1.0
+        },
+        "B_observer_and_recorder": {
+          "firstMissionSeconds": 37.712,
+          "lastMissionSeconds": 63.66,
+          "frameCount": 1298,
+          "windowSeconds": 25.947665,
+          "queryIntervalMs": {
+            "samples": 1297,
+            "p50": 20.0024,
+            "p95": 20.28924,
+            "p99": 20.61748,
+            "minimum": 17.521,
+            "maximum": 22.4707,
+            "mean": 20.005909791827296,
+            "standardDeviation": 0.2994701615270889
+          },
+          "queryBodyBracketMs": {
+            "samples": 1298,
+            "p50": 0.1551,
+            "p95": 0.20010499999999992,
+            "p99": 0.2522369999999995,
+            "minimum": 0.1355,
+            "maximum": 0.3389,
+            "mean": 0.1611371340523883,
+            "standardDeviation": 0.02202400829901813
+          },
+          "adjacentIntervalDifferenceMs": {
+            "samples": 1296,
+            "p50": 0.15584999999999916,
+            "p95": 0.6990250000000016,
+            "p99": 2.3987599999999967,
+            "minimum": 9.999999999976694e-05,
+            "maximum": 4.902899999999999,
+            "mean": 0.2548765432098764,
+            "standardDeviation": 0.4398884393037766
+          },
+          "lag1IntervalCorrelation": -0.43997691140185075,
+          "fractionBelow10ms": 0.0,
+          "fractionAbove30ms": 0.0,
+          "commandSecondsPerQueryQpcSecond": 0.8330762032920741,
+          "foregroundFraction": 1.0
+        },
+        "C_recorder_only_hooks_disabled": {
+          "firstMissionSeconds": 67.681,
+          "lastMissionSeconds": 76.744,
+          "frameCount": 454,
+          "windowSeconds": 9.0626196,
+          "queryIntervalMs": {
+            "samples": 453,
+            "p50": 20.005,
+            "p95": 20.292080000000002,
+            "p99": 20.498396,
+            "minimum": 17.8169,
+            "maximum": 22.149,
+            "mean": 20.005782781456954,
+            "standardDeviation": 0.25599790504150804
+          },
+          "queryBodyBracketMs": {
+            "samples": 454,
+            "p50": 0.15305000000000002,
+            "p95": 0.179135,
+            "p99": 0.22608199999999998,
+            "minimum": 0.1375,
+            "maximum": 0.3162,
+            "mean": 0.15733127753303966,
+            "standardDeviation": 0.016248077884223288
+          },
+          "adjacentIntervalDifferenceMs": {
+            "samples": 452,
+            "p50": 0.16765000000000008,
+            "p95": 0.5740099999999988,
+            "p99": 1.9955550000000013,
+            "minimum": 0.0007000000000019213,
+            "maximum": 4.3321000000000005,
+            "mean": 0.23862610619469019,
+            "standardDeviation": 0.37025557769470785
+          },
+          "lag1IntervalCorrelation": -0.4772718899308984,
+          "fractionBelow10ms": 0.0,
+          "fractionAbove30ms": 0.0,
+          "commandSecondsPerQueryQpcSecond": 0.8330618008778616,
+          "foregroundFraction": 1.0
+        },
+        "D_recorder_exited_hooks_disabled": {
+          "firstMissionSeconds": 82.185,
+          "lastMissionSeconds": 115.015,
+          "frameCount": 1642,
+          "windowSeconds": 32.8297473,
+          "queryIntervalMs": {
+            "samples": 1641,
+            "p50": 20.0055,
+            "p95": 20.1927,
+            "p99": 20.75098,
+            "minimum": 17.487,
+            "maximum": 22.4329,
+            "mean": 20.005939853747716,
+            "standardDeviation": 0.2532784717451969
+          },
+          "queryBodyBracketMs": {
+            "samples": 1642,
+            "p50": 0.1377,
+            "p95": 0.16847499999999993,
+            "p99": 0.2849489999999999,
+            "minimum": 0.1215,
+            "maximum": 0.3698,
+            "mean": 0.14390529841656519,
+            "standardDeviation": 0.025165982055222108
+          },
+          "adjacentIntervalDifferenceMs": {
+            "samples": 1640,
+            "p50": 0.1247000000000007,
+            "p95": 0.6059600000000017,
+            "p99": 2.136815999999994,
+            "minimum": 0.00019999999999953388,
+            "maximum": 4.945900000000002,
+            "mean": 0.2018023780487805,
+            "standardDeviation": 0.3768272443518492
+          },
+          "lag1IntervalCorrelation": -0.4235024863438475,
+          "fractionBelow10ms": 0.0,
+          "fractionAbove30ms": 0.0,
+          "commandSecondsPerQueryQpcSecond": 0.8331372702699025,
+          "foregroundFraction": 1.0
+        }
+      },
+      "overlap": {
+        "actualSeconds": 29.9689055,
+        "admittedTrimmedSeconds": 25.947665,
+        "firstNativeVideoSeconds": 1.9305358767578125,
+        "lastNativeVideoSeconds": 31.899441376757814,
+        "hostQpcUnixDriftMs": 0.19453125915447345
+      },
+      "nativeObservation": {
+        "entries": 11992,
+        "completeFrames": 1499,
+        "parts": 8,
+        "numericApplied": 0,
+        "numericChanged": 0,
+        "errors": 0,
+        "dropped": 0,
+        "graphPlusNumeratorPerHostQpcSecond": 0.8330748538721128,
+        "perPart": {
+          "0": {
+            "boneCount": 65,
+            "entries": 1499,
+            "evaluations": 499,
+            "observedResetResidualDiscardSeconds": 4.9989989548921585
+          },
+          "1": {
+            "boneCount": 69,
+            "entries": 1499,
+            "evaluations": 499,
+            "observedResetResidualDiscardSeconds": 4.9989989548921585
+          },
+          "2": {
+            "boneCount": 65,
+            "entries": 1499,
+            "evaluations": 499,
+            "observedResetResidualDiscardSeconds": 4.9989989548921585
+          },
+          "3": {
+            "boneCount": 68,
+            "entries": 1499,
+            "evaluations": 499,
+            "observedResetResidualDiscardSeconds": 4.9989989548921585
+          },
+          "4": {
+            "boneCount": 71,
+            "entries": 1499,
+            "evaluations": 499,
+            "observedResetResidualDiscardSeconds": 4.9989989548921585
+          },
+          "5": {
+            "boneCount": 73,
+            "entries": 1499,
+            "evaluations": 499,
+            "observedResetResidualDiscardSeconds": 4.9989989548921585
+          },
+          "6": {
+            "boneCount": 74,
+            "entries": 1499,
+            "evaluations": 499,
+            "observedResetResidualDiscardSeconds": 4.9989989548921585
+          },
+          "7": {
+            "boneCount": 50,
+            "entries": 1499,
+            "evaluations": 499,
+            "observedResetResidualDiscardSeconds": 4.9989989548921585
+          }
+        }
+      },
+      "video": {
+        "file": "DG-WGC-2026-11-01_13-52-03.mkv",
+        "bytes": 60333170,
+        "sha256": "367f1273cbf2a9fba59a6eeb928c98b1ab3bb66cffcd4a0f7ba44fbb35fd3648"
+      },
+      "outputPathsRestored": true,
+      "postRecorderQpcPersisted": true,
+      "sourceHashes": {
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-135048\\launch.json": "b86bb673ff031a1a0220d34003d9ca65d9396fdf24621a66b80a58ce72a6753b",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-135048\\mission-source\\init.c": "cb80c89b3fb398e091cc3b2330db8e27ffaf6e8a340a7e80bae879d6f25e4ce6",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-135048\\visible-frame-clock.tsv": "beb141937fe0b97d3d6f77fc6b26af63badb5882d87bf0b60a0c6cb126ef5b7c",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-135048\\native-call-probe\\status.json": "409d6a84d4825d84542812547bb986db9a47e2f2090d905f90fedf04d07cd362",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-135048\\native-call-probe\\configuration.json": "5a7c5d9654cbe4e6e38f93331fd3d5851035ce49ebb40fe5f6e0d047cb5fce89",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-135048\\native-call-probe\\instrumentation.js": "e51e512a93474e3bc9b243a034706767d778bbe30752176d9a4a5ffbeba78fa1",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-135048\\native-call-probe\\calls.jsonl": "90e9f95697d7e24eaf7b9393838df9815199613cec8bc14802f3c67622cd05b8",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-135048\\obs-capture.json": "ed97fb2e9c85ecc9558b579107fb81a70c84fa608a9b0492dee11e4334ba5f78",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-135048\\obs-capture.log": "e6c5a38e8c1216ce5d24bf9206a3184e9556a66952623f660bed84f7f68219a2",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-135048\\native-process-cost.tsv": "44094b68adc4f5b55d045e56a6f190fd52ce41f4937da589f35579ca8ece9913"
+      },
+      "verificationStatus": "one_joint_condition_closed",
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false,
+      "limits": [
+        "One joint trial; not randomized or repeated factorial evidence.",
+        "Recorder-first order differs from historical observer-arm-gated recording; persistent startup/order effects remain untested.",
+        "C andD retain disabled hook/agent branches, not the original uninjected A state.",
+        "Query cadence/native proxy are CPU-side; no final GPU display time or full motion smoothness acceptance.",
+        "No8/64 feature/performance regression or20ms target acceptance in this one-agent diagnostic.",
+        "Observed reset residual loss is per part/time, not additive across8parts or CPU self-time."
+      ],
+      "next": "Classify whether joint condition reproduced the historical pattern. If not, audit exact startup order, bridge activity and saved runtime configuration before another game run; avoid speculative clock/interpolation changes."
+    },
+    "historicalAudit": {
+      "sourceRunId": "animation-observer-joint-20261101-1348-historical-timecourse",
+      "newRuntime": false,
+      "sourceRuntimeCount": 7,
+      "matchedLaunchFields": [
+        "pboSha256",
+        "subsetComparisonPboSha256",
+        "subsetIntegrationPboSha256",
+        "missionSourcesSha256",
+        "graphicsSeedSha256",
+        "initialGraphicsSha256",
+        "seconds",
+        "count",
+        "previewClip",
+        "queryPose",
+        "frameSync",
+        "initialLod0",
+        "poseCadenceDisabled",
+        "frameOrderProbe"
+      ],
+      "launchFieldDifferences": {
+        "runtime-20261031-110449": {},
+        "runtime-20261031-111204": {},
+        "runtime-20261031-112434": {},
+        "runtime-20261031-112900": {},
+        "runtime-20261101-132801": {},
+        "runtime-20261101-133655": {},
+        "runtime-20261101-135048": {}
+      },
+      "missionInitHashes": {
+        "runtime-20261031-110449": "cb80c89b3fb398e091cc3b2330db8e27ffaf6e8a340a7e80bae879d6f25e4ce6",
+        "runtime-20261031-111204": "cb80c89b3fb398e091cc3b2330db8e27ffaf6e8a340a7e80bae879d6f25e4ce6",
+        "runtime-20261031-112434": "cb80c89b3fb398e091cc3b2330db8e27ffaf6e8a340a7e80bae879d6f25e4ce6",
+        "runtime-20261031-112900": "cb80c89b3fb398e091cc3b2330db8e27ffaf6e8a340a7e80bae879d6f25e4ce6",
+        "runtime-20261101-132801": "cb80c89b3fb398e091cc3b2330db8e27ffaf6e8a340a7e80bae879d6f25e4ce6",
+        "runtime-20261101-133655": "cb80c89b3fb398e091cc3b2330db8e27ffaf6e8a340a7e80bae879d6f25e4ce6",
+        "runtime-20261101-135048": "cb80c89b3fb398e091cc3b2330db8e27ffaf6e8a340a7e80bae879d6f25e4ce6"
+      },
+      "runs": [
+        {
+          "runtimeRunId": "runtime-20261031-110449",
+          "historical": true,
+          "mode": "baseline30",
+          "windows": {
+            "1..4s": {
+              "samples": 148,
+              "p50": 18.70845,
+              "p95": 34.55292,
+              "p99": 36.550445,
+              "shortBelow10msFraction": 0.4864864864864865,
+              "longAbove30msFraction": 0.47297297297297297,
+              "mean": 20.020739864864865,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 1.006,
+              "lastMissionSeconds": 3.969
+            },
+            "10..20s": {
+              "samples": 498,
+              "p50": 19.7885,
+              "p95": 34.267745,
+              "p99": 35.925706000000005,
+              "shortBelow10msFraction": 0.45180722891566266,
+              "longAbove30msFraction": 0.43373493975903615,
+              "mean": 19.986748192771085,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 10.023,
+              "lastMissionSeconds": 19.976
+            },
+            "60..80s": {
+              "samples": 999,
+              "p50": 10.5463,
+              "p95": 34.45955,
+              "p99": 36.087316,
+              "shortBelow10msFraction": 0.4994994994994995,
+              "longAbove30msFraction": 0.48348348348348347,
+              "mean": 19.989956156156158,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 60.02,
+              "lastMissionSeconds": 79.99
+            },
+            "90..110s": {
+              "samples": 999,
+              "p50": 20.4495,
+              "p95": 34.47274,
+              "p99": 36.209028,
+              "shortBelow10msFraction": 0.4974974974974975,
+              "longAbove30msFraction": 0.48348348348348347,
+              "mean": 19.991587987987984,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 90.026,
+              "lastMissionSeconds": 109.998
+            }
+          },
+          "preHelperProof": {
+            "earlyWindowPrecedesAttachReadinessBySeconds": 1.2042762,
+            "earlyWindowPrecedesFirstObservedNativeBySeconds": 2.8945288,
+            "earlyWindowPrecedesRecordingBySeconds": 4.6793622,
+            "earlyWindowPrecedesFirstBridgeAckRequestBySeconds": 1.4150037,
+            "scope": "Attach readiness is recorded before launching bridge and native worker in retained watcher source. Background readiness polling may already exist. TimeMs/QPC conversion is millisecond-level; margins exceed0.5s."
+          },
+          "obsFacts": {
+            "obsFps": "60/1",
+            "captureMethod": "WGC"
+          }
+        },
+        {
+          "runtimeRunId": "runtime-20261031-111204",
+          "historical": true,
+          "mode": "candidate30",
+          "windows": {
+            "1..4s": {
+              "samples": 149,
+              "p50": 21.8361,
+              "p95": 34.51208,
+              "p99": 36.851851999999994,
+              "shortBelow10msFraction": 0.4899328859060403,
+              "longAbove30msFraction": 0.48322147651006714,
+              "mean": 19.963125503355705,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 1.004,
+              "lastMissionSeconds": 3.979
+            },
+            "10..20s": {
+              "samples": 499,
+              "p50": 20.3526,
+              "p95": 34.00587,
+              "p99": 35.506594,
+              "shortBelow10msFraction": 0.46092184368737477,
+              "longAbove30msFraction": 0.4348697394789579,
+              "mean": 20.002290981963927,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 10.004,
+              "lastMissionSeconds": 19.985
+            },
+            "60..80s": {
+              "samples": 999,
+              "p50": 22.2536,
+              "p95": 34.509949999999996,
+              "p99": 36.230306,
+              "shortBelow10msFraction": 0.4994994994994995,
+              "longAbove30msFraction": 0.48848848848848847,
+              "mean": 20.00764144144144,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 60.009,
+              "lastMissionSeconds": 79.997
+            },
+            "90..110s": {
+              "samples": 999,
+              "p50": 12.2229,
+              "p95": 34.49897,
+              "p99": 36.274339999999995,
+              "shortBelow10msFraction": 0.4964964964964965,
+              "longAbove30msFraction": 0.4804804804804805,
+              "mean": 19.993542242242242,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 90.017,
+              "lastMissionSeconds": 109.991
+            }
+          },
+          "preHelperProof": {
+            "earlyWindowPrecedesAttachReadinessBySeconds": 1.1965414,
+            "earlyWindowPrecedesFirstObservedNativeBySeconds": 2.8963802,
+            "earlyWindowPrecedesRecordingBySeconds": 4.7476534,
+            "earlyWindowPrecedesFirstBridgeAckRequestBySeconds": 1.4093867,
+            "scope": "Attach readiness is recorded before launching bridge and native worker in retained watcher source. Background readiness polling may already exist. TimeMs/QPC conversion is millisecond-level; margins exceed0.5s."
+          },
+          "obsFacts": {
+            "obsFps": "60/1",
+            "captureMethod": "WGC"
+          }
+        },
+        {
+          "runtimeRunId": "runtime-20261031-112434",
+          "historical": true,
+          "mode": "candidate30",
+          "windows": {
+            "1..4s": {
+              "samples": 148,
+              "p50": 17.3755,
+              "p95": 34.368305,
+              "p99": 35.941323000000004,
+              "shortBelow10msFraction": 0.5,
+              "longAbove30msFraction": 0.4864864864864865,
+              "mean": 19.894630405405408,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 1.022,
+              "lastMissionSeconds": 3.967
+            },
+            "10..20s": {
+              "samples": 500,
+              "p50": 19.92585,
+              "p95": 34.1759,
+              "p99": 35.777238,
+              "shortBelow10msFraction": 0.464,
+              "longAbove30msFraction": 0.438,
+              "mean": 19.9565224,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 10.013,
+              "lastMissionSeconds": 19.991
+            },
+            "60..80s": {
+              "samples": 998,
+              "p50": 20.170949999999998,
+              "p95": 34.4445,
+              "p99": 36.351665,
+              "shortBelow10msFraction": 0.49799599198396793,
+              "longAbove30msFraction": 0.4879759519038076,
+              "mean": 19.9914621242485,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 60.016,
+              "lastMissionSeconds": 79.968
+            },
+            "90..110s": {
+              "samples": 998,
+              "p50": 20.0699,
+              "p95": 34.410765,
+              "p99": 36.080608,
+              "shortBelow10msFraction": 0.4969939879759519,
+              "longAbove30msFraction": 0.4909819639278557,
+              "mean": 19.99195771543086,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 90.025,
+              "lastMissionSeconds": 109.977
+            }
+          },
+          "preHelperProof": {
+            "earlyWindowPrecedesAttachReadinessBySeconds": 1.104199,
+            "earlyWindowPrecedesFirstObservedNativeBySeconds": 2.8355974,
+            "earlyWindowPrecedesRecordingBySeconds": 5.079093,
+            "earlyWindowPrecedesFirstBridgeAckRequestBySeconds": 1.3362441,
+            "scope": "Attach readiness is recorded before launching bridge and native worker in retained watcher source. Background readiness polling may already exist. TimeMs/QPC conversion is millisecond-level; margins exceed0.5s."
+          },
+          "obsFacts": {
+            "obsFps": "60/1",
+            "captureMethod": "WGC"
+          }
+        },
+        {
+          "runtimeRunId": "runtime-20261031-112900",
+          "historical": true,
+          "mode": "baseline30",
+          "windows": {
+            "1..4s": {
+              "samples": 149,
+              "p50": 9.8659,
+              "p95": 35.01216,
+              "p99": 37.057064000000004,
+              "shortBelow10msFraction": 0.5033557046979866,
+              "longAbove30msFraction": 0.4899328859060403,
+              "mean": 19.930357718120806,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 1.019,
+              "lastMissionSeconds": 3.988
+            },
+            "10..20s": {
+              "samples": 498,
+              "p50": 20.161299999999997,
+              "p95": 34.8024,
+              "p99": 36.975865999999996,
+              "shortBelow10msFraction": 0.4598393574297189,
+              "longAbove30msFraction": 0.44377510040160645,
+              "mean": 19.97817530120482,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 10.021,
+              "lastMissionSeconds": 19.97
+            },
+            "60..80s": {
+              "samples": 999,
+              "p50": 22.3033,
+              "p95": 35.151419999999995,
+              "p99": 36.72369,
+              "shortBelow10msFraction": 0.4994994994994995,
+              "longAbove30msFraction": 0.4994994994994995,
+              "mean": 20.00407177177177,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 60.003,
+              "lastMissionSeconds": 79.987
+            },
+            "90..110s": {
+              "samples": 999,
+              "p50": 9.5417,
+              "p95": 35.11595,
+              "p99": 36.990772,
+              "shortBelow10msFraction": 0.5005005005005005,
+              "longAbove30msFraction": 0.4974974974974975,
+              "mean": 19.993670270270268,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 90.004,
+              "lastMissionSeconds": 109.978
+            }
+          },
+          "preHelperProof": {
+            "earlyWindowPrecedesAttachReadinessBySeconds": 1.4114812,
+            "earlyWindowPrecedesFirstObservedNativeBySeconds": 3.0734818,
+            "earlyWindowPrecedesRecordingBySeconds": 4.7318072,
+            "earlyWindowPrecedesFirstBridgeAckRequestBySeconds": 1.6199526,
+            "scope": "Attach readiness is recorded before launching bridge and native worker in retained watcher source. Background readiness polling may already exist. TimeMs/QPC conversion is millisecond-level; margins exceed0.5s."
+          },
+          "obsFacts": {
+            "obsFps": "60/1",
+            "captureMethod": "WGC"
+          }
+        },
+        {
+          "runtimeRunId": "runtime-20261101-132801",
+          "historical": false,
+          "mode": null,
+          "windows": {
+            "1..4s": {
+              "samples": 149,
+              "p50": 20.0034,
+              "p95": 20.2358,
+              "p99": 20.552256000000003,
+              "shortBelow10msFraction": 0.0,
+              "longAbove30msFraction": 0.0,
+              "mean": 20.00519530201342,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 1.011,
+              "lastMissionSeconds": 3.991
+            },
+            "10..20s": {
+              "samples": 499,
+              "p50": 20.0125,
+              "p95": 20.222649999999998,
+              "p99": 21.051382,
+              "shortBelow10msFraction": 0.0,
+              "longAbove30msFraction": 0.0,
+              "mean": 20.00577094188377,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 10.013,
+              "lastMissionSeconds": 19.996
+            },
+            "60..80s": {
+              "samples": 999,
+              "p50": 20.0076,
+              "p95": 20.19307,
+              "p99": 20.412415999999997,
+              "shortBelow10msFraction": 0.0,
+              "longAbove30msFraction": 0.0,
+              "mean": 20.00575655655656,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 60.008,
+              "lastMissionSeconds": 79.994
+            },
+            "90..110s": {
+              "samples": 998,
+              "p50": 20.0048,
+              "p95": 20.202550000000002,
+              "p99": 20.391583,
+              "shortBelow10msFraction": 0.0,
+              "longAbove30msFraction": 0.0,
+              "mean": 20.0037627254509,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 90.019,
+              "lastMissionSeconds": 109.983
+            }
+          },
+          "preHelperProof": null,
+          "obsFacts": {}
+        },
+        {
+          "runtimeRunId": "runtime-20261101-133655",
+          "historical": false,
+          "mode": null,
+          "windows": {
+            "1..4s": {
+              "samples": 149,
+              "p50": 20.0094,
+              "p95": 20.281760000000002,
+              "p99": 20.796944,
+              "shortBelow10msFraction": 0.0,
+              "longAbove30msFraction": 0.0,
+              "mean": 20.005794630872483,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 1.015,
+              "lastMissionSeconds": 3.996
+            },
+            "10..20s": {
+              "samples": 498,
+              "p50": 20.00565,
+              "p95": 20.194625000000002,
+              "p99": 20.700326999999998,
+              "shortBelow10msFraction": 0.0,
+              "longAbove30msFraction": 0.0,
+              "mean": 20.005689759036144,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 10.017,
+              "lastMissionSeconds": 19.98
+            },
+            "60..80s": {
+              "samples": 999,
+              "p50": 20.0018,
+              "p95": 20.29958,
+              "p99": 20.506476,
+              "shortBelow10msFraction": 0.0,
+              "longAbove30msFraction": 0.0,
+              "mean": 20.005937737737735,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 60.012,
+              "lastMissionSeconds": 79.998
+            },
+            "90..110s": {
+              "samples": 999,
+              "p50": 20.0025,
+              "p95": 20.19145,
+              "p99": 20.758480000000002,
+              "shortBelow10msFraction": 0.0,
+              "longAbove30msFraction": 0.0,
+              "mean": 20.00593023023023,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 90.001,
+              "lastMissionSeconds": 109.987
+            }
+          },
+          "preHelperProof": null,
+          "obsFacts": {
+            "obsFps": "60/1",
+            "captureMethod": "WGC"
+          }
+        },
+        {
+          "runtimeRunId": "runtime-20261101-135048",
+          "historical": false,
+          "mode": null,
+          "windows": {
+            "1..4s": {
+              "samples": 149,
+              "p50": 20.011,
+              "p95": 20.16806,
+              "p99": 20.373944,
+              "shortBelow10msFraction": 0.0,
+              "longAbove30msFraction": 0.0,
+              "mean": 20.003959060402686,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 1.001,
+              "lastMissionSeconds": 3.982
+            },
+            "10..20s": {
+              "samples": 499,
+              "p50": 20.0018,
+              "p95": 20.1785,
+              "p99": 20.295928,
+              "shortBelow10msFraction": 0.0,
+              "longAbove30msFraction": 0.0,
+              "mean": 20.005758116232464,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 10.004,
+              "lastMissionSeconds": 19.987
+            },
+            "60..80s": {
+              "samples": 998,
+              "p50": 20.007550000000002,
+              "p95": 20.306595,
+              "p99": 20.558283999999997,
+              "shortBelow10msFraction": 0.0,
+              "longAbove30msFraction": 0.0,
+              "mean": 20.005954208416835,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 60.019,
+              "lastMissionSeconds": 79.985
+            },
+            "90..110s": {
+              "samples": 999,
+              "p50": 20.0064,
+              "p95": 20.19099,
+              "p99": 20.361306,
+              "shortBelow10msFraction": 0.0,
+              "longAbove30msFraction": 0.0,
+              "mean": 20.006004104104104,
+              "foregroundFraction": 1.0,
+              "firstMissionSeconds": 90.007,
+              "lastMissionSeconds": 109.993
+            }
+          },
+          "preHelperProof": null,
+          "obsFacts": {
+            "obsFps": "60/1",
+            "captureMethod": "WGC"
+          }
+        }
+      ],
+      "sourceHashes": {
+        "research\\animation-residual-carry-20261031-105147\\baseline30\\attach-readiness.json": "4f761dc7af9f642d7d0f9877489a13e1c0d6f615bf3d4c8a0825965d44fe96cc",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-110449\\native-call-probe\\status.json": "c976df3bc30de97e6188215e386df1cc941722ae98e1aa7c77c190f57b7800bf",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-110449\\native-call-probe\\calls.jsonl": "15a0f20358d072d1d3bba2aba1e4e84df466dba523c51d2a82793082fd8f819f",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-110449\\native-clock-bridge.jsonl": "ec251fd287493987568675c2916ee12afd19b429688344818ca9ad2490190a9a",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-110449\\obs-capture.log": "43b064fe72bfccb0c2d4a81f08a5db963c5d1ffa877f7c4602fb7cf002ab4c44",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-110449\\launch.json": "a80856848e89a58c7cddf68c7075eb14b8b431669b181375cafeec737ce02fab",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-110449\\mission-source\\init.c": "cb80c89b3fb398e091cc3b2330db8e27ffaf6e8a340a7e80bae879d6f25e4ce6",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-110449\\visible-frame-clock.tsv": "a89a471a3d4db8a832cee20736cb0df60d3e87c7e425bd981fd22a9c643a3259",
+        "research\\animation-residual-carry-20261031-105147\\candidate30\\attach-readiness.json": "09997adb642e0a7ea33eca48b79a368523b48f9a93e3c7bdfa50e269f16f1e7d",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-111204\\native-call-probe\\status.json": "3bac12091caab253ebb7dca5fb0d2f7f543ce5c50bc188372f95d20579c36ad3",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-111204\\native-call-probe\\calls.jsonl": "a3abed9e7b38810b81c5943416400739853d100deaf3e1a4c3f1e7b18b08bad2",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-111204\\native-clock-bridge.jsonl": "2b424c42f9f5dfa23a23ee1140ad2e4030436a29671558a11887ddd9411d9546",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-111204\\obs-capture.log": "c733bb0b7317f0d8df6aef815b0a65815adeac6baca9f222f64ae27b48fcdbcb",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-111204\\launch.json": "7109c555031159593a576807ee53f3bfbeaff66226b4eb4325812e533065a50d",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-111204\\mission-source\\init.c": "cb80c89b3fb398e091cc3b2330db8e27ffaf6e8a340a7e80bae879d6f25e4ce6",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-111204\\visible-frame-clock.tsv": "1ed1f586a3a4fc33fd517ec1b50fdc092d965059af5f175f47ab7c679bd993ab",
+        "research\\animation-residual-repeat-20261031-112400\\candidate30\\attach-readiness.json": "f3433999d59223e44f9ff593c5f98f212785565ee8e5e0e404e39015ce9b0a63",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-112434\\native-call-probe\\status.json": "e72f772d9b3772c31f7489ab141a87d15dd35423999b1856fd5b5211954a5090",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-112434\\native-call-probe\\calls.jsonl": "ecb6e940b4175fd3ca8d309edd75e78936b8d4f7a1302e64b676e412e2289971",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-112434\\native-clock-bridge.jsonl": "7a532363810667d4337ba207f4b218ef3fd7d922dccabaa6d9436784e7d63408",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-112434\\obs-capture.log": "e218c32dfd4098cac3b3942bd1f9526a349ea337874da13c47a5e5ee3f4f3dc6",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-112434\\launch.json": "ff961a84fabe5d7fd9ab248eaac55e5ded4852bc9e14541112271c44a1baa926",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-112434\\mission-source\\init.c": "cb80c89b3fb398e091cc3b2330db8e27ffaf6e8a340a7e80bae879d6f25e4ce6",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-112434\\visible-frame-clock.tsv": "623e5edc6556be19831526db1a4d7ab6d33a066d3ca6a59d73b4d67c909209e5",
+        "research\\animation-residual-repeat-20261031-112400\\baseline30\\attach-readiness.json": "7f0b2c196730e3b770a500801ed7e7ac8c25ac7860795e70f528c25dd9bcaa3f",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-112900\\native-call-probe\\status.json": "225d011f1475e8a550dff0e0da3adaea0f32592d8a6fbf03df07be17ef87afcf",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-112900\\native-call-probe\\calls.jsonl": "a557235e766cba4d9c34e5274a34521e43930a8096a28a1828df7963d2b087cb",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-112900\\native-clock-bridge.jsonl": "e837abc643ab4b3f9b4c6d4b03baa4f4713cb6fb98f1ae085dc0ada9b231486a",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-112900\\obs-capture.log": "23c35ac56aa3e13e639b8e81946f749b09d01043cb02956bb84db4fca4beb8a2",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-112900\\launch.json": "f909de3549a5d4d48169164ea52deb2beeb35561842954c9b62176b02e1b6a21",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-112900\\mission-source\\init.c": "cb80c89b3fb398e091cc3b2330db8e27ffaf6e8a340a7e80bae879d6f25e4ce6",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-112900\\visible-frame-clock.tsv": "c58a14260fb4ff73e0bb4661e4fc7ef9b1a49f9a73ddf2212168048c087f6dfc",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-132801\\launch.json": "c5f618ad8bc36307c3bbcdd71ad80ed7349e33be474da172051efd28591c35ce",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-132801\\mission-source\\init.c": "cb80c89b3fb398e091cc3b2330db8e27ffaf6e8a340a7e80bae879d6f25e4ce6",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-132801\\visible-frame-clock.tsv": "5fd3041a6e071e1624767e35828d3ffc68acdab76330135c04f44808fc2db836",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-133655\\launch.json": "72231e4f489fdd11193ff2ea5dac1a028bea4f6ce734b31c35bc886506d3ea01",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-133655\\mission-source\\init.c": "cb80c89b3fb398e091cc3b2330db8e27ffaf6e8a340a7e80bae879d6f25e4ce6",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-133655\\visible-frame-clock.tsv": "c6c2ade779a2bbd53361f8de07d197cec93679eff7895ed4306a8f13b8563d7f",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-135048\\launch.json": "b86bb673ff031a1a0220d34003d9ca65d9396fdf24621a66b80a58ce72a6753b",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-135048\\mission-source\\init.c": "cb80c89b3fb398e091cc3b2330db8e27ffaf6e8a340a7e80bae879d6f25e4ce6",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-135048\\visible-frame-clock.tsv": "beb141937fe0b97d3d6f77fc6b26af63badb5882d87bf0b60a0c6cb126ef5b7c"
+      },
+      "verificationStatus": "historical_pre_helper_pattern_verified",
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false,
+      "limits": [
+        "Fixed1..4s early windows were selected after joint non-reproduction; exploratory, not a prospective randomized contrast.",
+        "Pre-helper proof rules out active observer/recording work as necessary for the observed early pattern, not every background readiness poll or prior host condition.",
+        "Known launch/source/graphics hashes do not capture display refresh/driver state, all host load, timer resolution, prior applications or game-internal startup state.",
+        "No causal attribution to one missing environmental variable.",
+        "Historical pattern and prior clock-loss/carry evidence remain valid for their actual conditions."
+      ]
+    },
+    "stablePhase": {
+      "sourceRunId": "animation-observer-joint-20261101-1348-stable-phase",
+      "runtimeRunId": "runtime-20261101-135048",
+      "exactHudMatches": 539,
+      "hudSamples": 540,
+      "nativeJoinedSamples": 539,
+      "missedNativeFrames": [],
+      "consecutivePairs": 418,
+      "queryBeforeNativeAfterOrderVerified": true,
+      "headNativePart": 0,
+      "nativePartPhaseSpreadMaxSeconds": 0.0,
+      "modelFittedToThisRun": false,
+      "projectionFittedToThisRun": false,
+      "constantOpticalOffsetLearnedFromSeconds": [
+        5,
+        8
+      ],
+      "holdoutSeconds": [
+        12,
+        23
+      ],
+      "cpuSpatialPhaseErrorPixels": {
+        "samples": 539,
+        "p50": 0.2946033379223925,
+        "p95": 0.8044437013219425,
+        "p99": 1.3599528319784204,
+        "minimum": 0.011508381475558145,
+        "maximum": 1.4728982524666425
+      },
+      "opticalHoldoutPhaseErrorPixels": {
+        "samples": 359,
+        "p50": 1.7573348064671293,
+        "p95": 5.648056633049984,
+        "p99": 6.76748692579252,
+        "minimum": 0.061921738344063185,
+        "maximum": 7.338799367685146
+      },
+      "metrics": {
+        "queryDtMs": {
+          "samples": 418,
+          "p50": 20.00430000000364,
+          "p95": 20.219465000005243,
+          "p99": 20.394980000001368,
+          "minimum": 18.119099999992727,
+          "maximum": 22.254400000008445
+        },
+        "nativePhaseStepMs": {
+          "samples": 418,
+          "p50": 19.999999552965164,
+          "p95": 19.999999552965164,
+          "p99": 21.00000126287341,
+          "minimum": 7.999237626791,
+          "maximum": 21.000001579523087
+        },
+        "nativeRateOverMean": {
+          "samples": 418,
+          "p50": 1.1948104564348565,
+          "p95": 1.212629265224945,
+          "p99": 1.27321763044842,
+          "minimum": 0.479420000278466,
+          "maximum": 1.2823252097191304
+        },
+        "cpuNativeResidualPixels": {
+          "samples": 418,
+          "p50": 0.4101382320230919,
+          "p95": 1.1620249886889695,
+          "p99": 1.469598624636287,
+          "minimum": 0.02077025888542124,
+          "maximum": 1.4867695138083903
+        },
+        "cpuMeanRateResidualPixels": {
+          "samples": 418,
+          "p50": 0.8866627999554256,
+          "p95": 2.184042436017907,
+          "p99": 2.7522731381206413,
+          "minimum": 0.0014620939329214645,
+          "maximum": 3.3631003710898244
+        },
+        "opticalNativeResidualPixels": {
+          "samples": 418,
+          "p50": 0.8622659218522435,
+          "p95": 1.7323390544420085,
+          "p99": 2.145464880786855,
+          "minimum": 0.06283165377159242,
+          "maximum": 2.816854238076555
+        },
+        "opticalMeanRateResidualPixels": {
+          "samples": 418,
+          "p50": 1.2071768824169016,
+          "p95": 2.7117067693601413,
+          "p99": 3.3198897467813837,
+          "minimum": 0.2910739968421379,
+          "maximum": 3.923456477164072
+        }
+      },
+      "phaseStepRoundedMsCounts": {
+        "20.0": 254,
+        "10.0": 126,
+        "18.0": 1,
+        "12.0": 1,
+        "21.0": 14,
+        "9.0": 8,
+        "19.0": 9,
+        "11.0": 4,
+        "8.0": 1
+      },
+      "nativeRate": 0.8330748538721128,
+      "meanNormalizedStepBelow0p8": 140,
+      "meanNormalizedStepAbove1p1": 277,
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false,
+      "limits": [
+        "Phase/reference and camera model are historical CPU empirical mappings; not decoded original ANM or direct GPU phase.",
+        "Optical head is a surface point, not bone origin; remaining pixel residual and detector error remain.",
+        "Exact HUD labels identify image/CPU frame records, not physical scanout time.",
+        "This single stable-query run does not cover14clips,64agents,perceptual quality or deployable correction.",
+        "Native delta/mean normalization is analysis, not a clock control or inferred stutter duration."
+      ],
+      "sourceHashes": {
+        "research\\animation-phase-matched-20261101-1316\\results-qpc-complete.json": "a39782c1513cbc2e61da482b3ed301feea40b829d8e551207d47da461de017e8",
+        "research\\animation-optical-carry-20261031-1850\\projection-calibration-v2.json": "faade7e8f618f3d9fc75fc49fc1658a71055e09a41e21be8bd909ecf18f05985",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-135048\\joint-visible-frame-ids.json": "0b7980d92b700c077346b11291c691fed819c055820a991cc55a9a91785a8b1d",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-135048\\visible-frame-clock.tsv": "beb141937fe0b97d3d6f77fc6b26af63badb5882d87bf0b60a0c6cb126ef5b7c",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-135048\\visible-bone-bindings.tsv": "073eea778b7d3fc304a81a396dfd10e58966abf9058db8db2d5f1c14acc93d22",
+        "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261101-135048\\native-call-probe\\calls.jsonl": "90e9f95697d7e24eaf7b9393838df9815199613cec8bc14802f3c67622cd05b8",
+        "research\\animation-observer-joint-20261101-1348\\recorded-head-observations.json": "c3a4d1c72c78ea7b6ceb5bb76563d8bae11e0b2dff73bff9a935cbc8ecab7fa1"
+      },
+      "nativeBoundedBetweenPreviousQueryAndCurrentQuery": true
+    },
+    "resetAssociation": {
+      "consecutivePairs": 418,
+      "cells": [
+        {
+          "evaluation": "no_reset",
+          "stepBand": "high",
+          "count": 277
+        },
+        {
+          "evaluation": "no_reset",
+          "stepBand": "middle",
+          "count": 1
+        },
+        {
+          "evaluation": "reset",
+          "stepBand": "low",
+          "count": 140
+        }
+      ],
+      "lowThreshold": 0.8,
+      "highThreshold": 1.1,
+      "unit": "native phase advance / mean-rate phase advance at actual query dt",
+      "limits": "Exploratory step bands; not an independent perceptual threshold or stutter duration."
+    },
+    "recordedRecurrence": {
+      "sourceRunId": "animation-observer-joint-20261101-1348-recorded-recurrence",
+      "runtimeRunId": "runtime-20261101-135048",
+      "videoSha256": "367f1273cbf2a9fba59a6eeb928c98b1ab3bb66cffcd4a0f7ba44fbb35fd3648",
+      "detectorSha256": "142ebd1d7e11922f7fe3d9608206cdb923a3201e3db446a7054182e67df052cc",
+      "windowVideoSeconds": [
+        5,
+        23
+      ],
+      "imageFrames": 1080,
+      "threshold": 145,
+      "detectorRetuned": false,
+      "minimumDetectorScore": 0.7559540889526541,
+      "meanDetectorScore": 0.9192800739155814,
+      "recurrenceLocalMinima": [
+        {
+          "lagFrames": 150,
+          "lagSeconds": 2.5,
+          "meanSquaredDistancePixels": 7.283870967741936,
+          "pairs": 930
+        },
+        {
+          "lagFrames": 264,
+          "lagSeconds": 4.4,
+          "meanSquaredDistancePixels": 471.58700980392155,
+          "pairs": 816
+        },
+        {
+          "lagFrames": 113,
+          "lagSeconds": 1.8833333333333333,
+          "meanSquaredDistancePixels": 473.5553257497415,
+          "pairs": 967
+        },
+        {
+          "lagFrames": 187,
+          "lagSeconds": 3.1166666666666667,
+          "meanSquaredDistancePixels": 482.11198208286675,
+          "pairs": 893
+        },
+        {
+          "lagFrames": 225,
+          "lagSeconds": 3.75,
+          "meanSquaredDistancePixels": 529.5017543859649,
+          "pairs": 855
+        },
+        {
+          "lagFrames": 75,
+          "lagSeconds": 1.25,
+          "meanSquaredDistancePixels": 530.8646766169154,
+          "pairs": 1005
+        }
+      ],
+      "newVideoAlreadyCountedInCapture": true,
+      "notNewRuntime": true,
+      "visibleSmoothnessAccepted": false,
+      "performanceAccepted": false,
+      "goalComplete": false,
+      "limits": [
+        "Image recurrence is not direct final GPU phase or perceptual smoothness.",
+        "One head landmark may have harmonics; strongest minimum is not universally the clip fundamental.",
+        "No newly decoded HUD/frame-level CPU join in this recurrence-only analysis.",
+        "Current joint trial exists; historical comparison still differs in onset order and unrecorded early host/startup state. Do not attribute period change to observer or recording alone."
+      ],
+      "reviewedFromSha256": "78d96c8272697b5f07212696a4e40985aa4c559c554570dcdf7480652c3562a9",
+      "reviewChange": "Limit wording only; measured recurrence values unchanged."
+    },
+    "verificationStatus": "joint_closed_historical_pre_helper_pattern_and_stable_query_reset_link_diagnosed",
+    "functionalAcceptance": "not_retested_existing8and64_preserved",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "No historical short/long pattern reproduced in this one current joint trial; this is not an optimization success.",
+      "Early historical pattern predates active native/recording work; background readiness polling/host startup state remain unassigned.",
+      "Known launch configuration identity does not imply historical diagnostic carry B and baseline A had identical native memory intervention.",
+      "Stable query cadence still has native phase loss and reset-boundary unevenness; supported deployable correction not established.",
+      "Exact HUD/CPU/native/optical linkage is not direct GPU/scanout or perceptual acceptance.",
+      "No64 performance improvement or20ms target acceptance."
+    ],
+    "next": "Current stable-query condition links reset loss to CPU/visible motion; inspect admissible input/reset delivery contract before any correction."
+  },
+  "selectedNative": [
+    {
+      "videoSeconds": 5.012081576757812,
+      "frame": 155,
+      "partIndex": 0,
+      "boneCount": 65,
+      "graphClock": 32.2997932434082,
+      "originalNumerator": 0.03999999910593033,
+      "submittedNumerator": 0.03999999910593033,
+      "duration": 0.05000000074505806,
+      "primary": 0.05000000074505806,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "graphBefore": null,
+      "numericApplied": false
+    },
+    {
+      "videoSeconds": 5.031442576757812,
+      "frame": 156,
+      "partIndex": 0,
+      "boneCount": 65,
+      "graphClock": 32.34979248046875,
+      "originalNumerator": 0,
+      "submittedNumerator": 0,
+      "duration": 0.05000000074505806,
+      "primary": 0.05000000074505806,
+      "hadEvaluation": true,
+      "preResetTotal": 0.05999999865889549,
+      "graphBefore": 32.2997932434082,
+      "numericApplied": false
+    },
+    {
+      "videoSeconds": 5.052384876757813,
+      "frame": 157,
+      "partIndex": 0,
+      "boneCount": 65,
+      "graphClock": 32.34979248046875,
+      "originalNumerator": 0.019999999552965164,
+      "submittedNumerator": 0.019999999552965164,
+      "duration": 0.05000000074505806,
+      "primary": 0.05000000074505806,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "graphBefore": null,
+      "numericApplied": false
+    },
+    {
+      "videoSeconds": 5.071355076757813,
+      "frame": 158,
+      "partIndex": 0,
+      "boneCount": 65,
+      "graphClock": 32.34979248046875,
+      "originalNumerator": 0.03999999910593033,
+      "submittedNumerator": 0.03999999910593033,
+      "duration": 0.05000000074505806,
+      "primary": 0.05000000074505806,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "graphBefore": null,
+      "numericApplied": false
+    },
+    {
+      "videoSeconds": 5.092313376757812,
+      "frame": 159,
+      "partIndex": 0,
+      "boneCount": 65,
+      "graphClock": 32.3997917175293,
+      "originalNumerator": 0,
+      "submittedNumerator": 0,
+      "duration": 0.05000000074505806,
+      "primary": 0.05000000074505806,
+      "hadEvaluation": true,
+      "preResetTotal": 0.05999999865889549,
+      "graphBefore": 32.34979248046875,
+      "numericApplied": false
+    },
+    {
+      "videoSeconds": 5.112016276757812,
+      "frame": 160,
+      "partIndex": 0,
+      "boneCount": 65,
+      "graphClock": 32.3997917175293,
+      "originalNumerator": 0.019999999552965164,
+      "submittedNumerator": 0.019999999552965164,
+      "duration": 0.05000000074505806,
+      "primary": 0.05000000074505806,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "graphBefore": null,
+      "numericApplied": false
+    },
+    {
+      "videoSeconds": 5.131334176757813,
+      "frame": 161,
+      "partIndex": 0,
+      "boneCount": 65,
+      "graphClock": 32.3997917175293,
+      "originalNumerator": 0.03999999910593033,
+      "submittedNumerator": 0.03999999910593033,
+      "duration": 0.05000000074505806,
+      "primary": 0.05000000074505806,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "graphBefore": null,
+      "numericApplied": false
+    },
+    {
+      "videoSeconds": 5.152462976757812,
+      "frame": 162,
+      "partIndex": 0,
+      "boneCount": 65,
+      "graphClock": 32.449790954589844,
+      "originalNumerator": 0,
+      "submittedNumerator": 0,
+      "duration": 0.05000000074505806,
+      "primary": 0.05000000074505806,
+      "hadEvaluation": true,
+      "preResetTotal": 0.05999999865889549,
+      "graphBefore": 32.3997917175293,
+      "numericApplied": false
+    },
+    {
+      "videoSeconds": 5.171377076757812,
+      "frame": 163,
+      "partIndex": 0,
+      "boneCount": 65,
+      "graphClock": 32.449790954589844,
+      "originalNumerator": 0.019999999552965164,
+      "submittedNumerator": 0.019999999552965164,
+      "duration": 0.05000000074505806,
+      "primary": 0.05000000074505806,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "graphBefore": null,
+      "numericApplied": false
+    },
+    {
+      "videoSeconds": 5.192062276757813,
+      "frame": 164,
+      "partIndex": 0,
+      "boneCount": 65,
+      "graphClock": 32.449790954589844,
+      "originalNumerator": 0.03999999910593033,
+      "submittedNumerator": 0.03999999910593033,
+      "duration": 0.05000000074505806,
+      "primary": 0.05000000074505806,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "graphBefore": null,
+      "numericApplied": false
+    },
+    {
+      "videoSeconds": 5.212209076757812,
+      "frame": 165,
+      "partIndex": 0,
+      "boneCount": 65,
+      "graphClock": 32.49979019165039,
+      "originalNumerator": 0,
+      "submittedNumerator": 0,
+      "duration": 0.05000000074505806,
+      "primary": 0.05000000074505806,
+      "hadEvaluation": true,
+      "preResetTotal": 0.05999999865889549,
+      "graphBefore": 32.449790954589844,
+      "numericApplied": false
+    },
+    {
+      "videoSeconds": 5.231361976757812,
+      "frame": 166,
+      "partIndex": 0,
+      "boneCount": 65,
+      "graphClock": 32.49979019165039,
+      "originalNumerator": 0.019999999552965164,
+      "submittedNumerator": 0.019999999552965164,
+      "duration": 0.05000000074505806,
+      "primary": 0.05000000074505806,
+      "hadEvaluation": false,
+      "preResetTotal": null,
+      "graphBefore": null,
+      "numericApplied": false
+    }
+  ],
+  "selectedPairs": [
+    {
+      "firstFrame": 1931,
+      "lastFrame": 1932,
+      "queryDtMs": 19.98890000000131,
+      "nativePhaseStepMs": 19.999999552965164,
+      "nativeRateOverMean": 1.2010388756559767,
+      "evaluationBoundary": false,
+      "cpuNativeResidualPixels": 0.5012874997435578,
+      "cpuMeanRateResidualPixels": 0.7894874391377976,
+      "opticalNativeResidualPixels": 1.0541695798071506,
+      "opticalMeanRateResidualPixels": 1.1699280837251562
+    },
+    {
+      "firstFrame": 1932,
+      "lastFrame": 1933,
+      "queryDtMs": 19.98580000000061,
+      "nativePhaseStepMs": 9.999237954616547,
+      "nativeRateOverMean": 0.6005668284939825,
+      "evaluationBoundary": true,
+      "cpuNativeResidualPixels": 0.6268994750606175,
+      "cpuMeanRateResidualPixels": 0.7921552310671875,
+      "opticalNativeResidualPixels": 1.3330540955793744,
+      "opticalMeanRateResidualPixels": 1.166824064574789
+    },
+    {
+      "firstFrame": 1933,
+      "lastFrame": 1934,
+      "queryDtMs": 20.034799999990582,
+      "nativePhaseStepMs": 19.999999552965164,
+      "nativeRateOverMean": 1.1982872792147967,
+      "evaluationBoundary": false,
+      "cpuNativeResidualPixels": 0.9589022748814914,
+      "cpuMeanRateResidualPixels": 0.9660125728822397,
+      "opticalNativeResidualPixels": 0.4795404020623455,
+      "opticalMeanRateResidualPixels": 0.675478421788488
+    },
+    {
+      "firstFrame": 1934,
+      "lastFrame": 1935,
+      "queryDtMs": 20.115700000005177,
+      "nativePhaseStepMs": 19.999999552965164,
+      "nativeRateOverMean": 1.193468086201084,
+      "evaluationBoundary": false,
+      "cpuNativeResidualPixels": 0.12785667245155422,
+      "cpuMeanRateResidualPixels": 0.4431934157831726,
+      "opticalNativeResidualPixels": 0.5291016716692023,
+      "opticalMeanRateResidualPixels": 0.8052236507331316
+    },
+    {
+      "firstFrame": 1935,
+      "lastFrame": 1936,
+      "queryDtMs": 19.914299999996388,
+      "nativePhaseStepMs": 9.999237954616547,
+      "nativeRateOverMean": 0.6027230945058364,
+      "evaluationBoundary": true,
+      "cpuNativeResidualPixels": 0.31659495327718096,
+      "cpuMeanRateResidualPixels": 1.1077641369708335,
+      "opticalNativeResidualPixels": 0.580466306742714,
+      "opticalMeanRateResidualPixels": 1.197792360671063
+    },
+    {
+      "firstFrame": 1936,
+      "lastFrame": 1937,
+      "queryDtMs": 20.11300000000915,
+      "nativePhaseStepMs": 19.999999552965164,
+      "nativeRateOverMean": 1.1936282991891016,
+      "evaluationBoundary": false,
+      "cpuNativeResidualPixels": 0.6036324514460608,
+      "cpuMeanRateResidualPixels": 1.1299653201791848,
+      "opticalNativeResidualPixels": 1.07297053093683,
+      "opticalMeanRateResidualPixels": 1.647402734551621
+    },
+    {
+      "firstFrame": 1937,
+      "lastFrame": 1938,
+      "queryDtMs": 19.884599999997477,
+      "nativePhaseStepMs": 19.999999552965164,
+      "nativeRateOverMean": 1.2073386430506206,
+      "evaluationBoundary": false,
+      "cpuNativeResidualPixels": 0.18624074082439582,
+      "cpuMeanRateResidualPixels": 0.7087834881597632,
+      "opticalNativeResidualPixels": 0.5976587564985288,
+      "opticalMeanRateResidualPixels": 0.8906874907386808
+    },
+    {
+      "firstFrame": 1938,
+      "lastFrame": 1939,
+      "queryDtMs": 20.193699999992987,
+      "nativePhaseStepMs": 9.999237954616547,
+      "nativeRateOverMean": 0.5943838187612754,
+      "evaluationBoundary": true,
+      "cpuNativeResidualPixels": 0.2995998133561107,
+      "cpuMeanRateResidualPixels": 2.0392898648706317,
+      "opticalNativeResidualPixels": 0.46928353943735523,
+      "opticalMeanRateResidualPixels": 2.2511626591632043
+    },
+    {
+      "firstFrame": 1939,
+      "lastFrame": 1940,
+      "queryDtMs": 19.829500000000166,
+      "nativePhaseStepMs": 19.999999552965164,
+      "nativeRateOverMean": 1.210693460833663,
+      "evaluationBoundary": false,
+      "cpuNativeResidualPixels": 0.18138867560265362,
+      "cpuMeanRateResidualPixels": 0.8081833781789245,
+      "opticalNativeResidualPixels": 0.954935525498306,
+      "opticalMeanRateResidualPixels": 1.0283843065455978
+    },
+    {
+      "firstFrame": 1940,
+      "lastFrame": 1941,
+      "queryDtMs": 20.068800000004217,
+      "nativePhaseStepMs": 19.999999552965164,
+      "nativeRateOverMean": 1.1962571743998784,
+      "evaluationBoundary": false,
+      "cpuNativeResidualPixels": 0.1891571075345566,
+      "cpuMeanRateResidualPixels": 0.7780387659230488,
+      "opticalNativeResidualPixels": 0.8284623538168729,
+      "opticalMeanRateResidualPixels": 1.435207424550668
+    },
+    {
+      "firstFrame": 1941,
+      "lastFrame": 1942,
+      "queryDtMs": 19.94320000000016,
+      "nativePhaseStepMs": 9.999237954616547,
+      "nativeRateOverMean": 0.6018496791345072,
+      "evaluationBoundary": true,
+      "cpuNativeResidualPixels": 0.021809462708095306,
+      "cpuMeanRateResidualPixels": 1.8647713907153531,
+      "opticalNativeResidualPixels": 1.1587709483878266,
+      "opticalMeanRateResidualPixels": 2.1877169627904984
+    },
+    {
+      "firstFrame": 1942,
+      "lastFrame": 1943,
+      "queryDtMs": 20.03639999999507,
+      "nativePhaseStepMs": 19.999999552965164,
+      "nativeRateOverMean": 1.1981915903858593,
+      "evaluationBoundary": false,
+      "cpuNativeResidualPixels": 0.1520203791002058,
+      "cpuMeanRateResidualPixels": 0.7795899447456894,
+      "opticalNativeResidualPixels": 0.7262031887738062,
+      "opticalMeanRateResidualPixels": 1.494937088795557
+    }
+  ],
+  "selectedJoins": [
+    {
+      "frame": 1931,
+      "nativeFrame": 148,
+      "videoSeconds": 5.0,
+      "nativePhase": 32.219794768840075,
+      "cpuProjected": [
+        764.8898279545564,
+        357.8991631114908
+      ],
+      "phasePredicted": [
+        764.6426369072291,
+        357.7092463849636
+      ],
+      "optical": [
+        765.0,
+        332.0
+      ],
+      "hadEvaluation": false
+    },
+    {
+      "frame": 1995,
+      "nativeFrame": 212,
+      "videoSeconds": 6.283333333333333,
+      "nativePhase": 33.289778746664524,
+      "cpuProjected": [
+        775.5610997834104,
+        354.8598742680757
+      ],
+      "phasePredicted": [
+        775.7413151045196,
+        355.14419620128
+      ],
+      "optical": [
+        776.0,
+        329.0
+      ],
+      "hadEvaluation": false
+    },
+    {
+      "frame": 2059,
+      "nativeFrame": 276,
+      "videoSeconds": 7.566666666666666,
+      "nativePhase": 34.349761962890625,
+      "cpuProjected": [
+        761.0822161762636,
+        361.54173690829396
+      ],
+      "phasePredicted": [
+        761.3594943171188,
+        361.75223401157143
+      ],
+      "optical": [
+        760.0,
+        335.0
+      ],
+      "hadEvaluation": true
+    },
+    {
+      "frame": 2323,
+      "nativeFrame": 540,
+      "videoSeconds": 12.85,
+      "nativePhase": 38.74969482421875,
+      "cpuProjected": [
+        806.3362218827785,
+        369.1855056993726
+      ],
+      "phasePredicted": [
+        806.1750406319258,
+        368.9630526208807
+      ],
+      "optical": [
+        808.0,
+        345.0
+      ],
+      "hadEvaluation": true
+    },
+    {
+      "frame": 2386,
+      "nativeFrame": 603,
+      "videoSeconds": 14.116666666666667,
+      "nativePhase": 39.799678802490234,
+      "cpuProjected": [
+        802.2112888617061,
+        367.0912062515138
+      ],
+      "phasePredicted": [
+        801.886699496393,
+        367.2527562714679
+      ],
+      "optical": [
+        803.0,
+        343.0
+      ],
+      "hadEvaluation": true
+    },
+    {
+      "frame": 2700,
+      "nativeFrame": 917,
+      "videoSeconds": 20.4,
+      "nativePhase": 45.03959945589304,
+      "cpuProjected": [
+        806.2907796950249,
+        369.31836321998685
+      ],
+      "phasePredicted": [
+        806.606857722538,
+        369.30539821803546
+      ],
+      "optical": [
+        807.0,
+        345.0
+      ],
+      "hadEvaluation": false
+    },
+    {
+      "frame": 2765,
+      "nativeFrame": 982,
+      "videoSeconds": 21.683333333333334,
+      "nativePhase": 46.119582671672106,
+      "cpuProjected": [
+        810.3686280291383,
+        372.91510507255623
+      ],
+      "phasePredicted": [
+        810.9348821520902,
+        372.94310831295496
+      ],
+      "optical": [
+        811.0,
+        349.0
+      ],
+      "hadEvaluation": false
+    },
+    {
+      "frame": 2830,
+      "nativeFrame": 1047,
+      "videoSeconds": 22.983333333333334,
+      "nativePhase": 47.19956588745117,
+      "cpuProjected": [
+        796.9055901932871,
+        365.7988798144901
+      ],
+      "phasePredicted": [
+        796.6585051794785,
+        365.8513513147411
+      ],
+      "optical": [
+        797.0,
+        341.0
+      ],
+      "hadEvaluation": true
+    }
+  ],
+  "phaseFunctions": {
+    "file": "analyze-stable-phase.py",
+    "rawSourceSha256": "fbc26ec7051ec231baef17e452dfa5134171f30c082c906eb5786d5c5a17af88",
+    "text": "def basis(t):\n    phase=np.asarray(t)*2*np.pi/period\n    return np.column_stack([np.ones(len(phase))]+[f(j*phase) for j in range(1,k+1) for f in [np.sin,np.cos]])\n\ndef dist(v):\n    a=np.asarray(v,dtype=float);assert len(a)>10 and np.all(np.isfinite(a))\n    return dict(samples=len(a),p50=float(np.quantile(a,.5)),p95=float(np.quantile(a,.95)),p99=float(np.quantile(a,.99)),minimum=float(min(a)),maximum=float(max(a)))"
+  }
+}
+
+Contract: previous query end <= native qpcBefore <= native qpcAfter < current query begin; native part0 owns Head, all8parts phase spread0. Graph+numerator is a CPU/native proxy, not directGPU phase. Reset loss is perpart, not summed8part walltime.
