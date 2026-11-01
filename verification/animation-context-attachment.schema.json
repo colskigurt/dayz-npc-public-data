@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "animation-context-attachment-20261101-1449"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "newRuntimeTrials",
+        "newPbo",
+        "metrics"
+      ],
+      "properties": {
+        "newRuntimeTrials": {
+          "const": 4
+        },
+        "newPbo": {
+          "const": false
+        },
+        "metrics": {
+          "type": "object",
+          "properties": {
+            "actualServerStarts": {
+              "const": 4
+            },
+            "completedOnePartLeaderTrials": {
+              "const": 3
+            },
+            "observer": {
+              "type": "object",
+              "properties": {
+                "samples": {
+                  "const": 72
+                },
+                "errors": {
+                  "const": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
