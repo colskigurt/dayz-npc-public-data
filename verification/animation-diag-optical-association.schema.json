@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "animation-diag-optical-association-20261101-1810"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "newRuntimeTrials",
+        "newPbo",
+        "postFitReview",
+        "selectedByTraining",
+        "imageFrames"
+      ],
+      "properties": {
+        "newRuntimeTrials": {
+          "const": 0
+        },
+        "newPbo": {
+          "const": false
+        },
+        "imageFrames": {
+          "const": 931
+        },
+        "postFitReview": {
+          "type": "object",
+          "properties": {
+            "acceptedAsLatency": {
+              "const": false
+            }
+          }
+        },
+        "visualAccepted": {
+          "const": false
+        },
+        "performanceAccepted": {
+          "const": false
+        }
+      }
+    }
+  }
+}
