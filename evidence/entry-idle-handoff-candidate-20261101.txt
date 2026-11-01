@@ -1,0 +1,853 @@
+Selection: packaged changed contact filter only plus full frozen result rows and same-call diagnostic projection. No raw logs, private metadata, game assets or entire videos.
+{
+  "sourceRunId": "entry-idle-handoff-20261101-1244",
+  "buildId": "93507DBE9F69C9F41F67178FB33481D640E7DA3FC245719DDBA3D49F4CE18021",
+  "baseBuildId": "7e16c9b559f8ba3ea336fcc8d13dab1e28f536ce9f89d1fb4e19934d123a0cdc",
+  "newGameplayRuntime": false,
+  "newEngineValidation": true,
+  "newPbo": true,
+  "signedAndVerified": true,
+  "enabledByDefault": false,
+  "featureFlag": "entry-pending-idle-handoff.flag",
+  "onlyChangedMembers": [
+    "scripts/4_world/dgsubsetzzzzentrypreparation.c"
+  ],
+  "diagnosis": {
+    "sourceRunId": "entry-idle-handoff-20261101-1244",
+    "sourceRuntimeRunId": "runtime-20261101-122619",
+    "entityId": 16,
+    "sameCallContactBefore": {
+      "seconds": "47.032",
+      "id": "16",
+      "callId": "31",
+      "stage": "CONTACT_BEFORE",
+      "phase": "FOLLOW",
+      "reason": "ENTRY_POSE_SETTLE",
+      "position": "<4510.121094, 340.194580, 10239.538086>",
+      "heading": "90",
+      "request": "1",
+      "nativeRequest": "1",
+      "activeLink": "low_to_high",
+      "actualEntryGap": "0.0471514",
+      "actualNormalGap": "0.0454102",
+      "actualHeadingGap": "0",
+      "entryAligning": "true",
+      "bestHeading": "0"
+    },
+    "sameCallContactAfter": {
+      "seconds": "47.032",
+      "id": "16",
+      "callId": "31",
+      "stage": "CONTACT_AFTER",
+      "phase": "FOLLOW",
+      "reason": "ENTRY_POSE_SETTLE",
+      "position": "<4510.085449, 340.193970, 10239.558594>",
+      "heading": "90",
+      "request": "1",
+      "nativeRequest": "1",
+      "activeLink": "low_to_high",
+      "actualEntryGap": "0.0814303",
+      "actualNormalGap": "0.0810547",
+      "actualHeadingGap": "0",
+      "entryAligning": "true",
+      "bestHeading": "0"
+    },
+    "normalGapIncreaseMeters": 0.035644499999999996,
+    "exactBackoff": {
+      "sequence": "35",
+      "seconds": "48.476",
+      "id": "16",
+      "generation": "0",
+      "previousPhase": "FOLLOW",
+      "phase": "FOLLOW",
+      "requestReason": "ENTRY_ALIGNMENT_NO_PROGRESS",
+      "previousFailure": "",
+      "failure": "ENTRY_ALIGNMENT_NO_PROGRESS",
+      "beforePosition": "<4510.129883, 340.194702, 10239.517578>",
+      "position": "<4510.129883, 340.194702, 10239.517578>",
+      "beforeHeading": "81.6909",
+      "heading": "81.6909",
+      "linkBefore": "low_to_high",
+      "entryBefore": "<4510.166504, 340.173309, 10240.000000>",
+      "entryHeadingBefore": "90",
+      "alignAtBefore": "81.177",
+      "progressAtBefore": "81.177",
+      "bestErrorBefore": "0",
+      "retryUntil": "85.233",
+      "nativeSeconds": "35.3497",
+      "backoffCalls": "1"
+    },
+    "verifiedSourceHashes": {
+      "Scripts\\4_World\\DGBNativeCrowd.c": "8b3145c67444b5185e4a44dcb051dc118405d9cb2268c752b3abc65daeeaddf9",
+      "Scripts\\4_World\\DGBNativeGround.c": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82",
+      "Scripts\\4_World\\DGBNativeTraversal.c": "71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872"
+    },
+    "confirmed": [
+      "Accepted contact displacement crossed65mm normal preparation band in same callback while heading stayed90degrees.",
+      "Current committed requests were walk even though source Follow sets NextRequest=0 in ENTRY_POSE_SETTLE branch.",
+      "Existing preparation filter requires committed and native requests0, so rejects this pending-handoff state.",
+      "Backoff timestamp48.476 precedes51.971 floor-guard fall; no direct Backoff->FALL in source."
+    ],
+    "inferredNotDirectlyLogged": [
+      "NextRequest=0 atCONTACT_BEFORE inferred from verified source branch, not a captured NextRequest column."
+    ],
+    "hypotheses": [
+      "One pending-idle projection might preserve entry position until idle commits, avoiding repeated approach/alignment resets.",
+      "BestHeading0 makes further3degree all-time-best progress impossible after temporary regression; this candidate does not change that watchdog."
+    ],
+    "notProven": [
+      "All runtime guard fields at captured point were not logged; retrospective complete eligibility is not certified.",
+      "Live8/64 branch activation, watchdog reduction, animation smoothness and performance remain unmeasured."
+    ]
+  },
+  "contract": {
+    "sourceRunId": "entry-idle-handoff-20261101-1244",
+    "sourceRunIdEngine": "compile-961f733b671e46b5ba63130f4c73b371",
+    "buildId": "93507DBE9F69C9F41F67178FB33481D640E7DA3FC245719DDBA3D49F4CE18021",
+    "compileHelperPassed": false,
+    "compileHelperFailureIncludesUnrelatedRequiredMarkers": [
+      "DG_ACTOR5_PLANNER_PASS",
+      "DG_LANDING_LEASE_CONTRACT_PASS"
+    ],
+    "independentScopedEngineAndRowsPassed": true,
+    "unrelatedMarkerRequirementsNotSilentlyAccepted": true,
+    "policyCasesPassed": 26,
+    "geometryCasesPassed": 8,
+    "pendingHandoffCasesPassed": 12,
+    "defaultFeatureFlagAbsent": true,
+    "onePendingProjectionAndSecondRejectionPassed": true,
+    "tangentFallPreserved": true,
+    "worldBlockPreserved": true,
+    "nativeCrash": false,
+    "scriptErrors": 0,
+    "warningsByFile": {
+      "DayZServer_x64_2026-11-01_12-50-48.RPT": 40
+    },
+    "requiredMarkers": [
+      "DG_NATIVE_COMPILE_PASS",
+      "DG_NATIVE_GRAPH_SMOKE_PASS",
+      "DG_NATIVE_ASSIGNMENT_SMOKE_PASS",
+      "DG_NATIVE_ASSIGNMENT_SAFETY_SMOKE_PASS",
+      "DG_NATIVE_CONTROL_FLAT_SMOKE_PASS",
+      "DG_NATIVE_ROUTE_SMOKE_PASS",
+      "DG_NATIVE_FEEDBACK_POLICY_SMOKE_PASS",
+      "DG_NATIVE_CORPSE_INVENTORY_SMOKE_PASS",
+      "DG_NATIVE_HIT_REACTION_SMOKE_PASS",
+      "DG_NATIVE_FLESH_RESOURCE_SMOKE_PASS",
+      "DG_NATIVE_CONTACT_RECOVERY_SMOKE_PASS",
+      "DG_NATIVE_RECONSTRUCTION_SMOKE_PASS",
+      "DG_SUBSET_INTEGRATION_SMOKE_PASS",
+      "DG_ENTRY_PREPARATION_POLICY_PASS",
+      "DG_ENTRY_PENDING_HANDOFF_PASS"
+    ],
+    "policyRows": [
+      {
+        "case": "0",
+        "expected": "true",
+        "eligible": "true",
+        "gate": "READY",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, -0.000000, -0.000000>",
+        "age": "0.0499878",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "1",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "OPEN_TRAVERSAL",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "2",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "PHASE",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "3",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "INTENT",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "4",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "INTENT",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "5",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "PREPARING",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "6",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "PREPARING",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "7",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "IDLE_REQUESTS",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "8",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "IDLE_REQUESTS",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "9",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "AGE",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.120972",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "10",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "AGE",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "-0.000976563",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "11",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "NORMAL_GAP",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "0",
+        "normalGap": "0.0664063"
+      },
+      {
+        "case": "12",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "HEADING",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "1.1",
+        "normalGap": "0"
+      },
+      {
+        "case": "13",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "ENTRY_RADIUS",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "14",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "OWNER",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "15",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "OWNER",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "16",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "PHASE",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "17",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "INPUT",
+        "input": "<0.020000, 0.001000, 0.030000>",
+        "projected": "<0.020000, 0.001000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "18",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "INPUT",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "19",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "INTENT",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "20",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "INTENT",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "0",
+        "normalGap": "-1"
+      },
+      {
+        "case": "21",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "BODY",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "22",
+        "expected": "true",
+        "eligible": "true",
+        "gate": "READY",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, -0.000000, -0.000000>",
+        "age": "0.119019",
+        "heading": "0",
+        "normalGap": "0"
+      },
+      {
+        "case": "23",
+        "expected": "true",
+        "eligible": "true",
+        "gate": "READY",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, -0.000000, -0.000000>",
+        "age": "0.0499878",
+        "heading": "0.9",
+        "normalGap": "0.0644531"
+      },
+      {
+        "case": "24",
+        "expected": "true",
+        "eligible": "true",
+        "gate": "READY",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.000000, 0.000000, 0.030000>",
+        "age": "0.0499878",
+        "heading": "90",
+        "normalGap": "0"
+      },
+      {
+        "case": "25",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "BODY",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "age": "0.0500488",
+        "heading": "0",
+        "normalGap": "0"
+      }
+    ],
+    "geometryRows": [
+      {
+        "case": "0",
+        "enabled": "false",
+        "eligible": "true",
+        "gate": "READY",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, -0.000000, -0.000000>",
+        "accepted": "true",
+        "before": "<4530.000000, 339.356659, 10240.000000>",
+        "after": "<4530.020020, 339.336639, 10240.030273>",
+        "phase": "FOLLOW",
+        "reason": "ENTRY_POSE_SETTLE",
+        "pressureReject": "",
+        "pressureFalls": "0",
+        "pressureSteps": "1"
+      },
+      {
+        "case": "1",
+        "enabled": "true",
+        "eligible": "true",
+        "gate": "READY",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, -0.000000, -0.000000>",
+        "accepted": "true",
+        "before": "<4530.000000, 339.356659, 10240.000000>",
+        "after": "<4530.020020, 339.336700, 10240.000000>",
+        "phase": "FOLLOW",
+        "reason": "ENTRY_POSE_SETTLE",
+        "pressureReject": "",
+        "pressureFalls": "0",
+        "pressureSteps": "1"
+      },
+      {
+        "case": "2",
+        "enabled": "true",
+        "eligible": "false",
+        "gate": "AGE",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>",
+        "accepted": "true",
+        "before": "<4530.000000, 339.356659, 10240.000000>",
+        "after": "<4530.020020, 339.336639, 10240.030273>",
+        "phase": "FOLLOW",
+        "reason": "ENTRY_POSE_SETTLE",
+        "pressureReject": "",
+        "pressureFalls": "0",
+        "pressureSteps": "1"
+      },
+      {
+        "case": "3",
+        "enabled": "true",
+        "eligible": "true",
+        "gate": "READY",
+        "input": "<0.030000, 0.000000, 0.000000>",
+        "projected": "<0.030000, -0.000000, -0.000000>",
+        "accepted": "true",
+        "before": "<4530.000000, 339.356659, 10240.000000>",
+        "after": "<4530.029785, 339.336700, 10240.000000>",
+        "phase": "FOLLOW",
+        "reason": "ENTRY_POSE_SETTLE",
+        "pressureReject": "",
+        "pressureFalls": "0",
+        "pressureSteps": "1"
+      },
+      {
+        "case": "4",
+        "enabled": "false",
+        "eligible": "true",
+        "gate": "READY",
+        "input": "<-0.040000, 0.000000, 0.000000>",
+        "projected": "<-0.040000, 0.000000, 0.000000>",
+        "accepted": "true",
+        "before": "<4508.681641, 340.173309, 10240.000000>",
+        "after": "<4508.641602, 340.173309, 10240.000000>",
+        "phase": "FALL",
+        "reason": "CONTACT_FALL",
+        "pressureReject": "",
+        "pressureFalls": "1",
+        "pressureSteps": "1"
+      },
+      {
+        "case": "5",
+        "enabled": "true",
+        "eligible": "true",
+        "gate": "READY",
+        "input": "<-0.040000, 0.000000, 0.000000>",
+        "projected": "<-0.040000, 0.000000, 0.000000>",
+        "accepted": "true",
+        "before": "<4508.681641, 340.173309, 10240.000000>",
+        "after": "<4508.641602, 340.173309, 10240.000000>",
+        "phase": "FALL",
+        "reason": "CONTACT_FALL",
+        "pressureReject": "",
+        "pressureFalls": "1",
+        "pressureSteps": "1"
+      },
+      {
+        "case": "6",
+        "enabled": "false",
+        "eligible": "true",
+        "gate": "READY",
+        "input": "<0.000000, 0.000000, 0.040000>",
+        "projected": "<0.000000, 0.000000, 0.040000>",
+        "accepted": "false",
+        "before": "<4510.000000, 339.163208, 10236.635742>",
+        "after": "<4510.000000, 339.163208, 10236.635742>",
+        "phase": "FOLLOW",
+        "reason": "ENTRY_POSE_SETTLE",
+        "pressureReject": "WORLD",
+        "pressureFalls": "0",
+        "pressureSteps": "0"
+      },
+      {
+        "case": "7",
+        "enabled": "true",
+        "eligible": "true",
+        "gate": "READY",
+        "input": "<0.000000, 0.000000, 0.040000>",
+        "projected": "<0.000000, 0.000000, 0.040000>",
+        "accepted": "false",
+        "before": "<4510.000000, 339.163208, 10236.635742>",
+        "after": "<4510.000000, 339.163208, 10236.635742>",
+        "phase": "FOLLOW",
+        "reason": "ENTRY_POSE_SETTLE",
+        "pressureReject": "WORLD",
+        "pressureFalls": "0",
+        "pressureSteps": "0"
+      }
+    ],
+    "pendingRows": [
+      {
+        "case": "0",
+        "expected": "true",
+        "eligible": "true",
+        "gate": "READY_PENDING_IDLE",
+        "passed": "true",
+        "consumed": "0",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, -0.000000, -0.000000>"
+      },
+      {
+        "case": "1",
+        "expected": "true",
+        "eligible": "true",
+        "gate": "READY_PENDING_IDLE",
+        "passed": "true",
+        "consumed": "0",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, -0.000000, -0.000000>"
+      },
+      {
+        "case": "2",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "IDLE_REQUESTS",
+        "passed": "true",
+        "consumed": "0",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>"
+      },
+      {
+        "case": "3",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "PENDING_ALREADY_CONSUMED",
+        "passed": "true",
+        "consumed": "0",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>"
+      },
+      {
+        "case": "4",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "IDLE_REQUESTS",
+        "passed": "true",
+        "consumed": "0",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>"
+      },
+      {
+        "case": "5",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "PHASE",
+        "passed": "true",
+        "consumed": "0",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>"
+      },
+      {
+        "case": "6",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "PHASE",
+        "passed": "true",
+        "consumed": "0",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>"
+      },
+      {
+        "case": "7",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "NORMAL_GAP",
+        "passed": "true",
+        "consumed": "0",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>"
+      },
+      {
+        "case": "8",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "HEADING",
+        "passed": "true",
+        "consumed": "0",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>"
+      },
+      {
+        "case": "9",
+        "expected": "true",
+        "eligible": "true",
+        "gate": "READY_PENDING_IDLE",
+        "passed": "true",
+        "consumed": "1",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, -0.000000, -0.000000>"
+      },
+      {
+        "case": "10",
+        "expected": "false",
+        "eligible": "false",
+        "gate": "AGE",
+        "passed": "true",
+        "consumed": "0",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, 0.000000, 0.030000>"
+      },
+      {
+        "case": "11",
+        "expected": "true",
+        "eligible": "true",
+        "gate": "READY_PENDING_IDLE",
+        "passed": "true",
+        "consumed": "0",
+        "input": "<0.020000, 0.000000, 0.030000>",
+        "projected": "<0.020000, -0.000000, -0.000000>"
+      }
+    ],
+    "sourceHashes": {
+      "research/track_b_dayz_2026-10-23/native-runtime/validation-controlled-entry-idle-handoff-contract-explicit/engine-compile.json": "843262ad7bf1faee89f65dabaa2fe187d9ff66646b4c65378e3055d001120f85",
+      "research/track_b_dayz_2026-10-23/native-runtime/validation-controlled-entry-idle-handoff-contract-explicit/mission.chernarusplus/init.c": "5e808208c160f009340e286a329b048e3cc39b3d0a7e6a632bf3038b1e125ab9",
+      "research/track_b_dayz_2026-10-23/native-runtime/compile-961f733b671e46b5ba63130f4c73b371/entry-preparation-policy.tsv": "0b41b1e36f1ac753eaa3674c3c915e5adf8bd40243d74835804c647219e666f7",
+      "research/track_b_dayz_2026-10-23/native-runtime/compile-961f733b671e46b5ba63130f4c73b371/entry-preparation-geometry.tsv": "fe3e8dc50fc3c0b27d5ecd7e9359797bea5c4efdf7ce2520febfa81103a8f826",
+      "research/track_b_dayz_2026-10-23/native-runtime/compile-961f733b671e46b5ba63130f4c73b371/entry-pending-handoff-contract.tsv": "152d0325cfd83e61efeadec109f63ca54f4380a7e8af6e9650f8da99796bc4e5"
+    },
+    "limits": [
+      "Engine did execute passing frozen fixtures; old compile-helper final flag stays false.",
+      "Frozen standing pose and synthetic admission only, not animated8/64 efficacy or performance.",
+      "Feature ON cache fields injected; real profile activation remains a live gate.",
+      "No acceptance gate weakened, no failed record overwritten, no favorable rerun selected."
+    ],
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "gameplayAccepted": false,
+    "goalComplete": false
+  },
+  "livePreflight": {
+    "sourceRunId": "compile-c104852e3d664d5a938b91f3519462d3",
+    "passed": true,
+    "nativeCrash": false,
+    "missionSourcesSha256": "A948295B323B0FA7DF94F2B83300C0661C1C417345EB96400F44463701DCA398",
+    "subsetIntegrationPboSha256": "93507DBE9F69C9F41F67178FB33481D640E7DA3FC245719DDBA3D49F4CE18021"
+  },
+  "commonReleaseChanged": false,
+  "watchdogConstantsUnchanged": true,
+  "physicsSolverUnchanged": true,
+  "animationClockUnchanged": true,
+  "strictPrior64GateStillFailed": true,
+  "liveBranchActivationVerified": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "goalComplete": false,
+  "limits": [
+    "Engine did execute passing frozen fixtures; old compile-helper final flag stays false.",
+    "Frozen standing pose and synthetic admission only, not animated8/64 efficacy or performance.",
+    "Feature ON cache fields injected; real profile activation remains a live gate.",
+    "No acceptance gate weakened, no failed record overwritten, no favorable rerun selected.",
+    "All runtime guard fields at captured point were not logged; retrospective complete eligibility is not certified.",
+    "Live8/64 branch activation, watchdog reduction, animation smoothness and performance remain unmeasured.",
+    "Original failing compiler-helper flag was not overwritten; dedicated live-only preflight independently passed.",
+    "FrozenRPT contains40 Trying-to-access-error-value warnings; row/marker pass is not a blanket absence-of-warnings claim.",
+    "No8/64 candidate run, no new frame-time distribution, no watchdog reduction or visible smoothness gain yet."
+  ],
+  "next": "Run prepared8-agent live admission, verify READY_PENDING_IDLE branch and default/safety invariants; only then64. Retain7E16 baseline and all failed fixtures. Keep animation clock and CPU cost experiments separate."
+}
+
+Exact opt-in changed script:
+// Private opt-in candidate. One local input projection; no reservation,
+// transform write, skipped cast, graph clock change or watchdog extension.
+modded class DGBNativeGroundBody
+{
+    bool EPHRead;bool EPHEnabled;float EPHUsedAlignAt=-1;int EPHConsumed;
+}
+// Experimental local motor consistency during the existing <120ms idle prep.
+// No peer reservations or direct transforms. Every executed proposal still
+// delegates to the complete existing Displace chain, including support loss.
+class DGEntryPreparationContact
+{
+    static bool Filter(DGBNativeGroundBody body,vector input,float dt,out vector projected,out string gate)
+    {
+        projected=input;gate="BODY";
+        if(!body || !body.Director || !body.Traversal || !body.Leader){return false;}
+        gate="OPEN_TRAVERSAL";
+        if(!body.Director.OpenTraversal){return false;}
+        gate="PHASE";
+        if(body.Traversal.Phase!="FOLLOW" || body.Agent.State=="DEAD"){return false;}
+        gate="OWNER";
+        if(body.Traversal.IdleClearing || body.Traversal.SurfaceYieldActive || body.Traversal.PoseClearanceActive || body.Traversal.FRActive || body.Traversal.ARActive || body.Traversal.PTActive){return false;}
+        if(body.YieldActive || body.SupportBypassActive || body.PeerBypassActive){return false;}
+        if(body.Combat && (body.Combat.Active || body.Combat.Dead || body.Combat.PendingDeath)){return false;}
+        gate="INTENT";
+        if(!body.Traversal.Active || !body.Traversal.Admission || body.Traversal.AdmissionSource!=body.Traversal.Active){return false;}
+        if(body.Traversal.Admission.Action!="CLIMB" || body.Traversal.Admission.SourceArea!=body.Traversal.Area){return false;}
+        gate="PREPARING";
+        if(!body.Traversal.EntryAligning || body.Reason!="ENTRY_POSE_SETTLE"){return false;}
+        // The existing committed-idle120ms policy stays unchanged by default.
+        // Opt-in handoff: one changed contact proposal before idle is committed.
+        if(!body.EPHRead)
+        {body.EPHEnabled=FileExist("$profile:entry-pending-idle-handoff.flag");body.EPHRead=true;}
+        bool pending=body.Request!=0 || body.Leader.NativeRequest!=0;
+        gate="IDLE_REQUESTS";
+        if(pending)
+        {
+            if(!body.EPHEnabled || body.NextRequest!=0){return false;}
+            gate="PENDING_ALIGNMENT";
+            if(body.Traversal.EntryAlignAt<0){return false;}
+            gate="PENDING_ALREADY_CONSUMED";
+            if(body.EPHUsedAlignAt==body.Traversal.EntryAlignAt){return false;}
+        }
+        else
+        {
+            gate="AGE";
+            float age=body.Director.Now-body.RequestedAt;
+            if(age<0 || age>=0.12){return false;}
+        }
+        gate="INPUT";
+        if(dt<=0 || Math.AbsFloat(input[1])>0.000001){return false;}
+        gate="ENTRY_RADIUS";
+        if(DGBGroundAgent.FlatDistance(body.Agent.Position,body.Traversal.Admission.Entry)>0.36){return false;}
+        float heading=body.Traversal.Admission.Heading;
+        vector normal=DGBNativeGroundBody.Rotate("0 0 -1",heading);
+        gate="NORMAL_GAP";
+        if(Math.AbsFloat(vector.Dot(body.Agent.Position-body.Traversal.Admission.Entry,normal))>0.065){return false;}
+        gate="HEADING";
+        if(Math.AbsFloat(DGBGroundAgent.SignedAngle(body.Agent.Heading-heading))>1){return false;}
+        vector tangent=DGBNativeGroundBody.Rotate("1 0 0",heading);
+        projected=tangent*vector.Dot(input,tangent);gate="READY";if(pending){gate="READY_PENDING_IDLE";}return true;
+    }
+}
+
+modded class DGBNativeCrowd
+{
+    bool EPCRead;bool EPCEnabled;bool EPCTrace;
+    ref array<float> EPCNextLog={};
+    int EPCCalls;int EPCEligible;int EPCChanged;int EPCAccepted;static int EPCSequence;
+    override bool Displace(DGBNativeGroundBody body,vector displacement,float dt)
+    {
+        if(!EPCRead)
+        {
+            EPCEnabled=FileExist("$profile:entry-preparation-contact.flag");
+            EPCTrace=FileExist("$profile:entry-preparation-detail.flag");EPCRead=true;
+        }
+        if(!EPCEnabled && !EPCTrace){return super.Displace(body,displacement,dt);}
+        EPCCalls++;
+        vector projected;string gate;
+        bool eligible=DGEntryPreparationContact.Filter(body,displacement,dt,projected,gate);
+        if(eligible){EPCEligible++;}
+        vector executed=displacement;
+        bool changed=EPCEnabled && eligible && vector.Distance(projected,displacement)>0.000001;
+        if(changed)
+        {
+            executed=projected;EPCChanged++;
+            // Consume even if the inherited geometry rejects the proposal.
+            // Rejection/zero motion cannot renew this alignment intervention.
+            if(gate=="READY_PENDING_IDLE")
+            {body.EPHUsedAlignAt=body.Traversal.EntryAlignAt;body.EPHConsumed++;}
+        }
+        vector before;float headingBefore;
+        if(body){before=body.Agent.Position;headingBefore=body.Agent.Heading;}
+        bool accepted=super.Displace(body,executed,dt);
+        if(changed && accepted){EPCAccepted++;}
+        if(EPCTrace && eligible){EPCLog(body,dt,displacement,projected,executed,before,headingBefore,changed,accepted,gate);}
+        return accepted;
+    }
+    void EPCLog(DGBNativeGroundBody body,float dt,vector input,vector projected,vector executed,vector before,float headingBefore,bool changed,bool accepted,string gate)
+    {
+        if(!body || body.Id<0 || body.Id>255){return;}
+        while(EPCNextLog.Count()<=body.Id){EPCNextLog.Insert(0);}
+        if(Director.Now<EPCNextLog[body.Id]){return;}
+        EPCNextLog[body.Id]=Director.Now+0.2;
+        FileHandle file=OpenFile("$profile:native-entry-preparation.tsv",FileMode.APPEND);
+        if(!file){Print("DG_ENTRY_PREPARATION_LOG_FAILED");return;}
+        if(EPCSequence==0)
+        {
+            string header="sequence\tseconds\tid\tdisplaceCall\tenabled\tdt\tinput\tprojected\texecuted\tbefore\tafter\theadingBefore\theadingAfter";
+            header+="\tchanged\taccepted\tgate\tphase\treason\trequestAge\trequest\tnativeRequest\tentryTraceCall\teligibleCalls\tchangedCalls\tacceptedChangedCalls";
+            FPrintln(file,header);
+        }
+        int traceCall=-1;if(body.ETInside){traceCall=body.ETCallId;}
+        EPCSequence++;
+        string row=EPCSequence.ToString()+"\t"+(Director.Now-Director.Born)+"\t"+body.Id+"\t"+EPCCalls;
+        row+="\t"+EPCEnabled+"\t"+dt+"\t"+input+"\t"+projected+"\t"+executed;
+        row+="\t"+before+"\t"+body.Agent.Position+"\t"+headingBefore+"\t"+body.Agent.Heading;
+        row+="\t"+changed+"\t"+accepted+"\t"+gate+"\t"+body.Traversal.Phase;
+        row+="\t"+body.Reason+"\t"+(Director.Now-body.RequestedAt)+"\t"+body.Request+"\t"+body.Leader.NativeRequest;
+        row+="\t"+traceCall+"\t"+EPCEligible+"\t"+EPCChanged+"\t"+EPCAccepted;
+        FPrintln(file,row);CloseFile(file);
+    }
+}

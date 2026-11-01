@@ -1,75 +1,53 @@
-# 64개체 실제 표시 계측 확보: CPU쪽 비용 후보,정렬 복구1건 잔여
+# 정렬idle 인계 후보:46고정조건·서명·live사전검증,효능미검증
 
-작성: 2026-11-01T12:37:18.227333+09:00
+작성: 2026-11-01T12:57:36.841514+09:00
 
 ## 1. 작업 목표
 
-기존7E16의64개체 workload에서 실제 CPU/GPU/Present/표시 비용을 측정하고 전체300초 상태 계약과 독립 판정한다. 과거 실패한ETW 자료를 재사용하거나 성공으로 고치지 않는다.
+64개체 시험에서 남은16번 정렬 watchdog을 실제 호출순서와 대조하고, 안전 검사를 유지하는 최소 후보를 격리 준비한다. 이번에는 시간 제한·애니메이션 시계·CPU 최적화 정책을 바꾸지 않는다.
 
 ## 2. 실제 수행
 
-2026-11-01 12:25에 준비된 관리자 도우미를 OS RunAs로 실행했다. UAC 클릭이나 보안 설정 변경을 자동화하지 않았다. 실제 관리자 principal·live PID/생성시각·준비 시각·도구 해시를 대조한 뒤 격리 클라이언트 runtime-20261101-122619를 실행했다. 기존3종PBO 서명 검증은 모두 성공했다. 새PBO·게임 코드 변경은 없다.
+기존 runtime-20261101-122619의 backoff/entry/contract 기록을 다시 읽고 실행된453D 패키지의 Traversal/Ground/Crowd3개 소스와 현재 소스 바이트를 대조했다. 정확한 backoff 시각은48.476초였고,이전 보고서의48.374~48.923초 스냅샷 범위 안이다.
 
-미션8.084초에 요청을 기록했고 도우미는8.844~39.070초 LOW_HOLD에서30초만 PresentMon2.6을 실행했다. 다른ETW 세션 중단·서비스 설치·권한 그룹 변경·키보드 추적은 하지 않았다. helper/tool/client 모두 종료됐고 전체300초 시험도 명령 retire와 mission 종료를 거쳐 정상 종료됐다.
+47.032초 같은 호출에서 ENTRY_POSE_SETTLE/현재Request1·NativeRequest1인 채 접촉 전후 heading90은 유지됐지만 벽방향 gap은45.4102→81.0547mm로35.6445mm 증가해65mm 준비 경계를 넘었다. 검증된 소스의 해당분기는 NextRequest=0을 요청한다. NextRequest 열은 당시 직접 기록되지 않았으므로 이 부분은 제어흐름 추론으로 구분한다.
 
-초기 상태 안내에서 시작 파일/프로세스 목록을 충분히 확인하지 않고 도우미 정체로 판단한 오류가 있었다. 실제 기록은 요청접수29.151ms 뒤 도구 시작,30초 후 exit0이었다. 잘못된 관찰과 정정 근거를 별도JSON으로 보존했다. 이 성공이 과거 도우미 정체 원인을 설명하지는 않는다.
+기존 보호는 이미 적용된idle과120ms 나이 조건을 요구하므로 첫pending 인계를 거부한다. 격리9350 후보는 명시flag가 있을 때, 같은 정렬 EntryAlignAt당 최초 changed 접촉 제안 하나만 tangent방향으로 투영한다. 상속된Displace를 그대로 호출하고 실패/0이동이어도 이 인계를 재사용하지 않는다. 기존 committed-idle 경계·world/support/player 검사·watchdog2/5초·animation graph는 유지한다. 다른 개체의 등반을 예약하거나 transform을 직접 쓰지 않는다.
 
 ## 3. 측정 결과
 
-실제 Present631건, 단일DXGI chain, display timing626건(5건 값 없음), QPC상 Present 표본 범위29.780초다. helper 측정 경과30.204초, 미션 구간235표본 모두LOW_HOLD/low였다. display timing 없음만으로 drop5건이라고 단정하지 않는다. Present모드는 Hardware Composed Independent Flip617건·Composed Flip14건, SyncInterval1은631건이다.
+새PBO93507DBE9F69C9F41F67178FB33481D640E7DA3FC245719DDBA3D49F4CE18021을 빌드·서명·서명검증했다. 바뀐 패키지 구성원은 DGSubsetZZZZEntryPreparation.c 하나다.7E16·공용D61D·운영서버·원시 기록은 보존했다. 기능 기본OFF이며 실제 프로필flag ON은 아직 실시간 시험하지 않았다.
 
-| 측정값 | p50(ms) | p95(ms) | p99(ms) |
-|---|---:|---:|---:|
-| MsBetweenPresents | 48.222 | 93.070 | 115.190 |
-| MsBetweenDisplayChange | 40.044 | 95.006 | 120.027 |
-| MsCPUBusy | 45.144 | 91.088 | 105.656 |
-| MsCPUWait | 0.143 | 16.290 | 19.370 |
-| MsGPUBusy | 6.666 | 12.207 | 13.838 |
-| MsGPUWait | 40.942 | 85.302 | 105.996 |
-| MsUntilDisplayed | 15.783 | 24.969 | 28.140 |
+고정 엔진 검증에서 기존정책26/26·기존geometry8/8·새pending조건12/12가 통과했다. 새조건은정상pending/다른요청/기능OFF/동일정렬 재사용 거부/FALL/DEAD/65mm 초과/heading 초과/기존120ms 만료/새정렬을 구분했다. 실제 상속Displace로 접선 이동을 실행한 뒤 같은정렬의 두번째 제안 거부와consumed1도 확인했다. 기존접선 이탈낙하와월드벽 차단은 유지됐다.
 
+원시frozen engine-compile.json은passed=false다. 도우미가 다른actor5·착지 계약마커를 무조건 요구했기 때문이다. 이파일을 고치지 않고 원시행·필수실행마커·sourcehash·스크립트오류0·nativeCrash없음을 독립 판독해 이46항목의 제한된 성공만 기록했다. RPT의40건 Trying-to-access-error-value 경고는 남아 있어 경고가 없었다고 말하지 않는다.
 
-위 수치는30초 실제 표시 계측이다. 전체미션 script renderDt10095표본은 p50/p95/p99=22/65/94ms, 같은 미션 bracket의 script p95=90.900ms다. 서로 다른 시간 계층·범위이므로 숫자를 합치거나 NPC 포즈 프레임으로 취급하지 않는다.20ms p95 목표는 미달이다.
-
-기능:64/64 유효 도달,미해결0,낙하87/87 착지·추적재개,등반종료 실패0,물리전환 대응통과,low/high/ground FOLLOW 각각64,foreground1.0이다. 하지만 ENTRY_ALIGNMENT_NO_PROGRESS1건 때문에 기존 엄격 algorithm-label gate는 실패했다. CONTACT_SUPPORT_LOST25건은 정상 물리 전환과 복구에 연결했다. 착지 continuation GRANTED0회로 새lease 효능은 여전히 미입증이다.
-
-16번의 정렬 watchdog은48.374~48.923초 사이 확인됐다.51.971초 FALL_REQUEST의 같은 호출 detail은FOLLOW_AREA_OR_FLOOR_GUARD이고,이전ENTRY_ALIGNMENT 라벨이 failure필드에 남아 있었다.52.794초 FOLLOW로 복귀했고 최종ARRIVED다. 정렬 backoff와 나중 낙하의 원인을 동일시하지 않으며 기존 엄격 gate도 그대로 실패로 둔다.
+이후 올바른 기존live 전용컴파일 도우미와 별도미션으로 사전 검증했고 정식passed=true를 확인했다. 앞선frozen 도우미실패를 이결과로 덮어쓰지 않았다. 새8/64실시간 결과·p50/p95/p99·시각품질·성능개선은 미측정이다. 이전64/64·87/87복구·엄격gate정렬1건실패·Present p95 93.070ms 및20ms 목표미달을 유지한다.
 
 ## 4. 원인 분석
 
-확인:이 구간에서는 CPU frame-work 시간이 GPU active 시간보다 길고 GPU wait가 크다. GPU계산만으로93ms급 Present 간격을 설명하기 어렵다는 방향 근거이며 CPU/동기화 쪽 귀속을 우선한다. CPUBusy는 PresentMon 프레임 시간이지 전체 스레드의CPU self-time이 아니다. GPUwait로 특정 스크립트가 원인이라고 단정하지 않는다.
+확인된사실:접촉이 같은호출에서 준비normal경계를 넘었고,당시현재graph요청은walk였다. 기존필터는이상태를통과시키지않는다.48.476초backoff는위치/phase를바꾸지않으며,51.971초낙하는별도floor/area가드였다.이전failure라벨이남는현상과실제낙하원인을구분한다.
 
-같은bracket의 inclusive elapsed는 발지지 130.98,관절·월드 83.32,충돌본 조회 8.08ms/벽시계초다. global 인식 53.45,crowd 27.24,pursuit 0.47ms/벽시계초다. Director카운터는id0에서 한번만,개체 접촉은64개 rate로 읽었다. 범위가 중첩되므로 합산/self-time 해석을 금지한다.
+가설:최초idle인계한번을보호하면접근·회전재시작고리가줄수있다.실제모든owner가드값이기록되지않아과거지점의완전eligibility나후보효과는아직증명하지못했다.당시bestHeading0은접촉후회복중에도3도all-time-best갱신을못하는조건이지만이번후보는그진행식/시간을바꾸지않는다.
 
-| 귀속 대상 | 확보한 측정 | 남은 제한 |
-|---|---|---|
-| 프레임/표시 | script·QPC·실제Present/display 분포 | NPC별 표면/포즈 갱신과 동일하지 않음 |
-| AI·경로·군집 | 기존 global inclusive counter/frequency | 개별 native 함수 self-time·병렬 대기 분리 안 됨 |
-| 발지지·관절/월드 | 기존 body inclusive counter | parent/child 중첩,실제 검사를 끈 비교 아님 |
-| animation graph/native 평가 | 미측정(runtimeTimingProbe=false) | 값0으로 해석하지 않음 |
-| render/GPU | process GPUbusy/wait·Present 경계 | bone palette upload·draw별 비용 없음 |
-| allocation/GC | 미측정 | 현재 Enforce/PresentMon 자료로 분리 불가 |
-
-가설:한번0으로 기록된 align bestHeading과 접촉으로 흔들리는 실제 heading,wall watchdog/pose settling의 관계가 정렬 backoff에 영향을 줬을 수 있다. 현재 기록만으로 원인을 확정하지 않는다. 기존2초/5초 가드를 무작정 늘리지 않는다.
+시험도구문제도보존했다. 최초builder의ASCII별칭/실경로식별가드가중단돼실경로로실행했다. 새시험함수의숫자뺄셈공백과vector배열+=지원문제로두씬이컴파일실패했고각씬/로그를보존했다. 수정전정적검사에서벡터문자열의e-07을오인해문자열·주석을제외하도록분석기를바로잡았다. 최종frozen행은실행됐지만잘못고른도우미의무관마커요구때문에전체flag실패여서독립범위판정을사용했다. 새live사전검증은애초올바른기존live도우미를사용해통과했다.
 
 ## 5. 검증 수준
 
-실제64 ETW 수집·CSV/QPC 정합·LOW bracket은 진단 성공.64최종 도달·87낙하 복구는 관찰 통과. 기존 엄격 기능 gate는 정렬 watchdog1건으로 실패. 시각 품질·최적화 효과·반복 검증·20ms·최종 수용은 미완료다. 다른 빌드/AI조건의1개체 ETW와 비교해 개체수 효과나 개선률을 계산하지 않는다.
+같은호출진단·단일파일포장·서명·46고정항목은해당범위성공. frozen도우미전체passed는실패로보존. live사전엔진검증은통과. 실제8→64의분기활성·watchdog개선·기능회귀·시각·성능·최종수용은미실행/미완료다.
 
 ## 6. 변경 사항
 
-기존7E16/453D/0C6E를 그대로 사용했고 서명3/3을 실행 전에 검증했다.새서명 대상과 개인키 배포는 없다. 기존 실패 capture·원시 기록·공용D61D·운영 서버를 보존했다. 분석기는 기존 parser/상태 계약/비용 분석기를 재사용했고 새 ETW bracket·같은 호출 원인 분리 파생물을 추가했다. 이 시험은 native hook/영상 없이 진행했다.
+기존프로젝트내contact-input-observer의candidate-entry-idle-handoff에만후보source/release를추가했다. 단일준비스크립트변경이며새공유관리시스템이나기존파일일괄재배치는없다. signing로그는검증성공을확인했고배포폴더개인키0이다. 고정검증·live사전검증용미션과생성기·분석기만별도추가했고기존실험·실패입력은덮어쓰지않았다.
 
 ## 7. 원시 증거
 
-sourceRunId presentation-etw-worker-20261101-0712,실제 runtime-20261101-122619,실행 요청12:26:19.623+09:00. admin-capture-20261101-122714의 present.csv·capture-closed,worker의ready/start/completed/closure,기능·lease·phase·alignment-case16 파생물과 원시 contract/ground/entry trace를 연결한다. CSV SHA256=983a1f54567d88226b139b0cd12ea24aa77070a490f2acb4223a455a306fe6e0. 저장 전 기존sourceHashes·파일 안정성·JSON·프로세스 종료를 검증한다.
-
-필드 정의는 [PresentMon v2.6.0 공식 문서](https://github.com/GameTechDev/PresentMon/blob/v2.6.0/README-ConsoleApplication.md)를 참조했고 받은 본문의 hash/선정 정의를 별도 기록했다. MsAnimationError를NPC animation오차로 사용하지 않는다. 공개에는 선정 집계·대표원인만 제공하고PID/프로세스 인자/로컬 경로/키/raw 전체CSV·영상은 게시하지 않는다.
+entry-idle-handoff-20261101-1244의diagnosis/plan/packed-source-proof/contract-results/live-plan과최종compile-961f733b671e46b5ba63130f4c73b371의26·8·12행,별도live engine-compile,빌드·서명로그를연결한다. 잘못된frozen passed=false를그대로연결하고검사범위를명시했다. 실패두씬·배열/공백/가드파생기록도보존한다. 저장전hash·JSON·파일안정성·엔진프로세스종료를검증한다. 공개에는선정소스·집계·선정행만제공하며키·로컬경로·PID·게임자산은게시하지않는다.
 
 ## 8. 잔여 문제
 
-먼저 이 진단 묶음을 안전 종료 상태로 B안에 갱신한다. 다음은 정렬 watchdog의 실제 발생과 이후 failure 라벨 전달을 분리하고 기존 고정 fixture에서 heading/위치/pose-settle 진행 조건을 대조한다. 필요하면 작은 가역 후보를 분리하되 정상 밀침·낙하·복구와 엄격 판정 원본을 보존한다.
+준비된launch-eight.ps1은46항목과live컴파일/빌드식별을확인한뒤에만기존8개체300초씬을실행한다. 실제프로필flag와READY_PENDING_IDLE/changed실행을확인하고정상낙하·추적재개·각구간FOLLOW·엄격오류를분리평가한다. 분기미사용이면효능입증으로세지않는다.8입장검증전64를실행하지않는다.
 
-CPU 세부 범위는 현재 inclusive counter만으로 확정하지 않는다. 기존격리 fixture를 활용한 최소 한 요인 비교가 필요하다. 안전 검사를 운영 경로에서 삭제하거나 새 보간·배속/LOD를 추측 적용하지 않는다. 계측ON/OFF 오버헤드·동일조건 반복·개별 화면 포즈 실측·독립 원본/ANM 충실도는 별도 미완료로 유지한다.
+그다음64에서기능보존과정렬잔여를확인한다.확률적정체한건이없어졌다는것만으로해결완료라하지않고비교조건/기회수/반복여부를기록한다. 실제화면시계와CPU비용진단은별도로이어가며이번물리입력후보를애니메이션최적화로부르지않는다.
 
-선정 공개 본문. 로컬 보고서 SHA-256: `9d7dc95bf5e3b25f83dedbf8c5758de169f87e081de4f9e43dd7b27d65acb7fb`. 원시 전체가 아니다.
+선정 공개 본문. 로컬 보고서 SHA-256: `06f05834df640d5716973d342bc3ebf0f1a014c29831ba3429fbb0d94f36378a`. 원시 전체가 아니다.
