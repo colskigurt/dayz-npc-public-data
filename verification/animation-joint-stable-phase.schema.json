@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "animation-observer-joint-20261101-1348"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "newRuntimeTrials",
+        "newPbo",
+        "numericOverrides",
+        "joint",
+        "historicalAudit",
+        "stablePhase"
+      ],
+      "properties": {
+        "newRuntimeTrials": {
+          "const": 1
+        },
+        "newPbo": {
+          "const": false
+        },
+        "numericOverrides": {
+          "const": false
+        },
+        "visualAccepted": {
+          "const": false
+        },
+        "performanceAccepted": {
+          "const": false
+        },
+        "stablePhase": {
+          "type": "object",
+          "properties": {
+            "exactHudMatches": {
+              "const": 539
+            },
+            "consecutivePairs": {
+              "const": 418
+            }
+          }
+        }
+      }
+    }
+  }
+}
