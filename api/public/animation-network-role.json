@@ -1,0 +1,263 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T16:12:04.286850+09:00",
+  "sourceRunId": "animation-network-role-20261101-1600",
+  "buildId": "453D-0C6E-B8FB-clientc670-serveree1a",
+  "verificationStatus": {
+    "diagnostic": "live_mode2_buffer_graph_progress_observed_pose_request_equivalence_unverified",
+    "repetitions": 1,
+    "fullNpcRegression": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-network-role-20261101-1600",
+    "trials": [
+      {
+        "trial": "initial",
+        "serverMissionTick": false,
+        "characterCreated": false,
+        "visitorReady": false,
+        "npcReady": false,
+        "serverDone": false,
+        "clientSelected": false,
+        "observer": {
+          "enabled": false,
+          "errors": 0,
+          "counts": {
+            "scheduler": 0,
+            "buffer": 0,
+            "consumer": 0,
+            "interpolate": 0
+          },
+          "selected": false,
+          "elapsed": 100.1918746
+        },
+        "serverForcedOwnedStop": true,
+        "clientClosedWithWindowRequest": true,
+        "clientRptTerminationMarker": true,
+        "scriptRetirementContractVerified": false,
+        "crashLogCount": 0,
+        "signaturesVerified": 3,
+        "missionSha256": "0D5E6E16EAA7168D2919827ACAFBB8E6A83C0503A5D8822DF957350514A5B37C"
+      },
+      {
+        "trial": "ready-gated",
+        "serverMissionTick": true,
+        "characterCreated": false,
+        "visitorReady": false,
+        "npcReady": false,
+        "serverDone": false,
+        "clientSelected": false,
+        "observer": {
+          "enabled": false,
+          "errors": 0,
+          "counts": {
+            "scheduler": 0,
+            "buffer": 0,
+            "consumer": 0,
+            "interpolate": 0
+          },
+          "selected": false,
+          "elapsed": 100.2224702
+        },
+        "serverForcedOwnedStop": true,
+        "clientClosedWithWindowRequest": true,
+        "clientRptTerminationMarker": true,
+        "scriptRetirementContractVerified": false,
+        "crashLogCount": 0,
+        "signaturesVerified": 3,
+        "missionSha256": "A2D1E9BEE1E0B41836D5CB3ED9445B2176BC8FB82A7BF0255AB5478F315DC57F"
+      },
+      {
+        "trial": "query-address",
+        "serverMissionTick": true,
+        "characterCreated": true,
+        "visitorReady": false,
+        "npcReady": true,
+        "serverDone": true,
+        "clientSelected": true,
+        "observer": {
+          "enabled": false,
+          "errors": 0,
+          "counts": {
+            "scheduler": 1273,
+            "buffer": 1273,
+            "consumer": 1273,
+            "interpolate": 1273
+          },
+          "selected": true,
+          "elapsed": 55.6096943
+        },
+        "serverForcedOwnedStop": true,
+        "clientClosedWithWindowRequest": true,
+        "clientRptTerminationMarker": true,
+        "scriptRetirementContractVerified": false,
+        "crashLogCount": 0,
+        "signaturesVerified": 3,
+        "missionSha256": "A2D1E9BEE1E0B41836D5CB3ED9445B2176BC8FB82A7BF0255AB5478F315DC57F"
+      }
+    ],
+    "network": {
+      "selected": {
+        "type": "selected",
+        "mode": 2,
+        "bones": 65,
+        "vtableRva": 19984752,
+        "subobjectVtableRva": 19988216,
+        "qpcFrequency": 10000000
+      },
+      "samples": 424,
+      "selectedInterpolationSamples": 47,
+      "all424Mode2AndRetainedBuffer": true,
+      "interpolationReturnRva": "0xb704de",
+      "fullGraphClock": {
+        "records": 424,
+        "qpcElapsedSeconds": 25.3485071,
+        "graphDeltaSeconds": 25.349850177764893,
+        "graphPerQpc": 1.0000529844917334
+      },
+      "lastAfter5Seconds": {
+        "records": 340,
+        "qpcElapsedSeconds": 20.3478176,
+        "graphDeltaSeconds": 20.349834442138672,
+        "graphPerQpc": 1.0000991183515755
+      },
+      "lastAfter5SecondsScope": "Exploratory post-hoc warmup exclusion,not a predeclared acceptance gate",
+      "threeSchedulerCallSampleIntervalsMilliseconds": {
+        "p50": 60.307,
+        "p95": 76.34373999999998,
+        "p99": 78.21922
+      },
+      "sampleIntervalIsFrameTime": false,
+      "selectedInterpolationNumeratorRatio": {
+        "min": 0.1592278456802987,
+        "max": 2.0,
+        "aboveOne": 8,
+        "records": 47
+      },
+      "serverPoseRows": 2152,
+      "serverAllRecordedRequest2": true,
+      "clientRequestedState": "not_read",
+      "clientPoseMatrices": "not_measured",
+      "visibleAnimation": "not_captured",
+      "cpuSelfTime": "not_measured",
+      "performanceAccepted": false,
+      "visualAccepted": false
+    },
+    "newRuntimeTrials": 3,
+    "newPbo": false,
+    "newVideo": false,
+    "numericOverrides": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "Three feasibility attempts are not3 comparable timing trials. Only final attempt selected one mode2 native part.",
+      "Client request equivalence and pose/visible behavior unproven; CPU graph clock alone is not smoothness.",
+      "Native hooks exclude performance comparison; every3-call sample intervals are not per-frame p50/p95/p99.",
+      "Initial no-Hive repair and readiness change were combined; no causal cost attribution.",
+      "Query-address change correlated with first connection in1 pair,not independently repeated root-cause proof.",
+      "Existing offline mode0 and current one-part network probe differ in role,part count and scene; no matched improvement percentage."
+    ],
+    "next": "On the successful query-address fixture, measure client per-part request/graph-state and CPU pose correspondence to server before visible timing comparison. Reuse same signed assets; do not port fullNPC ownership or add correction yet.",
+    "buildId": "453D-0C6E-B8FB-clientc670-serveree1a",
+    "verificationStatus": "live_mode2_buffer_graph_progress_observed_pose_request_equivalence_unverified",
+    "sourceHashes": {
+      "research/animation-network-role-20261101-1600/analyze.py": "fed8d5683edb5c091108f0e4f7a6b73dc37a222130a0ccc1a572e7efbf1bae8b",
+      "research/animation-network-role-20261101-1600/client-launch.json": "cfc19bd3394e96cb4195e5e0b2c28a81eaf6c3efeec5fdb56b7ca84b7ff6b12a",
+      "research/animation-network-role-20261101-1600/installed-connect-contexts.json": "f6c7a91ba709985180067729655a29e0588b949658bdfa3deb375223a3050cd4",
+      "research/animation-network-role-20261101-1600/installed-login-contexts.json": "a937116e43b3383482ba253d75e498ef4f1b8d40c52e7c90eacb64a9179c1af4",
+      "research/animation-network-role-20261101-1600/network-observer.js": "cd766914e237c8b322505c5d735fd99cc6cd10f6a47c972beeae3b92f3d5c6fe",
+      "research/animation-network-role-20261101-1600/network-observer.json": "d1d2e453f8b7a74005fa7185dc712c39b5219e83e6585efbea0331ccac3dee43",
+      "research/animation-network-role-20261101-1600/observer-finished.json": "e7c21ef44671a6fa750ef7cae11404197dcb0dd85a5320751234e06970ca0661",
+      "research/animation-network-role-20261101-1600/observe_network.py": "80ac092c860b6b3bac0df0e695d33ecc1f0e44177701081865956ee601f04731",
+      "research/animation-network-role-20261101-1600/plan.json": "5c1e4f56eff0a3f71c4f3676e3ad43700c867e7f6c94447f2da9115818936e20",
+      "research/animation-network-role-20261101-1600/results.json": "6e6c05f7dd95d51dcecb5135c3d636bafbc26543f8d2b114e8a8996ba0865479",
+      "research/animation-network-role-20261101-1600/run_client.ps1": "8885055fdc2e9c5e8644ae42f399a4a440eceeab038198c022ecc2d0c0ee1464",
+      "research/animation-network-role-20261101-1600/run_server.ps1": "1ac354850258302bbc858bf18312b05de3b272436801346c8db55db22708692e",
+      "research/animation-network-role-20261101-1600/server-launch-BProbe.json": "eee3d5f6dd3525cc3664d407bc3d1bba97c181188f7cb581ec9999d24414e745",
+      "research/animation-network-role-20261101-1600/client-profile/DayZ_x64_2026-11-01_15-59-07.RPT": "07995ba764470a07dbb6e1e5c952aacf4c82a44b2ea3c95c5a11d31c8c99d5b0",
+      "research/animation-network-role-20261101-1600/client-profile/error_2026-11-01_15-59-07.log": "888348b44d9fa30e88739dde0cab2335c9b146efe342db77b1c4d5295a8b351c",
+      "research/animation-network-role-20261101-1600/client-profile/script_2026-11-01_15-59-07.log": "a05c4e7ab36d40482dd28360f70789d89f3df3ee03c05ab62493d956f1830c30",
+      "research/animation-network-role-20261101-1600/query-address-trial/client-launch.json": "f33d2d191219270668cc87f7eb3fd9b08de71e503a3a848bfed814670deb365d",
+      "research/animation-network-role-20261101-1600/query-address-trial/network-observer.js": "cd766914e237c8b322505c5d735fd99cc6cd10f6a47c972beeae3b92f3d5c6fe",
+      "research/animation-network-role-20261101-1600/query-address-trial/network-observer.json": "58442f2cf87a8c0e142d42bd7880e4fca3a8e3fbfec8e8eee60b0ec1cf940b02",
+      "research/animation-network-role-20261101-1600/query-address-trial/observer-finished.json": "af244ce394cc8463ecf3889e498e01e0f0f97899208a9b806b5f2523465214b3",
+      "research/animation-network-role-20261101-1600/query-address-trial/observe_network.py": "80ac092c860b6b3bac0df0e695d33ecc1f0e44177701081865956ee601f04731",
+      "research/animation-network-role-20261101-1600/query-address-trial/preflight-change.json": "547741c227367180af68a6e3488beacecd63a801bb84a15d2759ddb976fd1e1a",
+      "research/animation-network-role-20261101-1600/query-address-trial/run_client.ps1": "ea27109b020ea1bdb3c128104b7fa3e495584c92823109bbc278c8017ab38b57",
+      "research/animation-network-role-20261101-1600/query-address-trial/run_server.ps1": "1ac354850258302bbc858bf18312b05de3b272436801346c8db55db22708692e",
+      "research/animation-network-role-20261101-1600/query-address-trial/server-launch-BProbe.json": "7343e065f9ae31fb1274a5a45d77d5e3521a9dcec81314670865d939d2f20569",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/client-launch.json": "92b632ce054440b882d46d611673a52572d66ff77080680fab750b105829551f",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/connection-failed.png": "b5d10de23672cafa6e25a0b99df051c60aaa3a21b66688132075dea472d29d2b",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/network-observer.js": "cd766914e237c8b322505c5d735fd99cc6cd10f6a47c972beeae3b92f3d5c6fe",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/network-observer.json": "b75ebcacab584097d494c3e75ae94a86ed4fed8e80314df677b174462907f469",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/observer-finished.json": "6668bfa95e0e2575110444bfc405eae373a33834bac9710cfa5cec3762bd77a8",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/observe_network.py": "80ac092c860b6b3bac0df0e695d33ecc1f0e44177701081865956ee601f04731",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/preflight-change.json": "8b10729150ef9b2bc4423d1ff0fafdadeee6cc5dac09cd1bfb660570b36b8119",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/run_client.ps1": "f1de3c41cf8772060cb604b466c64ed04982ef5085a0a6f48bc614e6123b0e72",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/run_server.ps1": "1ac354850258302bbc858bf18312b05de3b272436801346c8db55db22708692e",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/server-launch-BProbe.json": "ee2c431568b9cb9fe6019477496b51d34adeeaa00dad6e75a0935fdc15f84b88",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/udp-query-diagnostic.json": "6a17581064e2d2349355291517917f1349e16324f7419a1b1270cfeedaed6597",
+      "research/animation-network-role-20261101-1600/server-profile-BProbe/DayZServer_x64_2026-11-01_15-58-49.RPT": "6a6e042801594eaa6a81c16f3d5dc2d76f79bfdd66d91071494a4f9be76b889a",
+      "research/animation-network-role-20261101-1600/server-profile-BProbe/error_2026-11-01_15-58-49.log": "8c8a9885d45e2fb9b00d4490322c16ac4feb91449d4c8fcbd438a0db5291ad8e",
+      "research/animation-network-role-20261101-1600/server-profile-BProbe/script_2026-11-01_15-58-49.log": "75eafa3e953fbd383f5ad02a5ff79d30fc71fea1fd93732f767829ddc3e6c0ab",
+      "research/animation-network-role-20261101-1600/server-profile-BProbe/server.cfg": "801e11abc24e0a2b1276750ad8f4de8149089bb9578e0191ba130fc38fc03a4f",
+      "research/animation-network-role-20261101-1600/server-role-lod0.chernarusplus/init.c": "0d5e6e16eaa7168d2919827acafbb8e6a83c0503a5d8822df957350514a5b37c",
+      "research/animation-network-role-20261101-1600/client-profile/Users/colsk/DayZ.cfg": "c18b04a1c2d67a0aae7bb294f53dba34b4ba41894fb8f0c6d6887bb43883d796",
+      "research/animation-network-role-20261101-1600/query-address-trial/client-profile/DayZ_x64_2026-11-01_16-07-10.RPT": "0fa3d96f959cb9a4235541914356e226bab4e5a02d46f2122ce9d65041c65e78",
+      "research/animation-network-role-20261101-1600/query-address-trial/client-profile/error_2026-11-01_16-07-10.log": "d15e63fcdc1374570c3d693ece3e2354a96821b2c3eca0f9cb4e93daed8fb49d",
+      "research/animation-network-role-20261101-1600/query-address-trial/client-profile/script_2026-11-01_16-07-10.log": "17e4cb506acfd213aff9f973bdc8810c30d829e320d7da5c6e89ef8e13d85e19",
+      "research/animation-network-role-20261101-1600/query-address-trial/server-profile-BProbe/DayZServer_x64_2026-11-01_16-06-42.RPT": "ae76736e1aa597bd58952e88d99cdc38ceae838f4189fb6d40bf622e50dd0dac",
+      "research/animation-network-role-20261101-1600/query-address-trial/server-profile-BProbe/error_2026-11-01_16-06-42.log": "eb4f66fd73d92f399f38f45dfb1828bcd6230b70a88021cf29c0d9e04f4b5e23",
+      "research/animation-network-role-20261101-1600/query-address-trial/server-profile-BProbe/role-pose.tsv": "bf8074e139fbf545fa02076d48f53cc41bf35eb8471722fcf0d97c5b662ad2ba",
+      "research/animation-network-role-20261101-1600/query-address-trial/server-profile-BProbe/script_2026-11-01_16-06-42.log": "5ff4f97bc78f7e51b8f6ac860db83a6831c0cff531bd14040dc2430ad562a563",
+      "research/animation-network-role-20261101-1600/query-address-trial/server-profile-BProbe/server.cfg": "801e11abc24e0a2b1276750ad8f4de8149089bb9578e0191ba130fc38fc03a4f",
+      "research/animation-network-role-20261101-1600/query-address-trial/server-role-lod0.chernarusplus/init.c": "a2d1e9bee1e0b41836d5cb3ed9445b2176bc8fb82a7bf0255ab5478f315dc57f",
+      "research/animation-network-role-20261101-1600/query-address-trial/client-profile/Users/colsk/DayZ.cfg": "c18b04a1c2d67a0aae7bb294f53dba34b4ba41894fb8f0c6d6887bb43883d796",
+      "research/animation-network-role-20261101-1600/query-address-trial/server-profile-BProbe/Users/Server/DayZ.cfg": "250e9c988f18d80066f0e575264358504ec74d7a654939662884d4474b3ae7c2",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/client-profile/DayZ_x64_2026-11-01_16-03-27.RPT": "a772b5e8d9557ae0a464ae327ef16c9fe13a9dc584dadf2d89a710fbf6afdf8f",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/client-profile/error_2026-11-01_16-03-27.log": "56a8582071f2ebb6272b1ea49fc3ce81d2447d95beb01738da12400af37c81e5",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/client-profile/script_2026-11-01_16-03-27.log": "4b707ecaa8fbb716bef5c2aa684222f7577c1f99d135594d535feb9fd4161bf5",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/server-profile-BProbe/DayZServer_x64_2026-11-01_16-02-59.RPT": "77ad9ec8f790c005a89354e0c377a762925cb49d20678c43ee850ec7c19376f3",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/server-profile-BProbe/error_2026-11-01_16-02-59.log": "3dade9993b7130e33a0b67862b60ac6833b1959e278b540b869d45edfbc20d38",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/server-profile-BProbe/script_2026-11-01_16-02-59.log": "8cf08922880573390c6ee3f45a49700e1b288bfc03a1cbb30838de52e0fe9923",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/server-profile-BProbe/server.cfg": "801e11abc24e0a2b1276750ad8f4de8149089bb9578e0191ba130fc38fc03a4f",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/server-role-lod0.chernarusplus/init.c": "a2d1e9bee1e0b41836d5cb3ed9445b2176bc8fb82a7bf0255ab5478f315dc57f",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/client-profile/Users/colsk/DayZ.cfg": "c18b04a1c2d67a0aae7bb294f53dba34b4ba41894fb8f0c6d6887bb43883d796",
+      "research/animation-network-role-20261101-1600/ready-gated-trial/server-profile-BProbe/Users/Server/DayZ.cfg": "250e9c988f18d80066f0e575264358504ec74d7a654939662884d4474b3ae7c2",
+      "research/animation-network-role-20261101-1600/server-profile-BProbe/Users/Server/DayZ.cfg": "3f6936691f027e96f57831896dd7b522a8dddff16de86df77a3019123db08ac7"
+    },
+    "signatureVerification": {
+      "existingPbosPerLaunch": 3,
+      "serverLaunches": 3,
+      "allVerified": true
+    },
+    "fullRoleEquivalenceAccepted": false
+  },
+  "blockers": [
+    "Three feasibility attempts are not3 comparable timing trials. Only final attempt selected one mode2 native part.",
+    "Client request equivalence and pose/visible behavior unproven; CPU graph clock alone is not smoothness.",
+    "Native hooks exclude performance comparison; every3-call sample intervals are not per-frame p50/p95/p99.",
+    "Initial no-Hive repair and readiness change were combined; no causal cost attribution.",
+    "Query-address change correlated with first connection in1 pair,not independently repeated root-cause proof.",
+    "Existing offline mode0 and current one-part network probe differ in role,part count and scene; no matched improvement percentage."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-network-role-20261101.md",
+      "sha256": "72dd4d0ead8342d50fc2c706a6dcc8da3468fb419fc1c37eec2d57cb7ce297cf"
+    },
+    {
+      "path": "evidence/animation-network-role-20261101.txt",
+      "sha256": "546a8e41a1f23385ce6da09ea4fec489a34e9c0ca5e1af2e3f6edffeed59d5c4"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

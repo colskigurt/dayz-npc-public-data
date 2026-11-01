@@ -1,53 +1,59 @@
-# client mode2 정적 계약: 별도 buffer 시계와 공유 pose 소비 경로
+# 실제 네트워크 mode2 계측: 그래프 진행 확인·포즈 동등성 미검증
 
-작성: 2026-11-01T15:54:59.379525+09:00
+작성: 2026-11-01T16:11:32.013110+09:00
 
 ## 1. 작업 목표
 
-서버 분기에서 돌아와 기존 오프라인 mode0 시간 손실과 실제 네트워크 클라이언트 mode2의 실행 계약 차이를 확인한다. 역할 변경이 정당한 후속 비교인지 판단하고, 동일한 초기조건이 아닌 시험을 개선 결과로 오인하지 않도록 한다.
+네트워크 클라이언트의 mode2 경로를 실제로 실행해 원격 개체 생성, 실제 모드, retained buffer, 그래프 진행을 확인한다. 이후 포즈·요청 동등성까지 검증된 경우에만 오프라인 시간 손실과 비교한다. 기존 NPC 권한 구조나 정상 밀침·낙하·복구는 수정하지 않는다.
 
 ## 2. 실제 수행
 
-해시가 고정된 client c6709ece의 scheduler와 mode2 분기를 읽었다. 기존 함수의 첫 unwind fragment만 보고 끝내지 않고 명시적 범위 안에서 직접 분기를 순회했다. scheduler, buffer dispatcher, 후속 상태 처리와 두 flag getter의5개 함수에 더해 버퍼의3개 소비 함수를 확인했다. 각 명령의 원본 바이트 및 RTTI subobject slot4개를 다시 대조했다.
+기존 서명된453D/0C6E/B8FB 자산으로 loopback 전용 서버와Steam 실행 client를 사용했다. 완전한8파트 NPC가 아닌65본 물리 native part1개를 ECE_CREATEPHYSICS로 원격 생성했다. 서버 요청은run=2,루트 이동OFF다. 근처 플레이어는 무적이며 기존 NPC 추적·전투 로직은 실행하지 않았다.
 
-실제 파일의 프로토타입 Animal_DGNativeProbe/DGNativeCommand 소스에서 명령 시작·요청 상태 전달의 문맥10개를 확인했다. 전체 상속 계층이나 native 전송을 검색 부재만으로 배제하지 않았다. 게임·클라이언트·서버·워크벤치를 새로 실행하지 않았다.
+초기 시도는 경제 초기화 중 클라이언트를 먼저 실행해 제한 시간 내 접속·개체 생성이 성립하지 않았다. 해당 기록을 보존했다. 다음 시도는 미션 OnUpdate marker 뒤 client를 시작하고 경제 초기화를 제외했으나0x00010001 unreachable 화면이 확인됐다. Windows 컴퓨터 유즈 스킬로 오류창을 확인하고 작은 스크린샷1개를 로컬 보존했다. 메뉴 입력은 원격 개체 관찰로 이어지지 않았고 별도 성공으로 세지 않는다.
+
+로컬 질의 포트27955는 A2S 요청에157바이트로 응답했다. 게임 포트에 같은 질의를 보낸 무응답을 게임 포트 불통 증거로 사용하지 않는다. 설치된 scripts.pbo의 DayZGame.Connect는 질의 포트가 지정됐을 때 IP:gamePort:queryPort 형식을 native Connect에 전달한다. 세 번째 시도는 준비 대기 조건·미션·PBO를 유지하고 CLI 주소만 그 형식으로 바꿨다. 새 포트 개방·방화벽 변경은 하지 않았다.
+
+각 실행 전에3개 PBO 해시·서명을 검증했다. network listener는loopback,이번 격리 설정의verifySignatures=0이며 로컬 서명 검증과 네트워크 강제 검증을 구분한다. 운영 서버 설정은 보존했다. 관찰기는 기존 Python Frida이며4개 함수 바이트를 검증하고 native 값을 바꾸지 않았다.
 
 ## 3. 측정 결과
 
-정적 주 함수5개, 추가 소비 함수3개, 실제 바이트 재대조 명령 레코드 531개, subobject slot4개를 확보했다. 명시한 창 안의 직접 branch 외부 이탈0이다. 외부 call과 가상 call까지 모두 분석됐다는 뜻은 아니다. 신규 runtime0·live mode2 표본0·새 PBO0·영상0이다.
+총3회는 조건을 보정한 실행 가능성 시험이며3회 반복 timing 비교가 아니다. 처음2회는 개체 미선택·서버DONE 없음,세 번째만 플레이어 생성·개체 생성·DONE이 확인됐다. 세 client 모두 창 닫기 요청 후 RPT termination marker 및 프로세스 부재가 확인됐다. 기존 오프라인 하네스의 retirement 계약은 수행하지 않았으므로 그 검증을 통과했다고 표시하지 않는다. 서버는 소유 프로세스만 계획된 Stop-Process로 닫았다. crash log0,관찰 오류0·스크립트 관찰 오류0이며모든관찰기가종료됐다.
 
-mode2는 entity+0x5f8을 buffer dispatcher0x140997b70에 넘긴다. 이 함수는 subobject+0x18을 입력 시간으로 증가시키고 slot+0x30에서 받은 간격과 비교하며, 버퍼 항목 수+0x14를 사용해 항목을 처리하고 간격을 빼는 루프를 수행한다. mode0의 entity+0x66c 누적 후0으로 초기화하는 경로와 같은 누적기가 아니다.
+세 번째에서 실제 mode2·65본 Animal1개를 선택했고 live vtable/subobject vtable이 이전 정적 자료와 일치했다. scheduler/buffer/consumer/interpolation 각각1273호출,매3호출후표본424개,선정 interpolation표본47개다.424개 모두mode2·primary50ms·secondary200ms·retained buffer 있음이었다. 보간 반환RVA0xb704de는 직전 정적 slot+0x48 소비 경로와 일치했다.
 
-Animal의 해당 subobject vtable은0x14130fef8이며 offset0x5f8이다. slot+0x28은 entity base를 반환하고, slot+0x30은 interval 선택0x140b70100, slot+0x48은 descriptor 소비0x140b70490에 연결된다. slot+0x20은 버퍼 항목 처리0x140b71af0에 연결된다.
+전체표본 QPC25.3485071초 동안 graph clock은25.3498502초 진행해 비율1.000053이었다. 첫5초 제외 탐색 분석은20.3478176초/20.3498344초·1.000099였으며 사후 제외 조건이므로 사전 수용 기준처럼 쓰지 않는다. 기존 오프라인0.833 관측과 파트 수·장면·역할이 달라 개선율을 계산하지 않는다.
 
-slot+0x48 소비자는 buffer+0x38이 양수일 때 descriptor를 만들고 mode0과 같은 하류 보간 함수0x140b13380을 호출한다. 이어 pose 적용 함수0x1404347c0/0x1404356b0으로 연결된다. 정적으로 별도 buffered 경로가 존재함은 확인했지만 실제 수신 데이터·호출 빈도·화면 결과는 이번에 측정하지 않았다.
+매3 scheduler호출 간 표본간격 p50/p95/p99는60.307/76.344/78.219ms다. 이 값은 개별 frame-time·CPU self-time·Present가 아니다. 보간 numerator/duration의 선정47표본은0.1592~2.0이며8개가1을 넘었다. 초기 버퍼 상태와 변화를 포함하므로 이 결과를 완벽한 보간이나 화면 부드러움으로 해석하지 않는다.
 
-이번 자료에는 frame-time p50/p95/p99,8/64 안정성,화면·GPU·할당/GC의 새로운 수치가 없다.20ms p95는 목표다.
+서버 pose TSV2152행은 모두실제request2였다. client RequestedState는 읽지 못했고 client pose matrix 및 실제 애니메이션 화면은 측정하지 않았다.8/64 회귀·CPU/GPU/할당/GC·실제 frame-time p50/p95/p99도 이번에 미측정이다.20ms p95는 목표로 유지한다.
 
 ## 4. 원인 분석
 
-확인: 오프라인 mode0과 mode2를 같은 dt 누적기로 설명하면 잘못이다. mode2에는 별도 subobject 시계·항목 버퍼·descriptor 전달이 있고, 최종 보간 소비 함수 일부만 공유한다. 따라서 offline mode0의 잔여시간 수정 후보를 mode2에 그대로 적용하지 않는다.
+확인: 네트워크 client에서 별도 mode2 buffered 경로가 실제로 실행되고 공유 하류 보간 소비자로 전달된다. 그래프 clock의 장시간 진행은 이 실행 범위에서 벽시계에 근접했다. 이는 정적 가능성만 남았던 경로를 실제로 확보한 진전이다.
 
-가설: 실제 server/client 역할 비교는 지원되는 다른 경로를 평가할 연구 가치가 있다. 다만 원격 개체가 생성돼 mode2를 사용하는지, 버퍼에 자료가 들어오는지, custom command와 요청 상태가 같은지부터 확인해야 한다. 서버의 PreviewRequest 필드가 client에 똑같이 적용될 것이라는 가정은 현재 근거로 검증되지 않았다. 상속된 native 전송이 없다는 뜻도 아니다.
+추정: 준비가 된 같은 서버 조건에서 질의 포트를 포함한 주소로 바꾼 뒤 처음 접속했다. 설치 소스 형식·질의 응답과 양립하지만 단일 쌍이고 반복 검증하지 않아 접속 실패의 모든 원인을 질의 포트로 확정하지 않는다. 첫 실패의 경제·준비 조건도 동시에 달라 비용 원인 비교에 쓰지 않는다.
 
-반증 범위: 이번 정적 결과는 mode2도 mode0과 똑같이 entity+0x66c를0으로 만드는 경로라는 가정과 배치된다. 반면 네트워크로 실행하면 끊김이 해결된다는 주장은 입증하지 않았다. 기존 mode0의 실제 CPU/native/화면 시간 손실 근거는 보존한다.
+미확인: client가 서버와 동일run 포즈를 재생하는지,buffer 초기 과도구간이 화면에서 어떤지,8파트 동기화와 정상 NPC 권한·물리가 유지되는지다. 그래프 clock 비율1에 가까운 사실만으로 원본 애니메이션·시각 품질·성능 문제 해결을 선언하지 않는다. 기존 offline mode0 잔여시간 폐기·CPU/화면 연결 증거는 그대로 유효한 별도 조건이다.
 
 ## 5. 검증 수준
 
-mode2의 별도 buffer 계약과 공유 하류 소비자 연결은 제한적 정적 진단 성공이다. 실제 네트워크 역할 비교,동작 동등성,기능 회귀,시각 품질,성능 개선,반복 검증 및 최종 수용은 미실행이다.
+원격 생성·실제 mode2·buffer 전달·graph 진행은 실행 진단 성공이다. 요청 및 포즈 동등성 gate는 미완료다. 시각 품질·8/64 기능 회귀·성능 개선·반복 검증·최종 수용은 통과하지 않았다. failed attempts를 삭제하거나 성공 수에 포함하지 않는다.
 
 ## 6. 변경 사항
 
-작은 PE 분석기·파생 JSON·보고서만 추가했다. 게임 코드·PBO·ANM·기존 시험 하네스·운영 서버·9350 후보·개인키는 변경하지 않았다. 새 PBO가 없어 서명 대상이 없으며, 이번에 기존 PBO 서명을 새로 검증한 것으로도 기록하지 않는다. 도구 설치와 대용량 로그·영상은 없다.
+기존 research 안에 작은 연결용 미션·실행기·bounded 관찰기·3개 profile·분석본을 추가했다. 게임 코드·PBO·ANM·9350 후보·운영 서버·개인키는 보존했다. 기존3개 PBO는3회 실행 전 모두 서명·해시 검증 성공,새 PBO가 없어 새 서명 대상은 없다. 새 영상·대용량 dump·툴 설치는 없다.1개 오류 화면은 로컬에만 보존한다.
 
 ## 7. 원시 증거
 
-실행/분석 ID animation-client-mode2-20261101-1555. inspect_mode2.py,mode2-contract.json,policy-types.json,mode2-subobject-slots.json,mode2-buffer-consumers.json을 연결한다. immutable client 해시·함수 주소·명령 바이트·원본 소스 행번호와 해시를 보존한다. 이 결과는 기존 Capstone 기반 정적 분석이며 REA runtime Evidence가 아니다. 공개본은 선정 호출 문맥과 파생 명세이며 전체 게임 실행 파일·자산·로컬 경로·키는 제공하지 않는다.
+실행 ID animation-network-role-20261101-1600. initial/ready-gated-trial/query-address-trial의 launch,network-observer,json/js,서버 poseTSV,profile과 plan/preflight-change/results를 연결한다. installed-login-contexts/installed-connect-contexts는 실제scripts.pbo 선택 행과 member 해시를 보존한다. 관찰은 REA runtime Evidence가 아니라 기존 Python Frida 결과다.
+
+공개는 집계·선정 event projection·함수 문맥·실패 분류로 제한한다. 실제 process/PID/CLI·ASLR base·전체 로그·질의의 전체 응답·키·로컬 경로·화면은 노출하지 않는다. 프로세스 종료·JSON·해시·파일 안정성 확인 뒤 저장한다.
 
 ## 8. 잔여 문제
 
-다음은1개 물리 native part와 변경 없는 PBO로 격리 dedicated server와 연결 client를 사용하는 최소 역할 시험이다. 우선 stream-in,실제 mode2,buffer 존재,graph/pose 진행,요청 상태의 동등성을 확인한다. 하나라도 성립하지 않으면 모드 값을 직접 쓰거나 전체 NPC 권한 구조를 옮기지 않고 그 실패를 분리한다. 실제 동등성이 성립한 뒤에만 시간·화면 품질 비교를 진행한다.
+다음은 성공한 연결 형식과 미션을 재사용해 client의 요청/graph state 및 CPU 포즈가 서버와 대응하는지 확인하는 것이다. 이미 얻은1회 clock 진단을 최적화 성공으로 다시 포장하지 않는다. 동등성이 성립하면 그 뒤에만 기존 오프라인과 맞춘 입력·파트·씬·표시 비교를 설계한다.
 
-필요 자원은 기존 server/client와 bounded 관찰기다. 클라이언트 실행 전 미리 알리고, 새 비교에 필요한 조건을 고정한다. 새 보간·속도 보정·매 틱LOD 강제 쓰기는 보류한다. 해시 불일치·crash·관찰 범위 이탈은 중단 조건이다.64개체 기능·비용은 이 역할 가능성 진단과 별도 실험으로 유지한다.
+client pose/request 접근 경로를 현재 원시 자료와 지원 getter에서 먼저 확인하고,부족하면 필요한 관찰만 추가한다. 전체 NPC 네트워크 권한 이식·새 보간·native mode 쓰기·속도 배율은 보류한다. 해시/서명 불일치·crash·관찰 오류·대상 이탈은 중단 조건이다. 사용자 추가 조작은 현재 필요하지 않으며 클라이언트는 종료돼 있다.
 
-선정 공개 본문. 로컬 보고서 SHA-256: `05aa769229a6516ecfcab8f52349f82d239a62a43aa96282f09ae7967a6f71a4`. 원시 전체가 아니다.
+선정 공개 본문. 로컬 보고서 SHA-256: `d077083f2c4f9eb865b6a7893af493c0b62428d4fd871ff6e0e5c5614479f69c`. 원시 전체가 아니다.

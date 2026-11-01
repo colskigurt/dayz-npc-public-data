@@ -1,3 +1,5 @@
+> 최신 실행 진단: 연결 시도3회 중 마지막1회에서 실제 mode2/retained buffer/1273호출을 포착했다. graph/QPC 비율1.000053이나 client 요청·포즈 동등성과 시각·성능 개선은 미검증이다. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-network-role-20261101.md). 실패 기록 보존.
+
 > 최신 정적 진단: client mode2는 별도 buffer 시계를 거쳐 mode0과 공유하는 pose 소비자로 연결된다. 실제 네트워크 역할 비교와 요청 동등성은 미실행이다. 시각·성능 개선 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-client-mode2-20261101.md). 이전 기록 보존.
 
 > 최신 진단: 실제 Animal selector6회에서 빈 참조 목록과LOD2를 확인했다. headless mode1의200ms 경로는 설명됐으며 client mode0 시간 손실과 구분한다. 시각·성능 개선 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-lod-selector-20261101.md). 이전 기록 보존.
