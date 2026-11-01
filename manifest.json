@@ -2963,24 +2963,9 @@
       "sha256": "37fee80bb7af659178a9ba30f48fc6f82c6105676613618a6c685ebad317fa41"
     },
     {
-      "path": "reports/operations-latest.md",
-      "bytes": 7656,
-      "sha256": "b0c2cccd6674aeb158be6bf2ede973f57d9f66e114a82e54fc0b3256f2cf6af4"
-    },
-    {
       "path": "reports/operations/no-observer-error-20261101.md",
       "bytes": 7656,
       "sha256": "b0c2cccd6674aeb158be6bf2ede973f57d9f66e114a82e54fc0b3256f2cf6af4"
-    },
-    {
-      "path": "reports/latest.md",
-      "bytes": 44391,
-      "sha256": "9dceb0f8630838d1649db28b1714007b7198e4d0efe2f3628b33d92a10477be6"
-    },
-    {
-      "path": "AI_REVIEW.md",
-      "bytes": 48537,
-      "sha256": "f410ab872263babca44dff481abfa299e06cea2413a542806ff47969ee0e4303"
     },
     {
       "path": "api/public/no-observer-error.json",
@@ -2991,6 +2976,36 @@
       "path": "evidence/no-observer-error-20261101.txt",
       "bytes": 7397,
       "sha256": "30c1d50ea85d6a94abfa7f3cf4ff0d82c33a2e4e1ee179a73564ea2a5939ddae"
+    },
+    {
+      "path": "reports/operations-latest.md",
+      "bytes": 7224,
+      "sha256": "15ec99050a026dc7af5dcefedc2ea51b73d4f48cc558157d33b02751dfaa3109"
+    },
+    {
+      "path": "reports/operations/diag-guard-20261101.md",
+      "bytes": 7224,
+      "sha256": "15ec99050a026dc7af5dcefedc2ea51b73d4f48cc558157d33b02751dfaa3109"
+    },
+    {
+      "path": "reports/latest.md",
+      "bytes": 44782,
+      "sha256": "f8c98df35dcd226327d8d5455c214389743f755ee8473f1a1aa481547cbf308d"
+    },
+    {
+      "path": "AI_REVIEW.md",
+      "bytes": 48928,
+      "sha256": "ac5e204c02fd6f0c387dddfe28d10ae6d62194f28daa80479a031a6ca1eecf3c"
+    },
+    {
+      "path": "api/public/diag-guard.json",
+      "bytes": 10434,
+      "sha256": "b1b53c7b24eb4d15f3735278cd2af0c14b7596b1f16c566375a5b33696ae3708"
+    },
+    {
+      "path": "evidence/diag-guard-20261101.txt",
+      "bytes": 8902,
+      "sha256": "e8180efcd0973de29ffdc3b4ad49d0ca81e6947f1d91e47b8d9c1142cb098b1c"
     }
   ],
   "supplementalPublication": {
@@ -3718,6 +3733,18 @@
     "newRuntimeTrials": 4,
     "releaseTrials": 1,
     "diagnosticSetupAttempts": 3,
+    "newPbo": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "finalAccepted": false
+  },
+  "diagnosticGuard": {
+    "generatedAt": "2026-11-01T17:16:45.900793+09:00",
+    "sourceRunId": "diag-guard-20261101-1710",
+    "report": "reports/operations/diag-guard-20261101.md",
+    "api": "api/public/diag-guard.json",
+    "newRuntimeTrials": 1,
+    "guardCasesPassed": 11,
     "newPbo": false,
     "visualAccepted": false,
     "performanceAccepted": false,

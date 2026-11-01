@@ -1,3 +1,5 @@
+> 최신 진단: 실제 PowerShell5.1의 JSON 배열 중첩이 하네스 중단 원인임을 재현했다. 수정 guard11/11 통과. 진단exe의1회 미션DONE·조기disconnect0·BE kick0을확인했다. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/diag-guard-20261101.md). 일반exe 해결·시각/성능수용과는구분한다.
+
 > 최신 진단: native 관찰기 없는 실행에서도0x000400F0/BattlEye restart-required 화면과서버kick사유를확인했다. READY후32.170초이탈. 진단exe3시도는NPC생성전하네스중단이며연결검증이아니다. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/no-observer-error-20261101.md). client상태·내부원인·시각/성능수용미완료.
 
 > 최신 진단: 공식 런처 직접 실행 분기를 확인했지만 native 관찰기 없는 기준 실행도37.331초 뒤 이탈했다. 서버 DONE보다7.386초 앞섰으며 이번 오류 코드는 미포착이다. BEClient 모듈·갱신 로그 확인. client 비활성 상태·이전 오류와 동일성 미확인. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/launcher-test-mode-20261101.md). 기능·시각·성능 개선 미수용.

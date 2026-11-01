@@ -1,0 +1,316 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T17:16:45.900793+09:00",
+  "sourceRunId": "diag-guard-20261101-1710",
+  "buildId": "diagnostic-A500-fixed-PBO-453D-0C6E-B8FB",
+  "verificationStatus": {
+    "diagnostic": "powershell_array_shape_cause_fixed_and_one_diagnostic_baseline_completed",
+    "repetitions": 1,
+    "fullNpcRegression": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "schemaVersion": "1.0.0",
+    "sourceRunId": "diag-guard-20261101-1710",
+    "buildId": "diagnostic-A500-fixed-PBO-453D-0C6E-B8FB",
+    "newRuntimeTrials": 1,
+    "newPbo": false,
+    "newVideo": false,
+    "nativeObserverAttached": false,
+    "arrayShape": {
+      "powershell51": {
+        "version": "5.1.26100.9711",
+        "wrappedCount": 1,
+        "wrappedFirstType": "System.Object[]",
+        "flatCount": 8,
+        "actualErrorLines": 24,
+        "oldCountGate": false,
+        "flatCompleteLogMatches": true
+      },
+      "powershell7": {
+        "version": "7.6.5",
+        "wrappedCount": 8,
+        "wrappedFirstType": "System.String",
+        "flatCount": 8,
+        "actualErrorLines": 24,
+        "oldCountGate": true,
+        "flatCompleteLogMatches": true
+      }
+    },
+    "guardTests": [
+      {
+        "name": "empty",
+        "expected": "clean",
+        "actual": {
+          "status": "clean",
+          "reason": "no script errors",
+          "completeErrorLines": 0,
+          "completeWarningBlocks": 0,
+          "partialWarning": false,
+          "pendingMilliseconds": 0
+        },
+        "passed": true
+      },
+      {
+        "name": "complete",
+        "expected": "known-warning",
+        "actual": {
+          "status": "known-warning",
+          "reason": "complete reviewed warning",
+          "completeErrorLines": 8,
+          "completeWarningBlocks": 1,
+          "partialWarning": false,
+          "pendingMilliseconds": 0
+        },
+        "passed": true
+      },
+      {
+        "name": "duplicate",
+        "expected": "known-warning",
+        "actual": {
+          "status": "known-warning",
+          "reason": "complete reviewed warning",
+          "completeErrorLines": 24,
+          "completeWarningBlocks": 3,
+          "partialWarning": false,
+          "pendingMilliseconds": 0
+        },
+        "passed": true
+      },
+      {
+        "name": "partial",
+        "expected": "pending",
+        "actual": {
+          "status": "pending",
+          "reason": "incomplete reviewed warning",
+          "completeErrorLines": 3,
+          "completeWarningBlocks": 0,
+          "partialWarning": true,
+          "pendingMilliseconds": 500
+        },
+        "passed": true
+      },
+      {
+        "name": "partial-timeout",
+        "expected": "reject",
+        "actual": {
+          "status": "reject",
+          "reason": "known warning incomplete for two seconds",
+          "completeErrorLines": 3,
+          "completeWarningBlocks": 0,
+          "partialWarning": true,
+          "pendingMilliseconds": 2000
+        },
+        "passed": true
+      },
+      {
+        "name": "unexpected",
+        "expected": "reject",
+        "actual": {
+          "status": "reject",
+          "reason": "unexpected script error",
+          "completeErrorLines": 9,
+          "completeWarningBlocks": 1,
+          "partialWarning": true,
+          "pendingMilliseconds": 0
+        },
+        "passed": true
+      },
+      {
+        "name": "altered",
+        "expected": "reject",
+        "actual": {
+          "status": "reject",
+          "reason": "unexpected script error",
+          "completeErrorLines": 8,
+          "completeWarningBlocks": 1,
+          "partialWarning": false,
+          "pendingMilliseconds": 0
+        },
+        "passed": true
+      },
+      {
+        "name": "compile",
+        "expected": "reject",
+        "actual": {
+          "status": "reject",
+          "reason": "compile or role failure",
+          "completeErrorLines": 0,
+          "completeWarningBlocks": 0,
+          "partialWarning": false,
+          "pendingMilliseconds": 0
+        },
+        "passed": true
+      },
+      {
+        "name": "partial-last-line",
+        "expected": "pending",
+        "actual": {
+          "status": "pending",
+          "reason": "incomplete reviewed warning",
+          "completeErrorLines": 3,
+          "completeWarningBlocks": 0,
+          "partialWarning": true,
+          "pendingMilliseconds": 0
+        },
+        "passed": true
+      },
+      {
+        "name": "unknown-last-line",
+        "expected": "reject",
+        "actual": {
+          "status": "reject",
+          "reason": "unexpected partial script error",
+          "completeErrorLines": 3,
+          "completeWarningBlocks": 0,
+          "partialWarning": true,
+          "pendingMilliseconds": 0
+        },
+        "passed": true
+      },
+      {
+        "name": "complete-prior-logs",
+        "expected": "known-warning",
+        "actual": {
+          "status": "known-warning",
+          "reason": "complete reviewed warning",
+          "completeErrorLines": 24,
+          "completeWarningBlocks": 3,
+          "partialWarning": false,
+          "pendingMilliseconds": 0
+        },
+        "passed": true
+      }
+    ],
+    "baseline": {
+      "serverExecutableSha256": "A500BE804FFED5CDE369337AEB6AB477EF5EE0B5015764BE2B1953C85EC3060D",
+      "serverCompleted": true,
+      "readyToDoneWallSeconds": 44.712,
+      "intendedScenarioSeconds": 45,
+      "serverPoseRows": 2151,
+      "serverEvents": [
+        "17:13:22.227  SCRIPT       : DG_NETWORK_CHARACTER_CREATED",
+        "17:13:22.243 SCRIPT       : DG_ROLE_READY parts=1 server=true client=false multiplayer=true dedicated=true",
+        "17:14:06.955 SCRIPT       : DG_ROLE_DONE parts=1 seconds=44.8996 updates=898"
+      ],
+      "earlyDisconnectCount": 0,
+      "clientTerminationMarker": true,
+      "clientForcedStop": false,
+      "serverOwnedStop": true,
+      "signatureChecksPassed": 3,
+      "guardPowerShellVersion": "5.1.26100.9711",
+      "guardDecision": {
+        "status": "known-warning",
+        "reason": "complete reviewed warning",
+        "completeErrorLines": 8,
+        "completeWarningBlocks": 1,
+        "partialWarning": false,
+        "pendingMilliseconds": 0
+      },
+      "knownShippedPluginWarningLines": 8,
+      "moduleSnapshots": [
+        {
+          "observedAt": "2026-11-01T17:12:55.4526162+09:00",
+          "moduleCount": 51,
+          "beClientModules": [],
+          "refreshed": true
+        },
+        {
+          "observedAt": "2026-11-01T17:13:03.5603922+09:00",
+          "moduleCount": 96,
+          "beClientModules": [],
+          "refreshed": true
+        },
+        {
+          "observedAt": "2026-11-01T17:13:11.6384832+09:00",
+          "moduleCount": 109,
+          "beClientModules": [],
+          "refreshed": true
+        },
+        {
+          "observedAt": "2026-11-01T17:13:19.7158520+09:00",
+          "moduleCount": 118,
+          "beClientModules": [],
+          "refreshed": true
+        },
+        {
+          "observedAt": "2026-11-01T17:13:27.8409010+09:00",
+          "moduleCount": 118,
+          "beClientModules": [],
+          "refreshed": true
+        },
+        {
+          "observedAt": "2026-11-01T17:13:35.9100614+09:00",
+          "moduleCount": 118,
+          "beClientModules": [],
+          "refreshed": true
+        },
+        {
+          "observedAt": "2026-11-01T17:13:43.9967359+09:00",
+          "moduleCount": 118,
+          "beClientModules": [],
+          "refreshed": true
+        },
+        {
+          "observedAt": "2026-11-01T17:13:52.0870721+09:00",
+          "moduleCount": 118,
+          "beClientModules": [],
+          "refreshed": true
+        },
+        {
+          "observedAt": "2026-11-01T17:14:00.1690745+09:00",
+          "moduleCount": 118,
+          "beClientModules": [],
+          "refreshed": true
+        }
+      ],
+      "beUpdateLogCount": 0,
+      "serverBattlEyeKickCount": 0,
+      "uiTrigger": "fifteen_seconds_after_ready_observation",
+      "uiImageSha256": "2872b717da6369c97a0d1938b263a687a0977c7cf0cdd3200f6d066ee7172213",
+      "crashLogs": 0
+    },
+    "functionalRegression": "not_retested",
+    "frameTimeP50P95P99": null,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "Single diagnostic-executable baseline only; it is a different binary from the release client/server, not a matched performance A/B.",
+      "Known shipped PluginItemDiagnostic missing debug-profile warning remains recorded; not a warning-free run.",
+      "No native observer or selected client mode/clock/matrix records in this run.",
+      "One still proves model-part visibility only, not animation smoothness, final display cadence or full 8-part NPC rendering.",
+      "No new 8/64 regression, CPU/GPU/display performance acceptance or 20ms-p95 achievement."
+    ],
+    "next": "Statically map the diagnostic executable native animation paths with its own SHA-bound evidence, then make one bounded read-only trace in the verified diagnostic environment. Do not reuse release offsets unverified; preserve original mode0 clock and 64-agent branches.",
+    "localEvidenceIntegrity": {
+      "filesVerified": 40,
+      "privateManifestPublished": false,
+      "checkpointSha256": "b533f8d72d962941f6a57338aaa472956d8320d3ca3854728cf8241d5b64b93a"
+    }
+  },
+  "blockers": [
+    "Single diagnostic-executable baseline only; it is a different binary from the release client/server, not a matched performance A/B.",
+    "Known shipped PluginItemDiagnostic missing debug-profile warning remains recorded; not a warning-free run.",
+    "No native observer or selected client mode/clock/matrix records in this run.",
+    "One still proves model-part visibility only, not animation smoothness, final display cadence or full 8-part NPC rendering.",
+    "No new 8/64 regression, CPU/GPU/display performance acceptance or 20ms-p95 achievement."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/diag-guard-20261101.md",
+      "sha256": "15ec99050a026dc7af5dcefedc2ea51b73d4f48cc558157d33b02751dfaa3109"
+    },
+    {
+      "path": "evidence/diag-guard-20261101.txt",
+      "sha256": "e8180efcd0973de29ffdc3b4ad49d0ca81e6947f1d91e47b8d9c1142cb098b1c"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

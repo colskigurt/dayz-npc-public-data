@@ -1,57 +1,60 @@
-# native 계측 없는 동일 BattlEye 경고 확인과 진단 실행 준비 한계
+# PowerShell 판정 수정과 진단 연결 기준 시험: 검증 범위 명확화
 
-작성: 2026-11-01T17:08:55.078036+09:00
+작성: 2026-11-01T17:16:20.841625+09:00
 
 ## 1. 작업 목표
 
-계측 없는 기준 실행의 실제 오류를 확보해 이전 native 계측 시험의 BattlEye 경고와 같은 범주인지 확인한다. 지원되는 진단 실행 경로를 조사하되 기존 NPC 구현·50ms 시계 손실 근거·64개체 비용 실험은 보존한다.
+진단 서버를 NPC 생성 전에 멈추게 한 실제 PowerShell 하네스 판정을 검증하고, 지원 진단 환경에서 계측 없는 연결 기준 시험을 완료한다. 기존 NPC 파이프라인·일반 실행 파일의 시계 근거와64개체 비용 연구는 보존한다.
 
 ## 2. 실제 수행
 
-일반 client/server를 고정 run·루트 이동 OFF·물리1파트 조건으로1회 실행했다. 네이티브 관찰기는 붙이지 않았다. 서버 disconnect 로그를250ms 간격으로 확인하는 bounded CU를 미리 연결했고 marker 직후와1.2초 뒤의 화면2장을 저장했다. 첫 CU 준비는 include_text/include_screenshot을 모두 끈 잘못된 요청으로 실패해 수정했으며, 수정 후 포착에 성공했다.
+이전 종료 로그와 동일한 JSON·판정식을 PowerShell5.1과7에서 각각 실행했다.5.1에서는 @(ConvertFrom-Json pipeline)이 내부 Object[]를 감싼1개 배열을 만들고7에서는8개 문자열이 된다. 따라서 이전 v2의 expectedLines.Count==8 조건은 실제 실행 환경5.1에서 항상 false였다. 기존 완료 로그 replay는7에서 실행되어 true였다. 배열을 InputObject로 읽고 명시적으로 string[]로 변환하도록 수정했다.
 
-공식 [Modding Basics](https://community.bistudio.com/wiki/DayZ:Modding_Basics)의 검색 발췌에서 진단 exe를 이용한 서버 실행과 BattlEye=0 안내를 확인했다. 본문 GET은403이므로 전체 문서를 읽었다고 주장하지 않는다. 설치된 DayZDiag 1.30.164200.56, SHA A500BE804FFED5CDE369337AEB6AB477EF5EE0B5015764BE2B1953C85EC3060D로 별도 서버·client 환경을 준비했다.
+실제5.1에서 clean/complete/duplicate/partial/timeout/unexpected/altered/compile/partial-last-line/unknown-last-line/이전 실제 완료 로그 등11개 검사를 통과했다. canonical script_*.log만 스크립트 오류 원본으로 판정해 RPT/error.log의 복사를 이중 집계하지 않는다. 검토된8줄 경고와 정확 일치하는 prefix만 최대2초 보류하며 다른 오류·compile/role failure·crash는 중단한다. 거부 시 실제 snapshot과 이유를 저장하도록 했다.
 
-진단 환경은3회 모두 NPC 생성 전에 하네스가 멈췄다. 첫 회는 기본 PluginItemDiagnostic의 미등록 PluginConfigDebugProfile 조회 스택을 SCRIPT(E) 중단 조건이 잡았다. 설치 scripts.pbo를 읽어 OnInit의 조회 뒤 null 검사와 Diag/Debug 등록 분기를 확인했다. 두 번째는 해당8줄 스택의 정확 일치만 허용했지만 같은 스택이 여러 로그에 복제된 경우를 처리하지 못했다. 세 번째는 반복 스택도 비교했지만 live gate는 다시 false였다. 종료된 전체 로그24줄은 같은8줄 스택3복사와 정확히 일치한다는 것을 실제 PowerShell 식으로 재현했다. 중단 시점의 정확한 로그 snapshot은 없어 원인을 확정하지 않는다. 준비 스크립트의 로그 선택·개수 assert 실패는 runtime 횟수에 더하지 않았다.
+수정 후 설치 DayZDiag client/server로 기존 물리1파트·고정run·루트 이동OFF 조건의45초 미션을1회 실행했다. 새 native 관찰기는 연결하지 않았다. CU로 모델 파트가 보이는 실제 월드를 확인하고, Process.Refresh 뒤 모듈을8초 간격으로 조회했다.
 
 ## 3. 측정 결과
 
-일반 실행: 서버 pose 2151행, READY부터 disconnect 32.17초, 서버 DONE보다 12.538초 앞선 이탈이다. 서버는 Game restart required라는 BattlEye kick 사유를 기록했고 두 번째 CU 화면에서0x000400F0, BattlEye, Game restart required를 직접 확인했다. 첫 화면은 아직 월드였으므로 marker 직후 한 장만으로 오류가 없다고 판단하면 놓칠 수 있다. 두 프레임은 시각 품질·FPS 측정이 아니다.
+PowerShell5.1.26100.9711: wrappedCount1, 첫 원소 Object[], oldCountGate=false. PowerShell7.6.5: wrappedCount8, 첫 원소 String, oldCountGate=true. 명시적 변환은 두 환경 모두8줄·기존 실제 로그24줄의 반복과 일치했다.5.1의 guard 검사11/11 통과다.
 
-서버 disconnect flags는 authFailed=false, alive=true, health=100, logoutTime=15다. 이번에도 그 값만으로 인증 전반의 정상을 입증하지 않는다. BEClient 모듈을 fresh 조회에서도 확인했다. 일반 실행은 DONE·client 종료 marker 확보, client 강제 종료 없음, SCRIPT(E)0줄, crash log0개다.
+진단 baseline: 미션 DONE 완료, READY→DONE host wall 44.712초, pose 2151행, 예정 종료 전 disconnect0, BattlEye kick0, crash log0개다. 미션의45초는 simulation 조건이며 실제 host wall과 구분한다. client 종료 marker 확보·강제 종료 없음, server는 DONE 후 소유 프로세스만 정지했다. NPC retirement 계약 검증은 아니다.
 
-진단3회는 모두 NPC READY 없음·DONE 없음이다. 해당 실패 후 소유 서버를 정지하고 client도 닫았으며 일부 client는 강제 종료였다. 유효한 네트워크/애니메이션 측정으로 취급하지 않는다. known-warning-v2의 완료 로그 replay는24/8줄 일치, compile/role-failure 없음, crash0이다. live gate의 false와 불일치가 남는다.
+fresh 모듈 표본9회에서 BEClient/BattlEye 이름 모듈0개, client BE 갱신 로그0개다. 이는 해당 시점의 관찰 범위이며 모든 엔진 내부 security 상태의 완전 증명은 아니다. 기본 PluginItemDiagnostic 경고8줄은 그대로 남았고 최종 guardDecision은 known-warning·완결1블록·partial=false다. 경고 없는 실행으로 보고하지 않는다.
 
-총 runtime 준비/실행4회이며 실제 NPC 실행은 일반 환경1회다. 각 회 기존3개 PBO 해시·서명을 검증했다. 새8/64 회귀, frame-time p50/p95/p99, CPU self-time, GPU/display 시간, 할당/GC는 측정하지 않았다.20ms p95는 목표다.
+8/64개체 회귀, client native mode/graph clock/본 행렬, frame-time p50/p95/p99, CPU self-time·GPU/display·할당/GC는 이번에 측정하지 않았다. 한 장의 화면으로 시각 부드러움을 판정하지 않는다.20ms p95는 목표다.
 
 ## 4. 원인 분석
 
-확인된 사실: native attachment가 없는 상태에서도 이전 계측 시험과 같은 오류 코드·문구 및 서버 BattlEye kick 사유가 발생했다. 따라서 이 경고의 발생에 native attachment가 반드시 필요하다는 가설은 반증됐다. 그러나 내부 어떤 조건이 재시작을 요청하는지는 미확인이다. 서버cfg값·직접 실행·DLL 로드만으로 client의 전체 active/inactive 상태를 확정하지 않는다.
+확인된 원인: 하네스의5.1/7 JSON 배열 형태 차이가 이전 live false/오프라인 true를 재현한다. NPC 알고리즘이나 애니메이션 실패가 아니었다. 이전 보고서에서 후보로 둔 쓰기 중 snapshot 가설은 이 불일치 설명에 필수적이지 않으며, 실제로 발생했다고 입증된 적도 없다. 동적 로그는 부분 기록 가능성이 있어 bounded pending 검사를 따로 유지했다.
 
-확인된 사실: 진단 전용 기본 플러그인 조회 경로는 null 결과를 검사한다. 동일 스택이3종 로그에 반복되어 전체 SCRIPT(E) 줄수24를 만든다. 이 경고를 무시하고 진단 성공이라고 보고하지 않는다. NPC 실패가 아니라 시험 하네스 중단 단계로 분류한다.
+확인된 사실: 수정한 하네스에서 진단 실행 경로는 예정된 미션 끝까지 연결을 유지했다. 일반 실행에서 계측 없이도 발생한0x000400F0/BattlEye restart 경고는 여전히 별도 미해결 항목이다. 실행 파일·조건이 달라졌으므로 이번 성공을 일반 exe의 연결 수정·성능/애니메이션 개선으로 소급하지 않는다.
 
-가설: 세 번째 live gate와 완료 로그 replay의 차이는 쓰기 중이거나 소스별 갱신이 어긋난 스냅샷 때문일 수 있다. 다만 실제 거부 snapshot이 없어 확정하지 않는다. 이 상태에서 게임 재실행을 반복하기보다 오프라인에서 실제 PowerShell guard와 partial/duplicate/unexpected 입력을 검증해야 한다. Python 모델 검사만으로 실제 PowerShell 실행을 대신하지 않는다.
+미확인: 진단 client의 native mode·retained pose·시계·실제 표시 cadence는 다음 계측 대상이다. 기존 일반 exe 주소를 그대로 쓰지 않는다. 이 환경에서 지원되는 관찰 경로를 확보한 것과 게임에 배포할 해결책은 별개다.
 
 ## 5. 검증 수준
 
-계측 없는 동일 오류 화면·서버 사유 포착은 진단 성공이다. 연결 문제 해결·client 비활성 검증은 미완료다. 진단 exe의 연결 기준 시험은 미실행 수준이다. 전체8/64 회귀, 시각 품질, 성능 목표와 최종 수용은 미완료다.
+PowerShell 배열 원인 재현·guard11개 검사는 진단 성공이다. 진단 연결 기준 실행은1회 통과이며 반복 검증 완료가 아니다. 일반 client 연결 해결·전체8/64 기능 회귀·시각 품질·20ms p95 및 최종 수용은 미완료다.
 
 ## 6. 변경 사항
 
-기존 research 하위의 격리 미션·launch·bounded CU 저장·진단 경고 guard만 추가했다. 원래 게임 코드·PBO·ANM·9350 후보·운영 서버는 변경하지 않았다.3개 PBO의 기존 서명·검증은 각 시도에서 성공했다. 새 PBO가 없어 신규 서명 대상은 없다.
+격리 research 내부 Get-ScriptLogDecision/Test/Inspect-JsonArrayShape, fixture launcher·expected warning·CU 저장만 추가했다. 게임 코드·PBO·ANM·9350 후보·운영 서버는 변경하지 않았다. 기존3개 PBO 해시·서명 검증은 성공했다. 새 PBO가 없어 신규 서명 대상은 없다. 서비스/드라이버/영구 정책/anti-cheat 바이너리 변경·새 설치·영상·대용량dump는 없다.
 
-서비스·드라이버·영구 보안 설정·anti-cheat 바이너리를 변경하지 않았다. 새 도구 설치·영상·대용량 dump는 없다. 진단 exe의 해시·역할·기본 플러그인 경고는 일반 실행과 구분해 남겼다.
+진단 exe SHA A500BE804FFED5CDE369337AEB6AB477EF5EE0B5015764BE2B1953C85EC3060D를 고정했다. 일반 C670/EE1A의 결과와 섞지 않는다. 판정기 변경은 시험 중단 판단에 한정되며 게임 내 NPC 상태 전이를 수정하지 않는다.
 
 ## 7. 원시 증거
 
-분석 ID no-observer-error-20261101-1700. root의 client/server profile·pose·ui-observation·capture-disconnect.js·disconnect-0/1.jpg를 보존한다. 두 번째 화면 SHA 3668e8cc0f348eac2a12e45cce04c840d3ccad8e0edc8d7cbbb495e4207ec140이다. diag-baseline/diag-known-warning/diag-known-warning-v2에는 실패 당시 파일을 유지했다. shipped-diag-plugin-context는 설치 PBO/멤버 해시와 선정 소스이며 diag-guard-complete-replay는 실제 PowerShell 종료 로그 재검사다.
+분석 ID diag-guard-20261101-1710. array-shape-ps51/ps7, powershell-guard-tests, Get/Test/Inspect PS원문, runtime launch/profile/role-pose/ui-observation을 보존한다. 실제 관찰 이미지 SHA 2872b717da6369c97a0d1938b263a687a0977c7cf0cdd3200f6d066ee7172213이다. 이전 경고·실패 로그는 원래 폴더에 그대로 두고 참조했다. 합성 검사는 판정 함수의 오류 거부 결과를 확인했다. launcher의 실제 거부 snapshot 파일 저장 분기는 이번 실행에서 사용되지 않아 파일 생성까지 검증된 것은 아니다.
 
-공개본은 이벤트 투영·사유·화면 전사·화면 해시·소스 발췌만 포함한다. 사용자 ID가 들어간 서버 kick 원문·로컬 절대 경로·CLI·프로세스 정보·이미지·전체 원시 로그·게임 자산·키는 제외한다. 원본 해시와 종료·JSON·파일 안정성을 확인한 뒤 기존 보고서 체계에 저장했다.
+공개본은 선택 판정기 함수·테스트 결과·집계·식별자 없는 이벤트·이미지 해시만 제공한다. 전체 raw 로그·이미지·CLI·프로세스 정보·로컬 절대 경로·사용자 식별자·게임 자산·개인키는 제외한다. 종료·JSON·기존 해시·파일 안정성을 확인한 뒤 기존 체크포인트 체계에 저장했다.
 
 ## 8. 잔여 문제
 
-다음은 live gate의 실제 PowerShell 판정식을 오프라인에서 완결·중복·부분·예상 밖 오류 입력으로 검증하고, 다음1회 bounded 진단 시험이 거부될 때 그 정확한 snapshot과 판정 이유를 저장하도록 만드는 것이다. 미완결 경고를 무기한 허용하거나 일반 오류 검사를 없애지 않는다. 지원 진단 연결이 검증되기 전 native 연결은 재개하지 않는다.
+다음은 A500 진단 exe의 native 애니메이션 경로를 해당 빌드의 정적 근거로 매핑한 뒤, 이 검증된 진단 환경에서 bounded 읽기 전용 관찰을1회 진행하는 것이다. 일반 exe 주소·구조를 검증 없이 재사용하지 않는다. 확보되면 동기 시각·서버/API 본·client retained pose·표시를 구분한다.
 
-진단 exe는 일반 exe와 다른 빌드이므로 연결이 되더라도 일반 client 성능·시각 수용을 대신하지 않는다. 연결 gate 해결과 오프라인 mode0/표시 진단,64개체 기능/비용은 별도 실험으로 유지한다. 새 보간·시간 배율·충돌 검사 생략은 적용하지 않는다.
+진단 기반 결과는 일반 exe의 별도 검증이 필요하다. 기존 mode0 누적기 손실과 원본/변환 대조 결과·64개체 회귀/비용은 유지한다. 새 보간·시간 배율·충돌 생략을 추측으로 적용하지 않는다.
 
-선정 공개 본문. 로컬 보고서 SHA-256: `620a63292f7702765f88288e39ca9d0b169741315b35cb055ca33baddce936cf`. 원시 전체가 아니다.
+
+검증 범위 정정: 직전 체크포인트의 snapshot 분기 검증 표현을 판정 함수 검사 범위로 한정했다. 원래 보고서와 원시 자료는 보존했다. 추가 게임 실행은 없다.
+
+선정 공개 본문. 로컬 보고서 SHA-256: `b533f8d72d962941f6a57338aaa472956d8320d3ca3854728cf8241d5b64b93a`. 원시 전체가 아니다.

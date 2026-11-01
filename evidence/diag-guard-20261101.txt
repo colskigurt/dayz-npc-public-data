@@ -1,0 +1,257 @@
+{
+  "selection": "Exact PowerShell 5.1/7 array-shape replay, eleven actual PowerShell guard cases, one completed diagnostic baseline aggregate, selected guard function text. No full raw logs/screenshots/CLI/process/user identifiers.",
+  "arrayShape": {
+    "powershell51": {
+      "version": "5.1.26100.9711",
+      "wrappedCount": 1,
+      "wrappedFirstType": "System.Object[]",
+      "flatCount": 8,
+      "actualErrorLines": 24,
+      "oldCountGate": false,
+      "flatCompleteLogMatches": true
+    },
+    "powershell7": {
+      "version": "7.6.5",
+      "wrappedCount": 8,
+      "wrappedFirstType": "System.String",
+      "flatCount": 8,
+      "actualErrorLines": 24,
+      "oldCountGate": true,
+      "flatCompleteLogMatches": true
+    }
+  },
+  "guardTests": [
+    {
+      "name": "empty",
+      "expected": "clean",
+      "actual": {
+        "status": "clean",
+        "reason": "no script errors",
+        "completeErrorLines": 0,
+        "completeWarningBlocks": 0,
+        "partialWarning": false,
+        "pendingMilliseconds": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "complete",
+      "expected": "known-warning",
+      "actual": {
+        "status": "known-warning",
+        "reason": "complete reviewed warning",
+        "completeErrorLines": 8,
+        "completeWarningBlocks": 1,
+        "partialWarning": false,
+        "pendingMilliseconds": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "duplicate",
+      "expected": "known-warning",
+      "actual": {
+        "status": "known-warning",
+        "reason": "complete reviewed warning",
+        "completeErrorLines": 24,
+        "completeWarningBlocks": 3,
+        "partialWarning": false,
+        "pendingMilliseconds": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "partial",
+      "expected": "pending",
+      "actual": {
+        "status": "pending",
+        "reason": "incomplete reviewed warning",
+        "completeErrorLines": 3,
+        "completeWarningBlocks": 0,
+        "partialWarning": true,
+        "pendingMilliseconds": 500
+      },
+      "passed": true
+    },
+    {
+      "name": "partial-timeout",
+      "expected": "reject",
+      "actual": {
+        "status": "reject",
+        "reason": "known warning incomplete for two seconds",
+        "completeErrorLines": 3,
+        "completeWarningBlocks": 0,
+        "partialWarning": true,
+        "pendingMilliseconds": 2000
+      },
+      "passed": true
+    },
+    {
+      "name": "unexpected",
+      "expected": "reject",
+      "actual": {
+        "status": "reject",
+        "reason": "unexpected script error",
+        "completeErrorLines": 9,
+        "completeWarningBlocks": 1,
+        "partialWarning": true,
+        "pendingMilliseconds": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "altered",
+      "expected": "reject",
+      "actual": {
+        "status": "reject",
+        "reason": "unexpected script error",
+        "completeErrorLines": 8,
+        "completeWarningBlocks": 1,
+        "partialWarning": false,
+        "pendingMilliseconds": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "compile",
+      "expected": "reject",
+      "actual": {
+        "status": "reject",
+        "reason": "compile or role failure",
+        "completeErrorLines": 0,
+        "completeWarningBlocks": 0,
+        "partialWarning": false,
+        "pendingMilliseconds": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "partial-last-line",
+      "expected": "pending",
+      "actual": {
+        "status": "pending",
+        "reason": "incomplete reviewed warning",
+        "completeErrorLines": 3,
+        "completeWarningBlocks": 0,
+        "partialWarning": true,
+        "pendingMilliseconds": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "unknown-last-line",
+      "expected": "reject",
+      "actual": {
+        "status": "reject",
+        "reason": "unexpected partial script error",
+        "completeErrorLines": 3,
+        "completeWarningBlocks": 0,
+        "partialWarning": true,
+        "pendingMilliseconds": 0
+      },
+      "passed": true
+    },
+    {
+      "name": "complete-prior-logs",
+      "expected": "known-warning",
+      "actual": {
+        "status": "known-warning",
+        "reason": "complete reviewed warning",
+        "completeErrorLines": 24,
+        "completeWarningBlocks": 3,
+        "partialWarning": false,
+        "pendingMilliseconds": 0
+      },
+      "passed": true
+    }
+  ],
+  "guardFunction": "function Get-ScriptLogDecision {\n param([string]$Snapshot,[string[]]$Expected,[double]$PendingMilliseconds=0)\n if($Expected.Count -ne 8){throw 'Exactly reviewed eight-line warning contract required'}\n $status='clean';$reason='no script errors';$errors=@();$tail=''\n if($Snapshot -match \"Can't compile|DG_ROLE_FAILED\"){$status='reject';$reason='compile or role failure'}\n $lines=@($Snapshot -split \"`n\")\n if($Snapshot.Length -and !$Snapshot.EndsWith(\"`n\")){$tail=$lines[-1];if($lines.Count -gt 1){$lines=$lines[0..($lines.Count-2)]}else{$lines=@()}}\n $errors=@($lines | Where-Object {$_ -match 'SCRIPT\\s+\\(E\\):'} | ForEach-Object {($_ -replace '^.*SCRIPT\\s+\\(E\\):\\s*','').TrimEnd(\"`r\")})\n if($status -ne 'reject'){\n  for($i=0;$i -lt $errors.Count;$i++){\n   if($errors[$i] -cne $Expected[$i % 8]){$status='reject';$reason='unexpected script error';break}\n  }\n }\n $partial=($errors.Count % 8 -ne 0)\n if($tail -match 'SCRIPT\\s+\\(E\\):'){\n  $partial=$true;$value=($tail -replace '^.*SCRIPT\\s+\\(E\\):\\s*','').TrimEnd(\"`r\")\n  if(!$Expected[$errors.Count % 8].StartsWith($value,[StringComparison]::Ordinal)){$status='reject';$reason='unexpected partial script error'}\n }\n if($status -ne 'reject'){\n  if($partial){if($PendingMilliseconds -ge 2000){$status='reject';$reason='known warning incomplete for two seconds'}else{$status='pending';$reason='incomplete reviewed warning'}}\n  elseif($errors.Count){$status='known-warning';$reason='complete reviewed warning'}\n }\n [pscustomobject]@{status=$status;reason=$reason;completeErrorLines=$errors.Count;completeWarningBlocks=[math]::Floor($errors.Count/8);partialWarning=$partial;pendingMilliseconds=$PendingMilliseconds}\n}\n",
+  "baseline": {
+    "serverExecutableSha256": "A500BE804FFED5CDE369337AEB6AB477EF5EE0B5015764BE2B1953C85EC3060D",
+    "serverCompleted": true,
+    "readyToDoneWallSeconds": 44.712,
+    "intendedScenarioSeconds": 45,
+    "serverPoseRows": 2151,
+    "serverEvents": [
+      "17:13:22.227  SCRIPT       : DG_NETWORK_CHARACTER_CREATED",
+      "17:13:22.243 SCRIPT       : DG_ROLE_READY parts=1 server=true client=false multiplayer=true dedicated=true",
+      "17:14:06.955 SCRIPT       : DG_ROLE_DONE parts=1 seconds=44.8996 updates=898"
+    ],
+    "earlyDisconnectCount": 0,
+    "clientTerminationMarker": true,
+    "clientForcedStop": false,
+    "serverOwnedStop": true,
+    "signatureChecksPassed": 3,
+    "guardPowerShellVersion": "5.1.26100.9711",
+    "guardDecision": {
+      "status": "known-warning",
+      "reason": "complete reviewed warning",
+      "completeErrorLines": 8,
+      "completeWarningBlocks": 1,
+      "partialWarning": false,
+      "pendingMilliseconds": 0
+    },
+    "knownShippedPluginWarningLines": 8,
+    "moduleSnapshots": [
+      {
+        "observedAt": "2026-11-01T17:12:55.4526162+09:00",
+        "moduleCount": 51,
+        "beClientModules": [],
+        "refreshed": true
+      },
+      {
+        "observedAt": "2026-11-01T17:13:03.5603922+09:00",
+        "moduleCount": 96,
+        "beClientModules": [],
+        "refreshed": true
+      },
+      {
+        "observedAt": "2026-11-01T17:13:11.6384832+09:00",
+        "moduleCount": 109,
+        "beClientModules": [],
+        "refreshed": true
+      },
+      {
+        "observedAt": "2026-11-01T17:13:19.7158520+09:00",
+        "moduleCount": 118,
+        "beClientModules": [],
+        "refreshed": true
+      },
+      {
+        "observedAt": "2026-11-01T17:13:27.8409010+09:00",
+        "moduleCount": 118,
+        "beClientModules": [],
+        "refreshed": true
+      },
+      {
+        "observedAt": "2026-11-01T17:13:35.9100614+09:00",
+        "moduleCount": 118,
+        "beClientModules": [],
+        "refreshed": true
+      },
+      {
+        "observedAt": "2026-11-01T17:13:43.9967359+09:00",
+        "moduleCount": 118,
+        "beClientModules": [],
+        "refreshed": true
+      },
+      {
+        "observedAt": "2026-11-01T17:13:52.0870721+09:00",
+        "moduleCount": 118,
+        "beClientModules": [],
+        "refreshed": true
+      },
+      {
+        "observedAt": "2026-11-01T17:14:00.1690745+09:00",
+        "moduleCount": 118,
+        "beClientModules": [],
+        "refreshed": true
+      }
+    ],
+    "beUpdateLogCount": 0,
+    "serverBattlEyeKickCount": 0,
+    "uiTrigger": "fifteen_seconds_after_ready_observation",
+    "uiImageSha256": "2872b717da6369c97a0d1938b263a687a0977c7cf0cdd3200f6d066ee7172213",
+    "crashLogs": 0
+  }
+}
