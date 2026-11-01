@@ -1,3 +1,5 @@
+> 최신 작업: DayZ64 상세 비용4반복·발판 소실 복구1회. 이동/밀침별 접촉과 물리 질의 스택 비용을 좁혔다. 애니메이션 표시 품질·세부 native self-time·20ms는 미완료. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/detailed-cost-attribution-20261102.md).
+
 > 최신 작업: 바닐라/커스텀1·8추가 및 기존64비교. 접촉 호출량과8파트535본, 단일개체 CPU시계 손실 구분. native selftime/개체당 순수단가/시각품질 미확정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/per-agent-resource-20261102.md).
 
 > 최신 작업: 같은 평지·카메라·입력의 V64/C64 독립2회. 커스텀 전체 비용 증가 및 CPU animation 시계 손실 측정, 시각 품질/20ms 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/matched-flat-pursuit-20261102.md).
