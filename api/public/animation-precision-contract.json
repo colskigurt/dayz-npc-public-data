@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T14:22:54.167818+09:00",
+  "sourceRunId": "animation-precision-contract-20261101-1420",
+  "buildId": "native-c6709ece",
+  "verificationStatus": {
+    "diagnostic": "registered_api_finite_input_contract",
+    "functional": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "supportedClockFix": "not_established",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-precision-contract-20261101-1420",
+    "buildId": "native-c6709ece",
+    "verificationStatus": "registered_api_input_contract_static_diagnosed",
+    "newRuntimeTrials": 0,
+    "newPbo": false,
+    "newVideo": false,
+    "numericOverrides": false,
+    "metrics": {
+      "representativeInputs": 13,
+      "inputPartitions": 7,
+      "registrationBindings": 1,
+      "decodedSelectedSpans": 5,
+      "minimumImmediatePrimarySeconds": 0.05
+    },
+    "declaration": {
+      "member": "3_Game\\Entities\\DayZAnimal.c",
+      "memberSha256": "c1600a8c4c1bd112245024c9dd3a4ce90e519e0441b24ab06af715c361f896e8",
+      "line": 38,
+      "text": "proto native void UpdateSimulationPrecision(int simLOD);"
+    },
+    "findings": {
+      "primaryIntervalsSeconds": [
+        0.05,
+        0.1,
+        0.2,
+        0.5,
+        1.0
+      ],
+      "minimumSelectedPrimarySeconds": 0.05,
+      "negativeResetsRequestedToZeroButActualRemains50ms": true,
+      "largerPositiveValuesSelectDefaultNotSmallerInterval": true,
+      "customFloatIntervalAccepted": false
+    },
+    "sourceHashes": {
+      "research/animation-precision-contract-20261101-1420/inspect_contract.py": "02cbc5b424c7d36f981e2629e60238732d1297b5a378a20f25bf59099a45b63a",
+      "research/animation-precision-contract-20261101-1420/evaluate_partitions.py": "87e6796ec4182384ad1444e89459e13dfd5e1e30ceae7722b825197d0961447f",
+      "research/animation-precision-contract-20261101-1420/registration-and-functions.json": "2ba8b1420bcab24c9e90c0137d5fa20640dd7a6e6061e2df94753439493f0cd1",
+      "research/animation-precision-contract-20261101-1420/input-partitions.json": "8c5c5bb7093a8d1f4c21d3dceadd13792e7af6c0868666b9c9d21a94bfc91770",
+      "research/animation-public-controls-20261031-125131/installed-api-scan.json": "0b3c9ad0dec65ab825fcacc4ca076fdb2faec601ea51325becb52f3cc900995c",
+      "Source/DGOriginalSample/Scripts/4_World/DGBNativeGround.c": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+    },
+    "limits": [
+      "13 representative inputs cover decoded equality/sign partitions, not all machine integers through runtime execution.",
+      "Static register/constant interpretation ends after requested interval write; queue and subsequent engine policy not simulated.",
+      "Does not prove actual live call ownership or render cadence for every LOD.",
+      "Does not establish absence of every other public/configuration API.",
+      "No fresh8/64 functional regression,visible smoothness,frame p50/p95/p99,CPU/GPU or performance measurement."
+    ],
+    "next": "Identify actual scheduler mode+0x668 writers and owner policy with bounded static evidence; only test a supported mod-accessible mode control if one is established. Do not repeat LOD or no-op speed trials.",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "blockers": [
+    "13 representative inputs cover decoded equality/sign partitions, not all machine integers through runtime execution.",
+    "Static register/constant interpretation ends after requested interval write; queue and subsequent engine policy not simulated.",
+    "Does not prove actual live call ownership or render cadence for every LOD.",
+    "Does not establish absence of every other public/configuration API.",
+    "No fresh8/64 functional regression,visible smoothness,frame p50/p95/p99,CPU/GPU or performance measurement."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-precision-contract-20261101.md",
+      "sha256": "587a5efcfd37b51d6353cfb20a39e369da1ab22bc5f0235612bae7f6ce96d3dc"
+    },
+    {
+      "path": "evidence/animation-precision-contract-20261101.txt",
+      "sha256": "3d5658630249c5f07403f79b174aba1f45939feb940ab4e5a6b8a956741f9103"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

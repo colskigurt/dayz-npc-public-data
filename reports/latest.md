@@ -1,3 +1,5 @@
+> 최신 진단: UpdateSimulationPrecision 등록 연결·13입력/7분기 대조. 이 API가 즉시 선택하는 primary 최솟값50ms. 음수 requested0도 actual50ms. 60Hz 제어·시각·성능 수용 미확보. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-precision-contract-20261101.md). 이전 기록 보존.
+
 > 최신 진단: 시간 필드 정적 쓰기 후보913구간/140개 분류. Head 동일오프셋과 Entity 초기66.7ms를 실제 Animal50ms에서 구분. 새 지원 수정 접점 미확보. 클라이언트/PBO 변경 없음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-field-writers-20261101.md). 이전 기록 보존.
 
 > 최신 시간 진단: 과거교대는활성관찰전부터존재. 현재결합조건조회p95 20.289ms에서도native리셋경계진행손실·CPU/화면증분연결.539HUD정합,418연속쌍.지원수정·시각·64성능미완료. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-joint-stable-phase-20261101.md). 이전기록보존.
