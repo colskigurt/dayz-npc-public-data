@@ -1,3 +1,5 @@
+> 최신 애니메이션 진단: 기존4영상 위상·QPC 재분석. 학습외후보 화면증분 p95오차는현재query9.408px/이전query1.904px/native1.931px. 평균배속회복과시각부드러움수용은별개. 새게임/PBO/최적화없음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-phase-matched-20261101.md). 이전기록보존.
+
 > 최신 실시간 검증: 8개체: 8도달, 9/9낙하복구, 엄격gate True; 64개체: 64도달, 78/78낙하복구, 엄격gate True. 새pending분기 실제사용. 단일시험 기능결과이며 반복·시각·성능 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/entry-idle-handoff-live-20261101.md). 이전기록보존.
 
 > 최신 후보: 등반idle 인계 단일파일9350, 서명검증·46고정조건·live엔진사전검증 통과. 기존frozen도우미 최종flag실패 보존. 실제8/64효능·시각·성능은 이체크포인트에서 미검증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/entry-idle-handoff-candidate-20261101.md). 이전기록보존.

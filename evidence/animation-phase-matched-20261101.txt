@@ -1,0 +1,2239 @@
+Selection: complete final run aggregates/model coefficients; per run six evenly spaced eligible pairs plus two largest timing-model differences (deduplicated). This is deliberately selected evidence, not frequency sampling or complete raw video/native logs. Functions require NumPy and period from JSON.
+{
+  "results": {
+    "sourceRunId": "animation-phase-matched-20261101-1316",
+    "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
+    "newRuntime": false,
+    "newVideo": false,
+    "newPbo": false,
+    "periodSeconds": 2.0833332538604736,
+    "periodSource": "Prior actual clip resourceFloat68, not nominal count/fps.",
+    "phaseDefinition": "Earlier observer graphClock+submittedNumerator CPU proxy, not direct GPU phase.",
+    "trainingRunIds": [
+      "runtime-20261031-110449",
+      "runtime-20261031-111204"
+    ],
+    "holdoutRunIds": [
+      "runtime-20261031-112434",
+      "runtime-20261031-112900"
+    ],
+    "trainingCycleGroups": 14,
+    "orderSelection": [
+      {
+        "harmonics": 2,
+        "leaveCycleOutRmsPixels": 15.799510380055494,
+        "errorPixels": {
+          "n": 887,
+          "p50": 14.102500901985156,
+          "p95": 26.85255943677543,
+          "p99": 30.26620180147821,
+          "maximum": 31.968649469463713
+        }
+      },
+      {
+        "harmonics": 4,
+        "leaveCycleOutRmsPixels": 5.497369190295691,
+        "errorPixels": {
+          "n": 887,
+          "p50": 4.496924277582649,
+          "p95": 9.74456961562318,
+          "p99": 11.216594740729823,
+          "maximum": 12.530745758100373
+        }
+      },
+      {
+        "harmonics": 6,
+        "leaveCycleOutRmsPixels": 1.6637546917565749,
+        "errorPixels": {
+          "n": 887,
+          "p50": 1.4650104389929761,
+          "p95": 2.701585076935636,
+          "p99": 3.036985982157301,
+          "maximum": 3.954785742377385
+        }
+      },
+      {
+        "harmonics": 8,
+        "leaveCycleOutRmsPixels": 0.8003579009597526,
+        "errorPixels": {
+          "n": 887,
+          "p50": 0.6325281096252525,
+          "p95": 1.4050457579914275,
+          "p99": 1.8673688188031534,
+          "maximum": 2.362785106003088
+        }
+      },
+      {
+        "harmonics": 10,
+        "leaveCycleOutRmsPixels": 0.48857238653866525,
+        "errorPixels": {
+          "n": 887,
+          "p50": 0.3604057918702293,
+          "p95": 0.9065564402396892,
+          "p99": 1.2682672644142523,
+          "maximum": 1.6805271748509292
+        }
+      },
+      {
+        "harmonics": 12,
+        "leaveCycleOutRmsPixels": 0.40799696090457693,
+        "errorPixels": {
+          "n": 887,
+          "p50": 0.28630566778275496,
+          "p95": 0.7789171467720463,
+          "p99": 1.1535857843719073,
+          "maximum": 1.6478493543584527
+        }
+      }
+    ],
+    "selectedHarmonics": 12,
+    "modelCoefficients": [
+      [
+        789.1846652914254,
+        363.63637010112296
+      ],
+      [
+        -4.827856549455605,
+        10.297123211903642
+      ],
+      [
+        2.590216503270952,
+        -3.849785396975552
+      ],
+      [
+        -1.8413247882465305,
+        5.7031490921461145
+      ],
+      [
+        -4.421802491987083,
+        -4.811141567737363
+      ],
+      [
+        1.9297935965913364,
+        -3.32502231492892
+      ],
+      [
+        -1.4997940798932181,
+        1.9482820164296595
+      ],
+      [
+        6.256765427955344,
+        2.360984853294595
+      ],
+      [
+        -19.222336303946992,
+        0.2649230714804739
+      ],
+      [
+        -4.523912370955801,
+        0.1122428390420421
+      ],
+      [
+        3.888413741779193,
+        -0.8981129132500519
+      ],
+      [
+        -1.2307923993953644,
+        -0.2678080580512432
+      ],
+      [
+        3.2459700456599805,
+        0.5982143302207865
+      ],
+      [
+        0.4632194345212859,
+        0.5343660066604428
+      ],
+      [
+        1.0477625647481856,
+        0.7063283012312961
+      ],
+      [
+        0.016044163914300708,
+        0.7341230968805913
+      ],
+      [
+        -0.06931742992005124,
+        1.0882090635432964
+      ],
+      [
+        0.15109348356914462,
+        -0.38904714618376324
+      ],
+      [
+        -0.04039286311851126,
+        -0.5645656252291291
+      ],
+      [
+        -0.0750973257603437,
+        -0.4129443920841227
+      ],
+      [
+        -0.1628007614098554,
+        -0.032821131026467665
+      ],
+      [
+        0.11855247293819207,
+        -0.2382027687597459
+      ],
+      [
+        0.1294594960208577,
+        -0.028027581440465354
+      ],
+      [
+        -0.0454434219377127,
+        -0.17217285861178744
+      ],
+      [
+        0.0032648314515141275,
+        0.20191956682887824
+      ]
+    ],
+    "runs": [
+      {
+        "runtimeRunId": "runtime-20261031-110449",
+        "mode": "baseline30",
+        "training": true,
+        "joinedSamples": 536,
+        "uniqueHudFrames": 445,
+        "repeatedHudObservations": 91,
+        "consecutivePairs": 437,
+        "nativeEffectiveMeanRatePerQueryQpcSecond": 0.6575786688437181,
+        "phaseSpatialErrorPixels": {
+          "n": 536,
+          "p50": 0.2738422526723035,
+          "p95": 0.784773475117227,
+          "p99": 1.1244566648029384,
+          "maximum": 1.4869364257391509
+        },
+        "nominal2p1PeriodNegativeControlErrorPixels": {
+          "n": 536,
+          "p50": 5.051044121028448,
+          "p95": 13.875824513840847,
+          "p99": 15.982612862670733,
+          "maximum": 16.68090610318163
+        },
+        "opticalHoldoutPhaseErrorPixels": {
+          "n": 359,
+          "p50": 1.8155512297380418,
+          "p95": 6.030953071594509,
+          "p99": 6.882840134703039,
+          "maximum": 7.46333164661541
+        },
+        "metrics": {
+          "previousQueryDt": {
+            "n": 437,
+            "p50": 0.02123770000000036,
+            "p95": 0.03417678000000137,
+            "p99": 0.03577886799999731,
+            "maximum": 0.03629749999999632
+          },
+          "currentNativeDt": {
+            "n": 437,
+            "p50": 0.020937500000002274,
+            "p95": 0.035264339999997674,
+            "p99": 0.04047184400000219,
+            "maximum": 0.04204990000000208
+          },
+          "cpuPreviousQueryResidualPixels": {
+            "n": 437,
+            "p50": 0.8702753097079183,
+            "p95": 4.602473505077426,
+            "p99": 5.851385395748981,
+            "maximum": 7.234690499754937
+          },
+          "opticalPreviousQueryResidualPixels": {
+            "n": 437,
+            "p50": 1.2840672000057434,
+            "p95": 5.352384675657538,
+            "p99": 6.9662017787452015,
+            "maximum": 7.746507757060136
+          },
+          "cpuCurrentNativeResidualPixels": {
+            "n": 437,
+            "p50": 0.9573507053832973,
+            "p95": 4.671572255560114,
+            "p99": 6.041079025171959,
+            "maximum": 7.460696325526939
+          },
+          "opticalCurrentNativeResidualPixels": {
+            "n": 437,
+            "p50": 1.342225466512898,
+            "p95": 5.500534186409134,
+            "p99": 6.933596783835799,
+            "maximum": 7.972282793078088
+          },
+          "queryDt": {
+            "n": 437,
+            "p50": 0.02123770000000036,
+            "p95": 0.034152060000003814,
+            "p99": 0.03577886799999731,
+            "maximum": 0.03629749999999632
+          },
+          "missionDt": {
+            "n": 437,
+            "p50": 0.021999999999998465,
+            "p95": 0.03400000000000247,
+            "p99": 0.03563999999999864,
+            "maximum": 0.036000000000001364
+          },
+          "previousNativeDt": {
+            "n": 437,
+            "p50": 0.020937500000002274,
+            "p95": 0.035264339999997674,
+            "p99": 0.04047184400000219,
+            "maximum": 0.04204990000000208
+          },
+          "cpuPreviousIntervalResidualPixels": {
+            "n": 437,
+            "p50": 2.4485372476416964,
+            "p95": 7.668727478425498,
+            "p99": 10.004124495748536,
+            "maximum": 11.431405764903063
+          },
+          "opticalPreviousIntervalResidualPixels": {
+            "n": 437,
+            "p50": 2.4669054033349704,
+            "p95": 8.287562351592852,
+            "p99": 12.404843355463244,
+            "maximum": 13.719528122444107
+          },
+          "nativeDt": {
+            "n": 437,
+            "p50": 0.007000000216066837,
+            "p95": 0.03400000277906656,
+            "p99": 0.03400000277906656,
+            "maximum": 0.03599999938160181
+          },
+          "nativeRateRatio": {
+            "n": 437,
+            "p50": 0.29354935459501263,
+            "p95": 5.398455464879257,
+            "p99": 5.70666066401184,
+            "maximum": 5.9996999119343055
+          },
+          "cpuNativeResidualPixels": {
+            "n": 437,
+            "p50": 0.27108364271764696,
+            "p95": 0.7312494164573804,
+            "p99": 0.9742529572947947,
+            "maximum": 1.646986619349794
+          },
+          "cpuUniformResidualPixels": {
+            "n": 437,
+            "p50": 2.3978437142667097,
+            "p95": 7.424109793650841,
+            "p99": 9.363487512414567,
+            "maximum": 11.36492254867231
+          },
+          "opticalNativeResidualPixels": {
+            "n": 437,
+            "p50": 0.6918922376028595,
+            "p95": 1.600808231176379,
+            "p99": 2.7286975105899196,
+            "maximum": 4.043007967515411
+          },
+          "opticalUniformResidualPixels": {
+            "n": 437,
+            "p50": 2.3711823887861443,
+            "p95": 8.065767684218038,
+            "p99": 12.052853608364812,
+            "maximum": 13.653052951246446
+          },
+          "timingOnlyModelDifferencePixels": {
+            "n": 437,
+            "p50": 2.391047062274027,
+            "p95": 7.0501396154179075,
+            "p99": 9.426573568784942,
+            "maximum": 10.648637608421817
+          }
+        }
+      },
+      {
+        "runtimeRunId": "runtime-20261031-111204",
+        "mode": "candidate30",
+        "training": true,
+        "joinedSamples": 527,
+        "uniqueHudFrames": 442,
+        "repeatedHudObservations": 85,
+        "consecutivePairs": 431,
+        "nativeEffectiveMeanRatePerQueryQpcSecond": 1.0000546700151733,
+        "phaseSpatialErrorPixels": {
+          "n": 527,
+          "p50": 0.27002068774304117,
+          "p95": 0.7174996251624426,
+          "p99": 0.9159802650441744,
+          "maximum": 1.1595792548942365
+        },
+        "nominal2p1PeriodNegativeControlErrorPixels": {
+          "n": 527,
+          "p50": 6.086851641776282,
+          "p95": 20.693807253102182,
+          "p99": 25.890215655525175,
+          "maximum": 31.54197292402243
+        },
+        "opticalHoldoutPhaseErrorPixels": {
+          "n": 350,
+          "p50": 1.5100765326911512,
+          "p95": 5.63301183251455,
+          "p99": 6.877789180323782,
+          "maximum": 7.407593503395408
+        },
+        "metrics": {
+          "previousQueryDt": {
+            "n": 431,
+            "p50": 0.019831000000003485,
+            "p95": 0.03403069999999886,
+            "p99": 0.03576341000000198,
+            "maximum": 0.03640790000000038
+          },
+          "currentNativeDt": {
+            "n": 431,
+            "p50": 0.020197200000005466,
+            "p95": 0.03561055000000124,
+            "p99": 0.040307789999998525,
+            "maximum": 0.04530969999999712
+          },
+          "cpuPreviousQueryResidualPixels": {
+            "n": 431,
+            "p50": 0.2487520392896666,
+            "p95": 0.8929885296328781,
+            "p99": 1.2218230087822117,
+            "maximum": 1.5960224141559742
+          },
+          "opticalPreviousQueryResidualPixels": {
+            "n": 431,
+            "p50": 0.7525937806807469,
+            "p95": 1.8087418790894279,
+            "p99": 2.464219956138737,
+            "maximum": 3.050224758738207
+          },
+          "cpuCurrentNativeResidualPixels": {
+            "n": 431,
+            "p50": 0.3192522648118465,
+            "p95": 1.1484509092951245,
+            "p99": 1.6646647542998554,
+            "maximum": 2.174289601160812
+          },
+          "opticalCurrentNativeResidualPixels": {
+            "n": 431,
+            "p50": 0.7776882186631955,
+            "p95": 1.770668470629392,
+            "p99": 2.54887045071678,
+            "maximum": 2.9921571335133375
+          },
+          "queryDt": {
+            "n": 431,
+            "p50": 0.02083430000000419,
+            "p95": 0.03403069999999886,
+            "p99": 0.03576341000000198,
+            "maximum": 0.03640790000000038
+          },
+          "missionDt": {
+            "n": 431,
+            "p50": 0.021000000000000796,
+            "p95": 0.03400000000000247,
+            "p99": 0.03600000000000083,
+            "maximum": 0.036000000000001364
+          },
+          "previousNativeDt": {
+            "n": 431,
+            "p50": 0.021559699999997406,
+            "p95": 0.036021000000001635,
+            "p99": 0.040307789999998525,
+            "maximum": 0.04530969999999712
+          },
+          "cpuPreviousIntervalResidualPixels": {
+            "n": 431,
+            "p50": 4.330926796335312,
+            "p95": 8.522622808553965,
+            "p99": 10.089021385624392,
+            "maximum": 10.331385124282624
+          },
+          "opticalPreviousIntervalResidualPixels": {
+            "n": 431,
+            "p50": 4.486391736664746,
+            "p95": 9.054078651149299,
+            "p99": 10.834610562632998,
+            "maximum": 12.657713264363581
+          },
+          "nativeDt": {
+            "n": 431,
+            "p50": 0.01999923214316368,
+            "p95": 0.03400019183754921,
+            "p99": 0.03599923476576805,
+            "maximum": 0.03700000047683716
+          },
+          "nativeRateRatio": {
+            "n": 431,
+            "p50": 1.0554725177160393,
+            "p95": 5.410057738483608,
+            "p99": 5.722721646250643,
+            "maximum": 6.125118028844084
+          },
+          "cpuNativeResidualPixels": {
+            "n": 431,
+            "p50": 0.2551502712977164,
+            "p95": 0.8649116421772067,
+            "p99": 1.1770395381785335,
+            "maximum": 1.5671363310670492
+          },
+          "cpuUniformResidualPixels": {
+            "n": 431,
+            "p50": 4.185762691614746,
+            "p95": 8.312883715602291,
+            "p99": 9.972254800250063,
+            "maximum": 10.118061393787007
+          },
+          "opticalNativeResidualPixels": {
+            "n": 431,
+            "p50": 0.7556391654282186,
+            "p95": 1.7400170243859676,
+            "p99": 2.578076366126983,
+            "maximum": 3.140566503803221
+          },
+          "opticalUniformResidualPixels": {
+            "n": 431,
+            "p50": 4.458010871577241,
+            "p95": 8.876231669505728,
+            "p99": 10.91707610958587,
+            "maximum": 12.403404089163846
+          },
+          "timingOnlyModelDifferencePixels": {
+            "n": 431,
+            "p50": 4.247831884720464,
+            "p95": 8.241659407466567,
+            "p99": 9.424216960230847,
+            "maximum": 9.929314394327934
+          }
+        }
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112434",
+        "mode": "candidate30",
+        "training": false,
+        "joinedSamples": 506,
+        "uniqueHudFrames": 417,
+        "repeatedHudObservations": 89,
+        "consecutivePairs": 381,
+        "nativeEffectiveMeanRatePerQueryQpcSecond": 1.0001503882954088,
+        "phaseSpatialErrorPixels": {
+          "n": 506,
+          "p50": 0.25535785785243936,
+          "p95": 0.6764778467545582,
+          "p99": 0.9195671775435091,
+          "maximum": 1.3735837210395894
+        },
+        "nominal2p1PeriodNegativeControlErrorPixels": {
+          "n": 506,
+          "p50": 6.341412876175666,
+          "p95": 21.59305330878554,
+          "p99": 26.476856921606476,
+          "maximum": 31.541964222966868
+        },
+        "opticalHoldoutPhaseErrorPixels": {
+          "n": 358,
+          "p50": 1.684235148403009,
+          "p95": 5.9899818917175,
+          "p99": 7.046253730238525,
+          "maximum": 7.47180488737922
+        },
+        "metrics": {
+          "previousQueryDt": {
+            "n": 381,
+            "p50": 0.02669829999999962,
+            "p95": 0.034174700000001224,
+            "p99": 0.035692419999999454,
+            "maximum": 0.03609319999999627
+          },
+          "currentNativeDt": {
+            "n": 381,
+            "p50": 0.025563900000001638,
+            "p95": 0.03553790000000134,
+            "p99": 0.03648955999999544,
+            "maximum": 0.04116989999999987
+          },
+          "cpuPreviousQueryResidualPixels": {
+            "n": 381,
+            "p50": 0.2542000352235778,
+            "p95": 0.9382851297689373,
+            "p99": 1.3038471686390452,
+            "maximum": 1.713904332785876
+          },
+          "opticalPreviousQueryResidualPixels": {
+            "n": 381,
+            "p50": 0.772293093820967,
+            "p95": 1.903828235714771,
+            "p99": 2.4869690356523244,
+            "maximum": 3.8534533887028246
+          },
+          "cpuCurrentNativeResidualPixels": {
+            "n": 381,
+            "p50": 0.31556054756174545,
+            "p95": 1.1060483044285123,
+            "p99": 1.5851575998702583,
+            "maximum": 1.8571366437801051
+          },
+          "opticalCurrentNativeResidualPixels": {
+            "n": 381,
+            "p50": 0.7980574917421444,
+            "p95": 1.8566243490196819,
+            "p99": 2.503154921316639,
+            "maximum": 3.509302929161608
+          },
+          "queryDt": {
+            "n": 381,
+            "p50": 0.014057299999997497,
+            "p95": 0.03386679999999842,
+            "p99": 0.0350758600000006,
+            "maximum": 0.03596619999999007
+          },
+          "missionDt": {
+            "n": 381,
+            "p50": 0.014000000000001123,
+            "p95": 0.03400000000000247,
+            "p99": 0.03500000000000014,
+            "maximum": 0.036000000000001364
+          },
+          "previousNativeDt": {
+            "n": 381,
+            "p50": 0.01569990000000132,
+            "p95": 0.03549070000000398,
+            "p99": 0.03648955999999544,
+            "maximum": 0.04116989999999987
+          },
+          "cpuPreviousIntervalResidualPixels": {
+            "n": 381,
+            "p50": 4.422220957378824,
+            "p95": 8.58245108597534,
+            "p99": 10.218096509391849,
+            "maximum": 11.612505703796336
+          },
+          "opticalPreviousIntervalResidualPixels": {
+            "n": 381,
+            "p50": 4.716549060711588,
+            "p95": 9.511643406611448,
+            "p99": 11.80542733020729,
+            "maximum": 12.837302612458647
+          },
+          "nativeDt": {
+            "n": 381,
+            "p50": 0.026000000536441803,
+            "p95": 0.03400019183754921,
+            "p99": 0.035999998636543754,
+            "maximum": 0.03600018844008446
+          },
+          "nativeRateRatio": {
+            "n": 381,
+            "p50": 2.347548235507328,
+            "p95": 5.191198913373288,
+            "p99": 5.608414600850965,
+            "maximum": 5.716619052516414
+          },
+          "cpuNativeResidualPixels": {
+            "n": 381,
+            "p50": 0.24787394637067964,
+            "p95": 0.9310929430498242,
+            "p99": 1.3105756945555649,
+            "maximum": 1.6785552514099567
+          },
+          "cpuUniformResidualPixels": {
+            "n": 381,
+            "p50": 4.245561915426766,
+            "p95": 8.481018294168555,
+            "p99": 9.867218584059197,
+            "maximum": 10.893476495014866
+          },
+          "opticalNativeResidualPixels": {
+            "n": 381,
+            "p50": 0.7578853726070085,
+            "p95": 1.93127176739902,
+            "p99": 2.511504572797543,
+            "maximum": 3.852329803115177
+          },
+          "opticalUniformResidualPixels": {
+            "n": 381,
+            "p50": 4.632732246168405,
+            "p95": 9.407620773219694,
+            "p99": 11.294437658747897,
+            "maximum": 12.65597885401477
+          },
+          "timingOnlyModelDifferencePixels": {
+            "n": 381,
+            "p50": 4.304780016055705,
+            "p95": 8.584169716068594,
+            "p99": 9.666585701123754,
+            "maximum": 10.596099213417132
+          }
+        }
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112900",
+        "mode": "baseline30",
+        "training": false,
+        "joinedSamples": 528,
+        "uniqueHudFrames": 437,
+        "repeatedHudObservations": 91,
+        "consecutivePairs": 420,
+        "nativeEffectiveMeanRatePerQueryQpcSecond": 0.6600056600772514,
+        "phaseSpatialErrorPixels": {
+          "n": 528,
+          "p50": 0.2719171726340862,
+          "p95": 0.8190038247220334,
+          "p99": 1.1644792830611443,
+          "maximum": 1.4869364257391509
+        },
+        "nominal2p1PeriodNegativeControlErrorPixels": {
+          "n": 528,
+          "p50": 5.2015914275928266,
+          "p95": 14.281617664329378,
+          "p99": 16.663711709463684,
+          "maximum": 19.871715062169603
+        },
+        "opticalHoldoutPhaseErrorPixels": {
+          "n": 360,
+          "p50": 1.6889535069149542,
+          "p95": 6.352400789679055,
+          "p99": 7.2376305943386985,
+          "maximum": 7.658285495784533
+        },
+        "metrics": {
+          "previousQueryDt": {
+            "n": 420,
+            "p50": 0.021759499999998155,
+            "p95": 0.034802399999997034,
+            "p99": 0.03691007799999653,
+            "maximum": 0.037465199999999754
+          },
+          "currentNativeDt": {
+            "n": 420,
+            "p50": 0.02129074999999858,
+            "p95": 0.036339889999998896,
+            "p99": 0.04100500699999635,
+            "maximum": 0.04308859999999726
+          },
+          "cpuPreviousQueryResidualPixels": {
+            "n": 420,
+            "p50": 0.8669279931656644,
+            "p95": 4.813762258346478,
+            "p99": 5.928782919172578,
+            "maximum": 7.376802008626993
+          },
+          "opticalPreviousQueryResidualPixels": {
+            "n": 420,
+            "p50": 1.3433901484368567,
+            "p95": 5.451190245956472,
+            "p99": 6.80604274288296,
+            "maximum": 8.542159428239065
+          },
+          "cpuCurrentNativeResidualPixels": {
+            "n": 420,
+            "p50": 0.9834007302803274,
+            "p95": 4.725749338030228,
+            "p99": 6.359554113751516,
+            "maximum": 7.680642881566537
+          },
+          "opticalCurrentNativeResidualPixels": {
+            "n": 420,
+            "p50": 1.4405074915503162,
+            "p95": 5.571836146039135,
+            "p99": 6.933535559151611,
+            "maximum": 8.363891052029905
+          },
+          "queryDt": {
+            "n": 420,
+            "p50": 0.021759499999998155,
+            "p95": 0.03482761000000138,
+            "p99": 0.03691007799999653,
+            "maximum": 0.037465199999999754
+          },
+          "missionDt": {
+            "n": 420,
+            "p50": 0.02149999999999963,
+            "p95": 0.03500000000000014,
+            "p99": 0.036999999999999034,
+            "maximum": 0.037000000000002586
+          },
+          "previousNativeDt": {
+            "n": 420,
+            "p50": 0.02129074999999858,
+            "p95": 0.03704416499999787,
+            "p99": 0.04100500699999635,
+            "maximum": 0.04308859999999726
+          },
+          "cpuPreviousIntervalResidualPixels": {
+            "n": 420,
+            "p50": 2.670018629829838,
+            "p95": 7.575201045398655,
+            "p99": 9.705404506209272,
+            "maximum": 12.919056813021603
+          },
+          "opticalPreviousIntervalResidualPixels": {
+            "n": 420,
+            "p50": 2.790014944415793,
+            "p95": 8.337621782147973,
+            "p99": 11.897492013877203,
+            "maximum": 15.45988269114075
+          },
+          "nativeDt": {
+            "n": 420,
+            "p50": 0.006000000983476639,
+            "p95": 0.03400000277906656,
+            "p99": 0.03599999751895666,
+            "maximum": 0.03700000140815973
+          },
+          "nativeRateRatio": {
+            "n": 420,
+            "p50": 0.34383351883849045,
+            "p95": 6.165033551803457,
+            "p99": 6.548564502341756,
+            "maximum": 6.834137129767937
+          },
+          "cpuNativeResidualPixels": {
+            "n": 420,
+            "p50": 0.2709700239189772,
+            "p95": 0.7958176256263071,
+            "p99": 1.0506475781099927,
+            "maximum": 1.3133293782888693
+          },
+          "cpuUniformResidualPixels": {
+            "n": 420,
+            "p50": 2.5688040825457343,
+            "p95": 7.617636111133122,
+            "p99": 9.620050808549804,
+            "maximum": 11.724087483948779
+          },
+          "opticalNativeResidualPixels": {
+            "n": 420,
+            "p50": 0.7203344846679307,
+            "p95": 1.7472081413511276,
+            "p99": 2.489896817132535,
+            "maximum": 4.198591527929653
+          },
+          "opticalUniformResidualPixels": {
+            "n": 420,
+            "p50": 2.72292593676519,
+            "p95": 8.210904493468588,
+            "p99": 12.045899502064058,
+            "maximum": 15.287179116935485
+          },
+          "timingOnlyModelDifferencePixels": {
+            "n": 420,
+            "p50": 2.4822425201772074,
+            "p95": 7.373339568885466,
+            "p99": 9.389665261131874,
+            "maximum": 11.091631353008557
+          }
+        }
+      }
+    ],
+    "sourceHashes": {
+      "research\\animation-clip-consumer-20261031-095700\\results.json": "377985d3657bc8ef08613584ffe7591b97a1a00916cfbd7b1dc82b86f33f7abb",
+      "research\\animation-optical-carry-20261031-1850\\runtime-20261031-110449.json": "50989bab6bc8eae2cad98c0b7afffca0d9b19c1ccb009d7321db9c341247ef5f",
+      "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-110449\\visible-frame-clock.tsv": "a89a471a3d4db8a832cee20736cb0df60d3e87c7e425bd981fd22a9c643a3259",
+      "research\\animation-residual-carry-20261031-105147\\baseline30\\pose-window.json": "179b889447532f8f86f3752fc5ba13741c0303e981698af121b5b2c9ad33d80d",
+      "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-110449\\native-call-probe\\calls.jsonl": "15a0f20358d072d1d3bba2aba1e4e84df466dba523c51d2a82793082fd8f819f",
+      "research\\animation-optical-carry-20261031-1850\\runtime-20261031-111204.json": "b45b2bbdd724f6ace346974d528dfbddb7ea383e5f77aee8293bbf2ef7e88692",
+      "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-111204\\visible-frame-clock.tsv": "1ed1f586a3a4fc33fd517ec1b50fdc092d965059af5f175f47ab7c679bd993ab",
+      "research\\animation-residual-carry-20261031-105147\\candidate30\\pose-window.json": "28a3005adb68eb61fedf3f01b74319756310ec88f3233a1a39b145553b7e80c8",
+      "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-111204\\native-call-probe\\calls.jsonl": "a3abed9e7b38810b81c5943416400739853d100deaf3e1a4c3f1e7b18b08bad2",
+      "research\\animation-optical-carry-20261031-1850\\runtime-20261031-112434.json": "78e5db73b256f7210ac567e68f53c1a79f6b99f09dca70153f0395a4d012ddab",
+      "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-112434\\visible-frame-clock.tsv": "623e5edc6556be19831526db1a4d7ab6d33a066d3ca6a59d73b4d67c909209e5",
+      "research\\animation-residual-repeat-20261031-112400\\candidate30\\pose-window.json": "4029deaf483e74d26a3c1e8974574195c8f3328067a3a4d393d012c0e1acbb69",
+      "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-112434\\native-call-probe\\calls.jsonl": "ecb6e940b4175fd3ca8d309edd75e78936b8d4f7a1302e64b676e412e2289971",
+      "research\\animation-optical-carry-20261031-1850\\runtime-20261031-112900.json": "9e458331218d558f1aa701633def5dc4d6763ae59f3a95d1321934d49c2389ee",
+      "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-112900\\visible-frame-clock.tsv": "c58a14260fb4ff73e0bb4661e4fc7ef9b1a49f9a73ddf2212168048c087f6dfc",
+      "research\\animation-residual-repeat-20261031-112400\\baseline30\\pose-window.json": "68f1de3d5cd701e8f63bce3b9ad2c7a0c43d6d5519d51296e7f36b36217e0511",
+      "research\\track_b_dayz_2026-10-23\\native-runtime\\controlled-investigation\\runtime-20261031-112900\\native-call-probe\\calls.jsonl": "a557235e766cba4d9c34e5274a34521e43930a8096a28a1828df7963d2b087cb"
+    },
+    "timeAxis": "Four existing QPC event axes: current query, previous query, current native, previous native; graph proxy delta separately;  original script mission time retained as comparison only.",
+    "verificationStatus": "heldout_cpu_phase_reference_and_optical_qpc_axis_contrast_diagnosed",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "Reference is empirical CPU projected head geometry; no independent original-game or decoded ANM ground truth.",
+      "Cycle grouping is based on the native proxy; held-out runs reduce fit reuse but do not prove exact final clip phase.",
+      "Optical head is a surface landmark with pose-dependent offset from bone origin; earlier camera transfer/tracker confounds remain.",
+      "Native-delta vs mean-rate local prediction holds starting phase fixed; it is an analytical contrast, not rendered counterfactual or perceptual smoothness.",
+      "Pair subset uses exact HUD-consecutive frames and short video intervals; it does not cover all video frames.",
+      "QPC query/native intervals are CPU-side events, not Present/scanout cadence. No GPU latency or stutter duration inferred.",
+      "No corrected/native carry control is deployable from this analysis."
+    ],
+    "newAlgorithm": false,
+    "newEngineControl": false,
+    "functionalAcceptance": "not_retested_existing8and64_preserved",
+    "visualAcceptance": "not_accepted_temporal_diagnosis_only",
+    "performanceAcceptance": "not_measured",
+    "selectedOrderAtSearchBoundary": true,
+    "priorAnalysisTimingSuperseded": "results.json uses script mission intervals; results-qpc.json omitted previous-query/current-native axes; both preserved, final uses results-qpc-complete.json.",
+    "next": "Use actual rendering/capture event alignment and observer-cost control before correction. Distinguish current-native versus previous-query (nearby CPU events) from final display presentation; supported time delivery remains open. Do not rerun mean-rate or failed no-op controls. Preserve64 workload as separate experiment."
+  },
+  "selectedPairs": {
+    "runtime-20261031-110449": [
+      {
+        "runtimeRunId": "runtime-20261031-110449",
+        "firstFrame": 672,
+        "lastFrame": 673,
+        "videoDt": 0.016666666666666607,
+        "previousQueryDt": 0.007045900000001382,
+        "currentNativeDt": 0.006088900000001729,
+        "queryDt": 0.03287509999999827,
+        "missionDt": 0.03200000000000003,
+        "previousNativeDt": 0.034563399999996136,
+        "nativeDt": 0.007000000216066837,
+        "nativeRateRatio": 0.2129271155393354,
+        "meanRate": 0.6575786688437181,
+        "phase": 0.7166833877563477,
+        "opticalDelta": [
+          0.0,
+          -1.0
+        ],
+        "cpuDelta": [
+          0.06131558482786659,
+          -0.7366365102447503
+        ],
+        "phasePredictedDelta": [
+          0.7885638956638559,
+          -0.8054987813353591
+        ],
+        "meanRatePhaseMatchedDelta": [
+          1.779908377934703,
+          -2.404267754120781
+        ],
+        "cpuPreviousIntervalResidualPixels": 2.50404396099288,
+        "opticalPreviousIntervalResidualPixels": 2.3704593071861884,
+        "cpuPreviousQueryResidualPixels": 0.5230476570029143,
+        "opticalPreviousQueryResidualPixels": 0.7153295945449987,
+        "cpuCurrentNativeResidualPixels": 0.4960244926744691,
+        "opticalCurrentNativeResidualPixels": 0.716753307064798,
+        "cpuNativeResidualPixels": 0.7305012785707881,
+        "cpuUniformResidualPixels": 2.394693123151748,
+        "opticalNativeResidualPixels": 0.8121968613621866,
+        "opticalUniformResidualPixels": 2.267166019308151,
+        "timingOnlyModelDifferencePixels": 1.8811767888399555
+      },
+      {
+        "runtimeRunId": "runtime-20261031-110449",
+        "firstFrame": 765,
+        "lastFrame": 766,
+        "videoDt": 0.01666666666666572,
+        "previousQueryDt": 0.033538200000002405,
+        "currentNativeDt": 0.040436900000003106,
+        "queryDt": 0.013349999999995532,
+        "missionDt": 0.0129999999999999,
+        "previousNativeDt": 0.006097299999993311,
+        "nativeDt": 0.03299999888986349,
+        "nativeRateRatio": 2.471910029204085,
+        "meanRate": 0.6575786688437181,
+        "phase": 1.9236879656091332,
+        "opticalDelta": [
+          -7.0,
+          0.0
+        ],
+        "cpuDelta": [
+          -5.284876430133863,
+          0.16202303415337838
+        ],
+        "phasePredictedDelta": [
+          -5.237149849556204,
+          0.33096790841312895
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -1.525019852567766,
+          -0.09647147914824927
+        ],
+        "cpuPreviousIntervalResidualPixels": 4.582560151117991,
+        "opticalPreviousIntervalResidualPixels": 6.292618991161302,
+        "cpuPreviousQueryResidualPixels": 1.6391930192419746,
+        "opticalPreviousQueryResidualPixels": 3.3468683643663804,
+        "cpuCurrentNativeResidualPixels": 0.9573507053832973,
+        "opticalCurrentNativeResidualPixels": 2.6736919036498348,
+        "cpuNativeResidualPixels": 0.17555681995376532,
+        "cpuUniformResidualPixels": 3.7687320012537495,
+        "opticalNativeResidualPixels": 1.7936500242017885,
+        "opticalUniformResidualPixels": 5.475830015720552,
+        "timingOnlyModelDifferencePixels": 3.73665807167049
+      },
+      {
+        "runtimeRunId": "runtime-20261031-110449",
+        "firstFrame": 805,
+        "lastFrame": 806,
+        "videoDt": 0.016666666666667496,
+        "previousQueryDt": 0.033767199999999775,
+        "currentNativeDt": 0.03381029999999896,
+        "queryDt": 0.006221599999996386,
+        "missionDt": 0.006000000000000227,
+        "previousNativeDt": 0.005861400000000572,
+        "nativeDt": 0.03299999888986349,
+        "nativeRateRatio": 5.304101660325746,
+        "meanRate": 0.6575786688437181,
+        "phase": 0.3903568098321557,
+        "opticalDelta": [
+          -15.0,
+          1.0
+        ],
+        "cpuDelta": [
+          -12.741806590820488,
+          -0.4434389523723894
+        ],
+        "phasePredictedDelta": [
+          -12.134220723074577,
+          -0.4311405161553239
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -1.5092379210504987,
+          -0.11060944158327857
+        ],
+        "cpuPreviousIntervalResidualPixels": 11.325337699175313,
+        "opticalPreviousIntervalResidualPixels": 13.62329842687776,
+        "cpuPreviousQueryResidualPixels": 4.509131789894112,
+        "opticalPreviousQueryResidualPixels": 6.918280355371664,
+        "cpuCurrentNativeResidualPixels": 4.49871150893427,
+        "opticalCurrentNativeResidualPixels": 6.908132888598805,
+        "cpuNativeResidualPixels": 0.6077103242647247,
+        "cpuUniformResidualPixels": 11.237498583063335,
+        "opticalNativeResidualPixels": 3.2032567866214734,
+        "opticalUniformResidualPixels": 13.536399624809981,
+        "timingOnlyModelDifferencePixels": 10.629816541835224
+      },
+      {
+        "runtimeRunId": "runtime-20261031-110449",
+        "firstFrame": 1055,
+        "lastFrame": 1056,
+        "videoDt": 0.016666666666667496,
+        "previousQueryDt": 0.0061540999999962764,
+        "currentNativeDt": 0.005391100000004201,
+        "queryDt": 0.03416860000000099,
+        "missionDt": 0.03399999999999892,
+        "previousNativeDt": 0.035255999999996845,
+        "nativeDt": 0.006000000052154064,
+        "nativeRateRatio": 0.17559982124388737,
+        "meanRate": 0.6575786688437181,
+        "phase": 1.6000361442565918,
+        "opticalDelta": [
+          2.0,
+          0.0
+        ],
+        "cpuDelta": [
+          1.5626898353898468,
+          -0.46887806261014475
+        ],
+        "phasePredictedDelta": [
+          1.3854531848845681,
+          -0.43573050904086585
+        ],
+        "meanRatePhaseMatchedDelta": [
+          5.3640297850404295,
+          -1.64124852199501
+        ],
+        "cpuPreviousIntervalResidualPixels": 4.1622773837827465,
+        "opticalPreviousIntervalResidualPixels": 3.924777321710808,
+        "cpuPreviousQueryResidualPixels": 0.656761344923541,
+        "opticalPreviousQueryResidualPixels": 1.1095290981007118,
+        "cpuCurrentNativeResidualPixels": 0.7786428543568878,
+        "opticalCurrentNativeResidualPixels": 1.2138768156473605,
+        "cpuNativeResidualPixels": 0.18030970742020108,
+        "cpuUniformResidualPixels": 3.9780193447050727,
+        "opticalNativeResidualPixels": 0.7533451164489837,
+        "opticalUniformResidualPixels": 3.743045966267308,
+        "timingOnlyModelDifferencePixels": 4.157204041524144
+      },
+      {
+        "runtimeRunId": "runtime-20261031-110449",
+        "firstFrame": 1117,
+        "lastFrame": 1118,
+        "videoDt": 0.016666666666667496,
+        "previousQueryDt": 0.033298200000004385,
+        "currentNativeDt": 0.03409059999999897,
+        "queryDt": 0.006050599999994688,
+        "missionDt": 0.006000000000000227,
+        "previousNativeDt": 0.005762300000000664,
+        "nativeDt": 0.03299999888986349,
+        "nativeRateRatio": 5.454004378060434,
+        "meanRate": 0.6575786688437181,
+        "phase": 0.3737061331048608,
+        "opticalDelta": [
+          -15.0,
+          -1.0
+        ],
+        "cpuDelta": [
+          -12.704081418458031,
+          -1.0241441287661814
+        ],
+        "phasePredictedDelta": [
+          -11.999186971679364,
+          -0.8455755373306602
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -1.3759976099630649,
+          -0.10982374452743215
+        ],
+        "cpuPreviousIntervalResidualPixels": 11.431405764903063,
+        "opticalPreviousIntervalResidualPixels": 13.719528122444107,
+        "cpuPreviousQueryResidualPixels": 4.852635515445012,
+        "opticalPreviousQueryResidualPixels": 7.1416831933439,
+        "cpuCurrentNativeResidualPixels": 4.658881888633036,
+        "opticalCurrentNativeResidualPixels": 6.947920224906609,
+        "cpuNativeResidualPixels": 0.7271608645593277,
+        "cpuUniformResidualPixels": 11.36492254867231,
+        "opticalNativeResidualPixels": 3.0047838101283726,
+        "opticalUniformResidualPixels": 13.653052951246446,
+        "timingOnlyModelDifferencePixels": 10.648637608421817
+      },
+      {
+        "runtimeRunId": "runtime-20261031-110449",
+        "firstFrame": 1145,
+        "lastFrame": 1146,
+        "videoDt": 0.016666666666667496,
+        "previousQueryDt": 0.03133160000000146,
+        "currentNativeDt": 0.03225880000000103,
+        "queryDt": 0.009073299999997175,
+        "missionDt": 0.009000000000000341,
+        "previousNativeDt": 0.005497400000002983,
+        "nativeDt": 0.004000186920166016,
+        "nativeRateRatio": 0.4408745351930677,
+        "meanRate": 0.6575786688437181,
+        "phase": 0.7627074718475342,
+        "opticalDelta": [
+          1.0,
+          -1.0
+        ],
+        "cpuDelta": [
+          0.14697432390153153,
+          -0.36844402248959796
+        ],
+        "phasePredictedDelta": [
+          -0.29486623028014947,
+          -0.3644586437724797
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -0.4633641028169677,
+          -0.5410680273117805
+        ],
+        "cpuPreviousIntervalResidualPixels": 0.4124644285938964,
+        "opticalPreviousIntervalResidualPixels": 1.4304509637902236,
+        "cpuPreviousQueryResidualPixels": 2.7444849917406025,
+        "opticalPreviousQueryResidualPixels": 3.288690407916103,
+        "cpuCurrentNativeResidualPixels": 2.8473667643860976,
+        "opticalCurrentNativeResidualPixels": 3.3878262109306156,
+        "cpuNativeResidualPixels": 0.4418585277700249,
+        "cpuUniformResidualPixels": 0.6342807282032632,
+        "opticalNativeResidualPixels": 1.4424255162036759,
+        "opticalUniformResidualPixels": 1.53364045752869,
+        "timingOnlyModelDifferencePixels": 0.24409507861398128
+      },
+      {
+        "runtimeRunId": "runtime-20261031-110449",
+        "firstFrame": 1483,
+        "lastFrame": 1484,
+        "videoDt": 0.01666666666666572,
+        "previousQueryDt": 0.006828000000005829,
+        "currentNativeDt": 0.006133699999999465,
+        "queryDt": 0.03338219999999836,
+        "missionDt": 0.03300000000000125,
+        "previousNativeDt": 0.03386729999999716,
+        "nativeDt": 0.006999999284744263,
+        "nativeRateRatio": 0.20969256923583843,
+        "meanRate": 0.6575786688437181,
+        "phase": 0.9899862185120583,
+        "opticalDelta": [
+          -2.0,
+          1.0
+        ],
+        "cpuDelta": [
+          -0.9025655120901774,
+          0.5525494478754354
+        ],
+        "phasePredictedDelta": [
+          -0.496321006502626,
+          0.6327452207195279
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -1.0605855943920233,
+          1.9797782091274598
+        ],
+        "cpuPreviousIntervalResidualPixels": 1.4642352829957015,
+        "opticalPreviousIntervalResidualPixels": 1.3747221831027991,
+        "cpuPreviousQueryResidualPixels": 0.586704000948688,
+        "opticalPreviousQueryResidualPixels": 1.7684147047190337,
+        "cpuCurrentNativeResidualPixels": 0.6283149331307606,
+        "opticalCurrentNativeResidualPixels": 1.8121086742074948,
+        "cpuNativeResidualPixels": 0.4140844844981944,
+        "cpuUniformResidualPixels": 1.4359499585137605,
+        "opticalNativeResidualPixels": 1.5478780922248443,
+        "opticalUniformResidualPixels": 1.3573742168410303,
+        "timingOnlyModelDifferencePixels": 1.4604425346466716
+      },
+      {
+        "runtimeRunId": "runtime-20261031-110449",
+        "firstFrame": 1570,
+        "lastFrame": 1571,
+        "videoDt": 0.01666666666666572,
+        "previousQueryDt": 0.03358410000000589,
+        "currentNativeDt": 0.03468929999999659,
+        "queryDt": 0.0065555999999986625,
+        "missionDt": 0.0070000000000014495,
+        "previousNativeDt": 0.005554000000003612,
+        "nativeDt": 0.003999236971139908,
+        "nativeRateRatio": 0.610048961367491,
+        "meanRate": 0.6575786688437181,
+        "phase": 0.012636180967092514,
+        "opticalDelta": [
+          0.0,
+          0.0
+        ],
+        "cpuDelta": [
+          0.021284907876065517,
+          0.2978802934258624
+        ],
+        "phasePredictedDelta": [
+          0.008199282619102632,
+          0.17714496026411553
+        ],
+        "meanRatePhaseMatchedDelta": [
+          0.009376491849820923,
+          0.1906876968712936
+        ],
+        "cpuPreviousIntervalResidualPixels": 0.13661103899986424,
+        "opticalPreviousIntervalResidualPixels": 0.1621705021958698,
+        "cpuPreviousQueryResidualPixels": 0.6597814259330249,
+        "opticalPreviousQueryResidualPixels": 0.9530461321291008,
+        "cpuCurrentNativeResidualPixels": 0.6924510002807039,
+        "opticalCurrentNativeResidualPixels": 0.9852615928820547,
+        "cpuNativeResidualPixels": 0.12144239071281364,
+        "cpuUniformResidualPixels": 0.10785204276398605,
+        "opticalNativeResidualPixels": 0.1773346136050235,
+        "opticalUniformResidualPixels": 0.19091808803119759,
+        "timingOnlyModelDifferencePixels": 0.013593805073793347
+      }
+    ],
+    "runtime-20261031-111204": [
+      {
+        "runtimeRunId": "runtime-20261031-111204",
+        "firstFrame": 677,
+        "lastFrame": 678,
+        "videoDt": 0.016666666666666607,
+        "previousQueryDt": 0.006417400000003681,
+        "currentNativeDt": 0.0059310999999979686,
+        "queryDt": 0.031130599999997344,
+        "missionDt": 0.03200000000000003,
+        "previousNativeDt": 0.03655950000000274,
+        "nativeDt": 0.008000001311302185,
+        "nativeRateRatio": 0.2569819184758041,
+        "meanRate": 1.0000546700151733,
+        "phase": 0.906358640640974,
+        "opticalDelta": [
+          -3.0,
+          -1.0
+        ],
+        "cpuDelta": [
+          -2.1456488628909938,
+          -0.2784953447293219
+        ],
+        "phasePredictedDelta": [
+          -2.0229904909537026,
+          -0.2395915126214163
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -7.282061045207342,
+          -0.26492504007626394
+        ],
+        "cpuPreviousIntervalResidualPixels": 6.228971051331869,
+        "opticalPreviousIntervalResidualPixels": 5.443924608453732,
+        "cpuPreviousQueryResidualPixels": 0.5210209048667289,
+        "opticalPreviousQueryResidualPixels": 1.5855732845821604,
+        "cpuCurrentNativeResidualPixels": 0.6430194777987955,
+        "opticalCurrentNativeResidualPixels": 1.6976215685031593,
+        "cpuNativeResidualPixels": 0.1286801630360599,
+        "cpuUniformResidualPixels": 5.136430108530259,
+        "opticalNativeResidualPixels": 1.238050341643777,
+        "opticalUniformResidualPixels": 4.344695845693813,
+        "timingOnlyModelDifferencePixels": 5.259131571108579
+      },
+      {
+        "runtimeRunId": "runtime-20261031-111204",
+        "firstFrame": 765,
+        "lastFrame": 766,
+        "videoDt": 0.016666666666666607,
+        "previousQueryDt": 0.033444799999998054,
+        "currentNativeDt": 0.034089600000001496,
+        "queryDt": 0.0068868000000037455,
+        "missionDt": 0.006999999999999673,
+        "previousNativeDt": 0.006303400000000181,
+        "nativeDt": 0.03300018981099129,
+        "nativeRateRatio": 4.791803132220093,
+        "meanRate": 1.0000546700151733,
+        "phase": 0.5700320489704609,
+        "opticalDelta": [
+          11.0,
+          0.0
+        ],
+        "cpuDelta": [
+          9.180719805936747,
+          -0.06125032943981523
+        ],
+        "phasePredictedDelta": [
+          10.046385737111223,
+          -0.720972184139498
+        ],
+        "meanRatePhaseMatchedDelta": [
+          1.8889280950019156,
+          0.02397461098274789
+        ],
+        "cpuPreviousIntervalResidualPixels": 7.457512522205183,
+        "opticalPreviousIntervalResidualPixels": 9.276321948946034,
+        "cpuPreviousQueryResidualPixels": 1.2234617793221836,
+        "opticalPreviousQueryResidualPixels": 1.096011266662841,
+        "cpuCurrentNativeResidualPixels": 1.4248794267373832,
+        "opticalCurrentNativeResidualPixels": 0.9762530762578528,
+        "cpuNativeResidualPixels": 1.088398102701655,
+        "cpuUniformResidualPixels": 7.2922897395898865,
+        "opticalNativeResidualPixels": 1.1954836061978367,
+        "opticalUniformResidualPixels": 9.111103447992301,
+        "timingOnlyModelDifferencePixels": 8.191401645040392
+      },
+      {
+        "runtimeRunId": "runtime-20261031-111204",
+        "firstFrame": 1056,
+        "lastFrame": 1057,
+        "videoDt": 0.01666666666666572,
+        "previousQueryDt": 0.008515299999999115,
+        "currentNativeDt": 0.007484499999996785,
+        "queryDt": 0.029647000000004198,
+        "missionDt": 0.030000000000001137,
+        "previousNativeDt": 0.036354900000006296,
+        "nativeDt": 0.00800000037997961,
+        "nativeRateRatio": 0.2698418180584369,
+        "meanRate": 1.0000546700151733,
+        "phase": 0.15699829906225204,
+        "opticalDelta": [
+          2.0,
+          0.0
+        ],
+        "cpuDelta": [
+          1.7713468131248646,
+          0.2053206548357025
+        ],
+        "phasePredictedDelta": [
+          1.7312330745653526,
+          0.22473589888915058
+        ],
+        "meanRatePhaseMatchedDelta": [
+          6.684011983323444,
+          0.8041436165903519
+        ],
+        "cpuPreviousIntervalResidualPixels": 6.53132066548143,
+        "opticalPreviousIntervalResidualPixels": 6.333781128364965,
+        "cpuPreviousQueryResidualPixels": 0.08104898680831298,
+        "opticalPreviousQueryResidualPixels": 0.2844594325124276,
+        "cpuCurrentNativeResidualPixels": 0.15378212358655147,
+        "opticalCurrentNativeResidualPixels": 0.43658657723326844,
+        "cpuNativeResidualPixels": 0.04456527485470987,
+        "cpuUniformResidualPixels": 4.94902697648809,
+        "opticalNativeResidualPixels": 0.350345378815117,
+        "opticalUniformResidualPixels": 4.752537765870002,
+        "timingOnlyModelDifferencePixels": 4.986555145826697
+      },
+      {
+        "runtimeRunId": "runtime-20261031-111204",
+        "firstFrame": 1067,
+        "lastFrame": 1068,
+        "videoDt": 0.01666666666666572,
+        "previousQueryDt": 0.0336967999999942,
+        "currentNativeDt": 0.03432639999999765,
+        "queryDt": 0.006246100000005583,
+        "missionDt": 0.006999999999997897,
+        "previousNativeDt": 0.0073749000000020715,
+        "nativeDt": 0.03400000184774399,
+        "nativeRateRatio": 5.443396975346792,
+        "meanRate": 1.0000546700151733,
+        "phase": 0.3629952445626259,
+        "opticalDelta": [
+          -13.0,
+          0.0
+        ],
+        "cpuDelta": [
+          -11.621383727564535,
+          -0.9308434017456761
+        ],
+        "phasePredictedDelta": [
+          -11.909952123443873,
+          -0.8969262535732696
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -2.0206966452390134,
+          -0.13318448490974788
+        ],
+        "cpuPreviousIntervalResidualPixels": 9.25697748971958,
+        "opticalPreviousIntervalResidualPixels": 10.604714698974101,
+        "cpuPreviousQueryResidualPixels": 0.1813831340170537,
+        "opticalPreviousQueryResidualPixels": 1.4953619970947793,
+        "cpuCurrentNativeResidualPixels": 0.41137146272634206,
+        "opticalCurrentNativeResidualPixels": 1.3251224553490617,
+        "cpuNativeResidualPixels": 0.2905548004086721,
+        "cpuUniformResidualPixels": 9.63376625211241,
+        "opticalNativeResidualPixels": 1.4116235608452785,
+        "opticalUniformResidualPixels": 10.98011112251996,
+        "timingOnlyModelDifferencePixels": 9.918703312550795
+      },
+      {
+        "runtimeRunId": "runtime-20261031-111204",
+        "firstFrame": 1068,
+        "lastFrame": 1069,
+        "videoDt": 0.016666666666667496,
+        "previousQueryDt": 0.006246100000005583,
+        "currentNativeDt": 0.006083300000000236,
+        "queryDt": 0.033516899999995076,
+        "missionDt": 0.03300000000000125,
+        "previousNativeDt": 0.03432639999999765,
+        "nativeDt": 0.005999237298965454,
+        "nativeRateRatio": 0.17899141325618823,
+        "meanRate": 1.0000546700151733,
+        "phase": 0.3969952464103699,
+        "opticalDelta": [
+          -3.0,
+          0.0
+        ],
+        "cpuDelta": [
+          -2.1047618891238926,
+          -0.07907191354092902
+        ],
+        "phasePredictedDelta": [
+          -2.232789078640849,
+          -0.13137171523919733
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -12.162095323279004,
+          -0.1440934131458107
+        ],
+        "cpuPreviousIntervalResidualPixels": 10.331385124282624,
+        "opticalPreviousIntervalResidualPixels": 9.436877542977106,
+        "cpuPreviousQueryResidualPixels": 0.22733449248045473,
+        "opticalPreviousQueryResidualPixels": 0.6887450347337933,
+        "cpuCurrentNativeResidualPixels": 0.16831969084668877,
+        "opticalCurrentNativeResidualPixels": 0.7477081690929572,
+        "cpuNativeResidualPixels": 0.13829761571801885,
+        "cpuUniformResidualPixels": 10.057543616668292,
+        "opticalNativeResidualPixels": 0.7783772385017732,
+        "opticalUniformResidualPixels": 9.163228340741217,
+        "timingOnlyModelDifferencePixels": 9.929314394327934
+      },
+      {
+        "runtimeRunId": "runtime-20261031-111204",
+        "firstFrame": 1142,
+        "lastFrame": 1143,
+        "videoDt": 0.01666666666666572,
+        "previousQueryDt": 0.03298269999999803,
+        "currentNativeDt": 0.03366259999999954,
+        "queryDt": 0.006204100000005042,
+        "missionDt": 0.006000000000000227,
+        "previousNativeDt": 0.005899800000001676,
+        "nativeDt": 0.03299999888986349,
+        "nativeRateRatio": 5.319063021201572,
+        "meanRate": 1.0000546700151733,
+        "phase": 1.8619723813608289,
+        "opticalDelta": [
+          -7.0,
+          -2.0
+        ],
+        "cpuDelta": [
+          -6.958766361579251,
+          -1.4059691246029615
+        ],
+        "phasePredictedDelta": [
+          -7.033895784980928,
+          -1.586364820171184
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -1.3442421631650632,
+          -0.27792596994129326
+        ],
+        "cpuPreviousIntervalResidualPixels": 5.794111899135821,
+        "opticalPreviousIntervalResidualPixels": 5.9792733805487455,
+        "cpuPreviousQueryResidualPixels": 0.1935387485588276,
+        "opticalPreviousQueryResidualPixels": 0.4154982032297506,
+        "cpuCurrentNativeResidualPixels": 0.2990458652711252,
+        "opticalCurrentNativeResidualPixels": 0.4187684380564161,
+        "cpuNativeResidualPixels": 0.19541503841877478,
+        "cpuUniformResidualPixels": 5.726723612446957,
+        "opticalNativeResidualPixels": 0.4150216695926735,
+        "opticalUniformResidualPixels": 5.912117697908461,
+        "timingOnlyModelDifferencePixels": 5.838164999469722
+      },
+      {
+        "runtimeRunId": "runtime-20261031-111204",
+        "firstFrame": 1487,
+        "lastFrame": 1488,
+        "videoDt": 0.01666666666666572,
+        "previousQueryDt": 0.006679099999999494,
+        "currentNativeDt": 0.0064174999999977445,
+        "queryDt": 0.033211399999999,
+        "missionDt": 0.0329999999999977,
+        "previousNativeDt": 0.034077000000003466,
+        "nativeDt": 0.006000000983476639,
+        "nativeRateRatio": 0.18066088702905686,
+        "meanRate": 1.0000546700151733,
+        "phase": 0.4435340575873852,
+        "opticalDelta": [
+          -2.0,
+          1.0
+        ],
+        "cpuDelta": [
+          -1.8171222320163452,
+          0.3288408843656043
+        ],
+        "phasePredictedDelta": [
+          -1.7634291001083966,
+          0.3143337048180683
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -7.988933788184454,
+          2.4864971425799354
+        ],
+        "cpuPreviousIntervalResidualPixels": 6.701961643860675,
+        "opticalPreviousIntervalResidualPixels": 6.330861471121364,
+        "cpuPreviousQueryResidualPixels": 0.14049479927572495,
+        "opticalPreviousQueryResidualPixels": 0.6474239262726095,
+        "cpuCurrentNativeResidualPixels": 0.06526084492988345,
+        "opticalCurrentNativeResidualPixels": 0.6718083630657841,
+        "cpuNativeResidualPixels": 0.05561843824226648,
+        "cpuUniformResidualPixels": 6.538098990797072,
+        "opticalNativeResidualPixels": 0.7253303102890702,
+        "opticalUniformResidualPixels": 6.17065650268719,
+        "timingOnlyModelDifferencePixels": 6.593572826746241
+      },
+      {
+        "runtimeRunId": "runtime-20261031-111204",
+        "firstFrame": 1575,
+        "lastFrame": 1576,
+        "videoDt": 0.01666666666666572,
+        "previousQueryDt": 0.006139199999992684,
+        "currentNativeDt": 0.00553870000000245,
+        "queryDt": 0.033479299999996215,
+        "missionDt": 0.03300000000000125,
+        "previousNativeDt": 0.0335661000000016,
+        "nativeDt": 0.006000000983476639,
+        "nativeRateRatio": 0.179215245942338,
+        "meanRate": 1.0000546700151733,
+        "phase": 0.12317410856485367,
+        "opticalDelta": [
+          1.0,
+          1.0
+        ],
+        "cpuDelta": [
+          0.8322601883328389,
+          0.3868451752902615
+        ],
+        "phasePredictedDelta": [
+          0.97943527651978,
+          0.2654305724347523
+        ],
+        "meanRatePhaseMatchedDelta": [
+          6.232355209508228,
+          1.2492816254218155
+        ],
+        "cpuPreviousIntervalResidualPixels": 5.487050930216268,
+        "opticalPreviousIntervalResidualPixels": 5.256738356338294,
+        "cpuPreviousQueryResidualPixels": 0.206092476874676,
+        "opticalPreviousQueryResidualPixels": 0.7286119245647146,
+        "cpuCurrentNativeResidualPixels": 0.15742469599514414,
+        "opticalCurrentNativeResidualPixels": 0.7606943775293598,
+        "cpuNativeResidualPixels": 0.1907931140513067,
+        "cpuUniformResidualPixels": 5.468530229251616,
+        "opticalNativeResidualPixels": 0.7348572322331417,
+        "opticalUniformResidualPixels": 5.238290023208035,
+        "timingOnlyModelDifferencePixels": 5.344261475344475
+      }
+    ],
+    "runtime-20261031-112434": [
+      {
+        "runtimeRunId": "runtime-20261031-112434",
+        "firstFrame": 696,
+        "lastFrame": 697,
+        "videoDt": 0.016666666666666607,
+        "previousQueryDt": 0.033137299999999925,
+        "currentNativeDt": 0.03381899999999405,
+        "queryDt": 0.005885000000006357,
+        "missionDt": 0.006000000000000227,
+        "previousNativeDt": 0.0052629999999993515,
+        "nativeDt": 0.03300000075250864,
+        "nativeRateRatio": 5.607476763376889,
+        "meanRate": 1.0001503882954088,
+        "phase": 1.1913598282262683,
+        "opticalDelta": [
+          6.0,
+          1.0
+        ],
+        "cpuDelta": [
+          5.820488320623099,
+          1.207625781461502
+        ],
+        "phasePredictedDelta": [
+          5.91627453106662,
+          1.161970064280979
+        ],
+        "meanRatePhaseMatchedDelta": [
+          1.2564603276599655,
+          0.20496640478950212
+        ],
+        "cpuPreviousIntervalResidualPixels": 4.803493626738668,
+        "opticalPreviousIntervalResidualPixels": 4.940475919131909,
+        "cpuPreviousQueryResidualPixels": 0.12212342888587606,
+        "opticalPreviousQueryResidualPixels": 0.17875711272754213,
+        "cpuCurrentNativeResidualPixels": 0.20753104654698434,
+        "opticalCurrentNativeResidualPixels": 0.19146749403491034,
+        "cpuNativeResidualPixels": 0.10611052079034551,
+        "cpuUniformResidualPixels": 4.672866074068394,
+        "opticalNativeResidualPixels": 0.1823300739628515,
+        "opticalUniformResidualPixels": 4.809703425428342,
+        "timingOnlyModelDifferencePixels": 4.7570709911194795
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112434",
+        "firstFrame": 759,
+        "lastFrame": 760,
+        "videoDt": 0.016666666666666607,
+        "previousQueryDt": 0.005971799999997529,
+        "currentNativeDt": 0.006070399999998699,
+        "queryDt": 0.03465309999999988,
+        "missionDt": 0.03500000000000014,
+        "previousNativeDt": 0.03374300000000119,
+        "nativeDt": 0.006000000983476639,
+        "nativeRateRatio": 0.17314471096313633,
+        "meanRate": 1.0001503882954088,
+        "phase": 0.38403134793043137,
+        "opticalDelta": [
+          -3.0,
+          0.0
+        ],
+        "cpuDelta": [
+          -2.0406094509999093,
+          -0.1599897092393121
+        ],
+        "phasePredictedDelta": [
+          -2.18237647220451,
+          -0.17279807029353833
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -12.768242597984113,
+          -0.6383696626948563
+        ],
+        "cpuPreviousIntervalResidualPixels": 10.409684143385414,
+        "opticalPreviousIntervalResidualPixels": 9.460874267680056,
+        "cpuPreviousQueryResidualPixels": 0.13229707815475575,
+        "opticalPreviousQueryResidualPixels": 0.8453326846988315,
+        "cpuCurrentNativeResidualPixels": 0.1685907086312957,
+        "opticalCurrentNativeResidualPixels": 0.8105243860765095,
+        "cpuNativeResidualPixels": 0.14234444988871559,
+        "cpuUniformResidualPixels": 10.738294106427814,
+        "opticalNativeResidualPixels": 0.8356837956439704,
+        "opticalUniformResidualPixels": 9.789079593062903,
+        "timingOnlyModelDifferencePixels": 10.596099213417132
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112434",
+        "firstFrame": 825,
+        "lastFrame": 826,
+        "videoDt": 0.016666666666667496,
+        "previousQueryDt": 0.006604099999997004,
+        "currentNativeDt": 0.0054946999999998525,
+        "queryDt": 0.03347710000000603,
+        "missionDt": 0.0329999999999977,
+        "previousNativeDt": 0.034163599999999406,
+        "nativeDt": 0.007000000216066837,
+        "nativeRateRatio": 0.20909816609161413,
+        "meanRate": 1.0001503882954088,
+        "phase": 1.7020364850759506,
+        "opticalDelta": [
+          0.0,
+          0.0
+        ],
+        "cpuDelta": [
+          0.574766548143316,
+          0.1743980162061689
+        ],
+        "phasePredictedDelta": [
+          0.9778577497424976,
+          -3.945559399198828e-05
+        ],
+        "meanRatePhaseMatchedDelta": [
+          3.2777825401113887,
+          0.3902512343606759
+        ],
+        "cpuPreviousIntervalResidualPixels": 2.7414317748818733,
+        "opticalPreviousIntervalResidualPixels": 3.3312718609783127,
+        "cpuPreviousQueryResidualPixels": 0.3932390806879412,
+        "opticalPreviousQueryResidualPixels": 0.9265607381865522,
+        "cpuCurrentNativeResidualPixels": 0.2719477717519536,
+        "opticalCurrentNativeResidualPixels": 0.7799228505151892,
+        "cpuNativeResidualPixels": 0.4392162888312591,
+        "cpuUniformResidualPixels": 2.71162092937468,
+        "opticalNativeResidualPixels": 0.9778577505384947,
+        "opticalUniformResidualPixels": 3.3009323540749964,
+        "timingOnlyModelDifferencePixels": 2.3328053635094976
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112434",
+        "firstFrame": 1108,
+        "lastFrame": 1109,
+        "videoDt": 0.016666666666667496,
+        "previousQueryDt": 0.008812600000005943,
+        "currentNativeDt": 0.005614200000003677,
+        "queryDt": 0.030809200000000203,
+        "missionDt": 0.030999999999998806,
+        "previousNativeDt": 0.03633159999999691,
+        "nativeDt": 0.008999999612569809,
+        "nativeRateRatio": 0.2921205228493356,
+        "meanRate": 1.0001503882954088,
+        "phase": 1.1139838211238384,
+        "opticalDelta": [
+          3.0,
+          0.0
+        ],
+        "cpuDelta": [
+          2.4409857013284864,
+          0.09420037148993288
+        ],
+        "phasePredictedDelta": [
+          2.5483612326924003,
+          0.06644878015066524
+        ],
+        "meanRatePhaseMatchedDelta": [
+          8.886993942410868,
+          0.3103245010537421
+        ],
+        "cpuPreviousIntervalResidualPixels": 8.043403677940715,
+        "opticalPreviousIntervalResidualPixels": 7.489298986665633,
+        "cpuPreviousQueryResidualPixels": 0.061369072152132054,
+        "opticalPreviousQueryResidualPixels": 0.5092148706528499,
+        "cpuCurrentNativeResidualPixels": 0.8617394141384517,
+        "opticalCurrentNativeResidualPixels": 1.4196523642104026,
+        "cpuNativeResidualPixels": 0.11090381218670795,
+        "cpuUniformResidualPixels": 6.4496303679731675,
+        "opticalNativeResidualPixels": 0.45650083955962184,
+        "opticalUniformResidualPixels": 5.895167425437254,
+        "timingOnlyModelDifferencePixels": 6.343322472959961
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112434",
+        "firstFrame": 1188,
+        "lastFrame": 1189,
+        "videoDt": 0.01666666666666572,
+        "previousQueryDt": 0.007038600000001338,
+        "currentNativeDt": 0.005793200000006493,
+        "queryDt": 0.03299059999999798,
+        "missionDt": 0.03300000000000125,
+        "previousNativeDt": 0.03465219999999647,
+        "nativeDt": 0.006999999284744263,
+        "nativeRateRatio": 0.21218163006264484,
+        "meanRate": 1.0001503882954088,
+        "phase": 0.6306261382997036,
+        "opticalDelta": [
+          3.0,
+          0.0
+        ],
+        "cpuDelta": [
+          2.5769116238408287,
+          -0.7434073344044236
+        ],
+        "phasePredictedDelta": [
+          2.385165055466018,
+          -0.6707818606638511
+        ],
+        "meanRatePhaseMatchedDelta": [
+          10.72551932305089,
+          -3.539975122480712
+        ],
+        "cpuPreviousIntervalResidualPixels": 9.144665730290473,
+        "opticalPreviousIntervalResidualPixels": 9.027606096793004,
+        "cpuPreviousQueryResidualPixels": 0.19110348313473152,
+        "opticalPreviousQueryResidualPixels": 0.9038663211856153,
+        "cpuCurrentNativeResidualPixels": 0.6300786534611794,
+        "opticalCurrentNativeResidualPixels": 1.1623692715101022,
+        "cpuNativeResidualPixels": 0.20503952282318275,
+        "cpuUniformResidualPixels": 8.615137771906575,
+        "opticalNativeResidualPixels": 0.9099287409548963,
+        "opticalUniformResidualPixels": 8.497945203319153,
+        "timingOnlyModelDifferencePixels": 8.820078190269996
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112434",
+        "firstFrame": 1487,
+        "lastFrame": 1488,
+        "videoDt": 0.01666666666666572,
+        "previousQueryDt": 0.007069299999997725,
+        "currentNativeDt": 0.00679609999999542,
+        "queryDt": 0.03536610000000451,
+        "missionDt": 0.03500000000000014,
+        "previousNativeDt": 0.03147780000000466,
+        "nativeDt": 0.006999235600233078,
+        "nativeRateRatio": 0.19790804188848038,
+        "meanRate": 1.0001503882954088,
+        "phase": 0.3625355288386345,
+        "opticalDelta": [
+          -3.0,
+          0.0
+        ],
+        "cpuDelta": [
+          -2.1979765205429658,
+          -0.14668667015251913
+        ],
+        "phasePredictedDelta": [
+          -2.2624938541904385,
+          -0.14858530766980493
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -12.393344528858847,
+          -0.9271640837388873
+        ],
+        "cpuPreviousIntervalResidualPixels": 8.779046861227439,
+        "opticalPreviousIntervalResidualPixels": 7.993595216178616,
+        "cpuPreviousQueryResidualPixels": 0.08823017000469591,
+        "opticalPreviousQueryResidualPixels": 0.7295191395232562,
+        "cpuCurrentNativeResidualPixels": 0.003935214772135433,
+        "opticalCurrentNativeResidualPixels": 0.8173449963137571,
+        "cpuNativeResidualPixels": 0.06454526446921849,
+        "cpuUniformResidualPixels": 10.225197984298857,
+        "opticalNativeResidualPixels": 0.7523250020850063,
+        "opticalUniformResidualPixels": 9.438991189529622,
+        "timingOnlyModelDifferencePixels": 10.160724398534516
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112434",
+        "firstFrame": 1514,
+        "lastFrame": 1515,
+        "videoDt": 0.01666666666666572,
+        "previousQueryDt": 0.0328137000000055,
+        "currentNativeDt": 0.033919199999999705,
+        "queryDt": 0.006560199999995575,
+        "missionDt": 0.0070000000000014495,
+        "previousNativeDt": 0.005382500000003176,
+        "nativeDt": 0.03199923783540726,
+        "nativeRateRatio": 4.877783883940862,
+        "meanRate": 1.0001503882954088,
+        "phase": 0.8905271105468273,
+        "opticalDelta": [
+          -9.0,
+          -2.0
+        ],
+        "cpuDelta": [
+          -8.193538142449938,
+          -1.0474592166493721
+        ],
+        "phasePredictedDelta": [
+          -8.23779079934718,
+          -1.1384335570403437
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -1.7978356981169554,
+          -0.36434419720063715
+        ],
+        "cpuPreviousIntervalResidualPixels": 6.756122994284813,
+        "opticalPreviousIntervalResidualPixels": 7.710482822639065,
+        "cpuPreviousQueryResidualPixels": 0.2542000352235778,
+        "opticalPreviousQueryResidualPixels": 1.0290659591480755,
+        "cpuCurrentNativeResidualPixels": 0.501353421083236,
+        "opticalCurrentNativeResidualPixels": 0.9069416608645224,
+        "cpuNativeResidualPixels": 0.10116633952079823,
+        "cpuUniformResidualPixels": 6.432080214537389,
+        "opticalNativeResidualPixels": 1.1503302139794314,
+        "opticalUniformResidualPixels": 7.385562980338717,
+        "timingOnlyModelDifferencePixels": 6.4863114358530645
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112434",
+        "firstFrame": 1592,
+        "lastFrame": 1593,
+        "videoDt": 0.01666666666666572,
+        "previousQueryDt": 0.031452999999999065,
+        "currentNativeDt": 0.033209499999998116,
+        "queryDt": 0.00701379999999574,
+        "missionDt": 0.006999999999997897,
+        "previousNativeDt": 0.007761500000000865,
+        "nativeDt": 0.030999239534139633,
+        "nativeRateRatio": 4.419749570013183,
+        "meanRate": 1.0001503882954088,
+        "phase": 0.37117020785808563,
+        "opticalDelta": [
+          -12.0,
+          0.0
+        ],
+        "cpuDelta": [
+          -10.860586605327171,
+          -0.675319919553715
+        ],
+        "phasePredictedDelta": [
+          -11.170967013598897,
+          -0.8315019900801417
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -2.410791400051835,
+          -0.190010469522349
+        ],
+        "cpuPreviousIntervalResidualPixels": 8.200214118421595,
+        "opticalPreviousIntervalResidualPixels": 9.328889176840597,
+        "cpuPreviousQueryResidualPixels": 0.5087068135090926,
+        "opticalPreviousQueryResidualPixels": 1.0676590670168944,
+        "cpuCurrentNativeResidualPixels": 1.1522622156543367,
+        "opticalCurrentNativeResidualPixels": 0.8733385469937139,
+        "cpuNativeResidualPixels": 0.3474605545854739,
+        "cpuUniformResidualPixels": 8.463720474672105,
+        "opticalNativeResidualPixels": 1.1741768401941708,
+        "opticalUniformResidualPixels": 9.591090946907341,
+        "timingOnlyModelDifferencePixels": 8.783631831488169
+      }
+    ],
+    "runtime-20261031-112900": [
+      {
+        "runtimeRunId": "runtime-20261031-112900",
+        "firstFrame": 678,
+        "lastFrame": 679,
+        "videoDt": 0.016666666666666607,
+        "previousQueryDt": 0.029640599999993356,
+        "currentNativeDt": 0.03703699999999799,
+        "queryDt": 0.012046800000000246,
+        "missionDt": 0.012000000000000455,
+        "previousNativeDt": 0.008788000000002683,
+        "nativeDt": 0.028999999165534973,
+        "nativeRateRatio": 2.4072782121006724,
+        "meanRate": 0.6600056600772514,
+        "phase": 0.5776828154921532,
+        "opticalDelta": [
+          11.0,
+          0.0
+        ],
+        "cpuDelta": [
+          8.97586618799835,
+          -0.7675017979782979
+        ],
+        "phasePredictedDelta": [
+          9.166487613231197,
+          -0.9436976549387168
+        ],
+        "meanRatePhaseMatchedDelta": [
+          2.3526371465612783,
+          -0.10190148660279874
+        ],
+        "cpuPreviousIntervalResidualPixels": 7.308590819611072,
+        "opticalPreviousIntervalResidualPixels": 9.298811147193916,
+        "cpuPreviousQueryResidualPixels": 2.963247509567548,
+        "opticalPreviousQueryResidualPixels": 4.9942106193527565,
+        "cpuCurrentNativeResidualPixels": 1.3397641297740375,
+        "opticalCurrentNativeResidualPixels": 3.433056942025279,
+        "cpuNativeResidualPixels": 0.25957948256327723,
+        "cpuUniformResidualPixels": 6.656589720708238,
+        "opticalNativeResidualPixels": 2.0621185553627766,
+        "opticalUniformResidualPixels": 8.647963241827739,
+        "timingOnlyModelDifferencePixels": 6.865652115506793
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112900",
+        "firstFrame": 782,
+        "lastFrame": 783,
+        "videoDt": 0.01666666666666572,
+        "previousQueryDt": 0.03358920000000154,
+        "currentNativeDt": 0.040308700000004194,
+        "queryDt": 0.012098299999998119,
+        "missionDt": 0.0129999999999999,
+        "previousNativeDt": 0.005424299999994275,
+        "nativeDt": 0.00300019234418869,
+        "nativeRateRatio": 0.24798462132606702,
+        "meanRate": 0.6600056600772514,
+        "phase": 2.0136881545186043,
+        "opticalDelta": [
+          0.0,
+          0.0
+        ],
+        "cpuDelta": [
+          -0.2517355472587042,
+          0.2859766419137486
+        ],
+        "phasePredictedDelta": [
+          -0.19324272901951645,
+          0.3036864010863951
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -0.49364750259871926,
+          0.806434896307394
+        ],
+        "cpuPreviousIntervalResidualPixels": 0.07953860234776347,
+        "opticalPreviousIntervalResidualPixels": 0.42891043298013054,
+        "cpuPreviousQueryResidualPixels": 2.1344896669013287,
+        "opticalPreviousQueryResidualPixels": 2.5051758199399425,
+        "cpuCurrentNativeResidualPixels": 2.5843989576520614,
+        "opticalCurrentNativeResidualPixels": 2.9542742497297736,
+        "cpuNativeResidualPixels": 0.06111501743038113,
+        "cpuUniformResidualPixels": 0.573932216122174,
+        "opticalNativeResidualPixels": 0.35995580634810864,
+        "opticalUniformResidualPixels": 0.9455290047398175,
+        "timingOnlyModelDifferencePixels": 0.585661230948533
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112900",
+        "firstFrame": 818,
+        "lastFrame": 819,
+        "videoDt": 0.016666666666667496,
+        "previousQueryDt": 0.03157580000000593,
+        "currentNativeDt": 0.03240560000000414,
+        "queryDt": 0.005406499999999426,
+        "missionDt": 0.004999999999999005,
+        "previousNativeDt": 0.006928699999996013,
+        "nativeDt": 0.03099999949336052,
+        "nativeRateRatio": 5.733838803914512,
+        "meanRate": 0.6600056600772514,
+        "phase": 0.3923568092286587,
+        "opticalDelta": [
+          -14.0,
+          1.0
+        ],
+        "cpuDelta": [
+          -11.955517930667952,
+          -0.3910775740143322
+        ],
+        "phasePredictedDelta": [
+          -11.397975419257591,
+          -0.3760704645050055
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -1.3205729612471941,
+          -0.09325863206566964
+        ],
+        "cpuPreviousIntervalResidualPixels": 10.26554877047077,
+        "opticalPreviousIntervalResidualPixels": 12.357089052210378,
+        "cpuPreviousQueryResidualPixels": 4.225569936717327,
+        "opticalPreviousQueryResidualPixels": 6.42159207906313,
+        "cpuCurrentNativeResidualPixels": 4.024659317782958,
+        "opticalCurrentNativeResidualPixels": 6.226349619051284,
+        "cpuNativeResidualPixels": 0.5577444444955031,
+        "cpuUniformResidualPixels": 10.639114184216245,
+        "opticalNativeResidualPixels": 2.9434846427441625,
+        "opticalUniformResidualPixels": 12.726471799663953,
+        "timingOnlyModelDifferencePixels": 10.081370087110267
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112900",
+        "firstFrame": 1070,
+        "lastFrame": 1071,
+        "videoDt": 0.016666666666667496,
+        "previousQueryDt": 0.007543699999999376,
+        "currentNativeDt": 0.006675100000002487,
+        "queryDt": 0.03032389999999907,
+        "missionDt": 0.030000000000001137,
+        "previousNativeDt": 0.02255230000000097,
+        "nativeDt": 0.007000000216066837,
+        "nativeRateRatio": 0.23084102691497638,
+        "meanRate": 0.6600056600772514,
+        "phase": 1.7500367164611816,
+        "opticalDelta": [
+          0.0,
+          1.0
+        ],
+        "cpuDelta": [
+          -0.6069861128172533,
+          0.1970187101400711
+        ],
+        "phasePredictedDelta": [
+          -0.12882211603584892,
+          0.21976511530050402
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -0.7915742481668531,
+          0.6388790576255019
+        ],
+        "cpuPreviousIntervalResidualPixels": 0.31096570842267945,
+        "opticalPreviousIntervalResidualPixels": 0.7026793308409011,
+        "cpuPreviousQueryResidualPixels": 0.5337179383342618,
+        "opticalPreviousQueryResidualPixels": 0.8479798319072911,
+        "cpuCurrentNativeResidualPixels": 0.5481992369451568,
+        "opticalCurrentNativeResidualPixels": 0.8650500679639337,
+        "cpuNativeResidualPixels": 0.4787047177182292,
+        "cpuUniformResidualPixels": 0.47886673134786445,
+        "opticalNativeResidualPixels": 0.7907980860383954,
+        "opticalUniformResidualPixels": 0.8700563920702866,
+        "timingOnlyModelDifferencePixels": 0.7841536107775017
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112900",
+        "firstFrame": 1153,
+        "lastFrame": 1154,
+        "videoDt": 0.016666666666667496,
+        "previousQueryDt": 0.005787099999999157,
+        "currentNativeDt": 0.004535599999996975,
+        "queryDt": 0.03433480000000344,
+        "missionDt": 0.03500000000000014,
+        "previousNativeDt": 0.02643770000000245,
+        "nativeDt": 0.006000000052154064,
+        "nativeRateRatio": 0.17474981803166068,
+        "meanRate": 0.6600056600772514,
+        "phase": 0.7667076587677002,
+        "opticalDelta": [
+          -1.0,
+          0.0
+        ],
+        "cpuDelta": [
+          -1.105919843256288,
+          -0.4951345771861497
+        ],
+        "phasePredictedDelta": [
+          -0.5619465763164726,
+          -0.5341440747020556
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -2.833849340836082,
+          -1.95876193677924
+        ],
+        "cpuPreviousIntervalResidualPixels": 1.370497752717101,
+        "opticalPreviousIntervalResidualPixels": 1.8282193981938406,
+        "cpuPreviousQueryResidualPixels": 0.7798267261273708,
+        "opticalPreviousQueryResidualPixels": 0.7419875784899583,
+        "cpuCurrentNativeResidualPixels": 0.8732687420119065,
+        "opticalCurrentNativeResidualPixels": 0.7846435711249629,
+        "cpuNativeResidualPixels": 0.5453702009109217,
+        "cpuUniformResidualPixels": 2.2644967203234807,
+        "opticalNativeResidualPixels": 0.690797144276216,
+        "opticalUniformResidualPixels": 2.6832353101918014,
+        "timingOnlyModelDifferencePixels": 2.6816185829422516
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112900",
+        "firstFrame": 1464,
+        "lastFrame": 1465,
+        "videoDt": 0.01666666666666572,
+        "previousQueryDt": 0.034428200000000686,
+        "currentNativeDt": 0.03518880000000024,
+        "queryDt": 0.00534150000000011,
+        "missionDt": 0.006000000000000227,
+        "previousNativeDt": 0.004580199999999479,
+        "nativeDt": 0.03499999921768904,
+        "nativeRateRatio": 6.552466389158161,
+        "meanRate": 0.6600056600772514,
+        "phase": 0.6049915598705411,
+        "opticalDelta": [
+          16.0,
+          -4.0
+        ],
+        "cpuDelta": [
+          12.564703556382824,
+          -3.051250231409597
+        ],
+        "phasePredictedDelta": [
+          11.968694089567862,
+          -2.82665287535292
+        ],
+        "meanRatePhaseMatchedDelta": [
+          1.1910944398525771,
+          -0.20603618046993688
+        ],
+        "cpuPreviousIntervalResidualPixels": 11.896860633192324,
+        "opticalPreviousIntervalResidualPixels": 15.45988269114075,
+        "cpuPreviousQueryResidualPixels": 4.978486990059981,
+        "opticalPreviousQueryResidualPixels": 8.542159428239065,
+        "cpuCurrentNativeResidualPixels": 4.8002523122828205,
+        "opticalCurrentNativeResidualPixels": 8.363891052029905,
+        "cpuNativeResidualPixels": 0.6369232739354915,
+        "cpuUniformResidualPixels": 11.724087483948779,
+        "opticalNativeResidualPixels": 4.198591527929653,
+        "opticalUniformResidualPixels": 15.287179116935485,
+        "timingOnlyModelDifferencePixels": 11.091631353008557
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112900",
+        "firstFrame": 1489,
+        "lastFrame": 1490,
+        "videoDt": 0.01666666666666572,
+        "previousQueryDt": 0.005374799999998459,
+        "currentNativeDt": 0.00532129999999853,
+        "queryDt": 0.03461120000000051,
+        "missionDt": 0.03500000000000014,
+        "previousNativeDt": 0.03464429999999652,
+        "nativeDt": 0.004999998956918716,
+        "nativeRateRatio": 0.144461878146919,
+        "meanRate": 0.6600056600772514,
+        "phase": 0.9399869851768017,
+        "opticalDelta": [
+          -1.0,
+          0.0
+        ],
+        "cpuDelta": [
+          -1.105904789428564,
+          0.06066014430695077
+        ],
+        "phasePredictedDelta": [
+          -0.9814324220066055,
+          0.15309834685342594
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -4.047936964522933,
+          1.0557376930519808
+        ],
+        "cpuPreviousIntervalResidualPixels": 3.109348823149516,
+        "opticalPreviousIntervalResidualPixels": 3.2291937623639266,
+        "cpuPreviousQueryResidualPixels": 0.4066485847982441,
+        "opticalPreviousQueryResidualPixels": 0.3159891537711461,
+        "cpuCurrentNativeResidualPixels": 0.4133494818441759,
+        "opticalCurrentNativeResidualPixels": 0.32210552847292095,
+        "cpuNativeResidualPixels": 0.155042547520512,
+        "cpuUniformResidualPixels": 3.1057579827325434,
+        "opticalNativeResidualPixels": 0.15422016327897173,
+        "opticalUniformResidualPixels": 3.2256010007804727,
+        "timingOnlyModelDifferencePixels": 3.1965931706394897
+      },
+      {
+        "runtimeRunId": "runtime-20261031-112900",
+        "firstFrame": 1575,
+        "lastFrame": 1576,
+        "videoDt": 0.016666666666669272,
+        "previousQueryDt": 0.00552019999999942,
+        "currentNativeDt": 0.004722300000004509,
+        "queryDt": 0.034416600000007236,
+        "missionDt": 0.03399999999999892,
+        "previousNativeDt": 0.03550990000000098,
+        "nativeDt": 0.006000000052154064,
+        "nativeRateRatio": 0.17433447964507834,
+        "meanRate": 0.6600056600772514,
+        "phase": 1.9999701976776123,
+        "opticalDelta": [
+          -1.0,
+          1.0
+        ],
+        "cpuDelta": [
+          -0.48227021297100237,
+          0.5311633869405341
+        ],
+        "phasePredictedDelta": [
+          -0.4679612321733657,
+          0.5903186735194481
+        ],
+        "meanRatePhaseMatchedDelta": [
+          -1.5615311847091107,
+          2.2749973395224288
+        ],
+        "cpuPreviousIntervalResidualPixels": 2.1335722851197567,
+        "opticalPreviousIntervalResidualPixels": 1.475639992520228,
+        "cpuPreviousQueryResidualPixels": 0.2604191421724279,
+        "opticalPreviousQueryResidualPixels": 0.9588830726218559,
+        "cpuCurrentNativeResidualPixels": 0.325733079681639,
+        "opticalCurrentNativeResidualPixels": 1.024071593718401,
+        "cpuNativeResidualPixels": 0.06086127555104787,
+        "cpuUniformResidualPixels": 2.0507952358279162,
+        "opticalNativeResidualPixels": 0.6714938865971513,
+        "opticalUniformResidualPixels": 1.393174607574402,
+        "timingOnlyModelDifferencePixels": 2.0084913364947865
+      }
+    ]
+  }
+}
+
+Exact periodic basis and cycle-weighted fit functions:
+def basis(t,k,p=period):
+    phase=np.asarray(t,dtype=float)*2*np.pi/p
+    return np.column_stack([np.ones(len(phase))]+[f(j*phase) for j in range(1,k+1) for f in [np.sin,np.cos]])
+
+def fit(t,y,k,groups,p=period):
+    x=basis(t,k,p);unique,counts=np.unique(groups,return_counts=True);weights=dict(zip(unique,counts))
+    w=np.sqrt(np.asarray([1/weights[g] for g in groups]))
+    beta,_,rank,_=np.linalg.lstsq(x*w[:,None],y*w[:,None],rcond=None)
+    assert rank==x.shape[1]
+    return beta
+Original source file bytes SHA256: c9412e7eed3dfd0639390a10241787bc847ce87eb01d264c901b80416717de18
