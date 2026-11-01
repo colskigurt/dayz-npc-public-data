@@ -1,0 +1,3213 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-02T05:45:05.188526+09:00",
+  "sourceRunId": "matched-flat-pursuit-20261102/per-agent",
+  "buildId": "729F3B883BAC5951ACF011B706A93E3437A4A9031D1E9A205F830CD911242EBF",
+  "verificationStatus": {
+    "functional": "flat_pursuit_observed_all_counts",
+    "diagnostic": "resource_scaling_partially_attributed",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "buildId": "729F3B883BAC5951ACF011B706A93E3437A4A9031D1E9A205F830CD911242EBF",
+    "newRuntimeTrials": 2,
+    "newPbo": false,
+    "newGameplayPbo": false,
+    "newVideo": false,
+    "results": {
+      "sourceRunId": "matched-flat-pursuit-20261102/per-agent",
+      "newExecutions": 2,
+      "newCounts": [
+        1,
+        8
+      ],
+      "reused64Executions": 2,
+      "newGameplayPbo": false,
+      "summary": [
+        {
+          "sourceRunId": "per-agent/n1",
+          "count": 1,
+          "vanillaPresentP95Ms": [
+            23.093844999999995,
+            22.736279999999997
+          ],
+          "customPresentP95Ms": [
+            23.081059999999997,
+            23.7851
+          ],
+          "vanillaCpuBusyP95Ms": [
+            9.989969999999992,
+            9.321899999999994
+          ],
+          "customCpuBusyP95Ms": [
+            9.582699999999999,
+            10.597239999999998
+          ],
+          "vanillaProcessCpuMsPerWallSecond": [
+            1009.7555673563189,
+            1051.8803178194185
+          ],
+          "customProcessCpuMsPerWallSecond": [
+            958.1196768229248,
+            999.5364145351954
+          ],
+          "cpuClockSecondsPerGameSecond": [
+            0.8325777543489722,
+            0.8325939352975513
+          ],
+          "scopes": [
+            {
+              "phase": 2,
+              "meanContactSolvesPerAgentPerGameSecond": 16.651679121833237,
+              "meanContactSolvesPerLeaderCallback": 1.0,
+              "meanFootRaysPerAgentPerGameSecond": 166.51679121833237,
+              "meanJointSweepsPerAgentPerGameSecond": 66.60671648733295,
+              "meanInclusiveContactMsPerAgentPerGameSecond": 2.1127087887953917,
+              "meanContactScopeMsPerSolve": 0.12687662147088005,
+              "meanFootScopeMsPerCountedRay": 0.006807479875147667,
+              "meanWorldScopeMsPerCountedSweep": 0.010322077783232615,
+              "scopeContainsLoopAndBookkeeping": true,
+              "notPureNativeApiTime": true,
+              "scopesOverlapDoNotSum": true
+            },
+            {
+              "phase": 3,
+              "meanContactSolvesPerAgentPerGameSecond": 16.651817260130876,
+              "meanContactSolvesPerLeaderCallback": 1.0,
+              "meanFootRaysPerAgentPerGameSecond": 166.51817260130875,
+              "meanJointSweepsPerAgentPerGameSecond": 66.6072690405235,
+              "meanInclusiveContactMsPerAgentPerGameSecond": 2.075858822623412,
+              "meanContactScopeMsPerSolve": 0.12466259929440857,
+              "meanFootScopeMsPerCountedRay": 0.006694419761633116,
+              "meanWorldScopeMsPerCountedSweep": 0.009812460281128596,
+              "scopeContainsLoopAndBookkeeping": true,
+              "notPureNativeApiTime": true,
+              "scopesOverlapDoNotSum": true
+            }
+          ]
+        },
+        {
+          "sourceRunId": "per-agent/n8",
+          "count": 8,
+          "vanillaPresentP95Ms": [
+            23.219774999999995,
+            22.822654999999997
+          ],
+          "customPresentP95Ms": [
+            25.662089999999996,
+            27.9148
+          ],
+          "vanillaCpuBusyP95Ms": [
+            10.660364999999999,
+            8.794414999999997
+          ],
+          "customCpuBusyP95Ms": [
+            12.744784999999998,
+            14.48285
+          ],
+          "vanillaProcessCpuMsPerWallSecond": [
+            1080.5936566058747,
+            1009.0074264727584
+          ],
+          "customProcessCpuMsPerWallSecond": [
+            1094.1090424596277,
+            1113.8841675931842
+          ],
+          "cpuClockSecondsPerGameSecond": [
+            0.8341799237138339,
+            0.8330034119202046
+          ],
+          "scopes": [
+            {
+              "phase": 2,
+              "meanContactSolvesPerAgentPerGameSecond": 32.169659193103236,
+              "meanContactSolvesPerLeaderCallback": 1.9282063197026025,
+              "meanFootRaysPerAgentPerGameSecond": 321.69659193103234,
+              "meanJointSweepsPerAgentPerGameSecond": 128.67863677241294,
+              "meanInclusiveContactMsPerAgentPerGameSecond": 3.169248463655831,
+              "meanContactScopeMsPerSolve": 0.0985166937775728,
+              "meanFootScopeMsPerCountedRay": 0.005351494450700593,
+              "meanWorldScopeMsPerCountedSweep": 0.008319237133778625,
+              "scopeContainsLoopAndBookkeeping": true,
+              "notPureNativeApiTime": true,
+              "scopesOverlapDoNotSum": true
+            },
+            {
+              "phase": 3,
+              "meanContactSolvesPerAgentPerGameSecond": 31.710109734730903,
+              "meanContactSolvesPerLeaderCallback": 1.9033671586715868,
+              "meanFootRaysPerAgentPerGameSecond": 317.101097347309,
+              "meanJointSweepsPerAgentPerGameSecond": 126.84043893892361,
+              "meanInclusiveContactMsPerAgentPerGameSecond": 3.085346382866278,
+              "meanContactScopeMsPerSolve": 0.09729850854117396,
+              "meanFootScopeMsPerCountedRay": 0.005430267072365975,
+              "meanWorldScopeMsPerCountedSweep": 0.007803414279536776,
+              "scopeContainsLoopAndBookkeeping": true,
+              "notPureNativeApiTime": true,
+              "scopesOverlapDoNotSum": true
+            }
+          ]
+        },
+        {
+          "sourceRunId": "matched-flat-pursuit-20261102/offline-main",
+          "count": 64,
+          "vanillaPresentP95Ms": [
+            24.73351,
+            24.548515
+          ],
+          "customPresentP95Ms": [
+            67.60467999999999,
+            72.3821
+          ],
+          "vanillaCpuBusyP95Ms": [
+            13.670549999999999,
+            13.789604999999998
+          ],
+          "customCpuBusyP95Ms": [
+            67.42557,
+            71.40053999999998
+          ],
+          "vanillaProcessCpuMsPerWallSecond": [
+            1236.2750133865216,
+            1252.3196043178373
+          ],
+          "customProcessCpuMsPerWallSecond": [
+            1524.6411679985224,
+            1499.1742756720298
+          ],
+          "cpuClockSecondsPerGameSecond": [
+            0.7637901651535339,
+            0.7416993060909796
+          ],
+          "scopes": [
+            {
+              "phase": 2,
+              "meanContactSolvesPerAgentPerGameSecond": 30.539266569578288,
+              "meanContactSolvesPerLeaderCallback": 1.9991759634888437,
+              "meanFootRaysPerAgentPerGameSecond": 305.3926656957829,
+              "meanJointSweepsPerAgentPerGameSecond": 122.15706627831315,
+              "meanInclusiveContactMsPerAgentPerGameSecond": 3.1486431547190756,
+              "meanContactScopeMsPerSolve": 0.10310146602720312,
+              "meanFootScopeMsPerCountedRay": 0.005638003520141329,
+              "meanWorldScopeMsPerCountedSweep": 0.008860634597185104,
+              "scopeContainsLoopAndBookkeeping": true,
+              "notPureNativeApiTime": true,
+              "scopesOverlapDoNotSum": true
+            },
+            {
+              "phase": 3,
+              "meanContactSolvesPerAgentPerGameSecond": 29.6694294525829,
+              "meanContactSolvesPerLeaderCallback": 2.0000649688149688,
+              "meanFootRaysPerAgentPerGameSecond": 296.694294525829,
+              "meanJointSweepsPerAgentPerGameSecond": 118.6777178103316,
+              "meanInclusiveContactMsPerAgentPerGameSecond": 2.847807506920601,
+              "meanContactScopeMsPerSolve": 0.09598457265489083,
+              "meanFootScopeMsPerCountedRay": 0.005294978299255054,
+              "meanWorldScopeMsPerCountedSweep": 0.007963331896818585,
+              "scopeContainsLoopAndBookkeeping": true,
+              "notPureNativeApiTime": true,
+              "scopesOverlapDoNotSum": true
+            }
+          ]
+        },
+        {
+          "sourceRunId": "matched-flat-pursuit-20261102/offline-main2",
+          "count": 64,
+          "vanillaPresentP95Ms": [
+            24.619445,
+            24.171919999999993
+          ],
+          "customPresentP95Ms": [
+            67.87927499999999,
+            71.78241
+          ],
+          "vanillaCpuBusyP95Ms": [
+            13.342389999999995,
+            12.591919999999995
+          ],
+          "customCpuBusyP95Ms": [
+            67.370085,
+            69.98111999999999
+          ],
+          "vanillaProcessCpuMsPerWallSecond": [
+            1203.4271704704736,
+            1170.206602861895
+          ],
+          "customProcessCpuMsPerWallSecond": [
+            1475.0264355159961,
+            1500.7081507210482
+          ],
+          "cpuClockSecondsPerGameSecond": [
+            0.756983188334004,
+            0.7403416072745148
+          ],
+          "scopes": [
+            {
+              "phase": 2,
+              "meanContactSolvesPerAgentPerGameSecond": 30.27618889129694,
+              "meanContactSolvesPerLeaderCallback": 1.999776329243354,
+              "meanFootRaysPerAgentPerGameSecond": 302.76188891296937,
+              "meanJointSweepsPerAgentPerGameSecond": 121.10475556518776,
+              "meanInclusiveContactMsPerAgentPerGameSecond": 3.2707059513895476,
+              "meanContactScopeMsPerSolve": 0.10802898486109427,
+              "meanFootScopeMsPerCountedRay": 0.005934837667117621,
+              "meanWorldScopeMsPerCountedSweep": 0.009352892561149503,
+              "scopeContainsLoopAndBookkeeping": true,
+              "notPureNativeApiTime": true,
+              "scopesOverlapDoNotSum": true
+            },
+            {
+              "phase": 3,
+              "meanContactSolvesPerAgentPerGameSecond": 29.61175580609487,
+              "meanContactSolvesPerLeaderCallback": 1.9998379149377592,
+              "meanFootRaysPerAgentPerGameSecond": 296.1175580609487,
+              "meanJointSweepsPerAgentPerGameSecond": 118.44702322437948,
+              "meanInclusiveContactMsPerAgentPerGameSecond": 2.972978939795765,
+              "meanContactScopeMsPerSolve": 0.100398603826925,
+              "meanFootScopeMsPerCountedRay": 0.0055676840656814965,
+              "meanWorldScopeMsPerCountedSweep": 0.008391514220220027,
+              "scopeContainsLoopAndBookkeeping": true,
+              "notPureNativeApiTime": true,
+              "scopesOverlapDoNotSum": true
+            }
+          ]
+        }
+      ],
+      "trials": [
+        {
+          "sourceRunId": "per-agent/n1",
+          "buildId": "729F3B883BAC5951ACF011B706A93E3437A4A9031D1E9A205F830CD911242EBF",
+          "executionMode": "offline_single_client",
+          "phases": [
+            {
+              "phase": 0,
+              "kind": "empty",
+              "seconds": 13.0818187,
+              "rows": 654,
+              "qpcStart": 10758848877218,
+              "qpcEnd": 10758979695405,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 654,
+                  "p50": 20.0263,
+                  "p95": 22.63416,
+                  "p99": 23.34252800000001,
+                  "minimum": 15.0519,
+                  "maximum": 25.2624
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 654,
+                  "p50": 20.0054,
+                  "p95": 20.085855000000002,
+                  "p99": 20.116164,
+                  "minimum": 19.8548,
+                  "maximum": 20.1402
+                },
+                "MsCPUBusy": {
+                  "samples": 654,
+                  "p50": 5.2799,
+                  "p95": 7.55012,
+                  "p99": 9.185964000000002,
+                  "minimum": 4.3247,
+                  "maximum": 9.8136
+                },
+                "MsCPUWait": {
+                  "samples": 654,
+                  "p50": 14.73695,
+                  "p95": 15.551375,
+                  "p99": 15.691941,
+                  "minimum": 10.2251,
+                  "maximum": 15.7418
+                },
+                "MsGPUBusy": {
+                  "samples": 654,
+                  "p50": 1.5315500000000002,
+                  "p95": 1.71085,
+                  "p99": 1.7797690000000006,
+                  "minimum": 1.2227,
+                  "maximum": 1.8426
+                },
+                "MsGPUWait": {
+                  "samples": 654,
+                  "p50": 18.4567,
+                  "p95": 18.645385,
+                  "p99": 18.749694,
+                  "minimum": 18.1862,
+                  "maximum": 18.9701
+                },
+                "MsUntilDisplayed": {
+                  "samples": 654,
+                  "p50": 52.452799999999996,
+                  "p95": 53.27989,
+                  "p99": 53.408167,
+                  "minimum": 47.9291,
+                  "maximum": 53.4549
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 928.0242528885458,
+              "scriptDtMs": {
+                "samples": 603,
+                "p50": 20.0,
+                "p95": 22.0,
+                "p99": 23.0,
+                "minimum": 17.0,
+                "maximum": 23.0
+              },
+              "appActiveFraction": 1.0,
+              "processMemoryMiB": {
+                "privateBytes": {
+                  "minimum": 5896.5390625,
+                  "median": 5899.4375,
+                  "maximum": 5899.56640625
+                },
+                "workingSetBytes": {
+                  "minimum": 5391.890625,
+                  "median": 5394.8515625,
+                  "maximum": 5397.75
+                }
+              }
+            },
+            {
+              "phase": 1,
+              "kind": "vanilla1",
+              "seconds": 33.0758512,
+              "rows": 1652,
+              "qpcStart": 10759099695405,
+              "qpcEnd": 10759430453917,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 1652,
+                  "p50": 20.064700000000002,
+                  "p95": 23.093844999999995,
+                  "p99": 26.074085,
+                  "minimum": 8.8436,
+                  "maximum": 39.8378
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 1652,
+                  "p50": 20.0058,
+                  "p95": 20.079245,
+                  "p99": 20.115349000000002,
+                  "minimum": 19.7471,
+                  "maximum": 40.0084
+                },
+                "MsCPUBusy": {
+                  "samples": 1652,
+                  "p50": 5.5579,
+                  "p95": 9.989969999999992,
+                  "p99": 15.792191,
+                  "minimum": 4.3774,
+                  "maximum": 38.538
+                },
+                "MsCPUWait": {
+                  "samples": 1652,
+                  "p50": 14.46555,
+                  "p95": 15.455865,
+                  "p99": 15.622423,
+                  "minimum": 0.1241,
+                  "maximum": 18.4769
+                },
+                "MsGPUBusy": {
+                  "samples": 1652,
+                  "p50": 1.51335,
+                  "p95": 1.7050949999999998,
+                  "p99": 1.835841,
+                  "minimum": 1.2252,
+                  "maximum": 2.6221
+                },
+                "MsGPUWait": {
+                  "samples": 1652,
+                  "p50": 18.481450000000002,
+                  "p95": 18.801849999999998,
+                  "p99": 20.960149,
+                  "minimum": 10.8112,
+                  "maximum": 37.0647
+                },
+                "MsUntilDisplayed": {
+                  "samples": 1652,
+                  "p50": 52.15615,
+                  "p95": 53.160025,
+                  "p99": 53.286513,
+                  "minimum": 25.6791,
+                  "maximum": 53.4609
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 1009.7555673563189,
+              "scriptDtMs": {
+                "samples": 1614,
+                "p50": 20.0,
+                "p95": 22.0,
+                "p99": 24.0,
+                "minimum": 10.0,
+                "maximum": 33.0
+              },
+              "appActiveFraction": 1.0,
+              "processMemoryMiB": {
+                "privateBytes": {
+                  "minimum": 5901.48046875,
+                  "median": 5912.203125,
+                  "maximum": 5915.25390625
+                },
+                "workingSetBytes": {
+                  "minimum": 5385.953125,
+                  "median": 5389.6640625,
+                  "maximum": 5402.01953125
+                }
+              }
+            },
+            {
+              "phase": 2,
+              "kind": "custom1_fresh",
+              "seconds": 32.9293758,
+              "rows": 1645,
+              "qpcStart": 10759550453917,
+              "qpcEnd": 10759879747675,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 1645,
+                  "p50": 19.988,
+                  "p95": 23.081059999999997,
+                  "p99": 25.489803999999992,
+                  "minimum": 7.2656,
+                  "maximum": 34.2214
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 1645,
+                  "p50": 20.0057,
+                  "p95": 20.0849,
+                  "p99": 20.112568,
+                  "minimum": 19.8576,
+                  "maximum": 20.16
+                },
+                "MsCPUBusy": {
+                  "samples": 1645,
+                  "p50": 5.699,
+                  "p95": 9.582699999999999,
+                  "p99": 13.735287999999994,
+                  "minimum": 4.4438,
+                  "maximum": 21.7494
+                },
+                "MsCPUWait": {
+                  "samples": 1645,
+                  "p50": 14.3075,
+                  "p95": 15.38582,
+                  "p99": 15.546803999999998,
+                  "minimum": 0.1884,
+                  "maximum": 16.851
+                },
+                "MsGPUBusy": {
+                  "samples": 1645,
+                  "p50": 1.5438,
+                  "p95": 1.73798,
+                  "p99": 1.8217239999999995,
+                  "minimum": 1.2401,
+                  "maximum": 2.0743
+                },
+                "MsGPUWait": {
+                  "samples": 1645,
+                  "p50": 18.4452,
+                  "p95": 18.69858,
+                  "p99": 19.292063999999993,
+                  "minimum": 14.129,
+                  "maximum": 22.0192
+                },
+                "MsUntilDisplayed": {
+                  "samples": 1645,
+                  "p50": 51.9988,
+                  "p95": 53.07038,
+                  "p99": 53.222104,
+                  "minimum": 32.3665,
+                  "maximum": 53.3642
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 958.1196768229248,
+              "scriptDtMs": {
+                "samples": 1624,
+                "p50": 20.0,
+                "p95": 22.0,
+                "p99": 23.769999999999982,
+                "minimum": 14.0,
+                "maximum": 27.0
+              },
+              "appActiveFraction": 1.0,
+              "processMemoryMiB": {
+                "privateBytes": {
+                  "minimum": 5941.90234375,
+                  "median": 5942.94140625,
+                  "maximum": 5947.0859375
+                },
+                "workingSetBytes": {
+                  "minimum": 5414.515625,
+                  "median": 5415.55859375,
+                  "maximum": 5419.69140625
+                }
+              }
+            },
+            {
+              "phase": 3,
+              "kind": "custom1_continued",
+              "seconds": 33.1721296,
+              "rows": 1657,
+              "qpcStart": 10759999747675,
+              "qpcEnd": 10760331468971,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 1657,
+                  "p50": 20.002,
+                  "p95": 23.7851,
+                  "p99": 28.106884000000008,
+                  "minimum": 7.0561,
+                  "maximum": 45.7255
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 1657,
+                  "p50": 20.0054,
+                  "p95": 20.089360000000003,
+                  "p99": 20.120852,
+                  "minimum": 19.8496,
+                  "maximum": 39.9297
+                },
+                "MsCPUBusy": {
+                  "samples": 1657,
+                  "p50": 5.8971,
+                  "p95": 10.597239999999998,
+                  "p99": 14.35106,
+                  "minimum": 4.53,
+                  "maximum": 31.4211
+                },
+                "MsCPUWait": {
+                  "samples": 1657,
+                  "p50": 14.0989,
+                  "p95": 15.25078,
+                  "p99": 15.506423999999999,
+                  "minimum": 0.1468,
+                  "maximum": 19.471
+                },
+                "MsGPUBusy": {
+                  "samples": 1657,
+                  "p50": 1.5569,
+                  "p95": 1.75764,
+                  "p99": 1.8642320000000001,
+                  "minimum": 1.2511,
+                  "maximum": 1.9801
+                },
+                "MsGPUWait": {
+                  "samples": 1657,
+                  "p50": 18.4276,
+                  "p95": 18.72682,
+                  "p99": 20.980008000000023,
+                  "minimum": 7.7933,
+                  "maximum": 29.8449
+                },
+                "MsUntilDisplayed": {
+                  "samples": 1657,
+                  "p50": 51.7934,
+                  "p95": 52.9501,
+                  "p99": 53.122676,
+                  "minimum": 22.2051,
+                  "maximum": 53.2562
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 999.5364145351954,
+              "scriptDtMs": {
+                "samples": 1609,
+                "p50": 20.0,
+                "p95": 22.0,
+                "p99": 24.0,
+                "minimum": 9.0,
+                "maximum": 34.0
+              },
+              "appActiveFraction": 1.0,
+              "processMemoryMiB": {
+                "privateBytes": {
+                  "minimum": 5943.74609375,
+                  "median": 5945.22265625,
+                  "maximum": 5946.0
+                },
+                "workingSetBytes": {
+                  "minimum": 5417.296875,
+                  "median": 5418.765625,
+                  "maximum": 5419.58203125
+                }
+              }
+            },
+            {
+              "phase": 4,
+              "kind": "vanilla1_repeat",
+              "seconds": 33.0,
+              "rows": 1649,
+              "qpcStart": 10760451468971,
+              "qpcEnd": 10760781468971,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 1649,
+                  "p50": 20.0548,
+                  "p95": 22.736279999999997,
+                  "p99": 24.772764,
+                  "minimum": 10.8958,
+                  "maximum": 38.6802
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 1649,
+                  "p50": 20.0062,
+                  "p95": 20.08232,
+                  "p99": 20.119696,
+                  "minimum": 19.8388,
+                  "maximum": 20.2156
+                },
+                "MsCPUBusy": {
+                  "samples": 1649,
+                  "p50": 5.5799,
+                  "p95": 9.321899999999994,
+                  "p99": 12.19686,
+                  "minimum": 4.429,
+                  "maximum": 17.8248
+                },
+                "MsCPUWait": {
+                  "samples": 1649,
+                  "p50": 14.434,
+                  "p95": 15.38734,
+                  "p99": 15.558836,
+                  "minimum": 2.9752,
+                  "maximum": 20.8554
+                },
+                "MsGPUBusy": {
+                  "samples": 1649,
+                  "p50": 1.5478,
+                  "p95": 1.74756,
+                  "p99": 1.8274879999999998,
+                  "minimum": 1.2407,
+                  "maximum": 1.9965
+                },
+                "MsGPUWait": {
+                  "samples": 1649,
+                  "p50": 18.4369,
+                  "p95": 18.75062,
+                  "p99": 19.341683999999997,
+                  "minimum": 14.478,
+                  "maximum": 24.1506
+                },
+                "MsUntilDisplayed": {
+                  "samples": 1649,
+                  "p50": 52.1151,
+                  "p95": 53.08094,
+                  "p99": 53.237096,
+                  "minimum": 34.2097,
+                  "maximum": 53.3954
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 1051.8803178194185,
+              "scriptDtMs": {
+                "samples": 1607,
+                "p50": 20.0,
+                "p95": 22.0,
+                "p99": 23.940000000000055,
+                "minimum": 13.0,
+                "maximum": 26.0
+              },
+              "appActiveFraction": 1.0,
+              "processMemoryMiB": {
+                "privateBytes": {
+                  "minimum": 5949.03125,
+                  "median": 5950.3046875,
+                  "maximum": 5951.58203125
+                },
+                "workingSetBytes": {
+                  "minimum": 5417.25390625,
+                  "median": 5417.59375,
+                  "maximum": 5422.6640625
+                }
+              }
+            }
+          ],
+          "agents": {
+            "1": {
+              "rows": 126,
+              "logicalAgents": 1,
+              "everTarget": 1,
+              "targetRowFraction": 1.0,
+              "observedSampleHz": 3.8425595750436514,
+              "movedMoreThan2m": 1,
+              "minimumPeakMovementMeters": 23.6711,
+              "deadRows": 0,
+              "chaseFightRowFraction": 1.0
+            },
+            "4": {
+              "rows": 126,
+              "logicalAgents": 1,
+              "everTarget": 1,
+              "targetRowFraction": 1.0,
+              "observedSampleHz": 3.844379517145934,
+              "movedMoreThan2m": 1,
+              "minimumPeakMovementMeters": 24.7076,
+              "deadRows": 0,
+              "chaseFightRowFraction": 1.0
+            },
+            "2": {
+              "rows": 125,
+              "logicalAgents": 1,
+              "everTarget": 1,
+              "targetRowFraction": 1.0,
+              "observedSampleHz": 3.845080467611399,
+              "movedMoreThan2m": 1,
+              "minimumPeakMovementMeters": 70.9792,
+              "followRowFraction": 1.0,
+              "nativePartsPerLogicalAgent": [
+                8
+              ],
+              "nativeSecondsPerGameSecond": {
+                "samples": 1,
+                "p50": 0.8325777543489722,
+                "p95": 0.8325777543489722,
+                "p99": 0.8325777543489722,
+                "minimum": 0.8325777543489722,
+                "maximum": 0.8325777543489722
+              },
+              "leaderAnimUpdatesPerGameSecond": {
+                "samples": 1,
+                "p50": 16.651679121833237,
+                "p95": 16.651679121833237,
+                "p99": 16.651679121833237,
+                "minimum": 16.651679121833237,
+                "maximum": 16.651679121833237
+              }
+            },
+            "3": {
+              "rows": 126,
+              "logicalAgents": 1,
+              "everTarget": 1,
+              "targetRowFraction": 1.0,
+              "observedSampleHz": 3.840363759255276,
+              "movedMoreThan2m": 1,
+              "minimumPeakMovementMeters": 149.93,
+              "followRowFraction": 1.0,
+              "nativePartsPerLogicalAgent": [
+                8
+              ],
+              "nativeSecondsPerGameSecond": {
+                "samples": 1,
+                "p50": 0.8325939352975513,
+                "p95": 0.8325939352975513,
+                "p99": 0.8325939352975513,
+                "minimum": 0.8325939352975513,
+                "maximum": 0.8325939352975513
+              },
+              "leaderAnimUpdatesPerGameSecond": {
+                "samples": 1,
+                "p50": 16.651817260130876,
+                "p95": 16.651817260130876,
+                "p99": 16.651817260130876,
+                "minimum": 16.651817260130876,
+                "maximum": 16.651817260130876
+              }
+            }
+          },
+          "customScopes": {
+            "2": {
+              "seconds": 32.248999999999995,
+              "inclusiveElapsedEquivalentMsPerGameSecond": {
+                "updateTicks": 7.632417323581457,
+                "commitTicks": 1.9197110113968798,
+                "perceptionTicks": 0.6978794670941507,
+                "socialTicks": 2.070206499590268,
+                "pursuitTicks": 0.8007423846562263,
+                "crowdTicks": 1.4905218968460674,
+                "staticMapTicks": 0.1993215079782256,
+                "driveTicks": 3.6647537644726236,
+                "contactTicks": 2.1127087887953917,
+                "boneTicks": 0.1293047910154856,
+                "footTicks": 1.1335597050929633,
+                "worldTicks": 0.687519708467973
+              },
+              "callsPerGameSecond": {
+                "solves": 16.651679121833237,
+                "footRays": 166.51679121833237,
+                "worldSweeps": 66.60671648733295,
+                "positionWrites": 399.88836863158554,
+                "orientationWrites": 399.3922292164099,
+                "animUpdates": 133.2134329746659
+              },
+              "clockCalibrationTicksPerGameSecond": 10003236.956018895,
+              "notCpuSelfTime": true,
+              "overlappingScopesDoNotSum": true
+            },
+            "3": {
+              "seconds": 32.54900000000001,
+              "inclusiveElapsedEquivalentMsPerGameSecond": {
+                "updateTicks": 8.725892171127848,
+                "commitTicks": 1.997356475338714,
+                "perceptionTicks": 0.7236651045350184,
+                "socialTicks": 2.130589332350067,
+                "pursuitTicks": 1.6201612962668992,
+                "crowdTicks": 1.5649854484981356,
+                "staticMapTicks": 0.2175952386708244,
+                "driveTicks": 3.6533690196437307,
+                "contactTicks": 2.075858822623412,
+                "boneTicks": 0.13678327616084907,
+                "footTicks": 1.1147425453332354,
+                "worldTicks": 0.6535811818945834
+              },
+              "callsPerGameSecond": {
+                "solves": 16.651817260130876,
+                "footRays": 166.51817260130875,
+                "worldSweeps": 66.6072690405235,
+                "positionWrites": 399.64361424314103,
+                "orientationWrites": 399.3978309625487,
+                "animUpdates": 133.214538081047
+              },
+              "clockCalibrationTicksPerGameSecond": 10003236.956018895,
+              "notCpuSelfTime": true,
+              "overlappingScopesDoNotSum": true
+            }
+          },
+          "tickCalibration": {
+            "rates": [
+              10013294.904708207,
+              9993021.713523727,
+              10007495.356958784,
+              9998978.555079006
+            ],
+            "median": 10003236.956018895,
+            "spread": 0.0020287348277292505
+          },
+          "telemetry": {
+            "presentRows": 10231,
+            "singleSwapChain": true,
+            "presentIdentityMaxErrorMs": 1.4210854715202004e-14,
+            "captureSpanSeconds": 205.0192618
+          },
+          "errors": {
+            "compile": false,
+            "vm": false,
+            "scriptErrorLineCount": 11,
+            "normalTermination": true,
+            "customRetired": true,
+            "shutdownLeakWarnings": [
+              {
+                "class": "BunkerBroadcastManager",
+                "instances": 1
+              },
+              {
+                "class": "PGFilter",
+                "instances": 1
+              }
+            ],
+            "memoryCleanupAccepted": false
+          },
+          "visualAccepted": false,
+          "performanceAccepted": false,
+          "nativeAnimationSelfTime": "not_measured",
+          "limitations": [
+            "Offline workload; prior network baseline is not this matched comparison",
+            "Custom combat disabled; native vanilla may chase/fight",
+            "Custom has8 native parts per logical agent; vanilla1 infected",
+            "C2/C3 continuous same population; not independent respawn repeats",
+            "Camera and player input recipe matched; actual trajectories differ after collisions",
+            "Clock slopes measure CPU animation callbacks, not visible pose cadence",
+            "Inclusive elapsed scope timings overlap and do not establish causal CPU fractions",
+            "No observer-OFF control, native skinning/render/GC self-time, perentity LOD or temporal video measurement"
+          ]
+        },
+        {
+          "sourceRunId": "per-agent/n8",
+          "buildId": "729F3B883BAC5951ACF011B706A93E3437A4A9031D1E9A205F830CD911242EBF",
+          "executionMode": "offline_single_client",
+          "phases": [
+            {
+              "phase": 0,
+              "kind": "empty",
+              "seconds": 12.8943119,
+              "rows": 644,
+              "qpcStart": 10761572756206,
+              "qpcEnd": 10761701699325,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 644,
+                  "p50": 20.06635,
+                  "p95": 22.92059,
+                  "p99": 25.52718600000001,
+                  "minimum": 8.591,
+                  "maximum": 55.6235
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 644,
+                  "p50": 20.0056,
+                  "p95": 20.102539999999998,
+                  "p99": 20.12974,
+                  "minimum": 19.8546,
+                  "maximum": 39.8927
+                },
+                "MsCPUBusy": {
+                  "samples": 644,
+                  "p50": 5.3911,
+                  "p95": 9.613595000000002,
+                  "p99": 14.022463000000043,
+                  "minimum": 4.2235,
+                  "maximum": 35.6887
+                },
+                "MsCPUWait": {
+                  "samples": 644,
+                  "p50": 14.614899999999999,
+                  "p95": 15.585345,
+                  "p99": 15.780170000000002,
+                  "minimum": 0.1859,
+                  "maximum": 19.9348
+                },
+                "MsGPUBusy": {
+                  "samples": 644,
+                  "p50": 1.575,
+                  "p95": 1.760015,
+                  "p99": 1.8354620000000004,
+                  "minimum": 1.2512,
+                  "maximum": 2.0276
+                },
+                "MsGPUWait": {
+                  "samples": 644,
+                  "p50": 18.4218,
+                  "p95": 18.657915,
+                  "p99": 19.420560000000034,
+                  "minimum": 12.2211,
+                  "maximum": 34.2925
+                },
+                "MsUntilDisplayed": {
+                  "samples": 644,
+                  "p50": 52.325500000000005,
+                  "p95": 53.290240000000004,
+                  "p99": 53.39094,
+                  "minimum": 30.1561,
+                  "maximum": 53.6382
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 992.7569947421067,
+              "scriptDtMs": {
+                "samples": 653,
+                "p50": 20.0,
+                "p95": 22.0,
+                "p99": 24.0,
+                "minimum": 10.0,
+                "maximum": 35.0
+              },
+              "appActiveFraction": 1.0,
+              "processMemoryMiB": {
+                "privateBytes": {
+                  "minimum": 5893.76171875,
+                  "median": 5895.22265625,
+                  "maximum": 5895.3515625
+                },
+                "workingSetBytes": {
+                  "minimum": 5393.35546875,
+                  "median": 5394.81640625,
+                  "maximum": 5394.94140625
+                }
+              }
+            },
+            {
+              "phase": 1,
+              "kind": "vanilla8",
+              "seconds": 33.0422333,
+              "rows": 1648,
+              "qpcStart": 10761821699325,
+              "qpcEnd": 10762152121658,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 1648,
+                  "p50": 20.043799999999997,
+                  "p95": 23.219774999999995,
+                  "p99": 27.374463,
+                  "minimum": 6.54,
+                  "maximum": 56.8189
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 1648,
+                  "p50": 20.0054,
+                  "p95": 20.089095,
+                  "p99": 20.122436,
+                  "minimum": 19.8163,
+                  "maximum": 39.9684
+                },
+                "MsCPUBusy": {
+                  "samples": 1648,
+                  "p50": 5.8582,
+                  "p95": 10.660364999999999,
+                  "p99": 17.34878399999999,
+                  "minimum": 4.5528,
+                  "maximum": 49.1995
+                },
+                "MsCPUWait": {
+                  "samples": 1648,
+                  "p50": 14.17225,
+                  "p95": 15.233295,
+                  "p99": 15.487335999999999,
+                  "minimum": 0.155,
+                  "maximum": 19.6092
+                },
+                "MsGPUBusy": {
+                  "samples": 1648,
+                  "p50": 1.5688499999999999,
+                  "p95": 1.771095,
+                  "p99": 1.9051989999999999,
+                  "minimum": 1.2692,
+                  "maximum": 2.2312
+                },
+                "MsGPUWait": {
+                  "samples": 1648,
+                  "p50": 18.4233,
+                  "p95": 18.73678,
+                  "p99": 21.662820999999994,
+                  "minimum": 7.8735,
+                  "maximum": 47.7562
+                },
+                "MsUntilDisplayed": {
+                  "samples": 1648,
+                  "p50": 51.863749999999996,
+                  "p95": 52.952284999999996,
+                  "p99": 53.100571,
+                  "minimum": 21.9185,
+                  "maximum": 53.3277
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 1080.5936566058747,
+              "scriptDtMs": {
+                "samples": 1661,
+                "p50": 20.0,
+                "p95": 23.0,
+                "p99": 24.40000000000009,
+                "minimum": 10.0,
+                "maximum": 38.0
+              },
+              "appActiveFraction": 1.0,
+              "processMemoryMiB": {
+                "privateBytes": {
+                  "minimum": 5928.2890625,
+                  "median": 5935.32421875,
+                  "maximum": 5936.02734375
+                },
+                "workingSetBytes": {
+                  "minimum": 5426.578125,
+                  "median": 5433.05078125,
+                  "maximum": 5433.73828125
+                }
+              }
+            },
+            {
+              "phase": 2,
+              "kind": "custom8_fresh",
+              "seconds": 32.8875344,
+              "rows": 1644,
+              "qpcStart": 10762272121658,
+              "qpcEnd": 10762600997002,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 1644,
+                  "p50": 19.9628,
+                  "p95": 25.662089999999996,
+                  "p99": 29.206152999999997,
+                  "minimum": 6.1471,
+                  "maximum": 50.4906
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 1644,
+                  "p50": 20.0058,
+                  "p95": 20.09415,
+                  "p99": 20.125414,
+                  "minimum": 19.675,
+                  "maximum": 20.2402
+                },
+                "MsCPUBusy": {
+                  "samples": 1644,
+                  "p50": 7.691000000000001,
+                  "p95": 12.744784999999998,
+                  "p99": 17.559993,
+                  "minimum": 5.0116,
+                  "maximum": 36.5739
+                },
+                "MsCPUWait": {
+                  "samples": 1644,
+                  "p50": 12.29125,
+                  "p95": 14.710564999999999,
+                  "p99": 14.854246999999999,
+                  "minimum": 0.1289,
+                  "maximum": 15.5607
+                },
+                "MsGPUBusy": {
+                  "samples": 1644,
+                  "p50": 1.6817,
+                  "p95": 1.88194,
+                  "p99": 1.9601209999999996,
+                  "minimum": 1.3862,
+                  "maximum": 2.1644
+                },
+                "MsGPUWait": {
+                  "samples": 1644,
+                  "p50": 18.3066,
+                  "p95": 18.58453,
+                  "p99": 19.009211999999998,
+                  "minimum": 7.1192,
+                  "maximum": 34.5999
+                },
+                "MsUntilDisplayed": {
+                  "samples": 1644,
+                  "p50": 49.9619,
+                  "p95": 52.432525,
+                  "p99": 52.575782000000004,
+                  "minimum": 20.5466,
+                  "maximum": 52.7822
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 1094.1090424596277,
+              "scriptDtMs": {
+                "samples": 1626,
+                "p50": 20.0,
+                "p95": 22.0,
+                "p99": 23.0,
+                "minimum": 8.0,
+                "maximum": 37.0
+              },
+              "appActiveFraction": 1.0,
+              "processMemoryMiB": {
+                "privateBytes": {
+                  "minimum": 5951.01953125,
+                  "median": 5953.9453125,
+                  "maximum": 5956.58203125
+                },
+                "workingSetBytes": {
+                  "minimum": 5446.48828125,
+                  "median": 5449.4140625,
+                  "maximum": 5452.05078125
+                }
+              }
+            },
+            {
+              "phase": 3,
+              "kind": "custom8_continued",
+              "seconds": 33.035474,
+              "rows": 1651,
+              "qpcStart": 10762720997002,
+              "qpcEnd": 10763051351742,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 1651,
+                  "p50": 19.9371,
+                  "p95": 27.9148,
+                  "p99": 31.67425,
+                  "minimum": 5.4736,
+                  "maximum": 39.1172
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 1651,
+                  "p50": 20.0056,
+                  "p95": 20.1024,
+                  "p99": 20.127850000000002,
+                  "minimum": 19.8566,
+                  "maximum": 20.1608
+                },
+                "MsCPUBusy": {
+                  "samples": 1651,
+                  "p50": 8.0307,
+                  "p95": 14.48285,
+                  "p99": 19.37605,
+                  "minimum": 5.085,
+                  "maximum": 26.5395
+                },
+                "MsCPUWait": {
+                  "samples": 1651,
+                  "p50": 11.977,
+                  "p95": 14.6677,
+                  "p99": 14.803899999999999,
+                  "minimum": 0.1188,
+                  "maximum": 15.7309
+                },
+                "MsGPUBusy": {
+                  "samples": 1651,
+                  "p50": 1.6698,
+                  "p95": 1.88985,
+                  "p99": 1.9692500000000002,
+                  "minimum": 1.3917,
+                  "maximum": 2.6878
+                },
+                "MsGPUWait": {
+                  "samples": 1651,
+                  "p50": 18.3195,
+                  "p95": 18.62625,
+                  "p99": 19.917650000000002,
+                  "minimum": 9.9034,
+                  "maximum": 25.1571
+                },
+                "MsUntilDisplayed": {
+                  "samples": 1651,
+                  "p50": 49.6613,
+                  "p95": 52.3577,
+                  "p99": 52.4934,
+                  "minimum": 29.075,
+                  "maximum": 52.6272
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 1113.8841675931842,
+              "scriptDtMs": {
+                "samples": 1654,
+                "p50": 20.0,
+                "p95": 22.0,
+                "p99": 23.0,
+                "minimum": 10.0,
+                "maximum": 30.0
+              },
+              "appActiveFraction": 1.0,
+              "processMemoryMiB": {
+                "privateBytes": {
+                  "minimum": 5951.40625,
+                  "median": 5952.1640625,
+                  "maximum": 5952.78515625
+                },
+                "workingSetBytes": {
+                  "minimum": 5446.91796875,
+                  "median": 5447.6484375,
+                  "maximum": 5448.29296875
+                }
+              }
+            },
+            {
+              "phase": 4,
+              "kind": "vanilla8_repeat",
+              "seconds": 33.0,
+              "rows": 1650,
+              "qpcStart": 10763171351742,
+              "qpcEnd": 10763501351742,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 1650,
+                  "p50": 20.0053,
+                  "p95": 22.822654999999997,
+                  "p99": 24.95765,
+                  "minimum": 10.8053,
+                  "maximum": 35.6327
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 1650,
+                  "p50": 20.0059,
+                  "p95": 20.088415,
+                  "p99": 20.117261,
+                  "minimum": 19.8596,
+                  "maximum": 20.162
+                },
+                "MsCPUBusy": {
+                  "samples": 1650,
+                  "p50": 5.718450000000001,
+                  "p95": 8.794414999999997,
+                  "p99": 11.357389999999999,
+                  "minimum": 4.5493,
+                  "maximum": 21.0931
+                },
+                "MsCPUWait": {
+                  "samples": 1650,
+                  "p50": 14.29415,
+                  "p95": 15.262225,
+                  "p99": 15.406446999999998,
+                  "minimum": 0.225,
+                  "maximum": 17.69
+                },
+                "MsGPUBusy": {
+                  "samples": 1650,
+                  "p50": 1.54335,
+                  "p95": 1.7345549999999998,
+                  "p99": 1.808367,
+                  "minimum": 1.2571,
+                  "maximum": 2.114
+                },
+                "MsGPUWait": {
+                  "samples": 1650,
+                  "p50": 18.443150000000003,
+                  "p95": 18.703005,
+                  "p99": 18.954207,
+                  "minimum": 14.9973,
+                  "maximum": 21.6454
+                },
+                "MsUntilDisplayed": {
+                  "samples": 1650,
+                  "p50": 51.98565,
+                  "p95": 52.97528,
+                  "p99": 53.084163000000004,
+                  "minimum": 33.8934,
+                  "maximum": 53.3402
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 1009.0074264727584,
+              "scriptDtMs": {
+                "samples": 1609,
+                "p50": 20.0,
+                "p95": 22.0,
+                "p99": 23.0,
+                "minimum": 14.0,
+                "maximum": 30.0
+              },
+              "appActiveFraction": 1.0,
+              "processMemoryMiB": {
+                "privateBytes": {
+                  "minimum": 5954.875,
+                  "median": 5957.23828125,
+                  "maximum": 5958.42578125
+                },
+                "workingSetBytes": {
+                  "minimum": 5450.3671875,
+                  "median": 5451.75,
+                  "maximum": 5453.97265625
+                }
+              }
+            }
+          ],
+          "agents": {
+            "1": {
+              "rows": 1008,
+              "logicalAgents": 8,
+              "everTarget": 8,
+              "targetRowFraction": 1.0,
+              "observedSampleHz": 3.845668700256276,
+              "movedMoreThan2m": 8,
+              "minimumPeakMovementMeters": 17.0517,
+              "deadRows": 0,
+              "chaseFightRowFraction": 1.0
+            },
+            "4": {
+              "rows": 1008,
+              "logicalAgents": 8,
+              "everTarget": 8,
+              "targetRowFraction": 1.0,
+              "observedSampleHz": 3.84449775481331,
+              "movedMoreThan2m": 8,
+              "minimumPeakMovementMeters": 19.5541,
+              "deadRows": 0,
+              "chaseFightRowFraction": 1.0
+            },
+            "2": {
+              "rows": 1000,
+              "logicalAgents": 8,
+              "everTarget": 8,
+              "targetRowFraction": 1.0,
+              "observedSampleHz": 3.8453189443979285,
+              "movedMoreThan2m": 8,
+              "minimumPeakMovementMeters": 73.9731,
+              "followRowFraction": 1.0,
+              "nativePartsPerLogicalAgent": [
+                8
+              ],
+              "nativeSecondsPerGameSecond": {
+                "samples": 8,
+                "p50": 0.8341799237138339,
+                "p95": 0.8341799237138339,
+                "p99": 0.8341799237138339,
+                "minimum": 0.8341799237138339,
+                "maximum": 0.8341799237138339
+              },
+              "leaderAnimUpdatesPerGameSecond": {
+                "samples": 8,
+                "p50": 16.68372251682327,
+                "p95": 16.68372251682327,
+                "p99": 16.68372251682327,
+                "minimum": 16.68372251682327,
+                "maximum": 16.68372251682327
+              }
+            },
+            "3": {
+              "rows": 1008,
+              "logicalAgents": 8,
+              "everTarget": 8,
+              "targetRowFraction": 1.0,
+              "observedSampleHz": 3.842252482095105,
+              "movedMoreThan2m": 8,
+              "minimumPeakMovementMeters": 164.249,
+              "followRowFraction": 1.0,
+              "nativePartsPerLogicalAgent": [
+                8
+              ],
+              "nativeSecondsPerGameSecond": {
+                "samples": 8,
+                "p50": 0.8330034119202046,
+                "p95": 0.8330034119202046,
+                "p99": 0.8330034119202046,
+                "minimum": 0.8330034119202046,
+                "maximum": 0.8330034119202046
+              },
+              "leaderAnimUpdatesPerGameSecond": {
+                "samples": 8,
+                "p50": 16.660006762364375,
+                "p95": 16.660006762364375,
+                "p99": 16.660006762364375,
+                "minimum": 16.660006762364375,
+                "maximum": 16.660006762364375
+              }
+            }
+          },
+          "customScopes": {
+            "2": {
+              "seconds": 32.247,
+              "inclusiveElapsedEquivalentMsPerGameSecond": {
+                "updateTicks": 33.661421260726534,
+                "commitTicks": 7.259845269052634,
+                "perceptionTicks": 1.818269347193344,
+                "socialTicks": 9.803810194332597,
+                "pursuitTicks": 7.041980340042316,
+                "crowdTicks": 6.277974241011644,
+                "staticMapTicks": 0.5068137476544644,
+                "driveTicks": 22.51348440836931,
+                "contactTicks": 25.35398770924665,
+                "boneTicks": 1.2652423904110934,
+                "footTicks": 13.772460212225702,
+                "worldTicks": 8.564064746888556
+              },
+              "callsPerGameSecond": {
+                "solves": 257.3572735448259,
+                "footRays": 2573.5727354482588,
+                "worldSweeps": 1029.4290941793035,
+                "positionWrites": 3199.3053617390765,
+                "orientationWrites": 3197.072595900394,
+                "animUpdates": 1067.7582410766893
+              },
+              "clockCalibrationTicksPerGameSecond": 10002433.473131832,
+              "notCpuSelfTime": true,
+              "overlappingScopesDoNotSum": true
+            },
+            "3": {
+              "seconds": 32.53299999999999,
+              "inclusiveElapsedEquivalentMsPerGameSecond": {
+                "updateTicks": 37.49402657640755,
+                "commitTicks": 7.214301960574577,
+                "perceptionTicks": 1.8085108151345637,
+                "socialTicks": 9.42373571444845,
+                "pursuitTicks": 11.312803571495818,
+                "crowdTicks": 6.2695836488009205,
+                "staticMapTicks": 0.5061658247692108,
+                "driveTicks": 22.427149304938347,
+                "contactTicks": 24.682771062930225,
+                "boneTicks": 1.260689741142492,
+                "footTicks": 13.775549180289678,
+                "worldTicks": 7.918307939509672
+              },
+              "callsPerGameSecond": {
+                "solves": 253.68087787784722,
+                "footRays": 2536.808778778472,
+                "worldSweeps": 1014.7235115113889,
+                "positionWrites": 3198.72129837396,
+                "orientationWrites": 3198.229490056252,
+                "animUpdates": 1066.24043279132
+              },
+              "clockCalibrationTicksPerGameSecond": 10002433.473131832,
+              "notCpuSelfTime": true,
+              "overlappingScopesDoNotSum": true
+            }
+          },
+          "tickCalibration": {
+            "rates": [
+              10016671.330851987,
+              9990520.806938462,
+              10005883.947397072,
+              9998982.998866593
+            ],
+            "median": 10002433.473131832,
+            "spread": 0.0026175336019882423
+          },
+          "telemetry": {
+            "presentRows": 10225,
+            "singleSwapChain": true,
+            "presentIdentityMaxErrorMs": 1.4210854715202004e-14,
+            "captureSpanSeconds": 204.9821131
+          },
+          "errors": {
+            "compile": false,
+            "vm": false,
+            "scriptErrorLineCount": 11,
+            "normalTermination": true,
+            "customRetired": true,
+            "shutdownLeakWarnings": [
+              {
+                "class": "BunkerBroadcastManager",
+                "instances": 1
+              },
+              {
+                "class": "PGFilter",
+                "instances": 8
+              }
+            ],
+            "memoryCleanupAccepted": false
+          },
+          "visualAccepted": false,
+          "performanceAccepted": false,
+          "nativeAnimationSelfTime": "not_measured",
+          "limitations": [
+            "Offline workload; prior network baseline is not this matched comparison",
+            "Custom combat disabled; native vanilla may chase/fight",
+            "Custom has8 native parts per logical agent; vanilla1 infected",
+            "C2/C3 continuous same population; not independent respawn repeats",
+            "Camera and player input recipe matched; actual trajectories differ after collisions",
+            "Clock slopes measure CPU animation callbacks, not visible pose cadence",
+            "Inclusive elapsed scope timings overlap and do not establish causal CPU fractions",
+            "No observer-OFF control, native skinning/render/GC self-time, perentity LOD or temporal video measurement"
+          ]
+        },
+        {
+          "sourceRunId": "matched-flat-pursuit-20261102/offline-main",
+          "buildId": "729F3B883BAC5951ACF011B706A93E3437A4A9031D1E9A205F830CD911242EBF",
+          "executionMode": "offline_single_client",
+          "phases": [
+            {
+              "phase": 0,
+              "kind": "empty",
+              "seconds": 12.9552814,
+              "rows": 647,
+              "qpcStart": 10595887785411,
+              "qpcEnd": 10596017338225,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 647,
+                  "p50": 19.9491,
+                  "p95": 26.234389999999987,
+                  "p99": 33.766304,
+                  "minimum": 6.1219,
+                  "maximum": 41.90790000000001
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 647,
+                  "p50": 20.0056,
+                  "p95": 20.08387,
+                  "p99": 20.114076,
+                  "minimum": 19.8517,
+                  "maximum": 40.035
+                },
+                "MsCPUBusy": {
+                  "samples": 647,
+                  "p50": 6.6051,
+                  "p95": 14.74893999999998,
+                  "p99": 21.814757999999923,
+                  "minimum": 4.2878,
+                  "maximum": 33.0725
+                },
+                "MsCPUWait": {
+                  "samples": 647,
+                  "p50": 13.5122,
+                  "p95": 15.52332,
+                  "p99": 17.433819999999994,
+                  "minimum": 0.1489,
+                  "maximum": 19.8303
+                },
+                "MsGPUBusy": {
+                  "samples": 647,
+                  "p50": 1.5369,
+                  "p95": 1.7885099999999998,
+                  "p99": 1.9680179999999996,
+                  "minimum": 1.2133,
+                  "maximum": 2.0793
+                },
+                "MsGPUWait": {
+                  "samples": 647,
+                  "p50": 18.4754,
+                  "p95": 20.062269999999994,
+                  "p99": 23.111845999999996,
+                  "minimum": 6.4394,
+                  "maximum": 31.4597
+                },
+                "MsUntilDisplayed": {
+                  "samples": 647,
+                  "p50": 50.8741,
+                  "p95": 53.16702,
+                  "p99": 53.294724,
+                  "minimum": 23.5367,
+                  "maximum": 53.4078
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 1219.1669919957055,
+              "scriptDtMs": {
+                "samples": 656,
+                "p50": 20.0,
+                "p95": 24.0,
+                "p99": 26.0,
+                "minimum": 8.0,
+                "maximum": 34.0
+              },
+              "appActiveFraction": 1.0
+            },
+            {
+              "phase": 1,
+              "kind": "vanilla64",
+              "seconds": 33.0950249,
+              "rows": 1654,
+              "qpcStart": 10596137338225,
+              "qpcEnd": 10596468288474,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 1654,
+                  "p50": 19.863500000000002,
+                  "p95": 24.73351,
+                  "p99": 30.671373000000013,
+                  "minimum": 7.5871,
+                  "maximum": 47.6859
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 1654,
+                  "p50": 20.0061,
+                  "p95": 20.0902,
+                  "p99": 20.115282,
+                  "minimum": 19.6844,
+                  "maximum": 20.2472
+                },
+                "MsCPUBusy": {
+                  "samples": 1654,
+                  "p50": 8.94375,
+                  "p95": 13.670549999999999,
+                  "p99": 19.942857000000004,
+                  "minimum": 6.2999,
+                  "maximum": 34.5438
+                },
+                "MsCPUWait": {
+                  "samples": 1654,
+                  "p50": 11.0771,
+                  "p95": 13.334599999999998,
+                  "p99": 13.658181,
+                  "minimum": 0.1146,
+                  "maximum": 18.1197
+                },
+                "MsGPUBusy": {
+                  "samples": 1654,
+                  "p50": 1.6599,
+                  "p95": 1.9101049999999997,
+                  "p99": 2.021545,
+                  "minimum": 1.33,
+                  "maximum": 2.6107
+                },
+                "MsGPUWait": {
+                  "samples": 1654,
+                  "p50": 18.335,
+                  "p95": 18.64346,
+                  "p99": 21.465588,
+                  "minimum": 8.5828,
+                  "maximum": 33.1524
+                },
+                "MsUntilDisplayed": {
+                  "samples": 1654,
+                  "p50": 48.7041,
+                  "p95": 50.947425,
+                  "p99": 51.221509,
+                  "minimum": 21.8652,
+                  "maximum": 51.4001
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 1236.2750133865216,
+              "scriptDtMs": {
+                "samples": 1667,
+                "p50": 20.0,
+                "p95": 22.0,
+                "p99": 24.0,
+                "minimum": 10.0,
+                "maximum": 30.0
+              },
+              "appActiveFraction": 1.0
+            },
+            {
+              "phase": 2,
+              "kind": "custom64_fresh",
+              "seconds": 32.8689484,
+              "rows": 895,
+              "qpcStart": 10596588288474,
+              "qpcEnd": 10596916977958,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 895,
+                  "p50": 39.0808,
+                  "p95": 67.60467999999999,
+                  "p99": 79.470484,
+                  "minimum": 11.7996,
+                  "maximum": 105.06700000000001
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 895,
+                  "p50": 39.975,
+                  "p95": 60.052,
+                  "p99": 80.02612400000001,
+                  "minimum": 19.9616,
+                  "maximum": 100.0032
+                },
+                "MsCPUBusy": {
+                  "samples": 895,
+                  "p50": 38.4003,
+                  "p95": 67.42557,
+                  "p99": 77.169864,
+                  "minimum": 11.6799,
+                  "maximum": 104.93
+                },
+                "MsCPUWait": {
+                  "samples": 895,
+                  "p50": 0.1313,
+                  "p95": 6.788399999999985,
+                  "p99": 9.457059999999991,
+                  "minimum": 0.1014,
+                  "maximum": 10.3979
+                },
+                "MsGPUBusy": {
+                  "samples": 895,
+                  "p50": 2.6996,
+                  "p95": 9.29345,
+                  "p99": 12.344011999999994,
+                  "minimum": 2.3788,
+                  "maximum": 15.471
+                },
+                "MsGPUWait": {
+                  "samples": 895,
+                  "p50": 34.9334,
+                  "p95": 62.04661999999999,
+                  "p99": 73.40530999999997,
+                  "minimum": 2.5827,
+                  "maximum": 96.8329
+                },
+                "MsUntilDisplayed": {
+                  "samples": 895,
+                  "p50": 33.2246,
+                  "p95": 44.48686999999999,
+                  "p99": 47.256116,
+                  "minimum": 20.3625,
+                  "maximum": 48.1475
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 1524.6411679985224,
+              "scriptDtMs": {
+                "samples": 876,
+                "p50": 39.0,
+                "p95": 66.0,
+                "p99": 77.0,
+                "minimum": 12.0,
+                "maximum": 105.0
+              },
+              "appActiveFraction": 1.0
+            },
+            {
+              "phase": 3,
+              "kind": "custom64_continued",
+              "seconds": 33.0700225,
+              "rows": 884,
+              "qpcStart": 10597036977958,
+              "qpcEnd": 10597367678183,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 884,
+                  "p50": 38.5731,
+                  "p95": 72.3821,
+                  "p99": 80.03742,
+                  "minimum": 10.55,
+                  "maximum": 91.77340000000001
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 884,
+                  "p50": 39.9761,
+                  "p95": 79.97643,
+                  "p99": 80.058703,
+                  "minimum": 19.918,
+                  "maximum": 99.96940000000001
+                },
+                "MsCPUBusy": {
+                  "samples": 884,
+                  "p50": 37.92945,
+                  "p95": 71.40053999999998,
+                  "p99": 79.27310099999997,
+                  "minimum": 10.4251,
+                  "maximum": 91.6689
+                },
+                "MsCPUWait": {
+                  "samples": 884,
+                  "p50": 0.1306,
+                  "p95": 5.416284999999997,
+                  "p99": 9.164138,
+                  "minimum": 0.1027,
+                  "maximum": 10.5122
+                },
+                "MsGPUBusy": {
+                  "samples": 884,
+                  "p50": 2.9092000000000002,
+                  "p95": 10.006279999999997,
+                  "p99": 12.299879999999991,
+                  "minimum": 2.3564,
+                  "maximum": 16.5207
+                },
+                "MsGPUWait": {
+                  "samples": 884,
+                  "p50": 34.08415,
+                  "p95": 67.07956999999998,
+                  "p99": 74.571983,
+                  "minimum": 0.897,
+                  "maximum": 84.9025
+                },
+                "MsUntilDisplayed": {
+                  "samples": 884,
+                  "p50": 32.19285,
+                  "p95": 43.11765,
+                  "p99": 46.895427999999995,
+                  "minimum": 20.4066,
+                  "maximum": 48.1653
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 1499.1742756720298,
+              "scriptDtMs": {
+                "samples": 868,
+                "p50": 38.0,
+                "p95": 72.0,
+                "p99": 80.0,
+                "minimum": 11.0,
+                "maximum": 92.0
+              },
+              "appActiveFraction": 1.0
+            },
+            {
+              "phase": 4,
+              "kind": "vanilla64_repeat",
+              "seconds": 33.0,
+              "rows": 1650,
+              "qpcStart": 10597487678183,
+              "qpcEnd": 10597817678183,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 1650,
+                  "p50": 19.86155,
+                  "p95": 24.548515,
+                  "p99": 28.501543,
+                  "minimum": 7.451,
+                  "maximum": 36.9898
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 1650,
+                  "p50": 20.0058,
+                  "p95": 20.083355,
+                  "p99": 20.113753000000003,
+                  "minimum": 19.77,
+                  "maximum": 20.2115
+                },
+                "MsCPUBusy": {
+                  "samples": 1650,
+                  "p50": 8.9041,
+                  "p95": 13.789604999999998,
+                  "p99": 18.921319999999998,
+                  "minimum": 6.2418,
+                  "maximum": 28.1604
+                },
+                "MsCPUWait": {
+                  "samples": 1650,
+                  "p50": 11.10205,
+                  "p95": 13.233794999999999,
+                  "p99": 13.501114,
+                  "minimum": 0.1167,
+                  "maximum": 15.7991
+                },
+                "MsGPUBusy": {
+                  "samples": 1650,
+                  "p50": 1.6466,
+                  "p95": 1.889275,
+                  "p99": 1.99365,
+                  "minimum": 1.3409,
+                  "maximum": 2.1853
+                },
+                "MsGPUWait": {
+                  "samples": 1650,
+                  "p50": 18.3426,
+                  "p95": 18.665000000000003,
+                  "p99": 20.463078,
+                  "minimum": 10.7501,
+                  "maximum": 26.9436
+                },
+                "MsUntilDisplayed": {
+                  "samples": 1650,
+                  "p50": 48.74825,
+                  "p95": 50.876315,
+                  "p99": 51.154168,
+                  "minimum": 25.9732,
+                  "maximum": 51.5388
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 1252.3196043178373,
+              "scriptDtMs": {
+                "samples": 1606,
+                "p50": 20.0,
+                "p95": 22.0,
+                "p99": 23.0,
+                "minimum": 12.0,
+                "maximum": 32.0
+              },
+              "appActiveFraction": 1.0
+            }
+          ],
+          "agents": {
+            "1": {
+              "rows": 8064,
+              "logicalAgents": 64,
+              "everTarget": 64,
+              "targetRowFraction": 1.0,
+              "observedSampleHz": 3.8452664769668536,
+              "movedMoreThan2m": 64,
+              "minimumPeakMovementMeters": 15.3599,
+              "deadRows": 0,
+              "chaseFightRowFraction": 1.0
+            },
+            "4": {
+              "rows": 8064,
+              "logicalAgents": 64,
+              "everTarget": 64,
+              "targetRowFraction": 1.0,
+              "observedSampleHz": 3.8446159997539437,
+              "movedMoreThan2m": 64,
+              "minimumPeakMovementMeters": 18.9698,
+              "deadRows": 0,
+              "chaseFightRowFraction": 1.0
+            },
+            "2": {
+              "rows": 7680,
+              "logicalAgents": 64,
+              "everTarget": 64,
+              "targetRowFraction": 1.0,
+              "observedSampleHz": 3.687292783441267,
+              "movedMoreThan2m": 64,
+              "minimumPeakMovementMeters": 71.8484,
+              "followRowFraction": 1.0,
+              "nativePartsPerLogicalAgent": [
+                8
+              ],
+              "nativeSecondsPerGameSecond": {
+                "samples": 64,
+                "p50": 0.7637901651535339,
+                "p95": 0.7637901651535339,
+                "p99": 0.7637901651535339,
+                "minimum": 0.7637901651535339,
+                "maximum": 0.7637901651535339
+              },
+              "leaderAnimUpdatesPerGameSecond": {
+                "samples": 64,
+                "p50": 15.27592724568525,
+                "p95": 15.27592724568525,
+                "p99": 15.27592724568525,
+                "minimum": 15.27592724568525,
+                "maximum": 15.27592724568525
+              }
+            },
+            "3": {
+              "rows": 7680,
+              "logicalAgents": 64,
+              "everTarget": 64,
+              "targetRowFraction": 1.0,
+              "observedSampleHz": 3.6700077101002333,
+              "movedMoreThan2m": 64,
+              "minimumPeakMovementMeters": 154.873,
+              "followRowFraction": 1.0,
+              "nativePartsPerLogicalAgent": [
+                8
+              ],
+              "nativeSecondsPerGameSecond": {
+                "samples": 64,
+                "p50": 0.7416993060909796,
+                "p95": 0.7416993060909796,
+                "p99": 0.7416993060909796,
+                "minimum": 0.7416993060909796,
+                "maximum": 0.7416993060909796
+              },
+              "leaderAnimUpdatesPerGameSecond": {
+                "samples": 64,
+                "p50": 14.834232845026992,
+                "p95": 14.834232845026992,
+                "p99": 14.834232845026992,
+                "minimum": 14.834232845026992,
+                "maximum": 14.834232845026992
+              }
+            }
+          },
+          "customScopes": {
+            "2": {
+              "seconds": 32.272999999999996,
+              "inclusiveElapsedEquivalentMsPerGameSecond": {
+                "updateTicks": 289.5569316806919,
+                "commitTicks": 26.80975628021789,
+                "perceptionTicks": 58.81668508265324,
+                "socialTicks": 63.046065759025524,
+                "pursuitTicks": 92.7334760485256,
+                "crowdTicks": 44.62428246197887,
+                "staticMapTicks": 1.2101530231935824,
+                "driveTicks": 168.80163036894874,
+                "contactTicks": 201.51316190202084,
+                "boneTicks": 9.290000050340288,
+                "footTicks": 110.19551514996276,
+                "worldTicks": 69.27290417640035
+              },
+              "callsPerGameSecond": {
+                "solves": 1954.5130604530104,
+                "footRays": 19545.130604530106,
+                "worldSweeps": 7818.052241812042,
+                "positionWrites": 13945.031450438448,
+                "orientationWrites": 13939.082204939115,
+                "animUpdates": 7821.274749790848
+              },
+              "clockCalibrationTicksPerGameSecond": 10010710.842368104,
+              "notCpuSelfTime": true,
+              "overlappingScopesDoNotSum": true
+            },
+            "3": {
+              "seconds": 32.42499999999998,
+              "inclusiveElapsedEquivalentMsPerGameSecond": {
+                "updateTicks": 302.66117519571407,
+                "commitTicks": 27.100964873621297,
+                "perceptionTicks": 58.26234554183306,
+                "socialTicks": 63.01993287991049,
+                "pursuitTicks": 107.87766904098287,
+                "crowdTicks": 42.85864374141399,
+                "staticMapTicks": 1.2821548460211216,
+                "driveTicks": 154.2480487188564,
+                "contactTicks": 182.25968044291847,
+                "boneTicks": 8.99372856280708,
+                "footTicks": 100.54335046573134,
+                "worldTicks": 60.48448356356152
+              },
+              "callsPerGameSecond": {
+                "solves": 1898.8434849653056,
+                "footRays": 18988.434849653055,
+                "worldSweeps": 7595.373939861222,
+                "positionWrites": 13705.967617579036,
+                "orientationWrites": 13699.552814186593,
+                "animUpdates": 7595.12721665382
+              },
+              "clockCalibrationTicksPerGameSecond": 10010710.842368104,
+              "notCpuSelfTime": true,
+              "overlappingScopesDoNotSum": true
+            }
+          },
+          "tickCalibration": {
+            "rates": [
+              10019451.146127796,
+              9989134.524595045,
+              10029386.198525686,
+              10001970.53860841
+            ],
+            "median": 10010710.842368104,
+            "spread": 0.004029545686018654
+          },
+          "telemetry": {
+            "presentRows": 8214,
+            "singleSwapChain": true,
+            "presentIdentityMaxErrorMs": 1.4210854715202004e-14,
+            "captureSpanSeconds": 205.0374842
+          },
+          "errors": {
+            "compile": false,
+            "vm": false,
+            "scriptErrorLineCount": 11,
+            "normalTermination": true,
+            "customRetired": true,
+            "shutdownLeakWarnings": [
+              {
+                "class": "BunkerBroadcastManager",
+                "instances": 1
+              },
+              {
+                "class": "PGFilter",
+                "instances": 64
+              }
+            ],
+            "memoryCleanupAccepted": false
+          },
+          "visualAccepted": false,
+          "performanceAccepted": false,
+          "nativeAnimationSelfTime": "not_measured",
+          "limitations": [
+            "Offline workload; prior network baseline is not this matched comparison",
+            "Custom combat disabled; native vanilla may chase/fight",
+            "Custom is64 logical agents/512 native parts; vanilla64 native infected",
+            "C2/C3 continuous same population; not independent respawn repeats",
+            "Camera and player input recipe matched; actual trajectories differ after collisions",
+            "Clock slopes measure CPU animation callbacks, not visible pose cadence",
+            "Inclusive elapsed scope timings overlap and do not establish causal CPU fractions",
+            "No observer-OFF control, native skinning/render/GC self-time, perentity LOD or temporal video measurement"
+          ]
+        },
+        {
+          "sourceRunId": "matched-flat-pursuit-20261102/offline-main2",
+          "buildId": "729F3B883BAC5951ACF011B706A93E3437A4A9031D1E9A205F830CD911242EBF",
+          "executionMode": "offline_single_client",
+          "phases": [
+            {
+              "phase": 0,
+              "kind": "empty",
+              "seconds": 12.971471,
+              "rows": 648,
+              "qpcStart": 10598934100896,
+              "qpcEnd": 10599063815606,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 648,
+                  "p50": 20.0073,
+                  "p95": 23.834969999999988,
+                  "p99": 30.93126999999994,
+                  "minimum": 9.1322,
+                  "maximum": 39.3953
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 648,
+                  "p50": 20.0057,
+                  "p95": 20.08509,
+                  "p99": 20.104221,
+                  "minimum": 19.7838,
+                  "maximum": 20.1771
+                },
+                "MsCPUBusy": {
+                  "samples": 648,
+                  "p50": 5.62715,
+                  "p95": 12.225064999999999,
+                  "p99": 16.358568999999996,
+                  "minimum": 4.2727,
+                  "maximum": 25.7712
+                },
+                "MsCPUWait": {
+                  "samples": 648,
+                  "p50": 14.393049999999999,
+                  "p95": 15.56493,
+                  "p99": 16.48251299999999,
+                  "minimum": 0.1577,
+                  "maximum": 19.6263
+                },
+                "MsGPUBusy": {
+                  "samples": 648,
+                  "p50": 1.53635,
+                  "p95": 1.72596,
+                  "p99": 1.844595,
+                  "minimum": 1.228,
+                  "maximum": 2.1594
+                },
+                "MsGPUWait": {
+                  "samples": 648,
+                  "p50": 18.466250000000002,
+                  "p95": 18.856225000000002,
+                  "p99": 21.421714999999995,
+                  "minimum": 9.2304,
+                  "maximum": 24.4264
+                },
+                "MsUntilDisplayed": {
+                  "samples": 648,
+                  "p50": 52.0457,
+                  "p95": 53.18743,
+                  "p99": 53.341038000000005,
+                  "minimum": 27.863,
+                  "maximum": 53.4883
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 1241.4612150708938,
+              "scriptDtMs": {
+                "samples": 654,
+                "p50": 20.0,
+                "p95": 23.0,
+                "p99": 25.0,
+                "minimum": 11.0,
+                "maximum": 29.0
+              },
+              "appActiveFraction": 1.0
+            },
+            {
+              "phase": 1,
+              "kind": "vanilla64",
+              "seconds": 33.0592657,
+              "rows": 1652,
+              "qpcStart": 10599183815606,
+              "qpcEnd": 10599514408263,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 1652,
+                  "p50": 19.9167,
+                  "p95": 24.619445,
+                  "p99": 29.275506,
+                  "minimum": 7.4873,
+                  "maximum": 43.6401
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 1652,
+                  "p50": 20.0055,
+                  "p95": 20.08669,
+                  "p99": 20.121043,
+                  "minimum": 19.7779,
+                  "maximum": 20.2694
+                },
+                "MsCPUBusy": {
+                  "samples": 1652,
+                  "p50": 9.11575,
+                  "p95": 13.342389999999995,
+                  "p99": 21.816284000000003,
+                  "minimum": 6.3331,
+                  "maximum": 34.7593
+                },
+                "MsCPUWait": {
+                  "samples": 1652,
+                  "p50": 10.88815,
+                  "p95": 13.147855,
+                  "p99": 13.520667000000001,
+                  "minimum": 0.1004,
+                  "maximum": 15.3976
+                },
+                "MsGPUBusy": {
+                  "samples": 1652,
+                  "p50": 1.69685,
+                  "p95": 1.9258699999999997,
+                  "p99": 2.034391,
+                  "minimum": 1.3372,
+                  "maximum": 2.251
+                },
+                "MsGPUWait": {
+                  "samples": 1652,
+                  "p50": 18.2996,
+                  "p95": 18.644535,
+                  "p99": 21.317544000000005,
+                  "minimum": 5.3148,
+                  "maximum": 32.9308
+                },
+                "MsUntilDisplayed": {
+                  "samples": 1652,
+                  "p50": 48.52935,
+                  "p95": 50.809995,
+                  "p99": 51.106994,
+                  "minimum": 20.4692,
+                  "maximum": 51.3229
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 1203.4271704704736,
+              "scriptDtMs": {
+                "samples": 1617,
+                "p50": 20.0,
+                "p95": 22.0,
+                "p99": 24.0,
+                "minimum": 8.0,
+                "maximum": 30.0
+              },
+              "appActiveFraction": 1.0
+            },
+            {
+              "phase": 2,
+              "kind": "custom64_fresh",
+              "seconds": 33.1057037,
+              "rows": 890,
+              "qpcStart": 10599634408263,
+              "qpcEnd": 10599965465300,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 890,
+                  "p50": 40.004549999999995,
+                  "p95": 67.87927499999999,
+                  "p99": 75.879343,
+                  "minimum": 12.0423,
+                  "maximum": 106.6451
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 890,
+                  "p50": 39.979,
+                  "p95": 60.05684,
+                  "p99": 80.042363,
+                  "minimum": 19.948,
+                  "maximum": 100.0215
+                },
+                "MsCPUBusy": {
+                  "samples": 890,
+                  "p50": 39.40565,
+                  "p95": 67.370085,
+                  "p99": 74.94524100000001,
+                  "minimum": 11.9176,
+                  "maximum": 106.4813
+                },
+                "MsCPUWait": {
+                  "samples": 890,
+                  "p50": 0.12905,
+                  "p95": 4.698189999999996,
+                  "p99": 8.590482000000003,
+                  "minimum": 0.1042,
+                  "maximum": 10.2163
+                },
+                "MsGPUBusy": {
+                  "samples": 890,
+                  "p50": 2.6616,
+                  "p95": 9.368934999999999,
+                  "p99": 13.148389000000002,
+                  "minimum": 2.3553,
+                  "maximum": 16.5941
+                },
+                "MsGPUWait": {
+                  "samples": 890,
+                  "p50": 36.009299999999996,
+                  "p95": 60.02859999999998,
+                  "p99": 70.51659300000001,
+                  "minimum": 7.1627,
+                  "maximum": 98.4322
+                },
+                "MsUntilDisplayed": {
+                  "samples": 890,
+                  "p50": 33.5651,
+                  "p95": 42.340055,
+                  "p99": 46.242294,
+                  "minimum": 20.5821,
+                  "maximum": 47.925
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 1475.0264355159961,
+              "scriptDtMs": {
+                "samples": 889,
+                "p50": 40.0,
+                "p95": 66.59999999999991,
+                "p99": 74.0,
+                "minimum": 12.0,
+                "maximum": 107.0
+              },
+              "appActiveFraction": 1.0
+            },
+            {
+              "phase": 3,
+              "kind": "custom64_continued",
+              "seconds": 32.9551374,
+              "rows": 854,
+              "qpcStart": 10600085465300,
+              "qpcEnd": 10600415016674,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 854,
+                  "p50": 39.5099,
+                  "p95": 71.78241,
+                  "p99": 78.93172100000001,
+                  "minimum": 11.2693,
+                  "maximum": 105.30040000000001
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 854,
+                  "p50": 39.98375,
+                  "p95": 79.96469499999999,
+                  "p99": 80.050893,
+                  "minimum": 19.9144,
+                  "maximum": 120.00120000000001
+                },
+                "MsCPUBusy": {
+                  "samples": 854,
+                  "p50": 38.89405,
+                  "p95": 69.98111999999999,
+                  "p99": 78.469255,
+                  "minimum": 11.1468,
+                  "maximum": 105.1654
+                },
+                "MsCPUWait": {
+                  "samples": 854,
+                  "p50": 0.12840000000000001,
+                  "p95": 5.14734,
+                  "p99": 8.917073000000002,
+                  "minimum": 0.1024,
+                  "maximum": 10.1468
+                },
+                "MsGPUBusy": {
+                  "samples": 854,
+                  "p50": 2.86265,
+                  "p95": 8.242659999999994,
+                  "p99": 10.926575000000003,
+                  "minimum": 2.4248,
+                  "maximum": 15.0628
+                },
+                "MsGPUWait": {
+                  "samples": 854,
+                  "p50": 35.48835,
+                  "p95": 65.75093499999994,
+                  "p99": 75.32089600000002,
+                  "minimum": 3.4536,
+                  "maximum": 102.1043
+                },
+                "MsUntilDisplayed": {
+                  "samples": 854,
+                  "p50": 32.5563,
+                  "p95": 42.744429999999994,
+                  "p99": 46.521729,
+                  "minimum": 20.3279,
+                  "maximum": 47.9644
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 1500.7081507210482,
+              "scriptDtMs": {
+                "samples": 846,
+                "p50": 39.0,
+                "p95": 70.0,
+                "p99": 78.0,
+                "minimum": 12.0,
+                "maximum": 106.0
+              },
+              "appActiveFraction": 1.0
+            },
+            {
+              "phase": 4,
+              "kind": "vanilla64_repeat",
+              "seconds": 33.0,
+              "rows": 1649,
+              "qpcStart": 10600535016674,
+              "qpcEnd": 10600865016674,
+              "metricsMs": {
+                "MsBetweenPresents": {
+                  "samples": 1649,
+                  "p50": 19.8864,
+                  "p95": 24.171919999999993,
+                  "p99": 26.495835999999997,
+                  "minimum": 7.6974,
+                  "maximum": 34.2808
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 1649,
+                  "p50": 20.0059,
+                  "p95": 20.0917,
+                  "p99": 20.116008,
+                  "minimum": 19.8305,
+                  "maximum": 20.1546
+                },
+                "MsCPUBusy": {
+                  "samples": 1649,
+                  "p50": 8.975,
+                  "p95": 12.591919999999995,
+                  "p99": 14.852495999999999,
+                  "minimum": 6.3464,
+                  "maximum": 23.174
+                },
+                "MsCPUWait": {
+                  "samples": 1649,
+                  "p50": 11.0156,
+                  "p95": 13.169459999999999,
+                  "p99": 13.459344,
+                  "minimum": 0.1147,
+                  "maximum": 14.687
+                },
+                "MsGPUBusy": {
+                  "samples": 1649,
+                  "p50": 1.6797,
+                  "p95": 1.9151,
+                  "p99": 2.017036,
+                  "minimum": 1.3325,
+                  "maximum": 2.1811
+                },
+                "MsGPUWait": {
+                  "samples": 1649,
+                  "p50": 18.3109,
+                  "p95": 18.56802,
+                  "p99": 18.784164,
+                  "minimum": 12.157,
+                  "maximum": 21.6337
+                },
+                "MsUntilDisplayed": {
+                  "samples": 1649,
+                  "p50": 48.6875,
+                  "p95": 50.83252,
+                  "p99": 51.100968,
+                  "minimum": 31.9691,
+                  "maximum": 51.2903
+                }
+              },
+              "clientCpuMillisecondsPerWallSecond": 1170.206602861895,
+              "scriptDtMs": {
+                "samples": 1607,
+                "p50": 20.0,
+                "p95": 22.0,
+                "p99": 23.0,
+                "minimum": 14.0,
+                "maximum": 24.0
+              },
+              "appActiveFraction": 1.0
+            }
+          ],
+          "agents": {
+            "1": {
+              "rows": 8064,
+              "logicalAgents": 64,
+              "everTarget": 64,
+              "targetRowFraction": 1.0,
+              "observedSampleHz": 3.84513636391601,
+              "movedMoreThan2m": 64,
+              "minimumPeakMovementMeters": 17.7275,
+              "deadRows": 0,
+              "chaseFightRowFraction": 1.0
+            },
+            "4": {
+              "rows": 8064,
+              "logicalAgents": 64,
+              "everTarget": 64,
+              "targetRowFraction": 1.0,
+              "observedSampleHz": 3.84449775481331,
+              "movedMoreThan2m": 64,
+              "minimumPeakMovementMeters": 18.4443,
+              "deadRows": 0,
+              "chaseFightRowFraction": 1.0
+            },
+            "2": {
+              "rows": 7744,
+              "logicalAgents": 64,
+              "everTarget": 64,
+              "targetRowFraction": 1.0,
+              "observedSampleHz": 3.715285302950555,
+              "movedMoreThan2m": 64,
+              "minimumPeakMovementMeters": 70.3149,
+              "followRowFraction": 1.0,
+              "nativePartsPerLogicalAgent": [
+                8
+              ],
+              "nativeSecondsPerGameSecond": {
+                "samples": 64,
+                "p50": 0.756983188334004,
+                "p95": 0.756983188334004,
+                "p99": 0.756983188334004,
+                "minimum": 0.756983188334004,
+                "maximum": 0.756983188334004
+              },
+              "leaderAnimUpdatesPerGameSecond": {
+                "samples": 64,
+                "p50": 15.13978760952351,
+                "p95": 15.13978760952351,
+                "p99": 15.13978760952351,
+                "minimum": 15.13978760952351,
+                "maximum": 15.13978760952351
+              }
+            },
+            "3": {
+              "rows": 7680,
+              "logicalAgents": 64,
+              "everTarget": 64,
+              "targetRowFraction": 1.0,
+              "observedSampleHz": 3.655689358564759,
+              "movedMoreThan2m": 64,
+              "minimumPeakMovementMeters": 153.24,
+              "followRowFraction": 1.0,
+              "nativePartsPerLogicalAgent": [
+                8
+              ],
+              "nativeSecondsPerGameSecond": {
+                "samples": 64,
+                "p50": 0.7403416072745148,
+                "p95": 0.7403416072745148,
+                "p99": 0.7403416072745148,
+                "minimum": 0.7403416072745148,
+                "maximum": 0.7403416072745148
+              },
+              "leaderAnimUpdatesPerGameSecond": {
+                "samples": 64,
+                "p50": 14.807077906119444,
+                "p95": 14.807077906119444,
+                "p99": 14.807077906119444,
+                "minimum": 14.807077906119444,
+                "maximum": 14.807077906119444
+              }
+            }
+          },
+          "customScopes": {
+            "2": {
+              "seconds": 32.29900000000001,
+              "inclusiveElapsedEquivalentMsPerGameSecond": {
+                "updateTicks": 285.5062970896933,
+                "commitTicks": 26.243076371086744,
+                "perceptionTicks": 58.512544317562316,
+                "socialTicks": 63.77643193916267,
+                "pursuitTicks": 88.40882927620238,
+                "crowdTicks": 45.07331161537601,
+                "staticMapTicks": 1.190401848712378,
+                "driveTicks": 175.40003337085824,
+                "contactTicks": 209.32518088893104,
+                "boneTicks": 9.220777156336839,
+                "footTicks": 114.99793039925576,
+                "worldTicks": 72.49150511651031
+              },
+              "callsPerGameSecond": {
+                "solves": 1937.6760890430041,
+                "footRays": 19376.76089043004,
+                "worldSweeps": 7750.704356172017,
+                "positionWrites": 13822.842812470972,
+                "orientationWrites": 13819.87058422861,
+                "animUpdates": 7751.571256076038
+              },
+              "clockCalibrationTicksPerGameSecond": 10010510.262913987,
+              "notCpuSelfTime": true,
+              "overlappingScopesDoNotSum": true
+            },
+            "3": {
+              "seconds": 32.55199999999999,
+              "inclusiveElapsedEquivalentMsPerGameSecond": {
+                "updateTicks": 301.21327684316094,
+                "commitTicks": 25.454016390321318,
+                "perceptionTicks": 58.19669808037765,
+                "socialTicks": 63.254051629265426,
+                "pursuitTicks": 108.7291118838456,
+                "crowdTicks": 42.1334629976725,
+                "staticMapTicks": 1.2056387156909176,
+                "driveTicks": 161.0638216456035,
+                "contactTicks": 190.27065214692897,
+                "boneTicks": 8.988555986224949,
+                "footTicks": 105.5160966134054,
+                "worldTicks": 63.61279230272718
+              },
+              "callsPerGameSecond": {
+                "solves": 1895.1523715900717,
+                "footRays": 18951.523715900716,
+                "worldSweeps": 7580.609486360287,
+                "positionWrites": 13259.27746375031,
+                "orientationWrites": 13253.379208650776,
+                "animUpdates": 7581.223887933155
+              },
+              "clockCalibrationTicksPerGameSecond": 10010510.262913987,
+              "notCpuSelfTime": true,
+              "overlappingScopesDoNotSum": true
+            }
+          },
+          "tickCalibration": {
+            "rates": [
+              10018033.814126275,
+              9990086.578451585,
+              10028509.25257016,
+              10002986.7117017
+            ],
+            "median": 10010510.262913987,
+            "spread": 0.0038460801932840294
+          },
+          "telemetry": {
+            "presentRows": 8179,
+            "singleSwapChain": true,
+            "presentIdentityMaxErrorMs": 5.684341886080802e-14,
+            "captureSpanSeconds": 205.0628637
+          },
+          "errors": {
+            "compile": false,
+            "vm": false,
+            "scriptErrorLineCount": 11,
+            "normalTermination": true,
+            "customRetired": true,
+            "shutdownLeakWarnings": [
+              {
+                "class": "BunkerBroadcastManager",
+                "instances": 1
+              },
+              {
+                "class": "PGFilter",
+                "instances": 64
+              }
+            ],
+            "memoryCleanupAccepted": false
+          },
+          "visualAccepted": false,
+          "performanceAccepted": false,
+          "nativeAnimationSelfTime": "not_measured",
+          "limitations": [
+            "Offline workload; prior network baseline is not this matched comparison",
+            "Custom combat disabled; native vanilla may chase/fight",
+            "Custom is64 logical agents/512 native parts; vanilla64 native infected",
+            "C2/C3 continuous same population; not independent respawn repeats",
+            "Camera and player input recipe matched; actual trajectories differ after collisions",
+            "Clock slopes measure CPU animation callbacks, not visible pose cadence",
+            "Inclusive elapsed scope timings overlap and do not establish causal CPU fractions",
+            "No observer-OFF control, native skinning/render/GC self-time, perentity LOD or temporal video measurement"
+          ]
+        }
+      ],
+      "assetInventory": {
+        "vanilla": {
+          "skeleton": "hermit_newbindpose.xob",
+          "declaredBones": 95,
+          "instancesPerLogicalAgent": 1,
+          "sourceSha256": "278ade33666d9ead1d04c8a825a118a85c9f837bb13236f268ef4a6e3d726481",
+          "installedResourceProof": {
+            "pboSha256": "1bd5936066bda8e59cdb4b88a89a9592b81d1650bc7684e2a157d7ede6d292c3",
+            "member": "skeletons.anim.xml",
+            "memberSha256": "71381c758379e857b83ff29d480b7a0bb9a3189a9442c0e475dd1f3fc6ce0b8a",
+            "declaredBones": 95,
+            "extractedSourceMatches": false,
+            "correction": "Prior preliminary proof hard-coded source match incorrectly. Actual bytes differ;95bone count independently parsed from installed uncompressed member. This record supersedes source-match field."
+          }
+        },
+        "custom": {
+          "instancesPerLogicalAgent": 8,
+          "declaredBonesTotal": 535,
+          "parts": [
+            {
+              "part": 0,
+              "declaredBones": 65,
+              "resource": "dg_subset_p0.xob",
+              "packedSha256": "2b836e0c1c131c856e7e5407ec8011d2b135eac0042ce11f7ec2cd80d4c0ed28",
+              "sourceCompiledMatchesPacked": true
+            },
+            {
+              "part": 1,
+              "declaredBones": 69,
+              "resource": "dg_subset_p1.xob",
+              "packedSha256": "9b1069c6c382322adb554e5314723dcacaf2a9e49204e735a63e6386edbf2c46",
+              "sourceCompiledMatchesPacked": true
+            },
+            {
+              "part": 2,
+              "declaredBones": 65,
+              "resource": "dg_subset_p2.xob",
+              "packedSha256": "deb263cd22281ed79255039d42dfdaa8d749245b0186f31f763966ec6a060c0e",
+              "sourceCompiledMatchesPacked": true
+            },
+            {
+              "part": 3,
+              "declaredBones": 68,
+              "resource": "dg_subset_p3.xob",
+              "packedSha256": "8849f82620a6634dd3d706c1d7db24e21e4ab755f09a03d0c97d548af0bcddd3",
+              "sourceCompiledMatchesPacked": true
+            },
+            {
+              "part": 4,
+              "declaredBones": 71,
+              "resource": "dg_subset_p4.xob",
+              "packedSha256": "e8326b36f19014dbd42f287e5e7b2367adbf4032877a95d6b990303a37036001",
+              "sourceCompiledMatchesPacked": true
+            },
+            {
+              "part": 5,
+              "declaredBones": 73,
+              "resource": "dg_subset_p5.xob",
+              "packedSha256": "4c4fac14f531ed0298b8d8dcce9e5e3c0ab51ac420b3ba9e6356ac7521cdb320",
+              "sourceCompiledMatchesPacked": true
+            },
+            {
+              "part": 6,
+              "declaredBones": 74,
+              "resource": "dg_subset_p6.xob",
+              "packedSha256": "0f2269fc533c6c3004eba9080452e84cb8341244f38675ec345886d46cb483d2",
+              "sourceCompiledMatchesPacked": true
+            },
+            {
+              "part": 7,
+              "declaredBones": 50,
+              "resource": "dg_subset_p7.xob",
+              "packedSha256": "93e81f132878171608cc0f8eb469f1f93ae88bac3dc44cc4e9e63ebbca5874a6",
+              "sourceCompiledMatchesPacked": true
+            }
+          ],
+          "manifestSha256": "47b83052276fa84ad741b962f6578f8b7abb9a311eaa67adc3ac82049b8b928c"
+        },
+        "limitations": [
+          "Static declared skeleton count; not actual perframe evaluated/skinned bones or active LOD",
+          "Source/packed resource matches where indicated; full runtime consumer identity still separate",
+          "Counts and file bytes are not measured performance ratios"
+        ]
+      },
+      "nativeBoundary": {
+        "binarySha256": "a500be804ffed5cde369337aeb6ab477ef5ee0b5015764be2b1953c85ec3060d",
+        "primaryContiguousPrefixes": [
+          369,
+          369
+        ],
+        "equalOrdinalTargets": 358,
+        "totalAbiProven": false,
+        "nativeTimingMeasured": false,
+        "knownExactBinaryMapReused": "animation-diag-map-20261101-1720",
+        "rea": {
+          "targetSha256": "a500be804ffed5cde369337aeb6ab477ef5ee0b5015764be2b1953c85ec3060d",
+          "reaOpenIdentityVerified": true,
+          "reaProvider": "ghidra",
+          "ghidraFunctionAnalysisStarted": false,
+          "objdumpProbe": {
+            "operation": "symbols",
+            "available": false,
+            "code": "capability_unavailable",
+            "reason": "Unable to run configured command (ERR_REA_WINDOWS_NATIVE)"
+          },
+          "reuse": "Existing exact-binary animation maps; bounded PE RTTI parser used for class primary tables",
+          "nativeSelfTimeMeasured": false,
+          "sessionClosed": true
+        }
+      },
+      "scriptBoundaries": {
+        "pboSha256": "ff0ad7ee5297c75da74364569a830bc0223315c0131579a0c11a7875d64cb2e2",
+        "members": [
+          {
+            "member": "3_Game\\Entities\\DayZAnimal.c",
+            "sha256": "c1600a8c4c1bd112245024c9dd3a4ce90e519e0441b24ab06af715c361f896e8",
+            "extractedSourceMatches": false,
+            "selectedBoundaries": [
+              {
+                "line": 32,
+                "text": "proto native void SetAnimationInstanceByName(string animation_instance_name, int instance_uuid, float duration);"
+              },
+              {
+                "line": 38,
+                "text": "proto native void UpdateSimulationPrecision(int simLOD);"
+              },
+              {
+                "line": 53,
+                "text": "proto native \tint \t\tGetBoneIndexByName(string pBoneName);"
+              },
+              {
+                "line": 90,
+                "text": "pivot = GetBoneIndexByName(CachedObjectsArrays.ARRAY_STRING.Get(i));"
+              },
+              {
+                "line": 627,
+                "text": "//! this terminates command script and shows CommandHandler(  ... pCurrentCommandFinished == true );"
+              },
+              {
+                "line": 667,
+                "text": "proto native void StartCommand_Move();"
+              },
+              {
+                "line": 669,
+                "text": "proto native void StartCommand_Attack();"
+              },
+              {
+                "line": 722,
+                "text": "void CommandHandler(float dt, int currentCommandID, bool currentCommandFinished)"
+              },
+              {
+                "line": 744,
+                "text": "StartCommand_Move();"
+              },
+              {
+                "line": 774,
+                "text": "StartCommand_Attack();"
+              }
+            ],
+            "interpretation": "Native declarations and script call sites only; not measured internal native cost",
+            "extractedCanonicalLinesMatch": false
+          },
+          {
+            "member": "3_Game\\Entities\\DayZInfected.c",
+            "sha256": "c864185749d790b3cc2719df52df443e917dda53a0796b3b742e64b990169e8f",
+            "extractedSourceMatches": false,
+            "selectedBoundaries": [
+              {
+                "line": 76,
+                "text": "//! this terminates command script and shows CommandHandler(  ... pCurrentCommandFinished == true );"
+              },
+              {
+                "line": 108,
+                "text": "proto native DayZInfectedCommandMove StartCommand_Move();"
+              },
+              {
+                "line": 109,
+                "text": "proto native DayZInfectedCommandVault StartCommand_Vault(int pType);"
+              },
+              {
+                "line": 112,
+                "text": "proto native DayZInfectedCommandAttack StartCommand_Attack(EntityAI pTarget, int pType, float pSubtype);"
+              }
+            ],
+            "interpretation": "Native declarations and script call sites only; not measured internal native cost",
+            "extractedCanonicalLinesMatch": false
+          },
+          {
+            "member": "4_World\\Entities\\Creatures\\Infected\\ZombieBase.c",
+            "sha256": "c67ec8fdaa8db1fddab20fb8ed0bdeffa0e8785566ee869f465e97803223660c",
+            "extractedSourceMatches": false,
+            "selectedBoundaries": [
+              {
+                "line": 198,
+                "text": "void CommandHandler(float pDt, int pCurrentCommandID, bool pCurrentCommandFinished)"
+              },
+              {
+                "line": 221,
+                "text": "HandleMove(pCurrentCommandID);"
+              },
+              {
+                "line": 222,
+                "text": "HandleOrientation(pDt,pCurrentCommandID);"
+              },
+              {
+                "line": 228,
+                "text": "DayZInfectedCommandMove moveCommand = StartCommand_Move();"
+              },
+              {
+                "line": 289,
+                "text": "infectedDebug.CommandHandler(this);"
+              },
+              {
+                "line": 297,
+                "text": "void HandleMove(int pCurrentCommandID)"
+              },
+              {
+                "line": 314,
+                "text": "void HandleOrientation(float pDt, int pCurrentCommandID)"
+              },
+              {
+                "line": 427,
+                "text": "StartCommand_Vault(-1);"
+              },
+              {
+                "line": 438,
+                "text": "StartCommand_Vault(vaultType);"
+              },
+              {
+                "line": 715,
+                "text": "StartCommand_Attack(m_ActualTarget, m_ActualAttackType.m_Type, m_ActualAttackType.m_Subtype);"
+              },
+              {
+                "line": 760,
+                "text": "StartCommand_Attack(m_ActualTarget, m_ActualAttackType.m_Type, m_ActualAttackType.m_Subtype);"
+              },
+              {
+                "line": 1056,
+                "text": "return GetBonePositionWS( GetBoneIndexByName( \"spine3\" ) );"
+              },
+              {
+                "line": 1115,
+                "text": "pivot = GetBoneIndexByName(CachedObjectsArrays.ARRAY_STRING.Get(i));"
+              }
+            ],
+            "interpretation": "Native declarations and script call sites only; not measured internal native cost",
+            "extractedCanonicalLinesMatch": false
+          }
+        ]
+      },
+      "customCallSites": [
+        {
+          "pboSha256": "453d6a9e688d7bf14c5b98c305dd5a45200ec52156949c10691839b43c58bc9a",
+          "member": "Scripts\\4_World\\DGBNativeCrowd.c",
+          "memberSha256": "8b3145c67444b5185e4a44dcb051dc118405d9cb2268c752b3abc65daeeaddf9",
+          "selectedCallSites": [
+            {
+              "line": 91,
+              "text": "bool Displace(DGBNativeGroundBody body,vector displacement,float dt)"
+            },
+            {
+              "line": 122,
+              "text": "if(DayZPhysics.SphereCastBullet(start+Vector(0,height,0),next+Vector(0,height,0),0.23,DGBGroundAgent.Walls(),body.Leader,hit,point,normal,fraction))"
+            },
+            {
+              "line": 132,
+              "text": "if(!body.SolveContacts(next,body.Agent.Heading,lift,contacts,body.Lift))"
+            },
+            {
+              "line": 186,
+              "text": "void Update(float timeslice)"
+            }
+          ]
+        },
+        {
+          "pboSha256": "453d6a9e688d7bf14c5b98c305dd5a45200ec52156949c10691839b43c58bc9a",
+          "member": "Scripts\\4_World\\DGBNativeGround.c",
+          "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82",
+          "selectedCallSites": [
+            {
+              "line": 258,
+              "text": "if(!DayZPhysics.RayCastBullet(origin+\"0 0.3 0\",origin+\"0 -1.2 0\",DGBGroundAgent.Floors(),Leader,floorObject,floorPoint,floorNormal,floorFraction))return false;"
+            },
+            {
+              "line": 264,
+              "text": "bool SolveContacts(vector anchor,float heading,out float proposedLift,out array<vector> points,float minimumLift=0)"
+            },
+            {
+              "line": 281,
+              "text": "bool floorFound=DayZPhysics.RayCastBullet(rayStart,target+\"0 -1.2 0\",DGBGroundAgent.Floors(),Leader,floorObject,floorPoint,floorNormal,floorFraction);"
+            },
+            {
+              "line": 284,
+              "text": "bool previousFloorFound=DayZPhysics.RayCastBullet(previousRay,previous+\"0 -1.2 0\",DGBGroundAgent.Floors(),Leader,previousFloorObject,previousFloorPoint,previousFloorNormal,previousFloorFraction);"
+            },
+            {
+              "line": 312,
+              "text": "bool found=DayZPhysics.SphereCastBullet(begin,end,0.5,DGBGroundAgent.Floors(),Leader,hit,point,normal,fraction);"
+            },
+            {
+              "line": 333,
+              "text": "bool found=DayZPhysics.SphereCastBullet(begin,end,0.5,DGBGroundAgent.Floors(),Leader,hit,point,normal,fraction);"
+            },
+            {
+              "line": 378,
+              "text": "centerTested=true;ContactFootRays++;"
+            },
+            {
+              "line": 379,
+              "text": "centerFound=DayZPhysics.RayCastBullet(raw[foot]+\"0 0.3 0\",raw[foot]+\"0 -1.2 0\",DGBGroundAgent.Floors(),Leader,centerObject,centerPoint,centerNormal,centerFraction);"
+            },
+            {
+              "line": 394,
+              "text": "ContactFootRays++;"
+            },
+            {
+              "line": 395,
+              "text": "if(DayZPhysics.RayCastBullet(origin+\"0 0.3 0\",origin+\"0 -1.2 0\",DGBGroundAgent.Floors(),Leader,hit,point,normal,fraction) && normal[1]>=0.65)"
+            },
+            {
+              "line": 431,
+              "text": "JointSweeps++;"
+            },
+            {
+              "line": 433,
+              "text": "bool worldContact=DayZPhysics.SphereCastBullet(previous,target,Radii[joint],DGBGroundAgent.Walls(),Leader,collision,contact,normalHit,hitFraction);"
+            },
+            {
+              "line": 443,
+              "text": "bool hasFloor=DayZPhysics.RayCastBullet(target+\"0 0.3 0\",target+\"0 -1.2 0\",DGBGroundAgent.Floors(),Leader,floorObject,floorPoint,floorNormal,floorFraction);"
+            },
+            {
+              "line": 446,
+              "text": "hasFloor=DayZPhysics.RayCastBullet(contact+\"0 0.3 0\",contact+\"0 -0.3 0\",DGBGroundAgent.Floors(),Leader,floorObject,floorPoint,floorNormal,floorFraction);"
+            },
+            {
+              "line": 716,
+              "text": "void Drive(float dt,vector delta,bool available)"
+            },
+            {
+              "line": 760,
+              "text": "if(SolveContacts(Agent.Position,heading,lift,points))"
+            },
+            {
+              "line": 765,
+              "text": "void DriveGround(float dt,vector delta,bool available)"
+            },
+            {
+              "line": 827,
+              "text": "if(!SolveContacts(Agent.Position,Agent.Heading,proposedLift,points))"
+            },
+            {
+              "line": 1295,
+              "text": "void Update()"
+            }
+          ]
+        },
+        {
+          "pboSha256": "93507dbe9f69c9f41f67178fb33481d640e7da3fc245719ddba3d49f4ce18021",
+          "member": "Scripts\\4_World\\DGSubsetDriveAttribution.c",
+          "memberSha256": "ef33d7ee1851344baefd7099eb5f487127de954e6333e3996a1ace38c205800b",
+          "selectedCallSites": [
+            {
+              "line": 79,
+              "text": "override void Drive(float dt,vector delta,bool available)"
+            },
+            {
+              "line": 102,
+              "text": "override void Drive(float dt,vector delta,bool available)"
+            }
+          ]
+        },
+        {
+          "pboSha256": "93507dbe9f69c9f41f67178fb33481d640e7da3fc245719ddba3d49f4ce18021",
+          "member": "Scripts\\4_World\\DGSubsetIntegration.c",
+          "memberSha256": "f7c0db0147030612b48a485fbb8e2e0a54ec5de371c9a66410c99e44cc182d98",
+          "selectedCallSites": []
+        },
+        {
+          "pboSha256": "93507dbe9f69c9f41f67178fb33481d640e7da3fc245719ddba3d49f4ce18021",
+          "member": "Scripts\\4_World\\DGSubsetMotionContracts.c",
+          "memberSha256": "9a1a930eaf9900264af15f5b7e3cbb113fe391358340db13358b9992e0559109",
+          "selectedCallSites": [
+            {
+              "line": 6,
+              "text": "override bool Displace(DGBNativeGroundBody body,vector displacement,float dt)"
+            },
+            {
+              "line": 121,
+              "text": "else if(!Body.SolveContacts(Body.Agent.Position,Body.Agent.Heading,groundLift,groundContacts))groundRejection=\"CONTACT:\"+Body.Reason;"
+            },
+            {
+              "line": 141,
+              "text": "else if(!Body.SolveContacts(Body.Agent.Position,Body.Agent.Heading,lift,contacts))rejection=\"CONTACT:\"+Body.Reason;"
+            },
+            {
+              "line": 306,
+              "text": "if(LandingSpace(support,verified,false) && Body.SolveContacts(support,Body.Agent.Heading,verifiedLift,verifiedPoints))"
+            }
+          ]
+        },
+        {
+          "pboSha256": "93507dbe9f69c9f41f67178fb33481d640e7da3fc245719ddba3d49f4ce18021",
+          "member": "Scripts\\4_World\\DGSubsetZZZEntryOwnership.c",
+          "memberSha256": "29a529cd089193c9c28a0eb1d667e48cdd2df7329a8993bf663a28512301f7f7",
+          "selectedCallSites": [
+            {
+              "line": 62,
+              "text": "override void Drive(float dt,vector delta,bool available)"
+            }
+          ]
+        },
+        {
+          "pboSha256": "93507dbe9f69c9f41f67178fb33481d640e7da3fc245719ddba3d49f4ce18021",
+          "member": "Scripts\\4_World\\DGSubsetZZZZEntryPreparation.c",
+          "memberSha256": "1a844d917583e63220dce0ddc8c40a90f7eb8ebb8a28a11b2ade2cd4d9c682df",
+          "selectedCallSites": [
+            {
+              "line": 69,
+              "text": "override bool Displace(DGBNativeGroundBody body,vector displacement,float dt)"
+            }
+          ]
+        },
+        {
+          "pboSha256": "93507dbe9f69c9f41f67178fb33481d640e7da3fc245719ddba3d49f4ce18021",
+          "member": "Scripts\\4_World\\DGSubsetZZZZZContactInputs.c",
+          "memberSha256": "dd8a8b3b89a33b9c933f71ad414f6c141eb666dcafddd970119ab85acb523b13",
+          "selectedCallSites": [
+            {
+              "line": 105,
+              "text": "centerTested=true;ContactFootRays++;"
+            },
+            {
+              "line": 106,
+              "text": "centerFound=DayZPhysics.RayCastBullet(raw[foot]+\"0 0.3 0\",raw[foot]+\"0 -1.2 0\",DGBGroundAgent.Floors(),Leader,centerObject,centerPoint,centerNormal,centerFraction);"
+            },
+            {
+              "line": 121,
+              "text": "ContactFootRays++;"
+            },
+            {
+              "line": 122,
+              "text": "if(DayZPhysics.RayCastBullet(origin+\"0 0.3 0\",origin+\"0 -1.2 0\",DGBGroundAgent.Floors(),Leader,hit,point,normal,fraction) && normal[1]>=0.65)"
+            },
+            {
+              "line": 158,
+              "text": "JointSweeps++;"
+            },
+            {
+              "line": 160,
+              "text": "bool worldContact=DayZPhysics.SphereCastBullet(previous,target,Radii[joint],DGBGroundAgent.Walls(),Leader,collision,contact,normalHit,hitFraction);"
+            },
+            {
+              "line": 170,
+              "text": "bool hasFloor=DayZPhysics.RayCastBullet(target+\"0 0.3 0\",target+\"0 -1.2 0\",DGBGroundAgent.Floors(),Leader,floorObject,floorPoint,floorNormal,floorFraction);"
+            },
+            {
+              "line": 173,
+              "text": "hasFloor=DayZPhysics.RayCastBullet(contact+\"0 0.3 0\",contact+\"0 -0.3 0\",DGBGroundAgent.Floors(),Leader,floorObject,floorPoint,floorNormal,floorFraction);"
+            }
+          ]
+        }
+      ],
+      "verificationStatus": {
+        "functional": "flat_pursuit_observed_all_counts",
+        "diagnostic": "resource_scaling_partially_attributed",
+        "visual": "not_accepted",
+        "performance": "not_accepted",
+        "finalAcceptance": false
+      },
+      "limits": [
+        "1/8 each one independent execution; within-run windows are not independent repeats",
+        "64 reused previously verified same fixture runs, not simultaneous ambient conditions",
+        "VSync50Hz-class display and background/time drift prevent isolated perNPC CPU extraction from p95 subtraction",
+        "Process private memory includes shared resources,world,cache and allocation retention; not perNPC memory",
+        "Vanilla native support,graph,skin andGC selftime remain unmeasured",
+        "CPU callback clock is not visible animation cadence",
+        "Counters are inclusive scopes; peractor averages do not measure each individual actor distribution"
+      ]
+    },
+    "limits": [
+      "1/8 each one independent execution; within-run windows are not independent repeats",
+      "64 reused previously verified same fixture runs, not simultaneous ambient conditions",
+      "VSync50Hz-class display and background/time drift prevent isolated perNPC CPU extraction from p95 subtraction",
+      "Process private memory includes shared resources,world,cache and allocation retention; not perNPC memory",
+      "Vanilla native support,graph,skin andGC selftime remain unmeasured",
+      "CPU callback clock is not visible animation cadence",
+      "Counters are inclusive scopes; peractor averages do not measure each individual actor distribution"
+    ],
+    "next": "Caller-specific contact attribution and native-part boundary profiling with observer controls; preserve separate display-clock diagnosis",
+    "visualAccepted": false,
+    "performanceAccepted": false
+  },
+  "blockers": [
+    "1/8 each one independent execution; within-run windows are not independent repeats",
+    "64 reused previously verified same fixture runs, not simultaneous ambient conditions",
+    "VSync50Hz-class display and background/time drift prevent isolated perNPC CPU extraction from p95 subtraction",
+    "Process private memory includes shared resources,world,cache and allocation retention; not perNPC memory",
+    "Vanilla native support,graph,skin andGC selftime remain unmeasured",
+    "CPU callback clock is not visible animation cadence",
+    "Counters are inclusive scopes; peractor averages do not measure each individual actor distribution"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/per-agent-resource-20261102.md",
+      "sha256": "bba6482bbb81aaad2c792022a0500ac2aa96df6c738e1503a0769d8a344a62a9"
+    },
+    {
+      "path": "evidence/per-agent-resource-20261102.txt",
+      "sha256": "7aa4ece9df45b52d468d69d93b1f4ff861b35ba1eb391fbf85eea51c6e41760e"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

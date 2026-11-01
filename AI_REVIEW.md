@@ -1,3 +1,5 @@
+> 최신 작업: 바닐라/커스텀1·8추가 및 기존64비교. 접촉 호출량과8파트535본, 단일개체 CPU시계 손실 구분. native selftime/개체당 순수단가/시각품질 미확정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/per-agent-resource-20261102.md).
+
 > 최신 작업: 같은 평지·카메라·입력의 V64/C64 독립2회. 커스텀 전체 비용 증가 및 CPU animation 시계 손실 측정, 시각 품질/20ms 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/matched-flat-pursuit-20261102.md).
 
 > 최신 작업: 바닐라 평지 추격의 실제 CPU/GPU/Present 측정. 새2회, 두번째 sampler 약3.84Hz. VSync/표시 주사율 영향과 커스텀 조건차를 분리하며20ms/시각/animation self-time은 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/vanilla-flat-pursuit-20261102.md).

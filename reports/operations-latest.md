@@ -1,83 +1,73 @@
 ## 1. 작업 목표
 
-같은 평지·카메라·플레이어 입력 조건에서 바닐라64와 현재 검증 빌드 커스텀64의 전체 비용을 비교하고, 기존 애니메이션 시간 전달 문제와 구분한다. 최적화나 새로운 보간·물리 검사 생략은 구현하지 않는다.
+바닐라 개체당 자원 비용을 추적하고, 커스텀의 큰 비용이 단일 개체부터 나타나는지 또는 군집 밀집/호출 빈도 증가에서 나타나는지 구분한다. 전체 비용을64로 나누어 순수 개체 비용이라고 하지 않는다. 이미 수행한64실험은 해시 검증 후 재사용하고1/8만 추가한다.
 
 ## 2. 실제 수행
 
-기존 바닐라 측정 씬·입력·카메라·PresentMon 및 커스텀93507d 실행 계층을 재사용했다. 새 진단 모듈729f3b는 평지에서 기존 Director/Body/Traversal/Crowd/Pursuit를 연결하고 위치 commit과 기존 누적 카운터를 관측한다. 구조물/등반 링크를 생성하지 않는 빈 fixture를 사용한다. 알고리즘·native graph·골격·전환 duration·simulation LOD를 바꾸지 않았다. 기존3개 커스텀 PBO와 공통 observer는 해시를 대조했다.
+기존 matched-flat-pursuit 하네스/PBO/카메라/평지/플레이어 입력/205초 구간을 재사용했다. 새로운 알고리즘이나 애니메이션 속도·LOD·물리 검사 삭제를 적용하지 않았다. 새1/8씬은 개체 수 상수만 다르며 같은0→V→C→C연속→V순서다. 정상 종료/퇴역, target/이동, 프레임·CPU·GPU·script dt·기존 중첩 카운터를 검사했다. 새 모니터는 프로세스 private/working-set만 추가하며 메모리 할당/GC profiler가 아니다. ETW helper는 대상/생성시각/프로필/관리자/서명/해시를 검증했고 native hook은 없다.
 
-준비 중 예약어/복잡한 문자열 표현/지역 이름 충돌의 컴파일 거부는 별도 실패 기록으로 보존했다. 멀티플레이 pilot4에서는 커스텀 AI가 CHASE여도 nativeSeconds/animUpdates/moved 모두0이었다. 이를 성능 자료로 사용하지 않았다. 클라이언트 로컬 Animal의 실행 역할 차이 후보이며 원인을 확정하거나 강제 패치하지 않았다. 양쪽이 실제 실행되는 기존 오프라인 모드로 비교 환경을 통일했다. 이전 네트워크 바닐라 수치를 이 A/B에 섞지 않았다.
+설치 scripts.pbo의 실제 선언·명령 핸들러와 anims_cfg.pbo의 골격을 읽었다. 작업 드라이브 추출본은 바이트와 canonical lines가 설치본과 일치하지 않아 현재 근거로 인증하지 않았다. 골격 count는 설치 PBO의 uncompressed member에서95를 직접 파싱했다. 커스텀8개 compiled XOB는 현재 resource PBO와 원본 compiled file의 바이트 일치를 검증했으며 선언 본 합계535다. 처음 참고한250본 원형 skeleton3종은 실행8파트의535본과 다르므로 후자의 refined inventory를 사용한다. preliminary proof의 source-match hardcode오류는v2에서false로 정정하고 원문을 보존했다.
 
-오프라인8마리 예비 시험: 양쪽8/8이 목표를 인식하고 실제 이동, 커스텀 native callback/포즈 시계 증가,64파트 안전 퇴역과 정상 종료 확인. 이후 독립 프로필에서 같은 소스·PBO로64마리 본 시험2회를 실행했다. 각 실행은0→V64→C64→C64연속→V64이며 C2/C3는 같은 개체가 이어지는 두 창이다. 독립4회 커스텀 반복으로 부풀리지 않는다. 각 fresh stage에서 플레이어 시작 위치·heading·이동 입력 시계를 초기화하고, 카메라와 환경은 유지했다. 물리 상호작용으로 실제 궤적은 달라질 수 있다.
-
-PresentMon2.6 서명/해시, 관리자 principal, 해당 클라이언트의 식별/생성시각/프로필을 검증했다. 입력 추적·native hook·영상·덤프는 추가하지 않았다. Computer Use로 실제 씬을 확인했다. 모니터 약0.25초, entity trace 실제 약3.6~3.9Hz이며 구간별 실측 빈도를 JSON에 제공한다.
+REA로 현재 diag executable SHA를 확인했다. Ghidra는 가용하지만 전체 자동 분석을 게임 측정과 병행하지 않았다. REA objdump symbols 경로는 ERR_REA_WINDOWS_NATIVE로 거부됐고 설치/설정 변경은 하지 않았다. 기존 같은 바이너리의 animation map과 PE RTTI parser를 재사용해 Animal/Infected의 primary code-pointer prefix369개 중358개 동일 ordinal target을 확인했다. 차이가 있는slot365 두 함수만 unwind 범위 내 Capstone으로 읽었다. 완전 네이티브 함수 추적·runtime self-time을 확보했다는 뜻은 아니다. REA세션은 종료했다.
 
 ## 3. 측정 결과
 
-각 populated stage의 첫7초와 마지막5초를 제외한 약33초를 QPC로 선택했다. 경계는 host가 관찰한 약0.25초 해상도이며 exact pose/display join이 아니다. ETW 대상·단일 swapchain·QPC/Present 간격 identity·foreground·기록 완료를 검증했다. 프레임 p50/p95/p99, 표시 주기, CPU/GPU busy/wait, script dt, process CPU를 JSON에 별도 제공한다. process CPU는 여러 스레드 합계라1000ms/초를 넘을 수 있다.
+첫7초/마지막5초 제외, 약33초 창이다. 새1/8은 각각 독립1회이며 C2/C3는 같은 개체의 연속 창이다. 이전64는 독립2회다. 같은 입력 recipe지만 물리 궤적/밀집도/실행 시각·주변 부하는 완전 동일하지 않다.1/8/64를 같은 시간의 독립 반복처럼 합치지 않는다.
 
-| 실행/구간 | Present p50/p95/p99 ms | CPU busy p95 ms | GPU busy p95 ms | 전체 프로세스 CPU ms/벽시계초 |
-|---|---|---:|---:|---:|
-| 1/empty | 19.949/26.234/33.766 | 14.749 | 1.789 | 1219.17 |
-| 1/vanilla64 | 19.864/24.734/30.671 | 13.671 | 1.910 | 1236.28 |
-| 1/custom64_fresh | 39.081/67.605/79.470 | 67.426 | 9.293 | 1524.64 |
-| 1/custom64_continued | 38.573/72.382/80.037 | 71.401 | 10.006 | 1499.17 |
-| 1/vanilla64_repeat | 19.862/24.549/28.502 | 13.790 | 1.889 | 1252.32 |
-| 2/empty | 20.007/23.835/30.931 | 12.225 | 1.726 | 1241.46 |
-| 2/vanilla64 | 19.917/24.619/29.276 | 13.342 | 1.926 | 1203.43 |
-| 2/custom64_fresh | 40.005/67.879/75.879 | 67.370 | 9.369 | 1475.03 |
-| 2/custom64_continued | 39.510/71.782/78.932 | 69.981 | 8.243 | 1500.71 |
-| 2/vanilla64_repeat | 19.886/24.172/26.496 | 12.592 | 1.915 | 1170.21 |
+| 수/실행 | 바닐라 Present p95 ms | 커스텀 Present p95 ms | 바닐라 CPU busy p95 ms | 커스텀 CPU busy p95 ms | 커스텀 CPU 시계/게임초 |
+|---|---|---|---|---|---|
+|1/1|22.736~23.094|23.081~23.785|9.322~9.990|9.583~10.597|0.833~0.833|
+|8/2|22.823~23.220|25.662~27.915|8.794~10.660|12.745~14.483|0.833~0.834|
+|64/3|24.549~24.734|67.605~72.382|13.671~13.790|67.426~71.401|0.742~0.764|
+|64/4|24.172~24.619|67.879~71.782|12.592~13.342|67.370~69.981|0.740~0.757|
 
-두 독립 실행에서 V/C 모두64/64가 목표를 인식하고2m 이상 이동했다. 커스텀 분석 행은 FOLLOW,8파트/논리개체를 유지했다. 이것은 평지 추격 관찰 통과이며 도착 terminal/동시등반/혼잡 전체 회귀를 뜻하지 않는다. vanilla displacement와 custom Moved는 각각 초기점 변위와 누적 이동량이라 크기를 직접 비교하지 않는다. 사망/예외/정상 퇴역 여부는 집계와 원문 로그로 분리했다.
+각 수에서 바닐라/커스텀 모두 모든 개체가 목표를 인식하고2m이상 이동했다. 이것은 평지 추격 검증이며 전체 terminal/등반/전투 회귀가 아니다. CPU busy는 전체 프레임 busy, processCPU는 스레드 합계라1000ms/벽시계초를 넘을 수 있다.
 
-아래 값은 기존 TickCount 중첩 범위의 경과 환산 ms/게임초다. 동일 실행 stage clock으로 unsigned32 wrap을 처리해 환산률을 실측했다. 벽시계와의 근소한 양자화·경계 오차를 포함하며 CPU self-time이 아니다. 부모·자식 및 mission/PrePhys 경로가 중첩되므로 합산하지 않는다. legacy drive는 모든 실행 경로를 포괄하지 않는다.
+아래는 커스텀 집계값을 논리 개체 수 또는 실제 호출 수로 나눈 평균이다. 특정 개체의 독립 self-time이 아니며 중첩 경과 범위를 합산하지 않는다. foot 범위/ray수 역시 반복문·bookkeeping을 포함하여 RayCastBullet 자체 비용이라고 하지 않는다.
 
-| 실행/커스텀 구간 | mission update | 접촉 | 발 지지 | 월드 스윕 | 본 조회 | pursuit | perception |
-|---|---:|---:|---:|---:|---:|---:|---:|
-|1/2|289.56|201.51|110.20|69.27|9.29|92.73|58.82|
-|1/3|302.66|182.26|100.54|60.48|8.99|107.88|58.26|
-|2/2|285.51|209.33|115.00|72.49|9.22|88.41|58.51|
-|2/3|301.21|190.27|105.52|63.61|8.99|108.73|58.20|
+| 수/구간 | 평균 solve/개체·초 | solve/leader callback | 평균 ray/개체·초 | 접촉 범위 ms/개체·초 | 접촉 범위 ms/solve |
+|---|---:|---:|---:|---:|---:|
+|1/2|16.6517|1.0000|166.5168|2.1127|0.1269|
+|1/3|16.6518|1.0000|166.5182|2.0759|0.1247|
+|8/2|32.1697|1.9282|321.6966|3.1692|0.0985|
+|8/3|31.7101|1.9034|317.1011|3.0853|0.0973|
+|64/2|30.5393|1.9992|305.3927|3.1486|0.1031|
+|64/3|29.6694|2.0001|296.6943|2.8478|0.0960|
+|64/2|30.2762|1.9998|302.7619|3.2707|0.1080|
+|64/3|29.6118|1.9998|296.1176|2.9730|0.1004|
 
-정확한 호출/초와 position/orientation write 수는 customScopes에 있다. SupportSweepFast=true지만 일반 지형에서 StructureSupportBound가 성립하지 않으면 full foot 검사를 유지한다. 실제 발 지지 ray/solve=10, 관절 sweep/solve≈4는 이 경로와 일치한다. 빠른 경로 플래그만으로 검사 생략 효과를 보고하지 않는다.
-
-
-CPU 애니메이션 시계 실측(게임1초당 nativeSeconds / leader callbackHz):
-
-- 실행1/C2: 0.7638초 / 15.276Hz.
-- 실행1/C3: 0.7417초 / 14.834Hz.
-- 실행2/C2: 0.7570초 / 15.140Hz.
-- 실행2/C3: 0.7403초 / 14.807Hz.
+메모리:1실행 private median은 empty약5899MiB→V1약5912MiB→C1약5943MiB→V1복귀약5950MiB였다.8실행은 empty약5895→V8약5935→C8약5954→V8복귀약5957MiB였다. 자산 lazy load/cache/heap retention이 포함되고 population을 줄여도 돌아오지 않으므로 개체당 RAM으로 나누지 않는다. 두64실험에는 이 메모리 계측이 없어 소급 보간하지 않는다.
 
 ## 4. 원인 분석
 
-확인: 같은 오프라인 환경에서 커스텀의 프레임 및 CPU busy 지연이 반복 증가했다. GPU busy도 증가하나 CPU busy가 프레임 간격과 가까워 CPU 측 실행이 주요 비용 후보다. 이것은 특정 함수의 causal self-time 확정이 아니다. 커스텀64는512개 native Animal/애니메이션 파트이고 바닐라는64개 native infected다. 논리 개체 수가 같아도 실행/렌더 작업량은 다르다.
+확인:1마리에서는 커스텀 전체 CPU가 바닐라보다 명확하게 비싸다고 구분되지 않았다.8에서 차이가 나타나고64에서는 기존의 큰 프레임/CPU 지연이 확인된다. 절편·배경 부하·VSync·캐시·갱신 빈도가 섞여 있으므로1마리의 순수 CPU가격이나 선형 개체당 단가를 확정하지 않는다. processCPU 기준으로도1마리 C<V 창과 V 반복의 변동이 있어 미세 차이를 개선으로 해석할 수 없다.
 
-확인: 기존 스크립트 범위에서 발 지지·관절 월드 검사는 충돌용4본 조회보다 크고 pursuit/perception/social/crowd도 별도 비용 후보로 남는다. mission update 범위는 native callback을 전부 포함하지 않는다. 발 지지와 월드 범위를 줄이면 전체 차이가 사라진다는 주장은 아직 미검증이다.
+확인:1개체의 contact solve는 leader callback당 약1회,8/64에서는 평균 약1.9~2회다. 설치된 자체 PBO의 일반 DriveGround→SolveContacts 및 Crowd.Displace→SolveContacts 호출 지점이 추가 호출 후보와 연결된다. 현재 counter는 호출자별 분리가 없어 정확히 모든 추가 호출이 그 경로라고 확정하지 않는다. flat FOLLOW에서도 밀침에 따른 contact 재평가가 가능한 구조다. 밀침/발 지지 안전 검사를 삭제하거나 같은 결과라고 가정해 재사용하지 않았다.
 
-애니메이션 시계: 각 logical leader의 nativeSeconds 증가율과 callback Hz를 독립 측정했다. 실제 callback 전달 시간의 손실은 CPU 출력 시계에 관한 직접 관측이다. 과거mode0의50ms 클램프/누적기 reset 원인 증거와 양립하지만, 이번에는 엔진을 hook하지 않았으므로 현재 실행에서 동일 명령 경로가 원인임을 새로 확정하지 않는다. 전체 프레임 처리량 저하와 시계 손실은 연결 가능성이 있으나 같은 지표가 아니다. 그래프 내부 평가·최종 renderer 소비 포즈·실제 mesh 표시 cadence는 이번 ETW로 측정되지 않았다. 스크린샷과 CPU callback 증가를 시각적 smoothness 검증으로 대체하지 않는다.
+관찰:contact solve당 평균 경과가 개체 수에 비례해 폭증하지는 않았다. 큰 군집에서는 호출량·추가 접촉 경로·전역 추적·8파트 native 실행이 함께 누적되는 후보를 우선 본다. 바닐라1instance/95선언본, 커스텀8instances/535선언본은 구성 차이다. 실제 active bone/LOD/skin/graph 평가 비용을 뜻하지 않으며535/95를 성능 배수로 쓰지 않는다. 이전 부분 골격 축소가 이미 적용된 상태라 본 수를 다시 줄이는 제안을 기존 결과 없이 반복하지 않는다.
 
-추정: 8파트의 중복 native 평가·표시 commit과 높은 접촉/추적 호출 빈도가 함께 비용 차이에 기여할 수 있다. 반증: CHASE 상태만으로 정상 실행이라고 본 MP pilot 가정은 실제0회 callback에 의해 기각했다. 바닐라/커스텀의 순수 animation self-time 차이, drawcall/skin/upload/GC, 개체별 LOD/가시성 및 전체 비용 중 고유 비율은 미확인이다. 바닐라는 native 전투 가능, 커스텀 Combat=false이고 실제 충돌 궤적도 다르므로 완전 동일한 연산 부하라고 하지 않는다.
+시계:커스텀1마리에서도 CPU animation time≈0.833초/게임초,16.65Hz였다.8도≈0.833,64는≈0.74~0.76이다. 따라서 기존 시간 전달 문제를64CPU 포화만으로 설명하는 가설은 부족하다. callback/CPU 시계는 화면 mesh의 표시 시간/부드러움과 다르다. 바닐라의 동일 native clock ratio는 측정하지 않아 custom만의 엔진 시계 문제라고 단정하지 않는다.
+
+미확인:바닐라 발 지지·관절 충돌·graph evaluation·blend·skin·upload·GC 각 self-time과 개체별 메모리. script에 native 명령 경계는 있으나 함수 이름에 전체 내부 범위를 귀속할 근거가 없다. RTTI shared targets만으로 같은 실행 모드/애니메이션 경로/비용이라고 할 수 없다.
 
 ## 5. 검증 수준
 
-진단 성공 및 같은 조건 독립2회 재현: 평지 V/C 비용 차이, 실제 추격, CPU animation callback 시간 비율, 퇴역·정상 종료. 기능 검증은 이 평지 씬에 한정한다. 기존 등반·낙하·착지·피격·사망 전체 회귀는 이번 범위 밖이다. 시각 품질 최종 수용은 미실행, 성능20ms p95 목표는 미달이다. 최적화 후보는 구현·효과 검증하지 않았다.
+진단 성공:실제1/8 추격·종료/퇴역과 ETW·기존 카운터·process memory 확보, 기존64자료 hash 재인증, 설치 resource/자체 packed source 대조. 새1/8의 독립 반복 검증 완료는 아니다. 기능 통과는 flat chase에 한정한다. 시각적 애니메이션 수용·개별 native selftime 귀속·20ms 성능 목표·memory cleanup 최종 수용은 미완료다.
 
 ## 6. 변경 사항
 
-진단 전용 bridge PBO SHA-256729f3b883bac5951acf011b706a93e3437a4a9031d1e9a205f830cd911242ebf. packed member/source 일치, 서명 및 모든 실행 전 서명 검증 성공. 기존93507d와 두 resource PBO 및5d5fc2 observer는 변경하지 않았다. 개인키 배포 없음. 새 offline mission/launcher/monitor/analyzer만 추가했다. 두 본 시험의 mission source 해시는 동일하다. 운영 서버·DayZ 원본·기존 배포 PBO는 수정하지 않았다.
-
-exit code -1은 DONE/RPT 정상 termination/crash 부재를 함께 확인해 판정했다. 두 client 강제 종료 없음. 기존 diagnostic plugin script(E)8줄 및 resource/startup/shutdown 경고를 보존했다. 추가로 종료 시 PGFilter64개와 BunkerBroadcastManager1개의 leak 경고가 두 본 실행에서 관찰됐다. 예비8개체에서는 PGFilter8개였다. 이전 network vanilla-only baseline에는 BunkerBroadcastManager1개만 있었다. 정상 종료와 별개로 memory cleanup은 미수용이다. PGFilter 생명주기 소유권이 후보이나 원인을 확정하지 않았다. warning-free라고 보고하지 않는다. 기존 보고서/최신 인덱스/B안 미러를 재사용한다.
+기존5개 PBO는 그대로 사용했고 매 실행 전 해시·서명을 검증했다. 새 PBO/게임 알고리즘/운영 서버/배포물 변경 없음. count-only scene/launcher, process memory observer, 파생 분석·보고서만 추가했다. 새 빌드 식별은 기존729f3b bridge 및93507d gameplay다. 개인키 배포 없음. 클라이언트/PresentMon 모두 종료했고 강제 client 종료 없음. 기존 diagnostic 경고와 PGFilter의 개체 수에 맞는 종료 누수 경고는 보존했다. 실행 중 순수 누수량이나 GC량으로 해석하지 않는다.
 
 ## 7. 원시 증거
 
-배치matched-flat-pursuit-20261102. offline-pilot,offline-main,offline-main2의 launch/mission-used/client-frames/custom-agents/custom-costs/vanilla-agents/stages/script/RPT와 본 시험 host-observations/present/admin-completed/analysis를 로컬에서 보존한다. 원문은 덮어쓰지 않고 저장 전 SHA-256/파일 크기/mtime/JSON parse/안전 종료를 검사한다. 공개는 집계·자체 fixture/observer 소스만 제공하고 로컬 경로·프로세스 정보·raw 전체 CSV·비공개 자료는 제외한다. 준비 실패 프로필은 별도 보존하며 정상 반복 수에 포함하지 않는다.
+matched-flat-pursuit-20261102/per-agent의n1/n8에 실제205초 실행 원문을 보존한다. launch/admin/host-observations/client-frames/vanilla-agents/custom-agents/custom-costs/stages/mission/script/RPT/analysis, refined asset inventory/installed skeleton proof-v2/shipped boundaries-v2/packed contact sites/native class boundaries를 연결한다. 과거64 checkpoint와 analysis hash를 대조했다. 새로운 원문/이전 보고서를 덮어쓰지 않고 저장 전 파일 안정성·JSON·해시를 검증한다. 공개는 집계와 선정 경계만, raw 전체/설치 자산/로컬 경로/프로세스 식별자는 제외한다.
 
 ## 8. 잔여 문제
 
-다음 최소 실험은 두 갈래다. 성능: 같은 flat harness에서 observation OFF 대조로 observer 부담을 먼저 경계 설정하고, 기존8파트 native 실행과 script contact/추적 비용을 한 요인씩 분리한다. 검사 생략은 진단용 격리 조건에서만 검토하고 현재 기능 빌드에 적용하지 않는다. 애니메이션: 기존 단일 개체 시간 전달/실제 표시 포즈 연결 연구를 유지한다. 이번64 결과를 단일 개체 끊김의 유일 원인으로 소급하지 않는다.
+우선 연구1:기존 하네스에 호출자 ID만 부가한 격리 관측으로 locomotion/crowd/회복의 SolveContacts 횟수·경과를 분리한다. contact ON/OFF를 곧바로 최적화 후보로 적용하지 않는다. 동일 인자/포즈/시간/지지 객체가 같은 검사인지부터 확인하고 가장자리·낙하·피격·착지 시 무효화 조건을 보호한다.
 
-종료 leak 경고의 소유권·reference 정리 원인은 남은 문제다. 실행 중 메모리/GC 증가를 계측하지 않았으므로 실행 중 누적 누수량으로 해석하지 않는다. 네이티브 graph/skin/upload/GC의 세부 CPU self-time은 현재 Enforce 계측에서 확보하지 못했다. 표시 시간은 프레임 단위이며 개체별 애니메이션 포즈를 구분하지 못한다. 관측 OFF, 순수 native 평가 분리, 실제 영상/표시 포즈 시간 계측을 수행하기 전에는 특정 검사/8파트 변경을 해결책으로 확정하지 않는다. 이번 결과를 이유로 새로운 보간·타임 스케일·LOD·충돌 삭제를 적용하지 않았다.
+우선 연구2:이미 확보한 부분 골격을 유지한 채8파트의 native scheduling/evaluation/render-facing work를 단일개체에서 분리한다. 확인된 entry/exit와 객체 ID로 좁게 계측하고 observer OFF/ON을 비교해야 한다. 바닐라와custom의 공통 native 경계가 selftime을 모두 포함한다고 가정하지 않는다. engine profiler 또는 검증된 native function attribution이 필요하며 현재 objdump 제한은 해당 경로에만 한정한다.
 
-로컬 checkpoint SHA-256: 7ad207a4687b159f1567a3046315cab6a3b932eb7eb90d87d1267682d7287842
+우선 연구3:같은 count에서0↔1↔0 및0↔8↔0 baseline을 교대로 반복해 바닐라 순수 증분 비용의 노이즈/드리프트 경계를 좁힌다. 작은 신호가 반복 오차보다 작으면 숫자를 확정하지 않는다. 원시 로그 용량은 제한하고 기존 manifest/보고 체계를 재사용한다. 실제 표시 포즈의 시간 연구는 별도로 유지하며 새 보간·시간 배율·업데이트 생략을 근거 없이 적용하지 않는다.
+
+로컬 checkpoint SHA-256: bcd68925c79e92dbb55a6bfccc917cd8f8d1ab056f355c7ca5cf69a01d9714a8
