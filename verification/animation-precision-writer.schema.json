@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "animation-precision-writer-20261101-1530"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "newRuntimeTrials",
+        "newPbo",
+        "observerSummary"
+      ],
+      "properties": {
+        "newRuntimeTrials": {
+          "const": 1
+        },
+        "newPbo": {
+          "const": false
+        },
+        "observerSummary": {
+          "type": "object",
+          "required": [
+            "errors",
+            "evaluationSamples",
+            "policyCounts"
+          ],
+          "properties": {
+            "errors": {
+              "const": 0
+            },
+            "evaluationSamples": {
+              "const": 90
+            },
+            "policyCounts": {
+              "type": "object",
+              "properties": {
+                "2": {
+                  "const": 6
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
