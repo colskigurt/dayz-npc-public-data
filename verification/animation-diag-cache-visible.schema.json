@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "animation-diag-cache-visible-20261101-1750"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "newRuntimeTrials",
+        "successfulCombinedTrials",
+        "newPbo",
+        "cache",
+        "recording",
+        "visibleRoi"
+      ],
+      "properties": {
+        "newRuntimeTrials": {
+          "const": 2
+        },
+        "successfulCombinedTrials": {
+          "const": 1
+        },
+        "newPbo": {
+          "const": false
+        },
+        "visualAccepted": {
+          "const": false
+        },
+        "performanceAccepted": {
+          "const": false
+        }
+      }
+    }
+  }
+}
