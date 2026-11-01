@@ -1,0 +1,501 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T15:28:53.124988+09:00",
+  "sourceRunId": "animation-server-lod-20261101-1513",
+  "buildId": "453D-0C6E-B8FB-server-ee1add8b",
+  "verificationStatus": {
+    "diagnostic": "startup_lod0_not_persistent_stable_cadence_no_effect",
+    "controlledRepetitions": "two_per_condition_ABBA",
+    "fullNpcRegression": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-server-lod-20261101-1513",
+    "buildId": "453D-0C6E-B8FB-server-ee1add8b",
+    "verificationStatus": "startup_lod0_not_persistent_and_stable_cadence_no_effect_diagnosed",
+    "newRuntimeTrials": 5,
+    "controlledRuntimeTrials": 4,
+    "observedProbeTrials": 1,
+    "newPbo": false,
+    "newVideo": false,
+    "numericOverrides": false,
+    "controlled": {
+      "sourceRunId": "animation-server-lod-20261101-1513",
+      "sequence": [
+        "A1",
+        "B1",
+        "B2",
+        "A2"
+      ],
+      "singleSemanticDiffVerified": true,
+      "trials": [
+        {
+          "trial": "A1",
+          "condition": "auto",
+          "poseRows": 1251,
+          "missionSpanSeconds": 24.996,
+          "missionInputDtMs": {
+            "samples": 1251,
+            "p50": 15.0,
+            "p95": 31.0,
+            "p99": 31.0,
+            "minimum": 5.0,
+            "maximum": 31.0
+          },
+          "commandAccumulatedStepMs": {
+            "samples": 125,
+            "p50": 199.9999999999993,
+            "p95": 200.00000000000284,
+            "p99": 200.00000000000284,
+            "minimum": 199.9999999999993,
+            "maximum": 200.00000000000284
+          },
+          "commandChangeSamples": 125,
+          "nativeCommandSecondsPerMissionSecond": 1.0001600256040968,
+          "cpuHeadStepMeters": {
+            "samples": 1250,
+            "p50": 0.0,
+            "p95": 0.25960852902876397,
+            "p99": 0.3766724226823414,
+            "minimum": 0.0,
+            "maximum": 0.4201000885753298
+          },
+          "cpuHeadRepeatedPairs": 1125,
+          "cpuHeadConsecutivePairs": 1250,
+          "cpuHeadRepeatFraction": 0.9,
+          "scriptCommandActiveFraction": 1.0,
+          "wholeServerProcessCpu": {
+            "cpuMilliseconds": 2406.25,
+            "observedWindowSeconds": 27.3046503,
+            "cpuMillisecondsPerObservedWallSecond": 88.12601419766214,
+            "window": "First polled READY marker to first polled DONE marker; boundary uncertainty up to polling interval0.5sec each; includes all process threads,not component selftime."
+          },
+          "poseTraceSha256": "150db5bc2e58f33345bfdcb77a384f0f36b7068f6358d55adb826f2c433f23c4",
+          "launchSha256": "5ec334f8659b80d1c62d299496b4e338ca87516573389de4d77668959c5b50a2",
+          "missionSha256": "CEC2694879133C8FD4CBDE47135D458C9BDC786E97CEA0E63E01A583E533ECCF",
+          "signatureChecksPassed": true
+        },
+        {
+          "trial": "B1",
+          "condition": "lod0",
+          "poseRows": 1251,
+          "missionSpanSeconds": 25.012,
+          "missionInputDtMs": {
+            "samples": 1251,
+            "p50": 15.0,
+            "p95": 31.0,
+            "p99": 31.0,
+            "minimum": 14.0,
+            "maximum": 32.0
+          },
+          "commandAccumulatedStepMs": {
+            "samples": 125,
+            "p50": 199.9999999999993,
+            "p95": 200.00000000000284,
+            "p99": 200.00000000000284,
+            "minimum": 199.9999999999993,
+            "maximum": 200.00000000000284
+          },
+          "commandChangeSamples": 125,
+          "nativeCommandSecondsPerMissionSecond": 0.999520230289461,
+          "cpuHeadStepMeters": {
+            "samples": 1250,
+            "p50": 0.0,
+            "p95": 0.25960852902876397,
+            "p99": 0.3766724226823414,
+            "minimum": 0.0,
+            "maximum": 0.4201000885753298
+          },
+          "cpuHeadRepeatedPairs": 1125,
+          "cpuHeadConsecutivePairs": 1250,
+          "cpuHeadRepeatFraction": 0.9,
+          "scriptCommandActiveFraction": 1.0,
+          "wholeServerProcessCpu": {
+            "cpuMilliseconds": 2046.875,
+            "observedWindowSeconds": 26.7624441,
+            "cpuMillisecondsPerObservedWallSecond": 76.48311164524767,
+            "window": "First polled READY marker to first polled DONE marker; boundary uncertainty up to polling interval0.5sec each; includes all process threads,not component selftime."
+          },
+          "poseTraceSha256": "655cf139d521a254dc61a159abf72c4c1c349e377b7439833d90a5d25fd92035",
+          "launchSha256": "13f9ed64b31a7506d1f517f685391249dda0750261b893adab6a3aa983f9d51a",
+          "missionSha256": "0ACE8EAA6D11FAC0BDDDB517A80A3000FC749D639D7BB7D230EFA073AA397BF1",
+          "signatureChecksPassed": true
+        },
+        {
+          "trial": "B2",
+          "condition": "lod0",
+          "poseRows": 1250,
+          "missionSpanSeconds": 24.973999999999997,
+          "missionInputDtMs": {
+            "samples": 1250,
+            "p50": 15.0,
+            "p95": 31.0,
+            "p99": 31.0,
+            "minimum": 5.0,
+            "maximum": 32.0
+          },
+          "commandAccumulatedStepMs": {
+            "samples": 125,
+            "p50": 199.9999999999993,
+            "p95": 200.00000000000284,
+            "p99": 200.00000000000284,
+            "minimum": 199.99000000000143,
+            "maximum": 200.01000000000067
+          },
+          "commandChangeSamples": 125,
+          "nativeCommandSecondsPerMissionSecond": 1.0010410827260352,
+          "cpuHeadStepMeters": {
+            "samples": 1249,
+            "p50": 0.0,
+            "p95": 0.2596387082723155,
+            "p99": 0.37668148936002965,
+            "minimum": 0.0,
+            "maximum": 0.4200977319636467
+          },
+          "cpuHeadRepeatedPairs": 1124,
+          "cpuHeadConsecutivePairs": 1249,
+          "cpuHeadRepeatFraction": 0.899919935948759,
+          "scriptCommandActiveFraction": 1.0,
+          "wholeServerProcessCpu": {
+            "cpuMilliseconds": 2390.625,
+            "observedWindowSeconds": 26.7748999,
+            "cpuMillisecondsPerObservedWallSecond": 89.28604808714896,
+            "window": "First polled READY marker to first polled DONE marker; boundary uncertainty up to polling interval0.5sec each; includes all process threads,not component selftime."
+          },
+          "poseTraceSha256": "05edbec8a81479583d897951d53940527c8cc17e71102025ad164d3c84df4bfd",
+          "launchSha256": "dd9646a917be4b71742b3d6d8c662c475dbfd1f5fd1dcc346e31ef10ee23080b",
+          "missionSha256": "0ACE8EAA6D11FAC0BDDDB517A80A3000FC749D639D7BB7D230EFA073AA397BF1",
+          "signatureChecksPassed": true
+        },
+        {
+          "trial": "A2",
+          "condition": "auto",
+          "poseRows": 1252,
+          "missionSpanSeconds": 25.022,
+          "missionInputDtMs": {
+            "samples": 1252,
+            "p50": 15.0,
+            "p95": 31.0,
+            "p99": 31.0,
+            "minimum": 14.0,
+            "maximum": 32.0
+          },
+          "commandAccumulatedStepMs": {
+            "samples": 125,
+            "p50": 199.9999999999993,
+            "p95": 200.00000000000284,
+            "p99": 200.00000000000284,
+            "minimum": 199.9999999999993,
+            "maximum": 200.00000000000284
+          },
+          "commandChangeSamples": 125,
+          "nativeCommandSecondsPerMissionSecond": 0.9991207737191272,
+          "cpuHeadStepMeters": {
+            "samples": 1251,
+            "p50": 0.0,
+            "p95": 0.25960218818679537,
+            "p99": 0.3766556159241454,
+            "minimum": 0.0,
+            "maximum": 0.4201000885753298
+          },
+          "cpuHeadRepeatedPairs": 1126,
+          "cpuHeadConsecutivePairs": 1251,
+          "cpuHeadRepeatFraction": 0.9000799360511591,
+          "scriptCommandActiveFraction": 1.0,
+          "wholeServerProcessCpu": {
+            "cpuMilliseconds": 2453.125,
+            "observedWindowSeconds": 27.2491954,
+            "cpuMillisecondsPerObservedWallSecond": 90.0255939300138,
+            "window": "First polled READY marker to first polled DONE marker; boundary uncertainty up to polling interval0.5sec each; includes all process threads,not component selftime."
+          },
+          "poseTraceSha256": "9678a3416b48de5bbf07a072c90631d8bf1874569bd4428c12d602503054f329",
+          "launchSha256": "0ba8a93af1e6c15bc5bc197dfa3eb755ba5030e3ff342366eb199db3fbf4a569",
+          "missionSha256": "CEC2694879133C8FD4CBDE47135D458C9BDC786E97CEA0E63E01A583E533ECCF",
+          "signatureChecksPassed": true
+        }
+      ],
+      "summary": {
+        "auto": {
+          "repetitions": 2,
+          "commandStepMedianMs": [
+            199.9999999999993,
+            199.9999999999993
+          ],
+          "cpuHeadRepeatFractions": [
+            0.9,
+            0.9000799360511591
+          ],
+          "wholeServerCpuMsPerWallSecond": [
+            88.12601419766214,
+            90.0255939300138
+          ]
+        },
+        "lod0": {
+          "repetitions": 2,
+          "commandStepMedianMs": [
+            199.9999999999993,
+            199.9999999999993
+          ],
+          "cpuHeadRepeatFractions": [
+            0.9,
+            0.899919935948759
+          ],
+          "wholeServerCpuMsPerWallSecond": [
+            76.48311164524767,
+            89.28604808714896
+          ]
+        }
+      },
+      "comparison": {
+        "commandStepMedianAbsoluteChangeMs": 0.0,
+        "commandStepMedianRelativeChangePercent": 0.0,
+        "cpuHeadRepeatFractionMeanChange": -8.000005120001319e-05,
+        "wholeServerCpuMsPerWallSecondMeanChange": -6.191224197639656,
+        "wholeServerCpuMeanRelativeChangePercent": -6.9505117160689185
+      },
+      "newPbo": false,
+      "newVideo": false,
+      "nativeObserverHooks": false,
+      "limits": [
+        "Command accumulated step is script-native callback time,not direct graph clock or exact wall callback interval.",
+        "CPU head repeats/steps are queried bone positions,not visible frame quality.",
+        "Mission inputdt is not CPU/Present frame-time; no20ms p95 claim.",
+        "Whole process CPU has polled boundary uncertainty and includes unrelated engine work; two repetitions do not isolate component selftime.",
+        "One physical part,headless loopback server without players; not matched offline mode0 or64 NPC regression."
+      ]
+    },
+    "probe": {
+      "setterBefore": {
+        "type": "setterBefore",
+        "millisecondsSinceArm": 5990,
+        "fields": {
+          "mode": 1,
+          "requestedPrimary": 0.05000000074505806,
+          "requestedSecondary": 0.05000000074505806,
+          "actualPrimary": 0.05000000074505806,
+          "actualSecondary": 0.20000000298023224
+        },
+        "simLOD": 0
+      },
+      "setterAfter": {
+        "type": "setterAfter",
+        "millisecondsSinceArm": 5990,
+        "fields": {
+          "mode": 1,
+          "requestedPrimary": 0.05000000074505806,
+          "requestedSecondary": 0.05000000074505806,
+          "actualPrimary": 0.05000000074505806,
+          "actualSecondary": 0.20000000298023224
+        }
+      },
+      "firstEvaluation": {
+        "type": "evaluation",
+        "millisecondsSinceArm": 6163,
+        "fields": {
+          "mode": 1,
+          "requestedPrimary": 0.20000000298023224,
+          "requestedSecondary": 0.20000000298023224,
+          "actualPrimary": 0.20000000298023224,
+          "actualSecondary": 0.5
+        }
+      },
+      "lastEvaluation": {
+        "type": "evaluation",
+        "millisecondsSinceArm": 17977,
+        "fields": {
+          "mode": 1,
+          "requestedPrimary": 0.20000000298023224,
+          "requestedSecondary": 0.20000000298023224,
+          "actualPrimary": 0.20000000298023224,
+          "actualSecondary": 0.5
+        }
+      },
+      "firstEvaluationAfterSetterMilliseconds": 173,
+      "evaluationSamples": 60,
+      "allEvaluationsPrimaryApproximately200ms": true,
+      "evaluationModeValues": [
+        1
+      ],
+      "nativeStateOverrides": false,
+      "limits": [
+        "Before/after equality does not demonstrate a changed value; setter call execution itself was captured.",
+        "Observed override values match knownLOD2 interval table but exact writer/caller was not captured.",
+        "Date.now chronology is not precise CPU frame timing."
+      ]
+    },
+    "probeStatus": {
+      "setterCalls": 1,
+      "evaluationSamples": 60,
+      "observerErrors": 0,
+      "scriptErrors": 0,
+      "mode": 1,
+      "nativeStateOverrides": false,
+      "usesObserverHooks": true,
+      "usesReadOnlyProcessAccessOnly": false,
+      "performanceExcluded": true,
+      "provider": "existing Python Frida,not REA MCP",
+      "hooksRetainedUntilExit": true
+    },
+    "sourceAudit": {
+      "sourceRunId": "animation-server-lod-20261101-1513",
+      "serverScriptsPboSha256": "ff0ad7ee5297c75da74364569a830bc0223315c0131579a0c11a7875d64cb2e2",
+      "sameBytesAsClientScripts": true,
+      "referenceAuditSha256": "cf892af7bf73eac75a0b5b131a67c053ac3a19eacad85c16bfc2d2384f8e720e",
+      "membersScanned": 3056,
+      "hitsReference": "policy-source-audit.json",
+      "hits": [],
+      "limits": [
+        "Source token matches,not runtime callers; conditional compilation/native policy and other addons remain separate."
+      ]
+    },
+    "exposure": {
+      "endMarkers": [
+        {
+          "trial": "A1",
+          "parts": 1,
+          "totalCommandSeconds": 26.8,
+          "totalCommandUpdates": 134,
+          "missionSha256": "CEC2694879133C8FD4CBDE47135D458C9BDC786E97CEA0E63E01A583E533ECCF"
+        },
+        {
+          "trial": "B1",
+          "parts": 1,
+          "totalCommandSeconds": 26.8,
+          "totalCommandUpdates": 134,
+          "missionSha256": "0ACE8EAA6D11FAC0BDDDB517A80A3000FC749D639D7BB7D230EFA073AA397BF1"
+        },
+        {
+          "trial": "B2",
+          "parts": 1,
+          "totalCommandSeconds": 26.95,
+          "totalCommandUpdates": 164,
+          "missionSha256": "0ACE8EAA6D11FAC0BDDDB517A80A3000FC749D639D7BB7D230EFA073AA397BF1"
+        },
+        {
+          "trial": "A2",
+          "parts": 1,
+          "totalCommandSeconds": 26.8,
+          "totalCommandUpdates": 134,
+          "missionSha256": "CEC2694879133C8FD4CBDE47135D458C9BDC786E97CEA0E63E01A583E533ECCF"
+        },
+        {
+          "trial": "BProbe",
+          "parts": 1,
+          "totalCommandSeconds": 26.8,
+          "totalCommandUpdates": 134,
+          "missionSha256": "0ACE8EAA6D11FAC0BDDDB517A80A3000FC749D639D7BB7D230EFA073AA397BF1"
+        }
+      ],
+      "probeSourceMatchesB": true,
+      "scope": "Stable metrics exclude first2sec after spawn. Total end update counts include warmup. Common Mission moduleCRC is not used as exposure proof for dynamic init.c; source hashes,launch paths and native probe are linked."
+    },
+    "sourceHashes": {
+      "research/animation-server-lod-20261101-1513/analyze_trials.py": "d58bbab0a1827d0ded2b9d4fdc9c8d8c92a5dc0613883f5b9dc358380e9137b6",
+      "research/animation-server-lod-20261101-1513/audit_policy_sources.py": "5131a6bff072a85ccff0e03df501dfa12fd0dba608b3c82028a44fb95f170c0b",
+      "research/animation-server-lod-20261101-1513/audit_server_source.py": "dd41639bf2aed5db995e8f16e39081b6437b2349d64f86ad3562835ba323e6c5",
+      "research/animation-server-lod-20261101-1513/exposure-summary.json": "a1ccb369d6e9ef4ffe80d2e0b87043a20f77c9c50035a6291d83cbaade311349",
+      "research/animation-server-lod-20261101-1513/inspect_precision.py": "f06c2d25606f800643f4170361854c372e9572d1ed94880e6317ec6f0dddfc23",
+      "research/animation-server-lod-20261101-1513/observe_precision.py": "7c7013c40bff5620f5e9a864103d4b717e296476ad9eb89f52cd3a0a0e464599",
+      "research/animation-server-lod-20261101-1513/plan.json": "a38cfc6b6d92f901e1ddcdc1df4539fb1cea8773725af03b3c07c6821d4d90d9",
+      "research/animation-server-lod-20261101-1513/policy-source-audit.json": "cf892af7bf73eac75a0b5b131a67c053ac3a19eacad85c16bfc2d2384f8e720e",
+      "research/animation-server-lod-20261101-1513/precision-binding.json": "01be02d709494aa45d96a49340988225f470c1f884c9c96bbd347836f57129aa",
+      "research/animation-server-lod-20261101-1513/precision-observer.js": "94401c6f64c2738d7d7bb525e84d0a529b476aa551576eaad5d860c5fe8287d9",
+      "research/animation-server-lod-20261101-1513/precision-observer.json": "0accfea258d4480eb2932b08c4b76eb443d4b6a30242ccc1d0483bbb19740154",
+      "research/animation-server-lod-20261101-1513/prepare_trials.py": "9548d876ba6138827e5df46676399bcee7eff123a7d7e2bab29f4b079d7b2e7d",
+      "research/animation-server-lod-20261101-1513/results.json": "97b4bab01268ee8934d0435a8a9cdadea7ef3bdf420a02f0ca83620530f5c125",
+      "research/animation-server-lod-20261101-1513/run_batch.ps1": "9d07cab6bceb7fb375486884e9f9bb6a825c767f45011279b311151c51006e16",
+      "research/animation-server-lod-20261101-1513/run_probe.ps1": "ca75341aa97cd3a0a17d525442bc8241f3641147ea91ee34bb878049a96025d3",
+      "research/animation-server-lod-20261101-1513/run_trial.ps1": "16b37c0600da81c464190e2a62fc161661f933eb1618a658f322092a89006f60",
+      "research/animation-server-lod-20261101-1513/server-launch-A1.json": "5ec334f8659b80d1c62d299496b4e338ca87516573389de4d77668959c5b50a2",
+      "research/animation-server-lod-20261101-1513/server-launch-A2.json": "0ba8a93af1e6c15bc5bc197dfa3eb755ba5030e3ff342366eb199db3fbf4a569",
+      "research/animation-server-lod-20261101-1513/server-launch-B1.json": "13f9ed64b31a7506d1f517f685391249dda0750261b893adab6a3aa983f9d51a",
+      "research/animation-server-lod-20261101-1513/server-launch-B2.json": "dd9646a917be4b71742b3d6d8c662c475dbfd1f5fd1dcc346e31ef10ee23080b",
+      "research/animation-server-lod-20261101-1513/server-launch-BProbe.json": "e76f6b6b5bf20d7a1a866499902c27c364dda7816e2a99341567bb972981bece",
+      "research/animation-server-lod-20261101-1513/server-source-audit.json": "376c6aa50acaf93e5e7ca6f821983d37207d893e8fea726a97b8a0ca574da82f",
+      "research/animation-server-lod-20261101-1513/server-profile-A1/DayZServer_x64_2026-11-01_15-14-34.RPT": "62429757c50eb16d8b82905eb0addf210ce4cb53fef362cd38e08735b71e1d84",
+      "research/animation-server-lod-20261101-1513/server-profile-A1/error_2026-11-01_15-14-34.log": "41c1a507042cffecd99ca44f158403b89a3688776dbb3eeaf19a480842a09007",
+      "research/animation-server-lod-20261101-1513/server-profile-A1/role-pose.tsv": "150db5bc2e58f33345bfdcb77a384f0f36b7068f6358d55adb826f2c433f23c4",
+      "research/animation-server-lod-20261101-1513/server-profile-A1/script_2026-11-01_15-14-34.log": "0d0d400a54ed5cbad4ef41ca54bd343fc7b358b76c6b013eab037ddf71a008e5",
+      "research/animation-server-lod-20261101-1513/server-profile-A1/server.cfg": "bbc1424bea24e7c50e79777d0d59cc35bfd51fffa58298fc584b75791f93d7ff",
+      "research/animation-server-lod-20261101-1513/server-profile-A2/DayZServer_x64_2026-11-01_15-16-56.RPT": "f3fbb6363215d1629fd4791aa4bbead27d0d1e105a48b36d02274f3f3410ceec",
+      "research/animation-server-lod-20261101-1513/server-profile-A2/error_2026-11-01_15-16-56.log": "0af5be29dd2b147965d90f6770280978952a6c847829d9c6b5df06d6e6a0522a",
+      "research/animation-server-lod-20261101-1513/server-profile-A2/role-pose.tsv": "9678a3416b48de5bbf07a072c90631d8bf1874569bd4428c12d602503054f329",
+      "research/animation-server-lod-20261101-1513/server-profile-A2/script_2026-11-01_15-16-56.log": "2d5a8e54d3ddebebe81477f0f33dfef83d7d1b30405836205c3d4e838236a694",
+      "research/animation-server-lod-20261101-1513/server-profile-A2/server.cfg": "bbc1424bea24e7c50e79777d0d59cc35bfd51fffa58298fc584b75791f93d7ff",
+      "research/animation-server-lod-20261101-1513/server-profile-B1/DayZServer_x64_2026-11-01_15-15-21.RPT": "8c98d52d73e22071a1d0cd3d25bf0cd8e17f5eba796f0edb6a136f1894cdbc22",
+      "research/animation-server-lod-20261101-1513/server-profile-B1/error_2026-11-01_15-15-21.log": "df110652b7ecd83154610a8d9d262e027b3a720f88020f8bef60d3586d2ea9f0",
+      "research/animation-server-lod-20261101-1513/server-profile-B1/role-pose.tsv": "655cf139d521a254dc61a159abf72c4c1c349e377b7439833d90a5d25fd92035",
+      "research/animation-server-lod-20261101-1513/server-profile-B1/script_2026-11-01_15-15-21.log": "2801b5ca50ad3eea7fb44b630b5eb3215d441488d8d85ae3295cd242828c9243",
+      "research/animation-server-lod-20261101-1513/server-profile-B1/server.cfg": "37dd80bbed28d49ea90b55ff1c4262112bf5239fd766c11aedb84f3a8ab55276",
+      "research/animation-server-lod-20261101-1513/server-profile-B2/DayZServer_x64_2026-11-01_15-16-08.RPT": "82e065513a5671504bff79941e99dc79b4722fd2faaf0c8e9ec3be5d53bd6da2",
+      "research/animation-server-lod-20261101-1513/server-profile-B2/error_2026-11-01_15-16-08.log": "072750a25a3b104841b33c8a06c2f0336c66324fdf0e4ef976110259182ac92c",
+      "research/animation-server-lod-20261101-1513/server-profile-B2/role-pose.tsv": "05edbec8a81479583d897951d53940527c8cc17e71102025ad164d3c84df4bfd",
+      "research/animation-server-lod-20261101-1513/server-profile-B2/script_2026-11-01_15-16-08.log": "bb499268eff9dca4bf1710cd50bf97eff36d5ed784a76c642c6b51d1ee48f8b0",
+      "research/animation-server-lod-20261101-1513/server-profile-B2/server.cfg": "37dd80bbed28d49ea90b55ff1c4262112bf5239fd766c11aedb84f3a8ab55276",
+      "research/animation-server-lod-20261101-1513/server-profile-BProbe/DayZServer_x64_2026-11-01_15-21-29.RPT": "98f92b8d196883b14ac36c126e1d4072b2e40652fac31a44861b2fac7477f403",
+      "research/animation-server-lod-20261101-1513/server-profile-BProbe/error_2026-11-01_15-21-29.log": "f9ff25549b058aba2abf089c61975579fd406695ffe9e4ecfdfbbb47988ece25",
+      "research/animation-server-lod-20261101-1513/server-profile-BProbe/role-pose.tsv": "24166108c97bb2c512b52a4ac65e7f15b347bafd7e5e8064db2bb14a36938aad",
+      "research/animation-server-lod-20261101-1513/server-profile-BProbe/script_2026-11-01_15-21-29.log": "cdf6d5b3fa3f337ddee599022ba8f1b7d2c9359e78cd54b65d69bb29897e9e8c",
+      "research/animation-server-lod-20261101-1513/server-profile-BProbe/server.cfg": "37dd80bbed28d49ea90b55ff1c4262112bf5239fd766c11aedb84f3a8ab55276",
+      "research/animation-server-lod-20261101-1513/server-role-auto.chernarusplus/init.c": "cec2694879133c8fd4cbde47135d458c9bdc786e97cea0e63e01a583e533eccf",
+      "research/animation-server-lod-20261101-1513/server-role-lod0.chernarusplus/init.c": "0ace8eaa6d11fac0bdddb517a80a3000fc749d639d7bb7d230efa073aa397bf1",
+      "research/animation-server-lod-20261101-1513/server-profile-A1/Users/Server/DayZ.cfg": "cfe6c0c4cecb7ce588e65432d23748c4519db28f75b0725837f137bb2232f1e5",
+      "research/animation-server-lod-20261101-1513/server-profile-A2/Users/Server/DayZ.cfg": "250e9c988f18d80066f0e575264358504ec74d7a654939662884d4474b3ae7c2",
+      "research/animation-server-lod-20261101-1513/server-profile-B1/Users/Server/DayZ.cfg": "3f6936691f027e96f57831896dd7b522a8dddff16de86df77a3019123db08ac7",
+      "research/animation-server-lod-20261101-1513/server-profile-B2/Users/Server/DayZ.cfg": "250e9c988f18d80066f0e575264358504ec74d7a654939662884d4474b3ae7c2",
+      "research/animation-server-lod-20261101-1513/server-profile-BProbe/Users/Server/DayZ.cfg": "250e9c988f18d80066f0e575264358504ec74d7a654939662884d4474b3ae7c2"
+    },
+    "signatureVerification": {
+      "existingPbos": 3,
+      "allVerifiedBeforeEachServerStart": true,
+      "newPbo": false
+    },
+    "limits": [
+      "Command accumulated step is script-native callback time,not direct graph clock or exact wall callback interval.",
+      "CPU head repeats/steps are queried bone positions,not visible frame quality.",
+      "Mission inputdt is not CPU/Present frame-time; no20ms p95 claim.",
+      "Whole process CPU has polled boundary uncertainty and includes unrelated engine work; two repetitions do not isolate component selftime.",
+      "One physical part,headless loopback server without players; not matched offline mode0 or64 NPC regression.",
+      "Before/after equality does not demonstrate a changed value; setter call execution itself was captured.",
+      "Observed override values match knownLOD2 interval table but exact writer/caller was not captured.",
+      "Date.now chronology is not precise CPU frame timing.",
+      "One startupLOD0 call is not a persistent cadence override in this fixture.",
+      "Exact policy writer/caller after startup not yet captured; do not identify it from table values alone.",
+      "Whole-process CPU means differ but ranges overlap and repetitions are only2 per condition; no optimization accepted."
+    ],
+    "next": "Capture the interval setter/LOD-dispatch caller for the observed50ms-to200ms rewrite on this one owned server, without writing native fields or repeatedly forcingLOD0. Keep original offline mode0 reset-loss and64 cost work independent.",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "blockers": [
+    "Command accumulated step is script-native callback time,not direct graph clock or exact wall callback interval.",
+    "CPU head repeats/steps are queried bone positions,not visible frame quality.",
+    "Mission inputdt is not CPU/Present frame-time; no20ms p95 claim.",
+    "Whole process CPU has polled boundary uncertainty and includes unrelated engine work; two repetitions do not isolate component selftime.",
+    "One physical part,headless loopback server without players; not matched offline mode0 or64 NPC regression.",
+    "Before/after equality does not demonstrate a changed value; setter call execution itself was captured.",
+    "Observed override values match knownLOD2 interval table but exact writer/caller was not captured.",
+    "Date.now chronology is not precise CPU frame timing.",
+    "One startupLOD0 call is not a persistent cadence override in this fixture.",
+    "Exact policy writer/caller after startup not yet captured; do not identify it from table values alone.",
+    "Whole-process CPU means differ but ranges overlap and repetitions are only2 per condition; no optimization accepted."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-server-lod-20261101.md",
+      "sha256": "68c6506599b01b854ead0661f5b51e12ddde4bb1bdd8a17118b76f0cb2d4af0d"
+    },
+    {
+      "path": "evidence/animation-server-lod-20261101.txt",
+      "sha256": "a20ab9aebccf4c3b8bde61b21126a53ff70893843d24460823ccb51e6dfa9181"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

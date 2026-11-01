@@ -1,3 +1,5 @@
+> 최신 진단: 자동 LOD/생성시 LOD0을 A/B/B/A로 비교했지만 안정 command 갱신은 모두 약200ms. 별도 probe에서 LOD0 호출 후50ms 필드가173ms뒤200ms로 재설정됨. 정확한 writer는 미포착이며 성능·시각 개선 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-server-lod-20261101.md). 이전 기록 보존.
+
 > 최신 진단: 기존 물리리더1파트 서버3회 완료.72 native관찰에서context+8=BulletCharacterCtrlSimple 확인. 약200ms command와CPU포즈반복 잔여. 렌더파트 물리플래그 단독은 생성 충돌. 시각/64성능 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-context-attachment-20261101.md). 이전 기록 보존.
 
 > 최신 진단: 기존 서버stack을 실제mode1 평가 분기와 연결. core entity=context+0,문제의secondary=context+8은초기0으로구분. 후속 producer/타입·지원수정미확보. 새실행/PBO없음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-server-owner-20261101.md). 이전 기록 보존.
