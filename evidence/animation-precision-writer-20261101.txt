@@ -1,0 +1,871 @@
+{
+  "selection": "All16 emitted state-change events plus counts for suppressed unchanged calls; first3 retained caller contexts, complete reachable static getter instructions. Not whole logs, full stack or performance capture.",
+  "sourceRunId": "animation-precision-writer-20261101-1530",
+  "targetSha256": "ee1add8bb6ded0b6e913f31d62c93d1326d5a44106d558bbd3d19adb78b73bb1",
+  "provider": "existing Python Frida,not REA MCP",
+  "summary": {
+    "errors": 0,
+    "evaluationSamples": 90,
+    "publicCounts": {
+      "0": 1
+    },
+    "policyCounts": {
+      "0": 1,
+      "2": 6
+    },
+    "writerCounts": {
+      "actual": 7,
+      "requested": 7
+    },
+    "sentEvents": 16
+  },
+  "events": [
+    {
+      "type": "armed"
+    },
+    {
+      "type": "publicBefore",
+      "millisecondsSinceArm": 4592,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.05000000074505806,
+        "requestedSecondary": 0.05000000074505806,
+        "actualPrimary": 0.05000000074505806,
+        "actualSecondary": 0.20000000298023224
+      },
+      "lod": 0,
+      "returnRva": 1431189,
+      "stack": {
+        "targetRvas": [
+          1431189,
+          2222577,
+          2223763,
+          2227167,
+          2385144,
+          2373944,
+          2374293,
+          2376991,
+          10941146,
+          11089614
+        ],
+        "outsideTargetFrames": 0
+      }
+    },
+    {
+      "type": "policyBefore",
+      "millisecondsSinceArm": 4593,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.05000000074505806,
+        "requestedSecondary": 0.05000000074505806,
+        "actualPrimary": 0.05000000074505806,
+        "actualSecondary": 0.20000000298023224
+      },
+      "lod": 0,
+      "updateRequested": 1,
+      "returnRva": null,
+      "stack": {
+        "targetRvas": [
+          1431189,
+          2222577,
+          2223763,
+          2227167,
+          2385144,
+          2373944,
+          2374293,
+          2376991,
+          10941146,
+          11089614
+        ],
+        "outsideTargetFrames": 0
+      }
+    },
+    {
+      "type": "actualWrite",
+      "millisecondsSinceArm": 4593,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.05000000074505806,
+        "requestedSecondary": 0.05000000074505806,
+        "actualPrimary": 0.05000000074505806,
+        "actualSecondary": 0.20000000298023224
+      },
+      "returnRva": 11187452,
+      "stack": {
+        "targetRvas": [
+          11187452,
+          2384948,
+          2222577,
+          2223763,
+          2227167,
+          2385144
+        ],
+        "outsideTargetFrames": 10
+      }
+    },
+    {
+      "type": "requestedWrite",
+      "millisecondsSinceArm": 4593,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.05000000074505806,
+        "requestedSecondary": 0.05000000074505806,
+        "actualPrimary": 0.05000000074505806,
+        "actualSecondary": 0.20000000298023224
+      },
+      "returnRva": 11187471,
+      "stack": {
+        "targetRvas": [
+          11187471,
+          2384948,
+          2222577,
+          2223763,
+          2227167,
+          2385144
+        ],
+        "outsideTargetFrames": 10
+      }
+    },
+    {
+      "type": "policyAfter",
+      "millisecondsSinceArm": 4593,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.05000000074505806,
+        "requestedSecondary": 0.05000000074505806,
+        "actualPrimary": 0.05000000074505806,
+        "actualSecondary": 0.20000000298023224
+      }
+    },
+    {
+      "type": "publicAfter",
+      "millisecondsSinceArm": 4593,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.05000000074505806,
+        "requestedSecondary": 0.05000000074505806,
+        "actualPrimary": 0.05000000074505806,
+        "actualSecondary": 0.20000000298023224
+      }
+    },
+    {
+      "type": "evaluation",
+      "millisecondsSinceArm": 4594,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.05000000074505806,
+        "requestedSecondary": 0.05000000074505806,
+        "actualPrimary": 0.05000000074505806,
+        "actualSecondary": 0.20000000298023224
+      }
+    },
+    {
+      "type": "evaluation",
+      "millisecondsSinceArm": 4599,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.05000000074505806,
+        "requestedSecondary": 0.05000000074505806,
+        "actualPrimary": 0.05000000074505806,
+        "actualSecondary": 0.20000000298023224
+      }
+    },
+    {
+      "type": "evaluation",
+      "millisecondsSinceArm": 5462,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.05000000074505806,
+        "requestedSecondary": 0.05000000074505806,
+        "actualPrimary": 0.05000000074505806,
+        "actualSecondary": 0.20000000298023224
+      }
+    },
+    {
+      "type": "evaluation",
+      "millisecondsSinceArm": 6463,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.05000000074505806,
+        "requestedSecondary": 0.05000000074505806,
+        "actualPrimary": 0.05000000074505806,
+        "actualSecondary": 0.20000000298023224
+      }
+    },
+    {
+      "type": "policyBefore",
+      "millisecondsSinceArm": 6464,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.05000000074505806,
+        "requestedSecondary": 0.05000000074505806,
+        "actualPrimary": 0.05000000074505806,
+        "actualSecondary": 0.20000000298023224
+      },
+      "lod": 2,
+      "updateRequested": 1,
+      "returnRva": 5441771,
+      "stack": {
+        "targetRvas": [
+          5441771,
+          5443866,
+          5588528,
+          6352574,
+          6310052,
+          10235275,
+          6358974,
+          1430960,
+          16873018
+        ],
+        "outsideTargetFrames": 2
+      }
+    },
+    {
+      "type": "actualWrite",
+      "millisecondsSinceArm": 6465,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.05000000074505806,
+        "requestedSecondary": 0.05000000074505806,
+        "actualPrimary": 0.20000000298023224,
+        "actualSecondary": 0.5
+      },
+      "returnRva": 11187452,
+      "stack": {
+        "targetRvas": [
+          11187452,
+          5441771,
+          5443866,
+          5588528,
+          6352574,
+          6310052,
+          10235275,
+          6358974,
+          1430960,
+          16873018
+        ],
+        "outsideTargetFrames": 2
+      }
+    },
+    {
+      "type": "requestedWrite",
+      "millisecondsSinceArm": 6466,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.20000000298023224,
+        "requestedSecondary": 0.20000000298023224,
+        "actualPrimary": 0.20000000298023224,
+        "actualSecondary": 0.5
+      },
+      "returnRva": 11187471,
+      "stack": {
+        "targetRvas": [
+          11187471,
+          5441771,
+          5443866,
+          5588528,
+          6352574,
+          6310052,
+          10235275,
+          6358974,
+          1430960,
+          16873018
+        ],
+        "outsideTargetFrames": 2
+      }
+    },
+    {
+      "type": "policyAfter",
+      "millisecondsSinceArm": 6466,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.20000000298023224,
+        "requestedSecondary": 0.20000000298023224,
+        "actualPrimary": 0.20000000298023224,
+        "actualSecondary": 0.5
+      }
+    },
+    {
+      "type": "evaluation",
+      "millisecondsSinceArm": 10460,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.20000000298023224,
+        "requestedSecondary": 0.20000000298023224,
+        "actualPrimary": 0.20000000298023224,
+        "actualSecondary": 0.5
+      }
+    },
+    {
+      "type": "evaluation",
+      "millisecondsSinceArm": 14465,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.20000000298023224,
+        "requestedSecondary": 0.20000000298023224,
+        "actualPrimary": 0.20000000298023224,
+        "actualSecondary": 0.5
+      }
+    }
+  ],
+  "callers": [
+    {
+      "returnRva": "0x5308eb",
+      "root": "0x1405305e0",
+      "decodedEnd": "0x1405309b6",
+      "unwindChain": [
+        [
+          "0x14053060e",
+          "0x1405309b6"
+        ],
+        [
+          "0x1405305e0",
+          "0x14053060e"
+        ]
+      ],
+      "sha256": "acf92fd48e427d0318cf7e179c77aa5c71ac97cff3447880bd8b5d75f6d3774b",
+      "precedingInstructionEndsAtReturn": true,
+      "callContext": [
+        {
+          "address": "0x1405308c7",
+          "instruction": "sub rdx, 1"
+        },
+        {
+          "address": "0x1405308cb",
+          "instruction": "jne 0x14053088e"
+        },
+        {
+          "address": "0x1405308cd",
+          "instruction": "mov rax, qword ptr [rdi]"
+        },
+        {
+          "address": "0x1405308d0",
+          "instruction": "movaps xmm1, xmm3"
+        },
+        {
+          "address": "0x1405308d3",
+          "instruction": "mov rcx, rdi"
+        },
+        {
+          "address": "0x1405308d6",
+          "instruction": "call qword ptr [rax + 0xb10]"
+        },
+        {
+          "address": "0x1405308dc",
+          "instruction": "mov r8b, 1"
+        },
+        {
+          "address": "0x1405308df",
+          "instruction": "mov rcx, rdi"
+        },
+        {
+          "address": "0x1405308e2",
+          "instruction": "mov edx, eax"
+        },
+        {
+          "address": "0x1405308e4",
+          "instruction": "mov ebx, eax"
+        },
+        {
+          "address": "0x1405308e6",
+          "instruction": "call 0x140aab460"
+        },
+        {
+          "address": "0x1405308eb",
+          "instruction": "mov edx, ebx"
+        },
+        {
+          "address": "0x1405308ed",
+          "instruction": "mov rcx, rdi"
+        }
+      ]
+    },
+    {
+      "returnRva": "0x53111a",
+      "root": "0x140530d10",
+      "decodedEnd": "0x1405311ea",
+      "unwindChain": [
+        [
+          "0x140530d10",
+          "0x1405311ea"
+        ]
+      ],
+      "sha256": "1218a27abf6760543623b4206f72da9a080a930ea6a0d67d724da906b0d294e2",
+      "precedingInstructionEndsAtReturn": true,
+      "callContext": [
+        {
+          "address": "0x1405310e9",
+          "instruction": "mov r9d, dword ptr [rcx + 8]"
+        },
+        {
+          "address": "0x1405310ed",
+          "instruction": "xor r8d, r8d"
+        },
+        {
+          "address": "0x1405310f0",
+          "instruction": "lea rdx, [rbp + 0x368]"
+        },
+        {
+          "address": "0x1405310f7",
+          "instruction": "call 0x1405305e0"
+        },
+        {
+          "address": "0x1405310fc",
+          "instruction": "test al, al"
+        },
+        {
+          "address": "0x1405310fe",
+          "instruction": "jne 0x14053111b"
+        },
+        {
+          "address": "0x140531100",
+          "instruction": "lea rcx, [rsi + 0x1340]"
+        },
+        {
+          "address": "0x140531107",
+          "instruction": "mov r9d, dword ptr [rcx + 8]"
+        },
+        {
+          "address": "0x14053110b",
+          "instruction": "xor r8d, r8d"
+        },
+        {
+          "address": "0x14053110e",
+          "instruction": "lea rdx, [rbp + 0x368]"
+        },
+        {
+          "address": "0x140531115",
+          "instruction": "call 0x1405305e0"
+        },
+        {
+          "address": "0x14053111a",
+          "instruction": "nop "
+        },
+        {
+          "address": "0x14053111b",
+          "instruction": "lea rcx, [rbp + 0x368]"
+        }
+      ]
+    },
+    {
+      "returnRva": "0x554630",
+      "root": "0x140554020",
+      "decodedEnd": "0x140554c60",
+      "unwindChain": [
+        [
+          "0x140554020",
+          "0x140554c60"
+        ]
+      ],
+      "sha256": "6f7fcb85d190b27405711781d1a78da9ab5bd8a3a03f19e32fd7c57614b53764",
+      "precedingInstructionEndsAtReturn": true,
+      "callContext": [
+        {
+          "address": "0x1405545fc",
+          "instruction": "cmp qword ptr [rip + 0x11ff81d], r12"
+        },
+        {
+          "address": "0x140554603",
+          "instruction": "je 0x140554625"
+        },
+        {
+          "address": "0x140554605",
+          "instruction": "call 0x1403976b0"
+        },
+        {
+          "address": "0x14055460a",
+          "instruction": "xorps xmm1, xmm1"
+        },
+        {
+          "address": "0x14055460d",
+          "instruction": "cvtss2sd xmm1, xmm6"
+        },
+        {
+          "address": "0x140554611",
+          "instruction": "movsd xmm2, qword ptr [rax + 0x2b0]"
+        },
+        {
+          "address": "0x140554619",
+          "instruction": "mov rcx, qword ptr [rip + 0x11ff800]"
+        },
+        {
+          "address": "0x140554620",
+          "instruction": "call 0x1403e5620"
+        },
+        {
+          "address": "0x140554625",
+          "instruction": "movaps xmm1, xmm7"
+        },
+        {
+          "address": "0x140554628",
+          "instruction": "mov rcx, rdi"
+        },
+        {
+          "address": "0x14055462b",
+          "instruction": "call 0x140530d10"
+        },
+        {
+          "address": "0x140554630",
+          "instruction": "movaps xmm1, xmm7"
+        },
+        {
+          "address": "0x140554633",
+          "instruction": "mov rcx, rdi"
+        }
+      ]
+    }
+  ],
+  "getters": {
+    "sourceRunId": "animation-precision-writer-20261101-1530",
+    "targetSha256": "ee1add8bb6ded0b6e913f31d62c93d1326d5a44106d558bbd3d19adb78b73bb1",
+    "getters": [
+      {
+        "entry": "0x140aa7a70",
+        "instructions": [
+          {
+            "address": "0x140aa7a70",
+            "instruction": "cmp byte ptr [rcx + 0x61e], 0",
+            "bytes": "80b91e06000000"
+          },
+          {
+            "address": "0x140aa7a77",
+            "instruction": "jne 0x140aa7ad4",
+            "bytes": "755b"
+          },
+          {
+            "address": "0x140aa7a79",
+            "instruction": "movss xmm0, dword ptr [rip + 0x672787]",
+            "bytes": "f30f100587276700",
+            "float32Literal": 400.0
+          },
+          {
+            "address": "0x140aa7a81",
+            "instruction": "comiss xmm0, xmm1",
+            "bytes": "0f2fc1"
+          },
+          {
+            "address": "0x140aa7a84",
+            "instruction": "jbe 0x140aa7a89",
+            "bytes": "7603"
+          },
+          {
+            "address": "0x140aa7a86",
+            "instruction": "xor eax, eax",
+            "bytes": "33c0"
+          },
+          {
+            "address": "0x140aa7a88",
+            "instruction": "ret ",
+            "bytes": "c3"
+          },
+          {
+            "address": "0x140aa7a89",
+            "instruction": "movss xmm0, dword ptr [rip + 0x78bf4f]",
+            "bytes": "f30f10054fbf7800",
+            "float32Literal": 5625.0
+          },
+          {
+            "address": "0x140aa7a91",
+            "instruction": "comiss xmm0, xmm1",
+            "bytes": "0f2fc1"
+          },
+          {
+            "address": "0x140aa7a94",
+            "instruction": "jbe 0x140aa7a9c",
+            "bytes": "7606"
+          },
+          {
+            "address": "0x140aa7a96",
+            "instruction": "mov eax, 1",
+            "bytes": "b801000000"
+          },
+          {
+            "address": "0x140aa7a9b",
+            "instruction": "ret ",
+            "bytes": "c3"
+          },
+          {
+            "address": "0x140aa7a9c",
+            "instruction": "movss xmm0, dword ptr [rip + 0x5f9ff4]",
+            "bytes": "f30f1005f49f5f00",
+            "float32Literal": 40000.0
+          },
+          {
+            "address": "0x140aa7aa4",
+            "instruction": "comiss xmm0, xmm1",
+            "bytes": "0f2fc1"
+          },
+          {
+            "address": "0x140aa7aa7",
+            "instruction": "jbe 0x140aa7aaf",
+            "bytes": "7606"
+          },
+          {
+            "address": "0x140aa7aa9",
+            "instruction": "mov eax, 2",
+            "bytes": "b802000000"
+          },
+          {
+            "address": "0x140aa7aae",
+            "instruction": "ret ",
+            "bytes": "c3"
+          },
+          {
+            "address": "0x140aa7aaf",
+            "instruction": "movss xmm0, dword ptr [rip + 0x78bf2d]",
+            "bytes": "f30f10052dbf7800",
+            "float32Literal": 360000.0
+          },
+          {
+            "address": "0x140aa7ab7",
+            "instruction": "comiss xmm0, xmm1",
+            "bytes": "0f2fc1"
+          },
+          {
+            "address": "0x140aa7aba",
+            "instruction": "jbe 0x140aa7ac2",
+            "bytes": "7606"
+          },
+          {
+            "address": "0x140aa7abc",
+            "instruction": "mov eax, 3",
+            "bytes": "b803000000"
+          },
+          {
+            "address": "0x140aa7ac1",
+            "instruction": "ret ",
+            "bytes": "c3"
+          },
+          {
+            "address": "0x140aa7ac2",
+            "instruction": "movss xmm0, dword ptr [rip + 0x5f9c32]",
+            "bytes": "f30f1005329c5f00",
+            "float32Literal": 1000000.0
+          },
+          {
+            "address": "0x140aa7aca",
+            "instruction": "mov eax, 4",
+            "bytes": "b804000000"
+          },
+          {
+            "address": "0x140aa7acf",
+            "instruction": "comiss xmm0, xmm1",
+            "bytes": "0f2fc1"
+          },
+          {
+            "address": "0x140aa7ad2",
+            "instruction": "ja 0x140aa7ad9",
+            "bytes": "7705"
+          },
+          {
+            "address": "0x140aa7ad4",
+            "instruction": "mov eax, 0xffffffff",
+            "bytes": "b8ffffffff"
+          },
+          {
+            "address": "0x140aa7ad9",
+            "instruction": "ret ",
+            "bytes": "c3"
+          }
+        ],
+        "branchEdges": [
+          [
+            "0x140aa7a77",
+            "0x140aa7ad4"
+          ],
+          [
+            "0x140aa7a84",
+            "0x140aa7a89"
+          ],
+          [
+            "0x140aa7a94",
+            "0x140aa7a9c"
+          ],
+          [
+            "0x140aa7aa7",
+            "0x140aa7aaf"
+          ],
+          [
+            "0x140aa7aba",
+            "0x140aa7ac2"
+          ],
+          [
+            "0x140aa7ad2",
+            "0x140aa7ad9"
+          ]
+        ],
+        "referencedBytesSha256": "160373141b8d33cd69f01998abc2947c1ffcc174b80faa72bb99550b8a9971ed"
+      },
+      {
+        "entry": "0x140aad120",
+        "instructions": [
+          {
+            "address": "0x140aad120",
+            "instruction": "cmp byte ptr [rcx + 0x61e], 0",
+            "bytes": "80b91e06000000"
+          },
+          {
+            "address": "0x140aad127",
+            "instruction": "je 0x140aad12f",
+            "bytes": "7406"
+          },
+          {
+            "address": "0x140aad129",
+            "instruction": "mov eax, 0xffffffff",
+            "bytes": "b8ffffffff"
+          },
+          {
+            "address": "0x140aad12e",
+            "instruction": "ret ",
+            "bytes": "c3"
+          },
+          {
+            "address": "0x140aad12f",
+            "instruction": "movss xmm0, dword ptr [rip + 0x68c631]",
+            "bytes": "f30f100531c66800",
+            "float32Literal": 6400.0
+          },
+          {
+            "address": "0x140aad137",
+            "instruction": "xor eax, eax",
+            "bytes": "33c0"
+          },
+          {
+            "address": "0x140aad139",
+            "instruction": "comiss xmm0, xmm1",
+            "bytes": "0f2fc1"
+          },
+          {
+            "address": "0x140aad13c",
+            "instruction": "ja 0x140aad14e",
+            "bytes": "7710"
+          },
+          {
+            "address": "0x140aad13e",
+            "instruction": "movss xmm0, dword ptr [rip + 0x5f4952]",
+            "bytes": "f30f100552495f00",
+            "float32Literal": 40000.0
+          },
+          {
+            "address": "0x140aad146",
+            "instruction": "comiss xmm0, xmm1",
+            "bytes": "0f2fc1"
+          },
+          {
+            "address": "0x140aad149",
+            "instruction": "setbe al",
+            "bytes": "0f96c0"
+          },
+          {
+            "address": "0x140aad14c",
+            "instruction": "inc eax",
+            "bytes": "ffc0"
+          },
+          {
+            "address": "0x140aad14e",
+            "instruction": "mov rcx, qword ptr [rcx + 0x658]",
+            "bytes": "488b8958060000"
+          },
+          {
+            "address": "0x140aad155",
+            "instruction": "cmp byte ptr [rcx + 0x35], 0",
+            "bytes": "80793500"
+          },
+          {
+            "address": "0x140aad159",
+            "instruction": "je 0x140aad164",
+            "bytes": "7409"
+          },
+          {
+            "address": "0x140aad15b",
+            "instruction": "movzx edx, byte ptr [rcx + 0xf5]",
+            "bytes": "0fb691f5000000"
+          },
+          {
+            "address": "0x140aad162",
+            "instruction": "jmp 0x140aad16b",
+            "bytes": "eb07"
+          },
+          {
+            "address": "0x140aad164",
+            "instruction": "movzx edx, byte ptr [rcx + 0xf4]",
+            "bytes": "0fb691f4000000"
+          },
+          {
+            "address": "0x140aad16b",
+            "instruction": "test dl, dl",
+            "bytes": "84d2"
+          },
+          {
+            "address": "0x140aad16d",
+            "instruction": "je 0x140aad17b",
+            "bytes": "740c"
+          },
+          {
+            "address": "0x140aad16f",
+            "instruction": "mov ecx, 1",
+            "bytes": "b901000000"
+          },
+          {
+            "address": "0x140aad174",
+            "instruction": "cmp eax, ecx",
+            "bytes": "3bc1"
+          },
+          {
+            "address": "0x140aad176",
+            "instruction": "cmovb ecx, eax",
+            "bytes": "0f42c8"
+          },
+          {
+            "address": "0x140aad179",
+            "instruction": "mov eax, ecx",
+            "bytes": "8bc1"
+          },
+          {
+            "address": "0x140aad17b",
+            "instruction": "ret ",
+            "bytes": "c3"
+          }
+        ],
+        "branchEdges": [
+          [
+            "0x140aad127",
+            "0x140aad12f"
+          ],
+          [
+            "0x140aad13c",
+            "0x140aad14e"
+          ],
+          [
+            "0x140aad159",
+            "0x140aad164"
+          ],
+          [
+            "0x140aad162",
+            "0x140aad16b"
+          ],
+          [
+            "0x140aad16d",
+            "0x140aad17b"
+          ]
+        ],
+        "referencedBytesSha256": "4e78702b8594b70a5068b0d0916bbe266e6e0c4cf5be0ae11a6873cd6126340d"
+      }
+    ],
+    "scope": "Reachable direct branches within256bytes per statically identified getter; no indirect branch present.",
+    "limits": [
+      "Static thresholds do not establish the runtime meaning/value of xmm1.",
+      "No livevtable or dynamic getter input captured in this observer."
+    ]
+  },
+  "limits": [
+    "One observed one-part headless mode1 run, no client/visible-frame measurement or new8/64 regression.",
+    "Observer hooks are not read-only process access and exclude this run from performance comparison; no native values overridden.",
+    "Date.now event ordering is not QPC or frame-time. Repeated LOD2 count does not establish exact recurrence period.",
+    "Static Animal vtable selection has not been matched to a captured live vtable/getter input.",
+    "Animal getter numeric thresholds6400/40000 do not yet prove distance-squared semantics.",
+    "SetRequiredSimulation writes566, not61e. No proof this API controls this LOD selector.",
+    "simulation-control-slots linear6e8 decode continues after tail jump140aa4745; subsequent instructions are excluded from control ownership evidence.",
+    "No new frame-time p50/p95/p99, native graph timing, render upload or allocation/GC measurement.20ms p95 remains target."
+  ]
+}

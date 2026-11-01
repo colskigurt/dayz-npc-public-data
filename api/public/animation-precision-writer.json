@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T15:44:42.361859+09:00",
+  "sourceRunId": "animation-precision-writer-20261101-1530",
+  "buildId": "453D-0C6E-B8FB-server-ee1add8b",
+  "verificationStatus": {
+    "diagnostic": "native_lod2_rewrite_caller_diagnosed",
+    "repetitions": 1,
+    "fullNpcRegression": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-precision-writer-20261101-1530",
+    "buildId": "453D-0C6E-B8FB-server-ee1add8b",
+    "verificationStatus": "native_lod2_rewrite_caller_diagnosed",
+    "newRuntimeTrials": 1,
+    "newPbo": false,
+    "newVideo": false,
+    "numericOverrides": false,
+    "observerSummary": {
+      "errors": 0,
+      "evaluationSamples": 90,
+      "publicCounts": {
+        "0": 1
+      },
+      "policyCounts": {
+        "0": 1,
+        "2": 6
+      },
+      "writerCounts": {
+        "actual": 7,
+        "requested": 7
+      },
+      "sentEvents": 16
+    },
+    "rewrite": {
+      "type": "policyBefore",
+      "millisecondsSinceArm": 6464,
+      "fields": {
+        "mode": 1,
+        "requestedPrimary": 0.05000000074505806,
+        "requestedSecondary": 0.05000000074505806,
+        "actualPrimary": 0.05000000074505806,
+        "actualSecondary": 0.20000000298023224
+      },
+      "lod": 2,
+      "updateRequested": 1,
+      "returnRva": 5441771,
+      "stack": {
+        "targetRvas": [
+          5441771,
+          5443866,
+          5588528,
+          6352574,
+          6310052,
+          10235275,
+          6358974,
+          1430960,
+          16873018
+        ],
+        "outsideTargetFrames": 2
+      }
+    },
+    "callerReturnRva": "0x5308eb",
+    "callerCallPreferredVa": "0x1405308e6",
+    "virtualSelectorSlot": "0xb10",
+    "staticAnimalSelector": "0x140aad120",
+    "signatureVerification": {
+      "existingPbos": 3,
+      "allVerified": true
+    },
+    "sourceHashes": {
+      "research/animation-precision-writer-20261101-1530/analyze_writers.py": "b0d375f94738a91c63114170a438d17f025b15fb6f907351dd48a019b0578c1e",
+      "research/animation-precision-writer-20261101-1530/close_getter.py": "e8fbc7018071466b1746f370c2adb3d50f078700a8768b86dbd590eedabfaeeb",
+      "research/animation-precision-writer-20261101-1530/complete-getters.json": "4c5a7a70da395704e2bace69f434de5767df2c1e52b6e482a02c09efca6fa110",
+      "research/animation-precision-writer-20261101-1530/find_policy_types.py": "e28d65ec4820f69cbff3a0fb79b1cd03c844433a385bf076a390653502b279e2",
+      "research/animation-precision-writer-20261101-1530/flag-field-references.json": "85a0a5f4ac0add5701089160c98a675eb1701d97b7b569abc3f6eaf56b7deaae",
+      "research/animation-precision-writer-20261101-1530/inspect_lod_getter.py": "b7780174c6ed77b2b8b8b5d07fe3db8f9770f02c8c0115ac11ecb9264800383d",
+      "research/animation-precision-writer-20261101-1530/inspect_simulation_controls.py": "5e38bb7d912103bc330cc2aeb82e014830ca25e0d9f1bc05062abd8af26567cf",
+      "research/animation-precision-writer-20261101-1530/lod-getter.json": "c277cd44955bfcf7ca6d5c2ffb77f5695f4da32455d5931c7e74a95f72f8ddbb",
+      "research/animation-precision-writer-20261101-1530/observe_writes.py": "d6050a3ae0db572e40e44d51001e6d176a547eb54f4f8f00f4d79c7e09a092b9",
+      "research/animation-precision-writer-20261101-1530/policy-types.json": "60528e44bf5cdb4c5fad3bc78918ab34dde80968d0d1183ba22301f93aa69745",
+      "research/animation-precision-writer-20261101-1530/run_probe.ps1": "ca75341aa97cd3a0a17d525442bc8241f3641147ea91ee34bb878049a96025d3",
+      "research/animation-precision-writer-20261101-1530/server-launch-BProbe.json": "07e34b8c60be97760b5fc5d71f3316d1926e38fcfa1aa424e5e495fcddc332a8",
+      "research/animation-precision-writer-20261101-1530/simulation-control-bindings.json": "56f92054b349531f4ebddb32750003a6da738a0bcd2bf32021a25e28d42f735c",
+      "research/animation-precision-writer-20261101-1530/simulation-control-slots.json": "00442fac61dbce186aca2ae5441d8c8f02f169294e6de0ba6aeb6174e417d19f",
+      "research/animation-precision-writer-20261101-1530/writer-callers.json": "26fa279cfb4069e5e17aa217027013af8dbdca23ba40cd68cb149b9003de7825",
+      "research/animation-precision-writer-20261101-1530/writer-observer.js": "58a9a723f1cfa5e88589fcffaff64f840bc0ce49a5bd909da5e395bc35565d39",
+      "research/animation-precision-writer-20261101-1530/writer-observer.json": "3a8cbbbe59ccf6c7e1daa9af2f76f3eec455e7f3370eaaf1114a1f91182066bb",
+      "research/animation-precision-writer-20261101-1530/server-profile-BProbe/DayZServer_x64_2026-11-01_15-33-17.RPT": "8edf0db01645e0e9b68751a325b77096680f3f6a1e4dacb54b9b3cc51400bf27",
+      "research/animation-precision-writer-20261101-1530/server-profile-BProbe/error_2026-11-01_15-33-17.log": "71b02faebb30c731add47a38fa34574ef5adab54c911f31d6e9f8bcbda021933",
+      "research/animation-precision-writer-20261101-1530/server-profile-BProbe/role-pose.tsv": "4b510faa68357c6f18063bf8b634293bf516c4ca944f402f34eaa56a4d0e880b",
+      "research/animation-precision-writer-20261101-1530/server-profile-BProbe/script_2026-11-01_15-33-17.log": "57f47673699def3401eecd959bfa95e97c70704460ea24f847860f1b8355e147",
+      "research/animation-precision-writer-20261101-1530/server-profile-BProbe/server.cfg": "37dd80bbed28d49ea90b55ff1c4262112bf5239fd766c11aedb84f3a8ab55276",
+      "research/animation-precision-writer-20261101-1530/server-role-lod0.chernarusplus/init.c": "0ace8eaa6d11fac0bdddb517a80a3000fc749d639d7bb7d230efa073aa397bf1",
+      "research/animation-precision-writer-20261101-1530/server-profile-BProbe/Users/Server/DayZ.cfg": "3f6936691f027e96f57831896dd7b522a8dddff16de86df77a3019123db08ac7"
+    },
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "One observed one-part headless mode1 run, no client/visible-frame measurement or new8/64 regression.",
+      "Observer hooks are not read-only process access and exclude this run from performance comparison; no native values overridden.",
+      "Date.now event ordering is not QPC or frame-time. Repeated LOD2 count does not establish exact recurrence period.",
+      "Static Animal vtable selection has not been matched to a captured live vtable/getter input.",
+      "Animal getter numeric thresholds6400/40000 do not yet prove distance-squared semantics.",
+      "SetRequiredSimulation writes566, not61e. No proof this API controls this LOD selector.",
+      "simulation-control-slots linear6e8 decode continues after tail jump140aa4745; subsequent instructions are excluded from control ownership evidence.",
+      "No new frame-time p50/p95/p99, native graph timing, render upload or allocation/GC measurement.20ms p95 remains target."
+    ],
+    "next": "Capture live selected-entity vtable, slotB10 input/output, flag61e and producer of xmm1 in a bounded unchanged one-part fixture. Match Animal override before assigning distance semantics. Do not force native fields or repeat publicLOD0 every tick."
+  },
+  "blockers": [
+    "One observed one-part headless mode1 run, no client/visible-frame measurement or new8/64 regression.",
+    "Observer hooks are not read-only process access and exclude this run from performance comparison; no native values overridden.",
+    "Date.now event ordering is not QPC or frame-time. Repeated LOD2 count does not establish exact recurrence period.",
+    "Static Animal vtable selection has not been matched to a captured live vtable/getter input.",
+    "Animal getter numeric thresholds6400/40000 do not yet prove distance-squared semantics.",
+    "SetRequiredSimulation writes566, not61e. No proof this API controls this LOD selector.",
+    "simulation-control-slots linear6e8 decode continues after tail jump140aa4745; subsequent instructions are excluded from control ownership evidence.",
+    "No new frame-time p50/p95/p99, native graph timing, render upload or allocation/GC measurement.20ms p95 remains target."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-precision-writer-20261101.md",
+      "sha256": "75c5cbc58b1cb73315e1ab192aad1f82bb7d8841708d37e95c4e49840dfc81ef"
+    },
+    {
+      "path": "evidence/animation-precision-writer-20261101.txt",
+      "sha256": "922342b3120483164636b79d4601a3028cbf6931859331633b58fcb965fa60b7"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
