@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T15:55:31.341469+09:00",
+  "sourceRunId": "animation-client-mode2-20261101-1555",
+  "buildId": "native-client-c6709ece",
+  "verificationStatus": {
+    "diagnostic": "mode2_buffered_dispatch_and_shared_interpolation_static_diagnosed",
+    "repetitions": 0,
+    "fullNpcRegression": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-client-mode2-20261101-1555",
+    "buildId": "native-client-c6709ece",
+    "verificationStatus": "mode2_buffered_dispatch_and_shared_interpolation_static_diagnosed",
+    "newRuntimeTrials": 0,
+    "newPbo": false,
+    "newVideo": false,
+    "numericOverrides": false,
+    "metrics": {
+      "primaryFunctions": 5,
+      "additionalConsumers": 3,
+      "verifiedInstructionRecords": 531,
+      "staticSubobjectSlots": 4,
+      "liveMode2Samples": 0
+    },
+    "sourceHashes": {
+      "research/animation-client-mode2-20261101-1555/find_client_types.py": "c801df9067c622ad69bdf5c52d2e53a418ed8993fb2fced43c4a184bc7b9e2ea",
+      "research/animation-client-mode2-20261101-1555/inspect_mode2.py": "683b84e977194a59e39709cae124854d0deaa99d3a608696b9a5ef3671c344f1",
+      "research/animation-client-mode2-20261101-1555/mode2-buffer-consumers.json": "bbb7ff7d4d6fdc462d096873861fb13a1a1fc10727dac4b53389b30d46512d5b",
+      "research/animation-client-mode2-20261101-1555/mode2-contract.json": "4feda1909a2269ecd7cc38e3676c68e6680e631e08f94ff3906511e38fc218f2",
+      "research/animation-client-mode2-20261101-1555/mode2-subobject-slots.json": "309a4584abc39454548741ecf5b053416d269550a549903858a6a779264f4425",
+      "research/animation-client-mode2-20261101-1555/policy-types.json": "9408aa33fd7a7d10a83bdaec54028b07d37757ccb64eb03f5d691fed3f803cc1"
+    },
+    "sourceAudit": {
+      "path": "research/track_b_dayz_2026-10-23/native-runtime/source/dg_lab_inputs/Scripts/4_World/DGNativeProbe.c",
+      "sha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86",
+      "selectedLines": [
+        {
+          "firstLine": 3,
+          "lastLine": 9,
+          "text": "class Animal_DGNativeProbe: AnimalBase\n{\n    int PreviewRequest=0;\n    float NativeSeconds;\n    int NativeRequest;\n    vector NativeRootDelta;\n    float NativeRootDistance;"
+        },
+        {
+          "firstLine": 42,
+          "lastLine": 48,
+          "text": "    {\n        if(Retiring)return;\n        Retiring=true;GroundBody=null;GroundLeader=false;PreviewRequest=0;ApplyRootMotion=false;\n        DGNativeCommand command=DGNativeCommand.Cast(GetCommand_Script());\n        if(command)command.Retire();\n        if(!GetCommand_Script())RetirementObserved=true;\n    }"
+        },
+        {
+          "firstLine": 49,
+          "lastLine": 55,
+          "text": "    override bool ModCommandHandlerBefore(float pDt, int pCurrentCommandID, bool pCurrentCommandFinished)\n    {\n        if(!RuntimeTimingProbe)return HandleNativeCommand(pDt,pCurrentCommandID,pCurrentCommandFinished);\n        int started=TickCount(0);\n        bool result=HandleNativeCommand(pDt,pCurrentCommandID,pCurrentCommandFinished);\n        HandlerElapsedTicks+=TickCount(started);HandlerTimingCalls++;\n        return result;"
+        },
+        {
+          "firstLine": 51,
+          "lastLine": 57,
+          "text": "        if(!RuntimeTimingProbe)return HandleNativeCommand(pDt,pCurrentCommandID,pCurrentCommandFinished);\n        int started=TickCount(0);\n        bool result=HandleNativeCommand(pDt,pCurrentCommandID,pCurrentCommandFinished);\n        HandlerElapsedTicks+=TickCount(started);HandlerTimingCalls++;\n        return result;\n    }\n    bool HandleNativeCommand(float pDt, int pCurrentCommandID, bool pCurrentCommandFinished)"
+        },
+        {
+          "firstLine": 55,
+          "lastLine": 61,
+          "text": "        return result;\n    }\n    bool HandleNativeCommand(float pDt, int pCurrentCommandID, bool pCurrentCommandFinished)\n    {\n        if(Retiring)\n        {\n            DayZAnimalCommandScript ending=GetCommand_Script();"
+        },
+        {
+          "firstLine": 79,
+          "lastLine": 85,
+          "text": "            // Explicit construction supplies the native initializer's animal argument.\n            // The prior StartCommand_ScriptInst candidate supplied no constructor data.\n            StartCommand_Script(new DGNativeCommand(this));\n        }\n        return true;\n    }\n}"
+        },
+        {
+          "firstLine": 117,
+          "lastLine": 123,
+          "text": "        if(animation)\n        {\n            RequestId=animation.BindVariableInt(\"RequestedState\");\n            ReleaseId=animation.BindVariableBool(\"TraversalReleased\");\n            LandingId=animation.BindVariableBool(\"LandingConfirmed\");\n        }\n        Print(\"DG_NATIVE_COMMAND_BOUND request=\"+RequestId+\" release=\"+ReleaseId+\" landing=\"+LandingId);"
+        },
+        {
+          "firstLine": 123,
+          "lastLine": 129,
+          "text": "        Print(\"DG_NATIVE_COMMAND_BOUND request=\"+RequestId+\" release=\"+ReleaseId+\" landing=\"+LandingId);\n    }\n    override void PreAnimUpdate(float pDt)\n    {\n        bool timing=Owner && Owner.RuntimeTimingProbe && !Retired;\n        int started;if(timing)started=TickCount(0);\n        RunPreAnim(pDt);"
+        },
+        {
+          "firstLine": 176,
+          "lastLine": 182,
+          "text": "            if(Owner.NativeRequest!=request)Owner.AnimationRequestChanges++;\n            if(Owner.NativeRequest!=request || Owner.NativeRequestBoundAt<0)Owner.NativeRequestBoundAt=Owner.LastAnimationCallbackAt;\n            Owner.NativeRequest=request;\n        }\n        if(RequestId>=0)PreAnim_SetInt(RequestId,request);\n        if(ReleaseId>=0)PreAnim_SetBool(ReleaseId,released);\n        if(LandingId>=0)PreAnim_SetBool(LandingId,landed);"
+        },
+        {
+          "firstLine": 182,
+          "lastLine": 188,
+          "text": "        if(LandingId>=0)PreAnim_SetBool(LandingId,landed);\n    }\n    override void PrePhysUpdate(float pDt)\n    {\n        bool timing=Owner && Owner.RuntimeTimingProbe && !Retired;\n        int started;\n        if(timing)"
+        }
+      ],
+      "scope": "Token-context audit in the exact prototype file only, not proof of all inherited network behavior or all PBO source equality."
+    },
+    "mode2SubobjectOffset": "0x5f8",
+    "mode2SubobjectVtable": "0x14130fef8",
+    "mode2BufferDispatch": "0x140997b70",
+    "retainedDescriptorConsumer": "0x140b70490",
+    "sharedInterpolation": "0x140b13380",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "Static reachable direct-branch windows are not recursively complete virtual/external call graphs.",
+      "No live client mode2 sample,network role comparison,8/64 regression,visible-frame or performance measurement.",
+      "Subobject field+18 and retained descriptor numerator are different objects from mode0 entity+66c.",
+      "Source token contexts do not prove all inherited network synchronization or absence of native graph transport.",
+      "Static mode2 path is not proof of smooth playback,correct custom command replication or a deployable fix."
+    ],
+    "next": "Prepare and run a minimal isolated dedicated-server plus connected-client role probe with one native physical part and unchanged PBOs. First establish stream-in/live mode2,buffer availability,graph/pose progression and request equivalence. Only then compare timing. Preserve offline mode0 evidence and do not port full NPC authority or add interpolation speculatively."
+  },
+  "blockers": [
+    "Static reachable direct-branch windows are not recursively complete virtual/external call graphs.",
+    "No live client mode2 sample,network role comparison,8/64 regression,visible-frame or performance measurement.",
+    "Subobject field+18 and retained descriptor numerator are different objects from mode0 entity+66c.",
+    "Source token contexts do not prove all inherited network synchronization or absence of native graph transport.",
+    "Static mode2 path is not proof of smooth playback,correct custom command replication or a deployable fix."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-client-mode2-20261101.md",
+      "sha256": "c190f6248e0f5cb31d2931f313b2394e7a0665f0d5e81394ed5036a70b626448"
+    },
+    {
+      "path": "evidence/animation-client-mode2-20261101.txt",
+      "sha256": "ce49bd9839fe9d7e35139d1bd567a59b7358d09a94a9c63389c4256d9993428b"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
