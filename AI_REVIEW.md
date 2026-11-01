@@ -1,3 +1,5 @@
+> 최신 작업: 같은 평지·카메라·입력의 V64/C64 독립2회. 커스텀 전체 비용 증가 및 CPU animation 시계 손실 측정, 시각 품질/20ms 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/matched-flat-pursuit-20261102.md).
+
 > 최신 작업: 바닐라 평지 추격의 실제 CPU/GPU/Present 측정. 새2회, 두번째 sampler 약3.84Hz. VSync/표시 주사율 영향과 커스텀 조건차를 분리하며20ms/시각/animation self-time은 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/vanilla-flat-pursuit-20261102.md).
 
 > 최신 작업은 외부 참고자료 검토다. 새 게임실험/측정 없음. WWZ 배경 VAT와 전경 캐릭터를 구분하고 DayZ 적용 제약을 정리했다. [검토 보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/wwz-animation-reference-review-20261101.md). 기존 애니메이션 진단·실험 수치와 미수용 상태는 유지한다.
