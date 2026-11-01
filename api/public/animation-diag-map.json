@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T17:24:47.838929+09:00",
+  "sourceRunId": "animation-diag-map-20261101-1720",
+  "buildId": "diagnostic-A500-static-map",
+  "verificationStatus": {
+    "diagnostic": "diagnostic_binary_static_animation_paths_mapped_live_trace_pending",
+    "repetitions": 0,
+    "fullNpcRegression": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "schemaVersion": "1.0.0",
+    "sourceRunId": "animation-diag-map-20261101-1720",
+    "buildId": "diagnostic-A500-static-map",
+    "diagnosticSha256": "a500be804ffed5cde369337aeb6ab477ef5ee0b5015764be2b1953c85ec3060d",
+    "releaseSha256": "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
+    "newRuntimeTrials": 0,
+    "newPbo": false,
+    "newVideo": false,
+    "nativeAttachment": false,
+    "fields": {
+      "entityAnimationContext": {
+        "release": "0x620",
+        "diagnostic": "0x628",
+        "basis": "diagnostic MS wrapper and scheduler"
+      },
+      "entityMode": {
+        "release": "0x668",
+        "diagnostic": "0x670",
+        "basis": "scheduler mode0/1/2 branch"
+      },
+      "mode0Accumulator": {
+        "release": "0x66c",
+        "diagnostic": "0x674",
+        "basis": "scheduler add/compare/reset-to-zero"
+      },
+      "bufferSubobject": {
+        "release": "0x5f8",
+        "diagnostic": "0x600",
+        "basis": "RTTI subobject plus return-owner thunk and scheduler lea"
+      },
+      "primaryInterval": {
+        "diagnostic": "0x258",
+        "basis": "mode0 threshold read"
+      },
+      "graphClock": {
+        "diagnostic": null,
+        "status": "not mapped; do not reuse release context+0x198 unverified"
+      },
+      "secondaryInterval": {
+        "diagnostic": null,
+        "status": "not independently mapped"
+      }
+    },
+    "functionRvas": {
+      "scheduler": "0xc6a020",
+      "bufferDispatcher": "0xa7e7a0",
+      "bufferDescriptorConsumer": "0xc680a0",
+      "bufferItemConsumer": "0xc69700",
+      "interpolation": "0xc08340",
+      "jointStateInterpolation": "0xc083d0",
+      "queryMSWrapper": "0xc67b00",
+      "queryMSHelper": "0xc04760",
+      "hashToSlot": "0x310320"
+    },
+    "primaryCodePointerPrefix": {
+      "release": 365,
+      "diagnostic": 369,
+      "scope": "contiguous code-pointer prefix, not proof of full class ABI equivalence"
+    },
+    "branches": {
+      "mode0": "adds input to accumulator, evaluates at threshold, resets accumulator to zero",
+      "mode2": "passes entity+0x600 to buffered dispatcher; dispatcher adds delta to sub+0x18 and subtracts processed intervals; virtual slot0x48 calls descriptor consumer",
+      "pose": "interpolation calls state helper at context+0xa0; helper uses state+0xf0 = context+0x190 skeleton and writes 32-byte transform slots at skeleton+0x30",
+      "query": "MS wrapper uses context+0x188 skeleton; helper reads 32-byte transform slots then converts them to output matrices"
+    },
+    "staticChecksPassed": true,
+    "actualRuntimeMappingVerified": false,
+    "functionalRegression": "not_retested",
+    "frameTimeP50P95P99": null,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "Named RTTI plus decoded calls/fields establishes selected static relationships only. Actual diagnostic live object selection and calls are not yet verified.",
+      "Direct-branch bounded Capstone analysis is not full provider decompilation or REA runtime Evidence. External/virtual call targets outside selected scope remain unresolved.",
+      "Diagnostic graphClock and secondary interval fields remain unmapped; no blind release-offset reuse.",
+      "The source label poseAndClock in diag-pose.json was provisional: the decoded C08660 body is descriptor/root-transform interpolation, not proof of a graph-clock writer.",
+      "Compressed transform writes are not rendered-frame observations. Do not assume cached matrix arrays are synchronized without checking the relevant build and invalidation path.",
+      "No new animation quality or performance measurement; 20ms-p95 target remains unmet."
+    ],
+    "next": "Use the verified diagnostic fixture for one bounded read-only trace of the mapped scheduler/buffer/descriptor calls and selected skeleton shape. Treat graphClock as unavailable until its writer is mapped. Read compressed pose separately from cached matrices and later synchronize with actual visible observations.",
+    "localEvidenceIntegrity": {
+      "filesVerified": 13,
+      "privateManifestPublished": false,
+      "checkpointSha256": "068bc7495cefea1b44e6e7c745355fb45e51b949662e9b139db890a7e4ff542a"
+    }
+  },
+  "blockers": [
+    "Named RTTI plus decoded calls/fields establishes selected static relationships only. Actual diagnostic live object selection and calls are not yet verified.",
+    "Direct-branch bounded Capstone analysis is not full provider decompilation or REA runtime Evidence. External/virtual call targets outside selected scope remain unresolved.",
+    "Diagnostic graphClock and secondary interval fields remain unmapped; no blind release-offset reuse.",
+    "The source label poseAndClock in diag-pose.json was provisional: the decoded C08660 body is descriptor/root-transform interpolation, not proof of a graph-clock writer.",
+    "Compressed transform writes are not rendered-frame observations. Do not assume cached matrix arrays are synchronized without checking the relevant build and invalidation path.",
+    "No new animation quality or performance measurement; 20ms-p95 target remains unmet."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-diag-map-20261101.md",
+      "sha256": "5c29dce2db04df66c3046d4bf62f258d60c5e24d06d6ee905ec8993e3def8974"
+    },
+    {
+      "path": "evidence/animation-diag-map-20261101.txt",
+      "sha256": "8e013982d9011bbebdc0e95aec2a21cc224d7d36b2297311771ee8337771d4e1"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

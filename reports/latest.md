@@ -1,3 +1,5 @@
+> 최신 진단: A500 전용 scheduler·buffer·interpolation과 객체 필드를 정적으로 연결했다. animation context+628/mode+670/subobject+600이며 일반exe 오프셋을재사용하지않는다. graphClock writer는미확인이다. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-diag-map-20261101.md). 새runtime·시각/성능수용없음.
+
 > 최신 진단: 실제 PowerShell5.1의 JSON 배열 중첩이 하네스 중단 원인임을 재현했다. 수정 guard11/11 통과. 진단exe의1회 미션DONE·조기disconnect0·BE kick0을확인했다. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/diag-guard-20261101.md). 일반exe 해결·시각/성능수용과는구분한다.
 
 > 최신 진단: native 관찰기 없는 실행에서도0x000400F0/BattlEye restart-required 화면과서버kick사유를확인했다. READY후32.170초이탈. 진단exe3시도는NPC생성전하네스중단이며연결검증이아니다. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/no-observer-error-20261101.md). client상태·내부원인·시각/성능수용미완료.
