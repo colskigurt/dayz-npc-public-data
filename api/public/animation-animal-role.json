@@ -1,0 +1,163 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-01T14:41:28.692633+09:00",
+  "sourceRunId": "animation-animal-role-20261101-1429",
+  "buildId": "native-client-c6709ece-server-ee1add8b",
+  "verificationStatus": {
+    "diagnostic": "constructor_chain_and_server_role_failure_boundary",
+    "serverPoseTrial": "failed_before_samples",
+    "functional": "not_retested",
+    "visual": "not_accepted",
+    "performance": "not_accepted",
+    "supportedClockFix": "not_established",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sourceRunId": "animation-animal-role-20261101-1429",
+    "buildId": "native-client-c6709ece-server-ee1add8b",
+    "verificationStatus": "animal_base_chain_and_headless_role_boundary_failure_diagnosed",
+    "newRuntimeTrials": 3,
+    "newPbo": false,
+    "newVideo": false,
+    "numericOverrides": false,
+    "metrics": {
+      "animalVtableReferences": 2,
+      "selectedCalleeFragments": 4,
+      "serverStarts": 3,
+      "readyServerTrials": 2,
+      "completedPoseTrials": 0,
+      "poseRows": 0,
+      "crashedServerTrials": 2,
+      "onePartFaultRva": "0xa52ee4"
+    },
+    "attempts": [
+      {
+        "attempt": "server-profile",
+        "ready": false,
+        "roles": null,
+        "poseRows": 0,
+        "commandBoundMarker": false,
+        "crashLogCount": 0,
+        "zeroSizeMinidumps": 0
+      },
+      {
+        "attempt": "server-profile-native",
+        "ready": true,
+        "roles": {
+          "parts": "8",
+          "server": "true",
+          "client": "false",
+          "multiplayer": "true",
+          "dedicated": "true"
+        },
+        "poseRows": 0,
+        "commandBoundMarker": false,
+        "crashLogCount": 1,
+        "zeroSizeMinidumps": 1
+      },
+      {
+        "attempt": "server-profile-one",
+        "ready": true,
+        "roles": {
+          "parts": "1",
+          "server": "true",
+          "client": "false",
+          "multiplayer": "true",
+          "dedicated": "true"
+        },
+        "poseRows": 0,
+        "commandBoundMarker": false,
+        "crashLogCount": 1,
+        "zeroSizeMinidumps": 1
+      }
+    ],
+    "constructorChain": [
+      "DayZAnimal@0x140b74290",
+      "DayZCreatureAI@0x140b6af90",
+      "DayZCreature@0x140b6e7e0"
+    ],
+    "crash": {
+      "serverExecutableSha256": "ee1add8bb6ded0b6e913f31d62c93d1326d5a44106d558bbd3d19adb78b73bb1",
+      "faultRva": "0xa52ee4",
+      "instruction": "mov rax, qword ptr [rcx]",
+      "nullReadReported": true,
+      "rootCause": "not_identified",
+      "fullRegisterDumpAvailable": false
+    },
+    "signatureVerification": {
+      "existingPbos": 3,
+      "allVerified": true,
+      "newPbo": false
+    },
+    "sourceHashes": {
+      "research/animation-animal-role-20261101-1429/animal-constructor.json": "9f3a0d182c55fc8a87f82e7833aa7ebc1e74c022c0104ce8bae8c78a429fbe53",
+      "research/animation-animal-role-20261101-1429/constructor-callees.json": "406d98323bc77d27f56914649368ce06a34b4f7c8666ff33be8ad0c2fef9b9e5",
+      "research/animation-animal-role-20261101-1429/follow_constructor.py": "05402285f4395e5380dc5192f99820dbd3c71e89844593c38ba9da200d763eeb",
+      "research/animation-animal-role-20261101-1429/inspect_animal.py": "107c6e1fe79285550868202920ab86dc60c80e8edc9e0f45660b2fac579b36ac",
+      "research/animation-animal-role-20261101-1429/inspect_server_crash.py": "93db16c183a42a76516baaf443a560a508f4e1221b95b95697a255bfdd7ec704",
+      "research/animation-animal-role-20261101-1429/run_server_role.ps1": "732228999dcd635af3ef87ca571a721d2568c5dcfcd2258f4df7d1d713d15515",
+      "research/animation-animal-role-20261101-1429/run_server_role_one.ps1": "2cadcc873a8b0dec5b3551a5463e1aafc7e78c7b207c95a139c2380bd5f79aee",
+      "research/animation-animal-role-20261101-1429/server-crash-analysis.json": "12dc8b975296911c0da2e7067e138698e86c6b1444952fa4998d84f0d95ad85b",
+      "research/animation-animal-role-20261101-1429/server-launch-native.json": "16cb04c8f261d4d798b7a6987f4bcdc97d232a6eebb47f8ef92bbf717668725e",
+      "research/animation-animal-role-20261101-1429/server-launch-one.json": "c4e2efdcb6520f41f8615acebecb17a756fa4b21e2210aad488e43c0ac9f4b91",
+      "research/animation-animal-role-20261101-1429/server-launch.json": "7184907338985c462b35786b1b83e5682279f55170bb8a8af9c9c6b29f9a8097",
+      "research/animation-animal-role-20261101-1429/signature-first-attempt.json": "892b47cd8ec816bcbd1e272fd761f1d8bf4604ddc1e9f5330651c007816b90fa",
+      "research/animation-animal-role-20261101-1429/server-profile/DayZServer_x64_2026-11-01_14-35-10.RPT": "bf0cc5771b952bf5683cb2ea5cd3561ddbdbf524dab6f99c13533454d103132f",
+      "research/animation-animal-role-20261101-1429/server-profile/error_2026-11-01_14-35-10.log": "efd4642097bdd4ffaf005384b43c11a6df159a923ec8b4abb10cad3bbede4bfa",
+      "research/animation-animal-role-20261101-1429/server-profile/script_2026-11-01_14-35-10.log": "07777ece9b5de0aa4dd32d9db55fae76d33d4fe5dff62f4e2efe0da5e48cb58f",
+      "research/animation-animal-role-20261101-1429/server-profile/server.cfg": "cb10b796f990407bff9783340e2b55c5b1330d7862c5ddfc12588480fbe344ea",
+      "research/animation-animal-role-20261101-1429/server-profile-native/crash_2026-11-01_14-35-56.log": "28ffef5207bb945e2e473429ed455e73910bf2173c975ab8f358de9924b099c9",
+      "research/animation-animal-role-20261101-1429/server-profile-native/DayZServer_x64_2026-11-01_14-35-56.RPT": "fd61053b884bf21e38ab84a6f9e8f9e59ce0197a09f02aa0e6111bd72c038420",
+      "research/animation-animal-role-20261101-1429/server-profile-native/error_2026-11-01_14-35-56.log": "79e5591ecb8b8a98fefcd061bae2cae29db7ab91e9e60af6fcad484424637168",
+      "research/animation-animal-role-20261101-1429/server-profile-native/role-pose.tsv": "5241daa480875eba907a5e22e6f46c68504f8ba95e61400a825e82f045df0a4b",
+      "research/animation-animal-role-20261101-1429/server-profile-native/script_2026-11-01_14-35-56.log": "21dfc43f9374ba41e9c5e996f598368fadc56035f1066505cb35c66d0dcc9d70",
+      "research/animation-animal-role-20261101-1429/server-profile-native/server.cfg": "cb10b796f990407bff9783340e2b55c5b1330d7862c5ddfc12588480fbe344ea",
+      "research/animation-animal-role-20261101-1429/server-profile-one/crash_2026-11-01_14-37-35.log": "92152368cf5c406034def1c5b95edf60b7524b1f2d9a292f18795eb2c13c63d1",
+      "research/animation-animal-role-20261101-1429/server-profile-one/DayZServer_x64_2026-11-01_14-37-35.RPT": "488eb3f8886070b29039e24bb8f09a8782f65191d8263d9c494eee8b7060f3c3",
+      "research/animation-animal-role-20261101-1429/server-profile-one/error_2026-11-01_14-37-35.log": "3e42f57a0c63167f6499c31338793abc107395a26dfc2f02248410a33f5b3b19",
+      "research/animation-animal-role-20261101-1429/server-profile-one/role-pose.tsv": "5241daa480875eba907a5e22e6f46c68504f8ba95e61400a825e82f045df0a4b",
+      "research/animation-animal-role-20261101-1429/server-profile-one/script_2026-11-01_14-37-35.log": "3d7840e52489f0a2bfaa80a92bb93ecc3ad098bb1e9bedb0abd141655a99607c",
+      "research/animation-animal-role-20261101-1429/server-profile-one/server.cfg": "be958d6d8d1e9f5e490ed20456c61a0042708fa089074634718ca51cc0a86458",
+      "research/animation-animal-role-20261101-1429/server-role-one.chernarusplus/init.c": "5494fa58c876bbaebc65b2b658dff5e0b3d8b01c5fd4901634182eebb071bce5",
+      "research/animation-animal-role-20261101-1429/server-role.chernarusplus/init.c": "e437ebd734c4bad4080b45bae620d87831fa6fddbe8fdcd64e1420e1d1c83250",
+      "research/animation-animal-role-20261101-1429/server-profile/Users/Server/DayZ.cfg": "3f6936691f027e96f57831896dd7b522a8dddff16de86df77a3019123db08ac7",
+      "research/animation-animal-role-20261101-1429/server-profile-native/Users/Server/DayZ.cfg": "3f6936691f027e96f57831896dd7b522a8dddff16de86df77a3019123db08ac7",
+      "research/animation-animal-role-20261101-1429/server-profile-one/Users/Server/DayZ.cfg": "3f6936691f027e96f57831896dd7b522a8dddff16de86df77a3019123db08ac7"
+    },
+    "limits": [
+      "No completed server pose trial,visible frame,smoothness or64 performance result.",
+      "One-part fixture only changes part count; it is crash isolation, not equivalent full NPC functional regression.",
+      "Direct constructor fragments omit indirect helper effects and chained fragments.",
+      "Server/client binaries differ. Client mode offsets/VA were not blindly reused for crash mapping.",
+      "Owned server was stopped after crash detection; only zero-size/incomplete minidumps remain, so no full register state.",
+      "Old8part crash lacks saved module base; exact normalized equality with1part is not asserted."
+    ],
+    "next": "Follow server fault function/unwind chain and expected owner pointer before any additional role trial; if needed use a minimal vanilla or script-command control with one factor changed. Do not force scheduler mode or promote headless hosting as animation fix.",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "blockers": [
+    "No completed server pose trial,visible frame,smoothness or64 performance result.",
+    "One-part fixture only changes part count; it is crash isolation, not equivalent full NPC functional regression.",
+    "Direct constructor fragments omit indirect helper effects and chained fragments.",
+    "Server/client binaries differ. Client mode offsets/VA were not blindly reused for crash mapping.",
+    "Owned server was stopped after crash detection; only zero-size/incomplete minidumps remain, so no full register state.",
+    "Old8part crash lacks saved module base; exact normalized equality with1part is not asserted."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-animal-role-20261101.md",
+      "sha256": "c11151ecc2f9239870fe24200711ceab37f886c0b3e271e775cbbd490f6bc3b3"
+    },
+    {
+      "path": "evidence/animation-animal-role-20261101.txt",
+      "sha256": "8eef24f642955b52e3adec1e69fc7b029422778af4be22449f815d67748844a1"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

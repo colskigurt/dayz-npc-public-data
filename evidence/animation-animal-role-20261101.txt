@@ -1,0 +1,1049 @@
+{
+  "selection": "All direct call lists and direct memory-store metadata for2 Animal vtable spans and4 explicit callee fragments; first32 constructor instructions and full small CreatureAI constructor; normalized one-part fault context; all3 attempt aggregates. Raw command lines,PID,module ASLR base and full crash logs omitted.",
+  "metrics": {
+    "sourceRunId": "animation-animal-role-20261101-1429",
+    "buildId": "native-client-c6709ece-server-ee1add8b",
+    "verificationStatus": "animal_base_chain_and_headless_role_boundary_failure_diagnosed",
+    "newRuntimeTrials": 3,
+    "newPbo": false,
+    "newVideo": false,
+    "numericOverrides": false,
+    "metrics": {
+      "animalVtableReferences": 2,
+      "selectedCalleeFragments": 4,
+      "serverStarts": 3,
+      "readyServerTrials": 2,
+      "completedPoseTrials": 0,
+      "poseRows": 0,
+      "crashedServerTrials": 2,
+      "onePartFaultRva": "0xa52ee4"
+    },
+    "attempts": [
+      {
+        "attempt": "server-profile",
+        "ready": false,
+        "roles": null,
+        "poseRows": 0,
+        "commandBoundMarker": false,
+        "crashLogCount": 0,
+        "zeroSizeMinidumps": 0
+      },
+      {
+        "attempt": "server-profile-native",
+        "ready": true,
+        "roles": {
+          "parts": "8",
+          "server": "true",
+          "client": "false",
+          "multiplayer": "true",
+          "dedicated": "true"
+        },
+        "poseRows": 0,
+        "commandBoundMarker": false,
+        "crashLogCount": 1,
+        "zeroSizeMinidumps": 1
+      },
+      {
+        "attempt": "server-profile-one",
+        "ready": true,
+        "roles": {
+          "parts": "1",
+          "server": "true",
+          "client": "false",
+          "multiplayer": "true",
+          "dedicated": "true"
+        },
+        "poseRows": 0,
+        "commandBoundMarker": false,
+        "crashLogCount": 1,
+        "zeroSizeMinidumps": 1
+      }
+    ],
+    "constructorChain": [
+      "DayZAnimal@0x140b74290",
+      "DayZCreatureAI@0x140b6af90",
+      "DayZCreature@0x140b6e7e0"
+    ],
+    "crash": {
+      "serverExecutableSha256": "ee1add8bb6ded0b6e913f31d62c93d1326d5a44106d558bbd3d19adb78b73bb1",
+      "faultRva": "0xa52ee4",
+      "instruction": "mov rax, qword ptr [rcx]",
+      "nullReadReported": true,
+      "rootCause": "not_identified",
+      "fullRegisterDumpAvailable": false
+    },
+    "signatureVerification": {
+      "existingPbos": 3,
+      "allVerified": true,
+      "newPbo": false
+    },
+    "sourceHashes": {
+      "research/animation-animal-role-20261101-1429/animal-constructor.json": "9f3a0d182c55fc8a87f82e7833aa7ebc1e74c022c0104ce8bae8c78a429fbe53",
+      "research/animation-animal-role-20261101-1429/constructor-callees.json": "406d98323bc77d27f56914649368ce06a34b4f7c8666ff33be8ad0c2fef9b9e5",
+      "research/animation-animal-role-20261101-1429/follow_constructor.py": "05402285f4395e5380dc5192f99820dbd3c71e89844593c38ba9da200d763eeb",
+      "research/animation-animal-role-20261101-1429/inspect_animal.py": "107c6e1fe79285550868202920ab86dc60c80e8edc9e0f45660b2fac579b36ac",
+      "research/animation-animal-role-20261101-1429/inspect_server_crash.py": "93db16c183a42a76516baaf443a560a508f4e1221b95b95697a255bfdd7ec704",
+      "research/animation-animal-role-20261101-1429/run_server_role.ps1": "732228999dcd635af3ef87ca571a721d2568c5dcfcd2258f4df7d1d713d15515",
+      "research/animation-animal-role-20261101-1429/run_server_role_one.ps1": "2cadcc873a8b0dec5b3551a5463e1aafc7e78c7b207c95a139c2380bd5f79aee",
+      "research/animation-animal-role-20261101-1429/server-crash-analysis.json": "12dc8b975296911c0da2e7067e138698e86c6b1444952fa4998d84f0d95ad85b",
+      "research/animation-animal-role-20261101-1429/server-launch-native.json": "16cb04c8f261d4d798b7a6987f4bcdc97d232a6eebb47f8ef92bbf717668725e",
+      "research/animation-animal-role-20261101-1429/server-launch-one.json": "c4e2efdcb6520f41f8615acebecb17a756fa4b21e2210aad488e43c0ac9f4b91",
+      "research/animation-animal-role-20261101-1429/server-launch.json": "7184907338985c462b35786b1b83e5682279f55170bb8a8af9c9c6b29f9a8097",
+      "research/animation-animal-role-20261101-1429/signature-first-attempt.json": "892b47cd8ec816bcbd1e272fd761f1d8bf4604ddc1e9f5330651c007816b90fa",
+      "research/animation-animal-role-20261101-1429/server-profile/DayZServer_x64_2026-11-01_14-35-10.RPT": "bf0cc5771b952bf5683cb2ea5cd3561ddbdbf524dab6f99c13533454d103132f",
+      "research/animation-animal-role-20261101-1429/server-profile/error_2026-11-01_14-35-10.log": "efd4642097bdd4ffaf005384b43c11a6df159a923ec8b4abb10cad3bbede4bfa",
+      "research/animation-animal-role-20261101-1429/server-profile/script_2026-11-01_14-35-10.log": "07777ece9b5de0aa4dd32d9db55fae76d33d4fe5dff62f4e2efe0da5e48cb58f",
+      "research/animation-animal-role-20261101-1429/server-profile/server.cfg": "cb10b796f990407bff9783340e2b55c5b1330d7862c5ddfc12588480fbe344ea",
+      "research/animation-animal-role-20261101-1429/server-profile-native/crash_2026-11-01_14-35-56.log": "28ffef5207bb945e2e473429ed455e73910bf2173c975ab8f358de9924b099c9",
+      "research/animation-animal-role-20261101-1429/server-profile-native/DayZServer_x64_2026-11-01_14-35-56.RPT": "fd61053b884bf21e38ab84a6f9e8f9e59ce0197a09f02aa0e6111bd72c038420",
+      "research/animation-animal-role-20261101-1429/server-profile-native/error_2026-11-01_14-35-56.log": "79e5591ecb8b8a98fefcd061bae2cae29db7ab91e9e60af6fcad484424637168",
+      "research/animation-animal-role-20261101-1429/server-profile-native/role-pose.tsv": "5241daa480875eba907a5e22e6f46c68504f8ba95e61400a825e82f045df0a4b",
+      "research/animation-animal-role-20261101-1429/server-profile-native/script_2026-11-01_14-35-56.log": "21dfc43f9374ba41e9c5e996f598368fadc56035f1066505cb35c66d0dcc9d70",
+      "research/animation-animal-role-20261101-1429/server-profile-native/server.cfg": "cb10b796f990407bff9783340e2b55c5b1330d7862c5ddfc12588480fbe344ea",
+      "research/animation-animal-role-20261101-1429/server-profile-one/crash_2026-11-01_14-37-35.log": "92152368cf5c406034def1c5b95edf60b7524b1f2d9a292f18795eb2c13c63d1",
+      "research/animation-animal-role-20261101-1429/server-profile-one/DayZServer_x64_2026-11-01_14-37-35.RPT": "488eb3f8886070b29039e24bb8f09a8782f65191d8263d9c494eee8b7060f3c3",
+      "research/animation-animal-role-20261101-1429/server-profile-one/error_2026-11-01_14-37-35.log": "3e42f57a0c63167f6499c31338793abc107395a26dfc2f02248410a33f5b3b19",
+      "research/animation-animal-role-20261101-1429/server-profile-one/role-pose.tsv": "5241daa480875eba907a5e22e6f46c68504f8ba95e61400a825e82f045df0a4b",
+      "research/animation-animal-role-20261101-1429/server-profile-one/script_2026-11-01_14-37-35.log": "3d7840e52489f0a2bfaa80a92bb93ecc3ad098bb1e9bedb0abd141655a99607c",
+      "research/animation-animal-role-20261101-1429/server-profile-one/server.cfg": "be958d6d8d1e9f5e490ed20456c61a0042708fa089074634718ca51cc0a86458",
+      "research/animation-animal-role-20261101-1429/server-role-one.chernarusplus/init.c": "5494fa58c876bbaebc65b2b658dff5e0b3d8b01c5fd4901634182eebb071bce5",
+      "research/animation-animal-role-20261101-1429/server-role.chernarusplus/init.c": "e437ebd734c4bad4080b45bae620d87831fa6fddbe8fdcd64e1420e1d1c83250",
+      "research/animation-animal-role-20261101-1429/server-profile/Users/Server/DayZ.cfg": "3f6936691f027e96f57831896dd7b522a8dddff16de86df77a3019123db08ac7",
+      "research/animation-animal-role-20261101-1429/server-profile-native/Users/Server/DayZ.cfg": "3f6936691f027e96f57831896dd7b522a8dddff16de86df77a3019123db08ac7",
+      "research/animation-animal-role-20261101-1429/server-profile-one/Users/Server/DayZ.cfg": "3f6936691f027e96f57831896dd7b522a8dddff16de86df77a3019123db08ac7"
+    },
+    "limits": [
+      "No completed server pose trial,visible frame,smoothness or64 performance result.",
+      "One-part fixture only changes part count; it is crash isolation, not equivalent full NPC functional regression.",
+      "Direct constructor fragments omit indirect helper effects and chained fragments.",
+      "Server/client binaries differ. Client mode offsets/VA were not blindly reused for crash mapping.",
+      "Owned server was stopped after crash detection; only zero-size/incomplete minidumps remain, so no full register state.",
+      "Old8part crash lacks saved module base; exact normalized equality with1part is not asserted."
+    ],
+    "next": "Follow server fault function/unwind chain and expected owner pointer before any additional role trial; if needed use a minimal vanilla or script-command control with one factor changed. Do not force scheduler mode or promote headless hosting as animation fix.",
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false
+  },
+  "animalReferences": [
+    {
+      "vtableReference": "0x140b742c6",
+      "start": "0x140b74290",
+      "end": "0x140b7455d",
+      "sha256": "93f502fef7cfd788d7a03f2de47c38f67e6fef579e02474076f4d9dc860557d5",
+      "decodedToEnd": true,
+      "directCalls": [
+        "0x140b6af90",
+        "0x1410de858",
+        "0x140b732c0",
+        "0x140b6d170",
+        "0x140b70020",
+        "0x140b70020",
+        "0x140b70020",
+        "0x140b70020"
+      ],
+      "memoryWrites": [
+        {
+          "address": "0x140b74293",
+          "instruction": "mov qword ptr [rax + 8], rcx",
+          "base": "rax",
+          "offset": "0x8"
+        },
+        {
+          "address": "0x140b742a8",
+          "instruction": "mov qword ptr [rsp + 0x38], 0xfffffffffffffffe",
+          "base": "rsp",
+          "offset": "0x38"
+        },
+        {
+          "address": "0x140b742b1",
+          "instruction": "movaps xmmword ptr [rax - 0x38], xmm6",
+          "base": "rax",
+          "offset": "-0x38"
+        },
+        {
+          "address": "0x140b742b5",
+          "instruction": "movaps xmmword ptr [rax - 0x48], xmm7",
+          "base": "rax",
+          "offset": "-0x48"
+        },
+        {
+          "address": "0x140b742cd",
+          "instruction": "mov qword ptr [rbx], rax",
+          "base": "rbx",
+          "offset": "0x0"
+        },
+        {
+          "address": "0x140b742d7",
+          "instruction": "mov qword ptr [rbx + 0x10], rax",
+          "base": "rbx",
+          "offset": "0x10"
+        },
+        {
+          "address": "0x140b742e2",
+          "instruction": "mov qword ptr [rbx + 0x28], rax",
+          "base": "rbx",
+          "offset": "0x28"
+        },
+        {
+          "address": "0x140b742ed",
+          "instruction": "mov qword ptr [rbx + 0x30], rax",
+          "base": "rbx",
+          "offset": "0x30"
+        },
+        {
+          "address": "0x140b742f8",
+          "instruction": "mov qword ptr [rbx + 0xa8], rax",
+          "base": "rbx",
+          "offset": "0xa8"
+        },
+        {
+          "address": "0x140b74306",
+          "instruction": "mov qword ptr [rbx + 0xb8], rax",
+          "base": "rbx",
+          "offset": "0xb8"
+        },
+        {
+          "address": "0x140b74314",
+          "instruction": "mov qword ptr [rbx + 0x1d8], rax",
+          "base": "rbx",
+          "offset": "0x1d8"
+        },
+        {
+          "address": "0x140b74322",
+          "instruction": "mov qword ptr [rbx + 0x408], rax",
+          "base": "rbx",
+          "offset": "0x408"
+        },
+        {
+          "address": "0x140b74330",
+          "instruction": "mov qword ptr [rbx + 0x5f8], rax",
+          "base": "rbx",
+          "offset": "0x5f8"
+        },
+        {
+          "address": "0x140b7433e",
+          "instruction": "mov qword ptr [rbx + 0x690], rax",
+          "base": "rbx",
+          "offset": "0x690"
+        },
+        {
+          "address": "0x140b74347",
+          "instruction": "mov qword ptr [rbx + 0x6c8], rdi",
+          "base": "rbx",
+          "offset": "0x6c8"
+        },
+        {
+          "address": "0x140b7434e",
+          "instruction": "mov qword ptr [rbx + 0x6d0], rdi",
+          "base": "rbx",
+          "offset": "0x6d0"
+        },
+        {
+          "address": "0x140b74355",
+          "instruction": "mov qword ptr [rbx + 0x6d8], rdi",
+          "base": "rbx",
+          "offset": "0x6d8"
+        },
+        {
+          "address": "0x140b7435c",
+          "instruction": "mov qword ptr [rbx + 0x6e0], rdi",
+          "base": "rbx",
+          "offset": "0x6e0"
+        },
+        {
+          "address": "0x140b74363",
+          "instruction": "mov qword ptr [rbx + 0x6e8], rdi",
+          "base": "rbx",
+          "offset": "0x6e8"
+        },
+        {
+          "address": "0x140b7436a",
+          "instruction": "mov qword ptr [rbx + 0x6f0], rdi",
+          "base": "rbx",
+          "offset": "0x6f0"
+        },
+        {
+          "address": "0x140b74371",
+          "instruction": "mov qword ptr [rbx + 0x700], rdi",
+          "base": "rbx",
+          "offset": "0x700"
+        },
+        {
+          "address": "0x140b74378",
+          "instruction": "mov qword ptr [rbx + 0x708], rdi",
+          "base": "rbx",
+          "offset": "0x708"
+        },
+        {
+          "address": "0x140b7437f",
+          "instruction": "mov qword ptr [rbx + 0x710], rdi",
+          "base": "rbx",
+          "offset": "0x710"
+        },
+        {
+          "address": "0x140b74390",
+          "instruction": "mov qword ptr [rbp + 0x68], rax",
+          "base": "rbp",
+          "offset": "0x68"
+        },
+        {
+          "address": "0x140b743b9",
+          "instruction": "lock xadd dword ptr [rcx + 8], eax",
+          "base": "rcx",
+          "offset": "0x8"
+        },
+        {
+          "address": "0x140b743cb",
+          "instruction": "mov qword ptr [rbx + 0x6c8], rdi",
+          "base": "rbx",
+          "offset": "0x6c8"
+        },
+        {
+          "address": "0x140b743e0",
+          "instruction": "lock xadd dword ptr [rcx + 8], eax",
+          "base": "rcx",
+          "offset": "0x8"
+        },
+        {
+          "address": "0x140b74426",
+          "instruction": "mov dword ptr [rsp + 0x30], eax",
+          "base": "rsp",
+          "offset": "0x30"
+        },
+        {
+          "address": "0x140b744f8",
+          "instruction": "movss dword ptr [rax + 0xc0], xmm4",
+          "base": "rax",
+          "offset": "0xc0"
+        },
+        {
+          "address": "0x140b74500",
+          "instruction": "movss dword ptr [rax + 0xc4], xmm6",
+          "base": "rax",
+          "offset": "0xc4"
+        },
+        {
+          "address": "0x140b74508",
+          "instruction": "movss dword ptr [rax + 0xc8], xmm7",
+          "base": "rax",
+          "offset": "0xc8"
+        },
+        {
+          "address": "0x140b74510",
+          "instruction": "movss dword ptr [rax + 0xcc], xmm1",
+          "base": "rax",
+          "offset": "0xcc"
+        },
+        {
+          "address": "0x140b74518",
+          "instruction": "movss dword ptr [rax + 0xd0], xmm2",
+          "base": "rax",
+          "offset": "0xd0"
+        },
+        {
+          "address": "0x140b74520",
+          "instruction": "movss dword ptr [rax + 0xd4], xmm3",
+          "base": "rax",
+          "offset": "0xd4"
+        },
+        {
+          "address": "0x140b74528",
+          "instruction": "mov dword ptr [rax + 0xd8], 0x40000000",
+          "base": "rax",
+          "offset": "0xd8"
+        },
+        {
+          "address": "0x140b74532",
+          "instruction": "mov dword ptr [rax + 0xdc], 1",
+          "base": "rax",
+          "offset": "0xdc"
+        }
+      ]
+    },
+    {
+      "vtableReference": "0x140b74577",
+      "start": "0x140b74560",
+      "end": "0x140b74789",
+      "sha256": "4c1f04fe22cbbbaa5ce9eb795686c321d0743cd95ec74452719037b32e341905",
+      "decodedToEnd": true,
+      "directCalls": [
+        "0x140b15d50",
+        "0x140b15d50",
+        "0x140b15d50",
+        "0x140b16260",
+        "0x1410de454"
+      ],
+      "memoryWrites": [
+        {
+          "address": "0x140b74566",
+          "instruction": "mov qword ptr [rsp + 0x20], 0xfffffffffffffffe",
+          "base": "rsp",
+          "offset": "0x20"
+        },
+        {
+          "address": "0x140b7456f",
+          "instruction": "mov qword ptr [rsp + 0x48], rbx",
+          "base": "rsp",
+          "offset": "0x48"
+        },
+        {
+          "address": "0x140b7457e",
+          "instruction": "mov qword ptr [rcx], rax",
+          "base": "rcx",
+          "offset": "0x0"
+        },
+        {
+          "address": "0x140b74588",
+          "instruction": "mov qword ptr [rcx + 0x10], rax",
+          "base": "rcx",
+          "offset": "0x10"
+        },
+        {
+          "address": "0x140b74593",
+          "instruction": "mov qword ptr [rcx + 0x28], rax",
+          "base": "rcx",
+          "offset": "0x28"
+        },
+        {
+          "address": "0x140b7459e",
+          "instruction": "mov qword ptr [rcx + 0x30], rax",
+          "base": "rcx",
+          "offset": "0x30"
+        },
+        {
+          "address": "0x140b745a9",
+          "instruction": "mov qword ptr [rcx + 0xa8], rax",
+          "base": "rcx",
+          "offset": "0xa8"
+        },
+        {
+          "address": "0x140b745b7",
+          "instruction": "mov qword ptr [rcx + 0xb8], rax",
+          "base": "rcx",
+          "offset": "0xb8"
+        },
+        {
+          "address": "0x140b745c5",
+          "instruction": "mov qword ptr [rcx + 0x1d8], rax",
+          "base": "rcx",
+          "offset": "0x1d8"
+        },
+        {
+          "address": "0x140b745d3",
+          "instruction": "mov qword ptr [rcx + 0x408], rax",
+          "base": "rcx",
+          "offset": "0x408"
+        },
+        {
+          "address": "0x140b745e1",
+          "instruction": "mov qword ptr [rcx + 0x5f8], rax",
+          "base": "rcx",
+          "offset": "0x5f8"
+        },
+        {
+          "address": "0x140b745ef",
+          "instruction": "mov qword ptr [rcx + 0x690], rax",
+          "base": "rcx",
+          "offset": "0x690"
+        },
+        {
+          "address": "0x140b7466f",
+          "instruction": "mov qword ptr [rbx + 0x6d0], rdi",
+          "base": "rbx",
+          "offset": "0x6d0"
+        },
+        {
+          "address": "0x140b74689",
+          "instruction": "mov qword ptr [rbx + 0x6d8], rdi",
+          "base": "rbx",
+          "offset": "0x6d8"
+        },
+        {
+          "address": "0x140b746a3",
+          "instruction": "mov qword ptr [rbx + 0x6e0], rdi",
+          "base": "rbx",
+          "offset": "0x6e0"
+        },
+        {
+          "address": "0x140b746bd",
+          "instruction": "mov qword ptr [rbx + 0x6e8], rdi",
+          "base": "rbx",
+          "offset": "0x6e8"
+        },
+        {
+          "address": "0x140b746d7",
+          "instruction": "mov qword ptr [rbx + 0x6f0], rdi",
+          "base": "rbx",
+          "offset": "0x6f0"
+        },
+        {
+          "address": "0x140b746f1",
+          "instruction": "mov qword ptr [rbx + 0x6f8], rdi",
+          "base": "rbx",
+          "offset": "0x6f8"
+        },
+        {
+          "address": "0x140b7470b",
+          "instruction": "mov qword ptr [rbx + 0x700], rdi",
+          "base": "rbx",
+          "offset": "0x700"
+        },
+        {
+          "address": "0x140b74725",
+          "instruction": "mov qword ptr [rbx + 0x708], rdi",
+          "base": "rbx",
+          "offset": "0x708"
+        },
+        {
+          "address": "0x140b74743",
+          "instruction": "mov qword ptr [rbx + 0x710], rdi",
+          "base": "rbx",
+          "offset": "0x710"
+        },
+        {
+          "address": "0x140b7475f",
+          "instruction": "lock xadd dword ptr [rcx + 8], eax",
+          "base": "rcx",
+          "offset": "0x8"
+        },
+        {
+          "address": "0x140b74770",
+          "instruction": "mov qword ptr [rbx + 0x6c8], rdi",
+          "base": "rbx",
+          "offset": "0x6c8"
+        }
+      ]
+    }
+  ],
+  "animalConstructorPrefix": [
+    {
+      "address": "0x140b74290",
+      "instruction": "mov rax, rsp"
+    },
+    {
+      "address": "0x140b74293",
+      "instruction": "mov qword ptr [rax + 8], rcx"
+    },
+    {
+      "address": "0x140b74297",
+      "instruction": "push rbp"
+    },
+    {
+      "address": "0x140b74298",
+      "instruction": "push rbx"
+    },
+    {
+      "address": "0x140b74299",
+      "instruction": "push rsi"
+    },
+    {
+      "address": "0x140b7429a",
+      "instruction": "push rdi"
+    },
+    {
+      "address": "0x140b7429b",
+      "instruction": "push r14"
+    },
+    {
+      "address": "0x140b7429d",
+      "instruction": "lea rbp, [rax - 0x48]"
+    },
+    {
+      "address": "0x140b742a1",
+      "instruction": "sub rsp, 0x120"
+    },
+    {
+      "address": "0x140b742a8",
+      "instruction": "mov qword ptr [rsp + 0x38], 0xfffffffffffffffe"
+    },
+    {
+      "address": "0x140b742b1",
+      "instruction": "movaps xmmword ptr [rax - 0x38], xmm6"
+    },
+    {
+      "address": "0x140b742b5",
+      "instruction": "movaps xmmword ptr [rax - 0x48], xmm7"
+    },
+    {
+      "address": "0x140b742b9",
+      "instruction": "movzx r14d, r8b"
+    },
+    {
+      "address": "0x140b742bd",
+      "instruction": "mov rbx, rcx"
+    },
+    {
+      "address": "0x140b742c0",
+      "instruction": "call 0x140b6af90"
+    },
+    {
+      "address": "0x140b742c5",
+      "instruction": "nop "
+    },
+    {
+      "address": "0x140b742c6",
+      "instruction": "lea rax, [rip + 0x79aea3]"
+    },
+    {
+      "address": "0x140b742cd",
+      "instruction": "mov qword ptr [rbx], rax"
+    },
+    {
+      "address": "0x140b742d0",
+      "instruction": "lea rax, [rip + 0x79ba09]"
+    },
+    {
+      "address": "0x140b742d7",
+      "instruction": "mov qword ptr [rbx + 0x10], rax"
+    },
+    {
+      "address": "0x140b742db",
+      "instruction": "lea rax, [rip + 0x79ba1e]"
+    },
+    {
+      "address": "0x140b742e2",
+      "instruction": "mov qword ptr [rbx + 0x28], rax"
+    },
+    {
+      "address": "0x140b742e6",
+      "instruction": "lea rax, [rip + 0x79bad3]"
+    },
+    {
+      "address": "0x140b742ed",
+      "instruction": "mov qword ptr [rbx + 0x30], rax"
+    },
+    {
+      "address": "0x140b742f1",
+      "instruction": "lea rax, [rip + 0x79bb08]"
+    },
+    {
+      "address": "0x140b742f8",
+      "instruction": "mov qword ptr [rbx + 0xa8], rax"
+    },
+    {
+      "address": "0x140b742ff",
+      "instruction": "lea rax, [rip + 0x79bbaa]"
+    },
+    {
+      "address": "0x140b74306",
+      "instruction": "mov qword ptr [rbx + 0xb8], rax"
+    },
+    {
+      "address": "0x140b7430d",
+      "instruction": "lea rax, [rip + 0x79bbc4]"
+    },
+    {
+      "address": "0x140b74314",
+      "instruction": "mov qword ptr [rbx + 0x1d8], rax"
+    },
+    {
+      "address": "0x140b7431b",
+      "instruction": "lea rax, [rip + 0x79bbc6]"
+    },
+    {
+      "address": "0x140b74322",
+      "instruction": "mov qword ptr [rbx + 0x408], rax"
+    }
+  ],
+  "creatureAiConstructor": {
+    "start": "0x140b6af90",
+    "end": "0x140b6b05f",
+    "sha256": "5c61317609c08482477cfa3bbbe19192a9f6ae4e599db1666fe583c087160487",
+    "decodedToEnd": true,
+    "staticTypes": [
+      {
+        "address": "0x140b6afa8",
+        "vtable": "0x14130bba8",
+        "type": ".?AVDayZCreatureAI@@",
+        "subobjectOffset": 0
+      },
+      {
+        "address": "0x140b6afb2",
+        "vtable": "0x14130c718",
+        "type": ".?AVDayZCreatureAI@@",
+        "subobjectOffset": 16
+      },
+      {
+        "address": "0x140b6afbd",
+        "vtable": "0x14130c738",
+        "type": ".?AVDayZCreatureAI@@",
+        "subobjectOffset": 40
+      },
+      {
+        "address": "0x140b6afc8",
+        "vtable": "0x14130c7f8",
+        "type": ".?AVDayZCreatureAI@@",
+        "subobjectOffset": 48
+      },
+      {
+        "address": "0x140b6afd3",
+        "vtable": "0x14130c838",
+        "type": ".?AVDayZCreatureAI@@",
+        "subobjectOffset": 168
+      },
+      {
+        "address": "0x140b6afe1",
+        "vtable": "0x14130c8e8",
+        "type": ".?AVDayZCreatureAI@@",
+        "subobjectOffset": 184
+      },
+      {
+        "address": "0x140b6afef",
+        "vtable": "0x14130c910",
+        "type": ".?AVDayZCreatureAI@@",
+        "subobjectOffset": 472
+      },
+      {
+        "address": "0x140b6affd",
+        "vtable": "0x14130c920",
+        "type": ".?AVDayZCreatureAI@@",
+        "subobjectOffset": 1032
+      },
+      {
+        "address": "0x140b6b00b",
+        "vtable": "0x14130c930",
+        "type": ".?AVDayZCreatureAI@@",
+        "subobjectOffset": 1528
+      },
+      {
+        "address": "0x140b6b019",
+        "vtable": "0x14130c988",
+        "type": ".?AVDayZCreatureAI@@",
+        "subobjectOffset": 1680
+      }
+    ],
+    "modeAndAccumulatorWrites": [],
+    "directCalls": [
+      {
+        "address": "0x140b6afa2",
+        "target": "0x140b6e7e0"
+      }
+    ],
+    "instructions": [
+      {
+        "address": "0x140b6af90",
+        "instruction": "push rbx"
+      },
+      {
+        "address": "0x140b6af92",
+        "instruction": "sub rsp, 0x30"
+      },
+      {
+        "address": "0x140b6af96",
+        "instruction": "mov qword ptr [rsp + 0x20], 0xfffffffffffffffe"
+      },
+      {
+        "address": "0x140b6af9f",
+        "instruction": "mov rbx, rcx"
+      },
+      {
+        "address": "0x140b6afa2",
+        "instruction": "call 0x140b6e7e0"
+      },
+      {
+        "address": "0x140b6afa7",
+        "instruction": "nop "
+      },
+      {
+        "address": "0x140b6afa8",
+        "instruction": "lea rax, [rip + 0x7a0bf9]"
+      },
+      {
+        "address": "0x140b6afaf",
+        "instruction": "mov qword ptr [rbx], rax"
+      },
+      {
+        "address": "0x140b6afb2",
+        "instruction": "lea rax, [rip + 0x7a175f]"
+      },
+      {
+        "address": "0x140b6afb9",
+        "instruction": "mov qword ptr [rbx + 0x10], rax"
+      },
+      {
+        "address": "0x140b6afbd",
+        "instruction": "lea rax, [rip + 0x7a1774]"
+      },
+      {
+        "address": "0x140b6afc4",
+        "instruction": "mov qword ptr [rbx + 0x28], rax"
+      },
+      {
+        "address": "0x140b6afc8",
+        "instruction": "lea rax, [rip + 0x7a1829]"
+      },
+      {
+        "address": "0x140b6afcf",
+        "instruction": "mov qword ptr [rbx + 0x30], rax"
+      },
+      {
+        "address": "0x140b6afd3",
+        "instruction": "lea rax, [rip + 0x7a185e]"
+      },
+      {
+        "address": "0x140b6afda",
+        "instruction": "mov qword ptr [rbx + 0xa8], rax"
+      },
+      {
+        "address": "0x140b6afe1",
+        "instruction": "lea rax, [rip + 0x7a1900]"
+      },
+      {
+        "address": "0x140b6afe8",
+        "instruction": "mov qword ptr [rbx + 0xb8], rax"
+      },
+      {
+        "address": "0x140b6afef",
+        "instruction": "lea rax, [rip + 0x7a191a]"
+      },
+      {
+        "address": "0x140b6aff6",
+        "instruction": "mov qword ptr [rbx + 0x1d8], rax"
+      },
+      {
+        "address": "0x140b6affd",
+        "instruction": "lea rax, [rip + 0x7a191c]"
+      },
+      {
+        "address": "0x140b6b004",
+        "instruction": "mov qword ptr [rbx + 0x408], rax"
+      },
+      {
+        "address": "0x140b6b00b",
+        "instruction": "lea rax, [rip + 0x7a191e]"
+      },
+      {
+        "address": "0x140b6b012",
+        "instruction": "mov qword ptr [rbx + 0x5f8], rax"
+      },
+      {
+        "address": "0x140b6b019",
+        "instruction": "lea rax, [rip + 0x7a1968]"
+      },
+      {
+        "address": "0x140b6b020",
+        "instruction": "mov qword ptr [rbx + 0x690], rax"
+      },
+      {
+        "address": "0x140b6b027",
+        "instruction": "xor eax, eax"
+      },
+      {
+        "address": "0x140b6b029",
+        "instruction": "mov qword ptr [rbx + 0x698], rax"
+      },
+      {
+        "address": "0x140b6b030",
+        "instruction": "mov qword ptr [rbx + 0x6a0], rax"
+      },
+      {
+        "address": "0x140b6b037",
+        "instruction": "mov qword ptr [rbx + 0x6a8], rax"
+      },
+      {
+        "address": "0x140b6b03e",
+        "instruction": "mov qword ptr [rbx + 0x6b0], rax"
+      },
+      {
+        "address": "0x140b6b045",
+        "instruction": "mov qword ptr [rbx + 0x6b8], rax"
+      },
+      {
+        "address": "0x140b6b04c",
+        "instruction": "mov dword ptr [rbx + 0x6c0], 0xffffffff"
+      },
+      {
+        "address": "0x140b6b056",
+        "instruction": "mov rax, rbx"
+      },
+      {
+        "address": "0x140b6b059",
+        "instruction": "add rsp, 0x30"
+      },
+      {
+        "address": "0x140b6b05d",
+        "instruction": "pop rbx"
+      },
+      {
+        "address": "0x140b6b05e",
+        "instruction": "ret "
+      }
+    ]
+  },
+  "calleeSummaries": [
+    {
+      "start": "0x140b732c0",
+      "end": "0x140b73337",
+      "sha256": "596be3c5e82b7b43bd53bc824d6cc2c971a9bcf290b09df8fd572b22576ae3ce",
+      "decodedToEnd": true,
+      "staticTypes": [
+        {
+          "address": "0x140b732dc",
+          "vtable": "0x14130e988",
+          "type": ".?AVDayZAnimalInputController@@",
+          "subobjectOffset": 0
+        },
+        {
+          "address": "0x140b732e6",
+          "vtable": "0x14130e9c8",
+          "type": ".?AVDayZAnimalInputController@@",
+          "subobjectOffset": 16
+        },
+        {
+          "address": "0x140b732f1",
+          "vtable": "0x14130e9e8",
+          "type": ".?AVDayZAnimalInputController@@",
+          "subobjectOffset": 40
+        }
+      ],
+      "modeAndAccumulatorWrites": [],
+      "directCalls": [
+        {
+          "address": "0x140b732d6",
+          "target": "0x140b697f0"
+        }
+      ]
+    },
+    {
+      "start": "0x140b6d170",
+      "end": "0x140b6d2a4",
+      "sha256": "9a97fbf8fe1d537780fb65fd2230d89619358d996ffa4de1e8a85dfb201f3e7a",
+      "decodedToEnd": true,
+      "staticTypes": [],
+      "modeAndAccumulatorWrites": [],
+      "directCalls": [
+        {
+          "address": "0x140b6d19c",
+          "target": "0x140b70020"
+        }
+      ]
+    },
+    {
+      "start": "0x140b70020",
+      "end": "0x140b7004a",
+      "sha256": "d13918ec15923f0d114251e50cf5296a25c666e5a94a0d6f941f0c014a63103a",
+      "decodedToEnd": true,
+      "staticTypes": [],
+      "modeAndAccumulatorWrites": [],
+      "directCalls": []
+    }
+  ],
+  "normalizedCrash": {
+    "sourceRunId": "animation-animal-role-20261101-1429",
+    "serverExecutableSha256": "ee1add8bb6ded0b6e913f31d62c93d1326d5a44106d558bbd3d19adb78b73bb1",
+    "crashFileSha256": "92152368cf5c406034def1c5b95edf60b7524b1f2d9a292f18795eb2c13c63d1",
+    "sourceLaunchSha256": "c4e2efdcb6520f41f8615acebecb17a756fa4b21e2210aad488e43c0ac9f4b91",
+    "moduleBaseSource": "captured from owned process MainModule immediately after startup",
+    "faultRva": "0xa52ee4",
+    "preferredFaultAddress": "0x140a52ee4",
+    "unwindRange": [
+      "0x140a52ec4",
+      "0x140a53679"
+    ],
+    "rangeSha256": "854945d949b3c8a67447bec8175743afd0e73a4e3a4610b08a5fd2b3bf54dad4",
+    "faultInstruction": {
+      "address": "0x140a52ee4",
+      "rva": "0xa52ee4",
+      "instruction": "mov rax, qword ptr [rcx]"
+    },
+    "context": [
+      {
+        "address": "0x140a52ec4",
+        "rva": "0xa52ec4",
+        "instruction": "lea rdx, [rbp - 0x29]"
+      },
+      {
+        "address": "0x140a52ec8",
+        "rva": "0xa52ec8",
+        "instruction": "mov rcx, rbx"
+      },
+      {
+        "address": "0x140a52ecb",
+        "rva": "0xa52ecb",
+        "instruction": "call 0x1406f4370"
+      },
+      {
+        "address": "0x140a52ed0",
+        "rva": "0xa52ed0",
+        "instruction": "test r13b, r13b"
+      },
+      {
+        "address": "0x140a52ed3",
+        "rva": "0xa52ed3",
+        "instruction": "jne 0x140a52efb"
+      },
+      {
+        "address": "0x140a52ed5",
+        "rva": "0xa52ed5",
+        "instruction": "mov dword ptr [rsi + 0x74], r15d"
+      },
+      {
+        "address": "0x140a52ed9",
+        "rva": "0xa52ed9",
+        "instruction": "jmp 0x140a52ee0"
+      },
+      {
+        "address": "0x140a52edb",
+        "rva": "0xa52edb",
+        "instruction": "test r13b, r13b"
+      },
+      {
+        "address": "0x140a52ede",
+        "rva": "0xa52ede",
+        "instruction": "jne 0x140a52efb"
+      },
+      {
+        "address": "0x140a52ee0",
+        "rva": "0xa52ee0",
+        "instruction": "mov rcx, qword ptr [rsi + 8]"
+      },
+      {
+        "address": "0x140a52ee4",
+        "rva": "0xa52ee4",
+        "instruction": "mov rax, qword ptr [rcx]"
+      },
+      {
+        "address": "0x140a52ee7",
+        "rva": "0xa52ee7",
+        "instruction": "call qword ptr [rax + 0x4e8]"
+      },
+      {
+        "address": "0x140a52eed",
+        "rva": "0xa52eed",
+        "instruction": "cmp qword ptr [rsi + 0x90], rax"
+      },
+      {
+        "address": "0x140a52ef4",
+        "rva": "0xa52ef4",
+        "instruction": "jne 0x140a52efb"
+      },
+      {
+        "address": "0x140a52ef6",
+        "rva": "0xa52ef6",
+        "instruction": "xor r8b, r8b"
+      },
+      {
+        "address": "0x140a52ef9",
+        "rva": "0xa52ef9",
+        "instruction": "jmp 0x140a52efe"
+      },
+      {
+        "address": "0x140a52efb",
+        "rva": "0xa52efb",
+        "instruction": "mov r8b, 1"
+      },
+      {
+        "address": "0x140a52efe",
+        "rva": "0xa52efe",
+        "instruction": "mov r9d, dword ptr [rbx + 0x10]"
+      }
+    ],
+    "limits": [
+      "Crash handler reports null read; no register dump or completed minidump retained.",
+      "Bounded decode establishes instruction identity, not the runtime value of every pointer or full root cause.",
+      "Server binary differs from client; no client VA or layout reused without matching bytes.",
+      "Eight-part first crash has no saved module base, so exact ASLR-normalized equality is not asserted."
+    ]
+  }
+}

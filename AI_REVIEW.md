@@ -1,3 +1,5 @@
+> 최신 진단: Animal→CreatureAI→Creature 생성 연결. 같은3PBO 서버8파트/1파트 모두READY후충돌·포즈0.1파트fault RVA A52EE4/null read 확인,근본 원인 미확정. 기존3서명 OK. 서버 역할을 애니메이션 해결책으로 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-animal-role-20261101.md). 이전 기록 보존.
+
 > 최신 진단: Creature 생성자에서 엔진 전역 상태에 따른mode0/1/2 선택 확인. 공개 역할 판정4개와 연결하고 기존8파트mode0 guard 재대조. mode1의 별도 평가 경로는 시각·성능 개선 증거가 아님. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-scheduler-mode-20261101.md). 이전 기록 보존.
 
 > 최신 진단: UpdateSimulationPrecision 등록 연결·13입력/7분기 대조. 이 API가 즉시 선택하는 primary 최솟값50ms. 음수 requested0도 actual50ms. 60Hz 제어·시각·성능 수용 미확보. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/animation-precision-contract-20261101.md). 이전 기록 보존.
