@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/sixtyfour1"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "logicalNpcs",
+        "nativeParts",
+        "independentRuns",
+        "functionalGatePassed",
+        "visualAccepted",
+        "performanceAccepted"
+      ],
+      "properties": {
+        "logicalNpcs": {
+          "const": 64
+        },
+        "nativeParts": {
+          "const": 512
+        },
+        "independentRuns": {
+          "const": 1
+        },
+        "functionalGatePassed": {
+          "const": false
+        },
+        "visualAccepted": {
+          "const": false
+        },
+        "performanceAccepted": {
+          "const": false
+        }
+      }
+    }
+  }
+}
