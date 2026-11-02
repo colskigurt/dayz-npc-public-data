@@ -1,56 +1,55 @@
 ## 1. 작업 목표
 
-미해결 부모 참조가 처음 생성될 때부터 잘못된 값인지, 정상 초기화 이후 다른 입력에서 생기는지 구분한다. 실제 값이 없이 ECE_INITAI 추가·부모 ID 강제·충돌 비활성화를 적용하지 않는다. 물리 질의 비용 비교와 후킹 진단 결과를 섞지 않는다.
+같은 개체의 부모 ID0→비정상ID 전환에서 잘못된 값이 setter 이후 생겼는지, setter 전에 읽은 비트열에 이미 있었는지 구분한다. 추가로 입력 길이와 실제 송신 생성 경로를 확인해 국소 수정 가능성을 판단한다.
 
 ## 2. 실제 수행
 
-기존9개 서명 PBO·카메라·미션 하네스를 재사용해 별도 1개체/8파트 장면을 실행했다. Count와 진단 종료 조건만 달리했으며 원본 PBO나 게임 알고리즘은 변경하지 않았다. 서버의 공통 serializer 반환 후 selector·방향·부모 컴포넌트 유무·snapshot ID/pivot을 읽고, 클라이언트의 부모 설정 함수 진입에서 실제 ID 인자를 읽었다. 두 함수 원본10byte 가드를 통과했고 게임 필드에는 쓰지 않았다. 후킹은 실행 비용에 영향을 줄 수 있어 이 실행을 성능 자료로 사용하지 않는다.
+기존1개체8파트 하네스로 별도 두 실행을 진행했다. 첫 실행은 client c035e0 진입·부모 비트 읽기 직전 c041ad·setter b59610을 같은 thread/receiver로 묶어 관측했다. 원본 명령 byte guard를 사용하고 게임 필드에는 쓰지 않았다.14byte 로컬 메모리 창은 전체 패킷 캡처가 아니며 이때 논리 길이를 확보하지 못했다. 읽은 비트열을 MSB-first flags 및 bytewise little-endian ID/pivot으로 독립 해석해 실제 인자와 대조했다.
 
-REA MCP의 Frida provider는 binding 파일을 찾지 못해 실패했다. 기존 설치 파일은 로컬에 있었으며 다른 실행 경로의 차이로 남겼다. 설치·등록·보안 설정은 바꾸지 않고 기존 Node runtime의 공식 REA CLI로 관측했다. CLI 두 관측 모두 종료0,cleanup_error null, 메시지 truncation false, read error0이다. CLI JSON이 evidence 최상위 형식임을 확인해 파싱했으며 빈 잘못된 경로 파싱을 관측0으로 처리하지 않았다.
+두 번째 실행은 declared byte length/bit capacity 필드를 추가하고 server 실제 writer slot8 c69bb0를 관측했다. CLI가65000ms 요청을 최대60000ms 규칙으로 거부한 결과를 보존하고60000ms로 변경했다. 서버16표본은 확보했지만 client listener는 초기 입력을 놓쳐 calls0/matches0이다. 이 실행을 길이 검사 성공으로 보고하지 않는다. 같은 attach를 반복하는 대신 다음에는 초기 입력 전 observer를 장착해야 한다.
 
-예정된 표본 수집이 끝난 뒤 기존 stop/start gate로 진단 퇴역을 요청했다. functional=false·stage0·detached=true로 종료했으므로 이동 회귀 통과가 아니다. 서버 launcher의 소유 프로세스 정리와 client 종료, 실제 DayZ 프로세스 부재를 확인한 후 보고한다.
+원본 A500 파일과 MSVC unwind 연결로 writer c69bb0→c0b130, state 전달 a7eda0/a7ec90의 호출·BitStream 생성 필드를 제한 대조했다. a7ec90의 수신 생성에서는 vector byte count와 count*8을 stream +8/+c에 기록한다. 이것은 해당 코드의 정적 증거이며 이번 미포착 stream의 실제 길이가 아니다.
 
 ## 3. 측정 결과
 
-|대상|관찰 결과|
+|대상|결과|
 |---|---|
-|서버 serializer|40표본,8개 서로 다른 Animal receiver|
-|selector 구성|-1:16,0:8,2:16|
-|부모 상태 selector0|8/8 writing1, 실제 부모 없음, ID0,pivot-1|
-|클라이언트 setter|16표본,8개 서로 다른 Animal receiver|
-|첫 입력|8/8 ID0,pivot-1|
-|같은 receiver의 다음 입력|8/8 동일 비정상ID dfbf3c0de39c400d,pivot61679|
-|setter 진입 당시 실제 부모|16/16 없음|
-|추가 프레임/시각 측정|없음|
+|첫 실행 input receiver|8개,각 정상/비정상 한 번씩16표본|
+|독립 비트 해석과 setter 인자|16/16 일치|
+|정상 parent update|presence0,2bit 소비,prefix114bit|
+|비정상 parent update|presence1,99bit 소비,prefix19bit|
+|비정상 parentId|8/8 동일 dfbf3c0de39c400d|
+|두 번째 server writer|8개 receiver,각2회=16표본|
+|저장된 writer payload|모두111bytes,883written bits|
+|두 번째 client declared bounds|0표본,미확인|
+|새 프레임/시각 측정|없음|
 
-selector-1/2는 부모 필드가 유효하게 작성되는 selector0와 구분했다. 다른 selector의 pivot0을 부모 계약 실패로 세지 않는다. 수집 상한과 객체별 제한이 있으므로 이것은 전체 시간의 모든 입력이 아니다. 서버와 클라이언트의 객체 주소는 서로 다른 프로세스의 로컬 식별자이며, 이것만으로 전송 entity ID 매핑을 한 것은 아니다.
+첫 실행의 정상 입력 entry는 byte67 bit7,부모 시작 byte82 bit1,종료 byte82 bit3이다. 비정상 입력 entry byte3 bit4,부모 시작 byte5 bit7,종료 byte18 bit2이다. 소비99bit를 raw window로 해석한 ID/pivot/bool과 실제 인자가 모두 일치했다. 비정상 pivot은 같은 값만이 아니라 여러 값으로 관찰됐다. 이것만으로 heap overread라고 확정하지 않는다.
 
-별도 replay8-off1-fix1은 관리자 계측 도우미가 시작되지 않아 start gate를 열지 못한 채 제한 시간에 종료됐다. 실제 replay·Present 수치·기능 결과가 없으며 컴파일 또는 기능 실패로 바꾸어 기록하지 않는다. 해당 프로필을 보존하고 새 fix2를 준비만 했다. 이후에는 실제 도우미 readiness를 확인한 뒤 클라이언트를 실행한다. 20ms p95는 미달성/미검증 목표다.
+두 번째 초기 writer의 byte82 창은 첫 실행 정상 parent 창과 일치한다. 정상 flag+64bit 패턴은 writer bit657에 있지만 비정상 패턴은 저장된 초기 writer buffer에서 발견되지 않았다. 서로 다른 실행의 패턴 검색이며 packet/entity/time 대응이 아니다. 처음2회 이후의 writer 내용은 수집하지 않았으므로 송신 측이 항상 정상이라고 일반화하지 않는다.
 
 ## 4. 원인 분석
 
-확인: 실제 서버의 부모 상태 저장은 이 표본에서 정상이며, 동일 클라이언트 receiver8개에서도 첫 부모 입력은 정상0이었다. 그 뒤의 입력에서 동일 비정상ID가 들어오는 전환이 확인됐다. 따라서 생성 순간부터 모든 부모 ID가 잘못돼 있었다는 설명은 이 실행과 맞지 않는다. 직접적인 다음 조사 범위를 생성 이후의 입력 stream 생성·커서 해석·상태 계약으로 좁힌다.
+확인: setter 진입 이후의 임의 메모리 변조 설명은16표본과 맞지 않는다. 잘못된 값은 해당 bit cursor에서 읽은 비트열과 일치한다. 서로 다른 prefix 길이와 parent presence 분기를 확인해 입력 레코드 형식/상태 전환/커서 계약을 다음 조사 대상으로 좁혔다.
 
-미확인: 서버 snapshot은 wire packet 자체가 아니다. 실제 송신 entity ID·시간과 클라이언트 bit cursor를 대응하지 못했으므로 송신측 정상/수신측 버그를 확정하지 않는다. 동일 비정상ID는 공통 입력 계약 문제의 후보지만, 초기화 누락·자산 계약·직렬화 정렬 중 하나를 채택할 증거는 부족하다. 이 오류의 CPU self-time이나 예전 오프라인 비용의 원인도 입증하지 않았다.
+가설: delta/full-state 계약 불일치, 앞선 필드 해석의 정렬 차이, 입력 길이 초과 가능성이 남는다. 비정상 레코드에서 byte18 bit2까지 진행한 사실만으로 범위 초과를 선언할 수 없다. 실제 declared length와 같은 실행의 producer mapping이 필요하다. 기존 생성 시 부모없음 상태가 확인된 사실도 유지한다.
 
-수정 판단: 부모 ID0 강제나 경고 숨김은 실제 잘못된 입력을 은폐할 수 있어 시행하지 않는다. 물리/정상 낙하·추적을 바꾸는 후보도 추가하지 않는다. 새 계측은 정상→비정상 전환 직전 stream 계약을 구분할 최소 항목으로 한정한다.
+보류: ID0 강제, 경고 필터, ECE_INITAI 추가, 물리 비활성화, 새로운 보간/시계 변경은 시행하지 않았다. 이 관측은 네트워크 오류와 연결되며 과거 경고 없던 오프라인64개체 고비용의 원인을 증명하지 않는다.
 
 ## 5. 검증 수준
 
-부모 입력 전환 재현: 단일 독립 진단 성공. 실제 송수신 패킷 매칭·원인 확정·수정·8/64 기능 회귀·시각 품질·성능 반복 검증·최종 수용: 미완료. 기존 긍정적 메서드 비용 결과와 이번 네트워크 오류는 별도 실험이다.
+부모 비트→인자 대응: 제한 진단 성공. 초기 native input writer 실행: 진단 성공. declared bounds/packet end-to-end 대응: 미확인. 두 실행은 서로 다른 관측조건이며 같은 수정의 반복 성공으로 세지 않는다.8/64 기능 회귀·전체14클립 품질·성능·최종 수용은 미완료다.20ms p95는 목표다.
 
 ## 6. 변경 사항
 
-새 진단 미션·런처·읽기 전용 스크립트·관측 JSON·분석 요약을 추가했다. 서버가 출력한 고정 문구 eight-NPC는 상속된 label이며 실제 Count1·native parts8로 해석했다. 원본/기존9PBO·그래프·자산·Steam·운영 서버는 보존했다. 새 PBO가 없어 신규 서명 대상은 없으며 기존9PBO는 서버 런처의 해시·서명 검증을 통과했다.
-
-대기 종료 뒤 helper가 실행되지 않았음을 실제 프로세스 조건으로 확인해 첫 요청 case만 새 fix2로 변경했다. 기존 실패/대기 프로필을 재사용하지 않았고 fix2 클라이언트는 실행하지 않았다. broad process 검색이 자기 orchestration 문자열을 일치시킨 준비 검사는 파일 변경 전에 중단됐으며, 실제 짧은 -File worker 실행 조건으로 교정했다.
+격리 미션·읽기 전용 스크립트·정적 JSON·관측/해석 JSON·보고서만 추가했다. 원본/게임 코드/9개 PBO/자산/Steam은 보존했다. 기존9PBO는 각 서버 런처의 해시·서명 검증을 통과했고 신규 PBO/서명 대상은 없다. 첫 실행은 diagnostic stop에 따라 functional=false로 퇴역했다. 두 번째는 start gate 대기 제한에 도달해 completedMarker 없이 종료됐다. 이후 작성한 stop flag가 실제 종료 원인이었다고 하지 않는다. 실제 프로세스 부재와 두 관측기 종료0/cleanup null을 확인했으며 정상 게임 종료를 보장했다고 보고하지 않는다.
 
 ## 7. 원시 증거
 
-실행 ID network-gameplay/creature-parent-snapshot1. REA 증거: 서버 ev_afa2f79c26f3cb3544a4652ef2fbad8412ea670c9d1af861e1f2a2fe20a429fa,클라이언트 ev_143fd7b3b0c0a6a9e974ba3f82e2ca61a95d1085ef1a0a4aa2ce096a71003ce7. 두 원시 JSON·script/hash guard·launch·signaturechecks·종료/퇴역 로그·분석 요약을 로컬 해시에 연결한다. 기존 실패 자료는 덮지 않는다. 공개는 집계와 상대 호출 위치만 제공하며 raw 주소·로컬 경로·프로세스·게임 자산·개인 키는 제외한다.
+묶음 ID network-gameplay/parent-bitcursor-and-writer1. 첫 reader ev_f2083efc8553aada6de04c3cb863e9a20d6b7b75ab0492b421d3a0e8e21d7e72,server writer ev_46014844aa6598769cacf0253f99a3983b0d796c087e11adfcc6c0c81f8a7691,미포착 client ev_c0b62f10044e3282a32ee133a91e190c3833e625921efa08ed45a1d06997343a. plans/scripts/raw JSON/독립 해석/정적 unwind/launch·signaturechecks/거부 기록을 로컬 해시에 연결한다. 공개는 집계와 상대 위치만 담고 raw buffer·주소·개인키·프로세스·로컬 경로를 제외한다.
 
 ## 8. 잔여 문제
 
-다음 최소 산출물은 부모 입력이0에서 비정상으로 바뀌는 실제 stream cursor/앞선 필드의 대응이다. 같은 receiver에서 두 단계가 모두 관찰됐으므로 생성 정책을 무작정 바꾸는 대신 입력 전환을 먼저 본다. 이 결과가 수정 가능한 모드 계약인지 엔진 내부 제약인지 결정해야 한다. 전체 비용 비교는 후킹 없는 새 baseline과 실제 ETW 도우미 준비 후8→64로 이어간다. 기능·시각·성능은 독립 판정하며 전체 목표 active를 유지한다.
+다음 최소 시험은 초기 입력 전에 observer를 장착해 첫 정상/다음 비정상 레코드의 declared bounds를 확보하는 것이다. attach 경쟁으로 놓친 시험을 같은 타이밍으로 반복하지 않는다. 실제 producer도 초기2표본만이 아닌 첫 상태 변경을 구분할 조건이 필요하다. 원인이 모드 계약에서 수정 가능한지 확인한 뒤에만 국소 후보·위험·기능 검증 비용을 제시한다. 비용 OFF/ON은 후킹 없는 새 baseline 및 실제 ETW 관리자 도우미 준비 후8→64로 진행한다. 전체 목표 active.
 
-로컬checkpointSHA256: 62153c1d55d0fcb525351935ba6b44642c5b8663fd1c0ff1c59de8132e881ee0
+로컬checkpointSHA256: 305edb565b6d2857b95861bb657268dd37ff41c2f6ac3260fafb7736f54ccbb5

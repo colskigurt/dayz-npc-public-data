@@ -1,3 +1,5 @@
+> 최신 작업: 부모 입력16건 raw bits와인자일치:정상2bit/비정상99bit.초기writer111byte 확보,수신길이관측은초기시점놓쳐미확인.새성능/시각결과없음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-parent-bitcursor-20261103.md).
+
 > 최신 작업: 1개체8파트: 서버 부모snapshot0, 클라이언트 같은8 receiver에서 첫ID0→다음동일비정상ID 전환 확인. 생성후 입력경로로범위축소;원인/성능미확정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-parent-input-transition-20261103.md).
 
 > 최신 작업: Animal/Infected 직렬화에서 공통 부모 처리까지 정적 호출 연결. 실제 오류 패킷 대응 미확인으로 초기화·ID강제 수정 보류. 새 성능/시각 결과 없음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-creature-serialization-20261103.md).

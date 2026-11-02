@@ -1,0 +1,58 @@
+Aggregate diagnostic only. No raw logs, game assets, credentials or process identifiers.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T07:18:04.012806+09:00",
+  "sourceRunId": "network-gameplay/parent-bitcursor-and-writer1",
+  "buildId": "A500BE80+existing9PBOs_unchanged",
+  "verificationStatus": {
+    "diagnosis": "raw_parent_bits_match_decoder_arguments",
+    "packetBounds": "not_observed_client_probe_missed_initial_calls",
+    "producer": "initial_creature_input_writer_observed",
+    "functionalRegression": "not_run",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "logicalNpcsPerTrial": 1,
+    "nativePartsPerTrial": 8,
+    "diagnosticProcesses": 2,
+    "bitSamples": 16,
+    "uniqueObjects": 8,
+    "independentPerformanceRepeats": 0,
+    "rawBitsMatchSetter": 16,
+    "patterns": [
+      {
+        "parentPresent": false,
+        "samples": 8,
+        "parentConsumedBits": 2,
+        "prefixConsumedBits": 114
+      },
+      {
+        "parentPresent": true,
+        "samples": 8,
+        "parentConsumedBits": 99,
+        "prefixConsumedBits": 19
+      }
+    ],
+    "writerSamples": 16,
+    "writerUsedBytes": [
+      111
+    ],
+    "writerWrittenBits": [
+      883
+    ],
+    "clientDeclaredBoundsSamples": 0,
+    "frameTimeP50P95P99": null
+  },
+  "blockers": [
+    "Declared reader length unavailable; cannot establish overread",
+    "Same-run packet/entity/time pairing not established",
+    "Only first two writer outputs per part retained",
+    "Client initialization can finish before attach; next probe requires prearmed observation",
+    "ETW helper remains unstarted; whole-frame OFF/ON not run"
+  ],
+  "evidenceReferences": [],
+  "next": "Prearm the client reader observer before initial input, capture declared bounds and correlate stream producer. Do not apply parent-ID or clock patches without a proven local contract. Keep performance baseline unhooked.",
+  "goalComplete": false
+}
