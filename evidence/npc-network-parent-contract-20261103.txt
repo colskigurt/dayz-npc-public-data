@@ -1,0 +1,83 @@
+Aggregate diagnostic only. No raw logs, game assets, credentials or process identifiers.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T06:03:16.318953+09:00",
+  "sourceRunId": "network-gameplay/network-parent-contract2",
+  "buildId": "A500BE80+existing10PBOs_setupOFF",
+  "verificationStatus": {
+    "diagnosis": "server_and_client_parent_absence_vs_pending_parent_reference_observed",
+    "functionalRegression": "not_tested_this_bundle",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "initialRegistrationMatches": 8,
+    "distinctChildIdentityMeasured": false,
+    "allObservedInputIdsIdentical": true,
+    "receiverType": "NetworkClient",
+    "recordObjectType": "DayZAnimal",
+    "registrationCallerRvas": [
+      "0xa1a9d9",
+      "0xb59749",
+      "0xc044f8"
+    ],
+    "decompileElapsedSeconds": 1029.653,
+    "clientParts": 8,
+    "physicsAll": true,
+    "cpuHeadPoseRows": 648,
+    "independentPerformanceRepeats": 0,
+    "serverParentNulls": 8,
+    "clientInitialParentNulls": 8,
+    "officialParentFieldMapped": true,
+    "existingControls": [
+      {
+        "run": "vanilla-network-first",
+        "warningLines": 1
+      },
+      {
+        "run": "vanilla-network-repeat",
+        "warningLines": 1
+      },
+      {
+        "run": "old-custom-network-pilot4",
+        "warningLines": 1
+      },
+      {
+        "run": "matched-offline-main",
+        "warningLines": 0
+      },
+      {
+        "run": "matched-offline-main2",
+        "warningLines": 0
+      },
+      {
+        "run": "network-registration1",
+        "warningLines": 11593
+      }
+    ],
+    "earlyControls": [
+      {
+        "case": "query-address-trial/client-profile",
+        "warningLines": 641
+      },
+      {
+        "case": "eight-part-20261102/eight-geometry/runtime-internal-blocks/direct-client-profile",
+        "warningLines": 8673
+      },
+      {
+        "case": "eight-part-20261102/visible-match/mode2-4/direct-client-profile",
+        "warningLines": 19361
+      }
+    ]
+  },
+  "evidenceReferences": [],
+  "blockers": [
+    "Server wire value versus client decode difference remains unknown",
+    "No one-to-one mapping of server IDs to native hook child identities",
+    "Not a performance or visual-quality comparison",
+    "Input-reader decompile request still pending"
+  ],
+  "next": "Use the pending native input-reader result to locate the no-parent flag contract before proposing a local correction. Avoid forcing parent IDs or attaching parts to mask the unresolved reference.",
+  "goalComplete": false
+}

@@ -1,3 +1,5 @@
+> 최신 작업: 서버8파트부모NULL·client등록8건실제부모NULL과미해결계층참조대조. 공식AddChild/GetParent계약연결;송수신원인·비용미확정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-network-parent-contract-20261103.md).
+
 > 최신 작업: 네트워크최초등록8건에동일미해결ID확인·Ghidra17분분석완료. 재삽입loop확보,전송/해석원인미확정·성능미측정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-network-registration-origin-20261103.md).
 
 > 최신 작업: 네트워크 미해결ID 반복조회 caller 확인. SETUP OFF/ON 모두8파트·경고최대200/초로후보미채택. 성능/시각미측정,정적분석대기. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-network-retry-diagnosis-20261103.md).
