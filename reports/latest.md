@@ -1,3 +1,5 @@
+> 최신 작업: 현재 코드의 3팔 배열 재사용 비교:2독립 실행·288000회. 국소 중앙값 약1.5~2.5% 감소지만 사전5% 기준 미달. full-game/시각/20ms 미검증, 주력 후보로 반영하지 않음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-current-scratch-method-cost-20261103.md).
+
 > 최신 작업: 검증된 작은 높이 보정 후보:50가드 통과·실제ON/OFF 대비=True.8명8/8·64명64/64 단일 회귀.시각/성능 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-contact-end-bounded-lift-20261103.md).
 
 > 최신 작업: 실제 native 완료 경로1회 활성화.지속 접촉 OFF/ON은 모두취소:17행에서 약3.815mm lift 차이를 거부하는 가드 확인.미해결·시각/성능 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-contact-end-real-player-core-20261103.md).

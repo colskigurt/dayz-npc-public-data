@@ -1,64 +1,50 @@
 ## 1. 작업 목표
 
-지속적인 등반 종료 접촉에서 기존 solver가 요구한 약3.815mm의 표시 높이 차이를 불변 조건이 거부하던 문제를 국소적으로 수정한다. 정상 밀침·낙하·착지·추적·재등반과 기존 완료 함수를 보존한다. 시각 부드러움과20ms p95는 별도 목표다.
+현재 network NPC 코드에서 발 지지·관절 sweep solver의 임시 배열 재사용이 의미 있는 절감 후보인지 최소 통제 비교한다. 정상 밀침·낙하·착지·FOLLOW·재등반을 보존하며 새로운 실제 물리 검사 생략은 하지 않는다. 기존 scratch 후보는 오래된 FCOn/FCEligible 의존성이 있어 그대로 재로딩하지 않는다.
 
 ## 2. 실제 수행
 
-새 default-OFF 후보는 기존 native 종료/request/time/endpoint·실제 현재 exit 거리·LandingSpace·양발 비침투·현재 player/core·4관절 full swept 검사를 모두 유지한다. solver가 수용한 checkedLift가 절대0~0.25m, 변화-0.0001~+0.01m 범위일 때만 대응 contacts와 함께 적용한다. 작은 음수 허용은 실수 오차 여유이며1cm는 실험 상한으로 일반 안전성 입증값이 아니다. root·native clock·curve flag·등반 횟수 직접 변경은 없다. 기존 SETTLE/EGRESS/CompleteEgress가 완료를 집계한다.4개의 관절/radius/contact 구성도 요구한다.
+현재 서명 PBO8개의 owner/source와 solver override 부재를 감사했다. 원래 solver BASE, 같은 wrapper OFF→super, ON→개체별 raw/상수 offsets 배열 재사용의3팔 비교다. 출력 points는 매회 새로 생성하며 본·발·월드·fallback 검사는 동일하다. 변경을 역변환하면 packed base method와 일치한다. 새 PBO 없이 격리 mission subclass만 추가했다.
 
-합성 종료 메타데이터/frozen pose와 실제 fixture·살아있는 플레이어로50개 가드를 실행했다. 작은 보정 수용·큰 보정 거부·발 침투·플레이어 현재 겹침·요청/시간/상태·throttle·골격 구성·root/counter/Active·실패 복원 및 적용된 lift/contact 일치를 검사했다. 합성 조건을 실제 authored 동작으로 간주하지 않는다.
-
-그 뒤 동일 새PBO·동일 mission bytes에서 실제 authored 등반의 벽 정면 접촉을 ON→OFF 순서로 비교했다. 제어한 것은 시험 플레이어 배치이며 NPC root/time/end metadata 주입은 없다. 초기 위상·날씨·gate는 고정하지 않아 성능 A/B 또는 완전한 pose 일치 대조가 아니다. 이어 원래8명→64명 network 하네스를 그대로 실행했다. CUA로 장면·전경 확인 후 시작했고 native hook/영상은 추가하지 않았다.
+두 독립 서버 프로세스에서 terrain/roof/lift_reject의3조건×4그룹×6블록을 수행했다. 첫 실행 BASE/OFF/ON/ON/OFF/BASE, 두 번째 ON/OFF/BASE/BASE/OFF/ON. 블록당64회 준비·2000회 측정, 프로세스당72블록·144000회, 합계144블록·288000회다. 그룹 내 native4본 포즈·root 안정성 및 출력 소유권/forced-busy fallback을 검사했다. 실제 재귀 호출 검증은 아니다. 사전 후속 기준은 두 실행·양 방향 중앙값 모두 최소5% 감소다.
 
 ## 3. 측정 결과
 
-50/50 가드 통과, 양성4/음성46. 작은 보정 사례는 실제6.13281mm 적용과 대응 접촉점 일치를 확인했다. 현재 플레이어 겹침은 CURRENT_CORE에서 거부했다. 모든 root와 완료 횟수는 직접 변경0이었다.
+|실행|조건|BASE 중앙값 ticks/2000회|OFF 중앙값|ON 중앙값|ON 대 BASE|
+|---|---|---:|---:|---:|---:|
+|scratch-method-cost1d|terrain|1071379.0|1079114.5|1052671.5|-1.7461%|
+|scratch-method-cost1d|roof|1502172.5|1482581.0|1464076.5|-2.5361%|
+|scratch-method-cost1d|lift_reject|991792.0|996442.5|972158.0|-1.9796%|
+|scratch-method-cost2d|terrain|1120606.5|1142297.0|1099311.0|-1.9004%|
+|scratch-method-cost2d|roof|1535389.0|1553402.5|1511889.0|-1.5306%|
+|scratch-method-cost2d|lift_reject|1044753.5|1059273.5|1020175.5|-2.3525%|
 
-실제 ON: checks/completions/rejections=1/1/0, hold=0s, 최종 FOLLOW·climbs2·failure=없음. 실제 OFF: 0/0/0, hold=2.05s, 최종 FOLLOW·climbs1·failure=SUPPORTED_CONTACT_REPLAN. 단일 기능 대비 판정=True.
+전 조건 footRays=20000/블록. terrain/roof jointSweeps=8000, lift_reject=0. 그룹 안 반환·lift 합·points 수·질의 수 동일, root/pose/출력 보존 가드 통과. 두 실행 모두5% 문턱 미달이다. 작은 감소 경향을0효과로 단정하지 않지만 full64 시험 후보로 승격하지 않는다.
 
-ON 적용 journal: [
-  {
-    "seconds": "14.34",
-    "id": "0",
-    "oldLift": "0.157715",
-    "checkedLift": "0.16156",
-    "appliedLift": "0.16156",
-    "deltaLift": "0.00384521",
-    "rootBefore": "<4512.328613, 342.167847, 10237.577148>",
-    "rootAfter": "<4512.328613, 342.167847, 10237.577148>",
-    "pointCount": "4"
-  }
-]
-
-|시험|유효 최종 상태|low/high/down/returned 누적|낙하→착지→FOLLOW|후보 검사/완료/거부|원래 전체 gate|
-|---|---|---|---|---|---|
-|8명|8/8|{'low': 8, 'high': 8, 'down': 8, 'returned': 8}|9/9|0/0/0|True|
-|64명|64/64|{'low': 64, 'high': 64, 'down': 64, 'returned': 64}|97/97|0/0/0|True|
-
-각 조건 독립1회.8명 전이144개, 정합 오류phase/generation/terminal=0/0/0.64명 전이1359개, 정합 오류=0/0/0.64 server Mission dt p50/p95/p99(ms)={'p50': 49.0, 'p95': 72.0, 'p99': 81.0}. 이는 서버 OnUpdate 간격이며 Present/CPU busy/GPU/표시 cadence가 아니다. 해당 지표·GC/할당·후보 순수 시간·시각 품질은 미측정이다.20ms p95는 미달성 목표다.
+p50/p95/p99는 첨부 JSON의 runs→conditions→blockTicks와 gameTickProbeSeconds에 있다. 전자는2000회 메서드 블록의 raw 성능 카운터, 후자는 블록 바깥에서 읽은 게임시간 차이다. 프레임 시간·CPU self-time·하드웨어 cycles가 아니다. SDK TickCount는 performance ticks로 정의돼 절대 ms 변환을 가정하지 않았다. 실제 Present/CPU busy/GPU/8·64 기능/시각 품질·할당량·GC는 이번에 미측정이다. 기존8/64 결과를 이번 시험의 회귀로 재사용하지 않는다.20ms p95는 미달성 목표다.
 
 ## 4. 원인 분석
 
-확인: 기존 불변-lift 후보는 포즈 검사 자체가 성공해도 checkedLift 차이가0.1mm를 넘으면 취소했다. 실제 이전17회에서+3.8147mm가 반복됐고, 새 후보는 원래 Accept처럼 검증된 lift와 contacts를 함께 수용한다. 새 실제 대비와 적용 journal은 현재 위치를 옮기거나 완료 횟수를 조작해 통과한 것이 아님을 연결한다. 과거ID4의 완전히 같은 포즈를 재생한 것은 아니다.
+확인: 두 script 배열의 수명 연장만으로 관찰된 국소 이득은 약1.5~2.5%이며 native Ray/Sphere 내부 호출은 그대로다. 따라서 이 후보만으로 기존 큰64개체 비용 차이를 해결한다는 근거가 부족하다. 나머지 비용을 전부 물리라고 역산할 수 없다. VM·본·출력 배열·native 질의·스케줄링도 포함된다. native 내부 임시 메모리는 호출자가 제공하는 script 배열과 다르다.
 
-가설/한계: 이 변경은 이미 유효한 등반 종료에서 불필요한 취소를 줄일 수 있다. 현재 actual 대비는 단일 기능 근거이며 일반 맵·모든 자세·8파트 화면 동기화·반복 성능을 증명하지 않는다. 자연8/64에서 후보 사용0이라면 기존 경로의 호환성 회귀만 입증한다. 다른 초기 조건의 과거 회귀 숫자 차이로 개선률을 만들지 않는다. 이력에 남은 기술적 실패와 정상/미분류 낙하를 최종 상태 성공으로 지우지 않는다.
+시험 초기에 override 매개변수명 불일치 및 opaque file-handle cleanup 컴파일 실패가 있었다. 후속 no-physics 장수 actor 실행은12행 뒤 native read0 crash가 발생했다. 원인 타입은 미확정이며 가까운 과거 fault RVA만으로 동일 원인이라 하지 않는다. 공식 physics 생성+script retirement 분리 후 두 실행을 완료했다. 실패 원본은 보존하고 성능 표에서 제외했다.
+
+원시 최종 TSV는16개 header/17개 data 필드다. 마지막 gameTickProbeSeconds 라벨 누락을 별도 header-projection.json으로 명시해 파싱했고 원본은 수정하지 않았다. 초기 부분 결과의 elapsedMs 라벨도 틀려 비교에서 제외했다. 과거 scoped-cost 보고서는 이미 clock 보정식이 있으므로 이번 오류를 소급 적용하지 않는다. launch의 newPbo=true는 복사된 runner 메타데이터 오류이며 현재8개 hash 감사와 실제 생성 이력상 새 PBO=false다. 원시 launch는 보존한다.
 
 ## 5. 검증 수준
 
-가드: 제한된 진단 통과. 실제 접촉: 위 단일 대비 결과 범위.8/64: 표의 원래 기능 gate 결과대로 판정. 반복 검증 완료·일반 최종 수용·시각 품질·성능 개선: 미완료. 서버 소유 프로세스 정리와 client exit-1을 정상 게임 종료 인증으로 간주하지 않으며 normalQuitVerified=false를 유지한다. 전체 골 active.
+방법 진단 및 두 독립 프로세스의 제한된 반복 비교 완료. 후속5% 기준 미통과. 전체 게임 기능 회귀/시각 수용/성능 목표/일반 안전성은 미실행·미수용이다. 프로세스는 종료했고 소유 서버 정리 exit-1은 정상 quit 인증이 아니므로 normalQuitVerified=false다. 전체 골은 active다.
 
 ## 6. 변경 사항
 
-새 격리 nf_contact_end PBO SHA256=99CE6BD581BB8204F6B5A0A67251579E928FBD446AA9B28431277880EA5A20D8. 빌드·자동 서명·DSCheckSignatures·packed script bytes 검증 성공. 각 실행 전 기존7개+후보1개 hash/서명 검증 성공. 최초 source-change-proof의 변수 재사용으로 guard/commit 발췌 라벨이 혼재한 자료는 보존하고 source-change-proof-reviewed에 올바른 계약·소스 해시를 별도로 대조했다. 해당 메타데이터 정정으로 PBO source를 바꾸지 않았다.
-
-기존PBO·이전 후보·원본 자산·graph/native 시계·운영 서버·Steam은 변경하지 않았다. private key는 공개/배포물에 없다. 후보 source·가드·실행/분석·보고서만 기존 research 구조에 추가했다.
+mission subclass·staging/analysis/report 파생 자료만 추가. 기존 source/PBO·자산·운영 서버·graph/native 시계·지원 판정은 변경하지 않았다. 새 PBO 빌드 없음. 실행 전 기존8개 서명과 hash 검증 성공. 개인키는 공개하지 않는다. buildId는 JSON의8개 PBO+실행파일 조합이다.
 
 ## 7. 원시 증거
 
-sourceRunId: network-gameplay/contact-end-bounded-lift. candidate-lift1의 build/sign/packed/source proof, lift-guards1의50행, lift-axis-on1/off1의동일 mission·23열 result·원래state contract·14열candidate journal·9열lift commit, eight/sixtyfour-contact-end-lift1의원래 milestone/terminal/gameplay·counter·server-frame·종료와 분석을 해시 목록에 연결한다. 공개는 선정 수치/함수/대표 journal이고 원시 전체·게임자산·영상·로컬경로·프로세스·키는 제외한다.
+sourceRunId: animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/current-scratch-method-cost. 1d/2d의 plan·init.c·launch·TSV·RPT·header-projection과 analysis, 초기 컴파일 실패/부분 crash를 로컬 checkpoint 해시 목록에 연결한다. 공개 패킷은 선택된 수치와 자체 mission wrapper 발췌이며 전체 원시자료·게임자산·영상·로컬경로·프로세스·키는 제외한다. 팔별8블록은8개 독립 프로세스가 아니다.
 
 ## 8. 잔여 문제
 
-실제 대비와 자연 회귀를 구분해 후보 활성화 빈도·남은 실패를 감사한다. 기능 통과만으로 반복/최종 수용을 선언하지 않는다. 물리 질의 비용과 애니메이션 시각 품질은 별도로 계속해야 하며 이 기능 변경을 비용 절감으로 보고하지 않는다. 기존 scratch/SupportFast의 통제 근거와 network 표시 경로를 보존하고, 다음 비용 실험은 새 측정이 구현 선택을 바꾸는 조건부터 진행한다. 추가 native buffer/캐시/보간/LOD를 무작정 섞지 않는다.
+이 후보는 보류한다. 다음 단일 산출물은 현재 client/server topology에서 native Ray/Sphere 상위 호출의 안전하게 줄일 수 있는 중복을 기존 증거로 좁힌 수정 후보 명세다. 질의 삭제·항상 참 처리·무조건 캐시를 적용하지 않는다. 동일 입력 재사용 빈도 미확정 및 이전42쌍 완전일치0을 유지한다. 수정 후보가 없으면 제한을 명시하고 지형 안전 판정과 무관한 broadphase/스케줄링만 별도로 검토한다. 표시 품질과64개체 비용은 독립 게이트로 유지한다. 현재 표시 개선은 사용자 피드백이며 모든14클립·8파트·64개체 최종 수용은 아니다. 새 ETW 표시 측정에는 유효한 새 관리자 준비가 필요하며 오래된 helper는 재사용하지 않는다.
 
-로컬 checkpoint SHA256: f5ec5a6c84bd95aac007bfa3e1e17cd8f0aad696caaae1f97b68339f855b77f1
+로컬 checkpoint SHA256: d67c1200dc263d90d84a190bf5c145ff6b1d75be381a7631ad4672a4fef04a8c
