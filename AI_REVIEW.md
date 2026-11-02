@@ -1,3 +1,5 @@
+> 최신 작업: 현재 위치 등반 종료 검증·40가드 통과.8명 8/8,64명 64/64 단일 회귀.실제 후보 사용0으로 효능 미검증·시각/성능 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-contact-end-current-state-20261103.md).
+
 > 최신 작업: V2owner위임·벽/발판guard통과,8/8회귀통과.64는ID4contact취소후완료집계1로high63에대기,전체미통과.마지막64FOLLOW/high와전체통과를구분. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-pose-core-v2-guards-20261103.md).
 
 > 최신 작업: 포즈기반복구후보V1:ID24고정입력이동·8/8·64/64단일기능통과,91/91낙하복귀.기존terrain ownerON호환성발견·V2소스만준비.시각/성능미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-pose-core-recovery-20261103.md).
