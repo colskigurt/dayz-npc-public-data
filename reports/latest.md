@@ -1,3 +1,5 @@
+> 최신 작업: 기존 연구 중복·수정 가능 후보 검토 완료. SupportFast64 미수용, 시간 보존 후보는 격리 진단 한정. 새 구현/실행0회. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-research-review-20261102.md).
+
 > 최신 작업: Days Gone 기존 CPU 스택 재분류. REA 전체 초기화 완료; 물리·렌더·UI 일부 확인, 원본 애니메이션 비용 미확정. 새 실행0회. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/days-gone-stack-attribution-20261102.md).
 
 > 최신 작업: Days Gone 지붕 고정20명75초. Present p95약22.1~22.3ms. DayZ64와 조건이 달라 직접 배수/animation selftime은 미판정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/days-gone-stationary-20261102-1231.md).
