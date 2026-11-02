@@ -1,0 +1,224 @@
+Selected aggregate/event projection and own fault adapter, not full original64 or visible smoothness evidence.
+{
+  "sourceRunId": "query-owner-20261102/checked-landing-activation",
+  "buildId": "1F8FB4DD930BAF99C92C35B76EE2461A9D38B7315BC38731EBE38166A1D81B9D",
+  "newGameplayPbo": false,
+  "newClientTrials": 3,
+  "mainPairClientTrials": 2,
+  "calibrationTrials": 1,
+  "newServerCompileAttempts": 3,
+  "trials": [
+    {
+      "runId": "activationc-off",
+      "policyEnabled": false,
+      "independentExecutions": 1,
+      "actualAgents": 1,
+      "renderParts": 8,
+      "plannedMissionSeconds": 75,
+      "sourceSha256": "F298AEC011027176DDBFA0EA7BE2BF1B77580BC2C19A058D0968E12FDE11B8AF",
+      "candidatePboSha256": "1F8FB4DD930BAF99C92C35B76EE2461A9D38B7315BC38731EBE38166A1D81B9D",
+      "signatureVerified": true,
+      "explicitPlacementAndBudgetInjection": true,
+      "observedSeconds": 70.96899838,
+      "samples": 593,
+      "finalPhase": "FALL",
+      "finalReason": "LANDING_SPACE_BLOCKED",
+      "finalRoot": "<4511.447754, 339.284790, 10242.648438>",
+      "rootHorizontalTravelMetres": 0.0,
+      "landSeen": false,
+      "followSeen": false,
+      "followMoved": false,
+      "maximumGrants": 0,
+      "maximumPlans": 0,
+      "maximumProbeSteps": 0,
+      "nativeSecondsProgress": 46.3995,
+      "nativeAnimationUpdateProgress": 928,
+      "baseBudgetAlwaysSix": true,
+      "minimumRecordedCumulative": 6.0,
+      "statusTimeline": [],
+      "selected": [],
+      "phaseTransitions": [
+        {
+          "seconds": 3.977,
+          "previous": "FOLLOW",
+          "new": "FALL",
+          "failure": "CONTACT_SUPPORT_LOST"
+        }
+      ],
+      "normalShutdown": true
+    },
+    {
+      "runId": "activationc-on",
+      "policyEnabled": true,
+      "independentExecutions": 1,
+      "actualAgents": 1,
+      "renderParts": 8,
+      "plannedMissionSeconds": 75,
+      "sourceSha256": "F298AEC011027176DDBFA0EA7BE2BF1B77580BC2C19A058D0968E12FDE11B8AF",
+      "candidatePboSha256": "1F8FB4DD930BAF99C92C35B76EE2461A9D38B7315BC38731EBE38166A1D81B9D",
+      "signatureVerified": true,
+      "explicitPlacementAndBudgetInjection": true,
+      "observedSeconds": 70.95400165,
+      "samples": 593,
+      "finalPhase": "FOLLOW",
+      "finalReason": "ARRIVED",
+      "finalRoot": "<4511.346191, 339.179962, 10249.636719>",
+      "rootHorizontalTravelMetres": 6.989018985374761,
+      "landSeen": true,
+      "followSeen": true,
+      "followMoved": true,
+      "maximumGrants": 1,
+      "maximumPlans": 1,
+      "maximumProbeSteps": 42,
+      "nativeSecondsProgress": 45.749599999999994,
+      "nativeAnimationUpdateProgress": 915,
+      "baseBudgetAlwaysSix": true,
+      "minimumRecordedCumulative": 6.0,
+      "statusTimeline": [
+        {
+          "age": 0.03300000000000036,
+          "status": "GRANTED",
+          "used": "0",
+          "limit": "0.860313",
+          "grants": "1"
+        },
+        {
+          "age": 1.3010000000000002,
+          "status": "PHASE_LAND",
+          "used": "0.764648",
+          "limit": "0.860313",
+          "grants": "1"
+        }
+      ],
+      "selected": [
+        {
+          "marker": "landSeen",
+          "age": 1.42,
+          "phase": "LAND",
+          "root": "<4511.447754, 339.180023, 10243.413086>",
+          "status": "PHASE_LAND"
+        },
+        {
+          "marker": "followSeen",
+          "age": 2.018,
+          "phase": "FOLLOW",
+          "root": "<4511.447754, 339.180023, 10243.413086>",
+          "status": "PHASE_LAND"
+        },
+        {
+          "marker": "followMoved",
+          "age": 3.821,
+          "phase": "FOLLOW",
+          "root": "<4511.583984, 339.180298, 10244.701172>",
+          "status": "PHASE_LAND"
+        }
+      ],
+      "phaseTransitions": [
+        {
+          "seconds": 3.998,
+          "previous": "FOLLOW",
+          "new": "FALL",
+          "failure": "CONTACT_SUPPORT_LOST"
+        },
+        {
+          "seconds": 5.338,
+          "previous": "FALL",
+          "new": "LAND",
+          "failure": "CONTACT_SUPPORT_LOST"
+        },
+        {
+          "seconds": 5.93,
+          "previous": "LAND",
+          "new": "EGRESS",
+          "failure": "CONTACT_SUPPORT_LOST"
+        },
+        {
+          "seconds": 5.981,
+          "previous": "EGRESS",
+          "new": "FOLLOW",
+          "failure": "CONTACT_SUPPORT_LOST"
+        },
+        {
+          "seconds": 6.012,
+          "previous": "GOAL_APPLY",
+          "new": "FOLLOW",
+          "failure": "revision=2"
+        }
+      ],
+      "normalShutdown": true
+    }
+  ],
+  "diagnosticSuccess": true,
+  "repeatedValidation": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "goalComplete": false,
+  "limits": [
+    "One OFF/ON pair of explicit placement and budget injection, not an identical replay of the original64 history.",
+    "Initial native clip phase and frame times differ; not pose-matched or performance A/B.",
+    "First calibration OFF had an invalid camera and over-frequent trace; preserved and excluded from the main pair.",
+    "Main-pair camera restored but the container occludes the actor; actual body state and transform are logged, visible smoothness unmeasured.",
+    "Native seconds/update counters do not prove displayed-frame quality.",
+    "No new64 run or animation clock change in this bundle."
+  ],
+  "next": "If activation succeeds, retain as a functional candidate and test live-step cancellation/repetition before adoption; resume physical-query cost and supported animation-path work separately. If it fails, classify recorded planning/cancellation/pose evidence before changing bounds."
+}
+
+SELECTED OWN ADAPTER SHA256 9e3b2212718c3dc48b7301fcf151935e77e0edcceddfa9373624c8dca064ecbd
+class NFCheckedActivationMission:DGNativeGroundMission
+{
+    bool NFInjected;bool NFSawLand;bool NFSawFollow;bool NFFollowMoved;
+    float NFInjectedAt;float NFNextLog;vector NFRoot;vector NFTarget;
+    override void UpdateMeasuredMission(float timeslice)
+    {
+        if(Ready && Director && !Exiting && !Failed)
+        {
+            Control.UseCamera=false;
+            if(Observer){Observer.SetPosition("4519 346 10227");Observer.LookAt("4511 341 10240");Observer.SetFOV(0.85);Observer.SetActive(true);}
+            if(!NFInjected && GetGame().GetTickTime() - Director.Born>=4)
+            {
+                if(Director.Bodies.Count()!=1 || Director.Bodies[0].Parts.Count()!=8)
+                {Print("NF_ACTIVATION_FAILED body_parts");ExitIsolatedTest();return;}
+                DGBNativeGroundBody body=Director.Bodies[0];
+                NFRoot="4511.447754 339.326965 10242.648438";NFTarget=DGBTraversalFixture.Ground(NFRoot+"0 0 8");
+                Tester.SetPosition(NFTarget);
+                body.Agent.Position=NFRoot;body.Agent.Heading=-97.4316;body.Lift=0;
+                body.Traversal.StartPressureFall(vector.Zero);
+                body.Traversal.SeparationEpisodeDistance=6;body.Traversal.SeparationDistanceBudget=6;
+                body.Traversal.PressureEscapeValid=false;body.Traversal.NextPressureEscapePlan=0;
+                body.Contacts.Clear();
+                for(int joint=0;joint<body.JointIds.Count();joint++)body.Contacts.Insert(body.JointWorldPoint(joint,NFRoot,body.Agent.Heading,0));
+                body.Presentation.Positions.Clear();body.Presentation.Headings.Clear();body.Presentation.Times.Clear();
+                body.Presentation.Push(body.RenderOrigin(),body.Agent.Heading,GetGame().GetTickTime());
+                foreach(Animal_DGNativeProbe part:body.Parts)
+                {part.SetPosition(body.RenderOrigin());part.SetOrientation(Vector(body.Agent.Heading+180,0,0));}
+                // An explicit remembered clue is test input, not a sight result.
+                body.Agent.Remember(NFTarget,Director.Now,Director.Now,"INJECTED_ACTIVATION_CLUE");
+                NFInjected=true;NFInjectedAt=GetGame().GetTickTime();
+                FileHandle file=OpenFile("$profile:checked-activation.tsv",FileMode.WRITE);
+                if(file){FPrintln(file,"seconds\tage\tid\tphase\tstate\treason\troot\tactorRoot\trequest\tnativeRequest\tnativeSeconds\tanimUpdates\tlandSeen\tfollowSeen\tfollowMoved\tcumulative\tbaseBudget\tpolicyRead\tpolicyEnabled\tstatus\tplans\tprobeSteps\tgrants\tused\tlimit\tlandingDiagnostic");CloseFile(file);}
+                Print("NF_ACTIVATION_INJECTED one body eight parts; placement and6m distance are explicit diagnostic inputs");
+            }
+        }
+        super.UpdateMeasuredMission(timeslice);
+        if(Ready && !Exiting && Observer)
+        {Observer.SetPosition("4519 346 10227");Observer.LookAt("4511 341 10240");Observer.SetFOV(0.85);Observer.SetActive(true);}
+        if(!NFInjected || !Ready || Exiting || Failed){return;}
+        DGBNativeGroundBody observed=Director.Bodies[0];
+        if(observed.Traversal.Phase=="LAND")NFSawLand=true;
+        if(NFSawLand && observed.Traversal.Phase=="FOLLOW")NFSawFollow=true;
+        if(NFSawFollow && DGBGroundAgent.FlatDistance(observed.Agent.Position,NFRoot)>2 && DGBGroundAgent.FlatDistance(observed.Agent.Position,NFTarget)<6)NFFollowMoved=true;
+        float now=GetGame().GetTickTime();
+        if(now<NFNextLog){return;}
+        NFNextLog=now+0.1;
+        FileHandle log=OpenFile("$profile:checked-activation.tsv",FileMode.APPEND);if(!log)return;
+        DGBNativeTraversal t=observed.Traversal;
+        string row=(now - Director.Born).ToString()+"\t"+(now - NFInjectedAt)+"\t"+observed.Id+"\t"+t.Phase;
+        row+="\t"+observed.Agent.State+"\t"+observed.Reason+"\t"+observed.Agent.Position+"\t"+observed.Leader.GetPosition();
+        row+="\t"+observed.Request+"\t"+observed.Leader.NativeRequest+"\t"+observed.Leader.NativeSeconds+"\t"+observed.Leader.AnimUpdates;
+        row+="\t"+NFSawLand+"\t"+NFSawFollow+"\t"+NFFollowMoved+"\t"+t.SeparationEpisodeDistance+"\t"+t.SeparationDistanceBudget;
+        row+="\t"+t.CLRead+"\t"+t.CLEnabled+"\t"+t.CLStatus+"\t"+t.CLPlans+"\t"+t.CLProbeSteps;
+        row+="\t"+t.CLGrants+"\t"+t.CLUsed+"\t"+t.CLLimit+"\t"+t.LandingDiagnostic;FPrintln(log,row);
+        CloseFile(log);
+    }
+}

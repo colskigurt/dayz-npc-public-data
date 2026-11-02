@@ -1,3 +1,5 @@
+> 최신 작업: 실제8파트 NPC 활성화 OFF/ON 한 쌍. OFF 정체·ON 착지/추적 재개. 반복/시각/성능 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-checked-landing-activation-20261102.md).
+
 > 최신 작업: 검사 경로 기반 착지 복구 후보.64 단일 기능 통과=True, 반복/시각/성능 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-checked-landing-corridor-20261102.md).
 
 > 최신 작업: scratch8/64 수직 회귀.8명 통과·64명63/64, 착지 복구 실패 고정 재생. 시각/성능 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-scratch-vertical-recovery-20261102.md).

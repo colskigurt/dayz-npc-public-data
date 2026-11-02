@@ -1,0 +1,200 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-02T16:45:49.875268+09:00",
+  "sourceRunId": "query-owner-20261102/checked-landing-activation",
+  "buildId": "1F8FB4DD930BAF99C92C35B76EE2461A9D38B7315BC38731EBE38166A1D81B9D",
+  "verificationStatus": {
+    "diagnosis": "actual_npc_activation_pair_passed",
+    "functionalRegression": "single_pair_only",
+    "visualQuality": "not_measured",
+    "performanceTarget": "not_accepted",
+    "externalAI": "not_retested"
+  },
+  "metrics": {
+    "sourceRunId": "query-owner-20261102/checked-landing-activation",
+    "buildId": "1F8FB4DD930BAF99C92C35B76EE2461A9D38B7315BC38731EBE38166A1D81B9D",
+    "newGameplayPbo": false,
+    "newClientTrials": 3,
+    "mainPairClientTrials": 2,
+    "calibrationTrials": 1,
+    "newServerCompileAttempts": 3,
+    "trials": [
+      {
+        "runId": "activationc-off",
+        "policyEnabled": false,
+        "independentExecutions": 1,
+        "actualAgents": 1,
+        "renderParts": 8,
+        "plannedMissionSeconds": 75,
+        "sourceSha256": "F298AEC011027176DDBFA0EA7BE2BF1B77580BC2C19A058D0968E12FDE11B8AF",
+        "candidatePboSha256": "1F8FB4DD930BAF99C92C35B76EE2461A9D38B7315BC38731EBE38166A1D81B9D",
+        "signatureVerified": true,
+        "explicitPlacementAndBudgetInjection": true,
+        "observedSeconds": 70.96899838,
+        "samples": 593,
+        "finalPhase": "FALL",
+        "finalReason": "LANDING_SPACE_BLOCKED",
+        "finalRoot": "<4511.447754, 339.284790, 10242.648438>",
+        "rootHorizontalTravelMetres": 0.0,
+        "landSeen": false,
+        "followSeen": false,
+        "followMoved": false,
+        "maximumGrants": 0,
+        "maximumPlans": 0,
+        "maximumProbeSteps": 0,
+        "nativeSecondsProgress": 46.3995,
+        "nativeAnimationUpdateProgress": 928,
+        "baseBudgetAlwaysSix": true,
+        "minimumRecordedCumulative": 6.0,
+        "statusTimeline": [],
+        "selected": [],
+        "phaseTransitions": [
+          {
+            "seconds": 3.977,
+            "previous": "FOLLOW",
+            "new": "FALL",
+            "failure": "CONTACT_SUPPORT_LOST"
+          }
+        ],
+        "normalShutdown": true
+      },
+      {
+        "runId": "activationc-on",
+        "policyEnabled": true,
+        "independentExecutions": 1,
+        "actualAgents": 1,
+        "renderParts": 8,
+        "plannedMissionSeconds": 75,
+        "sourceSha256": "F298AEC011027176DDBFA0EA7BE2BF1B77580BC2C19A058D0968E12FDE11B8AF",
+        "candidatePboSha256": "1F8FB4DD930BAF99C92C35B76EE2461A9D38B7315BC38731EBE38166A1D81B9D",
+        "signatureVerified": true,
+        "explicitPlacementAndBudgetInjection": true,
+        "observedSeconds": 70.95400165,
+        "samples": 593,
+        "finalPhase": "FOLLOW",
+        "finalReason": "ARRIVED",
+        "finalRoot": "<4511.346191, 339.179962, 10249.636719>",
+        "rootHorizontalTravelMetres": 6.989018985374761,
+        "landSeen": true,
+        "followSeen": true,
+        "followMoved": true,
+        "maximumGrants": 1,
+        "maximumPlans": 1,
+        "maximumProbeSteps": 42,
+        "nativeSecondsProgress": 45.749599999999994,
+        "nativeAnimationUpdateProgress": 915,
+        "baseBudgetAlwaysSix": true,
+        "minimumRecordedCumulative": 6.0,
+        "statusTimeline": [
+          {
+            "age": 0.03300000000000036,
+            "status": "GRANTED",
+            "used": "0",
+            "limit": "0.860313",
+            "grants": "1"
+          },
+          {
+            "age": 1.3010000000000002,
+            "status": "PHASE_LAND",
+            "used": "0.764648",
+            "limit": "0.860313",
+            "grants": "1"
+          }
+        ],
+        "selected": [
+          {
+            "marker": "landSeen",
+            "age": 1.42,
+            "phase": "LAND",
+            "root": "<4511.447754, 339.180023, 10243.413086>",
+            "status": "PHASE_LAND"
+          },
+          {
+            "marker": "followSeen",
+            "age": 2.018,
+            "phase": "FOLLOW",
+            "root": "<4511.447754, 339.180023, 10243.413086>",
+            "status": "PHASE_LAND"
+          },
+          {
+            "marker": "followMoved",
+            "age": 3.821,
+            "phase": "FOLLOW",
+            "root": "<4511.583984, 339.180298, 10244.701172>",
+            "status": "PHASE_LAND"
+          }
+        ],
+        "phaseTransitions": [
+          {
+            "seconds": 3.998,
+            "previous": "FOLLOW",
+            "new": "FALL",
+            "failure": "CONTACT_SUPPORT_LOST"
+          },
+          {
+            "seconds": 5.338,
+            "previous": "FALL",
+            "new": "LAND",
+            "failure": "CONTACT_SUPPORT_LOST"
+          },
+          {
+            "seconds": 5.93,
+            "previous": "LAND",
+            "new": "EGRESS",
+            "failure": "CONTACT_SUPPORT_LOST"
+          },
+          {
+            "seconds": 5.981,
+            "previous": "EGRESS",
+            "new": "FOLLOW",
+            "failure": "CONTACT_SUPPORT_LOST"
+          },
+          {
+            "seconds": 6.012,
+            "previous": "GOAL_APPLY",
+            "new": "FOLLOW",
+            "failure": "revision=2"
+          }
+        ],
+        "normalShutdown": true
+      }
+    ],
+    "diagnosticSuccess": true,
+    "repeatedValidation": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "One OFF/ON pair of explicit placement and budget injection, not an identical replay of the original64 history.",
+      "Initial native clip phase and frame times differ; not pose-matched or performance A/B.",
+      "First calibration OFF had an invalid camera and over-frequent trace; preserved and excluded from the main pair.",
+      "Main-pair camera restored but the container occludes the actor; actual body state and transform are logged, visible smoothness unmeasured.",
+      "Native seconds/update counters do not prove displayed-frame quality.",
+      "No new64 run or animation clock change in this bundle."
+    ],
+    "next": "If activation succeeds, retain as a functional candidate and test live-step cancellation/repetition before adoption; resume physical-query cost and supported animation-path work separately. If it fails, classify recorded planning/cancellation/pose evidence before changing bounds."
+  },
+  "blockers": [
+    "One OFF/ON pair of explicit placement and budget injection, not an identical replay of the original64 history.",
+    "Initial native clip phase and frame times differ; not pose-matched or performance A/B.",
+    "First calibration OFF had an invalid camera and over-frequent trace; preserved and excluded from the main pair.",
+    "Main-pair camera restored but the container occludes the actor; actual body state and transform are logged, visible smoothness unmeasured.",
+    "Native seconds/update counters do not prove displayed-frame quality.",
+    "No new64 run or animation clock change in this bundle."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-checked-landing-activation-20261102.md",
+      "sha256": "f87bb11a9247d7f6825ad8215d799db8c048824b9dbd04546fc3a18ee9043858"
+    },
+    {
+      "path": "evidence/npc-checked-landing-activation-20261102.txt",
+      "sha256": "53dabc64407fa4dd4d8665cb777cc135bfd1e9575eddf2a5ffafdf40cd94bcd2"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
