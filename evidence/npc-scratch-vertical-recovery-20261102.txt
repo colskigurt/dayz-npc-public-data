@@ -1,0 +1,101 @@
+Selected aggregates only; no continuous pose/crowd reconstruction.
+{
+  "sourceRunId": "query-owner-20261102/vertical-recovery-review",
+  "buildId": "24BC69191DCFB8FBAD788D8BFD33D0F933F1B47A386641E9AB27BCDF63843B3D",
+  "newGameplayPbo": false,
+  "existingScratchCandidate": true,
+  "trials": [
+    {
+      "runId": "vertical8d",
+      "agents": 8,
+      "durationSeconds": 300,
+      "independentExecutions": 1,
+      "terminalArrivals": 8,
+      "fallEpisodes": 9,
+      "fallsLandedAndResumed": 9,
+      "physicalTransitions": 112,
+      "matchedPhysicalTransitions": 112,
+      "climbEndFailureContexts": 0,
+      "unresolvedEntityIds": [],
+      "foregroundFraction": 1.0,
+      "missionFrameMs": {
+        "samples": 14740,
+        "p50": 20.0,
+        "p95": 34.0,
+        "p99": 35.0
+      },
+      "frameMetric": "mission dt; not Present or animation displayed cadence",
+      "signatureVerified": true
+    },
+    {
+      "runId": "vertical64",
+      "agents": 64,
+      "durationSeconds": 300,
+      "independentExecutions": 1,
+      "terminalArrivals": 63,
+      "fallEpisodes": 86,
+      "fallsLandedAndResumed": 85,
+      "physicalTransitions": 1029,
+      "matchedPhysicalTransitions": 1029,
+      "climbEndFailureContexts": 0,
+      "unresolvedEntityIds": [
+        "35"
+      ],
+      "foregroundFraction": 1.0,
+      "missionFrameMs": {
+        "samples": 8860,
+        "p50": 26.0,
+        "p95": 72.0,
+        "p99": 98.0
+      },
+      "frameMetric": "mission dt; not Present or animation displayed cadence",
+      "signatureVerified": true
+    }
+  ],
+  "frozenReplay": {
+    "capturedInputs": 2,
+    "referenceScratchEqual": true,
+    "reproducedCapturedOutcomes": true,
+    "terrainAwarePolicy": true,
+    "microstepChains": [
+      {
+        "case": 0,
+        "steps": 41,
+        "acceptedStepDistanceMetres": 0.02,
+        "actualTravelMetres": 0.800781,
+        "landingAccepted": true,
+        "fullPoseAccepted": true,
+        "auxiliaryRoutePointAccepted": false
+      },
+      {
+        "case": 1,
+        "steps": 41,
+        "acceptedStepDistanceMetres": 0.02,
+        "actualTravelMetres": 0.800781,
+        "landingAccepted": true,
+        "fullPoseAccepted": true,
+        "auxiliaryRoutePointAccepted": false
+      }
+    ],
+    "existingNormalDistanceBudgetMetres": 6,
+    "existingContinuationExtraBudgetMetres": 0.6,
+    "existingContinuationGoalLimitMetres": 0.75,
+    "selectedOriginalGoalMetres": 1,
+    "liveCrowdCounterfactual": false
+  },
+  "signatureVerified": true,
+  "directMatchedPerformanceComparison": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "goalComplete": false,
+  "limits": [
+    "Two snapshots and frozen pose do not reconstruct continuous animation, peers or a whole-crowd counterfactual.",
+    "Replay assumed previous lift zero; this exact field was not captured.",
+    "Probe bodies moved only inside isolated server feasibility test. No production budget reset, support bypass or collision deletion.",
+    "Auxiliary inflated-AABB route gate remains false; not an existing FALL landing gate.",
+    "Mission frame dt cannot be compared directly with matched-flat PresentMon p95.",
+    "No current PresentMon helper process verified live; pending performance batch has not run.",
+    "Same-call equality does not prove that scratch candidate caused or did not cause the full64 failure."
+  ],
+  "next": "Classify existing bounded landing continuation ownership and design one checked-corridor acceptance test before a minimal candidate; retain all collision/support checks and normal falls."
+}
