@@ -1,3 +1,5 @@
+> 최신 작업: 사전연결관측:정상111B/비정상16B,8건모두146bit까지읽어18bit초과.잘못된부모ID는범위내에서먼저해석됨.생성/해석계약원인추적중;성능미측정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-parent-record-bounds-20261103.md).
+
 > 최신 작업: 부모 입력16건 raw bits와인자일치:정상2bit/비정상99bit.초기writer111byte 확보,수신길이관측은초기시점놓쳐미확인.새성능/시각결과없음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-parent-bitcursor-20261103.md).
 
 > 최신 작업: 1개체8파트: 서버 부모snapshot0, 클라이언트 같은8 receiver에서 첫ID0→다음동일비정상ID 전환 확인. 생성후 입력경로로범위축소;원인/성능미확정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-parent-input-transition-20261103.md).

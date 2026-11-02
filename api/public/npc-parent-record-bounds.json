@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T07:31:00.640717+09:00",
+  "sourceRunId": "network-gameplay/creature-parent-prearmed1",
+  "buildId": "A500BE80+existing9PBOs_unchanged",
+  "verificationStatus": {
+    "diagnosis": "declared_input_record_overrun_confirmed",
+    "cause": "record_format_or_cursor_mismatch_not_yet_localized",
+    "producer": "specific16byte_record_not_paired",
+    "functionalRegression": "not_run",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "logicalNpcs": 1,
+    "nativeParts": 8,
+    "diagnosticRuntimeTrials": 1,
+    "parentSamples": 16,
+    "uniqueObjects": 8,
+    "normalRecordBytes": 111,
+    "normalRecordBits": 888,
+    "badRecordBytes": 16,
+    "badRecordBits": 128,
+    "badParentReadEndBit": 146,
+    "badRecordOverrunBits": 18,
+    "badSamples": 8,
+    "badIdEndBit": 113,
+    "badIdsWithinBounds": 8,
+    "independentPerformanceRepeats": 0,
+    "frameTimeP50P95P99": null
+  },
+  "blockers": [
+    "Wrong parent ID read within bounds; overrun is subsequent, not sufficient cause of wrong ID",
+    "Exact16byte producer and record schema transition not yet matched",
+    "No mod-level correction selected before encoder contract is known",
+    "No new whole-frame or visual-quality verification",
+    "Existing ETW helper remains unstarted"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-parent-record-bounds-20261103.md",
+      "sha256": "3a5dcc47700daec78fef5ce0612393808ba84550779688e3027b036365ef602b"
+    },
+    {
+      "path": "evidence/npc-parent-record-bounds-20261103.txt",
+      "sha256": "e4b26089cdaecdfd68e9b277620e7ce5a513910e86d534773119c89f53df8c6c"
+    }
+  ],
+  "next": "Trace16byte record producer and encoder/decoder contract. Existing read-only3-function REA batch is live; preserve its initialization and do not force IDs or remove collision/support checks. Keep unhooked8 to64 performance control separate.",
+  "goalComplete": false
+}
