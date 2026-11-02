@@ -1,50 +1,50 @@
 ## 1. 작업 목표
 
-현재 network NPC 코드에서 발 지지·관절 sweep solver의 임시 배열 재사용이 의미 있는 절감 후보인지 최소 통제 비교한다. 정상 밀침·낙하·착지·FOLLOW·재등반을 보존하며 새로운 실제 물리 검사 생략은 하지 않는다. 기존 scratch 후보는 오래된 FCOn/FCEligible 의존성이 있어 그대로 재로딩하지 않는다.
+이미 구현된 SupportSweepFast의 비용을 현재8PBO 실행 조합에서 분리 비교한다. 지난 배열 재사용 후보는 약1.5~2.5%라 승격하지 않았다. 과거 Fast64는63/64·낙하 복귀95/96으로 실패했으므로 재설계 없이 이미 해결됐다고 취급하지 않는다. 이번은 기존 검사 옵션의 국소 비용 시험이며 게임 기능 수용 시험이 아니다.
 
 ## 2. 실제 수행
 
-현재 서명 PBO8개의 owner/source와 solver override 부재를 감사했다. 원래 solver BASE, 같은 wrapper OFF→super, ON→개체별 raw/상수 offsets 배열 재사용의3팔 비교다. 출력 points는 매회 새로 생성하며 본·발·월드·fallback 검사는 동일하다. 변경을 역변환하면 packed base method와 일치한다. 새 PBO 없이 격리 mission subclass만 추가했다.
+새 PBO 없이 mission이 기존 DGBNativeGroundBody.SolveContacts를 호출했다. REF는 기존10개 발 광선, FAST는 등록된 컨테이너의 중앙 ray·충돌box 내부 전체 footprint·실제 sphere sweep·법선/높이 일관성 가드를 통과한 발에만 주변4ray 대체, SHADOW는 원래 광선과 fast bound를 함께 비교한다. 낙하·밀침·피해·월드 sweep·원본 solver는 변경하지 않았다.
 
-두 독립 서버 프로세스에서 terrain/roof/lift_reject의3조건×4그룹×6블록을 수행했다. 첫 실행 BASE/OFF/ON/ON/OFF/BASE, 두 번째 ON/OFF/BASE/BASE/OFF/ON. 블록당64회 준비·2000회 측정, 프로세스당72블록·144000회, 합계144블록·288000회다. 그룹 내 native4본 포즈·root 안정성 및 출력 소유권/forced-busy fallback을 검사했다. 실제 재귀 호출 검증은 아니다. 사전 후속 기준은 두 실행·양 방향 중앙값 모두 최소5% 감소다.
+2독립 프로세스, terrain/roof/edge(offset1.2m)/minimumLift0.3 거부의4조건×4그룹×6블록, 각1000회 측정·32회 준비다. 총192블록·192000회, 팔별8블록/조건/프로세스다. 첫 REF/FAST/SHADOW/SHADOW/FAST/REF, 둘째 역순. 그룹 내 실제 idle4본 포즈와 root 불변 확인. 반환·reason·points 수 일치, shadow lift/points 동일, FAST lift는 REF 이상·차이8.001mm 이내, points가 해당 수직 차이만 갖는지 검사했다. 이8mm는 기존 guard 범위이지 일반 안전성 입증값이 아니다.
 
 ## 3. 측정 결과
 
-|실행|조건|BASE 중앙값 ticks/2000회|OFF 중앙값|ON 중앙값|ON 대 BASE|
-|---|---|---:|---:|---:|---:|
-|scratch-method-cost1d|terrain|1071379.0|1079114.5|1052671.5|-1.7461%|
-|scratch-method-cost1d|roof|1502172.5|1482581.0|1464076.5|-2.5361%|
-|scratch-method-cost1d|lift_reject|991792.0|996442.5|972158.0|-1.9796%|
-|scratch-method-cost2d|terrain|1120606.5|1142297.0|1099311.0|-1.9004%|
-|scratch-method-cost2d|roof|1535389.0|1553402.5|1511889.0|-1.5306%|
-|scratch-method-cost2d|lift_reject|1044753.5|1059273.5|1020175.5|-2.3525%|
+|독립 실행|지형 FAST 대 REF|지붕|가장자리 offset|lift 거부|
+|---|---:|---:|---:|---:|
+|support-method-cost1d|6.6452%|-26.3039%|-14.7211%|6.1185%|
+|support-method-cost2d|6.6206%|-26.4242%|-15.1073%|6.6650%|
 
-전 조건 footRays=20000/블록. terrain/roof jointSweeps=8000, lift_reject=0. 그룹 안 반환·lift 합·points 수·질의 수 동일, root/pose/출력 보존 가드 통과. 두 실행 모두5% 문턱 미달이다. 작은 감소 경향을0효과로 단정하지 않지만 full64 시험 후보로 승격하지 않는다.
+두 실행에서 지붕 FAST는 측정 블록당2천 foot rays+4천 joint sweeps다(REF는1만+4천). 추가 StructureSupportBound sphere sweep은 fastUsed/attempt counters에 연결되며 jointSweeps 수에 포함되지 않는다. 지형 FAST는1만 foot rays를 그대로 수행해 절감0이다. 가장자리 offset은 한 발 적격 사례가 포함돼5개 ray/발 전체 생략이 아니며 FAST foot rays6천이다. 가장자리에서 무조건 원래10ray가 실행됐다고 하지 않는다. 실제 guard가 부적격인 발만 원래5ray로 돌아간다.
 
-p50/p95/p99는 첨부 JSON의 runs→conditions→blockTicks와 gameTickProbeSeconds에 있다. 전자는2000회 메서드 블록의 raw 성능 카운터, 후자는 블록 바깥에서 읽은 게임시간 차이다. 프레임 시간·CPU self-time·하드웨어 cycles가 아니다. SDK TickCount는 performance ticks로 정의돼 절대 ms 변환을 가정하지 않았다. 실제 Present/CPU busy/GPU/8·64 기능/시각 품질·할당량·GC는 이번에 미측정이다. 기존8/64 결과를 이번 시험의 회귀로 재사용하지 않는다.20ms p95는 미달성 목표다.
+SHADOW에서 under counter0, 준비 계약 모두 통과. 전체 조건 p50/p95/p99는 JSON의 block raw ticks 분포로 공개한다. ticks는1000회 메서드 경과 카운터이며 CPU self-time·프레임시간이 아니다. 절대ms 환산하지 않는다. 반복5% 지붕 절감 조건은 충족했지만 지형 회귀3% 상한을 초과해 사전 전역 활성화 gate는 False다. 기각 기준을 바꾸어 통과시키지 않는다.
+
+8/64 gameplay, Present·CPU busy·GPU·시각 cadence·할당량·GC는 이번에 미측정이다. 과거 matched-flat65~69ms를 이 수치로 줄여 계산할 수 없다.20ms p95는 미달성 목표다.
 
 ## 4. 원인 분석
 
-확인: 두 script 배열의 수명 연장만으로 관찰된 국소 이득은 약1.5~2.5%이며 native Ray/Sphere 내부 호출은 그대로다. 따라서 이 후보만으로 기존 큰64개체 비용 차이를 해결한다는 근거가 부족하다. 나머지 비용을 전부 물리라고 역산할 수 없다. VM·본·출력 배열·native 질의·스케줄링도 포함된다. native 내부 임시 메모리는 호출자가 제공하는 script 배열과 다르다.
+확인: 적격 지붕에서 주변 광선을 줄이는 방식은 현재 solver 국소 비용을 반복 감소시킨다. 지형에서는 최적화 가능 여부를 확인하는 분기/guard만 더해져 약6.6% 경과시간 증가가 반복됐다. 지붕상의26%를 NPC 전체/서버/클라이언트 개선률로 주장하지 않는다. 실제 군중의 적격 비율과 호출 분포는 다른 문제다.
 
-시험 초기에 override 매개변수명 불일치 및 opaque file-handle cleanup 컴파일 실패가 있었다. 후속 no-physics 장수 actor 실행은12행 뒤 native read0 crash가 발생했다. 원인 타입은 미확정이며 가까운 과거 fault RVA만으로 동일 원인이라 하지 않는다. 공식 physics 생성+script retirement 분리 후 두 실행을 완료했다. 실패 원본은 보존하고 성능 표에서 제외했다.
+과거 연구와 중복: ray 감소·bounded overestimate·8/64 기능은 이미 시험했다. 새 근거는 현재 모듈 조합의 REF/FAST/SHADOW 역순 독립 비교와 지형 비용 증가다. 옛63/64 실패를 현재 수치로 반증하거나 기존 bounded-lift64/64를 FAST 활성 기능 통과로 재사용하지 않는다.
 
-원시 최종 TSV는16개 header/17개 data 필드다. 마지막 gameTickProbeSeconds 라벨 누락을 별도 header-projection.json으로 명시해 파싱했고 원본은 수정하지 않았다. 초기 부분 결과의 elapsedMs 라벨도 틀려 비교에서 제외했다. 과거 scoped-cost 보고서는 이미 clock 보정식이 있으므로 이번 오류를 소급 적용하지 않는다. launch의 newPbo=true는 복사된 runner 메타데이터 오류이며 현재8개 hash 감사와 실제 생성 이력상 새 PBO=false다. 원시 launch는 보존한다.
+준비 실패도 보존했다. 최초 Enforce subtraction 표현식과 긴 로그 수식에서 컴파일 실패했다. 후속c는 물리 trial 실행 전에 알려진 diagnostic plugin warning의 기대 경로가 상대 경로라 strict guard가 거부했다. d는 c와 mission bytes 동일, 기대 경로만 정확한 절대 경로로 바꿔 원래 guard를 유지했다. 두 d 실행은 퇴역 handoff까지 완료했다. exit-1 소유 서버 정리는 정상quit 인증이 아니다.
 
 ## 5. 검증 수준
 
-방법 진단 및 두 독립 프로세스의 제한된 반복 비교 완료. 후속5% 기준 미통과. 전체 게임 기능 회귀/시각 수용/성능 목표/일반 안전성은 미실행·미수용이다. 프로세스는 종료했고 소유 서버 정리 exit-1은 정상 quit 인증이 아니므로 normalQuitVerified=false다. 전체 골은 active다.
+현재 코드의 제한된 메서드 진단:성공. 두 독립 프로세스 반복 비교:완료. 전역 FAST 수용:기준 미통과. 상태 제한 후보 구현·8→64 회귀·시각 품질·전체 성능 목표·최종 수용:미실행/미완료. 골 active 유지.
 
 ## 6. 변경 사항
 
-mission subclass·staging/analysis/report 파생 자료만 추가. 기존 source/PBO·자산·운영 서버·graph/native 시계·지원 판정은 변경하지 않았다. 새 PBO 빌드 없음. 실행 전 기존8개 서명과 hash 검증 성공. 개인키는 공개하지 않는다. buildId는 JSON의8개 PBO+실행파일 조합이다.
+격리 mission/launcher·분석·보고서만 추가. 현재8개 PBO hash/서명은 매 실행 전 검증 성공. 새 PBO/재서명 없음, 기존 게임/운영서버/자산/시계/키 변경 없음. 자체 staging/analyzer가 추가됐고 원시 실패/기존 보고서는 덮어쓰지 않았다.
 
 ## 7. 원시 증거
 
-sourceRunId: animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/current-scratch-method-cost. 1d/2d의 plan·init.c·launch·TSV·RPT·header-projection과 analysis, 초기 컴파일 실패/부분 crash를 로컬 checkpoint 해시 목록에 연결한다. 공개 패킷은 선택된 수치와 자체 mission wrapper 발췌이며 전체 원시자료·게임자산·영상·로컬경로·프로세스·키는 제외한다. 팔별8블록은8개 독립 프로세스가 아니다.
+sourceRunId:network-gameplay/current-support-method-cost. support-method-cost1/1b/1c의컴파일·strict guard 거부,1d/2d의plan·동일 mission·서명/launch·정확한22열 TSV·RPT/retirement 및분석 JSON을 로컬 체크포인트에 연결한다. 공개는 선정된 메서드 수치·자체 시험 mission, 전체 원시/영상/설치자산/프로세스/로컬경로/키는 제외한다. 조건내8블록을8독립 프로세스로 세지 않는다.
 
 ## 8. 잔여 문제
 
-이 후보는 보류한다. 다음 단일 산출물은 현재 client/server topology에서 native Ray/Sphere 상위 호출의 안전하게 줄일 수 있는 중복을 기존 증거로 좁힌 수정 후보 명세다. 질의 삭제·항상 참 처리·무조건 캐시를 적용하지 않는다. 동일 입력 재사용 빈도 미확정 및 이전42쌍 완전일치0을 유지한다. 수정 후보가 없으면 제한을 명시하고 지형 안전 판정과 무관한 broadphase/스케줄링만 별도로 검토한다. 표시 품질과64개체 비용은 독립 게이트로 유지한다. 현재 표시 개선은 사용자 피드백이며 모든14클립·8파트·64개체 최종 수용은 아니다. 새 ETW 표시 측정에는 유효한 새 관리자 준비가 필요하며 오래된 helper는 재사용하지 않는다.
+현재 최우선 단일 후보 명세: 전역 FAST 대신, 등록 구조물 위 FOLLOW라는 기존 개체 상태를 활성화 힌트로만 사용해 지형에서 후보 overhead를 피한다. 힌트가 참이어도 원래 중앙ray·box·sphere·법선/높이 가드는 모두 유지한다. 실제 지지·착지·발판 가장자리 판단을 상태 라벨로 대체하지 않는다. MOTION/FALL/LAND·피격/사망·미등록 구조물은 원래 경로가 우선이다.
 
-로컬 checkpoint SHA256: d67c1200dc263d90d84a190bf5c145ff6b1d75be381a7631ad4672a4fef04a8c
+예상 이점은 적격 지붕 질의 감소, 한계는 주요 평지 추격 비용을 직접 해결하지 못한다는 점이다. 위험은8mm 이하 보수적 lift 변화의 경로 의존성·재등반/혼잡·모듈 override 소유권이다. 별도 default-OFF 작은 solver override와 상태/포즈 가드 시험 후8→64 동일하네스, 마지막 전체 프레임 반복 비교가 필요하다. 새 후보가 현재 실험에 섞이지 않게 별도폴더/PBO로 준비하고 원래 Fast64 실패 재현을 보존한다. 이번 보고만으로 새 후보를 구현/배포했다고 하지 않는다.
+
+로컬 checkpoint SHA256: 8f6abfeef8bcf031a2a10dd18b9734a0b018939c3ede020d5df252624cf804ab
