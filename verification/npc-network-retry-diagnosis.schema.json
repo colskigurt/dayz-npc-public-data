@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "generatedAt": {
+      "type": "string"
+    },
+    "sourceRunId": {
+      "const": "network-gameplay/network-retry-diagnosis1"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "verificationStatus": {
+      "type": "object",
+      "required": [
+        "diagnosis",
+        "setupCandidate",
+        "functionalRegression",
+        "visualQuality",
+        "performance",
+        "finalAcceptance"
+      ],
+      "properties": {
+        "finalAcceptance": {
+          "const": false
+        },
+        "performance": {
+          "const": "not_measured"
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "controls",
+        "existing64WarningLines",
+        "lookupTraceMatches",
+        "networkRecordTraceMatches",
+        "independentPerformanceRepeats"
+      ],
+      "properties": {
+        "controls": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "independentPerformanceRepeats": {
+          "const": 0
+        }
+      }
+    },
+    "evidenceReferences": {
+      "type": "array",
+      "minItems": 2
+    }
+  }
+}
