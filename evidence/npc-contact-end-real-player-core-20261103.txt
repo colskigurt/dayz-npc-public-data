@@ -1,0 +1,1821 @@
+Selected actual native-climb results/transitions and own controlled player-placement fixture; not natural crowd or performance proof.
+{
+  "schemaVersion": "1.0.0",
+  "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/contact-end-real-player-core",
+  "buildId": "A500BE80+453D6A9E+0C6E1855+B8FBAB74+8BDA6B7A+87442808+765E61B0+D90E537F+21053F29",
+  "candidatePboSha256": "21053F29FD2C99FA7B8DEB1AD3DD5FE792890AA76B3EBC92CF7A01CC87B03108",
+  "conditions": {
+    "contact-end-runtime-off": {
+      "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/contact-end-runtime-off",
+      "logicalNpcs": 1,
+      "nativeParts": 8,
+      "independentRuns": 1,
+      "condition": "off",
+      "candidateFlag": false,
+      "result": {
+        "armed": "true",
+        "attempts": "1",
+        "phase": "FOLLOW",
+        "climbs": "2",
+        "checks": "0",
+        "completions": "0",
+        "rejections": "0",
+        "diagnostic": "",
+        "failure": "",
+        "contactBlocks": "3",
+        "held": "0.15",
+        "triggerElapsed": "2.15",
+        "clipDuration": "2.13333",
+        "endpointError": "3.8071e-05",
+        "triggerRequest": "3",
+        "curveEnded": "true",
+        "currentClear": "true",
+        "proposedClear": "false",
+        "contactReject": "PLAYER_CORE",
+        "start": "<4512.275391, 342.166962, 10237.660156>",
+        "next": "<4512.285156, 342.184052, 10237.672852>",
+        "blocker": "<4512.655762, 342.225922, 10238.154297>",
+        "seconds": "15.1263"
+      },
+      "actualArmed": true,
+      "candidateActivated": false,
+      "supportedCancellation": false,
+      "transitions": [
+        {
+          "sequence": "1",
+          "seconds": "8.812",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "FOLLOW",
+          "next": "MOTION",
+          "reason": "",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.219238, 339.123779, 10235.232422>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0193787",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "false",
+          "endpointError": "0",
+          "exitError": "0",
+          "nativeSeconds": "31.0998",
+          "link": "ground_to_low_lane_1",
+          "callContext": "FOLLOW",
+          "areaAtCall": "ground"
+        },
+        {
+          "sequence": "5",
+          "seconds": "10.291",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "MOTION",
+          "next": "SETTLE",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.225098, 340.157440, 10237.197266>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0435181",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "1.5",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "true",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0141991",
+          "nativeSeconds": "32.5998",
+          "link": "ground_to_low_lane_1",
+          "callContext": "MOTION",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "6",
+          "seconds": "10.839",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "SETTLE",
+          "next": "EGRESS",
+          "reason": "SETTLE",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.225098, 340.171631, 10237.197266>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0324402",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "true",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0141991",
+          "nativeSeconds": "33.1498",
+          "link": "ground_to_low_lane_1",
+          "callContext": "OTHER",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "7",
+          "seconds": "10.898",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "EGRESS",
+          "next": "FOLLOW",
+          "reason": "SUPPORTED_EGRESS_HANDOFF",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.225098, 340.171631, 10237.197266>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0302429",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "true",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0141991",
+          "nativeSeconds": "33.1998",
+          "link": "none",
+          "callContext": "OTHER",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "8",
+          "seconds": "12.197",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "FOLLOW",
+          "next": "MOTION",
+          "reason": "",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4510.113281, 340.189453, 10237.663086>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "2.13333",
+          "nativeCurveEnded": "false",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0141991",
+          "nativeSeconds": "34.4998",
+          "link": "low_to_high_lane_-2",
+          "callContext": "FOLLOW",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "19",
+          "seconds": "14.499",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "MOTION",
+          "next": "SETTLE",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4512.285156, 342.184052, 10237.655273>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.144623",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "2.3",
+          "clipDuration": "2.13333",
+          "nativeCurveEnded": "true",
+          "endpointError": "3.8071e-05",
+          "exitError": "0.0178332",
+          "nativeSeconds": "36.7997",
+          "link": "low_to_high_lane_-2",
+          "callContext": "MOTION",
+          "areaAtCall": "high"
+        },
+        {
+          "sequence": "20",
+          "seconds": "15.05",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "SETTLE",
+          "next": "EGRESS",
+          "reason": "SETTLE",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4512.285156, 342.171173, 10237.655273>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0305481",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "2.13333",
+          "nativeCurveEnded": "true",
+          "endpointError": "3.8071e-05",
+          "exitError": "0.0178332",
+          "nativeSeconds": "37.3497",
+          "link": "low_to_high_lane_-2",
+          "callContext": "OTHER",
+          "areaAtCall": "high"
+        },
+        {
+          "sequence": "21",
+          "seconds": "15.111",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "EGRESS",
+          "next": "FOLLOW",
+          "reason": "SUPPORTED_EGRESS_HANDOFF",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4512.285156, 342.171173, 10237.655273>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0293884",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "2.13333",
+          "nativeCurveEnded": "true",
+          "endpointError": "3.8071e-05",
+          "exitError": "0.0178332",
+          "nativeSeconds": "37.3997",
+          "link": "none",
+          "callContext": "OTHER",
+          "areaAtCall": "high"
+        }
+      ],
+      "candidateJournals": [],
+      "phaseChainErrors": [],
+      "retirementDetached": true,
+      "missionSha256": "6a0af60af7c0c60bd3a6e59600797200b6046c28abbd0e11757a37e1aa168f21",
+      "subjectRootTimeEndCounterInjection": false,
+      "normalQuitVerified": false,
+      "signatureChecksPassed": 8,
+      "originalMilestoneTerminalNotApplicable": true
+    },
+    "contact-end-runtime-on": {
+      "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/contact-end-runtime-on",
+      "logicalNpcs": 1,
+      "nativeParts": 8,
+      "independentRuns": 1,
+      "condition": "on",
+      "candidateFlag": true,
+      "result": {
+        "armed": "true",
+        "attempts": "1",
+        "phase": "FOLLOW",
+        "climbs": "2",
+        "checks": "2",
+        "completions": "1",
+        "rejections": "1",
+        "diagnostic": "VALIDATED_CURRENT_END",
+        "failure": "",
+        "contactBlocks": "3",
+        "held": "0.1",
+        "triggerElapsed": "2.15",
+        "clipDuration": "2.13333",
+        "endpointError": "3.8071e-05",
+        "triggerRequest": "3",
+        "curveEnded": "true",
+        "currentClear": "true",
+        "proposedClear": "false",
+        "contactReject": "PLAYER_CORE",
+        "start": "<4512.264648, 342.166992, 10237.500977>",
+        "next": "<4512.273926, 342.184082, 10237.513672>",
+        "blocker": "<4512.632813, 342.225769, 10238.004883>",
+        "seconds": "15.0473"
+      },
+      "actualArmed": true,
+      "candidateActivated": true,
+      "supportedCancellation": false,
+      "transitions": [
+        {
+          "sequence": "1",
+          "seconds": "8.891",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "FOLLOW",
+          "next": "MOTION",
+          "reason": "",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.169434, 339.122864, 10235.228516>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0416565",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "false",
+          "endpointError": "0",
+          "exitError": "0",
+          "nativeSeconds": "33.7498",
+          "link": "ground_to_low_lane_1",
+          "callContext": "FOLLOW",
+          "areaAtCall": "ground"
+        },
+        {
+          "sequence": "5",
+          "seconds": "10.4",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "MOTION",
+          "next": "SETTLE",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.166504, 340.156342, 10237.193359>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0435486",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "1.5",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "true",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0142242",
+          "nativeSeconds": "35.2497",
+          "link": "ground_to_low_lane_1",
+          "callContext": "MOTION",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "6",
+          "seconds": "10.931",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "SETTLE",
+          "next": "EGRESS",
+          "reason": "SETTLE",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.166504, 340.170502, 10237.193359>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0324707",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "true",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0142242",
+          "nativeSeconds": "35.7997",
+          "link": "ground_to_low_lane_1",
+          "callContext": "OTHER",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "7",
+          "seconds": "10.993",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "EGRESS",
+          "next": "FOLLOW",
+          "reason": "SUPPORTED_EGRESS_HANDOFF",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.166504, 340.170502, 10237.193359>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.030304",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "true",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0142242",
+          "nativeSeconds": "35.8497",
+          "link": "none",
+          "callContext": "OTHER",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "8",
+          "seconds": "12.194",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "FOLLOW",
+          "next": "MOTION",
+          "reason": "",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4510.102539, 340.188721, 10237.469727>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "2.13333",
+          "nativeCurveEnded": "false",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0142242",
+          "nativeSeconds": "37.0497",
+          "link": "low_to_high_lane_-2",
+          "callContext": "FOLLOW",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "18",
+          "seconds": "14.439",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "MOTION",
+          "next": "SETTLE",
+          "reason": "TRAVERSAL_PLAYER_CORE",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4512.264648, 342.166992, 10237.495117>",
+          "contactStatus": "",
+          "contactBlocked": "true",
+          "lift": "0.16156",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "2.25",
+          "clipDuration": "2.13333",
+          "nativeCurveEnded": "true",
+          "endpointError": "3.8071e-05",
+          "exitError": "0.0178332",
+          "nativeSeconds": "39.2997",
+          "link": "low_to_high_lane_-2",
+          "callContext": "MOTION",
+          "areaAtCall": "high"
+        },
+        {
+          "sequence": "19",
+          "seconds": "14.988",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "SETTLE",
+          "next": "EGRESS",
+          "reason": "SETTLE",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4512.264648, 342.171082, 10237.495117>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0304871",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "2.13333",
+          "nativeCurveEnded": "true",
+          "endpointError": "3.8071e-05",
+          "exitError": "0.0178332",
+          "nativeSeconds": "39.8497",
+          "link": "low_to_high_lane_-2",
+          "callContext": "OTHER",
+          "areaAtCall": "high"
+        },
+        {
+          "sequence": "20",
+          "seconds": "15.033",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "EGRESS",
+          "next": "FOLLOW",
+          "reason": "SUPPORTED_EGRESS_HANDOFF",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4512.264648, 342.171082, 10237.495117>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0293274",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "2.13333",
+          "nativeCurveEnded": "true",
+          "endpointError": "3.8071e-05",
+          "exitError": "0.0178332",
+          "nativeSeconds": "39.8997",
+          "link": "none",
+          "callContext": "OTHER",
+          "areaAtCall": "high"
+        }
+      ],
+      "candidateJournals": [
+        {
+          "seconds": "14.439",
+          "id": "0",
+          "outcome": "VALIDATED",
+          "phase": "MOTION",
+          "position": "<4512.264648, 342.166992, 10237.495117>",
+          "link": "low_to_high_lane_-2",
+          "target": "high",
+          "elapsed": "2.25",
+          "endpointError": "3.8071e-05",
+          "actualGap": "0.00539635",
+          "lift": "0.16156",
+          "checkedLift": "0.16156",
+          "checks": "2",
+          "completions": "1"
+        },
+        {
+          "seconds": "14.439",
+          "id": "0",
+          "outcome": "SETTLE",
+          "phase": "SETTLE",
+          "position": "<4512.264648, 342.166992, 10237.495117>",
+          "link": "low_to_high_lane_-2",
+          "target": "high",
+          "elapsed": "2.25",
+          "endpointError": "3.8071e-05",
+          "actualGap": "0.00539635",
+          "lift": "0.16156",
+          "checkedLift": "0.16156",
+          "checks": "2",
+          "completions": "1"
+        }
+      ],
+      "phaseChainErrors": [],
+      "retirementDetached": true,
+      "missionSha256": "6a0af60af7c0c60bd3a6e59600797200b6046c28abbd0e11757a37e1aa168f21",
+      "subjectRootTimeEndCounterInjection": false,
+      "normalQuitVerified": false,
+      "signatureChecksPassed": 8,
+      "originalMilestoneTerminalNotApplicable": true
+    },
+    "contact-end-axis-off": {
+      "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/contact-end-axis-off",
+      "logicalNpcs": 1,
+      "nativeParts": 8,
+      "independentRuns": 1,
+      "condition": "off",
+      "candidateFlag": false,
+      "result": {
+        "armed": "true",
+        "attempts": "1",
+        "phase": "FOLLOW",
+        "climbs": "1",
+        "checks": "0",
+        "completions": "0",
+        "rejections": "0",
+        "diagnostic": "",
+        "failure": "SUPPORTED_CONTACT_REPLAN",
+        "contactBlocks": "42",
+        "held": "2.1",
+        "triggerElapsed": "2.15",
+        "clipDuration": "2.13333",
+        "endpointError": "3.8071e-05",
+        "triggerRequest": "3",
+        "curveEnded": "true",
+        "currentClear": "true",
+        "proposedClear": "false",
+        "contactReject": "PLAYER_CORE",
+        "start": "<4512.268555, 342.166748, 10237.737305>",
+        "next": "<4512.278320, 342.183838, 10237.750000>",
+        "blocker": "<4512.888672, 342.229889, 10237.740234>",
+        "seconds": "16.4522"
+      },
+      "actualArmed": true,
+      "candidateActivated": false,
+      "supportedCancellation": true,
+      "transitions": [
+        {
+          "sequence": "1",
+          "seconds": "8.82899",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "FOLLOW",
+          "next": "MOTION",
+          "reason": "",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.342285, 339.125916, 10235.233398>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0195007",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "false",
+          "endpointError": "0",
+          "exitError": "0",
+          "nativeSeconds": "58.2494",
+          "link": "ground_to_low_lane_1",
+          "callContext": "FOLLOW",
+          "areaAtCall": "ground"
+        },
+        {
+          "sequence": "5",
+          "seconds": "10.34",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "MOTION",
+          "next": "SETTLE",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.313477, 340.159088, 10237.198242>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0436401",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "1.5",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "true",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0142242",
+          "nativeSeconds": "59.7494",
+          "link": "ground_to_low_lane_1",
+          "callContext": "MOTION",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "6",
+          "seconds": "10.891",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "SETTLE",
+          "next": "EGRESS",
+          "reason": "SETTLE",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.313477, 340.173279, 10237.198242>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0325623",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "true",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0142242",
+          "nativeSeconds": "60.2994",
+          "link": "ground_to_low_lane_1",
+          "callContext": "OTHER",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "7",
+          "seconds": "10.937",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "EGRESS",
+          "next": "FOLLOW",
+          "reason": "SUPPORTED_EGRESS_HANDOFF",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.313477, 340.173279, 10237.198242>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.030365",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "true",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0142242",
+          "nativeSeconds": "60.3494",
+          "link": "none",
+          "callContext": "OTHER",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "8",
+          "seconds": "12.227",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "FOLLOW",
+          "next": "MOTION",
+          "reason": "",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4510.106445, 340.189514, 10237.740234>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0346985",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "2.13333",
+          "nativeCurveEnded": "false",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0142242",
+          "nativeSeconds": "61.6493",
+          "link": "low_to_high_lane_-2",
+          "callContext": "FOLLOW",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "94",
+          "seconds": "16.437",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "MOTION",
+          "next": "FOLLOW",
+          "reason": "SUPPORTED_CONTACT_REPLAN",
+          "failure": "SUPPORTED_CONTACT_REPLAN",
+          "recoveryGeneration": "0",
+          "position": "<4512.268555, 342.166748, 10237.737305>",
+          "contactStatus": "",
+          "contactBlocked": "true",
+          "lift": "0.157715",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "4.2",
+          "clipDuration": "2.13333",
+          "nativeCurveEnded": "true",
+          "endpointError": "3.8071e-05",
+          "exitError": "0.0178332",
+          "nativeSeconds": "65.8494",
+          "link": "none",
+          "callContext": "MOTION",
+          "areaAtCall": "high"
+        }
+      ],
+      "candidateJournals": [],
+      "phaseChainErrors": [],
+      "retirementDetached": true,
+      "missionSha256": "f5637ae31dd08b0b9107973c94bdc9b42dd95e0bf0833fea959a6a000b2da7a1",
+      "subjectRootTimeEndCounterInjection": false,
+      "normalQuitVerified": false,
+      "signatureChecksPassed": 8,
+      "originalMilestoneTerminalNotApplicable": true
+    },
+    "contact-end-axis-on": {
+      "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/contact-end-axis-on",
+      "logicalNpcs": 1,
+      "nativeParts": 8,
+      "independentRuns": 1,
+      "condition": "on",
+      "candidateFlag": true,
+      "result": {
+        "armed": "true",
+        "attempts": "1",
+        "phase": "FOLLOW",
+        "climbs": "1",
+        "checks": "16",
+        "completions": "0",
+        "rejections": "16",
+        "diagnostic": "THROTTLED",
+        "failure": "SUPPORTED_CONTACT_REPLAN",
+        "contactBlocks": "41",
+        "held": "2.05",
+        "triggerElapsed": "2.15",
+        "clipDuration": "2.13333",
+        "endpointError": "3.8071e-05",
+        "triggerRequest": "3",
+        "curveEnded": "true",
+        "currentClear": "true",
+        "proposedClear": "false",
+        "contactReject": "PLAYER_CORE",
+        "start": "<4512.329102, 342.167542, 10237.854492>",
+        "next": "<4512.338867, 342.184631, 10237.867188>",
+        "blocker": "<4512.949219, 342.230621, 10237.857422>",
+        "seconds": "16.4325"
+      },
+      "actualArmed": true,
+      "candidateActivated": false,
+      "supportedCancellation": true,
+      "transitions": [
+        {
+          "sequence": "1",
+          "seconds": "8.813",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "FOLLOW",
+          "next": "MOTION",
+          "reason": "",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.180664, 339.123138, 10235.248047>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.00704956",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "false",
+          "endpointError": "0",
+          "exitError": "0",
+          "nativeSeconds": "107.402",
+          "link": "ground_to_low_lane_1",
+          "callContext": "FOLLOW",
+          "areaAtCall": "ground"
+        },
+        {
+          "sequence": "5",
+          "seconds": "10.322",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "MOTION",
+          "next": "SETTLE",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.177734, 340.156616, 10237.212891>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0444946",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "1.5",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "true",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0142242",
+          "nativeSeconds": "108.902",
+          "link": "ground_to_low_lane_1",
+          "callContext": "MOTION",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "6",
+          "seconds": "10.813",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "SETTLE",
+          "next": "EGRESS",
+          "reason": "SETTLE",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.177734, 340.170776, 10237.212891>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0328064",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "true",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0142242",
+          "nativeSeconds": "109.402",
+          "link": "ground_to_low_lane_1",
+          "callContext": "OTHER",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "7",
+          "seconds": "10.858",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "EGRESS",
+          "next": "FOLLOW",
+          "reason": "SUPPORTED_EGRESS_HANDOFF",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.177734, 340.170776, 10237.212891>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0324707",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "true",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0142242",
+          "nativeSeconds": "109.452",
+          "link": "none",
+          "callContext": "OTHER",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "8",
+          "seconds": "12.281",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "FOLLOW",
+          "next": "MOTION",
+          "reason": "",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4510.166992, 340.190948, 10237.857422>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "2.13333",
+          "nativeCurveEnded": "false",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0142242",
+          "nativeSeconds": "110.852",
+          "link": "low_to_high_lane_-2",
+          "callContext": "FOLLOW",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "108",
+          "seconds": "16.415",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "MOTION",
+          "next": "FOLLOW",
+          "reason": "SUPPORTED_CONTACT_REPLAN",
+          "failure": "SUPPORTED_CONTACT_REPLAN",
+          "recoveryGeneration": "0",
+          "position": "<4512.329102, 342.167542, 10237.854492>",
+          "contactStatus": "",
+          "contactBlocked": "true",
+          "lift": "0.157715",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "4.15",
+          "clipDuration": "2.13333",
+          "nativeCurveEnded": "true",
+          "endpointError": "3.8071e-05",
+          "exitError": "0.0178778",
+          "nativeSeconds": "115.002",
+          "link": "none",
+          "callContext": "MOTION",
+          "areaAtCall": "high"
+        }
+      ],
+      "candidateJournals": [],
+      "phaseChainErrors": [],
+      "retirementDetached": true,
+      "missionSha256": "f5637ae31dd08b0b9107973c94bdc9b42dd95e0bf0833fea959a6a000b2da7a1",
+      "subjectRootTimeEndCounterInjection": false,
+      "normalQuitVerified": false,
+      "signatureChecksPassed": 8,
+      "originalMilestoneTerminalNotApplicable": true
+    },
+    "contact-end-axis-lift-probe": {
+      "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/contact-end-axis-lift-probe",
+      "logicalNpcs": 1,
+      "nativeParts": 8,
+      "independentRuns": 1,
+      "condition": "on",
+      "candidateFlag": true,
+      "result": {
+        "armed": "true",
+        "attempts": "1",
+        "phase": "FOLLOW",
+        "climbs": "1",
+        "checks": "17",
+        "completions": "0",
+        "rejections": "17",
+        "diagnostic": "UNCHANGED_LIFT",
+        "failure": "SUPPORTED_CONTACT_REPLAN",
+        "contactBlocks": "42",
+        "held": "2.1",
+        "triggerElapsed": "2.15",
+        "clipDuration": "2.13333",
+        "endpointError": "3.8071e-05",
+        "triggerRequest": "3",
+        "curveEnded": "true",
+        "currentClear": "true",
+        "proposedClear": "false",
+        "contactReject": "PLAYER_CORE",
+        "start": "<4512.268555, 342.166870, 10237.663086>",
+        "next": "<4512.278320, 342.183960, 10237.675781>",
+        "blocker": "<4512.888672, 342.229980, 10237.666016>",
+        "seconds": "16.3942"
+      },
+      "actualArmed": true,
+      "candidateActivated": false,
+      "supportedCancellation": true,
+      "transitions": [
+        {
+          "sequence": "1",
+          "seconds": "8.783",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "FOLLOW",
+          "next": "MOTION",
+          "reason": "",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.221191, 339.123810, 10235.237305>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.00708008",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "false",
+          "endpointError": "0",
+          "exitError": "0",
+          "nativeSeconds": "59.4494",
+          "link": "ground_to_low_lane_1",
+          "callContext": "FOLLOW",
+          "areaAtCall": "ground"
+        },
+        {
+          "sequence": "5",
+          "seconds": "10.281",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "MOTION",
+          "next": "SETTLE",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.218262, 340.157318, 10237.202148>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0435486",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "1.5",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "true",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0142242",
+          "nativeSeconds": "60.9494",
+          "link": "ground_to_low_lane_1",
+          "callContext": "MOTION",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "6",
+          "seconds": "10.832",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "SETTLE",
+          "next": "EGRESS",
+          "reason": "SETTLE",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.218262, 340.171509, 10237.202148>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0324707",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "true",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0142242",
+          "nativeSeconds": "61.4993",
+          "link": "ground_to_low_lane_1",
+          "callContext": "OTHER",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "7",
+          "seconds": "10.877",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "EGRESS",
+          "next": "FOLLOW",
+          "reason": "SUPPORTED_EGRESS_HANDOFF",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4509.218262, 340.171509, 10237.202148>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0.0302734",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "1.48333",
+          "nativeCurveEnded": "true",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0142242",
+          "nativeSeconds": "61.5493",
+          "link": "none",
+          "callContext": "OTHER",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "8",
+          "seconds": "12.203",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "FOLLOW",
+          "next": "MOTION",
+          "reason": "",
+          "failure": "",
+          "recoveryGeneration": "0",
+          "position": "<4510.106445, 340.189331, 10237.666016>",
+          "contactStatus": "",
+          "contactBlocked": "false",
+          "lift": "0",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "0",
+          "clipDuration": "2.13333",
+          "nativeCurveEnded": "false",
+          "endpointError": "2.94425e-05",
+          "exitError": "0.0142242",
+          "nativeSeconds": "62.8493",
+          "link": "low_to_high_lane_-2",
+          "callContext": "FOLLOW",
+          "areaAtCall": "low"
+        },
+        {
+          "sequence": "111",
+          "seconds": "16.379",
+          "id": "0",
+          "kind": "TRANSITION",
+          "previous": "MOTION",
+          "next": "FOLLOW",
+          "reason": "SUPPORTED_CONTACT_REPLAN",
+          "failure": "SUPPORTED_CONTACT_REPLAN",
+          "recoveryGeneration": "0",
+          "position": "<4512.268555, 342.166870, 10237.663086>",
+          "contactStatus": "",
+          "contactBlocked": "true",
+          "lift": "0.157715",
+          "terminalOutcome": "NONTERMINAL",
+          "detail": "CLEAR",
+          "tested": "<0.000000, 0.000000, 0.000000>",
+          "supported": "<0.000000, 0.000000, 0.000000>",
+          "valid": "false",
+          "motionElapsedBeforeTransition": "4.2",
+          "clipDuration": "2.13333",
+          "nativeCurveEnded": "true",
+          "endpointError": "3.8071e-05",
+          "exitError": "0.0178555",
+          "nativeSeconds": "67.0495",
+          "link": "none",
+          "callContext": "MOTION",
+          "areaAtCall": "high"
+        }
+      ],
+      "candidateJournals": [],
+      "phaseChainErrors": [],
+      "retirementDetached": true,
+      "missionSha256": "600fb10f1bf849727444c61ce86124ce81402422a47118cfcb2ec16b1274ccc4",
+      "subjectRootTimeEndCounterInjection": false,
+      "normalQuitVerified": false,
+      "signatureChecksPassed": 8,
+      "originalMilestoneTerminalNotApplicable": true
+    }
+  },
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "functionalAccepted": false,
+  "goalComplete": false,
+  "newPbo": false,
+  "newVideo": false,
+  "activationVerified": true,
+  "boundedCancelReproduced": true,
+  "axisSingleContrastVerified": false,
+  "liftDiagnostic": {
+    "rows": [
+      {
+        "seconds": "14.34",
+        "checks": "1",
+        "diagnostic": "UNCHANGED_LIFT",
+        "phase": "MOTION",
+        "root": "<4512.268555, 342.166870, 10237.663086>",
+        "heading": "90",
+        "idleOffset": "<0.000000, 0.000000, 0.000000>",
+        "oldLift": "0.157715",
+        "checkedLift": "0.16153",
+        "deltaLift": "0.0038147",
+        "contactCount": "4",
+        "jointCount": "4",
+        "elapsed": "2.15",
+        "hipsMS": "<0.000000, 0.774044, 0.000000>",
+        "headMS": "<-0.203566, 1.164570, -0.534409>",
+        "leftFootMS": "<0.101690, -0.036157, -0.035893>",
+        "rightFootMS": "<-0.229249, 0.224401, 0.352669>"
+      },
+      {
+        "seconds": "14.476",
+        "checks": "2",
+        "diagnostic": "UNCHANGED_LIFT",
+        "phase": "MOTION",
+        "root": "<4512.268555, 342.166870, 10237.663086>",
+        "heading": "90",
+        "idleOffset": "<0.000000, 0.000000, 0.000000>",
+        "oldLift": "0.157715",
+        "checkedLift": "0.16153",
+        "deltaLift": "0.0038147",
+        "contactCount": "4",
+        "jointCount": "4",
+        "elapsed": "2.3",
+        "hipsMS": "NOT_SAMPLED",
+        "headMS": "NOT_SAMPLED",
+        "leftFootMS": "NOT_SAMPLED",
+        "rightFootMS": "NOT_SAMPLED"
+      },
+      {
+        "seconds": "14.581",
+        "checks": "3",
+        "diagnostic": "UNCHANGED_LIFT",
+        "phase": "MOTION",
+        "root": "<4512.268555, 342.166870, 10237.663086>",
+        "heading": "90",
+        "idleOffset": "<0.000000, 0.000000, 0.000000>",
+        "oldLift": "0.157715",
+        "checkedLift": "0.16153",
+        "deltaLift": "0.0038147",
+        "contactCount": "4",
+        "jointCount": "4",
+        "elapsed": "2.4",
+        "hipsMS": "NOT_SAMPLED",
+        "headMS": "NOT_SAMPLED",
+        "leftFootMS": "NOT_SAMPLED",
+        "rightFootMS": "NOT_SAMPLED"
+      },
+      {
+        "seconds": "14.702",
+        "checks": "4",
+        "diagnostic": "UNCHANGED_LIFT",
+        "phase": "MOTION",
+        "root": "<4512.268555, 342.166870, 10237.663086>",
+        "heading": "90",
+        "idleOffset": "<0.000000, 0.000000, 0.000000>",
+        "oldLift": "0.157715",
+        "checkedLift": "0.16153",
+        "deltaLift": "0.0038147",
+        "contactCount": "4",
+        "jointCount": "4",
+        "elapsed": "2.5",
+        "hipsMS": "NOT_SAMPLED",
+        "headMS": "NOT_SAMPLED",
+        "leftFootMS": "NOT_SAMPLED",
+        "rightFootMS": "NOT_SAMPLED"
+      },
+      {
+        "seconds": "14.84",
+        "checks": "5",
+        "diagnostic": "UNCHANGED_LIFT",
+        "phase": "MOTION",
+        "root": "<4512.268555, 342.166870, 10237.663086>",
+        "heading": "90",
+        "idleOffset": "<0.000000, 0.000000, 0.000000>",
+        "oldLift": "0.157715",
+        "checkedLift": "0.16153",
+        "deltaLift": "0.0038147",
+        "contactCount": "4",
+        "jointCount": "4",
+        "elapsed": "2.65",
+        "hipsMS": "NOT_SAMPLED",
+        "headMS": "NOT_SAMPLED",
+        "leftFootMS": "NOT_SAMPLED",
+        "rightFootMS": "NOT_SAMPLED"
+      },
+      {
+        "seconds": "14.977",
+        "checks": "6",
+        "diagnostic": "UNCHANGED_LIFT",
+        "phase": "MOTION",
+        "root": "<4512.268555, 342.166870, 10237.663086>",
+        "heading": "90",
+        "idleOffset": "<0.000000, 0.000000, 0.000000>",
+        "oldLift": "0.157715",
+        "checkedLift": "0.16153",
+        "deltaLift": "0.0038147",
+        "contactCount": "4",
+        "jointCount": "4",
+        "elapsed": "2.8",
+        "hipsMS": "NOT_SAMPLED",
+        "headMS": "NOT_SAMPLED",
+        "leftFootMS": "NOT_SAMPLED",
+        "rightFootMS": "NOT_SAMPLED"
+      },
+      {
+        "seconds": "15.084",
+        "checks": "7",
+        "diagnostic": "UNCHANGED_LIFT",
+        "phase": "MOTION",
+        "root": "<4512.268555, 342.166870, 10237.663086>",
+        "heading": "90",
+        "idleOffset": "<0.000000, 0.000000, 0.000000>",
+        "oldLift": "0.157715",
+        "checkedLift": "0.16153",
+        "deltaLift": "0.0038147",
+        "contactCount": "4",
+        "jointCount": "4",
+        "elapsed": "2.9",
+        "hipsMS": "NOT_SAMPLED",
+        "headMS": "NOT_SAMPLED",
+        "leftFootMS": "NOT_SAMPLED",
+        "rightFootMS": "NOT_SAMPLED"
+      },
+      {
+        "seconds": "15.236",
+        "checks": "8",
+        "diagnostic": "UNCHANGED_LIFT",
+        "phase": "MOTION",
+        "root": "<4512.268555, 342.166870, 10237.663086>",
+        "heading": "90",
+        "idleOffset": "<0.000000, 0.000000, 0.000000>",
+        "oldLift": "0.157715",
+        "checkedLift": "0.16153",
+        "deltaLift": "0.0038147",
+        "contactCount": "4",
+        "jointCount": "4",
+        "elapsed": "3.05",
+        "hipsMS": "NOT_SAMPLED",
+        "headMS": "NOT_SAMPLED",
+        "leftFootMS": "NOT_SAMPLED",
+        "rightFootMS": "NOT_SAMPLED"
+      },
+      {
+        "seconds": "15.341",
+        "checks": "9",
+        "diagnostic": "UNCHANGED_LIFT",
+        "phase": "MOTION",
+        "root": "<4512.268555, 342.166870, 10237.663086>",
+        "heading": "90",
+        "idleOffset": "<0.000000, 0.000000, 0.000000>",
+        "oldLift": "0.157715",
+        "checkedLift": "0.16153",
+        "deltaLift": "0.0038147",
+        "contactCount": "4",
+        "jointCount": "4",
+        "elapsed": "3.15",
+        "hipsMS": "NOT_SAMPLED",
+        "headMS": "NOT_SAMPLED",
+        "leftFootMS": "NOT_SAMPLED",
+        "rightFootMS": "NOT_SAMPLED"
+      },
+      {
+        "seconds": "15.477",
+        "checks": "10",
+        "diagnostic": "UNCHANGED_LIFT",
+        "phase": "MOTION",
+        "root": "<4512.268555, 342.166870, 10237.663086>",
+        "heading": "90",
+        "idleOffset": "<0.000000, 0.000000, 0.000000>",
+        "oldLift": "0.157715",
+        "checkedLift": "0.16153",
+        "deltaLift": "0.0038147",
+        "contactCount": "4",
+        "jointCount": "4",
+        "elapsed": "3.3",
+        "hipsMS": "NOT_SAMPLED",
+        "headMS": "NOT_SAMPLED",
+        "leftFootMS": "NOT_SAMPLED",
+        "rightFootMS": "NOT_SAMPLED"
+      },
+      {
+        "seconds": "15.583",
+        "checks": "11",
+        "diagnostic": "UNCHANGED_LIFT",
+        "phase": "MOTION",
+        "root": "<4512.268555, 342.166870, 10237.663086>",
+        "heading": "90",
+        "idleOffset": "<0.000000, 0.000000, 0.000000>",
+        "oldLift": "0.157715",
+        "checkedLift": "0.16153",
+        "deltaLift": "0.0038147",
+        "contactCount": "4",
+        "jointCount": "4",
+        "elapsed": "3.4",
+        "hipsMS": "NOT_SAMPLED",
+        "headMS": "NOT_SAMPLED",
+        "leftFootMS": "NOT_SAMPLED",
+        "rightFootMS": "NOT_SAMPLED"
+      },
+      {
+        "seconds": "15.736",
+        "checks": "12",
+        "diagnostic": "UNCHANGED_LIFT",
+        "phase": "MOTION",
+        "root": "<4512.268555, 342.166870, 10237.663086>",
+        "heading": "90",
+        "idleOffset": "<0.000000, 0.000000, 0.000000>",
+        "oldLift": "0.157715",
+        "checkedLift": "0.16153",
+        "deltaLift": "0.0038147",
+        "contactCount": "4",
+        "jointCount": "4",
+        "elapsed": "3.55",
+        "hipsMS": "NOT_SAMPLED",
+        "headMS": "NOT_SAMPLED",
+        "leftFootMS": "NOT_SAMPLED",
+        "rightFootMS": "NOT_SAMPLED"
+      },
+      {
+        "seconds": "15.89",
+        "checks": "13",
+        "diagnostic": "UNCHANGED_LIFT",
+        "phase": "MOTION",
+        "root": "<4512.268555, 342.166870, 10237.663086>",
+        "heading": "90",
+        "idleOffset": "<0.000000, 0.000000, 0.000000>",
+        "oldLift": "0.157715",
+        "checkedLift": "0.16153",
+        "deltaLift": "0.0038147",
+        "contactCount": "4",
+        "jointCount": "4",
+        "elapsed": "3.7",
+        "hipsMS": "NOT_SAMPLED",
+        "headMS": "NOT_SAMPLED",
+        "leftFootMS": "NOT_SAMPLED",
+        "rightFootMS": "NOT_SAMPLED"
+      },
+      {
+        "seconds": "16.029",
+        "checks": "14",
+        "diagnostic": "UNCHANGED_LIFT",
+        "phase": "MOTION",
+        "root": "<4512.268555, 342.166870, 10237.663086>",
+        "heading": "90",
+        "idleOffset": "<0.000000, 0.000000, 0.000000>",
+        "oldLift": "0.157715",
+        "checkedLift": "0.16153",
+        "deltaLift": "0.0038147",
+        "contactCount": "4",
+        "jointCount": "4",
+        "elapsed": "3.85",
+        "hipsMS": "NOT_SAMPLED",
+        "headMS": "NOT_SAMPLED",
+        "leftFootMS": "NOT_SAMPLED",
+        "rightFootMS": "NOT_SAMPLED"
+      },
+      {
+        "seconds": "16.136",
+        "checks": "15",
+        "diagnostic": "UNCHANGED_LIFT",
+        "phase": "MOTION",
+        "root": "<4512.268555, 342.166870, 10237.663086>",
+        "heading": "90",
+        "idleOffset": "<0.000000, 0.000000, 0.000000>",
+        "oldLift": "0.157715",
+        "checkedLift": "0.16153",
+        "deltaLift": "0.0038147",
+        "contactCount": "4",
+        "jointCount": "4",
+        "elapsed": "3.95",
+        "hipsMS": "NOT_SAMPLED",
+        "headMS": "NOT_SAMPLED",
+        "leftFootMS": "NOT_SAMPLED",
+        "rightFootMS": "NOT_SAMPLED"
+      },
+      {
+        "seconds": "16.242",
+        "checks": "16",
+        "diagnostic": "UNCHANGED_LIFT",
+        "phase": "MOTION",
+        "root": "<4512.268555, 342.166870, 10237.663086>",
+        "heading": "90",
+        "idleOffset": "<0.000000, 0.000000, 0.000000>",
+        "oldLift": "0.157715",
+        "checkedLift": "0.16153",
+        "deltaLift": "0.0038147",
+        "contactCount": "4",
+        "jointCount": "4",
+        "elapsed": "4.05",
+        "hipsMS": "NOT_SAMPLED",
+        "headMS": "NOT_SAMPLED",
+        "leftFootMS": "NOT_SAMPLED",
+        "rightFootMS": "NOT_SAMPLED"
+      },
+      {
+        "seconds": "16.379",
+        "checks": "17",
+        "diagnostic": "UNCHANGED_LIFT",
+        "phase": "FOLLOW",
+        "root": "<4512.268555, 342.166870, 10237.663086>",
+        "heading": "90",
+        "idleOffset": "<0.000000, 0.000000, 0.000000>",
+        "oldLift": "0.157715",
+        "checkedLift": "0.16153",
+        "deltaLift": "0.0038147",
+        "contactCount": "4",
+        "jointCount": "4",
+        "elapsed": "4.2",
+        "hipsMS": "NOT_SAMPLED",
+        "headMS": "NOT_SAMPLED",
+        "leftFootMS": "NOT_SAMPLED",
+        "rightFootMS": "NOT_SAMPLED"
+      }
+    ],
+    "checkedRows": 17,
+    "unchangedLiftRejectedRows": 17,
+    "deltaMinimum": 0.0038147,
+    "deltaMaximum": 0.0038147,
+    "pointCountMatches": true,
+    "scope": "New instrumented native run; first4bone CPU pose only, not renderer coherence or independent uninstrumented repeat."
+  },
+  "next": "Current-state completion remains unpromoted: persistent axis contact reproduced but unchanged-lift guard blocks the candidate. Use measured checkedLift delta and current native pose to design, not blindly loosen, a bounded validated lift acceptance path consistent with original Accept/SolveContacts; retain current-core/foot/world guards and original counters. Physics cost and visible quality remain separate unresolved goals."
+}
+
+Own test fixture subclass:
+// Controlled real authored-climb test. Only the fixture player is positioned.
+// No subject root, phase, native-end/time/request or counter injection.
+class NFCEEndProbeTraversal: DGBNativeTraversal
+{
+    PlayerBase FixturePlayer;
+    bool CEPArmed;int CEPAttempts;float CEPAt;float CEPStep;
+    vector CEPStart;vector CEPNext;vector CEPBlocker;
+    float CEPElapsed;float CEPDuration;float CEPEndpoint;int CEPRequest;
+    bool CEPCurve;bool CEPCurrentClear;bool CEPProposedClear;string CEPReject;
+    void NFCEEndProbeTraversal(DGBNativeGroundBody body){Body=body;}
+    override bool Accept(vector next,float dt)
+    {
+        if(!CEPArmed && FixturePlayer && Active && Clip && Phase=="MOTION" && Active.Action=="CLIMB" && NativeCurveEnded && MotionElapsed>=Clip.duration - 0.03 && EndpointError<=0.03 && CEPAttempts<16)
+        {
+            vector current=Body.Agent.Position;
+            vector travel=next - current;travel[1]=0;float length=travel.Length();
+            vector support;
+            if(length>0.0015 && length<0.08 && LandingSpace(current,support,false) && Fixture().Area(support)==Active.TargetArea && vector.Distance(current,Active.Exit+MotionContactOffset)<=0.25)
+            {
+                CEPAttempts++;
+                vector originalPlayer=FixturePlayer.GetPosition();
+                vector direction=DGBNativeGroundBody.Rotate("0 0 -1",Active.Heading);
+                float forward=vector.Dot(travel,direction);
+                if(forward<=0.0015){return super.Accept(next,dt);}
+                array<float> fractions={0.25,0.5,0.75};
+                foreach(float amount:fractions)
+                {
+                    vector target=Active.Exit+MotionContactOffset;
+                    vector lateral=target - current;lateral[1]=0;
+                    lateral=lateral - direction*vector.Dot(lateral,direction);
+                    vector proposedPlayer=current+lateral+direction*(0.62+Math.Min(0.0004,forward*amount*0.05));
+                    vector playerSupport;
+                    if(!DGBGroundAgent.Floor(Body.Leader,proposedPlayer,playerSupport))
+                    {continue;}
+                    if(Fixture().Area(playerSupport)!=Active.TargetArea)
+                    {continue;}
+                    proposedPlayer[1]=playerSupport[1]+0.05;
+                    FixturePlayer.SetPosition(proposedPlayer);
+                    string currentReject;string nextReject;
+                    bool currentClear=Body.Director.Crowd.CoreClear(Body,current,current,currentReject);
+                    bool nextClear=Body.Director.Crowd.CoreClear(Body,current,next,nextReject);
+                    if(currentClear && !nextClear && nextReject=="PLAYER_CORE")
+                    {
+                        CEPArmed=true;CEPAt=Now();CEPStep=length;
+                        CEPStart=current;CEPNext=next;CEPBlocker=FixturePlayer.GetPosition();
+                        CEPElapsed=MotionElapsed;CEPDuration=Clip.duration;CEPEndpoint=EndpointError;CEPRequest=Body.Request;CEPCurve=NativeCurveEnded;
+                        CEPCurrentClear=currentClear;CEPProposedClear=nextClear;CEPReject=nextReject;
+                        Print("NF_CE_REAL_ARMED elapsed="+MotionElapsed+" step="+length+" endpoint="+EndpointError+" reject="+nextReject);
+                        break;
+                    }
+                    FixturePlayer.SetPosition(originalPlayer);
+                }
+            }
+        }
+        return super.Accept(next,dt);
+    }
+}
+
+Existing own candidate source (not changed this batch):
+// Default-OFF validated current-state completion; never accepts the blocked proposal.
+modded class DGBNativeTraversal
+{
+    bool CEPolicyRead;bool CEEnabled;float CENextCheckAt;int CEChecks;int CECompletions;int CERejected;int CERows;
+    string CEDiagnostic;float CEActualGap;vector CESupport;float CECheckedLift;ref array<vector> CECheckedContacts={};
+    bool CEOn()
+    {
+        if(!CEPolicyRead){CEEnabled=FileExist("$profile:contact-end-finalize.flag");CEPolicyRead=true;}
+        return CEEnabled;
+    }
+    override void HoldMotionContact(float dt)
+    {
+        if(CEOn() && TryValidatedContactEnd())return;
+        super.HoldMotionContact(dt);
+    }
+    bool CEValidateCurrent()
+    {
+        CEDiagnostic="MODE";
+        if(!Body || !Body.Director || !Body.Director.OpenTraversal || Phase!="MOTION" || !MotionContactBlocked || !Active || !Clip)return false;
+        if(Active.Action!="CLIMB" || (Active.TargetArea!="low" && Active.TargetArea!="high") || !Succeeded || Recovering)return false;
+        CEDiagnostic="NO_NATIVE_LEADER";if(!Body.Leader)return false;
+        CEDiagnostic="REQUEST_MISMATCH";if(Body.Request!=Clip.request)return false;
+        CEDiagnostic="NATIVE_REQUEST_MISMATCH";if(Body.Leader.NativeRequest!=Clip.request)return false;
+        CEDiagnostic="CURVE_NOT_ENDED";if(!NativeCurveEnded)return false;
+        CEDiagnostic="DURATION_INVALID";if(!(Clip.duration>0))return false;
+        float minimumEndTime=Clip.duration - 0.03;
+        CEDiagnostic="TIME_NOT_ENDED";if(!(MotionElapsed>=minimumEndTime))return false;
+        CEDiagnostic="ENDPOINT_INVALID";if(!(EndpointError>=0))return false;
+        if(!(EndpointError<=0.03))return false;
+        CEDiagnostic="ACTUAL_EXIT_GAP";
+        CEActualGap=vector.Distance(Body.Agent.Position,Active.Exit+MotionContactOffset);
+        if(!(CEActualGap>=0 && CEActualGap<=0.25))return false;
+        CEDiagnostic="THROTTLED";if(Now()<CENextCheckAt)return false;
+        CENextCheckAt=Now()+0.1;CEChecks++;
+        CEDiagnostic="LANDING_SPACE";
+        if(!LandingSpace(Body.Agent.Position,CESupport,false))return false;
+        CEDiagnostic="TARGET_SUPPORT";
+        if(Fixture().Area(CESupport)!=Active.TargetArea || vector.Distance(CESupport,Body.Agent.Position)>0.03)return false;
+        CEDiagnostic="CURRENT_FEET";
+        for(int foot=2;foot<Body.JointIds.Count();foot++)
+        {
+            vector footPoint=Body.JointWorldPoint(foot,Body.Agent.Position,Body.Agent.Heading,Body.Lift);
+            vector rayStart=footPoint;
+            rayStart[1]=Math.Max(footPoint[1]+0.3,Body.Agent.Position[1]+0.6);
+            Object floorObject;vector floorPoint,floorNormal;float fraction;
+            if(!DayZPhysics.RayCastBullet(rayStart,footPoint+"0 -1.2 0",DGBGroundAgent.Floors(),Body.Leader,floorObject,floorPoint,floorNormal,fraction))
+            {return false;}
+            if(!(floorNormal[1]>=0.65) || Fixture().Area(floorPoint)!=Active.TargetArea)
+            {return false;}
+            if(!(Math.AbsFloat(floorPoint[1] - CESupport[1])<=0.22))
+            {return false;}
+            if(!(footPoint[1] - Body.Radii[foot]>=floorPoint[1] - 0.005))
+            {return false;}
+        }
+        CEDiagnostic="CURRENT_CORE";
+        string coreReject;
+        if(Body.Director.Crowd && !Body.Director.Crowd.CoreClear(Body,Body.Agent.Position,Body.Agent.Position,coreReject))return false;
+        CEDiagnostic="CURRENT_FULL_POSE";
+        CECheckedContacts.Clear();
+        if(!Body.SolveContacts(Body.Agent.Position,Body.Agent.Heading,CECheckedLift,CECheckedContacts,Body.Lift))return false;
+        CEDiagnostic="UNCHANGED_LIFT";
+        if(!(Math.AbsFloat(CECheckedLift - Body.Lift)<=0.0001) || CECheckedContacts.Count()!=Body.JointIds.Count())return false;
+        CEDiagnostic="VALIDATED_CURRENT_END";return true;
+    }
+    bool TryValidatedContactEnd()
+    {
+        if(!CEOn()){CEDiagnostic="DISABLED";return false;}
+        if(!Body){CEDiagnostic="NO_BODY";return false;}
+        string savedLanding=LandingDiagnostic;string savedReason=Body.Reason;string savedHit=Body.HitType;
+        vector savedPoint=Body.HitPoint;vector savedNormal=Body.HitNormal;float savedFraction=Body.HitFraction;
+        bool valid=CEValidateCurrent();
+        LandingDiagnostic=savedLanding;Body.Reason=savedReason;Body.HitType=savedHit;Body.HitPoint=savedPoint;Body.HitNormal=savedNormal;Body.HitFraction=savedFraction;
+        if(!valid)
+        {
+            if(CEDiagnostic!="THROTTLED")
+            {CERejected++;}
+            return false;
+        }
+        float elapsed=MotionElapsed;
+        Body.Contacts.Copy(CECheckedContacts);
+        CECompletions++;CELog("VALIDATED",elapsed);
+        EgressGoal=Body.Agent.Position+DGBNativeGroundBody.Rotate("0 0 -1.2",Active.Heading);
+        DGBNativeSeat exitSeat=Body.Director.Traffic.Owned(Body.Id,Active.TargetArea);
+        if(exitSeat)EgressGoal=exitSeat.Point;
+        SurfaceWaypoints.Clear();NextSurfacePlan=0;
+        WantRelease=true;Body.NextRequest=0;SetPhase("SETTLE");
+        Body.Agent.MeasuredSpeed=0;Body.Reason="CONTACT_END_VALIDATED";
+        CELog("SETTLE",elapsed);return true;
+    }
+    void CELog(string outcome,float elapsed)
+    {
+        if(CERows>=32 || !FileExist("$profile:state-contract.flag"))return;
+        FileHandle log=OpenFile("$profile:contact-end-finalize.tsv",FileMode.APPEND);if(!log)return;
+        string link="NONE";string target="NONE";if(Active){link=Active.Id;target=Active.TargetArea;}
+        FPrintln(log,(Now()-Body.Director.Born).ToString()+"\t"+Body.Id+"\t"+outcome+"\t"+Phase+"\t"+Body.Agent.Position+"\t"+link+"\t"+target+"\t"+elapsed+"\t"+EndpointError+"\t"+CEActualGap+"\t"+Body.Lift+"\t"+CECheckedLift+"\t"+CEChecks+"\t"+CECompletions);
+        CloseFile(log);CERows++;
+    }
+}
+
+Own ground source selected lines400-431; complete file SHA256 eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82; excerpt only, not full solver:
+            if(Director.SupportSweepShadow && fastEligible && referenceFound)
+            {
+                SupportFastReferenceChecks++;
+                float fastError=referenceY - supportBound;
+                if(fastError>0.001)SupportFastUnder++;
+                SupportFastMaxUnder=Math.Max(SupportFastMaxUnder,fastError);
+                SupportFastMaxOver=Math.Max(SupportFastMaxOver, -fastError);
+            }
+            if(referenceFound)
+            {
+                float required=referenceY+Radii[foot]+0.03 - raw[foot][1];
+                if(required>proposedLift){proposedLift=required;liftFoot=foot;}
+            }
+            if(Director.SupportSweepShadow)ObserveSupportSweep(raw[foot],referenceFound,referenceY);
+        }
+        proposedLift=Math.Max(proposedLift,minimumLift);
+        ContactFootTicks+=TickCount(footStarted) - (SupportShadowTicks - shadowBefore);
+        if(proposedLift>0.25)
+        {
+            Reason="NATIVE_FOOT_LIFT_LIMIT";
+            vector oldFoot=raw[liftFoot];if(Contacts.Count()==4)oldFoot=Contacts[liftFoot];
+            int liftDiagnosticStarted=TickCount(0);
+            RecordContactFailure("LIFT_LIMIT",liftFoot,anchor,heading,raw[liftFoot],oldFoot,raw[liftFoot]+Vector(0,proposedLift,0),proposedLift,null);
+            ContactDiagnosticTicks+=TickCount(liftDiagnosticStarted);
+            return false;
+        }
+        for(int joint=0;joint<raw.Count();joint++)
+        {
+            vector target=raw[joint]+Vector(0,proposedLift,0);
+            vector previous=target;if(Contacts.Count()==4)previous=Contacts[joint];
+            Object collision;vector contact,normalHit;float hitFraction;
+            JointSweeps++;
+Own traversal source selected lines725-750; complete file SHA256 71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872; excerpt only:
+    bool Accept(vector next,float dt)
+    {
+        MotionContactBlocked=false;
+        if(Body.Director.Crowd)
+        {
+            string rejection;
+            if(!Body.Director.Crowd.CoreClear(Body,Body.Agent.Position,next,rejection))
+            {
+                Body.Reason="TRAVERSAL_"+rejection;
+                if(Body.Director.OpenTraversal && Phase=="MOTION" && (rejection.IndexOf("PEER_CORE:")==0 || rejection=="PLAYER_CORE"))
+                {
+                    // A rejected proposed step did not move this actor off its
+                    // support. Contact is not evidence of a physical fall.
+                    MotionContactBlocked=true;MotionContactBlocks++;LastEntityContact=rejection;
+                }
+                return false;
+            }
+        }
+        float lift;ref array<vector> points={};
+        if(!Body.SolveContacts(next,Body.Agent.Heading,lift,points))
+        {Body.PoseBlocks++;return false;}
+        float travel=vector.Distance(Body.Agent.Position,next);
+        Body.Agent.Position=next;Body.Agent.Moved+=travel;Body.Agent.MeasuredSpeed=travel/Math.Max(dt,0.001);
+        Body.RootAccepted+=travel;Body.Lift=lift;Body.Contacts.Copy(points);
+        return true;
+    }
