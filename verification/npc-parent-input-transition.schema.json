@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "network-gameplay/creature-parent-snapshot1"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "verificationStatus": {
+      "type": "object",
+      "required": [
+        "diagnosis",
+        "runtimePacketPair",
+        "functionalRegression",
+        "visualQuality",
+        "performance",
+        "finalAcceptance"
+      ],
+      "properties": {
+        "finalAcceptance": {
+          "const": false
+        },
+        "performance": {
+          "const": "not_measured"
+        },
+        "runtimePacketPair": {
+          "const": "not_matched_end_to_end"
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "logicalNpcs",
+        "nativeParts",
+        "server",
+        "client",
+        "frameTimeP50P95P99"
+      ],
+      "properties": {
+        "logicalNpcs": {
+          "const": 1
+        },
+        "nativeParts": {
+          "const": 8
+        },
+        "client": {
+          "type": "object",
+          "required": [
+            "objectsZeroThenBad"
+          ],
+          "properties": {
+            "objectsZeroThenBad": {
+              "const": 8
+            }
+          }
+        },
+        "frameTimeP50P95P99": {
+          "type": "null"
+        }
+      }
+    },
+    "evidenceReferences": {
+      "type": "array",
+      "minItems": 2
+    }
+  }
+}
