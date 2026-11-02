@@ -1,3 +1,5 @@
+> 최신 작업: 물리 질의 호출 소유권 확인 및 scratch 국소 후보. 서명 검증·60조건 동등성·평지8명 추적 통과. 성능·수직64·시각 품질 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-query-scratch-pilot-20261102.md).
+
 > 최신 작업: 기존 연구 중복·수정 가능 후보 검토 완료. SupportFast64 미수용, 시간 보존 후보는 격리 진단 한정. 새 구현/실행0회. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-research-review-20261102.md).
 
 > 최신 작업: Days Gone 기존 CPU 스택 재분류. REA 전체 초기화 완료; 물리·렌더·UI 일부 확인, 원본 애니메이션 비용 미확정. 새 실행0회. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/days-gone-stack-attribution-20261102.md).

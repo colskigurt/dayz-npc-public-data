@@ -1,66 +1,66 @@
 ## 1. 작업 목표
 
-2026-11-02 사용자 연구 검토와 기존 연구의 중복을 확인하고 실제 수정 가능한 국소 후보를 선별한다. 앞선 사용자 요청에 따라 문제 해결 골은 active로 등록했다. 이번 묶음은 사전 검토이며 신규 구현·클라이언트·대규모 시험을 시작하지 않았다. Days Gone 일반 분석보다 DayZ에 적용할 의사결정 질문을 우선한다.
+현행 물리 질의의 상위 스크립트·native 소유권을 구분하고 검사·낙하·추적 계약을 바꾸지 않는 국소 후보를 검증한다. 기존 게임플레이·운영 배포본은 보존하며 애니메이션 시계/시각 품질은 별도 연구로 유지한다.
 
 ## 2. 실제 수행
 
-기존 scale-optimization-review, B93D shadow8/fast8/fast64, 상세 비용 분석, 잔여시간 A/B/B/A, mode2 역할·포즈·자연 캐시·영상 연결 보고서를 읽었다. 기존 DGBNativeGround.SolveContactsInternal의 매호출 배열 생성 및 StructureSupportBound 조건을 확인했다. 최신 사용 실행에는453D 기반 dg_lab_inputs와93507d integration이 함께 로딩되므로 기반 소스 한 파일만으로 모든 override의 현재 적용 범위를 인증하지 않았다. 구현 후보를 만들기 전 packed source/override 소유 관계를 추가 대조해야 한다.
+기존 상세 비용 OFF64b/ON64b C2 ETL을 동일 unwind 정규화 방식으로 다시 읽어 allocation-calling hot leaf부터 Ray/Sphere 바인딩까지의 순서 있는 경로를 선정했다. 새로운 CPU 수집이나 독립 반복이 아니다. 실제 사용6개 PBO 해시와 packed source를 읽어8개 관련 source member의 override를 조사하고 기반 GroundBody 원문 바이트 일치를 확인했다. SDK 선언과 내부 함수의 직접/가상 호출 문맥도 대조했다.
+
+격리 default-OFF 후보는 자체 raw 배열과 고정5개 support offset 배열의 수명만 개체 단위로 연장한다. 출력 points는 매번 새 배열이며 모든 본·발 지지·관절 sweep·fallback 검사 순서와 인자를 보존한다. 기존 FC 캡처 대상은 원래 solver로 위임하고 busy 상태도 원래 경로로 위임한다. 기존 solver로의 문자열 역변환 완전 일치를 확인했다.
+
+후보 PBO를 별도 폴더에 빌드·서명·검증하고, 격리 서버60조건 비교와 기존 평지 하네스의8개체65초 시험을 실행했다. Days Gone 게임은 정상 종료하고 REA 정적 세션은 유지했다. 클라이언트는 실행 전에 안내하고 Computer Use 스킬로 전경·로딩을 확인했다. 영상은 새로 생성하지 않았다.
 
 ## 3. 측정 결과
 
-새 측정0, 새 게임 실행0, 새 PBO0. 아래는 기존 결과이며 이 검토가 독립 반복을 추가하지 않는다.
+### 기존 CPU 표본 경로 재분석
 
-| 항목 | 기존 결과 | 아직 검증하지 않은 것 |
-|---|---|---|
-| 평지64 바닐라/커스텀 | 독립4회 Present p95 24.23~24.44 /65.47~69.56ms, 목표 인식·이동64/64 | 작업량 완전 동일성·증가분의 개별 기능 self-time |
-| Ray/Sphere 스크립트 경계 | 바닐라 약0.051%, 커스텀17.2~17.6%; Drive/Displace 각약980~988 contact/게임초 | API 내부 실제 할당 횟수·바이트·할당기 self-time·GC |
-| SupportFast 적격 shadow8 | 참조56,648회,1mm 초과 과소0,최대 과대4.364mm | 모든 표면·일반 맵 정확성 |
-| SupportFast 활성8 | ARRIVED8/8,낙하 복귀9/9,149,084광선 생략 | 동일조건 반복 성능·시각 품질 |
-| SupportFast 활성64 | ARRIVED63/64,낙하 복귀95/96,climb-end0,ENTRY_ALIGNMENT_NO_PROGRESS/EGRESS_STALL 존재 | 전체 기능 수용·현행 OFF/ON 반복 성능 |
-| 잔여시간 보존 격리 후보 | A/B/B/A 조건당2회,clock/wall 약0.654~0.659→약1;파트당 평가393/395→600 | 지원되는 제품 수정·14클립·64비용·최종 부드러움 |
-| 네트워크 mode2 | 단일65본 part 한 유효실행 graph/QPC1.000053 | 전체8파트·14클립·권한/물리·64성능·최종 시각 품질 |
-| 자연 캐시/영상 | dirty1,088건 모두 exit dirty0 및 Head translation 변화,영상1,443프레임 QPC 연결 | 비동기 캡처 texture 생성 시각·최종 렌더 포즈 식별 |
+| 실행 C2 | Ray 경계 아래 hot leaf | Sphere 경계 아래 hot leaf | 해당 두 hot leaf 전체 |
+|---|---:|---:|---:|
+| 기존 OFF64b |917|785|1,706|
+| 기존 ON64b |921|756|1,686|
 
-동일 포즈 경로라고 생각했던 query/interpolated 데이터는 선택 진단 대상에서772/772 같은 저장소였다. 별도 두 경로의 독립 검증으로 세지 않는다. 인접 Drive→Displace42쌍의 완전 동일 입력0은 무조건 캐시의 근거가 되지 않는다.
+Ray 경로: c32c10→564960→ea8f60→eb4540→eb2e60. Sphere 경로: c345e0→566780→ea23e0→eb4420→eb2920. 표본 수는 호출·할당 횟수 또는 할당기 self-time이 아니다. 해당 hot leaf 중 query 하위1,702/1,677표본을 설명하며 나머지는 별도 보존한다. 두 함수의 실제 unwind body는각3조각·1,329/1,176바이트다. 첫24바이트만 읽고 전체 함수라고 판단하지 않았다.
+
+### 새 후보 검증
+
+- 격리 서버60조건: 성공40·거부20. 기준/후보 반환·lift·reason·접촉점 일치. 이전 출력 보존, 다른 body 결과, root 불변, busy 강제 시 원래 경로 결과도 일치했다. 실제 재귀 콜백을 발생시킨 시험은 아니다.
+-8개체 단일 평지 실행: 두 custom 구간 모두 인식8/8·2m 이상 이동8/8·실제 scratch 적용8/8. 두 구간을 독립2회로 세지 않는다. 전경 frame 비율1.0, 시험 완료·정상 프로세스 종료·강제 종료0·crash log0. 이전 retirement 계약 전체를 사용한 시험은 아니다.
+- 새 p50/p95/p99·시각적 포즈 cadence·64개체·수직 등반/낙하 회귀는 미측정/미실행이다. 이번 평지8명으로 해당 gate를 통과시키지 않는다.
+
+후보 적용 확인 TSV는13,088행으로 의도보다 자주 기록됐다. 원시 기록은 보존하며 이 pilot를 성능 비교에 사용하지 않는다. 다음 네 성능 시험에는 동일한 단계별 희소 관찰을 넣었고, 그 관찰 방식 자체의 실제 실행은 아직 없다.
 
 ## 4. 원인 분석
 
-### 실제 수정 가능한 후보와 제한
+확인: 반복 고비용 범위는 스크립트 raw 배열 자체가 아니라 native Ray/Sphere 바인딩의 하위 경로에 있다. SDK RayCastBullet/SphereCastBullet 선언에는 호출자가 내부 후보/결과 버퍼를 제공하는 인자가 없다. 따라서 이번 scratch 후보로 native 내부 컨테이너를 재사용한다고 주장할 수 없다. 질의 내부 자료형·malloc/free 실제 호출 횟수·바이트·GC·self-time은 여전히 미확인이다.
 
-| 후보 | 예상 이점(미측정) | 위험·한계 | 검증 비용과 우선순위 |
-|---|---|---|---|
-| SolveContactsInternal의 자체 scratch 배열 재사용·고정 offset 수명 연장 | 매호출 raw/offset 컨테이너 생성 감소 가능; 검사 수·결과를 바꾸지 않는 국소 후보 | 재진입·배열 참조 공유·이전 결과 오염. CPU hot native 할당을 줄인다는 증거는 없으며 효과가 작을 수 있음 | 낮음~중간: 실제 override/소유권 확인→동결 입력 동등성→같은 평지 반복. 소규모 후보이나 주 병목 해결로 선전 금지 |
-| 기존 SupportSweepFast의 기능 실패 분리 후 제한적 재검증 | 적격 컨테이너 주변4ray 대체는 실제 질의 감소 근거 있음 |64 미복귀·상태 계약 실패 미수용. 경로 의존성 때문에 기존 실패를 단순 비관련으로 배제 불가. 평지 terrain 비용을 줄이는 후보도 아님 | 중간~높음: 기존 actor5/35/12 실패 문맥·후속 replay를 먼저 확인,8→64 기능 통과 후 반복 성능. 새 알고리즘 재구현은 불필요 |
-| 상태·입력에 따라 불필요한 solver 호출을 줄일 수 있는 국소 gate | 빈번한 물리 API 호출 자체를 줄일 가능성 | Drive와Displace의 입력이 다르고 실제 sweep가 안전 판정에 필요함. 현재 승인 가능한 생략 조건은 아직 확보 못 함 | 중간~높음: 호출 소유권·불변조건 증거가 먼저. 무이동·저속만으로 생략 금지 |
-| 지원되는 graph/asset 또는 실제 network mode2 경로 | 이미 확인된 시간 손실을 우회·보완할 가능성 | graph/asset이 mode0 상위 누적기 reset을 고칠 수 있다는 근거 없음. mode2는 역할·권한·전송 차이; 단순 옵션 전환 아님 | 높음: 기존 지원 API/그래프 감사와 실제 mode2 증거 우선. 곧바로 전체 NPC 네트워크 이식·14클립 일괄 배속 금지 |
+확인: FCExecuteSolve는 FCOn/FCEligible일 때 선택되는 별도 캡처 solver이며 일반 경로는 base로 위임한다. 상세 계측은 SolveContacts/Drive/Displace를 감싸며 native 질의를 대체하지 않는다. 후보도 이 분기와 fresh output 수명을 유지한다.
 
-API 내부 hot 배열·malloc/free는 스크립트의 결과 배열을 재사용한다고 자동으로 없어지지 않는다. 공개 API가 내부 버퍼·후보 집합을 받지 않으면 그 내부 구현 교체는 모드 수정 범위 밖이다. 무근거 native 패치나 지지/충돌 true 강제는 제품 후보로 삼지 않는다.
+가설: 자체 반복 배열 생성 감소가 VM/컨테이너 비용 일부를 줄일 수 있다. 추가 wrapper와 guard가 이득을 상쇄할 수도 있고 효과가 아주 작을 수 있다. 이를 주요 native 병목 해결로 선전하지 않는다. 동일 입력42쌍 불일치를 무시한 접촉 결과 캐시나 검사 삭제는 도입하지 않았다.
 
-이미 구현됨: 개체 접촉 공간 broadphase, 분산 시야·공유 보고, 계획 round-robin·재계획 주기, 정적 장애물 캐시,4관절 contact,8파트 부분 골격. 새 이름으로 다시 구현하지 않는다. 본 조회 축소·부분 골격의 transform 동등성은 시각/CPU 개선 수용과 별개다.
-
-### 추가 계측 없이 비교 가능한 증거
-
-1. 상세 비용 off64a/on64a/on64b/off64b의 기존 ETL·Present·contact 결과: 같은 엔진의 질의 하위 비용 후보를 비교 가능. 포함 범위 중복을 더하지 않는다.
-2. shadow8/fast8/fast64와 기존 실패 replay: 기하 적격·기능 한계 비교 가능. 서로 다른 전경·목표·빌드의 프레임 수치를 직접 빼지 않는다.
-3. 잔여시간 A/B/B/A: 평균 진행 회복과 평가 빈도 증가를 함께 평가 가능. 새로운1개체 계측기를 만들 필요 없음.
-4. mode2 baseline·6점 최근접 포즈·자연 cache/기존 영상: 시간·포즈·표시 연결의 확보 범위와 alias·비동기 캡처 한계를 비교 가능. 역할이 다른 실행을 시각 개선 A/B로 취급하지 않는다.
+기존 애니메이션 평균 시간 손실·최종 화면 부드러움의 원인은 이번 후보로 해결되지 않았다. CPU와 영상·Present의 판정은 계속 분리한다.
 
 ## 5. 검증 수준
 
-이번 작업은 기존 근거 검토 완료다. 신규 수정 구현·기능 회귀·시각 품질 개선·성능 최적화는 미실행이다. 기존 결과의 반복 범위만 유지하며20ms p95와 전체 골은 미수용이다. 실패 기록은 보존한다.
+소유권·native 표본 경로: 부분 진단 성공. 후보 실제 엔진60조건 계약: 진단 성공, 단일 서버 실행. 평지8명 추적: 범위 한정 기능 통과, 독립1실행. 반복 성능·8/64 수직 회귀·시각 품질·최종 수용·20ms p95: 미완료다. 전체 문제 해결 골은 active다.
 
 ## 6. 변경 사항
 
-검토 Markdown/TXT·선정 근거·공개 JSON·기존 진행 기록만 갱신한다. 게임 소스·PBO·원본 ANM·운영 서버·실험 실행에는 변경 없음. 새 PBO가 없어 이번 새 서명/검증 대상도 없다. 기존 서명 성공을 새 검증으로 재보고하지 않는다.
+새 후보 nf_contact_scratch SHA256=24BC69191DCFB8FBAD788D8BFD33D0F933F1B47A386641E9AB27BCDF63843B3D. packed script/member 동등성·자동 서명·서명 검증 성공. 기존6PBO도 실행 전 검증했다. 개인키는 배포에 포함하지 않았다. 실험용 후보이며 Steam·운영 서버·기존 배포 PBO에는 적용하지 않았다.
+
+추가 파일은 query-owner-20261102 안의 호출 소유권/재분석 JSON, stage_candidate.py, scratch-candidate source/build/mission/launcher/분석 및 보고서다. 기존 source/PBO/원시 로그는 덮어쓰지 않았다. 게임 원본 EXE·native 시계·duration·LOD·14클립 자산은 변경하지 않았다.
 
 ## 7. 원시 증거
 
-기존 보고서ID: npc-scale-optimization-review(20261031-140636), npc-b93d-support-fast-eight(142909), npc-b93d-support-fast-sixtyfour(143925), npc-animation-residual-repeat(113327), npc-animation-network-role(20261101-161132), npc-animation-network-pose(162728), npc-animation-diag-pose-identity(174440), npc-animation-diag-cache-visible(180909), npc-detailed-cost-attribution(20261102-082826), days-gone-stack-attribution(140729)。원본의 실행 ID·해시·제외 기준을 보존한다. 공개 패킷은 이 검토의 선정 근거 요약이며 전체 원시 자료가 아니다.
+기존 detailed/off64b와on64b C2 ETL 해시를 이전 파생본과 대조한다. owner-audit.json은6PBO/member 소유권과 SDK 선언, dayz-*/cpu-2-query-paths.json은 순서 있는 표본 경로, allocation-canonical-fragments.json은 chained unwind 조각을 기록한다.
+
+새 실행은 query-owner-20261102/scratch-candidate의 contract-server와flat8이다. contract-result/60행TSV, build-v3/packed-members-proof-v3/signature-v3, flat8 launch/mission-used/monitor-closed/host/custom-agents/client-frames/scratch-active/스크립트·RPT 및 batch-results.json을 연결한다. 최초 로그 빈도 문제와 알려진 진단 플러그인·종료 리소스 경고를 보존한다. 공개 자료는 집계·선정 경로·자체 변경 요약이며 전체 로그·프로세스 정보·설치 자산·키는 제외한다.
 
 ## 8. 잔여 문제
 
-다음 작업의 가장 가치 있는 단일 산출물은 ‘현행 Ray/Sphere 호출 소유권과 국소 수정 가능성 판정서’다. 기존 ETL·packed source·override를 연결해 각 고비용 경로를 스크립트 변경 가능/API 내부 변경 불가/추가 증거 필요로 분류하고, 한 후보의 시험·중단 기준까지 정한다. 목적 없는 원본 게임 함수 해석 확대보다 우선한다.
+64 평지 OFF→ON→ON→OFF는 같은7PBO·카메라·플레이어 입력·희소 관찰을 사용하고 detailed observer는 네 실행 모두OFF로 고정했다. scratch profile flag만 바뀐다. 실제 옵션 적용·목표 인식/이동·active 비율과 Present/CPU busy·프로세스 CPU를 함께 검증한다. 기존 빈번한 pilot 로그를 비교 기준으로 쓰지 않는다.
 
-판정서의 성공은 최적화 성공이 아니다. 안전하게 바꿀 지점이 없다는 결론도 유효하다. 후보가 있으면 검사·결과 동등성을 유지하는 가장 작은 변경부터 별도 격리 비교한다. 재진입/alias 위험·PBO 불일치·기능 실패·반복 효과 부재가 있으면 채택을 중단한다. 기존 물리/시각/64성능을 한 번에 바꾸지 않는다.
+사전 의미 있는 성능 후보 기준은 두 쌍 모두 개선 방향, median p95 최소5% 및2ms 감소다. 모든 수치·변동과 기능 위험을 보고하며 단일 유리한 실행으로 채택하지 않는다. 효과가 작거나 기능이 깨지면 후보를 기각하고 범위를 확대해 성공을 만들지 않는다. 채택에는 별도8→64 수직·정상 낙하 복구 회귀가 필요하다.
 
-로컬 checkpoint SHA-256: 18ad930c95a27c2b4ecd149653a70c079893508e84fcdc5d5c2dbbae5b1b0389
+실제 표시 시간에는 Windows ETW 관리자 승인이 필요하여 사용자의 직접 UAC 승인을 요청했다. 바탕화면의 ‘DayZ NPC scratch64 표시 계측 (관리자 승인)’은 지정4개 프로필만215초씩 측정하는 bounded helper다. 설치·권한 그룹 변경·CPU ETL·입력 추적은 없다. 승인 전에는 이 네 성능 시험을 시작하지 않는다. 아직 승인/외부 도구 실행이 확인되지 않았다.
+
+로컬 checkpoint SHA-256: d9596f462ee3e1bd172ddcc555c96e65353d52890720149409eaaf35dc204455

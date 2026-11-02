@@ -1,0 +1,186 @@
+Selected CPU aggregate and role evidence only. Not exact self-time, full decompilation or visual-pose measurement.
+{
+  "sourceRunId": "matched-flat-pursuit-20261102/detailed/query-owner-20261102",
+  "buildId": "24BC69191DCFB8FBAD788D8BFD33D0F933F1B47A386641E9AB27BCDF63843B3D",
+  "newRuntimeTrials": 2,
+  "newClientTrials": 1,
+  "serverContractTrials": 1,
+  "newPbo": true,
+  "newGameplayPbo": true,
+  "newVideo": false,
+  "directMatchedComparison": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "signatureVerified": true,
+  "packedMembersVerified": true,
+  "engineCompiled": true,
+  "contract": {
+    "conditions": 60,
+    "accepted": 40,
+    "rejected": 20,
+    "allFieldsMatched": true,
+    "actualRecursiveCallbackTested": false,
+    "busyFallbackForced": true
+  },
+  "flat8": {
+    "durationSeconds": 65,
+    "windows": [
+      {
+        "phase": 2,
+        "logicalAgents": 8,
+        "everTarget": 8,
+        "movedMoreThan2m": 8,
+        "activeScratchIds": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      },
+      {
+        "phase": 3,
+        "logicalAgents": 8,
+        "everTarget": 8,
+        "movedMoreThan2m": 8,
+        "activeScratchIds": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ]
+      }
+    ],
+    "independentExecutions": 1,
+    "foregroundFrameFraction": 1.0,
+    "normalProcessTermination": true,
+    "retirementContractUsed": false,
+    "scratchObserverRows": 13088,
+    "observerThrottleExceededExpectation": true,
+    "performanceComparisonEligible": false
+  },
+  "nativeQueryPaths": [
+    {
+      "sourceRunId": "detailed/off64b",
+      "phase": 2,
+      "etlSha256": "80f0f03e7c44bfd3104f19e35d62206f9a5f388b386e59d6897cdd5f608ebcc7",
+      "binarySha256": "a500be804ffed5cde369337aeb6ab477ef5ee0b5015764be2b1953c85ec3060d",
+      "windowSeconds": 7.664157,
+      "totalSamples": 11688,
+      "hotLeafSamples": 1706,
+      "hotUnjoined": 0,
+      "hotLeafUnderScriptQuery": 1702,
+      "lostEvents": 0,
+      "lostBuffers": 0,
+      "paths": [
+        {
+          "leafToBinding": [
+            "0xeb2e60",
+            "0xeb4540",
+            "0xea8f60",
+            "0x564960",
+            "0xc32c10"
+          ],
+          "samples": 917
+        },
+        {
+          "leafToBinding": [
+            "0xeb2920",
+            "0xeb4420",
+            "0xea23e0",
+            "0x566780",
+            "0xc345e0"
+          ],
+          "samples": 785
+        }
+      ],
+      "immediateCallerSamples": [
+        [
+          "0xeb4540",
+          917
+        ],
+        [
+          "0xeb4420",
+          785
+        ]
+      ],
+      "limits": [
+        "Statistical CPU ancestry, not invocation counts or allocation self-time",
+        "Canonical unwind owners may combine semantic regions",
+        "No new game execution"
+      ]
+    },
+    {
+      "sourceRunId": "detailed/on64b",
+      "phase": 2,
+      "etlSha256": "535d26e8351fc4c83e03a799afc213fc4361250948cbde08f9306957ec7db328",
+      "binarySha256": "a500be804ffed5cde369337aeb6ab477ef5ee0b5015764be2b1953c85ec3060d",
+      "windowSeconds": 7.667757,
+      "totalSamples": 11621,
+      "hotLeafSamples": 1686,
+      "hotUnjoined": 0,
+      "hotLeafUnderScriptQuery": 1677,
+      "lostEvents": 0,
+      "lostBuffers": 0,
+      "paths": [
+        {
+          "leafToBinding": [
+            "0xeb2e60",
+            "0xeb4540",
+            "0xea8f60",
+            "0x564960",
+            "0xc32c10"
+          ],
+          "samples": 921
+        },
+        {
+          "leafToBinding": [
+            "0xeb2920",
+            "0xeb4420",
+            "0xea23e0",
+            "0x566780",
+            "0xc345e0"
+          ],
+          "samples": 756
+        }
+      ],
+      "immediateCallerSamples": [
+        [
+          "0xeb4540",
+          921
+        ],
+        [
+          "0xeb4420",
+          756
+        ]
+      ],
+      "limits": [
+        "Statistical CPU ancestry, not invocation counts or allocation self-time",
+        "Canonical unwind owners may combine semantic regions",
+        "No new game execution"
+      ]
+    }
+  ],
+  "limits": [
+    "Script scratch reuse does not remove native internal allocations",
+    "No candidate p50/p95/p99 or actual visible-pose cadence measured",
+    "No new vertical or64-agent regression yet",
+    "Pilot activation logger ran more often than intended; sparse per-phase replacement staged identically for four future trials",
+    "No optimization acceptance from source container lifetime change or8-agent functional result"
+  ],
+  "next": "Repeatable 64 flat OFF/ON/ON/OFF Present comparison after user ETW approval; preserve separate8/64 vertical gates and animation work",
+  "unknowns": [
+    "Script scratch reuse does not remove native internal allocations",
+    "No candidate p50/p95/p99 or actual visible-pose cadence measured",
+    "No new vertical or64-agent regression yet",
+    "Pilot activation logger ran more often than intended; sparse per-phase replacement staged identically for four future trials",
+    "No optimization acceptance from source container lifetime change or8-agent functional result"
+  ]
+}
