@@ -1,3 +1,5 @@
+> 최신 작업: Days Gone 기존 CPU 스택 재분류. REA 전체 초기화 완료; 물리·렌더·UI 일부 확인, 원본 애니메이션 비용 미확정. 새 실행0회. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/days-gone-stack-attribution-20261102.md).
+
 > 최신 작업: Days Gone 지붕 고정20명75초. Present p95약22.1~22.3ms. DayZ64와 조건이 달라 직접 배수/animation selftime은 미판정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/days-gone-stationary-20261102-1231.md).
 
 > 최신 작업: DayZ64 상세 비용4반복·발판 소실 복구1회. 이동/밀침별 접촉과 물리 질의 스택 비용을 좁혔다. 애니메이션 표시 품질·세부 native self-time·20ms는 미완료. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/detailed-cost-attribution-20261102.md).

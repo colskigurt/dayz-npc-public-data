@@ -1,0 +1,617 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-02T14:07:32.274787+09:00",
+  "sourceRunId": "dayz-comparison-prep-20261102-122109/stationary-123007/stack-attribution",
+  "buildId": "DaysGone17c2fca0;DayZDiag-a500be80;gameplay93507d",
+  "verificationStatus": {
+    "diagnosis": "partial_attribution_success",
+    "functionalRegression": "not_run",
+    "visualQuality": "not_measured",
+    "performanceTarget": "not_accepted",
+    "externalAI": "not_retested"
+  },
+  "metrics": {
+    "sourceRunId": "dayz-comparison-prep-20261102-122109/stationary-123007/stack-attribution",
+    "buildId": "DaysGone17c2fca0;DayZDiag-a500be80;gameplay93507d",
+    "analysisOnly": true,
+    "newRuntimeTrials": 0,
+    "newGameplayPbo": false,
+    "newPbo": false,
+    "newVideo": false,
+    "sourceCaptureId": "dayz-comparison-prep-20261102-122109/stationary-123007",
+    "sourceCaptureDate": "2026-11-02",
+    "binarySha256": "17c2fca01d566914147a6d4924d038cb1f5a822c2829e4c45862e2bf837730b3",
+    "etlSha256": "505d6ea8a7646562c3d048a1eee747b1e0fabd6e573bc60a3df96a5354f25d21",
+    "windowSeconds": 8.180409,
+    "sampleWeight": 9756,
+    "matchedStackWeight": 9250,
+    "missingStackWeight": 506,
+    "stackFirstIpMismatchWeight": 4,
+    "samplingPeriodMicroseconds": 1000.0,
+    "lostEvents": 0,
+    "lostBuffers": 0,
+    "exclusiveLeaf": [
+      {
+        "category": "other_module_or_kernel",
+        "sampleWeight": 1601,
+        "percentOfTarget": 16.41041410414104,
+        "sampledCpuMsPerWallSecond": 195.71148581935208
+      },
+      {
+        "category": "unclassified_exe_leaf",
+        "sampleWeight": 5888,
+        "percentOfTarget": 60.35260352603527,
+        "sampledCpuMsPerWallSecond": 719.7684125573674
+      },
+      {
+        "category": "graphics_user_library_leaf",
+        "sampleWeight": 1473,
+        "percentOfTarget": 15.09840098400984,
+        "sampledCpuMsPerWallSecond": 180.06434641593106
+      },
+      {
+        "category": "engine_glue_and_core_anchored_leaf",
+        "sampleWeight": 118,
+        "percentOfTarget": 1.209512095120951,
+        "sampledCpuMsPerWallSecond": 14.424706637528761
+      },
+      {
+        "category": "physics_library_leaf",
+        "sampleWeight": 539,
+        "percentOfTarget": 5.5248052480524805,
+        "sampledCpuMsPerWallSecond": 65.88912608159323
+      },
+      {
+        "category": "ui_slate_anchored_leaf",
+        "sampleWeight": 96,
+        "percentOfTarget": 0.984009840098401,
+        "sampledCpuMsPerWallSecond": 11.735354552565772
+      },
+      {
+        "category": "navigation_previously_verified_leaf",
+        "sampleWeight": 35,
+        "percentOfTarget": 0.3587535875358754,
+        "sampledCpuMsPerWallSecond": 4.278514680622938
+      },
+      {
+        "category": "physics_anchored_leaf",
+        "sampleWeight": 3,
+        "percentOfTarget": 0.03075030750307503,
+        "sampledCpuMsPerWallSecond": 0.36672982976768037
+      },
+      {
+        "category": "render_pass_anchored_leaf",
+        "sampleWeight": 3,
+        "percentOfTarget": 0.03075030750307503,
+        "sampledCpuMsPerWallSecond": 0.36672982976768037
+      }
+    ],
+    "inclusiveScopeUnion": {
+      "engine_glue_and_core_anchored": 6462,
+      "render_pass_anchored": 943,
+      "ui_slate_anchored": 278,
+      "graphics_user_library": 1399,
+      "physics_anchored": 524,
+      "navigation_previously_verified": 167
+    },
+    "overlap": {
+      "engine_glue_and_core_anchored & render_pass_anchored": 943,
+      "engine_glue_and_core_anchored & ui_slate_anchored": 278,
+      "engine_glue_and_core_anchored & physics_anchored": 524,
+      "navigation_previously_verified & physics_anchored": 34,
+      "engine_glue_and_core_anchored & navigation_previously_verified": 167,
+      "engine_glue_and_core_anchored & graphics_user_library": 451,
+      "graphics_user_library & render_pass_anchored": 39
+    },
+    "roles": [
+      {
+        "rva": "0x1a21b20",
+        "role": "generic thread setup and virtual task entry",
+        "status": "verified",
+        "basis": "IAT GetCurrentThread/SetThreadAffinityMask; decompiled indirect task call",
+        "inclusiveSamples": 4588,
+        "limit": "Includes descendants; not thread overhead self-time"
+      },
+      {
+        "rva": "0x1e43250",
+        "role": "render pass orchestration",
+        "status": "verified",
+        "basis": "EarlyZPass/BasePass/Lighting markers and retained full pseudocode",
+        "inclusiveSamples": 943,
+        "limit": "Not all rendering or GPU time"
+      },
+      {
+        "rva": "0x1b69660",
+        "role": "Slate UI hierarchy traversal",
+        "status": "verified_subsystem_method_name_unresolved",
+        "basis": "Direct caller 0x1bd5e00 contains SlateApplication.cpp and SWeakWidget; recursive child traversal",
+        "leafSamples": 96,
+        "inclusiveGroupSamples": 278,
+        "limit": "Exact Slate method name remains inferred; no skeletal-animation classification"
+      },
+      {
+        "rva": "0x2bc3e40",
+        "role": "texture-demand aggregation candidate",
+        "status": "hypothesis",
+        "basis": "Two float maxima, 8192 saturation, caller 0x2bbd760; nearby constructor TextureStreaming settings",
+        "leafSamples": 206,
+        "limit": "Nearby constructor is not sufficient object/call ownership proof; remains unclassified"
+      },
+      {
+        "rva": "0x3a43f40",
+        "role": "vector arithmetic; audio DSP candidate",
+        "status": "unknown",
+        "leafSamples": 98,
+        "basis": "SIMD loops; separately verified TnTAudio peak-meter source elsewhere",
+        "limit": "No validated connection to audio anchor; not animation or audio attribution"
+      },
+      {
+        "rva": "0x3a14070",
+        "role": "fixed-quantum processing loop, subsystem unresolved",
+        "status": "unknown",
+        "inclusiveSamples": 1398,
+        "basis": "Batch body and thread owner recovered, indirect callbacks unresolved",
+        "limit": "Do not assign to animation from vector instructions"
+      },
+      {
+        "rva": "0xbdcd40",
+        "role": "shared-animation component active/flat-list metadata",
+        "status": "static_presence_only",
+        "basis": "UBendCrowdSharedAnimSkeletalMeshComponent names and lists",
+        "limit": "Current runtime activation, sharing rate, savings and LOD policy unmeasured"
+      }
+    ],
+    "dayzContext": [
+      {
+        "run": "off64b",
+        "phase": 1,
+        "sourceETLSha256": "b233cd7b37feab096436cef9ee7f26e2f4345d9f8f9fc9e1da5bfda089442332",
+        "sampleWeight": 9813,
+        "windowSeconds": 7.713641,
+        "groups": {
+          "ray_or_sphere_binding": {
+            "inclusiveSampleWeight": 5,
+            "leafSampleWeight": 0,
+            "inclusivePercentOfTarget": 0.0509528176908183,
+            "sampledInclusiveCpuMsPerWallSecond": 0.6482023210569432,
+            "sampledLeafCpuMsPerWallSecond": 0.0
+          },
+          "ray_script_binding": {
+            "inclusiveSampleWeight": 5,
+            "leafSampleWeight": 0,
+            "inclusivePercentOfTarget": 0.0509528176908183,
+            "sampledInclusiveCpuMsPerWallSecond": 0.6482023210569432,
+            "sampledLeafCpuMsPerWallSecond": 0.0
+          },
+          "sphere_script_binding": {
+            "inclusiveSampleWeight": 0,
+            "leafSampleWeight": 0,
+            "inclusivePercentOfTarget": 0.0,
+            "sampledInclusiveCpuMsPerWallSecond": 0.0,
+            "sampledLeafCpuMsPerWallSecond": 0.0
+          },
+          "bone_script_binding": {
+            "inclusiveSampleWeight": 0,
+            "leafSampleWeight": 0,
+            "inclusivePercentOfTarget": 0.0,
+            "sampledInclusiveCpuMsPerWallSecond": 0.0,
+            "sampledLeafCpuMsPerWallSecond": 0.0
+          },
+          "animal_clock_scheduler": {
+            "inclusiveSampleWeight": 330,
+            "leafSampleWeight": 0,
+            "inclusivePercentOfTarget": 3.362885967594008,
+            "sampledInclusiveCpuMsPerWallSecond": 42.78135318975825,
+            "sampledLeafCpuMsPerWallSecond": 0.0
+          },
+          "native_buffer_dispatcher": {
+            "inclusiveSampleWeight": 0,
+            "leafSampleWeight": 0,
+            "inclusivePercentOfTarget": 0.0,
+            "sampledInclusiveCpuMsPerWallSecond": 0.0,
+            "sampledLeafCpuMsPerWallSecond": 0.0
+          },
+          "descriptor_item": {
+            "inclusiveSampleWeight": 0,
+            "leafSampleWeight": 0,
+            "inclusivePercentOfTarget": 0.0,
+            "sampledInclusiveCpuMsPerWallSecond": 0.0,
+            "sampledLeafCpuMsPerWallSecond": 0.0
+          },
+          "known_pose_query_helpers": {
+            "inclusiveSampleWeight": 58,
+            "leafSampleWeight": 31,
+            "inclusivePercentOfTarget": 0.5910526852134923,
+            "sampledInclusiveCpuMsPerWallSecond": 7.51914692426054,
+            "sampledLeafCpuMsPerWallSecond": 4.018854390553048
+          },
+          "script_execution_candidate": {
+            "inclusiveSampleWeight": 1028,
+            "leafSampleWeight": 283,
+            "inclusivePercentOfTarget": 10.475899317232242,
+            "sampledInclusiveCpuMsPerWallSecond": 133.2703972093075,
+            "sampledLeafCpuMsPerWallSecond": 36.68825137182298
+          },
+          "allocation_calling_hot_ranges": {
+            "inclusiveSampleWeight": 155,
+            "leafSampleWeight": 145,
+            "inclusivePercentOfTarget": 1.5795373484153674,
+            "sampledInclusiveCpuMsPerWallSecond": 20.094271952765236,
+            "sampledLeafCpuMsPerWallSecond": 18.797867310651352
+          }
+        },
+        "limits": [
+          "CPU sample weights, not exact function invocation count or runtime selftime",
+          "Symbol-free unwind-range mapping; function semantics require independent evidence",
+          "Inclusive stack hits overlap and must not be summed as CPUtotal",
+          "Some leaf/return addresses lack unwind mappings; nativecode coverage partial",
+          "Thread IDs and all-process events not included in this derivative",
+          "No perentity object pointer, GPU work, allocation/GC or visible-pose cadence"
+        ]
+      },
+      {
+        "run": "off64b",
+        "phase": 2,
+        "sourceETLSha256": "80f0f03e7c44bfd3104f19e35d62206f9a5f388b386e59d6897cdd5f608ebcc7",
+        "sampleWeight": 11688,
+        "windowSeconds": 7.664157,
+        "groups": {
+          "ray_or_sphere_binding": {
+            "inclusiveSampleWeight": 2058,
+            "leafSampleWeight": 3,
+            "inclusivePercentOfTarget": 17.607802874743328,
+            "sampledInclusiveCpuMsPerWallSecond": 268.52268292520625,
+            "sampledLeafCpuMsPerWallSecond": 0.39143248239825984
+          },
+          "ray_script_binding": {
+            "inclusiveSampleWeight": 1085,
+            "leafSampleWeight": 2,
+            "inclusivePercentOfTarget": 9.28302532511978,
+            "sampledInclusiveCpuMsPerWallSecond": 141.5680811340373,
+            "sampledLeafCpuMsPerWallSecond": 0.26095498826550656
+          },
+          "sphere_script_binding": {
+            "inclusiveSampleWeight": 973,
+            "leafSampleWeight": 1,
+            "inclusivePercentOfTarget": 8.324777549623546,
+            "sampledInclusiveCpuMsPerWallSecond": 126.95460179116894,
+            "sampledLeafCpuMsPerWallSecond": 0.13047749413275328
+          },
+          "bone_script_binding": {
+            "inclusiveSampleWeight": 18,
+            "leafSampleWeight": 0,
+            "inclusivePercentOfTarget": 0.1540041067761807,
+            "sampledInclusiveCpuMsPerWallSecond": 2.348594894389559,
+            "sampledLeafCpuMsPerWallSecond": 0.0
+          },
+          "animal_clock_scheduler": {
+            "inclusiveSampleWeight": 3465,
+            "leafSampleWeight": 8,
+            "inclusivePercentOfTarget": 29.645790554414784,
+            "sampledInclusiveCpuMsPerWallSecond": 452.1045171699901,
+            "sampledLeafCpuMsPerWallSecond": 1.0438199530620262
+          },
+          "native_buffer_dispatcher": {
+            "inclusiveSampleWeight": 0,
+            "leafSampleWeight": 0,
+            "inclusivePercentOfTarget": 0.0,
+            "sampledInclusiveCpuMsPerWallSecond": 0.0,
+            "sampledLeafCpuMsPerWallSecond": 0.0
+          },
+          "descriptor_item": {
+            "inclusiveSampleWeight": 0,
+            "leafSampleWeight": 0,
+            "inclusivePercentOfTarget": 0.0,
+            "sampledInclusiveCpuMsPerWallSecond": 0.0,
+            "sampledLeafCpuMsPerWallSecond": 0.0
+          },
+          "known_pose_query_helpers": {
+            "inclusiveSampleWeight": 226,
+            "leafSampleWeight": 154,
+            "inclusivePercentOfTarget": 1.9336071184120465,
+            "sampledInclusiveCpuMsPerWallSecond": 29.48791367400224,
+            "sampledLeafCpuMsPerWallSecond": 20.093534096444003
+          },
+          "script_execution_candidate": {
+            "inclusiveSampleWeight": 5414,
+            "leafSampleWeight": 1091,
+            "inclusivePercentOfTarget": 46.32101300479124,
+            "sampledInclusiveCpuMsPerWallSecond": 706.4051532347262,
+            "sampledLeafCpuMsPerWallSecond": 142.35094609883382
+          },
+          "allocation_calling_hot_ranges": {
+            "inclusiveSampleWeight": 1867,
+            "leafSampleWeight": 1706,
+            "inclusivePercentOfTarget": 15.973648186173854,
+            "sampledInclusiveCpuMsPerWallSecond": 243.60148154585036,
+            "sampledLeafCpuMsPerWallSecond": 222.59460499047708
+          }
+        },
+        "limits": [
+          "CPU sample weights, not exact function invocation count or runtime selftime",
+          "Symbol-free unwind-range mapping; function semantics require independent evidence",
+          "Inclusive stack hits overlap and must not be summed as CPUtotal",
+          "Some leaf/return addresses lack unwind mappings; nativecode coverage partial",
+          "Thread IDs and all-process events not included in this derivative",
+          "No perentity object pointer, GPU work, allocation/GC or visible-pose cadence"
+        ]
+      },
+      {
+        "run": "on64b",
+        "phase": 2,
+        "sourceETLSha256": "535d26e8351fc4c83e03a799afc213fc4361250948cbde08f9306957ec7db328",
+        "sampleWeight": 11621,
+        "windowSeconds": 7.667757,
+        "groups": {
+          "ray_or_sphere_binding": {
+            "inclusiveSampleWeight": 2001,
+            "leafSampleWeight": 7,
+            "inclusivePercentOfTarget": 17.21882798382239,
+            "sampledInclusiveCpuMsPerWallSecond": 260.9628865390492,
+            "sampledLeafCpuMsPerWallSecond": 0.9129136460636402
+          },
+          "ray_script_binding": {
+            "inclusiveSampleWeight": 1087,
+            "leafSampleWeight": 6,
+            "inclusivePercentOfTarget": 9.353756131141898,
+            "sampledInclusiveCpuMsPerWallSecond": 141.76244761016812,
+            "sampledLeafCpuMsPerWallSecond": 0.7824974109116917
+          },
+          "sphere_script_binding": {
+            "inclusiveSampleWeight": 914,
+            "leafSampleWeight": 1,
+            "inclusivePercentOfTarget": 7.865071852680492,
+            "sampledInclusiveCpuMsPerWallSecond": 119.20043892888103,
+            "sampledLeafCpuMsPerWallSecond": 0.1304162351519486
+          },
+          "bone_script_binding": {
+            "inclusiveSampleWeight": 17,
+            "leafSampleWeight": 0,
+            "inclusivePercentOfTarget": 0.14628689441528267,
+            "sampledInclusiveCpuMsPerWallSecond": 2.2170759975831262,
+            "sampledLeafCpuMsPerWallSecond": 0.0
+          },
+          "animal_clock_scheduler": {
+            "inclusiveSampleWeight": 3424,
+            "leafSampleWeight": 2,
+            "inclusivePercentOfTarget": 29.46390155752517,
+            "sampledInclusiveCpuMsPerWallSecond": 446.54518916027206,
+            "sampledLeafCpuMsPerWallSecond": 0.2608324703038972
+          },
+          "native_buffer_dispatcher": {
+            "inclusiveSampleWeight": 0,
+            "leafSampleWeight": 0,
+            "inclusivePercentOfTarget": 0.0,
+            "sampledInclusiveCpuMsPerWallSecond": 0.0,
+            "sampledLeafCpuMsPerWallSecond": 0.0
+          },
+          "descriptor_item": {
+            "inclusiveSampleWeight": 0,
+            "leafSampleWeight": 0,
+            "inclusivePercentOfTarget": 0.0,
+            "sampledInclusiveCpuMsPerWallSecond": 0.0,
+            "sampledLeafCpuMsPerWallSecond": 0.0
+          },
+          "known_pose_query_helpers": {
+            "inclusiveSampleWeight": 195,
+            "leafSampleWeight": 127,
+            "inclusivePercentOfTarget": 1.6779967300576542,
+            "sampledInclusiveCpuMsPerWallSecond": 25.431165854629977,
+            "sampledLeafCpuMsPerWallSecond": 16.562861864297474
+          },
+          "script_execution_candidate": {
+            "inclusiveSampleWeight": 5431,
+            "leafSampleWeight": 1063,
+            "inclusivePercentOfTarget": 46.73436020996472,
+            "sampledInclusiveCpuMsPerWallSecond": 708.2905731102329,
+            "sampledLeafCpuMsPerWallSecond": 138.63245796652137
+          },
+          "allocation_calling_hot_ranges": {
+            "inclusiveSampleWeight": 1820,
+            "leafSampleWeight": 1686,
+            "inclusivePercentOfTarget": 15.66130281387144,
+            "sampledInclusiveCpuMsPerWallSecond": 237.35754797654647,
+            "sampledLeafCpuMsPerWallSecond": 219.88177246618537
+          }
+        },
+        "limits": [
+          "CPU sample weights, not exact function invocation count or runtime selftime",
+          "Symbol-free unwind-range mapping; function semantics require independent evidence",
+          "Inclusive stack hits overlap and must not be summed as CPUtotal",
+          "Some leaf/return addresses lack unwind mappings; nativecode coverage partial",
+          "Thread IDs and all-process events not included in this derivative",
+          "No perentity object pointer, GPU work, allocation/GC or visible-pose cadence"
+        ]
+      }
+    ],
+    "reaEvidence": [
+      {
+        "file": "002-thread-wrapper.json",
+        "evidenceId": "ev_84634d901dfb22cc340cf0f365ee61e1243668e8f95fca61d116a1ad98a9010f",
+        "operation": "analyze_function",
+        "sha256": "c1dcf21e8a7f54173995ec2e14b855d1c42083e64ec0f055865e005e0b34f39d"
+      },
+      {
+        "file": "003-hot-context.json",
+        "evidenceId": "ev_f6713463ab6ae736af2f93d8027b729c4a7db04aaf87e17f06fdb18e316724c2",
+        "operation": "analyze_function",
+        "sha256": "aae9450726c0dc8c49f180f0b443e600de3cd8b1910c43017d9957707ac2b25c"
+      },
+      {
+        "file": "004-simd-hot.json",
+        "evidenceId": "ev_fa1b8ada18597ee65ad26cd505ab16bfaa149f5f7d3f626bfad3050a83fdba2b",
+        "operation": "analyze_function",
+        "sha256": "b918a0d726f861981591560e87fc4fe24840a171b41299da186428776b78dee5"
+      },
+      {
+        "file": "005-engine-hot.json",
+        "evidenceId": "ev_3019a4dd0fd5be691f575060e77901a6a53df879078743340b0acbd09001528b",
+        "operation": "analyze_function",
+        "sha256": "e489002f32a25293e986e7b1b81a369b9649d802158c0ba18439c09e41e19d07"
+      },
+      {
+        "file": "006-engine-loop.json",
+        "evidenceId": "ev_e8c8019f199322aae36e1e3dc5074ea2b0b24921a7d3145d40f6c4f1473365ab",
+        "operation": "analyze_function",
+        "sha256": "8ad4ebfe330480b274316640b890b6369579cc60f992b0f31dcd287c83ff12f5"
+      },
+      {
+        "file": "008-task-dispatch.json",
+        "evidenceId": "ev_e43eacae7d18e1bc77f80c8489eb1a41694cfc35dd7bb595f787729bb973b83e",
+        "operation": "analyze_function",
+        "sha256": "3531d027e87d8727c4e3820861250e59c4d05fce91841546c91eda16274d8c68"
+      },
+      {
+        "file": "009-simd-parent.json",
+        "evidenceId": "ev_476ebef68bf570b28d255c94dd0a5cfdd4fa055da782a93c8e9970f4560a0554",
+        "operation": "analyze_function",
+        "sha256": "df4a04700466ff41719bcf2d348b2a0b2c5ccf68bc79c846653ee8526777220d"
+      },
+      {
+        "file": "010-simd-parent-b.json",
+        "evidenceId": "ev_d22fc7837dcf7c139644f5d9abaee1c6d95a59612b26fadd32e4d51ecaa1812e",
+        "operation": "analyze_function",
+        "sha256": "d8e38d10bcbb4844017ab9b81269d16766dc972801fbcfefa61f473ac5edc221"
+      },
+      {
+        "file": "011-context-caller.json",
+        "evidenceId": "ev_3230989dce0a2246b023d9daad0fc963e0dddb0977ee1d85197fb8c3871f78d1",
+        "operation": "analyze_function",
+        "sha256": "8ac11043f50ed4379d82530cca24e44a2d745d60bd039aebdb70413082344225"
+      },
+      {
+        "file": "012-render-pseudocode-view.json",
+        "evidenceId": "ev_0519fa0a700680b58c2f8d6dae8d5bee13e56e48f5619abd5324fcf537cc4135",
+        "operation": "inspect_analysis_view",
+        "sha256": "467b7062bbac6e8513fd6bcdc9c72cf6a9d6462e3cce4375747d11a34542bc1f"
+      },
+      {
+        "file": "013-context-helper.json",
+        "evidenceId": "ev_fb15e55c9f4f109162f5321a9a4d6a8a98f5f51aa11f3a80bfd6223b4ec38194",
+        "operation": "analyze_function",
+        "sha256": "5b4fea24ce6217137b5f91d94090056157f49ee0fc35bbb0d66e57fae1f4ae8a"
+      },
+      {
+        "file": "014-prepass-parent.json",
+        "evidenceId": "ev_0830cc654ecaefe130f963af9bdb7e793fc57dcded6b191284abef868ecc1b48",
+        "operation": "analyze_function",
+        "sha256": "19682a1a133c2d48f4c8a4b8fdb13b63e0657047db8acd1a707572dbd7ed9863"
+      },
+      {
+        "file": "015-processing-entry.json",
+        "evidenceId": "ev_0073d751971c010fa70acfeab23bfdf4c761845a53fff392e596b3550e682345",
+        "operation": "analyze_function",
+        "sha256": "8b67b1d5bea84ce5e5deada973bfdf1141b2e05b68aff8cd6c6208cf78fc49ad"
+      },
+      {
+        "file": "016-processing-batch.json",
+        "evidenceId": "ev_ca777fd3739fadde8ea97163f869ccccc91002192bd68f9389214a523ba65eaf",
+        "operation": "analyze_function",
+        "sha256": "e745ff6126a75626a1c464d3d08295739f84f8fb2d63e87724fdd5dc9c963063"
+      },
+      {
+        "file": "017-render-full-pseudocode-view.json",
+        "evidenceId": "ev_b5fa0c88fd401e0a6e8b25552dea04d46a427d7d5bff12f0b36f89762bbfdee3",
+        "operation": "inspect_analysis_view",
+        "sha256": "fec1fd14a9d1750bce8308cb77338d1ad00c4a901260c17c37e62a686f4a3960"
+      },
+      {
+        "file": "018-processing-owner.json",
+        "evidenceId": "ev_64624ef206ab4dd0359f7dfc3ce0235165c5071f9e4e83335aee1c2e75fe7e5f",
+        "operation": "analyze_function",
+        "sha256": "83c001bea39a284d7494634fdbdcd1b098fbd11047a70935cc028755b82a1c61"
+      },
+      {
+        "file": "019-texture-owner.json",
+        "evidenceId": "ev_909c16ac804cf8d11d6bf97f7983261da3fe32e9fe869bb65b364f568b322719",
+        "operation": "analyze_function",
+        "sha256": "0d2f700300aff5c2c50f4aa07df17c46f74226520588d91c0150b9dfaf6d3cce"
+      },
+      {
+        "file": "020-texture-label.json",
+        "evidenceId": "ev_fdf36f303d16ffdf2927b00132c6da38df4cc312ed92ae3e07e624e34c58f285",
+        "operation": "analyze_function",
+        "sha256": "0741c84c42bb2801c1d44a4ef89e9f040034b0186652fd238b3e3859b2a775ea"
+      },
+      {
+        "file": "021-widget-owner.json",
+        "evidenceId": "ev_e585bc693141ec55f9aac8250382691808e34609d3495edba74625115960d233",
+        "operation": "analyze_function",
+        "sha256": "a2df9090cd4bec4178b7cbacba6e1c7f95c1cde6916c67b9866a599823685b00"
+      },
+      {
+        "file": "022-processing-body.json",
+        "evidenceId": "ev_2dd71e5a76aab418a808f18ffe273e0c55a4ea5db78a89530ca7d58b65eb05f2",
+        "operation": "analyze_function",
+        "sha256": "09cd6ce608d7b57fe4574808bc3e48c30d1bb858e8ce40d370da7fbcb29836da"
+      },
+      {
+        "file": "023-slate-source.json",
+        "evidenceId": "ev_442682ac66f84c17171b85464f1f0b208fb5dce85daf5b379d10d16551e6ff77",
+        "operation": "analyze_function",
+        "sha256": "c61dbe4379578c9fa9a3af81be836edcd74df63ea7e4c7d087d98a1ca8ea7cf9"
+      },
+      {
+        "file": "024-texture-task.json",
+        "evidenceId": "ev_c3924c9f5b2c4ec6effa21f07d6b8c28d44fef1e3e17b144114133ecbc4caf03",
+        "operation": "analyze_function",
+        "sha256": "616133819103a23bfbc6d5f08c9ee7ad7cd5efdffdc14fb4739816a2cff58082"
+      },
+      {
+        "file": "025-texture-worker-constructor.json",
+        "evidenceId": "ev_ed9537c8247f4380a9eff806cfdac5a7545ec550a266679153f7894391664ddf",
+        "operation": "analyze_function",
+        "sha256": "4f4c165104825e4a71fad94332fdeb1f6ab50c00335fe912c42b3e436de405ba"
+      },
+      {
+        "file": "026-audio-anchor.json",
+        "evidenceId": "ev_cceedef1547ea0182ea3fc6e013d7891fad974244494084b3614bfa228be9e47",
+        "operation": "analyze_function",
+        "sha256": "461e83583cb65b413d4d9aca95c309edc824d8da8f1869a0ee2b4b123d08edbb"
+      }
+    ],
+    "reaInitialization": {
+      "completed": true,
+      "startedLocal": "2026-11-02T13:20:54+09:00",
+      "readyLocal": "2026-11-02T13:55:47+09:00",
+      "approximateMinutes": 35,
+      "extendedDeadlineMilliseconds": 7200000,
+      "globalConfigurationChanged": false,
+      "initialAttemptCancelledBeforeUserCorrection": true,
+      "subsequentProviderTimeoutMilliseconds": 900000,
+      "fullDefaultAnalysis": true,
+      "retainedRenderPseudocodeRecovered": true
+    },
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "directMatchedComparison": false,
+    "unknowns": [
+      "Original animation graph/pose/skin/upload self-times",
+      "Active shared-animation path in current20-member scene",
+      "All native role labels; most executable leaf samples unclassified",
+      "Visible perentity pose cadence"
+    ],
+    "next": "Resolve object/vtable ownership for remaining hot clusters; preserve separate DayZ clock/visible-pose investigation, no speculative timing change"
+  },
+  "blockers": [
+    "Original animation graph/pose/skin/upload self-times",
+    "Active shared-animation path in current20-member scene",
+    "All native role labels; most executable leaf samples unclassified",
+    "Visible perentity pose cadence"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/days-gone-stack-attribution-20261102.md",
+      "sha256": "a9d35e0083e3eeb9687a7f669dd60a583ae199c0710a79e097d3de420aa33d1d"
+    },
+    {
+      "path": "evidence/days-gone-stack-attribution-20261102.txt",
+      "sha256": "148716aa91089d0d08abfdf7b7ed8a0530528815a483222ceccf724e514a91e5"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
