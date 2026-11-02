@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-02T21:32:35.697671+09:00",
+  "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/sixtyfour1",
+  "buildId": "765E61B0B2E20EA3C7977FF17316808D99D8CDD94DDFBCE7A95F8829CAD6EED8",
+  "verificationStatus": {
+    "diagnosis": "recovered_failure_history_vs_current_exit_stagnation_distinguished",
+    "functionalRegression": "strict_gate_failed",
+    "visualQuality": "not_accepted",
+    "performance": "not_accepted",
+    "externalAI": "not_retested"
+  },
+  "metrics": {
+    "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/sixtyfour1",
+    "buildId": "765E61B0B2E20EA3C7977FF17316808D99D8CDD94DDFBCE7A95F8829CAD6EED8",
+    "logicalNpcs": 64,
+    "nativeParts": 512,
+    "independentRuns": 1,
+    "activeSeconds": 256.627,
+    "validTerminalAgents": 64,
+    "allMilestoneAgents": 64,
+    "fallStarts": 94,
+    "landAndFollowCycles": 94,
+    "functionalGatePassed": false,
+    "allCommandsDetached": true,
+    "serverForcedStop": true,
+    "clientForcedStop": false,
+    "clientExitCode": -1,
+    "normalQuitVerified": false,
+    "timing": {
+      "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/sixtyfour1",
+      "logicalNpcs": 64,
+      "nativeParts": 512,
+      "independentRuns": 1,
+      "frameRows": 6005,
+      "domain": "server Mission OnUpdate timeslice; not Present, client frame, CPU busy/self-time, GPU or graph clock",
+      "serverMissionDtMilliseconds": {
+        "p50": 44.0,
+        "p95": 66.0,
+        "p99": 81.0
+      },
+      "serverMissionDtMaximumMilliseconds": 124.0,
+      "serverMissionDtAbove50Ms": 1593,
+      "scriptActiveSeconds": 256.627,
+      "rptBeginToResultWallSeconds": 256.67,
+      "scriptOverWallRatio": 0.9998324697081856,
+      "counterCalibration": {
+        "signed32Wraps": 1,
+        "ticksPerGameTickSecond": 10000027.148668868,
+        "method": "adjacent counter differences modulo2^32, calibrated to recorded GetTickTime; no graph-clock claim"
+      },
+      "counterStepMilliseconds": {
+        "p50": 43.8654809110584,
+        "p95": 65.17431306041556,
+        "p99": 85.28497046265778
+      },
+      "partCommandClockRows": 16064,
+      "maximumWithinNpcNativeSecondsSpread": 0.0,
+      "maximumWithinNpcAnimUpdateSpread": 0,
+      "maximumWithinNpcRequestMismatches": 0,
+      "partClockDomain": "readable DGNativeCommand script counters, not actual graph time/pose/scanout",
+      "terminalNearestRootDistanceMetres": {
+        "minimum": 0.01671560100563951,
+        "median": 0.09823826964932725
+      },
+      "nearestDistanceLimit": "logical root distances only; not calibrated capsule/surface overlap verdict",
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "actualPresentCpuGpuMeasured": false,
+      "limits": [
+        "One diagnostic server+client run with state/CSV instrumentation; no matched baseline/candidate cost comparison",
+        "No actual Present p50/p95/p99, CPU busy, GPU, allocator or GC data",
+        "Command counter coherence does not establish eight-part visible smoothness",
+        "Counter signed wrap handled; raw values preserved",
+        "Wall span includes retirement/result logging tail; not subframe alignment"
+      ]
+    },
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "flaggedTerminalIds": [
+      8,
+      55
+    ],
+    "next": "Resolve ID55 joint/world exit stagnation with existing narrow replay; preserve ID8 recovered-history distinction and unchanged strict gate"
+  },
+  "blockers": [
+    "ID55 unresolved at termination; no accepted movement in last5seconds",
+    "strict gate false despite all64 historical milestones",
+    "actual visible smoothness and matched client/server cost unmeasured"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-network-sixtyfour-audit-20261102.md",
+      "sha256": "418530637cc14213633947f84d0cb01835ccdb1cbad72cd96517b0c8fc867c27"
+    },
+    {
+      "path": "evidence/npc-network-sixtyfour-audit-20261102.txt",
+      "sha256": "02409c3b0ccc4f2216e879ef30deb671b0b94bdebffad5227eec8a7abd95df6c"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}

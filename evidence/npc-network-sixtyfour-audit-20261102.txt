@@ -1,0 +1,391 @@
+Selected aggregate, ID8/55 terminal windows/transitions and raw evidence hashes; not full logs, no independent repetition.
+{
+  "aggregate": {
+    "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/sixtyfour1",
+    "buildId": "765E61B0B2E20EA3C7977FF17316808D99D8CDD94DDFBCE7A95F8829CAD6EED8",
+    "logicalNpcs": 64,
+    "nativeParts": 512,
+    "independentRuns": 1,
+    "activeSeconds": 256.627,
+    "validTerminalAgents": 64,
+    "allMilestoneAgents": 64,
+    "fallStarts": 94,
+    "landAndFollowCycles": 94,
+    "functionalGatePassed": false,
+    "allCommandsDetached": true,
+    "serverForcedStop": true,
+    "clientForcedStop": false,
+    "clientExitCode": -1,
+    "normalQuitVerified": false,
+    "timing": {
+      "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/sixtyfour1",
+      "logicalNpcs": 64,
+      "nativeParts": 512,
+      "independentRuns": 1,
+      "frameRows": 6005,
+      "domain": "server Mission OnUpdate timeslice; not Present, client frame, CPU busy/self-time, GPU or graph clock",
+      "serverMissionDtMilliseconds": {
+        "p50": 44.0,
+        "p95": 66.0,
+        "p99": 81.0
+      },
+      "serverMissionDtMaximumMilliseconds": 124.0,
+      "serverMissionDtAbove50Ms": 1593,
+      "scriptActiveSeconds": 256.627,
+      "rptBeginToResultWallSeconds": 256.67,
+      "scriptOverWallRatio": 0.9998324697081856,
+      "counterCalibration": {
+        "signed32Wraps": 1,
+        "ticksPerGameTickSecond": 10000027.148668868,
+        "method": "adjacent counter differences modulo2^32, calibrated to recorded GetTickTime; no graph-clock claim"
+      },
+      "counterStepMilliseconds": {
+        "p50": 43.8654809110584,
+        "p95": 65.17431306041556,
+        "p99": 85.28497046265778
+      },
+      "partCommandClockRows": 16064,
+      "maximumWithinNpcNativeSecondsSpread": 0.0,
+      "maximumWithinNpcAnimUpdateSpread": 0,
+      "maximumWithinNpcRequestMismatches": 0,
+      "partClockDomain": "readable DGNativeCommand script counters, not actual graph time/pose/scanout",
+      "terminalNearestRootDistanceMetres": {
+        "minimum": 0.01671560100563951,
+        "median": 0.09823826964932725
+      },
+      "nearestDistanceLimit": "logical root distances only; not calibrated capsule/surface overlap verdict",
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "actualPresentCpuGpuMeasured": false,
+      "limits": [
+        "One diagnostic server+client run with state/CSV instrumentation; no matched baseline/candidate cost comparison",
+        "No actual Present p50/p95/p99, CPU busy, GPU, allocator or GC data",
+        "Command counter coherence does not establish eight-part visible smoothness",
+        "Counter signed wrap handled; raw values preserved",
+        "Wall span includes retirement/result logging tail; not subframe alignment"
+      ]
+    },
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "flaggedTerminalIds": [
+      8,
+      55
+    ],
+    "next": "Resolve ID55 joint/world exit stagnation with existing narrow replay; preserve ID8 recovered-history distinction and unchanged strict gate"
+  },
+  "flagged": [
+    {
+      "id": 8,
+      "terminal": {
+        "seconds": "256.627",
+        "id": "8",
+        "outcome": "VALID_TERMINAL",
+        "state": "CHASE",
+        "phase": "FOLLOW",
+        "area": "low",
+        "position": "<4510.968750, 340.213043, 10240.524414>",
+        "recoveryGeneration": "3",
+        "contactStatus": "",
+        "reason": "",
+        "failure": "CONTACT_SUPPORT_LOST",
+        "low": "true",
+        "high": "true",
+        "down": "true",
+        "returned": "true",
+        "climbs": "5",
+        "drops": "1",
+        "landings": "3",
+        "visible": "true",
+        "clueSource": "LOCAL_VISUAL",
+        "seenAge": "0.415985"
+      },
+      "windows": [
+        {
+          "seconds": 1,
+          "samples": 5,
+          "pathLengthMetres": 0.23360261615242991,
+          "netDistanceMetres": 0.08917735946364,
+          "phases": [
+            "FOLLOW"
+          ],
+          "reasons": [
+            "",
+            "ARRIVED"
+          ],
+          "contactSolveIncrease": 40,
+          "contactFailureIncrease": 0
+        },
+        {
+          "seconds": 5,
+          "samples": 18,
+          "pathLengthMetres": 0.49082629082864027,
+          "netDistanceMetres": 0.20483272525671856,
+          "phases": [
+            "FOLLOW"
+          ],
+          "reasons": [
+            "",
+            "ARRIVED"
+          ],
+          "contactSolveIncrease": 195,
+          "contactFailureIncrease": 0
+        },
+        {
+          "seconds": 10,
+          "samples": 37,
+          "pathLengthMetres": 1.131857626031679,
+          "netDistanceMetres": 0.3603966241720205,
+          "phases": [
+            "FOLLOW"
+          ],
+          "reasons": [
+            "",
+            "ARRIVED"
+          ],
+          "contactSolveIncrease": 423,
+          "contactFailureIncrease": 0
+        }
+      ],
+      "lastTransitions": [
+        {
+          "seconds": "206.197",
+          "previous": "FOLLOW",
+          "next": "MOTION",
+          "failure": "",
+          "recoveryGeneration": "2",
+          "callContext": "FOLLOW"
+        },
+        {
+          "seconds": "207.701",
+          "previous": "MOTION",
+          "next": "SETTLE",
+          "failure": "",
+          "recoveryGeneration": "2",
+          "callContext": "MOTION"
+        },
+        {
+          "seconds": "208.274",
+          "previous": "SETTLE",
+          "next": "EGRESS",
+          "failure": "",
+          "recoveryGeneration": "2",
+          "callContext": "OTHER"
+        },
+        {
+          "seconds": "208.324",
+          "previous": "EGRESS",
+          "next": "FOLLOW",
+          "failure": "",
+          "recoveryGeneration": "2",
+          "callContext": "OTHER"
+        },
+        {
+          "seconds": "243.893",
+          "previous": "FOLLOW",
+          "next": "FALL",
+          "failure": "CONTACT_SUPPORT_LOST",
+          "recoveryGeneration": "3",
+          "callContext": "PRESSURE_SUPPORT_LOSS"
+        },
+        {
+          "seconds": "244.319",
+          "previous": "FALL",
+          "next": "LAND",
+          "failure": "CONTACT_SUPPORT_LOST",
+          "recoveryGeneration": "3",
+          "callContext": "OTHER"
+        },
+        {
+          "seconds": "244.693",
+          "previous": "LAND",
+          "next": "EGRESS",
+          "failure": "CONTACT_SUPPORT_LOST",
+          "recoveryGeneration": "3",
+          "callContext": "OTHER"
+        },
+        {
+          "seconds": "244.752",
+          "previous": "EGRESS",
+          "next": "FOLLOW",
+          "failure": "CONTACT_SUPPORT_LOST",
+          "recoveryGeneration": "3",
+          "callContext": "OTHER"
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "terminal": {
+        "seconds": "256.627",
+        "id": "55",
+        "outcome": "VALID_TERMINAL",
+        "state": "CHASE",
+        "phase": "FOLLOW",
+        "area": "ground",
+        "position": "<4508.410645, 339.117920, 10237.845703>",
+        "recoveryGeneration": "3",
+        "contactStatus": "StaticObj_Container_1C",
+        "reason": "NATIVE_JOINT_WORLD_1",
+        "failure": "EGRESS_STALL",
+        "low": "true",
+        "high": "true",
+        "down": "true",
+        "returned": "true",
+        "climbs": "4",
+        "drops": "1",
+        "landings": "3",
+        "visible": "true",
+        "clueSource": "LOCAL_VISUAL",
+        "seenAge": "0.415985"
+      },
+      "windows": [
+        {
+          "seconds": 1,
+          "samples": 5,
+          "pathLengthMetres": 0.0,
+          "netDistanceMetres": 0.0,
+          "phases": [
+            "EGRESS",
+            "FOLLOW"
+          ],
+          "reasons": [
+            "NATIVE_JOINT_WORLD_1",
+            "NATIVE_JOINT_WORLD_3"
+          ],
+          "contactSolveIncrease": 17,
+          "contactFailureIncrease": 17
+        },
+        {
+          "seconds": 5,
+          "samples": 18,
+          "pathLengthMetres": 0.0,
+          "netDistanceMetres": 0.0,
+          "phases": [
+            "EGRESS",
+            "FOLLOW"
+          ],
+          "reasons": [
+            "NATIVE_JOINT_WORLD_1",
+            "NATIVE_JOINT_WORLD_3"
+          ],
+          "contactSolveIncrease": 82,
+          "contactFailureIncrease": 78
+        },
+        {
+          "seconds": 10,
+          "samples": 37,
+          "pathLengthMetres": 1.7214973680537125,
+          "netDistanceMetres": 1.311530953508233,
+          "phases": [
+            "EGRESS",
+            "FALL",
+            "FOLLOW",
+            "LAND",
+            "SETTLE"
+          ],
+          "reasons": [
+            "LAND",
+            "LAND_CLEARANCE_SEPARATION",
+            "NATIVE_FALL",
+            "NATIVE_JOINT_WORLD_1",
+            "NATIVE_JOINT_WORLD_3",
+            "RECOVERY_REPLAN_WAIT",
+            "SETTLE",
+            "SUPPORTED_EGRESS_HANDOFF",
+            "SUPPORTED_POSE_ESCAPE_TURN"
+          ],
+          "contactSolveIncrease": 188,
+          "contactFailureIncrease": 106
+        }
+      ],
+      "lastTransitions": [
+        {
+          "seconds": "244.801",
+          "previous": "FOLLOW",
+          "next": "MOTION",
+          "failure": "",
+          "recoveryGeneration": "2",
+          "callContext": "FOLLOW"
+        },
+        {
+          "seconds": "246.551",
+          "previous": "MOTION",
+          "next": "SETTLE",
+          "failure": "",
+          "recoveryGeneration": "2",
+          "callContext": "MOTION"
+        },
+        {
+          "seconds": "247.129",
+          "previous": "SETTLE",
+          "next": "EGRESS",
+          "failure": "",
+          "recoveryGeneration": "2",
+          "callContext": "OTHER"
+        },
+        {
+          "seconds": "247.197",
+          "previous": "EGRESS",
+          "next": "FOLLOW",
+          "failure": "",
+          "recoveryGeneration": "2",
+          "callContext": "OTHER"
+        },
+        {
+          "seconds": "247.616",
+          "previous": "FOLLOW",
+          "next": "FALL",
+          "failure": "CONTACT_SUPPORT_LOST",
+          "recoveryGeneration": "3",
+          "callContext": "PRESSURE_SUPPORT_LOSS"
+        },
+        {
+          "seconds": "248.158",
+          "previous": "FALL",
+          "next": "LAND",
+          "failure": "CONTACT_SUPPORT_LOST",
+          "recoveryGeneration": "3",
+          "callContext": "OTHER"
+        },
+        {
+          "seconds": "251.505",
+          "previous": "LAND",
+          "next": "EGRESS",
+          "failure": "CONTACT_SUPPORT_LOST",
+          "recoveryGeneration": "3",
+          "callContext": "OTHER"
+        },
+        {
+          "seconds": "256.571",
+          "previous": "EGRESS",
+          "next": "FOLLOW",
+          "failure": "EGRESS_STALL",
+          "recoveryGeneration": "3",
+          "callContext": "OTHER"
+        }
+      ]
+    }
+  ],
+  "rawEvidenceHashes": [
+    {
+      "file": "gameplay-eight.tsv",
+      "sha256": "fbf0bae653d502c10b9ea33160665af37c340476f9d48536482d66c87dceb228",
+      "bytes": 17102136
+    },
+    {
+      "file": "native-state-contract.tsv",
+      "sha256": "f3897cd0db84ba4c2008f674234658933b0913cc4e9512310a72717530deb9f2",
+      "bytes": 578374
+    },
+    {
+      "file": "terminal-state.tsv",
+      "sha256": "109241acdc7df2ce452ed176b1ef721b70b0d8fc95814890a9ea66b04779c462",
+      "bytes": 9443
+    },
+    {
+      "file": "milestones.tsv",
+      "sha256": "b64b422560aadaa2ae803c6895c163ff4b8d0ba982e995e2861392201d1c136c",
+      "bytes": 27698
+    }
+  ]
+}
