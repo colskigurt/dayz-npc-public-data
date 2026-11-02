@@ -1,3 +1,5 @@
+> 최신 작업: 네트워크 미해결ID 반복조회 caller 확인. SETUP OFF/ON 모두8파트·경고최대200/초로후보미채택. 성능/시각미측정,정적분석대기. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-network-retry-diagnosis-20261103.md).
+
 > 최신 작업: 상태 제한 지지 후보:19가드·8명8/8·64명64/64,낙하 복귀82/82. 실제 비용/시각 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-support-context-8-64-20261103.md).
 
 > 최신 작업: 기존 SupportSweepFast 2독립 비교:지붕 메서드 약26% 감소·지형 약6.6% 증가. 전역 수용 기준 미통과. 상태 제한 후보는 명세만,8/64·시각·전체 프레임 미검증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-current-support-method-cost-20261103.md).

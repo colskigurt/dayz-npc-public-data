@@ -1,0 +1,61 @@
+Aggregate diagnostic only. No raw logs, game assets, credentials or process identifiers.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T05:41:55.638173+09:00",
+  "sourceRunId": "network-gameplay/network-retry-diagnosis1",
+  "buildId": "A500BE80+network-body765E61B0+setup9C6C4DF3",
+  "verificationStatus": {
+    "diagnosis": "bounded_runtime_caller_observed",
+    "setupCandidate": "did_not_eliminate_warning_not_promoted",
+    "functionalRegression": "not_tested_this_bundle",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "controls": [
+      {
+        "run": "native-setup-off1",
+        "setupEnabled": false,
+        "parts": 8,
+        "physicsAll": true,
+        "allPartsHeadChanged": true,
+        "auditSeconds": [
+          0.3,
+          8.00799
+        ],
+        "warningLines": 1593,
+        "maximumWarningLinesPerSecond": 200,
+        "crashFiles": 0
+      },
+      {
+        "run": "native-setup-on1",
+        "setupEnabled": true,
+        "parts": 8,
+        "physicsAll": true,
+        "allPartsHeadChanged": true,
+        "auditSeconds": [
+          0.3,
+          18.1261
+        ],
+        "warningLines": 3593,
+        "maximumWarningLinesPerSecond": 200,
+        "crashFiles": 0
+      }
+    ],
+    "existing64WarningLines": 3345674,
+    "existing64RPTBytes": 318146844,
+    "lookupTraceMatches": 3,
+    "networkRecordTraceMatches": 3,
+    "independentPerformanceRepeats": 0
+  },
+  "blockers": [
+    "Targeted Ghidra decompile still running; no pseudocode result yet",
+    "Repeated lookup CPU self-time and allocation count unmeasured",
+    "Pending record field semantics not fully established",
+    "No full-frame or visible-quality improvement claimed"
+  ],
+  "evidenceReferences": [],
+  "next": "Read targeted resolver loop result when ready. Identify record producer and valid ID lifecycle before any local correction. Preserve physics and normal fall/recovery; do not suppress warnings as optimization.",
+  "goalComplete": false
+}
