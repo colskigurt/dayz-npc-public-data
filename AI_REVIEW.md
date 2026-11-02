@@ -1,3 +1,5 @@
+> 최신 작업: ID24 일반4관절과복구고정몸통의허용공간차이확인.16방향효과없음·1cm도약1.95cm후재정체.단순후보미수용,기능/시각/성능해결주장없음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-actor24-overlap-diagnosis-20261103.md).
+
 > 최신 작업: 기록포즈에서머리충돌과기존EC탈출계획확인.8/8회귀통과·64EC복구7회완료이나ID24입구정체로높은면63/64·전체미통과.성능미입증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-existing-egress-integration-20261103.md).
 
 > 최신 작업: 8NPC 시각호스트 NOCOLLISION 후보는파트참조소실로기각. 동일관측기OFF는8/8·복구9/9. 시각/성능개선은미입증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-render-host-layer-rejection-20261102.md).

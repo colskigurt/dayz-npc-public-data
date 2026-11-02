@@ -1,0 +1,565 @@
+Selected aggregates and own mod recovery predicate. Not full raw evidence. Same-root3poses are not independent repetitions.
+{
+  "schemaVersion": "1.0.0",
+  "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/actor24-overlap-diagnosis",
+  "buildId": "A500BE80+453D6A9E+0C6E1855+B8FBAB74+8BDA6B7A+87442808+765E61B0",
+  "control": {
+    "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/actor24-core-queries3-identity",
+    "missionSha256": "3651C9A1FC596DF22B04DBA79B806F07133F3D0FC8D926E7A2A5411CCC38BB81",
+    "terminal": true,
+    "normalExitVerified": false,
+    "signatureChecksPassed": 6,
+    "spatialCounts": {
+      "STATIONARY": {
+        "rows": 3,
+        "clear": 3,
+        "gates": {
+          "": 3
+        }
+      },
+      "FIRST_STEP": {
+        "rows": 48,
+        "clear": 0,
+        "gates": {
+          "NEW_WORLD_CONTACT": 46,
+          "DEEPER_FIXTURE": 2
+        }
+      },
+      "CHAIN": {
+        "rows": 48,
+        "clear": 0,
+        "gates": {
+          "NEW_WORLD_CONTACT": 46,
+          "DEEPER_FIXTURE": 2
+        }
+      },
+      "REFINE_OFF": {
+        "rows": 3,
+        "clear": 0,
+        "gates": {
+          "NONE": 3
+        }
+      },
+      "REFINE_ON": {
+        "rows": 3,
+        "clear": 0,
+        "gates": {
+          "NONE": 3
+        }
+      }
+    },
+    "acceptedFrozenChains": [],
+    "stationaryCore": [
+      {
+        "probe": 0,
+        "sweepHit": false,
+        "boxGapMeters": 0.0526329,
+        "nativeOverlapContacts": []
+      },
+      {
+        "probe": 1,
+        "sweepHit": false,
+        "boxGapMeters": 0.0548354,
+        "nativeOverlapContacts": [
+          {
+            "fixtureIndex": "0",
+            "shape1": "1",
+            "shape2": "0",
+            "depth": "-0.0059416",
+            "normal": "<-0.892055, 0.451924, -0.001245>"
+          }
+        ]
+      },
+      {
+        "probe": 2,
+        "sweepHit": false,
+        "boxGapMeters": 0.0466909,
+        "nativeOverlapContacts": []
+      }
+    ],
+    "calibration": [
+      {
+        "operation": "BASE",
+        "contacts": 1,
+        "fixtureIndices": [
+          0
+        ],
+        "deepestNativeNegativeDepthMeters": -0.0059416,
+        "firstNativeDepthMeters": -0.0059416,
+        "overflow": false
+      },
+      {
+        "operation": "0.01",
+        "contacts": 2,
+        "fixtureIndices": [
+          0
+        ],
+        "deepestNativeNegativeDepthMeters": -0.0158231,
+        "firstNativeDepthMeters": -0.00154193,
+        "overflow": false
+      },
+      {
+        "operation": "-0.01",
+        "contacts": 0,
+        "fixtureIndices": [],
+        "deepestNativeNegativeDepthMeters": 0,
+        "firstNativeDepthMeters": 0.0,
+        "overflow": false
+      },
+      {
+        "operation": "0.02",
+        "contacts": 2,
+        "fixtureIndices": [
+          0
+        ],
+        "deepestNativeNegativeDepthMeters": -0.0261401,
+        "firstNativeDepthMeters": -0.0112504,
+        "overflow": false
+      },
+      {
+        "operation": "-0.02",
+        "contacts": 1,
+        "fixtureIndices": [
+          1
+        ],
+        "deepestNativeNegativeDepthMeters": -0.00223702,
+        "firstNativeDepthMeters": -0.00223702,
+        "overflow": false
+      }
+    ],
+    "newPbo": false,
+    "newVideo": false
+  },
+  "shortStep": {
+    "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/actor24-shortstep1cm2",
+    "missionSha256": "959497F2D5A37BB5D2512A4892B0377B37354C6E9E01C0EAF2B679F3EA13D55D",
+    "terminal": true,
+    "normalExitVerified": false,
+    "signatureChecksPassed": 6,
+    "spatialCounts": {
+      "STATIONARY": {
+        "rows": 3,
+        "clear": 3,
+        "gates": {
+          "": 3
+        }
+      },
+      "FIRST_STEP": {
+        "rows": 48,
+        "clear": 6,
+        "gates": {
+          "NONDEEPENING_CLEAR": 6,
+          "DEEPER_FIXTURE": 6,
+          "NEW_WORLD_CONTACT": 36
+        }
+      },
+      "CHAIN": {
+        "rows": 48,
+        "clear": 6,
+        "gates": {
+          "FULL_STATIC_ENDPOINT": 6,
+          "DEEPER_FIXTURE": 6,
+          "NEW_WORLD_CONTACT": 36
+        }
+      },
+      "REFINE_OFF": {
+        "rows": 3,
+        "clear": 0,
+        "gates": {
+          "NONE": 3
+        }
+      },
+      "REFINE_ON": {
+        "rows": 3,
+        "clear": 0,
+        "gates": {
+          "NONE": 3
+        }
+      }
+    },
+    "acceptedFrozenChains": [
+      {
+        "snapshot": "0",
+        "direction": "0",
+        "gate": "FULL_STATIC_ENDPOINT",
+        "steps": "1",
+        "endpointClear": "true",
+        "root": "<4511.505371, 339.171936, 10236.790039>",
+        "tested": "<4511.505371, 339.171967, 10236.799805>"
+      },
+      {
+        "snapshot": "0",
+        "direction": "8",
+        "gate": "FULL_STATIC_ENDPOINT",
+        "steps": "1",
+        "endpointClear": "true",
+        "root": "<4511.505371, 339.171936, 10236.790039>",
+        "tested": "<4511.505371, 339.171906, 10236.780273>"
+      },
+      {
+        "snapshot": "1",
+        "direction": "0",
+        "gate": "FULL_STATIC_ENDPOINT",
+        "steps": "1",
+        "endpointClear": "true",
+        "root": "<4511.505371, 339.171936, 10236.790039>",
+        "tested": "<4511.505371, 339.171967, 10236.799805>"
+      },
+      {
+        "snapshot": "1",
+        "direction": "8",
+        "gate": "FULL_STATIC_ENDPOINT",
+        "steps": "1",
+        "endpointClear": "true",
+        "root": "<4511.505371, 339.171936, 10236.790039>",
+        "tested": "<4511.505371, 339.171906, 10236.780273>"
+      },
+      {
+        "snapshot": "2",
+        "direction": "0",
+        "gate": "FULL_STATIC_ENDPOINT",
+        "steps": "1",
+        "endpointClear": "true",
+        "root": "<4511.505371, 339.171936, 10236.790039>",
+        "tested": "<4511.505371, 339.171967, 10236.799805>"
+      },
+      {
+        "snapshot": "2",
+        "direction": "8",
+        "gate": "FULL_STATIC_ENDPOINT",
+        "steps": "1",
+        "endpointClear": "true",
+        "root": "<4511.505371, 339.171936, 10236.790039>",
+        "tested": "<4511.505371, 339.171906, 10236.780273>"
+      }
+    ],
+    "stationaryCore": [
+      {
+        "probe": 0,
+        "sweepHit": false,
+        "boxGapMeters": 0.0526329,
+        "nativeOverlapContacts": []
+      },
+      {
+        "probe": 1,
+        "sweepHit": false,
+        "boxGapMeters": 0.0548354,
+        "nativeOverlapContacts": [
+          {
+            "fixtureIndex": "0",
+            "shape1": "1",
+            "shape2": "0",
+            "depth": "-0.0059416",
+            "normal": "<-0.892055, 0.451924, -0.001245>"
+          }
+        ]
+      },
+      {
+        "probe": 2,
+        "sweepHit": false,
+        "boxGapMeters": 0.0466909,
+        "nativeOverlapContacts": []
+      }
+    ],
+    "calibration": [
+      {
+        "operation": "BASE",
+        "contacts": 1,
+        "fixtureIndices": [
+          0
+        ],
+        "deepestNativeNegativeDepthMeters": -0.0059416,
+        "firstNativeDepthMeters": -0.0059416,
+        "overflow": false
+      },
+      {
+        "operation": "0.01",
+        "contacts": 2,
+        "fixtureIndices": [
+          0
+        ],
+        "deepestNativeNegativeDepthMeters": -0.0158231,
+        "firstNativeDepthMeters": -0.00154193,
+        "overflow": false
+      },
+      {
+        "operation": "-0.01",
+        "contacts": 0,
+        "fixtureIndices": [],
+        "deepestNativeNegativeDepthMeters": 0,
+        "firstNativeDepthMeters": 0.0,
+        "overflow": false
+      },
+      {
+        "operation": "0.02",
+        "contacts": 2,
+        "fixtureIndices": [
+          0
+        ],
+        "deepestNativeNegativeDepthMeters": -0.0261401,
+        "firstNativeDepthMeters": -0.0112504,
+        "overflow": false
+      },
+      {
+        "operation": "-0.02",
+        "contacts": 1,
+        "fixtureIndices": [
+          1
+        ],
+        "deepestNativeNegativeDepthMeters": -0.00223702,
+        "firstNativeDepthMeters": -0.00223702,
+        "overflow": false
+      }
+    ],
+    "newPbo": false,
+    "newVideo": false
+  },
+  "functionalAccepted": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "goalComplete": false,
+  "facts": [
+    "Original4-joint stationary solve accepts all3 recorded poses; original recovery7-probe3cm first steps reject48/48.",
+    "SphereCastBullet at identical start/end misses a native contact reported by SphereOverlapBullet for core probe1 at the same radius/mask/root.",
+    "Measured +contact-normal1cm increases deepest negative native contact depth, while -normal1cm clears initial contact; -normal2cm reaches a different registered container.",
+    "First contact is not deepest contact; same fixture and shape pair can produce multiple contact points. FirstDepth alone is not a conservative safety predicate.",
+    "Existing PressureSlide+PlanPressureEscape with short input dt moves2steps/~0.01953m in each of3 frozen snapshots, then again reports NO_VALID_LOCAL_EXIT; original dt moves0. All final4-joint full solves still pass."
+  ],
+  "limitations": [
+    "Frozen3 poses, no animated pose evolution, peer dynamics, or actual agent motor.",
+    "Native overlap sign and normal displacement observations are calibrated only for this scene/input.",
+    "No unconditional cache or collision bypass is justified by these observations.",
+    "No new8/64 gameplay result, Present/CPU/GPU percentiles, visual quality or performance improvement measured.",
+    "SphereCast and overlap API semantics differ; result discrepancy does not establish an engine bug."
+  ],
+  "next": "Trace provenance and intended safety contract of fixed root core probes versus pose-derived4joint solver. Use archived wall/edge failure cases before proposing a supported-FOLLOW-only pose-aware recovery candidate. Preserve FALL/LAND sweeps; no full64 rerun until a candidate passes the recorded blocker.",
+  "motorComparison": {
+    "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/actor24-short-motor2",
+    "missionSha256": "B38B8562FC14E563BC074F0545EE5570F810EE0A58087C77C77FEACFC27B3CC2",
+    "rows": [
+      {
+        "snapshot": "0",
+        "condition": "BASE_3CM",
+        "inputDt": "0.05",
+        "acceptedSteps": "0",
+        "travel": "0",
+        "netDistance": "0",
+        "finalDiagnostic": "NO_VALID_LOCAL_EXIT",
+        "lastReject": "NEW_WORLD_CONTACT",
+        "plans": "14",
+        "finalFullSolve": "true",
+        "origin": "<4511.505371, 339.171936, 10236.790039>",
+        "finalPosition": "<4511.505371, 339.171936, 10236.790039>",
+        "coreEndContacts": "1",
+        "coreEndDeepest": "-0.0059416",
+        "unknownContacts": "0"
+      },
+      {
+        "snapshot": "0",
+        "condition": "SHORT_1CM",
+        "inputDt": "0.0166667",
+        "acceptedSteps": "2",
+        "travel": "0.0195315",
+        "netDistance": "0.0195315",
+        "finalDiagnostic": "NO_VALID_LOCAL_EXIT",
+        "lastReject": "NEW_WORLD_CONTACT",
+        "plans": "14",
+        "finalFullSolve": "true",
+        "origin": "<4511.505371, 339.171936, 10236.790039>",
+        "finalPosition": "<4511.505371, 339.171844, 10236.770508>",
+        "coreEndContacts": "1",
+        "coreEndDeepest": "-0.00592458",
+        "unknownContacts": "0"
+      },
+      {
+        "snapshot": "1",
+        "condition": "BASE_3CM",
+        "inputDt": "0.05",
+        "acceptedSteps": "0",
+        "travel": "0",
+        "netDistance": "0",
+        "finalDiagnostic": "NO_VALID_LOCAL_EXIT",
+        "lastReject": "NEW_WORLD_CONTACT",
+        "plans": "14",
+        "finalFullSolve": "true",
+        "origin": "<4511.505371, 339.171936, 10236.790039>",
+        "finalPosition": "<4511.505371, 339.171936, 10236.790039>",
+        "coreEndContacts": "1",
+        "coreEndDeepest": "-0.0059416",
+        "unknownContacts": "0"
+      },
+      {
+        "snapshot": "1",
+        "condition": "SHORT_1CM",
+        "inputDt": "0.0166667",
+        "acceptedSteps": "2",
+        "travel": "0.0195315",
+        "netDistance": "0.0195315",
+        "finalDiagnostic": "NO_VALID_LOCAL_EXIT",
+        "lastReject": "NEW_WORLD_CONTACT",
+        "plans": "14",
+        "finalFullSolve": "true",
+        "origin": "<4511.505371, 339.171936, 10236.790039>",
+        "finalPosition": "<4511.505371, 339.171844, 10236.770508>",
+        "coreEndContacts": "1",
+        "coreEndDeepest": "-0.00592458",
+        "unknownContacts": "0"
+      },
+      {
+        "snapshot": "2",
+        "condition": "BASE_3CM",
+        "inputDt": "0.05",
+        "acceptedSteps": "0",
+        "travel": "0",
+        "netDistance": "0",
+        "finalDiagnostic": "NO_VALID_LOCAL_EXIT",
+        "lastReject": "NEW_WORLD_CONTACT",
+        "plans": "14",
+        "finalFullSolve": "true",
+        "origin": "<4511.505371, 339.171936, 10236.790039>",
+        "finalPosition": "<4511.505371, 339.171936, 10236.790039>",
+        "coreEndContacts": "1",
+        "coreEndDeepest": "-0.0059416",
+        "unknownContacts": "0"
+      },
+      {
+        "snapshot": "2",
+        "condition": "SHORT_1CM",
+        "inputDt": "0.0166667",
+        "acceptedSteps": "2",
+        "travel": "0.0195315",
+        "netDistance": "0.0195315",
+        "finalDiagnostic": "NO_VALID_LOCAL_EXIT",
+        "lastReject": "NEW_WORLD_CONTACT",
+        "plans": "14",
+        "finalFullSolve": "true",
+        "origin": "<4511.505371, 339.171936, 10236.790039>",
+        "finalPosition": "<4511.505371, 339.171844, 10236.770508>",
+        "coreEndContacts": "1",
+        "coreEndDeepest": "-0.00592458",
+        "unknownContacts": "0"
+      }
+    ],
+    "terminal": true,
+    "normalExitVerified": false,
+    "signatureChecksPassed": 6,
+    "syntheticCallsPerCase": 200,
+    "syntheticNowStepSeconds": 0.05,
+    "diagnosticTravelTargetMeters": 0.3,
+    "acceptedAsSolution": false
+  },
+  "decision": {
+    "directionRefinement": "Not effective for these3 recorded inputs; do not blindly integrate old16-direction candidate.",
+    "shortStep": "Not sufficient for local escape; do not package speed cap as fix.",
+    "nativeOverlap": "Useful diagnostic of volume-contract mismatch; no bypass or cache candidate accepted.",
+    "firstContactOnly": "Rejected as a conservative native-overlap acceptance predicate because first contact is not deepest and one shape pair can return multiple contacts."
+  },
+  "setupFailures": [
+    {
+      "run": "actor24-refinement1",
+      "reason": "Enforce diagnostic local name collision; replaced by refinement2"
+    },
+    {
+      "run": "actor24-core-queries1",
+      "reason": "Diagnostic arithmetic expression compile failure; replaced by core-queries2"
+    },
+    {
+      "run": "actor24-shortstep1cm",
+      "reason": "Exact known-warning path guard rejected resolved path versus alias; mission identical in shortstep1cm2"
+    },
+    {
+      "run": "actor24-short-motor1",
+      "reason": "Diagnostic contact count collided with existing function-scope endContacts array; renamed in motor2"
+    }
+  ]
+}
+
+Own mod source excerpt: PressureEscapeStepClear; original source SHA256=8132534e548d3ed136df983c195df46f7de1a8fe9a1155dd247dd2f5355affca
+    bool PressureEscapeStepClear(vector next,out float lift,array<vector> contacts,float proposedHeading=10000)
+    {
+        if(proposedHeading==10000)proposedHeading=Body.Agent.Heading;
+        vector start=Body.Agent.Position;string rejection;
+        PressureEscapeDiagnostic="CORE";
+        if(!Body.Director.Crowd.CoreClear(Body,start,next,rejection))return false;
+        PressureEscapeDiagnostic="RESERVATION";
+        if(!Body.Director.Traffic.GroundReservationsClear(Body,start,next))return false;
+        // Airborne lateral motion must not plant a foot on an adjacent roof.
+        // Keep the existing bounded render lift, adding only terrain clearance.
+        lift=Body.Lift;
+        for(int foot=2;foot<Body.JointIds.Count();foot++)
+        {
+            vector raw=Body.JointWorldPoint(foot,next,proposedHeading,0);
+            Object terrain;vector floor,normal;float fraction;
+            if(DayZPhysics.RayCastBullet(raw+"0 0.3 0",raw+"0 -1.2 0",PhxInteractionLayers.TERRAIN,Body.Leader,terrain,floor,normal,fraction) && normal[1]>=0.65)
+                lift=Math.Max(lift,floor[1]+Body.Radii[foot]+0.005 - raw[1]);
+        }
+        if(lift>0.28){PressureEscapeDiagnostic="LIFT_LIMIT";return false;}
+        ref array<vector> oldPoints={};ref array<vector> newPoints={};ref array<float> radii={};
+        array<float> heights={0.35,0.9,1.5};
+        foreach(float height:heights){oldPoints.Insert(start+Vector(0,height,0));newPoints.Insert(next+Vector(0,height,0));radii.Insert(0.23);}
+        contacts.Clear();
+        for(int joint=0;joint<Body.JointIds.Count();joint++)
+        {
+            vector oldJoint=Body.JointWorldPoint(joint,start,Body.Agent.Heading,Body.Lift);
+            vector newJoint=Body.JointWorldPoint(joint,next,proposedHeading,lift);
+            oldPoints.Insert(oldJoint);newPoints.Insert(newJoint);radii.Insert(Body.Radii[joint]);
+            contacts.Insert(newJoint);
+        }
+        for(int probe=0;probe<oldPoints.Count();probe++)
+        {
+            foreach(Object registered:Fixture().Objects)
+            {
+                if(!registered)continue;
+                float before=FixtureClearance(registered,oldPoints[probe],radii[probe]);
+                float after=FixtureClearance(registered,newPoints[probe],radii[probe]);
+                // Existing conservative-volume overlap may slide or leave;
+                // a new overlap or a deeper one is never introduced.
+                if(after<Math.Min(before,0) - 0.0001)
+                {
+                    PressureEscapeRejectProbe=probe;PressureEscapeRejectFixture=registered.GetType();
+                    PressureEscapeRejectFixturePosition=registered.GetPosition();PressureEscapeRejectOldLift=Body.Lift;
+                    PressureEscapeRejectFixtureIndex=Fixture().Objects.Find(registered);
+                    PressureEscapeRejectAt=Now();PressureEscapeRejectBefore=before;PressureEscapeRejectAfter=after;
+                    PressureEscapeRejectLift=lift;PressureEscapeRejectRadius=radii[probe];
+                    PressureEscapeRejectStart=oldPoints[probe];PressureEscapeRejectEnd=newPoints[probe];PressureEscapeRejectIdleOffset=Body.IdleOffset;
+                    PressureEscapeRejectFraction=-1;PressureEscapeRejectNormal=vector.Zero;
+                    PressureEscapeDiagnostic="DEEPER_FIXTURE";return false;
+                }
+            }
+            Object hit;vector point,hitNormal;float hitFraction;
+            if(DayZPhysics.SphereCastBullet(oldPoints[probe],newPoints[probe],radii[probe],DGBGroundAgent.Walls(),Body.Leader,hit,point,hitNormal,hitFraction))
+            {
+                bool oldOverlap=hit && Fixture().Objects.Find(hit)>=0 && FixtureClearance(hit,oldPoints[probe],radii[probe])<0;
+                // Bullet can report an initial overlap outside a conservative
+                // object box. Require native start-contact and outward/tangent
+                // travel as well as the non-deepening box checks above.
+                if(!oldOverlap && hit && Fixture().Objects.Find(hit)>=0 && hitFraction>=0 && hitFraction<=0.001 && hitNormal.Length()>0.5 && vector.Dot(newPoints[probe] - oldPoints[probe],hitNormal)>=-0.000001)
+                {oldOverlap=true;NativeStartOverlapChecks++;}
+                bool terrainExit=false;
+                if(!hit && probe>=5)
+                {
+                    Object floorObject;vector floorPoint,floorNormal;float floorFraction;
+                    if(DayZPhysics.RayCastBullet(newPoints[probe]+"0 0.3 0",newPoints[probe]+"0 -1.2 0",DGBGroundAgent.Floors(),Body.Leader,floorObject,floorPoint,floorNormal,floorFraction))
+                    {
+                        vector oldProbe=oldPoints[probe];vector newProbe=newPoints[probe];
+                        terrainExit=!floorObject && floorNormal[1]>=0.65 && newProbe[1] - radii[probe]>=floorPoint[1]+0.004 && newProbe[1]>=oldProbe[1];
+                    }
+                }
+                if(!oldOverlap && !terrainExit)
+                {
+                    PressureEscapeRejectProbe=probe;PressureEscapeRejectFixture="terrain";
+                    PressureEscapeRejectFixturePosition=vector.Zero;
+                    PressureEscapeRejectFixtureIndex=-1;
+                    if(hit){PressureEscapeRejectFixture=hit.GetType();PressureEscapeRejectFixturePosition=hit.GetPosition();PressureEscapeRejectFixtureIndex=Fixture().Objects.Find(hit);}
+                    PressureEscapeRejectAt=Now();PressureEscapeRejectOldLift=Body.Lift;
+                    PressureEscapeRejectBefore=FixtureClearance(hit,oldPoints[probe],radii[probe]);
+                    PressureEscapeRejectAfter=FixtureClearance(hit,newPoints[probe],radii[probe]);
+                    PressureEscapeRejectLift=lift;PressureEscapeRejectRadius=radii[probe];
+                    PressureEscapeRejectStart=oldPoints[probe];PressureEscapeRejectEnd=newPoints[probe];PressureEscapeRejectIdleOffset=Body.IdleOffset;
+                    PressureEscapeRejectFraction=hitFraction;PressureEscapeRejectNormal=hitNormal;
+                    PressureEscapeDiagnostic="NEW_WORLD_CONTACT";return false;
+                }
+            }
+        }
+        PressureEscapeDiagnostic="NONDEEPENING_CLEAR";return true;
+    }

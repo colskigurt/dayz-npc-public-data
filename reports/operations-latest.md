@@ -1,60 +1,65 @@
 ## 1. 작업 목표
 
-이전 network64 시험 ID55의 접촉 정체를 기존 포즈 기록과 복구 코드로 좁히고, 이미 구현된 EGRESS 복구만 연결해 실제8→64 이동을 검증한다. 정상 밀침·낙하·착지·추적·재등반 검사는 유지한다. 새로운 경로 탐색기나 충돌 삭제를 적용하지 않는다.
+기존64개체 EGRESS-only 시험에서 남은 ID24의 지면 입구 정체를 기존 기록으로 좁힌다. 이미 연구한16방향 탐색 후보와 중복을 먼저 확인하고, 현재 지지·접촉 판정을 유지한 작은 통제 시험으로 수정 후보를 선별한다. 애니메이션 시계/그래프와64개체 성능 시험은 별도로 유지한다.
 
 ## 2. 실제 수행
 
-기존 ID55의247.665/248.206/251.334초4본MS·root·heading·lift·idleOffset을읽었다. 기존 frozen-pose 방법대로 packed453D의SolveContactsInternal에서단하나의bone getter를기록배열조회로교체했다. 역치환문자열일치를확인했다. 실제fixture를구성해정지검사·16방향첫3cm·최대30단계연결을검사했다. 이전접촉점은현재기록포즈로합성했으며dynamic peer/포즈진행/최종256.627초전체상태를복원한것은아니다.
+기존sixtyfour-egress1의 ID24 300.426/330.459/359.507초 root·heading·lift·idleOffset·4본 포즈를 frozen 하네스에 넣었다. getter를 기록 포즈 배열로 대체한 기존 방식이며, 실제 개체의 애니메이션·주변 개체·최종 상태 전체를 재현하지 않았다. 동일 root의3포즈는 독립적인3회 성능 반복이 아니다.
 
-actor55-frozen1은다른후보의진단필드참조로컴파일실패했다. frozen2는99완료표시에도86데이터행만저장됐고방향별accepted지역변수초기화도부족해완결분석에서제외했다. 실패를보존하고frozen3은명시초기화·1초종료지연·파일100행읽기검증후99행을확보했다. frozen4는기존ECPlan과기존첫짧은단계검증을추가비교해105행/읽기106행을확인했다. 완료마커의반복출력을독립시험으로세지않는다.
+기존2026-10-30 candidate-refinement의 packed 소스 일치를 확인하고 원래8방향 뒤8중간 방향을 추가하는 방법을 재사용했다. default OFF/ON 및 phase/Active/EntryAligning/PoseClearance guard를 비교했다. 새 방향 알고리즘은 만들지 않았다.
 
-실제이동시험은같은765E network PBO와기존5PBO를유지했다. 미션에서ECPolicyRead/ECEnabled와기존first-step검증만활성화했다. footprint-recovery 묶음flag/확장ring/등반접촉정책/레이어/시계/그래프는함께바꾸지않았다.8시험후64시험은이전20초추가관찰·360초게임한도를유지했다. 각시험은격리프로필과서버/클라이언트에서실행했다.
+기존 SDK SphereCastBullet과SphereOverlapBullet/Contact를 이용해 root 고정3몸통 구, 반지름0.23m, 원래 Walls mask의 정지·16방향·정/역방향을 관찰했다. 한 실행당147개 스윕과294개 endpoint 요약,5개 normal 방향 보정 관찰을 저장했다. fixture index·shape pair·모든 contact 깊이를 기록했으며, callback contact 참조를 다음 프레임으로 보관하지 않았다.
+
+다음은 원래 PressureEscapeStepClear의 수식/반경/월드·지지·peer·예약 검사를 그대로 둔 채 frozen 첫 이동·연결 검사 거리만3cm에서1cm로 바꿨다. 이어 원래 PlanPressureEscape+PressureSlide에0.05/0.016666667 입력을 제공해 거리 효과를 비교했다. 이 입력은 격리된 공간 하네스에만 전달했고 실제 native 애니메이션 시계를 바꾸지 않았다. synthetic Now는0.05초씩 증가하며 case당 최대200호출·0.3m 이동을 진단 한도로 사용했다. 정적1cm 이동을 곧바로 복구 성공으로 간주하지 않았다.
+
+준비 실패도 보존했다. refinement1의 지역변수 중복, core-queries1의 진단 산술식 컴파일 실패, shortstep1cm의 symlink 실제 경로/alias 불일치로 인한 정확한 known-warning guard 거부, short-motor1의 함수 범위 endContacts 이름 중복은 후속 별도 폴더에서 각각 수정했다. guard 전체 허용·원시 로그 덮어쓰기는 없었다.
 
 ## 3. 측정 결과
 
-|대상|결과|판정범위|
+|진단 항목|결과|판정 범위|
 |---|---|---|
-|frozen 마지막포즈|NATIVE_JOINT_WORLD_1·컨테이너거부|머리부위정적질의재현|
-|마지막포즈16방향|첫단계9통과/완전정적종료점7방향|동적복구증명아님|
-|기존ECPlan|마지막포즈에서서쪽1m목표선택|기본/첫단계검증선택동일|
-|8개체|66.0782초·8/8terminal·낙하복귀9/9|단일기능회귀통과|
-|8개체EC발동|0|실제복구효능근거아님|
-|64개체|360.026초한도·낮은면64/64·높은면63/64|전체시나리오미통과|
-|64개체EC|START9·DONE7·FOLLOW제어이양2|국소복구실제완료관찰|
-|64개체기록FALL/LAND/FOLLOW|21/21|이실행의관찰된낙하복귀|
-|64전이정합|673전이·체인/generation/terminal오류0|상태기록대조|
-|서버Mission timeslice p50/p95/p99|49/81/85ms|Present/CPU busy/self-time 아님|
+|원래4관절 정지 검사|3/3 통과|frozen 포즈의 일반 solver|
+|기존16방향 계획 OFF/ON|각0/3 선택|이번3입력에서 방향 추가 효과 없음|
+|기존3cm 복구 첫 이동|0/48 통과|3포즈×16방향|
+|1cm 복구 첫 이동|6/48 통과|각포즈 ±Z 두 방향, 총6개|
+|1cm 직선 검사 endpoint|6개 모두 첫1걸음 뒤 full static endpoint|그 자리는 원래 정지 검사도 통과하므로 탈출 증거 아님|
+|원래3cm 계획+이동 연결|3case 모두0걸음·0m|200호출 후 NO_VALID_LOCAL_EXIT|
+|1cm 계획+이동 연결|3case 모두2걸음·약0.0195315m 후 재정체|0.3m 진단 목표 미도달, 해결책 미수용|
+|motor 최종4관절 검사|6/6 통과|고정 몸통 검사와의 범위 차이 잔존|
+|body core1 정지 SphereCast|접촉 false|동일 시작/끝 구형 스윕|
+|동일 core1 SphereOverlap|fixture0 접촉1개, native depth -0.0059416m|AABB gap은 +0.0548m, 구형 스윕과 의미 차이|
+|normal 방향 +1/+2cm|deepest native depth -0.0158231/-0.0261401m|각2접촉, first contact만 보면 다른 결론 가능|
+|normal 방향 -1cm|접촉0|이 위치의 구만 이동한 진단, 실제 NPC 이동 아님|
+|normal 방향 -2cm|다른 fixture1 접촉1개|-0.00223702m, 더 멀리 이동하면 안전하다는 보장 없음|
 
-64시험은ID24가입구에서높은면도달을완료하지못해전원높은면도달barrier에남았다. 대부분의예정된하강·재등반자극은실행되지않았다. 자연낙하한1개체의down/returned 누적은있지만전체하강시험통과가아니다. validTerminal=1/64는이누적milestone정의에따른값이며나머지63개체모두개별경로실패라고해석하지않는다.
-
-ID24의마지막30초위치변화/accepted-step 증가0,접촉검사523증가중거부522,escape-turn34증가가관찰됐다. 출력된FOLLOW이름이나회전만으로실제추적복구를인정하지않는다.
+이번에 새8/64 실제 이동 회귀, Present/CPU busy/GPU p50/p95/p99, 할당/GC, 시각 부드러움은 측정하지 않았다. 기존8/8 결과와64 높은면63/64 실패는 이전 보고서 그대로 보존한다. 20ms p95는 목표다. 원본RPT의 완료마커 반복을 독립 반복으로 세지 않는다.
 
 ## 4. 원인 분석
 
-확인:ID55의마지막기록포즈는보수적fixture 머리clearance 약-0.0685m와native컨테이너접촉거부를보였다. 이수치를정확한물리침투깊이로부르지않는다. 앞선두포즈는정지검사를통과했다.기존복구계획기는같은정적문맥에서유효목표를찾았고이기능은최근network프로필에서꺼져있었다.
+확인된 사실: 일반 이동 solver는4개 포즈 기반 관절을 검사하는 반면 복구 경로는 root에 고정된0.35/0.9/1.5m 높이의3개 구를 추가한다. 이번 위치는 일반 정지 검사에는 합격하지만 복구 첫 이동 대부분에는 불합격이다. fixed core1의 실제 시작 겹침은 stationary SphereCast와 보수적 bounding box 양의 gap만으로 식별되지 않았다. 이 차이는 API 의미·볼륨 계약의 차이이며 엔진 버그를 증명하지 않는다.
 
-실제64실행에서는기존EC복구가7회DONE을남겼다. 이중한사례는약0.95m를기존속도·작은step·월드/지지검사로이동했다.그것은해당사례의국소효능이며ID55최종상태의정확한동적재현은아니다. 다른입구정체ID24를해결하지못했다. 초반위상/대기/날씨를고정한동일상태OFF/ON쌍이아니므로ID24정체를EC활성화가새로만든회귀라고확정하지않는다.
+native contact normal 방향 이동은 이번 입력에서 실제 측정해 해석했다. +normal은 deepest 음수 깊이가 커지고 -normal1cm는 기존 접촉에서 빠지지만 -normal2cm는 다른 컨테이너에 닿는다. 첫 contact와 가장 깊은 contact가 다르고 같은 fixture/shape pair에서 여러 점이 나오므로, firstDepth만 보거나 object+shape tuple만으로 새 접촉을 전부 구분할 수 있다고 가정하는 방식은 안전한 fallback 근거가 아니다. native signed depth를 기존 AABB clearance와 혼동하지 않는다.
 
-미확인:ID24의회전과기존접근정렬이서로상쇄하는지,포즈·지형·입구검사중어느것이결정적인지는남아있다. 기존4본/heading/진행로그가있으므로새대용량기록보다이를먼저활용한다. 이번에새보간·지원true강제·충돌반경축소를하지않았다.
+가설: 포즈 기반 일반 이동과 root 고정 복구 몸통의 허용 공간 불일치가 정체를 유지하는 원인 후보다. 고정 몸통의 과거 벽 통과/낙하 방지 계약을 확인하기 전에는 어느 쪽이 잘못됐다고 단정하지 않는다. 포즈가 바뀌는 실제 상황에서 이 불일치가 해소되는지, 접근 정렬이 탈출 회전을 되돌리는지는 이번 frozen 시험으로 확정하지 않았다.
 
-사용자피드백:기존20초network 미리보기에대해‘애니메이션이많이나아졌다’는관찰을받았다. 해당영상의주관적개선평가로보존하고전체14클립/8파트/64개체의최종시각수용으로확대하지않는다.
+효과 부족: 방향16개 추가와 걸음1cm 축소만으로는 이 입력을 해결하지 못했다. 6개의 첫 이동 통과만 보고 작은 걸음 후보를 배포하지 않는다. 겹침 판정을 무조건 참으로 만들거나 collision radius를 축소하거나 cache를 재사용할 근거도 없다.
 
 ## 5. 검증 수준
 
-frozen공간원인:부분진단성공.8개체:단일회귀통과.64개체EC국소발동/완료:진단성공.64전체기능:미통과. 반복검증/일반클라이언트/공격·피격회귀/전체시각품질/성능개선/20ms p95:미수용.이번서버timeslice와이전Present수치를빼서개선률을만들지않는다.
+ID24 정적 공간 원인 구분·SDK 실제 접촉 관찰: 진단 성공. 기존 방향 후보 및 단순 short-step 해결책: 이번 입력 범위에서 효과 부족/미수용. 기능 회귀·시각 품질·반복 성능 개선·최종 수용: 미완료. 3포즈는 같은 root를 공유하며 독립 반복 검증이 아니다. 전체 골은 active다.
 
 ## 6. 변경 사항
 
-격리frozen미션·기존EC-only 설정·시험기록/분석만추가했다. 새PBO는없고기존6PBO의해시·서명은실행전재검증성공했다. gameplay/native/애니메이션자산/운영서버/Steam 배포본은수정하지않았다. serverDONE후하네스정리와client exit-1을게임정상종료로바꾸지않으며normalQuitVerified=false를유지한다. 개인키는공개하지않는다.
+새 격리 mission·staging/analysis·선정 TSV/JSON/보고서만 추가했다. 게임플레이 소스·PBO·ANM·그래프·native 시계·운영 서버·Steam 게시본은 바꾸지 않았다. 새PBO가 없어 새 서명 대상은 없고, 실행 전 기존6PBO 해시·서명 검증은 성공했다. 개인키는 공개하지 않는다. 완료 후 owned server를 하네스가 정리한 것으로 normalExitVerified=false이며 게임 정상 종료로 바꾸지 않는다.
 
 ## 7. 원시 증거
 
-sourceRunId 묶음은animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/{actor55-frozen1..4-egress,eight-egress1,sixtyfour-egress1}. 기록된원본sixtyfour1 포즈파일해시·선정3행·getter역치환증명·fixture/mission·plan·launch·서명검증·RPT/script·frozen TSV·gameplay/state-contract/terminal/frame/partclock·native-egress-clearance와분석JSON을연결한다. 준비실패와부분기록을덮어쓰지않는다. 공개packet은선정집계/일부EC사례/ID24진행창이며원시전체·로컬경로·프로세스정보·키·게임자산·영상은공개하지않는다.
+실행 묶음은 network-gameplay/{actor24-refinement1/2,actor24-core-queries1/2/3-identity,actor24-shortstep1cm/1cm2,actor24-short-motor1/2}. sourceRunId·mission hash·plan·정확한 warning guard·server launch·RPT/script·frozen/core/overlap/calibration/motor TSV를 로컬 무결성 목록에 연결한다. actor24-overlap-diagnosis-v2.json은 기존 v1을 보존한 파생 분석이다. 공개 packet에는 선택 집계와 자체 복구 함수 발췌만 제공한다. 원시 전체·영상·게임 자산·로컬 절대경로·프로세스 정보·키는 노출하지 않는다. 모든 대상 실행의 terminal 기록과 살아 있는 시험 프로세스 부재를 확인한 뒤 파일 안정성·JSON·이중 해시 검증 후 저장한다.
 
 ## 8. 잔여 문제
 
-다음은ID24입구정체를기존포즈/회전/accepted-step 로그로구분하는것이다. 성공기준을완화해통과시키지않고,해결되면기존시나리오와정상낙하를다시검증한다. EGRESS-only는국소효능이있어도전체후보채택은보류한다.
+가장 가치 있는 다음 산출물은 고정 root 몸통 검사의 도입 이유와 과거 벽/가장자리 실패 사례를 연결한 복구 볼륨 계약이다. 후보가 필요하면 supported FOLLOW만 대상으로 pose-aware 검사와 기존 fixed core의 차이를 국소 비교하고 FALL/LAND 지지·스윕과 정상 밀침·낙하·재등반을 유지한다. 예상 이점은 잘못된 복구 막힘 완화이며, 위험은 벽 통과·접촉 깊어짐·추가 질의 비용이다. 먼저 이번 ID24와 과거 침투 실패 입력에서 비교하고 통과한 후보에만8→64를 수행한다. 해결 후보 없이 같은64시험을 반복하지 않는다.
 
-비용문제도미해결이다. 현재PresentMon 서명·해시는유효하지만현재호스트는관리자아니며,실제Present/CPU/GPU계측에는기존ETW권한경로의사용자승인이필요하다. 이보고서에서그승인을받았거나새비용비교를실행했다고하지않는다. 이미실패한NOCOLLISION후보를재적용하지않고scratch/SupportFast 등기존안전후보의비교조건을분리한다. 네이티브변수setter호출감축도변수유지계약과실제효과가검증되기전에는적용하지않는다. 전체골은active/미완료다.
+물리 비용과 애니메이션 품질은 여전히 별도 과제다. 이번에 추가 overlap 질의를 제품의 매틱 경로로 넣지 않았고 비용 절감을 주장하지 않는다. 현재 개선된 network 미리보기의 사용자 관찰은 보존하되 전체14클립/64개체의 최종 수용으로 확대하지 않는다. 실제 표시 비용 ETW 비교는 기존 사용자 관리자 승인 경로가 필요하며 이번에는 요청/실행하지 않았다.
 
-로컬 checkpoint SHA-256: 66a092f58d49b1568cbe6ac227a762cf3ea824ba4bda282da589264802ee0206
+로컬 checkpoint SHA-256: df5f2dd5c004c4defb4ac7813a578ec82d511c195019c3bc1fc8018f2551a1ea
