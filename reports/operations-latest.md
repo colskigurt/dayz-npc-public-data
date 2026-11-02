@@ -1,65 +1,66 @@
 ## 1. 작업 목표
 
-기존64개체 EGRESS-only 시험에서 남은 ID24의 지면 입구 정체를 기존 기록으로 좁힌다. 이미 연구한16방향 탐색 후보와 중복을 먼저 확인하고, 현재 지지·접촉 판정을 유지한 작은 통제 시험으로 수정 후보를 선별한다. 애니메이션 시계/그래프와64개체 성능 시험은 별도로 유지한다.
+앞선ID24 진단에서 확인한 일반4관절 solver와 복구용 root 고정3몸통 구의 허용공간 차이를 국소 후보로 해결할 수 있는지 검증한다. 기존 방향16개·1cm걸음 축소만으로는 해결되지 않았으므로 같은 방법을 반복하지 않는다. 정상 밀침·낙하·착지·추적 재개·재등반은 유지하고 기능·시각·성능을 별도로 판정한다.
 
 ## 2. 실제 수행
 
-기존sixtyfour-egress1의 ID24 300.426/330.459/359.507초 root·heading·lift·idleOffset·4본 포즈를 frozen 하네스에 넣었다. getter를 기록 포즈 배열로 대체한 기존 방식이며, 실제 개체의 애니메이션·주변 개체·최종 상태 전체를 재현하지 않았다. 동일 root의3포즈는 독립적인3회 성능 반복이 아니다.
+기존 FRAME_FALL_CONTRACT·RECOVERY_E6D3·2026-10-28 착지 corridor·2026-10-29 포즈별 경로·2026-10-30 actor60 방향 연구와 packaged refinement wall/footprint guard 코드를 읽었다. 벽·발 지지·기존 겹침의 비심화·native sweep 유지 계약은 확인했다. 고정3몸통을 처음 추가한 정확한 변경 이력/최초 의도는 확보하지 못했다. 현재 코드를 읽어 도입 이유를 확정한 것처럼 기록하지 않는다.
 
-기존2026-10-30 candidate-refinement의 packed 소스 일치를 확인하고 원래8방향 뒤8중간 방향을 추가하는 방법을 재사용했다. default OFF/ON 및 phase/Active/EntryAligning/PoseClearance guard를 비교했다. 새 방향 알고리즘은 만들지 않았다.
+후보V1은 기본OFF이며, 발판에 지지된 FOLLOW+PoseClearanceActive+등반/진입정렬 잠금 없음+locomotion 요청0~2에만 적용한다. 지면 ground뿐 아니라 동일한 실제 지지·area 조건을 만족하는 low/high도 포함한다. 낙하·착지·MOTION·Active·EntryAligning·공격·지지 부적합은 원래 predicate로 위임한다. 반경0.23m의3개 구를 유지하되 중심을 양발 평균↔골반 중간,골반,골반↔머리 중간으로 옮겼다. 기존4관절·peer/core·예약·terrain foot lift·fixture 비심화·native sweep 규칙은 남겼다. 포즈 계산은 동일8개 old/new joint 결과를 재사용하여 중복 getter를 늘리지 않았다. 지원 조건 판별에는 Floor 조회가 추가되므로 비용 절감 후보로 주장하지 않는다.
 
-기존 SDK SphereCastBullet과SphereOverlapBullet/Contact를 이용해 root 고정3몸통 구, 반지름0.23m, 원래 Walls mask의 정지·16방향·정/역방향을 관찰했다. 한 실행당147개 스윕과294개 endpoint 요약,5개 normal 방향 보정 관찰을 저장했다. fixture index·shape pair·모든 contact 깊이를 기록했으며, callback contact 참조를 다음 프레임으로 보관하지 않았다.
+기존3개의ID24 frozen 입력으로 원래 dt0.05를 양쪽에 동일하게 제공했다. 별도3cm 유지 후보를 mission-derived class로 비교한 뒤 같은 소스를 기본OFF 모듈로 포장해 컴파일·flag 부재·22개 상태/벽 guard·기존 복구 모터를 다시 검사했다. 새 PBO를 빌드·서명·서명검증·packed script 일치 검사했다. 그 뒤 동일 모듈로8명→64명 네트워크 기능 시험을 실행했다. 운영 배포본/기존6PBO는 수정하지 않았다.
 
-다음은 원래 PressureEscapeStepClear의 수식/반경/월드·지지·peer·예약 검사를 그대로 둔 채 frozen 첫 이동·연결 검사 거리만3cm에서1cm로 바꿨다. 이어 원래 PlanPressureEscape+PressureSlide에0.05/0.016666667 입력을 제공해 거리 효과를 비교했다. 이 입력은 격리된 공간 하네스에만 전달했고 실제 native 애니메이션 시계를 바꾸지 않았다. synthetic Now는0.05초씩 증가하며 case당 최대200호출·0.3m 이동을 진단 한도로 사용했다. 정적1cm 이동을 곧바로 복구 성공으로 간주하지 않았다.
-
-준비 실패도 보존했다. refinement1의 지역변수 중복, core-queries1의 진단 산술식 컴파일 실패, shortstep1cm의 symlink 실제 경로/alias 불일치로 인한 정확한 known-warning guard 거부, short-motor1의 함수 범위 endContacts 이름 중복은 후속 별도 폴더에서 각각 수정했다. guard 전체 허용·원시 로그 덮어쓰기는 없었다.
+Computer Use로 각 실제 client 장면을 확인한 뒤 기존 start gate를 열었다. 새 영상·native observer·ETW는 사용하지 않았다. 8명 client 시작 전 DsCheckSignatures가 경로 인자를 처리하다 대기했다. 소유 signer child가 살아 있고 client 미생성임을 확인해 그 child만 종료했다. 기존 서버는 재시작하지 않았다. 원래 launcher/미사용 profile을 보존하고 Join-Path로 인자를 정규화한 별도 client launcher·새 profile로 진행했다. 정규화 실행의 서명 검증과 client 시작은 성공했지만, tool 대기의 내부 원인을 단정하지 않는다. 임의로 종료한 signer의 반환을 자산 서명 불량으로 해석하지 않는다. 이 준비 지연 때문에8명 native warmup과64명 조건은 같지 않다.
 
 ## 3. 측정 결과
 
-|진단 항목|결과|판정 범위|
+|항목|실제 결과|범위|
 |---|---|---|
-|원래4관절 정지 검사|3/3 통과|frozen 포즈의 일반 solver|
-|기존16방향 계획 OFF/ON|각0/3 선택|이번3입력에서 방향 추가 효과 없음|
-|기존3cm 복구 첫 이동|0/48 통과|3포즈×16방향|
-|1cm 복구 첫 이동|6/48 통과|각포즈 ±Z 두 방향, 총6개|
-|1cm 직선 검사 endpoint|6개 모두 첫1걸음 뒤 full static endpoint|그 자리는 원래 정지 검사도 통과하므로 탈출 증거 아님|
-|원래3cm 계획+이동 연결|3case 모두0걸음·0m|200호출 후 NO_VALID_LOCAL_EXIT|
-|1cm 계획+이동 연결|3case 모두2걸음·약0.0195315m 후 재정체|0.3m 진단 목표 미도달, 해결책 미수용|
-|motor 최종4관절 검사|6/6 통과|고정 몸통 검사와의 범위 차이 잔존|
-|body core1 정지 SphereCast|접촉 false|동일 시작/끝 구형 스윕|
-|동일 core1 SphereOverlap|fixture0 접촉1개, native depth -0.0059416m|AABB gap은 +0.0548m, 구형 스윕과 의미 차이|
-|normal 방향 +1/+2cm|deepest native depth -0.0158231/-0.0261401m|각2접촉, first contact만 보면 다른 결론 가능|
-|normal 방향 -1cm|접촉0|이 위치의 구만 이동한 진단, 실제 NPC 이동 아님|
-|normal 방향 -2cm|다른 fixture1 접촉1개|-0.00223702m, 더 멀리 이동하면 안전하다는 보장 없음|
+|ID24 원래 fixed-core|3포즈 모두 이동0m|frozen 동일 root, 독립3회 실행 아님|
+|ID24 pose-core 후보|각10걸음·약0.302737m, 최종 일반 접촉 통과|같은 dt0.05·기존 모터, 고정 포즈|
+|packaged 후보 parity|같은6 motor행·22 guard행 확보|원래 delegated wall 거부 포함, 새 pose-envelope 벽 전체 안전성 인증 아님|
+|기본OFF guard|flag 없음·cold-read에서 원래 거부 유지|해당 profile 범위|
+|8명|8/8 모든 milestone·유효 종료,9/9 낙하 복귀|67.2037초·144전이, 단일 실행|
+|8명 후보 실제 사용|0회|기능 회귀만, 후보 효능 증거 아님|
+|64명|64/64 낮은/높은/하강/재등반 milestone·유효 종료|289.754초, 단일 실행|
+|64명 낙하 복귀|91/91 FALL→LAND→FOLLOW|정상 낙하를 실패로 제거하지 않음|
+|64명 상태 계약|1,294전이, phase chain/generation/terminal mismatch0|기존 gate 유지|
+|64명 후보 사용|18개체·321회|predicate 사용량, accepted-step 수나 CPU시간 아님|
+|추가 관찰|20.069초, 마지막5초 무이동+접촉거부 선별0개체|표본 기반 정체 선별, 모든 미래 정체 부재 보장 아님|
+|64명 server Mission dt p50/p95/p99|47.5/69/81ms|Present/CPU busy/GPU/애니메이션 표시 cadence 아님|
 
-이번에 새8/64 실제 이동 회귀, Present/CPU busy/GPU p50/p95/p99, 할당/GC, 시각 부드러움은 측정하지 않았다. 기존8/8 결과와64 높은면63/64 실패는 이전 보고서 그대로 보존한다. 20ms p95는 목표다. 원본RPT의 완료마커 반복을 독립 반복으로 세지 않는다.
+새 실제 Present·CPU busy·GPU p50/p95/p99·할당/GC·전체14클립 실제 표시 부드러움은 미측정이다. 20ms p95는 목표이며 달성으로 보고하지 않는다. 앞선 EGRESS-only의63/64 high와 이번64/64의 차이를 이 후보의 순수 인과 효과나 성능 개선률로 계산하지 않는다. 초기 포즈 위상/날씨/start gate·군집 궤적이 같게 고정되지 않았다.
 
 ## 4. 원인 분석
 
-확인된 사실: 일반 이동 solver는4개 포즈 기반 관절을 검사하는 반면 복구 경로는 root에 고정된0.35/0.9/1.5m 높이의3개 구를 추가한다. 이번 위치는 일반 정지 검사에는 합격하지만 복구 첫 이동 대부분에는 불합격이다. fixed core1의 실제 시작 겹침은 stationary SphereCast와 보수적 bounding box 양의 gap만으로 식별되지 않았다. 이 차이는 API 의미·볼륨 계약의 차이이며 엔진 버그를 증명하지 않는다.
+확인:동일 frozen ID24 입력에서 고정 root 몸통을 포즈 기반 같은 반경3몸통으로 바꾼 것이 기존 검사/모터로 이동을 만들었다. 일반 solver가 이미 허용하던 움츠린 포즈를 upright root 몸통이 추가로 막는 불일치를 국소적으로 설명한다. 원본추출·graph 시계 수정으로 해결한 사례가 아니다. 실제64에서는 후보가 발동했고 기능 gate를 통과했지만 이 사실만으로 전체 결과의 인과를 확정하지 않는다.
 
-native contact normal 방향 이동은 이번 입력에서 실제 측정해 해석했다. +normal은 deepest 음수 깊이가 커지고 -normal1cm는 기존 접촉에서 빠지지만 -normal2cm는 다른 컨테이너에 닿는다. 첫 contact와 가장 깊은 contact가 다르고 같은 fixture/shape pair에서 여러 점이 나오므로, firstDepth만 보거나 object+shape tuple만으로 새 접촉을 전부 구분할 수 있다고 가정하는 방식은 안전한 fallback 근거가 아니다. native signed depth를 기존 AABB clearance와 혼동하지 않는다.
+추가 발견:packed 원본453D의 PressureEscapeStepClear와 소스는 동일했다. 하지만 B8 모듈에 DGSubsetTerrainContact의 기존 override도 있었다. terrain-contact-owner.flag가 없으면 super로 위임하므로 이번 시험의 기본 물리 규칙은 원래 base와 같았다. 확인 없이 ‘다른 override가 없다’고 가정한 첫 source 검증은 실패 처리하고 보존했다. 별도 owner-chain 분석과 수정된 proof-v2로 실제 wrapper 및 profile의 flag 부재/mission 직접 강제 없음을 확인했다.
 
-가설: 포즈 기반 일반 이동과 root 고정 복구 몸통의 허용 공간 불일치가 정체를 유지하는 원인 후보다. 고정 몸통의 과거 벽 통과/낙하 방지 계약을 확인하기 전에는 어느 쪽이 잘못됐다고 단정하지 않는다. 포즈가 바뀌는 실제 상황에서 이 불일치가 해소되는지, 접근 정렬이 탈출 회전을 되돌리는지는 이번 frozen 시험으로 확정하지 않았다.
+호환성 문제:V1의 직접 후보 method는 기존 terrain owner가ON일 때 그 정책을 우회할 수 있다. 이번 시험은 ownerOFF 범위에 한정하며 일반 적용은 미수용이다. 이를 막는 V2 소스를 별도 폴더에 준비했다. 원래TCPolicyRead/TCEnabled/TCTrace 초기화와 같은 flag 정책을 읽고 TCEnabled면 원래 super override에 위임한다. ownerOFF의 pose geometry/native predicate는 문자열 역변환으로 V1과 동일함을 확인했다. V2는 아직 빌드·서명·엔진/기능 검증하지 않았다.
 
-효과 부족: 방향16개 추가와 걸음1cm 축소만으로는 이 입력을 해결하지 못했다. 6개의 첫 이동 통과만 보고 작은 걸음 후보를 배포하지 않는다. 겹침 판정을 무조건 참으로 만들거나 collision radius를 축소하거나 cache를 재사용할 근거도 없다.
+미확인:새 pose envelope가 실제로 사용되는 벽/발판 음성 대조, 포즈 간 몸통 sweep 연속성,극단적인 locomotion 포즈와 다른 collision 형상,전투/피격의 동일 hash 회귀가 남는다. 기존 fallback에서 wall 거부를 유지한 guard를 새 몸통 범위의 전체 벽 안전성으로 확대하지 않는다. 추가 Floor 질의의 실제 비용도 미측정이다.
 
 ## 5. 검증 수준
 
-ID24 정적 공간 원인 구분·SDK 실제 접촉 관찰: 진단 성공. 기존 방향 후보 및 단순 short-step 해결책: 이번 입력 범위에서 효과 부족/미수용. 기능 회귀·시각 품질·반복 성능 개선·최종 수용: 미완료. 3포즈는 같은 root를 공유하며 독립 반복 검증이 아니다. 전체 골은 active다.
+fixed-core 대 pose-core 고정 입력:진단 성공. V1 패키지/기본OFF/상태 guard:해당 범위 통과.8명 및64명 기존 이동 시나리오:각 단일 회귀 통과.91회 정상 낙하 복귀 보존 확인. 반복 검증 완료·일반 적용·V2 owner 호환성 runtime·시각 품질·성능 최종 수용:미완료. functionalGatePassed와전체functionalAccepted를 구분한다. 전체 골은active다.
 
 ## 6. 변경 사항
 
-새 격리 mission·staging/analysis·선정 TSV/JSON/보고서만 추가했다. 게임플레이 소스·PBO·ANM·그래프·native 시계·운영 서버·Steam 게시본은 바꾸지 않았다. 새PBO가 없어 새 서명 대상은 없고, 실행 전 기존6PBO 해시·서명 검증은 성공했다. 개인키는 공개하지 않는다. 완료 후 owned server를 하네스가 정리한 것으로 normalExitVerified=false이며 게임 정상 종료로 바꾸지 않는다.
+격리 모듈 nf_pose_core_recovery V1 PBO SHA256=5C43ED24F404020D573E7293F43B6C21B890A42D6C468E5C1901EA2AC93A60D5. 빌드·자동 서명·DSCheckSignatures·packed script/source 일치 성공. 실행 전 기존6PBO와 새1PBO의7개 해시/서명 검증 성공. builder metadata의 engineCompiled=false/runtimeVerified=false는 빌드 시점 표식으로 보존하며, 이후 packaged/8/64 엔진 실행 증거와 구분한다.
+
+새 source/staging·frozen/package/eight/sixtyfour 격리 mission·원시 TSV/분석·V2 source-only·보고서만 추가했다. 원래6PBO·애니메이션 자산/그래프/native 시계·운영 서버·Steam 게시본은 그대로다. 원시/과거 보고서를 덮어쓰지 않았다. server 완료 후 harness가 소유 프로세스를 정리했고 client exit-1이므로 normalQuitVerified=false를 유지한다. 개인키는 release/공개물에 없다.
 
 ## 7. 원시 증거
 
-실행 묶음은 network-gameplay/{actor24-refinement1/2,actor24-core-queries1/2/3-identity,actor24-shortstep1cm/1cm2,actor24-short-motor1/2}. sourceRunId·mission hash·plan·정확한 warning guard·server launch·RPT/script·frozen/core/overlap/calibration/motor TSV를 로컬 무결성 목록에 연결한다. actor24-overlap-diagnosis-v2.json은 기존 v1을 보존한 파생 분석이다. 공개 packet에는 선택 집계와 자체 복구 함수 발췌만 제공한다. 원시 전체·영상·게임 자산·로컬 절대경로·프로세스 정보·키는 노출하지 않는다. 모든 대상 실행의 terminal 기록과 살아 있는 시험 프로세스 부재를 확인한 뒤 파일 안정성·JSON·이중 해시 검증 후 저장한다.
+sourceRunId 묶음:network-gameplay/{actor24-pose-core1,pose-core-candidate,actor24-pose-core-packaged1,eight-pose-core1,sixtyfour-pose-core1,pose-core-candidate-v2}. source-change/owner-change/packed-member/기존 override-chain proof,실제 build/sign log·launch·정확한 known-warning guard·frozen/mode guard·gameplay/milestones/state-contract/terminal·pose-core-use·server-frame/part-clock·시작 전경 확인·client preflight 실패/정규화 launcher·분석 JSON을 로컬 해시 목록에 연결한다. 증거141개 이전 진단은 기존 report/hash로 보존한다. 이번 public packet은 선택 집계·자체 후보/기존 owner 발췌이며 원시 전체·게임 자산·영상·로컬 절대경로·프로세스 정보·개인키는 공개하지 않는다.
+
+모든 대상 게임/recorder 프로세스 부재와 launch terminal을 확인한 후 file 안정성·JSON·이중 hash 검증으로 저장한다. 시험 도중 보고서를 만들기 위해 중단하지 않았다. 실제HTTP/hash 및 이번 공개 JSON supplement schema 검증은 별도 publication proof에 기록하며 external AI 새 읽기는 수행하지 않았다.
 
 ## 8. 잔여 문제
 
-가장 가치 있는 다음 산출물은 고정 root 몸통 검사의 도입 이유와 과거 벽/가장자리 실패 사례를 연결한 복구 볼륨 계약이다. 후보가 필요하면 supported FOLLOW만 대상으로 pose-aware 검사와 기존 fixed core의 차이를 국소 비교하고 FALL/LAND 지지·스윕과 정상 밀침·낙하·재등반을 유지한다. 예상 이점은 잘못된 복구 막힘 완화이며, 위험은 벽 통과·접촉 깊어짐·추가 질의 비용이다. 먼저 이번 ID24와 과거 침투 실패 입력에서 비교하고 통과한 후보에만8→64를 수행한다. 해결 후보 없이 같은64시험을 반복하지 않는다.
+다음 가장 높은 가치는 V2의 기존 terrain owner ON/OFF 위임을 packaged guard로 입증하는 것이다. V1 기능 성공을 이유로 이 충돌을 건너뛰지 않는다. 새 pose-core가 실제 쓰이는 벽·발판 음성 대조도 추가하고, 기존 mode/action guard와8→64 regression을 근거 범위에 맞춰 유지한다. 후보는 기본OFF·격리 상태이며 운영/Steam 반영은 하지 않는다.
 
-물리 비용과 애니메이션 품질은 여전히 별도 과제다. 이번에 추가 overlap 질의를 제품의 매틱 경로로 넣지 않았고 비용 절감을 주장하지 않는다. 현재 개선된 network 미리보기의 사용자 관찰은 보존하되 전체14클립/64개체의 최종 수용으로 확대하지 않는다. 실제 표시 비용 ETW 비교는 기존 사용자 관리자 승인 경로가 필요하며 이번에는 요청/실행하지 않았다.
+비용과 애니메이션 문제는 미해결이다. 이 기능 수정은 중복 물리 질의 최적화가 아니며 Floor 조건 조회가 추가된다. feature 안정화와 별개로 동일 평지·카메라·반복 조건에서 기존 안전한 비용 후보를 비교해야 한다. 기존network 표시 개선과 이번 이동 안정성을 섞어60fps/20ms 성공으로 기록하지 않는다. 실제 ETW 비용 비교는 현재 관리자 승인 경로가 필요하고 이번에는 실행하지 않았다.
 
-로컬 checkpoint SHA-256: df5f2dd5c004c4defb4ac7813a578ec82d511c195019c3bc1fc8018f2551a1ea
+로컬 checkpoint SHA256: 15599885f34427ce63137b4aba9b14adc496483d25184326768cd195dc47d763

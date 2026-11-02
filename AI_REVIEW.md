@@ -1,3 +1,5 @@
+> 최신 작업: 포즈기반복구후보V1:ID24고정입력이동·8/8·64/64단일기능통과,91/91낙하복귀.기존terrain ownerON호환성발견·V2소스만준비.시각/성능미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-pose-core-recovery-20261103.md).
+
 > 최신 작업: ID24 일반4관절과복구고정몸통의허용공간차이확인.16방향효과없음·1cm도약1.95cm후재정체.단순후보미수용,기능/시각/성능해결주장없음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-actor24-overlap-diagnosis-20261103.md).
 
 > 최신 작업: 기록포즈에서머리충돌과기존EC탈출계획확인.8/8회귀통과·64EC복구7회완료이나ID24입구정체로높은면63/64·전체미통과.성능미입증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-existing-egress-integration-20261103.md).
