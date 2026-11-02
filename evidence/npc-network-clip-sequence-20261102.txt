@@ -1,0 +1,74 @@
+Selected aggregate and own retirement-control source only; not all logs or game assets.
+{
+  "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/visible-match/mode2-6",
+  "buildId": "8BDA6B7A8C95962EF0FDA6BBC6AA228906504C3130D4597070ED2E1E53F7DF9C",
+  "logicalNpcAtOneTime": 1,
+  "nativeParts": 8,
+  "independentRuns": 1,
+  "epochs": 2,
+  "allFourteenRequestsBoundToEightParts": true,
+  "cpuPoseGroups": 548,
+  "commonBones": {
+    "Head": 548,
+    "Hips": 548,
+    "spine2": 548,
+    "Neck": 548,
+    "LeftHand": 548
+  },
+  "maximumRootSpreadMetres": 0,
+  "rootXRange": [
+    4549.650879,
+    4550.349609
+  ],
+  "retiredEpochs": [
+    0,
+    1
+  ],
+  "missionDtMs": {
+    "p50": 20.0,
+    "p95": 23.0,
+    "p99": 23.0
+  },
+  "foreground": {
+    "samples": 1025,
+    "activeSamples": 1025,
+    "activeFraction": 1.0,
+    "allActive": true
+  },
+  "video": {
+    "seconds": 20,
+    "dimensions": [
+      640,
+      640
+    ],
+    "outputFrames": 1202,
+    "barcodeMatched": 1202,
+    "bytes": 75532738,
+    "sha256": "d953b123dd911cb0c74f62188d4410a47fa6aa53309bb0e69c7063be12cdd493",
+    "published": false
+  },
+  "nativeObserver": false,
+  "numericOverrides": false,
+  "visualAccepted": false,
+  "gameplayRegressionAccepted": false,
+  "performanceAccepted": false,
+  "adoption": "continue_isolated_not_product",
+  "next": "Map current GroundBody factory/commit/retirement ownership before connecting one gameplay NPC; reject if external interactions or host cost cannot be preserved"
+}
+
+Selection: exact RetireEpoch/RetireComplete methods in diagnostic mission; SHA256 be16337c8a8ce3a5a0f2e13d8f9f16a9030a8c306a2ae04dde483cd31d72ea67
+    void RetireEpoch()
+    {
+        if(RetireAt>=0){return;}
+        RetireAt=Age;
+        foreach(Animal_DGNativeProbe retiringPart:Parts){retiringPart.BeginRetirement();}
+        Print("DG_SEQUENCE_RETIRE_BEGIN epoch="+Epoch);
+    }
+    bool RetireComplete()
+    {
+        foreach(Animal_DGNativeProbe retiredPart:Parts)
+        {
+            if(!retiredPart.RetirementObserved || retiredPart.GetCommand_Script()){return false;}
+        }
+        return true;
+    }
