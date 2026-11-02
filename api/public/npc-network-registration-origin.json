@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T05:50:54.877743+09:00",
+  "sourceRunId": "network-gameplay/network-registration-origin1",
+  "buildId": "A500BE80+existing10PBOs_setupOFF",
+  "verificationStatus": {
+    "diagnosis": "initial_registration_input_and_completed_decompile_observed",
+    "functionalRegression": "not_tested_this_bundle",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "initialRegistrationMatches": 8,
+    "distinctChildIdentityMeasured": false,
+    "allObservedInputIdsIdentical": true,
+    "receiverType": "NetworkClient",
+    "recordObjectType": "DayZAnimal",
+    "registrationCallerRvas": [
+      "0xa1a9d9",
+      "0xb59749",
+      "0xc044f8"
+    ],
+    "decompileElapsedSeconds": 1029.653,
+    "clientParts": 8,
+    "physicsAll": true,
+    "cpuHeadPoseRows": 920,
+    "independentPerformanceRepeats": 0
+  },
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-network-registration-origin-20261103.md",
+      "sha256": "a5831c9ad03176829941ed3f92bd87b5d1bb24d25ec717aa72b9a5cc1b1633e7"
+    },
+    {
+      "path": "evidence/npc-network-registration-origin-20261103.txt",
+      "sha256": "f057790d406cecdc3089788d77d7c2587047f78b965615f045491affdfd8656f"
+    }
+  ],
+  "blockers": [
+    "Server-produced reference versus client decode difference not established",
+    "Exact native hierarchy field semantics pending",
+    "No unique child ID mapping in this probe",
+    "No full-frame cost or visible quality measurement"
+  ],
+  "next": "Compare the native network-parent/reference writer and reader contract, and use existing vanilla evidence before a new bounded lifecycle probe. Do not mutate engine IDs, disable replication/physics, or suppress warnings.",
+  "goalComplete": false
+}
