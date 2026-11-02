@@ -1,3 +1,5 @@
+> 후속 종료 상태: 모델 경로 진단 유지. Ghidra는 자체15분 초기화 시간초과로 종료·결과 미확보. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-animation-factory-analysis-close-20261102.md).
+
 > 최신 작업: Geometry 후보의 무효 시험 정정: 실제 모델 미로딩 확인. 경로 구분자만 수정해 native LOD4/Geometry3·단일 파트 생성/10초 명령 통과.8파트·시각·성능 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-animation-factory-model-path-20261102.md).
 
 > 최신 작업: 실제8파트 NPC 활성화 OFF/ON 한 쌍. OFF 정체·ON 착지/추적 재개. 반복/시각/성능 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-checked-landing-activation-20261102.md).
