@@ -1,56 +1,41 @@
 ## 1. 작업 목표
 
-기존 상태 제한 SupportSweepFast 후보의 실제 wrapper 비용을 OFF/ON으로 비교한다. 전역Fast의 지형약6.6% overhead와 적격지붕효과를 구분하고, 정상지원/접촉/낙하 판정을 보존한다. 동시에 부모참조 입력의 분할코드를 전체의사코드와 대조한다.
+현재 네트워크 시험에서 반복되는 미해결 부모 ID의 생성 경로를 좁힌다. 공통 직렬화 함수를 실제 DayZAnimal의 직접 가상 함수로 오인하지 않고, 정상 밀침·낙하·착지·FOLLOW·재등반을 보존할 국소 수정 근거가 있는지 판단한다. 물리 비용 및 애니메이션 품질 비교와 오류 원인 연구는 구분한다.
 
 ## 2. 실제 수행
 
-기존9개서명모듈과 native live-world/idle-pose 하네스를 재사용했다. 같은 미션·같은 PBO에서 SFPolicyRead=true 뒤 SFEnabled만 OFF/CONTEXT로 바꾸었다. globalFast/Shadow는둘다false다. 지형은ground/platformfalse, 나머지는high/FOLLOW/platformtrue 상태힌트로 후보의실제eligibility를통과시킨다. 실제 ray/sphere/법선/높이/footprint/joint 검사는그대로다. roof_minimumLift거부는지붕anchor에서0.3m이며옛지형거부조건과다르다.
-
-독립서버프로세스2개를순차실행했다. 각각16group·4arm·1000call=64000solve, 총128000. 첫실행OFF/CONTEXT/CONTEXT/OFF,둘째역순이다. 측정전32warmup, 각group결과/이유/접촉점·lift범위검사, root/pose 고정, actual context/original counters를확인했다. 알려진Ghidra분석worker가종료된뒤에만측정했다. 클라이언트·새영상·새PBO는없다.
-
-2시간deadline의공식REA stdio세션은1회초기화를재사용해3함수를decompile한뒤close_binary·serverexit0으로종료했다. 원본A500전후hash동일. Defaultanalyzer를생략하지않았다. 입력reader는interior c044f8에서canonical c035e0으로해결됐고, 앞서원본MSVCunwind7fragment연결과일치한다. caller/parentsetter b59610,공통serializer b5b5d0도성공했다. decompiler의타입전파/겹친로컬경고는보존한다.
+종료된 REA 분석 세션의 공통 serializer/reader 결과를 재사용했다. 원본 A500 진단 바이너리의 SHA256을 확인하고 MSVC 타입 메타데이터, 가상 함수 표, 직접 CALL 및 UNWIND_INFO 연결을 Capstone으로 제한 대조했다. 새 Ghidra 초기화·클라이언트 실행·런타임 hook·PBO 빌드·영상은 추가하지 않았다. 별도 고정 입력 시험은 기존 시작 대기 상태를 유지했으며 이 보고서 작성을 위해 중단하지 않았다. 그 실행의 증가 중인 로그를 완료 증거에 포함하지 않았다.
 
 ## 3. 측정 결과
 
-|실행/조건|OFF 중앙값 ticks/1000회|CONTEXT 중앙값 ticks/1000회|변화|
-|---|---:|---:|---:|
-|1/terrain|551648.5|554980.5|+0.604%|
-|1/roof|769914.0|577763.5|-24.957%|
-|1/edge|653558.5|569588.0|-12.848%|
-|1/lift_reject|728941.0|536559.0|-26.392%|
-|2/terrain|550268.0|558860.0|+1.561%|
-|2/roof|774468.0|585679.5|-24.377%|
-|2/edge|653214.5|577597.5|-11.576%|
-|2/lift_reject|725632.0|539906.0|-25.595%|
+Animal과 Infected의 +0xb8 subobject slot+0x10은 모두 RVA c65310이다. 이 함수에서 c6a660→b4c7b0→b5b5d0의 직접 호출이 이어진다. 따라서 공통 b5b5d0가 두 클래스의 직접 vtable slot은 아니어도, 해당 override에서 정적으로 도달하는 공통 경로임을 확인했다. 각 함수 호출의 조건과 분기를 보존했다.
 
-위값은동일메서드1000회경과ticks의표본중앙값이다. 순수CPUself-time·게임/Present프레임ms가아니다. 런별메서드표본p50/p95/p99와두방향대조·질의counter는공개JSON에별도제공한다. 프레임p50/p95/p99는이번에없다. 지붕효과의양방향중앙값은첫실행-25.219/-25.160%,둘째-24.049/-25.022%다. 지형은후보비적격경로로contextCalls0을확인했고새래퍼검사overhead가남았다.
+별도 입력 경로 c69700→c10120→c035e0도 직접 CALL로 연결된다. 기존 런타임 반환 주소 c69807은 첫 CALL의 다음 명령과 일치하지만, 이것만으로 이번 Animal 개체의 실제 receiver 타입·송신 패킷을 증명하지 않는다. c6a550의 전체 연결은 5개 unwind fragment이며 비트 커서를 진행하며 값을 읽는다. 이를 이름이나 인접 주소만으로 송신 writer라고 부르지 않는다. 5a7930도 4개 fragment이므로 첫 6개 명령만 보고 전체 동작을 해석하지 않았다.
 
-각실행64행·가드모두통과,OFFcontext0/original1000,적격지붕ONcontext1000/original0,누적footRays=10000-skippedRays,skippedRays=4*fastUsed 계약통과. accepted/pointCount·root/pose가비교내에서일치했다. 허용lift차이최대8mm가드는기존과같고모든조건완전동일lift라고하지않는다.
-
-기존후속선별기준(지붕중앙/양방향각5%이상감소·지형중앙overhead3%이하)을두프로세스에서통과했다. 이는전체성능수용기준이아니다.8/64기능회귀·시각품질·malloc/GC·Present/CPUbusy/GPU·20msp95달성은이번미측정이다. 마지막8/64기능성공은기존support-context기록이며이번방법시험으로독립반복을늘리지않는다.서버퇴역detach후owned정리,exit-1·normalQuitVerifiedfalse.
+새 8/64 기능 결과, 프레임 p50/p95/p99, 시각 품질, CPU self-time, 할당/GC 수치는 없다. 20ms p95는 여전히 목표다. 기존 지지 래퍼의 두 독립 메서드 시험에서 적격 지붕 약24.4~25.0% 감소는 보존하지만 전체 프레임 개선으로 전환해 보고하지 않는다.
 
 ## 4. 원인 분석
 
-확인:기존전역Fast와달리상태래퍼는일반지형에서추가지형bound검사를피하고적격지붕의반복메서드비용감소를유지했다. 다만지형래퍼분기비용0.6~1.6%가있고전체프레임이25%빨라졌다는결론은아니다. Footray감소에는추가boundsphere가동반되므로총질의개수만의절감으로설명하지않는다. 위험은8mm범위lift변화·힌트stale·혼합전투·경계의일반화이며,실제물리가드를유지해도추가회귀가필요하다.
+확인: 공통 serializer의 클래스별 호출 소유 관계와 수신 해석 경로를 구분할 근거가 추가됐다. c65310에는 selector2에서 추가 버퍼 상태를 저장/읽고 필요시 구성에서 보조 객체를 만드는 분기가 있다. 해당 객체의 정확한 의미는 확인하지 않았다. 따라서 이 분기만으로 ECE_INITAI 누락을 원인으로 채택하지 않는다.
 
-부모입력진단:전체reader에8byte ID초기화0과pivot-1이있고,후속presence비트가설정되면ID8byte·pivot4byte·bool을읽어b59610에전달한다. b59610은현재부모와resolved대상비교·기존연결해제·즉시연결또는pending등록을수행한다. 이흐름은기존실제caller와일치한다. 공통serializer의부모없음writer분기는ID0/pivot-1/bool0을저장한다. 그러나이함수가문제패킷의실제writer였다고관찰한것은아니며,wire비트와snapshot값은아직연결하지못했다.
+가설: 잘못된 부모 ID는 송신 snapshot의 값, writer의 존재 비트 생성, 수신 커서 정렬 또는 생성 계약에서 비롯될 수 있다. 현재 자료는 이 후보를 구분하지 못한다. 공통 writer의 부모 없음 분기에서 ID0을 기록한다는 사실과 실제 잘못된 ID 수신 사이에는 아직 런타임 대응이 없다.
 
-초기화누락을확정할근거가없어해당가설을채택하지않는다. 모든임시로컬의liveness를의사코드명만으로증명하지않고어셈블리qword쓰기와대조한다. 서버송신오류·client정렬오류·engine/asset원인중하나를확정하지않는다. 원본코드를강제patch하거나부모ID0처리로경고를숨기지않았다.
+기각/보류: 공통 serializer가 Animal에서 전혀 사용되지 않는다는 추론은 직접 호출 연결과 맞지 않는다. 반대로 실제 오류 패킷의 writer라고 확정하는 주장도 근거 부족이다. SETUP 추가가 경고를 제거하지 못했던 기존 실패를 보존한다. 부모 ID0 강제, 경고 숨김, 물리 비활성화, INITAI 추가는 시행하지 않는다. 이 네트워크 오류는 경고가 없던 과거 오프라인 64개체 고비용을 설명하지 못한다.
 
 ## 5. 검증 수준
 
-현재wrapper의고정입력메서드비용:2독립프로세스내짝비교반복검증,후속선별통과. 합성조건결과/포즈/위치가드:제한진단통과.3선택native함수:진단성공. 이번8/64게임플레이·실제시각품질·전체성능·최종수용:미실행/미수용. 전체골active.
+정적 호출 관계·fragment 연결: 제한 진단 성공. 실제 송수신 패킷 대응·오류 수정·8/64 회귀·시각 품질·성능 반복 검증·최종 수용: 미완료. 원인을 특정하기 전 새 보간·업데이트 방식을 추가하지 않는다.
 
 ## 6. 변경 사항
 
-새PBO/게임알고리즘변경없음. 기존9PBOhash/서명검증을각실행전에통과했다. support후보1C879D1F와이전원본source/배포/Steam/asset/개인키/실패기록보존. 비교미션의실제바이트SHA=62f2fd5e2539c3a2b9316be73ea3ea308000a6a55dd3b0c26c537193c6565e66,두실행동일. 준비중LF정규화해시52c6...와실제CRLF파일해시의차이를실행전에발견해plan에둘다구분기록했다. 엔진컴파일·실제64행생성은이번에검증됐으며준비단계미실행기록을덮지않는다.
+분석 JSON과 기존 체크포인트·공개 미러 요약만 추가한다. 원본 바이너리·게임 코드·기존9개 PBO·서명·자산·Steam·운영 서버는 변경하지 않았다. 새 PBO가 없으므로 신규 서명 대상도 없다. 이전 시험의 서명 성공을 이번 새 빌드 성공으로 세지 않는다.
 
 ## 7. 원시 증거
 
-context-method-cost1/2의plan/source/launch/signaturechecks·24열TSV·퇴역/완료RPT,context-method-cost-analysis와소스,preflight/runner문법기록을해시에연결한다. network-reader-batch1의공식광고toolcontracts/open/batch3결과/close/state·선택의사코드,원본unwind/parentlocalsJSON도연결한다. 공개는메서드집계·상대주소·흐름설명이며원시전체/게임decompile본문/개인키/프로세스/로컬경로/asset은제외한다.
+실행 ID network-gameplay/creature-serialization-review1. 타입별 vtable, 공통 함수 소유자 검색, entry/followup/base/wire fragment, unwind 연결 JSON을 저장 전 해시·JSON 구문·파일 안정성 검사에 연결했다. 원본 A500 해시를 각 결과에 고정했다. 이전 REA 증거 ev_a9dc475e5eb2e5a0c7d9fdfecf7a815c9e1922774eabacb63bbd7641cb160d1c를 재사용했으며 동일 분석을 독립 실행으로 세지 않는다. 공개 자료에는 상대 주소와 해석만 담고 원본 자산·전체 역어셈블리·로컬 경로·프로세스 식별자·자격증명은 제외한다.
 
 ## 8. 잔여 문제
 
-다음비용산출물은같은현재8→64장면에서의OFF/ON전체프레임비교다. 이메서드결과만으로후보를전역활성화하지않는다. 기존정상밀침·낙하·착지·FOLLOW·재등반과역사적실패를유지하고기능/실제화면/성능을독립판정한다. 부모presence비트의실제생성자와reader직전bitcursor계약은별도로좁히되,매번초기화를다시하는툴실행을반복하지않는다. 결과에따라수정여부가달라지는최소질문부터확인한다.
+다음 오류 진단은 실제 serializer receiver와 snapshot 부모 값, 수신 직전 bit cursor를 같은 생성 수명에서 대응시키는 최소 관측이다. 결과에 따라 생성 계약 수정인지 송수신 해석 문제인지 다음 행동이 달라진다. 정적 분석을 무한 확대하거나 초기화를 반복하지 않는다. 별도 비용 시험은 준비된 고정 입력8→64 OFF/ON을 사용하며 ETW 도우미와 실제 측정 시작을 확인한 뒤 진행한다. 사용자 직접 UAC 승인이 없는 상태를 측정 성공으로 처리하지 않는다. 전체 목표는 active다.
 
-로컬checkpointSHA256: 1323a49f6caf45c7c449f36d5af4a050c721b21d4a5608da90faf2e910ce48fa
+로컬checkpointSHA256: 6062c3a5583c6a5c6d737b37eb00e2bdec8ee45fcd79b3abf23fcbe86c0836d6

@@ -1,3 +1,5 @@
+> 최신 작업: Animal/Infected 직렬화에서 공통 부모 처리까지 정적 호출 연결. 실제 오류 패킷 대응 미확인으로 초기화·ID강제 수정 보류. 새 성능/시각 결과 없음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-creature-serialization-20261103.md).
+
 > 최신 작업: 조건부지지래퍼2독립비교:지붕약24.4~25.0%감소·지형약0.6~1.6%증가(메서드만).3native함수확보,전체프레임/시각미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-context-method-reader-20261103.md).
 
 > 최신 작업: 서버8파트부모NULL·client등록8건실제부모NULL과미해결계층참조대조. 공식AddChild/GetParent계약연결;송수신원인·비용미확정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-network-parent-contract-20261103.md).

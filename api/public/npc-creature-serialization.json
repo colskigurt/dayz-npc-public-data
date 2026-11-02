@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T06:53:50.185539+09:00",
+  "sourceRunId": "network-gameplay/creature-serialization-review1",
+  "buildId": "A500BE80+existing9PBOs_unchanged",
+  "verificationStatus": {
+    "staticCallChain": "diagnosis_success_bounded_original_bytes",
+    "runtimePacketPair": "not_captured",
+    "functionalRegression": "not_run_this_bundle",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "sharedClassOverrides": 2,
+    "serializerDirectCallEdges": 3,
+    "inputReaderDirectCallEdges": 2,
+    "decoderChainedFragments": 5,
+    "auxiliaryChainedFragments": 4,
+    "independentPerformanceRepeats": 0,
+    "frameTimeP50P95P99": null
+  },
+  "blockers": [
+    "Static call relationship does not prove actual writer receiver or wire payload",
+    "Parent-presence flag source and actual invalid identifier remain unresolved",
+    "No new whole-frame or visual-quality result",
+    "Matched replay still waits for user-operated ETW administrator helper; readiness is not a measurement"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-creature-serialization-20261103.md",
+      "sha256": "6ae7c3851cb808d165a38a7e5fdfd741132690b7f617769682f7a963aabc6e20"
+    },
+    {
+      "path": "evidence/npc-creature-serialization-20261103.txt",
+      "sha256": "c19eb86600c5790bf5da0f5775c72ccb442ed8aaa5d1ba0305abb6ecafe3b1aa"
+    }
+  ],
+  "next": "Obtain actual serializer receiver and snapshot parent fields with matching reader bit cursor before changing initialization. Continue prepared fixed-input8 to64 OFF/ON only with valid capture and foreground conditions. Do not zero IDs or disable collisions to conceal warnings.",
+  "goalComplete": false
+}
