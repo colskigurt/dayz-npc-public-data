@@ -1,3 +1,5 @@
+> 최신 작업: 실제8NPC/64parts:독립2회8/8terminal·낙하18/18LAND/FOLLOW·288전이/gen일치. historical EGRESS_STALL 각1회복구.64NPC/최종시각/성능은미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-network-eight-regression-20261102.md).
+
 > 최신 작업: 네트워크8파트를 실제 GroundBody 제어에 연결.1NPC:2등반/하강 뒤 기억종료 대기 보존,다른 자극에서 LOCAL_VISUAL 재인식·3번째 등반 단일 성공.8/64·외부접촉·시각/비용 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-network-gameplay-pilot-20261102.md).
 
 > 최신 작업: 실제1NPC8파트 mode2:14요청 전달·548공통본/기준위치 묶음 정합·2세대 명령해제 후삭제.20초 전경 영상 확보.게임플레이/최종시각/64성능은 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-network-clip-sequence-20261102.md).

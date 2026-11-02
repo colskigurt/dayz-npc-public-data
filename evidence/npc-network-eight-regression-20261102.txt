@@ -1,0 +1,1089 @@
+Selected aggregates, fall/recovery/historical failure/terminal state and own final-state code; not full raw logs.
+{
+  "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/eight-repetition",
+  "buildId": "765E61B0B2E20EA3C7977FF17316808D99D8CDD94DDFBCE7A95F8829CAD6EED8",
+  "logicalNpcs": 8,
+  "nativeParts": 64,
+  "independentRuns": 2,
+  "trials": [
+    {
+      "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/eight2",
+      "buildId": "765E61B0B2E20EA3C7977FF17316808D99D8CDD94DDFBCE7A95F8829CAD6EED8",
+      "logicalNpcs": 8,
+      "nativeParts": 64,
+      "independentRuns": 1,
+      "activeSeconds": 70.5493,
+      "samples": 2184,
+      "contractRows": 229,
+      "transitions": 144,
+      "phaseChainMismatches": [],
+      "recoveryGenerationErrors": [],
+      "terminalAlignmentErrors": [],
+      "validTerminalAgents": 8,
+      "allMilestoneAgents": 8,
+      "functionalReported": true,
+      "allCommandsDetached": true,
+      "fallStarts": 9,
+      "landAndFollowCycles": 9,
+      "fallEvents": [
+        {
+          "seconds": "11.463",
+          "id": "0",
+          "previous": "FOLLOW",
+          "next": "FALL",
+          "reason": "RECOVERY_REPLAN_WAIT",
+          "failure": "CONTACT_SUPPORT_LOST",
+          "recoveryGeneration": "1",
+          "callContext": "PRESSURE_SUPPORT_LOSS",
+          "areaAtCall": "low"
+        },
+        {
+          "seconds": "36.668",
+          "id": "1",
+          "previous": "MOTION",
+          "next": "FALL",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "1",
+          "callContext": "MOTION",
+          "areaAtCall": "air"
+        },
+        {
+          "seconds": "36.806",
+          "id": "3",
+          "previous": "MOTION",
+          "next": "FALL",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "1",
+          "callContext": "MOTION",
+          "areaAtCall": "air"
+        },
+        {
+          "seconds": "36.958",
+          "id": "5",
+          "previous": "MOTION",
+          "next": "FALL",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "1",
+          "callContext": "MOTION",
+          "areaAtCall": "air"
+        },
+        {
+          "seconds": "37.507",
+          "id": "2",
+          "previous": "MOTION",
+          "next": "FALL",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "1",
+          "callContext": "MOTION",
+          "areaAtCall": "air"
+        },
+        {
+          "seconds": "37.657",
+          "id": "7",
+          "previous": "MOTION",
+          "next": "FALL",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "1",
+          "callContext": "MOTION",
+          "areaAtCall": "air"
+        },
+        {
+          "seconds": "37.703",
+          "id": "0",
+          "previous": "MOTION",
+          "next": "FALL",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "2",
+          "callContext": "MOTION",
+          "areaAtCall": "air"
+        },
+        {
+          "seconds": "37.764",
+          "id": "4",
+          "previous": "MOTION",
+          "next": "FALL",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "1",
+          "callContext": "MOTION",
+          "areaAtCall": "air"
+        },
+        {
+          "seconds": "39.728",
+          "id": "6",
+          "previous": "MOTION",
+          "next": "FALL",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "1",
+          "callContext": "MOTION",
+          "areaAtCall": "air"
+        }
+      ],
+      "recoveryCycles": [
+        {
+          "id": 0,
+          "generation": 1,
+          "fallAt": 11.463,
+          "failureAtFall": "CONTACT_SUPPORT_LOST",
+          "landAt": 11.997,
+          "followAt": 36.363
+        },
+        {
+          "id": 1,
+          "generation": 1,
+          "fallAt": 36.668,
+          "failureAtFall": "",
+          "landAt": 37.218,
+          "followAt": 66.869
+        },
+        {
+          "id": 3,
+          "generation": 1,
+          "fallAt": 36.806,
+          "failureAtFall": "",
+          "landAt": 37.369,
+          "followAt": 68.756
+        },
+        {
+          "id": 5,
+          "generation": 1,
+          "fallAt": 36.958,
+          "failureAtFall": "",
+          "landAt": 37.507,
+          "followAt": 67.504
+        },
+        {
+          "id": 2,
+          "generation": 1,
+          "fallAt": 37.507,
+          "failureAtFall": "",
+          "landAt": 38.067,
+          "followAt": 70.528
+        },
+        {
+          "id": 7,
+          "generation": 1,
+          "fallAt": 37.657,
+          "failureAtFall": "",
+          "landAt": 38.205,
+          "followAt": 65.505
+        },
+        {
+          "id": 0,
+          "generation": 2,
+          "fallAt": 37.703,
+          "failureAtFall": "",
+          "landAt": 38.265,
+          "followAt": 65.869
+        },
+        {
+          "id": 4,
+          "generation": 1,
+          "fallAt": 37.764,
+          "failureAtFall": "",
+          "landAt": 38.326,
+          "followAt": 65.9
+        },
+        {
+          "id": 6,
+          "generation": 1,
+          "fallAt": 39.728,
+          "failureAtFall": "",
+          "landAt": 40.288,
+          "followAt": 66.328
+        }
+      ],
+      "historicalFailureTransitions": [
+        {
+          "seconds": "11.463",
+          "id": "0",
+          "previous": "FOLLOW",
+          "next": "FALL",
+          "reason": "RECOVERY_REPLAN_WAIT",
+          "failure": "CONTACT_SUPPORT_LOST",
+          "recoveryGeneration": "1"
+        },
+        {
+          "seconds": "11.997",
+          "id": "0",
+          "previous": "FALL",
+          "next": "LAND",
+          "reason": "NATIVE_FALL",
+          "failure": "CONTACT_SUPPORT_LOST",
+          "recoveryGeneration": "1"
+        },
+        {
+          "seconds": "15.055",
+          "id": "0",
+          "previous": "LAND",
+          "next": "EGRESS",
+          "reason": "LAND",
+          "failure": "CONTACT_SUPPORT_LOST",
+          "recoveryGeneration": "1"
+        },
+        {
+          "seconds": "20.07",
+          "id": "0",
+          "previous": "EGRESS",
+          "next": "FOLLOW",
+          "reason": "NATIVE_JOINT_WORLD_1",
+          "failure": "EGRESS_STALL",
+          "recoveryGeneration": "1"
+        }
+      ],
+      "perAgent": [
+        {
+          "id": 0,
+          "outcome": "VALID_TERMINAL",
+          "terminalState": "CHASE",
+          "terminalPhase": "FOLLOW",
+          "terminalArea": "low",
+          "terminalReason": "",
+          "terminalFailure": "",
+          "terminalPosition": "<4509.040527, 340.174316, 10239.497070>",
+          "terminalRecoveryGeneration": 2,
+          "climbs": 4,
+          "drops": 1,
+          "landings": 2,
+          "movedMetres": 96.8318,
+          "allMilestones": true,
+          "milestones": {
+            "LOW_COMPLETED": 11.0832,
+            "HIGH_COMPLETED": 35.1193,
+            "DESCENT_RECOVERED": 41.9337,
+            "RECLIMB_COMPLETED": 65.8818
+          },
+          "maxFailures": 1,
+          "postCommitMaximumSpreadMetres": 0.0,
+          "preCommitLifetimeMaximumSpreadMetres": 0.0,
+          "contactSolves": 4174,
+          "contactFailures": 131,
+          "playerContacts": 0,
+          "entityContactFalls": 0,
+          "sightSources": {
+            "": 4,
+            "LOCAL_VISUAL": 244,
+            "ALLY_REPORT": 25
+          }
+        },
+        {
+          "id": 1,
+          "outcome": "VALID_TERMINAL",
+          "terminalState": "CHASE",
+          "terminalPhase": "FOLLOW",
+          "terminalArea": "low",
+          "terminalReason": "",
+          "terminalFailure": "",
+          "terminalPosition": "<4510.713867, 340.205139, 10239.352539>",
+          "terminalRecoveryGeneration": 1,
+          "climbs": 3,
+          "drops": 1,
+          "landings": 1,
+          "movedMetres": 88.6308,
+          "allMilestones": true,
+          "milestones": {
+            "LOW_COMPLETED": 10.6791,
+            "HIGH_COMPLETED": 23.1392,
+            "DESCENT_RECOVERED": 40.9187,
+            "RECLIMB_COMPLETED": 66.8819
+          },
+          "maxFailures": 0,
+          "postCommitMaximumSpreadMetres": 0.0,
+          "preCommitLifetimeMaximumSpreadMetres": 0.0,
+          "contactSolves": 4643,
+          "contactFailures": 0,
+          "playerContacts": 44,
+          "entityContactFalls": 0,
+          "sightSources": {
+            "": 5,
+            "LOCAL_VISUAL": 246,
+            "ALLY_REPORT": 22
+          }
+        },
+        {
+          "id": 2,
+          "outcome": "VALID_TERMINAL",
+          "terminalState": "CHASE",
+          "terminalPhase": "FOLLOW",
+          "terminalArea": "low",
+          "terminalReason": "SUPPORTED_EGRESS_HANDOFF",
+          "terminalFailure": "",
+          "terminalPosition": "<4511.021484, 340.205231, 10237.229492>",
+          "terminalRecoveryGeneration": 1,
+          "climbs": 3,
+          "drops": 1,
+          "landings": 1,
+          "movedMetres": 87.1223,
+          "allMilestones": true,
+          "milestones": {
+            "LOW_COMPLETED": 10.5801,
+            "HIGH_COMPLETED": 16.9868,
+            "DESCENT_RECOVERED": 41.7197,
+            "RECLIMB_COMPLETED": 70.5493
+          },
+          "maxFailures": 0,
+          "postCommitMaximumSpreadMetres": 0.0,
+          "preCommitLifetimeMaximumSpreadMetres": 0.0,
+          "contactSolves": 4654,
+          "contactFailures": 0,
+          "playerContacts": 51,
+          "entityContactFalls": 0,
+          "sightSources": {
+            "": 5,
+            "LOCAL_VISUAL": 238,
+            "ALLY_REPORT": 30
+          }
+        },
+        {
+          "id": 3,
+          "outcome": "VALID_TERMINAL",
+          "terminalState": "CHASE",
+          "terminalPhase": "FOLLOW",
+          "terminalArea": "low",
+          "terminalReason": "",
+          "terminalFailure": "",
+          "terminalPosition": "<4510.257324, 340.195526, 10238.933594>",
+          "terminalRecoveryGeneration": 1,
+          "climbs": 3,
+          "drops": 1,
+          "landings": 1,
+          "movedMetres": 91.4215,
+          "allMilestones": true,
+          "milestones": {
+            "LOW_COMPLETED": 11.2212,
+            "HIGH_COMPLETED": 19.5229,
+            "DESCENT_RECOVERED": 41.0197,
+            "RECLIMB_COMPLETED": 68.7941
+          },
+          "maxFailures": 0,
+          "postCommitMaximumSpreadMetres": 0.0,
+          "preCommitLifetimeMaximumSpreadMetres": 0.0,
+          "contactSolves": 4576,
+          "contactFailures": 0,
+          "playerContacts": 0,
+          "entityContactFalls": 0,
+          "sightSources": {
+            "": 5,
+            "LOCAL_VISUAL": 228,
+            "ALLY_REPORT": 40
+          }
+        },
+        {
+          "id": 4,
+          "outcome": "VALID_TERMINAL",
+          "terminalState": "CHASE",
+          "terminalPhase": "FOLLOW",
+          "terminalArea": "low",
+          "terminalReason": "PLAYER_CONTACT",
+          "terminalFailure": "",
+          "terminalPosition": "<4509.718750, 340.186829, 10239.447266>",
+          "terminalRecoveryGeneration": 1,
+          "climbs": 3,
+          "drops": 1,
+          "landings": 1,
+          "movedMetres": 90.6978,
+          "allMilestones": true,
+          "milestones": {
+            "LOW_COMPLETED": 12.3183,
+            "HIGH_COMPLETED": 19.0189,
+            "DESCENT_RECOVERED": 41.9797,
+            "RECLIMB_COMPLETED": 65.9218
+          },
+          "maxFailures": 0,
+          "postCommitMaximumSpreadMetres": 0.0,
+          "preCommitLifetimeMaximumSpreadMetres": 0.0,
+          "contactSolves": 4511,
+          "contactFailures": 1,
+          "playerContacts": 124,
+          "entityContactFalls": 0,
+          "sightSources": {
+            "": 5,
+            "LOCAL_VISUAL": 256,
+            "ALLY_REPORT": 12
+          }
+        },
+        {
+          "id": 5,
+          "outcome": "VALID_TERMINAL",
+          "terminalState": "CHASE",
+          "terminalPhase": "FOLLOW",
+          "terminalArea": "low",
+          "terminalReason": "ARRIVED",
+          "terminalFailure": "",
+          "terminalPosition": "<4509.749512, 340.186127, 10238.962891>",
+          "terminalRecoveryGeneration": 1,
+          "climbs": 3,
+          "drops": 1,
+          "landings": 1,
+          "movedMetres": 89.7958,
+          "allMilestones": true,
+          "milestones": {
+            "LOW_COMPLETED": 11.5762,
+            "HIGH_COMPLETED": 17.6228,
+            "DESCENT_RECOVERED": 41.1877,
+            "RECLIMB_COMPLETED": 67.525
+          },
+          "maxFailures": 0,
+          "postCommitMaximumSpreadMetres": 0.0,
+          "preCommitLifetimeMaximumSpreadMetres": 0.0,
+          "contactSolves": 4526,
+          "contactFailures": 1,
+          "playerContacts": 118,
+          "entityContactFalls": 0,
+          "sightSources": {
+            "": 5,
+            "LOCAL_VISUAL": 258,
+            "ALLY_REPORT": 10
+          }
+        },
+        {
+          "id": 6,
+          "outcome": "VALID_TERMINAL",
+          "terminalState": "CHASE",
+          "terminalPhase": "FOLLOW",
+          "terminalArea": "low",
+          "terminalReason": "ALIGN_HEADING",
+          "terminalFailure": "",
+          "terminalPosition": "<4511.029785, 340.212677, 10239.961914>",
+          "terminalRecoveryGeneration": 1,
+          "climbs": 3,
+          "drops": 1,
+          "landings": 1,
+          "movedMetres": 83.6551,
+          "allMilestones": true,
+          "milestones": {
+            "LOW_COMPLETED": 11.6772,
+            "HIGH_COMPLETED": 16.2887,
+            "DESCENT_RECOVERED": 43.9849,
+            "RECLIMB_COMPLETED": 66.3429
+          },
+          "maxFailures": 0,
+          "postCommitMaximumSpreadMetres": 0.0,
+          "preCommitLifetimeMaximumSpreadMetres": 0.0,
+          "contactSolves": 4697,
+          "contactFailures": 0,
+          "playerContacts": 0,
+          "entityContactFalls": 0,
+          "sightSources": {
+            "": 5,
+            "LOCAL_VISUAL": 252,
+            "ALLY_REPORT": 16
+          }
+        },
+        {
+          "id": 7,
+          "outcome": "VALID_TERMINAL",
+          "terminalState": "CHASE",
+          "terminalPhase": "FOLLOW",
+          "terminalArea": "low",
+          "terminalReason": "",
+          "terminalFailure": "",
+          "terminalPosition": "<4510.776367, 340.209839, 10240.670898>",
+          "terminalRecoveryGeneration": 1,
+          "climbs": 3,
+          "drops": 1,
+          "landings": 1,
+          "movedMetres": 82.107,
+          "allMilestones": true,
+          "milestones": {
+            "LOW_COMPLETED": 12.2183,
+            "HIGH_COMPLETED": 18.0458,
+            "DESCENT_RECOVERED": 41.8787,
+            "RECLIMB_COMPLETED": 65.5278
+          },
+          "maxFailures": 0,
+          "postCommitMaximumSpreadMetres": 0.0,
+          "preCommitLifetimeMaximumSpreadMetres": 0.0,
+          "contactSolves": 4577,
+          "contactFailures": 0,
+          "playerContacts": 45,
+          "entityContactFalls": 0,
+          "sightSources": {
+            "": 5,
+            "LOCAL_VISUAL": 245,
+            "ALLY_REPORT": 23
+          }
+        }
+      ],
+      "unresolvedTerminalFailures": [],
+      "serverCompleted": true,
+      "serverForcedStop": true,
+      "clientForcedStop": false,
+      "clientExitCode": -1,
+      "normalQuitVerified": false,
+      "nativeObserverRequested": false,
+      "newVideo": false,
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "frameTimePercentiles": null,
+      "limits": [
+        "One8-NPC functional scenario, not64-NPC acceptance",
+        "Post-commit and pre-commit sampled part spread are not client/render pose coherence",
+        "Script state/cast counters are not CPU self-time or present frame-times",
+        "Natural support loss is not proven peer-caused fall",
+        "History includes resolved failures; terminal success does not erase them"
+      ],
+      "functionalGatePassed": true
+    },
+    {
+      "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/eight3",
+      "buildId": "765E61B0B2E20EA3C7977FF17316808D99D8CDD94DDFBCE7A95F8829CAD6EED8",
+      "logicalNpcs": 8,
+      "nativeParts": 64,
+      "independentRuns": 1,
+      "activeSeconds": 78.864,
+      "samples": 2440,
+      "contractRows": 229,
+      "transitions": 144,
+      "phaseChainMismatches": [],
+      "recoveryGenerationErrors": [],
+      "terminalAlignmentErrors": [],
+      "validTerminalAgents": 8,
+      "allMilestoneAgents": 8,
+      "functionalReported": true,
+      "allCommandsDetached": true,
+      "fallStarts": 9,
+      "landAndFollowCycles": 9,
+      "fallEvents": [
+        {
+          "seconds": "11.569",
+          "id": "0",
+          "previous": "FOLLOW",
+          "next": "FALL",
+          "reason": "RECOVERY_REPLAN_WAIT",
+          "failure": "CONTACT_SUPPORT_LOST",
+          "recoveryGeneration": "1",
+          "callContext": "PRESSURE_SUPPORT_LOSS",
+          "areaAtCall": "low"
+        },
+        {
+          "seconds": "43.54",
+          "id": "6",
+          "previous": "MOTION",
+          "next": "FALL",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "1",
+          "callContext": "MOTION",
+          "areaAtCall": "air"
+        },
+        {
+          "seconds": "43.772",
+          "id": "2",
+          "previous": "MOTION",
+          "next": "FALL",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "1",
+          "callContext": "MOTION",
+          "areaAtCall": "air"
+        },
+        {
+          "seconds": "43.833",
+          "id": "7",
+          "previous": "MOTION",
+          "next": "FALL",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "1",
+          "callContext": "MOTION",
+          "areaAtCall": "air"
+        },
+        {
+          "seconds": "43.87",
+          "id": "1",
+          "previous": "MOTION",
+          "next": "FALL",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "1",
+          "callContext": "MOTION",
+          "areaAtCall": "air"
+        },
+        {
+          "seconds": "44.03",
+          "id": "3",
+          "previous": "MOTION",
+          "next": "FALL",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "1",
+          "callContext": "MOTION",
+          "areaAtCall": "air"
+        },
+        {
+          "seconds": "44.439",
+          "id": "0",
+          "previous": "MOTION",
+          "next": "FALL",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "2",
+          "callContext": "MOTION",
+          "areaAtCall": "air"
+        },
+        {
+          "seconds": "45.479",
+          "id": "5",
+          "previous": "MOTION",
+          "next": "FALL",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "1",
+          "callContext": "MOTION",
+          "areaAtCall": "air"
+        },
+        {
+          "seconds": "45.723",
+          "id": "4",
+          "previous": "MOTION",
+          "next": "FALL",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "recoveryGeneration": "1",
+          "callContext": "MOTION",
+          "areaAtCall": "air"
+        }
+      ],
+      "recoveryCycles": [
+        {
+          "id": 0,
+          "generation": 1,
+          "fallAt": 11.569,
+          "failureAtFall": "CONTACT_SUPPORT_LOST",
+          "landAt": 12.014,
+          "followAt": 43.071
+        },
+        {
+          "id": 6,
+          "generation": 1,
+          "fallAt": 43.54,
+          "failureAtFall": "",
+          "landAt": 44.091,
+          "followAt": 73.344
+        },
+        {
+          "id": 2,
+          "generation": 1,
+          "fallAt": 43.772,
+          "failureAtFall": "",
+          "landAt": 44.318,
+          "followAt": 72.78
+        },
+        {
+          "id": 7,
+          "generation": 1,
+          "fallAt": 43.833,
+          "failureAtFall": "",
+          "landAt": 44.378,
+          "followAt": 71.378
+        },
+        {
+          "id": 1,
+          "generation": 1,
+          "fallAt": 43.87,
+          "failureAtFall": "",
+          "landAt": 44.409,
+          "followAt": 72.719
+        },
+        {
+          "id": 3,
+          "generation": 1,
+          "fallAt": 44.03,
+          "failureAtFall": "",
+          "landAt": 44.577,
+          "followAt": 72.14
+        },
+        {
+          "id": 0,
+          "generation": 2,
+          "fallAt": 44.439,
+          "failureAtFall": "",
+          "landAt": 45.004,
+          "followAt": 72.629
+        },
+        {
+          "id": 5,
+          "generation": 1,
+          "fallAt": 45.479,
+          "failureAtFall": "",
+          "landAt": 46.03,
+          "followAt": 71.972
+        },
+        {
+          "id": 4,
+          "generation": 1,
+          "fallAt": 45.723,
+          "failureAtFall": "",
+          "landAt": 46.273,
+          "followAt": 78.84
+        }
+      ],
+      "historicalFailureTransitions": [
+        {
+          "seconds": "11.569",
+          "id": "0",
+          "previous": "FOLLOW",
+          "next": "FALL",
+          "reason": "RECOVERY_REPLAN_WAIT",
+          "failure": "CONTACT_SUPPORT_LOST",
+          "recoveryGeneration": "1"
+        },
+        {
+          "seconds": "12.014",
+          "id": "0",
+          "previous": "FALL",
+          "next": "LAND",
+          "reason": "NATIVE_FALL",
+          "failure": "CONTACT_SUPPORT_LOST",
+          "recoveryGeneration": "1"
+        },
+        {
+          "seconds": "15.077",
+          "id": "0",
+          "previous": "LAND",
+          "next": "EGRESS",
+          "reason": "LAND",
+          "failure": "CONTACT_SUPPORT_LOST",
+          "recoveryGeneration": "1"
+        },
+        {
+          "seconds": "20.13",
+          "id": "0",
+          "previous": "EGRESS",
+          "next": "FOLLOW",
+          "reason": "NATIVE_JOINT_WORLD_1",
+          "failure": "EGRESS_STALL",
+          "recoveryGeneration": "1"
+        }
+      ],
+      "perAgent": [
+        {
+          "id": 0,
+          "outcome": "VALID_TERMINAL",
+          "terminalState": "INVESTIGATE",
+          "terminalPhase": "FOLLOW",
+          "terminalArea": "low",
+          "terminalReason": "ARRIVED",
+          "terminalFailure": "",
+          "terminalPosition": "<4509.317383, 340.179474, 10239.494141>",
+          "terminalRecoveryGeneration": 2,
+          "climbs": 4,
+          "drops": 1,
+          "landings": 2,
+          "movedMetres": 98.221,
+          "allMilestones": true,
+          "milestones": {
+            "LOW_COMPLETED": 11.0569,
+            "HIGH_COMPLETED": 41.862,
+            "DESCENT_RECOVERED": 48.6996,
+            "RECLIMB_COMPLETED": 72.6667
+          },
+          "maxFailures": 1,
+          "postCommitMaximumSpreadMetres": 0.0,
+          "preCommitLifetimeMaximumSpreadMetres": 0.0,
+          "contactSolves": 4840,
+          "contactFailures": 128,
+          "playerContacts": 244,
+          "entityContactFalls": 0,
+          "sightSources": {
+            "": 4,
+            "LOCAL_VISUAL": 261,
+            "ALLY_REPORT": 40
+          }
+        },
+        {
+          "id": 1,
+          "outcome": "VALID_TERMINAL",
+          "terminalState": "CHASE",
+          "terminalPhase": "FOLLOW",
+          "terminalArea": "low",
+          "terminalReason": "",
+          "terminalFailure": "",
+          "terminalPosition": "<4509.752441, 340.186340, 10239.022461>",
+          "terminalRecoveryGeneration": 1,
+          "climbs": 3,
+          "drops": 1,
+          "landings": 1,
+          "movedMetres": 92.706,
+          "allMilestones": true,
+          "milestones": {
+            "LOW_COMPLETED": 10.5908,
+            "HIGH_COMPLETED": 22.4387,
+            "DESCENT_RECOVERED": 48.1045,
+            "RECLIMB_COMPLETED": 72.7377
+          },
+          "maxFailures": 0,
+          "postCommitMaximumSpreadMetres": 0.0,
+          "preCommitLifetimeMaximumSpreadMetres": 0.0,
+          "contactSolves": 5408,
+          "contactFailures": 0,
+          "playerContacts": 108,
+          "entityContactFalls": 0,
+          "sightSources": {
+            "": 4,
+            "LOCAL_VISUAL": 292,
+            "ALLY_REPORT": 9
+          }
+        },
+        {
+          "id": 2,
+          "outcome": "VALID_TERMINAL",
+          "terminalState": "CHASE",
+          "terminalPhase": "FOLLOW",
+          "terminalArea": "low",
+          "terminalReason": "ARRIVED",
+          "terminalFailure": "",
+          "terminalPosition": "<4511.027344, 340.211945, 10239.707031>",
+          "terminalRecoveryGeneration": 1,
+          "climbs": 3,
+          "drops": 1,
+          "landings": 1,
+          "movedMetres": 83.3026,
+          "allMilestones": true,
+          "milestones": {
+            "LOW_COMPLETED": 10.5908,
+            "HIGH_COMPLETED": 16.6052,
+            "DESCENT_RECOVERED": 47.9975,
+            "RECLIMB_COMPLETED": 72.8037
+          },
+          "maxFailures": 0,
+          "postCommitMaximumSpreadMetres": 0.0,
+          "preCommitLifetimeMaximumSpreadMetres": 0.0,
+          "contactSolves": 5340,
+          "contactFailures": 0,
+          "playerContacts": 2,
+          "entityContactFalls": 0,
+          "sightSources": {
+            "": 5,
+            "LOCAL_VISUAL": 292,
+            "ALLY_REPORT": 8
+          }
+        },
+        {
+          "id": 3,
+          "outcome": "VALID_TERMINAL",
+          "terminalState": "CHASE",
+          "terminalPhase": "FOLLOW",
+          "terminalArea": "low",
+          "terminalReason": "",
+          "terminalFailure": "",
+          "terminalPosition": "<4510.867676, 340.211121, 10240.511719>",
+          "terminalRecoveryGeneration": 1,
+          "climbs": 3,
+          "drops": 1,
+          "landings": 1,
+          "movedMetres": 88.8292,
+          "allMilestones": true,
+          "milestones": {
+            "LOW_COMPLETED": 11.1939,
+            "HIGH_COMPLETED": 18.1594,
+            "DESCENT_RECOVERED": 48.2325,
+            "RECLIMB_COMPLETED": 72.1627
+          },
+          "maxFailures": 0,
+          "postCommitMaximumSpreadMetres": 0.0,
+          "preCommitLifetimeMaximumSpreadMetres": 0.0,
+          "contactSolves": 5496,
+          "contactFailures": 1,
+          "playerContacts": 87,
+          "entityContactFalls": 0,
+          "sightSources": {
+            "": 5,
+            "LOCAL_VISUAL": 286,
+            "ALLY_REPORT": 14
+          }
+        },
+        {
+          "id": 4,
+          "outcome": "VALID_TERMINAL",
+          "terminalState": "CHASE",
+          "terminalPhase": "FOLLOW",
+          "terminalArea": "low",
+          "terminalReason": "SUPPORTED_EGRESS_HANDOFF",
+          "terminalFailure": "",
+          "terminalPosition": "<4510.231934, 340.190521, 10237.239258>",
+          "terminalRecoveryGeneration": 1,
+          "climbs": 3,
+          "drops": 1,
+          "landings": 1,
+          "movedMetres": 89.4469,
+          "allMilestones": true,
+          "milestones": {
+            "LOW_COMPLETED": 12.062,
+            "HIGH_COMPLETED": 16.2382,
+            "DESCENT_RECOVERED": 49.9647,
+            "RECLIMB_COMPLETED": 78.864
+          },
+          "maxFailures": 0,
+          "postCommitMaximumSpreadMetres": 0.0,
+          "preCommitLifetimeMaximumSpreadMetres": 0.0,
+          "contactSolves": 5057,
+          "contactFailures": 0,
+          "playerContacts": 40,
+          "entityContactFalls": 0,
+          "sightSources": {
+            "": 5,
+            "LOCAL_VISUAL": 274,
+            "ALLY_REPORT": 26
+          }
+        },
+        {
+          "id": 5,
+          "outcome": "VALID_TERMINAL",
+          "terminalState": "CHASE",
+          "terminalPhase": "FOLLOW",
+          "terminalArea": "low",
+          "terminalReason": "",
+          "terminalFailure": "",
+          "terminalPosition": "<4508.962402, 340.174408, 10240.084961>",
+          "terminalRecoveryGeneration": 1,
+          "climbs": 3,
+          "drops": 1,
+          "landings": 1,
+          "movedMetres": 94.5552,
+          "allMilestones": true,
+          "milestones": {
+            "LOW_COMPLETED": 11.4969,
+            "HIGH_COMPLETED": 18.7054,
+            "DESCENT_RECOVERED": 49.7047,
+            "RECLIMB_COMPLETED": 72.0117
+          },
+          "maxFailures": 0,
+          "postCommitMaximumSpreadMetres": 0.0,
+          "preCommitLifetimeMaximumSpreadMetres": 0.0,
+          "contactSolves": 5315,
+          "contactFailures": 0,
+          "playerContacts": 110,
+          "entityContactFalls": 0,
+          "sightSources": {
+            "": 5,
+            "LOCAL_VISUAL": 289,
+            "ALLY_REPORT": 11
+          }
+        },
+        {
+          "id": 6,
+          "outcome": "VALID_TERMINAL",
+          "terminalState": "CHASE",
+          "terminalPhase": "FOLLOW",
+          "terminalArea": "low",
+          "terminalReason": "ARRIVED",
+          "terminalFailure": "",
+          "terminalPosition": "<4510.534180, 340.201111, 10239.092773>",
+          "terminalRecoveryGeneration": 1,
+          "climbs": 3,
+          "drops": 1,
+          "landings": 1,
+          "movedMetres": 99.3966,
+          "allMilestones": true,
+          "milestones": {
+            "LOW_COMPLETED": 11.6619,
+            "HIGH_COMPLETED": 21.2626,
+            "DESCENT_RECOVERED": 47.7995,
+            "RECLIMB_COMPLETED": 73.3629
+          },
+          "maxFailures": 0,
+          "postCommitMaximumSpreadMetres": 0.0,
+          "preCommitLifetimeMaximumSpreadMetres": 0.0,
+          "contactSolves": 5425,
+          "contactFailures": 0,
+          "playerContacts": 53,
+          "entityContactFalls": 0,
+          "sightSources": {
+            "": 5,
+            "LOCAL_VISUAL": 265,
+            "ALLY_REPORT": 35
+          }
+        },
+        {
+          "id": 7,
+          "outcome": "VALID_TERMINAL",
+          "terminalState": "CHASE",
+          "terminalPhase": "FOLLOW",
+          "terminalArea": "low",
+          "terminalReason": "ARRIVED",
+          "terminalFailure": "",
+          "terminalPosition": "<4510.224609, 340.200378, 10240.988281>",
+          "terminalRecoveryGeneration": 1,
+          "climbs": 3,
+          "drops": 1,
+          "landings": 1,
+          "movedMetres": 87.48,
+          "allMilestones": true,
+          "milestones": {
+            "LOW_COMPLETED": 12.092,
+            "HIGH_COMPLETED": 19.8584,
+            "DESCENT_RECOVERED": 48.0345,
+            "RECLIMB_COMPLETED": 71.4016
+          },
+          "maxFailures": 0,
+          "postCommitMaximumSpreadMetres": 0.0,
+          "preCommitLifetimeMaximumSpreadMetres": 0.0,
+          "contactSolves": 5170,
+          "contactFailures": 0,
+          "playerContacts": 86,
+          "entityContactFalls": 0,
+          "sightSources": {
+            "": 5,
+            "LOCAL_VISUAL": 274,
+            "ALLY_REPORT": 26
+          }
+        }
+      ],
+      "unresolvedTerminalFailures": [],
+      "serverCompleted": true,
+      "serverForcedStop": true,
+      "clientForcedStop": false,
+      "clientExitCode": -1,
+      "normalQuitVerified": false,
+      "nativeObserverRequested": false,
+      "newVideo": false,
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "frameTimePercentiles": null,
+      "limits": [
+        "One8-NPC functional scenario, not64-NPC acceptance",
+        "Post-commit and pre-commit sampled part spread are not client/render pose coherence",
+        "Script state/cast counters are not CPU self-time or present frame-times",
+        "Natural support loss is not proven peer-caused fall",
+        "History includes resolved failures; terminal success does not erase them"
+      ],
+      "functionalGatePassed": true
+    }
+  ],
+  "functionalScenarioRepeatedPass": true,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "next": "64-NPC feasibility/cost and per-ID recovery validation; preserve legitimate falls and report server/client costs separately"
+}
+
+Selection: ValidSupport/FinishResult diagnostic methods; SHA256 2c6e4ea88f8a99e28bba34505b6fd27066b998d3ffb7784663b140b8dbc0a30c
+    bool ValidSupport(DGBNativeGroundBody b)
+    {
+        if(b.Traversal.Phase!="FOLLOW" || b.Traversal.Area=="air"){return false;}
+        vector support;return DGBGroundAgent.Floor(b.Leader,b.Agent.Position,support);
+    }
+    void FinishResult()
+    {
+        Observe();
+        foreach(DGBNativeGroundBody b:Director.Bodies)
+        {
+            DGBNativeTraversal t=b.Traversal;string result="INCOMPLETE_MILESTONES";
+            if(ReturnPassed[b.Id]){result="UNRESOLVED_STATE";if(ValidSupport(b)){result="VALID_TERMINAL";}}
+            if(t.Phase=="FALL"){result="UNRESOLVED_FALL";}
+            string row=(Age - RunAt).ToString()+"\t"+b.Id+"\t"+result+"\t"+b.Agent.State+"\t"+t.Phase+"\t"+t.Area+"\t"+b.Agent.Position;
+            row+="\t"+t.CTRecoveryGeneration+"\t"+b.HitType+"\t"+b.Reason+"\t"+t.Failure+"\t"+LowPassed[b.Id]+"\t"+HighPassed[b.Id]+"\t"+DownPassed[b.Id]+"\t"+ReturnPassed[b.Id];
+            row+="\t"+t.Climbs+"\t"+t.Drops+"\t"+t.Landings+"\t"+b.Agent.Visible+"\t"+b.Agent.ClueSource+"\t"+(Director.Now - b.Agent.SeenAt);FPrintln(Terminal,row);
+            Print("NF_NETWORK_EIGHT_BODY id="+b.Id+" terminal="+result+" phase="+t.Phase+" area="+t.Area);
+            foreach(Animal_DGNativeProbe retiringPart:b.Parts){retiringPart.BeginRetirement();}
+        }
+        CloseFile(Terminal);RetireAt=Age;
+    }
