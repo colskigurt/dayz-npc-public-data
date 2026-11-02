@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/contact-end-bounded-lift"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "axisOn",
+        "axisOff",
+        "eight",
+        "sixtyfour",
+        "guards",
+        "actualSingleContrastVerified",
+        "visualAccepted",
+        "performanceAccepted"
+      ],
+      "properties": {
+        "visualAccepted": {
+          "const": false
+        },
+        "performanceAccepted": {
+          "const": false
+        }
+      }
+    }
+  }
+}
