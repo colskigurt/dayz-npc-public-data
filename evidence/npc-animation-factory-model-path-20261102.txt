@@ -1,0 +1,218 @@
+Selected aggregate and readonly native inputs, not game assets or full logs.
+{
+  "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/factory-model-path",
+  "buildId": "E73A9CBB902850F0883120C0F7A18626643A5B4C9703A99BA04D0A407EDE0877",
+  "trials": [
+    {
+      "runId": ".",
+      "completedMarker": false,
+      "serverExited": true,
+      "forcedOwnedStop": true,
+      "normalExit": false,
+      "exitCode": -1,
+      "missionSha256": "AB8B5A2285F1F0F1EA478E758AD7F37C00FC179BD155D8557935C9A2BF985678",
+      "signatureChecksPassed": true
+    },
+    {
+      "runId": "physical-part1/control3",
+      "completedMarker": false,
+      "serverExited": true,
+      "forcedOwnedStop": true,
+      "normalExit": false,
+      "exitCode": -1,
+      "missionSha256": "85F3F79F8822ECBA44E0B98B191F6F12B99D31FF5E2BCEA24252562C8E0009D8",
+      "signatureChecksPassed": true
+    },
+    {
+      "runId": "physical-part1/geometry3",
+      "completedMarker": false,
+      "serverExited": true,
+      "forcedOwnedStop": true,
+      "normalExit": false,
+      "exitCode": -1,
+      "missionSha256": "EC703E402C66B987BBC21478DAD77E54A737EA99743335D06188921C21628EB1",
+      "signatureChecksPassed": true
+    },
+    {
+      "runId": "headpoint-part1/control",
+      "completedMarker": false,
+      "serverExited": true,
+      "forcedOwnedStop": true,
+      "normalExit": false,
+      "exitCode": -1,
+      "missionSha256": "24EEF16F94DFB67332DCC55A6F713036232B2C8CCE0492BC3AFA45FEBA5DBB2F",
+      "signatureChecksPassed": true
+    },
+    {
+      "runId": "headpoint-part1/hips",
+      "completedMarker": false,
+      "serverExited": true,
+      "forcedOwnedStop": true,
+      "normalExit": false,
+      "exitCode": -1,
+      "missionSha256": "467783631D490ED995F956C070BD8D4C772A9B8F90BB887B0ECFAB6C02134090",
+      "signatureChecksPassed": true
+    },
+    {
+      "runId": "factory-read-geometry",
+      "completedMarker": false,
+      "serverExited": true,
+      "forcedOwnedStop": true,
+      "normalExit": false,
+      "exitCode": -1,
+      "missionSha256": "D43A28AC328B64FA337B492C556D0CEF07C0F09329C3779A5C637F052DFA08FE",
+      "signatureChecksPassed": true
+    },
+    {
+      "runId": "factory-read-geometry2",
+      "completedMarker": false,
+      "serverExited": true,
+      "forcedOwnedStop": true,
+      "normalExit": false,
+      "exitCode": -1,
+      "missionSha256": "D43A28AC328B64FA337B492C556D0CEF07C0F09329C3779A5C637F052DFA08FE",
+      "signatureChecksPassed": true
+    },
+    {
+      "runId": "model-path-control/path-fixed",
+      "completedMarker": true,
+      "serverExited": true,
+      "forcedOwnedStop": true,
+      "normalExit": false,
+      "exitCode": -1,
+      "missionSha256": "4E9D2FA1C4C469B2418E1E3E87C198A39B7D6C2A24F1A184C92C15CE5EA50D08",
+      "signatureChecksPassed": true
+    }
+  ],
+  "nativeBefore": {
+    "event": "factory_bounds_entry",
+    "ordinal": 1,
+    "rva": "0xc67fa0",
+    "numericOverrides": false,
+    "shapeNull": false,
+    "geometrySlotIndex": -1,
+    "slotCount": 0,
+    "resolutions": [],
+    "slots": []
+  },
+  "nativeAfter": {
+    "event": "factory_bounds_entry",
+    "ordinal": 1,
+    "rva": "0xc67fa0",
+    "numericOverrides": false,
+    "shapeNull": false,
+    "geometrySlotIndex": 3,
+    "slotCount": 4,
+    "resolutions": [
+      1,
+      999999986991104,
+      6999999976046592,
+      9999999827968
+    ],
+    "slots": [
+      {
+        "index": 0,
+        "slotNull": false,
+        "bodyNull": true
+      },
+      {
+        "index": 1,
+        "slotNull": false,
+        "bodyNull": false,
+        "boundFields": [
+          -0.18876749277114868,
+          0.09220722317695618,
+          -0.09088988602161407,
+          0.17437300086021423,
+          1.6872990131378174,
+          0.1400999128818512
+        ]
+      },
+      {
+        "index": 2,
+        "slotNull": false,
+        "bodyNull": false,
+        "boundFields": [
+          -0.25,
+          -9.970000267028809,
+          -0.8999999761581421,
+          0.25,
+          -9.699999809265137,
+          0.6499999761581421
+        ]
+      },
+      {
+        "index": 3,
+        "slotNull": false,
+        "bodyNull": false,
+        "boundFields": [
+          -0.2800000011920929,
+          0.05000000074505806,
+          -0.2800000011920929,
+          0.2800000011920929,
+          1.649999976158142,
+          0.2800000011920929
+        ]
+      }
+    ]
+  },
+  "fixedPose": {
+    "samples": 90,
+    "lastAge": 29.992,
+    "lastNativeSeconds": 9.6,
+    "lastUpdateCount": 48,
+    "request": 2,
+    "commandActive": "true"
+  },
+  "factoryDiagnosticSuccess": true,
+  "independentSuccessRepeats": 1,
+  "eightPartNetworkPassed": false,
+  "newGameplayAlgorithms": false,
+  "newDiagnosticPbos": 3,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "goalComplete": false,
+  "limits": [
+    "One headless corrected-path Geometry-part factory success, not eight network parts or gameplay regression.",
+    "NativeSeconds is script command accounting, not measured graph clock.",
+    "Headless harness force-stops its owned process after DONE; no normal-exit claim.",
+    "Earlier Geometry efficacy rejection invalid because that P3D never loaded.",
+    "First observer guard used 17 expected bytes for a 16-byte read and captured no input; preserved.",
+    "Other model-part requirements and full8 cost/synchronization unverified.",
+    "Ghidra focused request still initializing; bounded Capstone/unwind evidence is used without a completed provider decompilation."
+  ],
+  "next": "Preserve the fixed-path single-part control. Before further migration, verify packed P3D model loading and Geometry support for remaining actual parts in an isolated eight-part fixture; keep physical-host cost, mode2 synchronization and visible quality as separate gates."
+}
+
+Packed model header metadata
+[
+  {
+    "member": "nf_part1_control.p3d",
+    "prefix": "nf_net_phys",
+    "bytes": 209808,
+    "sha256": "43341ff64d974a59bf68557eabbc4f7a3e189d88e9b5dffd56cc4619a8481056",
+    "format": "ODOL",
+    "version": 56,
+    "lodCountHeader": 3,
+    "resolutionsHeader": [
+      1.0,
+      999999986991104.0,
+      6999999976046592.0
+    ]
+  },
+  {
+    "member": "nf_part1_geometry.p3d",
+    "prefix": "nf_net_phys",
+    "bytes": 211311,
+    "sha256": "f5deac81976cbb67b1168b689b3f2f611e0a21f12ac35f418444230c8ac788c9",
+    "format": "ODOL",
+    "version": 56,
+    "lodCountHeader": 4,
+    "resolutionsHeader": [
+      1.0,
+      999999986991104.0,
+      6999999976046592.0,
+      9999999827968.0
+    ]
+  }
+]
