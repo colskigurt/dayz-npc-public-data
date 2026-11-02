@@ -1,0 +1,70 @@
+Aggregate diagnostic only. No raw logs, game assets, credentials or process identifiers.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T07:05:30.647351+09:00",
+  "sourceRunId": "network-gameplay/creature-parent-snapshot1",
+  "buildId": "A500BE80+existing9PBOs_unchanged",
+  "verificationStatus": {
+    "diagnosis": "initial_zero_then_invalid_parent_observed_same_client_objects",
+    "runtimePacketPair": "not_matched_end_to_end",
+    "functionalRegression": "not_run_diagnostic_cleanup_only",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "logicalNpcs": 1,
+    "nativeParts": 8,
+    "server": {
+      "evidenceId": "ev_afa2f79c26f3cb3544a4652ef2fbad8412ea670c9d1af861e1f2a2fe20a429fa",
+      "cleanupError": null,
+      "truncated": false,
+      "samples": 40,
+      "uniqueObjects": 8,
+      "readErrors": [],
+      "selectors": {
+        "-1": 16,
+        "0": 8,
+        "2": 16
+      },
+      "parentStateSelector0": {
+        "samples": 8,
+        "uniqueObjects": 8,
+        "allWriting": true,
+        "allParentNull": true,
+        "ids": [
+          "0"
+        ],
+        "pivots": [
+          -1
+        ]
+      }
+    },
+    "client": {
+      "evidenceId": "ev_143fd7b3b0c0a6a9e974ba3f82e2ca61a95d1085ef1a0a4aa2ce096a71003ce7",
+      "cleanupError": null,
+      "truncated": false,
+      "samples": 16,
+      "uniqueObjects": 8,
+      "readErrors": [],
+      "incomingIds": {
+        "0": 8,
+        "dfbf3c0de39c400d": 8
+      },
+      "objectsZeroThenBad": 8,
+      "allParentNull": true
+    },
+    "independentRuntimeTrials": 1,
+    "independentPerformanceRepeats": 0,
+    "frameTimeP50P95P99": null
+  },
+  "blockers": [
+    "Writer snapshot and actual wire payload not paired by entity ID/time",
+    "Bad parent source after initial correct input remains unresolved",
+    "No performance or visual acceptance from hooked run",
+    "Prior baseline timed out before capture; fresh baseline waits for actual user ETW helper"
+  ],
+  "evidenceReferences": [],
+  "next": "Capture input bit cursor and source stream around transition from correct to invalid parent; pair with writer output before choosing a correction. Keep fresh performance baseline free from native hooks and launch only after actual ETW helper readiness.",
+  "goalComplete": false
+}
