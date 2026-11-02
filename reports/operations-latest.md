@@ -1,35 +1,65 @@
 ## 1. 작업 목표
 
-모델 경로 진단의 후속 도구 상태를 확정한다. 직전 보고서의 Ghidra 초기화 중 표시는 더 이상 현행 상태가 아니므로 이 추가 보고서로 정정한다. 기존 결과와 원문은 보존한다.
+기존 단일 파트 모델 경로 진단을 실제8파트로 확장해 client mode2의 retained buffer·CPU 포즈 진행과 파트의 몸체 위치 정합성을 확인한다. NPC1개체의8파트이며8명 군집 시험이 아니다. 정상 접촉·낙하·추적 기능을 제품에서 변경하지 않고 격리 선행조건을 검증한다.
 
 ## 2. 실제 수행
 
-진행 중이던 동일 REA 요청을 재조회했다. 도구가 provider_timeout을 반환했고 자체 startup deadline은900000ms였다. 요청을 수동 취소하거나 같은 초기화를 다시 시작하지 않았다. 해당 Java 소유 프로세스와 DayZ/PresentMon 프로세스가 없음을 확인했다. 원시 도구 응답을 rea-terminal-evidence.json으로 보존했다.
+기존7개 렌더 파트의 source/packed LOD 목록을 읽었다. 각각 Geometry LOD가 없는3LOD였다. 시각·Memory·Fire LOD 구간의 원본 바이트를 보존하고, 단일 파트에서 검증한 리더 Geometry LOD만 덧붙인 진단 모델7개를 만들었다. 기존 model.cfg 골격/팔레트 클래스를 상속하고 경로는 역슬래시로 명시했다. ANM·XOB·ASI·그래프·native 시계/LOD 코드는 바꾸지 않았다. 별도 PBO를 빌드·서명·서명검증·packed script/모델 header 검증했다.
+
+기존 공식 진단 client/server·고정 좌표·Run request2·root motion off·AI off 하네스를 사용해 세 조건을 각각1회 실행했다. A는8파트 모두ECE_CREATEPHYSICS, B는리더만ECE_CREATEPHYSICS·나머지0, C는A와같이8파트 초기화 후 같은NPC 내부 파트 쌍만 dBodyCollisionBlock으로 차단했다. SDK dBodyIsSet 가드 뒤 반환된 dBlock을 보존했으며 월드·플레이어·다른NPC의 collision layer나지지/sweep 판정은 건드리지 않았다.
+
+기존 A500 observer의 scheduler/buffer/consumer/interpolate4지점을 byte guard 후 읽기 전용 계측했다. receiver8개까지 anonymous ID로 분리하고5scheduler마다 compressed CPU pose를 표본화했다. 모드/시계/포즈에 수치를 쓰지 않았지만 interceptor hook은 사용했으므로 성능 비교에서 제외한다. Computer Use로 실제 게임 창을 확인했으며 새 녹화는 만들지 않았다. 스냅샷은 몸체 표시를 확인하는 데만 사용했다.
 
 ## 3. 측정 결과
 
-새 게임 실행0·새PBO0·새 성능/시각 측정0. 앞선 단일 파트 결과는 그대로다: 경로 수정 전 native LOD0/Geometry-1 및 factory 충돌, 수정 후LOD4/Geometry3·CREATED·10초 명령 DONE·마지막updates48. 단일 실행이며8파트/14클립/64개체 통과가 아니다. p50/p95/p99·화면 cadence는 미측정이다.
+|항목|A: 전부 물리 초기화|B: 렌더 파트 초기화 플래그 제거|C: 내부 파트 쌍 차단|
+|---|---|---|---|
+|factory 반환|8/8|리더1/8,파트1 생성 중 충돌|8/8|
+|server45초 DONE|확인|미도달|확인|
+|client mode2/animation contexts|8 /8|미계측|8 /8|
+|native 관측 오류|0|READY 전종료·미attach|0|
+|파트별 표본 / 변화쌍|250 /249|없음|253 /252|
+|retained buffer 표본|각250/250|없음|각253/253|
+|common Hips 동일 그룹|250/250|없음|253/253|
+|server root 최대 거리|3.920080m|없음|0m(390그룹)|
+|내부 pair block 반환|없음|없음|28/28|
+
+A는8문맥이 각각 scheduler/buffer/consumer/interpolate1251회를 기록했고C는1268회다. 이는 함수 호출 관측 수이며 평가 FPS·게임 프레임 수·GPU 작업 수가 아니다. A의 표본 관찰 구간은약24.906초,C는약25.204초다.5회마다표본이라 약100ms 간격이며 이 표본 간격을 실제 표시 cadence로 보고하지 않는다.
+
+bufferClock은A에서141회,C에서139회 감소/리셋됐다. 따라서 끝값 차이/벽시계 시간을 애니메이션 배속으로 계산하지 않는다. A500 graph clock은 여전히 미확보다. 공통 Hips 일치는 anonymous receiver그룹의 CPU 채널 일치이며 script part index와일대일 매핑을 완료했다는 뜻이 아니다.
+
+A는389개 온전한 server그룹에서root가약3.92m로벌어져 있었다. C는390그룹에서기록정밀도상모든root가같았고마지막8파트모두NativeSeconds44.9996·updates900·request2·commandActive=true였다. 이 값은 서버 script command 집계이며 그래프 재생시간이 아니다.
+
+8/64 gameplay·14클립 시퀀스·실제 표시 부드러움·Present/CPU/GPU p50/p95/p99·할당/GC·추가 물리host/복제 비용은 미측정이다.20ms p95는 목표다.
 
 ## 4. 원인 분석
 
-확인: REA가15분 제한을 초과해 디컴파일을 반환하지 못했다. 실제 게임 생성 실패와 분석 도구 초기화 실패는 서로 다른 사건이다. 모델 경로 진단은 정확한 EXE 바이트·PE unwind/Capstone 및 읽기 전용 native 입력 관측·실제 ConfigGetText/RPT에 근거하며 완료된 Ghidra 디컴파일을 근거로 사용하지 않는다.
+확인: 모델 계약을 보완하면8실제 파트에서 mode2 retained buffer와CPU 포즈 변화를 동시에 관찰할 수 있다. 그러나 독립 물리 초기화는파트끼리밀쳐root가벌어지는 문제를 만들었다. 같은NPC 내부28쌍만차단한C에서는정지지면root정합성이유지됐다. 이 차단은서로다른NPC끼리밀침을없애는군집최적화가아니며, 하나의표시몸체내부의중복충돌을다루는진단이다. 외부접촉을실제로회귀검증한것은아니다.
 
-아직 미확인: 전체8파트 생성 계약·모드2 시간/포즈 동기화·시각 품질·물리 host 비용. 분석 도구 시간 초과가 게임 수정 불가능의 증거는 아니다. 다음 결정에 필요하면 더 긴 초기화 환경을 준비하되, 이번에는 이미 답을 얻은 함수 질문을 위해 즉시 재시작하지 않는다.
+B의 생성 실패는A500 RVA0xc0f336에서0참조읽기였다. 앞선 모델미로딩 fault0xc68039와다르다. 물리초기화플래그를빼는것만으로렌더파트를운용할수있다는후보는이조건에서미수용이다. 어떤내부문맥이비었는지타입을최종확정하지않았다. B의클라이언트런처에는server launch JSON공유위반도있었고종료경로로처리됐다. 이운영오류와보존된서버factory충돌을구분한다.
+
+A의추가bone TSV열은string extra를반복문에서명시초기화하지않아파트마다누적됐다. 원본은보존하고A의앞11개안정열만root/상태분석에사용했다. C에서는extra=""로수정해23열로일치했다. 별도native JSON은이문자열문제와무관하다. 같은표본의재분석을새독립반복으로세지않는다.
+
+가설/한계: native network 경로는기존mode0 시간손실을피하면서표시보간을이용할후보지만, 이번8파트에서평균graph속도·실제화면품질을판정하지않았다. 날씨·초기포즈위상·프레임시간을같게맞춘영상A/B도아니다. 추가7물리host와28block의비용이클수있으므로성능목표에유리하다고가정하지않는다. 기존정상NPC파이프라인을네트워크구조로바로바꾸지않는다.
 
 ## 5. 검증 수준
 
-모델 경로 진단 성공·단일 파트 생성 시험 완료 판정은 유지한다. REA 디컴파일은 미확보다.8/64 기능·화면·성능·20ms p95·최종 수용은 미완료다.
+8파트 생성·mode2 CPU/buffer 연결: 진단 성공. 내부 pair API 적용·정지지면root정합성: 단일 실행 범위 통과. 반복 검증 완료·이동/전투/등반/낙하 기능 회귀·시각 품질·성능·최종 수용은 미완료다. B는 실패다. 세 조건을 최종 후보3회 성공으로 합산하지 않는다.
 
 ## 6. 변경 사항
 
-추가 종료 기록·보고서·공개 JSON·기존 진행 상태만 갱신했다. 새 게임 코드/PBO/자산/운영 서버 변경은 없다. 앞선3진단PBO 서명·검증 성공은 원 보고서 결과이며 이번 새 서명으로 세지 않는다.
+새 진단 nf_net_parts PBO SHA-256=8BDA6B7A8C95962EF0FDA6BBC6AA228906504C3130D4597070ED2E1E53F7DF9C. 자동 서명·서명검증 및 packed script 일치 성공. 원래7모델의 시각/Memory/Fire LOD 구간 byte보존을검사했고packed ODOL56·LOD4·Geometry해상도header를대조했다. 이검사만으로packed mesh 전체의시각의미동등성을인증하지않는다. 기존3 PBO도런처에서hash/서명을재검증했다. 개인키는패키지와공개자료에없다.
+
+eight-geometry 안의 source/진단PBO·세임무·런처·observer사본·분석만추가했다. originalSource/배포PBO·운영서버·Steam·ANM·XOB·그래프는보존했다. 런처의generic newPbo=false 표식과 달리이묶음에는새진단PBO1개가있음을명시한다. 게임플레이알고리즘은변경하지않았다.
 
 ## 7. 원시 증거
 
-[앞선 모델 경로 진단과 실행 근거](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/a7de9718bfb994f8e9278178afeb3efd203d9d0c/reports/operations/npc-animation-factory-model-path-20261102.md). 로컬 rea-terminal-evidence.json은 전체 도구 오류를 보존하며 공개하지 않는다. 이번 공개 요약은 error code·deadline·완료 결과 부재만 제공한다. 기존 실행 ID·원시 증거·체크포인트 해시는 그대로다.
+sourceRunId: animation-network-role-20261101-1600/eight-part-20261102/eight-geometry. source-proof.json·packed-model-header-proof.json·build-v3·signature-v3·packed-members-proof-v3와세조건의launch·factory-stages·role-pose·native-observer·heartbeat·RPT/crash·계획을로컬해시목록에연결한다. B의observer 미attach와launch 공유위반을제외하지않는다. SDK enphysics.c·dayzphysics.c의해시를남겨사용한공개API선언을고정한다.
+
+세server/client의launch가terminal이고실제DayZ/PresentMon프로세스가없음을확인한뒤저장했다. 서버harness는DONE후소유프로세스를강제정리하므로정상종료를주장하지않는다. 공개자료는선택집계·CPU표본요약·자체pair차단snippet만제공하며게임자산·원시영상·절대경로·프로세스정보·개인키는공개하지않는다.
 
 ## 8. 잔여 문제
 
-다음 산출물은 나머지 실제 모델 파트의 로딩과 Geometry 계약을 확인하는8파트 선행조건 판정이다. 그 다음 client mode2·파트 간 동기화·실제 표시·64개체 비용을 분리한다. 단일 파트 경로 수정으로 애니메이션 끊김·성능이 해결됐다고 선언하지 않는다. 목표는 active이며 기존 NPC 기능 보존과 실제 품질/성능 개선을 계속 추구한다.
+다음의가장높은가치는기존mode0 fixture와이mode2 후보의실제표시품질·재생위상을작은동일조건비교로판정하는것이다. 화면이개선되지않으면단지CPU포즈가움직인다는이유로이식을확대하지않는다. 개선가능성이확인돼도이동root연결·외부접촉·피격/등반/낙하·14클립전환과추가물리host비용을별도로검증한뒤8→64로확장한다. 기존scratch 반복성능과착지복구회귀는별도실험으로보존한다. 전체골은active이며기능·시각·20ms p95는독립판정한다.
 
-로컬 checkpoint SHA-256: fe2a9d005f9330d3d91cc828455c0511262d17644ebd9567b3b871b5b892facb
+로컬 checkpoint SHA-256: 981976fb231a5c42ce4fbf1c5c49c9ae8c3f261e7010b5644a01f49a8dafdd56

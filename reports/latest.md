@@ -1,3 +1,5 @@
+> 최신 작업: NPC1개체8파트 mode2·buffer/CPU 포즈 연결. 내부28쌍 충돌 차단으로 정지root 정합성 단일 통과. 렌더물리초기화 제거는 충돌 실패. 시각/14클립/64성능 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-animation-eight-part-mode2-20261102.md).
+
 > 후속 종료 상태: 모델 경로 진단 유지. Ghidra는 자체15분 초기화 시간초과로 종료·결과 미확보. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-animation-factory-analysis-close-20261102.md).
 
 > 최신 작업: Geometry 후보의 무효 시험 정정: 실제 모델 미로딩 확인. 경로 구분자만 수정해 native LOD4/Geometry3·단일 파트 생성/10초 명령 통과.8파트·시각·성능 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-animation-factory-model-path-20261102.md).
