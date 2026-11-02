@@ -1,54 +1,56 @@
 ## 1. 작업 목표
 
-커스텀 네트워크 반복경고가 바닐라에서도같은규모로발생하는지기존자료로확인하고, 미해결참조가실제부모연결인지공식바인딩과대조한다. 부모없는서버개체의클라이언트등록상태를읽어다음수정질문을좁힌다.
+기존 상태 제한 SupportSweepFast 후보의 실제 wrapper 비용을 OFF/ON으로 비교한다. 전역Fast의 지형약6.6% overhead와 적격지붕효과를 구분하고, 정상지원/접촉/낙하 판정을 보존한다. 동시에 부모참조 입력의 분할코드를 전체의사코드와 대조한다.
 
 ## 2. 실제 수행
 
-기존닫힌RPT6개와초기mode2관련3개를스트리밍·SHA/파일안정성검사했다. 오프라인/네트워크·일반/진단client·단일/8파트를구분했으며새성능반복으로세지않았다.
+기존9개서명모듈과 native live-world/idle-pose 하네스를 재사용했다. 같은 미션·같은 PBO에서 SFPolicyRead=true 뒤 SFEnabled만 OFF/CONTEXT로 바꾸었다. globalFast/Shadow는둘다false다. 지형은ground/platformfalse, 나머지는high/FOLLOW/platformtrue 상태힌트로 후보의실제eligibility를통과시킨다. 실제 ray/sphere/법선/높이/footprint/joint 검사는그대로다. roof_minimumLift거부는지붕anchor에서0.3m이며옛지형거부조건과다르다.
 
-원본A500의AddChild/RemoveChild/GetParent문자열등록과nativehandler를bounded Capstone으로읽었다. IEntity AddChild handler2f4a10은vslot80,RemoveChild2f5c50은slot78을소비한다. 이들은대기loop의호출slot과같다. IEntity GetParent의등록2fb133→leaf2f9960은object+68의component에서+18을읽으며실제loop의부모비교와일치한다. 다른GetParent동명handler2f9970(+58)을IEntity것으로혼동하지않았다. leaf가pdata에없어기존intervalassert가실패한뒤등록entry에서첫ret까지제한decode했다. SDK의공식선언과대조했다.
+독립서버프로세스2개를순차실행했다. 각각16group·4arm·1000call=64000solve, 총128000. 첫실행OFF/CONTEXT/CONTEXT/OFF,둘째역순이다. 측정전32warmup, 각group결과/이유/접촉점·lift범위검사, root/pose 고정, actual context/original counters를확인했다. 알려진Ghidra분석worker가종료된뒤에만측정했다. 클라이언트·새영상·새PBO는없다.
 
-기존1NPC/8파트미션에생성직후공식GetParent/GetNetworkID/GetHierarchyPivot/IsHierarchyPositionOnly의서버TSV쓰기만추가했다. 클라이언트등록hook에같은GetParent필드읽기를추가했다. 최대8건뒤detach·55초window/60초CLIcleanup,기존10PBO·SETUP후보OFF. 부모/ID/native시계쓰기나계층강제연결은없다. 시험종료후보고서를저장했다. 입력처리함수후속MCP요청은아직대기중이며재시작/취소하지않았다.
+2시간deadline의공식REA stdio세션은1회초기화를재사용해3함수를decompile한뒤close_binary·serverexit0으로종료했다. 원본A500전후hash동일. Defaultanalyzer를생략하지않았다. 입력reader는interior c044f8에서canonical c035e0으로해결됐고, 앞서원본MSVCunwind7fragment연결과일치한다. caller/parentsetter b59610,공통serializer b5b5d0도성공했다. decompiler의타입전파/겹친로컬경고는보존한다.
 
 ## 3. 측정 결과
 
-|기존실행|반복경고를포함한관련경고총건수|해석범위|
-|---|---:|---|
-|network vanilla 첫실행/독립후속|각1|둘다공통sentinel경고1건,문제반복ID없음|
-|old custom network pilot4|1|커스텀실행역할실패가있어정상기능대조로쓰지않음|
-|matched offline main/main2|각0|네트워크계약대조가아님|
-|초기단일파트·일반release client|641|문제유사ID640건+공통1건|
-|초기8파트내부차단·diag client|8673|문제유사ID8672건+공통1건|
-|mode2-4 영상조건·diag client|19361|문제유사ID19360건+공통1건|
+|실행/조건|OFF 중앙값 ticks/1000회|CONTEXT 중앙값 ticks/1000회|변화|
+|---|---:|---:|---:|
+|1/terrain|551648.5|554980.5|+0.604%|
+|1/roof|769914.0|577763.5|-24.957%|
+|1/edge|653558.5|569588.0|-12.848%|
+|1/lift_reject|728941.0|536559.0|-26.392%|
+|2/terrain|550268.0|558860.0|+1.561%|
+|2/roof|774468.0|585679.5|-24.377%|
+|2/edge|653214.5|577597.5|-11.576%|
+|2/lift_reject|725632.0|539906.0|-25.595%|
 
-조건/길이가다르므로총건수비율을성능/개선률로해석하지않는다. 초기유사ID의fields는531095/784359/1785869로현재531399/784359/1851405와동일word가아니다. 프로파일·초기화·버전등의차이를배제하지않는다.
+위값은동일메서드1000회경과ticks의표본중앙값이다. 순수CPUself-time·게임/Present프레임ms가아니다. 런별메서드표본p50/p95/p99와두방향대조·질의counter는공개JSON에별도제공한다. 프레임p50/p95/p99는이번에없다. 지붕효과의양방향중앙값은첫실행-25.219/-25.160%,둘째-24.049/-25.022%다. 지형은후보비적격경로로contextCalls0을확인했고새래퍼검사overhead가남았다.
 
-이번server8타입은자체networkID low25~32/high0,Parent NULL8/8,pivot-1 8/8,positionOnlyfalse8/8이었다. 클라이언트등록8건도실제Parent NULL이면서미해결부모연결ID dfbf3c0de39c400d를등록했다. actualParentType도모두null이었다. child고유ID를hook에서읽지않아server25~32와일대일매핑했다고하지않는다. hook읽기오류0,자동detach/cleanup확인,8파트physics관찰. CPU포즈존재는실제시각부드러움이아니다.
+각실행64행·가드모두통과,OFFcontext0/original1000,적격지붕ONcontext1000/original0,누적footRays=10000-skippedRays,skippedRays=4*fastUsed 계약통과. accepted/pointCount·root/pose가비교내에서일치했다. 허용lift차이최대8mm가드는기존과같고모든조건완전동일lift라고하지않는다.
 
-p50/p95/p99·Present·CPUbusy·GPU·malloc량·GC·경고경로self-time은미측정이다.20msp95는목표다. 게임은대기fixture에서퇴역해종료했으므로추적/등반/낙하8→64회귀가아니다. clientexit-1·serverownedcleanup,normalQuitVerifiedfalse.
+기존후속선별기준(지붕중앙/양방향각5%이상감소·지형중앙overhead3%이하)을두프로세스에서통과했다. 이는전체성능수용기준이아니다.8/64기능회귀·시각품질·malloc/GC·Present/CPUbusy/GPU·20msp95달성은이번미측정이다. 마지막8/64기능성공은기존support-context기록이며이번방법시험으로독립반복을늘리지않는다.서버퇴역detach후owned정리,exit-1·normalQuitVerifiedfalse.
 
 ## 4. 원인 분석
 
-확인된범위:대기loop는부모·자식연결의공식native호출계약과일치한다. 서버생성시부모없는8파트,클라이언트등록시현재부모없음,하지만미해결부모요청이등록된상태를함께관찰했다. 실제의도된부모에NPC가붙어있다고설명할수없다.
+확인:기존전역Fast와달리상태래퍼는일반지형에서추가지형bound검사를피하고적격지붕의반복메서드비용감소를유지했다. 다만지형래퍼분기비용0.6~1.6%가있고전체프레임이25%빨라졌다는결론은아니다. Footray감소에는추가boundsphere가동반되므로총질의개수만의절감으로설명하지않는다. 위험은8mm범위lift변화·힌트stale·혼합전투·경계의일반화이며,실제물리가드를유지해도추가회귀가필요하다.
 
-지지되지않는설명:8파트로늘리면서처음생긴문제라는설명은초기단일파트증거와양립하지않는다. 진단exe만의문제라는설명은일반releaseclient의유사경고와양립하지않는다. 다만정확한bytes/조건동등성이없어모든빌드의동일버그로일반화하지않는다. 기존오프라인65~70ms급CPU비용을이네트워크경고로설명하지않는다.
+부모입력진단:전체reader에8byte ID초기화0과pivot-1이있고,후속presence비트가설정되면ID8byte·pivot4byte·bool을읽어b59610에전달한다. b59610은현재부모와resolved대상비교·기존연결해제·즉시연결또는pending등록을수행한다. 이흐름은기존실제caller와일치한다. 공통serializer의부모없음writer분기는ID0/pivot-1/bool0을저장한다. 그러나이함수가문제패킷의실제writer였다고관찰한것은아니며,wire비트와snapshot값은아직연결하지못했다.
 
-미확인:서버wire에정확히무엇이기록됐는지,client no-parent flag/비트정렬/초기값중어디서참조가생기는지다. 현재데이터로잘못된서버송신·엔진버그·asset오염중하나를확정하지않는다. SETUP추가실패를지우지않고,무근거INITAI추가·부모0강제·복제/물리해제는하지않는다. 비용상중요도는별도측정이필요하다.
+초기화누락을확정할근거가없어해당가설을채택하지않는다. 모든임시로컬의liveness를의사코드명만으로증명하지않고어셈블리qword쓰기와대조한다. 서버송신오류·client정렬오류·engine/asset원인중하나를확정하지않는다. 원본코드를강제patch하거나부모ID0처리로경고를숨기지않았다.
 
 ## 5. 검증 수준
 
-기존경고분포감사·공식계층바인딩대조·server/client현재부모대조:제한진단성공. root cause최종확정·수정·8/64회귀·실제시각품질·성능·반복최종수용은미완료다. 전체골active.
+현재wrapper의고정입력메서드비용:2독립프로세스내짝비교반복검증,후속선별통과. 합성조건결과/포즈/위치가드:제한진단통과.3선택native함수:진단성공. 이번8/64게임플레이·실제시각품질·전체성능·최종수용:미실행/미수용. 전체골active.
 
 ## 6. 변경 사항
 
-새PBO없음. 기존10모듈hash/서명검증후실행했다. 기존source/PBO/asset/physics/정상낙하복구/Steam/운영서버/개인키보존. 변경은기존research내서버mission읽기전용감사·native읽기hook·분리profile·static분석·보고서다. 서명된후보를현재배포로승격하지않았다.
+새PBO/게임알고리즘변경없음. 기존9PBOhash/서명검증을각실행전에통과했다. support후보1C879D1F와이전원본source/배포/Steam/asset/개인키/실패기록보존. 비교미션의실제바이트SHA=62f2fd5e2539c3a2b9316be73ea3ea308000a6a55dd3b0c26c537193c6565e66,두실행동일. 준비중LF정규화해시52c6...와실제CRLF파일해시의차이를실행전에발견해plan에둘다구분기록했다. 엔진컴파일·실제64행생성은이번에검증됐으며준비단계미실행기록을덮지않는다.
 
 ## 7. 원시 증거
 
-network-parent-contract2의plan·source·server-parent-contract.tsv·부모읽기CLI Evidence·launch/exit/TSV/RPT,network-warning-existing-controls.json와network-warning-early-role-controls.json,공식SDK enentity.c,각binding/handler/leafJSON과source를해시에연결한다. 원본기록은덮어쓰지않는다. 공개는집계/상대RVA/흐름설명이며개인키·로컬경로·프로세스·원시전체·게임자산은제외한다. pendingMCP는불변증거에포함하지않는다.
+context-method-cost1/2의plan/source/launch/signaturechecks·24열TSV·퇴역/완료RPT,context-method-cost-analysis와소스,preflight/runner문법기록을해시에연결한다. network-reader-batch1의공식광고toolcontracts/open/batch3결과/close/state·선택의사코드,원본unwind/parentlocalsJSON도연결한다. 공개는메서드집계·상대주소·흐름설명이며원시전체/게임decompile본문/개인키/프로세스/로컬경로/asset은제외한다.
 
 ## 8. 잔여 문제
 
-다음은입력reader의no-parent 분기와serverwriter의대응계약을연결해수정가능성을판정하는것이다. parent가NULL임을이유로nativeID를강제로0으로만들면실제이동발판/부모연결까지숨길위험이있으므로적용하지않는다. 물리query비용절감연구와network입력오류를구분하며,원인수정후에도8→64정상밀침·낙하·착지·FOLLOW·재등반과프레임/화면을독립검증한다.
+다음비용산출물은같은현재8→64장면에서의OFF/ON전체프레임비교다. 이메서드결과만으로후보를전역활성화하지않는다. 기존정상밀침·낙하·착지·FOLLOW·재등반과역사적실패를유지하고기능/실제화면/성능을독립판정한다. 부모presence비트의실제생성자와reader직전bitcursor계약은별도로좁히되,매번초기화를다시하는툴실행을반복하지않는다. 결과에따라수정여부가달라지는최소질문부터확인한다.
 
-로컬checkpointSHA256: fe64fdde77c11599943a6bb70aec13230f85fc969f3723df176856e1119eba99
+로컬checkpointSHA256: 1323a49f6caf45c7c449f36d5af4a050c721b21d4a5608da90faf2e910ce48fa

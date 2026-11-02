@@ -1,3 +1,5 @@
+> 최신 작업: 조건부지지래퍼2독립비교:지붕약24.4~25.0%감소·지형약0.6~1.6%증가(메서드만).3native함수확보,전체프레임/시각미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-context-method-reader-20261103.md).
+
 > 최신 작업: 서버8파트부모NULL·client등록8건실제부모NULL과미해결계층참조대조. 공식AddChild/GetParent계약연결;송수신원인·비용미확정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-network-parent-contract-20261103.md).
 
 > 최신 작업: 네트워크최초등록8건에동일미해결ID확인·Ghidra17분분석완료. 재삽입loop확보,전송/해석원인미확정·성능미측정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-network-registration-origin-20261103.md).

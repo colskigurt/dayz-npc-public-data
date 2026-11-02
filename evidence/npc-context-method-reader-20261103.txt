@@ -1,0 +1,432 @@
+Aggregate diagnostic only. No raw logs, game assets, credentials or process identifiers.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T06:28:06.679198+09:00",
+  "sourceRunId": "network-gameplay/context-method-and-reader1",
+  "buildId": "A500BE80+existing9PBOs+support1C879D1F",
+  "verificationStatus": {
+    "methodCost": "two_independent_processes_paired_conditions_screening_passed",
+    "nativeReader": "three_selected_functions_decompiled",
+    "functionalRegression": "no_new_8_64_gameplay_this_bundle",
+    "visualQuality": "not_measured",
+    "fullFramePerformance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "totalIndependentProcesses": 2,
+    "totalMeasuredSolves": 128000,
+    "conditions": {
+      "context-method-cost1": {
+        "terrain": {
+          "medianElapsedTicksPer1000": {
+            "OFF": 551648.5,
+            "CONTEXT": 554980.5
+          },
+          "contextVsOffPercent": 0.604007805695117,
+          "halfDirectionMediansPercent": [
+            0.7049575339741376,
+            0.2082662374081501
+          ],
+          "distributionElapsedTicksPer1000": {
+            "OFF": {
+              "p50": 551648.5,
+              "p95": 558940.55,
+              "p99": 560185.71
+            },
+            "CONTEXT": {
+              "p50": 554980.5,
+              "p95": 559656.5,
+              "p99": 559771.3
+            }
+          },
+          "queryTotals": {
+            "OFF": {
+              "footRays": 80000,
+              "jointSweeps": 32000,
+              "fastAttempts": 0,
+              "fastUsed": 0,
+              "skippedRays": 0,
+              "fastReferenceChecks": 0,
+              "fastUnder": 0,
+              "shadowQueries": 0,
+              "contextCalls": 0,
+              "originalCalls": 8000
+            },
+            "CONTEXT": {
+              "footRays": 80000,
+              "jointSweeps": 32000,
+              "fastAttempts": 0,
+              "fastUsed": 0,
+              "skippedRays": 0,
+              "fastReferenceChecks": 0,
+              "fastUnder": 0,
+              "shadowQueries": 0,
+              "contextCalls": 0,
+              "originalCalls": 8000
+            }
+          }
+        },
+        "roof": {
+          "medianElapsedTicksPer1000": {
+            "OFF": 769914.0,
+            "CONTEXT": 577763.5
+          },
+          "contextVsOffPercent": -24.957397839239192,
+          "halfDirectionMediansPercent": [
+            -25.218713120872206,
+            -25.159553634596104
+          ],
+          "distributionElapsedTicksPer1000": {
+            "OFF": {
+              "p50": 769914.0,
+              "p95": 1009505.4999999999,
+              "p99": 1086491.5
+            },
+            "CONTEXT": {
+              "p50": 577763.5,
+              "p95": 696926.0499999999,
+              "p99": 731919.61
+            }
+          },
+          "queryTotals": {
+            "OFF": {
+              "footRays": 80000,
+              "jointSweeps": 32000,
+              "fastAttempts": 0,
+              "fastUsed": 0,
+              "skippedRays": 0,
+              "fastReferenceChecks": 0,
+              "fastUnder": 0,
+              "shadowQueries": 0,
+              "contextCalls": 0,
+              "originalCalls": 8000
+            },
+            "CONTEXT": {
+              "footRays": 16000,
+              "jointSweeps": 32000,
+              "fastAttempts": 16000,
+              "fastUsed": 16000,
+              "skippedRays": 64000,
+              "fastReferenceChecks": 0,
+              "fastUnder": 0,
+              "shadowQueries": 0,
+              "contextCalls": 8000,
+              "originalCalls": 0
+            }
+          }
+        },
+        "edge": {
+          "medianElapsedTicksPer1000": {
+            "OFF": 653558.5,
+            "CONTEXT": 569588.0
+          },
+          "contextVsOffPercent": -12.848199510831847,
+          "halfDirectionMediansPercent": [
+            -12.574943557558004,
+            -12.729957357057092
+          ],
+          "distributionElapsedTicksPer1000": {
+            "OFF": {
+              "p50": 653558.5,
+              "p95": 712110.75,
+              "p99": 734150.95
+            },
+            "CONTEXT": {
+              "p50": 569588.0,
+              "p95": 576819.45,
+              "p99": 577439.09
+            }
+          },
+          "queryTotals": {
+            "OFF": {
+              "footRays": 80000,
+              "jointSweeps": 32000,
+              "fastAttempts": 0,
+              "fastUsed": 0,
+              "skippedRays": 0,
+              "fastReferenceChecks": 0,
+              "fastUnder": 0,
+              "shadowQueries": 0,
+              "contextCalls": 0,
+              "originalCalls": 8000
+            },
+            "CONTEXT": {
+              "footRays": 48000,
+              "jointSweeps": 32000,
+              "fastAttempts": 8000,
+              "fastUsed": 8000,
+              "skippedRays": 32000,
+              "fastReferenceChecks": 0,
+              "fastUnder": 0,
+              "shadowQueries": 0,
+              "contextCalls": 8000,
+              "originalCalls": 0
+            }
+          }
+        },
+        "lift_reject": {
+          "medianElapsedTicksPer1000": {
+            "OFF": 728941.0,
+            "CONTEXT": 536559.0
+          },
+          "contextVsOffPercent": -26.391985085212653,
+          "halfDirectionMediansPercent": [
+            -26.048562322523495,
+            -26.59417264670318
+          ],
+          "distributionElapsedTicksPer1000": {
+            "OFF": {
+              "p50": 728941.0,
+              "p95": 739639.4,
+              "p99": 740528.68
+            },
+            "CONTEXT": {
+              "p50": 536559.0,
+              "p95": 546727.25,
+              "p99": 547294.25
+            }
+          },
+          "queryTotals": {
+            "OFF": {
+              "footRays": 80000,
+              "jointSweeps": 0,
+              "fastAttempts": 0,
+              "fastUsed": 0,
+              "skippedRays": 0,
+              "fastReferenceChecks": 0,
+              "fastUnder": 0,
+              "shadowQueries": 0,
+              "contextCalls": 0,
+              "originalCalls": 8000
+            },
+            "CONTEXT": {
+              "footRays": 16000,
+              "jointSweeps": 0,
+              "fastAttempts": 16000,
+              "fastUsed": 16000,
+              "skippedRays": 64000,
+              "fastReferenceChecks": 0,
+              "fastUnder": 0,
+              "shadowQueries": 0,
+              "contextCalls": 8000,
+              "originalCalls": 0
+            }
+          }
+        }
+      },
+      "context-method-cost2": {
+        "terrain": {
+          "medianElapsedTicksPer1000": {
+            "OFF": 550268.0,
+            "CONTEXT": 558860.0
+          },
+          "contextVsOffPercent": 1.5614209803223256,
+          "halfDirectionMediansPercent": [
+            0.9446123041707666,
+            1.0021581190710394
+          ],
+          "distributionElapsedTicksPer1000": {
+            "OFF": {
+              "p50": 550268.0,
+              "p95": 650458.8999999999,
+              "p99": 690158.98
+            },
+            "CONTEXT": {
+              "p50": 558860.0,
+              "p95": 623404.7,
+              "p99": 648391.34
+            }
+          },
+          "queryTotals": {
+            "OFF": {
+              "footRays": 80000,
+              "jointSweeps": 32000,
+              "fastAttempts": 0,
+              "fastUsed": 0,
+              "skippedRays": 0,
+              "fastReferenceChecks": 0,
+              "fastUnder": 0,
+              "shadowQueries": 0,
+              "contextCalls": 0,
+              "originalCalls": 8000
+            },
+            "CONTEXT": {
+              "footRays": 80000,
+              "jointSweeps": 32000,
+              "fastAttempts": 0,
+              "fastUsed": 0,
+              "skippedRays": 0,
+              "fastReferenceChecks": 0,
+              "fastUnder": 0,
+              "shadowQueries": 0,
+              "contextCalls": 0,
+              "originalCalls": 8000
+            }
+          }
+        },
+        "roof": {
+          "medianElapsedTicksPer1000": {
+            "OFF": 774468.0,
+            "CONTEXT": 585679.5
+          },
+          "contextVsOffPercent": -24.376539766652716,
+          "halfDirectionMediansPercent": [
+            -24.04915332698703,
+            -25.02222748072986
+          ],
+          "distributionElapsedTicksPer1000": {
+            "OFF": {
+              "p50": 774468.0,
+              "p95": 851800.9,
+              "p99": 860017.78
+            },
+            "CONTEXT": {
+              "p50": 585679.5,
+              "p95": 610171.7999999999,
+              "p99": 619280.76
+            }
+          },
+          "queryTotals": {
+            "OFF": {
+              "footRays": 80000,
+              "jointSweeps": 32000,
+              "fastAttempts": 0,
+              "fastUsed": 0,
+              "skippedRays": 0,
+              "fastReferenceChecks": 0,
+              "fastUnder": 0,
+              "shadowQueries": 0,
+              "contextCalls": 0,
+              "originalCalls": 8000
+            },
+            "CONTEXT": {
+              "footRays": 16000,
+              "jointSweeps": 32000,
+              "fastAttempts": 16000,
+              "fastUsed": 16000,
+              "skippedRays": 64000,
+              "fastReferenceChecks": 0,
+              "fastUnder": 0,
+              "shadowQueries": 0,
+              "contextCalls": 8000,
+              "originalCalls": 0
+            }
+          }
+        },
+        "edge": {
+          "medianElapsedTicksPer1000": {
+            "OFF": 653214.5,
+            "CONTEXT": 577597.5
+          },
+          "contextVsOffPercent": -11.576136169665553,
+          "halfDirectionMediansPercent": [
+            -11.056775988941853,
+            -11.86605776554766
+          ],
+          "distributionElapsedTicksPer1000": {
+            "OFF": {
+              "p50": 653214.5,
+              "p95": 660268.75,
+              "p99": 660799.35
+            },
+            "CONTEXT": {
+              "p50": 577597.5,
+              "p95": 584485.6,
+              "p99": 584996.32
+            }
+          },
+          "queryTotals": {
+            "OFF": {
+              "footRays": 80000,
+              "jointSweeps": 32000,
+              "fastAttempts": 0,
+              "fastUsed": 0,
+              "skippedRays": 0,
+              "fastReferenceChecks": 0,
+              "fastUnder": 0,
+              "shadowQueries": 0,
+              "contextCalls": 0,
+              "originalCalls": 8000
+            },
+            "CONTEXT": {
+              "footRays": 48000,
+              "jointSweeps": 32000,
+              "fastAttempts": 8000,
+              "fastUsed": 8000,
+              "skippedRays": 32000,
+              "fastReferenceChecks": 0,
+              "fastUnder": 0,
+              "shadowQueries": 0,
+              "contextCalls": 8000,
+              "originalCalls": 0
+            }
+          }
+        },
+        "lift_reject": {
+          "medianElapsedTicksPer1000": {
+            "OFF": 725632.0,
+            "CONTEXT": 539906.0
+          },
+          "contextVsOffPercent": -25.595067472217327,
+          "halfDirectionMediansPercent": [
+            -25.96923920087241,
+            -25.703678142792263
+          ],
+          "distributionElapsedTicksPer1000": {
+            "OFF": {
+              "p50": 725632.0,
+              "p95": 759768.75,
+              "p99": 766571.35
+            },
+            "CONTEXT": {
+              "p50": 539906.0,
+              "p95": 544801.65,
+              "p99": 544981.13
+            }
+          },
+          "queryTotals": {
+            "OFF": {
+              "footRays": 80000,
+              "jointSweeps": 0,
+              "fastAttempts": 0,
+              "fastUsed": 0,
+              "skippedRays": 0,
+              "fastReferenceChecks": 0,
+              "fastUnder": 0,
+              "shadowQueries": 0,
+              "contextCalls": 0,
+              "originalCalls": 8000
+            },
+            "CONTEXT": {
+              "footRays": 16000,
+              "jointSweeps": 0,
+              "fastAttempts": 16000,
+              "fastUsed": 16000,
+              "skippedRays": 64000,
+              "fastReferenceChecks": 0,
+              "fastUnder": 0,
+              "shadowQueries": 0,
+              "contextCalls": 8000,
+              "originalCalls": 0
+            }
+          }
+        }
+      }
+    },
+    "methodFollowupGatePassed": true,
+    "readerFunctions": 3,
+    "readerSucceeded": 3,
+    "readerElapsedWallSeconds": 1014.101,
+    "frameTimeP50P95P99": null
+  },
+  "evidenceReferences": [],
+  "blockers": [
+    "Whole-frame OFF/ON and20ms p95 not established",
+    "No actual visible quality measurement this bundle",
+    "Network parent presence-bit writer/input mismatch unresolved",
+    "Prior8/64 functionality is not a repeated regression from this method test",
+    "Reader decompiler type propagation and overlapping-local warnings require assembly corroboration"
+  ],
+  "next": "Use localized method-cost success to justify a matched current8→64 OFF/ON full-frame test. In parallel narrow the parent presence-bit source without forcing IDs, disabling replication/physics, or repeating unbounded tool initialization.",
+  "goalComplete": false
+}
