@@ -1,3 +1,5 @@
+> 최신 작업: 상태 제한 지지 후보:19가드·8명8/8·64명64/64,낙하 복귀82/82. 실제 비용/시각 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-support-context-8-64-20261103.md).
+
 > 최신 작업: 기존 SupportSweepFast 2독립 비교:지붕 메서드 약26% 감소·지형 약6.6% 증가. 전역 수용 기준 미통과. 상태 제한 후보는 명세만,8/64·시각·전체 프레임 미검증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-current-support-method-cost-20261103.md).
 
 > 최신 작업: 현재 코드의 3팔 배열 재사용 비교:2독립 실행·288000회. 국소 중앙값 약1.5~2.5% 감소지만 사전5% 기준 미달. full-game/시각/20ms 미검증, 주력 후보로 반영하지 않음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-current-scratch-method-cost-20261103.md).
