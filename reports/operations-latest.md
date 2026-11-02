@@ -1,54 +1,60 @@
 ## 1. 작업 목표
 
-기존64개체 시험의 EGRESS_STALL 직후 종료가 복구 판단을 가리는지 확인한다. 물리·애니메이션 알고리즘은 바꾸지 않고 누적 milestone 완료 이후 최소20초 관찰한다. 이전 ID55의 정확한 포즈/주변 상태를 복원한 결정적 replay는 아니다.
+실제8파트 network 후보의추가7개시각호스트가물리상호작용에중복참여하는지줄여볼수있는지최소격리시험으로확인한다. leader/피해receiver/원래관절·지지·월드·밀침·낙하판정은보존한다. 결과는후보수용여부를바꾸는시험이며사전성능개선을가정하지않았다.
 
 ## 2. 실제 수행
 
-같은765E network PBO와 기존5PBO·64NPC/512parts·fixture·플레이어 자극을 유지했다. 새 격리 mission은 첫 전원 유효상태 도달 후20초를 더 관찰하며 기존 accepted-step/pose recovery/예산/재시도 상태를 읽어 TSV에 추가했다. 새물리질의·본조회·nativehook·시계·그래프·solver변경·영상은없다. 현재 후보의same-NPC28쌍차단은유지하고타NPC/플레이어/월드충돌은끄지않았다.
+8NPC/64parts의같은765E PBO·기존5PBO·미션경로를사용했다. mission은opt-in flag가있을때서버의각NPC parts1..7에dBodySetInteractionLayer(host,PhxInteractionLayers.NOCOLLISION)를설정한다. dBodyIsSet는확인하고본체를삭제/비활성화하지않았다. part0leader·damage receiver·시계·그래프·solver는변경하지않았다. 클라이언트레이어를별도로변경하거나읽지는않았다.
 
-sixtyfour2-observe는컴파일후알려진PluginConfigDebugProfile 경고의junction/실경로불일치로guard가중단했다. 실패프로필을보존하고,sixtyfour3-observe에서예상경로만정정했다. 모든임의SCRIPT(E)를허용하도록guard를완화하지않았다. Computer Use로반환된DayZ창을활성화하고실제씬스냅샷확인후gate를열었다. 창정지화면은부드러움증거가아니다.
+SETUP/ACTIVE/TERMINAL/RESTORED 레이어와1Hz script시간·업데이트·머리MS포즈를기록하도록했다. SETUP의head는0placeholder로명시하고실제포즈표본으로사용하지않는다. 최초eight-layer0-1은Enforce의인덱스표현식컴파일오류로중단됐고보존했다. eight-layer0-2는명시headHandle지역변수로바꾼후컴파일됐다.
+
+후속eight-layer-control1은동일mission바이트와관측기를유지하되레이어opt-in flag를만들지않았다. 초기ready대기도ON약93.9초보다긴OFF106.5초로두어단순초기대기만으로참조가사라지는지구분했다. 전경게임창은Computer Use로확인했다. 준비실패/후보실패/대조통과를각각기록한다.
 
 ## 3. 측정 결과
 
-|항목|sixtyfour3-observe 단일실행|
-|---|---|
-|논리NPC/native parts|64/512|
-|관찰종료/추가관찰시작|241.463/221.460초|
-|실제추가관찰|20.003초|
-|누적milestone/유효terminal|64/64 및64/64|
-|기존엄격게이트|true;최종failure필드전원빈값|
-|계약행/전이|2005/1264|
-|전이체인·generation·terminal정합오류|0/0/0|
-|FALL→LAND→FOLLOW|87/87|
-|명령퇴역detach|512parts 확인|
-|실제Present/CPUbusy/GPU/할당/GC|미측정|
+|항목|레이어변경ON|원래레이어OFF|
+|---|---|---|
+|초기물리본체존재|64/64|64/64|
+|초기시각호스트레이어변경|56개|0개|
+|초기원래레이어readback|524288|524288|
+|변경후시각호스트readback|2|524288|
+|실제경로기능시험|시작직후VM예외·guard종료|74.2852초에8/8유효종료|
+|포즈/파트계약|파트참조소실·실패|64파트script시간·머리MS변화확인|
+|최종원래레이어검증|완료불가|64/64|
+|기록된FALL→LAND→FOLLOW|완결시험아님|9/9|
+|전이/generation/terminal오류|완결시험아님|0/0/0;전이144|
+|성능·표시품질|미측정/미수용|미측정/미수용|
 
-이번종료의마지막5초에서failure잔존또는위치고정과접촉거부가동반된개체는확인되지않았다. 이것은이실행의관찰범위이며어떤향후상태에서도정체가없다는증명이아니다.8개체2회통과기록과별개로이번64확장관찰은1회다.
+ON은시작직후preCommit/partSpread가약11km까지벌어진표본과rendered.GetPosition의NULL instance예외가발생했다. 이는원점과의거리수준인비정상좌표관측이며실제11km이동/순간이동기능을구현한것이아니다. 바로다음레이어계약도거부돼guard가종료했다. native접근위반으로단정하지않고script VM예외와하네스강제종료로기록한다.
+
+legacy폴더명layer0를숫자0의실제설정으로해석하지않는다. 사용한것은named NOCOLLISION이며현재런타임readback은2다. SDK enum의텍스트상순번을실제마스크값으로가정하지않는다.
 
 ## 4. 원인 분석
 
-확인:기존알고리즘으로64개체의정상낙하·복구·재등반완료가가능했다. 이미완료된시험을즉시종료하지않고20초관찰한뒤에도이번기능게이트는통과했다. 본문에서241초와이전256초의차이를성능개선으로귀속하지않는다. 초기포즈위상/날씨/시작대기가고정되지않았고시험종료규칙과기록필드도다르다.
+확인:동일관측mission의OFF에서는더긴초기대기후에도64개파트가존속하고8NPC경로를완료했다. ON은레이어변경후파트참조/위치계약이깨졌다. 현재방식의NOCOLLISION변경은수용할수없다. API가존재한다는사실과안전하게쓸수있다는판정은다르다.
 
-미확인:이전실행ID55가추가대기만으로회복됐을지는모른다. 이번동일번호55는이전과동일한충돌상태가아니므로정확한재현/수정성공으로보고하지않는다. 이전sixtyfour1의엄격게이트false와ID55마지막5초정체는그대로유효한반례다. EGRESS_STALL 후FOLLOW명칭만으로복구성공을선언하지않는다.
+미확인:내부어떤수명/공간등록/물리·네트워크처리가파트를소실시켰는지는모른다. 단일ON/OFF쌍이고위상/대기시각은완전일치하지않으므로모든엔진상태에대한원인확정은아니다. bodyIsSet초기true는이후수명·표시/본버퍼존속의보장이아니었다. 시뮬레이션을끄거나검사를강제성공시켜실패를숨기지않았다.
 
-기존checked-landing후보는FALL중이동예산소진을다루며EGRESS후ID55정체와적용조건이다르다. 이번시험에혼합하지않았다. 실제함수/상태가다른문제를같은복구패치로묶지않는다.
+또한원래Floors/Walls mask는BUILDING/ROADWAY/TERRAIN/VEHICLE및일부장애물로구성된다. 추가호스트가기존Ray/Sphere비용의주원인이었다는증거는없다. 이번에그비용을측정하지못했으므로‘충돌56개제거만으로빨라진다’는결론은기각한다. 후보의기능실패와성능가설미측정을구분한다.
 
 ## 5. 검증 수준
 
-이번정의된64개체확장관찰:단일기능회귀통과. 전체64개체반복검증완료/이전ID55정체수정/시각품질/성능개선/20ms p95/최종수용:미완료. 과거실패는성공실행으로대체하거나삭제하지않는다. normalQuitVerified=false며launcher종료와게임정상종료를구분한다.
+현재레이어후보:TESTED_FAILED/수용기각. 원래레이어+동일관측기8개체:단일기능회귀통과. CPU모델공간head변화:진단성공;실제화면부드러움/graphclock의완전증명아님. 클라이언트레이어복제·피격/공격·64개체후보·반복성능·20ms목표는미검증이다. 실패후보를64까지확대하지않는다.
 
 ## 6. 변경 사항
 
-stage_scale_observation.py/alias.py,격리mission·런처·읽기전용분석만추가했다. 새PBO는없고기존6PBO해시·서명은실행전검증에성공했다. 원본자산/운영서버/Steam/기존게임소스는변경하지않았다. 이번에새서명했다고기록하지않고개인키는공개하지않는다. network PBO SHA=765E61B0B2E20EA3C7977FF17316808D99D8CDD94DDFBCE7A95F8829CAD6EED8.
+격리mission/flag/런처/분석만추가했다. 새PBO는없다. 기존6PBO의해시·서명은각실행전검증성공했다. 원본게임소스/운영서버/Steam/자산/서명배포본/개인키는변경하지않았다. 서버·클라이언트시험프로세스는종료를확인했으며normalQuitVerified=false를정상종료로바꾸지않는다.
+
+OFF분석의첫파생본은원래레이어readback을NOCOLLISION값처럼이름붙인필드가있었다. 원본파생본도남기고v2에서candidateEnabled=false/observedNamedNoCollisionValue=null과원래readback을분리했다. 공개집계는이정정내용을사용한다.
 
 ## 7. 원시 증거
 
-sourceRunId:animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/sixtyfour3-observe. plan/mission/서버·클라이언트launch·RPT/script·gameplay/milestone/state-contract/terminal/frame/partclock TSV·scale-analysis/observation-tail-analysis JSON을기존체크포인트에해시로연결한다. sixtyfour2-observe 준비실패도보존한다. 공개packet은선정집계이며원시전체/PID/절대경로/키/영상/게임자산은게시하지않는다.
+sourceRunId 묶음:animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/{eight-layer0-1,eight-layer0-2,eight-layer-control1}. plan·동일mission증명·기존PBO서명검증·서버/클라이언트launch·script/RPT/오류·render-host-layer/gameplay/state-contract/terminal TSV·OFF eight-analysis 및render-host-layer-analysis-v2를연결한다. 준비실패/부분기록/원래성공/이전64실패를보존한다. 공개packet은선정집계이며원시전체/프로세스정보/절대경로/키/영상/게임자산은게시하지않는다.
 
 ## 8. 잔여 문제
 
-현재후보는아직정식채택보류다. 이전실패의재현과후속실제accepted movement확인이남고,실제화면품질·일반클라이언트호환성·클라이언트/서버분리비용도미확인이다. 물리호스트가추가된8파트경로를서버로비용을옮겨놓고최적화라고하지않는다.
+다음최적화는이레이어후보를계속확대하는것이아니다. 기존scratch/SupportFast의안전성근거와반복비용비교를우선하고,애니메이션경로에서는일반클라이언트호환성과실제화면판정을별도로확인해야한다. 내부파트소실원인분석은다른안전후보의설계를바꿀때만추가한다.
 
-다음물리비용후보로추가7개시각호스트의물리상호작용역할을검토할수있다. SDK에dBodySetInteractionLayer/GetInteractionLayer가존재한다는것만확인됐고실제사용효과·네트워크복제·본평가유지·공격/피격보존은미시험이다. 아직레이어/충돌/시뮬레이션을변경하지않았다. 실제leader/피해receiver/스크립트관절·지지판정은보존해야하며,원본충돌을일괄삭제하는접근은하지않는다. 새측정은후보채택결정에필요한경우만수행한다.
+추가로기존sixtyfour1 pressure-plan-pose TSV에ID55의LAND직전/복구중4본MS포즈·heading·lift·idleOffset이있음을확인했다. 따라서직접상태전체복원은아니어도기존frozen-pose replay방식으로지형접촉일부를재현할자료가있다. peer/최종시점포즈/전체동적상태까지확보됐다고하지않는다. 새대용량수집없이기존자료를먼저활용한다. 전체골은미완료다.
 
-로컬 checkpoint SHA-256: fc993b46852c51453e2d887f4aec74c3914d765e54190e80040ebd5ab90dc874
+로컬 checkpoint SHA-256: 27b5e1f2453b04316d0e5e214f594dff8f7f6d3f5324fa5b0faf1f270cf9d092

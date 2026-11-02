@@ -1,3 +1,5 @@
+> 최신 작업: 8NPC 시각호스트 NOCOLLISION 후보는파트참조소실로기각. 동일관측기OFF는8/8·복구9/9. 시각/성능개선은미입증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-render-host-layer-rejection-20261102.md).
+
 > 최신 작업: 64NPC/512parts 추가20.003초관찰에서64/64 엄격기능단일통과·낙하복귀87/87. 기존ID55실패는보존;수정/시각/성능성공은아님. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-network-observation-tail-20261102.md).
 
 > 최신 작업: 64NPC/512parts단일시험:이동이력64/64이나엄격기능게이트false. ID8이력잔존/ID55최종5초정체구분. 서버timeslice p95=66ms;Present/화면품질/성능개선미판정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-network-sixtyfour-audit-20261102.md).
