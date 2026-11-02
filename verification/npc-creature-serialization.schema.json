@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "network-gameplay/creature-serialization-review1"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "verificationStatus": {
+      "type": "object",
+      "required": [
+        "staticCallChain",
+        "runtimePacketPair",
+        "functionalRegression",
+        "visualQuality",
+        "performance",
+        "finalAcceptance"
+      ],
+      "properties": {
+        "finalAcceptance": {
+          "const": false
+        },
+        "performance": {
+          "const": "not_measured"
+        },
+        "runtimePacketPair": {
+          "const": "not_captured"
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "sharedClassOverrides",
+        "serializerDirectCallEdges",
+        "inputReaderDirectCallEdges",
+        "decoderChainedFragments",
+        "frameTimeP50P95P99"
+      ],
+      "properties": {
+        "sharedClassOverrides": {
+          "const": 2
+        },
+        "serializerDirectCallEdges": {
+          "const": 3
+        },
+        "inputReaderDirectCallEdges": {
+          "const": 2
+        },
+        "decoderChainedFragments": {
+          "const": 5
+        },
+        "frameTimeP50P95P99": {
+          "type": "null"
+        }
+      }
+    },
+    "evidenceReferences": {
+      "type": "array",
+      "minItems": 2
+    }
+  }
+}
