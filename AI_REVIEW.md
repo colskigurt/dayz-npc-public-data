@@ -1,3 +1,5 @@
+> 최신 작업: 검사 경로 기반 착지 복구 후보.64 단일 기능 통과=True, 반복/시각/성능 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-checked-landing-corridor-20261102.md).
+
 > 최신 작업: scratch8/64 수직 회귀.8명 통과·64명63/64, 착지 복구 실패 고정 재생. 시각/성능 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-scratch-vertical-recovery-20261102.md).
 
 > 최신 작업: 물리 질의 호출 소유권 확인 및 scratch 국소 후보. 서명 검증·60조건 동등성·평지8명 추적 통과. 성능·수직64·시각 품질 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-query-scratch-pilot-20261102.md).

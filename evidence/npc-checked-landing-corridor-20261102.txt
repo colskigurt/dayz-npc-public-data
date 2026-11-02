@@ -1,0 +1,382 @@
+Selected own candidate code and aggregates. Frozen inputs are not whole-crowd or visible-frame evidence.
+{
+  "sourceRunId": "query-owner-20261102/checked-landing-candidate",
+  "buildId": "1F8FB4DD930BAF99C92C35B76EE2461A9D38B7315BC38731EBE38166A1D81B9D",
+  "newGameplayPbo": true,
+  "signatureVerified": true,
+  "packedMembersVerified": true,
+  "engineServerContractPassed": true,
+  "trials": [
+    {
+      "runId": "checked-vertical8",
+      "agents": 8,
+      "independentExecutions": 1,
+      "durationSeconds": 300,
+      "terminalArrivals": 8,
+      "falls": 9,
+      "landedAndResumed": 9,
+      "unresolved": [],
+      "matchedPhysicalTransitions": 112,
+      "physicalTransitions": 112,
+      "climbEndFailureContexts": 0,
+      "foregroundFraction": 1.0,
+      "missionFrameMs": {
+        "samples": 14746,
+        "p50": 20.0,
+        "p95": 33.0,
+        "p99": 34.0
+      },
+      "metricLimit": "Mission dt, not Present/CPU self-time/displayed animation cadence",
+      "checkedLandingStatuses": {},
+      "checkedLandingEntityIds": [],
+      "signatureVerified": true
+    },
+    {
+      "runId": "checked-vertical64",
+      "agents": 64,
+      "independentExecutions": 1,
+      "durationSeconds": 300,
+      "terminalArrivals": 64,
+      "falls": 78,
+      "landedAndResumed": 78,
+      "unresolved": [],
+      "matchedPhysicalTransitions": 916,
+      "physicalTransitions": 916,
+      "climbEndFailureContexts": 0,
+      "foregroundFraction": 1.0,
+      "missionFrameMs": {
+        "samples": 10061,
+        "p50": 26.0,
+        "p95": 56.0,
+        "p99": 77.0
+      },
+      "metricLimit": "Mission dt, not Present/CPU self-time/displayed animation cadence",
+      "checkedLandingStatuses": {},
+      "checkedLandingEntityIds": [],
+      "signatureVerified": true
+    }
+  ],
+  "frozenTests": {
+    "inputs": 2,
+    "plannerLimited06Rejected": true,
+    "plannerLimit10Accepted": true,
+    "sourceUnchanged": true,
+    "policy": [
+      {
+        "case": "0",
+        "landingAndPoseReached": "true",
+        "travel": "0.808594",
+        "moves": "69",
+        "iterations": "69",
+        "leaseUsed": "0.808594",
+        "leaseLimit": "0.879844",
+        "grants": "1",
+        "probeSteps": "43",
+        "baseBudgetPreserved": "true",
+        "actorUnchanged": "true",
+        "expirySafe": "true",
+        "oneGrant": "true",
+        "status": "EXPIRED",
+        "expiredReturnedMovement": "false",
+        "expiredPositionDelta": "0",
+        "revoked": "true"
+      },
+      {
+        "case": "1",
+        "landingAndPoseReached": "true",
+        "travel": "0.796875",
+        "moves": "68",
+        "iterations": "68",
+        "leaseUsed": "0.796875",
+        "leaseLimit": "0.879844",
+        "grants": "1",
+        "probeSteps": "43",
+        "baseBudgetPreserved": "true",
+        "actorUnchanged": "true",
+        "expirySafe": "true",
+        "oneGrant": "true",
+        "status": "EXPIRED",
+        "expiredReturnedMovement": "false",
+        "expiredPositionDelta": "0",
+        "revoked": "true"
+      }
+    ],
+    "cancellation": [
+      {
+        "case": "0",
+        "mode": "0",
+        "passed": "true",
+        "firstMoved": "true",
+        "cancelMoved": "false",
+        "positionSame": "true",
+        "revoked": "true",
+        "status": "LIVE_STEP_CORE",
+        "oneGrant": "true",
+        "actorUnchanged": "true",
+        "baseBudgetPreserved": "true"
+      },
+      {
+        "case": "0",
+        "mode": "1",
+        "passed": "true",
+        "firstMoved": "true",
+        "cancelMoved": "false",
+        "positionSame": "true",
+        "revoked": "true",
+        "status": "HEADING_CHANGED",
+        "oneGrant": "true",
+        "actorUnchanged": "true",
+        "baseBudgetPreserved": "true"
+      },
+      {
+        "case": "0",
+        "mode": "2",
+        "passed": "true",
+        "firstMoved": "true",
+        "cancelMoved": "false",
+        "positionSame": "true",
+        "revoked": "true",
+        "status": "COMBAT",
+        "oneGrant": "true",
+        "actorUnchanged": "true",
+        "baseBudgetPreserved": "true"
+      },
+      {
+        "case": "0",
+        "mode": "3",
+        "passed": "true",
+        "firstMoved": "true",
+        "cancelMoved": "false",
+        "positionSame": "true",
+        "revoked": "true",
+        "status": "DISTANCE",
+        "oneGrant": "true",
+        "actorUnchanged": "true",
+        "baseBudgetPreserved": "true"
+      },
+      {
+        "case": "1",
+        "mode": "0",
+        "passed": "true",
+        "firstMoved": "true",
+        "cancelMoved": "false",
+        "positionSame": "true",
+        "revoked": "true",
+        "status": "LIVE_STEP_CORE",
+        "oneGrant": "true",
+        "actorUnchanged": "true",
+        "baseBudgetPreserved": "true"
+      },
+      {
+        "case": "1",
+        "mode": "1",
+        "passed": "true",
+        "firstMoved": "true",
+        "cancelMoved": "false",
+        "positionSame": "true",
+        "revoked": "true",
+        "status": "HEADING_CHANGED",
+        "oneGrant": "true",
+        "actorUnchanged": "true",
+        "baseBudgetPreserved": "true"
+      },
+      {
+        "case": "1",
+        "mode": "2",
+        "passed": "true",
+        "firstMoved": "true",
+        "cancelMoved": "false",
+        "positionSame": "true",
+        "revoked": "true",
+        "status": "COMBAT",
+        "oneGrant": "true",
+        "actorUnchanged": "true",
+        "baseBudgetPreserved": "true"
+      },
+      {
+        "case": "1",
+        "mode": "3",
+        "passed": "true",
+        "firstMoved": "true",
+        "cancelMoved": "false",
+        "positionSame": "true",
+        "revoked": "true",
+        "status": "DISTANCE",
+        "oneGrant": "true",
+        "actorUnchanged": "true",
+        "baseBudgetPreserved": "true"
+      }
+    ],
+    "scope": "Frozen pose/fixture; no whole-crowd counterfactual",
+    "costTicksUnit": "Raw CPU ticks, not milliseconds or CPU self-time"
+  },
+  "functionalSingleRun64Passed": true,
+  "repeatedValidation": false,
+  "directMatchedComparison": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "goalComplete": false,
+  "limits": [
+    "Single8 and64 functional executions are not repeated optimization validation.",
+    "No matched OFF run for this policy; effects cannot be attributed from different crowd histories alone.",
+    "Frozen tests use prior lift zero assumption and pose snapshots.",
+    "No visible-frame animation quality or PresentMon improvement measured.",
+    "The fallback adds native queries; its rare activation and worst-frame cost still need comparison.",
+    "One-line early-return/state-assignment form failed cancellation flag test; explicit block passed. Underlying compiler mechanism unproven."
+  ],
+  "policyLiveGrantObserved": false,
+  "next": "If no live grant occurred, use a bounded existing-fixture full-NPC activation test before adoption; blind64 repeats without exercising the policy are lower value. If an activated recovery fails, inspect actual cancellation/pose/contact inputs before changing limits. Matched OFF/ON and repeated64 acceptance remain pending; animation and scratch performance stay separate."
+}
+
+
+FILE NFCheckedLandingPlan.c SHA256 40b3b629a1a90467e370498c48406e9a1fbd4a67ea2de494ab00222957683713
+// Isolated prototype. Does not register a body or move the source/actor.
+// Caller supplies a fresh proxy, with the same pose source as the real body.
+class NFCheckedLandingPlan
+{
+    static bool Evaluate(DGBNativeGroundBody source,DGBNativeGroundBody probe,vector direction,float limit,out vector goal,out float length,out int steps,out string diagnostic)
+    {
+        goal=vector.Zero;length=0;steps=0;diagnostic="INPUT";
+        if(!source || !probe || source==probe)return false;
+        if(!source.Director || !source.Leader || !source.Traversal)return false;
+        if(source.JointIds.Count()!=4 || source.Contacts.Count()!=4)return false;
+        if(limit<=0 || limit>1.2)return false;
+        direction[1]=0;if(direction.Length()<0.99)return false;direction.Normalize();
+        probe.Director=source.Director;probe.Leader=source.Leader;probe.Id=source.Id;
+        probe.Agent.Position=source.Agent.Position;probe.Agent.Heading=source.Agent.Heading;
+        probe.Agent.ManagedPeerContacts=source.Agent.ManagedPeerContacts;
+        probe.IdleOffset=source.IdleOffset;probe.Lift=source.Lift;
+        probe.JointIds.Copy(source.JointIds);probe.Radii.Copy(source.Radii);probe.Contacts.Copy(source.Contacts);
+        probe.Agent.ObstacleMin.Copy(source.Agent.ObstacleMin);probe.Agent.ObstacleMax.Copy(source.Agent.ObstacleMax);
+        // Diagnostic capture is owned by the actual body, not planner proxies.
+        probe.FCRead=true;probe.FCEnabled=false;probe.NFScratchRead=true;probe.NFScratchEnabled=false;
+        probe.Traversal=new DGBNativeTraversal(probe);probe.Traversal.Phase="FALL";probe.Traversal.Area="ground";
+        probe.Traversal.LLRead=true;probe.Traversal.LLEnabled=false;
+        probe.Traversal.TCPolicyRead=true;probe.Traversal.TCEnabled=source.Traversal.TCEnabled;
+        if(!source.Traversal.TCPolicyRead)probe.Traversal.TCEnabled=FileExist("$profile:terrain-contact-owner.flag");
+        probe.Traversal.TCTrace=false;
+        bool result=Trace(probe,direction,limit,goal,length,steps,diagnostic);
+        probe.Traversal.Body=null;probe.Traversal=null;probe.Director=null;probe.Leader=null;
+        return result;
+    }
+    static bool Trace(DGBNativeGroundBody probe,vector direction,float limit,out vector goal,out float length,out int steps,out string diagnostic)
+    {
+        vector origin=probe.Agent.Position;int stableLanding=0;length=0;steps=0;
+        int maximum=Math.Min(60,Math.Floor(limit/0.02));
+        diagnostic="PATH_LIMIT";
+        for(int index=0;index<maximum;index++)
+        {
+            vector from=probe.Agent.Position;vector next=from+direction*0.02;
+            float lift;ref array<vector> points={};steps++;
+            if(!probe.Traversal.PressureEscapeStepClear(next,lift,points))
+            {diagnostic="STEP_"+probe.Traversal.PressureEscapeDiagnostic;return false;}
+            length+=vector.Distance(from,next);probe.Agent.Position=next;probe.Lift=lift;probe.Contacts.Copy(points);
+            // A root that leaves nearby ground support is never a continuation.
+            vector support;
+            if(!DGBGroundAgent.Floor(probe.Leader,next,support)){diagnostic="NO_SUPPORT";return false;}
+            if(probe.Traversal.Fixture().Area(support)!="ground" || Math.AbsFloat(next[1] - support[1])>0.35)
+            {diagnostic="SUPPORT_CHANGED";return false;}
+            vector landed;bool landing=probe.Traversal.LandingSpace(next,landed);
+            float finalLift;ref array<vector> finalPoints={};bool fullPose=false;
+            if(landing)fullPose=probe.SolveContacts(landed,probe.Agent.Heading,finalLift,finalPoints);
+            if(landing && fullPose)stableLanding++;else stableLanding=0;
+            // Existing PressureSlide stops within .04m. Certify two further
+            // .02m steps so its stop tolerance cannot precede the first landing.
+            if(stableLanding>=3){goal=landed;diagnostic="CHECKED_CORRIDOR";return true;}
+        }
+        diagnostic="PATH_LIMIT";return false;
+    }
+}
+
+
+FILE NFCheckedLandingPolicy.c SHA256 4738fe85bef48e6703a527844fbfbddb1275c5653343bbef6ca95d4f8f4560ae
+// Opt-in isolated policy. Existing cumulative distance and world checks remain.
+modded class DGBNativeTraversal
+{
+    bool CLRead;bool CLEnabled;bool CLClaimed;bool CLRevoked;
+    int CLGeneration=-1;int CLGrants;int CLPlans;int CLProbeSteps;
+    float CLUsed;float CLLimit;float CLUntil;float CLNextPlan;float CLHeading;
+    vector CLGoal;string CLStatus="INACTIVE";static float CLGlobalPlanAt=-1;
+    bool CLPolicy()
+    {if(!CLRead){CLEnabled=FileExist("$profile:checked-landing-corridor.flag");CLRead=true;}return CLEnabled;}
+    DGBNativeGroundBody CLMakeProbe(){return new DGBNativeGroundBody;}
+    void CLLog(string status)
+    {
+        CLStatus=status;if(!FileExist("$profile:state-contract.flag"))return;
+        string path="$profile:native-checked-landing.tsv";bool exists=FileExist(path);
+        FileHandle file=OpenFile(path,FileMode.APPEND);if(!file)return;
+        if(!exists)FPrintln(file,"seconds\tid\tphase\tgeneration\tstatus\tposition\tcontact\tused\tlimit\tuntil\tcumulative\tbaseBudget\tplans\tprobeSteps\tgrants");
+        FPrintln(file,(Now() - Body.Director.Born).ToString()+"\t"+Body.Id+"\t"+Phase+"\t"+CLGeneration+"\t"+status+"\t"+Body.Agent.Position+"\t"+Body.HitType+"\t"+CLUsed+"\t"+CLLimit+"\t"+CLUntil+"\t"+SeparationEpisodeDistance+"\t"+SeparationDistanceBudget+"\t"+CLPlans+"\t"+CLProbeSteps+"\t"+CLGrants);
+        CloseFile(file);
+    }
+    void CLCancel(string status)
+    {
+        if(CLRevoked){return;}
+        CLRevoked=true;
+        PressureEscapeValid=false;
+        CLLog(status);
+    }
+    override void SetPhase(string phase)
+    {
+        string previous=Phase;super.SetPhase(phase);
+        if(CLClaimed && previous=="FALL" && phase!="FALL")CLCancel("PHASE_"+phase);
+    }
+    bool CLPlan(float dt)
+    {
+        // At most one full planning call for the group per game tick. Retries
+        // retain .75s backoff; no per-frame unbounded corridor-search loop.
+        if(Now()<CLNextPlan || CLGlobalPlanAt==Now())return false;
+        CLNextPlan=Now()+0.75;CLGlobalPlanAt=Now();CLPlans++;
+        if(!PlanPressureEscape(dt)){CLLog("NO_ORIGINAL_GOAL");return false;}
+        vector direction=PressureEscapeGoal - Body.Agent.Position;direction[1]=0;
+        if(direction.Length()<0.04){PressureEscapeValid=false;CLLog("GOAL_TOO_CLOSE");return false;}
+        direction.Normalize();
+        DGBNativeGroundBody probe=CLMakeProbe();vector goal;float distance;int steps;string diagnostic;
+        bool accepted=NFCheckedLandingPlan.Evaluate(Body,probe,direction,1.2,goal,distance,steps,diagnostic);
+        CLProbeSteps+=steps;
+        if(!accepted){PressureEscapeValid=false;CLLog("PLAN_"+diagnostic);return false;}
+        CLClaimed=true;CLHeading=Body.Agent.Heading;CLGoal=goal;
+        // Grant only the certified length plus one existing stop tolerance,
+        // not an arbitrary fresh 6m budget. One claim per fall generation.
+        CLLimit=Math.Min(1.2,distance+0.04);CLUsed=0;
+        CLUntil=Now()+Math.Min(2.5,distance/0.6+0.5);CLGrants++;
+        PressureEscapeGoal=CLGoal;PressureEscapeValid=true;CLLog("GRANTED");return true;
+    }
+    override bool PressureSlide(float dt)
+    {
+        if(!CLPolicy())return super.PressureSlide(dt);
+        if(Phase!="FALL" || !PressureFallActive)return super.PressureSlide(dt);
+        if(Math.AbsFloat(SeparationDistanceBudget - 6)>0.0001)return super.PressureSlide(dt);
+        if(SeparationEpisodeDistance<SeparationDistanceBudget)return super.PressureSlide(dt);
+        if(!LLPolicy() || LLGeneration<=0)return super.PressureSlide(dt);
+        if(CLGeneration!=LLGeneration)
+        {CLGeneration=LLGeneration;CLClaimed=false;CLRevoked=false;CLUsed=0;CLLimit=0;CLNextPlan=0;}
+        if(CLRevoked)return false;
+        // Never stack the new lease on an already granted legacy continuation.
+        if(LLClaimed)return super.PressureSlide(dt);
+        if(LLCombatOwns()){CLCancel("COMBAT");return false;}
+        vector support;
+        if(!DGBGroundAgent.Floor(Body.Leader,Body.Agent.Position,support))
+        {if(CLClaimed)CLCancel("NO_SUPPORT");return false;}
+        if(Fixture().Area(support)!="ground" || Math.AbsFloat(Body.Agent.Position[1] - support[1])>0.35)
+        {if(CLClaimed)CLCancel("SUPPORT_CHANGED");return false;}
+        if(!CLClaimed && !CLPlan(dt))return false;
+        if(Now()>=CLUntil){CLCancel("EXPIRED");return false;}
+        if(Math.AbsFloat(Math.DiffAngle(Body.Agent.Heading,CLHeading))>5)
+        {CLCancel("HEADING_CHANGED");return false;}
+        float remaining=CLLimit - CLUsed;
+        if(remaining<=0.002){CLCancel("DISTANCE");return false;}
+        PressureEscapeGoal=CLGoal;PressureEscapeValid=true;
+        float priorDistance=SeparationEpisodeDistance;float priorBudget=SeparationDistanceBudget;
+        bool priorLeaseEnabled=LLEnabled;
+        SeparationDistanceBudget=priorDistance+remaining - 0.001;LLEnabled=false;
+        // Existing PressureSlide owns the actual small step, all world tests,
+        // lift/contact commit, fall counters and movement accounting.
+        bool moved=super.PressureSlide(dt);
+        SeparationDistanceBudget=priorBudget;LLEnabled=priorLeaseEnabled;
+        CLUsed+=Math.Max(0,SeparationEpisodeDistance - priorDistance);
+        if(!moved && DGBGroundAgent.FlatDistance(Body.Agent.Position,CLGoal)>=0.04)CLCancel("LIVE_STEP_"+PressureEscapeDiagnostic);
+        return moved;
+    }
+}
+

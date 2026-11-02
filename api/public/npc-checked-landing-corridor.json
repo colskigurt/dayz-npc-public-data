@@ -1,0 +1,264 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-02T16:21:38.840923+09:00",
+  "sourceRunId": "query-owner-20261102/checked-landing-candidate",
+  "buildId": "1F8FB4DD930BAF99C92C35B76EE2461A9D38B7315BC38731EBE38166A1D81B9D",
+  "verificationStatus": {
+    "diagnosis": "frozen_policy_contract_passed",
+    "functionalRegression": "single_run_passed",
+    "visualQuality": "not_measured",
+    "performanceTarget": "not_accepted",
+    "externalAI": "not_retested"
+  },
+  "metrics": {
+    "sourceRunId": "query-owner-20261102/checked-landing-candidate",
+    "buildId": "1F8FB4DD930BAF99C92C35B76EE2461A9D38B7315BC38731EBE38166A1D81B9D",
+    "newGameplayPbo": true,
+    "signatureVerified": true,
+    "packedMembersVerified": true,
+    "engineServerContractPassed": true,
+    "trials": [
+      {
+        "runId": "checked-vertical8",
+        "agents": 8,
+        "independentExecutions": 1,
+        "durationSeconds": 300,
+        "terminalArrivals": 8,
+        "falls": 9,
+        "landedAndResumed": 9,
+        "unresolved": [],
+        "matchedPhysicalTransitions": 112,
+        "physicalTransitions": 112,
+        "climbEndFailureContexts": 0,
+        "foregroundFraction": 1.0,
+        "missionFrameMs": {
+          "samples": 14746,
+          "p50": 20.0,
+          "p95": 33.0,
+          "p99": 34.0
+        },
+        "metricLimit": "Mission dt, not Present/CPU self-time/displayed animation cadence",
+        "checkedLandingStatuses": {},
+        "checkedLandingEntityIds": [],
+        "signatureVerified": true
+      },
+      {
+        "runId": "checked-vertical64",
+        "agents": 64,
+        "independentExecutions": 1,
+        "durationSeconds": 300,
+        "terminalArrivals": 64,
+        "falls": 78,
+        "landedAndResumed": 78,
+        "unresolved": [],
+        "matchedPhysicalTransitions": 916,
+        "physicalTransitions": 916,
+        "climbEndFailureContexts": 0,
+        "foregroundFraction": 1.0,
+        "missionFrameMs": {
+          "samples": 10061,
+          "p50": 26.0,
+          "p95": 56.0,
+          "p99": 77.0
+        },
+        "metricLimit": "Mission dt, not Present/CPU self-time/displayed animation cadence",
+        "checkedLandingStatuses": {},
+        "checkedLandingEntityIds": [],
+        "signatureVerified": true
+      }
+    ],
+    "frozenTests": {
+      "inputs": 2,
+      "plannerLimited06Rejected": true,
+      "plannerLimit10Accepted": true,
+      "sourceUnchanged": true,
+      "policy": [
+        {
+          "case": "0",
+          "landingAndPoseReached": "true",
+          "travel": "0.808594",
+          "moves": "69",
+          "iterations": "69",
+          "leaseUsed": "0.808594",
+          "leaseLimit": "0.879844",
+          "grants": "1",
+          "probeSteps": "43",
+          "baseBudgetPreserved": "true",
+          "actorUnchanged": "true",
+          "expirySafe": "true",
+          "oneGrant": "true",
+          "status": "EXPIRED",
+          "expiredReturnedMovement": "false",
+          "expiredPositionDelta": "0",
+          "revoked": "true"
+        },
+        {
+          "case": "1",
+          "landingAndPoseReached": "true",
+          "travel": "0.796875",
+          "moves": "68",
+          "iterations": "68",
+          "leaseUsed": "0.796875",
+          "leaseLimit": "0.879844",
+          "grants": "1",
+          "probeSteps": "43",
+          "baseBudgetPreserved": "true",
+          "actorUnchanged": "true",
+          "expirySafe": "true",
+          "oneGrant": "true",
+          "status": "EXPIRED",
+          "expiredReturnedMovement": "false",
+          "expiredPositionDelta": "0",
+          "revoked": "true"
+        }
+      ],
+      "cancellation": [
+        {
+          "case": "0",
+          "mode": "0",
+          "passed": "true",
+          "firstMoved": "true",
+          "cancelMoved": "false",
+          "positionSame": "true",
+          "revoked": "true",
+          "status": "LIVE_STEP_CORE",
+          "oneGrant": "true",
+          "actorUnchanged": "true",
+          "baseBudgetPreserved": "true"
+        },
+        {
+          "case": "0",
+          "mode": "1",
+          "passed": "true",
+          "firstMoved": "true",
+          "cancelMoved": "false",
+          "positionSame": "true",
+          "revoked": "true",
+          "status": "HEADING_CHANGED",
+          "oneGrant": "true",
+          "actorUnchanged": "true",
+          "baseBudgetPreserved": "true"
+        },
+        {
+          "case": "0",
+          "mode": "2",
+          "passed": "true",
+          "firstMoved": "true",
+          "cancelMoved": "false",
+          "positionSame": "true",
+          "revoked": "true",
+          "status": "COMBAT",
+          "oneGrant": "true",
+          "actorUnchanged": "true",
+          "baseBudgetPreserved": "true"
+        },
+        {
+          "case": "0",
+          "mode": "3",
+          "passed": "true",
+          "firstMoved": "true",
+          "cancelMoved": "false",
+          "positionSame": "true",
+          "revoked": "true",
+          "status": "DISTANCE",
+          "oneGrant": "true",
+          "actorUnchanged": "true",
+          "baseBudgetPreserved": "true"
+        },
+        {
+          "case": "1",
+          "mode": "0",
+          "passed": "true",
+          "firstMoved": "true",
+          "cancelMoved": "false",
+          "positionSame": "true",
+          "revoked": "true",
+          "status": "LIVE_STEP_CORE",
+          "oneGrant": "true",
+          "actorUnchanged": "true",
+          "baseBudgetPreserved": "true"
+        },
+        {
+          "case": "1",
+          "mode": "1",
+          "passed": "true",
+          "firstMoved": "true",
+          "cancelMoved": "false",
+          "positionSame": "true",
+          "revoked": "true",
+          "status": "HEADING_CHANGED",
+          "oneGrant": "true",
+          "actorUnchanged": "true",
+          "baseBudgetPreserved": "true"
+        },
+        {
+          "case": "1",
+          "mode": "2",
+          "passed": "true",
+          "firstMoved": "true",
+          "cancelMoved": "false",
+          "positionSame": "true",
+          "revoked": "true",
+          "status": "COMBAT",
+          "oneGrant": "true",
+          "actorUnchanged": "true",
+          "baseBudgetPreserved": "true"
+        },
+        {
+          "case": "1",
+          "mode": "3",
+          "passed": "true",
+          "firstMoved": "true",
+          "cancelMoved": "false",
+          "positionSame": "true",
+          "revoked": "true",
+          "status": "DISTANCE",
+          "oneGrant": "true",
+          "actorUnchanged": "true",
+          "baseBudgetPreserved": "true"
+        }
+      ],
+      "scope": "Frozen pose/fixture; no whole-crowd counterfactual",
+      "costTicksUnit": "Raw CPU ticks, not milliseconds or CPU self-time"
+    },
+    "functionalSingleRun64Passed": true,
+    "repeatedValidation": false,
+    "directMatchedComparison": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "goalComplete": false,
+    "limits": [
+      "Single8 and64 functional executions are not repeated optimization validation.",
+      "No matched OFF run for this policy; effects cannot be attributed from different crowd histories alone.",
+      "Frozen tests use prior lift zero assumption and pose snapshots.",
+      "No visible-frame animation quality or PresentMon improvement measured.",
+      "The fallback adds native queries; its rare activation and worst-frame cost still need comparison.",
+      "One-line early-return/state-assignment form failed cancellation flag test; explicit block passed. Underlying compiler mechanism unproven."
+    ],
+    "policyLiveGrantObserved": false,
+    "next": "If no live grant occurred, use a bounded existing-fixture full-NPC activation test before adoption; blind64 repeats without exercising the policy are lower value. If an activated recovery fails, inspect actual cancellation/pose/contact inputs before changing limits. Matched OFF/ON and repeated64 acceptance remain pending; animation and scratch performance stay separate."
+  },
+  "blockers": [
+    "Single8 and64 functional executions are not repeated optimization validation.",
+    "No matched OFF run for this policy; effects cannot be attributed from different crowd histories alone.",
+    "Frozen tests use prior lift zero assumption and pose snapshots.",
+    "No visible-frame animation quality or PresentMon improvement measured.",
+    "The fallback adds native queries; its rare activation and worst-frame cost still need comparison.",
+    "One-line early-return/state-assignment form failed cancellation flag test; explicit block passed. Underlying compiler mechanism unproven."
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-checked-landing-corridor-20261102.md",
+      "sha256": "dfafc3637d4c4cc4b6ef488dfd203bb794c3d67a25840a508367916c1f33ed7d"
+    },
+    {
+      "path": "evidence/npc-checked-landing-corridor-20261102.txt",
+      "sha256": "0b7d4a88767b7e4d94275873ca96588ac03851385e7f83397d370b6217662497"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
