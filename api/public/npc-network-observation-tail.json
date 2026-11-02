@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-02T21:46:10.309696+09:00",
+  "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/sixtyfour3-observe",
+  "buildId": "765E61B0B2E20EA3C7977FF17316808D99D8CDD94DDFBCE7A95F8829CAD6EED8",
+  "verificationStatus": {
+    "diagnosis": "extended_observation_completed_without_terminal_failure_in_this_run",
+    "functionalRegression": "extended_observation_single_pass",
+    "visualQuality": "not_accepted",
+    "performance": "not_accepted",
+    "externalAI": "not_retested"
+  },
+  "metrics": {
+    "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/sixtyfour3-observe",
+    "buildId": "765E61B0B2E20EA3C7977FF17316808D99D8CDD94DDFBCE7A95F8829CAD6EED8",
+    "logicalNpcs": 64,
+    "nativeParts": 512,
+    "independentRuns": 1,
+    "activeSeconds": 241.463,
+    "validTerminalAgents": 64,
+    "allMilestoneAgents": 64,
+    "fallStarts": 87,
+    "landAndFollowCycles": 87,
+    "functionalGatePassed": true,
+    "allCommandsDetached": true,
+    "serverForcedStop": true,
+    "clientForcedStop": false,
+    "clientExitCode": -1,
+    "normalQuitVerified": false,
+    "timing": {
+      "sourceRunId": "animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/sixtyfour3-observe",
+      "independentRuns": 1,
+      "activeSeconds": 241.463,
+      "tailStartedAt": 221.46,
+      "tailElapsedSeconds": 20.002999999999986,
+      "validTerminalAgents": 64,
+      "allMilestoneAgents": 64,
+      "originalStrictFailureFieldGatePassed": true,
+      "flagged": [],
+      "newPbo": false,
+      "newVideo": false,
+      "performanceAccepted": false,
+      "visualAccepted": false,
+      "limits": [
+        "Same implementation but initial phase/weather/gate timing not locked; not deterministic ID55 replay or cost A/B",
+        "Counts describe current run, not independent replication of original ID55 state",
+        "AcceptedSteps and position snapshots are script-domain evidence, not visible animation quality"
+      ]
+    },
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "flaggedTerminalIds": [],
+    "next": "Keep original ID55 counterexample; assess supported 8-part host interaction isolation and actual client/server cost without deleting leader support/contact tests"
+  },
+  "blockers": [
+    "previous ID55 counterexample not deterministically replayed or fixed",
+    "single successful64 run with extended observation; not repeated final acceptance",
+    "actual visible smoothness and matched client/server cost unmeasured"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-network-observation-tail-20261102.md",
+      "sha256": "24b0ffb3ff6b68baed8feb5a6b403e7f6a206b6eb34ad00b6f025fa1f5ef9372"
+    },
+    {
+      "path": "evidence/npc-network-observation-tail-20261102.txt",
+      "sha256": "9e10ef2bbf7f31c9d44de8bf9087f46ef2f92ac098799cc7f1087d6001304772"
+    }
+  ],
+  "performanceTarget": {
+    "p95Milliseconds": 20,
+    "achieved": false
+  },
+  "goalComplete": false
+}
