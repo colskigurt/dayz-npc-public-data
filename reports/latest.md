@@ -1,3 +1,5 @@
+> 최신 작업: 기존 연구 중복 검토: scratch 성능 미확정·착지8/64 단일 회귀. 전경 통제 실제8파트 영상에서mode2 유망하나 품질/안정성/64성능 채택 보류. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-research-direction-update-20261102.md).
+
 > 최신 작업: NPC1개체8파트 mode2·buffer/CPU 포즈 연결. 내부28쌍 충돌 차단으로 정지root 정합성 단일 통과. 렌더물리초기화 제거는 충돌 실패. 시각/14클립/64성능 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-animation-eight-part-mode2-20261102.md).
 
 > 후속 종료 상태: 모델 경로 진단 유지. Ghidra는 자체15분 초기화 시간초과로 종료·결과 미확보. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-animation-factory-analysis-close-20261102.md).

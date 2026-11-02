@@ -1,65 +1,64 @@
 ## 1. 작업 목표
 
-기존 단일 파트 모델 경로 진단을 실제8파트로 확장해 client mode2의 retained buffer·CPU 포즈 진행과 파트의 몸체 위치 정합성을 확인한다. NPC1개체의8파트이며8명 군집 시험이 아니다. 정상 접촉·낙하·추적 기능을 제품에서 변경하지 않고 격리 선행조건을 검증한다.
+2026-11-02 사용자 검토와 기존 완료 연구의 중복을 확인하고, 수정 가능한 후보·위험·검증 비용·다음 단일 산출물을 정리한다. 이번 검토에서 새 게임 실행·알고리즘 구현·운영 PBO 변경은 하지 않았다. 앞서 안전하게 종료된 화면 비교 자료도 보존한다.
 
 ## 2. 실제 수행
 
-기존7개 렌더 파트의 source/packed LOD 목록을 읽었다. 각각 Geometry LOD가 없는3LOD였다. 시각·Memory·Fire LOD 구간의 원본 바이트를 보존하고, 단일 파트에서 검증한 리더 Geometry LOD만 덧붙인 진단 모델7개를 만들었다. 기존 model.cfg 골격/팔레트 클래스를 상속하고 경로는 역슬래시로 명시했다. ANM·XOB·ASI·그래프·native 시계/LOD 코드는 바꾸지 않았다. 별도 PBO를 빌드·서명·서명검증·packed script/모델 header 검증했다.
-
-기존 공식 진단 client/server·고정 좌표·Run request2·root motion off·AI off 하네스를 사용해 세 조건을 각각1회 실행했다. A는8파트 모두ECE_CREATEPHYSICS, B는리더만ECE_CREATEPHYSICS·나머지0, C는A와같이8파트 초기화 후 같은NPC 내부 파트 쌍만 dBodyCollisionBlock으로 차단했다. SDK dBodyIsSet 가드 뒤 반환된 dBlock을 보존했으며 월드·플레이어·다른NPC의 collision layer나지지/sweep 판정은 건드리지 않았다.
-
-기존 A500 observer의 scheduler/buffer/consumer/interpolate4지점을 byte guard 후 읽기 전용 계측했다. receiver8개까지 anonymous ID로 분리하고5scheduler마다 compressed CPU pose를 표본화했다. 모드/시계/포즈에 수치를 쓰지 않았지만 interceptor hook은 사용했으므로 성능 비교에서 제외한다. Computer Use로 실제 게임 창을 확인했으며 새 녹화는 만들지 않았다. 스냅샷은 몸체 표시를 확인하는 데만 사용했다.
+기존 연구 검토, 물리 질의 소유권/scratch pilot, 수직 실패 재생, 검사 경로 기반 착지 복구, 실제8파트 mode2 보고서와 종료된 영상 분석 JSON을 대조했다. 기존 진행을 다시 시작하거나 같은 결과를 독립 반복으로 세지 않았다. 녹화 프로그램 실행이 전경을 빼앗은 pilot는 최종 비교에서 제외했다. 후속 녹화는 OBS 준비 후 게임 전경을 확인하고 녹화를 시작했다.
 
 ## 3. 측정 결과
 
-|항목|A: 전부 물리 초기화|B: 렌더 파트 초기화 플래그 제거|C: 내부 파트 쌍 차단|
-|---|---|---|---|
-|factory 반환|8/8|리더1/8,파트1 생성 중 충돌|8/8|
-|server45초 DONE|확인|미도달|확인|
-|client mode2/animation contexts|8 /8|미계측|8 /8|
-|native 관측 오류|0|READY 전종료·미attach|0|
-|파트별 표본 / 변화쌍|250 /249|없음|253 /252|
-|retained buffer 표본|각250/250|없음|각253/253|
-|common Hips 동일 그룹|250/250|없음|253/253|
-|server root 최대 거리|3.920080m|없음|0m(390그룹)|
-|내부 pair block 반환|없음|없음|28/28|
+기존 평지4회 비교: 바닐라64 Present p95 24.23~24.44ms, 커스텀64 65.47~69.56ms. 이 비용 차이를 물리 또는 애니메이션의 순수 self-time으로 귀속하지 않는다.
 
-A는8문맥이 각각 scheduler/buffer/consumer/interpolate1251회를 기록했고C는1268회다. 이는 함수 호출 관측 수이며 평가 FPS·게임 프레임 수·GPU 작업 수가 아니다. A의 표본 관찰 구간은약24.906초,C는약25.204초다.5회마다표본이라 약100ms 간격이며 이 표본 간격을 실제 표시 cadence로 보고하지 않는다.
+scratch 후보:60조건에서 기준/후보 결과 동등. 평지8 추적 통과. 수직8은8/8, 수직64는63/64·낙하복귀85/86로 실패를 보존했다. 별도 검사 경로 기반 착지 후보의 후속 단일 회귀는8/8·64/64, 낙하복귀9/9·78/78이다. 해당 정상 회귀에서는 새 복구 권한이 사용되지 않았다. 따라서64/64를 새 복구 효능 입증으로 취급하지 않는다.
 
-bufferClock은A에서141회,C에서139회 감소/리셋됐다. 따라서 끝값 차이/벽시계 시간을 애니메이션 배속으로 계산하지 않는다. A500 graph clock은 여전히 미확보다. 공통 Hips 일치는 anonymous receiver그룹의 CPU 채널 일치이며 script part index와일대일 매핑을 완료했다는 뜻이 아니다.
+애니메이션:1NPC의8실제 파트 mode2 연결과 내부28쌍 차단 뒤 정지 root 일치를 확인했다. 이것은8NPC 기능 회귀가 아니다. 종료된 foreground 영상3개는 각8초·640x640·60fps 캡처이며 각482 출력 프레임이다. 캡처60fps는 게임/포즈60fps를 뜻하지 않는다.
 
-A는389개 온전한 server그룹에서root가약3.92m로벌어져 있었다. C는390그룹에서기록정밀도상모든root가같았고마지막8파트모두NativeSeconds44.9996·updates900·request2·commandActive=true였다. 이 값은 서버 script command 집계이며 그래프 재생시간이 아니다.
+|실행|역할/관측기|전경 trace|mission dt p50/p95/p99|영상 mask XOR p50/p95|종료 코드|
+|---|---|---|---|---|---|
+|mode0-6|오프라인/있음|425/425|20/22/23ms|261/18693pixel|-1|
+|mode2-3|네트워크/있음|425/425|20/22.8/24ms|7940/12238pixel|0xc0000005|
+|mode2-4|네트워크/없음|425/425|20/23/23ms|7783/11871pixel|-1|
 
-8/64 gameplay·14클립 시퀀스·실제 표시 부드러움·Present/CPU/GPU p50/p95/p99·할당/GC·추가 물리host/복제 비용은 미측정이다.20ms p95는 목표다.
+위 이미지 수치는 정해둔 저채도 밝은 영역 mask의 프레임 간 변화량이며 지각 점수·본 갱신 FPS가 아니다. mode0는 작은 변화와 큰 변화가 섞였고 mode2 두 실행은 변화량 분포가 더 고르게 관찰됐다. 초기 위상은 일치하지 않으며 같은 앞면을 맞추기 위한 초기 yaw도0/180으로 다르다. TAA·조명·배경·WGC texture age의 한계가 있다. near-still 쌍은85/85/86으로, 단순 정지 프레임 수만으로 개선을 선언할 수 없다.
+
+관측기 있는 network 실행은 녹화가 끝난 뒤 접근 위반으로 종료됐다. 관측기를 뺀 통제는 -1로 종료됐지만 정상 종료 계약을 검증한 것은 아니며, 단일 대조로 관측기 원인을 확정하지 않는다. 새 Present/CPU busy/GPU p50/p95/p99·64성능은 측정하지 않았다.
 
 ## 4. 원인 분석
 
-확인: 모델 계약을 보완하면8실제 파트에서 mode2 retained buffer와CPU 포즈 변화를 동시에 관찰할 수 있다. 그러나 독립 물리 초기화는파트끼리밀쳐root가벌어지는 문제를 만들었다. 같은NPC 내부28쌍만차단한C에서는정지지면root정합성이유지됐다. 이 차단은서로다른NPC끼리밀침을없애는군집최적화가아니며, 하나의표시몸체내부의중복충돌을다루는진단이다. 외부접촉을실제로회귀검증한것은아니다.
+확인: Ray/Sphere의 고비용 native 하위 범위는 스크립트 결과 배열 밖이다. SDK는 내부 후보 버퍼를 호출자가 제공하는 인자를 노출하지 않는다. 스크립트 scratch 재사용으로 내부 할당을 없앤다는 주장은 근거가 없다. Drive/Displace 입력42쌍의 완전 일치0이므로 무조건 결과 캐시는 부적합하다.
 
-B의 생성 실패는A500 RVA0xc0f336에서0참조읽기였다. 앞선 모델미로딩 fault0xc68039와다르다. 물리초기화플래그를빼는것만으로렌더파트를운용할수있다는후보는이조건에서미수용이다. 어떤내부문맥이비었는지타입을최종확정하지않았다. B의클라이언트런처에는server launch JSON공유위반도있었고종료경로로처리됐다. 이운영오류와보존된서버factory충돌을구분한다.
+수정 가능 후보:
 
-A의추가bone TSV열은string extra를반복문에서명시초기화하지않아파트마다누적됐다. 원본은보존하고A의앞11개안정열만root/상태분석에사용했다. C에서는extra=""로수정해23열로일치했다. 별도native JSON은이문자열문제와무관하다. 같은표본의재분석을새독립반복으로세지않는다.
+|후보|예상 이점(미측정)|기능 위험|남은 검증 비용|
+|---|---|---|---|
+|자체 scratch 배열 수명 재사용|VM 컨테이너 생성 일부 감소 가능|재진입·alias·이전 결과 오염; native 주 병목은 남을 수 있음|낮음~중간: 기존 후보의 동일조건 OFF/ON 반복 성능, 기능 별도 확인|
+|기존 SupportSweepFast 제한적 적용|적격 구조물의 실제 ray 수 감소|발판 경계·착지·terrain guard 추가 비용|중간~높음: 기존 고정 포즈/실패 replay 재사용, 적격/비적격 별도 판단|
+|검사 경로 기반 유한 착지 복구|예산/목표 조건 불일치의 영구 정체 완화|추가 질의 비용·취소/만료 오류|중간: 실제 활성화 효능과 반복 군집 회귀 분리; 성능 최적화 후보로 분류하지 않음|
+|실제 network mode2 시각 경로|mode0 시간 손실을 피할 가능성|추가7물리 host·복제·root/외부접촉·전환·종료 안정성|높음: 먼저 기존 영상 품질/종료 위험 판정, 통과 후 이동/14클립/8→64|
 
-가설/한계: native network 경로는기존mode0 시간손실을피하면서표시보간을이용할후보지만, 이번8파트에서평균graph속도·실제화면품질을판정하지않았다. 날씨·초기포즈위상·프레임시간을같게맞춘영상A/B도아니다. 추가7물리host와28block의비용이클수있으므로성능목표에유리하다고가정하지않는다. 기존정상NPC파이프라인을네트워크구조로바로바꾸지않는다.
+이미 적용/시험한 항목은 공간 broadphase, 분산 시야·공유 보고, 재계획 분산, 정적 장애물 캐시,4관절·부분 골격,SupportFast,잔여시간 A/B/B/A다. 효과 입증과 구현 존재를 구분한다. mode0 상위 시간 손실을 그래프 blend/duration 수정만으로 고칠 수 있다는 증거는 없다. 새 보간·포즈 생략·지지 true 강제는 추가하지 않는다.
+
+미확인: malloc/free 횟수·바이트·할당기 self-time·GC, API별 순수 시간, 반복 캐시 적중률,8파트 graph clock/실제 표시 포즈의 일대일 동기,14클립 품질,network 추가 host의64비용. Days Gone 공유 포즈는 정적 메타데이터만으로 실행·효과를 확정할 수 없다.
 
 ## 5. 검증 수준
 
-8파트 생성·mode2 CPU/buffer 연결: 진단 성공. 내부 pair API 적용·정지지면root정합성: 단일 실행 범위 통과. 반복 검증 완료·이동/전투/등반/낙하 기능 회귀·시각 품질·성능·최종 수용은 미완료다. B는 실패다. 세 조건을 최종 후보3회 성공으로 합산하지 않는다.
+소유권/시간 경로: 부분 진단 성공. scratch 동등성: 제한된 조건 진단 성공. 착지 후보8/64: 단일 기능 회귀, 반복 완료 아님. 실제8파트: 정지 진단 성공. 영상: foreground 통제된 출력 이미지 분석 성공, 실제 시각 품질 최종 수용 아님. 반복 성능 개선·20ms p95·전체 골은 미수용이다.
 
 ## 6. 변경 사항
 
-새 진단 nf_net_parts PBO SHA-256=8BDA6B7A8C95962EF0FDA6BBC6AA228906504C3130D4597070ED2E1E53F7DF9C. 자동 서명·서명검증 및 packed script 일치 성공. 원래7모델의 시각/Memory/Fire LOD 구간 byte보존을검사했고packed ODOL56·LOD4·Geometry해상도header를대조했다. 이검사만으로packed mesh 전체의시각의미동등성을인증하지않는다. 기존3 PBO도런처에서hash/서명을재검증했다. 개인키는패키지와공개자료에없다.
-
-eight-geometry 안의 source/진단PBO·세임무·런처·observer사본·분석만추가했다. originalSource/배포PBO·운영서버·Steam·ANM·XOB·그래프는보존했다. 런처의generic newPbo=false 표식과 달리이묶음에는새진단PBO1개가있음을명시한다. 게임플레이알고리즘은변경하지않았다.
+이번 검토는 보고서·기존 인덱스·공개 집계만 갱신한다. 기존 게임 소스·PBO·운영 서버·Steam·원본 자산에는 변경이 없다. 앞선 격리 camera PBO87442808975539355CB720F88927FF69FF451A92C2DF49394A4F70C89C0247B4 및 parts PBO8BDA6B7A8C95962EF0FDA6BBC6AA228906504C3130D4597070ED2E1E53F7DF9C는 당시 자동 서명·검증 성공 기록을 유지한다. 이번 새 서명 대상은 없다. 개인키·게임 자산·영상 원본은 공개하지 않는다.
 
 ## 7. 원시 증거
 
-sourceRunId: animation-network-role-20261101-1600/eight-part-20261102/eight-geometry. source-proof.json·packed-model-header-proof.json·build-v3·signature-v3·packed-members-proof-v3와세조건의launch·factory-stages·role-pose·native-observer·heartbeat·RPT/crash·계획을로컬해시목록에연결한다. B의observer 미attach와launch 공유위반을제외하지않는다. SDK enphysics.c·dayzphysics.c의해시를남겨사용한공개API선언을고정한다.
+기존 checkpoint IDs: npc-research-review(142736),npc-query-scratch-pilot(144753),npc-scratch-vertical-recovery(154636),npc-checked-landing-corridor(162135),npc-checked-landing-activation(164547),npc-animation-eight-part-mode2(182824), 모두20261102. 새 완료 영상 sourceRunId: animation-network-role-20261101-1600/eight-part-20261102/visible-match의mode0-6/mode2-3/mode2-4. 원본 launch/recorder/focus/mask JSON과 영상 SHA를 로컬 무결성 목록에 연결한다. 공개 packet은 경로·프로세스 정보를 제거한 집계만 제공한다.
 
-세server/client의launch가terminal이고실제DayZ/PresentMon프로세스가없음을확인한뒤저장했다. 서버harness는DONE후소유프로세스를강제정리하므로정상종료를주장하지않는다. 공개자료는선택집계·CPU표본요약·자체pair차단snippet만제공하며게임자산·원시영상·절대경로·프로세스정보·개인키는공개하지않는다.
+추가 계측 없이 비교 가능한 자료: 기존4회 ETL/Present·질의 호출 소유권,60조건 원본/후보 출력,SupportFast 동일 포즈 적격/비적격,잔여시간 A/B/B/A,이번 foreground 영상 및 no-observer control. 서로 다른 실행 조건의 수치를 빼서 순수 개선률로 만들지 않는다.
 
 ## 8. 잔여 문제
 
-다음의가장높은가치는기존mode0 fixture와이mode2 후보의실제표시품질·재생위상을작은동일조건비교로판정하는것이다. 화면이개선되지않으면단지CPU포즈가움직인다는이유로이식을확대하지않는다. 개선가능성이확인돼도이동root연결·외부접촉·피격/등반/낙하·14클립전환과추가물리host비용을별도로검증한뒤8→64로확장한다. 기존scratch 반복성능과착지복구회귀는별도실험으로보존한다. 전체골은active이며기능·시각·20ms p95는독립판정한다.
+다음 가장 가치 있는 단일 산출물은 ‘실제8파트 network 표시 경로의 채택/보류 판정서’다. 이미 만든 영상과 종료 기록을 먼저 사용해 품질 개선 근거·관측기 영향·추가 host 위험·남은 검증을 하나의 결정으로 정리한다. 단지 CPU 포즈가 변한다는 이유로64까지 확대하지 않는다. 현 자료는 유망하지만 채택 보류다. 이후 새 시험은 판정을 바꾸는 최소 조건만 지정한다.
 
-로컬 checkpoint SHA-256: 981976fb231a5c42ce4fbf1c5c49c9ae8c3f261e7010b5644a01f49a8dafdd56
+물리 scratch 반복 성능은 별도 후속 실험으로 유지한다. SupportFast와network 전환을 동시에 섞지 않는다. Days Gone은 DayZ에서 답할 수 있는 구체적 질문이 생길 때만 추가 조사한다.
+
+로컬 checkpoint SHA-256: 0440da13da1f458bf94374203dafa4b92920ada8516415bdcb49bd21655a5b93
