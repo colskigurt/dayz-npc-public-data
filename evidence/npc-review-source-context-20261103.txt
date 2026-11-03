@@ -1,0 +1,580 @@
+Selected own-script context; not the complete latest override stack. Baseline owner-audit matched453D module. No new execution.
+
+FILE DGBNativeGround.c SHA256 eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82 LINES 359-470 FUNCTION SolveContactsInternal
+    bool SolveContactsInternal(vector anchor,float heading,out float proposedLift,out array<vector> points,float minimumLift=0)
+    {
+        proposedLift=0;points=new array<vector>;
+        ref array<vector> raw={};
+        int boneStarted=TickCount(0);
+        for(int j=0;j<JointIds.Count();j++)raw.Insert(anchor+Rotate(Leader.GetBonePositionMS(JointIds[j])+IdleOffset,heading));
+        ContactBoneTicks+=TickCount(boneStarted);
+        array<vector> supportOffsets={"0 0 0","0.065 0 0","-0.065 0 0","0 0 0.065","0 0 -0.065"};
+        int liftFoot=2;
+        int footStarted=TickCount(0);
+        float shadowBefore=SupportShadowTicks;
+        for(int foot=2;foot<4;foot++)
+        {
+            bool referenceFound=false;float referenceY=-100000;
+            bool centerTested=false;bool centerFound=false;
+            Object centerObject;vector centerPoint,centerNormal;float centerFraction;
+            bool fastEligible=false;float supportBound;
+            if(Director.SupportSweepFast || Director.SupportSweepShadow)
+            {
+                centerTested=true;ContactFootRays++;
+                centerFound=DayZPhysics.RayCastBullet(raw[foot]+"0 0.3 0",raw[foot]+"0 -1.2 0",DGBGroundAgent.Floors(),Leader,centerObject,centerPoint,centerNormal,centerFraction);
+                if(centerFound && centerNormal[1]>=0.65){referenceFound=true;referenceY=centerPoint[1];}
+                int fastStarted=TickCount(0);
+                if(referenceFound)fastEligible=StructureSupportBound(raw[foot],centerObject,centerPoint,centerNormal,centerFraction,supportBound);
+                SupportFastTicks+=TickCount(fastStarted);
+            }
+            bool useBound=Director.SupportSweepFast && fastEligible && !Director.SupportSweepShadow;
+            if(useBound)
+            {referenceFound=true;referenceY=supportBound;SupportFastUsed++;SupportFastSkippedRays+=4;}
+            else
+            foreach(vector offset:supportOffsets)
+            {
+                if(centerTested && offset==vector.Zero)continue;
+                Object hit;vector point,normal;float fraction;
+                vector origin=raw[foot]+offset;
+                ContactFootRays++;
+                if(DayZPhysics.RayCastBullet(origin+"0 0.3 0",origin+"0 -1.2 0",DGBGroundAgent.Floors(),Leader,hit,point,normal,fraction) && normal[1]>=0.65)
+                {
+                    referenceFound=true;referenceY=Math.Max(referenceY,point[1]);
+                }
+            }
+            if(Director.SupportSweepShadow && fastEligible && referenceFound)
+            {
+                SupportFastReferenceChecks++;
+                float fastError=referenceY - supportBound;
+                if(fastError>0.001)SupportFastUnder++;
+                SupportFastMaxUnder=Math.Max(SupportFastMaxUnder,fastError);
+                SupportFastMaxOver=Math.Max(SupportFastMaxOver, -fastError);
+            }
+            if(referenceFound)
+            {
+                float required=referenceY+Radii[foot]+0.03 - raw[foot][1];
+                if(required>proposedLift){proposedLift=required;liftFoot=foot;}
+            }
+            if(Director.SupportSweepShadow)ObserveSupportSweep(raw[foot],referenceFound,referenceY);
+        }
+        proposedLift=Math.Max(proposedLift,minimumLift);
+        ContactFootTicks+=TickCount(footStarted) - (SupportShadowTicks - shadowBefore);
+        if(proposedLift>0.25)
+        {
+            Reason="NATIVE_FOOT_LIFT_LIMIT";
+            vector oldFoot=raw[liftFoot];if(Contacts.Count()==4)oldFoot=Contacts[liftFoot];
+            int liftDiagnosticStarted=TickCount(0);
+            RecordContactFailure("LIFT_LIMIT",liftFoot,anchor,heading,raw[liftFoot],oldFoot,raw[liftFoot]+Vector(0,proposedLift,0),proposedLift,null);
+            ContactDiagnosticTicks+=TickCount(liftDiagnosticStarted);
+            return false;
+        }
+        for(int joint=0;joint<raw.Count();joint++)
+        {
+            vector target=raw[joint]+Vector(0,proposedLift,0);
+            vector previous=target;if(Contacts.Count()==4)previous=Contacts[joint];
+            Object collision;vector contact,normalHit;float hitFraction;
+            JointSweeps++;
+            int worldStarted=TickCount(0);
+            bool worldContact=DayZPhysics.SphereCastBullet(previous,target,Radii[joint],DGBGroundAgent.Walls(),Leader,collision,contact,normalHit,hitFraction);
+            ContactWorldTicks+=TickCount(worldStarted);
+            if(worldContact)
+            {
+                // A tangent/start-overlap with a walkable support is not a wall.
+                // Recheck support beneath the proposed foot; side faces still block.
+                bool supportedFoot=false;
+                if(joint>=2 && normalHit[1]>=0.65)
+                {
+                    Object floorObject;vector floorPoint,floorNormal;float floorFraction;
+                    bool hasFloor=DayZPhysics.RayCastBullet(target+"0 0.3 0",target+"0 -1.2 0",DGBGroundAgent.Floors(),Leader,floorObject,floorPoint,floorNormal,floorFraction);
+                    if(!hasFloor)
+                    {
+                        hasFloor=DayZPhysics.RayCastBullet(contact+"0 0.3 0",contact+"0 -0.3 0",DGBGroundAgent.Floors(),Leader,floorObject,floorPoint,floorNormal,floorFraction);
+                    }
+                    supportedFoot=hasFloor && floorNormal[1]>=0.65 && target[1] - Radii[joint]>=floorPoint[1] - 0.005;
+                }
+                if(joint>=2 && !supportedFoot && !collision)
+                {
+                    int fallbackStarted=TickCount(0);
+                    supportedFoot=WalkableFootSweep(previous,target,Radii[joint],collision);
+                    ContactFallbackTicks+=TickCount(fallbackStarted);
+                }
+                if(!supportedFoot)
+                {
+                    Reason="NATIVE_JOINT_WORLD_"+joint;
+                    HitType="terrain";if(collision && collision.GetType()!="")HitType=collision.GetType();
+                    HitNormal=normalHit;HitFraction=hitFraction;HitPoint=contact;
+                    int sweepDiagnosticStarted=TickCount(0);
+                    RecordContactFailure("SWEEP",joint,anchor,heading,raw[joint],previous,target,proposedLift,collision);
+                    ContactDiagnosticTicks+=TickCount(sweepDiagnosticStarted);
+                    return false;
+                }
+            }
+            points.Insert(target);
+        }
+        return true;
+    }
+
+FILE DGBNativeGround.c SHA256 eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82 LINES 765-887 FUNCTION DriveGround
+    void DriveGround(float dt,vector delta,bool available)
+    {
+        int started=TickCount(0);
+        AttentionStatus="NOT_PARKED";
+        if(PeerBypassActive)
+        {
+            bool expiredPeer=Director.Now>=PeerBypassUntil;
+            bool lockedPeer=GroundPlatform || YieldActive || SupportBypassActive || Agent.State=="IDLE";
+            if(Traversal && (Traversal.Phase!="FOLLOW" || Traversal.Area!="ground" || (Traversal.Active && Traversal.Active.Owner==Id)))lockedPeer=true;
+            if(expiredPeer)FinishPeerBypass("TIMEOUT");
+            else if(lockedPeer)FinishPeerBypass("ACTION_LOCK");
+            else if(DGBGroundAgent.FlatDistance(PrimaryGoal,PeerBypassPrimary)>1)FinishPeerBypass("TARGET_CHANGED");
+            else{Goal=PeerBypassGoal;GroundArrival=0.08;}
+        }
+        if(SupportBypassActive)
+        {
+            bool expired=Director.Now>=SupportBypassUntil;
+            if(expired || GroundPlatform || Agent.State=="IDLE" || DGBGroundAgent.FlatDistance(PrimaryGoal,SupportBypassPrimary)>1)
+            {
+                SupportBypassActive=false;Agent.Path.Clear();Agent.PlanAt=0;SupportBypassStatus="CANCELLED";
+                if(expired){SupportBypassTimeouts++;SupportBypassStatus="TIMEOUT";}
+            }
+            else{Goal=SupportBypassGoal;GroundArrival=0.08;}
+        }
+        HitType="";HitPoint=vector.Zero;HitNormal=vector.Zero;HitFraction=-1;
+        Steps++;if(available)RootSupplied+=delta.Length();
+        vector oldPosition=Agent.Position;float oldHeading=Agent.Heading;float oldMoved=Agent.Moved;
+        vector oldIdle=IdleOffset;
+        IdleOffset=vector.Zero;
+        if(Request==0 && Director.Now - RequestedAt>0.3)
+        {
+            vector residue=Leader.GetBonePositionMS(EntityId);residue[1]=0;
+            if(residue.Length()<0.2)IdleOffset=residue;
+        }
+        bool active=Agent.State!="IDLE";
+        if(YieldActive)active=true;
+        if(Traversal && Traversal.ForceWalk)active=true;
+        bool moved=false;
+        // RetryAt schedules a failed refresh; it must not freeze a route that
+        // still has executable steps. MoveTo revalidates each accepted step.
+        if(active && (Director.Now>=RetryAt || Agent.Path.Count()>0))
+        {
+            if(Director.Now<RetryAt)Agent.PlanAt=Math.Max(Agent.PlanAt,RetryAt);
+            Agent.NativeRootDelta=vector.Zero;
+            if(Request!=0 && available)Agent.NativeRootDelta=delta;
+            moved=Agent.MoveTo(delta.Length()/Math.Max(dt,0.001),dt,Director.Now,Director.Agents,Goal,GroundArrival,GroundPlatform);
+            Reason=Agent.StopReason;
+            if((Reason=="FOOTPRINT_UNSUPPORTED" || Reason=="UNSUPPORTED_STEP" || Reason=="NO_GROUND_PATH" || Reason=="PATH_EXHAUSTED") && TrySupportBypass())Reason="SUPPORT_BYPASS_PLANNED";
+            if(moved && Traversal && (Traversal.Area=="ground" || Director.CrowdDynamics) && !Director.Traffic.GroundReservationsClear(this,oldPosition,Agent.Position))
+            {
+                Agent.Position=oldPosition;Agent.Heading=oldHeading;Agent.Moved=oldMoved;
+                Agent.MeasuredSpeed=0;Agent.AcceptedStep=0;moved=false;Reason="LINK_RESERVED_SPACE";
+                GroundReservationBlocks++;
+            }
+            if(Reason=="BODY_SPACE_WAIT" && PeerBlockedSince<0)PeerBlockedSince=Director.Now;
+            if(Reason=="BODY_SPACE_WAIT")
+            {RejectedRootDelta=delta;RejectedRootAt=Director.Now;RejectedRootRequest=Request;}
+            if(Reason=="BODY_SPACE_WAIT" && !YieldActive && TryPeerBypass())Reason="PEER_BYPASS_PLANNED";
+            HitType=Agent.LastWorldHitType;HitPoint=Agent.LastWorldHitPoint;
+        }
+        else{Agent.MeasuredSpeed=0;Reason="NO_CURRENT_MEMORY";if(Director.Now<RetryAt)Reason="RECOVERY_REPLAN_WAIT";}
+        float proposedLift;ref array<vector> points={};
+        if(!SolveContacts(Agent.Position,Agent.Heading,proposedLift,points))
+        {
+            RejectedPoseStep=Agent.Position - oldPosition;RejectedPoseHeading=Agent.Heading;RejectedPoseAt=Director.Now;
+            ProposedLift=proposedLift;MaximumProposedLift=Math.Max(MaximumProposedLift,proposedLift);
+            PoseBlocks++;Agent.Position=oldPosition;Agent.Heading=oldHeading;Agent.Moved=oldMoved;Agent.MeasuredSpeed=0;
+            Agent.AcceptedStep=0;RetryCause=Reason;RetryCauseAt=Director.Now;RetryPeer=-1;
+            IdleOffset=oldIdle;RetryAt=Director.Now+0.5;Agent.Path.Clear();Agent.PlanAt=0;
+            // Root/virtual feet can be supported while an animated source foot
+            // is over a higher narrow surface. Use the same bounded physical
+            // route repair; do not raise the allowable contact lift.
+            if(RecoverableFootContact(Reason) && TrySupportBypass())Reason="SUPPORT_BYPASS_PLANNED";
+            NextRequest=0;
+            if(SupportBypassActive || PeerBypassActive){NextRequest=1;RetryAt=Director.Now+0.05;}
+        }
+        else
+        {
+            ProposedLift=proposedLift;MaximumProposedLift=Math.Max(MaximumProposedLift,proposedLift);
+            Lift=proposedLift;Contacts.Copy(points);
+            if(moved || Math.AbsFloat(DGBGroundAgent.SignedAngle(Agent.Heading - oldHeading))>0.1)RejectedPoseAt=-1;
+            if(!PeerBypassActive && WaitingFor && DGBGroundAgent.FlatDistance(Agent.Position,WaitingFor.Position)>1.2)
+            {
+                WaitingFor=null;
+            }
+            if(moved){AcceptedSteps++;RootAccepted+=vector.Distance(oldPosition,Agent.Position);}
+            if(moved || Reason=="ARRIVED" || Reason=="NO_CURRENT_MEMORY")PeerBlockedSince=-1;
+            if(Reason=="" && active)
+            {
+                NextRequest=1;
+                if(DGBGroundAgent.FlatDistance(Agent.Position,Goal)>10)NextRequest=2;
+            }
+            else if(Reason=="ALIGN_HEADING" || Reason=="ARRIVED" || Agent.State=="IDLE")NextRequest=0;
+            else if(Reason=="RECOVERY_REPLAN_WAIT")
+            {NextRequest=0;if((YieldActive && RetryCause=="BODY_SPACE_WAIT") || SupportBypassActive || PeerBypassActive)NextRequest=1;}
+            else if(Reason=="PEER_BYPASS_PLANNED")NextRequest=1;
+            else if(Reason=="SUPPORT_BYPASS_PLANNED")NextRequest=1;
+            else
+            {
+                RetryCause=Reason;RetryCauseAt=Director.Now;RetryPeer=Director.Agents.Find(Agent.BlockingPeer);
+                NextRequest=0;RetryAt=Director.Now+0.5;
+                // Let the source walk transition finish during a bounded yield
+                // lease. Repeated idle->walk restarts can replay the same blocked
+                // initial root delta forever. Each later delta still passes all
+                // ordinary peer/world/contact gates; none is accumulated/forced.
+                if(YieldActive && Reason=="BODY_SPACE_WAIT")
+                {NextRequest=1;RetryAt=Director.Now+0.05;YieldRootRetries++;}
+                if(SupportBypassActive && (Reason=="FOOTPRINT_UNSUPPORTED" || Reason=="UNSUPPORTED_STEP"))
+                {NextRequest=1;RetryAt=Director.Now+0.05;}
+                if(PeerBypassActive && Reason=="BODY_SPACE_WAIT"){NextRequest=1;RetryAt=Director.Now+0.05;}
+            }
+            if(SupportBypassActive && Reason=="ARRIVED")
+            {SupportBypassActive=false;Agent.Path.Clear();Agent.PlanAt=0;Reason="SUPPORT_BYPASS_DONE";SupportBypassStatus="DONE";NextRequest=1;}
+            if(PeerBypassActive && Reason=="ARRIVED")
+            {FinishPeerBypass("DONE");Reason="PEER_BYPASS_DONE";NextRequest=1;}
+            if(Reason=="ARRIVED")FaceEvidence(dt);
+        }
+        // Turning may reject root travel while a source foot swing clears the
+        // nearby support. Keep its phase alive for this finite repair lease.
+        if((SupportBypassActive || PeerBypassActive) && active)NextRequest=1;
+        if(YieldActive && Reason=="ARRIVED")Reason="YIELD_HOLD";
+        DriveTicks+=TickCount(started);
+    }
+
+FILE DGBNativeTraversal.c SHA256 71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872 LINES 404-685 FUNCTION Follow
+    void Follow(float dt,vector delta,bool available)
+    {
+        GroundPursuit=false;SafetyWalk=false;
+        DGBGroundAgent agent=Body.Agent;
+        vector currentSupport;
+        if(Area=="air" || !DGBGroundAgent.Floor(Body.Leader,agent.Position,currentSupport)){StartFall(true);return;}
+        if(FollowSurfaceYield(dt,delta,available))return;
+        if(agent.State=="IDLE" || GoalRevision==0)
+        {
+            Release();Active=null;
+            if(Area=="ground" && LastLink && !IdleClearing && DGBGroundAgent.FlatDistance(agent.Position,LastLink.Entry)<2)
+            {
+                Body.Director.Traffic.ReleaseOwner(Body.Id);
+                DGBNativeSeat clearance=Body.Director.Traffic.GroundQueue(Body,LastLink);
+                if(clearance){IdleClearGoal=clearance.Point;IdleClearing=true;}
+            }
+            if(IdleClearing)
+            {
+                SafetyWalk=true;Walk(IdleClearGoal,0.15,false,dt,delta,available);
+                if(DGBGroundAgent.FlatDistance(agent.Position,IdleClearGoal)<0.16){IdleClearing=false;SafetyWalk=false;}
+                return;
+            }
+            SafetyWalk=false;Walk(agent.Position,0.1,Area!="ground",dt,delta,available);return;
+        }
+        string targetArea=ResolveApproachArea(Fixture().Area(ActiveGoal));
+        if(Body.YieldActive && Body.CanYieldGround())
+        {Walk(Body.PrimaryGoal,0.08,false,dt,delta,available);return;}
+        if(Area=="ground" && !Body.Director.WaveAllows(Body.Id))
+        {
+            Release();Active=null;
+            DGBFixtureLink waitingLink=Fixture().NextLink("ground","low");
+            DGBNativeSeat admissionSeat;
+            if(waitingLink)admissionSeat=Body.Director.Traffic.GroundQueue(Body,waitingLink);
+            if(admissionSeat)Walk(admissionSeat.Point,0.1,false,dt,delta,available);
+            else{Body.NextRequest=0;Body.Reason="ADMISSION_CAPACITY_WAIT";}
+            if(Body.Reason=="ARRIVED")Body.Reason="ADMISSION_WAIT";
+            return;
+        }
+        if(Area==targetArea)
+        {
+            Release();Active=null;
+            if(PartialGroundApproach)
+            {SearchApproach(dt,delta,available);return;}
+            if(Area!="ground")
+            {
+                if(Body.Director.CrowdDynamics)
+                {
+                    vector pursuit;
+                    if(Body.Director.Traffic.SurfacePursuit(Body,Area,pursuit))SurfaceWalk(pursuit,0.18,dt,delta,available);
+                    else{Body.NextRequest=0;Body.Reason="SURFACE_CONTACT_WAIT";}
+                    return;
+                }
+                DGBNativeSeat parked=Body.Director.Traffic.SurfaceSeat(Body,Area);
+                if(!parked){Body.NextRequest=0;Body.Reason="SURFACE_CAPACITY_WAIT";return;}
+                SurfaceWalk(parked.Point,0.1,dt,delta,available);return;
+            }
+            GroundPursuit=true;
+            if(Body.Director.Pursuit)
+            {
+                vector approach;float approachArrival;
+                Body.Director.Pursuit.Goal(Body,ActiveGoal,approach,approachArrival);
+                Walk(approach,approachArrival,false,dt,delta,available);return;
+            }
+            vector target=ActiveGoal;vector slot=Body.Director.PursuitSlot(Body.Id,target);
+            vector support;if(DGBGroundAgent.Floor(Body.Leader,slot,support) && Fixture().Area(support)==Area)target=support;
+            float arrival=0.35;if(Body.Director.Bodies.Count()>14)arrival=0.08;
+            Walk(target,arrival,false,dt,delta,available);return;
+        }
+        DGBFixtureLink desired=PlanConnection(targetArea);
+        if(!desired || Now()<RetryUntil)
+        {
+            if(!desired){Release();Active=null;Body.Director.Traffic.ReleaseOwner(Body.Id,Area);}
+            SearchApproach(dt,delta,available);return;
+        }
+        if(Active!=desired)
+        {
+            Release();Active=desired;LastLink=desired;EntryStaged=false;agent.Path.Clear();agent.PlanAt=0;LastProgressAt=Now();ExitBlockedAt=-1;SurfaceWaypoints.Clear();
+        }
+        // Renew only for meaningful inward or near-entry heading progress.
+        // Sideways pressure cannot retain ownership indefinitely, and even
+        // genuine incremental progress has an absolute pre-action bound.
+        bool unreserved=Body.Director.OpenTraversal;
+        if(unreserved)
+        {
+            if(!Admission || AdmissionSource!=desired || (!EntryAligning && Now()>=NextAdmissionPlan))
+            {
+                Admission=DGBNativeAdmission.Choose(Fixture(),desired,Body.Id,agent.Position);
+                AdmissionSource=desired;NextAdmissionPlan=Now()+0.25;AdmissionProjections++;
+            }
+            desired=Admission;
+            if(!desired){Backoff("NO_SUPPORTED_ENTRY_PROJECTION");return;}
+        }
+        float entryTolerance=0.065;float entryArrival=0.055;float headingTolerance=0.25;float settleSeconds=0.3;
+        if(unreserved){entryTolerance=0.20;entryArrival=0.15;headingTolerance=5;settleSeconds=0.12;}
+        EntryNormalGap=0;
+        bool preciseSetback=unreserved && desired.Action=="CLIMB";
+        if(preciseSetback)
+        {
+            // Lateral alignment capture must not also admit a 0.36m error
+            // toward the wall: the native source pose requires its setback.
+            vector entryNormal=DGBNativeGroundBody.Rotate("0 0 -1",desired.Heading);
+            EntryNormalGap=Math.AbsFloat(vector.Dot(agent.Position - desired.Entry,entryNormal));
+            entryArrival=0.045;headingTolerance=1;
+        }
+        if(unreserved)
+        {
+            float alignGap=DGBGroundAgent.FlatDistance(agent.Position,desired.Entry);
+            float alignError=Math.AbsFloat(DGBGroundAgent.SignedAngle(desired.Heading - agent.Heading));
+            if(EntryAligning && alignGap>0.36)EntryAligning=false;
+            if(!EntryAligning && alignGap<=0.20)
+            {EntryAligning=true;EntryAlignAt=Now();EntryAlignProgressAt=Now();EntryAlignBestError=alignError;}
+            if(EntryAligning)
+            {
+                // Contact must not alternate walking-facing and entry-facing
+                // every callback. The actual start is fitted/validated below.
+                entryTolerance=0.36;
+                if(alignError<EntryAlignBestError - 3)
+                {EntryAlignBestError=alignError;EntryAlignProgressAt=Now();}
+                if(Now() - EntryAlignAt>5 || Now() - EntryAlignProgressAt>2)
+                {Backoff("ENTRY_ALIGNMENT_NO_PROGRESS");return;}
+            }
+        }
+        if(!unreserved && desired.Owner==Body.Id && desired.OwnerSince>=0)
+        {
+            float entryGap=DGBGroundAgent.FlatDistance(agent.Position,desired.Entry);
+            float entryHeading=Math.AbsFloat(DGBGroundAgent.SignedAngle(desired.Heading - agent.Heading));
+            if(EntryProgressOwnerSince!=desired.OwnerSince)
+            {
+                EntryProgressOwnerSince=desired.OwnerSince;EntryProgressAt=Now();
+                EntryProgressBestDistance=entryGap;EntryProgressBestHeading=360;
+            }
+            bool inwardProgress=entryGap<EntryProgressBestDistance - 0.05;
+            bool headingProgress=entryGap<=0.2 && entryHeading<EntryProgressBestHeading - 3;
+            if(inwardProgress || headingProgress)EntryProgressAt=Now();
+            if(inwardProgress)EntryProgressBestDistance=entryGap;
+            if(entryGap<=0.2)EntryProgressBestHeading=Math.Min(EntryProgressBestHeading,entryHeading);
+            if(Now() - desired.OwnerSince>12 || Now() - EntryProgressAt>4)
+            {Backoff("ENTRY_LEASE_TIMEOUT");return;}
+        }
+        if(!unreserved && desired.Owner!=Body.Id && desired.Queue.Find(Body.Id)<0)
+        {
+            int insertAt=desired.Queue.Count();
+            if(Area!="ground")
+            {
+                float ownDistance=DGBGroundAgent.FlatDistance(agent.Position,desired.Entry);
+                for(int queued=0;queued<desired.Queue.Count();queued++)
+                {
+                    int otherId=desired.Queue[queued];
+                    if(ownDistance+0.1<DGBGroundAgent.FlatDistance(Body.Director.Bodies[otherId].Agent.Position,desired.Entry)){insertAt=queued;break;}
+                }
+            }
+            desired.Queue.InsertAt(Body.Id,insertAt);
+        }
+        int rank=desired.Queue.Find(Body.Id);
+        bool head=unreserved || desired.Owner==Body.Id || (desired.Owner<0 && rank==0);
+        vector destination=desired.Entry;
+        if(head && Area=="ground" && !EntryStaged)
+        {
+            vector stage=desired.Entry - DGBNativeGroundBody.Rotate("0 0 -4.5",desired.Heading);
+            vector forward=DGBNativeGroundBody.Rotate("0 0 -1",desired.Heading);
+            if(vector.Dot(agent.Position - stage,forward)>=0 || DGBGroundAgent.FlatDistance(agent.Position,desired.Entry)<2 || DGBGroundAgent.FlatDistance(agent.Position,stage)<0.18)
+            {EntryStaged=true;agent.Path.Clear();agent.PlanAt=0;}
+            else destination=stage;
+        }
+        if(!head)
+        {
+            if(Body.Director.CrowdDynamics)destination=Body.Director.Traffic.ApproachPoint(Body,desired,rank);
+            else
+            {
+                DGBNativeSeat waitingSeat;
+                if(Area=="ground")waitingSeat=Body.Director.Traffic.GroundQueue(Body,desired);
+                else waitingSeat=Body.Director.Traffic.SurfaceSeat(Body,Area);
+                destination=agent.Position;if(waitingSeat)destination=waitingSeat.Point;
+            }
+        }
+        if(!unreserved && head && desired.Owner<0 && DGBGroundAgent.FlatDistance(agent.Position,desired.Entry)<2)
+        {desired.Owner=Body.Id;desired.OwnerSince=Now();desired.Queue.RemoveOrdered(0);LastProgressAt=Now();}
+        bool readyToAlign=head && (unreserved || desired.Owner==Body.Id) && DGBGroundAgent.FlatDistance(agent.Position,desired.Entry)<=entryTolerance;
+        if(preciseSetback && EntryNormalGap>0.065)readyToAlign=false;
+        if(!readyToAlign)
+        {
+            if(Area=="ground")Walk(destination,entryArrival,false,dt,delta,available);
+            else SurfaceWalk(destination,entryArrival,dt,delta,available);
+        }
+        else{Body.NextRequest=0;agent.MeasuredSpeed=0;}
+        if(!head){Body.Reason="LINK_QUEUE";return;}
+        if(!unreserved && desired.Owner!=Body.Id)return;
+        if(DGBGroundAgent.FlatDistance(agent.Position,desired.Entry)>entryTolerance || (preciseSetback && EntryNormalGap>0.065))
+        {
+            if(Now() - LastProgressAt>5)
+            {Backoff("ENTRY_STALL_BACKOFF");}
+            return;
+        }
+        DGBNativeSeat oldParking=Body.Director.Traffic.Owned(Body.Id,Area);
+        if(oldParking && DGBGroundAgent.FlatDistance(agent.Position,oldParking.Point)>0.9)oldParking.Owner=-1;
+        float error=desired.Heading - agent.Heading;while(error>180)error-=360;while(error< -180)error+=360;
+        if(Math.AbsFloat(error)>headingTolerance)
+        {
+            float alignRate=120;if(unreserved)alignRate=240;
+            float turn=Math.Clamp(error,-alignRate*dt,alignRate*dt);
+            // Faster in-place facing, using <=6degree collision/support proposals.
+            // Keep accepted partial progress.
+            int angularSteps=Math.Max(1,Math.Ceil(Math.AbsFloat(turn)/6));
+            for(int angularStep=0;angularStep<angularSteps;angularStep++)
+            {
+                float heading=DGBGroundAgent.SignedAngle(agent.Heading+turn/angularSteps);float lift;ref array<vector> points={};
+                if(!Body.SolveContacts(agent.Position,heading,lift,points))
+                {
+                    Body.Reason="LINK_ALIGN_BLOCKED_"+Body.Reason;
+                    if(Now() - LastProgressAt>3)Backoff("ALIGN_LEASE_BACKOFF");
+                    Body.NextRequest=0;return;
+                }
+                agent.Heading=heading;Body.Lift=lift;Body.Contacts.Copy(points);LastProgressAt=Now();Body.Reason="LINK_ALIGN";
+            }
+            Body.NextRequest=0;
+            if(Math.AbsFloat(DGBGroundAgent.SignedAngle(desired.Heading - agent.Heading))>headingTolerance)return;
+        }
+        // A fleeting NextRequest=0 in the same tick as starting a climb never
+        // reaches the native idle graph. Let locomotion finish and the heading
+        // settle before sampling the source traversal's first root delta.
+        if(Body.Request!=0 || Body.Leader.NativeRequest!=0 || Now() - Body.RequestedAt<settleSeconds)
+        {Body.NextRequest=0;Body.Reason="ENTRY_POSE_SETTLE";MotionClearanceDiagnostic="ENTRY_POSE_SETTLE";return;}
+        // Fit the immutable source curve to the accepted actual start/heading.
+        // Validate its resulting landing before starting; never snap to an exit.
+        if(unreserved)
+        {
+            if(!StartPlacement || vector.Distance(StartPlacement.Entry,agent.Position)>0.005 || Math.AbsFloat(DGBGroundAgent.SignedAngle(StartPlacement.Heading-agent.Heading))>0.1)
+                StartPlacement=DGBNativeAdmission.Place(desired,Body.Id,agent.Position,agent.Heading);
+            desired=StartPlacement;
+        }
+        vector exitSupport;
+        bool destinationReady=LandingSpace(desired.Exit,exitSupport,!unreserved);
+        if(destinationReady && Fixture().Area(exitSupport)!=desired.TargetArea)
+        {destinationReady=false;LandingDiagnostic="TARGET_AREA_MISMATCH";}
+        if(destinationReady && unreserved && !Fixture().LaneSupport(desired.Exit,desired.TargetArea))
+        {destinationReady=false;LandingDiagnostic="TARGET_FOOTPRINT_AREA";}
+        bool capacityReady=true;
+        if(!unreserved && destinationReady && desired.TargetArea!="ground")capacityReady=Body.Director.Traffic.SurfaceSeat(Body,desired.TargetArea,true)!=null;
+        if(!destinationReady || !capacityReady)
+        {
+            Body.Reason="EXIT_SPACE_BLOCKED";if(!capacityReady)Body.Reason="TARGET_CAPACITY_WAIT";
+            if(ExitBlockedAt<0)ExitBlockedAt=Now();
+            if(Now() - ExitBlockedAt>3)Backoff("EXIT_LEASE_BACKOFF");
+            return;
+        }
+        if(desired.Action=="DROP" && agent.Position[1] - exitSupport[1]>3.5)
+        {Body.Reason="DROP_HEIGHT_LIMIT";return;}
+        Clip=Body.Director.Motion.Find(desired.Clip);
+        if(!Clip){Body.Reason="SOURCE_CLIP_MISSING";return;}
+        float fittedHeight=0;
+        if(unreserved && desired.Action=="CLIMB")
+        {
+            fittedHeight=exitSupport[1] - desired.Exit[1];
+            if(Math.AbsFloat(fittedHeight)>0.20)
+            {Backoff("SOURCE_HEIGHT_FIT_LIMIT");return;}
+        }
+        if(Body.Director.CrowdDynamics && !Body.Director.Traffic.CanStartMotion(Body,desired,MotionClearanceDiagnostic))
+        {
+            if(Area!="ground")Body.Director.Traffic.RequestSurfaceYield(Body,desired.Entry,desired);
+            Body.NextRequest=0;Body.Reason="MOTION_CORRIDOR_WAIT";
+            if(ExitBlockedAt<0)ExitBlockedAt=Now();
+            if(Now() - ExitBlockedAt>3)Backoff("MOTION_CORRIDOR_BACKOFF");
+            RetryUntil=Now()+0.2;return;
+        }
+        ExitBlockedAt=-1;
+        if(unreserved)
+        {
+            Active=desired.ActionInstance(Body.Id);Active.OwnerSince=Now();LastLink=Active;
+        }
+        MotionOrigin=agent.Position;MotionTravel=vector.Zero;NativeCurveEnded=false;Succeeded=true;Recovering=false;PressureFallActive=false;PressureFallVelocity=vector.Zero;Failure="";SurfaceWaypoints.Clear();
+        MotionHeightFit=fittedHeight;
+        MotionStartNormalGap=EntryNormalGap;
+        MotionEndpointFitActive=false;MotionEndpointFitDistance=0;
+        ExitClearanceDiagnostic="";
+        if(unreserved && Active.Action=="CLIMB")Active.Exit[1]=exitSupport[1];
+        EntryAligning=false;
+        MotionContactAt=-1;MotionContactHeld=0;MotionContactBlocked=false;MotionContactOffset=vector.Zero;
+        Body.CancelYield("ACTION_START");
+        Body.FinishPeerBypass("ACTION_START");
+        WantRelease=false;WantLanding=false;Body.IdleOffset=vector.Zero;
+        SetPhase("MOTION");Body.NextRequest=Clip.request;Body.Reason="NATIVE_TRAVERSAL_START";
+    }
+
+FILE DGBNativeTraversal.c SHA256 71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872 LINES 1042-1051 FUNCTION StartPressureFall
+    void StartPressureFall(vector velocity)
+    {
+        Release();Active=null;LastLink=null;Body.Director.Traffic.ReleaseOwner(Body.Id);
+        Failure="CONTACT_SUPPORT_LOST";Succeeded=false;
+        StartFall(false);PressureFallActive=true;PressureFallVelocity=velocity;PressureFallVelocity[1]=0;
+        PressureLandingSeparation=true;SeparationEpisodeDistance=0;
+        PressureEscapeValid=false;NextPressureEscapePlan=0;
+        if(PressureFallVelocity.Length()>1.2){PressureFallVelocity.Normalize();PressureFallVelocity=PressureFallVelocity*1.2;}
+        Body.Reason="CONTACT_FALL";
+    }
+
+FILE DGBNativeTraversal.c SHA256 71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872 LINES 1230-1267 FUNCTION Fall
+    void Fall(float dt)
+    {
+        if(!Body.FrameFallPhysicsActive())
+        {
+            if(Recovering && Body.Request!=8)return;
+            if(!Recovering && Body.Request!=6 && Body.Request!=8)return;
+        }
+        bool escaped=EscapeStep(dt);
+        FallVelocity=Math.Max(-15,FallVelocity - 9.81*dt);
+        vector next=Body.Agent.Position+Vector(0,FallVelocity*dt,0);
+        if(PressureFallActive)next+=PressureFallVelocity*dt;
+        Object hit;vector point,normal;float fraction;bool landed=false;
+        if(DayZPhysics.RayCastBullet(Body.Agent.Position+"0 0.12 0",next+"0 -0.1 0",DGBGroundAgent.Floors(),Body.Leader,hit,point,normal,fraction))
+        {
+            if(normal[1]>=0.65 && point[1]<=Body.Agent.Position[1]+0.05 && point[1]>=next[1] - 0.1)
+            {
+                vector support;if(LandingSpace(point,support,!Body.Agent.ManagedPeerContacts)){next=support;landed=true;}
+                else{if(!escaped){if(PressureFallActive){if(!PressureSlide(dt))AirEscapeTurn(dt);}else EscapeStep(dt);}Body.Reason="LANDING_SPACE_BLOCKED";return;}
+            }
+        }
+        if(!Accept(next,dt)){if(!escaped){if(PressureFallActive){if(!PressureSlide(dt))AirEscapeTurn(dt);}else EscapeStep(dt);}Body.Reason="FALL_"+Body.Reason;return;}
+        Body.Reason="NATIVE_FALL";
+        if(landed)
+        {
+            PressureFallActive=false;PressureFallVelocity=vector.Zero;
+            PressureEscapeValid=false;NextPressureEscapePlan=0;
+            Landings++;WantLanding=true;LandingDelay=0;
+            if(FallPresentationRequest==8 && FallStart-Body.Agent.Position[1]>0.75){LandingDelay=0.7;}
+            Body.NextRequest=0;
+            EgressGoal=Body.Agent.Position;
+            if(Active)
+            {
+                EgressGoal=Body.Agent.Position+DGBNativeGroundBody.Rotate("0 0 -1.2",Active.Heading);
+                if(Recovering && Active.Action=="CLIMB")EgressGoal=Body.Agent.Position - DGBNativeGroundBody.Rotate("0 0 -1.2",Active.Heading);
+            }
+            SetPhase("LAND");
+        }
+    }
+
+Gate predicate from existing analyzer (not a new runtime):
+result['functionalGatePassed']=bool(result['validTerminalAgents']==expectedCount and result['allMilestoneAgents']==expectedCount and not mismatches and not generationErrors and not terminalErrors and result['allCommandsDetached'] and not result['unresolvedTerminalFailures'])
+Plan build-key adaptation/complete producer wrappers are not included; this excerpt alone is not an independently runnable current experiment.

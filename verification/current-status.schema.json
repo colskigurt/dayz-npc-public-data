@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences",
+    "goalComplete"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "documentation-review/external-review-20261103"
+    },
+    "verificationStatus": {
+      "type": "object",
+      "required": [
+        "finalAcceptance"
+      ],
+      "properties": {
+        "finalAcceptance": {
+          "const": false
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "newRuns",
+        "latestFunctional",
+        "matchedPerformance",
+        "performanceTargetP95Ms",
+        "performanceTargetAchieved"
+      ],
+      "properties": {
+        "newRuns": {
+          "const": 0
+        },
+        "performanceTargetAchieved": {
+          "const": false
+        }
+      }
+    },
+    "goalComplete": {
+      "const": false
+    }
+  }
+}

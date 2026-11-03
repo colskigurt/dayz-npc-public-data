@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T19:10:24.571469+09:00",
+  "sourceRunId": "documentation-review/external-review-20261103",
+  "buildId": "unchanged-no-new-build",
+  "verificationStatus": {
+    "documentation": "evidence_reconciled",
+    "functional": "not_retested_this_review",
+    "visualQuality": "not_retested_this_review",
+    "performance": "not_measured_this_review",
+    "externalAI": "not_retested",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "newRuns": 0,
+    "latestFunctional": {
+      "sourceRunId": "network-gameplay/entry-facing-sixtyfour-on1",
+      "independentRuns": 1,
+      "logicalAgents": 64,
+      "allMilestones": 53,
+      "highCompleted": 53,
+      "incompleteAtEndFollow": 11,
+      "fallCycles": 82,
+      "fallRecovered": 82
+    },
+    "matchedPerformance": {
+      "sourceRunId": "matched-flat-pursuit-20261102/detailed",
+      "independentRuns": 4,
+      "executionMode": "historical_offline_flat_fixture",
+      "customFreshPresentP95Ms": [
+        65.47,
+        69.56
+      ],
+      "customContinuedPresentP95Ms": [
+        70.09,
+        75.3
+      ],
+      "vanillaFreshPresentP95Ms": [
+        24.23,
+        24.44
+      ],
+      "continuedIsNotIndependentRepeat": true,
+      "currentNetworkBuildEquivalent": false
+    },
+    "performanceTargetP95Ms": 20,
+    "performanceTargetAchieved": false,
+    "docSizes": {
+      "README.md": {
+        "beforeBytes": 18685,
+        "afterBytes": 3569,
+        "beforeLines": 335,
+        "afterLines": 33
+      },
+      "AI_REVIEW.md": {
+        "beforeBytes": 72991,
+        "afterBytes": 4528,
+        "beforeLines": 668,
+        "afterLines": 38
+      }
+    }
+  },
+  "blockers": [
+    "Current terrain candidate cost benefit not measured",
+    "No final8/64three-pair acceptance yet",
+    "Full14clip8part64agent visible quality not finally accepted",
+    "Historical server dt and Present are distinct metrics"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-external-review-response-20261103.md",
+      "sha256": "8bc7d4a7c9413725e38409e0fd152744abf73f505313cd6ea6ffbaaf3ca2c829"
+    },
+    {
+      "path": "reports/operations/npc-validation-policy-20261103.md",
+      "sha256": "103aa71473ce0889b8b3fb9490b7bfde920fddfae0804c6052f7c49de7cf6e4f"
+    },
+    {
+      "path": "evidence/npc-review-source-context-20261103.txt",
+      "sha256": "1d9d682effabd624fc4adc626a8f37d6f1275993c1219d65c00164d05e7e4595"
+    },
+    {
+      "path": "evidence/npc-review-cost-and-scenarios-20261103.json",
+      "sha256": "7279200d0797e45b496abf9afb847e91b96cba84cc30eb04723fe5648d406f42"
+    }
+  ],
+  "goalComplete": false
+}
