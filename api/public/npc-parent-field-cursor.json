@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T09:33:09.162385+09:00",
+  "sourceRunId": "network-gameplay/creature-parent-fieldcursor1",
+  "buildId": "A500BE80+existing9PBOs_unchanged",
+  "verificationStatus": {
+    "diagnosis": "parent_field_cursor_divergence_confirmed",
+    "cause": "first_prior_field_divergence_not_yet_identified",
+    "functionalRegression": "not_run",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "logicalNpcs": 1,
+    "nativeParts": 8,
+    "diagnosticRuntimeTrials": 1,
+    "senderShortRecordSamples": 8,
+    "receiverBadRecordSamples": 8,
+    "samePayloadByteMatches": 8,
+    "senderParentFieldStartBit": 126,
+    "senderParentUpdateFlag": 0,
+    "senderParentPresent": 0,
+    "receiverParentFieldStartBit": 47,
+    "receiverParentUpdateFlag": 1,
+    "receiverParentPresent": 1,
+    "cursorDifferenceBits": 79,
+    "independentPerformanceRepeats": 0,
+    "frameTimeP50P95P99": null
+  },
+  "blockers": [
+    "The first prior field that diverges remains unidentified",
+    "No mod API correction selected before shared-codec contract is known",
+    "Identical bytes do not give per-entity network ID/time pairing",
+    "No new8/64 functional, visual, or frame performance acceptance"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-parent-field-cursor-20261103.md",
+      "sha256": "59fefd73cac9e1fe6cccccb3a507529718b9437f338587694f4195bc9ddd75bd"
+    },
+    {
+      "path": "evidence/npc-parent-field-cursor-20261103.txt",
+      "sha256": "6f636d16f6083b353127d6533c2d6fbde72f8cb603e2a172299a70d508e9862c"
+    }
+  ],
+  "next": "Use the live shared dispatcher/header analysis to find the first earlier field divergence. Do not advance cursor by79 or force parent IDs as a fix; require a contract-based candidate before8 to64 regression.",
+  "goalComplete": false
+}

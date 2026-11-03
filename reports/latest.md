@@ -1,3 +1,5 @@
+> 최신 작업: 같은16바이트에서 부모 필드는 서버 bit126(update0), client bit47(update1/presence1). 79비트 위치 불일치 확인. 원인과 수정은 미확정, 성능 미측정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-parent-field-cursor-20261103.md).
+
 > 최신 작업: 서버개체emitter의16byte생성확인,client유효전체와8/8동일.공유codec계약불일치원인추적중.3함수정적분석완료,새성능/시각결과없음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-record-producer-20261103.md).
 
 > 최신 작업: 사전연결관측:정상111B/비정상16B,8건모두146bit까지읽어18bit초과.잘못된부모ID는범위내에서먼저해석됨.생성/해석계약원인추적중;성능미측정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-parent-record-bounds-20261103.md).
