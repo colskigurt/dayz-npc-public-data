@@ -1,3 +1,5 @@
+> 최신 작업: 64명 첫 OFF/ON: 유효 종료58/39명, 서버p95 121/124ms. 검사 수 감소에도 성능·기능 개선 미입증. ON 장기 착지 차단1명 보존, 반복 진행 중. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-slot-support-first-pair-20261103.md).
+
 > 최신 작업: 조건부지지검사ON8명:8/8·낙하복귀12/12·실제fast8/8.새64OFF/ON/OFF/ON비교는진행중.성능·시각·20ms목표는미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-slot-support-safety-20261103.md).
 
 > 최신 작업: 그래프 범위 후보8명 통과·64명 실패(유효label40/64). 반복경고는각1건.64명명령시간0.643배·서버dt p95 116ms 관측,Present/시각/성능성공은미판정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-slot-regression-clock-20261103.md).

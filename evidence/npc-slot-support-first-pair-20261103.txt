@@ -1,0 +1,118 @@
+Aggregate diagnostic only. No raw logs, game assets, credentials or process identifiers.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T11:32:51.423311+09:00",
+  "sourceRunId": "network-gameplay/slot-support64-matched-control1",
+  "buildId": "8638218523E0A568A75FCDCC7C21033F6D733DCD4D51D259639E87042839FD84",
+  "verificationStatus": {
+    "diagnosis": "first_completed_pair",
+    "functionalRegression": "both_failed",
+    "visualQuality": "not_measured",
+    "performance": "no_benefit_demonstrated",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "independentRuns": 2,
+    "conditions": [
+      {
+        "sourceRunId": "network-gameplay/slot-support-sixtyfour-off2",
+        "enabled": false,
+        "validTerminalAgents": 58,
+        "allMilestoneAgents": 58,
+        "functionalGatePassed": false,
+        "fallStarts": 83,
+        "landFollowCycles": 83,
+        "stateContractErrors": {
+          "phaseChainMismatches": 0,
+          "recoveryGenerationErrors": 0,
+          "terminalAlignmentErrors": 0
+        },
+        "supportTotals": {
+          "contextCalls": 0,
+          "originalCalls": 694899,
+          "fastUsed": 0,
+          "skippedRays": 0,
+          "fastAttempts": 0,
+          "footRays": 6948990,
+          "jointSweeps": 2774968
+        },
+        "actualFastAgents": 0,
+        "serverMissionDtMilliseconds": {
+          "p50": 73.0,
+          "p95": 121.0,
+          "p99": 145.8499999999999
+        },
+        "commandOverMission": 0.640316700028596
+      },
+      {
+        "sourceRunId": "network-gameplay/slot-support-sixtyfour-on1",
+        "enabled": true,
+        "validTerminalAgents": 39,
+        "allMilestoneAgents": 39,
+        "functionalGatePassed": false,
+        "fallStarts": 80,
+        "landFollowCycles": 79,
+        "stateContractErrors": {
+          "phaseChainMismatches": 0,
+          "recoveryGenerationErrors": 0,
+          "terminalAlignmentErrors": 0
+        },
+        "supportTotals": {
+          "contextCalls": 265252,
+          "originalCalls": 324284,
+          "fastUsed": 501044,
+          "skippedRays": 2004176,
+          "fastAttempts": 528465,
+          "footRays": 3891184,
+          "jointSweeps": 2355533
+        },
+        "actualFastAgents": 64,
+        "serverMissionDtMilliseconds": {
+          "p50": 74.0,
+          "p95": 124.0,
+          "p99": 149.5
+        },
+        "commandOverMission": 0.6328750862565206
+      }
+    ],
+    "pairs": [
+      {
+        "off": "network-gameplay/slot-support-sixtyfour-off2",
+        "on": "network-gameplay/slot-support-sixtyfour-on1",
+        "serverMissionDtDeltaOnMinusOff": {
+          "p50": {
+            "milliseconds": 1.0,
+            "relativePercent": 1.36986301369863
+          },
+          "p95": {
+            "milliseconds": 3.0,
+            "relativePercent": 2.479338842975207
+          },
+          "p99": {
+            "milliseconds": 3.650000000000091,
+            "relativePercent": 2.5025711347275235
+          }
+        },
+        "validTerminalDeltaAgents": -19,
+        "interpretation": "Descriptive only: trajectories/work counts differ; not isolated self-time or client Present."
+      }
+    ],
+    "unresolvedFall": {
+      "agent": 24,
+      "fallAt": 95.804,
+      "landingBlockedFirstSampleSeconds": 96.517,
+      "landingBlockedLastSampleSeconds": 280.078,
+      "last20sAcceptedSteps": 0
+    },
+    "frameTimeP50P95P99": null
+  },
+  "blockers": [
+    "Both64agent controls fail original functional criteria",
+    "First ON has persistent landing-space blockage; causal effect of candidate not established",
+    "Server Mission dt is not client Present/CPU/GPU",
+    "Remaining OFF3/ON2 repeat pair not complete"
+  ],
+  "evidenceReferences": [],
+  "next": "Finish already running OFF3, then unchanged ON2. Do not promote candidate from skipped rays. Preserve the long landing blockage and investigate after repeated comparison.",
+  "goalComplete": false
+}
