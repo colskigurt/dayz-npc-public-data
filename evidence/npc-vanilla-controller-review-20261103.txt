@@ -1,0 +1,102 @@
+Aggregate diagnostic only. No raw logs, game assets, credentials or process identifiers.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T13:26:55.646171+09:00",
+  "sourceRunId": "matched-flat-pursuit-20261102/detailed/vanilla-controller-review-20261103",
+  "buildId": "read-only-review-A500BE80-scripts-FF0AD7EE",
+  "verificationStatus": {
+    "diagnosis": "public_command_boundary_verified_native_ground_internals_unresolved",
+    "nativeSupportInternals": "unresolved",
+    "functionalRegression": "not_run",
+    "visualQuality": "not_measured",
+    "performance": "historical_comparison_only",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "newRuntimeRuns": 0,
+    "newPboCount": 0,
+    "installedMembersAudited": 8,
+    "staticRegistrationReferences": 7,
+    "historicalMatched64": {
+      "independentRuns": 4,
+      "presentP95Milliseconds": {
+        "vanilla": [
+          24.23,
+          24.44
+        ],
+        "custom": [
+          65.47,
+          69.56
+        ]
+      },
+      "cpuBusyP95Milliseconds": {
+        "vanilla": [
+          12.8,
+          13.0
+        ],
+        "custom": [
+          64.5,
+          68.3
+        ]
+      },
+      "condition": "Existing205s flat fixture; C2 fresh windows; same recipe, not identical workload. These are ranges of per-run p95, not pooled percentiles."
+    },
+    "nativeSupportQueryFrequency": null,
+    "nativeSupportSelfTime": null,
+    "frameTimeP50P95P99New": null
+  },
+  "policies": [
+    {
+      "policy": "Native movement controller",
+      "vanilla": "구현됨",
+      "evidence": "installed DayZInfected native declarations, script Move start/get, measured command101; internal ground controller unknown",
+      "custom": "AnimalBase plus script Drive/Displace and native animation; not the same infected command"
+    },
+    {
+      "policy": "Animation/Physics synchronization",
+      "vanilla": "부분 확인",
+      "evidence": "AnimCommandBase PreAnim/PrePhys and InfectedCommandScript PostPhys contract; actual per-NPC cadence unknown",
+      "custom": "Animal command hooks exist; eight hosts and custom world solver add different work"
+    },
+    {
+      "policy": "Contact caching",
+      "vanilla": "미확인",
+      "evidence": "No native manifold persistence or lifetime established",
+      "custom": "Previous Contacts vectors retained for sweep endpoints; not native manifold/cache reuse"
+    },
+    {
+      "policy": "Broadphase",
+      "vanilla": "미확인",
+      "evidence": "No infected-specific broadphase call path established",
+      "custom": "1m spatial cells and3x3 neighborhood for peer force pairs; native query candidate reuse unknown"
+    },
+    {
+      "policy": "Physics LOD",
+      "vanilla": "미확인",
+      "evidence": "Animal UpdateSimulationPrecision declaration does not prove infected distance/state physics policy",
+      "custom": "Existing precision controls and guarded Fast experiments; not accepted whole-game optimization"
+    },
+    {
+      "policy": "Update throttling",
+      "vanilla": "미확인",
+      "evidence": "Orientation/speed sync thresholds are network dirtying policy, not physics tick throttling",
+      "custom": "Replan timers exist; no accepted pose/physics frame-skipping policy"
+    },
+    {
+      "policy": "Shared collision data",
+      "vanilla": "미확인",
+      "evidence": "No shared native query/support result API or verified owner established",
+      "custom": "Scratch reuses script arrays only; query results between differing Drive/Displace inputs not reused"
+    }
+  ],
+  "blockers": [
+    "Exact infected ground support function, shape, contact persistence and query frequency not established",
+    "Native Infected move command is not a drop-in API on AnimalBase",
+    "Historical flat workload differs from latest networked pipeline and full custom traversal workload",
+    "No supported public API for caller-owned native Ray/Sphere result buffers found in audited declarations"
+  ],
+  "evidenceReferences": [],
+  "newPbo": false,
+  "next": "Keep current functional solver authoritative. Prioritize a specification for safely reducing distinct Drive/Displace re-solves; do not blindly cache unequal inputs. Treat native-carrier use as a separate type/asset/command compatibility gate before any implementation. No game execution authorized by this review.",
+  "goalComplete": false
+}

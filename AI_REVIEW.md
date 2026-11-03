@@ -1,3 +1,5 @@
+> 최신 작업: 바닐라 native Move/API·101 getter 경계 확인.지지 함수/형상/cache/주기 미확인.기존 Fast/Scratch 중복 정리,AnimalBase drop-in 대체 근거 없음.새 실행/구현 없이 소유권 명세 우선 권고. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-vanilla-controller-review-20261103.md).
+
 > 최신 작업: 순차 포즈 재현에서 기존2조건 착지 실패·골반계약 후보 착지 통과.비적격14조건 보존·서명 대체PBO 실제 OFF/ON 검증.새8/64·시각·성능 미검증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-hip-sequence-package-20261103.md).
 
 > 최신 작업: 골반 검사 반경 한 요소 비교:12포즈 모두 첫 이동,착지+전체포즈는1/12.기존24결과 재현·네 벽면 거부.미션 진단만,미채택·성능/시각미측정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-hip-contract-diagnosis-20261103.md).
