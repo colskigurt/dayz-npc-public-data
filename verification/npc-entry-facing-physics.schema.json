@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "sourceRunId",
+    "metrics",
+    "verificationStatus",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "network-gameplay/entry-facing-controls3"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "physicsCalls": {
+          "const": 22
+        },
+        "scopeCalls": {
+          "const": 36
+        },
+        "frameTimeP50P95P99": {
+          "type": "null"
+        }
+      }
+    }
+  }
+}
