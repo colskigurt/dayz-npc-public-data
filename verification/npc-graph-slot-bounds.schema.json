@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "network-gameplay/creature-graph-slotcandidate4"
+    },
+    "buildId": {
+      "const": "8638218523E0A568A75FCDCC7C21033F6D733DCD4D51D259639E87042839FD84"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "signatureVerified": {
+      "const": true
+    },
+    "verificationStatus": {
+      "type": "object",
+      "required": [
+        "functionalRegression",
+        "visualQuality",
+        "performance",
+        "finalAcceptance"
+      ],
+      "properties": {
+        "functionalRegression": {
+          "const": "not_run"
+        },
+        "visualQuality": {
+          "const": "not_measured"
+        },
+        "performance": {
+          "const": "not_measured"
+        },
+        "finalAcceptance": {
+          "const": false
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "serverGraphEndBit",
+        "clientGraphEndBit",
+        "clientHeaderEndBit",
+        "successfulNativeGraphDecoderReturns",
+        "clientParentStartBit",
+        "frameTimeP50P95P99"
+      ],
+      "properties": {
+        "serverGraphEndBit": {
+          "const": 44
+        },
+        "clientGraphEndBit": {
+          "const": 44
+        },
+        "clientHeaderEndBit": {
+          "const": 128
+        },
+        "successfulNativeGraphDecoderReturns": {
+          "const": 8
+        },
+        "clientParentStartBit": {
+          "type": "null"
+        },
+        "frameTimeP50P95P99": {
+          "type": "null"
+        }
+      }
+    },
+    "evidenceReferences": {
+      "type": "array",
+      "minItems": 2
+    }
+  }
+}
