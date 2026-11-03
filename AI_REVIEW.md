@@ -1,3 +1,5 @@
+> 최신 작업: 근지면 FALL 포즈 복구: frozen3cm 후 원래 착지 통과·12위임가드·4벽 거부. 새PBO 서명검증 성공.8명 8/8,실제후보사용0회.64/성능/시각 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-near-ground-fall-20261103.md).
+
 > 최신 작업: 64명 OFF/ON 각2회:4/4 기능 실패,서버p95 이득 방향 불일치로 후보 미채택. 장기 낙하 위치의 FOOT_X_SUPPORT 거부 재현;10cm 이웃 착지점 통과는 경로 성공 아님. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-slot-support-four-20261103.md).
 
 > 최신 작업: 64명 첫 OFF/ON: 유효 종료58/39명, 서버p95 121/124ms. 검사 수 감소에도 성능·기능 개선 미입증. ON 장기 착지 차단1명 보존, 반복 진행 중. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-slot-support-first-pair-20261103.md).

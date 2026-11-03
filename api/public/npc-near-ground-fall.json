@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T12:16:55.713766+09:00",
+  "sourceRunId": "network-gameplay/near-ground-fall-eight-on1",
+  "buildId": "1A1928F160D0852659B4CB2E8AF87295448FB3B3BB075FFD039A703BB1FB461D",
+  "verificationStatus": {
+    "diagnosis": "captured_fall_pose_motor_and_guard_controls_passed",
+    "functionalRegression": "single_eight_pass",
+    "liveRecoveryEfficacy": "not_established",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "logicalNpcs": 8,
+    "nativeParts": 64,
+    "independentRuntimeRuns": 1,
+    "validTerminalAgents": 8,
+    "allMilestoneAgents": 8,
+    "fallStarts": 9,
+    "landFollowCycles": 9,
+    "phaseChainErrors": 0,
+    "generationErrors": 0,
+    "terminalAlignmentErrors": 0,
+    "actualCandidateUseAgents": 0,
+    "totalCandidateUses": 0,
+    "actualPolicyReadAgents": 3,
+    "totalDelegations": 149,
+    "serverMissionDtMilliseconds": {
+      "p50": 16.0,
+      "p95": 31.0,
+      "p99": 32.0
+    },
+    "serverCommandOverMission": 0.9999616565791218,
+    "frozenMotor": {
+      "offSteps": 0,
+      "offTicks": 100,
+      "onSteps": 1,
+      "onTravelMetres": 0.0302734,
+      "onOriginalLandingClear": true,
+      "onFullPoseSolve": true
+    },
+    "ineligibleGuardCases": 12,
+    "activeCandidateWallRejections": 4,
+    "defaultOffVerified": true,
+    "frameTimeP50P95P99": null
+  },
+  "blockers": [
+    "One frozen pose does not establish live recovery or arbitrary-map safety",
+    "8NPC safety pass without actual candidate use does not demonstrate live efficacy",
+    "64NPC functional regression and actual Present/CPU/GPU not completed for new module",
+    "14clip visible-quality and20ms p95 not accepted"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-near-ground-fall-20261103.md",
+      "sha256": "3c89b4a8157f64cc30389526414f3a02efcd2a032503ba52d5eb2da8935d3138"
+    },
+    {
+      "path": "evidence/npc-near-ground-fall-20261103.txt",
+      "sha256": "838905b87081b1327abd38d5dd2b8feab20858b5fb32dedc0db3946bd6e6e858"
+    }
+  ],
+  "signatureVerified": true,
+  "next": "같은11개 서명 패키지와 실제 사용 계측으로64명 기능 시험을 진행한다. 빠른 지지 검사는OFF로 유지하고 원래 판정 기준을 보존한다.",
+  "goalComplete": false
+}
