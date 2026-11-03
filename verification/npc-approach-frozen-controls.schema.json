@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "sourceRunId",
+    "metrics",
+    "verificationStatus",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "network-gameplay/approach-archive-controls4"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "independentValidBatches": {
+          "const": 1
+        },
+        "frameTimeP50P95P99": {
+          "type": "null"
+        }
+      }
+    }
+  }
+}
