@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T17:38:00.501701+09:00",
+  "sourceRunId": "network-gameplay/entry-facing-candidate1",
+  "buildId": "51FA02BE0B1ECD97659884F10C9F1922D811E8189E2925C81F8B4CA0EB85C184",
+  "verificationStatus": {
+    "diagnosis": "sampled_facing_switch_and_source_branch",
+    "build": "signed_packed_match",
+    "engineCompile": "not_executed_candidate",
+    "functionalRegression": "not_executed_candidate",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "prior64Valid": 46,
+    "lateReclimbIncompleteGroup": 14,
+    "sampledLinkAlignToWalkAlignSwitches": 156,
+    "sameGoalSwitches": 156,
+    "sameSelectedConnectionSwitches": 147,
+    "normalBandCrossings": 78,
+    "nearEntryRetainedRecoveryPatterns": 0,
+    "newRuntimeRuns": 0,
+    "frameTimeP50P95P99": null
+  },
+  "blockers": [
+    "Adjacent sampled labels do not expose same-callback heading/Admission/EntryAligning",
+    "No engine compile or physics fixtures for new candidate",
+    "Potential foot sliding and correction oscillation",
+    "Prior64full gate remains failed46/64"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-entry-facing-candidate-20261103.md",
+      "sha256": "3d144a5ec4a1bf3cd2f2b5b52632e01d3d3837b51ea14271f8249b1cac9de68f"
+    },
+    {
+      "path": "evidence/npc-entry-facing-candidate-20261103.txt",
+      "sha256": "92eea8f28ff56569207e2c23344cdf5918e43f3f81386cac6f4851c0df4ca8af"
+    }
+  ],
+  "next": "Small physical OFF/ON fixture: hold heading, bound planar amount by supplied native root and remaining waypoint, preserve wall/ledge/peer/player rejection; reject before8/64 if unsafe or no added progress.",
+  "goalComplete": false
+}

@@ -1,3 +1,5 @@
+> 최신 작업: 재등반14명에서정렬전환156표본확인.복구억제가설제외.입구facing유지격리후보서명완료,실제엔진/기능/시각/성능미검증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-entry-facing-candidate-20261103.md).
+
 > 최신 작업: 접근후보8/8통과·64는46/64실패.낙하81/81복귀·실제6명110사용.후보미채택,재등반이력우선분류.시각/성능미측정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-approach-regression-20261103.md).
 
 > 최신 작업: 접근후보동결3자세OFF0→ON10step·0.303m.기존46guard동일·새20음성통과.라이브8/64·시각·성능미검증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-approach-frozen-controls-20261103.md).
