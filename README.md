@@ -10,20 +10,20 @@
 | 전체 프레임 비교 | 커스텀 fresh65.47–69.56ms / continued70.09–75.30ms; 바닐라fresh24.23–24.44ms | 과거 동일 평지 비교4회. 현재 네트워크 후보의 성능값으로 전용하지 않음 |
 | 목표 대비 격차 | fresh약3.3–3.5배 / continued약3.5–3.8배 | 목표20ms p95. 서버 dt와 Present를 섞은64–241ms 범위는 사용하지 않음 |
 | 애니메이션 | 네트워크 경로 개선 근거·사용자 개선 관찰 있음 | 전체14클립/8파트/64개체의 시각·성능 최종 수용은 미완료; 과거 mode0의0.65배를 현재 전체 경로로 일반화하지 않음 |
-| 현재 물리 비용 후보 | 지형 API 국소130행, 적격110행·분류차이0·최대 높이차0.031mm | 단일 진단만 통과. 비용·8/64기능·시각 품질은 미검증 |
+| 현재 물리 비용 후보 | 2독립·128000회: 평지 솔버약55–60%감소, 지붕/가장자리21–38%증가 | 전역 비용 기준 미통과·미채택. 전체CPU·8/64기능·시각 품질은 미검증 |
 
 현재 기능 수치의 기준은 `entry-facing-sixtyfour-on1`이며 성능 비교는 별도 `matched-flat-pursuit-20261102/detailed`입니다. 서로 다른 빌드/실행을 하나의 성능·기능 성공으로 합치지 않습니다.
 
 ## 지금 진행할 작업
 
-기존10ray와 `비지형 Overlap + 지형 조회`의 국소 비용을 비교합니다. 두 순서에서5% 이상 이득·비적격 경로3% 이내 증가 기준을 못 넘으면 군집 시험으로 확대하지 않습니다. 등반 기능 복구 후보와 단순8→1호스트 통합은 보존·보류합니다.
+전역 지형 후보는 비적격 비용 증가로 미채택했습니다. 다음은 기존 지면 FOLLOW 상태에서만 인증 경로에 진입하는 별도 후보의 착수 명세입니다. 실제 Overlap·원래 검사 fallback을 유지하며, 군집 시험 전에 비용 기준부터 확인합니다. 등반 기능 복구 후보와 단순8→1호스트 통합은 보존·보류합니다.
 
 ## 근거와 외부 검토
 
 - [최신 작업 기록](reports/operations-latest.md) · [간결한 AI 검토 안내](AI_REVIEW.md) · [현재 상태 JSON](api/public/current-status.json)
 - [고정 검증·채택 기준](reports/operations/npc-validation-policy-20261103.md) · [이번 외부 검토에 대한 답변](reports/operations/npc-external-review-response-20261103.md)
 - [64개체 기능 판정](reports/operations/npc-entry-facing-regression-20261103.md) · [평지 비용 비교](reports/operations/matched-flat-pursuit-20261102.md)
-- [지형 API 진단](reports/operations/npc-terrain-support-contract-20261103.md) · [8파트 통합 보류](reports/operations/npc-host-reduction-decision-20261103.md)
+- [지형 비용 비교](reports/operations/npc-terrain-method-cost-20261103.md) · [선행 API 진단](reports/operations/npc-terrain-support-contract-20261103.md) · [8파트 통합 보류](reports/operations/npc-host-reduction-decision-20261103.md)
 - [선정 핵심 코드·판정 문맥](evidence/npc-review-source-context-20261103.txt) · [선정 원시 비용행·종료 판정·8/64설정](evidence/npc-review-cost-and-scenarios-20261103.json)
 
 ## 과거 기록

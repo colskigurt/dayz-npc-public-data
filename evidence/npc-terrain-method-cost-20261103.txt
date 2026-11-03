@@ -1,0 +1,772 @@
+Selected own-script certificate and replacement foot-query blocks; full unchanged solver tail not included. No frame-time inference.
+        CertificateQueries++;OverlapCounter.Contacts=0;
+        vector low=raw[2]+"-0.165 -1.3 -0.165";vector high=raw[2]+"0.165 0.4 0.165";
+        vector marginLow="-0.165 -1.3 -0.165";vector marginHigh="0.165 0.4 0.165";
+        for(int axis=0;axis<3;axis++)
+        {low[axis]=Math.Min(low[axis],raw[3][axis]+marginLow[axis]);high[axis]=Math.Max(high[axis],raw[3][axis]+marginHigh[axis]);}
+        vector transform[4];Math3D.MatrixIdentity4(transform);transform[3]=(low+high)*0.5;
+        PhxInteractionLayers nonTerrain=PhxInteractionLayers.ROADWAY | PhxInteractionLayers.BUILDING | PhxInteractionLayers.VEHICLE;
+        bool overlap=DayZPhysics.BoxOverlapBullet(transform,(high - low)*0.5,nonTerrain,OverlapCounter);
+        bool terrainEligible=!overlap && OverlapCounter.Contacts==0;
+        if(!terrainEligible)CertificateBlocked++;
+
+
+                bool sampled=false;bool found=false;
+                if(terrainEligible)
+                {
+                    TerrainSamples++;
+                    float terrainY=GetGame().SurfaceY(origin[0],origin[2]);
+                    vector terrainNormal=GetGame().SurfaceGetNormal(origin[0],origin[2]);
+                    if(terrainNormal[1]>=0.8 && terrainY>origin[1] - 1.199 && terrainY<origin[1]+0.299)
+                    {sampled=true;found=true;point=Vector(origin[0],terrainY,origin[2]);normal=terrainNormal;}
+                    else TerrainRejected++;
+                }
+                if(!sampled)
+                {
+                    ContactFootRays++;
+                    found=DayZPhysics.RayCastBullet(origin+"0 0.3 0",origin+"0 -1.2 0",DGBGroundAgent.Floors(),Leader,hit,point,normal,fraction);
+                }
+
+Aggregate cost result:
+{
+  "schemaVersion": "1.0.0",
+  "sourceRunId": "network-gameplay/terrain-method-cost",
+  "totalIndependentProcesses": 2,
+  "measuredMethodCalls": 128000,
+  "runs": [
+    {
+      "run": "terrain-method-cost1b",
+      "sourceRunId": "network-gameplay/terrain-method-cost1b",
+      "orderReverse": false,
+      "rows": 64,
+      "calls": 64000,
+      "conditions": [
+        {
+          "condition": "terrain",
+          "blockElapsedTicks": {
+            "REF": {
+              "samples": 8,
+              "p50": 668965.0,
+              "p95": 734797.35,
+              "p99": 735816.27
+            },
+            "ON": {
+              "samples": 8,
+              "p50": 311970.5,
+              "p95": 399571.25,
+              "p99": 404775.05
+            }
+          },
+          "pairedGroupMedianRelativeChangePercent": -54.827071292039314,
+          "pairedGroups": [
+            {
+              "group": 0,
+              "referenceTicks": 653370.0,
+              "candidateTicks": 279714.0,
+              "relativeChangePercent": -57.18903530924284
+            },
+            {
+              "group": 4,
+              "referenceTicks": 713001.5,
+              "candidateTicks": 310051.5,
+              "relativeChangePercent": -56.514607613027465
+            },
+            {
+              "group": 8,
+              "referenceTicks": 683707.5,
+              "candidateTicks": 396783.5,
+              "relativeChangePercent": -41.96589916009405
+            },
+            {
+              "group": 12,
+              "referenceTicks": 665743.5,
+              "candidateTicks": 311970.5,
+              "relativeChangePercent": -53.13953497105116
+            }
+          ],
+          "countersPer1000Calls": {
+            "REF": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ]
+            },
+            "ON": {
+              "footRays": [
+                0
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                1000
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                10000
+              ],
+              "terrainRejected": [
+                0
+              ]
+            }
+          }
+        },
+        {
+          "condition": "roof",
+          "blockElapsedTicks": {
+            "REF": {
+              "samples": 8,
+              "p50": 989689.5,
+              "p95": 1072135.5999999999,
+              "p99": 1089972.72
+            },
+            "ON": {
+              "samples": 8,
+              "p50": 1364866.0,
+              "p95": 1407329.8,
+              "p99": 1421422.76
+            }
+          },
+          "pairedGroupMedianRelativeChangePercent": 36.85318237439774,
+          "pairedGroups": [
+            {
+              "group": 1,
+              "referenceTicks": 958440.0,
+              "candidateTicks": 1299143.5,
+              "relativeChangePercent": 35.54771295021075
+            },
+            {
+              "group": 5,
+              "referenceTicks": 982414.0,
+              "candidateTicks": 1357296.0,
+              "relativeChangePercent": 38.15926890292687
+            },
+            {
+              "group": 9,
+              "referenceTicks": 976768.0,
+              "candidateTicks": 1349489.5,
+              "relativeChangePercent": 38.15865179858473
+            },
+            {
+              "group": 13,
+              "referenceTicks": 1049805.5,
+              "candidateTicks": 1399780.0,
+              "relativeChangePercent": 33.337080059115706
+            }
+          ],
+          "countersPer1000Calls": {
+            "REF": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ]
+            },
+            "ON": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                1000
+              ],
+              "certificateBlocked": [
+                1000
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ]
+            }
+          }
+        },
+        {
+          "condition": "edge",
+          "blockElapsedTicks": {
+            "REF": {
+              "samples": 8,
+              "p50": 819799.5,
+              "p95": 1118320.45,
+              "p99": 1126292.89
+            },
+            "ON": {
+              "samples": 8,
+              "p50": 1111697.0,
+              "p95": 1314809.15,
+              "p99": 1345337.83
+            }
+          },
+          "pairedGroupMedianRelativeChangePercent": 38.26400803552137,
+          "pairedGroups": [
+            {
+              "group": 2,
+              "referenceTicks": 1114049.5,
+              "candidateTicks": 1040570.5,
+              "relativeChangePercent": -6.5956674277040666
+            },
+            {
+              "group": 6,
+              "referenceTicks": 800090.0,
+              "candidateTicks": 1081339.0,
+              "relativeChangePercent": 35.15217038083216
+            },
+            {
+              "group": 10,
+              "referenceTicks": 908698.0,
+              "candidateTicks": 1298454.5,
+              "relativeChangePercent": 42.891752815566896
+            },
+            {
+              "group": 14,
+              "referenceTicks": 808659.0,
+              "candidateTicks": 1143248.5,
+              "relativeChangePercent": 41.375845690210575
+            }
+          ],
+          "countersPer1000Calls": {
+            "REF": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ]
+            },
+            "ON": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                1000
+              ],
+              "certificateBlocked": [
+                1000
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ]
+            }
+          }
+        },
+        {
+          "condition": "lift_reject",
+          "blockElapsedTicks": {
+            "REF": {
+              "samples": 8,
+              "p50": 724056.5,
+              "p95": 785358.4,
+              "p99": 793566.88
+            },
+            "ON": {
+              "samples": 8,
+              "p50": 302759.5,
+              "p95": 422918.74999999994,
+              "p99": 456410.94999999995
+            }
+          },
+          "pairedGroupMedianRelativeChangePercent": -58.8432510911057,
+          "pairedGroups": [
+            {
+              "group": 3,
+              "referenceTicks": 731951.5,
+              "candidateTicks": 404976.5,
+              "relativeChangePercent": -44.671675650640786
+            },
+            {
+              "group": 7,
+              "referenceTicks": 773615.0,
+              "candidateTicks": 278809.0,
+              "relativeChangePercent": -63.96023861998539
+            },
+            {
+              "group": 11,
+              "referenceTicks": 704578.5,
+              "candidateTicks": 287229.5,
+              "relativeChangePercent": -59.233853999234995
+            },
+            {
+              "group": 15,
+              "referenceTicks": 692286.0,
+              "candidateTicks": 287626.5,
+              "relativeChangePercent": -58.4526481829764
+            }
+          ],
+          "countersPer1000Calls": {
+            "REF": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                0
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ]
+            },
+            "ON": {
+              "footRays": [
+                0
+              ],
+              "jointSweeps": [
+                0
+              ],
+              "certificateQueries": [
+                1000
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                10000
+              ],
+              "terrainRejected": [
+                0
+              ]
+            }
+          }
+        }
+      ],
+      "missionSha256": "f5f66562773977484c5f7ab3835802ec13c74ba93bf33997c33d363d5f2912c3",
+      "tsvSha256": "38cf2aa7e48e01c54904271127ca768eb61a9856483b2d9bda6ce9a67e0fb6a2",
+      "existingSignatureChecksPassed": true,
+      "forcedOwnedStop": true,
+      "normalProcessQuitVerified": false
+    },
+    {
+      "run": "terrain-method-cost2b",
+      "sourceRunId": "network-gameplay/terrain-method-cost2b",
+      "orderReverse": true,
+      "rows": 64,
+      "calls": 64000,
+      "conditions": [
+        {
+          "condition": "terrain",
+          "blockElapsedTicks": {
+            "REF": {
+              "samples": 8,
+              "p50": 809839.0,
+              "p95": 973666.2499999999,
+              "p99": 1009266.85
+            },
+            "ON": {
+              "samples": 8,
+              "p50": 318648.5,
+              "p95": 384102.69999999995,
+              "p99": 395038.94
+            }
+          },
+          "pairedGroupMedianRelativeChangePercent": -59.631352269438885,
+          "pairedGroups": [
+            {
+              "group": 0,
+              "referenceTicks": 954594.5,
+              "candidateTicks": 327226.5,
+              "relativeChangePercent": -65.72088986475408
+            },
+            {
+              "group": 4,
+              "referenceTicks": 736374.5,
+              "candidateTicks": 297168.5,
+              "relativeChangePercent": -59.64437932057669
+            },
+            {
+              "group": 8,
+              "referenceTicks": 809755.0,
+              "candidateTicks": 356738.0,
+              "relativeChangePercent": -55.9449463109212
+            },
+            {
+              "group": 12,
+              "referenceTicks": 795232.0,
+              "candidateTicks": 321128.0,
+              "relativeChangePercent": -59.61832521830108
+            }
+          ],
+          "countersPer1000Calls": {
+            "REF": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ]
+            },
+            "ON": {
+              "footRays": [
+                0
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                1000
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                10000
+              ],
+              "terrainRejected": [
+                0
+              ]
+            }
+          }
+        },
+        {
+          "condition": "roof",
+          "blockElapsedTicks": {
+            "REF": {
+              "samples": 8,
+              "p50": 1089019.5,
+              "p95": 1205392.75,
+              "p99": 1209445.75
+            },
+            "ON": {
+              "samples": 8,
+              "p50": 1327684.0,
+              "p95": 1482566.8499999999,
+              "p99": 1533630.17
+            }
+          },
+          "pairedGroupMedianRelativeChangePercent": 21.144051003923494,
+          "pairedGroups": [
+            {
+              "group": 1,
+              "referenceTicks": 1055724.5,
+              "candidateTicks": 1337403.5,
+              "relativeChangePercent": 26.681108565729026
+            },
+            {
+              "group": 5,
+              "referenceTicks": 1203221.5,
+              "candidateTicks": 1440470.5,
+              "relativeChangePercent": 19.717815880118494
+            },
+            {
+              "group": 9,
+              "referenceTicks": 1089019.5,
+              "candidateTicks": 1212903.0,
+              "relativeChangePercent": 11.375691619847018
+            },
+            {
+              "group": 13,
+              "referenceTicks": 1043502.5,
+              "candidateTicks": 1279024.0,
+              "relativeChangePercent": 22.57028612772849
+            }
+          ],
+          "countersPer1000Calls": {
+            "REF": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ]
+            },
+            "ON": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                1000
+              ],
+              "certificateBlocked": [
+                1000
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ]
+            }
+          }
+        },
+        {
+          "condition": "edge",
+          "blockElapsedTicks": {
+            "REF": {
+              "samples": 8,
+              "p50": 945655.0,
+              "p95": 1140683.3,
+              "p99": 1165088.66
+            },
+            "ON": {
+              "samples": 8,
+              "p50": 1246889.0,
+              "p95": 1341618.05,
+              "p99": 1369617.21
+            }
+          },
+          "pairedGroupMedianRelativeChangePercent": 27.665450909011625,
+          "pairedGroups": [
+            {
+              "group": 2,
+              "referenceTicks": 947685.5,
+              "candidateTicks": 1324368.0,
+              "relativeChangePercent": 39.74762724553662
+            },
+            {
+              "group": 6,
+              "referenceTicks": 1127609.0,
+              "candidateTicks": 1177225.0,
+              "relativeChangePercent": 4.400106774600054
+            },
+            {
+              "group": 10,
+              "referenceTicks": 914112.5,
+              "candidateTicks": 1124655.5,
+              "relativeChangePercent": 23.032504204898196
+            },
+            {
+              "group": 14,
+              "referenceTicks": 941314.5,
+              "candidateTicks": 1245344.0,
+              "relativeChangePercent": 32.298397613125054
+            }
+          ],
+          "countersPer1000Calls": {
+            "REF": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ]
+            },
+            "ON": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                1000
+              ],
+              "certificateBlocked": [
+                1000
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ]
+            }
+          }
+        },
+        {
+          "condition": "lift_reject",
+          "blockElapsedTicks": {
+            "REF": {
+              "samples": 8,
+              "p50": 690759.5,
+              "p95": 868511.7,
+              "p99": 879739.14
+            },
+            "ON": {
+              "samples": 8,
+              "p50": 271659.0,
+              "p95": 329929.74999999994,
+              "p99": 347361.14999999997
+            }
+          },
+          "pairedGroupMedianRelativeChangePercent": -60.144963280849254,
+          "pairedGroups": [
+            {
+              "group": 3,
+              "referenceTicks": 862497.0,
+              "candidateTicks": 277593.0,
+              "relativeChangePercent": -67.81519240066922
+            },
+            {
+              "group": 7,
+              "referenceTicks": 648003.0,
+              "candidateTicks": 260212.0,
+              "relativeChangePercent": -59.84401306784073
+            },
+            {
+              "group": 11,
+              "referenceTicks": 599263.0,
+              "candidateTicks": 247894.0,
+              "relativeChangePercent": -58.63352150892012
+            },
+            {
+              "group": 15,
+              "referenceTicks": 725185.5,
+              "candidateTicks": 286840.5,
+              "relativeChangePercent": -60.44591349385777
+            }
+          ],
+          "countersPer1000Calls": {
+            "REF": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                0
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ]
+            },
+            "ON": {
+              "footRays": [
+                0
+              ],
+              "jointSweeps": [
+                0
+              ],
+              "certificateQueries": [
+                1000
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                10000
+              ],
+              "terrainRejected": [
+                0
+              ]
+            }
+          }
+        }
+      ],
+      "missionSha256": "f5f66562773977484c5f7ab3835802ec13c74ba93bf33997c33d363d5f2912c3",
+      "tsvSha256": "376879d86377ddaa77aac9bbd0a00c7d7ff4ce877386264f468c148231ed2f82",
+      "existingSignatureChecksPassed": true,
+      "forcedOwnedStop": true,
+      "normalProcessQuitVerified": false
+    }
+  ],
+  "terrainCostGatePassed": true,
+  "ineligibleOverheadGatePassed": false,
+  "otherConditionGatePassed": true,
+  "methodFollowupGatePassed": false,
+  "gameplayRegressionTested": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "wholeFrameP50P95P99": null,
+  "newGameplayPbo": false,
+  "limits": [
+    "Elapsed ticks include inclusive script/native work; not CPU self-time.",
+    "Eight blocks per arm are not eight independent processes.",
+    "Pose stable within groups; across-process poses not assumed identical.",
+    "Fixed/cachehot local cases do not prove terrain-hole, steep-slope or dynamic-object safety.",
+    "0.1mm contract ceiling is for method screening, not production gameplay acceptance.",
+    "No8/64 or totalCPU/Present benefit measured."
+  ],
+  "goalComplete": false
+}
