@@ -1,3 +1,5 @@
+> 최신 작업: 접근복구!Active경계확인.회전속도조정제외.격리후보서명완료,엔진/효과/시각/성능미검증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-head-approach-candidate-20261103.md).
+
 > 최신 작업: 골반후보8/8기능통과·64명49/64실패.실사용7낙하모두복귀,전체81/81.미충족13FOLLOW·2종료직전SETTLE구분.효능인과·시각·성능미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-hip-contract64-outcome-20261103.md).
 
 > 최신 작업: Move RTTI/생성→공통manager의2조건부 갱신 연결.지속 scalar는MovementSpeed/LookDir 입력필터로 구분.지지 생산/접촉재사용은 미확인.새게임 없이30초1개체 관측 필요범위 제시. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-vanilla-move-stage-trace-20261103.md).

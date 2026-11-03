@@ -1,0 +1,37 @@
+Aggregate diagnostic only. No raw logs, game assets, credentials or process identifiers.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T16:49:37.379721+09:00",
+  "sourceRunId": "network-gameplay/pose-core-approach-candidate1",
+  "buildId": "CDF816437AF1B57FF5095FB054E43D02942C8D3B3C58F3EA560B8672CD8637E9",
+  "verificationStatus": {
+    "diagnosis": "partial_scope_gap",
+    "build": "signed_packed_match",
+    "engineCompile": "not_executed",
+    "functionalRegression": "not_executed_candidate",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "prior64Valid": 49,
+    "highMissed": 12,
+    "reclimbOnlyMissed": 3,
+    "windowSeconds": 47.7502,
+    "missedHighGroundEstimatedMeanSeconds": 34.614917,
+    "passedHighGroundEstimatedMeanSeconds": 1.587946,
+    "missedHighLoggedFollowHeadContacts": 40,
+    "passedHighLoggedFollowHeadContacts": 3,
+    "contactsNearSelectedApproach": 25,
+    "additionalRuntimeRuns": 0,
+    "frameTimeP50P95P99": null
+  },
+  "blockers": [
+    "Same callback Active/EntryAligning not proven from adjacent samples",
+    "Candidate engine and guards pending",
+    "No performance or visual improvement measured"
+  ],
+  "evidenceReferences": [],
+  "next": "Existing frozen pose active ground CLIMB pre-alignment OFF/ON and negative guards; reject if no added safe progress before8/64.",
+  "goalComplete": false
+}
