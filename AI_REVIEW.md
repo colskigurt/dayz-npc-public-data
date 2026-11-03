@@ -1,3 +1,5 @@
+> 최신 운영 판단: 64개체 CPU 최적화 우선 복귀. 8파트 단순 통합은 기존 분할·표시 실패 근거로 구현 보류. 새 성능 측정 없음. [판단서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-host-reduction-decision-20261103.md).
+
 > 최신 작업: 방향 유지 후보8/8 통과·64는53/64 실패. 낙하82/82 복귀, 고정14명 정렬 전환 표본156→0. 갱신당 지지 비용은 비슷하며 시각·성능 미입증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-entry-facing-regression-20261103.md).
 
 > 최신 작업: 입구 방향 후보: 물리22회·범위36회·기존66행 대조 통과. 약2cm 보정과 실제 발판 끝 차단 확인. 라이브8/64·시각·성능 미검증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-entry-facing-physics-20261103.md).

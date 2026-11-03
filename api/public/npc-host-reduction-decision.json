@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T18:36:09.716767+09:00",
+  "sourceRunId": "existing-record-review/host-reduction-20261103",
+  "buildId": "unchanged-no-new-build",
+  "verificationStatus": {
+    "diagnosis": "existing_partition_constraints_recovered",
+    "candidate": "implementation_on_hold",
+    "functional": "not_tested_this_review",
+    "visual": "not_measured_this_review",
+    "performance": "not_measured_this_review",
+    "externalAI": "not_retested",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "newIndependentRuns": 0,
+    "sourceParts": 11,
+    "selectedParts": 8,
+    "weightedBones": 224,
+    "paletteBudget": 48,
+    "paletteBudgetEngineHardLimitProven": false,
+    "globalMinimumPartitionProven": false,
+    "p50": null,
+    "p95": null,
+    "p99": null,
+    "performanceTargetP95Ms": 20,
+    "performanceTargetAchieved": false
+  },
+  "blockers": [
+    "Simple8-to1merge is unsupported by current evidence",
+    "Native-host independent totalCPU contribution unmeasured",
+    "Feature recovery candidates preserved and deprioritized; baseline defects must be separated from optimization regressions"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-host-reduction-decision-20261103.md",
+      "sha256": "486700051a3280fda2e4440da7660f15358f044172b8440ac051b171fe75b382"
+    },
+    {
+      "path": "evidence/npc-host-reduction-decision-20261103.txt",
+      "sha256": "3b8629426aea58fe1d1a29a7bee0f3deac4ee25e06137629da4e00986aea395a"
+    }
+  ],
+  "goalComplete": false
+}
