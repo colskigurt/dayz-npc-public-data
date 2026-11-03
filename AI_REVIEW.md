@@ -1,3 +1,5 @@
+> 최신 작업: Move RTTI/생성→공통manager의2조건부 갱신 연결.지속 scalar는MovementSpeed/LookDir 입력필터로 구분.지지 생산/접촉재사용은 미확인.새게임 없이30초1개체 관측 필요범위 제시. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-vanilla-move-stage-trace-20261103.md).
+
 > 최신 작업: 바닐라 native Move/API·101 getter 경계 확인.지지 함수/형상/cache/주기 미확인.기존 Fast/Scratch 중복 정리,AnimalBase drop-in 대체 근거 없음.새 실행/구현 없이 소유권 명세 우선 권고. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-vanilla-controller-review-20261103.md).
 
 > 최신 작업: 순차 포즈 재현에서 기존2조건 착지 실패·골반계약 후보 착지 통과.비적격14조건 보존·서명 대체PBO 실제 OFF/ON 검증.새8/64·시각·성능 미검증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-hip-sequence-package-20261103.md).

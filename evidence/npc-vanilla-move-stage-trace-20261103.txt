@@ -1,0 +1,73 @@
+Aggregate diagnostic only. No raw logs, game assets, credentials or process identifiers.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T13:49:24.025235+09:00",
+  "sourceRunId": "matched-flat-pursuit-20261102/detailed/vanilla-move-stage-flow-20261103",
+  "buildId": "read-only-stage-trace-A500BE80",
+  "verificationStatus": {
+    "diagnosis": "move_stage_static_links_and_input_filter_persistence_identified",
+    "liveReceiver": "not_observed",
+    "supportProducer": "unresolved",
+    "contactReuse": "unresolved",
+    "functionalRegression": "not_run",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "newRuntimeRuns": 0,
+    "newPboCount": 0,
+    "selectedRttiTables": 6,
+    "constructorVtableReferences": 6,
+    "staticallyResolvedStageLinks": 2,
+    "persistentScalarPairs": 3,
+    "nativeSupportQueryFrequency": null,
+    "nativeSupportSelfTime": null
+  },
+  "confirmedStatic": [
+    "Six same-image RTTI tables with constructor vptr write sites for Infected Move/Script and Animal Move",
+    "Current command pointer is swapped at manager+2b8; main stage dispatcher reads that member",
+    "Two conditional virtual-stage chains resolve under the constructed Infected Move type",
+    "MovementSpeed and LookDirX/LookDirY graph bindings link the persistent scalar filters to animation input values",
+    "Move rotation stage writes four frame-context scalar slots after trigonometric operations"
+  ],
+  "blockers": [
+    "Actual live receiver/type and update frequency",
+    "Grounded/contact producer",
+    "Physical shape and native query counts",
+    "Persistent manifold/cache lifetime and next-frame support reuse",
+    "Cost or visible animation improvement"
+  ],
+  "nextRuntimeProposal": {
+    "status": "proposed_not_executed",
+    "logicalNpcs": 1,
+    "entity": "unmodified vanilla infected from existing flat fixture",
+    "windowSeconds": 30,
+    "writesToGameMemory": false,
+    "newPbo": false,
+    "video": false,
+    "purpose": "Resolve actual Move secondary-vtable receiver and manager ownership before claiming support/cache semantics",
+    "capture": [
+      "Native Move object identity and manager+2b8 pointer at update boundaries",
+      "Actual target of unresolved interface calls on that verified actor, bounded first occurrences",
+      "Selected state read/write order across consecutive updates and caller stacks where address ownership is established"
+    ],
+    "canEstablish": [
+      "Which static candidate stages execute on the actual Move instance",
+      "Which object and resolved function owns the next physics boundary"
+    ],
+    "cannotPromise": [
+      "Ground support algorithm, shape or contact-cache policy until producer/consumer is identified",
+      "Pure function cost or performance improvement from a short instrumented run"
+    ],
+    "stopConditions": [
+      "Binary or receiver contract mismatch",
+      "Known read-only observer failures",
+      "After30seconds or bounded event budget; no64NPC or regression expansion"
+    ]
+  },
+  "evidenceReferences": [],
+  "newPbo": false,
+  "next": "A proposed30second single-vanilla-NPC readonly observation would resolve actual Move/manager receivers and the next indirect boundary. Do not execute before explaining the scope to the user. It cannot yet promise contact-cache proof or query costs.",
+  "goalComplete": false
+}
