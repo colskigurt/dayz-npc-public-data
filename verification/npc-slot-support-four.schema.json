@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "network-gameplay/slot-support64-four-controls-and-landing1"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "verificationStatus": {
+      "type": "object",
+      "required": [
+        "functionalRegression",
+        "visualQuality",
+        "performance",
+        "finalAcceptance"
+      ],
+      "properties": {
+        "functionalRegression": {
+          "const": "four_of_four_failed"
+        },
+        "visualQuality": {
+          "const": "not_measured"
+        },
+        "performance": {
+          "const": "no_reproducible_benefit_demonstrated"
+        },
+        "finalAcceptance": {
+          "const": false
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "independent64Runs",
+        "conditions",
+        "pairs",
+        "frameTimeP50P95P99"
+      ],
+      "properties": {
+        "independent64Runs": {
+          "const": 4
+        },
+        "conditions": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "type": "object",
+            "required": [
+              "functionalGatePassed",
+              "validTerminalAgents",
+              "serverMissionDtMilliseconds"
+            ],
+            "properties": {
+              "functionalGatePassed": {
+                "const": false
+              },
+              "validTerminalAgents": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 64
+              }
+            }
+          }
+        },
+        "frameTimeP50P95P99": {
+          "type": "null"
+        }
+      }
+    }
+  }
+}
