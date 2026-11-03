@@ -1,0 +1,203 @@
+Aggregate diagnostic only. No raw logs, game assets, credentials or process identifiers.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T11:49:11.713265+09:00",
+  "sourceRunId": "network-gameplay/slot-support64-four-controls-and-landing1",
+  "buildId": "8638218523E0A568A75FCDCC7C21033F6D733DCD4D51D259639E87042839FD84",
+  "verificationStatus": {
+    "diagnosis": "four_controls_and_bounded_landing_reproduction",
+    "functionalRegression": "four_of_four_failed",
+    "visualQuality": "not_measured",
+    "performance": "no_reproducible_benefit_demonstrated",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "independent64Runs": 4,
+    "runsPerCondition": 2,
+    "conditions": [
+      {
+        "sourceRunId": "network-gameplay/slot-support-sixtyfour-off2",
+        "enabled": false,
+        "validTerminalAgents": 58,
+        "allMilestoneAgents": 58,
+        "functionalGatePassed": false,
+        "fallStarts": 83,
+        "landFollowCycles": 83,
+        "stateContractErrors": {
+          "phaseChainMismatches": 0,
+          "recoveryGenerationErrors": 0,
+          "terminalAlignmentErrors": 0
+        },
+        "supportTotals": {
+          "contextCalls": 0,
+          "originalCalls": 694899,
+          "fastUsed": 0,
+          "skippedRays": 0,
+          "fastAttempts": 0,
+          "footRays": 6948990,
+          "jointSweeps": 2774968
+        },
+        "actualFastAgents": 0,
+        "serverMissionDtMilliseconds": {
+          "p50": 73.0,
+          "p95": 121.0,
+          "p99": 145.8499999999999
+        },
+        "commandOverMission": 0.640316700028596
+      },
+      {
+        "sourceRunId": "network-gameplay/slot-support-sixtyfour-on1",
+        "enabled": true,
+        "validTerminalAgents": 39,
+        "allMilestoneAgents": 39,
+        "functionalGatePassed": false,
+        "fallStarts": 80,
+        "landFollowCycles": 79,
+        "stateContractErrors": {
+          "phaseChainMismatches": 0,
+          "recoveryGenerationErrors": 0,
+          "terminalAlignmentErrors": 0
+        },
+        "supportTotals": {
+          "contextCalls": 265252,
+          "originalCalls": 324284,
+          "fastUsed": 501044,
+          "skippedRays": 2004176,
+          "fastAttempts": 528465,
+          "footRays": 3891184,
+          "jointSweeps": 2355533
+        },
+        "actualFastAgents": 64,
+        "serverMissionDtMilliseconds": {
+          "p50": 74.0,
+          "p95": 124.0,
+          "p99": 149.5
+        },
+        "commandOverMission": 0.6328750862565206
+      },
+      {
+        "sourceRunId": "network-gameplay/slot-support-sixtyfour-off3",
+        "enabled": false,
+        "validTerminalAgents": 48,
+        "allMilestoneAgents": 49,
+        "functionalGatePassed": false,
+        "fallStarts": 81,
+        "landFollowCycles": 81,
+        "stateContractErrors": {
+          "phaseChainMismatches": 0,
+          "recoveryGenerationErrors": 0,
+          "terminalAlignmentErrors": 0
+        },
+        "supportTotals": {
+          "contextCalls": 0,
+          "originalCalls": 541645,
+          "fastUsed": 0,
+          "skippedRays": 0,
+          "fastAttempts": 0,
+          "footRays": 5416450,
+          "jointSweeps": 2164832
+        },
+        "actualFastAgents": 0,
+        "serverMissionDtMilliseconds": {
+          "p50": 76.0,
+          "p95": 131.0,
+          "p99": 162.0
+        },
+        "commandOverMission": 0.6100925882945257
+      },
+      {
+        "sourceRunId": "network-gameplay/slot-support-sixtyfour-on2",
+        "enabled": true,
+        "validTerminalAgents": 45,
+        "allMilestoneAgents": 45,
+        "functionalGatePassed": false,
+        "fallStarts": 84,
+        "landFollowCycles": 84,
+        "stateContractErrors": {
+          "phaseChainMismatches": 0,
+          "recoveryGenerationErrors": 0,
+          "terminalAlignmentErrors": 0
+        },
+        "supportTotals": {
+          "contextCalls": 266613,
+          "originalCalls": 241065,
+          "fastUsed": 502495,
+          "skippedRays": 2009980,
+          "fastAttempts": 530648,
+          "footRays": 3066800,
+          "jointSweeps": 2027972
+        },
+        "actualFastAgents": 64,
+        "serverMissionDtMilliseconds": {
+          "p50": 77.0,
+          "p95": 126.0,
+          "p99": 150.0
+        },
+        "commandOverMission": 0.6122055536451169
+      }
+    ],
+    "pairs": [
+      {
+        "off": "network-gameplay/slot-support-sixtyfour-off2",
+        "on": "network-gameplay/slot-support-sixtyfour-on1",
+        "serverMissionDtDeltaOnMinusOff": {
+          "p50": {
+            "milliseconds": 1.0,
+            "relativePercent": 1.36986301369863
+          },
+          "p95": {
+            "milliseconds": 3.0,
+            "relativePercent": 2.479338842975207
+          },
+          "p99": {
+            "milliseconds": 3.650000000000091,
+            "relativePercent": 2.5025711347275235
+          }
+        },
+        "validTerminalDeltaAgents": -19,
+        "interpretation": "Descriptive only: trajectories/work counts differ; not isolated self-time or client Present."
+      },
+      {
+        "off": "network-gameplay/slot-support-sixtyfour-off3",
+        "on": "network-gameplay/slot-support-sixtyfour-on2",
+        "serverMissionDtDeltaOnMinusOff": {
+          "p50": {
+            "milliseconds": 1.0,
+            "relativePercent": 1.3157894736842106
+          },
+          "p95": {
+            "milliseconds": -5.0,
+            "relativePercent": -3.816793893129771
+          },
+          "p99": {
+            "milliseconds": -12.0,
+            "relativePercent": -7.407407407407407
+          }
+        },
+        "validTerminalDeltaAgents": -3,
+        "interpretation": "Descriptive only: trajectories/work counts differ; not isolated self-time or client Present."
+      }
+    ],
+    "landingDiagnostic": {
+      "samples": 10,
+      "queryRows": 110,
+      "readyMarkers": 1,
+      "doneMarkers": 1,
+      "originRejectedBy": "FOOT_X_SUPPORT",
+      "originCoreWorldAndFixtureHits": 0,
+      "negativeZ10cmEndpointAccepted": true,
+      "negativeZ25cmEndpointAccepted": true,
+      "sweptPathValidated": false
+    },
+    "frameTimeP50P95P99": null
+  },
+  "blockers": [
+    "All64agent runs fail original functional criteria; existing OFF baseline also unstable",
+    "ON does not demonstrate reproducible server-timing improvement",
+    "Nearby valid landing endpoints do not prove reachable recovery path",
+    "No actual client Present/CPU/GPU or full14clip visible-quality acceptance"
+  ],
+  "evidenceReferences": [],
+  "next": "Keep support candidate unpromoted/default OFF. Inspect captured FALL recovery predicates and compare bounded swept escape using existing harness, preserving original landing/edge/wall guards. No new64run until a decision-changing local result.",
+  "goalComplete": false
+}
