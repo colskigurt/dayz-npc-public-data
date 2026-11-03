@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "network-gameplay/slot-bounds-functional-8-64-bundle1"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "verificationStatus": {
+      "type": "object",
+      "required": [
+        "functionalRegression",
+        "visualQuality",
+        "performance",
+        "finalAcceptance"
+      ],
+      "properties": {
+        "functionalRegression": {
+          "const": "eight_passed_sixtyfour_failed"
+        },
+        "visualQuality": {
+          "const": "not_measured"
+        },
+        "performance": {
+          "const": "not_measured_in_present_cpu_gpu_domain"
+        },
+        "finalAcceptance": {
+          "const": false
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "cases",
+        "frameTimeP50P95P99",
+        "flaggedAgents",
+        "flaggedAgentsWithLast20sAcceptedSteps"
+      ],
+      "properties": {
+        "cases": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [
+            {
+              "type": "object",
+              "properties": {
+                "logicalNpcs": {
+                  "const": 8
+                },
+                "validTerminalAgents": {
+                  "const": 8
+                },
+                "functionalGatePassed": {
+                  "const": true
+                }
+              }
+            },
+            {
+              "type": "object",
+              "properties": {
+                "logicalNpcs": {
+                  "const": 64
+                },
+                "validTerminalAgents": {
+                  "const": 40
+                },
+                "functionalGatePassed": {
+                  "const": false
+                }
+              }
+            }
+          ]
+        },
+        "frameTimeP50P95P99": {
+          "type": "null"
+        },
+        "flaggedAgents": {
+          "const": 25
+        },
+        "flaggedAgentsWithLast20sAcceptedSteps": {
+          "const": 25
+        }
+      }
+    },
+    "evidenceReferences": {
+      "type": "array",
+      "minItems": 2
+    }
+  }
+}
