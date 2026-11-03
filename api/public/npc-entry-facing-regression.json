@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T18:19:04.302462+09:00",
+  "sourceRunId": "network-gameplay/entry-facing-sixtyfour-on1",
+  "buildId": "51FA02BE0B1ECD97659884F10C9F1922D811E8189E2925C81F8B4CA0EB85C184",
+  "verificationStatus": {
+    "functionalEight": "passed",
+    "functional64": "failed",
+    "facingSwitchDiagnosis": "fixed_prior14cohort_sampled_switches_zero",
+    "causalEfficacy": "not_proven",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "independentEightRuns": 1,
+    "independent64Runs": 1,
+    "eightValid": 8,
+    "eightFalls": 10,
+    "eightLandFollow": 10,
+    "eightUses": 126,
+    "valid64": 53,
+    "fallStarts64": 82,
+    "landFollow64": 82,
+    "actualUseAgents64": 64,
+    "totalRequests64": 3853,
+    "totalUses64": 3848,
+    "missingHighAndLater": 11,
+    "incompleteFinalFollow": 11,
+    "phaseChainErrors": 0,
+    "generationErrors": 0,
+    "terminalAlignmentErrors": 0,
+    "fixedPrior14SampledSwitchesBefore": 156,
+    "fixedPrior14SampledSwitchesAfter": 0,
+    "frameTimeP50P95P99": null
+  },
+  "operationNormalization": [
+    {
+      "sourceRunId": "network-gameplay/approach-sixtyfour-on1",
+      "physicsCallbacks": 219072,
+      "contactSolvesPerCallback": 2.1209054557405786,
+      "footRaysPerCallback": 21.209054557405786,
+      "jointSweepsPerCallback": 8.474725204498977
+    },
+    {
+      "sourceRunId": "network-gameplay/entry-facing-sixtyfour-on1",
+      "physicsCallbacks": 197504,
+      "contactSolvesPerCallback": 2.113238212896954,
+      "footRaysPerCallback": 21.13238212896954,
+      "jointSweepsPerCallback": 8.437859486390149
+    }
+  ],
+  "blockers": [
+    "Original64 gate failed53/64; not promoted",
+    "Independent single trajectories; total46vs53 not causal improvement proof",
+    "All11incomplete agents miss HIGH and later history; finalFOLLOW does not repair missing milestones",
+    "Operation totals fell alongside callback count; no CPU savings claim",
+    "Visual quality and actual Present/CPU/GPU not measured"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-entry-facing-regression-20261103.md",
+      "sha256": "52e76fa784a90054594a69078de5d543136584042e143958969cd36ae299dd52"
+    },
+    {
+      "path": "evidence/npc-entry-facing-regression-20261103.txt",
+      "sha256": "0640ccff189c413d3b3e0663694a602311a82ac1cc8f9d3aade54c8f672ee65c"
+    }
+  ],
+  "next": "No score-seeking64repeat or threshold/deadline changes. Review existing eight-part physical interaction policy and prior cost experiments to identify one modifiable cost candidate or reject it; keep53/64functional gap open.",
+  "goalComplete": false
+}
