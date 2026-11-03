@@ -1,0 +1,55 @@
+Aggregate diagnostic only. No raw logs, game assets, credentials or process identifiers.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T11:15:19.700097+09:00",
+  "sourceRunId": "network-gameplay/slot-support-eight-on1",
+  "buildId": "8638218523E0A568A75FCDCC7C21033F6D733DCD4D51D259639E87042839FD84",
+  "verificationStatus": {
+    "functionalRegression": "eight_support_on_single_pass; sixtyfour_controls_in_progress",
+    "visualQuality": "not_measured",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "logicalNpcs": 8,
+    "nativeParts": 64,
+    "independentRuns": 1,
+    "validTerminalAgents": 8,
+    "allMilestoneAgents": 8,
+    "fallStarts": 12,
+    "landFollowCycles": 12,
+    "transitions": 168,
+    "phaseChainErrors": 0,
+    "generationErrors": 0,
+    "terminalAlignmentErrors": 0,
+    "actualContextAgents": 8,
+    "actualFastAgents": 8,
+    "supportTotals": {
+      "contextCalls": 73470,
+      "originalCalls": 19709,
+      "fastUsed": 127642,
+      "skippedRays": 510568,
+      "fastAttempts": 144876,
+      "footRays": 421222,
+      "jointSweeps": 372069
+    },
+    "serverMissionDtMilliseconds": {
+      "p50": 16.0,
+      "p95": 31.0,
+      "p99": 31.0
+    },
+    "serverCommandOverMission": 0.9998000387021868,
+    "frameTimeP50P95P99": null,
+    "independentPerformanceRepeats": 0
+  },
+  "blockers": [
+    "Existing graph-fixed64NPC run failed; this8NPC pass does not replace that result",
+    "Fresh64OFF/ON/OFF/ON controls are staged; firstOFF is live, not complete",
+    "Continuous foreground and actual Present/CPU/GPU are not verified",
+    "No14clip visible quality or20ms p95 acceptance"
+  ],
+  "evidenceReferences": [],
+  "signatureVerified": true,
+  "next": "Finish the same fixed-input64OFF/ON/OFF/ON sequence. Keep the graph fix and ten signed PBOs constant, verify actual fast use, and judge functional outcomes separately from server timing. Do not infer FPS from skipped ray totals.",
+  "goalComplete": false
+}

@@ -1,3 +1,5 @@
+> 최신 작업: 조건부지지검사ON8명:8/8·낙하복귀12/12·실제fast8/8.새64OFF/ON/OFF/ON비교는진행중.성능·시각·20ms목표는미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-slot-support-safety-20261103.md).
+
 > 최신 작업: 그래프 범위 후보8명 통과·64명 실패(유효label40/64). 반복경고는각1건.64명명령시간0.643배·서버dt p95 116ms 관측,Present/시각/성능성공은미판정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-slot-regression-clock-20261103.md).
 
 > 최신 작업: behaviorSlotID 선언0~31에 native 값-1이 들어가 변수 번호가 손상되는 경로 재현. 최솟값-1 후보는1NPC·8파트 그래프 위치44/44·수신 종료128,해석8/8통과.8/64기능·시각·성능은 미검증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-graph-slot-bounds-20261103.md).
