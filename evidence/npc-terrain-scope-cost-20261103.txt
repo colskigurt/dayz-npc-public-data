@@ -1,0 +1,108 @@
+Selected own scope predicate plus unchanged physical-arm hashes and cost aggregates. Not the full source/runtime.
+    bool GroundScopeEligible(vector anchor)
+    {
+        if(!Agent || !Traversal)return false;
+        if(GroundPlatform || Traversal.Phase!="FOLLOW" || Traversal.Area!="ground")return false;
+        if(Agent.State=="DEAD")return false;
+        if(Combat && (Combat.Active || Combat.Dead || Combat.PendingDeath))return false;
+        int count=Agent.ObstacleMin.Count();
+        if(count!=Agent.ObstacleMax.Count())return false;
+        for(int i=0;i<count;i++)
+        {
+            vector low=Agent.ObstacleMin[i];vector high=Agent.ObstacleMax[i];
+            if(anchor[0]<low[0] - 1.5 || anchor[0]>high[0]+1.5)continue;
+            if(anchor[2]<low[2] - 1.5 || anchor[2]>high[2]+1.5)continue;
+            return false;
+        }
+        return true;
+    }
+Physical-arm hashes:
+{
+  "terrain-scope-method-cost1": {
+    "ReferenceExecute": "25e8292dfff47d8705359b2466f2eaddfbe4bdea3b13b30691a0632eb55b92bc",
+    "CandidateExecute": "0f6117564ac37c131bf5a14686722fea01466b1e71796acba3e26a7ccbae9781"
+  },
+  "terrain-scope-method-cost2": {
+    "ReferenceExecute": "25e8292dfff47d8705359b2466f2eaddfbe4bdea3b13b30691a0632eb55b92bc",
+    "CandidateExecute": "0f6117564ac37c131bf5a14686722fea01466b1e71796acba3e26a7ccbae9781"
+  },
+  "terrain-inline-scope-method-cost1": {
+    "ReferenceExecute": "25e8292dfff47d8705359b2466f2eaddfbe4bdea3b13b30691a0632eb55b92bc",
+    "CandidateExecute": "0f6117564ac37c131bf5a14686722fea01466b1e71796acba3e26a7ccbae9781"
+  },
+  "terrain-inline-scope-method-cost2": {
+    "ReferenceExecute": "25e8292dfff47d8705359b2466f2eaddfbe4bdea3b13b30691a0632eb55b92bc",
+    "CandidateExecute": "0f6117564ac37c131bf5a14686722fea01466b1e71796acba3e26a7ccbae9781"
+  }
+}
+
+Selected comparison summary (full block distributions are in the linked JSON):
+{
+  "sourceRunId": "network-gameplay/terrain-scope-and-inline-cost",
+  "measuredProcesses": 4,
+  "revisions": 2,
+  "measuredCalls": 512000,
+  "newStartsThisContinuation": 2,
+  "priorCompletedExecutionsFirstAnalyzed": 2,
+  "methodFollowupGatePassed": false,
+  "wholeCPUOrPresentMeasured": false,
+  "runs": [
+    {
+      "revision": "scoped",
+      "run": "terrain-scope-method-cost1",
+      "relativeChangePercent": {
+        "terrain": -50.90971013404264,
+        "roof": -1.7265773586202515,
+        "edge": 5.5000023639720395,
+        "lift_reject": -58.73653584076401,
+        "wrong_ground_hint": -1.36139954277269,
+        "ground_near_structure": 0.76046674869229,
+        "ground_many_hints": -45.17582958235411,
+        "fall_state": 8.147313499084408
+      }
+    },
+    {
+      "revision": "scoped",
+      "run": "terrain-scope-method-cost2",
+      "relativeChangePercent": {
+        "terrain": -60.238632822643766,
+        "roof": 2.509737663499795,
+        "edge": 1.781906863753635,
+        "lift_reject": -59.43897203550348,
+        "wrong_ground_hint": 3.155225923827931,
+        "ground_near_structure": -3.6603046589229526,
+        "ground_many_hints": -55.56329156666439,
+        "fall_state": -0.9393834211058549
+      }
+    },
+    {
+      "revision": "inlined",
+      "run": "terrain-inline-scope-method-cost1",
+      "relativeChangePercent": {
+        "terrain": -52.66037012264242,
+        "roof": 3.2277900793428738,
+        "edge": 0.7872491160634434,
+        "lift_reject": -62.36744733469136,
+        "wrong_ground_hint": 6.345464284228964,
+        "ground_near_structure": 1.9634725802646136,
+        "ground_many_hints": -56.63563273989614,
+        "fall_state": 15.1237432019504
+      }
+    },
+    {
+      "revision": "inlined",
+      "run": "terrain-inline-scope-method-cost2",
+      "relativeChangePercent": {
+        "terrain": -52.44755463518337,
+        "roof": 3.0313263500278187,
+        "edge": -6.339236644839913,
+        "lift_reject": -56.563523066787155,
+        "wrong_ground_hint": 5.222571209122889,
+        "ground_near_structure": 15.076554716976576,
+        "ground_many_hints": -48.08751779594857,
+        "fall_state": 7.564832371701535
+      }
+    }
+  ],
+  "fullDistributionJson": "api/public/npc-terrain-scope-cost.json"
+}

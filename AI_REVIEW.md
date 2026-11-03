@@ -23,7 +23,7 @@
 
 | 항목 | 판정 |
 |---|---|
-| 비지형 인증+지형 조회 | 2독립·128000회:평지 국소55–60%감소·비적격21–38%증가. 전역 기준 미통과·미채택. 전체CPU미측정 |
+| 비지형 인증+지형 조회 | 전역 후보와 제한·인라인 후보 모두 미채택. 최근 두 후보는 각2실행, 평지 이득 유지·배제3% 기준 실패. 전체CPU미측정 |
 | 전역 SupportSweepFast | 지붕 국소 이득, 평지 약6.6% 증가로 전역 기준 미통과 |
 | 조건부 SupportContext | 국소 이득은 있음. 전체 기능·프레임 수용은 별개이며 과거 OFF도 실패한 결함을 분리해야 함 |
 | Scratch | 국소 약1.5–2.5%로 사전5% 기준 미달. 같은 시험 반복하지 않음 |
@@ -35,7 +35,7 @@
 
 1. [FOLLOW·지지·낙하 복구의 선정 코드](evidence/npc-review-source-context-20261103.txt): 자체 스크립트 원문 발췌·원본파일hash·줄 범위를 제공한다. 기준 모듈453D의 함수이며 전체 최신 override 스택이 아니다.
 2. [선정 비용행·최근64명 종료 판정·8/64설정](evidence/npc-review-cost-and-scenarios-20261103.json): 선택 기준/단위/실행ID를 포함한다. 전체 CPU 스택·영상·원시 전체의 대체본은 아니다.
-3. [최근64명 판정 보고서](reports/operations/npc-entry-facing-regression-20261103.md), [상세 비용 분석](reports/operations/detailed-cost-attribution-20261102.md), [지형 비용 비교](reports/operations/npc-terrain-method-cost-20261103.md) · [선행 API 진단](reports/operations/npc-terrain-support-contract-20261103.md).
+3. [최근64명 판정 보고서](reports/operations/npc-entry-facing-regression-20261103.md), [상세 비용 분석](reports/operations/detailed-cost-attribution-20261102.md), [제한·인라인 비용 판정](reports/operations/npc-terrain-scope-cost-20261103.md) · [전역 비용 판정](reports/operations/npc-terrain-method-cost-20261103.md) · [선행 API 진단](reports/operations/npc-terrain-support-contract-20261103.md).
 4. 근거가 부족하면 필요한 함수·실행ID·필드·관측 구간을 구체적으로 요청한다. README만으로 원인·성능 개선·엔진 한계를 단정하지 않는다.
 
 ## 반복과 채택

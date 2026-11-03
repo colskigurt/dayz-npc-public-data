@@ -1,0 +1,3297 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T21:46:18.055956+09:00",
+  "sourceRunId": "network-gameplay/terrain-scope-and-inline-cost",
+  "buildId": "unchanged8signedPBOs;test_local_missions_only",
+  "verificationStatus": {
+    "diagnosis": "two_revisions_two_processes_each",
+    "candidate": "both_gates_failed_not_promoted",
+    "functional8or64": "not_tested",
+    "visualQuality": "not_measured",
+    "wholeFramePerformance": "not_measured",
+    "externalAI": "not_retested",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "schemaVersion": "1.0.0",
+    "sourceRunId": "network-gameplay/terrain-scope-and-inline-cost",
+    "measuredProcessesInBundle": 4,
+    "newRuntimeStartsThisContinuation": 2,
+    "priorCompletedExecutionsFirstAnalyzed": 2,
+    "measuredMethodCallsInBundle": 512000,
+    "revisions": {
+      "scoped": {
+        "schemaVersion": "1.0.0",
+        "sourceRunId": "network-gameplay/terrain-scope-method-cost",
+        "totalIndependentProcesses": 2,
+        "measuredMethodCalls": 256000,
+        "runs": [
+          {
+            "run": "terrain-scope-method-cost1",
+            "sourceRunId": "network-gameplay/terrain-scope-method-cost1",
+            "orderReverse": false,
+            "rows": 128,
+            "calls": 128000,
+            "conditions": [
+              {
+                "condition": "terrain",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 719640.5,
+                    "p95": 822108.2999999999,
+                    "p99": 844212.0599999999
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 341795.5,
+                    "p95": 412396.39999999997,
+                    "p99": 419602.48
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": -50.90971013404264,
+                "pairedGroups": [
+                  {
+                    "group": 0,
+                    "referenceTicks": 719640.5,
+                    "candidateTicks": 378695.5,
+                    "relativeChangePercent": -47.37712788538167
+                  },
+                  {
+                    "group": 8,
+                    "referenceTicks": 767068.5,
+                    "candidateTicks": 298686.5,
+                    "relativeChangePercent": -61.06130026197138
+                  },
+                  {
+                    "group": 16,
+                    "referenceTicks": 743866.5,
+                    "candidateTicks": 389879.0,
+                    "relativeChangePercent": -47.58750394055923
+                  },
+                  {
+                    "group": 24,
+                    "referenceTicks": 671427.5,
+                    "candidateTicks": 307299.5,
+                    "relativeChangePercent": -54.23191632752605
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      0
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      1000
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      10000
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "roof",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 1076145.5,
+                    "p95": 1165306.2,
+                    "p99": 1168013.24
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 1063009.5,
+                    "p95": 1207566.85,
+                    "p99": 1212721.37
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": -1.7265773586202515,
+                "pairedGroups": [
+                  {
+                    "group": 1,
+                    "referenceTicks": 1082711.0,
+                    "candidateTicks": 1191027.5,
+                    "relativeChangePercent": 10.00419317805028
+                  },
+                  {
+                    "group": 9,
+                    "referenceTicks": 1079628.0,
+                    "candidateTicks": 1174690.5,
+                    "relativeChangePercent": 8.80511620669342
+                  },
+                  {
+                    "group": 17,
+                    "referenceTicks": 1067414.0,
+                    "candidateTicks": 936567.5,
+                    "relativeChangePercent": -12.258270923933923
+                  },
+                  {
+                    "group": 25,
+                    "referenceTicks": 1076145.5,
+                    "candidateTicks": 920061.0,
+                    "relativeChangePercent": -14.504033144217022
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "edge",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 894103.0,
+                    "p95": 1039210.35,
+                    "p99": 1061845.27
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 908777.5,
+                    "p95": 1092552.15,
+                    "p99": 1119888.83
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": 5.5000023639720395,
+                "pairedGroups": [
+                  {
+                    "group": 2,
+                    "referenceTicks": 927906.0,
+                    "candidateTicks": 1077907.5,
+                    "relativeChangePercent": 16.16559220438276
+                  },
+                  {
+                    "group": 10,
+                    "referenceTicks": 875806.5,
+                    "candidateTicks": 874723.5,
+                    "relativeChangePercent": -0.12365745173162912
+                  },
+                  {
+                    "group": 18,
+                    "referenceTicks": 933863.0,
+                    "candidateTicks": 850512.5,
+                    "relativeChangePercent": -8.925345580668687
+                  },
+                  {
+                    "group": 26,
+                    "referenceTicks": 865353.5,
+                    "candidateTicks": 961612.5,
+                    "relativeChangePercent": 11.123662179675708
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "lift_reject",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 659177.0,
+                    "p95": 850225.7499999999,
+                    "p99": 889760.35
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 246765.0,
+                    "p95": 372460.0,
+                    "p99": 374845.6
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": -58.73653584076401,
+                "pairedGroups": [
+                  {
+                    "group": 3,
+                    "referenceTicks": 638543.5,
+                    "candidateTicks": 246765.0,
+                    "relativeChangePercent": -61.35502123191294
+                  },
+                  {
+                    "group": 11,
+                    "referenceTicks": 755212.5,
+                    "candidateTicks": 249131.5,
+                    "relativeChangePercent": -67.01173510766837
+                  },
+                  {
+                    "group": 19,
+                    "referenceTicks": 703157.0,
+                    "candidateTicks": 308559.0,
+                    "relativeChangePercent": -56.11805044961508
+                  },
+                  {
+                    "group": 27,
+                    "referenceTicks": 682820.0,
+                    "candidateTicks": 304881.0,
+                    "relativeChangePercent": -55.34972613573124
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      0
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      0
+                    ],
+                    "jointSweeps": [
+                      0
+                    ],
+                    "certificateQueries": [
+                      1000
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      10000
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "wrong_ground_hint",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 1079300.0,
+                    "p95": 1225662.8499999999,
+                    "p99": 1261712.57
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 993729.5,
+                    "p95": 1162501.0,
+                    "p99": 1185517.0
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": -1.36139954277269,
+                "pairedGroups": [
+                  {
+                    "group": 4,
+                    "referenceTicks": 1013198.0,
+                    "candidateTicks": 964718.5,
+                    "relativeChangePercent": -4.784800206869733
+                  },
+                  {
+                    "group": 12,
+                    "referenceTicks": 1161939.5,
+                    "candidateTicks": 965252.0,
+                    "relativeChangePercent": -16.927516449866797
+                  },
+                  {
+                    "group": 20,
+                    "referenceTicks": 1084432.0,
+                    "candidateTicks": 1106793.0,
+                    "relativeChangePercent": 2.0620011213243528
+                  },
+                  {
+                    "group": 28,
+                    "referenceTicks": 1008139.0,
+                    "candidateTicks": 1051395.0,
+                    "relativeChangePercent": 4.290678170371343
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "ground_near_structure",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 871579.5,
+                    "p95": 1051903.85,
+                    "p99": 1058469.57
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 863246.5,
+                    "p95": 1237593.2,
+                    "p99": 1261345.04
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": 0.76046674869229,
+                "pairedGroups": [
+                  {
+                    "group": 5,
+                    "referenceTicks": 988354.0,
+                    "candidateTicks": 1070139.5,
+                    "relativeChangePercent": 8.274919715000895
+                  },
+                  {
+                    "group": 13,
+                    "referenceTicks": 957316.0,
+                    "candidateTicks": 883887.0,
+                    "relativeChangePercent": -7.670299044411665
+                  },
+                  {
+                    "group": 21,
+                    "referenceTicks": 792606.0,
+                    "candidateTicks": 739073.5,
+                    "relativeChangePercent": -6.753986217616315
+                  },
+                  {
+                    "group": 29,
+                    "referenceTicks": 783546.5,
+                    "candidateTicks": 1017976.0,
+                    "relativeChangePercent": 29.919028417585935
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "ground_many_hints",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 873800.0,
+                    "p95": 929864.55,
+                    "p99": 932996.91
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 425549.0,
+                    "p95": 518422.14999999997,
+                    "p99": 523269.23
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": -45.17582958235411,
+                "pairedGroups": [
+                  {
+                    "group": 6,
+                    "referenceTicks": 916610.0,
+                    "candidateTicks": 515825.5,
+                    "relativeChangePercent": -43.72464843281221
+                  },
+                  {
+                    "group": 14,
+                    "referenceTicks": 761299.5,
+                    "candidateTicks": 425549.0,
+                    "relativeChangePercent": -44.1022882584318
+                  },
+                  {
+                    "group": 22,
+                    "referenceTicks": 812677.0,
+                    "candidateTicks": 436819.0,
+                    "relativeChangePercent": -46.24937090627642
+                  },
+                  {
+                    "group": 30,
+                    "referenceTicks": 821768.5,
+                    "candidateTicks": 357214.0,
+                    "relativeChangePercent": -56.531066839383605
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      0
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      1000
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      10000
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "fall_state",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 778557.0,
+                    "p95": 862743.5,
+                    "p99": 873817.5
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 821367.5,
+                    "p95": 972573.4,
+                    "p99": 983889.88
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": 8.147313499084408,
+                "pairedGroups": [
+                  {
+                    "group": 7,
+                    "referenceTicks": 856811.0,
+                    "candidateTicks": 785213.5,
+                    "relativeChangePercent": -8.356276938554707
+                  },
+                  {
+                    "group": 15,
+                    "referenceTicks": 812932.0,
+                    "candidateTicks": 879835.5,
+                    "relativeChangePercent": 8.229901147943487
+                  },
+                  {
+                    "group": 23,
+                    "referenceTicks": 691892.5,
+                    "candidateTicks": 823711.5,
+                    "relativeChangePercent": 19.051948098873737
+                  },
+                  {
+                    "group": 31,
+                    "referenceTicks": 722926.0,
+                    "candidateTicks": 781228.0,
+                    "relativeChangePercent": 8.06472585022533
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              }
+            ],
+            "missionSha256": "6d365f9851435d633b82bc0e2ff411ada30a5d7afbf8b73a15737ad35d5b71fc",
+            "tsvSha256": "fd0a694a0a55b77864acff38f61aa18931c5bba275560ef30734c087ffe65654",
+            "existingSignatureChecksPassed": true,
+            "forcedOwnedStop": true,
+            "normalProcessQuitVerified": false
+          },
+          {
+            "run": "terrain-scope-method-cost2",
+            "sourceRunId": "network-gameplay/terrain-scope-method-cost2",
+            "orderReverse": true,
+            "rows": 128,
+            "calls": 128000,
+            "conditions": [
+              {
+                "condition": "terrain",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 906682.5,
+                    "p95": 1164142.0,
+                    "p99": 1223714.7999999998
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 383725.0,
+                    "p95": 461024.44999999995,
+                    "p99": 470777.69
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": -60.238632822643766,
+                "pairedGroups": [
+                  {
+                    "group": 0,
+                    "referenceTicks": 817039.5,
+                    "candidateTicks": 284128.5,
+                    "relativeChangePercent": -65.2246311224855
+                  },
+                  {
+                    "group": 8,
+                    "referenceTicks": 1085167.0,
+                    "candidateTicks": 430040.5,
+                    "relativeChangePercent": -60.371030449691155
+                  },
+                  {
+                    "group": 16,
+                    "referenceTicks": 1016800.5,
+                    "candidateTicks": 405640.0,
+                    "relativeChangePercent": -60.10623519559638
+                  },
+                  {
+                    "group": 24,
+                    "referenceTicks": 804141.0,
+                    "candidateTicks": 398817.0,
+                    "relativeChangePercent": -50.4045932243226
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      0
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      1000
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      10000
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "roof",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 1037860.0,
+                    "p95": 1317280.75,
+                    "p99": 1359632.15
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 1076704.5,
+                    "p95": 1251140.05,
+                    "p99": 1277380.81
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": 2.509737663499795,
+                "pairedGroups": [
+                  {
+                    "group": 1,
+                    "referenceTicks": 923661.0,
+                    "candidateTicks": 1076704.5,
+                    "relativeChangePercent": 16.569228320780027
+                  },
+                  {
+                    "group": 9,
+                    "referenceTicks": 1127978.5,
+                    "candidateTicks": 1065380.5,
+                    "relativeChangePercent": -5.549573861558532
+                  },
+                  {
+                    "group": 17,
+                    "referenceTicks": 1294592.5,
+                    "candidateTicks": 1138358.0,
+                    "relativeChangePercent": -12.06823768869355
+                  },
+                  {
+                    "group": 25,
+                    "referenceTicks": 964055.5,
+                    "candidateTicks": 1065947.0,
+                    "relativeChangePercent": 10.569049188558122
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "edge",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 1013270.5,
+                    "p95": 1174947.7,
+                    "p99": 1192934.34
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 929261.0,
+                    "p95": 1219410.2999999998,
+                    "p99": 1311922.8599999999
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": 1.781906863753635,
+                "pairedGroups": [
+                  {
+                    "group": 2,
+                    "referenceTicks": 1165312.0,
+                    "candidateTicks": 855621.5,
+                    "relativeChangePercent": -26.57575825186731
+                  },
+                  {
+                    "group": 10,
+                    "referenceTicks": 1013270.5,
+                    "candidateTicks": 1120498.0,
+                    "relativeChangePercent": 10.58231735750721
+                  },
+                  {
+                    "group": 18,
+                    "referenceTicks": 992562.0,
+                    "candidateTicks": 922899.0,
+                    "relativeChangePercent": -7.018503629999939
+                  },
+                  {
+                    "group": 26,
+                    "referenceTicks": 827257.5,
+                    "candidateTicks": 978613.0,
+                    "relativeChangePercent": 18.296056548293606
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "lift_reject",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 745993.0,
+                    "p95": 850514.4,
+                    "p99": 860626.88
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 291558.5,
+                    "p95": 363774.0,
+                    "p99": 365118.0
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": -59.43897203550348,
+                "pairedGroups": [
+                  {
+                    "group": 3,
+                    "referenceTicks": 732433.0,
+                    "candidateTicks": 297063.0,
+                    "relativeChangePercent": -59.44161445483751
+                  },
+                  {
+                    "group": 11,
+                    "referenceTicks": 809723.5,
+                    "candidateTicks": 332272.5,
+                    "relativeChangePercent": -58.96469597337857
+                  },
+                  {
+                    "group": 19,
+                    "referenceTicks": 671443.5,
+                    "candidateTicks": 257453.0,
+                    "relativeChangePercent": -61.656788694804554
+                  },
+                  {
+                    "group": 27,
+                    "referenceTicks": 731651.0,
+                    "candidateTicks": 296784.5,
+                    "relativeChangePercent": -59.43632961616946
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      0
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      0
+                    ],
+                    "jointSweeps": [
+                      0
+                    ],
+                    "certificateQueries": [
+                      1000
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      10000
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "wrong_ground_hint",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 1166356.5,
+                    "p95": 1290611.45,
+                    "p99": 1318783.0899999999
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 1120399.5,
+                    "p95": 1360627.75,
+                    "p99": 1388911.95
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": 3.155225923827931,
+                "pairedGroups": [
+                  {
+                    "group": 4,
+                    "referenceTicks": 1169708.0,
+                    "candidateTicks": 974920.0,
+                    "relativeChangePercent": -16.652703067774176
+                  },
+                  {
+                    "group": 12,
+                    "referenceTicks": 1058053.0,
+                    "candidateTicks": 1242409.0,
+                    "relativeChangePercent": 17.424079890137833
+                  },
+                  {
+                    "group": 20,
+                    "referenceTicks": 1275519.5,
+                    "candidateTicks": 1289963.5,
+                    "relativeChangePercent": 1.1324013470589867
+                  },
+                  {
+                    "group": 28,
+                    "referenceTicks": 945771.0,
+                    "candidateTicks": 994743.5,
+                    "relativeChangePercent": 5.178050500596876
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "ground_near_structure",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 930101.5,
+                    "p95": 1149393.75,
+                    "p99": 1150299.55
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 850417.5,
+                    "p95": 1045302.75,
+                    "p99": 1074970.15
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": -3.6603046589229526,
+                "pairedGroups": [
+                  {
+                    "group": 5,
+                    "referenceTicks": 1148908.5,
+                    "candidateTicks": 838773.0,
+                    "relativeChangePercent": -26.99392510369625
+                  },
+                  {
+                    "group": 13,
+                    "referenceTicks": 931444.5,
+                    "candidateTicks": 851279.0,
+                    "relativeChangePercent": -8.60657827707394
+                  },
+                  {
+                    "group": 21,
+                    "referenceTicks": 930101.5,
+                    "candidateTicks": 1029409.5,
+                    "relativeChangePercent": 10.677114271936983
+                  },
+                  {
+                    "group": 29,
+                    "referenceTicks": 728944.5,
+                    "candidateTicks": 738318.5,
+                    "relativeChangePercent": 1.2859689592280343
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "ground_many_hints",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 833027.5,
+                    "p95": 987057.2999999999,
+                    "p99": 995413.0599999999
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 369069.5,
+                    "p95": 488974.94999999995,
+                    "p99": 500164.58999999997
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": -55.56329156666439,
+                "pairedGroups": [
+                  {
+                    "group": 6,
+                    "referenceTicks": 956284.0,
+                    "candidateTicks": 418397.5,
+                    "relativeChangePercent": -56.24756871389671
+                  },
+                  {
+                    "group": 14,
+                    "referenceTicks": 909846.0,
+                    "candidateTicks": 391732.5,
+                    "relativeChangePercent": -56.94518632823578
+                  },
+                  {
+                    "group": 22,
+                    "referenceTicks": 801314.5,
+                    "candidateTicks": 361561.0,
+                    "relativeChangePercent": -54.87901441943207
+                  },
+                  {
+                    "group": 30,
+                    "referenceTicks": 705945.0,
+                    "candidateTicks": 384088.5,
+                    "relativeChangePercent": -45.59229118415741
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      0
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      1000
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      10000
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "fall_state",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 873966.5,
+                    "p95": 1018842.1499999999,
+                    "p99": 1035298.03
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 870043.5,
+                    "p95": 1066612.5,
+                    "p99": 1074248.1
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": -0.9393834211058549,
+                "pairedGroups": [
+                  {
+                    "group": 7,
+                    "referenceTicks": 809635.5,
+                    "candidateTicks": 952130.0,
+                    "relativeChangePercent": 17.599833505324302
+                  },
+                  {
+                    "group": 15,
+                    "referenceTicks": 849497.0,
+                    "candidateTicks": 890580.0,
+                    "relativeChangePercent": 4.836155984070567
+                  },
+                  {
+                    "group": 23,
+                    "referenceTicks": 1010026.5,
+                    "candidateTicks": 942204.0,
+                    "relativeChangePercent": -6.714922826282277
+                  },
+                  {
+                    "group": 31,
+                    "referenceTicks": 789901.0,
+                    "candidateTicks": 676984.5,
+                    "relativeChangePercent": -14.295019249247687
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              }
+            ],
+            "missionSha256": "6d365f9851435d633b82bc0e2ff411ada30a5d7afbf8b73a15737ad35d5b71fc",
+            "tsvSha256": "f5a7a3df97349ece93974122ab6e553295c5eaf803b3fe145851defba2e45a29",
+            "existingSignatureChecksPassed": true,
+            "forcedOwnedStop": true,
+            "normalProcessQuitVerified": false
+          }
+        ],
+        "terrainCostGatePassed": true,
+        "ineligibleOverheadGatePassed": false,
+        "otherConditionGatePassed": true,
+        "methodFollowupGatePassed": false,
+        "gameplayRegressionTested": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "wholeFrameP50P95P99": null,
+        "newGameplayPbo": false,
+        "limits": [
+          "Elapsed ticks include inclusive script/native work; not CPU self-time.",
+          "Eight blocks per arm are not eight independent processes.",
+          "Pose stable within groups; across-process poses not assumed identical.",
+          "Fixed/cachehot local cases do not prove terrain-hole, steep-slope or dynamic-object safety.",
+          "0.1mm contract ceiling is for method screening, not production gameplay acceptance.",
+          "No8/64 or totalCPU/Present benefit measured.",
+          "Known obstacle bounds only disable optimization and never certify support.",
+          "Unregistered blocking objects can retain the rejected global-candidate overhead; no universal3% guarantee.",
+          "Metadata cases are test-set contexts, not actual moving/falling actors;18 hints are synthetic metadata without16 spawned objects."
+        ],
+        "goalComplete": false
+      },
+      "inlined": {
+        "schemaVersion": "1.0.0",
+        "sourceRunId": "network-gameplay/terrain-inline-scope-method-cost",
+        "totalIndependentProcesses": 2,
+        "measuredMethodCalls": 256000,
+        "runs": [
+          {
+            "run": "terrain-inline-scope-method-cost1",
+            "sourceRunId": "network-gameplay/terrain-inline-scope-method-cost1",
+            "orderReverse": false,
+            "rows": 128,
+            "calls": 128000,
+            "conditions": [
+              {
+                "condition": "terrain",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 717771.5,
+                    "p95": 848806.15,
+                    "p99": 856481.23
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 342680.0,
+                    "p95": 427352.7,
+                    "p99": 433282.54
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": -52.66037012264242,
+                "pairedGroups": [
+                  {
+                    "group": 0,
+                    "referenceTicks": 765470.0,
+                    "candidateTicks": 424176.0,
+                    "relativeChangePercent": -44.58620194129097
+                  },
+                  {
+                    "group": 8,
+                    "referenceTicks": 731650.0,
+                    "candidateTicks": 377556.5,
+                    "relativeChangePercent": -48.396569397936176
+                  },
+                  {
+                    "group": 16,
+                    "referenceTicks": 757771.0,
+                    "candidateTicks": 291296.0,
+                    "relativeChangePercent": -61.55883505702911
+                  },
+                  {
+                    "group": 24,
+                    "referenceTicks": 696856.0,
+                    "candidateTicks": 300176.5,
+                    "relativeChangePercent": -56.92417084734866
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      0
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      1000
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      10000
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "roof",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 1117063.0,
+                    "p95": 1292347.8499999999,
+                    "p99": 1327305.57
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 1131186.0,
+                    "p95": 1326163.05,
+                    "p99": 1329914.21
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": 3.2277900793428738,
+                "pairedGroups": [
+                  {
+                    "group": 1,
+                    "referenceTicks": 1157686.0,
+                    "candidateTicks": 1229694.5,
+                    "relativeChangePercent": 6.220037212162888
+                  },
+                  {
+                    "group": 9,
+                    "referenceTicks": 1230463.0,
+                    "candidateTicks": 1164748.5,
+                    "relativeChangePercent": -5.340631940984819
+                  },
+                  {
+                    "group": 17,
+                    "referenceTicks": 1128409.5,
+                    "candidateTicks": 1156116.5,
+                    "relativeChangePercent": 2.4554029366112173
+                  },
+                  {
+                    "group": 25,
+                    "referenceTicks": 981819.0,
+                    "candidateTicks": 1021093.5,
+                    "relativeChangePercent": 4.00017722207453
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "edge",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 897767.0,
+                    "p95": 1099341.8499999999,
+                    "p99": 1125378.77
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 905682.5,
+                    "p95": 1091373.85,
+                    "p99": 1096197.97
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": 0.7872491160634434,
+                "pairedGroups": [
+                  {
+                    "group": 2,
+                    "referenceTicks": 975722.0,
+                    "candidateTicks": 892398.0,
+                    "relativeChangePercent": -8.539727504350624
+                  },
+                  {
+                    "group": 10,
+                    "referenceTicks": 891467.0,
+                    "candidateTicks": 1010945.5,
+                    "relativeChangePercent": 13.402459092708984
+                  },
+                  {
+                    "group": 18,
+                    "referenceTicks": 893187.5,
+                    "candidateTicks": 983526.5,
+                    "relativeChangePercent": 10.114225736477511
+                  },
+                  {
+                    "group": 26,
+                    "referenceTicks": 904080.0,
+                    "candidateTicks": 807045.0,
+                    "relativeChangePercent": -10.733010353066097
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "lift_reject",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 776133.0,
+                    "p95": 860373.25,
+                    "p99": 863101.85
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 264423.5,
+                    "p95": 349957.8,
+                    "p99": 355723.56
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": -62.36744733469136,
+                "pairedGroups": [
+                  {
+                    "group": 3,
+                    "referenceTicks": 808850.0,
+                    "candidateTicks": 264423.5,
+                    "relativeChangePercent": -67.30870989676701
+                  },
+                  {
+                    "group": 11,
+                    "referenceTicks": 723288.5,
+                    "candidateTicks": 296652.5,
+                    "relativeChangePercent": -58.98559150325215
+                  },
+                  {
+                    "group": 19,
+                    "referenceTicks": 826194.5,
+                    "candidateTicks": 320601.5,
+                    "relativeChangePercent": -61.19539648351569
+                  },
+                  {
+                    "group": 27,
+                    "referenceTicks": 651137.5,
+                    "candidateTicks": 237408.0,
+                    "relativeChangePercent": -63.53949818586704
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      0
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      0
+                    ],
+                    "jointSweeps": [
+                      0
+                    ],
+                    "certificateQueries": [
+                      1000
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      10000
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "wrong_ground_hint",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 1020394.0,
+                    "p95": 1459712.8499999999,
+                    "p99": 1484601.77
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 1162390.0,
+                    "p95": 1444655.95,
+                    "p99": 1469016.79
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": 6.345464284228964,
+                "pairedGroups": [
+                  {
+                    "group": 4,
+                    "referenceTicks": 1158202.0,
+                    "candidateTicks": 1121526.0,
+                    "relativeChangePercent": -3.166632418179216
+                  },
+                  {
+                    "group": 12,
+                    "referenceTicks": 1067097.5,
+                    "candidateTicks": 1225273.0,
+                    "relativeChangePercent": 14.822966036374364
+                  },
+                  {
+                    "group": 20,
+                    "referenceTicks": 1267004.0,
+                    "candidateTicks": 1239991.0,
+                    "relativeChangePercent": -2.1320374679164367
+                  },
+                  {
+                    "group": 28,
+                    "referenceTicks": 960366.0,
+                    "candidateTicks": 1162390.0,
+                    "relativeChangePercent": 21.03614663576179
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "ground_near_structure",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 904130.5,
+                    "p95": 1044177.4999999999,
+                    "p99": 1079510.7
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 883013.0,
+                    "p95": 1041278.0,
+                    "p99": 1056605.2
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": 1.9634725802646136,
+                "pairedGroups": [
+                  {
+                    "group": 5,
+                    "referenceTicks": 950910.0,
+                    "candidateTicks": 953528.0,
+                    "relativeChangePercent": 0.27531522436403666
+                  },
+                  {
+                    "group": 13,
+                    "referenceTicks": 904130.5,
+                    "candidateTicks": 937146.0,
+                    "relativeChangePercent": 3.6516299361651905
+                  },
+                  {
+                    "group": 21,
+                    "referenceTicks": 870084.5,
+                    "candidateTicks": 763903.5,
+                    "relativeChangePercent": -12.20352735854966
+                  },
+                  {
+                    "group": 29,
+                    "referenceTicks": 859500.5,
+                    "candidateTicks": 925085.5,
+                    "relativeChangePercent": 7.630594746599906
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "ground_many_hints",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 784261.5,
+                    "p95": 981460.7,
+                    "p99": 992822.54
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 325316.5,
+                    "p95": 484195.75,
+                    "p99": 497645.55
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": -56.63563273989614,
+                "pairedGroups": [
+                  {
+                    "group": 6,
+                    "referenceTicks": 903004.5,
+                    "candidateTicks": 324525.0,
+                    "relativeChangePercent": -64.06164088883278
+                  },
+                  {
+                    "group": 14,
+                    "referenceTicks": 964121.5,
+                    "candidateTicks": 386914.5,
+                    "relativeChangePercent": -59.86869912142816
+                  },
+                  {
+                    "group": 22,
+                    "referenceTicks": 695493.5,
+                    "candidateTicks": 442953.5,
+                    "relativeChangePercent": -36.31090729100991
+                  },
+                  {
+                    "group": 30,
+                    "referenceTicks": 691096.0,
+                    "candidateTicks": 322033.0,
+                    "relativeChangePercent": -53.40256635836411
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      0
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      1000
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      10000
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "fall_state",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 748101.0,
+                    "p95": 1025563.9499999998,
+                    "p99": 1095430.39
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 894548.0,
+                    "p95": 1095794.0,
+                    "p99": 1119006.0
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": 15.1237432019504,
+                "pairedGroups": [
+                  {
+                    "group": 7,
+                    "referenceTicks": 769678.5,
+                    "candidateTicks": 934989.5,
+                    "relativeChangePercent": 21.477928771558517
+                  },
+                  {
+                    "group": 15,
+                    "referenceTicks": 746739.5,
+                    "candidateTicks": 838234.5,
+                    "relativeChangePercent": 12.252599467418012
+                  },
+                  {
+                    "group": 23,
+                    "referenceTicks": 988135.5,
+                    "candidateTicks": 996158.0,
+                    "relativeChangePercent": 0.8118825808808516
+                  },
+                  {
+                    "group": 31,
+                    "referenceTicks": 694300.0,
+                    "candidateTicks": 819238.5,
+                    "relativeChangePercent": 17.99488693648279
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              }
+            ],
+            "missionSha256": "6701cde04cd15ca31e696a22b13480b609b69940d58777fa99b0c9e323c1cc61",
+            "tsvSha256": "8226a491d89f4ffa632470516f105c24de6a785ac0241310dcb8fc2bcc5c8a0f",
+            "existingSignatureChecksPassed": true,
+            "forcedOwnedStop": true,
+            "normalProcessQuitVerified": false
+          },
+          {
+            "run": "terrain-inline-scope-method-cost2",
+            "sourceRunId": "network-gameplay/terrain-inline-scope-method-cost2",
+            "orderReverse": true,
+            "rows": 128,
+            "calls": 128000,
+            "conditions": [
+              {
+                "condition": "terrain",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 752454.5,
+                    "p95": 973788.5499999999,
+                    "p99": 1013976.11
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 363489.5,
+                    "p95": 419047.8,
+                    "p99": 432748.76
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": -52.44755463518337,
+                "pairedGroups": [
+                  {
+                    "group": 0,
+                    "referenceTicks": 814179.5,
+                    "candidateTicks": 365958.5,
+                    "relativeChangePercent": -55.05186509854399
+                  },
+                  {
+                    "group": 8,
+                    "referenceTicks": 890534.5,
+                    "candidateTicks": 333477.0,
+                    "relativeChangePercent": -62.55316329687395
+                  },
+                  {
+                    "group": 16,
+                    "referenceTicks": 755452.0,
+                    "candidateTicks": 379068.5,
+                    "relativeChangePercent": -49.8222918199965
+                  },
+                  {
+                    "group": 24,
+                    "referenceTicks": 675254.0,
+                    "candidateTicks": 338685.5,
+                    "relativeChangePercent": -49.843244171822754
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      0
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      1000
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      10000
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "roof",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 1197240.5,
+                    "p95": 1282013.65,
+                    "p99": 1286443.53
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 1082513.5,
+                    "p95": 1370178.95,
+                    "p99": 1393257.39
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": 3.0313263500278187,
+                "pairedGroups": [
+                  {
+                    "group": 1,
+                    "referenceTicks": 1127703.5,
+                    "candidateTicks": 1198077.5,
+                    "relativeChangePercent": 6.240470123574138
+                  },
+                  {
+                    "group": 9,
+                    "referenceTicks": 1274622.0,
+                    "candidateTicks": 1272355.5,
+                    "relativeChangePercent": -0.17781742351850038
+                  },
+                  {
+                    "group": 17,
+                    "referenceTicks": 900291.5,
+                    "candidateTicks": 1071108.5,
+                    "relativeChangePercent": 18.973521353917032
+                  },
+                  {
+                    "group": 25,
+                    "referenceTicks": 1252158.5,
+                    "candidateTicks": 996158.0,
+                    "relativeChangePercent": -20.444736029823694
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "edge",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 966806.5,
+                    "p95": 1105957.05,
+                    "p99": 1111326.61
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 891676.5,
+                    "p95": 1025120.15,
+                    "p99": 1027889.63
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": -6.339236644839913,
+                "pairedGroups": [
+                  {
+                    "group": 2,
+                    "referenceTicks": 1103080.5,
+                    "candidateTicks": 905209.5,
+                    "relativeChangePercent": -17.93803806703137
+                  },
+                  {
+                    "group": 10,
+                    "referenceTicks": 1001694.0,
+                    "candidateTicks": 915819.5,
+                    "relativeChangePercent": -8.572927460881264
+                  },
+                  {
+                    "group": 18,
+                    "referenceTicks": 929852.0,
+                    "candidateTicks": 891676.5,
+                    "relativeChangePercent": -4.1055458287985624
+                  },
+                  {
+                    "group": 26,
+                    "referenceTicks": 913223.0,
+                    "candidateTicks": 879070.0,
+                    "relativeChangePercent": -3.7398313445894393
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "lift_reject",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 687959.5,
+                    "p95": 852307.25,
+                    "p99": 882419.85
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 318317.5,
+                    "p95": 373449.1,
+                    "p99": 376689.82
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": -56.563523066787155,
+                "pairedGroups": [
+                  {
+                    "group": 3,
+                    "referenceTicks": 682370.0,
+                    "candidateTicks": 307641.5,
+                    "relativeChangePercent": -54.91573486524906
+                  },
+                  {
+                    "group": 11,
+                    "referenceTicks": 682179.5,
+                    "candidateTicks": 349063.5,
+                    "relativeChangePercent": -48.8311360866165
+                  },
+                  {
+                    "group": 19,
+                    "referenceTicks": 651475.0,
+                    "candidateTicks": 233300.0,
+                    "relativeChangePercent": -64.18895583099888
+                  },
+                  {
+                    "group": 27,
+                    "referenceTicks": 797567.5,
+                    "candidateTicks": 333293.0,
+                    "relativeChangePercent": -58.21131126832525
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      0
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      0
+                    ],
+                    "jointSweeps": [
+                      0
+                    ],
+                    "certificateQueries": [
+                      1000
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      10000
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "wrong_ground_hint",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 1002712.5,
+                    "p95": 1238064.9,
+                    "p99": 1263300.18
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 1123053.5,
+                    "p95": 1200019.6,
+                    "p99": 1207502.32
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": 5.222571209122889,
+                "pairedGroups": [
+                  {
+                    "group": 4,
+                    "referenceTicks": 1222292.5,
+                    "candidateTicks": 1154994.0,
+                    "relativeChangePercent": -5.5059243184426006
+                  },
+                  {
+                    "group": 12,
+                    "referenceTicks": 926829.5,
+                    "candidateTicks": 1110166.5,
+                    "relativeChangePercent": 19.78109242314794
+                  },
+                  {
+                    "group": 20,
+                    "referenceTicks": 1069726.0,
+                    "candidateTicks": 1028301.5,
+                    "relativeChangePercent": -3.872440232358565
+                  },
+                  {
+                    "group": 28,
+                    "referenceTicks": 997406.5,
+                    "candidateTicks": 1140211.0,
+                    "relativeChangePercent": 14.317582650604344
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "ground_near_structure",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 924931.5,
+                    "p95": 1203178.9,
+                    "p99": 1206254.98
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 1033699.0,
+                    "p95": 1177899.05,
+                    "p99": 1203451.01
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": 15.076554716976576,
+                "pairedGroups": [
+                  {
+                    "group": 5,
+                    "referenceTicks": 1051862.5,
+                    "candidateTicks": 1148482.5,
+                    "relativeChangePercent": 9.185611237210178
+                  },
+                  {
+                    "group": 13,
+                    "referenceTicks": 1201531.0,
+                    "candidateTicks": 1101380.0,
+                    "relativeChangePercent": -8.335282235747554
+                  },
+                  {
+                    "group": 21,
+                    "referenceTicks": 787464.0,
+                    "candidateTicks": 952575.5,
+                    "relativeChangePercent": 20.967498196742973
+                  },
+                  {
+                    "group": 29,
+                    "referenceTicks": 774311.0,
+                    "candidateTicks": 979728.5,
+                    "relativeChangePercent": 26.529069069146626
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "ground_many_hints",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 771285.5,
+                    "p95": 898398.2,
+                    "p99": 905518.04
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 410065.0,
+                    "p95": 502365.8,
+                    "p99": 507045.16
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": -48.08751779594857,
+                "pairedGroups": [
+                  {
+                    "group": 6,
+                    "referenceTicks": 894584.0,
+                    "candidateTicks": 448920.5,
+                    "relativeChangePercent": -49.817960079768916
+                  },
+                  {
+                    "group": 14,
+                    "referenceTicks": 804873.5,
+                    "candidateTicks": 366954.5,
+                    "relativeChangePercent": -54.408425671860236
+                  },
+                  {
+                    "group": 22,
+                    "referenceTicks": 709691.5,
+                    "candidateTicks": 416971.5,
+                    "relativeChangePercent": -41.24609073097254
+                  },
+                  {
+                    "group": 30,
+                    "referenceTicks": 729187.5,
+                    "candidateTicks": 391157.5,
+                    "relativeChangePercent": -46.35707551212822
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      0
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      1000
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      10000
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  }
+                }
+              },
+              {
+                "condition": "fall_state",
+                "blockElapsedTicks": {
+                  "REF": {
+                    "samples": 8,
+                    "p50": 772053.5,
+                    "p95": 843035.25,
+                    "p99": 846032.65
+                  },
+                  "ON": {
+                    "samples": 8,
+                    "p50": 844830.5,
+                    "p95": 966331.35,
+                    "p99": 984038.27
+                  }
+                },
+                "pairedGroupMedianRelativeChangePercent": 7.564832371701535,
+                "pairedGroups": [
+                  {
+                    "group": 7,
+                    "referenceTicks": 810982.0,
+                    "candidateTicks": 803012.5,
+                    "relativeChangePercent": -0.9826975197969823
+                  },
+                  {
+                    "group": 15,
+                    "referenceTicks": 712333.5,
+                    "candidateTicks": 768932.5,
+                    "relativeChangePercent": 7.9455760539129505
+                  },
+                  {
+                    "group": 23,
+                    "referenceTicks": 750032.5,
+                    "candidateTicks": 803915.5,
+                    "relativeChangePercent": 7.18408868949012
+                  },
+                  {
+                    "group": 31,
+                    "referenceTicks": 769490.5,
+                    "candidateTicks": 939295.5,
+                    "relativeChangePercent": 22.06719901025418
+                  }
+                ],
+                "countersPer1000Calls": {
+                  "REF": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      0
+                    ],
+                    "scopeDelegations": [
+                      0
+                    ]
+                  },
+                  "ON": {
+                    "footRays": [
+                      10000
+                    ],
+                    "jointSweeps": [
+                      4000
+                    ],
+                    "certificateQueries": [
+                      0
+                    ],
+                    "certificateBlocked": [
+                      0
+                    ],
+                    "terrainSamples": [
+                      0
+                    ],
+                    "terrainRejected": [
+                      0
+                    ],
+                    "scopeChecks": [
+                      1000
+                    ],
+                    "scopeDelegations": [
+                      1000
+                    ]
+                  }
+                }
+              }
+            ],
+            "missionSha256": "6701cde04cd15ca31e696a22b13480b609b69940d58777fa99b0c9e323c1cc61",
+            "tsvSha256": "1083ef8cd39c52995f3d8799044e597691e406bae28b2a043e0a1a980bf1958f",
+            "existingSignatureChecksPassed": true,
+            "forcedOwnedStop": true,
+            "normalProcessQuitVerified": false
+          }
+        ],
+        "terrainCostGatePassed": true,
+        "ineligibleOverheadGatePassed": false,
+        "otherConditionGatePassed": true,
+        "methodFollowupGatePassed": false,
+        "gameplayRegressionTested": false,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "wholeFrameP50P95P99": null,
+        "newGameplayPbo": false,
+        "limits": [
+          "Elapsed ticks include inclusive script/native work; not CPU self-time.",
+          "Eight blocks per arm are not eight independent processes.",
+          "Pose stable within groups; across-process poses not assumed identical.",
+          "Fixed/cachehot local cases do not prove terrain-hole, steep-slope or dynamic-object safety.",
+          "0.1mm contract ceiling is for method screening, not production gameplay acceptance.",
+          "No8/64 or totalCPU/Present benefit measured.",
+          "Known obstacle bounds only disable optimization and never certify support.",
+          "Unregistered blocking objects can retain the rejected global-candidate overhead; no universal3% guarantee.",
+          "Metadata cases are test-set contexts, not actual moving/falling actors;18 hints are synthetic metadata without16 spawned objects."
+        ],
+        "goalComplete": false
+      }
+    },
+    "methodFollowupGatePassed": false,
+    "gameplayPromoted": false,
+    "wholeCPUOrPresentMeasured": false,
+    "visualAccepted": false,
+    "goalComplete": false
+  },
+  "blockers": [
+    "Ineligible3%cap exceeded; no automatic predicate microtuning continuation",
+    "WholeCPU/Present benefit unmeasured",
+    "Exact overlap coverage of full ray domain not verified",
+    "Unregistered blocker overhead remains possible"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-terrain-scope-cost-20261103.md",
+      "sha256": "f97ae54ca799e24785fbb0225fdf2e59ec8d136055656f19caaa89f267e3cabe"
+    },
+    {
+      "path": "evidence/npc-terrain-scope-cost-20261103.txt",
+      "sha256": "3146e3eea3283c46e9ad0b42d554978005b945a00ab96ed7e9ac05d23eb0bbb7"
+    }
+  ],
+  "goalComplete": false
+}

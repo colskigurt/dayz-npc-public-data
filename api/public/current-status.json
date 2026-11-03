@@ -1,20 +1,19 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-03T21:07:39.386209+09:00",
-  "sourceRunId": "operations/native-analysis-barriers-review-20261103",
-  "buildId": "unchanged8signedPBOs;test_local_mission_only",
+  "generatedAt": "2026-11-03T21:46:18.055956+09:00",
+  "sourceRunId": "network-gameplay/terrain-scope-and-inline-cost",
+  "buildId": "unchanged8signedPBOs;test_local_missions_only",
   "verificationStatus": {
-    "diagnosis": "two_process_method_comparison_complete",
-    "candidate": "global_gate_failed_not_promoted",
+    "diagnosis": "two_revisions_two_processes_each",
+    "candidate": "both_gates_failed_not_promoted",
     "functional8or64": "not_tested",
     "visualQuality": "not_measured",
     "wholeFramePerformance": "not_measured",
     "externalAI": "not_retested",
-    "finalAcceptance": false,
-    "documentationReview": "historical_tool_results_reconciled_no_new_experiment"
+    "finalAcceptance": false
   },
   "metrics": {
-    "newRuns": 0,
+    "newRuns": 2,
     "latestFunctional": {
       "sourceRunId": "network-gameplay/entry-facing-sixtyfour-on1",
       "independentRuns": 1,
@@ -49,43 +48,25 @@
     "docSizes": {
       "README.md": {
         "beforeBytes": 18685,
-        "afterBytes": 4074,
+        "afterBytes": 4087,
         "beforeLines": 335,
         "afterLines": 35
       },
       "AI_REVIEW.md": {
         "beforeBytes": 72991,
-        "afterBytes": 5795,
+        "afterBytes": 5917,
         "beforeLines": 668,
         "afterLines": 47
       }
     },
     "currentPhysicsCandidate": {
-      "sourceRunId": "network-gameplay/terrain-method-cost",
-      "measuredMethodCalls": 128000,
-      "independentProcesses": 2,
+      "sourceRunId": "network-gameplay/terrain-scope-and-inline-cost",
+      "reportedProcesses": 4,
+      "revisions": 2,
+      "processesPerRevision": 2,
+      "measuredMethodCalls": 512000,
       "methodFollowupGatePassed": false,
-      "wholeCPUOrPresentMeasured": false,
-      "conditionChangesPercent": [
-        {
-          "run": "terrain-method-cost1b",
-          "values": {
-            "terrain": -54.827071292039314,
-            "roof": 36.85318237439774,
-            "edge": 38.26400803552137,
-            "lift_reject": -58.8432510911057
-          }
-        },
-        {
-          "run": "terrain-method-cost2b",
-          "values": {
-            "terrain": -59.631352269438885,
-            "roof": 21.144051003923494,
-            "edge": 27.665450909011625,
-            "lift_reject": -60.144963280849254
-          }
-        }
-      ]
+      "wholeCPUOrPresentMeasured": false
     },
     "nativeAnalysisReview": {
       "sourceRunId": "operations/native-analysis-barriers-review-20261103",
@@ -96,39 +77,21 @@
     }
   },
   "blockers": [
-    "Ineligible overhead exceeds predeclared3% cap",
-    "No8/64 or wholeCPU/Present benefit measured",
-    "Steep slopes/terrain holes/dynamic safety still unverified"
+    "Ineligible3%cap exceeded; no automatic predicate microtuning continuation",
+    "WholeCPU/Present benefit unmeasured",
+    "Exact overlap coverage of full ray domain not verified",
+    "Unregistered blocker overhead remains possible"
   ],
   "evidenceReferences": [
     {
-      "path": "reports/operations/npc-native-analysis-barriers-20261103.md",
-      "sha256": "75a616f425cd1e7422043b8704d6e5ea4ea4d62c576d99d008b771a2173cadf3"
+      "path": "reports/operations/npc-terrain-scope-cost-20261103.md",
+      "sha256": "f97ae54ca799e24785fbb0225fdf2e59ec8d136055656f19caaa89f267e3cabe"
     },
     {
-      "path": "api/public/npc-native-analysis-barriers.json",
-      "sha256": "f64cf61eaaaac933639ad7d9f25306a160eaeab023dfc3071451e31c3e82883c"
-    },
-    {
-      "path": "reports/operations/npc-terrain-method-cost-20261103.md",
-      "sha256": "a84d2f20272c6c7819748e55d4450e22c45b084acf9f0f3e300e4022fc63dbd4"
-    },
-    {
-      "path": "api/public/npc-terrain-method-cost.json",
-      "sha256": "5652957922bac61a15427326cbe9de1998cc0f449f19ce24b633d4603c6b17be"
+      "path": "api/public/npc-terrain-scope-cost.json",
+      "sha256": "ffaa7f95745d3065730f30684215c4bb175f335cd8139a37a11e16a97fcc411e"
     }
   ],
   "goalComplete": false,
-  "pendingOptimizationWork": [
-    {
-      "sourceRunId": "network-gameplay/terrain-scope-method-cost1",
-      "executionClosed": true,
-      "resultsAnalyzedInThisUpdate": false
-    },
-    {
-      "sourceRunId": "network-gameplay/terrain-scope-method-cost2",
-      "executionClosed": true,
-      "resultsAnalyzedInThisUpdate": false
-    }
-  ]
+  "pendingOptimizationWork": []
 }
