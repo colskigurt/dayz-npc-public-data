@@ -1,0 +1,57 @@
+Selected local API shadow findings only; prior invalid classifiers retained locally. No frame cost inference.
+{
+  "schemaVersion": "1.0.0",
+  "sourceRunId": "network-gameplay/terrain-support-contract1d",
+  "validShadowExecution": true,
+  "rows": 130,
+  "eligibleRows": 110,
+  "falseClearDefinition": "eligible && same_segment_nonterrain_only_ray_found",
+  "eligibleGroups": [
+    0,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "falseClearRows": 0,
+  "classificationMismatchRows": 0,
+  "heightErrorOver1mmRows": 0,
+  "maximumEligibleHeightErrorMeters": 3.05176e-05,
+  "negativeControlObjectHitRows": 15,
+  "negativeControlBlocked": true,
+  "localContractPassed": true,
+  "decision": "eligible_for_bounded_cost_comparison_only",
+  "newGameplayPbo": false,
+  "gameplayRegressionTested": false,
+  "visualAccepted": false,
+  "performanceMeasured": false,
+  "performanceAccepted": false,
+  "normalExitVerified": false,
+  "forcedOwnedStop": true,
+  "sourceEvidence": [
+    {
+      "file": "terrain - support - contract.tsv",
+      "sha256": "5be60aee1e00c1c3fde5c971532ed656233ccb2b72118e19b5ad5c32b1cfc846"
+    },
+    {
+      "file": "init.c",
+      "sha256": "16ee549ede5d5aed558b1e5e443e272f203e652145c4255c896e2294320d4a25",
+      "planHashUsesNormalizedLF": true
+    }
+  ],
+  "failureSamples": [],
+  "limits": [
+    "One local API shadow execution, not a global terrain equivalence proof.",
+    "No dynamic vehicle/door, steep slope or all-map coverage.",
+    "Only existing reference ray decisions are authoritative in this probe.",
+    "1mm is a predeclared screening ceiling, not a gameplay acceptance tolerance.",
+    "Physics creation/retirement completed does not certify normal process quit."
+  ],
+  "goalComplete": false
+}

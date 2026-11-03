@@ -1,3 +1,5 @@
+> 최신 작업: 평지 지지 후보 API 단일 진단130행, 적격110행·높이 최대0.031mm·비지형 누락0. 비용 개선 미측정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-terrain-support-contract-20261103.md).
+
 > 최신 운영 판단: 64개체 CPU 최적화 우선 복귀. 8파트 단순 통합은 기존 분할·표시 실패 근거로 구현 보류. 새 성능 측정 없음. [판단서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-host-reduction-decision-20261103.md).
 
 > 최신 작업: 방향 유지 후보8/8 통과·64는53/64 실패. 낙하82/82 복귀, 고정14명 정렬 전환 표본156→0. 갱신당 지지 비용은 비슷하며 시각·성능 미입증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-entry-facing-regression-20261103.md).
