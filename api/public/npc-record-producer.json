@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T09:23:29.086312+09:00",
+  "sourceRunId": "network-gameplay/creature-parent-producer1",
+  "buildId": "A500BE80+existing9PBOs_unchanged",
+  "verificationStatus": {
+    "diagnosis": "16byte_producer_and_received_bytes_match",
+    "cause": "shared_codec_dispatch_contract_unresolved",
+    "functionalRegression": "not_run",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "logicalNpcs": 1,
+    "nativeParts": 8,
+    "diagnosticRuntimeTrials": 1,
+    "serverQueuedSamples": 16,
+    "server16ByteSamples": 8,
+    "server3ByteSamples": 8,
+    "clientParentSamples": 16,
+    "clientBadSamples": 8,
+    "exact16BytePayloadMatches": 8,
+    "unique16BytePayloads": 1,
+    "payloadSha256": "053e741e48ca5e1f03c7d9ceb9d07036d5434ac7fc7073abb3257b351b70dea4",
+    "fullStateWriterCallsInObservedEmitter": 0,
+    "completedStaticFunctions": 3,
+    "staticFunctionsFailed": 0,
+    "staticInitializationWallSeconds": 1019.932,
+    "independentPerformanceRepeats": 0,
+    "frameTimeP50P95P99": null
+  },
+  "blockers": [
+    "No network entity-ID/time pairing beyond same-run full byte equality",
+    "Why shared dispatch creates incompatible16byte record unresolved",
+    "Codec dispatcher/header eligibility analysis is newly running, no result claimed",
+    "No new8/64 functionality, visual quality, or frame performance result"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-record-producer-20261103.md",
+      "sha256": "843a885802e6fb235fbb60395f754bfbb81cbbc2acd0f73443b600ac3a1a6e45"
+    },
+    {
+      "path": "evidence/npc-record-producer-20261103.txt",
+      "sha256": "1c05da72dd3c698567214412256cf41b6bb16b584077d6b4cd3db90c7d48e42d"
+    }
+  ],
+  "next": "Use completed emitter/queue evidence and selected shared-codec/header decompile to locate first encoding/decoding divergence. Preserve normal physics and avoid forced parent IDs, packet dropping, or unproven global initialization changes.",
+  "goalComplete": false
+}

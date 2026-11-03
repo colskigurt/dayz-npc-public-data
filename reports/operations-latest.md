@@ -1,55 +1,43 @@
 ## 1. 작업 목표
 
-해결되지 않은 부모 입력에서 실제 선언된 레코드 길이를 확인하고 정상→비정상 전환의 범위 초과 여부를 구분한다. 부모 ID를 강제로 바꾸기 전에 실제 실패 단계와 수정 가능 범위를 판단한다. 기존 물리 비용 후보와 정상 밀침·낙하·착지·FOLLOW·재등반은 보존한다.
+문제의16바이트 입력을 실제로 만드는 서버 호출과 클라이언트 수신 바이트를 연결한다. 생성·해석 계약과 전송 중 변화를 구분한 뒤 수정 가능 범위를 판단한다.
 
 ## 2. 실제 수행
 
-이전 attach 경쟁을 피하기 위해 공식 REA의 paused spawn→read-only script load/ready 확인→resume 순서를 사용했다. 기존 공식 stdio 운용 코드를 재사용했으며 provider 설치·등록·보안 설정은 바꾸지 않았다. client 초기 입력 전에 관측기 연결을 확인했고 같은 reader 호출의 entry/parentStart/parentEnd declared byte length·bit capacity·cursor와 setter 인자를 수집했다. 바이트 가드3곳을 통과했고 게임 필드에는 쓰지 않았다.
+기존1논리개체8파트 격리 하네스를 재사용했다. 서버 c6a1e0을 thread 단위로 추적해 내부 c10120의 mode4/5,full writer c0b130 호출수,a7e200 큐의 길이·전체 바이트·caller를 같은 호출 안에서 수집했다. 클라이언트는 paused spawn→observer load→resume로 초기 입력 전에 연결하고 선언된 레코드 전체를 최대128바이트까지 읽었다. 게임 필드에는 쓰지 않았으며 후킹 실행을 성능 비교에 쓰지 않는다.
 
-1논리개체/8파트 하네스와 기존9개 PBO를 사용했다. 전체16표본 수집 후 REA close session·serverexit0·source hash 불변을 확인했다. 원시메모리14byte창과 별도로 선언된 범위를 기록했으므로 mapped memory가 읽힌다는 사실을 유효한 레코드 범위와 혼동하지 않았다. 진단 퇴역 뒤 실제 DayZ 프로세스 부재를 확인한 후 저장했다.
-
-준비 단계에서는 포트 숫자의 단순 치환이 런처 안의 PBO 해시 일부를 바꿔 서버 검증이 거부됐다. 실제 PBO들은 변경되지 않았다. 거부된 런처를 별도 보존하고 해시 상수만 원래 값으로 복구했으며, 소스의 전체64자리 해시 상수를 대조한 뒤 실행했다. 이때는 프로필/게임 프로세스 생성 전이므로 별도 게임 실패로 세지 않는다.
+기존3함수 REA 분석은 약17분 뒤3/3 결과·정상 close/server exit0을 반환했고 원본A500 해시 불변을 확인했다. 같은 초기화를 중복 재시작하지 않았다. 큐 함수는 length+4 이상을 할당해 length를 저장하고 해당 길이만 memcpy한 뒤 포인터 배열에 넣는다. 이 정적 흐름을 실제 malloc 횟수/CPU self-time/GC 측정으로 취급하지 않는다.
 
 ## 3. 측정 결과
 
-|대상|정상 입력8건|비정상 입력8건|
-|---|---:|---:|
-|declared record bytes|111|16|
-|declared bit capacity|888|128|
-|부모 필드 시작 bit|657|47|
-|부모 필드 종료 bit|659|146|
-|부모 필드 소비 bit|2|99|
-|선언 범위 초과 bit|0|18|
-|부모 ID|0|동일 비정상ID|
+서버8 receiver에서16바이트 레코드8건과 뒤이은3바이트 zero 레코드8건을 관찰했다. 모두 caller c6a487,실제 부모 없음,c10120 mode4=1/mode5=1이며 같은 emitter 안에서 full writer c0b130 호출은0이었다.16바이트는8건 모두 같은 내용이고,클라이언트의 비정상 부모 입력8건에서 받은 유효16바이트 전체와8/8 일치했다.
 
-비정상 부모 ID64bit는 update/presence2bit 뒤 bit49..112에서 읽혔다. ID 읽기 종료113은128 범위 안이다. pivot은bit113..144에서읽어17bit가범위를넘고, bool은bit145에서읽어누적18bit가범위를넘는다. 따라서 잘못된 ID 자체가 범위 밖 쓰레기 읽기 때문에 생겼다는 설명은 이 표본과 맞지 않는다. 그 뒤의 pivot/bool에서는 선언된 논리 레코드 범위 초과를 실제로 관찰했다.
+payload SHA256=053e741e48ca5e1f03c7d9ceb9d07036d5434ac7fc7073abb3257b351b70dea4. raw는로컬에보존한다. 내용이같으므로8개의network entity ID/time을각각일대일매칭한증거는아니다. 이표본에서생성후바이트변화는관찰하지못했지만transport전체의무결성을일반화하지않는다.
 
-8개 같은 receiver의 첫 정상 입력과 다음 비정상 입력을 연결했고 raw bits와 인자16/16 일치, read errors0,truncation false다. 이전 별도 초기 writer111byte와 정상 수신111byte의 크기는 일치하지만 같은 packet/entity/time을 대응한 증거는 아직 아니다. 실제 할당 메모리 경계 초과·크래시 원인·CPU 비용으로 확대 해석하지 않는다. 새8/64 기능 결과·시각 품질·Present/CPU/GPU p50/p95/p99·GC 수치는 없다.20ms p95는 목표다.
+기존 declared16byte/128bit 대비146bit 종료·18bit 초과와ID가먼저범위내에서잘못읽힌관측을유지한다. 이번은producer연결이며codec원인확정이아니다. 초기111byte full-state writer와16byte emitter를같은경로라고설명하지않는다. 새8/64기능·시각·Present/CPU/GPU p50/p95/p99·할당/GC 수치는없다.20ms p95는목표다.
 
 ## 4. 원인 분석
 
-확인: 이전 미확인 길이를 확보해 비정상 레코드의 선언 범위 초과를 입증했다. 하지만 인과 순서는 부모 필드의 잘못된 해석이 먼저이고 pivot/bool 범위 초과가 뒤따른다. setter 이후 변조나 최초 생성부터 잘못된 부모라는 단순 설명은 기존/현재 표본과 맞지 않는다.
+확인: server native creature update→shared dispatch→queue에서16byte가생성되고,그전체바이트가client의비정상ID/후속범위초과입력과일치한다. 수신후임의값변조만으로설명하지않는다. full-state writer c0b130은문제의짧은레코드생성중호출되지않았다.
 
-미확인/가설:16byte 레코드를 생성하는 쪽의 상태/형식 문제인지, 수신 커서가 앞선 필드를 잘못 해석했는지, 자산/명령 계약이 맞지 않는지 구분되지 않았다. 모델·물리 초기화 옵션을 추측으로 바꾸지 않는다. 직접 검사를 생략하거나 부모 ID0을 강제하면 앞선 입력 불일치가 숨겨질 수 있다.
+정적확인: c0b130에는guard c0bc40과header c0e7f0 뒤고정pose필드를쓰는경로가있다. creature emitter c6a1e0은mode0x101 context를만들고c10120뒤실제cursor로길이를계산해큐에전달한다. 큐단독이임의로16byte로축소했다는증거는없다. 생성계약이옳다고확정한것도아니다.
 
-정적 조사에서는 native input 기록을 큐에 넣는 a7e200과 개체 경로의 직접 caller c6a482,그 상위 c6a1e0에서 c10120을 사용해 기록을 만드는 연결을 확인했다. c0b130 writer의 E8 caller도 좁혔고 기존 c69bb0의 tail jump는 별도다. 이것은 정적 도달 관계이며 실제16byte producer로 확정하지 않는다. encoder c0b130/emitter c6a1e0/queue a7e200의 기존 REA batch 운용을 재사용한 분석을 시작했고, 실행 중 자료는 이번 완료 증거에 섞지 않는다.
+미확인: 같은dispatcher가쓰기mode1/읽기mode0에서선택하는분기·delegate,짧은레코드와기대reader형식이맞지않는이유,공식mod API의생성/명령계약으로고칠수있는지아직모른다. engine내부수정이필수라고결론내리지않는다. 새질문에해당하는c10120/c0e7f0/c0bc40 분석을시작했다. provider는close시ephemeral DB를삭제하므로재초기화가필요하지만완료된3함수는다시요청하지않았다.
 
 ## 5. 검증 수준
 
-declared16byte 레코드의18bit 초과와 ID가 범위 내에서 잘못 해석됨: 단일 실행 제한 진단 성공. 원인 확정·모드 수정·8/64 회귀·14클립 시각 품질·성능 반복 검증·최종 수용은 미완료다. 같은 raw자료의독립해석을새실행으로세지않는다.
+16byte producer실행·같은run전체바이트일치:제한진단성공. 완료3함수decompile:진단성공. ID/time포함end-to-end대응·원인확정·수정·8/64회귀·시각·성능반복·최종수용은미완료다. 후킹실행과과거unhooked성능을직접비교하지않는다.
 
 ## 6. 변경 사항
 
-격리 미션/런처/observer/공식stdio진단운용/JSON분석/보고서만 추가했다. 게임 코드·원본 바이너리·기존9PBO·자산·Steam·운영 서버는 변경하지 않았다. 새PBO가없어신규서명대상없음. 기존9PBO의해시·서명검증은이번실행전통과했다. 실제게임은진단완료뒤functional=false·stage0로퇴역했고서버소유정리exit-1을정상게임종료로보고하지않는다.
-
-기존 런처의 observer-armed.json은 확장자와 달리 평문 marker여서 보고서 준비 검증이 이를 거부했다. 원본을 바꾸지 않고 별도 유효 JSON에 내용·길이·해시를 기록해 연결했다. 이를 관측 결과 JSON으로 취급하지 않는다.
+격리미션·런처·observer·분석JSON·보고서만추가했다. 포트치환은64자리해시문자열을제외하고실행전상수불변을검사했다. 원본binary·게임코드·9PBO·자산·Steam·운영서버는변경하지않았다. 새PBO/신규서명대상없음. 기존9PBO해시·서명검증은실행전통과했다. 진단후functional=false퇴역으로종료했으며소유프로세스정리를정상게임종료로보고하지않는다.
 
 ## 7. 원시 증거
 
-실행 ID network-gameplay/creature-parent-prearmed1. REA runtime 증거 ev_ca7dd9ab2bcd5b64ff5cd5ff06d7654de2f099d664f6c1318ffe7c11949b5c98. paused spawn/load/resume/status4/close와source hash·16표본·독립 bounds 해석·런처/서명·준비거부/복구소스를저장전해시에연결한다. 공개는집계/상대위치/판정이며rawbuffer·주소·프로세스·로컬경로·게임자산·개인키는제외한다. 실행중 encoder 분석을 중단해 보고서를 쓰지 않았다.
+run ID network-gameplay/creature-parent-producer1. server ev_ca354571dad93ebd2311ca26b904635007c0b33d917c8af36bac23d734745cf1,client ev_8c78944da3807e999634a0899d1576d16f2aa2ae1847032625f5d396f4df3d7e. 완료static batch ev_269a72b0447764460393bacacc91b4bfec1ae7be3c979e074875eb7a6b306ccf. raw·비교·source/byte guard·spawn/load/resume/status/close·서명launch·전체decompile/close를해시에연결한다. 평문observer-armed.json은별도유효JSON에내용/해시를기록했다. 실행중codec batch증가파일은완료증거에포함하지않는다. 공개는집계·상대주소·판정만제공한다.
 
 ## 8. 잔여 문제
 
-다음 산출물은16byte producer와 decoder의 필드계약을 연결한 수정가능성 판정이다. 공식 모드 API로 생성 조건/명령계약을 바로잡을 수 있는지와 엔진 내부 수정이 필요한지 구분한다. 근거 없이 native reader를 patch하거나 record를 버려서 성공으로 처리하지 않는다. REA 분석의 실제 handle을 확인하며 같은 초기화를 중복 재시작하지 않는다. 비용 OFF/ON은 기존 조건부지지메서드효과와별도로후킹없는8→64전체프레임시험을진행해야하며실제ETW준비는여전히필요하다. 전체목표active.
+다음은공유codec의최초불일치를특정하고mod API로수정할국소후보·이점·기능위험·검증비용을제시하는것이다. ID0강제·레코드무시·world/support검사삭제·물리비활성화로성공을만들지않는다. ETW준비후비용OFF/ON은hook없는8→64로확인한다. 정상낙하·착지·FOLLOW·재등반을보존하고전체goal active를유지한다.
 
-로컬checkpointSHA256: 62d1861be0345cc12d73b425e00f058aaf2cb08e640b746c157a14b05f2148b2
+로컬checkpointSHA256: 0e0d7202de827e0d32eaa8e39aac855b0fa22a8e0b1ab0add78d4208b7727490
