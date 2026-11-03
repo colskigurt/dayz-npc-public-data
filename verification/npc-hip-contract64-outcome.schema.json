@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "sourceRunId",
+    "metrics",
+    "verificationStatus",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "network-gameplay/hip-contract-sixtyfour-on1"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "validTerminalAgents": {
+          "const": 49
+        },
+        "candidateUses": {
+          "const": 477
+        },
+        "frameTimeP50P95P99": {
+          "type": "null"
+        }
+      }
+    }
+  }
+}
