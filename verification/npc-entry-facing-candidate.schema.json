@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "sourceRunId",
+    "metrics",
+    "verificationStatus",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "sourceRunId": {
+      "const": "network-gameplay/entry-facing-candidate1"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "newRuntimeRuns": {
+          "const": 0
+        },
+        "frameTimeP50P95P99": {
+          "type": "null"
+        }
+      }
+    }
+  }
+}
