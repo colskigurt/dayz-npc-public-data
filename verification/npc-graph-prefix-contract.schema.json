@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "network-gameplay/creature-codec-prefix1"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "verificationStatus": {
+      "type": "object",
+      "required": [
+        "diagnosis",
+        "cause",
+        "functionalRegression",
+        "visualQuality",
+        "performance",
+        "finalAcceptance"
+      ],
+      "properties": {
+        "finalAcceptance": {
+          "const": false
+        },
+        "performance": {
+          "const": "not_measured"
+        },
+        "cause": {
+          "const": "first_divergent_graph_codec_instruction_not_yet_identified"
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "senderShortRecordSamples",
+        "receiverShortRecordSamples",
+        "samePayloadByteMatches",
+        "graphPrefix",
+        "frameTimeP50P95P99"
+      ],
+      "properties": {
+        "senderShortRecordSamples": {
+          "const": 8
+        },
+        "receiverShortRecordSamples": {
+          "const": 8
+        },
+        "samePayloadByteMatches": {
+          "const": 8
+        },
+        "frameTimeP50P95P99": {
+          "type": "null"
+        },
+        "graphPrefix": {
+          "type": "object",
+          "required": [
+            "serverBits",
+            "clientBits",
+            "endDifferenceBits"
+          ],
+          "properties": {
+            "serverBits": {
+              "const": 38
+            },
+            "clientBits": {
+              "const": 23
+            },
+            "endDifferenceBits": {
+              "const": 15
+            }
+          }
+        }
+      }
+    },
+    "evidenceReferences": {
+      "type": "array",
+      "minItems": 2
+    }
+  }
+}
