@@ -1,3 +1,5 @@
+> 최신 작업: 접근후보동결3자세OFF0→ON10step·0.303m.기존46guard동일·새20음성통과.라이브8/64·시각·성능미검증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-approach-frozen-controls-20261103.md).
+
 > 최신 작업: 접근복구!Active경계확인.회전속도조정제외.격리후보서명완료,엔진/효과/시각/성능미검증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-head-approach-candidate-20261103.md).
 
 > 최신 작업: 골반후보8/8기능통과·64명49/64실패.실사용7낙하모두복귀,전체81/81.미충족13FOLLOW·2종료직전SETTLE구분.효능인과·시각·성능미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-hip-contract64-outcome-20261103.md).

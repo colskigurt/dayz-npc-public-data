@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T17:01:25.419295+09:00",
+  "sourceRunId": "network-gameplay/approach-archive-controls4",
+  "buildId": "CDF816437AF1B57FF5095FB054E43D02942C8D3B3C58F3EA560B8672CD8637E9",
+  "verificationStatus": {
+    "diagnosis": "frozen_added_safe_progress",
+    "engineCompile": "passed",
+    "functionalRegression": "not_executed_live8or64",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "independentValidBatches": 1,
+    "frozenPoses": 3,
+    "offAcceptedStepsPerPose": 0,
+    "onAcceptedStepsPerPose": 10,
+    "onTravelPerPoseMetres": 0.302737,
+    "newNegativeGuardCalls": 20,
+    "newNegativeGuardCases": 10,
+    "priorIdenticalGuardCalls": 46,
+    "frameTimeP50P95P99": null
+  },
+  "comparisons": [
+    {
+      "sample": 0,
+      "offAccepted": 0,
+      "onAccepted": 10,
+      "offTravel": 0.0,
+      "onTravel": 0.302737,
+      "onFullSolve": true,
+      "onPoseUses": 11,
+      "onApproachUses": 11,
+      "onFixedCoreEndContacts": 0,
+      "onUnknownOverlapContacts": 0
+    },
+    {
+      "sample": 1,
+      "offAccepted": 0,
+      "onAccepted": 10,
+      "offTravel": 0.0,
+      "onTravel": 0.302737,
+      "onFullSolve": true,
+      "onPoseUses": 11,
+      "onApproachUses": 11,
+      "onFixedCoreEndContacts": 0,
+      "onUnknownOverlapContacts": 0
+    },
+    {
+      "sample": 2,
+      "offAccepted": 0,
+      "onAccepted": 10,
+      "offTravel": 0.0,
+      "onTravel": 0.302737,
+      "onFullSolve": true,
+      "onPoseUses": 11,
+      "onApproachUses": 11,
+      "onFixedCoreEndContacts": 0,
+      "onUnknownOverlapContacts": 0
+    }
+  ],
+  "blockers": [
+    "Archived actor24 frozen poses and synthetic selected route; not independent3gameplayruns",
+    "No live target/pose changes or crowd-pressure recovery tested",
+    "Combat/death exclusion inspected in source but not instantiated in additional10negativecases",
+    "Actual secondary profile flag read not tested: PARead/PAEnabled manually set for causal OFF/ON",
+    "No CPU/GPU/present/display-frame measurements"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-approach-frozen-controls-20261103.md",
+      "sha256": "12c7ef40d4eec9103edc107fd827281b199488b61fea84d8829932f425010485"
+    },
+    {
+      "path": "evidence/npc-approach-frozen-controls-20261103.txt",
+      "sha256": "2889c6c66ab2bfa99f12e4099bfd90cdeddda23bfac13b8e651f4cc987ba2425"
+    }
+  ],
+  "next": "Proceed original8 runtime with same11module stack except substitute candidate and secondary flag; if contracts fail stop before64. No physical bypass or longer deadline.",
+  "goalComplete": false
+}
