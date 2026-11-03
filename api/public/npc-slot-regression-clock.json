@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T10:54:04.015773+09:00",
+  "sourceRunId": "network-gameplay/slot-bounds-functional-8-64-bundle1",
+  "buildId": "8638218523E0A568A75FCDCC7C21033F6D733DCD4D51D259639E87042839FD84",
+  "verificationStatus": {
+    "diagnosis": "network_warning_stream_reduced_and_command_time_divergence_observed",
+    "functionalRegression": "eight_passed_sixtyfour_failed",
+    "visualQuality": "not_measured",
+    "performance": "not_measured_in_present_cpu_gpu_domain",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "cases": [
+      {
+        "sourceRunId": "network-gameplay/slot-bounds-functional-eight1",
+        "logicalNpcs": 8,
+        "nativeParts": 64,
+        "independentRuns": 1,
+        "functionalGatePassed": true,
+        "validTerminalAgents": 8,
+        "allMilestoneAgents": 8,
+        "fallStarts": 10,
+        "landFollowCycles": 10,
+        "transitions": 152,
+        "phaseChainErrors": 0,
+        "recoveryGenerationErrors": 0,
+        "terminalAlignmentErrors": 0,
+        "serverMissionDtMilliseconds": {
+          "p50": 16.0,
+          "p95": 31.0,
+          "p99": 32.0
+        },
+        "commandOverMission": 0.9998081800321487,
+        "meanSecondsPerCommandCallback": 0.04999933904966059,
+        "clientOutsideLandscapeWarnings": 1,
+        "newCrashDumps": 0,
+        "signatureChecksPassed": 10,
+        "actualPresentCpuGpuMeasured": false,
+        "visualAccepted": false,
+        "performanceAccepted": false
+      },
+      {
+        "sourceRunId": "network-gameplay/slot-bounds-functional-sixtyfour1",
+        "logicalNpcs": 64,
+        "nativeParts": 512,
+        "independentRuns": 1,
+        "functionalGatePassed": false,
+        "validTerminalAgents": 40,
+        "allMilestoneAgents": 41,
+        "fallStarts": 76,
+        "landFollowCycles": 75,
+        "transitions": 1068,
+        "phaseChainErrors": 0,
+        "recoveryGenerationErrors": 0,
+        "terminalAlignmentErrors": 0,
+        "serverMissionDtMilliseconds": {
+          "p50": 73.0,
+          "p95": 116.0,
+          "p99": 141.92000000000007
+        },
+        "commandOverMission": 0.6431842970093798,
+        "meanSecondsPerCommandCallback": 0.05000297470113984,
+        "clientOutsideLandscapeWarnings": 1,
+        "newCrashDumps": 0,
+        "signatureChecksPassed": 10,
+        "actualPresentCpuGpuMeasured": false,
+        "visualAccepted": false,
+        "performanceAccepted": false
+      }
+    ],
+    "independentRunsPerCount": 1,
+    "independentPerformanceRepeats": 0,
+    "frameTimeP50P95P99": null,
+    "serverMissionTimingDomain": "Mission OnUpdate only; not client Present, CPU busy, GPU or native graph clock",
+    "commandTimingDomain": "DGNativeCommand Age from PreAnimUpdate pDt; not rendered animation clock",
+    "sixtyfourOutcomeCounts": {
+      "VALID_TERMINAL": 40,
+      "UNRESOLVED_STATE": 1,
+      "INCOMPLETE_MILESTONES": 23
+    },
+    "sixtyfourTerminalPhaseCounts": {
+      "FOLLOW": 62,
+      "LAND": 1,
+      "MOTION": 1
+    },
+    "cleanValidTerminalAgents": 39,
+    "flaggedAgents": 25,
+    "flaggedAgentsWithLast20sAcceptedSteps": 25,
+    "flaggedAgentsWithLast20sTravelAbove10cm": 25,
+    "missingMilestoneCounts": {
+      "LOW_COMPLETED": 0,
+      "HIGH_COMPLETED": 7,
+      "DESCENT_RECOVERED": 7,
+      "RECLIMB_COMPLETED": 23
+    }
+  },
+  "blockers": [
+    "64NPC fixture did not meet terminal/milestone contract",
+    "Causal contribution of slower command clock versus geometry/contact/timer predicates not separated",
+    "Actual Present/CPU/GPU capture is unavailable pending the previously requested administrator worker",
+    "No new visible quality or full14clip acceptance"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-slot-regression-clock-20261103.md",
+      "sha256": "f5478ad21993995b531bb733a74154c17df348710303abea04054ff224bf6636"
+    },
+    {
+      "path": "evidence/npc-slot-regression-clock-20261103.txt",
+      "sha256": "fdad8137eb79d5e8f39758fe01d2f95dcbd553771ff0b1cf2d5793300bbbbd29"
+    }
+  ],
+  "signatureVerified": true,
+  "next": "Preserve the failed64run. Reuse the already tested guarded support-context candidate as a single-factor control after8NPC safety, keeping graph fix constant; collect functional, server timing and command timing separately. Do not change timeout/milestone criteria or add arbitrary dt compensation. Add narrowly bounded alignment fields only if existing evidence cannot decide the next change.",
+  "goalComplete": false
+}
