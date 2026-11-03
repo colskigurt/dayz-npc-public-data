@@ -1,3 +1,5 @@
+> 최신 작업: 골반 검사 반경 한 요소 비교:12포즈 모두 첫 이동,착지+전체포즈는1/12.기존24결과 재현·네 벽면 거부.미션 진단만,미채택·성능/시각미측정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-hip-contract-diagnosis-20261103.md).
+
 > 최신 작업: 근지면 후보64명52/64 실패.실제사용7낙하 중6복귀·1장기차단.63명 현재FOLLOW와 이력 실패를 구분.복수접촉 악화 확인으로 최저깊이/역스윕 보정 기각,제한탐색 경로 미확보. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-near-ground-fall64-contact-20261103.md).
 
 > 최신 작업: 근지면 FALL 포즈 복구: frozen3cm 후 원래 착지 통과·12위임가드·4벽 거부. 새PBO 서명검증 성공.8명 8/8,실제후보사용0회.64/성능/시각 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-near-ground-fall-20261103.md).

@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T13:07:23.716686+09:00",
+  "sourceRunId": "network-gameplay/slot20-hip-contract-comparison1",
+  "buildId": "existing-signed-V1-1A1928F1-plus-isolated-mission-hip-contract",
+  "verificationStatus": {
+    "diagnosis": "duplicate_hip_radius_partial_contribution",
+    "functionalRegression": "not_run_new_candidate",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "independentRuntimeRuns": 1,
+    "logicalNpcs": 1,
+    "frozenPoseSamples": 12,
+    "originalControlMatches": 24,
+    "results": {
+      "fixed_core": {
+        "poses": 12,
+        "initialFourJointPosePass": 12,
+        "initialLandingPass": 0,
+        "posesWithAcceptedMotorStep": 6,
+        "landingAndFullPosePass": 0,
+        "acceptedMotorSteps": 6,
+        "maximumTravelMeters": 0.0300402,
+        "directStepAllowed": 8,
+        "nativeWallHits": 4,
+        "wallRejections": 4,
+        "wallHipCandidateCalls": 0
+      },
+      "pose_core_v1": {
+        "poses": 12,
+        "initialFourJointPosePass": 12,
+        "initialLandingPass": 0,
+        "posesWithAcceptedMotorStep": 0,
+        "landingAndFullPosePass": 0,
+        "acceptedMotorSteps": 0,
+        "maximumTravelMeters": 0.0,
+        "directStepAllowed": 12,
+        "nativeWallHits": 4,
+        "wallRejections": 4,
+        "wallHipCandidateCalls": 0
+      },
+      "pose_core_hip_contract": {
+        "poses": 12,
+        "initialFourJointPosePass": 12,
+        "initialLandingPass": 0,
+        "posesWithAcceptedMotorStep": 12,
+        "landingAndFullPosePass": 1,
+        "acceptedMotorSteps": 23,
+        "maximumTravelMeters": 0.242188,
+        "directStepAllowed": 48,
+        "nativeWallHits": 4,
+        "wallRejections": 4,
+        "wallHipCandidateCalls": 4
+      }
+    },
+    "frameTimeP50P95P99": null
+  },
+  "blockers": [
+    "Only1/12 frozen samples reached both original landing and full-pose predicates",
+    "Four native wall controls passed but do not establish general safety",
+    "No dynamic fall, pose switching, peer contact or8/64 functional efficacy shown",
+    "Visible smoothness and performance not measured in this diagnostic"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-hip-contract-diagnosis-20261103.md",
+      "sha256": "77b2e5b765a529a9309b8f7c830ea613abdea2a7910d43100c477a10a01c34d8"
+    },
+    {
+      "path": "evidence/npc-hip-contract-diagnosis-20261103.txt",
+      "sha256": "96fcf7569fc6e2a5ed98b128ea79f8798d81fb576213f1ce6b5c5010203c5cde"
+    }
+  ],
+  "newPbo": false,
+  "signatureVerified": true,
+  "next": "Preserve V1 and do not promote this mission prototype. Inspect remaining post-step native-contact rejections and whether recorded pose changes provide a complete guarded route before a signed alternative and8-to64 trial.",
+  "goalComplete": false
+}
