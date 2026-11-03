@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T17:53:02.827989+09:00",
+  "sourceRunId": "network-gameplay/entry-facing-controls3",
+  "buildId": "51FA02BE0B1ECD97659884F10C9F1922D811E8189E2925C81F8B4CA0EB85C184",
+  "verificationStatus": {
+    "diagnosis": "limited_physics_scope_pass",
+    "engineCompile": "passed",
+    "functionalRegression": "not_executed_live8or64_candidate",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "independentValidBatches": 1,
+    "physicsCalls": 22,
+    "scopeCalls": 36,
+    "priorUnchangedGuardRows": 66,
+    "backwardCorrectionMetres": 0.0195313,
+    "sideCorrectionMetres": 0.0200195,
+    "suppliedPlanarMetres": 0.02,
+    "worldFloatComparisonMarginMetres": 0.001,
+    "prior64Valid": 46,
+    "frameTimeP50P95P99": null
+  },
+  "blockers": [
+    "Direct MoveTo with manually supplied native planar delta; not live source animation sequence",
+    "Walk scope uses capture-only DriveGround subclass; live complete motor not tested",
+    "World wall case begins with native pose already blocked: retained wall rejection shown, not a fresh collision full-body case",
+    "Horizontal travel tolerance0.001m only accounts for world-space float quantization; no physical threshold change",
+    "Three startup batches: first parser failure, second incomplete scope/ledge evidence, third valid; not3independent successful trials"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-entry-facing-physics-20261103.md",
+      "sha256": "dffdc5eb2c27c02f5d2b17aa7d6dd38fc0edf5d1f0e33fd68e28c3661cc9736a"
+    },
+    {
+      "path": "evidence/npc-entry-facing-physics-20261103.txt",
+      "sha256": "5cb3a9eebff6d0eab120cc5a6df0001175b5a7965e53e4a80b6abedd3c021c44"
+    }
+  ],
+  "next": "Run original8 regression with entry-facing.flag ON in isolated profile; module remains defaultOFF. Stop before64 on contract failures. No visual or performance claim.",
+  "goalComplete": false
+}
