@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "network-gameplay/slot-support-eight-on1"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "verificationStatus": {
+      "type": "object",
+      "required": [
+        "functionalRegression",
+        "visualQuality",
+        "performance",
+        "finalAcceptance"
+      ],
+      "properties": {
+        "functionalRegression": {
+          "const": "eight_support_on_single_pass; sixtyfour_controls_in_progress"
+        },
+        "visualQuality": {
+          "const": "not_measured"
+        },
+        "performance": {
+          "const": "not_accepted"
+        },
+        "finalAcceptance": {
+          "const": false
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "validTerminalAgents",
+        "landFollowCycles",
+        "actualFastAgents",
+        "supportTotals",
+        "frameTimeP50P95P99"
+      ],
+      "properties": {
+        "validTerminalAgents": {
+          "const": 8
+        },
+        "landFollowCycles": {
+          "const": 12
+        },
+        "actualFastAgents": {
+          "const": 8
+        },
+        "frameTimeP50P95P99": {
+          "type": "null"
+        },
+        "supportTotals": {
+          "type": "object",
+          "required": [
+            "fastUsed",
+            "skippedRays"
+          ],
+          "properties": {
+            "fastUsed": {
+              "const": 127642
+            },
+            "skippedRays": {
+              "const": 510568
+            }
+          }
+        }
+      }
+    },
+    "evidenceReferences": {
+      "type": "array",
+      "minItems": 2
+    }
+  }
+}
