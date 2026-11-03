@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T13:17:46.426404+09:00",
+  "sourceRunId": "network-gameplay/near-ground-fall-hip-candidate1",
+  "buildId": "36F47FF9EB8AE1D93725BD52C2EB0AAAB4831B0A69D749AF313EA818F4918A2E",
+  "verificationStatus": {
+    "diagnosis": "sequential_pose_opportunity_demonstrated",
+    "package": "signed_compile_and_secondary_flag_controls_passed",
+    "functionalRegression": "new_candidate_not_yet_tested8_or64",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "logicalNpcs": 1,
+    "frozenPoseSamples": 12,
+    "prototypeRuns": 1,
+    "packagedOffRuns": 1,
+    "packagedOnRuns": 1,
+    "sequenceResults": {
+      "fixed_core": {
+        "ticks": 1830,
+        "acceptedSteps": 1,
+        "travelMeters": 0.0300402,
+        "landingAndFullPose": false,
+        "landingSample": -1,
+        "landingSourceSeconds": -1.0,
+        "hipCalls": 0,
+        "poseCalls": 0,
+        "sampleCount": 12,
+        "sampleBoundaryFourJointFailures": 0,
+        "lastReject": "DEEPER_FIXTURE"
+      },
+      "pose_core_v1": {
+        "ticks": 1830,
+        "acceptedSteps": 0,
+        "travelMeters": 0.0,
+        "landingAndFullPose": false,
+        "landingSample": -1,
+        "landingSourceSeconds": -1.0,
+        "hipCalls": 0,
+        "poseCalls": 610,
+        "sampleCount": 12,
+        "sampleBoundaryFourJointFailures": 0,
+        "lastReject": "NEW_WORLD_CONTACT"
+      },
+      "pose_core_hip_contract": {
+        "ticks": 1183,
+        "acceptedSteps": 8,
+        "travelMeters": 0.242188,
+        "landingAndFullPose": true,
+        "landingSample": 7,
+        "landingSourceSeconds": 247.704,
+        "hipCalls": 393,
+        "poseCalls": 393,
+        "sampleCount": 8,
+        "sampleBoundaryFourJointFailures": 0,
+        "lastReject": "NEW_WORLD_CONTACT"
+      }
+    },
+    "inactiveOrUnsupportedCasesPreserved": 14,
+    "packagedControls": [
+      {
+        "sourceRunId": "network-gameplay/slot20-hip-packaged-off2",
+        "secondaryRead": true,
+        "secondaryEnabled": false,
+        "hipUses": 0,
+        "poseUses": 610,
+        "acceptedSteps": 0,
+        "travelMeters": 0.0,
+        "landingAndFullPose": false,
+        "prototypeMetricsMatched": true,
+        "packedModuleCount": 8,
+        "signaturesVerified": 8,
+        "engineCompilePassed": true
+      },
+      {
+        "sourceRunId": "network-gameplay/slot20-hip-packaged-on2",
+        "secondaryRead": true,
+        "secondaryEnabled": true,
+        "hipUses": 393,
+        "poseUses": 393,
+        "acceptedSteps": 8,
+        "travelMeters": 0.242188,
+        "landingAndFullPose": true,
+        "prototypeMetricsMatched": true,
+        "packedModuleCount": 8,
+        "signaturesVerified": 8,
+        "engineCompilePassed": true
+      }
+    ],
+    "frameTimeP50P95P99": null
+  },
+  "blockers": [
+    "Piecewise constant recorded pose changes are not continuous swept animation or live gravity",
+    "No new candidate8/64 gameplay regression yet; prior V1 64NPC acceptance remains52/64 failed",
+    "Smaller extra hip sphere requires live contact safety validation",
+    "Visible quality, Present/CPU/GPU, allocation andGC unmeasured"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-hip-sequence-package-20261103.md",
+      "sha256": "2bbc5a9674d3bb4f8ad48c37d2d4b68073587108027046989162b117f6c4466a"
+    },
+    {
+      "path": "evidence/npc-hip-sequence-package-20261103.txt",
+      "sha256": "091a312e23c572536111dc978079b12f3788f126238a923272c5794ed6b50a4d"
+    }
+  ],
+  "signatureVerified": true,
+  "newPbo": true,
+  "next": "Use the isolated signed defaultOFF alternative, mutually exclusive with V1, for original8NPC then64NPC functional contracts; do not change history gate or timeouts. Keep visual and matched performance trials separate.",
+  "goalComplete": false
+}

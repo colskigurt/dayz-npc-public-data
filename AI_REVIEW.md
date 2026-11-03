@@ -1,3 +1,5 @@
+> 최신 작업: 순차 포즈 재현에서 기존2조건 착지 실패·골반계약 후보 착지 통과.비적격14조건 보존·서명 대체PBO 실제 OFF/ON 검증.새8/64·시각·성능 미검증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-hip-sequence-package-20261103.md).
+
 > 최신 작업: 골반 검사 반경 한 요소 비교:12포즈 모두 첫 이동,착지+전체포즈는1/12.기존24결과 재현·네 벽면 거부.미션 진단만,미채택·성능/시각미측정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-hip-contract-diagnosis-20261103.md).
 
 > 최신 작업: 근지면 후보64명52/64 실패.실제사용7낙하 중6복귀·1장기차단.63명 현재FOLLOW와 이력 실패를 구분.복수접촉 악화 확인으로 최저깊이/역스윕 보정 기각,제한탐색 경로 미확보. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-near-ground-fall64-contact-20261103.md).
