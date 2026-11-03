@@ -1,0 +1,47 @@
+Aggregate diagnostic only. No raw logs, game assets, credentials or process identifiers.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T17:21:23.400547+09:00",
+  "sourceRunId": "network-gameplay/approach-sixtyfour-on1",
+  "buildId": "CDF816437AF1B57FF5095FB054E43D02942C8D3B3C58F3EA560B8672CD8637E9",
+  "verificationStatus": {
+    "functionalEight": "passed",
+    "functional64": "failed",
+    "candidateLiveUse": "observed",
+    "causalEfficacy": "not_proven",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "independentEightRuns": 1,
+    "independent64Runs": 1,
+    "eightValid": 8,
+    "eightFallStarts": 10,
+    "eightLandFollowCycles": 10,
+    "eightCandidateUses": 14,
+    "valid64": 46,
+    "allMilestone64": 46,
+    "fallStarts64": 81,
+    "landFollowCycles64": 81,
+    "candidateUseAgents64": 6,
+    "candidateUses64": 110,
+    "incompleteOnlyReclimb": 14,
+    "incompleteHighAndLater": 4,
+    "incompleteFinalFollow": 17,
+    "incompleteFinalMotion": 1,
+    "phaseChainErrors64": 0,
+    "generationErrors64": 0,
+    "terminalAlignmentErrors64": 0,
+    "frameTimeP50P95P99": null
+  },
+  "blockers": [
+    "Original64gate failed46/64; do not promote",
+    "Single prior49vs46 runs are not paired causal regression",
+    "Route entry/re-alignment history remains incomplete; do not conflate with81recoveredfalls",
+    "Visual and actual performance not measured"
+  ],
+  "evidenceReferences": [],
+  "next": "Do not rerun64 for score. Use existing late re-entry/alignment records to determine one actionable correction or reject it before another runtime. Preserve legitimate falls and original deadline.",
+  "goalComplete": false
+}
