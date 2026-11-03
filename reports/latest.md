@@ -14,3 +14,7 @@
 - [현재 상태](../README.md) · [채택 기준](operations/npc-validation-policy-20261103.md)
 
 정상 밀침·낙하·복귀는 허용한다.20ms p95와 시각 품질은 미수용이다.
+
+## 분석 도구 진단 안내
+
+[바이너리·메모리 분석 진단](operations/npc-native-analysis-barriers-20261103.md)은 기존 기록 재검토다. 이 갱신으로 위 실험의 시각·반복 수·수치를 바꾸지 않았다. 지면 FOLLOW 제한 메서드2실행은 종료됐으며 결과 판정은 별도 작업이다.

@@ -16,9 +16,11 @@
 
 ## 지금 진행할 작업
 
-전역 지형 후보는 비적격 비용 증가로 미채택했습니다. 다음은 기존 지면 FOLLOW 상태에서만 인증 경로에 진입하는 별도 후보의 착수 명세입니다. 실제 Overlap·원래 검사 fallback을 유지하며, 군집 시험 전에 비용 기준부터 확인합니다. 등반 기능 복구 후보와 단순8→1호스트 통합은 보존·보류합니다.
+전역 지형 후보는 비적격 비용 증가로 미채택했습니다. 지면 FOLLOW 제한 후보의 별도 메서드 실행은 종료됐으며, 결과 판정이 다음 작업입니다. 실제 Overlap·원래 검사 fallback을 유지하며, 군집 시험 전에 비용 기준부터 확인합니다. 등반 기능 복구 후보와 단순8→1호스트 통합은 보존·보류합니다.
 
 ## 근거와 외부 검토
+
+[바이너리·메모리 분석 진단](reports/operations/npc-native-analysis-barriers-20261103.md) · [휴대폰 복사용 TXT](reports/operations/npc-native-analysis-barriers-20261103.txt) — 실제 성공/실패·남은 경계·가능한 우회 경로를 구분했습니다. 새 실험 결과는 아닙니다.
 
 - [최신 작업 기록](reports/operations-latest.md) · [간결한 AI 검토 안내](AI_REVIEW.md) · [현재 상태 JSON](api/public/current-status.json)
 - [고정 검증·채택 기준](reports/operations/npc-validation-policy-20261103.md) · [이번 외부 검토에 대한 답변](reports/operations/npc-external-review-response-20261103.md)

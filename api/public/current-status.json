@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-03T20:29:52.077229+09:00",
-  "sourceRunId": "network-gameplay/terrain-method-cost",
+  "generatedAt": "2026-11-03T21:07:39.386209+09:00",
+  "sourceRunId": "operations/native-analysis-barriers-review-20261103",
   "buildId": "unchanged8signedPBOs;test_local_mission_only",
   "verificationStatus": {
     "diagnosis": "two_process_method_comparison_complete",
@@ -10,10 +10,11 @@
     "visualQuality": "not_measured",
     "wholeFramePerformance": "not_measured",
     "externalAI": "not_retested",
-    "finalAcceptance": false
+    "finalAcceptance": false,
+    "documentationReview": "historical_tool_results_reconciled_no_new_experiment"
   },
   "metrics": {
-    "newRuns": 2,
+    "newRuns": 0,
     "latestFunctional": {
       "sourceRunId": "network-gameplay/entry-facing-sixtyfour-on1",
       "independentRuns": 1,
@@ -48,15 +49,15 @@
     "docSizes": {
       "README.md": {
         "beforeBytes": 18685,
-        "afterBytes": 3760,
+        "afterBytes": 4074,
         "beforeLines": 335,
-        "afterLines": 33
+        "afterLines": 35
       },
       "AI_REVIEW.md": {
         "beforeBytes": 72991,
-        "afterBytes": 4621,
+        "afterBytes": 5795,
         "beforeLines": 668,
-        "afterLines": 38
+        "afterLines": 47
       }
     },
     "currentPhysicsCandidate": {
@@ -85,6 +86,13 @@
           }
         }
       ]
+    },
+    "nativeAnalysisReview": {
+      "sourceRunId": "operations/native-analysis-barriers-review-20261103",
+      "ghidraLaterSuccess": true,
+      "fridaHistoricalCliSuccess": true,
+      "currentLiveAttachRetested": false,
+      "report": "reports/operations/npc-native-analysis-barriers-20261103.md"
     }
   },
   "blockers": [
@@ -94,6 +102,14 @@
   ],
   "evidenceReferences": [
     {
+      "path": "reports/operations/npc-native-analysis-barriers-20261103.md",
+      "sha256": "75a616f425cd1e7422043b8704d6e5ea4ea4d62c576d99d008b771a2173cadf3"
+    },
+    {
+      "path": "api/public/npc-native-analysis-barriers.json",
+      "sha256": "f64cf61eaaaac933639ad7d9f25306a160eaeab023dfc3071451e31c3e82883c"
+    },
+    {
       "path": "reports/operations/npc-terrain-method-cost-20261103.md",
       "sha256": "a84d2f20272c6c7819748e55d4450e22c45b084acf9f0f3e300e4022fc63dbd4"
     },
@@ -102,5 +118,17 @@
       "sha256": "5652957922bac61a15427326cbe9de1998cc0f449f19ce24b633d4603c6b17be"
     }
   ],
-  "goalComplete": false
+  "goalComplete": false,
+  "pendingOptimizationWork": [
+    {
+      "sourceRunId": "network-gameplay/terrain-scope-method-cost1",
+      "executionClosed": true,
+      "resultsAnalyzedInThisUpdate": false
+    },
+    {
+      "sourceRunId": "network-gameplay/terrain-scope-method-cost2",
+      "executionClosed": true,
+      "resultsAnalyzedInThisUpdate": false
+    }
+  ]
 }

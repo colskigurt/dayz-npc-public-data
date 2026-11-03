@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T21:07:39.386209+09:00",
+  "sourceRunId": "operations/native-analysis-barriers-review-20261103",
+  "buildId": "historicalA500BE80_and_c6709ece;no_new_build",
+  "verificationStatus": {
+    "recordReview": "historical_success_failure_reconciled",
+    "newRuntime": false,
+    "newBinaryAnalysis": false,
+    "newHook": false,
+    "externalAI": "not_retested",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "newRuns": 0,
+    "ghidra": {
+      "firstAttempt": {
+        "code": "provider_timeout",
+        "category": "timeout",
+        "startupDeadlineMs": 900000
+      },
+      "followup": {
+        "ok": true,
+        "exitCode": 0,
+        "provider": {
+          "id": "ghidra",
+          "name": "Ghidra",
+          "version": "12.1.4"
+        },
+        "procedure": "0x140a12460",
+        "elapsedMs": 1029653,
+        "startupDeadlineMs": 7200000,
+        "outputSha256": "038ae04576904d5ccba09a6775def0fb7f6e61ff993328d71d20c01fbccb1788",
+        "outputBytes": 16000,
+        "importMode": "ephemeral-source-immutable",
+        "targetBinarySha256": "a500be804ffed5cde369337aeb6ab477ef5ee0b5015764be2b1953c85ec3060d"
+      }
+    },
+    "frida": {
+      "firstErrorCode": "capability_unavailable",
+      "firstErrorCategory": "unsupported_provider",
+      "reason": "native_binding_not_found;not_an_anticheat_error",
+      "version": "17.23.2",
+      "historicalStandaloneImportPassed": true,
+      "currentBindingExists": true,
+      "currentBindingHashMatchesRecorded": true,
+      "currentMcpAttachRetested": false,
+      "networkInitialRegistrationSamples": 8
+    },
+    "animationProbe": {
+      "historicalAcceptedEntries": 100,
+      "otherProbeAcceptedEntries": 0,
+      "zeroReason": "unknown:not_called_vs_filter_rejected_not_distinguished"
+    }
+  },
+  "blockers": [
+    "Actual vanilla support/contact producer and next-update reuse not established",
+    "Current initialized Ghidra Program/persistent project/matchingPDB not verified",
+    "Official sub50ms mode-independent setter not established",
+    "CPU pose activity does not establish display smoothness"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-native-analysis-barriers-20261103.md",
+      "sha256": "75a616f425cd1e7422043b8704d6e5ea4ea4d62c576d99d008b771a2173cadf3"
+    },
+    {
+      "path": "evidence/npc-native-analysis-barriers-20261103.txt",
+      "sha256": "3f27825830908da98e3efd0dafa4edddb4090e9e02aa31b5bbb6f14ae8b82e70"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/outside-log-stack2/network-resolver-ghidra.json",
+      "sha256": "038ae04576904d5ccba09a6775def0fb7f6e61ff993328d71d20c01fbccb1788",
+      "selection": "Only selected error/status/provenance fields in public projection; not full raw file"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/outside-log-stack2/network-resolver-decompile-state.json",
+      "sha256": "82d1658a4b2290eee88e96a1f80f38f33a839f919f8d10946ecc5c5fde0b29a6",
+      "selection": "Only selected error/status/provenance fields in public projection; not full raw file"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/outside-log-stack2/rea-ghidra-startup-error.json",
+      "sha256": "3bef3ac56582d330367ab5b9531145c4188148db087df1667fb82588273de430",
+      "selection": "Only selected error/status/provenance fields in public projection; not full raw file"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/outside-log-stack2/tool-recovery.json",
+      "sha256": "ad2735373358b16335a286ba3cb6a026240005e3c94b0e532fa28ce440ce68ec",
+      "selection": "Only selected error/status/provenance fields in public projection; not full raw file"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/outside-log-stack2/rea-cli-stack.json",
+      "sha256": "27d1b5aa7ec2884b8588051461db54b6c9636ae0861ac9669e95fa4d2ec39a6c",
+      "selection": "Only selected error/status/provenance fields in public projection; not full raw file"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/outside-log-stack2/rea-cli-exit.json",
+      "sha256": "a05708e7b96e1ad38e1e5a76ddbfff9365896ea6e81b51dbad7ffd23910c725c",
+      "selection": "Only selected error/status/provenance fields in public projection; not full raw file"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/outside-log-stack1/rea-attach-unavailable.json",
+      "sha256": "7d9bdf0b941b3caeae6e8384540933d00465082af37b814134c672746ccc37ab",
+      "selection": "Only selected error/status/provenance fields in public projection; not full raw file"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/network-registration-probe1/rea-cli-registration.json",
+      "sha256": "049917c4774b9dd9ddd3537837acbb0a93b1f97f35472a203bb92b8b8596ff3e",
+      "selection": "Only selected error/status/provenance fields in public projection; not full raw file"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/network-registration-probe1/rea-cli-registration-exit.json",
+      "sha256": "ba95d4a43db749f8cb8b32b8f74c85d62c4099c1e6ea860950bdcdec2129e3ba",
+      "selection": "Only selected error/status/provenance fields in public projection; not full raw file"
+    },
+    {
+      "fileId": "research/horde_reconstruction_2026-10-25/NATIVE_EVALUATION_DESCRIPTOR_2026-10-28.md",
+      "sha256": "08c0d3af17c568bdb50022e5ba4068c5b2427fa394b95ad9018cdfd4de2f0e6e",
+      "selection": "Only selected error/status/provenance fields in public projection; not full raw file"
+    },
+    {
+      "fileId": "reports/checkpoints/2026-11-01_155459_379525+0900_npc-animation-client-mode2.md",
+      "sha256": "05aa769229a6516ecfcab8f52349f82d239a62a43aa96282f09ae7967a6f71a4",
+      "selection": "Only selected error/status/provenance fields in public projection; not full raw file"
+    },
+    {
+      "fileId": "research/matched-flat-pursuit-20261102/detailed/vanilla-move-stage-findings-20261103.json",
+      "sha256": "5405a23c35a875d7fdf8be8974e8e87f7bc32b25b484326dd868cd6b3c2c902c",
+      "selection": "Only selected error/status/provenance fields in public projection; not full raw file"
+    }
+  ],
+  "goalComplete": false
+}
