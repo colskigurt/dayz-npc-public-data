@@ -1,3 +1,5 @@
+> 최신 작업: 그래프 데이터 진입bit5는 같지만 서버38비트·클라이언트23비트 소비. 부모 필드 이전15비트 불일치 확인. 원인·수정·성능은 미확정. c0bc40 guard-only 설명 정정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-graph-prefix-contract-20261103.md).
+
 > 최신 작업: 같은16바이트에서 부모 필드는 서버 bit126(update0), client bit47(update1/presence1). 79비트 위치 불일치 확인. 원인과 수정은 미확정, 성능 미측정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-parent-field-cursor-20261103.md).
 
 > 최신 작업: 서버개체emitter의16byte생성확인,client유효전체와8/8동일.공유codec계약불일치원인추적중.3함수정적분석완료,새성능/시각결과없음. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-record-producer-20261103.md).

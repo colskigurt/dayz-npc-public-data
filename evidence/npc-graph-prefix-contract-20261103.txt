@@ -1,0 +1,67 @@
+Aggregate diagnostic only. No raw logs, game assets, credentials or process identifiers.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T09:54:28.172942+09:00",
+  "sourceRunId": "network-gameplay/creature-codec-prefix1",
+  "buildId": "A500BE80+existing9PBOs_unchanged",
+  "verificationStatus": {
+    "diagnosis": "graph_prefix_consumption_mismatch_confirmed",
+    "cause": "first_divergent_graph_codec_instruction_not_yet_identified",
+    "functionalRegression": "not_run",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "logicalNpcs": 1,
+    "nativeParts": 8,
+    "diagnosticRuntimeTrials": 1,
+    "senderShortRecordSamples": 8,
+    "receiverShortRecordSamples": 8,
+    "samePayloadByteMatches": 8,
+    "graphPrefix": {
+      "serverStartBit": 5,
+      "serverEndBit": 43,
+      "serverBits": 38,
+      "clientStartBit": 5,
+      "clientEndBit": 28,
+      "clientBits": 23,
+      "endDifferenceBits": 15
+    },
+    "parentField": {
+      "serverStartBit": 126,
+      "clientStartBit": 47,
+      "differenceBits": 79
+    },
+    "headerSpanBeforeParent": {
+      "serverBits": 83,
+      "clientBits": 19,
+      "differenceBits": 64
+    },
+    "recordBounds": {
+      "declaredBits": 128,
+      "clientParentEndBit": 146,
+      "logicalOverrunBits": 18,
+      "badIdEndsBitExclusive": 113,
+      "badIdItselfWithinRecord": true
+    },
+    "independentPerformanceRepeats": 0,
+    "frameTimeP50P95P99": null,
+    "completedStaticFunctions": 3
+  },
+  "blockers": [
+    "Exact first divergence inside graph codec remains unidentified",
+    "No supported mod correction selected",
+    "No new gameplay, visual, or frame performance acceptance",
+    "Same bytes do not prove per-entity network ID/time pairing"
+  ],
+  "evidenceReferences": [],
+  "next": "Inspect only the graph encoder and decoder in the already running read-only two-function batch. Compare field schema and initialization before selecting a local candidate. Do not add15 or79 to cursor, force parent IDs, or suppress errors.",
+  "corrections": [
+    {
+      "previous": "c0bc40 was described as an eligibility guard",
+      "current": "Full decompilation shows it also serializes four bytes through bits and calls the graph encoder; caller pseudocode omitted the live stream argument, so guard-only classification is withdrawn"
+    }
+  ],
+  "goalComplete": false
+}
