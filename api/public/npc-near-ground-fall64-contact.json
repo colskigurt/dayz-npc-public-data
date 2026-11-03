@@ -1,0 +1,175 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T12:49:27.862887+09:00",
+  "sourceRunId": "network-gameplay/near-ground-fall-sixtyfour-on1",
+  "buildId": "1A1928F160D0852659B4CB2E8AF87295448FB3B3BB075FFD039A703BB1FB461D",
+  "verificationStatus": {
+    "functionalRegression": "single_sixtyfour_fail",
+    "liveCandidateUsage": "seven_episodes_six_follow_one_unresolved",
+    "causalLiveEfficacy": "not_proven",
+    "contactDiagnosis": "aggregate_depth_and_reverse_cast_shortcuts_rejected",
+    "boundedSearch": "no_route_in_tested_frozen_graph_not_promoted",
+    "visualQuality": "not_measured",
+    "performance": "not_accepted",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "logicalNpcs": 64,
+    "nativeParts": 512,
+    "independentRuntimeRuns": 1,
+    "validTerminalAgents": 52,
+    "allMilestoneAgents": 52,
+    "fallStarts": 82,
+    "landFollowCycles": 81,
+    "phaseChainErrors": 0,
+    "generationErrors": 0,
+    "terminalAlignmentErrors": 0,
+    "actualCandidateUseAgents": 7,
+    "candidateUses": 4882,
+    "usedFallEpisodes": 7,
+    "usedEpisodesWithLand": 6,
+    "usedEpisodesWithFirstFollow": 6,
+    "episodeSummary": [
+      {
+        "id": 3,
+        "generation": 1,
+        "fallAt": 105.465,
+        "landAt": 111.417,
+        "firstFollowAt": 116.043,
+        "fallReason": "CONTACT_SUPPORT_LOST",
+        "candidateUses": 1,
+        "observationEnd": 141.656
+      },
+      {
+        "id": 11,
+        "generation": 1,
+        "fallAt": 113.551,
+        "landAt": 119.481,
+        "firstFollowAt": 127.9,
+        "fallReason": "CONTACT_SUPPORT_LOST",
+        "candidateUses": 140
+      },
+      {
+        "id": 19,
+        "generation": 1,
+        "fallAt": 97.25,
+        "landAt": 101.588,
+        "firstFollowAt": 108.747,
+        "fallReason": "CONTACT_SUPPORT_LOST",
+        "candidateUses": 115,
+        "observationEnd": 142.328
+      },
+      {
+        "id": 20,
+        "generation": 1,
+        "fallAt": 96.807,
+        "landAt": null,
+        "firstFollowAt": null,
+        "fallReason": "CONTACT_SUPPORT_LOST",
+        "candidateUses": 4359
+      },
+      {
+        "id": 35,
+        "generation": 1,
+        "fallAt": 96.96,
+        "landAt": 101.021,
+        "firstFollowAt": 105.301,
+        "fallReason": "CONTACT_SUPPORT_LOST",
+        "candidateUses": 1,
+        "observationEnd": 142.857
+      },
+      {
+        "id": 37,
+        "generation": 1,
+        "fallAt": 106.02,
+        "landAt": 111.252,
+        "firstFollowAt": 120.966,
+        "fallReason": "CONTACT_SUPPORT_LOST",
+        "candidateUses": 134
+      },
+      {
+        "id": 58,
+        "generation": 1,
+        "fallAt": 100.564,
+        "landAt": 105.779,
+        "firstFollowAt": 113.177,
+        "fallReason": "CONTACT_SUPPORT_LOST",
+        "candidateUses": 132
+      }
+    ],
+    "currentFollowAgents": 63,
+    "incompleteHistoryButCurrentFollow": 11,
+    "incompleteHistoryGoalsMatchCurrentVisitor": 11,
+    "serverMissionDtMilliseconds": {
+      "p50": 75.0,
+      "p95": 135.0,
+      "p99": 164.0
+    },
+    "scriptCommandOverMission": 0.6096157554547728,
+    "nativeContactDiagnostic": {
+      "queryPairs": 84,
+      "nativeOverlapQueries": 252,
+      "selected": {
+        "forwardHit": true,
+        "reverseHit": false,
+        "startContacts": 2,
+        "midContacts": 2,
+        "endContacts": 2,
+        "startDeepest": -0.0341489,
+        "endDeepest": -0.0341008,
+        "startBoxClearance": 0.0445741,
+        "endBoxClearance": 0.052699
+      },
+      "contactMatches": [
+        {
+          "startDepth": -0.0118751,
+          "endDepth": -0.0213334,
+          "depthDelta": -0.0094583,
+          "normalDot": 0.999564795363,
+          "positionDistanceMetres": 0.03002443280115529,
+          "fixtureIndex": 0,
+          "shape1": 1,
+          "shape2": 0
+        },
+        {
+          "startDepth": -0.0341489,
+          "endDepth": -0.0341008,
+          "depthDelta": 4.810000000000231e-05,
+          "normalDot": 0.999999279139,
+          "positionDistanceMetres": 0.03027313677203876,
+          "fixtureIndex": 0,
+          "shape1": 1,
+          "shape2": 0
+        }
+      ]
+    },
+    "boundedSearch": {
+      "expanded": 3,
+      "attemptedEdges": 16,
+      "acceptedEdges": 2,
+      "routeFound": false,
+      "queueExhausted": true
+    },
+    "frameTimeP50P95P99": null
+  },
+  "blockers": [
+    "Original64NPC functional criteria still fail: one long landing blockage and11 incomplete histories",
+    "Observed six recovered used episodes are not paired causal efficacy",
+    "Native contacts expose why box/deepest-only/reverse-cast shortcuts are unsafe",
+    "Bounded frozen search found no accepted landing route; no live search algorithm promoted",
+    "Actual client Present/CPU/GPU and full visual quality remain unmeasured"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/npc-near-ground-fall64-contact-20261103.md",
+      "sha256": "95fa0a52e7d6204f60ed9155b4eadde87bd91f17dde93df74e4bf78b0cb8e0c5"
+    },
+    {
+      "path": "evidence/npc-near-ground-fall64-contact-20261103.txt",
+      "sha256": "8644f38a5751c8af0e4d14487d7c903f57c8cb1fac7e44097026daaa26582d9b"
+    }
+  ],
+  "signatureVerified": true,
+  "next": "Keep the candidate defaultOFF/unaccepted. Inspect compatibility of normal-motion and recovery body volumes, alternative validated poses and native depenetration APIs before changing collision permission. Separate original history-gate failure from current FOLLOW state. Do not repeat64 without a local decision-changing candidate.",
+  "goalComplete": false
+}

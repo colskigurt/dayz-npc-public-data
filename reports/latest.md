@@ -1,3 +1,5 @@
+> 최신 작업: 근지면 후보64명52/64 실패.실제사용7낙하 중6복귀·1장기차단.63명 현재FOLLOW와 이력 실패를 구분.복수접촉 악화 확인으로 최저깊이/역스윕 보정 기각,제한탐색 경로 미확보. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-near-ground-fall64-contact-20261103.md).
+
 > 최신 작업: 근지면 FALL 포즈 복구: frozen3cm 후 원래 착지 통과·12위임가드·4벽 거부. 새PBO 서명검증 성공.8명 8/8,실제후보사용0회.64/성능/시각 미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-near-ground-fall-20261103.md).
 
 > 최신 작업: 64명 OFF/ON 각2회:4/4 기능 실패,서버p95 이득 방향 불일치로 후보 미채택. 장기 낙하 위치의 FOOT_X_SUPPORT 거부 재현;10cm 이웃 착지점 통과는 경로 성공 아님. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-slot-support-four-20261103.md).
