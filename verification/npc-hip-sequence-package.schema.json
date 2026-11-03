@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "network-gameplay/near-ground-fall-hip-candidate1"
+    },
+    "buildId": {
+      "const": "36F47FF9EB8AE1D93725BD52C2EB0AAAB4831B0A69D749AF313EA818F4918A2E"
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "verificationStatus": {
+      "type": "object",
+      "required": [
+        "package",
+        "finalAcceptance",
+        "performance",
+        "visualQuality"
+      ],
+      "properties": {
+        "package": {
+          "const": "signed_compile_and_secondary_flag_controls_passed"
+        },
+        "finalAcceptance": {
+          "const": false
+        },
+        "performance": {
+          "const": "not_measured"
+        },
+        "visualQuality": {
+          "const": "not_measured"
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "inactiveOrUnsupportedCasesPreserved",
+        "packagedControls",
+        "frameTimeP50P95P99"
+      ],
+      "properties": {
+        "inactiveOrUnsupportedCasesPreserved": {
+          "const": 14
+        },
+        "packagedControls": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "frameTimeP50P95P99": {
+          "type": "null"
+        }
+      }
+    }
+  }
+}
