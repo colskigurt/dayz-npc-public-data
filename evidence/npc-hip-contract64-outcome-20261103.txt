@@ -1,0 +1,43 @@
+Aggregate diagnostic only. No raw logs, game assets, credentials or process identifiers.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T16:35:44.839982+09:00",
+  "sourceRunId": "network-gameplay/hip-contract-sixtyfour-on1",
+  "buildId": "36F47FF9EB8AE1D93725BD52C2EB0AAAB4831B0A69D749AF313EA818F4918A2E",
+  "verificationStatus": {
+    "functionalRegression": "sixtyfour_failed",
+    "candidateUsage": "seven_episodes_all_landed_and_followed",
+    "causalEfficacy": "not_proven",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "independentEightRuns": 1,
+    "independent64Runs": 1,
+    "eightValid": 8,
+    "eightUses": 0,
+    "validTerminalAgents": 49,
+    "fallStarts": 81,
+    "landFollowCycles": 81,
+    "candidateUses": 477,
+    "usedFallEpisodes": 7,
+    "usedEpisodesWithLand": 7,
+    "usedEpisodesWithFollow": 7,
+    "incompleteHistoryFinalFollow": 13,
+    "incompleteFinalSettle": 2,
+    "phaseChainErrors": 0,
+    "generationErrors": 0,
+    "terminalAlignmentErrors": 0,
+    "frameTimeP50P95P99": null
+  },
+  "blockers": [
+    "Original64NPC functional gate failed49/64",
+    "Seven used recoveries are association, not paired causal efficacy",
+    "Thirteen finalFOLLOW with current player goal and two near-deadlineSETTLE do not prove15persistent deadlocks",
+    "Visual quality and performance unmeasured"
+  ],
+  "evidenceReferences": [],
+  "next": "Do not repeat64 or promote candidate. Preserve original deadline and distinguish incomplete high-stimulus history from near-deadline settling; return to actionable movement/physics cost ownership with a decision-changing candidate.",
+  "goalComplete": false
+}

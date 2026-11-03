@@ -1,3 +1,5 @@
+> 최신 작업: 골반후보8/8기능통과·64명49/64실패.실사용7낙하모두복귀,전체81/81.미충족13FOLLOW·2종료직전SETTLE구분.효능인과·시각·성능미수용. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-hip-contract64-outcome-20261103.md).
+
 > 최신 작업: Move RTTI/생성→공통manager의2조건부 갱신 연결.지속 scalar는MovementSpeed/LookDir 입력필터로 구분.지지 생산/접촉재사용은 미확인.새게임 없이30초1개체 관측 필요범위 제시. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-vanilla-move-stage-trace-20261103.md).
 
 > 최신 작업: 바닐라 native Move/API·101 getter 경계 확인.지지 함수/형상/cache/주기 미확인.기존 Fast/Scratch 중복 정리,AnimalBase drop-in 대체 근거 없음.새 실행/구현 없이 소유권 명세 우선 권고. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-vanilla-controller-review-20261103.md).
