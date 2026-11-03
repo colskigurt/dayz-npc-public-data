@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "sourceRunId",
+    "buildId",
+    "verificationStatus",
+    "metrics",
+    "policies",
+    "blockers",
+    "evidenceReferences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "matched-flat-pursuit-20261102/detailed/vanilla-controller-review-20261103"
+    },
+    "newPbo": {
+      "const": false
+    },
+    "goalComplete": {
+      "const": false
+    },
+    "verificationStatus": {
+      "type": "object",
+      "properties": {
+        "nativeSupportInternals": {
+          "const": "unresolved"
+        },
+        "finalAcceptance": {
+          "const": false
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "newRuntimeRuns": {
+          "const": 0
+        },
+        "newPboCount": {
+          "const": 0
+        },
+        "nativeSupportQueryFrequency": {
+          "type": "null"
+        },
+        "nativeSupportSelfTime": {
+          "type": "null"
+        }
+      }
+    },
+    "policies": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7
+    }
+  }
+}
