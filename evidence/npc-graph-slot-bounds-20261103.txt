@@ -1,0 +1,70 @@
+Aggregate diagnostic only. No raw logs, game assets, credentials or process identifiers.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-03T10:24:54.682711+09:00",
+  "sourceRunId": "network-gameplay/creature-graph-slotcandidate4",
+  "buildId": "8638218523E0A568A75FCDCC7C21033F6D733DCD4D51D259639E87042839FD84",
+  "verificationStatus": {
+    "diagnosis": "captured_out_of_range_slot_value_and_exact_bit_corruption_model",
+    "candidate": "single_direct_runtime_receipt_pass; earlier_candidate_runs_partial_coverage",
+    "functionalRegression": "not_run",
+    "visualQuality": "not_measured",
+    "performance": "not_measured",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "serverShortRecords": 8,
+    "clientShortRecords": 8,
+    "headerCompleteReceipts": 8,
+    "samePayloadContents": 8,
+    "graphStartBit": 5,
+    "serverGraphEndBit": 44,
+    "clientGraphEndBit": 44,
+    "serverParentStartBit": 127,
+    "clientParentStartBit": null,
+    "clientHeaderEndBit": 128,
+    "parentPresenceProbe": "not_executed_on_update0_path",
+    "successfulNativeGraphDecoderReturns": 8,
+    "clientGraphSlotValueMinusOne": 8,
+    "logicalRecordOverruns": 0,
+    "badParentIdLogOccurrences": 0,
+    "readErrors": 0,
+    "frameTimeP50P95P99": null
+  },
+  "blockers": [
+    "8NPC and64NPC functional regression not yet run with this graph candidate",
+    "Actual visual quality and non-instrumented performance not measured",
+    "Same bytes do not establish cross-process per-entity ID/time pairing"
+  ],
+  "evidenceReferences": [],
+  "candidateChange": "behaviorSlotID minimum0 to-1, maximum31 unchanged; all8native hosts use the same graph schema",
+  "control": {
+    "sourceRunId": "network-gameplay/creature-graph-schema2",
+    "observedSlotValue": -1,
+    "declaredMinimum": 0,
+    "serverGraphEndBit": 43,
+    "clientGraphEndBit": 28,
+    "serverParentStartBit": 126,
+    "clientParentStartBit": 47
+  },
+  "model": {
+    "capturedPrefixMatchedBits": 43,
+    "invalidDecodedVariableIndex": 15,
+    "stopBit": 28,
+    "candidateEdgeValuesPassed": [
+      -1,
+      0,
+      31
+    ],
+    "runtimeProofIsSeparate": true
+  },
+  "scope": {
+    "logicalNpcs": 1,
+    "nativeParts": 8,
+    "directCompleteReceiptTrials": 1,
+    "earlierCandidateRuns": "partial coverage, not complete repeats"
+  },
+  "signatureVerified": true,
+  "next": "Use same signed candidate in existing8NPC then64NPC functional fixture, preserve pushing/fall/landing/FOLLOW/reclimb; assess visual quality and non-instrumented performance separately",
+  "goalComplete": false
+}

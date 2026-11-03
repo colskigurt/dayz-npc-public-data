@@ -1,3 +1,5 @@
+> 최신 작업: behaviorSlotID 선언0~31에 native 값-1이 들어가 변수 번호가 손상되는 경로 재현. 최솟값-1 후보는1NPC·8파트 그래프 위치44/44·수신 종료128,해석8/8통과.8/64기능·시각·성능은 미검증. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-graph-slot-bounds-20261103.md).
+
 > 최신 작업: 그래프 데이터 진입bit5는 같지만 서버38비트·클라이언트23비트 소비. 부모 필드 이전15비트 불일치 확인. 원인·수정·성능은 미확정. c0bc40 guard-only 설명 정정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-graph-prefix-contract-20261103.md).
 
 > 최신 작업: 같은16바이트에서 부모 필드는 서버 bit126(update0), client bit47(update1/presence1). 79비트 위치 불일치 확인. 원인과 수정은 미확정, 성능 미측정. [보고서](https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/main/reports/operations/npc-parent-field-cursor-20261103.md).
