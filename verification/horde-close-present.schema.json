@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "sourceRunId",
+    "windows",
+    "signatureVerified",
+    "finalAcceptance",
+    "actualPresentMeasured",
+    "productionChanged",
+    "freshClients",
+    "primaryWindows"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "horde-close-motion-present-20261104"
+    },
+    "signatureVerified": {
+      "const": true
+    },
+    "productionChanged": {
+      "const": false
+    },
+    "actualPresentMeasured": {
+      "const": true
+    },
+    "finalAcceptance": {
+      "const": false
+    },
+    "freshClients": {
+      "const": 2
+    },
+    "windows": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": {
+        "type": "object",
+        "required": [
+          "stage",
+          "count",
+          "selection",
+          "foregroundFalseSamples",
+          "chains",
+          "freshClientOrdinal"
+        ]
+      }
+    },
+    "primaryWindows": {
+      "const": {
+        "0": 3,
+        "100": 1,
+        "1000": 3
+      }
+    }
+  }
+}

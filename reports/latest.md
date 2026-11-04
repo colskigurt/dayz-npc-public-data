@@ -1,5 +1,11 @@
-# NPC CPU 최적화 최신 작업
+# 최신 격리 표현 실험 요약
 
-64 weighted palette5파트의 정적 face/weight roundtrip 통과. 기존8파트를 교체하지 않았다. 표시·CPU 비용·8/64 미검증.
+근접 화면에서 자체 P3D 프록시의 기본 이동·분절 팔다리 출력을 확인하고 실제 PresentMon 측정을 수행했다. X/Z source 이동차각1m를 교정했고,반대 끝 자세와 연속 자세 변화를 관찰했다. 자연스러운 보행·접지·광학 cadence의최종 수용은 아니다.
 
-[상세](operations/npc-palette64-static-20261104.md) · [직전 부모 연결 기각](operations/npc-host-parent-contract-20261104.md)
+리테일 오프라인 fresh2회,1280×720,VSync1. 총11개15초창 중전면손실3개 제외·Steam 알림1개 보조. primary는빈 장면3,100개1,1000개3창이다. Present p95:빈 장면26.347–26.614ms,100개25.793ms,1000개29.800–30.894ms. 표시 p95는20.081–20.090ms로약50회/초를 유지했다. GPU Busy p50은빈 장면5.716–6.643ms,100개5.874ms,1000개7.441–7.608ms다.
+
+**최종 수용 아님.** 개체당72삼각형/5본의로컬 프록시이며AI·물리·전투·네트워크는없다. 무제한/60FPS와20ms Present p95를 입증하지않았다. 다음단일작업은전용 profile의VSync를끈0/100/1000 처리량비교다. 현재시험은종료했으며별도 애니메이션 세션과기존NPC 배포는변경하지않았다.
+
+Fresh 리테일 클라이언트2회,실제PresentMon2.6.0 ETW 기록. 각창 생성·전면확인후4초 안정화+15초캡처. primary7/보조1/제외3. 근접/벤치 컴파일 실패는성공 실행으로세지 않는다.
+
+[상세](operations/npc-horde-close-present-20261104.md) · [직전 실험 요약](history/20261104-before-close-present-reports-latest.md)

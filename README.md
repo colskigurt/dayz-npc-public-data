@@ -1,23 +1,15 @@
 # DayZ NPC / 대량 호드 현재 상태
 
-<!-- NPC_CPU_CURRENT_BEGIN -->
-## 상세 NPC CPU 최적화 현재 상태
-
-64본 예산의 무손실 재분할로8→5파트·535→401본 정적 후보를 준비했다.61914면·인코딩된 가중치 roundtrip 통과. 실제 표시와 CPU 절감은 미검증이며 기존8파트는 유지한다.
-
-[최신 CPU 보고서](reports/operations/npc-palette64-static-20261104.md) · [부모 연결 기각](reports/operations/npc-host-parent-contract-20261104.md)
-<!-- NPC_CPU_CURRENT_END -->
-
 문서 갱신:2026-11-04
 
-자체 저폴리 P3D 로컬 프록시의1,024개별 형상과128객체×8형상 실행 프로브를 수행했다. 1,024개별 형상 배열은 화면에서 관찰했다. 8형상 묶음도 생성·source readback 구간을 완주했다. 개체당72삼각형/5본이며 AI·물리·전투·네트워크는 없다.
+근접 화면에서 자체 P3D 프록시의 기본 이동·분절 팔다리 출력을 확인하고 실제 PresentMon 측정을 수행했다. X/Z source 이동차각1m를 교정했고,반대 끝 자세와 연속 자세 변화를 관찰했다. 자연스러운 보행·접지·광학 cadence의최종 수용은 아니다.
 
-**최종 수용 아님.** 실제 Present 미측정,정확한 개체별 픽셀 가시성·이동 축/거리·팔다리 애니메이션 품질 미수용. 시작/끝 기준 구간 script dt p95도35→78ms로 변해 묶음 성능의 인과 비교가 불가능하다.20ms p95와1,000좀비 무프레임저하는 달성하지 않았다.
+리테일 오프라인 fresh2회,1280×720,VSync1. 총11개15초창 중전면손실3개 제외·Steam 알림1개 보조. primary는빈 장면3,100개1,1000개3창이다. Present p95:빈 장면26.347–26.614ms,100개25.793ms,1000개29.800–30.894ms. 표시 p95는20.081–20.090ms로약50회/초를 유지했다. GPU Busy p50은빈 장면5.716–6.643ms,100개5.874ms,1000개7.441–7.608ms다.
 
-다음 단일 작업은 근접 카메라에서 root 변환과 실제 팔다리 연속 움직임 확인이다. 이후 동일 조건의 paired Present 비교를 진행한다. 별도 애니메이션 세션과 기존 NPC 기능/성능 결과는 이 시험과 구분한다.
+**최종 수용 아님.** 개체당72삼각형/5본의로컬 프록시이며AI·물리·전투·네트워크는없다. 무제한/60FPS와20ms Present p95를 입증하지않았다. 다음단일작업은전용 profile의VSync를끈0/100/1000 처리량비교다. 현재시험은종료했으며별도 애니메이션 세션과기존NPC 배포는변경하지않았다.
 
-[상세 보고서](reports/operations/npc-horde-render-paths-20261104.md) · [근거](evidence/npc-horde-render-paths-20261104.txt) · [JSON](api/public/npc-horde-render-paths.json)
+[상세 보고서](reports/operations/npc-horde-close-present-20261104.md) · [근거](evidence/npc-horde-close-present-20261104.txt) · [JSON](api/public/npc-horde-close-present.json)
 
-[직전 통합 상태](reports/history/20261104-before-render-probe-README.md) · [AI 검토](AI_REVIEW.md) · [검증 정책](reports/operations/npc-validation-policy-20261103.md)
+[직전 통합 상태](reports/history/20261104-before-close-present-README.md) · [AI 검토](AI_REVIEW.md) · [검증 정책](reports/operations/npc-validation-policy-20261103.md)
 
 기존 상세 NPC 후보의 검증 이력은 직전 상태에 보존했다. 이번 프록시는 별도 자산 계열이며 기존 결과의 기능 복구·성능 개선으로 집계하지 않는다. 기존 서버/Workshop 배포는 변경하지 않았다. 시험 PBO 자동 서명·검증 성공,개인 키 배포0개.
