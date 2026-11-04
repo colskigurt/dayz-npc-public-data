@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-05T05:13:32.518423+09:00",
-  "sourceRunId": "palette64-host64-three-pairs",
+  "generatedAt": "2026-11-05T06:33:40.381200+09:00",
+  "sourceRunId": "palette64-client64-first-present-pair",
   "buildId": "cost-control2:9A7F3C5F+five-run1:EF23B8D3",
   "verificationStatus": {
     "diagnosis": "three_stationary_host_pairs_completed_inconsistent_effect",
@@ -13,7 +13,7 @@
     "finalAcceptance": false
   },
   "metrics": {
-    "newRuns": 4,
+    "newRuns": 11,
     "latestFunctional": {
       "sourceRunId": "network-gameplay/entry-facing-sixtyfour-on1",
       "independentRuns": 1,
@@ -266,7 +266,8 @@
       "clientPresentP50": null,
       "clientPresentP95": null,
       "clientPresentP99": null
-    }
+    },
+    "newRunsDefinition": "6 server and 5 retail client starts including failed preparation; only one valid independent comparison pair"
   },
   "blockers": [
     "No consistent stationary-server CPU reduction across3pairs",
@@ -327,5 +328,59 @@
     "actualPresentMeasured": true,
     "signatureVerified": true,
     "nextSingleTask": "Uncapped controlled0/100/1000 comparison before increasing mesh/rig complexity or integrating AI."
+  },
+  "latestPaletteClientPresent": {
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2026-11-05T06:33:40.381200+09:00",
+    "sourceRunId": "palette64-client64-first-present-pair",
+    "buildId": "palette64-client-camera2-run-only",
+    "verificationStatus": {
+      "diagnostic": "success",
+      "performanceAcceptance": false,
+      "visualAcceptance": false,
+      "finalAcceptance": false
+    },
+    "metrics": {
+      "independentPairs": 1,
+      "secondsPerCapture": 15,
+      "logicalBodies": 64,
+      "nativeParts": [
+        512,
+        320
+      ],
+      "presentP95Ms": [
+        30.7486,
+        31.28233
+      ],
+      "cpuBusyP95Ms": [
+        15.55753,
+        13.685365
+      ],
+      "gpuBusyP95Ms": [
+        3.77095,
+        3.474095
+      ],
+      "displayChangeP95Ms": [
+        20.08616,
+        20.086565
+      ],
+      "actualSyncInterval": [
+        1,
+        1
+      ],
+      "AI": false,
+      "customContactSolver": false
+    },
+    "blockers": [
+      "Single pair; no reproducible frame-time improvement",
+      "Requested VSync=0 differs from actual SyncInterval=1; cause unconfirmed",
+      "Full gameplay and visible smoothness not accepted"
+    ],
+    "evidenceReferences": [
+      {
+        "fileId": "palette64-client-cost-preflight1/round4/present-pair-analysis.json",
+        "sha256": "0bf7c753d1c098889e7c5d14e957714e13aee26840bdcbcb05c19c09c8b04ebf"
+      }
+    ]
   }
 }

@@ -1,11 +1,11 @@
 # DayZ NPC / 대량 호드 현재 상태
 
 <!-- NPC_CPU_CURRENT_BEGIN -->
-## NPC CPU 최적화 현재 상태
+## 현재 CPU 최적화 상태
 
-정지64개체8→5파트CPU3쌍:13.7%감소/2.4%감소/2.1%증가.최초효과재현안됨;서버정지Run비용개선미확정·미수용.기존8파트운영본유지.서버p95양쪽31ms이며clientPresent미측정.다음은실제client렌더포함국소비교가능성검토.
+64개체 정지 Run: 8파트 대 5파트, 독립 비교 1쌍(각15초). Present p95 30.75→31.28ms로 개선 없음. CPU Busy p95 15.56→13.69ms. 실제 SyncInterval=1, VSync OFF 미확인. 진단 성공·최적화 수용 보류. AI/추적/커스텀 접촉·기능 회귀는 이번 비교에서 미실행. 이전 헤드리스 3쌍 역시 효과 불일치. 20ms 목표 미달성.
 
-[최신 CPU 보고서](reports/operations/npc-palette64-host-cost-three-pairs-20261105.md)
+[첫 실제 표시 비교](reports/operations/npc-palette64-client-present-first-pair-20261105.md)
 <!-- NPC_CPU_CURRENT_END -->
 
 문서 갱신:2026-11-04
