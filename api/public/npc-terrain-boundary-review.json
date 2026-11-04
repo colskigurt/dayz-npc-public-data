@@ -1,275 +1,2643 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-04T19:19:51.250459+09:00",
-  "sourceRunId": "network-gameplay/terrain-certificate-boundary1c",
+  "generatedAt": "2026-11-04T19:29:13.766841+09:00",
+  "sourceRunId": "network-gameplay/terrain-integrated-method-cost",
   "buildId": "4bbf370b1d479e0556e916d21213bafba383cbdd3a12c6e2518cd49c1ca64e70",
   "verificationStatus": {
-    "localPrimitive": "one_completed_run",
-    "performance": "not_measured",
+    "localCostGate": "failed",
+    "wholeFrame": "not_measured",
     "gameplay": "not_tested",
     "finalAcceptance": false
   },
   "metrics": {
-    "newRuntimeProcesses": 2,
-    "completedValidRuns": 1,
-    "preflightOnlyRejected": 1,
-    "rows": 180,
-    "positiveNonTerrainRayControls": 120,
-    "falseClear": 0,
+    "newRuntimeProcesses": 3,
+    "validCompletedRuns": 2,
+    "compileFailedRuns": 1,
+    "measuredCalls": 384000,
     "performanceTargetP95Ms": 20,
     "performanceTargetAchieved": false
   },
-  "groups": [
+  "runs": [
     {
-      "condition": "height_-0.4",
-      "factor": "0.5",
-      "rays": 10,
-      "hits": 0,
-      "falseClear": 0,
-      "contacts": [
-        3
-      ]
+      "run": "terrain-integrated-method-cost1b",
+      "engineSha256": "4bbf370b1d479e0556e916d21213bafba383cbdd3a12c6e2518cd49c1ca64e70",
+      "rows": 192,
+      "calls": 192000,
+      "orderReversed": false,
+      "missionSha256": "3b9915339bc91b67e10ee288c94a5e231e4c136581cb1bb15b6eb335b525fe40",
+      "tsvSha256": "65cc38cd020f93f92fddd72a865f870d77e1a214a04eac013d8a260a4b91ec4e",
+      "conditions": [
+        {
+          "condition": "terrain",
+          "blockElapsedTicks": {
+            "ORIGINAL": {
+              "samples": 8,
+              "p50": 474849.5,
+              "p95": 502278.15,
+              "p99": 504745.23
+            },
+            "SHAM": {
+              "samples": 8,
+              "p50": 481900.5,
+              "p95": 555230.3999999999,
+              "p99": 579779.6799999999
+            },
+            "INTEGRATED": {
+              "samples": 8,
+              "p50": 245609.5,
+              "p95": 254177.05,
+              "p99": 257172.21
+            }
+          },
+          "groupPairs": [
+            {
+              "group": 0,
+              "medianTicks": {
+                "ORIGINAL": 484134.0,
+                "SHAM": 487929.5,
+                "INTEGRATED": 251635.0
+              },
+              "shamVsOriginalPercent": 0.7839771633473269,
+              "integratedVsOriginalPercent": -48.02368765672313,
+              "integratedVsShamPercent": -48.42800035660889,
+              "integratedVsOriginalTicks": -232499.0
+            },
+            {
+              "group": 8,
+              "medianTicks": {
+                "ORIGINAL": 490570.5,
+                "SHAM": 536050.0,
+                "INTEGRATED": 246515.5
+              },
+              "shamVsOriginalPercent": 9.270736825797709,
+              "integratedVsOriginalPercent": -49.74922055035923,
+              "integratedVsShamPercent": -54.01259210894507,
+              "integratedVsOriginalTicks": -244055.0
+            },
+            {
+              "group": 16,
+              "medianTicks": {
+                "ORIGINAL": 473110.5,
+                "SHAM": 482905.0,
+                "INTEGRATED": 245675.0
+              },
+              "shamVsOriginalPercent": 2.0702351776170635,
+              "integratedVsOriginalPercent": -48.0723847811452,
+              "integratedVsShamPercent": -49.12560441494704,
+              "integratedVsOriginalTicks": -227435.5
+            },
+            {
+              "group": 24,
+              "medianTicks": {
+                "ORIGINAL": 473297.5,
+                "SHAM": 473288.5,
+                "INTEGRATED": 243510.0
+              },
+              "shamVsOriginalPercent": -0.0019015524062582223,
+              "integratedVsOriginalPercent": -48.55033039473059,
+              "integratedVsShamPercent": -48.549352033696145,
+              "integratedVsOriginalTicks": -229787.5
+            }
+          ],
+          "relativePercent": {
+            "shamVsOriginalPercent": 1.4271061704821952,
+            "integratedVsOriginalPercent": -48.31135758793789,
+            "integratedVsShamPercent": -48.83747822432159
+          },
+          "absoluteMedianGroupDeltaTicks": -231143.25,
+          "countersPer1000Calls": {
+            "ORIGINAL": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "SHAM": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "INTEGRATED": {
+              "footRays": [
+                0
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                1000
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                10000
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                1000
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            }
+          }
+        },
+        {
+          "condition": "roof",
+          "blockElapsedTicks": {
+            "ORIGINAL": {
+              "samples": 8,
+              "p50": 682868.5,
+              "p95": 714248.7,
+              "p99": 726338.54
+            },
+            "SHAM": {
+              "samples": 8,
+              "p50": 682839.0,
+              "p95": 706272.35,
+              "p99": 710768.87
+            },
+            "INTEGRATED": {
+              "samples": 8,
+              "p50": 690788.5,
+              "p95": 766946.35,
+              "p99": 778067.67
+            }
+          },
+          "groupPairs": [
+            {
+              "group": 1,
+              "medianTicks": {
+                "ORIGINAL": 679696.0,
+                "SHAM": 703863.5,
+                "INTEGRATED": 760988.5
+              },
+              "shamVsOriginalPercent": 3.5556336950636647,
+              "integratedVsOriginalPercent": 11.960126291753959,
+              "integratedVsShamPercent": 8.115920203278048,
+              "integratedVsOriginalTicks": 81292.5
+            },
+            {
+              "group": 9,
+              "medianTicks": {
+                "ORIGINAL": 683616.5,
+                "SHAM": 688071.0,
+                "INTEGRATED": 694317.5
+              },
+              "shamVsOriginalPercent": 0.6516080287705117,
+              "integratedVsOriginalPercent": 1.5653513336790548,
+              "integratedVsShamPercent": 0.9078278259075034,
+              "integratedVsOriginalTicks": 10701.0
+            },
+            {
+              "group": 17,
+              "medianTicks": {
+                "ORIGINAL": 674884.0,
+                "SHAM": 675616.0,
+                "INTEGRATED": 684270.5
+              },
+              "shamVsOriginalPercent": 0.10846308402630012,
+              "integratedVsOriginalPercent": 1.390831609580312,
+              "integratedVsShamPercent": 1.2809791360772982,
+              "integratedVsOriginalTicks": 9386.5
+            },
+            {
+              "group": 25,
+              "medianTicks": {
+                "ORIGINAL": 701993.5,
+                "SHAM": 673009.0,
+                "INTEGRATED": 682523.5
+              },
+              "shamVsOriginalPercent": -4.128884384257114,
+              "integratedVsOriginalPercent": -2.773529954337184,
+              "integratedVsShamPercent": 1.4137255222441247,
+              "integratedVsOriginalTicks": -19470.0
+            }
+          ],
+          "relativePercent": {
+            "shamVsOriginalPercent": 0.3800355563984059,
+            "integratedVsOriginalPercent": 1.4780914716296834,
+            "integratedVsShamPercent": 1.3473523291607115
+          },
+          "absoluteMedianGroupDeltaTicks": 10043.75,
+          "countersPer1000Calls": {
+            "ORIGINAL": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "SHAM": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "INTEGRATED": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                1000
+              ],
+              "scopeDelegations": [
+                1000
+              ]
+            }
+          }
+        },
+        {
+          "condition": "edge",
+          "blockElapsedTicks": {
+            "ORIGINAL": {
+              "samples": 8,
+              "p50": 573167.5,
+              "p95": 628936.85,
+              "p99": 649911.37
+            },
+            "SHAM": {
+              "samples": 8,
+              "p50": 569169.0,
+              "p95": 585129.8,
+              "p99": 586320.36
+            },
+            "INTEGRATED": {
+              "samples": 8,
+              "p50": 580575.5,
+              "p95": 636861.3,
+              "p99": 640731.46
+            }
+          },
+          "groupPairs": [
+            {
+              "group": 2,
+              "medianTicks": {
+                "ORIGINAL": 573578.5,
+                "SHAM": 580640.0,
+                "INTEGRATED": 634788.0
+              },
+              "shamVsOriginalPercent": 1.231130525289914,
+              "integratedVsOriginalPercent": 10.671512269026827,
+              "integratedVsShamPercent": 9.325571782860287,
+              "integratedVsOriginalTicks": 61209.5
+            },
+            {
+              "group": 10,
+              "medianTicks": {
+                "ORIGINAL": 615195.0,
+                "SHAM": 578028.5,
+                "INTEGRATED": 579435.0
+              },
+              "shamVsOriginalPercent": -6.0414177618478675,
+              "integratedVsOriginalPercent": -5.812791066247291,
+              "integratedVsShamPercent": 0.24332710238335054,
+              "integratedVsOriginalTicks": -35760.0
+            },
+            {
+              "group": 18,
+              "medianTicks": {
+                "ORIGINAL": 571367.0,
+                "SHAM": 564781.5,
+                "INTEGRATED": 575549.5
+              },
+              "shamVsOriginalPercent": -1.1525866912159732,
+              "integratedVsOriginalPercent": 0.7320163747643882,
+              "integratedVsShamPercent": 1.9065780306189106,
+              "integratedVsOriginalTicks": 4182.5
+            },
+            {
+              "group": 26,
+              "medianTicks": {
+                "ORIGINAL": 565172.0,
+                "SHAM": 568037.0,
+                "INTEGRATED": 584127.5
+              },
+              "shamVsOriginalPercent": 0.5069253253876749,
+              "integratedVsOriginalPercent": 3.35393473137382,
+              "integratedVsShamPercent": 2.832649985828395,
+              "integratedVsOriginalTicks": 18955.5
+            }
+          ],
+          "relativePercent": {
+            "shamVsOriginalPercent": -0.3228306829141492,
+            "integratedVsOriginalPercent": 2.042975553069104,
+            "integratedVsShamPercent": 2.3696140082236528
+          },
+          "absoluteMedianGroupDeltaTicks": 11569.0,
+          "countersPer1000Calls": {
+            "ORIGINAL": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "SHAM": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "INTEGRATED": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                1000
+              ],
+              "scopeDelegations": [
+                1000
+              ]
+            }
+          }
+        },
+        {
+          "condition": "lift_reject",
+          "blockElapsedTicks": {
+            "ORIGINAL": {
+              "samples": 8,
+              "p50": 434484.0,
+              "p95": 446406.2,
+              "p99": 449499.64
+            },
+            "SHAM": {
+              "samples": 8,
+              "p50": 438237.5,
+              "p95": 439136.65,
+              "p99": 439276.93
+            },
+            "INTEGRATED": {
+              "samples": 8,
+              "p50": 198337.0,
+              "p95": 200792.75,
+              "p99": 201418.55
+            }
+          },
+          "groupPairs": [
+            {
+              "group": 3,
+              "medianTicks": {
+                "ORIGINAL": 438376.5,
+                "SHAM": 438251.5,
+                "INTEGRATED": 200457.5
+              },
+              "shamVsOriginalPercent": -0.028514302203697106,
+              "integratedVsOriginalPercent": -54.272754128015535,
+              "integratedVsShamPercent": -54.25971160395344,
+              "integratedVsOriginalTicks": -237919.0
+            },
+            {
+              "group": 11,
+              "medianTicks": {
+                "ORIGINAL": 443624.0,
+                "SHAM": 437502.0,
+                "INTEGRATED": 198301.5
+              },
+              "shamVsOriginalPercent": -1.3799974753394784,
+              "integratedVsOriginalPercent": -55.29964564586226,
+              "integratedVsShamPercent": -54.67415006102829,
+              "integratedVsOriginalTicks": -245322.5
+            },
+            {
+              "group": 19,
+              "medianTicks": {
+                "ORIGINAL": 428158.0,
+                "SHAM": 427245.0,
+                "INTEGRATED": 195767.5
+              },
+              "shamVsOriginalPercent": -0.21323903792525023,
+              "integratedVsOriginalPercent": -54.27680902844276,
+              "integratedVsShamPercent": -54.179100984212816,
+              "integratedVsOriginalTicks": -232390.5
+            },
+            {
+              "group": 27,
+              "medianTicks": {
+                "ORIGINAL": 430059.5,
+                "SHAM": 439061.5,
+                "INTEGRATED": 198337.0
+              },
+              "shamVsOriginalPercent": 2.0931987318033807,
+              "integratedVsOriginalPercent": -53.88149779274729,
+              "integratedVsShamPercent": -54.8270572573546,
+              "integratedVsOriginalTicks": -231722.5
+            }
+          ],
+          "relativePercent": {
+            "shamVsOriginalPercent": -0.12087667006447367,
+            "integratedVsOriginalPercent": -54.27478157822915,
+            "integratedVsShamPercent": -54.46693083249087
+          },
+          "absoluteMedianGroupDeltaTicks": -235154.75,
+          "countersPer1000Calls": {
+            "ORIGINAL": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                0
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "SHAM": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                0
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "INTEGRATED": {
+              "footRays": [
+                0
+              ],
+              "jointSweeps": [
+                0
+              ],
+              "certificateQueries": [
+                1000
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                10000
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                1000
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            }
+          }
+        },
+        {
+          "condition": "wrong_ground_hint",
+          "blockElapsedTicks": {
+            "ORIGINAL": {
+              "samples": 8,
+              "p50": 682593.5,
+              "p95": 860680.2499999999,
+              "p99": 897356.0499999999
+            },
+            "SHAM": {
+              "samples": 8,
+              "p50": 688939.5,
+              "p95": 763113.35,
+              "p99": 786437.07
+            },
+            "INTEGRATED": {
+              "samples": 8,
+              "p50": 707675.0,
+              "p95": 769073.5,
+              "p99": 792282.7
+            }
+          },
+          "groupPairs": [
+            {
+              "group": 4,
+              "medianTicks": {
+                "ORIGINAL": 684925.5,
+                "SHAM": 692609.0,
+                "INTEGRATED": 752424.0
+              },
+              "shamVsOriginalPercent": 1.1218008381933542,
+              "integratedVsOriginalPercent": 9.85486742718733,
+              "integratedVsShamPercent": 8.636185784475803,
+              "integratedVsOriginalTicks": 67498.5
+            },
+            {
+              "group": 12,
+              "medianTicks": {
+                "ORIGINAL": 793447.5,
+                "SHAM": 677722.0,
+                "INTEGRATED": 699177.5
+              },
+              "shamVsOriginalPercent": -14.585148985912744,
+              "integratedVsOriginalPercent": -11.8810633343731,
+              "integratedVsShamPercent": 3.165826105689362,
+              "integratedVsOriginalTicks": -94270.0
+            },
+            {
+              "group": 20,
+              "medianTicks": {
+                "ORIGINAL": 674971.0,
+                "SHAM": 682319.5,
+                "INTEGRATED": 700437.0
+              },
+              "shamVsOriginalPercent": 1.0887134410219046,
+              "integratedVsOriginalPercent": 3.7729028358255423,
+              "integratedVsShamPercent": 2.655280993728004,
+              "integratedVsOriginalTicks": 25466.0
+            },
+            {
+              "group": 28,
+              "medianTicks": {
+                "ORIGINAL": 723449.0,
+                "SHAM": 750618.5,
+                "INTEGRATED": 712586.5
+              },
+              "shamVsOriginalPercent": 3.755551531621437,
+              "integratedVsOriginalPercent": -1.501488010903329,
+              "integratedVsShamPercent": -5.0667549494183834,
+              "integratedVsOriginalTicks": -10862.5
+            }
+          ],
+          "relativePercent": {
+            "shamVsOriginalPercent": 1.1052571396076294,
+            "integratedVsOriginalPercent": 1.1357074124611066,
+            "integratedVsShamPercent": 2.910553549708683
+          },
+          "absoluteMedianGroupDeltaTicks": 7301.75,
+          "countersPer1000Calls": {
+            "ORIGINAL": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "SHAM": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "INTEGRATED": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                1000
+              ],
+              "scopeDelegations": [
+                1000
+              ]
+            }
+          }
+        },
+        {
+          "condition": "ground_near_structure",
+          "blockElapsedTicks": {
+            "ORIGINAL": {
+              "samples": 8,
+              "p50": 553167.5,
+              "p95": 595762.0499999999,
+              "p99": 606754.01
+            },
+            "SHAM": {
+              "samples": 8,
+              "p50": 563989.5,
+              "p95": 770143.7,
+              "p99": 808183.94
+            },
+            "INTEGRATED": {
+              "samples": 8,
+              "p50": 571637.5,
+              "p95": 735956.45,
+              "p99": 775115.2899999999
+            }
+          },
+          "groupPairs": [
+            {
+              "group": 5,
+              "medianTicks": {
+                "ORIGINAL": 568642.0,
+                "SHAM": 628585.5,
+                "INTEGRATED": 617463.0
+              },
+              "shamVsOriginalPercent": 10.541518213568457,
+              "integratedVsOriginalPercent": 8.585542397501422,
+              "integratedVsShamPercent": -1.7694490248343353,
+              "integratedVsOriginalTicks": 48821.0
+            },
+            {
+              "group": 13,
+              "medianTicks": {
+                "ORIGINAL": 553167.5,
+                "SHAM": 563989.5,
+                "INTEGRATED": 571637.5
+              },
+              "shamVsOriginalPercent": 1.95636945409845,
+              "integratedVsOriginalPercent": 3.338952487266522,
+              "integratedVsShamPercent": 1.3560536144733293,
+              "integratedVsOriginalTicks": 18470.0
+            },
+            {
+              "group": 21,
+              "medianTicks": {
+                "ORIGINAL": 554796.0,
+                "SHAM": 659132.0,
+                "INTEGRATED": 651203.0
+              },
+              "shamVsOriginalPercent": 18.80619182546377,
+              "integratedVsOriginalPercent": 17.37701785881658,
+              "integratedVsShamPercent": -1.2029456922133974,
+              "integratedVsOriginalTicks": 96407.0
+            },
+            {
+              "group": 29,
+              "medianTicks": {
+                "ORIGINAL": 492667.0,
+                "SHAM": 516657.0,
+                "INTEGRATED": 514155.0
+              },
+              "shamVsOriginalPercent": 4.869414838014308,
+              "integratedVsOriginalPercent": 4.361566737776235,
+              "integratedVsShamPercent": -0.484267124997817,
+              "integratedVsOriginalTicks": 21488.0
+            }
+          ],
+          "relativePercent": {
+            "shamVsOriginalPercent": 7.705466525791382,
+            "integratedVsOriginalPercent": 6.473554567638828,
+            "integratedVsShamPercent": -0.8436064086056072
+          },
+          "absoluteMedianGroupDeltaTicks": 35154.5,
+          "countersPer1000Calls": {
+            "ORIGINAL": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "SHAM": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "INTEGRATED": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                1000
+              ],
+              "scopeDelegations": [
+                1000
+              ]
+            }
+          }
+        },
+        {
+          "condition": "ground_many_hints",
+          "blockElapsedTicks": {
+            "ORIGINAL": {
+              "samples": 8,
+              "p50": 478272.5,
+              "p95": 657274.7499999999,
+              "p99": 709666.95
+            },
+            "SHAM": {
+              "samples": 8,
+              "p50": 483570.5,
+              "p95": 510381.1,
+              "p99": 510497.02
+            },
+            "INTEGRATED": {
+              "samples": 8,
+              "p50": 276249.0,
+              "p95": 280827.95,
+              "p99": 281024.79
+            }
+          },
+          "groupPairs": [
+            {
+              "group": 6,
+              "medianTicks": {
+                "ORIGINAL": 486693.0,
+                "SHAM": 485265.0,
+                "INTEGRATED": 276249.0
+              },
+              "shamVsOriginalPercent": -0.2934087813056707,
+              "integratedVsOriginalPercent": -43.23957813241612,
+              "integratedVsShamPercent": -43.07254798924299,
+              "integratedVsOriginalTicks": -210444.0
+            },
+            {
+              "group": 14,
+              "medianTicks": {
+                "ORIGINAL": 600100.0,
+                "SHAM": 478513.0,
+                "INTEGRATED": 276205.0
+              },
+              "shamVsOriginalPercent": -20.261123146142314,
+              "integratedVsOriginalPercent": -53.97350441593068,
+              "integratedVsShamPercent": -42.278475192941464,
+              "integratedVsOriginalTicks": -323895.0
+            },
+            {
+              "group": 22,
+              "medianTicks": {
+                "ORIGINAL": 468644.0,
+                "SHAM": 471177.0,
+                "INTEGRATED": 270228.5
+              },
+              "shamVsOriginalPercent": 0.5404955573953707,
+              "integratedVsOriginalPercent": -42.33821408147762,
+              "integratedVsShamPercent": -42.64819802324816,
+              "integratedVsOriginalTicks": -198415.5
+            },
+            {
+              "group": 30,
+              "medianTicks": {
+                "ORIGINAL": 501190.5,
+                "SHAM": 510319.0,
+                "INTEGRATED": 279729.0
+              },
+              "shamVsOriginalPercent": 1.8213633339019708,
+              "integratedVsOriginalPercent": -44.18709053743037,
+              "integratedVsShamPercent": -45.18546242644307,
+              "integratedVsOriginalTicks": -221461.5
+            }
+          ],
+          "relativePercent": {
+            "shamVsOriginalPercent": 0.12354338804484999,
+            "integratedVsOriginalPercent": -43.713334334923246,
+            "integratedVsShamPercent": -42.86037300624558
+          },
+          "absoluteMedianGroupDeltaTicks": -215952.75,
+          "countersPer1000Calls": {
+            "ORIGINAL": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "SHAM": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "INTEGRATED": {
+              "footRays": [
+                0
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                1000
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                10000
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                1000
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            }
+          }
+        },
+        {
+          "condition": "fall_state",
+          "blockElapsedTicks": {
+            "ORIGINAL": {
+              "samples": 8,
+              "p50": 476560.0,
+              "p95": 490657.05,
+              "p99": 494817.01
+            },
+            "SHAM": {
+              "samples": 8,
+              "p50": 474839.0,
+              "p95": 492378.1,
+              "p99": 495523.62
+            },
+            "INTEGRATED": {
+              "samples": 8,
+              "p50": 482642.5,
+              "p95": 504861.05,
+              "p99": 510684.21
+            }
+          },
+          "groupPairs": [
+            {
+              "group": 7,
+              "medianTicks": {
+                "ORIGINAL": 478367.5,
+                "SHAM": 482491.0,
+                "INTEGRATED": 491253.5
+              },
+              "shamVsOriginalPercent": 0.8619941781161877,
+              "integratedVsOriginalPercent": 2.6937448718819645,
+              "integratedVsShamPercent": 1.8160960515325675,
+              "integratedVsOriginalTicks": 12886.0
+            },
+            {
+              "group": 15,
+              "medianTicks": {
+                "ORIGINAL": 470916.0,
+                "SHAM": 470944.5,
+                "INTEGRATED": 479671.0
+              },
+              "shamVsOriginalPercent": 0.006052034757786373,
+              "integratedVsOriginalPercent": 1.8591426071741024,
+              "integratedVsShamPercent": 1.8529784295177043,
+              "integratedVsOriginalTicks": 8755.0
+            },
+            {
+              "group": 23,
+              "medianTicks": {
+                "ORIGINAL": 484200.5,
+                "SHAM": 474011.5,
+                "INTEGRATED": 478428.0
+              },
+              "shamVsOriginalPercent": -2.104293572600602,
+              "integratedVsOriginalPercent": -1.1921714248539605,
+              "integratedVsShamPercent": 0.9317284496262124,
+              "integratedVsOriginalTicks": -5772.5
+            },
+            {
+              "group": 31,
+              "medianTicks": {
+                "ORIGINAL": 478547.0,
+                "SHAM": 483534.5,
+                "INTEGRATED": 498678.0
+              },
+              "shamVsOriginalPercent": 1.0422173788572575,
+              "integratedVsOriginalPercent": 4.206692341609086,
+              "integratedVsShamPercent": 3.1318344399417164,
+              "integratedVsOriginalTicks": 20131.0
+            }
+          ],
+          "relativePercent": {
+            "shamVsOriginalPercent": 0.43402310643698705,
+            "integratedVsOriginalPercent": 2.2764437395280335,
+            "integratedVsShamPercent": 1.834537240525136
+          },
+          "absoluteMedianGroupDeltaTicks": 10820.5,
+          "countersPer1000Calls": {
+            "ORIGINAL": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "SHAM": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "INTEGRATED": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                1000
+              ],
+              "scopeDelegations": [
+                1000
+              ]
+            }
+          }
+        }
+      ],
+      "normalProcessQuitVerified": false,
+      "completedRetirementThenOwnedStop": true
     },
     {
-      "condition": "height_-0.4",
-      "factor": "1",
-      "rays": 10,
-      "hits": 0,
-      "falseClear": 0,
-      "contacts": [
-        3
-      ]
-    },
-    {
-      "condition": "height_-0.2",
-      "factor": "0.5",
-      "rays": 10,
-      "hits": 10,
-      "falseClear": 0,
-      "contacts": [
-        3
-      ]
-    },
-    {
-      "condition": "height_-0.2",
-      "factor": "1",
-      "rays": 10,
-      "hits": 10,
-      "falseClear": 0,
-      "contacts": [
-        3
-      ]
-    },
-    {
-      "condition": "height_0",
-      "factor": "0.5",
-      "rays": 10,
-      "hits": 10,
-      "falseClear": 0,
-      "contacts": [
-        3
-      ]
-    },
-    {
-      "condition": "height_0",
-      "factor": "1",
-      "rays": 10,
-      "hits": 10,
-      "falseClear": 0,
-      "contacts": [
-        3
-      ]
-    },
-    {
-      "condition": "height_0.5",
-      "factor": "0.5",
-      "rays": 10,
-      "hits": 10,
-      "falseClear": 0,
-      "contacts": [
-        3
-      ]
-    },
-    {
-      "condition": "height_0.5",
-      "factor": "1",
-      "rays": 10,
-      "hits": 10,
-      "falseClear": 0,
-      "contacts": [
-        3
-      ]
-    },
-    {
-      "condition": "height_0.9",
-      "factor": "0.5",
-      "rays": 10,
-      "hits": 10,
-      "falseClear": 0,
-      "contacts": [
-        3
-      ]
-    },
-    {
-      "condition": "height_0.9",
-      "factor": "1",
-      "rays": 10,
-      "hits": 10,
-      "falseClear": 0,
-      "contacts": [
-        3
-      ]
-    },
-    {
-      "condition": "height_1.1",
-      "factor": "0.5",
-      "rays": 10,
-      "hits": 10,
-      "falseClear": 0,
-      "contacts": [
-        3
-      ]
-    },
-    {
-      "condition": "height_1.1",
-      "factor": "1",
-      "rays": 10,
-      "hits": 10,
-      "falseClear": 0,
-      "contacts": [
-        3
-      ]
-    },
-    {
-      "condition": "height_1.4",
-      "factor": "0.5",
-      "rays": 10,
-      "hits": 0,
-      "falseClear": 0,
-      "contacts": [
-        0
-      ]
-    },
-    {
-      "condition": "height_1.4",
-      "factor": "1",
-      "rays": 10,
-      "hits": 0,
-      "falseClear": 0,
-      "contacts": [
-        3
-      ]
-    },
-    {
-      "condition": "edge_inside",
-      "factor": "0.5",
-      "rays": 10,
-      "hits": 6,
-      "falseClear": 0,
-      "contacts": [
-        2
-      ]
-    },
-    {
-      "condition": "edge_inside",
-      "factor": "1",
-      "rays": 10,
-      "hits": 6,
-      "falseClear": 0,
-      "contacts": [
-        2
-      ]
-    },
-    {
-      "condition": "edge_outside",
-      "factor": "0.5",
-      "rays": 10,
-      "hits": 4,
-      "falseClear": 0,
-      "contacts": [
-        2
-      ]
-    },
-    {
-      "condition": "edge_outside",
-      "factor": "1",
-      "rays": 10,
-      "hits": 4,
-      "falseClear": 0,
-      "contacts": [
-        2
-      ]
+      "run": "terrain-integrated-method-cost2b",
+      "engineSha256": "4bbf370b1d479e0556e916d21213bafba383cbdd3a12c6e2518cd49c1ca64e70",
+      "rows": 192,
+      "calls": 192000,
+      "orderReversed": true,
+      "missionSha256": "3b9915339bc91b67e10ee288c94a5e231e4c136581cb1bb15b6eb335b525fe40",
+      "tsvSha256": "5c47096f99791b2fc25e48520aa79ac028797d338359bdba6ec3ea45252c41d6",
+      "conditions": [
+        {
+          "condition": "terrain",
+          "blockElapsedTicks": {
+            "ORIGINAL": {
+              "samples": 8,
+              "p50": 496705.0,
+              "p95": 527040.25,
+              "p99": 534489.65
+            },
+            "SHAM": {
+              "samples": 8,
+              "p50": 492081.5,
+              "p95": 559087.6,
+              "p99": 584658.32
+            },
+            "INTEGRATED": {
+              "samples": 8,
+              "p50": 248318.0,
+              "p95": 255462.9,
+              "p99": 257267.78
+            }
+          },
+          "groupPairs": [
+            {
+              "group": 0,
+              "medianTicks": {
+                "ORIGINAL": 485514.0,
+                "SHAM": 489360.0,
+                "INTEGRATED": 249783.0
+              },
+              "shamVsOriginalPercent": 0.7921501748662241,
+              "integratedVsOriginalPercent": -48.552873861515835,
+              "integratedVsShamPercent": -48.95720941638058,
+              "integratedVsOriginalTicks": -235731.0
+            },
+            {
+              "group": 8,
+              "medianTicks": {
+                "ORIGINAL": 519396.5,
+                "SHAM": 499264.5,
+                "INTEGRATED": 252880.5
+              },
+              "shamVsOriginalPercent": -3.8760369005181983,
+              "integratedVsOriginalPercent": -51.31262917636141,
+              "integratedVsShamPercent": -49.349392957039804,
+              "integratedVsOriginalTicks": -266516.0
+            },
+            {
+              "group": 16,
+              "medianTicks": {
+                "ORIGINAL": 505321.5,
+                "SHAM": 539669.0,
+                "INTEGRATED": 245513.0
+              },
+              "shamVsOriginalPercent": 6.797157849012958,
+              "integratedVsOriginalPercent": -51.41449552413662,
+              "integratedVsShamPercent": -54.50674394860553,
+              "integratedVsOriginalTicks": -259808.5
+            },
+            {
+              "group": 24,
+              "medianTicks": {
+                "ORIGINAL": 491176.5,
+                "SHAM": 490072.5,
+                "INTEGRATED": 249781.5
+              },
+              "shamVsOriginalPercent": -0.22476645360679504,
+              "integratedVsOriginalPercent": -49.146284482258416,
+              "integratedVsShamPercent": -49.03172489784675,
+              "integratedVsOriginalTicks": -241395.0
+            }
+          ],
+          "relativePercent": {
+            "shamVsOriginalPercent": 0.2836918606297145,
+            "integratedVsOriginalPercent": -50.22945682930991,
+            "integratedVsShamPercent": -49.19055892744328
+          },
+          "absoluteMedianGroupDeltaTicks": -250601.75,
+          "countersPer1000Calls": {
+            "ORIGINAL": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "SHAM": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "INTEGRATED": {
+              "footRays": [
+                0
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                1000
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                10000
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                1000
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            }
+          }
+        },
+        {
+          "condition": "roof",
+          "blockElapsedTicks": {
+            "ORIGINAL": {
+              "samples": 8,
+              "p50": 701365.5,
+              "p95": 742196.1,
+              "p99": 747111.22
+            },
+            "SHAM": {
+              "samples": 8,
+              "p50": 699661.0,
+              "p95": 735399.35,
+              "p99": 736793.47
+            },
+            "INTEGRATED": {
+              "samples": 8,
+              "p50": 704784.0,
+              "p95": 738957.8,
+              "p99": 740590.76
+            }
+          },
+          "groupPairs": [
+            {
+              "group": 1,
+              "medianTicks": {
+                "ORIGINAL": 698431.5,
+                "SHAM": 701882.5,
+                "INTEGRATED": 711680.5
+              },
+              "shamVsOriginalPercent": 0.49410715295630236,
+              "integratedVsOriginalPercent": 1.8969648419351115,
+              "integratedVsShamPercent": 1.3959601500251217,
+              "integratedVsOriginalTicks": 13249.0
+            },
+            {
+              "group": 9,
+              "medianTicks": {
+                "ORIGINAL": 727559.5,
+                "SHAM": 734652.5,
+                "INTEGRATED": 738083.0
+              },
+              "shamVsOriginalPercent": 0.9749030835278782,
+              "integratedVsOriginalPercent": 1.446410912097229,
+              "integratedVsShamPercent": 0.4669554653390584,
+              "integratedVsOriginalTicks": 10523.5
+            },
+            {
+              "group": 17,
+              "medianTicks": {
+                "ORIGINAL": 693804.5,
+                "SHAM": 693487.0,
+                "INTEGRATED": 704784.0
+              },
+              "shamVsOriginalPercent": -0.04576217075559219,
+              "integratedVsOriginalPercent": 1.5825063112159032,
+              "integratedVsShamPercent": 1.6290139541188298,
+              "integratedVsOriginalTicks": 10979.5
+            },
+            {
+              "group": 25,
+              "medianTicks": {
+                "ORIGINAL": 709987.0,
+                "SHAM": 694142.0,
+                "INTEGRATED": 699670.0
+              },
+              "shamVsOriginalPercent": -2.2317310035254168,
+              "integratedVsOriginalPercent": -1.4531251980670068,
+              "integratedVsShamPercent": 0.7963788389119264,
+              "integratedVsOriginalTicks": -10317.0
+            }
+          ],
+          "relativePercent": {
+            "shamVsOriginalPercent": 0.2241724911003551,
+            "integratedVsOriginalPercent": 1.5144586116565661,
+            "integratedVsShamPercent": 1.096169494468524
+          },
+          "absoluteMedianGroupDeltaTicks": 10751.5,
+          "countersPer1000Calls": {
+            "ORIGINAL": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "SHAM": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "INTEGRATED": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                1000
+              ],
+              "scopeDelegations": [
+                1000
+              ]
+            }
+          }
+        },
+        {
+          "condition": "edge",
+          "blockElapsedTicks": {
+            "ORIGINAL": {
+              "samples": 8,
+              "p50": 591848.5,
+              "p95": 618129.8,
+              "p99": 624685.16
+            },
+            "SHAM": {
+              "samples": 8,
+              "p50": 592327.0,
+              "p95": 601838.15,
+              "p99": 603493.23
+            },
+            "INTEGRATED": {
+              "samples": 8,
+              "p50": 599580.0,
+              "p95": 676875.45,
+              "p99": 682742.29
+            }
+          },
+          "groupPairs": [
+            {
+              "group": 2,
+              "medianTicks": {
+                "ORIGINAL": 609667.0,
+                "SHAM": 593822.0,
+                "INTEGRATED": 597718.5
+              },
+              "shamVsOriginalPercent": -2.59895976000013,
+              "integratedVsOriginalPercent": -1.9598403718751434,
+              "integratedVsShamPercent": 0.6561730619613293,
+              "integratedVsOriginalTicks": -11948.5
+            },
+            {
+              "group": 10,
+              "medianTicks": {
+                "ORIGINAL": 599518.0,
+                "SHAM": 599131.5,
+                "INTEGRATED": 632782.5
+              },
+              "shamVsOriginalPercent": -0.06446845632658293,
+              "integratedVsOriginalPercent": 5.548540660997658,
+              "integratedVsShamPercent": 5.616630072029261,
+              "integratedVsOriginalTicks": 33264.5
+            },
+            {
+              "group": 18,
+              "medianTicks": {
+                "ORIGINAL": 587724.5,
+                "SHAM": 590269.5,
+                "INTEGRATED": 591633.0
+              },
+              "shamVsOriginalPercent": 0.4330260181428569,
+              "integratedVsOriginalPercent": 0.6650224722637876,
+              "integratedVsShamPercent": 0.23099618055819615,
+              "integratedVsOriginalTicks": 3908.5
+            },
+            {
+              "group": 26,
+              "medianTicks": {
+                "ORIGINAL": 587863.5,
+                "SHAM": 592191.5,
+                "INTEGRATED": 638598.0
+              },
+              "shamVsOriginalPercent": 0.7362253312205969,
+              "integratedVsOriginalPercent": 8.630319793625564,
+              "integratedVsShamPercent": 7.836400893967577,
+              "integratedVsOriginalTicks": 50734.5
+            }
+          ],
+          "relativePercent": {
+            "shamVsOriginalPercent": 0.18427878090813699,
+            "integratedVsOriginalPercent": 3.106781566630723,
+            "integratedVsShamPercent": 3.136401566995295
+          },
+          "absoluteMedianGroupDeltaTicks": 18586.5,
+          "countersPer1000Calls": {
+            "ORIGINAL": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "SHAM": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "INTEGRATED": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                1000
+              ],
+              "scopeDelegations": [
+                1000
+              ]
+            }
+          }
+        },
+        {
+          "condition": "lift_reject",
+          "blockElapsedTicks": {
+            "ORIGINAL": {
+              "samples": 8,
+              "p50": 456460.0,
+              "p95": 484081.6,
+              "p99": 491446.72
+            },
+            "SHAM": {
+              "samples": 8,
+              "p50": 452350.5,
+              "p95": 490725.25,
+              "p99": 494176.25
+            },
+            "INTEGRATED": {
+              "samples": 8,
+              "p50": 202265.5,
+              "p95": 233855.69999999998,
+              "p99": 246455.13999999998
+            }
+          },
+          "groupPairs": [
+            {
+              "group": 3,
+              "medianTicks": {
+                "ORIGINAL": 476928.0,
+                "SHAM": 463397.5,
+                "INTEGRATED": 202273.5
+              },
+              "shamVsOriginalPercent": -2.837011037305426,
+              "integratedVsOriginalPercent": -57.58825231481482,
+              "integratedVsShamPercent": -56.34989398950145,
+              "integratedVsOriginalTicks": -274654.5
+            },
+            {
+              "group": 11,
+              "medianTicks": {
+                "ORIGINAL": 455904.5,
+                "SHAM": 450277.0,
+                "INTEGRATED": 201201.0
+              },
+              "shamVsOriginalPercent": -1.2343593888632376,
+              "integratedVsOriginalPercent": -55.867731070871194,
+              "integratedVsShamPercent": -55.316172045207736,
+              "integratedVsOriginalTicks": -254703.5
+            },
+            {
+              "group": 19,
+              "medianTicks": {
+                "ORIGINAL": 444832.0,
+                "SHAM": 443728.0,
+                "INTEGRATED": 199477.0
+              },
+              "shamVsOriginalPercent": -0.24818358391482942,
+              "integratedVsOriginalPercent": -55.1567782893317,
+              "integratedVsShamPercent": -55.04520787509466,
+              "integratedVsOriginalTicks": -245355.0
+            },
+            {
+              "group": 27,
+              "medianTicks": {
+                "ORIGINAL": 461699.5,
+                "SHAM": 488876.5,
+                "INTEGRATED": 227106.0
+              },
+              "shamVsOriginalPercent": 5.886296173160255,
+              "integratedVsOriginalPercent": -50.810862909749744,
+              "integratedVsShamPercent": -53.54532279624813,
+              "integratedVsOriginalTicks": -234593.5
+            }
+          ],
+          "relativePercent": {
+            "shamVsOriginalPercent": -0.7412714863890335,
+            "integratedVsOriginalPercent": -55.51225468010145,
+            "integratedVsShamPercent": -55.1806899601512
+          },
+          "absoluteMedianGroupDeltaTicks": -250029.25,
+          "countersPer1000Calls": {
+            "ORIGINAL": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                0
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "SHAM": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                0
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "INTEGRATED": {
+              "footRays": [
+                0
+              ],
+              "jointSweeps": [
+                0
+              ],
+              "certificateQueries": [
+                1000
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                10000
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                1000
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            }
+          }
+        },
+        {
+          "condition": "wrong_ground_hint",
+          "blockElapsedTicks": {
+            "ORIGINAL": {
+              "samples": 8,
+              "p50": 705004.0,
+              "p95": 712723.7,
+              "p99": 713288.74
+            },
+            "SHAM": {
+              "samples": 8,
+              "p50": 707169.0,
+              "p95": 733947.5,
+              "p99": 741644.7
+            },
+            "INTEGRATED": {
+              "samples": 8,
+              "p50": 723083.5,
+              "p95": 750990.5499999999,
+              "p99": 758429.3099999999
+            }
+          },
+          "groupPairs": [
+            {
+              "group": 4,
+              "medianTicks": {
+                "ORIGINAL": 705242.5,
+                "SHAM": 700224.5,
+                "INTEGRATED": 722543.0
+              },
+              "shamVsOriginalPercent": -0.7115283040939779,
+              "integratedVsOriginalPercent": 2.4531278248262067,
+              "integratedVsShamPercent": 3.187334919015261,
+              "integratedVsOriginalTicks": 17300.5
+            },
+            {
+              "group": 12,
+              "medianTicks": {
+                "ORIGINAL": 706647.0,
+                "SHAM": 706907.5,
+                "INTEGRATED": 718344.5
+              },
+              "shamVsOriginalPercent": 0.03686423348574497,
+              "integratedVsOriginalPercent": 1.6553526725507917,
+              "integratedVsShamPercent": 1.6178920155748733,
+              "integratedVsOriginalTicks": 11697.5
+            },
+            {
+              "group": 20,
+              "medianTicks": {
+                "ORIGINAL": 701942.5,
+                "SHAM": 708422.0,
+                "INTEGRATED": 738735.5
+              },
+              "shamVsOriginalPercent": 0.9230813065172816,
+              "integratedVsOriginalPercent": 5.241597424290445,
+              "integratedVsShamPercent": 4.279017308892152,
+              "integratedVsOriginalTicks": 36793.0
+            },
+            {
+              "group": 28,
+              "medianTicks": {
+                "ORIGINAL": 709919.5,
+                "SHAM": 726822.5,
+                "INTEGRATED": 730091.0
+              },
+              "shamVsOriginalPercent": 2.380974180875439,
+              "integratedVsOriginalPercent": 2.841378494322244,
+              "integratedVsShamPercent": 0.4496971406361183,
+              "integratedVsOriginalTicks": 20171.5
+            }
+          ],
+          "relativePercent": {
+            "shamVsOriginalPercent": 0.4799727700015133,
+            "integratedVsOriginalPercent": 2.6472531595742255,
+            "integratedVsShamPercent": 2.402613467295067
+          },
+          "absoluteMedianGroupDeltaTicks": 18736.0,
+          "countersPer1000Calls": {
+            "ORIGINAL": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "SHAM": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "INTEGRATED": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                1000
+              ],
+              "scopeDelegations": [
+                1000
+              ]
+            }
+          }
+        },
+        {
+          "condition": "ground_near_structure",
+          "blockElapsedTicks": {
+            "ORIGINAL": {
+              "samples": 8,
+              "p50": 580447.0,
+              "p95": 613354.15,
+              "p99": 625430.83
+            },
+            "SHAM": {
+              "samples": 8,
+              "p50": 579091.5,
+              "p95": 624626.7999999999,
+              "p99": 638518.16
+            },
+            "INTEGRATED": {
+              "samples": 8,
+              "p50": 598128.0,
+              "p95": 760375.8999999999,
+              "p99": 825589.58
+            }
+          },
+          "groupPairs": [
+            {
+              "group": 5,
+              "medianTicks": {
+                "ORIGINAL": 578995.0,
+                "SHAM": 608555.0,
+                "INTEGRATED": 590787.0
+              },
+              "shamVsOriginalPercent": 5.105398146788831,
+              "integratedVsOriginalPercent": 2.0366324406946523,
+              "integratedVsShamPercent": -2.9197032314252636,
+              "integratedVsOriginalTicks": 11792.0
+            },
+            {
+              "group": 13,
+              "medianTicks": {
+                "ORIGINAL": 601099.0,
+                "SHAM": 568614.0,
+                "INTEGRATED": 596533.5
+              },
+              "shamVsOriginalPercent": -5.4042678493892,
+              "integratedVsOriginalPercent": -0.7595254691822761,
+              "integratedVsShamPercent": 4.910097183678208,
+              "integratedVsOriginalTicks": -4565.5
+            },
+            {
+              "group": 21,
+              "medianTicks": {
+                "ORIGINAL": 573846.5,
+                "SHAM": 584050.5,
+                "INTEGRATED": 725440.0
+              },
+              "shamVsOriginalPercent": 1.7781758710735396,
+              "integratedVsOriginalPercent": 26.417081919990792,
+              "integratedVsShamPercent": 24.208437455322795,
+              "integratedVsOriginalTicks": 151593.5
+            },
+            {
+              "group": 29,
+              "medianTicks": {
+                "ORIGINAL": 583198.5,
+                "SHAM": 583339.5,
+                "INTEGRATED": 598128.0
+              },
+              "shamVsOriginalPercent": 0.024177016916193672,
+              "integratedVsOriginalPercent": 2.5599345677329355,
+              "integratedVsShamPercent": 2.5351446284710644,
+              "integratedVsOriginalTicks": 14929.5
+            }
+          ],
+          "relativePercent": {
+            "shamVsOriginalPercent": 0.9011764439948666,
+            "integratedVsOriginalPercent": 2.298283504213794,
+            "integratedVsShamPercent": 3.7226209060746362
+          },
+          "absoluteMedianGroupDeltaTicks": 13360.75,
+          "countersPer1000Calls": {
+            "ORIGINAL": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "SHAM": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "INTEGRATED": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                1000
+              ],
+              "scopeDelegations": [
+                1000
+              ]
+            }
+          }
+        },
+        {
+          "condition": "ground_many_hints",
+          "blockElapsedTicks": {
+            "ORIGINAL": {
+              "samples": 8,
+              "p50": 498302.5,
+              "p95": 554324.75,
+              "p99": 567309.75
+            },
+            "SHAM": {
+              "samples": 8,
+              "p50": 494548.0,
+              "p95": 538476.0499999999,
+              "p99": 552105.61
+            },
+            "INTEGRATED": {
+              "samples": 8,
+              "p50": 278586.5,
+              "p95": 360244.94999999995,
+              "p99": 383732.18999999994
+            }
+          },
+          "groupPairs": [
+            {
+              "group": 6,
+              "medianTicks": {
+                "ORIGINAL": 507314.5,
+                "SHAM": 494548.0,
+                "INTEGRATED": 281727.0
+              },
+              "shamVsOriginalPercent": -2.5164863216012967,
+              "integratedVsOriginalPercent": -44.46699236863918,
+              "integratedVsShamPercent": -43.03343659260578,
+              "integratedVsOriginalTicks": -225587.5
+            },
+            {
+              "group": 14,
+              "medianTicks": {
+                "ORIGINAL": 527312.5,
+                "SHAM": 485927.0,
+                "INTEGRATED": 273812.5
+              },
+              "shamVsOriginalPercent": -7.8483821263482305,
+              "integratedVsOriginalPercent": -48.07395993836672,
+              "integratedVsShamPercent": -43.65151555686349,
+              "integratedVsOriginalTicks": -253500.0
+            },
+            {
+              "group": 22,
+              "medianTicks": {
+                "ORIGINAL": 508572.0,
+                "SHAM": 526996.0,
+                "INTEGRATED": 347662.5
+              },
+              "shamVsOriginalPercent": 3.6226925587724113,
+              "integratedVsOriginalPercent": -31.639472876996766,
+              "integratedVsShamPercent": -34.02938542228024,
+              "integratedVsOriginalTicks": -160909.5
+            },
+            {
+              "group": 30,
+              "medianTicks": {
+                "ORIGINAL": 494101.5,
+                "SHAM": 498456.0,
+                "INTEGRATED": 278586.5
+              },
+              "shamVsOriginalPercent": 0.8812966566585922,
+              "integratedVsOriginalPercent": -43.617556311810425,
+              "integratedVsShamPercent": -44.11011202593609,
+              "integratedVsOriginalTicks": -215515.0
+            }
+          ],
+          "relativePercent": {
+            "shamVsOriginalPercent": -0.8175948324713522,
+            "integratedVsOriginalPercent": -44.04227434022481,
+            "integratedVsShamPercent": -43.342476074734634
+          },
+          "absoluteMedianGroupDeltaTicks": -220551.25,
+          "countersPer1000Calls": {
+            "ORIGINAL": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "SHAM": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "INTEGRATED": {
+              "footRays": [
+                0
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                1000
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                10000
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                1000
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            }
+          }
+        },
+        {
+          "condition": "fall_state",
+          "blockElapsedTicks": {
+            "ORIGINAL": {
+              "samples": 8,
+              "p50": 512988.0,
+              "p95": 616359.0,
+              "p99": 629513.4
+            },
+            "SHAM": {
+              "samples": 8,
+              "p50": 490391.0,
+              "p95": 551313.15,
+              "p99": 554805.03
+            },
+            "INTEGRATED": {
+              "samples": 8,
+              "p50": 500566.0,
+              "p95": 514152.4,
+              "p99": 515506.48
+            }
+          },
+          "groupPairs": [
+            {
+              "group": 7,
+              "medianTicks": {
+                "ORIGINAL": 554537.0,
+                "SHAM": 549442.5,
+                "INTEGRATED": 506409.0
+              },
+              "shamVsOriginalPercent": -0.9186943341923048,
+              "integratedVsOriginalPercent": -8.678951990579531,
+              "integratedVsShamPercent": -7.832211741902018,
+              "integratedVsOriginalTicks": -48128.0
+            },
+            {
+              "group": 15,
+              "medianTicks": {
+                "ORIGINAL": 516652.0,
+                "SHAM": 488937.0,
+                "INTEGRATED": 494375.0
+              },
+              "shamVsOriginalPercent": -5.36434582659121,
+              "integratedVsOriginalPercent": -4.311799818833562,
+              "integratedVsShamPercent": 1.112208730368125,
+              "integratedVsOriginalTicks": -22277.0
+            },
+            {
+              "group": 23,
+              "medianTicks": {
+                "ORIGINAL": 492490.0,
+                "SHAM": 490858.0,
+                "INTEGRATED": 498243.0
+              },
+              "shamVsOriginalPercent": -0.33137728684846657,
+              "integratedVsOriginalPercent": 1.1681455461024504,
+              "integratedVsShamPercent": 1.5045084321738678,
+              "integratedVsOriginalTicks": 5753.0
+            },
+            {
+              "group": 31,
+              "medianTicks": {
+                "ORIGINAL": 563771.5,
+                "SHAM": 488242.5,
+                "INTEGRATED": 511787.0
+              },
+              "shamVsOriginalPercent": -13.397094390191766,
+              "integratedVsOriginalPercent": -9.22084567949959,
+              "integratedVsShamPercent": 4.822296297434159,
+              "integratedVsOriginalTicks": -51984.5
+            }
+          ],
+          "relativePercent": {
+            "shamVsOriginalPercent": -3.141520080391757,
+            "integratedVsOriginalPercent": -6.495375904706546,
+            "integratedVsShamPercent": 1.3083585812709964
+          },
+          "absoluteMedianGroupDeltaTicks": -35202.5,
+          "countersPer1000Calls": {
+            "ORIGINAL": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "SHAM": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                0
+              ],
+              "scopeDelegations": [
+                0
+              ]
+            },
+            "INTEGRATED": {
+              "footRays": [
+                10000
+              ],
+              "jointSweeps": [
+                4000
+              ],
+              "certificateQueries": [
+                0
+              ],
+              "certificateBlocked": [
+                0
+              ],
+              "terrainSamples": [
+                0
+              ],
+              "terrainRejected": [
+                0
+              ],
+              "scopeChecks": [
+                1000
+              ],
+              "scopeDelegations": [
+                1000
+              ]
+            }
+          }
+        }
+      ],
+      "normalProcessQuitVerified": false,
+      "completedRetirementThenOwnedStop": true
     }
   ],
   "blockers": [
-    "actual original timed baseline absent",
-    "full terrain safety not established",
-    "new engine version breaks old cost comparability"
+    "ineligible3%cap exceeded",
+    "sham fluctuation prevents pure overhead attribution",
+    "wholeCPU and dynamic terrain unverified"
   ],
   "evidenceReferences": [
     {
-      "fileId": "plan.json",
-      "sha256": "c89cc1a563371f0bad9e9ecac775335317b6bf461483eb75c2e2a01ee3d95863"
+      "fileId": "terrain-integrated-method-cost-analysis.json",
+      "sha256": "ed83d0ef451b9e46e659092f08ee221db57ce3ab8837bdd92df735599048532c"
     },
     {
-      "fileId": "analysis.json",
-      "sha256": "4f85d72d8f0e8d539b9f02c0f12a15bcb38d31d5a81e368bfcfc257463b49494"
+      "fileId": "analyze_terrain_integrated_method_cost.py",
+      "sha256": "0f255d1d1fa2379d8d8ef2bf66afa45b1c0b141801b82ec643dea04889387145"
     },
     {
       "fileId": "server-launch-BProbe.json",
-      "sha256": "2c103a8d1f731a38d1eb386e8256f1c44925ef468b038c770629f7fd6bdf85b8"
-    },
-    {
-      "fileId": "terrain-certificate-boundary.tsv",
-      "sha256": "d5330142b0b2f9abccd544dae03172c89659a66f26b2cb2135b0fefe4a4f4e65"
-    },
-    {
-      "fileId": "init.c",
-      "sha256": "ec654f266c6e7706c03049d755358ee14965ac6c569cec49f0d3b429ae107d4e"
-    },
-    {
-      "fileId": "preflight-rejection.json",
-      "sha256": "b880170216d9aee12ac55db4a22e9060e8387d8434e94f455ad0786fd929ae02"
-    },
-    {
-      "fileId": "guard-rejection.json",
-      "sha256": "4ce6a3c8969397d75735a89f1259eb039939dc273dd13adcf58ddc2855a3bcf1"
-    },
-    {
-      "fileId": "init.c",
-      "sha256": "6701cde04cd15ca31e696a22b13480b609b69940d58777fa99b0c9e323c1cc61"
+      "sha256": "adb1e8f8918eda1f1ac882808737aaf8c81f9ecb00a962604a0eae5a9fc00934"
     },
     {
       "fileId": "plan.json",
-      "sha256": "8dfb8f3f81aed44b84a46f58d757156efbfb6f32a12dee4fe3e13328f4dd05ee"
+      "sha256": "e75f7d36fb7b90fea51eab34455b7d11b117cb1fa68d2379f6b83d85429dd492"
     },
     {
-      "fileId": "report-body.md",
-      "sha256": "abbe37a2723260155dea178314b9b00c50030870658d72c1063887a5d443898d"
+      "fileId": "init.c",
+      "sha256": "3b9915339bc91b67e10ee288c94a5e231e4c136581cb1bb15b6eb335b525fe40"
     },
     {
-      "fileId": "DGBNativeGround.c",
-      "sha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+      "fileId": "server-launch-BProbe.json",
+      "sha256": "fa7e52c33ead19393345fc45f85f3d99140b278af14a2608f55a0786e94ae8fa"
     },
     {
-      "fileId": "integration-boundary-decision.json",
-      "sha256": "3a07b2e3483ee355e03c0947ff2724e7b45b13e288cf0aa5180b542c847aaabd"
+      "fileId": "terrain-integrated-cost.tsv",
+      "sha256": "65cc38cd020f93f92fddd72a865f870d77e1a214a04eac013d8a260a4b91ec4e"
+    },
+    {
+      "fileId": "plan.json",
+      "sha256": "fe0a88ad9ce2e6ae60eae8f0f98b51760f5378860e2ab499d0ec10325c0fac28"
+    },
+    {
+      "fileId": "init.c",
+      "sha256": "3b9915339bc91b67e10ee288c94a5e231e4c136581cb1bb15b6eb335b525fe40"
+    },
+    {
+      "fileId": "server-launch-BProbe.json",
+      "sha256": "0c1f75303bfc2289cca15ad89c8aaed7318e9153b778dde75b3c1109a59c59b7"
+    },
+    {
+      "fileId": "terrain-integrated-cost.tsv",
+      "sha256": "5c47096f99791b2fc25e48520aa79ac028797d338359bdba6ec3ea45252c41d6"
     }
-  ],
-  "integrationBoundary": {
-    "originalPath": "DGBNativeGroundBody.SolveContacts -> SolveContactsInternal",
-    "previousTestPath": "SolveContacts -> NFTerrainMethodBody.SolveContactsInternal -> ReferenceExecute or CandidateExecute",
-    "originalTimedDirectly": false,
-    "originalUsedForCorrectness": true,
-    "ineligibleCandidateStillPaysDispatchAndEligibility": true,
-    "nativeWorldJointFallbackTailRetained": true,
-    "currentNetworkBodySourceOverridesInitializeOnly": true,
-    "wrapperCostMeasuredSeparately": false,
-    "integrationDecision": "isolate direct original, unchanged sham copy and single-body integrated foot branch; preserve failed candidates; no automatic predicate tuning",
-    "certificateScope": "9 synthetic foot origins relative to one authored fixture; two shape arguments; not slopes/holes/dynamic coverage",
-    "currentServerVersion": "1.30.164289.70",
-    "currentServerSha256": "4bbf370b1d479e0556e916d21213bafba383cbdd3a12c6e2518cd49c1ca64e70",
-    "historicalCostBuild": "a500be804ffed5cde369337aeb6ab477ef5ee0b5015764be2b1953c85ec3060d",
-    "crossVersionCostComparisonAllowed": false
-  }
+  ]
 }

@@ -21,4 +21,4 @@ sourceRunId: network-gameplay/terrain-scope-and-inline-cost · 2026-11-03
 
 ## 현재 최적화 후속
 
-[실제솔버경계·지지영역검사](operations/npc-terrain-boundary-review-20261104.md) · 현재DayZ1.30해시로분리.180대조/120rayhit,falseClear0.성능개선판정아님.다음은원본직접/동일래퍼/통합후보의동일버전비교.기존실패후보·게임간연구보존.
+[원본직접·래퍼·통합비용비교](operations/npc-terrain-integrated-cost-20261104.md) · 1.30동일버전2프로세스/384000호출.평지국소−48~50%,제외경로3%상한실패로미채택.전체CPU/Present미측정.기존기능·실패자료보존.
