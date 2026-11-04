@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "reviewType",
+    "sourceRunId",
+    "repositories",
+    "selection",
+    "newRuntimeRuns",
+    "pboModified",
+    "runtimeEfficacy",
+    "finalAcceptance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "reviewType": {
+      "const": "static_source_analysis"
+    },
+    "sourceRunId": {
+      "const": "operations/horde-ai-source-review-20261104"
+    },
+    "newRuntimeRuns": {
+      "const": 0
+    },
+    "pboModified": {
+      "const": false
+    },
+    "runtimeEfficacy": {
+      "const": "not_measured"
+    },
+    "finalAcceptance": {
+      "const": false
+    },
+    "repositories": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "url",
+          "commit",
+          "checkoutFiles",
+          "trackedCheckoutUnchanged"
+        ],
+        "properties": {
+          "commit": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{40}$"
+          },
+          "trackedCheckoutUnchanged": {
+            "const": true
+          }
+        }
+      }
+    },
+    "selection": {
+      "type": "array",
+      "minItems": 25,
+      "maxItems": 25,
+      "items": {
+        "type": "object",
+        "required": [
+          "fileId",
+          "startLine",
+          "endLine",
+          "sha256",
+          "selectionReason"
+        ],
+        "properties": {
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "startLine": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "endLine": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    }
+  }
+}

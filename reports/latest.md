@@ -14,7 +14,6 @@ sourceRunId: network-gameplay/terrain-scope-and-inline-cost · 2026-11-03
 - [평지 바닐라/커스텀 비교](operations/matched-flat-pursuit-20261102.md)
 - [바이너리·메모리 도구 진단](operations/npc-native-analysis-barriers-20261103.md)
 
+## 별도 정적 소스 분석
 
-## 좀보이드 연결 복구와 재사용 조사
-
-[상세 보고서](operations/npc-pz-bridge-recovery-20261104.md) · 문서/코드221개 복구,오프라인16시험통과. 과거 원본64개체몸체·포즈표현과제한AI프록시를확인했으며앞선위치중계만설명을정정. 공유월드·전투미완료,새게임실행없음. 기존64CPU최적화는별도보존.
+2026-11-04 [AntifreeZe·Expansion AI 분석](operations/npc-horde-ai-source-review-20261104.md). 새 실험0회이며 위 실험 날짜·수치·수용 판정은 바뀌지 않았다. [PZ 연결 복구](operations/npc-pz-bridge-recovery-20261104.md)도 별도 운영 기록이다.

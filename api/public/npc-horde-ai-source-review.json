@@ -1,0 +1,236 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-04T19:11:30.970730+09:00",
+  "reviewType": "static_source_analysis",
+  "sourceRunId": "operations/horde-ai-source-review-20261104",
+  "repositories": [
+    {
+      "id": "antifreeze",
+      "url": "https://github.com/WoozyMasta/antifreeze",
+      "commit": "2a805e19546a3504f2fa3dfde90235e20a1ce7a0",
+      "branch": "master",
+      "sparseCheckout": false,
+      "trackedCheckoutUnchanged": true,
+      "checkoutFiles": 23,
+      "checkoutBytes": 348371
+    },
+    {
+      "id": "expansion",
+      "url": "https://github.com/salutesh/DayZ-Expansion-Scripts",
+      "commit": "14fd692bd7eb46df05853ea31ee3d481239a826c",
+      "branch": "experimental",
+      "sparseCheckout": true,
+      "trackedCheckoutUnchanged": true,
+      "checkoutFiles": 370,
+      "checkoutBytes": 4220329
+    }
+  ],
+  "selection": [
+    {
+      "fileId": "antifreeze/scripts/4_World/Antifreeze/ZombieBase.c",
+      "startLine": 54,
+      "endLine": 181,
+      "sha256": "4a808aaa99fe2869fa0e2b655b1dc96f4063fa8ff36fda458b38199fe0a680ba",
+      "selectionReason": "AF command branch ordering and probabilistic token, not a central pool",
+      "url": "https://github.com/WoozyMasta/antifreeze/blob/2a805e19546a3504f2fa3dfde90235e20a1ce7a0/scripts/4_World/Antifreeze/ZombieBase.c#L54-L181"
+    },
+    {
+      "fileId": "antifreeze/scripts/4_World/Antifreeze/ZombieBase.c",
+      "startLine": 186,
+      "endLine": 231,
+      "sha256": "4a808aaa99fe2869fa0e2b655b1dc96f4063fa8ff36fda458b38199fe0a680ba",
+      "selectionReason": "Event wake and corpse cleanup/simulation change",
+      "url": "https://github.com/WoozyMasta/antifreeze/blob/2a805e19546a3504f2fa3dfde90235e20a1ce7a0/scripts/4_World/Antifreeze/ZombieBase.c#L186-L231"
+    },
+    {
+      "fileId": "antifreeze/scripts/4_World/Antifreeze/ZombieBase.c",
+      "startLine": 238,
+      "endLine": 348,
+      "sha256": "4a808aaa99fe2869fa0e2b655b1dc96f4063fa8ff36fda458b38199fe0a680ba",
+      "selectionReason": "Freeze ownership, attack-reach wake and per-body density query",
+      "url": "https://github.com/WoozyMasta/antifreeze/blob/2a805e19546a3504f2fa3dfde90235e20a1ce7a0/scripts/4_World/Antifreeze/ZombieBase.c#L238-L348"
+    },
+    {
+      "fileId": "antifreeze/scripts/3_Game/Antifreeze/Config.c",
+      "startLine": 27,
+      "endLine": 77,
+      "sha256": "b08b83e1390dfd3b4f32b11d4cfe3d0c365ae472c73eeb8a487f27ffd67dbd46",
+      "selectionReason": "Default constants are not measured performance",
+      "url": "https://github.com/WoozyMasta/antifreeze/blob/2a805e19546a3504f2fa3dfde90235e20a1ce7a0/scripts/3_Game/Antifreeze/Config.c#L27-L77"
+    },
+    {
+      "fileId": "antifreeze/scripts/3_Game/Antifreeze/Config.c",
+      "startLine": 311,
+      "endLine": 319,
+      "sha256": "b08b83e1390dfd3b4f32b11d4cfe3d0c365ae472c73eeb8a487f27ffd67dbd46",
+      "selectionReason": "Independent distance-dependent probability",
+      "url": "https://github.com/WoozyMasta/antifreeze/blob/2a805e19546a3504f2fa3dfde90235e20a1ce7a0/scripts/3_Game/Antifreeze/Config.c#L311-L319"
+    },
+    {
+      "fileId": "expansion/DayZExpansion/AI/Scripts/3_Game/DayZExpansion_AI/DayZGame.c",
+      "startLine": 135,
+      "endLine": 141,
+      "sha256": "16a92f934742504e2efe4d2b255ab34834522abd0098579ef5e09755c6be2047",
+      "selectionReason": "Server OnUpdate caller",
+      "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/3_Game/DayZExpansion_AI/DayZGame.c#L135-L141"
+    },
+    {
+      "fileId": "expansion/DayZExpansion/AI/Scripts/3_Game/DayZExpansion_AI/ExpansionGame.c",
+      "startLine": 49,
+      "endLine": 50,
+      "sha256": "0c3776b52d4db55a9548378425caa632b6690d7c771caca9f7fb660614340100",
+      "selectionReason": "ExpansionGame method declaration",
+      "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/3_Game/DayZExpansion_AI/ExpansionGame.c#L49-L50"
+    },
+    {
+      "fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/ExpansionWorld.c",
+      "startLine": 3,
+      "endLine": 8,
+      "sha256": "0bd865914a1c8480202b0c1f0ae99687b5b0bdb14970ade78006970fb3809e59",
+      "selectionReason": "Scheduler defaults",
+      "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/ExpansionWorld.c#L3-L8"
+    },
+    {
+      "fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/ExpansionWorld.c",
+      "startLine": 197,
+      "endLine": 332,
+      "sha256": "0bd865914a1c8480202b0c1f0ae99687b5b0bdb14970ade78006970fb3809e59",
+      "selectionReason": "FTO>0 cursor, deadline, average cost and post-call soft budget; thread code comments preserved",
+      "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/ExpansionWorld.c#L197-L332"
+    },
+    {
+      "fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Entities/AI/eAIBase.c",
+      "startLine": 7012,
+      "endLine": 7089,
+      "sha256": "0a0f39ab71865f0f335d86c4d7fcebd89e24f023108fcb06d4e9582cacf06dbd",
+      "selectionReason": "Decision/FSM tasks and path gating",
+      "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Entities/AI/eAIBase.c#L7012-L7089"
+    },
+    {
+      "fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Entities/AI/eAIBase.c",
+      "startLine": 2975,
+      "endLine": 3002,
+      "sha256": "0a0f39ab71865f0f335d86c4d7fcebd89e24f023108fcb06d4e9582cacf06dbd",
+      "selectionReason": "Cached near-range enumeration",
+      "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Entities/AI/eAIBase.c#L2975-L3002"
+    },
+    {
+      "fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Entities/AI/eAIBase.c",
+      "startLine": 3077,
+      "endLine": 3119,
+      "sha256": "0a0f39ab71865f0f335d86c4d7fcebd89e24f023108fcb06d4e9582cacf06dbd",
+      "selectionReason": "One extended-range player candidate per call, not a fixed per-second guarantee",
+      "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Entities/AI/eAIBase.c#L3077-L3119"
+    },
+    {
+      "fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/Patrols/eAIDynamicPatrol.c",
+      "startLine": 471,
+      "endLine": 566,
+      "sha256": "c94e7c36665f02d2eaab7fd898de62909131ea0a883c8efca98c1c433a7c52ff",
+      "selectionReason": "Global/category patrol count cap and 10 second debounce",
+      "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/Patrols/eAIDynamicPatrol.c#L471-L566"
+    },
+    {
+      "fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/Patrols/eAIDynamicPatrol.c",
+      "startLine": 673,
+      "endLine": 694,
+      "sha256": "c94e7c36665f02d2eaab7fd898de62909131ea0a883c8efca98c1c433a7c52ff",
+      "selectionReason": "Deferred spawn is not a timed budget",
+      "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/Patrols/eAIDynamicPatrol.c#L673-L694"
+    },
+    {
+      "fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/Patrols/eAIDynamicPatrol.c",
+      "startLine": 810,
+      "endLine": 830,
+      "sha256": "c94e7c36665f02d2eaab7fd898de62909131ea0a883c8efca98c1c433a7c52ff",
+      "selectionReason": "Spatial interest gate before despawn",
+      "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/Patrols/eAIDynamicPatrol.c#L810-L830"
+    },
+    {
+      "fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/PathFinding/ExpansionPathHandler.c",
+      "startLine": 458,
+      "endLine": 539,
+      "sha256": "e02283e30f5028077464e201d56bafa49e4d1cbd474a5a9d25ef5ee5ef5c3ced",
+      "selectionReason": "Recalculate flag, timer and overshoot; per-unit path",
+      "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/PathFinding/ExpansionPathHandler.c#L458-L539"
+    },
+    {
+      "fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/eAIGroup.c",
+      "startLine": 1220,
+      "endLine": 1251,
+      "sha256": "e289925c8fe0d30ab3ce4cf7a0df83c478a5549d1375d2ff1f4303846f520460",
+      "selectionReason": "Defer despawn while aggro, lifecycle boundary",
+      "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/eAIGroup.c#L1220-L1251"
+    },
+    {
+      "fileId": "Source/NorthFrontierHorde/Scripts/4_World/NHCoordinator.c",
+      "startLine": 202,
+      "endLine": 288,
+      "sha256": "1df7dde575b41f26d7cebf1e14fea00669e937c4451ff2432abe83b3f14d806c",
+      "selectionReason": "Order rotates but all members still visited"
+    },
+    {
+      "fileId": "Source/NorthFrontierHorde/Scripts/4_World/NHSpatial.c",
+      "startLine": 13,
+      "endLine": 42,
+      "sha256": "8a2e00f95e8e79d24033bbbe08334b20d66a537970d8b74526074055b1763936",
+      "selectionReason": "Existing grid; no need for extra per-agent broadphase"
+    },
+    {
+      "fileId": "Source/NorthFrontierHorde/Scripts/4_World/NHMember.c",
+      "startLine": 159,
+      "endLine": 203,
+      "sha256": "df694d9f8b2103ec3b0c0d691c6afa32286bf927cee9ff9d7024f03f86bba7be",
+      "selectionReason": "KeepInIdle ownership conflicts with an external freezer"
+    },
+    {
+      "fileId": "Source/DGOriginalSample/Scripts/4_World/DGBNativeGround.c",
+      "startLine": 1256,
+      "endLine": 1322,
+      "sha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82",
+      "selectionReason": "Existing gathering/sense cadence, report fan-out and director tasks"
+    },
+    {
+      "fileId": "Source/DGOriginalSample/Scripts/4_World/DGBGroundAgent.c",
+      "startLine": 97,
+      "endLine": 150,
+      "sha256": "9ceadbd93a115a285320ef76a14a51afe66b9942fbff77bb4c71d545450ec236",
+      "selectionReason": "Already throttled perception; timestamped memory"
+    },
+    {
+      "fileId": "Source/DGOriginalSample/Scripts/4_World/DGBGroundAgent.c",
+      "startLine": 204,
+      "endLine": 238,
+      "sha256": "9ceadbd93a115a285320ef76a14a51afe66b9942fbff77bb4c71d545450ec236",
+      "selectionReason": "Existing path retry and useful path retention"
+    },
+    {
+      "fileId": "Source/DGOriginalSample/Scripts/4_World/DGBNativeCrowd.c",
+      "startLine": 3,
+      "endLine": 28,
+      "sha256": "8b3145c67444b5185e4a44dcb051dc118405d9cb2268c752b3abc65daeeaddf9",
+      "selectionReason": "Existing spatial/contact policy"
+    },
+    {
+      "fileId": "research/track_b_dayz_2026-10-23/native-runtime/source/dg_lab_inputs/Scripts/4_World/DGNativeProbe.c",
+      "startLine": 202,
+      "endLine": 229,
+      "sha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86",
+      "selectionReason": "Native input dt consumed by Body.Drive; not a decision timer"
+    }
+  ],
+  "newRuntimeRuns": 0,
+  "pboModified": false,
+  "signatureVerification": "not_applicable_no_pbo_change",
+  "runtimeEfficacy": "not_measured",
+  "finalAcceptance": false,
+  "nextSingleTask": "decision_scheduler_shadow_design_and_instrumentation",
+  "integration": {
+    "antifreezeDirectInstall": "not_recommended_for_custom_traversal",
+    "expansionScheduler": "priority_design_reference",
+    "existingAnimationSession": "separate"
+  },
+  "reportPath": "reports/operations/npc-horde-ai-source-review-20261104.md",
+  "evidencePath": "evidence/npc-horde-ai-source-review-20261104.txt",
+  "selectionCriteria": "scheduler/lifecycle/reachability/time/wake and own integration boundaries; selected regions only"
+}

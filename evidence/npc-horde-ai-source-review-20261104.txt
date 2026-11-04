@@ -1,0 +1,426 @@
+AntifreeZe / Expansion AI static source review
+Selection: scheduler, lifecycle, reachability, time and event-wake boundaries.
+Upstream code is linked by immutable commit and line range; not republished here.
+Own excerpts are selected source snapshots, not runtime/PBO identity proof.
+{"fileId": "antifreeze/scripts/4_World/Antifreeze/ZombieBase.c", "startLine": 54, "endLine": 181, "sha256": "4a808aaa99fe2869fa0e2b655b1dc96f4063fa8ff36fda458b38199fe0a680ba", "selectionReason": "AF command branch ordering and probabilistic token, not a central pool", "url": "https://github.com/WoozyMasta/antifreeze/blob/2a805e19546a3504f2fa3dfde90235e20a1ce7a0/scripts/4_World/Antifreeze/ZombieBase.c#L54-L181"}
+
+{"fileId": "antifreeze/scripts/4_World/Antifreeze/ZombieBase.c", "startLine": 186, "endLine": 231, "sha256": "4a808aaa99fe2869fa0e2b655b1dc96f4063fa8ff36fda458b38199fe0a680ba", "selectionReason": "Event wake and corpse cleanup/simulation change", "url": "https://github.com/WoozyMasta/antifreeze/blob/2a805e19546a3504f2fa3dfde90235e20a1ce7a0/scripts/4_World/Antifreeze/ZombieBase.c#L186-L231"}
+
+{"fileId": "antifreeze/scripts/4_World/Antifreeze/ZombieBase.c", "startLine": 238, "endLine": 348, "sha256": "4a808aaa99fe2869fa0e2b655b1dc96f4063fa8ff36fda458b38199fe0a680ba", "selectionReason": "Freeze ownership, attack-reach wake and per-body density query", "url": "https://github.com/WoozyMasta/antifreeze/blob/2a805e19546a3504f2fa3dfde90235e20a1ce7a0/scripts/4_World/Antifreeze/ZombieBase.c#L238-L348"}
+
+{"fileId": "antifreeze/scripts/3_Game/Antifreeze/Config.c", "startLine": 27, "endLine": 77, "sha256": "b08b83e1390dfd3b4f32b11d4cfe3d0c365ae472c73eeb8a487f27ffd67dbd46", "selectionReason": "Default constants are not measured performance", "url": "https://github.com/WoozyMasta/antifreeze/blob/2a805e19546a3504f2fa3dfde90235e20a1ce7a0/scripts/3_Game/Antifreeze/Config.c#L27-L77"}
+
+{"fileId": "antifreeze/scripts/3_Game/Antifreeze/Config.c", "startLine": 311, "endLine": 319, "sha256": "b08b83e1390dfd3b4f32b11d4cfe3d0c365ae472c73eeb8a487f27ffd67dbd46", "selectionReason": "Independent distance-dependent probability", "url": "https://github.com/WoozyMasta/antifreeze/blob/2a805e19546a3504f2fa3dfde90235e20a1ce7a0/scripts/3_Game/Antifreeze/Config.c#L311-L319"}
+
+{"fileId": "expansion/DayZExpansion/AI/Scripts/3_Game/DayZExpansion_AI/DayZGame.c", "startLine": 135, "endLine": 141, "sha256": "16a92f934742504e2efe4d2b255ab34834522abd0098579ef5e09755c6be2047", "selectionReason": "Server OnUpdate caller", "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/3_Game/DayZExpansion_AI/DayZGame.c#L135-L141"}
+
+{"fileId": "expansion/DayZExpansion/AI/Scripts/3_Game/DayZExpansion_AI/ExpansionGame.c", "startLine": 49, "endLine": 50, "sha256": "0c3776b52d4db55a9548378425caa632b6690d7c771caca9f7fb660614340100", "selectionReason": "ExpansionGame method declaration", "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/3_Game/DayZExpansion_AI/ExpansionGame.c#L49-L50"}
+
+{"fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/ExpansionWorld.c", "startLine": 3, "endLine": 8, "sha256": "0bd865914a1c8480202b0c1f0ae99687b5b0bdb14970ade78006970fb3809e59", "selectionReason": "Scheduler defaults", "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/ExpansionWorld.c#L3-L8"}
+
+{"fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/ExpansionWorld.c", "startLine": 197, "endLine": 332, "sha256": "0bd865914a1c8480202b0c1f0ae99687b5b0bdb14970ade78006970fb3809e59", "selectionReason": "FTO>0 cursor, deadline, average cost and post-call soft budget; thread code comments preserved", "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/ExpansionWorld.c#L197-L332"}
+
+{"fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Entities/AI/eAIBase.c", "startLine": 7012, "endLine": 7089, "sha256": "0a0f39ab71865f0f335d86c4d7fcebd89e24f023108fcb06d4e9582cacf06dbd", "selectionReason": "Decision/FSM tasks and path gating", "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Entities/AI/eAIBase.c#L7012-L7089"}
+
+{"fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Entities/AI/eAIBase.c", "startLine": 2975, "endLine": 3002, "sha256": "0a0f39ab71865f0f335d86c4d7fcebd89e24f023108fcb06d4e9582cacf06dbd", "selectionReason": "Cached near-range enumeration", "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Entities/AI/eAIBase.c#L2975-L3002"}
+
+{"fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Entities/AI/eAIBase.c", "startLine": 3077, "endLine": 3119, "sha256": "0a0f39ab71865f0f335d86c4d7fcebd89e24f023108fcb06d4e9582cacf06dbd", "selectionReason": "One extended-range player candidate per call, not a fixed per-second guarantee", "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Entities/AI/eAIBase.c#L3077-L3119"}
+
+{"fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/Patrols/eAIDynamicPatrol.c", "startLine": 471, "endLine": 566, "sha256": "c94e7c36665f02d2eaab7fd898de62909131ea0a883c8efca98c1c433a7c52ff", "selectionReason": "Global/category patrol count cap and 10 second debounce", "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/Patrols/eAIDynamicPatrol.c#L471-L566"}
+
+{"fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/Patrols/eAIDynamicPatrol.c", "startLine": 673, "endLine": 694, "sha256": "c94e7c36665f02d2eaab7fd898de62909131ea0a883c8efca98c1c433a7c52ff", "selectionReason": "Deferred spawn is not a timed budget", "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/Patrols/eAIDynamicPatrol.c#L673-L694"}
+
+{"fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/Patrols/eAIDynamicPatrol.c", "startLine": 810, "endLine": 830, "sha256": "c94e7c36665f02d2eaab7fd898de62909131ea0a883c8efca98c1c433a7c52ff", "selectionReason": "Spatial interest gate before despawn", "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/Patrols/eAIDynamicPatrol.c#L810-L830"}
+
+{"fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/PathFinding/ExpansionPathHandler.c", "startLine": 458, "endLine": 539, "sha256": "e02283e30f5028077464e201d56bafa49e4d1cbd474a5a9d25ef5ee5ef5c3ced", "selectionReason": "Recalculate flag, timer and overshoot; per-unit path", "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/PathFinding/ExpansionPathHandler.c#L458-L539"}
+
+{"fileId": "expansion/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/eAIGroup.c", "startLine": 1220, "endLine": 1251, "sha256": "e289925c8fe0d30ab3ce4cf7a0df83c478a5549d1375d2ff1f4303846f520460", "selectionReason": "Defer despawn while aggro, lifecycle boundary", "url": "https://github.com/salutesh/DayZ-Expansion-Scripts/blob/14fd692bd7eb46df05853ea31ee3d481239a826c/DayZExpansion/AI/Scripts/4_World/DayZExpansion_AI/Classes/eAIGroup.c#L1220-L1251"}
+
+{"fileId": "Source/NorthFrontierHorde/Scripts/4_World/NHCoordinator.c", "startLine": 202, "endLine": 288, "sha256": "1df7dde575b41f26d7cebf1e14fea00669e937c4451ff2432abe83b3f14d806c", "selectionReason": "Order rotates but all members still visited"}
+202:     void Tick()
+203:     {
+204:         if (!Running) return;
+205:         float now = GetGame().GetTime() / 1000.0;
+206:         int began = GetGame().GetTime();
+207:         if (now - StartedAt >= Config.MaxRunSeconds) { Stop(); return; }
+208:         if (PendingPositions.Count() > 0)
+209:         {
+210:             if (!SpawnNext(16)) return;
+211:             LastUpdateMilliseconds = GetGame().GetTime() - began;
+212:             return;
+213:         }
+214:         bool trace = !FirstTickTraced;
+215:         FirstTickTraced = true;
+216:         if (trace) Print("NH_TICK_ENTER");
+217:         ref array<Man> players = new array<Man>;
+218:         if (trace) Print("NH_TICK_PLAYERS_ALLOCATED");
+219:         NHPerception.GatherPlayers(players);
+220:         if (trace) Print("NH_TICK_PLAYERS_GATHERED count=" + players.Count());
+221:         PathBudget = Config.MaxPathRequestsPerTick;
+222:         ObstacleDetourBudget = Config.MaxObstacleDetoursPerTick;
+223:         CrowdPlanBudget = Config.MaxCrowdPlansPerTick;
+224:         Spatial.Rebuild(Members);
+225:         if (Config.DiagnosticLayer == "avoidance")
+226:         {
+227:             foreach (NHMember observed: Members)
+228:             {
+229:                 if (!observed.Alive()) continue;
+230:                 NHNavigation.Measure(observed,Goal(observed,now),now);
+231:                 observed.AvoidPosition = observed.Body.GetPosition();
+232:                 if (observed.RouteReserved)
+233:                 {
+234:                     vector leaseOrigin = observed.ReservedRouteOrigin; vector leaseEnd = observed.CrowdYieldPoint;
+235:                     observed.RouteDeviation = Math.Sqrt(NHPolicy.PointSegmentSquared(observed.AvoidPosition[0],observed.AvoidPosition[2],leaseOrigin[0],leaseOrigin[2],leaseEnd[0],leaseEnd[2]));
+236:                     observed.RouteMaxDeviation = Math.Max(observed.RouteMaxDeviation,observed.RouteDeviation);
+237:                 }
+238:                 observed.AvoidVelocity = observed.MeasuredVelocity;
+239:                 DayZInfectedCommandMove observedMove = observed.Body.GetCommand_Move();
+240:                 observed.AvoidNativeTurn = false;
+241:                 if (observedMove && observedMove.IsTurning()) observed.AvoidNativeTurn = true;
+242:                 observed.AvoidTurnSampleAt = now;
+243:                 observed.CommittedAt = -1;
+244:             }
+245:         }
+246:         DeliverReports(now);
+247:         if (Config.Mode == "HORDE" && Config.SpatialAttackSlots)
+248:         {
+249:             foreach (NHMember sensing: Members) if (sensing.Alive()) NHPerception.Sense(sensing, players, now);
+250:             NHAttackSlots.Refresh(this, players, now);
+251:         }
+252:         int alive, waiting, attacking;
+253:         if (Config.EnableAuthoredTraversal)
+254:         {
+255:             Availability.Refresh(this,now);
+256:             Traffic.Prepare(this, now);
+257:         }
+258:         bool routeComplete = true;
+259:         for (int offset = 0; offset < Members.Count(); offset++)
+260:         {
+261:             int index = (Cursor + offset) % Members.Count();
+262:             NHMember member = Members[index];
+263:             if (!member.Alive())
+264:             {
+265:                 if (member.Controlled) { Print("NH_MEMBER_LOST id=" + member.Id + " body_present=" + (member.Body != null)); member.Release(); }
+266:                 continue;
+267:             }
+268:             alive++;
+269:             float neighbourRadius = Math.Max(Config.Spacing, Config.CrowdSlowRadius);
+270:             if (Config.DiagnosticLayer == "avoidance") neighbourRadius = 5;
+271:             Spatial.Query(member.Body.GetPosition(), neighbourRadius, member.Neighbours);
+272:             if (Config.Mode == "HORDE") NHPerception.Sense(member, players, now);
+273:             if (member.AttackActive && (!NHPerception.Eligible(member.AttackTarget) || now > member.AttackUntil)) NHCombat.Finish(member, now, "timeout_or_target_lost");
+274:             vector goal = Goal(member, now);
+275:             NHDiagnostics.Decision(member, now);
+276:             NHMovement.Tick(member, goal, now);
+277:             NHDiagnostics.EndDecision(member, now);
+278:             if (!NHNavigation.Reached(member.Body.GetPosition(), Config.Waypoints[Waypoint], Config.FormationWidth + 2, Config.TargetHeightTolerance)) routeComplete = false;
+279:             if (member.Speed == 0 && member.MovementState != "ARRIVED") waiting++;
+280:             if (member.AttackActive) attacking++;
+281:         }
+282:         if (Members.Count() > 0) Cursor = (Cursor + 1) % Members.Count();
+283:         LastUpdateMilliseconds = GetGame().GetTime() - began;
+284:         if (routeComplete && alive > 0) Waypoint = (Waypoint + 1) % Config.Waypoints.Count();
+285:         if (now >= NextSummary)
+286:         {
+287:             NextSummary = now + 1;
+288:             Print("NH_SUMMARY t=" + now + " alive=" + alive + " waiting=" + waiting + " attacking=" + attacking + " path_requests=" + PathRequests + " path_failures=" + PathFailures + " stuck_events=" + StuckEvents + " gate_passed=" + GatePassed + " update_ms=" + (GetGame().GetTime() - began));
+
+{"fileId": "Source/NorthFrontierHorde/Scripts/4_World/NHSpatial.c", "startLine": 13, "endLine": 42, "sha256": "8a2e00f95e8e79d24033bbbe08334b20d66a537970d8b74526074055b1763936", "selectionReason": "Existing grid; no need for extra per-agent broadphase"}
+13:     void Rebuild(array<ref NHMember> members)
+14:     {
+15:         Cells.Clear();
+16:         foreach (NHMember member: members)
+17:         {
+18:             if (!member.Alive()) continue;
+19:             vector position = member.Body.GetPosition();
+20:             string key = Key(Math.Floor(position[0] / 6), Math.Floor(position[2] / 6));
+21:             NHSpatialCell cell = Cells.Get(key);
+22:             if (!cell) { cell = new NHSpatialCell; Cells.Insert(key, cell); }
+23:             cell.Members.Insert(member);
+24:         }
+25:     }
+26: 
+27:     void Query(vector position, float radius, array<NHMember> result)
+28:     {
+29:         result.Clear();
+30:         int minX = Math.Floor((position[0] - radius) / 6);
+31:         int maxX = Math.Floor((position[0] + radius) / 6);
+32:         int minZ = Math.Floor((position[2] - radius) / 6);
+33:         int maxZ = Math.Floor((position[2] + radius) / 6);
+34:         for (int x = minX; x <= maxX; x++)
+35:         for (int z = minZ; z <= maxZ; z++)
+36:         {
+37:             NHSpatialCell cell = Cells.Get(Key(x, z));
+38:             if (!cell) continue;
+39:             foreach (NHMember member: cell.Members) result.Insert(member);
+40:         }
+41:     }
+42: }
+
+{"fileId": "Source/NorthFrontierHorde/Scripts/4_World/NHMember.c", "startLine": 159, "endLine": 203, "sha256": "df694d9f8b2103ec3b0c0d691c6afa32286bf927cee9ff9d7024f03f86bba7be", "selectionReason": "KeepInIdle ownership conflicts with an external freezer"}
+159:     bool Attach(ZombieBase body, NHCoordinator owner, int id, float now)
+160:     {
+161:         if (!body || !body.IsAlive() || body.NHLink || !body.GetAIAgent() || !body.GetInputController()) return false;
+162:         Body = body; Owner = owner; Id = id;
+163:         Home = body.GetPosition(); Desired = Home; ProgressPosition = Home;
+164:         PrimaryGoal = Home;
+165:         ProgressAt = now; Heading = body.GetOrientation()[0]; NextSense = now + id * 0.01;
+166:         Controlled = true;
+167:         body.NHLink = this;
+168:         body.NHRegisterCombatSignals();
+169:         body.GetAIAgent().SetKeepInIdle(true);
+170:         PreviousRequiredSimulation = body.IsRequiredSimulation();
+171:         if (owner.Config.ForceTestSimulation) body.SetRequiredSimulation(true);
+172:         // The first argument enables an override; it is not a "can jump" flag.
+173:         // Do not inject a jump request while owning ordinary ground movement.
+174:         body.GetInputController().OverrideJump(false, 0, 0);
+175:         body.GetInputController().OverrideMovementSpeed(true, 0);
+176:         NHLog.Event("ATTACH", Id, "owned infected only");
+177:         return true;
+178:     }
+179: 
+180:     bool Alive()
+181:     {
+182:         return Controlled && Body && Body.IsAlive();
+183:     }
+184: 
+185:     void Release()
+186:     {
+187:         NHAuthoredTraversal.Release(this);
+188:         if (Body)
+189:         {
+190:             DayZInfectedInputController input = Body.GetInputController();
+191:             if (input)
+192:             {
+193:                 input.OverrideMovementSpeed(false, 0);
+194:                 input.OverrideHeading(false, 0);
+195:                 input.OverrideJump(false, 0, 0);
+196:             }
+197:             if (Body.GetAIAgent()) Body.GetAIAgent().SetKeepInIdle(false);
+198:             if (Owner && Owner.Config.ForceTestSimulation) Body.SetRequiredSimulation(PreviousRequiredSimulation);
+199:             Body.NHLink = null;
+200:         }
+201:         Controlled = false; AttackActive = false; AttackTarget = null; DirectTarget = null;
+202:         ContactSlot = -1; ContactSlotTarget = null; MotionOwner = "RELEASED";
+203:         Path.Clear(); GateIndex = -1; GateStage = 0;
+
+{"fileId": "Source/DGOriginalSample/Scripts/4_World/DGBNativeGround.c", "startLine": 1256, "endLine": 1322, "sha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82", "selectionReason": "Existing gathering/sense cadence, report fan-out and director tasks"}
+1256:     void UpdatePerception()
+1257:     {
+1258:         if(Now>=NextPlayerGather){DGBSensePolicy.Players(PerceivedPlayers);NextPlayerGather=Now+0.2;}
+1259:         foreach(DGBNativeGroundBody sensed:Bodies)
+1260:         {
+1261:             // One typed native owner and one health sample per body/frame.
+1262:             // Reports consume this exact snapshot, not another native query.
+1263:             Animal_DGNativeProbe sensedOwner=sensed.DamageEntity();
+1264:             sensed.PerceptionAlive=sensedOwner && sensedOwner.IsAlive();
+1265:             sensed.PerceptionHealthAt=Now;
+1266:             if(!sensed.PerceptionAlive)
+1267:             {sensed.Agent.Visible=false;sensed.Agent.ConfirmedTarget=null;sensed.Agent.State="DEAD";continue;}
+1268:             sensed.Agent.SensePlayers(PerceivedPlayers,Now);
+1269:         }
+1270:         foreach(DGBNativeGroundBody witness:Bodies)
+1271:         {
+1272:             if(witness.PerceptionHealthAt!=Now || !witness.PerceptionAlive)continue;
+1273:             DGBGroundAgent sensor=witness.Agent;
+1274:             if(!sensor.Visible || !sensor.ConfirmedTarget || Now>=sensor.LastLocalVisualAt+sensor.SenseSeconds+0.05)continue;
+1275:             if(sensor.LastLocalVisualAt<=LastReportObserved[witness.Id] || Now<NextReportAt[witness.Id])continue;
+1276:             DGBSightReport report=new DGBSightReport;
+1277:             report.Sender=witness.Id;report.Origin=sensor.Position;report.Position=sensor.LastLocalPosition;
+1278:             report.ObservedAt=sensor.LastLocalVisualAt;report.DeliverAt=Now+ReportDelaySeconds;
+1279:             SightReports.Insert(report);LastReportObserved[witness.Id]=report.ObservedAt;NextReportAt[witness.Id]=Now+0.5;
+1280:             while(SightReports.Count()>Math.Max(2,Bodies.Count()*2))SightReports.RemoveOrdered(0);
+1281:         }
+1282:         for(int index=SightReports.Count() - 1;index>=0;index--)
+1283:         {
+1284:             DGBSightReport pending=SightReports[index];if(Now<pending.DeliverAt)continue;
+1285:             foreach(DGBNativeGroundBody receiver:Bodies)
+1286:             {
+1287:                 if(receiver.PerceptionHealthAt!=Now || !receiver.PerceptionAlive)continue;
+1288:                 if(receiver.Id==pending.Sender || vector.Distance(receiver.Agent.Position,pending.Origin)>ReportRadius)continue;
+1289:                 if(receiver.Agent.Remember(pending.Position,pending.ObservedAt,Now,"ALLY_REPORT"))
+1290:                 {receiver.SharedSight++;receiver.KnowledgeSource=pending.Sender;}
+1291:             }
+1292:             SightReports.RemoveOrdered(index);
+1293:         }
+1294:     }
+1295:     void Update()
+1296:     {
+1297:         Now=GetGame().GetTickTime();float age=Now - Born;
+1298:         if(Exercise && !Vertical)
+1299:         {
+1300:             vector target=Center+"0 0 10";Phase="APPROACH";
+1301:             if(age>=22 && age<42){target=Center+"9 0 12";Phase="RETARGET_EAST";}
+1302:             if(age>=42 && age<62){target=Center+"-9 0 12";Phase="RETARGET_WEST";}
+1303:             if(age>=62 && age<82){target=Center+"0 0 -12";Phase="CROSS_BACK";}
+1304:             if(age>=82 && age<140){target=Center+"150 0 0";Phase="MEMORY_EXPIRY";}
+1305:             if(age>=140)Phase="REACQUIRE";
+1306:             Player.SetPosition(Ground(target));
+1307:         }
+1308:         if(Vertical && Exercise)UpdateVerticalExercise();
+1309:         if(StaticMap)StaticMap.Update();
+1310:         int started=TickCount(0);
+1311:         int perceptionStarted=TickCount(0);
+1312:         UpdatePerception();
+1313:         PerceptionTicks+=TickCount(perceptionStarted);
+1314:         int socialStarted=TickCount(0);
+1315:         UpdateFormation();UpdateYields();
+1316:         foreach(DGBNativeGroundBody body:Bodies)body.UpdateIntent();
+1317:         SocialTicks+=TickCount(socialStarted);
+1318:         int pursuitStarted=TickCount(0);
+1319:         if(Pursuit)Pursuit.Update();
+1320:         PursuitTicks+=TickCount(pursuitStarted);
+1321:         AdvanceYieldQueue();
+1322:         SenseTicks+=TickCount(started);
+
+{"fileId": "Source/DGOriginalSample/Scripts/4_World/DGBGroundAgent.c", "startLine": 97, "endLine": 150, "sha256": "9ceadbd93a115a285320ef76a14a51afe66b9942fbff77bb4c71d545450ec236", "selectionReason": "Already throttled perception; timestamped memory"}
+97:     void SensePlayers(array<Man> players,float now)
+98:     {
+99:         if(now<SenseAt)return;
+100:         SenseAt=now+SenseSeconds;Visible=false;SightRetained=false;SightReason="NO_ELIGIBLE_PLAYER";SightBlocker="";
+101:         PlayerBase candidate;float closest=DetectDistance;float nearestEligible=1000000;
+102:         string selectedReason;vector selectedEye;float selectedDistance;float selectedAngle;
+103:         if(now<VisualMutedUntil)SightReason="LOCAL_VISUAL_MUTED_TEST";
+104:         else
+105:         {
+106:             if(ConfirmedTarget && DGBSensePolicy.Visible(this,ConfirmedTarget))
+107:             {candidate=ConfirmedTarget;selectedReason=SightReason;selectedEye=SightEye;selectedDistance=SightDistance;selectedAngle=SightAngle;}
+108:             if(!candidate)
+109:                 foreach(Man person:players)
+110:                 {
+111:                     PlayerBase possible=PlayerBase.Cast(person);
+112:                     if(!DGBSensePolicy.Eligible(possible))continue;
+113:                     float distance=vector.Distance(Position,possible.GetPosition());
+114:                     nearestEligible=Math.Min(nearestEligible,distance);
+115:                     if(distance<=closest && DGBSensePolicy.Visible(this,possible))
+116:                     {candidate=possible;closest=distance;selectedReason=SightReason;selectedEye=SightEye;selectedDistance=SightDistance;selectedAngle=SightAngle;}
+117:                 }
+118:         }
+119:         if(!candidate && SightReason=="NO_ELIGIBLE_PLAYER" && nearestEligible<1000000)
+120:         {SightReason="RANGE";SightDistance=nearestEligible;}
+121:         PlayerBase previous=ConfirmedTarget;Visible=candidate!=null;
+122:         if(candidate)
+123:         {
+124:             SightReason=selectedReason;SightBlocker="";SightEye=selectedEye;SightDistance=selectedDistance;SightAngle=selectedAngle;
+125:             LastRawAt=now;
+126:             if(Suspect!=candidate){Suspect=candidate;SuspectSince=now;ConfirmedTarget=null;}
+127:             if(now - SuspectSince>=ConfirmSeconds)
+128:             {
+129:                 ConfirmedTarget=candidate;LastLocalVisualAt=now;LastLocalPosition=candidate.GetPosition();
+130:                 Remember(LastLocalPosition,now,now,"LOCAL_VISUAL");
+131:             }
+132:         }
+133:         else
+134:         {
+135:             bool retain=ConfirmedTarget && DGBSensePolicy.Eligible(ConfirmedTarget) && DGBSensePolicy.Fresh(LastRawAt,now,LoseSightSeconds);
+136:             if(!retain){ConfirmedTarget=null;Suspect=null;}
+137:             else SightRetained=true;
+138:         }
+139:         if(previous!=ConfirmedTarget){if(ConfirmedTarget)Acquisitions++;else Losses++;}
+140:         foreach(DGBNoiseEvent noise:DGBNoise.Events)
+141:         {
+142:             if(noise.Sequence<=LastNoiseSequence)continue;
+143:             LastNoiseSequence=noise.Sequence;
+144:             if(!DGBSensePolicy.Fresh(noise.ObservedAt,now,MemorySeconds) || vector.Distance(Position,noise.Position)>HearingDistance)continue;
+145:             HeardEvents++;
+146:             if(!(Visible && ConfirmedTarget) && Remember(noise.Position,noise.ObservedAt,now,"GUNSHOT"))AcceptedNoises++;
+147:         }
+148:         State=DGBSensePolicy.State(ConfirmedTarget!=null,SeenAt,now,MemorySeconds,SearchSeconds);
+149:     }
+150:     static float FlatDistance(vector a,vector b)
+
+{"fileId": "Source/DGOriginalSample/Scripts/4_World/DGBGroundAgent.c", "startLine": 204, "endLine": 238, "sha256": "9ceadbd93a115a285320ef76a14a51afe66b9942fbff77bb4c71d545450ec236", "selectionReason": "Existing path retry and useful path retention"}
+204:         if(!platform && now>=PlanAt && (Path.Count()==0 || FlatDistance(PlannedGoal,groundGoal)>Math.Min(1.5,arrival)))
+205:         {
+206:             PlanAt=now+0.7;Plans++;
+207:             int navStarted=TickCount(0);NavStatus="SAMPLE_FAILED";NavProjectionError=-1;
+208:             vector sampled;ref array<vector> planned={};
+209:             bool found=GetGame().GetWorld().GetAIWorld().SampleNavmeshPosition(groundGoal,0.6,Filter,sampled);
+210:             if(found){NavProjectionError=vector.Distance(sampled,groundGoal);NavStatus="SAMPLE_HEIGHT_REJECT";found=Math.AbsFloat(sampled[1]-groundGoal[1])<0.5;}
+211:             if(found){NavStatus="FIND_PATH_FAILED";found=GetGame().GetWorld().GetAIWorld().FindPath(Position,sampled,Filter,planned);}
+212:             if(found && !DGBGroundRoute.PathClear(Position,planned,ObstacleMin,ObstacleMax))
+213:             {NavStatus="STATIC_DETOUR_FAILED";DetourPlans++;found=DGBGroundRoute.Detour(Position,sampled,Filter,ObstacleMin,ObstacleMax,planned);}
+214:             NavTicks+=TickCount(navStarted);
+215:             if(found && planned.Count()>0 && FlatDistance(planned[planned.Count() - 1],sampled)<0.75)
+216:             {NavStatus="PATH_READY";Path.Copy(planned);PlannedGoal=groundGoal;RouteRevision++;}
+217:             else
+218:             {
+219:                 // A failed refresh is not a failure of the route being executed.
+220:                 // Every retained step still passes footprint and wall validation
+221:                 // below; an actually invalid segment is discarded there.
+222:                 PlanFailures++;LastPlanFailureAt=now;
+223:                 if(Path.Count()==0){StopReason="NO_GROUND_PATH";return false;}
+224:                 RetainedRoute=true;RetainedRouteRefreshes++;
+225:             }
+226:         }
+227:         float waypointRadius=0.45;if(UseNativeRootDelta)waypointRadius=0.08;
+228:         while(Path.Count()>1 && FlatDistance(Position,Path[0])<waypointRadius)Path.RemoveOrdered(0);
+229:         if(Path.Count()==0){StopReason="PATH_EXHAUSTED";return false;}
+230:         vector direction=Path[0]-Position;direction[1]=0;float remaining=direction.Length();direction.Normalize();
+231:         float desired=Math.Atan2(direction[0],direction[2])*Math.RAD2DEG;
+232:         float error=SignedAngle(desired - Heading);
+233:         TurnError=error;
+234:         Heading=SignedAngle(Heading+Math.Clamp(error,-120*dt,120*dt));
+235:         float turnTolerance=45;if(UseNativeRootDelta)turnTolerance=35;
+236:         if(Math.AbsFloat(error)>turnTolerance){StopReason="ALIGN_HEADING";return false;}
+237:         float yaw=Heading*Math.DEG2RAD;
+238:         vector step=Vector(Math.Sin(yaw),0,Math.Cos(yaw))*Math.Min(speed*dt,remaining);
+
+{"fileId": "Source/DGOriginalSample/Scripts/4_World/DGBNativeCrowd.c", "startLine": 3, "endLine": 28, "sha256": "8b3145c67444b5185e4a44dcb051dc118405d9cb2268c752b3abc65daeeaddf9", "selectionReason": "Existing spatial/contact policy"}
+3: class DGBNativeCrowdCell
+4: {
+5:     ref array<int> Members={};
+6: }
+7: class DGBNativeCrowd
+8: {
+9:     DGBNativeGroundDirector Director;
+10:     ref map<string,ref DGBNativeCrowdCell> Cells=new map<string,ref DGBNativeCrowdCell>;
+11:     int PairCandidates;int ContactPairs;int MaximumPairCandidates;float UpdateTicks;
+12:     void DGBNativeCrowd(DGBNativeGroundDirector director){Director=director;}
+13:     static vector PairCorrection(vector from,vector other,int identity,float dt,float share)
+14:     {
+15:         vector away=from - other;away[1]=0;
+16:         if(Math.AbsFloat(away[0])>=0.86 || Math.AbsFloat(away[2])>=0.86)return vector.Zero;
+17:         float gap=away.Length();
+18:         if(gap>=0.86)return vector.Zero;
+19:         if(gap<0.0001)
+20:         {float angle=identity*2.399963;away=Vector(Math.Cos(angle),0,Math.Sin(angle));}
+21:         else away=away*(1.0/gap);
+22:         return away*Math.Min(0.045,Math.Max(0.0,0.86 - gap)*Math.Min(dt*8,1.0)*share);
+23:     }
+24:     static bool Movable(DGBNativeGroundBody body)
+25:     {
+26:         if(!body || !body.Traversal || body.Agent.State=="DEAD")return false;
+27:         if(body.Combat && (body.Combat.Active || body.Combat.Dead || body.Combat.PendingDeath))return false;
+28:         if(body.Traversal.Phase=="FOLLOW")return true;
+
+{"fileId": "research/track_b_dayz_2026-10-23/native-runtime/source/dg_lab_inputs/Scripts/4_World/DGNativeProbe.c", "startLine": 202, "endLine": 229, "sha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86", "selectionReason": "Native input dt consumed by Body.Drive; not a decision timer"}
+202:     void RunPrePhys(float pDt)
+203:     {
+204:         if(Retired){PrePhys_SetTranslation(vector.Zero);return;}
+205:         if(Owner)Owner.PhysicsUpdates++;
+206:         vector delta;
+207:         bool available=PrePhys_GetTranslation(delta);
+208:         if(Owner)
+209:         {
+210:             Owner.NativeRootRead=available;
+211:             Owner.NativeRootDelta=delta;
+212:             if(available)Owner.NativeRootDistance+=delta.Length();
+213:         }
+214:         if(Owner && Owner.GroundBody)
+215:         {
+216:             if(Owner.GroundLeader)Owner.GroundBody.Drive(pDt,delta,available);
+217:             PrePhys_SetTranslation(vector.Zero);
+218:             return;
+219:         }
+220:         if(Owner && Owner.ApplyRootMotion && available)
+221:         {
+222:             Owner.NativeAppliedDistance+=delta.Length();
+223:             PrePhys_SetTranslation(delta);
+224:         }
+225:         else
+226:         {
+227:             PrePhys_SetTranslation(vector.Zero);
+228:         }
+229:     }
+
