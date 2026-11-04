@@ -1,28 +1,15 @@
-# DayZ NPC 현재 상태와 대량 호드 소스 분석
+# DayZ NPC / 대량 호드 현재 상태
 
-문서 갱신: 2026-11-04. 최종 수용과 20ms p95 목표는 미달성이다.
+문서 갱신:2026-11-04
 
-최신 작업은 AntifreeZe·Expansion AI 고정 소스의 대량 호드 적용 분석이다. 중앙 판단 예산·사건 wake·활성 개체 수명 관리를 설계 후보로 선정했다. 새 게임 실행·PBO 변경·성능 개선 입증은 없다.
+자체 저폴리 P3D 로컬 프록시의1,024개별 형상과128객체×8형상 실행 프로브를 수행했다. 1,024개별 형상 배열은 화면에서 관찰했다. 8형상 묶음도 생성·source readback 구간을 완주했다. 개체당72삼각형/5본이며 AI·물리·전투·네트워크는 없다.
 
-우선 다음 단일 작업은 판단 scheduler의 shadow 계측 명세와 요청/기한/비용 연결이다. 실제 판단 분산은 그 다음에 한 job씩 검증한다. native 명령·물리 dt·등반/낙하/전투는 판단 스케줄과 구분한다. 별도 애니메이션 세션과 기존 CPU 연구는 유지한다.
+**최종 수용 아님.** 실제 Present 미측정,정확한 개체별 픽셀 가시성·이동 축/거리·팔다리 애니메이션 품질 미수용. 시작/끝 기준 구간 script dt p95도35→78ms로 변해 묶음 성능의 인과 비교가 불가능하다.20ms p95와1,000좀비 무프레임저하는 달성하지 않았다.
 
-[최신 작업 상세](reports/operations/npc-horde-ai-source-review-20261104.md) · [복사용 TXT](reports/operations/npc-horde-ai-source-review-20261104.txt) · [AI 검토 안내](AI_REVIEW.md) · [소스 분석 JSON](api/public/npc-horde-ai-source-review.json)
+다음 단일 작업은 근접 카메라에서 root 변환과 실제 팔다리 연속 움직임 확인이다. 이후 동일 조건의 paired Present 비교를 진행한다. 별도 애니메이션 세션과 기존 NPC 기능/성능 결과는 이 시험과 구분한다.
 
-| 현재 확인 범위 | 근거와 한계 |
-|---|---|
-| 소스 분석 | AntifreeZe 2a805e1 / Expansion experimental 14fd692. 393개 checkout 파일,25개 선정 구간. 전체 Expansion 감사나 실행 검증 아님 |
-| 직접 적용 경계 | AF 확률 token은 전역 cap 아님. 높이만으로 도달 불가 판정 금지. Expansion scheduler도 비선점 soft budget |
-| 기존 기능 | entry-facing 후보8명8/8·64명 요구 이력53/64·낙하82/82복귀. 조건당 독립1회,나머지11명 종료 FOLLOW. 이번 소스 검토의 신규 결과 아님 |
-| 기존 성능 | matched-flat 별도4회 fresh Present p95 65.47–69.56ms,continued70.09–75.30ms. 현재 소스 분석으로 개선된 값 아님 |
-| 남은 대량 호드 조건 | 저비용 표현·다층 공유 경로·멀티플레이 interest·상세/간소화 전투 전환 미검증 |
+[상세 보고서](reports/operations/npc-horde-render-paths-20261104.md) · [근거](evidence/npc-horde-render-paths-20261104.txt) · [JSON](api/public/npc-horde-render-paths.json)
 
-[최근 판정 실험](reports/latest.md) · [현재 상태 JSON](api/public/current-status.json) · [검증 정책](reports/operations/npc-validation-policy-20261103.md)
+[직전 통합 상태](reports/history/20261104-before-render-probe-README.md) · [AI 검토](AI_REVIEW.md) · [검증 정책](reports/operations/npc-validation-policy-20261103.md)
 
-[직전 상태표](reports/history/20261104-before-horde-ai-review-README.md) · [PZ 연결 복구](reports/operations/npc-pz-bridge-recovery-20261104.md) · [제한·인라인 비용 판정](reports/operations/npc-terrain-scope-cost-20261103.md)
-
-이전 문서는 history와 고정 commit으로 보존한다. 이 저장소는 보고서·선정 근거의 공개 읽기용이며 게임 자산·키·전체 로컬 원시 기록은 포함하지 않는다.
-
-
-## 현재 최적화 후속
-
-[원본광선루프분리비용비교](reports/operations/npc-terrain-split-loop-cost-20261104.md) · 루프분리2프로세스/384000호출.제외경로3%실패로terrain후보군보류.다음은Drive/Displace커밋계약검토.전체CPU/Present미측정.
+기존 상세 NPC 후보의 검증 이력은 직전 상태에 보존했다. 이번 프록시는 별도 자산 계열이며 기존 결과의 기능 복구·성능 개선으로 집계하지 않는다. 기존 서버/Workshop 배포는 변경하지 않았다. 시험 PBO 자동 서명·검증 성공,개인 키 배포0개.

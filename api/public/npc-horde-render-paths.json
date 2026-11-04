@@ -1,0 +1,171 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceRunId": "horde-render-paths-20261104",
+  "reviewType": "source_review_and_isolated_render_probe",
+  "generatedAt": "2026-11-04T19:40:08.632294+09:00",
+  "scriptCommit": "78be1c402eec249e4e4cdac7e1fef71006e94d20",
+  "gameVersion": "1.30.164.289",
+  "candidatePboSha256": "808e1674ac91ad0b7f0db34b395d80027bca4d3c96fe193f2986cb1f59587a84",
+  "signatureVerified": true,
+  "privateKeysInRelease": 0,
+  "productionChanged": false,
+  "finalAcceptance": false,
+  "actualPresentMeasured": false,
+  "physicsAICombatNetworkMeasured": false,
+  "displayedThousandPrecisePixelCount": false,
+  "metrics": [
+    {
+      "phase": 0,
+      "label": "baseline-before",
+      "frames": 349,
+      "scriptDtMsP50": 10.0,
+      "scriptDtMsP95": 35.0,
+      "scriptDtMsMax": 38.0,
+      "updateTickCounterP95": 32.0,
+      "objects": 0,
+      "logicalActors": 0,
+      "projectedLogicalRootsMax": 0
+    },
+    {
+      "phase": 1,
+      "label": "8-close-moving-gait",
+      "frames": 599,
+      "scriptDtMsP50": 8.0,
+      "scriptDtMsP95": 36.0,
+      "scriptDtMsMax": 39.0,
+      "updateTickCounterP95": 305.0,
+      "objects": 8,
+      "logicalActors": 8,
+      "projectedLogicalRootsMax": 8
+    },
+    {
+      "phase": 2,
+      "label": "1024-static",
+      "frames": 600,
+      "scriptDtMsP50": 12.0,
+      "scriptDtMsP95": 33.0,
+      "scriptDtMsMax": 35.0,
+      "updateTickCounterP95": 2685.0,
+      "objects": 1024,
+      "logicalActors": 1024,
+      "projectedLogicalRootsMax": 1024
+    },
+    {
+      "phase": 3,
+      "label": "1024-root-motion",
+      "frames": 599,
+      "scriptDtMsP50": 26.0,
+      "scriptDtMsP95": 32.0,
+      "scriptDtMsMax": 34.0,
+      "updateTickCounterP95": 12975.0,
+      "objects": 1024,
+      "logicalActors": 1024,
+      "projectedLogicalRootsMax": 1024
+    },
+    {
+      "phase": 4,
+      "label": "1024-root-and-gait",
+      "frames": 849,
+      "scriptDtMsP50": 19.0,
+      "scriptDtMsP95": 32.0,
+      "scriptDtMsMax": 33.0,
+      "updateTickCounterP95": 16775.0,
+      "objects": 1024,
+      "logicalActors": 1024,
+      "projectedLogicalRootsMax": 1024
+    },
+    {
+      "phase": 5,
+      "label": "128x8-root-and-gait",
+      "frames": 778,
+      "scriptDtMsP50": 30.0,
+      "scriptDtMsP95": 76.0,
+      "scriptDtMsMax": 79.0,
+      "updateTickCounterP95": 22031.0,
+      "objects": 128,
+      "logicalActors": 1024,
+      "projectedLogicalRootsMax": 1024
+    },
+    {
+      "phase": 6,
+      "label": "baseline-after",
+      "frames": 160,
+      "scriptDtMsP50": 76.0,
+      "scriptDtMsP95": 78.0,
+      "scriptDtMsMax": 91.0,
+      "updateTickCounterP95": 75.0,
+      "objects": 0,
+      "logicalActors": 0,
+      "projectedLogicalRootsMax": 0
+    }
+  ],
+  "sourceReadbackRanges": {
+    "1": {
+      "phaseX": [
+        0.200017,
+        0.799719
+      ],
+      "phaseZ": [
+        0.200086,
+        0.799905
+      ],
+      "gait": [
+        0.322223,
+        0.947989
+      ]
+    },
+    "3": {
+      "phaseX": [
+        0.200056,
+        0.799995
+      ],
+      "phaseZ": [
+        0.200001,
+        0.799975
+      ],
+      "gait": [
+        0.5,
+        0.5
+      ]
+    },
+    "4": {
+      "phaseX": [
+        0.200001,
+        0.799999
+      ],
+      "phaseZ": [
+        0.200013,
+        0.799991
+      ],
+      "gait": [
+        0.0515971,
+        0.947557
+      ]
+    },
+    "5": {
+      "phaseX": [
+        0.200007,
+        0.8
+      ],
+      "phaseZ": [
+        0.200009,
+        0.799989
+      ],
+      "gait": [
+        0.0526947,
+        0.774807
+      ]
+    }
+  },
+  "limitations": [
+    "one fresh render-only sequence; no independent repeat",
+    "script OnUpdate dt is not Present/GPU frame time",
+    "projected roots are modeled positions, not visible geometry count",
+    "72 triangles per actor, no imported game mesh, five bones per actor",
+    "gait shared per object; local motion only, no full path following",
+    "no collision, damage, death, terrain following, multiplayer or LOD transition proof",
+    "visual array displacement observed; displacement scale and gait quality remain unaccepted",
+    "baseline-after p95 78ms versus baseline-before 35ms; uncontrolled drift prevents causal batch-performance attribution"
+  ],
+  "nextSingleTask": "Calibrate model-root transforms and verify near-camera articulated limb motion, then paired Present measurement against baseline."
+}

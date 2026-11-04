@@ -1,0 +1,351 @@
+Selected evidence only; not full logs, no video quality proof.
+{
+  "schemaVersion": "1.0.0",
+  "sourceRunId": "horde-render-paths-20261104",
+  "reviewType": "source_review_and_isolated_render_probe",
+  "generatedAt": "2026-11-04T19:40:08.632294+09:00",
+  "scriptCommit": "78be1c402eec249e4e4cdac7e1fef71006e94d20",
+  "gameVersion": "1.30.164.289",
+  "candidatePboSha256": "808e1674ac91ad0b7f0db34b395d80027bca4d3c96fe193f2986cb1f59587a84",
+  "signatureVerified": true,
+  "privateKeysInRelease": 0,
+  "productionChanged": false,
+  "finalAcceptance": false,
+  "actualPresentMeasured": false,
+  "physicsAICombatNetworkMeasured": false,
+  "displayedThousandPrecisePixelCount": false,
+  "metrics": [
+    {
+      "phase": 0,
+      "label": "baseline-before",
+      "frames": 349,
+      "scriptDtMsP50": 10.0,
+      "scriptDtMsP95": 35.0,
+      "scriptDtMsMax": 38.0,
+      "updateTickCounterP95": 32.0,
+      "objects": 0,
+      "logicalActors": 0,
+      "projectedLogicalRootsMax": 0
+    },
+    {
+      "phase": 1,
+      "label": "8-close-moving-gait",
+      "frames": 599,
+      "scriptDtMsP50": 8.0,
+      "scriptDtMsP95": 36.0,
+      "scriptDtMsMax": 39.0,
+      "updateTickCounterP95": 305.0,
+      "objects": 8,
+      "logicalActors": 8,
+      "projectedLogicalRootsMax": 8
+    },
+    {
+      "phase": 2,
+      "label": "1024-static",
+      "frames": 600,
+      "scriptDtMsP50": 12.0,
+      "scriptDtMsP95": 33.0,
+      "scriptDtMsMax": 35.0,
+      "updateTickCounterP95": 2685.0,
+      "objects": 1024,
+      "logicalActors": 1024,
+      "projectedLogicalRootsMax": 1024
+    },
+    {
+      "phase": 3,
+      "label": "1024-root-motion",
+      "frames": 599,
+      "scriptDtMsP50": 26.0,
+      "scriptDtMsP95": 32.0,
+      "scriptDtMsMax": 34.0,
+      "updateTickCounterP95": 12975.0,
+      "objects": 1024,
+      "logicalActors": 1024,
+      "projectedLogicalRootsMax": 1024
+    },
+    {
+      "phase": 4,
+      "label": "1024-root-and-gait",
+      "frames": 849,
+      "scriptDtMsP50": 19.0,
+      "scriptDtMsP95": 32.0,
+      "scriptDtMsMax": 33.0,
+      "updateTickCounterP95": 16775.0,
+      "objects": 1024,
+      "logicalActors": 1024,
+      "projectedLogicalRootsMax": 1024
+    },
+    {
+      "phase": 5,
+      "label": "128x8-root-and-gait",
+      "frames": 778,
+      "scriptDtMsP50": 30.0,
+      "scriptDtMsP95": 76.0,
+      "scriptDtMsMax": 79.0,
+      "updateTickCounterP95": 22031.0,
+      "objects": 128,
+      "logicalActors": 1024,
+      "projectedLogicalRootsMax": 1024
+    },
+    {
+      "phase": 6,
+      "label": "baseline-after",
+      "frames": 160,
+      "scriptDtMsP50": 76.0,
+      "scriptDtMsP95": 78.0,
+      "scriptDtMsMax": 91.0,
+      "updateTickCounterP95": 75.0,
+      "objects": 0,
+      "logicalActors": 0,
+      "projectedLogicalRootsMax": 0
+    }
+  ],
+  "sourceReadbackRanges": {
+    "1": {
+      "phaseX": [
+        0.200017,
+        0.799719
+      ],
+      "phaseZ": [
+        0.200086,
+        0.799905
+      ],
+      "gait": [
+        0.322223,
+        0.947989
+      ]
+    },
+    "3": {
+      "phaseX": [
+        0.200056,
+        0.799995
+      ],
+      "phaseZ": [
+        0.200001,
+        0.799975
+      ],
+      "gait": [
+        0.5,
+        0.5
+      ]
+    },
+    "4": {
+      "phaseX": [
+        0.200001,
+        0.799999
+      ],
+      "phaseZ": [
+        0.200013,
+        0.799991
+      ],
+      "gait": [
+        0.0515971,
+        0.947557
+      ]
+    },
+    "5": {
+      "phaseX": [
+        0.200007,
+        0.8
+      ],
+      "phaseZ": [
+        0.200009,
+        0.799989
+      ],
+      "gait": [
+        0.0526947,
+        0.774807
+      ]
+    }
+  },
+  "limitations": [
+    "one fresh render-only sequence; no independent repeat",
+    "script OnUpdate dt is not Present/GPU frame time",
+    "projected roots are modeled positions, not visible geometry count",
+    "72 triangles per actor, no imported game mesh, five bones per actor",
+    "gait shared per object; local motion only, no full path following",
+    "no collision, damage, death, terrain following, multiplayer or LOD transition proof",
+    "visual array displacement observed; displacement scale and gait quality remain unaccepted",
+    "baseline-after p95 78ms versus baseline-before 35ms; uncontrolled drift prevents causal batch-performance attribution"
+  ],
+  "nextSingleTask": "Calibrate model-root transforms and verify near-camera articulated limb motion, then paired Present measurement against baseline."
+}
+
+
+FILE init.c SHA256 06b613b649a18c0e183787e3d0bd7f32d2f41a4eeaf3c508a0866f7c2edefb84 selected all lines
+1: // Owned procedural render-only objects. No AI, damage, physics or network claim.
+2: class HRRenderMission: MissionGameplay
+3: {
+4:     ref array<Entity> Bodies={};
+5:     ref array<vector> Origins={};
+6:     Camera View;
+7:     FileHandle Trace;
+8:     FileHandle Points;
+9:     float Age;
+10:     float Began=-1;
+11:     float PhaseAt;
+12:     float SampleAt;
+13:     int Phase=-1;
+14:     int SpawnCursor;
+15:     int Planned;
+16:     int PerObject=1;
+17:     int ProjectionCount;
+18:     bool Finished;
+19:     vector Center;
+20:     override void OnInit()
+21:     {
+22:         super.OnInit();
+23:         GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(Setup,2000,false);
+24:     }
+25:     void Setup()
+26:     {
+27:         Center="4550 0 10220";Center[1]=GetGame().SurfaceY(Center[0],Center[2])+0.05;
+28:         GetGame().GetWorld().SetDate(2026,6,15,12,0);
+29:         PlayerBase visitor=PlayerBase.Cast(GetGame().CreatePlayer(null,"SurvivorM_Mirek",Center+"0 0 -15",0,"NONE"));
+30:         if(visitor){visitor.SetAllowDamage(false);GetGame().SelectPlayer(null,visitor);}
+31:         View=Camera.Cast(GetGame().CreateObject("staticcamera",Center+"0 60 -55",true,false,false));
+32:         if(View){View.SetActive(true);View.SetFOV(1.05);View.LookAt(Center+"0 1 25");}
+33:         Trace=OpenFile("$profile:frames.tsv",FileMode.WRITE);
+34:         Points=OpenFile("$profile:points.tsv",FileMode.WRITE);
+35:         FPrintln(Trace,"wall\tphase\tage\tdt\tobjects\tactors\tspawned\tupdateTicks\tprojectionCount");
+36:         FPrintln(Points,"wall\tphase\tid\tlogicalRoot\tphaseX\tphaseZ\tgait\tscreen");
+37:         Print("HR_PROXY_READY");
+38:     }
+39:     void ClearBodies()
+40:     {
+41:         foreach(Entity e:Bodies)if(e)GetGame().ObjectDelete(e);
+42:         Bodies.Clear();Origins.Clear();
+43:     }
+44:     void BeginPhase(int next)
+45:     {
+46:         ClearBodies();Phase=next;PhaseAt=Age;SpawnCursor=0;Planned=0;ProjectionCount=0;
+47:         if(Phase==1)Planned=8;
+48:         if(Phase>=2 && Phase<=5)Planned=1024;
+49:         PerObject=1;if(Phase==5)PerObject=8;
+50:         vector pos=Center+"0 60 -55";vector target=Center+"0 1 25";
+51:         if(Phase==1){pos=Center+"0 4 -8";target=Center+"0 1 2";}
+52:         if(View){View.SetPosition(pos);View.LookAt(target);}
+53:         Print("HR_PROXY_PHASE phase="+Phase+" actors="+Planned+" perObject="+PerObject);
+54:     }
+55:     void SpawnBatch()
+56:     {
+57:         int remaining=Planned/PerObject;
+58:         for(int n=0;n<32 && SpawnCursor<remaining;n++)
+59:         {
+60:             int first=SpawnCursor*PerObject;
+61:             int row=first/32;int col=first - row*32;
+62:             vector p=Center+Vector((col - 15.5)*1.6,0,row*1.6);
+63:             if(Phase==1)p=Center+Vector((col - 3.5)*1.6,0,0);
+64:             string kind="HRProxy1";if(PerObject==8)kind="HRProxy8";
+65:             Entity body=Entity.Cast(GetGame().CreateObjectEx(kind,p,ECE_LOCAL|ECE_KEEPHEIGHT|ECE_NOSURFACEALIGN));
+66:             if(!body){Print("HR_PROXY_SPAWN_FAILED index="+SpawnCursor);Finish();return;}
+67:             Bodies.Insert(body);Origins.Insert(p);SpawnCursor++;
+68:         }
+69:     }
+70:     void Sample(float elapsed)
+71:     {
+72:         ProjectionCount=0;
+73:         for(int i=0;i<Bodies.Count();i++)
+74:         {
+75:             Entity body=Bodies[i];
+76:             for(int slot=0;slot<PerObject;slot++)
+77:             {
+78:                 int id=i*PerObject+slot;
+79:                 float px=body.GetAnimationPhase("mx"+slot);
+80:                 float pz=body.GetAnimationPhase("mz"+slot);
+81:                 vector root=Origins[i]+Vector(slot*1.6+(px*2 - 1),1,(pz*2 - 1));
+82:                 vector screen=GetGame().GetScreenPosRelative(root);
+83:                 if(screen[0]>=0 && screen[0]<=1 && screen[1]>=0 && screen[1]<=1 && screen[2]>0)ProjectionCount++;
+84:                 if(id%64==0 || Phase==1)FPrintln(Points,GetGame().GetTickTime().ToString()+"\t"+Phase+"\t"+id+"\t"+root+"\t"+px+"\t"+pz+"\t"+body.GetAnimationPhase("gait")+"\t"+screen);
+85:             }
+86:         }
+87:         Print("HR_PROXY_OBSERVE phase="+Phase+" objects="+Bodies.Count()+" actors="+(Bodies.Count()*PerObject)+" projected="+ProjectionCount);
+88:     }
+89:     override void OnUpdate(float timeslice)
+90:     {
+91:         super.OnUpdate(timeslice);Age+=timeslice;
+92:         if(Finished)return;
+93:         if(Began<0)
+94:         {
+95:             if(!FileExist("$profile:start.flag"))return;
+96:             Began=Age;BeginPhase(0);
+97:         }
+98:         float elapsed=Age - Began;
+99:         int next=0;
+100:         if(elapsed>=10)next=1;
+101:         if(elapsed>=25)next=2;
+102:         if(elapsed>=40)next=3;
+103:         if(elapsed>=55)next=4;
+104:         if(elapsed>=75)next=5;
+105:         if(elapsed>=100)next=6;
+106:         if(elapsed>=115 || FileExist("$profile:quit.flag")){Finish();return;}
+107:         if(next!=Phase)BeginPhase(next);
+108:         if(SpawnCursor<Planned/PerObject)SpawnBatch();
+109:         int started=TickCount(0);
+110:         bool move=Phase==1 || Phase==3 || Phase==4 || Phase==5;
+111:         bool animate=Phase==1 || Phase==4 || Phase==5;
+112:         float gait=0.5+Math.Sin(elapsed*6.0)*0.45;
+113:         for(int index=0;index<Bodies.Count();index++)
+114:         {
+115:             Entity body=Bodies[index];
+116:             if(animate)body.SetAnimationPhase("gait",gait);
+117:             if(move)
+118:             {
+119:                 for(int slot=0;slot<PerObject;slot++)
+120:                 {
+121:                     int id=index*PerObject+slot;
+122:                     body.SetAnimationPhase("mx"+slot,0.5+Math.Sin(elapsed*1.2+id*0.31)*0.3);
+123:                     body.SetAnimationPhase("mz"+slot,0.5+Math.Cos(elapsed*0.9+id*0.23)*0.3);
+124:                 }
+125:             }
+126:         }
+127:         int cost=TickCount(started);
+128:         if(elapsed>=SampleAt){SampleAt=elapsed+1;Sample(elapsed);}
+129:         FPrintln(Trace,GetGame().GetTickTime().ToString()+"\t"+Phase+"\t"+(Age-PhaseAt)+"\t"+timeslice+"\t"+Bodies.Count()+"\t"+(Bodies.Count()*PerObject)+"\t"+SpawnCursor+"\t"+cost+"\t"+ProjectionCount);
+130:     }
+131:     void Finish()
+132:     {
+133:         if(Finished)return;
+134:         Finished=true;ClearBodies();
+135:         if(Trace)CloseFile(Trace);if(Points)CloseFile(Points);
+136:         Print("HR_PROXY_DONE");
+137:         GetGame().RequestExit(0);
+138:     }
+139: };
+140: Mission CreateCustomMission(string path){return new HRRenderMission;}
+141: void main(){}
+
+FILE config.cpp SHA256 5854d684d103f513a36ed89573221f2bfd53c5c6ddc55fc848b70fe8133ff51c selected all lines
+1: class CfgPatches {class hr_render_proxy {units[]={"HRProxy1","HRProxy8"};weapons[]={};requiredVersion=0.1;requiredAddons[]={"DZ_Data","DZ_Structures"};};};
+2: class CfgVehicles {class HouseNoDestruct;class HRProxy1:HouseNoDestruct {scope=2;displayName="Owned render proxy 1";model="hr_render_proxy\hr_proxy1.p3d";class AnimationSources {class gait {source="user";animPeriod=0.02;initPhase=0.5;};class mx0 {source="user";animPeriod=0.02;initPhase=0.5;};class mz0 {source="user";animPeriod=0.02;initPhase=0.5;};};};class HRProxy8:HouseNoDestruct {scope=2;displayName="Owned render proxy 8";model="hr_render_proxy\hr_proxy8.p3d";class AnimationSources {class gait {source="user";animPeriod=0.02;initPhase=0.5;};class mx0 {source="user";animPeriod=0.02;initPhase=0.5;};class mz0 {source="user";animPeriod=0.02;initPhase=0.5;};class mx1 {source="user";animPeriod=0.02;initPhase=0.5;};class mz1 {source="user";animPeriod=0.02;initPhase=0.5;};class mx2 {source="user";animPeriod=0.02;initPhase=0.5;};class mz2 {source="user";animPeriod=0.02;initPhase=0.5;};class mx3 {source="user";animPeriod=0.02;initPhase=0.5;};class mz3 {source="user";animPeriod=0.02;initPhase=0.5;};class mx4 {source="user";animPeriod=0.02;initPhase=0.5;};class mz4 {source="user";animPeriod=0.02;initPhase=0.5;};class mx5 {source="user";animPeriod=0.02;initPhase=0.5;};class mz5 {source="user";animPeriod=0.02;initPhase=0.5;};class mx6 {source="user";animPeriod=0.02;initPhase=0.5;};class mz6 {source="user";animPeriod=0.02;initPhase=0.5;};class mx7 {source="user";animPeriod=0.02;initPhase=0.5;};class mz7 {source="user";animPeriod=0.02;initPhase=0.5;};};};};
+
+FILE model.cfg SHA256 33095e8555d07c63174dfb8017e3c22f42cfe1256c33e80ca29e914251c41fbe selected all lines
+1: class CfgSkeletons {class HRSkel1 {isDiscrete=1;skeletonInherit="";skeletonBones[]={"r0","","la0","r0","ra0","r0","ll0","r0","rl0","r0"};};class HRSkel8 {isDiscrete=1;skeletonInherit="";skeletonBones[]={"r0","","la0","r0","ra0","r0","ll0","r0","rl0","r0","r1","","la1","r1","ra1","r1","ll1","r1","rl1","r1","r2","","la2","r2","ra2","r2","ll2","r2","rl2","r2","r3","","la3","r3","ra3","r3","ll3","r3","rl3","r3","r4","","la4","r4","ra4","r4","ll4","r4","rl4","r4","r5","","la5","r5","ra5","r5","ll5","r5","rl5","r5","r6","","la6","r6","ra6","r6","ll6","r6","rl6","r6","r7","","la7","r7","ra7","r7","ll7","r7","rl7","r7"};};};
+2: class CfgModels {class hr_proxy1 {sections[]={};skeletonName="HRSkel1";class Animations {class la0 {type="rotation";source="gait";selection="la0";axis="la0_a";begin="la0_a";end="la0_b";memory=1;minValue=0;maxValue=1;angle0=-0.55;angle1=0.55;};class ra0 {type="rotation";source="gait";selection="ra0";axis="ra0_a";begin="ra0_a";end="ra0_b";memory=1;minValue=0;maxValue=1;angle0=0.55;angle1=-0.55;};class ll0 {type="rotation";source="gait";selection="ll0";axis="ll0_a";begin="ll0_a";end="ll0_b";memory=1;minValue=0;maxValue=1;angle0=0.55;angle1=-0.55;};class rl0 {type="rotation";source="gait";selection="rl0";axis="rl0_a";begin="rl0_a";end="rl0_b";memory=1;minValue=0;maxValue=1;angle0=-0.55;angle1=0.55;};class mx0 {type="translation";source="mx0";selection="r0";axis="axisx_a";begin="axisx_a";end="axisx_b";memory=1;minValue=0;maxValue=1;offset0=-1;offset1=1;};class mz0 {type="translation";source="mz0";selection="r0";axis="axisz_a";begin="axisz_a";end="axisz_b";memory=1;minValue=0;maxValue=1;offset0=-1;offset1=1;};};};class hr_proxy8 {sections[]={};skeletonName="HRSkel8";class Animations {class la0 {type="rotation";source="gait";selection="la0";axis="la0_a";begin="la0_a";end="la0_b";memory=1;minValue=0;maxValue=1;angle0=-0.55;angle1=0.55;};class ra0 {type="rotation";source="gait";selection="ra0";axis="ra0_a";begin="ra0_a";end="ra0_b";memory=1;minValue=0;maxValue=1;angle0=0.55;angle1=-0.55;};class ll0 {type="rotation";source="gait";selection="ll0";axis="ll0_a";begin="ll0_a";end="ll0_b";memory=1;minValue=0;maxValue=1;angle0=0.55;angle1=-0.55;};class rl0 {type="rotation";source="gait";selection="rl0";axis="rl0_a";begin="rl0_a";end="rl0_b";memory=1;minValue=0;maxValue=1;angle0=-0.55;angle1=0.55;};class mx0 {type="translation";source="mx0";selection="r0";axis="axisx_a";begin="axisx_a";end="axisx_b";memory=1;minValue=0;maxValue=1;offset0=-1;offset1=1;};class mz0 {type="translation";source="mz0";selection="r0";axis="axisz_a";begin="axisz_a";end="axisz_b";memory=1;minValue=0;maxValue=1;offset0=-1;offset1=1;};class la1 {type="rotation";source="gait";selection="la1";axis="la1_a";begin="la1_a";end="la1_b";memory=1;minValue=0;maxValue=1;angle0=-0.55;angle1=0.55;};class ra1 {type="rotation";source="gait";selection="ra1";axis="ra1_a";begin="ra1_a";end="ra1_b";memory=1;minValue=0;maxValue=1;angle0=0.55;angle1=-0.55;};class ll1 {type="rotation";source="gait";selection="ll1";axis="ll1_a";begin="ll1_a";end="ll1_b";memory=1;minValue=0;maxValue=1;angle0=0.55;angle1=-0.55;};class rl1 {type="rotation";source="gait";selection="rl1";axis="rl1_a";begin="rl1_a";end="rl1_b";memory=1;minValue=0;maxValue=1;angle0=-0.55;angle1=0.55;};class mx1 {type="translation";source="mx1";selection="r1";axis="axisx_a";begin="axisx_a";end="axisx_b";memory=1;minValue=0;maxValue=1;offset0=-1;offset1=1;};class mz1 {type="translation";source="mz1";selection="r1";axis="axisz_a";begin="axisz_a";end="axisz_b";memory=1;minValue=0;maxValue=1;offset0=-1;offset1=1;};class la2 {type="rotation";source="gait";selection="la2";axis="la2_a";begin="la2_a";end="la2_b";memory=1;minValue=0;maxValue=1;angle0=-0.55;angle1=0.55;};class ra2 {type="rotation";source="gait";selection="ra2";axis="ra2_a";begin="ra2_a";end="ra2_b";memory=1;minValue=0;maxValue=1;angle0=0.55;angle1=-0.55;};class ll2 {type="rotation";source="gait";selection="ll2";axis="ll2_a";begin="ll2_a";end="ll2_b";memory=1;minValue=0;maxValue=1;angle0=0.55;angle1=-0.55;};class rl2 {type="rotation";source="gait";selection="rl2";axis="rl2_a";begin="rl2_a";end="rl2_b";memory=1;minValue=0;maxValue=1;angle0=-0.55;angle1=0.55;};class mx2 {type="translation";source="mx2";selection="r2";axis="axisx_a";begin="axisx_a";end="axisx_b";memory=1;minValue=0;maxValue=1;offset0=-1;offset1=1;};class mz2 {type="translation";source="mz2";selection="r2";axis="axisz_a";begin="axisz_a";end="axisz_b";memory=1;minValue=0;maxValue=1;offset0=-1;offset1=1;};class la3 {type="rotation";source="gait";selection="la3";axis="la3_a";begin="la3_a";end="la3_b";memory=1;minValue=0;maxValue=1;angle0=-0.55;angle1=0.55;};class ra3 {type="rotation";source="gait";selection="ra3";axis="ra3_a";begin="ra3_a";end="ra3_b";memory=1;minValue=0;maxValue=1;angle0=0.55;angle1=-0.55;};class ll3 {type="rotation";source="gait";selection="ll3";axis="ll3_a";begin="ll3_a";end="ll3_b";memory=1;minValue=0;maxValue=1;angle0=0.55;angle1=-0.55;};class rl3 {type="rotation";source="gait";selection="rl3";axis="rl3_a";begin="rl3_a";end="rl3_b";memory=1;minValue=0;maxValue=1;angle0=-0.55;angle1=0.55;};class mx3 {type="translation";source="mx3";selection="r3";axis="axisx_a";begin="axisx_a";end="axisx_b";memory=1;minValue=0;maxValue=1;offset0=-1;offset1=1;};class mz3 {type="translation";source="mz3";selection="r3";axis="axisz_a";begin="axisz_a";end="axisz_b";memory=1;minValue=0;maxValue=1;offset0=-1;offset1=1;};class la4 {type="rotation";source="gait";selection="la4";axis="la4_a";begin="la4_a";end="la4_b";memory=1;minValue=0;maxValue=1;angle0=-0.55;angle1=0.55;};class ra4 {type="rotation";source="gait";selection="ra4";axis="ra4_a";begin="ra4_a";end="ra4_b";memory=1;minValue=0;maxValue=1;angle0=0.55;angle1=-0.55;};class ll4 {type="rotation";source="gait";selection="ll4";axis="ll4_a";begin="ll4_a";end="ll4_b";memory=1;minValue=0;maxValue=1;angle0=0.55;angle1=-0.55;};class rl4 {type="rotation";source="gait";selection="rl4";axis="rl4_a";begin="rl4_a";end="rl4_b";memory=1;minValue=0;maxValue=1;angle0=-0.55;angle1=0.55;};class mx4 {type="translation";source="mx4";selection="r4";axis="axisx_a";begin="axisx_a";end="axisx_b";memory=1;minValue=0;maxValue=1;offset0=-1;offset1=1;};class mz4 {type="translation";source="mz4";selection="r4";axis="axisz_a";begin="axisz_a";end="axisz_b";memory=1;minValue=0;maxValue=1;offset0=-1;offset1=1;};class la5 {type="rotation";source="gait";selection="la5";axis="la5_a";begin="la5_a";end="la5_b";memory=1;minValue=0;maxValue=1;angle0=-0.55;angle1=0.55;};class ra5 {type="rotation";source="gait";selection="ra5";axis="ra5_a";begin="ra5_a";end="ra5_b";memory=1;minValue=0;maxValue=1;angle0=0.55;angle1=-0.55;};class ll5 {type="rotation";source="gait";selection="ll5";axis="ll5_a";begin="ll5_a";end="ll5_b";memory=1;minValue=0;maxValue=1;angle0=0.55;angle1=-0.55;};class rl5 {type="rotation";source="gait";selection="rl5";axis="rl5_a";begin="rl5_a";end="rl5_b";memory=1;minValue=0;maxValue=1;angle0=-0.55;angle1=0.55;};class mx5 {type="translation";source="mx5";selection="r5";axis="axisx_a";begin="axisx_a";end="axisx_b";memory=1;minValue=0;maxValue=1;offset0=-1;offset1=1;};class mz5 {type="translation";source="mz5";selection="r5";axis="axisz_a";begin="axisz_a";end="axisz_b";memory=1;minValue=0;maxValue=1;offset0=-1;offset1=1;};class la6 {type="rotation";source="gait";selection="la6";axis="la6_a";begin="la6_a";end="la6_b";memory=1;minValue=0;maxValue=1;angle0=-0.55;angle1=0.55;};class ra6 {type="rotation";source="gait";selection="ra6";axis="ra6_a";begin="ra6_a";end="ra6_b";memory=1;minValue=0;maxValue=1;angle0=0.55;angle1=-0.55;};class ll6 {type="rotation";source="gait";selection="ll6";axis="ll6_a";begin="ll6_a";end="ll6_b";memory=1;minValue=0;maxValue=1;angle0=0.55;angle1=-0.55;};class rl6 {type="rotation";source="gait";selection="rl6";axis="rl6_a";begin="rl6_a";end="rl6_b";memory=1;minValue=0;maxValue=1;angle0=-0.55;angle1=0.55;};class mx6 {type="translation";source="mx6";selection="r6";axis="axisx_a";begin="axisx_a";end="axisx_b";memory=1;minValue=0;maxValue=1;offset0=-1;offset1=1;};class mz6 {type="translation";source="mz6";selection="r6";axis="axisz_a";begin="axisz_a";end="axisz_b";memory=1;minValue=0;maxValue=1;offset0=-1;offset1=1;};class la7 {type="rotation";source="gait";selection="la7";axis="la7_a";begin="la7_a";end="la7_b";memory=1;minValue=0;maxValue=1;angle0=-0.55;angle1=0.55;};class ra7 {type="rotation";source="gait";selection="ra7";axis="ra7_a";begin="ra7_a";end="ra7_b";memory=1;minValue=0;maxValue=1;angle0=0.55;angle1=-0.55;};class ll7 {type="rotation";source="gait";selection="ll7";axis="ll7_a";begin="ll7_a";end="ll7_b";memory=1;minValue=0;maxValue=1;angle0=0.55;angle1=-0.55;};class rl7 {type="rotation";source="gait";selection="rl7";axis="rl7_a";begin="rl7_a";end="rl7_b";memory=1;minValue=0;maxValue=1;angle0=-0.55;angle1=0.55;};class mx7 {type="translation";source="mx7";selection="r7";axis="axisx_a";begin="axisx_a";end="axisx_b";memory=1;minValue=0;maxValue=1;offset0=-1;offset1=1;};class mz7 {type="translation";source="mz7";selection="r7";axis="axisz_a";begin="axisz_a";end="axisz_b";memory=1;minValue=0;maxValue=1;offset0=-1;offset1=1;};};};};
+
+Log selection: HR_PROXY_READY,PHASE,first/last OBSERVE per phase,DONE; full script log not included.
+33: 19:36:34.991 SCRIPT       : HR_PROXY_READY
+34: 19:36:50.570 SCRIPT       : HR_PROXY_PHASE phase=0 actors=0 perObject=1
+35: 19:36:50.570 SCRIPT       : HR_PROXY_OBSERVE phase=0 objects=0 actors=0 projected=0
+44: 19:36:59.611 SCRIPT       : HR_PROXY_OBSERVE phase=0 objects=0 actors=0 projected=0
+45: 19:37:00.574 SCRIPT       : HR_PROXY_PHASE phase=1 actors=8 perObject=1
+46: 19:37:00.613 SCRIPT       : HR_PROXY_OBSERVE phase=1 objects=8 actors=8 projected=8
+60: 19:37:14.736 SCRIPT       : HR_PROXY_OBSERVE phase=1 objects=8 actors=8 projected=8
+61: 19:37:15.574 SCRIPT       : HR_PROXY_PHASE phase=2 actors=1024 perObject=1
+62: 19:37:15.744 SCRIPT       : HR_PROXY_OBSERVE phase=2 objects=320 actors=320 projected=320
+76: 19:37:29.829 SCRIPT       : HR_PROXY_OBSERVE phase=2 objects=1024 actors=1024 projected=1024
+77: 19:37:30.582 SCRIPT       : HR_PROXY_PHASE phase=3 actors=1024 perObject=1
+78: 19:37:30.842 SCRIPT       : HR_PROXY_OBSERVE phase=3 objects=448 actors=448 projected=448
+92: 19:37:44.966 SCRIPT       : HR_PROXY_OBSERVE phase=3 objects=1024 actors=1024 projected=1024
+93: 19:37:45.575 SCRIPT       : HR_PROXY_PHASE phase=4 actors=1024 perObject=1
+94: 19:37:45.967 SCRIPT       : HR_PROXY_OBSERVE phase=4 objects=640 actors=640 projected=640
+113: 19:38:05.092 SCRIPT       : HR_PROXY_OBSERVE phase=4 objects=1024 actors=1024 projected=1024
+114: 19:38:05.572 SCRIPT       : HR_PROXY_PHASE phase=5 actors=1024 perObject=8
+115: 19:38:06.112 SCRIPT       : HR_PROXY_OBSERVE phase=5 objects=128 actors=1024 projected=1024
+138: 19:38:29.720 SCRIPT       : HR_PROXY_OBSERVE phase=5 objects=128 actors=1024 projected=1024
+139: 19:38:30.638 SCRIPT       : HR_PROXY_PHASE phase=6 actors=0 perObject=1
+140: 19:38:30.713 SCRIPT       : HR_PROXY_OBSERVE phase=6 objects=0 actors=0 projected=0
+154: 19:38:45.349 SCRIPT       : HR_PROXY_OBSERVE phase=6 objects=0 actors=0 projected=0
+155: 19:38:45.575 SCRIPT       : HR_PROXY_DONE
+Official fixed source: https://github.com/BohemiaInteractive/DayZ-Script-Diff/tree/78be1c402eec249e4e4cdac7e1fef71006e94d20
+Official model example: https://github.com/BohemiaInteractive/DayZ-Samples/blob/master/Test_Building/model.cfg

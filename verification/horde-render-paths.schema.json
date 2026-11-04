@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "sourceRunId",
+    "metrics",
+    "signatureVerified",
+    "finalAcceptance",
+    "actualPresentMeasured",
+    "productionChanged"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "sourceRunId": {
+      "const": "horde-render-paths-20261104"
+    },
+    "signatureVerified": {
+      "const": true
+    },
+    "productionChanged": {
+      "const": false
+    },
+    "actualPresentMeasured": {
+      "const": false
+    },
+    "finalAcceptance": {
+      "const": false
+    },
+    "metrics": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "required": [
+          "phase",
+          "frames",
+          "scriptDtMsP95",
+          "objects",
+          "logicalActors"
+        ]
+      }
+    }
+  }
+}
