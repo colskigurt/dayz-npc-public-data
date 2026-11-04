@@ -1,0 +1,181 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-05T05:13:32.518423+09:00",
+  "sourceRunId": "palette64-host64-three-pairs",
+  "independentPairs": 3,
+  "independentProcesses": 6,
+  "conditions": {
+    "eight": {
+      "values": [
+        109.82587034203256,
+        110.34814487219202,
+        97.22714700373281
+      ],
+      "mean": 105.8003874059858,
+      "median": 109.82587034203256,
+      "sampleStdev": 7.429234881017731,
+      "minimum": 97.22714700373281,
+      "maximum": 110.34814487219202
+    },
+    "five": {
+      "values": [
+        94.79641880853006,
+        107.75022414170395,
+        99.24209422161327
+      ],
+      "mean": 100.5962457239491,
+      "median": 99.24209422161327,
+      "sampleStdev": 6.58221565059212,
+      "minimum": 94.79641880853006,
+      "maximum": 107.75022414170395
+    }
+  },
+  "pairs": [
+    {
+      "pair": 1,
+      "order": [
+        "eight",
+        "five"
+      ],
+      "baselineCpuMsPerSecond": 109.82587034203256,
+      "candidateCpuMsPerSecond": 94.79641880853006,
+      "absoluteReduction": 15.029451533502495,
+      "relativeReductionPercent": 13.684800754773008,
+      "baselineServerDt": {
+        "p50": 16.0,
+        "p95": 31.0,
+        "p99": 31.0
+      },
+      "candidateServerDt": {
+        "p50": 16.0,
+        "p95": 31.0,
+        "p99": 31.0
+      }
+    },
+    {
+      "pair": 2,
+      "order": [
+        "five",
+        "eight"
+      ],
+      "baselineCpuMsPerSecond": 110.34814487219202,
+      "candidateCpuMsPerSecond": 107.75022414170395,
+      "absoluteReduction": 2.5979207304880703,
+      "relativeReductionPercent": 2.354294885063131,
+      "baselineServerDt": {
+        "p50": 16.0,
+        "p95": 31.0,
+        "p99": 31.069999999999936
+      },
+      "candidateServerDt": {
+        "p50": 16.0,
+        "p95": 31.0,
+        "p99": 31.0
+      }
+    },
+    {
+      "pair": 3,
+      "order": [
+        "eight",
+        "five"
+      ],
+      "baselineCpuMsPerSecond": 97.22714700373281,
+      "candidateCpuMsPerSecond": 99.24209422161327,
+      "absoluteReduction": -2.0149472178804615,
+      "relativeReductionPercent": -2.0724121605698276,
+      "baselineServerDt": {
+        "p50": 16.0,
+        "p95": 31.0,
+        "p99": 31.049999999999955
+      },
+      "candidateServerDt": {
+        "p50": 16.0,
+        "p95": 31.0,
+        "p99": 31.0
+      }
+    }
+  ],
+  "allThreeLower": false,
+  "allThreeAtLeastFivePercent": false,
+  "wholeGameplayCost": false,
+  "clientPresentMeasured": false,
+  "visualSmoothnessVerified": false,
+  "functionalPursuitClimbFallRegression": false,
+  "finalAcceptance": false,
+  "evidenceReferences": [
+    {
+      "fileId": "palette64-host64-eight1\\cost-analysis.json",
+      "sha256": "9fb1e1c8fb78a39eab9e84389a475014107013d2b4a63a5982cbad9bf75244ff"
+    },
+    {
+      "fileId": "palette64-host64-five1\\cost-analysis.json",
+      "sha256": "310f856b7e5d0c28cdf195bd9c16c3dc74cd7d9d79e3d235d01aac1d6963abe5"
+    },
+    {
+      "fileId": "palette64-host64-eight2\\cost-analysis.json",
+      "sha256": "25d7bf8f03b3765ee502c8c6e935e72cbef97fe3850ea7c46883fd63442d47e0"
+    },
+    {
+      "fileId": "palette64-host64-five2\\cost-analysis.json",
+      "sha256": "4c9b70eda86498e5f3ca8c3da9aab463f276f07e580f0e534bf5c5ce9a10b143"
+    },
+    {
+      "fileId": "palette64-host64-eight3\\cost-analysis.json",
+      "sha256": "219e68f9acc7a8dd0f51cf0ac6b205f774ea18b261700f15fb216d440689f2a6"
+    },
+    {
+      "fileId": "palette64-host64-five3\\cost-analysis.json",
+      "sha256": "c0bc776ddc44c26a0bbc0eff6fe37661c09e5fabf6cc9317cd7d6e8d235aaf43"
+    }
+  ],
+  "limitations": [
+    "Stationary offline native-host control only; no client render, AI, custom contact solver or pursuit",
+    "Host count and total skeleton bones change jointly",
+    "20s sampling with100ms process endpoint observer; not self-time",
+    "Three pairs do not prove general significance across machines or scenes"
+  ],
+  "buildId": "cost-control2:9A7F3C5F+five-run1:EF23B8D3",
+  "verificationStatus": "THREE_PAIRS_COMPLETED_EFFECT_INCONSISTENT_NOT_ACCEPTED",
+  "metrics": {
+    "independentPairs": 3,
+    "independentProcesses": 6,
+    "baselineCpuMsPerWallSecond": {
+      "values": [
+        109.82587034203256,
+        110.34814487219202,
+        97.22714700373281
+      ],
+      "mean": 105.8003874059858,
+      "median": 109.82587034203256,
+      "sampleStdev": 7.429234881017731,
+      "minimum": 97.22714700373281,
+      "maximum": 110.34814487219202
+    },
+    "candidateCpuMsPerWallSecond": {
+      "values": [
+        94.79641880853006,
+        107.75022414170395,
+        99.24209422161327
+      ],
+      "mean": 100.5962457239491,
+      "median": 99.24209422161327,
+      "sampleStdev": 6.58221565059212,
+      "minimum": 94.79641880853006,
+      "maximum": 107.75022414170395
+    },
+    "pairReductionPercents": [
+      13.684800754773008,
+      2.354294885063131,
+      -2.0724121605698276
+    ],
+    "serverDtP50Ms": 16,
+    "serverDtP95Ms": 31,
+    "clientPresentP50": null,
+    "clientPresentP95": null,
+    "clientPresentP99": null
+  },
+  "blockers": [
+    "No consistent stationary-server CPU reduction across3pairs",
+    "Client rendering/Present and full gameplay not measured"
+  ]
+}

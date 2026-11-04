@@ -3,9 +3,9 @@
 <!-- NPC_CPU_CURRENT_BEGIN -->
 ## NPC CPU 최적화 현재 상태
 
-5파트참조/후보전체몸체의서로다른Run포즈두화면확보.60초관찰·retirement완료.이번useBE실행에서는재시작안내없음(인과확정아님).기존8파트유지.부드러움·14클립·64개체비용미검증.
+정지64개체8→5파트CPU3쌍:13.7%감소/2.4%감소/2.1%증가.최초효과재현안됨;서버정지Run비용개선미확정·미수용.기존8파트운영본유지.서버p95양쪽31ms이며clientPresent미측정.다음은실제client렌더포함국소비교가능성검토.
 
-[최신 CPU 보고서](reports/operations/npc-palette64-five-visible-20261105.md)
+[최신 CPU 보고서](reports/operations/npc-palette64-host-cost-three-pairs-20261105.md)
 <!-- NPC_CPU_CURRENT_END -->
 
 근접 화면에서 자체 P3D 프록시의 기본 이동·분절 팔다리 출력을 확인하고 실제 PresentMon 측정을 수행했다. X/Z source 이동차각1m를 교정했고,반대 끝 자세와 연속 자세 변화를 관찰했다. 자연스러운 보행·접지·광학 cadence의최종 수용은 아니다.
