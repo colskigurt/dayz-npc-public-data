@@ -6,6 +6,13 @@
 64개체 정지Run·실제SyncInterval0·500FPS 상한, 8→5/5→8/8→5의3쌍 모두5파트 CPU Busy/Present p95 감소. 쌍별 Present 변화 중앙값 -16.69%, CPU Busy -16.81%, 절대 Present p95 차이0.99~2.74ms. 해당 장면 반복 효과 확인·후속 자산 연구 기준 통과. 표시 변경은 방향 불일치, 시각·기능·전체추적20ms 목표는 미수용.
 
 [3쌍 검증 보고서](reports/operations/npc-palette64-client-highcap-three-pairs-20261105.md)
+
+
+### 이후 자산 준비 — 신규 측정 없음
+
+5파트14클립: 기존70키계약 대조·65TXA 입력 준비(44.9MB), Run5·골격5·모델5 재사용. 신규 네이티브 컴파일0/65. 네트워크 생성의8파트 상수·형제충돌차단·피해수신 수명 계약 확인. Workbench OpenFile 보안승인 대기. 새 게임/성능 시험0회. 이전정지Run3쌍의 scoped 효과는 보존하며 전체게임 채택은 미완료.
+
+[준비 상태](reports/operations/npc-palette64-fullclip-preparation-20261105.md)
 <!-- NPC_CPU_CURRENT_END -->
 
 근접 화면에서 자체 P3D 프록시의 기본 이동·분절 팔다리 출력을 확인하고 실제 PresentMon 측정을 수행했다. X/Z source 이동차각1m를 교정했고,반대 끝 자세와 연속 자세 변화를 관찰했다. 자연스러운 보행·접지·광학 cadence의최종 수용은 아니다.

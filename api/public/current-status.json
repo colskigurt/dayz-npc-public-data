@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-05T07:38:12.798294+09:00",
-  "sourceRunId": "palette64-client64-highcap-three-pairs",
-  "buildId": "palette64-five-run1-and-cost-control2-camera2",
+  "generatedAt": "2026-11-05T07:50:17.555959+09:00",
+  "sourceRunId": "palette64-fullclips-inputs1",
+  "buildId": "staging_only_no_new_PBO",
   "verificationStatus": {
     "diagnosis": "three_stationary_host_pairs_completed_inconsistent_effect",
     "candidate": "not_promoted",
@@ -11,10 +11,10 @@
     "wholeFramePerformance": "not_measured",
     "externalAI": "not_retested",
     "finalAcceptance": false,
-    "latestDiagnosticScope": "stationary Run highcap three pairs; scoped repeat effect only"
+    "latestDiagnosticScope": "static asset preparation and consumer review only"
   },
   "metrics": {
-    "newRuns": 8,
+    "newRuns": 0,
     "latestFunctional": {
       "sourceRunId": "network-gameplay/entry-facing-sixtyfour-on1",
       "independentRuns": 1,
@@ -268,7 +268,7 @@
       "clientPresentP95": null,
       "clientPresentP99": null
     },
-    "newRunsDefinition": "Additional4 release server plus4 retail client starts; total3 pairs includes previous round6"
+    "newRunsDefinition": "No new DayZ game experiment;2 Workbench starts, native import not invoked"
   },
   "blockers": [
     "No consistent stationary-server CPU reduction across3pairs",
@@ -899,5 +899,106 @@
     ],
     "nextSingleTask": "Bounded5part14clip native asset bundle and bone/event/root compatibility plan before gameplay integration; preserve primary physics-query cost work"
   },
-  "nextSingleTask": "Bounded5part14clip native asset bundle and bone/event/root compatibility plan before gameplay integration; preserve primary physics-query cost work"
+  "nextSingleTask": "After user handles editor permission: compile65 inputs, audit native envelopes/meta, then bounded14clip paired pose/root-clock comparison; no gameplay replacement yet",
+  "latestPaletteAssetPreparation": {
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2026-11-05T07:50:17.555959+09:00",
+    "sourceRunId": "palette64-fullclips-inputs1",
+    "buildId": "staging_only_no_new_PBO",
+    "verificationStatus": {
+      "staticInputs": "passed",
+      "bindingConsumerReview": "passed",
+      "newNativeCompilation": "not_run_waiting_user_security_permission",
+      "runtimePose": "not_run",
+      "performance": "no_new_measurements",
+      "finalAcceptance": false
+    },
+    "metrics": {
+      "newGameRuns": 0,
+      "workbenchStarts": 2,
+      "newTxa": 65,
+      "reusedRun": 5,
+      "expectedPartClipCases": 70,
+      "inputBytes": 44874485,
+      "newAnmCompiled": 0,
+      "modelsOrSkeletonsDuplicated": 0,
+      "PboCreated": false
+    },
+    "blockers": [
+      "Workbench Script Authorization Required asks user to approve built-in pluginfilehandler OpenFile; automation did not grant or bypass approval"
+    ],
+    "evidenceReferences": [
+      {
+        "fileId": "palette64-fullclips-inputs1/staging.json",
+        "sha256": "f6b16640d1e93124980197f043c3bbb6984ce6f501ff28e7eac366401f812460"
+      },
+      {
+        "fileId": "palette64-fullclips-inputs1/binding-plan.json",
+        "sha256": "d62811ffe02619ebb367a53dc9bd23e531827277fe079a830bd23c50c995d25a"
+      },
+      {
+        "fileId": "palette64-fullclips-inputs1/compile-preflight.json",
+        "sha256": "bcd47c45264b26d939c713c9ac1dbb72e4a7fe2646f8027be79c0bfd6651d84c"
+      },
+      {
+        "fileId": "palette64-fullclips-inputs1/consumer-contract-review.json",
+        "sha256": "3b3ee55ae95f4ea93051ac5a242767e163be158d91c30e693e86d8f44e32cc8d"
+      }
+    ],
+    "consumerEvidence": {
+      "sections": [
+        {
+          "label": "role/count/type factory",
+          "fileId": "network-gameplay/source/nf_network_body/Scripts/4_World/NFNetworkBody.c",
+          "startLine": 1,
+          "endLine": 16,
+          "text": "modded class DGBNativeGroundBody {\n    ref array<dBlock> NFInternalBlocks=new array<dBlock>;\noverride void Initialize(int id,DGBNativeGroundDirector director,vector point)\n    {\n        if(!FileExist(\"$profile:nf-network-body.flag\")){super.Initialize(id,director,point);return;}\n        if(!GetGame().IsServer() || !GetGame().IsMultiplayer()){Print(\"NF_NETWORK_BODY_FAILED role\");return;}\n        if(!director.RepartitionModel || !director.Vertical || director.RenderPartCount!=8)\n        {Print(\"DG_SUBSET_INTEGRATION_FAILED unsupported_director\");return;}\n\n        Id=id;Director=director;\n        for(int part=0;part<director.RenderPartCount;part++)\n        {\n            string bodyType=\"NFNetPartsPart\"+part;\n            if(part==0){bodyType=\"DGSubsetIntegratedCrowdLeader\";}\n            int creationFlags=ECE_CREATEPHYSICS;\n            Animal_DGNativeProbe actor=Animal_DGNativeProbe.Cast(GetGame().CreateObjectEx(bodyType,point,creationFlags));"
+        },
+        {
+          "label": "sibling collision block lifetime",
+          "fileId": "network-gameplay/source/nf_network_body/Scripts/4_World/NFNetworkBody.c",
+          "startLine": 23,
+          "endLine": 40,
+          "text": "            else if(director.SimulationLod>=0)actor.UpdateSimulationPrecision(director.SimulationLod);\n            actor.SetOrientation(\"180 0 0\");\n            if(dBodyIsSet(actor))\n            {\n                foreach(Animal_DGNativeProbe sibling:Parts)\n                {\n                    if(!dBodyIsSet(sibling)){Print(\"NF_NETWORK_BODY_FAILED sibling_physics\");return;}\n                    dBlock siblingBlock=dBodyCollisionBlock(actor,sibling);\n                    if(!siblingBlock){Print(\"NF_NETWORK_BODY_FAILED sibling_block\");return;}\n                    NFInternalBlocks.Insert(siblingBlock);\n                }\n            }\n            else{Print(\"NF_NETWORK_BODY_FAILED actor_physics\");return;}\n            Parts.Insert(actor);\n            if(part==0)Leader=actor;\n        }\n        if(!Leader)return;\n        if(director.CombatEnabled)"
+        },
+        {
+          "label": "separate damage receiver",
+          "fileId": "network-gameplay/source/nf_network_body/Scripts/4_World/NFNetworkBody.c",
+          "startLine": 41,
+          "endLine": 58,
+          "text": "        {\n            DamageReceiver=Animal_DGNativeProbe.Cast(GetGame().CreateObjectEx(\"Animal_DGNativeDamageReceiver\",point,ECE_CREATEPHYSICS));\n            if(!DamageReceiver)return;\n            if(!dBodyIsSet(DamageReceiver)){Print(\"NF_NETWORK_BODY_FAILED receiver_physics\");return;}\n            foreach(Animal_DGNativeProbe renderSibling:Parts)\n            {\n                dBlock receiverBlock=dBodyCollisionBlock(renderSibling,DamageReceiver);\n                if(!receiverBlock){Print(\"NF_NETWORK_BODY_FAILED receiver_block\");return;}\n                NFInternalBlocks.Insert(receiverBlock);\n            }\n            DamageReceiver.GroundBody=this;DamageReceiver.DamageReceiver=true;DamageReceiver.SetAllowDamage(true);\n            DamageReceiver.RuntimeTimingProbe=director.RuntimeTimingProbe;\n            DamageReceiver.SetOrientation(\"180 0 0\");\n            if(director.ResetSimulationPrecision)DamageReceiver.UpdateSimulationPrecision(-1);\n            else if(director.SimulationLod>=0)DamageReceiver.UpdateSimulationPrecision(director.SimulationLod);\n        }\n        Agent.Initialize(Leader);Agent.UseNativeRootDelta=true;\n        if(director.CrowdDynamics){Agent.PeerCoreDistance=0.58;Agent.CollisionPlayers=director.PerceivedPlayers;}"
+        },
+        {
+          "label": "required native bone handles",
+          "fileId": "network-gameplay/source/nf_network_body/Scripts/4_World/NFNetworkBody.c",
+          "startLine": 59,
+          "endLine": 74,
+          "text": "        Agent.SenseAt=Director.Now+Id*0.02;\n        array<string> names={\"Hips\",\"Head\",\"LeftFoot\",\"RightFoot\"};\n        foreach(string name:names)\n        {\n            int requiredBone=Leader.GetBoneIndexByName(name);\n            // Bone handles are opaque signed IDs. RightFoot legitimately has\n            // a negative handle; only the API's -1 sentinel is unavailable.\n            if(requiredBone==-1){Print(\"DG_NATIVE_REQUIRED_BONE_MISSING \"+name);return;}\n            JointIds.Insert(requiredBone);\n        }\n        EntityId=Leader.GetBoneIndexByName(\"EntityPosition\");\n        if(EntityId==-1){Print(\"DG_NATIVE_REQUIRED_BONE_MISSING EntityPosition\");return;}\n        NativeSkeletonReady=true;\n        Agent.ObstacleMin.Copy(Director.ObstacleMin);Agent.ObstacleMax.Copy(Director.ObstacleMax);\n        if(director.Vertical)Traversal=new DGBNativeTraversal(this);\n        if(director.CombatEnabled)Combat=new DGBNativeCombat(this);"
+        }
+      ],
+      "existingFactoryHardcodedParts": 8,
+      "candidateCount": 5,
+      "plannedSiblingBlockCounts": {
+        "existing8": 28,
+        "candidate5": 10
+      },
+      "plannedCombatReceiverBlocks": {
+        "existing8": 8,
+        "candidate5": 5
+      },
+      "countsMeaning": "arithmetic from currently read loops, not measured native physics savings",
+      "benchmarkHasFullGameplayOwner": false,
+      "benchmarkCreatesSiblingBlocks": false,
+      "benchmarkCreatesDamageReceiver": false,
+      "impact": "Repeated stationary Run benefit is valid only for that fixture; cannot infer full network owner or pure animation self-time savings",
+      "candidateAdapterBoundary": [
+        "feature flag required; old path calls super unchanged",
+        "count/type selection only before physics blocks and damage receiver setup",
+        "all required bone lookups retain -1 sentinel semantics",
+        "preserve actor/script retirement before releasing blocks/objects",
+        "no contact/support solver rewrite"
+      ]
+    },
+    "nextSingleTask": "After user handles editor permission: compile65 inputs, audit native envelopes/meta, then bounded14clip paired pose/root-clock comparison; no gameplay replacement yet"
+  }
 }
