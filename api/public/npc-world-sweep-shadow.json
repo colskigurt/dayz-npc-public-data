@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-04T19:51:43.091876+09:00",
+  "sourceRunId": "world-sweep-shadow1",
+  "verificationStatus": "preliminary_diagnostic_not_accepted",
+  "rows": 128,
+  "certificateClear": 29,
+  "falseClear": 0,
+  "contractsPassed": 128,
+  "worldHits": 30,
+  "queriesSkipped": 0,
+  "performanceMeasured": false,
+  "coverageDefect": "Enforce division yielded fractional previousMode/heading instead of intended integer buckets; actual rows preserved; intended factorial coverage not certified",
+  "metrics": {
+    "p50": null,
+    "p95": null,
+    "p99": null
+  },
+  "blockers": [
+    "coverage generator correction before candidate cost comparison"
+  ],
+  "evidenceReferences": [
+    {
+      "fileId": "world-sweep-shadow.tsv",
+      "sha256": "fe8cb0134de3f04980a731eb736f4e6183ac7841ce9179e2e8b0722967f1f274"
+    }
+  ]
+}
