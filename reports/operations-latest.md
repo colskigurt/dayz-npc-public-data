@@ -1,63 +1,51 @@
-# DayZ 프록시 근접 출력 및100/1000 실제 프레임 비용
+# 최신 NPC CPU 최적화 작업
 
 ## 1. 작업 목표
 
-DayZ 로컬 P3D 프록시의 근접 이동·팔다리 애니메이션을 먼저 확인하고,정상 기본 출력이 확인되면100·1000개체의 실제 프레임 비용을 비교한다. 별도 애니메이션 세션과 코드·PBO·실행을 분리한다. 자연스러운 보행 품질·기능·성능·최종 수용은 별도 판정한다.
+5파트 재분할 후보를 전체 구현하기 전에64 weighted palette 파트 하나의 native 컴파일·본 매핑·실제 표시 가능성을 확인한다. 기존8파트·물리·접촉 솔버는 유지한다.
 
 ## 2. 실제 수행
 
-자체72삼각형/5본/6상자 HRProxy1을 사용했다. source=gait 회전과mx0/mz0 translation으로 중립·양끝 자세·X/Z 끝 위치·연속 모드를 확인했다. Computer Use의 게임 창 관찰에서 서로 반대인 팔다리 자세와 이동·자세 변화를 봤다. 전체 영상이나 연속 광학 cadence 검증은 아니다. 근접 카메라는 비스듬한 고정 시점이며 모델은 단순 막대형 인체다.
+원래 visual/Memory 바이트를 보존한 단일 모델에 기존 Geometry LOD를 그대로 추가했다. 기존 전체250본·14클립 바인딩을 상속하여 새 클립 없이 진단했다. 별도 PBO를 빌드하고 packed ODOL/config.bin을 확인했다. 최초 서명 호출은 경로 인자 오류로 실패했고 canonical Windows 경로 인자로 서명·검증에 성공했다. 실패 기록도 보존했다.
 
-near 첫 미션은 계측 함수 Bone이 게임 Bone 클래스와 충돌해 컴파일 실패했다. ReadBoneOffset로 바꾼 close-v2가 정상 종료했다. 벤치 첫 미션도 빼기 표현식 구문 오류로 컴파일 실패했고,공백을 정정한 bench-v2/v3를 사용했다. 오류 상태에서 종료하지 않은 bench-v1의 소유 클라이언트만 식별 후 강제 종료했으며 실패로 보존했다. 완주 두 미션의 원문 SHA는 같다.
-
-측정은 리테일 오프라인 미션,1280×720 창,VSync1,고정 카메라·월드 시간에서 수행했다. fresh 클라이언트1:0→100→1000→0→1000→100→0,클라이언트2:0→100→1000→0이다. 각 단계 생성 완료·전면 확인 후4초 안정화,PresentMon2.6.0으로15초 기록했다. 초기에 실제 ETW 접근이 거부돼 사용자 OS 승인에 의한 단발 관리자 측정기를 사용했다. PID·profile·PBO hash로 대상을 제한하고 고유 session name을 사용했다. 권한 그룹/서비스는 변경하지 않았다.
+격리 서버는 원본 대조와 후보의64개 본 이름을 읽고 같은 native animation 시각의 MS pose를 비교했다. 완료 표식·retirement 후 소유 서버를 종료했다. 그 뒤3개 격리 client 시도는 씬 진입 전에 Steam 인식 오류로 종료됐다. visible1은 사용자 일시정지 중 종료 상태가 미확인으로 남아 재개 후 프로세스 부재·오류 덤프를 확인했다. visible2는 알려진 launcher/graphics cfg/dependency set, visible3은 child-process App ID 지정으로 구분했다. 설정·계정·Steam 설치를 변경하지 않았다.
 
 ## 3. 측정 결과
 
-X source0.25→0.75의 본 변환 원점 차이는(1,0,0)m,Z는(0,0,1)m이며0.002m 허용 범위를 통과했다. gait0.05↔0.95에서 팔 변환 원점 차이는각1.396485m,다리는각0.845703m였다. 이 값은 모델 애니메이션 본 변환 원점 차이이며 관절 중심의 실측 궤적이 아니다. 네이티브 readback과 화면 자세가 변하는 것을 함께 확인했다. GetSelectionPositionWS는 해당 selection에서 world zero를 반환해 검증에서 제외했다.
+|항목|결과|
+|---|---:|
+|컴파일 모델|ODOL,540089bytes|
+|새 PBO 서명·검증|성공|
+|배포 폴더 개인키|0|
+|본 이름 매핑|64/64|
+|native 관측|250행|
+|활성·동일 시각 비교|222/222행|
+|64본 최대 MS pose 차이|0m|
+|대조/후보 native callback 최대|24/24|
+|실제 렌더링된 후보 관찰|미실행|
 
-|fresh / 구간|개체|선정|Present p95 ms|Display p95 ms|GPU Busy p50 ms|
-|---|---:|---|---:|---:|---:|
-|1 / baseline-a|0|excluded_foreground_loss|78.545|80.075|4.796|
-|1 / count100-a|100|secondary_notification|27.726|20.084|6.970|
-|1 / count1000-a|1000|primary|30.894|20.087|7.563|
-|1 / baseline-b|0|primary|26.614|20.084|5.851|
-|1 / count1000-b|1000|primary|30.170|20.086|7.608|
-|1 / count100-b|100|excluded_foreground_loss|79.882|80.075|6.998|
-|1 / baseline-c|0|primary|26.347|20.082|6.643|
-|2 / baseline-a|0|excluded_foreground_loss|92.710|100.004|3.788|
-|2 / count100-a|100|primary|25.793|20.089|5.874|
-|2 / count1000-a|1000|primary|29.800|20.090|7.441|
-|2 / baseline-b|0|primary|26.396|20.081|5.716|
-
-primary:전면 손실 표본 없고 화면 오염이 관찰되지 않은 선정 구간. secondary_notification:Steam 알림이 보인100개 구간으로 보조 기록만 유지. excluded_foreground_loss:백그라운드 전환이 확인돼 비교에서 제외. 총11구간 중primary7(0개3,100개1,1000개3),보조1,제외3이다. 독립 fresh2회이며 그 안의 continued 측정 창을 각각 독립 fresh로 세지 않는다.
-
-선정된 빈 장면 Present p95는26.347–26.614ms,깨끗한100개는25.793ms,1000개는29.800–30.894ms다. Display p95는모두20.081–20.090ms로 실제 출력은약50회/초 간격을 유지했다. Present 호출 간격과 표시 간격은 버퍼링·동기화로 달라진다. 이 환경의50Hz 출력 유지이며60FPS/무제한 FPS를 입증한 것이 아니다.
-
-GPU Busy p50은빈 장면5.716–6.643ms,깨끗한100개5.874ms,1000개7.441–7.608ms다. 두 번째 fresh의 같은 실행에서1000개7.441→빈 장면5.716ms로약1.725ms 차이다. 전체 앱 GPU busy 차이이며 프록시 스키닝만의 self-time이 아니다. CPU busy p50은조건 간9.755–12.081ms 등 변동해 CPU 개선·정밀 개체당 비용으로 환산하지 않는다.100개 Present p95가빈 장면보다 낮은 것도 음수 비용이나 최적화로 해석하지 않는다.
+위 포즈는 CPU native skeleton 출력이며 스키닝 픽셀 검증이 아니다. 새 모델은 전체250본을 상속한 단일 파트 진단이고 최종79본 subset이나5파트 통합본이 아니다. p50/p95/p99·64개체 비용·시각적 부드러움은 미측정이다.
 
 ## 4. 원인 분석
 
-user animation source를 연결한 Building 계열 P3D에서 실제 기본 이동·분절 팔다리 출력 경로가 성립했다. 기존 좀비 캐릭터 AI/상태기계를 붙이지 않은 로컬 표현이므로1,000개의 상세 AI 엔티티와 동일하지 않다. 매프레임 개체당3회 source setter를 호출하며1000개는약3000회/프레임이다. 이번에는묶음8형상이나 GPU instancing을 시험하지 않았다.
+확인:64본 weighted MLOD는 현 binarizer에서 ODOL로 만들어졌고 native class 생성/본 매핑/원본과의 CPU pose 진행도 통과했다. 실제 화면에서는 모델 대신 Steam 인식 오류창을 확인했다. 처음 두 MDMP의 동일 오류 메시지도 확인했다. 이는 새 자산의 시각 실패나 성공 증거가 아니다.
 
-VSync1/약20ms 표시 cadence가 처리량을 제한한다. 표시 간격이 유지돼도 추가 비용0이라는 뜻이 아니다. Present p95는빈 장면보다1000개에서약3–5ms 높았고 GPU busy도증가했다.50회/초 출력 예산 안에서 움직이는 단순 프록시는 가능성을 보였지만,max throughput과60FPS 이상 여부는 미측정이다. 원거리 모델의5본/72삼각형을 상세 좀비 리그·재질로 바꿔도 같은 결과라고 일반화할 수 없다.
+사용자 제안인 관리자 실행 차이를 확인했다. 현 실행 도구와 Steam 모두 Medium·비상승,같은 계정·세션이며 DayZDiag manifest는 asInvoker다. 종료된 진단 프로세스의 실제 토큰은 읽지 못했으므로 그 사실을 과거 모든 실행에 소급하지 않는다. 강제 관리자 호환성 설정은 발견하지 못했다. 현재 근거로 관리자 불일치를 확정하지 않는다.
 
-일부 실행 중 Steam 창이 전면으로 올라왔다. 내장 IsAppActive의5Hz heartbeat를 stage 로그 시각/첫표본과 capture wall time으로 정렬(약0.2초 오차),capture 내부±0.3초 경계를 제외해 확인했다. 이 전환의 원인을 사용자 입력·Steam·숨김 측정기 중 하나로 특정하지 않았다. 전면이 되기 전 대기 시간은 캡처 손실로 세지 않는다. Present별 전면 검증이나 ETW 전체 손실0을 주장하지 않는다.
+Steam UI는 실행 중이지만 읽기 전용 ActiveProcess 두 registry view의 pid/ActiveUser가0이었다. 연결 정보 문제의 후보이지 원인 확정은 아니다. 명시 App ID도 해결하지 못했다. 사용자 작업의 런처·서버가 이후 새로 실행돼 추가 client 실험은 진행하지 않았다.
 
 ## 5. 검증 수준
 
-기본 local translation/rigid limb articulation:근접 UI 관찰+네이티브 변환 진단 성공. 정밀 광학 cadence·발 접지·무릎/팔꿈치 자연스러움:미수용. 실제 PresentMon CSV/PID/swap chain 분리/QPC 단위:진단 성공.1000개 약50Hz 표시 cadence:서로 다른 fresh2회에서3개 선정 창의 결과.100개 clean1창만 확보했다. 최종 호드·AI·전투·멀티플레이·무제한/60FPS·20ms Present p95 목표:미수용. 기본표현 검증을 전체 목표 달성으로 기록하지 않는다.
+컴파일/서명/64본 CPU pose: 진단 성공. 실제 mesh skin·시각·반복 성능·8/64 기능·최종 수용: 미실행. 오류창 관찰을 애니메이션 관찰로 바꾸어 쓰지 않는다. 서버 exit−1은 완료 후 소유 종료이며 정상 종료 인증이 아니다. client 실패도 정상 퇴역으로 보고하지 않는다.20ms p95는 목표다.
 
 ## 6. 변경 사항
 
-격리된 close-motion 연구 미션·런처·계측/분석/보고 도구만 추가했다. 사용한 PBO는이전 HRRenderProxy2와같은 hash이며 실행 전후 DSCheckSignatures 검증 성공,개인 키0개다. PBO 내용의새 수정/재빌드는 없다. 기존 NPC·서버/Workshop 배포·다른 애니메이션 세션 코드는 변경하지 않았다. 시작시 다른 DayZ 실행을 거부하고 측정기의각 단계에서도 단일 소유 클라이언트만 허용했다. 다른 세션 프로세스를 종료하지 않았다.
+새 격리 nf_palette64_probe PBO와 전용 plan/mission/launcher만 추가했다. 운영 게임 코드·기존 PBO·Steam 설정·키 원본은 보존했다. 서명 검증 성공,개인키 공개/배포0개. 원본 Geometry LOD 바이트와 기존14클립을 유지했다. runtime launch의 inherited newPbo=false 필드는 해당 launcher 내부 생성 여부이며 이번 묶음의 새 진단 PBO 존재를 부정하는 근거로 쓰지 않는다. 실제 build/packed/plan을 함께 읽는다.
 
 ## 7. 원시 증거
 
-로컬:close-v2-profile pose.tsv/script log,bench-v2/v3-profile heartbeat.tsv/script logs,11개PresentMon CSV·capture.json,명령요청·완료기록,기존 PBO/미션hash,close-analysis.json 및두 present-analysis.json. 공개:자체 미션 코드·대표 상태 로그·선정 집계·파일ID/SHA와선정 기준만 포함한다. 전체 로그·영상·PID·절대 설치경로·키·게임 자산은 공개하지 않는다.11CSV의선정 행 수와hash를 유지하며,측정은swap chain을 섞지 않았다. 한 번의UI 관찰 구간과두 번째 실행의근사 관찰 시각범위를 제외했고 제외행 수도남겼다. 모든 원본CSV는보존했다.
+palette64-part0-probe1/{plan,build,packed-proof,sign-first-failure,bundle-analysis},palette64-part0-runtime1/{plan,server-launch,pose TSV},palette64-part0-visible1/2/3의plan/terminal/launch/오류 dump를 연결한다. 공개 packet은 집계·선정 오류 메시지·해시만 포함한다. MDMP·원본 모델/PBO·계정 정보·로컬 경로·전체 process/환경은 공개하지 않는다. Computer Use는 DayZ 오류창을 직접 확인했으며 모델 화면 관찰은 없었다.
 
 ## 8. 잔여 문제
 
-다음 단일 작업은전용 profile의VSync를 끈0/100/1000 비교로최대 처리량과CPU/GPU 여유를 확인하는 것이다. 이번사용자 전면 유지 요청 구간은종료했고PC 사용을 돌려준 뒤분석했다. 새 자동 감시나예약 실험은만들지 않는다. 이후모델 품질을늘릴 때는본/삼각형/재질·그림자 단계별로추가해야한다. 지형 접지·방향전환·군중 경로·프록시/실체 전환·공격/피격·시체·복제는별도다.
-
-현재 병목 후보는source setter 반복/객체 렌더 제출/GPU 변형·그림자이며self-time 분리가없어특정하지않는다. 필요 자원은개선된저폴리 리그,측정시 독점전면·알림억제 조건,정확한표시 광학자료다. 다음시험에서 전면손실·source/PBO hash변경·생성실패·다른DayZ세션감지 시해당창을미수용처리한다. VSync해제 후예산미달이면갱신빈도·애니메이션 채널·그림자·LOD를한축씩분리하고,충족하면품질을단계적으로올린다.
+먼저 일반 Steam 실행 결과와 진단 전용 실행 문제를 구분해야 한다. 관리자 차이로 단정하거나 보안 설정을 바꾸지 않는다. 클라이언트 연결이 정상화된 후 단일 파트의 실제 스키닝을 확인한다. 그 전에는 전체70클립 변환·5파트 gameplay 통합·8/64회귀를 시작하지 않는다. 기존 기능과 실패 증거는 보존한다. 전체 CPU 절감은 아직 미입증이다.

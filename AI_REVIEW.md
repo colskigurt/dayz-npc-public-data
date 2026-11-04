@@ -1,5 +1,13 @@
 # DayZ 대량 호드 표현 경로 검토
 
+<!-- NPC_CPU_CURRENT_BEGIN -->
+## 상세 NPC CPU 최적화 현재 상태
+
+8→5파트 후보의 단일64본 파트는 ODOL·서명·64본 CPU pose 대조를 통과했다. 실제 스키닝 화면은 Steam 인식 오류로 미확인이다. 현재 양쪽 실행 권한은 Medium이며 관리자 원인은 미확정. 기존8파트 유지·CPU 개선 미입증.
+
+[최신 CPU 보고서](reports/operations/npc-palette64-native-gate-20261104.md) · [정적 후보](reports/operations/npc-palette64-static-20261104.md)
+<!-- NPC_CPU_CURRENT_END -->
+
 근접 화면에서 자체 P3D 프록시의 기본 이동·분절 팔다리 출력을 확인하고 실제 PresentMon 측정을 수행했다. X/Z source 이동차각1m를 교정했고,반대 끝 자세와 연속 자세 변화를 관찰했다. 자연스러운 보행·접지·광학 cadence의최종 수용은 아니다.
 
 리테일 오프라인 fresh2회,1280×720,VSync1. 총11개15초창 중전면손실3개 제외·Steam 알림1개 보조. primary는빈 장면3,100개1,1000개3창이다. Present p95:빈 장면26.347–26.614ms,100개25.793ms,1000개29.800–30.894ms. 표시 p95는20.081–20.090ms로약50회/초를 유지했다. GPU Busy p50은빈 장면5.716–6.643ms,100개5.874ms,1000개7.441–7.608ms다.
