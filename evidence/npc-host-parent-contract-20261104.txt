@@ -1,0 +1,129 @@
+선정 범위: 전체58행 중 첫 baseline, 첫 attached, 최종 실패 행의 필드 투영. 전체 원시 로그가 아님.
+{
+  "metadata": {
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2026-11-04T20:03:39.280862+09:00",
+    "sourceRunId": "network-gameplay/host-parent-contract1b",
+    "buildId": "64E0158449B4D5F6818E8112F0EA49164970000C25E7CBCAB6B14FAA18F670C8",
+    "verificationStatus": "TESTED_FAILED_TRANSFORM_CONTRACT",
+    "metrics": {
+      "runtimeProbes": 1,
+      "compileFailedProbes": 1,
+      "logicalPairHosts": 2,
+      "rows": 58,
+      "attachedRows": 10,
+      "maxWorldRootErrorMeters": 11202.9,
+      "animationUpdatesAtAttach": [
+        4,
+        4
+      ],
+      "animationUpdatesAtFailure": [
+        5,
+        5
+      ],
+      "physicsPresentAtFailure": [
+        true,
+        true
+      ],
+      "p50": null,
+      "p95": null,
+      "p99": null
+    },
+    "blockers": [
+      "Official hierarchy attachment did not preserve child world root during active native Animal updates"
+    ],
+    "evidenceReferences": [
+      {
+        "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/host-parent-contract1b/plan.json",
+        "sha256": "3b0a619c6b14d1ed556c89e67b04043b5a293caf4ac07ba9da14d8e2b13f34da"
+      },
+      {
+        "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/host-parent-contract1b/server-role-lod0.chernarusplus/init.c",
+        "sha256": "64e0158449b4d5f6818e8112f0ea49164970000c25e7cbcab6b14faa18f670c8"
+      },
+      {
+        "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/host-parent-contract1b/server-launch-BProbe.json",
+        "sha256": "1d715229293d0ce841ab8a9ce93c092b6e27af96d6bff874ddb13c75dbec42c7"
+      },
+      {
+        "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/host-parent-contract1b/server-profile-BProbe/host-parent.tsv",
+        "sha256": "9189e8ac8095dad50c99ca76d7d128a7f0d638c3e537645653d2ffb7291ea5fc"
+      },
+      {
+        "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/host-parent-contract1/plan.json",
+        "sha256": "823c2182077c12fbf6492a40c48fa96e610b0121872a3928d20bbd8cd299c35e"
+      },
+      {
+        "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/host-parent-contract1/server-launch-BProbe.json",
+        "sha256": "493504a68d8a6e021a7dd6775760cfb3f4c4d227d9b982b65aaea26cc5ad1459"
+      },
+      {
+        "fileId": "Source/DGOriginalSample/Scripts/4_World/DGBNativeGround.c",
+        "sha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+      },
+      {
+        "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/source/nf_network_body/Scripts/4_World/NFNetworkBody.c",
+        "sha256": "f6408e81e38bb6b82ab9d72bda6005bd218f6f156df2117464a0751cb8c3f331"
+      }
+    ],
+    "performanceBenefit": "not_measured",
+    "visualQuality": "not_measured",
+    "promotion": false
+  },
+  "selectedRows": [
+    {
+      "time": "0.016",
+      "phase": "BASELINE",
+      "addReturned": "false",
+      "parentMatches": "false",
+      "parentWorld": "<4530.007813, 343.338898, 10240.500000>",
+      "childWorld": "<4530.007813, 343.338898, 10240.500000>",
+      "childPosition": "<4530.007813, 343.338898, 10240.500000>",
+      "error": "0",
+      "parentAnimUpdates": "0",
+      "childAnimUpdates": "0",
+      "parentNativeSeconds": "0",
+      "childNativeSeconds": "0",
+      "parentPhysics": "true",
+      "childPhysics": "true",
+      "parentHeadMS": "<-0.248025, 1.041099, -0.600725>",
+      "childHeadMS": "<-0.248025, 1.041099, -0.600725>"
+    },
+    {
+      "time": "1.008",
+      "phase": "ATTACHED",
+      "addReturned": "true",
+      "parentMatches": "true",
+      "parentWorld": "<4530.422852, 343.466370, 10240.266602>",
+      "childWorld": "<4530.422852, 343.466370, 10240.266602>",
+      "childPosition": "<4530.422852, 343.466370, 10240.266602>",
+      "error": "0",
+      "parentAnimUpdates": "4",
+      "childAnimUpdates": "4",
+      "parentNativeSeconds": "0.8",
+      "childNativeSeconds": "0.8",
+      "parentPhysics": "true",
+      "childPhysics": "true",
+      "parentHeadMS": "<-0.008681, 1.173681, -0.606707>",
+      "childHeadMS": "<-0.008681, 1.173681, -0.606707>"
+    },
+    {
+      "time": "1.189",
+      "phase": "ATTACHED",
+      "addReturned": "true",
+      "parentMatches": "true",
+      "parentWorld": "<4530.463867, 343.484558, 10240.186523>",
+      "childWorld": "<14182.198242, 686.949219, 15917.502930>",
+      "childPosition": "<14182.198242, 686.949219, 15917.502930>",
+      "error": "11202.9",
+      "parentAnimUpdates": "5",
+      "childAnimUpdates": "5",
+      "parentNativeSeconds": "1",
+      "childNativeSeconds": "1",
+      "parentPhysics": "true",
+      "childPhysics": "true",
+      "parentHeadMS": "<0.095125, 1.130853, -0.622147>",
+      "childHeadMS": "<0.095125, 1.130853, -0.622147>"
+    }
+  ]
+}

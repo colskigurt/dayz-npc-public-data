@@ -1,11 +1,5 @@
-# 최신 격리 표현 실험 요약
+# NPC CPU 최적화 최신 시험
 
-자체 저폴리 P3D 로컬 프록시의1,024개별 형상과128객체×8형상 실행 프로브를 수행했다. 1,024개별 형상 배열은 화면에서 관찰했다. 8형상 묶음도 생성·source readback 구간을 완주했다. 개체당72삼각형/5본이며 AI·물리·전투·네트워크는 없다.
+2파트 hierarchy 후보는 transform 계약 실패로 기각. 비용 미측정. 직전 관절 broadphase는 1회 96000호출에서 clear +6.814%, blocked +26.672%로 비용 gate 실패.
 
-**최종 수용 아님.** 실제 Present 미측정,정확한 개체별 픽셀 가시성·이동 축/거리·팔다리 애니메이션 품질 미수용. 시작/끝 기준 구간 script dt p95도35→78ms로 변해 묶음 성능의 인과 비교가 불가능하다.20ms p95와1,000좀비 무프레임저하는 달성하지 않았다.
-
-다음 단일 작업은 근접 카메라에서 root 변환과 실제 팔다리 연속 움직임 확인이다. 이후 동일 조건의 paired Present 비교를 진행한다. 별도 애니메이션 세션과 기존 NPC 기능/성능 결과는 이 시험과 구분한다.
-
-Fresh 리테일 클라이언트1회,115초 순차 구간,각 구간 첫3초 제외,지표는 OnUpdate timeslice다. 독립 반복/Present 측정이 아니다. 사전 실패(컴파일/HUD/Steam)와 API-null 시험은 완주 성공으로 세지 않는다.
-
-[상세](operations/npc-horde-render-paths-20261104.md) · [직전 실험 요약](history/20261104-before-render-probe-reports-latest.md)
+[상세](operations/npc-host-parent-contract-20261104.md) · [직전 비용 비교](operations/npc-world-sweep-cost-20261104.md) · [별도 대량 표현 연구](operations/npc-horde-render-paths-20261104.md)

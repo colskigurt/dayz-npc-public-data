@@ -1,5 +1,13 @@
 # DayZ NPC / 대량 호드 현재 상태
 
+<!-- NPC_CPU_CURRENT_BEGIN -->
+## 상세 NPC CPU 최적화 현재 상태
+
+공식 부모 연결 2파트 후보는 world transform 계약 실패로 기각했다. 직전 관절 broadphase 후보는 국소 비용 증가로 미수용이다. 전체64 CPU 개선은 아직 미입증이며 아래 별도 대량 표현 프록시 결과와 합산하지 않는다.
+
+[최신 CPU 보고서](reports/operations/npc-host-parent-contract-20261104.md) · [국소 비용 비교](reports/operations/npc-world-sweep-cost-20261104.md)
+<!-- NPC_CPU_CURRENT_END -->
+
 문서 갱신:2026-11-04
 
 자체 저폴리 P3D 로컬 프록시의1,024개별 형상과128객체×8형상 실행 프로브를 수행했다. 1,024개별 형상 배열은 화면에서 관찰했다. 8형상 묶음도 생성·source readback 구간을 완주했다. 개체당72삼각형/5본이며 AI·물리·전투·네트워크는 없다.

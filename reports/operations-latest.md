@@ -1,46 +1,47 @@
-# 최신 CPU 비용 최적화 결과
+# 최신 NPC CPU 비용 최적화 작업
 
 ## 1. 작업 목표
 
-발 지지·밀침·낙하·착지·추적·재등반의 기존 처리를 보존하면서 관절 월드 질의의 실제 비용을 줄일 수 있는지 판단한다.
+64개체 CPU 비용 최적화의 다음 구조 후보로, 8파트별 위치 쓰기를 공식 부모–자식 transform 전파로 대체할 수 있는지 최소 계약을 확인한다. 호스트 통합·물리 해제·이동 솔버 병합은 하지 않는다.
 
 ## 2. 실제 수행
 
-shadow2는 시험 생성기에 Math.Floor를 명시하여 4조건×4이전 위치×8방향을 확인했다. 모든 기존 질의를 실행한 진단 128입력 후, 별도 비용 시험에서 원본 직접 호출·동일 함수 복사 SHAM·후보의 3군을 대칭 순서로 비교했다. 후보만 네 관절 Sweep을 모두 포함하는 AABB가 비었을 때 4 Sweep을 생략했다. 발 지지 Ray와 충돌 시 fallback은 그대로다. 32그룹×6블록×500호출=96000회. 고정 포즈·합성 이전 접촉 입력이며 실제 게임 프레임 시험이 아니다.
+기존 8파트 분할·NOCOLLISION 실패·네트워크 부모 읽기 연구를 재사용했다. 과거 부모 연구는 GetParent/ID 읽기와 바인딩 분석이었고 이번 Animated Animal 간 AddChild의 동작 수용을 입증한 자료는 아니었다. 공식 enentity.c AddChild(child,-1,false), RemoveChild(child,true) 계약을 확인했다.
+
+격리 2파트에 기존 물리와 독립 애니메이션을 유지하고 1초 baseline 후 연결했다. 연결 직후 자식 local origin/angles를 0으로 설정한 뒤 부모만 이동·회전했다. 원본 게임 코드·PBO는 변경하지 않았다. 최초 contract1은 opaque dBlock의 ref 표기와 OnUpdate 인자명 오류로 compile 실패했다. 1b는 그 두 문법만 고쳤다. 두 원본 기록 모두 보존했다.
 
 ## 3. 측정 결과
 
 |항목|결과|
 |---|---:|
-|수정 shadow 계약|128/128|
-|수정 shadow false-clear|0|
-|수정 shadow 원래 관절 충돌 합계|31|
-|비용 시험 출력·루트·포즈 계약|192/192블록|
-|clear 9그룹 후보/원본 경과시간 변화 중앙값|+6.814%|
-|blocked 23그룹 후보/원본 변화 중앙값|+26.672%|
-|clear SHAM/원본 중앙값|−0.729%|
-|blocked SHAM/원본 중앙값|−0.630%|
+|전체 관측 행|58|
+|연결 후 관측 행|10|
+|AddChild 반환·부모 identity|연결 후 true|
+|초기 연결 root 오차|0m|
+|마지막 root 오차|11202.9m|
+|연결 직전/실패 시 native animation callback 수|양쪽 4→5|
+|실패 시 physics body 존재|양쪽 true|
 
-모두 짝지은 그룹별 비율의 중앙값이다. 1회 프로세스이며 독립 반복 성공을 주장하지 않는다. Present·CPU Busy p50/p95/p99, 전체64개체 및 시각 품질은 미측정이다. 8개 기존 PBO 서명 검증 성공. 새 PBO 없음.
+큰 좌표 이탈은 정상 이동 기능이 아니라 계약 실패다. 같은 표본에서 두 파트의 head MS pose와 native seconds가 갱신돼 단순 포즈 정지와 구별된다. 성능 p50/p95/p99·CPU Busy·실제 화면 품질은 미측정. 기존 8PBO 서명 검증은 성공했다. 후보 PBO 없음.
 
 ## 4. 원인 분석
 
-확인: clear에서 4 Sweep을 생략해도 전체 Solve 국소 경과시간은 증가했다. blocked에서는 추가 Overlap 후 기존 Sweep을 모두 실행했다. 추정: Enforce envelope 구성·검증 및 Overlap 비용이 절감분을 상쇄했다. 이 둘의 self-time은 분리하지 않았다. 반증 범위: 이 구현과 고정 입력에서 '검사 수를 줄이면 전체 비용도 줄어든다'는 기대는 지지되지 않았다. 모든 broadphase 방식이 무효라는 뜻은 아니다.
-
-직전 보고서는 previousMode도 소수가 생성됐다고 표현했으나 실제 TSV의 int 저장은 4개 값이었다. 실제 오류는 heading이 2.8125도 간격으로 생성되어 의도한 8방향 반복 조합이 아니었던 부분이다. 이전 보고서는 보존하고 여기서 정정한다.
+확인: 공식 부모 연결이 성립해도 실행 중 world transform 보존은 보장되지 않았다. 실패는 callback 수 증가와 같은 표본에서 관찰됐다. 추정: 네이티브 Animal 이동/물리와 hierarchy 좌표 처리의 결합 문제일 수 있다. 정확한 native 쓰기 주체나 이중 transform 연산은 추적하지 않았으며 원인 확정으로 보고하지 않는다. 위치가 유지된 9개 초기 행만으로 성공을 선언하면 실패를 놓친다.
 
 ## 5. 검증 수준
 
-국소 성능 gate 실패·미수용. 기능은 국소 계약만 통과, 전체 회귀 미실행, 시각 미측정. 준비된 cost2는 첫 시험 실패로 미실행. 반복·8/64 확대를 하지 않는다. 정상 종료 인증이 아닌 완료 표식·retirement 후 소유 서버 종료다.
+최소 transform 계약 TESTED_FAILED, 미수용. 1개 runtime probe이며 모든 hierarchy 사용법 불가능 증명은 아니다. 성능 비교·8/64 회귀·시각 품질·최종 수용 미실행. guard가 실패를 감지해 소유 서버를 강제 종료했고 completedMarker=false/normalExit=false다. 실패 상태를 정상 퇴역으로 표시하지 않는다.
 
 ## 6. 변경 사항
 
-격리 shadow2와 world-sweep-method-cost1/2 시험 mission만 추가. 기존 게임 소스·PBO·운영 서버 변경 없음. 현재 엔진 SHA256 4bbf370b1d479e0556e916d21213bafba383cbdd3a12c6e2518cd49c1ca64e70. 원본·SHAM·후보를 같은 프로세스에서 비교했으며 과거 엔진 수치와 차감하지 않는다.
+새 격리 mission/runner/plan과 집계만 생성. 원본 소스·게임 PBO·운영 서버·개인키·기존 성공/실패 증거 보존. 실행 엔진 SHA256 4bbf370b1d479e0556e916d21213bafba383cbdd3a12c6e2518cd49c1ca64e70. runner의 scope 문자열은 이전 shadow 템플릿이 남아 부정확하므로 이번 시험 범위는 실제 plan/mission을 기준으로 판단한다. 종료 기록을 수정해 숨기지 않는다.
 
 ## 7. 원시 증거
 
-sourceRunId: world-sweep-shadow2, world-sweep-method-cost1. plan.json, init.c, server-launch-BProbe.json, TSV, analysis.json, decision.json의 선택 목록·SHA256을 아래 기록한다. 공개 JSON은 집계와 증거 ID/해시만 포함하고 내부 경로·프로세스 정보는 제외한다.
+host-parent-contract1(compile 실패), host-parent-contract1b(runtime 계약 실패)의 init.c·plan·launch·host-parent.tsv·분석 JSON을 사용했다. 전체 58행의 필드 정의 및 실패 행을 공개 evidence TXT에 투영한다. 로컬 경로·프로세스 식별자·원본 게임 자산·키·원시 전체 로그는 공개하지 않는다. 아래 SHA는 저장 전 파일 안정성 대조이며 옛 기록과 독립 재실행을 뜻하지 않는다.
 
 ## 8. 잔여 문제
 
-전체64개체 CPU 비용 절감은 여전히 미달성이다. terrain 대체와 이번 스크립트 envelope 계열은 보류한다. 다음 단일 산출물은 기존 8파트 네이티브 호스트·이동 호출 소유권 근거를 재사용해, 물리 질의 수만이 아니라 전체 CPU 비용을 줄일 수 있는 다음 구조 후보의 go/no-go 판단이다. 동일 질의 캐시·Drive/Displace 단순 병합·no-physics 실패안을 재실행하지 않는다. 새로운 후보는 실제 수정 범위·위험·비용 판정 조건을 먼저 제시한다.
+부모 연결 후보를 8/64로 확대하지 않는다. 물리 제거·레이어 변경으로 이를 우회하는 방식도 이미 실패했으므로 자동 반복하지 않는다. 8→1 호스트 통합은 48본 도구 예산과 과거 표시 실패 경계를 아직 넘지 못했다. 물리 질의 broadphase는 직전 국소 비용 비교에서 기각됐다.
+
+다음은 기존 활성/동결·부분 골격·1/8/64 비용 대조의 원래 조건과 비용 기여를 한 표로 연결해, 호스트 수 감소 없이 바꿀 수 있는 실행 작업이 있는지 결정하는 것이다. 비용 기여가 분리되지 않았는데 새 대규모 파이프라인을 만들지 않는다. 현재 전체 CPU 절감이나20ms p95 달성은 미입증이다. 별도 대량 표현 프록시 연구는 이 NPC 결과에 합치지 않는다.

@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-04T19:38:15.157284+09:00",
-  "sourceRunId": "network-gameplay/terrain-split-loop-method-cost",
-  "buildId": "4bbf370b1d479e0556e916d21213bafba383cbdd3a12c6e2518cd49c1ca64e70",
+  "generatedAt": "2026-11-04T20:03:39.280862+09:00",
+  "sourceRunId": "network-gameplay/host-parent-contract1b",
+  "buildId": "64E0158449B4D5F6818E8112F0EA49164970000C25E7CBCAB6B14FAA18F670C8",
   "verificationStatus": {
-    "diagnosis": "two_process_three_arm_local_cost_complete",
-    "candidate": "local_cost_gate_failed_not_promoted",
+    "diagnosis": "two_host_runtime_transform_contract_failed",
+    "candidate": "rejected_not_promoted",
     "functional8or64": "not_tested",
     "visualQuality": "not_measured",
     "wholeFramePerformance": "not_measured",
@@ -13,7 +13,7 @@
     "finalAcceptance": false
   },
   "metrics": {
-    "newRuns": 3,
+    "newRuns": 2,
     "latestFunctional": {
       "sourceRunId": "network-gameplay/entry-facing-sixtyfour-on1",
       "independentRuns": 1,
@@ -116,17 +116,66 @@
       "measuredCalls": 384000,
       "performanceTargetP95Ms": 20,
       "performanceTargetAchieved": false
+    },
+    "hostParentContract": {
+      "runtimeProbes": 1,
+      "compileFailedProbes": 1,
+      "logicalPairHosts": 2,
+      "rows": 58,
+      "attachedRows": 10,
+      "maxWorldRootErrorMeters": 11202.9,
+      "animationUpdatesAtAttach": [
+        4,
+        4
+      ],
+      "animationUpdatesAtFailure": [
+        5,
+        5
+      ],
+      "physicsPresentAtFailure": [
+        true,
+        true
+      ],
+      "p50": null,
+      "p95": null,
+      "p99": null
     }
   },
   "blockers": [
-    "ineligible3%cap exceeded",
-    "sham fluctuation prevents pure overhead attribution",
-    "wholeCPU and dynamic terrain unverified"
+    "Official hierarchy attachment did not preserve child world root during active native Animal updates"
   ],
   "evidenceReferences": [
     {
-      "path": "reports/operations/npc-terrain-split-loop-cost-20261104.md",
-      "sha256": "bad0e7b650d82ece3627ed31708b673bb89cfd18a0106a113416710a69d79bc9"
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/host-parent-contract1b/plan.json",
+      "sha256": "3b0a619c6b14d1ed556c89e67b04043b5a293caf4ac07ba9da14d8e2b13f34da"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/host-parent-contract1b/server-role-lod0.chernarusplus/init.c",
+      "sha256": "64e0158449b4d5f6818e8112f0ea49164970000c25e7cbcab6b14faa18f670c8"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/host-parent-contract1b/server-launch-BProbe.json",
+      "sha256": "1d715229293d0ce841ab8a9ce93c092b6e27af96d6bff874ddb13c75dbec42c7"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/host-parent-contract1b/server-profile-BProbe/host-parent.tsv",
+      "sha256": "9189e8ac8095dad50c99ca76d7d128a7f0d638c3e537645653d2ffb7291ea5fc"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/host-parent-contract1/plan.json",
+      "sha256": "823c2182077c12fbf6492a40c48fa96e610b0121872a3928d20bbd8cd299c35e"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/host-parent-contract1/server-launch-BProbe.json",
+      "sha256": "493504a68d8a6e021a7dd6775760cfb3f4c4d227d9b982b65aaea26cc5ad1459"
+    },
+    {
+      "fileId": "Source/DGOriginalSample/Scripts/4_World/DGBNativeGround.c",
+      "sha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/source/nf_network_body/Scripts/4_World/NFNetworkBody.c",
+      "sha256": "f6408e81e38bb6b82ab9d72bda6005bd218f6f156df2117464a0751cb8c3f331"
     }
   ],
   "goalComplete": false,
