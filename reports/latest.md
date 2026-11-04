@@ -1,21 +1,21 @@
-# 5파트401본 Run native 변환 대조
+# 5파트 Run 전체 몸체 실제 표시
 
-작성: 2026-11-05T04:47:20.687424+09:00
+작성: 2026-11-05T04:53:52.566108+09:00
 
 ## 1. 작업 목표
-5파트64palette 후보의합401본Run을같은메시·그래프의250본참조와비교한다.전체CPU비용이나GPU품질검증과분리한다.
+5파트401본Run 후보의실제전체몸체표시와관찰구간접속유지를확인한다.기존BattlEye재시작안내를자산오류로단정하지않는다.
 ## 2. 실제 수행
-나머지4파트골격·Run8입력을Workbench변환하고출력외피/본이름/60fps126프레임/원본해시를검증했다.5파트메시와10개Run인스턴스를격리PBO로패킹했다.실제29항목원문대조·ODOL확인·서명검증후참조5/후보5개체를생성했다.
+기존release loopback fixture에참조5파트/후보5파트를배치했다.Steam applaunch에기존런처가인식하는useBE옵션을전달했고실제DayZ_BE→일반client생성을확인했다.보안설정·운영서버변경없음.60초관찰과두시점화면저장후client창정상닫기.
 ## 3. 측정 결과
-250행중유효243표본.401본×4벡터최대기록차이0,시각차이0,양쪽물리유효.완료및retirement/삭제표식후owned서버강제종료.정상프로세스종료인증아님.단일유효시험.화면·p50/p95/p99·64개체이득미측정.
+10타입생성및60초Run/retirement DONE확인.두전체몸체가다른Run포즈로표시되는두snapshot확보.이구간Game restart required(400F0)미관찰.서버완료후강제종료에따른연결종료40004관찰.client종료성공RPT표식및process부재확인.exitcode미보유.프레임시간/CPU/64기능미측정.
 ## 4. 원인 분석
-앞선4fixture실패보존:1OnUpdate인자명불일치,2Enforce형제블록지역변수중복,3모든음수본핸들을무효로잘못판정,4같은판정의진단출력.양쪽이동일음수핸들을반환한것을확인하고기존API실패값-1검사로복원후통과.본누락아님.기록차이0은직렬화정밀도범위이며bitwise/GPU증명아님.
+실제5파트몸체표시·포즈변화제한관찰성공.이번bootstrap경로에서재시작안내없었으나단일시험으로useBE가유일원인을해결했다고확정못함.두snapshot은프레임별부드러움·모든면·seam·skinning동등성증명아님.
 ## 5. 검증 수준
-5파트Run native CPU변환:제한진단성공1회.전체14클립·실제메시/경계표시·8/64기능·시각부드러움·성능·최종수용:미실행.
+5파트전체몸체Run표시:제한진단성공1회.지속부드러움/14클립/8·64기능/CPU성능/최종수용:미검증.단일성공을반복검증으로기록하지않음.
 ## 6. 변경 사항
-격리입력/PBO/등록XML/mission/계측스크립트만추가.기존8파트및운영PBO·AI·충돌·낙하동작미변경.신규PBO서명/검증성공,개인키미포함.Workbench종료Scriptisleaking599재발후중단,변환성공과분리.
+기존서명검증된fiveRunPBO재사용,새PBO수정없음.격리mission/clientprofile/launch조건만추가.기존8파트운영본보존.실제게임play어추적·등반·낙하검사는이번시험에없음.
 ## 7. 원시 증거
-palette64-remaining-run-inputs1/compile-audit.json;palette64-five-run1/plan.json,build.json,packed-proof.json;palette64-five-runtime1~5의plan/launch/log;runtime5/pose-analysis.json및palette64-five-pose.tsv.각실패는독립성능반복이아님.
+palette64-five-visible1/plan.json,steam-launch-request.json,server-launch-BProbe.json,visual-analysis.json,role-pose.tsv및clientRPT.두jpg는비공개로보존하며공개에는fileID/SHA/관찰한계만제공.
 ## 8. 잔여 문제
-다음은5파트실제표시/스키닝을확인할안정적클라이언트경로확보다.이전BattlEye재시작안내미해결을숨기지않는다.전체70클립생성/64개체승격전시각게이트필요.성능효과는미측정으로유지.B미러에동일근거로게시.
+다음은이5파트Run구조와기존8파트Run구조의같은정지몸체조건에서전체비용차이를분리비교할최소실험준비.실제gameplay승격전에14클립/물리·낙하보존검증이별도로필요.20ms목표미달성.공개미러는로컬묶음저장후갱신한다.
 

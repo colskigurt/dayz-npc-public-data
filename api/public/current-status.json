@@ -1,19 +1,19 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-05T04:46:51.934679+09:00",
-  "sourceRunId": "palette64-five-runtime5",
+  "generatedAt": "2026-11-05T04:53:52.017180+09:00",
+  "sourceRunId": "palette64-five-visible1",
   "buildId": "EF23B8D3DA2404462EFA337BE6CEDF4C1AE88D3B2D4A1924AE6A5760406A0552",
   "verificationStatus": {
-    "diagnosis": "five_part_run_cpu_pose_passed",
+    "diagnosis": "five_part_run_visible_pair_observed",
     "candidate": "not_promoted",
     "functional8or64": "not_tested",
-    "visualQuality": "not_tested",
+    "visualQuality": "two_snapshots_only_not_temporal_acceptance",
     "wholeFramePerformance": "not_measured",
     "externalAI": "not_retested",
     "finalAcceptance": false
   },
   "metrics": {
-    "newRuns": 5,
+    "newRuns": 2,
     "latestFunctional": {
       "sourceRunId": "network-gameplay/entry-facing-sixtyfour-on1",
       "independentRuns": 1,
@@ -183,7 +183,7 @@
       "p95": null,
       "p99": null
     },
-    "newRunsUnit": "four fixture failures plus one valid CPU pose trial; not performance repeats",
+    "newRunsUnit": "one release server and one Steam client; not two independent trials",
     "palette64SingleCompile": {
       "retainedBones": 79,
       "fps": 60,
@@ -217,16 +217,35 @@
       "p50": null,
       "p95": null,
       "p99": null
+    },
+    "palette64FiveVisible": {
+      "bodies": 2,
+      "parts": 10,
+      "runSeconds": 60,
+      "poseRows": 5220,
+      "snapshots": 2,
+      "independentTrials": 1,
+      "p50": null,
+      "p95": null,
+      "p99": null
     }
   },
   "blockers": [
-    "All14clips and actual rendered skin not validated",
+    "Temporal smoothness and all14clips not validated",
     "Whole-frame64 cost not measured"
   ],
   "evidenceReferences": [
     {
-      "fileId": "palette64-five-pose.tsv",
-      "sha256": "ecbb988527da73527762eb936f92d3cf55467aa37df7d7e3ac27a9d74cb19e4c"
+      "fileId": "five-body-frame0.jpg",
+      "sha256": "a148c92a2f454af3bc30f52adc856c00f56d179c3e2ada0f6a468e512d6feaa6"
+    },
+    {
+      "fileId": "five-body-frame1.jpg",
+      "sha256": "db84d297fd67a79990dd5fa255f3716629ae6e6be60b19735bcc5a2c7d22a2a5"
+    },
+    {
+      "fileId": "role-pose.tsv",
+      "sha256": "d1302c11d7ed650590c13bac344417a2c99ccd7fe52b834243194bb353df2777"
     }
   ],
   "goalComplete": false,

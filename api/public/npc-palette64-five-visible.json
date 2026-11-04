@@ -1,0 +1,77 @@
+{
+  "sourceRunId": "palette64-five-visible1",
+  "generatedAt": "2026-11-05T04:53:52.017180+09:00",
+  "verificationStatus": "FIVE_PART_RUN_VISIBLE_PAIR_OBSERVED_SINGLE_TRIAL_NOT_ACCEPTED",
+  "bodyCount": 2,
+  "partsPerBody": 5,
+  "poseRows": 5220,
+  "partTypes": [
+    "Animal_NFPaletteFive_candidate0",
+    "Animal_NFPaletteFive_candidate1",
+    "Animal_NFPaletteFive_candidate2",
+    "Animal_NFPaletteFive_candidate3",
+    "Animal_NFPaletteFive_candidate4",
+    "Animal_NFPaletteFive_reference0",
+    "Animal_NFPaletteFive_reference1",
+    "Animal_NFPaletteFive_reference2",
+    "Animal_NFPaletteFive_reference3",
+    "Animal_NFPaletteFive_reference4"
+  ],
+  "runSeconds": 60,
+  "modelSnapshots": 2,
+  "battleyeRestartRequiredObserved": false,
+  "postServerStopDisconnect": "0x00040004",
+  "serverExited": true,
+  "completedMarker": true,
+  "serverNormalExit": false,
+  "clientTerminationMarker": true,
+  "clientExitCodeNotCaptured": true,
+  "visibleObservation": "Two full-body green untextured models shown at two distinct Run poses; no gross explosion observed. Occluded triangles/seams and temporal cadence not certified.",
+  "temporalSmoothnessVerified": false,
+  "all14ClipsVerified": false,
+  "performanceMeasured": false,
+  "images": [
+    {
+      "fileId": "five-body-frame0.jpg",
+      "sha256": "a148c92a2f454af3bc30f52adc856c00f56d179c3e2ada0f6a468e512d6feaa6"
+    },
+    {
+      "fileId": "five-body-frame1.jpg",
+      "sha256": "db84d297fd67a79990dd5fa255f3716629ae6e6be60b19735bcc5a2c7d22a2a5"
+    }
+  ],
+  "tsvSha256": "d1302c11d7ed650590c13bac344417a2c99ccd7fe52b834243194bb353df2777",
+  "newSecuritySettings": false,
+  "causalLimit": "One run with recognized useBE bootstrap; does not prove unique cause of prior restarts",
+  "schemaVersion": "1.0.0",
+  "buildId": "EF23B8D3DA2404462EFA337BE6CEDF4C1AE88D3B2D4A1924AE6A5760406A0552",
+  "metrics": {
+    "bodies": 2,
+    "parts": 10,
+    "runSeconds": 60,
+    "poseRows": 5220,
+    "snapshots": 2,
+    "independentTrials": 1,
+    "p50": null,
+    "p95": null,
+    "p99": null
+  },
+  "blockers": [
+    "Temporal smoothness and all14clips not validated",
+    "Whole-frame64 cost not measured"
+  ],
+  "evidenceReferences": [
+    {
+      "fileId": "five-body-frame0.jpg",
+      "sha256": "a148c92a2f454af3bc30f52adc856c00f56d179c3e2ada0f6a468e512d6feaa6"
+    },
+    {
+      "fileId": "five-body-frame1.jpg",
+      "sha256": "db84d297fd67a79990dd5fa255f3716629ae6e6be60b19735bcc5a2c7d22a2a5"
+    },
+    {
+      "fileId": "role-pose.tsv",
+      "sha256": "d1302c11d7ed650590c13bac344417a2c99ccd7fe52b834243194bb353df2777"
+    }
+  ]
+}
