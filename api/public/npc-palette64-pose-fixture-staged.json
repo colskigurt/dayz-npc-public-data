@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-04T23:00:42.244Z",
+  "sourceRunId": "palette64-fullclips-runtime-probe1",
+  "buildId": "staged_fixture_no_new_PBO",
+  "verificationStatus": {
+    "textAndReferences": "checked",
+    "scriptCompilation": "not_run",
+    "nativeCompilation": "waiting_user_editor_permission",
+    "runtime": "not_run",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "newGameRuns": 0,
+    "newNativeClipsCompiled": 0,
+    "expectedNativeClipsToCompile": 65,
+    "stagedClipCases": 14,
+    "concurrentActorPairs": 5,
+    "retainedBonesPerSample": 401,
+    "matrixVectorsPerBone": 4,
+    "newValidationClasses": 140,
+    "launchScriptCreated": false,
+    "PboCreated": false
+  },
+  "blockers": [
+    "Editor file access permission awaits user's decision."
+  ],
+  "limits": [
+    "NativeSeconds is callback time; internal graph clock is not measured.",
+    "Direct review-source graph tests asset channels, not gameplay traversal states or events."
+  ],
+  "evidenceReferences": [
+    {
+      "fileId": "palette64-fullclips-inputs1/runtime-probe1/plan.json",
+      "sha256": "2ec63d395fbb0697fa859c7af3f2663b6db5f787d8b34f9a150d3e8e462f626b"
+    },
+    {
+      "fileId": "palette64-fullclips-inputs1/runtime-probe1/server-role-lod0.chernarusplus/init.c",
+      "sha256": "8d356ee7348644ef3348389fcd78e03c6a8ea942102de40883575d50810c5b48"
+    }
+  ],
+  "nextSingleTask": "After user handles editor prompt: compile65 native clips, audit, sign isolated data package and compile fixture before running."
+}
