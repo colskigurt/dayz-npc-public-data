@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-04T19:29:13.766841+09:00",
-  "sourceRunId": "network-gameplay/terrain-integrated-method-cost",
+  "generatedAt": "2026-11-04T19:38:15.157284+09:00",
+  "sourceRunId": "network-gameplay/terrain-split-loop-method-cost",
   "buildId": "4bbf370b1d479e0556e916d21213bafba383cbdd3a12c6e2518cd49c1ca64e70",
   "verificationStatus": {
     "diagnosis": "two_process_three_arm_local_cost_complete",
@@ -108,6 +108,14 @@
       "measuredCalls": 384000,
       "performanceTargetP95Ms": 20,
       "performanceTargetAchieved": false
+    },
+    "terrainSplitLoopCost": {
+      "newRuntimeProcesses": 3,
+      "validCompletedRuns": 2,
+      "warningRejectedRuns": 1,
+      "measuredCalls": 384000,
+      "performanceTargetP95Ms": 20,
+      "performanceTargetAchieved": false
     }
   },
   "blockers": [
@@ -117,8 +125,8 @@
   ],
   "evidenceReferences": [
     {
-      "path": "reports/operations/npc-terrain-integrated-cost-20261104.md",
-      "sha256": "5835fcf924a5cdab75eabda448b8853ae605f094f16f2320b8c5c24812a6d8ff"
+      "path": "reports/operations/npc-terrain-split-loop-cost-20261104.md",
+      "sha256": "bad0e7b650d82ece3627ed31708b673bb89cfd18a0106a113416710a69d79bc9"
     }
   ],
   "goalComplete": false,

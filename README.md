@@ -25,4 +25,4 @@
 
 ## 현재 최적화 후속
 
-[원본직접·래퍼·통합비용비교](reports/operations/npc-terrain-integrated-cost-20261104.md) · 1.30동일버전2프로세스/384000호출.평지국소−48~50%,제외경로3%상한실패로미채택.전체CPU/Present미측정.기존기능·실패자료보존.
+[원본광선루프분리비용비교](reports/operations/npc-terrain-split-loop-cost-20261104.md) · 루프분리2프로세스/384000호출.제외경로3%실패로terrain후보군보류.다음은Drive/Displace커밋계약검토.전체CPU/Present미측정.
