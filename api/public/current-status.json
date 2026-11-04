@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-03T21:46:18.055956+09:00",
-  "sourceRunId": "network-gameplay/terrain-scope-and-inline-cost",
-  "buildId": "unchanged8signedPBOs;test_local_missions_only",
+  "generatedAt": "2026-11-04T15:14:31.942601+09:00",
+  "sourceRunId": "operations/game-bridge-feasibility-review-20261104",
+  "buildId": "unchanged_existing_game_builds_documentation_only",
   "verificationStatus": {
-    "diagnosis": "two_revisions_two_processes_each",
-    "candidate": "both_gates_failed_not_promoted",
+    "diagnosis": "existing_evidence_review_partial",
+    "bridgeRuntime": "not_tested",
     "functional8or64": "not_tested",
     "visualQuality": "not_measured",
     "wholeFramePerformance": "not_measured",
@@ -13,7 +13,7 @@
     "finalAcceptance": false
   },
   "metrics": {
-    "newRuns": 2,
+    "newRuns": 0,
     "latestFunctional": {
       "sourceRunId": "network-gameplay/entry-facing-sixtyfour-on1",
       "independentRuns": 1,
@@ -74,22 +74,26 @@
       "fridaHistoricalCliSuccess": true,
       "currentLiveAttachRetested": false,
       "report": "reports/operations/npc-native-analysis-barriers-20261103.md"
+    },
+    "gameBridgeReview": {
+      "sourceRunId": "operations/game-bridge-feasibility-review-20261104",
+      "evidenceFiles": 14,
+      "crossGameRuns": 0,
+      "nativeModuleExtracted": false,
+      "worldBridgeEstablished": false,
+      "primaryOptimizationPreserved": true
     }
   },
   "blockers": [
-    "Ineligible3%cap exceeded; no automatic predicate microtuning continuation",
-    "WholeCPU/Present benefit unmeasured",
-    "Exact overlap coverage of full ray domain not verified",
-    "Unregistered blocker overhead remains possible"
+    "DG horde external target input not established",
+    "DayZ-world navigation/physics bridge not established",
+    "DayZ external runtime ingestion not tested",
+    "Native module initialization and ABI unresolved"
   ],
   "evidenceReferences": [
     {
-      "path": "reports/operations/npc-terrain-scope-cost-20261103.md",
-      "sha256": "f97ae54ca799e24785fbb0225fdf2e59ec8d136055656f19caaa89f267e3cabe"
-    },
-    {
-      "path": "api/public/npc-terrain-scope-cost.json",
-      "sha256": "ffaa7f95745d3065730f30684215c4bb175f335cd8139a37a11e16a97fcc411e"
+      "path": "reports/operations/npc-game-bridge-feasibility-20261104.md",
+      "sha256": "a6c8275a8c42cf0b426b4272994018d13e79b85c7d9d4df61d97b241af9a24f8"
     }
   ],
   "goalComplete": false,

@@ -33,3 +33,8 @@
 [이전 README 누적 안내](reports/history/20261103-before-external-review-README.md) · [이전 AI_REVIEW 누적 안내](reports/history/20261103-before-external-review-AI_REVIEW.md) · [날짜별 보고서](reports/operations/)
 
 사람용/AI용 진입 문서는 현재 상태를 교체 갱신하고 과거 요약을 계속 앞에 붙이지 않습니다. 원시 증거와 날짜별 보고서는 보존합니다. 공개 인터페이스는 읽기 전용이며 게임 자산·키·내부 원시 전체를 공개하지 않습니다.
+
+
+## 게임간 결합 가능성 검토
+
+[기존 자료 기반 상세 검토](reports/operations/npc-game-bridge-feasibility-20261104.md) · 신규 게임 실행/브리지 구현 없음. 상태 전달은 후보이나 원본 호드의 DayZ 월드 사용은 미확보. 기존 64개체 최적화는 별도 보존.

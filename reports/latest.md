@@ -13,3 +13,8 @@ sourceRunId: network-gameplay/terrain-scope-and-inline-cost · 2026-11-03
 - [최근 기능 후보](operations/npc-entry-facing-regression-20261103.md)
 - [평지 바닐라/커스텀 비교](operations/matched-flat-pursuit-20261102.md)
 - [바이너리·메모리 도구 진단](operations/npc-native-analysis-barriers-20261103.md)
+
+
+## 게임간 결합 가능성 검토
+
+[기존 자료 기반 상세 검토](operations/npc-game-bridge-feasibility-20261104.md) · 신규 게임 실행/브리지 구현 없음. 상태 전달은 후보이나 원본 호드의 DayZ 월드 사용은 미확보. 기존 64개체 최적화는 별도 보존.

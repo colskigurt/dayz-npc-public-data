@@ -45,3 +45,8 @@
 외부 검토가 지적한 문서 비대화·기능 개발 확대·후보별 반복 부족은 수용했다. 반면 모든 연구가1회라는 주장, 현재도 일률적0.65배라는 주장, 엔진 한계로100명이 불가능하다는 주장은 근거 범위를 넘는다. [이번 검토 응답](reports/operations/npc-external-review-response-20261103.md)과 [고정 채택 정책](reports/operations/npc-validation-policy-20261103.md)을 먼저 확인한다.
 
 [과거 누적 AI 안내](reports/history/20261103-before-external-review-AI_REVIEW.md). 이후 이 파일에는 과거 최신 요약을 계속 prepend하지 않는다.
+
+
+## 게임간 결합 가능성 검토
+
+[기존 자료 기반 상세 검토](reports/operations/npc-game-bridge-feasibility-20261104.md) · 신규 게임 실행/브리지 구현 없음. 상태 전달은 후보이나 원본 호드의 DayZ 월드 사용은 미확보. 기존 64개체 최적화는 별도 보존.
