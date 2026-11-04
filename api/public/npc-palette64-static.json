@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-04T20:11:28.236283+09:00",
+  "sourceRunId": "palette-budget-review-20261104",
+  "buildId": "private-uncompiled-palette64",
+  "verificationStatus": "STATIC_ROUNDTRIP_PASSED_RUNTIME_UNVERIFIED",
+  "metrics": {
+    "sourceParts": 8,
+    "candidateParts": 5,
+    "sourceContractClosedBones": 535,
+    "candidateContractClosedBones": 401,
+    "facesIncludingReverse": 61914,
+    "encodedWeightsPreserved": true,
+    "geometryRoundTripPassed": true,
+    "newRuntimeRuns": 0,
+    "newPbo": false,
+    "p50": null,
+    "p95": null,
+    "p99": null
+  },
+  "blockers": [
+    "64 weighted-bone palette native rendering not verified",
+    "CPU benefit and visual quality not measured",
+    "Five-part native skeleton/clip bindings not yet built"
+  ],
+  "evidenceReferences": [
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette-budget-review-20261104/analysis.json",
+      "sha256": "ae1a3f8be6b95485cf987f0f4ef548323a5b5c29a1407a47f76ac4073369ba4b"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette-budget-review-20261104/palette64-plan.json",
+      "sha256": "6d88f9da79bb335fd5c57ed49567b505b808db780991121b8f06d44371f5ea38"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette-budget-review-20261104/private-palette64-candidate/candidate.json",
+      "sha256": "24655748f49a20f5d251a9e4d6d77d6d9f1a6dbee5507297c064b53db07286ad"
+    },
+    {
+      "fileId": "tools/review_palette_budget_20261104.py",
+      "sha256": "afe723781f5497e49c5b6fe4a6c6491a83b67c8b2d598e5ddfad5d9cebb213e3"
+    },
+    {
+      "fileId": "tools/prepare_palette64_isolated_20261104.py",
+      "sha256": "a6ff189c5128fae72fd58aec267608bf7a762e808d2919774db2d39ebe704cd4"
+    },
+    {
+      "fileId": "tests/TRACK_B_NATIVE_SKELETON_SCOPE_2026-10-26.json",
+      "sha256": "e3b648ba3c0985e85e338f7224a9f44e8edfa4d3a78020f07592c7ae77bf90a6"
+    },
+    {
+      "fileId": "research/track_b_dayz_2026-10-23/native-runtime/native-skin-variants-result.json",
+      "sha256": "591bb54b3f346aff314f8919a81803942207bffe2996607ccc50b292a0ad5313"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette-budget-review-20261104/private-palette64-candidate/dg_repartition_part_0.p3d",
+      "sha256": "f5a92fcb08b584ba2c2910a1c6e9615f7587b38bdd2aab7ca30d3a2e6e63c082"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette-budget-review-20261104/private-palette64-candidate/dg_repartition_part_1.p3d",
+      "sha256": "1d867dbfc491e7221e0494c1d599293dd7953e479fbae54701b9afbcf5b9344e"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette-budget-review-20261104/private-palette64-candidate/dg_repartition_part_2.p3d",
+      "sha256": "ef13e4d4c31504e629c0605c186e4e4652a1d60f985447a7d920b94386b67984"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette-budget-review-20261104/private-palette64-candidate/dg_repartition_part_3.p3d",
+      "sha256": "1a898145913b90f0b75ebe3e5c3b952ade97f3d085e4a460874429bfe6e6c031"
+    },
+    {
+      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette-budget-review-20261104/private-palette64-candidate/dg_repartition_part_4.p3d",
+      "sha256": "50e6a6f5826165e9d3be30a909981c6d8b810c3e13aada3056beda9592e35e54"
+    }
+  ],
+  "next": "One candidate part native compilation and visible skinning gate before building full five-part clips or gameplay integration",
+  "performanceBenefit": "NOT_MEASURED",
+  "finalAcceptance": false
+}

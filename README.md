@@ -3,9 +3,9 @@
 <!-- NPC_CPU_CURRENT_BEGIN -->
 ## 상세 NPC CPU 최적화 현재 상태
 
-공식 부모 연결 2파트 후보는 world transform 계약 실패로 기각했다. 직전 관절 broadphase 후보는 국소 비용 증가로 미수용이다. 전체64 CPU 개선은 아직 미입증이며 아래 별도 대량 표현 프록시 결과와 합산하지 않는다.
+64본 예산의 무손실 재분할로8→5파트·535→401본 정적 후보를 준비했다.61914면·인코딩된 가중치 roundtrip 통과. 실제 표시와 CPU 절감은 미검증이며 기존8파트는 유지한다.
 
-[최신 CPU 보고서](reports/operations/npc-host-parent-contract-20261104.md) · [국소 비용 비교](reports/operations/npc-world-sweep-cost-20261104.md)
+[최신 CPU 보고서](reports/operations/npc-palette64-static-20261104.md) · [부모 연결 기각](reports/operations/npc-host-parent-contract-20261104.md)
 <!-- NPC_CPU_CURRENT_END -->
 
 문서 갱신:2026-11-04
