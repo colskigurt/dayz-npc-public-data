@@ -1,10 +1,10 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-05T04:26:35.699976+09:00",
-  "sourceRunId": "palette64-subset-one2",
-  "buildId": "isolated-resource-only-no-pbo",
+  "generatedAt": "2026-11-05T04:35:11.708836+09:00",
+  "sourceRunId": "palette64-subset-runtime2",
+  "buildId": "9E726F647889580DC7A5467E5F23C6EB59217F8365D97238AC998ED2EBBA632C",
   "verificationStatus": {
-    "diagnosis": "single_subset_compilation_passed",
+    "diagnosis": "single_run_native_pose_diagnosis_passed",
     "candidate": "not_promoted",
     "functional8or64": "not_tested",
     "visualQuality": "not_tested",
@@ -13,7 +13,7 @@
     "finalAcceptance": false
   },
   "metrics": {
-    "newRuns": 1,
+    "newRuns": 2,
     "latestFunctional": {
       "sourceRunId": "network-gameplay/entry-facing-sixtyfour-on1",
       "independentRuns": 1,
@@ -183,7 +183,7 @@
       "p95": null,
       "p99": null
     },
-    "newRunsUnit": "single visible Workbench import; not performance repeat",
+    "newRunsUnit": "failed packaging trial plus corrected native pose trial; not two performance repeats",
     "palette64SingleCompile": {
       "retainedBones": 79,
       "fps": 60,
@@ -193,20 +193,28 @@
       "p99": null,
       "repeats": 1,
       "repeatMeaning": "single compiler invocation, not performance repetition"
+    },
+    "palette64SubsetRun": {
+      "rows": 249,
+      "activeRows": 242,
+      "bones": 79,
+      "matrixVectorsPerBone": 4,
+      "maxLoggedDifference": 0,
+      "clockDifference": 0,
+      "independentTrials": 1,
+      "p50": null,
+      "p95": null,
+      "p99": null
     }
   },
   "blockers": [
-    "Native runtime pose equivalence and visible quality not validated",
-    "Whole-frame performance not measured"
+    "All5parts/14clips and visible skin not validated",
+    "Whole-frame cost benefit not measured"
   ],
   "evidenceReferences": [
     {
-      "fileId": "nf_palette64_p0.xob",
-      "sha256": "bc06cf48bfcd9b85d137471b237311c0fe8f8aedb260c5df87641475ac84d90d"
-    },
-    {
-      "fileId": "nf_palette64_p0_run.anm",
-      "sha256": "aa58e459f06d943c45707f4eea55264cc6b81b252de8bd468f9e9a5ec548498b"
+      "fileId": "palette64-native-pose.tsv",
+      "sha256": "d03931f88c39913899d838e14d37103de67674173c5d733452e74681935d754c"
     }
   ],
   "goalComplete": false,

@@ -3,9 +3,9 @@
 <!-- NPC_CPU_CURRENT_BEGIN -->
 ## NPC CPU 최적화 현재 상태
 
-5파트 후보의 첫79본 골격과Run 컴파일·외피 검증 통과. 기존8파트 유지. 런타임 포즈·화면 품질·64개체 비용 개선은 미검증이다. 다음 단일 작업은250본 참조와79본 Run 비교다.
+79본후보와250본참조의단일Run CPU포즈:242유효표본에서기록차이0.패킹누락실패는별도수정·보존.기존8파트유지.5파트전체표시·64개체비용개선미검증.
 
-[최신 CPU 보고서](reports/operations/npc-palette64-single-compile-20261105.md)
+[최신 CPU 보고서](reports/operations/npc-palette64-subset-run-pose-20261105.md)
 <!-- NPC_CPU_CURRENT_END -->
 
 문서 갱신:2026-11-04
