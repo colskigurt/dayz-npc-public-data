@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-04T19:56:26.998406+09:00",
+  "sourceRunId": "world-sweep-method-cost1",
+  "buildId": "mission-1cb6b4e82bb7",
+  "verificationStatus": "TESTED_FAILED_LOCAL_COST_GATE",
+  "metrics": {
+    "independentCostRuns": 1,
+    "calls": 96000,
+    "clearGroups": 9,
+    "blockedGroups": 23,
+    "clearPairedMedianDeltaPercent": 6.813965395370425,
+    "blockedPairedMedianDeltaPercent": 26.672382538186778,
+    "p50": null,
+    "p95": null,
+    "p99": null
+  },
+  "blockers": [
+    "Candidate is slower than original in this local comparison; not promoted"
+  ],
+  "evidenceReferences": [
+    {
+      "fileId": "world-sweep-method-cost1/analysis.json",
+      "sha256": "ac184ac47dd323e47f3914f5400e98a38d2d7e283b18e1b82d4f4086d5b77784"
+    },
+    {
+      "fileId": "world-sweep-method-cost1/plan.json",
+      "sha256": "737d2734c748e4fa8d830604f4ba2dfe96859835194773c20ff8f30de9b35bf0"
+    },
+    {
+      "fileId": "world-sweep-method-cost1/server-role-lod0.chernarusplus/init.c",
+      "sha256": "1cb6b4e82bb7c7cfa840735886ece52d93a0a39689b0bec03deb03adb03aa6e6"
+    },
+    {
+      "fileId": "world-sweep-method-cost1/server-launch-BProbe.json",
+      "sha256": "c9a6b3ce066664b75cbf0a1a62ab0f654fe942f41515add890c87061f8dfebb4"
+    },
+    {
+      "fileId": "world-sweep-method-cost1/server-profile-BProbe/world-sweep-cost.tsv",
+      "sha256": "fafa23cf411e10761518af62b091f250eb3f1581f77b30742d0e1ae310edb48f"
+    },
+    {
+      "fileId": "world-sweep-shadow2/plan.json",
+      "sha256": "8eb3eaf9b11cea798607c917ce0a7dc48841dc1c9c441722f67bccf44ff606b2"
+    },
+    {
+      "fileId": "world-sweep-shadow2/server-launch-BProbe.json",
+      "sha256": "00bc4be3871b17cd1c7afb53bf97e5db16adfacda8c00f1e6ef2834c4e6310a5"
+    },
+    {
+      "fileId": "world-sweep-shadow2/server-profile-BProbe/world-sweep-shadow.tsv",
+      "sha256": "3039a36f2241147ac235c4777b09ac340c0e9b9ff566c28a9baa810cadce4ba9"
+    }
+  ],
+  "next": "Audit existing native-host and movement-call ownership evidence; do not microtune this failed broadphase automatically",
+  "secondPreparedRun": "NOT_EXECUTED_FIRST_RUN_FAILED",
+  "functionality": "local contracts only; no 8/64 regression",
+  "visualQuality": "NOT_MEASURED"
+}
