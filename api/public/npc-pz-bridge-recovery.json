@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-04T15:29:34.826414+09:00",
+  "sourceRunId": "operations/pz-bridge-recovery-review-20261104",
+  "buildId": "unchanged_existing_game_builds",
+  "verificationStatus": {
+    "recovery": "selected_221_hashes_verified",
+    "offlineContracts": "16_passed",
+    "runtime": "not_run",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "newGameRuns": 0,
+    "restoredFiles": 221,
+    "restoredBytes": 1613716,
+    "pythonAstFiles": 65,
+    "offlineTests": 16,
+    "historicalHordeSourceAndHost": 64,
+    "historicalReceiverBones": 35,
+    "historicalPlaybackDelayMs": 500
+  },
+  "blockers": [
+    "DG export/input adapter not established",
+    "shared world and combat not complete",
+    "PZ renderer is not current AnimalBase 8-part pipeline"
+  ],
+  "evidenceReferences": [
+    {
+      "fileId": "recovery-verification.json",
+      "bytes": 51797,
+      "sha256": "3067b3128d6ac8a96d02e986586a8d2f711c283fe439ab847d8de7f3ca209fbe"
+    },
+    {
+      "fileId": "offline-validation.json",
+      "bytes": 500,
+      "sha256": "39bb911d4e888069583df25cee19ace392ce60302e67cc6ada5fff727dd75fc0"
+    },
+    {
+      "fileId": "archived-evidence-projection.json",
+      "bytes": 1561,
+      "sha256": "b7cf419562deddc481d6e9c3b1ebcf077d06485660619af324e008e8fb70a19f"
+    },
+    {
+      "fileId": "source-excerpts.private.txt",
+      "bytes": 28844,
+      "sha256": "6c4267500dca256c3a4b94372bdc82647a22f4713465d9ca781354cf80e0b301"
+    },
+    {
+      "fileId": "README.md",
+      "bytes": 31426,
+      "sha256": "669ed09f939fbad9872d5a46627fa268ef83102f4f62d03192e938f779d3deae"
+    },
+    {
+      "fileId": "original-horde-import-verification.json",
+      "bytes": 640,
+      "sha256": "005318d051fd12606ed90247b6b60e97b02443073e49cc8511b63dabefd4e6c2"
+    },
+    {
+      "fileId": "original-bone-promotion-verification.json",
+      "bytes": 1060,
+      "sha256": "26625aaf1c9c39e5b2374012ca1996fade2e356d52c1b90baf8be7095a26f6ec"
+    },
+    {
+      "fileId": "original-renderer-completion-audit.json",
+      "bytes": 2357,
+      "sha256": "a37bfa41006cfe87c613372ab771a71d12509fd653abd76609dbd89771b59503"
+    },
+    {
+      "fileId": "original-renderer-goal-progress.json",
+      "bytes": 3074,
+      "sha256": "4a703ff0c2eb14acb11dcb16ad4dc727d69aa496b9a4fba5fd484f6a4e29b940"
+    },
+    {
+      "fileId": "original-live-playback-observation.json",
+      "bytes": 524,
+      "sha256": "6de26f3bd7e8b50c81c22f2fb331e58ecc94ac11b101003b60077a6fe68a289a"
+    },
+    {
+      "fileId": "M2_EXECUTION_FLOW.md",
+      "bytes": 7511,
+      "sha256": "70afd1a7ff4c0ea537189779a1bc1ea1b3d8d0f9384cd31109ee5567e4a15c04"
+    },
+    {
+      "fileId": "M3_CONTRACT.md",
+      "bytes": 8309,
+      "sha256": "7175b3482ec473eaafa40bf80aafdccd10ea2f3ed2aa7d546839c65cbd6e190a"
+    }
+  ]
+}

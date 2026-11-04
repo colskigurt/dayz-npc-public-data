@@ -1,0 +1,385 @@
+Recovered source excerpts; selected first-party adapters, not full original game code.
+
+
+FILE adapters/pz-java/src/passthrough/OriginalPoseAgent.java
+SHA256 5c15d75cf3651b0bb4bf1a24e041fe657e800d14f4f95805f67fe7d7537b939b
+LINES 1-76
+1: package passthrough;
+2: 
+3: import java.lang.instrument.*;
+4: import java.lang.classfile.*;
+5: import java.lang.classfile.instruction.ReturnInstruction;
+6: import java.lang.classfile.instruction.ConstantInstruction;
+7: import java.lang.classfile.instruction.FieldInstruction;
+8: import java.lang.constant.*;
+9: import java.security.ProtectionDomain;
+10: 
+11: /** Own startup adapter. Adds one registration call; no original AI replacements. */
+12: public final class OriginalPoseAgent {
+13:     private static Instrumentation runtimeInstrumentation;
+14:     public static void premain(String options, Instrumentation instrumentation) {
+15:         runtimeInstrumentation=instrumentation;
+16:         instrumentation.addTransformer(new ClassFileTransformer() {
+17:             @Override public byte[] transform(ClassLoader loader,String name,Class<?> type,
+18:                                               ProtectionDomain domain,byte[] bytes) {
+19:                 if (type!=null && !"zombie/characters/IsoGameCharacter".equals(name)) return null;
+20:                 if (!"zombie/Lua/LuaManager".equals(name) && !"zombie/characters/IsoGameCharacter".equals(name)) return null;
+21:                 try {
+22:                     byte[] transformed="zombie/Lua/LuaManager".equals(name)?instrument(bytes):instrumentVisualPromotion(bytes);
+23:                     System.out.println("PTORIGINAL_JAVA_INIT_ADAPTER_READY target="+name);
+24:                     return transformed;
+25:                 } catch (Throwable failure) {
+26:                     System.err.println("PTORIGINAL_JAVA_INIT_ADAPTER_FAILED "+failure);
+27:                     return null; // Original engine class remains unmodified on failure.
+28:                 }
+29:             }
+30:         },true);
+31:     }
+32:     public static void enableVisualPromotion() throws Exception {
+33:         if(runtimeInstrumentation==null || !runtimeInstrumentation.isRetransformClassesSupported())throw new IllegalStateException("Original visual gate retransformation unavailable");
+34:         for(Class<?> loaded:runtimeInstrumentation.getAllLoadedClasses()) {
+35:             if(loaded.getName().equals("zombie.characters.IsoGameCharacter")) {
+36:                 runtimeInstrumentation.retransformClasses(loaded);
+37:                 System.out.println("PTORIGINAL_VISUAL_GATE_RUNTIME_REQUESTED");return;
+38:             }
+39:         }
+40:         throw new IllegalStateException("Original character class not loaded after Lua initialization");
+41:     }
+42:     public static byte[] instrumentVisualPromotion(byte[] bytes) {
+43:         ClassFile cf=ClassFile.of(ClassFile.ClassHierarchyResolverOption.of(ClassHierarchyResolver.ofResourceParsing(OriginalPoseAgent.class.getClassLoader())));ClassModel model=cf.parse(bytes);
+44:         MethodModel target=model.methods().stream().filter(m->m.methodName().equalsString("updateAnimPlayer") && m.methodType().equalsString("(Lzombie/core/skinnedmodel/animation/AnimationPlayer;)V")).findFirst().orElseThrow();
+45:         var elements=target.code().orElseThrow().elementList();
+46:         CodeElement replace=null;
+47:         for(int i=1;i<elements.size();i++) {
+48:             if(elements.get(i) instanceof FieldInstruction field && field.opcode()==Opcode.PUTFIELD && field.owner().asInternalName().equals("zombie/core/skinnedmodel/animation/AnimationPlayer") && field.name().equalsString("updateBones") && elements.get(i-1) instanceof ConstantInstruction value && value.opcode()==Opcode.ICONST_0) {
+49:                 if(replace!=null)throw new IllegalArgumentException("Multiple promotion sites");replace=elements.get(i-1);
+50:             }
+51:         }
+52:         if(replace==null)throw new IllegalArgumentException("Original visual-only gate unavailable");
+53:         if(elements.stream().filter(e->e instanceof ConstantInstruction).findFirst().orElseThrow()!=replace)throw new IllegalArgumentException("Original first constant is not bone gate");
+54:         int[] replaced={0};
+55:         byte[] result=cf.transformClass(model,ClassTransform.transformingMethodBodies(m->m.methodName().equalsString("updateAnimPlayer") && m.methodType().equalsString("(Lzombie/core/skinnedmodel/animation/AnimationPlayer;)V"),(builder,element)->{
+56:             if(replaced[0]==0 && element instanceof ConstantInstruction value && value.opcode()==Opcode.ICONST_0){builder.aload(0).invokestatic(ClassDesc.of("passthrough.OriginalPoseBridge"),"shouldPromote",MethodTypeDesc.ofDescriptor("(Ljava/lang/Object;)Z"));replaced[0]++;}
+57:             else builder.with(element);
+58:         }));
+59:         if(replaced[0]!=1)throw new IllegalArgumentException("Original bone gate not replaced exactly once");
+60:         if(!cf.verify(result).isEmpty())throw new IllegalArgumentException("Visual promotion class verification failed");
+61:         return result;
+62:     }
+63:     public static byte[] instrument(byte[] bytes) {
+64:         ClassFile cf=ClassFile.of(ClassFile.ClassHierarchyResolverOption.of(ClassHierarchyResolver.ofResourceParsing(OriginalPoseAgent.class.getClassLoader())));ClassModel model=cf.parse(bytes);
+65:         if (model.methods().stream().noneMatch(m->m.methodName().equalsString("init") && m.methodType().equalsString("()V")))
+66:             throw new IllegalArgumentException("Original Lua init signature unavailable");
+67:         byte[] result=cf.transformClass(model,ClassTransform.transformingMethodBodies(
+68:             m->m.methodName().equalsString("init") && m.methodType().equalsString("()V"),
+69:             (builder,element)->{
+70:                 if (element instanceof ReturnInstruction ret && ret.opcode()==Opcode.RETURN)
+71:                     builder.invokestatic(ClassDesc.of("passthrough.OriginalPoseBridge"),"install",MethodTypeDesc.ofDescriptor("()V"));
+72:                 builder.with(element);
+73:             }));
+74:         if (!cf.verify(result).isEmpty()) throw new IllegalArgumentException("Class verification failed");
+75:         return result;
+76:     }
+
+FILE adapters/pz-java/src/passthrough/OriginalPoseBridge.java
+SHA256 215bdb714e980f2d37e43885901b74c5b8284425653ff45110bc4e9cea875183
+LINES 78-101
+78:     public String snapshot(Object zombie) {
+79:         try {
+80:             if (zombie==null || !zombie.getClass().getName().equals("zombie.characters.IsoZombie"))
+81:                 throw new IllegalArgumentException("Original live IsoZombie required");
+82:             if (Boolean.TRUE.equals(call(zombie,"isDead"))) throw new IllegalArgumentException("Zombie is dead");
+83:             Object player=call(zombie,"getAnimationPlayer");
+84:             if (player==null) throw new IllegalStateException("Animation player unavailable (render/LOD)");
+85:             int count=((Number)call(player,"getModelTransformsCount")).intValue();
+86:             if (count<1 || count>256) throw new IllegalStateException("Invalid bone count "+count);
+87:             StringBuilder out=new StringBuilder("PTJAVA1|").append(count).append('\n');
+88:             Method get=player.getClass().getMethod("getModelTransformAt",int.class);
+89:             for (int index=0;index<count;index++) {
+90:                 Object matrix=get.invoke(player,index);out.append(index);
+91:                 for (String field:MATRIX_FIELDS) {
+92:                     float value=((Number)matrix.getClass().getField(field).get(matrix)).floatValue();
+93:                     if (!Float.isFinite(value)) throw new IllegalStateException("Nonfinite original pose");
+94:                     out.append('|').append(value);
+95:                 }
+96:                 out.append('\n');
+97:             }
+98:             out.append("END|").append(count);return out.toString();
+99:         } catch (Throwable failure) {
+100:             return "PTJAVA_ERROR|"+failure.toString().replace('\n',' ').replace('|','_');
+101:         }
+
+FILE adapters/pz/PTLab/42/media/lua/client/PTOriginalHorde.lua
+SHA256 2b13bfc83e4a9e52ea65bbb5a9187e58f1233b0cf055b96423edadfd582d6641
+LINES 25-52
+25:         ow:write(string.format('PTHOR1|%s|%.6f|%.6f\n',H.epoch,H.observerOrigin[1],H.observerOrigin[2]));ow:close();H.originPublished=true
+26:     end
+27:     local control=getFileReader('pthorde-observer-control.txt',false)
+28:     if control then
+29:         local line=control:readLine();control:close();local fields={}
+30:         if line then for field in line:gmatch('[^|]+') do fields[#fields+1]=field end end
+31:         if #fields==7 and fields[1]=='PTHO1' and fields[2]==H.epoch then
+32:             local seq=tonumber(fields[3]);local deadline=tonumber(fields[4]);local x=tonumber(fields[5]);local y=tonumber(fields[6]);local visible=fields[7]=='1'
+33:             if seq and deadline and x and y and seq>H.observerSequence and deadline>=now and deadline<=now+10000 and math.abs(x-H.observerOrigin[1])<=40 and math.abs(y-H.observerOrigin[2])<=40 then
+34:                 local sq=getCell():getGridSquare(math.floor(x),math.floor(y),0)
+35:                 local result='rejected_unloaded_or_indoor_square'
+36:                 if sq and sq:isOutside() then
+37:                     if (player:getX()-x)^2+(player:getY()-y)^2>.04 then player:teleportTo(x,y,0) end
+38:                     player:setGodMod(true);player:setInvisible(not visible);player:setGhostMode(not visible)
+39:                     result='observer_proxy_applied'
+40:                 end
+41:                 H.observerSequence=seq
+42:                 local ack=getFileWriter('pthorde-observer-ack.txt',true,false)
+43:                 ack:write(string.format('PTHOA1|%s|%.0f|%.0f|%s|%.6f|%.6f|%d\n',H.epoch,seq,now,result,player:getX(),player:getY(),visible and 1 or 0));ack:close()
+44:             end
+45:         end
+46:     end
+47:     local list=getCell():getZombieList();local candidates={}
+48:     for i=0,list:size()-1 do
+49:         local z=list:get(i)
+50:         if z and not z:isDead() and math.abs(z:getZ())<.01 then
+51:             local d=(z:getX()-player:getX())^2+(z:getY()-player:getY())^2
+52:             if d<6400 then candidates[#candidates+1]={z=z,d=d}end
+LINES 64-89
+64:         if not H.retired[z] and math.abs(z:getZ())<.01 then candidates[#candidates+1]={z=z}end
+65:     end
+66:     local rows={};local count=0;local failed=0
+67:     for i=1,math.min(64,#candidates) do
+68:         local z=candidates[i].z
+69:         if ptOriginalPromote and H.forceBonePromotion then
+70:             local promoted,accepted=pcall(ptOriginalPromote,z,true)
+71:             if not promoted or not accepted then failed=failed+1;print('PTH_BONE_PROMOTION_REJECTED') end
+72:         end
+73:         if H.forceRenderModels then
+74:             local promoted,why=pcall(function()z:setSceneCulled(false)end)
+75:             if not promoted and not H.promotionError then H.promotionError=tostring(why);print('PTH_RENDER_PROMOTION_ERROR '..H.promotionError)end
+76:         end
+77:         local ok,pose=pcall(ptOriginalSnapshot,z)
+78:         if ok and pose:sub(1,8)=='PTJAVA1|' then
+79:             local member=H.members[z]
+80:             if not member then
+81:                 local mok,meta=pcall(ptOriginalMetadata,z)
+82:                 if mok and meta:sub(1,8)=='PTMETA1|' then
+83:                     H.nextId=H.nextId+1;member={id=H.epoch..':'..H.nextId};H.members[z]=member
+84:                     local writer=getFileWriter('pthorde-meta-'..H.nextId..'.txt',true,false)
+85:                     writer:write(meta..'\n');writer:close()
+86:                 end
+87:             end
+88:             if member then
+89:                 if not member.ready then
+
+FILE tools/relay_original_horde.py
+SHA256 9a922fae5bde502303149f66c1069c4f569cd25efb856b0cfe3a3d5882532625
+LINES 11-38
+11: def parse_frame(text,now):
+12:     lines=text.strip().splitlines();head=lines[0].split('|')
+13:     if len(head)!=9 or head[0]!='PTH1':raise ValueError('HORDE_HEADER')
+14:     epoch=head[1];seq=int(head[2]);stamp=int(head[3]);count=int(head[4])
+15:     if not 0<=count<=64 or seq<1 or now-stamp>2000 or stamp-now>250:raise ValueError('HORDE_STALE_OR_COUNT')
+16:     actors=[];cursor=1;ids=set()
+17:     for _ in range(count):
+18:         actor=lines[cursor].split('|');cursor+=1
+19:         if len(actor)!=9 or actor[0]!='ACTOR' or actor[6] not in ('male','female') or actor[8] not in ('0','1') or not actor[1].startswith(epoch+':') or actor[1] in ids:raise ValueError('SOURCE_ACTOR_ID')
+20:         ids.add(actor[1]);position=list(map(float,actor[2:5]))
+21:         header=lines[cursor].split('|');cursor+=1
+22:         if header!=['PTJAVA1','35']:raise ValueError('SOURCE_SKELETON_NOT_35')
+23:         matrices=[]
+24:         for bone in range(35):
+25:             values=lines[cursor].split('|');cursor+=1
+26:             if len(values)!=17 or int(values[0])!=bone:raise ValueError('SOURCE_BONE_INDEX')
+27:             matrices.append(list(map(float,values[1:])))
+28:         if lines[cursor:cursor+2]!=['END|35','ACTOREND']:raise ValueError('SOURCE_ACTOR_PARTIAL')
+29:         cursor+=2
+30:         if not all(math.isfinite(v) for row in matrices for v in row) or not all(math.isfinite(v) for v in position):raise ValueError('SOURCE_NONFINITE')
+31:         heading=float(actor[7])
+32:         if not math.isfinite(heading) or abs(heading)>math.pi+.001:raise ValueError('SOURCE_HEADING')
+33:         actors.append({'id':actor[1],'position':position,'aiState':actor[5],'nativeGender':actor[6],'headingRadians':heading,'hasPlayerTarget':actor[8]=='1','matrices':matrices})
+34:     if lines[cursor:]!=['END|'+str(seq)]:raise ValueError('HORDE_PARTIAL')
+35:     return {'epoch':epoch,'sequence':seq,'observedUtcMs':stamp,'failedPoses':int(head[5]),'player':list(map(float,head[6:9])),'actors':actors}
+36: 
+37: def read_frame(path):
+38:     deadline=time.monotonic()+.5
+LINES 142-174
+142:                 calibration_path=lab/'original-host-ground-calibration.json'
+143:                 ground_offset=json.loads(calibration_path.read_text(encoding='utf-8-sig')).get('groundOffsetMeters',0) if calibration_path.exists() else 0
+144:                 if not isinstance(ground_offset,(int,float)) or not math.isfinite(ground_offset) or not -2<=ground_offset<=2:raise ValueError('GROUND_CALIBRATION_RANGE')
+145:                 command={'Session':run['session'],'Epoch':epoch,'Sequence':sequence,'Deadline':state['TimeMs']+2500,'Grounded':not args.raised_diagnostic,'GroundOffset':ground_offset,'Actors':actors}
+146:                 temp=profile/'command.json.partial';temp.write_text(json.dumps(command),encoding='utf-8')
+147:                 deadline=time.monotonic()+.5
+148:                 while True:
+149:                     try:os.replace(temp,profile/'command.json');break
+150:                     except PermissionError:
+151:                         if time.monotonic()>deadline:raise
+152:                         time.sleep(.01)
+153:                 deadline=time.monotonic()+2
+154:                 while time.monotonic()<deadline:
+155:                     response=load_state(profile/'state.json')
+156:                     if response['Sequence']==sequence:break
+157:                     time.sleep(.03)
+158:                 if response['Sequence']!=sequence or response['Result']!='original_horde_applied' or response['Count']!=len(actors):raise ValueError('HOST_HORDE_ACK_MISMATCH')
+159:                 if {a['Id'] for a in response['Actors']}!={a['Id'] for a in actors}:raise ValueError('HOST_ACTOR_ID_MISMATCH')
+160:             for actor in f['actors']:
+161:                 if args.actor_id and actor['id']!=args.actor_id:continue
+162:                 first=baseline.setdefault(actor['id'],actor)
+163:                 if math.dist(first['position'],actor['position'])>.1:moved.add(actor['id'])
+164:                 if max(abs(a-b) for row1,row2 in zip(first['matrices'],actor['matrices']) for a,b in zip(row1,row2))>.001:pose_changed.add(actor['id'])
+165:             records.append({'sourceSequence':f['sequence'],'sourceTime':f['observedUtcMs'],'count':len(actors),'omitted':omitted,'failedSourcePoses':f['failedPoses'],'sourceActors':f['actors'],'commandActors':actors,'response':response});last=f['sequence'];samples+=1;current_count=len(actors);last_ack=int(time.time()*1000)
+166:     except (ValueError,OSError,KeyError) as failure:error=str(failure)
+167:     research_status('failed' if error else 'stopped_'+reason)
+168:     if args.research:(source/'pthorde-research-lease.txt').write_text('PTHR1|'+run['session']+'|0',encoding='ascii')
+169:     result={'mode':'capture_only' if args.capture_only else 'live_original_horde_visual','source':'actual_pz_engine_individual_bodies_and_bone_poses','samples':samples,'retainedFrames':len(records),'error':error,'actors':len(records[-1]['commandActors']) if records else 0,'records':list(records),'sourceActorsMovedOverPoint1Meters':len(moved),'sourceActorsWithChangingPose':len(pose_changed),'clothingTransferred':False,'headingMappingVerified':False,'collisionTransferred':False,'combatTransferred':False,'worldUnitsCalibrated':False,'inGameCrowdRenderingVerified':False}
+170:     out=lab/'.build/original-render/original-horde-trial.private.json';out.write_text(json.dumps(result),encoding='utf-8');print(json.dumps({k:v for k,v in result.items() if k!='records'},indent=2))
+171:     if error or not records:raise SystemExit(1)
+172: 
+173: 
+174: if __name__=='__main__':main()
+
+FILE adapters/original-host/PZOriginalHorde.c
+SHA256 80dcb261d9532ecc673df71d9de750146d81c251f91a3ae998ddde7adf57994a
+LINES 26-68
+26:         GetGame().GetCallQueue(CALL_CATEGORY_SYSTEM).CallLater(PTHTick,250,true);
+27:     }
+28:     void PTHTick()
+29:     {
+30:         PTHState.TimeMs=GetGame().GetTime();string error;PTHCommand command;
+31:         if(FileExist("$profile:PZOriginalHorde/command.json") && JsonFileLoader<PTHCommand>.LoadFile("$profile:PZOriginalHorde/command.json",command,error) && command && command.Sequence>PTHState.Sequence)
+32:         {
+33:             bool valid=command.Session==PTHState.Session && command.Epoch.Length()>0 && command.Actors && command.Actors.Count()<=64 && command.Deadline>=PTHState.TimeMs && command.Deadline<=PTHState.TimeMs+3000 && command.GroundOffset==command.GroundOffset && command.GroundOffset>=-2 && command.GroundOffset<=2;
+34:             array<string> incoming={};
+35:             if(valid)foreach(PTHActor actor:command.Actors)
+36:             {
+37:                 if(!actor || actor.Id.Length()==0 || incoming.Find(actor.Id)>=0 || (actor.Type!="PZOriginalVisual" && actor.Type!="PZOriginalFemaleVisual" && actor.Type!="PZOriginalReferenceVisual") || !actor.Phases || actor.Phases.Count()!=210){valid=false;break;}
+38:                 if(actor.Position[0]<4400 || actor.Position[0]>4600 || actor.Position[2]<10100 || actor.Position[2]>10350 || actor.Position[1]<330 || actor.Position[1]>350){valid=false;break;}
+39:                 foreach(float value:actor.Phases){if(value!=value || value<0 || value>1){valid=false;break;}}
+40:                 incoming.Insert(actor.Id);
+41:             }
+42:             if(valid)
+43:             {
+44:                 int removalIndex=PTHObjects.Count();
+45:                 while(removalIndex>0)
+46:                 {
+47:                     removalIndex = removalIndex - 1;
+48:                     string oldId=PTHObjects.GetKey(removalIndex);
+49:                     if(incoming.Find(oldId)<0){GetGame().ObjectDelete(PTHObjects.GetElement(removalIndex));PTHObjects.Remove(oldId);}
+50:                 }
+51:                 bool complete=true;
+52:                 foreach(PTHActor requested:command.Actors)
+53:                 {
+54:                     EntityAI visual=PTHObjects.Get(requested.Id);
+55:                     if(!visual){visual=EntityAI.Cast(GetGame().CreateObjectEx(requested.Type,requested.Position,ECE_NONE));if(visual)PTHObjects.Insert(requested.Id,visual);}
+56:                     if(!visual){complete=false;continue;}
+57:                     vector location=requested.Position;
+58:                     if(command.Grounded)location[1]=GetGame().SurfaceY(location[0],location[2])+command.GroundOffset;
+59:                     visual.SetPosition(location);vector facing="0 0 0";facing[0]=requested.Yaw;visual.SetOrientation(facing);int index=0;
+60:                     // Original frames already contain complete poses. Interpolating
+61:                     // encoded Euler phases across 0/1 can sweep the long rotation.
+62:                     for(int bone=0;bone<35;bone++)foreach(string channel:PTHChannels){visual.SetAnimationPhaseNow("b"+bone+"_"+channel,requested.Phases[index]);index++;}
+63:                     GetGame().RPCSingleParam(visual,32190,new Param5<int,int,vector,float,ref array<float>>(command.Sequence,PTHState.TimeMs,location,requested.Yaw,requested.Phases),false);
+64:                 }
+65:                 PTHState.Epoch=command.Epoch;PTHState.Result="original_horde_applied";
+66:                 if(!complete)PTHState.Result="partial_spawn_failure";
+67:             }
+68:             else PTHState.Result="rejected_contract";
+
+FILE adapters/original-host/PZOriginalVisual.c
+SHA256 81ff35e27d27a8f27fb46f6a8b0d045ff1856e269f72ad0514dac5aab857dfe4
+LINES 178-234
+178:         while(delta>180)delta-=360;while(delta< -180)delta+=360;
+179:         vector facing="0 0 0";facing[0]=first.Yaw+delta*fraction;SetOrientation(facing);
+180:         PTHRenderUpdates++;PTHRenderedSequence=first.Sequence;
+181:         if(fraction>=1)PTHRenderedSequence=second.Sequence;
+182:     }
+183:     void PTHPlaybackTick()
+184:     {
+185:         if(GetGame().IsServer() || !PTHSmoothEnabled || PTHFrames.Count()==0)return;
+186:         // A bounded snapshot buffer avoids extrapolation when the source stops.
+187:         // Client/server GetTime origins can shift at mission entry. Use the
+188:         // receiving client's clock for both buffer arrivals and playback.
+189:         int target=GetGame().GetTime() - 500;
+190:         if(target<=PTHFrames[0].ClientArrivalTime)PTHHeldOldestUpdates++;
+191:         else if(target>=PTHFrames[PTHFrames.Count() - 1].ClientArrivalTime)PTHHeldNewestUpdates++;
+192:         else PTHInterpolatedUpdates++;
+193:         PTHPoseFrame first=PTHFrames[0];PTHPoseFrame second=first;
+194:         float fraction=0;
+195:         for(int index=1;index<PTHFrames.Count();index++)
+196:         {
+197:             second=PTHFrames[index];
+198:             if(target<=second.ClientArrivalTime)
+199:             {
+200:                 fraction=Math.Clamp((target - first.ClientArrivalTime)*1.0/(second.ClientArrivalTime - first.ClientArrivalTime),0,1);break;
+201:             }
+202:             first=second;fraction=1;
+203:         }
+204:         PTHRender(first,second,fraction);
+205:     }
+206:     override void OnRPC(PlayerIdentity sender,int rpc_type,ParamsReadContext ctx)
+207:     {
+208:         super.OnRPC(sender,rpc_type,ctx);
+209:         if(rpc_type!=32190 || GetGame().IsServer())return;
+210:         Param5<int,int,vector,float,ref array<float>> packet;
+211:         if(!ctx.Read(packet) || !packet || !packet.param5 || packet.param5.Count()!=210 || packet.param1<=PTHClientSequence)return;
+212:         foreach(float phase:packet.param5){if(phase!=phase || phase<0 || phase>1)return;}
+213:         if(!PTHRegistered){PTHClientVisuals.Insert(this);PTHRegistered=true;}
+214:         bool nextSmooth=FileExist("$profile:PZOriginalClient/enable-smooth-playback.flag") && GetType()!="PZOriginalReferenceVisual";
+215:         if(nextSmooth!=PTHSmoothEnabled)PTHFrames.Clear();
+216:         PTHSmoothEnabled=nextSmooth;
+217:         PTHFootGroundingEnabled=FileExist("$profile:PZOriginalClient/enable-flat-foot-grounding.flag");
+218:         if(PTHSmoothEnabled)
+219:         {
+220:             if(PTHFrames.Count()>0)
+221:             {
+222:                 int gap=packet.param2 - PTHFrames[PTHFrames.Count() - 1].ServerTime;
+223:                 if(gap<=0)return;
+224:                 if(gap>PTHMaximumPacketGap)PTHMaximumPacketGap=gap;
+225:                 if(gap>2000 || GetGame().GetTime()<PTHFrames[PTHFrames.Count() - 1].ClientArrivalTime)PTHFrames.Clear();
+226:             }
+227:             PTHPoseFrame decodedFrame=PTHDecode(packet.param1,packet.param2,packet.param3,packet.param4,packet.param5);
+228:             if(PTHFrames.Count()>0 && decodedFrame.ClientArrivalTime<=PTHFrames[PTHFrames.Count() - 1].ClientArrivalTime)decodedFrame.ClientArrivalTime=PTHFrames[PTHFrames.Count() - 1].ClientArrivalTime+1;
+229:             PTHFrames.Insert(decodedFrame);
+230:             // Enforce Remove swaps the last element into the removed slot.
+231:             // Snapshot interpolation requires chronological order throughout.
+232:             while(PTHFrames.Count()>8)PTHFrames.RemoveOrdered(0);
+233:             PTHClientSequence=packet.param1;return;
+234:         }
+
+FILE tools/couple_original_observer.py
+SHA256 9f09207333718d4e04fca7b7c6cb90b561c289fe32d516935ee029d49eb60140
+LINES 1-5
+1: """Ground-plane observer proxy test; original PZ owns perception and navigation.
+2: 
+3: This does not translate DayZ terrain, occlusion, collision or combat into PZ.
+4: """
+5: import argparse,json,math,time,uuid
+LINES 20-51
+20:             frame=read_frame(control/'pthorde-state.txt')
+21:             if frame['epoch']!=relay['sourceEpoch']:raise ValueError('SOURCE_EPOCH_MISMATCH')
+22:             x=relay['sourceOrigin'][0]+observer['PlayerPosition'][0]-relay['dayzAnchor'][0]
+23:             y=relay['sourceOrigin'][1]+observer['PlayerPosition'][2]-relay['dayzAnchor'][1]
+24:             if args.scenario=='source-fence-crossing':
+25:                 # Explicit source-only stimulus across surveyed x=2284 fence.
+26:                 # Does not falsely imply the DayZ observer itself moved here.
+27:                 x=relay['sourceOrigin'][0] if time.monotonic()-started<15 else relay['sourceOrigin'][0]-13
+28:                 y=relay['sourceOrigin'][1]
+29:             if not math.isfinite(x+y):raise ValueError('NONFINITE_PROXY_POSITION')
+30:             now=int(time.time()*1000);seq=now;last=(frame['epoch'],x,y)
+31:             (control/'pthorde-observer-control.txt').write_text(f'PTHO1|{frame["epoch"]}|{seq}|{now+3000}|{x:.6f}|{y:.6f}|{args.visible}\n',encoding='ascii')
+32:             deadline=time.monotonic()+2;ack=None
+33:             while time.monotonic()<deadline:
+34:                 try:
+35:                     candidate=(control/'pthorde-observer-ack.txt').read_text(encoding='utf-8-sig').strip().split('|')
+36:                     if len(candidate)==8 and candidate[1]==frame['epoch'] and int(candidate[2])==seq:ack=candidate;break
+37:                 except (OSError,ValueError):pass
+38:                 time.sleep(.03)
+39:             if ack is None:raise ValueError('PROXY_ACK_TIMEOUT')
+40:             if ack[4]!='observer_proxy_applied' or math.hypot(float(ack[5])-x,float(ack[6])-y)>.05:raise ValueError('PROXY_NOT_APPLIED')
+41:             after=read_frame(control/'pthorde-state.txt')
+42:             records.append({'time':now,'requested':[x,y],'ack':ack,'playerTargetCount':sum(a['hasPlayerTarget'] for a in after['actors']),'stateCounts':dict(__import__('collections').Counter(a['aiState'].split('@')[0].split('.')[-1] for a in after['actors'])),'actors':after['actors']})
+43:     except (OSError,ValueError,KeyError,IndexError) as failure:error=str(failure)
+44:     finally:
+45:         if last:
+46:             epoch,x,y=last;now=int(time.time()*1000)
+47:             (control/'pthorde-observer-control.txt').write_text(f'PTHO1|{epoch}|{now}|{now+3000}|{x:.6f}|{y:.6f}|0\n',encoding='ascii')
+48:     first={a['id']:a for a in records[0]['actors']} if records else {};last_actors={a['id']:a for a in records[-1]['actors']} if records else {}
+49:     crossed=[ident for ident,a in first.items() if ident in last_actors and (a['position'][0]-2284)*(last_actors[ident]['position'][0]-2284)<0]
+50:     climbed=sum(r['stateCounts'].get('ClimbOverFenceState',0) for r in records)
+51:     result={'scenario':args.scenario,'sourceWorldOnlyPerception':True,'dayzWorldOcclusionVerified':False,'dayzCollisionOrCombatVerified':False,'sourceFenceCrossedActorIds':crossed if args.scenario=='source-fence-crossing' else [],'climbStateActorSamples':climbed,'samples':len(records),'error':error,'records':records}

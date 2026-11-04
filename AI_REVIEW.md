@@ -47,6 +47,6 @@
 [과거 누적 AI 안내](reports/history/20261103-before-external-review-AI_REVIEW.md). 이후 이 파일에는 과거 최신 요약을 계속 prepend하지 않는다.
 
 
-## 게임간 결합 가능성 검토
+## 좀보이드 연결 복구와 재사용 조사
 
-[기존 자료 기반 상세 검토](reports/operations/npc-game-bridge-feasibility-20261104.md) · 신규 게임 실행/브리지 구현 없음. 상태 전달은 후보이나 원본 호드의 DayZ 월드 사용은 미확보. 기존 64개체 최적화는 별도 보존.
+[상세 보고서](reports/operations/npc-pz-bridge-recovery-20261104.md) · 문서/코드221개 복구,오프라인16시험통과. 과거 원본64개체몸체·포즈표현과제한AI프록시를확인했으며앞선위치중계만설명을정정. 공유월드·전투미완료,새게임실행없음. 기존64CPU최적화는별도보존.

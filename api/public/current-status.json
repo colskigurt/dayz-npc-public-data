@@ -1,13 +1,15 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-04T15:14:31.942601+09:00",
-  "sourceRunId": "operations/game-bridge-feasibility-review-20261104",
-  "buildId": "unchanged_existing_game_builds_documentation_only",
+  "generatedAt": "2026-11-04T15:29:34.826414+09:00",
+  "sourceRunId": "operations/pz-bridge-recovery-review-20261104",
+  "buildId": "unchanged_existing_game_builds_recovery_only",
   "verificationStatus": {
-    "diagnosis": "existing_evidence_review_partial",
-    "bridgeRuntime": "not_tested",
+    "diagnosis": "recovered_sources_and_historical_evidence_review",
+    "recovery": "221_member_hashes_verified",
+    "offlineContracts": "16_passed",
+    "bridgeRuntime": "not_tested_this_review",
     "functional8or64": "not_tested",
-    "visualQuality": "not_measured",
+    "visualQuality": "not_retested",
     "wholeFramePerformance": "not_measured",
     "externalAI": "not_retested",
     "finalAcceptance": false
@@ -82,18 +84,29 @@
       "nativeModuleExtracted": false,
       "worldBridgeEstablished": false,
       "primaryOptimizationPreserved": true
+    },
+    "pzBridgeRecovery": {
+      "restoredFiles": 221,
+      "restoredBytes": 1613716,
+      "offlineTestsPassed": 16,
+      "historicalPzPoseTransportConfirmed": true,
+      "dgBridgeEstablished": false,
+      "currentNpcPipelineChanged": false
     }
   },
   "blockers": [
-    "DG horde external target input not established",
-    "DayZ-world navigation/physics bridge not established",
-    "DayZ external runtime ingestion not tested",
-    "Native module initialization and ABI unresolved"
+    "DG export/input adapter not established",
+    "shared world and combat not complete",
+    "PZ renderer is not current AnimalBase 8-part pipeline"
   ],
   "evidenceReferences": [
     {
-      "path": "reports/operations/npc-game-bridge-feasibility-20261104.md",
-      "sha256": "a6c8275a8c42cf0b426b4272994018d13e79b85c7d9d4df61d97b241af9a24f8"
+      "path": "reports/operations/npc-pz-bridge-recovery-20261104.md",
+      "sha256": "bbad8204c0812d2cf9a89a75cbe869990204c96e2b208e7850c5c3bbef092681"
+    },
+    {
+      "path": "api/public/npc-pz-bridge-recovery.json",
+      "sha256": "ca2f257e7fd8fae69f99e8dd4dc615f2bb81a2777c5070c9a6f7f024b52546fe"
     }
   ],
   "goalComplete": false,
