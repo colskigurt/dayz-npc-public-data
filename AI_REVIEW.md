@@ -3,9 +3,9 @@
 <!-- NPC_CPU_CURRENT_BEGIN -->
 ## 현재 CPU 최적화 상태
 
-64개체 정지 Run: 8파트 대 5파트, 독립 비교 1쌍(각15초). Present p95 30.75→31.28ms로 개선 없음. CPU Busy p95 15.56→13.69ms. 실제 SyncInterval=1, VSync OFF 미확인. 진단 성공·최적화 수용 보류. AI/추적/커스텀 접촉·기능 회귀는 이번 비교에서 미실행. 이전 헤드리스 3쌍 역시 효과 불일치. 20ms 목표 미달성.
+64개체 정지 Run, 실제 SyncInterval0·60FPS 제한, 독립 비교1쌍. 8→5파트 Present p95 18.03→17.95ms, CPU Busy 17.88→17.81ms, 표시 변경 간격22.63→24.22ms. 설정 경로 수정은 실행 검증 통과. 파트 축소 효과 미입증·미수용. 전체 추적20ms 목표 달성 아님.
 
-[첫 실제 표시 비교](reports/operations/npc-palette64-client-present-first-pair-20261105.md)
+[검증 보고서](reports/operations/npc-palette64-client-synczero-pair-20261105.md)
 <!-- NPC_CPU_CURRENT_END -->
 
 근접 화면에서 자체 P3D 프록시의 기본 이동·분절 팔다리 출력을 확인하고 실제 PresentMon 측정을 수행했다. X/Z source 이동차각1m를 교정했고,반대 끝 자세와 연속 자세 변화를 관찰했다. 자연스러운 보행·접지·광학 cadence의최종 수용은 아니다.

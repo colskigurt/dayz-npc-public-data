@@ -1,0 +1,191 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-05T07:09:00.247249+09:00",
+  "sourceRunId": "palette64-client64-runtime-config-pair-5",
+  "buildId": "palette64-client-camera2-existing-signed-run-only",
+  "verificationStatus": {
+    "diagnosis": "success",
+    "performance": "TESTED_INCONCLUSIVE",
+    "visual": "not_accepted",
+    "functionalRegression": "not_run",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "conditions": [
+      {
+        "sourceRunId": "palette64-client64-eight5",
+        "condition": "eight",
+        "logicalBodies": 64,
+        "nativeParts": 512,
+        "rawRows": 897,
+        "foregroundFalseInBracket": 0,
+        "clientPresentP95": 18.026999999999997,
+        "displayChangeP95": 22.63355,
+        "cpuBusyP95": 17.87625,
+        "gpuBusyP95": 3.40055,
+        "distributions": {
+          "MsBetweenPresents": {
+            "samples": 896,
+            "p50": 16.66865,
+            "p95": 18.026999999999997,
+            "p99": 18.514775,
+            "mean": 16.665803683035715,
+            "maximum": 20.174
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 896,
+            "p50": 16.7855,
+            "p95": 22.63355,
+            "p99": 23.496549999999996,
+            "mean": 16.66583191964286,
+            "maximum": 24.2787
+          },
+          "MsCPUBusy": {
+            "samples": 896,
+            "p50": 16.5242,
+            "p95": 17.87625,
+            "p99": 18.368255,
+            "mean": 16.514347544642856,
+            "maximum": 20.0312
+          },
+          "MsCPUWait": {
+            "samples": 896,
+            "p50": 0.1503,
+            "p95": 0.171325,
+            "p99": 0.2079349999999998,
+            "mean": 0.1514510044642857,
+            "maximum": 0.3532
+          },
+          "MsGPUBusy": {
+            "samples": 896,
+            "p50": 2.7060500000000003,
+            "p95": 3.40055,
+            "p99": 5.356064999999995,
+            "mean": 2.8351136160714288,
+            "maximum": 8.1048
+          },
+          "MsGPUTime": {
+            "samples": 896,
+            "p50": 16.6685,
+            "p95": 18.062224999999998,
+            "p99": 18.630405,
+            "mean": 16.66583191964286,
+            "maximum": 20.4594
+          },
+          "MsInPresentAPI": {
+            "samples": 896,
+            "p50": 0.1503,
+            "p95": 0.171325,
+            "p99": 0.2079349999999998,
+            "mean": 0.1514510044642857,
+            "maximum": 0.3532
+          }
+        },
+        "syncIntervals": {
+          "0": 896
+        }
+      },
+      {
+        "sourceRunId": "palette64-client64-five5",
+        "condition": "five",
+        "logicalBodies": 64,
+        "nativeParts": 320,
+        "rawRows": 898,
+        "foregroundFalseInBracket": 0,
+        "clientPresentP95": 17.953519999999997,
+        "displayChangeP95": 24.22206,
+        "cpuBusyP95": 17.81478,
+        "gpuBusyP95": 3.3925,
+        "distributions": {
+          "MsBetweenPresents": {
+            "samples": 897,
+            "p50": 16.6956,
+            "p95": 17.953519999999997,
+            "p99": 18.405175999999997,
+            "mean": 16.663607580824973,
+            "maximum": 18.9412
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 897,
+            "p50": 16.7311,
+            "p95": 24.22206,
+            "p99": 25.043675999999998,
+            "mean": 16.67126911928651,
+            "maximum": 26.1762
+          },
+          "MsCPUBusy": {
+            "samples": 897,
+            "p50": 16.5363,
+            "p95": 17.81478,
+            "p99": 18.243932,
+            "mean": 16.51193745819398,
+            "maximum": 18.7615
+          },
+          "MsCPUWait": {
+            "samples": 897,
+            "p50": 0.1502,
+            "p95": 0.17517999999999992,
+            "p99": 0.2084199999999999,
+            "mean": 0.15168684503901894,
+            "maximum": 0.4181
+          },
+          "MsGPUBusy": {
+            "samples": 897,
+            "p50": 2.6779,
+            "p95": 3.3925,
+            "p99": 4.677415999999987,
+            "mean": 2.796445039018952,
+            "maximum": 7.6658
+          },
+          "MsGPUTime": {
+            "samples": 897,
+            "p50": 16.6903,
+            "p95": 17.95156,
+            "p99": 18.448571999999995,
+            "mean": 16.663696767001113,
+            "maximum": 19.2701
+          },
+          "MsInPresentAPI": {
+            "samples": 897,
+            "p50": 0.1502,
+            "p95": 0.17517999999999992,
+            "p99": 0.2084199999999999,
+            "mean": 0.15168684503901894,
+            "maximum": 0.4181
+          }
+        },
+        "syncIntervals": {
+          "0": 897
+        }
+      }
+    ],
+    "independentPairs": 1,
+    "secondsPerCapture": 15,
+    "requestedLimitFPS": 60,
+    "actualSyncZero": true,
+    "AI": false,
+    "customContactSolver": false,
+    "relativeChangesPercent": {
+      "clientPresentP95": -0.40761080601320243,
+      "displayChangeP95": 7.018386421926739,
+      "cpuBusyP95": -0.34386406544996806,
+      "gpuBusyP95": -0.23672641190395352
+    }
+  },
+  "blockers": [
+    "60FPS limiter can mask throughput differences; no uncapped claim",
+    "One pair only; prior SyncInterval1 pair is a different condition",
+    "Whole gameplay and visible animation smoothness unaccepted"
+  ],
+  "evidenceReferences": [
+    {
+      "fileId": "palette64-client-cost-preflight1/round5/present-pair-analysis.json",
+      "sha256": "31f5d121f8febe97320233640a5beab59aee640942ac7d56765a95e710a44c4d"
+    },
+    {
+      "fileId": "palette64-client-cost-preflight1/round5/terminal-verification.json",
+      "sha256": "7cb163d0d8965e2ad0c1aa8a898c0fc885828cc025ce9855f35498f636d1059a"
+    }
+  ],
+  "nextSingleTask": "Decide bounded higher-FPS-cap comparison to isolate part-budget throughput; hold full asset conversion and gameplay promotion"
+}
