@@ -1,10 +1,10 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-05T04:35:11.708836+09:00",
-  "sourceRunId": "palette64-subset-runtime2",
-  "buildId": "9E726F647889580DC7A5467E5F23C6EB59217F8365D97238AC998ED2EBBA632C",
+  "generatedAt": "2026-11-05T04:46:51.934679+09:00",
+  "sourceRunId": "palette64-five-runtime5",
+  "buildId": "EF23B8D3DA2404462EFA337BE6CEDF4C1AE88D3B2D4A1924AE6A5760406A0552",
   "verificationStatus": {
-    "diagnosis": "single_run_native_pose_diagnosis_passed",
+    "diagnosis": "five_part_run_cpu_pose_passed",
     "candidate": "not_promoted",
     "functional8or64": "not_tested",
     "visualQuality": "not_tested",
@@ -13,7 +13,7 @@
     "finalAcceptance": false
   },
   "metrics": {
-    "newRuns": 2,
+    "newRuns": 5,
     "latestFunctional": {
       "sourceRunId": "network-gameplay/entry-facing-sixtyfour-on1",
       "independentRuns": 1,
@@ -183,7 +183,7 @@
       "p95": null,
       "p99": null
     },
-    "newRunsUnit": "failed packaging trial plus corrected native pose trial; not two performance repeats",
+    "newRunsUnit": "four fixture failures plus one valid CPU pose trial; not performance repeats",
     "palette64SingleCompile": {
       "retainedBones": 79,
       "fps": 60,
@@ -205,16 +205,28 @@
       "p50": null,
       "p95": null,
       "p99": null
+    },
+    "palette64FiveRun": {
+      "pairs": 5,
+      "bones": 401,
+      "rows": 250,
+      "activeRows": 243,
+      "maxLoggedDifference": 0,
+      "clockDifference": 0,
+      "independentTrials": 1,
+      "p50": null,
+      "p95": null,
+      "p99": null
     }
   },
   "blockers": [
-    "All5parts/14clips and visible skin not validated",
-    "Whole-frame cost benefit not measured"
+    "All14clips and actual rendered skin not validated",
+    "Whole-frame64 cost not measured"
   ],
   "evidenceReferences": [
     {
-      "fileId": "palette64-native-pose.tsv",
-      "sha256": "d03931f88c39913899d838e14d37103de67674173c5d733452e74681935d754c"
+      "fileId": "palette64-five-pose.tsv",
+      "sha256": "ecbb988527da73527762eb936f92d3cf55467aa37df7d7e3ac27a9d74cb19e4c"
     }
   ],
   "goalComplete": false,

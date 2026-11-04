@@ -3,9 +3,9 @@
 <!-- NPC_CPU_CURRENT_BEGIN -->
 ## NPC CPU 최적화 현재 상태
 
-79본후보와250본참조의단일Run CPU포즈:242유효표본에서기록차이0.패킹누락실패는별도수정·보존.기존8파트유지.5파트전체표시·64개체비용개선미검증.
+5파트401본Run의CPU포즈:243유효표본에서기록차이0.4fixture실패보존.기존8파트유지.전체14클립·실제화면·64개체비용개선미검증.
 
-[최신 CPU 보고서](reports/operations/npc-palette64-subset-run-pose-20261105.md)
+[최신 CPU 보고서](reports/operations/npc-palette64-five-run-pose-20261105.md)
 <!-- NPC_CPU_CURRENT_END -->
 
 문서 갱신:2026-11-04
