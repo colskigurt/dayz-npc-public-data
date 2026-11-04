@@ -21,3 +21,8 @@
 [직전 상태표](reports/history/20261104-before-horde-ai-review-README.md) · [PZ 연결 복구](reports/operations/npc-pz-bridge-recovery-20261104.md) · [제한·인라인 비용 판정](reports/operations/npc-terrain-scope-cost-20261103.md)
 
 이전 문서는 history와 고정 commit으로 보존한다. 이 저장소는 보고서·선정 근거의 공개 읽기용이며 게임 자산·키·전체 로컬 원시 기록은 포함하지 않는다.
+
+
+## 현재 최적화 후속
+
+[실제솔버경계·지지영역검사](reports/operations/npc-terrain-boundary-review-20261104.md) · 현재DayZ1.30해시로분리.180대조/120rayhit,falseClear0.성능개선판정아님.다음은원본직접/동일래퍼/통합후보의동일버전비교.기존실패후보·게임간연구보존.

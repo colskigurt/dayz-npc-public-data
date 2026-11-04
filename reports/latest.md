@@ -17,3 +17,8 @@ sourceRunId: network-gameplay/terrain-scope-and-inline-cost · 2026-11-03
 ## 별도 정적 소스 분석
 
 2026-11-04 [AntifreeZe·Expansion AI 분석](operations/npc-horde-ai-source-review-20261104.md). 새 실험0회이며 위 실험 날짜·수치·수용 판정은 바뀌지 않았다. [PZ 연결 복구](operations/npc-pz-bridge-recovery-20261104.md)도 별도 운영 기록이다.
+
+
+## 현재 최적화 후속
+
+[실제솔버경계·지지영역검사](operations/npc-terrain-boundary-review-20261104.md) · 현재DayZ1.30해시로분리.180대조/120rayhit,falseClear0.성능개선판정아님.다음은원본직접/동일래퍼/통합후보의동일버전비교.기존실패후보·게임간연구보존.

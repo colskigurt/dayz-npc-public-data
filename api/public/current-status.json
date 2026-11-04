@@ -1,21 +1,19 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-04T15:29:34.826414+09:00",
-  "sourceRunId": "operations/pz-bridge-recovery-review-20261104",
-  "buildId": "unchanged_existing_game_builds_recovery_only",
+  "generatedAt": "2026-11-04T19:19:51.250459+09:00",
+  "sourceRunId": "network-gameplay/terrain-certificate-boundary1c",
+  "buildId": "4bbf370b1d479e0556e916d21213bafba383cbdd3a12c6e2518cd49c1ca64e70",
   "verificationStatus": {
-    "diagnosis": "recovered_sources_and_historical_evidence_review",
-    "recovery": "221_member_hashes_verified",
-    "offlineContracts": "16_passed",
-    "bridgeRuntime": "not_tested_this_review",
+    "diagnosis": "primitive_boundary_partial_success",
+    "candidate": "not_promoted",
     "functional8or64": "not_tested",
-    "visualQuality": "not_retested",
+    "visualQuality": "not_measured",
     "wholeFramePerformance": "not_measured",
     "externalAI": "not_retested",
     "finalAcceptance": false
   },
   "metrics": {
-    "newRuns": 0,
+    "newRuns": 2,
     "latestFunctional": {
       "sourceRunId": "network-gameplay/entry-facing-sixtyfour-on1",
       "independentRuns": 1,
@@ -92,21 +90,27 @@
       "historicalPzPoseTransportConfirmed": true,
       "dgBridgeEstablished": false,
       "currentNpcPipelineChanged": false
+    },
+    "terrainBoundary": {
+      "newRuntimeProcesses": 2,
+      "completedValidRuns": 1,
+      "preflightOnlyRejected": 1,
+      "rows": 180,
+      "positiveNonTerrainRayControls": 120,
+      "falseClear": 0,
+      "performanceTargetP95Ms": 20,
+      "performanceTargetAchieved": false
     }
   },
   "blockers": [
-    "DG export/input adapter not established",
-    "shared world and combat not complete",
-    "PZ renderer is not current AnimalBase 8-part pipeline"
+    "actual original timed baseline absent",
+    "full terrain safety not established",
+    "new engine version breaks old cost comparability"
   ],
   "evidenceReferences": [
     {
-      "path": "reports/operations/npc-pz-bridge-recovery-20261104.md",
-      "sha256": "bbad8204c0812d2cf9a89a75cbe869990204c96e2b208e7850c5c3bbef092681"
-    },
-    {
-      "path": "api/public/npc-pz-bridge-recovery.json",
-      "sha256": "ca2f257e7fd8fae69f99e8dd4dc615f2bb81a2777c5070c9a6f7f024b52546fe"
+      "path": "reports/operations/npc-terrain-boundary-review-20261104.md",
+      "sha256": "a55efe0483f28f4c0719efcfc9bcec73cfb511d99454be65aef3338bf397dca3"
     }
   ],
   "goalComplete": false,

@@ -19,3 +19,8 @@
 직접 재사용 조건: AF는 GPL-3.0-or-later,Expansion 선정 주요 파일은 CC BY-NC-ND 4.0 표시다. 자유로운 코드 혼합/수정본 배포를 가정하지 않는다. 이번 공개본은 upstream 원문을 복제하지 않고 링크한다.
 
 [기존 상세 상태·후보 판정](reports/history/20261104-before-horde-ai-review-AI_REVIEW.md) · [고정 검증 정책](reports/operations/npc-validation-policy-20261103.md) · [최근 실험](reports/latest.md)
+
+
+## 현재 최적화 후속
+
+[실제솔버경계·지지영역검사](reports/operations/npc-terrain-boundary-review-20261104.md) · 현재DayZ1.30해시로분리.180대조/120rayhit,falseClear0.성능개선판정아님.다음은원본직접/동일래퍼/통합후보의동일버전비교.기존실패후보·게임간연구보존.

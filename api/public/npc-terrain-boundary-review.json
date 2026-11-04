@@ -1,0 +1,275 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-04T19:19:51.250459+09:00",
+  "sourceRunId": "network-gameplay/terrain-certificate-boundary1c",
+  "buildId": "4bbf370b1d479e0556e916d21213bafba383cbdd3a12c6e2518cd49c1ca64e70",
+  "verificationStatus": {
+    "localPrimitive": "one_completed_run",
+    "performance": "not_measured",
+    "gameplay": "not_tested",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "newRuntimeProcesses": 2,
+    "completedValidRuns": 1,
+    "preflightOnlyRejected": 1,
+    "rows": 180,
+    "positiveNonTerrainRayControls": 120,
+    "falseClear": 0,
+    "performanceTargetP95Ms": 20,
+    "performanceTargetAchieved": false
+  },
+  "groups": [
+    {
+      "condition": "height_-0.4",
+      "factor": "0.5",
+      "rays": 10,
+      "hits": 0,
+      "falseClear": 0,
+      "contacts": [
+        3
+      ]
+    },
+    {
+      "condition": "height_-0.4",
+      "factor": "1",
+      "rays": 10,
+      "hits": 0,
+      "falseClear": 0,
+      "contacts": [
+        3
+      ]
+    },
+    {
+      "condition": "height_-0.2",
+      "factor": "0.5",
+      "rays": 10,
+      "hits": 10,
+      "falseClear": 0,
+      "contacts": [
+        3
+      ]
+    },
+    {
+      "condition": "height_-0.2",
+      "factor": "1",
+      "rays": 10,
+      "hits": 10,
+      "falseClear": 0,
+      "contacts": [
+        3
+      ]
+    },
+    {
+      "condition": "height_0",
+      "factor": "0.5",
+      "rays": 10,
+      "hits": 10,
+      "falseClear": 0,
+      "contacts": [
+        3
+      ]
+    },
+    {
+      "condition": "height_0",
+      "factor": "1",
+      "rays": 10,
+      "hits": 10,
+      "falseClear": 0,
+      "contacts": [
+        3
+      ]
+    },
+    {
+      "condition": "height_0.5",
+      "factor": "0.5",
+      "rays": 10,
+      "hits": 10,
+      "falseClear": 0,
+      "contacts": [
+        3
+      ]
+    },
+    {
+      "condition": "height_0.5",
+      "factor": "1",
+      "rays": 10,
+      "hits": 10,
+      "falseClear": 0,
+      "contacts": [
+        3
+      ]
+    },
+    {
+      "condition": "height_0.9",
+      "factor": "0.5",
+      "rays": 10,
+      "hits": 10,
+      "falseClear": 0,
+      "contacts": [
+        3
+      ]
+    },
+    {
+      "condition": "height_0.9",
+      "factor": "1",
+      "rays": 10,
+      "hits": 10,
+      "falseClear": 0,
+      "contacts": [
+        3
+      ]
+    },
+    {
+      "condition": "height_1.1",
+      "factor": "0.5",
+      "rays": 10,
+      "hits": 10,
+      "falseClear": 0,
+      "contacts": [
+        3
+      ]
+    },
+    {
+      "condition": "height_1.1",
+      "factor": "1",
+      "rays": 10,
+      "hits": 10,
+      "falseClear": 0,
+      "contacts": [
+        3
+      ]
+    },
+    {
+      "condition": "height_1.4",
+      "factor": "0.5",
+      "rays": 10,
+      "hits": 0,
+      "falseClear": 0,
+      "contacts": [
+        0
+      ]
+    },
+    {
+      "condition": "height_1.4",
+      "factor": "1",
+      "rays": 10,
+      "hits": 0,
+      "falseClear": 0,
+      "contacts": [
+        3
+      ]
+    },
+    {
+      "condition": "edge_inside",
+      "factor": "0.5",
+      "rays": 10,
+      "hits": 6,
+      "falseClear": 0,
+      "contacts": [
+        2
+      ]
+    },
+    {
+      "condition": "edge_inside",
+      "factor": "1",
+      "rays": 10,
+      "hits": 6,
+      "falseClear": 0,
+      "contacts": [
+        2
+      ]
+    },
+    {
+      "condition": "edge_outside",
+      "factor": "0.5",
+      "rays": 10,
+      "hits": 4,
+      "falseClear": 0,
+      "contacts": [
+        2
+      ]
+    },
+    {
+      "condition": "edge_outside",
+      "factor": "1",
+      "rays": 10,
+      "hits": 4,
+      "falseClear": 0,
+      "contacts": [
+        2
+      ]
+    }
+  ],
+  "blockers": [
+    "actual original timed baseline absent",
+    "full terrain safety not established",
+    "new engine version breaks old cost comparability"
+  ],
+  "evidenceReferences": [
+    {
+      "fileId": "plan.json",
+      "sha256": "c89cc1a563371f0bad9e9ecac775335317b6bf461483eb75c2e2a01ee3d95863"
+    },
+    {
+      "fileId": "analysis.json",
+      "sha256": "4f85d72d8f0e8d539b9f02c0f12a15bcb38d31d5a81e368bfcfc257463b49494"
+    },
+    {
+      "fileId": "server-launch-BProbe.json",
+      "sha256": "2c103a8d1f731a38d1eb386e8256f1c44925ef468b038c770629f7fd6bdf85b8"
+    },
+    {
+      "fileId": "terrain-certificate-boundary.tsv",
+      "sha256": "d5330142b0b2f9abccd544dae03172c89659a66f26b2cb2135b0fefe4a4f4e65"
+    },
+    {
+      "fileId": "init.c",
+      "sha256": "ec654f266c6e7706c03049d755358ee14965ac6c569cec49f0d3b429ae107d4e"
+    },
+    {
+      "fileId": "preflight-rejection.json",
+      "sha256": "b880170216d9aee12ac55db4a22e9060e8387d8434e94f455ad0786fd929ae02"
+    },
+    {
+      "fileId": "guard-rejection.json",
+      "sha256": "4ce6a3c8969397d75735a89f1259eb039939dc273dd13adcf58ddc2855a3bcf1"
+    },
+    {
+      "fileId": "init.c",
+      "sha256": "6701cde04cd15ca31e696a22b13480b609b69940d58777fa99b0c9e323c1cc61"
+    },
+    {
+      "fileId": "plan.json",
+      "sha256": "8dfb8f3f81aed44b84a46f58d757156efbfb6f32a12dee4fe3e13328f4dd05ee"
+    },
+    {
+      "fileId": "report-body.md",
+      "sha256": "abbe37a2723260155dea178314b9b00c50030870658d72c1063887a5d443898d"
+    },
+    {
+      "fileId": "DGBNativeGround.c",
+      "sha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+    },
+    {
+      "fileId": "integration-boundary-decision.json",
+      "sha256": "3a07b2e3483ee355e03c0947ff2724e7b45b13e288cf0aa5180b542c847aaabd"
+    }
+  ],
+  "integrationBoundary": {
+    "originalPath": "DGBNativeGroundBody.SolveContacts -> SolveContactsInternal",
+    "previousTestPath": "SolveContacts -> NFTerrainMethodBody.SolveContactsInternal -> ReferenceExecute or CandidateExecute",
+    "originalTimedDirectly": false,
+    "originalUsedForCorrectness": true,
+    "ineligibleCandidateStillPaysDispatchAndEligibility": true,
+    "nativeWorldJointFallbackTailRetained": true,
+    "currentNetworkBodySourceOverridesInitializeOnly": true,
+    "wrapperCostMeasuredSeparately": false,
+    "integrationDecision": "isolate direct original, unchanged sham copy and single-body integrated foot branch; preserve failed candidates; no automatic predicate tuning",
+    "certificateScope": "9 synthetic foot origins relative to one authored fixture; two shape arguments; not slopes/holes/dynamic coverage",
+    "currentServerVersion": "1.30.164289.70",
+    "currentServerSha256": "4bbf370b1d479e0556e916d21213bafba383cbdd3a12c6e2518cd49c1ca64e70",
+    "historicalCostBuild": "a500be804ffed5cde369337aeb6ab477ef5ee0b5015764be2b1953c85ec3060d",
+    "crossVersionCostComparisonAllowed": false
+  }
+}
