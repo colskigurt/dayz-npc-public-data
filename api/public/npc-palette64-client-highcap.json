@@ -1,0 +1,191 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-05T07:18:51.882107+09:00",
+  "sourceRunId": "palette64-client64-runtime-config-pair-6",
+  "buildId": "palette64-client-camera2-existing-signed-run-only",
+  "verificationStatus": {
+    "diagnosis": "success",
+    "performance": "TESTED_INCONCLUSIVE",
+    "visual": "not_accepted",
+    "functionalRegression": "not_run",
+    "finalAcceptance": false
+  },
+  "metrics": {
+    "conditions": [
+      {
+        "sourceRunId": "palette64-client64-eight6",
+        "condition": "eight",
+        "logicalBodies": 64,
+        "nativeParts": 512,
+        "rawRows": 1660,
+        "foregroundFalseInBracket": 0,
+        "clientPresentP95": 11.869279999999998,
+        "displayChangeP95": 11.932809999999998,
+        "cpuBusyP95": 11.722239999999998,
+        "gpuBusyP95": 3.07969,
+        "distributions": {
+          "MsBetweenPresents": {
+            "samples": 1659,
+            "p50": 8.3998,
+            "p95": 11.869279999999998,
+            "p99": 13.369798000000001,
+            "mean": 9.018839722724532,
+            "maximum": 17.3181
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 1659,
+            "p50": 8.4144,
+            "p95": 11.932809999999998,
+            "p99": 13.379458000000001,
+            "mean": 9.018832911392405,
+            "maximum": 17.4669
+          },
+          "MsCPUBusy": {
+            "samples": 1659,
+            "p50": 8.246,
+            "p95": 11.722239999999998,
+            "p99": 13.213224000000004,
+            "mean": 8.867492646172392,
+            "maximum": 17.1154
+          },
+          "MsCPUWait": {
+            "samples": 1659,
+            "p50": 0.1489,
+            "p95": 0.18261,
+            "p99": 0.2151040000000001,
+            "mean": 0.15134249547920434,
+            "maximum": 0.3392
+          },
+          "MsGPUBusy": {
+            "samples": 1659,
+            "p50": 2.589,
+            "p95": 3.07969,
+            "p99": 3.226068,
+            "mean": 2.645754972875226,
+            "maximum": 3.5209
+          },
+          "MsGPUTime": {
+            "samples": 1659,
+            "p50": 8.4144,
+            "p95": 11.932809999999998,
+            "p99": 13.379458000000001,
+            "mean": 9.018832911392405,
+            "maximum": 17.4669
+          },
+          "MsInPresentAPI": {
+            "samples": 1659,
+            "p50": 0.1489,
+            "p95": 0.18261,
+            "p99": 0.2151040000000001,
+            "mean": 0.15134249547920434,
+            "maximum": 0.3392
+          }
+        },
+        "syncIntervals": {
+          "0": 1659
+        }
+      },
+      {
+        "sourceRunId": "palette64-client64-five6",
+        "condition": "five",
+        "logicalBodies": 64,
+        "nativeParts": 320,
+        "rawRows": 1729,
+        "foregroundFalseInBracket": 0,
+        "clientPresentP95": 10.880044999999999,
+        "displayChangeP95": 14.3307,
+        "cpuBusyP95": 10.740965,
+        "gpuBusyP95": 2.973435,
+        "distributions": {
+          "MsBetweenPresents": {
+            "samples": 1728,
+            "p50": 8.26705,
+            "p95": 10.880044999999999,
+            "p99": 11.984841000000001,
+            "mean": 8.656585127314814,
+            "maximum": 13.6522
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 1728,
+            "p50": 8.37705,
+            "p95": 14.3307,
+            "p99": 16.233591,
+            "mean": 8.654828472222222,
+            "maximum": 18.1821
+          },
+          "MsCPUBusy": {
+            "samples": 1728,
+            "p50": 8.11865,
+            "p95": 10.740965,
+            "p99": 11.831706000000002,
+            "mean": 8.50995329861111,
+            "maximum": 13.4583
+          },
+          "MsCPUWait": {
+            "samples": 1728,
+            "p50": 0.14465,
+            "p95": 0.170965,
+            "p99": 0.206992,
+            "mean": 0.1466346064814815,
+            "maximum": 0.3445
+          },
+          "MsGPUBusy": {
+            "samples": 1728,
+            "p50": 2.5641999999999996,
+            "p95": 2.973435,
+            "p99": 3.152973,
+            "mean": 2.5984846643518518,
+            "maximum": 3.3451
+          },
+          "MsGPUTime": {
+            "samples": 1728,
+            "p50": 8.27805,
+            "p95": 10.88978,
+            "p99": 11.972384000000002,
+            "mean": 8.656516666666667,
+            "maximum": 13.8637
+          },
+          "MsInPresentAPI": {
+            "samples": 1728,
+            "p50": 0.14465,
+            "p95": 0.170965,
+            "p99": 0.206992,
+            "mean": 0.1466346064814815,
+            "maximum": 0.3445
+          }
+        },
+        "syncIntervals": {
+          "0": 1728
+        }
+      }
+    ],
+    "independentPairs": 1,
+    "secondsPerCapture": 15,
+    "requestedLimitFPS": 500,
+    "actualSyncZero": true,
+    "AI": false,
+    "customContactSolver": false,
+    "relativeChangesPercent": {
+      "clientPresentP95": -8.334414555895549,
+      "displayChangeP95": 20.094931537500408,
+      "cpuBusyP95": -8.371053655274064,
+      "gpuBusyP95": -3.450184921209602
+    }
+  },
+  "blockers": [
+    "Requested cap500; no assumption of truly uncapped engine. Previous60cap run is a different condition",
+    "One pair only; prior SyncInterval1 and60FPS pairs are different conditions",
+    "Whole gameplay and visible animation smoothness unaccepted"
+  ],
+  "evidenceReferences": [
+    {
+      "fileId": "palette64-client-cost-preflight1/round6/present-pair-analysis.json",
+      "sha256": "2e835ff531e04030cc3d55838592251e9bfc90a4dd00ec660db36cb07c459e58"
+    },
+    {
+      "fileId": "palette64-client-cost-preflight1/round6/terminal-verification.json",
+      "sha256": "1da9162eb1ccb2d238b0e7dddc9b1fb7db936ab42fa192e1861b7c8e43429c22"
+    }
+  ],
+  "nextSingleTask": "One high-cap pair crossed5percent review threshold. Consider two order-crossed independent pairs; no full asset conversion or gameplay promotion; keep physics cost priority"
+}

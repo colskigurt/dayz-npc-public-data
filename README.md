@@ -3,9 +3,9 @@
 <!-- NPC_CPU_CURRENT_BEGIN -->
 ## 현재 CPU 최적화 상태
 
-64개체 정지 Run, 실제 SyncInterval0·60FPS 제한, 독립 비교1쌍. 8→5파트 Present p95 18.03→17.95ms, CPU Busy 17.88→17.81ms, 표시 변경 간격22.63→24.22ms. 설정 경로 수정은 실행 검증 통과. 파트 축소 효과 미입증·미수용. 전체 추적20ms 목표 달성 아님.
+64개체 정지 Run·VSync0·500FPS 상한 첫 비교: 8→5파트 Present p95 11.87→10.88ms, CPU Busy11.72→10.74ms. 약8% 단일 이득 관찰이나 절대 차이 약1ms·평균 약0.36ms. 표시 변경 p95 11.93→14.33ms로 늘었으며 시각 품질 개선 미입증. 반복·전체 기능 미검증으로 미수용. 전체 추적20ms 목표 달성 아님.
 
-[검증 보고서](reports/operations/npc-palette64-client-synczero-pair-20261105.md)
+[검증 보고서](reports/operations/npc-palette64-client-highcap-pair-20261105.md)
 <!-- NPC_CPU_CURRENT_END -->
 
 문서 갱신:2026-11-04
