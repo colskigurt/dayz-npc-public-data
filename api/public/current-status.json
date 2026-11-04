@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-05T07:18:51.882107+09:00",
-  "sourceRunId": "palette64-client64-runtime-config-pair-6",
-  "buildId": "cost-control2:9A7F3C5F+five-run1:EF23B8D3",
+  "generatedAt": "2026-11-05T07:38:12.798294+09:00",
+  "sourceRunId": "palette64-client64-highcap-three-pairs",
+  "buildId": "palette64-five-run1-and-cost-control2-camera2",
   "verificationStatus": {
     "diagnosis": "three_stationary_host_pairs_completed_inconsistent_effect",
     "candidate": "not_promoted",
@@ -10,10 +10,11 @@
     "visualQuality": "not_tested_in_cost_trial",
     "wholeFramePerformance": "not_measured",
     "externalAI": "not_retested",
-    "finalAcceptance": false
+    "finalAcceptance": false,
+    "latestDiagnosticScope": "stationary Run highcap three pairs; scoped repeat effect only"
   },
   "metrics": {
-    "newRuns": 4,
+    "newRuns": 8,
     "latestFunctional": {
       "sourceRunId": "network-gameplay/entry-facing-sixtyfour-on1",
       "independentRuns": 1,
@@ -267,7 +268,7 @@
       "clientPresentP95": null,
       "clientPresentP99": null
     },
-    "newRunsDefinition": "2 server plus 2 retail client starts; one valid pair with actual SyncInterval0"
+    "newRunsDefinition": "Additional4 release server plus4 retail client starts; total3 pairs includes previous round6"
   },
   "blockers": [
     "No consistent stationary-server CPU reduction across3pairs",
@@ -331,194 +332,572 @@
   },
   "latestPaletteClientPresent": {
     "schemaVersion": "1.0.0",
-    "generatedAt": "2026-11-05T07:18:51.882107+09:00",
-    "sourceRunId": "palette64-client64-runtime-config-pair-6",
-    "buildId": "palette64-client-camera2-existing-signed-run-only",
+    "generatedAt": "2026-11-05T07:38:12.798294+09:00",
+    "sourceRunId": "palette64-client64-highcap-three-pairs",
+    "buildId": "palette64-five-run1-and-cost-control2-camera2",
     "verificationStatus": {
       "diagnosis": "success",
-      "performance": "TESTED_INCONCLUSIVE",
+      "scopedPerformance": "TESTED_SUCCESS stationary Run only",
+      "repeats": "3 pairs including1 discovery and2 added order-controlled pairs",
       "visual": "not_accepted",
       "functionalRegression": "not_run",
       "finalAcceptance": false
     },
     "metrics": {
+      "aggregate": {
+        "clientPresentP95": {
+          "pairedChangesPercent": [
+            -8.334414555895549,
+            -20.21191986623497,
+            -16.689589245028518
+          ],
+          "pairedMedianChangePercent": -16.689589245028518,
+          "pairedSampleStdevPercent": 6.100421972947965,
+          "allPairsLower": true,
+          "eightValues": [
+            11.869279999999998,
+            13.573054999999998,
+            13.23295
+          ],
+          "fiveValues": [
+            10.880044999999999,
+            10.82968,
+            11.024424999999999
+          ]
+        },
+        "displayChangeP95": {
+          "pairedChangesPercent": [
+            20.094931537500408,
+            -24.12264961901499,
+            0.9188108795723864
+          ],
+          "pairedMedianChangePercent": 0.9188108795723864,
+          "pairedSampleStdevPercent": 22.173530882273244,
+          "allPairsLower": false,
+          "eightValues": [
+            11.932809999999998,
+            16.77493999999999,
+            13.245925
+          ],
+          "fiveValues": [
+            14.3307,
+            12.72838,
+            13.367629999999998
+          ]
+        },
+        "cpuBusyP95": {
+          "pairedChangesPercent": [
+            -8.371053655274064,
+            -20.425439645556366,
+            -16.813298792670015
+          ],
+          "pairedMedianChangePercent": -16.813298792670015,
+          "pairedSampleStdevPercent": 6.186373279282059,
+          "allPairsLower": true,
+          "eightValues": [
+            11.722239999999998,
+            13.420469999999998,
+            13.076375
+          ],
+          "fiveValues": [
+            10.740965,
+            10.67928,
+            10.877804999999997
+          ]
+        },
+        "gpuBusyP95": {
+          "pairedChangesPercent": [
+            -3.450184921209602,
+            -3.6879421286119674,
+            -5.857390300230959
+          ],
+          "pairedMedianChangePercent": -3.6879421286119674,
+          "pairedSampleStdevPercent": 1.3265036496872842,
+          "allPairsLower": true,
+          "eightValues": [
+            3.07969,
+            3.1276249999999997,
+            3.1176000000000004
+          ],
+          "fiveValues": [
+            2.973435,
+            3.0122799999999996,
+            2.93499
+          ]
+        }
+      },
       "conditions": [
         {
-          "sourceRunId": "palette64-client64-eight6",
-          "condition": "eight",
-          "logicalBodies": 64,
-          "nativeParts": 512,
-          "rawRows": 1660,
-          "foregroundFalseInBracket": 0,
-          "clientPresentP95": 11.869279999999998,
-          "displayChangeP95": 11.932809999999998,
-          "cpuBusyP95": 11.722239999999998,
-          "gpuBusyP95": 3.07969,
-          "distributions": {
-            "MsBetweenPresents": {
-              "samples": 1659,
-              "p50": 8.3998,
-              "p95": 11.869279999999998,
-              "p99": 13.369798000000001,
-              "mean": 9.018839722724532,
-              "maximum": 17.3181
+          "round": 6,
+          "order": [
+            "eight",
+            "five"
+          ],
+          "sourceRunId": "palette64-client64-runtime-config-pair-6",
+          "metrics": {
+            "eight": {
+              "nativeParts": 512,
+              "logicalBodies": 64,
+              "rawRows": 1660,
+              "clientPresentP95": 11.869279999999998,
+              "cpuBusyP95": 11.722239999999998,
+              "gpuBusyP95": 3.07969,
+              "displayChangeP95": 11.932809999999998,
+              "distributions": {
+                "MsBetweenPresents": {
+                  "samples": 1659,
+                  "p50": 8.3998,
+                  "p95": 11.869279999999998,
+                  "p99": 13.369798000000001,
+                  "mean": 9.018839722724532,
+                  "maximum": 17.3181
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 1659,
+                  "p50": 8.4144,
+                  "p95": 11.932809999999998,
+                  "p99": 13.379458000000001,
+                  "mean": 9.018832911392405,
+                  "maximum": 17.4669
+                },
+                "MsCPUBusy": {
+                  "samples": 1659,
+                  "p50": 8.246,
+                  "p95": 11.722239999999998,
+                  "p99": 13.213224000000004,
+                  "mean": 8.867492646172392,
+                  "maximum": 17.1154
+                },
+                "MsCPUWait": {
+                  "samples": 1659,
+                  "p50": 0.1489,
+                  "p95": 0.18261,
+                  "p99": 0.2151040000000001,
+                  "mean": 0.15134249547920434,
+                  "maximum": 0.3392
+                },
+                "MsGPUBusy": {
+                  "samples": 1659,
+                  "p50": 2.589,
+                  "p95": 3.07969,
+                  "p99": 3.226068,
+                  "mean": 2.645754972875226,
+                  "maximum": 3.5209
+                },
+                "MsGPUTime": {
+                  "samples": 1659,
+                  "p50": 8.4144,
+                  "p95": 11.932809999999998,
+                  "p99": 13.379458000000001,
+                  "mean": 9.018832911392405,
+                  "maximum": 17.4669
+                },
+                "MsInPresentAPI": {
+                  "samples": 1659,
+                  "p50": 0.1489,
+                  "p95": 0.18261,
+                  "p99": 0.2151040000000001,
+                  "mean": 0.15134249547920434,
+                  "maximum": 0.3392
+                }
+              }
             },
-            "MsBetweenDisplayChange": {
-              "samples": 1659,
-              "p50": 8.4144,
-              "p95": 11.932809999999998,
-              "p99": 13.379458000000001,
-              "mean": 9.018832911392405,
-              "maximum": 17.4669
-            },
-            "MsCPUBusy": {
-              "samples": 1659,
-              "p50": 8.246,
-              "p95": 11.722239999999998,
-              "p99": 13.213224000000004,
-              "mean": 8.867492646172392,
-              "maximum": 17.1154
-            },
-            "MsCPUWait": {
-              "samples": 1659,
-              "p50": 0.1489,
-              "p95": 0.18261,
-              "p99": 0.2151040000000001,
-              "mean": 0.15134249547920434,
-              "maximum": 0.3392
-            },
-            "MsGPUBusy": {
-              "samples": 1659,
-              "p50": 2.589,
-              "p95": 3.07969,
-              "p99": 3.226068,
-              "mean": 2.645754972875226,
-              "maximum": 3.5209
-            },
-            "MsGPUTime": {
-              "samples": 1659,
-              "p50": 8.4144,
-              "p95": 11.932809999999998,
-              "p99": 13.379458000000001,
-              "mean": 9.018832911392405,
-              "maximum": 17.4669
-            },
-            "MsInPresentAPI": {
-              "samples": 1659,
-              "p50": 0.1489,
-              "p95": 0.18261,
-              "p99": 0.2151040000000001,
-              "mean": 0.15134249547920434,
-              "maximum": 0.3392
+            "five": {
+              "nativeParts": 320,
+              "logicalBodies": 64,
+              "rawRows": 1729,
+              "clientPresentP95": 10.880044999999999,
+              "cpuBusyP95": 10.740965,
+              "gpuBusyP95": 2.973435,
+              "displayChangeP95": 14.3307,
+              "distributions": {
+                "MsBetweenPresents": {
+                  "samples": 1728,
+                  "p50": 8.26705,
+                  "p95": 10.880044999999999,
+                  "p99": 11.984841000000001,
+                  "mean": 8.656585127314814,
+                  "maximum": 13.6522
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 1728,
+                  "p50": 8.37705,
+                  "p95": 14.3307,
+                  "p99": 16.233591,
+                  "mean": 8.654828472222222,
+                  "maximum": 18.1821
+                },
+                "MsCPUBusy": {
+                  "samples": 1728,
+                  "p50": 8.11865,
+                  "p95": 10.740965,
+                  "p99": 11.831706000000002,
+                  "mean": 8.50995329861111,
+                  "maximum": 13.4583
+                },
+                "MsCPUWait": {
+                  "samples": 1728,
+                  "p50": 0.14465,
+                  "p95": 0.170965,
+                  "p99": 0.206992,
+                  "mean": 0.1466346064814815,
+                  "maximum": 0.3445
+                },
+                "MsGPUBusy": {
+                  "samples": 1728,
+                  "p50": 2.5641999999999996,
+                  "p95": 2.973435,
+                  "p99": 3.152973,
+                  "mean": 2.5984846643518518,
+                  "maximum": 3.3451
+                },
+                "MsGPUTime": {
+                  "samples": 1728,
+                  "p50": 8.27805,
+                  "p95": 10.88978,
+                  "p99": 11.972384000000002,
+                  "mean": 8.656516666666667,
+                  "maximum": 13.8637
+                },
+                "MsInPresentAPI": {
+                  "samples": 1728,
+                  "p50": 0.14465,
+                  "p95": 0.170965,
+                  "p99": 0.206992,
+                  "mean": 0.1466346064814815,
+                  "maximum": 0.3445
+                }
+              }
             }
           },
-          "syncIntervals": {
-            "0": 1659
+          "serverSceneCpuMsPerWallSecond": {
+            "eight": 198.2949738177161,
+            "five": 146.8932824387585
           }
         },
         {
-          "sourceRunId": "palette64-client64-five6",
-          "condition": "five",
-          "logicalBodies": 64,
-          "nativeParts": 320,
-          "rawRows": 1729,
-          "foregroundFalseInBracket": 0,
-          "clientPresentP95": 10.880044999999999,
-          "displayChangeP95": 14.3307,
-          "cpuBusyP95": 10.740965,
-          "gpuBusyP95": 2.973435,
-          "distributions": {
-            "MsBetweenPresents": {
-              "samples": 1728,
-              "p50": 8.26705,
-              "p95": 10.880044999999999,
-              "p99": 11.984841000000001,
-              "mean": 8.656585127314814,
-              "maximum": 13.6522
+          "round": 7,
+          "order": [
+            "five",
+            "eight"
+          ],
+          "sourceRunId": "palette64-client64-runtime-config-pair-7",
+          "metrics": {
+            "eight": {
+              "nativeParts": 512,
+              "logicalBodies": 64,
+              "rawRows": 1429,
+              "clientPresentP95": 13.573054999999998,
+              "cpuBusyP95": 13.420469999999998,
+              "gpuBusyP95": 3.1276249999999997,
+              "displayChangeP95": 16.77493999999999,
+              "distributions": {
+                "MsBetweenPresents": {
+                  "samples": 1428,
+                  "p50": 9.7985,
+                  "p95": 13.573054999999998,
+                  "p99": 14.84788,
+                  "mean": 10.466050840336134,
+                  "maximum": 16.8932
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 1428,
+                  "p50": 10.118649999999999,
+                  "p95": 16.77493999999999,
+                  "p99": 18.679886,
+                  "mean": 10.46605399159664,
+                  "maximum": 21.4245
+                },
+                "MsCPUBusy": {
+                  "samples": 1428,
+                  "p50": 9.657,
+                  "p95": 13.420469999999998,
+                  "p99": 14.711603,
+                  "mean": 10.320653081232493,
+                  "maximum": 16.7039
+                },
+                "MsCPUWait": {
+                  "samples": 1428,
+                  "p50": 0.1435,
+                  "p95": 0.17218999999999993,
+                  "p99": 0.194173,
+                  "mean": 0.14539551820728291,
+                  "maximum": 0.3486
+                },
+                "MsGPUBusy": {
+                  "samples": 1428,
+                  "p50": 2.64595,
+                  "p95": 3.1276249999999997,
+                  "p99": 3.3255770000000004,
+                  "mean": 2.6962168067226893,
+                  "maximum": 3.5424
+                },
+                "MsGPUTime": {
+                  "samples": 1428,
+                  "p50": 9.8081,
+                  "p95": 13.61724,
+                  "p99": 14.85652,
+                  "mean": 10.46605399159664,
+                  "maximum": 16.8463
+                },
+                "MsInPresentAPI": {
+                  "samples": 1428,
+                  "p50": 0.1435,
+                  "p95": 0.17218999999999993,
+                  "p99": 0.194173,
+                  "mean": 0.14539551820728291,
+                  "maximum": 0.3486
+                }
+              }
             },
-            "MsBetweenDisplayChange": {
-              "samples": 1728,
-              "p50": 8.37705,
-              "p95": 14.3307,
-              "p99": 16.233591,
-              "mean": 8.654828472222222,
-              "maximum": 18.1821
-            },
-            "MsCPUBusy": {
-              "samples": 1728,
-              "p50": 8.11865,
-              "p95": 10.740965,
-              "p99": 11.831706000000002,
-              "mean": 8.50995329861111,
-              "maximum": 13.4583
-            },
-            "MsCPUWait": {
-              "samples": 1728,
-              "p50": 0.14465,
-              "p95": 0.170965,
-              "p99": 0.206992,
-              "mean": 0.1466346064814815,
-              "maximum": 0.3445
-            },
-            "MsGPUBusy": {
-              "samples": 1728,
-              "p50": 2.5641999999999996,
-              "p95": 2.973435,
-              "p99": 3.152973,
-              "mean": 2.5984846643518518,
-              "maximum": 3.3451
-            },
-            "MsGPUTime": {
-              "samples": 1728,
-              "p50": 8.27805,
-              "p95": 10.88978,
-              "p99": 11.972384000000002,
-              "mean": 8.656516666666667,
-              "maximum": 13.8637
-            },
-            "MsInPresentAPI": {
-              "samples": 1728,
-              "p50": 0.14465,
-              "p95": 0.170965,
-              "p99": 0.206992,
-              "mean": 0.1466346064814815,
-              "maximum": 0.3445
+            "five": {
+              "nativeParts": 320,
+              "logicalBodies": 64,
+              "rawRows": 1718,
+              "clientPresentP95": 10.82968,
+              "cpuBusyP95": 10.67928,
+              "gpuBusyP95": 3.0122799999999996,
+              "displayChangeP95": 12.72838,
+              "distributions": {
+                "MsBetweenPresents": {
+                  "samples": 1717,
+                  "p50": 8.3614,
+                  "p95": 10.82968,
+                  "p99": 12.018768,
+                  "mean": 8.711875131042516,
+                  "maximum": 18.6491
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 1717,
+                  "p50": 8.3504,
+                  "p95": 12.72838,
+                  "p99": 14.777852,
+                  "mean": 8.709405707629587,
+                  "maximum": 19.0746
+                },
+                "MsCPUBusy": {
+                  "samples": 1717,
+                  "p50": 8.2172,
+                  "p95": 10.67928,
+                  "p99": 11.840859999999997,
+                  "mean": 8.564592137449038,
+                  "maximum": 18.4694
+                },
+                "MsCPUWait": {
+                  "samples": 1717,
+                  "p50": 0.1436,
+                  "p95": 0.17705999999999994,
+                  "p99": 0.21517999999999984,
+                  "mean": 0.14728118811881188,
+                  "maximum": 0.3868
+                },
+                "MsGPUBusy": {
+                  "samples": 1717,
+                  "p50": 2.5736,
+                  "p95": 3.0122799999999996,
+                  "p99": 3.1805519999999996,
+                  "mean": 2.612141234711707,
+                  "maximum": 3.3608
+                },
+                "MsGPUTime": {
+                  "samples": 1717,
+                  "p50": 8.3655,
+                  "p95": 10.844139999999998,
+                  "p99": 12.047044,
+                  "mean": 8.711866045428073,
+                  "maximum": 18.7502
+                },
+                "MsInPresentAPI": {
+                  "samples": 1717,
+                  "p50": 0.1436,
+                  "p95": 0.17705999999999994,
+                  "p99": 0.21517999999999984,
+                  "mean": 0.14728118811881188,
+                  "maximum": 0.3868
+                }
+              }
             }
           },
-          "syncIntervals": {
-            "0": 1728
+          "serverSceneCpuMsPerWallSecond": {
+            "eight": 195.58800175295406,
+            "five": 149.67263913803887
+          }
+        },
+        {
+          "round": 8,
+          "order": [
+            "eight",
+            "five"
+          ],
+          "sourceRunId": "palette64-client64-runtime-config-pair-8",
+          "metrics": {
+            "eight": {
+              "nativeParts": 512,
+              "logicalBodies": 64,
+              "rawRows": 1457,
+              "clientPresentP95": 13.23295,
+              "cpuBusyP95": 13.076375,
+              "gpuBusyP95": 3.1176000000000004,
+              "displayChangeP95": 13.245925,
+              "distributions": {
+                "MsBetweenPresents": {
+                  "samples": 1456,
+                  "p50": 9.66545,
+                  "p95": 13.23295,
+                  "p99": 14.068030000000002,
+                  "mean": 10.276682142857144,
+                  "maximum": 17.8184
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 1456,
+                  "p50": 9.6622,
+                  "p95": 13.245925,
+                  "p99": 14.1473,
+                  "mean": 10.276567651098901,
+                  "maximum": 17.866
+                },
+                "MsCPUBusy": {
+                  "samples": 1456,
+                  "p50": 9.521,
+                  "p95": 13.076375,
+                  "p99": 13.91042,
+                  "mean": 10.129804532967032,
+                  "maximum": 17.6791
+                },
+                "MsCPUWait": {
+                  "samples": 1456,
+                  "p50": 0.1437,
+                  "p95": 0.172425,
+                  "p99": 0.21359500000000006,
+                  "mean": 0.14686414835164835,
+                  "maximum": 0.3335
+                },
+                "MsGPUBusy": {
+                  "samples": 1456,
+                  "p50": 2.6532999999999998,
+                  "p95": 3.1176000000000004,
+                  "p99": 3.275185,
+                  "mean": 2.699757898351648,
+                  "maximum": 3.4168
+                },
+                "MsGPUTime": {
+                  "samples": 1456,
+                  "p50": 9.6622,
+                  "p95": 13.245925,
+                  "p99": 14.1473,
+                  "mean": 10.276567651098901,
+                  "maximum": 17.866
+                },
+                "MsInPresentAPI": {
+                  "samples": 1456,
+                  "p50": 0.1437,
+                  "p95": 0.172425,
+                  "p99": 0.21359500000000006,
+                  "mean": 0.14686414835164835,
+                  "maximum": 0.3335
+                }
+              }
+            },
+            "five": {
+              "nativeParts": 320,
+              "logicalBodies": 64,
+              "rawRows": 1725,
+              "clientPresentP95": 11.024424999999999,
+              "cpuBusyP95": 10.877804999999997,
+              "gpuBusyP95": 2.93499,
+              "displayChangeP95": 13.367629999999998,
+              "distributions": {
+                "MsBetweenPresents": {
+                  "samples": 1724,
+                  "p50": 8.2916,
+                  "p95": 11.024424999999999,
+                  "p99": 11.883741,
+                  "mean": 8.68197650812065,
+                  "maximum": 15.0239
+                },
+                "MsBetweenDisplayChange": {
+                  "samples": 1724,
+                  "p50": 8.352450000000001,
+                  "p95": 13.367629999999998,
+                  "p99": 15.222232,
+                  "mean": 8.683600986078886,
+                  "maximum": 16.8002
+                },
+                "MsCPUBusy": {
+                  "samples": 1724,
+                  "p50": 8.14095,
+                  "p95": 10.877804999999997,
+                  "p99": 11.710771,
+                  "mean": 8.531504176334106,
+                  "maximum": 14.7951
+                },
+                "MsCPUWait": {
+                  "samples": 1724,
+                  "p50": 0.1477,
+                  "p95": 0.1782,
+                  "p99": 0.208754,
+                  "mean": 0.1504522041763341,
+                  "maximum": 0.2884
+                },
+                "MsGPUBusy": {
+                  "samples": 1724,
+                  "p50": 2.4757499999999997,
+                  "p95": 2.93499,
+                  "p99": 3.044147,
+                  "mean": 2.5305097447795823,
+                  "maximum": 3.271
+                },
+                "MsGPUTime": {
+                  "samples": 1724,
+                  "p50": 8.2988,
+                  "p95": 11.040755,
+                  "p99": 11.897880999999998,
+                  "mean": 8.681971345707657,
+                  "maximum": 14.8926
+                },
+                "MsInPresentAPI": {
+                  "samples": 1724,
+                  "p50": 0.1477,
+                  "p95": 0.1782,
+                  "p99": 0.208754,
+                  "mean": 0.1504522041763341,
+                  "maximum": 0.2884
+                }
+              }
+            }
+          },
+          "serverSceneCpuMsPerWallSecond": {
+            "eight": 188.91911961303856,
+            "five": 148.60250049060681
           }
         }
       ],
-      "independentPairs": 1,
+      "independentPairs": 3,
+      "discoveryPairs": 1,
+      "additionalOrderControlledPairs": 2,
       "secondsPerCapture": 15,
       "requestedLimitFPS": 500,
-      "actualSyncZero": true,
+      "actualSyncInterval": 0,
+      "prelaunchConfigHashesEqual": true,
       "AI": false,
       "customContactSolver": false,
-      "relativeChangesPercent": {
-        "clientPresentP95": -8.334414555895549,
-        "displayChangeP95": 20.094931537500408,
-        "cpuBusyP95": -8.371053655274064,
-        "gpuBusyP95": -3.450184921209602
-      }
+      "furtherAssetResearchGatePassed": true
     },
     "blockers": [
-      "Requested cap500; no assumption of truly uncapped engine. Previous60cap run is a different condition",
-      "One pair only; prior SyncInterval1 and60FPS pairs are different conditions",
-      "Whole gameplay and visible animation smoothness unaccepted"
+      "First pair informed review gate; freeze applied before two added pairs",
+      "Part count and skeleton bone budgets changed together",
+      "Local server workload differs by native actor count and can affect client scheduling",
+      "No pure bone/native host self-time; no CPU clock/thermal locking",
+      "Display intervals do not prove animation smoothness",
+      "No full gameplay regression in this bundle"
     ],
     "evidenceReferences": [
       {
-        "fileId": "palette64-client-cost-preflight1/round6/present-pair-analysis.json",
-        "sha256": "2e835ff531e04030cc3d55838592251e9bfc90a4dd00ec660db36cb07c459e58"
-      },
-      {
-        "fileId": "palette64-client-cost-preflight1/round6/terminal-verification.json",
-        "sha256": "1da9162eb1ccb2d238b0e7dddc9b1fb7db936ab42fa192e1861b7c8e43429c22"
+        "fileId": "palette64-client-cost-preflight1/highcap-three-pair-analysis.json",
+        "sha256": "79158d3243dc1bf65f5d97a81340750bf4fe344493926e0098edcb8f42cc7347"
       }
     ],
-    "nextSingleTask": "One high-cap pair crossed5percent review threshold. Consider two order-crossed independent pairs; no full asset conversion or gameplay promotion; keep physics cost priority"
+    "nextSingleTask": "Bounded5part14clip native asset bundle and bone/event/root compatibility plan before gameplay integration; preserve primary physics-query cost work"
   },
-  "nextSingleTask": "One high-cap pair crossed5percent review threshold. Consider two order-crossed independent pairs; no full asset conversion or gameplay promotion; keep physics cost priority"
+  "nextSingleTask": "Bounded5part14clip native asset bundle and bone/event/root compatibility plan before gameplay integration; preserve primary physics-query cost work"
 }
