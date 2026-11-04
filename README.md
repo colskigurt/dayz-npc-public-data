@@ -3,9 +3,9 @@
 <!-- NPC_CPU_CURRENT_BEGIN -->
 ## 상세 NPC CPU 최적화 현재 상태
 
-8→5파트 후보의 단일64본 파트는 ODOL·서명·64본 CPU pose 대조를 통과했다. 실제 스키닝 화면은 Steam 인식 오류로 미확인이다. 현재 양쪽 실행 권한은 Medium이며 관리자 원인은 미확정. 기존8파트 유지·CPU 개선 미입증.
+8→5파트 후보의70개part/clip조합 키·계층 보존 통과. Steam 경유release 접속 후새64 palette부분 모델1프레임을 확인했다. 안정적연속표시와전체5파트·CPU이득은미수용이다. 반복BattlEye 재시작안내를보존하며기존8파트를유지한다.
 
-[최신 CPU 보고서](reports/operations/npc-palette64-native-gate-20261104.md) · [정적 후보](reports/operations/npc-palette64-static-20261104.md)
+[최신 CPU 보고서](reports/operations/npc-palette64-visible-boundary-20261104.md)
 <!-- NPC_CPU_CURRENT_END -->
 
 문서 갱신:2026-11-04

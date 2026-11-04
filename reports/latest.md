@@ -1,5 +1,5 @@
-# NPC CPU 최적화 최신 시험
+# NPC CPU 최적화 최신 결과
 
-단일64 weighted palette의 ODOL·서명·64본 CPU pose 대조 통과. 실제 mesh skin은 Steam 인식 오류로 미관찰. 현재 실행 도구/Steam은 둘 다 일반 Medium 권한. CPU 절감과5파트 통합은 미검증.
+5파트×14클립70조합의키/부모계층보존 통과. Steam 경유 일반 client와release server접속 확인,새64 palette부분 모델1프레임 확인. 반복BattlEye restart-required로안정적표시 미수용. CPU/8·64회귀 미측정.
 
-[상세](operations/npc-palette64-native-gate-20261104.md) · [정적5파트 후보](operations/npc-palette64-static-20261104.md)
+[상세](operations/npc-palette64-visible-boundary-20261104.md)
