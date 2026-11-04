@@ -1,11 +1,11 @@
 # DayZ 대량 호드 표현 경로 검토
 
 <!-- NPC_CPU_CURRENT_BEGIN -->
-## 상세 NPC CPU 최적화 현재 상태
+## NPC CPU 최적화 현재 상태
 
-8→5파트 후보의70개part/clip조합 키·계층 보존 통과. Steam 경유release 접속 후새64 palette부분 모델1프레임을 확인했다. 안정적연속표시와전체5파트·CPU이득은미수용이다. 반복BattlEye 재시작안내를보존하며기존8파트를유지한다.
+5파트 후보의 첫79본 골격과Run 컴파일·외피 검증 통과. 기존8파트 유지. 런타임 포즈·화면 품질·64개체 비용 개선은 미검증이다. 다음 단일 작업은250본 참조와79본 Run 비교다.
 
-[최신 CPU 보고서](reports/operations/npc-palette64-visible-boundary-20261104.md)
+[최신 CPU 보고서](reports/operations/npc-palette64-single-compile-20261105.md)
 <!-- NPC_CPU_CURRENT_END -->
 
 근접 화면에서 자체 P3D 프록시의 기본 이동·분절 팔다리 출력을 확인하고 실제 PresentMon 측정을 수행했다. X/Z source 이동차각1m를 교정했고,반대 끝 자세와 연속 자세 변화를 관찰했다. 자연스러운 보행·접지·광학 cadence의최종 수용은 아니다.

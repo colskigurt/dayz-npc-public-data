@@ -1,5 +1,15 @@
-# NPC CPU 최적화 최신 결과
+# 79본 단일 골격·Run 컴파일 확인
 
-5파트×14클립70조합의키/부모계층보존 통과. Steam 경유 일반 client와release server접속 확인,새64 palette부분 모델1프레임 확인. 반복BattlEye restart-required로안정적표시 미수용. CPU/8·64회귀 미측정.
+실행 ID: palette64-subset-one2. 기존8파트를 교체하지 않은5파트 후보의 첫 골격/Run 입력 시험이다.
 
-[상세](operations/npc-palette64-visible-boundary-20261104.md)
+## 작업 목표와 실제 수행
+기존 pruning/parser와 Workbench ResourceManager.RegisterResourceFile 경로로79본 골격1개와 Run1개만 컴파일했다. 원본 유지 채널·부모 관계·입력 해시를 확인했다. 시작 권한 창은 자동 조작하지 않았으며 재개 후 해소된 상태에서 변환을 진행했다.
+
+## 결과와 판정
+XOB9 4471바이트, ANIMSET6 28756바이트. FORM 길이와 메타데이터 원본 참조,79본 이름,60fps·126프레임 검증 통과. 입력 및 원본 해시 불변. 컴파일 진단 성공이며 native 포즈 동등성·실제 표시 품질·8/64기능·CPU 개선은 미실행/미측정이다. p50/p95/p99는 미측정이며20ms p95 목표 미달성.
+
+## 변경과 원인 분석
+격리 입력/gproj/plugin만 추가했다. 기존 게임 코드/PBO/서명/그래프 미변경. 종료 시 기존 Script is leaking assertion599가 재발했고 중단으로 닫았다. 정상 종료 인증과 자산 컴파일 성공은 별개다.
+
+## 원시 근거와 잔여 문제
+선정 근거는 공개 JSON의 출력 SHA와 판정 범위다. 원본 게임 자산/키/전체 로그는 비공개다. 다음은250본 참조와79본 후보의 단일 Run native 포즈 비교다. 전체70클립 생성/8·64승격 전 국소 검증을 수행한다. 전체5파트401본/호스트 감소의 전체 비용 이득은 미입증이다.

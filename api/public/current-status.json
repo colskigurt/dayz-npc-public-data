@@ -1,19 +1,19 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-04T23:59:17.028873+09:00",
-  "sourceRunId": "palette64-steam-network4",
-  "buildId": "C1A651BD6E57BB73D8B68722E2DEDF9361B0BDFACE1ECF1AE03BBAB6F6C6F190",
+  "generatedAt": "2026-11-05T04:26:35.699976+09:00",
+  "sourceRunId": "palette64-subset-one2",
+  "buildId": "isolated-resource-only-no-pbo",
   "verificationStatus": {
-    "diagnosis": "retained_keys_and_supported_launch_diagnosed",
+    "diagnosis": "single_subset_compilation_passed",
     "candidate": "not_promoted",
     "functional8or64": "not_tested",
-    "visualQuality": "single_partial_snapshot_not_accepted",
+    "visualQuality": "not_tested",
     "wholeFramePerformance": "not_measured",
     "externalAI": "not_retested",
     "finalAcceptance": false
   },
   "metrics": {
-    "newRuns": 8,
+    "newRuns": 1,
     "latestFunctional": {
       "sourceRunId": "network-gameplay/entry-facing-sixtyfour-on1",
       "independentRuns": 1,
@@ -183,116 +183,30 @@
       "p95": null,
       "p99": null
     },
-    "newRunsUnit": "owned DayZ process starts:4servers+3retail+1noargument diag; not optimization repeats"
+    "newRunsUnit": "single visible Workbench import; not performance repeat",
+    "palette64SingleCompile": {
+      "retainedBones": 79,
+      "fps": 60,
+      "numFrames": 126,
+      "p50": null,
+      "p95": null,
+      "p99": null,
+      "repeats": 1,
+      "repeatMeaning": "single compiler invocation, not performance repetition"
+    }
   },
   "blockers": [
-    "Stable sustained client observation remains unverified due to repeated BattlEye restart-required disconnect",
-    "One frame cannot validate all64 weighted influences, missing triangles, seams, temporal smoothness or performance"
+    "Native runtime pose equivalence and visible quality not validated",
+    "Whole-frame performance not measured"
   ],
   "evidenceReferences": [
     {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette-budget-review-20261104/inmemory-key-contract.json",
-      "sha256": "ed13793b8824992d5447a2c8b5c55ede862bebc78b4a03ed9a24a8dc0388eaeb"
+      "fileId": "nf_palette64_p0.xob",
+      "sha256": "bc06cf48bfcd9b85d137471b237311c0fe8f8aedb260c5df87641475ac84d90d"
     },
     {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network1/launcher-managed-evidence.json",
-      "sha256": "b78bd78733d61eac4b70f44a459c2fd69c5870bb3634c6fe0f3e18446acbe77c"
-    },
-    {
-      "fileId": "tools/start_horde_sandbox_client.ps1",
-      "sha256": "f24f182911690e4dff482f764cbbf5cc2570c1b5e2eb306ad0c67e79904a0ba9"
-    },
-    {
-      "fileId": "tests/horde-sandbox-steam-launch-validation.json",
-      "sha256": "3b61a8b27e26423cb7eb21709e05550c27d97dbfa71ecb2a0476d63fab4bd3c9"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network1/plan.json",
-      "sha256": "1d7b9861939df47c79ddb51c17c01bc698810ccd4c3ffdc7dca6ae8dbae9b5c5"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network1/server-launch-BProbe.json",
-      "sha256": "01a196fcc55efcf82fdb0ad66060d04415efdf226b9c41cd740c5385d948c5c3"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network2b/plan.json",
-      "sha256": "8465553e3f76dbbd612d3deb2551f8b5dc80f096e78de290e600eba92fc52241"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network2b/server-launch-BProbe.json",
-      "sha256": "de0c638efae6b08e2e9278895c2cad2c5b0c72140db3dac1e959445bbe89dd39"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network3/plan.json",
-      "sha256": "b3f206957478170fd6666469368d39bededa98370986751faff1a3139b3b7011"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network3/server-launch-BProbe.json",
-      "sha256": "7430c23ebcd3d4f8ab96d15faddd7fe8ae1126ebcaf419970194b72532237d32"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network3/server-profile-BProbe/role-pose.tsv",
-      "sha256": "10fdaf8f2b06cf1c0de126f4693428924f3446f490cda85dedd63b0cf4b9c7b1"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network4/plan.json",
-      "sha256": "bb188d36571fe37de23c5715fe40c935d63be078fab6dbbd3463f3a465ce4c5e"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network4/server-launch-BProbe.json",
-      "sha256": "4d8cb5abd79339d8753c587279f8c856a014481fcf42df2b583421d54e4947e9"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network4/server-profile-BProbe/role-pose.tsv",
-      "sha256": "7d395d3d4019c695d336a7e533525e14d20346cee16e88672e6208592ea1dd10"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network1/steam-launch-request.json",
-      "sha256": "06c8dff816b2dff623861fb085db2116acbedd9f477bc7e2f60fb6898f5dc1f4"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network1/steam-client-profile/DayZ_x64_2026-11-04_23-30-21.RPT",
-      "sha256": "c67507b161d182da475c7421ddc248936f7b4ae7b81cb36620b0bca8fb13eabc"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network1/client-terminal-observation.json",
-      "sha256": "7b53bf8d2bebf3cac687f8a9142b0a9f4e0b57eb815ff98282cb78850986db1a"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network3/steam-launch-request.json",
-      "sha256": "5c137df9cc0ea4f96fee2baa75c006863e021835cb462d23f9bf0d4938333df4"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network3/steam-client-profile/DayZ_x64_2026-11-04_23-43-05.RPT",
-      "sha256": "a44a0421c5a0795fd263c60da6a39ef317b35d07b017b31a1f2891f2aa278742"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network3/client-terminal-observation.json",
-      "sha256": "9a7051789e74d636b8be4ecc3ef0bf5fbbff2ef5cbce73240507b3f25a3dea3b"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network4/steam-launch-request.json",
-      "sha256": "337d893f647dca05ca79365fb9403006fbc407005e5808ff0426cf9fe2272f12"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network4/steam-client-profile/DayZ_x64_2026-11-04_23-50-55.RPT",
-      "sha256": "4c341e1b311132ecf934434c52a21fdb9ea419734a24e0b06f7ff16b00ab52bf"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network4/client-terminal-observation.json",
-      "sha256": "e2110f876b3e117778424c3dbf5b7e639e72d237f8cfa286f20ab61fb6c8c15a"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network4/visible-part0-frame0.png",
-      "sha256": "b8debccbc9c01ba468bafc3b3c5baa99fa561c4caaa418f39e7d5f4cf291bf24"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network4/repeated-restart-notice.png",
-      "sha256": "0cca985fbfd792e9e1326a90bb3135e2a4ecf451c8a4aefba37855c1feb174e6"
-    },
-    {
-      "fileId": "research/animation-network-role-20261101-1600/eight-part-20261102/network-gameplay/palette64-steam-network3/battleye-restart-observed.png",
-      "sha256": "0dba8c8edb051b73b3eb7845e19906bf877436ee3cba91f2aaed875b95599b11"
+      "fileId": "nf_palette64_p0_run.anm",
+      "sha256": "aa58e459f06d943c45707f4eea55264cc6b81b252de8bd468f9e9a5ec548498b"
     }
   ],
   "goalComplete": false,
