@@ -1,0 +1,445 @@
+Selection: complete six-run metric projection and all three pair aggregates; not raw ETW/complete logs or visual proof.
+Source completed-three-pairs.json SHA256 a17675ad85ad3e972ce0c6eb1ac2390dc29840ef61b262c897dd460ff35b5d35
+{
+  "sourceRunId": "ANIM-four-cost3-three-pairs",
+  "validCaptures": 6,
+  "independentPairs": 3,
+  "secondsEach": 15,
+  "aggregate": {
+    "MsBetweenPresents": {
+      "pairedDeltaPercent": [
+        -26.77930365639334,
+        6.149169650140074,
+        -10.966728949167893
+      ],
+      "medianDeltaPercent": -10.966728949167893,
+      "allThreeLower": false
+    },
+    "MsCPUBusy": {
+      "pairedDeltaPercent": [
+        -27.188141840056524,
+        6.134128765370606,
+        -11.131232426652716
+      ],
+      "medianDeltaPercent": -11.131232426652716,
+      "allThreeLower": false
+    },
+    "MsGPUBusy": {
+      "pairedDeltaPercent": [
+        4.977153470765638,
+        1.743617504278272,
+        2.569770022226381
+      ],
+      "medianDeltaPercent": 2.569770022226381,
+      "allThreeLower": false
+    }
+  },
+  "controlledFlatCostEvidencePassed": false,
+  "targetPresentP95Ms": 20,
+  "limits": [
+    "Current network server/client flat pursuit, not old93507D offline vanilla/custom comparison.",
+    "Matched scene/input/camera; overcast/rain/fog verified zero. Wind, collision history and camera-relative crowd footprint were not locked.",
+    "Part count and skeleton budgets change together; no isolated bone/host/query self-time.",
+    "Server/client run on the same PC; scheduling contributions are not separated.",
+    "Conservative foreground/context bounds, not exact frame-by-frame state/pose/display joins.",
+    "Noncombat flat mobility does not replace traversal/combat/visual acceptance.",
+    "Actual server exit remains -1 despite RequestExit0."
+  ],
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-06T08:52:03.612891+09:00",
+  "buildId": "four-full-plus-gameplay-6fe4cfde",
+  "verificationStatus": "three-pairs-completed-candidate-not-accepted",
+  "metrics": [
+    {
+      "runId": "ANIM-four-cost3-01-control",
+      "condition": "control",
+      "pair": 1,
+      "metricsMs": {
+        "MsBetweenPresents": {
+          "samples": 1457,
+          "p50": 9.345,
+          "p95": 14.930560000000002,
+          "p99": 17.060332000000002,
+          "mean": 10.263641180507893,
+          "maximum": 20.9214
+        },
+        "MsBetweenDisplayChange": {
+          "samples": 1457,
+          "p50": 9.7902,
+          "p95": 16.20004,
+          "p99": 19.399824000000002,
+          "mean": 10.263686753603295,
+          "maximum": 20.5114
+        },
+        "MsCPUBusy": {
+          "samples": 1457,
+          "p50": 9.1935,
+          "p95": 14.781720000000002,
+          "p99": 16.90624,
+          "mean": 10.112928002745367,
+          "maximum": 20.7749
+        },
+        "MsCPUWait": {
+          "samples": 1457,
+          "p50": 0.1483,
+          "p95": 0.18238000000000001,
+          "p99": 0.213,
+          "mean": 0.15069677419354838,
+          "maximum": 0.4243
+        },
+        "MsGPUBusy": {
+          "samples": 1457,
+          "p50": 2.49,
+          "p95": 2.83194,
+          "p99": 3.0290120000000003,
+          "mean": 2.5267524365133838,
+          "maximum": 4.0412
+        },
+        "MsGPUTime": {
+          "samples": 1457,
+          "p50": 9.339,
+          "p95": 15.005680000000002,
+          "p99": 17.08963200000001,
+          "mean": 10.263686753603295,
+          "maximum": 21.0874
+        },
+        "MsInPresentAPI": {
+          "samples": 1457,
+          "p50": 0.1483,
+          "p95": 0.18238000000000001,
+          "p99": 0.213,
+          "mean": 0.15069677419354838,
+          "maximum": 0.4243
+        }
+      }
+    },
+    {
+      "runId": "ANIM-four-cost3-02-candidate",
+      "condition": "candidate",
+      "pair": 1,
+      "metricsMs": {
+        "MsBetweenPresents": {
+          "samples": 1888,
+          "p50": 7.51205,
+          "p95": 10.93226,
+          "p99": 12.760283,
+          "mean": 7.922437447033898,
+          "maximum": 17.8847
+        },
+        "MsBetweenDisplayChange": {
+          "samples": 1888,
+          "p50": 7.5697,
+          "p95": 12.775134999999993,
+          "p99": 14.764515999999999,
+          "mean": 7.922367955508475,
+          "maximum": 16.5627
+        },
+        "MsCPUBusy": {
+          "samples": 1888,
+          "p50": 7.3626000000000005,
+          "p95": 10.762844999999999,
+          "p99": 12.575530999999991,
+          "mean": 7.768682680084746,
+          "maximum": 17.7021
+        },
+        "MsCPUWait": {
+          "samples": 1888,
+          "p50": 0.1472,
+          "p95": 0.19912499999999994,
+          "p99": 0.31977199999999834,
+          "mean": 0.15372579449152543,
+          "maximum": 0.5237
+        },
+        "MsGPUBusy": {
+          "samples": 1888,
+          "p50": 2.5734500000000002,
+          "p95": 2.97289,
+          "p99": 3.2021559999999973,
+          "mean": 2.6054377648305085,
+          "maximum": 4.678
+        },
+        "MsGPUTime": {
+          "samples": 1888,
+          "p50": 7.5304,
+          "p95": 10.928315,
+          "p99": 12.683070999999986,
+          "mean": 7.922367955508475,
+          "maximum": 17.9694
+        },
+        "MsInPresentAPI": {
+          "samples": 1888,
+          "p50": 0.1472,
+          "p95": 0.19912499999999994,
+          "p99": 0.31977199999999834,
+          "mean": 0.15372579449152543,
+          "maximum": 0.5237
+        }
+      }
+    },
+    {
+      "runId": "ANIM-four-cost3-03-candidate",
+      "condition": "candidate",
+      "pair": 2,
+      "metricsMs": {
+        "MsBetweenPresents": {
+          "samples": 1596,
+          "p50": 8.7514,
+          "p95": 13.208725000000001,
+          "p99": 14.700024999999998,
+          "mean": 9.374520614035088,
+          "maximum": 19.155
+        },
+        "MsBetweenDisplayChange": {
+          "samples": 1596,
+          "p50": 8.830449999999999,
+          "p95": 14.930925,
+          "p99": 17.715614999999996,
+          "mean": 9.373942481203008,
+          "maximum": 20.0062
+        },
+        "MsCPUBusy": {
+          "samples": 1596,
+          "p50": 8.5937,
+          "p95": 13.056525,
+          "p99": 14.537449999999998,
+          "mean": 9.218890977443609,
+          "maximum": 19.0089
+        },
+        "MsCPUWait": {
+          "samples": 1596,
+          "p50": 0.15005000000000002,
+          "p95": 0.19415,
+          "p99": 0.3257499999999991,
+          "mean": 0.15562149122807017,
+          "maximum": 0.4813
+        },
+        "MsGPUBusy": {
+          "samples": 1596,
+          "p50": 2.5328,
+          "p95": 2.9132249999999997,
+          "p99": 3.1372499999999994,
+          "mean": 2.5686239974937344,
+          "maximum": 4.3538
+        },
+        "MsGPUTime": {
+          "samples": 1596,
+          "p50": 8.7432,
+          "p95": 13.250575,
+          "p99": 14.65195,
+          "mean": 9.37443395989975,
+          "maximum": 19.2456
+        },
+        "MsInPresentAPI": {
+          "samples": 1596,
+          "p50": 0.15005000000000002,
+          "p95": 0.19415,
+          "p99": 0.3257499999999991,
+          "mean": 0.15562149122807017,
+          "maximum": 0.4813
+        }
+      }
+    },
+    {
+      "runId": "ANIM-four-cost3-04-control",
+      "condition": "control",
+      "pair": 2,
+      "metricsMs": {
+        "MsBetweenPresents": {
+          "samples": 1678,
+          "p50": 8.470600000000001,
+          "p95": 12.443549999999997,
+          "p99": 14.406181,
+          "mean": 8.920452324195471,
+          "maximum": 19.0233
+        },
+        "MsBetweenDisplayChange": {
+          "samples": 1678,
+          "p50": 8.6155,
+          "p95": 14.188825,
+          "p99": 16.121155,
+          "mean": 8.921641358760429,
+          "maximum": 21.0703
+        },
+        "MsCPUBusy": {
+          "samples": 1678,
+          "p50": 8.3263,
+          "p95": 12.301909999999998,
+          "p99": 14.263963,
+          "mean": 8.772033492252682,
+          "maximum": 18.8429
+        },
+        "MsCPUWait": {
+          "samples": 1678,
+          "p50": 0.14325,
+          "p95": 0.185915,
+          "p99": 0.23773,
+          "mean": 0.14842920143027413,
+          "maximum": 0.4537
+        },
+        "MsGPUBusy": {
+          "samples": 1678,
+          "p50": 2.505,
+          "p95": 2.8633,
+          "p99": 3.062474,
+          "mean": 2.540905303933254,
+          "maximum": 4.4296
+        },
+        "MsGPUTime": {
+          "samples": 1678,
+          "p50": 8.474250000000001,
+          "p95": 12.444814999999998,
+          "p99": 14.517679000000001,
+          "mean": 8.920371811680573,
+          "maximum": 19.0639
+        },
+        "MsInPresentAPI": {
+          "samples": 1678,
+          "p50": 0.14325,
+          "p95": 0.185915,
+          "p99": 0.23773,
+          "mean": 0.14842920143027413,
+          "maximum": 0.4537
+        }
+      }
+    },
+    {
+      "runId": "ANIM-four-cost3-05-control",
+      "condition": "control",
+      "pair": 3,
+      "metricsMs": {
+        "MsBetweenPresents": {
+          "samples": 1738,
+          "p50": 8.07965,
+          "p95": 11.479949999999999,
+          "p99": 12.902610999999998,
+          "mean": 8.597566513233602,
+          "maximum": 18.4256
+        },
+        "MsBetweenDisplayChange": {
+          "samples": 1738,
+          "p50": 8.3035,
+          "p95": 15.031859999999995,
+          "p99": 16.934784999999987,
+          "mean": 8.59754913693901,
+          "maximum": 21.4518
+        },
+        "MsCPUBusy": {
+          "samples": 1738,
+          "p50": 7.9411000000000005,
+          "p95": 11.325744999999998,
+          "p99": 12.762163,
+          "mean": 8.450781703107019,
+          "maximum": 18.2504
+        },
+        "MsCPUWait": {
+          "samples": 1738,
+          "p50": 0.1434,
+          "p95": 0.1794,
+          "p99": 0.22015599999999985,
+          "mean": 0.1467801495972382,
+          "maximum": 0.4529
+        },
+        "MsGPUBusy": {
+          "samples": 1738,
+          "p50": 2.47805,
+          "p95": 2.8389699999999998,
+          "p99": 2.992797,
+          "mean": 2.5165749712313006,
+          "maximum": 4.0745
+        },
+        "MsGPUTime": {
+          "samples": 1738,
+          "p50": 8.090900000000001,
+          "p95": 11.548919999999999,
+          "p99": 12.931477999999995,
+          "mean": 8.59754913693901,
+          "maximum": 18.4669
+        },
+        "MsInPresentAPI": {
+          "samples": 1738,
+          "p50": 0.1434,
+          "p95": 0.1794,
+          "p99": 0.22015599999999985,
+          "mean": 0.1467801495972382,
+          "maximum": 0.4529
+        }
+      }
+    },
+    {
+      "runId": "ANIM-four-cost3-06-candidate",
+      "condition": "candidate",
+      "pair": 3,
+      "metricsMs": {
+        "MsBetweenPresents": {
+          "samples": 1916,
+          "p50": 7.4368,
+          "p95": 10.220975,
+          "p99": 12.074049999999998,
+          "mean": 7.8068186325678495,
+          "maximum": 15.1806
+        },
+        "MsBetweenDisplayChange": {
+          "samples": 1914,
+          "p50": 7.6747,
+          "p95": 13.741145,
+          "p99": 15.336218999999998,
+          "mean": 7.811651044932079,
+          "maximum": 16.9824
+        },
+        "MsCPUBusy": {
+          "samples": 1916,
+          "p50": 7.2919,
+          "p95": 10.06505,
+          "p99": 11.910444999999998,
+          "mean": 7.659799112734865,
+          "maximum": 15.0301
+        },
+        "MsCPUWait": {
+          "samples": 1916,
+          "p50": 0.1426,
+          "p95": 0.18284999999999998,
+          "p99": 0.22643999999999997,
+          "mean": 0.14702364300626303,
+          "maximum": 0.4273
+        },
+        "MsGPUBusy": {
+          "samples": 1916,
+          "p50": 2.504,
+          "p95": 2.911925,
+          "p99": 3.167719999999999,
+          "mean": 2.548765083507307,
+          "maximum": 5.0858
+        },
+        "MsGPUTime": {
+          "samples": 1916,
+          "p50": 7.4467,
+          "p95": 10.2206,
+          "p99": 12.100344999999992,
+          "mean": 7.806771920668059,
+          "maximum": 15.1423
+        },
+        "MsInPresentAPI": {
+          "samples": 1916,
+          "p50": 0.1426,
+          "p95": 0.18284999999999998,
+          "p99": 0.22643999999999997,
+          "mean": 0.14702364300626303,
+          "maximum": 0.4273
+        }
+      }
+    }
+  ],
+  "blockers": [
+    "One pair regressed; repeat-direction gate failed",
+    "No query/host/bone self-time attribution",
+    "Visual/combat/global20ms acceptance incomplete"
+  ],
+  "evidenceReferences": [
+    "reports/operations/four-part-cost-three-pairs-20261106.md",
+    "evidence/four-part-cost-three-pairs-20261106.txt"
+  ],
+  "acceptedBaselineParts": 5,
+  "candidateParts": 4
+}
+
+Analysis integrity SHA256 9c860d9efa2c571ec78353b69ebcb06269cf07d13bd4549614356dbc07322670
