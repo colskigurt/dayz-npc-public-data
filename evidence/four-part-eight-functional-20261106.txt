@@ -1,0 +1,76 @@
+Selection: own bounded adapter diff and first/last terminal rows per condition; original logs preserved privately. Not full raw evidence or visual quality proof.
+--- verified-five-adapter
++++ isolated-four-adapter
+@@ -1,16 +1,17 @@
+ // Opt-in only. No per-frame layout switching or default-eight mutation.
+ modded class DGBNativeGroundDirector
+ {
+-    bool NFPaletteFiveRequested;
++    bool NFPaletteFourRequested;
+     override bool Spawn(int count,PlayerBase player)
+     {
+-        NFPaletteFiveRequested=FileExist("$profile:nf-five-parts.flag");
+-        if(NFPaletteFiveRequested)
++        NFPaletteFourRequested=FileExist("$profile:nf-four-parts.flag");
++        if(NFPaletteFourRequested)
+         {
++            if(FileExist("$profile:nf-five-parts.flag")){Print("NF_NETWORK_BODY_FAILED palette4_conflicting_five_flag");return false;}
+             if(!FileExist("$profile:nf-network-body.flag") || !RepartitionModel || !Vertical)
+-            {Print("NF_NETWORK_BODY_FAILED palette5_requires_network_vertical_repartition");return false;}
++            {Print("NF_NETWORK_BODY_FAILED palette4_requires_network_vertical_repartition");return false;}
+             if(Bodies.Count()!=0)
+-            {Print("NF_NETWORK_BODY_FAILED palette5_existing_bodies");return false;}
++            {Print("NF_NETWORK_BODY_FAILED palette4_existing_bodies");return false;}
+         }
+         return super.Spawn(count,player);
+     }
+@@ -20,27 +21,27 @@
+     // NFInternalBlocks is inherited from the required NFNetworkBody layer.
+ override void Initialize(int id,DGBNativeGroundDirector director,vector point)
+     {
+-        if(!director.NFPaletteFiveRequested){super.Initialize(id,director,point);return;}
++        if(!director.NFPaletteFourRequested){super.Initialize(id,director,point);return;}
+         if(!GetGame().IsServer() || !GetGame().IsMultiplayer()){Print("NF_NETWORK_BODY_FAILED role");return;}
+         if(!director.RepartitionModel || !director.Vertical)
+-        {Print("NF_NETWORK_BODY_FAILED palette5_unsupported_director");return;}
++        {Print("NF_NETWORK_BODY_FAILED palette4_unsupported_director");return;}
+         // super.Spawn selects the original eight-part layout immediately before
+-        // body initialization. Select five once, before the first actor exists.
++        // body initialization. Select four once, before the first actor exists.
+         // The base director's Parts.Count()==RenderPartCount check stays intact.
+         if(id==0)
+         {
+             if(director.Bodies.Count()!=0 || director.RenderPartCount!=8)
+-            {Print("NF_NETWORK_BODY_FAILED palette5_live_layout_change");return;}
+-            director.RenderPartCount=5;
+-            director.PartPrefix="Animal_NFPaletteFull_candidate";
++            {Print("NF_NETWORK_BODY_FAILED palette4_live_layout_change");return;}
++            director.RenderPartCount=4;
++            director.PartPrefix="Animal_NFPaletteFourFull_candidate";
+         }
+-        if(director.RenderPartCount!=5)
+-        {Print("NF_NETWORK_BODY_FAILED palette5_count_mismatch");return;}
++        if(director.RenderPartCount!=4)
++        {Print("NF_NETWORK_BODY_FAILED palette4_count_mismatch");return;}
+ 
+         Id=id;Director=director;
+         for(int part=0;part<director.RenderPartCount;part++)
+         {
+-            string bodyType="Animal_NFPaletteFull_candidate"+part;
++            string bodyType="Animal_NFPaletteFourFull_candidate"+part;
+             int creationFlags=ECE_CREATEPHYSICS;
+             Animal_DGNativeProbe actor=Animal_DGNativeProbe.Cast(GetGame().CreateObjectEx(bodyType,point,creationFlags));
+             if(!actor)continue;
+
+
+control terminal-state.tsv SHA256 519bab7e359a348f0bc8a1d5d6459a1e00ea2aacfb7467af433b08c32074b113
+1: seconds	id	outcome	state	phase	area	position	recoveryGeneration	contactStatus	reason	failure	low	high	down	returned	climbs	drops	landings	visible	clueSource	seenAge
+2: 58.9227	0	VALID_TERMINAL	CHASE	FOLLOW	low	<4509.841797, 340.187836, 10238.959961>	2		ARRIVED		true	true	true	true	4	1	2	true	LOCAL_VISUAL	0.412003
+9: 58.9227	7	VALID_TERMINAL	CHASE	FOLLOW	low	<4511.018555, 340.205139, 10237.209961>	1		SUPPORTED_EGRESS_HANDOFF		true	true	true	true	3	1	1	true	LOCAL_VISUAL	0.152008
+
+candidate terminal-state.tsv SHA256 8ad0b91edbe06b01ab97e222bf8684e8e4e9421cb6fa65b06e2bcffe69eb2ca0
+1: seconds	id	outcome	state	phase	area	position	recoveryGeneration	contactStatus	reason	failure	low	high	down	returned	climbs	drops	landings	visible	clueSource	seenAge
+2: 80.7843	0	VALID_TERMINAL	CHASE	FOLLOW	low	<4510.888672, 340.211456, 10240.499023>	2		ARRIVED		true	true	true	true	4	1	2	true	LOCAL_VISUAL	0.167999
+9: 80.7843	7	VALID_TERMINAL	CHASE	FOLLOW	low	<4508.986328, 340.173798, 10239.682617>	1		ARRIVED		true	true	true	true	3	1	1	true	LOCAL_VISUAL	0.167999
+
+Normal falls and their recovery remain valid. Completion time is not CPU cost. Both conditions single-run only.

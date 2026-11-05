@@ -1085,5 +1085,63 @@
       "reports/operations/four-part-fullclip-native-pose-20261106.md",
       "evidence/four-part-fullclip-native-pose-20261106.txt"
     ]
+  },
+  "latestFourPartFunctionalComparison": {
+    "sourceRunId": "four-gameplay-eight1",
+    "generatedAt": "2026-11-06T07:28:29.493041+09:00",
+    "buildId": "6FE4CFDED2A8B8AE34A824D093D9C3D8D6DC3D84F7FF867DF7E6AE637002B9F8",
+    "verificationStatus": "single-run-per-condition-functional-pass",
+    "metrics": {
+      "control": {
+        "sourceRunId": "ANIM-four-eight1-control",
+        "logicalNpcs": 8,
+        "nativeParts": 40,
+        "independentRuns": 1,
+        "activeSeconds": 58.9227,
+        "samples": 1824,
+        "contractRows": 229,
+        "transitions": 144,
+        "validTerminalAgents": 8,
+        "allMilestoneAgents": 8,
+        "phaseChainMismatches": [],
+        "recoveryGenerationErrors": [],
+        "terminalAlignmentErrors": [],
+        "fallStarts": 9,
+        "landAndFollowCycles": 9,
+        "evidenceFunctionalGatePassed": true,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "historicalFailureTransitions": 4
+      },
+      "candidate": {
+        "sourceRunId": "ANIM-four-eight1-candidate",
+        "logicalNpcs": 8,
+        "nativeParts": 32,
+        "independentRuns": 1,
+        "activeSeconds": 80.7843,
+        "samples": 2496,
+        "contractRows": 229,
+        "transitions": 144,
+        "validTerminalAgents": 8,
+        "allMilestoneAgents": 8,
+        "phaseChainMismatches": [],
+        "recoveryGenerationErrors": [],
+        "terminalAlignmentErrors": [],
+        "fallStarts": 9,
+        "landAndFollowCycles": 9,
+        "evidenceFunctionalGatePassed": true,
+        "visualAccepted": false,
+        "performanceAccepted": false,
+        "historicalFailureTransitions": 4
+      }
+    },
+    "blockers": [
+      "64-agent regression and paired CPU/Present cost pending",
+      "Visual smoothness and combat interactions not accepted"
+    ],
+    "evidenceReferences": [
+      "reports/operations/four-part-eight-functional-20261106.md",
+      "evidence/four-part-eight-functional-20261106.txt"
+    ]
   }
 }
