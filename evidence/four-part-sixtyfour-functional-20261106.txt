@@ -1,0 +1,11 @@
+Selection: first/last terminal row and first/last state transition, with source line numbers and SHA256. Not complete raw logs, CPU timing or visual proof.
+
+terminal-state.tsv SHA256 362df4e9d8304fc8fd6fa183a2f36e9b3ff97214df139b91f28d3c0455123e46
+1: seconds	id	outcome	state	phase	area	position	recoveryGeneration	contactStatus	reason	failure	low	high	down	returned	climbs	drops	landings	visible	clueSource	seenAge
+2: 248.852	0	VALID_TERMINAL	CHASE	FOLLOW	low	<4511.092285, 340.213074, 10239.677734>	2				true	true	true	true	4	1	2	true	LOCAL_VISUAL	0.0400085
+65: 248.852	63	VALID_TERMINAL	CHASE	FOLLOW	low	<4510.619629, 340.207520, 10240.901367>	2		ARRIVED		true	true	true	true	4	1	2	true	LOCAL_VISUAL	0.0400085
+
+native-state-contract.tsv SHA256 f27d98a775ca509f7faf36dfdb3d1833c9554d68086e241f92dfb2d675cea551
+1: sequence	seconds	id	kind	previous	next	reason	failure	recoveryGeneration	position	contactStatus	contactBlocked	lift	terminalOutcome	detail	tested	supported	valid	motionElapsedBeforeTransition	clipDuration	nativeCurveEnded	endpointError	exitError	nativeSeconds	link	callContext	areaAtCall
+2: 1	8.541	1	TRANSITION	FOLLOW	MOTION			0	<4509.648438, 339.131256, 10235.253906>		false	0.0218506	NONTERMINAL	CLEAR	<0.000000, 0.000000, 0.000000>	<0.000000, 0.000000, 0.000000>	false	0	1.48333	false	0	0	47.7496	ground_to_low	FOLLOW	ground
+2091: 2090	248.805	7	TRANSITION	EGRESS	FOLLOW	SUPPORTED_EGRESS_HANDOFF		2	<4508.908691, 340.165985, 10237.300781>		false	0.030304	NONTERMINAL	CLEAR	<0.000000, 0.000000, 0.000000>	<0.000000, 0.000000, 0.000000>	false	0	1.48333	true	2.94425e-05	0.000977039	288.003	none	OTHER	low
