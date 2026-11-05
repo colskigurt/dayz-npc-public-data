@@ -1,0 +1,654 @@
+Selection: pose/root API and field regex-selected lines from exact pinned script members; not whole source/native consumers.
+[
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBGroundAgent.c",
+    "line": 51,
+    "text": "bool UseNativeRootDelta;",
+    "memberSha256": "9ceadbd93a115a285320ef76a14a51afe66b9942fbff77bb4c71d545450ec236"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBGroundAgent.c",
+    "line": 52,
+    "text": "vector NativeRootDelta;",
+    "memberSha256": "9ceadbd93a115a285320ef76a14a51afe66b9942fbff77bb4c71d545450ec236"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBGroundAgent.c",
+    "line": 68,
+    "text": "DayZAnimal animal=DayZAnimal.Cast(host);if(animal){ SightHeadId=animal.GetBoneIndexByName(\"Head\"); }SightExclusions.Insert(host);",
+    "memberSha256": "9ceadbd93a115a285320ef76a14a51afe66b9942fbff77bb4c71d545450ec236"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBGroundAgent.c",
+    "line": 227,
+    "text": "float waypointRadius=0.45;if(UseNativeRootDelta)waypointRadius=0.08;",
+    "memberSha256": "9ceadbd93a115a285320ef76a14a51afe66b9942fbff77bb4c71d545450ec236"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBGroundAgent.c",
+    "line": 235,
+    "text": "float turnTolerance=45;if(UseNativeRootDelta)turnTolerance=35;",
+    "memberSha256": "9ceadbd93a115a285320ef76a14a51afe66b9942fbff77bb4c71d545450ec236"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBGroundAgent.c",
+    "line": 239,
+    "text": "if(UseNativeRootDelta)",
+    "memberSha256": "9ceadbd93a115a285320ef76a14a51afe66b9942fbff77bb4c71d545450ec236"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBGroundAgent.c",
+    "line": 242,
+    "text": "step=Vector(-Math.Cos(yaw)*NativeRootDelta[0] - Math.Sin(yaw)*NativeRootDelta[2],0,Math.Sin(yaw)*NativeRootDelta[0] - Math.Cos(yaw)*NativeRootDelta[2]);",
+    "memberSha256": "9ceadbd93a115a285320ef76a14a51afe66b9942fbff77bb4c71d545450ec236"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeCombat.c",
+    "line": 18,
+    "text": "vector DeathOrigin;bool DamageReceiverDetached;",
+    "memberSha256": "2132ab201f94fabc1f157ad8b5a292eccc4e80bd41bb89f51ee0363ffba8a1f7"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeCombat.c",
+    "line": 32,
+    "text": "float elapsed=0;if(Active)elapsed=Body.Leader.NativeSeconds - NativeAt;",
+    "memberSha256": "2132ab201f94fabc1f157ad8b5a292eccc4e80bd41bb89f51ee0363ffba8a1f7"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeCombat.c",
+    "line": 99,
+    "text": "Request=Clip.request;NativeAt=Body.Leader.NativeSeconds;",
+    "memberSha256": "2132ab201f94fabc1f157ad8b5a292eccc4e80bd41bb89f51ee0363ffba8a1f7"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeCombat.c",
+    "line": 170,
+    "text": "NativeAt=Body.Leader.NativeSeconds;DeathAt=Now();DeathVerticalSpeed=0;",
+    "memberSha256": "2132ab201f94fabc1f157ad8b5a292eccc4e80bd41bb89f51ee0363ffba8a1f7"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeCombat.c",
+    "line": 174,
+    "text": "FreezeDamageReceiver();",
+    "memberSha256": "2132ab201f94fabc1f157ad8b5a292eccc4e80bd41bb89f51ee0363ffba8a1f7"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeCombat.c",
+    "line": 176,
+    "text": "void FreezeDamageReceiver()",
+    "memberSha256": "2132ab201f94fabc1f157ad8b5a292eccc4e80bd41bb89f51ee0363ffba8a1f7"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeCombat.c",
+    "line": 178,
+    "text": "if(!Body.DamageReceiver)return;",
+    "memberSha256": "2132ab201f94fabc1f157ad8b5a292eccc4e80bd41bb89f51ee0363ffba8a1f7"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeCombat.c",
+    "line": 180,
+    "text": "if(vector.Distance(Body.DamageReceiver.GetPosition(),retired)>0.001)Body.DamageReceiver.SetPosition(retired);",
+    "memberSha256": "2132ab201f94fabc1f157ad8b5a292eccc4e80bd41bb89f51ee0363ffba8a1f7"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeCombat.c",
+    "line": 181,
+    "text": "DamageReceiverDetached=true;",
+    "memberSha256": "2132ab201f94fabc1f157ad8b5a292eccc4e80bd41bb89f51ee0363ffba8a1f7"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeCombat.c",
+    "line": 182,
+    "text": "if(!dBodyIsSet(Body.DamageReceiver))return;",
+    "memberSha256": "2132ab201f94fabc1f157ad8b5a292eccc4e80bd41bb89f51ee0363ffba8a1f7"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeCombat.c",
+    "line": 183,
+    "text": "dBodySetInteractionLayer(Body.DamageReceiver,PhxInteractionLayers.NOCOLLISION);",
+    "memberSha256": "2132ab201f94fabc1f157ad8b5a292eccc4e80bd41bb89f51ee0363ffba8a1f7"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeCombat.c",
+    "line": 184,
+    "text": "for(int geom=0;geom<dBodyGetNumGeoms(Body.DamageReceiver);geom++)dBodySetGeomInteractionLayer(Body.DamageReceiver,geom,PhxInteractionLayers.NOCOLLISION);",
+    "memberSha256": "2132ab201f94fabc1f157ad8b5a292eccc4e80bd41bb89f51ee0363ffba8a1f7"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeCombat.c",
+    "line": 185,
+    "text": "dBodyEnableGravity(Body.DamageReceiver,false);",
+    "memberSha256": "2132ab201f94fabc1f157ad8b5a292eccc4e80bd41bb89f51ee0363ffba8a1f7"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeCombat.c",
+    "line": 186,
+    "text": "dBodyActive(Body.DamageReceiver,ActiveState.INACTIVE);",
+    "memberSha256": "2132ab201f94fabc1f157ad8b5a292eccc4e80bd41bb89f51ee0363ffba8a1f7"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeCombat.c",
+    "line": 194,
+    "text": "Body.NextRequest=Request;FreezeDamageReceiver();return true;",
+    "memberSha256": "2132ab201f94fabc1f157ad8b5a292eccc4e80bd41bb89f51ee0363ffba8a1f7"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeCombat.c",
+    "line": 208,
+    "text": "float elapsed=Body.Leader.NativeSeconds - NativeAt;",
+    "memberSha256": "2132ab201f94fabc1f157ad8b5a292eccc4e80bd41bb89f51ee0363ffba8a1f7"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeCombat.c",
+    "line": 304,
+    "text": "float age=Body.Leader.NativeSeconds - NativeAt;",
+    "memberSha256": "2132ab201f94fabc1f157ad8b5a292eccc4e80bd41bb89f51ee0363ffba8a1f7"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 11,
+    "text": "Animal_DGNativeProbe DamageReceiver;",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 18,
+    "text": "if(DamageReceiver)return DamageReceiver;",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 122,
+    "text": "actor.GroundLeader=part==0;",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 133,
+    "text": "DamageReceiver=Animal_DGNativeProbe.Cast(GetGame().CreateObjectEx(\"Animal_DGNativeDamageReceiver\",point,ECE_LOCAL | ECE_CREATEPHYSICS));",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 134,
+    "text": "if(!DamageReceiver)return;",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 135,
+    "text": "DamageReceiver.GroundBody=this;DamageReceiver.DamageReceiver=true;DamageReceiver.SetAllowDamage(true);",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 136,
+    "text": "DamageReceiver.RuntimeTimingProbe=director.RuntimeTimingProbe;",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 137,
+    "text": "DamageReceiver.SetOrientation(\"180 0 0\");",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 138,
+    "text": "if(director.ResetSimulationPrecision)DamageReceiver.UpdateSimulationPrecision(-1);",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 139,
+    "text": "else if(director.SimulationLod>=0)DamageReceiver.UpdateSimulationPrecision(director.SimulationLod);",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 141,
+    "text": "Agent.Initialize(Leader);Agent.UseNativeRootDelta=true;",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 147,
+    "text": "int requiredBone=Leader.GetBoneIndexByName(name);",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 153,
+    "text": "EntityId=Leader.GetBoneIndexByName(\"EntityPosition\");",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 239,
+    "text": "return anchor+Rotate(Leader.GetBonePositionMS(JointIds[joint])+IdleOffset,heading)+Vector(0,lift,0);",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 292,
+    "text": "string sourceFields=\"\\t\"+Leader.GetBonePositionMS(EntityId)+\"\\t\"+Leader.NativeRequest+\"\\t\"+(Director.Now - RequestedAt);",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 293,
+    "text": "FPrintln(log,Director.Now.ToString()+\"\\t\"+Id+\"\\t\"+stage+\"\\t\"+phase+\"\\t\"+joint+\"\\t\"+anchor+\"\\t\"+heading+\"\\t\"+raw+\"\\t\"+previous+\"\\t\"+target+\"\\t\"+proposedLift+\"\\t\"+Lift+\"\\t\"+Radii[joint]+\"\\t\"+floorFound+\"\\t\"+floorPoint+\"\\t\"+floorNormal+\"\\t\"+floorType+\"\\t\"+collisionType+\"\\t\"+loggedHit+\"\\t\"+loggedNormal+\"\\t\"+loggedFraction+\"\\t\"+Request+\"\\t\"+Leader.NativeSeconds+\"\\t\"+Leader.AnimUpdates+\"\\t\"+ContactFailures+\"\\t\"+previousFloorFound+\"\\t\"+previousFloorPoint+\"\\t\"+previousFloorNormal+sourceFields);",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 364,
+    "text": "for(int j=0;j<JointIds.Count();j++)raw.Insert(anchor+Rotate(Leader.GetBonePositionMS(JointIds[j])+IdleOffset,heading));",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 796,
+    "text": "vector residue=Leader.GetBonePositionMS(EntityId);residue[1]=0;",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 808,
+    "text": "Agent.NativeRootDelta=vector.Zero;",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 809,
+    "text": "if(Request!=0 && available)Agent.NativeRootDelta=delta;",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeGround.c",
+    "line": 1248,
+    "text": "if(body.DamageReceiver)SightExclusions.Insert(body.DamageReceiver);",
+    "memberSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeTraversal.c",
+    "line": 115,
+    "text": "string old=Phase;Phase=phase;PhaseAt=Now();NativePhaseAt=Body.Leader.NativeSeconds;MotionElapsed=0;BlockedAt=-1;",
+    "memberSha256": "71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeTraversal.c",
+    "line": 125,
+    "text": "row+=\"\\t\"+Body.Leader.NativeSeconds+\"\\t\"+GoalRevision+\"\\t\"+ActiveRevision+\"\\t\"+PendingGoal;",
+    "memberSha256": "71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeTraversal.c",
+    "line": 159,
+    "text": "goalRow+=\"\\t\"+Body.Leader.NativeSeconds+\"\\t\"+GoalRevision+\"\\t\"+ActiveRevision+\"\\t\"+PendingGoal;",
+    "memberSha256": "71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeTraversal.c",
+    "line": 1082,
+    "text": "EndpointError=vector.Distance(Body.Leader.GetBonePositionMS(Body.EntityId),Clip.rootEnd);",
+    "memberSha256": "71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBNativeTraversal.c",
+    "line": 1276,
+    "text": "float nativeAge=Body.Leader.NativeSeconds - NativePhaseAt;",
+    "memberSha256": "71d4a73d4cf89334320236bdb1365f416436cb3cdb15ab959613d4d2916e9872"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGBPerception.c",
+    "line": 74,
+    "text": "vector animated=agent.Host.GetBonePositionWS(agent.SightHeadId);",
+    "memberSha256": "811ad7ab1431d7961624a8b018b0105aca983fcbc380199bd96ddcdc825ea72c"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 6,
+    "text": "float NativeSeconds;",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 8,
+    "text": "vector NativeRootDelta;",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 9,
+    "text": "float NativeRootDistance;",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 10,
+    "text": "bool NativeRootRead;",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 14,
+    "text": "bool GroundLeader;",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 15,
+    "text": "bool DamageReceiver;",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 30,
+    "text": "if((GroundLeader || DamageReceiver) && GroundBody && GroundBody.Combat)",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 39,
+    "text": "if(DamageReceiver && GroundBody && GroundBody.Combat)GroundBody.Combat.QueueDeath();",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 44,
+    "text": "Retiring=true;GroundBody=null;GroundLeader=false;PreviewRequest=0;ApplyRootMotion=false;",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 76,
+    "text": "if(DamageReceiver && !IsAlive())return false;",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 86,
+    "text": "class Animal_DGNativeDamageReceiverType: Animal_DGNativeProbeType {}",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 87,
+    "text": "class Animal_DGNativeDamageReceiver: Animal_DGNativeProbe",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 96,
+    "text": "int bone=GetBoneIndexByName(\"spine2\");",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 97,
+    "text": "if(bone!=-1)return GetBonePositionMS(bone);",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 145,
+    "text": "Owner.AnimUpdates++;Owner.AnimationDtSum+=pDt;",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 175,
+    "text": "Owner.NativeSeconds=Age;",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 180,
+    "text": "if(RequestId>=0)PreAnim_SetInt(RequestId,request);",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 181,
+    "text": "if(ReleaseId>=0)PreAnim_SetBool(ReleaseId,released);",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 182,
+    "text": "if(LandingId>=0)PreAnim_SetBool(LandingId,landed);",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 205,
+    "text": "if(Owner)Owner.PhysicsUpdates++;",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 207,
+    "text": "bool available=PrePhys_GetTranslation(delta);",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 210,
+    "text": "Owner.NativeRootRead=available;",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 211,
+    "text": "Owner.NativeRootDelta=delta;",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 212,
+    "text": "if(available)Owner.NativeRootDistance+=delta.Length();",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_lab_inputs",
+    "member": "Scripts/4_World/DGNativeProbe.c",
+    "line": 216,
+    "text": "if(Owner.GroundLeader)Owner.GroundBody.Drive(pDt,delta,available);",
+    "memberSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
+  },
+  {
+    "mod": "dg_subset_integration",
+    "member": "Scripts/4_World/DGSubsetIntegration.c",
+    "line": 22,
+    "text": "actor.GroundLeader=part==0;",
+    "memberSha256": "f7c0db0147030612b48a485fbb8e2e0a54ec5de371c9a66410c99e44cc182d98"
+  },
+  {
+    "mod": "dg_subset_integration",
+    "member": "Scripts/4_World/DGSubsetIntegration.c",
+    "line": 33,
+    "text": "DamageReceiver=Animal_DGNativeProbe.Cast(GetGame().CreateObjectEx(\"Animal_DGNativeDamageReceiver\",point,ECE_LOCAL | ECE_CREATEPHYSICS));",
+    "memberSha256": "f7c0db0147030612b48a485fbb8e2e0a54ec5de371c9a66410c99e44cc182d98"
+  },
+  {
+    "mod": "dg_subset_integration",
+    "member": "Scripts/4_World/DGSubsetIntegration.c",
+    "line": 34,
+    "text": "if(!DamageReceiver)return;",
+    "memberSha256": "f7c0db0147030612b48a485fbb8e2e0a54ec5de371c9a66410c99e44cc182d98"
+  },
+  {
+    "mod": "dg_subset_integration",
+    "member": "Scripts/4_World/DGSubsetIntegration.c",
+    "line": 35,
+    "text": "DamageReceiver.GroundBody=this;DamageReceiver.DamageReceiver=true;DamageReceiver.SetAllowDamage(true);",
+    "memberSha256": "f7c0db0147030612b48a485fbb8e2e0a54ec5de371c9a66410c99e44cc182d98"
+  },
+  {
+    "mod": "dg_subset_integration",
+    "member": "Scripts/4_World/DGSubsetIntegration.c",
+    "line": 36,
+    "text": "DamageReceiver.RuntimeTimingProbe=director.RuntimeTimingProbe;",
+    "memberSha256": "f7c0db0147030612b48a485fbb8e2e0a54ec5de371c9a66410c99e44cc182d98"
+  },
+  {
+    "mod": "dg_subset_integration",
+    "member": "Scripts/4_World/DGSubsetIntegration.c",
+    "line": 37,
+    "text": "DamageReceiver.SetOrientation(\"180 0 0\");",
+    "memberSha256": "f7c0db0147030612b48a485fbb8e2e0a54ec5de371c9a66410c99e44cc182d98"
+  },
+  {
+    "mod": "dg_subset_integration",
+    "member": "Scripts/4_World/DGSubsetIntegration.c",
+    "line": 38,
+    "text": "if(director.ResetSimulationPrecision)DamageReceiver.UpdateSimulationPrecision(-1);",
+    "memberSha256": "f7c0db0147030612b48a485fbb8e2e0a54ec5de371c9a66410c99e44cc182d98"
+  },
+  {
+    "mod": "dg_subset_integration",
+    "member": "Scripts/4_World/DGSubsetIntegration.c",
+    "line": 39,
+    "text": "else if(director.SimulationLod>=0)DamageReceiver.UpdateSimulationPrecision(director.SimulationLod);",
+    "memberSha256": "f7c0db0147030612b48a485fbb8e2e0a54ec5de371c9a66410c99e44cc182d98"
+  },
+  {
+    "mod": "dg_subset_integration",
+    "member": "Scripts/4_World/DGSubsetIntegration.c",
+    "line": 41,
+    "text": "Agent.Initialize(Leader);Agent.UseNativeRootDelta=true;",
+    "memberSha256": "f7c0db0147030612b48a485fbb8e2e0a54ec5de371c9a66410c99e44cc182d98"
+  },
+  {
+    "mod": "dg_subset_integration",
+    "member": "Scripts/4_World/DGSubsetIntegration.c",
+    "line": 47,
+    "text": "int requiredBone=Leader.GetBoneIndexByName(name);",
+    "memberSha256": "f7c0db0147030612b48a485fbb8e2e0a54ec5de371c9a66410c99e44cc182d98"
+  },
+  {
+    "mod": "dg_subset_integration",
+    "member": "Scripts/4_World/DGSubsetIntegration.c",
+    "line": 53,
+    "text": "EntityId=Leader.GetBoneIndexByName(\"EntityPosition\");",
+    "memberSha256": "f7c0db0147030612b48a485fbb8e2e0a54ec5de371c9a66410c99e44cc182d98"
+  },
+  {
+    "mod": "dg_subset_integration",
+    "member": "Scripts/4_World/DGSubsetMotionContracts.c",
+    "line": 38,
+    "text": "vector hips=Body.Leader.GetBonePositionMS(Body.JointIds[0]);",
+    "memberSha256": "9c2e4ef49539d2abdb400b0bd9504d1fe8e8da0e5619c8e101aed071988188cd"
+  },
+  {
+    "mod": "dg_subset_integration",
+    "member": "Scripts/4_World/DGSubsetMotionContracts.c",
+    "line": 39,
+    "text": "vector head=Body.Leader.GetBonePositionMS(Body.JointIds[1]);",
+    "memberSha256": "9c2e4ef49539d2abdb400b0bd9504d1fe8e8da0e5619c8e101aed071988188cd"
+  },
+  {
+    "mod": "dg_subset_integration",
+    "member": "Scripts/4_World/DGSubsetMotionContracts.c",
+    "line": 40,
+    "text": "vector leftFoot=Body.Leader.GetBonePositionMS(Body.JointIds[2]);",
+    "memberSha256": "9c2e4ef49539d2abdb400b0bd9504d1fe8e8da0e5619c8e101aed071988188cd"
+  },
+  {
+    "mod": "dg_subset_integration",
+    "member": "Scripts/4_World/DGSubsetMotionContracts.c",
+    "line": 41,
+    "text": "vector rightFoot=Body.Leader.GetBonePositionMS(Body.JointIds[3]);",
+    "memberSha256": "9c2e4ef49539d2abdb400b0bd9504d1fe8e8da0e5619c8e101aed071988188cd"
+  },
+  {
+    "mod": "dg_subset_integration",
+    "member": "Scripts/4_World/DGSubsetMotionContracts.c",
+    "line": 49,
+    "text": "row+=\"\\t\"+Body.Leader.NativeSeconds+\"\\t\"+Body.Leader.NativeRequest+\"\\t\"+Phase+\"\\t\"+Area+\"\\t\"+EgressGoal;",
+    "memberSha256": "9c2e4ef49539d2abdb400b0bd9504d1fe8e8da0e5619c8e101aed071988188cd"
+  },
+  {
+    "mod": "dg_subset_integration",
+    "member": "Scripts/4_World/DGSubsetStateContract.c",
+    "line": 74,
+    "text": "row+=\"\\t\"+NativeCurveEnded+\"\\t\"+EndpointError+\"\\t\"+ExitError+\"\\t\"+Body.Leader.NativeSeconds+\"\\t\"+link;",
+    "memberSha256": "ed86786b12284f45ac9de2b814d10711c61f1fc572ac9fb9b1bc0b2cede485d7"
+  }
+]
