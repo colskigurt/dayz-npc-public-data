@@ -1,0 +1,72 @@
+Selection: staging manifest projected fields and own preparation source excerpt; not complete raw evidence or original assets.
+Source manifest SHA256: 175250a412947f00fe87edfe2786339d1fbbcaac66e6b44ec99af34ac9190bce
+Preparation source SHA256: c9d5e0f5e1928c3602e6314deba04c85a4f22c005fd144bb0b5889c3f7eb934e
+
+
+prepare-four-fullclips.py lines 37-61
+37:         hashes[source_id] = sha(path)
+38:         assert hashes[source_id] == known[source_id], source_id
+39:         text = path.read_text(encoding='utf-8')
+40:         headers = {key: re.search(r'#' + key + r'\s+(\S+)', text).group(1)
+41:                    for key in ('fps', 'numFrames')}
+42:         assert headers['fps'] == '60'
+43:         for part in plan['parts']:
+44:             index = part['part']
+45:             keep = {name.lower() for name in part['retainedNames']}
+46:             # prune independently checks every retained node's parent and own
+47:             # key tokens against this original clip, not the five-part digest.
+48:             output, digest, count = subset.prune(text, keep)
+49:             assert count == part['nativeBones']
+50:             assert all(re.search(r'#' + key + r'\s+(\S+)', output).group(1) == value
+51:                        for key, value in headers.items())
+52:             name = f'nf_palette64_four_p{index}_{label}.txa'
+53:             if label == 'run':
+54:                 assert digest == part['retainedRunKeyTokenSha256']
+55:                 existing = HERE / 'inputs' / name
+56:                 assert existing.read_text(encoding='utf-8') == output
+57:                 assert sha(existing) == plan['files'][name]['sha256']
+58:             else:
+59:                 outputs[name] = output
+60:             cases.append({'part': index, 'clipId': label, 'nativeBones': count,
+61:                           'retainedKeyTokenSha256': digest, 'headers': headers,
+
+prepare-four-fullclips.py lines 63-83
+63:     assert len(outputs) == 52 and len(cases) == 56
+64:     project = (HERE / 'four-run-resource-only.gproj').read_text(encoding='utf-8')
+65:     pattern = r'Name "Palette64 four Run" Directory "[^"]+/inputs/"'
+66:     assert len(re.findall(pattern, project)) == 1
+67:     project = re.sub(pattern, lambda _: 'Name "Palette64 four full clips" Directory "' + dest.as_posix() + '/"', project)
+68:     assert 'EntryPoint "CreateGame"' not in project and 'EntryPoint "CreateMission"' not in project
+69:     # Partial staging may be resumed only if every existing clip is identical.
+70:     if dest.exists():
+71:         assert {p.name for p in dest.glob('*.txa')} == set(outputs)
+72:         assert all((dest / name).read_text(encoding='utf-8') == output for name, output in outputs.items())
+73:     else:
+74:         dest.mkdir()
+75:     for name, output in outputs.items():
+76:         if not (dest / name).exists():
+77:             with (dest / name).open('x', encoding='utf-8', newline='\n') as stream:
+78:                 stream.write(output)
+79:     plugin = dest / 'scripts/editor/Workbench/NFPaletteFourFullImport.c'
+80:     plugin.parent.mkdir(parents=True, exist_ok=True)
+81:     lines = ['if(manager.RegisterResourceFile("' + (dest / name).as_posix() + '",true))accepted++;else Print("NF_FOUR_FULL_FAILED ' + name + '");' for name in outputs]
+82:     plugin.write_text('[WorkbenchPluginAttribute("NF four full clip import", "Compile52isolated clips; reuse4Run", "", "", {"ResourceManager"})]\nclass NFPaletteFourFullImport: WorkbenchPlugin { override void Run() { ResourceManager manager=Workbench.GetModule(ResourceManager);if(!manager){Print("NF_FOUR_FULL_FAILED no_manager");return;}int accepted;\n' + '\n'.join(lines) + '\nPrint("NF_FOUR_FULL_DONE accepted="+accepted);}}\n', encoding='utf-8')
+83:     (dest / 'four-full-resource-only.gproj').write_text(project, encoding='utf-8')
+
+Source inputs: {
+  "root_motion/air.txa": "2dcae878f86c1abce41af7e3313d5b40deb6a04ef9b8c24c8ac22461b97e942d",
+  "combat_inputs/attack_left.txa": "85d0a577242c78cb64076ec7f8dd29e41dd48d21f134514308f36ec5d62a1989",
+  "combat_inputs/attack_run.txa": "7c7619b38177cf6212edf142dd72ef64ce452ae75f1e82c4e0fc61359b6ac627",
+  "root_motion/climb.txa": "8b5e8ad4af3c5f54de07e4cc06cf2498b3fca3eb11865de87a047a66c85a62b7",
+  "root_motion/climb_low.txa": "9edbd38b75509d1bfb49c4a578c2796ea290bd048a81ac498bf21f96fe8fd94c",
+  "combat_inputs/death_bullet_chest_front.txa": "e0b80efe8164fa5f345f072970eb0e7d99e1f47fcfe3e94c6289624ec638cc4e",
+  "combat_inputs/death_fall_front.txa": "6bfef8e2efa26a65c293c79c2ca03d30d2fa443948556b0334d3358958e42375",
+  "root_motion/drop.txa": "89e1be7747ec4857421207a3a42ea614493a898aecc099a0a1a156cd01f73a1b",
+  "root_motion/fall_fast.txa": "359ff15a7853e13a0ee9986ed19c28006978d784a912f5688ba64199d6715dc0",
+  "combat_inputs/hit_left_torso.txa": "339719662ff27ed96e602bb0254d293fec71e753f6509ecbeea9de63eb8a800c",
+  "root_motion/idle.txa": "de0465b108c8103ce84e520b0d135fdf84c779f0b21c39b0c654dee5c3224330",
+  "root_motion/land.txa": "2cf4498937a9d2d72a58c4a72c495ab60cb835eeffd3dbc2224d28d386c2f1ab",
+  "root_motion/run.txa": "d5a30b58affb0dcabb2ffbbb2408268b467672c6f64537e2f113b0e150c959b9",
+  "root_motion/walk.txa": "3eac82d068cea8e19763a05069fd04fd2936888791128fc574b324c93ff6aae6"
+}
+All retained-token proof is static; no visual or performance acceptance.
