@@ -1,5 +1,7 @@
 # DayZ NPC 현재 상태 — 2026-11-06
 
+새 사전검토: [추가 의심점·GitHub군집코드](reports/operations/preimplementation-review-20261106.md) — 중첩순위순회/계획예산범위/정적경계중복/군집dt. 구현·새시험 없음.
+
 추가 검토: [충돌 외 비용 후보](reports/operations/noncollision-cost-review-20261106.md) — 경로계획·320파트표시동기화·사망후반복설정·진단출력. 함수별CPU순위미확정.
 
 추가 진단: [밀집 접촉·시체 통행](reports/operations/collision-corpse-review-20261106.md) — 시체가 직접 충돌 대상으로 기록된754행 확인. 사망체의 생존용접촉솔브는정지하며정적시체충돌은남음. CPU비중은미분리.

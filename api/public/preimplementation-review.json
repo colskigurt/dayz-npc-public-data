@@ -1,0 +1,172 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-06T21:49:23.996348+09:00",
+  "sourceRunId": "ANIM-playable-sixtyfour1",
+  "buildId": "5A0EED07E1F75FB347085387AA9EDBAC70659391BD45B42153071DFDB7500A0E",
+  "verificationStatus": "preimplementation-log-source-external-review-not-cpu-attribution-or-adopted-design",
+  "metrics": {
+    "newStaticCodeFindings": [
+      "Pursuit.FrontEligible->ContactUsable(peer)->FrontRankEligible(peer) nested whole-body scans",
+      "Pursuit budget4per0.1s does not cap separate GroundAgent planning entry",
+      "StaticMap.Apply recalculates object Bounds per actor; up to8 actors per0.1s update",
+      "Crowd.Displace can reset PlanAt/NextSurfacePlan at most once per0.5s per actor"
+    ],
+    "staticDiscoveredRecords": 35,
+    "corpseStaticRecords": 33,
+    "aliveFrames": 4214,
+    "aliveFramesOver50ms": 525,
+    "aliveOver50msPercent": 12.458471760797343,
+    "observedMissionElapsedSeconds": 136.72,
+    "crowdClampedDeltaSumSeconds": 129.522,
+    "crowdDeltaCapDifferenceSeconds": 7.198,
+    "animationClockConclusion": "none; this is crowd displacement dt only",
+    "performanceGainMeasured": false
+  },
+  "blockers": [
+    "New suspect CPU self-time unknown",
+    "No DayZ adoption/performance claim from other engines",
+    "Preserve current pursuit/fall recovery; no blanket cache or physics removal"
+  ],
+  "evidenceReferences": [
+    "reports/operations/preimplementation-review-20261106.md"
+  ],
+  "externalSources": [
+    {
+      "repository": "recastnavigation/recastnavigation",
+      "commit": "9f4ce64458dfae86e1239c525ddc219c4e9e06f1",
+      "files": [
+        {
+          "path": "DetourCrowd/Source/DetourCrowd.cpp",
+          "bytes": 38144,
+          "sha256": "c0d5164dabc3e68ee25ba479d13ae7f77066ccf7bfb461963d16a144caaf3ac5",
+          "url": "https://github.com/recastnavigation/recastnavigation/blob/9f4ce64458dfae86e1239c525ddc219c4e9e06f1/DetourCrowd/Source/DetourCrowd.cpp",
+          "symbolLines": {
+            "MAX_ITERS_PER_UPDATE": [
+              48,
+              782
+            ],
+            "finalizeSlicedFindPathPartial": [
+              713
+            ],
+            "DT_CROWDAGENT_MAX_NEIGHBOURS": [
+              1092
+            ]
+          }
+        },
+        {
+          "path": "DetourCrowd/Include/DetourCrowd.h",
+          "bytes": 18147,
+          "sha256": "66053c29eddcdb8794569e4f60d0a3d2102740f403822d451d63a1b336cf4855",
+          "url": "https://github.com/recastnavigation/recastnavigation/blob/9f4ce64458dfae86e1239c525ddc219c4e9e06f1/DetourCrowd/Include/DetourCrowd.h",
+          "symbolLines": {
+            "DT_CROWDAGENT_MAX_NEIGHBOURS": [
+              32,
+              137
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "repository": "snape/RVO2",
+      "commit": "6b4eb00a93a9f3abf723235ff006d6aad3e2f212",
+      "files": [
+        {
+          "path": "src/Agent.cc",
+          "bytes": 23640,
+          "sha256": "3febd8325b485bf866e7567f49767ada74eec7041c6973436dc21d43f16e8548",
+          "url": "https://github.com/snape/RVO2/blob/6b4eb00a93a9f3abf723235ff006d6aad3e2f212/src/Agent.cc",
+          "symbolLines": {
+            "maxNeighbors_": [
+              247,
+              263,
+              624,
+              637
+            ],
+            "computeNeighbors": [
+              256
+            ]
+          }
+        },
+        {
+          "path": "src/KdTree.cc",
+          "bytes": 16694,
+          "sha256": "b2ebe50f5800fde8f7901d6b889e25a51e5ca34c9dbc5cc6e523636ec14e68cf",
+          "url": "https://github.com/snape/RVO2/blob/6b4eb00a93a9f3abf723235ff006d6aad3e2f212/src/KdTree.cc",
+          "symbolLines": {}
+        }
+      ]
+    },
+    {
+      "repository": "innocentmiau/MiHordeTraffic",
+      "commit": "3757971794a71a51e903a7584a5c2c9cdf2bee16",
+      "files": [
+        {
+          "path": "Runtime/Pathing/HordePathScheduler.cs",
+          "bytes": 25343,
+          "sha256": "95d1a156d70838e7c655edf3573d3b61764414561a85230358b6a9e717b8a6d4",
+          "url": "https://github.com/innocentmiau/MiHordeTraffic/blob/3757971794a71a51e903a7584a5c2c9cdf2bee16/Runtime/Pathing/HordePathScheduler.cs",
+          "symbolLines": {
+            "repathsPerFrame": [
+              72,
+              251,
+              265,
+              405,
+              456,
+              481
+            ],
+            "guaranteedInterval": [
+              90,
+              256,
+              270,
+              502
+            ]
+          }
+        },
+        {
+          "path": "Runtime/Movement/HordeFlowMoveJob.cs",
+          "bytes": 51192,
+          "sha256": "2dcb2db6d4b19418bdbdc147101af4d9a2cf40f1af9f0921e7bb2b101a2707b5",
+          "url": "https://github.com/innocentmiau/MiHordeTraffic/blob/3757971794a71a51e903a7584a5c2c9cdf2bee16/Runtime/Movement/HordeFlowMoveJob.cs",
+          "symbolLines": {
+            "SettledDriveScale": [
+              165,
+              174,
+              623,
+              720
+            ]
+          }
+        },
+        {
+          "path": "Runtime/Separation/SeparationPushJob.cs",
+          "bytes": 14188,
+          "sha256": "c8b347e53ac74308c70158c6db441f211e44bb3d1609fb16cc96d8af9811a652",
+          "url": "https://github.com/innocentmiau/MiHordeTraffic/blob/3757971794a71a51e903a7584a5c2c9cdf2bee16/Runtime/Separation/SeparationPushJob.cs",
+          "symbolLines": {
+            "SettledHoldTicks": [
+              83,
+              244,
+              250
+            ],
+            "OverlapTolerance": [
+              76,
+              182
+            ]
+          }
+        },
+        {
+          "path": "README.md",
+          "bytes": 12846,
+          "sha256": "0a77ab490d2ca8bfa7577d8342fe66020614b87e1e37e369ab369482939d7860",
+          "url": "https://github.com/innocentmiau/MiHordeTraffic/blob/3757971794a71a51e903a7584a5c2c9cdf2bee16/README.md",
+          "symbolLines": {
+            "One walkable surface per column": [
+              264
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "performanceAccepted": false
+}
