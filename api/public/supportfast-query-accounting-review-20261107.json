@@ -1,0 +1,277 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceRunId": "supportfast262-cost64-query-accounting-review",
+  "generatedAt": "2026-11-06T23:35:19.813174+00:00",
+  "newGameExecutions": 0,
+  "independentCostPairsAdded": 0,
+  "runs": [
+    {
+      "runId": "ANIM-sf262b-cost-1-control",
+      "seconds": 15.737000000000002,
+      "solves": 45220,
+      "solvesPerGameSecond": 2873.4828747537645,
+      "countedFootRays": 452200,
+      "countedJointSweeps": 180827,
+      "unreportedSupportSweepsBounds": [
+        0,
+        0
+      ],
+      "principalQueryFamilyCountsBounds": [
+        633027,
+        633027
+      ],
+      "principalQueryFamilyPerGameSecondBounds": [
+        40225.39238736735,
+        40225.39238736735
+      ],
+      "footRayAccountingPassed": true,
+      "notTotalEngineOrScriptQueries": true
+    },
+    {
+      "runId": "ANIM-sf262b-cost-2-candidate",
+      "seconds": 15.525300000000001,
+      "solves": 45597,
+      "solvesPerGameSecond": 2936.9480782980036,
+      "countedFootRays": 186338,
+      "countedJointSweeps": 182368,
+      "unreportedSupportSweepsBounds": [
+        67408,
+        71183
+      ],
+      "principalQueryFamilyCountsBounds": [
+        436114,
+        439889
+      ],
+      "principalQueryFamilyPerGameSecondBounds": [
+        28090.5360927003,
+        28333.687593798506
+      ],
+      "footRayAccountingPassed": true,
+      "notTotalEngineOrScriptQueries": true
+    },
+    {
+      "runId": "ANIM-sf262b-cost-3-candidate",
+      "seconds": 15.717100000000002,
+      "solves": 45700,
+      "solvesPerGameSecond": 2907.661082515222,
+      "countedFootRays": 219612,
+      "countedJointSweeps": 182709,
+      "unreportedSupportSweepsBounds": [
+        59347,
+        62818
+      ],
+      "principalQueryFamilyCountsBounds": [
+        461668,
+        465139
+      ],
+      "principalQueryFamilyPerGameSecondBounds": [
+        29373.61218036406,
+        29594.454447703454
+      ],
+      "footRayAccountingPassed": true,
+      "notTotalEngineOrScriptQueries": true
+    }
+  ],
+  "firstPairPrincipalQueryFamilyCountRateChangeBoundsPct": [
+    -30.16715456199741,
+    -29.562681897674647
+  ],
+  "historicalMethodTests": [
+    {
+      "sample": 0,
+      "area": "ground",
+      "fastUsedPerSolve": 0.0,
+      "differencePercent": [
+        5.271325623714329,
+        1.3774652085358774
+      ]
+    },
+    {
+      "sample": 1,
+      "area": "ground",
+      "fastUsedPerSolve": 0.0,
+      "differencePercent": [
+        4.862379100217207,
+        6.637833893522149
+      ]
+    },
+    {
+      "sample": 2,
+      "area": "ground",
+      "fastUsedPerSolve": 0.0,
+      "differencePercent": [
+        32.64504245425171,
+        4.147654085952479
+      ]
+    },
+    {
+      "sample": 3,
+      "area": "low",
+      "fastUsedPerSolve": 1.0,
+      "differencePercent": [
+        -1.060464763226654,
+        -4.515370109787254
+      ]
+    },
+    {
+      "sample": 4,
+      "area": "high",
+      "fastUsedPerSolve": 2.0,
+      "differencePercent": [
+        -20.505894385590118,
+        -21.975076270069582
+      ]
+    },
+    {
+      "sample": 5,
+      "area": "high",
+      "fastUsedPerSolve": 2.0,
+      "differencePercent": [
+        -21.44952696866862,
+        -22.136709230176166
+      ]
+    },
+    {
+      "sample": 6,
+      "area": "low",
+      "fastUsedPerSolve": 1.0,
+      "differencePercent": [
+        -9.239274250442264,
+        -5.868002662485273
+      ]
+    },
+    {
+      "sample": 7,
+      "area": "low",
+      "fastUsedPerSolve": 1.0,
+      "differencePercent": [
+        -16.22273895442149,
+        -10.047949926541078
+      ]
+    }
+  ],
+  "conclusions": [
+    "Foot ray identity checked against actual solve deltas in every analyzed run",
+    "Support sweeps were not sampled; only source-backed bounds recoverable from used/attempts",
+    "Fewer principal queries do not prove less CPU; different query shape and state distribution remain",
+    "Old frozen tests already show low/high/ground-dependent effects; not new independent evidence or current-engine performance",
+    "Do not widen fast gate or remove safety sweep from this result"
+  ],
+  "evidenceReferences": [
+    {
+      "fileName": "results.json",
+      "sha256": "de254db86f58d42c75df1525aacff72d374df7d61a09f385f0269c6225d5ebb6"
+    },
+    {
+      "fileName": "analysis-1.json",
+      "sha256": "cec440e4d691f83697a51a3f8a313b57b6da9c0fb6cd3148fa4726c041effc5f"
+    },
+    {
+      "fileName": "analysis-2.json",
+      "sha256": "c3c4b034edcfd78917bfa094007c22ccabfae719f177b703c0324a399b0c11c1"
+    },
+    {
+      "fileName": "analysis-3.json",
+      "sha256": "23482b18f6968ab58113314a32affdfacb9ab4b310ac06ca3cda1a67ea60c954"
+    },
+    {
+      "fileName": "DGBNativeGround.c",
+      "sha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+    },
+    {
+      "report": "reports/operations/supportfast-query-accounting-review-20261107.md",
+      "localCheckpointSha256": "96522c915313918858cdbbed14a111b7bbda8420ec33c30430c38774b8ff84a5"
+    }
+  ],
+  "buildId": "1419E96D11A984951CDD48B926D7E6604413F1B9D74729D8FE55118BAF86E2BC",
+  "verificationStatus": "OFFLINE_ACCOUNTING_VERIFIED_PERFORMANCE_NOT_ACCEPTED",
+  "metrics": {
+    "firstPairPrincipalQueryCountRateChangeBoundsPercent": [
+      -30.16715456199741,
+      -29.562681897674647
+    ],
+    "runs": [
+      {
+        "runId": "ANIM-sf262b-cost-1-control",
+        "seconds": 15.737000000000002,
+        "solves": 45220,
+        "solvesPerGameSecond": 2873.4828747537645,
+        "countedFootRays": 452200,
+        "countedJointSweeps": 180827,
+        "unreportedSupportSweepsBounds": [
+          0,
+          0
+        ],
+        "principalQueryFamilyCountsBounds": [
+          633027,
+          633027
+        ],
+        "principalQueryFamilyPerGameSecondBounds": [
+          40225.39238736735,
+          40225.39238736735
+        ],
+        "footRayAccountingPassed": true,
+        "notTotalEngineOrScriptQueries": true
+      },
+      {
+        "runId": "ANIM-sf262b-cost-2-candidate",
+        "seconds": 15.525300000000001,
+        "solves": 45597,
+        "solvesPerGameSecond": 2936.9480782980036,
+        "countedFootRays": 186338,
+        "countedJointSweeps": 182368,
+        "unreportedSupportSweepsBounds": [
+          67408,
+          71183
+        ],
+        "principalQueryFamilyCountsBounds": [
+          436114,
+          439889
+        ],
+        "principalQueryFamilyPerGameSecondBounds": [
+          28090.5360927003,
+          28333.687593798506
+        ],
+        "footRayAccountingPassed": true,
+        "notTotalEngineOrScriptQueries": true
+      },
+      {
+        "runId": "ANIM-sf262b-cost-3-candidate",
+        "seconds": 15.717100000000002,
+        "solves": 45700,
+        "solvesPerGameSecond": 2907.661082515222,
+        "countedFootRays": 219612,
+        "countedJointSweeps": 182709,
+        "unreportedSupportSweepsBounds": [
+          59347,
+          62818
+        ],
+        "principalQueryFamilyCountsBounds": [
+          461668,
+          465139
+        ],
+        "principalQueryFamilyPerGameSecondBounds": [
+          29373.61218036406,
+          29594.454447703454
+        ],
+        "footRayAccountingPassed": true,
+        "notTotalEngineOrScriptQueries": true
+      }
+    ]
+  },
+  "blockers": [
+    "Support sweeps not directly logged; only source-backed count bounds",
+    "No exclusive query CPU self-time",
+    "Three paired runs incomplete; external load not controlled"
+  ],
+  "conditions": {
+    "newExecutions": 0,
+    "independentRepeatsAdded": 0,
+    "originalRunIds": [
+      "ANIM-sf262b-cost-1-control",
+      "ANIM-sf262b-cost-2-candidate",
+      "ANIM-sf262b-cost-3-candidate"
+    ],
+    "notAllEngineQueries": true
+  }
+}
