@@ -1,7 +1,7 @@
 # DayZ NPC 현재 상태
 
-실제Enforce180입력세트에서 접촉계수·힘·속도·변위제안 불일치0. 셀64생성/3728재사용. 실제NPC·CPU·화면 미검증,서버종료−1은정상종료미수용.
+셀풀 ON8개체 자동시험:최종유효8/8·전체이정표8/8·낙하복귀8/8,상태계약오류0. 생성8/재사용18797. 단일기능통과이며CPU/화면미측정.
 
-[상세](reports/operations/grid-cell-pool-server-method-20261107.md) · [JSON](api/public/grid-cell-pool-server-method.json) · [근거](evidence/grid-cell-pool-server-method-20261107.txt)
+[상세](reports/operations/grid-cell-pool-eight-20261107.md) · [JSON](api/public/grid-cell-pool-eight.json) · [근거](evidence/grid-cell-pool-eight-20261107.txt)
 
-다음은 기존8개체기능하네스,이후유망할때64비용screen. 정상밀침·낙하·착지·재추적보존. 이번성공은전체기능/성능성공이아니다. 기본OFF격리후보이며운영미반영. 전체20ms목표미완료.
+다음64비용쌍은준비만했고미실행. 후보기본OFF·운영미반영. 기존receiver방향생략미수용유지. 전체20ms·밀집기능·시각최종수용미완료.

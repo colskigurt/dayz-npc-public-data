@@ -1,7 +1,7 @@
-# 실제서버 메서드검증과 다음gate
+# 다음단일작업:64비용screen
 
-실제Enforce180입력세트에서 접촉계수·힘·속도·변위제안 불일치0. 셀64생성/3728재사용. 실제NPC·CPU·화면 미검증,서버종료−1은정상종료미수용.
+셀풀 ON8개체 자동시험:최종유효8/8·전체이정표8/8·낙하복귀8/8,상태계약오류0. 생성8/재사용18797. 단일기능통과이며CPU/화면미측정.
 
-[상세](reports/operations/grid-cell-pool-server-method-20261107.md) · [JSON](api/public/grid-cell-pool-server-method.json) · [근거](evidence/grid-cell-pool-server-method-20261107.txt)
+[상세](reports/operations/grid-cell-pool-eight-20261107.md) · [JSON](api/public/grid-cell-pool-eight.json) · [근거](evidence/grid-cell-pool-eight-20261107.txt)
 
-한예약호출의180입력이며180게임프레임/64실제개체회귀가아니다. OpenTraversal=true,플레이어없음. Displace/SolveContacts/포즈/렌더 미실행. 최초미션문법실패와OnUpdate무진입2개는제외하고cleanup을보존했다. OnUpdate문제의원인은미특정. 다음8기능후64비용이득없으면채택금지.
+8개체는5파트비전투시나리오. 전투/피격/사망·64·화면은이번미검증. 서버exit−1로정상종료미수용,클라이언트AltF4후소멸확인. 다음은동일64전투·카메라·미션에서셀풀ON/OFF15초screen,receiver방향생략은양쪽OFF. p95Present/CPUBusy모두5%이득일때반복확대하며단일쌍채택금지. 셀생성수감소는CPU이득아님.
