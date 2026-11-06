@@ -1,0 +1,205 @@
+Selection: aggregate CPU and Present metrics, scene checks and failed capture reason; not full logs or function self-time.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-06T11:00:29.161560+09:00",
+  "sourceRunId": "ANIM-support-cost64-1-first-two",
+  "buildId": "1419E96D11A984951CDD48B926D7E6604413F1B9D74729D8FE55118BAF86E2BC",
+  "verificationStatus": "candidate-single-cost-observation-baseline-cpu-missing-no-pair-acceptance",
+  "metrics": {
+    "completedRuns": 2,
+    "validCpuRuns": 1,
+    "validIndependentPairs": 0,
+    "logicalNpcs": 64,
+    "nativeParts": 320,
+    "cpu": {
+      "scope": "aggregate all-thread process CPU,32s separately from Present15s",
+      "samples": 33,
+      "wallSeconds": 31.9935914,
+      "cpuMs": 27671.875,
+      "cpuMsPerWallSecond": 864.9193100590765,
+      "gameSecondsPerWallSecond": 0.9996408218178344,
+      "nativeSecondsPerWallSecond": 1.0126903102225648,
+      "maximumReadBracketMs": 50.2055,
+      "intervalCpuMsPerWallSecond": {
+        "samples": 32,
+        "p50": 866.4996524315197,
+        "p95": 932.4775137646557,
+        "p99": 950.365941717256,
+        "mean": 865.0122292210528,
+        "maximum": 952.6991910965394
+      }
+    },
+    "candidatePresentMetricsMs": {
+      "MsBetweenPresents": {
+        "samples": 1423,
+        "p50": 9.5962,
+        "p95": 15.095069999999998,
+        "p99": 17.894405999999996,
+        "mean": 10.49930372452565,
+        "maximum": 22.9568
+      },
+      "MsBetweenDisplayChange": {
+        "samples": 1423,
+        "p50": 9.6069,
+        "p95": 15.182989999999997,
+        "p99": 17.937473999999995,
+        "mean": 10.499304638088546,
+        "maximum": 23.0188
+      },
+      "MsCPUBusy": {
+        "samples": 1423,
+        "p50": 9.4379,
+        "p95": 14.947649999999998,
+        "p99": 17.684807999999997,
+        "mean": 10.34266148981026,
+        "maximum": 22.7968
+      },
+      "MsCPUWait": {
+        "samples": 1423,
+        "p50": 0.1529,
+        "p95": 0.19488999999999998,
+        "p99": 0.23746799999999998,
+        "mean": 0.156649191848208,
+        "maximum": 0.3984
+      },
+      "MsGPUBusy": {
+        "samples": 1423,
+        "p50": 2.6124,
+        "p95": 3.1513,
+        "p99": 3.278638,
+        "mean": 2.6856905130007025,
+        "maximum": 4.8338
+      },
+      "MsGPUTime": {
+        "samples": 1423,
+        "p50": 9.6069,
+        "p95": 15.182989999999997,
+        "p99": 17.937473999999995,
+        "mean": 10.499304638088546,
+        "maximum": 23.0188
+      },
+      "MsInPresentAPI": {
+        "samples": 1423,
+        "p50": 0.1529,
+        "p95": 0.19488999999999998,
+        "p99": 0.23746799999999998,
+        "mean": 0.156649191848208,
+        "maximum": 0.3984
+      }
+    },
+    "baselinePresentMetricsMs": {
+      "MsBetweenPresents": {
+        "samples": 1707,
+        "p50": 7.9074,
+        "p95": 12.96452,
+        "p99": 14.283076,
+        "mean": 8.751519976567076,
+        "maximum": 16.8851
+      },
+      "MsBetweenDisplayChange": {
+        "samples": 1707,
+        "p50": 8.2702,
+        "p95": 14.293479999999997,
+        "p99": 16.97729600000001,
+        "mean": 8.751464499121266,
+        "maximum": 19.3962
+      },
+      "MsCPUBusy": {
+        "samples": 1707,
+        "p50": 7.7473,
+        "p95": 12.825939999999997,
+        "p99": 14.137342,
+        "mean": 8.59558008201523,
+        "maximum": 16.7313
+      },
+      "MsCPUWait": {
+        "samples": 1707,
+        "p50": 0.1516,
+        "p95": 0.19097999999999993,
+        "p99": 0.23392600000000016,
+        "mean": 0.1559500292911541,
+        "maximum": 0.591
+      },
+      "MsGPUBusy": {
+        "samples": 1707,
+        "p50": 2.6294,
+        "p95": 3.1425199999999998,
+        "p99": 3.3050720000000005,
+        "mean": 2.6954106619800817,
+        "maximum": 3.6015
+      },
+      "MsGPUTime": {
+        "samples": 1707,
+        "p50": 7.9119,
+        "p95": 12.990169999999994,
+        "p99": 14.318106,
+        "mean": 8.751464499121266,
+        "maximum": 17.0347
+      },
+      "MsInPresentAPI": {
+        "samples": 1707,
+        "p50": 0.1516,
+        "p95": 0.19097999999999993,
+        "p99": 0.23392600000000016,
+        "mean": 0.1559500292911541,
+        "maximum": 0.591
+      }
+    },
+    "candidateScene": {
+      "gameSecondsBracket": [
+        29.853,
+        64.0971
+      ],
+      "minimumLowFraction": 0.546875,
+      "phaseAreaRows": {
+        "FOLLOW/ground": 2568,
+        "FOLLOW/low": 5498,
+        "MOTION/ground": 30,
+        "MOTION/low": 52,
+        "SETTLE/low": 32,
+        "EGRESS/low": 4,
+        "MOTION/air": 8
+      },
+      "counterDeltas": {
+        "contactSolves": 98351,
+        "footRays": 466250,
+        "jointSweeps": 393118
+      },
+      "fastDelta": 129315,
+      "skippedRaysDelta": 517260,
+      "checks": {
+        "lowMajorityEveryFrame": true,
+        "all64PresentAcquiredMoved": true,
+        "baselineNoFastOrCandidateFastUsed": true,
+        "initialAndWarmWeatherZero": true,
+        "noScriptError": true
+      },
+      "passed": true
+    },
+    "performanceAccepted": false,
+    "visualAccepted": false
+  },
+  "blockers": [
+    "First baseline CPU missing; actual process identity guard rejected precision loss",
+    "Three valid independent pairs and clock comparability incomplete",
+    "Full traversal/combat/visual/whole-goal acceptance incomplete"
+  ],
+  "evidenceReferences": [
+    "reports/operations/support-context-five-cost-first-20261106.md",
+    "evidence/support-context-five-cost-first-20261106.txt"
+  ],
+  "fullGoalComplete": false,
+  "signatureVerified": true
+}
+First baseline capture status
+{
+  "fixedBy": "Explicit DateTimeOffset canonical ISO and tick comparison in request wrapper",
+  "late2sDiagnosticOnly": true,
+  "reason": "ConvertFrom-Json parsed ISO timestamp as DateTime; implicit string conversion dropped fractional seconds before exact identity guard",
+  "performanceAccepted": false,
+  "presentCaptured": true,
+  "sourceRunId": "ANIM-support-cost64-1-01-baseline",
+  "primaryCpuMeasured": false,
+  "gameCodeChanged": false,
+  "verificationStatus": "incomplete_cpu_capture_not_performance_comparison"
+}

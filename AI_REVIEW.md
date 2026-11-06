@@ -1,7 +1,7 @@
-# 상태제한 SupportFast 비교 경계
+# 64명 SupportFast 비용 비교 진행 상태
 
-상태제한SupportFast 현행5파트 OFF/ON 각1회8/8·낙하9/9복귀·계약오류0. ON全8개체사용확인. 비용·시각·64명최종미수용. 
+현행64명 SupportFast ON 첫전체CPU=864.92 CPUms/벽시계초,게임시계약1배. 기준CPU는날짜정밀도변환으로누락·수정. 유효비교0쌍,성능미수용. 
 
-[상세](reports/operations/support-context-five-eight-20261106.md) · [TXT](reports/operations/support-context-five-eight-20261106.txt) · [근거](evidence/support-context-five-eight-20261106.txt) · [JSON](api/public/support-context-five-eight.json)
+[상세](reports/operations/support-context-five-cost-first-20261106.md) · [TXT](reports/operations/support-context-five-cost-first-20261106.txt) · [근거](evidence/support-context-five-cost-first-20261106.txt) · [JSON](api/public/support-context-five-cost-first.json)
 
-각1회이고시간·경로이력이달라누적카운터나완료시간을비용절감으로계산하지않는다. 기존실패·지형회귀는보존. 다음은어댑터없는5파트대어댑터ON의짧은64개체전체CPU비교계획. 함수self-time/서버dt/Present를구분. 시뮬레이션감속을절감으로수용금지. 전투·pending-hit/death·64반복미검증.
+CPU32초와Present15초는별도구간. CPUms/벽시계초는모든스레드합계이며프레임시간/self-time이아니다. 게임/native시계진행률·상태분포·후보사용을검사. 기준누락을2초진단으로대체하거나절감률을계산하지않는다. 기존3쌍순서유지,필요한누락보충은새ID로보존. 기능개발로우회금지.
