@@ -1,0 +1,424 @@
+Selection: full selected-window aggregates and two eight-run count summaries; exact receiver Commit excerpt; not full source/logs, no visual or CPU proof.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-07T03:14:02.715730+09:00",
+  "sourceRunId": "receiver-orientation-eight-20261107",
+  "buildId": "e99db6e645c38b624eac24815d045eceedfaf371db659b9858592b069e7f369a",
+  "verificationStatus": "bounded-eight-output-contract-diagnosed-performance-and-damage-geometry-unverified",
+  "metrics": {
+    "contactContexts": [
+      {
+        "label": "manual-allalive-ETW-context",
+        "rangeGameSeconds": [
+          33.1612,
+          67.9893
+        ],
+        "durationGameSeconds": 34.8281,
+        "snapshots": 130,
+        "aliveCountRange": [
+          64,
+          64
+        ],
+        "delta": {
+          "contactSolves": 86913.0,
+          "contactFailures": 335.0,
+          "jointSweeps": 347103.0,
+          "footRays": 869130.0,
+          "playerContacts": 0.0,
+          "plans": 3668.0,
+          "planFailures": 228.0,
+          "moved": 6684.504899999999
+        },
+        "perGameSecond": {
+          "contactSolves": 2495.4849675980026,
+          "contactFailures": 9.618669981997295,
+          "jointSweeps": 9966.176736600619,
+          "footRays": 24954.84967598003,
+          "playerContacts": 0.0,
+          "plans": 105.31725819094352,
+          "planFailures": 6.546438077299652,
+          "moved": 191.9284973914741
+        },
+        "perAliveAgentGameSecond": {
+          "contactSolves": 38.991952618719246,
+          "contactFailures": 0.15029171846870948,
+          "jointSweeps": 155.7215115093865,
+          "footRays": 389.9195261871925,
+          "playerContacts": 0.0,
+          "plans": 1.6455821592335116,
+          "planFailures": 0.10228809495780825,
+          "moved": 2.9988827717418176
+        },
+        "geometricNearPairs": {
+          "mean": 213.44615384615383,
+          "maximum": 449
+        },
+        "geometricNeighborsPerLivingAgentMean": 6.670192307692307,
+        "phaseRows": {
+          "FOLLOW": 7870,
+          "MOTION": 189,
+          "SETTLE": 52,
+          "EGRESS": 89,
+          "FALL": 36,
+          "LAND": 84
+        },
+        "areaRows": {
+          "ground": 7899,
+          "low": 391,
+          "air": 30
+        },
+        "rootMoveIncludesLocomotionAndPressure": true,
+        "pressureDisplacementSeparatelyMeasured": false
+      },
+      {
+        "label": "manual-90-100",
+        "rangeGameSeconds": [
+          90.1432,
+          99.931
+        ],
+        "durationGameSeconds": 9.787800000000004,
+        "snapshots": 36,
+        "aliveCountRange": [
+          64,
+          64
+        ],
+        "delta": {
+          "contactSolves": 25455.0,
+          "contactFailures": 139.0,
+          "jointSweeps": 101600.0,
+          "footRays": 254550.0,
+          "playerContacts": 0.0,
+          "plans": 414.0,
+          "planFailures": 171.0,
+          "moved": 956.9410000000003
+        },
+        "perGameSecond": {
+          "contactSolves": 2600.686568994053,
+          "contactFailures": 14.201352704387087,
+          "jointSweeps": 10380.269314861354,
+          "footRays": 26006.865689940525,
+          "playerContacts": 0.0,
+          "plans": 42.29755409795867,
+          "planFailures": 17.470728866548143,
+          "moved": 97.76875293733013
+        },
+        "perAliveAgentGameSecond": {
+          "contactSolves": 40.63572764053206,
+          "contactFailures": 0.22189613600604816,
+          "jointSweeps": 162.19170804470858,
+          "footRays": 406.3572764053206,
+          "playerContacts": 0.0,
+          "plans": 0.660899282780604,
+          "planFailures": 0.2729801385398147,
+          "moved": 1.5276367646457827
+        },
+        "geometricNearPairs": {
+          "mean": 574.3611111111111,
+          "maximum": 1304
+        },
+        "geometricNeighborsPerLivingAgentMean": 17.94878472222222,
+        "phaseRows": {
+          "FOLLOW": 1945,
+          "MOTION": 254,
+          "SETTLE": 70,
+          "EGRESS": 6,
+          "FALL": 12,
+          "LAND": 17
+        },
+        "areaRows": {
+          "ground": 1525,
+          "low": 636,
+          "air": 69,
+          "high": 74
+        },
+        "rootMoveIncludesLocomotionAndPressure": true,
+        "pressureDisplacementSeparatelyMeasured": false
+      },
+      {
+        "label": "flat-baseline-1",
+        "rangeGameSeconds": [
+          29.494,
+          50.2491
+        ],
+        "durationGameSeconds": 20.7551,
+        "snapshots": 78,
+        "aliveCountRange": [
+          64,
+          64
+        ],
+        "delta": {
+          "contactSolves": 53134.0,
+          "contactFailures": 0.0,
+          "jointSweeps": 212536.0,
+          "footRays": 531340.0,
+          "playerContacts": 0.0,
+          "plans": 2558.0,
+          "planFailures": 0.0,
+          "moved": 3542.4919
+        },
+        "perGameSecond": {
+          "contactSolves": 2560.0454827969993,
+          "contactFailures": 0.0,
+          "jointSweeps": 10240.181931187997,
+          "footRays": 25600.454827969996,
+          "playerContacts": 0.0,
+          "plans": 123.2468164451147,
+          "planFailures": 0.0,
+          "moved": 170.68055080438063
+        },
+        "perAliveAgentGameSecond": {
+          "contactSolves": 40.00071066870303,
+          "contactFailures": 0.0,
+          "jointSweeps": 160.00284267481211,
+          "footRays": 400.0071066870303,
+          "playerContacts": 0.0,
+          "plans": 1.925731506954913,
+          "planFailures": 0.0,
+          "moved": 2.666883606318441
+        },
+        "geometricNearPairs": {
+          "mean": 168.92307692307693,
+          "maximum": 201
+        },
+        "geometricNeighborsPerLivingAgentMean": 5.278846153846154,
+        "phaseRows": {
+          "FOLLOW": 4992
+        },
+        "areaRows": {
+          "ground": 4992
+        },
+        "rootMoveIncludesLocomotionAndPressure": true,
+        "pressureDisplacementSeparatelyMeasured": false,
+        "presentP95Ms": 18.81914
+      },
+      {
+        "label": "flat-baseline-2",
+        "rangeGameSeconds": [
+          29.6509,
+          50.28
+        ],
+        "durationGameSeconds": 20.6291,
+        "snapshots": 78,
+        "aliveCountRange": [
+          64,
+          64
+        ],
+        "delta": {
+          "contactSolves": 52740.0,
+          "contactFailures": 0.0,
+          "jointSweeps": 210960.0,
+          "footRays": 527400.0,
+          "playerContacts": 0.0,
+          "plans": 2540.0,
+          "planFailures": 0.0,
+          "moved": 3508.5263999999997
+        },
+        "perGameSecond": {
+          "contactSolves": 2556.5826914407317,
+          "contactFailures": 0.0,
+          "jointSweeps": 10226.330765762927,
+          "footRays": 25565.826914407317,
+          "playerContacts": 0.0,
+          "plans": 123.12703898861317,
+          "planFailures": 0.0,
+          "moved": 170.07656175014904
+        },
+        "perAliveAgentGameSecond": {
+          "contactSolves": 39.94660455376141,
+          "contactFailures": 0.0,
+          "jointSweeps": 159.78641821504564,
+          "footRays": 399.4660455376141,
+          "playerContacts": 0.0,
+          "plans": 1.9238599841970798,
+          "planFailures": 0.0,
+          "moved": 2.6574462773460774
+        },
+        "geometricNearPairs": {
+          "mean": 164.78205128205127,
+          "maximum": 200
+        },
+        "geometricNeighborsPerLivingAgentMean": 5.149439102564102,
+        "phaseRows": {
+          "FOLLOW": 4992
+        },
+        "areaRows": {
+          "ground": 4992
+        },
+        "rootMoveIncludesLocomotionAndPressure": true,
+        "pressureDisplacementSeparatelyMeasured": false,
+        "presentP95Ms": 14.550095
+      },
+      {
+        "label": "flat-baseline-3",
+        "rangeGameSeconds": [
+          29.701,
+          50.2991
+        ],
+        "durationGameSeconds": 20.598100000000002,
+        "snapshots": 78,
+        "aliveCountRange": [
+          64,
+          64
+        ],
+        "delta": {
+          "contactSolves": 52726.0,
+          "contactFailures": 0.0,
+          "jointSweeps": 210904.0,
+          "footRays": 527260.0,
+          "playerContacts": 0.0,
+          "plans": 2540.0,
+          "planFailures": 0.0,
+          "moved": 3521.6838999999995
+        },
+        "perGameSecond": {
+          "contactSolves": 2559.750656613959,
+          "contactFailures": 0.0,
+          "jointSweeps": 10239.002626455836,
+          "footRays": 25597.506566139593,
+          "playerContacts": 0.0,
+          "plans": 123.31234434243933,
+          "planFailures": 0.0,
+          "moved": 170.97129832363174
+        },
+        "perAliveAgentGameSecond": {
+          "contactSolves": 39.996104009592685,
+          "contactFailures": 0.0,
+          "jointSweeps": 159.98441603837074,
+          "footRays": 399.9610400959269,
+          "playerContacts": 0.0,
+          "plans": 1.9267553803505941,
+          "planFailures": 0.0,
+          "moved": 2.6714265363067176
+        },
+        "geometricNearPairs": {
+          "mean": 169.48717948717947,
+          "maximum": 194
+        },
+        "geometricNeighborsPerLivingAgentMean": 5.296474358974359,
+        "phaseRows": {
+          "FOLLOW": 4992
+        },
+        "areaRows": {
+          "ground": 4992
+        },
+        "rootMoveIncludesLocomotionAndPressure": true,
+        "pressureDisplacementSeparatelyMeasured": false,
+        "presentP95Ms": 14.62784
+      }
+    ],
+    "shadow": {
+      "schemaVersion": "1.0.0",
+      "sourceRunId": "ANIM-receiver-orientation-eight-shadow",
+      "guardEnabled": false,
+      "calls": 18032,
+      "exactEqual": 2773,
+      "writes": 18032,
+      "potentialSkipFraction": 0.153782165039929,
+      "postOrientationMismatches": 0,
+      "logicalNpcs": 8,
+      "renderParts": 40,
+      "damageReceivers": 8,
+      "aliveRows": 1392,
+      "lastGameSeconds": 45.3189,
+      "attackStarts": 64,
+      "playerHits": 64,
+      "damageCallbacks": 0,
+      "nativeSetterCallsRemoved": 0,
+      "shutdownScriptFailure": "SCRIPT_OR_CONTRACT_FAILURE",
+      "inRunResultPrecedesShutdownError": true,
+      "serverExitCode": -1,
+      "normalServerExitAccepted": false,
+      "cpuPerformanceMeasured": false,
+      "visualAccepted": false,
+      "fullFunctionalRegressionAccepted": false,
+      "limits": [
+        "Shadow keeps all writes; ON skips exact-equal writes only",
+        "No gun/melee damage or death was requested",
+        "A same-value setter may already short-circuit inside engine; skip count not CPU gain",
+        "Two extra GetOrientation reads per receiver-frame are observer overhead",
+        "Shadow had a post-result shutdown null error; not a complete regression pass"
+      ]
+    },
+    "on": {
+      "schemaVersion": "1.0.0",
+      "sourceRunId": "ANIM-receiver-orientation-eight-on",
+      "guardEnabled": true,
+      "calls": 17944,
+      "exactEqual": 3478,
+      "writes": 14466,
+      "potentialSkipFraction": 0.19382523406152474,
+      "postOrientationMismatches": 0,
+      "logicalNpcs": 8,
+      "renderParts": 40,
+      "damageReceivers": 8,
+      "aliveRows": 1376,
+      "lastGameSeconds": 45.0109,
+      "attackStarts": 64,
+      "playerHits": 62,
+      "damageCallbacks": 0,
+      "nativeSetterCallsRemoved": 3478,
+      "shutdownScriptFailure": null,
+      "inRunResultPrecedesShutdownError": false,
+      "serverExitCode": -1,
+      "normalServerExitAccepted": false,
+      "cpuPerformanceMeasured": false,
+      "visualAccepted": false,
+      "fullFunctionalRegressionAccepted": false,
+      "limits": [
+        "Shadow keeps all writes; ON skips exact-equal writes only",
+        "No gun/melee damage or death was requested",
+        "A same-value setter may already short-circuit inside engine; skip count not CPU gain",
+        "Two extra GetOrientation reads per receiver-frame are observer overhead",
+        "Shadow had a post-result shutdown null error; not a complete regression pass"
+      ]
+    }
+  },
+  "blockers": [
+    "Whole CPU/Present gain unmeasured",
+    "Damage geometry and gun/melee/death untested",
+    "Shadow shutdown exception retained; one ON run with local reentry guard",
+    "Getter overhead and engine setter internal equality check unknown"
+  ],
+  "evidenceReferences": [
+    "reports/operations/receiver-orientation-eight-20261107.md",
+    "evidence/receiver-orientation-eight-20261107.txt"
+  ],
+  "performanceAccepted": false,
+  "visualAccepted": false,
+  "fullGoalComplete": false
+}
+
+ACTUAL MISSION SHA256 e99db6e645c38b624eac24815d045eceedfaf371db659b9858592b069e7f369a
+90:             if(committed.DamageReceiver)
+91:             {
+92:                 if(committed.Combat && committed.Combat.Dead)committed.Combat.FreezeDamageReceiver();
+93:                 else
+94:                 {
+95:                     if(vector.Distance(committed.DamageReceiver.GetPosition(),expectedOrigin)>0.000001)committed.DamageReceiver.SetPosition(expectedOrigin);
+96:                     vector desiredReceiver=Vector(expectedYaw,0,0);vector actualReceiver=committed.DamageReceiver.GetOrientation();
+97:                     NFRCalls++;bool equalReceiver=actualReceiver==desiredReceiver;if(equalReceiver)NFREqual++;
+98:                     if(!NFRGuard || !equalReceiver){committed.DamageReceiver.SetOrientation(desiredReceiver);NFRWrites++;}
+99:                     vector afterReceiver=committed.DamageReceiver.GetOrientation();
+100:                     if(Math.AbsFloat(DGBGroundAgent.SignedAngle(afterReceiver[0] - expectedYaw))>0.0001 || Math.AbsFloat(afterReceiver[1])>0.0001 || Math.AbsFloat(afterReceiver[2])>0.0001)NFRPostMismatch++;
+101:                 }
+102:             }
+103:         }
+104:     }
+105:     void Observe()
+106:     {
+107:         foreach(DGBNativeGroundBody b:Director.Bodies)
+108:         {
+109:             DGBNativeTraversal t=b.Traversal;float spread;
+110:             foreach(Animal_DGNativeProbe p:b.Parts){spread=Math.Max(spread,vector.Distance(p.GetPosition(),b.Leader.GetPosition()));}
+111:             string row=(Age - RunAt).ToString()+"\t"+b.Id+"\t"+Stage+"\t"+b.Agent.State+"\t"+t.Phase+"\t"+t.Area+"\t"+b.Agent.Position+"\t"+t.ActiveGoal;
+112:             row+="\t"+b.Agent.Visible+"\t"+b.Agent.ClueSource+"\t"+(Director.Now - b.Agent.SeenAt)+"\t"+b.Agent.Acquisitions+"\t"+b.Agent.Losses+"\t"+b.Agent.Moved;
+
+SCRIPT shadow SHA256 3f8df1ec066f40a7ae46a7481f06794b2607baedf3cecd19da80250560414498
+03:06:23.760 SCRIPT       : NF_RECEIVER_ORIENTATION_RESULT guard=false calls=18032 exactEqual=2773 writes=18032 postMismatch=0
+03:06:23.760 SCRIPT       : DG_ROLE_DONE manual_user_closed detached=true; outcomes in traces, no automatic pass
+03:06:29.299 SCRIPT    (E): Virtual Machine Exception
+Reason: NULL pointer to instance. Variable 'RetirementObserved'
+
+SCRIPT on SHA256 30917232fd01e46e01606142154be672624e9aed026582a95b8a038e4e9cb867
+03:10:32.215 SCRIPT       : NF_RECEIVER_ORIENTATION_RESULT guard=true calls=17944 exactEqual=3478 writes=14466 postMismatch=0
+03:10:32.215 SCRIPT       : DG_ROLE_DONE manual_user_closed detached=true; outcomes in traces, no automatic pass
