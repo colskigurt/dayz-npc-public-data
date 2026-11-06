@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceRunId": "ANIM-support262-eight1-on",
+  "baselineRunId": "ANIM-receiver-eight2-1-control",
+  "verificationStatus": "SINGLE_FUNCTIONAL_REGRESSION_PASSED_PERFORMANCE_NOT_MEASURED",
+  "baselineSeconds": 61.7949,
+  "candidateSeconds": 81.5118,
+  "completionTimeChangePct": 31.907002034148448,
+  "validTerminalAgents": 8,
+  "allMilestoneAgents": 8,
+  "fallStarts": 9,
+  "landAndFollowCycles": 9,
+  "supportFastUsed": 17528,
+  "supportFastSkippedRays": 70112,
+  "nativeHosts": 48,
+  "performanceMeasured": false,
+  "visualAccepted": false,
+  "serverNormalExit": false,
+  "nextExperiment": "Current-engine64 fixed-workload OFF/ON CPU and Present comparison; preserve clock comparability and report phase/query work.",
+  "generatedAt": "2026-11-06T23:12:13.024695+00:00",
+  "buildId": "1419E96D11A984951CDD48B926D7E6604413F1B9D74729D8FE55118BAF86E2BC",
+  "metrics": {
+    "validTerminalAgents": 8,
+    "allMilestoneAgents": 8,
+    "fallStarts": 9,
+    "landAndFollowCycles": 9,
+    "supportFastUsed": 17528,
+    "supportFastSkippedRays": 70112
+  },
+  "blockers": [
+    "64-agent CPU/Present comparison pending",
+    "Visual quality not measured in this run",
+    "Server exit -1 not normal acceptance"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/supportfast-current-engine-eight-20261107.md",
+      "localCheckpointSha256": "47006303c67b6d77c348553a30827dce7bb8be71951e3171a5178a79ced68682"
+    },
+    {
+      "baselineRunId": "ANIM-receiver-eight2-1-control"
+    }
+  ],
+  "conditions": {
+    "logicalAgents": 8,
+    "displayParts": 40,
+    "originalDamageReceivers": 8,
+    "nativeHosts": 48,
+    "outgoingAttacks": false,
+    "repetitionsPerArm": 1,
+    "matchedSimultaneousPair": false
+  }
+}
