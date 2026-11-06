@@ -1677,5 +1677,76 @@
     ],
     "fullGoalComplete": false,
     "signatureVerified": true
+  },
+  "latestFollowerRootEight": {
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2026-11-06T09:26:56.025169+09:00",
+    "sourceRunId": "ANIM-follower-root-eight1-pair",
+    "buildId": "C7FF4918046E9FDFC26110C8378C25CDCF64232F09A28606442D5B0D37295388",
+    "verificationStatus": "single-pair-eight-functional-pass-not-cost-accepted",
+    "metrics": {
+      "independentRunsPerCondition": 1,
+      "logicalNpcs": 8,
+      "nativeParts": 40,
+      "conditions": [
+        {
+          "sourceRunId": "ANIM-follower-root-eight1-off",
+          "mode": "off",
+          "rootRows": 4240,
+          "observedPartHosts": 40,
+          "rootQueryTotal": 85160,
+          "rootSkipTotal": 0,
+          "minimumAnimationCallbacks": 2129,
+          "minimumPhysicsCallbacks": 2129,
+          "evidenceFunctionalGatePassed": true,
+          "validTerminalAgents": 8,
+          "allMilestoneAgents": 8,
+          "fallStarts": 9,
+          "landAndFollowCycles": 9,
+          "phaseChainMismatches": [],
+          "recoveryGenerationErrors": [],
+          "terminalAlignmentErrors": [],
+          "rootBranchContractPassed": true,
+          "performanceMeasured": false,
+          "visualAccepted": false,
+          "sourceTableSha256": "8ae1819b9b66b027372ce0821f46568661820ad3290d3d8b65b0d91417e0bd77",
+          "existingAnalyzerDecisionBodyUnchanged": true
+        },
+        {
+          "sourceRunId": "ANIM-follower-root-eight1-on",
+          "mode": "on",
+          "rootRows": 5280,
+          "observedPartHosts": 40,
+          "rootQueryTotal": 21216,
+          "rootSkipTotal": 84864,
+          "minimumAnimationCallbacks": 2652,
+          "minimumPhysicsCallbacks": 2652,
+          "evidenceFunctionalGatePassed": true,
+          "validTerminalAgents": 8,
+          "allMilestoneAgents": 8,
+          "fallStarts": 10,
+          "landAndFollowCycles": 10,
+          "phaseChainMismatches": [],
+          "recoveryGenerationErrors": [],
+          "terminalAlignmentErrors": [],
+          "rootBranchContractPassed": true,
+          "performanceMeasured": false,
+          "visualAccepted": false,
+          "sourceTableSha256": "dc281959a62a640d65fac2de176277a80f4c9a2a90d3656080ea301fbe1315ac",
+          "existingAnalyzerDecisionBodyUnchanged": true
+        }
+      ],
+      "performanceMeasured": false
+    },
+    "blockers": [
+      "Method cost comparison prepared but not executed",
+      "64-agent repeatability/CPU/visual/combat acceptance incomplete"
+    ],
+    "evidenceReferences": [
+      "reports/operations/follower-root-eight-20261106.md",
+      "evidence/follower-root-eight-20261106.txt"
+    ],
+    "fullGoalComplete": false,
+    "signatureVerified": true
   }
 }
