@@ -1,3 +1,11 @@
+# 최신 수동 플레이 진단
+
+8개체 수동 플레이: 추적8/8·사망/전리품8/8. 회복 낙하1건·착지 중 피격반응 만료2건. 30초 Present p95 9.91ms는 생존 수7→0 변동 표본이며 64개체 수용과 별개.
+
+[상세 보고서](reports/operations/playable-eight2-20261106.md) · [복사용 TXT](reports/operations/playable-eight2-20261106.txt) · [JSON](api/public/playable-eight2.json)
+
+---
+
 # 최근 실측과 현재 준비 상태
 
 최근 실측은 정지Run3쌍에서5파트 CPU Busy/Present p95 감소 방향 재현. 전체 게임/시각 미수용. [실측](operations/npc-palette64-client-highcap-three-pairs-20261105.md)

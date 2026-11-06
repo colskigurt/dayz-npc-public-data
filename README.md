@@ -1,3 +1,11 @@
+# 최신 수동 플레이 진단 — 2026-11-06
+
+8개체 수동 플레이: 추적8/8·사망/전리품8/8. 회복 낙하1건·착지 중 피격반응 만료2건. 30초 Present p95 9.91ms는 생존 수7→0 변동 표본이며 64개체 수용과 별개.
+
+[상세 보고서](reports/operations/playable-eight2-20261106.md) · [복사용 TXT](reports/operations/playable-eight2-20261106.txt) · [JSON](api/public/playable-eight2.json)
+
+---
+
 # DayZ NPC 현재 작업 상태
 
 현행5파트14동작을한클라이언트에서일괄재생·전환검증. 14/14요청,24구간5파트일치,11738전경프레임·공통본차이0. idle영상반복한계보존,시각최종/64비용미수용. 
