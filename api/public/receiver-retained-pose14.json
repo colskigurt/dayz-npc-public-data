@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-07T07:05:43.929530+09:00",
+  "sourceRunId": "ANIM-receiver-pose14-9",
+  "buildId": "ACA6319FBE09DF1A3415827561EBBE74A3F924F0035813E6722F53EA6FCC6049",
+  "verificationStatus": "RETAINED_BONE_POSE_AND_CONFIG_GATE_PASSED",
+  "metrics": {
+    "clips": 14,
+    "samples": 1183,
+    "retainedBones": 27,
+    "maximumPositionError": 0,
+    "maximumTransformError": 0,
+    "maximumDefaultHitPositionError": 0,
+    "maximumNativeCallbackClockDifference": 0,
+    "configRows": 196,
+    "configRowsMatched": 196,
+    "performanceMeasured": false,
+    "visualAccepted": false,
+    "functionalEightAccepted": false,
+    "functionalSixtyfourAccepted": false,
+    "normalServerQuit": false
+  },
+  "blockers": [
+    "Actual projectile/melee hit geometry unverified",
+    "8/64 gameplay and repeated CPU/Present costs pending",
+    "CPU pose is not rendered-frame smoothness",
+    "Server RequestExit observed but actual exit code -1",
+    "Additional runtime full/subset identity check pending"
+  ],
+  "evidenceReferences": [
+    {
+      "name": "analysis.json",
+      "sha256": "2ab3cde6f0b1bb02e27a23b028868b28ddaa2e4beda1d14e6e67f2fb4c4de2a4"
+    },
+    {
+      "name": "staged-plan.json",
+      "sha256": "7e14345d67b95f6653b9221663455f5af373fb6c8d6c015c8de7286ff5070bcd"
+    },
+    {
+      "name": "harness-fix.json",
+      "sha256": "9803f322b285841a6141aef857227176d14b2beda81f14bf32870d346d3ab495"
+    },
+    {
+      "name": "analysis.json",
+      "sha256": "2a2bc2b0a0ad451c6132c90f2c39675d96c7b707e8e8efc631eea31c69785882"
+    },
+    {
+      "name": "fixture-build.json",
+      "sha256": "fb3fe6210bd3289e1ad9a66f874bd0b969d49a3f9715a513ec819521b8d35119"
+    },
+    {
+      "name": "fixture-signature.log",
+      "sha256": "e00ea50a99f24ede311f58601505e7c1424dcd7de7bb7b84c1b907daf1e0f33b"
+    },
+    {
+      "name": "dump3.json",
+      "sha256": "0c7d0d3ca474ba787ba8f33128430b5459a4156a1de01bba69fbfc13af262067"
+    },
+    {
+      "name": "memory.json",
+      "sha256": "10e2d9f192b6ed594cc018063bd85ade5be63b860fefa0a16025db385391f641"
+    }
+  ],
+  "conditions": {
+    "runtimeRepetitions": 1,
+    "sourceNodes": 250,
+    "candidateNodes": 27,
+    "displayPartsUnchanged": 5,
+    "receiverHostsUnchanged": 1,
+    "candidateStatus": "ISOLATED_NOT_DEPLOYED"
+  }
+}
