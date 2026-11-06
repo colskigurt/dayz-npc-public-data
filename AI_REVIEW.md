@@ -1,13 +1,13 @@
-# HIGH목표진단의 수용 경계
+# 기존SupportFast 재사용 경계
 
-검증된5파트 유지. 새HIGH목표단일진단의Present p95는14.98ms였지만HIGH다수관측조건실패로미수용. 별도서버CPUquery union24.85%inclusive,스택누락26.17%. 새최적화없음.
+상태제한SupportFast는이미구현·시험된후보다. 현재5파트메서드동일확인,legacy의존성만분리한동일script어댑터빌드·서명검증.8명OFF/ON계획준비,아직미실행·비용미수용.
 
-[상세](reports/operations/high-five-diagnostic-20261106.md) · [TXT](reports/operations/high-five-diagnostic-20261106.txt) · [근거](evidence/high-five-diagnostic-20261106.txt) · [JSON](api/public/high-five-diagnostic.json)
+[상세](reports/operations/support-context-five-preparation-20261106.md) · [TXT](reports/operations/support-context-five-preparation-20261106.txt) · [근거](evidence/support-context-five-preparation-20261106.txt) · [JSON](api/public/support-context-five-preparation.json)
 
-64명·320파트·고정HIGH목표·구름/비/안개0. Present15초와CPU8초설정은약47초떨어진별도창이다. Present보수문맥HIGH비율46.875~71.875%로사전50%미통과. CPU요청/후스냅샷64HIGH는먼저측정한Present창을통과시켜주지않는다.
+과거roof메서드약26%절감/terrain약6.6%회귀로전역gate실패. 상태제한단독은각1회8/8·64/64였으나이후slot+support조합4회는OFF/ON모두실패했고일관된비용이득없음. 이를현재5파트결과로옮기지않는다.
 
-서버9854가중표본,질의union2449·누락2579·lost0. VMinclusive와합산금지,할당/GC/self-time미측정. 전체ETL은11.9초,분석10.9초라요청8초와구분한다. 새게임실행1회이며같은ETL재분석은반복아님.
+기존PBO가요구한NFContactEndData는현재목록에없어가져오지않았다. script동일·NFPaletteFiveGameplayData의존성만갖는격리1419E96D…어댑터. CfgConvert/빌드/서명은Enforce런타임이나성능통과가아니다. 끝LF를포함하면옛baseMethod해시도일치.
 
-같은시험통과까지반복금지. 다음은이미설계된상태제한SupportSweepFast의구현/보류지점과현재5파트코드차이대조. 옛roof절감/terrain회귀/기능실패를보존하고미검증활성화하지않는다.
+다음준비된8명OFF/ON각1회. 신체지지검사는그대로,64명동시지붕점유조건추가금지. 비용은기존TotalProcessorTime독자프로필I/O재사용가능성을검토,함수self-time이나Present와혼동금지. pending-hit/death·전투미검증.
 
-[직전 안내](reports/history/20261106-before-high-five-AI_REVIEW.md)
+[직전 안내](reports/history/20261106-before-support-five-AI_REVIEW.md)
