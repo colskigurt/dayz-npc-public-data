@@ -1,15 +1,15 @@
 # DayZ NPC 현재 상태
 
-최신: [접촉 내부 시간 계측 생략 후보 준비](reports/operations/contact-timing-candidate-prepared-20261107.md).
+최신: [접촉 시간계측 후보 Enforce 컴파일 확인](reports/operations/contact-timing-compile-only-20261107.md).
 
-| 구분 | 판정 |
+| 단계 | 판정 |
 |---|---|
-|변경|기존 물리질의·판정을 보존하고 상세TickCount/누적만 선택OFF|
-|근거|기존 기준구간에서 해당계측 약40,222호출/게임초;CPU시간 아님|
-|준비|빌드·서명검증·packed소스 일치 완료|
-|실행|Enforce 컴파일·8/64기능·CPU/Present 미실행|
-|채택|기본OFF·성능미입증·최종미수용|
+|빌드·서명·packed소스|검증 완료;후보 기본OFF|
+|Enforce/미션시작|서버 compile2 통과;클라이언트0·NPC0|
+|분석기|합성 정상2통과·잘못된입력7거부|
+|실제 솔버·8/64·CPU·시각|미실행·미수용|
+|정상 서버 종료|실제-1로 정상종료 수용 아님|
 
-전용 측정 시간 확보 전 새 게임 실행 보류. 기존 SupportFast의광선감소/CPU미개선·외부부하미통제 기록은 보존한다. 새 후보와 혼합하지 않는다.
+내부TickCount 호출을 선택OFF할 뿐 물리 질의/판정을 생략하지 않는다. 컴파일 통과를 기능/성능 성공으로 해석하지 않는다. 전용 측정 시간 확보 전 비용시험은 보류한다.
 
-[공개 JSON](api/public/contact-timing-candidate-prepared-20261107.json) · [검토용 후보 코드](review/contact-timing-candidate/NFContactTimers.c) · [이전 검사량 분석](reports/operations/supportfast-query-accounting-review-20261107.md)
+[공개 JSON](api/public/contact-timing-compile-only-20261107.json) · [후보 코드](review/contact-timing-candidate/NFContactTimers.c) · [원래 설계](reports/operations/contact-timing-candidate-prepared-20261107.md) · [SupportFast 미수용 기록](reports/operations/supportfast64-cost-interim-20261107.md)

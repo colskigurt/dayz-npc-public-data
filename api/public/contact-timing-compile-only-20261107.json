@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceRunId": "ANIM-contact-timing-compile2",
+  "buildId": "BBCAC26DD0A80F578C3789D236DFADDF6CC2108C85AE27E58579F0F746F6BC67",
+  "verificationStatus": "ENFORCE_COMPILE_AND_MISSION_START_PASSED_RUNTIME_SOLVER_UNTESTED",
+  "enforceCompiled": true,
+  "clientStarted": false,
+  "npcCount": 0,
+  "solverExecuted": false,
+  "functionalRegressionPassed": false,
+  "performanceMeasured": false,
+  "visualAccepted": false,
+  "normalServerExit": false,
+  "serverExitCode": -1,
+  "earlierFailure": "compile1 mission override argument mismatch; World compiled; separately tracked owned forced stop",
+  "analyzerGateFixtures": {
+    "positiveAccepted": 2,
+    "negativeRejected": 7
+  },
+  "next": "8-agent baseline/timer-off gameplay, then64 paired external CPU/Present in exclusive measurement time",
+  "generatedAt": "2026-11-06T23:49:49.848840+00:00",
+  "metrics": {
+    "npcCount": 0,
+    "clientCount": 0,
+    "solverExecutions": 0,
+    "analyzerPositiveFixtures": 2,
+    "analyzerNegativeFixturesRejected": 7
+  },
+  "blockers": [
+    "Actual solver and8/64 gameplay not executed",
+    "CPU/Present improvement not measured",
+    "Exclusive cost measurement time not established"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/contact-timing-compile-only-20261107.md",
+      "localCheckpointSha256": "2b8cdffbd28f1de5d9ef2e8bb0a62c139d7868ab36384bd6418632bba332dd52"
+    },
+    {
+      "candidateCode": "review/contact-timing-candidate/NFContactTimers.c"
+    }
+  ]
+}
