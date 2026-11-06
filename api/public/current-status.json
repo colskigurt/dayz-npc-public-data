@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-07T03:38:30.694882+09:00",
+  "generatedAt": "2026-11-07T03:47:19.288618+09:00",
   "sourceRunId": "palette64-fullclips-runtime-probe1",
   "buildId": "staged_fixture_no_new_PBO",
   "verificationStatus": {
@@ -7246,6 +7246,167 @@
     "evidenceReferences": [
       "reports/operations/receiver-orientation-cost64-pilot-20261107.md",
       "evidence/receiver-orientation-cost64-pilot-20261107.txt"
+    ],
+    "performanceAccepted": false,
+    "visualAccepted": false,
+    "fullGoalComplete": false
+  },
+  "latestGridDensityReview": {
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2026-11-07T03:47:19.288618+09:00",
+    "sourceRunId": "grid-snapshot-reconstruction-20261107",
+    "buildId": "unchanged-five-part-baseline",
+    "verificationStatus": "offline-diagnosis-only-no-new-performance-test",
+    "metrics": {
+      "newGameRuns": 0,
+      "snapshotReconstructions": [
+        {
+          "label": "manual-allalive",
+          "snapshots": 130,
+          "sha256": "5933016e7395260260db847cc196cd01061313022a3f3c0c20a8a58659639bcb",
+          "summary": {
+            "gridCandidates": {
+              "mean": 636.2923076923076,
+              "maximum": 1037
+            },
+            "heightEligibleCandidates": {
+              "mean": 624.1538461538462,
+              "maximum": 1037
+            },
+            "geometricNearPairs": {
+              "mean": 213.44615384615383,
+              "maximum": 449
+            },
+            "occupiedCells": {
+              "mean": 26.323076923076922,
+              "maximum": 36
+            },
+            "maximumCellOccupancy": {
+              "mean": 6.892307692307693,
+              "maximum": 18
+            }
+          }
+        },
+        {
+          "label": "manual-dense-90-100",
+          "snapshots": 36,
+          "sha256": "5933016e7395260260db847cc196cd01061313022a3f3c0c20a8a58659639bcb",
+          "summary": {
+            "gridCandidates": {
+              "mean": 992.1388888888889,
+              "maximum": 1689
+            },
+            "heightEligibleCandidates": {
+              "mean": 890.7222222222222,
+              "maximum": 1660
+            },
+            "geometricNearPairs": {
+              "mean": 574.3611111111111,
+              "maximum": 1304
+            },
+            "occupiedCells": {
+              "mean": 16.194444444444443,
+              "maximum": 26
+            },
+            "maximumCellOccupancy": {
+              "mean": 16.97222222222222,
+              "maximum": 29
+            }
+          }
+        },
+        {
+          "label": "flat-1",
+          "snapshots": 78,
+          "sha256": "081b2390d5648373fa2bed33ada7fb6b0b09d1b0e6796b707e6c0c0b64ea6f15",
+          "summary": {
+            "gridCandidates": {
+              "mean": 593.6923076923077,
+              "maximum": 689
+            },
+            "heightEligibleCandidates": {
+              "mean": 593.6923076923077,
+              "maximum": 689
+            },
+            "geometricNearPairs": {
+              "mean": 168.92307692307693,
+              "maximum": 201
+            },
+            "occupiedCells": {
+              "mean": 28.371794871794872,
+              "maximum": 35
+            },
+            "maximumCellOccupancy": {
+              "mean": 5.051282051282051,
+              "maximum": 7
+            }
+          }
+        },
+        {
+          "label": "flat-2",
+          "snapshots": 78,
+          "sha256": "5595831faf0bb0292906c1b25cc82a1d8d580ff9c9bcaa0e5988d81ce648fe10",
+          "summary": {
+            "gridCandidates": {
+              "mean": 575.9615384615385,
+              "maximum": 678
+            },
+            "heightEligibleCandidates": {
+              "mean": 575.9615384615385,
+              "maximum": 678
+            },
+            "geometricNearPairs": {
+              "mean": 164.78205128205127,
+              "maximum": 200
+            },
+            "occupiedCells": {
+              "mean": 29.205128205128204,
+              "maximum": 34
+            },
+            "maximumCellOccupancy": {
+              "mean": 5.038461538461538,
+              "maximum": 7
+            }
+          }
+        },
+        {
+          "label": "flat-3",
+          "snapshots": 78,
+          "sha256": "7eed33276e3a204440b388534a0d7ef6de842b1c0edfae8b097bc40b479ec6a8",
+          "summary": {
+            "gridCandidates": {
+              "mean": 593.0384615384615,
+              "maximum": 669
+            },
+            "heightEligibleCandidates": {
+              "mean": 593.0384615384615,
+              "maximum": 669
+            },
+            "geometricNearPairs": {
+              "mean": 169.48717948717947,
+              "maximum": 194
+            },
+            "occupiedCells": {
+              "mean": 28.205128205128204,
+              "maximum": 34
+            },
+            "maximumCellOccupancy": {
+              "mean": 5.051282051282051,
+              "maximum": 7
+            }
+          }
+        }
+      ]
+    },
+    "blockers": [
+      "Reconstructed from sampled rounded positions, not actual callback-time PairCandidates",
+      "Height and distance tests exclude force, combat, movable and entry-priority predicates; near pairs are not ContactPairs",
+      "Cell occupancy reflects snapshot geometry, not allocation or GC measurements",
+      "Game-time snapshots do not measure wall-clock CPU cost or establish matched performance causality",
+      "Grid reuse not implemented; CPU/GC cost unknown"
+    ],
+    "evidenceReferences": [
+      "reports/operations/grid-density-existing-evidence-20261107.md",
+      "evidence/grid-density-existing-evidence-20261107.txt"
     ],
     "performanceAccepted": false,
     "visualAccepted": false,
