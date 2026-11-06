@@ -1,0 +1,396 @@
+Selection: complete isolated Bounds override and test mission; all method TSV rows; sanitized terminal records. Not full game source/logs, no visual evidence.
+
+FILE NFBoundsEpoch.c SHA256 29d5af2fcbec63cd9947a4850f707c792d64e94eb58228aaa8a804514208b099
+1: // Isolated default-OFF geometry-bound reuse, only within one static-map update.
+2: // Does not skip any Floor/Ray/Sphere, change discovery order, or change physics.
+3: class NFBoundsEpochEntry
+4: {
+5:     vector M0;vector M1;vector M2;vector M3;
+6:     vector Box0;vector Box1;vector Low;vector High;
+7:     float NFScaleValue;string NFShapeName;
+8: }
+9: modded class DGBNativeStaticMap
+10: {
+11:     bool NFBRead;bool NFBEnabled;bool NFBShadow;bool NFBActive;bool NFBForceOff;
+12:     int NFBCalls;int NFBHits;int NFBMisses;int NFBMismatches;int NFBEpochs;
+13:     ref map<Object,ref NFBoundsEpochEntry> NFBCache=new map<Object,ref NFBoundsEpochEntry>;
+14:     void NFBBeginEpoch(){NFBCache.Clear();NFBActive=true;NFBEpochs++;}
+15:     void NFBEndEpoch(){NFBActive=false;NFBCache.Clear();}
+16:     override void Update()
+17:     {
+18:         if(!NFBRead){NFBRead=true;NFBEnabled=FileExist("$profile:nf-bounds-epoch.flag");NFBShadow=FileExist("$profile:nf-bounds-shadow.flag");Print("NF_BOUNDS_POLICY enabled="+NFBEnabled+" shadow="+NFBShadow);}
+19:         if(!NFBEnabled || NFBForceOff || Director.Now<NextUpdate || Director.Bodies.Count()==0){super.Update();return;}
+20:         NFBBeginEpoch();super.Update();NFBEndEpoch();
+21:     }
+22:     override bool Bounds(Object object,out vector low,out vector high)
+23:     {
+24:         NFBCalls++;
+25:         if(!NFBEnabled || NFBForceOff || !NFBActive || !object)return super.Bounds(object,low,high);
+26:         // Recheck classification and physical eligibility on every invocation.
+27:         if(object.IsMan() || DayZAnimal.Cast(object) || Director.Fixture.Objects.Find(object)>=0)return super.Bounds(object,low,high);
+28:         string shapePathKey=object.GetShapeName();
+29:         if(shapePathKey=="" || (dBodyIsSet(object) && dBodyIsDynamic(object)))return super.Bounds(object,low,high);
+30:         vector box[2];if(!object.GetCollisionBox(box))return super.Bounds(object,low,high);
+31:         vector transform[4];object.GetTransform(transform);float scale=object.GetScale();
+32:         NFBoundsEpochEntry cached;
+33:         if(NFBCache.Find(object,cached))
+34:         {
+35:             bool same=cached.M0==transform[0] && cached.M1==transform[1] && cached.M2==transform[2] && cached.M3==transform[3];
+36:             same=same && cached.Box0==box[0] && cached.Box1==box[1] && cached.NFScaleValue==scale && cached.NFShapeName==shapePathKey;
+37:             if(same)
+38:             {
+39:                 NFBHits++;
+40:                 if(NFBShadow)
+41:                 {
+42:                     bool actual=super.Bounds(object,low,high);
+43:                     if(!actual || vector.Distance(low,cached.Low)>0.000001 || vector.Distance(high,cached.High)>0.000001)NFBMismatches++;
+44:                     return actual;
+45:                 }
+46:                 low=cached.Low;high=cached.High;return true;
+47:             }
+48:         }
+49:         NFBMisses++;bool valid=super.Bounds(object,low,high);
+50:         if(valid && (cached || NFBCache.Count()<128))
+51:         {
+52:             if(!cached)cached=new NFBoundsEpochEntry;
+53:             cached.M0=transform[0];cached.M1=transform[1];cached.M2=transform[2];cached.M3=transform[3];
+54:             cached.Box0=box[0];cached.Box1=box[1];cached.NFScaleValue=scale;cached.NFShapeName=shapePathKey;cached.Low=low;cached.High=high;
+55:             NFBCache.Set(object,cached);
+56:         }
+57:         return valid;
+58:     }
+59: }
+
+FILE init.c SHA256 1e979933a8bea459e2739ce07df160c7fc53de727486d506023fb7acdcebfc05
+1: class NFBoundsEpochMission: MissionServer
+2: {
+3:     ref DGBNativeGroundDirector Director=new DGBNativeGroundDirector;
+4:     ref DGBNativeStaticMap Reference;ref DGBNativeStaticMap Candidate;
+5:     ref array<Object> Props={};FileHandle Trace;float Age;int Block;int Mismatches;bool Started;bool Ended;
+6:     void Setup()
+7:     {
+8:         Director.Fixture=new DGBTraversalFixture;Director.Now=100;
+9:         Reference=new DGBNativeStaticMap(Director);Candidate=new DGBNativeStaticMap(Director);
+10:         Reference.NFBEnabled=true;Reference.NFBRead=true;Reference.NFBForceOff=true;
+11:         Candidate.NFBEnabled=true;Candidate.NFBRead=true;
+12:         for(int i=0;i<35;i++)
+13:         {
+14:             vector p=Vector(4500+Math.ModFloat(i,7)*1.1,340,10220+Math.Floor(i/7)*1.1);
+15:             Object o=GetGame().CreateObjectEx("DGNativeCorpseContact",p,ECE_LOCAL | ECE_CREATEPHYSICS);
+16:             if(!o){Print("DG_ROLE_FAILED bounds_fixture_spawn");Ended=true;GetGame().RequestExit(1);return;}
+17:             Props.Insert(o);
+18:         }
+19:         Trace=OpenFile("$profile:bounds-method.tsv",FileMode.WRITE);
+20:         FPrintln(Trace,"block\tmode\tcalls\tticks\thits\tmisses\tmismatches");
+21:         Print("DG_ROLE_READY bounds_epoch_method props=35 npc=0");
+22:     }
+23:     bool Same(Object o)
+24:     {
+25:         vector al,ah,bl,bh;bool ar=Reference.Bounds(o,al,ah);bool br=Candidate.Bounds(o,bl,bh);
+26:         if(ar!=br)return false;if(!ar)return true;
+27:         return vector.Distance(al,bl)<=0.000001 && vector.Distance(ah,bh)<=0.000001;
+28:     }
+29:     void Verify()
+30:     {
+31:         Candidate.NFBBeginEpoch();
+32:         foreach(Object item:Props){if(!Same(item) || !Same(item))Mismatches++;}
+33:         Object changed=Props[0];vector old=changed.GetPosition();vector oldRot=changed.GetOrientation();
+34:         changed.SetPosition(old+"0.125 0.0625 -0.125");if(!Same(changed))Mismatches++;
+35:         changed.SetOrientation("23 0 0");if(!Same(changed))Mismatches++;
+36:         changed.SetScale(1.05);if(!Same(changed))Mismatches++;
+37:         if(dBodyIsSet(changed)){dBodyDynamic(changed,true);if(!Same(changed))Mismatches++;dBodyDynamic(changed,false);if(!Same(changed))Mismatches++;}
+38:         if(!Same(null))Mismatches++;
+39:         changed.SetScale(1);changed.SetPosition(old);changed.SetOrientation(oldRot);if(!Same(changed))Mismatches++;
+40:         Candidate.NFBEndEpoch();Candidate.NFBBeginEpoch();if(!Same(changed))Mismatches++;Candidate.NFBEndEpoch();
+41:     }
+42:     void Measure(int mode)
+43:     {
+44:         DGBNativeStaticMap boundsMap=Reference;if(mode==1)boundsMap=Candidate;
+45:         int hits=boundsMap.NFBHits;int misses=boundsMap.NFBMisses;int start=TickCount(0);
+46:         for(int epoch=0;epoch<8;epoch++)
+47:         {
+48:             boundsMap.NFBBeginEpoch();
+49:             for(int actor=0;actor<8;actor++)
+50:             {
+51:                 foreach(Object item:Props){vector low,high;if(!boundsMap.Bounds(item,low,high))Mismatches++;}
+52:             }
+53:             boundsMap.NFBEndEpoch();
+54:         }
+55:         int elapsed=TickCount(start);string row=Block.ToString()+"\t"+mode+"\t2240\t"+elapsed;
+56:         row+="\t"+(boundsMap.NFBHits-hits)+"\t"+(boundsMap.NFBMisses-misses)+"\t"+Mismatches;FPrintln(Trace,row);
+57:     }
+58:     override void OnUpdate(float timeslice)
+59:     {
+60:         super.OnUpdate(timeslice);Age+=timeslice;if(Ended || Age<20)return;
+61:         if(!Started){Setup();Started=true;if(!Ended)Verify();return;}
+62:         if(Mismatches>0){Print("DG_ROLE_FAILED bounds_mismatch="+Mismatches);CloseFile(Trace);Ended=true;GetGame().RequestExit(1);return;}
+63:         if(Block<16){int first=Math.ModFloat(Block,2);if(FileExist("$profile:reverse.flag"))first=1-first;Measure(first);Measure(1-first);Block++;return;}
+64:         CloseFile(Trace);foreach(Object deleted:Props)GetGame().ObjectDelete(deleted);Props.Clear();Ended=true;
+65:         Print("DG_ROLE_DONE bounds_epoch_method blocks="+Block+" mismatches="+Mismatches);
+66:         Print("NF_NETWORK_SERVER_EXIT_REQUESTED code=0");GetGame().RequestExit(0);
+67:     }
+68: }
+69: void main(){}
+70: Mission CreateCustomMission(string path){return new NFBoundsEpochMission;}
+
+RUN ANIM-bounds-method1d SHA256 18eb113d5ed361380bd5d664b7974a8fb9e19b01a34485dc26dc4f5630ff9eb7
+block	mode	calls	ticks	hits	misses	mismatches
+0	0	2240	94185	0	0	0
+0	1	2240	42637	1960	280	0
+1	1	2240	45442	1960	280	0
+1	0	2240	91590	0	0	0
+2	0	2240	96270	0	0	0
+2	1	2240	42462	1960	280	0
+3	1	2240	43493	1960	280	0
+3	0	2240	92962	0	0	0
+4	0	2240	93385	0	0	0
+4	1	2240	42555	1960	280	0
+5	1	2240	43462	1960	280	0
+5	0	2240	98336	0	0	0
+6	0	2240	92884	0	0	0
+6	1	2240	43461	1960	280	0
+7	1	2240	45338	1960	280	0
+7	0	2240	92105	0	0	0
+8	0	2240	93828	0	0	0
+8	1	2240	42934	1960	280	0
+9	1	2240	43152	1960	280	0
+9	0	2240	92275	0	0	0
+10	0	2240	94021	0	0	0
+10	1	2240	42456	1960	280	0
+11	1	2240	43064	1960	280	0
+11	0	2240	92915	0	0	0
+12	0	2240	92562	0	0	0
+12	1	2240	43761	1960	280	0
+13	1	2240	48555	1960	280	0
+13	0	2240	92679	0	0	0
+14	0	2240	102524	0	0	0
+14	1	2240	43703	1960	280	0
+15	1	2240	77396	1960	280	0
+15	0	2240	123636	0	0	0
+
+RUN ANIM-bounds-method2 SHA256 2de47df16ea347003fb00eebe52c198a19dd50b93c4e6ea6fcc031a38c2e3dc9
+block	mode	calls	ticks	hits	misses	mismatches
+0	1	2240	43637	1960	280	0
+0	0	2240	90852	0	0	0
+1	0	2240	91462	0	0	0
+1	1	2240	43147	1960	280	0
+2	1	2240	74232	1960	280	0
+2	0	2240	95190	0	0	0
+3	0	2240	89088	0	0	0
+3	1	2240	44116	1960	280	0
+4	1	2240	43257	1960	280	0
+4	0	2240	89226	0	0	0
+5	0	2240	89810	0	0	0
+5	1	2240	43685	1960	280	0
+6	1	2240	43054	1960	280	0
+6	0	2240	88489	0	0	0
+7	0	2240	91136	0	0	0
+7	1	2240	42816	1960	280	0
+8	1	2240	43140	1960	280	0
+8	0	2240	89383	0	0	0
+9	0	2240	89214	0	0	0
+9	1	2240	43106	1960	280	0
+10	1	2240	53061	1960	280	0
+10	0	2240	114257	0	0	0
+11	0	2240	89691	0	0	0
+11	1	2240	43155	1960	280	0
+12	1	2240	42476	1960	280	0
+12	0	2240	90048	0	0	0
+13	0	2240	88737	0	0	0
+13	1	2240	43852	1960	280	0
+14	1	2240	43661	1960	280	0
+14	0	2240	89283	0	0	0
+15	0	2240	89624	0	0	0
+15	1	2240	46367	1960	280	0
+
+RUN ANIM-bounds-sparse1 SHA256 7786f5f1c08f273bd6cd3376d0c365f79f1cb3f451ecd29a77dfc238b74ef1b1
+block	mode	calls	ticks	hits	misses	mismatches
+0	0	128	5511	0	0	0
+0	1	128	2682	112	16	0
+1	1	128	2994	112	16	0
+1	0	128	5330	0	0	0
+2	0	128	5612	0	0	0
+2	1	128	2694	112	16	0
+3	1	128	2880	112	16	0
+3	0	128	5302	0	0	0
+4	0	128	5517	0	0	0
+4	1	128	2722	112	16	0
+5	1	128	2944	112	16	0
+5	0	128	5349	0	0	0
+6	0	128	5517	0	0	0
+6	1	128	2716	112	16	0
+7	1	128	2931	112	16	0
+7	0	128	5392	0	0	0
+8	0	128	5556	0	0	0
+8	1	128	2697	112	16	0
+9	1	128	2918	112	16	0
+9	0	128	5616	0	0	0
+10	0	128	5930	0	0	0
+10	1	128	2696	112	16	0
+11	1	128	2863	112	16	0
+11	0	128	5300	0	0	0
+12	0	128	9918	0	0	0
+12	1	128	4784	112	16	0
+13	1	128	2903	112	16	0
+13	0	128	5275	0	0	0
+14	0	128	9844	0	0	0
+14	1	128	4794	112	16	0
+15	1	128	2852	112	16	0
+15	0	128	5272	0	0	0
+
+Results
+{
+  "schemaVersion": "1.0.0",
+  "sourceRunId": "bounds-epoch-method-20261107",
+  "runs": [
+    {
+      "runId": "ANIM-bounds-method1d",
+      "props": 35,
+      "blocks": 16,
+      "callsPerArm": 35840,
+      "referenceMedianTicks": 93173.5,
+      "candidateMedianTicks": 43461.5,
+      "pairedMedianPercent": -53.44385018582851,
+      "pairedRangePercent": [
+        -57.372907806952526,
+        -37.40011000032353
+      ],
+      "mismatches": 0,
+      "hits": 31360,
+      "misses": 4480,
+      "exitCode": -1,
+      "normalProcessExitAccepted": false,
+      "units": "raw TickCount units; no CPU self-time or frame-time claim",
+      "wholeFrameImprovementMeasured": false
+    },
+    {
+      "runId": "ANIM-bounds-method2",
+      "props": 35,
+      "blocks": 16,
+      "callsPerArm": 35840,
+      "referenceMedianTicks": 89657.5,
+      "candidateMedianTicks": 43447.0,
+      "pairedMedianPercent": -51.601103880350635,
+      "pairedRangePercent": [
+        -53.559956939180964,
+        -22.01701859439017
+      ],
+      "mismatches": 0,
+      "hits": 31360,
+      "misses": 4480,
+      "exitCode": -1,
+      "normalProcessExitAccepted": false,
+      "units": "raw TickCount units; no CPU self-time or frame-time claim",
+      "wholeFrameImprovementMeasured": false
+    },
+    {
+      "runId": "ANIM-bounds-sparse1",
+      "props": 2,
+      "blocks": 16,
+      "callsPerArm": 2048,
+      "referenceMedianTicks": 5514.0,
+      "candidateMedianTicks": 2871.5,
+      "pairedMedianPercent": -49.351450992968125,
+      "pairedRangePercent": [
+        -54.53625632377741,
+        -43.82739212007505
+      ],
+      "mismatches": 0,
+      "hits": 1792,
+      "misses": 256,
+      "exitCode": -1,
+      "normalProcessExitAccepted": false,
+      "units": "raw TickCount units; no CPU self-time or frame-time claim",
+      "wholeFrameImprovementMeasured": false
+    }
+  ],
+  "verificationStatus": "isolated-engine-method-comparison-only",
+  "functionalRegressionAccepted": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "fullGoalComplete": false,
+  "limitations": [
+    "No actual StaticMap.Update/Apply output equivalence tested",
+    "No eight/sixty-four NPC regression or Present measurement",
+    "Two dense independent runs; sparse condition one run",
+    "All server exits were -1 despite script RequestExit(0); normal process exit not accepted",
+    "Cache allocation/key-check overhead included in method range; no independent allocation/GC measurement"
+  ],
+  "generatedAt": "2026-11-07T02:24:41.259362+09:00",
+  "buildId": "114417D39AA89921AC50B550F98A810768AEF3EC197AD759AED42E8887F85037",
+  "metrics": {
+    "runs": [
+      {
+        "runId": "ANIM-bounds-method1d",
+        "props": 35,
+        "blocks": 16,
+        "callsPerArm": 35840,
+        "referenceMedianTicks": 93173.5,
+        "candidateMedianTicks": 43461.5,
+        "pairedMedianPercent": -53.44385018582851,
+        "pairedRangePercent": [
+          -57.372907806952526,
+          -37.40011000032353
+        ],
+        "mismatches": 0,
+        "hits": 31360,
+        "misses": 4480,
+        "exitCode": -1,
+        "normalProcessExitAccepted": false,
+        "units": "raw TickCount units; no CPU self-time or frame-time claim",
+        "wholeFrameImprovementMeasured": false
+      },
+      {
+        "runId": "ANIM-bounds-method2",
+        "props": 35,
+        "blocks": 16,
+        "callsPerArm": 35840,
+        "referenceMedianTicks": 89657.5,
+        "candidateMedianTicks": 43447.0,
+        "pairedMedianPercent": -51.601103880350635,
+        "pairedRangePercent": [
+          -53.559956939180964,
+          -22.01701859439017
+        ],
+        "mismatches": 0,
+        "hits": 31360,
+        "misses": 4480,
+        "exitCode": -1,
+        "normalProcessExitAccepted": false,
+        "units": "raw TickCount units; no CPU self-time or frame-time claim",
+        "wholeFrameImprovementMeasured": false
+      },
+      {
+        "runId": "ANIM-bounds-sparse1",
+        "props": 2,
+        "blocks": 16,
+        "callsPerArm": 2048,
+        "referenceMedianTicks": 5514.0,
+        "candidateMedianTicks": 2871.5,
+        "pairedMedianPercent": -49.351450992968125,
+        "pairedRangePercent": [
+          -54.53625632377741,
+          -43.82739212007505
+        ],
+        "mismatches": 0,
+        "hits": 1792,
+        "misses": 256,
+        "exitCode": -1,
+        "normalProcessExitAccepted": false,
+        "units": "raw TickCount units; no CPU self-time or frame-time claim",
+        "wholeFrameImprovementMeasured": false
+      }
+    ]
+  },
+  "blockers": [
+    "No actual StaticMap.Update/Apply output equivalence tested",
+    "No eight/sixty-four NPC regression or Present measurement",
+    "Two dense independent runs; sparse condition one run",
+    "All server exits were -1 despite script RequestExit(0); normal process exit not accepted",
+    "Cache allocation/key-check overhead included in method range; no independent allocation/GC measurement"
+  ],
+  "evidenceReferences": [
+    "reports/operations/bounds-epoch-method-20261107.md",
+    "evidence/bounds-epoch-method-20261107.txt"
+  ]
+}

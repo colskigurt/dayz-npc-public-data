@@ -1,22 +1,17 @@
-# DayZ NPC 현재 상태 — 2026-11-06
+# DayZ NPC 현재 상태
 
-새 사전검토: [추가 의심점·GitHub군집코드](reports/operations/preimplementation-review-20261106.md) — 중첩순위순회/계획예산범위/정적경계중복/군집dt. 구현·새시험 없음.
-
-추가 검토: [충돌 외 비용 후보](reports/operations/noncollision-cost-review-20261106.md) — 경로계획·320파트표시동기화·사망후반복설정·진단출력. 함수별CPU순위미확정.
-
-추가 진단: [밀집 접촉·시체 통행](reports/operations/collision-corpse-review-20261106.md) — 시체가 직접 충돌 대상으로 기록된754행 확인. 사망체의 생존용접촉솔브는정지하며정적시체충돌은남음. CPU비중은미분리.
-
-64개체 전원 생존 표본 Present p95 **27.66ms**. ID54 제자리 회복122회와 ID17 시체지지·전리품 대기 미해결. 진단 성공, 기능·20ms 성능 목표·최종 시각 수용은 별도이며 미통과.
+기존 5파트 플레이 빌드 유지. 경계 재사용은 메서드 진단만 성공, 실제 게임/전체 비용 미수용. 과거 순위 조기종료 후보는 전체 비용 세 쌍에서 개선이 재현되지 않아 미수용.
 
 | 항목 | 확인 범위 |
 |---|---|
-|64 이동·등반|64/64 이동,60/64 한 번 이상 등반,고지대46/64 관측;수동경로|
-|사망·전리품|36처치·36포즈완료·35전리품,28생존|
-|중요 미해결|ID54 제자리복구122·ID17 사망접촉대기|
-|전원생존 Present p50/p95/p99|15.22/27.66/35.15ms;단일30초진단|
-|수집기 제한|CSV있음·exitCode null로정상종료검증실패|
-|8과 비교|8의비용표본은생존7→0;통제비교아님|
+| 애니메이션 | 사용자 14클립·8개체 시각 평가 성공,64 전체 최종 수용 별도 |
+| 최근 64 수동 시험 | 전원 생존 30초 Present p95 27.66ms,단일 실행·수집기 종료 판정 미수용 |
+| 기능 잔여 | 한 개체 복구 반복,시체 한 개체 착지 대기 보존 |
+| 새 경계 재사용 | 35개 정적 물체 2회·2개 1회,미스매치0;전체 비용 미측정 |
+| 순위 조기종료 | 과거 비용 3쌍 방향 불일치·미수용 |
+| 다음 단일 작업 | 실제 Update/Apply 결과 동등성 |
+| 목표 | 64개체 p95 20ms,미달성 |
 
-[상세 보고서](reports/operations/playable-sixtyfour1-20261106.md) · [복사용 TXT](reports/operations/playable-sixtyfour1-20261106.txt) · [JSON](api/public/playable-sixtyfour1.json) · [8개체 정정](reports/errata/playable-eight2-attack-starts-20261106.md)
+[상세](reports/operations/bounds-epoch-method-20261107.md) · [근거 TXT](evidence/bounds-epoch-method-20261107.txt) · [JSON](api/public/bounds-epoch-method.json)
 
-[AI 검토](AI_REVIEW.md) · [직전8개체 보고](reports/operations/playable-eight2-20261106.md) · [기존 작업 목록](reports/latest.md)
+[AI 검토](AI_REVIEW.md) · [직전 안내](reports/history/20261107-before-bounds-README.md)

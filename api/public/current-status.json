@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-04T23:00:42.244Z",
+  "generatedAt": "2026-11-07T02:24:41.259362+09:00",
   "sourceRunId": "palette64-fullclips-runtime-probe1",
   "buildId": "staged_fixture_no_new_PBO",
   "verificationStatus": {
@@ -5810,5 +5810,160 @@
     "functionalAccepted": false,
     "performanceAccepted": false,
     "visualAccepted": false
+  },
+  "latestBoundsEpochMethod": {
+    "schemaVersion": "1.0.0",
+    "sourceRunId": "bounds-epoch-method-20261107",
+    "runs": [
+      {
+        "runId": "ANIM-bounds-method1d",
+        "props": 35,
+        "blocks": 16,
+        "callsPerArm": 35840,
+        "referenceMedianTicks": 93173.5,
+        "candidateMedianTicks": 43461.5,
+        "pairedMedianPercent": -53.44385018582851,
+        "pairedRangePercent": [
+          -57.372907806952526,
+          -37.40011000032353
+        ],
+        "mismatches": 0,
+        "hits": 31360,
+        "misses": 4480,
+        "exitCode": -1,
+        "normalProcessExitAccepted": false,
+        "units": "raw TickCount units; no CPU self-time or frame-time claim",
+        "wholeFrameImprovementMeasured": false
+      },
+      {
+        "runId": "ANIM-bounds-method2",
+        "props": 35,
+        "blocks": 16,
+        "callsPerArm": 35840,
+        "referenceMedianTicks": 89657.5,
+        "candidateMedianTicks": 43447.0,
+        "pairedMedianPercent": -51.601103880350635,
+        "pairedRangePercent": [
+          -53.559956939180964,
+          -22.01701859439017
+        ],
+        "mismatches": 0,
+        "hits": 31360,
+        "misses": 4480,
+        "exitCode": -1,
+        "normalProcessExitAccepted": false,
+        "units": "raw TickCount units; no CPU self-time or frame-time claim",
+        "wholeFrameImprovementMeasured": false
+      },
+      {
+        "runId": "ANIM-bounds-sparse1",
+        "props": 2,
+        "blocks": 16,
+        "callsPerArm": 2048,
+        "referenceMedianTicks": 5514.0,
+        "candidateMedianTicks": 2871.5,
+        "pairedMedianPercent": -49.351450992968125,
+        "pairedRangePercent": [
+          -54.53625632377741,
+          -43.82739212007505
+        ],
+        "mismatches": 0,
+        "hits": 1792,
+        "misses": 256,
+        "exitCode": -1,
+        "normalProcessExitAccepted": false,
+        "units": "raw TickCount units; no CPU self-time or frame-time claim",
+        "wholeFrameImprovementMeasured": false
+      }
+    ],
+    "verificationStatus": "isolated-engine-method-comparison-only",
+    "functionalRegressionAccepted": false,
+    "visualAccepted": false,
+    "performanceAccepted": false,
+    "fullGoalComplete": false,
+    "limitations": [
+      "No actual StaticMap.Update/Apply output equivalence tested",
+      "No eight/sixty-four NPC regression or Present measurement",
+      "Two dense independent runs; sparse condition one run",
+      "All server exits were -1 despite script RequestExit(0); normal process exit not accepted",
+      "Cache allocation/key-check overhead included in method range; no independent allocation/GC measurement"
+    ],
+    "generatedAt": "2026-11-07T02:24:41.259362+09:00",
+    "buildId": "114417D39AA89921AC50B550F98A810768AEF3EC197AD759AED42E8887F85037",
+    "metrics": {
+      "runs": [
+        {
+          "runId": "ANIM-bounds-method1d",
+          "props": 35,
+          "blocks": 16,
+          "callsPerArm": 35840,
+          "referenceMedianTicks": 93173.5,
+          "candidateMedianTicks": 43461.5,
+          "pairedMedianPercent": -53.44385018582851,
+          "pairedRangePercent": [
+            -57.372907806952526,
+            -37.40011000032353
+          ],
+          "mismatches": 0,
+          "hits": 31360,
+          "misses": 4480,
+          "exitCode": -1,
+          "normalProcessExitAccepted": false,
+          "units": "raw TickCount units; no CPU self-time or frame-time claim",
+          "wholeFrameImprovementMeasured": false
+        },
+        {
+          "runId": "ANIM-bounds-method2",
+          "props": 35,
+          "blocks": 16,
+          "callsPerArm": 35840,
+          "referenceMedianTicks": 89657.5,
+          "candidateMedianTicks": 43447.0,
+          "pairedMedianPercent": -51.601103880350635,
+          "pairedRangePercent": [
+            -53.559956939180964,
+            -22.01701859439017
+          ],
+          "mismatches": 0,
+          "hits": 31360,
+          "misses": 4480,
+          "exitCode": -1,
+          "normalProcessExitAccepted": false,
+          "units": "raw TickCount units; no CPU self-time or frame-time claim",
+          "wholeFrameImprovementMeasured": false
+        },
+        {
+          "runId": "ANIM-bounds-sparse1",
+          "props": 2,
+          "blocks": 16,
+          "callsPerArm": 2048,
+          "referenceMedianTicks": 5514.0,
+          "candidateMedianTicks": 2871.5,
+          "pairedMedianPercent": -49.351450992968125,
+          "pairedRangePercent": [
+            -54.53625632377741,
+            -43.82739212007505
+          ],
+          "mismatches": 0,
+          "hits": 1792,
+          "misses": 256,
+          "exitCode": -1,
+          "normalProcessExitAccepted": false,
+          "units": "raw TickCount units; no CPU self-time or frame-time claim",
+          "wholeFrameImprovementMeasured": false
+        }
+      ]
+    },
+    "blockers": [
+      "No actual StaticMap.Update/Apply output equivalence tested",
+      "No eight/sixty-four NPC regression or Present measurement",
+      "Two dense independent runs; sparse condition one run",
+      "All server exits were -1 despite script RequestExit(0); normal process exit not accepted",
+      "Cache allocation/key-check overhead included in method range; no independent allocation/GC measurement"
+    ],
+    "evidenceReferences": [
+      "reports/operations/bounds-epoch-method-20261107.md",
+      "evidence/bounds-epoch-method-20261107.txt"
+    ]
   }
 }

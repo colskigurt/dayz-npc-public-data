@@ -1,12 +1,11 @@
-# 64개체 진단 검토 지침
+# 현재 검토 범위와 미수용 사항
 
-64개체 전원 생존 표본 Present p95 **27.66ms**. ID54 제자리 회복122회와 ID17 시체지지·전리품 대기 미해결. 진단 성공, 기능·20ms 성능 목표·최종 시각 수용은 별도이며 미통과.
+기존 5파트 플레이 빌드 유지. 경계 재사용은 메서드 진단만 성공, 실제 게임/전체 비용 미수용. 과거 순위 조기종료 후보는 전체 비용 세 쌍에서 개선이 재현되지 않아 미수용.
 
-[상세 보고서](reports/operations/playable-sixtyfour1-20261106.md) · [복사용 TXT](reports/operations/playable-sixtyfour1-20261106.txt) · [JSON](api/public/playable-sixtyfour1.json) · [8개체 정정](reports/errata/playable-eight2-attack-starts-20261106.md)
+[상세](reports/operations/bounds-epoch-method-20261107.md) · [근거 TXT](evidence/bounds-epoch-method-20261107.txt) · [JSON](api/public/bounds-epoch-method.json)
 
-- 회복233회FOLLOW라는 집계에는 제자리 반복121회가 포함된다. 정상 낙하와 진행 없는 복구 루프를 구분한다.
-- 보조지지false17행은 같은 시각 후속검사에서 모두true가 됐다. 영구 등반끝실패17건으로 세지 않는다.
-- 28개체는 살아서 시험 종료했고 사망 실패로 세지 않는다. ID17은 실제 사망했으나 전리품 생성이 완료되지 않았다.
--8공격시작은24회이며 이전28회는피격반응4회가포함된BEGIN총수였다.
-- 전원생존64비용자료는 확보했지만 수집기 종료코드미확인,배경부하/카메라/동작미통제,독립반복1회다. 이전8·과거64와 최적화 개선율을 계산하지 않는다.
-- 주력은64CPU·물리질의비용 절감이다. 두기능결함은별도보존하고기능개발연쇄확대로바꾸지않는다. 신규구현·새시험은이번분석에서하지않았다.
+이번 값은 TickCount 메서드 경과 범위이며 CPU self-time·전체 프레임 비용이 아니다. 세 실행은 NPC0,정적 물체만 사용했다. 함수 진단 통과를 8/64 기능·시각·성능 성공으로 옮기지 않는다. 실제 Update/Apply 동등성 미확인,캐시 할당/GC 독립 비용 미측정,모든 실행 exitCode=-1을 정상 종료로 수용하지 않았다.
+
+순위 후보의 과거 8/64·비용 결과를 새 설계 문서보다 우선한다. 기존 접촉·낙하 결함 수정으로 CPU 최적화를 전환하지 않는다. 새 후보 default-OFF,지지·Ray/Sphere 생략 없음. 기존 PBO/운영 서버 변경 없음. 다음은 실제 Update 경계/장애물 배열/시그니처·경로무효화 동등성 하나다.
+
+[과거 안내](reports/history/20261107-before-bounds-AI_REVIEW.md)
