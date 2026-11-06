@@ -1,24 +1,16 @@
-# 최신 수동 플레이 진단 — 2026-11-06
+# DayZ NPC 현재 상태 — 2026-11-06
 
-8개체 수동 플레이: 추적8/8·사망/전리품8/8. 회복 낙하1건·착지 중 피격반응 만료2건. 30초 Present p95 9.91ms는 생존 수7→0 변동 표본이며 64개체 수용과 별개.
+64개체 전원 생존 표본 Present p95 **27.66ms**. ID54 제자리 회복122회와 ID17 시체지지·전리품 대기 미해결. 진단 성공, 기능·20ms 성능 목표·최종 시각 수용은 별도이며 미통과.
 
-[상세 보고서](reports/operations/playable-eight2-20261106.md) · [복사용 TXT](reports/operations/playable-eight2-20261106.txt) · [JSON](api/public/playable-eight2.json)
-
----
-
-# DayZ NPC 현재 작업 상태
-
-현행5파트14동작을한클라이언트에서일괄재생·전환검증. 14/14요청,24구간5파트일치,11738전경프레임·공통본차이0. idle영상반복한계보존,시각최종/64비용미수용. 
-
-| 항목 | 판정 |
+| 항목 | 확인 범위 |
 |---|---|
-|14동작 단일세션|14/14 요청·전환 확인|
-|공통본5파트 동기|서버·클라이언트 최대0m|
-|클라이언트 활성 관측|11738/11738|
-|두 사망·퇴역|각5파트 완료|
-|표시 품질|14종화면확인·idle9반복프레임발생계층미특정|
-|64CPU·전투·전체골|이번미검증·골일시정지유지|
+|64 이동·등반|64/64 이동,60/64 한 번 이상 등반,고지대46/64 관측;수동경로|
+|사망·전리품|36처치·36포즈완료·35전리품,28생존|
+|중요 미해결|ID54 제자리복구122·ID17 사망접촉대기|
+|전원생존 Present p50/p95/p99|15.22/27.66/35.15ms;단일30초진단|
+|수집기 제한|CSV있음·exitCode null로정상종료검증실패|
+|8과 비교|8의비용표본은생존7→0;통제비교아님|
 
-[상세](reports/operations/batch14-single-session-20261106.md) · [TXT](reports/operations/batch14-single-session-20261106.txt) · [근거](evidence/batch14-single-session-20261106.txt) · [JSON](api/public/batch14-single-session.json)
+[상세 보고서](reports/operations/playable-sixtyfour1-20261106.md) · [복사용 TXT](reports/operations/playable-sixtyfour1-20261106.txt) · [JSON](api/public/playable-sixtyfour1.json) · [8개체 정정](reports/errata/playable-eight2-attack-starts-20261106.md)
 
-[AI 검토](AI_REVIEW.md)
+[AI 검토](AI_REVIEW.md) · [직전8개체 보고](reports/operations/playable-eight2-20261106.md) · [기존 작업 목록](reports/latest.md)

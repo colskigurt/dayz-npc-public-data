@@ -1,3 +1,11 @@
+# 최신 64개체 전원 생존 진단
+
+64개체 전원 생존 표본 Present p95 **27.66ms**. ID54 제자리 회복122회와 ID17 시체지지·전리품 대기 미해결. 진단 성공, 기능·20ms 성능 목표·최종 시각 수용은 별도이며 미통과.
+
+[상세 보고서](reports/operations/playable-sixtyfour1-20261106.md) · [복사용 TXT](reports/operations/playable-sixtyfour1-20261106.txt) · [JSON](api/public/playable-sixtyfour1.json) · [8개체 정정](reports/errata/playable-eight2-attack-starts-20261106.md)
+
+---
+
 # 최신 수동 플레이 진단
 
 8개체 수동 플레이: 추적8/8·사망/전리품8/8. 회복 낙하1건·착지 중 피격반응 만료2건. 30초 Present p95 9.91ms는 생존 수7→0 변동 표본이며 64개체 수용과 별개.
