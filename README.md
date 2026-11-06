@@ -1,7 +1,10 @@
 # DayZ NPC 현재 상태
 
-재사용 외에 실제 접촉/후속질의 발생을 줄일 후보를 검토했다. 기존3입구 분산은 이미 작동한다. low레인0.8m/contact기준0.86m의차이를확인했고 0.8~1.05m 정적지지18조건은통과했다. 모션·CPU효과는미검증.
+- 최신: [lane-spacing-eight-pair1-20261107](reports/operations/lane-spacing-eight-pair1-20261107.md)
+- 8개체 레인 간격 0.8→0.95m 단일 비교: 양 조건 8/8 완료, 낙하·착지 FOLLOW 복귀 9/9.
+- 접촉 쌍 -7.18%, 전체 solve +8.67%, 완료 시간 55.9148→61.7306초. **비용 개선 미입증, 후보 기본 OFF·미수용**.
+- CPU/Present p50/p95/p99 미측정, 64개체 미실행, 시각 품질 미판정. 기존 64개체 성능 목표·애니메이션 최종 수용은 미완료.
+- 다음: 실제 추가 solve 발생 조건의 국소 변경 가능성 검토. 기능 개발로 확대하지 않음.
+- [공개 JSON](api/public/lane-spacing-eight-pair1.json)
 
-[상세](reports/operations/work-reduction-lane-feasibility-20261107.md) · [JSON](api/public/work-reduction-lane-feasibility.json) · [함수·근거 TXT](evidence/work-reduction-lane-feasibility-20261107.txt)
-
-다음후보는low레인만0.95m로맞추는기본OFF격리안과호출수계측명세. 현재게임코드/PBO미변경. 셀풀새엔진첫OFF자료와남은5회는보존·미완료. 전체20ms·64기능·시각최종수용미완료. 골active.
+기존 상세 기록: [README.md 보존본](reports/history/lane-spacing-eight-pair1-20261107-before-README.md)

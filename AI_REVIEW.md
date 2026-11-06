@@ -1,7 +1,10 @@
-# 계산이 발생하는 조건을 줄이는 검토
+# DayZ NPC 현재 상태
 
-재사용 외에 실제 접촉/후속질의 발생을 줄일 후보를 검토했다. 기존3입구 분산은 이미 작동한다. low레인0.8m/contact기준0.86m의차이를확인했고 0.8~1.05m 정적지지18조건은통과했다. 모션·CPU효과는미검증.
+- 최신: [lane-spacing-eight-pair1-20261107](reports/operations/lane-spacing-eight-pair1-20261107.md)
+- 8개체 레인 간격 0.8→0.95m 단일 비교: 양 조건 8/8 완료, 낙하·착지 FOLLOW 복귀 9/9.
+- 접촉 쌍 -7.18%, 전체 solve +8.67%, 완료 시간 55.9148→61.7306초. **비용 개선 미입증, 후보 기본 OFF·미수용**.
+- CPU/Present p50/p95/p99 미측정, 64개체 미실행, 시각 품질 미판정. 기존 64개체 성능 목표·애니메이션 최종 수용은 미완료.
+- 다음: 실제 추가 solve 발생 조건의 국소 변경 가능성 검토. 기능 개발로 확대하지 않음.
+- [공개 JSON](api/public/lane-spacing-eight-pair1.json)
 
-[상세](reports/operations/work-reduction-lane-feasibility-20261107.md) · [JSON](api/public/work-reduction-lane-feasibility.json) · [함수·근거 TXT](evidence/work-reduction-lane-feasibility-20261107.txt)
-
-첫등반관측54명은21/19/14로분산됐으며전원64의선택통계가아니다. 최대근접25명은최근접입구7/10/8이지만실제배정입구와다를수있다. 접촉규칙은유지하며레인간격을넓혀불필요압력의발생을줄일가능성을검토한다. 정상밀침/낙하삭제없음. 정적entry/exit검사는등반곡선전체/피격/CPU를입증하지않는다. 씬의작성된링크국소후보로일반맵확장성해결이아니다. 점유사전제외와압력재계획감축은별도후보로보류한다. 현재골재개상태이며과거일시정지유지표현을정정했다.
+기존 상세 기록: [AI_REVIEW.md 보존본](reports/history/lane-spacing-eight-pair1-20261107-before-AI_REVIEW.md)

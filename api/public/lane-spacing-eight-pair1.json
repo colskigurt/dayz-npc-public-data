@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-07T05:20:23.658092+09:00",
+  "sourceRunId": "ANIM-lane-eight-pair1",
+  "buildId": "A14F2AD23042D1B1EB24697A839404DB159B35C30734845DAE83C3B221486198",
+  "verificationStatus": "DIAGNOSTIC_SUCCESS_NOT_ACCEPTED",
+  "metrics": {
+    "pairCandidates": {
+      "off": 40835,
+      "on": 37209,
+      "totalChangePercent": -8.879637565813637,
+      "rateChangePercent": -17.46432334312249
+    },
+    "contactPairs": {
+      "off": 9202,
+      "on": 8541,
+      "totalChangePercent": -7.183221038904586,
+      "rateChangePercent": -15.927730618949798
+    },
+    "displaceCalls": {
+      "off": 6408,
+      "on": 6639,
+      "totalChangePercent": 3.604868913857673,
+      "rateChangePercent": -6.156014612776017
+    },
+    "pressureSolves": {
+      "off": 6340,
+      "on": 6592,
+      "totalChangePercent": 3.974763406940074,
+      "rateChangePercent": -5.820968839661833
+    },
+    "allBodySolves": {
+      "off": 16320,
+      "on": 17735,
+      "totalChangePercent": 8.6703431372549,
+      "rateChangePercent": -1.5677718594832912
+    }
+  },
+  "conditions": {
+    "logicalAgents": 8,
+    "nativeParts": 40,
+    "repetitionsPerArm": 1,
+    "offSeconds": 55.9148,
+    "onSeconds": 61.7306,
+    "cpuMeasured": false,
+    "visualAccepted": false
+  },
+  "blockers": [
+    "Total contact solves increased; no CPU reduction proved",
+    "One run per arm; phase/time confounding",
+    "64-agent test not run"
+  ],
+  "evidenceReferences": [
+    {
+      "runId": "ANIM-lane-eight-1-off",
+      "functionalAgents": 8,
+      "milestoneAgents": 8,
+      "falls": 9,
+      "landFollowCycles": 9
+    },
+    {
+      "runId": "ANIM-lane-eight-2-on",
+      "functionalAgents": 8,
+      "milestoneAgents": 8,
+      "falls": 9,
+      "landFollowCycles": 9
+    }
+  ]
+}
