@@ -1,0 +1,923 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-07T07:53:14.442277+09:00",
+  "sourceRunId": "receiver27-cost64-three1",
+  "buildId": "74718EE7AE304669BD5A77E8534C324C15250D2E0A882B89C642F6ABE34526E8",
+  "verificationStatus": "THREE_COST_PAIRS_COMPLETE_OVERALL_GATE_FAILED_CLIENT_GAIN_OBSERVED",
+  "metrics": {
+    "runs": [
+      {
+        "runId": "ANIM-rx27-cost-1-control",
+        "condition": "control",
+        "pair": 1,
+        "metricsMs": {
+          "MsBetweenPresents": {
+            "samples": 1152,
+            "p50": 11.8735,
+            "p95": 19.678945000000002,
+            "p99": 22.560109,
+            "mean": 12.970612673611111,
+            "maximum": 27.4434
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 1152,
+            "p50": 11.87645,
+            "p95": 19.648965,
+            "p99": 22.559905,
+            "mean": 12.9705328125,
+            "maximum": 27.8796
+          },
+          "MsCPUBusy": {
+            "samples": 1152,
+            "p50": 11.6969,
+            "p95": 19.515115,
+            "p99": 22.384390000000003,
+            "mean": 12.816165277777777,
+            "maximum": 27.2637
+          },
+          "MsCPUWait": {
+            "samples": 1152,
+            "p50": 0.1513,
+            "p95": 0.1897,
+            "p99": 0.22564900000000002,
+            "mean": 0.1544171875,
+            "maximum": 0.4241
+          },
+          "MsGPUBusy": {
+            "samples": 1152,
+            "p50": 2.7164,
+            "p95": 3.297715,
+            "p99": 3.4579760000000004,
+            "mean": 2.781951736111111,
+            "maximum": 4.7607
+          },
+          "MsGPUTime": {
+            "samples": 1152,
+            "p50": 11.87645,
+            "p95": 19.648965,
+            "p99": 22.559905,
+            "mean": 12.9705328125,
+            "maximum": 27.8796
+          },
+          "MsInPresentAPI": {
+            "samples": 1152,
+            "p50": 0.1513,
+            "p95": 0.1897,
+            "p99": 0.22564900000000002,
+            "mean": 0.1544171875,
+            "maximum": 0.4241
+          }
+        },
+        "serverProcessCpu": {
+          "serverCpuMsPerGameSecond": 914.5617461920783,
+          "serverCpuMsPerWallSecond": 911.7610927217825,
+          "startDelayMs": 192.4342,
+          "gamePerWallSecond": 0.9969377098025838
+        },
+        "phaseRows": {
+          "FOLLOW": 4914,
+          "FALL": 31,
+          "LAND": 4,
+          "MOTION": 80,
+          "SETTLE": 24,
+          "EGRESS": 3
+        },
+        "areaRows": {
+          "ground": 1618,
+          "low": 3426,
+          "air": 12
+        },
+        "receiverNodes": 250,
+        "aliveReceiverSnapshots": 79
+      },
+      {
+        "runId": "ANIM-rx27-cost-2-candidate",
+        "condition": "candidate",
+        "pair": 1,
+        "metricsMs": {
+          "MsBetweenPresents": {
+            "samples": 1484,
+            "p50": 8.9891,
+            "p95": 15.517430000000001,
+            "p99": 17.78353900000002,
+            "mean": 10.088949191374663,
+            "maximum": 22.2711
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 1484,
+            "p50": 8.99995,
+            "p95": 15.533124999999998,
+            "p99": 17.832229000000012,
+            "mean": 10.088950336927224,
+            "maximum": 22.225
+          },
+          "MsCPUBusy": {
+            "samples": 1484,
+            "p50": 8.8336,
+            "p95": 15.358844999999999,
+            "p99": 17.56896900000002,
+            "mean": 9.935815229110512,
+            "maximum": 22.0885
+          },
+          "MsCPUWait": {
+            "samples": 1484,
+            "p50": 0.1493,
+            "p95": 0.19556999999999997,
+            "p99": 0.2331700000000001,
+            "mean": 0.1531401617250674,
+            "maximum": 0.2975
+          },
+          "MsGPUBusy": {
+            "samples": 1484,
+            "p50": 2.62425,
+            "p95": 3.144605,
+            "p99": 3.3045869999999997,
+            "mean": 2.6921465633423183,
+            "maximum": 4.7572
+          },
+          "MsGPUTime": {
+            "samples": 1484,
+            "p50": 8.99995,
+            "p95": 15.533124999999998,
+            "p99": 17.832229000000012,
+            "mean": 10.088950336927224,
+            "maximum": 22.225
+          },
+          "MsInPresentAPI": {
+            "samples": 1484,
+            "p50": 0.1493,
+            "p95": 0.19556999999999997,
+            "p99": 0.2331700000000001,
+            "mean": 0.1531401617250674,
+            "maximum": 0.2975
+          }
+        },
+        "serverProcessCpu": {
+          "serverCpuMsPerGameSecond": 884.1863735736376,
+          "serverCpuMsPerWallSecond": 883.7117095564525,
+          "startDelayMs": 130.3033,
+          "gamePerWallSecond": 0.9994631629355849
+        },
+        "phaseRows": {
+          "FOLLOW": 4995,
+          "FALL": 15,
+          "SETTLE": 10,
+          "MOTION": 21,
+          "EGRESS": 3,
+          "LAND": 12
+        },
+        "areaRows": {
+          "ground": 2130,
+          "low": 2926
+        },
+        "receiverNodes": 27,
+        "aliveReceiverSnapshots": 79
+      },
+      {
+        "runId": "ANIM-rx27-cost-3-candidate",
+        "condition": "candidate",
+        "pair": 2,
+        "metricsMs": {
+          "MsBetweenPresents": {
+            "samples": 1496,
+            "p50": 9.34105,
+            "p95": 15.124625,
+            "p99": 17.251004999999996,
+            "mean": 9.992053743315507,
+            "maximum": 21.0099
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 1496,
+            "p50": 9.6506,
+            "p95": 15.4322,
+            "p99": 18.520469999999996,
+            "mean": 9.992188703208557,
+            "maximum": 22.9994
+          },
+          "MsCPUBusy": {
+            "samples": 1496,
+            "p50": 9.1887,
+            "p95": 14.974525,
+            "p99": 17.103344999999997,
+            "mean": 9.838864839572192,
+            "maximum": 20.8041
+          },
+          "MsCPUWait": {
+            "samples": 1496,
+            "p50": 0.15,
+            "p95": 0.1895,
+            "p99": 0.23327999999999985,
+            "mean": 0.1532129010695187,
+            "maximum": 0.2839
+          },
+          "MsGPUBusy": {
+            "samples": 1496,
+            "p50": 2.6219,
+            "p95": 3.139525,
+            "p99": 3.3354649999999997,
+            "mean": 2.6853223262032087,
+            "maximum": 4.5368
+          },
+          "MsGPUTime": {
+            "samples": 1496,
+            "p50": 9.3519,
+            "p95": 15.16305,
+            "p99": 17.33223,
+            "mean": 9.99209719251337,
+            "maximum": 21.0144
+          },
+          "MsInPresentAPI": {
+            "samples": 1496,
+            "p50": 0.15,
+            "p95": 0.1895,
+            "p99": 0.23327999999999985,
+            "mean": 0.1532129010695187,
+            "maximum": 0.2839
+          }
+        },
+        "serverProcessCpu": {
+          "serverCpuMsPerGameSecond": 884.9675734523083,
+          "serverCpuMsPerWallSecond": 883.1901093372692,
+          "startDelayMs": 127.8064,
+          "gamePerWallSecond": 0.9979914923796528
+        },
+        "phaseRows": {
+          "FOLLOW": 4912,
+          "MOTION": 40,
+          "SETTLE": 14,
+          "FALL": 3,
+          "LAND": 14,
+          "EGRESS": 9
+        },
+        "areaRows": {
+          "ground": 1780,
+          "low": 3208,
+          "air": 4
+        },
+        "receiverNodes": 27,
+        "aliveReceiverSnapshots": 78
+      },
+      {
+        "runId": "ANIM-rx27-cost-4-control",
+        "condition": "control",
+        "pair": 2,
+        "metricsMs": {
+          "MsBetweenPresents": {
+            "samples": 1190,
+            "p50": 11.00145,
+            "p95": 19.167089999999998,
+            "p99": 21.240374999999993,
+            "mean": 12.552087478991597,
+            "maximum": 24.5121
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 1190,
+            "p50": 10.9693,
+            "p95": 19.22459,
+            "p99": 21.304943999999995,
+            "mean": 12.552032773109243,
+            "maximum": 24.4466
+          },
+          "MsCPUBusy": {
+            "samples": 1190,
+            "p50": 10.83425,
+            "p95": 18.989144999999997,
+            "p99": 21.079168999999993,
+            "mean": 12.395516638655463,
+            "maximum": 24.292
+          },
+          "MsCPUWait": {
+            "samples": 1190,
+            "p50": 0.1536,
+            "p95": 0.194555,
+            "p99": 0.22384399999999896,
+            "mean": 0.1565495798319328,
+            "maximum": 0.2956
+          },
+          "MsGPUBusy": {
+            "samples": 1190,
+            "p50": 2.6549,
+            "p95": 3.21723,
+            "p99": 3.331033,
+            "mean": 2.724328487394958,
+            "maximum": 3.4314
+          },
+          "MsGPUTime": {
+            "samples": 1190,
+            "p50": 10.9693,
+            "p95": 19.22459,
+            "p99": 21.304943999999995,
+            "mean": 12.552032773109243,
+            "maximum": 24.4466
+          },
+          "MsInPresentAPI": {
+            "samples": 1190,
+            "p50": 0.1536,
+            "p95": 0.194555,
+            "p99": 0.22384399999999896,
+            "mean": 0.1565495798319328,
+            "maximum": 0.2956
+          }
+        },
+        "serverProcessCpu": {
+          "serverCpuMsPerGameSecond": 878.7565802625443,
+          "serverCpuMsPerWallSecond": 878.4775420305623,
+          "startDelayMs": 124.4065,
+          "gamePerWallSecond": 0.999682462426741
+        },
+        "phaseRows": {
+          "MOTION": 42,
+          "FOLLOW": 4936,
+          "FALL": 12,
+          "EGRESS": 21,
+          "SETTLE": 16,
+          "LAND": 29
+        },
+        "areaRows": {
+          "low": 2992,
+          "ground": 2058,
+          "air": 6
+        },
+        "receiverNodes": 250,
+        "aliveReceiverSnapshots": 79
+      },
+      {
+        "runId": "ANIM-rx27-cost-5-control",
+        "condition": "control",
+        "pair": 3,
+        "metricsMs": {
+          "MsBetweenPresents": {
+            "samples": 1151,
+            "p50": 12.6338,
+            "p95": 18.48325,
+            "p99": 20.63525,
+            "mean": 12.973056385751521,
+            "maximum": 24.0468
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 1151,
+            "p50": 12.6328,
+            "p95": 20.3141,
+            "p99": 23.537,
+            "mean": 12.974597827975673,
+            "maximum": 26.0262
+          },
+          "MsCPUBusy": {
+            "samples": 1151,
+            "p50": 12.4756,
+            "p95": 18.33315,
+            "p99": 20.4636,
+            "mean": 12.819272893136402,
+            "maximum": 23.8816
+          },
+          "MsCPUWait": {
+            "samples": 1151,
+            "p50": 0.1505,
+            "p95": 0.1861,
+            "p99": 0.2259,
+            "mean": 0.15380929626411816,
+            "maximum": 0.5171
+          },
+          "MsGPUBusy": {
+            "samples": 1151,
+            "p50": 2.7341,
+            "p95": 3.2834000000000003,
+            "p99": 3.4271,
+            "mean": 2.799159513466551,
+            "maximum": 4.3429
+          },
+          "MsGPUTime": {
+            "samples": 1151,
+            "p50": 12.5583,
+            "p95": 18.6025,
+            "p99": 20.77345,
+            "mean": 12.973048913987837,
+            "maximum": 24.1932
+          },
+          "MsInPresentAPI": {
+            "samples": 1151,
+            "p50": 0.1505,
+            "p95": 0.1861,
+            "p99": 0.2259,
+            "mean": 0.15380929626411816,
+            "maximum": 0.5171
+          }
+        },
+        "serverProcessCpu": {
+          "serverCpuMsPerGameSecond": 924.8091577584709,
+          "serverCpuMsPerWallSecond": 923.6931841258528,
+          "startDelayMs": 132.0971,
+          "gamePerWallSecond": 0.9987932930559176
+        },
+        "phaseRows": {
+          "FOLLOW": 4921,
+          "SETTLE": 27,
+          "LAND": 14,
+          "MOTION": 69,
+          "FALL": 4,
+          "EGRESS": 21
+        },
+        "areaRows": {
+          "ground": 1426,
+          "low": 3624,
+          "air": 6
+        },
+        "receiverNodes": 250,
+        "aliveReceiverSnapshots": 79
+      },
+      {
+        "runId": "ANIM-rx27-cost-6-candidate",
+        "condition": "candidate",
+        "pair": 3,
+        "metricsMs": {
+          "MsBetweenPresents": {
+            "samples": 1388,
+            "p50": 9.430299999999999,
+            "p95": 17.602394999999998,
+            "p99": 20.543086,
+            "mean": 10.761934365994236,
+            "maximum": 26.0702
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 1388,
+            "p50": 9.425699999999999,
+            "p95": 17.62525499999999,
+            "p99": 20.494471999999995,
+            "mean": 10.761863472622478,
+            "maximum": 26.2029
+          },
+          "MsCPUBusy": {
+            "samples": 1388,
+            "p50": 9.27935,
+            "p95": 17.428259999999998,
+            "p99": 20.358624999999996,
+            "mean": 10.604696974063401,
+            "maximum": 25.9183
+          },
+          "MsCPUWait": {
+            "samples": 1388,
+            "p50": 0.15215,
+            "p95": 0.201,
+            "p99": 0.2354079999999998,
+            "mean": 0.15723479827089337,
+            "maximum": 0.4222
+          },
+          "MsGPUBusy": {
+            "samples": 1388,
+            "p50": 2.6533,
+            "p95": 3.177615,
+            "p99": 3.315039,
+            "mean": 2.7209945244956772,
+            "maximum": 4.1133
+          },
+          "MsGPUTime": {
+            "samples": 1388,
+            "p50": 9.425699999999999,
+            "p95": 17.62525499999999,
+            "p99": 20.494471999999995,
+            "mean": 10.761863472622478,
+            "maximum": 26.2029
+          },
+          "MsInPresentAPI": {
+            "samples": 1388,
+            "p50": 0.15215,
+            "p95": 0.201,
+            "p99": 0.2354079999999998,
+            "mean": 0.15723479827089337,
+            "maximum": 0.4222
+          }
+        },
+        "serverProcessCpu": {
+          "serverCpuMsPerGameSecond": 914.2187312146835,
+          "serverCpuMsPerWallSecond": 912.6740378122705,
+          "startDelayMs": 127.332,
+          "gamePerWallSecond": 0.9983103678040367
+        },
+        "phaseRows": {
+          "FOLLOW": 4801,
+          "LAND": 35,
+          "MOTION": 50,
+          "SETTLE": 21,
+          "EGRESS": 39,
+          "FALL": 46
+        },
+        "areaRows": {
+          "ground": 1734,
+          "low": 3249,
+          "air": 9
+        },
+        "receiverNodes": 27,
+        "aliveReceiverSnapshots": 78
+      }
+    ],
+    "pairs": [
+      {
+        "pair": 1,
+        "controlRunId": "ANIM-rx27-cost-1-control",
+        "candidateRunId": "ANIM-rx27-cost-2-candidate",
+        "presentP95": {
+          "control": 19.678945000000002,
+          "candidate": 15.517430000000001,
+          "absoluteChange": -4.161515000000001,
+          "percentChange": -21.14704319769175
+        },
+        "clientCpuBusyP95": {
+          "control": 19.515115,
+          "candidate": 15.358844999999999,
+          "absoluteChange": -4.156270000000003,
+          "percentChange": -21.297696682802037
+        },
+        "serverCpuPerGameSecond": {
+          "control": 914.5617461920783,
+          "candidate": 884.1863735736376,
+          "absoluteChange": -30.37537261844068,
+          "percentChange": -3.3213036456984257
+        },
+        "serverCpuPerWallSecond": {
+          "control": 911.7610927217825,
+          "candidate": 883.7117095564525,
+          "absoluteChange": -28.049383165329914,
+          "percentChange": -3.0763961512765503
+        }
+      },
+      {
+        "pair": 2,
+        "controlRunId": "ANIM-rx27-cost-4-control",
+        "candidateRunId": "ANIM-rx27-cost-3-candidate",
+        "presentP95": {
+          "control": 19.167089999999998,
+          "candidate": 15.124625,
+          "absoluteChange": -4.042464999999998,
+          "percentChange": -21.090655910730316
+        },
+        "clientCpuBusyP95": {
+          "control": 18.989144999999997,
+          "candidate": 14.974525,
+          "absoluteChange": -4.014619999999997,
+          "percentChange": -21.141657510119582
+        },
+        "serverCpuPerGameSecond": {
+          "control": 878.7565802625443,
+          "candidate": 884.9675734523083,
+          "absoluteChange": 6.210993189764054,
+          "percentChange": 0.7067933634031354
+        },
+        "serverCpuPerWallSecond": {
+          "control": 878.4775420305623,
+          "candidate": 883.1901093372692,
+          "absoluteChange": 4.712567306706887,
+          "percentChange": 0.5364471009485339
+        }
+      },
+      {
+        "pair": 3,
+        "controlRunId": "ANIM-rx27-cost-5-control",
+        "candidateRunId": "ANIM-rx27-cost-6-candidate",
+        "presentP95": {
+          "control": 18.48325,
+          "candidate": 17.602394999999998,
+          "absoluteChange": -0.8808550000000039,
+          "percentChange": -4.76569326281906
+        },
+        "clientCpuBusyP95": {
+          "control": 18.33315,
+          "candidate": 17.428259999999998,
+          "absoluteChange": -0.9048900000000017,
+          "percentChange": -4.935812994493594
+        },
+        "serverCpuPerGameSecond": {
+          "control": 924.8091577584709,
+          "candidate": 914.2187312146835,
+          "absoluteChange": -10.590426543787316,
+          "percentChange": -1.1451472398322782
+        },
+        "serverCpuPerWallSecond": {
+          "control": 923.6931841258528,
+          "candidate": 912.6740378122705,
+          "absoluteChange": -11.019146313582269,
+          "percentChange": -1.192944421692399
+        }
+      }
+    ],
+    "summary": {
+      "presentP95": {
+        "medianPercentChange": -21.090655910730316,
+        "allPairsImprove": true
+      },
+      "clientCpuBusyP95": {
+        "medianPercentChange": -21.141657510119582,
+        "allPairsImprove": true
+      },
+      "serverCpuPerGameSecond": {
+        "medianPercentChange": -1.1451472398322782,
+        "allPairsImprove": false
+      },
+      "serverCpuPerWallSecond": {
+        "medianPercentChange": -1.192944421692399,
+        "allPairsImprove": false
+      }
+    },
+    "predeclaredPerformanceGatePassed": false,
+    "actualWeaponDamageVerified": false,
+    "visualAccepted": false,
+    "fullFunctionalSixtyfourAccepted": false
+  },
+  "blockers": [
+    "Process CPU is aggregate across threads, not animation evaluation self-time",
+    "Workload can vary despite identical stimulus",
+    "No full-game20ms or visible-pose acceptance",
+    "Actual damage/death and64 mobility remain independent gates",
+    "Server CPU reduction not consistent; median below5%",
+    "Combined asset reduction is not isolated bone-count cost",
+    "Candidate not deployed or finally accepted"
+  ],
+  "evidenceReferences": [
+    {
+      "name": "cost-comparison.json",
+      "sha256": "d69bcdb4673731f9dfca59005a7a67e6f80eea1fc87a2f338b26be729b5ce478"
+    },
+    {
+      "name": "contract.json",
+      "sha256": "a2eea293e0c71364f697950d473eaca258bdf9d5d1a5deb8c68b199736f915b2"
+    },
+    {
+      "name": "asset-scope.json",
+      "sha256": "062e202759f6f217d4928052f773dc1c94722a8c5ac18a7fcaefddbb575f8e9f"
+    },
+    {
+      "name": "signature-preflight.json",
+      "sha256": "73cd38ebff3226b5f7a8231042500c918f8fdae5cc0a2ae4f7472e41c48a3df3"
+    },
+    {
+      "name": "admin-completed.json",
+      "sha256": "20aa443eaeb56e7600e7b091b5562030c5750488aa690c1d2ac099b5cb330600"
+    },
+    {
+      "name": "staged-plan.json",
+      "sha256": "b54956af7cb3fa0066591c7169c9bc93e7cd8c1c3fb3051ee9af8b5dd38adf41"
+    },
+    {
+      "name": "pre-capture-observation.json",
+      "sha256": "fbf36d7a4adedfc48f5637bbe34129a24e79833b4d175839041dda3818c902be"
+    },
+    {
+      "name": "analysis-1.json",
+      "sha256": "72652c2a6481051c90a9125774fc946410c9de3e429b0bfa58c2897cae6a5e1a"
+    },
+    {
+      "name": "present.csv",
+      "sha256": "d40aa69f64d75ce8ae8d81ec787a5308d59f240f52ed1671a78e4919d14598d0"
+    },
+    {
+      "name": "closed.json",
+      "sha256": "92023303e462bcd6ff50c091d314161c01dca990c036d6b2a613613c1e446251"
+    },
+    {
+      "name": "consumed.json",
+      "sha256": "78d4f4ca9fba7483deeae3d2eda6a1a5927396d9e9f41cd68b1071324d049a9d"
+    },
+    {
+      "name": "visual-app-frames.tsv",
+      "sha256": "85a4201972ed1f432a14e2577a78fcc561d4de5ff8d92adabeefc9855ed44e67"
+    },
+    {
+      "name": "script_2026-11-07_07-29-39.log",
+      "sha256": "46b75a397c8253e1cc2d772732458003dbcba23f946937fb591a162e6da701f0"
+    },
+    {
+      "name": "receiver-cost.tsv",
+      "sha256": "010baeb0048532fd5c960a54ebe630f4c6a4edd2ecc01eda88ebf4133b68fe92"
+    },
+    {
+      "name": "gameplay-eight.tsv",
+      "sha256": "ff7659920aac4be20a2228b631d917bf5a77e0f1fbad19de6f6c6ffe510c6073"
+    },
+    {
+      "name": "server-process-cpu.json",
+      "sha256": "848292b73dd3cf4aa5b5b0710095933db06d426ebae6e770150b035e37923240"
+    },
+    {
+      "name": "server-process-cpu.csv",
+      "sha256": "69391b23442cbb7e7fa2d0f80d3aeda683018c646f077c2fe0faad57537e95ce"
+    },
+    {
+      "name": "analysis-2.json",
+      "sha256": "6cbd95c0fd04ba8ff8d2c2c68240f7979858533de073837e69d46b6a777a39d3"
+    },
+    {
+      "name": "present.csv",
+      "sha256": "90b36a2b88d11f6ba0a83a677851fa8aa92dc619d4cefa50912d399b9f353bab"
+    },
+    {
+      "name": "closed.json",
+      "sha256": "f64a789dd183f440fc0c1befc190d19fad58fbbb0f7f12f37011072b7ae5489a"
+    },
+    {
+      "name": "consumed.json",
+      "sha256": "6501db85984e529c5badef2d4c01e654a0945727a2b526ded71ec60d437ae422"
+    },
+    {
+      "name": "visual-app-frames.tsv",
+      "sha256": "b2a3809b73e7420628367f7bc4fa033193f0209b3ba3206f94f6ba6938656bcb"
+    },
+    {
+      "name": "script_2026-11-07_07-33-07.log",
+      "sha256": "01250c1d16cc5f17b7676a10014a0d1b4bde41191635c39f1aab097b62c95c13"
+    },
+    {
+      "name": "receiver-cost.tsv",
+      "sha256": "c39d8caea9ba189174e95daf3574cf53f120399f2cb40c1a911bd87779bb26fc"
+    },
+    {
+      "name": "gameplay-eight.tsv",
+      "sha256": "3c61b83b68e5d93d4827b5669924d4a12b455ea36b0e5a0fd3b458d1688b87c3"
+    },
+    {
+      "name": "server-process-cpu.json",
+      "sha256": "e1b82f2b288ecf149451b198ef87599c5131c19c013fb7cf047e4930383582a7"
+    },
+    {
+      "name": "server-process-cpu.csv",
+      "sha256": "6176bbc37df114de191530d749a7827296bed938f86b2eb2646029adb0613fc7"
+    },
+    {
+      "name": "analysis-3.json",
+      "sha256": "010c00d58f8bc11a1ca14aa59e9dff5d8403f734f3ee98b25d243ad4361a9b4a"
+    },
+    {
+      "name": "present.csv",
+      "sha256": "9405f144ceed61754baff1b5e8e363f3694dd4feff81bbbdf6e6e9f040af0268"
+    },
+    {
+      "name": "closed.json",
+      "sha256": "a84cc5a86a5cfd11208162661e92962162d74686f53bda732e3f039e6528866f"
+    },
+    {
+      "name": "consumed.json",
+      "sha256": "6cbd6870a5db209aab6db5a831ccd4aaf877be57296b7b92b074a95de371b0c9"
+    },
+    {
+      "name": "visual-app-frames.tsv",
+      "sha256": "ca30446a36e20d2d930acbc7ab1bfbf520c9902daa90b719b119e4d1b0026a7f"
+    },
+    {
+      "name": "script_2026-11-07_07-36-41.log",
+      "sha256": "82e62ba52b736da9c84cc3abf2edf0cb1b8401d1882c140f8636f1a82cc51ee9"
+    },
+    {
+      "name": "receiver-cost.tsv",
+      "sha256": "60c8c88086fb76e56ac4754fef9ebb5225c52013bb7b918de9b4b0eb7d5bccd9"
+    },
+    {
+      "name": "gameplay-eight.tsv",
+      "sha256": "a2f1d1992e49204ed75f5480c67829548626ba016ad22d1fbb2fa90aef3464ac"
+    },
+    {
+      "name": "server-process-cpu.json",
+      "sha256": "c25b663e27bbfb480f6dd264ba8c68aeedfa5e26916d6768270e05f2d1e46b9f"
+    },
+    {
+      "name": "server-process-cpu.csv",
+      "sha256": "95fd58a91f7eeece8fb7d1aa63976007f7624b187214318b9fba6f00324166f5"
+    },
+    {
+      "name": "analysis-4.json",
+      "sha256": "dca7921b848870d8220c4326486989f26b1a6844bfa2d690deeccfd38bd7ce5e"
+    },
+    {
+      "name": "present.csv",
+      "sha256": "e019b69747b6c7b1afe98ba3c640fcc6a72d61951a84a2dd3b89df21b9b6bb98"
+    },
+    {
+      "name": "closed.json",
+      "sha256": "6f9fc36145ed0f520cb4b0a8540ac54676ce49ab985ac501945eaa5620b79978"
+    },
+    {
+      "name": "consumed.json",
+      "sha256": "724c5d4ccd10d124a6bead1bd1096a0c1627edc9992d69bca99445b17a71e82e"
+    },
+    {
+      "name": "visual-app-frames.tsv",
+      "sha256": "9f92f39dcef392d40ceb300c99c09bbdd3f451614ccaa7c6f542c7cc75b8e2c0"
+    },
+    {
+      "name": "script_2026-11-07_07-40-00.log",
+      "sha256": "163b1fa2888799eca25b76c36b051c9360387c3761da715b2b0ec33705cae0a4"
+    },
+    {
+      "name": "receiver-cost.tsv",
+      "sha256": "42200ba050b7d039c7b7ce7cef7e97821832cc844b8598d9c7f48661adb3fabc"
+    },
+    {
+      "name": "gameplay-eight.tsv",
+      "sha256": "7944d0d92492322ed964a1e8046b7d7d3a7d6b6715d6a16cf58b8c36e7b28c9a"
+    },
+    {
+      "name": "server-process-cpu.json",
+      "sha256": "361f8894daa5de6b40ea3bed557af84c0cd28fda9c7fbdde622bdaee6b48d561"
+    },
+    {
+      "name": "server-process-cpu.csv",
+      "sha256": "3ebeff14bd0c934acafc5dc3cede13443d7aa18919e981dcea6ba5421cc2e3ab"
+    },
+    {
+      "name": "analysis-5.json",
+      "sha256": "dad8bee0adbd834db37d6549e71f0e1946feeeb794ff0d5f735f94938c953029"
+    },
+    {
+      "name": "present.csv",
+      "sha256": "5638ee6aae3bd392272e8212b08584a1dca541abc5968c62f4c6b8fe8899a80d"
+    },
+    {
+      "name": "closed.json",
+      "sha256": "e257917684ea8c975c2dfb7ddb3bd276efda89657b00349317ba8cebc4242a9d"
+    },
+    {
+      "name": "consumed.json",
+      "sha256": "d699f6d2b4ba2fd88fb3ae7e62f0db6157956e268e738e9b44bea8b30298c019"
+    },
+    {
+      "name": "visual-app-frames.tsv",
+      "sha256": "cbb9a766f84f709580fdb2971d651cde7a80eced78f7a376c2417e92acc5c909"
+    },
+    {
+      "name": "script_2026-11-07_07-43-57.log",
+      "sha256": "08b6b26daa106317f8ab5642a323860526bf7cb523eb336b868b374eb0b52af3"
+    },
+    {
+      "name": "receiver-cost.tsv",
+      "sha256": "d528065dce8dd5afc53fbb1762dc202bdf76b3d3abce3c8fa676ad9686376cd7"
+    },
+    {
+      "name": "gameplay-eight.tsv",
+      "sha256": "7677d959b19022d0f72acf0e6e1ec9a47aa1ec3d7c987e24f87039ec8282623d"
+    },
+    {
+      "name": "server-process-cpu.json",
+      "sha256": "b9f965a55989ca6dee0acad34e810ab9eeb5de884d9bafa0842b525ce15f3ac7"
+    },
+    {
+      "name": "server-process-cpu.csv",
+      "sha256": "24996aa9ff9d7d453c064dab23c7c71c15c305be19c3fb8fa6bd7eb6b6688f9a"
+    },
+    {
+      "name": "analysis-6.json",
+      "sha256": "a1e03d87d77ea1900ee243bbb1e2a71a1dd29965de39a48942bda4ac3faf902f"
+    },
+    {
+      "name": "present.csv",
+      "sha256": "fd1ce35420ea2f0af92bf3b6312ad257c5d938f2678467bb115a1c9b0b9d6700"
+    },
+    {
+      "name": "closed.json",
+      "sha256": "4128686daa388041434e44b0d1fcfd9ec4a70e496525a517898ba95465748bd8"
+    },
+    {
+      "name": "consumed.json",
+      "sha256": "f8cc2e844ff1a9d320d03eb91f73d3fc85e022dbb534d9d8b5de06858b40a13f"
+    },
+    {
+      "name": "visual-app-frames.tsv",
+      "sha256": "3eb9efa0851dbb275633a222476f7df9704b49583c8382d355b6a96781d7865c"
+    },
+    {
+      "name": "script_2026-11-07_07-47-30.log",
+      "sha256": "4d641e8f3864fa4ee3be9ae0d755283c0115a4a49d785d3a8cb0743307dbf852"
+    },
+    {
+      "name": "receiver-cost.tsv",
+      "sha256": "6765b0c8342506766ed2da636baab518c2b8a44938053bdd3179ebc34c2558d2"
+    },
+    {
+      "name": "gameplay-eight.tsv",
+      "sha256": "b7c3406a0d7618bff34cde291edc282c5b1df65049b68e3c7c0743e286ae5575"
+    },
+    {
+      "name": "server-process-cpu.json",
+      "sha256": "8b6f23bf4ba9251196d21fdbc1f550d97e4414b4b206c9c3d1ab472639674216"
+    },
+    {
+      "name": "server-process-cpu.csv",
+      "sha256": "3792d0fbdebf4a439fe24a600a90f72766603573a6a2821641a9d65ae4bb1c33"
+    }
+  ],
+  "conditions": {
+    "repetitionsPerArm": 3,
+    "order": [
+      "control-candidate",
+      "candidate-control",
+      "control-candidate"
+    ],
+    "captureSeconds": 15,
+    "minimumWarmupGameSeconds": 30,
+    "logicalNpcs": 64,
+    "displayParts": 320,
+    "damageReceivers": 64,
+    "nativeHosts": 384,
+    "sourceNodes": 250,
+    "candidateNodes": 27,
+    "sourceMeshMarkers": 1,
+    "candidateMeshMarkers": 0,
+    "fullFunctionalAccepted": false
+  }
+}
