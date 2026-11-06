@@ -1,14 +1,7 @@
 # DayZ NPC 현재 상태
 
-새 게임0. 같은64개체의 초기/밀집구간 격자 후보 평균636/992. 스냅샷 재구성이며 실제 callback 계수·CPU 증가율 아님. 격자 재사용은 타당성 검토,미구현.
+오프라인700프레임의 후보쌍398989건 순서일치. 기본OFF 격리PBO 빌드·서명검증 완료. Enforce실행·게임기능·성능은 미검증.
 
-| 항목 | 상태 |
-|---|---|
-| 이번 작업 | 기존 로그 오프라인 진단 |
-| 최근 실제64 비용 후보 | receiver 방향 생략: Present p95 OFF19.49/ON19.81ms,단일쌍 미수용 |
-| 평지 기준 | 3회 p95 14.55~18.82ms,별도 조건 |
-| 전체 목표 | 밀집/고저차/전투 성능·기능·시각 각각 미완료 |
+[상세](reports/operations/grid-cell-pool-offline-build-20261107.md) · [JSON](api/public/grid-cell-pool-offline-build.json) · [근거](evidence/grid-cell-pool-offline-build-20261107.txt)
 
-[상세](reports/operations/grid-density-existing-evidence-20261107.md) · [근거 TXT](evidence/grid-density-existing-evidence-20261107.txt) · [JSON](api/public/grid-density-existing-evidence.json)
-
-[최근 실제 비용시험](reports/operations/receiver-orientation-cost64-pilot-20261107.md) · [AI 검토](AI_REVIEW.md)
+최근 실제64 비용시험 receiver방향생략 후보는 p95이득없음으로 미수용. 이번 모델생성수 감소는 CPU개선이 아니다. 전체20ms·밀집기능·시각목표 미완료.

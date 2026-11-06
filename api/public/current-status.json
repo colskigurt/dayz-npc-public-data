@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-07T03:47:19.288618+09:00",
+  "generatedAt": "2026-11-07T03:51:57.150265+09:00",
   "sourceRunId": "palette64-fullclips-runtime-probe1",
   "buildId": "staged_fixture_no_new_PBO",
   "verificationStatus": {
@@ -7407,6 +7407,87 @@
     "evidenceReferences": [
       "reports/operations/grid-density-existing-evidence-20261107.md",
       "evidence/grid-density-existing-evidence-20261107.txt"
+    ],
+    "performanceAccepted": false,
+    "visualAccepted": false,
+    "fullGoalComplete": false
+  },
+  "latestGridCellPoolOfflineBuild": {
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2026-11-07T03:51:57.150265+09:00",
+    "sourceRunId": "grid-pool-offline-equivalence-20261107",
+    "buildId": "3CAA0D50D4CF64498FD8C98834F324F89B2CEDBE66AC4382DBCC3D73B94C9AC7",
+    "verificationStatus": "offline-equivalence-and-signed-build-only",
+    "metrics": {
+      "newGameRuns": 0,
+      "results": [
+        {
+          "label": "manual-allalive",
+          "frames": 130,
+          "orderedPairsCompared": 82718,
+          "mismatches": 0,
+          "modelCellCreationsOriginal": 3422,
+          "modelCellCreationsPooled": 36,
+          "poolHighWaterCells": 36
+        },
+        {
+          "label": "manual-dense-90-100",
+          "frames": 36,
+          "orderedPairsCompared": 35717,
+          "mismatches": 0,
+          "modelCellCreationsOriginal": 583,
+          "modelCellCreationsPooled": 26,
+          "poolHighWaterCells": 26
+        },
+        {
+          "label": "flat-1",
+          "frames": 78,
+          "orderedPairsCompared": 46308,
+          "mismatches": 0,
+          "modelCellCreationsOriginal": 2213,
+          "modelCellCreationsPooled": 35,
+          "poolHighWaterCells": 35
+        },
+        {
+          "label": "flat-2",
+          "frames": 78,
+          "orderedPairsCompared": 44925,
+          "mismatches": 0,
+          "modelCellCreationsOriginal": 2278,
+          "modelCellCreationsPooled": 34,
+          "poolHighWaterCells": 34
+        },
+        {
+          "label": "flat-3",
+          "frames": 78,
+          "orderedPairsCompared": 46257,
+          "mismatches": 0,
+          "modelCellCreationsOriginal": 2200,
+          "modelCellCreationsPooled": 34,
+          "poolHighWaterCells": 34
+        },
+        {
+          "label": "synthetic-empty-dense-negative-teleport-dead",
+          "frames": 300,
+          "orderedPairsCompared": 143064,
+          "mismatches": 0,
+          "modelCellCreationsOriginal": 11210,
+          "modelCellCreationsPooled": 128,
+          "poolHighWaterCells": 128
+        }
+      ]
+    },
+    "blockers": [
+      "Python model only; no Enforce compilation or engine allocation measurement",
+      "Same ordered candidate input implies unchanged AccumulatePair inputs only if runtime state/callback order is also preserved",
+      "No physics query, force, animation, networking or gameplay outcome was executed",
+      "Cell creation count is modeled, not allocated bytes, GC time or CPU improvement",
+      "String CellKey construction and map work remain; pool retains peak cell count until destruction",
+      "Enforce not compiled; gameplay and performance untested"
+    ],
+    "evidenceReferences": [
+      "reports/operations/grid-cell-pool-offline-build-20261107.md",
+      "evidence/grid-cell-pool-offline-build-20261107.txt"
     ],
     "performanceAccepted": false,
     "visualAccepted": false,
