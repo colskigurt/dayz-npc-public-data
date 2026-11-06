@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-06T21:05:53.158069+09:00",
+  "sourceRunId": "ANIM-playable-sixtyfour1",
+  "buildId": "5A0EED07E1F75FB347085387AA9EDBAC70659391BD45B42153071DFDB7500A0E",
+  "verificationStatus": "existing-log-source-diagnostic-no-new-implementation-or-performance-attribution",
+  "metrics": {
+    "diagnosticRows": 1528,
+    "directCorpseCollisionRows": 754,
+    "logThrottleSecondsPerBody": 0.5,
+    "deadBodiesCompared": 36,
+    "deadBodiesWithSolveContactsGrowthAfterPosePlus1Second": 0,
+    "deadBodiesWithNativePhysicsCallbackGrowth": 36,
+    "settledBodies": 35,
+    "unsettledDeathId": 17,
+    "corpsesPresentDuringAlive64Capture": 0,
+    "frameCostFractionAttributedToCollision": null
+  },
+  "blockers": [
+    "Exact collision CPU self-time not attributed",
+    "Corpse movement blocking versus support/cargo separation not implemented",
+    "Unsettled death17 still open"
+  ],
+  "evidenceReferences": [
+    "reports/operations/collision-corpse-review-20261106.md"
+  ],
+  "performanceAccepted": false
+}
