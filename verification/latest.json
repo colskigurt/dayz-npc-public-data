@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-07T03:14:50.746224+09:00",
-  "sourceRunId": "receiver-orientation-eight-20261107",
-  "commit": "5cd10ebb7858057eb101e86f1cd0dc3c41b7a225",
+  "generatedAt": "2026-11-07T03:39:21.270263+09:00",
+  "sourceRunId": "receiver-orientation-cost64-pilot-20261107",
+  "commit": "3fab01ff2b3a5a52290f2be30b89159b2260e62d",
   "httpVerified": true,
   "jsonSchemaVerified": true,
   "checkedFiles": 26,
@@ -10,12 +10,12 @@
   "externalAIRead": {
     "status": "verified",
     "tool": "web.open",
-    "url": "https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/5cd10ebb7858057eb101e86f1cd0dc3c41b7a225/reports/operations/receiver-orientation-eight-20261107.md",
-    "observed": "39/40 solves per agent-game-second; ON3478 setter calls skipped, zero output mismatches; CPU unmeasured"
+    "url": "https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/3fab01ff2b3a5a52290f2be30b89159b2260e62d/reports/operations/receiver-orientation-cost64-pilot-20261107.md",
+    "observed": "OFF19.491/ON19.811ms p95; gate failed; single-pair inconclusive and not accepted"
   },
   "blockers": [
-    "64 whole-frame cost and actual damage geometry unverified",
-    "Shadow shutdown null error retained",
-    "Extra getter overhead must be included in future cost comparison"
+    "No reproduced p95 benefit; candidate remains OFF",
+    "Single-pair regression unproven",
+    "Whole mobility/combat damage and visual acceptance unverified"
   ]
 }
