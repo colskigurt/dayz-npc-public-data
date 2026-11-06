@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-07T02:24:41.259362+09:00",
+  "generatedAt": "2026-11-07T02:36:24.906306+09:00",
   "sourceRunId": "palette64-fullclips-runtime-probe1",
   "buildId": "staged_fixture_no_new_PBO",
   "verificationStatus": {
@@ -5965,5 +5965,230 @@
       "reports/operations/bounds-epoch-method-20261107.md",
       "evidence/bounds-epoch-method-20261107.txt"
     ]
+  },
+  "latestBoundsUpdateEightShadow": {
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2026-11-07T02:36:24.906306+09:00",
+    "sourceRunId": "ANIM-bounds-eight-shadow1",
+    "buildId": "114417D39AA89921AC50B550F98A810768AEF3EC197AD759AED42E8887F85037",
+    "verificationStatus": "update-apply-equivalent-eight-gameplay-cache-hit-path-not-exercised-deferred",
+    "metrics": {
+      "update": {
+        "schemaVersion": "1.0.0",
+        "runId": "ANIM-bounds-update2",
+        "phases": 12,
+        "metadataBodies": 16,
+        "actualNpcEntities": 0,
+        "mismatches": 0,
+        "refreshes": 68,
+        "hits": 1326,
+        "misses": 288,
+        "checks": [
+          "obstacle arrays",
+          "signature",
+          "local counts",
+          "path and PlanAt",
+          "approach flags",
+          "cursor",
+          "NextUpdate",
+          "cache cleared at exit",
+          "not-due guard",
+          "unchanged signature retains path"
+        ],
+        "discoveryTested": false,
+        "discoveryCondition": "Existing cell-age cache deliberately primed; Queries=0",
+        "normalProcessExitAccepted": false,
+        "exitCode": -1,
+        "performanceMeasured": false,
+        "previousRun": "ANIM-bounds-update1: completion marker only, TSV header only; evidence insufficient, excluded",
+        "rows": [
+          {
+            "phase": "0",
+            "now": "100",
+            "refRefresh": "8",
+            "candidateRefresh": "8",
+            "cursor": "8",
+            "refQueries": "0",
+            "candidateQueries": "0",
+            "hits": "112",
+            "misses": "16",
+            "mismatches": "0"
+          },
+          {
+            "phase": "1",
+            "now": "100.02",
+            "refRefresh": "8",
+            "candidateRefresh": "8",
+            "cursor": "8",
+            "refQueries": "0",
+            "candidateQueries": "0",
+            "hits": "112",
+            "misses": "16",
+            "mismatches": "0"
+          },
+          {
+            "phase": "2",
+            "now": "100.4",
+            "refRefresh": "16",
+            "candidateRefresh": "16",
+            "cursor": "0",
+            "refQueries": "0",
+            "candidateQueries": "0",
+            "hits": "243",
+            "misses": "51",
+            "mismatches": "0"
+          },
+          {
+            "phase": "3",
+            "now": "100.6",
+            "refRefresh": "16",
+            "candidateRefresh": "16",
+            "cursor": "8",
+            "refQueries": "0",
+            "candidateQueries": "0",
+            "hits": "355",
+            "misses": "67",
+            "mismatches": "0"
+          },
+          {
+            "phase": "4",
+            "now": "100.8",
+            "refRefresh": "22",
+            "candidateRefresh": "22",
+            "cursor": "0",
+            "refQueries": "0",
+            "candidateQueries": "0",
+            "hits": "486",
+            "misses": "102",
+            "mismatches": "0"
+          },
+          {
+            "phase": "5",
+            "now": "101",
+            "refRefresh": "30",
+            "candidateRefresh": "30",
+            "cursor": "8",
+            "refQueries": "0",
+            "candidateQueries": "0",
+            "hits": "598",
+            "misses": "118",
+            "mismatches": "0"
+          },
+          {
+            "phase": "6",
+            "now": "101.2",
+            "refRefresh": "36",
+            "candidateRefresh": "36",
+            "cursor": "0",
+            "refQueries": "0",
+            "candidateQueries": "0",
+            "hits": "729",
+            "misses": "153",
+            "mismatches": "0"
+          },
+          {
+            "phase": "7",
+            "now": "101.4",
+            "refRefresh": "44",
+            "candidateRefresh": "44",
+            "cursor": "8",
+            "refQueries": "0",
+            "candidateQueries": "0",
+            "hits": "841",
+            "misses": "169",
+            "mismatches": "0"
+          },
+          {
+            "phase": "8",
+            "now": "101.6",
+            "refRefresh": "44",
+            "candidateRefresh": "44",
+            "cursor": "0",
+            "refQueries": "0",
+            "candidateQueries": "0",
+            "hits": "972",
+            "misses": "204",
+            "mismatches": "0"
+          },
+          {
+            "phase": "9",
+            "now": "101.8",
+            "refRefresh": "52",
+            "candidateRefresh": "52",
+            "cursor": "8",
+            "refQueries": "0",
+            "candidateQueries": "0",
+            "hits": "1084",
+            "misses": "220",
+            "mismatches": "0"
+          },
+          {
+            "phase": "10",
+            "now": "102",
+            "refRefresh": "60",
+            "candidateRefresh": "60",
+            "cursor": "0",
+            "refQueries": "0",
+            "candidateQueries": "0",
+            "hits": "1214",
+            "misses": "254",
+            "mismatches": "0"
+          },
+          {
+            "phase": "11",
+            "now": "102.2",
+            "refRefresh": "68",
+            "candidateRefresh": "68",
+            "cursor": "8",
+            "refQueries": "0",
+            "candidateQueries": "0",
+            "hits": "1326",
+            "misses": "288",
+            "mismatches": "0"
+          }
+        ]
+      },
+      "eightShadow": {
+        "sourceRunId": "ANIM-bounds-eight-shadow1",
+        "activeSeconds": 59.4575,
+        "samples": 1840,
+        "contractRows": 217,
+        "transitions": 136,
+        "validTerminalAgents": 8,
+        "allMilestoneAgents": 8,
+        "fallStarts": 8,
+        "landAndFollowCycles": 8,
+        "phaseChainMismatches": [],
+        "recoveryGenerationErrors": [],
+        "terminalAlignmentErrors": [],
+        "evidenceFunctionalGatePassed": true,
+        "schemaVersion": "1.0.0",
+        "buildId": "114417D39AA89921AC50B550F98A810768AEF3EC197AD759AED42E8887F85037",
+        "calls": 4059,
+        "hits": 0,
+        "misses": 68,
+        "boundsMismatches": 0,
+        "epochs": 532,
+        "shadowMode": true,
+        "cacheHitPathExercised": false,
+        "cachedResultsUsedForGameplay": false,
+        "performanceMeasured": false,
+        "visualAccepted": false,
+        "exitCode": -1,
+        "normalProcessExitAccepted": false
+      }
+    },
+    "blockers": [
+      "Actual eight scene cache hits zero; no cache-hit path validation or savings opportunity observed",
+      "64 whole-frame cost and visible animation unmeasured",
+      "Server exit -1 not accepted as normal quit"
+    ],
+    "evidenceReferences": [
+      "reports/operations/bounds-update-eight-shadow-20261107.md",
+      "evidence/bounds-update-eight-shadow-20261107.txt"
+    ],
+    "performanceAccepted": false,
+    "visualAccepted": false,
+    "fullGoalComplete": false
   }
 }

@@ -1,0 +1,399 @@
+Selection: complete metadata test mission, actual 8 shadow final counters and terminal/state-contract excerpts. Not full game code/logs or visual proof.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-07T02:36:24.906306+09:00",
+  "sourceRunId": "ANIM-bounds-eight-shadow1",
+  "buildId": "114417D39AA89921AC50B550F98A810768AEF3EC197AD759AED42E8887F85037",
+  "verificationStatus": "update-apply-equivalent-eight-gameplay-cache-hit-path-not-exercised-deferred",
+  "metrics": {
+    "update": {
+      "schemaVersion": "1.0.0",
+      "runId": "ANIM-bounds-update2",
+      "phases": 12,
+      "metadataBodies": 16,
+      "actualNpcEntities": 0,
+      "mismatches": 0,
+      "refreshes": 68,
+      "hits": 1326,
+      "misses": 288,
+      "checks": [
+        "obstacle arrays",
+        "signature",
+        "local counts",
+        "path and PlanAt",
+        "approach flags",
+        "cursor",
+        "NextUpdate",
+        "cache cleared at exit",
+        "not-due guard",
+        "unchanged signature retains path"
+      ],
+      "discoveryTested": false,
+      "discoveryCondition": "Existing cell-age cache deliberately primed; Queries=0",
+      "normalProcessExitAccepted": false,
+      "exitCode": -1,
+      "performanceMeasured": false,
+      "previousRun": "ANIM-bounds-update1: completion marker only, TSV header only; evidence insufficient, excluded",
+      "rows": [
+        {
+          "phase": "0",
+          "now": "100",
+          "refRefresh": "8",
+          "candidateRefresh": "8",
+          "cursor": "8",
+          "refQueries": "0",
+          "candidateQueries": "0",
+          "hits": "112",
+          "misses": "16",
+          "mismatches": "0"
+        },
+        {
+          "phase": "1",
+          "now": "100.02",
+          "refRefresh": "8",
+          "candidateRefresh": "8",
+          "cursor": "8",
+          "refQueries": "0",
+          "candidateQueries": "0",
+          "hits": "112",
+          "misses": "16",
+          "mismatches": "0"
+        },
+        {
+          "phase": "2",
+          "now": "100.4",
+          "refRefresh": "16",
+          "candidateRefresh": "16",
+          "cursor": "0",
+          "refQueries": "0",
+          "candidateQueries": "0",
+          "hits": "243",
+          "misses": "51",
+          "mismatches": "0"
+        },
+        {
+          "phase": "3",
+          "now": "100.6",
+          "refRefresh": "16",
+          "candidateRefresh": "16",
+          "cursor": "8",
+          "refQueries": "0",
+          "candidateQueries": "0",
+          "hits": "355",
+          "misses": "67",
+          "mismatches": "0"
+        },
+        {
+          "phase": "4",
+          "now": "100.8",
+          "refRefresh": "22",
+          "candidateRefresh": "22",
+          "cursor": "0",
+          "refQueries": "0",
+          "candidateQueries": "0",
+          "hits": "486",
+          "misses": "102",
+          "mismatches": "0"
+        },
+        {
+          "phase": "5",
+          "now": "101",
+          "refRefresh": "30",
+          "candidateRefresh": "30",
+          "cursor": "8",
+          "refQueries": "0",
+          "candidateQueries": "0",
+          "hits": "598",
+          "misses": "118",
+          "mismatches": "0"
+        },
+        {
+          "phase": "6",
+          "now": "101.2",
+          "refRefresh": "36",
+          "candidateRefresh": "36",
+          "cursor": "0",
+          "refQueries": "0",
+          "candidateQueries": "0",
+          "hits": "729",
+          "misses": "153",
+          "mismatches": "0"
+        },
+        {
+          "phase": "7",
+          "now": "101.4",
+          "refRefresh": "44",
+          "candidateRefresh": "44",
+          "cursor": "8",
+          "refQueries": "0",
+          "candidateQueries": "0",
+          "hits": "841",
+          "misses": "169",
+          "mismatches": "0"
+        },
+        {
+          "phase": "8",
+          "now": "101.6",
+          "refRefresh": "44",
+          "candidateRefresh": "44",
+          "cursor": "0",
+          "refQueries": "0",
+          "candidateQueries": "0",
+          "hits": "972",
+          "misses": "204",
+          "mismatches": "0"
+        },
+        {
+          "phase": "9",
+          "now": "101.8",
+          "refRefresh": "52",
+          "candidateRefresh": "52",
+          "cursor": "8",
+          "refQueries": "0",
+          "candidateQueries": "0",
+          "hits": "1084",
+          "misses": "220",
+          "mismatches": "0"
+        },
+        {
+          "phase": "10",
+          "now": "102",
+          "refRefresh": "60",
+          "candidateRefresh": "60",
+          "cursor": "0",
+          "refQueries": "0",
+          "candidateQueries": "0",
+          "hits": "1214",
+          "misses": "254",
+          "mismatches": "0"
+        },
+        {
+          "phase": "11",
+          "now": "102.2",
+          "refRefresh": "68",
+          "candidateRefresh": "68",
+          "cursor": "8",
+          "refQueries": "0",
+          "candidateQueries": "0",
+          "hits": "1326",
+          "misses": "288",
+          "mismatches": "0"
+        }
+      ]
+    },
+    "eightShadow": {
+      "sourceRunId": "ANIM-bounds-eight-shadow1",
+      "activeSeconds": 59.4575,
+      "samples": 1840,
+      "contractRows": 217,
+      "transitions": 136,
+      "validTerminalAgents": 8,
+      "allMilestoneAgents": 8,
+      "fallStarts": 8,
+      "landAndFollowCycles": 8,
+      "phaseChainMismatches": [],
+      "recoveryGenerationErrors": [],
+      "terminalAlignmentErrors": [],
+      "evidenceFunctionalGatePassed": true,
+      "schemaVersion": "1.0.0",
+      "buildId": "114417D39AA89921AC50B550F98A810768AEF3EC197AD759AED42E8887F85037",
+      "calls": 4059,
+      "hits": 0,
+      "misses": 68,
+      "boundsMismatches": 0,
+      "epochs": 532,
+      "shadowMode": true,
+      "cacheHitPathExercised": false,
+      "cachedResultsUsedForGameplay": false,
+      "performanceMeasured": false,
+      "visualAccepted": false,
+      "exitCode": -1,
+      "normalProcessExitAccepted": false
+    }
+  },
+  "blockers": [
+    "Actual eight scene cache hits zero; no cache-hit path validation or savings opportunity observed",
+    "64 whole-frame cost and visible animation unmeasured",
+    "Server exit -1 not accepted as normal quit"
+  ],
+  "evidenceReferences": [
+    "reports/operations/bounds-update-eight-shadow-20261107.md",
+    "evidence/bounds-update-eight-shadow-20261107.txt"
+  ],
+  "performanceAccepted": false,
+  "visualAccepted": false,
+  "fullGoalComplete": false
+}
+
+FILE init.c SHA256 aca99489242e3ecaeec995198b311fd78e8aa38b2623fda6763a6438df41aed8
+1: // Metadata agents exercise the actual packed Update/Apply; no NPC entities.
+2: class NFBoundsUpdateMission: MissionServer
+3: {
+4:     ref DGBNativeGroundDirector RefDirector=new DGBNativeGroundDirector;
+5:     ref DGBNativeGroundDirector NewDirector=new DGBNativeGroundDirector;
+6:     ref DGBNativeStaticMap Reference;ref DGBNativeStaticMap Candidate;
+7:     ref array<Object> Props={};
+8:     float Age;int Phase;int Executed;int Mismatches;bool Started;bool Ended;FileHandle Trace;
+9:     void AddBodies(DGBNativeGroundDirector director)
+10:     {
+11:         for(int i=0;i<16;i++)
+12:         {
+13:             DGBNativeGroundBody body=new DGBNativeGroundBody;body.Id=i;body.Director=director;
+14:             body.Agent.Position=Vector(4500+Math.ModFloat(i,4),340,10220+Math.Floor(i/4));
+15:             if(i==14)body.Agent.Position="4550 340 10220";
+16:             if(i==15)body.Agent.Position="4500 350 10220";
+17:             director.Bodies.Insert(body);director.Agents.Insert(body.Agent);
+18:         }
+19:     }
+20:     void AddRecords(DGBNativeStaticMap boundsMap)
+21:     {
+22:         foreach(Object o:Props)
+23:         {
+24:             DGBNativeStaticRecord record=new DGBNativeStaticRecord;record.Body=o;
+25:             record.ShapePath=o.GetShapeName();boundsMap.Bounds(o,record.Low,record.High);boundsMap.Records.Insert(record);
+26:         }
+27:     }
+28:     void Setup()
+29:     {
+30:         RefDirector.Fixture=new DGBTraversalFixture;NewDirector.Fixture=new DGBTraversalFixture;
+31:         RefDirector.Now=100;NewDirector.Now=100;
+32:         AddBodies(RefDirector);AddBodies(NewDirector);
+33:         RefDirector.ObstacleMin.Insert("4490 339 10210");RefDirector.ObstacleMax.Insert("4491 340 10211");
+34:         NewDirector.ObstacleMin.Copy(RefDirector.ObstacleMin);NewDirector.ObstacleMax.Copy(RefDirector.ObstacleMax);
+35:         Reference=new DGBNativeStaticMap(RefDirector);Candidate=new DGBNativeStaticMap(NewDirector);
+36:         Reference.NFBRead=true;Reference.NFBEnabled=true;Reference.NFBForceOff=true;
+37:         Candidate.NFBRead=true;Candidate.NFBEnabled=true;
+38:         for(int i=0;i<35;i++)
+39:         {
+40:             vector point=Vector(4500+Math.ModFloat(i,7)*1.1,340,10220+Math.Floor(i/7)*1.1);
+41:             Object o=GetGame().CreateObjectEx("DGNativeCorpseContact",point,ECE_LOCAL | ECE_CREATEPHYSICS);
+42:             if(!o){Mismatches++;return;}Props.Insert(o);
+43:         }
+44:         AddRecords(Reference);AddRecords(Candidate);
+45:         Trace=OpenFile("$profile:bounds-update.tsv",FileMode.WRITE);
+46:         FPrintln(Trace,"phase\tnow\trefRefresh\tcandidateRefresh\tcursor\trefQueries\tcandidateQueries\thits\tmisses\tmismatches");
+47:         Print("DG_ROLE_READY bounds_epoch_method actual_update_apply metadata_bodies=16 npc=0 props=35");
+48:     }
+49:     void Prime(DGBNativeGroundDirector director,DGBNativeStaticMap boundsMap)
+50:     {
+51:         foreach(DGBNativeGroundBody body:director.Bodies)
+52:         {
+53:             body.Agent.Path.Clear();body.Agent.Path.Insert("1 2 3");body.Agent.PlanAt=55;
+54:             body.Approach.Valid=true;body.Approach.Arrived=true;
+55:             // Exercise Scan's existing cell-age fast path; discovery is separate.
+56:             int x=Math.Floor(body.Agent.Position[0]/8);int z=Math.Floor(body.Agent.Position[2]/8);
+57:             boundsMap.Cells.Set(x.ToString()+":"+z.ToString(),director.Now);
+58:         }
+59:     }
+60:     bool EqualVectors(array<vector> a,array<vector> b)
+61:     {
+62:         if(a.Count()!=b.Count())return false;
+63:         for(int i=0;i<a.Count();i++)if(vector.Distance(a[i],b[i])>0.000001)return false;
+64:         return true;
+65:     }
+66:     void Compare()
+67:     {
+68:         if(Reference.Cursor!=Candidate.Cursor || Reference.Refreshes!=Candidate.Refreshes || Reference.NextUpdate!=Candidate.NextUpdate || Reference.Queries!=Candidate.Queries)Mismatches++;
+69:         if(Reference.Applied.Count()!=Candidate.Applied.Count() || Reference.LocalCounts.Count()!=Candidate.LocalCounts.Count())Mismatches++;
+70:         for(int i=0;i<Reference.Applied.Count();i++)
+71:         {
+72:             if(Reference.Applied[i]!=Candidate.Applied[i] || Reference.LocalCounts[i]!=Candidate.LocalCounts[i])Mismatches++;
+73:         }
+74:         for(int j=0;j<RefDirector.Bodies.Count();j++)
+75:         {
+76:             DGBNativeGroundBody a=RefDirector.Bodies[j];DGBNativeGroundBody b=NewDirector.Bodies[j];
+77:             if(!EqualVectors(a.Agent.ObstacleMin,b.Agent.ObstacleMin) || !EqualVectors(a.Agent.ObstacleMax,b.Agent.ObstacleMax) || !EqualVectors(a.Agent.Path,b.Agent.Path))Mismatches++;
+78:             if(a.Agent.PlanAt!=b.Agent.PlanAt || a.Approach.Valid!=b.Approach.Valid || a.Approach.Arrived!=b.Approach.Arrived)Mismatches++;
+79:         }
+80:         if(Candidate.NFBActive || Candidate.NFBCache.Count()!=0)Mismatches++;
+81:     }
+82:     void NFRunPhase()
+83:     {
+84:         Executed++;Print("NF_BOUNDS_PHASE_ENTER phase="+Phase);float now=100+Phase*0.2;if(Phase==1)now=100.02;
+85:         RefDirector.Now=now;NewDirector.Now=now;
+86:         if(Phase==4)Props[0].SetPosition("4500.5 340.1 10220.5");
+87:         if(Phase==5)Props[1].SetOrientation("28 0 0");
+88:         if(Phase==6)Props[2].SetScale(1.05);
+89:         if(Phase==7 && dBodyIsSet(Props[3]))dBodyDynamic(Props[3],true);
+90:         if(Phase==8 && dBodyIsSet(Props[3]))dBodyDynamic(Props[3],false);
+91:         if(Phase==9)
+92:         {
+93:             Reference.Records[4].Body=null;Candidate.Records[4].Body=null;
+94:             GetGame().ObjectDelete(Props[4]);
+95:         }
+96:         if(Phase==10)
+97:         {
+98:             RefDirector.ObstacleMax[0]="4491.5 340 10211";NewDirector.ObstacleMax[0]=RefDirector.ObstacleMax[0];
+99:         }
+100:         if(Phase==11)
+101:         {
+102:             RefDirector.Bodies[0].Agent.Position="4540 340 10220";
+103:             NewDirector.Bodies[0].Agent.Position=RefDirector.Bodies[0].Agent.Position;
+104:         }
+105:         Prime(RefDirector,Reference);Prime(NewDirector,Candidate);
+106:         int oldRefresh=Reference.Refreshes;int oldCursor=Reference.Cursor;int oldHits=Candidate.NFBHits;
+107:         Reference.Update();Candidate.Update();Compare();
+108:         if(Phase==0 && Reference.Refreshes!=8)Mismatches++;
+109:         if(Phase==1 && (Reference.Refreshes!=oldRefresh || Reference.Cursor!=oldCursor || Candidate.NFBHits!=oldHits))Mismatches++;
+110:         if(Phase==3 && Reference.Refreshes!=oldRefresh)Mismatches++;
+111:         if(Phase!=1 && Candidate.NFBHits<=oldHits)Mismatches++;
+112:         string row=Phase.ToString()+"\t"+now+"\t"+Reference.Refreshes+"\t"+Candidate.Refreshes;
+113:         row+="\t"+Candidate.Cursor+"\t"+Reference.Queries+"\t"+Candidate.Queries;
+114:         row+="\t"+Candidate.NFBHits+"\t"+Candidate.NFBMisses+"\t"+Mismatches;FPrintln(Trace,row);Print("NF_BOUNDS_PHASE_RESULT "+row);
+115:     }
+116:     void Finish()
+117:     {
+118:         if(Executed!=12)Mismatches++;CloseFile(Trace);foreach(Object o:Props)if(o)GetGame().ObjectDelete(o);Props.Clear();Ended=true;
+119:         if(Mismatches>0)Print("DG_ROLE_FAILED update_apply_mismatches="+Mismatches);
+120:         else Print("DG_ROLE_DONE update_apply phases=12 mismatches=0");
+121:         Print("NF_NETWORK_SERVER_EXIT_REQUESTED code=0");GetGame().RequestExit(0);
+122:     }
+123:     override void OnUpdate(float timeslice)
+124:     {
+125:         super.OnUpdate(timeslice);Age+=timeslice;if(Ended || Age<20)return;
+126:         if(!Started){Started=true;Setup();if(Mismatches>0){Ended=true;GetGame().RequestExit(1);}return;}
+127:         if(Phase<12){NFRunPhase();Phase++;return;}Finish();
+128:     }
+129: }
+130: void main(){}
+131: Mission CreateCustomMission(string path){return new NFBoundsUpdateMission;}
+
+FILE bounds-update.tsv SHA256 9a07d072fc0f133fe9709f14aee480495a8a00f4ec9d224bcd05a8b61dc9d79c
+phase	now	refRefresh	candidateRefresh	cursor	refQueries	candidateQueries	hits	misses	mismatches
+0	100	8	8	8	0	0	112	16	0
+1	100.02	8	8	8	0	0	112	16	0
+2	100.4	16	16	0	0	0	243	51	0
+3	100.6	16	16	8	0	0	355	67	0
+4	100.8	22	22	0	0	0	486	102	0
+5	101	30	30	8	0	0	598	118	0
+6	101.2	36	36	0	0	0	729	153	0
+7	101.4	44	44	8	0	0	841	169	0
+8	101.6	44	44	0	0	0	972	204	0
+9	101.8	52	52	8	0	0	1084	220	0
+10	102	60	60	0	0	0	1214	254	0
+11	102.2	68	68	8	0	0	1326	288	0
+
+FILE terminal-state.tsv SHA256 1164792208669f9f7a1f881554986f15d162a53a044a2a3a096a8a169df2819c
+seconds	id	outcome	state	phase	area	position	recoveryGeneration	contactStatus	reason	failure	low	high	down	returned	climbs	drops	landings	visible	clueSource	seenAge
+59.4575	0	VALID_TERMINAL	CHASE	FOLLOW	low	<4510.547852, 340.201294, 10239.072266>	1		ARRIVED		true	true	true	true	3	1	1	true	LOCAL_VISUAL	0.334
+59.4575	1	VALID_TERMINAL	CHASE	FOLLOW	low	<4511.026855, 340.212128, 10239.780273>	1		ARRIVED		true	true	true	true	3	1	1	true	LOCAL_VISUAL	0.0910034
+59.4575	2	VALID_TERMINAL	CHASE	FOLLOW	low	<4510.822754, 340.201691, 10237.293945>	1		SUPPORTED_EGRESS_HANDOFF		true	true	true	true	3	1	1	true	LOCAL_VISUAL	0.0910034
+59.4575	3	VALID_TERMINAL	CHASE	FOLLOW	low	<4509.044434, 340.176819, 10240.411133>	1		ARRIVED		true	true	true	true	3	1	1	true	LOCAL_VISUAL	0.0910034
+59.4575	4	VALID_TERMINAL	CHASE	FOLLOW	low	<4509.070313, 340.175049, 10239.566406>	1		ARRIVED		true	true	true	true	3	1	1	true	LOCAL_VISUAL	0.0910034
+59.4575	5	VALID_TERMINAL	CHASE	FOLLOW	low	<4509.702148, 340.185364, 10239.011719>	1		ARRIVED		true	true	true	true	3	1	1	true	LOCAL_VISUAL	0.0910034
+59.4575	6	VALID_TERMINAL	CHASE	FOLLOW	low	<4510.857422, 340.211212, 10240.625000>	1		ARRIVED		true	true	true	true	3	1	1	true	LOCAL_VISUAL	0.0910034
+59.4575	7	VALID_TERMINAL	CHASE	FOLLOW	low	<4510.089844, 340.197968, 10241.030273>	1		ARRIVED		true	true	true	true	3	1	1	true	LOCAL_VISUAL	0.0910034
+
+SCRIPT SHA256 c8f9eadd235a84a8889c32cda1adf93ba39b428baadaeda37923012b19496d54
+02:33:02.350 SCRIPT       : NF_BOUNDS_POLICY enabled=true shadow=true
+02:34:01.808 SCRIPT       : NF_BOUNDS_EIGHT_RESULT enabled=true shadow=true calls=4059 hits=0 misses=68 mismatches=0 epochs=532
+02:34:01.808 SCRIPT       : NF_NETWORK_EIGHT_BODY id=0 terminal=VALID_TERMINAL phase=FOLLOW area=low
+02:34:01.808 SCRIPT       : NF_NETWORK_EIGHT_BODY id=1 terminal=VALID_TERMINAL phase=FOLLOW area=low
+02:34:01.809 SCRIPT       : NF_NETWORK_EIGHT_BODY id=2 terminal=VALID_TERMINAL phase=FOLLOW area=low
+02:34:01.809 SCRIPT       : NF_NETWORK_EIGHT_BODY id=3 terminal=VALID_TERMINAL phase=FOLLOW area=low
+02:34:01.809 SCRIPT       : NF_NETWORK_EIGHT_BODY id=4 terminal=VALID_TERMINAL phase=FOLLOW area=low
+02:34:01.809 SCRIPT       : NF_NETWORK_EIGHT_BODY id=5 terminal=VALID_TERMINAL phase=FOLLOW area=low
+02:34:01.809 SCRIPT       : NF_NETWORK_EIGHT_BODY id=6 terminal=VALID_TERMINAL phase=FOLLOW area=low
+02:34:01.810 SCRIPT       : NF_NETWORK_EIGHT_BODY id=7 terminal=VALID_TERMINAL phase=FOLLOW area=low
+02:34:01.852 SCRIPT       : NF_NETWORK_EIGHT_RESULT functional=true detached=true stage=5
+02:34:01.852 SCRIPT       : DG_ROLE_DONE eight-NPC trial closed; inspect per-ID terminal results
