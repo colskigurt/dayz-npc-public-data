@@ -47,3 +47,7 @@ Update/Apply 제한 조건: 진단 성공. 실제8 shadow: 캐시사용 경로 �
 ## 8. 잔여 문제
 
 실제8개체의hit=0으로 같은 씬의cache-ON 반복은 우선 보류한다. 이 후보는 시체·소형 정적 물체가 많은 후반 조건용으로만 남기고 전원생존 주력 후보에서는 낮춘다. 다음 단일 작업은 기존 Drive/Displace 호출소유·횟수 증거에서 한 논리갱신의 중복 솔버 실행을 안전하게 줄일 수 있는지 확인한 결정표다. 인접 입력 완전일치0인 기존 결과를 재사용하고 무조건 캐시를 제안하지 않는다. 다음 Present 측정 전 기존 수집기의 exitCode 누락을 최소수정·검증해야 한다. 기존 정체 복구 반복·시체 착지 대기는 별도 결함으로 남기고 이번 작업을 기능수정으로 전환하지 않는다.
+
+## 후속 계측기 수정 — 새 게임 실험 없음
+
+현재 통합 계측기의 종료코드 누락 대응3조건 회귀 통과. 새 ETW/NPC 성능 측정 없음. 기존 단순 결합솔버 기각과 실제8 Bounds hit0 보류 유지. [상세](reports/operations/collector-exit-contract-20261107.md) · [근거 TXT](evidence/collector-exit-contract-20261107.txt) · [JSON](api/public/collector-exit-contract.json)

@@ -1,0 +1,76 @@
+Selection: exact modified capture block and complete synthetic result receipt. Test CSV is fake, not metrics. No game/ETW executed.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-07T02:42:33.952230+09:00",
+  "sourceRunId": "collector-exit-contract1",
+  "buildId": "CA975CF4AC9FF017BC3D8A2C9ECEB60B450DC7AEAD32CA0CD693AD388313B195",
+  "verificationStatus": "collector-exit-contract-regression-passed-live-etw-not-run",
+  "metrics": {
+    "schemaVersion": 1,
+    "priorNullCodesReclassified": false,
+    "captureBlockSha256": "CF053193BC34E8CB7EFDDF00D73FA0F5E0194FF7FF5AA6179EECED74A8327E08",
+    "administratorRequested": false,
+    "observedAt": "2026-11-07T02:40:00.9960497+09:00",
+    "vendorHelpExitCode": 1,
+    "launcherSha256": "CA975CF4AC9FF017BC3D8A2C9ECEB60B450DC7AEAD32CA0CD693AD388313B195",
+    "exactCaptureBlockUsed": true,
+    "etwStarted": false,
+    "newGameRuns": 0,
+    "tests": [
+      {
+        "expectedCode": 0,
+        "performanceAcceptance": false,
+        "csvPresent": true,
+        "expectedGate": true,
+        "failure": null,
+        "observedCode": 0,
+        "label": "zero-with-csv",
+        "gatePassed": true
+      },
+      {
+        "expectedCode": 7,
+        "performanceAcceptance": false,
+        "csvPresent": true,
+        "expectedGate": false,
+        "failure": "Capture failed; no metric acceptance",
+        "observedCode": 7,
+        "label": "seven-with-csv",
+        "gatePassed": false
+      },
+      {
+        "expectedCode": 0,
+        "performanceAcceptance": false,
+        "csvPresent": false,
+        "expectedGate": false,
+        "failure": "Capture failed; no metric acceptance",
+        "observedCode": 0,
+        "label": "zero-without-csv",
+        "gatePassed": false
+      }
+    ],
+    "metricAcceptance": false
+  },
+  "blockers": [
+    "Actual ETW capture unverified after fix",
+    "No new 64 CPU/Present or visual measurements",
+    "Drive/Displace merge rejected by existing contract review"
+  ],
+  "evidenceReferences": [
+    "reports/operations/collector-exit-contract-20261107.md",
+    "evidence/collector-exit-contract-20261107.txt"
+  ],
+  "performanceAccepted": false,
+  "visualAccepted": false,
+  "fullGoalComplete": false
+}
+CAPTURE BLOCK
+  $startQpc=[Diagnostics.Stopwatch]::GetTimestamp()
+  $tool=Start-Process -FilePath $exe -ArgumentList $arguments -WindowStyle Hidden -PassThru -RedirectStandardOutput (Join-Path $capture 'stdout.log') -RedirectStandardError (Join-Path $capture 'stderr.log')
+  $retainedCaptureHandle=$tool.Handle
+  New-Json (Join-Path $capture 'tool-started.json') @{toolPid=$tool.Id;targetPid=$target.ProcessId;session=$session;startQpc=$startQpc}
+  if(!$tool.WaitForExit(($settings.captureSeconds+10)*1000)){throw 'PresentMon handle remains live: inspect recorded PID/session; do not restart'}
+  $tool.WaitForExit()
+  $tool.Refresh()
+  $toolExitCode=$tool.ExitCode
+  New-Json (Join-Path $capture 'closed.json') @{exitCode=$toolExitCode;processHandleRetained=$true;exitCodeReadOnce=$true;startQpc=$startQpc;endQpc=[Diagnostics.Stopwatch]::GetTimestamp();qpcFrequency=[Diagnostics.Stopwatch]::Frequency;closedAt=[DateTimeOffset]::Now.ToString('o');csvCreated=(Test-Path -LiteralPath (Join-Path $capture 'present.csv'));performanceAccepted=$false;visualAccepted=$false;needsFullWindowForegroundAndSceneValidation=$true}
+  if($toolExitCode -ne 0 -or !(Test-Path -LiteralPath (Join-Path $capture 'present.csv'))){throw 'Capture failed; no metric acceptance'}

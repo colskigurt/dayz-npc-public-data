@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-07T02:42:33.952230+09:00",
+  "sourceRunId": "collector-exit-contract1",
+  "buildId": "CA975CF4AC9FF017BC3D8A2C9ECEB60B450DC7AEAD32CA0CD693AD388313B195",
+  "verificationStatus": "collector-exit-contract-regression-passed-live-etw-not-run",
+  "metrics": {
+    "schemaVersion": 1,
+    "priorNullCodesReclassified": false,
+    "captureBlockSha256": "CF053193BC34E8CB7EFDDF00D73FA0F5E0194FF7FF5AA6179EECED74A8327E08",
+    "administratorRequested": false,
+    "observedAt": "2026-11-07T02:40:00.9960497+09:00",
+    "vendorHelpExitCode": 1,
+    "launcherSha256": "CA975CF4AC9FF017BC3D8A2C9ECEB60B450DC7AEAD32CA0CD693AD388313B195",
+    "exactCaptureBlockUsed": true,
+    "etwStarted": false,
+    "newGameRuns": 0,
+    "tests": [
+      {
+        "expectedCode": 0,
+        "performanceAcceptance": false,
+        "csvPresent": true,
+        "expectedGate": true,
+        "failure": null,
+        "observedCode": 0,
+        "label": "zero-with-csv",
+        "gatePassed": true
+      },
+      {
+        "expectedCode": 7,
+        "performanceAcceptance": false,
+        "csvPresent": true,
+        "expectedGate": false,
+        "failure": "Capture failed; no metric acceptance",
+        "observedCode": 7,
+        "label": "seven-with-csv",
+        "gatePassed": false
+      },
+      {
+        "expectedCode": 0,
+        "performanceAcceptance": false,
+        "csvPresent": false,
+        "expectedGate": false,
+        "failure": "Capture failed; no metric acceptance",
+        "observedCode": 0,
+        "label": "zero-without-csv",
+        "gatePassed": false
+      }
+    ],
+    "metricAcceptance": false
+  },
+  "blockers": [
+    "Actual ETW capture unverified after fix",
+    "No new 64 CPU/Present or visual measurements",
+    "Drive/Displace merge rejected by existing contract review"
+  ],
+  "evidenceReferences": [
+    "reports/operations/collector-exit-contract-20261107.md",
+    "evidence/collector-exit-contract-20261107.txt"
+  ],
+  "performanceAccepted": false,
+  "visualAccepted": false,
+  "fullGoalComplete": false
+}
