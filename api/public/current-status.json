@@ -2964,5 +2964,777 @@
     ],
     "fullGoalComplete": false,
     "signatureVerified": true
+  },
+  "latestBatch14SingleSession": {
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2026-11-06T13:12:58.540488+09:00",
+    "sourceRunId": "ANIM-batch14-single-session3",
+    "buildId": "0BDAE66A9E30B4A8CCA74D9F7E825B9707B5F18CF3401CDE68A0FC3EC94A18D7",
+    "verificationStatus": "all14-command-transition-common-pose-pass-visible-diagnostic-not-final-visual-acceptance",
+    "metrics": {
+      "singleClientSequence": true,
+      "requestedClips": 14,
+      "nativeRequestCoverage": {
+        "0": 256,
+        "1": 93,
+        "2": 79,
+        "3": 62,
+        "4": 47,
+        "5": 31,
+        "6": 124,
+        "7": 94,
+        "8": 31,
+        "9": 47,
+        "10": 47,
+        "11": 47,
+        "12": 47,
+        "13": 62
+      },
+      "observedRequestCount": 14,
+      "serverFivePartFrames": 1067,
+      "clientFivePartFrames": 11738,
+      "serverCommonPoseMaximumDifferenceM": {
+        "HeadMS": 0.0,
+        "HipsMS": 0.0,
+        "RightHandMS": 0.0
+      },
+      "clientCommonPoseMaximumDifferenceM": {
+        "headMS": 0.0,
+        "hipsMS": 0.0,
+        "rightHandMS": 0.0
+      },
+      "clientActiveFrames": 11738,
+      "clientInactiveFrames": 0,
+      "clientObservedEpochs": [
+        1,
+        2
+      ],
+      "phaseResults": [
+        {
+          "epoch": 0,
+          "phase": "idle",
+          "request": 0,
+          "serverAgeBracket": [
+            89.6373,
+            96.409
+          ],
+          "fivePartSamples": 106,
+          "allFiveRequestedSamples": 106,
+          "part0ChangedSteps": {
+            "HeadMS": 105,
+            "HipsMS": 105,
+            "RightHandMS": 105,
+            "LeftFootMS": 105,
+            "RightFootMS": 105
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "walk",
+          "request": 1,
+          "serverAgeBracket": [
+            96.659,
+            102.398
+          ],
+          "fivePartSamples": 90,
+          "allFiveRequestedSamples": 90,
+          "part0ChangedSteps": {
+            "HeadMS": 89,
+            "HipsMS": 89,
+            "RightHandMS": 89,
+            "LeftFootMS": 89,
+            "RightFootMS": 89
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "run_with_prescribed_root",
+          "request": 2,
+          "serverAgeBracket": [
+            102.648,
+            107.388
+          ],
+          "fivePartSamples": 74,
+          "allFiveRequestedSamples": 74,
+          "part0ChangedSteps": {
+            "HeadMS": 73,
+            "HipsMS": 73,
+            "RightHandMS": 73,
+            "LeftFootMS": 73,
+            "RightFootMS": 73
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "climb",
+          "request": 3,
+          "serverAgeBracket": [
+            107.638,
+            111.397
+          ],
+          "fivePartSamples": 59,
+          "allFiveRequestedSamples": 59,
+          "part0ChangedSteps": {
+            "HeadMS": 29,
+            "HipsMS": 0,
+            "RightHandMS": 29,
+            "LeftFootMS": 29,
+            "RightFootMS": 29
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "climb_release",
+          "request": 0,
+          "serverAgeBracket": [
+            111.647,
+            112.403
+          ],
+          "fivePartSamples": 11,
+          "allFiveRequestedSamples": 11,
+          "part0ChangedSteps": {
+            "HeadMS": 10,
+            "HipsMS": 10,
+            "RightHandMS": 10,
+            "LeftFootMS": 10,
+            "RightFootMS": 10
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "climb_low",
+          "request": 4,
+          "serverAgeBracket": [
+            112.653,
+            115.399
+          ],
+          "fivePartSamples": 43,
+          "allFiveRequestedSamples": 43,
+          "part0ChangedSteps": {
+            "HeadMS": 19,
+            "HipsMS": 19,
+            "RightHandMS": 19,
+            "LeftFootMS": 19,
+            "RightFootMS": 19
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "climb_low_release",
+          "request": 0,
+          "serverAgeBracket": [
+            115.649,
+            116.406
+          ],
+          "fivePartSamples": 11,
+          "allFiveRequestedSamples": 11,
+          "part0ChangedSteps": {
+            "HeadMS": 10,
+            "HipsMS": 10,
+            "RightHandMS": 10,
+            "LeftFootMS": 10,
+            "RightFootMS": 10
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "drop",
+          "request": 5,
+          "serverAgeBracket": [
+            116.656,
+            118.402
+          ],
+          "fivePartSamples": 27,
+          "allFiveRequestedSamples": 27,
+          "part0ChangedSteps": {
+            "HeadMS": 8,
+            "HipsMS": 3,
+            "RightHandMS": 8,
+            "LeftFootMS": 8,
+            "RightFootMS": 8
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "drop_air",
+          "request": 6,
+          "serverAgeBracket": [
+            118.652,
+            122.397
+          ],
+          "fivePartSamples": 57,
+          "allFiveRequestedSamples": 57,
+          "part0ChangedSteps": {
+            "HeadMS": 56,
+            "HipsMS": 0,
+            "RightHandMS": 56,
+            "LeftFootMS": 56,
+            "RightFootMS": 56
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "drop_land",
+          "request": 7,
+          "serverAgeBracket": [
+            122.647,
+            125.402
+          ],
+          "fivePartSamples": 42,
+          "allFiveRequestedSamples": 42,
+          "part0ChangedSteps": {
+            "HeadMS": 41,
+            "HipsMS": 41,
+            "RightHandMS": 41,
+            "LeftFootMS": 41,
+            "RightFootMS": 41
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "land_release",
+          "request": 0,
+          "serverAgeBracket": [
+            125.652,
+            126.409
+          ],
+          "fivePartSamples": 11,
+          "allFiveRequestedSamples": 11,
+          "part0ChangedSteps": {
+            "HeadMS": 10,
+            "HipsMS": 10,
+            "RightHandMS": 10,
+            "LeftFootMS": 10,
+            "RightFootMS": 10
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "fall_fast",
+          "request": 8,
+          "serverAgeBracket": [
+            126.659,
+            128.4
+          ],
+          "fivePartSamples": 27,
+          "allFiveRequestedSamples": 27,
+          "part0ChangedSteps": {
+            "HeadMS": 26,
+            "HipsMS": 26,
+            "RightHandMS": 26,
+            "LeftFootMS": 26,
+            "RightFootMS": 26
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "fall_air",
+          "request": 6,
+          "serverAgeBracket": [
+            128.65,
+            132.388
+          ],
+          "fivePartSamples": 57,
+          "allFiveRequestedSamples": 57,
+          "part0ChangedSteps": {
+            "HeadMS": 55,
+            "HipsMS": 0,
+            "RightHandMS": 55,
+            "LeftFootMS": 55,
+            "RightFootMS": 55
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "fall_land",
+          "request": 7,
+          "serverAgeBracket": [
+            132.638,
+            135.399
+          ],
+          "fivePartSamples": 43,
+          "allFiveRequestedSamples": 43,
+          "part0ChangedSteps": {
+            "HeadMS": 42,
+            "HipsMS": 42,
+            "RightHandMS": 42,
+            "LeftFootMS": 42,
+            "RightFootMS": 42
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "fall_land_release",
+          "request": 0,
+          "serverAgeBracket": [
+            135.649,
+            136.405
+          ],
+          "fivePartSamples": 11,
+          "allFiveRequestedSamples": 11,
+          "part0ChangedSteps": {
+            "HeadMS": 10,
+            "HipsMS": 10,
+            "RightHandMS": 10,
+            "LeftFootMS": 10,
+            "RightFootMS": 10
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "attack_left",
+          "request": 9,
+          "serverAgeBracket": [
+            136.655,
+            139.395
+          ],
+          "fivePartSamples": 42,
+          "allFiveRequestedSamples": 42,
+          "part0ChangedSteps": {
+            "HeadMS": 23,
+            "HipsMS": 23,
+            "RightHandMS": 23,
+            "LeftFootMS": 23,
+            "RightFootMS": 23
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "attack_left_release",
+          "request": 0,
+          "serverAgeBracket": [
+            139.645,
+            140.396
+          ],
+          "fivePartSamples": 11,
+          "allFiveRequestedSamples": 11,
+          "part0ChangedSteps": {
+            "HeadMS": 10,
+            "HipsMS": 10,
+            "RightHandMS": 10,
+            "LeftFootMS": 10,
+            "RightFootMS": 10
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "attack_run",
+          "request": 10,
+          "serverAgeBracket": [
+            140.646,
+            143.389
+          ],
+          "fivePartSamples": 43,
+          "allFiveRequestedSamples": 43,
+          "part0ChangedSteps": {
+            "HeadMS": 26,
+            "HipsMS": 26,
+            "RightHandMS": 26,
+            "LeftFootMS": 26,
+            "RightFootMS": 26
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "attack_run_release",
+          "request": 0,
+          "serverAgeBracket": [
+            143.639,
+            144.388
+          ],
+          "fivePartSamples": 11,
+          "allFiveRequestedSamples": 11,
+          "part0ChangedSteps": {
+            "HeadMS": 10,
+            "HipsMS": 10,
+            "RightHandMS": 10,
+            "LeftFootMS": 10,
+            "RightFootMS": 10
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "hit_left_torso",
+          "request": 11,
+          "serverAgeBracket": [
+            144.638,
+            147.4
+          ],
+          "fivePartSamples": 43,
+          "allFiveRequestedSamples": 43,
+          "part0ChangedSteps": {
+            "HeadMS": 33,
+            "HipsMS": 33,
+            "RightHandMS": 33,
+            "LeftFootMS": 33,
+            "RightFootMS": 33
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "hit_release",
+          "request": 0,
+          "serverAgeBracket": [
+            147.65,
+            148.402
+          ],
+          "fivePartSamples": 11,
+          "allFiveRequestedSamples": 11,
+          "part0ChangedSteps": {
+            "HeadMS": 10,
+            "HipsMS": 10,
+            "RightHandMS": 10,
+            "LeftFootMS": 10,
+            "RightFootMS": 10
+          }
+        },
+        {
+          "epoch": 0,
+          "phase": "death_bullet_chest_front",
+          "request": 12,
+          "serverAgeBracket": [
+            148.652,
+            153.418
+          ],
+          "fivePartSamples": 43,
+          "allFiveRequestedSamples": 43,
+          "part0ChangedSteps": {
+            "HeadMS": 24,
+            "HipsMS": 24,
+            "RightHandMS": 24,
+            "LeftFootMS": 24,
+            "RightFootMS": 24
+          }
+        },
+        {
+          "epoch": 1,
+          "phase": "second_idle",
+          "request": 0,
+          "serverAgeBracket": [
+            153.668,
+            155.404
+          ],
+          "fivePartSamples": 26,
+          "allFiveRequestedSamples": 26,
+          "part0ChangedSteps": {
+            "HeadMS": 25,
+            "HipsMS": 25,
+            "RightHandMS": 25,
+            "LeftFootMS": 25,
+            "RightFootMS": 25
+          }
+        },
+        {
+          "epoch": 1,
+          "phase": "death_fall_front",
+          "request": 13,
+          "serverAgeBracket": [
+            155.654,
+            159.41
+          ],
+          "fivePartSamples": 58,
+          "allFiveRequestedSamples": 58,
+          "part0ChangedSteps": {
+            "HeadMS": 27,
+            "HipsMS": 27,
+            "RightHandMS": 27,
+            "LeftFootMS": 27,
+            "RightFootMS": 27
+          }
+        }
+      ],
+      "signedNegativeValidBoneHandleRows": 5335,
+      "retirementEpochsCompleted": 2,
+      "all14PlaybackDiagnosed": true,
+      "fivePartPoseAgreementPassed": true,
+      "continuousForegroundPassed": true,
+      "performanceAccepted": false,
+      "fullGameplayOr64Acceptance": false,
+      "visualFinalAccepted": false,
+      "video": {
+        "schemaVersion": 1,
+        "supersedes": "video-analysis.json used a partly clipped actor ROI; preserved as invalid full-body framing",
+        "actorRoiAt640x400": [
+          130,
+          50,
+          350,
+          340
+        ],
+        "sourceVideoSha256": "08ca0cd9e5fbf92e18c9609a78ca25cfde028915ef0ceb46b283e2483accc1b9",
+        "decodedFrames": 4922,
+        "decodedBarcodeFrames": 4922,
+        "unknownBarcodeFrames": 0,
+        "globalExactDuplicatePairs": 52,
+        "all14VisibleSamplesExtracted": true,
+        "phaseMapping": "OBS barcode QPC vs Python gate interval + server-age offsets; coarse interior windows, not exact final-render/CPU latch join",
+        "clips": [
+          {
+            "clip": "idle",
+            "start": 0.0,
+            "end": 7.02170000000001,
+            "sourceDurationSeconds": 5.633333333333334,
+            "activeVideoPairs": 317,
+            "changedSilhouettePairs": 308,
+            "maximumConsecutiveUnchangedFrames": 9,
+            "maximumMaskPixels": 4064,
+            "sampleTargetMaximumErrorSeconds": 0.006732300000000135
+          },
+          {
+            "clip": "walk",
+            "start": 7.02170000000001,
+            "end": 13.0107,
+            "sourceDurationSeconds": 4.433333333333334,
+            "activeVideoPairs": 245,
+            "changedSilhouettePairs": 245,
+            "maximumConsecutiveUnchangedFrames": 0,
+            "maximumMaskPixels": 4480,
+            "sampleTargetMaximumErrorSeconds": 0.008230399999991533
+          },
+          {
+            "clip": "run",
+            "start": 13.0107,
+            "end": 18.00070000000001,
+            "sourceDurationSeconds": 2.1,
+            "activeVideoPairs": 105,
+            "changedSilhouettePairs": 105,
+            "maximumConsecutiveUnchangedFrames": 0,
+            "maximumMaskPixels": 4576,
+            "sampleTargetMaximumErrorSeconds": 0.007437299999999425
+          },
+          {
+            "clip": "climb",
+            "start": 18.00070000000001,
+            "end": 22.00970000000001,
+            "sourceDurationSeconds": 2.15,
+            "activeVideoPairs": 108,
+            "changedSilhouettePairs": 108,
+            "maximumConsecutiveUnchangedFrames": 0,
+            "maximumMaskPixels": 3948,
+            "sampleTargetMaximumErrorSeconds": 0.008272000000008717
+          },
+          {
+            "clip": "climb_low",
+            "start": 23.01570000000001,
+            "end": 26.011700000000005,
+            "sourceDurationSeconds": 1.5,
+            "activeVideoPairs": 69,
+            "changedSilhouettePairs": 69,
+            "maximumConsecutiveUnchangedFrames": 0,
+            "maximumMaskPixels": 4035,
+            "sampleTargetMaximumErrorSeconds": 0.0024375000000098623
+          },
+          {
+            "clip": "drop",
+            "start": 27.01870000000001,
+            "end": 29.014700000000005,
+            "sourceDurationSeconds": 0.7666666666666667,
+            "activeVideoPairs": 25,
+            "changedSilhouettePairs": 25,
+            "maximumConsecutiveUnchangedFrames": 0,
+            "maximumMaskPixels": 4026,
+            "sampleTargetMaximumErrorSeconds": 0.007896966666660177
+          },
+          {
+            "clip": "air",
+            "start": 29.014700000000005,
+            "end": 33.00970000000001,
+            "sourceDurationSeconds": 2.0,
+            "activeVideoPairs": 99,
+            "changedSilhouettePairs": 99,
+            "maximumConsecutiveUnchangedFrames": 0,
+            "maximumMaskPixels": 4175,
+            "sampleTargetMaximumErrorSeconds": 0.006900099999995746
+          },
+          {
+            "clip": "land",
+            "start": 33.00970000000001,
+            "end": 36.014700000000005,
+            "sourceDurationSeconds": 2.0,
+            "activeVideoPairs": 99,
+            "changedSilhouettePairs": 99,
+            "maximumConsecutiveUnchangedFrames": 0,
+            "maximumMaskPixels": 4263,
+            "sampleTargetMaximumErrorSeconds": 0.0047742000000141616
+          },
+          {
+            "clip": "fall_fast",
+            "start": 37.02170000000001,
+            "end": 39.01270000000001,
+            "sourceDurationSeconds": 0.5666666666666667,
+            "activeVideoPairs": 13,
+            "changedSilhouettePairs": 13,
+            "maximumConsecutiveUnchangedFrames": 0,
+            "maximumMaskPixels": 4607,
+            "sampleTargetMaximumErrorSeconds": 0.008230499999996255
+          },
+          {
+            "clip": "attack_left",
+            "start": 47.017700000000005,
+            "end": 50.007700000000014,
+            "sourceDurationSeconds": 1.7833333333333334,
+            "activeVideoPairs": 86,
+            "changedSilhouettePairs": 86,
+            "maximumConsecutiveUnchangedFrames": 0,
+            "maximumMaskPixels": 4681,
+            "sampleTargetMaximumErrorSeconds": 0.0069397666666759505
+          },
+          {
+            "clip": "attack_run",
+            "start": 51.00869999999999,
+            "end": 54.001700000000014,
+            "sourceDurationSeconds": 1.9,
+            "activeVideoPairs": 93,
+            "changedSilhouettePairs": 93,
+            "maximumConsecutiveUnchangedFrames": 0,
+            "maximumMaskPixels": 4623,
+            "sampleTargetMaximumErrorSeconds": 0.007894300000010901
+          },
+          {
+            "clip": "hit_left_torso",
+            "start": 55.00070000000001,
+            "end": 58.01270000000001,
+            "sourceDurationSeconds": 2.3333333333333335,
+            "activeVideoPairs": 119,
+            "changedSilhouettePairs": 119,
+            "maximumConsecutiveUnchangedFrames": 0,
+            "maximumMaskPixels": 4266,
+            "sampleTargetMaximumErrorSeconds": 0.0042317333333201645
+          },
+          {
+            "clip": "death_bullet_chest_front",
+            "start": 59.01469999999999,
+            "end": 64.03070000000001,
+            "sourceDurationSeconds": 1.8,
+            "activeVideoPairs": 87,
+            "changedSilhouettePairs": 87,
+            "maximumConsecutiveUnchangedFrames": 0,
+            "maximumMaskPixels": 4647,
+            "sampleTargetMaximumErrorSeconds": 0.006894600000009632
+          },
+          {
+            "clip": "death_fall_front",
+            "start": 66.0167,
+            "end": 70.0167,
+            "sourceDurationSeconds": 2.0,
+            "activeVideoPairs": 99,
+            "changedSilhouettePairs": 99,
+            "maximumConsecutiveUnchangedFrames": 0,
+            "maximumMaskPixels": 3631,
+            "sampleTargetMaximumErrorSeconds": 0.004899399999999332
+          }
+        ],
+        "visualFinalAccepted": false,
+        "performanceAccepted": false,
+        "limitations": [
+          "Gray silhouette changes include compression/segmentation noise; not perceptual smoothness score",
+          "Finite end holds excluded using source duration and scripted release timeline",
+          "Nominal60fps/video barcode is not proof of60 game-pose evaluations",
+          "Contact sheets prove visible poses, not temporal quality alone"
+        ]
+      },
+      "clientCadence": {
+        "method": "Part0 common CPU-bone changes within coarse source-active windows; expected finite holds excluded; not final render pose or perceptual quality",
+        "clips": [
+          {
+            "clip": "idle",
+            "sampledClientFrames": 820,
+            "commonBoneChangedSteps": 818,
+            "maximumUnchangedCommonBoneSpanMs": 5.000000000002558
+          },
+          {
+            "clip": "walk",
+            "sampledClientFrames": 669,
+            "commonBoneChangedSteps": 667,
+            "maximumUnchangedCommonBoneSpanMs": 7.999999999995566
+          },
+          {
+            "clip": "run",
+            "sampledClientFrames": 287,
+            "commonBoneChangedSteps": 286,
+            "maximumUnchangedCommonBoneSpanMs": 0.0
+          },
+          {
+            "clip": "climb",
+            "sampledClientFrames": 284,
+            "commonBoneChangedSteps": 283,
+            "maximumUnchangedCommonBoneSpanMs": 0.0
+          },
+          {
+            "clip": "climb_low",
+            "sampledClientFrames": 185,
+            "commonBoneChangedSteps": 184,
+            "maximumUnchangedCommonBoneSpanMs": 0.0
+          },
+          {
+            "clip": "drop",
+            "sampledClientFrames": 70,
+            "commonBoneChangedSteps": 68,
+            "maximumUnchangedCommonBoneSpanMs": 6.999999999997897
+          },
+          {
+            "clip": "air",
+            "sampledClientFrames": 278,
+            "commonBoneChangedSteps": 277,
+            "maximumUnchangedCommonBoneSpanMs": 0.0
+          },
+          {
+            "clip": "land",
+            "sampledClientFrames": 272,
+            "commonBoneChangedSteps": 271,
+            "maximumUnchangedCommonBoneSpanMs": 0.0
+          },
+          {
+            "clip": "fall_fast",
+            "sampledClientFrames": 35,
+            "commonBoneChangedSteps": 34,
+            "maximumUnchangedCommonBoneSpanMs": 0.0
+          },
+          {
+            "clip": "attack_left",
+            "sampledClientFrames": 220,
+            "commonBoneChangedSteps": 218,
+            "maximumUnchangedCommonBoneSpanMs": 6.000000000000227
+          },
+          {
+            "clip": "attack_run",
+            "sampledClientFrames": 247,
+            "commonBoneChangedSteps": 245,
+            "maximumUnchangedCommonBoneSpanMs": 6.000000000000227
+          },
+          {
+            "clip": "hit_left_torso",
+            "sampledClientFrames": 327,
+            "commonBoneChangedSteps": 325,
+            "maximumUnchangedCommonBoneSpanMs": 6.000000000000227
+          },
+          {
+            "clip": "death_bullet_chest_front",
+            "sampledClientFrames": 240,
+            "commonBoneChangedSteps": 239,
+            "maximumUnchangedCommonBoneSpanMs": 0.0
+          },
+          {
+            "clip": "death_fall_front",
+            "sampledClientFrames": 274,
+            "commonBoneChangedSteps": 273,
+            "maximumUnchangedCommonBoneSpanMs": 0.0
+          }
+        ],
+        "performanceAccepted": false,
+        "visualFinalAccepted": false
+      }
+    },
+    "blockers": [
+      "Idle9 repeated video frames: originating stage not isolated",
+      "Perceptual visual final acceptance and64-agent/performance/combat are separate"
+    ],
+    "evidenceReferences": [
+      "reports/operations/batch14-single-session-20261106.md",
+      "evidence/batch14-single-session-20261106.txt"
+    ],
+    "signatureVerified": true,
+    "performanceAccepted": false,
+    "fullGoalComplete": false,
+    "goalRemainsPaused": true
   }
 }

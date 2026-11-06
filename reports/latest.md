@@ -63,3 +63,7 @@
 ## 2026-11-06:상태제한SupportFast 현행8명 기능
 
 현행64명 SupportFast ON 첫전체CPU=864.92 CPUms/벽시계초,게임시계약1배. 기준CPU는날짜정밀도변환으로누락·수정. 유효비교0쌍,성능미수용.  [상세](operations/support-context-five-cost-first-20261106.md).
+
+## 2026-11-06:상태제한SupportFast 현행8명 기능
+
+현행5파트14동작을한클라이언트에서일괄재생·전환검증. 14/14요청,24구간5파트일치,11738전경프레임·공통본차이0. idle영상반복한계보존,시각최종/64비용미수용.  [상세](operations/batch14-single-session-20261106.md).

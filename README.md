@@ -1,15 +1,16 @@
-# DayZ NPC 현재 상태
+# DayZ NPC 현재 작업 상태
 
-현행64명 SupportFast ON 첫전체CPU=864.92 CPUms/벽시계초,게임시계약1배. 기준CPU는날짜정밀도변환으로누락·수정. 유효비교0쌍,성능미수용. 
+현행5파트14동작을한클라이언트에서일괄재생·전환검증. 14/14요청,24구간5파트일치,11738전경프레임·공통본차이0. idle영상반복한계보존,시각최종/64비용미수용. 
 
 | 항목 | 판정 |
 |---|---|
-|8개체 OFF/ON 기능|각8/8·낙하9/9|
-|64명 ON 전체CPU|단일864.92 CPUms/벽시계초|
-|별도Present p95|기준12.96ms / ON15.10ms·각1회|
-|유효CPU 비교쌍|0·기준누락|
-|성능·시각·전체20ms|미수용|
+|14동작 단일세션|14/14 요청·전환 확인|
+|공통본5파트 동기|서버·클라이언트 최대0m|
+|클라이언트 활성 관측|11738/11738|
+|두 사망·퇴역|각5파트 완료|
+|표시 품질|14종화면확인·idle9반복프레임발생계층미특정|
+|64CPU·전투·전체골|이번미검증·골일시정지유지|
 
-[상세](reports/operations/support-context-five-cost-first-20261106.md) · [TXT](reports/operations/support-context-five-cost-first-20261106.txt) · [근거](evidence/support-context-five-cost-first-20261106.txt) · [JSON](api/public/support-context-five-cost-first.json)
+[상세](reports/operations/batch14-single-session-20261106.md) · [TXT](reports/operations/batch14-single-session-20261106.txt) · [근거](evidence/batch14-single-session-20261106.txt) · [JSON](api/public/batch14-single-session.json)
 
 [AI 검토](AI_REVIEW.md)
