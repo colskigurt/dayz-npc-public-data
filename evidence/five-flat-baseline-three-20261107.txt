@@ -1,0 +1,310 @@
+Selection: complete aggregated metric/condition results and first3/last3/worst3 Present interval rows per capture; not full raw CSV/logs or animation video.
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-07T02:56:30.154950+09:00",
+  "sourceRunId": "ANIM-five-flat-baseline-three",
+  "buildId": "5A0EED07E1F75FB347085387AA9EDBAC70659391BD45B42153071DFDB7500A0E",
+  "verificationStatus": "three-repeated-flat-baseline-captures-no-new-optimization",
+  "metrics": {
+    "runs": [
+      {
+        "runId": "ANIM-five-flat-baseline-1",
+        "metricsMs": {
+          "MsBetweenPresents": {
+            "samples": 1149,
+            "p50": 12.5448,
+            "p95": 18.81914,
+            "p99": 21.949368,
+            "mean": 12.975323150565709,
+            "maximum": 31.1551
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 742,
+            "p50": 20.00575,
+            "p95": 20.057495,
+            "p99": 20.081078,
+            "mean": 20.086606603773586,
+            "maximum": 40.0098
+          },
+          "MsCPUBusy": {
+            "samples": 1149,
+            "p50": 12.3866,
+            "p95": 18.675099999999997,
+            "p99": 21.792731999999997,
+            "mean": 12.82136858137511,
+            "maximum": 30.9479
+          },
+          "MsCPUWait": {
+            "samples": 1149,
+            "p50": 0.1494,
+            "p95": 0.19637999999999997,
+            "p99": 0.22378799999999996,
+            "mean": 0.15392906875543952,
+            "maximum": 0.3116
+          },
+          "MsGPUBusy": {
+            "samples": 1149,
+            "p50": 2.5252,
+            "p95": 3.0238199999999993,
+            "p99": 3.1989919999999996,
+            "mean": 2.58079590948651,
+            "maximum": 4.0891
+          },
+          "MsGPUTime": {
+            "samples": 1149,
+            "p50": 11.5816,
+            "p95": 17.851999999999997,
+            "p99": 20.965183999999997,
+            "mean": 12.079319147084421,
+            "maximum": 29.4724
+          },
+          "MsInPresentAPI": {
+            "samples": 1149,
+            "p50": 0.1494,
+            "p95": 0.19637999999999997,
+            "p99": 0.22378799999999996,
+            "mean": 0.15392906875543952,
+            "maximum": 0.3116
+          }
+        },
+        "foregroundRows": 1622,
+        "allAliveCompleteSnapshots": 78,
+        "serverGameContext": [
+          29.494,
+          50.2491
+        ],
+        "phases": {
+          "FOLLOW": 4992
+        },
+        "areas": {
+          "ground": 4992
+        },
+        "presentModes": {
+          "Composed: Flip": 1149
+        },
+        "syncIntervals": {
+          "0": 1149
+        },
+        "etwExitCode": 0,
+        "serverExitCode": -1,
+        "serverNormalQuitAccepted": false
+      },
+      {
+        "runId": "ANIM-five-flat-baseline-2",
+        "metricsMs": {
+          "MsBetweenPresents": {
+            "samples": 1492,
+            "p50": 9.38115,
+            "p95": 14.550095,
+            "p99": 16.836571999999993,
+            "mean": 10.015381903485254,
+            "maximum": 20.8509
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 1492,
+            "p50": 9.3808,
+            "p95": 14.533600000000002,
+            "p99": 16.86172899999999,
+            "mean": 10.015416487935656,
+            "maximum": 20.8444
+          },
+          "MsCPUBusy": {
+            "samples": 1492,
+            "p50": 9.2279,
+            "p95": 14.385435000000001,
+            "p99": 16.693977999999994,
+            "mean": 9.862498726541554,
+            "maximum": 20.6962
+          },
+          "MsCPUWait": {
+            "samples": 1492,
+            "p50": 0.1488,
+            "p95": 0.19067000000000003,
+            "p99": 0.2233069999999998,
+            "mean": 0.15290656836461125,
+            "maximum": 0.4817
+          },
+          "MsGPUBusy": {
+            "samples": 1492,
+            "p50": 2.46385,
+            "p95": 2.9834300000000002,
+            "p99": 3.1656749999999976,
+            "mean": 2.3860704423592494,
+            "maximum": 4.4972
+          },
+          "MsGPUTime": {
+            "samples": 1492,
+            "p50": 9.3808,
+            "p95": 14.533600000000002,
+            "p99": 16.86172899999999,
+            "mean": 10.015416487935656,
+            "maximum": 20.8444
+          },
+          "MsInPresentAPI": {
+            "samples": 1492,
+            "p50": 0.1488,
+            "p95": 0.19067000000000003,
+            "p99": 0.2233069999999998,
+            "mean": 0.15290656836461125,
+            "maximum": 0.4817
+          }
+        },
+        "foregroundRows": 2098,
+        "allAliveCompleteSnapshots": 78,
+        "serverGameContext": [
+          29.6509,
+          50.28
+        ],
+        "phases": {
+          "FOLLOW": 4992
+        },
+        "areas": {
+          "ground": 4992
+        },
+        "presentModes": {
+          "Hardware: Independent Flip": 1492
+        },
+        "syncIntervals": {
+          "0": 1492
+        },
+        "etwExitCode": 0,
+        "serverExitCode": -1,
+        "serverNormalQuitAccepted": false
+      },
+      {
+        "runId": "ANIM-five-flat-baseline-3",
+        "metricsMs": {
+          "MsBetweenPresents": {
+            "samples": 1457,
+            "p50": 9.7643,
+            "p95": 14.62784,
+            "p99": 17.14696,
+            "mean": 10.265720658888126,
+            "maximum": 22.1332
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 1457,
+            "p50": 9.7787,
+            "p95": 14.624020000000002,
+            "p99": 17.04982400000001,
+            "mean": 10.265697735072067,
+            "maximum": 22.2013
+          },
+          "MsCPUBusy": {
+            "samples": 1457,
+            "p50": 9.6163,
+            "p95": 14.471860000000001,
+            "p99": 16.994480000000003,
+            "mean": 10.11266129032258,
+            "maximum": 21.8965
+          },
+          "MsCPUWait": {
+            "samples": 1457,
+            "p50": 0.1483,
+            "p95": 0.19364,
+            "p99": 0.2234360000000001,
+            "mean": 0.15306582017844886,
+            "maximum": 0.265
+          },
+          "MsGPUBusy": {
+            "samples": 1457,
+            "p50": 2.5852,
+            "p95": 3.0676,
+            "p99": 3.279528,
+            "mean": 2.6411127659574465,
+            "maximum": 4.4274
+          },
+          "MsGPUTime": {
+            "samples": 1457,
+            "p50": 9.7787,
+            "p95": 14.624020000000002,
+            "p99": 17.04982400000001,
+            "mean": 10.265697735072067,
+            "maximum": 22.2013
+          },
+          "MsInPresentAPI": {
+            "samples": 1457,
+            "p50": 0.1483,
+            "p95": 0.19364,
+            "p99": 0.2234360000000001,
+            "mean": 0.15306582017844886,
+            "maximum": 0.265
+          }
+        },
+        "foregroundRows": 1984,
+        "allAliveCompleteSnapshots": 78,
+        "serverGameContext": [
+          29.701,
+          50.2991
+        ],
+        "phases": {
+          "FOLLOW": 4992
+        },
+        "areas": {
+          "ground": 4992
+        },
+        "presentModes": {
+          "Hardware: Independent Flip": 1457
+        },
+        "syncIntervals": {
+          "0": 1457
+        },
+        "etwExitCode": 0,
+        "serverExitCode": -1,
+        "serverNormalQuitAccepted": false
+      }
+    ],
+    "presentP95RangeMs": [
+      14.550095,
+      18.81914
+    ],
+    "medianOfRunP95Ms": 14.62784,
+    "newOptimizationImplemented": false
+  },
+  "blockers": [
+    "Dense interaction/high mobility/combat not covered",
+    "Weather equality and background load not proven",
+    "Actual visible animation cadence not measured",
+    "Server exit -1 not accepted as normal quit"
+  ],
+  "evidenceReferences": [
+    "reports/operations/five-flat-baseline-three-20261107.md",
+    "evidence/five-flat-baseline-three-20261107.txt"
+  ],
+  "performanceImprovementAccepted": false,
+  "visualAccepted": false,
+  "fullGoalComplete": false
+}
+
+CAPTURE 0 SHA256 efc826e82d14e215db60299bb00a32c8723fea6f409dd176e3179ef1590a24e7
+{"csvDataRow": 1, "MsBetweenPresents": "11.62240000000000", "MsCPUBusy": "11.4642", "MsGPUBusy": "2.4211", "SyncInterval": "0", "PresentMode": "Composed: Flip"}
+{"csvDataRow": 2, "MsBetweenPresents": "12.93380000000000", "MsCPUBusy": "12.7904", "MsGPUBusy": "2.6027", "SyncInterval": "0", "PresentMode": "Composed: Flip"}
+{"csvDataRow": 3, "MsBetweenPresents": "13.58360000000000", "MsCPUBusy": "13.4411", "MsGPUBusy": "2.4702", "SyncInterval": "0", "PresentMode": "Composed: Flip"}
+{"csvDataRow": 146, "MsBetweenPresents": "29.51000000000000", "MsCPUBusy": "29.2960", "MsGPUBusy": "2.6752", "SyncInterval": "0", "PresentMode": "Composed: Flip"}
+{"csvDataRow": 558, "MsBetweenPresents": "31.15510000000000", "MsCPUBusy": "30.9479", "MsGPUBusy": "2.7227", "SyncInterval": "0", "PresentMode": "Composed: Flip"}
+{"csvDataRow": 606, "MsBetweenPresents": "24.53280000000000", "MsCPUBusy": "24.2847", "MsGPUBusy": "3.1940", "SyncInterval": "0", "PresentMode": "Composed: Flip"}
+{"csvDataRow": 1148, "MsBetweenPresents": "10.81450000000000", "MsCPUBusy": "10.6898", "MsGPUBusy": "2.3239", "SyncInterval": "0", "PresentMode": "Composed: Flip"}
+{"csvDataRow": 1149, "MsBetweenPresents": "9.23270000000000", "MsCPUBusy": "9.1026", "MsGPUBusy": "2.2844", "SyncInterval": "0", "PresentMode": "Composed: Flip"}
+{"csvDataRow": 1150, "MsBetweenPresents": "8.62270000000000", "MsCPUBusy": "8.4803", "MsGPUBusy": "2.2734", "SyncInterval": "0", "PresentMode": "Composed: Flip"}
+
+CAPTURE 1 SHA256 c0fe8f75ddeda3108e687e5e36ac819a64d4b042eb976ad78bade78aa93be7f2
+{"csvDataRow": 1, "MsBetweenPresents": "8.85970000000000", "MsCPUBusy": "8.7002", "MsGPUBusy": "1.8673", "SyncInterval": "0", "PresentMode": "Hardware: Independent Flip"}
+{"csvDataRow": 2, "MsBetweenPresents": "11.24570000000000", "MsCPUBusy": "11.1088", "MsGPUBusy": "1.7084", "SyncInterval": "0", "PresentMode": "Hardware: Independent Flip"}
+{"csvDataRow": 3, "MsBetweenPresents": "8.70670000000000", "MsCPUBusy": "8.5543", "MsGPUBusy": "1.9633", "SyncInterval": "0", "PresentMode": "Hardware: Independent Flip"}
+{"csvDataRow": 492, "MsBetweenPresents": "20.67530000000000", "MsCPUBusy": "20.4998", "MsGPUBusy": "2.7198", "SyncInterval": "0", "PresentMode": "Hardware: Independent Flip"}
+{"csvDataRow": 510, "MsBetweenPresents": "20.85090000000000", "MsCPUBusy": "20.6962", "MsGPUBusy": "2.7468", "SyncInterval": "0", "PresentMode": "Hardware: Independent Flip"}
+{"csvDataRow": 521, "MsBetweenPresents": "20.47680000000000", "MsCPUBusy": "20.2815", "MsGPUBusy": "2.7475", "SyncInterval": "0", "PresentMode": "Hardware: Independent Flip"}
+{"csvDataRow": 1491, "MsBetweenPresents": "10.67000000000000", "MsCPUBusy": "10.5220", "MsGPUBusy": "2.6535", "SyncInterval": "0", "PresentMode": "Hardware: Independent Flip"}
+{"csvDataRow": 1492, "MsBetweenPresents": "8.32490000000000", "MsCPUBusy": "8.1623", "MsGPUBusy": "2.5250", "SyncInterval": "0", "PresentMode": "Hardware: Independent Flip"}
+{"csvDataRow": 1493, "MsBetweenPresents": "9.45440000000000", "MsCPUBusy": "9.3226", "MsGPUBusy": "2.6150", "SyncInterval": "0", "PresentMode": "Hardware: Independent Flip"}
+
+CAPTURE 2 SHA256 8703b7648676db4ad8ce200f1fa51027161cb594489fcb8bcd351c0b2d618002
+{"csvDataRow": 1, "MsBetweenPresents": "10.08140000000000", "MsCPUBusy": "9.9368", "MsGPUBusy": "2.3857", "SyncInterval": "0", "PresentMode": "Hardware: Independent Flip"}
+{"csvDataRow": 2, "MsBetweenPresents": "8.54050000000000", "MsCPUBusy": "8.3999", "MsGPUBusy": "2.5156", "SyncInterval": "0", "PresentMode": "Hardware: Independent Flip"}
+{"csvDataRow": 3, "MsBetweenPresents": "8.23300000000000", "MsCPUBusy": "8.0922", "MsGPUBusy": "2.3909", "SyncInterval": "0", "PresentMode": "Hardware: Independent Flip"}
+{"csvDataRow": 374, "MsBetweenPresents": "22.13320000000000", "MsCPUBusy": "21.8965", "MsGPUBusy": "3.0029", "SyncInterval": "0", "PresentMode": "Hardware: Independent Flip"}
+{"csvDataRow": 1007, "MsBetweenPresents": "20.30960000000000", "MsCPUBusy": "20.1180", "MsGPUBusy": "2.7406", "SyncInterval": "0", "PresentMode": "Hardware: Independent Flip"}
+{"csvDataRow": 1046, "MsBetweenPresents": "19.71140000000000", "MsCPUBusy": "19.5755", "MsGPUBusy": "2.5639", "SyncInterval": "0", "PresentMode": "Hardware: Independent Flip"}
+{"csvDataRow": 1456, "MsBetweenPresents": "12.41050000000000", "MsCPUBusy": "12.2593", "MsGPUBusy": "2.5227", "SyncInterval": "0", "PresentMode": "Hardware: Independent Flip"}
+{"csvDataRow": 1457, "MsBetweenPresents": "15.79090000000000", "MsCPUBusy": "15.6573", "MsGPUBusy": "2.4694", "SyncInterval": "0", "PresentMode": "Hardware: Independent Flip"}
+{"csvDataRow": 1458, "MsBetweenPresents": "9.99260000000000", "MsCPUBusy": "9.8071", "MsGPUBusy": "2.9114", "SyncInterval": "0", "PresentMode": "Hardware: Independent Flip"}

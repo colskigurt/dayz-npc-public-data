@@ -1,9 +1,9 @@
-# 현재 비교 준비와 미수용 경계
+# 현재비용기준과다음비교
 
-현재 통합 계측기의 종료코드 누락 대응3조건 회귀 통과. 새 ETW/NPC 성능 측정 없음. 기존 단순 결합솔버 기각과 실제8 Bounds hit0 보류 유지.
+현행5파트64 평지추격3회 Present p95 14.55~18.82ms. 새최적화없음. 실제ETW종료0·전경/논리64비사망문맥검증. 밀집/고저차/전투·전체20ms미수용.
 
-[상세](reports/operations/collector-exit-contract-20261107.md) · [근거 TXT](evidence/collector-exit-contract-20261107.txt) · [JSON](api/public/collector-exit-contract.json)
+[상세](reports/operations/five-flat-baseline-three-20261107.md) · [근거 TXT](evidence/five-flat-baseline-three-20261107.txt) · [JSON](api/public/five-flat-baseline-three.json)
 
-도구 수정 회귀는 게임 성능 개선이 아니다. 가짜 CSV·help출력은 계측자료가 아니다. 실제 ETW에서 종료0·전체CSV·전경·장면조건을 다시 검증해야 한다. 과거null은그대로보존한다. Drive/Displace 입력·Contacts·minimumLift·부분성공rollback이 달라 단순결합은기각. 같은분석을반복하지않는다. 다음은수정수집기로동일조건64baseline을확보하고그위에서한요인후보를선정하는것이다.
+동일5파트baseline3회이며후보절감률을계산하지않는다. Present/CPU Busy는개별함수self-time/포즈품질이아니다. 날씨/배경부하와표시모드차이제한을유지한다. 논리64상태·전경은보수적문맥검증이며정확QPC조인아님. 서버exit-1을정상종료로바꾸지않는다.
 
-[직전안내](reports/history/20261107-before-collector-exit-AI_REVIEW.md)
+다음은기존자유플레이밀집구간과이번평지의접촉solve·변위·계획률대조. 한요인후보선정전근거를정리하며이미기각된단순병합/rank/hit0cache반복시험금지. 새PBO/물리삭제/기능개발전환없음.
