@@ -1,7 +1,7 @@
-# 엔진 경계를 지키는 다음 비교
+# 계산이 발생하는 조건을 줄이는 검토
 
-Steam이 서버를Build26220720으로갱신했다. 이전−11~12% 단일쌍은업데이트전근거로보존하며새반복과합치지않는다. 새엔진8/8기능·낙하복귀9/9통과,새64비용0.
+재사용 외에 실제 접촉/후속질의 발생을 줄일 후보를 검토했다. 기존3입구 분산은 이미 작동한다. low레인0.8m/contact기준0.86m의차이를확인했고 0.8~1.05m 정적지지18조건은통과했다. 모션·CPU효과는미검증.
 
-[상세](reports/operations/grid-cell-pool-engine-update-boundary-20261107.md) · [JSON](api/public/grid-cell-pool-engine-update-boundary.json) · [근거](evidence/grid-cell-pool-engine-update-boundary-20261107.txt)
+[상세](reports/operations/work-reduction-lane-feasibility-20261107.md) · [JSON](api/public/work-reduction-lane-feasibility.json) · [함수·근거 TXT](evidence/work-reduction-lane-feasibility-20261107.txt)
 
-서버321파일갱신이Steam로그로확인됐다. ProductVersion표시는같아도hash가다르다. 과거native주소/표본전용금지. 기존4실행반복계획은서버시작전해시검사로중단했고비용실행0,대기helper만정리했다. 새엔진8개체는같은후보PBO/미션으로통과했으나서버exit−1은정상종료미수용. 새6비용실행은준비만했고기존단일쌍을반복수에포함하지않는다.
+첫등반관측54명은21/19/14로분산됐으며전원64의선택통계가아니다. 최대근접25명은최근접입구7/10/8이지만실제배정입구와다를수있다. 접촉규칙은유지하며레인간격을넓혀불필요압력의발생을줄일가능성을검토한다. 정상밀침/낙하삭제없음. 정적entry/exit검사는등반곡선전체/피격/CPU를입증하지않는다. 씬의작성된링크국소후보로일반맵확장성해결이아니다. 점유사전제외와압력재계획감축은별도후보로보류한다. 현재골재개상태이며과거일시정지유지표현을정정했다.

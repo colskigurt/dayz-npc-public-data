@@ -1,7 +1,7 @@
 # DayZ NPC 현재 상태
 
-Steam이 서버를Build26220720으로갱신했다. 이전−11~12% 단일쌍은업데이트전근거로보존하며새반복과합치지않는다. 새엔진8/8기능·낙하복귀9/9통과,새64비용0.
+재사용 외에 실제 접촉/후속질의 발생을 줄일 후보를 검토했다. 기존3입구 분산은 이미 작동한다. low레인0.8m/contact기준0.86m의차이를확인했고 0.8~1.05m 정적지지18조건은통과했다. 모션·CPU효과는미검증.
 
-[상세](reports/operations/grid-cell-pool-engine-update-boundary-20261107.md) · [JSON](api/public/grid-cell-pool-engine-update-boundary.json) · [근거](evidence/grid-cell-pool-engine-update-boundary-20261107.txt)
+[상세](reports/operations/work-reduction-lane-feasibility-20261107.md) · [JSON](api/public/work-reduction-lane-feasibility.json) · [함수·근거 TXT](evidence/work-reduction-lane-feasibility-20261107.txt)
 
-다음은새엔진독립3쌍. 기존CPU수집기도재사용해프로세스CPU와게임/실시간을구분한다. 아직실행전이며최적화/20ms/시각최종수용미완료. 후보기본OFF·운영미반영.
+다음후보는low레인만0.95m로맞추는기본OFF격리안과호출수계측명세. 현재게임코드/PBO미변경. 셀풀새엔진첫OFF자료와남은5회는보존·미완료. 전체20ms·64기능·시각최종수용미완료. 골active.

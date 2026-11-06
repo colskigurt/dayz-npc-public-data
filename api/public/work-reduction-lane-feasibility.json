@@ -1,0 +1,334 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-07T04:59:40.857430+09:00",
+  "sourceRunId": "ANIM-lane-geometry1",
+  "buildId": "unchanged-original-pbo-453d6a9e",
+  "verificationStatus": "existing-source-and-static-footprint-diagnosis-only",
+  "metrics": {
+    "existingDistribution": {
+      "schemaVersion": "1.0.0",
+      "sourceRunId": "existing-entry-distribution-review-20261107",
+      "sourceRuntime": "ANIM-grid-26220720-fixed-1-off",
+      "newGameRuns": 0,
+      "validGroundLowLinks": [
+        {
+          "Id": "ground_to_low",
+          "Entry": [
+            4510.0,
+            339.1377868652344,
+            10235.2763671875
+          ],
+          "Exit": [
+            4509.998046875,
+            340.1377868652344,
+            10237.2412109375
+          ],
+          "IncludeQueueCost": 1,
+          "OccupancyCost": 0.0
+        },
+        {
+          "Id": "ground_to_low_lane_-1",
+          "Entry": [
+            4510.7998046875,
+            339.1527099609375,
+            10235.2763671875
+          ],
+          "Exit": [
+            4510.7978515625,
+            340.1377868652344,
+            10237.2412109375
+          ],
+          "IncludeQueueCost": 1,
+          "OccupancyCost": 0.0
+        },
+        {
+          "Id": "ground_to_low_lane_1",
+          "Entry": [
+            4509.2001953125,
+            339.1235656738281,
+            10235.2763671875
+          ],
+          "Exit": [
+            4509.1982421875,
+            340.1377868652344,
+            10237.2412109375
+          ],
+          "IncludeQueueCost": 1,
+          "OccupancyCost": 0.0
+        }
+      ],
+      "observedFirstClimbAgents": 54,
+      "firstClimbCounts": {
+        "ground_to_low": 21,
+        "ground_to_low_lane_-1": 19,
+        "ground_to_low_lane_1": 14
+      },
+      "snapshotCount": 168,
+      "maximumNearbyGroundFollowers": 25,
+      "selectedPeakSnapshots": [
+        {
+          "seconds": 15.8429,
+          "nearbyGroundFollowers": 25,
+          "nearestEntryCounts": {
+            "ground_to_low": 7,
+            "ground_to_low_lane_-1": 10,
+            "ground_to_low_lane_1": 8
+          }
+        },
+        {
+          "seconds": 16.3999,
+          "nearbyGroundFollowers": 25,
+          "nearestEntryCounts": {
+            "ground_to_low": 7,
+            "ground_to_low_lane_-1": 10,
+            "ground_to_low_lane_1": 8
+          }
+        },
+        {
+          "seconds": 15.3049,
+          "nearbyGroundFollowers": 24,
+          "nearestEntryCounts": {
+            "ground_to_low": 6,
+            "ground_to_low_lane_-1": 9,
+            "ground_to_low_lane_1": 9
+          }
+        },
+        {
+          "seconds": 15.5859,
+          "nearbyGroundFollowers": 24,
+          "nearestEntryCounts": {
+            "ground_to_low": 8,
+            "ground_to_low_lane_-1": 8,
+            "ground_to_low_lane_1": 8
+          }
+        },
+        {
+          "seconds": 16.1329,
+          "nearbyGroundFollowers": 24,
+          "nearestEntryCounts": {
+            "ground_to_low": 8,
+            "ground_to_low_lane_-1": 9,
+            "ground_to_low_lane_1": 7
+          }
+        }
+      ],
+      "evidenceReferences": [
+        {
+          "fileId": "native-traversal-fixture.json",
+          "sha256": "cdf1d514ab7ed8e6a3d67632782c61007b37908d4ed2fdd419ae1fd6ca75c6b1"
+        },
+        {
+          "fileId": "native-state-contract.tsv",
+          "sha256": "1661a1112f6f2e1d6ea5e4aedb3b6c1932b9032c672494b1b302768c25770499"
+        },
+        {
+          "fileId": "gameplay-eight.tsv",
+          "sha256": "4e2d7df03998b7d70c320ab98def059192d6414810d993250d613c809865bd4b"
+        }
+      ],
+      "limitations": [
+        "First climb starts exclude waiting actors and are not planner decisions",
+        "Nearby ground followers selected from sampled positions; nearest portal is not actual assigned portal",
+        "Only one existing fixed-target runtime; no new counterfactual motion or performance test",
+        "Fixture JSON is initial link data, not runtime congestion history",
+        "Cannot infer that all actors converge on one entrance or that soft cost will reduce CPU"
+      ]
+    },
+    "idealizedContactMath": [
+      {
+        "spacingMeters": 0.8,
+        "forcePerAdjacentPairNewtonsAtZeroRelativeVelocity": 107.9999999999999,
+        "outerAgentFirstStepDisplacementMeters": 0.0005677714285714281,
+        "nonzeroPressureProposalsInIdealAlignedTriple": 2
+      },
+      {
+        "spacingMeters": 0.85,
+        "forcePerAdjacentPairNewtonsAtZeroRelativeVelocity": 18.000000000000014,
+        "outerAgentFirstStepDisplacementMeters": 9.462857142857151e-05,
+        "nonzeroPressureProposalsInIdealAlignedTriple": 2
+      },
+      {
+        "spacingMeters": 0.86,
+        "forcePerAdjacentPairNewtonsAtZeroRelativeVelocity": 0,
+        "outerAgentFirstStepDisplacementMeters": 0.0,
+        "nonzeroPressureProposalsInIdealAlignedTriple": 0
+      },
+      {
+        "spacingMeters": 0.9,
+        "forcePerAdjacentPairNewtonsAtZeroRelativeVelocity": 0,
+        "outerAgentFirstStepDisplacementMeters": 0.0,
+        "nonzeroPressureProposalsInIdealAlignedTriple": 0
+      },
+      {
+        "spacingMeters": 0.95,
+        "forcePerAdjacentPairNewtonsAtZeroRelativeVelocity": 0,
+        "outerAgentFirstStepDisplacementMeters": 0.0,
+        "nonzeroPressureProposalsInIdealAlignedTriple": 0
+      }
+    ],
+    "staticSupportRows": [
+      {
+        "spacing": "0.8",
+        "lane": "-1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.799805, 339.152710, 10235.276367>",
+        "exit": "<4510.797852, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.8",
+        "lane": "0",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.000000, 339.137787, 10235.276367>",
+        "exit": "<4509.998047, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.8",
+        "lane": "1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4509.200195, 339.123566, 10235.276367>",
+        "exit": "<4509.198242, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.86",
+        "lane": "-1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.859863, 339.153839, 10235.276367>",
+        "exit": "<4510.857910, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.86",
+        "lane": "0",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.000000, 339.137787, 10235.276367>",
+        "exit": "<4509.998047, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.86",
+        "lane": "1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4509.140137, 339.122528, 10235.276367>",
+        "exit": "<4509.138184, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.9",
+        "lane": "-1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.899902, 339.154602, 10235.276367>",
+        "exit": "<4510.897949, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.9",
+        "lane": "0",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.000000, 339.137787, 10235.276367>",
+        "exit": "<4509.998047, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.9",
+        "lane": "1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4509.100098, 339.121826, 10235.276367>",
+        "exit": "<4509.098145, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.95",
+        "lane": "-1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.950195, 339.155518, 10235.276367>",
+        "exit": "<4510.948242, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.95",
+        "lane": "0",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.000000, 339.137787, 10235.276367>",
+        "exit": "<4509.998047, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.95",
+        "lane": "1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4509.049805, 339.120941, 10235.276367>",
+        "exit": "<4509.047852, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "1",
+        "lane": "-1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4511.000000, 339.156464, 10235.276367>",
+        "exit": "<4510.998047, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "1",
+        "lane": "0",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.000000, 339.137787, 10235.276367>",
+        "exit": "<4509.998047, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "1",
+        "lane": "1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4509.000000, 339.120087, 10235.276367>",
+        "exit": "<4508.998047, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "1.05",
+        "lane": "-1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4511.049805, 339.157379, 10235.276367>",
+        "exit": "<4511.047852, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "1.05",
+        "lane": "0",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.000000, 339.137787, 10235.276367>",
+        "exit": "<4509.998047, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "1.05",
+        "lane": "1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4508.950195, 339.119232, 10235.276367>",
+        "exit": "<4508.948242, 340.137787, 10237.241211>"
+      }
+    ],
+    "referenceValidLanes": 3,
+    "newNpcRuns": 0,
+    "newClientRuns": 0,
+    "newHeadlessGeometryRuns": 1
+  },
+  "blockers": [
+    "Motion and8/64 lane change untested",
+    "No call-count or CPU improvement measurement",
+    "Source0.8 selection reason unconfirmed",
+    "Scene-specific authored links; not general horde scaling",
+    "Server exit -1"
+  ],
+  "evidenceReferences": [
+    "reports/operations/work-reduction-lane-feasibility-20261107.md",
+    "evidence/work-reduction-lane-feasibility-20261107.txt"
+  ],
+  "performanceAccepted": false,
+  "visualAccepted": false,
+  "fullGoalComplete": false
+}

@@ -1,0 +1,457 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-07T04:59:40.857430+09:00",
+  "sourceRunId": "ANIM-lane-geometry1",
+  "buildId": "unchanged-original-pbo-453d6a9e",
+  "verificationStatus": "existing-source-and-static-footprint-diagnosis-only",
+  "metrics": {
+    "existingDistribution": {
+      "schemaVersion": "1.0.0",
+      "sourceRunId": "existing-entry-distribution-review-20261107",
+      "sourceRuntime": "ANIM-grid-26220720-fixed-1-off",
+      "newGameRuns": 0,
+      "validGroundLowLinks": [
+        {
+          "Id": "ground_to_low",
+          "Entry": [
+            4510.0,
+            339.1377868652344,
+            10235.2763671875
+          ],
+          "Exit": [
+            4509.998046875,
+            340.1377868652344,
+            10237.2412109375
+          ],
+          "IncludeQueueCost": 1,
+          "OccupancyCost": 0.0
+        },
+        {
+          "Id": "ground_to_low_lane_-1",
+          "Entry": [
+            4510.7998046875,
+            339.1527099609375,
+            10235.2763671875
+          ],
+          "Exit": [
+            4510.7978515625,
+            340.1377868652344,
+            10237.2412109375
+          ],
+          "IncludeQueueCost": 1,
+          "OccupancyCost": 0.0
+        },
+        {
+          "Id": "ground_to_low_lane_1",
+          "Entry": [
+            4509.2001953125,
+            339.1235656738281,
+            10235.2763671875
+          ],
+          "Exit": [
+            4509.1982421875,
+            340.1377868652344,
+            10237.2412109375
+          ],
+          "IncludeQueueCost": 1,
+          "OccupancyCost": 0.0
+        }
+      ],
+      "observedFirstClimbAgents": 54,
+      "firstClimbCounts": {
+        "ground_to_low": 21,
+        "ground_to_low_lane_-1": 19,
+        "ground_to_low_lane_1": 14
+      },
+      "snapshotCount": 168,
+      "maximumNearbyGroundFollowers": 25,
+      "selectedPeakSnapshots": [
+        {
+          "seconds": 15.8429,
+          "nearbyGroundFollowers": 25,
+          "nearestEntryCounts": {
+            "ground_to_low": 7,
+            "ground_to_low_lane_-1": 10,
+            "ground_to_low_lane_1": 8
+          }
+        },
+        {
+          "seconds": 16.3999,
+          "nearbyGroundFollowers": 25,
+          "nearestEntryCounts": {
+            "ground_to_low": 7,
+            "ground_to_low_lane_-1": 10,
+            "ground_to_low_lane_1": 8
+          }
+        },
+        {
+          "seconds": 15.3049,
+          "nearbyGroundFollowers": 24,
+          "nearestEntryCounts": {
+            "ground_to_low": 6,
+            "ground_to_low_lane_-1": 9,
+            "ground_to_low_lane_1": 9
+          }
+        },
+        {
+          "seconds": 15.5859,
+          "nearbyGroundFollowers": 24,
+          "nearestEntryCounts": {
+            "ground_to_low": 8,
+            "ground_to_low_lane_-1": 8,
+            "ground_to_low_lane_1": 8
+          }
+        },
+        {
+          "seconds": 16.1329,
+          "nearbyGroundFollowers": 24,
+          "nearestEntryCounts": {
+            "ground_to_low": 8,
+            "ground_to_low_lane_-1": 9,
+            "ground_to_low_lane_1": 7
+          }
+        }
+      ],
+      "evidenceReferences": [
+        {
+          "fileId": "native-traversal-fixture.json",
+          "sha256": "cdf1d514ab7ed8e6a3d67632782c61007b37908d4ed2fdd419ae1fd6ca75c6b1"
+        },
+        {
+          "fileId": "native-state-contract.tsv",
+          "sha256": "1661a1112f6f2e1d6ea5e4aedb3b6c1932b9032c672494b1b302768c25770499"
+        },
+        {
+          "fileId": "gameplay-eight.tsv",
+          "sha256": "4e2d7df03998b7d70c320ab98def059192d6414810d993250d613c809865bd4b"
+        }
+      ],
+      "limitations": [
+        "First climb starts exclude waiting actors and are not planner decisions",
+        "Nearby ground followers selected from sampled positions; nearest portal is not actual assigned portal",
+        "Only one existing fixed-target runtime; no new counterfactual motion or performance test",
+        "Fixture JSON is initial link data, not runtime congestion history",
+        "Cannot infer that all actors converge on one entrance or that soft cost will reduce CPU"
+      ]
+    },
+    "idealizedContactMath": [
+      {
+        "spacingMeters": 0.8,
+        "forcePerAdjacentPairNewtonsAtZeroRelativeVelocity": 107.9999999999999,
+        "outerAgentFirstStepDisplacementMeters": 0.0005677714285714281,
+        "nonzeroPressureProposalsInIdealAlignedTriple": 2
+      },
+      {
+        "spacingMeters": 0.85,
+        "forcePerAdjacentPairNewtonsAtZeroRelativeVelocity": 18.000000000000014,
+        "outerAgentFirstStepDisplacementMeters": 9.462857142857151e-05,
+        "nonzeroPressureProposalsInIdealAlignedTriple": 2
+      },
+      {
+        "spacingMeters": 0.86,
+        "forcePerAdjacentPairNewtonsAtZeroRelativeVelocity": 0,
+        "outerAgentFirstStepDisplacementMeters": 0.0,
+        "nonzeroPressureProposalsInIdealAlignedTriple": 0
+      },
+      {
+        "spacingMeters": 0.9,
+        "forcePerAdjacentPairNewtonsAtZeroRelativeVelocity": 0,
+        "outerAgentFirstStepDisplacementMeters": 0.0,
+        "nonzeroPressureProposalsInIdealAlignedTriple": 0
+      },
+      {
+        "spacingMeters": 0.95,
+        "forcePerAdjacentPairNewtonsAtZeroRelativeVelocity": 0,
+        "outerAgentFirstStepDisplacementMeters": 0.0,
+        "nonzeroPressureProposalsInIdealAlignedTriple": 0
+      }
+    ],
+    "staticSupportRows": [
+      {
+        "spacing": "0.8",
+        "lane": "-1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.799805, 339.152710, 10235.276367>",
+        "exit": "<4510.797852, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.8",
+        "lane": "0",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.000000, 339.137787, 10235.276367>",
+        "exit": "<4509.998047, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.8",
+        "lane": "1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4509.200195, 339.123566, 10235.276367>",
+        "exit": "<4509.198242, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.86",
+        "lane": "-1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.859863, 339.153839, 10235.276367>",
+        "exit": "<4510.857910, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.86",
+        "lane": "0",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.000000, 339.137787, 10235.276367>",
+        "exit": "<4509.998047, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.86",
+        "lane": "1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4509.140137, 339.122528, 10235.276367>",
+        "exit": "<4509.138184, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.9",
+        "lane": "-1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.899902, 339.154602, 10235.276367>",
+        "exit": "<4510.897949, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.9",
+        "lane": "0",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.000000, 339.137787, 10235.276367>",
+        "exit": "<4509.998047, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.9",
+        "lane": "1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4509.100098, 339.121826, 10235.276367>",
+        "exit": "<4509.098145, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.95",
+        "lane": "-1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.950195, 339.155518, 10235.276367>",
+        "exit": "<4510.948242, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.95",
+        "lane": "0",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.000000, 339.137787, 10235.276367>",
+        "exit": "<4509.998047, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "0.95",
+        "lane": "1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4509.049805, 339.120941, 10235.276367>",
+        "exit": "<4509.047852, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "1",
+        "lane": "-1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4511.000000, 339.156464, 10235.276367>",
+        "exit": "<4510.998047, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "1",
+        "lane": "0",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.000000, 339.137787, 10235.276367>",
+        "exit": "<4509.998047, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "1",
+        "lane": "1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4509.000000, 339.120087, 10235.276367>",
+        "exit": "<4508.998047, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "1.05",
+        "lane": "-1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4511.049805, 339.157379, 10235.276367>",
+        "exit": "<4511.047852, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "1.05",
+        "lane": "0",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4510.000000, 339.137787, 10235.276367>",
+        "exit": "<4509.998047, 340.137787, 10237.241211>"
+      },
+      {
+        "spacing": "1.05",
+        "lane": "1",
+        "entrySupported": "true",
+        "exitSupported": "true",
+        "entry": "<4508.950195, 339.119232, 10235.276367>",
+        "exit": "<4508.948242, 340.137787, 10237.241211>"
+      }
+    ],
+    "referenceValidLanes": 3,
+    "newNpcRuns": 0,
+    "newClientRuns": 0,
+    "newHeadlessGeometryRuns": 1
+  },
+  "blockers": [
+    "Motion and8/64 lane change untested",
+    "No call-count or CPU improvement measurement",
+    "Source0.8 selection reason unconfirmed",
+    "Scene-specific authored links; not general horde scaling",
+    "Server exit -1"
+  ],
+  "evidenceReferences": [
+    "reports/operations/work-reduction-lane-feasibility-20261107.md",
+    "evidence/work-reduction-lane-feasibility-20261107.txt"
+  ],
+  "performanceAccepted": false,
+  "visualAccepted": false,
+  "fullGoalComplete": false
+}
+
+Selection: authored custom-source excerpts only. Not engine internals, full implementation, CPU proof or tested lane modification.
+
+DGBNativeCrowd.c SHA256 8b3145c67444b5185e4a44dcb051dc118405d9cb2268c752b3abc65daeeaddf9
+31:     static vector ContactForce(vector from,vector other,vector relativeVelocity,int identity)
+32:     {
+33:         vector away=from - other;away[1]=0;float gap=away.Length();
+34:         if(gap>=0.86)return vector.Zero;
+35:         if(gap<0.0001){float angle=identity*2.399963;away=Vector(Math.Cos(angle),0,Math.Sin(angle));}
+36:         else away=away*(1.0/gap);
+37:         // Spring/damper contact in newtons, integrated by each body's mass.
+38:         // Relative outward velocity dissipates contact instead of teleporting.
+39:         float force=Math.Clamp((0.86 - gap)*1800 - vector.Dot(relativeVelocity,away)*220,0,280);
+40:         return away*force;
+41:     }
+42:     static vector IntegrateContact(vector velocity,vector force,float mass,float dt)
+43:     {
+44:         dt=Math.Clamp(dt,0,0.05);
+45:         vector acceleration=force*(1.0/Math.Max(1,mass));
+46:         if(acceleration.Length()>4){acceleration.Normalize();acceleration=acceleration*4;}
+47:         vector result=velocity+acceleration*dt;
+48:         result=result*Math.Max(0,1 - 4*dt);
+49:         if(result.Length()>0.85){result.Normalize();result=result*0.85;}
+151:         // not the cooperative intent. Ground execution revalidates the route;
+152:         // target changes, action locks and expiry still end yield/bypass leases.
+153:         body.Reason=savedReason;
+154:         if(!climbing && !supported)
+155:         {
+156:             body.PressureFalls++;
+157:             vector fallVelocity=displacement*(1.0/Math.Max(dt,0.001));
+158:             body.Traversal.StartPressureFall(fallVelocity);
+
+DGBTraversalFixture.c SHA256 d89fac65023e7fb5d2e42728bdcdc4ead299c44e85836a862750dbbabb19b5d8
+207:         }
+208:         return true;
+209:     }
+210:     void AddParallelLanes()
+211:     {
+212:         int originals=Spec.Links.Count();
+213:         for(int index=0;index<originals;index++)
+214:         {
+215:             DGBFixtureLink source=Spec.Links[index];source.GroupId=source.Id;source.IncludeQueueCost=true;
+216:             int extent=2;float spacing=0.95;
+217:             if(source.Id=="ground_to_low"){extent=1;spacing=0.8;}
+218:             for(int lane=-extent;lane<=extent;lane++)
+219:             {
+220:                 if(lane==0)continue;
+221:                 vector offset=Rotate(Vector(lane*spacing,0,0),source.Heading);
+222:                 vector entry=source.Entry+offset;vector exit=source.Exit+offset;
+223:                 if(source.SourceArea=="ground")entry=Ground(entry);
+224:                 if(source.TargetArea=="ground")exit=Ground(exit);
+225:                 if(!LaneSupport(entry,source.SourceArea) || !LaneSupport(exit,source.TargetArea))continue;
+226:                 AddLink(source.Id+"_lane_"+lane,source.SourceArea,source.TargetArea,source.Action,source.Clip,entry,exit,source.Heading);
+227:                 DGBFixtureLink added=Spec.Links[Spec.Links.Count() - 1];
+228:                 added.GroupId=source.Id;added.LaneOffset=lane*spacing;added.IncludeQueueCost=true;
+229:                 added.Setback=source.Setback;added.MaximumDropHeight=source.MaximumDropHeight;
+230:             }
+231:         }
+
+DGBNativeTraffic.c SHA256 8f6d47b9ae7343df46a0ae902f5220e0703c9656abc333c1002b790b195eaf4c
+104:     void UpdateCongestion()
+105:     {
+106:         if(!Director.CrowdDynamics || Director.Now<NextCongestion)return;
+107:         NextCongestion=Director.Now+0.25;
+108:         // Cache physical occupancy once for the group. It changes route cost,
+109:         // never target identity, LastSeen, or permission to skip landing checks.
+110:         foreach(DGBFixtureLink connection:Director.Fixture.Spec.Links)
+111:         {
+112:             if(Director.OpenTraversal)
+113:             {connection.OccupancyCost=0;connection.OccupancyDiagnostic="CONTACT_RESPONSE_NOT_ROUTE_COST";continue;}
+114:             int peerCount=0;int playerCount=0;int seatCount=0;
+115:             foreach(DGBGroundAgent other:Director.Agents)
+116:                 if(Math.AbsFloat(other.Position[1] - connection.Exit[1])<1 && DGBGroundAgent.FlatDistance(other.Position,connection.Exit)<0.85)peerCount++;
+117:             foreach(Man physicalPlayer:Director.PerceivedPlayers)
+118:                 if(physicalPlayer && physicalPlayer.IsAlive() && Math.AbsFloat(physicalPlayer.GetPosition()[1] - connection.Exit[1])<1.4 && DGBGroundAgent.FlatDistance(physicalPlayer.GetPosition(),connection.Exit)<0.7)playerCount++;
+119:             foreach(DGBNativeSeat reserved:Seats)
+120:                 if(reserved.Owner>=0 && reserved.Area==connection.TargetArea && DGBGroundAgent.FlatDistance(reserved.Point,connection.Exit)<0.9)seatCount++;
+121:             // Independent wait estimates in seconds, not original AI weights.
+122:             connection.OccupancyCost=Math.Min(20,peerCount*4+playerCount*8+seatCount*2);
+123:             connection.OccupancyDiagnostic="peers="+peerCount+",players="+playerCount+",seats="+seatCount;
+124:         }
+125:     }
+126:     bool Supported(DGBNativeGroundBody body,vector point,string area,out vector supported)
+127:     {
+128:         if(!DGBGroundAgent.Floor(body.Leader,point,supported))return false;
+129:         if(Director.Fixture.Area(supported)!=area)return false;
+130:         array<vector> offsets={"0.23 0 0","-0.23 0 0","0 0 0.23","0 0 -0.23"};
+131:         foreach(vector offset:offsets)
+132:         {
+133:             vector foot;if(!DGBGroundAgent.Floor(body.Leader,supported+offset,foot))return false;
+134:             if(Director.Fixture.Area(foot)!=area || Math.AbsFloat(foot[1] - supported[1])>0.15)return false;
+135:         }
+136:         return true;
+137:     }
+138:     bool OutsidePortals(vector point,string area)
+139:     {
+
+DGBNativePursuit.c SHA256 ac51917d47ce5cc75a044084e027b07fd2a812dd8362014068653aff60ff2062
+129:         state.Valid=false;state.Arrived=false;state.ContactTarget=null;state.Plans++;state.Anchor=clue;state.NextPlan=Director.Now+0.75;
+130:         vector away=body.Agent.Position - clue;away[1]=0;
+131:         float angle=body.Agent.Heading*Math.DEG2RAD+Math.PI;
+132:         if(away.Length()>0.01)angle=Math.Atan2(away[0],away[2]);
+133:         array<float> radii={0,0.95,1.7,2.5,3.3,4.1,4.9};
+134:         array<float> angles={0,30,-30,60,-60,90,-90,120,-120,180};
+135:         ref array<vector> candidates={};ref array<float> costs={};ref array<string> modes={};
+136:         foreach(float radius:radii)
+137:         {
+138:             if(visible && radius<0.9)continue;
+139:             if(visible && !front && radius<1.7)continue;
+140:             foreach(float turn:angles)
+141:             {
+142:                 vector proposed=clue+Vector(Math.Sin(angle+turn*Math.DEG2RAD),0,Math.Cos(angle+turn*Math.DEG2RAD))*radius;
+143:                 vector support;string rejection;
+144:                 if(!Director.Traffic.Supported(body,proposed,"ground",support))continue;
+145:                 if(!DGBGroundRoute.SegmentClear(support,support,body.Agent.ObstacleMin,body.Agent.ObstacleMax))continue;
+146:                 if(!Director.Crowd.CoreClear(body,support,support,rejection) || Claimed(body,support))continue;
+147:                 if(!Director.Traffic.GroundReservationsClear(body,support,support))continue;
+148:                 bool duplicate=false;
+149:                 foreach(vector prior:candidates)if(DGBGroundAgent.FlatDistance(prior,support)<0.05){duplicate=true;break;}
+150:                 if(duplicate)continue;
+151:                 float cost=DGBGroundAgent.FlatDistance(body.Agent.Position,support)+Math.Max(0,radius - 0.95)*1.5;
+152:                 int insert=candidates.Count();
+153:                 for(int order=0;order<costs.Count();order++)if(cost<costs[order]){insert=order;break;}
