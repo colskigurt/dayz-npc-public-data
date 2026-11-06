@@ -1,11 +1,11 @@
 # DayZ NPC 현재 상태
 
-- 최신 준비: [receiver-skeleton-candidate-20261107](reports/operations/receiver-skeleton-candidate-20261107.md)
-- 별도 피해 수신기 골격 후보: 원본250노드→보호·부모 포함27노드. 14클립+골격 변환 및 서명 빌드 완료.
-- **실제 포즈·피격·8/64 기능·CPU·시각은 아직 미검증.** 호스트 수·충돌 검사·클럭 변경 없음.
-- Workbench 변환 후 종료 때 기존 script-leak assertion 재현. 정상 종료 통과 아님.
-- 다음: 기존14클립 비교에서 전체/축소 수신기의 실제 본 변환·피격 헐 일치 검증.
-- [공개 JSON](api/public/receiver-skeleton-candidate.json)
-- [직전64비용 비교: 셀 풀 미수용](reports/operations/grid-cell-pool-cost-review-20261107.md)
+- 최신: [수신기 골격 축소 후보 런타임 생성 실패 진단](reports/operations/receiver-runtime-factory-review-20261107.md)
+- 전체 골격 참조 객체 생성에서 크래시. 포즈 표본0, 8/64 기능·CPU·표시 품질 미측정.
+- 그래프 기본 노드 수정 및 명시 actor/Type 선언은 이번 생성 실패를 해결하지 못함.
+- 후보는 격리·미수용·운영 미적용. 기존 정상 빌드 보존.
+- [공개 JSON](api/public/receiver-runtime-factory-review.json)
+- [이전 네이티브 변환·빌드 기록](reports/operations/receiver-skeleton-candidate-20261107.md)
+- [기존64 셀 풀 비용 비교: 미수용](reports/operations/grid-cell-pool-cost-review-20261107.md)
 
-기존 상세 기록: [AI_REVIEW.md 보존본](reports/history/receiver-skeleton-candidate-20261107-before-AI_REVIEW.md)
+기존 상세 기록: [AI_REVIEW.md 보존본](reports/history/receiver-runtime-factory-review-20261107-before-AI_REVIEW.md)
