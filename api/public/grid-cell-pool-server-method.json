@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceRunId": "ANIM-grid-pool-method4",
+  "buildId": "3CAA0D50D4CF64498FD8C98834F324F89B2CEDBE66AC4382DBCC3D73B94C9AC7",
+  "verificationStatus": "server-method-equivalence-only",
+  "metrics": {
+    "frames": 180,
+    "mismatches": 0,
+    "summedPairCandidates": 221991,
+    "summedContactPairs": 57296,
+    "poolCreated": 64,
+    "poolReused": 3728
+  },
+  "serverExitCode": -1,
+  "normalProcessExit": false,
+  "limitations": [
+    "No native NPC entities or Displace/SolveContacts/gameplay/network/render execution",
+    "Counts and exact force/velocity/proposal/entry-priority comparison, not runtime ordered-pair instrumentation",
+    "OpenTraversal true and empty player set; entry support and player contacts not exercised",
+    "No CPU cost or visual improvement measurement",
+    "Method1 mission compile failure and method2/3 no-start runs excluded; forcibly retired with exact identity receipts",
+    "180 synthetic frames run within one scheduled callback; not a multi-frame gameplay regression"
+  ],
+  "generatedAt": "2026-11-07T04:02:30.218058+09:00",
+  "blockers": [
+    "No native NPC entities or Displace/SolveContacts/gameplay/network/render execution",
+    "Counts and exact force/velocity/proposal/entry-priority comparison, not runtime ordered-pair instrumentation",
+    "OpenTraversal true and empty player set; entry support and player contacts not exercised",
+    "No CPU cost or visual improvement measurement",
+    "Method1 mission compile failure and method2/3 no-start runs excluded; forcibly retired with exact identity receipts",
+    "180 synthetic frames run within one scheduled callback; not a multi-frame gameplay regression"
+  ],
+  "evidenceReferences": [
+    "reports/operations/grid-cell-pool-server-method-20261107.md",
+    "evidence/grid-cell-pool-server-method-20261107.txt"
+  ],
+  "performanceAccepted": false,
+  "visualAccepted": false,
+  "fullGoalComplete": false
+}

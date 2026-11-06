@@ -1,7 +1,7 @@
-# 격자 셀 풀 후보 검토
+# 실제서버 메서드검증과 다음gate
 
-오프라인700프레임의 후보쌍398989건 순서일치. 기본OFF 격리PBO 빌드·서명검증 완료. Enforce실행·게임기능·성능은 미검증.
+실제Enforce180입력세트에서 접촉계수·힘·속도·변위제안 불일치0. 셀64생성/3728재사용. 실제NPC·CPU·화면 미검증,서버종료−1은정상종료미수용.
 
-[상세](reports/operations/grid-cell-pool-offline-build-20261107.md) · [JSON](api/public/grid-cell-pool-offline-build.json) · [근거](evidence/grid-cell-pool-offline-build-20261107.txt)
+[상세](reports/operations/grid-cell-pool-server-method-20261107.md) · [JSON](api/public/grid-cell-pool-server-method.json) · [근거](evidence/grid-cell-pool-server-method-20261107.txt)
 
-물리검사·후보이웃·힘·순서를 삭제하지 않고 셀 수명만 재사용한다. 모델은Python이며 Enforce동등성을 증명하지 않는다. 다음은 기존서버하네스의 짧은 메서드검증,이후8→64는 단계gate에 따른다. 기존Scratch는solver배열로 다른범위. native할당/GC절감은 미측정.
+한예약호출의180입력이며180게임프레임/64실제개체회귀가아니다. OpenTraversal=true,플레이어없음. Displace/SolveContacts/포즈/렌더 미실행. 최초미션문법실패와OnUpdate무진입2개는제외하고cleanup을보존했다. OnUpdate문제의원인은미특정. 다음8기능후64비용이득없으면채택금지.
