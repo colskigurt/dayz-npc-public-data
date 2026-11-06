@@ -1,20 +1,21 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-07T02:43:17.309664+09:00",
-  "sourceRunId": "collector-exit-contract1",
-  "commit": "a2f2a1d3dd9cf42e6fcf02b112d88976727352de",
+  "generatedAt": "2026-11-07T02:57:17.329051+09:00",
+  "sourceRunId": "ANIM-five-flat-baseline-three",
+  "commit": "5aa1e5c14e6f115fbb4a07bab7e56d74ac6089be",
   "httpVerified": true,
   "jsonSchemaVerified": true,
-  "checkedFiles": 24,
-  "performanceAccepted": false,
+  "checkedFiles": 26,
+  "performanceImprovementAccepted": false,
   "externalAIRead": {
     "status": "verified",
     "tool": "web.open",
-    "url": "https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/a2f2a1d3dd9cf42e6fcf02b112d88976727352de/reports/operations/collector-exit-contract-20261107.md",
-    "observed": "0/7/no-CSV gates and actual help exit1; no live ETW or performance improvement claimed"
+    "url": "https://raw.githubusercontent.com/colskigurt/dayz-npc-public-data/5aa1e5c14e6f115fbb4a07bab7e56d74ac6089be/reports/operations/five-flat-baseline-three-20261107.md",
+    "observed": "three baseline Present p95 18.819/14.550/14.628ms; no new optimization or global acceptance"
   },
   "blockers": [
-    "Actual ETW post-fix capture not run",
-    "64 performance and full goal remain incomplete"
+    "Dense/combat/high mobility not covered",
+    "Weather and display mode differences retained",
+    "Visual animation not measured; server exit -1"
   ]
 }
