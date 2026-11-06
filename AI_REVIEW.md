@@ -1,9 +1,9 @@
-# 국소후보의근거와한계
+# 파일럿판정과다음검토
 
-수동64와평지64의solve율은약39/40회·개체게임초로유사. 전투receiver64개추가구성차이확인. 새8ON은동일방향setter3478회(19.38%)생략·최종방향불일치0,전체비용미측정.
+피해수신체 동일방향setter 후보:64전투 ON/OFF파일럿에서p95개선없음. OFF19.49/ON19.81ms,추가반복·배포안함. 호출감소를성능성공으로보고하지않는다.
 
-[상세](reports/operations/receiver-orientation-eight-20261107.md) · [근거 TXT](evidence/receiver-orientation-eight-20261107.txt) · [JSON](api/public/receiver-orientation-eight.json)
+[상세](reports/operations/receiver-orientation-cost64-pilot-20261107.md) · [근거 TXT](evidence/receiver-orientation-cost64-pilot-20261107.txt) · [JSON](api/public/receiver-orientation-cost64-pilot.json)
 
-수동전투384native개체와비전투평지320개체는완전동일작업량이아니다. 근접쌍은snapshot재구성이지실제pair/CPU비용이아니다. 압력변위는미측정. setter19%생략은CPU19%개선이아니다. 다음OFF/ON비용에는ON필수getter를포함하고OFF에불필요한getter를넣어이득을부풀리지않는다. 현재진단은getter두번오버헤드를포함해성능계측으로사용하지않는다.
+p50/p99일부ON이낮지만p95목표gate는실패했다. 한쌍으로회귀를확정하지않고TESTED_INCONCLUSIVE/NOT_ACCEPTED. 8개체19%생략을64개체에전용하지않는다. 비용문맥생략4.75%,필수getter비용포함. 최초ON은기한초과·CSV없음으로제외했고원시자료보존.
 
-shadow종료예외를숨기지않고ON1회재진입방지만확인했다. 실제총기/근접피격/사망·damage broadphase·64시각/비용·최종수용은남았다. 지지/충돌삭제·확률적갱신생략·동일하지않은transform캐시는사용하지않는다.
+다음은표시파트transform커밋batch가능성의기존이력/API대조다. 아직미구현,network/scale/physics부수효과가보존되는근거전적용금지. 기존root/parent/4파트연구반복금지. 전체20ms·피격geometry·전체기능/시각수용은미완료.

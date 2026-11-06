@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-07T03:14:02.715730+09:00",
+  "generatedAt": "2026-11-07T03:38:30.694882+09:00",
   "sourceRunId": "palette64-fullclips-runtime-probe1",
   "buildId": "staged_fixture_no_new_PBO",
   "verificationStatus": {
@@ -6914,6 +6914,338 @@
     "evidenceReferences": [
       "reports/operations/receiver-orientation-eight-20261107.md",
       "evidence/receiver-orientation-eight-20261107.txt"
+    ],
+    "performanceAccepted": false,
+    "visualAccepted": false,
+    "fullGoalComplete": false
+  },
+  "latestReceiverOrientationCost64Pilot": {
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2026-11-07T03:38:30.694882+09:00",
+    "sourceRunId": "receiver-orientation-cost64-pilot-20261107",
+    "buildId": "B6CB2FA93A6BE13D9933D08817C97959784E5930904C3967B3D2C0B439070E91",
+    "verificationStatus": "single-pair-p95-screening-failed-unaccepted-inconclusive",
+    "metrics": {
+      "on": {
+        "runId": "ANIM-receiver-cost64-1-on-retry1",
+        "condition": "on",
+        "metricsMs": {
+          "MsBetweenPresents": {
+            "samples": 1303,
+            "p50": 9.9152,
+            "p95": 19.811079999999997,
+            "p99": 21.576942000000003,
+            "mean": 11.470219570222563,
+            "maximum": 26.627
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 1303,
+            "p50": 10.6081,
+            "p95": 20.241649999999993,
+            "p99": 24.469716000000002,
+            "mean": 11.470288795088258,
+            "maximum": 26.9488
+          },
+          "MsCPUBusy": {
+            "samples": 1303,
+            "p50": 9.7454,
+            "p95": 19.664699999999993,
+            "p99": 21.40021,
+            "mean": 11.31511742133538,
+            "maximum": 26.4624
+          },
+          "MsCPUWait": {
+            "samples": 1303,
+            "p50": 0.1514,
+            "p95": 0.19305999999999995,
+            "p99": 0.226696,
+            "mean": 0.1551504221028396,
+            "maximum": 0.2885
+          },
+          "MsGPUBusy": {
+            "samples": 1303,
+            "p50": 2.6369,
+            "p95": 3.14687,
+            "p99": 3.342292,
+            "mean": 2.694360092095165,
+            "maximum": 4.3971
+          },
+          "MsGPUTime": {
+            "samples": 1303,
+            "p50": 9.902,
+            "p95": 19.85776,
+            "p99": 21.598423999999998,
+            "mean": 11.470288795088258,
+            "maximum": 26.7759
+          },
+          "MsInPresentAPI": {
+            "samples": 1303,
+            "p50": 0.1514,
+            "p95": 0.19305999999999995,
+            "p99": 0.226696,
+            "mean": 0.1551504221028396,
+            "maximum": 0.2885
+          }
+        },
+        "foregroundRows": 1818,
+        "setterOpportunities": 118336,
+        "orientationReads": 118336,
+        "orientationWrites": 114627,
+        "skippedExactEqual": 3709,
+        "postOrientationCheckMeasured": false,
+        "aliveReceiverSnapshots": 78,
+        "completeAgentSnapshots": 78,
+        "phaseRows": {
+          "FOLLOW": 4856,
+          "MOTION": 46,
+          "SETTLE": 17,
+          "FALL": 17,
+          "EGRESS": 23,
+          "LAND": 33
+        },
+        "areaRows": {
+          "low": 3056,
+          "ground": 1933,
+          "air": 3
+        },
+        "fixedPlayerPosition": "<4510.000000, 340.173309, 10240.000000>",
+        "npcEntities": 384,
+        "renderParts": 320,
+        "damageReceivers": 64,
+        "captureContextCounters": {
+          "gameSeconds": [
+            33.2221,
+            53.8823
+          ],
+          "deltas": {
+            "attackStarts": 33,
+            "playerHits": 33,
+            "setterOpportunities": 37952,
+            "reads": 37952,
+            "writes": 36148,
+            "exactEqual": 1804
+          },
+          "perGameSecond": {
+            "attackStarts": 1.5972739857310188,
+            "playerHits": 1.5972739857310188,
+            "setterOpportunities": 1836.9618880746552,
+            "reads": 1836.9618880746552,
+            "writes": 1749.6442435213596,
+            "exactEqual": 87.3176445532957
+          },
+          "scope": "conservative context; not exact QPC join"
+        },
+        "serverExitCode": -1,
+        "serverNormalQuitAccepted": false
+      },
+      "off": {
+        "runId": "ANIM-receiver-cost64-2-off-retry1",
+        "condition": "off",
+        "metricsMs": {
+          "MsBetweenPresents": {
+            "samples": 1144,
+            "p50": 12.0622,
+            "p95": 19.4909,
+            "p99": 22.064776999999996,
+            "mean": 13.0467875,
+            "maximum": 26.5791
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 1144,
+            "p50": 12.0131,
+            "p95": 19.52685,
+            "p99": 22.14603699999999,
+            "mean": 13.046695192307691,
+            "maximum": 26.5878
+          },
+          "MsCPUBusy": {
+            "samples": 1144,
+            "p50": 11.9251,
+            "p95": 19.33098,
+            "p99": 21.892873999999992,
+            "mean": 12.89476486013986,
+            "maximum": 26.4394
+          },
+          "MsCPUWait": {
+            "samples": 1144,
+            "p50": 0.1496,
+            "p95": 0.18272499999999994,
+            "p99": 0.22003599999999968,
+            "mean": 0.15200358391608393,
+            "maximum": 0.3283
+          },
+          "MsGPUBusy": {
+            "samples": 1144,
+            "p50": 2.6972,
+            "p95": 3.222195,
+            "p99": 3.391055,
+            "mean": 2.757846765734266,
+            "maximum": 4.3423
+          },
+          "MsGPUTime": {
+            "samples": 1144,
+            "p50": 12.0131,
+            "p95": 19.52685,
+            "p99": 22.14603699999999,
+            "mean": 13.046695192307691,
+            "maximum": 26.5878
+          },
+          "MsInPresentAPI": {
+            "samples": 1144,
+            "p50": 0.1496,
+            "p95": 0.18272499999999994,
+            "p99": 0.22003599999999968,
+            "mean": 0.15200358391608393,
+            "maximum": 0.3283
+          }
+        },
+        "foregroundRows": 1591,
+        "setterOpportunities": 117120,
+        "orientationReads": 0,
+        "orientationWrites": 117120,
+        "skippedExactEqual": 0,
+        "postOrientationCheckMeasured": false,
+        "aliveReceiverSnapshots": 78,
+        "completeAgentSnapshots": 78,
+        "phaseRows": {
+          "FOLLOW": 4871,
+          "MOTION": 40,
+          "SETTLE": 15,
+          "FALL": 5,
+          "LAND": 38,
+          "EGRESS": 23
+        },
+        "areaRows": {
+          "low": 3235,
+          "ground": 1749,
+          "air": 8
+        },
+        "fixedPlayerPosition": "<4510.000000, 340.173309, 10240.000000>",
+        "npcEntities": 384,
+        "renderParts": 320,
+        "damageReceivers": 64,
+        "captureContextCounters": {
+          "gameSeconds": [
+            33.3329,
+            54.0622
+          ],
+          "deltas": {
+            "attackStarts": 33,
+            "playerHits": 33,
+            "setterOpportunities": 37184,
+            "reads": 0,
+            "writes": 37184,
+            "exactEqual": 0
+          },
+          "perGameSecond": {
+            "attackStarts": 1.5919495593194177,
+            "playerHits": 1.5919495593194177,
+            "setterOpportunities": 1793.7894670828252,
+            "reads": 0.0,
+            "writes": 1793.7894670828252,
+            "exactEqual": 0.0
+          },
+          "scope": "conservative context; not exact QPC join"
+        },
+        "serverExitCode": -1,
+        "serverNormalQuitAccepted": false
+      },
+      "pilot": {
+        "schemaVersion": "1.0.0",
+        "sourceRunId": "receiver-orientation-cost64-pilot-20261107",
+        "independentCostRuns": 2,
+        "independentPairs": 1,
+        "excludedNoCaptureRuns": 1,
+        "order": [
+          "on",
+          "off"
+        ],
+        "changes": {
+          "MsBetweenPresents": {
+            "p50": {
+              "off": 12.0622,
+              "on": 9.9152,
+              "absoluteDeltaMs": -2.1470000000000002,
+              "relativeDeltaPercent": -17.79940641010761
+            },
+            "p95": {
+              "off": 19.4909,
+              "on": 19.811079999999997,
+              "absoluteDeltaMs": 0.320179999999997,
+              "relativeDeltaPercent": 1.642715318430632
+            },
+            "p99": {
+              "off": 22.064776999999996,
+              "on": 21.576942000000003,
+              "absoluteDeltaMs": -0.48783499999999336,
+              "relativeDeltaPercent": -2.210921959465051
+            }
+          },
+          "MsCPUBusy": {
+            "p50": {
+              "off": 11.9251,
+              "on": 9.7454,
+              "absoluteDeltaMs": -2.1797000000000004,
+              "relativeDeltaPercent": -18.278253431837054
+            },
+            "p95": {
+              "off": 19.33098,
+              "on": 19.664699999999993,
+              "absoluteDeltaMs": 0.33371999999999247,
+              "relativeDeltaPercent": 1.726348069264949
+            },
+            "p99": {
+              "off": 21.892873999999992,
+              "on": 21.40021,
+              "absoluteDeltaMs": -0.49266399999999066,
+              "relativeDeltaPercent": -2.2503395397058923
+            }
+          },
+          "MsGPUBusy": {
+            "p50": {
+              "off": 2.6972,
+              "on": 2.6369,
+              "absoluteDeltaMs": -0.06030000000000024,
+              "relativeDeltaPercent": -2.2356517870384174
+            },
+            "p95": {
+              "off": 3.222195,
+              "on": 3.14687,
+              "absoluteDeltaMs": -0.07532500000000031,
+              "relativeDeltaPercent": -2.3376921632613845
+            },
+            "p99": {
+              "off": 3.391055,
+              "on": 3.342292,
+              "absoluteDeltaMs": -0.04876300000000011,
+              "relativeDeltaPercent": -1.437989062400935
+            }
+          }
+        },
+        "screeningPassed": false,
+        "repeatExpansionApprovedByRule": false,
+        "decision": "NOT_ACCEPTED_TESTED_INCONCLUSIVE_NO_P95_BENEFIT_IN_PILOT",
+        "performanceAccepted": false,
+        "visualAccepted": false,
+        "fullFunctionalRegressionAccepted": false,
+        "wholeGoalComplete": false,
+        "limitations": [
+          "Single pilot pair; p95 regression not established",
+          "P50/p99 partly improved; p95 gate failed",
+          "Different phase/area proportions retained",
+          "No damage geometry or complete mobility/combat regression acceptance"
+        ]
+      }
+    },
+    "blockers": [
+      "No reproducible p95 improvement; expansion gate failed",
+      "Only one pair; p95 regression not established",
+      "Damage geometry/full mobility/visual acceptance unverified",
+      "Server exit -1"
+    ],
+    "evidenceReferences": [
+      "reports/operations/receiver-orientation-cost64-pilot-20261107.md",
+      "evidence/receiver-orientation-cost64-pilot-20261107.txt"
     ],
     "performanceAccepted": false,
     "visualAccepted": false,
