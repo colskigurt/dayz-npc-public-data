@@ -1,7 +1,7 @@
-# 단일 비용쌍과 반복 필요
+# 엔진 경계를 지키는 다음 비교
 
-셀 풀64 단일쌍:Present p95 OFF20.94/ON18.54ms,CPU20.80/18.38ms. 약11~12% 낮았으나 p50악화·동적작업량차이. screen통과이며재현성능/채택미완료.
+Steam이 서버를Build26220720으로갱신했다. 이전−11~12% 단일쌍은업데이트전근거로보존하며새반복과합치지않는다. 새엔진8/8기능·낙하복귀9/9통과,새64비용0.
 
-[상세](reports/operations/grid-cell-pool-cost64-pilot-20261107.md) · [JSON](api/public/grid-cell-pool-cost64-pilot.json) · [근거](evidence/grid-cell-pool-cost64-pilot-20261107.txt)
+[상세](reports/operations/grid-cell-pool-engine-update-boundary-20261107.md) · [JSON](api/public/grid-cell-pool-engine-update-boundary.json) · [근거](evidence/grid-cell-pool-engine-update-boundary-20261107.txt)
 
-ON/OFF 둘다64논리·320표시·64receiver·같은카메라/미션. receiver방향생략은양쪽OFF. CSV exit0·전경·전원생존·동일PresentMode/Sync0검증. FALL관측행1/50,low/ground분포차이가있어할당의순수CPU절감률로해석금지. 서버exit−1은정상종료미수용. 다음OFF/ON,ON/OFF 2쌍은아직미실행이며모든쌍을보고한다. 단일유리한결과로채택금지.
+서버321파일갱신이Steam로그로확인됐다. ProductVersion표시는같아도hash가다르다. 과거native주소/표본전용금지. 기존4실행반복계획은서버시작전해시검사로중단했고비용실행0,대기helper만정리했다. 새엔진8개체는같은후보PBO/미션으로통과했으나서버exit−1은정상종료미수용. 새6비용실행은준비만했고기존단일쌍을반복수에포함하지않는다.

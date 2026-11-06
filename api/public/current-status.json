@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-07T04:20:02.345193+09:00",
+  "generatedAt": "2026-11-07T04:29:26.658361+09:00",
   "sourceRunId": "palette64-fullclips-runtime-probe1",
   "buildId": "staged_fixture_no_new_PBO",
   "verificationStatus": {
@@ -7895,6 +7895,58 @@
       "reports/operations/grid-cell-pool-cost64-pilot-20261107.md",
       "evidence/grid-cell-pool-cost64-pilot-20261107.txt"
     ],
+    "performanceAccepted": false,
+    "visualAccepted": false,
+    "fullGoalComplete": false
+  },
+  "latestEngineUpdateBoundary": {
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2026-11-07T04:29:26.658361+09:00",
+    "sourceRunId": "ANIM-grid-engine26220720-eight1",
+    "buildId": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805",
+    "verificationStatus": "engine-update-confirmed-eight-functional-pass-new-cost-pending",
+    "metrics": {
+      "sourceRunId": "ANIM-grid-engine26220720-eight1",
+      "activeSeconds": 61.9496,
+      "samples": 1912,
+      "contractRows": 230,
+      "transitions": 144,
+      "validTerminalAgents": 8,
+      "allMilestoneAgents": 8,
+      "fallStarts": 9,
+      "landAndFollowCycles": 9,
+      "phaseChainMismatches": [],
+      "recoveryGenerationErrors": [],
+      "terminalAlignmentErrors": [],
+      "evidenceFunctionalGatePassed": true,
+      "schemaVersion": "1.0.0",
+      "buildId": "3CAA0D50D4CF64498FD8C98834F324F89B2CEDBE66AC4382DBCC3D73B94C9AC7",
+      "poolCreated": 8,
+      "poolReused": 20912,
+      "maximumPairCandidates": 24,
+      "candidateActive": true,
+      "performanceMeasured": false,
+      "visualAccepted": false,
+      "exitCode": -1,
+      "normalProcessExitAccepted": false
+    },
+    "blockers": [
+      "New engine64 cost runs0; old pair excluded from fresh cohort",
+      "CPU sampler adapter not runtime validated",
+      "No performance/visual acceptance",
+      "Server exit -1"
+    ],
+    "evidenceReferences": [
+      "reports/operations/grid-cell-pool-engine-update-boundary-20261107.md",
+      "evidence/grid-cell-pool-engine-update-boundary-20261107.txt"
+    ],
+    "engineCohort": {
+      "engineCohort": "steam-26220720",
+      "serverSha256": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805",
+      "clientSha256": "e3ba9660a1fa7ec24046fe298a387662dab0c8830aad3851a8133f8c3c2cfbe6",
+      "oldServerSha256": "EE1ADD8BB6DED0B6E913F31D62C93D1326D5A44106D558BBD3D19ADB78B73BB1",
+      "oldCostPairNotIndependentRepeatInNewCohort": true
+    },
     "performanceAccepted": false,
     "visualAccepted": false,
     "fullGoalComplete": false
