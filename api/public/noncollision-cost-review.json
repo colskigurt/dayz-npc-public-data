@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-06T21:25:47.789111+09:00",
+  "sourceRunId": "ANIM-playable-sixtyfour1",
+  "buildId": "5A0EED07E1F75FB347085387AA9EDBAC70659391BD45B42153071DFDB7500A0E",
+  "verificationStatus": "existing-logs-source-cost-candidates-not-function-self-time-attribution",
+  "metrics": {
+    "planningEntries": 19304,
+    "planningFailures": 4393,
+    "goalApplications": 17192,
+    "goalRevisionPairs": 17192,
+    "captureContext": {
+      "approximatelyGameSeconds": [
+        34.7793,
+        65
+      ],
+      "planningEntries": 3124,
+      "planningFailures": 228,
+      "goalApplications": 2802
+    },
+    "missionFrames": 9581,
+    "renderParts": 320,
+    "inferredCommitPositionOrientationGetterCalls": 6131840,
+    "inferredDeadReceiverCommitVisits": 100410,
+    "leaderAnimCallbacks": 390080,
+    "leaderPhysicsCallbacks": 390080,
+    "serverRawLogBytes": 33259435,
+    "measuredSpanTickShares": {
+      "update": 0.8530240268589403,
+      "commit": 0.14697597314105967,
+      "scope": "two instrumented Mission spans only, inclusive elapsed raw TickCount, not whole CPU or exclusive self-time"
+    },
+    "functionSelfTimesAvailable": false
+  },
+  "blockers": [
+    "Per-function CPU self-times unavailable",
+    "Transform/dead-receiver visit counts inferred from source and frames",
+    "Post-death work does not explain initial alive64 capture",
+    "Logging overhead not separated"
+  ],
+  "evidenceReferences": [
+    "reports/operations/noncollision-cost-review-20261106.md"
+  ],
+  "performanceAccepted": false
+}
