@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-07T07:25:59.189508+09:00",
+  "sourceRunId": "receiver-eight2-pair1",
+  "buildId": "74718EE7AE304669BD5A77E8534C324C15250D2E0A882B89C642F6ABE34526E8",
+  "verificationStatus": "SINGLE_PAIR_EIGHT_MOBILITY_GATE_PASSED",
+  "metrics": {
+    "control": {
+      "sourceRunId": "ANIM-receiver-eight2-1-control",
+      "activeSeconds": 61.7949,
+      "validTerminalAgents": 8,
+      "allMilestoneAgents": 8,
+      "fallStarts": 8,
+      "landAndFollowCycles": 8,
+      "receiverIdentityContractPassed": true
+    },
+    "candidate": {
+      "sourceRunId": "ANIM-receiver-eight2-2-candidate",
+      "activeSeconds": 55.6372,
+      "validTerminalAgents": 8,
+      "allMilestoneAgents": 8,
+      "fallStarts": 8,
+      "landAndFollowCycles": 8,
+      "receiverIdentityContractPassed": true
+    },
+    "performanceMeasured": false,
+    "actualWeaponDamageMeasured": false,
+    "visualAccepted": false,
+    "functionalSixtyfourAccepted": false,
+    "nativeHostsPerNpc": 6,
+    "nativeHostCount": 48
+  },
+  "blockers": [
+    "Single run per arm; completion time is not CPU savings",
+    "Actual projectile/melee hit geometry and death pending",
+    "Existing automatic real-weapon bridge is offline-only",
+    "64 functionality and repeated CPU/Present comparison pending",
+    "Attack-enabled control failed1/8 and is a separate preserved defect",
+    "Server exit code-1; normal process quit not accepted"
+  ],
+  "evidenceReferences": [
+    {
+      "name": "analysis-1.json",
+      "sha256": "ce8f3d6ffb527d0808b9beaaf0fece5873486fe8a27833dd8aed9639b19b1b82"
+    },
+    {
+      "name": "analysis-2.json",
+      "sha256": "7dc15ccdf4e433f8741a2bcb74ce8dd0239b16cdf6cefbdf2a1add457b29e23e"
+    },
+    {
+      "name": "comparison.json",
+      "sha256": "ddb1b1d0484832d78b330821c206970851add36fdd684f3d192d4fc37c5cd684"
+    },
+    {
+      "name": "contract.json",
+      "sha256": "2bc6fee0a635e0234f618d13a5b2a8f866ff33c62e41889d834d6525dc16f161"
+    },
+    {
+      "name": "analysis-1.json",
+      "sha256": "85739092c1db89bf381b74a48890488bd70f112a1858f3033ed371074a931b24"
+    },
+    {
+      "name": "control-scope-decision.json",
+      "sha256": "5dfdbf189e01db3b5080117a5dc865be076911f3cc3a2882ef02c371f66ed1dd"
+    },
+    {
+      "name": "DGNativeInteractionPlayer.c",
+      "sha256": "de71f24475eb0de5fd73073f296427a284702b07bad995bdc3bdaa1734a9cdd9"
+    },
+    {
+      "name": "script_2026-11-07_07-17-17.log",
+      "sha256": "149dd308ca690d517e5cbd0f5646433e50f754044bc9570fec4b0848a51de661"
+    },
+    {
+      "name": "lane-work.tsv",
+      "sha256": "fa8db4e0a2db9c4ae58071a4d0d29bf7a31e86b9a4ae057edc02460666d16e82"
+    },
+    {
+      "name": "native-traversal-fixture.json",
+      "sha256": "cdf1d514ab7ed8e6a3d67632782c61007b37908d4ed2fdd419ae1fd6ca75c6b1"
+    },
+    {
+      "name": "gameplay-eight.tsv",
+      "sha256": "f86ee29dd52442fcaa9d878e6286af6d91f02aacf0c143a27a1f108b64383929"
+    },
+    {
+      "name": "terminal-state.tsv",
+      "sha256": "2f6873c224fb1c7d0118fca977ef62eb581e3d887cdff2e7b3af10b9fc1c54ef"
+    },
+    {
+      "name": "native-state-contract.tsv",
+      "sha256": "8d1ef77ffdec5177bd6a3264a8e533ff37d11e6b0a5f59f737e3d1a53de55a5c"
+    },
+    {
+      "name": "functional-analysis.json",
+      "sha256": "c08d04901f19e761d4c444727f4b0dd1117cb852503b971f6bf2719f0ca60579"
+    },
+    {
+      "name": "manifest.json",
+      "sha256": "bb7570dbcb525d74f14e5ce3925d28271bd81980e901178ed2e427d10e8ff147"
+    },
+    {
+      "name": "script_2026-11-07_07-20-39.log",
+      "sha256": "c7a5b8665c4896e8a6a8a2a6ff0bfa1d527151d4b974c9f4e1853eee500a8cd6"
+    },
+    {
+      "name": "lane-work.tsv",
+      "sha256": "181a3968ac9b24ff460991d65c08849468bcf72cdef441c1bb5c1160fe5b1d3e"
+    },
+    {
+      "name": "native-traversal-fixture.json",
+      "sha256": "cdf1d514ab7ed8e6a3d67632782c61007b37908d4ed2fdd419ae1fd6ca75c6b1"
+    },
+    {
+      "name": "gameplay-eight.tsv",
+      "sha256": "32f2996e97a65b02f4670493bf681a65fabd286ef06b53b81fd65aaac46daba9"
+    },
+    {
+      "name": "terminal-state.tsv",
+      "sha256": "012271167a3b40872d393ab93eb47b057da980a05ecbaec7aa8cc6b85bc6fbc3"
+    },
+    {
+      "name": "native-state-contract.tsv",
+      "sha256": "0bbf6383fdd7e23e5a9df38007fab4af32aa9d55d259c450e2acf8b190f829d9"
+    },
+    {
+      "name": "functional-analysis.json",
+      "sha256": "a759fb4e902e2984f87060f56660f0f82efbf7c773f7922908c42cae59d4f547"
+    },
+    {
+      "name": "manifest.json",
+      "sha256": "27b81f845b70b1c6afd7a12f7280c2df27d119b63851f031a0c617b4aea88447"
+    }
+  ],
+  "conditions": {
+    "repetitionsPerArm": 1,
+    "outgoingNpcAttacks": false,
+    "damageReceiversPresent": true,
+    "displayParts": 5,
+    "receiverNodes": {
+      "control": 250,
+      "candidate": 27
+    },
+    "candidateAccepted": false
+  }
+}
