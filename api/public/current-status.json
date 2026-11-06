@@ -2671,5 +2671,106 @@
     "performanceAccepted": false,
     "visualAccepted": false,
     "fullGoalComplete": false
+  },
+  "latestSupportContextFiveEight": {
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2026-11-06T10:43:23.906194+09:00",
+    "sourceRunId": "ANIM-five-support-eight1-pair",
+    "buildId": "1419E96D11A984951CDD48B926D7E6604413F1B9D74729D8FE55118BAF86E2BC",
+    "verificationStatus": "single-pair-eight-functional-pass-not-cost-accepted",
+    "metrics": {
+      "independentRunsPerCondition": 1,
+      "logicalNpcs": 8,
+      "nativeParts": 40,
+      "conditions": [
+        {
+          "sourceRunId": "ANIM-five-support-eight1-off",
+          "activeSeconds": 66.882,
+          "samples": 2072,
+          "contractRows": 225,
+          "transitions": 141,
+          "validTerminalAgents": 8,
+          "allMilestoneAgents": 8,
+          "fallStarts": 9,
+          "landAndFollowCycles": 9,
+          "phaseChainMismatches": [],
+          "recoveryGenerationErrors": [],
+          "terminalAlignmentErrors": [],
+          "evidenceFunctionalGatePassed": true,
+          "mode": "off",
+          "usageRows": 2072,
+          "usageHeader": "Explicit12-field schema from preserved observer source; original intentionally headerless",
+          "sourceTableSha256": "ed6e3bb89101ecc02e898bfecfcc56135565acdc07d9d0ff949bc4e0b0555b23",
+          "totals": {
+            "contextCalls": 0,
+            "originalCalls": 32740,
+            "fastUsed": 0,
+            "skippedRays": 0,
+            "attempts": 0,
+            "footRays": 327400,
+            "jointSweeps": 130934
+          },
+          "candidateUsedAgents": 0,
+          "usageCountersMonotone": true,
+          "skippedRayIdentityPassed": true,
+          "performanceMeasured": false,
+          "visualAccepted": false,
+          "limits": [
+            "Cumulative counters include initialization and unequal duration; not CPU improvement",
+            "Observed phase in a cumulative row is not proof of phase at every prior call",
+            "One run per condition, noncombat; no full64 or visual acceptance"
+          ]
+        },
+        {
+          "sourceRunId": "ANIM-five-support-eight1-on",
+          "activeSeconds": 80.6638,
+          "samples": 2496,
+          "contractRows": 229,
+          "transitions": 144,
+          "validTerminalAgents": 8,
+          "allMilestoneAgents": 8,
+          "fallStarts": 9,
+          "landAndFollowCycles": 9,
+          "phaseChainMismatches": [],
+          "recoveryGenerationErrors": [],
+          "terminalAlignmentErrors": [],
+          "evidenceFunctionalGatePassed": true,
+          "mode": "on",
+          "usageRows": 2496,
+          "usageHeader": "Explicit12-field schema from preserved observer source; original intentionally headerless",
+          "sourceTableSha256": "9a40e9f27084576e19c344a206669468177e0adb2f081e8d8e5d2cb8ab9ec4c7",
+          "totals": {
+            "contextCalls": 8822,
+            "originalCalls": 59686,
+            "fastUsed": 14341,
+            "skippedRays": 57364,
+            "attempts": 16309,
+            "footRays": 627716,
+            "jointSweeps": 273279
+          },
+          "candidateUsedAgents": 8,
+          "usageCountersMonotone": true,
+          "skippedRayIdentityPassed": true,
+          "performanceMeasured": false,
+          "visualAccepted": false,
+          "limits": [
+            "Cumulative counters include initialization and unequal duration; not CPU improvement",
+            "Observed phase in a cumulative row is not proof of phase at every prior call",
+            "One run per condition, noncombat; no full64 or visual acceptance"
+          ]
+        }
+      ],
+      "performanceMeasured": false
+    },
+    "blockers": [
+      "Whole-process64 cost not yet measured",
+      "64-agent repeatability/CPU/visual/combat acceptance incomplete"
+    ],
+    "evidenceReferences": [
+      "reports/operations/support-context-five-eight-20261106.md",
+      "evidence/support-context-five-eight-20261106.txt"
+    ],
+    "fullGoalComplete": false,
+    "signatureVerified": true
   }
 }

@@ -55,3 +55,7 @@
 ## 2026-11-06:상태제한SupportFast5파트준비
 
 상태제한SupportFast는이미구현·시험된후보다. 현재5파트메서드동일확인,legacy의존성만분리한동일script어댑터빌드·서명검증.8명OFF/ON계획준비,아직미실행·비용미수용. [상세](operations/support-context-five-preparation-20261106.md).
+
+## 2026-11-06:상태제한SupportFast 현행8명 기능
+
+상태제한SupportFast 현행5파트 OFF/ON 각1회8/8·낙하9/9복귀·계약오류0. ON全8개체사용확인. 비용·시각·64명최종미수용.  [상세](operations/support-context-five-eight-20261106.md).
