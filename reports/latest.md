@@ -47,3 +47,7 @@
 ## 2026-11-06:현재5파트비용근거범위
 
 기존5파트LOW고정/평지의반복client p95는20ms아래. 전체고지대경로는64/64기능과serverdt근거가있으나같은실행의client/native비용귀속은없음. 새실행0회. [상세](operations/current-five-cost-coverage-20261106.md).
+
+## 2026-11-06:현재5파트HIGH목표진단
+
+검증된5파트 유지. 새HIGH목표단일진단의Present p95는14.98ms였지만HIGH다수관측조건실패로미수용. 별도서버CPUquery union24.85%inclusive,스택누락26.17%. 새최적화없음. [상세](operations/high-five-diagnostic-20261106.md).

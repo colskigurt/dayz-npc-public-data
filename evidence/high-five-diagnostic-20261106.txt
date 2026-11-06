@@ -1,0 +1,173 @@
+Selection: complete derived metric/context projection and ETL SHA; not complete raw ETL/logs, exact same-window attribution or visible pose proof.
+Summary JSON SHA256 35345e34072ca1ba66f0626b9a7b593274a0f54c33555d42ccd4df36d0a42702
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-06T10:07:14.266073+09:00",
+  "sourceRunId": "ANIM-high-cost1-five",
+  "buildId": "preserved-five-part-fullclips-BDC04E80-no-new-build",
+  "verificationStatus": "single-high-target-diagnostic-majority-prerequisite-failed-not-accepted",
+  "metrics": {
+    "independentDiagnosticRuns": 1,
+    "partsEach": 5,
+    "logicalNpcs": 64,
+    "nativeParts": 320,
+    "presentMetricsMs": {
+      "MsBetweenPresents": {
+        "samples": 1394,
+        "p50": 10.2606,
+        "p95": 14.978159999999997,
+        "p99": 17.653867999999992,
+        "mean": 10.693024892395982,
+        "maximum": 19.6909
+      },
+      "MsBetweenDisplayChange": {
+        "samples": 745,
+        "p50": 20.0055,
+        "p95": 20.05784,
+        "p99": 20.085396,
+        "mean": 20.005677583892616,
+        "maximum": 20.1502
+      },
+      "MsCPUBusy": {
+        "samples": 1394,
+        "p50": 10.10405,
+        "p95": 14.804844999999998,
+        "p99": 17.506409999999992,
+        "mean": 10.537205164992827,
+        "maximum": 19.5303
+      },
+      "MsCPUWait": {
+        "samples": 1394,
+        "p50": 0.15375,
+        "p95": 0.18700499999999998,
+        "p99": 0.21002799999999996,
+        "mean": 0.1558103299856528,
+        "maximum": 0.2532
+      },
+      "MsGPUBusy": {
+        "samples": 1394,
+        "p50": 2.45885,
+        "p95": 3.00305,
+        "p99": 3.113532999999999,
+        "mean": 2.531587517934003,
+        "maximum": 4.0847
+      },
+      "MsGPUTime": {
+        "samples": 1394,
+        "p50": 9.523,
+        "p95": 14.316999999999997,
+        "p99": 16.985066,
+        "mean": 10.015062482065998,
+        "maximum": 19.2014
+      },
+      "MsInPresentAPI": {
+        "samples": 1394,
+        "p50": 0.15375,
+        "p95": 0.18700499999999998,
+        "p99": 0.21002799999999996,
+        "mean": 0.1558103299856528,
+        "maximum": 0.2532
+      }
+    },
+    "presentForegroundPassed": true,
+    "highMajorityWindowAccepted": false,
+    "presentHighContext": {
+      "gameSecondsBracket": [
+        36.0229,
+        56.6721
+      ],
+      "scope": "conservative request gameSecond minus1 to plus20, not exact Present/QPC join",
+      "frames": 79,
+      "minimumHighFraction": 0.46875,
+      "maximumHighFraction": 0.71875,
+      "phaseAreaRows": {
+        "FOLLOW/high": 2995,
+        "FOLLOW/ground": 1465,
+        "MOTION/air": 87,
+        "EGRESS/ground": 32,
+        "LAND/ground": 39,
+        "SETTLE/low": 41,
+        "FOLLOW/low": 180,
+        "MOTION/high": 52,
+        "MOTION/low": 68,
+        "MOTION/ground": 39,
+        "SETTLE/high": 33,
+        "FALL/high": 2,
+        "EGRESS/high": 4,
+        "FALL/air": 2,
+        "EGRESS/low": 3,
+        "FALL/low": 12,
+        "FALL/ground": 2
+      },
+      "acquiredAgents": 64,
+      "moved2mAgents": 64,
+      "scriptCounterDeltas": {
+        "contactSolves": 58023,
+        "footRays": 580230,
+        "jointSweeps": 231601
+      },
+      "queriesPerAgentGameSecond": {
+        "contactSolves": 43.905302626736145,
+        "footRays": 439.0530262673614,
+        "jointSweeps": 175.24967674292466
+      },
+      "clientPartCounts": "cached warmup counts, not continuous client host survival proof"
+    },
+    "serverCpu": {
+      "configuredSeconds": 8,
+      "analyzedWindowSeconds": 10.907651,
+      "traceWindowSeconds": 11.907651,
+      "targetSampleWeight": 9854,
+      "matchedStackWeight": 7275,
+      "missingStackWeight": 2579,
+      "missingStackPercent": 26.17211284757459,
+      "lostEvents": 0,
+      "lostBuffers": 0,
+      "queryUnionWeight": 2449,
+      "queryUnionInclusivePercent": 24.85285163385427,
+      "rayWeight": 1764,
+      "sphereWeight": 685,
+      "rayImplementationIntersection": 1684,
+      "sphereImplementationIntersection": 665,
+      "hotFragmentsWithinQueryWeight": 2109,
+      "vmLeafWeight": 1544,
+      "vmInclusiveWeight": 5144,
+      "cpuSelfTimeExact": false,
+      "etlBytes": 6700449
+    },
+    "cpuSceneContext": {
+      "highCountAtRequest": 64,
+      "areasAfterCpu": {
+        "high": 64
+      },
+      "scope": "request/post scene snapshots; not exact ETL sample/agent pose join"
+    },
+    "windowSeparation": {
+      "cpuTraceStartAfterPresentCloseSecondsApprox": 47.066049,
+      "traceStartTimestampPrecision": "seconds",
+      "sameWindow": false,
+      "presentProfilerOverlap": false
+    }
+  },
+  "blockers": [
+    "HIGH fraction dropped below preregistered50percent conservative-window gate",
+    "CPU window is separate later with26.17percent missing stacks",
+    "Whole traversal/visual/combat/repeated performance acceptance incomplete"
+  ],
+  "evidenceReferences": [
+    "reports/operations/high-five-diagnostic-20261106.md",
+    "evidence/high-five-diagnostic-20261106.txt"
+  ],
+  "performanceFinalAccepted": false,
+  "visualAccepted": false,
+  "fullGoalComplete": false,
+  "newOptimizationImplemented": false,
+  "limits": [
+    "Present high-majority conservative-window prerequisite failed; do not label as accepted HIGH-majority benchmark",
+    "CPU is separate later fixed-target window; no exact same-window client-server attribution",
+    "Single run, missing stacks26.17percent; inclusive query union not self-time/allocation or a saving ceiling",
+    "Current mixed-scene observed client p95<20ms does not prove whole traversal/visual acceptance",
+    "Intentional fixed-HIGH stop does not complete LOW-HIGH-DOWN-RECLIMB functional scenario"
+  ]
+}
+ETL SHA256 625d1f4ada4c87f8803cbe36ccb2f00bee36362b58a7ec5b3cf822551b94e12f

@@ -1,16 +1,14 @@
-# DayZ NPC 현재 비용·검증 범위
+# DayZ NPC 현재 비용·검증 상태
 
-기존5파트LOW고정/평지의반복client p95는20ms아래. 전체고지대경로는64/64기능과serverdt근거가있으나같은실행의client/native비용귀속은없음. 새실행0회.
+검증된5파트 유지. 새HIGH목표단일진단의Present p95는14.98ms였지만HIGH다수관측조건실패로미수용. 별도서버CPUquery union24.85%inclusive,스택누락26.17%. 새최적화없음.
 
-| 근거 | 현재 판정 |
+| 근거 | 판정 |
 |---|---|
-| LOW고정64·5파트 | 기존3회client p95 12.544~14.083ms |
-| 평지추적64·5파트 | 기존3회client p95 14.506~16.887ms |
-| 전체고지대64 | 단일64/64·낙하89/89,client비용미확보 |
-| FOLLOW접촉solve | 호출량95.96%,CPU비중아님 |
-| 루트getter후보 | 기능통과·국소비용실패,64확대없음 |
-| 전체20ms·시각·전투 | 최종미수용 |
+| 기존5파트LOW/평지 | 각각3회client p95<20ms·조건한정 |
+| 새HIGH목표진단 | p95 14.98ms·HIGH다수조건실패 |
+| 별도서버CPU | 질의경계24.85%inclusive·self-time아님 |
+| 전체경로·시각·전투·20ms | 최종미수용 |
 
-[상세](reports/operations/current-five-cost-coverage-20261106.md) · [TXT](reports/operations/current-five-cost-coverage-20261106.txt) · [근거](evidence/current-five-cost-coverage-20261106.txt) · [JSON](api/public/current-five-cost-coverage.json)
+[상세](reports/operations/high-five-diagnostic-20261106.md) · [TXT](reports/operations/high-five-diagnostic-20261106.txt) · [근거](evidence/high-five-diagnostic-20261106.txt) · [JSON](api/public/high-five-diagnostic.json)
 
-[AI 안내](AI_REVIEW.md) · [직전 안내](reports/history/20261106-before-cost-coverage-README.md)
+[이전근거범위](reports/operations/current-five-cost-coverage-20261106.md) · [AI 안내](AI_REVIEW.md) · [직전 안내](reports/history/20261106-before-high-five-README.md)
