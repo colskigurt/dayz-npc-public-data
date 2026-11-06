@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-06T23:43:57.298644+00:00",
+  "sourceRunId": "contact-timers1-prepared",
+  "buildId": "BBCAC26DD0A80F578C3789D236DFADDF6CC2108C85AE27E58579F0F746F6BC67",
+  "verificationStatus": "BUILT_SIGNED_STATIC_PROOF_RUNTIME_UNTESTED",
+  "metrics": {
+    "estimatedNativeTimerCallsPerGameSecondFromExistingCounters": 40222.02452818199,
+    "newRuntimeExecutions": 0,
+    "newCostRepeats": 0,
+    "performanceMeasured": false
+  },
+  "blockers": [
+    "Enforce compile not tested",
+    "8-agent functional comparison not executed",
+    "64-agent CPU/Present repeats not executed",
+    "Exclusive measurement time not established"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/contact-timing-candidate-prepared-20261107.md",
+      "localCheckpointSha256": "75528e63bccb1fa6c0d6e1617d72c39ef954763e94c1c0f99b6c695d7a0b4561"
+    },
+    {
+      "code": "review/contact-timing-candidate/NFContactTimers.c",
+      "sha256": "20be89312b497be186a4aabdab9091992d246d50c6d857ca8c4ebd23424df735"
+    }
+  ],
+  "signatureVerified": true,
+  "privateKeyIncluded": false,
+  "sourceOnlyPhysicsExpressionsIdentical": true,
+  "runtimeVerified": false,
+  "performanceAccepted": false,
+  "visualAccepted": false,
+  "defaultEnabled": false,
+  "conditions": {
+    "requiredEightAgents": 8,
+    "requiredCostPairs": 3,
+    "physicsCandidateMixedWithSupportFast": false
+  },
+  "risk": "Detailed timing accumulators stop updating when enabled; timing0 is unavailable, not zero cost"
+}
