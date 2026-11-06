@@ -1,24 +1,24 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-06T19:30:59.173Z",
-  "sourceRunId": "ANIM-grid-engine26220720-eight1",
-  "buildId": "987FBC47BAB1DAB37F74D7F700AA2E5B6AF936A7181A62F5BA9F0090AEBBA805",
+  "generatedAt": "2026-11-06T20:02:00.092Z",
+  "sourceRunId": "ANIM-lane-geometry1",
+  "buildId": "unchanged-original-pbo-453d6a9e",
   "verificationStatus": "public-http-hash-schema-and-external-ai-read-verified",
-  "dataCommit": "6bbd037d0e491379f84412ed689d7036fa11f304",
+  "dataCommit": "bd3a7abaac87ffdda1362331057f7d0f20f5f868",
   "metrics": {
     "httpHashChecks": 26,
-    "newEngine64CostRuns": 0,
-    "validTerminalAgents": 8
+    "staticFootprintConditions": 18,
+    "newNpcRuns": 0,
+    "newClientRuns": 0
   },
   "blockers": [
-    "Old pair cannot be counted in new engine cohort",
-    "New server CPU adapter untested",
-    "No performance or visual acceptance",
+    "Static geometry only; no motion/count/CPU improvement proof",
+    "Authored scene-local lane candidate, not general scalability",
     "Server exit -1"
   ],
   "evidenceReferences": [
-    "reports/operations/grid-cell-pool-engine-update-boundary-20261107.md",
-    "api/public/grid-cell-pool-engine-update-boundary.json"
+    "reports/operations/work-reduction-lane-feasibility-20261107.md",
+    "api/public/work-reduction-lane-feasibility.json"
   ],
   "externalAIRead": true
 }
