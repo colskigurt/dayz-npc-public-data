@@ -1,0 +1,419 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-06T09:44:46.360705+09:00",
+  "sourceRunId": "current-five-cost-coverage-readonly-20261106",
+  "buildId": "preserved-five-part-20261105-no-new-build",
+  "verificationStatus": "read-only-evidence-coverage-diagnosed-not-new-runtime",
+  "metrics": {
+    "newGameRuns": 0,
+    "partsEach": 5,
+    "logicalNpcs": 64,
+    "rows": 63616,
+    "counterTotals": {
+      "contactSolves": 728088.0,
+      "footRays": 7280880.0,
+      "jointSweeps": 2905588.0,
+      "physicsUpdates": 336768.0
+    },
+    "intervalBuckets": {
+      "FOLLOW/ground": {
+        "entitySeconds": 5607.83085000005,
+        "intervals": 21213,
+        "contactSolves": 227364.0,
+        "footRays": 2273640.0,
+        "jointSweeps": 907243.0,
+        "physicsUpdates": 112120.0,
+        "moved": 10454.939299999995,
+        "scriptCountersPerObservedEntityGameSecond": {
+          "contactSolves": 40.544018905277426,
+          "footRays": 405.44018905277426,
+          "jointSweeps": 161.78144888232353,
+          "physicsUpdates": 19.99347038079777
+        },
+        "shareOfContactSolves": 0.31227543923262024
+      },
+      "CROSS_PHASE_OR_AREA": {
+        "entitySeconds": 400.68012000000095,
+        "intervals": 1520,
+        "contactSolves": 12550.0,
+        "footRays": 125500.0,
+        "jointSweeps": 49379.0,
+        "physicsUpdates": 8010.0,
+        "moved": 674.9810000000004,
+        "scriptCountersPerObservedEntityGameSecond": {
+          "contactSolves": 31.32174363929004,
+          "footRays": 313.2174363929004,
+          "jointSweeps": 123.23795849916358,
+          "physicsUpdates": 19.99100928690942
+        },
+        "shareOfContactSolves": 0.017236927404379692
+      },
+      "MOTION/ground": {
+        "entitySeconds": 34.422990000000055,
+        "intervals": 131,
+        "contactSolves": 1312.0,
+        "footRays": 13120.0,
+        "jointSweeps": 5248.0,
+        "physicsUpdates": 693.0,
+        "moved": 84.52019999999975,
+        "scriptCountersPerObservedEntityGameSecond": {
+          "contactSolves": 38.11406272377844,
+          "footRays": 381.1406272377844,
+          "jointSweeps": 152.45625089511375,
+          "physicsUpdates": 20.131894411264067
+        },
+        "shareOfContactSolves": 0.0018019799804419247
+      },
+      "MOTION/low": {
+        "entitySeconds": 94.42593999999981,
+        "intervals": 358,
+        "contactSolves": 3300.0,
+        "footRays": 33000.0,
+        "jointSweeps": 13200.0,
+        "physicsUpdates": 1887.0,
+        "moved": 112.76279999999991,
+        "scriptCountersPerObservedEntityGameSecond": {
+          "contactSolves": 34.94802381633698,
+          "footRays": 349.4802381633698,
+          "jointSweeps": 139.7920952653479,
+          "physicsUpdates": 19.983915436796327
+        },
+        "shareOfContactSolves": 0.0045324191581237435
+      },
+      "SETTLE/low": {
+        "entitySeconds": 36.79650000000003,
+        "intervals": 139,
+        "contactSolves": 732.0,
+        "footRays": 7320.0,
+        "jointSweeps": 2928.0,
+        "physicsUpdates": 732.0,
+        "moved": 0.18479999999998853,
+        "scriptCountersPerObservedEntityGameSecond": {
+          "contactSolves": 19.893196363784583,
+          "footRays": 198.93196363784583,
+          "jointSweeps": 79.57278545513833,
+          "physicsUpdates": 19.893196363784583
+        },
+        "shareOfContactSolves": 0.001005372976892903
+      },
+      "FOLLOW/low": {
+        "entitySeconds": 7786.084900000302,
+        "intervals": 29317,
+        "contactSolves": 361441.0,
+        "footRays": 3614410.0,
+        "jointSweeps": 1444646.0,
+        "physicsUpdates": 155739.0,
+        "moved": 12582.16520000018,
+        "scriptCountersPerObservedEntityGameSecond": {
+          "contactSolves": 46.4214049348455,
+          "footRays": 464.2140493484549,
+          "jointSweeps": 185.5420302442302,
+          "physicsUpdates": 20.00222216944924
+        },
+        "shareOfContactSolves": 0.49642488270648605
+      },
+      "FALL/low": {
+        "entitySeconds": 15.1902,
+        "intervals": 58,
+        "contactSolves": 115.0,
+        "footRays": 1150.0,
+        "jointSweeps": 232.0,
+        "physicsUpdates": 304.0,
+        "moved": 11.364699999999974,
+        "scriptCountersPerObservedEntityGameSecond": {
+          "contactSolves": 7.570670563916209,
+          "footRays": 75.70670563916208,
+          "jointSweeps": 15.273004963726612,
+          "physicsUpdates": 20.01290305591763
+        },
+        "shareOfContactSolves": 0.00015794794035885773
+      },
+      "LAND/ground": {
+        "entitySeconds": 237.13760000000056,
+        "intervals": 916,
+        "contactSolves": 4743.0,
+        "footRays": 47430.0,
+        "jointSweeps": 18714.0,
+        "physicsUpdates": 4743.0,
+        "moved": 4.752499999999976,
+        "scriptCountersPerObservedEntityGameSecond": {
+          "contactSolves": 20.001045806316622,
+          "footRays": 200.01045806316623,
+          "jointSweeps": 78.91620729905318,
+          "physicsUpdates": 20.001045806316622
+        },
+        "shareOfContactSolves": 0.006514322444539671
+      },
+      "EGRESS/ground": {
+        "entitySeconds": 90.2809000000001,
+        "intervals": 344,
+        "contactSolves": 1801.0,
+        "footRays": 18010.0,
+        "jointSweeps": 5447.0,
+        "physicsUpdates": 1801.0,
+        "moved": 42.056999999999945,
+        "scriptCountersPerObservedEntityGameSecond": {
+          "contactSolves": 19.948848538284377,
+          "footRays": 199.48848538284378,
+          "jointSweeps": 60.33391337481122,
+          "physicsUpdates": 19.948848538284377
+        },
+        "shareOfContactSolves": 0.0024736020920548066
+      },
+      "MOTION/air": {
+        "entitySeconds": 73.9156,
+        "intervals": 279,
+        "contactSolves": 2469.0,
+        "footRays": 24690.0,
+        "jointSweeps": 9867.0,
+        "physicsUpdates": 1478.0,
+        "moved": 143.79149999999996,
+        "scriptCountersPerObservedEntityGameSecond": {
+          "contactSolves": 33.402962297539354,
+          "footRays": 334.0296229753936,
+          "jointSweeps": 133.4900886957557,
+          "physicsUpdates": 19.995778969527407
+        },
+        "shareOfContactSolves": 0.003391073606487128
+      },
+      "MOTION/high": {
+        "entitySeconds": 38.35470000000002,
+        "intervals": 147,
+        "contactSolves": 1141.0,
+        "footRays": 11410.0,
+        "jointSweeps": 4564.0,
+        "physicsUpdates": 771.0,
+        "moved": 73.18100000000015,
+        "scriptCountersPerObservedEntityGameSecond": {
+          "contactSolves": 29.748635760415265,
+          "footRays": 297.48635760415266,
+          "jointSweeps": 118.99454304166106,
+          "physicsUpdates": 20.101838888063252
+        },
+        "shareOfContactSolves": 0.0015671182604300579
+      },
+      "SETTLE/high": {
+        "entitySeconds": 16.284900000000036,
+        "intervals": 62,
+        "contactSolves": 327.0,
+        "footRays": 3270.0,
+        "jointSweeps": 1308.0,
+        "physicsUpdates": 327.0,
+        "moved": 0.22399999999996112,
+        "scriptCountersPerObservedEntityGameSecond": {
+          "contactSolves": 20.07995136598931,
+          "footRays": 200.79951365989308,
+          "jointSweeps": 80.31980546395724,
+          "physicsUpdates": 20.07995136598931
+        },
+        "shareOfContactSolves": 0.0004491215347595346
+      },
+      "FOLLOW/high": {
+        "entitySeconds": 2365.5271000001494,
+        "intervals": 8906,
+        "contactSolves": 109838.0,
+        "footRays": 1098380.0,
+        "jointSweeps": 439352.0,
+        "physicsUpdates": 47316.0,
+        "moved": 3859.7240000000033,
+        "scriptCountersPerObservedEntityGameSecond": {
+          "contactSolves": 46.43278024588814,
+          "footRays": 464.3278024588814,
+          "jointSweeps": 185.73112098355256,
+          "physicsUpdates": 20.002307308166966
+        },
+        "shareOfContactSolves": 0.15085813802727144
+      },
+      "FALL/ground": {
+        "entitySeconds": 22.66380000000001,
+        "intervals": 87,
+        "contactSolves": 90.0,
+        "footRays": 900.0,
+        "jointSweeps": 151.0,
+        "physicsUpdates": 454.0,
+        "moved": 10.744,
+        "scriptCountersPerObservedEntityGameSecond": {
+          "contactSolves": 3.97109046144071,
+          "footRays": 39.7109046144071,
+          "jointSweeps": 6.662607329750525,
+          "physicsUpdates": 20.031945216600914
+        },
+        "shareOfContactSolves": 0.000123611431585193
+      },
+      "LAND/low": {
+        "entitySeconds": 0.25099999999999056,
+        "intervals": 1,
+        "contactSolves": 5.0,
+        "footRays": 50.0,
+        "jointSweeps": 20.0,
+        "physicsUpdates": 5.0,
+        "moved": 0.0,
+        "scriptCountersPerObservedEntityGameSecond": {
+          "contactSolves": 19.92031872510035,
+          "footRays": 199.2031872510035,
+          "jointSweeps": 79.6812749004014,
+          "physicsUpdates": 19.92031872510035
+        },
+        "shareOfContactSolves": 6.867301754732944e-06
+      },
+      "FALL/air": {
+        "entitySeconds": 17.91200000000012,
+        "intervals": 69,
+        "contactSolves": 817.0,
+        "footRays": 8170.0,
+        "jointSweeps": 3197.0,
+        "physicsUpdates": 364.0,
+        "moved": 63.489000000000175,
+        "scriptCountersPerObservedEntityGameSecond": {
+          "contactSolves": 45.611880303706705,
+          "footRays": 456.1188030370671,
+          "jointSweeps": 178.4836980794986,
+          "physicsUpdates": 20.321572130415227
+        },
+        "shareOfContactSolves": 0.0011221171067233632
+      },
+      "FALL/high": {
+        "entitySeconds": 1.2809000000000026,
+        "intervals": 5,
+        "contactSolves": 43.0,
+        "footRays": 430.0,
+        "jointSweeps": 92.0,
+        "physicsUpdates": 24.0,
+        "moved": 1.3589999999999804,
+        "scriptCountersPerObservedEntityGameSecond": {
+          "contactSolves": 33.57014599109994,
+          "footRays": 335.7014599109994,
+          "jointSweeps": 71.82449839956266,
+          "physicsUpdates": 18.73682566945113
+        },
+        "shareOfContactSolves": 5.905879509070332e-05
+      }
+    },
+    "serverMissionDtByStimulusStage": [
+      {
+        "stage": 0,
+        "labelFromMission": "LOW",
+        "frames": 2855,
+        "missionDtMs": {
+          "p50": 26.0,
+          "p95": 46.0,
+          "p99": 68.46000000000004
+        },
+        "domain": "Mission OnUpdate timeslice; not Present, CPU Busy or self-time"
+      },
+      {
+        "stage": 1,
+        "labelFromMission": "HIGH",
+        "frames": 2051,
+        "missionDtMs": {
+          "p50": 26.0,
+          "p95": 45.0,
+          "p99": 59.5
+        },
+        "domain": "Mission OnUpdate timeslice; not Present, CPU Busy or self-time"
+      },
+      {
+        "stage": 2,
+        "labelFromMission": "DOWN",
+        "frames": 504,
+        "missionDtMs": {
+          "p50": 21.0,
+          "p95": 32.0,
+          "p99": 40.0
+        },
+        "domain": "Mission OnUpdate timeslice; not Present, CPU Busy or self-time"
+      },
+      {
+        "stage": 3,
+        "labelFromMission": "FRONT",
+        "frames": 12,
+        "missionDtMs": {
+          "p50": 20.0,
+          "p95": 26.45,
+          "p99": 26.89
+        },
+        "domain": "Mission OnUpdate timeslice; not Present, CPU Busy or self-time"
+      },
+      {
+        "stage": 4,
+        "labelFromMission": "GUIDE",
+        "frames": 635,
+        "missionDtMs": {
+          "p50": 25.0,
+          "p95": 49.0,
+          "p99": 61.65999999999997
+        },
+        "domain": "Mission OnUpdate timeslice; not Present, CPU Busy or self-time"
+      },
+      {
+        "stage": 5,
+        "labelFromMission": "RECLIMB",
+        "frames": 4486,
+        "missionDtMs": {
+          "p50": 26.0,
+          "p95": 47.0,
+          "p99": 64.0
+        },
+        "domain": "Mission OnUpdate timeslice; not Present, CPU Busy or self-time"
+      }
+    ],
+    "measuredLowHoldClientCandidates": [
+      {
+        "runId": "ANIM-active-cost1-02-candidate-resume1",
+        "presentP95Ms": 13.08746,
+        "cpuBusyP95Ms": 12.926599999999999
+      },
+      {
+        "runId": "ANIM-active-cost1-03-candidate-resume1",
+        "presentP95Ms": 12.543964999999998,
+        "cpuBusyP95Ms": 12.367804999999999
+      },
+      {
+        "runId": "ANIM-active-cost1-06-candidate-resume1",
+        "presentP95Ms": 14.082804999999999,
+        "cpuBusyP95Ms": 13.921495
+      }
+    ],
+    "measuredMovingFlatClientCandidates": [
+      {
+        "runId": "ANIM-flat-clean2-02-candidate",
+        "presentP95Ms": 16.887019999999996,
+        "cpuBusyP95Ms": 16.746885
+      },
+      {
+        "runId": "ANIM-flat-clean2-03-candidate",
+        "presentP95Ms": 16.181004999999992,
+        "cpuBusyP95Ms": 16.02838499999999
+      },
+      {
+        "runId": "ANIM-flat-clean2-06-candidate",
+        "presentP95Ms": 14.505804999999999,
+        "cpuBusyP95Ms": 14.34258
+      }
+    ],
+    "coverage": {
+      "fullTraversalFunction": "single_run64/64_89/89fallRecovery",
+      "fullTraversalServerMissionDt": "available_by_stage_not_cpu",
+      "fullTraversalClientPresent": "not_in_this_preserved_pair",
+      "fullTraversalNativeCpuAttribution": "not_in_this_preserved_pair",
+      "currentFiveFlatServerNativeCpu": "one8s_ETL_queryUnion16.7219percent_inclusive_not_self",
+      "visibleFull64Animation": "not_accepted"
+    }
+  },
+  "blockers": [
+    "Full high/traversal client/native cost not joined in inspected preserved functional pair",
+    "Visible64/full14/combat acceptance incomplete"
+  ],
+  "evidenceReferences": [
+    "reports/operations/current-five-cost-coverage-20261106.md",
+    "evidence/current-five-cost-coverage-20261106.txt"
+  ],
+  "fullGoalComplete": false,
+  "limits": [
+    "Counter deltas are sampled script work counts per observed entity GAME second, not timing",
+    "Intervals spanning phase/area changes kept separate instead of assigning all work to either phase",
+    "Stimulus stage has mixed agent phases; no exact state/QPC/display join",
+    "One traversal run; existing independent cost captures retain original conditions/repetition counts",
+    "Absence statements scoped to the inspected preserved pair, not all historic data"
+  ]
+}

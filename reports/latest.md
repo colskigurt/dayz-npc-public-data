@@ -43,3 +43,7 @@
 ## 2026-11-06:루트 조회 국소 비용3쌍
 
 5파트 기준 유지. 비대표 루트 조회 후보는8명 기능 통과했지만 국소 비용3쌍의방향이불일치해미수용.64명 확대중단. [상세](operations/follower-root-method-cost-20261106.md).
+
+## 2026-11-06:현재5파트비용근거범위
+
+기존5파트LOW고정/평지의반복client p95는20ms아래. 전체고지대경로는64/64기능과serverdt근거가있으나같은실행의client/native비용귀속은없음. 새실행0회. [상세](operations/current-five-cost-coverage-20261106.md).
