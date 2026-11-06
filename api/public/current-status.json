@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-07T04:09:55.172505+09:00",
+  "generatedAt": "2026-11-07T04:20:02.345193+09:00",
   "sourceRunId": "palette64-fullclips-runtime-probe1",
   "buildId": "staged_fixture_no_new_PBO",
   "verificationStatus": {
@@ -7579,6 +7579,324 @@
       "evidence/grid-cell-pool-eight-20261107.txt"
     ],
     "performanceAccepted": false,
+    "fullGoalComplete": false
+  },
+  "latestGridCellPoolCost64Pilot": {
+    "schemaVersion": "1.0.0",
+    "generatedAt": "2026-11-07T04:20:02.345193+09:00",
+    "sourceRunId": "grid-cell-pool-cost64-pilot-20261107",
+    "buildId": "3CAA0D50D4CF64498FD8C98834F324F89B2CEDBE66AC4382DBCC3D73B94C9AC7",
+    "verificationStatus": "single-pair-screen-passed-not-accepted",
+    "metrics": {
+      "on": {
+        "runId": "ANIM-grid-cost64-1-on",
+        "metricsMs": {
+          "MsBetweenPresents": {
+            "samples": 1157,
+            "p50": 12.2274,
+            "p95": 18.53846,
+            "p99": 21.075728000000005,
+            "mean": 12.902754624027658,
+            "maximum": 24.2937
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 1157,
+            "p50": 12.1922,
+            "p95": 18.60478,
+            "p99": 21.145288000000008,
+            "mean": 12.902845721694037,
+            "maximum": 24.4106
+          },
+          "MsCPUBusy": {
+            "samples": 1157,
+            "p50": 12.0909,
+            "p95": 18.3807,
+            "p99": 20.914588000000006,
+            "mean": 12.74491823681936,
+            "maximum": 24.1261
+          },
+          "MsCPUWait": {
+            "samples": 1157,
+            "p50": 0.1537,
+            "p95": 0.20324,
+            "p99": 0.24351200000000012,
+            "mean": 0.15784347450302505,
+            "maximum": 0.395
+          },
+          "MsGPUBusy": {
+            "samples": 1157,
+            "p50": 2.6863,
+            "p95": 3.20734,
+            "p99": 3.345732,
+            "mean": 2.744634917891098,
+            "maximum": 3.5801
+          },
+          "MsGPUTime": {
+            "samples": 1157,
+            "p50": 12.1922,
+            "p95": 18.60478,
+            "p99": 21.145288000000008,
+            "mean": 12.902845721694037,
+            "maximum": 24.4106
+          },
+          "MsInPresentAPI": {
+            "samples": 1157,
+            "p50": 0.1537,
+            "p95": 0.20324,
+            "p99": 0.24351200000000012,
+            "mean": 0.15784347450302505,
+            "maximum": 0.395
+          }
+        },
+        "foregroundRows": 1612,
+        "gridPoolEnabled": true,
+        "gridPoolCreated": 64,
+        "gridPoolReused": 60728,
+        "gridMaximumPairCandidates": 913,
+        "phaseRows": {
+          "FOLLOW": 4910,
+          "MOTION": 38,
+          "SETTLE": 14,
+          "FALL": 1,
+          "LAND": 12,
+          "EGRESS": 17
+        },
+        "areaRows": {
+          "ground": 1751,
+          "low": 3235,
+          "air": 6
+        },
+        "completeAgentSnapshots": 78,
+        "aliveReceiverSnapshots": 78,
+        "captureContextCounters": {
+          "gameSeconds": [
+            33.3372,
+            54.0827
+          ],
+          "deltas": {
+            "attackStarts": 33,
+            "playerHits": 33,
+            "setterOpportunities": 39296,
+            "reads": 0,
+            "writes": 39296,
+            "exactEqual": 0
+          },
+          "perGameSecond": {
+            "attackStarts": 1.5907064182593815,
+            "playerHits": 1.5907064182593815,
+            "setterOpportunities": 1894.1939215733532,
+            "reads": 0.0,
+            "writes": 1894.1939215733532,
+            "exactEqual": 0.0
+          },
+          "scope": "conservative context; not exact QPC join"
+        },
+        "serverExitCode": -1,
+        "serverNormalQuitAccepted": false
+      },
+      "off": {
+        "runId": "ANIM-grid-cost64-2-off",
+        "metricsMs": {
+          "MsBetweenPresents": {
+            "samples": 1107,
+            "p50": 11.9596,
+            "p95": 20.936600000000002,
+            "p99": 23.968470000000007,
+            "mean": 13.495903342366757,
+            "maximum": 27.8386
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 1107,
+            "p50": 12.301,
+            "p95": 23.12854,
+            "p99": 25.213700000000006,
+            "mean": 13.496980036133694,
+            "maximum": 29.9963
+          },
+          "MsCPUBusy": {
+            "samples": 1107,
+            "p50": 11.8112,
+            "p95": 20.8043,
+            "p99": 23.83960400000001,
+            "mean": 13.338731074977417,
+            "maximum": 27.6721
+          },
+          "MsCPUWait": {
+            "samples": 1107,
+            "p50": 0.1549,
+            "p95": 0.19223000000000004,
+            "p99": 0.21416400000000002,
+            "mean": 0.15716332429990967,
+            "maximum": 0.2752
+          },
+          "MsGPUBusy": {
+            "samples": 1107,
+            "p50": 2.742,
+            "p95": 3.30065,
+            "p99": 3.4528700000000003,
+            "mean": 2.815250225835592,
+            "maximum": 4.4401
+          },
+          "MsGPUTime": {
+            "samples": 1107,
+            "p50": 11.9457,
+            "p95": 21.03642,
+            "p99": 24.13515800000001,
+            "mean": 13.496043992773261,
+            "maximum": 27.8294
+          },
+          "MsInPresentAPI": {
+            "samples": 1107,
+            "p50": 0.1549,
+            "p95": 0.19223000000000004,
+            "p99": 0.21416400000000002,
+            "mean": 0.15716332429990967,
+            "maximum": 0.2752
+          }
+        },
+        "foregroundRows": 1531,
+        "gridPoolEnabled": false,
+        "gridPoolCreated": 0,
+        "gridPoolReused": 0,
+        "gridMaximumPairCandidates": 1271,
+        "phaseRows": {
+          "FOLLOW": 4704,
+          "LAND": 41,
+          "FALL": 50,
+          "MOTION": 62,
+          "SETTLE": 23,
+          "EGRESS": 48
+        },
+        "areaRows": {
+          "ground": 772,
+          "low": 4145,
+          "air": 11
+        },
+        "completeAgentSnapshots": 77,
+        "aliveReceiverSnapshots": 77,
+        "captureContextCounters": {
+          "gameSeconds": [
+            33.548,
+            54.1201
+          ],
+          "deltas": {
+            "attackStarts": 32,
+            "playerHits": 33,
+            "setterOpportunities": 34048,
+            "reads": 0,
+            "writes": 34048,
+            "exactEqual": 0
+          },
+          "perGameSecond": {
+            "attackStarts": 1.555504785607692,
+            "playerHits": 1.6041143101579325,
+            "setterOpportunities": 1655.0570918865844,
+            "reads": 0.0,
+            "writes": 1655.0570918865844,
+            "exactEqual": 0.0
+          },
+          "scope": "conservative context; not exact QPC join"
+        },
+        "serverExitCode": -1,
+        "serverNormalQuitAccepted": false
+      },
+      "decision": {
+        "schemaVersion": "1.0.0",
+        "sourceRunId": "grid-cell-pool-cost64-pilot-20261107",
+        "independentPairs": 1,
+        "independentCostRuns": 2,
+        "order": [
+          "on",
+          "off"
+        ],
+        "changes": {
+          "MsBetweenPresents": {
+            "p50": {
+              "on": 12.2274,
+              "off": 11.9596,
+              "absoluteDeltaMs": 0.26779999999999937,
+              "relativeDeltaPercent": 2.2392053245927857
+            },
+            "p95": {
+              "on": 18.53846,
+              "off": 20.936600000000002,
+              "absoluteDeltaMs": -2.3981400000000015,
+              "relativeDeltaPercent": -11.454295348815002
+            },
+            "p99": {
+              "on": 21.075728000000005,
+              "off": 23.968470000000007,
+              "absoluteDeltaMs": -2.892742000000002,
+              "relativeDeltaPercent": -12.06894724611125
+            }
+          },
+          "MsCPUBusy": {
+            "p50": {
+              "on": 12.0909,
+              "off": 11.8112,
+              "absoluteDeltaMs": 0.27970000000000006,
+              "relativeDeltaPercent": 2.3680913031698836
+            },
+            "p95": {
+              "on": 18.3807,
+              "off": 20.8043,
+              "absoluteDeltaMs": -2.4236000000000004,
+              "relativeDeltaPercent": -11.649514763774793
+            },
+            "p99": {
+              "on": 20.914588000000006,
+              "off": 23.83960400000001,
+              "absoluteDeltaMs": -2.925016000000003,
+              "relativeDeltaPercent": -12.269566222660423
+            }
+          },
+          "MsGPUBusy": {
+            "p50": {
+              "on": 2.6863,
+              "off": 2.742,
+              "absoluteDeltaMs": -0.05569999999999986,
+              "relativeDeltaPercent": -2.0313639679066298
+            },
+            "p95": {
+              "on": 3.20734,
+              "off": 3.30065,
+              "absoluteDeltaMs": -0.09331000000000023,
+              "relativeDeltaPercent": -2.827018920515667
+            },
+            "p99": {
+              "on": 3.345732,
+              "off": 3.4528700000000003,
+              "absoluteDeltaMs": -0.1071380000000004,
+              "relativeDeltaPercent": -3.102868048898466
+            }
+          }
+        },
+        "screeningPassed": true,
+        "performanceAccepted": false,
+        "classification": "PROMISING_SINGLE_PAIR_REQUIRES_REPEATS",
+        "blockers": [
+          "Single pair cannot establish reproducible improvement or regression",
+          "Dynamic crowd work differs despite matched target/camera/build",
+          "No 64 complete mobility or visual acceptance; server exit -1"
+        ],
+        "evidenceReferences": [
+          "analysis-1.json",
+          "analysis-2.json",
+          "screening-policy.json"
+        ]
+      }
+    },
+    "blockers": [
+      "Single pair cannot establish reproducible improvement or regression",
+      "Dynamic crowd work differs despite matched target/camera/build",
+      "No 64 complete mobility or visual acceptance; server exit -1"
+    ],
+    "evidenceReferences": [
+      "reports/operations/grid-cell-pool-cost64-pilot-20261107.md",
+      "evidence/grid-cell-pool-cost64-pilot-20261107.txt"
+    ],
+    "performanceAccepted": false,
+    "visualAccepted": false,
     "fullGoalComplete": false
   }
 }
