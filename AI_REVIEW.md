@@ -1,13 +1,11 @@
-# 서버 파트 소유권 검토
+# 비대표 루트 조회 국소 후보
 
-5파트 기준 유지. 4파트 비용3쌍은 방향 불일치로 미수용. 이번은15개 핀 PBO의 서버 포즈 소비자 정적 검토이며 새 성능값·게임 실행은 없다. 
+5파트 기준 유지. 격리 루트 조회 후보 빌드·서명·3모드 분기 시험 완료. 진단 콜백19회로 커버리지 부족,실제8/64·CPU·시각 미검증.
 
-[상세](reports/operations/server-pose-consumers-20261106.md) · [TXT](reports/operations/server-pose-consumers-20261106.txt) · [근거](evidence/server-pose-consumers-20261106.txt) · [JSON](api/public/server-pose-consumers.json)
+[상세](reports/operations/follower-root-branch-20261106.md) · [TXT](reports/operations/follower-root-branch-20261106.txt) · [근거](evidence/follower-root-branch-20261106.txt) · [JSON](api/public/follower-root-branch.json)
 
-지지/관절/등반 끝은 Leader 본을 사용한다. 모든 파트가 루트 delta를 조회하지만 Drive는 대표만 호출한다. 확인한 스크립트에서 비대표 root 진단값의 게임플레이 소비자를 찾지 못했다. 이것은 네이티브 포즈 평가를 꺼도 된다는 증거가 아니다. NOCOLLISION/부모 연결 실패는 유지한다.
+기본OFF·서버전용. 그래프/본/물리/대표/피해/퇴역은유지,사용되지않는비대표getter와누적만생략한다. 합성8역할호스트는8개체기능회귀가아니다. CPU/Present/화면미측정. 콜백차이원인미확인,빈도변경없음. 조회감소를성능향상으로표현하지않는다.
 
-후보는 비대표 관리 파트의 getter와delta 누적만 줄이며 그래프·시계·충돌·지지·대표/피해/퇴역은 보존한다. 아직 미구현·미측정. 짧은1/8 계약·비용 근거 전64장시간 시험을 하지 않는다.
+실패임무컴파일·수집기ok=true판정정정을보존. 다음짧은8개체계약·비용근거전64장시간확대금지.
 
-이전 stimulus 파생JSON의 Starting-position variation 문장은6회 offset0과 불일치하여 정정했다. 원본 보존,입력 우선순위/비용 인과 미확인.
-
-[직전 안내](reports/history/20261106-before-server-pose-AI_REVIEW.md)
+[직전 안내](reports/history/20261106-before-follower-root-AI_REVIEW.md)
