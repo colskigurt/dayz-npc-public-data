@@ -1,18 +1,17 @@
 # DayZ NPC 현재 상태
 
-최신 작업: 기존 SupportFast 후보의 현행 엔진8개체 기능 회귀 완료.
+최신: [SupportFast64 비용 중간 보고서](operations/supportfast64-cost-interim-20261107.md).
 
-| 판정 | 결과 |
+| 구분 | 현재 판정 |
 |---|---|
-|8개체 기능|최종8/8, 전체 경유8/8, 낙하9/복귀9|
-|검사량|Fast17,528회, 광선70,112회 생략|
-|CPU·Present|이번 실행 미측정; 개선 미입증|
-|시각 품질|이번 실행 미평가|
-|정상 서버 종료|실제 종료-1로 미수용|
-|전체20ms 목표|미달성/이번 실행 미측정|
+|8개체 기능|8/8, 낙하9/복귀9; 별도 실행 통과|
+|64비용 수집|계획6회 중4회 수집,3회 구간 검증,1회 활성 조건 제외|
+|완전 비교|1쌍; 광선/게임초58.23% 감소, 서버CPU/게임초5.19% 증가, Present p95 7.12% 증가|
+|외부 부하|다른 게임이 이후 관찰됨; 이전 측정과 중첩 여부 미확인|
+|최종 판정|성능 개선 미입증·미수용; 전체3쌍 미완료|
 
-[최신 상세 보고서](operations/supportfast-current-engine-eight-20261107.md) · [공개 JSON](../api/public/supportfast-current-engine-eight-20261107.json)
+추가 게임 실행은 전용 측정 시간 확보 전 보류하고 자료 분석을 진행한다. 광선4회 대신 추가 SphereCast1회와 경계 검사가 있어 광선 수 감소를 총 비용 감소로 해석하지 않는다.
 
-이전 수신기 자산 경량화3쌍에서는 클라이언트 Present/CPU 개선을 관찰했지만 서버 CPU 기준은 실패했다. 이번 SupportFast와 결합하지 않았다.
+[공개 JSON](../api/public/supportfast64-cost-interim-20261107.json) · [이전8개체 결과](operations/supportfast-current-engine-eight-20261107.md) · [수신기 자산 경량화](operations/receiver-native-assets-cost64-three-pairs-20261107.md)
 
-다음: 원본 수신기를 유지한64개체 단일 요인 CPU/Present 반복 비교. 정상 낙하·착지·재등반을 보존한다.
+64고저차 기능·시각 품질·전체20ms 목표는 미완료. 정상 밀침·낙하·착지·FOLLOW·재등반 유지.

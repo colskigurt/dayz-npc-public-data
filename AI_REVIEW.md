@@ -1,5 +1,3 @@
 # 외부 검토 안내
 
-최신 기준은 [현재 상태](README.md)와 [상세 보고서](reports/operations/supportfast-current-engine-eight-20261107.md)를 함께 읽는다. 기능·시각·성능 판정을 구분하고 검사가 줄었다는 이유만으로 CPU 개선을 선언하지 않는다. 과거 기록은 reports/archive에 보존했다.
-
-이번8개체는 단일 실행이며64개체 성능/시각/정상 종료 최종 수용이 아니다. 기존 수신기 경량화 성능과 합산하지 않는다.
+[현재 상태](README.md)와 [최신 비용 보고서](reports/operations/supportfast64-cost-interim-20261107.md)를 함께 읽는다. 광선 검사 감소와 전체CPU 절감을 구분한다.4회 수집 중1회 제외, 완전 비교는1쌍뿐이며 외부 부하 중첩은 미확인이다. 성능 성공·3쌍 완료·시각 품질 수용으로 해석하지 않는다. 이전 기록은 reports/archive와 원래 상세 보고서에 보존했다.

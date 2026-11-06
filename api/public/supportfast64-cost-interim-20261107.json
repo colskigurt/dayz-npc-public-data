@@ -1,0 +1,286 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceRunId": "supportfast262-cost64-three2-incomplete",
+  "generatedAt": "2026-11-06T23:30:40.916716+00:00",
+  "plannedRuns": 6,
+  "capturedRuns": 4,
+  "fullWindowValidatedRuns": [
+    1,
+    2,
+    3
+  ],
+  "excludedRuns": [
+    4
+  ],
+  "unstartedRuns": [
+    5,
+    6
+  ],
+  "completeComparablePairs": 1,
+  "performanceAccepted": false,
+  "isolatedMachineLoadVerified": false,
+  "runMetrics": [
+    {
+      "runId": "ANIM-sf262b-cost-1-control",
+      "present": {
+        "samples": 1119,
+        "p50": 13.8402,
+        "p95": 18.01887,
+        "p99": 21.74543,
+        "mean": 13.320066845397676,
+        "maximum": 26.3455
+      },
+      "serverCpuGameMs": 886.813058556756,
+      "serverCpuWallMs": 886.0227704462005,
+      "supportWorkPerGameSecond": {
+        "used": 0.0,
+        "skipped": 0.0,
+        "attempts": 0.0,
+        "footRays": 28734.828747537646,
+        "jointSweeps": 11490.5636398297
+      },
+      "nativeClock": {
+        "cpuGameStart": 35.8833,
+        "cpuGameEnd": 50.8773,
+        "nativeDeltaSeconds": 14.947062129732934,
+        "nativePerGameSecond": 0.9968695564714509,
+        "nativePerWallSecond": 0.9959811909352732,
+        "scope": "Mean minimum visible-part callback nativeSeconds; linearly joined1s snapshots; not direct graph evaluation or visual smoothness"
+      },
+      "areaRows": {
+        "low": 2990,
+        "ground": 2062,
+        "air": 4
+      }
+    },
+    {
+      "runId": "ANIM-sf262b-cost-2-candidate",
+      "present": {
+        "samples": 1189,
+        "p50": 10.9682,
+        "p95": 19.301519999999996,
+        "p99": 20.569339999999993,
+        "mean": 12.556594365012614,
+        "maximum": 24.5232
+      },
+      "serverCpuGameMs": 932.8482800531577,
+      "serverCpuWallMs": 930.8225538722944,
+      "supportWorkPerGameSecond": {
+        "used": 4341.816261199461,
+        "skipped": 17367.265044797845,
+        "attempts": 4584.967762297669,
+        "footRays": 12002.215738182193,
+        "jointSweeps": 11746.504093318646
+      },
+      "nativeClock": {
+        "cpuGameStart": 35.5424,
+        "cpuGameEnd": 50.5167,
+        "nativeDeltaSeconds": 14.95493583333333,
+        "nativePerGameSecond": 0.9987068399413215,
+        "nativePerWallSecond": 0.9965380986401517,
+        "scope": "Mean minimum visible-part callback nativeSeconds; linearly joined1s snapshots; not direct graph evaluation or visual smoothness"
+      },
+      "areaRows": {
+        "low": 3896,
+        "ground": 1091,
+        "air": 5
+      }
+    },
+    {
+      "runId": "ANIM-sf262b-cost-3-candidate",
+      "present": {
+        "samples": 1073,
+        "p50": 12.3613,
+        "p95": 21.79132,
+        "p99": 25.14294,
+        "mean": 13.925730382106243,
+        "maximum": 28.4108
+      },
+      "serverCpuGameMs": 998.8469854275025,
+      "serverCpuWallMs": 994.3655015000337,
+      "supportWorkPerGameSecond": {
+        "used": 3775.9510342238705,
+        "skipped": 15103.804136895482,
+        "attempts": 3996.793301563265,
+        "footRays": 13972.806688256738,
+        "jointSweeps": 11624.85445788345
+      },
+      "nativeClock": {
+        "cpuGameStart": 36.3712,
+        "cpuGameEnd": 51.3103,
+        "nativeDeltaSeconds": 14.857669716197016,
+        "nativePerGameSecond": 0.994549184100583,
+        "nativePerWallSecond": 0.9900869829339884,
+        "scope": "Mean minimum visible-part callback nativeSeconds; linearly joined1s snapshots; not direct graph evaluation or visual smoothness"
+      },
+      "areaRows": {
+        "low": 3376,
+        "ground": 1546,
+        "air": 6
+      }
+    }
+  ],
+  "limitations": [
+    "Other game observed after run4; its overlap with earlier captures is not established",
+    "Run4 false foreground rows occur in predefined conservative bracket; actual capture overlap not proved",
+    "No replacement run launched; no optimistic rerun or acceptance",
+    "Contract copied metadata points to prior preparation; actual launched mission pinned in staged-plan/manifests; acceptance thresholds unchanged"
+  ],
+  "pair1": {
+    "pair": 1,
+    "provisional": true,
+    "notAcceptance": true,
+    "serverCpuGamePct": 5.19108520699072,
+    "serverCpuWallPct": 5.0562790167946625,
+    "presentP95Pct": 7.118370907831606,
+    "nativeRatePct": 0.05591548414238812,
+    "footRaysGamePct": -58.231121390585315,
+    "supportSkipped": 269632,
+    "baselineLowFraction": 0.591376582278481,
+    "candidateLowFraction": 0.780448717948718
+  },
+  "buildId": "1419E96D11A984951CDD48B926D7E6604413F1B9D74729D8FE55118BAF86E2BC",
+  "verificationStatus": "INCOMPLETE_UNCONTROLLED_LOAD_NOT_ACCEPTED",
+  "metrics": {
+    "completePairs": 1,
+    "plannedPairs": 3,
+    "firstPair": {
+      "pair": 1,
+      "provisional": true,
+      "notAcceptance": true,
+      "serverCpuGamePct": 5.19108520699072,
+      "serverCpuWallPct": 5.0562790167946625,
+      "presentP95Pct": 7.118370907831606,
+      "nativeRatePct": 0.05591548414238812,
+      "footRaysGamePct": -58.231121390585315,
+      "supportSkipped": 269632,
+      "baselineLowFraction": 0.591376582278481,
+      "candidateLowFraction": 0.780448717948718
+    },
+    "runs": [
+      {
+        "runId": "ANIM-sf262b-cost-1-control",
+        "present": {
+          "samples": 1119,
+          "p50": 13.8402,
+          "p95": 18.01887,
+          "p99": 21.74543,
+          "mean": 13.320066845397676,
+          "maximum": 26.3455
+        },
+        "serverCpuGameMs": 886.813058556756,
+        "serverCpuWallMs": 886.0227704462005,
+        "supportWorkPerGameSecond": {
+          "used": 0.0,
+          "skipped": 0.0,
+          "attempts": 0.0,
+          "footRays": 28734.828747537646,
+          "jointSweeps": 11490.5636398297
+        },
+        "nativeClock": {
+          "cpuGameStart": 35.8833,
+          "cpuGameEnd": 50.8773,
+          "nativeDeltaSeconds": 14.947062129732934,
+          "nativePerGameSecond": 0.9968695564714509,
+          "nativePerWallSecond": 0.9959811909352732,
+          "scope": "Mean minimum visible-part callback nativeSeconds; linearly joined1s snapshots; not direct graph evaluation or visual smoothness"
+        },
+        "areaRows": {
+          "low": 2990,
+          "ground": 2062,
+          "air": 4
+        }
+      },
+      {
+        "runId": "ANIM-sf262b-cost-2-candidate",
+        "present": {
+          "samples": 1189,
+          "p50": 10.9682,
+          "p95": 19.301519999999996,
+          "p99": 20.569339999999993,
+          "mean": 12.556594365012614,
+          "maximum": 24.5232
+        },
+        "serverCpuGameMs": 932.8482800531577,
+        "serverCpuWallMs": 930.8225538722944,
+        "supportWorkPerGameSecond": {
+          "used": 4341.816261199461,
+          "skipped": 17367.265044797845,
+          "attempts": 4584.967762297669,
+          "footRays": 12002.215738182193,
+          "jointSweeps": 11746.504093318646
+        },
+        "nativeClock": {
+          "cpuGameStart": 35.5424,
+          "cpuGameEnd": 50.5167,
+          "nativeDeltaSeconds": 14.95493583333333,
+          "nativePerGameSecond": 0.9987068399413215,
+          "nativePerWallSecond": 0.9965380986401517,
+          "scope": "Mean minimum visible-part callback nativeSeconds; linearly joined1s snapshots; not direct graph evaluation or visual smoothness"
+        },
+        "areaRows": {
+          "low": 3896,
+          "ground": 1091,
+          "air": 5
+        }
+      },
+      {
+        "runId": "ANIM-sf262b-cost-3-candidate",
+        "present": {
+          "samples": 1073,
+          "p50": 12.3613,
+          "p95": 21.79132,
+          "p99": 25.14294,
+          "mean": 13.925730382106243,
+          "maximum": 28.4108
+        },
+        "serverCpuGameMs": 998.8469854275025,
+        "serverCpuWallMs": 994.3655015000337,
+        "supportWorkPerGameSecond": {
+          "used": 3775.9510342238705,
+          "skipped": 15103.804136895482,
+          "attempts": 3996.793301563265,
+          "footRays": 13972.806688256738,
+          "jointSweeps": 11624.85445788345
+        },
+        "nativeClock": {
+          "cpuGameStart": 36.3712,
+          "cpuGameEnd": 51.3103,
+          "nativeDeltaSeconds": 14.857669716197016,
+          "nativePerGameSecond": 0.994549184100583,
+          "nativePerWallSecond": 0.9900869829339884,
+          "scope": "Mean minimum visible-part callback nativeSeconds; linearly joined1s snapshots; not direct graph evaluation or visual smoothness"
+        },
+        "areaRows": {
+          "low": 3376,
+          "ground": 1546,
+          "air": 6
+        }
+      }
+    ]
+  },
+  "blockers": [
+    "Dedicated measurement time not established",
+    "Run4 excluded by predefined foreground bracket",
+    "Only1 complete pair and first pair did not meet performance gate",
+    "Other game overlap with prior captures unknown"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/supportfast64-cost-interim-20261107.md",
+      "localCheckpointSha256": "0d3f265cb5ff2b305effacdbaec8cddc4bb0f09bc9db5a10bf96b9281763320a",
+      "localEvidenceFiles": 41
+    }
+  ],
+  "conditions": {
+    "logicalAgents": 64,
+    "nativeHosts": 384,
+    "visibleParts": 320,
+    "receivers": 64,
+    "receiverNodes": 250,
+    "outgoingAttacks": false,
+    "captureSeconds": 15,
+    "completedComparablePairs": 1,
+    "plannedPairs": 3
+  }
+}
