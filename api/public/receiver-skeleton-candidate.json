@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-07T06:07:36.602623+09:00",
+  "sourceRunId": "receiver-skeleton-compile1",
+  "buildId": "E782FFB56AF6BD3C5673C877CC68AFABCF58FE28F7FFB5439D3373C1F29B8C73",
+  "verificationStatus": "STATIC_AND_NATIVE_BUILD_PASSED_RUNTIME_NOT_TESTED",
+  "metrics": {
+    "sourceTxoNodes": 250,
+    "candidateNodes": 27,
+    "weightedHitBones": 11,
+    "memoryPointsBefore": 248,
+    "memoryPointsAfter": 25,
+    "preservedNodePayloadComparisons": 405,
+    "compiledNativeFiles": 15,
+    "compiledBytes": 253074,
+    "performanceMeasured": false,
+    "visualAccepted": false,
+    "functionalRuns": 0,
+    "signatureVerified": true,
+    "workbenchNormalQuit": false
+  },
+  "blockers": [
+    "Shared source parser readback and native envelope checks do not prove runtime ANM channel mapping",
+    "MLOD non-memory LOD byte preservation is not compiled ODOL hitbox verification",
+    "Workbench exit issue is not silently counted as normal quit",
+    "Native internal bone dependencies and actual hit hull transforms unverified",
+    "No8/64functional or performance comparison"
+  ],
+  "evidenceReferences": [
+    {
+      "name": "inventory.json",
+      "sha256": "03eab20e23dc557f5bc6b909e0267061b36038658e8abbec74413a0ba0c21f41"
+    },
+    {
+      "name": "stage.json",
+      "sha256": "e02aab63d6b642332a4c92c5c08c2e9665c0db389b61b8cb805fda0a5848309d"
+    },
+    {
+      "name": "compile-audit.json",
+      "sha256": "621fcb9015b3d83b365c00d79f7d463797f8eebe127b680739510dbeddf717bf"
+    },
+    {
+      "name": "package-staging.json",
+      "sha256": "e135e0a8efda4e04a2cd8511f7358164d4f43e63e342166fa99eba45c118b017"
+    },
+    {
+      "name": "packed-proof.json",
+      "sha256": "4ee68071c2eb249399e05d9a005d029acf86188b7c1ba8b5cea564588d558227"
+    },
+    {
+      "name": "build.json",
+      "sha256": "2337a39c99e1e4c214a95543225328a180c7a74ae28baaa0fc125f27dba46ed4"
+    },
+    {
+      "name": "signature.log",
+      "sha256": "fb042fe9776c5f91b197cb4ffd0804d7850cde279d84f5f6b39a69e72ccf68d4"
+    }
+  ],
+  "conditions": {
+    "nativeHostsPerCombatNpc": 6,
+    "displayParts": 5,
+    "receiverHosts": 1,
+    "runtimeRepetitions": 0
+  },
+  "candidateStatus": "ISOLATED_NOT_DEPLOYED"
+}
