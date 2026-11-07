@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-08T07:02:57+09:00",
+  "sourceRunId": [
+    "ANIM-pair-shared-eight-integration1-off",
+    "ANIM-pair-shared-eight-integration1-on"
+  ],
+  "buildId": "pair-radius-A226824E",
+  "verificationStatus": "BOUNDED_INTEGRATION_OBSERVED_FULL_FUNCTION_NOT_ACCEPTED",
+  "metrics": {
+    "conditions": "8logical/40render/8receiver;60gameSeconds, one run each; same12PBO/time-driven mixed scene",
+    "repetitionsPerCondition": 1,
+    "acquiredMoved2m": {
+      "off": 8,
+      "on": 8
+    },
+    "validTerminal": {
+      "off": 6,
+      "on": 5
+    },
+    "fallAndFollowCycles": {
+      "off": 11,
+      "on": 8
+    },
+    "transitionContractErrors": {
+      "off": 0,
+      "on": 0
+    },
+    "wholeCpu": null,
+    "presentP95": null
+  },
+  "blockers": [
+    "Full mobility gate not met",
+    "Single run each and unequal trajectories",
+    "Visual/real damage/death acceptance pending",
+    "64cost screening not run"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/pair-radius-eight-integration-20261108.md"
+    }
+  ],
+  "productionAdoption": false
+}

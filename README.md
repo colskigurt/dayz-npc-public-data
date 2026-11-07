@@ -1,4 +1,4 @@
-> 현재: [접촉 반경·거리 공유 국소 비용 반복 통과](reports/operations/pair-radius-shared-local-cost-20261108.md). 독립2프로세스 dense약28.4%·mixed약15.2% 감소. 전체CPU·실제8/64기능·시각·배포 수용은 미완료.
+> 현재: [접촉 후보8 OFF/ON 제한 통합 결과](reports/operations/pair-radius-eight-integration-20261108.md). 양쪽8/8생존·인식·이동, 낙하복귀11/8회. 전체목표6/8대5/8로기능미수용.64전체CPU선별준비·미실행.
 
 > **최신 비용 진단:** [현재64개체 서버CPU 부분귀속](reports/operations/current64-server-cpu-owner-20261108.md). 한스레드97.74%, 추정실행기leaf17.64%, Ray/Sphere포함10.29%; 스택누락28%·최적화성과 아님. [현재8명 종료7/8 기준결함](reports/operations/supported-terminal-eight-baseline-20261108.md) · [64명 Present3회 관측](reports/operations/mixed64-three-observations-20261108.md).
 
