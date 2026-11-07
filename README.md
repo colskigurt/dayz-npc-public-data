@@ -1,5 +1,8 @@
 > **최신 비용 진단:** [현재64개체 서버CPU 부분귀속](reports/operations/current64-server-cpu-owner-20261108.md). 한스레드97.74%, 추정실행기leaf17.64%, Ray/Sphere포함10.29%; 스택누락28%·최적화성과 아님. [현재8명 종료7/8 기준결함](reports/operations/supported-terminal-eight-baseline-20261108.md) · [64명 Present3회 관측](reports/operations/mixed64-three-observations-20261108.md).
 
+> 최신 추가 진단: [8개체 실제 NPC 함수별 호출수](reports/operations/npc-eight-named-owner-20261108.md). 30초 진단 수집 완료, 64개체 확대 및 시간 단위는 미확인. 성능 개선 판정 아님.
+
+
 > **최신 최적화 시험:** 표시 호스트 solid64 후보는 서버CPU−3.03%지만 Present p95+14.23%로 **선별 미통과·미수용**입니다. [비교 수치·근거·다음 작업](reports/operations/visual-solid-flat64-screen-result-20261108.md).
 
 > **시험 조건 정정 (2026-11-07):** 앞선 평지 64개체 접근 선별 시험은 전투 OFF·320개 표시 호스트 조건입니다. 피해 수신 호스트를 포함했다는 설명을 정정합니다. [진단과 정정 근거](reports/operations/host-physics-cohort-correction-20261107.md). 성능 수치와 후보 미수용 판정은 유지합니다.
