@@ -1,0 +1,356 @@
+{
+  "schemaVersion": "1.0",
+  "sourceRunId": "ANIM-terrain-negative-backoff-method1",
+  "verificationStatus": "FIRST_METHOD_GATE_FAILED",
+  "measuredCalls": 216000,
+  "warmupAndColdProbesExcluded": true,
+  "independentProcesses": 1,
+  "rows": 216,
+  "maximumPointErrorMetres": 3.05176e-05,
+  "conditions": [
+    {
+      "condition": "terrain",
+      "pairedMedianPercent": -61.149328389708614,
+      "groupPairedChangesPercent": [
+        -64.02302324427464,
+        -60.884138254774854,
+        -59.932267551739535,
+        -61.41451852464237
+      ],
+      "shamPairedMedianPercent": -1.0225560024629876,
+      "gatePassed": true,
+      "candidateCountersPer1000": {
+        "footRays": [
+          0
+        ],
+        "jointSweeps": [
+          4000
+        ],
+        "certificateQueries": [
+          1000
+        ],
+        "certificateBlocked": [
+          0
+        ],
+        "backoffBypasses": [
+          0
+        ],
+        "blockedAttempts": [
+          0
+        ]
+      },
+      "coldSingleTicks": {
+        "p50": 203.5,
+        "minimum": 198,
+        "maximum": 206
+      }
+    },
+    {
+      "condition": "roof",
+      "pairedMedianPercent": 0.10118584917591655,
+      "groupPairedChangesPercent": [
+        -0.5884572684863643,
+        -0.9987927939708485,
+        2.1581658206935694,
+        0.7908289668381974
+      ],
+      "shamPairedMedianPercent": 0.16991686265768746,
+      "gatePassed": true,
+      "candidateCountersPer1000": {
+        "footRays": [
+          10000
+        ],
+        "jointSweeps": [
+          4000
+        ],
+        "certificateQueries": [
+          0
+        ],
+        "certificateBlocked": [
+          0
+        ],
+        "backoffBypasses": [
+          0
+        ],
+        "blockedAttempts": [
+          0
+        ]
+      },
+      "coldSingleTicks": {
+        "p50": 739.0,
+        "minimum": 716,
+        "maximum": 772
+      }
+    },
+    {
+      "condition": "edge",
+      "pairedMedianPercent": 1.5253539214110656,
+      "groupPairedChangesPercent": [
+        1.9013261390829594,
+        2.450966237049723,
+        1.1253293430553368,
+        1.1493817037391718
+      ],
+      "shamPairedMedianPercent": 0.4772137540773769,
+      "gatePassed": true,
+      "candidateCountersPer1000": {
+        "footRays": [
+          10000
+        ],
+        "jointSweeps": [
+          4000
+        ],
+        "certificateQueries": [
+          0
+        ],
+        "certificateBlocked": [
+          0
+        ],
+        "backoffBypasses": [
+          0
+        ],
+        "blockedAttempts": [
+          0
+        ]
+      },
+      "coldSingleTicks": {
+        "p50": 634.0,
+        "minimum": 616,
+        "maximum": 657
+      }
+    },
+    {
+      "condition": "lift_reject",
+      "pairedMedianPercent": -65.96998052895418,
+      "groupPairedChangesPercent": [
+        -65.88484784439818,
+        -66.42567744691101,
+        -66.05511321351018,
+        -65.69363519828484
+      ],
+      "shamPairedMedianPercent": -0.4644050069372352,
+      "gatePassed": true,
+      "candidateCountersPer1000": {
+        "footRays": [
+          0
+        ],
+        "jointSweeps": [
+          0
+        ],
+        "certificateQueries": [
+          1000
+        ],
+        "certificateBlocked": [
+          0
+        ],
+        "backoffBypasses": [
+          0
+        ],
+        "blockedAttempts": [
+          0
+        ]
+      },
+      "coldSingleTicks": {
+        "p50": 165.5,
+        "minimum": 162,
+        "maximum": 432
+      }
+    },
+    {
+      "condition": "wrong_ground_hint",
+      "pairedMedianPercent": 2.6882642602583773,
+      "groupPairedChangesPercent": [
+        1.8811601791063115,
+        3.0153960534060387,
+        2.8488635146943553,
+        2.5276650058223993
+      ],
+      "shamPairedMedianPercent": 0.8228883359871819,
+      "gatePassed": true,
+      "candidateCountersPer1000": {
+        "footRays": [
+          10000
+        ],
+        "jointSweeps": [
+          4000
+        ],
+        "certificateQueries": [
+          0
+        ],
+        "certificateBlocked": [
+          0
+        ],
+        "backoffBypasses": [
+          0
+        ],
+        "blockedAttempts": [
+          0
+        ]
+      },
+      "coldSingleTicks": {
+        "p50": 736.5,
+        "minimum": 732,
+        "maximum": 740
+      }
+    },
+    {
+      "condition": "ground_near_structure",
+      "pairedMedianPercent": 2.989711666344408,
+      "groupPairedChangesPercent": [
+        3.1177883790930228,
+        4.414832875397701,
+        2.861634953595793,
+        2.7874658277119213
+      ],
+      "shamPairedMedianPercent": 0.22674388833775483,
+      "gatePassed": true,
+      "candidateCountersPer1000": {
+        "footRays": [
+          10000
+        ],
+        "jointSweeps": [
+          4000
+        ],
+        "certificateQueries": [
+          0
+        ],
+        "certificateBlocked": [
+          0
+        ],
+        "backoffBypasses": [
+          0
+        ],
+        "blockedAttempts": [
+          0
+        ]
+      },
+      "coldSingleTicks": {
+        "p50": 615.0,
+        "minimum": 593,
+        "maximum": 667
+      }
+    },
+    {
+      "condition": "ground_many_hints",
+      "pairedMedianPercent": -57.10316780466354,
+      "groupPairedChangesPercent": [
+        -56.68214646972655,
+        -57.61873134342359,
+        -55.86005748346996,
+        -57.52418913960054
+      ],
+      "shamPairedMedianPercent": -0.6381147875681337,
+      "gatePassed": true,
+      "candidateCountersPer1000": {
+        "footRays": [
+          0
+        ],
+        "jointSweeps": [
+          4000
+        ],
+        "certificateQueries": [
+          1000
+        ],
+        "certificateBlocked": [
+          0
+        ],
+        "backoffBypasses": [
+          0
+        ],
+        "blockedAttempts": [
+          0
+        ]
+      },
+      "coldSingleTicks": {
+        "p50": 225.0,
+        "minimum": 223,
+        "maximum": 231
+      }
+    },
+    {
+      "condition": "fall_state",
+      "pairedMedianPercent": 1.1501012118083187,
+      "groupPairedChangesPercent": [
+        1.2086515792438135,
+        2.0639623893847325,
+        0.39388831719329165,
+        1.091550844372824
+      ],
+      "shamPairedMedianPercent": -0.9761178256562308,
+      "gatePassed": true,
+      "candidateCountersPer1000": {
+        "footRays": [
+          10000
+        ],
+        "jointSweeps": [
+          4000
+        ],
+        "certificateQueries": [
+          0
+        ],
+        "certificateBlocked": [
+          0
+        ],
+        "backoffBypasses": [
+          0
+        ],
+        "blockedAttempts": [
+          0
+        ]
+      },
+      "coldSingleTicks": {
+        "p50": 533.0,
+        "minimum": 525,
+        "maximum": 879
+      }
+    },
+    {
+      "condition": "unregistered_roof",
+      "pairedMedianPercent": 3.825298427360191,
+      "groupPairedChangesPercent": [
+        4.138918778927536,
+        3.5028847006907116,
+        5.016396080343211,
+        3.5116780757928456
+      ],
+      "shamPairedMedianPercent": 0.19002356541746313,
+      "gatePassed": false,
+      "candidateCountersPer1000": {
+        "footRays": [
+          10000
+        ],
+        "jointSweeps": [
+          4000
+        ],
+        "certificateQueries": [
+          112
+        ],
+        "certificateBlocked": [
+          112
+        ],
+        "backoffBypasses": [
+          888
+        ],
+        "blockedAttempts": [
+          112
+        ]
+      },
+      "coldSingleTicks": {
+        "p50": 969.5,
+        "minimum": 961,
+        "maximum": 987
+      }
+    }
+  ],
+  "nextAction": "Stop reverse/8/64 expansion and preserve rejection",
+  "limits": [
+    "Method elapsed performance ticks, not frame milliseconds or pure CPU self-time",
+    "No client, no whole-process performance improvement",
+    "Cold single-call timings are diagnostic and noisy"
+  ],
+  "rawEvidence": {
+    "name": "terrain-integrated-cost.tsv",
+    "sha256": "eef73a61e3a0754b3aed25437bdb788c606738e583113b4e7c7121b95ee8961e"
+  },
+  "serverExitCode": -1
+}

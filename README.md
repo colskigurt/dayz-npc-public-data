@@ -1,4 +1,4 @@
-> **현재 다음 후보:** 지형 인증 backoff의 소스·8회 원본fallback/재시도는 확인했습니다. [접촉점 비교 기준 차이와0.0305mm 오차 진단](reports/operations/terrain-negative-backoff-conformance-20261108.md). **새 엄격 기준 실패·비용 미측정·미수용**입니다.
+> **현재 다음 후보:** 거절 인증8회 후보는 [비등록구조물+3.83%로 국소 기준 미통과](reports/operations/terrain-negative-backoff-method-first-20261108.md).16회 제한 수정1개만 준비했으며 **전체CPU개선·최종수용은 미검증**입니다.
 
 > **최신 최적화 시험:** 표시 호스트 solid64 후보는 서버CPU−3.03%지만 Present p95+14.23%로 **선별 미통과·미수용**입니다. [비교 수치·근거·다음 작업](reports/operations/visual-solid-flat64-screen-result-20261108.md).
 
