@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-11-08T06:18:01+09:00",
+  "sourceRunId": [
+    "ANIM-terrain-single-pass-eight2-off",
+    "ANIM-terrain-single-pass-eight2-on",
+    "ANIM-terrain-reference11-repro1",
+    "ANIM-terrain-single-pass-threshold1"
+  ],
+  "buildId": "4c78c9916e4e1fe300e3e984d70ade8d56f82ef803f9998a340a7277597acd82",
+  "verificationStatus": "FUNCTIONAL_GATE_FAILED_BASELINE_STALL_REPRODUCED",
+  "metrics": {
+    "off": {
+      "activeSeconds": 300.008,
+      "lowMilestones": 8,
+      "highMilestones": 7,
+      "validTerminal": 1,
+      "fallStarts": 2,
+      "landAndFollowCycles": 2
+    },
+    "on": {
+      "activeSeconds": 300.01,
+      "lowMilestones": 8,
+      "highMilestones": 7,
+      "validTerminal": 1,
+      "fallStarts": 1,
+      "landAndFollowCycles": 1,
+      "activeTerrainSampleAgents": 8,
+      "activeTerrainSamples": 22600
+    },
+    "referenceWithoutAdapter": {
+      "observedSeconds": 120.009,
+      "sameStallId": 0,
+      "firstStallSeconds": 18.1892,
+      "last30sXZRangeMetres": 0
+    },
+    "staticThreshold": {
+      "rows": 81,
+      "booleanAndReasonMatch": true,
+      "maxLiftDifferenceMetres": 0.000031
+    }
+  },
+  "blockers": [
+    "Full mobility gate failed in both conditions",
+    "WholeCPU/display/visual acceptance pending",
+    "Real firearm/melee/death not covered by this automatic movement test"
+  ],
+  "fullGameplayAccepted": false,
+  "wholeCpuAccepted": false,
+  "visualAccepted": false,
+  "evidenceReferences": [
+    {
+      "kind": "run",
+      "id": "ANIM-terrain-reference11-repro1"
+    },
+    {
+      "kind": "run",
+      "id": "ANIM-terrain-single-pass-eight2-off"
+    },
+    {
+      "kind": "run",
+      "id": "ANIM-terrain-single-pass-eight2-on"
+    },
+    {
+      "kind": "run",
+      "id": "ANIM-terrain-single-pass-threshold1"
+    }
+  ],
+  "nextExperiment": {
+    "status": "PLANNED_NOT_EXECUTED",
+    "scope": "One matched64agent cost-only screening pair; no full-regression or adoption waiver"
+  }
+}

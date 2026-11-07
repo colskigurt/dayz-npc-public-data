@@ -1,4 +1,4 @@
-> 현재 검증: [8개체 OFF 부분 관찰·실행 구성 수정](reports/operations/terrain-single-pass-eight-off-incomplete-20261108.md). 전체 기능 비교 미완료·ON 미실행. [국소2회 통과](reports/operations/terrain-single-pass-method-20261108.md)는 전체 CPU/기능 수용 아님.
+> 현재: [8개체 OFF/ON 기능 미통과·기준11PBO 동일 정체 재현](reports/operations/terrain-single-pass-eight-baseline-reproduced-20261108.md). CPU 선별과 기능 결함을 분리하며 전체 CPU·시각·배포 수용은 미완료.
 
 > **최신 비용 진단:** [현재64개체 서버CPU 부분귀속](reports/operations/current64-server-cpu-owner-20261108.md). 한스레드97.74%, 추정실행기leaf17.64%, Ray/Sphere포함10.29%; 스택누락28%·최적화성과 아님. [현재8명 종료7/8 기준결함](reports/operations/supported-terminal-eight-baseline-20261108.md) · [64명 Present3회 관측](reports/operations/mixed64-three-observations-20261108.md).
 
