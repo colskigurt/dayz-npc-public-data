@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-11-07T19:41:11.463308+09:00",
+  "sourceRunId": "dg-cost-debug-20261107-183622/contact-support-review",
+  "buildId": "17c2fca01d566914147a6d4924d038cb1f5a822c2829e4c45862e2bf837730b3",
+  "verificationStatus": "STATIC_REVIEW_WITH_PRIOR_RUNTIME_EVIDENCE",
+  "newGameplayMeasurement": false,
+  "newCodeImplementation": false,
+  "checks": {
+    "0x124": true,
+    "0x126": true,
+    "0x150": true,
+    "0x180": true,
+    "0x188": true,
+    "0x190": true
+  },
+  "findings": [
+    {
+      "id": "support-link-walk",
+      "status": "STATIC_CONFIRMED",
+      "function": "0x1404e6150",
+      "meaning": "Follows stored member references at +0x124/+0x126 with 0x150 record stride and flags, rather than performing a geometry query in this predicate",
+      "limit": "Not proof of zero support-production cost or safe support across frames"
+    },
+    {
+      "id": "capacity-retention",
+      "status": "STATIC_DECOMPILATION",
+      "function": "0x1404e3d40",
+      "meaning": "Capacity checks at manager +0x7c8/+0x7e0/+0x7f8; insufficient capacity grows storage, sufficient branch resets counts",
+      "limit": "No measured allocation rate or CPU saving; decompiler interpretation not runtime branch coverage"
+    },
+    {
+      "id": "retire-contact-purge",
+      "status": "STATIC_CONFIRMED",
+      "function": "0x1404f7690",
+      "meaning": "Scans 400-byte contacts and removes records referencing retiring body +0x180/+0x188, then compacts member arrays",
+      "limit": "Does not prove death invokes removal immediately or corpse physics removed"
+    },
+    {
+      "id": "prior-peer-response",
+      "status": "PRIOR_RUNTIME_CONFIRMED",
+      "meaning": "35.14s trace contains 3 peer-sourced response contributions and 15438 total response applications",
+      "limit": "Hook rates are not performance measurements; complete mass/impulse/friction model absent"
+    }
+  ],
+  "blockers": [
+    "Contact generation query count and refresh lifetime not fully recovered",
+    "Current 296-cohort push/support/animation self-time not separated",
+    "DayZ Source inspected; deployed candidate equivalence not revalidated in this review"
+  ],
+  "evidenceReferences": [
+    {
+      "id": "contact-support-implementation-readiness-2026-10-25.json",
+      "sha256": "b7394506092de5dfbe7b18d3aaeb92dd9e9f94cf62e54c34570d0cdbf19a5b85",
+      "bytes": 8679
+    },
+    {
+      "id": "contact-source-causal-20261025\\source-causal-analysis.json",
+      "sha256": "d28230170edd4bad1c33570e13c0099c737732a6587f494e030d42199bde4035",
+      "bytes": 37128
+    },
+    {
+      "id": "focused\\0x1404e3d40.c",
+      "sha256": "83b494fbfc75c6a38adbc2639172f8cd2ca239a967d0858041b03be37a62f441",
+      "bytes": 4171
+    },
+    {
+      "id": "focused\\0x1404e6150.c",
+      "sha256": "a19be04c720697a8a15e7747b1d804efa233e54be94edce8334d540651a9d3a2",
+      "bytes": 1344
+    },
+    {
+      "id": "focused\\0x1404f7690.c",
+      "sha256": "6a183c723025af96771d718e834a75dd4070e455377a71777a9bc10f1e00fae2",
+      "bytes": 17582
+    },
+    {
+      "id": "capstone-0x1404e6150.json",
+      "sha256": "2a874a824240f185b2868e4dc3f8b1cda95a4c49b2909ea90f714e4559c695ec",
+      "bytes": 6258
+    },
+    {
+      "id": "capstone-0x1404f7690.json",
+      "sha256": "98100708487cbad434d11e83109887caa4659ef27eb11dc286211a44f67a3983",
+      "bytes": 78836
+    },
+    {
+      "id": "DayZSource/DGBNativeGround.c",
+      "sha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82",
+      "bytes": 82216
+    },
+    {
+      "id": "DayZSource/DGBNativeCrowd.c",
+      "sha256": "8b3145c67444b5185e4a44dcb051dc118405d9cb2268c752b3abc65daeeaddf9",
+      "bytes": 13426
+    }
+  ]
+}
