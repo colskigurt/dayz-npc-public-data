@@ -1,0 +1,304 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-11-07T20:11:01.259962+09:00",
+  "sourceRunId": "approach-prereject-method-eight",
+  "buildId": "19f20acfecd8cacf3cfefec9f440caa4fdb06db12c0736c40eb596f0feaf7353",
+  "verificationStatus": "METHOD_GATE_AND_SINGLE_EIGHT_PAIR_PASSED_NOT_PERFORMANCE_ACCEPTED",
+  "metrics": {
+    "method": {
+      "schemaVersion": "1.0",
+      "sourceRunId": "ANIM-approach-prereject-method-cost1",
+      "verificationStatus": "SINGLE_PROCESS_THREE_PAIRED_BLOCKS_METHOD_GATE_ONLY",
+      "unit": "TickCount elapsed ticks; no milliseconds/self-time conversion",
+      "contexts": [
+        {
+          "context": 0,
+          "pairs": [
+            {
+              "offTicks": 2843934,
+              "onTicks": 2835945,
+              "deltaTicks": -7989,
+              "changePct": -0.28091369208990136,
+              "offRays": 12288,
+              "onRays": 12288
+            },
+            {
+              "offTicks": 2819952,
+              "onTicks": 2814315,
+              "deltaTicks": -5637,
+              "changePct": -0.1998970195237315,
+              "offRays": 12288,
+              "onRays": 12288
+            },
+            {
+              "offTicks": 2863716,
+              "onTicks": 2842722,
+              "deltaTicks": -20994,
+              "changePct": -0.7331034222667343,
+              "offRays": 12288,
+              "onRays": 12288
+            }
+          ],
+          "medianChangePct": -0.28091369208990136,
+          "methodGatePassed": true
+        },
+        {
+          "context": 1,
+          "pairs": [
+            {
+              "offTicks": 1703858,
+              "onTicks": 1541078,
+              "deltaTicks": -162780,
+              "changePct": -9.553613035828102,
+              "offRays": 12288,
+              "onRays": 7680
+            },
+            {
+              "offTicks": 1690127,
+              "onTicks": 1517516,
+              "deltaTicks": -172611,
+              "changePct": -10.212901160682009,
+              "offRays": 12288,
+              "onRays": 7680
+            },
+            {
+              "offTicks": 1737485,
+              "onTicks": 1509821,
+              "deltaTicks": -227664,
+              "changePct": -13.10307714886747,
+              "offRays": 12288,
+              "onRays": 7680
+            }
+          ],
+          "medianChangePct": -10.212901160682009,
+          "methodGatePassed": true
+        },
+        {
+          "context": 2,
+          "pairs": [
+            {
+              "offTicks": 564031,
+              "onTicks": 172006,
+              "deltaTicks": -392025,
+              "changePct": -69.50415845937545,
+              "offRays": 12288,
+              "onRays": 3072
+            },
+            {
+              "offTicks": 573402,
+              "onTicks": 172225,
+              "deltaTicks": -401177,
+              "changePct": -69.96435310654654,
+              "offRays": 12288,
+              "onRays": 3072
+            },
+            {
+              "offTicks": 572754,
+              "onTicks": 168917,
+              "deltaTicks": -403837,
+              "changePct": -70.50793185206913,
+              "offRays": 12288,
+              "onRays": 3072
+            }
+          ],
+          "medianChangePct": -69.96435310654654,
+          "methodGatePassed": true
+        }
+      ],
+      "methodGatePassed": true,
+      "independentProcessRuns": 1,
+      "pairedBlocksPerContext": 3,
+      "callsPerBlock": 3072,
+      "totalMeasuredMethodCalls": 55296,
+      "serverExitCode": -1,
+      "normalQuitAccepted": false,
+      "performanceAccepted": false,
+      "full64Accepted": false,
+      "visualAccepted": false,
+      "limits": [
+        "Synthetic immutable peer-goal populations, real Floor/Claimed; not gameplay frequency",
+        "Timed reference adds ray counters, candidate has diagnostic counters too; not production cost estimate",
+        "No complete Plan/path/navmesh/Drive/Displace or animation/render timing",
+        "Warm-cache repeated identical points in one scheduled callback",
+        "No p50/p95/p99 or whole-process CPU result; three blocks are not three independent runs"
+      ]
+    },
+    "eight": [
+      {
+        "sourceRunId": "ANIM-approach-eight-1-off",
+        "activeSeconds": 65.1797,
+        "validTerminalAgents": 8,
+        "allMilestoneAgents": 8,
+        "fallStarts": 9,
+        "landAndFollowCycles": 9,
+        "phaseChainMismatches": [],
+        "recoveryGenerationErrors": [],
+        "terminalAlignmentErrors": [],
+        "evidenceFunctionalGatePassed": true,
+        "condition": "off",
+        "candidateCounters": {
+          "nfapCenters": 0,
+          "nfapEarlyClaims": 0,
+          "nfapPeripheralRays": 0
+        },
+        "serverExitCode": -1,
+        "normalQuitAccepted": false,
+        "performanceAccepted": false,
+        "visualAccepted": false,
+        "opportunityObserved": false
+      },
+      {
+        "sourceRunId": "ANIM-approach-eight-2-on",
+        "activeSeconds": 57.8755,
+        "validTerminalAgents": 8,
+        "allMilestoneAgents": 8,
+        "fallStarts": 9,
+        "landAndFollowCycles": 9,
+        "phaseChainMismatches": [],
+        "recoveryGenerationErrors": [],
+        "terminalAlignmentErrors": [],
+        "evidenceFunctionalGatePassed": true,
+        "condition": "on",
+        "candidateCounters": {
+          "nfapCenters": 13520,
+          "nfapEarlyClaims": 2530,
+          "nfapPeripheralRays": 43950
+        },
+        "serverExitCode": -1,
+        "normalQuitAccepted": false,
+        "performanceAccepted": false,
+        "visualAccepted": false,
+        "opportunityObserved": true
+      }
+    ]
+  },
+  "blockers": [
+    "64 whole CPU/Present not measured",
+    "One8pair only",
+    "Server exit -1; normal process gate false"
+  ],
+  "evidenceReferences": [
+    {
+      "id": "packed-build.json",
+      "sha256": "38c81a96343427ea50dad7b9e64cd03dea7df39e62d1d398093ec717ba9984a9"
+    },
+    {
+      "id": "signature-result.json",
+      "sha256": "d5dcf44531b3db5ee51d221a479541ea112a19a44cfe1d086c3483ace04251f5"
+    },
+    {
+      "id": "signature.log",
+      "sha256": "20467ab1ce142ea403c740a218293906e8eb600e1f2f023105e4f93eb535504e"
+    },
+    {
+      "id": "verify-package.py",
+      "sha256": "a7f79a62dace38dda9456eb30368b84306568e8013396e42aa57db6602a8f875"
+    },
+    {
+      "id": "runtime-validation.json",
+      "sha256": "bbaab1c197de10e4e35062bf146030a803d25dc32079df88392896b02ef7e2fb"
+    },
+    {
+      "id": "method-results.json",
+      "sha256": "7eb158b306dd0cc37c7985255d7a93d931e22719300ef86a4ad74cfe592be71a"
+    },
+    {
+      "id": "method-cost-results.json",
+      "sha256": "aaa0c16b1ff66a44bd6b11ccee6dfca8e5f661421b2df84a6e30f683fc55f058"
+    },
+    {
+      "id": "analyze-method-cost.py",
+      "sha256": "cb8131f1de8433fb842b61921e639b46475a6a6bcdb8c960e1a01f202cd90a6e"
+    },
+    {
+      "id": "eight1/analysis-1.json",
+      "sha256": "1b65ac4ca3d80d0682d505eac4755e6fbaf962134a245f8db40c2d84a7b197df"
+    },
+    {
+      "id": "eight1/analysis-2.json",
+      "sha256": "d030c88bbd08b687f712dfd5d6a3e8689c14fe8546f7d2cb9d51b57a3945142f"
+    },
+    {
+      "id": "method-cost1/cases/ANIM-approach-prereject-method-cost1/runtime-once/server-profile/approach-method-cost.tsv",
+      "sha256": "d0c54e345a4f3cbdfa898c9eedca23b53dc76860e0adfc98d8326895653f8751"
+    },
+    {
+      "id": "method-cost1/cases/ANIM-approach-prereject-method-cost1/runtime-once/server-profile/approach-method.tsv",
+      "sha256": "2ec1587e610fde3aff17b1209dd170469ea0700c88ae44f5e88c3b785f12175a"
+    },
+    {
+      "id": "eight1/cases/ANIM-approach-eight-1-off/runtime-once/server-profile/lane-work.tsv",
+      "sha256": "19605eef23b8ba5bf8b2fe9c4b253f271a0935b383db54ec77a44effca9efe7b"
+    },
+    {
+      "id": "eight1/cases/ANIM-approach-eight-1-off/runtime-once/client-closed.json",
+      "sha256": "eb4077e201eda1ccda54cfb155add78a78afa495b467145f5a8eeca2d76064d9"
+    },
+    {
+      "id": "eight1/cases/ANIM-approach-eight-1-off/runtime-once/records/server-20261107T1105080897455Z.json",
+      "sha256": "2764f1a7a0e0cf380fa7f7abdc066f329e3137abbf43a3d280c21abd4e54b483"
+    },
+    {
+      "id": "eight1/cases/ANIM-approach-eight-2-on/runtime-once/server-profile/lane-work.tsv",
+      "sha256": "e8ec3aacb9f4face3cdcfc8ff4d4dcc2198ee42897ce8405d01af2612e9aecbd"
+    },
+    {
+      "id": "eight1/cases/ANIM-approach-eight-2-on/runtime-once/client-closed.json",
+      "sha256": "315f05c9cb9d6c005c36f153f46948d7c856990daac8ce2cafff033037107e51"
+    },
+    {
+      "id": "eight1/cases/ANIM-approach-eight-2-on/runtime-once/records/server-20261107T1108137772440Z.json",
+      "sha256": "bad827edc7c4ed9a11cd24cd8ae1305e347418769ac51fc1afabcad5ce40c6cf"
+    },
+    {
+      "id": "eight1/cases/ANIM-approach-eight-1-off/manifest.json",
+      "sha256": "bedbb026b2a2e6bec39b73062fbd3e3af601888328c2b28f98dec24e4ddf9d6e",
+      "bytes": 9419
+    },
+    {
+      "id": "eight1/cases/ANIM-approach-eight-1-off/runtime-once/server-profile/gameplay-eight.tsv",
+      "sha256": "7b805a0e5891c38421ea5cae62903b7c98cabda5b9b7e83d5cbf1ae79558f3b2",
+      "bytes": 557846
+    },
+    {
+      "id": "eight1/cases/ANIM-approach-eight-1-off/runtime-once/server-profile/terminal-state.tsv",
+      "sha256": "698f30bd2941ceb9c6c2eb48e37cdb46cd04d48375f594501f9d6a245e189c0e",
+      "bytes": 1366
+    },
+    {
+      "id": "eight1/cases/ANIM-approach-eight-1-off/runtime-once/server-profile/native-state-contract.tsv",
+      "sha256": "0335be446ae8d27426be1d606d1bb2be2a268aa318dbaee9ac2f3dbe688352f0",
+      "bytes": 62996
+    },
+    {
+      "id": "eight1/cases/ANIM-approach-eight-1-off/runtime-once/server-profile/script_2026-11-07_20-01-58.log",
+      "sha256": "ca2448ff10eb7900ba5d0fbbfa6dada40d024409aae955b5d96cff1a91e2a09c",
+      "bytes": 14842
+    },
+    {
+      "id": "eight1/cases/ANIM-approach-eight-2-on/manifest.json",
+      "sha256": "3a68b363bcd785da874e43bd612a482278f331b0ba83d29b56f9d3bde89a1e80",
+      "bytes": 9414
+    },
+    {
+      "id": "eight1/cases/ANIM-approach-eight-2-on/runtime-once/server-profile/gameplay-eight.tsv",
+      "sha256": "1b20fdd6791b0e0663f8c18adcfaddec728f68fc337cf96f71b7c88aaa77bd8e",
+      "bytes": 490984
+    },
+    {
+      "id": "eight1/cases/ANIM-approach-eight-2-on/runtime-once/server-profile/terminal-state.tsv",
+      "sha256": "aec1c3958d855eaffaba08e0993c77d9dfd0ad48c43e59742a6e194719554556",
+      "bytes": 1343
+    },
+    {
+      "id": "eight1/cases/ANIM-approach-eight-2-on/runtime-once/server-profile/native-state-contract.tsv",
+      "sha256": "7621e52c19cc5fda7263c97e2ea8fb1423b5fac5c46f23a03f54ca536b9771bb",
+      "bytes": 62943
+    },
+    {
+      "id": "eight1/cases/ANIM-approach-eight-2-on/runtime-once/server-profile/script_2026-11-07_20-05-55.log",
+      "sha256": "2442c2dd3cc60a6a3c3a03ba70fac4e49713a41c79f7303a8af66ce4924e07dd",
+      "bytes": 14841
+    }
+  ]
+}
