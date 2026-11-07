@@ -1,10 +1,9 @@
-# DayZ NPC 현재 상태
+# 외부 AI 검토 안내 — 최신 판단
 
-최신: [64클라이언트 오류 문맥 확인](reports/operations/client64-crash-worker-context-20261107.md). 새 실행·코드 변경 없음.
+현재 질문은 내부 계측 제거가 전체64개체CPU를 줄였는지이다. 완료1쌍에서는 서버CPU가+5.13%, Presentp95가-16.10%였고 컨테이너 위 비율도+11.06%p 차이 났다. 순수 효과를 확정할 수 없으며 후보 미수용이다. 이후 후보1건은 대응 대조군crash로 미완료 쌍이다.
 
-- 기존2덤프의 오류다음10프레임과모듈메타데이터일치.
-- 예외스레드: `enfWorkShort 4`. 작업종류/객체/손상원인은아직불명.
-- 관찰기OFF60초단일생존은원인·수정성공이아님.
-- 타이머OFF후보8/8단일기능통과는유지.64비용유효0쌍·성능/시각/최종수용미완료.
+[상세 보고서](reports/operations/contact-timing64-cost-interim-20261107.md)와 [구조화 자료](api/public/contact-timing64-cost-interim-20261107.json)를 먼저 읽어야 한다. 같은call chain의native crash는 재현됐지만 근본 원인은 미확정이다. 반복3쌍 통과, 시각 품질 개선, 전체기능회귀 또는20ms목표달성으로 해석하지 않는다.
 
-[공개 JSON](api/public/client64-crash-worker-context-20261107.json) · [비용시작실패/분리진단](reports/operations/contact-timing64-client-crash-smoke-20261107.md) · [8개체 결과](reports/operations/contact-timing-eight-pair1-20261107.md)
+다음 제안은 직접 물리 질의/호스트 비용을 줄이는 근거·기존 실패와의 차이·기능 위험을 포함해야 한다. 같은 시험을 무작정 반복하거나 등반기능 개발로 최적화 범위를 바꾸지 않는다. 공개 요약에 없는 내부 증거를 확인했다고 가정하지 않는다.
+
+[이전 검토 안내 보존본](reports/archive/99e8ed18/AI_REVIEW.md)
