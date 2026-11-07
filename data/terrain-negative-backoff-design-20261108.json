@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "1.0",
+  "verificationStatus": "DESIGN_ONLY_NOT_IMPLEMENTED",
+  "candidate": "negative non-terrain certificate attempt backoff",
+  "backoffSolveCalls": 8,
+  "semantics": {
+    "cachedFact": "Only that trying an optimization was recently unsuccessful",
+    "positiveSupportCache": false,
+    "collisionResultCache": false,
+    "physicsChecksSkippedOnBackoff": 0,
+    "fallback": "Invoke untouched original SolveContactsInternal on every bypassed call",
+    "returnSuccessForced": false,
+    "clockOrAnimationChanges": false,
+    "physicsLayerChanges": false
+  },
+  "transitionRules": [
+    "When optimization state is ineligible: original method, no certification query.",
+    "When Remaining>0: decrement and call original method. No previous support answer is returned.",
+    "When overlap says blocked: set Remaining=8, call original method.",
+    "When overlap clear: retain original terrain sample/fallback and all joint sweeps; do not cache clear.",
+    "Do not join Drive and Displace, and do not reuse either endpoint result."
+  ],
+  "counterexamples": [
+    "A door/vehicle is removed while backoff active: only optimization delayed; original ray checks still execute.",
+    "An obstacle arrives after a clear result: next eligible attempt performs a new overlap; no positive reuse.",
+    "State changes to FALL/hit/death: old full method owns safety; no cached lift/points returned."
+  ],
+  "existingResearch": [
+    {
+      "method": "Scratch",
+      "status": "TESTED_INCONCLUSIVE_FOR_FULL_CPU",
+      "evidence": "Method benefit1.5-2.5%, below5% escalation gate"
+    },
+    {
+      "method": "Terrain integrated/split loop",
+      "status": "TESTED_FAILED",
+      "evidence": "Terrain method48-50% lower; some excluded paths >3% overhead"
+    },
+    {
+      "method": "World sweep broadphase",
+      "status": "TESTED_FAILED",
+      "evidence": "clear+6.814%, blocked+26.672%"
+    },
+    {
+      "method": "SupportSweepFast",
+      "status": "TESTED_INCONCLUSIVE_FOR_ADOPTION",
+      "evidence": "Main query counts lower; whole CPU improvement not demonstrated"
+    },
+    {
+      "method": "Visual host solidity",
+      "status": "TESTED_FAILED",
+      "evidence": "One64 pair serverCPU-3.03%, Presentp95+14.23%"
+    }
+  ],
+  "duplicateSearchScope": "Reviewed checkpoints and named source experiments; no matching negative-certificate attempt cooldown found. Not proof of global nonexistence.",
+  "risks": [
+    "Extra branch/delegation overhead",
+    "Full first blocked attempt is still expensive",
+    "Backoff can postpone terrain optimization after leaving a structure",
+    "Native terrain-substitution correctness remains limited to previous local tests",
+    "No whole CPU improvement assumed"
+  ],
+  "minimalMethodTest": {
+    "reuse": "Existing original/sham/terrain split-loop 8-condition harness",
+    "arms": [
+      "actual original",
+      "same dispatch sham",
+      "negative-backoff candidate"
+    ],
+    "blockedCadence": "Count solve calls rather than frozen game time; expose cold first call separately",
+    "conditions": "Existing8 plus blocked-to-clear moving/removal sequence",
+    "correctness": "Original return/reason/lift/points; unchanged pose/root and joint/fallback safety tail",
+    "costGate": "Both independent reversed runs terrain median>=5% lower and each excluded condition<=3% overhead; failure stops8/64 escalation"
+  },
+  "provenance": [
+    {
+      "name": "2026-11-03_043040_578890+0900_npc-current-scratch-method-cost.md",
+      "sha256": "d67c1200dc263d90d84a190bf5c145ff6b1d75be381a7631ad4672a4fef04a8c"
+    },
+    {
+      "name": "2026-11-04_192912_199764+0900_npc-terrain-integrated-cost.md",
+      "sha256": "5d9e90b518be1db32c7ab13ae922ea1e99b7e8c530584de5e73252c1519b6ce1"
+    },
+    {
+      "name": "2026-11-04_193813_519557+0900_npc-terrain-split-loop-cost.md",
+      "sha256": "20fc96eceb0777b04e95ed284a59accb9e33ab4b868e47126e7251f87ab6d781"
+    },
+    {
+      "name": "2026-11-04_195627_565199+0900_npc-world-sweep-cost.md",
+      "sha256": "2c693ac721fa80b7a2a246a42fdddce41fd51bf203c506aa763967737fc84f69"
+    },
+    {
+      "name": "2026-11-07_083635_273168+0900_supportfast-query-accounting-review.md",
+      "sha256": "96522c915313918858cdbbed14a111b7bbda8420ec33c30430c38774b8ff84a5"
+    },
+    {
+      "name": "2026-11-08_022203_811901+0900_visual-solid-flat64-screen-result.md",
+      "sha256": "ab9537088204c15b8e04c72703f3dc92bb93eced306689d998e3317a871824db"
+    },
+    {
+      "name": "DGBNativeGround.c",
+      "sha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82"
+    }
+  ]
+}

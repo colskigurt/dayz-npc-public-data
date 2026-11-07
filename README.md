@@ -1,3 +1,5 @@
+> **현재 다음 후보:** 기존 지형 최적화의 제외 경로 비용을 줄이기 위한 [거절 인증 backoff 설계](reports/operations/terrain-negative-backoff-design-20261108.md). **설계만 준비·효과 미검증**이며, 직전solid64 후보 미수용은 유지합니다.
+
 > **최신 최적화 시험:** 표시 호스트 solid64 후보는 서버CPU−3.03%지만 Present p95+14.23%로 **선별 미통과·미수용**입니다. [비교 수치·근거·다음 작업](reports/operations/visual-solid-flat64-screen-result-20261108.md).
 
 > **시험 조건 정정 (2026-11-07):** 앞선 평지 64개체 접근 선별 시험은 전투 OFF·320개 표시 호스트 조건입니다. 피해 수신 호스트를 포함했다는 설명을 정정합니다. [진단과 정정 근거](reports/operations/host-physics-cohort-correction-20261107.md). 성능 수치와 후보 미수용 판정은 유지합니다.
