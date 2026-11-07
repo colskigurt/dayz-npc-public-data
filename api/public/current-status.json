@@ -1,9 +1,9 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-07T23:43:14.217Z",
-  "sourceRunId": "support-dominance-eight-integration-20261108",
+  "generatedAt": "2026-11-07T23:57:48.188Z",
+  "sourceRunId": "support-dominance-cost64-screen2-20261108",
   "buildId": "B271AC1FFC8C78FF9CA2ED8EE35A753EA27B76A49A110C0D5C7F028AB502FD33",
-  "verificationStatus": "EIGHT_BOUNDED_INTEGRATION_CHECKS_PASS_FULL_FUNCTIONAL_UNACCEPTED",
+  "verificationStatus": "WHOLE_CPU_SCREEN_FAILED_NOT_ACCEPTED",
   "metrics": {
     "transformInclusiveWeight": 144,
     "totalWeight": 8101,
@@ -65,7 +65,7 @@
       "privateKeyIncluded": false,
       "enforceCompiled": true,
       "runtimeVerified": true,
-      "wholeCpuMeasured": false,
+      "wholeCpuMeasured": true,
       "fullFunctionalAccepted": false,
       "visualAccepted": false,
       "serverSha256": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805"
@@ -118,14 +118,68 @@
       "fullFunctionalAccepted": false,
       "visualAccepted": false,
       "wholeCpuMeasured": false
+    },
+    "latestCost64": {
+      "independentPairs": 1,
+      "windowWallSeconds": [
+        30.0081316,
+        30.0084214
+      ],
+      "cpuMsPerWallSecond": [
+        796.6590629054693,
+        793.5272463215942
+      ],
+      "cpuAbsoluteDeltaMsPerWallSecond": -3.131816583875093,
+      "cpuRelativeChangePercent": -0.3931188044799423,
+      "minimumCpuReductionPercent": 5,
+      "screeningPassed": false,
+      "performanceAccepted": false,
+      "missionFramesPerGameSecond": [
+        39.15739941547167,
+        40.88726701249925
+      ],
+      "missionDtP50P95P99Ms": [
+        [
+          26,
+          43,
+          52
+        ],
+        [
+          25,
+          39,
+          45
+        ]
+      ],
+      "contactSolvesPerTraceGameSecond": [
+        2454.3769817108673,
+        2470.7290936272107
+      ],
+      "aliveAcquiredMoved": [
+        64,
+        64
+      ],
+      "gamePerWall": [
+        0.9999656226514283,
+        1.0008457159295956
+      ],
+      "nativeCommandPerPartGame": [
+        0.9998487145671405,
+        0.9999245998052718
+      ],
+      "onPolicyCalls": 674,
+      "onPrunedCandidates": 2946,
+      "presentMeasured": false,
+      "visualAccepted": false,
+      "fullFunctionalAccepted": false
     }
   },
   "blockers": [
-    "Full milestone/terminal regression unaccepted in both conditions",
-    "ON terminal difference and EXIT_LEASE_BACKOFF causality unresolved; two recovery cycles unfinished at bounded deadline",
-    "No64wholeCPU comparison or new visual acceptance"
+    "WholeCPU5%screen failed; do not expand repeated tests of this same candidate",
+    "8full functional6/8vs4/8 and EXIT_LEASE_BACKOFF causality still unresolved",
+    "Single dynamic pair has work/trajectory differences; no Present/GPU/visible-animation measurement"
   ],
   "evidenceReferences": [
+    "reports/operations/support-dominance-cost64-screen-20261108.md",
     "reports/operations/support-dominance-eight-integration-20261108.md",
     "reports/operations/support-dominance-score-once-20261108.md",
     "reports/operations/support-dominance-method-review-20261108.md",
