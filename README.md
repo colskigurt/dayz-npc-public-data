@@ -1,4 +1,4 @@
-> **현재 작업:** [전투ON64개체 혼합 기준선 준비](reports/operations/mixed-gameplay-baseline-preparation-20261108.md).첫실행의카메라·진단계수설정을수정했고 **비용수집0회·수정본미실행** 상태입니다.
+> **최신 기준선:** [전투ON64개체 혼합 장면 수집 성공](reports/operations/mixed-gameplay64-qualified-baseline-20261108.md).단일 Present p95 **18.48ms**, 서버CPU **821.62ms/게임초**.새 개선율·반복/전역 수용을 뜻하지 않습니다.
 
 > **최신 최적화 시험:** 표시 호스트 solid64 후보는 서버CPU−3.03%지만 Present p95+14.23%로 **선별 미통과·미수용**입니다. [비교 수치·근거·다음 작업](reports/operations/visual-solid-flat64-screen-result-20261108.md).
 

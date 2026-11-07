@@ -1,0 +1,257 @@
+{
+  "analysis": {
+    "schemaVersion": "1.0",
+    "sourceRunId": "ANIM-mixed-gameplay64-baseline-retry2",
+    "verificationStatus": "QUALIFIED_SINGLE_MIXED_BASELINE_NOT_OPTIMIZATION_ACCEPTANCE",
+    "buildId": "453D6A9E688D7BF14C5B98C305DD5A45200EC52156949C10691839B43C58BC9A",
+    "engineSha256": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805",
+    "repetitions": 1,
+    "captureSeconds": 30,
+    "conditions": {
+      "logicalAgents": 64,
+      "renderHosts": 320,
+      "damageReceivers": 64,
+      "combatEnabled": true,
+      "trainingPlayer": true,
+      "scriptedStimulusSeconds": [
+        10,
+        10,
+        10
+      ],
+      "fixedCamera": "NFNetworkBodyView",
+      "resolution": "1280x800",
+      "VSync": 0
+    },
+    "metricsMs": {
+      "MsBetweenPresents": {
+        "samples": 2461,
+        "p50": 10.9937,
+        "p95": 18.4789,
+        "p99": 21.583660000000005,
+        "mean": 12.170428321820399,
+        "maximum": 27.3181
+      },
+      "MsBetweenDisplayChange": {
+        "samples": 2461,
+        "p50": 11.4267,
+        "p95": 19.3519,
+        "p99": 22.16728,
+        "mean": 12.16920065014222,
+        "maximum": 27.2776
+      },
+      "MsCPUBusy": {
+        "samples": 2461,
+        "p50": 10.8388,
+        "p95": 18.3196,
+        "p99": 21.42504,
+        "mean": 12.018751158065827,
+        "maximum": 27.1331
+      },
+      "MsCPUWait": {
+        "samples": 2461,
+        "p50": 0.1494,
+        "p95": 0.1805,
+        "p99": 0.20156000000000004,
+        "mean": 0.15168037383177568,
+        "maximum": 0.2676
+      },
+      "MsGPUBusy": {
+        "samples": 2461,
+        "p50": 2.5769,
+        "p95": 3.0551,
+        "p99": 3.244400000000001,
+        "mean": 2.6228860219423,
+        "maximum": 4.0296
+      },
+      "MsGPUTime": {
+        "samples": 2461,
+        "p50": 10.9807,
+        "p95": 18.5019,
+        "p99": 21.632080000000002,
+        "mean": 12.170469280780171,
+        "maximum": 27.2776
+      },
+      "MsInPresentAPI": {
+        "samples": 2461,
+        "p50": 0.1494,
+        "p95": 0.1805,
+        "p99": 0.20156000000000004,
+        "mean": 0.15168037383177568,
+        "maximum": 0.2676
+      }
+    },
+    "presentSpanSeconds": 29.9514241,
+    "serverCpu": {
+      "sourceRunId": "ANIM-mixed-gameplay64-baseline-retry2",
+      "samplingRows": 31,
+      "captureToolStartQpc": 154331771169,
+      "startDelayMs": 130.6003,
+      "wallSeconds": 29.99673075,
+      "gameSeconds": 29.971299999999996,
+      "gamePerWallSecond": 0.9991522159460658,
+      "serverCpuMs": 24625.0,
+      "serverCpuMsPerWallSecond": 820.9227933947435,
+      "serverCpuMsPerGameSecond": 821.6193491773798,
+      "scope": "Aggregate process CPU across threads; near-aligned30s window, not function self-time or exact frame attribution",
+      "serverExeSha256": "987FBC47BAB1DAB37F74D7F700AA2E5B6AF936A7181A62F5BA9F0090AEBBA805"
+    },
+    "foregroundRows": 2934,
+    "foregroundScope": "client status age minus1 to plus35; conservative, not exact QPC join",
+    "completeLogicalSnapshots": 136,
+    "completeHostSnapshots": 36,
+    "phaseAreaRows": {
+      "FOLLOW/low": 1160,
+      "FOLLOW/high": 336,
+      "FOLLOW/ground": 6052,
+      "MOTION/low": 126,
+      "FALL/low": 9,
+      "MOTION/air": 174,
+      "LAND/ground": 354,
+      "SETTLE/high": 46,
+      "SETTLE/low": 55,
+      "MOTION/ground": 54,
+      "MOTION/high": 109,
+      "FALL/air": 93,
+      "FALL/ground": 4,
+      "EGRESS/low": 2,
+      "FALL/high": 17,
+      "EGRESS/high": 6,
+      "EGRESS/ground": 107
+    },
+    "stageFrames": {
+      "0": 421,
+      "1": 366,
+      "2": 370
+    },
+    "workPerGameSecond": {
+      "contactSolves": 2476.270101156884,
+      "contactFailures": 34.537329179564246,
+      "footRays": 24762.70101156884,
+      "jointSweeps": 9840.650535975554
+    },
+    "receiverMaximumSpreadMetres": 0.0,
+    "allReceiverAndRenderCallbacksAdvanced": true,
+    "attackStartsInConservativeBracket": 48,
+    "attackHitsInConservativeBracket": 34,
+    "combatActiveHostRows": 93,
+    "acquiredAgents": 64,
+    "moved2mAgents": 64,
+    "serverExitCode": -1,
+    "normalServerProcessExit": false,
+    "wholeFunctionalAccepted": false,
+    "visualAccepted": false,
+    "performanceImprovementAccepted": false,
+    "limits": [
+      "Single baseline; no matched optimization difference",
+      "Mixed scene is not simultaneous all-agent roof residency or whole-regression pass",
+      "Present/CPU Busy are not animation smoothness or physics self-time",
+      "No hit/death/corpse interaction exercised",
+      "Do not subtract legacy manual or no-combat flat cohorts"
+    ],
+    "evidenceReferences": [
+      {
+        "name": "present.csv",
+        "bytes": 617871,
+        "sha256": "a6eeed1286acfab8a43cfda6cdccea4a31404ba2d2569247d158c070a04b1c51"
+      },
+      {
+        "name": "closed.json",
+        "bytes": 394,
+        "sha256": "d06f2eebf90fce96b452f2c22a58b6f115841647ebd819e716f1e9f1f2836f2a"
+      },
+      {
+        "name": "consumed.json",
+        "bytes": 31465,
+        "sha256": "a4f31a6902f760ca55c6405698c189a9aa8400200bbdf7d9e1baea56554e4f45"
+      },
+      {
+        "name": "server-process-cpu.csv",
+        "bytes": 4522,
+        "sha256": "c89f56ace46ff4a7492c9394a36cb4dccab21f4c6443225bf80de17191aa399b"
+      },
+      {
+        "name": "server-process-cpu.json",
+        "bytes": 613,
+        "sha256": "eec5cfae8b4db398400ba0036407bdaeaf5723abeec14092aeaf20dc85d5f0d2"
+      },
+      {
+        "name": "gameplay-eight.tsv",
+        "bytes": 4836503,
+        "sha256": "e0c2f1eb43fa58e789877d8fd3c7d2127daa6507b92a643be7cb5cd8b5e3bd79"
+      },
+      {
+        "name": "mixed-hosts.tsv",
+        "bytes": 257218,
+        "sha256": "978700aed77c3b27f8af37678d7c5c60b8a9668cec46a8020cecace38bec0ac0"
+      },
+      {
+        "name": "part-command-clock.tsv",
+        "bytes": 175149,
+        "sha256": "6081a5d51e2c22172f9a3fe16ea1304611493b043c5dd815f595c7a13a833a5e"
+      },
+      {
+        "name": "server-frame.tsv",
+        "bytes": 125024,
+        "sha256": "06cbee2793acdb47a28ee9b6b8bbe6e6534c78d359c3b2e3f61e3c1bb0fc76d4"
+      },
+      {
+        "name": "visual-app-frames.tsv",
+        "bytes": 318350,
+        "sha256": "a3e29902887e280cd7dade3787cb35e0a0ecd9760b6448dcf9c8e98037a6e38f"
+      }
+    ]
+  },
+  "stageContext": {
+    "status": "SAME_RUN_CONTEXT_REANALYSIS_NOT_NEW_REPEAT",
+    "windowGameSeconds": [
+      31.7602,
+      61.7315
+    ],
+    "stageNames": {
+      "0": "player target ground",
+      "1": "player target low",
+      "2": "player target high"
+    },
+    "serverTickIntervalMs": {
+      "samples": 1161,
+      "p50": 27.0,
+      "p95": 43.0,
+      "p99": 51.0,
+      "mean": 25.838931955211024,
+      "maximum": 66.0
+    },
+    "serverTickByStimulusStageMs": {
+      "0": {
+        "samples": 425,
+        "p50": 25.0,
+        "p95": 38.0,
+        "p99": 45.51999999999998,
+        "mean": 23.512941176470587,
+        "maximum": 53.0
+      },
+      "1": {
+        "samples": 366,
+        "p50": 29.0,
+        "p95": 46.0,
+        "p99": 55.0,
+        "mean": 27.330601092896174,
+        "maximum": 58.0
+      },
+      "2": {
+        "samples": 370,
+        "p50": 29.0,
+        "p95": 42.55000000000001,
+        "p99": 50.620000000000005,
+        "mean": 27.035135135135135,
+        "maximum": 66.0
+      }
+    },
+    "interiorGameClockRowsIntentionallyNotSampled": 29,
+    "clockSamplingPolicy": "Existing sampler reads server game-clock only at first and last CPU samples to bound observer IO cost.",
+    "perStageProcessCpuAvailable": false,
+    "perStageClientPresentAvailable": false,
+    "scope": "Server dt includes engine scheduling/FPS cap and is not CPU self-time. Stimulus stage is not identical NPC state. No per-stage process CPU or client Present attribution is claimed. Whole-window CPU and game progress use measured endpoints.",
+    "samplerSha256": "30ed057f3229dc3bbac2ac701a7dba2fa7a60bacbe7295a6d9453a51e8d04f57",
+    "correction": "Earlier draft stage-context called blank interior clocks missing; source proves endpoint-only sampling is intentional. Raw CSV unchanged."
+  }
+}
