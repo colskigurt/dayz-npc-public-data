@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "1.0",
+  "sourceRunId": "ANIM-enprofiler-api-smoke2",
+  "verificationStatus": "DIAG_PROFILER_KNOWN_METHOD_SMOKE_PASSED",
+  "diagExeSha256": "4bbf370b1d479e0556e916d21213bafba383cbdd3a12c6e2518cd49c1ca64e70",
+  "npcCount": 0,
+  "newPbo": false,
+  "expectedCalls": 50,
+  "directMeasuredCalls": 50,
+  "namedCountTableVerified": true,
+  "methodName": "NFEnProfilerProbe::Work",
+  "rawTimeValue": 25.27,
+  "timeUnitConfirmed": false,
+  "profiledSessionFrames": 48,
+  "enabledCObserved": true,
+  "arrayTimePerFunctionTested": false,
+  "retailServerSupported": "SDK says developer/diag only; not invoked on retail",
+  "diagToReleaseAbsoluteTimeTransferAccepted": false,
+  "diagnosticServerModeObserved": true,
+  "fullNpcSourceOwnerIdentified": false,
+  "normalQuitVerified": false,
+  "exitCode": -1,
+  "builtinLeakWarning": "BunkerBroadcastManager",
+  "firstAttempt": "compile failed before API, parameter-name correction only; owned failed process terminated after normal-close attempt",
+  "outputProjection": "Raw files contain literal backslash-t delimiter. Parsed in derivative only; raw unchanged.",
+  "limits": [
+    "One positive smoke, no NPC/AI/physics cost attribution.",
+    "Proto methods untracked separately and contribute to enclosing script total per SDK.",
+    "Current method may be partial-frame due immediate API toggles; frame count is48, not50.",
+    "No performance,visual,8/64 or optimization acceptance."
+  ],
+  "references": [
+    "https://community.bistudio.com/wiki/DayZ:Diag_Menu",
+    "https://community.bistudio.com/wiki/DayZ:Modding_Basics"
+  ],
+  "evidenceReferences": [
+    {
+      "name": "enprofiler-api.tsv",
+      "sha256": "d53effde710055de5d7bcf964b9873f7194c2f15c758b3acfe1588ad96bc3b13",
+      "bytes": 96
+    },
+    {
+      "name": "enprofiler-counts.tsv",
+      "sha256": "9016429028b1a0f569782c0d50cfad61f536a5496ff711fdbc9fd6d84100331a",
+      "bytes": 44
+    },
+    {
+      "name": "terminal.json",
+      "sha256": "d9a04b14092d14078b842089c229b46866713ce3e5e8963547a4133559e7449b",
+      "bytes": 159
+    },
+    {
+      "name": "init.c",
+      "sha256": "a5dd4f4bd10a6c93345d91b43260f9893b90a81cf6bbafb0b1c6c2d103bb9deb",
+      "bytes": 2187
+    }
+  ]
+}
