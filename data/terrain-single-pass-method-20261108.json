@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-11-08T05:34:27+09:00",
+  "sourceRunId": [
+    "ANIM-terrain-single-pass-method2",
+    "ANIM-terrain-single-pass-method3-reverse"
+  ],
+  "buildId": "4c78c9916e4e1fe300e3e984d70ade8d56f82ef803f9998a340a7277597acd82",
+  "verificationStatus": "LOCAL_METHOD_TWO_INDEPENDENT_RUNS_PASS_FULL_ACCEPTANCE_PENDING",
+  "metrics": {
+    "scope": "method elapsed, not whole-process CPU or frame time",
+    "independentRuns": 2,
+    "callsPerRun": 216000,
+    "conditionsPassedPerRun": [
+      9,
+      9
+    ],
+    "terrainRelativePercent": [
+      -60.05900559870188,
+      -59.7903616768206
+    ],
+    "maximumExcludedRegressionPercent": [
+      2.1636034665751147,
+      2.0523668038079146
+    ],
+    "maximumPointDifferenceMetres": 0.0000305176
+  },
+  "blockers": [
+    "Registered adapter8/64 gameplay regression untested",
+    "Whole-process CPU/display and visible quality acceptance pending"
+  ],
+  "signatureVerified": true,
+  "defaultEnabled": false,
+  "evidenceReferences": [
+    {
+      "kind": "run",
+      "id": "ANIM-terrain-single-pass-method2"
+    },
+    {
+      "kind": "run",
+      "id": "ANIM-terrain-single-pass-method3-reverse"
+    }
+  ]
+}

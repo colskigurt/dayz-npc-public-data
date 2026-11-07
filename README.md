@@ -1,3 +1,5 @@
+> 최신 후보: [단일 패스 지형 국소2회 통과](reports/operations/terrain-single-pass-method-20261108.md). 기본 OFF 서명본 준비. 전체 CPU·8/64·시각은 미검증.
+
 > **최신 비용 진단:** [현재64개체 서버CPU 부분귀속](reports/operations/current64-server-cpu-owner-20261108.md). 한스레드97.74%, 추정실행기leaf17.64%, Ray/Sphere포함10.29%; 스택누락28%·최적화성과 아님. [현재8명 종료7/8 기준결함](reports/operations/supported-terminal-eight-baseline-20261108.md) · [64명 Present3회 관측](reports/operations/mixed64-three-observations-20261108.md).
 
 > 최신 후보 판정: [호출 내 진입 검사 재사용](reports/operations/support-entry-method-disposition-20261108.md). 정적 동등성 통과, 평지국소-3.06%로사전5%gate미달. 미채택·64확장없음.
