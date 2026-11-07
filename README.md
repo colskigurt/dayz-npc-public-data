@@ -1,6 +1,8 @@
 # DayZ NPC — 현재 상태
 갱신: 2026-11-08. 이번 작업은 기존 자료 재분석이며 새 게임 실행은 없다.
 
+현재: [이동 비용 소유자와 복구 탐색 후보 검토](reports/operations/moving-owner-dominance-review-20261108.md). 선택될 수 없는 후보의 정밀 검사 조기 배제는 **미구현·미측정**이며 채택안이 아니다.
+
 | 대상 | 현재 판단 |
 |---|---|
 | 주력 | 64개체 전체 CPU 비용 절감, 기존 밀침·낙하·재추적 보존 |
@@ -13,6 +15,6 @@
 
 [최신 상세 진단](reports/operations/transform-update-attribution-20261108.md) · [고정 Idle 진단](reports/operations/host-floor-pose-contact-isolation-20261108.md) · [64개체 후보 선별](reports/operations/pair-radius-cost64-screen-20261108.md) · [외부 AI 검토 안내](AI_REVIEW.md) · [공개 JSON](api/public/status.json)
 
-다음: 기존 이동 실행의 비용 소유자 비교표. 새로운 보간·업데이트 정책이나 기능 재설계를 시작하지 않는다. CPU ms/벽시계초는 프레임 시간이 아니다. 정지·이동 조건을 직접 차감하지 않는다.
+다음: 기존 메서드 하네스로 원본과 후보의 선택 결과·안전 상태·생략된 검사 수를 비교한다. 새로운 보간·업데이트 정책이나 기능 재설계를 시작하지 않는다. CPU ms/벽시계초는 프레임 시간이 아니다. 정지·이동 조건을 직접 차감하지 않는다.
 
 공개 요약 동기화 누락을 이번에 정정했다. 과거 보고서와 [교체 전 진입점](reports/archive/b47311ff/)은 보존한다.
