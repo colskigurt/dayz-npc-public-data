@@ -1,0 +1,167 @@
+{
+  "status": "BOUNDED_ENDPOINT_DIAGNOSTIC_COMPLETE",
+  "sourceRunId": "ANIM-supported-terminal-8-baseline1",
+  "logicalCount": 8,
+  "gameSeconds": 90.0001,
+  "supportedGroundTerminals": 7,
+  "lastFiveSecondsStableGroundAgents": 7,
+  "possibleNoProgressRecoveryAgents": [],
+  "climbedAgents": 8,
+  "landedAgents": 8,
+  "perAgent": [
+    {
+      "id": 0,
+      "terminal": "SUPPORTED_GROUND_TERMINAL",
+      "phase": "FOLLOW",
+      "area": "ground",
+      "movedMetres": 113.012,
+      "climbs": 4,
+      "drops": 2,
+      "landings": 2,
+      "lastFiveSecondsAllFollowGround": true,
+      "groundHoldXZSpanMetres": 19.241431678131576,
+      "groundHoldRecoveryGenerationIncrease": 1,
+      "possibleNoProgressRecovery": false
+    },
+    {
+      "id": 1,
+      "terminal": "INCOMPLETE_MILESTONES",
+      "phase": "FOLLOW",
+      "area": "low",
+      "movedMetres": 76.2619,
+      "climbs": 3,
+      "drops": 1,
+      "landings": 1,
+      "lastFiveSecondsAllFollowGround": false,
+      "groundHoldXZSpanMetres": 0.0,
+      "groundHoldRecoveryGenerationIncrease": 0,
+      "possibleNoProgressRecovery": false
+    },
+    {
+      "id": 2,
+      "terminal": "SUPPORTED_GROUND_TERMINAL",
+      "phase": "FOLLOW",
+      "area": "ground",
+      "movedMetres": 121.286,
+      "climbs": 2,
+      "drops": 1,
+      "landings": 1,
+      "lastFiveSecondsAllFollowGround": true,
+      "groundHoldXZSpanMetres": 25.100548271893903,
+      "groundHoldRecoveryGenerationIncrease": 1,
+      "possibleNoProgressRecovery": false
+    },
+    {
+      "id": 3,
+      "terminal": "SUPPORTED_GROUND_TERMINAL",
+      "phase": "FOLLOW",
+      "area": "ground",
+      "movedMetres": 106.442,
+      "climbs": 4,
+      "drops": 1,
+      "landings": 2,
+      "lastFiveSecondsAllFollowGround": true,
+      "groundHoldXZSpanMetres": 17.11314924069365,
+      "groundHoldRecoveryGenerationIncrease": 0,
+      "possibleNoProgressRecovery": false
+    },
+    {
+      "id": 4,
+      "terminal": "SUPPORTED_GROUND_TERMINAL",
+      "phase": "FOLLOW",
+      "area": "ground",
+      "movedMetres": 138.616,
+      "climbs": 3,
+      "drops": 2,
+      "landings": 2,
+      "lastFiveSecondsAllFollowGround": true,
+      "groundHoldXZSpanMetres": 27.873952072323238,
+      "groundHoldRecoveryGenerationIncrease": 1,
+      "possibleNoProgressRecovery": false
+    },
+    {
+      "id": 5,
+      "terminal": "SUPPORTED_GROUND_TERMINAL",
+      "phase": "FOLLOW",
+      "area": "ground",
+      "movedMetres": 134.069,
+      "climbs": 3,
+      "drops": 2,
+      "landings": 2,
+      "lastFiveSecondsAllFollowGround": true,
+      "groundHoldXZSpanMetres": 23.12078328442745,
+      "groundHoldRecoveryGenerationIncrease": 1,
+      "possibleNoProgressRecovery": false
+    },
+    {
+      "id": 6,
+      "terminal": "SUPPORTED_GROUND_TERMINAL",
+      "phase": "FOLLOW",
+      "area": "ground",
+      "movedMetres": 113.696,
+      "climbs": 4,
+      "drops": 1,
+      "landings": 2,
+      "lastFiveSecondsAllFollowGround": true,
+      "groundHoldXZSpanMetres": 25.367200269662895,
+      "groundHoldRecoveryGenerationIncrease": 1,
+      "possibleNoProgressRecovery": false
+    },
+    {
+      "id": 7,
+      "terminal": "SUPPORTED_GROUND_TERMINAL",
+      "phase": "FOLLOW",
+      "area": "ground",
+      "movedMetres": 108.305,
+      "climbs": 2,
+      "drops": 0,
+      "landings": 2,
+      "lastFiveSecondsAllFollowGround": true,
+      "groundHoldXZSpanMetres": 22.722626811498515,
+      "groundHoldRecoveryGenerationIncrease": 0,
+      "possibleNoProgressRecovery": false
+    }
+  ],
+  "allRenderAndReceiversMaintained": true,
+  "maximumReceiverSpreadMetres": 0.0,
+  "serverExitCode": -1,
+  "normalServerProcessExit": false,
+  "fullTraversalAccepted": false,
+  "combatDeathAccepted": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "newPbo": false,
+  "limits": [
+    "Endpoint gate does not prove complete low/high/down/reclimb for every ID.",
+    "No hit/death/corpse exercise.",
+    "No ETW performance capture or temporal visual acceptance.",
+    "Sampled phase transitions are not complete event history."
+  ],
+  "evidence": [
+    {
+      "name": "gameplay-eight.tsv",
+      "sha256": "3d9badb2b072f9af40b2d19198f841be8f92298f78bd5c5dcf0ee4d01fab1ecf",
+      "bytes": 799620
+    },
+    {
+      "name": "terminal-state.tsv",
+      "sha256": "fff0447113956d4fa65715df347c003dffe3bf5a8365bbafb302c9068f5c963e",
+      "bytes": 1562
+    },
+    {
+      "name": "mixed-hosts.tsv",
+      "sha256": "8f94f38c6bbf6c485a1e6fcf0795df00981df14f7590ad32c7524a22b3de803e",
+      "bytes": 41914
+    },
+    {
+      "name": "start-gate-receipt.json",
+      "sha256": "f75b07f3d4f3a46eec5a4c272572230c10943d80e1ebbe5e89773f7d1a5db88c",
+      "bytes": 246
+    },
+    {
+      "name": "init.c",
+      "sha256": "94070c60bf63bf383bbdd26c46963d8de38deae93486d80cbe1ee50131d278db",
+      "bytes": 18126
+    }
+  ]
+}
