@@ -1,0 +1,356 @@
+{
+  "schemaVersion": "1.0",
+  "sourceRunId": "ANIM-terrain-negative-backoff16-method1",
+  "verificationStatus": "METHOD_GATE_FAILED",
+  "measuredCalls": 216000,
+  "warmupAndColdProbesExcluded": true,
+  "independentProcesses": 1,
+  "rows": 216,
+  "maximumPointErrorMetres": 3.05176e-05,
+  "conditions": [
+    {
+      "condition": "terrain",
+      "pairedMedianPercent": -60.807184389103035,
+      "groupPairedChangesPercent": [
+        -56.45337609843153,
+        -61.37375792848842,
+        -60.8657843808701,
+        -60.74858439733597
+      ],
+      "shamPairedMedianPercent": 1.9647407446640064,
+      "gatePassed": true,
+      "candidateCountersPer1000": {
+        "footRays": [
+          0
+        ],
+        "jointSweeps": [
+          4000
+        ],
+        "certificateQueries": [
+          1000
+        ],
+        "certificateBlocked": [
+          0
+        ],
+        "backoffBypasses": [
+          0
+        ],
+        "blockedAttempts": [
+          0
+        ]
+      },
+      "coldSingleTicks": {
+        "p50": 204.5,
+        "minimum": 200,
+        "maximum": 207
+      }
+    },
+    {
+      "condition": "roof",
+      "pairedMedianPercent": 0.48451936078808266,
+      "groupPairedChangesPercent": [
+        -8.108173726203082,
+        0.6477496039112518,
+        2.4713692193381265,
+        0.3212891176649135
+      ],
+      "shamPairedMedianPercent": -0.25529903169655976,
+      "gatePassed": true,
+      "candidateCountersPer1000": {
+        "footRays": [
+          10000
+        ],
+        "jointSweeps": [
+          4000
+        ],
+        "certificateQueries": [
+          0
+        ],
+        "certificateBlocked": [
+          0
+        ],
+        "backoffBypasses": [
+          0
+        ],
+        "blockedAttempts": [
+          0
+        ]
+      },
+      "coldSingleTicks": {
+        "p50": 732.5,
+        "minimum": 711,
+        "maximum": 739
+      }
+    },
+    {
+      "condition": "edge",
+      "pairedMedianPercent": 2.691506204840366,
+      "groupPairedChangesPercent": [
+        2.978646493520709,
+        2.404365916160023,
+        1.9613100938517425,
+        3.2582530949105903
+      ],
+      "shamPairedMedianPercent": 1.0117467039482242,
+      "gatePassed": true,
+      "candidateCountersPer1000": {
+        "footRays": [
+          10000
+        ],
+        "jointSweeps": [
+          4000
+        ],
+        "certificateQueries": [
+          0
+        ],
+        "certificateBlocked": [
+          0
+        ],
+        "backoffBypasses": [
+          0
+        ],
+        "blockedAttempts": [
+          0
+        ]
+      },
+      "coldSingleTicks": {
+        "p50": 621.0,
+        "minimum": 613,
+        "maximum": 635
+      }
+    },
+    {
+      "condition": "lift_reject",
+      "pairedMedianPercent": -65.62328576519462,
+      "groupPairedChangesPercent": [
+        -66.1070968521053,
+        -64.55233182236738,
+        -66.05510914222718,
+        -65.19146238816207
+      ],
+      "shamPairedMedianPercent": 1.3190263536018265,
+      "gatePassed": true,
+      "candidateCountersPer1000": {
+        "footRays": [
+          0
+        ],
+        "jointSweeps": [
+          0
+        ],
+        "certificateQueries": [
+          1000
+        ],
+        "certificateBlocked": [
+          0
+        ],
+        "backoffBypasses": [
+          0
+        ],
+        "blockedAttempts": [
+          0
+        ]
+      },
+      "coldSingleTicks": {
+        "p50": 165.0,
+        "minimum": 163,
+        "maximum": 167
+      }
+    },
+    {
+      "condition": "wrong_ground_hint",
+      "pairedMedianPercent": 3.3915233838904824,
+      "groupPairedChangesPercent": [
+        3.568121400841706,
+        3.2149253669392586,
+        4.0857153660541545,
+        2.995019279750455
+      ],
+      "shamPairedMedianPercent": 0.6935437721371063,
+      "gatePassed": false,
+      "candidateCountersPer1000": {
+        "footRays": [
+          10000
+        ],
+        "jointSweeps": [
+          4000
+        ],
+        "certificateQueries": [
+          0
+        ],
+        "certificateBlocked": [
+          0
+        ],
+        "backoffBypasses": [
+          0
+        ],
+        "blockedAttempts": [
+          0
+        ]
+      },
+      "coldSingleTicks": {
+        "p50": 734.0,
+        "minimum": 719,
+        "maximum": 742
+      }
+    },
+    {
+      "condition": "ground_near_structure",
+      "pairedMedianPercent": 3.832627741003225,
+      "groupPairedChangesPercent": [
+        2.1672399336313486,
+        4.157713014401754,
+        3.6548716209968246,
+        4.010383861009625
+      ],
+      "shamPairedMedianPercent": 0.4750472803235928,
+      "gatePassed": false,
+      "candidateCountersPer1000": {
+        "footRays": [
+          10000
+        ],
+        "jointSweeps": [
+          4000
+        ],
+        "certificateQueries": [
+          0
+        ],
+        "certificateBlocked": [
+          0
+        ],
+        "backoffBypasses": [
+          0
+        ],
+        "blockedAttempts": [
+          0
+        ]
+      },
+      "coldSingleTicks": {
+        "p50": 606.5,
+        "minimum": 546,
+        "maximum": 626
+      }
+    },
+    {
+      "condition": "ground_many_hints",
+      "pairedMedianPercent": -57.041210545018146,
+      "groupPairedChangesPercent": [
+        -57.40407698857661,
+        -57.611816337124246,
+        -56.67834410145968,
+        -55.656392017387866
+      ],
+      "shamPairedMedianPercent": 0.9106563741449691,
+      "gatePassed": true,
+      "candidateCountersPer1000": {
+        "footRays": [
+          0
+        ],
+        "jointSweeps": [
+          4000
+        ],
+        "certificateQueries": [
+          1000
+        ],
+        "certificateBlocked": [
+          0
+        ],
+        "backoffBypasses": [
+          0
+        ],
+        "blockedAttempts": [
+          0
+        ]
+      },
+      "coldSingleTicks": {
+        "p50": 223.0,
+        "minimum": 222,
+        "maximum": 231
+      }
+    },
+    {
+      "condition": "fall_state",
+      "pairedMedianPercent": 2.0086506916837554,
+      "groupPairedChangesPercent": [
+        1.9686526072509203,
+        2.8756219752126944,
+        1.6745756656380673,
+        2.0486487761165906
+      ],
+      "shamPairedMedianPercent": 0.7272793623796292,
+      "gatePassed": true,
+      "candidateCountersPer1000": {
+        "footRays": [
+          10000
+        ],
+        "jointSweeps": [
+          4000
+        ],
+        "certificateQueries": [
+          0
+        ],
+        "certificateBlocked": [
+          0
+        ],
+        "backoffBypasses": [
+          0
+        ],
+        "blockedAttempts": [
+          0
+        ]
+      },
+      "coldSingleTicks": {
+        "p50": 529.0,
+        "minimum": 513,
+        "maximum": 574
+      }
+    },
+    {
+      "condition": "unregistered_roof",
+      "pairedMedianPercent": 3.765175836296719,
+      "groupPairedChangesPercent": [
+        2.341640806559031,
+        3.6072924648072435,
+        3.9230592077861948,
+        4.821201398317321
+      ],
+      "shamPairedMedianPercent": 0.6527013981703411,
+      "gatePassed": false,
+      "candidateCountersPer1000": {
+        "footRays": [
+          10000
+        ],
+        "jointSweeps": [
+          4000
+        ],
+        "certificateQueries": [
+          59
+        ],
+        "certificateBlocked": [
+          59
+        ],
+        "backoffBypasses": [
+          941
+        ],
+        "blockedAttempts": [
+          59
+        ]
+      },
+      "coldSingleTicks": {
+        "p50": 978.5,
+        "minimum": 958,
+        "maximum": 1000
+      }
+    }
+  ],
+  "nextAction": "Stop family expansion",
+  "limits": [
+    "Method elapsed performance ticks, not frame milliseconds or pure CPU self-time",
+    "No client or whole-process performance improvement",
+    "Cold single-call timings are diagnostic and noisy"
+  ],
+  "rawEvidence": {
+    "name": "terrain-integrated-cost.tsv",
+    "sha256": "f1ae91a38af5996ebaeb2d93a8ca0614fcad146b3e60ff6cfcd714fb37eb8d28"
+  },
+  "serverExitCode": -1
+}

@@ -1,4 +1,4 @@
-> **현재 다음 후보:** 거절 인증8회 후보는 [비등록구조물+3.83%로 국소 기준 미통과](reports/operations/terrain-negative-backoff-method-first-20261108.md).16회 제한 수정1개만 준비했으며 **전체CPU개선·최종수용은 미검증**입니다.
+> **최신 판정:** [거절 인증16회 수정도 비용 기준 미통과](reports/operations/terrain-negative-backoff16-rejection-20261108.md).이 계열의 추가 간격조정·8/64 확대는 종료하고 원본을 유지합니다.전체CPU개선/최종수용은 미검증입니다.
 
 > **최신 최적화 시험:** 표시 호스트 solid64 후보는 서버CPU−3.03%지만 Present p95+14.23%로 **선별 미통과·미수용**입니다. [비교 수치·근거·다음 작업](reports/operations/visual-solid-flat64-screen-result-20261108.md).
 
