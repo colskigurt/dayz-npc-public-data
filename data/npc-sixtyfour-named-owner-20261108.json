@@ -1,0 +1,89 @@
+{
+  "sourceRunId": "ANIM-npc-owner-diag-sixtyfour2",
+  "verificationStatus": "NAMED_SCRIPT_OWNER_DIAGNOSTIC_ONLY",
+  "profileGameSeconds": 30.001000000000005,
+  "profiledFrames": 717,
+  "logicalCount": 64,
+  "allMovedInWindow": true,
+  "allAcquired": true,
+  "hostContractObserved": true,
+  "ownerComparisons": [
+    {
+      "function": "DGBNativeGroundBody::SolveContactsInternal",
+      "eightCalls": 5941,
+      "sixtyfourCalls": 70704,
+      "eightCallsPerAgentSecond": 24.74352695007813,
+      "sixtyfourCallsPerAgentSecond": 36.8237725409153,
+      "eightRawTime": 35865.2,
+      "sixtyfourRawTime": 475279.0
+    },
+    {
+      "function": "DGBNativeGroundBody::Drive",
+      "eightCalls": 4800,
+      "sixtyfourCalls": 37056,
+      "eightCallsPerAgentSecond": 19.991403696410543,
+      "sixtyfourCallsPerAgentSecond": 19.299356688110393,
+      "eightRawTime": 91906.8,
+      "sixtyfourRawTime": 1051470.0
+    },
+    {
+      "function": "DGBNativeGroundDirector::Update",
+      "eightCalls": 1500,
+      "sixtyfourCalls": 718,
+      "eightCallsPerAgentSecond": 6.247313655128295,
+      "sixtyfourCallsPerAgentSecond": 0.3739458684710509,
+      "eightRawTime": 34093.1,
+      "sixtyfourRawTime": 195318.0
+    },
+    {
+      "function": "DGBNativeCrowd::Update",
+      "eightCalls": 1500,
+      "sixtyfourCalls": 718,
+      "eightCallsPerAgentSecond": 6.247313655128295,
+      "sixtyfourCallsPerAgentSecond": 0.3739458684710509,
+      "eightRawTime": 15867.3,
+      "sixtyfourRawTime": 130863.0
+    },
+    {
+      "function": "DGNativeCommand::RunPrePhys",
+      "eightCalls": 28800,
+      "sixtyfourCalls": 222336,
+      "eightCallsPerAgentSecond": 119.94842217846325,
+      "sixtyfourCallsPerAgentSecond": 115.79614012866236,
+      "eightRawTime": 94067.4,
+      "sixtyfourRawTime": 1067600.0
+    }
+  ],
+  "limitations": [
+    "Raw time unit and aggregation semantics unconfirmed; nested totals overlap.",
+    "Single diagnostic run per size; not a retail performance comparison or optimization acceptance.",
+    "Host/movement observations are not full traversal, death, hit, or visual acceptance.",
+    "Earlier runtime1 failed before profiling because required manifest input was omitted."
+  ],
+  "evidence": [
+    {
+      "name": "npc-profiler-window.txt",
+      "sha256": "825721d6f03a1d8be51d252569cd064ec867b2dcc5582592aa2ac69b1131f062"
+    },
+    {
+      "name": "npc-function-times.txt",
+      "sha256": "ec6093e40dd16bccc2831e25e1f6c90d7e3b50a3f45956914ef63fef11629d63"
+    },
+    {
+      "name": "npc-function-counts.txt",
+      "sha256": "fb776c48d8b6079d9dc1246038e8edf3910fb63400c6c83c4d7e43807b664c11"
+    },
+    {
+      "name": "npc-selected-owners.txt",
+      "sha256": "7187aab372d09677e176522a5b729d75c1d2daec5ef17015dcf428bdf2906e3a"
+    },
+    {
+      "name": "gameplay-eight.tsv",
+      "sha256": "bc9db084e96180deaa946cb6eb1646f02a46510d48f752af69b4f7e639c923b7"
+    },
+    {
+      "name": "mixed-hosts.tsv",
+      "sha256": "9e92a1e0cb44a60e3407c8065055be461943f7bdcc19048d3ef6ee91c76a6282"
+    }
+  ]
+}
