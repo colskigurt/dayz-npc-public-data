@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-08T07:12:51+09:00",
+  "sourceRunId": [
+    "ANIM-pair-shared-cost64-screen1-off",
+    "ANIM-pair-shared-cost64-screen1-on"
+  ],
+  "buildId": "pair-radius-A226824E",
+  "verificationStatus": "SCREEN_NOT_ACCEPTED_WHOLE_CPU_THRESHOLD_NOT_MET",
+  "metrics": {
+    "condition": "64logical/320render/64receiver; same12PBO; fixed mixed scene;40gameSeconds target then30wallSeconds",
+    "independentPairs": 1,
+    "serverCpuMsPerWallSecond": {
+      "off": 828.4366875879127,
+      "on": 826.4128366352853,
+      "changePercent": -0.24429760088487962
+    },
+    "minimumReductionPercent": 5,
+    "acquiredMoved2m": {
+      "off": 64,
+      "on": 64
+    },
+    "missionUpdateRateChangePercent": -1.2938217284493403,
+    "contactSolveRateChangePercent": 1.6959426299385294,
+    "presentP95": null
+  },
+  "blockers": [
+    "Whole CPU screen threshold not met",
+    "Unequal trajectory/contact work, single pair",
+    "Full movement and visual acceptance incomplete"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/pair-radius-cost64-screen-20261108.md"
+    },
+    {
+      "path": "reports/operations/pair-radius-shared-local-cost-20261108.md"
+    }
+  ],
+  "productionAdoption": false
+}
