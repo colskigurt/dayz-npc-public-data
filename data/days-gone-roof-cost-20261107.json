@@ -1,0 +1,167 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-11-07T19:05:30.715883+09:00",
+  "sourceRunId": "dg-cost-debug-20261107-183622",
+  "buildId": "17c2fca01d566914147a6d4924d038cb1f5a822c2829e4c45862e2bf837730b3",
+  "verificationStatus": "DIAGNOSTIC_SUCCESS_SINGLE_CAPTURE",
+  "metrics": {
+    "schemaVersion": "1.0",
+    "sourceRunId": "dg-cost-debug-20261107-183622/display-only2",
+    "buildId": "17c2fca01d566914147a6d4924d038cb1f5a822c2829e4c45862e2bf837730b3",
+    "verificationStatus": "DIAGNOSTIC_SUCCESS_SINGLE_CAPTURE",
+    "conditions": {
+      "resolution": "3440x1440",
+      "vsync": true,
+      "registered": 300,
+      "nonDead": 296,
+      "playerStationary": true,
+      "noclip": false,
+      "quietWindowSeconds": [
+        2,
+        18
+      ],
+      "captureSeconds": 20,
+      "repetitions": 1,
+      "cpuStackCapturedSeparately": true,
+      "debugControllersRemainActive": true
+    },
+    "csvRows": 993,
+    "spanSeconds": [
+      0.2138086,
+      20.0644899
+    ],
+    "quietRows": 800,
+    "hostObservations": 64,
+    "metrics": {
+      "MsBetweenPresents": {
+        "n": 800,
+        "p50": 19.990099999999998,
+        "p95": 24.771050000000002,
+        "p99": 27.259071000000002
+      },
+      "MsBetweenDisplayChange": {
+        "n": 800,
+        "p50": 20.0064,
+        "p95": 20.09084,
+        "p99": 20.144336000000003
+      },
+      "MsCPUBusy": {
+        "n": 800,
+        "p50": 19.8904,
+        "p95": 24.673170000000002,
+        "p99": 27.166642
+      },
+      "MsGPUTime": {
+        "n": 800,
+        "p50": 16.176099999999998,
+        "p95": 19.75437,
+        "p99": 19.979257
+      },
+      "MsGPUBusy": {
+        "n": 800,
+        "p50": 6.522600000000001,
+        "p95": 6.760129999999999,
+        "p99": 7.559929
+      },
+      "MsCPUWait": {
+        "n": 800,
+        "p50": 0.1009,
+        "p95": 0.11040499999999999,
+        "p99": 0.12490899999999999
+      }
+    },
+    "playerMaxDisplacementUE": 0.0,
+    "processCpuMillisecondsPerWallSecond": 2007.3924420343694,
+    "limitations": [
+      "Single accepted display capture, not repeated performance verification",
+      "PresentMon CPU busy is frame metric, not NPC self-time",
+      "CPU stack and display capture are different time windows",
+      "296 non-dead registered members does not prove 296 on-camera animated NPCs",
+      "Debug controllers and read-only monitor overhead not isolated",
+      "No DayZ speedup ratio or NPC cost per entity inferred"
+    ]
+  },
+  "blockers": [
+    "59.25% CPU samples unclassified executable leaves",
+    "No independent animation/support/push self-time",
+    "One accepted display capture only; debug overhead not isolated"
+  ],
+  "cpuStack": {
+    "seconds": 7.841085,
+    "sampleWeight": 2584,
+    "lostEvents": 0,
+    "lostBuffers": 0,
+    "exclusiveLeafClassification": {
+      "unclassified_exe_leaf": 1531,
+      "other_module_or_kernel": 625,
+      "physics_library_leaf": 92,
+      "ui_slate_anchored_leaf": 8,
+      "graphics_user_library_leaf": 310,
+      "engine_glue_and_core_anchored_leaf": 6,
+      "navigation_previously_verified_leaf": 7,
+      "physics_anchored_leaf": 3,
+      "crowd_contact_consumer_previously_verified_leaf": 2
+    },
+    "inclusiveScopeSampleUnions": {
+      "engine_glue_and_core_anchored": 1068,
+      "physics_anchored": 95,
+      "ui_slate_anchored": 24,
+      "render_pass_anchored": 191,
+      "graphics_user_library": 310,
+      "navigation_previously_verified": 29,
+      "crowd_contact_consumer_previously_verified": 5
+    }
+  },
+  "evidenceReferences": [
+    {
+      "id": "display-only2/present.csv",
+      "sha256": "ad5f46ef8c3c8feeca9b2f54b9d93f2c7408a9cd3a4783001ba8b0bae67cba9d",
+      "bytes": 261462
+    },
+    {
+      "id": "display-only2/analysis.json",
+      "sha256": "4653d9de17ffc37b2b0b938fa7b7317286a4111775928f8f6dacb182ec560221",
+      "bytes": 2111
+    },
+    {
+      "id": "display-only2/host-observations.jsonl",
+      "sha256": "ecca5d43b3849cff6afab47094e5faea55a5b54fef92a7a14e6d0e5495e3614c",
+      "bytes": 92590
+    },
+    {
+      "id": "display-only2/admin-completed.json",
+      "sha256": "54024cb5db07c634c5d28463bd5cf125587d8fbe01338e1e916fc9282cb291fa",
+      "bytes": 221
+    },
+    {
+      "id": "display-only2/monitor-closed.json",
+      "sha256": "71c5dd2b869cac5326a534c6c952b6afd97bd9c21e66bb3cc601c71b0484f072",
+      "bytes": 246
+    },
+    {
+      "id": "stationary-184457/stack-attribution/cpu-1-classified-unwind-v3.json",
+      "sha256": "5c95858970eb245de218a70574cdcc1edc4d8d15b58d95d3d2d217880ee428d0",
+      "bytes": 26891
+    },
+    {
+      "id": "stationary-184457/cpu-1-result.json",
+      "sha256": "9f3194ac700a329de1b4ba9d047fe0b611513edd0a82f1a130712ac0b1b5854f",
+      "bytes": 386
+    },
+    {
+      "id": "stationary-184457/admin-completed.json",
+      "sha256": "d028d930a080fdff5ac1f9772ebc9f3e8ec2ac855d691a18c322c3756e754ee7",
+      "bytes": 134
+    },
+    {
+      "id": "stationary-184457/monitor-closed.json",
+      "sha256": "45c12b048673225df551d35bbcd1cbb0a1ff05cc93c7c3bb75e0118182cb156a",
+      "bytes": 247
+    },
+    {
+      "id": "capture-validation.json",
+      "sha256": "a7125882981649d9ab21f7299002276fd3e8965f1317dfdce22ec8a3021e4f42",
+      "bytes": 613
+    }
+  ]
+}
