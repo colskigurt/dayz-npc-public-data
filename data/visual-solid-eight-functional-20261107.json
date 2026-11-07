@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "1.0",
+  "verificationStatus": "single-eight-pair-functional-pass-not-final-acceptance",
+  "results": [
+    {
+      "sourceRunId": "ANIM-host-solid-supported-eight-1-off",
+      "seconds": 75.5281,
+      "validTerminal": 8,
+      "fallTransitions": 9,
+      "completedFallLandFollowChains": 9,
+      "all40HostCallbacksAdvanced": true,
+      "slaveSolidValues": [
+        "true"
+      ],
+      "leaderSolidValues": [
+        "true"
+      ],
+      "allLayerValues": [
+        "524288"
+      ],
+      "nativeContractTransitions": 144
+    },
+    {
+      "sourceRunId": "ANIM-host-solid-supported-eight-2-on",
+      "seconds": 72.8356,
+      "validTerminal": 8,
+      "fallTransitions": 10,
+      "completedFallLandFollowChains": 10,
+      "all40HostCallbacksAdvanced": true,
+      "slaveSolidValues": [
+        "false"
+      ],
+      "leaderSolidValues": [
+        "true"
+      ],
+      "allLayerValues": [
+        "524288"
+      ],
+      "nativeContractTransitions": 152
+    }
+  ],
+  "metrics": {
+    "frameTimes": null,
+    "CPU": null,
+    "visualQuality": "NOT_MEASURED"
+  },
+  "blockers": [
+    "Client solidity readback unmeasured",
+    "Combat/damage/death not exercised",
+    "64-agent cost and functional regression not yet run",
+    "Server exits -1 after RequestExit0"
+  ],
+  "evidenceReferences": [
+    {
+      "name": "validation-contract.json",
+      "sha256": "12e9a904376574dcbc65ee037f014521a66b9270ff1e51a3b640ddc1bcbc33e8"
+    },
+    {
+      "name": "analysis.json",
+      "sha256": "98cebc248886235bcf51c0d3071df58e607c9ffa3620f3cf5cc2d145e2d82838"
+    },
+    {
+      "name": "client-closed.json",
+      "sha256": "3dc707cc5fc75dd4e1f1c21bc694f90e7ee2535027fe0e2228525c5af1579d5c"
+    },
+    {
+      "name": "native-state-contract.tsv",
+      "sha256": "c09133c94aca7d4883020c87df6618977ffc21801e179344ec158d12e8e260df"
+    },
+    {
+      "name": "analysis.json",
+      "sha256": "1f5ca1e4114e6859a3f99254c7b5c98a8150223ca75c007633583d93adf2102c"
+    },
+    {
+      "name": "client-closed.json",
+      "sha256": "5db028bf9e987c173d4ee26e0766c32fe5cdd3e13c927739d83dc3f706f639dd"
+    },
+    {
+      "name": "native-state-contract.tsv",
+      "sha256": "ea23cda304f723c6ce8bab15b1bee5ab3ccca7ab537773818a58d7d93dd03834"
+    }
+  ]
+}
