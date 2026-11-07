@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0",
+  "sourceRunId": "ANIM-host-solid-eight-1-off",
+  "verificationStatus": "baseline-functional-gate-failed",
+  "candidateExecuted": false,
+  "metrics": {
+    "gameSeconds": 300.024,
+    "logicalAgents": 8,
+    "hosts": 40,
+    "oldValidTerminal": 0,
+    "oldHighMilestone": 7,
+    "lastHighFollowCount": 8,
+    "allObservedHostsAdvance": true,
+    "frameTimes": null
+  },
+  "blockers": [
+    "Old milestone waits for climb counter despite supported recovery."
+  ],
+  "nextExperiment": "Matched OFF/ON with supported-arrival milestone contract; not yet run.",
+  "evidenceReferences": [
+    {
+      "name": "analysis.json",
+      "sha256": "594be0246832881fadf251c3957fca03edc0e6e002bfc42d9fff9f3f48eadf8d"
+    },
+    {
+      "name": "client-closed.json",
+      "sha256": "0eb4780f21dbfecebc7d0869d665b7bd39d8f0f644673d966aa03f43c38346ce"
+    },
+    {
+      "name": "comparison-not-executed.json",
+      "sha256": "5003817cdeea349d2826136ea4d3aa2d6b9b82dea03311e7e1a42bf3f4f10b77"
+    },
+    {
+      "name": "validation-contract.json",
+      "sha256": "12e9a904376574dcbc65ee037f014521a66b9270ff1e51a3b640ddc1bcbc33e8"
+    },
+    {
+      "name": "init.c",
+      "sha256": "8c3f1e7af2b0332a73bcb6e3e3bd9dc0dc1566fc740e6325b61aa5f2d787c136"
+    }
+  ]
+}
