@@ -1,0 +1,44 @@
+{
+  "status": "TWO_VALID_CAPTURES_PRESENTATION_CONDITIONS_DIFFER_NOT_REPEATABILITY_ACCEPTANCE",
+  "runs": [
+    {
+      "runId": "ANIM-mixed-gameplay64-baseline-retry2",
+      "presentP95Ms": 18.4789,
+      "displayChangeP95Ms": 19.3519,
+      "serverCpuMsPerGameSecond": 821.6193491773798,
+      "presentModes": {
+        "Hardware: Independent Flip": 2462
+      },
+      "allowsTearing": {
+        "1": 2462
+      },
+      "syncIntervals": {
+        "0": 2462
+      },
+      "acquiredAgents": 64,
+      "movedAgents": 64
+    },
+    {
+      "runId": "ANIM-mixed-gameplay64-repeat2",
+      "presentP95Ms": 16.963665,
+      "displayChangeP95Ms": 20.06173,
+      "serverCpuMsPerGameSecond": 826.882433073127,
+      "presentModes": {
+        "Composed: Flip": 2869
+      },
+      "allowsTearing": {
+        "0": 2869
+      },
+      "syncIntervals": {
+        "0": 2869
+      },
+      "acquiredAgents": 64,
+      "movedAgents": 64
+    }
+  ],
+  "thirdRunStarted": false,
+  "causeOfModeChange": "UNCONFIRMED",
+  "performanceImprovementAccepted": false,
+  "visualAccepted": false,
+  "nextExperiment": "Stabilize/observe presentation mode before remaining baseline run; retain both observations, do not pool or claim improvement."
+}
