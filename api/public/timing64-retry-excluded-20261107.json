@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-07T00:52:15.036859+00:00",
+  "sourceRunId": "ANIM-ct64-retry1-1-control",
+  "buildId": "UNCHANGED_CONTACT_TIMING_CONTROL",
+  "verificationStatus": "EXCLUDED_BEFORE_PERFORMANCE_CAPTURE",
+  "metrics": {
+    "validPerformanceSamples": 0,
+    "newCrashDumps": 0,
+    "timingPolicyControlValidatedAgents": 64,
+    "physicalCounters": {
+      "solves": 321406,
+      "rays": 3214060,
+      "sweeps": 1284616
+    },
+    "functionalAccepted": false,
+    "visualAccepted": false,
+    "performanceAccepted": false
+  },
+  "blockers": [
+    "Other game closure and DayZ foreground prerequisites not met",
+    "Native crash root cause still unknown"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/timing64-retry-excluded-20261107.md"
+    },
+    {
+      "artifact": "excluded-control-analysis.json",
+      "sha256": "b9b15c3715cd06b77e3ea33bb21f6780548e40bab1ddb45889ce00a03eaa1e09"
+    },
+    {
+      "artifact": "collector-idle-cancel.json",
+      "sha256": "48c3a66d40856af10e62bda104371fcff9634aaccbc923c63fa1ee4a6ec71740"
+    },
+    {
+      "artifact": "pre-capture-exclusion.json",
+      "sha256": "24cdf142df95dc4a1eaa3e7114ab5574795ac3ac378a4b24c9b6d8398314a1e5"
+    }
+  ]
+}
