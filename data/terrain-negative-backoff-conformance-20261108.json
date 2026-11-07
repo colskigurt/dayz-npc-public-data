@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "1.0",
+  "verificationStatus": "diagnostic-success-strict-conformance-failed-not-performance",
+  "runs": [
+    {
+      "sourceRunId": "ANIM-terrain-negative-backoff-conformance1",
+      "rows": 10,
+      "strict1MicrometrePointsGate": false,
+      "negativeBackoffSequenceVerified": true,
+      "fullReferenceFootRaysOnBypass": true,
+      "lastRow": {
+        "call": "9",
+        "anchorKind": "terrain",
+        "acceptedSame": "true",
+        "reasonSame": "true",
+        "liftSame": "true",
+        "pointsSame": "false",
+        "remaining": "0",
+        "certificateQueries": "2",
+        "blockedAttempts": "1",
+        "backoffBypasses": "8",
+        "footRaysDelta": "0",
+        "jointSweepsDelta": "4"
+      },
+      "serverExitCode": -1,
+      "rawSha256": "e610316cd7c1ebc82bff7f59c801afdae5fd67e884ad7c4bede2ced22f71be0e"
+    },
+    {
+      "sourceRunId": "ANIM-terrain-negative-backoff-diagnostic2",
+      "rows": 10,
+      "strict1MicrometrePointsGate": false,
+      "negativeBackoffSequenceVerified": true,
+      "fullReferenceFootRaysOnBypass": true,
+      "lastRow": {
+        "call": "9",
+        "anchorKind": "terrain",
+        "acceptedSame": "true",
+        "reasonSame": "true",
+        "liftSame": "true",
+        "pointsSame": "false",
+        "remaining": "0",
+        "certificateQueries": "2",
+        "blockedAttempts": "1",
+        "backoffBypasses": "8",
+        "footRaysDelta": "0",
+        "jointSweepsDelta": "4",
+        "maximumPointError": "3.05176e-05",
+        "expectedLift": "0.021637",
+        "actualLift": "0.0216675"
+      },
+      "serverExitCode": -1,
+      "rawSha256": "2726b8de4b24bd4811e6d2415dbc802ff25c9ee54c03cbe2949df47927f90ded"
+    }
+  ],
+  "pointErrorMetres": 3.05176e-05,
+  "previousTerrainHarnessPointToleranceMetres": 0.0001,
+  "newSequenceHelperToleranceMetres": 1e-06,
+  "interpretation": "Earlier terrain helper Contract used0.1mm point tolerance; new sequence reused SamePoints helper1um. Actual retry delta30.5176um is within old local screening tolerance but does not pass new strict helper. Neither is gameplay acceptance.",
+  "candidateProductionAdopted": false,
+  "performanceMeasured": false,
+  "newPbo": false,
+  "evidenceReferences": [
+    {
+      "name": "NFTerrainNegativeBody.c",
+      "sha256": "a24c51848e820a4bb68e5b3d63747a85f057ef60a75c42f0826f33599b5ed2f1"
+    },
+    {
+      "name": "source-proof.json",
+      "sha256": "a5197e1785a95986dc53d1af9d7a3834f335536ceed17613ad28f38664a988bb"
+    },
+    {
+      "name": "conformance-summary.json",
+      "sha256": "05b62222f7c5a659edf7995dc259b99d69742676f9ef00eae9f674792f0d2560"
+    },
+    {
+      "name": "init.c",
+      "sha256": "b45e16d0f78f53cb58305bfb259deab4f78f987b6405713420c3c7d029f8a256"
+    },
+    {
+      "name": "negative-backoff-sequence.tsv",
+      "sha256": "e610316cd7c1ebc82bff7f59c801afdae5fd67e884ad7c4bede2ced22f71be0e"
+    },
+    {
+      "name": "init.c",
+      "sha256": "5fb7afae8dabf35b22e7c3d285bcc951b2273a4d1329fb16ef9a1f3ea850ec17"
+    },
+    {
+      "name": "negative-backoff-sequence.tsv",
+      "sha256": "2726b8de4b24bd4811e6d2415dbc802ff25c9ee54c03cbe2949df47927f90ded"
+    }
+  ]
+}
