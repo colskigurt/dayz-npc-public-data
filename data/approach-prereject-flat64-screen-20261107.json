@@ -1,0 +1,448 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-11-07T20:27:15.448025+09:00",
+  "sourceRunId": "approach-flat64-screen1",
+  "buildId": "19f20acfecd8cacf3cfefec9f440caa4fdb06db12c0736c40eb596f0feaf7353",
+  "verificationStatus": "VALID_SINGLE_PAIR_SCREEN_FAILED_NOT_ACCEPTED",
+  "metrics": {
+    "results": [
+      {
+        "sourceRunId": "ANIM-approach-flat64-1-off",
+        "buildId": "19f20acfecd8cacf3cfefec9f440caa4fdb06db12c0736c40eb596f0feaf7353",
+        "metricsMs": {
+          "MsBetweenPresents": {
+            "samples": 1659,
+            "p50": 8.3905,
+            "p95": 13.13312,
+            "p99": 14.580222000000001,
+            "mean": 9.024403676913803,
+            "maximum": 16.85
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 1659,
+            "p50": 8.5299,
+            "p95": 14.122559999999998,
+            "p99": 16.391870000000008,
+            "mean": 9.024360458107294,
+            "maximum": 18.8559
+          },
+          "MsCPUBusy": {
+            "samples": 1659,
+            "p50": 8.2314,
+            "p95": 12.990829999999999,
+            "p99": 14.438766000000001,
+            "mean": 8.87310518384569,
+            "maximum": 16.707
+          },
+          "MsCPUWait": {
+            "samples": 1659,
+            "p50": 0.1484,
+            "p95": 0.17840999999999999,
+            "p99": 0.2220880000000001,
+            "mean": 0.15130548523206752,
+            "maximum": 0.354
+          },
+          "MsGPUBusy": {
+            "samples": 1659,
+            "p50": 2.4694,
+            "p95": 2.9413899999999997,
+            "p99": 3.092436,
+            "mean": 2.523613441832429,
+            "maximum": 4.5687
+          },
+          "MsGPUTime": {
+            "samples": 1659,
+            "p50": 8.3859,
+            "p95": 13.18772,
+            "p99": 14.621150000000005,
+            "mean": 9.024360458107294,
+            "maximum": 17.5355
+          },
+          "MsInPresentAPI": {
+            "samples": 1659,
+            "p50": 0.1484,
+            "p95": 0.17840999999999999,
+            "p99": 0.2220880000000001,
+            "mean": 0.15130548523206752,
+            "maximum": 0.354
+          }
+        },
+        "allAliveCompleteSnapshots": 80,
+        "phases": {
+          "FOLLOW": 5120
+        },
+        "areas": {
+          "ground": 5120
+        },
+        "requests": {
+          "1": 4731,
+          "2": 368,
+          "0": 21
+        },
+        "candidateWindowCounters": {
+          "nfapCenters": 0,
+          "nfapEarlyClaims": 0,
+          "nfapPeripheralRays": 0
+        },
+        "nativeClockRate": 1.000997936366157,
+        "serverCpu": {
+          "sourceRunId": "ANIM-approach-flat64-1-off",
+          "samplingRows": 16,
+          "captureToolStartQpc": 208495994029,
+          "startDelayMs": 198.3508,
+          "wallSeconds": 14.9959798,
+          "gameSeconds": 14.9464,
+          "gamePerWallSecond": 0.9966937938926805,
+          "serverCpuMs": 11781.25,
+          "serverCpuMsPerWallSecond": 785.6272252380601,
+          "serverCpuMsPerGameSecond": 788.2332869453513,
+          "scope": "Aggregate process CPU across threads; near-aligned15s window, not function self-time or exact frame attribution",
+          "serverExeSha256": "987FBC47BAB1DAB37F74D7F700AA2E5B6AF936A7181A62F5BA9F0090AEBBA805"
+        },
+        "serverExitCode": -1,
+        "normalQuitAccepted": false
+      },
+      {
+        "sourceRunId": "ANIM-approach-flat64-2-on",
+        "buildId": "19f20acfecd8cacf3cfefec9f440caa4fdb06db12c0736c40eb596f0feaf7353",
+        "metricsMs": {
+          "MsBetweenPresents": {
+            "samples": 1416,
+            "p50": 10.1778,
+            "p95": 13.934925,
+            "p99": 16.181984999999997,
+            "mean": 10.570464830508476,
+            "maximum": 22.1355
+          },
+          "MsBetweenDisplayChange": {
+            "samples": 1416,
+            "p50": 10.192499999999999,
+            "p95": 14.014725,
+            "p99": 16.14808,
+            "mean": 10.570443785310735,
+            "maximum": 22.1459
+          },
+          "MsCPUBusy": {
+            "samples": 1416,
+            "p50": 10.0293,
+            "p95": 13.7925,
+            "p99": 16.00367,
+            "mean": 10.418501694915255,
+            "maximum": 22.0074
+          },
+          "MsCPUWait": {
+            "samples": 1416,
+            "p50": 0.1489,
+            "p95": 0.182025,
+            "p99": 0.2183849999999998,
+            "mean": 0.1519369350282486,
+            "maximum": 0.3048
+          },
+          "MsGPUBusy": {
+            "samples": 1416,
+            "p50": 2.5044500000000003,
+            "p95": 2.9777,
+            "p99": 3.118395,
+            "mean": 2.5668858757062147,
+            "maximum": 4.1529
+          },
+          "MsGPUTime": {
+            "samples": 1416,
+            "p50": 10.192499999999999,
+            "p95": 14.014725,
+            "p99": 16.14808,
+            "mean": 10.570443785310735,
+            "maximum": 22.1459
+          },
+          "MsInPresentAPI": {
+            "samples": 1416,
+            "p50": 0.1489,
+            "p95": 0.182025,
+            "p99": 0.2183849999999998,
+            "mean": 0.1519369350282486,
+            "maximum": 0.3048
+          }
+        },
+        "allAliveCompleteSnapshots": 80,
+        "phases": {
+          "FOLLOW": 5120
+        },
+        "areas": {
+          "ground": 5120
+        },
+        "requests": {
+          "1": 4799,
+          "2": 306,
+          "0": 15
+        },
+        "candidateWindowCounters": {
+          "nfapCenters": 17290,
+          "nfapEarlyClaims": 3331,
+          "nfapPeripheralRays": 55836
+        },
+        "nativeClockRate": 0.9990349699665328,
+        "serverCpu": {
+          "sourceRunId": "ANIM-approach-flat64-2-on",
+          "samplingRows": 16,
+          "captureToolStartQpc": 210832132922,
+          "startDelayMs": 125.5106,
+          "wallSeconds": 15.00664415,
+          "gameSeconds": 15.014300000000002,
+          "gamePerWallSecond": 1.000510164026246,
+          "serverCpuMs": 12437.5,
+          "serverCpuMsPerWallSecond": 828.7995554289198,
+          "serverCpuMsPerGameSecond": 828.3769473102308,
+          "scope": "Aggregate process CPU across threads; near-aligned15s window, not function self-time or exact frame attribution",
+          "serverExeSha256": "987FBC47BAB1DAB37F74D7F700AA2E5B6AF936A7181A62F5BA9F0090AEBBA805"
+        },
+        "serverExitCode": -1,
+        "normalQuitAccepted": false
+      }
+    ],
+    "comparison": {
+      "schemaVersion": "1.0",
+      "sourceRunId": "approach-flat64-screen1",
+      "verificationStatus": "VALID_SINGLE_PAIR_SCREEN_FAILED_NOT_ACCEPTED",
+      "independentPairs": 1,
+      "cpu": {
+        "off": 788.2332869453513,
+        "on": 828.3769473102308,
+        "delta": 40.14366036487945,
+        "changePct": 5.092865402887092
+      },
+      "presentP95": {
+        "off": 13.13312,
+        "on": 13.934925,
+        "delta": 0.8018049999999999,
+        "changePct": 6.1052133841768
+      },
+      "nativeClockRate": {
+        "off": 1.000997936366157,
+        "on": 0.9990349699665328,
+        "delta": -0.001962966399624122,
+        "changePct": -0.19610094369926223
+      },
+      "screenGates": {
+        "serverCpuReductionPassed": false,
+        "presentNonregressionPassed": false,
+        "all64AliveBoth": true,
+        "onEarlyClaimsPositive": true,
+        "nativeClockComparable": true,
+        "phaseComparable": true
+      },
+      "screenPassed": false,
+      "performanceAccepted": false,
+      "visualAccepted": false,
+      "fullGoalComplete": false,
+      "workContext": [
+        {
+          "condition": "off",
+          "bracket": [
+            30.3326,
+            45.361
+          ],
+          "gameSeconds": 15.028399999999998,
+          "workDeltas": {
+            "contactSolves": 38546,
+            "footRays": 385460,
+            "jointSweeps": 154184,
+            "plans": 1853,
+            "planFailures": 0,
+            "playerContacts": 0,
+            "contactFailures": 0
+          },
+          "perGameSecond": {
+            "contactSolves": 2564.8771658992314,
+            "footRays": 25648.77165899231,
+            "jointSweeps": 10259.508663596926,
+            "plans": 123.29988555002531,
+            "planFailures": 0.0,
+            "playerContacts": 0.0,
+            "contactFailures": 0.0
+          },
+          "requestFractions": {
+            "1": 0.9240234375,
+            "2": 0.071875,
+            "0": 0.0041015625
+          }
+        },
+        {
+          "condition": "on",
+          "bracket": [
+            30.4861,
+            45.5103
+          ],
+          "gameSeconds": 15.0242,
+          "workDeltas": {
+            "contactSolves": 38520,
+            "footRays": 385200,
+            "jointSweeps": 154080,
+            "plans": 1840,
+            "planFailures": 0,
+            "playerContacts": 0,
+            "contactFailures": 0
+          },
+          "perGameSecond": {
+            "contactSolves": 2563.863633338214,
+            "footRays": 25638.636333382143,
+            "jointSweeps": 10255.454533352857,
+            "plans": 122.4690832124173,
+            "planFailures": 0.0,
+            "playerContacts": 0.0,
+            "contactFailures": 0.0
+          },
+          "requestFractions": {
+            "1": 0.9373046875,
+            "2": 0.059765625,
+            "0": 0.0029296875
+          }
+        }
+      ],
+      "limits": [
+        "Single pair cannot establish causal regression or repeatable benefit",
+        "Same FOLLOW phase does not prove equal substate/contact/path work",
+        "Body counters exclude some Floor/direct sweeps and candidate helper; do not sum as whole query cost",
+        "Met20ms in this flat pair does not accept all scenes or visual smoothness",
+        "Existing traversal/8regression preserved;64screen is ground pursuit only"
+      ]
+    }
+  },
+  "blockers": [
+    "Single pair screen failed; do not promote",
+    "64 traversal/visual acceptance separate and incomplete"
+  ],
+  "evidenceReferences": [
+    {
+      "id": "analysis-1.json",
+      "sha256": "200c8ca05a491c1dbaec21c909572e3a2879974ece4ec33a320dcf78bcaeaacb"
+    },
+    {
+      "id": "analysis-2.json",
+      "sha256": "ab8aaaab8cce3bcff725233231e793c06dc2b7a4a33cebdc383823696916162f"
+    },
+    {
+      "id": "comparison.json",
+      "sha256": "5d9e5bc20c6fe29b40f1aedbaf469809f607bb4efb46b552a437771697c8aeaf"
+    },
+    {
+      "id": "acceptance.json",
+      "sha256": "bb03b651487677019aef88c63b65723c03b439aee5fe30def0fb7e02b3f362c5"
+    },
+    {
+      "id": "analyze-case.py",
+      "sha256": "3c19fd73dc2e9e1ff0a6300e1eb00114d2e8f7c2fcceb7876800e39c71436d63"
+    },
+    {
+      "id": "staged-plan.json",
+      "sha256": "275349b7859e74a011971091da7a406b98de610035c2efef8d09144d298ad2a8"
+    },
+    {
+      "id": "collector-config.json",
+      "sha256": "2cff052e79dfd62d5fcbbcf053205069eae2eba6f7d181763de4af476e87ada4"
+    },
+    {
+      "id": "collector-pointer.json",
+      "sha256": "9ae8a32e8d682aefbd18283cdcd7420a9320b1453e7c877f06f5054b029c8f96"
+    },
+    {
+      "id": "admin-completed.json",
+      "sha256": "1bdcf415d2d8bd0559fc955643041bffd005e464e5e2e66ecd308c5b1f358dc2"
+    },
+    {
+      "id": "capture-0/present.csv",
+      "sha256": "d99def75a033ddee6cc86c1fa95b54f511dbdeb986e45cc572093dbb87508295"
+    },
+    {
+      "id": "capture-0/closed.json",
+      "sha256": "69ee3ed9a7e997dab7f28b129efa1ffa0577e064a38dadd0f6dfd4ebedcdb071"
+    },
+    {
+      "id": "capture-0/consumed.json",
+      "sha256": "95d903de5adc115ef9033dcd26f0d86f740688c0fbec9e6dc366b1e2b37773e2"
+    },
+    {
+      "id": "capture-0/server-process-cpu.csv",
+      "sha256": "d58785ccd224303ae714721e77400b1d83b1a5e818d8aa3871e1c22551454c7e"
+    },
+    {
+      "id": "capture-0/server-process-cpu.json",
+      "sha256": "7635b48a1a50a41879c2b40296f6a8a0388e10f7f7958e9c9026cb4505589470"
+    },
+    {
+      "id": "cases/ANIM-approach-flat64-1-off/runtime-once/server-profile/gameplay-eight.tsv",
+      "sha256": "33546f866865e89c510984134a86ccd254e244930dc0e0bcc7ef257493a54429"
+    },
+    {
+      "id": "cases/ANIM-approach-flat64-1-off/runtime-once/server-profile/server-frame.tsv",
+      "sha256": "23ea5c91528eca57a918e4eddfcb4c8c932c064c09198e14e78756d65f23974d"
+    },
+    {
+      "id": "cases/ANIM-approach-flat64-1-off/runtime-once/server-profile/part-command-clock.tsv",
+      "sha256": "35a93aeca7f6fa571943b8df3b6654b8a6f3ce20f6e71a4cf8eda93528ad97f0"
+    },
+    {
+      "id": "cases/ANIM-approach-flat64-1-off/runtime-once/client-profile/visual-app-frames.tsv",
+      "sha256": "2b8db6f602b4a89fef198c31ea2b4d653c2ad7dc9d371c96dc21217e8060a981"
+    },
+    {
+      "id": "cases/ANIM-approach-flat64-1-off/runtime-once/client-closed.json",
+      "sha256": "bc00cc40cbb809478f258720860525758307ef3d43b0b733907f90116e3185df"
+    },
+    {
+      "id": "cases/ANIM-approach-flat64-1-off/manifest.json",
+      "sha256": "13f8e5e9a1a9dd915d5e617f26b270693f33054992436a956f1f56efe264e84b"
+    },
+    {
+      "id": "cases/ANIM-approach-flat64-1-off/runtime-once/records/server-20261107T1117389757299Z.json",
+      "sha256": "04f6817e30b0ecf5eeac26d29b6d9a27231edcd4bc6bd3758b6b90db13a68b75"
+    },
+    {
+      "id": "capture-1/present.csv",
+      "sha256": "824340668317829fd1a64b4caef4ad3ec5058e604e66d745963d7f38bb8049e2"
+    },
+    {
+      "id": "capture-1/closed.json",
+      "sha256": "661334713c99cd787f9aadb7620915f706b7b25339ec932d0d2deb074e228332"
+    },
+    {
+      "id": "capture-1/consumed.json",
+      "sha256": "7432083dbdbf76bd6e12aca1d6f5cad302341d381d8428bc536a2bf2117eb92b"
+    },
+    {
+      "id": "capture-1/server-process-cpu.csv",
+      "sha256": "02105c5cdae88947d815b59ae631ababf0756d5b26def051de6039cc57196786"
+    },
+    {
+      "id": "capture-1/server-process-cpu.json",
+      "sha256": "bd03102bf6c3d5e7341c7168be60de52d73ade987cf03dc153e44fdacb37bf7d"
+    },
+    {
+      "id": "cases/ANIM-approach-flat64-2-on/runtime-once/server-profile/gameplay-eight.tsv",
+      "sha256": "fc3865aa8960bfc5d0cf9bdbe98a7f535d12545b497241696bba1a038c9b9689"
+    },
+    {
+      "id": "cases/ANIM-approach-flat64-2-on/runtime-once/server-profile/server-frame.tsv",
+      "sha256": "fc5ef1e835f6c2df5179f4f3350042716f63b54d16d545529655b7e4edc9807e"
+    },
+    {
+      "id": "cases/ANIM-approach-flat64-2-on/runtime-once/server-profile/part-command-clock.tsv",
+      "sha256": "0d1448b9cb532cc18e8a0dc20ca5b4ff7ed2a1507bce1d6d0ba3bcdf279699ab"
+    },
+    {
+      "id": "cases/ANIM-approach-flat64-2-on/runtime-once/client-profile/visual-app-frames.tsv",
+      "sha256": "0da81248825d5568fa8476ec8b39342c2b0ee8bee38ac23b14a59695d509c254"
+    },
+    {
+      "id": "cases/ANIM-approach-flat64-2-on/runtime-once/client-closed.json",
+      "sha256": "887572c4b5bbde73840519bc93f681880509e762e99bae929d71994fc5a83b2f"
+    },
+    {
+      "id": "cases/ANIM-approach-flat64-2-on/manifest.json",
+      "sha256": "59ad938c9f9811febe15b3e753790a213d561952a5f01cbe62fad1007428e9be"
+    },
+    {
+      "id": "cases/ANIM-approach-flat64-2-on/runtime-once/records/server-20261107T1121325290797Z.json",
+      "sha256": "6770b13bafac3c7c594dc1fb999c20c179c8a1b9881d9c67946bd25a10cb2e90"
+    }
+  ]
+}

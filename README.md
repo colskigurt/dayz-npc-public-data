@@ -1,6 +1,6 @@
 # DayZ NPC 연구 현황
 
-> 최신 후보 검증(2026-11-07): [접근 조기탈락 메서드·8개체 결과](reports/operations/approach-prereject-method-eight-20261107.md) · [JSON](data/approach-prereject-method-eight-20261107.json). 8개체 단일 회귀 통과,64전체 성능은 미검증.
+> 최신 후보 판정(2026-11-07): [접근 조기탈락64 비용 선별 실패](reports/operations/approach-prereject-flat64-screen-20261107.md) · [JSON](data/approach-prereject-flat64-screen-20261107.json). 서버CPU +5.09%,Present p95 +6.11% 단일쌍; 미수용·반복확대하지 않음.
 
 > 진행 중(2026-11-07): [검사 순서 변경 후보 준비](reports/operations/approach-prereject-preparation-20261107.md). 기본OFF·오프라인 계약만 확인, 실제 성능 미검증.
 
