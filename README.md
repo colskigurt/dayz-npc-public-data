@@ -1,3 +1,5 @@
+> **시험 조건 정정 (2026-11-07):** 앞선 평지 64개체 접근 선별 시험은 전투 OFF·320개 표시 호스트 조건입니다. 피해 수신 호스트를 포함했다는 설명을 정정합니다. [진단과 정정 근거](reports/operations/host-physics-cohort-correction-20261107.md). 성능 수치와 후보 미수용 판정은 유지합니다.
+
 # DayZ NPC 연구 현황
 
 > 보조 진단(2026-11-07): [회전 산술의 국소 효과와 전체 기여 평가](reports/operations/rotation-math-method-weighting-20261107.md). 로컬 효과 확인·전체 절감 미입증으로 후순위,새 PBO 없음.

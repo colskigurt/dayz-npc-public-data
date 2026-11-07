@@ -1,0 +1,239 @@
+{
+  "schemaVersion": "1.0",
+  "verificationStatus": "diagnostic-success-not-performance-acceptance",
+  "sourceRunId": [
+    "ANIM-host-physics-readback1",
+    "ANIM-host-physics-readback2-combat"
+  ],
+  "results": [
+    {
+      "sourceRunId": "ANIM-host-physics-readback1",
+      "snapshots": 3,
+      "rows": 120,
+      "roles": {
+        "leader": {
+          "rows": 24,
+          "entities": 8,
+          "properties": {
+            "layer": [
+              "524288"
+            ],
+            "solid": [
+              "true"
+            ],
+            "active": [
+              "true"
+            ],
+            "dynamic": [
+              "true"
+            ],
+            "sameLayerInteraction": [
+              "true"
+            ],
+            "characterInteraction": [
+              "true"
+            ],
+            "terrainInteraction": [
+              "true"
+            ],
+            "buildingInteraction": [
+              "false"
+            ]
+          }
+        },
+        "visual_slave": {
+          "rows": 96,
+          "entities": 32,
+          "properties": {
+            "layer": [
+              "524288"
+            ],
+            "solid": [
+              "true"
+            ],
+            "active": [
+              "true"
+            ],
+            "dynamic": [
+              "true"
+            ],
+            "sameLayerInteraction": [
+              "true"
+            ],
+            "characterInteraction": [
+              "true"
+            ],
+            "terrainInteraction": [
+              "true"
+            ],
+            "buildingInteraction": [
+              "false"
+            ]
+          }
+        }
+      },
+      "clientClose": true
+    },
+    {
+      "sourceRunId": "ANIM-host-physics-readback2-combat",
+      "snapshots": 3,
+      "rows": 144,
+      "roles": {
+        "damage_receiver": {
+          "rows": 24,
+          "entities": 8,
+          "properties": {
+            "layer": [
+              "524288"
+            ],
+            "solid": [
+              "true"
+            ],
+            "active": [
+              "true"
+            ],
+            "dynamic": [
+              "true"
+            ],
+            "sameLayerInteraction": [
+              "true"
+            ],
+            "characterInteraction": [
+              "true"
+            ],
+            "terrainInteraction": [
+              "true"
+            ],
+            "buildingInteraction": [
+              "false"
+            ],
+            "mass": [
+              "70"
+            ],
+            "boxMin": [
+              "<-0.280000, 0.050000, -0.280000>"
+            ],
+            "boxMax": [
+              "<0.280000, 1.650000, 0.280000>"
+            ]
+          }
+        },
+        "leader": {
+          "rows": 24,
+          "entities": 8,
+          "properties": {
+            "layer": [
+              "524288"
+            ],
+            "solid": [
+              "true"
+            ],
+            "active": [
+              "true"
+            ],
+            "dynamic": [
+              "true"
+            ],
+            "sameLayerInteraction": [
+              "true"
+            ],
+            "characterInteraction": [
+              "true"
+            ],
+            "terrainInteraction": [
+              "true"
+            ],
+            "buildingInteraction": [
+              "false"
+            ],
+            "mass": [
+              "70"
+            ],
+            "boxMin": [
+              "<-0.280000, 0.050000, -0.280000>"
+            ],
+            "boxMax": [
+              "<0.280000, 1.650000, 0.280000>"
+            ]
+          }
+        },
+        "visual_slave": {
+          "rows": 96,
+          "entities": 32,
+          "properties": {
+            "layer": [
+              "524288"
+            ],
+            "solid": [
+              "true"
+            ],
+            "active": [
+              "true"
+            ],
+            "dynamic": [
+              "true"
+            ],
+            "sameLayerInteraction": [
+              "true"
+            ],
+            "characterInteraction": [
+              "true"
+            ],
+            "terrainInteraction": [
+              "true"
+            ],
+            "buildingInteraction": [
+              "false"
+            ],
+            "mass": [
+              "70"
+            ],
+            "boxMin": [
+              "<-0.280000, 0.050000, -0.280000>"
+            ],
+            "boxMax": [
+              "<0.280000, 1.650000, 0.280000>"
+            ]
+          }
+        }
+      },
+      "clientClose": true
+    }
+  ],
+  "cohortCorrection": {
+    "experiment": "approach-prereject-flat64-screen-20261107",
+    "combatEnabled": false,
+    "logicalAgents": 64,
+    "visualActorHosts": 320,
+    "damageReceiverHosts": 0,
+    "performanceValuesChanged": false
+  },
+  "limitations": [
+    "Allowed interaction matrices are not actual contacts or CPU cost.",
+    "Model collision bounds are not a complete native primitive inventory.",
+    "Static idle readback is not traversal regression or performance measurement.",
+    "Server RequestExit(0) ended with process exit -1; no normal server exit claim."
+  ],
+  "evidenceReferences": [
+    {
+      "name": "cohort-correction-audit.json",
+      "sha256": "2d0296f78568fc6da5e141f06d96d985df107a9a3327c6fbeecaa76145867da5"
+    },
+    {
+      "name": "host-physics-state.tsv",
+      "sha256": "50c88624612642c31e3e8d27f04b86656dfafdacb77eb14ad659b91a7bcdefb1"
+    },
+    {
+      "name": "client-closed.json",
+      "sha256": "29bdaa4a3cd693845d48e10276bb80e61790e523d0e753861ce2bf770afb4e73"
+    },
+    {
+      "name": "host-physics-state.tsv",
+      "sha256": "8720190bc50473551a7f578e63bbdc2f98c2153fbc9a4cb30cd98819d13545ae"
+    },
+    {
+      "name": "client-closed.json",
+      "sha256": "7e3cd7c7cd37a7cb3a65f8fe8d7d78502556adb7c0519ba627e22eebbf0152bb"
+    }
+  ]
+}
