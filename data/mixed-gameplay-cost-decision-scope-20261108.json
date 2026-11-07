@@ -1,0 +1,159 @@
+{
+  "scope": {
+    "schemaVersion": "1.0",
+    "status": "EXISTING_EVIDENCE_SCOPE_REVIEW_NOT_NEW_MEASUREMENT",
+    "cohorts": [
+      {
+        "runId": "ANIM-playable-sixtyfour1",
+        "logicalCount": 64,
+        "renderHosts": 320,
+        "receivers": 64,
+        "engineSha": "EE1ADD8BB6DED0B6E913F31D62C93D1326D5A44106D558BBD3D19ADB78B73BB1",
+        "combatEnabled": true,
+        "cameraAndPlayerInput": "manual, not matched to fixed-camera flat screen",
+        "presentP95Ms": 27.658319999999996,
+        "captureTerminalValidated": false,
+        "backgroundLoadIsolated": false,
+        "wholeFunctionAccepted": false
+      },
+      {
+        "runId": "ANIM-host-solid-flat64-dedicated-1-off",
+        "logicalCount": 64,
+        "renderHosts": 320,
+        "receivers": 0,
+        "engineSha": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805",
+        "combatEnabled": false,
+        "cameraAndPlayerInput": "fixed camera and scripted circular ground path",
+        "presentP95Ms": 12.775909999999998,
+        "captureTerminalValidated": true,
+        "wholeFunctionAccepted": false
+      },
+      {
+        "runId": "ANIM-high-cost1-five",
+        "presentP95Ms": 14.978159999999997,
+        "sceneFullWindowAccepted": false,
+        "minimumHighFraction": 0.46875,
+        "cpuAndPresentSameWindow": false
+      }
+    ],
+    "manualFailureWindows": [
+      {
+        "window": [
+          32.9032,
+          68.2443
+        ],
+        "counterDeltas": {
+          "contactSolves": 88143,
+          "contactFailures": 345,
+          "footRays": 881430,
+          "jointSweeps": 352013
+        },
+        "contactFailurePerSolve": 0.003914094142473027,
+        "warning": "Rejected-solve fraction is not CPU time or fraction eligible for early-lift rejection."
+      },
+      {
+        "window": [
+          4.74695,
+          136.251
+        ],
+        "counterDeltas": {
+          "contactSolves": 324014,
+          "contactFailures": 1743,
+          "footRays": 3240140,
+          "jointSweeps": 1292891
+        },
+        "contactFailurePerSolve": 0.0053793971865413225,
+        "warning": "Rejected-solve fraction is not CPU time or fraction eligible for early-lift rejection."
+      }
+    ],
+    "decisions": [
+      "Do not infer per-receiver/combat cost or optimization percent by subtracting these cohorts.",
+      "Do not treat latest flat p95<20ms as mixed gameplay performance acceptance.",
+      "Early-reject usefulness must be bounded by actual failure volume, not throttled failure diagnostic row counts.",
+      "Next experimental baseline should use current engine, full gameplay combat wiring, fixed player stimulus and fixed camera, with same-window CPU and Present. No new NPC algorithm."
+    ],
+    "evidence": [
+      {
+        "name": "gameplay-eight.tsv",
+        "sha256": "5933016e7395260260db847cc196cd01061313022a3f3c0c20a8a58659639bcb"
+      },
+      {
+        "name": "analysis.json",
+        "sha256": "9f5cbabe08bd73d7574e6c75ba44d7cdbe1062f078c5187e58ab727290dd166c"
+      },
+      {
+        "name": "staged-plan.json",
+        "sha256": "4ace2f9b9aeeaf665f83ab84c97b6e34e3fd023c94855abcda27eef52f67127c"
+      },
+      {
+        "name": "present-analysis.json",
+        "sha256": "4cdcd60d20236920ad7ce4c22d9c9dd2b3f4713a02465949b70908b1cc0e3c79"
+      },
+      {
+        "name": "analysis-1.json",
+        "sha256": "3d0b9f6541b61434a109e4d9871af06e112bdc033dc6282e7aafc7cd758195e0"
+      },
+      {
+        "name": "staged-plan.json",
+        "sha256": "3032d912729203f5a33a66b9fa5f37a824314d3708a65f7472754ff4b8f3f405"
+      }
+    ]
+  },
+  "nextBaselineProtocol": {
+    "schemaVersion": "1.0",
+    "status": "PROTOCOL_ONLY_NOT_IMPLEMENTED_OR_EXECUTED",
+    "purpose": "Qualify current full-gameplay64 mixed-scene baseline before selecting next optimization. Not another bare flat benchmark.",
+    "preserve": [
+      "Current default five-part implementation",
+      "Combat/damage receiver wiring",
+      "Normal push/fall/landing/FOLLOW/reclimb",
+      "Original signed PBOs and failed candidates"
+    ],
+    "cohort": {
+      "currentEngineHashMustBePinned": true,
+      "logicalAgents": 64,
+      "renderHosts": 320,
+      "damageReceivers": 64,
+      "combatEnabled": true,
+      "newOptimizationFlags": false
+    },
+    "stimulus": {
+      "reuse": "Existing fixture and scripted player stimulus; fixed timed ground/low/high/down sequence",
+      "manualPathOrCameraVariation": false,
+      "doNotWaitForAllAgentsOnNarrowRoof": true,
+      "doNotDisablePhysicsToPopulateScene": true
+    },
+    "readiness": [
+      "Exactly64 logical alive and384 server host roles validated",
+      "Client320 render hosts ready and continuously advancing callbacks",
+      "Same fixed graphics and camera preset as declared before execution",
+      "Foreground maintained throughout capture",
+      "No unaccounted heavy background work"
+    ],
+    "measurement": {
+      "sameWindow": [
+        "Present p50/p95/p99",
+        "CPU Busy/GPU Busy",
+        "Owned server process CPU/game second",
+        "Phase-area distribution",
+        "solve/ray/sweep rates",
+        "Actual player trajectory and target stage"
+      ],
+      "captureSecondsMaximum": 30,
+      "reuseExistingBoundedCollector": true,
+      "noNewPoseToolOrRawDump": true,
+      "wholeFunctionalAcceptanceSeparate": true
+    },
+    "decisionRules": [
+      "If qualified mixed p95<=20ms: prioritize visual/whole-traversal acceptance and remaining stability defects; do not claim global target or new optimization success.",
+      "If p95>20ms: use synchronized client/server/work-count context plus existing CPU stacks to select the expensive owner.",
+      "If qualification fails: preserve failure; do not label it a valid baseline or tune NPC features to make the scene pass."
+    ],
+    "scopeLimits": [
+      "This is not a matched subtraction against legacy manual data.",
+      "64 high-majority is not required for a declared mixed-scene test; actual mixture is recorded.",
+      "Do not retrofit old high-majority failed capture into a passed new experiment.",
+      "No acceptance criteria are retroactively changed for rejected terrain candidates."
+    ]
+  }
+}
