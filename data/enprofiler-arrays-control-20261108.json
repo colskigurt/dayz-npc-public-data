@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "1.0",
+  "sourceRunId": "ANIM-enprofiler-api-arrays1",
+  "verificationStatus": "TIME_COUNT_ARRAYS_VERIFIED_ALLOCATION_COUNTER_NOT_VALIDATED",
+  "diagExeSha256": "4bbf370b1d479e0556e916d21213bafba383cbdd3a12c6e2518cd49c1ca64e70",
+  "npcCount": 0,
+  "newPbo": false,
+  "knownMethod": "NFEnProfilerProbe::Work",
+  "knownCalls": 50,
+  "directCalls": 50,
+  "namedArrayCalls": 50,
+  "directRawTime": 41.31,
+  "namedArrayRawTime": 41.31,
+  "namedTimeRows": 47,
+  "namedCountRows": 47,
+  "retainedLogicalObjects": 50,
+  "directAllocationCounter": 0,
+  "allocationArrayRows": 0,
+  "allocationConclusion": "Counter/array did not reflect the50 retained new script objects in this setup. Do not interpret0 as no native allocations or claim all allocation profiling impossible.",
+  "profilerModule": 0,
+  "profilerFlags": 2,
+  "profiledSessionFrames": 48,
+  "timeUnitsConfirmed": false,
+  "timeAggregationSemanticsConfirmed": false,
+  "normalQuitVerified": false,
+  "exitCode": -1,
+  "builtinLeakWarning": "BunkerBroadcastManager",
+  "fullNpcSourceOwnerIdentified": false,
+  "performanceAccepted": false,
+  "visualAccepted": false,
+  "next": "Use only verified names/count/time arrays for source-owner diagnosis; verify time aggregation before quantitative cost attribution. Keep allocation metrics unavailable for this setup. Do not modify existing launch/security controls.",
+  "evidenceReferences": [
+    {
+      "name": "array-summary.txt",
+      "bytes": 92,
+      "sha256": "841560db8a40351eb1f9c0c15ac740596e1fa4813260a068b53e063a0b52a1f4"
+    },
+    {
+      "name": "array-times.txt",
+      "bytes": 1817,
+      "sha256": "e16c6d47c6cbb6da64a516c9cb5afa7c840e906e3231c904998092e9855d6771"
+    },
+    {
+      "name": "array-counts.txt",
+      "bytes": 1710,
+      "sha256": "023f567f5b84fa3acff7fbd169b83f26cbfbf97e695087b635cf43a931299172"
+    },
+    {
+      "name": "array-allocations.txt",
+      "bytes": 13,
+      "sha256": "1a4b9673c0b57b88069e9bb40c982abe2ed92b1b39c8a780a52804b70b719f0b"
+    },
+    {
+      "name": "terminal.json",
+      "bytes": 160,
+      "sha256": "957fe97811e1b961296ea9b17d4602b18b700d0d684ffa4fe7edccb52f16e649"
+    },
+    {
+      "name": "init.c",
+      "bytes": 3749,
+      "sha256": "6b4bc9254b18310dd8f97eba484812cc2bd5f706253c1a1e9b0166b8da663f33"
+    }
+  ]
+}
