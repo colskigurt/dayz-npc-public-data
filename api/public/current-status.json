@@ -1,9 +1,9 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-07T23:28:43.196Z",
-  "sourceRunId": "support-dominance-score-once-20261108",
+  "generatedAt": "2026-11-07T23:43:14.217Z",
+  "sourceRunId": "support-dominance-eight-integration-20261108",
   "buildId": "B271AC1FFC8C78FF9CA2ED8EE35A753EA27B76A49A110C0D5C7F028AB502FD33",
-  "verificationStatus": "V2_METHOD_GATE_REPEATED_PASS_ADAPTER_SIGNED_RUNTIME_PENDING",
+  "verificationStatus": "EIGHT_BOUNDED_INTEGRATION_CHECKS_PASS_FULL_FUNCTIONAL_UNACCEPTED",
   "metrics": {
     "transformInclusiveWeight": 144,
     "totalWeight": 8101,
@@ -63,20 +63,70 @@
       "guardBatchCallsPerRow": 8192,
       "signatureVerified": true,
       "privateKeyIncluded": false,
-      "enforceCompiled": false,
-      "runtimeVerified": false,
+      "enforceCompiled": true,
+      "runtimeVerified": true,
       "wholeCpuMeasured": false,
       "fullFunctionalAccepted": false,
       "visualAccepted": false,
       "serverSha256": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805"
+    },
+    "latestEight": {
+      "independentRunsPerCondition": 1,
+      "conditions": [
+        "off",
+        "on"
+      ],
+      "activeGameSeconds": [
+        60.0045,
+        60.0194
+      ],
+      "aliveAcquiredMoved": [
+        8,
+        8
+      ],
+      "validTerminals": [
+        6,
+        4
+      ],
+      "allMilestones": [
+        7,
+        5
+      ],
+      "fallStarts": [
+        9,
+        12
+      ],
+      "landAndFollowCycles": [
+        9,
+        10
+      ],
+      "stateChainErrors": [
+        0,
+        0
+      ],
+      "recoveryGenerationErrors": [
+        0,
+        0
+      ],
+      "terminalAlignmentErrors": [
+        0,
+        0
+      ],
+      "onCalls": 88,
+      "onPruned": 151,
+      "boundedIntegrationChecksPassed": true,
+      "fullFunctionalAccepted": false,
+      "visualAccepted": false,
+      "wholeCpuMeasured": false
     }
   },
   "blockers": [
-    "Default-OFF addon not yet Enforce-compiled or runtime-verified",
-    "No8/64live regression, wholeCPU or new visual acceptance",
-    "Dynamic native query side effects and frequency of dominated candidates remain unverified"
+    "Full milestone/terminal regression unaccepted in both conditions",
+    "ON terminal difference and EXIT_LEASE_BACKOFF causality unresolved; two recovery cycles unfinished at bounded deadline",
+    "No64wholeCPU comparison or new visual acceptance"
   ],
   "evidenceReferences": [
+    "reports/operations/support-dominance-eight-integration-20261108.md",
     "reports/operations/support-dominance-score-once-20261108.md",
     "reports/operations/support-dominance-method-review-20261108.md",
     "reports/operations/moving-owner-dominance-review-20261108.md",
