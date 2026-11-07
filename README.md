@@ -1,4 +1,4 @@
-> **최신 기준선:** [전투ON64개체 혼합 장면 수집 성공](reports/operations/mixed-gameplay64-qualified-baseline-20261108.md).단일 Present p95 **18.48ms**, 서버CPU **821.62ms/게임초**.새 개선율·반복/전역 수용을 뜻하지 않습니다.
+> **최신 감사:** [64개체 입력 동등성·기존 경고 재현](reports/operations/mixed64-input-warning-audit-20261108.md). 설정/인자는 같지만 표시 모드가 달라 반복 수용 보류. 기존 월드경계 경고가 측정 중에도 대량 발생하며 CPU 기여는 미측정. [두 실행 수치](reports/operations/mixed64-repeat-presentation-mismatch-20261108.md) · [단일 기준선](reports/operations/mixed-gameplay64-qualified-baseline-20261108.md).
 
 > **최신 최적화 시험:** 표시 호스트 solid64 후보는 서버CPU−3.03%지만 Present p95+14.23%로 **선별 미통과·미수용**입니다. [비교 수치·근거·다음 작업](reports/operations/visual-solid-flat64-screen-result-20261108.md).
 

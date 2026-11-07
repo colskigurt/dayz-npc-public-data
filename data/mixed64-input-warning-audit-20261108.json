@@ -1,0 +1,41 @@
+{
+  "status": "EXISTING_WARNING_PERSISTS_IN_CURRENT_CAPTURE_WINDOWS",
+  "scope": "RPT wall timestamps joined to closedAt minus QPC capture duration; approximate wall bracket, not exact event-QPC alignment",
+  "runs": [
+    {
+      "runId": "ANIM-mixed-gameplay64-baseline-retry2",
+      "rptBytes": 90738278,
+      "rptSha256": "9007bcf8ba28752c1437a2bee2334b15502ac18d9e8e39aa334b9bca1a6ff3ac",
+      "totalWarningRows": 951937,
+      "estimatedCaptureBracketSeconds": 30.1722236,
+      "warningRowsInEstimatedBracket": 288384,
+      "rowsPerBracketSecond": 9557.929963106862,
+      "firstBracketWarning": "2026-11-08T03:06:21.187000+09:00",
+      "lastBracketWarning": "2026-11-08T03:06:51.318000+09:00"
+    },
+    {
+      "runId": "ANIM-mixed-gameplay64-repeat2",
+      "rptBytes": 68230166,
+      "rptSha256": "117f86f8b05e7be20c1a99c8a586dab648b888d17f578a378c6730cfb32d88ed",
+      "totalWarningRows": 715009,
+      "estimatedCaptureBracketSeconds": 30.15418,
+      "warningRowsInEstimatedBracket": 294144,
+      "rowsPerBracketSecond": 9754.667512099484,
+      "firstBracketWarning": "2026-11-08T03:23:08.909000+09:00",
+      "lastBracketWarning": "2026-11-08T03:23:39.048000+09:00"
+    }
+  ],
+  "existingResearch": [
+    "paired-eight1/WARNING_AND_NEXT_TEST.md",
+    "2026-11-03_060316_943258+0900_npc-network-parent-contract.md"
+  ],
+  "logCpuSelfTimeMeasured": false,
+  "warningOriginResolved": false,
+  "limits": [
+    "Counts are not CPU costs or performance improvements.",
+    "Static Run previously emitted warnings without GroundBody; do not assign solely to Drive/Displace.",
+    "No causal link to presentation-mode difference established.",
+    "Do not suppress logs or patch native memory to claim a fix."
+  ],
+  "decision": "Carry warning as unresolved baseline validity/quality limitation and reuse prior native-parent evidence; no broad engine reanalysis."
+}
