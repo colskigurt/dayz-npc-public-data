@@ -1,4 +1,4 @@
-> 현재: [64개체 single-pass CPU 선별 미수용](reports/operations/terrain-single-pass-cost64-screen-20261108.md). 단일 OFF/ON CPU −0.484%로5% 기준 미달, OFF 시계 제한 위반. 추가 반복·채택 보류; 기능·시각 최종 수용 미완료.
+> 현재: [접촉 반경·거리 공유 국소 비용 반복 통과](reports/operations/pair-radius-shared-local-cost-20261108.md). 독립2프로세스 dense약28.4%·mixed약15.2% 감소. 전체CPU·실제8/64기능·시각·배포 수용은 미완료.
 
 > **최신 비용 진단:** [현재64개체 서버CPU 부분귀속](reports/operations/current64-server-cpu-owner-20261108.md). 한스레드97.74%, 추정실행기leaf17.64%, Ray/Sphere포함10.29%; 스택누락28%·최적화성과 아님. [현재8명 종료7/8 기준결함](reports/operations/supported-terminal-eight-baseline-20261108.md) · [64명 Present3회 관측](reports/operations/mixed64-three-observations-20261108.md).
 
