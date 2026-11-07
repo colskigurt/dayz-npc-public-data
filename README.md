@@ -16,3 +16,5 @@
 LOW_HOLD 고정 목표·64논리/384native hosts·공격OFF·1280×800/VSync0·각15초 조건이다. 서버CPU는 스레드 합산 프로세스량이며 프레임 시간이 아니다. 후보3번은 미완료한2번째 쌍이므로1번과 재짝짓기하지 않는다. 원시 기록과 과거 보고서는 보존한다.
 
 [외부 AI 검토 안내](AI_REVIEW.md) · [보존된 운영 보고서](reports/operations/) · [과거 첫 화면](reports/archive/99e8ed18/README.md)
+
+참고 조사: [Days Gone 접촉·지지·밀침·애니메이션 기존 증거](reports/operations/days-gone-existing-contact-review-20261107.md). 새 성능 실험이 아니며 위 최신 비용 판정은 유지한다.
