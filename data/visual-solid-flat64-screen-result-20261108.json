@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "1.0",
+  "verificationStatus": "screen-failed-not-adopted",
+  "sourceRunId": [
+    "ANIM-host-solid-flat64-dedicated-1-off",
+    "ANIM-host-solid-flat64-dedicated-2-on"
+  ],
+  "repetitions": {
+    "independentPairs": 1,
+    "secondsPerCapture": 15
+  },
+  "conditions": {
+    "logicalAgents": 64,
+    "renderHosts": 320,
+    "combatEnabled": false,
+    "resolution": "1280x800",
+    "VSync": 0,
+    "candidate": "server extra visual hosts solid=false; leader and layer unchanged"
+  },
+  "metrics": {
+    "serverCpuMsPerGameSecond": {
+      "baseline": 823.8100335880315,
+      "candidate": 798.8539886800512,
+      "absolute": -24.9560449079803,
+      "relativePercent": -3.029344617142671
+    },
+    "presentP95Ms": {
+      "baseline": 12.775909999999998,
+      "candidate": 14.593760000000001,
+      "absolute": 1.8178500000000035,
+      "relativePercent": 14.228732043353487
+    },
+    "presentQuantiles": [
+      {
+        "p50": 8.8999,
+        "p95": 12.775909999999998,
+        "p99": 14.784170000000001
+      },
+      {
+        "p50": 9.4014,
+        "p95": 14.593760000000001,
+        "p99": 16.463189999999997
+      }
+    ],
+    "clientCpuBusyP95Ms": {
+      "baseline": 12.646619999999997,
+      "candidate": 14.454620000000002,
+      "absolute": 1.8080000000000052,
+      "relativePercent": 14.296310002198265
+    }
+  },
+  "screenCriteria": {
+    "serverCpuReductionAtLeast3Percent": true,
+    "presentP95RegressionAtMost5Percent": false
+  },
+  "details": [
+    {
+      "runId": "ANIM-host-solid-flat64-dedicated-1-off",
+      "observedHosts": 320,
+      "slaveSolid": [
+        "true"
+      ],
+      "leaderSolid": [
+        "true"
+      ],
+      "layers": [
+        "524288"
+      ],
+      "workPerGameSecond": {
+        "contactSolves": 2556.8121902351577,
+        "footRays": 25568.121902351577,
+        "jointSweeps": 10227.24876094063
+      },
+      "workWindow": [
+        30.4383,
+        45.6111
+      ]
+    },
+    {
+      "runId": "ANIM-host-solid-flat64-dedicated-2-on",
+      "observedHosts": 320,
+      "slaveSolid": [
+        "false"
+      ],
+      "leaderSolid": [
+        "true"
+      ],
+      "layers": [
+        "524288"
+      ],
+      "workPerGameSecond": {
+        "contactSolves": 2565.5354469281083,
+        "footRays": 25655.354469281086,
+        "jointSweeps": 10262.141787712433
+      },
+      "workWindow": [
+        30.2332,
+        45.4616
+      ]
+    }
+  ],
+  "blockers": [
+    "Present p95 gate failed; do not expand repeat runs for adoption",
+    "One pair does not establish causal performance effect",
+    "Client solid replication not measured; combat/high-density traversal/visual quality unverified"
+  ],
+  "evidenceReferences": [
+    {
+      "name": "analysis-1.json",
+      "sha256": "3d0b9f6541b61434a109e4d9871af06e112bdc033dc6282e7aafc7cd758195e0"
+    },
+    {
+      "name": "analysis-2.json",
+      "sha256": "e5ba597248e4feba1526352ac61040015aaeec3107f59a6a36fa4ff246506229"
+    },
+    {
+      "name": "validation-contract.json",
+      "sha256": "dc1e577a8cfe6c985688601661fb4c70863ddbfbe433a64659c416c7b75827b6"
+    },
+    {
+      "name": "admin-completed.json",
+      "sha256": "f73830fd8f3977307d9cd3d5e719d55ecb30cdc9d66dad362a8d9c6572dacbef"
+    }
+  ]
+}
