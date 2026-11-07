@@ -1,0 +1,26 @@
+{
+  "status": "ISOLATED_SOURCE_PREPARED_NOT_COMPILED",
+  "sourceSha256": "eb43c45ef31e0e48b222ca3bf3ce03b4b2a7d4b6ef2ce580ba926c39019a2b82",
+  "inverseSubstitutionExact": true,
+  "lifetime": "one synchronous TrySupportBypass invocation only",
+  "worldMutationAudit": "SupportStepClear -> Floor/RayCastBullet and SphereCastBullet only; no setters observed. Navmesh/PeerSegmentClear/GroundReservationsClear require further audit.",
+  "gamePboChanged": false,
+  "benchmarkGate": "Exact ordered candidate decisions and chosen route; local cost repeatable >=5% with no >3% control-path regression before 8/64 escalation. Whole CPU and visual acceptance separate.",
+  "risk": "Engine or intervening helper side effects could invalidate repeated inputs; array-free integer masks add branch overhead; actual impact limited to entry checks.",
+  "verificationStatus": "OFFLINE_LOGICAL_DIAGNOSTIC_ONLY",
+  "exhaustiveStableEntryAndDownstreamMasks": 65536,
+  "modeledInputRepeatsChecked": 216,
+  "mismatches": 0,
+  "baselineEntryCallsPerEligibleInvocation": 24,
+  "candidateEntryCallsPerEligibleInvocation": 8,
+  "limitations": [
+    "Python model is not Enforce floating-point, world physics, navmesh or route execution validation.",
+    "Assumes stable world-query result during one synchronous call; no cross-frame cache.",
+    "No performance improvement measured."
+  ],
+  "sourceHashes": {
+    "NFSupportEntryReference.c": "392b8a69c26c114d7ab5068719ae0a316a250d0e579f84703c172b32b7720807",
+    "NFSupportEntryCandidate.c": "3dc508d3689d44e1195d6135de9d19d4826d6a2ad70a0e71501eaaeb79e63a46"
+  },
+  "sourceRunId": "ANIM-support-entry-compile1"
+}
