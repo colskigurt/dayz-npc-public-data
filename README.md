@@ -1,4 +1,4 @@
-> **현재 작업 방향:** [실전384호스트 혼합장면과평지320호스트의비용범위정리](reports/operations/mixed-gameplay-cost-decision-scope-20261108.md).다음은현행엔진의통제된혼합장면기준선준비이며,신규성능개선은아직미검증입니다.
+> **현재 작업:** [전투ON64개체 혼합 기준선 준비](reports/operations/mixed-gameplay-baseline-preparation-20261108.md).첫실행의카메라·진단계수설정을수정했고 **비용수집0회·수정본미실행** 상태입니다.
 
 > **최신 최적화 시험:** 표시 호스트 solid64 후보는 서버CPU−3.03%지만 Present p95+14.23%로 **선별 미통과·미수용**입니다. [비교 수치·근거·다음 작업](reports/operations/visual-solid-flat64-screen-result-20261108.md).
 
