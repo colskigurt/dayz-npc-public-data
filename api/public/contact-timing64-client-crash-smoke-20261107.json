@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-07T00:20:02.593134+00:00",
+  "sourceRunId": "contact-timers1-cost64-crash-and-observer-smoke",
+  "buildId": "BBCAC26DD0A80F578C3789D236DFADDF6CC2108C85AE27E58579F0F746F6BC67",
+  "verificationStatus": "COST_NOT_STARTED_NATIVE_CLIENT_CRASH_SMOKE_SINGLE_SURVIVAL",
+  "costRun": {
+    "runId": "ANIM-ct64-1-control",
+    "timerOff": false,
+    "candidateAddonLoaded": true,
+    "nativeFaultRva": "0x21a110",
+    "exceptionCode": "0xc0000005",
+    "cpuCaptureStarted": false,
+    "presentCaptureStarted": false,
+    "validCostPairs": 0
+  },
+  "smoke": {
+    "runId": "ANIM-ct64-observer-off-smoke1",
+    "gameSeconds": 60.0057,
+    "aliveReceivers": 64,
+    "receiverSnapshots": 224,
+    "newCrashDump": false,
+    "clientObserverFlagEnabled": false,
+    "timerOff": false,
+    "nativeHosts": 384,
+    "continuousForegroundMeasured": false,
+    "performanceMeasured": false,
+    "causalFixEstablished": false
+  },
+  "priorClientFaultRvas": [
+    "0x21a110",
+    "0x9b82ab",
+    "0x21a107"
+  ],
+  "sourceOwnerRecovered": false,
+  "nativeCodeModified": false,
+  "newPbo": false,
+  "performanceAccepted": false,
+  "visualAccepted": false,
+  "fullFunctionalRegressionAccepted": false,
+  "next": "Bounded observer/context investigation before cost retry; no physical checks removed or repeated favorable-run search",
+  "metrics": {
+    "validCostPairs": 0,
+    "costRun": {
+      "runId": "ANIM-ct64-1-control",
+      "timerOff": false,
+      "candidateAddonLoaded": true,
+      "nativeFaultRva": "0x21a110",
+      "exceptionCode": "0xc0000005",
+      "cpuCaptureStarted": false,
+      "presentCaptureStarted": false,
+      "validCostPairs": 0
+    },
+    "smoke": {
+      "runId": "ANIM-ct64-observer-off-smoke1",
+      "gameSeconds": 60.0057,
+      "aliveReceivers": 64,
+      "receiverSnapshots": 224,
+      "newCrashDump": false,
+      "clientObserverFlagEnabled": false,
+      "timerOff": false,
+      "nativeHosts": 384,
+      "continuousForegroundMeasured": false,
+      "performanceMeasured": false,
+      "causalFixEstablished": false
+    }
+  },
+  "blockers": [
+    "Native client crash before cost warmup",
+    "Original script/object owner of fault unknown",
+    "ObserverOFF one survival does not prove cause/fix",
+    "No64 CPU/Present comparison completed"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/contact-timing64-client-crash-smoke-20261107.md",
+      "localCheckpointSha256": "763459cd35ffb4ac7d7fe773cd0e4614158419d3a8e201ade438e969794ace47",
+      "localEvidenceFiles": 15
+    }
+  ],
+  "limitations": [
+    "Dump/address fields identify failure site, not corruption origin",
+    "Earlier same-RVA-range crash is not proof of identical root cause",
+    "Candidate addon loaded but timerOff disabled in both current runs",
+    "No64 functional/visual/performance acceptance"
+  ]
+}

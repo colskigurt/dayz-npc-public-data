@@ -1,16 +1,16 @@
 # DayZ NPC 현재 상태
 
-최신: [접촉 계측OFF8개체 비교](operations/contact-timing-eight-pair1-20261107.md).
+최신: [64개체 비용시작 전 크래시와 분리진단](operations/contact-timing64-client-crash-smoke-20261107.md).
 
-| 항목 | 결과 |
+| 항목 | 판정 |
 |---|---|
-|후보 기능|8/8 전체경유·최종,낙하9/복귀9,상태오류0|
-|계측OFF|8개체 시간0/Unavailable;실제물리호출양수·ray=10×solve|
-|대조|300초HIGH횟수조건미완료;그대로보존|
-|성능·시각|미측정;기능개선·CPU절감 주장하지않음|
-|64비용|6실행3쌍 준비만완료;원본384호스트·FastOFF|
-|최종판정|후보단일기능통과,완전쌍회귀/성능/최종수용아님|
+|타이머OFF8기능|후보8/8·낙하9/복귀9;대조HIGH횟수조건미완료|
+|64비용|첫대조군워밍업중크래시;CPU/Present수집0·비교0쌍|
+|오류|client RVA0x21a110,20바이트복사중쓰기;소유객체불명|
+|과거기록|후보없던실험에동일RVA범위오류;동일근본원인미확정|
+|관찰기OFF진단|64수신기생존60.0057초,새덤프없음;단일생존일뿐|
+|최적화/시각/전체20ms|미수용·미완료|
 
-기존정체를수정하는기능개발로전환하지않는다. 전용부하조건확보후외부CPU/Present로비교한다. 시간필드0은비용0이아니다.
+기존PBO·NPC물리·네이티브메모리불변. 관찰기OFF를영구수정으로채택하지않는다. 재시작으로유리한비용값을찾지않고실제크래시문맥을먼저좁힌다.
 
-[공개 JSON](../api/public/contact-timing-eight-pair1-20261107.json) · [후보 코드](../review/contact-timing-candidate/NFContactTimers.c) · [컴파일 확인](operations/contact-timing-compile-only-20261107.md)
+[공개 JSON](../api/public/contact-timing64-client-crash-smoke-20261107.json) · [8개체 결과](operations/contact-timing-eight-pair1-20261107.md)
