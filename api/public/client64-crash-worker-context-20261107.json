@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-07T00:28:59.922308+00:00",
+  "sourceRunId": "client64-crash-worker-context-review",
+  "buildId": "E3BA9660A1FA7EC24046FE298A387662DAB0C8830AAD3851A8133F8C3C2CFBE6",
+  "verificationStatus": "RECORDED_CONTEXT_DIAGNOSED_CAUSE_UNRESOLVED",
+  "metrics": {
+    "matchingCallerFrames": 10,
+    "moduleMetadataMatched": true,
+    "recordedExceptionThreadName": "enfWorkShort 4",
+    "recordedThreadNames": 24,
+    "nativeRangesDecoded": 10,
+    "newRuntimeExecutions": 0,
+    "validCostPairs": 0
+  },
+  "blockers": [
+    "Native job and object owner unknown",
+    "No causal fix",
+    "64 cost comparison not completed"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/client64-crash-worker-context-20261107.md",
+      "localCheckpointSha256": "c0cc2e96d0498577c6f56f90c27583385a577d9f0c82bc30c5010b2cfc8bec8a",
+      "evidenceFiles": 8
+    }
+  ],
+  "matchingCallerRvas": [
+    "0x21a1d6",
+    "0x375ce7",
+    "0x3545c9",
+    "0x350f4a",
+    "0x352e9d",
+    "0x350ce4",
+    "0x237cb0",
+    "0x238507",
+    "0x23910b",
+    "0x22a40f"
+  ],
+  "performanceAccepted": false,
+  "visualAccepted": false,
+  "causeEstablished": false,
+  "conditions": {
+    "recordedDumpsCompared": 2,
+    "runtimeObservationAdded": false,
+    "observerSourceEdited": false
+  },
+  "limitations": [
+    "Matching module metadata is not full binary hash identity",
+    "Worker name does not classify animation/physics/render ownership",
+    "Bounded RTTI search had no validated candidates; not proof none exists"
+  ]
+}
