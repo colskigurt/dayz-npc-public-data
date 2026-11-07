@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-08T07:47:26+09:00",
+  "sourceRunId": "ANIM-host-floor-isolation-retry2",
+  "excludedIncompleteRuns": [
+    "ANIM-host-floor-isolation1"
+  ],
+  "buildId": "baseline-five-5A0EED07-engine987FBC47",
+  "verificationStatus": "SINGLE_PROCESS_SIX_BLOCK_DIAGNOSTIC_ONLY",
+  "metrics": {
+    "conditions": "Same384hosts;fixed logical roots;Idle0;AI/Drive/Crowd/frameFallOFF;existingtransformcommitON;20Hzpose/contact;A-B-C-C-B-A,15wallSeconds/window",
+    "independentProcesses": 1,
+    "windowsPerCondition": 2,
+    "cpuMsPerWallSecond": {
+      "host": [
+        218.52644453355623,
+        230.01732388068515
+      ],
+      "pose": [
+        229.00537360193135,
+        233.30711272462457
+      ],
+      "contactBundle": [
+        292.70360031611625,
+        272.74985194804907
+      ]
+    },
+    "meanCpuMsPerWallSecond": {
+      "host": 224.2718842071207,
+      "pose": 231.15624316327796,
+      "contactBundle": 282.72672613208266
+    },
+    "probeAccepted": 76864,
+    "probeFailures": 0,
+    "logicalRootsFixed": true,
+    "presentP95": null
+  },
+  "blockers": [
+    "One complete process, not independent repeats",
+    "Fixed idle differs from live moving workload",
+    "Marginal bundle not native query self-time",
+    "Full function/visual/optimization acceptance incomplete"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/host-floor-pose-contact-isolation-20261108.md"
+    }
+  ],
+  "productionAdoption": false
+}

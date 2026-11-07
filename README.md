@@ -1,4 +1,4 @@
-> 현재: [접촉 후보64 전체CPU 선별 미수용](reports/operations/pair-radius-cost64-screen-20261108.md).828.44→826.41ms/초(-0.244%),5%기준미달.시계기준·64생존/이동확인,추가반복·채택보류.
+> 현재: [384호스트 기본·본·접촉 비용 분리 진단](reports/operations/host-floor-pose-contact-isolation-20261108.md). 고정Idle CPU평균224/231/283ms/초,단일프로세스진단·최적화성공아님. 다음은기존이동/변환CPU귀속.
 
 > **최신 비용 진단:** [현재64개체 서버CPU 부분귀속](reports/operations/current64-server-cpu-owner-20261108.md). 한스레드97.74%, 추정실행기leaf17.64%, Ray/Sphere포함10.29%; 스택누락28%·최적화성과 아님. [현재8명 종료7/8 기준결함](reports/operations/supported-terminal-eight-baseline-20261108.md) · [64명 Present3회 관측](reports/operations/mixed64-three-observations-20261108.md).
 
