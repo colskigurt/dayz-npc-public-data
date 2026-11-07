@@ -1,0 +1,106 @@
+{
+  "analysis": {
+    "sourceRunId": "ANIM-support-entry-method5",
+    "verificationStatus": "METHOD_SCREEN_ONLY",
+    "rows": 288,
+    "expectedRows": 288,
+    "contractComplete": true,
+    "conditionResults": [
+      {
+        "condition": "active_guard",
+        "pairedGroups": 12,
+        "referenceRawTicks": 3905,
+        "candidateRawTicks": 3778,
+        "relativeChangePercent": -3.252240717029453,
+        "medianGroupChangePercent": -2.170589592707972,
+        "acceptedCalls": 0,
+        "pathPoints": 0
+      },
+      {
+        "condition": "fall_guard",
+        "pairedGroups": 12,
+        "referenceRawTicks": 4240,
+        "candidateRawTicks": 4122,
+        "relativeChangePercent": -2.783018867924525,
+        "medianGroupChangePercent": -1.729106628242072,
+        "acceptedCalls": 0,
+        "pathPoints": 0
+      },
+      {
+        "condition": "near_wall",
+        "pairedGroups": 12,
+        "referenceRawTicks": 10692678,
+        "candidateRawTicks": 9818622,
+        "relativeChangePercent": -8.174341357702907,
+        "medianGroupChangePercent": -8.207355302619602,
+        "acceptedCalls": 384,
+        "pathPoints": 768
+      },
+      {
+        "condition": "roof",
+        "pairedGroups": 12,
+        "referenceRawTicks": 1868387,
+        "candidateRawTicks": 826248,
+        "relativeChangePercent": -55.77747008515901,
+        "medianGroupChangePercent": -55.79676688137775,
+        "acceptedCalls": 0,
+        "pathPoints": 0
+      },
+      {
+        "condition": "roof_edge",
+        "pairedGroups": 12,
+        "referenceRawTicks": 1076406,
+        "candidateRawTicks": 453739,
+        "relativeChangePercent": -57.84685332486069,
+        "medianGroupChangePercent": -57.91247065062474,
+        "acceptedCalls": 0,
+        "pathPoints": 0
+      },
+      {
+        "condition": "terrain",
+        "pairedGroups": 12,
+        "referenceRawTicks": 27072999,
+        "candidateRawTicks": 26243558,
+        "relativeChangePercent": -3.063720424914873,
+        "medianGroupChangePercent": -3.338465665222384,
+        "acceptedCalls": 384,
+        "pathPoints": 768
+      }
+    ],
+    "activeConditionFivePercentScreen": false,
+    "independentProcesses": 1,
+    "limitations": [
+      "One server process; group repeats are not independent process repeats.",
+      "Timing includes context reset shared by both methods; no full NPC CPU/frame-time claim.",
+      "Static method worlds do not establish live push/fall/landing/reclimb preservation.",
+      "No visible-frame or p50/p95/p99 performance acceptance."
+    ],
+    "evidenceSha256": "a665e73606ec82e0827b4a12d699e112ee4ea00c24dc9714ac8c89ef8781849f"
+  },
+  "disposition": {
+    "sourceRunId": "ANIM-support-entry-method5",
+    "status": "LOCAL_CONFORMANCE_PASSED_COST_SCREEN_FAILED_NOT_ADOPTED",
+    "reason": "terrain local change -3.0637% is below predeclared5% active-condition screen; no64 escalation justified by this run",
+    "independentValidProcesses": 1,
+    "invalidRuns": [
+      {
+        "run": "method1",
+        "reason": "result variable expression compile failure; no timed data"
+      },
+      {
+        "run": "method2",
+        "reason": "row concatenation Formula too complex; no timed data"
+      },
+      {
+        "run": "method3",
+        "reason": "FileHandle assignment compile failure; no timed data"
+      },
+      {
+        "run": "method4",
+        "reason": "batch counters accumulated; invalid batch results"
+      }
+    ],
+    "gamePboChanged": false,
+    "nextDecision": "Return to high-cost Drive/ConsumeContact/Displace ownership; do not repeat this candidate merely to seek favorable noise."
+  }
+}
