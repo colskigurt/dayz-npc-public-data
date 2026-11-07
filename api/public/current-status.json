@@ -1,9 +1,9 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-07T23:21:25.925Z",
-  "sourceRunId": "support-dominance-method-review-20261108",
-  "buildId": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805",
-  "verificationStatus": "PROMISING_LOCAL_GAIN_EARLY_GUARD_COST_UNRESOLVED",
+  "generatedAt": "2026-11-07T23:28:43.196Z",
+  "sourceRunId": "support-dominance-score-once-20261108",
+  "buildId": "B271AC1FFC8C78FF9CA2ED8EE35A753EA27B76A49A110C0D5C7F028AB502FD33",
+  "verificationStatus": "V2_METHOD_GATE_REPEATED_PASS_ADAPTER_SIGNED_RUNTIME_PENDING",
   "metrics": {
     "transformInclusiveWeight": 144,
     "totalWeight": 8101,
@@ -39,40 +39,45 @@
       "accepted": false
     },
     "candidate": {
-      "name": "SupportBypass dominated candidate pruning",
-      "implemented": "isolated mission only",
-      "productionAccepted": false,
+      "name": "SupportBypass dominated candidate score-once v2",
+      "implemented": "isolated method and default-OFF addon",
       "independentValidProcesses": 2,
-      "rowsPerProcess": 288,
-      "conformanceWorkRowsPerProcess": 72,
+      "allConditionGatePassed": true,
+      "productionAccepted": false,
       "terrainChangePct": [
-        -88.63599554366121,
-        -88.59560972045891
+        -88.72959868091932,
+        -88.1988117579947
       ],
       "nearWallChangePct": [
-        -79.37433864335763,
-        -80.07245753083892
+        -79.80680668136544,
+        -79.95524537407391
       ],
-      "secondRunGuardChangePct": [
-        3.5153797865662195,
-        4.856867159858469
+      "roofChangePct": [
+        -0.20580130916000305,
+        0.5266564916167393
       ],
-      "allConditionGatePassed": false,
+      "edgeChangePct": [
+        -1.5497158263081734,
+        0.1056795943892741
+      ],
+      "guardBatchCallsPerRow": 8192,
+      "signatureVerified": true,
+      "privateKeyIncluded": false,
+      "enforceCompiled": false,
+      "runtimeVerified": false,
       "wholeCpuMeasured": false,
-      "referencePathCallsTerrain": 288,
-      "candidatePathCallsTerrain": 24,
-      "referenceSupportCallsTerrain": 6144,
-      "candidateSupportCallsTerrain": 636,
-      "workCounterScope": "12 untimed conformance calls per condition per process"
+      "fullFunctionalAccepted": false,
+      "visualAccepted": false,
+      "serverSha256": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805"
     }
   },
   "blockers": [
-    "Early-return guard relative cost gate unresolved; v1 active-only gate corrected by v2; no8/64 promotion",
-    "28% missing stacks; inclusive weight is not self-time",
-    "NPC-specific runtime identity unavailable",
-    "Whole CPU root cause unresolved; no new visual or full functional acceptance"
+    "Default-OFF addon not yet Enforce-compiled or runtime-verified",
+    "No8/64live regression, wholeCPU or new visual acceptance",
+    "Dynamic native query side effects and frequency of dominated candidates remain unverified"
   ],
   "evidenceReferences": [
+    "reports/operations/support-dominance-score-once-20261108.md",
     "reports/operations/support-dominance-method-review-20261108.md",
     "reports/operations/moving-owner-dominance-review-20261108.md",
     "reports/operations/transform-update-attribution-20261108.md",
