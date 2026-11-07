@@ -1,0 +1,85 @@
+{
+  "status": "EVIDENCE_SCOPES_RECONCILED_NOT_COMPLETION",
+  "requirements": [
+    {
+      "requirement": "14 clips request/transition/5part pose",
+      "evidence": "ANIM-batch14-single-session3",
+      "classification": "HISTORICAL_SINGLE_BATCH_REGRESSION_PASS",
+      "remaining": "Current engine cohort not a new14clip pass; user visual approval preserved separately."
+    },
+    {
+      "requirement": "8-agent playable follow/climb/fall/combat",
+      "evidence": "ANIM-playable-eight2",
+      "classification": "HISTORICAL_DIAGNOSTIC_SUCCESS_NOT_WHOLE_REGRESSION",
+      "remaining": "Melee/leg damage missing in8run; one lift-limit recovery and two deferred hit reactions documented."
+    },
+    {
+      "requirement": "64-agent current CPU/frame baseline",
+      "evidence": [
+        "ANIM-mixed-gameplay64-baseline-retry2",
+        "ANIM-mixed-gameplay64-repeat2",
+        "ANIM-mixed-gameplay64-repeat3"
+      ],
+      "classification": "THREE_VALID_CAPTURES_TWO_DISPLAY_COHORTS",
+      "remaining": "No matched optimization; two independent-flip/one composed-flip; not global20ms acceptance."
+    },
+    {
+      "requirement": "64-agent valid terminals and recovery",
+      "evidence": "ANIM-playable-sixtyfour1",
+      "classification": "INCOMPLETE_CONTRADICTED_BY_TWO_PERSISTENT_DEFECTS",
+      "remaining": "ID54 repeated recovery without progress; ID17 corpse support/loot incomplete; mixed30sec does not resolve either."
+    },
+    {
+      "requirement": "64-agent visible smoothness",
+      "evidence": "Historical user feedback plus14clip single scene; current Present telemetry",
+      "classification": "INSUFFICIENT_FOR_CURRENT_DENSE_SCENE",
+      "remaining": "Present/CPU bone activity do not directly prove individual visible animation."
+    },
+    {
+      "requirement": "physical query CPU reduction",
+      "evidence": "prior controlled candidates and current processCPU",
+      "classification": "NO_NEW_ACCEPTED_REDUCTION",
+      "remaining": "Native queries remain10rays/solve and~4sweeps/solve; rejected candidates remain off."
+    }
+  ],
+  "nextBoundedVerification": {
+    "purpose": "Current-build acceptance coverage, not new function development",
+    "reuseExistingScene": true,
+    "noNewPboRequired": true,
+    "sequence": "Reuse current8 proof first, then bounded64 route/contact/death observation; no mandatory simultaneous roof residency.",
+    "record": [
+      "per-ID spatial progress and terminal status",
+      "fall-land-FOLLOW-reclimb generation",
+      "dead corpse support/inventory completion",
+      "display mode and visible observations separate from CPU"
+    ],
+    "stopRules": [
+      "If existing defect reproduces, record baseline defect and do not start chained recovery feature development.",
+      "No candidate adoption or speedup claim without controlled repeated matched comparison.",
+      "Do not regenerate14clip assets or repeat unchanged static pose work unless a current-engine contradiction appears."
+    ],
+    "notExecuted": true
+  },
+  "evidence": [
+    {
+      "name": "acceptance-build-audit-20261108.json",
+      "sha256": "9d5fd1171363e61159f46ab9284d5987126fb5d8395584b8bbabddb9588452d3"
+    },
+    {
+      "name": "analysis.json",
+      "sha256": "c9fd7ea4553533783c0f8fb6455058941d41ebffaa34bafc514f5e51df07250f"
+    },
+    {
+      "name": "analysis.json",
+      "sha256": "9f5cbabe08bd73d7574e6c75ba44d7cdbe1062f078c5187e58ab727290dd166c"
+    },
+    {
+      "name": "batch-analysis.json",
+      "sha256": "ff5c91b002f49e00135c7eb65c4e454bb6b2287f3dc58175b483cddabef33f18"
+    },
+    {
+      "name": "three-run-summary.json",
+      "sha256": "27cb216fabade1cd0cb2ffffd9fe9f258e2921d1cca2466c39e5251fe55660e8"
+    }
+  ]
+}
