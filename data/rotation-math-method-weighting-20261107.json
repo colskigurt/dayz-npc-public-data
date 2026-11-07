@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-11-07T20:47:57.182887+09:00",
+  "sourceRunId": "ANIM-rotation-math-method3",
+  "buildId": "453d6a9e688d7bf14c5b98c305dd5a45200ec52156949c10691839b43c58bc9a",
+  "verificationStatus": "ARITHMETIC_METHOD_GATE_PASSED_LOW_PRIORITY_NO_PBO",
+  "metrics": {
+    "schemaVersion": "1.0",
+    "generatedAt": "2026-11-07T20:47:57.182887+09:00",
+    "sourceRunId": "ANIM-rotation-math-method3",
+    "verificationStatus": "ARITHMETIC_METHOD_GATE_PASSED_LOW_PRIORITY_NO_PBO",
+    "vectorComparisons": 65536,
+    "perComponentNumericMismatches": 0,
+    "maximumPositionError": 0,
+    "groupsPerBlock": 50000,
+    "independentProcessRuns": 1,
+    "pairedBlocks": 3,
+    "pairs": [
+      {
+        "offTicks": 853378,
+        "onTicks": 500121,
+        "deltaTicks": -353257,
+        "changePct": -41.39513791074998
+      },
+      {
+        "offTicks": 924032,
+        "onTicks": 498830,
+        "deltaTicks": -425202,
+        "changePct": -46.01593884194487
+      },
+      {
+        "offTicks": 857385,
+        "onTicks": 499066,
+        "deltaTicks": -358319,
+        "changePct": -41.79207707156062
+      }
+    ],
+    "medianTicksChangePct": -41.79207707156062,
+    "methodGatePassed": true,
+    "processContainment": {
+      "candidateGroups": 150000,
+      "qpcFrequency": 10000000,
+      "totalProcessCpuMs": 406.25,
+      "processHandleRetained": true,
+      "qpcStart": 221940545383,
+      "scope": "Inclusive containment window includes wait/file/other engine work, not math self-time",
+      "qpcEnd": 221945078183,
+      "sourceRunId": "ANIM-rotation-math-method3",
+      "wallSeconds": 0.45328,
+      "baselineGroups": 150000
+    },
+    "conditionalScaleProjection": {
+      "liveSolvesPerGameSecond": 2564.8771658992314,
+      "inclusiveWholeBenchmarkCpuAssignedToBaselineGroupsMsPerLiveGameSecond": 6.9465423243104185,
+      "actualWholeCpuSavingMeasured": false,
+      "notProductionUpperBound": true,
+      "assumption": "Only an order-of-magnitude projection if synthetic arithmetic group represents live four-point rotation. Inclusive CPU also includes candidate and engine/wait/file work."
+    },
+    "performanceAccepted": false,
+    "newPbo": false,
+    "physicsOrAnimationCodeChanged": false,
+    "serverExitCode": -1,
+    "normalQuitAccepted": false,
+    "limitations": [
+      "Synthetic vectors/headings, not14clip real-bone replay",
+      "Numeric equality excludes signed-zero bit identity/NaN cases",
+      "Native trig call count/compiler CSE not instrumented",
+      "TickCount not converted to milliseconds/self-time",
+      "Method2 checksum accumulated between blocks; provisional timing excluded, not an independent repeat",
+      "Method1 compile failure excluded; exact owned forced stop saved"
+    ]
+  },
+  "blockers": [
+    "No integrated whole CPU benefit",
+    "Synthetic arithmetic contribution likely small; no automatic PBO expansion"
+  ],
+  "evidenceReferences": [
+    {
+      "id": "results.json",
+      "sha256": "9992127d9ccff2e3ecbf2d324575706d0f409ee4ce8940bc3b2daed89eb7c037"
+    },
+    {
+      "id": "acceptance.json",
+      "sha256": "5d3f66c2d0a6cbf999b9890f26b3a280d3bfac8a865fcd50ab3506d34d86a112"
+    },
+    {
+      "id": "method3/benchmark-process-cpu.json",
+      "sha256": "c2b3dc5e0d679f0f6479d5c67aa6b8df42571cec1827edbcdcc9f35958a3f105"
+    },
+    {
+      "id": "method3/sample-benchmark-cpu.ps1",
+      "sha256": "7cfdc5632918a8502c59b20c76a79edb6857453b1b948a7d495a5970f196ac53"
+    },
+    {
+      "id": "method3/mission/server-role-lod0.chernarusplus/init.c",
+      "sha256": "2ed99f79074d4e3854bcdff75dc666de4ab517219543c95e9af26f6dcd46a8e2"
+    },
+    {
+      "id": "method3/cases/ANIM-rotation-math-method3/manifest.json",
+      "sha256": "fab0a2ad11b1889ff99f9d4e13327b588d39c87b5214ce287041d17e141738e8"
+    },
+    {
+      "id": "method3/cases/ANIM-rotation-math-method3/runtime-once/server-profile/rotation-math.tsv",
+      "sha256": "0e5e9ae4cfc87475e601c902edc21102e795f62defebe717c6eeeebeae2635b9"
+    },
+    {
+      "id": "method3/cases/ANIM-rotation-math-method3/runtime-once/server-profile/rotation-clock.tsv",
+      "sha256": "997ba55562bd02b2fbb5c8020a214690424493510cff0a7415458e0839570c9b"
+    },
+    {
+      "id": "method3/cases/ANIM-rotation-math-method3/runtime-once/records/server-20261107T1139425222681Z.json",
+      "sha256": "b882cbe280293327a333d4929385ceb0db8714970515ecfe24a00ba181c89a79"
+    },
+    {
+      "id": "method3/cases/ANIM-rotation-math-method3/runtime-once/server-profile/script_2026-11-07_20-39-09.log",
+      "sha256": "f405272e356ab5b3c8b27cded4577678a2c2571379e755d797c7b5fc84b7b241"
+    }
+  ]
+}
