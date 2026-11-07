@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "1.0",
+  "sourceRunId": "ANIM-mixed64-current-cpu-owner1",
+  "verificationStatus": "SINGLE_CPU_OWNER_DIAGNOSTIC_WITH_STACK_GAPS",
+  "engineSha256": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805",
+  "requestedSeconds": 8,
+  "analyzedEventSpanSeconds": 10.847172,
+  "rawEventSpanSeconds": 11.847172,
+  "traceBytes": 8698487,
+  "targetSampleWeight": 8101,
+  "lostEvents": 0,
+  "lostBuffers": 0,
+  "missingStackWeight": 2268,
+  "firstIpMismatchWeight": 1,
+  "largestAnonymousThreadWeight": 7918,
+  "largestThreadFraction": 0.9774101962720652,
+  "executorInference": {
+    "status": "INFERRED_SCRIPT_INSTRUCTION_EXECUTOR_FAMILY_NOT_RECOVERED_SYMBOL",
+    "rva": "0x21f820",
+    "leafWeight": 1429,
+    "leafFraction": 0.176397975558573,
+    "inclusiveWeight": 3649,
+    "inclusiveFraction": 0.45043821750401186,
+    "staticRangeBytes": 22756,
+    "decodedBytes": 22481,
+    "completeDecode": false
+  },
+  "queryBoundary": {
+    "rayInclusiveWeight": 468,
+    "sphereInclusiveWeight": 366,
+    "unionWeight": 834,
+    "bothWeight": 0,
+    "fractionOfAllTargetSamples": 0.10295025305517837,
+    "qualification": "Observed stack inclusion only; missing/bad stacks excluded. Not exclusive query time or safe saving ceiling."
+  },
+  "performanceImprovementAccepted": false,
+  "visualAccepted": false,
+  "wholeFunctionalAccepted": false,
+  "newPbo": false,
+  "nextDecision": "Identify source-script callers within observed executor before another native-query micro-optimization. Reuse trace; no repeat capture merely to fill missing stacks.",
+  "limits": [
+    "System-wide raw ETL retained privately; public derivative target-only.",
+    "Requested8s differs from ETL analysis span due recorder startup/stop.",
+    "CPU stack sampling is not invocation counts, allocator bytes,GC,per-agent costs or visible animation quality.",
+    "No current-to-old percentage speedup comparison: scene/engine/stack completeness differ."
+  ],
+  "evidenceReferences": [
+    {
+      "name": "cpu-1.etl",
+      "bytes": 8698487,
+      "sha256": "db89700650bed2faba3e336a9aba53eb4f83157f260cfb415bc7c68b3a737103"
+    },
+    {
+      "name": "cpu-1-result.json",
+      "bytes": 438,
+      "sha256": "54a4b89234b352e42fffdb8829a5a0bc064923f889fa88fdd68ffe32b12da0b3"
+    },
+    {
+      "name": "cpu-1-samples-target-v1.json",
+      "bytes": 11994,
+      "sha256": "0df0749928fd4d764b179245055ca11e12546f6a7c028cf8cb473fbadac42529"
+    },
+    {
+      "name": "cpu-1-query-union-v1.json",
+      "bytes": 12140,
+      "sha256": "9f951483cca7b371fabe18444dfc0977bcdb5ae04cdde91a3a881fecc27471f5"
+    },
+    {
+      "name": "physics-query-bindings1.json",
+      "bytes": 222007,
+      "sha256": "873d269435086612814be1f752c60b1eac12aaf0c87a6f47d03e1ec63a898381"
+    },
+    {
+      "name": "current-executor-range.json",
+      "bytes": 4002,
+      "sha256": "62455b5de63813174a88eac417049bdc7a1f451ca856b416dbcbb37ef6f43106"
+    }
+  ]
+}

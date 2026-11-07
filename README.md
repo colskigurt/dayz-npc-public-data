@@ -1,4 +1,4 @@
-> **최신 감사:** [64개체 입력 동등성·기존 경고 재현](reports/operations/mixed64-input-warning-audit-20261108.md). 설정/인자는 같지만 표시 모드가 달라 반복 수용 보류. 기존 월드경계 경고가 측정 중에도 대량 발생하며 CPU 기여는 미측정. [두 실행 수치](reports/operations/mixed64-repeat-presentation-mismatch-20261108.md) · [단일 기준선](reports/operations/mixed-gameplay64-qualified-baseline-20261108.md).
+> **최신 비용 진단:** [현재64개체 서버CPU 부분귀속](reports/operations/current64-server-cpu-owner-20261108.md). 한스레드97.74%, 추정실행기leaf17.64%, Ray/Sphere포함10.29%; 스택누락28%·최적화성과 아님. [현재8명 종료7/8 기준결함](reports/operations/supported-terminal-eight-baseline-20261108.md) · [64명 Present3회 관측](reports/operations/mixed64-three-observations-20261108.md).
 
 > **최신 최적화 시험:** 표시 호스트 solid64 후보는 서버CPU−3.03%지만 Present p95+14.23%로 **선별 미통과·미수용**입니다. [비교 수치·근거·다음 작업](reports/operations/visual-solid-flat64-screen-result-20261108.md).
 
