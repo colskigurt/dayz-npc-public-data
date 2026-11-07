@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "1.0",
+  "sourceRunId": "approach-prereject1",
+  "verificationStatus": "OFFLINE_CONTRACT_ONLY_NOT_ACCEPTED",
+  "goalStatus": "active",
+  "metrics": {
+    "status": "OFFLINE_BOOLEAN_CONTRACT_PASS_NOT_RUNTIME",
+    "cases": 320,
+    "decisionMismatches": 0,
+    "modelBeforeRays": 544,
+    "modelAfterRays": 432,
+    "modelBeforeClaimCalls": 4,
+    "modelAfterClaimCalls": 80,
+    "limits": [
+      "Exhaustive fixed-predicate truth table, not measured gameplay distribution",
+      "Early Claimed may increase cheap scanning work for candidates failing later physical tests",
+      "Assumes immutable peer state and query side-effect independence within synchronous Plan",
+      "Center and four-offset test semantics copied exactly; engine compile and runtime float results not verified",
+      "No CPU improvement measured; maximum four peripheral rays skipped per early claim, actual baseline may stop earlier"
+    ]
+  },
+  "blockers": [
+    "Not compiled or packaged",
+    "Extra Claimed traversal can outweigh skipped rays",
+    "Current package/wrapper binding must be verified"
+  ],
+  "evidenceReferences": [
+    {
+      "id": "DGBNativePursuit.c",
+      "sha256": "dbfe4498a4685f61cb0187130705d126dcc98c9aa1d8aa0e7011188af47b1957"
+    },
+    {
+      "id": "candidate.patch",
+      "sha256": "a8081d37b6ee8ca14183827e6a52bc1ccf2096a5bf653b7b6a9a43ccd680a588"
+    },
+    {
+      "id": "offline-contract.json",
+      "sha256": "912b744a675c677a605204d7027c07fe9bf7c446f032d7e80b593bd41203c8cd"
+    },
+    {
+      "id": "verify-offline.py",
+      "sha256": "a2d32a79d907948526c3cbf17cf517cc930841c121e45f98f5f5c880dad5ab70"
+    },
+    {
+      "id": "source-proof.json",
+      "sha256": "738f8c6615ba54b9de19c341f96bd260f4de41ba5579f112d5030db43459e943"
+    }
+  ]
+}

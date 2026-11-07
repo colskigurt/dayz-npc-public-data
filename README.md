@@ -1,5 +1,7 @@
 # DayZ NPC 연구 현황
 
+> 진행 중(2026-11-07): [검사 순서 변경 후보 준비](reports/operations/approach-prereject-preparation-20261107.md). 기본OFF·오프라인 계약만 확인, 실제 성능 미검증.
+
 > 구조 분석(2026-11-07): [Days Gone 충돌·지지와 DayZ 적용 단서](reports/operations/days-gone-contact-support-clues-20261107.md) · [근거 JSON](data/days-gone-contact-support-clues-20261107.json). 기존 연구 재검토이며 새 성능 개선 판정은 없습니다.
 
 > 참고 진단(2026-11-07): [Days Gone 지붕 호드 비용·표시 계측](reports/operations/days-gone-roof-cost-20261107.md) · [JSON](data/days-gone-roof-cost-20261107.json). 단일 유효 수집이며 DayZ 최적화 성과는 아닙니다.
