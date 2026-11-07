@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceRunId": "contact-timers1-eight1-pair",
+  "buildId": "BBCAC26DD0A80F578C3789D236DFADDF6CC2108C85AE27E58579F0F746F6BC67",
+  "verificationStatus": "CANDIDATE_SINGLE_FUNCTIONAL_PASS_CONTROL_INCOMPLETE_NO_PERFORMANCE",
+  "control": {
+    "sourceRunId": "ANIM-timing-eight1-1-control",
+    "activeSeconds": 300.011,
+    "validTerminalAgents": 0,
+    "allMilestoneAgents": 0,
+    "fallStarts": 1,
+    "landAndFollowCycles": 1,
+    "functionalRegressionPassed": false,
+    "contactTimingPolicyVerified": true
+  },
+  "candidate": {
+    "sourceRunId": "ANIM-timing-eight1-2-timer-off",
+    "activeSeconds": 78.9805,
+    "validTerminalAgents": 8,
+    "allMilestoneAgents": 8,
+    "fallStarts": 9,
+    "landAndFollowCycles": 9,
+    "functionalRegressionPassed": true,
+    "contactTimingPolicyVerified": true
+  },
+  "candidateAllTimingUnavailable": true,
+  "candidateAllOriginalRayIdentity": true,
+  "fullPairedFunctionalRegressionAccepted": false,
+  "performanceMeasured": false,
+  "visualAccepted": false,
+  "baselineIssueNotRepaired": true,
+  "noAcceptanceThresholdChanged": true,
+  "generatedAt": "2026-11-07T00:04:06.131932+00:00",
+  "metrics": {
+    "control": {
+      "sourceRunId": "ANIM-timing-eight1-1-control",
+      "activeSeconds": 300.011,
+      "validTerminalAgents": 0,
+      "allMilestoneAgents": 0,
+      "fallStarts": 1,
+      "landAndFollowCycles": 1,
+      "functionalRegressionPassed": false,
+      "contactTimingPolicyVerified": true
+    },
+    "candidate": {
+      "sourceRunId": "ANIM-timing-eight1-2-timer-off",
+      "activeSeconds": 78.9805,
+      "validTerminalAgents": 8,
+      "allMilestoneAgents": 8,
+      "fallStarts": 9,
+      "landAndFollowCycles": 9,
+      "functionalRegressionPassed": true,
+      "contactTimingPolicyVerified": true
+    },
+    "candidateAllTimingUnavailable": true,
+    "candidateOriginalRayIdentity": true
+  },
+  "blockers": [
+    "Control missed HIGH counter milestone and timed out; baseline issue preserved",
+    "One candidate functional run only",
+    "64-agent CPU/Present tests staged, not executed",
+    "Visual quality and actual weapon interactions not evaluated"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/contact-timing-eight-pair1-20261107.md",
+      "localCheckpointSha256": "c4b2e92059ad2659b8563a8affdbe0ad2a4ef9f4ee6d0da23c7e446a46bfa599",
+      "localEvidenceFiles": 25
+    },
+    {
+      "candidateSource": "review/contact-timing-candidate/NFContactTimers.c"
+    }
+  ],
+  "conditions": {
+    "logicalAgents": 8,
+    "visibleParts": 40,
+    "originalReceivers": 8,
+    "nativeHosts": 48,
+    "outgoingAttacks": false,
+    "runsPerArm": 1,
+    "capturePerformance": false
+  }
+}
