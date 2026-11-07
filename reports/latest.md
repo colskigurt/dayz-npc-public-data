@@ -1,10 +1,18 @@
-# DayZ NPC 현재 상태
+# DayZ NPC — 현재 상태
+갱신: 2026-11-08. 이번 작업은 기존 자료 재분석이며 새 게임 실행은 없다.
 
-최신: [64클라이언트 오류 문맥 확인](operations/client64-crash-worker-context-20261107.md). 새 실행·코드 변경 없음.
+| 대상 | 현재 판단 |
+|---|---|
+| 주력 | 64개체 전체 CPU 비용 절감, 기존 밀침·낙하·재추적 보존 |
+| 애니메이션 | 이전 사용자 시각 확인은 보존. 최신 비용 진단에서 새 시각 품질은 미측정 |
+| 최근 8개체 후보 비교 | 양쪽 생존·목표 인식/이동 8/8. 전체 milestone 6/8 대 5/8로 전체 회귀 미수용 |
+| 최근 64개체 비용 선별 | CPU 828.437→826.413 ms/벽시계초, -0.244%, 단일 쌍·5% gate 미달 |
+| 고정 Idle 384호스트 진단 | 기본/본/접촉 포함 CPU 평균 224.272/231.156/282.727 ms/벽시계초. 1프로세스·조건별2구간 |
+| 최신 위치·방향 분석 | 기존 CPU 가중 표본 144/8101(1.78%) 포함. 스택 누락28%, self-time 아님 |
+| 최적화 채택·20ms 목표 | 최근 후보 미채택. 전체 p95 20ms 달성 미확인 |
 
-- 기존2덤프의 오류다음10프레임과모듈메타데이터일치.
-- 예외스레드: `enfWorkShort 4`. 작업종류/객체/손상원인은아직불명.
-- 관찰기OFF60초단일생존은원인·수정성공이아님.
-- 타이머OFF후보8/8단일기능통과는유지.64비용유효0쌍·성능/시각/최종수용미완료.
+[최신 상세 진단](operations/transform-update-attribution-20261108.md) · [고정 Idle 진단](operations/host-floor-pose-contact-isolation-20261108.md) · [64개체 후보 선별](operations/pair-radius-cost64-screen-20261108.md) · [외부 AI 검토 안내](../AI_REVIEW.md) · [공개 JSON](../api/public/status.json)
 
-[공개 JSON](../api/public/client64-crash-worker-context-20261107.json) · [비용시작실패/분리진단](operations/contact-timing64-client-crash-smoke-20261107.md) · [8개체 결과](operations/contact-timing-eight-pair1-20261107.md)
+다음: 기존 이동 실행의 비용 소유자 비교표. 새로운 보간·업데이트 정책이나 기능 재설계를 시작하지 않는다. CPU ms/벽시계초는 프레임 시간이 아니다. 정지·이동 조건을 직접 차감하지 않는다.
+
+공개 요약 동기화 누락을 이번에 정정했다. 과거 보고서와 [교체 전 진입점](archive/b47311ff/)은 보존한다.

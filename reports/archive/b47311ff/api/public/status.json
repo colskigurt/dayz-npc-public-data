@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-07T01:32:51.036138+00:00",
+  "sourceRunId": "contact-timing64-retry3-interim",
+  "buildId": "BBCAC26DD0A80F578C3789D236DFADDF6CC2108C85AE27E58579F0F746F6BC67",
+  "verificationStatus": "ONE_PAIR_PLUS_UNPAIRED_CANDIDATE_BATCH_ABORTED",
+  "metrics": {
+    "completedCaptures": 3,
+    "completedPairs": 1,
+    "plannedPairs": 3,
+    "firstPair": {
+      "serverCpuChangePct": 5.134299416397026,
+      "serverCpuAbsoluteDeltaMsPerGameSecond": 46.83705555203119,
+      "presentP95ChangePct": -16.09743178805594,
+      "presentP95DeltaMs": -2.9479749999999942,
+      "nativeRateChangePct": -0.25090978018205146,
+      "lowFractionDeltaPoints": 11.057692307692301,
+      "serverCpuDecreaseGatePassed": false
+    },
+    "performanceAccepted": false,
+    "visualAccepted": false,
+    "functionalRegressionAccepted": false,
+    "p95TargetMs": 20
+  },
+  "blockers": [
+    "Native crash in case4; remaining runs not started",
+    "Workload occupancy differs; full repeated attribution unavailable"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/contact-timing64-cost-interim-20261107.md",
+      "dataCommit": "99e8ed18d6be7f21a64da9f883e537bfed3730fa"
+    },
+    {
+      "path": "api/public/contact-timing64-cost-interim-20261107.json"
+    }
+  ],
+  "stale": false,
+  "staleAfterSeconds": 86400,
+  "lastGoodDataCommit": "99e8ed18d6be7f21a64da9f883e537bfed3730fa",
+  "lastUpdateFailure": null
+}

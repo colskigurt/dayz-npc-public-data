@@ -1,42 +1,59 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-07T01:32:51.036138+00:00",
-  "sourceRunId": "contact-timing64-retry3-interim",
-  "buildId": "BBCAC26DD0A80F578C3789D236DFADDF6CC2108C85AE27E58579F0F746F6BC67",
-  "verificationStatus": "ONE_PAIR_PLUS_UNPAIRED_CANDIDATE_BATCH_ABORTED",
+  "generatedAt": "2026-11-07T23:03:13.854Z",
+  "sourceRunId": "ANIM-mixed64-current-cpu-owner1",
+  "buildId": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805",
+  "verificationStatus": "PARTIAL_DIAGNOSIS_NO_NEW_OPTIMIZATION_ACCEPTED",
   "metrics": {
-    "completedCaptures": 3,
-    "completedPairs": 1,
-    "plannedPairs": 3,
-    "firstPair": {
-      "serverCpuChangePct": 5.134299416397026,
-      "serverCpuAbsoluteDeltaMsPerGameSecond": 46.83705555203119,
-      "presentP95ChangePct": -16.09743178805594,
-      "presentP95DeltaMs": -2.9479749999999942,
-      "nativeRateChangePct": -0.25090978018205146,
-      "lowFractionDeltaPoints": 11.057692307692301,
-      "serverCpuDecreaseGatePassed": false
-    },
+    "transformInclusiveWeight": 144,
+    "totalWeight": 8101,
+    "transformInclusivePercent": 1.777558326132576,
+    "missingStackWeight": 2268,
+    "independentNewRuns": 0,
+    "presentP50Ms": null,
+    "presentP95Ms": null,
+    "presentP99Ms": null,
     "performanceAccepted": false,
     "visualAccepted": false,
     "functionalRegressionAccepted": false,
-    "p95TargetMs": 20
+    "p95TargetMs": 20,
+    "hostFloorDiagnostic": {
+      "conditions": [
+        "hostOnly",
+        "fourBones",
+        "originalContacts"
+      ],
+      "cpuMsPerWallSecond": [
+        224.2718842,
+        231.1562432,
+        282.7267261
+      ],
+      "independentProcesses": 1,
+      "windowsPerCondition": 2,
+      "windowSeconds": 15
+    },
+    "pair64Screen": {
+      "independentPairs": 1,
+      "offCpuMsPerWallSecond": 828.4367,
+      "onCpuMsPerWallSecond": 826.4128,
+      "accepted": false
+    }
   },
   "blockers": [
-    "Native crash in case4; remaining runs not started",
-    "Workload occupancy differs; full repeated attribution unavailable"
+    "28% missing stacks; inclusive weight is not self-time",
+    "NPC-specific runtime identity unavailable",
+    "Whole CPU root cause unresolved; no new visual or full functional acceptance"
   ],
   "evidenceReferences": [
-    {
-      "path": "reports/operations/contact-timing64-cost-interim-20261107.md",
-      "dataCommit": "99e8ed18d6be7f21a64da9f883e537bfed3730fa"
-    },
-    {
-      "path": "api/public/contact-timing64-cost-interim-20261107.json"
-    }
+    "reports/operations/transform-update-attribution-20261108.md",
+    "reports/operations/host-floor-pose-contact-isolation-20261108.md",
+    "reports/operations/pair-radius-cost64-screen-20261108.md"
   ],
   "stale": false,
   "staleAfterSeconds": 86400,
-  "lastGoodDataCommit": "99e8ed18d6be7f21a64da9f883e537bfed3730fa",
-  "lastUpdateFailure": null
+  "lastUpdateFailure": {
+    "kind": "SUMMARY_SYNCHRONIZATION_LAG",
+    "resolved": true,
+    "description": "Detailed reports advanced while latest entrypoints retained older summaries; corrected together."
+  }
 }
