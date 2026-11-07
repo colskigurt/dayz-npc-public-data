@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-07T00:37:56.099465+00:00",
+  "sourceRunId": "direct-cost-ownership-static-review",
+  "buildId": "NO_NEW_BUILD",
+  "verificationStatus": "STATIC_DIAGNOSIS_ONLY",
+  "metrics": {
+    "auditedPbos": 13,
+    "auditedScripts": 33,
+    "newGameRuns": 0,
+    "newPerformanceSamples": 0,
+    "p95TargetMs": 20,
+    "performanceAccepted": false,
+    "visualAccepted": false
+  },
+  "blockers": [
+    "64-agent cost comparison incomplete after native client crash",
+    "Native collision exclusion replication unknown",
+    "Exclusive measurement time unconfirmed"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/direct-cost-ownership-review-20261107.md"
+    },
+    {
+      "artifact": "packed-ownership-audit.json",
+      "sha256": "9e6451cbfb6970da296dfdefa39f79285aaa381b0d911343fc4a0d9e96f46603"
+    },
+    {
+      "artifact": "direct-computation-feasibility1.json",
+      "sha256": "34799e98ff06f9833c5be68fb1760ee9102887274a3183ba41aa0e17637af2a0"
+    }
+  ]
+}
