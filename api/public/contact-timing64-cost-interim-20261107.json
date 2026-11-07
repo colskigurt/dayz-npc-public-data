@@ -1,0 +1,175 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-07T01:31:26.819745+00:00",
+  "sourceRunId": "contact-timing64-retry3-interim",
+  "buildId": "BBCAC26DD0A80F578C3789D236DFADDF6CC2108C85AE27E58579F0F746F6BC67",
+  "verificationStatus": "ONE_PAIR_PLUS_UNPAIRED_CANDIDATE_BATCH_ABORTED",
+  "metrics": {
+    "sourceRunId": "contact-timing64-retry3-interim",
+    "verificationStatus": "ONE_PAIR_PLUS_UNPAIRED_CANDIDATE_BATCH_ABORTED",
+    "runs": [
+      {
+        "runId": "ANIM-ct64-retry3-1-control",
+        "condition": "control",
+        "presentMs": {
+          "samples": 1218,
+          "p50": 11.046949999999999,
+          "p95": 18.313324999999995,
+          "p99": 20.257487,
+          "mean": 12.25622775041051,
+          "maximum": 30.6556
+        },
+        "serverCpuMsPerGameSecond": 912.2384916323987,
+        "serverCpuMsPerWallSecond": 912.455265359857,
+        "nativePerGameSecond": 1.0000491046673137,
+        "nativePerWallSecond": 1.0002867446858488,
+        "lowFraction": 0.7217548076923077,
+        "phaseRows": {
+          "MOTION": 59,
+          "FOLLOW": 4907,
+          "SETTLE": 24,
+          "EGRESS": 2
+        },
+        "physicalWorkPerGameSecond": {
+          "used": 0.0,
+          "skipped": 0.0,
+          "attempts": 0.0,
+          "footRays": 29232.59919141047,
+          "jointSweeps": 11691.268118922131
+        },
+        "sceneFullWindowAccepted": false,
+        "contactTimingPolicyVerified": true,
+        "contactTimingDisabled": false
+      },
+      {
+        "runId": "ANIM-ct64-retry3-2-timer-off",
+        "condition": "timer-off",
+        "presentMs": {
+          "samples": 1382,
+          "p50": 9.408100000000001,
+          "p95": 15.365350000000001,
+          "p99": 19.077106,
+          "mean": 10.814349493487699,
+          "maximum": 23.3055
+        },
+        "serverCpuMsPerGameSecond": 959.0755471844299,
+        "serverCpuMsPerWallSecond": 956.9772964348635,
+        "nativePerGameSecond": 0.9975398836570804,
+        "nativePerWallSecond": 0.995357481223038,
+        "lowFraction": 0.8323317307692307,
+        "phaseRows": {
+          "FOLLOW": 4845,
+          "MOTION": 73,
+          "SETTLE": 27,
+          "EGRESS": 2,
+          "FALL": 22,
+          "LAND": 23
+        },
+        "physicalWorkPerGameSecond": {
+          "used": 0.0,
+          "skipped": 0.0,
+          "attempts": 0.0,
+          "footRays": 29080.944994023845,
+          "jointSweeps": 11627.291915672757
+        },
+        "sceneFullWindowAccepted": false,
+        "contactTimingPolicyVerified": true,
+        "contactTimingDisabled": true
+      },
+      {
+        "runId": "ANIM-ct64-retry3-3-timer-off",
+        "condition": "timer-off",
+        "presentMs": {
+          "samples": 1207,
+          "p50": 11.0208,
+          "p95": 18.57477,
+          "p99": 20.244596,
+          "mean": 12.366382270091135,
+          "maximum": 21.9525
+        },
+        "serverCpuMsPerGameSecond": 890.4619224301312,
+        "serverCpuMsPerWallSecond": 890.0311584442455,
+        "nativePerGameSecond": 0.998684067668533,
+        "nativePerWallSecond": 0.9982009508515273,
+        "lowFraction": 0.5691105769230769,
+        "phaseRows": {
+          "FOLLOW": 4936,
+          "SETTLE": 12,
+          "MOTION": 42,
+          "EGRESS": 2
+        },
+        "physicalWorkPerGameSecond": {
+          "used": 0.0,
+          "skipped": 0.0,
+          "attempts": 0.0,
+          "footRays": 28883.655384302874,
+          "jointSweeps": 11545.908132950766
+        },
+        "sceneFullWindowAccepted": false,
+        "contactTimingPolicyVerified": true,
+        "contactTimingDisabled": true
+      }
+    ],
+    "firstPair": {
+      "serverCpuChangePct": 5.134299416397026,
+      "serverCpuAbsoluteDeltaMsPerGameSecond": 46.83705555203119,
+      "presentP95ChangePct": -16.09743178805594,
+      "presentP95DeltaMs": -2.9479749999999942,
+      "nativeRateChangePct": -0.25090978018205146,
+      "lowFractionDeltaPoints": 11.057692307692301,
+      "serverCpuDecreaseGatePassed": false
+    },
+    "completedPairs": 1,
+    "plannedPairs": 3,
+    "unpairedCandidate": "ANIM-ct64-retry3-3-timer-off",
+    "crashedControl": "ANIM-ct64-retry3-4-control",
+    "remainingRunsNotStarted": [
+      5,
+      6
+    ],
+    "performanceAccepted": false,
+    "functionalRegressionAccepted": false,
+    "visualAccepted": false,
+    "p95TargetMs": 20,
+    "fullGoalAchieved": false,
+    "decision": "Do not promote timer-only candidate. First pair CPU worsens and three-pair replication incomplete; workload differs. No global rejection of all timing overhead hypotheses."
+  },
+  "blockers": [
+    "Native client crash recurred in case4 before capture",
+    "Only one complete pair; scene occupancy differs",
+    "No accepted CPU improvement or whole functional/visual regression"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/contact-timing64-cost-interim-20261107.md"
+    },
+    {
+      "artifact": "analysis-1.json",
+      "sha256": "45c016330b111225a3fbc93c4f0edcaed1769c1f13b5929a268b25efdd7a800e"
+    },
+    {
+      "artifact": "analysis-2.json",
+      "sha256": "82cbbc4e1f59718d4502915f1f4f3f6a45ec855394710e112699645aefb953c4"
+    },
+    {
+      "artifact": "analysis-3.json",
+      "sha256": "e62c44f24c7a0c9f5fb3ccaebb951b20b84a05003aec4d094e2f70b94660a96b"
+    },
+    {
+      "artifact": "interim-comparison.json",
+      "sha256": "a14fbe49079020791bb65f89fa13a895c409902de4a4c06f678592d131663057"
+    },
+    {
+      "artifact": "crash-fingerprint-v2.json",
+      "sha256": "87df704c2251e57aff8031bdca590f4a6817aadc2ba11a77aadfe65982a5b12f"
+    },
+    {
+      "artifact": "collector-idle-cancel.json",
+      "sha256": "299c703eae7ff6d879fefa7f5a737670aafec2c6a28b3a6f0ff9ec5f1ff68bce"
+    },
+    {
+      "artifact": "collector-not-ready-exclusion.json",
+      "sha256": "17054eb4848fad6bd5d19fbc00eb3cc4cb0e34488535bbd9ce85a471a2f35060"
+    }
+  ]
+}
