@@ -1,0 +1,53 @@
+{
+  "sourceRunId": "ANIM-contact-owner-direct1",
+  "verificationStatus": "DIRECT_CONTACT_OWNER_DIAGNOSTIC_ONLY",
+  "profileGameSeconds": 30.000100000000003,
+  "logicalCount": 64,
+  "allMovedInWindow": true,
+  "allAcquired": true,
+  "hostContractObserved": true,
+  "pressureCounterDeltas": {
+    "pressureSteps": 28452.0,
+    "pressureBlocks": 660.0,
+    "pressureFalls": 7.0,
+    "pressureDistance": 833.6625399999998,
+    "contactSolves": 70626.0,
+    "contactFailures": 1190.0
+  },
+  "solveCounterMatchesProfiler": true,
+  "displaceCalls": 29490,
+  "consumeContactCalls": 36790,
+  "displaceUnclassifiedFalseReturns": 378.0,
+  "limitations": [
+    "Pressure counters label accepted/blocked movement; not all false-return branches increment PressureBlocks.",
+    "Counts for modded/inherited methods may describe their own layer; no subtraction claim assigning every solve to Displace.",
+    "Raw time resolution/average readbacks not captured; documented defaults cannot prove actual settings.",
+    "Nested function totals overlap; no sum or exclusive CPU percentage.",
+    "One diagnostic run; not optimization, full regression or visible quality acceptance."
+  ],
+  "evidence": [
+    {
+      "name": "npc-selected-owners.txt",
+      "sha256": "be5a5db5abd0abe9b273836145e17014abb3c19221edfd7f02bdd00cc0b0c0fc"
+    },
+    {
+      "name": "contact-owner-start.txt",
+      "sha256": "1a799dc7e0a37a5b0afcc4af5b41a9d10be58c1666b3244a98c0e9582431126f"
+    },
+    {
+      "name": "contact-owner-end.txt",
+      "sha256": "888b36298c873ec1e38790b96d0ea8c0c1ccd63937fd40469779809401e3a0bb"
+    }
+  ],
+  "interpretation": {
+    "sourceRunId": "ANIM-contact-owner-direct1",
+    "pressureAcceptedFraction": 0.9648016276703968,
+    "averageAcceptedPressureDistance": 0.029300665682553066,
+    "decision": "Do not prioritize no-op/rejection-only suppression as a major solution; most pressure calls perform accepted movement. Do not remove or weaken pressure for performance.",
+    "notProved": [
+      "No exclusive CPU time or optimization savings.",
+      "No safe replacement/merge of DriveGround and Displace checks.",
+      "No full traversal, visual quality, hit/death or repeatability acceptance."
+    ]
+  }
+}
