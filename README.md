@@ -1,7 +1,7 @@
 # DayZ NPC — 현재 상태
-갱신: 2026-11-08. 이번 작업은 기존 자료 재분석이며 새 게임 실행은 없다.
+갱신: 2026-11-08. 이번 작업은 실제 정식 서버의 격리 메서드 시험2회다. 클라이언트·새PBO는 없다.
 
-현재: [이동 비용 소유자와 복구 탐색 후보 검토](reports/operations/moving-owner-dominance-review-20261108.md). 선택될 수 없는 후보의 정밀 검사 조기 배제는 **미구현·미측정**이며 채택안이 아니다.
+현재: [복구 탐색 지배 후보의 두 국소 비교](reports/operations/support-dominance-method-review-20261108.md). 대표 상태 비교 통과·평지 국소 약88.6%감소2회. **조기반환 비용 gate 미확정, 전체조건 미통과·8/64 미승격·전체CPU 미측정.**
 
 | 대상 | 현재 판단 |
 |---|---|
@@ -15,6 +15,6 @@
 
 [최신 상세 진단](reports/operations/transform-update-attribution-20261108.md) · [고정 Idle 진단](reports/operations/host-floor-pose-contact-isolation-20261108.md) · [64개체 후보 선별](reports/operations/pair-radius-cost64-screen-20261108.md) · [외부 AI 검토 안내](AI_REVIEW.md) · [공개 JSON](api/public/status.json)
 
-다음: 기존 메서드 하네스로 원본과 후보의 선택 결과·안전 상태·생략된 검사 수를 비교한다. 새로운 보간·업데이트 정책이나 기능 재설계를 시작하지 않는다. CPU ms/벽시계초는 프레임 시간이 아니다. 정지·이동 조건을 직접 차감하지 않는다.
+다음: 같은 후보의 조기반환 조건을 긴 호출 묶음으로 비교해 사전3%악화 제한을 판정한다. 새로운 보간·업데이트 정책이나 기능 재설계를 시작하지 않는다. CPU ms/벽시계초는 프레임 시간이 아니다. 정지·이동 조건을 직접 차감하지 않는다.
 
 공개 요약 동기화 누락을 이번에 정정했다. 과거 보고서와 [교체 전 진입점](reports/archive/b47311ff/)은 보존한다.

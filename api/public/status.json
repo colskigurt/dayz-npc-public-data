@@ -1,9 +1,9 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-07T23:07:08.048Z",
-  "sourceRunId": "existing-moving-owner-review-20261108",
+  "generatedAt": "2026-11-07T23:21:25.925Z",
+  "sourceRunId": "support-dominance-method-review-20261108",
   "buildId": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805",
-  "verificationStatus": "SOURCE_OWNER_REVIEW_CANDIDATE_NOT_IMPLEMENTED",
+  "verificationStatus": "PROMISING_LOCAL_GAIN_EARLY_GUARD_COST_UNRESOLVED",
   "metrics": {
     "transformInclusiveWeight": 144,
     "totalWeight": 8101,
@@ -40,20 +40,40 @@
     },
     "candidate": {
       "name": "SupportBypass dominated candidate pruning",
-      "implemented": false,
-      "tested": false,
-      "sourceRunId": "ANIM-contact-owner-direct1",
-      "existingCalls": 412,
-      "existingWindowGameSeconds": 30.0001,
-      "expectedSavingsPercent": null
+      "implemented": "isolated mission only",
+      "productionAccepted": false,
+      "independentValidProcesses": 2,
+      "rowsPerProcess": 288,
+      "conformanceWorkRowsPerProcess": 72,
+      "terrainChangePct": [
+        -88.63599554366121,
+        -88.59560972045891
+      ],
+      "nearWallChangePct": [
+        -79.37433864335763,
+        -80.07245753083892
+      ],
+      "secondRunGuardChangePct": [
+        3.5153797865662195,
+        4.856867159858469
+      ],
+      "allConditionGatePassed": false,
+      "wholeCpuMeasured": false,
+      "referencePathCallsTerrain": 288,
+      "candidatePathCallsTerrain": 24,
+      "referenceSupportCallsTerrain": 6144,
+      "candidateSupportCallsTerrain": 636,
+      "workCounterScope": "12 untimed conformance calls per condition per process"
     }
   },
   "blockers": [
+    "Early-return guard relative cost gate unresolved; v1 active-only gate corrected by v2; no8/64 promotion",
     "28% missing stacks; inclusive weight is not self-time",
     "NPC-specific runtime identity unavailable",
     "Whole CPU root cause unresolved; no new visual or full functional acceptance"
   ],
   "evidenceReferences": [
+    "reports/operations/support-dominance-method-review-20261108.md",
     "reports/operations/moving-owner-dominance-review-20261108.md",
     "reports/operations/transform-update-attribution-20261108.md",
     "reports/operations/host-floor-pose-contact-isolation-20261108.md",
