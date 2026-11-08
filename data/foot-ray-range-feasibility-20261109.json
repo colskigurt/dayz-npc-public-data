@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T07:31:41.391011+09:00",
+  "sourceRunId": "ANIM-foot-ray-range-feasibility1",
+  "buildId": "453d6a9e688d7bf14c5b98c305dd5a45200ec52156949c10691839b43c58bc9a",
+  "verificationStatus": "CONDITIONAL_MATH_ONLY_NOT_ENGINE_TESTED",
+  "metrics": {
+    "algebraChecks": 122016,
+    "binary32Checks": 120000,
+    "mismatches": 0,
+    "originalLengthM": 1.5,
+    "exampleRadiusM": 0.14,
+    "exampleCandidateLengthM": 0.4705,
+    "raysPerSolveUnchanged": 10,
+    "newPbo": false,
+    "newGameRun": false,
+    "cpuImprovement": null,
+    "presentP95": null
+  },
+  "blockers": [
+    "Bullet retained-hit/normal precision and acceptance equivalence not verified",
+    "No measured query or whole CPU benefit",
+    "Existing 64 functionality and visual acceptance remain incomplete"
+  ],
+  "evidenceReferences": [
+    {
+      "name": "source-proof.json",
+      "sha256": "f31bbb6afeb18cac2097af666a3f0195b63c63023880b580f4ecca763882a100"
+    },
+    {
+      "name": "algebra-results.json",
+      "sha256": "6511f8eb69afa3a208c516f53d797304aec5efc8527aa8402bb7e7d61e494363"
+    },
+    {
+      "name": "float32-results.json",
+      "sha256": "c24890857cb9e42bab6234e08ea24b65287fd447f4900a1f399a6482e568d3f5"
+    }
+  ],
+  "limitations": [
+    "Mathematical tests assume retained-hit invariance; no collision engine in model",
+    "Ray-length reduction is not a query-count or CPU reduction",
+    "Fast/Shadow support modes excluded from proposed scope"
+  ],
+  "decision": "Actual bounded physics equivalence/cost gate before any gameplay implementation; no adoption"
+}

@@ -1,17 +1,17 @@
 # DayZ NPC — 현재 상태
 
-최신 진단(2026-11-09):공식프로파일러 시간단위·평균 검증. NPC없는 작은진단이며 최적화 성공이 아닙니다.
+2026-11-09: 발 지지 광선의 판정에 불필요한 하단 범위를 줄이는 후보를 조건부 수학 검증했습니다. 게임에는 적용하지 않았습니다.
 
-|확인|결과|
+|항목|상태|
 |---|---|
-|초기 resolution / average|100000 / false|
-|resolution1000|ms 단위 반환 검증|
-|평균 분모|sessionFrames49 (profiledFrames48와 다름)|
-|부모/자식 시간|중첩 관찰·합산 금지|
-|과거 NPC rawTime|당시 옵션 미기록이므로 확정 변환 보류|
+|기준 소스/PBO|전체82216바이트 일치|
+|대수모델/32비트모델|122,016 /120,000조건 불일치0|
+|광선 수|기존10회 유지|
+|반경0.14m 예시 길이|1.5→0.4705m — CPU 개선률 아님|
+|실제Bullet·Enforce·8/64·시각·CPU|미실행·미수용|
 
-[단위 진단 보고서](reports/operations/enprofiler-units-20261109.md) · [공개 수치](data/enprofiler-units-20261109.json)
+가정:짧은동일시작광선의보존구간hit/normal이같아야합니다. 실제물리에서다를수있고비용효과도없을수있습니다. 다음은작은엔진동등성/비용검사이며통과전새게임플레이후보를만들지않습니다.
 
-NPC 주력 상태는 그대로입니다. [그래프변수 캐시](reports/operations/graph-write-clean-cost64-screen2-20261109.md)는 OFF813.295→ON820.405ms/벽시계초로 미수용. [64개체 접촉 관측](reports/operations/ground-progress-observation-sixtyfour-20261109.md)은 직접종착12/64·전체기능미수용, 내부Displace 솔버39.03%는 호출수 비율입니다. [후열 감속](reports/operations/rear-pressure-shadow-20261109.md)은 보류. 셀 풀은 기존2쌍에서전체채택실패로재시험하지않습니다.
+[상세 보고서](reports/operations/foot-ray-range-feasibility-20261109.md) · [공개 수치](data/foot-ray-range-feasibility-20261109.json)
 
-지속 등반·밀침·낙하·재등반 정책은 보존하며, 기능·시각·성능을 분리 판정합니다.20ms p95는 목표입니다.
+기존 [그래프캐시64CPU](reports/operations/graph-write-clean-cost64-screen2-20261109.md)는미수용,셀풀도기존실패자료로보존합니다. [후열감속](reports/operations/rear-pressure-shadow-20261109.md)은보류입니다. 지속등반·밀침·낙하·재등반정책은변경하지않았습니다. 기능·시각·성능은별개이며20ms p95는목표입니다.

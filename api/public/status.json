@@ -1,95 +1,45 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T07:25:58.639669+09:00",
-  "sourceRunId": "ANIM-enprofiler-units1",
-  "buildId": "4bbf370b1d479e0556e916d21213bafba383cbdd3a12c6e2518cd49c1ca64e70",
-  "verificationStatus": "SUPPORTED_PROFILER_UNITS_AND_AVERAGE_VALIDATED",
+  "generatedAt": "2026-11-09T07:31:41.391011+09:00",
+  "sourceRunId": "ANIM-foot-ray-range-feasibility1",
+  "buildId": "453d6a9e688d7bf14c5b98c305dd5a45200ec52156949c10691839b43c58bc9a",
+  "verificationStatus": "CONDITIONAL_MATH_ONLY_NOT_ENGINE_TESTED",
   "metrics": {
-    "views": [
-      {
-        "resolution": "100000",
-        "average": "false",
-        "sessionFrames": "49",
-        "profiledFrames": "48",
-        "parentCalls": "50",
-        "childCalls": "100",
-        "parentSD": "48.58",
-        "childSD": "46.77",
-        "parentPD": "48.58",
-        "childPD": "46.77"
-      },
-      {
-        "resolution": "1000",
-        "average": "false",
-        "sessionFrames": "49",
-        "profiledFrames": "48",
-        "parentCalls": "50",
-        "childCalls": "100",
-        "parentSD": "0.4858",
-        "childSD": "0.4677",
-        "parentPD": "0.4858",
-        "childPD": "0.4677"
-      },
-      {
-        "resolution": "1",
-        "average": "false",
-        "sessionFrames": "49",
-        "profiledFrames": "48",
-        "parentCalls": "50",
-        "childCalls": "100",
-        "parentSD": "0.0004858",
-        "childSD": "0.0004677",
-        "parentPD": "0.0004858",
-        "childPD": "0.0004677"
-      },
-      {
-        "resolution": "1000",
-        "average": "true",
-        "sessionFrames": "49",
-        "profiledFrames": "48",
-        "parentCalls": "50",
-        "childCalls": "100",
-        "parentSD": "0.00991429",
-        "childSD": "0.0095449",
-        "parentPD": "0.00991429",
-        "childPD": "0.0095449"
-      }
-    ],
-    "resolutionScalingPassed": true,
-    "sessionFrameAverageDivisor": 49,
-    "profiledFrames": 48,
-    "countsRemain50And100": true,
-    "parentChildOverlapObserved": true,
-    "npcCount": 0,
+    "algebraChecks": 122016,
+    "binary32Checks": 120000,
+    "mismatches": 0,
+    "originalLengthM": 1.5,
+    "exampleRadiusM": 0.14,
+    "exampleCandidateLengthM": 0.4705,
+    "raysPerSolveUnchanged": 10,
     "newPbo": false,
+    "newGameRun": false,
     "cpuImprovement": null,
     "presentP95": null
   },
   "blockers": [
-    "Historical NPC resolution/average settings were not exported",
-    "Nested times overlap; not self-time or retail process CPU"
+    "Bullet retained-hit/normal precision and acceptance equivalence not verified",
+    "No measured query or whole CPU benefit",
+    "Existing 64 functionality and visual acceptance remain incomplete"
   ],
   "evidenceReferences": [
     {
-      "name": "plan.json",
-      "sha256": "175dde3d668d1ca5bf65f2bda6e9f6e1387e42358e982451ff69d69c5263d6b9"
+      "name": "source-proof.json",
+      "sha256": "f31bbb6afeb18cac2097af666a3f0195b63c63023880b580f4ecca763882a100"
     },
     {
-      "name": "terminal.json",
-      "sha256": "eb72b2cf9c3acbf225000adb111505beac80180bb0e01db91497dc73d04f2d36"
+      "name": "algebra-results.json",
+      "sha256": "6511f8eb69afa3a208c516f53d797304aec5efc8527aa8402bb7e7d61e494363"
     },
     {
-      "name": "units.tsv",
-      "sha256": "65c6f120eaefeab4a9784741e5a7e8c2e48a9733c1e1f47cda9c62a4627522cf"
-    },
-    {
-      "name": "api-source-reference.json",
-      "sha256": "0417f47c1fa8f81e1e6a9ff076137d55aad54dd60aca355c404f47eb039316ec"
+      "name": "float32-results.json",
+      "sha256": "c24890857cb9e42bab6234e08ea24b65287fd447f4900a1f399a6482e568d3f5"
     }
   ],
   "limitations": [
-    "Public source normalizes to same prior SDK hash underCRLF; no newly added API claim",
-    "No NPC optimization, function regression or visual acceptance from this probe"
+    "Mathematical tests assume retained-hit invariance; no collision engine in model",
+    "Ray-length reduction is not a query-count or CPU reduction",
+    "Fast/Shadow support modes excluded from proposed scope"
   ],
-  "decision": "Use explicit resolution1000/averagefalse on future cost exports; preserve historical uncertainty and failed-candidate decisions"
+  "decision": "Actual bounded physics equivalence/cost gate before any gameplay implementation; no adoption"
 }
