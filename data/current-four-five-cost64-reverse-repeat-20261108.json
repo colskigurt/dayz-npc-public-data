@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-08T01:02:05.791Z",
+  "sourceRunId": "current-four-five-cost64-repeats2",
+  "buildId": "current-987fbc47-same14PBO",
+  "verificationStatus": "REPEATED_SCREEN_INCONCLUSIVE_NOT_ACCEPTED",
+  "metrics": {
+    "independentPairs": 2,
+    "independentRunsPerCondition": 2,
+    "minimumReductionPercent": 5,
+    "pairs": [
+      {
+        "order": [
+          "five",
+          "four"
+        ],
+        "cpuFive": 806.6236151129664,
+        "cpuFour": 725.1636491435233,
+        "cpuMsPerWallSecondDelta": -81.45996596944303,
+        "relativeChangePercent": -10.098881863015466,
+        "contactRateChangePercent": -3.502599572355869,
+        "screenPassed": true
+      },
+      {
+        "order": [
+          "four",
+          "five"
+        ],
+        "cpuFive": 788.2190486100706,
+        "cpuFour": 753.4983259893766,
+        "cpuMsPerWallSecondDelta": -34.720722620694005,
+        "relativeChangePercent": -4.404958581237008,
+        "contactRateChangePercent": 1.1618485376024612,
+        "screenPassed": false
+      }
+    ],
+    "presentP50": null,
+    "presentP95": null,
+    "presentP99": null
+  },
+  "blockers": [
+    "Second independent pair missed prespecified5percent CPU screen",
+    "Dynamic workload confounding; no pure causal savings estimate",
+    "Four-part8 EGRESS risk unresolved; visual and full function unaccepted"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/current-four-five-cost64-reverse-repeat-20261108.md",
+      "runIds": [
+        "ANIM-current-four-five-cost64-screen2-four",
+        "ANIM-current-four-five-cost64-screen2-five"
+      ]
+    }
+  ],
+  "functionalAccepted": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "finalAccepted": false,
+  "next": "Preserve/deprioritize four-part candidate; select one untested structural cost candidate from existing evidence without repeating rejected approaches"
+}

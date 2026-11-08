@@ -1,16 +1,19 @@
 # DayZ NPC — 현재 상태
-갱신:2026-11-08T00:53:40.853Z
+갱신:2026-11-08T01:02:05.791Z
 
-|항목|5파트|4파트|
-|---|---:|---:|
-|서버 CPU ms/벽시계초|806.62|725.16|
-|관측 생존·인식·2m이동|64/64|64/64|
-|접촉처리율 /trace게임초|2550.69|2461.35|
+**4파트 최적화 후보: 효과 미확정·미수용.**
 
-**CPU -10.10%는 단일쌍 선별 결과이며 최적화 최종 성공이 아니다.** 접촉작업률도3.50%낮고동적경로가달라순수인과효과미확정. 역순독립반복이필요하다.
+|독립비교|5파트 CPU|4파트 CPU|감소|5%선별|
+|---|---:|---:|---:|---|
+|첫쌍5→4|806.62|725.16|10.10%|통과|
+|역순4→5|788.22|753.50|4.40%|미통과|
 
-[최신 상세 보고서](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/current-four-five-cost64-first-screen-20261108.md)
+단위는CPU ms/벽시계초이며프레임시간이아니다.두번째결과가사전기준을넘지못했으므로첫결과나평균만으로채택하지않는다.효과부재를입증한것도아니다.동적접촉·등반·낙하작업량이다르다.
 
-미션dt p95는44.7→38ms지만Present가아니다. 실제화면품질·Present/GPU미측정.전체기능미수용,4파트8개체EGRESS위험미확정.20ms p95는목표·미달성.
+[최신 상세 보고서](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/current-four-five-cost64-reverse-repeat-20261108.md)
 
-[8개체 기능 비교](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/current-four-five-eight-mixed-20261108.md) · [접촉 경계 검토](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/current-four-contact-boundary-20261108.md)
+기능·시각·최종성능미수용.4파트8개체EGRESS위험미확정.실제Present/GPU미측정,20ms p95목표미달성.추가반복을확대하지않고후순위보존한다.
+
+[첫쌍 보고서](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/current-four-five-cost64-first-screen-20261108.md) · [8개체 기능](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/current-four-five-eight-mixed-20261108.md)
+
+다음:기존비용증거를재사용해아직미검증인구조적후보한개를선정.기능개발로주력을전환하지않는다.
