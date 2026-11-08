@@ -1,95 +1,60 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-08T23:00:44.272Z",
-  "sourceRunId": "ANIM-receiver-fire-ray-climb-controls1",
-  "buildId": "74718EE7AE304669BD5A77E8534C324C15250D2E0A882B89C642F6ABE34526E8",
-  "verificationStatus": "DIAGNOSTIC_SUCCESS_CANDIDATE_NOT_ACCEPTED",
+  "generatedAt": "2026-11-08T23:08:38.905Z",
+  "sourceRunId": "ANIM-crowd-snapshot-cost1",
+  "buildId": "baseline453d6a9e; mission-only snapshot",
+  "verificationStatus": "METHOD_EQUIVALENCE_PASS_LOCAL_COST_GATE_FAILED",
   "metrics": {
-    "climbControls": [
+    "schemaVersion": 1,
+    "sourceRunId": "ANIM-crowd-snapshot-cost1",
+    "verificationStatus": "METHOD_EQUIVALENCE_PASS_LOCAL_COST_GATE_FAILED",
+    "methodEquivalenceFrames": 512,
+    "methodMismatches": 0,
+    "cost": [
       {
-        "layout": "full/full",
-        "pairs": 1947,
-        "mismatchPairs": 0
+        "layout": "dense",
+        "relativeTickChangesPct": [
+          7.251507613911934,
+          -5.562341940603465,
+          5.375346803923842
+        ],
+        "medianTickChangePct": 5.375346803923842
       },
       {
-        "layout": "candidate/full",
-        "pairs": 1914,
-        "mismatchPairs": 12
-      },
-      {
-        "layout": "full/candidate",
-        "pairs": 1881,
-        "mismatchPairs": 12
+        "layout": "sparse",
+        "relativeTickChangesPct": [
+          9.126887742709776,
+          10.722917349378536,
+          7.5086052902346045
+        ],
+        "medianTickChangePct": 9.126887742709776
       }
     ],
-    "fourteenClipPairs": 4818,
-    "fourteenClipMismatches": 2,
-    "cpuImprovement": null,
+    "wholeCpuMeasured": false,
     "p50": null,
     "p95": null,
-    "p99": null
+    "p99": null,
+    "actualNpcEntities": 0,
+    "independentProcessRepeats": 1,
+    "pairsPerLayoutInOneProcess": 3,
+    "timingUnit": "raw TickCount delta; inherited output column labels offMs/onMs are not verified milliseconds",
+    "adopted": false,
+    "expandedToEightOrSixtyfour": false
   },
   "blockers": [
-    "Candidate-associated Head fire-ray mismatch in climb_low",
-    "Overall server CPU performance acceptance not passed",
-    "Actual firearm/melee damage and visual quality not tested in this run"
+    "No adopted overall server CPU improvement from this candidate",
+    "Reduced receiver candidate remains on hold for climb Head fire-ray mismatch",
+    "Visual quality and full 64-agent target are not proven by synthetic tests"
   ],
   "evidenceReferences": [
+    "reports/operations/crowd-snapshot-method-rejected-20261109.md",
     "reports/operations/receiver-fire-ray-climb-hold-20261109.md"
   ],
   "limits": {
-    "conditions": "headless; root motion OFF; damage OFF; bone-centered three-axis FireGeometry rays",
-    "repetitions": "three sequential conditions in one run, not three independent repetitions",
+    "conditions": "Synthetic 64 script bodies, zero native NPC, OpenTraversal=true, no players",
+    "independentProcessRuns": 1,
+    "pairsPerLayout": 3,
     "targetP95Ms": 20,
-    "targetAchieved": false,
-    "actualWeaponDamageTested": false
-  },
-  "previousSnapshot": {
-    "schemaVersion": 1,
-    "generatedAt": "2026-11-09T07:36:38.238349+09:00",
-    "sourceRunId": "ANIM-foot-ray-range-engine1",
-    "buildId": "4bbf370b1d479e0556e916d21213bafba383cbdd3a12c6e2518cd49c1ca64e70",
-    "verificationStatus": "REJECTED_NATIVE_LIFT_EQUIVALENCE_GATE",
-    "metrics": {
-      "cases": 2610,
-      "liftMismatchCount": 45,
-      "acceptanceChangesAt025": 0,
-      "maximumLiftDifferenceM": 0.000305176,
-      "foundCountChanges": 954,
-      "mismatchAreas": {
-        "low_roof": 25,
-        "high_roof": 20
-      },
-      "methodTimingBatchesExecuted": 0,
-      "npcCount": 0,
-      "newPbo": false,
-      "cpuImprovement": null,
-      "presentP95": null
-    },
-    "blockers": [
-      "Native lift differences exceed predeclared1e-5m tolerance",
-      "Retained-hit invariance assumption not supported by engine query outputs"
-    ],
-    "evidenceReferences": [
-      {
-        "name": "plan.json",
-        "sha256": "cb3c53d78fe5937e5bd97a2031ec87709f83fe81a4f600764d320b10d2dc1851"
-      },
-      {
-        "name": "terminal.json",
-        "sha256": "1c91da85636090e32dfe80d7233abab6ddcfb726b8aaff555af0a1e11a4ef66d"
-      },
-      {
-        "name": "range-equivalence.tsv",
-        "sha256": "8d5a3b6002a6cd17abe4d279a203329c8220a60b2a4a0e28b9943644a15009c1"
-      }
-    ],
-    "limitations": [
-      "No observed0.25m acceptance flip is not a full functional proof",
-      "No raw hit-point/normal telemetry for locating precise native cause",
-      "Existing shutdown BunkerBroadcastManager leak warning retained; exit-1 not rewritten as exit0",
-      "Foot kernel only, not full body solver/animated bone history"
-    ],
-    "decision": "Stop candidate; no timing or gameplay expansion; preserve previous math results as conditional evidence"
+    "targetAchieved": false
   }
 }

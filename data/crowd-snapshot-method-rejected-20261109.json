@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-08T23:08:38.905Z",
+  "sourceRunId": "ANIM-crowd-snapshot-cost1",
+  "buildId": "baseline453d6a9e; mission-only snapshot",
+  "verificationStatus": "METHOD_EQUIVALENCE_PASS_LOCAL_COST_GATE_FAILED",
+  "metrics": {
+    "schemaVersion": 1,
+    "sourceRunId": "ANIM-crowd-snapshot-cost1",
+    "verificationStatus": "METHOD_EQUIVALENCE_PASS_LOCAL_COST_GATE_FAILED",
+    "methodEquivalenceFrames": 512,
+    "methodMismatches": 0,
+    "cost": [
+      {
+        "layout": "dense",
+        "relativeTickChangesPct": [
+          7.251507613911934,
+          -5.562341940603465,
+          5.375346803923842
+        ],
+        "medianTickChangePct": 5.375346803923842
+      },
+      {
+        "layout": "sparse",
+        "relativeTickChangesPct": [
+          9.126887742709776,
+          10.722917349378536,
+          7.5086052902346045
+        ],
+        "medianTickChangePct": 9.126887742709776
+      }
+    ],
+    "wholeCpuMeasured": false,
+    "p50": null,
+    "p95": null,
+    "p99": null,
+    "actualNpcEntities": 0,
+    "independentProcessRepeats": 1,
+    "pairsPerLayoutInOneProcess": 3,
+    "timingUnit": "raw TickCount delta; inherited output column labels offMs/onMs are not verified milliseconds",
+    "adopted": false,
+    "expandedToEightOrSixtyfour": false
+  },
+  "blockers": [
+    "No adopted overall server CPU improvement from this candidate",
+    "Reduced receiver candidate remains on hold for climb Head fire-ray mismatch",
+    "Visual quality and full 64-agent target are not proven by synthetic tests"
+  ],
+  "evidenceReferences": [
+    "reports/operations/crowd-snapshot-method-rejected-20261109.md",
+    "reports/operations/receiver-fire-ray-climb-hold-20261109.md"
+  ],
+  "limits": {
+    "conditions": "Synthetic 64 script bodies, zero native NPC, OpenTraversal=true, no players",
+    "independentProcessRuns": 1,
+    "pairsPerLayout": 3,
+    "targetP95Ms": 20,
+    "targetAchieved": false
+  }
+}
