@@ -1,12 +1,17 @@
 # DayZ NPC — 현재 상태
-갱신:2026-11-08T01:49:56.895Z
 
-**64 CPU효과 미확정·ON교체측정대기.새게임실행없음.**
+최신 진단: 등반 시작 재시도 간격(0.15초).
 
-기존바이너리부분검토에서PreAnim_SetInt/Bool등록4개본문은6/8명령값저장으로끝나며그래프평가/물리/할당호출을포함하지않았다.그러나VM경계전체비용은미확정이고상위100함수요약의부재를0비용으로해석하지않는다.
+|항목|판정|
+|---|---|
+|실제 Enforce 컴파일·시계 계약|통과|
+|합성 64개 시계|2,624 입력, 912 재시도, 1,712 대기; 최장 0.20초|
+|8/64 NPC 기능 회귀|미실행|
+|CPU·Present·시각 개선|미측정|
+|채택|보류|
 
-[최신 상세 보고서](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/preanim-setter-native-cost-boundary-20261108.md)
+현재 OpenTraversal은 이미 다른 개체 점유에 따른 등반 차단을 우회합니다. 혼잡 대기의 원인은 아직 특정되지 않았습니다. 합성 재시도 감소를 성능 개선으로 해석하지 마세요.
 
-유효OFF서버CPU852.45ms/벽시계초.ON은창비활성화로무효여서비교값/개선률없음.창유지가능답변전재실행하지않는다.전체기능·시각·성능미수용,20ms p95목표미달성.
+[상세 보고서](operations/admission-cadence-contract-20261108.md) · [공개 수치](../data/admission-cadence-contract-20261108.json)
 
-[계측제거계약과무효측정](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/graph-variable-write-clean-cost64-invalid-20261108.md)
+이전 [네이티브 setter 비용 경계](operations/preanim-setter-native-cost-boundary-20261108.md) 및 원시 연구 이력은 보존합니다. 다음은 8개체 실제 OFF/ON 검증이며, 통과 후 64개체 비용 비교입니다. 20ms p95는 목표입니다.
