@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T07:13:56.547246+09:00",
+  "sourceRunId": "graph-write-clean-cost64-screen2",
+  "buildId": "D18352633B6B58F1178A4A93AB972D84A28C9656A25D8EBDD98CD4EFE39B0E3F",
+  "verificationStatus": "WHOLE_CPU_SCREEN_NOT_ACCEPTED",
+  "metrics": {
+    "off": {
+      "schemaVersion": "1.0",
+      "sourceRunId": "ANIM-graph-write-clean-cost64-screen2-off",
+      "verificationStatus": "SINGLE_CPU_SCREEN_NOT_ACCEPTANCE",
+      "condition": "off",
+      "cpuMsPerWallSecond": 813.2947286991741,
+      "wallSeconds": 30.0091088,
+      "gameSeconds": 30.011999999999993,
+      "window": [
+        40.0983,
+        70.1103
+      ],
+      "gamePerWall": 1.0000963440807011,
+      "nativePerPartGame": 0.9995298496176311,
+      "maximumCpuReadBracketMs": 5.4441,
+      "clockReadBracketsMs": [
+        24.7696,
+        25.4658
+      ],
+      "missionFrames": 1193,
+      "missionFramesPerGameSecond": 39.750766360122626,
+      "missionDtMs": {
+        "0.5": 26.0,
+        "0.95": 44.0,
+        "0.99": 50.07999999999993
+      },
+      "workTraceWindow": [
+        39.9223,
+        70.1643
+      ],
+      "traceCounterDeltas": {
+        "contactSolves": 75520,
+        "contactFailures": 444,
+        "jointSweeps": 301644,
+        "footRays": 755200,
+        "animUpdates": 38720,
+        "physicsUpdates": 38720,
+        "climbs": 35,
+        "drops": 22,
+        "landings": 19
+      },
+      "contactSolvesPerTraceGameSecond": 2497.1893393294094,
+      "allHostsAlive": true,
+      "acquiredMoved2m": 64,
+      "partsEach": 5,
+      "expectedRenderHosts": 320,
+      "foregroundObservedRows": 1555,
+      "foregroundScope": "Conservative client-age bracket, not exactQPC/visible animation observation",
+      "wholeFunctionalAccepted": false,
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "presentMeasured": false,
+      "evidence": [
+        {
+          "name": "server-cpu.csv",
+          "sha256": "e7e25ffe7824d73f92c79c14ef606dcc64e8bbdd647f9f1b9ec0173d71e6889b"
+        },
+        {
+          "name": "capture-start.json",
+          "sha256": "7fec3036b6cdae5d2917956be667be8a6b5174854014aa80c23379bef33a239f"
+        },
+        {
+          "name": "capture-terminal.json",
+          "sha256": "33bcc23408fb0d641e6b4c8087c04a12a6ef3b32903c87f50a9945651e56961f"
+        },
+        {
+          "name": "server-profile\\server-frame.tsv",
+          "sha256": "da10043a06fbf454eb2cdd0409079ca92a4ec374695a0f29ce72a575c69ef552"
+        },
+        {
+          "name": "server-profile\\gameplay-eight.tsv",
+          "sha256": "daf2a7c38b56d8ca3aa4bd1dff68a933340d6add6080e0957933ffad277b8db4"
+        },
+        {
+          "name": "server-profile\\mixed-hosts.tsv",
+          "sha256": "cde2fed9aebfa3eb177796f814dabc0cc57bd30045da112c27e8d465dd4a2be9"
+        },
+        {
+          "name": "client-profile\\visual-app-frames.tsv",
+          "sha256": "612632be7428aaae6d25915a0137f582100ace3907a4567b3da4a9e78dd4b0f7"
+        }
+      ],
+      "sameClockIdenticalDuplicateBlocks": [],
+      "hostEndpointAgeGameSeconds": [
+        0.6328999999999994,
+        0.2290999999999883
+      ],
+      "hostScope": "Observed snapshots through last sample at/before end; endpoint age<=1.1s, not continuous native lifetime proof"
+    },
+    "on": {
+      "schemaVersion": "1.0",
+      "sourceRunId": "ANIM-graph-write-clean-cost64-screen2-on",
+      "verificationStatus": "SINGLE_CPU_SCREEN_NOT_ACCEPTANCE",
+      "condition": "on",
+      "cpuMsPerWallSecond": 820.4046814586591,
+      "wallSeconds": 30.01567465,
+      "gameSeconds": 30.0083,
+      "window": [
+        40.1984,
+        70.2067
+      ],
+      "gamePerWall": 0.9997543067052134,
+      "nativePerPartGame": 0.9987253739286469,
+      "maximumCpuReadBracketMs": 5.6641,
+      "clockReadBracketsMs": [
+        29.1842,
+        32.9982
+      ],
+      "missionFrames": 1131,
+      "missionFramesPerGameSecond": 37.68957255159406,
+      "missionDtMs": {
+        "0.5": 26.0,
+        "0.95": 47.0,
+        "0.99": 56.0
+      },
+      "workTraceWindow": [
+        40.1044,
+        70.2457
+      ],
+      "traceCounterDeltas": {
+        "contactSolves": 75506,
+        "contactFailures": 851,
+        "jointSweeps": 300558,
+        "footRays": 755060,
+        "animUpdates": 38592,
+        "physicsUpdates": 38592,
+        "climbs": 29,
+        "drops": 13,
+        "landings": 18
+      },
+      "contactSolvesPerTraceGameSecond": 2505.0677973411894,
+      "allHostsAlive": true,
+      "acquiredMoved2m": 64,
+      "partsEach": 5,
+      "expectedRenderHosts": 320,
+      "foregroundObservedRows": 1546,
+      "foregroundScope": "Conservative client-age bracket, not exactQPC/visible animation observation",
+      "wholeFunctionalAccepted": false,
+      "visualAccepted": false,
+      "performanceAccepted": false,
+      "presentMeasured": false,
+      "evidence": [
+        {
+          "name": "server-cpu.csv",
+          "sha256": "079d8968ca0d131ecc340fc1d5dd96f0b0d87f305791b1679d22dac72449ca3f"
+        },
+        {
+          "name": "capture-start.json",
+          "sha256": "4088f1631423ecb8ce7640def7fbe64956d0bbf1497f4179b74b2c62c8a13f25"
+        },
+        {
+          "name": "capture-terminal.json",
+          "sha256": "d8f548d7fe64805de2ba04ef611da331f545b3f0043cbfd2dba4f47eef0d317a"
+        },
+        {
+          "name": "server-profile\\server-frame.tsv",
+          "sha256": "53e1de97acd7a8b76330f46edb3574e7b040f46fab255e98347eb31bafa690eb"
+        },
+        {
+          "name": "server-profile\\gameplay-eight.tsv",
+          "sha256": "462da30063f87e381eec437db191aaec097000320aa881646e943b05366fb52b"
+        },
+        {
+          "name": "server-profile\\mixed-hosts.tsv",
+          "sha256": "3aa0495534611433ad00e2f2dfb9748e022f69f7bf14deb5f8e05a92dfb4313b"
+        },
+        {
+          "name": "client-profile\\visual-app-frames.tsv",
+          "sha256": "938a5219d438cf0ff03300c4cce2b92f822f4c8bc2491960a8f7775fb369c90b"
+        }
+      ],
+      "sameClockIdenticalDuplicateBlocks": [],
+      "hostEndpointAgeGameSeconds": [
+        0.615000000000002,
+        0.18299999999999272
+      ],
+      "hostScope": "Observed snapshots through last sample at/before end; endpoint age<=1.1s, not continuous native lifetime proof"
+    },
+    "absoluteCpuDeltaMsPerWallSecond": 7.1099527594849405,
+    "relativeCpuChangePercent": 0.8742160140219978,
+    "rateContext": {
+      "missionFramesPerGameSecond": {
+        "off": 39.750766360122626,
+        "on": 37.68957255159406,
+        "relativeChangePercent": -5.1852932591415986
+      },
+      "contactSolvesPerTraceGameSecond": {
+        "off": 2497.1893393294094,
+        "on": 2505.0677973411894,
+        "relativeChangePercent": 0.31549301799820295
+      }
+    },
+    "independentPairs": 1,
+    "presentP95": null
+  },
+  "blockers": [
+    "5% whole CPU reduction gate failed",
+    "Mission update frequency changed more than5%; work-rate gate failed",
+    "Full functional and visual acceptance unresolved"
+  ],
+  "evidenceReferences": [
+    {
+      "name": "comparison-analysis.json",
+      "sha256": "e12629c48e74a797542be96bfccab4fec1ba826f7abf18bd8cb0b29228dad725"
+    },
+    {
+      "name": "off\\analysis-v2.json",
+      "sha256": "e56934627499a99424d109ab73684da376776e13fa32c11a8365b96047893873"
+    },
+    {
+      "name": "on\\analysis-v2.json",
+      "sha256": "2bcae1d6222671c8efc7fbc0a43d5c7bec3e4a40543ac96d193ea645da5e3536"
+    }
+  ],
+  "limitations": [
+    "Dynamic paths/contact/climb/fall workloads differ; no pure causal setter self-time estimate",
+    "Opt-in branch/fields still present inOFF; production baseline confirmation required if promising",
+    "8full function unresolved,clean build part0 CPU proof only",
+    "Present/GPU/visible smoothness not measured"
+  ],
+  "decision": "NOT_ACCEPTED; do not adopt or expand repeats; call-count reduction is not CPU success"
+}
