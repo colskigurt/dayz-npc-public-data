@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-08T01:49:56.895Z",
+  "sourceRunId": "current-preanim-setter-static-cost-boundary1",
+  "buildId": "server-987fbc47-existing-native-bytes",
+  "verificationStatus": "PARTIAL_STATIC_DIAGNOSIS_WHOLE_COST_UNKNOWN",
+  "metrics": {
+    "newGameRuns": 0,
+    "bindings": 4,
+    "handlerInstructions": [
+      6,
+      6,
+      8,
+      8
+    ],
+    "directCallees": 0,
+    "priorSampleWeight": 8101,
+    "priorMissingStackWeight": 2268,
+    "priorSummaryFunctionLimit": 100,
+    "onCpuMsPerWallSecond": null,
+    "cpuRelativeChangePercent": null,
+    "p50": null,
+    "p95": null,
+    "p99": null
+  },
+  "blockers": [
+    "Actual live setter family and VM dispatch cost not established",
+    "Top100 omission is not zero cost",
+    "Foreground-valid ON replacement still required; not launched"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/preanim-setter-native-cost-boundary-20261108.md",
+      "binarySha256": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805",
+      "handlerRvas": [
+        "0xa22a10",
+        "0xa22960",
+        "0xa9fca0",
+        "0xa9fbe0"
+      ]
+    },
+    {
+      "report": "reports/operations/graph-variable-write-clean-cost64-invalid-20261108.md",
+      "onValidity": "INVALID_FOREGROUND_NO_PERFORMANCE_COMPARISON"
+    }
+  ],
+  "functionalAccepted": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "finalAccepted": false,
+  "next": "Await foreground availability for staged ON replacement; no new game while pending"
+}

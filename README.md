@@ -1,15 +1,12 @@
 # DayZ NPC — 현재 상태
-갱신:2026-11-08T01:43:20.480Z
+갱신:2026-11-08T01:49:56.895Z
 
-**계측제거본CPU포즈계약통과.64비용쌍은ON활성창실패로무효.**
+**64 CPU효과 미확정·ON교체측정대기.새게임실행없음.**
 
-- 새비교본은OFF의불필요한캐시기록과setter카운터를제거했다.같은실제그래프79본/1971행에서포즈·루트·시계차이0.
-- 유효OFF서버CPU:852.45ms/벽시계초.
-- ON은측정중약11~12초부터창이비활성으로기록돼비교불가. **ON비용·개선률을제시하지않는다.**
-- 교체ON프로필만준비했고재측정은아직실행하지않았다.게임·서버종료.
+기존바이너리부분검토에서PreAnim_SetInt/Bool등록4개본문은6/8명령값저장으로끝나며그래프평가/물리/할당호출을포함하지않았다.그러나VM경계전체비용은미확정이고상위100함수요약의부재를0비용으로해석하지않는다.
 
-[최신 상세 보고서](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/graph-variable-write-clean-cost64-invalid-20261108.md)
+[최신 상세 보고서](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/preanim-setter-native-cost-boundary-20261108.md)
 
-수집기완료는유효측정과다르다.창조건을사후완화하지않는다.추가정책분기·필드오버헤드는남아있어유망결과도배포기준재확인이필요하다.전체기능·시각·성능미수용,20ms p95목표미달성.
+유효OFF서버CPU852.45ms/벽시계초.ON은창비활성화로무효여서비교값/개선률없음.창유지가능답변전재실행하지않는다.전체기능·시각·성능미수용,20ms p95목표미달성.
 
-[앞선8개체진단](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/graph-variable-write-eight-network-20261108.md)
+[계측제거계약과무효측정](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/graph-variable-write-clean-cost64-invalid-20261108.md)

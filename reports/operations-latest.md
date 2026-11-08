@@ -1,24 +1,21 @@
-# 변수쓰기 계측제거계약통과·64 ON활성창실패
+# 그래프setter 네이티브본문 경계 — 전체비용미확정
 
 ## 1. 작업 목표
-계측프로토타입의OFF부가비용편향을제거하고그래프변수쓰기캐시의64전체CPU효과를선별한다.
+유효ON재측정의창유지가능여부를기다리는동안,기존바이너리/표본으로setter의직접네이티브비용범위를좁힌다.새게임·후킹·전체엔진분석없음.
 ## 2. 실제 수행
-runtime3에서setter카운터갱신을제거하고OFFsetter본문을기준3호출과같게만들었다.OFF캐시메타데이터저장도제거했다.정책분기·추가필드는남아있어배포기준과완전한무오버헤드동일성이라고주장하지않는다.
-동일실제그래프미션을재사용해작은CPU포즈계약시험을완료한뒤같은15PBO/5파트/384호스트/64논리개체로OFF/ON각30초CPU수집.정책확인은384명령에서워밍업때한번끝내고계측구간내반복하지않았다.
+기존기록에서같은분석을찾고REA세션상태를확인했다(열린대상없음).기존해시검증PE/등록디코더·Capstone을재사용해현재서버의PreAnim_SetInt/Bool등록4개를추적했다.등록함수최대64KiB·handler4096byte한도,원문불변.Ghidracold분석/설치/설정변경없음.기존CPU요약의보존범위도확인했다.
 ## 3. 측정 결과
-계측제거본D18352633B6B58F1178A4A93AB972D84A28C9656A25D8EBDD98CD4EFE39B0E3F:서명검증성공.실제그래프1971행·79본·native40.0001초에서본/루트/시계차이0,요청불일치0.카운터는미계측(null)이다.
-64 OFF유효기준:CPU852.4479 ms/벽시계초,30.0055벽시계초.게임/벽시계1.000620,명령/파트게임1.000611.최대CPU읽기6.664ms·시계읽기37.339ms.64생존/인식/2m이동64/64.
-ON수집기는완료했으나활성창검증실패.최근시작상태이후약11.334초부터비활성표본이있으며관측386행이false다.종료경계만의문제가아니다.ON비용및개선률은비교결과로제시하지않는다.
-이번Present/GPU/시각품질미측정.유효한OFF/ON쌍0.
+현재서버SHA987fbc47...aebba805.RVA a22a10/a22960의setter본문각6명령,a9fca0/a9fbe0각8명령.두계열모두직접값저장후ret이며call명령/하위callee없음.두번째등록문맥에AnimCommandBase문자열,SDK에DayZAnimalCommandScript extends AnimCommandBase를확인했다.실제live디스패치계열은미관측.
+기존CPU요약:10.847172초·가중표본8101,스택누락2268.함수목록은leaf/inclusive각상위100개만보존돼setter가목록에없어도0표본/0비용으로판정할수없다.
+새CPU/Present p50/p95/p99·8/64실행·시각측정0.
 ## 4. 원인 분석
-확인:CPU포즈계약은계측제거후에도선정범위에서유지됐다.수집완료와유효측정은다르며ON은후자아니다.
-미확정:창비활성화원인/주체는기록으로확정하지못했다.사용자탓이나코드크래시로단정하지않는다.캐시CPU이득/손해도미확정.
+확인:선정setter본문안에서그래프평가·물리질의·할당함수를호출한다는설명은바이트흐름과맞지않는다.단순인덱스저장과한계열의활성바이트검사다.
+미확정:VM디스패치·인자전달·캐시분기의전체비용과실제CPU절감효과.짧은본문이낮은전체경계비용을증명하지않으며opcode수로ms를추정하지않는다.A56650의AnimationVariableChangeLog표본범위를이setter비용으로명명할근거도없다.
 ## 5. 검증 수준
-계측제거소스정합성·단일CPU포즈진단성공.OFF단일CPU측정유효.ON INVALID_FOREGROUND_NO_PERFORMANCE_COMPARISON.전체성능비교·기능·시각·최종수용미완료.20ms p95목표유지.
+선정등록·바이트흐름부분정적진단성공.런타임함수소유자/정확self-time/64개선미확정.전체기능·시각·성능미수용,20ms p95목표유지.
 ## 6. 변경 사항
-격리runtime3 PBO만빌드·서명·검증,개인키미포함.기존운영PBO·물리/이동/애니메이션갱신주기미변경.실패ON원문과초기분석기보존.재사용수집기에RunLabel인자를추가해새재시도출력을분리했으며아직실행하지않았다.
+기존cpu-owner1아래읽기전용검사기와파생JSON만추가.게임코드·PBO·자산·분석설정미변경.새서명대상없음.직접E8호출자조회0건은간접등록의부재증명이아니다.
 ## 7. 원시 증거
-runtime3/source-proof.json,build.json,contract1/analysis.json와graph-retention.tsv(SHA256 8da1556db267b80ab7f75325cef5eb9be3cae805f294a335ff35c3cd0dfc867b).
-실행ANIM-graph-write-clean-cost64-screen1-off/on;ON invalid-capture-analysis.json,양쪽원시CPU CSV·capture-start/terminal·app-frame TSV및종료기록.서버exit-1·강제종료없음,클라이언트정상창닫힘.재시도on-retry1/plan.json은STAGED_NOT_RUN.
+preanim-setter-bindings1.json,preanim-setter-registration-owners1.json,preanim-registration-direct-callers1.json,preanim-setter-cost-boundary1.json,기존capture-1/cpu-1-samples-target-v1.json.각함수원문해시·현재바이너리해시·등록문맥을연결했다.기존ETL/요약을변경하거나새로수집하지않았다.
 ## 8. 잔여 문제
-ON교체측정동안약3분의게임창유지가필요해사용가능시간을물었다.답변전종속재측정을시작하지않는다.유효OFF기준과같은미션/빌드/설정의새ON출력만준비해뒀다.첫무효시도는독립반복에세지않는다.창조건을사후완화하거나캐시호출감소를CPU성공으로대체하지않는다.
+유효한전체CPU효과는아직판정불가.ON교체프로필만준비했고창유지가능답변전에는실행하지않는다.이번정적결과로성능성공/효과없음을대체하지않는다.다음핵심산출물은조건을지킨ON교체측정이다.
