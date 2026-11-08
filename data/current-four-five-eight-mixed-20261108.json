@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-08T00:41:07.731Z",
+  "sourceRunId": "current-mixed-eight2-pair",
+  "buildId": "current-987fbc47-same14PBO",
+  "verificationStatus": "BOUNDED_DIAGNOSTIC_SUCCESS_FULL_FUNCTION_NOT_ACCEPTED",
+  "metrics": {
+    "five": {
+      "seconds": 60.0282,
+      "terminal": 6,
+      "milestone": 6,
+      "fall": 10,
+      "fallFollow": 10
+    },
+    "four": {
+      "seconds": 60.0194,
+      "terminal": 5,
+      "milestone": 6,
+      "fall": 9,
+      "fallFollow": 8
+    },
+    "logicalNpcs": 8,
+    "aliveAcquiredMovedBoth": 8,
+    "phaseChainErrorsBoth": 0,
+    "recoveryGenerationErrorsBoth": 0,
+    "terminalAlignmentErrorsBoth": 0,
+    "runsPerCondition": 1,
+    "p50": null,
+    "p95": null,
+    "p99": null
+  },
+  "blockers": [
+    "Both full functional gates unpassed",
+    "Four-part final EGRESS observed for 6.662 seconds; regression causality unknown",
+    "CPU and visible quality not measured"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/current-four-five-eight-mixed-20261108.md",
+      "missionSha256": "0d7dcadfe2a007db66f46b9da8222ba81ac528cfd16dea1b299a9b1541900cf6",
+      "runIds": [
+        "ANIM-current-mixed-eight2-five",
+        "ANIM-current-mixed-eight2-four"
+      ]
+    }
+  ],
+  "functionalAccepted": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "finalAccepted": false,
+  "next": "Bounded existing-evidence contact-input review before deciding whole CPU screen; no feature-development scope expansion"
+}

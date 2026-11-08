@@ -1,35 +1,52 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-08T00:27:06.627Z",
-  "sourceRunId": "ANIM-four-current-engine-pose1",
-  "buildId": "current-987fbc47-existing-four-assets-observer-817fb89c",
-  "verificationStatus": "DIAGNOSTIC_SUCCESS_SINGLE_RUN",
+  "generatedAt": "2026-11-08T00:41:07.731Z",
+  "sourceRunId": "current-mixed-eight2-pair",
+  "buildId": "current-987fbc47-same14PBO",
+  "verificationStatus": "BOUNDED_DIAGNOSTIC_SUCCESS_FULL_FUNCTION_NOT_ACCEPTED",
   "metrics": {
-    "clips": 14,
-    "traceRows": 1894,
-    "bonesPerRow": 331,
-    "cpuPoseGatePassed": true,
-    "currentCohortIndependentRuns": 1,
-    "frameTimeP50": null,
-    "frameTimeP95": null,
-    "frameTimeP99": null
+    "five": {
+      "seconds": 60.0282,
+      "terminal": 6,
+      "milestone": 6,
+      "fall": 10,
+      "fallFollow": 10
+    },
+    "four": {
+      "seconds": 60.0194,
+      "terminal": 5,
+      "milestone": 6,
+      "fall": 9,
+      "fallFollow": 8
+    },
+    "logicalNpcs": 8,
+    "aliveAcquiredMovedBoth": 8,
+    "phaseChainErrorsBoth": 0,
+    "recoveryGenerationErrorsBoth": 0,
+    "terminalAlignmentErrorsBoth": 0,
+    "runsPerCondition": 1,
+    "p50": null,
+    "p95": null,
+    "p99": null
   },
   "blockers": [
-    "8/64 gameplay regression not verified for current four-part mixed cohort",
-    "visual quality not accepted for four-part candidate",
-    "whole CPU improvement not measured; 20ms p95 is target"
+    "Both full functional gates unpassed",
+    "Four-part final EGRESS observed for 6.662 seconds; regression causality unknown",
+    "CPU and visible quality not measured"
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/current-four-fullclip-pose-correction-20261108.md",
-      "traceSha256": "65357699bd18107952ec2bde78dc68476d1a7032674f529a2c0aa1d9c586098a",
-      "referenceRunId": "ANIM-four-full-native-pose2",
-      "referenceScope": "old-engine CPU pose success existed; previous latest summary corrected"
+      "report": "reports/operations/current-four-five-eight-mixed-20261108.md",
+      "missionSha256": "0d7dcadfe2a007db66f46b9da8222ba81ac528cfd16dea1b299a9b1541900cf6",
+      "runIds": [
+        "ANIM-current-mixed-eight2-five",
+        "ANIM-current-mixed-eight2-four"
+      ]
     }
   ],
-  "nextExperiment": "Matched four/five-part mixed 8-agent contract; then whole CPU screen if eligible",
   "functionalAccepted": false,
   "visualAccepted": false,
   "performanceAccepted": false,
-  "finalAccepted": false
+  "finalAccepted": false,
+  "next": "Bounded existing-evidence contact-input review before deciding whole CPU screen; no feature-development scope expansion"
 }

@@ -1,16 +1,21 @@
 # 외부 AI 검토 안내
 
 # DayZ NPC — 현재 상태
-갱신: 2026-11-08T00:27:06.627Z
+갱신: 2026-11-08T00:41:07.731Z
 
-현재 엔진의 기존 4파트 14클립 CPU 본·루트 계약: **단일 진단 통과**, 1,894행·331본. **시각·8/64 기능·전체 CPU 개선은 미수용**. 20ms p95는 목표다.
+| 판정 | 현재 결과 |
+|---|---|
+| 현재 엔진14클립 CPU 포즈 | 단일 진단 통과 |
+| 동일조건8개체 제한 통합 | 양쪽 생존·인식·이동8/8, 상태기록 정합성 오류0 |
+| 전체 기능 | 미수용:5파트 유효최종6/8,4파트5/8 |
+| 미해결 | 4파트 종료시EGRESS 약6.662초,회귀원인미확정 |
+| 이번 시각·CPU·Present | 미측정 |
+|20ms p95|목표·미달성|
 
-정정: 구 엔진에서도 전체14클립 CPU 비교 통과 기록이 이미 있었다. 이전 최신 요약의 미검증 설명은 초기 감사만 읽은 오류였다. 과거 보고서는 보존한다.
+[최신 상세 보고서](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/current-four-five-eight-mixed-20261108.md)
 
-최신 보고서: [현재 엔진 포즈 진단과 정정](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/current-four-fullclip-pose-correction-20261108.md)
+동일14PBO·동일mission,layout플래그만 변경. 조건당1회이며 반복검증이 아니다. 사전검사5고정으로 실패한첫4파트시도는 보존·비교제외했다. 제한 통합 통과는 전체 기능·회귀없음·배포 승인과 다르다.
 
-다음: 현재 엔진 4/5파트 동일 mixed 조건 8개체 계약 비교. 기존 4파트 구 엔진 비용 비교의 미수용 판정은 유지한다. 전체 CPU 감소가 입증되기 전에는 채택하지 않는다.
+[직전14클립 진단·과거 기록 정정](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/current-four-fullclip-pose-correction-20261108.md)
 
-직전 [API·기존 자산 재사용 검토](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/current-animation-api-four-cohort-review-20261108.md)는 이 정정을 함께 읽어야 한다.
-
-CPU 포즈 증거와 영상·게임플레이·성능 수용을 합치지 말 것. 구 엔진 실행을 현 엔진 독립 반복에 합산하지 말 것.
+다음:기존 실패구간 접촉입력 차이를 제한 검토 후 전체CPU 선별가치 판단. 기능복구로 주력을 전환하지 않는다.
