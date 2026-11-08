@@ -1,15 +1,19 @@
 # DayZ NPC — 현재 상태
-갱신:2026-11-08T01:20:05.975Z
+갱신:2026-11-08T01:28:50.965Z
 
-**그래프변수쓰기 캐시: 실제게임플레이그래프 CPU계약 단일통과.**
+**변수쓰기 캐시:8개체 네트워크 제한진단통과·전체기능/성능미수용.**
 
-- 같은그래프·타입·입력:79본/1971행,본·루트·시계차이0,요청불일치0.
-- 입력고정대조는포즈가달라져그래프입력민감도확인.
-- setter호출600→35회. **94.17%는호출수감소이며CPU절감률이아니다.**
-- 8/64네트워크게임플레이·전체CPU·실제화면품질은미수용.명령재활성화/다른쓰기주체도미확정.
+|항목|OFF|ON|
+|---|---:|---:|
+|생존·인식·2m이동|8/8|8/8|
+|유효최종/전체이정표|7/8|6/8|
+|낙하/FOLLOW복귀|9/9|7/7|
+|setter호출|172800|4602|
 
-[최신 상세 보고서](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/graph-variable-write-retention-contract-20261108.md)
+상태정합성오류0.**97.34%는호출수감소이며CPU절감률이아니다.**현재진단본OFF에는캐시기록·카운터부가비용이있어이빌드로성능성공을주장하면안된다.다음은공정한비용비교본검증이다.
 
-다음은현행5파트8개체동일조건OFF/ON통합비교.4파트후보는독립비교-10.10%/-4.40%로미수용유지.20ms p95목표미달성.
+[최신 상세 보고서](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/graph-variable-write-eight-network-20261108.md)
 
-[직전후보준비](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/graph-variable-write-preflight-20261108.md)
+조건당1회,회귀없음미입증.64비용·실제화면품질미측정.20ms p95목표미달성.
+
+[실제그래프CPU포즈계약](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/graph-variable-write-retention-contract-20261108.md)
