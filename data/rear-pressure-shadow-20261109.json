@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T07:04:06.298482+09:00",
+  "sourceRunId": "ANIM-rear-pressure-shadow-existing1",
+  "buildId": "DDBEDF0F39C65C13C1BBD651F27913001DC65856D8FB9CB7DD975669D3A0A2BA",
+  "verificationStatus": "READ_ONLY_REPLAY_NOT_CONTROL_VALIDATION",
+  "metrics": {
+    "groups": {
+      "eligible_moving_ground": {
+        "intervals": 3997,
+        "futureAgentSeconds": 1048.5962099999922,
+        "calls": 15039,
+        "accepted": 14981,
+        "rejected": 58,
+        "solves": 15039
+      },
+      "slow_front": {
+        "intervals": 1112,
+        "futureAgentSeconds": 293.95536999999956,
+        "calls": 5859,
+        "accepted": 5859,
+        "rejected": 0,
+        "solves": 5859
+      },
+      "front_plus_opposing_pressure": {
+        "intervals": 1056,
+        "futureAgentSeconds": 279.0171299999995,
+        "calls": 5561,
+        "accepted": 5561,
+        "rejected": 0,
+        "solves": 5561
+      },
+      "provisional_rear_outside_nominal_entry": {
+        "intervals": 148,
+        "futureAgentSeconds": 38.772930000000066,
+        "calls": 773,
+        "accepted": 773,
+        "rejected": 0,
+        "solves": 773
+      }
+    },
+    "allObservedDisplaceCalls": 64234,
+    "frontAndPressureCallShare": 0.08657408848896223,
+    "outsideNominalEntryCallShare": 0.012034125229629168,
+    "newIndependentRuns": 0,
+    "cpuImprovement": null
+  },
+  "blockers": [
+    "Safe live fitted-entry exclusion is not present in these sampled rows",
+    "Small candidate opportunity outside nominal entry protection",
+    "No controlled causal slowdown result"
+  ],
+  "evidenceReferences": [
+    {
+      "name": "ground-progress.tsv",
+      "sha256": "611e5b9d456f97b2ecb55a1f05d45a3f8fba6d526313662f1a42b303df37953e"
+    },
+    {
+      "name": "gameplay-eight.tsv",
+      "sha256": "bbcc8657dbd01dc1ac8958dc9893a202ec4100a5bd45085cf76b76ae7c6f2a83"
+    },
+    {
+      "name": "results.json",
+      "sha256": "3e40ca2b0b39eb5651159b44558e710a9b0c7896ac5279bdfda21649645b5747"
+    }
+  ],
+  "limitations": [
+    "Classifier at t1 uses preceding interval only; work counts are subsequent interval, not a counterfactual",
+    "Nominal fixture entry guard does not prove exclusion from fitted live admission entries",
+    "Sampled force and native velocity may come from different callback instants",
+    "One scene/run; thresholds not calibrated; action/ownership checks would be required live",
+    "No CPU, throughput or slowdown improvement demonstrated"
+  ],
+  "decision": "Deprioritize simple rear-stop implementation; preserve continuous climbing and existing collision semantics; do not repeat rejected combined-proposal optimization"
+}

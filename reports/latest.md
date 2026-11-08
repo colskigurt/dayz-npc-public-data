@@ -1,19 +1,14 @@
 # DayZ NPC — 현재 상태
 
-2026-11-09:64개체 경로 접선·접촉 변위 관측1회. 감속은 미적용입니다.
+2026-11-09: 후열 압력 완화 적용 범위를 기존64개체 기록으로 재분류했습니다. 새 게임 실행·감속 구현은 없습니다.
 
-|항목|관측 결과|
-|---|---|
-|Displace 시도/성공/거부|64,234 / 62,275 / 1,959|
-|내부 솔버/전체 솔버|63,262 / 162,076 — CPU 비율 아님|
-|밀집 request1 경로 진행|1.363m/s, Displace19.89회/개체·초|
-|비밀집 request1 경로 진행|2.238m/s, Displace8.49회/개체·초|
-|저진행 이동 구간|이동시간7.64%, 전체Displace2.53%|
-|종착/전체 기능|12/64 직접종착, 엄격 분석 milestone coverage 불충족 — 미수용|
-|CPU·시각 개선|미측정|
+|분류|후속 Displace|
+|---|---:|
+|느린 전방·자기전진·반대접촉력|5,561회(전체8.66%)|
+|명목 등반입구2m 주변 제외|773회(전체1.20%)|
 
-밀집 이동은 대부분 이미request1입니다. 단순 달리기→걷기 또는일괄감속은 적용하지 않습니다. 후열 압력 완화는 미검증 후보입니다. 지속 등반·밀침·낙하·재등반 정책은 변경하지 않았습니다.
+수치는 제거 가능한 작업량이나 CPU 절감률이 아닙니다. 실제 fitted entry 보호도 미입증입니다. 지속 등반을 보호하면 단순감속 적용 범위가 작아져 우선순위를 낮췄습니다. 기존Drive/Displace 단순통합검사안은2026-11-05 계약검토로 기각돼 재시험하지 않습니다.
 
-[상세 보고서](operations/ground-progress-observation-sixtyfour-20261109.md) · [공개 수치](../data/ground-progress-observation-sixtyfour-20261109.json)
+[상세 보고서](operations/rear-pressure-shadow-20261109.md) · [공개 수치](../data/rear-pressure-shadow-20261109.json)
 
-[8개체 관측](operations/ground-progress-observation-eight-20261109.md)과 [기존 로그 분석](operations/ground-progress-existing-20261108.md)을 보존합니다. 기능·시각·성능은 별개이며20ms p95는 목표입니다.
+[64개체 관측](operations/ground-progress-observation-sixtyfour-20261109.md): 직접종착12/64·엄격기능미수용, 시각·성능개선미측정. 기존64 CPU 후보의 미완료비교/소유자자료로복귀하며20ms p95는목표입니다.
