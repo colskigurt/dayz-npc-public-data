@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-08T13:39:35.7133837+09:00",
+  "sourceRunId": "ANIM-admission-cadence-opportunity-review1",
+  "buildId": "0debfcf93dc057318d5eada42c31ffb808a146eb95f81dab39cae64316c8cf1e",
+  "verificationStatus": "MISSION_COMPILE_AND_PRIOR_TRACE_REVIEW_ONLY",
+  "metrics": {
+    "syntheticClocks": 64,
+    "syntheticDurationSeconds": 2,
+    "inputTickSeconds": 0.05,
+    "configuredRetrySeconds": 0.15,
+    "eligibleCalls": 2624,
+    "freshChecks": 912,
+    "deferredChecks": 1712,
+    "maxObservedRetrySeconds": 0.2,
+    "assertionFailures": 0,
+    "gameplayAgentsTested": 0,
+    "cpuImprovement": null,
+    "presentP95": null,
+    "eightAgentMissionCompilePassed": true,
+    "existingReasonSamples": [
+      {
+        "label": "existing8",
+        "followSamples": 1429,
+        "exitBlocked": 28,
+        "alignHeading": 233,
+        "linkAlign": 69
+      },
+      {
+        "label": "existing64",
+        "followSamples": 15471,
+        "exitBlocked": 3,
+        "alignHeading": 2162,
+        "linkAlign": 1060
+      }
+    ]
+  },
+  "blockers": [
+    "8-agent gameplay and 64-agent matched performance comparisons not run",
+    "Dedicated foreground availability required before client measurement"
+  ],
+  "evidenceReferences": [
+    {
+      "name": "plan.json",
+      "sha256": "079f53fab52789aec5e19e27bd8ea6289fe73cd07a3c879aef6957500edaa1e9"
+    },
+    {
+      "name": "terminal.json",
+      "sha256": "f4b951c4514a698e5ee088a650f0d5289c6072235d0c7e4cc424280c9323f200"
+    },
+    {
+      "name": "contract-result.txt",
+      "sha256": "ab4d3d8b3227521af4cafc1af5771077917dcaad10674b56f658f0dc36804c48"
+    },
+    {
+      "name": "script_2026-11-08_13-34-10.log",
+      "sha256": "c7739a3565ffab7a573206d6af6728a400707a8c05560b04cdfafd74914dbc1f"
+    },
+    {
+      "name": "build.json",
+      "sha256": "482976ccab92ecbba46b143547816f8c8dbbe1eb5a284eaefbdefe0660ba3285"
+    },
+    {
+      "name": "gameplay-eight.tsv",
+      "cohort": "existing8",
+      "sha256": "a02481d6e3acc5de9ad6fab5ff54f4b93151fc4025c96f63127ca4d3aa280b90"
+    },
+    {
+      "name": "gameplay-eight.tsv",
+      "cohort": "existing64",
+      "sha256": "f0f309f201c59931cc455cd2cb5d69689ea790a1c58deb21722eacec5796063d"
+    }
+  ],
+  "limitations": [
+    "Synthetic tests call the actual Enforce cadence helper, not live traversal or physics",
+    "Existing OpenTraversal bypasses peer occupancy admission checks",
+    "No collision/support solver removed; no measured whole CPU improvement",
+    "First build compile failure Math.Mod retained; runtime2 uses existing SDK Math.ModFloat",
+    "Entry/heading changes invalidate waits; live reduction may be smaller than synthetic result",
+    "Reason snapshots are not calls, durations or self-time",
+    "EXIT_SPACE_BLOCKED can include target area/footprint rejection after a successful LandingSpace; those cases are not throttled by this candidate",
+    "Actual runtime eligible/fresh/deferred counters needed before attributing opportunity"
+  ]
+}

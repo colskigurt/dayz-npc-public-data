@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-08T13:35:00+09:00",
-  "sourceRunId": "ANIM-admission-cadence-runtime2-contract1",
+  "generatedAt": "2026-11-08T13:39:35.7133837+09:00",
+  "sourceRunId": "ANIM-admission-cadence-opportunity-review1",
   "buildId": "0debfcf93dc057318d5eada42c31ffb808a146eb95f81dab39cae64316c8cf1e",
-  "verificationStatus": "DIAGNOSTIC_SUCCESS_NOT_GAMEPLAY_OR_PERFORMANCE_ACCEPTED",
+  "verificationStatus": "MISSION_COMPILE_AND_PRIOR_TRACE_REVIEW_ONLY",
   "metrics": {
     "syntheticClocks": 64,
     "syntheticDurationSeconds": 2,
@@ -16,7 +16,24 @@
     "assertionFailures": 0,
     "gameplayAgentsTested": 0,
     "cpuImprovement": null,
-    "presentP95": null
+    "presentP95": null,
+    "eightAgentMissionCompilePassed": true,
+    "existingReasonSamples": [
+      {
+        "label": "existing8",
+        "followSamples": 1429,
+        "exitBlocked": 28,
+        "alignHeading": 233,
+        "linkAlign": 69
+      },
+      {
+        "label": "existing64",
+        "followSamples": 15471,
+        "exitBlocked": 3,
+        "alignHeading": 2162,
+        "linkAlign": 1060
+      }
+    ]
   },
   "blockers": [
     "8-agent gameplay and 64-agent matched performance comparisons not run",
@@ -42,6 +59,16 @@
     {
       "name": "build.json",
       "sha256": "482976ccab92ecbba46b143547816f8c8dbbe1eb5a284eaefbdefe0660ba3285"
+    },
+    {
+      "name": "gameplay-eight.tsv",
+      "cohort": "existing8",
+      "sha256": "a02481d6e3acc5de9ad6fab5ff54f4b93151fc4025c96f63127ca4d3aa280b90"
+    },
+    {
+      "name": "gameplay-eight.tsv",
+      "cohort": "existing64",
+      "sha256": "f0f309f201c59931cc455cd2cb5d69689ea790a1c58deb21722eacec5796063d"
     }
   ],
   "limitations": [
@@ -49,6 +76,9 @@
     "Existing OpenTraversal bypasses peer occupancy admission checks",
     "No collision/support solver removed; no measured whole CPU improvement",
     "First build compile failure Math.Mod retained; runtime2 uses existing SDK Math.ModFloat",
-    "Entry/heading changes invalidate waits; live reduction may be smaller than synthetic result"
+    "Entry/heading changes invalidate waits; live reduction may be smaller than synthetic result",
+    "Reason snapshots are not calls, durations or self-time",
+    "EXIT_SPACE_BLOCKED can include target area/footprint rejection after a successful LandingSpace; those cases are not throttled by this candidate",
+    "Actual runtime eligible/fresh/deferred counters needed before attributing opportunity"
   ]
 }

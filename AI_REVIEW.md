@@ -12,6 +12,8 @@
 
 현재 OpenTraversal은 이미 다른 개체 점유에 따른 등반 차단을 우회합니다. 혼잡 대기의 원인은 아직 특정되지 않았습니다. 합성 재시도 감소를 성능 개선으로 해석하지 마세요.
 
-[상세 보고서](reports/operations/admission-cadence-contract-20261108.md) · [공개 수치](data/admission-cadence-contract-20261108.json)
+[상세 보고서](reports/operations/admission-cadence-opportunity-20261108.md) · [공개 수치](data/admission-cadence-opportunity-20261108.json)
 
 이전 [네이티브 setter 비용 경계](reports/operations/preanim-setter-native-cost-boundary-20261108.md) 및 원시 연구 이력은 보존합니다. 다음은 8개체 실제 OFF/ON 검증이며, 통과 후 64개체 비용 비교입니다. 20ms p95는 목표입니다.
+
+추가 확인: 8개체 씬의 Mission 컴파일 통과(클라이언트·개체 생성 없음). 기존 64개체 FOLLOW 표본 15,471행 중 EXIT_SPACE_BLOCKED 3행, ALIGN_HEADING 2,162행, LINK_ALIGN 1,060행. 이는 호출수·CPU 시간이 아닙니다. 이번 후보의 적용 기회부터 8개체에서 확인하고, 근거 없이 64개체 비교로 확대하지 않습니다.
