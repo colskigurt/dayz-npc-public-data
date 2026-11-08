@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T07:36:38.238349+09:00",
+  "sourceRunId": "ANIM-foot-ray-range-engine1",
+  "buildId": "4bbf370b1d479e0556e916d21213bafba383cbdd3a12c6e2518cd49c1ca64e70",
+  "verificationStatus": "REJECTED_NATIVE_LIFT_EQUIVALENCE_GATE",
+  "metrics": {
+    "cases": 2610,
+    "liftMismatchCount": 45,
+    "acceptanceChangesAt025": 0,
+    "maximumLiftDifferenceM": 0.000305176,
+    "foundCountChanges": 954,
+    "mismatchAreas": {
+      "low_roof": 25,
+      "high_roof": 20
+    },
+    "methodTimingBatchesExecuted": 0,
+    "npcCount": 0,
+    "newPbo": false,
+    "cpuImprovement": null,
+    "presentP95": null
+  },
+  "blockers": [
+    "Native lift differences exceed predeclared1e-5m tolerance",
+    "Retained-hit invariance assumption not supported by engine query outputs"
+  ],
+  "evidenceReferences": [
+    {
+      "name": "plan.json",
+      "sha256": "cb3c53d78fe5937e5bd97a2031ec87709f83fe81a4f600764d320b10d2dc1851"
+    },
+    {
+      "name": "terminal.json",
+      "sha256": "1c91da85636090e32dfe80d7233abab6ddcfb726b8aaff555af0a1e11a4ef66d"
+    },
+    {
+      "name": "range-equivalence.tsv",
+      "sha256": "8d5a3b6002a6cd17abe4d279a203329c8220a60b2a4a0e28b9943644a15009c1"
+    }
+  ],
+  "limitations": [
+    "No observed0.25m acceptance flip is not a full functional proof",
+    "No raw hit-point/normal telemetry for locating precise native cause",
+    "Existing shutdown BunkerBroadcastManager leak warning retained; exit-1 not rewritten as exit0",
+    "Foot kernel only, not full body solver/animated bone history"
+  ],
+  "decision": "Stop candidate; no timing or gameplay expansion; preserve previous math results as conditional evidence"
+}
