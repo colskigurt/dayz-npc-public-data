@@ -1,22 +1,23 @@
-# 그래프변수중복쓰기 후보 — 기본OFF빌드·계약미검증
+# 그래프변수쓰기 캐시 — 실제그래프CPU계약 단일통과
 
 ## 1. 작업 목표
-4파트비용후보미수용후새로운국소후보를선정한다.접촉안전검사를삭제하거나기능복구개발로전환하지않는다.
+기본OFF그래프변수쓰기캐시가실제HordeController에서입력보존/전환을깨는지확인한다.Review직접재생씬을사용하지않는다.
 ## 2. 실제 수행
-기존cost-coverage/support-entry/무변위Displace가드와기록을검토했다.현재DGNativeCommand.RunPreAnim은값불변에도RequestedState/TraversalReleased/LandingConfirmed setter를호출한다.선정기록에서는변경시쓰기캐시실험을확인하지못했다.미실행전체증명은아니다.
-기본OFF격리모듈을만들어명령별캐시·최초쓰기·값변경쓰기·OnActivate무효화를구현했다.추가정책/쓰기블록을역변환하면나머지RunPreAnim이기준본문과정확히같음을검증했다.기존서명키를복사하지않고빌드·서명·검증했다.게임미실행.
+같은Animal_NFPaletteFull_candidate0 4개를실제native_traversal.agr/HordeController로생성했다.기준/캐시쌍은같은request/release/landing순서를받고,추가두개체는요청고정/부울고정으로입력민감도를확인한다.캐시개체는명시적인스턴스필드로지정했다.이동AI·클라이언트·영상·비용수집없음.
+실패시도보존:hold1지역변수선언파서,hold2반환문/상속인자컴파일,hold3생성setup,hold4입력객체약한참조소멸예외.동일PBO를유지하며시험미션만수정했다.hold5한번완료;실패/재분석을독립반복에세지않는다.
 ## 3. 측정 결과
-PBO15b2ea7fb8801900c40d3985e3fb487db73a6295fbc1dd6e19b7c41114fb9962.서명검증성공·개인키미포함.설정문법통과이나Enforce컴파일/런타임미검증.
-이번8/64기능·CPU·Present p50/p95/p99·시각수치없음.예상절감률미제시.
+ANIM-graph-write-hold-transition5:1971행·동일타입part0의79본,명령시계40.0001초.본포즈·루트델타·시계최대차이0,요청불일치0.관측요청0/1/2/3/4/5/6/8/9/10/11/12.
+요청고정대조의포즈최대차이10.0096,부울고정대조3.07024로입력민감도조건충족.
+setter600→35회(-94.1667%).이수치는호출수감소이며CPU절감률이아니다.p50/p95/p99·8/64기능·서버CPU·Present·시각품질미측정.
 ## 4. 원인 분석
-확인:무변위Displace는기존가드가있어새후보가아니다.공식API는setter를OnActivate/PreAnimUpdate에서사용하도록선언한다.값의콜백간보존·외부쓰기정책은이선언만으로확인되지않는다.
-가설:같은값의반복스크립트-네이티브쓰기를줄이면비용이줄수있다.실제setter순수비용·엔진내부중복제거여부미확정.캐시분기비용이이득을상쇄할수있다.
-검증설계수정:기존14클립CPU씬은Review_0..13직접시작노드라실제게임플레이변수보존증명이될수없다.그대로재실행하지않았다.
+확인:선정실제그래프/입력순서/명령생존구간에서는불변값반복쓰기를생략해도관측CPU포즈계약이유지됐다.직접재생클립동등성만의증거가아니다.
+미확정:엔진모든변수의일반적보존계약,다른쓰기주체/네트워크·명령재활성화·전체파트·14클립품질은입증하지않았다.부울고정대조는release/landing합동대조로각부울의독립민감도증명이아니다.이동·물리부하가없는단일본파트시험이므로게임플레이회귀나비용효과로확장하지않는다.
 ## 5. 검증 수준
-소스국소변경정합성·빌드서명검증성공.기능·시각·비용·최종수용미실행.4파트의미수용판정유지.
+CPU_GRAPH_INPUT_CONTRACT_PASSED_SINGLE_RUN.완료독립실행1회.전체기능·시각·성능·최종수용미완료.20ms p95목표유지.
 ## 6. 변경 사항
-새격리기본OFF관찰후보만추가.운영PBO·원본자산·물리·갱신주기·시간누적기·본평가미변경.초기줄바꿈치환실패는소스생성전assert로중단돼보존했고CRLF정규화후빌드했다.기존공개보고서/원시증거보존.
+새기본OFF격리PBO0984d311cf4668f2b0343793252d464b99450df1f16db7fd798feb8f34be4b3b,서명·검증성공·개인키미포함.후보EnforceWorld모듈실제로딩확인.이전build.json의enforceCompiled=false는빌드당시미확인값으로보존하고실행증거와구분한다.
+기존게임PBO·자산·물리·본평가/갱신주기/시간계층미수정.
 ## 7. 원시 증거
-graph-variable-write1/preflight.json,source-contract-review.json,stage-failure1.json,build.json,signature.log,reference-RunPreAnim.c.txt,후보소스.기준DGNativeProbe.c SHA256 b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86.
+runtime2/hold-transition5의plan/launch/terminal/analysis JSON,graph-retention.tsv(SHA256 f9394530241626d57b70b256a6fa7cd2dc619b2b64f4db57cdc64fa039be8bd1)와script로그.실패hold1~4의원시미션/로그/종료기록보존.완료서버exit-1·강제종료없음,프로세스종료후체크포인트저장.
 ## 8. 잔여 문제
-현재candidate-only선택기는기존Review타입전용이라실제그래프쌍시험의명시적개체선택으로바꿔야한다.다음단일산출물은실제게임플레이그래프에서hold/request/release/landing전환및재활성화의보존을확인하는작은CPU포즈계약시험이다.불일치면기각.일치해도8→64기능·전체CPU·시각판정은별도다.현재setter캐시는실제병목해결책으로입증되지않았다.
+다음단일산출물은현행5파트8개체같은게임플레이/네트워크조건의OFF/ON비교다.같은후보PBO를양쪽로딩하고flag만변경해생존·추적·낙하·착지·재등반·상태정합성을확인한다.반복쓰기감소만으로CPU성공을주장하지않으며,8조건이유효하면기존64전체CPU수집기로측정한다.시각최종판정은별도다.

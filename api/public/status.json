@@ -1,36 +1,47 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-08T01:08:41.280Z",
-  "sourceRunId": "graph-variable-write-preflight1",
-  "buildId": "15b2ea7fb8801900c40d3985e3fb487db73a6295fbc1dd6e19b7c41114fb9962",
-  "verificationStatus": "BUILT_SIGNED_VERIFIED_RUNTIME_UNTESTED",
+  "generatedAt": "2026-11-08T01:20:05.975Z",
+  "sourceRunId": "ANIM-graph-write-hold-transition5",
+  "buildId": "0984d311cf4668f2b0343793252d464b99450df1f16db7fd798feb8f34be4b3b",
+  "verificationStatus": "CPU_GRAPH_INPUT_CONTRACT_PASSED_SINGLE_RUN",
   "metrics": {
-    "newRuntimeRuns": 0,
-    "enforceCompiled": false,
-    "signatureVerified": true,
+    "rows": 1971,
+    "bones": 79,
+    "nativeSeconds": 40.0001,
+    "poseError": 0,
+    "rootDeltaError": 0,
+    "clockGap": 0,
+    "requestMismatches": 0,
+    "referenceSetterCalls": 600,
+    "candidateSetterCalls": 35,
+    "setterCallReductionPercent": 94.1666666667,
+    "independentCompletedRuns": 1,
+    "serverCpu": null,
     "p50": null,
     "p95": null,
     "p99": null
   },
   "blockers": [
-    "Setter retention and external-writer invalidation unknown",
-    "Existing Review14 direct-play fixture cannot prove actual variable consumption",
-    "Candidate-only fixture selector must change before actual gameplay graph test",
-    "Setter cost benefit unmeasured"
+    "No8/64 gameplay or whole CPU test yet",
+    "External/network writers and command reactivation unverified",
+    "Only part0 CPU pose; no visible smoothness acceptance",
+    "Combined bool witness is not per-bool independent sensitivity"
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/graph-variable-write-preflight-20261108.md",
-      "baselineSourceSha256": "b1f51ffbd179782676829bfb3045a62c7a1202caf40847504af60057f967ed86"
-    },
-    {
-      "report": "reports/operations/current-four-five-cost64-reverse-repeat-20261108.md",
-      "fourPartStatus": "INCONCLUSIVE_NOT_ACCEPTED"
+      "report": "reports/operations/graph-variable-write-retention-contract-20261108.md",
+      "traceSha256": "f9394530241626d57b70b256a6fa7cd2dc619b2b64f4db57cdc64fa039be8bd1",
+      "failedAttemptsPreserved": [
+        "hold-transition1",
+        "hold-transition2",
+        "hold-transition3",
+        "hold-transition4"
+      ]
     }
   ],
   "functionalAccepted": false,
   "visualAccepted": false,
   "performanceAccepted": false,
   "finalAccepted": false,
-  "next": "Minimal actual-gameplay graph retention and transition pose contract before8/64"
+  "next": "Matched five-part eight-agent network OFF/ON integration, then whole CPU screen if eligible"
 }

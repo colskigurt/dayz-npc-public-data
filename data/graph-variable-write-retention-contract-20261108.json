@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-08T01:20:05.975Z",
+  "sourceRunId": "ANIM-graph-write-hold-transition5",
+  "buildId": "0984d311cf4668f2b0343793252d464b99450df1f16db7fd798feb8f34be4b3b",
+  "verificationStatus": "CPU_GRAPH_INPUT_CONTRACT_PASSED_SINGLE_RUN",
+  "metrics": {
+    "rows": 1971,
+    "bones": 79,
+    "nativeSeconds": 40.0001,
+    "poseError": 0,
+    "rootDeltaError": 0,
+    "clockGap": 0,
+    "requestMismatches": 0,
+    "referenceSetterCalls": 600,
+    "candidateSetterCalls": 35,
+    "setterCallReductionPercent": 94.1666666667,
+    "independentCompletedRuns": 1,
+    "serverCpu": null,
+    "p50": null,
+    "p95": null,
+    "p99": null
+  },
+  "blockers": [
+    "No8/64 gameplay or whole CPU test yet",
+    "External/network writers and command reactivation unverified",
+    "Only part0 CPU pose; no visible smoothness acceptance",
+    "Combined bool witness is not per-bool independent sensitivity"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/graph-variable-write-retention-contract-20261108.md",
+      "traceSha256": "f9394530241626d57b70b256a6fa7cd2dc619b2b64f4db57cdc64fa039be8bd1",
+      "failedAttemptsPreserved": [
+        "hold-transition1",
+        "hold-transition2",
+        "hold-transition3",
+        "hold-transition4"
+      ]
+    }
+  ],
+  "functionalAccepted": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "finalAccepted": false,
+  "next": "Matched five-part eight-agent network OFF/ON integration, then whole CPU screen if eligible"
+}
