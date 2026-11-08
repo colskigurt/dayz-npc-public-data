@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T06:52:22.531729+09:00",
+  "sourceRunId": "ANIM-ground-progress-observer-eight2",
+  "buildId": "DDBEDF0F39C65C13C1BBD651F27913001DC65856D8FB9CB7DD975669D3A0A2BA",
+  "verificationStatus": "SINGLE_OBSERVATION_NOT_ACCEPTED",
+  "metrics": {
+    "observerCounts": {
+      "calls": 3305,
+      "accepted": 3121,
+      "rejected": 184,
+      "solves": 3280
+    },
+    "freshRouteGroups": {
+      "all": {
+        "agentSeconds": 103.26656000000003,
+        "distance": 187.58491337424718,
+        "routeProgressDistance": 178.06083637991313,
+        "intervals": 397,
+        "calls": 1085,
+        "accepted": 1058,
+        "rejected": 27,
+        "solves": 1085,
+        "lowProgressSeconds": 24.47338,
+        "meanSpeed": 1.8165116894980053,
+        "meanRouteProgressSpeed": 1.7242836052630501,
+        "displaceCallsPerAgentSecond": 10.506789419537164,
+        "displaceSolvesPerAgentSecond": 10.506789419537164
+      },
+      "locomotion": {
+        "agentSeconds": 61.57872000000001,
+        "distance": 167.63388086366012,
+        "routeProgressDistance": 166.2980719517478,
+        "intervals": 237,
+        "calls": 537,
+        "accepted": 526,
+        "rejected": 11,
+        "solves": 537,
+        "lowProgressSeconds": 0.5160000000000036,
+        "meanSpeed": 2.7222696552260275,
+        "meanRouteProgressSpeed": 2.7005769517740505,
+        "displaceCallsPerAgentSecond": 8.720545019448275,
+        "displaceSolvesPerAgentSecond": 8.720545019448275
+      },
+      "alignment": {
+        "agentSeconds": 24.674279999999996,
+        "distance": 9.50759775693732,
+        "routeProgressDistance": 3.9951435251807936,
+        "intervals": 95,
+        "calls": 310,
+        "accepted": 301,
+        "rejected": 9,
+        "solves": 310,
+        "lowProgressSeconds": 15.580700000000004,
+        "meanSpeed": 0.3853242225077012,
+        "meanRouteProgressSpeed": 0.1619153031083701,
+        "displaceCallsPerAgentSecond": 12.563689801688238,
+        "displaceSolvesPerAgentSecond": 12.563689801688238
+      },
+      "arrival_or_admission": {
+        "agentSeconds": 7.350689999999998,
+        "distance": 1.0498528043726314,
+        "routeProgressDistance": 0.07897669404439547,
+        "intervals": 28,
+        "calls": 72,
+        "accepted": 65,
+        "rejected": 7,
+        "solves": 72,
+        "lowProgressSeconds": 6.558719999999998,
+        "meanSpeed": 0.1428237083012114,
+        "meanRouteProgressSpeed": 0.010744119809758743,
+        "displaceCallsPerAgentSecond": 9.79499883684389,
+        "displaceSolvesPerAgentSecond": 9.79499883684389
+      },
+      "no_locomotion_request": {
+        "agentSeconds": 9.662869999999998,
+        "distance": 9.39358194927702,
+        "routeProgressDistance": 7.6886442089401426,
+        "intervals": 37,
+        "calls": 166,
+        "accepted": 166,
+        "rejected": 0,
+        "solves": 166,
+        "lowProgressSeconds": 1.8179599999999976,
+        "meanSpeed": 0.9721316699155658,
+        "meanRouteProgressSpeed": 0.7956895010426658,
+        "displaceCallsPerAgentSecond": 17.17916105670469,
+        "displaceSolvesPerAgentSecond": 17.17916105670469
+      }
+    },
+    "routeExclusions": {
+      "invalid_route": 62,
+      "route_or_waypoint_change": 60,
+      "stale_route": 170
+    },
+    "workloadContext": {
+      "allSolvesDelta": 13149,
+      "allFootRaysDelta": 131490,
+      "displaceAttributedSolveDelta": 3280,
+      "displaceSolveCountFraction": 0.2494486272720359,
+      "notCpuCostFraction": true,
+      "locomotionLowRouteProgressFraction": 0.008379518119246445,
+      "freshRouteIntervalCoverage": 0.5761973875181422,
+      "limitations": [
+        "Coverage is only within prefiltered same-stage ground/FOLLOW intervals; not all gameplay",
+        "Displace accounting excludes a first snapshot prefix; no independent CPU duration"
+      ]
+    },
+    "functional": {
+      "sourceRunId": "ANIM-ground-progress-observer-eight2",
+      "activeSeconds": 60.0034,
+      "samples": 1856,
+      "contractRows": 246,
+      "transitions": 153,
+      "validTerminalAgents": 5,
+      "allMilestoneAgents": 7,
+      "fallStarts": 9,
+      "landAndFollowCycles": 8,
+      "phaseChainMismatches": [],
+      "recoveryGenerationErrors": [],
+      "terminalAlignmentErrors": [],
+      "evidenceFunctionalGatePassed": false
+    },
+    "independentRuns": 1,
+    "presentP95": null,
+    "cpuImprovement": null
+  },
+  "blockers": [
+    "Full functional gate not passed: valid terminal 5/8; no matched observer OFF comparison",
+    "Fresh route coverage 57.6% within filtered ground intervals",
+    "Dense 64-agent mechanism not yet observed with this telemetry",
+    "No controlled slowdown counterfactual"
+  ],
+  "evidenceReferences": [
+    {
+      "name": "ground-progress.tsv",
+      "sha256": "a4ad5c53591218f735a80643452390f2236ccfc20c7405ad261908c640b6c81a"
+    },
+    {
+      "name": "gameplay-eight.tsv",
+      "sha256": "1f58fb72ce11734d073de1ee43cbd7e363993a3042567256715f807201835355"
+    },
+    {
+      "name": "plan.json",
+      "sha256": "4c0507966a37c4127cea24f89818041d348e7b939c83ad83bb261db9633eb2f7"
+    },
+    {
+      "name": "server-terminal.json",
+      "sha256": "d71a60cdc4f2efe73917c0cbf264dee1d0bfc1c58b53d37f86eabedbcc1d047f"
+    }
+  ],
+  "limitations": [
+    "Single 8-agent observation; no slowdown counterfactual or 64-agent cost acceptance",
+    "Post-MoveTo waypoint is rejected when cleared, changed or stale; no reconstructed tangent for missing history",
+    "Counter deltas bracket intervals and are not CPU self-time",
+    "MoveTo speed parameter is not a calibrated free-movement command-speed baseline",
+    "Observational counts do not prove a safe speed reduction or CPU savings"
+  ],
+  "decision": "Keep slowdown unapplied; this eight-agent run does not reproduce persistent low route progress during locomotion; retain existing climb and recovery behavior"
+}
