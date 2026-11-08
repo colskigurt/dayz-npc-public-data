@@ -1,20 +1,12 @@
 # DayZ NPC — 현재 상태
-갱신: 2026-11-08. 이번 작업은 설치scripts.pbo와기존4/5파트factory·실험기록의읽기전용검토다. 새게임·빌드·PBO변경없음.
+갱신: 2026-11-08T00:27:06.627Z
 
-현재: [현재 애니메이션 API·4파트 자산 재사용 검토](reports/operations/current-animation-api-four-cohort-review-20261108.md). 설치선언7파일일치·포즈전용제어미확정. **4파트옛3쌍미수용유지, 현재엔진/mixed비교는미실행. 직전64CPU후보미채택유지.**
+현재 엔진의 기존 4파트 14클립 CPU 본·루트 계약: **단일 진단 통과**, 1,894행·331본. **시각·8/64 기능·전체 CPU 개선은 미수용**. 20ms p95는 목표다.
 
-| 대상 | 현재 판단 |
-|---|---|
-| 주력 | 64개체 전체 CPU 비용 절감, 기존 밀침·낙하·재추적 보존 |
-| 애니메이션 | 이전 사용자 시각 확인은 보존. 최신 비용 진단에서 새 시각 품질은 미측정 |
-| 최근 8개체 후보 비교 | 양쪽 생존·인식·이동8/8. 전체 milestone7/8대5/8, 유효terminal6/8대4/8로 미수용 |
-| 최근 64개체 비용 선별 | CPU796.659→793.527 ms/벽시계초,-0.393%,단일쌍·5% gate미달 |
-| 고정 Idle 384호스트 진단 | 기본/본/접촉 포함 CPU 평균 224.272/231.156/282.727 ms/벽시계초. 1프로세스·조건별2구간 |
-| 최신 위치·방향 분석 | 기존 CPU 가중 표본 144/8101(1.78%) 포함. 스택 누락28%, self-time 아님 |
-| 최적화 채택·20ms 목표 | 최근 후보 미채택. 전체 p95 20ms 달성 미확인 |
+정정: 구 엔진에서도 전체14클립 CPU 비교 통과 기록이 이미 있었다. 이전 최신 요약의 미검증 설명은 초기 감사만 읽은 오류였다. 과거 보고서는 보존한다.
 
-[최신 상세 진단](reports/operations/transform-update-attribution-20261108.md) · [고정 Idle 진단](reports/operations/host-floor-pose-contact-isolation-20261108.md) · [64개체 후보 선별](reports/operations/pair-radius-cost64-screen-20261108.md) · [외부 AI 검토 안내](AI_REVIEW.md) · [공개 JSON](api/public/status.json)
+최신 보고서: [현재 엔진 포즈 진단과 정정](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/current-four-fullclip-pose-correction-20261108.md)
 
-다음: 기존4파트자산의현재조건해시·서명·의존성·포즈·동적호스트수관측preflight계약. 옛평지/이중입력시험을재실행하지않으며지원API확인전포즈중단/시계변경을적용하지않는다. 새로운 보간·업데이트 정책이나 기능 재설계를 시작하지 않는다. CPU ms/벽시계초는 프레임 시간이 아니다. 정지·이동 조건을 직접 차감하지 않는다.
+다음: 현재 엔진 4/5파트 동일 mixed 조건 8개체 계약 비교. 기존 4파트 구 엔진 비용 비교의 미수용 판정은 유지한다. 전체 CPU 감소가 입증되기 전에는 채택하지 않는다.
 
-공개 요약 동기화 누락을 이번에 정정했다. 과거 보고서와 [교체 전 진입점](reports/archive/b47311ff/)은 보존한다.
+직전 [API·기존 자산 재사용 검토](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/current-animation-api-four-cohort-review-20261108.md)는 이 정정을 함께 읽어야 한다.
