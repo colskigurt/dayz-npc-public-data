@@ -1,15 +1,17 @@
 # DayZ NPC — 현재 상태
 
-2026-11-09: 그래프 변수쓰기 캐시의64개체 실제CPU 비교를 완료했으며 후보는 미수용입니다.
+최신 진단(2026-11-09):공식프로파일러 시간단위·평균 검증. NPC없는 작은진단이며 최적화 성공이 아닙니다.
 
-|항목|OFF|ON|
-|---|---:|---:|
-|서버CPU ms/벽시계초|813.295|820.405|
-|접촉 솔버/게임초|2497.19|2505.07|
-|명령 갱신/게임초|39.751|37.690|
+|확인|결과|
+|---|---|
+|초기 resolution / average|100000 / false|
+|resolution1000|ms 단위 반환 검증|
+|평균 분모|sessionFrames49 (profiledFrames48와 다름)|
+|부모/자식 시간|중첩 관찰·합산 금지|
+|과거 NPC rawTime|당시 옵션 미기록이므로 확정 변환 보류|
 
-CPU +0.874%, 명령 갱신률 −5.185%. 측정 유효성은 통과했지만 5%개선·작업량 보존 기준을 충족하지 못했습니다. 단일쌍으로 악화 원인을 확정하지 않습니다. 후보를채택하거나반복을확대하지않습니다. Present·시각품질·전체기능은별도미수용입니다.
+[단위 진단 보고서](operations/enprofiler-units-20261109.md) · [공개 수치](../data/enprofiler-units-20261109.json)
 
-[상세 보고서](operations/graph-write-clean-cost64-screen2-20261109.md) · [공개 수치](../data/graph-write-clean-cost64-screen2-20261109.json)
+NPC 주력 상태는 그대로입니다. [그래프변수 캐시](operations/graph-write-clean-cost64-screen2-20261109.md)는 OFF813.295→ON820.405ms/벽시계초로 미수용. [64개체 접촉 관측](operations/ground-progress-observation-sixtyfour-20261109.md)은 직접종착12/64·전체기능미수용, 내부Displace 솔버39.03%는 호출수 비율입니다. [후열 감속](operations/rear-pressure-shadow-20261109.md)은 보류. 셀 풀은 기존2쌍에서전체채택실패로재시험하지않습니다.
 
-[후열 감속 검토](operations/rear-pressure-shadow-20261109.md)도보류이며 지속 등반·밀침·낙하 정책은유지합니다. 실패후보를보존하고 실제제거가능한CPU비용을다음대상으로선정합니다.20ms p95는목표입니다.
+지속 등반·밀침·낙하·재등반 정책은 보존하며, 기능·시각·성능을 분리 판정합니다.20ms p95는 목표입니다.
