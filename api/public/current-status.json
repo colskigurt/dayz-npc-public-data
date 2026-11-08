@@ -1,9 +1,9 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-07T23:57:48.188Z",
-  "sourceRunId": "support-dominance-cost64-screen2-20261108",
-  "buildId": "B271AC1FFC8C78FF9CA2ED8EE35A753EA27B76A49A110C0D5C7F028AB502FD33",
-  "verificationStatus": "WHOLE_CPU_SCREEN_FAILED_NOT_ACCEPTED",
+  "generatedAt": "2026-11-08T00:05:13.048Z",
+  "sourceRunId": "existing-native-owner-boundaries-review-20261108",
+  "buildId": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805",
+  "verificationStatus": "PARTIAL_NATIVE_OWNER_DIAGNOSIS_NO_NEW_OPTIMIZATION",
   "metrics": {
     "transformInclusiveWeight": 144,
     "totalWeight": 8101,
@@ -170,15 +170,58 @@
       "onPrunedCandidates": 2946,
       "presentMeasured": false,
       "visualAccepted": false,
-      "fullFunctionalAccepted": false
+      "fullFunctionalAccepted": false,
+      "buildId": "B271AC1FFC8C78FF9CA2ED8EE35A753EA27B76A49A110C0D5C7F028AB502FD33"
+    },
+    "nativeOwnerReview": {
+      "captureSourceRunId": "ANIM-mixed64-current-cpu-owner1",
+      "newRuntimeCaptures": 0,
+      "weight": 8101,
+      "missingStackWeight": 2268,
+      "firstIpMismatchWeight": 1,
+      "groups": [
+        {
+          "name": "rva454970_454510",
+          "leafWeight": 535,
+          "usableLeafStackWeight": 432,
+          "leafWithRaySphere": 0
+        },
+        {
+          "name": "selected_CF_family",
+          "leafWeight": 1153,
+          "usableLeafStackWeight": 754,
+          "leafWithRaySphere": 475
+        },
+        {
+          "name": "rvaA52b10_A55780",
+          "leafWeight": 454,
+          "usableLeafStackWeight": 345,
+          "leafWithRaySphere": 0
+        },
+        {
+          "name": "inferred_selected_script_executor_family",
+          "leafWeight": 1867,
+          "usableLeafStackWeight": 1342,
+          "inclusiveWeight": 3653,
+          "inclusiveWithRaySphere": 834
+        }
+      ],
+      "animationRelatedCallerRva": "0xa56650",
+      "animationRelatedCallerInclusiveWeight": 1008,
+      "validatedDirectCallSites": 16,
+      "exactNativeSemanticsKnown": false,
+      "modApiControlKnown": false,
+      "cpuSelfTimeExact": false,
+      "performanceAccepted": false
     }
   },
   "blockers": [
-    "WholeCPU5%screen failed; do not expand repeated tests of this same candidate",
-    "8full functional6/8vs4/8 and EXIT_LEASE_BACKOFF causality still unresolved",
-    "Single dynamic pair has work/trajectory differences; no Present/GPU/visible-animation measurement"
+    "Native ranges only partly classified; exact per-part consumers and supported API control unresolved",
+    "28%missing stack coverage; inclusive/leaf weights are not exact self-time",
+    "Prior wholeCPU screen failed and full functional/visual acceptance still pending"
   ],
   "evidenceReferences": [
+    "reports/operations/native-owner-boundaries-review-20261108.md",
     "reports/operations/support-dominance-cost64-screen-20261108.md",
     "reports/operations/support-dominance-eight-integration-20261108.md",
     "reports/operations/support-dominance-score-once-20261108.md",
