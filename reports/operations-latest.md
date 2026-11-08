@@ -1,29 +1,30 @@
-# 수신체 요인 분리 — 생성 경계 크래시·원인 미확정
+# 네이티브 호스트 접촉 관측 — 이벤트0·비용 판별 미확정
 
 ## 1. 작업 목표
-이미 클라이언트 비용 감소와 Head 충돌 광선 불일치가 확인된 수신체 축소 후보에서 모델(Memory/compiled skeleton)과 애니메이션(XOB/ANM/ASI) 변경을 분리할 수 있는지 한정 조사한다. 서버 CPU 최적화 주력을 기능 복구 개발로 바꾸지 않는다.
+64개체 CPU 최적화 후보로 서로 다른 NPC의 추가 표시 호스트 사이 네이티브 접촉 중복이 실제 관찰되는지 확인한다. 기존 동일 NPC 내부 dBodyCollisionBlock, 스크립트 Crowd 밀침 및 지지/월드 질의와 구분한다. 비용 근거 없이 네이티브 접촉을 차단하지 않는다.
 
 ## 2. 실제 수행
-기존 14클립 fixture와 원본/축소 자산을 재사용했다. config-only 격리 패치에 모델만 축소한 파생 클래스와 애니메이션만 축소한 파생 클래스를 추가했다. 기존 원본/축소 대조→모델만 축소→애니메이션만 축소의 낮은 등반 3조건을 계획했다. 변환·Workbench·원본 자산 재빌드는 없었다. 생성 후 실제 바인딩, 보호 본/루트 변환, 동일 FireGeometry 광선을 기록하도록 기존 미션만 복제했다.
+기존 NFNetworkBody, 물리 readback, solid=false/NOCOLLISION 실패, installed SDK의 dBodyCollisionBlock 및 DayZAnimal 접촉 이벤트 등록 경로를 대조했다. 개체 간 block은 조사한 현행 초기화에 없고 동일 개체 내부 block만 있다. 추가 호스트 간 pair block은 아직 구현하지 않았다.
+default-OFF 관측 PBO는 기존 EOnContact를 super에 위임한 뒤 카운터만 누적한다. 이벤트 마스크·충돌 레이어·solid·동적 상태·밀침·질의 주기는 바꾸지 않는다. 기존8개체 혼합 씬을 재사용해 모듈/미션 컴파일-only 서버를 먼저 확인했고, 이후60초 실제 서버/Steam retail 클라이언트 관측을 수행했다. 별도 영상·ETW·전체 덤프·성능 캡처는 없다.
 
 ## 3. 측정 결과
-첫 원본/기존 축소 조건 완료: 1,980 광선 쌍 중 Head 불일치 14건, 양쪽 hit 1,955쌍. 기존 불일치 재현이며 해소가 아니다.
-두 번째 모델만 축소 클래스 NFReceiverModelOnlyC4의 CreateObjectEx에서 서버 접근 위반으로 종료됐다. exit -1073741819(0xC0000005), forced=false. 해당 객체의 생성 후 바인딩/본/광선 기록은 없으므로 두 번째 조건의 결과는 미확보다. 세 번째 조건은 미실행이다.
-실제 총기·근접 피해, 8/64 기능 회귀, 시각 품질, CPU·Present p50/p95/p99는 이번 시험에서 미측정이다. 크래시 실행의 성능 결과는 생성하지 않았다.
+40개 표시 호스트의9,280행에서 enabled=true, 마지막 시각60.0153게임초. total/peer/peerRenderExtra/peerCore/same/player/world/unowned 이벤트 카운터 모두0이었다. 피해 수신체8개 존재는 mixed-hosts로 관찰했지만 수신체 이벤트 카운터는 이번 TSV에 내보내지 않았다.
+8/8 목표 인식·2m이상 이동. 마지막 body solve 누적 합13,472회. 최종 outcome은 VALID_TERMINAL4, INCOMPLETE_MILESTONES3, UNRESOLVED_STATE1. 따라서8개체 전체 기능 회귀 통과가 아니다. detached=true이며 퇴역 후 종료했다. 실제64·화면 품질·CPU/Present p50/p95/p99는 미측정이다.
 
 ## 4. 원인 분석
-확인: 첫 대조에서 기존 Head 불일치가 다시 관찰됐다. 단순 모델 참조 교체를 사용한 이번 분리 하네스는 객체 생성 경계에서 실행 실패했다. crash/RPT의 script stack과 직전 factory 표식이 같은 경계를 가리킨다.
-추정: 교차 골격/모델 참조 또는 파생 클래스 설정의 비호환 가능성. 실제 엔진 내부 원인은 확인하지 않았다. 생성이 끝나지 않아 문제 객체의 런타임 참조를 확인하지 못했다. alias-only 생성 대조도 없으므로 '모델 데이터가 원인'이나 '애니메이션 데이터가 원인'으로 단정할 수 없다.
-반증 범위: 자산 경로만 교차 연결하면 안전하게 원인을 분리할 수 있다는 이번 방법의 전제는 충족되지 않았다. 원래 후보의 충돌 불일치 원인은 여전히 미확정이다. 조사되지 않은 세 번째 조건을 실패나 성공으로 분류하지 않는다.
+확인: 관측 활성 필드는 실제 출력됐지만 EOnContact 양성 전달은 한 건도 확인하지 못했다. 기존 script 솔버는 계속 실행됐다.
+모름: 이벤트 미전달 이유, 네이티브 접촉 매니폴드/검사 횟수·비용. 월드/플레이어 대조도0이므로 이 방법의 양성 보정이 없다. '네이티브 접촉0/비용0' 또는 '중복 접촉이 주요 병목' 어느 쪽도 입증하지 않는다. 13,472 script solve와0 callbacks는 서로 다른 층의 관측이다.
+후보 위험:5표시 파트에서 대표-대표1쌍만 남기는 고정 all-pairs 방식은8개체672개,64개체48,384개의 추가 block handle을 요구한다. 이는 이론적 설정 수이지 실제 접촉 수·성능 개선률이 아니다. 수명 정리·클라이언트 복제·설정 비용·큰 무리 확장성이 미확인이다. 기존 solid=false 실패와 다르지만 새 후보의 성공 근거는 아니다.
 
 ## 5. 검증 수준
-설정 패치 빌드·서명 검증 성공. 기존 불일치 제한적 재현. 요인 분리 TESTED_INCONCLUSIVE, 생성 경계 크래시. 기능 회귀·시각·전체 성능·최종 수용 아님. 기존 축소 후보도 계속 채택 보류다.
+빌드/서명·실제 Enforce 컴파일 및 관측 활성/실행/종료 진단 성공. 네이티브 접촉 비용 판별은 TESTED_INCONCLUSIVE. 최적화 후보 미구현·미채택. 전체8/64 기능·시각·성능 및20ms p95 최종 수용 미완료.
 
 ## 6. 변경 사항
-격리 nf_receiver_factor_fixture config-only PBO 및 미션·분석·보고서만 생성했다. SHA256 D3140DF51450C16D1C261FD0FAB897BDD741FFAE640A593977EDDE463C2A3D1D. DSSignFile 및 DSCheckSignatures 성공, 기존 개인키 읽기만 사용, 키 복사·생성·배포 포함 없음. 기존 운영 PBO·모델·애니메이션·물리 코드·원시 증거는 변경하지 않았다.
+격리 nf_peer_contact_observer PBO SHA256 FCB11BA566CF7516655561060708393A8D24DAD9206FCFC1D0E18724E4BCFC9F. DSSignFile·DSCheckSignatures 성공, 기존 키 읽기만 사용했고 키는 생성·복사·배포 포함하지 않았다. 기존 게임/PBO/모델/애니메이션 불변. 관측 스크립트와 기존8미션의 기록 부분, 새 시험 프로필만 생성했다.
+첫 클라이언트 실행은 내가 프로필 생성 시 기존 native-traversal-manifest.json을 누락해 gameplay_spawn 이전 필수 입력 검사에서 실패했다. 실패 원시 자료를 보존하고 소유 프로세스의 ID/시작 시각을 확인해 클라이언트 정상 닫기·서버 강제 정리를 했다. 이를 정상 종료/후보 기능 실패/성능 결과로 분류하지 않는다. 수정 재실행은 원래 입력 SHA256 5d72e80bb527830c337cf8e98b171538424ad06c6e410d20fb514f060f6d2fdc를 대조하고 실행 전 검증을 추가했다. 관측/게임플레이 코드는 그 재실행 사이에 변경하지 않았다.
 
 ## 7. 원시 증거
-ANIM-receiver-factor-climb1. source-proof/mission-proof, fixture-build/signature 로그, plan/launch/terminal, receiver-fire-rays/pose/config TSV, script/crash/error/RPT와 엔진 자동 생성 minidump 790104bytes를 보존한다. 새 전체 덤프·영상은 생성하지 않았다. 완료 표식 없는 크래시를 정상 퇴역/exit0으로 보고하지 않는다. 보고서 작성 전에 관련 서버·클라이언트 프로세스 부재를 확인하고 입력 및 결과 무결성을 검증한다. 공개 보고서는 로컬 절대 경로·프로세스·원시 덤프를 노출하지 않는다.
+ANIM-peer-contact-observer-compile1, ANIM-peer-contact-observer-eight1(준비 실패), ANIM-peer-contact-observer-eight1-retry1. source-proof/build/signature,각 plan/launch/terminal/cleanup, native-peer-events.tsv/gameplay-eight.tsv/mixed-hosts.tsv/terminal-state.tsv와 스크립트 로그 보존. 재실행 서버 exit-1·forced=false,클라이언트 CloseMainWindow 후 종료·forced=false. 종료코드를0으로 바꾸지 않는다. 저장 전 관련 프로세스 부재·원본 및 결과 파일 무결성을 확인한다. 공개에는 집계/상대 증거 ID만 제공하며 로컬 경로·프로세스·키·전체 자산은 제외한다.
 
 ## 8. 잔여 문제
-불일치 내부 원인은 미확정이다. 이번 교차 연결 하네스를 반복하거나 자산 복구 기능 개발로 확대하지 않는다. 운영 미반영·원본 유지 상태로 보존한다. 서버 CPU 주력 문제도 미해결이며, 새 구현 후보는 아직 선정하지 않았다. 향후 이 요인을 다시 조사할 때는 자산 이름만 교체하기 전에 호환 가능한 compiled binding을 보장하는 방법이 필요하다. 본 포즈 일치와 실제 충돌 형상 동등성을 분리 판정하는 기존 기준을 유지한다.
+실제 네이티브 접촉 비용은 이번 callback 방식으로 판별하지 못했다. 따라서 추정에 근거한 추가 표시 호스트 간 충돌 차단은 구현하지 않는다. 반복0을 얻기 위한 같은 관측 재실행이나64 확대도 하지 않는다. CPU 주력 목표는 미해결이며 기존 Ray/Sphere 질의 비용 근거를 유지한다. 새 물리 절감 후보를 선정할 때는 기능 허용 오차와 호출량/실제 전체 비용을 구분하고, 관측 경로가 의사결정에 필요한 증거를 제공할 수 있는지 먼저 확인해야 한다. 이번 부분 기능 결과를 기능 개선 성과로 보고하지 않는다.

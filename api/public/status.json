@@ -1,49 +1,66 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-08T23:13:40.960Z",
-  "sourceRunId": "ANIM-receiver-factor-climb1",
-  "buildId": "D3140DF51450C16D1C261FD0FAB897BDD741FFAE640A593977EDDE463C2A3D1D",
-  "verificationStatus": "FACTOR_ISOLATION_INCONCLUSIVE_FACTORY_CRASH",
+  "sourceRunId": "ANIM-peer-contact-observer-eight1-retry1",
+  "buildId": "FCB11BA566CF7516655561060708393A8D24DAD9206FCFC1D0E18724E4BCFC9F",
+  "verificationStatus": "CALLBACK_OBSERVATION_INCONCLUSIVE_NOT_NATIVE_COLLISION_ABSENCE",
   "metrics": {
-    "completedConditions": 1,
-    "plannedConditions": 3,
-    "combinedReferenceRayPairs": 1980,
-    "combinedHeadMismatches": 14,
-    "positivePairs": 1955,
+    "observedRenderHosts": 40,
+    "renderEventRows": 9280,
+    "allRenderObserversEnabled": true,
+    "elapsedGameSeconds": 60.0153,
+    "eventCounters": {
+      "total": 0,
+      "peer": 0,
+      "peerRenderExtra": 0,
+      "peerCore": 0,
+      "same": 0,
+      "player": 0,
+      "world": 0,
+      "unowned": 0
+    },
+    "agentsAcquired": 8,
+    "agentsMoved2m": 8,
+    "bodySolvesLastCounterSum": 13472,
+    "terminalOutcomes": {
+      "INCOMPLETE_MILESTONES": 3,
+      "VALID_TERMINAL": 4,
+      "UNRESOLVED_STATE": 1
+    },
     "cpuImprovement": null,
-    "p50": null,
-    "p95": null,
-    "p99": null
+    "presentP50": null,
+    "presentP95": null,
+    "presentP99": null
   },
-  "conditions": [
-    {
-      "name": "full vs combined",
-      "state": "COMPLETED_MISMATCH_REPRODUCED"
-    },
-    {
-      "name": "full vs model-only",
-      "state": "CRASH_DURING_FACTORY_NO_RAY_RESULTS"
-    },
-    {
-      "name": "full vs animation-only",
-      "state": "NOT_EXECUTED"
-    }
+  "candidateSelectivePairBlockImplemented": false,
+  "runtimePhysicsSettersAdded": 0,
+  "nativeQueryCallsAdded": 0,
+  "actual64Tested": false,
+  "fullFunctionalRegressionPassed": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "limits": [
+    "EOnContact positive delivery not calibrated: world/player/peer all zero",
+    "Zero delivered events does not imply zero native manifolds, collision checks or CPU cost",
+    "40 render hosts observed; eight damage receiver event counters not exported",
+    "One60s mixed8 run, not independent repeats or64 performance"
   ],
+  "initialHarnessFailure": {
+    "sourceRunId": "ANIM-peer-contact-observer-eight1",
+    "cause": "Missing native-traversal-manifest.json during staging; source Spawn rejects before fixture/body generation",
+    "forcedServerCleanup": true,
+    "performanceResult": false
+  },
+  "serverExitCode": -1,
+  "clientClosed": true,
+  "generatedAt": "2026-11-08T23:29:46.768Z",
   "blockers": [
-    "Factory crash prevents factor isolation; internal cause unknown",
-    "Reduced receiver remains unaccepted",
-    "Overall server CPU and visual/performance acceptance incomplete"
+    "No positive calibration of native contact callback delivery",
+    "Actual native pair collision CPU cost unresolved",
+    "Overall CPU and visual performance acceptance incomplete"
   ],
   "evidenceReferences": [
-    "reports/operations/receiver-factor-climb-inconclusive-20261109.md",
-    "reports/operations/crowd-snapshot-method-rejected-20261109.md",
-    "reports/operations/receiver-fire-ray-climb-hold-20261109.md"
-  ],
-  "limits": [
-    "No factor cause determination",
-    "No alias-only factory control or explicit inherited-binding readback for crashing entity",
-    "No CPU timing, visible quality or 8/64 regression",
-    "Not an independent three-run repeat"
+    "reports/operations/native-peer-contact-observation-inconclusive-20261109.md",
+    "reports/operations/receiver-factor-climb-inconclusive-20261109.md"
   ],
   "signatureVerified": true,
   "targetP95Ms": 20,

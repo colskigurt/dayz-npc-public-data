@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "sourceRunId": "ANIM-peer-contact-observer-eight1-retry1",
+  "buildId": "FCB11BA566CF7516655561060708393A8D24DAD9206FCFC1D0E18724E4BCFC9F",
+  "verificationStatus": "CALLBACK_OBSERVATION_INCONCLUSIVE_NOT_NATIVE_COLLISION_ABSENCE",
+  "metrics": {
+    "observedRenderHosts": 40,
+    "renderEventRows": 9280,
+    "allRenderObserversEnabled": true,
+    "elapsedGameSeconds": 60.0153,
+    "eventCounters": {
+      "total": 0,
+      "peer": 0,
+      "peerRenderExtra": 0,
+      "peerCore": 0,
+      "same": 0,
+      "player": 0,
+      "world": 0,
+      "unowned": 0
+    },
+    "agentsAcquired": 8,
+    "agentsMoved2m": 8,
+    "bodySolvesLastCounterSum": 13472,
+    "terminalOutcomes": {
+      "INCOMPLETE_MILESTONES": 3,
+      "VALID_TERMINAL": 4,
+      "UNRESOLVED_STATE": 1
+    },
+    "cpuImprovement": null,
+    "presentP50": null,
+    "presentP95": null,
+    "presentP99": null
+  },
+  "candidateSelectivePairBlockImplemented": false,
+  "runtimePhysicsSettersAdded": 0,
+  "nativeQueryCallsAdded": 0,
+  "actual64Tested": false,
+  "fullFunctionalRegressionPassed": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "limits": [
+    "EOnContact positive delivery not calibrated: world/player/peer all zero",
+    "Zero delivered events does not imply zero native manifolds, collision checks or CPU cost",
+    "40 render hosts observed; eight damage receiver event counters not exported",
+    "One60s mixed8 run, not independent repeats or64 performance"
+  ],
+  "initialHarnessFailure": {
+    "sourceRunId": "ANIM-peer-contact-observer-eight1",
+    "cause": "Missing native-traversal-manifest.json during staging; source Spawn rejects before fixture/body generation",
+    "forcedServerCleanup": true,
+    "performanceResult": false
+  },
+  "serverExitCode": -1,
+  "clientClosed": true,
+  "generatedAt": "2026-11-08T23:29:46.768Z",
+  "blockers": [
+    "No positive calibration of native contact callback delivery",
+    "Actual native pair collision CPU cost unresolved",
+    "Overall CPU and visual performance acceptance incomplete"
+  ],
+  "evidenceReferences": [
+    "reports/operations/native-peer-contact-observation-inconclusive-20261109.md",
+    "reports/operations/receiver-factor-climb-inconclusive-20261109.md"
+  ],
+  "signatureVerified": true,
+  "targetP95Ms": 20,
+  "targetAchieved": false
+}
