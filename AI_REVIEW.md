@@ -1,19 +1,15 @@
 # DayZ NPC — 현재 상태
 
-최신 진단: 등반 시작 재시도 간격(0.15초).
+최신 작업: 기존 지상 FOLLOW 로그의 혼잡·진행률 분석. 새 게임 실행과 감속 적용 없음.
 
-|항목|판정|
-|---|---|
-|실제 Enforce 컴파일·시계 계약|통과|
-|합성 64개 시계|2,624 입력, 912 재시도, 1,712 대기; 최장 0.20초|
-|8/64 NPC 기능 회귀|미실행|
-|CPU·Present·시각 개선|미측정|
-|채택|보류|
+|64개체 기존 CPU 구간의 이동 의도 유지 표본|근접 이웃 있음|없음|
+|---|---:|---:|
+|실제 수평 속도|1.117m/s|2.126m/s|
+|목표 방향 투영 속도|0.227m/s|1.068m/s|
+|접촉 솔버/개체·초|41.368|29.341|
 
-현재 OpenTraversal은 이미 다른 개체 점유에 따른 등반 차단을 우회합니다. 혼잡 대기의 원인은 아직 특정되지 않았습니다. 합성 재시도 감소를 성능 개선으로 해석하지 마세요.
+연관성은 관찰했지만 감속의 CPU 절감 효과는 미입증입니다. 실제 경로 접선·Displace 이력이 없어 목표 방향 투영을 경로 진행률로 취급하면 안 됩니다. 접근 감속 적용은 보류하고, 등반 시도·밀침·낙하·재등반은 변경하지 않았습니다.
 
-[상세 보고서](reports/operations/admission-cadence-opportunity-20261108.md) · [공개 수치](data/admission-cadence-opportunity-20261108.json)
+[상세 보고서](reports/operations/ground-progress-existing-20261108.md) · [공개 수치](data/ground-progress-existing-20261108.json)
 
-이전 [네이티브 setter 비용 경계](reports/operations/preanim-setter-native-cost-boundary-20261108.md) 및 원시 연구 이력은 보존합니다. 다음은 8개체 실제 OFF/ON 검증이며, 통과 후 64개체 비용 비교입니다. 20ms p95는 목표입니다.
-
-추가 확인: 8개체 씬의 Mission 컴파일 통과(클라이언트·개체 생성 없음). 기존 64개체 FOLLOW 표본 15,471행 중 EXIT_SPACE_BLOCKED 3행, ALIGN_HEADING 2,162행, LINK_ALIGN 1,060행. 이는 호출수·CPU 시간이 아닙니다. 이번 후보의 적용 기회부터 8개체에서 확인하고, 근거 없이 64개체 비교로 확대하지 않습니다.
+다음: 부족한 경로 접선·접촉 변위 관측을 짧게 보완한 뒤 지상 접근에만 격리 감속을 비교할지 결정. 기존 [등반 재시도 후보](reports/operations/admission-cadence-opportunity-20261108.md)는 별개이며 미수용입니다. 기능·시각·성능 판정을 분리하고 20ms p95는 목표로 유지합니다.

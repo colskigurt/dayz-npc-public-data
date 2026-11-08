@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-08T15:00:17.724570+09:00",
+  "sourceRunId": "ANIM-ground-progress-existing1",
+  "buildId": "453d6a9e688d7bf14c5b98c305dd5a45200ec52156949c10691839b43c58bc9a / native host runtime3 OFF cohort",
+  "verificationStatus": "EXISTING_LOG_ASSOCIATION_NOT_SLOWDOWN_VALIDATION",
+  "metrics": {
+    "cohort": "existing64",
+    "cpuAlignedGameWindow": [
+      40.1,
+      70.1241
+    ],
+    "nearNeighbors": {
+      "intervals": 1822,
+      "agentSeconds": 486.80089999999973,
+      "distance": 543.6824237183373,
+      "goalProjectedDistance": 110.30857861714277,
+      "contactSolves": 20138,
+      "contactFailures": 16,
+      "jointSweeps": 80523,
+      "footRays": 201380,
+      "plans": 318,
+      "lowGoalProgressSeconds": 229.53419999999943,
+      "sidewaysOrAwaySeconds": 202.23299999999952,
+      "nearStationarySeconds": 9.726800000000004,
+      "meanSpeed": 1.116847614123839,
+      "meanGoalProjectedSpeed": 0.22659896195167847,
+      "contactSolvesPerAgentSecond": 41.368041842157666,
+      "nearStationaryFraction": 0.019981064127038404,
+      "lowGoalProgressFraction": 0.4715155621117372
+    },
+    "noNearNeighbors": {
+      "intervals": 132,
+      "agentSeconds": 34.86540000000003,
+      "distance": 74.11484024396135,
+      "goalProjectedDistance": 37.24279299948133,
+      "contactSolves": 1023,
+      "contactFailures": 3,
+      "jointSweeps": 4086,
+      "footRays": 10230,
+      "plans": 12,
+      "lowGoalProgressSeconds": 7.328100000000013,
+      "sidewaysOrAwaySeconds": 7.328100000000013,
+      "meanSpeed": 2.125741859951737,
+      "meanGoalProjectedSpeed": 1.0681877448553954,
+      "contactSolvesPerAgentSecond": 29.341410108589006,
+      "nearStationaryFraction": 0.0,
+      "lowGoalProgressFraction": 0.21018258789516275
+    },
+    "neighborhoodRadiusM": 0.86,
+    "groundFollowAgentSeconds": 1387.9842000000024,
+    "nearNeighborSolverRateRelative": 0.4098859492116962,
+    "pathTangentMeasured": false,
+    "slowdownCpuImprovement": null,
+    "presentP95New": null,
+    "independentRunsAdded": 0
+  },
+  "blockers": [
+    "Exact route-tangent history absent in selected logs",
+    "No Displace attempt/accepted/rejected counters in selected trace",
+    "No controlled slowdown comparison; causal CPU reduction unproven"
+  ],
+  "evidenceReferences": [
+    {
+      "cohort": "eight",
+      "scope": "full",
+      "sha256": "a02481d6e3acc5de9ad6fab5ff54f4b93151fc4025c96f63127ca4d3aa280b90"
+    },
+    {
+      "cohort": "sixtyfour",
+      "scope": "full",
+      "sha256": "f0f309f201c59931cc455cd2cb5d69689ea790a1c58deb21722eacec5796063d"
+    },
+    {
+      "cohort": "sixtyfour",
+      "scope": "cpu_window",
+      "sha256": "f0f309f201c59931cc455cd2cb5d69689ea790a1c58deb21722eacec5796063d"
+    }
+  ],
+  "limitations": [
+    "Counter differences bracket intervals; not pure CPU cost or causal attribution",
+    "Reasons are beginning-of-interval snapshots; transitions can occur between samples",
+    "No exact path tangent, contact-force, Displace-attempt or speed-command history in selected trace",
+    "Neighborhood is sampled logical-body proximity, not verified collision contact",
+    "No stationary rate proves intentional congestion; alignment/combat/admission/recovery must remain separate"
+  ],
+  "decision": "Targeted observation justified; no approach slowdown implementation or adoption yet; preserve continuous climb attempts"
+}
