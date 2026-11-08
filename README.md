@@ -1,7 +1,7 @@
 # DayZ NPC — 현재 상태
-갱신: 2026-11-08. 이번 작업은 기존 CPU ETL과같은서버PE의읽기전용재분석이다. 새게임·후킹·PBO변경은없다.
+갱신: 2026-11-08. 이번 작업은 설치scripts.pbo와기존4/5파트factory·실험기록의읽기전용검토다. 새게임·빌드·PBO변경없음.
 
-현재: [큰 네이티브 실행 범위와 API 경계 부분 진단](reports/operations/native-owner-boundaries-review-20261108.md). 기존ETL의물리질의중첩/비중첩범위를구분했지만 정확한의미·제어API는미확정. **새성능개선 없음; 직전64CPU -0.393% 후보 미채택 유지.**
+현재: [현재 애니메이션 API·4파트 자산 재사용 검토](reports/operations/current-animation-api-four-cohort-review-20261108.md). 설치선언7파일일치·포즈전용제어미확정. **4파트옛3쌍미수용유지, 현재엔진/mixed비교는미실행. 직전64CPU후보미채택유지.**
 
 | 대상 | 현재 판단 |
 |---|---|
@@ -15,6 +15,6 @@
 
 [최신 상세 진단](reports/operations/transform-update-attribution-20261108.md) · [고정 Idle 진단](reports/operations/host-floor-pose-contact-isolation-20261108.md) · [64개체 후보 선별](reports/operations/pair-radius-cost64-screen-20261108.md) · [외부 AI 검토 안내](AI_REVIEW.md) · [공개 JSON](api/public/status.json)
 
-다음: 애니메이션관련문맥이있는A56650계열의호출자·파트역할·지원API를기존자료로대조한다. 의존성확인전포즈중단/시계변경/충돌삭제를적용하지않는다. 새로운 보간·업데이트 정책이나 기능 재설계를 시작하지 않는다. CPU ms/벽시계초는 프레임 시간이 아니다. 정지·이동 조건을 직접 차감하지 않는다.
+다음: 기존4파트자산의현재조건해시·서명·의존성·포즈·동적호스트수관측preflight계약. 옛평지/이중입력시험을재실행하지않으며지원API확인전포즈중단/시계변경을적용하지않는다. 새로운 보간·업데이트 정책이나 기능 재설계를 시작하지 않는다. CPU ms/벽시계초는 프레임 시간이 아니다. 정지·이동 조건을 직접 차감하지 않는다.
 
 공개 요약 동기화 누락을 이번에 정정했다. 과거 보고서와 [교체 전 진입점](reports/archive/b47311ff/)은 보존한다.
