@@ -1,24 +1,16 @@
 # DayZ NPC — 현재 상태
-갱신: 2026-11-08T00:44:18.211Z
+갱신:2026-11-08T00:53:40.853Z
 
-현재: **64개체 전체 CPU 선별 준비 완료·미실행**. 4파트의 6.66초 EGRESS 원인은 미확정이다. 선정5파트기록에서는같은지속정체를찾지못했다. 실행된접촉코드는동일하지만질의입력대응기록이없어회귀없음이라고판정할수없다.
+|항목|5파트|4파트|
+|---|---:|---:|
+|서버 CPU ms/벽시계초|806.62|725.16|
+|관측 생존·인식·2m이동|64/64|64/64|
+|접촉처리율 /trace게임초|2550.69|2461.35|
 
-[최신 경계 검토·다음 비용시험](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/current-four-contact-boundary-20261108.md)
+**CPU -10.10%는 단일쌍 선별 결과이며 최적화 최종 성공이 아니다.** 접촉작업률도3.50%낮고동적경로가달라순수인과효과미확정. 역순독립반복이필요하다.
 
+[최신 상세 보고서](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/current-four-five-cost64-first-screen-20261108.md)
 
-| 판정 | 현재 결과 |
-|---|---|
-| 현재 엔진14클립 CPU 포즈 | 단일 진단 통과 |
-| 동일조건8개체 제한 통합 | 양쪽 생존·인식·이동8/8, 상태기록 정합성 오류0 |
-| 전체 기능 | 미수용:5파트 유효최종6/8,4파트5/8 |
-| 미해결 | 4파트 종료시EGRESS 약6.662초,회귀원인미확정 |
-| 이번 시각·CPU·Present | 미측정 |
-|20ms p95|목표·미달성|
+미션dt p95는44.7→38ms지만Present가아니다. 실제화면품질·Present/GPU미측정.전체기능미수용,4파트8개체EGRESS위험미확정.20ms p95는목표·미달성.
 
-[최신 상세 보고서](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/current-four-five-eight-mixed-20261108.md)
-
-동일14PBO·동일mission,layout플래그만 변경. 조건당1회이며 반복검증이 아니다. 사전검사5고정으로 실패한첫4파트시도는 보존·비교제외했다. 제한 통합 통과는 전체 기능·회귀없음·배포 승인과 다르다.
-
-[직전14클립 진단·과거 기록 정정](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/current-four-fullclip-pose-correction-20261108.md)
-
-다음:기존 실패구간 접촉입력 차이를 제한 검토 후 전체CPU 선별가치 판단. 기능복구로 주력을 전환하지 않는다.
+[8개체 기능 비교](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/current-four-five-eight-mixed-20261108.md) · [접촉 경계 검토](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/current-four-contact-boundary-20261108.md)

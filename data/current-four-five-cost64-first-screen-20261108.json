@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-08T00:53:40.853Z",
+  "sourceRunId": "current-four-five-cost64-screen1",
+  "buildId": "current-987fbc47-same14PBO",
+  "verificationStatus": "PROMISING_SINGLE_PAIR_REQUIRES_REPEATS",
+  "metrics": {
+    "cpuMsPerWallSecond": {
+      "five": 806.6236151129664,
+      "four": 725.1636491435233
+    },
+    "cpuRelativeChangePercent": -10.098881863015466,
+    "cpuAbsoluteDeltaMsPerWallSecond": -81.45996596944303,
+    "independentPairs": 1,
+    "wallSeconds": {
+      "five": 30.00547535,
+      "four": 30.0147767
+    },
+    "contactSolvesPerGameSecond": {
+      "five": 2550.69164944041,
+      "four": 2461.3511346349933
+    },
+    "contactRateChangePercent": -3.502599572355869,
+    "missionDtMs": {
+      "five": {
+        "p50": 27,
+        "p95": 44.7,
+        "p99": 52
+      },
+      "four": {
+        "p50": 25,
+        "p95": 38,
+        "p99": 45
+      }
+    },
+    "presentDtMs": null,
+    "logicalNpcs": 64,
+    "aliveAcquiredMovedBoth": 64
+  },
+  "blockers": [
+    "Single pair cannot separate layout effect from dynamic workload variation",
+    "Four-part8 EGRESS regression causality unresolved",
+    "Visible quality and Present/GPU not measured"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/current-four-five-cost64-first-screen-20261108.md",
+      "runIds": [
+        "ANIM-current-four-five-cost64-screen1-five",
+        "ANIM-current-four-five-cost64-screen1-four"
+      ]
+    }
+  ],
+  "functionalAccepted": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "finalAccepted": false,
+  "next": "Independent reversed-order comparison before adoption consideration"
+}
