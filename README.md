@@ -1,5 +1,10 @@
 # DayZ NPC — 현재 상태
-갱신: 2026-11-08T00:41:07.731Z
+갱신: 2026-11-08T00:44:18.211Z
+
+현재: **64개체 전체 CPU 선별 준비 완료·미실행**. 4파트의 6.66초 EGRESS 원인은 미확정이다. 선정5파트기록에서는같은지속정체를찾지못했다. 실행된접촉코드는동일하지만질의입력대응기록이없어회귀없음이라고판정할수없다.
+
+[최신 경계 검토·다음 비용시험](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/current-four-contact-boundary-20261108.md)
+
 
 | 판정 | 현재 결과 |
 |---|---|

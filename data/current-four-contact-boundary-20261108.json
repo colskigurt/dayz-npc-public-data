@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-08T00:44:18.211Z",
+  "sourceRunId": "current-eight-contact-boundary-review1",
+  "buildId": "current-987fbc47-same14PBO",
+  "verificationStatus": "PARTIAL_DIAGNOSIS_COST64_STAGED_NOT_RUN",
+  "metrics": {
+    "five": {
+      "seconds": 60.0282,
+      "terminal": 6,
+      "milestone": 6,
+      "fall": 10,
+      "fallFollow": 10
+    },
+    "four": {
+      "seconds": 60.0194,
+      "terminal": 5,
+      "milestone": 6,
+      "fall": 9,
+      "fallFollow": 8
+    },
+    "logicalNpcs": 8,
+    "aliveAcquiredMovedBoth": 8,
+    "phaseChainErrorsBoth": 0,
+    "recoveryGenerationErrorsBoth": 0,
+    "terminalAlignmentErrorsBoth": 0,
+    "runsPerCondition": 1,
+    "p50": null,
+    "p95": null,
+    "p99": null,
+    "newRuntimeRuns": 0,
+    "selectedLongestEgressSeconds": {
+      "four": 6.6619,
+      "matchedFive": 0.519,
+      "earlierFive": 0.5179,
+      "supportOffFive": 0.53
+    }
+  },
+  "blockers": [
+    "Both full functional gates unpassed",
+    "Four-part final EGRESS observed for 6.662 seconds; regression causality unknown",
+    "CPU and visible quality not measured"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/current-four-five-eight-mixed-20261108.md",
+      "missionSha256": "0d7dcadfe2a007db66f46b9da8222ba81ac528cfd16dea1b299a9b1541900cf6",
+      "runIds": [
+        "ANIM-current-mixed-eight2-five",
+        "ANIM-current-mixed-eight2-four"
+      ]
+    },
+    {
+      "report": "reports/operations/current-four-contact-boundary-20261108.md"
+    }
+  ],
+  "functionalAccepted": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "finalAccepted": false,
+  "next": "One matched current-engine whole CPU screen, minimum5percent; no adoption or function waiver"
+}
