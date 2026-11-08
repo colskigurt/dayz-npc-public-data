@@ -1,55 +1,47 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-08T01:28:50.965Z",
-  "sourceRunId": "graph-write-eight1-pair",
-  "buildId": "0984d311cf4668f2b0343793252d464b99450df1f16db7fd798feb8f34be4b3b",
-  "verificationStatus": "BOUNDED_NETWORK_DIAGNOSIS_FULL_FUNCTION_UNACCEPTED",
+  "generatedAt": "2026-11-08T01:43:20.480Z",
+  "sourceRunId": "graph-write-clean-cost64-screen1-invalid-on",
+  "buildId": "d18352633b6b58f1178a4a93ab972d84a28c9656a25d8ebdd98cd4efe39b0e3f",
+  "verificationStatus": "CLEAN_CONTRACT_PASSED_CPU_PAIR_INVALID",
   "metrics": {
-    "runsPerCondition": 1,
-    "logicalNpcs": 8,
-    "observedCommands": 48,
-    "off": {
-      "seconds": 60.0197,
-      "validTerminal": 7,
-      "milestones": 7,
-      "falls": 9,
-      "fallFollow": 9,
-      "setterCalls": 172800
+    "cleanPoseContract": {
+      "rows": 1971,
+      "bones": 79,
+      "poseError": 0,
+      "rootDeltaError": 0,
+      "clockGap": 0,
+      "independentRuns": 1
     },
-    "on": {
-      "seconds": 60.0133,
-      "validTerminal": 6,
-      "milestones": 6,
-      "falls": 7,
-      "fallFollow": 7,
-      "setterCalls": 4602
-    },
-    "aliveAcquiredMovedBoth": 8,
-    "phaseRecoveryTerminalErrorsBoth": 0,
-    "setterCallChangePercent": -97.3368055556,
-    "serverCpu": null,
+    "offCpuMsPerWallSecond": 852.4479498968617,
+    "onCpuMsPerWallSecond": null,
+    "cpuRelativeChangePercent": null,
+    "validComparisonPairs": 0,
+    "onForegroundFalseRows": 386,
+    "firstFalseOffsetFromLastStartStatusSeconds": 11.334,
     "p50": null,
     "p95": null,
     "p99": null
   },
   "blockers": [
-    "Full function OFF7/8 ON6/8; single pair cannot classify regression causally",
-    "Current prototype OFF bookkeeping/counters bias cost comparison; do not claim CPU savings",
-    "Visible quality and64CPU not measured"
+    "ON lost foreground inside measurement; invalid comparison",
+    "Uninterrupted DayZ foreground window needed for replacement measurement",
+    "Full function,visual quality and performance remain unaccepted"
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/graph-variable-write-eight-network-20261108.md",
-      "missionSha256": "61a3488c30cbed25c6144b8a3765f476506bda1a727b7d9c1212b5cef218456d",
+      "report": "reports/operations/graph-variable-write-clean-cost64-invalid-20261108.md",
       "runIds": [
-        "ANIM-graph-write-eight1-off",
-        "ANIM-graph-write-eight1-on"
-      ]
+        "ANIM-graph-write-clean-contract1",
+        "ANIM-graph-write-clean-cost64-screen1-off",
+        "ANIM-graph-write-clean-cost64-screen1-on"
+      ],
+      "onValidity": "INVALID_FOREGROUND_NO_PERFORMANCE_COMPARISON"
     }
   ],
   "functionalAccepted": false,
   "visualAccepted": false,
   "performanceAccepted": false,
   "finalAccepted": false,
-  "next": "Clean instrumentation-free CPU candidate with OFF reference equivalence before64"
+  "next": "Replacement ON profile staged, not launched; awaiting foreground availability"
 }

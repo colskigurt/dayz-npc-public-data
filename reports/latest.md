@@ -1,19 +1,15 @@
 # DayZ NPC — 현재 상태
-갱신:2026-11-08T01:28:50.965Z
+갱신:2026-11-08T01:43:20.480Z
 
-**변수쓰기 캐시:8개체 네트워크 제한진단통과·전체기능/성능미수용.**
+**계측제거본CPU포즈계약통과.64비용쌍은ON활성창실패로무효.**
 
-|항목|OFF|ON|
-|---|---:|---:|
-|생존·인식·2m이동|8/8|8/8|
-|유효최종/전체이정표|7/8|6/8|
-|낙하/FOLLOW복귀|9/9|7/7|
-|setter호출|172800|4602|
+- 새비교본은OFF의불필요한캐시기록과setter카운터를제거했다.같은실제그래프79본/1971행에서포즈·루트·시계차이0.
+- 유효OFF서버CPU:852.45ms/벽시계초.
+- ON은측정중약11~12초부터창이비활성으로기록돼비교불가. **ON비용·개선률을제시하지않는다.**
+- 교체ON프로필만준비했고재측정은아직실행하지않았다.게임·서버종료.
 
-상태정합성오류0.**97.34%는호출수감소이며CPU절감률이아니다.**현재진단본OFF에는캐시기록·카운터부가비용이있어이빌드로성능성공을주장하면안된다.다음은공정한비용비교본검증이다.
+[최신 상세 보고서](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/graph-variable-write-clean-cost64-invalid-20261108.md)
 
-[최신 상세 보고서](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/graph-variable-write-eight-network-20261108.md)
+수집기완료는유효측정과다르다.창조건을사후완화하지않는다.추가정책분기·필드오버헤드는남아있어유망결과도배포기준재확인이필요하다.전체기능·시각·성능미수용,20ms p95목표미달성.
 
-조건당1회,회귀없음미입증.64비용·실제화면품질미측정.20ms p95목표미달성.
-
-[실제그래프CPU포즈계약](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/graph-variable-write-retention-contract-20261108.md)
+[앞선8개체진단](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/graph-variable-write-eight-network-20261108.md)

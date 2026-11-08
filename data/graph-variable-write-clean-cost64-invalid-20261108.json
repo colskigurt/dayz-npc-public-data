@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-11-08T01:43:20.480Z",
+  "sourceRunId": "graph-write-clean-cost64-screen1-invalid-on",
+  "buildId": "d18352633b6b58f1178a4a93ab972d84a28c9656a25d8ebdd98cd4efe39b0e3f",
+  "verificationStatus": "CLEAN_CONTRACT_PASSED_CPU_PAIR_INVALID",
+  "metrics": {
+    "cleanPoseContract": {
+      "rows": 1971,
+      "bones": 79,
+      "poseError": 0,
+      "rootDeltaError": 0,
+      "clockGap": 0,
+      "independentRuns": 1
+    },
+    "offCpuMsPerWallSecond": 852.4479498968617,
+    "onCpuMsPerWallSecond": null,
+    "cpuRelativeChangePercent": null,
+    "validComparisonPairs": 0,
+    "onForegroundFalseRows": 386,
+    "firstFalseOffsetFromLastStartStatusSeconds": 11.334,
+    "p50": null,
+    "p95": null,
+    "p99": null
+  },
+  "blockers": [
+    "ON lost foreground inside measurement; invalid comparison",
+    "Uninterrupted DayZ foreground window needed for replacement measurement",
+    "Full function,visual quality and performance remain unaccepted"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/graph-variable-write-clean-cost64-invalid-20261108.md",
+      "runIds": [
+        "ANIM-graph-write-clean-contract1",
+        "ANIM-graph-write-clean-cost64-screen1-off",
+        "ANIM-graph-write-clean-cost64-screen1-on"
+      ],
+      "onValidity": "INVALID_FOREGROUND_NO_PERFORMANCE_COMPARISON"
+    }
+  ],
+  "functionalAccepted": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "finalAccepted": false,
+  "next": "Replacement ON profile staged, not launched; awaiting foreground availability"
+}
