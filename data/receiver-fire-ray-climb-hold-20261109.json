@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-08T23:00:44.272Z",
+  "sourceRunId": "ANIM-receiver-fire-ray-climb-controls1",
+  "buildId": "74718EE7AE304669BD5A77E8534C324C15250D2E0A882B89C642F6ABE34526E8",
+  "verificationStatus": "DIAGNOSTIC_SUCCESS_CANDIDATE_NOT_ACCEPTED",
+  "metrics": {
+    "climbControls": [
+      {
+        "layout": "full/full",
+        "pairs": 1947,
+        "mismatchPairs": 0
+      },
+      {
+        "layout": "candidate/full",
+        "pairs": 1914,
+        "mismatchPairs": 12
+      },
+      {
+        "layout": "full/candidate",
+        "pairs": 1881,
+        "mismatchPairs": 12
+      }
+    ],
+    "fourteenClipPairs": 4818,
+    "fourteenClipMismatches": 2,
+    "cpuImprovement": null,
+    "p50": null,
+    "p95": null,
+    "p99": null
+  },
+  "blockers": [
+    "Candidate-associated Head fire-ray mismatch in climb_low",
+    "Overall server CPU performance acceptance not passed",
+    "Actual firearm/melee damage and visual quality not tested in this run"
+  ],
+  "evidenceReferences": [
+    "reports/operations/receiver-fire-ray-climb-hold-20261109.md"
+  ],
+  "limits": {
+    "conditions": "headless; root motion OFF; damage OFF; bone-centered three-axis FireGeometry rays",
+    "repetitions": "three sequential conditions in one run, not three independent repetitions",
+    "targetP95Ms": 20,
+    "targetAchieved": false,
+    "actualWeaponDamageTested": false
+  }
+}
