@@ -1,60 +1,51 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-08T23:08:38.905Z",
-  "sourceRunId": "ANIM-crowd-snapshot-cost1",
-  "buildId": "baseline453d6a9e; mission-only snapshot",
-  "verificationStatus": "METHOD_EQUIVALENCE_PASS_LOCAL_COST_GATE_FAILED",
+  "generatedAt": "2026-11-08T23:13:40.960Z",
+  "sourceRunId": "ANIM-receiver-factor-climb1",
+  "buildId": "D3140DF51450C16D1C261FD0FAB897BDD741FFAE640A593977EDDE463C2A3D1D",
+  "verificationStatus": "FACTOR_ISOLATION_INCONCLUSIVE_FACTORY_CRASH",
   "metrics": {
-    "schemaVersion": 1,
-    "sourceRunId": "ANIM-crowd-snapshot-cost1",
-    "verificationStatus": "METHOD_EQUIVALENCE_PASS_LOCAL_COST_GATE_FAILED",
-    "methodEquivalenceFrames": 512,
-    "methodMismatches": 0,
-    "cost": [
-      {
-        "layout": "dense",
-        "relativeTickChangesPct": [
-          7.251507613911934,
-          -5.562341940603465,
-          5.375346803923842
-        ],
-        "medianTickChangePct": 5.375346803923842
-      },
-      {
-        "layout": "sparse",
-        "relativeTickChangesPct": [
-          9.126887742709776,
-          10.722917349378536,
-          7.5086052902346045
-        ],
-        "medianTickChangePct": 9.126887742709776
-      }
-    ],
-    "wholeCpuMeasured": false,
+    "completedConditions": 1,
+    "plannedConditions": 3,
+    "combinedReferenceRayPairs": 1980,
+    "combinedHeadMismatches": 14,
+    "positivePairs": 1955,
+    "cpuImprovement": null,
     "p50": null,
     "p95": null,
-    "p99": null,
-    "actualNpcEntities": 0,
-    "independentProcessRepeats": 1,
-    "pairsPerLayoutInOneProcess": 3,
-    "timingUnit": "raw TickCount delta; inherited output column labels offMs/onMs are not verified milliseconds",
-    "adopted": false,
-    "expandedToEightOrSixtyfour": false
+    "p99": null
   },
+  "conditions": [
+    {
+      "name": "full vs combined",
+      "state": "COMPLETED_MISMATCH_REPRODUCED"
+    },
+    {
+      "name": "full vs model-only",
+      "state": "CRASH_DURING_FACTORY_NO_RAY_RESULTS"
+    },
+    {
+      "name": "full vs animation-only",
+      "state": "NOT_EXECUTED"
+    }
+  ],
   "blockers": [
-    "No adopted overall server CPU improvement from this candidate",
-    "Reduced receiver candidate remains on hold for climb Head fire-ray mismatch",
-    "Visual quality and full 64-agent target are not proven by synthetic tests"
+    "Factory crash prevents factor isolation; internal cause unknown",
+    "Reduced receiver remains unaccepted",
+    "Overall server CPU and visual/performance acceptance incomplete"
   ],
   "evidenceReferences": [
+    "reports/operations/receiver-factor-climb-inconclusive-20261109.md",
     "reports/operations/crowd-snapshot-method-rejected-20261109.md",
     "reports/operations/receiver-fire-ray-climb-hold-20261109.md"
   ],
-  "limits": {
-    "conditions": "Synthetic 64 script bodies, zero native NPC, OpenTraversal=true, no players",
-    "independentProcessRuns": 1,
-    "pairsPerLayout": 3,
-    "targetP95Ms": 20,
-    "targetAchieved": false
-  }
+  "limits": [
+    "No factor cause determination",
+    "No alias-only factory control or explicit inherited-binding readback for crashing entity",
+    "No CPU timing, visible quality or 8/64 regression",
+    "Not an independent three-run repeat"
+  ],
+  "signatureVerified": true,
+  "targetP95Ms": 20,
+  "targetAchieved": false
 }

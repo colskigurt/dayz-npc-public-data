@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-08T23:13:40.960Z",
+  "sourceRunId": "ANIM-receiver-factor-climb1",
+  "buildId": "D3140DF51450C16D1C261FD0FAB897BDD741FFAE640A593977EDDE463C2A3D1D",
+  "verificationStatus": "FACTOR_ISOLATION_INCONCLUSIVE_FACTORY_CRASH",
+  "metrics": {
+    "completedConditions": 1,
+    "plannedConditions": 3,
+    "combinedReferenceRayPairs": 1980,
+    "combinedHeadMismatches": 14,
+    "positivePairs": 1955,
+    "cpuImprovement": null,
+    "p50": null,
+    "p95": null,
+    "p99": null
+  },
+  "conditions": [
+    {
+      "name": "full vs combined",
+      "state": "COMPLETED_MISMATCH_REPRODUCED"
+    },
+    {
+      "name": "full vs model-only",
+      "state": "CRASH_DURING_FACTORY_NO_RAY_RESULTS"
+    },
+    {
+      "name": "full vs animation-only",
+      "state": "NOT_EXECUTED"
+    }
+  ],
+  "blockers": [
+    "Factory crash prevents factor isolation; internal cause unknown",
+    "Reduced receiver remains unaccepted",
+    "Overall server CPU and visual/performance acceptance incomplete"
+  ],
+  "evidenceReferences": [
+    "reports/operations/receiver-factor-climb-inconclusive-20261109.md",
+    "reports/operations/crowd-snapshot-method-rejected-20261109.md",
+    "reports/operations/receiver-fire-ray-climb-hold-20261109.md"
+  ],
+  "limits": [
+    "No factor cause determination",
+    "No alias-only factory control or explicit inherited-binding readback for crashing entity",
+    "No CPU timing, visible quality or 8/64 regression",
+    "Not an independent three-run repeat"
+  ],
+  "signatureVerified": true,
+  "targetP95Ms": 20,
+  "targetAchieved": false
+}
