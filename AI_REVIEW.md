@@ -1,13 +1,12 @@
 # DayZ NPC Observatory — 현재 상태
 
-2026-11-09: **기존 국소 최적화 후보 재선정 완료, 새 구현 없음.** 현재 조사 범위에서 큰 전체CPU 절감이 입증된 즉시 적용 후보는 없다. 서버 보조 표시파트의 클라이언트 전용 분리는384→128서버 호스트 구성이 가능한지 검토할 구조적 후보이나, 그래프 시계·전환 위상 동기화 제어점이 아직 확보되지 않았다. 개수 감소를 CPU 절감률로 환산하지 않는다.
+2026-11-09: **사용자 승인1mm 허용 후보의 비용 선별 실패, 채택하지 않음.** 발 지지 광선 하단 축소 후보는2610조건에서 최대 lift차이0.305mm·수용판정 변화0으로 새 수치 기준을 통과했다. 그러나 한 프로세스6쌍의 상대 method 시간 중앙 개선4.720%, 한 쌍24.088% 악화로 사전 비용 gate(중앙5% 이상·모든 쌍 개선)를 통과하지 못했다. 전체CPU 개선률은 미측정이다.
 
-- [후보 선정표·동기화 접근 계약·위험](reports/operations/structural-candidate-boundary-review-20261109.md)
-- [구조화 상태](data/structural-candidate-boundary-review-20261109.json)
-- [접근 감속 보류 근거](reports/operations/approach-slowdown-readonly-review-20261109.md)
-- [64체 CPU 비교 조건 불일치](reports/operations/selective-peer-block-cost64-screen-20261109.md)
-- [기존 보고서 목록](reports/operations/)
+- [최신 시험 보고서](reports/operations/foot-range-tolerance1-method-20261109.md)
+- [구조화 결과](data/foot-range-tolerance1-method-20261109.json)
+- [이전 구조적 후보와 제약](reports/operations/structural-candidate-boundary-review-20261109.md)
+- [모든 기존 보고서](reports/operations/)
 
-기존 모델·정상 밀침·낙하·착지·추적·재등반 및 해결된 애니메이션 경로를 보존한다. 로컬 파트 분리는 구현·컴파일·게임 시험 미실행이다.20ms p95 목표 미달성, 기능·시각·성능은 별도 판정한다.
+원래 엄격 기준 실패45건 기록을 보존했다. NPC0·클라이언트0·새PBO0,8/64 확대하지 않았다. 기능·실제 화면·Present는 미검증이며20ms p95 목표는 미달성이다.1mm 허용을 다른 판정 기준의 일괄 완화로 해석하지 않는다.
 
-새 분리 후보를 적용 완료로 취급하거나 기존 서버LOD 실패를 해결한 것으로 해석하지 않는다. 공개 선언/소스에서 필요한 제어점을 확보하지 못한 것이지 전체 엔진에서 불가능함을 증명한 것은 아니다.
+외부 검토 주의: 단위 method 선별의6쌍은 독립 게임 실행6회가 아니다.1mm 표본 통과와 기능 수용은 다르며, 후보 시간값을RayCast의exclusive self-time으로 해석하지 않는다.
