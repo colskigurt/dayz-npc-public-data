@@ -1,10 +1,11 @@
 # DayZ NPC Observatory — 현재 상태
 
-2026-11-09: **33ms 밀침 묶음 후보를 구현 전에 철회.** 기존 최신64개체 모두 물리 콜백 평균19.99698Hz(약50ms)여서33ms 조건이 호출량을 줄인다는 근거가 없다. 앞선 선택 질문은 철회됐다. 더 긴 지연으로 자동 변경하지 않는다.
+2026-11-09: **스키닝 셰이더의 정적 버퍼는255행렬.** 실제설치system.pbo의 $SKIN vertex shader118/118에서같은선언을확인했다. 따라서64 weighted본예산을shader확정용량으로설명할수없다. 실제모델팔레트구축/업로드/본index매핑한계는미확인이다.
 
-- [최신 상세 보고서](reports/operations/contact-cadence-feasibility-20261109.md)
-- [구조화 결과](data/contact-cadence-feasibility-20261109.json)
-- [실제64 군중 범위 관측](reports/operations/crowd-live-attribution-20261109.md)
+- [최신 상세 보고서](reports/operations/skin-shader-capacity-20261109.md)
+- [구조화 결과](data/skin-shader-capacity-20261109.json)
+- [철회한33ms 접촉후보](reports/operations/contact-cadence-feasibility-20261109.md)
+- [실제64 군중범위관측](reports/operations/crowd-live-attribution-20261109.md)
 - [기존 보고서](reports/operations/)
 
-같은 표본 전체Solve121,908회 중Displace50,833회(41.70%)는 호출량 비율이며CPU비중이 아니다. 물리콜백20Hz를전체애니메이션/렌더20fps로해석하지 않는다. 새게임·구현·PBO없음. 현재즉시적용할새안전후보는미확정. 전체CPU·시각품질·20ms p95 목표는미해결.
+기존단일전체/텍스처구간분할의시각실패는유지한다.1파트가능성확정아님. 기존모델도이미ODOLv56이므로단순binarization누락이아니다. 새게임/후킹/자산변경/PBO없음. 전체CPU·시각·20ms p95목표미해결. 다음은기존컴파일ODOL의팔레트/index비교다.

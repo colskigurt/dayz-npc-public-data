@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T04:31:24.325633+00:00",
+  "sourceRunId": "ANIM-skin-shader-readonly1",
+  "buildId": "static-system-pbo-dfbe8def-currentclient-e3ba9660",
+  "verificationStatus": "STATIC_SHADER_CAPACITY_DIAGNOSED_RUNTIME_MAPPING_UNKNOWN",
+  "metrics": {
+    "skinVertexShaders": 118,
+    "matrixDeclarationCount": 255,
+    "matrixDeclarationBytes": 12240,
+    "all118SameDeclaration": true,
+    "sdkFilesByteIdentical": 118,
+    "existingModelsODOLv56": 5,
+    "newGameExecutions": 0,
+    "newPbo": 0,
+    "cpuImprovement": null,
+    "presentP95": null
+  },
+  "blockers": [
+    "255 declared matrices do not prove per-model/runtime upload capacity",
+    "Existing one-model and texture-section visual failures remain",
+    "Compiled ODOL palette mapping and actual draw constants unknown"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/skin-shader-capacity-20261109.md",
+      "systemPboSha256": "dfbe8def49c8503e2fe93fd01a76e27acce74f9414adaf39ae4ad5065427d5c0",
+      "selectedShaderSha256": "9129cf0bdb1379b145c8cf09387e7973538dc2ec3b631bf863c6c87f86b385d3"
+    },
+    {
+      "official": "https://dayz.com/article/game-update/1-30-experimental-release/dayz-steam-patch-notes"
+    }
+  ],
+  "adopted": false,
+  "next": "Read-only ODOLv56 palette/index comparison before any new model experiment"
+}
