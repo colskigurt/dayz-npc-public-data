@@ -1,39 +1,47 @@
-# Present 최소 수집 시도 — 장면 진입 전 실패
-기준일: 2026-11-10 KST. 검증 수준: 실행 경계 진단 성공, 수집·회귀·반복 검증·최종 수용 미실행.
+# 단일224 후보 — 접촉 작업량 보존 및 후속 검증 경계
+기준일: 2026-11-10 KST
 
 ## 1. 작업 목표
-기존5파트64 장면에서 10초 Present CSV 생성 가능성만 확인한다. 성능 비교나 기능 개선으로 판정하지 않는다.
+기존 단일224 후보의 서버CPU 감소가 접촉 질의 생략과 함께 발생했는지 확인하고, 이미 기각한 미세 최적화를 중복 수행하지 않는다.
 
 ## 2. 실제 수행
-기존 서버/Steam 요청/장면 제어를 재사용하고 별도 출력 경로 client-present-viability-20261110을 준비했다. 서버·클라이언트·미션·13 PBO 해시가 기존 기준과 일치했다. 이전 start/stop 플래그는 복사하지 않았다. 단일10초 설정의 구문/ValidateOnly를 통과했다.
-관리자 수집기 PID26676 준비를 확인하고 서버33464·클라이언트35572를 시작했다. Unity 채팅과 실행 충돌을 조율했다. 클라이언트 창을 확인했지만 준비 gate가 열리지 않아 Present 요청을 보내지 않았다.
+기존 두 독립 비교쌍의 valid-pairs-analysis1.json 카운터를 정규화했다. 새로운 독립 실행은 0회다. 소스 스냅샷의 DriveGround 및 Crowd.Displace 호출 경로와 기존 Scratch 비용 보고서를 재사용했다. 게임 코드·PBO 변경과 새 게임 실행은 없다.
 
 ## 3. 측정 결과
-64개체 장면 준비 및 workload 시작 미확인. PresentMon 미실행, CSV 없음. 8/64 기능·CPU·Present p50/p95/p99·애니메이션 시각 품질 모두 미측정.
-클라이언트 RPT에 00:46:21.676 netcrypt connected, 00:46:24.18 BattlEye initialization failed, 이후 반복 session terminated - no packets를 확인했다. 서버는 UDP30960/30962/30975 바인딩이 관찰됐다. CPU 소비나 프로세스 생존을 준비/성능 성공으로 간주하지 않았다.
-Project Zomboid 창도 관찰됐으며 전용 성능 조건으로 사용할 수 없다. 해당 게임에는 입력·종료를 하지 않았다.
+|쌍|조건|솔버/개체·게임초|발 Ray/solve|관절 Sweep/solve|solve/기록된 animation update|
+|---|---|---:|---:|---:|---:|
+|1|5파트|39.694|10|3.986|1.984|
+|1|단일|39.012|10|3.978|1.949|
+|2|5파트|38.393|10|3.984|1.922|
+|2|단일|38.600|10|3.992|1.929|
+
+단일 후보의 solver 빈도 변화는 -1.7169%, +0.5374%다. 기존 전체 서버CPU 감소 26.8092%,25.9961%와 같은 크기의 질의 횟수 감소는 관찰되지 않았다.
+기존 미션틱 p95는 기준44/43ms, 후보32/31ms이며 실제 화면 Present가 아니다.
+이번 8/64 기능·시각 품질·클라이언트CPU·Present p50/p95/p99는 새로 측정하지 않았다.
 
 ## 4. 원인 분석
-확인: 이번 정체는 CSV 생성 이전의 장면 진입 단계다. 기록된 BattlEye 초기화 실패 및 패킷 부재는 단서다.
-모름: BattlEye 메시지가 이번 로딩 정체의 유일 원인인지, Steam 동시 실행·접속·환경과의 인과관계.
-기존 CSV 미생성 실패와 같은 원인으로 합치지 않는다. 방화벽·BattlEye·서비스·보안 설정을 변경하거나 우회하지 않았다.
+확인: 이 코호트의 모든 조건은 solve당10발 Ray와 약4관절 Sweep을 유지한다. 검사량 생략을 CPU 감소의 설명으로 삼을 근거는 없다.
+추정: 호스트320→64와 네이티브 노드401→250 및 내부 차단 핸들 축소가 비용 감소에 기여했을 수 있다.
+미확인: 각 요소의 순수 self-time, 질의당 내부 후보량, GPU/표시 비용. 약1.9회라는 집계 비율만으로 모든 callback의 중복 호출을 증명하지 않는다. 이 코호트의 약38~40Hz를 전 상황의 고정 계약으로 일반화하지 않는다.
+DriveGround와 Displace는 서로 다른 위치/상태를 검증하므로 한쪽을 무조건 제거하거나 결과 캐시를 공유하지 않는다.
 
 ## 5. 검증 수준
-입력 검증·관리자 수집기 준비·실행 경계 진단 성공. 수집기 신규 기록 분기의 실제 Present 실행은 아직 미검증이다. 성능·기능·시각 품질 성공 및20ms p95 달성 없음.
+기존 증거 재분석 진단 성공. 새 독립 반복·회귀·전체 수용 아님. 기능/시각/성능을 별도 유지하며20ms p95 달성 없음.
+기존 Scratch 두배열 재사용은 두 실행 국소1.5~2.5% 수준으로 사전5% gate 미달이었다. 33ms 처리 묶음은 기존 타이밍 검토에서 철회됐으며 새 근거 없이 재도입하지 않는다.
 
-## 6. 변경 및 종료
-게임 코드·PBO·미션·Unity 무변경. 새로운 배포·서명 없음.
-00:48:58 클라이언트 정상 창닫기로 종료. 소유 서버는 준비 전 정체 상태에서 강제 종료했으며 exit -1을 기록했다. 정상 서버 종료로 보고하지 않는다.
-장면/관측 제어 두 작업을 중단하고, 준비만 하던 관리자 수집기는 PID·생성시각 대조 후 종료했다(00:49:31). 관련 네 프로세스 부재를 확인하고 Unity 채팅에 점유 종료를 전달했다.
+## 6. 변경 사항
+작업량 재분석 JSON과 보고서만 생성했다. 원본 로그·기존 보고서·게임 소스·PBO·Unity 프로젝트·서명 키 무변경. 새 서명 대상 없음.
 
-## 7. 원시 증거
-실행ID ANIM-present-viability-20261110-five64.
-기존 weighted224-probe1/gameplay1/client-present-viability-20261110 아래 preflight.json, staged-plan.json, collector-config.json, admin-ready.json, executed-controller-sources.json, collector-retirement-request.json, collector-retired.json.
-cost64-screen1/five 아래 plan.json, server-launch.json, steam-launch-request.json, client-closed-before-capture.json, server-forced-retirement.json, server-terminal.json 및 client/server-profile 로그.
-종료 후 클라이언트 RPT SHA256: 0A54C2EF8590DB277339ECE03DD6CCD293253669D03A98FACCFC053428A061BC.
-원시 자료와 기존 보고서는 덮어쓰지 않았다.
+## 7. 원시 증거와 무결성
+기존 실행ID: ANIM-single224-cost64-pair1-five/single, ANIM-single224-cost64-reverse-replacement1-single/five.
+입력 valid-pairs-analysis1.json SHA256 FBD4E4F4BCAB534DDEFBDA1EB136D764CE3B7BC5B20AD2146CF4CE356BAC8E80.
+출력 cost-comparison1/query-work-preservation-review-20261110.json SHA256 3C5979930F1632D32EFE68DA5780E1C492B82561B027FB9F2737549C3108F6E1.
+소스 참조: DGBNativeGround.c DriveGround의SolveContacts, DGBNativeCrowd.c Displace의SolveContacts. 기존32소스 해시 고정 인계 스냅샷을 참조했다.
+기존 Scratch 보고서: 2026-11-03_043040_578890+0900_npc-current-scratch-method-cost.md.
 
-## 8. 다음 작업
-기존 정상 Steam 실행의 동일 초기화 메시지 유무 및 접속/실행 방식 기록을 먼저 대조한다. 이 최소 차이가 확인되기 전 같은 장면을 반복 재시작하지 않는다. 기존 단일224 서버CPU 개선 근거는 유지하되 클라이언트/Present/64 전체 수용으로 확대하지 않는다.
+## 8. 다음 작업과 제한
+우선순위는 기존 단일224의 클라이언트CPU/Present 실행 검증이다. 최근 최소 수집 시도는 장면 진입 전에 초기화 실패가 기록됐으며 수집기 문제와 구분한다.
+다른 게임 실행이 현재 확인되어 전용 측정 조건이 확보되지 않았고 사용자에게 가능한 시험 시간을 요청한 상태다. 소유 DayZ/계측 프로세스는 종료했다. 준비 없는 반복 실행이나 보고서 추가만으로 성능 검증을 대체하지 않는다.
+초기화·수집 가능성 확인 후 같은 조건의 기준/후보 비교와8→64 기능·화면 검증이 남아 있다. 정상 밀침·낙하·착지·추적·재등반 보존은 최종 수용까지 독립 gate다.
 
-관련: [수집기 진단 보완](operations/present-collector-diagnostics-20261110.md), [기존 수동8 결과](operations/single224-manual-review-20261109.md).
+관련: [장면 진입 전 실패](operations/present-viability-pre-scene-20261110.md), [수집기 보완](operations/present-collector-diagnostics-20261110.md).
