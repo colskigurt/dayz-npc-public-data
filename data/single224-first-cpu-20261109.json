@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T07:28:21.586Z",
+  "sourceRunId": "ANIM-single224-cost64-pair1-five+single",
+  "buildId": "FA0A07F5163E80CA86EBA328066C0282394B641C89911438D451FF77717529D9",
+  "verificationStatus": {
+    "cpu": "single_valid_pair_diagnostic_only",
+    "independentValidPairs": 1,
+    "repeat": "excluded_before_cpu_foreground_false",
+    "mobility8CombatOff": "8of8_each",
+    "mobilityCombatOn": "not_equivalent_proven",
+    "visual": "not_accepted",
+    "present": "not_measured",
+    "adopted": false
+  },
+  "metrics": {
+    "serverCpuMsPerWallSecond": {
+      "five": 821.8504164137324,
+      "single": 601.5189049173662,
+      "absoluteSaved": 220.3315114963662,
+      "relativePercentSaved": 26.80919874176323
+    },
+    "logicalCount": 64,
+    "observedAliveAndAcquiredMoved2m": [
+      64,
+      64
+    ],
+    "renderHosts": [
+      320,
+      64
+    ],
+    "damageReceivers": [
+      64,
+      64
+    ],
+    "contactSolvesPerTraceGameSecond": [
+      2540.4100529100533,
+      2496.794498193263
+    ],
+    "missionDtMs": {
+      "five": {
+        "p50": 26,
+        "p95": 44,
+        "p99": 52
+      },
+      "single": {
+        "p50": 22,
+        "p95": 32,
+        "p99": 37.9
+      },
+      "scope": "server mission tick; not Present"
+    },
+    "presentMs": {
+      "p50": null,
+      "p95": null,
+      "p99": null
+    },
+    "combatOn8WindowTerminal": [
+      7,
+      2
+    ],
+    "combatOn8AllMilestones": [
+      7,
+      3
+    ]
+  },
+  "blockers": [
+    "No valid reverse independent repetition yet; foreground tool activation timed out twice",
+    "8combatON fixed60second functional outcomes differ; not production accepted",
+    "ClientCPU GPU Present temporal visual quality and full64mobility unverified"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/single224-first-cpu-20261109.md"
+    },
+    {
+      "mobility8": "reports/operations/single224-eight-mobility-20261109.md"
+    },
+    {
+      "visualSamples": "reports/operations/single224-batch14-video-20261109.md"
+    }
+  ]
+}
