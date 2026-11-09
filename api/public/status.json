@@ -1,38 +1,101 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T03:22:04.857556+00:00",
-  "sourceRunId": "ANIM-anm-header-count-crosscheck1",
-  "buildId": "existing70ANM-no-change",
-  "verificationStatus": "COMPILED_HEADER_LAYOUT_AND_SOURCE_CORRELATION_NOT_RUNTIME_MAPPING",
+  "generatedAt": "2026-11-09T03:39:52.085715+00:00",
+  "sourceRunId": "ANIM-client-local-role-network2",
+  "buildId": "81DA4EAB99330F42B285D86C9F9FCF54977738B233A8C3B9C094592E93B4EC2B",
+  "verificationStatus": "EXISTING_AUTOMATIC_LOCAL_COMMAND_PATH_REJECTED_FROZEN_POSE",
   "metrics": {
-    "files": 70,
-    "explicitSourceChannels": 11018,
-    "sourceConstantChannels": 6276,
-    "sourceConstantHeaderCountOne": 6192,
-    "explicitSourceKeys": 614085,
-    "correspondingHeaderCountSum": 158580,
-    "varyingSourceChannels": 4742,
-    "varyingSourceHeaderCountBelowExplicitKeys": 4726,
-    "repeatedConstantSourceChannels": 192,
-    "repeatedConstantHeaderCountOne": 192,
-    "sourceConstantHeaderCountNotOne": 84,
-    "newGameRuns": 0,
-    "newCpuMeasurements": 0,
-    "cpuImprovement": null
+    "samples": 1000,
+    "activeSamples": 1000,
+    "activeFraction": 1.0,
+    "recordedDtSumSeconds": 20.005,
+    "observerAgeValues": [
+      "0"
+    ],
+    "movement": {
+      "ref": {
+        "changedTransitions": 998,
+        "maximumDistanceFromFirstM": {
+          "Head": 0.5074916294107716,
+          "Hips": 0.06212399999999996,
+          "Hand": 0.5575505290410905
+        }
+      },
+      "local": {
+        "changedTransitions": 0,
+        "maximumDistanceFromFirstM": {
+          "Head": 0.0,
+          "Hips": 0.0,
+          "Hand": 0.0
+        }
+      }
+    },
+    "localAnimUpdatesMax": 0,
+    "localPhysicsUpdatesMax": 0,
+    "localNativeRequests": [
+      0
+    ],
+    "localPreviewRequests": [
+      2
+    ],
+    "usableReference": true,
+    "localFrozen": true,
+    "originalServerParts": 5,
+    "additionalLocalParts": 1,
+    "performanceMeasured": false,
+    "cpuImprovement": null,
+    "presentP95": null
   },
   "blockers": [
-    "Compiled16-bit count-field semantics inferred, not recovered importer contract",
-    "84 single-value source channels have non-one field; meaning unknown",
-    "Runtime receiver/asset/flag mapping not established"
+    "Existing automatic local creation plus PreviewRequest did not activate native command callback or moving pose",
+    "Observer Age column remained0; exclude it from elapsed/cadence analysis",
+    "Full graph phase/state synchronization and actual visible temporal quality unmeasured"
   ],
   "evidenceReferences": [
     {
-      "path": "reports/operations/anm-compiled-counts-review-20261109.md"
+      "name": "plan.json",
+      "sha256": "4971a5ad1621b730edb419970836fde135608ddf5e6253b32385197074d26c71"
     },
     {
-      "path": "reports/operations/animation-sampling-boundary-review-20261109.md"
+      "name": "trial-contract1.json",
+      "sha256": "0611e66058200d57171563ae58003c8d7f953c0bdbc6a620abd4ff6c7d49d25c"
+    },
+    {
+      "name": "nf-local-role.tsv",
+      "sha256": "d0d801e06274652487e8ef3277544c688a978dd9e78a97cb315876ee39ffb860"
+    },
+    {
+      "name": "nf-local-role-heartbeat.tsv",
+      "sha256": "247d7f79180cbc8d99c9d01002570a360ba528c6089d7244639d9e4879441686"
+    },
+    {
+      "name": "nf-local-role-cleanup.flag",
+      "sha256": "2b8c339fcafb694118ec2051d9e70588bf9308bffa966c44c9a8e9f2ecaa8555"
+    },
+    {
+      "name": "controller-receipt.json",
+      "sha256": "0ca1e4cfa21366e82e65a466be1c9daadee23d271935ba84d815fb31d0f98232"
+    },
+    {
+      "name": "server-terminal.json",
+      "sha256": "424d4de48e64f296ff035f787259efcc92cad0f0e6b56d129713768d76d526d8"
+    },
+    {
+      "name": "client-closed.json",
+      "sha256": "15310d2caec88e3e85fda1b3f131444bfa51571ad117e8bd65571979a036f6ed"
+    },
+    {
+      "name": "failure1.json",
+      "sha256": "a2176479a03b7142a05be1cb736b53ea65b5eb2d03b3034bf437c93b47b4f4cf"
     }
   ],
   "productionChanged": false,
-  "adopted": false
+  "adopted": false,
+  "limits": [
+    "One fixedRun capability test; not whole local animation API impossibility",
+    "Reference/local phases deliberately not aligned; simultaneous pose equality not evaluated",
+    "CPU bone positions and one screenshot do not establish final rendered smoothness",
+    "Initial network1 collector failure is not an independent valid comparison",
+    "Server normalLOD0 is reasserted at cleanup; no reducedLOD treatment executed"
+  ]
 }
