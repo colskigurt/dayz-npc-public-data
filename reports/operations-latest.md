@@ -1,35 +1,46 @@
-# 접촉 이벤트 양성 대조와 선택적 충돌 후보 사전 검토
+# 선택적 표시 파트 충돌 차단 — 해제 수정과 8개체 회귀
 
 ## 1. 작업 목표
-이전8개체 관측의 EOnContact 전부0이 등록 누락인지, 관측 경로 한계인지 확인한다. 이벤트0을 네이티브 접촉 비용0으로 간주하거나 곧바로 물리 차단을 적용하지 않는다.
+교차논리NPC의nonleader표시파트사이선택차단을기본OFF격리후보로구현하고,핸들생성·복구·퇴역전해제와기존8개체이동계약을검증한다. 리더끼리·플레이어·월드·피해수신체·기존스크립트밀침·지지·낙하·착지·재추적은변경하지않는다. 실제CPU절감은별도다.
 
 ## 2. 실제 수행
-현행 설치 scripts.pbo를 읽었다. DayZAnimal 생성자의 SetEventMask(EntityEvent.CONTACT)와 GetEventMask/Physics.IsKinematic/dBodyIsDynamic 및 dBodyCollisionBlock/dBodyRemoveBlock 선언을 확인했다. REA open_binary는PBO를unsupported_target로거절했고재시도/설치/전체Ghidra분석없이기존읽기전용PBO소스리더를재사용했다.
-기존Animal 관측 코드 바이트는 유지하고 드럼통 CONTACT 관측만 추가한 격리 PBO를 빌드·서명·검증했다. NPC 이벤트 마스크·layer·simulation·collision block은 변경하지 않았다. 컴파일 전용 실행 후 headless의 원래part0인스턴스2개·드럼통2개로12게임초 관측했다. 첫 실행은 드럼통이dynamic/solid/active가 아니어서 충격을 주지 못했다. 준비실패로 보존했다.
-설치 Object.CreateDynamicPhysics 선언을 확인한 뒤 두 드럼통에만 호출하는 미션1행을 추가한runtime2로수정했다. 같은진단PBO재사용·클라이언트0이었다. 두 실행을 독립적인 성공 반복으로 세지 않는다.
+미션전용NFSelectivePeerBlockSet을추가했다.8그룹5파트의교차논리쌍에서leader-leader28쌍을제외한672개만선택한다. actor중복·리더ID·수신체혼입·physics존재·최대64그룹을검사한다. 설치/종료시만순회하고매프레임추가pair순회는없다.
+초기generic array<dBlock>저장/직접인덱스인자형태는672개생성후첫Release도중접근위반(-1073741819)으로크래시했다. 덤프/RPT/로그를보존했고클라이언트나이동은시작하지않았다. 기존오프라인AMD64덤프리더를재사용해현재서버이미지와faultRVA0xcf3da4를확인했다. 전체Ghidra/메모리패치는없다.
+별도1쌍명시형식dBlock지역변수해제는반환했다. 그프로브의최초null비교문법실패도보존하고신원확인한컴파일실패서버만강제정리했다. wrapper forced=false와달리compile-failure-cleanup의강제정리가실제기록이다.
+핸들+owner를형식이명시된객체필드에보관하고지역변수로native해제에전달하도록수정했다. 같은672설정검사,중복설치거절,7개생성후인위적실패rollback,리더/수신체/중복객체오류,재설치/퇴역전해제를통과했다. 전투OFF씬의수신체부재계약도추가검증했다.
+과거양쪽8/8완료했던기존lane OFF전체경로씬을그대로재사용했다. lane간격후보는OFF,누적계측은양쪽동일하다. Stimulus/Commit/Milestones/Observe/ValidSupport함수바이트를보존하고새설치·해제wrapper만연결했다. 양쪽동일20초준비뒤OFF→ON한번씩실행했다.
 
 ## 3. 측정 결과
-설치 DayZAnimal 생성자 CONTACT등록은692행, EOnContact 선언은942행이다. 실제NPC eventMask16432중CONTACT비트16384는두실행모두존재했다. NPC body/dynamic/kinematic/solid/active가모두true인표본을기록했다. dynamic과kinematic이함께true라는실제반환값을보존하며임의로static이라고해석하지않는다.
-첫실행:드럼통dynamic=false/solid=false/active=false·충격미적용·이벤트0. NPC AnimUpdates최대각89. 양성대조실패.
-수정실행:드럼통dynamic=true/kinematic=false/solid=true,충격적용. 드럼통0/1의CONTACT총계최대515/1023,둘모두animalContact0. NPC0/1은CONTACT0,AnimUpdates/PhysicsUpdates최대각59였다. 드럼통-월드양성대조는성공했지만드럼통-NPC 또는NPC-NPC의실제접촉은확인되지않았다. 따라서NPC경로의이벤트전달자체가안된다고확정하지않는다.
-모든관측서버detached=true 후RequestExit0/actual−1·강제종료없음,프로세스소멸확인. CPU/Present p50/p95/p99·native manifold·8/64기능·실제시각은미측정이다.
+설정2는총1351생성/1351해제요청,수신체부재추가설정3은2023/2023요청·local보관0·detached=true로종료했다. API해제는void라native테이블잔여수/메모리누수0까지확인한것은아니다. 인위적실패는실제allocator실패로보고하지않는다.
+
+| 항목 | OFF | ON |
+|---|---:|---:|
+| 최종도착·전체milestone |8/8|8/8|
+| 낙하시작/착지후FOLLOW복귀 |9/9|9/9|
+| 위상연쇄·복구세대·종결정렬오류 |0/0/0|0/0/0|
+| 추가차단생성/해제요청 |0/0|672/672|
+| 완료게임시간 |64.5732초|73.8830초|
+| Displace누적 |7120|8221|
+| 전체bodySolve누적 |18846|21284|
+
+ON완료시간은14.4174%길었다. 단계체류/작업량이다른단일기능쌍이며이를순수CPU회귀율로환산하지않는다. 두실행은퇴역전및삭제전해제호출정상반환/local0,요청0/실제서버exit−1·강제정리없음,클라이언트일반창닫기로종료했다.
+추가읽기전용전역matrix조회에서own=AI=524288,AI-AI/terrain/vehicle/character=true,AI-building=false,vehicle-terrain=true였다. 층설정을변경하지않았다. AI-AI전역허용은실제manifold/CPU를입증하지않고kinematic조건의0이벤트해석도바꾸지않는다.
+이번8씬은전투OFF·40표시파트·피해수신체0이다. 피격/사망/수신체재생성·64개체비용·CPU/Present p50/p95/p99·실제화면부드러움은미검증이다.
 
 ## 4. 원인 분석
-반증:기존NPC관측0을CONTACT등록누락만으로설명하는가설. 설치소스와실제마스크모두등록을보인다.
-확인:수정한일반동적물체에서는동일서버의CONTACT관측이작동했다. NPC는이격리headless조건에서kinematic으로보고됐고이벤트는없었다.
-미확정:NPC들끼리실제충돌후보/접촉이있었는지,kinematic/controller경로의보고정책,그비용. 드럼통궤적은지형에따라변했으며실제NPC접촉을증명하지못했다.0이벤트=0CPU나충돌차단의효과로보고하지않는다. 격리part0두개는8/64네트워크전체구성과다르다.
+확인:초기opaque핸들보관/인자전달경로에서Release가크래시했고,형식이명확한보관+지역인자경로에서는672개를동일하게생성·해제하고실제8이동뒤에도정리할수있었다. dBlock선언은int[]opaque이다.
+추정:generic컨테이너/인덱스인자의native마샬링또는수명처리가관련됐을수있다. 저장구조와인자형태를함께바꿨으므로어느쪽이단독원인인지,엔진버그/포인터비트잘림인지확정하지않는다. 모든opaque배열이실패한다는일반법칙으로확대하지않는다.
+관찰:8이동기능은양쪽통과했지만ON이더빨라지거나일이줄었다는근거는없다. native충돌차단이Ray/Sphere/API내부비용을줄이는지도미확인이다.0이벤트·672개설치수·기능통과를비용성공으로보고하지않는다.
 
 ## 5. 검증 수준
-설치소스/실제CONTACT마스크진단성공,드럼통-월드양성대조1회성공,첫준비실패보존. NPC-NPC접촉계측은미보정·미확정. 성능개선·반복검증·기능회귀·시각·최종수용아니다. 선택적pair-block은제안만작성했고실행하지않았다.
+컴파일/설정복구·수신체부재입력·이동중유지·퇴역전해제진단성공. 기존분석기로8개체이동단일쌍회귀통과. 반복안정성·죽음/삭제중nativebody변화·64기능/비용·실제시각·최종수용미완료. 후보기본OFF·미채택.
 
 ## 6. 변경 사항
-격리 nf_peer_contact_calibration PBO SHA256 4EBA8BB5CEE70FD4CF13A21DB162AEF27F420DF70458EDAD7E8E4C78661D0515,DSSignFile/DSCheckSignatures성공·개인키미포함. 원래관측PBO·게임코드·설치scripts.pbo·그래프·모델·운영서버불변. 추가setter는대조드럼통의CONTACT등록/동적물리/1회충격에한정한다. NPC는기존단일클립정밀도0설정만재사용했고추가CONTACT/layer/block변경은없다. 자료를기존폴더하위에보존했다.
+격리미션helper3/설치·해제wrapper/계획·소스증명·분석만추가했다. 실제선택차단기능은격리미션에들어갔으며기존코어·배포PBO·모델·그래프는불변이다. 신규PBO/배포서명대상0,기존입력PBO해시는재대조했다. 초기helper/크래시/컴파일실패/수정본을모두보존했다. 개인키복사/배포없음.
 
 ## 7. 원시 증거
-ANIM-peer-contact-calibration-compile1/runtime1/runtime2. installed-event-contract.json,fixture-build/signature/source,trial-contract1,mission2-change-proof,양쪽peer-calibration.tsv/plan/script/terminal,analysis2.json,selective-pair-proposal1.json을해시연결한다. 원본PBO는복사하지않고해시와선택소스행만기록했다. REA의형식거절은대상PBO형식의제한이며엔진전체분석불가능판정이아니다. 저장전해시·JSON·시험프로세스부재검증. 공개에는로컬경로·PID·키·게임자산/전체소스미포함.
+ANIM-selective-peer-block-compile1/setup1/setup2/setup3,eight1-compile1/eight1-off/eight1-on,ANIM-peer-block-local-handle-probe1/2,ANIM-peer-layer-matrix-readback1.각plan/원본·생성미션hash/setup TSV/크래시덤프와해독/실제종료·cleanup기록,두8실행gameplay/native-state-contract/terminal/peer-block-lifecycle,기존analyze-case.py의원판정본문불변어댑터,comparison1.json연결. 공개에는자체작성최소helper·정제집계·상대ID/해시만제공하며덤프내용·로컬경로·프로세스/사용자정보·키·게임자산은게시하지않는다. 저장전해시·JSON·시험프로세스부재를검증한다.
 
-## 8. 잔여 문제와 구현 전 단일 후보 제안
-이벤트관측만다시반복하지않는다. 수정가능한격리후보는서로다른논리NPC의render파트중적어도하나가nonleader인쌍만dBodyCollisionBlock하는것이다. leader-leader/피해수신체/플레이어/월드는제외하며스크립트힘·모든Ray/Sphere·발지지·질량·등반·낙하·착지·FOLLOW·재등반검사는그대로다. LOD/solid/layer/업데이트빈도를바꾸지않는다.
-근거:동일논리객체의중복render파트차단은이미있고,교차논리의중복기하는아직분리비용시험하지않았다. 콜백은CPU를판정하지못하므로실제조건부전체비용비교가이후진행여부를바꿀수있다. 이새후보의절감효과는미입증이며0이벤트를긍정근거로쓰지않는다.
-위험/비용:8명672개·64명48384개의추가핸들,생성/조회/메모리/해제오버헤드·사망/파트재생성·네이티브위치/복제변화.1000명에서는11988000개로같은all-pairs구조가부적합하다.64용진단을대량호드설계로승격하지않는다.
-다음단일산출물은8명기본OFF격리소스와핸들소유권/실패rollback/삭제전명시해제계약이다. 양쪽리더·수신체를실제ID로제외하고모든생성핸들을살아있는owner와기록해야한다. 부분실패시이미만든핸들을복구하며퇴역전해제한다. 먼저컴파일·setup/cleanup,그뒤8 OFF/ON상태계약과정상밀침/낙하/복귀를비교한다. 후보특유의실패면64확대하지않는다. baseline공통불완료는별도결함으로두고기능개발로전환하지않는다.8안전근거가있을때만64동일조건CPU/Present screen을검토한다. 단일유리결과로채택하지않고3쌍·CPU최소5%·Present악화5%이내·작업진행차이5%이내및기능/시각을별도로판정한다. 실제구현/새클라이언트는이번묶음에서시작하지않았다.
+## 8. 잔여 문제와 다음 단일 산출물
+다음은현행64동일고정자극조건의전체서버CPU선별비교계획/연결이다.48,384개추가핸들의초기생성·정리시간/메모리도별도로기록해야하며8의안전을64로외삽하지않는다. 기존50초CPU/게임시각·작업량수집기와공통미션을재사용한다. 후보와대조모두같은root/상태/Native시간/생존조건이어야하며정체·느린진행으로인한CPU감소를성공으로보지않는다.
+먼저CPU선별이실패하면추가Present/긴반복을늘리지않는다. 유망하면동일조건실제Present/시각·3쌍반복이필수이며CPU만으로채택하지않는다. 원래5%CPU·5%Present악화상한·5%작업진행차gate는유지한다.8의14.4%완료시간증가는위험신호로기록하며단일변동시간기능씬과고정비용씬을혼동하지않는다. 사망·nativebody재생성시핸들수명은별도미검증으로남기고채택전에검증해야한다. 이를기능개발확대로바꾸지않는다.1000개체all-pairs차단을추천하지않는다.

@@ -1,166 +1,258 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T01:05:50.916110+00:00",
-  "sourceRunId": "ANIM-peer-contact-calibration-review1",
-  "buildId": "4EBA8BB5CEE70FD4CF13A21DB162AEF27F420DF70458EDAD7E8E4C78661D0515",
-  "verificationStatus": "CONTACT_WORLD_CONTROL_POSITIVE_NATIVE_PAIR_UNCALIBRATED",
+  "generatedAt": "2026-11-09T01:37:32.212694+00:00",
+  "sourceRunId": "ANIM-selective-peer-block-eight1-pair",
+  "buildId": "299d195489400f6c8a2b2747159a1bf3b7e1d9103158159dbba1e6c566668eed",
+  "verificationStatus": "EIGHT_MOBILITY_SINGLE_PAIR_PASSED_COST_VISUAL_UNMEASURED",
   "metrics": {
-    "nativeAnimals": 2,
-    "barrelControls": 2,
-    "barrelContactMaxima": [
-      515,
-      1023
+    "conditions": [
+      {
+        "sourceRunId": "ANIM-selective-peer-block-eight1-off",
+        "condition": "off",
+        "activeSeconds": 64.5732,
+        "validTerminalAgents": 8,
+        "allMilestoneAgents": 8,
+        "fallStarts": 9,
+        "landAndFollowCycles": 9,
+        "phaseChainMismatches": [],
+        "recoveryGenerationErrors": [],
+        "terminalAlignmentErrors": [],
+        "evidenceFunctionalGatePassed": true,
+        "created": 0,
+        "removeRequests": 0,
+        "workCounterSeconds": 64.5732,
+        "workCounterDeltas": {
+          "pairCandidates": 37860,
+          "contactPairs": 9254,
+          "displaceCalls": 7120,
+          "pressureSolves": 7082,
+          "allBodySolves": 18846,
+          "acceptedPressureSteps": 6911
+        },
+        "workPerGameSecond": {
+          "pairCandidates": 586.3113489806917,
+          "contactPairs": 143.31022777251243,
+          "displaceCalls": 110.26246182626848,
+          "pressureSolves": 109.67398239517323,
+          "allBodySolves": 291.85482522160896,
+          "acceptedPressureSteps": 107.02582495524459
+        }
+      },
+      {
+        "sourceRunId": "ANIM-selective-peer-block-eight1-on",
+        "condition": "on",
+        "activeSeconds": 73.883,
+        "validTerminalAgents": 8,
+        "allMilestoneAgents": 8,
+        "fallStarts": 9,
+        "landAndFollowCycles": 9,
+        "phaseChainMismatches": [],
+        "recoveryGenerationErrors": [],
+        "terminalAlignmentErrors": [],
+        "evidenceFunctionalGatePassed": true,
+        "created": 672,
+        "removeRequests": 672,
+        "workCounterSeconds": 73.883,
+        "workCounterDeltas": {
+          "pairCandidates": 44046,
+          "contactPairs": 10708,
+          "displaceCalls": 8221,
+          "pressureSolves": 8169,
+          "allBodySolves": 21284,
+          "acceptedPressureSteps": 6801
+        },
+        "workPerGameSecond": {
+          "pairCandidates": 596.1587916029398,
+          "contactPairs": 144.9318517114898,
+          "displaceCalls": 111.27052231230459,
+          "pressureSolves": 110.56670682024283,
+          "allBodySolves": 288.0770948662074,
+          "acceptedPressureSteps": 92.05094541369463
+        }
+      }
     ],
-    "barrelAnimalContacts": 0,
-    "nativeAnimalContacts": 0,
-    "nativeContactMaskBit": 16384,
-    "nativeEventMask": 16432,
-    "independentCorrectedRuns": 1,
-    "setupFailures": 1,
+    "completionGameSecondsChangePercent": 14.417436335817335,
+    "cpuImprovement": null,
     "p50": null,
     "p95": null,
-    "p99": null,
-    "cpuImprovement": null
+    "p99": null
   },
   "blockers": [
-    "Barrel-world positive control does not establish actual barrel-animal or animal-animal contact.",
-    "Native objects were isolated headless part0 instances, not the full8/64 network gameplay pipeline.",
-    "Kinematic readback is not a measured native pair cost or proof no broadphase work.",
-    "One corrected calibration run; setup failure is not an independent successful repeat."
+    "Single mobility run per arm, not repeated performance",
+    "ON took14.4174% longer game time; no CPU success inferred",
+    "Combat/death/nativebody-recreation lifecycle unverified",
+    "Native remove returns void; internal block table count and leak-free state unproved",
+    "64 extra48384 handles cost/safety and actual Present/visual quality remain unmeasured"
   ],
-  "proposal": {
-    "schemaVersion": 1,
-    "sourceRunId": "ANIM-selective-peer-block-proposal1",
-    "verificationStatus": "PROPOSAL_NOT_IMPLEMENTED",
-    "hypothesis": "Cross-logical native render-host pair filtering may remove redundant work while script crowd/contact world safety remains authoritative; effect unknown.",
-    "change": "DefaultOFF mission-only experimental blocks for cross-logical render pairs having at least one nonleader; no global layer changes, no simulation/LOD changes.",
-    "preserve": [
-      "leader-leader",
-      "all damage receiver contacts",
-      "player/world contacts",
-      "all script forces,Ray/Sphere support and movement segments",
-      "fall/landing/FOLLOW/reclimb and physical mass"
-    ],
-    "handleCounts": {
-      "8": 672,
-      "64": 48384,
-      "1000": 11988000
-    },
-    "scalingLimit": "All-pairs block setup is a64-agent diagnostic, unsuitable unchanged for1000. No scalability claim.",
-    "priorEvidence": {
-      "sameLogicalSiblingBlocksAlreadyImplemented": true,
-      "nativeCONTACTRegistrationConfirmed": true,
-      "worldDynamicControlPositive": true,
-      "actualNativePairEventsCalibrated": false,
-      "nativePairCpuShareMeasured": false
-    },
-    "decisionWhyNow": "Event callback counts do not measure CPU. Only controlled direct whole-cost comparison can test this hypothesis; no adoption from zero events.",
-    "prerequisites": [
-      "Pin existing source/PBO and inspect ownership of dBlock; no implicit cleanup assumption",
-      "Track every successful handle with a live world-entity owner; remove explicitly before actor retirement/deletion",
-      "Partial allocation failure rolls back created handles and terminates candidate trial",
-      "No block handle for receivers/players/world/leader-leader; exact identity and count audit",
-      "Death and host recreation lifecycle remains unverified until separate bounded checks"
-    ],
-    "gates": [
-      "Compile and setup/cleanup-only first; no64 launch",
-      "Existing8 OFF/ON mobility regression and per-ID state/part spread/retirement, no feature-recovery redesign",
-      "New candidate-specific invalid transition, missing host, crash, cleanup failure stops expansion",
-      "Baseline-common incomplete milestones remain separate defects; no functional pass asserted",
-      "Only if8 safety supports a diagnostic screen,64 matched CPU/Present/work-rate comparison; no adoption without full functional,visual and repeated performance acceptance"
-    ],
-    "performanceGate": {
-      "serverCpuImprovementPercentMinimum": 5,
-      "presentP95RegressionPercentMaximum": 5,
-      "workRateDifferencePercentMaximum": 5,
-      "independentPairsForAdoption": 3,
-      "sameSceneAndForegroundRequired": true,
-      "singleFailedScreenStopsFavorableReruns": true
-    },
-    "limits": [
-      "Block table creation,lookup,memory andcleanup may cost more than they save",
-      "Server-only pair filtering may alter native motion/replication and must be observed",
-      "Headless isolated kinematic readback is not native network gameplay pair cost proof",
-      "No performance improvement predicted numerically"
-    ]
-  },
   "evidenceReferences": [
     {
-      "id": "runtime1/server-profile/peer-calibration.tsv",
-      "sha256": "959f2632cb66376f37ff20877846a4553ef51b5f75414bfd6b1d9098ce00724e"
+      "id": "eight1/off/plan.json",
+      "sha256": "3a55939c7c919eb6b26ae9b38ee41eee84cc4225a99786d9aaa177c28dceac73"
     },
     {
-      "id": "runtime1/plan.json",
-      "sha256": "9225f0c994b15e62e69dbe069c536b89397f70788746546c6ba6fbc46d393599"
+      "id": "eight1/off/server-terminal.json",
+      "sha256": "e2552c22faddc71d92b47811283d29bde1576ee9190b782acb3ad8a44ea281c7"
     },
     {
-      "id": "runtime1/server-terminal.json",
-      "sha256": "c497937e4e63eb610aa2faa1408feb51533957a30aec014943d86877e9e06761"
+      "id": "eight1/off/client-closed.json",
+      "sha256": "9992023654086eb46e5cb03fcf6caa6fea3eaf631b3b2fdd382bc51d729737ca"
     },
     {
-      "id": "runtime1/server-profile/script_2026-11-09_09-59-32.log",
-      "sha256": "14c785addf944b99f0789c76ff51ce58bafd4a54a8eb70f33e148d36a2283764"
+      "id": "eight1/off/server-profile/peer-block-lifecycle.tsv",
+      "sha256": "b01c3f8140401dc506553ee02284f2f76d31a440c9a7dc86d650053c54f4a62a"
     },
     {
-      "id": "runtime2/server-profile/peer-calibration.tsv",
-      "sha256": "a3ab5c4a8bf80de23b46d55f511996cc69cec3161091d754d980c74112989563"
+      "id": "eight1/off/server-profile/gameplay-eight.tsv",
+      "sha256": "e71bbdb440bbae125a7fd7d73a03c727b5ce3af1e4a0956df694cba25d351265"
     },
     {
-      "id": "runtime2/plan.json",
-      "sha256": "4617e843abdba447f29c9b396c6c48e90c337c222acd92438765041f9c62377b"
+      "id": "eight1/off/server-profile/terminal-state.tsv",
+      "sha256": "c020609a4c19ea98ac47da0f701ce6de1fc4d61371e63a6476eac0ad8d097257"
     },
     {
-      "id": "runtime2/server-terminal.json",
-      "sha256": "43fca34205b7afd1426ba917f63252bb7be58904ab95ecbc5117d56bf56eab0b"
+      "id": "eight1/off/server-profile/native-state-contract.tsv",
+      "sha256": "657a58fc525e56025ebfadeb5e0be30cdbe46374a2fe4ecb4809aae7420bc1a0"
     },
     {
-      "id": "runtime2/server-profile/script_2026-11-09_10-00-43.log",
-      "sha256": "939fd7f34a948ee899a92941be60ea079f5bebd3155eb33da3d7dba5943eb537"
+      "id": "existing-contract-analyzer",
+      "sha256": "42aee15ad2be50037d188baabf924715db5a980ac84273f07b9872981015e363"
     },
     {
-      "id": "installed-event-contract.json",
-      "sha256": "dc0fbdfc75d29715a7ac7921e019fe87eb5cf3cb51b34948a6451c5c2882014d"
+      "id": "eight1/off/server-profile/script_2026-11-09_10-24-47.log",
+      "sha256": "6aba2195041a3620d66c324da576f0dd27da96d573839ff3e6df67c718ebc32f"
     },
     {
-      "id": "fixture-build.json",
-      "sha256": "c7932873743b1488bb4042e476725781c15c18a879137a5555b6919501ea0b7a"
+      "id": "eight1/off/analysis1.json",
+      "sha256": "71ba06890a2fcf4a3040fd5eab7685c08896eff73dc414cdac89963deabade8d"
     },
     {
-      "id": "trial-contract1.json",
-      "sha256": "3c56dc271278d1908aecfe844ea64e3de4308ee3bc38cb1be0700b25c609cf98"
+      "id": "eight1/on/plan.json",
+      "sha256": "4d76140b3e37933e274da03435bfb35e58497d03536637dd9dee6002dabdbc77"
     },
     {
-      "id": "mission2-change-proof.json",
-      "sha256": "5de9550999046cbda8a7a7216a5956131f3952f600120acff2aa03fb50a039ae"
+      "id": "eight1/on/server-terminal.json",
+      "sha256": "aed1054e46c46fbef660d7893c0381ccfcc43cc42bf790f319c26cc53d004b23"
     },
     {
-      "id": "analysis2.json",
-      "sha256": "d3a3d30134aaf4f328bd7f752ec4a928d22d646effe26a799f04a03f465e958a"
+      "id": "eight1/on/client-closed.json",
+      "sha256": "b0b9efd36ef65774325d4c48905bb40fdcba0056392b75ef96df8dc7cec6fe41"
     },
     {
-      "id": "selective-pair-proposal1.json",
-      "sha256": "e18515eb30a32d1117ab6917a3a30309c20fa4cdf8915a2b98f746c795ae1017"
+      "id": "eight1/on/server-profile/peer-block-lifecycle.tsv",
+      "sha256": "b3e41da882ef70eee2ecdebb751f2ab4fd28ce61843b9469e9d11b68c1ec237c"
     },
     {
-      "id": "compile1/server-terminal.json",
-      "sha256": "5f297435f323e67ad29ff750750a2fbdf8a1cb52d33cef876610ab9b9cc8ce82"
+      "id": "eight1/on/server-profile/gameplay-eight.tsv",
+      "sha256": "14e63f4e3535c71c13f3a67a2ad48853a059258eb0f7fc70cbcd6bd0854e28d5"
     },
     {
-      "id": "source/nf_peer_contact_calibration/Scripts/4_World/NFPeerContactObserver.c",
-      "sha256": "40792abb4c51ae644226c1c7bc217e0f1e64e0a9ed37d9c865a298bc2afb325f"
+      "id": "eight1/on/server-profile/terminal-state.tsv",
+      "sha256": "be16ab757da2316901c03b891adaec7ad799cbba61a9f138b78bd02f18bd75bd"
     },
     {
-      "id": "source/nf_peer_contact_calibration/Scripts/4_World/NFBarrelContactControl.c",
-      "sha256": "cd5e04c29695971f4b84776ca79b86b10281fb49ff12973d3a54b6cec5e09940"
+      "id": "eight1/on/server-profile/native-state-contract.tsv",
+      "sha256": "4abec48daedf48f03696eb6ce63a192b6d3606c94eb04ac38a92d6a7dae0a446"
+    },
+    {
+      "id": "existing-contract-analyzer",
+      "sha256": "42aee15ad2be50037d188baabf924715db5a980ac84273f07b9872981015e363"
+    },
+    {
+      "id": "eight1/on/server-profile/script_2026-11-09_10-27-59.log",
+      "sha256": "782fae0b5c4b9035ebeffbe8c85660f432679fa0886740fcbc374c76b858a848"
+    },
+    {
+      "id": "eight1/on/analysis1.json",
+      "sha256": "909e541ae645b46415a9a9b0a84a93a1c246827b58e6212300eeecfdfe4bfa8b"
+    },
+    {
+      "id": "setup2/plan.json",
+      "sha256": "74c510e25153696b032ef2be40cd5cad23a45da43c24cc8a18463b502bbc1dad"
+    },
+    {
+      "id": "setup2/server-terminal.json",
+      "sha256": "6a8b92ad63c2df52f2b137ccb2fd102cf7a9274a35e52fc22270bffbb0b821f6"
+    },
+    {
+      "id": "setup2/server-profile/peer-block-setup.tsv",
+      "sha256": "ebe938f81b0beb20e30dfd837c8974fa36da45dfc2668cd0bf56c81cbdfd9b32"
+    },
+    {
+      "id": "setup3/plan.json",
+      "sha256": "578c87014029e41730a40bbbd7af775932308a0011c73db36bc7961fbfcd28b9"
+    },
+    {
+      "id": "setup3/server-terminal.json",
+      "sha256": "d4654cd782be8eb267359d3e8cf8f110921f3b219dc9bb9895229599b9b82cde"
+    },
+    {
+      "id": "setup3/server-profile/peer-block-setup.tsv",
+      "sha256": "336cae94a367186f9ebe331a6e14b631d93203a46cd790d4d38caa55218fa6cc"
+    },
+    {
+      "id": "NFSelectivePeerBlocks.c",
+      "sha256": "0941f8287007c6a7b10228febc5a80f782b52bf2d3e3360e5cbf47a4472a314a"
+    },
+    {
+      "id": "NFSelectivePeerBlocks2.c",
+      "sha256": "32f29557bab0efb6243d6458cab81feddb9391059f8981e24d8d9b7d1c6dd018"
+    },
+    {
+      "id": "NFSelectivePeerBlocks3.c",
+      "sha256": "35e859ddf8aeb1969d2eb0996c951cb7767e0e088340dc7d353bc6deccf0ed1a"
+    },
+    {
+      "id": "opaque-handle-change-proof2.json",
+      "sha256": "545c8031d66a4ae42b9ef1234d00a6668e0c6a66219bc5f176ee1717feae0069"
+    },
+    {
+      "id": "eight1/source-proof.json",
+      "sha256": "97ff7e9ec9854c3e3c94f0ba4d6939c7082df663fbf3d5d06a4e42de5fa30691"
+    },
+    {
+      "id": "eight1/comparison1.json",
+      "sha256": "d67e05091c356b0ecb943565a184c6b67fec5f88fc001c15b1e59b547ca8854d"
+    },
+    {
+      "id": "setup1/server-terminal.json",
+      "sha256": "8a68730eb43869fe3a3204716acc920ebeb68afa74ea7893bbed584b7d8ea4fa"
+    },
+    {
+      "id": "setup1/server-profile/peer-block-setup.tsv",
+      "sha256": "b22e08fe6ffe9e8c8e47657db6b13db36455de8bbaecdd473f562fbbe0344789"
+    },
+    {
+      "id": "setup1/crash-readback1.json",
+      "sha256": "0a4973e21ce2737bfd6c8e705ef8df8ca4f3d90911b9babf7629b096a2d21e56"
+    },
+    {
+      "id": "setup1/server-profile/DayZServer_x64_2026-11-09_10-10-54.mdmp",
+      "sha256": "8cd09ef068f2a27cc9d45bc15fbd13e7d5f9a7b8db1fe6e1637c6ffe1933258e"
+    },
+    {
+      "id": "local-handle-probe1/compile-failure-cleanup.json",
+      "sha256": "5a4e5e129dbc913dcb0ca95901c2ec91ace77106f90bad1aab75beac135f2813"
+    },
+    {
+      "id": "local-handle-probe2/server-terminal.json",
+      "sha256": "7f5dcbdced4f6a98c50dbca62543030b698cd54c8ccfe37da3302d71d0302735"
+    },
+    {
+      "id": "local-handle-probe2/server-profile/local-handle.tsv",
+      "sha256": "025f79edec4e80de10a691d812311248f13b9868549de4600384142c17af6ee4"
+    },
+    {
+      "id": "matrix-readback1/server-profile/interaction-matrix.tsv",
+      "sha256": "1ae4080874ac4601983ed120feaef5ff97c019e90cc492edd899f2e21128f370"
     }
   ],
-  "signatureVerified": true,
+  "helperSourceSha256": "35e859ddf8aeb1969d2eb0996c951cb7767e0e088340dc7d353bc6deccf0ed1a",
+  "newPbo": false,
   "productionChanged": false,
-  "performanceMeasured": false,
-  "clientStarted": false,
+  "isolatedMissionPhysicsChanged": true,
   "adopted": false,
-  "reportUrl": "https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/contact-event-calibration-20261109.md",
-  "lastKnownGoodSnapshotAt": "2026-11-09T01:05:50.916110+00:00",
+  "reportUrl": "https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/selective-peer-block-eight-20261109.md",
+  "lastKnownGoodSnapshotAt": "2026-11-09T01:37:32.212694+00:00",
   "lastRefreshFailure": null,
   "staleAfterHours": 48,
   "stale": false
