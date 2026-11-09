@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T01:56:39.182994+00:00",
+  "sourceRunId": "ANIM-selective-peer-block-cost64-screen1-pair",
+  "buildId": "server987-mission-d70bbdc-no-pbo-change",
+  "verificationStatus": "INCONCLUSIVE_CONTROL_MISMATCH_NOT_ADOPTED",
+  "metrics": {
+    "off": {
+      "sourceRunId": "ANIM-selective-peer-block-cost64-1-off",
+      "foregroundGate": true,
+      "populationGate": true,
+      "hostGate": true,
+      "localLifecycleGate": true,
+      "foregroundFrames": 209,
+      "clientScriptDtMedian": 0.259,
+      "populationHistoryAvailable": false,
+      "populationEvidence": "Boundary cached client counts plus continuous server host rows; status file overwrites each second",
+      "foregroundAgeRange": [
+        21.371,
+        74.663
+      ],
+      "foregroundMaxGapSeconds": 0.262999999999991,
+      "wallSeconds": 50.0006978,
+      "gameSeconds": 49.98945,
+      "cpuMs": 37968.75,
+      "cpuMsPerWallSecond": 759.3644023104014,
+      "cpuMsPerGameSecond": 759.5352619402694,
+      "gamePerWallSecond": 0.9997750471394421,
+      "meanMinimumNativeClockPerWallBounds": [
+        0.9739884070177919,
+        1.0149898348018658
+      ],
+      "nativeRequestMismatches": 0,
+      "privateBytesRange": [
+        3665231872,
+        3672608768
+      ],
+      "workingSetBytesRange": [
+        3600109568,
+        3607175168
+      ],
+      "sampledGameCounterRates": {
+        "moved": 107.41665780714759,
+        "contactSolves": 2460.9952206378616,
+        "footRays": 24609.952206378617,
+        "jointSweeps": 9802.271461239307,
+        "plans": 36.33398276594584
+      },
+      "terminalOutcomes": {
+        "INCOMPLETE_MILESTONES": 64
+      },
+      "exactExitCode": null,
+      "limitations": [
+        "Native remove API is void: local accounting is not native table or leak proof.",
+        "Native script clock is not graph progression or displayed animation.",
+        "Counter rates use nearest surrounding full snapshots, not exclusive CPU.",
+        "CPU rates are aggregate process time, not Present frame-time."
+      ]
+    },
+    "on": {
+      "sourceRunId": "ANIM-selective-peer-block-cost64-1-on",
+      "foregroundGate": true,
+      "populationGate": true,
+      "hostGate": true,
+      "localLifecycleGate": true,
+      "foregroundFrames": 2624,
+      "clientScriptDtMedian": 0.02,
+      "populationHistoryAvailable": false,
+      "populationEvidence": "Boundary cached client counts plus continuous server host rows; status file overwrites each second",
+      "foregroundAgeRange": [
+        21.559,
+        74.1378
+      ],
+      "foregroundMaxGapSeconds": 0.0379999999999967,
+      "wallSeconds": 50.0056604,
+      "gameSeconds": 49.96463,
+      "cpuMs": 41984.375,
+      "cpuMsPerWallSecond": 839.59245141776,
+      "cpuMsPerGameSecond": 840.281915426973,
+      "gamePerWallSecond": 0.9991794848888748,
+      "meanMinimumNativeClockPerWallBounds": [
+        0.974891634467845,
+        1.0138892196292242
+      ],
+      "nativeRequestMismatches": 0,
+      "privateBytesRange": [
+        3672150016,
+        3674890240
+      ],
+      "workingSetBytesRange": [
+        3607859200,
+        3610636288
+      ],
+      "sampledGameCounterRates": {
+        "moved": 103.71960756716611,
+        "contactSolves": 2427.2796163458547,
+        "footRays": 24272.796163458548,
+        "jointSweeps": 9645.325865086503,
+        "plans": 34.27187376499991
+      },
+      "terminalOutcomes": {
+        "INCOMPLETE_MILESTONES": 60,
+        "VALID_TERMINAL": 4
+      },
+      "exactExitCode": -1,
+      "limitations": [
+        "Native remove API is void: local accounting is not native table or leak proof.",
+        "Native script clock is not graph progression or displayed animation.",
+        "Counter rates use nearest surrounding full snapshots, not exclusive CPU.",
+        "CPU rates are aggregate process time, not Present frame-time."
+      ]
+    }
+  },
+  "comparison": {
+    "cpuReductionPercent": -10.565158027326671,
+    "gameWorkRateChangePercent": -0.0595696254143685,
+    "screenUsable": false,
+    "clientCadenceComparable": false,
+    "cpuGate": false,
+    "gameWorkRateGate": true,
+    "adopted": false,
+    "independentPairs": 1,
+    "actualPresentMeasured": false,
+    "visibleQualityMeasured": false
+  },
+  "blockers": [
+    "Client MissionGameplay cadence mismatch: OFF dt median259ms, ON20ms; cause unknown",
+    "Actual Present and visible animation quality not measured",
+    "OFF actual exit code not recovered",
+    "Single pair; no causal optimization claim"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/selective-peer-block-cost64-screen-20261109.md",
+      "sha256": "6d6d2e442f7e83fc998aa088c8733ec9f19adefa80a7e41dac1239c36682cf52"
+    },
+    {
+      "path": "reports/operations/selective-peer-block-eight-20261109.md"
+    }
+  ],
+  "productionChanged": false
+}
