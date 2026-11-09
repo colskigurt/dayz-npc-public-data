@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T14:16:42.783Z",
+  "sourceRunId": "MANUAL-single224-review1-20261109-launch2",
+  "buildId": "FA0A07F5163E80CA86EBA328066C0282394B641C89911438D451FF77717529D9",
+  "verificationStatus": {
+    "manualRun": "partial_function_confirmed_with_defects",
+    "goal": "paused",
+    "functionalAccepted": false,
+    "visualAccepted": false,
+    "performanceMeasured": false,
+    "adopted": false
+  },
+  "metrics": {
+    "gameSeconds": 94.5068,
+    "logicalNpcs": 8,
+    "renderHosts": 8,
+    "damageReceivers": 8,
+    "acquiredMovedAgents": 8,
+    "climbCounterTotal": 18,
+    "fallFollowRecoveries": 4,
+    "fallStarts": 4,
+    "longestFallToFollowSeconds": 10.742,
+    "attackStarts": 25,
+    "attackHits": 11,
+    "rawReceivedDamageCallbacks": 17,
+    "receivedDamageAmmo": {
+      "Bullet_380": 17
+    },
+    "receivedDamageZones": {
+      "Torso": 8,
+      "RightArm": 4,
+      "Head": 2,
+      "LeftLeg": 1,
+      "LeftArm": 2
+    },
+    "hitReactionCounter": 6,
+    "deferredReactionExpired": 1,
+    "dead": 8,
+    "deathPoseComplete": 8,
+    "corpseInventoryReady": 7,
+    "corpseInventoryPending": 1,
+    "pendingAfterDeathPoseSeconds": 49.6288,
+    "shutdownNullExceptions": 2,
+    "independentRuns": 1,
+    "presentP95Ms": null,
+    "previousIndependentServerCpuPercentSaved": [
+      26.809198741763232,
+      25.996058703104868
+    ]
+  },
+  "blockers": [
+    "ID5:7LIFT_LIMIT contact diagnostics hit corpse collider; longfall recovery and238contact rejections observed",
+    "ID7:corpse ground/inventory still pending49.6s afterdeath pose complete",
+    "One deferred hitreaction expired duringfall; policy/visual impact needs review",
+    "Manual shutdown OnUpdate reenters stale part references; RetirementObserved NULL exception afterexit request",
+    "No melee damage,visual smoothness,CPU/Present acceptance inthisrun"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/single224-manual-review-20261109.md"
+    },
+    {
+      "previousServerCpu": "reports/operations/single224-cpu-repeat-20261109.md"
+    }
+  ]
+}

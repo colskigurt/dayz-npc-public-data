@@ -1,26 +1,36 @@
-# 클라이언트 CPU·Present 수집의 실패 경계
+# 단일 파트 수동 8개체 시험 결과
 
 ## 1. 작업 목표
-서버CPU감소2쌍 결과에 이어 동일64개체씬의 클라이언트CPU와 실제Present를 기존 통합실행기로 비교할 수 있는지 확인한다. 서버틱을화면프레임으로대체하지않는다.
+사용자가 직접 조작한 단일 파트 후보 8개체의 추적·등반·하강·피격·사망 기록을 확인한다. 정상 낙하 복귀와 미해결 문제를 구분하며 새 구현·재시험은 하지 않는다. 골은 일시정지 상태로 유지한다.
 ## 2. 실제 수행
-기존npc-test-launcher와PresentMon2.6.0을재사용하여4회×30초 설정을검증했다. 처음PowerShell실행경로를잘못지정해실행되지않았고,nullPID영수증을실행성공으로인정하지않았다. 실제바탕화면바로가기경로로고친후새관리자수집기의권한·설정·실제PID를확인했다. UAC버튼자동조작없음. 첫5파트64개체조건을실행했다. 클라이언트전체CPU샘플러와Present수집을서버CPU창에연결했다.
+종료된 시험의 gameplay, combat, 상태 계약, 접촉 실패, 피격 표면, 받은 피해, 사망·전리품, 서버 종료 로그를 교차 분석했다. 8개체 ID 범위와 표 형식을 검증하고 원시 파일 해시를 기록했다. 종료 코드는 retained-process 기록에서 확인했다. 코드·PBO는 수정하지 않았다.
 ## 3. 측정 결과
-관리자준비완료,실제320렌더/64수신체및활성상태확인. 첫PresentMon은종료코드0이나csvCreated=false,CSV없음. stdout에는Started recording/Stopped recording,stderr에는유의한오류문구없음. 따라서Present·CPU Busy·GPU·표시분위수는모두미측정이다.
-클라이언트전체CPU샘플러는초기소유검사에서거절됐다. 실제프로세스StartTime은영수증과맞았고Path조회는null이었다. TotalProcessorTime호출이전이므로CPU읽기API자체가불가능하다고판정하지않는다.
-기존서버CPU독립2쌍감소26.8092%/25.9961%(중앙26.4026%)는이전별도근거로유지한다. 이번실행은유효한클라이언트비교에포함하지않는다.
+실행 약94.51게임초, 논리8·렌더8·수신체8, 독립1회.
+- 추적: 8/8 인식·이동, 개체별 누적76.01~101.24m.
+- 등반: 전원 등반 카운터 증가, 합계18회. 고지대 area 관측8/8이나 이것만으로 전원 고지대 등반 완료를 증명하지 않는다.
+- 낙하: FALL 전환4건 모두 LAND 후 FOLLOW 복귀. 3건은 약1.05~1.07초, ID5는10.742초.
+- 감염자 공격: 시작25회, 적중11회.
+- 받은 총기 피해: 원시 콜백17건, 전부 MakarovIJ70/Bullet_380. 부위 Torso8/RightArm4/Head2/LeftLeg1/LeftArm2. 치명타·중복 콜백이 포함돼 발사수나 독립 명중수로 해석하지 않는다.
+- 피격 반응 카운터6회(4개체), 지연 피격 반응 만료1건(ID5,FALL,42.909초).
+- 사망: 8/8 DEAD 및 DEATH_POSE_COMPLETE 기록.
+- 시체: 7/8 접지·인벤토리 준비 및 lootSeeded. ID7은 WAIT_FOR_SETTLED_CORPSE, 사망 포즈 완료 후49.6288초가 지나도 미완료.
+- 종료:23:10:41 KST 종료 요청 후23:10:47 KST RetirementObserved NULL 예외2건. 서버 exit=-1, 강제 종료 아님, 정상 종료/전체 기능 통과로 판정하지 않는다.
+이번 시험의 CPU/Present/GPU p50·p95·p99는 미측정이며 프레임·시각 품질 수용도 하지 않았다.
 ## 4. 원인 분석
-확인:기존전체CPU샘플러는실제경로의완전일치를필수로하므로경로null에서중단한다. 이실패와PresentCSV부재는별개의단계다. 관리자권한확인과종료코드0만으로실제표시이벤트를확보했다고판정할수없다.
-추정/모름:경로null의권한/보호원인,PresentCSV미생성의이벤트전달/대상필터/도구내부원인은미확인이다. BattlEye차단이나엔진문제로단정하지않는다. 종료코드만보고도구성공으로취급하는가설은이번사례에서기각한다.
+확인된 결함/우선 검토:
+1) ID5 등반의 LIFT_LIMIT 진단7건에 실제 DGNativeCorpseContact가 검출됐다. 이 개체는 총 접촉 거부238회, 경로 실패25회, 낙하 복귀10.742초와 SOURCE_HEIGHT_FIT_LIMIT 이력이 있다. 시체 충돌체가 해당 구간을 방해한 근거이며 모든 거부·지연의 단일 원인이라고 단정하지 않는다.
+2) ID7 사망 포즈는 완료됐지만 접지 완료가 안 되어 전리품 준비가 계속 대기했다. 짧은 종료 시점 오차로 보기 어려운 약49.6초의 미완료가 관측됐다.
+3) 등반/낙하 도중 지연된 피격 반응1건이 만료됐다. 피해 판정과 실제 피격 모션 출력은 별개다.
+4) 수동 미션의 Closing 분기에서 개체 삭제 후 Parts/Bodies 참조를 남기고 RequestExit 후의 다음 OnUpdate가 이를 다시 읽는다. 실제 스택은 OnUpdate152행 RetirementObserved. 같은 종료 코드가 기존5파트 수동 미션에도 있음을 확인했으나 기준 실행의 동일 예외 재현은 미확인이다. 단일 모델 전용 엔진 결함으로 단정하지 않는다.
+미확인: 근접 도끼 피해는 이번 받은 피해 로그에 없다. 피격 표면은 Hit_MeatBones9/UNRESOLVED6 이벤트로, 실제 피·불꽃·음향을 로그만으로 판정할 수 없다. 영상이 없어 애니메이션의 실제 부드러움도 판정하지 않는다.
 ## 5. 검증 수준
-설정·관리자실행진단성공,실제Present/클라이언트CPU측정실패.4회계획중첫조건만실행했고나머지는미실행이다. 기능·시각·성능·최종수용없음. 기존서버CPU기각스크린반복통과의범위를확대하지않는다.
+수동 시험의 부분 기능 확인·결함 진단 성공. 전체 기능 회귀 통과/반복 검증/최종 수용 아님. 피해·사망 상태 기록과 실제 화면 품질을 분리한다. 64개체 검증을 대신하지 않는다.
 ## 6. 변경 사항
-게임코드/PBO수정없음. 기존서명검증된후보그대로사용. 기존통합실행기코드수정없음. 설정포인터만새시험으로선택했고이전포인터원문/해시를보존했다. 새바탕화면실행기없음.
-격리client-cpu-reader1은원본CPU샘플러를보존한후소유영수증해시/PID/생성시각/프로세스명/CIM시각/Steam요청/디스크바이너리해시를교차검증하도록준비했다. 조회가능한경로·프로필모순은거절한다. 실제프로세스경로가없으면확인불가로기록하며완전실행경로증명을주장하지않는다. CPU·QPC계산은기존방식. PowerShell구문검사만통과했고실행미검증이다. 보안설정변경·후킹·네이티브메모리쓰기없음.
+분석 스크립트와 JSON/보고서만 생성했다. 게임 코드·PBO·운영 빌드 변경 없음. 사용한 단일 모델/격리 어댑터는 기존 서명 검증된 해시 고정 입력이다. 새 모드 빌드·서명·재실행 없음. 첫 파생 요약의 이벤트 phase 열 위치를 고친 manual-findings2.json을 사용하며 이전 파생본과 원시 기록은 보존했다.
 ## 7. 원시 증거
-ANIM-single224-client-present1-cost64-screen1-five.
-client-present1/admin-ready.json,admin-process-launched2.json,admin-launch-path-correction.json,admin-error-20261109-165042-597.json,configuration-selection.json,experiment-contract.json.
-capture-0/consumed.json,tool-started.json,closed.json,stdout.log,stderr.log.
-cost64-screen1/five/client-present-terminal.json,server-terminal.json,client-closed.json및원시CPU/상태로그.
-client-cpu-reader1/contract.json,sample-owned-client-cpu.ps1. 첫잘못된실행의nullPID자료도보존한다.
+실행 ID MANUAL-single224-review1-20261109-launch2.
+manual-single224-review1/manual-analysis1.json,manual-findings2.json,analyze-manual1.py,summarize-findings2.py.
+case2/runtime-once/server-profile의 gameplay-eight.tsv,combat-eight.tsv,native-state-contract.tsv,native-contact-failures.tsv,native-combat-events.tsv,native-received-damage.tsv,native-hit-surfaces.tsv,script 및 crash 로그.
+서버 종료 기록 server-20261109T1410499425314Z.json.
 ## 8. 잔여 문제
-다음은격리된소유클라이언트CPU읽기후보의실행가능성을확인하는최소시험이다. 실제프로세스경로미확인이라는신원증명한계를별도표시한다. Present는원시이벤트확보경로를확인하기전동일4회시험을반복하지않는다. 이번수집기·PresentMon·소유서버/클라이언트는종료됐다. 실패설정은재실행시기록보존가드로거절되므로다음시험은새실행ID가필요하다. 전투ON기능차이와64전체회귀/시각품질은별도미수용상태로유지한다. 20ms목표달성주장없음.
+우선순위는 종료 재진입 방지, ID7 시체 접지/전리품 대기, 시체 충돌체와 ID5 등반 거부 관계, 지연 피격 반응 정책이다. 실제 수정은 이번 요청 범위 밖이므로 하지 않았다. 기존 기준 빌드 재현 여부와 후보 전용 차이를 먼저 구분해야 한다. 이 수동 시험을 이유로 주력 CPU 최적화를 기능 개발 전체로 전환하지 않는다. 기존 서버CPU 감소2쌍 결과는 별도 근거이며 이번 사망이 많은 수동 시험의 비용으로 대체하지 않는다. 골은 계속 일시정지다.
