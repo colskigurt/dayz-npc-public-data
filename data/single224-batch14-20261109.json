@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T06:35:45.729080+00:00",
+  "sourceRunId": "ANIM-single224-batch14-network1",
+  "buildId": "B772BD6CCD7871C399B866E2D6CF408EE9982F744BF69278418A4627F83BE4CA",
+  "verificationStatus": "ALL14_REQUESTS_AND_ANCHOR_POSE_GATE_PASS_FULL_VISUAL_COVERAGE_INCOMPLETE",
+  "metrics": {
+    "observedRequests": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "phaseCount": 24,
+    "steadyRequestRows": 6984,
+    "steadyRequestMismatches": 0,
+    "serverRows": 7332,
+    "serverCompleteGroups": 1222,
+    "serverAnchorBones": 8,
+    "clientRows": 7020,
+    "clientCompleteGroups": 1170,
+    "clientAnchorBones": 3,
+    "clientActiveRows": 7020,
+    "maximumSerializedAnchorMSErrorMeters": 0,
+    "maximumReferenceSeparationMeters": 0,
+    "epochsRetired": 2,
+    "hostsDetachedPerEpoch": 6,
+    "independentRuns": 1,
+    "fullVisualAcceptance": false,
+    "largeVideoCreated": false,
+    "signatureVerified": true,
+    "cpuImprovement": null,
+    "presentP95": null
+  },
+  "blockers": [
+    "Not all14phases visually observed; no complete video",
+    "Anchor samples do not certify all224bone matrices or temporal smoothness",
+    "No actual combat/mobility or8-to64 CPU/Present comparison"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/single224-batch14-20261109.md"
+    }
+  ],
+  "adopted": false,
+  "next": "Reuse existing bounded window-only silent recorder for complete14phase visual evidence with explicit small-file limit and exact config restoration"
+}
