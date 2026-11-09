@@ -1,12 +1,12 @@
 # DayZ NPC Observatory — 현재 상태
 
-2026-11-09: **사용자 승인1mm 허용 후보의 비용 선별 실패, 채택하지 않음.** 발 지지 광선 하단 축소 후보는2610조건에서 최대 lift차이0.305mm·수용판정 변화0으로 새 수치 기준을 통과했다. 그러나 한 프로세스6쌍의 상대 method 시간 중앙 개선4.720%, 한 쌍24.088% 악화로 사전 비용 gate(중앙5% 이상·모든 쌍 개선)를 통과하지 못했다. 전체CPU 개선률은 미측정이다.
+2026-11-09: **애니메이션 입력70개와 선정 네이티브 샘플링 경로 조사 완료. 자산 수정 없음.** 선정 함수에는 상수 직접읽기·인덱스 기반·이진 검색 경로가 있다. 현재14클립×5파트 원입력의 명시 키614,085개 중 반복 상수 키9,359개(약1.524%)를 확인했지만, Workbench가 이미 축약했는지와 해당 함수가 이 자산을 실제 처리하는지는 미확인이다. 키를 줄이면 빨라진다는 결론을 내리지 않는다.
 
-- [최신 시험 보고서](reports/operations/foot-range-tolerance1-method-20261109.md)
-- [구조화 결과](data/foot-range-tolerance1-method-20261109.json)
-- [이전 구조적 후보와 제약](reports/operations/structural-candidate-boundary-review-20261109.md)
-- [모든 기존 보고서](reports/operations/)
+- [최신 조사·확인/추정/미확인 경계](reports/operations/animation-sampling-boundary-review-20261109.md)
+- [구조화 상태](data/animation-sampling-boundary-review-20261109.json)
+- [1mm 허용 후보의 비용 선별 실패](reports/operations/foot-range-tolerance1-method-20261109.md)
+- [기존 보고서](reports/operations/)
 
-원래 엄격 기준 실패45건 기록을 보존했다. NPC0·클라이언트0·새PBO0,8/64 확대하지 않았다. 기능·실제 화면·Present는 미검증이며20ms p95 목표는 미달성이다.1mm 허용을 다른 판정 기준의 일괄 완화로 해석하지 않는다.
+다음은 기존 관측에 실제 채널count/flag가 있는지 확인하고, 없을 때만 단일 개체 짧은 관측의 필요성을 제시한다. 전체 재컴파일·새 보간/틱·물리 검사 삭제 없음.64체 비용 및20ms p95는 미해결이다.
 
-외부 검토 주의: 단위 method 선별의6쌍은 독립 게임 실행6회가 아니다.1mm 표본 통과와 기능 수용은 다르며, 후보 시간값을RayCast의exclusive self-time으로 해석하지 않는다.
+주의: 이진 검색 함수 연결이 애니메이션 소비자 확정을 뜻하지 않는다. 소스 키 수/compiled파일 크기를 실행 비용으로 환산하지 않는다. 새독립실행0.

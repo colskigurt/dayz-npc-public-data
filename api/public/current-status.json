@@ -1,109 +1,40 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T03:04:27.520427+00:00",
-  "sourceRunId": "ANIM-foot-range-tolerance1-method1",
-  "buildId": "4bbf370b1d479e0556e916d21213bafba383cbdd3a12c6e2518cd49c1ca64e70",
-  "verificationStatus": "METHOD_COST_GATE_FAILED_NOT_ADOPTED",
+  "generatedAt": "2026-11-09T03:17:05.257Z",
+  "sourceRunId": "ANIM-animation-key-inventory-readonly1",
+  "buildId": "existing-server987-existing70ANM-no-change",
+  "verificationStatus": "SOURCE_AND_STATIC_DIAGNOSIS_RUNTIME_ASSET_MAPPING_UNVERIFIED",
   "metrics": {
-    "cases": 2610,
-    "tolerance1mmMismatchCount": 0,
-    "maximumLiftDifferenceM": 0.000305176,
-    "acceptanceChangesAt025": 0,
-    "timingBatches": 12,
-    "independentProcesses": 1,
-    "adjacentComparisonPairs": 6,
-    "pairs": [
-      {
-        "offBatch": 0,
-        "onBatch": 1,
-        "offRawUnits": 20.7026,
-        "onRawUnits": 18.6586,
-        "reductionPercent": 9.87315602871137
-      },
-      {
-        "offBatch": 3,
-        "onBatch": 2,
-        "offRawUnits": 19.4888,
-        "onRawUnits": 19.2373,
-        "reductionPercent": 1.2904847912647233
-      },
-      {
-        "offBatch": 4,
-        "onBatch": 5,
-        "offRawUnits": 19.9659,
-        "onRawUnits": 18.2871,
-        "reductionPercent": 8.408336213243594
-      },
-      {
-        "offBatch": 7,
-        "onBatch": 6,
-        "offRawUnits": 19.2113,
-        "onRawUnits": 18.3599,
-        "reductionPercent": 4.431766720627972
-      },
-      {
-        "offBatch": 8,
-        "onBatch": 9,
-        "offRawUnits": 19.2482,
-        "onRawUnits": 23.8848,
-        "reductionPercent": -24.088486196111838
-      },
-      {
-        "offBatch": 11,
-        "onBatch": 10,
-        "offRawUnits": 19.3856,
-        "onRawUnits": 18.4146,
-        "reductionPercent": 5.0088725652030375
-      }
-    ],
-    "medianMethodReductionPercent": 4.720319642915505,
-    "everyPairFaster": false,
-    "methodGatePassed": false,
-    "fullCpuImprovement": null,
-    "presentP95": null,
-    "npcCount": 0,
-    "newPbo": false,
-    "strict1eMinus5MismatchCount": 45
+    "inputAssets": 70,
+    "parts": 5,
+    "clips": 14,
+    "explicitChannelKeys": 614085,
+    "channels": 11018,
+    "constantChannelsWithRepeatedKeys": 192,
+    "explicitRepeatedConstantKeys": 9359,
+    "anmBytes": 1891450,
+    "validatedNewDirectCallSites": 4,
+    "newGameRuns": 0,
+    "newCpuSamples": 0,
+    "cpuImprovement": null,
+    "presentP95": null
   },
   "blockers": [
-    "Relative method timing does not meet predeclared every-pair-faster and median5% gate"
+    "Hot native sampler not mapped to specific current animation asset or live receiver",
+    "Compiled channel counts/flags and Workbench constant folding remain unverified",
+    "Key reduction may alter execution path; no performance or pose preservation result"
   ],
   "evidenceReferences": [
     {
-      "name": "plan.json",
-      "sha256": "229c9f66ea9bf9c59a66c8168e33582821bb37fd5114ae386f91712c271ff109"
-    },
-    {
-      "name": "trial-contract.json",
-      "sha256": "b8f0b3e09466ba02576dba163ba80e23dce2871e7ba18f414e03b9968034814b"
-    },
-    {
-      "name": "source-proof.json",
-      "sha256": "487f6133d14f56acc322e401cafec807e9e8026bdf87a673d20c4d57dc72840d"
-    },
-    {
-      "name": "range-equivalence.tsv",
-      "sha256": "8d5a3b6002a6cd17abe4d279a203329c8220a60b2a4a0e28b9943644a15009c1"
-    },
-    {
-      "name": "range-cost.tsv",
-      "sha256": "215653fc7263bb707a4fe6b6c61648b0a220285fbe988ef62d7ef67064faa989"
-    },
-    {
-      "name": "server-terminal.json",
-      "sha256": "4975184d5456d931258ed84e11957c198b09af300744696f91fde4285812425c"
+      "path": "reports/operations/animation-sampling-boundary-review-20261109.md"
     },
     {
       "path": "reports/operations/foot-range-tolerance1-method-20261109.md"
+    },
+    {
+      "path": "reports/operations/native-owner-boundaries-review-20261108.md"
     }
   ],
-  "limitations": [
-    "One process contains6 comparison pairs; not6 independent gameplay runs",
-    "Profiler inclusive method elapsed units are relative measurements; not exclusive RayCast self-time or whole-server CPU",
-    "NPC0; not full contact solver, animated history,8/64 regression or actual display",
-    "Diagnostic4bb binary, not retail server987; adoption would require target-engine validation",
-    "Exit request0 observed actual-1; shutdown BunkerBroadcastManager warning retained"
-  ],
-  "decision": "No8/64 expansion under predeclared gate; preserve authorized1mm result separately from original strict rejection",
+  "adopted": false,
   "productionChanged": false
 }

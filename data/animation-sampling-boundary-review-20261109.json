@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T03:17:05.257Z",
+  "sourceRunId": "ANIM-animation-key-inventory-readonly1",
+  "buildId": "existing-server987-existing70ANM-no-change",
+  "verificationStatus": "SOURCE_AND_STATIC_DIAGNOSIS_RUNTIME_ASSET_MAPPING_UNVERIFIED",
+  "metrics": {
+    "inputAssets": 70,
+    "parts": 5,
+    "clips": 14,
+    "explicitChannelKeys": 614085,
+    "channels": 11018,
+    "constantChannelsWithRepeatedKeys": 192,
+    "explicitRepeatedConstantKeys": 9359,
+    "anmBytes": 1891450,
+    "validatedNewDirectCallSites": 4,
+    "newGameRuns": 0,
+    "newCpuSamples": 0,
+    "cpuImprovement": null,
+    "presentP95": null
+  },
+  "blockers": [
+    "Hot native sampler not mapped to specific current animation asset or live receiver",
+    "Compiled channel counts/flags and Workbench constant folding remain unverified",
+    "Key reduction may alter execution path; no performance or pose preservation result"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/animation-sampling-boundary-review-20261109.md"
+    },
+    {
+      "path": "reports/operations/foot-range-tolerance1-method-20261109.md"
+    },
+    {
+      "path": "reports/operations/native-owner-boundaries-review-20261108.md"
+    }
+  ],
+  "adopted": false,
+  "productionChanged": false
+}
