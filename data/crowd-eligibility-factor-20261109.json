@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T04:06:50.219792+00:00",
+  "sourceRunId": "ANIM-crowd-eligibility-factor1",
+  "buildId": "mission-only-eligibility1-server987",
+  "verificationStatus": "SYNTHETIC_EQUIVALENCE_PASS_LOCAL_COST_GATE_FAILED",
+  "metrics": {
+    "syntheticFrames": 512,
+    "mismatches": 0,
+    "layouts": [
+      {
+        "layout": "dense",
+        "relativeRawTickChangePct": [
+          -20.33319237230359,
+          -20.572308384052874,
+          -20.775096180283338
+        ],
+        "medianChangePct": -20.572308384052874,
+        "allPairsFaster": true,
+        "pairs": 3,
+        "iterationsPerBlock": 1000,
+        "pairCandidatesPerUpdate": 2016
+      },
+      {
+        "layout": "sparse",
+        "relativeRawTickChangePct": [
+          9.539535961402134,
+          4.262765314834449,
+          5.596615128579296
+        ],
+        "medianChangePct": 5.596615128579296,
+        "allPairsFaster": false,
+        "pairs": 3,
+        "iterationsPerBlock": 1000,
+        "pairCandidatesPerUpdate": 0
+      }
+    ],
+    "independentProcessRuns": 1,
+    "nativeEntities": 0,
+    "wholeCpu": null,
+    "presentP50": null,
+    "presentP95": null,
+    "presentP99": null
+  },
+  "adopted": false,
+  "expanded8or64": false,
+  "timingUnit": "Raw TickCount delta; no verified conversion to milliseconds",
+  "blockers": [
+    "Sparse layout slower in all three pairs; predeclared gate failed",
+    "Synthetic run does not measure full NPC CPU or physics",
+    "No runtime player/contact/reentrancy validation"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/crowd-eligibility-factor-20261109.md",
+      "runId": "ANIM-crowd-eligibility-factor1",
+      "localCheckpointSha256": "2e3a601f2fa452dfda37eb962de08ca0f4bd24129663294b3a742bd1d9ea3865"
+    }
+  ]
+}
