@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T05:05:46.234796+00:00",
+  "sourceRunId": "ANIM-cardinality-factory-crash-review1",
+  "buildId": "306933CC51FDA3853D0AD480340A082CF4B22302BA4E5AB0AB162683445C5453",
+  "verificationStatus": "PAIR_UNMEASURED_LEGACY_CONTROL_FACTORY_CRASH_CURRENT_REFERENCE_FACTORY_PASS",
+  "metrics": {
+    "compileOnlyEntities": 0,
+    "validPairPoseSamples": 0,
+    "visualComparisonFrames": 0,
+    "legacyFactoryCrashes": 2,
+    "sameFaultRva": true,
+    "candidateAbsentReproduction": true,
+    "currentFullNativeReferenceFactoryPassed": true,
+    "currentReferenceRetiredDetached": true,
+    "newObserverSignatureVerified": true,
+    "cpuImprovement": null,
+    "presentP95": null
+  },
+  "blockers": [
+    "Legacy48weighted baseline factory crashes before pair readiness",
+    "Cardinality candidate runtime hypothesis remains untested",
+    "Cause difference between legacy and current reference not fully isolated"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/cardinality-factory-crash-20261109.md"
+    },
+    {
+      "faultRva": "0xaa9859",
+      "sameServerSha256": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805"
+    }
+  ],
+  "adopted": false,
+  "next": "Use proven current64weighted/fullnative reference for a new64-to248 static input contract; do not restore legacy factory",
+  "late33msChoice": {
+    "isolatedTrialPermitted": true,
+    "proposalRemainsWithdrawn": true,
+    "broaderDelayPermissionInferred": false
+  }
+}

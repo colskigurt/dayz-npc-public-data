@@ -1,11 +1,11 @@
 # DayZ NPC Observatory — 현재 상태
 
-2026-11-09: **골격 크기만 분리하는 입력의 정적 관문 통과.** 정상48가중본모델의전체LOD바이트를유지하고P3D평면골격목록만48→248본으로확장했다. 실제ODOL에서도248본,가중48본/하위표48,모든LOD속성·수치가중치·bounding center동일을확인했다. 새격리PBO는서명/검증성공.
+2026-11-09: **골격진단의옛기준factory실패를분리했다.** 48→248쌍시도는기준class생성중서버접근위반으로유효포즈/화면표본0. 후보·관측PBO를빼도같은RVA0xaa9859에서재현됐다. 현재64본모델/fullnative참조class는기존PBO만으로생성·명령바인딩·detached퇴역에성공했다.
 
-- [최신 상세 보고서](reports/operations/cardinality-input-gate-20261109.md)
-- [구조화 결과](data/cardinality-input-gate-20261109.json)
-- [구간별본매핑 대조](reports/operations/odol-palette-mapping-20261109.md)
-- [255행렬 셰이더선언](reports/operations/skin-shader-capacity-20261109.md)
+- [최신 상세 보고서](reports/operations/cardinality-factory-crash-20261109.md)
+- [구조화 결과](data/cardinality-factory-crash-20261109.json)
+- [직전 정적입력 관문](reports/operations/cardinality-input-gate-20261109.md)
+- [본매핑 해독경계](reports/operations/odol-palette-mapping-20261109.md)
 - [기존 보고서](reports/operations/)
 
-아직runtime/공통CPUpose/화면/성능미실행이다. 전체몸체1host지원·성능개선확정아님. 원본PBO·모델·애니메이션·물리검사유지. 다음은같은fullinstance를쓰는고정1쌍runtime진단이며8→64로자동확대하지않는다.20ms p95목표미해결.
+후보표시/성능실패로판정하지않는다. 정확한옛factory원인은미확정이며그복구로범위를확대하지않는다. 다음은작동한현재64본참조기반입력정정. 관측PBO서명검증성공,원본불변,모든소유프로세스종료.8/64·시각·성능·20ms목표미해결.
