@@ -1,7 +1,7 @@
 # DayZ NPC 연구 — 현재 상태
 
-단일224본 모델을 연결하는 격리 어댑터의 서명·World 컴파일을 완료했습니다. 실제8/64개체 기능·CPU 절감은 미검증입니다.
+5파트 기준과 단일224본 후보가 같은8개체 이동 회귀를 각각8/8 통과했습니다(조건당1회). 정상 낙하·착지·추적 재개·재등반을 보존했습니다. 전투·64개체·CPU 절감은 미검증입니다.
 
-[최신 보고서](reports/operations-latest.md) · [상태 JSON](api/public/status.json)
+[최신 상세 보고서](reports/operations-latest.md) · [공개 상태 JSON](api/public/status.json)
 
-기존 원시 증거와 실패 보고서는 보존합니다.
+과거 실패와 원시 증거는 보존합니다.

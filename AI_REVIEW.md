@@ -1,25 +1,30 @@
 # DayZ NPC 연구 — 현재 상태
 
-단일224본 모델을 연결하는 격리 어댑터의 서명·World 컴파일을 완료했습니다. 실제8/64개체 기능·CPU 절감은 미검증입니다.
+5파트 기준과 단일224본 후보가 같은8개체 이동 회귀를 각각8/8 통과했습니다(조건당1회). 정상 낙하·착지·추적 재개·재등반을 보존했습니다. 전투·64개체·CPU 절감은 미검증입니다.
 
-[최신 보고서](reports/operations-latest.md) · [상태 JSON](api/public/status.json)
+[최신 상세 보고서](reports/operations-latest.md) · [공개 상태 JSON](api/public/status.json)
 
-기존 원시 증거와 실패 보고서는 보존합니다.
+과거 실패와 원시 증거는 보존합니다.
 
 ## 1. 작업 목표
-단일224가중본 모델을 기존5파트 실제 게임플레이 경로에 연결하는 최소 격리 후보를 준비한다. 물리·지지·피격·낙하 로직 삭제 없이 호스트 비용을 줄일 가능성을 확인한다.
+단일224가중본 호스트 후보가 기존5파트의8개체 이동·등반·하강·낙하 복귀·재등반 계약을 유지하는지 동일 씬에서 비교한다.
 ## 2. 실제 수행
-기준 생성 어댑터에서 opt-in 플래그, 최초 파트 수5→1, 모델 클래스 선택만 변경했다. 역변환 정규화로 기준 소스 동일성을 확인했다. 운영 빌드 변경 없음. 기존8개체 저→고→하강→재등반 씬을 양 조건으로 준비했다. 신규 패키지 CfgConvert/빌드/서명 검증 후 0개체 서버에서 World Enforce 컴파일했다.
+기존 low-high-descent-reclimb 씬과 Steam 실행 경로를 재사용했다. 양 조건에 동일 모드 집합을 로드하고 opt-in 플래그로5파트/1파트를 선택했다. 양쪽 스크립트의 실제 READY 기록과 per-ID 원시 상태·milestone·terminal을 확인했다. 기존 해시 고정 판정기의 단일파트 입력 허용만 확장했으며 상태 판정 로직은 변경하지 않았다.
 ## 3. 측정 결과
-컴파일2에서 NF_SINGLE224_COMPILE_DONE entities=0 확인, 이후 서버 RequestExit(-1 반환), 강제 종료 없음. 렌더 호스트5→1, 네이티브 노드401→250은 정적 구성값이며 비용 측정값이 아니다. 내부 충돌 차단 핸들 예상15→1은 루프 구조 계산이며 실제 생성 개수 미확인. 8/64 실행·CPU·Present p50/p95/p99 미측정.
+조건당1회. 기준: 논리8,렌더40, 유효종결8/8,전체milestone8/8,낙하시작9,착지·FOLLOW복귀9,활동77.7182게임초.
+후보: 논리8,렌더8, 유효종결8/8,전체milestone8/8,낙하시작9,착지·FOLLOW복귀9,활동64.5578게임초.
+양 조건 상태연결/복구세대/종결정렬 오류0. 실제 내부 sibling 차단 핸들 개체당10→0(combat=false). 서버 강제종료 없음,정상 detach=true,소유 클라이언트 정상 종료. CPU 및Present p50/p95/p99는 미측정.
 ## 4. 원인 분석
-호스트/중복 포즈 평가/내부 차단 핸들 감소는 비용 절감 가설이다. 단일 형상의 broadphase·충돌·피격 수신체·불투명 본 핸들 호환성은 미확인이다. 기존4파트 시도와 달리 현재 후보는224가중본 단일 섹션의14클립 대표 표시 진단을 거쳤다. 순수 생성부 외 물리 솔버 최적화는 포함하지 않는다.
+관찰: 단일 호스트에서도 필수 본 조회 및 실제 이동·지지·접촉 경로를 거쳐 모든 이동단계를 완료했다. 정상 낙하를 제거하지 않았다.
+가설: 호스트/내부 차단핸들 축소가 전체CPU를 줄일 수 있다.
+미확인: CPU절감,64밀집 안정성,피격·사망 수신체. 완료 시간 차이는1회 궤적/접촉·상태 진행 차이이며 성능 개선률로 환산하지 않는다. 기준에서도 접촉지지 상실 후 복구가 관찰됐으므로 이를 후보만의 결함으로 보지 않는다.
 ## 5. 검증 수준
-패키징·서명 검증 및 World 스크립트 컴파일 성공. 0개체이므로8개체 기능 회귀 통과가 아니다. 시각/성능/최종 채택은 미수용.
+8개체 자동 이동 기능 회귀 통과(조건당1회). 반복 검증 완료·최종 수용 아님. 전투 기능/64개체/실제 시각적 부드러움/성능은 미수용. 고정 시점 화면에서 NPC 전체 동작의 시각 품질을 확인한 시험은 아니다.
 ## 6. 변경 사항
-격리 nf_single224_gameplay 어댑터 PBO SHA256 FA0A07F5163E80CA86EBA328066C0282394B641C89911438D451FF77717529D9. 서명·검증 성공, 개인키 미포함. 지지·이동·접촉·전투·retirement 코드 역정규화 동일. 기본 플래그 및 기존 배포본 보존.
+운영 소스·기존 PBO 변경 없음. 격리 어댑터 FA0A07F5163E80CA86EBA328066C0282394B641C89911438D451FF77717529D9, 단일모델 B1061583930133675C37B73ED08502B0E5D442A6BE724C2F4BB997C6C37399F0 사용. 양쪽 동일 바이너리987fbc47 서버 코호트. 서명·검증 성공,개인키 미포함. 5파트401노드 대비 단일250노드는 구성값이며 실측 절감 아님.
 ## 7. 원시 증거
-실행 ID ANIM-single224-gameplay-compile2. gameplay1/adapter-contract.json, adapter.patch, build.json, signature.log, eight1/staged-plan.json, compile2/plan.json, server-terminal.json, server-profile/script 로그.
-첫 compile1은 임시 미션 OnUpdate 인자명 dt 오류로 미션 컴파일 실패했고0개체 소유 서버를 강제 종료했다. compile-failure-teardown.json이 권위 기록이며 래퍼 forced=false를 강제 종료 없음의 근거로 쓰면 안 된다. compile2는 timeslice 인자로 고쳤고 실패 자료는 보존했다.
+ANIM-single224-eight1-control / ANIM-single224-eight1-candidate.
+gameplay1/eight1 각 조건 analysis1.json,metadata.json,runtime-once/plan.json,server-launch.json,server-terminal.json,client-retail-launch.json,client-closed.json 및 server-profile의 gameplay-eight.tsv,milestones.tsv,terminal-state.tsv,state-contract.tsv,script 로그. analyzer-adaptation.json에 판정기 해시와 최소 변경 기록.
+서버 RequestExit 후 반환코드는 양쪽 -1이며 완료/분리 로그와 retained-process 종료기록을 함께 판단했다.
 ## 8. 잔여 문제
-다음은 준비된8개체 양 조건의 실제 생성·본 조회·접촉·낙하·착지·FOLLOW·재등반 확인이다. 기존 씬은 CombatEnabled=false여서 공격·피격·사망 보존은 이 씬만으로 증명할 수 없고 후속 전투 씬이 필요하다. 기능 실패가 후보 전용인지 기준에서도 재현되는지 구분한다. 이를 통과한 뒤 동일 조건 반복64 CPU/Present를 비교한다. 현재20ms 목표 달성이나 절감률을 주장하지 않는다.
+8개체 전투 ON에서 피해 수신체 생성·공격·피격·사망·retirement를 별도로 확인해야 한다. 이후64실제 운영 부하의 반복 통제 비교에서 CPU/Present와 game/native clock,접촉 호출·낙하 회복·생존구간을 함께 판정한다. 지금 단계는8이동 기능 진입 게이트를 통과한 것이며20ms 목표나 호드 전체 최적화를 달성한 것이 아니다.

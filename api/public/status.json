@@ -1,45 +1,70 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T06:57:23.987Z",
-  "sourceRunId": "ANIM-single224-gameplay-compile2",
+  "generatedAt": "2026-11-09T07:07:25.589Z",
+  "sourceRunId": "ANIM-single224-eight1-control+candidate",
   "buildId": "FA0A07F5163E80CA86EBA328066C0282394B641C89911438D451FF77717529D9",
   "verificationStatus": {
-    "packageSignedVerified": true,
-    "enforceWorldCompile": true,
-    "spawnedEntities": 0,
-    "functional8and64": "not_run",
+    "mobility8": "regression_pass_one_run_each",
+    "combat8": "not_run",
+    "functional64": "not_run",
+    "visualQuality": "not_accepted",
     "performance": "not_measured",
     "adopted": false
   },
   "metrics": {
-    "renderHostsPerNpc": [
-      5,
-      1
+    "conditions": [
+      "five_part",
+      "single224"
     ],
-    "nativeNodesPerNpc": [
-      401,
-      250
+    "logicalCount": 8,
+    "renderHosts": [
+      40,
+      8
     ],
-    "expectedInternalBlocks": [
-      15,
-      1
+    "validTerminalAgents": [
+      8,
+      8
     ],
+    "allMilestoneAgents": [
+      8,
+      8
+    ],
+    "fallStarts": [
+      9,
+      9
+    ],
+    "landFollowCycles": [
+      9,
+      9
+    ],
+    "activeGameSeconds": [
+      77.7182,
+      64.5578
+    ],
+    "stateChainErrors": [
+      0,
+      0
+    ],
+    "siblingBlocksPerNpcCombatOff": [
+      10,
+      0
+    ],
+    "independentRunsPerCondition": 1,
     "frameTimeP50Ms": null,
     "frameTimeP95Ms": null,
-    "frameTimeP99Ms": null,
-    "repetitions": 0
+    "frameTimeP99Ms": null
   },
   "blockers": [
-    "8body runtime contracts unverified",
-    "Existing movement scene has combat disabled; separate damage/death validation required",
-    "Whole CPU/Present comparison pending"
+    "Combat receiver and hit/death integration unverified",
+    "64repeat CPU/Present and functional comparison pending",
+    "Completion-time difference is not CPU improvement evidence"
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/single224-gameplay-stage-20261109.md"
+      "report": "reports/operations/single224-eight-mobility-20261109.md"
     },
     {
-      "priorVisualReport": "reports/operations/single224-batch14-video-20261109.md"
+      "prior": "reports/operations/single224-batch14-video-20261109.md"
     }
   ]
 }
