@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T05:48:33.538326+00:00",
+  "sourceRunId": "ANIM-weighted124-network2",
+  "buildId": "BD738254810B963780212905DA01B5D04F2AAAA3810D1AFD6F62168CBC6CAE01",
+  "verificationStatus": "124BONE_PAIRED_CPU_POSE_PASS_LIMITED_VISUAL_OBSERVATION_GAMEPLAY_PERFORMANCE_UNMEASURED",
+  "metrics": {
+    "weightedBones": 124,
+    "serverAlignedRows": 9300,
+    "clientRows": 8308,
+    "clientActiveRows": 8308,
+    "clientSampleGroups": 67,
+    "maximumMSErrorMeters": 0,
+    "nativeProgressSeconds": [
+      8.2498,
+      8.2498
+    ],
+    "referenceGroupSeparationMeters": 0,
+    "firstRunReferenceSeparationMeters": 0.7019987166833106,
+    "normalDetachedRetirement": true,
+    "signatureVerified": true,
+    "validCompositeConditions": 1,
+    "independentIdenticalConditionRepetitions": 1,
+    "visualEvidence": "Two CUA snapshots; corresponding partial mesh poses with no obvious additional deformation",
+    "cpuImprovement": null,
+    "presentP95": null
+  },
+  "blockers": [
+    "Diagnostic non-solid setup is not gameplay validation",
+    "Full224weighted-body and14clips untested",
+    "No pixel-level/temporal visual acceptance or CPU/Present comparison"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/weighted124-pair-20261109.md"
+    }
+  ],
+  "adopted": false,
+  "next": "Static full-five-part merged input contract, including sub-skeleton256 boundary and historical fullbody differences"
+}
