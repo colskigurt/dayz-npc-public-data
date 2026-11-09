@@ -1,41 +1,44 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T05:05:46.234796+00:00",
-  "sourceRunId": "ANIM-cardinality-factory-crash-review1",
-  "buildId": "306933CC51FDA3853D0AD480340A082CF4B22302BA4E5AB0AB162683445C5453",
-  "verificationStatus": "PAIR_UNMEASURED_LEGACY_CONTROL_FACTORY_CRASH_CURRENT_REFERENCE_FACTORY_PASS",
+  "generatedAt": "2026-11-09T05:13:56.975734+00:00",
+  "sourceRunId": "ANIM-cardinality64-candidate-factory1",
+  "buildId": "CD5876B83C423AB8B9E64223A26016853E478C5601CCCCFADCA1ECBCE6DBDBA5",
+  "verificationStatus": "STATIC_CONTRACT_AND_SINGLE_FACTORY_PASS_VISUAL_PERFORMANCE_UNMEASURED",
   "metrics": {
-    "compileOnlyEntities": 0,
+    "skeletonCounts": [
+      64,
+      248
+    ],
+    "weightedBoneCounts": [
+      64,
+      64
+    ],
+    "visualSubSkeletonEntries": [
+      101,
+      101
+    ],
+    "allLodsEquivalent": true,
+    "factoryReturned": true,
+    "nativeCommandBound": true,
+    "retiredDetached": true,
+    "signatureVerified": true,
     "validPairPoseSamples": 0,
     "visualComparisonFrames": 0,
-    "legacyFactoryCrashes": 2,
-    "sameFaultRva": true,
-    "candidateAbsentReproduction": true,
-    "currentFullNativeReferenceFactoryPassed": true,
-    "currentReferenceRetiredDetached": true,
-    "newObserverSignatureVerified": true,
     "cpuImprovement": null,
-    "presentP95": null
+    "presentP95": null,
+    "repetitions": 1
   },
   "blockers": [
-    "Legacy48weighted baseline factory crashes before pair readiness",
-    "Cardinality candidate runtime hypothesis remains untested",
-    "Cause difference between legacy and current reference not fully isolated"
+    "Client skinning/visible result not yet tested",
+    "Only64 weighted bones; full weighted integration not proven",
+    "No8/64 functional or repeated performance result"
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/cardinality-factory-crash-20261109.md"
-    },
-    {
-      "faultRva": "0xaa9859",
-      "sameServerSha256": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805"
+      "report": "reports/operations/cardinality64-factory-20261109.md",
+      "pboSha256": "CD5876B83C423AB8B9E64223A26016853E478C5601CCCCFADCA1ECBCE6DBDBA5"
     }
   ],
   "adopted": false,
-  "next": "Use proven current64weighted/fullnative reference for a new64-to248 static input contract; do not restore legacy factory",
-  "late33msChoice": {
-    "isolatedTrialPermitted": true,
-    "proposalRemainsWithdrawn": true,
-    "broaderDelayPermissionInferred": false
-  }
+  "next": "Fixed network reference/candidate pair CPU pose and visible comparison"
 }

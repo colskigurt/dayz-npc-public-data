@@ -1,38 +1,27 @@
-# 골격 진단 기준 factory 실패 분리 — 현재 참조 생성 경로 확보
+# 64→248 골격 목록 통제 — 정적 동등성과 서버 생성 확인
 
 ## 1. 작업 목표
-48→248 P3D골격목록통제쌍의공통CPU포즈/실제화면을확인한다. 원래NPC이동·충돌·물리시계는변경하지않고,기준생성문제와후보표시실패를구분한다.
+현재 생성이 확인된 64본/full-native 참조를 기준으로, 가중치를 바꾸지 않고 P3D 골격 목록만 248개로 확장할 수 있는지 확인한다. 호스트 수 축소 가능성을 구분하는 진단이며 성능 최적화 구현은 아니다.
 
 ## 2. 실제 수행
-기존server/client/고정camera/관측pattern을재사용한2actor Run미션과default-OFF client48본reader를준비했다. 관측PBO를별도빌드/서명검증했다. 서버compile-only실행은entity0으로World/Mission컴파일완료후종료했다.
-네트워크시도는기준Animal_DGNativeRepartition0 factory경로에서서버접근위반종료,client는연결상실메뉴로돌아왔다. pair ready/pose표본생성전이므로유효비교0이다. 소유client를정체성확인후CloseMainWindow로닫았다.
-후보/관측PBO를모두뺀기존10PBO server-only에서옛기준클래스하나만생성하도록분리했다. 같은접근위반이재현됐다. 이후같은fullnative XOB/instance설정을쓰는현재64본모델참조클래스Animal_NFPaletteFull_reference0를기존PBO만으로생성해반환·명령바인딩·퇴역을확인했다. 새모델을다시만들거나클라이언트를다시실행하지않았다.
-기존AMD64 minidump reader와해시고정PE/Capstone를재사용해두덤프의faultRVA/바이트를비교하고해당246byte unwind범위만정적으로읽었다. Ghidra전체초기화/후킹/네이티브쓰기없음.
+기존 현재 모델의 MLOD 전 바이트를 복사하고 model.cfg의 평면 골격 목록만 변경했다. 후보는 현재 참조 클래스를 상속하고 model 경로만 재정의한다. 기존 ODOL reader와 빌드·서명·서버 실행기를 재사용했다. 새 관측 도구나 이동·충돌 알고리즘을 추가하지 않았다. 정적 검증 후 서버에서 후보 하나만 생성하고 명령 바인딩과 안전 퇴역을 확인했다.
 
 ## 3. 측정 결과
-| 실행 | 후보/관측PBO | 실제결과 |
-|---|---|---|
-| compile1 |포함|entity0,World/Mission컴파일완료,exit−1,noforce|
-| network1 |포함|factory Spawn CreateObjectEx위치접근위반,exit−1073741819|
-| control-factory1 |둘다제외|기존48본class생성단독접근위반,exit−1073741819|
-| known-reference-factory1 |둘다제외|현재64본/fullnative참조class반환nonnull,RequestedState11/release12/landing13명령바인딩,detached=true,exit−1|
-두crash는같은server987fbc47…에서fault RVA0xaa9859/같은명령바이트. fault명령은null RAX기준+0x54읽기이며예외read주소0x54와일치한다. 객체/필드의정확한native의미는미확정이다.
-유효CPU포즈/active비교프레임0,실제시각판정없음.8/64기능·CPU/Present p50/p95/p99미측정. 관측PBO SHA256 `306933CC51FDA3853D0AD480340A082CF4B22302BA4E5AB0AB162683445C5453`,서명검증성공. 정적모델후보E6630AE0…의기존서명검증은유지한다.
+실제 패킹된 골격 수 64→248, 시각 가중 본 64→64, 시각 sub-skeleton 항목 101→101. 시각 LOD 17,275정점/25,648면, Memory 64점, Geometry 26점/36면이 유지됐다. 세 LOD 형상·법선·UV·플래그·재질·속성, 면별 본 이름/수치 가중치, 비어 있지 않은 named selection 구성, bounding center가 모두 동일했다.
+서버 후보 생성 nonnull=1, 명령 변수 11/12/13 바인딩, detached=true 후 종료했다. 실제 exit−1, 강제 종료 없음. 신규 PBO 서명 및 DSCheck 검증 성공, 개인키 미포함. CPU 포즈 비교·실제 화면 비교 0회. 8/64 기능, CPU/Present p50/p95/p99 미측정.
 
 ## 4. 원인 분석
-확인: 새로운후보를제외해도옛기준factory가실패한다. 두faultRVA동일은같은native실패지점을뒷받침하지만완전한원인복구는아니다. 이결과를248골격의표시실패/성능회귀로기록하면안된다.
-확인: 현재64본모델/fullnative참조class는생성·명령바인딩·안전퇴역이가능하다. 따라서full XOB/native_combat인스턴스가현재엔진에서항상깨졌다는일반화도반증된다. 현재참조와옛48본class는model/상속차이가있으므로정확한단일원인은미확정이다.
-판단: 옛48본기준factory복구를별도기능개발로확대하지않는다. 현재작동한64본참조를대조군으로설계를정정하고,같은시각면/Memory/物理LOD바이트를유지하는64→248입력을다시정의하는것이더직접적이다. 새입력은아직생성하지않았다.
+확인: 현재64 모델의 골격 목록만248개로 늘린 입력은 컴파일 시 잘리지 않았고 서버 factory가 성공했다. 따라서 이 조건에서 골격 목록이64개를 초과하면 생성 자체가 항상 실패한다는 가설은 반증된다.
+미확인: 클라이언트 스키닝과 실제 표시, 전체224개 가중 본을 한 호스트에 넣는 가능성, 호스트 축소 시 전체 CPU 절감. 이번 모델은 여전히64개 본만 가중하므로 이들 결론으로 확대할 수 없다. 앞선 옛48본 factory 실패는 별도 기록으로 보존한다.
 
 ## 5. 검증 수준
-관측module컴파일·서명검증통과. 네트워크쌍진단실패/유효표본0. 후보없는옛기준factory실패재현완료. 현재fullnative참조factory진단성공. 후보render/CPUpose/성능/8→64회귀/최종수용미완료.20ms p95목표미달성유지.
+정적 입력 계약·서명 검증 통과, 단일 후보 서버 생성/바인딩/퇴역 진단 성공. 기능 회귀·시각 품질·반복 성능·최종 수용 미완료. 20ms p95는 목표로 유지한다.
 
 ## 6. 변경 사항
-cardinality-probe1/runtime1 안의고정미션/작은default-OFF관측PBO/기존실행기재사용/읽기전용덤프파생물만추가했다. 기존모델·PBO·Script·이동·지지·충돌·운영설정불변. 실행모든입력PBO해시후검사일치. 서버4개모두forced=false,client소유종료확인. 크래시를정상퇴역으로보고하지않는다. 개인키미포함.
+격리된 cardinality64-probe1에 모델 데이터 addon, 계약·검증 파생물, 단일 factory 미션을 추가했다. 기존 모델·PBO·게임플레이 코드·지지/충돌 시계는 불변이며 실행 입력 PBO 해시 후검사가 일치했다. 기존 현재 참조의 네이티브 그래프/인스턴스 설정을 상속했다.
 
 ## 7. 원시 증거
-ANIM-cardinality-compile1/network1/control-factory1/known-reference-factory1. 각plan/launch/terminal/script log,network및control의crash log/minidump/reader결과,통합factory-crash-comparison1.json,factory-fault-static1.json,observer빌드/서명영수증. 원시실패를덮어쓰거나비교실행성공으로소급하지않았다. 공개에는덤프·원시RPT·플레이어ID·로컬경로·프로세스/절대주소를포함하지않는다.
+ANIM-cardinality64-probe1 및 ANIM-cardinality64-candidate-factory1. trial-contract1.json, fixture-build.json, compiled-contract1.json, memory-contract1.json, plan/launch/terminal, script log와 서명 영수증을 보존한다. 체크포인트는 각 파일 SHA256을 검증한다. 공개에는 로컬 경로·프로세스 식별자·원본 자산을 포함하지 않는다.
 
 ## 8. 잔여 문제
-다음단일산출물은작동확인된현재64본/fullnative참조class기반의64→248평면P3D골격입력계약이다. 정적LOD/가중치/geometry/Memory/기준위치동등을다시검증하고서명후,소수고정쌍에만복귀한다. 현재네트워크실패를고치려고원래NPC기능/시계를수정하지않는다. 한쌍진단전14클립/전체합체/8→64성능확대없음.
-추가사용자답변:33ms격리비교허용을받았지만이후확인한20Hz native콜백근거로이미철회한후보다.50~100ms지연이나다른물리오차허용으로확대하지않고구현하지않았다.
+다음 단일 산출물은 현재 참조와 후보의 고정 네트워크 쌍에서 공통 CPU 포즈와 실제 화면을 비교하는 결과다. 이 통제가 통과하기 전에는 전체 가중 본 통합이나 8→64 성능 시험으로 확대하지 않는다. 33ms 지상 밀침 묶음 처리는 기존20Hz 콜백 근거로 보류한 상태이며 다른 지연을 임의 적용하지 않는다.
