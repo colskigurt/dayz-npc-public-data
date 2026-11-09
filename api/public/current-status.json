@@ -1,53 +1,80 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T07:28:21.586Z",
-  "sourceRunId": "ANIM-single224-cost64-pair1-five+single",
+  "generatedAt": "2026-11-09T07:39:34.965Z",
+  "sourceRunId": "ANIM-single224-cost64-valid-pairs1",
   "buildId": "FA0A07F5163E80CA86EBA328066C0282394B641C89911438D451FF77717529D9",
   "verificationStatus": {
-    "cpu": "single_valid_pair_diagnostic_only",
-    "independentValidPairs": 1,
-    "repeat": "excluded_before_cpu_foreground_false",
-    "mobility8CombatOff": "8of8_each",
-    "mobilityCombatOn": "not_equivalent_proven",
-    "visual": "not_accepted",
-    "present": "not_measured",
+    "serverCpu": "repeat_rejection_screen_pass_2_independent_pairs",
+    "independentRunsPerCondition": 2,
+    "mobility8CombatOff": "8of8_each_one_run",
+    "combatOnFunctionalEquivalence": "unproven",
+    "functional64": "not_accepted",
+    "visibleTemporalQuality": "not_accepted",
+    "clientCpuAndPresent": "not_measured",
     "adopted": false
   },
   "metrics": {
     "serverCpuMsPerWallSecond": {
-      "five": 821.8504164137324,
-      "single": 601.5189049173662,
-      "absoluteSaved": 220.3315114963662,
-      "relativePercentSaved": 26.80919874176323
+      "baseline": [
+        821.8504164137324,
+        788.866595499229
+      ],
+      "candidate": [
+        601.5189049173662,
+        583.7923722440646
+      ],
+      "relativePercentSaved": [
+        26.809198741763232,
+        25.996058703104868
+      ],
+      "medianPercentSaved": 26.402628722434052
     },
-    "logicalCount": 64,
-    "observedAliveAndAcquiredMoved2m": [
-      64,
-      64
+    "orders": [
+      [
+        "five",
+        "single"
+      ],
+      [
+        "single",
+        "five"
+      ]
     ],
-    "renderHosts": [
-      320,
-      64
-    ],
-    "damageReceivers": [
-      64,
-      64
-    ],
-    "contactSolvesPerTraceGameSecond": [
-      2540.4100529100533,
-      2496.794498193263
-    ],
+    "all64AliveAcquiredMoved2mEachValidRun": true,
+    "contactSolvesPerTraceGameSecond": {
+      "baseline": [
+        2540.4100529100533,
+        2457.177881588974
+      ],
+      "candidate": [
+        2496.794498193263,
+        2470.382733489263
+      ]
+    },
     "missionDtMs": {
-      "five": {
-        "p50": 26,
-        "p95": 44,
-        "p99": 52
-      },
-      "single": {
-        "p50": 22,
-        "p95": 32,
-        "p99": 37.9
-      },
+      "baseline": [
+        {
+          "p50": 26,
+          "p95": 44,
+          "p99": 52
+        },
+        {
+          "p50": 25,
+          "p95": 43,
+          "p99": 54
+        }
+      ],
+      "candidate": [
+        {
+          "p50": 22,
+          "p95": 32,
+          "p99": 37.9
+        },
+        {
+          "p50": 21,
+          "p95": 31,
+          "p99": 34.54
+        }
+      ],
       "scope": "server mission tick; not Present"
     },
     "presentMs": {
@@ -55,29 +82,23 @@
       "p95": null,
       "p99": null
     },
-    "combatOn8WindowTerminal": [
-      7,
-      2
-    ],
-    "combatOn8AllMilestones": [
-      7,
-      3
-    ]
+    "targetPresentP95Ms": 20,
+    "targetAchieved": false
   },
   "blockers": [
-    "No valid reverse independent repetition yet; foreground tool activation timed out twice",
-    "8combatON fixed60second functional outcomes differ; not production accepted",
-    "ClientCPU GPU Present temporal visual quality and full64mobility unverified"
+    "8combatON60s terminal outcomes differ7/8vs2/8; not functional acceptance",
+    "Actual clientCPU GPU Present and temporal visual quality unmeasured",
+    "Full64mobility interaction regression pending"
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/single224-first-cpu-20261109.md"
+      "report": "reports/operations/single224-cpu-repeat-20261109.md"
     },
     {
-      "mobility8": "reports/operations/single224-eight-mobility-20261109.md"
+      "previous": "reports/operations/single224-first-cpu-20261109.md"
     },
     {
-      "visualSamples": "reports/operations/single224-batch14-video-20261109.md"
+      "visual": "reports/operations/single224-batch14-video-20261109.md"
     }
   ]
 }

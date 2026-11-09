@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T07:39:34.965Z",
+  "sourceRunId": "ANIM-single224-cost64-valid-pairs1",
+  "buildId": "FA0A07F5163E80CA86EBA328066C0282394B641C89911438D451FF77717529D9",
+  "verificationStatus": {
+    "serverCpu": "repeat_rejection_screen_pass_2_independent_pairs",
+    "independentRunsPerCondition": 2,
+    "mobility8CombatOff": "8of8_each_one_run",
+    "combatOnFunctionalEquivalence": "unproven",
+    "functional64": "not_accepted",
+    "visibleTemporalQuality": "not_accepted",
+    "clientCpuAndPresent": "not_measured",
+    "adopted": false
+  },
+  "metrics": {
+    "serverCpuMsPerWallSecond": {
+      "baseline": [
+        821.8504164137324,
+        788.866595499229
+      ],
+      "candidate": [
+        601.5189049173662,
+        583.7923722440646
+      ],
+      "relativePercentSaved": [
+        26.809198741763232,
+        25.996058703104868
+      ],
+      "medianPercentSaved": 26.402628722434052
+    },
+    "orders": [
+      [
+        "five",
+        "single"
+      ],
+      [
+        "single",
+        "five"
+      ]
+    ],
+    "all64AliveAcquiredMoved2mEachValidRun": true,
+    "contactSolvesPerTraceGameSecond": {
+      "baseline": [
+        2540.4100529100533,
+        2457.177881588974
+      ],
+      "candidate": [
+        2496.794498193263,
+        2470.382733489263
+      ]
+    },
+    "missionDtMs": {
+      "baseline": [
+        {
+          "p50": 26,
+          "p95": 44,
+          "p99": 52
+        },
+        {
+          "p50": 25,
+          "p95": 43,
+          "p99": 54
+        }
+      ],
+      "candidate": [
+        {
+          "p50": 22,
+          "p95": 32,
+          "p99": 37.9
+        },
+        {
+          "p50": 21,
+          "p95": 31,
+          "p99": 34.54
+        }
+      ],
+      "scope": "server mission tick; not Present"
+    },
+    "presentMs": {
+      "p50": null,
+      "p95": null,
+      "p99": null
+    },
+    "targetPresentP95Ms": 20,
+    "targetAchieved": false
+  },
+  "blockers": [
+    "8combatON60s terminal outcomes differ7/8vs2/8; not functional acceptance",
+    "Actual clientCPU GPU Present and temporal visual quality unmeasured",
+    "Full64mobility interaction regression pending"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/single224-cpu-repeat-20261109.md"
+    },
+    {
+      "previous": "reports/operations/single224-first-cpu-20261109.md"
+    },
+    {
+      "visual": "reports/operations/single224-batch14-video-20261109.md"
+    }
+  ]
+}
