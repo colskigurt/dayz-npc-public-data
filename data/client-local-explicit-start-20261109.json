@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T03:58:26.831857+00:00",
+  "sourceRunId": "ANIM-client-local-role-network4",
+  "buildId": "561C53C2644BEBBFBD3B06C86B9E40811F37CFB353242D9B5D0FDF1485131834",
+  "verificationStatus": "EXPLICIT_COMMAND_INSTALLED_BUT_NO_CALLBACK_POSE_OR_RETIREMENT",
+  "metrics": {
+    "samples": 1000,
+    "activeSamples": 1000,
+    "observerClockSpanSeconds": 19.973000000000006,
+    "observerClockMonotonic": true,
+    "movement": {
+      "ref": {
+        "changedTransitions": 999,
+        "maximumDistanceFromFirstM": {
+          "Head": 0.38528832078457814,
+          "Hips": 0.04038599999999992,
+          "Hand": 0.6292046324066598
+        }
+      },
+      "local": {
+        "changedTransitions": 0,
+        "maximumDistanceFromFirstM": {
+          "Head": 0.0,
+          "Hips": 0.0,
+          "Hand": 0.0
+        }
+      }
+    },
+    "localAnimUpdatesMax": 0,
+    "localPhysicsUpdatesMax": 0,
+    "localNativeRequestValues": [
+      0
+    ],
+    "localPreviewRequestValues": [
+      2
+    ],
+    "contextAndInstall": {
+      "bodyPresent": "true",
+      "interfacePresent": "true",
+      "returnedNonNull": "true",
+      "installedSame": "true",
+      "requestId": "11",
+      "releaseId": "12",
+      "landingId": "13"
+    },
+    "localDetachedBeforeClientExit": false,
+    "attachedObjectManuallyDeleted": false,
+    "clientExited": true,
+    "serverPartsRetained": 5,
+    "additionalLocalParts": 1,
+    "cpuImprovement": null,
+    "presentP95": null
+  },
+  "blockers": [
+    "Public command start succeeded but did not cause custom callbacks or changing sampled CPU pose in tested local role",
+    "Retire flag did not detach command in bounded8seconds; entity retained until owned client exit",
+    "Native role/scheduler consumer not identified; no proven supported client update path"
+  ],
+  "evidenceReferences": [
+    {
+      "name": "explicit-start-installed-contract1.json",
+      "sha256": "dda1fd90b5b89175ff03effcfec586c67599b6c7ab69c33f7c968c70fe4a90c7"
+    },
+    {
+      "name": "trial-contract.json",
+      "sha256": "a9f4fabc6c43edc265c8a4d9b8d3b431d0a232b67fb935ea38fa8c1863301ded"
+    },
+    {
+      "name": "source-change-proof.json",
+      "sha256": "b67c19a34e1408c331653b269d7d7015a807594088fa63bddfd77df09772385e"
+    },
+    {
+      "name": "nf-local-explicit-start.tsv",
+      "sha256": "0c9352f0787759522f6c0e11c06a31409006221060469cee801b7e780c1a9d52"
+    },
+    {
+      "name": "nf-local-role.tsv",
+      "sha256": "953e8b850dc468d55498042e43e91b7101421f271b37135d3a2835fbeba523d5"
+    },
+    {
+      "name": "nf-local-role-cleanup.flag",
+      "sha256": "6ec0f4442ba7eef2383f21286e44a66d3f960995b37fc1b699e9ab560ee2290d"
+    },
+    {
+      "name": "controller-receipt.json",
+      "sha256": "78b88e67188b1d806a831a787f51f230aa0f0bb6558488023bd29709a04baf01"
+    },
+    {
+      "name": "server-terminal.json",
+      "sha256": "46a0cfdb45796fd627f5348cdb65b4bfda2f443d4ac46ad05774dd396547fa03"
+    },
+    {
+      "name": "client-closed.json",
+      "sha256": "70d382dc06730e21796a5acceac55f9f051d3c1ab5adea6aadbcdee20216fc54"
+    },
+    {
+      "name": "compile-failure-cleanup.json",
+      "sha256": "ea1feea4e398da9bdbda6fb09fe4bc43d5ea4d23c49d92899c169779fdc6f263"
+    }
+  ],
+  "productionChanged": false,
+  "adopted": false,
+  "limits": [
+    "One fixedRun current-client capability test, not every local animation API",
+    "CPU bone readback and callbacks do not prove final rendered temporal quality",
+    "Observer wall-clock repair does not modify NPC animation clock",
+    "Original automatic and explicit trials are different initialization conditions, not matched CPU A/B"
+  ]
+}

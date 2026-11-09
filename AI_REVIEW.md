@@ -1,13 +1,13 @@
 # DayZ NPC Observatory — 현재 상태
 
-2026-11-09: **현재 자동명령 경로의 로컬 파트 capability 시험은 정지 포즈로 기각됐다.** 기존 서버5파트를 유지하고 클라이언트에 같은 원본파트1개를 추가했다. 유효1000표본 모두 appActive=true, 기준파트998/999전환에서3본중하나이상변화, 로컬3본변화0·애니메이션/물리콜백0·Preview요청2/Native요청0이었다. 단순로컬생성과기존요청설정만으로현재재생경로가성립하지않았다.
+2026-11-09: **명시적 클라이언트 로컬 명령도 미수용.** 설치SDK에서공개StartCommand계약을확인하고현재로컬파트에서물리본체·인터페이스·변수바인딩·실제명령설치동일성을확인했다. 그러나1000활성표본에서기준본은999/999전환변화,로컬CPU3본변화0·명령콜백0이었다. 퇴역요청8초뒤에도명령이붙어있어객체를직접삭제하지않고소유클라이언트를종료했다.
 
-- [상세 결과·수집기 실패·제한](reports/operations/client-local-role-capability-20261109.md)
-- [구조화 결과](data/client-local-role-capability-20261109.json)
-- [컴파일ANM 기존키축약](reports/operations/anm-compiled-counts-review-20261109.md)
-- [1mm 후보 비용 선별 실패](reports/operations/foot-range-tolerance1-method-20261109.md)
+- [최신 상세 보고서](reports/operations/client-local-explicit-start-20261109.md)
+- [구조화 결과](data/client-local-explicit-start-20261109.json)
+- [앞선 자동초기화 경계](reports/operations/client-local-role-capability-20261109.md)
+- [1mm 후보 비용 실패](reports/operations/foot-range-tolerance1-method-20261109.md)
 - [기존 보고서](reports/operations/)
 
-전체클라이언트로컬애니메이션불가능판정은아니다. 명시적명령초기화는미시험이다. observer Age0필드는타이밍분석에서제외했고첫수집실패도보존했다. CPU/실제표시품질/8→64수용미측정. 원본PBO불변, 진단PBO2개서명검증성공.20ms p95미달성.
+전체로컬애니메이션불가능판정이나엔진버그확정은아니다. 서버5파트는유지,8→64확대없음. compile3 private소멸자오류/강제정리와미실행network3을보존했다. build3/4진단PBO서명검증성공,원본PBO불변. CPU/실제렌더품질미측정,20ms p95미달성.
 
-시작위상이정렬되지않아동시포즈동등성을비교하지않았다. 자동생성경로기각을모든지원API/엔진기능불가능으로확대하지않는다. sourceAge0원인미특정, 표시부드러움이나성능이득주장없음.
+명령설치성공과콜백실행·포즈·안전퇴역은별개다. 이번결과를성능성공이나실제화면정지증명으로해석하지않는다. 무근거AI/wake/메모리플래그변경으로확대하지않는다.
