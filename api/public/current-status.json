@@ -1,39 +1,56 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T05:23:29.706877+00:00",
-  "sourceRunId": "ANIM-cardinality64-network1",
-  "buildId": "6AE6F121B68C92BD49AC059F5FE48C310FE89B6FA53213FCBD7DFB93E0BC17BC",
-  "verificationStatus": "SERVER_POSE_MATCH_CLIENT_READER_NOT_READY_RETIREMENT_UNVERIFIED",
+  "generatedAt": "2026-11-09T05:30:38.102989+00:00",
+  "sourceRunId": "ANIM-cardinality64-network2",
+  "buildId": "5587F36C1E5693ED8A6DE529D318F16AD3237F2572CDDB26C226722DE1A46373",
+  "verificationStatus": "HARNESS_CAUSE_REPRODUCED_PAIRED_CPU_POSE_PASS_VISUAL_TEMPORAL_PERFORMANCE_UNMEASURED",
   "metrics": {
-    "sourceRunId": "ANIM-cardinality64-network1",
-    "serverRows": 60736,
-    "alignedRows": 60736,
-    "bones": 64,
-    "maximumAlignedMSErrorMeters": 0,
-    "rowsBeyond1eMinus5": 0,
-    "durationSeconds": 18.9483,
-    "clientReady": false,
-    "clientPoseRows": 0,
+    "statementFalseGateCounts": {
+      "unbraced": 0,
+      "braced": 1
+    },
+    "serverAlignedRows": 4800,
+    "clientRows": 4288,
+    "clientActiveRows": 4288,
+    "bonesCompared": 64,
+    "maximumMSErrorMeters": 0,
+    "serverNativeProgressSeconds": [
+      8.1999,
+      8.1999
+    ],
+    "sampling": {
+      "server": {
+        "sampleGroups": 75,
+        "intervalSecondsMin": 0.10400000000000009,
+        "intervalSecondsMedian": 0.10699500000000002,
+        "intervalSecondsMax": 0.12399000000000004,
+        "firstAge": 0,
+        "lastAge": 8.22661
+      },
+      "client": {
+        "sampleGroups": 67,
+        "intervalSecondsMin": 0.11899899999999997,
+        "intervalSecondsMedian": 0.1200000000000001,
+        "intervalSecondsMax": 0.12100200000000005,
+        "firstAge": 0,
+        "lastAge": 7.922
+      }
+    },
+    "normalDetachedRetirement": true,
+    "repetitions": 1,
     "cpuImprovement": null,
-    "presentP95": null,
-    "visualEvidence": "Two CUA snapshots show both partial upperbody meshes at different poses; no framewise temporal or pixel equality measurement",
-    "retirementVerified": false,
-    "limitations": [
-      "Server pose equality is not client GPU equality",
-      "Missing client reader readiness; cause not yet isolated",
-      "No whole-body,8/64 regression or performance acceptance"
-    ]
+    "presentP95": null
   },
   "blockers": [
-    "Client reader never signaled ready",
-    "Observed sampling differed from intended10Hz",
-    "Network retirement failed to confirm; owned server forced teardown"
+    "Only64 actual weighted bones compared",
+    "No fullbody/14clip/8-to64 regression",
+    "No framewise visual smoothness or CPU/Present comparison"
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/cardinality64-pair-20261109.md"
+      "report": "reports/operations/cardinality64-braced-20261109.md"
     }
   ],
   "adopted": false,
-  "next": "Inspect existing harness entry/resolve/sampling/retirement before any expanded test"
+  "next": "Review existing fullbody evidence and define one controlled actual-weighted-bone expansion input"
 }
