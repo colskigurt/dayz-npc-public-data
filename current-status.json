@@ -1,64 +1,35 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T02:00:18.653270+00:00",
-  "sourceRunId": "ANIM-rear-pressure-shadow-cost64off1",
-  "buildId": "read-only-reuse-existing64off-no-pbo-change",
-  "verificationStatus": "DIAGNOSIS_ONLY_SLOWDOWN_NOT_IMPLEMENTED",
+  "generatedAt": "2026-11-09T02:06:25.768Z",
+  "sourceRunId": "ANIM-structural-candidate-boundary-review-20261109",
+  "buildId": "source-review-no-pbo-change",
+  "verificationStatus": "DESIGN_BOUNDARY_IDENTIFIED_NOT_IMPLEMENTED",
   "metrics": {
-    "totalDisplaceCalls": 67498,
-    "rearOutsideNominalEntryCalls": 606,
-    "rearOutsideCallShare": 0.00897804379389019,
-    "frontPressureCalls": 6867,
-    "frontPressureCallShare": 0.10173634774363685,
-    "locomotion": {
-      "agentSeconds": 1161.3711599999986,
-      "distance": 2729.098479771637,
-      "routeProgressDistance": 2668.7094127557043,
-      "intervals": 4415,
-      "calls": 17427,
-      "accepted": 17377,
-      "rejected": 50,
-      "solves": 17416,
-      "lowProgressSeconds": 100.25171000000007,
-      "meanSpeed": 2.3498934481648748,
-      "meanRouteProgressSpeed": 2.2978953711539623,
-      "displaceCallsPerAgentSecond": 15.005538797777639,
-      "displaceSolvesPerAgentSecond": 14.99606723487091
-    },
-    "lowProgress": {
-      "agentSeconds": 100.25171000000007,
-      "distance": 17.95875151930723,
-      "routeProgressDistance": -10.462102348115717,
-      "intervals": 380,
-      "lowProgressSeconds": 100.25171000000007,
-      "calls": 2002,
-      "accepted": 1997,
-      "rejected": 5,
-      "solves": 1999,
-      "meanSpeed": 0.1791366104309564,
-      "meanRouteProgressSpeed": -0.10435834309575079,
-      "displaceCallsPerAgentSecond": 19.969734182090246,
-      "displaceSolvesPerAgentSecond": 19.939809505493706
-    },
     "newGameRuns": 0,
+    "newPerformanceMeasurements": 0,
+    "productionChanges": 0,
+    "serverHostsCurrent": 384,
+    "serverHostsHypothetical": 128,
     "cpuImprovement": null
   },
   "blockers": [
-    "Nominal entry exclusion is not verified fitted-entry safety",
-    "Slower move intent does not automatically suppress SolveContacts or ConsumeContact",
-    "No controlled slowdown effect or exclusive CPU cost measured"
+    "No immediately applicable local candidate has demonstrated large whole-CPU gain",
+    "Client-only follower clock/graph-phase synchronization path not established",
+    "Server LOD change previously altered client pose; independence cannot be assumed"
   ],
   "evidenceReferences": [
     {
-      "path": "reports/operations/approach-slowdown-readonly-review-20261109.md",
-      "sha256": "d32495e4b96583d2cc4c7ce6a3f99e8495fefff1aa4fa82b8d796c1ef2f4253d"
+      "path": "reports/operations/structural-candidate-boundary-review-20261109.md"
     },
     {
-      "path": "reports/operations/selective-peer-block-cost64-screen-20261109.md"
+      "path": "reports/operations/approach-slowdown-readonly-review-20261109.md"
+    },
+    {
+      "path": "reports/operations/client-role-pose-gate-failed-20261109.md"
     }
   ],
   "functionAccepted": false,
   "visualAccepted": false,
   "performanceAccepted": false,
-  "productionChanged": false
+  "adopted": false
 }

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T02:06:25.768Z",
+  "sourceRunId": "ANIM-structural-candidate-boundary-review-20261109",
+  "buildId": "source-review-no-pbo-change",
+  "verificationStatus": "DESIGN_BOUNDARY_IDENTIFIED_NOT_IMPLEMENTED",
+  "metrics": {
+    "newGameRuns": 0,
+    "newPerformanceMeasurements": 0,
+    "productionChanges": 0,
+    "serverHostsCurrent": 384,
+    "serverHostsHypothetical": 128,
+    "cpuImprovement": null
+  },
+  "blockers": [
+    "No immediately applicable local candidate has demonstrated large whole-CPU gain",
+    "Client-only follower clock/graph-phase synchronization path not established",
+    "Server LOD change previously altered client pose; independence cannot be assumed"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/structural-candidate-boundary-review-20261109.md"
+    },
+    {
+      "path": "reports/operations/approach-slowdown-readonly-review-20261109.md"
+    },
+    {
+      "path": "reports/operations/client-role-pose-gate-failed-20261109.md"
+    }
+  ],
+  "functionAccepted": false,
+  "visualAccepted": false,
+  "performanceAccepted": false,
+  "adopted": false
+}

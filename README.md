@@ -1,11 +1,11 @@
 # DayZ NPC Observatory — 현재 상태
 
-2026-11-09: **접근 감속은 구현 보류**. 기존 분류기를 저장된64체 기준 로그에 재사용했다. 전방 정체+반대 압력 구간은 관측 Displace의10.174%, 명목 등반 입구2m 밖까지 제한하면0.898%였다. 이는 CPU 절감률이나 제거 가능량이 아니다. 현재 native root delta 분기와 별도 접촉 소비 구조에서는 speed 입력만 줄여도 SolveContacts가 계속 호출된다.
+2026-11-09: **기존 국소 최적화 후보 재선정 완료, 새 구현 없음.** 현재 조사 범위에서 큰 전체CPU 절감이 입증된 즉시 적용 후보는 없다. 서버 보조 표시파트의 클라이언트 전용 분리는384→128서버 호스트 구성이 가능한지 검토할 구조적 후보이나, 그래프 시계·전환 위상 동기화 제어점이 아직 확보되지 않았다. 개수 감소를 CPU 절감률로 환산하지 않는다.
 
-- [최신 접근 감속 검토·적용 금지 조건](reports/operations/approach-slowdown-readonly-review-20261109.md)
-- [최신 구조화 데이터](data/approach-slowdown-readonly-review-20261109.json)
-- [직전64체 CPU 비교의 조건 불일치](reports/operations/selective-peer-block-cost64-screen-20261109.md)
-- [앞선8체 이동 검증](reports/operations/selective-peer-block-eight-20261109.md)
-- [보고서 목록](reports/operations/)
+- [후보 선정표·동기화 접근 계약·위험](reports/operations/structural-candidate-boundary-review-20261109.md)
+- [구조화 상태](data/structural-candidate-boundary-review-20261109.json)
+- [접근 감속 보류 근거](reports/operations/approach-slowdown-readonly-review-20261109.md)
+- [64체 CPU 비교 조건 불일치](reports/operations/selective-peer-block-cost64-screen-20261109.md)
+- [기존 보고서 목록](reports/operations/)
 
-새 게임 실행0, 원본/PBO 변경0. 지속 등반·밀침·낙하·재등반 유지. 기능·시각·성능을 분리하며20ms p95는 목표다. 다음은 기존 기각 후보를 재실행하지 않고, 질의/호스트 비용을 줄일 미검증 국소 후보의 유무를 판단한다.
+기존 모델·정상 밀침·낙하·착지·추적·재등반 및 해결된 애니메이션 경로를 보존한다. 로컬 파트 분리는 구현·컴파일·게임 시험 미실행이다.20ms p95 목표 미달성, 기능·시각·성능은 별도 판정한다.
