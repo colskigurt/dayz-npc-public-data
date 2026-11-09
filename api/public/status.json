@@ -1,103 +1,180 @@
 {
   "schemaVersion": 1,
-  "sourceRunId": "ANIM-physics-mask-contract1",
-  "verificationStatus": "RUNTIME_MASK_CONTRACT_CONFIRMED_NO_MASK_OPTIMIZATION",
-  "serverBuildSha256": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805",
-  "runtimeValues": {
-    "Floors": 33064,
-    "Walls": 67408168,
-    "BUILDING": 8,
-    "VEHICLE": 32,
-    "ROADWAY": 256,
-    "TERRAIN": 32768,
-    "FENCE": 262144,
-    "DOOR": 4096,
-    "ITEM_LARGE": 67108864,
-    "AI": 524288,
-    "CHARACTER": 16,
-    "DYNAMICITEM": 64
-  },
-  "expectedFloor": 33064,
-  "expectedWall": 67408168,
-  "extraBits": 0,
-  "excludedLayersVerified": [
-    "AI",
-    "CHARACTER",
-    "DYNAMICITEM"
-  ],
-  "nativeActors": 0,
-  "clientStarted": false,
-  "setters": 0,
-  "performanceMeasured": false,
-  "newPbo": false,
-  "decision": "No mask change. No untested high-value safe physics candidate established by this bounded review. Do not restart failed families from stale DESIGN labels.",
-  "generatedAt": "2026-11-09T00:40:13.871182+00:00",
+  "generatedAt": "2026-11-09T00:52:47.073226+00:00",
+  "sourceRunId": "ANIM-interval-context64-1",
   "buildId": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805",
+  "verificationStatus": "DIAGNOSIS_ONLY_FUNCTION_VISUAL_PERFORMANCE_NOT_ACCEPTED",
   "metrics": {
-    "maskExtraBits": 0,
-    "nativeActors": 0,
-    "newClientRuns": 0,
-    "p50": null,
-    "p95": null,
-    "p99": null,
-    "cpuImprovement": null
+    "cpuSamplingRows": 51,
+    "cpuIntervals": 50,
+    "wallSeconds": 50.00346595,
+    "cpuMs": 39796.875,
+    "cpuMsPerWallSecond": 795.8823302327506,
+    "rateDistributionCpuMsPerWallSecond": {
+      "p50": 808.8972081936121,
+      "p95": 961.2719934756725,
+      "p99": 1001.134201484879
+    },
+    "maximumClockReadMs": 20.5993,
+    "maximumSnapshotBoundarySpanSeconds": 0.28190000000000026,
+    "terminalOutcomes": {
+      "VALID_TERMINAL": 3,
+      "INCOMPLETE_MILESTONES": 61
+    }
+  },
+  "stages": [
+    {
+      "stage": 0,
+      "windows": 2,
+      "wallSeconds": 12.99872435,
+      "cpuMsPerWallSecond": 677.9511406440433,
+      "displaceCallsPerWallSecondBounds": [
+        762.4594331827645,
+        815.3107731682917
+      ],
+      "displaceSolvesPerWallSecondBounds": [
+        760.2284450319927,
+        813.0797850175198
+      ],
+      "moveCallsPerWallSecondBounds": [
+        924.4753313043368,
+        998.1748709056977
+      ],
+      "sampledMeanPairs": 54.67521458198576
+    },
+    {
+      "stage": 1,
+      "windows": 2,
+      "wallSeconds": 17.99101155,
+      "cpuMsPerWallSecond": 831.1442054518608,
+      "displaceCallsPerWallSecondBounds": [
+        1114.8900629770314,
+        1176.5319554808468
+      ],
+      "displaceSolvesPerWallSecondBounds": [
+        1099.8269855482363,
+        1161.3021281174154
+      ],
+      "moveCallsPerWallSecondBounds": [
+        922.3494717838698,
+        981.6568652027796
+      ],
+      "sampledMeanPairs": 324.67627804804187
+    },
+    {
+      "stage": 2,
+      "windows": 2,
+      "wallSeconds": 13.9896295,
+      "cpuMsPerWallSecond": 862.2458514716205,
+      "displaceCallsPerWallSecondBounds": [
+        1085.732828020928,
+        1179.1591764456664
+      ],
+      "displaceSolvesPerWallSecondBounds": [
+        1069.220596585492,
+        1161.86064827521
+      ],
+      "moveCallsPerWallSecondBounds": [
+        774.6452470381721,
+        838.6926901816806
+      ],
+      "sampledMeanPairs": 279.4617403570266
+    }
+  ],
+  "conditions": {
+    "logicalCount": 64,
+    "renderParts": 320,
+    "damageReceivers": 64,
+    "existingPinnedAddons": 15,
+    "independentRuns": 1,
+    "clientPresentMeasured": false,
+    "actualScreenMeasured": false,
+    "groundProgressObserverEnabled": true,
+    "clientActiveCostObserverEnabled": false
   },
   "blockers": [
-    "No newly established safe high-value code change in this bounded review",
-    "8/64 feature, visible quality and whole cost acceptance remain incomplete"
+    "Whole process aggregate CPU across threads, not frame time, exclusive query cost, GC or allocation cost.",
+    "Frame clock read QPC brackets do not prove exact simulation event time or bound native log buffering latency.",
+    "Counter delta lower/upper bounds use adjacent complete64 snapshots under monotonicity; no linear QPC/game-time interpolation.",
+    "Density is sampled root-pair count within0.86m and absY<1; not actual manifold/physics contact count.",
+    "Stage comparison is observational, not matched randomized A/B or causal attribution.",
+    "Client optional active-cost observer disabled; no Present or visual quality result.",
+    "Existing ground progress observer and full mission logging remain; not production-only CPU."
   ],
   "evidenceReferences": [
     {
-      "id": "server-cpu1/mask-contract1/server-profile/mask-values.tsv",
-      "sha256": "aca07aa927098baa7fd71494c1ca4aaf21381a717b47d7554050d180ad333857"
+      "id": "plan.json",
+      "sha256": "f78f2290d1472d669241f5aac72a45e1b42caa7288d376a3d1c7a0c6481a6bff"
     },
     {
-      "id": "server-cpu1/mask-contract1/plan.json",
-      "sha256": "89d477f55c0b7ca6a97fd76342804db39ef855100b7b12927eac909b868c8bc1"
+      "id": "trial-contract.json",
+      "sha256": "a8027f693ed0c4532c66fced23be8bfdfeb290d2f78326ddeec1fd63cf31c8a8"
     },
     {
-      "id": "server-cpu1/mask-contract1/mission/mask-values.chernarusplus/init.c",
-      "sha256": "a7ea1e5a9b15a898d04d351f62c4769a243b22fb64244ad5c43ec623c1750f2d"
+      "id": "sampler-source-proof.json",
+      "sha256": "97fd50fbc38b377ec1a51c903694bdcf8870db688fa742a2f1ae4e4ab6234238"
     },
     {
-      "id": "server-cpu1/mask-contract1/server-terminal.json",
-      "sha256": "8eff833f2b70daace4f5311f14c8703573f46336809f8eabad56b6d967628e36"
+      "id": "server-process-cpu.csv",
+      "sha256": "f1e30db986625642d4e4cd8729c7e5b4bb808b741f7663a4e9dbd40f68c5b14f"
     },
     {
-      "id": "server-cpu1/mask-contract1/server-profile/script_2026-11-09_09-36-09.log",
-      "sha256": "a1fe3cf76360f90c7c4942cd212bc5eb95c4c211f322cce30497255bcfaf1dbc"
+      "id": "server-terminal.json",
+      "sha256": "48e66646e05b1fcde42c573de6fdc7f99e195159d77ad72ef04f8011a96755e0"
     },
     {
-      "id": "support-context-five1/engine-26220720/cost64-three2/REPORT.md",
-      "sha256": "143cf849cb00c69011de3a8891a72aaf747ebd7547fd7fbfe47aef78e43b7b34"
+      "id": "client-closed.json",
+      "sha256": "f5b8502c451e832b81da635f6fef647232ecb2e660851f80a1353693b9431b84"
     },
     {
-      "id": "terrain-negative-backoff1/family-disposition.json",
-      "sha256": "381336b31794070c4dde850c88a2c569e76f44bc60fc51f0698942258102a505"
+      "id": "server-profile/gameplay-eight.tsv",
+      "sha256": "d9da6d5450aff98d19b06a3f04ff1eae308e18b1d4c625f333a1d2c12b4d9b2d"
     },
     {
-      "id": "terrain-negative-backoff1/conformance-summary.json",
-      "sha256": "05b62222f7c5a659edf7995dc259b99d69742676f9ef00eae9f674792f0d2560"
+      "id": "server-profile/ground-progress.tsv",
+      "sha256": "79ef303c5b70507a7403192ee5f968a431d5ae4d686715cf03d931873bd63285"
     },
     {
-      "id": "grid-cell-pool1/engine-26220720/cost64-three2-resume2/REPORT.md",
-      "sha256": "a4eb182bef1d580d83024805aa7d81ec157adbce6a04dd0746807815c2e85e9e"
+      "id": "server-profile/server-frame.tsv",
+      "sha256": "10bd267e07d254352876b920d22a1ff4195889930258862e5e6431dc3e9de9ff"
     },
     {
-      "id": "server-cpu1/QUERY_CONTROL_BOUNDARY_REPORT.md",
-      "sha256": "591b9c6a783e9aa1d7cb2cddcbd8998320361755e06092a2a3a1bc90e7fba8c2"
+      "id": "server-profile/terminal-state.tsv",
+      "sha256": "a11e8664cdc98b6392178fff37a0dd0415ea5bdca10d5257307d16cb0019979e"
     },
     {
-      "id": "high-cost1/report.md",
-      "sha256": "b40105856c8ea0ae7fa536fd0281b9f74766e330bea4de758c908848c70f509e"
+      "id": "stage-windows1.json",
+      "sha256": "276025ee07850fdd2809f8238e8c1ad17b59a6e59baae74b3975b79e8a7e5374"
     },
     {
-      "id": "host-physics-readback1/server-follower-lod-probe1/client-role-probe1/network1/analysis2.json",
-      "sha256": "28942d988c2e78728d4530ab2afa2af6ac231b3277083ab2b26b8e54c587ea41"
+      "id": "runtime-proof1.json",
+      "sha256": "bb357214d758c32254a5667ef97cbb7cded63f362507106d024830b22e7279ca"
+    },
+    {
+      "id": "sampler-source-proof.json",
+      "sha256": "97fd50fbc38b377ec1a51c903694bdcf8870db688fa742a2f1ae4e4ab6234238"
+    },
+    {
+      "id": "sample-owned-cpu-every-clock.ps1",
+      "sha256": "8824178252d081b5439936e58b65cfc04eb2509f647937b42f3046f391411cf5"
+    },
+    {
+      "id": "analyze-intervals1.py",
+      "sha256": "9a16aaaa55dd236406fb4701bd6e66bf2049562d85018b3da44fce1f216adbcb"
+    },
+    {
+      "id": "aggregate-stage-windows1.py",
+      "sha256": "744dc411eae236c2d2cae58a57888b45cb1a352792728d25def8ea47687902c8"
+    },
+    {
+      "id": "residual-pressure-screen1.json",
+      "sha256": "fac22b0dc735fef44de032a53a799b65b21bd8eb906a1c9cfcdf2a3040fb0e5d"
     }
   ],
-  "reportUrl": "https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/physics-mask-and-candidate-review-20261109.md",
-  "lastKnownGoodSnapshotAt": "2026-11-09T00:40:13.871182+00:00",
+  "productionChanged": false,
+  "adopted": false,
+  "reportUrl": "https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/interval-contact-cpu-context-20261109.md",
+  "lastKnownGoodSnapshotAt": "2026-11-09T00:52:47.073226+00:00",
   "lastRefreshFailure": null,
   "staleAfterHours": 48,
   "stale": false

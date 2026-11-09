@@ -1,41 +1,40 @@
-# 물리 질의 마스크 검증과 기각 후보 중복 제외
+# 64개체 밀집 구간의 CPU와 접촉 처리 동시 관측
 
 ## 1. 작업 목표
-서버 LOD의 클라이언트 포즈 gate 실패 후, 기존 물리 질의 비용 연구에서 미검증 수정 지점을 선별한다. 정상 밀침·낙하·착지·FOLLOW·재등반을 보존하고, 이미 기각된 후보를 반복하지 않는다.
+기존64 비용 기록의 전체 평균과 물리 호출 수를 실제 같은 실행의 시간 구간으로 연결한다. 밀집 시 CPU 상승이 기본 이동 갱신 증가인지 접촉 변위 처리 증가와 동반되는지 구분한다. 새 알고리즘·밀침 계수·지지/충돌 삭제는 적용하지 않는다.
 
 ## 2. 실제 수행
-현행 DGBGroundAgent.Floors/Walls, SolveContactsInternal, Crowd.Displace와 기존 support-context·terrain-negative-backoff·후처리0변위·물리API 경계 보고서를 읽었다. 공식 DayZ-Script-Diff의 API 선언도 확인했다. 기존10개 PBO와 현행 서버 해시를 고정한 무개체 headless 미션에서 enum 상수와 실제 조합값만 출력했다. 클라이언트/네이티브 NPC0, 물리 질의·이동·상태 setter0이다.
-DESIGN.md의 최초 상태와 실제 후속 family-disposition을 구분했다. terrain-negative-backoff는 설계만 남은 후보가 아니라8/16회 변형의 국소 gate가 실패해 가족 확장이 중단된 후보다. 오래된 설명을 근거로 다시 구현하지 않는다.
+과거 SupportFast/receiver/grid CPU CSV는1초 간격CPU가 있지만 게임 시각은 시작·끝2행뿐이었다. 이를 중간 시각의 정확한 대응으로 보간하지 않았다. 기존9열 frame용 signed-counter CPU 수집기의 조건2개만 바꿔 last8행의 완전한 server-frame을 매초 읽게 했다. 누적CPU·QPC·읽기bracket·PID/시작시각 검증은 그대로다. 원래 수집기는 변경하지 않았다.
+기존 ground-progress64의70초 미션·15개 PBO 핀·64논리/320표시/64피해수신체·지상10초/low10초/high10초 반복 자극을 그대로 사용했다. 별도 client active-cost observer flag는 켜지 않았으며 Present/영상은 수집하지 않았다. nf-ground-progress 관측 및 원래 파일 로깅은 유지했다. 출력문에12개라고 적힌 초기 staging 문구는 잘못이며 실제 plan/start-gate의15개 핀이 기준이다.
+5게임초부터50벽시계초 동안 CPU51행을 수집했다. 같은 실행의 완전64개체 스냅샷으로 각 CPU 구간 끝의 직전/직후 카운터를 찾아 delta 하한/상한을 계산했다. 단일 시점으로 보간하지 않았다. 단계 전환5개 구간은 별도 제외하고 이어진 같은 단계를6개 창으로 묶어 카운터 경계 오차를 줄였다.
 
 ## 3. 측정 결과
-현행 서버 runtime:Floors=33064, Walls=67408168. BUILDING8·VEHICLE32·ROADWAY256·TERRAIN32768의OR가Floors와 정확히 일치했다. FENCE262144·DOOR4096·ITEM_LARGE67108864를 더한OR가Walls와 일치했다. AI524288·CHARACTER16·DYNAMICITEM64 비트는Walls에 없다. 마스크 추가 비트0이다. 요청 종료 뒤 실제exit−1·강제종료 없음, 완료 표식/스크립트 오류 없음·프로세스 소멸 확인. p50/p95/p99·CPU·실제 시각을 새로 측정하지 않았다.
+50.00346595벽시계초 동안 process CPU39796.875ms, 평균795.8823 CPUms/벽시계초였다. 1초 CPU율 분포 p50/p95/p99=808.8972/961.2720/1001.1342 CPUms/벽시계초다. 이것은 프레임ms 또는20ms p95와 직접 비교할 값이 아니다.
+
+| 목표 단계 | 안정 구간 벽시계초 | 서버CPU ms/벽시계초 | Displace호출/벽시계초 범위 | 기본 Move호출/벽시계초 범위 | 표본 근접쌍 평균 |
+|---|---:|---:|---:|---:|---:|
+| 지상 |12.999|677.951|762.46~815.31|924.48~998.17|54.68|
+| 낮은 발판 |17.991|831.144|1114.89~1176.53|922.35~981.66|324.68|
+| 높은 발판 |13.990|862.246|1085.73~1179.16|774.65~838.69|279.46|
+
+단계는 플레이어 목표 위치이며64명 전원이 그 발판에 있다는 뜻이 아니다. 근접쌍은 root수평거리0.86m미만·높이차1m미만의 표본 쌍이고 실제 native manifold 수가 아니다. CPU는 여러 스레드를 합친 전체 process 값이다.
+게임 시각51행 모두 존재, 최대 파일 읽기bracket20.5993ms, CPU읽기끝→시각파일읽기끝20.6055ms, 카운터 snapshot 경계폭 최대0.2819게임초였다. 파일 buffering에 따른 native 이벤트 지연은 별도로 확정하지 못했다.
+70초 종료 시 terminal은 VALID_TERMINAL3·INCOMPLETE_MILESTONES61이었다. 기능 회귀 통과가 아니다. 기존 미션의 퇴역 detached=true, RequestExit0/actual−1·강제종료없음, 클라이언트 일반창닫기 종료 및 시험 process 부재를 확인했다. 실제Present/표시품질·self-time·GC·할당량은 미측정이다.
 
 ## 4. 원인 분석
-확인:현재 비용을 잘못 조합된Floors/Walls 마스크 탓으로 설명할 근거가 없다. 이 런타임 상수값을 일반 정수 enum 순번으로 추측하지 않는다. API 선언의 입력에는 geometry/layer/ignore와결과만 있고 공개 scratch/batch 인자는 없다. RV 계열은 다른 교차 형식·결과 계약이며 같은 의미/낮은 비용이 증명되지 않았다.
-기존 후보 판정:
-
-| 후보 | 실제 상태·중복 근거 | 이번 결정 |
-|---|---|---|
-| 서버 follower LOD | 활성 클라이언트 공통 본 최대0.261m, 포즈 gate 실패 | 확대 금지 |
-| SupportSweepFast 상태 제한 | 현행 서버 build26220720 cost64-three2에서 서버+5.19%·Present+7.12% | 이름만 바꾼 guard 재시험 제외 |
-| Scratch/스냅샷 | 이전 국소 미달/실제 메서드 회귀 | 재구현 제외 |
-| Drive/Displace 동일 결과 재사용 | 실제 인접42쌍 입력 완전일치0 | 동일질의 가정 금지 |
-| terrain negative backoff8/16 | family-disposition=FAMILY_LOCAL_GATE_FAILED_NOT_ADOPTED | 더 큰 상수 튜닝 금지 |
-| Solve 뒤0변위 조기거절 | 이미 검토됨, 기존8명 낙관적 제거량0.8885%/1.0770% 전체solve | 새 후보로 반복하지 않음. CPU 절감률 아님 |
-| 발ray 하단 축소 | 실제 엔진 lift차 최대약0.305mm, 기존 strict gate 기각 | 허용오차를 조용히 바꾸지 않음 |
-| RaycastRV 대체 | mask/shape/normal·hit 계약 동등성 및 비용 미입증 | drop-in 구현 금지 |
-
-이 표는 전 프로젝트의 완전한 미검증 후보 부재를 증명하지 않는다. 이번 제한된 검토에서 생산 코드에 바로 넣을 만한 새 고가치 안전 후보를 확보하지 못했다는 결론이다. 따라서 억지로 미세 변경을 만들거나 비용 개선을 주장하지 않는다.
+관찰:발판 목표 구간에서 근접 root쌍과Displace호출 범위, process CPU가 함께 높아졌다. 반면 기본Move빈도는 같은 수준이거나 낮았다. 따라서 이 실행의 CPU차를 단순히 기본 이동명령 횟수가 늘었기 때문이라고 설명하기 어렵다. 접촉 변위/후속솔버를 계속 주력 비용 후보로 두는 근거가 강화됐다.
+미확정:Displace의순수CPU비중·네이티브호스트상호충돌·실제Bullet쿼리단가·로깅/상태구성·다른스레드의인과기여. 같은 실행의 단계비교이며 무작위A/B가 아니다. 이 표에서 전체CPU차를Displace비용으로 빼서 계산하지 않는다. progress.solves는Displace안에서호출한SolveContacts 수이며 gameplay.contactSolves 전체와다르다.
+별도 잔류압력 화면점검은 residual-pressure-screen1.json에 보존했다. 그러나 Crowd.Update가PressureProposal/ContactForce를매번초기화하므로 듬성듬성한 양끝0값은 그사이호출의 실제입력을 대표하지 않는다. 해당5.35%를 절감가능호출량으로 제시하거나 새로운deadband/밀침누적구현의근거로 쓰지 않는다.
 
 ## 5. 검증 수준
-현행 런타임 마스크 구성 진단 성공. 새 기능·시각·성능 개선 또는8/64 회귀 통과가 아니다. 이전 gate의 기각을 유지하며 전체 목표는 미완료다.
+진단 성공:동일실행의51 CPU/게임시각표본·완전64상태·카운터범위·단계집계. 단일 실행이고 독립반복완료·기능회귀통과·시각품질·성능개선·최종수용은 아니다.64/64도달이나20ms목표달성을주장하지 않는다.
 
 ## 6. 변경 사항
-무개체 미션·핀 고정 계획·runtime TSV·분석/보고서만 추가. 기존 게임 코드·10개 PBO·서버/클라이언트 바이너리·모델·원시 실험 불변. 새 PBO가 없으므로 신규 서명 대상 없음. 역할LOD 후보를 활성화하지 않았다.
+격리 CPU읽기 스크립트·계획·기존미션재사용실행·분석/보고서만추가했다. 기존게임/PBO/모델/애니메이션/밀침·지지·등반 정책은불변이다. 원래수집기와과거보고서를덮어쓰지않았다. 신규PBO가없어새서명대상없음,15개기존입력PBO해시를실행전/저장전에대조했다.
 
 ## 7. 원시 증거
-ANIM-physics-mask-contract1. mask-values.tsv·plan.json·mission/init.c·server-terminal.json·script 로그와 기존 현행서버 cost64-three2 REPORT/family-disposition/conformance-summary 및0변위검토를 입력 해시로 연결한다. 저장 전 전체 입력 해시·JSON 및 시험 프로세스 부재를 확인한다. 공개에는 로컬 경로·PID·키·게임 자산을 제외한다. 공식 API 참고:https://github.com/BohemiaInteractive/DayZ-Script-Diff/blob/main/scripts/3_game/global/dayzphysics.c . 원격 선언은 설치 바이너리의 실행 동등성 근거가 아니며 실제 마스크 숫자는 이번 현행 서버 실행에서 얻었다.
+ANIM-interval-context64-1. plan/trial-contract/sampler-source-proof/runtime-proof,server-process-cpu.csv51행,gameplay-eight.tsv,ground-progress.tsv,server-frame.tsv,terminal-state.tsv,server-terminal/client-closed/start-gate,analysis1.json,stage-windows1.json 및각분석스크립트를연결한다. 공개에는정제집계와상대증거ID/해시만제공한다. 원시게임/사용자정보·PID·로컬경로·키·자산은게시하지않는다. 저장전해시/JSON/실제시험프로세스부재검증.
 
 ## 8. 잔여 문제와 다음 단일 산출물
-새 전용 실행을 늘리지 않고 기존64 밀집 비용 기록의 시간 구간별 기여를 재검토한다. 다음 산출물은 같은 실행에서 실제 높은 비용 구간과 살아있는 개체 수·상태·Drive/Displace 횟수·실제 프로세스CPU가 연결 가능한지 표시한 구간표다. 기존 평균·inclusive 표본·호출량을 더하거나 순수 비용으로 바꾸지 않는다. 기존 데이터가 이미 그 표를 제공하면 재생성하지 않고 해당 근거를 연결한다. 연결이 불가능하면 어떤 필드/동시 구간이 부족한지 밝히며 무조건 새 계측기를 만들지 않는다.
-발ray 수치 허용범위를 바꾸는 별도 제안은 아직 사용자 응답을 기다리는 선택사항이며 현재 gate는 그대로다. 그 답변을 모든 독립 분석의 차단 조건으로 취급하지 않는다. 기능 복구나 등반 자리 제한 개발로 확대하지 않는다.
+새목표는 접촉 변위를더많이검사하라는뜻이아니라 비용을낮출수있는 실제개입을선별하는것이다. 기존쿼리재사용·Fast·Scratch·셀풀·정수키·0변위·작은압력누적 제안과중복을검토한다. 접촉콜백0의미보정관측을네이티브비용0으로해석하지않는다.
+다음단일산출물은기존호스트접촉관측기의이벤트전달계약감사다. SetEventMask/CONTACT등록 여부와양성대조의존재부터기존소스로확인해,선택적표시호스트간pair-block이검증가능한국소비용후보인지또는관측불능이라보류해야하는지결정한다. 이단계에서실제pair-block/전역layer변경·새애니메이션갱신·기능복구개발은시작하지않는다. 이전같은0이벤트실행을반복하지않으며최소양성대조가필요하다면결과가어떤구현결정을바꾸는지먼저명시한다.
