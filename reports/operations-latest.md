@@ -1,30 +1,41 @@
-# 서버 정밀도 변경의 클라이언트 포즈 영향 — 후보 기각
+# 물리 질의 마스크 검증과 기각 후보 중복 제외
 
 ## 1. 작업 목표
-서버 비대표 표시 파트의 정밀도만 낮추면 클라이언트 애니메이션은 보존되는지 최소 통제 시험으로 확인한다. 기존 서버 포즈 불일치 연구를 클라이언트 공통 본 관측으로 연결한다. 지속적 등반·지지·밀침·낙하 코드를 수정하지 않는다.
+서버 LOD의 클라이언트 포즈 gate 실패 후, 기존 물리 질의 비용 연구에서 미검증 수정 지점을 선별한다. 정상 밀침·낙하·착지·FOLLOW·재등반을 보존하고, 이미 기각된 후보를 반복하지 않는다.
 
 ## 2. 실제 수행
-기존 고정 카메라·5파트 클라이언트 포즈 관측기를 재사용했다. Head/Hips/RightHand MS 좌표, 활성 상태 및 호스트 파일 기반 단계 표지만 추가/재사용했다. 새로운 RPC·net-sync 필드·네이티브 메모리 수정은 없다. AI·이동·root motion을 끈 고정 단일 조립체에서 Run→Walk→Idle을 한 실행에 계획했다. 각 클립은 baseline8초 후 서버 part1/3 LOD1을0.5초마다15초 유지하고10초 복원하도록 사전 명세했다. 다른 part0/2/4는LOD0 대조다. 실제 gameplay Drive 수신체를 구동한 시험은 아니다.
-진단 문자열의 긴 연결식이 Mission 컴파일에서 Formula too complex로 실패했다. 첫 compile1은 클라이언트·개체 없이 실패했고 해당 서버만 신원 확인 후 강제 종료했다. wrapper terminal의 forced=false는 핸들 대기 결과일 뿐이며 별도 compile-failure-cleanup.json의 강제 종료 기록이 우선한다. build3에서 문자열 연결식만 분할했다. 기존 build2·실패 로그를 보존했다. build3 서명·DSCheckSignatures 및 compile2 Mission 로딩/개체0 종료 통과 후 network1을 실행했다.
-baseline은>=100표본·활성>=90%·실제 포즈변화>=20·좌표차<=1e-5m를 요구했다. 처리 중3개 연속 활성 프레임의 불일치이면 즉시 수집 중단·서버LOD0 복원·retirement를 요청했다. 최종 기준은 연속3개에 한정하지 않고 모든 활성 처리 표본의 불일치를 실패로 본다.
+현행 DGBGroundAgent.Floors/Walls, SolveContactsInternal, Crowd.Displace와 기존 support-context·terrain-negative-backoff·후처리0변위·물리API 경계 보고서를 읽었다. 공식 DayZ-Script-Diff의 API 선언도 확인했다. 기존10개 PBO와 현행 서버 해시를 고정한 무개체 headless 미션에서 enum 상수와 실제 조합값만 출력했다. 클라이언트/네이티브 NPC0, 물리 질의·이동·상태 setter0이다.
+DESIGN.md의 최초 상태와 실제 후속 family-disposition을 구분했다. terrain-negative-backoff는 설계만 남은 후보가 아니라8/16회 변형의 국소 gate가 실패해 가족 확장이 중단된 후보다. 오래된 설명을 근거로 다시 구현하지 않는다.
 
 ## 3. 측정 결과
-Run baseline 승인 구간151표본 모두 활성, reference 포즈변화151회, 최대 공통 본 차0m였다. 처리 표지가 붙은 활성3프레임45본 비교 중18개가1e-5m를 초과했다. part1·3의 최대차는 RightHand 0.260551879m였다. part0·2·4는0m를 유지했다. 총213프레임1065행을 저장했다.
-파일 폴링 표지 지연 때문에 baseline 승인 뒤 처리 경계5프레임은 phase0으로 기록되며 최대0.163714263m였다. 이들을 원래 baseline 실패나 정확한 네트워크 지연으로 해석하지 않는다. 처리 시작은 server stage76.776게임초, 처리 관측 span0.381게임초100행에 그쳤다. 지속 정밀도/콜백 비율의2~12초 gate는 도달하지 못했다.
-서버 abort_requested→LOD0 복원→detached=true→RequestExit(0) 후 실제 exit−1이었다. 클라이언트는 일반 창 닫기로 종료했다. 시험 후 게임/PresentMon 프로세스 부재를 확인했다. Walk·Idle·복원 후 클라이언트 수렴·8/64 기능 회귀·CPU/Present p50/p95/p99·실제 표시 부드러움은 측정하지 않았다.
+현행 서버 runtime:Floors=33064, Walls=67408168. BUILDING8·VEHICLE32·ROADWAY256·TERRAIN32768의OR가Floors와 정확히 일치했다. FENCE262144·DOOR4096·ITEM_LARGE67108864를 더한OR가Walls와 일치했다. AI524288·CHARACTER16·DYNAMICITEM64 비트는Walls에 없다. 마스크 추가 비트0이다. 요청 종료 뒤 실제exit−1·강제종료 없음, 완료 표식/스크립트 오류 없음·프로세스 소멸 확인. p50/p95/p99·CPU·실제 시각을 새로 측정하지 않았다.
 
 ## 4. 원인 분석
-확인: 이 격리 조건에서는 서버 part1/3 정밀도 변경 후 해당 파트의 클라이언트 CPU 포즈가 대조와 달라졌다. 따라서 서버 전용 정밀도 변경이 클라이언트 포즈에 독립적이라는 가정은 채택 근거를 잃었다. 서버 script 시계 동등성만으로 클라이언트 동기화를 보장할 수 없다.
-미확정: replication에 실린 상태, 네이티브 graph/evaluation 시간, pose cache 및 네이티브 정밀도 정책 중 실제 전달 경로. 직접 화면의 끊김 크기·평균 재생속도·지속 비용효과는 이 측정으로 알 수 없다. 서로 다른 본/서버와 클라이언트의 최대 좌표차를 합산하지 않는다. 단일 실행이며 독립 반복 성공/실패율로 보고하지 않는다.
+확인:현재 비용을 잘못 조합된Floors/Walls 마스크 탓으로 설명할 근거가 없다. 이 런타임 상수값을 일반 정수 enum 순번으로 추측하지 않는다. API 선언의 입력에는 geometry/layer/ignore와결과만 있고 공개 scratch/batch 인자는 없다. RV 계열은 다른 교차 형식·결과 계약이며 같은 의미/낮은 비용이 증명되지 않았다.
+기존 후보 판정:
+
+| 후보 | 실제 상태·중복 근거 | 이번 결정 |
+|---|---|---|
+| 서버 follower LOD | 활성 클라이언트 공통 본 최대0.261m, 포즈 gate 실패 | 확대 금지 |
+| SupportSweepFast 상태 제한 | 현행 서버 build26220720 cost64-three2에서 서버+5.19%·Present+7.12% | 이름만 바꾼 guard 재시험 제외 |
+| Scratch/스냅샷 | 이전 국소 미달/실제 메서드 회귀 | 재구현 제외 |
+| Drive/Displace 동일 결과 재사용 | 실제 인접42쌍 입력 완전일치0 | 동일질의 가정 금지 |
+| terrain negative backoff8/16 | family-disposition=FAMILY_LOCAL_GATE_FAILED_NOT_ADOPTED | 더 큰 상수 튜닝 금지 |
+| Solve 뒤0변위 조기거절 | 이미 검토됨, 기존8명 낙관적 제거량0.8885%/1.0770% 전체solve | 새 후보로 반복하지 않음. CPU 절감률 아님 |
+| 발ray 하단 축소 | 실제 엔진 lift차 최대약0.305mm, 기존 strict gate 기각 | 허용오차를 조용히 바꾸지 않음 |
+| RaycastRV 대체 | mask/shape/normal·hit 계약 동등성 및 비용 미입증 | drop-in 구현 금지 |
+
+이 표는 전 프로젝트의 완전한 미검증 후보 부재를 증명하지 않는다. 이번 제한된 검토에서 생산 코드에 바로 넣을 만한 새 고가치 안전 후보를 확보하지 못했다는 결론이다. 따라서 억지로 미세 변경을 만들거나 비용 개선을 주장하지 않는다.
 
 ## 5. 검증 수준
-진단 성공: 활성·실제 동작 중 대조일치 baseline 및 클라이언트 포즈 gate 실패를 관측했다. 후보는 미수용. 기능 회귀 통과·반복 검증 완료·최종 수용은 아니다. 새 생산용 LOD 정책과64 성능 확대는 진행하지 않는다. 기존 foot-ray strict gate 및 다른 기각 판정을 바꾸지 않는다.
+현행 런타임 마스크 구성 진단 성공. 새 기능·시각·성능 개선 또는8/64 회귀 통과가 아니다. 이전 gate의 기각을 유지하며 전체 목표는 미완료다.
 
 ## 6. 변경 사항
-격리 nf_role_pose_probe build3 PBO, 시험 미션, 제어 스크립트, 분석·보고서만 추가했다. 기존10개 입력 PBO와게임 코드·모델·운영 서버·원시 기록은 불변이다. 새 진단 PBO SHA256: 083C3524E337490F5024FCDC957F73E885276AD5D9B46EA4C607F0B0C50D4D45. 서명 및 검증 성공, 개인키 포함 없음. 기존 build2 컴파일 실패를 성공으로 소급 기록하지 않는다. trial-contract1의 최초 STAGED_NOT_BUILT 문자열은 사전 기록으로 보존하며 실제 빌드/실행 상태는 build3 receipt와 본 보고서가 설명한다.
+무개체 미션·핀 고정 계획·runtime TSV·분석/보고서만 추가. 기존 게임 코드·10개 PBO·서버/클라이언트 바이너리·모델·원시 실험 불변. 새 PBO가 없으므로 신규 서명 대상 없음. 역할LOD 후보를 활성화하지 않았다.
 
 ## 7. 원시 증거
-실행 ID ANIM-client-role-pose-network1. client-profile/nf-client-role-pose.tsv, server-profile/role-server-pose.tsv·role-stage.tsv, controller-receipt.json, analysis1/2.json, build3/fixture-build.json, compile1의오류·강제종료 기록, compile2/서버종료 기록, client-closed.json 및 hash 고정 plan.json을 연결한다. 입력 해시와 JSON을 저장 전에 검증했다. 표지 파일은 호스트 시각 분류용이고 네트워크 동기화 측정값이 아니다. 공개에는 로컬 경로·PID·사용자 식별자·원본 자산·키를 제외한다.
+ANIM-physics-mask-contract1. mask-values.tsv·plan.json·mission/init.c·server-terminal.json·script 로그와 기존 현행서버 cost64-three2 REPORT/family-disposition/conformance-summary 및0변위검토를 입력 해시로 연결한다. 저장 전 전체 입력 해시·JSON 및 시험 프로세스 부재를 확인한다. 공개에는 로컬 경로·PID·키·게임 자산을 제외한다. 공식 API 참고:https://github.com/BohemiaInteractive/DayZ-Script-Diff/blob/main/scripts/3_game/global/dayzphysics.c . 원격 선언은 설치 바이너리의 실행 동등성 근거가 아니며 실제 마스크 숫자는 이번 현행 서버 실행에서 얻었다.
 
 ## 8. 잔여 문제와 다음 단일 산출물
-반복적인 서버 follower LOD1 적용은 현재 포즈 보존 gate에서 기각한다. 같은 후보로64 비용 시험이나 기능 복구 개발을 늘리지 않는다. 다음 단일 산출물은 기존 비용 후보·실패 원인을 반영한 변경 가능 비용 경로의 선정표이며, client pose 의존성을 건드리지 않는 스크립트 물리 질의의 입력 준비·결과 처리 범위에서 아직 시험하지 않은 국소 후보가 있는지 기존 자료로만 정리한다. 이미 기각한 Scratch·SupportSweepFast·스냅샷·단일 Drive/Displace 재사용을 이름만 바꿔 반복하지 않는다. 신규 후보가 없으면 그 한계를 명시하고 구현을 만들지 않는다. 지속적인 등반 시도와 정상 낙하·재추적은 보존한다.
+새 전용 실행을 늘리지 않고 기존64 밀집 비용 기록의 시간 구간별 기여를 재검토한다. 다음 산출물은 같은 실행에서 실제 높은 비용 구간과 살아있는 개체 수·상태·Drive/Displace 횟수·실제 프로세스CPU가 연결 가능한지 표시한 구간표다. 기존 평균·inclusive 표본·호출량을 더하거나 순수 비용으로 바꾸지 않는다. 기존 데이터가 이미 그 표를 제공하면 재생성하지 않고 해당 근거를 연결한다. 연결이 불가능하면 어떤 필드/동시 구간이 부족한지 밝히며 무조건 새 계측기를 만들지 않는다.
+발ray 수치 허용범위를 바꾸는 별도 제안은 아직 사용자 응답을 기다리는 선택사항이며 현재 gate는 그대로다. 그 답변을 모든 독립 분석의 차단 조건으로 취급하지 않는다. 기능 복구나 등반 자리 제한 개발로 확대하지 않는다.

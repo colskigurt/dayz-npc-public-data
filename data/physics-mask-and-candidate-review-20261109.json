@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "sourceRunId": "ANIM-physics-mask-contract1",
+  "verificationStatus": "RUNTIME_MASK_CONTRACT_CONFIRMED_NO_MASK_OPTIMIZATION",
+  "serverBuildSha256": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805",
+  "runtimeValues": {
+    "Floors": 33064,
+    "Walls": 67408168,
+    "BUILDING": 8,
+    "VEHICLE": 32,
+    "ROADWAY": 256,
+    "TERRAIN": 32768,
+    "FENCE": 262144,
+    "DOOR": 4096,
+    "ITEM_LARGE": 67108864,
+    "AI": 524288,
+    "CHARACTER": 16,
+    "DYNAMICITEM": 64
+  },
+  "expectedFloor": 33064,
+  "expectedWall": 67408168,
+  "extraBits": 0,
+  "excludedLayersVerified": [
+    "AI",
+    "CHARACTER",
+    "DYNAMICITEM"
+  ],
+  "nativeActors": 0,
+  "clientStarted": false,
+  "setters": 0,
+  "performanceMeasured": false,
+  "newPbo": false,
+  "decision": "No mask change. No untested high-value safe physics candidate established by this bounded review. Do not restart failed families from stale DESIGN labels.",
+  "generatedAt": "2026-11-09T00:40:13.871182+00:00",
+  "buildId": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805",
+  "metrics": {
+    "maskExtraBits": 0,
+    "nativeActors": 0,
+    "newClientRuns": 0,
+    "p50": null,
+    "p95": null,
+    "p99": null,
+    "cpuImprovement": null
+  },
+  "blockers": [
+    "No newly established safe high-value code change in this bounded review",
+    "8/64 feature, visible quality and whole cost acceptance remain incomplete"
+  ],
+  "evidenceReferences": [
+    {
+      "id": "server-cpu1/mask-contract1/server-profile/mask-values.tsv",
+      "sha256": "aca07aa927098baa7fd71494c1ca4aaf21381a717b47d7554050d180ad333857"
+    },
+    {
+      "id": "server-cpu1/mask-contract1/plan.json",
+      "sha256": "89d477f55c0b7ca6a97fd76342804db39ef855100b7b12927eac909b868c8bc1"
+    },
+    {
+      "id": "server-cpu1/mask-contract1/mission/mask-values.chernarusplus/init.c",
+      "sha256": "a7ea1e5a9b15a898d04d351f62c4769a243b22fb64244ad5c43ec623c1750f2d"
+    },
+    {
+      "id": "server-cpu1/mask-contract1/server-terminal.json",
+      "sha256": "8eff833f2b70daace4f5311f14c8703573f46336809f8eabad56b6d967628e36"
+    },
+    {
+      "id": "server-cpu1/mask-contract1/server-profile/script_2026-11-09_09-36-09.log",
+      "sha256": "a1fe3cf76360f90c7c4942cd212bc5eb95c4c211f322cce30497255bcfaf1dbc"
+    },
+    {
+      "id": "support-context-five1/engine-26220720/cost64-three2/REPORT.md",
+      "sha256": "143cf849cb00c69011de3a8891a72aaf747ebd7547fd7fbfe47aef78e43b7b34"
+    },
+    {
+      "id": "terrain-negative-backoff1/family-disposition.json",
+      "sha256": "381336b31794070c4dde850c88a2c569e76f44bc60fc51f0698942258102a505"
+    },
+    {
+      "id": "terrain-negative-backoff1/conformance-summary.json",
+      "sha256": "05b62222f7c5a659edf7995dc259b99d69742676f9ef00eae9f674792f0d2560"
+    },
+    {
+      "id": "grid-cell-pool1/engine-26220720/cost64-three2-resume2/REPORT.md",
+      "sha256": "a4eb182bef1d580d83024805aa7d81ec157adbce6a04dd0746807815c2e85e9e"
+    },
+    {
+      "id": "server-cpu1/QUERY_CONTROL_BOUNDARY_REPORT.md",
+      "sha256": "591b9c6a783e9aa1d7cb2cddcbd8998320361755e06092a2a3a1bc90e7fba8c2"
+    },
+    {
+      "id": "high-cost1/report.md",
+      "sha256": "b40105856c8ea0ae7fa536fd0281b9f74766e330bea4de758c908848c70f509e"
+    },
+    {
+      "id": "host-physics-readback1/server-follower-lod-probe1/client-role-probe1/network1/analysis2.json",
+      "sha256": "28942d988c2e78728d4530ab2afa2af6ac231b3277083ab2b26b8e54c587ea41"
+    }
+  ]
+}
