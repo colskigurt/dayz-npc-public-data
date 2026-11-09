@@ -1,33 +1,38 @@
-# 스키닝 셰이더 용량 — 255행렬 선언과 미확인 매핑 경계
+# ODOL 본 매핑 — 구간 기준 복원과 파서 해석 경계
 
 ## 1. 작업 목표
-파트별 네이티브 호스트 비용을 줄이는 구조 연구에서,64가중본 예산이GPU셰이더의확정한계인지검사한다. 기존5파트/4파트결과와전체모델변형실패를보존하고,근거없이같은8→1합체시험을반복하지않는다.
+255행렬shader선언과기존전체모델변형실패사이의경계를좁힌다. 기존컴파일ODOLv56의구간/하위본표/정점참조를비교하고,parser해석문제를엔진오류로오인하지않는다. 원본가중치·기능·현재PBO는보존한다.
 
 ## 2. 실제 수행
-기존native-skin-variants-result/20261023 client결과/48본분할작성코드/palette-budget판정/4파트산술하한을읽었다. 현행설치system.pbo를기존PBOreader로읽고,$SKIN 이름의vertex shader118개를Windows에설치된D3DDisassemble로정적해독했다. 게임/셰이더실행·프로세스후킹·네이티브메모리수정없음. REA스킬의artifact/evidence경계를적용했고,광고된REA도구에shader전용decoder가없어기존로컬형식reader와시스템decoder를사용했다. REA/Ghidra전체초기화는시작하지않았다.
-각DXBC의총길이/청크범위를검증하고SHA를기록했다. 선택shader하나의해독문만로컬보존했다. 기존SDK추출118파일과바이트해시비교했고,기존전체/sectioned/part P3D5개의ODOL헤더를읽었다. 현재client해시를고정하고세개상수이름의ASCII/UTF16문자열존재만제한검색했다.
+SXDIST/DayZObjectBuilder의고정커밋e272780131dc10fe798bad321dca2c96894e993e에서reader3개와GPL라이선스만취득했다. import/파일/실행경로를읽고Blender/plugin을설치하거나실행하지않았다. GitblobSHA와로컬SHA256을검증했다. 원문reader는수정하지않고자체wrapper로원래버리던구간minBoneIndex/boneCount와정점참조를관측했다.
+현재기준PBO안의전체/텍스처구간분할/48본파트와기존5파트PBO의64본파트2개를메모리에서읽었다.5모델의모든LOD를읽었고failedLOD는0. 이후구간범위해석3개를비교하고,원래MLOD가중본이름과대조했다. 모델변환/쓰기·Workbench·게임실행은없다.
 
 ## 3. 측정 결과
-- 실제설치$SKINvertex shader118/118: CBufferSkinMatrix에float4x3행렬255개,12240byte선언. 선택shader는CB5[765]를dynamicIndexed로선언하며입력blend indices를변환해행렬행을참조한다.
-- 기존SDK추출본118/118은현재shader와동일SHA. 이는해당옛실행의실제사용shader/추출시각을인증하는것은아니다.
-- 기존full/sectioned/분할모델5개는이미ODOLv56이다. 단순binarization이누락됐다는설명은선정모델에맞지않는다.
-- 현재client는e3ba9660…고정,파일버전1.30.164.289. 세상수이름의PE문자열검색은ASCII/UTF16모두0. 문자열부재는업로드함수부재증거가아니다.
-- 새게임·PBO·8/64회귀·CPU/Present p50/p95/p99·시각품질측정0.
+| 모델 | P3D골격 본 | 하위본표 길이 | 표의고유본 | 시각구간 |
+|---|---:|---:|---:|---:|
+| 전체dg_native |249|2160|224|79|
+| 텍스처분할dg_sectioned |249|445|224|11|
+| 기존48본part0 |48|48|48|1|
+| 기존64본part0 |64|101|64|3|
+| 기존64본part1 |64|85|64|3|
+정점참조는선정reader에서최대4개(1byte본index,1byte가중치)로읽혔다. 전체와텍스처분할모델에서양의가중코너참조565,910개전부가구간min/count를기준으로256단위를복원했을때범위안에들었다. byte를그대로전체하위표index로쓰면각각62,643/312,170개만구간범위와일치했다.
+원본MLOD와좌표연결된면코너는각185,346개. 단순본이름해석일치는전체21,407/텍스처분할103,056개였고,구간기준복원은둘다185,346개일치했다.396개코너는좌표연결불가로남겼다. 좌표는1e-5반올림/모델bounding center보정,동일좌표seam의후보본집합허용,원본상위4가중본을비교했다. 이는수치가중치·bindmatrix·GPU변형동등성이아니다.
+새CPU/Present p50/p95/p99·8/64기능·시각수용측정0.
 
 ## 4. 원인 분석
-확인: 조사한현재shader의정적행렬버퍼는64개가아니라255개다. 따라서64가GPU셰이더전체의확정행렬상한이라는설명은이자료로뒷받침되지않는다. 기존4파트최소성은64예산을가정한정적배치의조건부하한이며,엔진모든경로의최소파트수증명이아니다.
-보존한실패: 단일전체P3D와48가중본/텍스처구간분할은과거시각변형실패. 제한된본을가진별도모델은개선됐고64본파트도후속검증됐다. 이번선언발견으로과거실패를성공으로바꾸거나한파트구현가능성을확정하지않는다.
-미확인: 실제선택draw의shader와상수버퍼내용,로컬/글로벌boneindex매핑,팔레트구축·업로드의상한/오프셋,엔티티별CPU호스트가한모델을처리할수있는조건. 후보원인이shader배열크기외의메시변환/업로드/매핑경로에있을가능성을남긴다.
-공식1.30변경이력은250global bone제한제거와이름기반index를서술한다. 이것은모델별weighted palette/렌더upload한계와구분해야한다. 이항목으로단일host수용을선언하지않는다. [공식변경이력](https://dayz.com/article/game-update/1-30-experimental-release/dayz-steam-patch-notes).
+확인: 선택parser의직접byte→전체하위표해석은구간기준을빠뜨리며,이모델에서원본본이름대조를대량실패한다. 구간기준을복원하면연결된코너의본이름집합은모두맞는다. 따라서parser의raw결과에서많은본이사라진것을곧바로기존자산오염이나엔진truncation으로보고하면잘못이다.
+미확인: 엔진이실제로구간기준을어떻게복원하는지,shader에주입하는matrixoffset/행렬내용,249골격/224가중본/많은구간중어떤조건이과거시각실패에기여했는지. 256항목을넘는표가있다는것만으로엔진버그나고정256상한을선언하지않는다. 기존255shader선언은용량사실일뿐이모델의실제draw관측은아니다.
+반증경계: 단순binarization미실행설명은기존ODOLv56로배제됐다. 단일모델이반드시지원된다는결론과64본이확정엔진상한이라는결론모두현재근거로불가하다.
 
 ## 5. 검증 수준
-설치된DXBC선언/청크/SHA교차검증진단성공. 실행shader선택·렌더업로드원인특정은미완료. 모델수정/새기능/실제단일host/CPU개선/시각수용/반복회귀/최종수용미실행.20ms목표미달성유지.
+고정외부reader소스검토/바이트정체성/선정5모델LOD해독/구간범위대조/부분원본본이름대조진단성공.396코너·수치가중치·실제엔진렌더해석미검증. 새모델/기능/CPU/시각/최종수용없음. 기존안정5파트와4파트미수용판정을유지한다.
 
 ## 6. 변경 사항
-기존work-reduction-review1/shader-palette-readonly1에선정정적증거/자체reader/요약을추가했다. 게임/모델/원본/PBO/그래프/지원판정/보안설정/운영서버불변. 시스템DLL을reader프로세스에서해독용으로호출했을뿐shader를실행하지않았다. 새서명대상없음. 원시shader/전체디스어셈블리/게임자산은공개하지않는다.
+기존shader-palette-readonly1안에reviewed upstream reader3개+LICENSE+source-identities와자체wrapper/집계만추가했다. GPLreader는분석입력으로만사용하고게임패키지/공개자료에포함하지않는다. 원본MLOD/ODOL/PBO/골격/애니메이션/서버/개인키변경없음. 새서명대상없음. parser의동작해석을검증없이게임자산에되써넣지않았다.
 
 ## 7. 원시 증거
-ANIM-skin-shader-readonly1. shader-layouts1.json에system.pboSHA·decoderDLLSHA·118memberSHA와선언을기록했다. capacity-crosscheck1.json,existing-model-formats1.json,selected-shader-disassembly1.txt 및작성코드. 기존TRACK_B_NATIVE_CLIENT_RESULT_2026-10-23.json은rootCauseConfirmed=false를명시한다. 저장전원시증거해시를검증한다. 제한적PE검색을전체엔진분석으로승격하지않는다.
+ANIM-odol-palette-readonly1 / ANIM-odol-section-index1 / ANIM-odol-source-weights1은모두정적파생작업이며독립게임실행이아니다. source-identities.json,GPLLICENSE,odol-mapping-comparison1.json,section-index-ranges1.json,source-weight-name-crosscheck1.json와자체스크립트. 원본PBO453d6a9e…/5파트PBOef23b8d3…/원본MLOD2d5c4bb8…SHA를연결했다. 공개는집계/해시/한계만이며게임모델·전체코드·원시정점자료를게시하지않는다. [선정parser고정커밋](https://github.com/SXDIST/DayZObjectBuilder/tree/e272780131dc10fe798bad321dca2c96894e993e).
 
 ## 8. 잔여 문제
-다음단일산출물은기존컴파일된전체ODOLv56와64본part의팔레트/본index매핑비교표다. 지원되는reader를확인하고양쪽모델이같은bone/weight의미를보존하는지부터판단한다. 이미실패한텍스처구간분할을이름만바꿔재시도하지않는다. 매핑/업로드의구체적가설이생기기전에는새모델변환·Workbench·8→64시험을시작하지않는다. 공개ODOLreader는[DayZObjectBuilder원본저장소](https://github.com/SXDIST/DayZObjectBuilder)의지원주장이있으나현재파일에대한정확성/구문검증은아직수행하지않았다. GPUcapture는현재범위에서수행하지않았고표준경로RenderDoc부재만확인했으며시스템전체미설치를단정하지않는다.
+후속최소후보는현재잘보이는64가중본파트의시각면/가중치는유지한채P3D골격의미사용본목록만전체골격으로확장하는카디널리티분리진단이다. 동일full native instance/동일카메라에서64골격대전체골격을비교하면P3D골격크기와많은가중면/구간의영향을분리할수있다. 아직구현하지않았고,기존기록에서같은통제조건의완료를확인한것은아니다.
+구현전반드시현재실제full instance와두모델공통bone/Memory이름의연결을검증해야한다. 미사용본추가가bounds/referencepose/메모리선택을바꾸거나없는XOB본을추가하면통제실험이아니므로중단한다. 위험은실제표시변형/컴파일/바인딩실패이며물리·AI·게임플레이는연결하지않는다. 첫관문은1개체고정Run/idle의정적자산계약과공통CPU포즈·실제화면비교이며,원인후보를분리할때만수행한다. 그결과가나오기전에는전체1파트/14클립변환/8→64/성능시험을시작하지않는다. 이진단자체는최적화성과가아니다.

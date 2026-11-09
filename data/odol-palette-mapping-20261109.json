@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T04:39:41.938827+00:00",
+  "sourceRunId": "ANIM-odol-palette-readonly1",
+  "buildId": "static-existing-odol56-parser-e2727801",
+  "verificationStatus": "STATIC_MAPPING_PARTIAL_SEMANTIC_DIAGNOSIS",
+  "metrics": {
+    "models": [
+      {
+        "pboSha256": "453d6a9e688d7bf14c5b98c305dd5a45200ec52156949c10691839b43c58bc9a",
+        "member": "dg_native.p3d",
+        "skeletonBones": 249,
+        "subTableEntries": 2160,
+        "uniqueMappedSkeletonBones": 224,
+        "visualSections": 79,
+        "visualVertices": 42575,
+        "failedLods": []
+      },
+      {
+        "pboSha256": "453d6a9e688d7bf14c5b98c305dd5a45200ec52156949c10691839b43c58bc9a",
+        "member": "dg_repartition_part_0.p3d",
+        "skeletonBones": 48,
+        "subTableEntries": 48,
+        "uniqueMappedSkeletonBones": 48,
+        "visualSections": 1,
+        "visualVertices": 13494,
+        "failedLods": []
+      },
+      {
+        "pboSha256": "453d6a9e688d7bf14c5b98c305dd5a45200ec52156949c10691839b43c58bc9a",
+        "member": "dg_sectioned.p3d",
+        "skeletonBones": 249,
+        "subTableEntries": 445,
+        "uniqueMappedSkeletonBones": 224,
+        "visualSections": 11,
+        "visualVertices": 41472,
+        "failedLods": []
+      },
+      {
+        "pboSha256": "ef23b8d3da2404462efa337be6cedf4c1ae88d3b2d4a1924ae6a5760406a0552",
+        "member": "dg_repartition_part_0.p3d",
+        "skeletonBones": 64,
+        "subTableEntries": 101,
+        "uniqueMappedSkeletonBones": 64,
+        "visualSections": 3,
+        "visualVertices": 17275,
+        "failedLods": []
+      },
+      {
+        "pboSha256": "ef23b8d3da2404462efa337be6cedf4c1ae88d3b2d4a1924ae6a5760406a0552",
+        "member": "dg_repartition_part_1.p3d",
+        "skeletonBones": 64,
+        "subTableEntries": 85,
+        "uniqueMappedSkeletonBones": 64,
+        "visualSections": 3,
+        "visualVertices": 11012,
+        "failedLods": []
+      }
+    ],
+    "failedLods": 0,
+    "eachModelPositionMatchedCorners": 185346,
+    "eachModelWrappedBoneNameMatches": 185346,
+    "eachModelUnmatchedPositionCorners": 396,
+    "numericWeightComparison": false,
+    "newGameExecutions": 0,
+    "newPbo": 0,
+    "cpuImprovement": null,
+    "presentP95": null
+  },
+  "blockers": [
+    "External parser omits section-aware index interpretation in direct named-weight join",
+    "Runtime engine section offset/matrix upload not observed",
+    "396 corners and numeric weights/bind matrices unverified",
+    "One-host rendering remains unproven"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/odol-palette-mapping-20261109.md",
+      "parserCommit": "e272780131dc10fe798bad321dca2c96894e993e"
+    }
+  ],
+  "adopted": false,
+  "next": "Verify full-instance asset contracts before a skeleton-cardinality-only single-actor diagnostic"
+}
