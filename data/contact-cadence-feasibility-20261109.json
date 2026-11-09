@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T04:23:13.890511+00:00",
+  "sourceRunId": "ANIM-contact-cadence-feasibility1",
+  "buildId": "readonly-current64-callback-review",
+  "verificationStatus": "PREIMPLEMENTATION_CADENCE_CANDIDATE_WITHDRAWN",
+  "metrics": {
+    "newGameExecutions": 0,
+    "logicalAgents": 64,
+    "physicsCallbacksPerAgentGameSecond": {
+      "minimum": 19.996976263669808,
+      "median": 19.996976263669808,
+      "maximum": 19.996976263669808
+    },
+    "totalPhysicsUpdates": 63488,
+    "totalContactSolves": 121908,
+    "displaceCalls": 51619,
+    "displaceSolves": 50833
+  },
+  "blockers": [
+    "33ms batching unsupported by observed20Hz callback stream",
+    "No new supported physical-query equivalent candidate established",
+    "Longer contact delay behavior/visual/safety unverified"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/contact-cadence-feasibility-20261109.md",
+      "sourceRunId": "ANIM-contact-cadence-feasibility1"
+    },
+    {
+      "sourceRunId": "ANIM-crowd-live-attribution1",
+      "sourceHashes": {
+        "gameplay-eight.tsv": "8e09d56a759dcc98387dcfe532730fadb6680513386a71b5be80e501b3f11960",
+        "ground-progress.tsv": "0e10e180cf55476a04a3053b729e1580d8f6aaea68b10c1c1c3d3c8f81d01802",
+        "part-command-clock.tsv": "4125fced5ec3cd38ada8b72eb58e293fd61196184ada5509d10296421fe8e015"
+      }
+    }
+  ],
+  "adopted": false,
+  "proposalQuestionSuperseded": true
+}

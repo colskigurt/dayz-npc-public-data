@@ -1,13 +1,12 @@
 # DayZ NPC Observatory — 현재 상태
 
-2026-11-09: **상태 판정 캐시의 주력 확대를 보류.** 실제64 기준 한 실행에서 기존 군중Update 누적 범위는 경과시간의5.16%였다. 별도 서버CPU는807.22CPUms/벽시계초. 두 값은 서로 다른 측정이며 CPU self-time 비중/개선률이 아니다. 밀집 합성20.57% 이득을 전체64 개선으로 확장하지 않는다.
+2026-11-09: **33ms 밀침 묶음 후보를 구현 전에 철회.** 기존 최신64개체 모두 물리 콜백 평균19.99698Hz(약50ms)여서33ms 조건이 호출량을 줄인다는 근거가 없다. 앞선 선택 질문은 철회됐다. 더 긴 지연으로 자동 변경하지 않는다.
 
-- [최신 상세 보고서](reports/operations/crowd-live-attribution-20261109.md)
-- [구조화 결과](data/crowd-live-attribution-20261109.json)
-- [기존64 밀도 대조](reports/operations/eligibility-existing-density-20261109.md)
-- [인자 분리: 밀집 이득·희박 악화](reports/operations/crowd-eligibility-factor-20261109.md)
+- [최신 상세 보고서](reports/operations/contact-cadence-feasibility-20261109.md)
+- [구조화 결과](data/contact-cadence-feasibility-20261109.json)
+- [실제64 군중 범위 관측](reports/operations/crowd-live-attribution-20261109.md)
 - [기존 보고서](reports/operations/)
 
-64논리·320파트·64수신체 생존 인구 표본70회 확인.70초 진단 terminal은 유효10/미완료53/미해결1이며 전체 회귀 통과가 아니다. 후보 미적용,원본/물리검사/등반 재시도 유지. 새PBO 없음. Present·시각 개선 미측정.20ms p95 목표 미달성. 서버·클라이언트 종료 확인.
+같은 표본 전체Solve121,908회 중Displace50,833회(41.70%)는 호출량 비율이며CPU비중이 아니다. 물리콜백20Hz를전체애니메이션/렌더20fps로해석하지 않는다. 새게임·구현·PBO없음. 현재즉시적용할새안전후보는미확정. 전체CPU·시각품질·20ms p95 목표는미해결.
 
-군중Update는 후속 body callback의 Displace 물리 질의를 포함하지 않는다. 다음 주력은 그 실행량을 줄이는 지원 가능한 계약이다. 입력 불일치 결과 캐시/SupportSweepFast/Scratch/no-op 상한 등 기존 실패 자료를 먼저 재사용한다. 이번 진단 결과를 최적화나 기능 수용으로 처리하지 않는다.
+1mm 발지지 허용은 다른후보나일반밀침오차허용으로확장하지않는다. 캐시입력불일치·중간Contacts·부분성공rollback을보존해야한다. 현재노력은성능개선성공이아닌구현전오류전제소거다.

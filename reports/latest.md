@@ -1,30 +1,37 @@
-# 실제64 군중 계산 범위 — 주력 확대 보류
+# 접촉 빈도 후보 사전검사 — 33ms 제안 철회
 
 ## 1. 작업 목표
-군중 상태 판정 인자 분리에서 확인한 밀집 국소 이득의 전체64 최적화 가치를 판단한다. 선택 로그에 없던 기존 Crowd.UpdateTicks·실제 PairCandidates를 기준 실행 한 번에서 관측한다. 후보를 적용하지 않고 불필요한8→64 확대를 피한다.
+군중Update 캐시의 주력 확대 보류 후,후속 밀침/지지/월드 질의의 변경 가능한 범위를 기존 자료로 확인한다. 정상 밀침·낙하·착지·추적·재등반을 보존하며 무익한 빈도 조정 시험을 피한다.
 
 ## 2. 실제 수행
-현재 동일 엔진/15개 PBO/64논리·320파트 기준 미션을 재사용했다. 서버 frame 로그의 기존 reserved3열을 누적 군중 시간 범위·Update 호출 수·마지막 쌍 후보 수로 바꿨다. Update 직후 미션 카운터1개만 증가시켰다. 내부 pair/물리 질의 타이머·새 PBO·알고리즘 변경은 없다. 기존 Steam 경로/클라이언트 활성 확인/50초 서버 CPU 수집기를 사용했다. 새 영상·ETW 없음. 70초 자극 후 원래 퇴역 경로로 종료했다.
+현행 SolveContactsInternal/Drive/Displace와 기존 query-control,SupportSweepFast,Scratch,StaticBounds,Drive→Displace 결합 보고서를 대조했다. 먼저 지상 접촉을33ms 단위로 모으는 후보를 사용자에게 제시했으나,구현 전에 기존 최신64 로그의 physicsUpdates/Displace 카운터로 전제부터 검사했다. 물리 콜백이 이미약20Hz임을 확인하고 제안·선택 질문을 철회했다. 선택 답변이 오더라도 철회한33ms 후보의 구현 승인으로 취급하지 않는다.
 
 ## 3. 측정 결과
-게임10.0071~59.9806초,1926 frame 표본에서 Crowd Update1925회. 같은 TickCount 시계의 누적 군중 범위/경과 비는 **5.1588%**다. 원시 counter delta 499740335, 군중 누적 delta 25780470. 실제 frame별 쌍 후보 평균 510.01,p95 894,최대 1094. 이것은 관측된 PairCandidates이며 ContactPairs가 아니다.
-같은 실행 별도50초 CPU 표본: wall 49.998039초,프로세스 누적CPU 40359.375ms, **807.219 CPUms/벽시계초**. 타이머 범위 비율을 CPU self-time으로 환산하지 않는다.
-서버 mission dt p50/p95/p99는27/43/51ms. 클라이언트 Present p50/p95/p99는 미측정이다. 클라이언트 앱 frame 총4592행 중 비활성0행이며 로딩/종료를 포함한 범위다. 실제 화면 관찰은 단일 스크린샷으로 시간적 부드러움 수용을 판정하지 않았다.
-인구 표본70회 모두64논리·320생존파트·64생존수신체.70초 진단 종료의 terminal 결과 {'VALID_TERMINAL': 10, 'INCOMPLETE_MILESTONES': 53, 'UNRESOLVED_STATE': 1}. 이는 전체 회귀 완료 조건이 아니며 강제 valid=false 기준 캡처의 functional=false를 새로운 최적화 기능 실패로 취급하지 않는다.
+같은 기존 ANIM-crowd-live-attribution1 게임10~60초 자료의64개체 모두 물리 콜백 빈도 **19.996976/개체게임초**. 합계 callback 63488,접촉Solve 121908,Displace호출 51619,그중Solve 50833. Displace의Solve 수는 같은 표본 범위 전체Solve의 **41.6978%**이며 CPU비용 비중이 아니다.1callback에서항상2solve가발생한다는뜻도아니다.
+새 게임/클라이언트/계측/PBO0. 새 Present p50/p95/p99·시각 판정·성능 개선0. 이 재분석을 독립 반복으로 세지 않는다.
 
 ## 4. 원인 분석
-확인: 실제 군중 계산 범위는 이 단일 장면의 벽시계 경과 약5.16%였다. 첫/둘째 LOW/HIGH 및 지상 범위는 analysis1.json에 분리했다. 밀집 인자 분리의20.57%를 이 범위 전체에 그대로 적용한다는 비현실적인 가정도 벽시계 약1.06% 범위에 해당할 뿐,측정된 개선이 아니다. 이 예시는 CPU 절감 상한/예측치가 아니다.
-판단: 전체CPU를 크게 줄일 주력 후보로 상태 판정 캐시를 확대할 근거가 부족하다. 기존 일반 적용 gate 실패도 유지한다. pair마다 SolveContacts를 수행하는 구조가 아니라,모인 압력 속도를 각 body 콜백에서 Displace가 소비한다. Crowd.Update 범위는 그 후속 물리 질의를 포함하지 않는다.
-미확인: 이 범위의 정확한 CPU self-time,GC/할당 독립 비용,64 전체CPU에 대한 후보의 인과효과. 단일 기준 실행이므로 독립 반복 성공이나 성능 향상으로 기록하지 않는다.
+확인: 평균50ms 기반 스트림에33ms 묶음 조건을 더해 호출이 줄어든다는 전제가 성립하지 않는다. 개별callback간격 히스토그램은 없어 모든간격이정확히50ms라고확정하지않지만,현재자료는33ms최적화의근거가아니다. 이 물리callback빈도를엔진전체애니메이션평가/렌더프레임빈도로해석하지않는다.
+
+| 검토 지점 | 확인된 경계 | 현재 결정 |
+|---|---|---|
+| native query 내부 scratch/batch | 설치선언에scratch/batch인자미확보 | 스크립트출력배열재사용으로native할당제거주장금지 |
+| Drive→Displace 결과 캐시/병합 | 입력42쌍완전일치0,중간Contacts와부분성공rollback의존 | 단일endpoint로바꾸지않음 |
+| SupportSweepFast | 현재64 ray감소에도전체비용수용실패;기존bound오차최대약8mm | 1mm허용을이후보로확대하지않음 |
+| StaticBounds epoch | StaticMap metadata용,실제8hit0 | 발지지중복제거와동일시하지않음 |
+| no-op 접촉 조기탈락 | 기존8 낙관적전체Solve수0.89~1.08%규모 | 같은시험재개하지않음 |
+| 33ms 접촉묶음 | 현재nativecallback평균20Hz | 구현전철회 |
+
+미확인: 더긴지연의실제반응성/안전성/전체CPU효과. 더긴지연으로몰래수정해새후보로실행하지않는다. 이미검사하는중간경로를없애야만생기는절감은기능보존성공으로보고하지않는다.
 
 ## 5. 검증 수준
-실제64 기준의 기존 누적 범위 관측 진단 성공. 최적화 후보 미적용,성능 개선/기능 회귀 통과/시각 품질/반복 검증/최종 수용 아님.20ms p95 목표는 미달성 상태를 유지한다.
+기존로그빈도·호출소유진단성공. 구현전후보철회. 기능회귀·시각·성능개선·최종수용미실행. 기존1mm발지지오차선택과별개며,새허용범위를추정하지않았다.20ms p95목표미달성유지.
 
 ## 6. 변경 사항
-기존 인자 분리 폴더 내 live-attribution1 미션·실행기 재사용 사본·작은 로그/JSON만 추가했다. 서버 wrapper만360초 보유 핸들 대기로 해실제 exit를 보존했다. 기존 상대 경로/Steam 진입 방식을 재사용했다. 원본 게임코드·PBO·모델·갱신주기·지지/충돌 판정·등반 재시도 불변. 실행 전후15PBO와 서버 해시 일치. 신규 서명 대상 없음.
+기존work-reduction-review1 안에재분석Python·작은JSON·보고서만추가. 원본/PBO/모델/물리검사/갱신주기/행동/운영서버불변. 새서명대상없음. 질문을근거확인전에제시한순서오류는기록하고,결과를알면서33ms시험을시작하지않았다.
 
 ## 7. 원시 증거
-ANIM-crowd-live-attribution1. trial-contract1.json/plan.json/mission SHA,server-frame.tsv,server-process-cpu.csv,mixed-hosts.tsv,terminal-state.tsv,visual-app-frames.tsv,시작·종료 활성 상태와종료영수증을 보존한다. actual server exit=-1,forced=false,detached=true. 소유 클라이언트 CloseMainWindow 종료확인. 기록 저장 전에 실행 프로세스 부재와 해시 검증. 원본 logs/기존 보고서는 덮어쓰지 않는다.
+ANIM-contact-cadence-feasibility1은ANIM-crowd-live-attribution1의재분석. 원본gameplay-eight.tsv/ground-progress.tsv/part-command-clock.tsv 해시를전후대조했다. contact-cadence-feasibility1.json,check-contact-cadence1.py와기존query-control/combined-proposal/SupportFast/StaticBounds 보고서를연결한다. 기존로그·보고서덮어쓰기없음.
 
 ## 8. 잔여 문제
-상태 판정 재사용은 우선순위를 낮추며 조건부 활성화 구현/중간밀도 반복/8→64 확대를 하지 않는다. 다음 주력 산출물은 현행64에서 Drive/Displace 후속 지지·월드 검사 실행량을 줄일 지원 가능한 후보의 계약표다. 이미 실패한 입력 불일치 캐시·SupportSweepFast·Scratch·no-op 상한·쿼리 단축은 재사용하고 같은 시험을 반복하지 않는다. 정상 밀침·낙하·착지·FOLLOW·재등반은 보존한다. 네이티브 파트/질의 큰 구조의 지원 제약을 해결하지 못한 상태를 작은 국소 수치로 숨기지 않는다.
+물리질의의큰실행량은남아있고,현재검토범위에서즉시적용할새안전후보는확정하지못했다. 실제수정가능한native API 또는안전검사동등성의새근거없이추가파라미터시험을하지않는다. 다음선정에서는질의대체의지원계약과중간접촉경로보존을먼저입증해야한다. 현재까지의작은함수개선·호출수재분석을64전체최적화성공으로대체하지않는다. 애니메이션시각품질은기존사용자14동작평가와신규64판정을구분해유지한다.
