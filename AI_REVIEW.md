@@ -1,13 +1,13 @@
 # DayZ NPC Observatory — 현재 상태
 
-2026-11-09: **상태 판정 재사용의 전체64 CPU 이득은 미확인.** 기존64 로그 완전표본374개에서 격자 후보156~1228개를 재구성했다. 합성시험의 후보0/2016 사이이며, 밀집 국소20.57% 감소를 전체CPU 절감으로 확장할 수 없다. 선택 로그에는 Crowd.UpdateTicks가 없다.
+2026-11-09: **상태 판정 캐시의 주력 확대를 보류.** 실제64 기준 한 실행에서 기존 군중Update 누적 범위는 경과시간의5.16%였다. 별도 서버CPU는807.22CPUms/벽시계초. 두 값은 서로 다른 측정이며 CPU self-time 비중/개선률이 아니다. 밀집 합성20.57% 이득을 전체64 개선으로 확장하지 않는다.
 
-- [최신 상세 보고서](reports/operations/eligibility-existing-density-20261109.md)
-- [구조화 결과](data/eligibility-existing-density-20261109.json)
-- [직전 인자 분리: 밀집 이득·희박 악화](reports/operations/crowd-eligibility-factor-20261109.md)
-- [클라이언트 전용 명령 경계](reports/operations/client-local-explicit-start-20261109.md)
+- [최신 상세 보고서](reports/operations/crowd-live-attribution-20261109.md)
+- [구조화 결과](data/crowd-live-attribution-20261109.json)
+- [기존64 밀도 대조](reports/operations/eligibility-existing-density-20261109.md)
+- [인자 분리: 밀집 이득·희박 악화](reports/operations/crowd-eligibility-factor-20261109.md)
 - [기존 보고서](reports/operations/)
 
-일반 적용 후보 미수용 유지. 조건부 캐시는 미구현, 새 게임·8→64 확대 없음. 원본·물리검사·등반 재시도 유지. 전체CPU/시각 개선 미측정,20ms p95는 목표로 남는다.
+64논리·320파트·64수신체 생존 인구 표본70회 확인.70초 진단 terminal은 유효10/미완료53/미해결1이며 전체 회귀 통과가 아니다. 후보 미적용,원본/물리검사/등반 재시도 유지. 새PBO 없음. Present·시각 개선 미측정.20ms p95 목표 미달성. 서버·클라이언트 종료 확인.
 
-재구성값은 반올림 좌표 기반이며 실제 PairCandidates/ContactPairs가 아니다. 선택 OFF/ON은 렌더 cadence 차이로 성능 대조가 통제되지 않았다. 다음 의사결정에는 기존 누적 군중 타이머 범위의 관측이 필요하며 순수 CPU self-time으로 오인하지 않는다.
+군중Update는 후속 body callback의 Displace 물리 질의를 포함하지 않는다. 다음 주력은 그 실행량을 줄이는 지원 가능한 계약이다. 입력 불일치 결과 캐시/SupportSweepFast/Scratch/no-op 상한 등 기존 실패 자료를 먼저 재사용한다. 이번 진단 결과를 최적화나 기능 수용으로 처리하지 않는다.

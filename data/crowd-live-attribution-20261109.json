@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T04:16:33.390385+00:00",
+  "sourceRunId": "ANIM-crowd-live-attribution1",
+  "buildId": "baseline-64-fiveparts-server987-observe-crowd",
+  "verificationStatus": "LIVE64_SCOPE_ATTRIBUTION_DIAGNOSIS_ONLY",
+  "metrics": {
+    "crowdElapsedScope": [
+      {
+        "label": "full-analysis",
+        "firstGameSeconds": 10.0071,
+        "lastGameSeconds": 59.9806,
+        "frames": 1926,
+        "counterDeltaRaw": 499740335,
+        "crowdScopeDeltaRaw": 25780470.0,
+        "crowdScopeFractionPct": 5.158773105636951,
+        "crowdCalls": 1925,
+        "pairCandidatesMean": 510.0140186915888,
+        "pairCandidatesP95": 894.0,
+        "pairCandidatesMax": 1094,
+        "missionDtMs": {
+          "p50": 27.0,
+          "p95": 43.0,
+          "p99": 51.0
+        },
+        "synthetic20PctIllustrationScopePct": 1.0612787121252152
+      },
+      {
+        "label": "low-cycle1",
+        "firstGameSeconds": 10.0071,
+        "lastGameSeconds": 19.9793,
+        "frames": 388,
+        "counterDeltaRaw": 99747391,
+        "crowdScopeDeltaRaw": 5299180.0,
+        "crowdScopeFractionPct": 5.31260010600177,
+        "crowdCalls": 387,
+        "pairCandidatesMean": 553.6237113402062,
+        "pairCandidatesP95": 722.0,
+        "pairCandidatesMax": 770,
+        "missionDtMs": {
+          "p50": 27.0,
+          "p95": 44.64999999999998,
+          "p99": 51.0
+        },
+        "synthetic20PctIllustrationScopePct": 1.092924477018204
+      },
+      {
+        "label": "high-cycle1",
+        "firstGameSeconds": 20.0083,
+        "lastGameSeconds": 29.9834,
+        "frames": 374,
+        "counterDeltaRaw": 99766855,
+        "crowdScopeDeltaRaw": 5075700.0,
+        "crowdScopeFractionPct": 5.087561395014406,
+        "crowdCalls": 373,
+        "pairCandidatesMean": 531.4866310160428,
+        "pairCandidatesP95": 685.0,
+        "pairCandidatesMax": 717,
+        "missionDtMs": {
+          "p50": 29.0,
+          "p95": 43.0,
+          "p99": 49.26999999999998
+        },
+        "synthetic20PctIllustrationScopePct": 1.046628819410386
+      },
+      {
+        "label": "ground-cycle2",
+        "firstGameSeconds": 30.0134,
+        "lastGameSeconds": 39.9776,
+        "frames": 448,
+        "counterDeltaRaw": 99634096,
+        "crowdScopeDeltaRaw": 4124900.0,
+        "crowdScopeFractionPct": 4.140048603441938,
+        "crowdCalls": 447,
+        "pairCandidatesMean": 248.00446428571428,
+        "pairCandidatesP95": 462.29999999999995,
+        "pairCandidatesMax": 489,
+        "missionDtMs": {
+          "p50": 24.0,
+          "p95": 35.0,
+          "p99": 41.52999999999997
+        },
+        "synthetic20PctIllustrationScopePct": 0.8517035659497497
+      },
+      {
+        "label": "low-cycle2",
+        "firstGameSeconds": 40.0076,
+        "lastGameSeconds": 49.9817,
+        "frames": 339,
+        "counterDeltaRaw": 99710676,
+        "crowdScopeDeltaRaw": 5717900.0,
+        "crowdScopeFractionPct": 5.7344912594916115,
+        "crowdCalls": 338,
+        "pairCandidatesMean": 689.2861356932153,
+        "pairCandidatesP95": 1045.0,
+        "pairCandidatesMax": 1094,
+        "missionDtMs": {
+          "p50": 30.0,
+          "p95": 50.0,
+          "p99": 60.0
+        },
+        "synthetic20PctIllustrationScopePct": 1.1797172261591722
+      },
+      {
+        "label": "high-cycle2",
+        "firstGameSeconds": 50.0026,
+        "lastGameSeconds": 59.9806,
+        "frames": 377,
+        "counterDeltaRaw": 99781587,
+        "crowdScopeDeltaRaw": 5510300.0,
+        "crowdScopeFractionPct": 5.522361555544311,
+        "crowdCalls": 376,
+        "pairCandidatesMean": 593.9814323607427,
+        "pairCandidatesP95": 691.2,
+        "pairCandidatesMax": 719,
+        "missionDtMs": {
+          "p50": 29.0,
+          "p95": 41.0,
+          "p99": 50.0
+        },
+        "synthetic20PctIllustrationScopePct": 1.136077249288955
+      }
+    ],
+    "serverCpu": {
+      "wallSeconds": 49.998039,
+      "cpuMs": 40359.375,
+      "cpuMsPerWallSecond": 807.2191591354214
+    },
+    "population": {
+      "sourceRunId": "ANIM-crowd-live-attribution1",
+      "populationSnapshots": 70,
+      "allSnapshots64Logical320Parts64ReceiversAlive": true,
+      "terminalOutcomes": {
+        "VALID_TERMINAL": 10,
+        "INCOMPLETE_MILESTONES": 53,
+        "UNRESOLVED_STATE": 1
+      },
+      "clientFrameRows": 4592,
+      "clientInactiveRows": 0,
+      "serverExitCode": -1,
+      "serverForced": false,
+      "clientClosed": true,
+      "baselinePinsAfterRunMatched": true
+    },
+    "presentP50": null,
+    "presentP95": null,
+    "presentP99": null
+  },
+  "blockers": [
+    "Crowd elapsed scope is not CPU self-time",
+    "Single baseline; no optimization or visual acceptance",
+    "Physics/host cost remains unresolved"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/crowd-live-attribution-20261109.md",
+      "runId": "ANIM-crowd-live-attribution1"
+    }
+  ],
+  "adopted": false,
+  "nextDecision": "Deprioritize eligibility cache; preserve rejected gate; focus downstream physical-query execution contracts"
+}

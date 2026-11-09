@@ -1,101 +1,162 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T04:10:08.104172+00:00",
-  "sourceRunId": "ANIM-eligibility-existing-density1",
-  "buildId": "readonly-existing-selective-peer-block-cost64-screen1",
-  "verificationStatus": "EXISTING_SNAPSHOT_DIAGNOSIS_COMPLETE_PERFORMANCE_UNMEASURED",
+  "generatedAt": "2026-11-09T04:16:33.390385+00:00",
+  "sourceRunId": "ANIM-crowd-live-attribution1",
+  "buildId": "baseline-64-fiveparts-server987-observe-crowd",
+  "verificationStatus": "LIVE64_SCOPE_ATTRIBUTION_DIAGNOSIS_ONLY",
   "metrics": {
-    "newExecutions": 0,
-    "completeSnapshots": 374,
-    "conditions": [
+    "crowdElapsedScope": [
       {
-        "condition": "off",
-        "sourceSha256": "0c633abbeb4e8341fe4514f1ff5052cb67eb35523d5072aa91080ee23af023fb",
-        "completeSnapshots": 188,
-        "candidateRange": [
-          194,
-          1228
-        ],
-        "candidateMean": 644.7606382978723,
-        "heightEligibleMean": 615.2712765957447,
-        "zeroCandidateSnapshots": 0,
-        "full2016Snapshots": 0,
-        "stages": [
-          {
-            "stage": "0",
-            "snapshots": 39,
-            "candidateMean": 280.0769230769231,
-            "heightEligibleMean": 260.05128205128204,
-            "maximumCandidates": 521
-          },
-          {
-            "stage": "1",
-            "snapshots": 75,
-            "candidateMean": 715.3333333333334,
-            "heightEligibleMean": 685.5333333333333,
-            "maximumCandidates": 1228
-          },
-          {
-            "stage": "2",
-            "snapshots": 74,
-            "candidateMean": 765.4324324324324,
-            "heightEligibleMean": 731.2702702702703,
-            "maximumCandidates": 1126
-          }
-        ]
+        "label": "full-analysis",
+        "firstGameSeconds": 10.0071,
+        "lastGameSeconds": 59.9806,
+        "frames": 1926,
+        "counterDeltaRaw": 499740335,
+        "crowdScopeDeltaRaw": 25780470.0,
+        "crowdScopeFractionPct": 5.158773105636951,
+        "crowdCalls": 1925,
+        "pairCandidatesMean": 510.0140186915888,
+        "pairCandidatesP95": 894.0,
+        "pairCandidatesMax": 1094,
+        "missionDtMs": {
+          "p50": 27.0,
+          "p95": 43.0,
+          "p99": 51.0
+        },
+        "synthetic20PctIllustrationScopePct": 1.0612787121252152
       },
       {
-        "condition": "on",
-        "sourceSha256": "0f32e558e75c49d0283f24d33751793e8ef39124e3b0fd93a334ef17ec232516",
-        "completeSnapshots": 186,
-        "candidateRange": [
-          156,
-          1106
-        ],
-        "candidateMean": 565.489247311828,
-        "heightEligibleMean": 531.2150537634409,
-        "zeroCandidateSnapshots": 0,
-        "full2016Snapshots": 0,
-        "stages": [
-          {
-            "stage": "0",
-            "snapshots": 38,
-            "candidateMean": 234.68421052631578,
-            "heightEligibleMean": 215.8421052631579,
-            "maximumCandidates": 480
-          },
-          {
-            "stage": "1",
-            "snapshots": 74,
-            "candidateMean": 670.7297297297297,
-            "heightEligibleMean": 634.8108108108108,
-            "maximumCandidates": 1106
-          },
-          {
-            "stage": "2",
-            "snapshots": 74,
-            "candidateMean": 630.1216216216217,
-            "heightEligibleMean": 589.5675675675676,
-            "maximumCandidates": 900
-          }
-        ]
+        "label": "low-cycle1",
+        "firstGameSeconds": 10.0071,
+        "lastGameSeconds": 19.9793,
+        "frames": 388,
+        "counterDeltaRaw": 99747391,
+        "crowdScopeDeltaRaw": 5299180.0,
+        "crowdScopeFractionPct": 5.31260010600177,
+        "crowdCalls": 387,
+        "pairCandidatesMean": 553.6237113402062,
+        "pairCandidatesP95": 722.0,
+        "pairCandidatesMax": 770,
+        "missionDtMs": {
+          "p50": 27.0,
+          "p95": 44.64999999999998,
+          "p99": 51.0
+        },
+        "synthetic20PctIllustrationScopePct": 1.092924477018204
+      },
+      {
+        "label": "high-cycle1",
+        "firstGameSeconds": 20.0083,
+        "lastGameSeconds": 29.9834,
+        "frames": 374,
+        "counterDeltaRaw": 99766855,
+        "crowdScopeDeltaRaw": 5075700.0,
+        "crowdScopeFractionPct": 5.087561395014406,
+        "crowdCalls": 373,
+        "pairCandidatesMean": 531.4866310160428,
+        "pairCandidatesP95": 685.0,
+        "pairCandidatesMax": 717,
+        "missionDtMs": {
+          "p50": 29.0,
+          "p95": 43.0,
+          "p99": 49.26999999999998
+        },
+        "synthetic20PctIllustrationScopePct": 1.046628819410386
+      },
+      {
+        "label": "ground-cycle2",
+        "firstGameSeconds": 30.0134,
+        "lastGameSeconds": 39.9776,
+        "frames": 448,
+        "counterDeltaRaw": 99634096,
+        "crowdScopeDeltaRaw": 4124900.0,
+        "crowdScopeFractionPct": 4.140048603441938,
+        "crowdCalls": 447,
+        "pairCandidatesMean": 248.00446428571428,
+        "pairCandidatesP95": 462.29999999999995,
+        "pairCandidatesMax": 489,
+        "missionDtMs": {
+          "p50": 24.0,
+          "p95": 35.0,
+          "p99": 41.52999999999997
+        },
+        "synthetic20PctIllustrationScopePct": 0.8517035659497497
+      },
+      {
+        "label": "low-cycle2",
+        "firstGameSeconds": 40.0076,
+        "lastGameSeconds": 49.9817,
+        "frames": 339,
+        "counterDeltaRaw": 99710676,
+        "crowdScopeDeltaRaw": 5717900.0,
+        "crowdScopeFractionPct": 5.7344912594916115,
+        "crowdCalls": 338,
+        "pairCandidatesMean": 689.2861356932153,
+        "pairCandidatesP95": 1045.0,
+        "pairCandidatesMax": 1094,
+        "missionDtMs": {
+          "p50": 30.0,
+          "p95": 50.0,
+          "p99": 60.0
+        },
+        "synthetic20PctIllustrationScopePct": 1.1797172261591722
+      },
+      {
+        "label": "high-cycle2",
+        "firstGameSeconds": 50.0026,
+        "lastGameSeconds": 59.9806,
+        "frames": 377,
+        "counterDeltaRaw": 99781587,
+        "crowdScopeDeltaRaw": 5510300.0,
+        "crowdScopeFractionPct": 5.522361555544311,
+        "crowdCalls": 376,
+        "pairCandidatesMean": 593.9814323607427,
+        "pairCandidatesP95": 691.2,
+        "pairCandidatesMax": 719,
+        "missionDtMs": {
+          "p50": 29.0,
+          "p95": 41.0,
+          "p99": 50.0
+        },
+        "synthetic20PctIllustrationScopePct": 1.136077249288955
       }
     ],
-    "wholeCpuContribution": null,
+    "serverCpu": {
+      "wallSeconds": 49.998039,
+      "cpuMs": 40359.375,
+      "cpuMsPerWallSecond": 807.2191591354214
+    },
+    "population": {
+      "sourceRunId": "ANIM-crowd-live-attribution1",
+      "populationSnapshots": 70,
+      "allSnapshots64Logical320Parts64ReceiversAlive": true,
+      "terminalOutcomes": {
+        "VALID_TERMINAL": 10,
+        "INCOMPLETE_MILESTONES": 53,
+        "UNRESOLVED_STATE": 1
+      },
+      "clientFrameRows": 4592,
+      "clientInactiveRows": 0,
+      "serverExitCode": -1,
+      "serverForced": false,
+      "clientClosed": true,
+      "baselinePinsAfterRunMatched": true
+    },
     "presentP50": null,
     "presentP95": null,
     "presentP99": null
   },
   "blockers": [
-    "No selected actual64 trace emits Crowd.UpdateTicks/PairCandidates",
-    "Rounded snapshot reconstruction is not callback-time measurement",
-    "General eligibility candidate remains rejected; no conditional implementation"
+    "Crowd elapsed scope is not CPU self-time",
+    "Single baseline; no optimization or visual acceptance",
+    "Physics/host cost remains unresolved"
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/eligibility-existing-density-20261109.md",
-      "runId": "ANIM-eligibility-existing-density1"
+      "report": "reports/operations/crowd-live-attribution-20261109.md",
+      "runId": "ANIM-crowd-live-attribution1"
     }
   ],
-  "adopted": false
+  "adopted": false,
+  "nextDecision": "Deprioritize eligibility cache; preserve rejected gate; focus downstream physical-query execution contracts"
 }
