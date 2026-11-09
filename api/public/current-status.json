@@ -1,44 +1,39 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T05:13:56.975734+00:00",
-  "sourceRunId": "ANIM-cardinality64-candidate-factory1",
-  "buildId": "CD5876B83C423AB8B9E64223A26016853E478C5601CCCCFADCA1ECBCE6DBDBA5",
-  "verificationStatus": "STATIC_CONTRACT_AND_SINGLE_FACTORY_PASS_VISUAL_PERFORMANCE_UNMEASURED",
+  "generatedAt": "2026-11-09T05:23:29.706877+00:00",
+  "sourceRunId": "ANIM-cardinality64-network1",
+  "buildId": "6AE6F121B68C92BD49AC059F5FE48C310FE89B6FA53213FCBD7DFB93E0BC17BC",
+  "verificationStatus": "SERVER_POSE_MATCH_CLIENT_READER_NOT_READY_RETIREMENT_UNVERIFIED",
   "metrics": {
-    "skeletonCounts": [
-      64,
-      248
-    ],
-    "weightedBoneCounts": [
-      64,
-      64
-    ],
-    "visualSubSkeletonEntries": [
-      101,
-      101
-    ],
-    "allLodsEquivalent": true,
-    "factoryReturned": true,
-    "nativeCommandBound": true,
-    "retiredDetached": true,
-    "signatureVerified": true,
-    "validPairPoseSamples": 0,
-    "visualComparisonFrames": 0,
+    "sourceRunId": "ANIM-cardinality64-network1",
+    "serverRows": 60736,
+    "alignedRows": 60736,
+    "bones": 64,
+    "maximumAlignedMSErrorMeters": 0,
+    "rowsBeyond1eMinus5": 0,
+    "durationSeconds": 18.9483,
+    "clientReady": false,
+    "clientPoseRows": 0,
     "cpuImprovement": null,
     "presentP95": null,
-    "repetitions": 1
+    "visualEvidence": "Two CUA snapshots show both partial upperbody meshes at different poses; no framewise temporal or pixel equality measurement",
+    "retirementVerified": false,
+    "limitations": [
+      "Server pose equality is not client GPU equality",
+      "Missing client reader readiness; cause not yet isolated",
+      "No whole-body,8/64 regression or performance acceptance"
+    ]
   },
   "blockers": [
-    "Client skinning/visible result not yet tested",
-    "Only64 weighted bones; full weighted integration not proven",
-    "No8/64 functional or repeated performance result"
+    "Client reader never signaled ready",
+    "Observed sampling differed from intended10Hz",
+    "Network retirement failed to confirm; owned server forced teardown"
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/cardinality64-factory-20261109.md",
-      "pboSha256": "CD5876B83C423AB8B9E64223A26016853E478C5601CCCCFADCA1ECBCE6DBDBA5"
+      "report": "reports/operations/cardinality64-pair-20261109.md"
     }
   ],
   "adopted": false,
-  "next": "Fixed network reference/candidate pair CPU pose and visible comparison"
+  "next": "Inspect existing harness entry/resolve/sampling/retirement before any expanded test"
 }

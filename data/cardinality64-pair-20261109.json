@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T05:23:29.706877+00:00",
+  "sourceRunId": "ANIM-cardinality64-network1",
+  "buildId": "6AE6F121B68C92BD49AC059F5FE48C310FE89B6FA53213FCBD7DFB93E0BC17BC",
+  "verificationStatus": "SERVER_POSE_MATCH_CLIENT_READER_NOT_READY_RETIREMENT_UNVERIFIED",
+  "metrics": {
+    "sourceRunId": "ANIM-cardinality64-network1",
+    "serverRows": 60736,
+    "alignedRows": 60736,
+    "bones": 64,
+    "maximumAlignedMSErrorMeters": 0,
+    "rowsBeyond1eMinus5": 0,
+    "durationSeconds": 18.9483,
+    "clientReady": false,
+    "clientPoseRows": 0,
+    "cpuImprovement": null,
+    "presentP95": null,
+    "visualEvidence": "Two CUA snapshots show both partial upperbody meshes at different poses; no framewise temporal or pixel equality measurement",
+    "retirementVerified": false,
+    "limitations": [
+      "Server pose equality is not client GPU equality",
+      "Missing client reader readiness; cause not yet isolated",
+      "No whole-body,8/64 regression or performance acceptance"
+    ]
+  },
+  "blockers": [
+    "Client reader never signaled ready",
+    "Observed sampling differed from intended10Hz",
+    "Network retirement failed to confirm; owned server forced teardown"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/cardinality64-pair-20261109.md"
+    }
+  ],
+  "adopted": false,
+  "next": "Inspect existing harness entry/resolve/sampling/retirement before any expanded test"
+}
