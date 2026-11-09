@@ -1,57 +1,39 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T06:35:45.729080+00:00",
-  "sourceRunId": "ANIM-single224-batch14-network1",
-  "buildId": "B772BD6CCD7871C399B866E2D6CF408EE9982F744BF69278418A4627F83BE4CA",
-  "verificationStatus": "ALL14_REQUESTS_AND_ANCHOR_POSE_GATE_PASS_FULL_VISUAL_COVERAGE_INCOMPLETE",
+  "generatedAt": "2026-11-09T06:51:33.597Z",
+  "sourceRunId": "ANIM-single224-batch14-video1",
+  "buildId": "b1061583930133675c37b73ed08502b0e5d442a6be724c2f4bb997c6c37399f0",
+  "verificationStatus": {
+    "diagnosis": "passed_limited_samples",
+    "functional8and64": "not_run",
+    "visualSmoothness": "not_accepted",
+    "performance": "not_measured",
+    "adopted": false
+  },
   "metrics": {
-    "observedRequests": [
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13
-    ],
-    "phaseCount": 24,
-    "steadyRequestRows": 6984,
-    "steadyRequestMismatches": 0,
-    "serverRows": 7332,
-    "serverCompleteGroups": 1222,
-    "serverAnchorBones": 8,
-    "clientRows": 7020,
-    "clientCompleteGroups": 1170,
-    "clientAnchorBones": 3,
-    "clientActiveRows": 7020,
-    "maximumSerializedAnchorMSErrorMeters": 0,
-    "maximumReferenceSeparationMeters": 0,
-    "epochsRetired": 2,
-    "hostsDetachedPerEpoch": 6,
-    "independentRuns": 1,
-    "fullVisualAcceptance": false,
-    "largeVideoCreated": false,
-    "signatureVerified": true,
-    "cpuImprovement": null,
-    "presentP95": null
+    "decodedFrames": 5282,
+    "decodedBarcodeFrames": 5282,
+    "clipsSampled": 14,
+    "samplesPerClip": 5,
+    "serverCompleteGroups": 611,
+    "clientCompleteGroups": 601,
+    "serializedAnchorErrorM": 0,
+    "videoBytes": 16701388,
+    "repetitions": 1,
+    "frameTimeP50Ms": null,
+    "frameTimeP95Ms": null,
+    "frameTimeP99Ms": null
   },
   "blockers": [
-    "Not all14phases visually observed; no complete video",
-    "Anchor samples do not certify all224bone matrices or temporal smoothness",
-    "No actual combat/mobility or8-to64 CPU/Present comparison"
+    "Actual production five-part versus single-host CPU comparison pending",
+    "8/64 physical gameplay regression pending",
+    "Sample images do not establish temporal smoothness"
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/single224-batch14-20261109.md"
+      "report": "reports/operations/single224-batch14-video-20261109.md",
+      "videoSha256": "e6886129cc7fdac1537ffb1c2f5590be99980785d21479a0f9b167d91dbde7a0",
+      "publicRawVideo": false
     }
-  ],
-  "adopted": false,
-  "next": "Reuse existing bounded window-only silent recorder for complete14phase visual evidence with explicit small-file limit and exact config restoration"
+  ]
 }
