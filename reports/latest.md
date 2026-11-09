@@ -1,38 +1,35 @@
-# ODOL 본 매핑 — 구간 기준 복원과 파서 해석 경계
+# 골격 크기 분리 입력 — 48→248본 정적 계약·서명 통과
 
 ## 1. 작업 목표
-255행렬shader선언과기존전체모델변형실패사이의경계를좁힌다. 기존컴파일ODOLv56의구간/하위본표/정점참조를비교하고,parser해석문제를엔진오류로오인하지않는다. 원본가중치·기능·현재PBO는보존한다.
+단일전체모델실패의원인이P3D골격목록크기인지,많은가중면/구간/행렬업로드인지분리하기위해먼저통제가능한입력을준비한다. 기존전체합체실패/5파트안정기준을보존하고큰새모델재구성을시작하지않는다.
 
 ## 2. 실제 수행
-SXDIST/DayZObjectBuilder의고정커밋e272780131dc10fe798bad321dca2c96894e993e에서reader3개와GPL라이선스만취득했다. import/파일/실행경로를읽고Blender/plugin을설치하거나실행하지않았다. GitblobSHA와로컬SHA256을검증했다. 원문reader는수정하지않고자체wrapper로원래버리던구간minBoneIndex/boneCount와정점참조를관측했다.
-현재기준PBO안의전체/텍스처구간분할/48본파트와기존5파트PBO의64본파트2개를메모리에서읽었다.5모델의모든LOD를읽었고failedLOD는0. 이후구간범위해석3개를비교하고,원래MLOD가중본이름과대조했다. 모델변환/쓰기·Workbench·게임실행은없다.
+기준PBO의실제config.bin을기존CfgConvert로읽어Animal_DGNativeRepartition0의상속과effective enFanimsys를확인했다. full root_motion XOB/native_traversal.agr/native_combat.asi가기존packed resource/로컬source와바이트일치했다. 전체TXO250node에모든P3D본이있고기준Memory48본위치는전체Memory의해당점과바이트동일했다.
+처음249본full골격은부모관계248개가있어48본flat기준과비교하면두변수가바뀐다. 실제dg_flat의flat골격은248본이므로이를사용했다. 준비기에서틀린고정골격별칭/249가정을두차례거부했으며이때후보폴더/모델/PBO/게임은생성하지않았다. source유효성검사후48→248비교로최종계약을저장했다.
+정상48본MLOD전체를바이트그대로격리후보에복사하고model.cfg의평면골격목록만248본으로지정했다. 차량클래스는기준클래스를상속하고model경로만바꾼다. 기존AddonBuilder/서명/검증helper를재사용해별도PBO를빌드했다. ODOLreader로실제결과와기준을비교했다. Workbench/native XOB/ANM변환·게임실행없음.
 
 ## 3. 측정 결과
-| 모델 | P3D골격 본 | 하위본표 길이 | 표의고유본 | 시각구간 |
-|---|---:|---:|---:|---:|
-| 전체dg_native |249|2160|224|79|
-| 텍스처분할dg_sectioned |249|445|224|11|
-| 기존48본part0 |48|48|48|1|
-| 기존64본part0 |64|101|64|3|
-| 기존64본part1 |64|85|64|3|
-정점참조는선정reader에서최대4개(1byte본index,1byte가중치)로읽혔다. 전체와텍스처분할모델에서양의가중코너참조565,910개전부가구간min/count를기준으로256단위를복원했을때범위안에들었다. byte를그대로전체하위표index로쓰면각각62,643/312,170개만구간범위와일치했다.
-원본MLOD와좌표연결된면코너는각185,346개. 단순본이름해석일치는전체21,407/텍스처분할103,056개였고,구간기준복원은둘다185,346개일치했다.396개코너는좌표연결불가로남겼다. 좌표는1e-5반올림/모델bounding center보정,동일좌표seam의후보본집합허용,원본상위4가중본을비교했다. 이는수치가중치·bindmatrix·GPU변형동등성이아니다.
-새CPU/Present p50/p95/p99·8/64기능·시각수용측정0.
+- 원본MLOD모든LOD바이트동일SHA f9edad4c…;메모리점추가0.
+- 컴파일골격본48→248확인,양쪽부모관계모두빈값. 가중본48/하위매핑표48/시각면20,230/시각정점13,494동일.
+- 시각·Memory·物理3LOD의좌표/면/노멀/vertexflag/UV/텍스처/재질/속성과bounding center정확일치. 코너별본이름/수치가중치의canonical SHA도일치.
+- 추가검사:3LOD의비어있지않은named selection은각48/48/1개. 이름·정점membership·수치가중치·face membership모두일치. 이48-entry표는구간wrap해석이필요없다.
+- packed config의후보class는Animal_DGNativeRepartition0상속,model경로외변경없음.
+- 새PBO SHA256 `E6630AE0A6B699EC8E1AF6DB0A3F2FC1B4115D56B41E865B0079459B0A22DE18`,서명/DSCheck검증성공,개인키미포함.
+- 실제runtime/CPU pose/표시/8·64기능/Present p50/p95/p99·CPU개선미측정.
 
 ## 4. 원인 분석
-확인: 선택parser의직접byte→전체하위표해석은구간기준을빠뜨리며,이모델에서원본본이름대조를대량실패한다. 구간기준을복원하면연결된코너의본이름집합은모두맞는다. 따라서parser의raw결과에서많은본이사라진것을곧바로기존자산오염이나엔진truncation으로보고하면잘못이다.
-미확인: 엔진이실제로구간기준을어떻게복원하는지,shader에주입하는matrixoffset/행렬내용,249골격/224가중본/많은구간중어떤조건이과거시각실패에기여했는지. 256항목을넘는표가있다는것만으로엔진버그나고정256상한을선언하지않는다. 기존255shader선언은용량사실일뿐이모델의실제draw관측은아니다.
-반증경계: 단순binarization미실행설명은기존ODOLv56로배제됐다. 단일모델이반드시지원된다는결론과64본이확정엔진상한이라는결론모두현재근거로불가하다.
+확인: 이제시각/메모리/물리의컴파일결과와현재full native자산을유지하면서P3D골격목록크기만다른입력쌍을확보했다. 불필요한골격본추가시binarizer가48본으로자동가지치기한다는상황은이번결과에없다.
+추정/시험목적: 같은48가중본·48하위표라도248P3D골격에서실제표시가달라지면weighted본개수외의골격이름매핑/크기/업로드경로를의심할수있다. 동일하게보이면P3D전체본수만으로과거전체모델실패를설명하기어려워진다. 어느결과도아직관측하지않았다.
+미확인: 엔진runtime본바인딩/현재fullinstance포즈와실제draw. static속성동일을시각동일/인게임통과로바꾸지않는다. 신규후보는아직1host전체몸체나비용절감구현이아니다.
 
 ## 5. 검증 수준
-고정외부reader소스검토/바이트정체성/선정5모델LOD해독/구간범위대조/부분원본본이름대조진단성공.396코너·수치가중치·실제엔진렌더해석미검증. 새모델/기능/CPU/시각/최종수용없음. 기존안정5파트와4파트미수용판정을유지한다.
+packed설정/자산정체성·소스모든LOD동일·빌드·서명검증·컴파일ODOLsemantic관문통과. Enforce/game module실행·공통CPUpose·화면·기능·성능·최종수용미실행.20ms p95목표미달성유지.
 
 ## 6. 변경 사항
-기존shader-palette-readonly1안에reviewed upstream reader3개+LICENSE+source-identities와자체wrapper/집계만추가했다. GPLreader는분석입력으로만사용하고게임패키지/공개자료에포함하지않는다. 원본MLOD/ODOL/PBO/골격/애니메이션/서버/개인키변경없음. 새서명대상없음. parser의동작해석을검증없이게임자산에되써넣지않았다.
+기존shader-palette-readonly1/cardinality-contract1에설정감사출력,cardinality-probe1에작은default-isolated데이터PBO와그입력/계약/빌드영수증만추가했다. 원본PBO/모델/Script/애니메이션/운영설정불변. 복사된MLOD는이번통제입력한개이며원본파일변경없음. 기존개인키는읽기전용사용했고배포물에넣지않았다. AI/물리검사/본갱신시계변경없음.
 
 ## 7. 원시 증거
-ANIM-odol-palette-readonly1 / ANIM-odol-section-index1 / ANIM-odol-source-weights1은모두정적파생작업이며독립게임실행이아니다. source-identities.json,GPLLICENSE,odol-mapping-comparison1.json,section-index-ranges1.json,source-weight-name-crosscheck1.json와자체스크립트. 원본PBO453d6a9e…/5파트PBOef23b8d3…/원본MLOD2d5c4bb8…SHA를연결했다. 공개는집계/해시/한계만이며게임모델·전체코드·원시정점자료를게시하지않는다. [선정parser고정커밋](https://github.com/SXDIST/DayZObjectBuilder/tree/e272780131dc10fe798bad321dca2c96894e993e).
+ANIM-cardinality-contract1 / ANIM-cardinality-probe1-build / ANIM-cardinality-probe1-memory. audit1.json,trial-contract1/source-proof1,fixture-build/signature logs,compiled-contract1,memory-contract1,packed-config.cpp,입력/출력SHA. 실제본래PBO453d6a9e…는후속검사에서도일치. 공개는해시/집계/검증범위이며모델·원본애니메이션·개인키·로컬경로는제외한다.
 
 ## 8. 잔여 문제
-후속최소후보는현재잘보이는64가중본파트의시각면/가중치는유지한채P3D골격의미사용본목록만전체골격으로확장하는카디널리티분리진단이다. 동일full native instance/동일카메라에서64골격대전체골격을비교하면P3D골격크기와많은가중면/구간의영향을분리할수있다. 아직구현하지않았고,기존기록에서같은통제조건의완료를확인한것은아니다.
-구현전반드시현재실제full instance와두모델공통bone/Memory이름의연결을검증해야한다. 미사용본추가가bounds/referencepose/메모리선택을바꾸거나없는XOB본을추가하면통제실험이아니므로중단한다. 위험은실제표시변형/컴파일/바인딩실패이며물리·AI·게임플레이는연결하지않는다. 첫관문은1개체고정Run/idle의정적자산계약과공통CPU포즈·실제화면비교이며,원인후보를분리할때만수행한다. 그결과가나오기전에는전체1파트/14클립변환/8→64/성능시험을시작하지않는다. 이진단자체는최적화성과가아니다.
+다음은이입력쌍만사용한1개체쌍고정Run/idle의네트워크runtime검사다. 같은fullinstance/command/카메라에서공통CPU본좌표와active화면을비교하고safe retirement를확인한다. 게임에서fullinstance또는후보바인딩이성립하지않으면새보간/시계수정으로확대하지않는다. 표시해독이없으면CPUpose만으로통과시키지않는다. 결과가골격수원인가설을구분할때만수행하며14클립/1파트전체몸체/8→64비용시험으로자동확대하지않는다. 기존밀침·낙하·착지·FOLLOW·재등반통합코드는계속보존한다.

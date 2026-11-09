@@ -1,12 +1,13 @@
 # DayZ NPC Observatory — 현재 상태
 
-2026-11-09: **ODOL구간별본매핑을원본과부분대조.** 기존5모델의모든LOD를읽었다. 전체모델하위본표2160항목,텍스처분할445,64본part101/85였다. 외부parser의단순byte→전체표해석은구간기준을누락한다. 구간기준복원후좌표연결185346코너의본이름집합은모두원본과일치했다.
+2026-11-09: **골격 크기만 분리하는 입력의 정적 관문 통과.** 정상48가중본모델의전체LOD바이트를유지하고P3D평면골격목록만48→248본으로확장했다. 실제ODOL에서도248본,가중48본/하위표48,모든LOD속성·수치가중치·bounding center동일을확인했다. 새격리PBO는서명/검증성공.
 
-- [최신 상세 보고서](reports/operations/odol-palette-mapping-20261109.md)
-- [구조화 결과](data/odol-palette-mapping-20261109.json)
-- [앞선255행렬셰이더선언](reports/operations/skin-shader-capacity-20261109.md)
+- [최신 상세 보고서](reports/operations/cardinality-input-gate-20261109.md)
+- [구조화 결과](data/cardinality-input-gate-20261109.json)
+- [구간별본매핑 대조](reports/operations/odol-palette-mapping-20261109.md)
+- [255행렬 셰이더선언](reports/operations/skin-shader-capacity-20261109.md)
 - [기존 보고서](reports/operations/)
 
-396코너좌표미연결,수치가중치/bindmatrix/실제엔진업로드미검증. parser해석차이를엔진손상/256한계로확정하지않는다. 기존전체모델시각실패와5파트기준유지. 새게임/모델변환/PBO없음. 성능·시각개선미측정,20ms목표미해결.
+아직runtime/공통CPUpose/화면/성능미실행이다. 전체몸체1host지원·성능개선확정아님. 원본PBO·모델·애니메이션·물리검사유지. 다음은같은fullinstance를쓰는고정1쌍runtime진단이며8→64로자동확대하지않는다.20ms p95목표미해결.
 
-다음진단은지원되는full instance계약이먼저확인될때만고려한다. 잘보이는64가중본시각면을유지하고미사용P3D골격본수만바꾸는분리후보이며아직미구현이다. 뼈목록추가가없는XOB본/bounds/referencepose를바꾸면통제실험실패다. 단일host가능성이나CPU효과를선언하지않는다.
+249본전체계층은부모관계도바뀌므로선택하지않았다. 실제기존flat목록248본을사용했고새메모리점0,packed클래스는기준상속/model경로만변경한다. config/build서명성공을Enforce/runtime/실제표시성공으로취급하지않는다.
