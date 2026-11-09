@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T06:16:54.346798+00:00",
+  "sourceRunId": "ANIM-weighted224-network3",
+  "buildId": "B1061583930133675C37B73ED08502B0E5D442A6BE724C2F4BB997C6C37399F0",
+  "verificationStatus": "PACKING_CANDIDATE_SINGLE_RUN_VISUAL_DIFFERENCE_OBSERVED_NOT_FINAL_ACCEPTANCE",
+  "metrics": {
+    "weightedBones": 224,
+    "faces": 61914,
+    "targetBonesInterval": [
+      56,
+      224
+    ],
+    "subSkeletonEntries": [
+      387,
+      224
+    ],
+    "sections": [
+      10,
+      1
+    ],
+    "baselineServerPoseRows": 16800,
+    "candidateServerPoseRows": 16576,
+    "clientPoseRowsEach": 15008,
+    "candidateActiveRows": 15008,
+    "maximumMSErrorMetersBoth": 0,
+    "maximumReferenceSeparationMetersBoth": 0,
+    "visualObservation": {
+      "baseline": "Hand-side stretched surfaces observed in two snapshots",
+      "candidate": "Prior stretched surfaces not seen in two snapshots; corresponding fullbody poses observed"
+    },
+    "independentRunsPerCondition": 1,
+    "configurationFailureRunsExcluded": 1,
+    "normalComparisonRetirement": true,
+    "signatureVerified": true,
+    "cpuImprovement": null,
+    "presentP95": null
+  },
+  "blockers": [
+    "No repeated visual/14clip/temporal quality acceptance",
+    "Exact GPU boundary handling unobserved",
+    "No production5part-versus1host CPU comparison or8-to64 gameplay regression"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/weighted224-packing-20261109.md"
+    }
+  ],
+  "adopted": false,
+  "next": "Reuse batch14clip display/transition harness for single-model candidate before production cost and8-to64 function comparison"
+}

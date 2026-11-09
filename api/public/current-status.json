@@ -1,40 +1,51 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T05:55:07.399257+00:00",
-  "sourceRunId": "ANIM-weighted224-candidate-factory1",
-  "buildId": "7ED917CD18A4D3C2A7383664A114BE5307A6D0D13C5AF373231C33E704A38DA0",
-  "verificationStatus": "FULL224_STATIC_SECTION_MAPPING_AND_SINGLE_FACTORY_PASS_DISPLAY_PERFORMANCE_UNMEASURED",
+  "generatedAt": "2026-11-09T06:16:54.346798+00:00",
+  "sourceRunId": "ANIM-weighted224-network3",
+  "buildId": "B1061583930133675C37B73ED08502B0E5D442A6BE724C2F4BB997C6C37399F0",
+  "verificationStatus": "PACKING_CANDIDATE_SINGLE_RUN_VISUAL_DIFFERENCE_OBSERVED_NOT_FINAL_ACCEPTANCE",
   "metrics": {
-    "skeletonBones": 248,
     "weightedBones": 224,
-    "literalReaderWeightedBones": 170,
-    "subSkeletonEntries": 387,
-    "sections": 10,
     "faces": 61914,
-    "sectionRestoredCornerInfluences": 126984,
-    "positiveCornerInfluences": 565910,
-    "sourceAndCompiledNonUvFaceSemanticsEqual": true,
-    "memoryAndGeometryEqual": true,
-    "maximumUvDifference": 0.00003776484808348801,
-    "uvQuantizationBoundExceededComponents": 0,
+    "targetBonesInterval": [
+      56,
+      224
+    ],
+    "subSkeletonEntries": [
+      387,
+      224
+    ],
+    "sections": [
+      10,
+      1
+    ],
+    "baselineServerPoseRows": 16800,
+    "candidateServerPoseRows": 16576,
+    "clientPoseRowsEach": 15008,
+    "candidateActiveRows": 15008,
+    "maximumMSErrorMetersBoth": 0,
+    "maximumReferenceSeparationMetersBoth": 0,
+    "visualObservation": {
+      "baseline": "Hand-side stretched surfaces observed in two snapshots",
+      "candidate": "Prior stretched surfaces not seen in two snapshots; corresponding fullbody poses observed"
+    },
+    "independentRunsPerCondition": 1,
+    "configurationFailureRunsExcluded": 1,
+    "normalComparisonRetirement": true,
     "signatureVerified": true,
-    "factoryReturned": true,
-    "normalDetachedRetirement": true,
-    "repetitions": 1,
-    "clientPoseRows": 0,
     "cpuImprovement": null,
     "presentP95": null
   },
   "blockers": [
-    "Client full224bone skinning/display untested",
-    "Offline section restoration is not GPU execution evidence",
-    "14clips, production host cost and8-to64 regression untested"
+    "No repeated visual/14clip/temporal quality acceptance",
+    "Exact GPU boundary handling unobserved",
+    "No production5part-versus1host CPU comparison or8-to64 gameplay regression"
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/weighted224-input-20261109.md"
+      "report": "reports/operations/weighted224-packing-20261109.md"
     }
   ],
   "adopted": false,
-  "next": "Fixed five-reference-parts composite versus merged224bone model CPU pose and actual display comparison"
+  "next": "Reuse batch14clip display/transition harness for single-model candidate before production cost and8-to64 function comparison"
 }
