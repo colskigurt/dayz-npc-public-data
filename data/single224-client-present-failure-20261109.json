@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T07:57:56.602Z",
+  "sourceRunId": "ANIM-single224-client-present1-cost64-screen1-five",
+  "buildId": "FA0A07F5163E80CA86EBA328066C0282394B641C89911438D451FF77717529D9",
+  "verificationStatus": {
+    "serverCpuPrevious": "2_independent_pairs_repeat_screen_pass",
+    "currentClientCpu": "rejected_before_TotalProcessorTime_at_null_process_path",
+    "currentPresent": "failed_exit0_no_csv",
+    "clientCpuReaderCandidate": "parse_pass_runtime_not_tested",
+    "gameplayAndVisualFinal": "not_accepted",
+    "adopted": false
+  },
+  "metrics": {
+    "previousServerCpuPercentSaved": [
+      26.809198741763232,
+      25.996058703104868
+    ],
+    "previousIndependentValidPairs": 2,
+    "presentMonExitCode": 0,
+    "presentCsvCreated": false,
+    "presentMs": {
+      "p50": null,
+      "p95": null,
+      "p99": null
+    },
+    "clientTotalCpu": null,
+    "currentValidClientComparisons": 0
+  },
+  "blockers": [
+    "PresentMon noCSV despite exit0; event/path/filter cause unknown",
+    "Original CPU sampler rejects null processPath before CPU API call; CPU API availability unknown",
+    "8combatON functional equivalence and64fullregression unresolved"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/single224-client-present-failure-20261109.md"
+    },
+    {
+      "priorServer": "reports/operations/single224-cpu-repeat-20261109.md"
+    }
+  ]
+}
