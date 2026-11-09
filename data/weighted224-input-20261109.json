@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T05:55:07.399257+00:00",
+  "sourceRunId": "ANIM-weighted224-candidate-factory1",
+  "buildId": "7ED917CD18A4D3C2A7383664A114BE5307A6D0D13C5AF373231C33E704A38DA0",
+  "verificationStatus": "FULL224_STATIC_SECTION_MAPPING_AND_SINGLE_FACTORY_PASS_DISPLAY_PERFORMANCE_UNMEASURED",
+  "metrics": {
+    "skeletonBones": 248,
+    "weightedBones": 224,
+    "literalReaderWeightedBones": 170,
+    "subSkeletonEntries": 387,
+    "sections": 10,
+    "faces": 61914,
+    "sectionRestoredCornerInfluences": 126984,
+    "positiveCornerInfluences": 565910,
+    "sourceAndCompiledNonUvFaceSemanticsEqual": true,
+    "memoryAndGeometryEqual": true,
+    "maximumUvDifference": 0.00003776484808348801,
+    "uvQuantizationBoundExceededComponents": 0,
+    "signatureVerified": true,
+    "factoryReturned": true,
+    "normalDetachedRetirement": true,
+    "repetitions": 1,
+    "clientPoseRows": 0,
+    "cpuImprovement": null,
+    "presentP95": null
+  },
+  "blockers": [
+    "Client full224bone skinning/display untested",
+    "Offline section restoration is not GPU execution evidence",
+    "14clips, production host cost and8-to64 regression untested"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/weighted224-input-20261109.md"
+    }
+  ],
+  "adopted": false,
+  "next": "Fixed five-reference-parts composite versus merged224bone model CPU pose and actual display comparison"
+}

@@ -1,40 +1,40 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T05:48:33.538326+00:00",
-  "sourceRunId": "ANIM-weighted124-network2",
-  "buildId": "BD738254810B963780212905DA01B5D04F2AAAA3810D1AFD6F62168CBC6CAE01",
-  "verificationStatus": "124BONE_PAIRED_CPU_POSE_PASS_LIMITED_VISUAL_OBSERVATION_GAMEPLAY_PERFORMANCE_UNMEASURED",
+  "generatedAt": "2026-11-09T05:55:07.399257+00:00",
+  "sourceRunId": "ANIM-weighted224-candidate-factory1",
+  "buildId": "7ED917CD18A4D3C2A7383664A114BE5307A6D0D13C5AF373231C33E704A38DA0",
+  "verificationStatus": "FULL224_STATIC_SECTION_MAPPING_AND_SINGLE_FACTORY_PASS_DISPLAY_PERFORMANCE_UNMEASURED",
   "metrics": {
-    "weightedBones": 124,
-    "serverAlignedRows": 9300,
-    "clientRows": 8308,
-    "clientActiveRows": 8308,
-    "clientSampleGroups": 67,
-    "maximumMSErrorMeters": 0,
-    "nativeProgressSeconds": [
-      8.2498,
-      8.2498
-    ],
-    "referenceGroupSeparationMeters": 0,
-    "firstRunReferenceSeparationMeters": 0.7019987166833106,
-    "normalDetachedRetirement": true,
+    "skeletonBones": 248,
+    "weightedBones": 224,
+    "literalReaderWeightedBones": 170,
+    "subSkeletonEntries": 387,
+    "sections": 10,
+    "faces": 61914,
+    "sectionRestoredCornerInfluences": 126984,
+    "positiveCornerInfluences": 565910,
+    "sourceAndCompiledNonUvFaceSemanticsEqual": true,
+    "memoryAndGeometryEqual": true,
+    "maximumUvDifference": 0.00003776484808348801,
+    "uvQuantizationBoundExceededComponents": 0,
     "signatureVerified": true,
-    "validCompositeConditions": 1,
-    "independentIdenticalConditionRepetitions": 1,
-    "visualEvidence": "Two CUA snapshots; corresponding partial mesh poses with no obvious additional deformation",
+    "factoryReturned": true,
+    "normalDetachedRetirement": true,
+    "repetitions": 1,
+    "clientPoseRows": 0,
     "cpuImprovement": null,
     "presentP95": null
   },
   "blockers": [
-    "Diagnostic non-solid setup is not gameplay validation",
-    "Full224weighted-body and14clips untested",
-    "No pixel-level/temporal visual acceptance or CPU/Present comparison"
+    "Client full224bone skinning/display untested",
+    "Offline section restoration is not GPU execution evidence",
+    "14clips, production host cost and8-to64 regression untested"
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/weighted124-pair-20261109.md"
+      "report": "reports/operations/weighted224-input-20261109.md"
     }
   ],
   "adopted": false,
-  "next": "Static full-five-part merged input contract, including sub-skeleton256 boundary and historical fullbody differences"
+  "next": "Fixed five-reference-parts composite versus merged224bone model CPU pose and actual display comparison"
 }
