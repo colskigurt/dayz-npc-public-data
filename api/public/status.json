@@ -1,56 +1,38 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T05:30:38.102989+00:00",
-  "sourceRunId": "ANIM-cardinality64-network2",
-  "buildId": "5587F36C1E5693ED8A6DE529D318F16AD3237F2572CDDB26C226722DE1A46373",
-  "verificationStatus": "HARNESS_CAUSE_REPRODUCED_PAIRED_CPU_POSE_PASS_VISUAL_TEMPORAL_PERFORMANCE_UNMEASURED",
+  "generatedAt": "2026-11-09T05:37:34.255029+00:00",
+  "sourceRunId": "ANIM-weighted124-candidate-factory1",
+  "buildId": "1AA108BC324806570E60030DDFF100C36A2A57CAC7EFD4ECD8D3B7B5301B6598",
+  "verificationStatus": "SOURCE_EXACT_COMPILED_NONUV_EXACT_UV_BOUNDED_SINGLE_FACTORY_PASS",
   "metrics": {
-    "statementFalseGateCounts": {
-      "unbraced": 0,
-      "braced": 1
-    },
-    "serverAlignedRows": 4800,
-    "clientRows": 4288,
-    "clientActiveRows": 4288,
-    "bonesCompared": 64,
-    "maximumMSErrorMeters": 0,
-    "serverNativeProgressSeconds": [
-      8.1999,
-      8.1999
-    ],
-    "sampling": {
-      "server": {
-        "sampleGroups": 75,
-        "intervalSecondsMin": 0.10400000000000009,
-        "intervalSecondsMedian": 0.10699500000000002,
-        "intervalSecondsMax": 0.12399000000000004,
-        "firstAge": 0,
-        "lastAge": 8.22661
-      },
-      "client": {
-        "sampleGroups": 67,
-        "intervalSecondsMin": 0.11899899999999997,
-        "intervalSecondsMedian": 0.1200000000000001,
-        "intervalSecondsMax": 0.12100200000000005,
-        "firstAge": 0,
-        "lastAge": 7.922
-      }
-    },
-    "normalDetachedRetirement": true,
+    "skeletonBones": 248,
+    "actualWeightedBones": 124,
+    "subSkeletonEntries": 198,
+    "sections": 6,
+    "faces": 41308,
+    "sourceFaceSemanticsEqual": true,
+    "strictCompiledEqualityPassed": false,
+    "nonUvCompiledFaceSemanticsEqual": true,
+    "maximumUvDifference": 0.00003753155913280293,
+    "uvQuantizationBoundExceededComponents": 0,
+    "factoryReturned": true,
+    "retiredDetached": true,
+    "signatureVerified": true,
     "repetitions": 1,
+    "clientPoseRows": 0,
     "cpuImprovement": null,
     "presentP95": null
   },
   "blockers": [
-    "Only64 actual weighted bones compared",
-    "No fullbody/14clip/8-to64 regression",
-    "No framewise visual smoothness or CPU/Present comparison"
+    "Client124bone skinning and actual display untested",
+    "Full-native versus production subset cost not yet comparable",
+    "UV quantization difference requires visual review"
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/cardinality64-braced-20261109.md"
+      "report": "reports/operations/weighted124-input-20261109.md"
     }
   ],
   "adopted": false,
-  "next": "Review existing fullbody evidence and define one controlled actual-weighted-bone expansion input"
+  "next": "Fixed composite two-reference-parts versus merged candidate CPU pose and actual display comparison"
 }

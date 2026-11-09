@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T05:37:34.255029+00:00",
+  "sourceRunId": "ANIM-weighted124-candidate-factory1",
+  "buildId": "1AA108BC324806570E60030DDFF100C36A2A57CAC7EFD4ECD8D3B7B5301B6598",
+  "verificationStatus": "SOURCE_EXACT_COMPILED_NONUV_EXACT_UV_BOUNDED_SINGLE_FACTORY_PASS",
+  "metrics": {
+    "skeletonBones": 248,
+    "actualWeightedBones": 124,
+    "subSkeletonEntries": 198,
+    "sections": 6,
+    "faces": 41308,
+    "sourceFaceSemanticsEqual": true,
+    "strictCompiledEqualityPassed": false,
+    "nonUvCompiledFaceSemanticsEqual": true,
+    "maximumUvDifference": 0.00003753155913280293,
+    "uvQuantizationBoundExceededComponents": 0,
+    "factoryReturned": true,
+    "retiredDetached": true,
+    "signatureVerified": true,
+    "repetitions": 1,
+    "clientPoseRows": 0,
+    "cpuImprovement": null,
+    "presentP95": null
+  },
+  "blockers": [
+    "Client124bone skinning and actual display untested",
+    "Full-native versus production subset cost not yet comparable",
+    "UV quantization difference requires visual review"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/weighted124-input-20261109.md"
+    }
+  ],
+  "adopted": false,
+  "next": "Fixed composite two-reference-parts versus merged candidate CPU pose and actual display comparison"
+}
