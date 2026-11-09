@@ -1,48 +1,39 @@
-# Present 수집 경로 진단 보완 — 실행 검증 전
-
-기준일: 2026-11-10 (Asia/Seoul)
+# Present 최소 수집 시도 — 장면 진입 전 실패
+기준일: 2026-11-10 KST. 검증 수준: 실행 경계 진단 성공, 수집·회귀·반복 검증·최종 수용 미실행.
 
 ## 1. 작업 목표
-단일224 후보의 클라이언트 CPU·실제 Present 비교를 재개하기 전에, 기존 CSV 미생성 실패를 진단할 증거를 보완한다. NPC 기능 개발로 범위를 확대하지 않는다.
+기존5파트64 장면에서 10초 Present CSV 생성 가능성만 확인한다. 성능 비교나 기능 개선으로 판정하지 않는다.
 
 ## 2. 실제 수행
-기존 성공 수집과 실패 수집, 실제 PresentMon 2.6.0의 --help 및 공통 실행기를 비교했다. 새 게임·ETW 수집은 실행하지 않았다.
-공통 npc-test-launcher.ps1에 tool-invocation.json과 target-after-capture.json 기록을 추가했다. 실제 인자·도구/실행기 해시·대상 생성시각 및 종료 직후 PID 생존/동일성 여부를 남긴다. 수집 옵션, PID 선별, 장면·전경·해시 gate, CSV 없을 때 실패 판정은 유지했다.
-수정 전 파일을 기존 실험 폴더에 보존하고 해시 동일성을 확인했다. PowerShell 구문 검사와 실제 -ValidateOnly 설정 검증을 통과했다. 런타임 분기는 아직 실행하지 않았다.
+기존 서버/Steam 요청/장면 제어를 재사용하고 별도 출력 경로 client-present-viability-20261110을 준비했다. 서버·클라이언트·미션·13 PBO 해시가 기존 기준과 일치했다. 이전 start/stop 플래그는 복사하지 않았다. 단일10초 설정의 구문/ValidateOnly를 통과했다.
+관리자 수집기 PID26676 준비를 확인하고 서버33464·클라이언트35572를 시작했다. Unity 채팅과 실행 충돌을 조율했다. 클라이언트 창을 확인했지만 준비 gate가 열리지 않아 Present 요청을 보내지 않았다.
 
 ## 3. 측정 결과
-기존 성공 retry2/capture-0 CSV: 2,462행, DayZ_x64.exe, PID25352, DXGI.
-기존 실패: PID34612, 도구 종료0, CSV 없음. 수집 종료 2026-11-09 16:50:42+09:00, 클라이언트 종료 확인 16:52:25+09:00.
-신규 8/64 기능, 클라이언트 CPU, Present p50/p95/p99, 시각 품질은 모두 미측정.
-이전 서버 CPU 두 독립 비교의 감소 26.8092%와 25.9961%는 기존 범위만 유지한다. 이를 애니메이션이나 물리 질의의 순수 절감 또는 클라이언트 개선으로 해석하지 않는다.
+64개체 장면 준비 및 workload 시작 미확인. PresentMon 미실행, CSV 없음. 8/64 기능·CPU·Present p50/p95/p99·애니메이션 시각 품질 모두 미측정.
+클라이언트 RPT에 00:46:21.676 netcrypt connected, 00:46:24.18 BattlEye initialization failed, 이후 반복 session terminated - no packets를 확인했다. 서버는 UDP30960/30962/30975 바인딩이 관찰됐다. CPU 소비나 프로세스 생존을 준비/성능 성공으로 간주하지 않았다.
+Project Zomboid 창도 관찰됐으며 전용 성능 조건으로 사용할 수 없다. 해당 게임에는 입력·종료를 하지 않았다.
 
 ## 4. 원인 분석
-확인: 기존 수집 경로는 실제 DXGI CSV 생성 이력이 있고, 실패 시 사용한 옵션은 설치 도구의 지원 목록에 존재한다. 실패 대상의 종료 기록은 수집 종료보다 늦다.
-미확인: 실패 창의 ETW 표시 이벤트 유입, 출력 단계 내부 실패, 권한/드라이버/이벤트 공급자 상태.
-반증 범위: 지원되지 않는 옵션이라는 근거는 없으며, 기록된 클라이언트 조기 종료로 실패를 설명할 수 없다. 이것만으로 ETW 정상 동작을 증명하지 않는다.
+확인: 이번 정체는 CSV 생성 이전의 장면 진입 단계다. 기록된 BattlEye 초기화 실패 및 패킷 부재는 단서다.
+모름: BattlEye 메시지가 이번 로딩 정체의 유일 원인인지, Steam 동시 실행·접속·환경과의 인과관계.
+기존 CSV 미생성 실패와 같은 원인으로 합치지 않는다. 방화벽·BattlEye·서비스·보안 설정을 변경하거나 우회하지 않았다.
 
 ## 5. 검증 수준
-진단 성공(기존 증거 대조), 변경 구문/설정 검증 통과. 변경된 수집기 런타임·회귀·반복 검증·최종 수용은 미실행.
-기능 성공, 시각 품질, 성능 목표 달성은 별도 미판정. 20ms p95 달성 주장 없음.
+입력 검증·관리자 수집기 준비·실행 경계 진단 성공. 수집기 신규 기록 분기의 실제 Present 실행은 아직 미검증이다. 성능·기능·시각 품질 성공 및20ms p95 달성 없음.
 
-## 6. 변경 사항
-공통 실행기만 변경. 수정 전 SHA256: 286EE06B561E2BDF1882CDC7A405F347D391A40E4F3544B035530FDE0466AC2D.
-수정 후 SHA256: 090F47B91853E6408954FC5569EFC16ACE59018DE3F2FCD92B650B3F2BC14FDA.
-게임 코드·PBO·모델·키·Unity 프로젝트 무변경. PBO 재빌드·재서명 대상 없음.
-기존 원시 자료와 보고서는 덮어쓰지 않았다.
+## 6. 변경 및 종료
+게임 코드·PBO·미션·Unity 무변경. 새로운 배포·서명 없음.
+00:48:58 클라이언트 정상 창닫기로 종료. 소유 서버는 준비 전 정체 상태에서 강제 종료했으며 exit -1을 기록했다. 정상 서버 종료로 보고하지 않는다.
+장면/관측 제어 두 작업을 중단하고, 준비만 하던 관리자 수집기는 PID·생성시각 대조 후 종료했다(00:49:31). 관련 네 프로세스 부재를 확인하고 Unity 채팅에 점유 종료를 전달했다.
 
 ## 7. 원시 증거
-실행 ID: ANIM-single224-client-present1-cost64-screen1-five (기존 실패).
-성공: research/anim-five-gameplay-20261105/mixed-gameplay-baseline1/retry2/capture-0.
-실패 및 이번 분석: weighted224-probe1/gameplay1/client-present1 아래 기존 capture-0, resume-review-20261110.json, existing-capture-comparison-20261110.json.
-비교 JSON SHA256: D0F6E4274FE106C8DE32FB814C4B45FCAD50E764ACE5D96F5DAFC32465163383.
-입력 파일 해시/크기는 비교 JSON에 기록했다. 새 해시는 과거 원본성을 소급 증명하지 않는다.
+실행ID ANIM-present-viability-20261110-five64.
+기존 weighted224-probe1/gameplay1/client-present-viability-20261110 아래 preflight.json, staged-plan.json, collector-config.json, admin-ready.json, executed-controller-sources.json, collector-retirement-request.json, collector-retired.json.
+cost64-screen1/five 아래 plan.json, server-launch.json, steam-launch-request.json, client-closed-before-capture.json, server-forced-retirement.json, server-terminal.json 및 client/server-profile 로그.
+종료 후 클라이언트 RPT SHA256: 0A54C2EF8590DB277339ECE03DD6CCD293253669D03A98FACCFC053428A061BC.
+원시 자료와 기존 보고서는 덮어쓰지 않았다.
 
-## 8. 잔여 문제와 다음 실험
-Unity 실행 슬롯과 조율 후 짧은 수집 가능성 시험을 먼저 한다. 기존 실행기와 서명된 게임 후보를 재사용한다. 실제 CSV 행을 확보하기 전 동일64 전체 비교를 반복하지 않는다.
-이번 추가 기록은 ETW 이벤트 유입 자체를 측정하지 않는다. 이벤트 미수신과 출력 실패를 최종 분리하려면 해당 세션의 이벤트 진단 또는 알려진 표시 이벤트 대조가 더 필요하다. 다른 ETW 세션 종료·보안 설정 변경은 하지 않는다.
-시체 접지/전리품, 종료 NULL 예외는 별도 기존 결함 후보로 보존하며 최적화 목표를 대체하지 않는다.
+## 8. 다음 작업
+기존 정상 Steam 실행의 동일 초기화 메시지 유무 및 접속/실행 방식 기록을 먼저 대조한다. 이 최소 차이가 확인되기 전 같은 장면을 반복 재시작하지 않는다. 기존 단일224 서버CPU 개선 근거는 유지하되 클라이언트/Present/64 전체 수용으로 확대하지 않는다.
 
-## 운영 상태
-사용자가 골을 active로 재개했다. Unity 호드 작업과 실행 슬롯 조율 중이며 아직 게임을 시작하지 않았다.
-이전 수동 8개체 결과는 [보존 보고서](operations/single224-manual-review-20261109.md)를 참조한다. 해당 보고서의 일시정지 문구는 당시 상태이며 현재 상태를 뜻하지 않는다.
+관련: [수집기 진단 보완](operations/present-collector-diagnostics-20261110.md), [기존 수동8 결과](operations/single224-manual-review-20261109.md).
