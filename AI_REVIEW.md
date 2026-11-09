@@ -1,19 +1,19 @@
-# 현재 상태 — 64개체 밀집 구간의 접촉 처리와 CPU 동시 관측
+# 현재 상태 — 접촉 이벤트 양성 대조 완료, 충돌 차단은 아직 제안
 
-| 목표 위치 | 서버 전체CPU ms/벽시계초 | Displace 호출/초 범위 | 기본 Move 호출/초 범위 | 표본 근접쌍 평균 |
-|---|---:|---:|---:|---:|
-| 지상 |677.95|762.46~815.31|924.48~998.17|54.68|
-| 낮은 발판 |831.14|1114.89~1176.53|922.35~981.66|324.68|
-| 높은 발판 |862.25|1085.73~1179.16|774.65~838.69|279.46|
+| 항목 | 확인/미확인 |
+|---|---|
+| NPC CONTACT 등록 | 설치DayZAnimal 생성자와실제eventMask에서확인 |
+| 첫 준비 실패 | 드럼통이동적물리가아니라낙하/충격불가. 실패보존 |
+| 수정한 양성 대조 | 동적드럼통-월드CONTACT515/1023회 |
+| NPC 접촉 | NPC이벤트0,드럼통의NPC상대이벤트도0. 실제NPC접촉은미확인 |
+| 해석 제한 |0이벤트를0CPU·충돌없음으로해석하지않음. headless part0두개시험 |
+| 다음 후보 | 서로다른NPC의비대표render파트쌍만충돌차단하는기본OFF격리안. 미구현 |
+| 보존할 대상 | leader-leader·수신체·플레이어·월드·스크립트밀침/지지/낙하/복귀 |
+| 위험 |8명672/64명48384개추가핸들·생성/해제·사망/재생성·복제변화.1000명용구조아님 |
+| 성능/시각/기능 | 새절감/Present/실제시각/8→64회귀미검증. 최종수용미완료 |
 
-**CPU ms/초는 프레임ms가 아니다.20ms p95와 직접 비교하지 않는다.** 동일70초미션 중50초를1회진단했다. 카운터범위는완전64표본의직전/직후경계로계산했고전환5개구간은분리했다. 목표위치와NPC현재위치는구분한다. 근접쌍은실제native manifold 수가아니다.
+직전64단일진단에서는지상/low/high목표의서버CPU가678/831/862 CPUms/벽시계초였고,기본Move빈도증가없이Displace빈도가증가했다. 이값은프레임ms가아니며인과A/B/self-time아니다. 해당진단의최종도착3/64·기능미통과판정은유지한다.
 
-- 관찰:발판목표에서기본Move빈도증가없이Displace와CPU가함께증가했다. 접촉처리를주력비용후보로유지한다.
-- 미확정:순수쿼리/Displace self-time·네이티브접촉/로깅/다른스레드의기여. 인과A/B가아니다.
-- 기능:최종 VALID_TERMINAL3/64·INCOMPLETE61/64,기능회귀미통과. 기능복구개발로범위를전환하지않았다.
-- 시각·성능:Present/실제화면미측정·새최적화미적용·최종수용미완료.
-- 기존판정:서버LOD클라이언트포즈최대0.261m로기각. 물리마스크runtime의도일치. 과거실패후보보존.
+[최신 상세 보고서](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/contact-event-calibration-20261109.md) · [64개체 CPU/접촉 구간표](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/interval-contact-cpu-context-20261109.md) · [전체 보고서](https://github.com/colskigurt/dayz-npc-public-data/tree/main/reports/operations)
 
-[최신 상세 보고서](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/interval-contact-cpu-context-20261109.md) · [마스크·중복 후보 검토](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/physics-mask-and-candidate-review-20261109.md) · [클라이언트 포즈 gate](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/client-role-pose-gate-failed-20261109.md) · [전체 보고서](https://github.com/colskigurt/dayz-npc-public-data/tree/main/reports/operations)
-
-다음은기존네이티브접촉관측기의CONTACT이벤트등록·양성대조계약을감사해,선택적표시호스트간충돌차단이검증가능한지결정한다. 이벤트0을비용0으로보지않고같은0관측을반복하지않는다. pair-block이나전역layer변경은아직구현하지않는다.
+다음단일산출물은8명격리소스와핸들소유권·부분실패rollback·퇴역전명시해제계약이다. 먼저setup/cleanup과8명OFF/ON을확인하며후보특유실패가있으면64확대하지않는다. 실제비용비교전에는최적화성공으로보고하지않는다. 기존게임코드/PBO·애니메이션·지지정책은보존했다.

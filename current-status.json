@@ -1,180 +1,166 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T00:52:47.073226+00:00",
-  "sourceRunId": "ANIM-interval-context64-1",
-  "buildId": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805",
-  "verificationStatus": "DIAGNOSIS_ONLY_FUNCTION_VISUAL_PERFORMANCE_NOT_ACCEPTED",
+  "generatedAt": "2026-11-09T01:05:50.916110+00:00",
+  "sourceRunId": "ANIM-peer-contact-calibration-review1",
+  "buildId": "4EBA8BB5CEE70FD4CF13A21DB162AEF27F420DF70458EDAD7E8E4C78661D0515",
+  "verificationStatus": "CONTACT_WORLD_CONTROL_POSITIVE_NATIVE_PAIR_UNCALIBRATED",
   "metrics": {
-    "cpuSamplingRows": 51,
-    "cpuIntervals": 50,
-    "wallSeconds": 50.00346595,
-    "cpuMs": 39796.875,
-    "cpuMsPerWallSecond": 795.8823302327506,
-    "rateDistributionCpuMsPerWallSecond": {
-      "p50": 808.8972081936121,
-      "p95": 961.2719934756725,
-      "p99": 1001.134201484879
-    },
-    "maximumClockReadMs": 20.5993,
-    "maximumSnapshotBoundarySpanSeconds": 0.28190000000000026,
-    "terminalOutcomes": {
-      "VALID_TERMINAL": 3,
-      "INCOMPLETE_MILESTONES": 61
-    }
-  },
-  "stages": [
-    {
-      "stage": 0,
-      "windows": 2,
-      "wallSeconds": 12.99872435,
-      "cpuMsPerWallSecond": 677.9511406440433,
-      "displaceCallsPerWallSecondBounds": [
-        762.4594331827645,
-        815.3107731682917
-      ],
-      "displaceSolvesPerWallSecondBounds": [
-        760.2284450319927,
-        813.0797850175198
-      ],
-      "moveCallsPerWallSecondBounds": [
-        924.4753313043368,
-        998.1748709056977
-      ],
-      "sampledMeanPairs": 54.67521458198576
-    },
-    {
-      "stage": 1,
-      "windows": 2,
-      "wallSeconds": 17.99101155,
-      "cpuMsPerWallSecond": 831.1442054518608,
-      "displaceCallsPerWallSecondBounds": [
-        1114.8900629770314,
-        1176.5319554808468
-      ],
-      "displaceSolvesPerWallSecondBounds": [
-        1099.8269855482363,
-        1161.3021281174154
-      ],
-      "moveCallsPerWallSecondBounds": [
-        922.3494717838698,
-        981.6568652027796
-      ],
-      "sampledMeanPairs": 324.67627804804187
-    },
-    {
-      "stage": 2,
-      "windows": 2,
-      "wallSeconds": 13.9896295,
-      "cpuMsPerWallSecond": 862.2458514716205,
-      "displaceCallsPerWallSecondBounds": [
-        1085.732828020928,
-        1179.1591764456664
-      ],
-      "displaceSolvesPerWallSecondBounds": [
-        1069.220596585492,
-        1161.86064827521
-      ],
-      "moveCallsPerWallSecondBounds": [
-        774.6452470381721,
-        838.6926901816806
-      ],
-      "sampledMeanPairs": 279.4617403570266
-    }
-  ],
-  "conditions": {
-    "logicalCount": 64,
-    "renderParts": 320,
-    "damageReceivers": 64,
-    "existingPinnedAddons": 15,
-    "independentRuns": 1,
-    "clientPresentMeasured": false,
-    "actualScreenMeasured": false,
-    "groundProgressObserverEnabled": true,
-    "clientActiveCostObserverEnabled": false
+    "nativeAnimals": 2,
+    "barrelControls": 2,
+    "barrelContactMaxima": [
+      515,
+      1023
+    ],
+    "barrelAnimalContacts": 0,
+    "nativeAnimalContacts": 0,
+    "nativeContactMaskBit": 16384,
+    "nativeEventMask": 16432,
+    "independentCorrectedRuns": 1,
+    "setupFailures": 1,
+    "p50": null,
+    "p95": null,
+    "p99": null,
+    "cpuImprovement": null
   },
   "blockers": [
-    "Whole process aggregate CPU across threads, not frame time, exclusive query cost, GC or allocation cost.",
-    "Frame clock read QPC brackets do not prove exact simulation event time or bound native log buffering latency.",
-    "Counter delta lower/upper bounds use adjacent complete64 snapshots under monotonicity; no linear QPC/game-time interpolation.",
-    "Density is sampled root-pair count within0.86m and absY<1; not actual manifold/physics contact count.",
-    "Stage comparison is observational, not matched randomized A/B or causal attribution.",
-    "Client optional active-cost observer disabled; no Present or visual quality result.",
-    "Existing ground progress observer and full mission logging remain; not production-only CPU."
+    "Barrel-world positive control does not establish actual barrel-animal or animal-animal contact.",
+    "Native objects were isolated headless part0 instances, not the full8/64 network gameplay pipeline.",
+    "Kinematic readback is not a measured native pair cost or proof no broadphase work.",
+    "One corrected calibration run; setup failure is not an independent successful repeat."
   ],
+  "proposal": {
+    "schemaVersion": 1,
+    "sourceRunId": "ANIM-selective-peer-block-proposal1",
+    "verificationStatus": "PROPOSAL_NOT_IMPLEMENTED",
+    "hypothesis": "Cross-logical native render-host pair filtering may remove redundant work while script crowd/contact world safety remains authoritative; effect unknown.",
+    "change": "DefaultOFF mission-only experimental blocks for cross-logical render pairs having at least one nonleader; no global layer changes, no simulation/LOD changes.",
+    "preserve": [
+      "leader-leader",
+      "all damage receiver contacts",
+      "player/world contacts",
+      "all script forces,Ray/Sphere support and movement segments",
+      "fall/landing/FOLLOW/reclimb and physical mass"
+    ],
+    "handleCounts": {
+      "8": 672,
+      "64": 48384,
+      "1000": 11988000
+    },
+    "scalingLimit": "All-pairs block setup is a64-agent diagnostic, unsuitable unchanged for1000. No scalability claim.",
+    "priorEvidence": {
+      "sameLogicalSiblingBlocksAlreadyImplemented": true,
+      "nativeCONTACTRegistrationConfirmed": true,
+      "worldDynamicControlPositive": true,
+      "actualNativePairEventsCalibrated": false,
+      "nativePairCpuShareMeasured": false
+    },
+    "decisionWhyNow": "Event callback counts do not measure CPU. Only controlled direct whole-cost comparison can test this hypothesis; no adoption from zero events.",
+    "prerequisites": [
+      "Pin existing source/PBO and inspect ownership of dBlock; no implicit cleanup assumption",
+      "Track every successful handle with a live world-entity owner; remove explicitly before actor retirement/deletion",
+      "Partial allocation failure rolls back created handles and terminates candidate trial",
+      "No block handle for receivers/players/world/leader-leader; exact identity and count audit",
+      "Death and host recreation lifecycle remains unverified until separate bounded checks"
+    ],
+    "gates": [
+      "Compile and setup/cleanup-only first; no64 launch",
+      "Existing8 OFF/ON mobility regression and per-ID state/part spread/retirement, no feature-recovery redesign",
+      "New candidate-specific invalid transition, missing host, crash, cleanup failure stops expansion",
+      "Baseline-common incomplete milestones remain separate defects; no functional pass asserted",
+      "Only if8 safety supports a diagnostic screen,64 matched CPU/Present/work-rate comparison; no adoption without full functional,visual and repeated performance acceptance"
+    ],
+    "performanceGate": {
+      "serverCpuImprovementPercentMinimum": 5,
+      "presentP95RegressionPercentMaximum": 5,
+      "workRateDifferencePercentMaximum": 5,
+      "independentPairsForAdoption": 3,
+      "sameSceneAndForegroundRequired": true,
+      "singleFailedScreenStopsFavorableReruns": true
+    },
+    "limits": [
+      "Block table creation,lookup,memory andcleanup may cost more than they save",
+      "Server-only pair filtering may alter native motion/replication and must be observed",
+      "Headless isolated kinematic readback is not native network gameplay pair cost proof",
+      "No performance improvement predicted numerically"
+    ]
+  },
   "evidenceReferences": [
     {
-      "id": "plan.json",
-      "sha256": "f78f2290d1472d669241f5aac72a45e1b42caa7288d376a3d1c7a0c6481a6bff"
+      "id": "runtime1/server-profile/peer-calibration.tsv",
+      "sha256": "959f2632cb66376f37ff20877846a4553ef51b5f75414bfd6b1d9098ce00724e"
     },
     {
-      "id": "trial-contract.json",
-      "sha256": "a8027f693ed0c4532c66fced23be8bfdfeb290d2f78326ddeec1fd63cf31c8a8"
+      "id": "runtime1/plan.json",
+      "sha256": "9225f0c994b15e62e69dbe069c536b89397f70788746546c6ba6fbc46d393599"
     },
     {
-      "id": "sampler-source-proof.json",
-      "sha256": "97fd50fbc38b377ec1a51c903694bdcf8870db688fa742a2f1ae4e4ab6234238"
+      "id": "runtime1/server-terminal.json",
+      "sha256": "c497937e4e63eb610aa2faa1408feb51533957a30aec014943d86877e9e06761"
     },
     {
-      "id": "server-process-cpu.csv",
-      "sha256": "f1e30db986625642d4e4cd8729c7e5b4bb808b741f7663a4e9dbd40f68c5b14f"
+      "id": "runtime1/server-profile/script_2026-11-09_09-59-32.log",
+      "sha256": "14c785addf944b99f0789c76ff51ce58bafd4a54a8eb70f33e148d36a2283764"
     },
     {
-      "id": "server-terminal.json",
-      "sha256": "48e66646e05b1fcde42c573de6fdc7f99e195159d77ad72ef04f8011a96755e0"
+      "id": "runtime2/server-profile/peer-calibration.tsv",
+      "sha256": "a3ab5c4a8bf80de23b46d55f511996cc69cec3161091d754d980c74112989563"
     },
     {
-      "id": "client-closed.json",
-      "sha256": "f5b8502c451e832b81da635f6fef647232ecb2e660851f80a1353693b9431b84"
+      "id": "runtime2/plan.json",
+      "sha256": "4617e843abdba447f29c9b396c6c48e90c337c222acd92438765041f9c62377b"
     },
     {
-      "id": "server-profile/gameplay-eight.tsv",
-      "sha256": "d9da6d5450aff98d19b06a3f04ff1eae308e18b1d4c625f333a1d2c12b4d9b2d"
+      "id": "runtime2/server-terminal.json",
+      "sha256": "43fca34205b7afd1426ba917f63252bb7be58904ab95ecbc5117d56bf56eab0b"
     },
     {
-      "id": "server-profile/ground-progress.tsv",
-      "sha256": "79ef303c5b70507a7403192ee5f968a431d5ae4d686715cf03d931873bd63285"
+      "id": "runtime2/server-profile/script_2026-11-09_10-00-43.log",
+      "sha256": "939fd7f34a948ee899a92941be60ea079f5bebd3155eb33da3d7dba5943eb537"
     },
     {
-      "id": "server-profile/server-frame.tsv",
-      "sha256": "10bd267e07d254352876b920d22a1ff4195889930258862e5e6431dc3e9de9ff"
+      "id": "installed-event-contract.json",
+      "sha256": "dc0fbdfc75d29715a7ac7921e019fe87eb5cf3cb51b34948a6451c5c2882014d"
     },
     {
-      "id": "server-profile/terminal-state.tsv",
-      "sha256": "a11e8664cdc98b6392178fff37a0dd0415ea5bdca10d5257307d16cb0019979e"
+      "id": "fixture-build.json",
+      "sha256": "c7932873743b1488bb4042e476725781c15c18a879137a5555b6919501ea0b7a"
     },
     {
-      "id": "stage-windows1.json",
-      "sha256": "276025ee07850fdd2809f8238e8c1ad17b59a6e59baae74b3975b79e8a7e5374"
+      "id": "trial-contract1.json",
+      "sha256": "3c56dc271278d1908aecfe844ea64e3de4308ee3bc38cb1be0700b25c609cf98"
     },
     {
-      "id": "runtime-proof1.json",
-      "sha256": "bb357214d758c32254a5667ef97cbb7cded63f362507106d024830b22e7279ca"
+      "id": "mission2-change-proof.json",
+      "sha256": "5de9550999046cbda8a7a7216a5956131f3952f600120acff2aa03fb50a039ae"
     },
     {
-      "id": "sampler-source-proof.json",
-      "sha256": "97fd50fbc38b377ec1a51c903694bdcf8870db688fa742a2f1ae4e4ab6234238"
+      "id": "analysis2.json",
+      "sha256": "d3a3d30134aaf4f328bd7f752ec4a928d22d646effe26a799f04a03f465e958a"
     },
     {
-      "id": "sample-owned-cpu-every-clock.ps1",
-      "sha256": "8824178252d081b5439936e58b65cfc04eb2509f647937b42f3046f391411cf5"
+      "id": "selective-pair-proposal1.json",
+      "sha256": "e18515eb30a32d1117ab6917a3a30309c20fa4cdf8915a2b98f746c795ae1017"
     },
     {
-      "id": "analyze-intervals1.py",
-      "sha256": "9a16aaaa55dd236406fb4701bd6e66bf2049562d85018b3da44fce1f216adbcb"
+      "id": "compile1/server-terminal.json",
+      "sha256": "5f297435f323e67ad29ff750750a2fbdf8a1cb52d33cef876610ab9b9cc8ce82"
     },
     {
-      "id": "aggregate-stage-windows1.py",
-      "sha256": "744dc411eae236c2d2cae58a57888b45cb1a352792728d25def8ea47687902c8"
+      "id": "source/nf_peer_contact_calibration/Scripts/4_World/NFPeerContactObserver.c",
+      "sha256": "40792abb4c51ae644226c1c7bc217e0f1e64e0a9ed37d9c865a298bc2afb325f"
     },
     {
-      "id": "residual-pressure-screen1.json",
-      "sha256": "fac22b0dc735fef44de032a53a799b65b21bd8eb906a1c9cfcdf2a3040fb0e5d"
+      "id": "source/nf_peer_contact_calibration/Scripts/4_World/NFBarrelContactControl.c",
+      "sha256": "cd5e04c29695971f4b84776ca79b86b10281fb49ff12973d3a54b6cec5e09940"
     }
   ],
+  "signatureVerified": true,
   "productionChanged": false,
+  "performanceMeasured": false,
+  "clientStarted": false,
   "adopted": false,
-  "reportUrl": "https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/interval-contact-cpu-context-20261109.md",
-  "lastKnownGoodSnapshotAt": "2026-11-09T00:52:47.073226+00:00",
+  "reportUrl": "https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/contact-event-calibration-20261109.md",
+  "lastKnownGoodSnapshotAt": "2026-11-09T01:05:50.916110+00:00",
   "lastRefreshFailure": null,
   "staleAfterHours": 48,
   "stale": false

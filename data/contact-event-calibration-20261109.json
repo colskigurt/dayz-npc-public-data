@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T01:05:50.916110+00:00",
+  "sourceRunId": "ANIM-peer-contact-calibration-review1",
+  "buildId": "4EBA8BB5CEE70FD4CF13A21DB162AEF27F420DF70458EDAD7E8E4C78661D0515",
+  "verificationStatus": "CONTACT_WORLD_CONTROL_POSITIVE_NATIVE_PAIR_UNCALIBRATED",
+  "metrics": {
+    "nativeAnimals": 2,
+    "barrelControls": 2,
+    "barrelContactMaxima": [
+      515,
+      1023
+    ],
+    "barrelAnimalContacts": 0,
+    "nativeAnimalContacts": 0,
+    "nativeContactMaskBit": 16384,
+    "nativeEventMask": 16432,
+    "independentCorrectedRuns": 1,
+    "setupFailures": 1,
+    "p50": null,
+    "p95": null,
+    "p99": null,
+    "cpuImprovement": null
+  },
+  "blockers": [
+    "Barrel-world positive control does not establish actual barrel-animal or animal-animal contact.",
+    "Native objects were isolated headless part0 instances, not the full8/64 network gameplay pipeline.",
+    "Kinematic readback is not a measured native pair cost or proof no broadphase work.",
+    "One corrected calibration run; setup failure is not an independent successful repeat."
+  ],
+  "proposal": {
+    "schemaVersion": 1,
+    "sourceRunId": "ANIM-selective-peer-block-proposal1",
+    "verificationStatus": "PROPOSAL_NOT_IMPLEMENTED",
+    "hypothesis": "Cross-logical native render-host pair filtering may remove redundant work while script crowd/contact world safety remains authoritative; effect unknown.",
+    "change": "DefaultOFF mission-only experimental blocks for cross-logical render pairs having at least one nonleader; no global layer changes, no simulation/LOD changes.",
+    "preserve": [
+      "leader-leader",
+      "all damage receiver contacts",
+      "player/world contacts",
+      "all script forces,Ray/Sphere support and movement segments",
+      "fall/landing/FOLLOW/reclimb and physical mass"
+    ],
+    "handleCounts": {
+      "8": 672,
+      "64": 48384,
+      "1000": 11988000
+    },
+    "scalingLimit": "All-pairs block setup is a64-agent diagnostic, unsuitable unchanged for1000. No scalability claim.",
+    "priorEvidence": {
+      "sameLogicalSiblingBlocksAlreadyImplemented": true,
+      "nativeCONTACTRegistrationConfirmed": true,
+      "worldDynamicControlPositive": true,
+      "actualNativePairEventsCalibrated": false,
+      "nativePairCpuShareMeasured": false
+    },
+    "decisionWhyNow": "Event callback counts do not measure CPU. Only controlled direct whole-cost comparison can test this hypothesis; no adoption from zero events.",
+    "prerequisites": [
+      "Pin existing source/PBO and inspect ownership of dBlock; no implicit cleanup assumption",
+      "Track every successful handle with a live world-entity owner; remove explicitly before actor retirement/deletion",
+      "Partial allocation failure rolls back created handles and terminates candidate trial",
+      "No block handle for receivers/players/world/leader-leader; exact identity and count audit",
+      "Death and host recreation lifecycle remains unverified until separate bounded checks"
+    ],
+    "gates": [
+      "Compile and setup/cleanup-only first; no64 launch",
+      "Existing8 OFF/ON mobility regression and per-ID state/part spread/retirement, no feature-recovery redesign",
+      "New candidate-specific invalid transition, missing host, crash, cleanup failure stops expansion",
+      "Baseline-common incomplete milestones remain separate defects; no functional pass asserted",
+      "Only if8 safety supports a diagnostic screen,64 matched CPU/Present/work-rate comparison; no adoption without full functional,visual and repeated performance acceptance"
+    ],
+    "performanceGate": {
+      "serverCpuImprovementPercentMinimum": 5,
+      "presentP95RegressionPercentMaximum": 5,
+      "workRateDifferencePercentMaximum": 5,
+      "independentPairsForAdoption": 3,
+      "sameSceneAndForegroundRequired": true,
+      "singleFailedScreenStopsFavorableReruns": true
+    },
+    "limits": [
+      "Block table creation,lookup,memory andcleanup may cost more than they save",
+      "Server-only pair filtering may alter native motion/replication and must be observed",
+      "Headless isolated kinematic readback is not native network gameplay pair cost proof",
+      "No performance improvement predicted numerically"
+    ]
+  },
+  "evidenceReferences": [
+    {
+      "id": "runtime1/server-profile/peer-calibration.tsv",
+      "sha256": "959f2632cb66376f37ff20877846a4553ef51b5f75414bfd6b1d9098ce00724e"
+    },
+    {
+      "id": "runtime1/plan.json",
+      "sha256": "9225f0c994b15e62e69dbe069c536b89397f70788746546c6ba6fbc46d393599"
+    },
+    {
+      "id": "runtime1/server-terminal.json",
+      "sha256": "c497937e4e63eb610aa2faa1408feb51533957a30aec014943d86877e9e06761"
+    },
+    {
+      "id": "runtime1/server-profile/script_2026-11-09_09-59-32.log",
+      "sha256": "14c785addf944b99f0789c76ff51ce58bafd4a54a8eb70f33e148d36a2283764"
+    },
+    {
+      "id": "runtime2/server-profile/peer-calibration.tsv",
+      "sha256": "a3ab5c4a8bf80de23b46d55f511996cc69cec3161091d754d980c74112989563"
+    },
+    {
+      "id": "runtime2/plan.json",
+      "sha256": "4617e843abdba447f29c9b396c6c48e90c337c222acd92438765041f9c62377b"
+    },
+    {
+      "id": "runtime2/server-terminal.json",
+      "sha256": "43fca34205b7afd1426ba917f63252bb7be58904ab95ecbc5117d56bf56eab0b"
+    },
+    {
+      "id": "runtime2/server-profile/script_2026-11-09_10-00-43.log",
+      "sha256": "939fd7f34a948ee899a92941be60ea079f5bebd3155eb33da3d7dba5943eb537"
+    },
+    {
+      "id": "installed-event-contract.json",
+      "sha256": "dc0fbdfc75d29715a7ac7921e019fe87eb5cf3cb51b34948a6451c5c2882014d"
+    },
+    {
+      "id": "fixture-build.json",
+      "sha256": "c7932873743b1488bb4042e476725781c15c18a879137a5555b6919501ea0b7a"
+    },
+    {
+      "id": "trial-contract1.json",
+      "sha256": "3c56dc271278d1908aecfe844ea64e3de4308ee3bc38cb1be0700b25c609cf98"
+    },
+    {
+      "id": "mission2-change-proof.json",
+      "sha256": "5de9550999046cbda8a7a7216a5956131f3952f600120acff2aa03fb50a039ae"
+    },
+    {
+      "id": "analysis2.json",
+      "sha256": "d3a3d30134aaf4f328bd7f752ec4a928d22d646effe26a799f04a03f465e958a"
+    },
+    {
+      "id": "selective-pair-proposal1.json",
+      "sha256": "e18515eb30a32d1117ab6917a3a30309c20fa4cdf8915a2b98f746c795ae1017"
+    },
+    {
+      "id": "compile1/server-terminal.json",
+      "sha256": "5f297435f323e67ad29ff750750a2fbdf8a1cb52d33cef876610ab9b9cc8ce82"
+    },
+    {
+      "id": "source/nf_peer_contact_calibration/Scripts/4_World/NFPeerContactObserver.c",
+      "sha256": "40792abb4c51ae644226c1c7bc217e0f1e64e0a9ed37d9c865a298bc2afb325f"
+    },
+    {
+      "id": "source/nf_peer_contact_calibration/Scripts/4_World/NFBarrelContactControl.c",
+      "sha256": "cd5e04c29695971f4b84776ca79b86b10281fb49ff12973d3a54b6cec5e09940"
+    }
+  ],
+  "signatureVerified": true,
+  "productionChanged": false,
+  "performanceMeasured": false,
+  "clientStarted": false,
+  "adopted": false
+}
