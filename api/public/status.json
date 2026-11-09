@@ -1,194 +1,119 @@
 {
   "schemaVersion": 1,
-  "sourceRunId": "ANIM-server-follower-pose-exposure-review1",
-  "sourceRunsReanalyzed": [
-    "ANIM-server-follower-lod-network2",
-    "ANIM-ground-progress-observer-sixtyfour1",
-    "ANIM-rx27-cost-1-control",
-    "ANIM-rx27-cost-4-control",
-    "ANIM-rx27-cost-5-control"
-  ],
-  "verificationStatus": "SERVER_POSE_DESYNC_OBSERVED_REQUEST_CLOCK_EQUALITY_INSUFFICIENT",
+  "generatedAt": "2026-11-09T00:31:43.000071+00:00",
+  "sourceRunId": "ANIM-client-role-pose-network1",
+  "buildId": "083C3524E337490F5024FCDC957F73E885276AD5D9B46EA4C607F0B0C50D4D45",
+  "verificationStatus": "CLIENT_POSE_GATE_FAILED_NOT_ADOPTED",
   "metrics": {
-    "maximumStableChangedPoseDistanceM": 0.40956073808655047,
-    "scriptClockDifferenceAtLargestExample": 0,
-    "firstBodyObservedParts": [
+    "baselineFrames": 151,
+    "baselineActiveFrames": 151,
+    "baselineMotionFrames": 151,
+    "baselineMaximumPoseDistanceM": 0,
+    "treatmentLabelActiveFrames": 3,
+    "treatmentLabelComparisons": 45,
+    "treatmentLabelBadComparisons": 18,
+    "maximumClientPoseDistanceM": 0.2605518787612171,
+    "unmodifiedControlMaximumM": 0,
+    "independentRuns": 1,
+    "p50": null,
+    "p95": null,
+    "p99": null,
+    "cpuImprovement": null
+  },
+  "conditions": {
+    "logicalGroups": 1,
+    "nativeParts": 5,
+    "AI": false,
+    "rootMotion": false,
+    "requestExecuted": "Run",
+    "plannedButNotExecuted": [
+      "Walk",
+      "Idle"
+    ],
+    "serverTargets": [
       1,
       3
     ],
-    "controlPart": 2,
-    "selectedBone": "LeftHand",
-    "poseIntervals": [
-      {
-        "label": "pre",
-        "interval": [
-          9,
-          10
-        ],
-        "freshSameRequestSamples": 40,
-        "maximumPoseDistanceM": 0,
-        "changedPoseSameRequestStablePoint2Samples": 30,
-        "maximumStableChangedPoseDistanceM": 0
-      },
-      {
-        "label": "reduced-cadence",
-        "interval": [
-          10,
-          11
-        ],
-        "freshSameRequestSamples": 20,
-        "maximumPoseDistanceM": 0.40956073808655047,
-        "changedPoseSameRequestStablePoint2Samples": 14,
-        "maximumStableChangedPoseDistanceM": 0.40956073808655047
-      },
-      {
-        "label": "return",
-        "interval": [
-          11,
-          12
-        ],
-        "freshSameRequestSamples": 40,
-        "maximumPoseDistanceM": 0.18852837109835754,
-        "changedPoseSameRequestStablePoint2Samples": 30,
-        "maximumStableChangedPoseDistanceM": 0
-      },
-      {
-        "label": "after",
-        "interval": [
-          12,
-          13
-        ],
-        "freshSameRequestSamples": 40,
-        "maximumPoseDistanceM": 0,
-        "changedPoseSameRequestStablePoint2Samples": 32,
-        "maximumStableChangedPoseDistanceM": 0
-      }
+    "controls": [
+      0,
+      2,
+      4
     ],
-    "oneSecondGuardExposure": [
-      {
-        "sourceRunId": "ANIM-ground-progress-observer-sixtyfour1",
-        "includeAttack": false,
-        "scope": "all-recorded",
-        "sampledFraction": 0.20523649378593445
-      },
-      {
-        "sourceRunId": "ANIM-ground-progress-observer-sixtyfour1",
-        "includeAttack": true,
-        "scope": "all-recorded",
-        "sampledFraction": 0.21579871701010492
-      },
-      {
-        "sourceRunId": "ANIM-rx27-cost-1-control",
-        "includeAttack": false,
-        "scope": "all-recorded",
-        "sampledFraction": 0.19322839080266174
-      },
-      {
-        "sourceRunId": "ANIM-rx27-cost-1-control",
-        "includeAttack": false,
-        "scope": "capture-context",
-        "sampledFraction": 0.06610094689067689
-      },
-      {
-        "sourceRunId": "ANIM-rx27-cost-1-control",
-        "includeAttack": true,
-        "scope": "all-recorded",
-        "sampledFraction": 0.20337643031705602
-      },
-      {
-        "sourceRunId": "ANIM-rx27-cost-1-control",
-        "includeAttack": true,
-        "scope": "capture-context",
-        "sampledFraction": 0.07842154767564903
-      },
-      {
-        "sourceRunId": "ANIM-rx27-cost-4-control",
-        "includeAttack": false,
-        "scope": "all-recorded",
-        "sampledFraction": 0.19675123012366805
-      },
-      {
-        "sourceRunId": "ANIM-rx27-cost-4-control",
-        "includeAttack": false,
-        "scope": "capture-context",
-        "sampledFraction": 0.07432501936295953
-      },
-      {
-        "sourceRunId": "ANIM-rx27-cost-4-control",
-        "includeAttack": true,
-        "scope": "all-recorded",
-        "sampledFraction": 0.2071872947196306
-      },
-      {
-        "sourceRunId": "ANIM-rx27-cost-4-control",
-        "includeAttack": true,
-        "scope": "capture-context",
-        "sampledFraction": 0.08629079835899028
-      },
-      {
-        "sourceRunId": "ANIM-rx27-cost-5-control",
-        "includeAttack": false,
-        "scope": "all-recorded",
-        "sampledFraction": 0.1896481019870443
-      },
-      {
-        "sourceRunId": "ANIM-rx27-cost-5-control",
-        "includeAttack": false,
-        "scope": "capture-context",
-        "sampledFraction": 0.07073837297735808
-      },
-      {
-        "sourceRunId": "ANIM-rx27-cost-5-control",
-        "includeAttack": true,
-        "scope": "all-recorded",
-        "sampledFraction": 0.1996854353785182
-      },
-      {
-        "sourceRunId": "ANIM-rx27-cost-5-control",
-        "includeAttack": true,
-        "scope": "capture-context",
-        "sampledFraction": 0.08314606843302298
-      }
-    ],
-    "sourceGeometryLodParts": 5,
-    "sourceGeometryPointsPerPart": 26,
-    "sourceGeometryFacesPerPart": 36,
-    "sourceGeometrySelectionNames": [
-      "component01"
-    ],
-    "sourceGeometryKnownBoneSelections": 0,
-    "sourceHistoricalHashesMatched": true,
-    "cpuImprovement": null,
-    "p50": null,
-    "p95": null,
-    "p99": null
+    "baselineSeconds": 8,
+    "plannedReducedSeconds": 15,
+    "actualReducedObservationSpanSeconds": 0.3810000000000002
   },
-  "newGameRuns": 0,
-  "newPbo": false,
-  "newIndependentRepeats": 0,
-  "clientPoseMeasured": false,
-  "actualScreenMeasured": false,
-  "nativeGraphClockRead": false,
-  "persistentRoleLodImplemented": false,
-  "adopted": false,
-  "limits": [
-    "Server MS pose discrepancy is not measured client visual jitter or an identified clock rate",
-    "Script NativeSeconds and request equality do not establish native pose synchronization",
-    "Source MLOD lacks bone point selections in GeometryLOD but compiled collider/network behavior is not proved",
-    "Exposure is snapshot-based; inherited capture context is not an exact simultaneous CPU join",
-    "Initial exposure1/2 omitted INVESTIGATE; v3 corrects source state coverage and separates perception-lock versus animation stability; all earlier files retained"
-  ],
-  "generatedAt": "2026-11-09T00:09:48.376Z",
-  "buildId": "current server987fbc47; existing5-part source/LOD probe records",
   "blockers": [
-    "Native pose mismatch despite command clock equality; internal cause unknown",
-    "Client pose/display and compiled collider/network dependencies unmeasured",
-    "No demonstrated CPU benefit or full64 acceptance"
+    "Host-polled labels lag intervention; five phase0-labelled divergent frames after baseline approval are boundary observations, not pre-treatment baseline failures. Exact network onset/latency not measured.",
+    "Early abort prevents sustained cadence ratio, restore-pose convergence, Walk/Idle or repeat validation.",
+    "Client CPU bone coherence failure is not direct visible-frame smoothness measurement or pure CPU performance.",
+    "One isolated five-part animation group, AI/root motion OFF; not eight or64 functional mobility regression."
   ],
   "evidenceReferences": [
-    "reports/operations/server-follower-pose-exposure-20261109.md",
-    "reports/operations/server-follower-lod-one-shot-20261109.md"
+    {
+      "id": "network1/client-profile/nf-client-role-pose.tsv",
+      "sha256": "9d41ea4ff2e60ac8aad49ec28fdd582773e4feeee7de0736b8065ecbfa1734b5",
+      "bytes": 208964
+    },
+    {
+      "id": "network1/server-profile/role-server-pose.tsv",
+      "sha256": "e6a911c8faaa918bd684d551aa0781debcc8089b502eb8a5eb93b6b0d0e3d304",
+      "bytes": 376623
+    },
+    {
+      "id": "network1/server-profile/role-stage.tsv",
+      "sha256": "98423bdf6145cce9365cfccf584226d0cda3c0a533a377a7daeb382bed8a2cdd",
+      "bytes": 54
+    },
+    {
+      "id": "network1/controller-receipt.json",
+      "sha256": "803f5d59a05051e98ef530ae3a1258fc0e71595b491e89fc4165401d854039cb",
+      "bytes": 826
+    },
+    {
+      "id": "build3/fixture-build.json",
+      "sha256": "a9b1ed2978265072f19e0a156231cf05968639c6817e6ea1a0ca9a73eaf26c26",
+      "bytes": 1639
+    },
+    {
+      "id": "trial-contract1.json",
+      "sha256": "d2a5c427123d01ae4c8bef3b69991af44c02d0657d20c79289403e473cb95f2e",
+      "bytes": 2798
+    },
+    {
+      "id": "network1/plan.json",
+      "sha256": "4d1438bb2e7b4f9684dd964c6bb18827d2715546808738a05b5f64c392500cb9",
+      "bytes": 10209
+    },
+    {
+      "id": "network1/server-terminal.json",
+      "sha256": "36d9d201aff0f90963b3c8a09430daba48186c42942bb8a1ca80ed08fa8361be",
+      "bytes": 90
+    },
+    {
+      "id": "network1/client-closed.json",
+      "sha256": "2563a350f89dad126929700324b064a6bb4acd9f2798a4be78d95e8038ea73fe",
+      "bytes": 130
+    },
+    {
+      "id": "compile1/compile-failure-cleanup.json",
+      "sha256": "e759a92f479072a916d1443cca99a3abb8f3986a451b0d8b758d6a870763215d",
+      "bytes": 120
+    },
+    {
+      "id": "compile2/server-terminal.json",
+      "sha256": "cb8c890fb16cc62af02ec27bfb0b8a1b7ba29e7c4237f4aa0327c751bbf6725b",
+      "bytes": 90
+    }
   ],
-  "targetP95Ms": 20,
-  "targetAchieved": false
+  "adopted": false,
+  "productionChanged": false,
+  "actualScreenMeasured": false,
+  "performanceMeasured": false,
+  "signatureVerified": true,
+  "lastRefreshFailure": null,
+  "reportUrl": "https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/client-role-pose-gate-failed-20261109.md",
+  "staleAfterHours": 48,
+  "stale": false,
+  "lastKnownGoodSnapshotAt": "2026-11-09T00:31:43.000071+00:00"
 }
