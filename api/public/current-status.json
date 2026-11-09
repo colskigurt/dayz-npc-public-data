@@ -1,752 +1,194 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-08T23:47:17.584Z",
-  "sourceRunId": "ANIM-server-follower-lod-network2",
-  "buildId": "server987fbc47; baseline11PBO; mission-only",
-  "verificationStatus": "ONE_SHOT_FOLLOWER_LOD_EFFECT_TRANSIENT_NOT_ACCEPTED",
+  "sourceRunId": "ANIM-server-follower-pose-exposure-review1",
+  "sourceRunsReanalyzed": [
+    "ANIM-server-follower-lod-network2",
+    "ANIM-ground-progress-observer-sixtyfour1",
+    "ANIM-rx27-cost-1-control",
+    "ANIM-rx27-cost-4-control",
+    "ANIM-rx27-cost-5-control"
+  ],
+  "verificationStatus": "SERVER_POSE_DESYNC_OBSERVED_REQUEST_CLOCK_EQUALITY_INSUFFICIENT",
   "metrics": {
-    "observedBodyId": 0,
-    "observedParts": 5,
-    "rows": 10010,
-    "assignedTargets": {
-      "bodies": 8,
-      "partsPerBody": [
-        1,
-        3
-      ],
-      "total": 16
-    },
-    "windows": [
-      {
-        "label": "baseline",
-        "seconds": [
-          3,
-          9
-        ],
-        "parts": [
-          {
-            "part": 0,
-            "animCallbacksPerGameSecond": 20.13517413569765,
-            "scriptCommandClockPerGameSecond": 1.0067620626472387,
-            "sampledPoseChangesPerGameSecond": 19.79958790010269,
-            "selectedBone": "LeftHand"
-          },
-          {
-            "part": 1,
-            "animCallbacksPerGameSecond": 20.13517413569765,
-            "scriptCommandClockPerGameSecond": 1.0067620626472387,
-            "sampledPoseChangesPerGameSecond": 19.79958790010269,
-            "selectedBone": "LeftHand"
-          },
-          {
-            "part": 2,
-            "animCallbacksPerGameSecond": 20.13517413569765,
-            "scriptCommandClockPerGameSecond": 1.0067620626472387,
-            "sampledPoseChangesPerGameSecond": 19.79958790010269,
-            "selectedBone": "LeftHand"
-          },
-          {
-            "part": 3,
-            "animCallbacksPerGameSecond": 20.13517413569765,
-            "scriptCommandClockPerGameSecond": 1.0067620626472387,
-            "sampledPoseChangesPerGameSecond": 19.79958790010269,
-            "selectedBone": "LeftHand"
-          },
-          {
-            "part": 4,
-            "animCallbacksPerGameSecond": 20.13517413569765,
-            "scriptCommandClockPerGameSecond": 1.0067620626472387,
-            "sampledPoseChangesPerGameSecond": 19.79958790010269,
-            "selectedBone": "LeftHand"
-          }
-        ]
-      },
-      {
-        "label": "early-treatment",
-        "seconds": [
-          10.1,
-          11.1
-        ],
-        "parts": [
-          {
-            "part": 0,
-            "animCallbacksPerGameSecond": 20.855057351407723,
-            "scriptCommandClockPerGameSecond": 1.0427528675703863,
-            "sampledPoseChangesPerGameSecond": 20.855057351407723,
-            "selectedBone": "LeftHand"
-          },
-          {
-            "part": 1,
-            "animCallbacksPerGameSecond": 10.427528675703861,
-            "scriptCommandClockPerGameSecond": 0.990615224191868,
-            "sampledPoseChangesPerGameSecond": 10.427528675703861,
-            "selectedBone": "LeftHand"
-          },
-          {
-            "part": 2,
-            "animCallbacksPerGameSecond": 20.855057351407723,
-            "scriptCommandClockPerGameSecond": 1.0427528675703863,
-            "sampledPoseChangesPerGameSecond": 20.855057351407723,
-            "selectedBone": "LeftHand"
-          },
-          {
-            "part": 3,
-            "animCallbacksPerGameSecond": 10.427528675703861,
-            "scriptCommandClockPerGameSecond": 0.990615224191868,
-            "sampledPoseChangesPerGameSecond": 10.427528675703861,
-            "selectedBone": "LeftHand"
-          },
-          {
-            "part": 4,
-            "animCallbacksPerGameSecond": 20.855057351407723,
-            "scriptCommandClockPerGameSecond": 1.0427528675703863,
-            "sampledPoseChangesPerGameSecond": 20.855057351407723,
-            "selectedBone": "LeftHand"
-          }
-        ]
-      },
-      {
-        "label": "settled-treatment",
-        "seconds": [
-          16,
-          24
-        ],
-        "parts": [
-          {
-            "part": 0,
-            "animCallbacksPerGameSecond": 20.11920629731157,
-            "scriptCommandClockPerGameSecond": 1.0059477403616428,
-            "sampledPoseChangesPerGameSecond": 20.11920629731157,
-            "selectedBone": "LeftHand"
-          },
-          {
-            "part": 1,
-            "animCallbacksPerGameSecond": 20.11920629731157,
-            "scriptCommandClockPerGameSecond": 1.0059477403616428,
-            "sampledPoseChangesPerGameSecond": 20.11920629731157,
-            "selectedBone": "LeftHand"
-          },
-          {
-            "part": 2,
-            "animCallbacksPerGameSecond": 20.11920629731157,
-            "scriptCommandClockPerGameSecond": 1.0059477403616428,
-            "sampledPoseChangesPerGameSecond": 20.11920629731157,
-            "selectedBone": "LeftHand"
-          },
-          {
-            "part": 3,
-            "animCallbacksPerGameSecond": 20.11920629731157,
-            "scriptCommandClockPerGameSecond": 1.0059477403616428,
-            "sampledPoseChangesPerGameSecond": 20.11920629731157,
-            "selectedBone": "LeftHand"
-          },
-          {
-            "part": 4,
-            "animCallbacksPerGameSecond": 20.11920629731157,
-            "scriptCommandClockPerGameSecond": 1.0059477403616428,
-            "sampledPoseChangesPerGameSecond": 20.11920629731157,
-            "selectedBone": "LeftHand"
-          }
-        ]
-      },
-      {
-        "label": "restore",
-        "seconds": [
-          30,
-          39
-        ],
-        "parts": [
-          {
-            "part": 0,
-            "animCallbacksPerGameSecond": 19.927415224990533,
-            "scriptCommandClockPerGameSecond": 0.9963596286153228,
-            "sampledPoseChangesPerGameSecond": 19.927415224990533,
-            "selectedBone": "LeftHand"
-          },
-          {
-            "part": 1,
-            "animCallbacksPerGameSecond": 19.927415224990533,
-            "scriptCommandClockPerGameSecond": 0.9963596286153228,
-            "sampledPoseChangesPerGameSecond": 19.927415224990533,
-            "selectedBone": "LeftHand"
-          },
-          {
-            "part": 2,
-            "animCallbacksPerGameSecond": 19.927415224990533,
-            "scriptCommandClockPerGameSecond": 0.9963596286153228,
-            "sampledPoseChangesPerGameSecond": 19.927415224990533,
-            "selectedBone": "LeftHand"
-          },
-          {
-            "part": 3,
-            "animCallbacksPerGameSecond": 19.927415224990533,
-            "scriptCommandClockPerGameSecond": 0.9963596286153228,
-            "sampledPoseChangesPerGameSecond": 19.927415224990533,
-            "selectedBone": "LeftHand"
-          },
-          {
-            "part": 4,
-            "animCallbacksPerGameSecond": 19.927415224990533,
-            "scriptCommandClockPerGameSecond": 0.9963596286153228,
-            "sampledPoseChangesPerGameSecond": 19.927415224990533,
-            "selectedBone": "LeftHand"
-          }
-        ]
-      }
+    "maximumStableChangedPoseDistanceM": 0.40956073808655047,
+    "scriptClockDifferenceAtLargestExample": 0,
+    "firstBodyObservedParts": [
+      1,
+      3
     ],
-    "uniformOneSecondBins": [
+    "controlPart": 2,
+    "selectedBone": "LeftHand",
+    "poseIntervals": [
       {
-        "seconds": [
-          0,
-          1
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          1,
-          2
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          2,
-          3
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          3,
-          4
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          4,
-          5
-        ],
-        "callbackDeltas": {
-          "0": 19,
-          "1": 19,
-          "2": 19,
-          "3": 19,
-          "4": 19
-        }
-      },
-      {
-        "seconds": [
-          5,
-          6
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          6,
-          7
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          7,
-          8
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          8,
-          9
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
+        "label": "pre",
+        "interval": [
           9,
           10
         ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
+        "freshSameRequestSamples": 40,
+        "maximumPoseDistanceM": 0,
+        "changedPoseSameRequestStablePoint2Samples": 30,
+        "maximumStableChangedPoseDistanceM": 0
       },
       {
-        "seconds": [
+        "label": "reduced-cadence",
+        "interval": [
           10,
           11
         ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 10,
-          "2": 20,
-          "3": 10,
-          "4": 20
-        }
+        "freshSameRequestSamples": 20,
+        "maximumPoseDistanceM": 0.40956073808655047,
+        "changedPoseSameRequestStablePoint2Samples": 14,
+        "maximumStableChangedPoseDistanceM": 0.40956073808655047
       },
       {
-        "seconds": [
+        "label": "return",
+        "interval": [
           11,
           12
         ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
+        "freshSameRequestSamples": 40,
+        "maximumPoseDistanceM": 0.18852837109835754,
+        "changedPoseSameRequestStablePoint2Samples": 30,
+        "maximumStableChangedPoseDistanceM": 0
       },
       {
-        "seconds": [
+        "label": "after",
+        "interval": [
           12,
           13
         ],
-        "callbackDeltas": {
-          "0": 19,
-          "1": 19,
-          "2": 19,
-          "3": 19,
-          "4": 19
-        }
-      },
-      {
-        "seconds": [
-          13,
-          14
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          14,
-          15
-        ],
-        "callbackDeltas": {
-          "0": 19,
-          "1": 19,
-          "2": 19,
-          "3": 19,
-          "4": 19
-        }
-      },
-      {
-        "seconds": [
-          15,
-          16
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          16,
-          17
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          17,
-          18
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          18,
-          19
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          19,
-          20
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          20,
-          21
-        ],
-        "callbackDeltas": {
-          "0": 19,
-          "1": 19,
-          "2": 19,
-          "3": 19,
-          "4": 19
-        }
-      },
-      {
-        "seconds": [
-          21,
-          22
-        ],
-        "callbackDeltas": {
-          "0": 19,
-          "1": 19,
-          "2": 19,
-          "3": 19,
-          "4": 19
-        }
-      },
-      {
-        "seconds": [
-          22,
-          23
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          23,
-          24
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          24,
-          25
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          25,
-          26
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          26,
-          27
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          27,
-          28
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          28,
-          29
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          29,
-          30
-        ],
-        "callbackDeltas": {
-          "0": 19,
-          "1": 19,
-          "2": 19,
-          "3": 19,
-          "4": 19
-        }
-      },
-      {
-        "seconds": [
-          30,
-          31
-        ],
-        "callbackDeltas": {
-          "0": 19,
-          "1": 19,
-          "2": 19,
-          "3": 19,
-          "4": 19
-        }
-      },
-      {
-        "seconds": [
-          31,
-          32
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          32,
-          33
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          33,
-          34
-        ],
-        "callbackDeltas": {
-          "0": 19,
-          "1": 19,
-          "2": 19,
-          "3": 19,
-          "4": 19
-        }
-      },
-      {
-        "seconds": [
-          34,
-          35
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          35,
-          36
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          36,
-          37
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          37,
-          38
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          38,
-          39
-        ],
-        "callbackDeltas": {
-          "0": 20,
-          "1": 20,
-          "2": 20,
-          "3": 20,
-          "4": 20
-        }
-      },
-      {
-        "seconds": [
-          39,
-          40
-        ],
-        "callbackDeltas": {
-          "0": 19,
-          "1": 19,
-          "2": 19,
-          "3": 19,
-          "4": 19
-        }
+        "freshSameRequestSamples": 40,
+        "maximumPoseDistanceM": 0,
+        "changedPoseSameRequestStablePoint2Samples": 32,
+        "maximumStableChangedPoseDistanceM": 0
       }
     ],
-    "bodyFieldsStable": true,
-    "agentsAcquired": 8,
-    "agentsMoved2m": 8,
-    "terminalOutcomes": {
-      "INCOMPLETE_MILESTONES": 8
-    },
+    "oneSecondGuardExposure": [
+      {
+        "sourceRunId": "ANIM-ground-progress-observer-sixtyfour1",
+        "includeAttack": false,
+        "scope": "all-recorded",
+        "sampledFraction": 0.20523649378593445
+      },
+      {
+        "sourceRunId": "ANIM-ground-progress-observer-sixtyfour1",
+        "includeAttack": true,
+        "scope": "all-recorded",
+        "sampledFraction": 0.21579871701010492
+      },
+      {
+        "sourceRunId": "ANIM-rx27-cost-1-control",
+        "includeAttack": false,
+        "scope": "all-recorded",
+        "sampledFraction": 0.19322839080266174
+      },
+      {
+        "sourceRunId": "ANIM-rx27-cost-1-control",
+        "includeAttack": false,
+        "scope": "capture-context",
+        "sampledFraction": 0.06610094689067689
+      },
+      {
+        "sourceRunId": "ANIM-rx27-cost-1-control",
+        "includeAttack": true,
+        "scope": "all-recorded",
+        "sampledFraction": 0.20337643031705602
+      },
+      {
+        "sourceRunId": "ANIM-rx27-cost-1-control",
+        "includeAttack": true,
+        "scope": "capture-context",
+        "sampledFraction": 0.07842154767564903
+      },
+      {
+        "sourceRunId": "ANIM-rx27-cost-4-control",
+        "includeAttack": false,
+        "scope": "all-recorded",
+        "sampledFraction": 0.19675123012366805
+      },
+      {
+        "sourceRunId": "ANIM-rx27-cost-4-control",
+        "includeAttack": false,
+        "scope": "capture-context",
+        "sampledFraction": 0.07432501936295953
+      },
+      {
+        "sourceRunId": "ANIM-rx27-cost-4-control",
+        "includeAttack": true,
+        "scope": "all-recorded",
+        "sampledFraction": 0.2071872947196306
+      },
+      {
+        "sourceRunId": "ANIM-rx27-cost-4-control",
+        "includeAttack": true,
+        "scope": "capture-context",
+        "sampledFraction": 0.08629079835899028
+      },
+      {
+        "sourceRunId": "ANIM-rx27-cost-5-control",
+        "includeAttack": false,
+        "scope": "all-recorded",
+        "sampledFraction": 0.1896481019870443
+      },
+      {
+        "sourceRunId": "ANIM-rx27-cost-5-control",
+        "includeAttack": false,
+        "scope": "capture-context",
+        "sampledFraction": 0.07073837297735808
+      },
+      {
+        "sourceRunId": "ANIM-rx27-cost-5-control",
+        "includeAttack": true,
+        "scope": "all-recorded",
+        "sampledFraction": 0.1996854353785182
+      },
+      {
+        "sourceRunId": "ANIM-rx27-cost-5-control",
+        "includeAttack": true,
+        "scope": "capture-context",
+        "sampledFraction": 0.08314606843302298
+      }
+    ],
+    "sourceGeometryLodParts": 5,
+    "sourceGeometryPointsPerPart": 26,
+    "sourceGeometryFacesPerPart": 36,
+    "sourceGeometrySelectionNames": [
+      "component01"
+    ],
+    "sourceGeometryKnownBoneSelections": 0,
+    "sourceHistoricalHashesMatched": true,
     "cpuImprovement": null,
     "p50": null,
     "p95": null,
     "p99": null
   },
+  "newGameRuns": 0,
+  "newPbo": false,
+  "newIndependentRepeats": 0,
+  "clientPoseMeasured": false,
+  "actualScreenMeasured": false,
+  "nativeGraphClockRead": false,
+  "persistentRoleLodImplemented": false,
+  "adopted": false,
+  "limits": [
+    "Server MS pose discrepancy is not measured client visual jitter or an identified clock rate",
+    "Script NativeSeconds and request equality do not establish native pose synchronization",
+    "Source MLOD lacks bone point selections in GeometryLOD but compiled collider/network behavior is not proved",
+    "Exposure is snapshot-based; inherited capture context is not an exact simultaneous CPU join",
+    "Initial exposure1/2 omitted INVESTIGATE; v3 corrects source state coverage and separates perception-lock versus animation stability; all earlier files retained"
+  ],
+  "generatedAt": "2026-11-09T00:09:48.376Z",
+  "buildId": "current server987fbc47; existing5-part source/LOD probe records",
   "blockers": [
-    "One-shot LOD reduction was transient, not a persistent cost policy",
-    "Current native writer and client visual impact unverified",
-    "Overall64 functional/CPU/visual acceptance incomplete"
+    "Native pose mismatch despite command clock equality; internal cause unknown",
+    "Client pose/display and compiled collider/network dependencies unmeasured",
+    "No demonstrated CPU benefit or full64 acceptance"
   ],
   "evidenceReferences": [
-    "reports/operations/server-follower-lod-one-shot-20261109.md",
-    "reports/operations/native-peer-contact-observation-inconclusive-20261109.md"
+    "reports/operations/server-follower-pose-exposure-20261109.md",
+    "reports/operations/server-follower-lod-one-shot-20261109.md"
   ],
-  "limits": [
-    "Cadence and pose sample from first logical NPC five parts, not all16 assigned targets",
-    "Script NativeSeconds is command input-time accumulation, not direct graph-clock read",
-    "Descriptive windows; no statistical test or independent repetitions",
-    "Current native overwrite writer not observed; old automatic-policy evidence only a plausible explanation",
-    "Body fields do not establish whole physical/replication/visual safety"
-  ],
-  "persistentRefreshImplemented": false,
-  "newPbo": false,
-  "clientPosesMeasured": false,
-  "nativeInternalGraphClockRead": false,
   "targetP95Ms": 20,
   "targetAchieved": false
 }

@@ -1,16 +1,16 @@
-# 현재 상태 — 서버 비대표 갱신 정책 조사
+# 현재 상태 — 서버 명령 시계와 본 포즈를 분리 검증
 
-| 항목 | 최신 근거와 판정 |
+| 항목 | 확인된 내용 |
 |---|---|
-| 이번 시험 | 현재 네트워크8개체, 서버 비대표part1·3에 LOD1 한 번 지정 후 복원 |
-| 실제 관측 범위 | 첫 NPC의5파트, 10,010행. 지정 대상은8NPC 총16호스트 |
-| 일시 효과 | 지정 직후 대상 약10.43회/게임초, 대조 약20.86회/초 |
-| 지속성 | 이후 안정 구간은 대상·대조 모두 약20.12회/초. 일회 지정 미수용 |
-| 현재 내부 writer | 미추적. 과거 자동정책과 양립하지만 이번 확정 원인 아님 |
-| 이번 기능·시각·성능 | 40초 진단으로 전체 경로 기능/클라이언트 시각/CPU·Present 수용 불가 |
-| 다음 정책 | 주기적 LOD 유지 미구현. 역할·상태 복원/설정 오버헤드/동기 위험을 먼저 평가 |
-| 20ms p95 목표 | 전체 최종 달성 미입증 |
+| LOD1 실험 구간 | 같은 요청·기록된 script NativeSeconds에도 LeftHand MS 위치가 대상/대조 간 최대 0.410m 차이 |
+| 전후 대조 | 같은 비교의 지정 전/이후 일부 구간은0m. 기존 단발 시험 로그 재분석이며 새 실행 아님 |
+| 해석 | 콜백 수·명령 입력 시계 일치가 native pose 동기화를 보장하지 않음 |
+| 미확인 | 내부 시계/블렌딩 원인, 클라이언트 포즈·실제 화면 영향, CPU 이득 |
+| 적용률 정정 | 정상 이동/idle·1초 guard의 원본64 비용 문맥 추정6.61~7.43%. 초기 분석은 INVESTIGATE 누락 등으로 과소계산 |
+| 자산 단서 | 표시5파트 source GeometryLOD에는 component01 선택만 존재. compiled 물리/복제 독립성까지 입증한 것은 아님 |
+| 주기적 서버 LOD 정책 | 미구현·미채택. 클라이언트 역할별 pose 확인이 먼저 필요 |
+| 전체 목표 | 64 기능·실제 시각·20ms p95 최종 수용 미완료 |
 
-기존 배포본과 물리 질의·대표·피해수신체·클라이언트 LOD는 유지했다. 발 광선 수치 동등성 기각도 유지하며 새 오차 기준은 적용하지 않았다. 시험 프로세스는 종료했다.
+새 게임·PBO·원본 수정 없이 기존 증거를 분석했다. 이 보고서는 LOD1 실험의 결과이며 기존 정상 배포본을 수정하지 않았다.
 
-[최신 상세 보고서](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/server-follower-lod-one-shot-20261109.md) · [직전 접촉 관측 한계](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/native-peer-contact-observation-inconclusive-20261109.md) · [전체 보고서](https://github.com/colskigurt/dayz-npc-public-data/tree/main/reports/operations)
+[최신 상세 보고서](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/server-follower-pose-exposure-20261109.md) · [기존 단발 LOD 시험](https://github.com/colskigurt/dayz-npc-public-data/blob/main/reports/operations/server-follower-lod-one-shot-20261109.md) · [전체 보고서](https://github.com/colskigurt/dayz-npc-public-data/tree/main/reports/operations)
