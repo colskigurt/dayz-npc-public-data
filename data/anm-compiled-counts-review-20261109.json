@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-09T03:22:04.857556+00:00",
+  "sourceRunId": "ANIM-anm-header-count-crosscheck1",
+  "buildId": "existing70ANM-no-change",
+  "verificationStatus": "COMPILED_HEADER_LAYOUT_AND_SOURCE_CORRELATION_NOT_RUNTIME_MAPPING",
+  "metrics": {
+    "files": 70,
+    "explicitSourceChannels": 11018,
+    "sourceConstantChannels": 6276,
+    "sourceConstantHeaderCountOne": 6192,
+    "explicitSourceKeys": 614085,
+    "correspondingHeaderCountSum": 158580,
+    "varyingSourceChannels": 4742,
+    "varyingSourceHeaderCountBelowExplicitKeys": 4726,
+    "repeatedConstantSourceChannels": 192,
+    "repeatedConstantHeaderCountOne": 192,
+    "sourceConstantHeaderCountNotOne": 84,
+    "newGameRuns": 0,
+    "newCpuMeasurements": 0,
+    "cpuImprovement": null
+  },
+  "blockers": [
+    "Compiled16-bit count-field semantics inferred, not recovered importer contract",
+    "84 single-value source channels have non-one field; meaning unknown",
+    "Runtime receiver/asset/flag mapping not established"
+  ],
+  "evidenceReferences": [
+    {
+      "path": "reports/operations/anm-compiled-counts-review-20261109.md"
+    },
+    {
+      "path": "reports/operations/animation-sampling-boundary-review-20261109.md"
+    }
+  ],
+  "productionChanged": false,
+  "adopted": false
+}

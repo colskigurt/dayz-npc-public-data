@@ -1,40 +1,38 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T03:17:05.257Z",
-  "sourceRunId": "ANIM-animation-key-inventory-readonly1",
-  "buildId": "existing-server987-existing70ANM-no-change",
-  "verificationStatus": "SOURCE_AND_STATIC_DIAGNOSIS_RUNTIME_ASSET_MAPPING_UNVERIFIED",
+  "generatedAt": "2026-11-09T03:22:04.857556+00:00",
+  "sourceRunId": "ANIM-anm-header-count-crosscheck1",
+  "buildId": "existing70ANM-no-change",
+  "verificationStatus": "COMPILED_HEADER_LAYOUT_AND_SOURCE_CORRELATION_NOT_RUNTIME_MAPPING",
   "metrics": {
-    "inputAssets": 70,
-    "parts": 5,
-    "clips": 14,
-    "explicitChannelKeys": 614085,
-    "channels": 11018,
-    "constantChannelsWithRepeatedKeys": 192,
-    "explicitRepeatedConstantKeys": 9359,
-    "anmBytes": 1891450,
-    "validatedNewDirectCallSites": 4,
+    "files": 70,
+    "explicitSourceChannels": 11018,
+    "sourceConstantChannels": 6276,
+    "sourceConstantHeaderCountOne": 6192,
+    "explicitSourceKeys": 614085,
+    "correspondingHeaderCountSum": 158580,
+    "varyingSourceChannels": 4742,
+    "varyingSourceHeaderCountBelowExplicitKeys": 4726,
+    "repeatedConstantSourceChannels": 192,
+    "repeatedConstantHeaderCountOne": 192,
+    "sourceConstantHeaderCountNotOne": 84,
     "newGameRuns": 0,
-    "newCpuSamples": 0,
-    "cpuImprovement": null,
-    "presentP95": null
+    "newCpuMeasurements": 0,
+    "cpuImprovement": null
   },
   "blockers": [
-    "Hot native sampler not mapped to specific current animation asset or live receiver",
-    "Compiled channel counts/flags and Workbench constant folding remain unverified",
-    "Key reduction may alter execution path; no performance or pose preservation result"
+    "Compiled16-bit count-field semantics inferred, not recovered importer contract",
+    "84 single-value source channels have non-one field; meaning unknown",
+    "Runtime receiver/asset/flag mapping not established"
   ],
   "evidenceReferences": [
     {
+      "path": "reports/operations/anm-compiled-counts-review-20261109.md"
+    },
+    {
       "path": "reports/operations/animation-sampling-boundary-review-20261109.md"
-    },
-    {
-      "path": "reports/operations/foot-range-tolerance1-method-20261109.md"
-    },
-    {
-      "path": "reports/operations/native-owner-boundaries-review-20261108.md"
     }
   ],
-  "adopted": false,
-  "productionChanged": false
+  "productionChanged": false,
+  "adopted": false
 }
