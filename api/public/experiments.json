@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-single-host-death-lifecycle-20261112",
-  "generatedAt": "2026-11-12T11:00:25.121Z",
+  "snapshotId": "snapshot-receiver-native-move-20261112",
+  "generatedAt": "2026-11-12T11:13:42.856Z",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -63,7 +63,8 @@
     "NATIVE-SCRIPT-root-handoff1-r2",
     "NATIVE-ROOT-world-gate1-r2",
     "SAME-RAY-shadow-eight1-r2",
-    "SINGLE-HOST-death-capability1-r2"
+    "SINGLE-HOST-death-capability1-r2",
+    "RECEIVER-native-move1"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -89,10 +90,10 @@
     "ed0e9d4c2d95cff14f4ce61d085941654b7454c03c5a3c4644340076a5abe142"
   ],
   "verificationStatus": {
-    "diagnosisSucceeded": "PARTIAL_PRECRASH_POSE_OBSERVATION",
+    "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "UNSAFE_LIFECYCLE_ACCESS_VIOLATION",
+    "functional": "STATIONARITY_FAILED_AND_NATIVE_TERMINATION_CRASH",
     "visual": "NOT_MEASURED",
     "performance": "NOT_MEASURED",
     "adopted": false
@@ -13508,13 +13509,46 @@
       },
       "repetitions": 1,
       "verificationStatus": "partial_precrash_observation_not_lifecycle_acceptance"
+    },
+    {
+      "metricId": "receiver-native-zero-speed-root-drift",
+      "sourceRunId": "RECEIVER-native-move1",
+      "buildId": "5d7184ef91b44ff4a4a5ffb0ccca918cf20b46a75324d24af78cabc49f651db8",
+      "value": 27.533278439524153,
+      "unit": "metres/max-horizontal-distance-from-settled-origin",
+      "conditions": {
+        "scope": "2 unmanaged current receiver hosts, script root0 vs native Move, same pose requests with native movement input0",
+        "logicalAgents": null,
+        "customAnimalHosts": 2,
+        "independentTrials": 1,
+        "independentPairs": 0,
+        "trialGameSeconds": 12,
+        "observedRows": 378,
+        "scriptRootHorizontalDriftMetres": 0,
+        "nativeMaxActiveHorizontalDriftMetres": 27.533278439524153,
+        "nativeWalkNetMetres": 8.395686109307947,
+        "nativeRunNetMetres": 18.961914509105192,
+        "headCpuPoseMaxDifferenceMetres": 0,
+        "hipsCpuPoseMaxDifferenceMetres": 0,
+        "stationarityGatePassed": false,
+        "scriptErrors": 0,
+        "allAlive": true,
+        "nativeCrash": true,
+        "serverExitHex": "0xC0000005",
+        "safeLifecyclePassed": false,
+        "cpuSaving": null,
+        "presentP95Ms": null,
+        "fullNpcIntegration": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "failed_capability_gate_no_adoption"
     }
   ],
   "blockers": [
-    "Server0xC0000005 after Finish/retirement markers: safe lifecycle gate failed; exact native root cause unknown.",
-    "Measured Head CPU pose continuity does not establish14clips, visible smoothness or safe teardown.",
-    "Existing FreezeDamageReceiver would move/disable render if roles aliased; no direct merge.",
-    "Actual FireGeometry, six-zone damage, loot and whole CPU saving not tested; no64 escalation."
+    "NativeMove pose walk/run caused27.53m horizontal drift despite movement input0; direct receiver command replacement rejected.",
+    "Matching Head/Hips local poses do not establish world hitbox alignment.",
+    "Alive-only Finish also crashed: death-specific root cause not established; same raw stack top candidate0x220989, not causal unwind proof.",
+    "No position correction/new interpolation added, no64 escalation, no measured CPU saving."
   ],
   "evidenceReferences": [
     {
@@ -14328,17 +14362,29 @@
     {
       "evidence": "data/single-host-death-lifecycle-20261112-evidence.txt",
       "sha256": "d6d7649424661dd30542064f4ce72a597d37993051efc0725b71b00837a8e356"
+    },
+    {
+      "report": "reports/operations/receiver-native-move-stationarity-20261112.md",
+      "sha256": "eece934019330ecc23518813698f78ceea9181acff5ebd1cc3a76dcd05f18b5c"
+    },
+    {
+      "data": "data/receiver-native-move-stationarity-20261112.json",
+      "sha256": "6f32f86f71568b812ecfde957c060ed9bc12cd7a07dfdc1b7eb656625649f983"
+    },
+    {
+      "evidence": "data/receiver-native-move-stationarity-20261112-evidence.txt",
+      "sha256": "62662d2b7368680621cf29be16455e8865ec0d810e3523d8d765ba8199b2d2ac"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-11-12T10:57:22.9857251+00:00",
-    "staleAfter": "2026-11-13T10:57:22.985Z",
+    "sourceUpdatedAt": "2026-11-12T11:10:25.4565874+00:00",
+    "staleAfter": "2026-11-13T11:10:25.456Z",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
-    "consumerRule": "Partial precrash observation only. Reject adoption or normal-termination claim."
+    "consumerRule": "Reject direct replacement. Root movement, local CPU pose, safe teardown and performance are independent judgments."
   },
   "updateState": {
-    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T11:00:25.121Z",
+    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T11:13:42.856Z",
     "lastUpdateFailure": null
   },
   "links": {
@@ -15981,49 +16027,96 @@
         "trials": 1,
         "comparableRepeatedPerformanceTrials": 0
       }
+    },
+    {
+      "id": "receiver-native-move-stationarity-20261112",
+      "title": "Zero speed does not suppress requested locomotion root; direct receiver replacement rejected",
+      "track": "capability",
+      "sourceRunId": [
+        "RECEIVER-native-move1"
+      ],
+      "buildId": "5d7184ef91b44ff4a4a5ffb0ccca918cf20b46a75324d24af78cabc49f651db8",
+      "verificationStatus": {
+        "diagnosisSucceeded": true,
+        "experimentSuccess": false,
+        "finalAccepted": false,
+        "functional": "STATIONARITY_FAILED_AND_NATIVE_TERMINATION_CRASH",
+        "visual": "NOT_MEASURED",
+        "performance": "NOT_MEASURED",
+        "adopted": false
+      },
+      "conditions": "2 unmanaged current receiver hosts, script root0 vs native Move, same pose requests with native movement input0",
+      "evidenceReferences": [
+        {
+          "report": "reports/operations/receiver-native-move-stationarity-20261112.md",
+          "sha256": "eece934019330ecc23518813698f78ceea9181acff5ebd1cc3a76dcd05f18b5c"
+        },
+        {
+          "data": "data/receiver-native-move-stationarity-20261112.json",
+          "sha256": "6f32f86f71568b812ecfde957c060ed9bc12cd7a07dfdc1b7eb656625649f983"
+        },
+        {
+          "evidence": "data/receiver-native-move-stationarity-20261112-evidence.txt",
+          "sha256": "62662d2b7368680621cf29be16455e8865ec0d810e3523d8d765ba8199b2d2ac"
+        }
+      ],
+      "blockers": [
+        "NativeMove pose walk/run caused27.53m horizontal drift despite movement input0; direct receiver command replacement rejected.",
+        "Matching Head/Hips local poses do not establish world hitbox alignment.",
+        "Alive-only Finish also crashed: death-specific root cause not established; same raw stack top candidate0x220989, not causal unwind proof.",
+        "No position correction/new interpolation added, no64 escalation, no measured CPU saving."
+      ],
+      "replication": {
+        "independentPairs": 0,
+        "trials": 1,
+        "comparableRepeatedPerformanceTrials": 0
+      }
     }
   ],
   "kind": "experiments",
   "latestComparison": {
-    "scope": "3 unmanaged current-model hosts: alive script control, killed render role, killed receiver-guard role",
+    "scope": "2 unmanaged current receiver hosts, script root0 vs native Move, same pose requests with native movement input0",
     "logicalAgents": null,
-    "customAnimalHosts": 3,
+    "customAnimalHosts": 2,
     "independentTrials": 1,
     "independentPairs": 0,
     "trialGameSeconds": 12,
-    "observedRows": 570,
-    "renderDeathScriptContinues": true,
-    "postLethalCallbacks": 154,
-    "postLethalScriptAgeDelta": 7.7,
-    "controlVsKilledHeadMaxDifferenceMetres": 0,
+    "observedRows": 378,
+    "scriptRootHorizontalDriftMetres": 0,
+    "nativeMaxActiveHorizontalDriftMetres": 27.533278439524153,
+    "nativeWalkNetMetres": 8.395686109307947,
+    "nativeRunNetMetres": 18.961914509105192,
+    "headCpuPoseMaxDifferenceMetres": 0,
+    "hipsCpuPoseMaxDifferenceMetres": 0,
+    "stationarityGatePassed": false,
+    "scriptErrors": 0,
+    "allAlive": true,
     "nativeCrash": true,
-    "serverExitCode": -1073741819,
     "serverExitHex": "0xC0000005",
     "safeLifecyclePassed": false,
-    "retirementDetached": false,
     "cpuSaving": null,
     "presentP95Ms": null,
     "fullNpcIntegration": false
   },
   "latestReview": {
-    "sourceRunId": "SINGLE-HOST-death-capability1-r2",
-    "generatedAt": "2026-11-12T11:00:25.121Z",
-    "kind": "native-death-lifecycle-capability",
-    "directMergeAccepted": false,
+    "sourceRunId": "RECEIVER-native-move1",
+    "generatedAt": "2026-11-12T11:13:42.856Z",
+    "kind": "receiver-native-root-stationarity",
+    "directReplacementAccepted": false,
     "nativeCrash": true,
-    "nextArtifact": "Preserve failed lifecycle evidence; no automatic death-repair development or64 escalation. Cost goal remains unmet.",
+    "nextArtifact": "Return to cost candidate review; do not repair failed receiver substitution with transform correction or64 escalation.",
     "evidenceReferences": [
       {
-        "report": "reports/operations/single-host-death-lifecycle-capability-20261112.md",
-        "sha256": "35b93f70f15ca4a90edd4afa1482befb1f1230c3d82e3d55e2b6e205eabb216c"
+        "report": "reports/operations/receiver-native-move-stationarity-20261112.md",
+        "sha256": "eece934019330ecc23518813698f78ceea9181acff5ebd1cc3a76dcd05f18b5c"
       },
       {
-        "data": "data/single-host-death-lifecycle-20261112.json",
-        "sha256": "4b41423127641fb42aacce3899a5f7ad3e5e09797fff7374d551de125c63eb16"
+        "data": "data/receiver-native-move-stationarity-20261112.json",
+        "sha256": "6f32f86f71568b812ecfde957c060ed9bc12cd7a07dfdc1b7eb656625649f983"
       },
       {
-        "evidence": "data/single-host-death-lifecycle-20261112-evidence.txt",
-        "sha256": "d6d7649424661dd30542064f4ce72a597d37993051efc0725b71b00837a8e356"
+        "evidence": "data/receiver-native-move-stationarity-20261112-evidence.txt",
+        "sha256": "62662d2b7368680621cf29be16455e8865ec0d810e3523d8d765ba8199b2d2ac"
       }
     ]
   }

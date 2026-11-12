@@ -1,33 +1,41 @@
-# 단일 호스트 사망 수명 진단 — 포즈 평가 지속 관찰, 종료 접근 위반으로 미수용
+# 피해 수신체 Native Move 교체 진단 — 로컬 포즈 일치, 제자리 유지 실패
 
 ## 1. 작업 목표
-미세 중복 Ray 후보의 낮은 대상 비중 이후, 현행 렌더1+피해수신체1의 호스트 비용을 줄일 구조적 후보의 선행 수명 계약을 확인한다. 호스트128→64는 구성 산술일 뿐CPU50%절감 예측이 아니다. 구현 전에 실제 NPC를 변경하지 않고 네이티브 사망 후 기존 script 평가 가능성을 판단한다.
+현재 두 호스트를 유지하면서 피해 수신체의 script 명령 처리만 Native Move로 바꿀 가능성을 판단한다. 단일호스트통합/수신체골격축소와구분하며,기존표시·지지·충돌·부위피해를변경하기전root0계약을검증한다.
 
 ## 2. 실제 수행
-현재 single224 Initialize·DGNativeProbe EEHitBy/EEKilled/HandleNativeCommand·Combat FreezeDamageReceiver·DamageEntity 생존 스냅샷·시체 인벤토리 소유자를 읽었다. 수신체는 네이티브 생명/부위 피해를 맡고 렌더는 살아 있는 상태로 사망 클립을 재생한다. 두 참조를 alias하면 FreezeDamageReceiver가 표시 몸체를20m아래로 옮기고 충돌/활성을 끄므로 직접 통합은 계약상 기각했다.
-기존 서명된 프로브/원본13PBO를 재사용한 격리3호스트 시험: 살아있는 script 대조, 네이티브 사망 렌더 역할, 네이티브 사망 수신체 guard 역할. 동일 현재모델·GroundBody없음·root적용없음.4초에 모두 PreviewRequest12, 뒤2개체만 SetHealth0;12초까지 callback·Age·Head/Hips CPU포즈를 기록했다. 실제 총기·부위 피해·FireGeometry 시험이 아니다.
-첫 미션은 존재하지 않는 GetCurrentCommandID 조회로 컴파일 실패했다. 실패/강제 종료 영수증을 보존하고 별도 revision2에서 해당 조회만 제거했다. 서버 runtime compile은통과했으나 종료에 접근위반이 발생했다.
+기존SDK선언을재사용해AnimCommandBase와DayZAnimalCommandScript를대조했다. PrePhys_SetTranslation은script명령에선언되며NativeMove에같은root0인터페이스가있다고가정하지않았다. 기존NativeMove프로브는pose요청과speed를함께바꿨으므로새질문은pose1/2와speed0의분리다.
+실제현재Animal_DGNativeDamageReceiver동일모델2개,GroundBody없음,script root0 대조와NativeMove후보,12게임초1회. 양쪽idle0~2초·walk2~6초·run6~10초·idle10~12초,NativeMove이동입력은계속0. 위치강제보정/새보간/물리검사삭제없음. 기존서명된프로브와13PBO를그대로재사용했다. 살아있는2개체의종료는기존StartCommand_Move handoff를시도했으나native crash로끝났다.
+직전사망수명시험의기존0.8MB미니덤프와이번자동생성덤프를기존Windows판독기로읽었다. REA의Linux ELF크래시도구는이포맷에부적합해사용하지않았다. 기존PE/Capstone판독기를재사용해직전stack후보한개주변명령만확인했다. 새게임/전체Ghidra/후킹/메모리패치/추가덤프수집을분석목적으로시작하지않았다.
 
 ## 3. 측정 결과
-실행 SINGLE-HOST-death-capability1-r2, 독립1회, 성능 비교쌍0회,570행/각190표본. 사망 후4.246~11.945게임초에서 사망2개체 IsAlive=false·Health0, script존재 표본100%, PreAnim/PrePhys 각각154회 증가, 자체Age7.7초 증가, NativeRequest12 유지. 대조는Health500·생존이다.
-측정한Head MS포즈는 살아있는대조와사망렌더의동시표본에서최대차0m. 두대상모두해당사후창의첫Head로부터최대약1.540092m변화했다. 이는해당본의CPU평가관찰이며전신14클립·실제화면품질증명이아니다. 수신체 guard 역할도script평가가지속돼guard만으로즉시명령이끝난다는예상은지지되지않았다.
-스크립트E오류0이지만네이티브서버종료코드−1073741819(0xC0000005). DG_ROLE_DONE과3개RETIRE_HANDOFF_DEFAULT표식뒤crash,8초후DETACHED표식없음. 따라서정상종료/수명gate실패다. 클라이언트는정상닫기·강제종료없음. 현재모든시험프로세스소멸확인.
-CPU·Present p50/p95/p99·실제시각품질·8/64전체NPC·부위피해·전리품미측정. 사망후평가관찰을최적화성과로보고하지않는다.
+실행 RECEIVER-native-move1, 독립1회, 성능비교쌍0회,378행/개체별189표본.2개체전구간생존·script오류0.
+
+| 항목 | script root0 대조 | Native Move/speed0 |
+|---|---:|---:|
+| walk관측수평순이동 | 0m | 8.395686m |
+| run관측수평순이동 | 0m | 18.961915m |
+| 초기정착점대비활성구간최대수평거리 | 0m | 27.533278m |
+| 마지막script PreAnim | 244 | 0 |
+| 마지막Native PreAnim | 0 | 245 |
+
+활성창의동시Head/Hips MS포즈최대차각0m. 로컬포즈일치와세계위치일치는별개다. 실행전1mm제자리/포즈gate중제자리조건실패. 이수치는전신14클립·실제피격·화면부드러움·CPU절감증명이아니다.
+종료서버−1073741819(0xC0000005),Finish후native crash.클라이언트정상닫기/강제종료없음.현재모든시험프로세스종료. CPU·Present p50/p95/p99·8/64전체NPC회귀·시각품질미측정.
 
 ## 4. 원인 분석
-확인: 네이티브체력0이어도기존script명령과해당Head포즈평가는사망후약8초동안계속될수있었다. 네이티브사망이즉시모든script평가를중단한다는가정은이실행에서성립하지않았다.
-확인: 종료/명령퇴역전후네이티브접근위반발생. RPT의script stack은Finish32행(상태설정·파일닫기동일행),로그에는그뒤의퇴역handoff표식도있다. 정확한C++원인·어느개체소유권파괴가잘못됐는지는모른다. 단순히CloseFile나죽은개체퇴역이원인이라고확정하지않는다.
-모름: 실제피격형상을통합해도native클립/건강6부위·시체·퇴역이안전한지,호스트별CPU기여. 기존27본수신체HeadRay불일치와같은자산위험도남는다. 포즈부분성공으로이를우회하지않는다.
+확인: NativeMove에서이동입력0은요청된walk/run의root이동을억제하지않았다. 따라서기존root0수신체를직접대체하면피격몸체가표시몸체에서벗어날수있다. 위치를되돌리는새실행방식을붙여이를숨기지않는다.
+확인: 이번은모두생존했는데도Finish에서접근위반이발생했다. 직전사망개체특유의오류로단정할수없다. 두덤프모두로드모듈밖주소의EXECUTE위반이며raw stack최상단후보RVA0x220989가같다. 해당직전명령은call[r8+8]이지만원래객체타입/잘못된값의생성자/원인함수는모른다. raw후보는정식unwind stack이아니다.
+확인:2026-10-26의옛client모듈내RVA0x5378bc null READ와관측오류유형은다르다. 서로다른버전·서버/client이므로같은근본원인인지도모르며옛수정법을그대로재사용할근거가없다. 이번공통종료문제를현재8/64정상미션전체의새회귀로확대하지않는다.
 
 ## 5. 검증 수준
-사망후기존script·특정본포즈지속:부분진단성공. 정상종료/수명:실패. 전체통합·반복성능·시각품질·8→64회귀·최종수용:미실행/미수용. 초기analysis.json의연속성판정은이관찰에만해당하며analysis-disposition.json이전체미수용·crash를명시한다.20ms p95는목표다.
+NativeMove변수제어·Head/Hips로컬포즈일치·speed0에서도root이동·기존덤프오류유형분리:진단성공. 제자리gate:실패. 정상종료/안전수명:실패. 실제NPC통합·성능/시각/반복수용:미실행·미수용.20ms p95는목표이며개선률없음.
 
 ## 6. 변경 사항
-single-host-death-capability1 내격리미션·계약·로그·분석/판정만추가. 게임코드/PBO/모델/그래프/운영서버/원시기록보존. 기존프로브PBO SHA256 5d7184ef91b44ff4a4a5ffb0ccca918cf20b46a75324d24af78cabc49f651db8 및기존서명·검증증거재사용. 새PBO빌드/재서명없음. runtime중강제종료없음이나server native crash로정상종료아님. 자동생성minidump는기존실험폴더에남기고복사·추가덤프생성·공개하지않는다.
+receiver-native-move1내격리미션/계약·로그·분석/판정만추가했다. 기존게임코드/PBO/모델/그래프/운영서버/원시기록보존. 프로브PBO SHA256 5d7184ef91b44ff4a4a5ffb0ccca918cf20b46a75324d24af78cabc49f651db8 및기존서명검증증거재사용. 새빌드/재서명없음. 기존소형Windows판독기와정적PE도구사용,설치/설정변경없음. 과거분석JSON은덮어쓰지않고추가분류로연결한다.
 
 ## 7. 원시 증거
-contract.json, 미션init.c, single-host-death.tsv570행, server-terminal/client-closed, script/RPT/crash로그, analysis.json, analysis-disposition.json, 상위PRE_IMPLEMENTATION_REVIEW.md 및첫실패failed-terminal.json을연결한다. crash로그SHA256 49cea9b63b7b13d5917dc55feccf4379b18712cae6989827bdd13dbeae9f2ef2. 공개는집계·선정문맥·해시만제공하고설치자산·원시덤프·키·프로세스정보·로컬절대경로제외. 원시및기존보고서덮어쓰기없음.
+contract.json,PRE_IMPLEMENTATION_REVIEW.md,init.c,receiver-native-move.tsv378행,analysis.json,disposition.json,server-terminal/client-closed,RPT/crash/기존mdmp,dump-summary.json. 직전single-host-death의dump-summary/dump-classification과예전shutdown FINDINGS를연결한다. 공개는집계·선정바이트/상대ID·해시로제한하고덤프/설치자산/프로세스정보/키/개인경로는제외한다. 기존원시와보고서는변경하지않았다.
 
 ## 8. 잔여 문제
-안전수명이입증되지않았으므로현재호스트통합을구현하거나64로확대하지않는다. 이실패를연쇄사망기능/퇴역수정개발로전환하지않고보존한다. 다음후보판단에서는이미실패한native벽대체·낮은Ray중복·Scratch·SupportSweepFast·Drive/Displace단일끝점병합을재실행하지않는다.
-현재안전하게입증된큰폭CPU절감후보는아직없다. 많은질의를실제로줄일수있는조건과기능안전계약이확보돼야하며,가장쉬운작은함수의좋은퍼센트나회귀도착률만으로목표달성을대체하지않는다. 기존단일렌더+수신체의검증된기능·사용자시각관찰을보존한다.
+수신체NativeMove직접교체는제자리조건이이미실패해종료크래시를고쳐도그대로채택할수없다. 이후보를살리기위한반복·위치보정·명령수명기능개발·64확대를하지않는다. 사망통합과단순수신체명령교체모두현재안전한전체CPU절감경로로입증되지않았다.
+목표는계속물리/CPU실제비용감소다. 미세Ray캐시의0.010663%기회나로컬산술퍼센트·기능도착률을큰폭최적화로보고하지않는다. 현재큰폭CPU절감후보는미확보이며,기존단일렌더+수신체의정상밀침·낙하·착지·FOLLOW·재등반과사용자시각검증을보존한다.

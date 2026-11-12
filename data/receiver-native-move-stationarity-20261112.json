@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "sourceRunId": "RECEIVER-native-move1",
+  "verificationStatus": "ZERO_SPEED_STATIONARITY_OR_POSE_GATE_FAILED",
+  "independentTrials": 1,
+  "independentPerformancePairs": 0,
+  "rows": 378,
+  "subjects": [
+    {
+      "id": 0,
+      "role": "script_reference",
+      "samples": 189,
+      "allAlive": true,
+      "settledOrigin": [
+        4499.999023,
+        339.094666,
+        10226.000977
+      ],
+      "maxActiveHorizontalDistanceFromSettled": 0.0,
+      "stages": [
+        {
+          "request": 1,
+          "observedSeconds": [
+            2.102,
+            5.98199
+          ],
+          "horizontalNetMetres": 0.0
+        },
+        {
+          "request": 2,
+          "observedSeconds": [
+            6.043,
+            9.944
+          ],
+          "horizontalNetMetres": 0.0
+        }
+      ],
+      "lastNativePreAnim": 0,
+      "lastScriptPreAnim": 244,
+      "scriptPresenceFraction": 1.0
+    },
+    {
+      "id": 1,
+      "role": "native_move_zero_speed",
+      "samples": 189,
+      "allAlive": true,
+      "settledOrigin": [
+        4503.923828,
+        339.099976,
+        10226.050781
+      ],
+      "maxActiveHorizontalDistanceFromSettled": 27.533278439524153,
+      "stages": [
+        {
+          "request": 1,
+          "observedSeconds": [
+            2.102,
+            5.98199
+          ],
+          "horizontalNetMetres": 8.395686109307947
+        },
+        {
+          "request": 2,
+          "observedSeconds": [
+            6.043,
+            9.944
+          ],
+          "horizontalNetMetres": 18.961914509105192
+        }
+      ],
+      "lastNativePreAnim": 245,
+      "lastScriptPreAnim": 0,
+      "scriptPresenceFraction": 0.0
+    }
+  ],
+  "pairedCpuPoseMaximumDifferenceMetres": {
+    "headMS": 0.0,
+    "hipsMS": 0.0
+  },
+  "gateToleranceMetres": 0.001,
+  "stationarityPoseGatePassed": false,
+  "scriptErrors": 0,
+  "cpu": "NOT_MEASURED",
+  "visualQuality": "NOT_MEASURED",
+  "fullNpcIntegration": false,
+  "adopted": false,
+  "limits": [
+    "Native movement input zero is separate from RequestedState walk/run.",
+    "No position correction was applied; no native movement safety or hitbox equivalence claimed.",
+    "Pose comparison uses sampled Head/Hips only; not14clips or whole skeleton.",
+    "No CPU improvement, regression or64 acceptance from this capability run."
+  ],
+  "evidence": [
+    {
+      "file": "contract.json",
+      "bytes": 11815,
+      "sha256": "4b1b4a5ea69f79b1e9768ffbeae7f799ed888c356935bb56250523f73b258247"
+    },
+    {
+      "file": "PRE_IMPLEMENTATION_REVIEW.md",
+      "bytes": 1822,
+      "sha256": "36987d6208c0386336ae919c7d1dd99be3b58a657e96c10fce679773c94cfc52"
+    },
+    {
+      "file": "mission/server-role-lod0.chernarusplus/init.c",
+      "bytes": 3839,
+      "sha256": "286ac1d7070dded462c3939c90f0c2be0aa3e131e4c9ce241338199fd1326ea5"
+    },
+    {
+      "file": "runs/receiver-move/server-profile/receiver-native-move.tsv",
+      "bytes": 49784,
+      "sha256": "b6967b70a524f0bd0a6f202b74cdb253b141ec1189cd2a7fafa879997a1a7d98"
+    },
+    {
+      "file": "runs/receiver-move/server-terminal.json",
+      "bytes": 170,
+      "sha256": "8aebb2249b3807f981e3e2d968876b64ea5a1a1c2759eb08e0ff9b489ccb2017"
+    },
+    {
+      "file": "runs/receiver-move/client-closed.json",
+      "bytes": 70,
+      "sha256": "f7c177ca0c01c7657636dd378aadac3b8917965917a7a9a4957d8bf1753109ac"
+    }
+  ],
+  "lifecycleDisposition": {
+    "schemaVersion": 1,
+    "sourceRunId": "RECEIVER-native-move1",
+    "nativeCrash": true,
+    "safeLifecyclePassed": false,
+    "stationarityGatePassed": false,
+    "exceptionAccess": "EXECUTE",
+    "exceptionRIPInLoadedModule": false,
+    "stackTopCandidateRva": "0x220989",
+    "priorLethalProbeSameCandidateRva": "0x220989",
+    "deathNecessaryForObservedCrash": false,
+    "comparisonLimit": "Alive-only receiver trial also crashed in Finish; same raw stack candidate is not proof of identical corruption origin.",
+    "old20261026NullReadSameFaultClass": false,
+    "rootCause": "UNKNOWN",
+    "adopted": false,
+    "noPositionCorrectionAdded": true,
+    "dumpSha256": "7c1dc4fd95ab840e5cf0dc035c6c0d778c258698ca769c84ecc70ab62a3b0383"
+  }
+}
