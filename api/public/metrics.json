@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-native-script-root-handoff-20261112",
-  "generatedAt": "2026-11-12T09:50:54.099Z",
+  "snapshotId": "snapshot-native-root-world-gate-20261112",
+  "generatedAt": "2026-11-12T10:35:49.600Z",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -60,7 +60,8 @@
     "RATE100-joint-eight1-joint-world",
     "OWNER-eight1-r3-attribution",
     "NATIVE-MOVE-one-capability1-r4",
-    "NATIVE-SCRIPT-root-handoff1-r2"
+    "NATIVE-SCRIPT-root-handoff1-r2",
+    "NATIVE-ROOT-world-gate1-r2"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -86,9 +87,9 @@
   ],
   "verificationStatus": {
     "diagnosisSucceeded": true,
-    "experimentSuccess": true,
+    "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "UNMANAGED_ROOT_MOVE_OBSERVED_PHASE_TIME_RESTART_UNRESOLVED",
+    "functional": "DIRECT_WALL_REPLACEMENT_REJECTED_CURRENT_MODEL",
     "visual": "NOT_MEASURED",
     "performance": "NOT_MEASURED",
     "adopted": false
@@ -13403,14 +13404,41 @@
       },
       "repetitions": 1,
       "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "native-root-world-wall-crossings",
+      "sourceRunId": "NATIVE-ROOT-world-gate1-r2",
+      "buildId": "5d7184ef91b44ff4a4a5ffb0ccca918cf20b46a75324d24af78cabc49f651db8",
+      "value": 2,
+      "unit": "cases/2-wall-cases",
+      "conditions": {
+        "scope": "4 isolated unmanaged current-model hosts; native/script x wall/edge; no full NPC",
+        "customAnimalHosts": 4,
+        "logicalAgents": null,
+        "damageReceivers": 0,
+        "independentTrials": 1,
+        "independentPairs": 0,
+        "trialGameSeconds": 20,
+        "observedRows": 728,
+        "fixturesRayVerified": 4,
+        "wallCrossingCases": 2,
+        "initialRoofSupportAndDescentCases": 2,
+        "scriptErrors": 0,
+        "directReplacementAccepted": false,
+        "cpuMsPerWallSecond": null,
+        "presentP95Ms": null,
+        "nativeQueryCount": null,
+        "fullNpcAcceptance": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only_rejected_candidate"
     }
   ],
   "blockers": [
-    "Existing DG command Age/NativeSeconds restarts4.95→0.05 on recreation; phase timing order/rebasing unresolved",
-    "Full NPC GroundBody branch still zeros root translation; ApplyRootMotion flag alone cannot enable this on current NPC",
-    "Wall/edge/support/crowd collision behavior and native equivalence untested",
-    "Existing delayed transform Commit, logical readback, Contacts/lift/rollback and receiver authority unresolved",
-    "Graph UUID getter returned0; visual continuity and CPU savings not measured"
+    "Both raw movement paths crossed Ray-verified wall; retain existing wall safety checks.",
+    "Roof support/descent observation does not establish original foot solver equivalence or full fall gameplay.",
+    "Native internal query count, CPU saving and visible quality not measured.",
+    "Full NPC ownership/receiver/pressure/phase-clock integration remains unresolved; no escalation of failed candidate."
   ],
   "evidenceReferences": [
     {
@@ -14188,17 +14216,29 @@
     {
       "data": "data/native-script-root-handoff-edges-20261112.json",
       "sha256": "8a44ff48b888ce489d272d83e1a9ef78f59b96175403f98a83c02b3302741f63"
+    },
+    {
+      "report": "reports/operations/native-root-world-safety-gate-20261112.md",
+      "sha256": "09e291b1e13b25a8fed3387962a09f785139f8d76ec04bfd827ae7ac44cccc63"
+    },
+    {
+      "data": "data/native-root-world-gate-20261112.json",
+      "sha256": "dfd1b54d2c881d24944940c0e744a40d453aa9acc85702e313a768a33b5efae8"
+    },
+    {
+      "evidence": "data/native-root-world-gate-20261112-evidence.txt",
+      "sha256": "90cb3410c5432aad7182fa745ac703fec4d3b583301a56e2246858d963c37733"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-11-12T09:39:45.6840175+00:00",
-    "staleAfter": "2026-11-13T09:39:45.684Z",
+    "sourceUpdatedAt": "2026-11-12T10:03:25.3842195+00:00",
+    "staleAfter": "2026-11-13T10:03:25.384Z",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
-    "consumerRule": "Root movement capability is not accepted collision physics, full NPC handoff, visual smoothness or CPU saving."
+    "consumerRule": "Reject direct wall replacement only for tested model/input. Do not infer all vanilla native collision policy or CPU gains."
   },
   "updateState": {
-    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T09:50:54.099Z",
+    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T10:35:49.600Z",
     "lastUpdateFailure": null
   },
   "links": {
@@ -15708,113 +15748,90 @@
         "trials": 1,
         "comparableRepeatedPerformanceTrials": 0
       }
+    },
+    {
+      "id": "native-root-world-safety-gate-20261112",
+      "title": "Ray-verified wall crossing rejects direct collision replacement",
+      "track": "capability",
+      "sourceRunId": [
+        "NATIVE-ROOT-world-gate1-r2"
+      ],
+      "buildId": "5d7184ef91b44ff4a4a5ffb0ccca918cf20b46a75324d24af78cabc49f651db8",
+      "verificationStatus": {
+        "diagnosisSucceeded": true,
+        "experimentSuccess": false,
+        "finalAccepted": false,
+        "functional": "DIRECT_WALL_REPLACEMENT_REJECTED_CURRENT_MODEL",
+        "visual": "NOT_MEASURED",
+        "performance": "NOT_MEASURED",
+        "adopted": false
+      },
+      "conditions": "4 isolated unmanaged current-model hosts; native/script x wall/edge; no full NPC",
+      "evidenceReferences": [
+        {
+          "report": "reports/operations/native-root-world-safety-gate-20261112.md",
+          "sha256": "09e291b1e13b25a8fed3387962a09f785139f8d76ec04bfd827ae7ac44cccc63"
+        },
+        {
+          "data": "data/native-root-world-gate-20261112.json",
+          "sha256": "dfd1b54d2c881d24944940c0e744a40d453aa9acc85702e313a768a33b5efae8"
+        },
+        {
+          "evidence": "data/native-root-world-gate-20261112-evidence.txt",
+          "sha256": "90cb3410c5432aad7182fa745ac703fec4d3b583301a56e2246858d963c37733"
+        }
+      ],
+      "blockers": [
+        "Both raw movement paths crossed Ray-verified wall; retain existing wall safety checks.",
+        "Roof support/descent observation does not establish original foot solver equivalence or full fall gameplay.",
+        "Native internal query count, CPU saving and visible quality not measured.",
+        "Full NPC ownership/receiver/pressure/phase-clock integration remains unresolved; no escalation of failed candidate."
+      ],
+      "replication": {
+        "independentPairs": 0,
+        "trials": 1,
+        "comparableRepeatedPerformanceTrials": 0
+      }
     }
   ],
   "kind": "metrics",
   "latestComparison": {
-    "scope": "unmanaged current-model host; no full GroundBody, receiver or pursuit",
+    "scope": "4 isolated unmanaged current-model hosts; native/script x wall/edge; no full NPC",
+    "customAnimalHosts": 4,
     "logicalAgents": null,
-    "customAnimalHosts": 1,
-    "renderHosts": 1,
     "damageReceivers": 0,
     "independentTrials": 1,
     "independentPairs": 0,
-    "trialGameSeconds": 30,
-    "observedRows": 472,
-    "ownershipChangesObserved": 4,
-    "scriptRootAppliedTotal": 34.8568,
-    "scriptAgeResets": [
-      {
-        "seconds": 21.147,
-        "previousScriptAge": 4.95,
-        "newScriptAge": 0.05
-      }
-    ],
-    "callbackMax": {
-      "nativePreAnim": 406,
-      "nativePrePhys": 406,
-      "scriptPreAnim": 198,
-      "scriptPrePhys": 198,
-      "activations": 3
-    },
-    "scriptStageMotion": [
-      {
-        "stage": 2,
-        "scriptRequested": true,
-        "samples": 77,
-        "window": [
-          8.048,
-          12.947
-        ],
-        "scriptPresenceFraction": 1,
-        "horizontalNetMetres": 9.845703980489473,
-        "horizontalPathMetres": 10.084506847895646,
-        "scriptAgeDiagnostic": [
-          0,
-          4.9
-        ],
-        "scriptRootAppliedDelta": 10.0881,
-        "nativePreAnimDelta": 0,
-        "scriptPreAnimDelta": 98,
-        "yawRange": [
-          0,
-          0
-        ]
-      },
-      {
-        "stage": 5,
-        "scriptRequested": true,
-        "samples": 79,
-        "window": [
-          21.026,
-          25.967
-        ],
-        "scriptPresenceFraction": 0.9873417721518988,
-        "horizontalNetMetres": 24.219768995238663,
-        "horizontalPathMetres": 24.289119596374373,
-        "scriptAgeDiagnostic": [
-          4.95,
-          4.85
-        ],
-        "scriptRootAppliedDelta": 24.035700000000002,
-        "nativePreAnimDelta": 0,
-        "scriptPreAnimDelta": 97,
-        "yawRange": [
-          0,
-          0
-        ]
-      }
-    ],
-    "instanceUuidUsableAsContinuityProof": false,
+    "trialGameSeconds": 20,
+    "observedRows": 728,
+    "fixturesRayVerified": 4,
+    "wallCrossingCases": 2,
+    "initialRoofSupportAndDescentCases": 2,
+    "scriptErrors": 0,
+    "directReplacementAccepted": false,
     "cpuMsPerWallSecond": null,
     "presentP95Ms": null,
+    "nativeQueryCount": null,
     "fullNpcAcceptance": false
   },
   "latestReview": {
-    "sourceRunId": "NATIVE-SCRIPT-root-handoff1-r2",
-    "generatedAt": "2026-11-12T09:50:54.099Z",
-    "kind": "command-root-ownership-review",
-    "nativeGraphClockResetProved": false,
-    "scriptAgeResetObserved": true,
-    "rootBranchMoves": true,
-    "fullNpcImplementation": false,
-    "nextArtifact": "basic script-root world collision/support gate before any NPC integration",
+    "sourceRunId": "NATIVE-ROOT-world-gate1-r2",
+    "generatedAt": "2026-11-12T10:35:49.600Z",
+    "kind": "world-safety-capability",
+    "directReplacementAccepted": false,
+    "nextArtifact": "Existing-evidence cost/cadence/known-boundary comparison and one actionable local candidate",
     "evidenceReferences": [
       {
-        "report": "reports/operations/native-script-root-handoff-capability-20261112.md",
-        "sha256": "a2124f38edfe00bcec20a5c484b408b02f72c645642b10b2b2eaf1049d03201d"
+        "report": "reports/operations/native-root-world-safety-gate-20261112.md",
+        "sha256": "09e291b1e13b25a8fed3387962a09f785139f8d76ec04bfd827ae7ac44cccc63"
       },
       {
-        "evidence": "data/native-script-root-handoff-20261112-evidence.txt",
-        "sha256": "363ba6691ba0c7ae7a5060ce81d5dffb32465417d63bd578dea878b2a8448713"
+        "data": "data/native-root-world-gate-20261112.json",
+        "sha256": "dfd1b54d2c881d24944940c0e744a40d453aa9acc85702e313a768a33b5efae8"
       },
       {
-        "data": "data/native-script-root-handoff-20261112.json",
-        "sha256": "e11933dc5cb36d37e3f3654fe760308371c5c1f966287bcfe38e5229f1c80c70"
-      },
-      {
-        "data": "data/native-script-root-handoff-edges-20261112.json",
-        "sha256": "8a44ff48b888ce489d272d83e1a9ef78f59b96175403f98a83c02b3302741f63"
+        "evidence": "data/native-root-world-gate-20261112-evidence.txt",
+        "sha256": "90cb3410c5432aad7182fa745ac703fec4d3b583301a56e2246858d963c37733"
       }
     ]
   }
