@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261030T004117-escape-refinement-runtime-20261030",
-  "generatedAt": "2026-10-30T00:41:17.493550+00:00",
+  "snapshotId": "snapshot-20261112-rate100-200-comparison",
+  "generatedAt": "2026-11-12T07:21:30Z",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -54,7 +54,8 @@
     "runtime-20261030-083934",
     "runtime-20261030-084554",
     "runtime-20261030-092351",
-    "runtime-20261030-093001"
+    "runtime-20261030-093001",
+    "RATE100-all-reduced-20261112-160346"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -72,16 +73,16 @@
     "c6709ece5468fadeb7eda085355a7dc5157601ddc589fb2beac6f5726a99f933",
     "453D6A9E688D7BF14C5B98C305DD5A45200EC52156949C10691839B43C58BC9A",
     "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
-    "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226"
+    "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
+    "5CFC142DBBCBD6C19BD7FA42D06D3B6D0E4A338A55337FE73E5A161B004C88D3"
   ],
   "verificationStatus": {
     "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "actual_refinement_runs_reported_not_final_accepted",
-    "visual": "not_measured_this_functional_bundle",
-    "performance": "diagnostic_frame_dt_not_causal_optimization",
-    "regressionChecks": 0
+    "functional": "FAILED_15_UNRESOLVED_UNDERGROUND_FALLS",
+    "visual": "NOT_ASSESSED",
+    "performance": "SINGLE_MANUAL_RUN_OBSERVED_REDUCTION_NOT_REPEATED"
   },
   "metrics": [
     {
@@ -160,7 +161,7 @@
       "metricId": "missionFrameTime.p50",
       "sourceRunId": "runtime-20261028-021529",
       "buildId": "3ECCE4F140E8A5A7F1081D657EEFA3EB875717D9050E0554F23C94E1ABE941EC",
-      "value": 20.0,
+      "value": 20,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -178,7 +179,7 @@
       "metricId": "missionFrameTime.p95",
       "sourceRunId": "runtime-20261028-021529",
       "buildId": "3ECCE4F140E8A5A7F1081D657EEFA3EB875717D9050E0554F23C94E1ABE941EC",
-      "value": 33.0,
+      "value": 33,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -196,7 +197,7 @@
       "metricId": "missionFrameTime.p99",
       "sourceRunId": "runtime-20261028-021529",
       "buildId": "3ECCE4F140E8A5A7F1081D657EEFA3EB875717D9050E0554F23C94E1ABE941EC",
-      "value": 34.0,
+      "value": 34,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -286,7 +287,7 @@
       "metricId": "missionFrameTime.p50",
       "sourceRunId": "runtime-20261028-021953",
       "buildId": "3ECCE4F140E8A5A7F1081D657EEFA3EB875717D9050E0554F23C94E1ABE941EC",
-      "value": 25.0,
+      "value": 25,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -304,7 +305,7 @@
       "metricId": "missionFrameTime.p95",
       "sourceRunId": "runtime-20261028-021953",
       "buildId": "3ECCE4F140E8A5A7F1081D657EEFA3EB875717D9050E0554F23C94E1ABE941EC",
-      "value": 59.0,
+      "value": 59,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -322,7 +323,7 @@
       "metricId": "missionFrameTime.p99",
       "sourceRunId": "runtime-20261028-021953",
       "buildId": "3ECCE4F140E8A5A7F1081D657EEFA3EB875717D9050E0554F23C94E1ABE941EC",
-      "value": 82.0,
+      "value": 82,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -1228,7 +1229,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261028-053114",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 20.0,
+      "value": 20,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -1252,7 +1253,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261028-053114",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 33.0,
+      "value": 33,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -1276,7 +1277,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261028-053114",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 35.0,
+      "value": 35,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -1468,7 +1469,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261028-053554",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 30.0,
+      "value": 30,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -1492,7 +1493,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261028-053554",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 72.0,
+      "value": 72,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -1516,7 +1517,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261028-053554",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 95.0,
+      "value": 95,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -1708,7 +1709,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261028-055226",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 28.0,
+      "value": 28,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -1732,7 +1733,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261028-055226",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 57.0,
+      "value": 57,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -1756,7 +1757,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261028-055226",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 79.0,
+      "value": 79,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -1780,7 +1781,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261028-061023",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 259.0,
+      "value": 259,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -1806,7 +1807,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261028-061023",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 262.0,
+      "value": 262,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -1832,7 +1833,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261028-061023",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 265.0,
+      "value": 265,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -1858,7 +1859,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261028-061615",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 21.0,
+      "value": 21,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -1884,7 +1885,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261028-061615",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 35.0,
+      "value": 35,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -1910,7 +1911,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261028-061615",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 260.0,
+      "value": 260,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -1936,7 +1937,7 @@
       "metricId": "window-before-wide-p50",
       "sourceRunId": "runtime-20261028-061615",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 259.0,
+      "value": 259,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -1961,7 +1962,7 @@
       "metricId": "window-before-wide-p95",
       "sourceRunId": "runtime-20261028-061615",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 263.0,
+      "value": 263,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -1986,7 +1987,7 @@
       "metricId": "window-before-wide-p99",
       "sourceRunId": "runtime-20261028-061615",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 270.0,
+      "value": 270,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -2011,7 +2012,7 @@
       "metricId": "window-after-wide-p50",
       "sourceRunId": "runtime-20261028-061615",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 20.0,
+      "value": 20,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -2036,7 +2037,7 @@
       "metricId": "window-after-wide-p95",
       "sourceRunId": "runtime-20261028-061615",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 33.0,
+      "value": 33,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -2061,7 +2062,7 @@
       "metricId": "window-after-wide-p99",
       "sourceRunId": "runtime-20261028-061615",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 35.0,
+      "value": 35,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -2086,7 +2087,7 @@
       "metricId": "window-before-low-hold-p50",
       "sourceRunId": "runtime-20261028-061615",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 259.0,
+      "value": 259,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -2111,7 +2112,7 @@
       "metricId": "window-before-low-hold-p95",
       "sourceRunId": "runtime-20261028-061615",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 263.0,
+      "value": 263,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -2136,7 +2137,7 @@
       "metricId": "window-before-low-hold-p99",
       "sourceRunId": "runtime-20261028-061615",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 263.0,
+      "value": 263,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -2161,7 +2162,7 @@
       "metricId": "window-after-low-hold-p50",
       "sourceRunId": "runtime-20261028-061615",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 20.0,
+      "value": 20,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -2186,7 +2187,7 @@
       "metricId": "window-after-low-hold-p95",
       "sourceRunId": "runtime-20261028-061615",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 34.0,
+      "value": 34,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -2211,7 +2212,7 @@
       "metricId": "window-after-low-hold-p99",
       "sourceRunId": "runtime-20261028-061615",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 35.0,
+      "value": 35,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -2453,7 +2454,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261028-062522",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 20.0,
+      "value": 20,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -2484,7 +2485,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261028-062522",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 33.0,
+      "value": 33,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -2515,7 +2516,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261028-062522",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 35.0,
+      "value": 35,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -2763,7 +2764,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261028-063006",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 28.0,
+      "value": 28,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -2794,7 +2795,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261028-063006",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 66.0,
+      "value": 66,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -2825,7 +2826,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261028-063006",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 86.0,
+      "value": 86,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -3073,7 +3074,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261028-063933",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 27.0,
+      "value": 27,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -3104,7 +3105,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261028-063933",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 71.0,
+      "value": 71,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -3135,7 +3136,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261028-063933",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 97.0,
+      "value": 97,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -3310,7 +3311,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261028-070048",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 20.0,
+      "value": 20,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 1,
@@ -3343,7 +3344,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261028-070048",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 35.0,
+      "value": 35,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 1,
@@ -3376,7 +3377,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261028-070048",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 37.0,
+      "value": 37,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 1,
@@ -3409,7 +3410,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261028-070414",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 20.0,
+      "value": 20,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 1,
@@ -3442,7 +3443,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261028-070414",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 35.0,
+      "value": 35,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 1,
@@ -3475,7 +3476,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261028-070414",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 37.0,
+      "value": 37,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 1,
@@ -3533,7 +3534,7 @@
       "metricId": "endpointContinuityMaxTranslation",
       "sourceRunId": "runtime-20261028-070048",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 0.0,
+      "value": 0,
       "unit": "m",
       "conditions": {
         "ai": false,
@@ -3558,7 +3559,7 @@
       "metricId": "endpointContinuityMaxRotation",
       "sourceRunId": "runtime-20261028-070048",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 0.0,
+      "value": 0,
       "unit": "deg",
       "conditions": {
         "ai": false,
@@ -3683,7 +3684,7 @@
       "metricId": "endpointContinuityMaxTranslation",
       "sourceRunId": "runtime-20261028-070414",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 0.0,
+      "value": 0,
       "unit": "m",
       "conditions": {
         "ai": false,
@@ -3708,7 +3709,7 @@
       "metricId": "endpointContinuityMaxRotation",
       "sourceRunId": "runtime-20261028-070414",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 0.0,
+      "value": 0,
       "unit": "deg",
       "conditions": {
         "ai": false,
@@ -4130,7 +4131,7 @@
       "metricId": "nativeFloat32ModelResidual",
       "sourceRunId": "runtime-20261028-072238",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 0.0,
+      "value": 0,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 1,
@@ -4205,7 +4206,7 @@
       "metricId": "nativeFloat32ModelResidual",
       "sourceRunId": "runtime-20261028-072554",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 0.0,
+      "value": 0,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 1,
@@ -4280,7 +4281,7 @@
       "metricId": "nativeFloat32ModelResidual",
       "sourceRunId": "runtime-20261028-073152",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 0.0,
+      "value": 0,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 1,
@@ -4667,7 +4668,7 @@
       "metricId": "exactResetModelResidual",
       "sourceRunId": "runtime-20261028-074826",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 0.0,
+      "value": 0,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 1,
@@ -4715,7 +4716,7 @@
       "metricId": "exactResetModelResidual",
       "sourceRunId": "runtime-20261028-075329",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 0.0,
+      "value": 0,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 1,
@@ -4763,7 +4764,7 @@
       "metricId": "exactResetModelResidual",
       "sourceRunId": "runtime-20261028-075921",
       "buildId": "B8FBAB746F50CB7C8BDBB23E059C308298CEA5F57B4AC6BD0F2DDEBC55B8C185",
-      "value": 0.0,
+      "value": 0,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 1,
@@ -6303,7 +6304,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261029-130025",
       "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
-      "value": 20.0,
+      "value": 20,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -6337,7 +6338,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261029-130025",
       "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
-      "value": 31.0,
+      "value": 31,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -6371,7 +6372,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261029-130025",
       "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
-      "value": 33.0,
+      "value": 33,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -6643,7 +6644,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261029-130645",
       "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
-      "value": 79.0,
+      "value": 79,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -6677,7 +6678,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261029-130645",
       "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
-      "value": 194.0,
+      "value": 194,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -6711,7 +6712,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261029-130645",
       "buildId": "BB45A140982F623BEE628C9B26353A997EF6DAB9DF5F43D71E60BC4910DA805F",
-      "value": 271.0,
+      "value": 271,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -7167,7 +7168,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261029-135607",
       "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
-      "value": 20.0,
+      "value": 20,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -7195,7 +7196,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261029-135607",
       "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
-      "value": 33.0,
+      "value": 33,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -7223,7 +7224,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261029-135607",
       "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
-      "value": 35.0,
+      "value": 35,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -7447,7 +7448,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261029-140405",
       "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
-      "value": 40.0,
+      "value": 40,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -7475,7 +7476,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261029-140405",
       "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
-      "value": 136.0,
+      "value": 136,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -7503,7 +7504,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261029-140405",
       "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
-      "value": 183.0,
+      "value": 183,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -7817,7 +7818,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261029-142458",
       "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
-      "value": 20.0,
+      "value": 20,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -7845,7 +7846,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261029-142458",
       "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
-      "value": 31.0,
+      "value": 31,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -7873,7 +7874,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261029-142458",
       "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
-      "value": 32.0,
+      "value": 32,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -8097,7 +8098,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261029-143221",
       "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
-      "value": 36.0,
+      "value": 36,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -8125,7 +8126,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261029-143221",
       "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
-      "value": 120.0,
+      "value": 120,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -8153,7 +8154,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261029-143221",
       "buildId": "83E94BD9EEC852D9D1734A26316EF5BEC4B154D2805ED58742D17A6EB07A45B3",
-      "value": 178.0,
+      "value": 178,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -8181,7 +8182,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261029-161948",
       "buildId": "31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126",
-      "value": 20.0,
+      "value": 20,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 1,
@@ -8208,7 +8209,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261029-161948",
       "buildId": "31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126",
-      "value": 32.0,
+      "value": 32,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 1,
@@ -8235,7 +8236,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261029-161948",
       "buildId": "31A286A3BFC8D8857F70415E9489CD29EE321D0EF8569F3F613629E9868FD126",
-      "value": 35.0,
+      "value": 35,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 1,
@@ -8479,7 +8480,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261029-164705",
       "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
-      "value": 20.0,
+      "value": 20,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -8510,7 +8511,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261029-164705",
       "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
-      "value": 30.0,
+      "value": 30,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -8541,7 +8542,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261029-164705",
       "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
-      "value": 34.0,
+      "value": 34,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -8789,7 +8790,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261029-165343",
       "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
-      "value": 44.0,
+      "value": 44,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -8820,7 +8821,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261029-165343",
       "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
-      "value": 181.0,
+      "value": 181,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -8851,7 +8852,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261029-165343",
       "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
-      "value": 228.0,
+      "value": 228,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -8882,7 +8883,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261029-171420",
       "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
-      "value": 97.0,
+      "value": 97,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -8916,7 +8917,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261029-171420",
       "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
-      "value": 219.0,
+      "value": 219,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -8950,7 +8951,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261029-171420",
       "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
-      "value": 267.0,
+      "value": 267,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -8984,7 +8985,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261029-171916",
       "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
-      "value": 106.0,
+      "value": 106,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -9018,7 +9019,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261029-171916",
       "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
-      "value": 241.0,
+      "value": 241,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -9052,7 +9053,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261029-171916",
       "buildId": "F6DEBD09DB937853C6E7CF81AFB95C842AC1762C02EEFD13816FA24FAA378FE8",
-      "value": 300.0,
+      "value": 300,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -9352,7 +9353,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261029-190552",
       "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
-      "value": 22.0,
+      "value": 22,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -9390,7 +9391,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261029-190552",
       "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
-      "value": 33.0,
+      "value": 33,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -9428,7 +9429,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261029-190552",
       "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
-      "value": 38.0,
+      "value": 38,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -9739,7 +9740,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261029-191331",
       "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
-      "value": 65.0,
+      "value": 65,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -9778,7 +9779,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261029-191331",
       "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
-      "value": 115.0,
+      "value": 115,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -9817,7 +9818,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261029-191331",
       "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
-      "value": 135.0,
+      "value": 135,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -10122,7 +10123,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261029-193252",
       "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
-      "value": 52.0,
+      "value": 52,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -10160,7 +10161,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261029-193252",
       "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
-      "value": 149.0,
+      "value": 149,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -10198,7 +10199,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261029-193252",
       "buildId": "D61DE1231E4F0DE13FC9DC91097031BE8E2B1EACD85FBD894BB3475BE955116E",
-      "value": 195.0,
+      "value": 195,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -10509,7 +10510,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261029-210454",
       "buildId": "47A7C366B29B96CB1F0D789BB36D6DB9459D2AC3D63E7E2EE1B5BEA63287DE32",
-      "value": 20.0,
+      "value": 20,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -10548,7 +10549,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261029-210454",
       "buildId": "47A7C366B29B96CB1F0D789BB36D6DB9459D2AC3D63E7E2EE1B5BEA63287DE32",
-      "value": 30.0,
+      "value": 30,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -10587,7 +10588,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261029-210454",
       "buildId": "47A7C366B29B96CB1F0D789BB36D6DB9459D2AC3D63E7E2EE1B5BEA63287DE32",
-      "value": 35.0,
+      "value": 35,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -11409,7 +11410,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261029-220337",
       "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
-      "value": 21.0,
+      "value": 21,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -11442,7 +11443,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261029-220337",
       "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
-      "value": 35.0,
+      "value": 35,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -11475,7 +11476,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261029-220337",
       "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
-      "value": 48.0,
+      "value": 48,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -11704,7 +11705,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261030-072332",
       "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
-      "value": 20.0,
+      "value": 20,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -11732,7 +11733,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261030-072332",
       "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
-      "value": 32.0,
+      "value": 32,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -11760,7 +11761,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261030-072332",
       "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
-      "value": 34.0,
+      "value": 34,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -11801,7 +11802,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.928
         ],
         "entryPreparationContact": "on",
@@ -11829,7 +11830,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.928
         ],
         "entryPreparationContact": "on",
@@ -11857,7 +11858,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.928
         ],
         "entryPreparationContact": "on",
@@ -11885,7 +11886,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.928
         ],
         "entryPreparationContact": "on",
@@ -11913,7 +11914,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.928
         ],
         "entryPreparationContact": "on",
@@ -11941,7 +11942,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.928
         ],
         "entryPreparationContact": "on",
@@ -11969,7 +11970,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.928
         ],
         "entryPreparationContact": "on",
@@ -11984,7 +11985,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261030-073005",
       "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
-      "value": 27.0,
+      "value": 27,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -11997,7 +11998,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.928
         ],
         "entryPreparationContact": "on",
@@ -12012,7 +12013,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261030-073005",
       "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
-      "value": 68.0,
+      "value": 68,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -12025,7 +12026,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.928
         ],
         "entryPreparationContact": "on",
@@ -12040,7 +12041,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261030-073005",
       "buildId": "711CA8DFD0AFFB8B98B89C5181B1227781C3B5CD87F7DE1A0941AEAD211433E1",
-      "value": 88.0,
+      "value": 88,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -12053,7 +12054,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.928
         ],
         "entryPreparationContact": "on",
@@ -12081,7 +12082,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.978
         ],
         "contactInputObserver": true,
@@ -12111,7 +12112,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.978
         ],
         "contactInputObserver": true,
@@ -12141,7 +12142,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.978
         ],
         "contactInputObserver": true,
@@ -12171,7 +12172,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.978
         ],
         "contactInputObserver": true,
@@ -12201,7 +12202,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.978
         ],
         "contactInputObserver": true,
@@ -12231,7 +12232,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.978
         ],
         "contactInputObserver": true,
@@ -12261,7 +12262,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.978
         ],
         "contactInputObserver": true,
@@ -12278,7 +12279,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261030-083934",
       "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
-      "value": 20.0,
+      "value": 20,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -12291,7 +12292,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.978
         ],
         "contactInputObserver": true,
@@ -12308,7 +12309,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261030-083934",
       "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
-      "value": 21.0,
+      "value": 21,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -12321,7 +12322,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.978
         ],
         "contactInputObserver": true,
@@ -12338,7 +12339,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261030-083934",
       "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
-      "value": 21.0,
+      "value": 21,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -12351,7 +12352,7 @@
         "admissionReapproach": true,
         "graphicsSeed": "C18B04A1C2D67A0AAE7BB294F53DBA34B4BA41894FB8F0C6D6887BB43883D796",
         "highHoldWindow": [
-          45.0,
+          45,
           104.978
         ],
         "contactInputObserver": true,
@@ -12578,7 +12579,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261030-084554",
       "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
-      "value": 32.0,
+      "value": 32,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -12608,7 +12609,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261030-084554",
       "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
-      "value": 80.0,
+      "value": 80,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -12638,7 +12639,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261030-084554",
       "buildId": "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
-      "value": 112.0,
+      "value": 112,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -12878,7 +12879,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261030-092351",
       "buildId": "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
-      "value": 20.0,
+      "value": 20,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -12908,7 +12909,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261030-092351",
       "buildId": "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
-      "value": 33.0,
+      "value": 33,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -12938,7 +12939,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261030-092351",
       "buildId": "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
-      "value": 34.0,
+      "value": 34,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 8,
@@ -13178,7 +13179,7 @@
       "metricId": "frameP50",
       "sourceRunId": "runtime-20261030-093001",
       "buildId": "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
-      "value": 26.0,
+      "value": 26,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -13208,7 +13209,7 @@
       "metricId": "frameP95",
       "sourceRunId": "runtime-20261030-093001",
       "buildId": "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
-      "value": 64.0,
+      "value": 64,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -13238,7 +13239,7 @@
       "metricId": "frameP99",
       "sourceRunId": "runtime-20261030-093001",
       "buildId": "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
-      "value": 86.0,
+      "value": 86,
       "unit": "ms",
       "conditions": {
         "logicalAgents": 64,
@@ -13263,29 +13264,65 @@
       },
       "repetitions": 1,
       "verificationStatus": "diagnosis_only"
+    },
+    {
+      "metricId": "rate100-server-cpu-early-p50-original",
+      "sourceRunId": "MANUAL-single224-200-20261112-launch2",
+      "buildId": "FA0A07F5163E80CA86EBA328066C0282394B641C89911438D451FF77717529D9",
+      "value": 998.4835531037238,
+      "unit": "ms/wall-second",
+      "conditions": {
+        "logicalAgents": 200,
+        "scenario": "manual-airport-containers",
+        "window": "Ready+5..30 wall seconds",
+        "samples": 25,
+        "method": "process TotalProcessorTime delta / QPC wall interval",
+        "condition": "original"
+      },
+      "repetitions": 1,
+      "verificationStatus": "single_observation_not_accepted"
+    },
+    {
+      "metricId": "rate100-server-cpu-early-p50-footOnly",
+      "sourceRunId": "RATE100-foot-support-20261112-155629",
+      "buildId": "41AD23C3DD3031B42291CFB875BB4147384B11F4D43E1C5CCE4EE6633EBA604C",
+      "value": 999.601908539924,
+      "unit": "ms/wall-second",
+      "conditions": {
+        "logicalAgents": 200,
+        "scenario": "manual-airport-containers",
+        "window": "Ready+5..30 wall seconds",
+        "samples": 25,
+        "method": "process TotalProcessorTime delta / QPC wall interval",
+        "condition": "footOnly"
+      },
+      "repetitions": 1,
+      "verificationStatus": "single_observation_not_accepted"
+    },
+    {
+      "metricId": "rate100-server-cpu-early-p50-combined",
+      "sourceRunId": "RATE100-all-reduced-20261112-160346",
+      "buildId": "5CFC142DBBCBD6C19BD7FA42D06D3B6D0E4A338A55337FE73E5A161B004C88D3",
+      "value": 584.0801940464687,
+      "unit": "ms/wall-second",
+      "conditions": {
+        "logicalAgents": 200,
+        "scenario": "manual-airport-containers",
+        "window": "Ready+5..30 wall seconds",
+        "samples": 25,
+        "method": "process TotalProcessorTime delta / QPC wall interval",
+        "condition": "combined"
+      },
+      "repetitions": 1,
+      "verificationStatus": "single_observation_not_accepted"
     }
   ],
   "blockers": [
-    {
-      "id": "matched-live",
-      "status": "unexecuted",
-      "description": "Actual matched OFF/ON order-crossed repeats pending;single-condition runs do not prove causal gain."
-    },
-    {
-      "id": "prior-and-current-failures",
-      "status": "open",
-      "description": "Inspect actual failure JSON and retain earlier actor12 fall/actor50 climb-end cases."
-    },
-    {
-      "id": "animation-visible",
-      "status": "unmeasured",
-      "description": "Temporal CPU/display animation acceptance pending."
-    },
-    {
-      "id": "cost-attribution",
-      "status": "unexecuted",
-      "description": "No64-agent contribution attribution or20ms p95 acceptance."
-    }
+    "15 agents remained FALL for 272.6–284.3 game seconds, Y approximately -3743 to -3920",
+    "Nested throttling yielded zero primary foot rays and joint sweeps in the early comparison interval; zero failures is not safety proof",
+    "One manual run per condition; different routes, combat and lifetimes; no causal attribution among combined changes",
+    "Foot-only ray reduction did not demonstrate whole-server CPU savings",
+    "Present, RTT, pure animation self-time, allocation and GC unavailable"
   ],
   "evidenceReferences": [
     {
@@ -14007,30 +14044,26 @@
       "uri": "/data/experiments/escape-refinement-runtime-20261030.json",
       "sha256": "5fb08e2a2faeb603ff20e8ffc57b0eff9cf329ec1cb97dc9b5a7fe3ee36efb9f",
       "scope": "curated_public_projection"
+    },
+    {
+      "report": "reports/operations/rate100-200-comparison-20261112.md",
+      "sha256": "dbcfb5215ea2cc414ef16ef08d877e993592aaa66a2cc61c77f1de9780669e0c"
+    },
+    {
+      "evidence": "data/rate100-200-evidence-20261112.txt",
+      "sha256": "02b330908159986e679c19297cd2762990790ffa77026e85825753540282bbf8"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-10-30T00:41:17.493550+00:00",
-    "staleAfter": "2026-10-31T00:41:17.493550+00:00",
+    "sourceUpdatedAt": "2026-11-12T07:10:57Z",
+    "staleAfter": "2026-11-13T07:10:57Z",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
-    "consumerRule": "Compare current UTC to staleAfter. Export time is not run time; each metric carries its run and repetitions."
+    "consumerRule": "Each metric retains its own clock/window/repetitions; compare current time to staleAfter"
   },
   "updateState": {
-    "lastSuccessfulData": {
-      "snapshotId": "snapshot-20261030T004117-escape-refinement-runtime-20261030",
-      "generatedAt": "2026-10-30T00:41:17.493550+00:00",
-      "sourceUpdatedAt": "2026-10-30T00:41:17.493550+00:00"
-    },
-    "lastAttempt": {
-      "at": "2026-10-30T00:41:17.493550+00:00",
-      "result": "local validated, remote publication pending"
-    },
-    "lastFailure": {
-      "at": "2026-10-27T18:49:26.032024Z",
-      "code": "ValueError",
-      "message": "Snapshot validation/build failed; previous data retained."
-    }
+    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T07:21:30Z",
+    "lastUpdateFailure": null
   },
   "links": {
     "status": "/api/public/status.json",
@@ -15320,7 +15353,74 @@
         "cost-attribution"
       ],
       "replication": "Two packaged frozen contract repeats;actual runs listed separately;no matched causal claim"
+    },
+    {
+      "id": "rate100-200-20261112",
+      "title": "200-agent 1/100 workload reduction and functional failures",
+      "track": "performance-and-functional-diagnostic",
+      "sourceRunId": "RATE100-all-reduced-20261112-160346",
+      "buildId": "5CFC142DBBCBD6C19BD7FA42D06D3B6D0E4A338A55337FE73E5A161B004C88D3",
+      "verificationStatus": {
+        "diagnosisSucceeded": true,
+        "experimentSuccess": false,
+        "finalAccepted": false,
+        "functional": "FAILED_15_UNRESOLVED_UNDERGROUND_FALLS",
+        "visual": "NOT_ASSESSED",
+        "performance": "SINGLE_MANUAL_RUN_OBSERVED_REDUCTION_NOT_REPEATED"
+      },
+      "conditions": "200 agents; one manual run per condition; full clocks and windows in report",
+      "evidenceReferences": [
+        {
+          "report": "reports/operations/rate100-200-comparison-20261112.md",
+          "sha256": "dbcfb5215ea2cc414ef16ef08d877e993592aaa66a2cc61c77f1de9780669e0c"
+        },
+        {
+          "evidence": "data/rate100-200-evidence-20261112.txt",
+          "sha256": "02b330908159986e679c19297cd2762990790ffa77026e85825753540282bbf8"
+        }
+      ],
+      "blockers": [
+        "15 agents remained FALL for 272.6–284.3 game seconds, Y approximately -3743 to -3920",
+        "Nested throttling yielded zero primary foot rays and joint sweeps in the early comparison interval; zero failures is not safety proof",
+        "One manual run per condition; different routes, combat and lifetimes; no causal attribution among combined changes",
+        "Foot-only ray reduction did not demonstrate whole-server CPU savings",
+        "Present, RTT, pure animation self-time, allocation and GC unavailable"
+      ],
+      "replication": {
+        "trials": 3,
+        "comparableRepeatedPerformanceTrials": 0
+      }
     }
   ],
-  "kind": "experiments"
+  "kind": "experiments",
+  "latestComparison": {
+    "logicalAgents": 200,
+    "independentRunsPerCondition": 1,
+    "cpuEarlyWindow": {
+      "clock": "wall",
+      "startAfterReadySeconds": 5,
+      "endAfterReadySeconds": 30,
+      "unit": "ms/wall-second",
+      "originalP50": 998.4835531037238,
+      "footOnlyP50": 999.601908539924,
+      "combinedP50": 584.0801940464687,
+      "observedCombinedChangePercent": -41.503273415882326
+    },
+    "queryWindow": {
+      "clock": "game",
+      "rangeApproxSeconds": [
+        5.3,
+        18.3
+      ],
+      "originalSolvesPerSecond": 4303.461234467557,
+      "combinedSolvesPerSecond": 46.396252647093235,
+      "combinedPrimaryFootRays": 0,
+      "combinedPrimaryJointSweeps": 0
+    },
+    "unresolvedUndergroundFalls": 15,
+    "climbMotionCompletions": 22,
+    "presentP95Ms": null,
+    "animationChanged": false,
+    "comparisonRepeats": 0
+  }
 }
