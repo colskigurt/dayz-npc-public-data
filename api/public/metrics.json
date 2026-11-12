@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-native-root-world-gate-20261112",
-  "generatedAt": "2026-11-12T10:35:49.600Z",
+  "snapshotId": "snapshot-same-solve-ray-shadow-eight-20261112",
+  "generatedAt": "2026-11-12T10:49:00.965Z",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -61,7 +61,8 @@
     "OWNER-eight1-r3-attribution",
     "NATIVE-MOVE-one-capability1-r4",
     "NATIVE-SCRIPT-root-handoff1-r2",
-    "NATIVE-ROOT-world-gate1-r2"
+    "NATIVE-ROOT-world-gate1-r2",
+    "SAME-RAY-shadow-eight1-r2"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -83,16 +84,18 @@
     "5CFC142DBBCBD6C19BD7FA42D06D3B6D0E4A338A55337FE73E5A161B004C88D3",
     "41AD23C3DD3031B42291CFB875BB4147384B11F4D43E1C5CCE4EE6633EBA604C",
     "fe72db239825ea216766727847c2ff96f7e4a245243945ea327a026730e6ba1a",
-    "5d7184ef91b44ff4a4a5ffb0ccca918cf20b46a75324d24af78cabc49f651db8"
+    "5d7184ef91b44ff4a4a5ffb0ccca918cf20b46a75324d24af78cabc49f651db8",
+    "ed0e9d4c2d95cff14f4ce61d085941654b7454c03c5a3c4644340076a5abe142"
   ],
   "verificationStatus": {
     "diagnosisSucceeded": true,
-    "experimentSuccess": false,
+    "experimentSuccess": true,
     "finalAccepted": false,
-    "functional": "DIRECT_WALL_REPLACEMENT_REJECTED_CURRENT_MODEL",
+    "functional": "EIGHT_ALIVE_ACQUIRED_MOVED_TERMINAL_7_OF_8",
     "visual": "NOT_MEASURED",
-    "performance": "NOT_MEASURED",
-    "adopted": false
+    "performance": "NO_PAIRED_COMPARISON",
+    "adopted": false,
+    "candidateDisposition": "LOW_OPPORTUNITY_DEFER_NO_64_ESCALATION"
   },
   "metrics": [
     {
@@ -13432,13 +13435,56 @@
       },
       "repetitions": 1,
       "verificationStatus": "diagnosis_only_rejected_candidate"
+    },
+    {
+      "metricId": "same-solve-ray-shadow-opportunities",
+      "sourceRunId": "SAME-RAY-shadow-eight1-r2",
+      "buildId": "ed0e9d4c2d95cff14f4ce61d085941654b7454c03c5a3c4644340076a5abe142",
+      "value": 22,
+      "unit": "matching-input-queries/90game-second-8-agent-run",
+      "conditions": {
+        "scope": "8-agent90game-second all-queries-retained shadow; current single render plus receiver",
+        "independentTrials": 1,
+        "independentPairs": 0,
+        "logicalAgents": 8,
+        "customAnimalHosts": 16,
+        "trialGameSeconds": 90,
+        "shadowRows": 728,
+        "solverCalls": 20632,
+        "primaryFootRays": 206320,
+        "jointSweeps": 81975,
+        "exactInputOpportunities": 22,
+        "resultMatches": 22,
+        "resultMismatches": 0,
+        "opportunitiesPer100PrimaryFootRays": 0.010663047692904227,
+        "allAlive": true,
+        "acquiredAndMoved": 8,
+        "validTerminal": 7,
+        "unresolved": 1,
+        "climbs": 43,
+        "drops": 13,
+        "landings": 17,
+        "instrumentedCpuMsPerWallSecond": {
+          "n": 30,
+          "mean": 129.79050179127347,
+          "p50": 124.61640727875768,
+          "p95": 205.97916630192734,
+          "p99": 229.75174028987763,
+          "scope": "single shadow run, not saving estimate or frame time"
+        },
+        "cpuSaving": null,
+        "presentP95Ms": null,
+        "queryResultReplacement": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnosis_only_no_queries_removed"
     }
   ],
   "blockers": [
-    "Both raw movement paths crossed Ray-verified wall; retain existing wall safety checks.",
-    "Roof support/descent observation does not establish original foot solver equivalence or full fall gameplay.",
-    "Native internal query count, CPU saving and visible quality not measured.",
-    "Full NPC ownership/receiver/pressure/phase-clock integration remains unresolved; no escalation of failed candidate."
+    "Only22 duplicate opportunities among206320primary foot rays; no runtime reuse/64 escalation prioritized.",
+    "Same-input conformance does not prove scene epoch or dynamic VEHICLE safety.",
+    "One unresolved final state; no paired baseline, so no new regression or improvement attributed.",
+    "CPU is a single instrumented-run ms/wall-second distribution, not frame-time or saving; visual not measured."
   ],
   "evidenceReferences": [
     {
@@ -14228,17 +14274,29 @@
     {
       "evidence": "data/native-root-world-gate-20261112-evidence.txt",
       "sha256": "90cb3410c5432aad7182fa745ac703fec4d3b583301a56e2246858d963c37733"
+    },
+    {
+      "report": "reports/operations/same-solve-ray-shadow-eight-20261112.md",
+      "sha256": "458f45f2290100066b17e8e9b6b1d61381db0787816702b2db4b60dc41470bbd"
+    },
+    {
+      "data": "data/same-solve-ray-shadow-eight-20261112.json",
+      "sha256": "ba8f666e0ee3aa14b4e6b2fc84f882c2240aeac3ba3c7799743db3ae661615dd"
+    },
+    {
+      "evidence": "data/same-solve-ray-shadow-eight-20261112-evidence.txt",
+      "sha256": "09f11488454c8ccb1ea4ad3182cbd874fc8e4c70f9f1861a135544f7b5251654"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-11-12T10:03:25.3842195+00:00",
-    "staleAfter": "2026-11-13T10:03:25.384Z",
+    "sourceUpdatedAt": "2026-11-12T10:46:53.3764125+00:00",
+    "staleAfter": "2026-11-13T10:46:53.376Z",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
-    "consumerRule": "Reject direct wall replacement only for tested model/input. Do not infer all vanilla native collision policy or CPU gains."
+    "consumerRule": "Small conditional query count share is not CPU saving; all existing queries still executed."
   },
   "updateState": {
-    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T10:35:49.600Z",
+    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T10:49:00.965Z",
     "lastUpdateFailure": null
   },
   "links": {
@@ -15792,46 +15850,106 @@
         "trials": 1,
         "comparableRepeatedPerformanceTrials": 0
       }
+    },
+    {
+      "id": "same-solve-ray-shadow-eight-20261112",
+      "title": "Same-solve exact ray opportunities measured; low value, no64 escalation",
+      "track": "diagnostic",
+      "sourceRunId": [
+        "SAME-RAY-shadow-eight1-r2"
+      ],
+      "buildId": "ed0e9d4c2d95cff14f4ce61d085941654b7454c03c5a3c4644340076a5abe142",
+      "verificationStatus": {
+        "diagnosisSucceeded": true,
+        "experimentSuccess": true,
+        "finalAccepted": false,
+        "functional": "EIGHT_ALIVE_ACQUIRED_MOVED_TERMINAL_7_OF_8",
+        "visual": "NOT_MEASURED",
+        "performance": "NO_PAIRED_COMPARISON",
+        "adopted": false,
+        "candidateDisposition": "LOW_OPPORTUNITY_DEFER_NO_64_ESCALATION"
+      },
+      "conditions": "8-agent90game-second all-queries-retained shadow; current single render plus receiver",
+      "evidenceReferences": [
+        {
+          "report": "reports/operations/same-solve-ray-shadow-eight-20261112.md",
+          "sha256": "458f45f2290100066b17e8e9b6b1d61381db0787816702b2db4b60dc41470bbd"
+        },
+        {
+          "data": "data/same-solve-ray-shadow-eight-20261112.json",
+          "sha256": "ba8f666e0ee3aa14b4e6b2fc84f882c2240aeac3ba3c7799743db3ae661615dd"
+        },
+        {
+          "evidence": "data/same-solve-ray-shadow-eight-20261112-evidence.txt",
+          "sha256": "09f11488454c8ccb1ea4ad3182cbd874fc8e4c70f9f1861a135544f7b5251654"
+        }
+      ],
+      "blockers": [
+        "Only22 duplicate opportunities among206320primary foot rays; no runtime reuse/64 escalation prioritized.",
+        "Same-input conformance does not prove scene epoch or dynamic VEHICLE safety.",
+        "One unresolved final state; no paired baseline, so no new regression or improvement attributed.",
+        "CPU is a single instrumented-run ms/wall-second distribution, not frame-time or saving; visual not measured."
+      ],
+      "replication": {
+        "independentPairs": 0,
+        "trials": 1,
+        "comparableRepeatedPerformanceTrials": 0
+      }
     }
   ],
   "kind": "metrics",
   "latestComparison": {
-    "scope": "4 isolated unmanaged current-model hosts; native/script x wall/edge; no full NPC",
-    "customAnimalHosts": 4,
-    "logicalAgents": null,
-    "damageReceivers": 0,
+    "scope": "8-agent90game-second all-queries-retained shadow; current single render plus receiver",
     "independentTrials": 1,
     "independentPairs": 0,
-    "trialGameSeconds": 20,
-    "observedRows": 728,
-    "fixturesRayVerified": 4,
-    "wallCrossingCases": 2,
-    "initialRoofSupportAndDescentCases": 2,
-    "scriptErrors": 0,
-    "directReplacementAccepted": false,
-    "cpuMsPerWallSecond": null,
+    "logicalAgents": 8,
+    "customAnimalHosts": 16,
+    "trialGameSeconds": 90,
+    "shadowRows": 728,
+    "solverCalls": 20632,
+    "primaryFootRays": 206320,
+    "jointSweeps": 81975,
+    "exactInputOpportunities": 22,
+    "resultMatches": 22,
+    "resultMismatches": 0,
+    "opportunitiesPer100PrimaryFootRays": 0.010663047692904227,
+    "allAlive": true,
+    "acquiredAndMoved": 8,
+    "validTerminal": 7,
+    "unresolved": 1,
+    "climbs": 43,
+    "drops": 13,
+    "landings": 17,
+    "instrumentedCpuMsPerWallSecond": {
+      "n": 30,
+      "mean": 129.79050179127347,
+      "p50": 124.61640727875768,
+      "p95": 205.97916630192734,
+      "p99": 229.75174028987763,
+      "scope": "single shadow run, not saving estimate or frame time"
+    },
+    "cpuSaving": null,
     "presentP95Ms": null,
-    "nativeQueryCount": null,
-    "fullNpcAcceptance": false
+    "queryResultReplacement": false
   },
   "latestReview": {
-    "sourceRunId": "NATIVE-ROOT-world-gate1-r2",
-    "generatedAt": "2026-11-12T10:35:49.600Z",
-    "kind": "world-safety-capability",
-    "directReplacementAccepted": false,
-    "nextArtifact": "Existing-evidence cost/cadence/known-boundary comparison and one actionable local candidate",
+    "sourceRunId": "SAME-RAY-shadow-eight1-r2",
+    "generatedAt": "2026-11-12T10:49:00.965Z",
+    "kind": "same-solve-ray-shadow",
+    "runtimeReuse": false,
+    "nextArtifact": "Return to high-frequency call owners/host costs; preserve baseline functionality, do not escalate low-opportunity query cache",
     "evidenceReferences": [
       {
-        "report": "reports/operations/native-root-world-safety-gate-20261112.md",
-        "sha256": "09e291b1e13b25a8fed3387962a09f785139f8d76ec04bfd827ae7ac44cccc63"
+        "report": "reports/operations/same-solve-ray-shadow-eight-20261112.md",
+        "sha256": "458f45f2290100066b17e8e9b6b1d61381db0787816702b2db4b60dc41470bbd"
       },
       {
-        "data": "data/native-root-world-gate-20261112.json",
-        "sha256": "dfd1b54d2c881d24944940c0e744a40d453aa9acc85702e313a768a33b5efae8"
+        "data": "data/same-solve-ray-shadow-eight-20261112.json",
+        "sha256": "ba8f666e0ee3aa14b4e6b2fc84f882c2240aeac3ba3c7799743db3ae661615dd"
       },
       {
-        "evidence": "data/native-root-world-gate-20261112-evidence.txt",
-        "sha256": "90cb3410c5432aad7182fa745ac703fec4d3b583301a56e2246858d963c37733"
+        "evidence": "data/same-solve-ray-shadow-eight-20261112-evidence.txt",
+        "sha256": "09f11488454c8ccb1ea4ad3182cbd874fc8e4c70f9f1861a135544f7b5251654"
       }
     ]
   }

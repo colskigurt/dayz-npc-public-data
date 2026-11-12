@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "sourceRunId": "SAME-RAY-shadow-eight1-r2",
+  "verificationStatus": "CONDITIONAL_OPPORTUNITY_OBSERVED_NOT_ADOPTED",
+  "independentTrials": 1,
+  "independentPerformancePairs": 0,
+  "shadowRows": 728,
+  "observedSeconds": [
+    0.0019989,
+    89.993
+  ],
+  "totals": {
+    "calls": 20632,
+    "zeroLift": 3442,
+    "centerCaptures": 41264,
+    "rechecks": 24,
+    "exactInputs": 22,
+    "matchedResults": 22,
+    "mismatches": 0,
+    "terrainMatches": 0,
+    "vehicleMatches": 0
+  },
+  "gameplayTotals": {
+    "contactSolves": 20632,
+    "footRays": 206320,
+    "jointSweeps": 81975,
+    "climbs": 43,
+    "drops": 13,
+    "landings": 17
+  },
+  "perAgentLatest": [
+    {
+      "seconds": "89.993",
+      "id": "0",
+      "calls": "2368",
+      "zeroLift": "292",
+      "centerCaptures": "4736",
+      "rechecks": "1",
+      "exactInputs": "1",
+      "matchedResults": "1",
+      "mismatches": "0",
+      "terrainMatches": "0",
+      "vehicleMatches": "0",
+      "phase": "FOLLOW",
+      "state": "CHASE"
+    },
+    {
+      "seconds": "89.993",
+      "id": "1",
+      "calls": "2578",
+      "zeroLift": "465",
+      "centerCaptures": "5156",
+      "rechecks": "0",
+      "exactInputs": "0",
+      "matchedResults": "0",
+      "mismatches": "0",
+      "terrainMatches": "0",
+      "vehicleMatches": "0",
+      "phase": "FOLLOW",
+      "state": "CHASE"
+    },
+    {
+      "seconds": "89.993",
+      "id": "2",
+      "calls": "2427",
+      "zeroLift": "333",
+      "centerCaptures": "4854",
+      "rechecks": "0",
+      "exactInputs": "0",
+      "matchedResults": "0",
+      "mismatches": "0",
+      "terrainMatches": "0",
+      "vehicleMatches": "0",
+      "phase": "FOLLOW",
+      "state": "CHASE"
+    },
+    {
+      "seconds": "89.993",
+      "id": "3",
+      "calls": "2703",
+      "zeroLift": "455",
+      "centerCaptures": "5406",
+      "rechecks": "1",
+      "exactInputs": "0",
+      "matchedResults": "0",
+      "mismatches": "0",
+      "terrainMatches": "0",
+      "vehicleMatches": "0",
+      "phase": "FOLLOW",
+      "state": "CHASE"
+    },
+    {
+      "seconds": "89.993",
+      "id": "4",
+      "calls": "2580",
+      "zeroLift": "438",
+      "centerCaptures": "5160",
+      "rechecks": "4",
+      "exactInputs": "3",
+      "matchedResults": "3",
+      "mismatches": "0",
+      "terrainMatches": "0",
+      "vehicleMatches": "0",
+      "phase": "FOLLOW",
+      "state": "CHASE"
+    },
+    {
+      "seconds": "89.993",
+      "id": "5",
+      "calls": "2888",
+      "zeroLift": "542",
+      "centerCaptures": "5776",
+      "rechecks": "1",
+      "exactInputs": "1",
+      "matchedResults": "1",
+      "mismatches": "0",
+      "terrainMatches": "0",
+      "vehicleMatches": "0",
+      "phase": "FOLLOW",
+      "state": "INVESTIGATE"
+    },
+    {
+      "seconds": "89.993",
+      "id": "6",
+      "calls": "2426",
+      "zeroLift": "393",
+      "centerCaptures": "4852",
+      "rechecks": "4",
+      "exactInputs": "4",
+      "matchedResults": "4",
+      "mismatches": "0",
+      "terrainMatches": "0",
+      "vehicleMatches": "0",
+      "phase": "FOLLOW",
+      "state": "CHASE"
+    },
+    {
+      "seconds": "89.993",
+      "id": "7",
+      "calls": "2662",
+      "zeroLift": "524",
+      "centerCaptures": "5324",
+      "rechecks": "13",
+      "exactInputs": "13",
+      "matchedResults": "13",
+      "mismatches": "0",
+      "terrainMatches": "0",
+      "vehicleMatches": "0",
+      "phase": "LAND",
+      "state": "CHASE"
+    }
+  ],
+  "allEightAcquiredAndMoved2m": true,
+  "scriptErrors": 0,
+  "queryResultReplacement": false,
+  "performanceSaving": null,
+  "visualQuality": "NOT_MEASURED",
+  "adopted": false,
+  "limits": [
+    "Shadow adds result capture/comparison overhead; this run is not an OFF/ON CPU comparison.",
+    "No query removed; measured opportunity is not measured saving.",
+    "Same-input result matches do not establish engine scene epoch contract or dynamic vehicle safety.",
+    "Only 8-agent scripted scenario; do not extrapolate64/200 or claim gameplay final acceptance."
+  ],
+  "evidence": [
+    {
+      "file": "runs/shadow/server-profile/same-ray-shadow.tsv",
+      "bytes": 36549,
+      "sha256": "96634e1a0458a9e416483b0951365ac568d89187ee163f85d81ecdae586631fa"
+    },
+    {
+      "file": "runs/shadow/server-profile/gameplay-eight.tsv",
+      "bytes": 794578,
+      "sha256": "b9326e015e7cedb17b73c8e2f13edab1a616f3cd14fe20aef517f1e5cc54fa08"
+    },
+    {
+      "file": "runs/shadow/server-terminal.json",
+      "bytes": 164,
+      "sha256": "788a7a52762940e84f1380f7d89c933c6d8e63a3c52b523a16daf2061e81e4d1"
+    },
+    {
+      "file": "runs/shadow/client-closed.json",
+      "bytes": 70,
+      "sha256": "2387ce68949831a64e475e69ddbadd11c08573c801e3e2fae0c2b355635fb949"
+    },
+    {
+      "file": "contract.json",
+      "bytes": 12175,
+      "sha256": "c9da9c1712ca63261963eb9f2d72bb9665849d20db5d4a09934363a2ec192b90"
+    },
+    {
+      "file": "signature.log",
+      "bytes": 186,
+      "sha256": "08fc8a08c2ba4b5428653aee6e3d1cf59b164af7457a658f4169e68d97f4414f"
+    },
+    {
+      "file": "source/nf_same_ray_shadow/Scripts/4_World/NFSameRayShadow.c",
+      "bytes": 9731,
+      "sha256": "35e585a90504969a41d1c2ea3548e45885100591fd23c63ee53f201d2ac7ae34"
+    }
+  ],
+  "terminalOutcomes": {
+    "VALID_TERMINAL": 7,
+    "UNRESOLVED_STATE": 1
+  },
+  "opportunitiesPer100PrimaryFootRays": 0.010663047692904227,
+  "allEightSingleHostsAlive": true,
+  "instrumentedCpuMsPerWallSecond": {
+    "n": 30,
+    "mean": 129.79050179127347,
+    "p50": 124.61640727875768,
+    "p95": 205.97916630192734,
+    "p99": 229.75174028987763,
+    "scope": "single shadow run, not saving estimate or frame time"
+  }
+}
