@@ -17,3 +17,5 @@
 이전 [관절 Sweep 단독8 비교](reports/operations/joint-only-eight-diagnostic-20261112.md)는 평균CPU 관찰감소0.815%·꼬리악화로 미수용. [바닐라 활성 작업량 감사](reports/operations/vanilla-custom-workload-audit-20261112.md)와 함께 읽어주세요.
 
 다음: 기존64 호출조건/Combined-Proposal/SupportFast 등과 대조해 안전하게 줄일 수 있는 실제 재진입 조건을 선정합니다. 같은 호출비중을 재측정하는 시험은 반복하지 않습니다.20ms Present p95는 목표입니다.
+
+공개 검증: 24건 HTTP200·main/고정커밋·선정파일해시 일치, 외부 AI의 Markdown 읽기 확인. 기존 JSON 스키마와 현재 응답 형식의 불일치는 남아 있어 전체 스키마 통과로 보고하지 않습니다. [검증 결과](verification/latest.json).
