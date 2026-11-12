@@ -1,15 +1,19 @@
 {
   "schemaVersion": "1.0.0",
-  "generatedAt": "2026-11-12T07:25:00Z",
-  "sourceRunId": "RATE100-all-reduced-20261112-160346",
-  "dataCommit": "fdf647da79422b248f637665d5629a90779c0253",
+  "generatedAt": "2026-11-12T08:00:00Z",
+  "sourceRunId": "MANUAL-vanilla200-20261112-launch3",
+  "dataCommit": "b02043689fc7a0b0109346968ed09064da47746e",
   "verificationStatus": "PUBLIC_HTTP_AND_REPORT_AI_READ_VERIFIED",
-  "httpChecks": 16,
+  "httpChecks": 12,
   "allBodiesSha256Matched": true,
   "mainPinnedBodiesMatched": true,
   "externalAiReadPinned": true,
-  "externalAiReadScope": "One immutable Markdown report opened through ChatGPT web tool; JSON external AI tool parsing not separately tested",
-  "httpScope": "8 paths checked at main and pinned commit without auth, JSON minimum fields and timestamps checked; no independent third-party network test beyond report web read",
-  "experimentStatus": "SINGLE_RUN_DIAGNOSIS_FUNCTIONAL_FAILURE_NOT_ACCEPTED",
-  "initialUpdateFailure": "Public byte hash mismatch from CRLF/trailing blank line; public references corrected before final verification"
+  "externalAiReadScope": "Immutable workload-audit Markdown report only; JSON checked via unauthenticated HTTP and minimum fields",
+  "newExperimentRuns": 0,
+  "experimentStatus": "EXISTING_RECORD_REVIEW_NOT_NEW_OPTIMIZATION",
+  "remainingUnknowns": [
+    "native ray/sweep count",
+    "native support/contact caching",
+    "exact CPU window for 9.633-game-second active segment"
+  ]
 }
