@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-same-solve-ray-shadow-eight-20261112",
-  "generatedAt": "2026-11-12T10:49:00.965Z",
+  "snapshotId": "snapshot-single-host-death-lifecycle-20261112",
+  "generatedAt": "2026-11-12T11:00:25.121Z",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -62,7 +62,8 @@
     "NATIVE-MOVE-one-capability1-r4",
     "NATIVE-SCRIPT-root-handoff1-r2",
     "NATIVE-ROOT-world-gate1-r2",
-    "SAME-RAY-shadow-eight1-r2"
+    "SAME-RAY-shadow-eight1-r2",
+    "SINGLE-HOST-death-capability1-r2"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -88,14 +89,13 @@
     "ed0e9d4c2d95cff14f4ce61d085941654b7454c03c5a3c4644340076a5abe142"
   ],
   "verificationStatus": {
-    "diagnosisSucceeded": true,
-    "experimentSuccess": true,
+    "diagnosisSucceeded": "PARTIAL_PRECRASH_POSE_OBSERVATION",
+    "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "EIGHT_ALIVE_ACQUIRED_MOVED_TERMINAL_7_OF_8",
+    "functional": "UNSAFE_LIFECYCLE_ACCESS_VIOLATION",
     "visual": "NOT_MEASURED",
-    "performance": "NO_PAIRED_COMPARISON",
-    "adopted": false,
-    "candidateDisposition": "LOW_OPPORTUNITY_DEFER_NO_64_ESCALATION"
+    "performance": "NOT_MEASURED",
+    "adopted": false
   },
   "metrics": [
     {
@@ -13478,13 +13478,43 @@
       },
       "repetitions": 1,
       "verificationStatus": "diagnosis_only_no_queries_removed"
+    },
+    {
+      "metricId": "post-lethal-head-cpu-pose-comparison",
+      "sourceRunId": "SINGLE-HOST-death-capability1-r2",
+      "buildId": "5d7184ef91b44ff4a4a5ffb0ccca918cf20b46a75324d24af78cabc49f651db8",
+      "value": 0,
+      "unit": "metres/max-sampled-Head-MS-difference",
+      "conditions": {
+        "scope": "3 unmanaged current-model hosts: alive script control, killed render role, killed receiver-guard role",
+        "logicalAgents": null,
+        "customAnimalHosts": 3,
+        "independentTrials": 1,
+        "independentPairs": 0,
+        "trialGameSeconds": 12,
+        "observedRows": 570,
+        "renderDeathScriptContinues": true,
+        "postLethalCallbacks": 154,
+        "postLethalScriptAgeDelta": 7.7,
+        "controlVsKilledHeadMaxDifferenceMetres": 0,
+        "nativeCrash": true,
+        "serverExitCode": -1073741819,
+        "serverExitHex": "0xC0000005",
+        "safeLifecyclePassed": false,
+        "retirementDetached": false,
+        "cpuSaving": null,
+        "presentP95Ms": null,
+        "fullNpcIntegration": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "partial_precrash_observation_not_lifecycle_acceptance"
     }
   ],
   "blockers": [
-    "Only22 duplicate opportunities among206320primary foot rays; no runtime reuse/64 escalation prioritized.",
-    "Same-input conformance does not prove scene epoch or dynamic VEHICLE safety.",
-    "One unresolved final state; no paired baseline, so no new regression or improvement attributed.",
-    "CPU is a single instrumented-run ms/wall-second distribution, not frame-time or saving; visual not measured."
+    "Server0xC0000005 after Finish/retirement markers: safe lifecycle gate failed; exact native root cause unknown.",
+    "Measured Head CPU pose continuity does not establish14clips, visible smoothness or safe teardown.",
+    "Existing FreezeDamageReceiver would move/disable render if roles aliased; no direct merge.",
+    "Actual FireGeometry, six-zone damage, loot and whole CPU saving not tested; no64 escalation."
   ],
   "evidenceReferences": [
     {
@@ -14286,17 +14316,29 @@
     {
       "evidence": "data/same-solve-ray-shadow-eight-20261112-evidence.txt",
       "sha256": "09f11488454c8ccb1ea4ad3182cbd874fc8e4c70f9f1861a135544f7b5251654"
+    },
+    {
+      "report": "reports/operations/single-host-death-lifecycle-capability-20261112.md",
+      "sha256": "35b93f70f15ca4a90edd4afa1482befb1f1230c3d82e3d55e2b6e205eabb216c"
+    },
+    {
+      "data": "data/single-host-death-lifecycle-20261112.json",
+      "sha256": "4b41423127641fb42aacce3899a5f7ad3e5e09797fff7374d551de125c63eb16"
+    },
+    {
+      "evidence": "data/single-host-death-lifecycle-20261112-evidence.txt",
+      "sha256": "d6d7649424661dd30542064f4ce72a597d37993051efc0725b71b00837a8e356"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-11-12T10:46:53.3764125+00:00",
-    "staleAfter": "2026-11-13T10:46:53.376Z",
+    "sourceUpdatedAt": "2026-11-12T10:57:22.9857251+00:00",
+    "staleAfter": "2026-11-13T10:57:22.985Z",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
-    "consumerRule": "Small conditional query count share is not CPU saving; all existing queries still executed."
+    "consumerRule": "Partial precrash observation only. Reject adoption or normal-termination claim."
   },
   "updateState": {
-    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T10:49:00.965Z",
+    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T11:00:25.121Z",
     "lastUpdateFailure": null
   },
   "links": {
@@ -15895,61 +15937,93 @@
         "trials": 1,
         "comparableRepeatedPerformanceTrials": 0
       }
+    },
+    {
+      "id": "single-host-death-lifecycle-capability-20261112",
+      "title": "Post-lethal script pose continues but termination crashes: not adopted",
+      "track": "capability",
+      "sourceRunId": [
+        "SINGLE-HOST-death-capability1-r2"
+      ],
+      "buildId": "5d7184ef91b44ff4a4a5ffb0ccca918cf20b46a75324d24af78cabc49f651db8",
+      "verificationStatus": {
+        "diagnosisSucceeded": "PARTIAL_PRECRASH_POSE_OBSERVATION",
+        "experimentSuccess": false,
+        "finalAccepted": false,
+        "functional": "UNSAFE_LIFECYCLE_ACCESS_VIOLATION",
+        "visual": "NOT_MEASURED",
+        "performance": "NOT_MEASURED",
+        "adopted": false
+      },
+      "conditions": "3 unmanaged current-model hosts: alive script control, killed render role, killed receiver-guard role",
+      "evidenceReferences": [
+        {
+          "report": "reports/operations/single-host-death-lifecycle-capability-20261112.md",
+          "sha256": "35b93f70f15ca4a90edd4afa1482befb1f1230c3d82e3d55e2b6e205eabb216c"
+        },
+        {
+          "data": "data/single-host-death-lifecycle-20261112.json",
+          "sha256": "4b41423127641fb42aacce3899a5f7ad3e5e09797fff7374d551de125c63eb16"
+        },
+        {
+          "evidence": "data/single-host-death-lifecycle-20261112-evidence.txt",
+          "sha256": "d6d7649424661dd30542064f4ce72a597d37993051efc0725b71b00837a8e356"
+        }
+      ],
+      "blockers": [
+        "Server0xC0000005 after Finish/retirement markers: safe lifecycle gate failed; exact native root cause unknown.",
+        "Measured Head CPU pose continuity does not establish14clips, visible smoothness or safe teardown.",
+        "Existing FreezeDamageReceiver would move/disable render if roles aliased; no direct merge.",
+        "Actual FireGeometry, six-zone damage, loot and whole CPU saving not tested; no64 escalation."
+      ],
+      "replication": {
+        "independentPairs": 0,
+        "trials": 1,
+        "comparableRepeatedPerformanceTrials": 0
+      }
     }
   ],
   "kind": "experiments",
   "latestComparison": {
-    "scope": "8-agent90game-second all-queries-retained shadow; current single render plus receiver",
+    "scope": "3 unmanaged current-model hosts: alive script control, killed render role, killed receiver-guard role",
+    "logicalAgents": null,
+    "customAnimalHosts": 3,
     "independentTrials": 1,
     "independentPairs": 0,
-    "logicalAgents": 8,
-    "customAnimalHosts": 16,
-    "trialGameSeconds": 90,
-    "shadowRows": 728,
-    "solverCalls": 20632,
-    "primaryFootRays": 206320,
-    "jointSweeps": 81975,
-    "exactInputOpportunities": 22,
-    "resultMatches": 22,
-    "resultMismatches": 0,
-    "opportunitiesPer100PrimaryFootRays": 0.010663047692904227,
-    "allAlive": true,
-    "acquiredAndMoved": 8,
-    "validTerminal": 7,
-    "unresolved": 1,
-    "climbs": 43,
-    "drops": 13,
-    "landings": 17,
-    "instrumentedCpuMsPerWallSecond": {
-      "n": 30,
-      "mean": 129.79050179127347,
-      "p50": 124.61640727875768,
-      "p95": 205.97916630192734,
-      "p99": 229.75174028987763,
-      "scope": "single shadow run, not saving estimate or frame time"
-    },
+    "trialGameSeconds": 12,
+    "observedRows": 570,
+    "renderDeathScriptContinues": true,
+    "postLethalCallbacks": 154,
+    "postLethalScriptAgeDelta": 7.7,
+    "controlVsKilledHeadMaxDifferenceMetres": 0,
+    "nativeCrash": true,
+    "serverExitCode": -1073741819,
+    "serverExitHex": "0xC0000005",
+    "safeLifecyclePassed": false,
+    "retirementDetached": false,
     "cpuSaving": null,
     "presentP95Ms": null,
-    "queryResultReplacement": false
+    "fullNpcIntegration": false
   },
   "latestReview": {
-    "sourceRunId": "SAME-RAY-shadow-eight1-r2",
-    "generatedAt": "2026-11-12T10:49:00.965Z",
-    "kind": "same-solve-ray-shadow",
-    "runtimeReuse": false,
-    "nextArtifact": "Return to high-frequency call owners/host costs; preserve baseline functionality, do not escalate low-opportunity query cache",
+    "sourceRunId": "SINGLE-HOST-death-capability1-r2",
+    "generatedAt": "2026-11-12T11:00:25.121Z",
+    "kind": "native-death-lifecycle-capability",
+    "directMergeAccepted": false,
+    "nativeCrash": true,
+    "nextArtifact": "Preserve failed lifecycle evidence; no automatic death-repair development or64 escalation. Cost goal remains unmet.",
     "evidenceReferences": [
       {
-        "report": "reports/operations/same-solve-ray-shadow-eight-20261112.md",
-        "sha256": "458f45f2290100066b17e8e9b6b1d61381db0787816702b2db4b60dc41470bbd"
+        "report": "reports/operations/single-host-death-lifecycle-capability-20261112.md",
+        "sha256": "35b93f70f15ca4a90edd4afa1482befb1f1230c3d82e3d55e2b6e205eabb216c"
       },
       {
-        "data": "data/same-solve-ray-shadow-eight-20261112.json",
-        "sha256": "ba8f666e0ee3aa14b4e6b2fc84f882c2240aeac3ba3c7799743db3ae661615dd"
+        "data": "data/single-host-death-lifecycle-20261112.json",
+        "sha256": "4b41423127641fb42aacce3899a5f7ad3e5e09797fff7374d551de125c63eb16"
       },
       {
-        "evidence": "data/same-solve-ray-shadow-eight-20261112-evidence.txt",
-        "sha256": "09f11488454c8ccb1ea4ad3182cbd874fc8e4c70f9f1861a135544f7b5251654"
+        "evidence": "data/single-host-death-lifecycle-20261112-evidence.txt",
+        "sha256": "d6d7649424661dd30542064f4ce72a597d37993051efc0725b71b00837a8e356"
       }
     ]
   }

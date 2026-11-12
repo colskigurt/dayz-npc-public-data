@@ -1,47 +1,33 @@
-# 동일 솔버 발 중심 Ray 재사용 진단 — 22건 관찰, 낮은 대상 비중으로 확대 보류
+# 단일 호스트 사망 수명 진단 — 포즈 평가 지속 관찰, 종료 접근 위반으로 미수용
 
 ## 1. 작업 목표
-기존 바닐라/커스텀 비교·캐시·SupportSweepFast·진입 재사용·caller attribution을 재사용하고, 기존 안전 검사를 삭제하지 않은 채 같은 솔버 안의 정확한 중복 Ray 기회가 실제 존재하는지 판단한다. 이번은 성능 개선 시험이나 전체 NPC 수용 시험이 아니다.
+미세 중복 Ray 후보의 낮은 대상 비중 이후, 현행 렌더1+피해수신체1의 호스트 비용을 줄일 구조적 후보의 선행 수명 계약을 확인한다. 호스트128→64는 구성 산술일 뿐CPU50%절감 예측이 아니다. 구현 전에 실제 NPC를 변경하지 않고 네이티브 사망 후 기존 script 평가 가능성을 판단한다.
 
 ## 2. 실제 수행
-동일 SolveContactsInternal 호출 내 발 중심 primary Ray 결과를 임시 필드에 기록하고, foot Sweep 접촉 후의 target 중심 재확인 Ray도 원래대로 실행한 다음 비교했다. 좌표·필터·ignore가 같은 경우에만 결과 hit/object/point/normal/fraction을 비교했다. proposedLift가0이 아니면 보통 입력이 다르며, 5offset 최고높이를 중심 Ray 결과로 대체하지 않았다. 기존 모든 Ray·Sweep·fallback·동작 판정을 유지했다. OFF 기본값은 super 호출이며 격리 profile flag에서만 관측한다.
-원래 솔버 본문은 관측 구문을 제거하면 정확히 복원됨을 확인했다. 이는 실행 오버헤드나 스케줄 영향이 없다는 증거는 아니다. 원본13PBO와 현재 single224 렌더+피해수신체 구성, 기존8개체90게임초 공통 경로를 재사용했다. 새로운 관리 체계나 데스크톱 실행기를 만들지 않았다.
-최초 빌드는 foot-2 표기로 World 컴파일 실패, 클라이언트 미실행. 실패 원본과 forced 종료 영수증 보존 후 별도 revision2에서 공백만 수정했다. 성공 프로브는 서명·검증 및 packed source 일치를 확인했다.
+현재 single224 Initialize·DGNativeProbe EEHitBy/EEKilled/HandleNativeCommand·Combat FreezeDamageReceiver·DamageEntity 생존 스냅샷·시체 인벤토리 소유자를 읽었다. 수신체는 네이티브 생명/부위 피해를 맡고 렌더는 살아 있는 상태로 사망 클립을 재생한다. 두 참조를 alias하면 FreezeDamageReceiver가 표시 몸체를20m아래로 옮기고 충돌/활성을 끄므로 직접 통합은 계약상 기각했다.
+기존 서명된 프로브/원본13PBO를 재사용한 격리3호스트 시험: 살아있는 script 대조, 네이티브 사망 렌더 역할, 네이티브 사망 수신체 guard 역할. 동일 현재모델·GroundBody없음·root적용없음.4초에 모두 PreviewRequest12, 뒤2개체만 SetHealth0;12초까지 callback·Age·Head/Hips CPU포즈를 기록했다. 실제 총기·부위 피해·FireGeometry 시험이 아니다.
+첫 미션은 존재하지 않는 GetCurrentCommandID 조회로 컴파일 실패했다. 실패/강제 종료 영수증을 보존하고 별도 revision2에서 해당 조회만 제거했다. 서버 runtime compile은통과했으나 종료에 접근위반이 발생했다.
 
 ## 3. 측정 결과
-실행 SAME-RAY-shadow-eight1-r2, 독립1회, 성능 비교쌍0회. 관측728행/0.002~89.993게임초.
-
-| 항목 | 결과 |
-|---|---:|
-| 솔버 호출 | 20,632 |
-| 최종 lift==0 호출 | 3,442 |
-| 중심 Ray 결과 기록 | 41,264 |
-| foot 접촉 후 target 재확인 Ray | 24 |
-| 정확 입력 일치 / 결과 일치 / 불일치 | 22 / 22 / 0 |
-| 주 발 지지 Ray | 206,320 |
-| 주 관절 Sweep | 81,975 |
-| 개체 생존·목표 획득·2m 이상 이동 | 8/8 |
-| 최종 유효 상태 / 미해결 | 7/8 / 1개체 |
-| 등반 / drop / 착지 누적 | 43 / 13 / 17 |
-
-동일 입력22건은 주 발 지지 Ray206,320회 대비 0.010663%이다. 이는 검사 개수의 서술적 비중이며 CPU 절감률·CPU 상한이 아니다. terrain/vehicle로 분류된 일치0건이며, 나머지 hit/miss 종류를 현재 기록으로 단정하지 않는다.
-관측 실행의 서버 CPU는30벽초 표본, 단위ms/벽시계초: p50 124.616, p95 205.979, p99 229.752, 평균 129.791. 프레임 시간이 아니며 비교 기준 실행이 없어 감소율을 계산하지 않는다. Present p50/p95/p99·실제 시각 품질·64개체 결과는 미측정이다.
+실행 SINGLE-HOST-death-capability1-r2, 독립1회, 성능 비교쌍0회,570행/각190표본. 사망 후4.246~11.945게임초에서 사망2개체 IsAlive=false·Health0, script존재 표본100%, PreAnim/PrePhys 각각154회 증가, 자체Age7.7초 증가, NativeRequest12 유지. 대조는Health500·생존이다.
+측정한Head MS포즈는 살아있는대조와사망렌더의동시표본에서최대차0m. 두대상모두해당사후창의첫Head로부터최대약1.540092m변화했다. 이는해당본의CPU평가관찰이며전신14클립·실제화면품질증명이아니다. 수신체 guard 역할도script평가가지속돼guard만으로즉시명령이끝난다는예상은지지되지않았다.
+스크립트E오류0이지만네이티브서버종료코드−1073741819(0xC0000005). DG_ROLE_DONE과3개RETIRE_HANDOFF_DEFAULT표식뒤crash,8초후DETACHED표식없음. 따라서정상종료/수명gate실패다. 클라이언트는정상닫기·강제종료없음. 현재모든시험프로세스소멸확인.
+CPU·Present p50/p95/p99·실제시각품질·8/64전체NPC·부위피해·전리품미측정. 사망후평가관찰을최적화성과로보고하지않는다.
 
 ## 4. 원인 분석
-확인: 정확 입력의 중복은 존재하지만, 대부분의 solve에서 후속 foot 재확인 자체가 실행되지 않았다(24회). 최종 lift==0인3442회 전체를 재사용 기회로 세면 안 된다. 본 장면에서 이 국소 후보의 대상은 매우 작아 runtime 재사용 구현과64 확대를 우선하지 않는다. 사전0기회/불일치 기각 조건은 발생하지 않았지만, 사후 낮은 연구 가치 판단을 새 사전 통과 문턱으로 포장하지 않는다.
-확인: 22건 결과 일치는 이 실행의 진단이다. Floors의 VEHICLE 포함·엔진 scene epoch·동적 장애물 안전 계약을 입증하지 않는다. 안전성 문제를 숨기고 캐시를 채택하지 않는다.
-미확인: 관측 추가 코드의 순수 오버헤드, 1개체 미해결의 기준 재현 여부, 전체 CPU 절감, 다른64/200장면의 기회 빈도. 기능 정체를 새로 복구하는 작업으로 범위를 전환하지 않는다.
+확인: 네이티브체력0이어도기존script명령과해당Head포즈평가는사망후약8초동안계속될수있었다. 네이티브사망이즉시모든script평가를중단한다는가정은이실행에서성립하지않았다.
+확인: 종료/명령퇴역전후네이티브접근위반발생. RPT의script stack은Finish32행(상태설정·파일닫기동일행),로그에는그뒤의퇴역handoff표식도있다. 정확한C++원인·어느개체소유권파괴가잘못됐는지는모른다. 단순히CloseFile나죽은개체퇴역이원인이라고확정하지않는다.
+모름: 실제피격형상을통합해도native클립/건강6부위·시체·퇴역이안전한지,호스트별CPU기여. 기존27본수신체HeadRay불일치와같은자산위험도남는다. 포즈부분성공으로이를우회하지않는다.
 
 ## 5. 검증 수준
-동일 입력 기회·동일 결과 비교·계수 정합·원문 복원·서명 검증: 진단 성공. 원래 physics 질의 결과 대체0건. 최종 기능 회귀 통과·반복 검증·시각 수용·성능 최적화·최종 채택: 미완료/미수용. 현재 후보64 확장 보류.20ms p95는 계속 목표다.
+사망후기존script·특정본포즈지속:부분진단성공. 정상종료/수명:실패. 전체통합·반복성능·시각품질·8→64회귀·최종수용:미실행/미수용. 초기analysis.json의연속성판정은이관찰에만해당하며analysis-disposition.json이전체미수용·crash를명시한다.20ms p95는목표다.
 
 ## 6. 변경 사항
-same-ray-shadow1 안에 격리 관측 addon·미션·빌드·계약·실행 로그·분석만 추가했다. 원본 게임/모델/그래프/기존PBO/운영 서버/이전 증거 보존. 성공 PBO SHA256 ed0e9d4c2d95cff14f4ce61d085941654b7454c03c5a3c4644340076a5abe142. 새 PBO 서명 및 DSCheckSignatures 검증 성공, 개인키 배포 제외, packed source 일치. 성공 시험 서버 forced=false/exit−1, 클라이언트 정상 닫기/forced=false. 현재 시험 프로세스 종료 확인. 첫 컴파일 실패와 성공은 분리했다.
+single-host-death-capability1 내격리미션·계약·로그·분석/판정만추가. 게임코드/PBO/모델/그래프/운영서버/원시기록보존. 기존프로브PBO SHA256 5d7184ef91b44ff4a4a5ffb0ccca918cf20b46a75324d24af78cabc49f651db8 및기존서명·검증증거재사용. 새PBO빌드/재서명없음. runtime중강제종료없음이나server native crash로정상종료아님. 자동생성minidump는기존실험폴더에남기고복사·추가덤프생성·공개하지않는다.
 
 ## 7. 원시 증거
-실행ID SAME-RAY-shadow-eight1-r2. contract.json, diagnostic-plan.json, source-restoration-proof.json, signature.log, source의 관측 method, same-ray-shadow.tsv728행, gameplay-eight.tsv, terminal-state.tsv, mixed-hosts.tsv, server-cpu.csv, server-terminal/client-closed 및 analysis.json. 상위 실패 runs/shadow/failed-terminal.json 보존. source-proof 초기 산출물은 빌드 전 검토이며 현재 소스 일치의 권위는 source-restoration-proof와packed검증 계약이다.
-공개는 선정 집계·호출 문맥·원본 해시로 제한하고 개인키·로컬 절대경로·사용자 식별자·프로세스 정보·원시 로그 전체를 제외한다. 기존원시/보고서 덮어쓰기 없음.
+contract.json, 미션init.c, single-host-death.tsv570행, server-terminal/client-closed, script/RPT/crash로그, analysis.json, analysis-disposition.json, 상위PRE_IMPLEMENTATION_REVIEW.md 및첫실패failed-terminal.json을연결한다. crash로그SHA256 49cea9b63b7b13d5917dc55feccf4379b18712cae6989827bdd13dbeae9f2ef2. 공개는집계·선정문맥·해시만제공하고설치자산·원시덤프·키·프로세스정보·로컬절대경로제외. 원시및기존보고서덮어쓰기없음.
 
 ## 8. 잔여 문제
-이 후보는 기회가0이라서가 아니라 현재 대상 비중이 작고 관리 오버헤드·동적 안전 계약이 남아 있어 낮은 우선순위로 보존한다. 유리한 수치를 얻기 위한 반복이나64 확대를 하지 않는다. 실제 CPU 격차가 큰 호출 소유자/호스트 비용 연구로 복귀한다.
-바닐라 네이티브 query 총수는 여전히 모른다. 기존 항목별 비교표를 재작성하거나 같은 바닐라 조사를 반복하지 않는다. 다음 후보는 검증된 단일 렌더+수신체 구조와 Drive/Displace의 독립 안전 계약을 보존하면서 실제 많은 호출을 줄일 근거가 있어야 한다. 7/8 기능 결과를 최적화 성과로 보고하지 않으며, 애니메이션 화면 수용과64 전체 비용은 별도 목표로 남긴다.
+안전수명이입증되지않았으므로현재호스트통합을구현하거나64로확대하지않는다. 이실패를연쇄사망기능/퇴역수정개발로전환하지않고보존한다. 다음후보판단에서는이미실패한native벽대체·낮은Ray중복·Scratch·SupportSweepFast·Drive/Displace단일끝점병합을재실행하지않는다.
+현재안전하게입증된큰폭CPU절감후보는아직없다. 많은질의를실제로줄일수있는조건과기능안전계약이확보돼야하며,가장쉬운작은함수의좋은퍼센트나회귀도착률만으로목표달성을대체하지않는다. 기존단일렌더+수신체의검증된기능·사용자시각관찰을보존한다.

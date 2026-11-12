@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "sourceRunId": "SINGLE-HOST-death-capability1-r2",
+  "verificationStatus": "PARTIAL_POSE_CONTINUITY_OBSERVED_TERMINATION_ACCESS_VIOLATION",
+  "independentTrials": 1,
+  "independentPerformancePairs": 0,
+  "rows": 570,
+  "subjects": [
+    {
+      "id": 0,
+      "role": "alive_script_control",
+      "samples": 190,
+      "postWindow": [
+        4.246,
+        11.945
+      ],
+      "postAliveValues": [
+        "true"
+      ],
+      "postHealthValues": [
+        500.0
+      ],
+      "postScriptFraction": 1.0,
+      "postNativeRequests": [
+        12
+      ],
+      "postCallbackDeltas": {
+        "animUpdates": 154.0,
+        "physicsUpdates": 154.0,
+        "scriptAge": 7.7
+      },
+      "postHeadMaxDistanceFromFirst": 1.54009162949644,
+      "firstPostHeadMS": [
+        -0.005707,
+        1.439413,
+        -0.140044
+      ],
+      "lastPostHeadMS": [
+        0.089354,
+        0.138299,
+        0.670239
+      ],
+      "lastPostPosition": [
+        4497.999023,
+        339.09198,
+        10226.000977
+      ]
+    },
+    {
+      "id": 1,
+      "role": "killed_render_role",
+      "samples": 190,
+      "postWindow": [
+        4.246,
+        11.945
+      ],
+      "postAliveValues": [
+        "false"
+      ],
+      "postHealthValues": [
+        0.0
+      ],
+      "postScriptFraction": 1.0,
+      "postNativeRequests": [
+        12
+      ],
+      "postCallbackDeltas": {
+        "animUpdates": 154.0,
+        "physicsUpdates": 154.0,
+        "scriptAge": 7.7
+      },
+      "postHeadMaxDistanceFromFirst": 1.54009162949644,
+      "firstPostHeadMS": [
+        -0.005707,
+        1.439413,
+        -0.140044
+      ],
+      "lastPostHeadMS": [
+        0.089354,
+        0.138299,
+        0.670239
+      ],
+      "lastPostPosition": [
+        4501.999023,
+        339.097321,
+        10226.000977
+      ]
+    },
+    {
+      "id": 2,
+      "role": "killed_receiver_guard_role",
+      "samples": 190,
+      "postWindow": [
+        4.246,
+        11.945
+      ],
+      "postAliveValues": [
+        "false"
+      ],
+      "postHealthValues": [
+        0.0
+      ],
+      "postScriptFraction": 1.0,
+      "postNativeRequests": [
+        12
+      ],
+      "postCallbackDeltas": {
+        "animUpdates": 154.0,
+        "physicsUpdates": 154.0,
+        "scriptAge": 7.7
+      },
+      "postHeadMaxDistanceFromFirst": 1.54009162949644,
+      "firstPostHeadMS": [
+        -0.005707,
+        1.439413,
+        -0.140044
+      ],
+      "lastPostHeadMS": [
+        0.089354,
+        0.138299,
+        0.670239
+      ],
+      "lastPostPosition": [
+        4505.999023,
+        339.105347,
+        10226.000977
+      ]
+    }
+  ],
+  "renderDeathScriptContinues": true,
+  "aliveControlVsKilledRenderMaxHeadDifference": 0.0,
+  "scriptErrors": 0,
+  "retirementDetached": false,
+  "cpu": "NOT_MEASURED",
+  "visualQuality": "NOT_MEASURED",
+  "fullNpcIntegration": false,
+  "fireGeometry": "NOT_TESTED",
+  "zoneDamage": "NOT_TESTED",
+  "adopted": false,
+  "evidence": [
+    {
+      "file": "contract.json",
+      "sha256": "9c15f1afb20cee15b1176719e71c6e83b28dedff7d251f08988c9ce816ed2c16",
+      "bytes": 12059
+    },
+    {
+      "file": "mission/server-role-lod0.chernarusplus/init.c",
+      "sha256": "6b779141f8202ef605b7297277bc65a493da60a47227527484e20e28fceceb75",
+      "bytes": 4166
+    },
+    {
+      "file": "runs/death-capability/server-profile/single-host-death.tsv",
+      "sha256": "abfec471d0043a1a06e52e1191cae9c7f4fae50225d828de769b12daac3d7fe3",
+      "bytes": 81226
+    },
+    {
+      "file": "runs/death-capability/server-terminal.json",
+      "sha256": "814ea9a0b3bd738e23e81c75ad109c82f60634498b0c2c2e02161d33facda022",
+      "bytes": 181
+    },
+    {
+      "file": "runs/death-capability/client-closed.json",
+      "sha256": "f24e2b24604a08db759aa96229e11f23c1a5563f066e8d52b4cd648314981271",
+      "bytes": 70
+    }
+  ],
+  "lifecycleDisposition": {
+    "schemaVersion": 1,
+    "sourceRunId": "SINGLE-HOST-death-capability1-r2",
+    "supersedesOverallInterpretationOf": "analysis.json",
+    "verificationStatus": "PARTIAL_POSE_CONTINUITY_OBSERVED_TERMINATION_ACCESS_VIOLATION",
+    "nativeCrash": true,
+    "exitCode": -1073741819,
+    "exitHex": "0xC0000005",
+    "safeLifecyclePassed": false,
+    "rootCause": "UNKNOWN: crash followed Finish/retirement handoff markers; script stack Finish line32, exact native cause not established",
+    "directIntegrationAccepted": false,
+    "automatic64Escalation": false,
+    "newFunctionRepairScopeStarted": false,
+    "crashLogSha256": "49cea9b63b7b13d5917dc55feccf4379b18712cae6989827bdd13dbeae9f2ef2",
+    "rptSha256": "ac323a7d707d5a013c7b5696d18fd06fbc7311ae815da938c84ec14ba42e5bca"
+  }
+}
