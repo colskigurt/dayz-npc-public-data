@@ -1,21 +1,21 @@
 # DayZ NPC 연구 — 현재 상태 (2026-11-12)
 
-**현재 단일 파트 커스텀 모델에서 동물 네이티브 Move 연결을 확인했습니다.** 평지1개체의 능력 진단이며 CPU 최적화 성공이 아닙니다.
+**기존 DGNativeCommand의 root 적용 분기에서도 실제 이동을 확인했습니다.** 현재 모델 1개체의 능력 진단이며, 전체 NPC나 성능 개선 수용은 아닙니다.
 
-| 확인 항목 | 결과 |
+| 최근 30게임초 진단 | 결과 |
 |---|---|
-| 네이티브 Move hook / 기존 그래프 RequestedState | 실행·입력 전달 확인 |
-|20게임초 PreAnim / PrePhys 콜백 |404 /404 |
-| 걷기/달리기 요청 구간 순이동 |11.58m /27.64m |
-| 전체 NPC 추적·전투·등반·낙하 전환 | 미검증 |
-|CPU 절감·시각 부드러움·64개체 수용 | 미측정/미완료 |
+| Native Move ↔ script 명령 교체 | 4회 관찰 |
+| Script root 적용 누적 | 34.8568m, 실제 위치 이동도 관찰 |
+| Script PreAnim / PrePhys | 198 / 198콜백 |
+| Script Age | 두 번째 명령에서 4.95→0.05초 재시작 |
+| CPU·월드 충돌·지지·화면 부드러움 | 미측정 / 미검증 |
 
-입력1/2는m/s가 아닙니다. heading0에서−Z이동과idle의작은root이동이관찰돼 보정이필요합니다. 이프로브에는기존GroundBody·피해수신체가연결되지않았습니다. 원본13PBO/14클립/기능보존,프로브운영미채택입니다.
+시험 개체에는 기존 GroundBody·피해수신체·추적 AI가 연결되지 않았습니다. 실제 NPC에서는 GroundBody 분기가 root를0으로 설정하므로 플래그만 켜서 적용할 수 없습니다. 명령 자체 Age를 native graph 재생 시간으로 해석하지 않습니다. UUID 응답0도 재생 연속성 증거가 아닙니다.
 
-[최신 상세 보고서](reports/operations/native-animal-move-one-capability-20261112.md) · [선정 소스·40행 증거](data/native-animal-move-one-20261112-evidence.txt) · [최신 작업](reports/operations-latest.md) · [공개 상태](api/public/status.json)
+[최신 보고서](reports/operations/native-script-root-handoff-capability-20261112.md) · [선정 코드·전환 로그](data/native-script-root-handoff-20261112-evidence.txt) · [최신 작업](reports/operations-latest.md) · [공개 상태](api/public/status.json)
 
-이전 [8개체 솔버 귀속](reports/operations/solver-caller-ownership-eight-20261112.md):지상34.5%/밀침29.0%는호출비중이며전체CPU비중아님. [관절Sweep 감축8](reports/operations/joint-only-eight-diagnostic-20261112.md)은성능미수용입니다.
+이전 [현재 모델 Native Move 연결](reports/operations/native-animal-move-one-capability-20261112.md), [8개체 솔버 호출 귀속](reports/operations/solver-caller-ownership-eight-20261112.md), [관절 감축 미수용](reports/operations/joint-only-eight-diagnostic-20261112.md)을 보존합니다.
 
-다음은native지상↔script등반/낙하의권한전환계약검토입니다. 기능을보존할수있는후보만소수개체후8→64로검증합니다.20ms Present p95는목표입니다.
+다음: 기존 script-root 경로의 벽·발판 가장자리 반응을 작은 조건에서 확인합니다. 기능을 보존할 후보만 이후8→64로 검증합니다.20ms Present p95는 목표입니다. 원본13PBO·14클립·정상 기능 보존, 프로브 운영 미채택입니다.
 
-공개 JSON의기존스키마불일치는별도미해결입니다. HTTP/파일검증과전체스키마통과를구분합니다. [검증 기록](verification/latest.json).
+공개 JSON의 기존 스키마 불일치는 별도 미해결입니다. HTTP/해시 검증과 전체 스키마 통과를 구분합니다. [검증 기록](verification/latest.json).

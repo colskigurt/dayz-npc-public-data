@@ -1,152 +1,130 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-12T09:24:30.955Z",
-  "sourceRunId": "NATIVE-MOVE-one-capability1-r4",
+  "generatedAt": "2026-11-12T09:50:54.099Z",
+  "sourceRunId": "NATIVE-SCRIPT-root-handoff1-r2",
   "buildId": "5d7184ef91b44ff4a4a5ffb0ccca918cf20b46a75324d24af78cabc49f651db8",
   "verificationStatus": {
     "diagnosisSucceeded": true,
     "experimentSuccess": true,
     "finalAccepted": false,
-    "functional": "ONE_ANIMAL_FLAT_CAPABILITY_ONLY_NOT_FULL_NPC_REGRESSION",
+    "functional": "UNMANAGED_ROOT_MOVE_OBSERVED_PHASE_TIME_RESTART_UNRESOLVED",
     "visual": "NOT_MEASURED",
     "performance": "NOT_MEASURED",
     "adopted": false
   },
   "metrics": {
-    "scope": "one current custom Animal host, no GroundBody or damage receiver",
+    "scope": "unmanaged current-model host; no full GroundBody, receiver or pursuit",
     "logicalAgents": null,
     "customAnimalHosts": 1,
     "renderHosts": 1,
     "damageReceivers": 0,
-    "independentPairs": 0,
     "independentTrials": 1,
-    "trialGameSeconds": 20,
-    "observedRows": 40,
-    "nativeMoveActivations": 1,
-    "preAnimCallbacks": 404,
-    "prePhysCallbacks": 404,
-    "requestedStateVariable": 11,
-    "allCapabilityGatesPassed": true,
-    "stages": [
+    "independentPairs": 0,
+    "trialGameSeconds": 30,
+    "observedRows": 472,
+    "ownershipChangesObserved": 4,
+    "scriptRootAppliedTotal": 34.8568,
+    "scriptAgeResets": [
       {
-        "stage": "initial-idle",
-        "samples": 10,
-        "window": [
-          0.0019989,
-          4.586
-        ],
-        "intent": 0,
-        "speedInputMin": 0,
-        "speedInputMax": 0,
-        "horizontalNetMetres": 0.06715558789871529,
-        "horizontalPathMetres": 0.47665419619123534,
-        "preAnimDelta": 97,
-        "animDtDelta": 4.85
-      },
-      {
-        "stage": "walk-input",
-        "samples": 12,
-        "window": [
-          5.1,
-          10.726
-        ],
-        "intent": 1,
-        "speedInputMin": 1,
-        "speedInputMax": 1,
-        "horizontalNetMetres": 11.57655237888905,
-        "horizontalPathMetres": 11.66427718428671,
-        "preAnimDelta": 113,
-        "animDtDelta": 5.65
-      },
-      {
-        "stage": "run-input",
-        "samples": 12,
-        "window": [
-          11.246,
-          16.882
-        ],
-        "intent": 2,
-        "speedInputMin": 2,
-        "speedInputMax": 2,
-        "horizontalNetMetres": 27.63871011175697,
-        "horizontalPathMetres": 27.647703411177194,
-        "preAnimDelta": 113,
-        "animDtDelta": 5.649999999999999
-      },
-      {
-        "stage": "final-idle",
-        "samples": 6,
-        "window": [
-          17.382,
-          19.925
-        ],
-        "intent": 0,
-        "speedInputMin": 0,
-        "speedInputMax": 0,
-        "horizontalNetMetres": 0.09805731012556537,
-        "horizontalPathMetres": 0.21176904221255127,
-        "preAnimDelta": 51,
-        "animDtDelta": 2.5500000000000007
+        "seconds": 21.147,
+        "previousScriptAge": 4.95,
+        "newScriptAge": 0.05
       }
     ],
-    "observedHeading": [
+    "callbackMax": {
+      "nativePreAnim": 406,
+      "nativePrePhys": 406,
+      "scriptPreAnim": 198,
+      "scriptPrePhys": 198,
+      "activations": 3
+    },
+    "scriptStageMotion": [
       {
-        "stage": "walk",
-        "configuredHeading": 0,
-        "seconds": 5.626000000000001,
-        "positionDelta": [
-          -0.23242099999970378,
-          -0.008239000000003216,
-          -11.574218999998266
+        "stage": 2,
+        "scriptRequested": true,
+        "samples": 77,
+        "window": [
+          8.048,
+          12.947
         ],
-        "horizontalMeanNetMetresPerGameSecond": 2.0576879450567094
+        "scriptPresenceFraction": 1,
+        "horizontalNetMetres": 9.845703980489473,
+        "horizontalPathMetres": 10.084506847895646,
+        "scriptAgeDiagnostic": [
+          0,
+          4.9
+        ],
+        "scriptRootAppliedDelta": 10.0881,
+        "nativePreAnimDelta": 0,
+        "scriptPreAnimDelta": 98,
+        "yawRange": [
+          0,
+          0
+        ]
       },
       {
-        "stage": "run",
-        "configuredHeading": 0,
-        "seconds": 5.636000000000001,
-        "positionDelta": [
-          0.04589899999973568,
-          -0.0045170000000211985,
-          -27.638671999999133
+        "stage": 5,
+        "scriptRequested": true,
+        "samples": 79,
+        "window": [
+          21.026,
+          25.967
         ],
-        "horizontalMeanNetMetresPerGameSecond": 4.903958501021463
+        "scriptPresenceFraction": 0.9873417721518988,
+        "horizontalNetMetres": 24.219768995238663,
+        "horizontalPathMetres": 24.289119596374373,
+        "scriptAgeDiagnostic": [
+          4.95,
+          4.85
+        ],
+        "scriptRootAppliedDelta": 24.035700000000002,
+        "nativePreAnimDelta": 0,
+        "scriptPreAnimDelta": 97,
+        "yawRange": [
+          0,
+          0
+        ]
       }
     ],
+    "instanceUuidUsableAsContinuityProof": false,
     "cpuMsPerWallSecond": null,
     "presentP95Ms": null,
     "fullNpcAcceptance": false
   },
   "blockers": [
-    "CPU savings and native query count/support/collision equivalence unmeasured",
-    "One flat custom animal, not current full NPC with pursuit, combat and receiver",
-    "Native/script climb/fall/landing handoff and contact history/rollback preservation unverified",
-    "Heading0 movement primarily negativeZ, input1/2 not1/2m/s; idle root drift remains",
-    "Visual smoothness, repeated performance and8/64 gameplay acceptance incomplete"
+    "Existing DG command Age/NativeSeconds restarts4.95→0.05 on recreation; phase timing order/rebasing unresolved",
+    "Full NPC GroundBody branch still zeros root translation; ApplyRootMotion flag alone cannot enable this on current NPC",
+    "Wall/edge/support/crowd collision behavior and native equivalence untested",
+    "Existing delayed transform Commit, logical readback, Contacts/lift/rollback and receiver authority unresolved",
+    "Graph UUID getter returned0; visual continuity and CPU savings not measured"
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/native-animal-move-one-capability-20261112.md",
-      "sha256": "3da9c9e07ed2cb228e1d0cc135b95ae01e2a15d89886fe1825481f71f660d8aa"
+      "report": "reports/operations/native-script-root-handoff-capability-20261112.md",
+      "sha256": "a2124f38edfe00bcec20a5c484b408b02f72c645642b10b2b2eaf1049d03201d"
     },
     {
-      "evidence": "data/native-animal-move-one-20261112-evidence.txt",
-      "sha256": "f29426cbe688f32a4c9e1c51fe514bc1687d95d09f2bd534ed37b89dd831ee87"
+      "evidence": "data/native-script-root-handoff-20261112-evidence.txt",
+      "sha256": "363ba6691ba0c7ae7a5060ce81d5dffb32465417d63bd578dea878b2a8448713"
     },
     {
-      "data": "data/native-animal-move-one-20261112.json",
-      "sha256": "1764e7d0396d41935e8b6783198a16d376fb6537e773efe1a842994db90591f9"
+      "data": "data/native-script-root-handoff-20261112.json",
+      "sha256": "e11933dc5cb36d37e3f3654fe760308371c5c1f966287bcfe38e5229f1c80c70"
+    },
+    {
+      "data": "data/native-script-root-handoff-edges-20261112.json",
+      "sha256": "8a44ff48b888ce489d272d83e1a9ef78f59b96175403f98a83c02b3302741f63"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-11-12T09:17:21.0812440+00:00",
-    "staleAfter": "2026-11-13T09:17:21.081Z",
+    "sourceUpdatedAt": "2026-11-12T09:39:45.6840175+00:00",
+    "staleAfter": "2026-11-13T09:39:45.684Z",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
-    "consumerRule": "Capability success is not optimization or full NPC gameplay acceptance."
+    "consumerRule": "Root movement capability is not accepted collision physics, full NPC handoff, visual smoothness or CPU saving."
   },
   "updateState": {
-    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T09:24:30.955Z",
+    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T09:50:54.099Z",
     "lastUpdateFailure": null
   }
 }
