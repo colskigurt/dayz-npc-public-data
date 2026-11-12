@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "lazy-crowd-eligibility-local-20261112",
-  "generatedAt": "2026-11-12T11:56:37.213Z",
+  "snapshotId": "lazy-crowd-eligibility-live8-20261112",
+  "generatedAt": "2026-11-12T12:08:11.654Z",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -66,7 +66,8 @@
     "SINGLE-HOST-death-capability1-r2",
     "RECEIVER-native-move1",
     "CPU-CURRENT-single64-1",
-    "LAZY-ELIGIBILITY-method1-r2"
+    "LAZY-ELIGIBILITY-method1-r2",
+    "LAZY-ELIGIBILITY-eight-shadow1"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -91,15 +92,16 @@
     "5d7184ef91b44ff4a4a5ffb0ccca918cf20b46a75324d24af78cabc49f651db8",
     "ed0e9d4c2d95cff14f4ce61d085941654b7454c03c5a3c4644340076a5abe142",
     "single224-13mods-f7b8a62845396922",
-    "single224-13mods-lazy-bfebeccec02c2b38"
+    "single224-13mods-lazy-bfebeccec02c2b38",
+    "single224-13mods-lazy-shadow-26f4dca03252ac77"
   ],
   "verificationStatus": {
     "diagnosisSucceeded": true,
     "experimentSuccess": true,
     "finalAccepted": false,
-    "functional": "SYNTHETIC_EQUIVALENCE_ONLY_8_64_NOT_RUN",
+    "functional": "LIVE8_90S_TERMINAL8of8_PREDICATE_SHADOW_MATCH_NOT_PAIRED_REGRESSION",
     "visual": "NOT_MEASURED",
-    "performance": "LOCAL_UPDATE_SCREEN_PASS_NO_WHOLE_CPU_COMPARISON",
+    "performance": "NOT_MEASURED_SHADOW_INSTRUMENTATION",
     "adopted": false
   },
   "metrics": [
@@ -13624,37 +13626,58 @@
         -9.275779163171972
       ],
       "verificationStatus": "LOCAL_SCREEN_ONLY_NOT_WHOLE_CPU"
+    },
+    {
+      "metricId": "lazy-crowd-eligibility-live8-20261112-mismatches",
+      "sourceRunId": "LAZY-ELIGIBILITY-eight-shadow1",
+      "buildId": "single224-13mods-lazy-shadow-26f4dca03252ac77",
+      "value": 0,
+      "unit": "count/predicate-mismatch",
+      "conditions": "Live8 single render+receiver;90game seconds fixed ground/low/high; shadow compares cached vs original predicates per eligible pair; no CPU acceptance.",
+      "repetitions": 1,
+      "verificationStatus": "LIVE8_DIAGNOSIS"
+    },
+    {
+      "metricId": "lazy-crowd-eligibility-live8-20261112-valid-terminal",
+      "sourceRunId": "LAZY-ELIGIBILITY-eight-shadow1",
+      "buildId": "single224-13mods-lazy-shadow-26f4dca03252ac77",
+      "value": 8,
+      "denominator": 8,
+      "unit": "agents/valid-terminal",
+      "conditions": "Live8 single render+receiver;90game seconds fixed ground/low/high; shadow compares cached vs original predicates per eligible pair; no CPU acceptance.",
+      "repetitions": 1,
+      "verificationStatus": "ONE_SCENARIO_NOT_PAIRED_REGRESSION"
     }
   ],
   "blockers": [
-    "One independent process; three paired blocks per layout are not independent runs.",
-    "No actual native entities, physics-query reduction, 8/64 gameplay, Present or whole CPU saving measured.",
-    "Medium condition first block has large variation; all blocks retained, no selected best-run claim.",
-    "Vanilla internal support/collision query counts and contact caching remain unverified."
+    "No paired whole CPU measurement; shadow recomputes original predicates and adds diagnostics.",
+    "One independent live8 run, not exhaustive hit/death or native reentry coverage.",
+    "Observer expected64/actual8 readiness exception crosschecked and documented; next eight seed corrected.",
+    "64-agent performance and current visual smoothness not verified;20ms p95 remains target."
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/lazy-crowd-eligibility-local-20261112.md",
-      "sha256": "ca0375ff9ff34e227fe42ced80106ab6f64ee7c7bb741fbd7f011102afa3899e"
+      "report": "reports/operations/lazy-crowd-eligibility-live8-20261112.md",
+      "sha256": "5880c52d25d848b3b0128b71c90eb243f39e15b0c0e8432a11eabfbfecf96e66"
     },
     {
-      "data": "data/lazy-crowd-eligibility-local-20261112.json",
-      "sha256": "e93748289fc9fcf358f444c1b57fbf5f9420966429c48b2791bbf7577c657716"
+      "data": "data/lazy-crowd-eligibility-live8-20261112.json",
+      "sha256": "3dda7dc0dce61db851361386e095b26ffdad747eab8a2a4a5e13cc3e967db1e6"
     },
     {
-      "evidence": "data/lazy-crowd-eligibility-local-20261112-evidence.txt",
-      "sha256": "2c7d40ea1a072d2e7bd6cf97d2e86d6271c91ce0afc945e68ab803645acdab08"
+      "evidence": "data/lazy-crowd-eligibility-live8-20261112-evidence.txt",
+      "sha256": "edaf1b3a91f371fd40508d8c639927e0997c4f325ebf1fa1894eb6eba79d9bf5"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-11-12T11:56:37.213Z",
-    "staleAfter": "2026-11-13T11:56:37.213Z",
+    "sourceUpdatedAt": "2026-11-12T12:08:11.654Z",
+    "staleAfter": "2026-11-13T12:08:11.654Z",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
-    "consumerRule": "Local method screening only; no live8/64 or whole CPU acceptance."
+    "consumerRule": "Live8 predicate shadow only; not paired performance or final acceptance."
   },
   "updateState": {
-    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T11:56:37.213Z",
+    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T12:08:11.654Z",
     "lastUpdateFailure": null
   },
   "links": {
@@ -15434,56 +15457,98 @@
         "pairedBlocksPerLayout": 3,
         "wholeCpuPairs": 0
       }
+    },
+    {
+      "id": "lazy-crowd-eligibility-live8-20261112",
+      "title": "Live8 lazy predicate shadow:57428 checks,0 mismatch,8/8 terminal",
+      "track": "live-shadow",
+      "sourceRunId": [
+        "LAZY-ELIGIBILITY-eight-shadow1"
+      ],
+      "buildId": "single224-13mods-lazy-shadow-26f4dca03252ac77",
+      "verificationStatus": {
+        "diagnosisSucceeded": true,
+        "experimentSuccess": true,
+        "finalAccepted": false,
+        "functional": "LIVE8_90S_TERMINAL8of8_PREDICATE_SHADOW_MATCH_NOT_PAIRED_REGRESSION",
+        "visual": "NOT_MEASURED",
+        "performance": "NOT_MEASURED_SHADOW_INSTRUMENTATION",
+        "adopted": false
+      },
+      "conditions": "Live8 single render+receiver;90game seconds fixed ground/low/high; shadow compares cached vs original predicates per eligible pair; no CPU acceptance.",
+      "evidenceReferences": [
+        {
+          "report": "reports/operations/lazy-crowd-eligibility-live8-20261112.md",
+          "sha256": "5880c52d25d848b3b0128b71c90eb243f39e15b0c0e8432a11eabfbfecf96e66"
+        },
+        {
+          "data": "data/lazy-crowd-eligibility-live8-20261112.json",
+          "sha256": "3dda7dc0dce61db851361386e095b26ffdad747eab8a2a4a5e13cc3e967db1e6"
+        },
+        {
+          "evidence": "data/lazy-crowd-eligibility-live8-20261112-evidence.txt",
+          "sha256": "edaf1b3a91f371fd40508d8c639927e0997c4f325ebf1fa1894eb6eba79d9bf5"
+        }
+      ],
+      "blockers": [
+        "No paired whole CPU measurement; shadow recomputes original predicates and adds diagnostics.",
+        "One independent live8 run, not exhaustive hit/death or native reentry coverage.",
+        "Observer expected64/actual8 readiness exception crosschecked and documented; next eight seed corrected.",
+        "64-agent performance and current visual smoothness not verified;20ms p95 remains target."
+      ],
+      "replication": {
+        "independentRuns": 1,
+        "performancePairs": 0
+      }
     }
   ],
   "kind": "metrics",
   "latestComparison": {
-    "id": "lazy-crowd-eligibility-local-20261112",
-    "title": "Lazy per-update eligibility local screening: dense/medium pass, sparse overhead contained",
-    "track": "isolated-method",
+    "id": "lazy-crowd-eligibility-live8-20261112",
+    "title": "Live8 lazy predicate shadow:57428 checks,0 mismatch,8/8 terminal",
+    "track": "live-shadow",
     "sourceRunId": [
-      "LAZY-ELIGIBILITY-method1-r2"
+      "LAZY-ELIGIBILITY-eight-shadow1"
     ],
-    "buildId": "single224-13mods-lazy-bfebeccec02c2b38",
+    "buildId": "single224-13mods-lazy-shadow-26f4dca03252ac77",
     "verificationStatus": {
       "diagnosisSucceeded": true,
       "experimentSuccess": true,
       "finalAccepted": false,
-      "functional": "SYNTHETIC_EQUIVALENCE_ONLY_8_64_NOT_RUN",
+      "functional": "LIVE8_90S_TERMINAL8of8_PREDICATE_SHADOW_MATCH_NOT_PAIRED_REGRESSION",
       "visual": "NOT_MEASURED",
-      "performance": "LOCAL_UPDATE_SCREEN_PASS_NO_WHOLE_CPU_COMPARISON",
+      "performance": "NOT_MEASURED_SHADOW_INSTRUMENTATION",
       "adopted": false
     },
-    "conditions": "Synthetic Crowd.Update64 bodies/side;1 process;3 paired1000-update blocks/layout; middle pair reverse order; cache allocation included; no native entities.",
+    "conditions": "Live8 single render+receiver;90game seconds fixed ground/low/high; shadow compares cached vs original predicates per eligible pair; no CPU acceptance.",
     "evidenceReferences": [
       {
-        "report": "reports/operations/lazy-crowd-eligibility-local-20261112.md",
-        "sha256": "ca0375ff9ff34e227fe42ced80106ab6f64ee7c7bb741fbd7f011102afa3899e"
+        "report": "reports/operations/lazy-crowd-eligibility-live8-20261112.md",
+        "sha256": "5880c52d25d848b3b0128b71c90eb243f39e15b0c0e8432a11eabfbfecf96e66"
       },
       {
-        "data": "data/lazy-crowd-eligibility-local-20261112.json",
-        "sha256": "e93748289fc9fcf358f444c1b57fbf5f9420966429c48b2791bbf7577c657716"
+        "data": "data/lazy-crowd-eligibility-live8-20261112.json",
+        "sha256": "3dda7dc0dce61db851361386e095b26ffdad747eab8a2a4a5e13cc3e967db1e6"
       },
       {
-        "evidence": "data/lazy-crowd-eligibility-local-20261112-evidence.txt",
-        "sha256": "2c7d40ea1a072d2e7bd6cf97d2e86d6271c91ce0afc945e68ab803645acdab08"
+        "evidence": "data/lazy-crowd-eligibility-live8-20261112-evidence.txt",
+        "sha256": "edaf1b3a91f371fd40508d8c639927e0997c4f325ebf1fa1894eb6eba79d9bf5"
       }
     ],
     "blockers": [
-      "One independent process; three paired blocks per layout are not independent runs.",
-      "No actual native entities, physics-query reduction, 8/64 gameplay, Present or whole CPU saving measured.",
-      "Medium condition first block has large variation; all blocks retained, no selected best-run claim.",
-      "Vanilla internal support/collision query counts and contact caching remain unverified."
+      "No paired whole CPU measurement; shadow recomputes original predicates and adds diagnostics.",
+      "One independent live8 run, not exhaustive hit/death or native reentry coverage.",
+      "Observer expected64/actual8 readiness exception crosschecked and documented; next eight seed corrected.",
+      "64-agent performance and current visual smoothness not verified;20ms p95 remains target."
     ],
     "replication": {
-      "independentProcesses": 1,
-      "pairedBlocksPerLayout": 3,
-      "wholeCpuPairs": 0
+      "independentRuns": 1,
+      "performancePairs": 0
     }
   },
   "latestReview": {
-    "sourceRunId": "LAZY-ELIGIBILITY-method1-r2",
-    "status": "LOCAL_METHOD_SCREEN_PASS_NOT_GAMEPLAY_ACCEPTANCE",
-    "next": "8-agent opt-in shadow/ON then CPU decision"
+    "sourceRunId": "LAZY-ELIGIBILITY-eight-shadow1",
+    "status": "LIVE8_PREDICATE_SHADOW_DIAGNOSIS_NOT_FULL_REGRESSION",
+    "next": "Shadow-OFF matched whole CPU comparison"
   }
 }

@@ -1,0 +1,93 @@
+{
+  "sourceRunId": "LAZY-ELIGIBILITY-eight-shadow1",
+  "selection": "all live shadow summary lines and terminal outcomes; owned candidate source only; raw game log/player identities excluded",
+  "rawEvidence": [
+    {
+      "fileId": "contract-preparation.json",
+      "bytes": 10247,
+      "sha256": "578ef09f2e1b01879474051c8c8fd170abcb1270718a5ffc2e1d252dad44d4c1"
+    },
+    {
+      "fileId": "contract.json",
+      "bytes": 10930,
+      "sha256": "1960c6462e90d7d840f7b17b05cdafe77cd34b42decfdb81be77d1871e8f2191"
+    },
+    {
+      "fileId": "analysis.json",
+      "bytes": 1279,
+      "sha256": "9f401692b248ff6c6d99556f60566a867f53107acd23aac9d7a1ca26c6c658cc"
+    },
+    {
+      "fileId": "start-receipt.json",
+      "bytes": 428,
+      "sha256": "58b27937d94cb26aca612ab4371ddc6a01a38f42817fb3cde8e10dd6b80df5db"
+    },
+    {
+      "fileId": "gate-launch.json",
+      "bytes": 69,
+      "sha256": "581086a0175a93a3c1f36be2d0ff1b1663109ce2d52c54403ef74dece291cd11"
+    },
+    {
+      "fileId": "server-launch.json",
+      "bytes": 309,
+      "sha256": "d9126905122c9b3ba0312213102e03aeec40308bd517f88f33c1d245fb653a2c"
+    },
+    {
+      "fileId": "server-terminal.json",
+      "bytes": 170,
+      "sha256": "f663bbbfcab78d31ae683ea5b586b5c0b19f0cb06fdd87f82ef415ed6a193ae1"
+    },
+    {
+      "fileId": "client-closed.json",
+      "bytes": 70,
+      "sha256": "f24e2b24604a08db759aa96229e11f23c1a5563f066e8d52b4cd648314981271"
+    },
+    {
+      "fileId": "init.c",
+      "bytes": 20414,
+      "sha256": "26f4dca03252ac77bf4bc58ecf501328a67fb091d2ef5cc128ce52a9c02f3ec4"
+    },
+    {
+      "fileId": "gameplay-eight.tsv",
+      "bytes": 808969,
+      "sha256": "58b62bb69a0e88cd1b00ec403e6d39b5c7ea82706ec8d697b398b1edec48dce1"
+    },
+    {
+      "fileId": "mixed-hosts.tsv",
+      "bytes": 42656,
+      "sha256": "2a4c9c70c5bb45bf9e992e5acfd037850a8b303af9e40a1f4806043803fdebec"
+    },
+    {
+      "fileId": "terminal-state.tsv",
+      "bytes": 1393,
+      "sha256": "3b4e5b796a535171b48dde4d7a372a0bf377be5768e9725489dbe2c412efe019"
+    },
+    {
+      "fileId": "milestones.tsv",
+      "bytes": 3473,
+      "sha256": "d711c0bec622809049c1c65e9594abe3cc9868d3ed6c0218ad75d9a1133a560d"
+    },
+    {
+      "fileId": "part-command-clock.tsv",
+      "bytes": 29223,
+      "sha256": "5ac7c03cfaf724a98397ed462b54aa903e475e9109aa080e2d7607994ecc8de5"
+    },
+    {
+      "fileId": "server-frame.tsv",
+      "bytes": 210780,
+      "sha256": "01535ed3500354e3226c109575a4cfa4187ac602872d2833fe8448798ff5727e"
+    },
+    {
+      "fileId": "script_2026-11-12_21-01-38.log",
+      "bytes": 49872,
+      "sha256": "f4ba60e47b45162287b650515a407de3226c07b7dcd440e50ea303577fbd9492"
+    }
+  ],
+  "candidateSource": "class NFLazyEligibilityCrowd: DGBNativeCrowd\n{\n    ref array<int> NFLStamps={};ref array<bool> NFLValues={};\n    int NFLGeneration;int NFLComputed;bool NFLActive;int NFLLiveMismatches;int NFLLiveChecks;int NFLLiveCalls;int NFLLiveComputed;\n    void NFLColdStorage(){NFLStamps.Clear();NFLValues.Clear();NFLGeneration=0;NFLActive=false;}\n    override void Update(float timeslice)\n    {\n        NFLLiveCalls++;NFLComputed=0;\n        if(NFLActive){NFLActive=false;super.Update(timeslice);return;}\n        if(!Director.OpenTraversal){super.Update(timeslice);return;}\n        int count=Director.Bodies.Count();\n        if(NFLStamps.Count()!=count){NFLStamps.Clear();NFLStamps.Resize(count);NFLValues.Resize(count);}\n        if(NFLGeneration>=2147483646){NFLStamps.Clear();NFLStamps.Resize(count);NFLGeneration=1;}\n        else NFLGeneration++;\n        NFLActive=true;super.Update(timeslice);NFLActive=false;NFLLiveComputed+=NFLComputed;\n    }\n    override void AccumulatePair(int a,int b)\n    {\n        if(!NFLActive){super.AccumulatePair(a,b);return;}\n        PairCandidates++;\n        DGBNativeGroundBody first=Director.Bodies[a];DGBNativeGroundBody second=Director.Bodies[b];\n        if(first.Agent.State==\"DEAD\" || second.Agent.State==\"DEAD\")return;\n        if(Math.AbsFloat(first.Agent.Position[1] - second.Agent.Position[1])>=1)return;\n        if(NFLStamps[a]!=NFLGeneration)\n        {NFLValues[a]=Movable(first) && !first.EntryPressurePriority;NFLStamps[a]=NFLGeneration;NFLComputed++;}\n        if(NFLStamps[b]!=NFLGeneration)\n        {NFLValues[b]=Movable(second) && !second.EntryPressurePriority;NFLStamps[b]=NFLGeneration;NFLComputed++;}\n        bool canA=NFLValues[a];bool canB=NFLValues[b];\n        bool directA=Movable(first) && !first.EntryPressurePriority;\n        bool directB=Movable(second) && !second.EntryPressurePriority;\n        NFLLiveChecks+=2;\n        if(canA!=directA || canB!=directB)\n        {NFLLiveMismatches++;Print(\"NF_LAZY_SHADOW_MISMATCH pair=\"+a+\":\"+b);canA=directA;canB=directB;}\n\n        if(!canA && !canB)return;\n        vector relative=first.NativeVelocity+first.ContactVelocity - second.NativeVelocity - second.ContactVelocity;\n        vector force=ContactForce(first.Agent.Position,second.Agent.Position,relative,a*131+b);\n        if(force.Length()<0.00001)return;\n        ContactPairs++;\n        if(canA)first.ContactForce+=force;\n        if(canB)second.ContactForce-=force;\n    }\n}\n\n",
+  "limits": [
+    "No paired CPU trial",
+    "No recorded visual assessment",
+    "Observed gameplay only, not exhaustive damage/death/reentry coverage",
+    "Observer expected-count mismatch documented; next seed corrected"
+  ]
+}
