@@ -1,116 +1,152 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-12T08:47:30.687Z",
-  "sourceRunId": "OWNER-eight1-r3-attribution",
-  "buildId": "fe72db239825ea216766727847c2ff96f7e4a245243945ea327a026730e6ba1a",
+  "generatedAt": "2026-11-12T09:24:30.955Z",
+  "sourceRunId": "NATIVE-MOVE-one-capability1-r4",
+  "buildId": "5d7184ef91b44ff4a4a5ffb0ccca918cf20b46a75324d24af78cabc49f651db8",
   "verificationStatus": {
     "diagnosisSucceeded": true,
-    "experimentSuccess": false,
+    "experimentSuccess": true,
     "finalAccepted": false,
-    "functional": "PARTIAL_5_OF_8_VALID_TERMINAL",
+    "functional": "ONE_ANIMAL_FLAT_CAPABILITY_ONLY_NOT_FULL_NPC_REGRESSION",
     "visual": "NOT_MEASURED",
-    "performance": "ATTRIBUTION_ONLY_NOT_OPTIMIZATION",
+    "performance": "NOT_MEASURED",
     "adopted": false
   },
   "metrics": {
-    "logicalAgents": 8,
-    "renderHosts": 8,
-    "damageReceivers": 8,
+    "scope": "one current custom Animal host, no GroundBody or damage receiver",
+    "logicalAgents": null,
+    "customAnimalHosts": 1,
+    "renderHosts": 1,
+    "damageReceivers": 0,
     "independentPairs": 0,
     "independentTrials": 1,
-    "condition": "revision3-attribution-ON-only",
-    "windowGameSeconds": [
-      40.012,
-      69.004
-    ],
-    "solverCalls": 6893,
-    "scopeShares": [
+    "trialGameSeconds": 20,
+    "observedRows": 40,
+    "nativeMoveActivations": 1,
+    "preAnimCallbacks": 404,
+    "prePhysCallbacks": 404,
+    "requestedStateVariable": 11,
+    "allCapabilityGatesPassed": true,
+    "stages": [
       {
-        "scope": "DriveGround",
-        "calls": 2377,
-        "callShare": 0.34484259393587696,
-        "elapsedShare": 0.34018747870460614
+        "stage": "initial-idle",
+        "samples": 10,
+        "window": [
+          0.0019989,
+          4.586
+        ],
+        "intent": 0,
+        "speedInputMin": 0,
+        "speedInputMax": 0,
+        "horizontalNetMetres": 0.06715558789871529,
+        "horizontalPathMetres": 0.47665419619123534,
+        "preAnimDelta": 97,
+        "animDtDelta": 4.85
       },
       {
-        "scope": "Displace",
-        "calls": 1998,
-        "callShare": 0.2898592775279269,
-        "elapsedShare": 0.23963039710208991
+        "stage": "walk-input",
+        "samples": 12,
+        "window": [
+          5.1,
+          10.726
+        ],
+        "intent": 1,
+        "speedInputMin": 1,
+        "speedInputMax": 1,
+        "horizontalNetMetres": 11.57655237888905,
+        "horizontalPathMetres": 11.66427718428671,
+        "preAnimDelta": 113,
+        "animDtDelta": 5.65
       },
       {
-        "scope": "other-FOLLOW",
-        "calls": 1062,
-        "callShare": 0.1540693457130422,
-        "elapsedShare": 0.15908748742086037
+        "stage": "run-input",
+        "samples": 12,
+        "window": [
+          11.246,
+          16.882
+        ],
+        "intent": 2,
+        "speedInputMin": 2,
+        "speedInputMax": 2,
+        "horizontalNetMetres": 27.63871011175697,
+        "horizontalPathMetres": 27.647703411177194,
+        "preAnimDelta": 113,
+        "animDtDelta": 5.649999999999999
       },
       {
-        "scope": "other-MOTION",
-        "calls": 647,
-        "callShare": 0.09386333961990426,
-        "elapsedShare": 0.09762659937785839
-      },
-      {
-        "scope": "other-EGRESS",
-        "calls": 15,
-        "callShare": 0.0021761207021616133,
-        "elapsedShare": 0.002214468071618949
-      },
-      {
-        "scope": "other-FALL",
-        "calls": 195,
-        "callShare": 0.02828956912810097,
-        "elapsedShare": 0.035563497406282146
-      },
-      {
-        "scope": "other-LAND-SETTLE",
-        "calls": 599,
-        "callShare": 0.08689975337298708,
-        "elapsedShare": 0.12569007191668408
+        "stage": "final-idle",
+        "samples": 6,
+        "window": [
+          17.382,
+          19.925
+        ],
+        "intent": 0,
+        "speedInputMin": 0,
+        "speedInputMax": 0,
+        "horizontalNetMetres": 0.09805731012556537,
+        "horizontalPathMetres": 0.21176904221255127,
+        "preAnimDelta": 51,
+        "animDtDelta": 2.5500000000000007
       }
     ],
-    "cpuMsPerWallSecond": {
-      "n": 30,
-      "mean": 163.95752653507793,
-      "p50": 173.60673612080234,
-      "p95": 235.3236156790168,
-      "p99": 287.87219533427105
-    },
-    "validTerminal": 5,
-    "alive": 8,
-    "acquiredMoved": 8,
+    "observedHeading": [
+      {
+        "stage": "walk",
+        "configuredHeading": 0,
+        "seconds": 5.626000000000001,
+        "positionDelta": [
+          -0.23242099999970378,
+          -0.008239000000003216,
+          -11.574218999998266
+        ],
+        "horizontalMeanNetMetresPerGameSecond": 2.0576879450567094
+      },
+      {
+        "stage": "run",
+        "configuredHeading": 0,
+        "seconds": 5.636000000000001,
+        "positionDelta": [
+          0.04589899999973568,
+          -0.0045170000000211985,
+          -27.638671999999133
+        ],
+        "horizontalMeanNetMetresPerGameSecond": 4.903958501021463
+      }
+    ],
+    "cpuMsPerWallSecond": null,
     "presentP95Ms": null,
-    "escalatedTo64": false
+    "fullNpcAcceptance": false
   },
   "blockers": [
-    "No whole CPU saving established; caller elapsed shares are not CPU self-time or saving ratios",
-    "Revision2 emitted every frame, +24.934% mean CPU with workload differences; excluded as clean overhead estimate",
-    "Revision3 is one ON-only diagnostic, not a new OFF/ON pair or repeated performance proof",
-    "5/8 valid terminal at90-second budget; full functional acceptance incomplete",
-    "Vanilla native query totals,64/200 current ownership, allocation/GC and visible quality unmeasured"
+    "CPU savings and native query count/support/collision equivalence unmeasured",
+    "One flat custom animal, not current full NPC with pursuit, combat and receiver",
+    "Native/script climb/fall/landing handoff and contact history/rollback preservation unverified",
+    "Heading0 movement primarily negativeZ, input1/2 not1/2m/s; idle root drift remains",
+    "Visual smoothness, repeated performance and8/64 gameplay acceptance incomplete"
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/solver-caller-ownership-eight-20261112.md",
-      "sha256": "5db3293e2d8e567a2e6e3f1f4feb2bc8f40845fd24f88fcad974089b428becfa"
+      "report": "reports/operations/native-animal-move-one-capability-20261112.md",
+      "sha256": "3da9c9e07ed2cb228e1d0cc135b95ae01e2a15d89886fe1825481f71f660d8aa"
     },
     {
-      "evidence": "data/solver-caller-ownership-eight-20261112-evidence.txt",
-      "sha256": "106d8849053edaee6acf5104329091a54065b7e0f0779e903b2a35b12a5568ec"
+      "evidence": "data/native-animal-move-one-20261112-evidence.txt",
+      "sha256": "f29426cbe688f32a4c9e1c51fe514bc1687d95d09f2bd534ed37b89dd831ee87"
     },
     {
-      "data": "data/solver-caller-ownership-eight-20261112.json",
-      "sha256": "6f9a245da05d5e2c61938395e09b59e9a673d09bf84771ee7e348b0a43e95939"
+      "data": "data/native-animal-move-one-20261112.json",
+      "sha256": "1764e7d0396d41935e8b6783198a16d376fb6537e773efe1a842994db90591f9"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-11-12T08:43:37.3935060+00:00",
-    "staleAfter": "2026-11-13T08:43:37.393Z",
+    "sourceUpdatedAt": "2026-11-12T09:17:21.0812440+00:00",
+    "staleAfter": "2026-11-13T09:17:21.081Z",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
-    "consumerRule": "8-agent caller ownership is not whole CPU attribution; do not combine with old64/200 conditions"
+    "consumerRule": "Capability success is not optimization or full NPC gameplay acceptance."
   },
   "updateState": {
-    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T08:47:30.687Z",
+    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T09:24:30.955Z",
     "lastUpdateFailure": null
   }
 }

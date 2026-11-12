@@ -1,49 +1,46 @@
-# 이동·밀침 솔버 귀속 진단 — 기존64이력 재사용·현재8범위 확인
+# 현재 커스텀 모델의 동물 네이티브 Move 연결 — 1개체 능력 진단
 
 ## 1. 작업 목표
-바닐라의Ray/Sweep 등항목별비교제안을기존연구와대조하고, 커스텀에서이동과밀침이호출하는접촉솔버의범위를분리한다. 정상밀침·낙하·착지·FOLLOW·재등반을유지한다. 이번은진단이며CPU최적화성과가아니다.
+기존연구를재사용하고검사를무작정줄이는대신현재AnimalBase 커스텀모델에서네이티브Move명령을실행할수있는지확인한다. 원본NPC파이프라인을보존한단독능력시험이다. CPU최적화·충돌동등성·전체플레이가능NPC의구현성공으로확대하지않는다.
 
 ## 2. 실제 수행
-기존바닐라200 CPU360행에는게임/네이티브시계연결값이모두없었다. 활성180~200구간의CPU를임의추정하지않았다. 기존Move정적분석이확인한지속scalar는입력필터이며지지/contact캐시가아니다.
-현재13원본PBO의해시와packed script메서드를확인했다. 기존DriveAttribution은ID0~63범위이며현행200로그에는소유자별솔버경과시간이없다. 다만추가이력검토에서과거64밀침솔버비중 41.6978%가이미계산됐음을확인했다. 이를새발견으로세지않는다. 이번의신규범위는현행8개체의경과귀속과기타호출상태구분이다.
-격리default-OFF진단에서DriveGround/Displace의문맥을붙이고SolveContacts는super로그대로실행했다. 물리질의삭제·캐시강제·시계보정·새보간없음.
-첫빌드는FootRays라는잘못된필드명으로서버World컴파일실패,클라이언트실행전제외했다. revision2는ContactFootRays로고쳐서명/컴파일후OFF→ON1쌍을수행했다. 그러나의도한1초게이트가작동하지않아ON은매프레임출력됐다. 완전4499스냅샷·8,614,356바이트,평균CPU 24.934%증가관찰. 궤적차이와계측부담이섞였으므로순수오버헤드추정/수용시험에서제외한다.시간게이트실패원인은미확정이다.
-revision3는매50Director.Update콜백마다집계하도록명시하고기타호출을호출당phase로분류했다. 같은90게임초8개체씬에서ON단독1회를검증했다. 새OFF/ON쌍이아니다. 상속템플릿의independentPairsPlanned=1과3scope메타데이터는protocol-clarification.json에서실제1조건·0쌍·9scope로명시정정했다. 동결계약/실패기록은덮어쓰지않았다.
+Combined-Proposal은중간Contacts/lift와부분성공rollback계약때문에기각된자료를확인했다. Scratch의국소1.5~2.5%미달,회전산술65536좌표동등/국소메서드통과·전체효과미측정,1mm범위후보미수용,33ms철회를재사용했다. 같은시험을반복하지않았다.
+설치SDK의DayZAnimal.StartCommand_Move,속도·heading입력,AnimCommandBase.GetEntity/PreAnim_SetInt와MoveModdable선언을읽었다. 현재13PBO의구성과설정을대조해Animal_NFWeighted224Full→Animal_NFPaletteFull_reference0의graph/instance연결을확인했다.
+별도PBO의한개체NMPEnabled표식에서만기존HandleNativeCommand를설치기본handler에넘겼다. MoveModdable.PreAnimUpdate에서기존RequestedState를0/1/2로전달하고물리·애니메이션콜백을계수했다. 현재전체NPC의DriveGround/Displace/지지·충돌코드는변경하지않았다.
+초기World/미션컴파일은기존modded메서드의인자명을다르게쓴오류로실패했다. 원래인자명으로고친별도revision2 PBO를서명/검증했다. revision3는접속/컴파일통과후준비이벤트가안들어와NPC생성없이300초예산이끝났다. 화면에서플레이어접속은확인했으나NPC동작으로세지않았다. 클라이언트정상닫기·서버소유자확인후강제정리영수증을남겼다.
+revision4는기존씬처럼CreateCharacter에서Visitor를연결해같은PBO로20게임초능력시험을완료했다. 원래14클립인스턴스를사용하며실행한요청은idle/walk/run뿐이다. 새ETW·영상·큰덤프·성능벤치는없다.
 
 ## 3. 측정 결과
-revision3의완전72행스냅샷 91개(8ID×9scope),간격평균/중앙/p95 1.000078/1.002500/1.009000게임초. 모든스냅샷에서소유자별합계=기존ContactSolves,불일치0.
-구간 40.012~69.004게임초:
-| 호출 경로 | 솔버 호출 | 호출 비중 | 솔버 내부 경과 비중 |
+현재단일렌더Animal_NFWeighted224Full1개,별도피해수신체0·GroundBody미연결·추적AI미연결인능력프로브다. 기존1논리NPC+렌더+수신체의비용비교대상이아니다.
+20게임초동안40행,관찰창 0.001999~19.925초. 네이티브Move의OnActivate1회,PreAnim/PrePhys각404회,RequestedState변수11바인딩. script명령은관찰행모두없음(로그0),생존1/1. handler raw command값은초기−1과51이며SDK enum의기본정수순번으로추측해매핑하지않는다. MoveModdable의실제콜백을관찰한것을근거로한다.
+runtime graph=dg_lab_inputs/native_traversal.agr, instance=dg_lab_inputs/native_combat.asi.
+| 단계 | 관찰 구간(게임초) | 수평 순이동(m) | 수평 경로 길이(m) |
 |---|---:|---:|---:|
-| DriveGround | 2377 | 34.48% | 34.02% |
-| Displace | 1998 | 28.99% | 23.96% |
-| other-FOLLOW | 1062 | 15.41% | 15.91% |
-| other-MOTION | 647 | 9.39% | 9.76% |
-| other-EGRESS | 15 | 0.22% | 0.22% |
-| other-FALL | 195 | 2.83% | 3.56% |
-| other-LAND-SETTLE | 599 | 8.69% | 12.57% |
+| initial-idle | 0.002~4.586 | 0.0672 | 0.4767 |
+| walk-input | 5.100~10.726 | 11.5766 | 11.6643 |
+| run-input | 11.246~16.882 | 27.6387 | 27.6477 |
+| final-idle | 17.382~19.925 | 0.0981 | 0.2118 |
 
-합계 6893솔버,발Ray 68930,주관절Sweep 27541. Displace시도 2001,수용 1945. 각호출은초기반환가능하므로Displace시도수×3을별도Sweep총수로대체하지않는다. 앞단3높이Sweep/Floor는이번wrapper로직접계수하지않았다.
-revision3서버CPU30구간표본,단위ms/벽시계초:평균 163.958,p50 173.607,p95 235.324,p99 287.872. ON단독값이며다른revision의OFF와성능쌍을만들지않는다. CPU표본30개는독립30회가아니다.
-전원8생존·단일렌더+수신체·인식후2m이동확인.90초종료유효종결5/8,EGRESS1/MOTION1/후속표식미완료1. 스크립트오류0. 전환중예산종료를영구정체로단정하지않지만기능회귀통과아니다. 실제화면/Present/GPU/RTT/GC비용미측정.
+속도입력1/2의관찰구간수평순이동평균은약2.058/4.904m/게임초다. 입력값을m/s로가정하지않는다. heading입력0에서주이동방향은−Z였으므로현재커스텀heading/표시방향과의보정이남았다. idle에서도작은root이동이있어완전정지계약을통과했다고하지않는다.
+CPU·Present p50/p95/p99·물리query수·self-time·실제동영상부드러움미측정. 콜백404회는렌더표시프레임404회나시각품질통과가아니다.
 
 ## 4. 원인 분석
-확인: 현재8조건의솔버호출을지상34.48%/밀침28.99%/기타상태36.53%로구분했다. phase는호출당상태이며함수self-time명칭이아니다. 주4Sweep만지우면모든밀침검사가사라지는구조도아니다.
-경과비중은솔버내부TickCount중첩경과의비중이며전체서버CPU의절감가능비율이아니다. DriveGround/Displace/solver값을더하면중복된다. 이전64의밀침호출41.7%와이번8의29.0%는개체수·호스트·경로·구간이달라서로반증하거나합산하지않는다.
-미확인: 바닐라native query총수/contact캐시,현재64/200소유자별self-time,안전한검사생략조건,할당량·GC,실제시각품질. 새계측자료만으로안전한큰전체CPU절감후보는확정하지못했다.
-반증/미수용:검사감축률=전체CPU감소율이라는해석,기존timer제거64의미수용후보,주4Sweep감축8의평균0.815%만으로성공선언. 진단출력과경과읽기도비용을발생시키므로계측PBO를운영최적화로채택하지않는다.
+확인: 선언만있던동물용Move의script hook이현재커스텀Animal에서실행되고,기존그래프RequestedState입력과실제위치이동이연결된다. 따라서현재모델에서는nativeMove를전혀사용할수없다는전제는성립하지않는다.
+추정: 향후평지FOLLOW의이동·접촉소유권을native로넘기면일부script DriveGround/primary query작업을대체할가능성이있다. native내부에같은또는다른검사가추가되므로전체비용이낮아진다는증거는아니다.
+미확인: 네이티브지지/contact생산자·캐시·형상·검사빈도·비용,정상밀침/낙하/착지와동등성,피격·공격·사망/수신체동기화,script/native전환시루트·lift·Contacts·graph시계보존,64/200비용과실제시각품질. 이번프로브는이문제들을해결하지않았다.
+새방향은작은상수튜닝이아닌이동권한변경후보다. 기존기능이있는본체에바로켜지않으며단독성공을8/64기능통과로바꾸지않는다.
 
 ## 5. 검증 수준
-진단소스/서명/packed바이트/서버·클라이언트컴파일/솔버귀속합계/출력빈도:진단성공. 소유자관측은새현재8자료,64호출비중은기존결과재사용. 전체기능회귀·반복성능검증·시각품질·운영최적화·최종수용미완료.20ms Present p95는목표다.
+SDK/packed설정조회·서명·컴파일·현재모델nativeMove콜백/그래프입력/실제이동:진단성공. 하이브리드구현·추적/등반/낙하/피격/사망회귀·반복성능·시각·최종수용:미실행.20ms p95는목표다. 앞선컴파일실패와시작실패는독립성능반복으로세지않는다.
 
 ## 6. 변경 사항
-기존rate100-isolation-20261112/owner-attribution1의격리revision1/2/3자료만추가했다. 원본13PBO·모델·게임코드·운영서버·원시기록·개인키보존. revision3 PBO SHA256 fe72db239825ea216766727847c2ff96f7e4a245243945ea327a026730e6ba1a. 서명·서명검증성공,packed source바이트일치.
-완료revision2두조건/revision3단독의서버retained exit=-1,강제종료없음.클라이언트정상닫기성공.서버exit0로보고하지않는다. 첫컴파일실패서버강제종료는별도실패영수증에명시했다. 현재게임·서버·수집프로세스종료확인.
+기존rate100-isolation-20261112 아래SDK/packedconfig검토와native-animal-move1의격리소스·미션·계약·영수증·40행원시/분석만추가했다. 원본13PBO·그래프·모델·게임·운영서버·개인키·기존기능/실패증거보존. 사용PBO SHA256 5d7184ef91b44ff4a4a5ffb0ccca918cf20b46a75324d24af78cabc49f651db8,서명·서명검증성공,packed script바이트일치. revision4는revision2PBO재사용·미션만수정했다.
+완료시험서버retained exit−1/강제종료없음,클라이언트정상닫기성공. 서버exit0로보고하지않는다. 이전컴파일/준비실패의강제정리는별도영수증으로구분했다. 현재모든시험게임·서버·수집프로세스종료확인.
 
 ## 7. 원시 증거
-OWNER-eight1-control은컴파일실패제외. OWNER-eight1-r2-control/-attribution은출력과다문제를포함한1쌍. OWNER-eight1-r3-attribution은수정후ON단독진단. 반복독립쌍으로재분류하지않는다.
-동일기존프로젝트폴더의loaded-source-audit.json,각revision의contract/build/signature/analysis,revision3 protocol-clarification,server-cpu.csv/gameplay-eight.tsv/mixed-hosts.tsv/terminal-state.tsv/owner-attribution.tsv/종료영수증에연결한다. 과거contact-cadence-feasibility1.json도기존SHA와대조한다. 공개는선정코드·대표행·집계·해시만제공하며전체로그·영상·로컬절대경로·프로세스정보·키·게임자산제외.
+성공능력실행ID NATIVE-MOVE-one-capability1-r4. native-animal-move-feasibility.json의SDK5엔트리/해시, native-animal-packed-config-review.json의설정체인,각revision의계약·소스·서명·실패종료영수증과revision4 native-move-probe.tsv40행/analysis.json/heading-observation.json/server-terminal/client-closed를연결한다. 13원본PBO·client/server해시를실행전에대조했다.
+공개는선정원문·40행관측·집계와해시이며전체설치자산·SDK PBO·로컬절대경로·프로세스정보·키는노출하지않는다. 직접화면관찰은revision3의접속확인에한정하며성공revision4애니메이션시각평가가아니다.
 
 ## 8. 잔여 문제
-추가바닐라실행이나64회귀를자동시작하지않는다. 다음은기존64 ground-progress/DriveAttribution과현재분류를연결해실제호출조건을대조하는단일소스검토다. 이미알려진밀침호출비중을다시측정하는시험은반복하지않는다. 후보선정은경로별검사계약과기존Combined-Proposal/1mm/33ms철회/SupportFast/Scratch결과를함께봐야한다.
-큰절감을안전하게만들수있는국소조건이아직입증되지않았음을명시한다. 공통종결미완료는별도결함으로유지하고비용연구를기능복구로전환하지않는다. 애니메이션의이전사용자시각확인과현재미측정화면은분리하며64이상기능·시각·성능수용은남았다.
+다음단일산출물은native지상↔script등반/낙하의권한전환계약이다. 실제root/heading·좌표커밋·중간접촉이력·minimumLift·부분실패·피격중단·수신체·graph진행률을누가소유하는지명시하고,기존계약을보존하지못하면전체NPC이식으로확대하지않는다.
+현재사용자가확인한애니메이션경로와기능을보존한다. 원래전체Drive/접촉비용최적화의목표를유지하되이번능력시험을CPU절감성과로보고하지않는다. 다른nativeproxy/엔진결합/대규모LOD설계로자동확대하지않으며,안전한전환후보가있을때만소수개체비교후8→64반복으로간다.

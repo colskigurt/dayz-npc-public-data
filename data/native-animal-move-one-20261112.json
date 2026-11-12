@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "sourceRunId": "NATIVE-MOVE-one-capability1-r4",
+  "verificationStatus": "CAPABILITY_ONLY_NOT_OPTIMIZATION",
+  "samples": 40,
+  "windowGameSeconds": [
+    0.0019989,
+    19.925
+  ],
+  "gates": {
+    "handlerObserved": true,
+    "nativeMoveHookObserved": true,
+    "requestedVariableBound": true,
+    "noScriptCommandObserved": true,
+    "allObservedAlive": true,
+    "walkInputMovedOverHalfMetre": true,
+    "runInputMovedOverHalfMetre": true
+  },
+  "maxActivations": 1,
+  "maxPreAnim": 404,
+  "maxPrePhys": 404,
+  "variable": 11,
+  "commandIds": [
+    -1,
+    51
+  ],
+  "stages": [
+    {
+      "stage": "initial-idle",
+      "samples": 10,
+      "window": [
+        0.0019989,
+        4.586
+      ],
+      "intent": 0,
+      "speedInputMin": 0.0,
+      "speedInputMax": 0.0,
+      "horizontalNetMetres": 0.06715558789871529,
+      "horizontalPathMetres": 0.47665419619123534,
+      "preAnimDelta": 97,
+      "animDtDelta": 4.85
+    },
+    {
+      "stage": "walk-input",
+      "samples": 12,
+      "window": [
+        5.1,
+        10.726
+      ],
+      "intent": 1,
+      "speedInputMin": 1.0,
+      "speedInputMax": 1.0,
+      "horizontalNetMetres": 11.57655237888905,
+      "horizontalPathMetres": 11.66427718428671,
+      "preAnimDelta": 113,
+      "animDtDelta": 5.65
+    },
+    {
+      "stage": "run-input",
+      "samples": 12,
+      "window": [
+        11.246,
+        16.882
+      ],
+      "intent": 2,
+      "speedInputMin": 2.0,
+      "speedInputMax": 2.0,
+      "horizontalNetMetres": 27.63871011175697,
+      "horizontalPathMetres": 27.647703411177194,
+      "preAnimDelta": 113,
+      "animDtDelta": 5.649999999999999
+    },
+    {
+      "stage": "final-idle",
+      "samples": 6,
+      "window": [
+        17.382,
+        19.925
+      ],
+      "intent": 0,
+      "speedInputMin": 0.0,
+      "speedInputMax": 0.0,
+      "horizontalNetMetres": 0.09805731012556537,
+      "horizontalPathMetres": 0.21176904221255127,
+      "preAnimDelta": 51,
+      "animDtDelta": 2.5500000000000007
+    }
+  ],
+  "graphNames": [
+    "dg_lab_inputs/native_traversal.agr"
+  ],
+  "instances": [
+    "dg_lab_inputs/native_combat.asi"
+  ],
+  "scriptErrors": 0,
+  "serverTerminal": {
+    "exitCode": -1,
+    "runId": "NATIVE-MOVE-one-capability1-r4",
+    "endedUtc": "2026-11-12T09:17:21.0812440+00:00",
+    "captureRequested": false,
+    "forced": false
+  },
+  "clientClosed": {
+    "normalCloseSent": true,
+    "forced": false,
+    "closed": true
+  },
+  "cpu": "NOT_MEASURED",
+  "visibleQuality": "NOT_MEASURED",
+  "supportCollisionEquivalence": "NOT_TESTED",
+  "hybridHandoff": "NOT_TESTED",
+  "limitations": [
+    "Single animal flat20-second capability, not pursuit or climb regression.",
+    "Movement input values are not assumed m/s.",
+    "Native Move does not imply equivalent or cheaper support/collision.",
+    "Native graph clock/input timing needs comparison before any adoption."
+  ],
+  "evidence": [
+    {
+      "file": "revision4\\runs\\native-move\\server-profile\\native-move-probe.tsv",
+      "sha256": "568fe6630aebf9f46e4908315baefe089f472e0280916f989d84aa93f4c6093a",
+      "bytes": 7588
+    },
+    {
+      "file": "revision4\\runs\\native-move\\server-terminal.json",
+      "sha256": "c6879427892908cd26f8a83256ac67646889b54369cb75b872171f4392e98361",
+      "bytes": 170
+    },
+    {
+      "file": "revision4\\runs\\native-move\\client-closed.json",
+      "sha256": "f7c177ca0c01c7657636dd378aadac3b8917965917a7a9a4957d8bf1753109ac",
+      "bytes": 70
+    },
+    {
+      "file": "revision4\\contract.json",
+      "sha256": "76ac37530e0d4d1128ccc088fb8ef7bd149c86e270ac129a17405bc2b4636060",
+      "bytes": 11834
+    },
+    {
+      "file": "revision2\\build.json",
+      "sha256": "876353eaa32cd9835ff080f2810634cf47d5e97425ebd59a0790a07463979bdc",
+      "bytes": 252
+    },
+    {
+      "file": "revision2\\signature.log",
+      "sha256": "0d185da223664e35a89816e52265fb28e694512ee4da8e9d611137c2839a740e",
+      "bytes": 193
+    }
+  ]
+}

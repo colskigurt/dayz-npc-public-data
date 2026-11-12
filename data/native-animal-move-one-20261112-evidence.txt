@@ -1,0 +1,140 @@
+Partial public review packet; not a complete project archive.
+
+# 현재 커스텀 모델의 동물 네이티브 Move 연결 — 1개체 능력 진단
+
+## 1. 작업 목표
+기존연구를재사용하고검사를무작정줄이는대신현재AnimalBase 커스텀모델에서네이티브Move명령을실행할수있는지확인한다. 원본NPC파이프라인을보존한단독능력시험이다. CPU최적화·충돌동등성·전체플레이가능NPC의구현성공으로확대하지않는다.
+
+## 2. 실제 수행
+Combined-Proposal은중간Contacts/lift와부분성공rollback계약때문에기각된자료를확인했다. Scratch의국소1.5~2.5%미달,회전산술65536좌표동등/국소메서드통과·전체효과미측정,1mm범위후보미수용,33ms철회를재사용했다. 같은시험을반복하지않았다.
+설치SDK의DayZAnimal.StartCommand_Move,속도·heading입력,AnimCommandBase.GetEntity/PreAnim_SetInt와MoveModdable선언을읽었다. 현재13PBO의구성과설정을대조해Animal_NFWeighted224Full→Animal_NFPaletteFull_reference0의graph/instance연결을확인했다.
+별도PBO의한개체NMPEnabled표식에서만기존HandleNativeCommand를설치기본handler에넘겼다. MoveModdable.PreAnimUpdate에서기존RequestedState를0/1/2로전달하고물리·애니메이션콜백을계수했다. 현재전체NPC의DriveGround/Displace/지지·충돌코드는변경하지않았다.
+초기World/미션컴파일은기존modded메서드의인자명을다르게쓴오류로실패했다. 원래인자명으로고친별도revision2 PBO를서명/검증했다. revision3는접속/컴파일통과후준비이벤트가안들어와NPC생성없이300초예산이끝났다. 화면에서플레이어접속은확인했으나NPC동작으로세지않았다. 클라이언트정상닫기·서버소유자확인후강제정리영수증을남겼다.
+revision4는기존씬처럼CreateCharacter에서Visitor를연결해같은PBO로20게임초능력시험을완료했다. 원래14클립인스턴스를사용하며실행한요청은idle/walk/run뿐이다. 새ETW·영상·큰덤프·성능벤치는없다.
+
+## 3. 측정 결과
+현재단일렌더Animal_NFWeighted224Full1개,별도피해수신체0·GroundBody미연결·추적AI미연결인능력프로브다. 기존1논리NPC+렌더+수신체의비용비교대상이아니다.
+20게임초동안40행,관찰창 0.001999~19.925초. 네이티브Move의OnActivate1회,PreAnim/PrePhys각404회,RequestedState변수11바인딩. script명령은관찰행모두없음(로그0),생존1/1. handler raw command값은초기−1과51이며SDK enum의기본정수순번으로추측해매핑하지않는다. MoveModdable의실제콜백을관찰한것을근거로한다.
+runtime graph=dg_lab_inputs/native_traversal.agr, instance=dg_lab_inputs/native_combat.asi.
+| 단계 | 관찰 구간(게임초) | 수평 순이동(m) | 수평 경로 길이(m) |
+|---|---:|---:|---:|
+| initial-idle | 0.002~4.586 | 0.0672 | 0.4767 |
+| walk-input | 5.100~10.726 | 11.5766 | 11.6643 |
+| run-input | 11.246~16.882 | 27.6387 | 27.6477 |
+| final-idle | 17.382~19.925 | 0.0981 | 0.2118 |
+
+속도입력1/2의관찰구간수평순이동평균은약2.058/4.904m/게임초다. 입력값을m/s로가정하지않는다. heading입력0에서주이동방향은−Z였으므로현재커스텀heading/표시방향과의보정이남았다. idle에서도작은root이동이있어완전정지계약을통과했다고하지않는다.
+CPU·Present p50/p95/p99·물리query수·self-time·실제동영상부드러움미측정. 콜백404회는렌더표시프레임404회나시각품질통과가아니다.
+
+## 4. 원인 분석
+확인: 선언만있던동물용Move의script hook이현재커스텀Animal에서실행되고,기존그래프RequestedState입력과실제위치이동이연결된다. 따라서현재모델에서는nativeMove를전혀사용할수없다는전제는성립하지않는다.
+추정: 향후평지FOLLOW의이동·접촉소유권을native로넘기면일부script DriveGround/primary query작업을대체할가능성이있다. native내부에같은또는다른검사가추가되므로전체비용이낮아진다는증거는아니다.
+미확인: 네이티브지지/contact생산자·캐시·형상·검사빈도·비용,정상밀침/낙하/착지와동등성,피격·공격·사망/수신체동기화,script/native전환시루트·lift·Contacts·graph시계보존,64/200비용과실제시각품질. 이번프로브는이문제들을해결하지않았다.
+새방향은작은상수튜닝이아닌이동권한변경후보다. 기존기능이있는본체에바로켜지않으며단독성공을8/64기능통과로바꾸지않는다.
+
+## 5. 검증 수준
+SDK/packed설정조회·서명·컴파일·현재모델nativeMove콜백/그래프입력/실제이동:진단성공. 하이브리드구현·추적/등반/낙하/피격/사망회귀·반복성능·시각·최종수용:미실행.20ms p95는목표다. 앞선컴파일실패와시작실패는독립성능반복으로세지않는다.
+
+## 6. 변경 사항
+기존rate100-isolation-20261112 아래SDK/packedconfig검토와native-animal-move1의격리소스·미션·계약·영수증·40행원시/분석만추가했다. 원본13PBO·그래프·모델·게임·운영서버·개인키·기존기능/실패증거보존. 사용PBO SHA256 5d7184ef91b44ff4a4a5ffb0ccca918cf20b46a75324d24af78cabc49f651db8,서명·서명검증성공,packed script바이트일치. revision4는revision2PBO재사용·미션만수정했다.
+완료시험서버retained exit−1/강제종료없음,클라이언트정상닫기성공. 서버exit0로보고하지않는다. 이전컴파일/준비실패의강제정리는별도영수증으로구분했다. 현재모든시험게임·서버·수집프로세스종료확인.
+
+## 7. 원시 증거
+성공능력실행ID NATIVE-MOVE-one-capability1-r4. native-animal-move-feasibility.json의SDK5엔트리/해시, native-animal-packed-config-review.json의설정체인,각revision의계약·소스·서명·실패종료영수증과revision4 native-move-probe.tsv40행/analysis.json/heading-observation.json/server-terminal/client-closed를연결한다. 13원본PBO·client/server해시를실행전에대조했다.
+공개는선정원문·40행관측·집계와해시이며전체설치자산·SDK PBO·로컬절대경로·프로세스정보·키는노출하지않는다. 직접화면관찰은revision3의접속확인에한정하며성공revision4애니메이션시각평가가아니다.
+
+## 8. 잔여 문제
+다음단일산출물은native지상↔script등반/낙하의권한전환계약이다. 실제root/heading·좌표커밋·중간접촉이력·minimumLift·부분실패·피격중단·수신체·graph진행률을누가소유하는지명시하고,기존계약을보존하지못하면전체NPC이식으로확대하지않는다.
+현재사용자가확인한애니메이션경로와기능을보존한다. 원래전체Drive/접촉비용최적화의목표를유지하되이번능력시험을CPU절감성과로보고하지않는다. 다른nativeproxy/엔진결합/대규모LOD설계로자동확대하지않으며,안전한전환후보가있을때만소수개체비교후8→64반복으로간다.
+
+Selected diagnostic source (complete one-file wrapper), SHA256 96db654c07ab3877340867c7180951900bfba3e0ef20566a21c21bfeeb44b45a
+// One flagged isolated actor only. No production Body/solver is replaced.
+modded class Animal_DGNativeProbe
+{
+    bool NMPEnabled;int NMPIntent;int NMPActivations;int NMPPreAnim;int NMPPrePhys;int NMPCurrentCommand=-1;int NMPHandlerCalls;
+    float NMPAnimDt;int NMPVariable=-1;
+    override bool HandleNativeCommand(float pDt,int pCurrentCommandID,bool pCurrentCommandFinished)
+    {
+        if(NMPEnabled)
+        {
+            NMPCurrentCommand=pCurrentCommandID;NMPHandlerCalls++;
+            // Return to the installed native animal handler. It owns commands.
+            return false;
+        }
+        return super.HandleNativeCommand(pDt,pCurrentCommandID,pCurrentCommandFinished);
+    }
+}
+modded class DayZAnimalCommandMoveModdable
+{
+    override void OnActivate()
+    {
+        super.OnActivate();
+        Animal_DGNativeProbe actor=Animal_DGNativeProbe.Cast(GetEntity());
+        if(actor && actor.NMPEnabled)
+        {
+            actor.NMPActivations++;
+            actor.NMPVariable=actor.GetAnimInterface().BindVariableInt("RequestedState");
+        }
+    }
+    override void PreAnimUpdate(float pDt)
+    {
+        super.PreAnimUpdate(pDt);
+        Animal_DGNativeProbe actor=Animal_DGNativeProbe.Cast(GetEntity());
+        if(actor && actor.NMPEnabled)
+        {
+            actor.NMPPreAnim++;actor.NMPAnimDt+=pDt;
+            if(actor.NMPVariable>=0)PreAnim_SetInt(actor.NMPVariable,actor.NMPIntent);
+        }
+    }
+    override void PrePhysUpdate(float pDt)
+    {
+        super.PrePhysUpdate(pDt);
+        Animal_DGNativeProbe actor=Animal_DGNativeProbe.Cast(GetEntity());
+        if(actor && actor.NMPEnabled)actor.NMPPrePhys++;
+    }
+}
+
+
+Complete bounded40-row capability trace; SHA256 568fe6630aebf9f46e4908315baefe089f472e0280916f989d84aa93f4c6093a
+seconds	sequence	intent	command	handlerCalls	activations	preAnim	prePhys	animDt	variable	position	headMS	speedInput	hasScript	alive	graph	instance
+0.0019989	1	0	-1	0	1	0	0	0	11	<4506.000000, 339.165344, 10226.000000>	<-0.248025, 1.041099, -0.600725>	0	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+0.525002	2	0	51	16	1	16	16	0.8	11	<4505.931641, 339.105286, 10226.044922>	<-0.029338, 1.198883, -0.606827>	0	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+1.04	3	0	51	26	1	26	26	1.3	11	<4505.958008, 339.105316, 10226.040039>	<-0.120437, 1.097318, -0.639350>	0	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+1.542	4	0	51	36	1	36	36	1.8	11	<4505.934082, 339.105347, 10226.071289>	<-0.176630, 1.050007, -0.646537>	0	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+2.042	5	0	51	46	1	46	46	2.3	11	<4505.934570, 339.105194, 10226.018555>	<-0.171049, 1.177599, -0.571632>	0	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+2.543	6	0	51	56	1	56	56	2.8	11	<4506.050293, 339.105499, 10226.012695>	<-0.360029, 1.120416, -0.499550>	0	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+3.04501	7	0	51	66	1	66	66	3.3	11	<4506.007813, 339.105469, 10226.038086>	<-0.241164, 1.144272, -0.564517>	0	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+3.548	8	0	51	76	1	76	76	3.8	11	<4505.994629, 339.105408, 10226.030273>	<-0.171538, 1.143451, -0.607119>	0	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+4.067	9	0	51	86	1	86	86	4.3	11	<4506.017578, 339.105347, 10225.984375>	<-0.219138, 1.192120, -0.549480>	0	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+4.586	10	0	51	97	1	97	97	4.85	11	<4506.043945, 339.105316, 10225.949219>	<-0.233598, 1.112536, -0.571478>	0	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+5.1	11	1	51	107	1	107	107	5.35	11	<4505.990234, 339.104980, 10225.873047>	<0.000557, 1.114604, -0.589928>	1	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+5.60101	12	1	51	117	1	117	117	5.85	11	<4505.780273, 339.101654, 10224.837891>	<-0.192059, 1.181707, -0.542628>	1	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+6.113	13	1	51	128	1	128	128	6.40001	11	<4505.776855, 339.099213, 10223.626953>	<0.083986, 1.138686, -0.605866>	1	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+6.617	14	1	51	138	1	138	138	6.90001	11	<4505.713867, 339.097626, 10222.091797>	<0.270632, 1.157504, -0.515534>	1	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+7.146	15	1	51	148	1	148	148	7.40001	11	<4505.865234, 339.097839, 10220.923828>	<0.128914, 1.107580, -0.595931>	1	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+7.665	16	1	51	158	1	158	158	7.90001	11	<4505.912598, 339.097900, 10219.992188>	<-0.000870, 1.093699, -0.649952>	1	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+8.166	17	1	51	168	1	168	168	8.40001	11	<4505.999023, 339.097992, 10218.959961>	<-0.066050, 1.144879, -0.611768>	1	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+8.68501	18	1	51	179	1	179	179	8.95002	11	<4506.176758, 339.098236, 10217.948242>	<-0.210838, 1.102348, -0.527294>	1	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+9.204	19	1	51	189	1	189	189	9.45002	11	<4506.017578, 339.098022, 10217.283203>	<0.208570, 1.167590, -0.580329>	1	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+9.705	20	1	51	199	1	199	199	9.95002	11	<4505.895020, 339.097870, 10216.712891>	<-0.016784, 1.143069, -0.616507>	1	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+10.207	21	1	51	209	1	209	209	10.45	11	<4505.790039, 339.097717, 10215.701172>	<-0.055700, 1.127433, -0.623396>	1	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+10.726	22	1	51	220	1	220	220	11	11	<4505.757813, 339.096741, 10214.298828>	<0.183895, 1.114924, -0.558059>	1	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+11.246	23	2	51	230	1	230	230	11.5	11	<4505.720703, 339.094513, 10212.661133>	<-0.070545, 1.439139, -0.453910>	2	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+11.767	24	2	51	240	1	240	240	12	11	<4505.643066, 339.091614, 10210.552734>	<-0.093243, 1.443934, -0.436873>	2	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+12.284	25	2	51	251	1	251	251	12.55	11	<4505.695801, 339.089996, 10207.772461>	<-0.048032, 1.442028, -0.410135>	2	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+12.787	26	2	51	261	1	261	261	13.05	11	<4505.747070, 339.089996, 10204.898438>	<-0.097398, 1.594088, -0.212930>	2	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+13.306	27	2	51	271	1	271	271	13.55	11	<4505.726563, 339.089996, 10202.664063>	<-0.017627, 1.455576, -0.445130>	2	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+13.808	28	2	51	281	1	281	281	14.05	11	<4505.650391, 339.089996, 10200.591797>	<-0.078186, 1.412607, -0.473086>	2	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+14.326	29	2	51	292	1	292	292	14.6	11	<4505.691895, 339.089996, 10197.813477>	<-0.059689, 1.438124, -0.405229>	2	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+14.845	30	2	51	302	1	302	302	15.1	11	<4505.759766, 339.089996, 10194.958008>	<-0.123848, 1.600607, -0.207724>	2	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+15.345	31	2	51	312	1	312	312	15.6	11	<4505.729980, 339.089996, 10192.672852>	<0.042522, 1.467382, -0.431271>	2	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+15.864	32	2	51	322	1	322	322	16.1	11	<4505.646973, 339.089996, 10190.636719>	<-0.034834, 1.374708, -0.508962>	2	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+16.367	33	2	51	332	1	332	332	16.6	11	<4505.650879, 339.089996, 10188.140625>	<0.030555, 1.463467, -0.400826>	2	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+16.882	34	2	51	343	1	343	343	17.15	11	<4505.766602, 339.089996, 10185.022461>	<-0.122575, 1.609787, -0.209642>	2	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+17.382	35	0	51	353	1	353	353	17.65	11	<4505.621094, 339.091064, 10184.209961>	<-0.024057, 1.157499, -0.615202>	0	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+17.884	36	0	51	363	1	363	363	18.15	11	<4505.610840, 339.091034, 10184.211914>	<-0.044834, 1.189239, -0.611047>	0	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+18.386	37	0	51	373	1	373	373	18.65	11	<4505.624023, 339.091034, 10184.215820>	<-0.118010, 1.077993, -0.647946>	0	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+18.905	38	0	51	383	1	383	383	19.15	11	<4505.603027, 339.091003, 10184.236328>	<-0.179595, 1.048394, -0.647150>	0	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+19.407	39	0	51	393	1	393	393	19.65	11	<4505.615234, 339.091095, 10184.180664>	<-0.193142, 1.184632, -0.561790>	0	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+19.925	40	0	51	404	1	404	404	20.2	11	<4505.716309, 339.091095, 10184.186523>	<-0.405708, 1.137153, -0.492865>	0	0	true	dg_lab_inputs/native_traversal.agr	dg_lab_inputs/native_combat.asi
+
