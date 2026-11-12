@@ -1,236 +1,749 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-12T12:21:38.292Z",
-  "sourceRunId": "LAZY-ELIGIBILITY-cost64-1",
+  "generatedAt": "2026-11-12T12:43:18.299Z",
+  "sourceRunId": "LAZY-ELIGIBILITY-cost64-repeat1",
   "buildId": "single224-13mods-lazy-02782be7b3ef1a4a",
   "verificationStatus": {
     "diagnosisSucceeded": true,
-    "experimentSuccess": true,
+    "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "ALL64_ALIVE_ACQUIRED_MOVED_CUTOFF_OUTCOMES_DIFFER_FULL_REGRESSION_OPEN",
+    "functional": "ALL_OBSERVED64_HOSTS_ALIVE_REGRESSION_UNDETERMINED",
     "visual": "NOT_MEASURED",
-    "performance": "SINGLE_PAIR_MINUS5_015_PERCENT_NOT_REPRODUCED",
+    "performance": "INCONCLUSIVE_VALID2_EXCLUDED1",
     "adopted": false
   },
   "metrics": {
     "schemaVersion": 1,
-    "sourceRunId": "LAZY-ELIGIBILITY-cost64-1",
-    "verificationStatus": "PILOT_ONLY_NOT_ACCEPTED",
-    "independentPairs": 1,
-    "newPbo": false,
-    "cases": {
-      "baseline": {
-        "runId": "LAZY-ELIGIBILITY-cost64-1-baseline",
-        "samples": 30,
-        "cpuMsPerWallSecond": {
-          "weightedMean": 625.4568001085662,
-          "p50": 643.7612033352549,
-          "p95": 744.1177603467708,
-          "p99": 806.5099513305546,
-          "meaning": "process aggregate CPU across threads / wall time; not ms/frame"
+    "sourceRunId": "LAZY-ELIGIBILITY-cost64-repeat1",
+    "verificationStatus": "INCONCLUSIVE_CONDITION_GATE",
+    "independentPairsAttempted": 3,
+    "validIndependentPairs": 2,
+    "excludedIndependentPairs": 1,
+    "rawAttemptChangesPercent": [
+      -5.015011358962063,
+      -1.5385397322453809,
+      -6.700936649746836
+    ],
+    "executionOrders": [
+      "OFF_ON",
+      "ON_OFF",
+      "OFF_ON"
+    ],
+    "wholeCpuMeanChangesPercent": [
+      -5.015011358962063,
+      -1.5385397322453809
+    ],
+    "medianChangePercent": -3.276775545603722,
+    "allPairsCpuLower": true,
+    "allConditionGatesPassed": false,
+    "threePairCpuScreenPassed": false,
+    "sameMissionSha256": "02782be7b3ef1a4a86c8e8b0d487bc7e461a8b8e721a579d21655bd99e12342d",
+    "cases": [
+      {
+        "schemaVersion": 1,
+        "sourceRunId": "LAZY-ELIGIBILITY-cost64-1",
+        "verificationStatus": "PILOT_ONLY_NOT_ACCEPTED",
+        "independentPairs": 1,
+        "newPbo": false,
+        "cases": {
+          "baseline": {
+            "runId": "LAZY-ELIGIBILITY-cost64-1-baseline",
+            "samples": 30,
+            "cpuMsPerWallSecond": {
+              "weightedMean": 625.4568001085662,
+              "p50": 643.7612033352549,
+              "p95": 744.1177603467708,
+              "p99": 806.5099513305546,
+              "meaning": "process aggregate CPU across threads / wall time; not ms/frame"
+            },
+            "captureGameWindow": [
+              40.6888,
+              70.6545
+            ],
+            "captureWallSeconds": 30.003071350000003,
+            "serverMissionDtMs": {
+              "p50": 23,
+              "p95": 33,
+              "p99": 40.200000000000045,
+              "n": 1381,
+              "meaning": "mission OnUpdate dt, not Present"
+            },
+            "all64AcquiredAndMoved2m": true,
+            "allObservedHostsAlive": true,
+            "windowPhasesByRow": {
+              "FOLLOW": 6620,
+              "FALL": 147,
+              "MOTION": 275,
+              "SETTLE": 64,
+              "EGRESS": 47,
+              "LAND": 207
+            },
+            "windowPhysicalWorkDelta": {
+              "contactSolves": 73346,
+              "contactFailures": 611,
+              "jointSweeps": 292539,
+              "footRays": 733460,
+              "plans": 1028,
+              "planFailures": 300,
+              "climbs": 33,
+              "drops": 17,
+              "landings": 21
+            },
+            "windowPhysicalWorkPerGameSecond": {
+              "contactSolves": 2447.665163837321,
+              "contactFailures": 20.389979209562934,
+              "jointSweeps": 9762.461747931802,
+              "footRays": 24476.65163837321,
+              "plans": 34.30588973392913,
+              "planFailures": 10.011446420407333,
+              "climbs": 1.1012591062448067,
+              "drops": 0.5673152971564155,
+              "landings": 0.7008012494285133
+            },
+            "wholeRunTerminalOutcomes": {
+              "INCOMPLETE_MILESTONES": 57,
+              "VALID_TERMINAL": 5,
+              "UNRESOLVED_STATE": 1,
+              "UNRESOLVED_FALL": 1
+            },
+            "crowd": {
+              "samples": 115,
+              "meanPairCandidates": 645.9565217391304,
+              "maxPairCandidates": 1137,
+              "eligibilityComputationsDelta": 0,
+              "updateCallsDelta": 1371,
+              "inclusiveElapsedWallPercent": 7.964016394157193,
+              "meaning": "timer range includes original Crowd.Update; not self-time or additive CPU decomposition"
+            },
+            "clientForegroundSamples": 25,
+            "clientWholeTraceAppFrames": 5261,
+            "clientWholeTraceAllActive": true,
+            "clientAppAgeRange": [
+              0.3,
+              105.677
+            ],
+            "clientTraceBroadGameplayCoverage": true,
+            "clientForegroundAndCountGate": true,
+            "nativeCrash": false,
+            "shadowChecksEnabled": false
+          },
+          "on": {
+            "runId": "LAZY-ELIGIBILITY-cost64-1-on",
+            "samples": 30,
+            "cpuMsPerWallSecond": {
+              "weightedMean": 594.090070537721,
+              "p50": 601.9118609683399,
+              "p95": 708.7015531081914,
+              "p99": 729.3055740695291,
+              "meaning": "process aggregate CPU across threads / wall time; not ms/frame"
+            },
+            "captureGameWindow": [
+              41.1135,
+              71.0901
+            ],
+            "captureWallSeconds": 30.00912805,
+            "serverMissionDtMs": {
+              "p50": 22,
+              "p95": 32.049999999999955,
+              "p99": 37.00999999999999,
+              "n": 1400,
+              "meaning": "mission OnUpdate dt, not Present"
+            },
+            "all64AcquiredAndMoved2m": true,
+            "allObservedHostsAlive": true,
+            "windowPhasesByRow": {
+              "FOLLOW": 6636,
+              "LAND": 192,
+              "EGRESS": 74,
+              "MOTION": 279,
+              "SETTLE": 67,
+              "FALL": 48
+            },
+            "windowPhysicalWorkDelta": {
+              "contactSolves": 74508,
+              "contactFailures": 481,
+              "jointSweeps": 297443,
+              "footRays": 745080,
+              "plans": 1062,
+              "planFailures": 332,
+              "climbs": 34,
+              "drops": 18,
+              "landings": 20
+            },
+            "windowPhysicalWorkPerGameSecond": {
+              "contactSolves": 2485.538720201757,
+              "contactFailures": 16.045849095627922,
+              "jointSweeps": 9922.50622151945,
+              "footRays": 24855.38720201757,
+              "plans": 35.427633554172246,
+              "planFailures": 11.075305404882473,
+              "climbs": 1.1342180233915786,
+              "drops": 0.6004683653249534,
+              "landings": 0.6671870725832815
+            },
+            "wholeRunTerminalOutcomes": {
+              "INCOMPLETE_MILESTONES": 47,
+              "UNRESOLVED_FALL": 2,
+              "VALID_TERMINAL": 12,
+              "UNRESOLVED_STATE": 3
+            },
+            "crowd": {
+              "samples": 114,
+              "meanPairCandidates": 668.0438596491229,
+              "maxPairCandidates": 1023,
+              "eligibilityComputationsDelta": 86893,
+              "updateCallsDelta": 1379,
+              "inclusiveElapsedWallPercent": 6.683348118523135,
+              "meaning": "timer range includes original Crowd.Update; not self-time or additive CPU decomposition"
+            },
+            "clientForegroundSamples": 29,
+            "clientWholeTraceAppFrames": 5264,
+            "clientWholeTraceAllActive": true,
+            "clientAppAgeRange": [
+              0.3,
+              105.748
+            ],
+            "clientTraceBroadGameplayCoverage": true,
+            "clientForegroundAndCountGate": true,
+            "nativeCrash": false,
+            "shadowChecksEnabled": false
+          }
         },
-        "captureGameWindow": [
-          40.6888,
-          70.6545
-        ],
-        "captureWallSeconds": 30.003071350000003,
-        "serverMissionDtMs": {
-          "p50": 23,
-          "p95": 33,
-          "p99": 40.200000000000045,
-          "n": 1381,
-          "meaning": "mission OnUpdate dt, not Present"
-        },
-        "all64AcquiredAndMoved2m": true,
-        "allObservedHostsAlive": true,
-        "windowPhasesByRow": {
-          "FOLLOW": 6620,
-          "FALL": 147,
-          "MOTION": 275,
-          "SETTLE": 64,
-          "EGRESS": 47,
-          "LAND": 207
-        },
-        "windowPhysicalWorkDelta": {
-          "contactSolves": 73346,
-          "contactFailures": 611,
-          "jointSweeps": 292539,
-          "footRays": 733460,
-          "plans": 1028,
-          "planFailures": 300,
-          "climbs": 33,
-          "drops": 17,
-          "landings": 21
-        },
-        "windowPhysicalWorkPerGameSecond": {
-          "contactSolves": 2447.665163837321,
-          "contactFailures": 20.389979209562934,
-          "jointSweeps": 9762.461747931802,
-          "footRays": 24476.65163837321,
-          "plans": 34.30588973392913,
-          "planFailures": 10.011446420407333,
-          "climbs": 1.1012591062448067,
-          "drops": 0.5673152971564155,
-          "landings": 0.7008012494285133
-        },
-        "wholeRunTerminalOutcomes": {
-          "INCOMPLETE_MILESTONES": 57,
-          "VALID_TERMINAL": 5,
-          "UNRESOLVED_STATE": 1,
-          "UNRESOLVED_FALL": 1
-        },
-        "crowd": {
-          "samples": 115,
-          "meanPairCandidates": 645.9565217391304,
-          "maxPairCandidates": 1137,
-          "eligibilityComputationsDelta": 0,
-          "updateCallsDelta": 1371,
-          "inclusiveElapsedWallPercent": 7.964016394157193,
-          "meaning": "timer range includes original Crowd.Update; not self-time or additive CPU decomposition"
-        },
-        "clientForegroundSamples": 25,
-        "clientWholeTraceAppFrames": 5261,
-        "clientWholeTraceAllActive": true,
-        "clientAppAgeRange": [
-          0.3,
-          105.677
-        ],
-        "clientTraceBroadGameplayCoverage": true,
-        "clientForegroundAndCountGate": true,
-        "nativeCrash": false,
-        "shadowChecksEnabled": false
+        "wholeServerCpuMeanChangePercent": -5.015011358962063,
+        "conditionGatesPassed": true,
+        "captureGameEndpointsWithin1second": true,
+        "pilotAtLeast5PercentLower": true,
+        "presentP95Ms": null,
+        "visualQuality": "NOT_MEASURED",
+        "finalAccepted": false,
+        "limitations": [
+          "One pair cannot prove repeatability",
+          "Game trajectories and contact workloads may differ; raw physical rates and phases retained",
+          "Mission dt is not Present",
+          "Crowd elapsed range is not CPU self-time",
+          "No GPU/heap/GC breakdown measured"
+        ]
       },
-      "on": {
-        "runId": "LAZY-ELIGIBILITY-cost64-1-on",
-        "samples": 30,
-        "cpuMsPerWallSecond": {
-          "weightedMean": 594.090070537721,
-          "p50": 601.9118609683399,
-          "p95": 708.7015531081914,
-          "p99": 729.3055740695291,
-          "meaning": "process aggregate CPU across threads / wall time; not ms/frame"
+      {
+        "schemaVersion": 1,
+        "sourceRunId": "LAZY-ELIGIBILITY-cost64-repeat1-pair2",
+        "verificationStatus": "PILOT_ONLY_NOT_ACCEPTED",
+        "independentPairs": 1,
+        "newPbo": false,
+        "cases": {
+          "baseline": {
+            "runId": "LAZY-ELIGIBILITY-cost64-repeat1-pair2-baseline",
+            "samples": 30,
+            "cpuMsPerWallSecond": {
+              "weightedMean": 612.072295506669,
+              "p50": 624.1257376444174,
+              "p95": 747.0191265193133,
+              "p99": 772.9362035488775,
+              "meaning": "process aggregate CPU across threads / wall time; not ms/frame"
+            },
+            "captureGameWindow": [
+              41.6657,
+              71.6332
+            ],
+            "captureWallSeconds": 29.9954354,
+            "serverMissionDtMs": {
+              "p50": 22,
+              "p95": 32,
+              "p99": 39,
+              "n": 1402,
+              "meaning": "mission OnUpdate dt, not Present"
+            },
+            "all64AcquiredAndMoved2m": true,
+            "allObservedHostsAlive": true,
+            "windowPhasesByRow": {
+              "FOLLOW": 6494,
+              "MOTION": 323,
+              "SETTLE": 80,
+              "FALL": 100,
+              "EGRESS": 61,
+              "LAND": 238
+            },
+            "windowPhysicalWorkDelta": {
+              "contactSolves": 74208,
+              "contactFailures": 691,
+              "jointSweeps": 295523,
+              "footRays": 742080,
+              "plans": 1020,
+              "planFailures": 273,
+              "climbs": 40,
+              "drops": 20,
+              "landings": 27
+            },
+            "windowPhysicalWorkPerGameSecond": {
+              "contactSolves": 2476.282639526153,
+              "contactFailures": 23.058313172603654,
+              "jointSweeps": 9861.449904062734,
+              "footRays": 24762.82639526153,
+              "plans": 34.036873279386,
+              "planFailures": 9.109869024776842,
+              "climbs": 1.3347793442896472,
+              "drops": 0.6673896721448236,
+              "landings": 0.9009760573955118
+            },
+            "wholeRunTerminalOutcomes": {
+              "VALID_TERMINAL": 15,
+              "INCOMPLETE_MILESTONES": 47,
+              "UNRESOLVED_FALL": 2
+            },
+            "crowd": {
+              "samples": 114,
+              "meanPairCandidates": 588.6754385964912,
+              "maxPairCandidates": 1150,
+              "eligibilityComputationsDelta": 0,
+              "updateCallsDelta": 1383,
+              "inclusiveElapsedWallPercent": 7.399737143191849,
+              "meaning": "timer range includes original Crowd.Update; not self-time or additive CPU decomposition"
+            },
+            "clientForegroundSamples": 30,
+            "clientWholeTraceAppFrames": 5266,
+            "clientWholeTraceAllActive": true,
+            "clientAppAgeRange": [
+              0.3,
+              105.8
+            ],
+            "clientTraceBroadGameplayCoverage": true,
+            "clientForegroundAndCountGate": true,
+            "nativeCrash": false,
+            "shadowChecksEnabled": false
+          },
+          "on": {
+            "runId": "LAZY-ELIGIBILITY-cost64-repeat1-pair2-on",
+            "samples": 30,
+            "cpuMsPerWallSecond": {
+              "weightedMean": 602.6553200502325,
+              "p50": 611.4056924910722,
+              "p95": 716.9793029671648,
+              "p99": 723.5988263286949,
+              "meaning": "process aggregate CPU across threads / wall time; not ms/frame"
+            },
+            "captureGameWindow": [
+              41.1677,
+              71.14
+            ],
+            "captureWallSeconds": 29.9974536,
+            "serverMissionDtMs": {
+              "p50": 22,
+              "p95": 32,
+              "p99": 36,
+              "n": 1418,
+              "meaning": "mission OnUpdate dt, not Present"
+            },
+            "all64AcquiredAndMoved2m": true,
+            "allObservedHostsAlive": true,
+            "windowPhasesByRow": {
+              "FOLLOW": 6523,
+              "MOTION": 310,
+              "SETTLE": 78,
+              "EGRESS": 79,
+              "FALL": 84,
+              "LAND": 222
+            },
+            "windowPhysicalWorkDelta": {
+              "contactSolves": 73510,
+              "contactFailures": 682,
+              "jointSweeps": 293130,
+              "footRays": 735100,
+              "plans": 960,
+              "planFailures": 267,
+              "climbs": 40,
+              "drops": 16,
+              "landings": 24
+            },
+            "windowPhysicalWorkPerGameSecond": {
+              "contactSolves": 2452.597898726491,
+              "contactFailures": 22.75434317686664,
+              "jointSweeps": 9780.030227910438,
+              "footRays": 24525.97898726491,
+              "plans": 32.02957397330202,
+              "planFailures": 8.908225261324624,
+              "climbs": 1.3345655822209175,
+              "drops": 0.533826232888367,
+              "landings": 0.8007393493325504
+            },
+            "wholeRunTerminalOutcomes": {
+              "INCOMPLETE_MILESTONES": 50,
+              "UNRESOLVED_STATE": 2,
+              "VALID_TERMINAL": 11,
+              "UNRESOLVED_FALL": 1
+            },
+            "crowd": {
+              "samples": 114,
+              "meanPairCandidates": 611.0964912280701,
+              "maxPairCandidates": 969,
+              "eligibilityComputationsDelta": 85446,
+              "updateCallsDelta": 1398,
+              "inclusiveElapsedWallPercent": 6.390542515075347,
+              "meaning": "timer range includes original Crowd.Update; not self-time or additive CPU decomposition"
+            },
+            "clientForegroundSamples": 30,
+            "clientWholeTraceAppFrames": 5265,
+            "clientWholeTraceAllActive": true,
+            "clientAppAgeRange": [
+              0.3,
+              105.778
+            ],
+            "clientTraceBroadGameplayCoverage": true,
+            "clientForegroundAndCountGate": true,
+            "nativeCrash": false,
+            "shadowChecksEnabled": false
+          }
         },
-        "captureGameWindow": [
-          41.1135,
-          71.0901
-        ],
-        "captureWallSeconds": 30.00912805,
-        "serverMissionDtMs": {
-          "p50": 22,
-          "p95": 32.049999999999955,
-          "p99": 37.00999999999999,
-          "n": 1400,
-          "meaning": "mission OnUpdate dt, not Present"
+        "wholeServerCpuMeanChangePercent": -1.5385397322453809,
+        "conditionGatesPassed": true,
+        "captureGameEndpointsWithin1second": true,
+        "pilotAtLeast5PercentLower": false,
+        "presentP95Ms": null,
+        "visualQuality": "NOT_MEASURED",
+        "finalAccepted": false,
+        "limitations": [
+          "One pair cannot prove repeatability",
+          "Game trajectories and contact workloads may differ; raw physical rates and phases retained",
+          "Mission dt is not Present",
+          "Crowd elapsed range is not CPU self-time",
+          "No GPU/heap/GC breakdown measured"
+        ]
+      },
+      {
+        "schemaVersion": 1,
+        "sourceRunId": "LAZY-ELIGIBILITY-cost64-repeat1-pair3",
+        "verificationStatus": "PILOT_ONLY_NOT_ACCEPTED",
+        "independentPairs": 1,
+        "newPbo": false,
+        "cases": {
+          "baseline": {
+            "runId": "LAZY-ELIGIBILITY-cost64-repeat1-pair3-baseline",
+            "samples": 30,
+            "cpuMsPerWallSecond": {
+              "weightedMean": 633.6498980051299,
+              "p50": 629.9460381933366,
+              "p95": 818.4155633147825,
+              "p99": 867.9520419295542,
+              "meaning": "process aggregate CPU across threads / wall time; not ms/frame"
+            },
+            "captureGameWindow": [
+              40.7968,
+              70.7884
+            ],
+            "captureWallSeconds": 30.00967105,
+            "serverMissionDtMs": {
+              "p50": 22,
+              "p95": 36,
+              "p99": 55.74000000000001,
+              "n": 1327,
+              "meaning": "mission OnUpdate dt, not Present"
+            },
+            "all64AcquiredAndMoved2m": true,
+            "allObservedHostsAlive": true,
+            "windowPhasesByRow": {
+              "FOLLOW": 6436,
+              "MOTION": 310,
+              "SETTLE": 75,
+              "EGRESS": 97,
+              "FALL": 77,
+              "LAND": 237
+            },
+            "windowPhysicalWorkDelta": {
+              "contactSolves": 73005,
+              "contactFailures": 1025,
+              "jointSweeps": 290481,
+              "footRays": 730050,
+              "plans": 967,
+              "planFailures": 318,
+              "climbs": 39,
+              "drops": 17,
+              "landings": 21
+            },
+            "windowPhysicalWorkPerGameSecond": {
+              "contactSolves": 2434.1815708398353,
+              "contactFailures": 34.17623601275024,
+              "jointSweeps": 9685.411915336295,
+              "footRays": 24341.815708398353,
+              "plans": 32.24236119446778,
+              "planFailures": 10.602968831272756,
+              "climbs": 1.3003641019485457,
+              "drops": 0.566825377772443,
+              "landings": 0.7001960548953707
+            },
+            "wholeRunTerminalOutcomes": {
+              "INCOMPLETE_MILESTONES": 46,
+              "VALID_TERMINAL": 15,
+              "UNRESOLVED_FALL": 1,
+              "UNRESOLVED_STATE": 2
+            },
+            "crowd": {
+              "samples": 113,
+              "meanPairCandidates": 612.5398230088496,
+              "maxPairCandidates": 1040,
+              "eligibilityComputationsDelta": 0,
+              "updateCallsDelta": 1309,
+              "inclusiveElapsedWallPercent": 7.568685789780613,
+              "meaning": "timer range includes original Crowd.Update; not self-time or additive CPU decomposition"
+            },
+            "clientForegroundSamples": 28,
+            "clientWholeTraceAppFrames": 3586,
+            "clientWholeTraceAllActive": false,
+            "clientAppAgeRange": [
+              0.3,
+              105.324
+            ],
+            "clientTraceBroadGameplayCoverage": true,
+            "clientForegroundAndCountGate": false,
+            "nativeCrash": false,
+            "shadowChecksEnabled": false
+          },
+          "on": {
+            "runId": "LAZY-ELIGIBILITY-cost64-repeat1-pair3-on",
+            "samples": 30,
+            "cpuMsPerWallSecond": {
+              "weightedMean": 591.1894197586207,
+              "p50": 601.0830014358436,
+              "p95": 665.7951296722459,
+              "p99": 757.8166458904867,
+              "meaning": "process aggregate CPU across threads / wall time; not ms/frame"
+            },
+            "captureGameWindow": [
+              40.7616,
+              70.7491
+            ],
+            "captureWallSeconds": 29.9977882,
+            "serverMissionDtMs": {
+              "p50": 21,
+              "p95": 32,
+              "p99": 35,
+              "n": 1435,
+              "meaning": "mission OnUpdate dt, not Present"
+            },
+            "all64AcquiredAndMoved2m": true,
+            "allObservedHostsAlive": true,
+            "windowPhasesByRow": {
+              "FOLLOW": 6644,
+              "FALL": 176,
+              "EGRESS": 54,
+              "MOTION": 261,
+              "SETTLE": 63,
+              "LAND": 162
+            },
+            "windowPhysicalWorkDelta": {
+              "contactSolves": 72436,
+              "contactFailures": 751,
+              "jointSweeps": 288451,
+              "footRays": 724360,
+              "plans": 994,
+              "planFailures": 291,
+              "climbs": 32,
+              "drops": 16,
+              "landings": 19
+            },
+            "windowPhysicalWorkPerGameSecond": {
+              "contactSolves": 2415.5398082534393,
+              "contactFailures": 25.04376823676532,
+              "jointSweeps": 9619.041267194665,
+              "footRays": 24155.398082534393,
+              "plans": 33.14714464360151,
+              "planFailures": 9.704043351396416,
+              "climbs": 1.067111296373489,
+              "drops": 0.5335556481867445,
+              "landings": 0.6335973322217592
+            },
+            "wholeRunTerminalOutcomes": {
+              "VALID_TERMINAL": 8,
+              "INCOMPLETE_MILESTONES": 54,
+              "UNRESOLVED_FALL": 1,
+              "UNRESOLVED_STATE": 1
+            },
+            "crowd": {
+              "samples": 115,
+              "meanPairCandidates": 585.0608695652174,
+              "maxPairCandidates": 894,
+              "eligibilityComputationsDelta": 86213,
+              "updateCallsDelta": 1422,
+              "inclusiveElapsedWallPercent": 6.082307189137423,
+              "meaning": "timer range includes original Crowd.Update; not self-time or additive CPU decomposition"
+            },
+            "clientForegroundSamples": 30,
+            "clientWholeTraceAppFrames": 5260,
+            "clientWholeTraceAllActive": true,
+            "clientAppAgeRange": [
+              0.3,
+              105.684
+            ],
+            "clientTraceBroadGameplayCoverage": true,
+            "clientForegroundAndCountGate": true,
+            "nativeCrash": false,
+            "shadowChecksEnabled": false
+          }
         },
-        "all64AcquiredAndMoved2m": true,
-        "allObservedHostsAlive": true,
-        "windowPhasesByRow": {
-          "FOLLOW": 6636,
-          "LAND": 192,
-          "EGRESS": 74,
-          "MOTION": 279,
-          "SETTLE": 67,
-          "FALL": 48
-        },
-        "windowPhysicalWorkDelta": {
-          "contactSolves": 74508,
-          "contactFailures": 481,
-          "jointSweeps": 297443,
-          "footRays": 745080,
-          "plans": 1062,
-          "planFailures": 332,
-          "climbs": 34,
-          "drops": 18,
-          "landings": 20
-        },
-        "windowPhysicalWorkPerGameSecond": {
-          "contactSolves": 2485.538720201757,
-          "contactFailures": 16.045849095627922,
-          "jointSweeps": 9922.50622151945,
-          "footRays": 24855.38720201757,
-          "plans": 35.427633554172246,
-          "planFailures": 11.075305404882473,
-          "climbs": 1.1342180233915786,
-          "drops": 0.6004683653249534,
-          "landings": 0.6671870725832815
-        },
-        "wholeRunTerminalOutcomes": {
-          "INCOMPLETE_MILESTONES": 47,
-          "UNRESOLVED_FALL": 2,
-          "VALID_TERMINAL": 12,
-          "UNRESOLVED_STATE": 3
-        },
-        "crowd": {
-          "samples": 114,
-          "meanPairCandidates": 668.0438596491229,
-          "maxPairCandidates": 1023,
-          "eligibilityComputationsDelta": 86893,
-          "updateCallsDelta": 1379,
-          "inclusiveElapsedWallPercent": 6.683348118523135,
-          "meaning": "timer range includes original Crowd.Update; not self-time or additive CPU decomposition"
-        },
-        "clientForegroundSamples": 29,
-        "clientWholeTraceAppFrames": 5264,
-        "clientWholeTraceAllActive": true,
-        "clientAppAgeRange": [
-          0.3,
-          105.748
-        ],
-        "clientTraceBroadGameplayCoverage": true,
-        "clientForegroundAndCountGate": true,
-        "nativeCrash": false,
-        "shadowChecksEnabled": false
+        "wholeServerCpuMeanChangePercent": -6.700936649746836,
+        "conditionGatesPassed": false,
+        "captureGameEndpointsWithin1second": true,
+        "pilotAtLeast5PercentLower": false,
+        "presentP95Ms": null,
+        "visualQuality": "NOT_MEASURED",
+        "finalAccepted": false,
+        "limitations": [
+          "One pair cannot prove repeatability",
+          "Game trajectories and contact workloads may differ; raw physical rates and phases retained",
+          "Mission dt is not Present",
+          "Crowd elapsed range is not CPU self-time",
+          "No GPU/heap/GC breakdown measured"
+        ]
+      }
+    ],
+    "fallStateReviews": {
+      "1-baseline": {
+        "segments": 49,
+        "maxObservedConsecutiveSeconds": 36.8362,
+        "over5seconds": [
+          {
+            "id": 13,
+            "secondsObserved": 5.803899999999999,
+            "recovered": true
+          },
+          {
+            "id": 19,
+            "secondsObserved": 36.8362,
+            "recovered": true
+          }
+        ]
+      },
+      "1-on": {
+        "segments": 55,
+        "maxObservedConsecutiveSeconds": 6.7699,
+        "over5seconds": [
+          {
+            "id": 0,
+            "secondsObserved": 5.8261,
+            "recovered": true
+          },
+          {
+            "id": 1,
+            "secondsObserved": 6.7699,
+            "recovered": true
+          }
+        ]
+      },
+      "2-baseline": {
+        "segments": 53,
+        "maxObservedConsecutiveSeconds": 5.540099999999995,
+        "over5seconds": [
+          {
+            "id": 18,
+            "secondsObserved": 5.540099999999995,
+            "recovered": true
+          },
+          {
+            "id": 20,
+            "secondsObserved": 5.507999999999999,
+            "recovered": true
+          },
+          {
+            "id": 57,
+            "secondsObserved": 5.487000000000002,
+            "recovered": true
+          }
+        ]
+      },
+      "2-on": {
+        "segments": 55,
+        "maxObservedConsecutiveSeconds": 5.799099999999999,
+        "over5seconds": [
+          {
+            "id": 42,
+            "secondsObserved": 5.799099999999999,
+            "recovered": true
+          },
+          {
+            "id": 50,
+            "secondsObserved": 5.236999999999995,
+            "recovered": true
+          }
+        ]
+      },
+      "3-baseline": {
+        "segments": 58,
+        "maxObservedConsecutiveSeconds": 4.752099999999999,
+        "over5seconds": []
+      },
+      "3-on": {
+        "segments": 50,
+        "maxObservedConsecutiveSeconds": 64.0623,
+        "over5seconds": [
+          {
+            "id": 21,
+            "secondsObserved": 6.266999999999996,
+            "recovered": true
+          },
+          {
+            "id": 23,
+            "secondsObserved": 64.0623,
+            "recovered": false
+          },
+          {
+            "id": 35,
+            "secondsObserved": 5.446099999999998,
+            "recovered": true
+          }
+        ]
       }
     },
-    "wholeServerCpuMeanChangePercent": -5.015011358962063,
-    "conditionGatesPassed": true,
-    "captureGameEndpointsWithin1second": true,
-    "pilotAtLeast5PercentLower": true,
-    "presentP95Ms": null,
+    "functionalRegression": "UNDETERMINED; cutoff and trajectory differences, no new feature repair",
     "visualQuality": "NOT_MEASURED",
+    "presentP95Ms": null,
     "finalAccepted": false,
-    "limitations": [
-      "One pair cannot prove repeatability",
-      "Game trajectories and contact workloads may differ; raw physical rates and phases retained",
-      "Mission dt is not Present",
-      "Crowd elapsed range is not CPU self-time",
-      "No GPU/heap/GC breakdown measured"
+    "newPbo": false,
+    "limits": [
+      "CPU is aggregate ms/wall-second, not ms/frame",
+      "Three pair gates are project screening, not formal significance proof",
+      "Function, visual, Present acceptance remain separate",
+      "Physical counts/trajectories differ; no pure function-cost attribution"
+    ],
+    "validAttemptIndices": [
+      1,
+      2
+    ],
+    "excludedAttemptIndices": [
+      3
     ]
   },
   "blockers": [
-    "One matched pair;5.015% is only0.015percentage-point above5% pilot threshold.",
-    "Terminal counts differ:baseline valid5/incomplete57/state1/fall1,ON valid12/incomplete47/state3/fall2; no full functional regression pass.",
-    "Actual trajectories, phase mix and physical work differ; full CPU delta not proven pure eligibility-cache cost.",
-    "Mission dt is not Present. Visual/Present/GPU/GC and repeatability not measured.",
-    "Transient empty status-read helper failure corrected without game restart; full client-frame active trace used to crosscheck gap."
+    "Three valid independent pairs not available:valid2,excluded1.",
+    "Third baseline lost foreground:25/28 coarse observations during CPU capture inactive;992 inactive frames in whole client trace. Raw third -6.70% excluded.",
+    "Valid CPU changes -5.015% and -1.539% vary; descriptive two-value median -3.277% is not accepted effect.",
+    "Function/Present/visual and pure-cost attribution remain unverified.",
+    "Awaiting dedicated foreground slot before rerunning both conditions of excluded pair."
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/lazy-crowd-eligibility-cost64-pilot-20261112.md",
-      "sha256": "eb3bd2cc5fb41cbe4ed73df57f57f367722193c5658dead549fdbc9ee455d25d"
+      "report": "reports/operations/lazy-crowd-eligibility-repeat-exclusion-20261112.md",
+      "sha256": "ebc764a4c82b710ad76bf389b60b58aae9ce87d3f9fd956861ecf38ce2c0cc81"
     },
     {
-      "data": "data/lazy-crowd-eligibility-cost64-pilot-20261112.json",
-      "sha256": "fd915300b76cbe9b89618e5455bb3f1bb16b91e87ed7ef9066c724e5643c5f58"
+      "data": "data/lazy-crowd-eligibility-repeat-exclusion-20261112.json",
+      "sha256": "40c01ada175a0afbacdaad516545232f0f078c2a8599737ffebf6566dcb9e64f"
     },
     {
-      "evidence": "data/lazy-crowd-eligibility-cost64-pilot-20261112-evidence.txt",
-      "sha256": "de6032a981f2d4cf73587726abcbfefefbcb1e547037732c365a453e74e735f1"
+      "evidence": "data/lazy-crowd-eligibility-repeat-exclusion-20261112-evidence.txt",
+      "sha256": "20b1314b7c3296dab17b116aef91f491846b706b0cdb231b5db2faae0242fb7c"
     },
     {
-      "decision": "data/lazy-crowd-eligibility-cost64-pilot-20261112-decision.json",
-      "sha256": "561ca692a82c911671526a827dbd0ac7e169c4ecfba6e520b559a0cf47d3f964"
+      "exclusion": "data/lazy-crowd-eligibility-repeat-exclusion-20261112-exclusion.json",
+      "sha256": "7aff4844051b4f956df615f0c525379c3b5d1d566e714ddb619f7d9a0aef9788"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-11-12T12:21:38.292Z",
-    "staleAfter": "2026-11-13T12:21:38.292Z",
+    "sourceUpdatedAt": "2026-11-12T12:43:18.299Z",
+    "staleAfter": "2026-11-13T12:43:18.299Z",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
-    "consumerRule": "Single64 CPU pair; not repeated improvement/full function/visual acceptance."
+    "consumerRule": "2 valid pairs,1 excluded; no optimization acceptance; exclude attempt3 from valid summary."
   },
   "updateState": {
-    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T12:21:38.292Z",
+    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T12:43:18.299Z",
     "lastUpdateFailure": null
   }
 }

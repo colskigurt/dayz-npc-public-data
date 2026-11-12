@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "lazy-crowd-eligibility-cost64-pilot-20261112",
-  "generatedAt": "2026-11-12T12:21:38.292Z",
+  "snapshotId": "lazy-crowd-eligibility-repeat-exclusion-20261112",
+  "generatedAt": "2026-11-12T12:43:18.299Z",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -68,7 +68,8 @@
     "CPU-CURRENT-single64-1",
     "LAZY-ELIGIBILITY-method1-r2",
     "LAZY-ELIGIBILITY-eight-shadow1",
-    "LAZY-ELIGIBILITY-cost64-1"
+    "LAZY-ELIGIBILITY-cost64-1",
+    "LAZY-ELIGIBILITY-cost64-repeat1"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -99,11 +100,11 @@
   ],
   "verificationStatus": {
     "diagnosisSucceeded": true,
-    "experimentSuccess": true,
+    "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "ALL64_ALIVE_ACQUIRED_MOVED_CUTOFF_OUTCOMES_DIFFER_FULL_REGRESSION_OPEN",
+    "functional": "ALL_OBSERVED64_HOSTS_ALIVE_REGRESSION_UNDETERMINED",
     "visual": "NOT_MEASURED",
-    "performance": "SINGLE_PAIR_MINUS5_015_PERCENT_NOT_REPRODUCED",
+    "performance": "INCONCLUSIVE_VALID2_EXCLUDED1",
     "adopted": false
   },
   "metrics": [
@@ -13672,42 +13673,61 @@
       "conditions": "Live64 single render+receiver;13 existing PBOs;90game seconds fixed ground/low/high;OFF thenON;30wall-second process CPU after40game-second warmup;shadow disabled.",
       "repetitions": 1,
       "verificationStatus": "OBSERVED_SINGLE_PAIR_NOT_ACCEPTED"
+    },
+    {
+      "metricId": "lazy-crowd-eligibility-repeat-exclusion-20261112-descriptive-valid2-median",
+      "sourceRunId": "LAZY-ELIGIBILITY-cost64-repeat1",
+      "buildId": "single224-13mods-lazy-02782be7b3ef1a4a",
+      "value": -3.276775545603722,
+      "unit": "percent/descriptive-median-of2-valid-CPU-pairs-NOT-accepted-effect",
+      "conditions": "Unchanged live64 single-render+receiver mission;OFF_ON,ON_OFF,OFF_ON;30wall-second CPU after40game-second warmup;third pair excluded for foreground loss.",
+      "repetitions": 2,
+      "attempts": 3,
+      "excluded": 1,
+      "validPairChangesPercent": [
+        -5.015011358962063,
+        -1.5385397322453809
+      ],
+      "excludedAttemptIndices": [
+        3
+      ],
+      "verificationStatus": "INCONCLUSIVE_VALID_PAIR_COUNT"
     }
   ],
   "blockers": [
-    "One matched pair;5.015% is only0.015percentage-point above5% pilot threshold.",
-    "Terminal counts differ:baseline valid5/incomplete57/state1/fall1,ON valid12/incomplete47/state3/fall2; no full functional regression pass.",
-    "Actual trajectories, phase mix and physical work differ; full CPU delta not proven pure eligibility-cache cost.",
-    "Mission dt is not Present. Visual/Present/GPU/GC and repeatability not measured.",
-    "Transient empty status-read helper failure corrected without game restart; full client-frame active trace used to crosscheck gap."
+    "Three valid independent pairs not available:valid2,excluded1.",
+    "Third baseline lost foreground:25/28 coarse observations during CPU capture inactive;992 inactive frames in whole client trace. Raw third -6.70% excluded.",
+    "Valid CPU changes -5.015% and -1.539% vary; descriptive two-value median -3.277% is not accepted effect.",
+    "Function/Present/visual and pure-cost attribution remain unverified.",
+    "Awaiting dedicated foreground slot before rerunning both conditions of excluded pair."
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/lazy-crowd-eligibility-cost64-pilot-20261112.md",
-      "sha256": "eb3bd2cc5fb41cbe4ed73df57f57f367722193c5658dead549fdbc9ee455d25d"
+      "report": "reports/operations/lazy-crowd-eligibility-repeat-exclusion-20261112.md",
+      "sha256": "ebc764a4c82b710ad76bf389b60b58aae9ce87d3f9fd956861ecf38ce2c0cc81"
     },
     {
-      "data": "data/lazy-crowd-eligibility-cost64-pilot-20261112.json",
-      "sha256": "fd915300b76cbe9b89618e5455bb3f1bb16b91e87ed7ef9066c724e5643c5f58"
+      "data": "data/lazy-crowd-eligibility-repeat-exclusion-20261112.json",
+      "sha256": "40c01ada175a0afbacdaad516545232f0f078c2a8599737ffebf6566dcb9e64f"
     },
     {
-      "evidence": "data/lazy-crowd-eligibility-cost64-pilot-20261112-evidence.txt",
-      "sha256": "de6032a981f2d4cf73587726abcbfefefbcb1e547037732c365a453e74e735f1"
+      "evidence": "data/lazy-crowd-eligibility-repeat-exclusion-20261112-evidence.txt",
+      "sha256": "20b1314b7c3296dab17b116aef91f491846b706b0cdb231b5db2faae0242fb7c"
     },
     {
-      "decision": "data/lazy-crowd-eligibility-cost64-pilot-20261112-decision.json",
-      "sha256": "561ca692a82c911671526a827dbd0ac7e169c4ecfba6e520b559a0cf47d3f964"
+      "exclusion": "data/lazy-crowd-eligibility-repeat-exclusion-20261112-exclusion.json",
+      "sha256": "7aff4844051b4f956df615f0c525379c3b5d1d566e714ddb619f7d9a0aef9788"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-11-12T12:21:38.292Z",
-    "staleAfter": "2026-11-13T12:21:38.292Z",
+    "sourceUpdatedAt": "2026-11-12T12:43:18.299Z",
+    "staleAfter": "2026-11-13T12:43:18.299Z",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
-    "consumerRule": "Single64 CPU pair; not repeated improvement/full function/visual acceptance."
+    "consumerRule": "2 valid pairs,1 excluded; no optimization acceptance; exclude attempt3 from valid summary."
   },
   "updateState": {
-    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T12:21:38.292Z",
+    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T12:43:18.299Z",
     "lastUpdateFailure": null
   },
   "links": {
@@ -15578,60 +15598,116 @@
         "independentPairs": 1,
         "comparableRepeatedPerformanceTrials": 0
       }
+    },
+    {
+      "id": "lazy-crowd-eligibility-repeat-exclusion-20261112",
+      "title": "Lazy64 repeat summary:2 valid pairs,1 excluded; no optimization acceptance",
+      "track": "repeat-condition-diagnosis",
+      "sourceRunId": [
+        "LAZY-ELIGIBILITY-cost64-repeat1"
+      ],
+      "buildId": "single224-13mods-lazy-02782be7b3ef1a4a",
+      "verificationStatus": {
+        "diagnosisSucceeded": true,
+        "experimentSuccess": false,
+        "finalAccepted": false,
+        "functional": "ALL_OBSERVED64_HOSTS_ALIVE_REGRESSION_UNDETERMINED",
+        "visual": "NOT_MEASURED",
+        "performance": "INCONCLUSIVE_VALID2_EXCLUDED1",
+        "adopted": false
+      },
+      "conditions": "Unchanged live64 single-render+receiver mission;OFF_ON,ON_OFF,OFF_ON;30wall-second CPU after40game-second warmup;third pair excluded for foreground loss.",
+      "evidenceReferences": [
+        {
+          "report": "reports/operations/lazy-crowd-eligibility-repeat-exclusion-20261112.md",
+          "sha256": "ebc764a4c82b710ad76bf389b60b58aae9ce87d3f9fd956861ecf38ce2c0cc81"
+        },
+        {
+          "data": "data/lazy-crowd-eligibility-repeat-exclusion-20261112.json",
+          "sha256": "40c01ada175a0afbacdaad516545232f0f078c2a8599737ffebf6566dcb9e64f"
+        },
+        {
+          "evidence": "data/lazy-crowd-eligibility-repeat-exclusion-20261112-evidence.txt",
+          "sha256": "20b1314b7c3296dab17b116aef91f491846b706b0cdb231b5db2faae0242fb7c"
+        },
+        {
+          "exclusion": "data/lazy-crowd-eligibility-repeat-exclusion-20261112-exclusion.json",
+          "sha256": "7aff4844051b4f956df615f0c525379c3b5d1d566e714ddb619f7d9a0aef9788"
+        }
+      ],
+      "blockers": [
+        "Three valid independent pairs not available:valid2,excluded1.",
+        "Third baseline lost foreground during CPU capture;25/28 coarse observations inactive and992 inactive frames. Raw third -6.70% excluded.",
+        "Valid CPU changes -5.015% and -1.539% vary; descriptive two-value median -3.277% is not accepted effect.",
+        "Function/Present/visual and pure-cost attribution remain unverified.",
+        "Awaiting dedicated foreground slot before rerunning both conditions of excluded pair."
+      ],
+      "replication": {
+        "independentPairsNew": 2,
+        "validNewPairs": 1,
+        "excludedNewPairs": 1,
+        "validTotalPairs": 2,
+        "attemptedTotalPairs": 3,
+        "priorPairReused": true
+      }
     }
   ],
   "kind": "metrics",
   "latestComparison": {
-    "id": "lazy-crowd-eligibility-cost64-pilot-20261112",
-    "title": "Live64 lazy eligibility whole CPU pilot:625.46 to594.09ms/wall-second; not accepted",
-    "track": "matched-cpu-pilot",
+    "id": "lazy-crowd-eligibility-repeat-exclusion-20261112",
+    "title": "Lazy64 repeat summary:2 valid pairs,1 excluded; no optimization acceptance",
+    "track": "repeat-condition-diagnosis",
     "sourceRunId": [
-      "LAZY-ELIGIBILITY-cost64-1"
+      "LAZY-ELIGIBILITY-cost64-repeat1"
     ],
     "buildId": "single224-13mods-lazy-02782be7b3ef1a4a",
     "verificationStatus": {
       "diagnosisSucceeded": true,
-      "experimentSuccess": true,
+      "experimentSuccess": false,
       "finalAccepted": false,
-      "functional": "ALL64_ALIVE_ACQUIRED_MOVED_CUTOFF_OUTCOMES_DIFFER_FULL_REGRESSION_OPEN",
+      "functional": "ALL_OBSERVED64_HOSTS_ALIVE_REGRESSION_UNDETERMINED",
       "visual": "NOT_MEASURED",
-      "performance": "SINGLE_PAIR_MINUS5_015_PERCENT_NOT_REPRODUCED",
+      "performance": "INCONCLUSIVE_VALID2_EXCLUDED1",
       "adopted": false
     },
-    "conditions": "Live64 single render+receiver;13 existing PBOs;90game seconds fixed ground/low/high;OFF thenON;30wall-second process CPU after40game-second warmup;shadow disabled.",
+    "conditions": "Unchanged live64 single-render+receiver mission;OFF_ON,ON_OFF,OFF_ON;30wall-second CPU after40game-second warmup;third pair excluded for foreground loss.",
     "evidenceReferences": [
       {
-        "report": "reports/operations/lazy-crowd-eligibility-cost64-pilot-20261112.md",
-        "sha256": "eb3bd2cc5fb41cbe4ed73df57f57f367722193c5658dead549fdbc9ee455d25d"
+        "report": "reports/operations/lazy-crowd-eligibility-repeat-exclusion-20261112.md",
+        "sha256": "ebc764a4c82b710ad76bf389b60b58aae9ce87d3f9fd956861ecf38ce2c0cc81"
       },
       {
-        "data": "data/lazy-crowd-eligibility-cost64-pilot-20261112.json",
-        "sha256": "fd915300b76cbe9b89618e5455bb3f1bb16b91e87ed7ef9066c724e5643c5f58"
+        "data": "data/lazy-crowd-eligibility-repeat-exclusion-20261112.json",
+        "sha256": "40c01ada175a0afbacdaad516545232f0f078c2a8599737ffebf6566dcb9e64f"
       },
       {
-        "evidence": "data/lazy-crowd-eligibility-cost64-pilot-20261112-evidence.txt",
-        "sha256": "de6032a981f2d4cf73587726abcbfefefbcb1e547037732c365a453e74e735f1"
+        "evidence": "data/lazy-crowd-eligibility-repeat-exclusion-20261112-evidence.txt",
+        "sha256": "20b1314b7c3296dab17b116aef91f491846b706b0cdb231b5db2faae0242fb7c"
       },
       {
-        "decision": "data/lazy-crowd-eligibility-cost64-pilot-20261112-decision.json",
-        "sha256": "561ca692a82c911671526a827dbd0ac7e169c4ecfba6e520b559a0cf47d3f964"
+        "exclusion": "data/lazy-crowd-eligibility-repeat-exclusion-20261112-exclusion.json",
+        "sha256": "7aff4844051b4f956df615f0c525379c3b5d1d566e714ddb619f7d9a0aef9788"
       }
     ],
     "blockers": [
-      "One matched pair;5.015% is only0.015percentage-point above5% pilot threshold.",
-      "Terminal counts differ:baseline valid5/incomplete57/state1/fall1,ON valid12/incomplete47/state3/fall2; no full functional regression pass.",
-      "Actual trajectories, phase mix and physical work differ; full CPU delta not proven pure eligibility-cache cost.",
-      "Mission dt is not Present. Visual/Present/GPU/GC and repeatability not measured.",
-      "Transient empty status-read helper failure corrected without game restart; full client-frame active trace used to crosscheck gap."
+      "Three valid independent pairs not available:valid2,excluded1.",
+      "Third baseline lost foreground during CPU capture;25/28 coarse observations inactive and992 inactive frames. Raw third -6.70% excluded.",
+      "Valid CPU changes -5.015% and -1.539% vary; descriptive two-value median -3.277% is not accepted effect.",
+      "Function/Present/visual and pure-cost attribution remain unverified.",
+      "Awaiting dedicated foreground slot before rerunning both conditions of excluded pair."
     ],
     "replication": {
-      "independentPairs": 1,
-      "comparableRepeatedPerformanceTrials": 0
+      "independentPairsNew": 2,
+      "validNewPairs": 1,
+      "excludedNewPairs": 1,
+      "validTotalPairs": 2,
+      "attemptedTotalPairs": 3,
+      "priorPairReused": true
     }
   },
   "latestReview": {
-    "sourceRunId": "LAZY-ELIGIBILITY-cost64-1",
-    "status": "PILOT_ONLY_NOT_ACCEPTED",
-    "next": "Repeat matched pair with reversed ON/OFF order; no functional repair expansion"
+    "sourceRunId": "LAZY-ELIGIBILITY-cost64-repeat1",
+    "status": "INCONCLUSIVE_CONDITION_GATE",
+    "next": "Await dedicated foreground slot then rerun both excluded conditions"
   }
 }
