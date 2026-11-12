@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-current-single64-cpu-20261112",
-  "generatedAt": "2026-11-12T11:41:01.483Z",
+  "snapshotId": "lazy-crowd-eligibility-local-20261112",
+  "generatedAt": "2026-11-12T11:56:37.213Z",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -65,7 +65,8 @@
     "SAME-RAY-shadow-eight1-r2",
     "SINGLE-HOST-death-capability1-r2",
     "RECEIVER-native-move1",
-    "CPU-CURRENT-single64-1"
+    "CPU-CURRENT-single64-1",
+    "LAZY-ELIGIBILITY-method1-r2"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -89,15 +90,16 @@
     "fe72db239825ea216766727847c2ff96f7e4a245243945ea327a026730e6ba1a",
     "5d7184ef91b44ff4a4a5ffb0ccca918cf20b46a75324d24af78cabc49f651db8",
     "ed0e9d4c2d95cff14f4ce61d085941654b7454c03c5a3c4644340076a5abe142",
-    "single224-13mods-f7b8a62845396922"
+    "single224-13mods-f7b8a62845396922",
+    "single224-13mods-lazy-bfebeccec02c2b38"
   ],
   "verificationStatus": {
     "diagnosisSucceeded": true,
     "experimentSuccess": true,
     "finalAccepted": false,
-    "functional": "ALL64_ALIVE_ACQUIRED_MOVED_SHORT_ATTRIBUTION_RUN_NOT_FULL_REGRESSION",
+    "functional": "SYNTHETIC_EQUIVALENCE_ONLY_8_64_NOT_RUN",
     "visual": "NOT_MEASURED",
-    "performance": "ATTRIBUTION_ONLY_NO_IMPROVEMENT_COMPARISON",
+    "performance": "LOCAL_UPDATE_SCREEN_PASS_NO_WHOLE_CPU_COMPARISON",
     "adopted": false
   },
   "metrics": [
@@ -13574,866 +13576,85 @@
       "conditions": "Current retail server64 logical,64single render+64receiver; original mixed mission;8s WPR request, recorder-inclusive sampled event interval",
       "repetitions": 1,
       "verificationStatus": "partial_attribution_not_performance_improvement"
+    },
+    {
+      "metricId": "lazy-crowd-eligibility-local-20261112-dense",
+      "sourceRunId": "LAZY-ELIGIBILITY-method1-r2",
+      "buildId": "single224-13mods-lazy-bfebeccec02c2b38",
+      "value": -13.712842836807116,
+      "unit": "percent/local-Crowd.Update-rawTick-ratio",
+      "conditions": "Synthetic Crowd.Update64 bodies/side;1 process;3 paired1000-update blocks/layout; middle pair reverse order; cache allocation included; no native entities.",
+      "repetitions": 3,
+      "independentProcesses": 1,
+      "allBlockChangesPercent": [
+        -10.073516907937986,
+        -13.712842836807116,
+        -14.034744186410153
+      ],
+      "verificationStatus": "LOCAL_SCREEN_ONLY_NOT_WHOLE_CPU"
+    },
+    {
+      "metricId": "lazy-crowd-eligibility-local-20261112-sparse",
+      "sourceRunId": "LAZY-ELIGIBILITY-method1-r2",
+      "buildId": "single224-13mods-lazy-bfebeccec02c2b38",
+      "value": 0.10142008936344649,
+      "unit": "percent/local-Crowd.Update-rawTick-ratio",
+      "conditions": "Synthetic Crowd.Update64 bodies/side;1 process;3 paired1000-update blocks/layout; middle pair reverse order; cache allocation included; no native entities.",
+      "repetitions": 3,
+      "independentProcesses": 1,
+      "allBlockChangesPercent": [
+        0.10142008936344649,
+        0.6981557147235806,
+        -0.48377446273958347
+      ],
+      "verificationStatus": "LOCAL_SCREEN_ONLY_NOT_WHOLE_CPU"
+    },
+    {
+      "metricId": "lazy-crowd-eligibility-local-20261112-medium",
+      "sourceRunId": "LAZY-ELIGIBILITY-method1-r2",
+      "buildId": "single224-13mods-lazy-bfebeccec02c2b38",
+      "value": -11.912850856348122,
+      "unit": "percent/local-Crowd.Update-rawTick-ratio",
+      "conditions": "Synthetic Crowd.Update64 bodies/side;1 process;3 paired1000-update blocks/layout; middle pair reverse order; cache allocation included; no native entities.",
+      "repetitions": 3,
+      "independentProcesses": 1,
+      "allBlockChangesPercent": [
+        -25.973896522648765,
+        -11.912850856348122,
+        -9.275779163171972
+      ],
+      "verificationStatus": "LOCAL_SCREEN_ONLY_NOT_WHOLE_CPU"
     }
   ],
   "blockers": [
-    "26.13% target sample weight lacks stacks; complete cost decomposition not available.",
-    "Inclusive VM/query groups overlap; do not sum or convert to exact self-time or saving.",
-    "Mission dt is whole observed gameplay, not exact ETL join/Present; exact phase-only attribution unavailable.",
-    "Short diagnostic stopped around62game seconds:2valid,56incomplete,2fall,4unresolved; not64 functional acceptance.",
-    "Lazy eligibility alternative is source review only; earlier eager cache failed sparse cost."
+    "One independent process; three paired blocks per layout are not independent runs.",
+    "No actual native entities, physics-query reduction, 8/64 gameplay, Present or whole CPU saving measured.",
+    "Medium condition first block has large variation; all blocks retained, no selected best-run claim.",
+    "Vanilla internal support/collision query counts and contact caching remain unverified."
   ],
   "evidenceReferences": [
     {
-      "id": "admission-report",
-      "uri": "/downloads/admission-report.txt",
-      "sha256": "54593126451adc36da423f349a4d57979d4f679dc9a50ae2f6176edfb7be1b7a",
-      "scope": "curated_public_projection"
+      "report": "reports/operations/lazy-crowd-eligibility-local-20261112.md",
+      "sha256": "80ad5f551214af5d86c0b42889b016529e514db99d411ac106e305fad041721b"
     },
     {
-      "id": "admission-review",
-      "uri": "/downloads/admission-review.txt",
-      "sha256": "17ca09c428bf0777463d915a2704cb3a2d6348668f3fae2a10c9dccf2b24cc25",
-      "scope": "curated_public_projection"
+      "data": "data/lazy-crowd-eligibility-local-20261112.json",
+      "sha256": "0fc4c5dc94fa27b80085af2f6fbdbc92d97a8bd39ae41cfc552e9a572861a1d7"
     },
     {
-      "id": "admission-json",
-      "uri": "/data/experiments/admission.json",
-      "sha256": "1d63c1acf430c9c23678bc4e105978bc69f930eb516b6d3fd86ae87d587a79ed",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "animation-report",
-      "uri": "/downloads/animation-report.txt",
-      "sha256": "a7e33e39e1edd7415c21fc3ea9cace4f5f2ef0667839925623ea77e3219af499",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "animation-review",
-      "uri": "/downloads/animation-review.txt",
-      "sha256": "fa80e5c184cc7e5a0ded585c82e9fbc1f1598d90f4f91ca0d6c4c960dd22a967",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "animation-json",
-      "uri": "/data/experiments/animation.json",
-      "sha256": "f0672b82be399206940d8be1b8d5af73e08bcc8fa0bbb5ea379c9b0632e93148",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "admission-runtime-report",
-      "uri": "/downloads/checkpoints/2026-10-28_054435_889391+0900_npc-admission-latch-runtime.txt",
-      "sha256": "dda0a4d086f245071a64c69d10d7b358f74388f8daa6d8eca96d68ee0f300ede",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "admission-runtime-review",
-      "uri": "/downloads/checkpoints/2026-10-28_054435_889391+0900_npc-admission-latch-runtime_evidence.txt",
-      "sha256": "9ed1965693276593950cbd332da62b924aa388fb4ef9d3493d5c5fe5603ccad2",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "admission-runtime-json",
-      "uri": "/data/experiments/admission-latch-runtime-20261028.json",
-      "sha256": "419468cbed5ea77485ef8a4fd9ecde5767345b2d5d849b25da00c40bbfb442aa",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "landing-corridor-20261028-report",
-      "uri": "/downloads/checkpoints/2026-10-28_060206_263048+0900_npc-landing-corridor.txt",
-      "sha256": "fba79cdd3ede25f3d3e29ed5d6553ade8db9a44f396afe5e86f5c171c7dae49c",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "landing-corridor-20261028-review",
-      "uri": "/downloads/checkpoints/2026-10-28_060206_263048+0900_npc-landing-corridor_evidence.txt",
-      "sha256": "c194f63025239140b72707b58dd38f1534f5db14ca5e259ba4bc20338527678f",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "landing-corridor-20261028-json",
-      "uri": "/data/experiments/landing-corridor-20261028.json",
-      "sha256": "2ee421e230c74c8b1d093b5dbf0fd5d230c4b24338f0eb61caf093aaf84cc607",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "window-cadence-20261028-report",
-      "uri": "/downloads/checkpoints/2026-10-28_062131_467976+0900_npc-window-cadence.txt",
-      "sha256": "c6f6c6a9071acc39cbd94e44c22bf0ebe5d0311adb55c1e8cd82b45b5e56ba0a",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "window-cadence-20261028-review",
-      "uri": "/downloads/checkpoints/2026-10-28_062131_467976+0900_npc-window-cadence_evidence.txt",
-      "sha256": "d20c328205210017f4461a9290997e16e4f4ed15bb153e44832298f82b435392",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "window-cadence-20261028-json",
-      "uri": "/data/experiments/window-cadence-20261028.json",
-      "sha256": "188f59d1a46e1f41d9cdaff207bb10500c4a6a71f4e321e57a5bb411e9e7560d",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "escape-shadow-visible-20261028-report",
-      "uri": "/downloads/checkpoints/2026-10-28_064721_121008+0900_npc-escape-shadow-visible.txt",
-      "sha256": "bd1c801495e1bfe6d118f2b45b5241e661f555f3a2b71fff62b24e720042ec69",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "escape-shadow-visible-20261028-review",
-      "uri": "/downloads/checkpoints/2026-10-28_064721_121008+0900_npc-escape-shadow-visible_evidence.txt",
-      "sha256": "fe2811b6a9d9a061988d01c27273fdc1a162488d01e78cb9506e7571b47592ff",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "escape-shadow-visible-20261028-json",
-      "uri": "/data/experiments/escape-shadow-visible-20261028.json",
-      "sha256": "7c8186b3e3df971668b9e2a285064ff8b5e2ec712dcc6f6a5e013f795307c50a",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "pose-buffer-continuity-20261028-report",
-      "uri": "/downloads/checkpoints/2026-10-28_071019_264119+0900_npc-pose-buffer-continuity.txt",
-      "sha256": "a46da133c58c21e717c4db655460a616cdcb6468774cb35a50fc7e248335aaec",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "pose-buffer-continuity-20261028-review",
-      "uri": "/downloads/checkpoints/2026-10-28_071019_264119+0900_npc-pose-buffer-continuity_evidence.txt",
-      "sha256": "d53efa563928824cc3fe574af7f5b1e4e65698d2380975e6c5734571b69dfaec",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "pose-buffer-continuity-20261028-json",
-      "uri": "/data/experiments/pose-buffer-continuity-20261028.json",
-      "sha256": "824a896f509690677451a846cbe4876d76dc7dc263dbc131a93fdc8020f4528f",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "frame-order-20261028-report",
-      "uri": "/downloads/checkpoints/2026-10-28_074047_287797+0900_npc-frame-clock-pilot.txt",
-      "sha256": "59c88b66438029b6e90c1e361f1b0e57e4c3439deecb949ebb421be4b16157d0",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "frame-order-20261028-review",
-      "uri": "/downloads/checkpoints/2026-10-28_074047_287797+0900_npc-frame-clock-pilot_evidence.txt",
-      "sha256": "028635d0959ff343e6d8eae550223a567b3e6dd3b73ff49d262e49d6394b53f7",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "frame-order-20261028-json",
-      "uri": "/data/experiments/frame-order-20261028.json",
-      "sha256": "ddeb9914722f9c2c7894c830faf9af4a6492ec2a73b0c9f1061ab673ae0e39f5",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "tickcount-origin-20261028-report",
-      "uri": "/downloads/checkpoints/2026-10-28_081756_702387+0900_npc-tickcount-origin.txt",
-      "sha256": "eef9c7b1b42e7416552befa8ce13a28b623190d988507461d6d51aa0edb1ea80",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "tickcount-origin-20261028-review",
-      "uri": "/downloads/checkpoints/2026-10-28_081756_702387+0900_npc-tickcount-origin_evidence.txt",
-      "sha256": "8d2877b41a52a0a6a61fcef7fe8011900a6b94defda5299768931fa0fb50c60a",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "tickcount-origin-20261028-json",
-      "uri": "/data/experiments/tickcount-origin-20261028.json",
-      "sha256": "857db9eb49892fe8dd6612aed8f9c51a328ced383bb2f216d4f49e320abf8ff4",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "timing-control-audit-20261028-report",
-      "uri": "/downloads/checkpoints/2026-10-28_141521_759774+0900_npc-timing-control-audit.txt",
-      "sha256": "53669edc5604bdb8f571b31f12919d4cce038ace9d0f4dca9a357bb9f5004a54",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "timing-control-audit-20261028-review",
-      "uri": "/downloads/checkpoints/2026-10-28_141521_759774+0900_npc-timing-control-audit_evidence.txt",
-      "sha256": "17753957324a6f938bdd1493d69111000e948b314a8423dc675726e4405d5eff",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "timing-control-audit-20261028-json",
-      "uri": "/data/experiments/timing-control-audit-20261028.json",
-      "sha256": "d0ce029966f99886f7aacea9c8964466b486febfb3f587ed9344c22611b8eef1",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "descriptor-copy-20261028-report",
-      "uri": "/downloads/checkpoints/2026-10-28_144519_839877+0900_npc-descriptor-copy-control.txt",
-      "sha256": "aa4b0bbf48ea5331a00a162525467bd1c9aba6c92cffa6d7887813095f2af5d2",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "descriptor-copy-20261028-review",
-      "uri": "/downloads/checkpoints/2026-10-28_144519_839877+0900_npc-descriptor-copy-control_evidence.txt",
-      "sha256": "962c77ed49b2b6a6f9d56c4053b81cf2034921fa971d3266522f80f155795f8c",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "descriptor-copy-20261028-json",
-      "uri": "/data/experiments/descriptor-copy-20261028.json",
-      "sha256": "2675ceb3ee40cdd8039d00f982c0f97709668b4c2c774cd102112765dc32a639",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "period-fraction-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_041715_741778+0900_npc-period-fraction.txt",
-      "sha256": "73ccb93c6593bc1c96408a94e4a2d12ff76115ad72aff7cbe332ac3ddc732471",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "period-fraction-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_041715_741778+0900_npc-period-fraction_evidence.txt",
-      "sha256": "a8a83dc7ac695d2e5895061e7d25bcaad0e56acefaa700b611133f1d7105231f",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "period-fraction-20261029-json",
-      "uri": "/data/experiments/period-fraction-20261029.json",
-      "sha256": "36d1a0f9b384497ef7c174c615474af2af83e229e28bde5ffbe70f34b2f5a5d7",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "period-visible-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_042719_349624+0900_npc-period-visible-boundary.txt",
-      "sha256": "d4e010e372409ece211115b856c4737eeb67b13bebfefa21385111a0d42bc07e",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "period-visible-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_042719_349624+0900_npc-period-visible-boundary_evidence.txt",
-      "sha256": "6bf16bbb842dbd104d90b5b1f1d42690397417db62af63b0cfd87493b660411e",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "period-visible-20261029-json",
-      "uri": "/data/experiments/period-visible-20261029.json",
-      "sha256": "98944266b097c6dd684d086b2c2288ca7dace334fdfd9ed46df57ec91aa5553f",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "clock-conservation-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_044134_304460+0900_npc-clock-conservation.txt",
-      "sha256": "e520f11eb07fb1aeb3afd2497fc813dcdd7f048c4ecd79c9d61edfaf764447fa",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "clock-conservation-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_044134_304460+0900_npc-clock-conservation_evidence.txt",
-      "sha256": "0c48a8f51252fc00149530f433501216a0f45df4abbffb3ddb887412e2492d22",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "clock-conservation-20261029-json",
-      "uri": "/data/experiments/clock-conservation-20261029.json",
-      "sha256": "ea87c047a514e6014095376697943a845b3d7e3b4b2621d79dfda4249678e58b",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "clock-conservation-repeat-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_045441_007275+0900_npc-clock-conservation-repeat.txt",
-      "sha256": "952eacdb071811cdab7300433829d49339f8f4b4374e4a27e6a0d10e0799c2d7",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "clock-conservation-repeat-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_045441_007275+0900_npc-clock-conservation-repeat_evidence.txt",
-      "sha256": "b6aa69aa8476436f8ee976eaff5e49398b76f47f1bc3b1aa5b0d2c57474f070e",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "clock-conservation-repeat-20261029-json",
-      "uri": "/data/experiments/clock-conservation-repeat-20261029.json",
-      "sha256": "a78818a3b8df68a77d7721c5a059ac855e24ca547c651492070723b48fbf5532",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "actor43-wide-handoff-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_124624_788757+0900_npc-actor43-wide-handoff.txt",
-      "sha256": "8600b676631fb3863e85ff8f3d52d4ac01bb8961d322a0e9920b669c5ae56c77",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "actor43-wide-handoff-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_124624_788757+0900_npc-actor43-wide-handoff_evidence.txt",
-      "sha256": "e6c89a9efa5b369db7c1c20d19307dd20917be1820f7278599a0ff92bf4ff00c",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "actor43-wide-handoff-20261029-json",
-      "uri": "/data/experiments/actor43-wide-handoff-20261029.json",
-      "sha256": "a7cbb71f4150329db028f245ccb7206fb2b2b92a8fc974d1a0f8a5ff8c2393c4",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "actor43-owner-runtime-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_131512_255107+0900_npc-actor43-owner-runtime.txt",
-      "sha256": "bc5bd362016541dbb27a47ca50ed4cf37df4652994aa79247201a5374cc58492",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "actor43-owner-runtime-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_131512_255107+0900_npc-actor43-owner-runtime_evidence.txt",
-      "sha256": "250ee377a75e750d6e1be8d977fa9adc9ee9b400b30d49669444e59f13ba8419",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "actor43-owner-runtime-20261029-json",
-      "uri": "/data/experiments/actor43-owner-runtime-20261029.json",
-      "sha256": "d11621ab3ec1876aac7e6c918f1e1b9c27e2f0123d2fd2cfd1f33f61bf09ec53",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "owner-cost-clock-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_133537_752964+0900_npc-owner-cost-clock.txt",
-      "sha256": "b31f2dbee141260cd5bbde86d12dcef2dedff4b3601df314caabbe93eed2e46b",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "owner-cost-clock-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_133537_752964+0900_npc-owner-cost-clock_evidence.txt",
-      "sha256": "e370254cc4cb15b20ece24690fcceec5e5af5022de20bc1e1ae22705bf5620c4",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "owner-cost-clock-20261029-json",
-      "uri": "/data/experiments/owner-cost-clock-20261029.json",
-      "sha256": "c2300dc683acf9b1cafbe2dcba291c518ee9226f47b651dd122905e0c017d952",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "landing-backoff-detail-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_141707_482541+0900_npc-landing-backoff-detail.txt",
-      "sha256": "0a7b8c8e7307dd66a2fc8f5a8b560b7141b0db6f8a043e8a4bdd317d90b11666",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "landing-backoff-detail-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_141707_482541+0900_npc-landing-backoff-detail_evidence.txt",
-      "sha256": "23d5b8579ddf8e8908d066435299e3c577065d06ce3bd546632408357d06fed0",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "landing-backoff-detail-20261029-json",
-      "uri": "/data/experiments/landing-backoff-detail-20261029.json",
-      "sha256": "e9f2e1e48c0baccaa828ebda9569b9f7974025b92cab10ffc0b576e45d4b9fd3",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "actor59-support-boundary-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_144117_363180+0900_npc-actor59-support-boundary.txt",
-      "sha256": "b163e1bec3ac33879bd2b83baa3d80dd4a3329c97bd877b918a43a8c63e5605c",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "actor59-support-boundary-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_144117_363180+0900_npc-actor59-support-boundary_evidence.txt",
-      "sha256": "6178715f4c0ae065c576721fc031841cfd97dda35e5e46afc40661bef7666527",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "actor59-support-boundary-20261029-json",
-      "uri": "/data/experiments/actor59-support-boundary-20261029.json",
-      "sha256": "aeaa7b0a5682add988f7a425d2ed28be1c7b3f53f93e6bc20cf1d3ffa8ceb231",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "ground-handoff20-guard-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_150958_971281+0900_npc-ground-handoff20-guard.txt",
-      "sha256": "6b7432dae99009feac644f19ab7e14008083e6fa57067cc7637399d4e354b038",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "ground-handoff20-guard-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_150958_971281+0900_npc-ground-handoff20-guard_evidence.txt",
-      "sha256": "b6eda95713954e59b5c94cf52c52e6f2682f0bb3a96bac519edeff872ffeb08d",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "ground-handoff20-guard-20261029-json",
-      "uri": "/data/experiments/ground-handoff20-guard-20261029.json",
-      "sha256": "015c560995e159170f6986552936b80f71b83ec84a90ac0e482d69950a0ddc0f",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "ground-search20-pose-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_155248_628940+0900_npc-ground-search20-pose.txt",
-      "sha256": "3307538a033d8cfc41b6022a87cfc259b0abbb785d46715c8c60e013671cfecd",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "ground-search20-pose-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_155248_628940+0900_npc-ground-search20-pose_evidence.txt",
-      "sha256": "56ae05cf36872a5e1854a52ba348af63987b65bdc140915343f99ea965e4f010",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "ground-search20-pose-20261029-json",
-      "uri": "/data/experiments/ground-search20-pose-20261029.json",
-      "sha256": "430145442b18fcfaeab3de74013bdb45973157a506c93381eb30e66d88c18dfb",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "post-touchdown20-visible-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_162535_861227+0900_npc-post-touchdown20-visible.txt",
-      "sha256": "55087aebce912d92f3ae3123bbac7dd008daf4f2a58445773e5848ce63697db9",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "post-touchdown20-visible-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_162535_861227+0900_npc-post-touchdown20-visible_evidence.txt",
-      "sha256": "186b8594b5dad68d082bc9583aa068d966a0e1322f54696e77c51d1eedba4326",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "post-touchdown20-visible-20261029-json",
-      "uri": "/data/experiments/post-touchdown20-visible-20261029.json",
-      "sha256": "522f950acbf9e8a2bc0dbccc63cb735011d325b387fdfb1f757f19dba36ea108",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "post-touchdown-owner-runtime-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_170240_587456+0900_npc-post-touchdown-owner-runtime.txt",
-      "sha256": "758cd47821af0ef9d4835845e3a2cbaf025f1dc39b0004b7a2334b43a7e82629",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "post-touchdown-owner-runtime-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_170240_587456+0900_npc-post-touchdown-owner-runtime_evidence.txt",
-      "sha256": "1629ce8a67deedc66f2107eae14ba5b2c26829913c790f6dfcac5ba9ee88cafa",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "post-touchdown-owner-runtime-20261029-json",
-      "uri": "/data/experiments/post-touchdown-owner-runtime-20261029.json",
-      "sha256": "ceaf9b8cc8adaf4eddba621207d5028523c45f648aac836945a28aa9d2edcc3b",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "fixed-stimulus-cost-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_173258_249618+0900_npc-fixed-stimulus-cost.txt",
-      "sha256": "3f494ee522c453d5334c04d69751b920a3d8be5725a006c5532bafb85524e260",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "fixed-stimulus-cost-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_173258_249618+0900_npc-fixed-stimulus-cost_evidence.txt",
-      "sha256": "9f9c0bb82b28699330b16fbeee37d6e2f8b60ae42eb997bcfc5ab64bd15b7a24",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "fixed-stimulus-cost-20261029-json",
-      "uri": "/data/experiments/fixed-stimulus-cost-20261029.json",
-      "sha256": "1d58889abe7f28bf70c91e478ce2c86a1f95a073db174b5602d3107f5790cc9b",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "prelanding17-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_175918_891481+0900_npc-prelanding17.txt",
-      "sha256": "79693574f0838d6376f2a85f921e6c28345763637c6ec577c0799de02ab4e71a",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "prelanding17-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_175918_891481+0900_npc-prelanding17_evidence.txt",
-      "sha256": "787eab3cfcdb0b0e4ee4c9b32ca7b0467dcd4374ac0b4e50189e882cee3fb700",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "prelanding17-20261029-json",
-      "uri": "/data/experiments/prelanding17-20261029.json",
-      "sha256": "b24498de1e55741973d846f0a91d2e5763226ae4adef05d31badb44f2f2791fc",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "prelanding17-continuous-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_182059_574339+0900_npc-prelanding17-continuous.txt",
-      "sha256": "b777e52f7d2a2ccab6d6867a6a9ef14399651ae15a7a1be562d6888823dabe1a",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "prelanding17-continuous-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_182059_574339+0900_npc-prelanding17-continuous_evidence.txt",
-      "sha256": "d696ab988bd400d06f32ec79cdc4a811447d81b2dad5b790e0a06e919e05ccca",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "prelanding17-continuous-20261029-json",
-      "uri": "/data/experiments/prelanding17-continuous-20261029.json",
-      "sha256": "e59a0730cf975990fb650afc716a4d4bd66008f53d1846fb99ed24a5f54074c3",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "prelanding17-se2-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_185003_253762+0900_npc-prelanding17-se2.txt",
-      "sha256": "1b4b225ae99ee2a6b4efa3d5178fa94120c111800c98b6ee8686e1d85bd08ac0",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "prelanding17-se2-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_185003_253762+0900_npc-prelanding17-se2_evidence.txt",
-      "sha256": "8e75097d856ddb5afa623198d03677eca014c5d081f7e47ed4b15bce331679f2",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "prelanding17-se2-20261029-json",
-      "uri": "/data/experiments/prelanding17-se2-20261029.json",
-      "sha256": "6d2a091117d74a9207f20bd949e2d24d29f14d51e442fef10156bd67773c658a",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "previous-contacts-capture-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_194818_541661+0900_npc-previous-contacts-capture.txt",
-      "sha256": "946fb424a0a9e921aba08723a19efe6b8cad5da55b4fec31407f3c22b774735b",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "previous-contacts-capture-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_194818_541661+0900_npc-previous-contacts-capture_evidence.txt",
-      "sha256": "4d3469a360f8a784ace38d3363a5c71a63658dce1618012edff97f79da74ec6e",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "previous-contacts-capture-20261029-json",
-      "uri": "/data/experiments/previous-contacts-capture-20261029.json",
-      "sha256": "b6dd2492f2dcf5af65b078d98673308d6976f09e0ad7501b89a4bd28d19b1cf1",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "captured-contact-replay-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_201906_102348+0900_npc-captured-contact-replay.txt",
-      "sha256": "f71702e4cd5978024e0f41f048a268e8cb939724bcfbb9544fe89aa8d8454e47",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "captured-contact-replay-20261029-review",
-      "uri": "/downloads/checkpoints/public-review.txt",
-      "sha256": "520e7c46af42939c93ec4375e51e555bbcde7ac4c1c1b0a91ce2dca75f8abb64",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "captured-contact-replay-20261029-json",
-      "uri": "/data/experiments/captured-contact-replay-20261029.json",
-      "sha256": "d451105d03f511e0926bf729251148980230c0193dc9b36127aea822a2df27de",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "contact-episode-review-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_203908_181028+0900_npc-contact-episode-review.txt",
-      "sha256": "dcb5958648edef4cbbbbd577c7ebc721709545a41f297262d36f4eea484c7eec",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "contact-episode-review-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_203908_181028+0900_npc-contact-episode-review_evidence.txt",
-      "sha256": "07a991a5cc8eaf9a4fede897784bf408b5d8fa790346816c57a6659b29ff5c4d",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "contact-episode-review-20261029-json",
-      "uri": "/data/experiments/contact-episode-review-20261029.json",
-      "sha256": "64a7bea0255e6245e30e080b68ee96d76a8743facaa5c4aa6c036399590ec60a",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "entry-stage-latency-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_212837_774994+0900_npc-entry-stage-latency.txt",
-      "sha256": "94de6f5febd0c03de87b016a391998dba205918dfe868b3c1dbf7fb8093b7328",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "entry-stage-latency-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_212837_774994+0900_npc-entry-stage-latency_evidence.txt",
-      "sha256": "801329190c8a9e466c0495e671d66acb4bac54763a1b9983895753b81c5ad9f8",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "entry-stage-latency-20261029-json",
-      "uri": "/data/experiments/entry-stage-latency-20261029.json",
-      "sha256": "a976deece89e5c6b132640484f121bad16d08192848853b90bb71ebe0d86214f",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "entry-preparation-policy-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_221145_232625+0900_npc-entry-preparation-policy.txt",
-      "sha256": "2fd0cf84f11cf5db8e45f818129ee4abe93d07216e61dea08892a74857c13430",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "entry-preparation-policy-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_221145_232625+0900_npc-entry-preparation-policy_evidence.txt",
-      "sha256": "e3ba72b0e37ce81254ab21fa7895c8c351420e083aadb9d2b6a739397dd70c45",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "entry-preparation-policy-20261029-json",
-      "uri": "/data/experiments/entry-preparation-policy-20261029.json",
-      "sha256": "90349e867d7a3f72d9f816fbb1b147c3a4ed4195252108177f5c022d5ea555e9",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "instance-duration-binding-20261029-report",
-      "uri": "/downloads/checkpoints/2026-10-29_222610_529448+0900_npc-instance-duration-binding.txt",
-      "sha256": "27443efa2361a50a7a8cc2b6f67c9a21609a00c4d60f826f4cce4adabcbca8bf",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "instance-duration-binding-20261029-review",
-      "uri": "/downloads/checkpoints/2026-10-29_222610_529448+0900_npc-instance-duration-binding_evidence.txt",
-      "sha256": "6f33d9fca7a9bdc6c447f6713705866c06f6088d291b8ec22d347c0bda3faba1",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "instance-duration-binding-20261029-json",
-      "uri": "/data/experiments/instance-duration-binding-20261029.json",
-      "sha256": "6489b1c16c260dc38316652e68316da460eebc2947e96273275891ac30ed1fd6",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "animation-review-plan-20261030-report",
-      "uri": "/downloads/checkpoints/2026-10-30_054138_619630+0900_npc-animation-review-plan.txt",
-      "sha256": "b28442104e482621708935d421eb933d22715839782f793378c06e3221fe7950",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "animation-review-plan-20261030-review",
-      "uri": "/downloads/checkpoints/2026-10-30_054138_619630+0900_npc-animation-review-plan_evidence.txt",
-      "sha256": "2c72112e52317c53edad78dd3441760b5a27e5139779272fbba637e0022f65bd",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "animation-review-plan-20261030-json",
-      "uri": "/data/experiments/animation-review-plan-20261030.json",
-      "sha256": "b22118eda76616877ada174df22147427868e5d244ed70e3a3110da101810bc3",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "entry-preparation-resume-20261030-report",
-      "uri": "/downloads/checkpoints/2026-10-30_074004_638877+0900_npc-entry-preparation-on-regression.txt",
-      "sha256": "5f743209e84faa3c4c836d9ac8220f972600e0322ff09807edde42f2d060daca",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "entry-preparation-resume-20261030-review",
-      "uri": "/downloads/checkpoints/entry-preparation-on-review.txt",
-      "sha256": "c9771dc793b4986c00856fda33b363c9a6ee6e385cf6e815d538cb005df3d062",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "entry-preparation-resume-20261030-json",
-      "uri": "/data/experiments/entry-preparation-resume-20261030.json",
-      "sha256": "9eb78dbe1b6ad49fb9d383104c1c0571de62ac14aa68183d03f0dd1519a46a06",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "actor50-footprint-diagnosis-20261030-report",
-      "uri": "/downloads/checkpoints/2026-10-30_080420_743931+0900_npc-actor50-footprint-diagnosis.txt",
-      "sha256": "dc597405a46e3371138640dbecf6adf5c7d4730b577d81fc98e8b5935a348da2",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "actor50-footprint-diagnosis-20261030-review",
-      "uri": "/downloads/checkpoints/actor50-footprint-review.txt",
-      "sha256": "5789d1ce3ffe8042f03597945b4c740c7e126ea94996e9f7c795e0ef080079a0",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "actor50-footprint-diagnosis-20261030-json",
-      "uri": "/data/experiments/actor50-footprint-diagnosis-20261030.json",
-      "sha256": "8544d42b25e5d182640bd9e3338603dc73d0ed2de646f256900a2a1478f95e82",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "contact-input-observer-20261030-report",
-      "uri": "/downloads/checkpoints/2026-10-30_085242_704829+0900_npc-contact-input-observer.txt",
-      "sha256": "c5324d7379ade0af6c3838deb733bf30a33eda1ab606ba83dce6ce7c77d698a0",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "contact-input-observer-20261030-review",
-      "uri": "/downloads/checkpoints/contact-input-review.txt",
-      "sha256": "54da302db4b1c4d9a894ddeedd06452fec6648012d614aed9cfefc9d92e2766f",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "contact-input-observer-20261030-json",
-      "uri": "/data/experiments/contact-input-observer-20261030.json",
-      "sha256": "06037a6c2828787919ddf7bb327c14a5902de18c2abc7addd5c0693772b423a5",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "actor60-direction-diagnosis-20261030-report",
-      "uri": "/downloads/checkpoints/2026-10-30_091427_851444+0900_npc-actor60-direction-diagnosis.txt",
-      "sha256": "e47b5ea7f9d76e13d025e4f1cdce301e94949f5bec301195ba4bc2fed2b97482",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "actor60-direction-diagnosis-20261030-review",
-      "uri": "/downloads/checkpoints/actor60-direction-review.txt",
-      "sha256": "f61b18a240d8c0078f7f263564ef4a282661635c1751f49fbd8d2eca3ea965d6",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "actor60-direction-diagnosis-20261030-json",
-      "uri": "/data/experiments/actor60-direction-diagnosis-20261030.json",
-      "sha256": "5b31cc937686c2523d31729172775837abdca17a97011e5dd941962874d839cb",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "escape-refinement-runtime-20261030-report",
-      "uri": "/downloads/checkpoints/2026-10-30_094034_176533+0900_npc-refinement-runtime.txt",
-      "sha256": "b320bf66c0484387e482d2cb06da2a6b3b2f979cde765456c3490bcd0291524f",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "escape-refinement-runtime-20261030-review",
-      "uri": "/downloads/checkpoints/escape-refinement-runtime-review.txt",
-      "sha256": "664a6404375c42a0a2c96fe2bf958059c554cc119c92ffc8051d90c0a22d1cb3",
-      "scope": "curated_public_projection"
-    },
-    {
-      "id": "escape-refinement-runtime-20261030-json",
-      "uri": "/data/experiments/escape-refinement-runtime-20261030.json",
-      "sha256": "5fb08e2a2faeb603ff20e8ffc57b0eff9cf329ec1cb97dc9b5a7fe3ee36efb9f",
-      "scope": "curated_public_projection"
-    },
-    {
-      "report": "reports/operations/rate100-200-comparison-20261112.md",
-      "sha256": "7e0d7158b8f78924e9a2720e36471dc7bd55a9da37cb624dbb7ce291d66259c6"
-    },
-    {
-      "evidence": "data/rate100-200-evidence-20261112.txt",
-      "sha256": "217916154eed9281df49c67ca897653fd61f612d3ecf1d01083eb4152e18c6cc"
-    },
-    {
-      "report": "reports/operations/joint-only-eight-diagnostic-20261112.md",
-      "sha256": "5840d723078cd2527ee111e99f7461e3a5363362108682cda66e4734874054da"
-    },
-    {
-      "evidence": "data/joint-only-eight-20261112-evidence.txt",
-      "sha256": "3ca54f2448726274739ba5ed2141c99eb6fcfefd9898e5b8f873aea35cbb3b2a"
-    },
-    {
-      "report": "reports/operations/solver-caller-ownership-eight-20261112.md",
-      "sha256": "5db3293e2d8e567a2e6e3f1f4feb2bc8f40845fd24f88fcad974089b428becfa"
-    },
-    {
-      "evidence": "data/solver-caller-ownership-eight-20261112-evidence.txt",
-      "sha256": "106d8849053edaee6acf5104329091a54065b7e0f0779e903b2a35b12a5568ec"
-    },
-    {
-      "data": "data/solver-caller-ownership-eight-20261112.json",
-      "sha256": "6f9a245da05d5e2c61938395e09b59e9a673d09bf84771ee7e348b0a43e95939"
-    },
-    {
-      "report": "reports/operations/native-animal-move-one-capability-20261112.md",
-      "sha256": "3da9c9e07ed2cb228e1d0cc135b95ae01e2a15d89886fe1825481f71f660d8aa"
-    },
-    {
-      "evidence": "data/native-animal-move-one-20261112-evidence.txt",
-      "sha256": "f29426cbe688f32a4c9e1c51fe514bc1687d95d09f2bd534ed37b89dd831ee87"
-    },
-    {
-      "data": "data/native-animal-move-one-20261112.json",
-      "sha256": "1764e7d0396d41935e8b6783198a16d376fb6537e773efe1a842994db90591f9"
-    },
-    {
-      "report": "reports/operations/native-script-root-handoff-capability-20261112.md",
-      "sha256": "a2124f38edfe00bcec20a5c484b408b02f72c645642b10b2b2eaf1049d03201d"
-    },
-    {
-      "evidence": "data/native-script-root-handoff-20261112-evidence.txt",
-      "sha256": "363ba6691ba0c7ae7a5060ce81d5dffb32465417d63bd578dea878b2a8448713"
-    },
-    {
-      "data": "data/native-script-root-handoff-20261112.json",
-      "sha256": "e11933dc5cb36d37e3f3654fe760308371c5c1f966287bcfe38e5229f1c80c70"
-    },
-    {
-      "data": "data/native-script-root-handoff-edges-20261112.json",
-      "sha256": "8a44ff48b888ce489d272d83e1a9ef78f59b96175403f98a83c02b3302741f63"
-    },
-    {
-      "report": "reports/operations/native-root-world-safety-gate-20261112.md",
-      "sha256": "09e291b1e13b25a8fed3387962a09f785139f8d76ec04bfd827ae7ac44cccc63"
-    },
-    {
-      "data": "data/native-root-world-gate-20261112.json",
-      "sha256": "dfd1b54d2c881d24944940c0e744a40d453aa9acc85702e313a768a33b5efae8"
-    },
-    {
-      "evidence": "data/native-root-world-gate-20261112-evidence.txt",
-      "sha256": "90cb3410c5432aad7182fa745ac703fec4d3b583301a56e2246858d963c37733"
-    },
-    {
-      "report": "reports/operations/same-solve-ray-shadow-eight-20261112.md",
-      "sha256": "458f45f2290100066b17e8e9b6b1d61381db0787816702b2db4b60dc41470bbd"
-    },
-    {
-      "data": "data/same-solve-ray-shadow-eight-20261112.json",
-      "sha256": "ba8f666e0ee3aa14b4e6b2fc84f882c2240aeac3ba3c7799743db3ae661615dd"
-    },
-    {
-      "evidence": "data/same-solve-ray-shadow-eight-20261112-evidence.txt",
-      "sha256": "09f11488454c8ccb1ea4ad3182cbd874fc8e4c70f9f1861a135544f7b5251654"
-    },
-    {
-      "report": "reports/operations/single-host-death-lifecycle-capability-20261112.md",
-      "sha256": "35b93f70f15ca4a90edd4afa1482befb1f1230c3d82e3d55e2b6e205eabb216c"
-    },
-    {
-      "data": "data/single-host-death-lifecycle-20261112.json",
-      "sha256": "4b41423127641fb42aacce3899a5f7ad3e5e09797fff7374d551de125c63eb16"
-    },
-    {
-      "evidence": "data/single-host-death-lifecycle-20261112-evidence.txt",
-      "sha256": "d6d7649424661dd30542064f4ce72a597d37993051efc0725b71b00837a8e356"
-    },
-    {
-      "report": "reports/operations/receiver-native-move-stationarity-20261112.md",
-      "sha256": "eece934019330ecc23518813698f78ceea9181acff5ebd1cc3a76dcd05f18b5c"
-    },
-    {
-      "data": "data/receiver-native-move-stationarity-20261112.json",
-      "sha256": "6f32f86f71568b812ecfde957c060ed9bc12cd7a07dfdc1b7eb656625649f983"
-    },
-    {
-      "evidence": "data/receiver-native-move-stationarity-20261112-evidence.txt",
-      "sha256": "62662d2b7368680621cf29be16455e8865ec0d810e3523d8d765ba8199b2d2ac"
-    },
-    {
-      "report": "reports/operations/current-single64-cpu-attribution-20261112.md",
-      "sha256": "88deb44ad852cab7acd99ec4a0691abb670aa8f323db090b573a427c0bd65744"
-    },
-    {
-      "data": "data/current-single64-cpu-attribution-20261112.json",
-      "sha256": "3b4c88d1e42fbec1be81be8c45f2ece4d3e0798e69d9003ac7dd2d4364392988"
-    },
-    {
-      "evidence": "data/current-single64-cpu-attribution-20261112-evidence.txt",
-      "sha256": "bec776713b60ed7f29073ffc67675b0a3c0cf2b472337685d8dde1b39c8c2913"
-    },
-    {
-      "report": "reports/operations/lazy-crowd-eligibility-review-20261112.md",
-      "sha256": "b981298a720ea7c37d51189704336d845468a6fc116276d53033b4d8ce1eab62"
+      "evidence": "data/lazy-crowd-eligibility-local-20261112-evidence.txt",
+      "sha256": "b7430fc8ebaa18605d56a0ee09ff19b3d8dca15b3a931295160a9d0df3acb25d"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-11-12T11:28:10.5435838+00:00",
-    "staleAfter": "2026-11-13T11:28:10.543Z",
+    "sourceUpdatedAt": "2026-11-12T11:56:37.213Z",
+    "staleAfter": "2026-11-13T11:56:37.213Z",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
-    "consumerRule": "Current topology partial attribution only. No paired performance improvement or visual/full-function acceptance."
+    "consumerRule": "Local method screening only; no live8/64 or whole CPU acceptance."
   },
   "updateState": {
-    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T11:41:01.483Z",
+    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T11:56:37.213Z",
     "lastUpdateFailure": null
   },
   "links": {
@@ -16169,91 +15390,100 @@
         "trials": 1,
         "comparableRepeatedPerformanceTrials": 0
       }
+    },
+    {
+      "id": "lazy-crowd-eligibility-local-20261112",
+      "title": "Lazy per-update eligibility local screening: dense/medium pass, sparse overhead contained",
+      "track": "isolated-method",
+      "sourceRunId": [
+        "LAZY-ELIGIBILITY-method1-r2"
+      ],
+      "buildId": "single224-13mods-lazy-bfebeccec02c2b38",
+      "verificationStatus": {
+        "diagnosisSucceeded": true,
+        "experimentSuccess": true,
+        "finalAccepted": false,
+        "functional": "SYNTHETIC_EQUIVALENCE_ONLY_8_64_NOT_RUN",
+        "visual": "NOT_MEASURED",
+        "performance": "LOCAL_UPDATE_SCREEN_PASS_NO_WHOLE_CPU_COMPARISON",
+        "adopted": false
+      },
+      "conditions": "Synthetic Crowd.Update64 bodies/side;1 process;3 paired1000-update blocks/layout; middle pair reverse order; cache allocation included; no native entities.",
+      "evidenceReferences": [
+        {
+          "report": "reports/operations/lazy-crowd-eligibility-local-20261112.md",
+          "sha256": "80ad5f551214af5d86c0b42889b016529e514db99d411ac106e305fad041721b"
+        },
+        {
+          "data": "data/lazy-crowd-eligibility-local-20261112.json",
+          "sha256": "0fc4c5dc94fa27b80085af2f6fbdbc92d97a8bd39ae41cfc552e9a572861a1d7"
+        },
+        {
+          "evidence": "data/lazy-crowd-eligibility-local-20261112-evidence.txt",
+          "sha256": "b7430fc8ebaa18605d56a0ee09ff19b3d8dca15b3a931295160a9d0df3acb25d"
+        }
+      ],
+      "blockers": [
+        "One independent process; three paired blocks per layout are not independent runs.",
+        "No actual native entities, physics-query reduction, 8/64 gameplay, Present or whole CPU saving measured.",
+        "Medium condition first block has large variation; all blocks retained, no selected best-run claim.",
+        "Vanilla internal support/collision query counts and contact caching remain unverified."
+      ],
+      "replication": {
+        "independentProcesses": 1,
+        "pairedBlocksPerLayout": 3,
+        "wholeCpuPairs": 0
+      }
     }
   ],
   "kind": "metrics",
   "latestComparison": {
-    "scope": "Current retail server64 logical,64single render+64receiver; original mixed mission;8s WPR request, recorder-inclusive sampled event interval",
-    "logicalAgents": 64,
-    "renderHosts": 64,
-    "damageReceivers": 64,
-    "independentTrials": 1,
-    "independentPairs": 0,
-    "requestedCaptureSeconds": 8,
-    "analyzedEventSpanSeconds": 10.786316,
-    "traceBytes": 8102068,
-    "targetSampleWeight": 7179,
-    "queryBoundary": {
-      "rayInclusiveWeight": 684,
-      "sphereInclusiveWeight": 597,
-      "unionWeight": 1281,
-      "bothWeight": 0,
-      "percentOfAllTargetSamples": 17.843710823234435
+    "id": "lazy-crowd-eligibility-local-20261112",
+    "title": "Lazy per-update eligibility local screening: dense/medium pass, sparse overhead contained",
+    "track": "isolated-method",
+    "sourceRunId": [
+      "LAZY-ELIGIBILITY-method1-r2"
+    ],
+    "buildId": "single224-13mods-lazy-bfebeccec02c2b38",
+    "verificationStatus": {
+      "diagnosisSucceeded": true,
+      "experimentSuccess": true,
+      "finalAccepted": false,
+      "functional": "SYNTHETIC_EQUIVALENCE_ONLY_8_64_NOT_RUN",
+      "visual": "NOT_MEASURED",
+      "performance": "LOCAL_UPDATE_SCREEN_PASS_NO_WHOLE_CPU_COMPARISON",
+      "adopted": false
     },
-    "selectedVmExecutor": {
-      "leafWeight": 1972,
-      "leafUsableStack": 1462,
-      "leafWithRaySphere": 0,
-      "leafWithExecutor": 1462,
-      "inclusiveWeight": 4124,
-      "inclusiveWithRaySphere": 1281,
-      "leafPercent": 27.469006825463158,
-      "inclusivePercent": 57.445326647165345,
-      "inclusiveWithoutSelectedQueryBoundaryWeight": 2843,
-      "inclusiveWithoutSelectedQueryBoundaryPercent": 39.601615823930906
-    },
-    "missingStackPercent": 26.131773227469008,
-    "lostEvents": 0,
-    "lostBuffers": 0,
-    "largestAnonymousThreadPercent": 98.10558573617496,
-    "allObservedHostsAlive": true,
-    "allAcquiredAndMoved2m": true,
-    "terminalOutcomes": {
-      "INCOMPLETE_MILESTONES": 56,
-      "UNRESOLVED_FALL": 2,
-      "UNRESOLVED_STATE": 4,
-      "VALID_TERMINAL": 2
-    },
-    "wholeObservedGameplayMissionDtMs": {
-      "n": 2889,
-      "p50": 22,
-      "p95": 32.59999999999991,
-      "p99": 38,
-      "scope": "whole gameplay recording, NOT exact ETL join or Present frame time"
-    },
-    "cpuSaving": null,
-    "presentP95Ms": null,
-    "nativeCrash": false,
-    "captureEvidence": {
-      "wprStartExitCode": 0,
-      "wprStopExitCode": 0,
-      "legacyRunnerCaptureRequested": false,
-      "legacyRunnerFieldMeaning": "old process-accounting CSV sampler disabled; WPR is independently proven by controller/admin/cpu-result/ETL receipts"
-    },
-    "fullNpcAcceptance": false
-  },
-  "latestReview": {
-    "sourceRunId": "CPU-CURRENT-single64-1",
-    "generatedAt": "2026-11-12T11:41:01.483Z",
-    "kind": "current-topology-cpu-attribution",
-    "nextArtifact": "Source proof and existing synthetic-method screen for lazy eligibility reuse, removing failed eager prepass. No current implementation or acceptance.",
+    "conditions": "Synthetic Crowd.Update64 bodies/side;1 process;3 paired1000-update blocks/layout; middle pair reverse order; cache allocation included; no native entities.",
     "evidenceReferences": [
       {
-        "report": "reports/operations/current-single64-cpu-attribution-20261112.md",
-        "sha256": "88deb44ad852cab7acd99ec4a0691abb670aa8f323db090b573a427c0bd65744"
+        "report": "reports/operations/lazy-crowd-eligibility-local-20261112.md",
+        "sha256": "80ad5f551214af5d86c0b42889b016529e514db99d411ac106e305fad041721b"
       },
       {
-        "data": "data/current-single64-cpu-attribution-20261112.json",
-        "sha256": "3b4c88d1e42fbec1be81be8c45f2ece4d3e0798e69d9003ac7dd2d4364392988"
+        "data": "data/lazy-crowd-eligibility-local-20261112.json",
+        "sha256": "0fc4c5dc94fa27b80085af2f6fbdbc92d97a8bd39ae41cfc552e9a572861a1d7"
       },
       {
-        "evidence": "data/current-single64-cpu-attribution-20261112-evidence.txt",
-        "sha256": "bec776713b60ed7f29073ffc67675b0a3c0cf2b472337685d8dde1b39c8c2913"
-      },
-      {
-        "report": "reports/operations/lazy-crowd-eligibility-review-20261112.md",
-        "sha256": "b981298a720ea7c37d51189704336d845468a6fc116276d53033b4d8ce1eab62"
+        "evidence": "data/lazy-crowd-eligibility-local-20261112-evidence.txt",
+        "sha256": "b7430fc8ebaa18605d56a0ee09ff19b3d8dca15b3a931295160a9d0df3acb25d"
       }
-    ]
+    ],
+    "blockers": [
+      "One independent process; three paired blocks per layout are not independent runs.",
+      "No actual native entities, physics-query reduction, 8/64 gameplay, Present or whole CPU saving measured.",
+      "Medium condition first block has large variation; all blocks retained, no selected best-run claim.",
+      "Vanilla internal support/collision query counts and contact caching remain unverified."
+    ],
+    "replication": {
+      "independentProcesses": 1,
+      "pairedBlocksPerLayout": 3,
+      "wholeCpuPairs": 0
+    }
+  },
+  "latestReview": {
+    "sourceRunId": "LAZY-ELIGIBILITY-method1-r2",
+    "status": "LOCAL_METHOD_SCREEN_PASS_NOT_GAMEPLAY_ACCEPTANCE",
+    "next": "8-agent opt-in shadow/ON then CPU decision"
   }
 }

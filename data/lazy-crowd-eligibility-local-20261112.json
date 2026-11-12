@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "sourceRunId": "LAZY-ELIGIBILITY-method1-r2",
+  "verificationStatus": "LOCAL_METHOD_SCREEN_PASS_NOT_GAMEPLAY_ACCEPTANCE",
+  "independentProcesses": 1,
+  "pairedBlocksPerLayout": 3,
+  "iterationsPerSidePerBlock": 1000,
+  "nativeEntities": 0,
+  "syntheticBodiesPerSide": 64,
+  "traceRows": 524,
+  "newPbo": false,
+  "cpuSaving": null,
+  "presentP95Ms": null,
+  "visualQuality": "NOT_MEASURED",
+  "full8or64Regression": "NOT_RUN",
+  "layouts": {
+    "dense": {
+      "pairCandidates": 2016,
+      "eligibilityComputations": 64,
+      "changePercentByBlock": [
+        -10.073516907937986,
+        -13.712842836807116,
+        -14.034744186410153
+      ],
+      "medianChangePercent": -13.712842836807116,
+      "rawTickUnit": "UNVERIFIED; ratios only",
+      "gatePassed": true
+    },
+    "sparse": {
+      "pairCandidates": 0,
+      "eligibilityComputations": 0,
+      "changePercentByBlock": [
+        0.10142008936344649,
+        0.6981557147235806,
+        -0.48377446273958347
+      ],
+      "medianChangePercent": 0.10142008936344649,
+      "rawTickUnit": "UNVERIFIED; ratios only",
+      "gatePassed": true
+    },
+    "medium": {
+      "pairCandidates": 480,
+      "eligibilityComputations": 64,
+      "changePercentByBlock": [
+        -25.973896522648765,
+        -11.912850856348122,
+        -9.275779163171972
+      ],
+      "medianChangePercent": -11.912850856348122,
+      "rawTickUnit": "UNVERIFIED; ratios only",
+      "gatePassed": true
+    }
+  },
+  "mismatches": 0,
+  "boundaryChecks": "outside call, generation wrap, simulated reentry guard, shrink/grow, OpenTraversal false fallback: pass; not actual native callback reentry"
+}
