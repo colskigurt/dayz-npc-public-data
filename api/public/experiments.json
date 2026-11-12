@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261112-joint-only-eight",
-  "generatedAt": "2026-11-12T08:18:42.127094+00:00",
+  "snapshotId": "solver-caller-ownership-eight-20261112",
+  "generatedAt": "2026-11-12T08:47:30.687Z",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -57,7 +57,8 @@
     "runtime-20261030-093001",
     "RATE100-all-reduced-20261112-160346",
     "RATE100-joint-eight1-baseline",
-    "RATE100-joint-eight1-joint-world"
+    "RATE100-joint-eight1-joint-world",
+    "OWNER-eight1-r3-attribution"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -77,15 +78,16 @@
     "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
     "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
     "5CFC142DBBCBD6C19BD7FA42D06D3B6D0E4A338A55337FE73E5A161B004C88D3",
-    "41AD23C3DD3031B42291CFB875BB4147384B11F4D43E1C5CCE4EE6633EBA604C"
+    "41AD23C3DD3031B42291CFB875BB4147384B11F4D43E1C5CCE4EE6633EBA604C",
+    "fe72db239825ea216766727847c2ff96f7e4a245243945ea327a026730e6ba1a"
   ],
   "verificationStatus": {
     "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "PARTIAL_MILESTONES_6_OF_8_VALID_TERMINAL_BOTH",
+    "functional": "PARTIAL_5_OF_8_VALID_TERMINAL",
     "visual": "NOT_MEASURED",
-    "performance": "ONE_PAIR_NO_CONSISTENT_WHOLE_CPU_GAIN",
+    "performance": "ATTRIBUTION_ONLY_NOT_OPTIMIZATION",
     "adopted": false
   },
   "metrics": [
@@ -13351,14 +13353,30 @@
       },
       "repetitions": 1,
       "verificationStatus": "diagnostic_not_accepted"
+    },
+    {
+      "metricId": "solver-caller-ownership-eight-cpu-mean-ON",
+      "sourceRunId": "OWNER-eight1-r3-attribution",
+      "buildId": "fe72db239825ea216766727847c2ff96f7e4a245243945ea327a026730e6ba1a",
+      "value": 163.95752653507793,
+      "unit": "ms/wall-second",
+      "conditions": {
+        "logicalAgents": 8,
+        "condition": "revision3-attribution-ON-only",
+        "window": "40game-second trigger/30wall-second capture",
+        "samples": 30,
+        "paired": false
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnostic_not_accepted"
     }
   ],
   "blockers": [
-    "Mean CPU reduction only0.815%; p95 increased in one ordered pair; no repeat proof",
-    "Both6/8 valid terminal at90-game-second budget; incomplete transition states remain",
-    "Sweep omission is diagnostic and not a safety-preserving operational candidate",
-    "Visible smoothness, Present/GPU, allocation/GC self-time unmeasured",
-    "8-agent result cannot establish64-agent crowded physics cost"
+    "No whole CPU saving established; caller elapsed shares are not CPU self-time or saving ratios",
+    "Revision2 emitted every frame, +24.934% mean CPU with workload differences; excluded as clean overhead estimate",
+    "Revision3 is one ON-only diagnostic, not a new OFF/ON pair or repeated performance proof",
+    "5/8 valid terminal at90-second budget; full functional acceptance incomplete",
+    "Vanilla native query totals,64/200 current ownership, allocation/GC and visible quality unmeasured"
   ],
   "evidenceReferences": [
     {
@@ -14096,17 +14114,29 @@
     {
       "evidence": "data/joint-only-eight-20261112-evidence.txt",
       "sha256": "3ca54f2448726274739ba5ed2141c99eb6fcfefd9898e5b8f873aea35cbb3b2a"
+    },
+    {
+      "report": "reports/operations/solver-caller-ownership-eight-20261112.md",
+      "sha256": "5db3293e2d8e567a2e6e3f1f4feb2bc8f40845fd24f88fcad974089b428becfa"
+    },
+    {
+      "evidence": "data/solver-caller-ownership-eight-20261112-evidence.txt",
+      "sha256": "106d8849053edaee6acf5104329091a54065b7e0f0779e903b2a35b12a5568ec"
+    },
+    {
+      "data": "data/solver-caller-ownership-eight-20261112.json",
+      "sha256": "6f9a245da05d5e2c61938395e09b59e9a673d09bf84771ee7e348b0a43e95939"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-11-12T08:10:42.6238420+00:00",
-    "staleAfter": "2026-11-13T08:10:42.623Z",
+    "sourceUpdatedAt": "2026-11-12T08:43:37.3935060+00:00",
+    "staleAfter": "2026-11-13T08:43:37.393Z",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
-    "consumerRule": "Do not confuse wall-clock CPU and game-clock query counters; one pair is not repeated validation."
+    "consumerRule": "8-agent caller ownership is not whole CPU attribution; do not combine with old64/200 conditions"
   },
   "updateState": {
-    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T08:18:42.127094+00:00",
+    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T08:47:30.687Z",
     "lastUpdateFailure": null
   },
   "links": {
@@ -15476,6 +15506,52 @@
         "trials": 2,
         "comparableRepeatedPerformanceTrials": 0
       }
+    },
+    {
+      "id": "solver-caller-ownership-eight-20261112",
+      "title": "Current8 caller ownership; prior64 evidence reused, not optimization",
+      "track": "diagnostic",
+      "sourceRunId": [
+        "OWNER-eight1-r3-attribution"
+      ],
+      "buildId": "fe72db239825ea216766727847c2ff96f7e4a245243945ea327a026730e6ba1a",
+      "verificationStatus": {
+        "diagnosisSucceeded": true,
+        "experimentSuccess": false,
+        "finalAccepted": false,
+        "functional": "PARTIAL_5_OF_8_VALID_TERMINAL",
+        "visual": "NOT_MEASURED",
+        "performance": "ATTRIBUTION_ONLY_NOT_OPTIMIZATION",
+        "adopted": false
+      },
+      "conditions": "8 logical agents, single render+receiver; all physics/animation preserved; revision3 ON-only after excessive-output failure",
+      "evidenceReferences": [
+        {
+          "report": "reports/operations/solver-caller-ownership-eight-20261112.md",
+          "sha256": "5db3293e2d8e567a2e6e3f1f4feb2bc8f40845fd24f88fcad974089b428becfa"
+        },
+        {
+          "evidence": "data/solver-caller-ownership-eight-20261112-evidence.txt",
+          "sha256": "106d8849053edaee6acf5104329091a54065b7e0f0779e903b2a35b12a5568ec"
+        },
+        {
+          "data": "data/solver-caller-ownership-eight-20261112.json",
+          "sha256": "6f9a245da05d5e2c61938395e09b59e9a673d09bf84771ee7e348b0a43e95939"
+        }
+      ],
+      "blockers": [
+        "No whole CPU saving established; caller elapsed shares are not CPU self-time or saving ratios",
+        "Revision2 emitted every frame, +24.934% mean CPU with workload differences; excluded as clean overhead estimate",
+        "Revision3 is one ON-only diagnostic, not a new OFF/ON pair or repeated performance proof",
+        "5/8 valid terminal at90-second budget; full functional acceptance incomplete",
+        "Vanilla native query totals,64/200 current ownership, allocation/GC and visible quality unmeasured"
+      ],
+      "replication": {
+        "independentPairs": 0,
+        "trials": 1,
+        "comparableRepeatedPerformanceTrials": 0,
+        "earlierSeparatePair": "revision2 control/attribution excluded as clean observer-overhead estimate"
+      }
     }
   ],
   "kind": "experiments",
@@ -15483,89 +15559,90 @@
     "logicalAgents": 8,
     "renderHosts": 8,
     "damageReceivers": 8,
-    "independentPairs": 1,
-    "order": [
-      "baseline",
-      "joint-world"
+    "independentPairs": 0,
+    "independentTrials": 1,
+    "condition": "revision3-attribution-ON-only",
+    "windowGameSeconds": [
+      40.012,
+      69.004
     ],
-    "cpuWindow": "30 wall seconds after game second40",
-    "cpuMeanMsPerWallSecond": [
-      165.74095958472643,
-      164.3901644888328
+    "solverCalls": 6893,
+    "scopeShares": [
+      {
+        "scope": "DriveGround",
+        "calls": 2377,
+        "callShare": 0.34484259393587696,
+        "elapsedShare": 0.34018747870460614
+      },
+      {
+        "scope": "Displace",
+        "calls": 1998,
+        "callShare": 0.2898592775279269,
+        "elapsedShare": 0.23963039710208991
+      },
+      {
+        "scope": "other-FOLLOW",
+        "calls": 1062,
+        "callShare": 0.1540693457130422,
+        "elapsedShare": 0.15908748742086037
+      },
+      {
+        "scope": "other-MOTION",
+        "calls": 647,
+        "callShare": 0.09386333961990426,
+        "elapsedShare": 0.09762659937785839
+      },
+      {
+        "scope": "other-EGRESS",
+        "calls": 15,
+        "callShare": 0.0021761207021616133,
+        "elapsedShare": 0.002214468071618949
+      },
+      {
+        "scope": "other-FALL",
+        "calls": 195,
+        "callShare": 0.02828956912810097,
+        "elapsedShare": 0.035563497406282146
+      },
+      {
+        "scope": "other-LAND-SETTLE",
+        "calls": 599,
+        "callShare": 0.08689975337298708,
+        "elapsedShare": 0.12569007191668408
+      }
     ],
-    "cpuP50MsPerWallSecond": [
-      173.00991647609138,
-      157.891355377114
-    ],
-    "cpuP95MsPerWallSecond": [
-      218.40186352013345,
-      250.1437383629858
-    ],
-    "observedMeanChangePercent": -0.8150037861963222,
-    "primarySweepsPerSolve": [
-      3.9862948960302456,
-      0.04011207786462174
-    ],
-    "footRaysPerSolve": [
-      10,
-      10
-    ],
-    "alive": [
-      8,
-      8
-    ],
-    "acquiredMoved": [
-      8,
-      8
-    ],
-    "validTerminal": [
-      6,
-      6
-    ],
-    "finalFalls": [
-      0,
-      0
-    ],
+    "cpuMsPerWallSecond": {
+      "n": 30,
+      "mean": 163.95752653507793,
+      "p50": 173.60673612080234,
+      "p95": 235.3236156790168,
+      "p99": 287.87219533427105
+    },
+    "validTerminal": 5,
+    "alive": 8,
+    "acquiredMoved": 8,
     "presentP95Ms": null,
     "escalatedTo64": false
   },
   "latestReview": {
-    "sourceRunId": "MANUAL-vanilla200-20261112-launch3",
-    "generatedAt": "2026-11-12T07:59:00Z",
-    "newGameRuns": 0,
-    "independentRepeatsAdded": 0,
-    "verificationStatus": "EXISTING_LOG_DIAGNOSIS_NOT_OPTIMIZATION",
-    "initialNativePlayerTargets": [
-      0,
-      18
-    ],
-    "initialAlive": 200,
-    "customInitialChaseApprox": [
-      130,
-      148
-    ],
-    "existingActiveNativeSegment": {
-      "start": 124.33,
-      "end": 133.963,
-      "durationGameSeconds": 9.633,
-      "targetPlayers": [
-        180,
-        200
-      ],
-      "missionP95Ms": 31,
-      "cpu": null
-    },
+    "sourceRunId": "OWNER-eight1-r3-attribution",
+    "generatedAt": "2026-11-12T08:47:30.687Z",
+    "prior64DisplaceSolveShare": 0.416978,
+    "newCurrent8Ownership": true,
+    "sourceReview": "prior64 ownership count was already measured; new current8 elapsed/phase attribution only",
     "nativePhysicalQueryCount": null,
-    "blocker": "Alive population does not imply matched active pursuit work; native internal ray/sweep counts remain unknown",
-    "nextCandidate": "Existing mode4 isolated 8-agent diagnostic, not executed or accepted",
     "evidenceReferences": [
       {
-        "report": "reports/operations/vanilla-custom-workload-audit-20261112.md",
-        "sha256": "10be0b91476c63fe5b030914c8ab0d91e7c102006f20dc216310ca5316cd61ba"
+        "report": "reports/operations/solver-caller-ownership-eight-20261112.md",
+        "sha256": "5db3293e2d8e567a2e6e3f1f4feb2bc8f40845fd24f88fcad974089b428becfa"
       },
       {
-        "evidence": "data/vanilla-custom-workload-audit-20261112-evidence.txt",
-        "sha256": "1b33340298091b6322418165674cbe1258e8a9192662c081a65fc07731fa9318"
+        "evidence": "data/solver-caller-ownership-eight-20261112-evidence.txt",
+        "sha256": "106d8849053edaee6acf5104329091a54065b7e0f0779e903b2a35b12a5568ec"
+      },
+      {
+        "data": "data/solver-caller-ownership-eight-20261112.json",
+        "sha256": "6f9a245da05d5e2c61938395e09b59e9a673d09bf84771ee7e348b0a43e95939"
       }
     ]
   }

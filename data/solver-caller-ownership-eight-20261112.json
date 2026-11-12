@@ -1,0 +1,408 @@
+{
+  "schemaVersion": 1,
+  "independentPairs": 0,
+  "verificationStatus": "CALLER_ATTRIBUTION_REVISED_ON_ONLY",
+  "conditions": {
+    "attribution": {
+      "runId": "OWNER-eight1-r3-attribution",
+      "cpuMsPerWallSecond": {
+        "n": 30,
+        "mean": 163.95752653507793,
+        "p50": 173.60673612080234,
+        "p95": 235.3236156790168,
+        "p99": 287.87219533427105
+      },
+      "windowGameSeconds": [
+        40.0684,
+        69.7613
+      ],
+      "delta": {
+        "contactSolves": 7088.0,
+        "footRays": 70880.0,
+        "jointSweeps": 28321.0,
+        "physicsUpdates": 4744.0,
+        "animUpdates": 4744.0,
+        "plans": 47.0,
+        "planFailures": 5.0,
+        "climbs": 15.0,
+        "landings": 7.0
+      },
+      "allEightSingleHostsAlive": true,
+      "allEightAcquiredMoved2m": true,
+      "terminalOutcomes": {
+        "VALID_TERMINAL": 5,
+        "UNRESOLVED_STATE": 2,
+        "INCOMPLETE_MILESTONES": 1
+      },
+      "terminalRows": [
+        {
+          "seconds": "90.0218",
+          "id": "0",
+          "outcome": "VALID_TERMINAL",
+          "state": "CHASE",
+          "phase": "FOLLOW",
+          "area": "high",
+          "position": "<4513.749512, 342.191193, 10238.743164>",
+          "recoveryGeneration": "2",
+          "contactStatus": "",
+          "reason": "NATIVE_COMBAT",
+          "failure": "",
+          "low": "true",
+          "high": "true",
+          "down": "true",
+          "returned": "true",
+          "climbs": "6",
+          "drops": "2",
+          "landings": "2",
+          "visible": "false",
+          "clueSource": "LOCAL_VISUAL",
+          "seenAge": "1.168"
+        },
+        {
+          "seconds": "90.0218",
+          "id": "1",
+          "outcome": "UNRESOLVED_STATE",
+          "state": "CHASE",
+          "phase": "EGRESS",
+          "area": "high",
+          "position": "<4512.279297, 342.171021, 10237.685547>",
+          "recoveryGeneration": "3",
+          "contactStatus": "",
+          "reason": "SETTLE",
+          "failure": "",
+          "low": "true",
+          "high": "true",
+          "down": "true",
+          "returned": "true",
+          "climbs": "5",
+          "drops": "2",
+          "landings": "3",
+          "visible": "true",
+          "clueSource": "LOCAL_VISUAL",
+          "seenAge": "0.166"
+        },
+        {
+          "seconds": "90.0218",
+          "id": "2",
+          "outcome": "VALID_TERMINAL",
+          "state": "CHASE",
+          "phase": "FOLLOW",
+          "area": "high",
+          "position": "<4513.532227, 342.187042, 10239.459961>",
+          "recoveryGeneration": "1",
+          "contactStatus": "",
+          "reason": "ARRIVED",
+          "failure": "",
+          "low": "true",
+          "high": "true",
+          "down": "true",
+          "returned": "true",
+          "climbs": "4",
+          "drops": "1",
+          "landings": "1",
+          "visible": "true",
+          "clueSource": "LOCAL_VISUAL",
+          "seenAge": "0.166"
+        },
+        {
+          "seconds": "90.0218",
+          "id": "3",
+          "outcome": "VALID_TERMINAL",
+          "state": "CHASE",
+          "phase": "FOLLOW",
+          "area": "high",
+          "position": "<4512.306641, 342.168915, 10239.585938>",
+          "recoveryGeneration": "3",
+          "contactStatus": "",
+          "reason": "ARRIVED",
+          "failure": "",
+          "low": "true",
+          "high": "true",
+          "down": "true",
+          "returned": "true",
+          "climbs": "6",
+          "drops": "2",
+          "landings": "3",
+          "visible": "true",
+          "clueSource": "LOCAL_VISUAL",
+          "seenAge": "0.166"
+        },
+        {
+          "seconds": "90.0218",
+          "id": "4",
+          "outcome": "VALID_TERMINAL",
+          "state": "CHASE",
+          "phase": "FOLLOW",
+          "area": "high",
+          "position": "<4513.539063, 342.185181, 10240.948242>",
+          "recoveryGeneration": "2",
+          "contactStatus": "",
+          "reason": "NATIVE_COMBAT",
+          "failure": "",
+          "low": "true",
+          "high": "true",
+          "down": "true",
+          "returned": "true",
+          "climbs": "6",
+          "drops": "2",
+          "landings": "2",
+          "visible": "true",
+          "clueSource": "LOCAL_VISUAL",
+          "seenAge": "0.166"
+        },
+        {
+          "seconds": "90.0218",
+          "id": "5",
+          "outcome": "VALID_TERMINAL",
+          "state": "CHASE",
+          "phase": "FOLLOW",
+          "area": "low",
+          "position": "<4509.701660, 340.160522, 10243.268555>",
+          "recoveryGeneration": "2",
+          "contactStatus": "",
+          "reason": "RECOVERY_REPLAN_WAIT",
+          "failure": "ENTRY_STALL_BACKOFF",
+          "low": "true",
+          "high": "true",
+          "down": "true",
+          "returned": "true",
+          "climbs": "5",
+          "drops": "2",
+          "landings": "2",
+          "visible": "true",
+          "clueSource": "LOCAL_VISUAL",
+          "seenAge": "0.166"
+        },
+        {
+          "seconds": "90.0218",
+          "id": "6",
+          "outcome": "INCOMPLETE_MILESTONES",
+          "state": "CHASE",
+          "phase": "FOLLOW",
+          "area": "high",
+          "position": "<4512.225586, 342.166412, 10240.573242>",
+          "recoveryGeneration": "1",
+          "contactStatus": "",
+          "reason": "NATIVE_COMBAT",
+          "failure": "",
+          "low": "true",
+          "high": "true",
+          "down": "false",
+          "returned": "false",
+          "climbs": "3",
+          "drops": "1",
+          "landings": "1",
+          "visible": "true",
+          "clueSource": "LOCAL_VISUAL",
+          "seenAge": "0.166"
+        },
+        {
+          "seconds": "90.0218",
+          "id": "7",
+          "outcome": "UNRESOLVED_STATE",
+          "state": "INVESTIGATE",
+          "phase": "MOTION",
+          "area": "air",
+          "position": "<4511.485352, 341.681763, 10239.739258>",
+          "recoveryGeneration": "2",
+          "contactStatus": "",
+          "reason": "NATIVE_MOTION",
+          "failure": "",
+          "low": "true",
+          "high": "true",
+          "down": "true",
+          "returned": "true",
+          "climbs": "4",
+          "drops": "2",
+          "landings": "2",
+          "visible": "false",
+          "clueSource": "ALLY_REPORT",
+          "seenAge": "1.168"
+        }
+      ],
+      "scriptErrors": 0,
+      "serverTerminal": {
+        "exitCode": -1,
+        "forced": false,
+        "captureRequested": true,
+        "endedUtc": "2026-11-12T08:43:37.3935060+00:00",
+        "runId": "OWNER-eight1-r3-attribution"
+      },
+      "clientClosed": {
+        "forced": false,
+        "normalCloseSent": true,
+        "closed": true
+      },
+      "visualQuality": "NOT_MEASURED",
+      "cpuGameClockSpan": 30.0362,
+      "ownership": {
+        "scopeNames": {
+          "0": "unclassified",
+          "1": "DriveGround",
+          "2": "Displace",
+          "3": "other-FOLLOW",
+          "4": "other-MOTION",
+          "5": "other-EGRESS",
+          "6": "other-FALL",
+          "7": "other-LAND-SETTLE",
+          "8": "other-phase"
+        },
+        "windowGameSeconds": [
+          40.012,
+          69.004
+        ],
+        "completeSnapshots": 91,
+        "counterReconciliationErrors": [],
+        "scopes": {
+          "0": {
+            "solverCalls": 0.0,
+            "solverElapsedTicks": 0.0,
+            "footRays": 0.0,
+            "jointSweeps": 0.0,
+            "rejected": 0.0,
+            "callShare": 0.0,
+            "elapsedShare": 0.0
+          },
+          "1": {
+            "solverCalls": 2377.0,
+            "solverElapsedTicks": 2017804.0,
+            "footRays": 23770.0,
+            "jointSweeps": 9479.0,
+            "rejected": 17.0,
+            "callShare": 0.34484259393587696,
+            "elapsedShare": 0.34018747870460614
+          },
+          "2": {
+            "solverCalls": 1998.0,
+            "solverElapsedTicks": 1421355.0,
+            "footRays": 19980.0,
+            "jointSweeps": 7992.0,
+            "rejected": 0.0,
+            "callShare": 0.2898592775279269,
+            "elapsedShare": 0.23963039710208991
+          },
+          "3": {
+            "solverCalls": 1062.0,
+            "solverElapsedTicks": 943619.0,
+            "footRays": 10620.0,
+            "jointSweeps": 4246.0,
+            "rejected": 2.0,
+            "callShare": 0.1540693457130422,
+            "elapsedShare": 0.15908748742086037
+          },
+          "4": {
+            "solverCalls": 647.0,
+            "solverElapsedTicks": 579067.0,
+            "footRays": 6470.0,
+            "jointSweeps": 2588.0,
+            "rejected": 1.0,
+            "callShare": 0.09386333961990426,
+            "elapsedShare": 0.09762659937785839
+          },
+          "5": {
+            "solverCalls": 15.0,
+            "solverElapsedTicks": 13135.0,
+            "footRays": 150.0,
+            "jointSweeps": 60.0,
+            "rejected": 0.0,
+            "callShare": 0.0021761207021616133,
+            "elapsedShare": 0.002214468071618949
+          },
+          "6": {
+            "solverCalls": 195.0,
+            "solverElapsedTicks": 210943.0,
+            "footRays": 1950.0,
+            "jointSweeps": 780.0,
+            "rejected": 0.0,
+            "callShare": 0.02828956912810097,
+            "elapsedShare": 0.035563497406282146
+          },
+          "7": {
+            "solverCalls": 599.0,
+            "solverElapsedTicks": 745524.0,
+            "footRays": 5990.0,
+            "jointSweeps": 2396.0,
+            "rejected": 0.0,
+            "callShare": 0.08689975337298708,
+            "elapsedShare": 0.12569007191668408
+          },
+          "8": {
+            "solverCalls": 0.0,
+            "solverElapsedTicks": 0.0,
+            "footRays": 0.0,
+            "jointSweeps": 0.0,
+            "rejected": 0.0,
+            "callShare": 0.0,
+            "elapsedShare": 0.0
+          }
+        },
+        "total": {
+          "solverCalls": 6893.0,
+          "solverElapsedTicks": 5931447.0,
+          "footRays": 68930.0,
+          "jointSweeps": 27541.0,
+          "rejected": 20.0
+        },
+        "path": {
+          "groundCalls": 2257.0,
+          "groundElapsedTicks": 3234986.0,
+          "displaceCalls": 2001.0,
+          "displaceElapsedTicks": 2220738.0,
+          "displaceAccepted": 1945.0
+        },
+        "elapsedUnit": "raw TickCount elapsed units, not established CPU self-time",
+        "extraDisplaceSweepsAndFloor": "not directly counted by this wrapper; remain inside Displace inclusive elapsed",
+        "samplingIntervalsGameSeconds": {
+          "n": 90,
+          "mean": 1.00007779,
+          "p50": 1.0025000000000013,
+          "p95": 1.0090000000000003,
+          "p99": 1.0120000000000005
+        }
+      },
+      "evidence": [
+        {
+          "path": "runs\\attribution\\server-cpu.csv",
+          "sha256": "bc0104bfd2e264c1a274052a53ab854cb429c9737b7bcabeb0113155024a1417",
+          "bytes": 4544
+        },
+        {
+          "path": "runs\\attribution\\server-terminal.json",
+          "sha256": "bb748b20ecbe23d546609e99f26878585973f9e1632852a8f4244bc870000895",
+          "bytes": 166
+        },
+        {
+          "path": "runs\\attribution\\client-closed.json",
+          "sha256": "bb2b2bbcd10265abede7e6781a394e45d1f415d9df716e50734a4c080c9cdfdf",
+          "bytes": 70
+        },
+        {
+          "path": "runs\\attribution\\server-profile\\gameplay-eight.tsv",
+          "sha256": "43ed9fc6e52ab4208d67efb5f56c2d75d357fcddfee8c7ee894ff04d714845ee",
+          "bytes": 796199
+        },
+        {
+          "path": "runs\\attribution\\server-profile\\terminal-state.tsv",
+          "sha256": "76638f6658937c67d0ad2416973ea6e19094206b031ddb61b869390f7aac6a73",
+          "bytes": 1407
+        },
+        {
+          "path": "runs\\attribution\\server-profile\\mixed-hosts.tsv",
+          "sha256": "04597470a7123f95f5c8cbb5b7f272b6db53687dc37e0e89ed690d772763b713",
+          "bytes": 41762
+        },
+        {
+          "path": "runs\\attribution\\server-profile\\owner-attribution.tsv",
+          "sha256": "68bef0822593bf4e57e5c43c7431a2cadf9acd9f11a04ebf2ebc8df959f4380d",
+          "bytes": 493176
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "Revision3 ON-only, not an independent OFF/ON comparison.",
+    "Earlier revision2 logger emitted every frame and inflated observer cost. Its data remain preserved, not a clean overhead estimate.",
+    "Counts/elapsed ownership is not native function CPU self-time.",
+    "No vanilla native query count or64/200 scaling or visual acceptance."
+  ]
+}
