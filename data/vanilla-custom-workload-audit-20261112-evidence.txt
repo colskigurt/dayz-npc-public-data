@@ -1,0 +1,69 @@
+선정 증거: 바닐라·커스텀 활성 작업량 감사
+전체 로그 아님. 기존200 원시표의 초기 목표 개체 수와 사후 활성구간 전체집계를 선정. CPU와게임시간은연결미확보.
+{
+  "vanilla-existing-window-review.json": {
+    "schemaVersion": 1,
+    "sourceRunId": "MANUAL-vanilla200-20261112-launch3",
+    "window": "NF_VANILLA_READY + 5..30 wall seconds",
+    "readyKst": "2026-11-12T15:01:43.159000+09:00",
+    "unit": "ms/wall-second",
+    "samples": 25,
+    "p50": 109.96511127489,
+    "p95": 172.69694532601417,
+    "p99": 197.06243456539778,
+    "mean": 115.01809106489603,
+    "cpuCsvSha256": "b8710482cefc78e816a433ef9a4c4ad200b209677ed672ccea6c8fccf4e5c9df",
+    "independentRuns": 1,
+    "newGameRuns": 0,
+    "nativeQueriesCounted": false
+  },
+  "vanilla-activity-review.json": {
+    "schemaVersion": 1,
+    "sourceRunId": "MANUAL-vanilla200-20261112-launch3",
+    "fieldMeaning": "GetTargetEntity()==Visitor; native current target, not all native AI processing",
+    "sourceObserverLine": 91,
+    "sourceSha256": "f9e9f21e28893cd00536a2a9ccd594b310c385f538495672fd57013fc1bb052b",
+    "initialGameWindow": {
+      "firstState": 88.1075,
+      "start": 93.3512,
+      "end": 118.09,
+      "targetPlayersMin": 0,
+      "targetPlayersMax": 18,
+      "startMind": {
+        "0": 200
+      },
+      "endMind": {
+        "1": 13,
+        "3": 5,
+        "0": 182
+      }
+    },
+    "wholeRun": {
+      "maxCurrentTargetPlayers": 200,
+      "everTargetPlayers": 200
+    },
+    "decision": "200 alive is not a matched active-pursuit workload. Do not infer per-agent native efficiency from initial CPU ratios."
+  },
+  "vanilla-active-existing-segment.json": {
+    "schemaVersion": 1,
+    "sourceRunId": "MANUAL-vanilla200-20261112-launch3",
+    "windowKind": "posthoc-longest-contiguous-all200alive-atleast180current-targets",
+    "startMissionSeconds": 124.33,
+    "endMissionSeconds": 133.963,
+    "durationGameSeconds": 9.632999999999996,
+    "snapshots": 38,
+    "targetPlayersMin": 180,
+    "targetPlayersMax": 200,
+    "missionTimesliceMs": {
+      "n": 483,
+      "p50": 16.0,
+      "p95": 31.0,
+      "p99": 32.0
+    },
+    "cpuForThisWindow": null,
+    "cpuWindowLimitation": "CPU CSV has no game/QPC anchor; do not equate this game-time interval to guessed wall-time samples",
+    "newGameRuns": 0,
+    "independentRepeats": 1
+  }
+}
+관찰미션 원문91행: if(c){mind=c.GetMindState();target=c.GetTargetEntity()==Visitor;}

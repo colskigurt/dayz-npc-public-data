@@ -1,0 +1,106 @@
+{
+  "sourceRunId": "MANUAL-vanilla200-20261112-launch3",
+  "generatedAt": "2026-11-12T07:59:00Z",
+  "newGameRuns": 0,
+  "independentRepeatsAdded": 0,
+  "verificationStatus": "EXISTING_LOG_DIAGNOSIS_NOT_OPTIMIZATION",
+  "initialNativePlayerTargets": [
+    0,
+    18
+  ],
+  "initialAlive": 200,
+  "customInitialChaseApprox": [
+    130,
+    148
+  ],
+  "existingActiveNativeSegment": {
+    "start": 124.33,
+    "end": 133.963,
+    "durationGameSeconds": 9.633,
+    "targetPlayers": [
+      180,
+      200
+    ],
+    "missionP95Ms": 31,
+    "cpu": null
+  },
+  "nativePhysicalQueryCount": null,
+  "blocker": "Alive population does not imply matched active pursuit work; native internal ray/sweep counts remain unknown",
+  "nextCandidate": "Existing mode4 isolated 8-agent diagnostic, not executed or accepted",
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/vanilla-custom-workload-audit-20261112.md",
+      "sha256": "10be0b91476c63fe5b030914c8ab0d91e7c102006f20dc216310ca5316cd61ba"
+    },
+    {
+      "evidence": "data/vanilla-custom-workload-audit-20261112-evidence.txt",
+      "sha256": "1b33340298091b6322418165674cbe1258e8a9192662c081a65fc07731fa9318"
+    }
+  ],
+  "measurements": {
+    "vanilla-existing-window-review.json": {
+      "schemaVersion": 1,
+      "sourceRunId": "MANUAL-vanilla200-20261112-launch3",
+      "window": "NF_VANILLA_READY + 5..30 wall seconds",
+      "readyKst": "2026-11-12T15:01:43.159000+09:00",
+      "unit": "ms/wall-second",
+      "samples": 25,
+      "p50": 109.96511127489,
+      "p95": 172.69694532601417,
+      "p99": 197.06243456539778,
+      "mean": 115.01809106489603,
+      "cpuCsvSha256": "b8710482cefc78e816a433ef9a4c4ad200b209677ed672ccea6c8fccf4e5c9df",
+      "independentRuns": 1,
+      "newGameRuns": 0,
+      "nativeQueriesCounted": false
+    },
+    "vanilla-activity-review.json": {
+      "schemaVersion": 1,
+      "sourceRunId": "MANUAL-vanilla200-20261112-launch3",
+      "fieldMeaning": "GetTargetEntity()==Visitor; native current target, not all native AI processing",
+      "sourceObserverLine": 91,
+      "sourceSha256": "f9e9f21e28893cd00536a2a9ccd594b310c385f538495672fd57013fc1bb052b",
+      "initialGameWindow": {
+        "firstState": 88.1075,
+        "start": 93.3512,
+        "end": 118.09,
+        "targetPlayersMin": 0,
+        "targetPlayersMax": 18,
+        "startMind": {
+          "0": 200
+        },
+        "endMind": {
+          "0": 182,
+          "1": 13,
+          "3": 5
+        }
+      },
+      "wholeRun": {
+        "maxCurrentTargetPlayers": 200,
+        "everTargetPlayers": 200
+      },
+      "decision": "200 alive is not a matched active-pursuit workload. Do not infer per-agent native efficiency from initial CPU ratios."
+    },
+    "vanilla-active-existing-segment.json": {
+      "schemaVersion": 1,
+      "sourceRunId": "MANUAL-vanilla200-20261112-launch3",
+      "windowKind": "posthoc-longest-contiguous-all200alive-atleast180current-targets",
+      "startMissionSeconds": 124.33,
+      "endMissionSeconds": 133.963,
+      "durationGameSeconds": 9.632999999999996,
+      "snapshots": 38,
+      "targetPlayersMin": 180,
+      "targetPlayersMax": 200,
+      "missionTimesliceMs": {
+        "n": 483,
+        "p50": 16,
+        "p95": 31,
+        "p99": 32
+      },
+      "cpuForThisWindow": null,
+      "cpuWindowLimitation": "CPU CSV has no game/QPC anchor; do not equate this game-time interval to guessed wall-time samples",
+      "newGameRuns": 0,
+      "independentRepeats": 1
+    }
+  }
+}
