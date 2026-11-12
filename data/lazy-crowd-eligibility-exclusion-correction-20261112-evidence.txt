@@ -1,0 +1,143 @@
+{
+  "sourceRunId": "LAZY-ELIGIBILITY-cost64-repeat1",
+  "preparationRunId": "LAZY-ELIGIBILITY-cost64-replacement1",
+  "selection": "Existing raw exclusion JSON and explicit own control-code projection; no new game trial",
+  "proof": {
+    "schemaVersion": 1,
+    "sourceRunId": "LAZY-ELIGIBILITY-cost64-repeat1",
+    "preparationRunId": "LAZY-ELIGIBILITY-cost64-replacement1",
+    "stage": "PREPARED_NOT_LAUNCHED",
+    "correction": {
+      "previousNarrativeInactiveObservations": 25,
+      "actualInactiveObservations": 26,
+      "totalCpuWindowObservations": 28,
+      "rawSourceAlwaysRecorded": 26,
+      "conclusionChanged": false,
+      "excludedAttempt": 3
+    },
+    "validIndependentPairs": 2,
+    "excludedIndependentPairs": 1,
+    "newNpcRuns": 0,
+    "guardSyntheticCasesPassed": 9,
+    "guardPowerShellParseErrors": 0,
+    "guardActualGameStopPath": "NOT_TESTED",
+    "missionSha256": "02782be7b3ef1a4a86c8e8b0d487bc7e461a8b8e721a579d21655bd99e12342d",
+    "npcCodeChanged": false,
+    "newPbo": false,
+    "pending": "Dedicated foreground measurement slot reply; no game launched"
+  },
+  "rawEvidence": [
+    {
+      "fileId": "preparation-proof.json",
+      "bytes": 842,
+      "sha256": "ac61aa187e066452ba16b555105be6ba1ad525767709fe2e40111375d28ce8b7"
+    },
+    {
+      "fileId": "contract.json",
+      "bytes": 12851,
+      "sha256": "71e3ff6817b908abf07100a4ff547128ba888daab6b33544e2ebcad01fcd454d"
+    },
+    {
+      "fileId": "guard-functions.ps1",
+      "bytes": 712,
+      "sha256": "a84f238031e6e32b77372617f93fb080647d9d21ccf8bbd745abf7775468a864"
+    },
+    {
+      "fileId": "gate-pair.ps1",
+      "bytes": 3439,
+      "sha256": "90546f9b843e5e3cc1a3a4f514c9c2373a705c2339a88e73d037a2ec02567da4"
+    },
+    {
+      "fileId": "run-pair.ps1",
+      "bytes": 6631,
+      "sha256": "712e80f42858b9d1e1256ff92b6c35d427a64671cb317dcc6ed36a5f09969839"
+    },
+    {
+      "fileId": "guard-test-results.json",
+      "bytes": 1375,
+      "sha256": "417292331abf90809d6ca891ff21dacb8db33822170c756d3ac5494000d63ee7"
+    },
+    {
+      "fileId": "init.c",
+      "bytes": 20458,
+      "sha256": "02782be7b3ef1a4a86c8e8b0d487bc7e461a8b8e721a579d21655bd99e12342d"
+    },
+    {
+      "fileId": "foreground-exclusion.json",
+      "bytes": 538,
+      "sha256": "2cff19634848681100645d7bc2e54c26bcc59b6ddb6c5f8ae93c388c9fd85805"
+    },
+    {
+      "fileId": "report-public.md",
+      "bytes": 5883,
+      "sha256": "b10499b241a7642086e8525b75240209840c57d26012d5ec5d3665bdc58446c7"
+    },
+    {
+      "fileId": "series-analysis.json",
+      "bytes": 23500,
+      "sha256": "042d67f78f5f1a9c0390f17503dd28e7667c2946c71e5787f8ac2d3462288216"
+    }
+  ],
+  "guardFunction": "function Get-NFGuardDecision([string]$Raw,[bool]$Opened,[double]$SecondsSinceValid){\n if(!$Opened){return 'WARMUP'}\n if($SecondsSinceValid -gt 3){return 'STALE_STATUS'}\n if([string]::IsNullOrWhiteSpace($Raw)){return 'RETRY_EMPTY'}\n $v=$Raw.Trim() -split \"`t\"\n if($v.Count -ne 5 -or $v[1] -notin @('true','false')){return 'RETRY_PARTIAL'}\n $age=0.0;if(![double]::TryParse($v[0],[Globalization.NumberStyles]::Float,[Globalization.CultureInfo]::InvariantCulture,[ref]$age) -or [double]::IsNaN($age) -or [double]::IsInfinity($age) -or $age -lt 0){return 'RETRY_PARTIAL'}\n if($v[1] -eq 'false'){return 'BACKGROUND'}\n if($v[3] -ne '64' -or $v[4] -ne '64'){return 'HOST_COUNT_MISMATCH'}\n return 'CONTINUE'\n}\n",
+  "syntheticCases": [
+    {
+      "actual": "WARMUP",
+      "passed": true,
+      "name": "warmup",
+      "expected": "WARMUP"
+    },
+    {
+      "actual": "CONTINUE",
+      "passed": true,
+      "name": "active",
+      "expected": "CONTINUE"
+    },
+    {
+      "actual": "BACKGROUND",
+      "passed": true,
+      "name": "background",
+      "expected": "BACKGROUND"
+    },
+    {
+      "actual": "HOST_COUNT_MISMATCH",
+      "passed": true,
+      "name": "count",
+      "expected": "HOST_COUNT_MISMATCH"
+    },
+    {
+      "actual": "RETRY_EMPTY",
+      "passed": true,
+      "name": "empty-write",
+      "expected": "RETRY_EMPTY"
+    },
+    {
+      "actual": "RETRY_PARTIAL",
+      "passed": true,
+      "name": "partial-write",
+      "expected": "RETRY_PARTIAL"
+    },
+    {
+      "actual": "STALE_STATUS",
+      "passed": true,
+      "name": "stale-valid",
+      "expected": "STALE_STATUS"
+    },
+    {
+      "actual": "STALE_STATUS",
+      "passed": true,
+      "name": "stale-empty",
+      "expected": "STALE_STATUS"
+    },
+    {
+      "actual": "RETRY_PARTIAL",
+      "passed": true,
+      "name": "invalid-age",
+      "expected": "RETRY_PARTIAL"
+    }
+  ],
+  "limitations": [
+    "Actual owned process verification/graceful stop not runtime tested",
+    "No new CPU/Present/visual data",
+    "Pending dedicated slot response"
+  ]
+}

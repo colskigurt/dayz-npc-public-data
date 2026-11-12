@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "snapshotId": "lazy-crowd-eligibility-repeat-exclusion-20261112",
-  "generatedAt": "2026-11-12T12:43:18.299Z",
+  "generatedAt": "2026-11-12T12:50:40.505Z",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -13696,27 +13696,23 @@
   ],
   "blockers": [
     "Three valid independent pairs not available:valid2,excluded1.",
-    "Third baseline lost foreground:25/28 coarse observations during CPU capture inactive;992 inactive frames in whole client trace. Raw third -6.70% excluded.",
+    "Third baseline lost foreground:26/28 coarse observations during CPU capture inactive;992 inactive frames in whole client trace. Raw third -6.70% excluded.",
     "Valid CPU changes -5.015% and -1.539% vary; descriptive two-value median -3.277% is not accepted effect.",
     "Function/Present/visual and pure-cost attribution remain unverified.",
     "Awaiting dedicated foreground slot before rerunning both conditions of excluded pair."
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/lazy-crowd-eligibility-repeat-exclusion-20261112.md",
-      "sha256": "ebc764a4c82b710ad76bf389b60b58aae9ce87d3f9fd956861ecf38ce2c0cc81"
+      "report": "reports/operations/lazy-crowd-eligibility-exclusion-correction-20261112.md",
+      "sha256": "47dc70b8ac36fb79e17d9dbec9b0c52f292cce9562ae04b662b2d1f59179a8ef"
     },
     {
-      "data": "data/lazy-crowd-eligibility-repeat-exclusion-20261112.json",
-      "sha256": "40c01ada175a0afbacdaad516545232f0f078c2a8599737ffebf6566dcb9e64f"
+      "data": "data/lazy-crowd-eligibility-exclusion-correction-20261112.json",
+      "sha256": "59da724409c83544f202cb0f22f5b317d9938e7ed27fdc6fe2589edd77f0e03d"
     },
     {
-      "evidence": "data/lazy-crowd-eligibility-repeat-exclusion-20261112-evidence.txt",
-      "sha256": "20b1314b7c3296dab17b116aef91f491846b706b0cdb231b5db2faae0242fb7c"
-    },
-    {
-      "exclusion": "data/lazy-crowd-eligibility-repeat-exclusion-20261112-exclusion.json",
-      "sha256": "7aff4844051b4f956df615f0c525379c3b5d1d566e714ddb619f7d9a0aef9788"
+      "evidence": "data/lazy-crowd-eligibility-exclusion-correction-20261112-evidence.txt",
+      "sha256": "789f17cf2afe8bc2e17e8d4685b15909828f53a3226ed9e866d58eba608e7cf8"
     }
   ],
   "freshness": {
@@ -13727,7 +13723,7 @@
     "consumerRule": "2 valid pairs,1 excluded; no optimization acceptance; exclude attempt3 from valid summary."
   },
   "updateState": {
-    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T12:43:18.299Z",
+    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T12:50:40.505Z",
     "lastUpdateFailure": null
   },
   "links": {
@@ -15707,7 +15703,19 @@
   },
   "latestReview": {
     "sourceRunId": "LAZY-ELIGIBILITY-cost64-repeat1",
-    "status": "INCONCLUSIVE_CONDITION_GATE",
-    "next": "Await dedicated foreground slot then rerun both excluded conditions"
+    "preparationRunId": "LAZY-ELIGIBILITY-cost64-replacement1",
+    "status": "CORRECTION_AND_PREPARATION_ONLY_NO_NEW_GAME_TRIAL",
+    "correction": {
+      "previousNarrativeInactiveObservations": 25,
+      "actualInactiveObservations": 26,
+      "totalCpuWindowObservations": 28,
+      "rawSourceAlwaysRecorded": 26,
+      "conclusionChanged": false,
+      "excludedAttempt": 3
+    },
+    "newIndependentTrials": 0,
+    "guardTests": 9,
+    "actualGameStopPath": "NOT_TESTED",
+    "next": "Await dedicated foreground slot"
   }
 }
