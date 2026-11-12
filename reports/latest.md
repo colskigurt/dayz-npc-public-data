@@ -1,30 +1,41 @@
-# Lazy eligibility — 실제8개체 상태 대조
+# Lazy eligibility — 64개체 전체 CPU 첫 비교
 
 ## 1. 작업 목표
-국소 선별을 통과한 lazy eligibility가 실제8개체 추적·등반·낙하·착지 중에도 원래의 이동 가능 판정과 일치하는지 확인한다. 물리 질의·밀침 힘·지속 등반·애니메이션 갱신은 유지한다.
+8개체 live shadow 불일치0 이후64개체에서 lazy eligibility의 전체 CPU 효과를 선별한다. 같은90게임초 미션·13개 기존 PBO·single render64+receiver64·기준/후보 동일 진단을 쓰고 원래 판정을 재계산하는 shadow는 끈다. 물리·지지·힘·지속 등반·애니메이션 갱신은 유지한다.
 
 ## 2. 실제 수행
-기존 13개 PBO와 현재 single render+receiver 구성을 재사용했다. 별도 미션에만 후보 클래스를 넣고 실제 쌍마다 캐시된 canA/canB와 원래 Movable/EntryPressurePriority를 다시 계산해 비교했다. 원래 계산을 추가 실행한 shadow이므로 성능 시험이 아니다. 한 실행에서 고정90게임초의 ground/low/high 목표 이동을 반복했다. 원시 코드·패키지 변경과 신규 PBO는 없다.
-준비 중 관측기 예상 수64/실제8 불일치를 발견했다. 새 런타임을 무조건 재실행하지 않고 실제 클라이언트 렌더8과 서버 host-ready8render/8receiver를 교차 확인해 시작했다. 기대 수가 잘못된 관측기는 추가 enumeration을 했으므로 이번 실행 비용을 비교 근거로 쓰지 않는다. 다음 실행 seed에는 기존 지원 nf-cost-logical-eight.flag를 추가했다. 기존 대기 controller는 PID/시작Ticks 대조 후 종료했다.
+LAZY-ELIGIBILITY-cost64-1-baseline → on 순서의 독립1쌍. 같은 init.c에서 nf-lazy-eligibility-on.flag만 후보에 추가했다. 정상권한 Steam 실행, 같은 고정 카메라/날씨/플레이어 ground/low/high 이동. 워밍업40게임초 이후 기존 signed-counter 수집기로30벽시계초 전체 프로세스 CPU를 측정했다. 기존 client per-frame appActive와 관측기64/64·서버 host-ready를 대조했다. 새 PBO/엔진 수정 없음.
+기준 준비 뒤 대기 도우미가 관측 파일의 순간 빈 읽기로 종료됐다. 원본 오류를 보존하고 같은 서버·클라이언트를 유지한 채 빈 읽기를 건너뛰는 revision2 도우미를 연결했다. 기준 CPU구간의 coarse 관측25회/후보29회이며 공백은 기존 클라이언트 전체 프레임 활성 기록5261/5264행 모두true로 교차 확인했다. 새 영상·ETL·메모리 덤프를 만들지 않았다.
 
 ## 3. 측정 결과
-90.0182게임초, Crowd.Update4502회, 원래 판정과 대조57428회, 캐시 계산23620회, 불일치0. 실제 행동2776행. 전원 목표 인식 및2m 이상 이동, 관측된 렌더8/피격 호스트8 생존. 최종 VALID_TERMINAL8/8. 등반42·하강9·착지15 누적 관찰. FOLLOW/MOTION/SETTLE/EGRESS/FALL/LAND 경로가 나타났다.
-접촉 솔버32773회, contactFailures395회, 경로 계획204회/실패35회는 원시 카운터다. 정상 후보 거절·복구를 포함하며 이 수치를 terminal 실패 수로 바꾸지 않는다. 기준 실행과의 증감 비교는 미실행이다.
-서버 RequestExit(0), 실제 exitCode-1/forced=false, 클라이언트 정상 종료 확인. 컴파일/스크립트 오류·native crash 기록 없음. 전체 CPU, Present p50/p95/p99, 실제 시각적 부드러움은 미측정.
+| 지표 | 기준 | 후보 |
+|---|---:|---:|
+|서버 전체 CPU 평균(ms/벽시계초)|625.4568|594.0901|
+|동일 CPU 지표 p50/p95/p99|643.761/744.118/806.510|601.912/708.702/729.306|
+|수집 게임초 범위|40.6888–70.6545|41.1135–71.0901|
+|수집 벽시계초|30.0031|30.0091|
+|미션 OnUpdate dt p50/p95/p99(ms)|23/33/40.20|22/32.05/37.01|
+|접촉 solve/게임초|2447.665|2485.539|
+|발 Ray/게임초|24476.652|24855.387|
+|관절 Sweep/게임초|9762.462|9922.506|
+|군집 후보 쌍/Update 표본 평균|645.957|668.044|
+|Crowd.Update inclusive 경과/벽시계 비중|7.9640%|6.6833%|
+전체 CPU 평균 -5.0150%, 절대 -31.3667ms/벽시계초. 이는 ms/frame이나 Present 지표가 아니다. 단 한쌍이며5% 선별선의 여유는0.0150%p뿐이다. 국소 timer 비중은 CPU self-time이 아니며 전체 비중과 합산하지 않는다.
+두 조건 모두64/64 생존·목표 인식·2m 이동, 클라이언트 활성 확인, 컴파일/스크립트 오류·native crash 없음. 최종 결과는 기준 VALID5/INCOMPLETE57/STATE1/FALL1, 후보 VALID12/INCOMPLETE47/STATE3/FALL2. 정상 진행 중90초 종료를 포함하므로64개체 기능 수용이 아니다. 장기 FALL 상태 표본은 기준 최대36.8362초/후보6.7699초였고, 각 조건의5초 초과 두 구간은 종료 전 다른 상태로 복귀했다. 이를 후보의 복구 개선 증거로 삼지 않는다.
 
 ## 4. 원인 분석
-확인: 관측된 실제 쌍 처리 중 이동 가능 상태 재사용은 원래 판정과 같았고, 최종 목적·복귀는8/8이었다. 일반적인 지지·충돌 검사 삭제 없이 통과했다.
-추정: 반복 상태 조회 감소가 국소 시간 감소의 원인 후보지만 이번 shadow에는 원래 판정도 있어 성능 개선을 입증하지 못한다.
-미확인: 별도 baseline과의 기능 차이, 실제 사망·피격 중 모든 분기, 네이티브 callback의 재진입, 64개체 전체 CPU 효과와 시각 품질. 이번 8/8을 모든 기능 최종 수용으로 일반화하지 않는다.
+확인: 발 Ray/게임초는 후보+1.55%, 관절 Sweep/게임초+1.64%로 감소하지 않았다. 군집 후보 쌍도 증가했다. 검사 생략에 의한 개선은 아니다. 캐시 계산은 측정 경계 사이86893회, 갱신1379회였다. 군집 inclusive 경과 비중은 약16.08% 감소했다.
+추정: 반복 스크립트 상태 조회 감소가 국소 범위 감소에 기여한다. 그러나 전체 CPU 차이 전부를 이 변경의 순수 효과로 귀속할 수는 없다. 실제 궤적·FALL 체류·접촉·상태 분포가 달랐다. UI/스케줄/할당기 self-time도 분리하지 않았다.
+기능: 후보 종료 시 unresolved5개로 기준2개보다 많다. 동일 LANDING_SPACE_BLOCKED/CONTACT_SUPPORT_LOST는 기준에도 있었고 기준의 긴 FALL도 확인했다. 따라서 후보 탓으로 확정하거나 기존 결함을 해결한 것으로 보고하지 않는다. 원시 실패 기록을 보존하며 최적화 작업을 기능 개발로 전환하지 않는다.
 
 ## 5. 검증 수준
-실제8개체 판정 경로 진단 성공. 해당90초 시나리오 종결8/8. 기준/후보 기능 회귀 비교·독립 반복·시각 품질·성능·최종 수용은 미완료. 물리 검사나 애니메이션 갱신율을 줄인 시험이 아니다.
+진단 성공·단일 비용 pilot의 수치 기준만 충족. 반복 검증 완료 아님. Host/foreground gate는 통과했지만 기능 회귀는 미확정, 시각 품질·Present·GPU·GC는 미측정, 최종 미수용. 20ms p95 목표 달성으로 보고하지 않는다.
 
 ## 6. 변경 사항
-LAZY-ELIGIBILITY-eight-shadow1, 별도 mission/init.c의 후보 클래스와 연결만 변경. 기존게임/PBO/자산/운영 서버 보존. 신규 PBO가 없어 새 서명 대상 없음. 준비 계약·미션 해시·13개 입력 해시는 contract.json으로 연결한다. 관측기 기대 수를 고치는 seed flag 추가는 이후 실행용이다.
+별도 mission/init.c의 NFLazyEligibilityCrowd와 연결, ON flag, 같은 진단용 aggregate timer만 추가했다. baseline도 같은 클래스에서 원래 Update/AccumulatePair를 사용한다. 신규 PBO가 없어 새 서명 대상 없음. 기존13개 PBO/엔진 해시는 실행 전에 대조했다. 계약/미션 SHA는 contract.json, 게임·운영 서버·과거 증거는 보존한다. 도우미 두 버전과 오류도 보존한다.
 
 ## 7. 원시 증거
-contract-preparation.json/contract.json, init.c, start-receipt.json, gate-launch.json, server/client launch·terminal, gameplay-eight.tsv, mixed-hosts.tsv, terminal-state.tsv, milestones.tsv, part-command-clock.tsv, server-frame.tsv, script 로그, analysis.json. 실행 ID LAZY-ELIGIBILITY-eight-shadow1. 공개 패킷은 자체 후보 클래스와 선정 요약·원시 파일의 hash만 포함하고 로그인/플레이어 식별자·내부 경로·전체 원시 로그는 노출하지 않는다.
+contract-before-mission.json/contract.json, mission/init.c, run-pair.ps1, gate-pair.ps1/revision2와 오류, 양쪽 server/client launch·terminal·start receipts, server-cpu.csv, capture-trigger.json, gameplay-eight.tsv, terminal-state.tsv, mixed-hosts.tsv, milestones.tsv, server-frame.tsv, part-command-clock.tsv, visual-app-frames.tsv, client-readiness-observations.jsonl, script 로그, analysis.json, functional-cutoff-review.json, decision.json. 공개에는 자체 후보 코드·전체 집계·선정 기준·원시 파일 ID와 hash만 포함하고 개인 경로/플레이어 식별자/원시 로그는 제외한다.
 
 ## 8. 잔여 문제
-다음 단일 비교는 shadow를 끈 동일 진단 구성의 기준/후보 전체 CPU 비교다. 8개체에서는 군집 규모가 작아 전체 이득이 작을 수 있으므로8/8을64성능 성공으로 환산하지 않는다. 64개체에서는 동일 조건 대조와 반복으로 전체 CPU 개선 여부를 판정하고 정상 밀침·낙하·재등반을 계속 보존한다. 바닐라 내부 Ray/Sweep 빈도와 접촉 재사용은 여전히 미확인. 20ms p95는 미달성 목표다.
+다음 단일 산출물은 ON→baseline 역순의 독립 비교1쌍이다. 경계선5.015%를 반복 가능한 개선으로 취급하지 않고 반복·기능 분포를 확인한다. 같은 코드로 모든 쌍 개선/3쌍 중앙5% 등 기존 수용 정책을 적용하고 Present와 실제 시각 품질 검증을 별도로 남긴다. 재현 결과가 부족하면 후보를 채택하지 않는다. 기존 지지/착지 결함은 별도 관리하며 새 기능 개발로 확대하지 않는다.

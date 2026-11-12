@@ -1,0 +1,737 @@
+{
+  "sourceRunId": "LAZY-ELIGIBILITY-cost64-1",
+  "selection": "All31 OS CPU samples/condition and all aggregate outcomes; own candidate source; raw player logs excluded",
+  "rawEvidence": [
+    {
+      "fileId": "contract-before-mission.json",
+      "bytes": 12002,
+      "sha256": "300c57dbf80cc4102a7c06f2f16300269afdfe874590389e983f32d42d454e18"
+    },
+    {
+      "fileId": "contract.json",
+      "bytes": 12417,
+      "sha256": "98b23b3213a0d21ad7033725d93cbf25086b1a48b9c4592f5cb3d982680e8942"
+    },
+    {
+      "fileId": "analysis.json",
+      "bytes": 5931,
+      "sha256": "e0df936f0bb7ea7961c80eec271ea7c8c12fc7908ceabce53af27af0bdec267a"
+    },
+    {
+      "fileId": "functional-cutoff-review.json",
+      "bytes": 3720,
+      "sha256": "bd882be2bdd98fdf9078d5487de8f7f433f51eba90f14d3c47ff5cadf524d6e8"
+    },
+    {
+      "fileId": "decision.json",
+      "bytes": 928,
+      "sha256": "35b81b4e58ee5c6866d53938f03c9bcc9cc5ee9ee2936fcaed37fdbbfbb987bd"
+    },
+    {
+      "fileId": "mission/server-role-lod0.chernarusplus/init.c",
+      "bytes": 20458,
+      "sha256": "02782be7b3ef1a4a86c8e8b0d487bc7e461a8b8e721a579d21655bd99e12342d"
+    },
+    {
+      "fileId": "gate-launch.json",
+      "bytes": 62,
+      "sha256": "188ddf72aebc964f1128d1d13ff0cdc9b2d99b4b95e8274b6bb2e55e171fff84"
+    },
+    {
+      "fileId": "gate-revision2-launch.json",
+      "bytes": 164,
+      "sha256": "98c7b858119d629a8505ee2072bc773fb937e6539d6c6c840ef65ecb334e4660"
+    },
+    {
+      "fileId": "gate-error.txt",
+      "bytes": 339,
+      "sha256": "62adce421c17692a2c97fac00cc90508629460b421904cd7b61fb2fac88dbd23"
+    },
+    {
+      "fileId": "runs/baseline/server-launch.json",
+      "bytes": 308,
+      "sha256": "d80b0cdd354a4c6f2103e5cd669096e2b3c6f63ace1eaa7318a7362e880e9cc5"
+    },
+    {
+      "fileId": "runs/baseline/server-terminal.json",
+      "bytes": 173,
+      "sha256": "13afa81dea01fb55669eb9f23f9f89b0980d4e053be20ee53a6e074f588714be"
+    },
+    {
+      "fileId": "runs/baseline/client-launch.json",
+      "bytes": 119,
+      "sha256": "3d2d3ee25cbc487016c5428197a54bac6e635a95483d5cb43fb801d4eac3ebaf"
+    },
+    {
+      "fileId": "runs/baseline/client-closed.json",
+      "bytes": 70,
+      "sha256": "a475a9d3fef96632a92d676b47645ce6ebf4e9f61ccb6fd76cdcd50304f4cc36"
+    },
+    {
+      "fileId": "runs/baseline/capture-trigger.json",
+      "bytes": 128,
+      "sha256": "82449b25ffd7bff93f7fb35b7c394362a9f56ad3bccb2ea139cce19cb2a1de32"
+    },
+    {
+      "fileId": "runs/baseline/server-cpu.csv",
+      "bytes": 4538,
+      "sha256": "089f973bbb14bdf7d141702ace0ae1ccb2e04d552d2b885155e454c2251b6ea8"
+    },
+    {
+      "fileId": "runs/baseline/start-receipt.json",
+      "bytes": 162,
+      "sha256": "2ee56441d0f03b5d6f3ae9e16b3f844b5e613f0a7058fa7b48ee5d4db2e63ae6"
+    },
+    {
+      "fileId": "runs/baseline/client-readiness-observations.jsonl",
+      "bytes": 8236,
+      "sha256": "a3b6af9e59f0e04a8da143289315f532d831f5e31dacc2b0ae0692c1daec0b3e"
+    },
+    {
+      "fileId": "runs/baseline/server-profile/gameplay-eight.tsv",
+      "bytes": 6518241,
+      "sha256": "2c6bcc32162064e1d0b8602b803e2731ba9beb9b2bc6d826ca4d9fe20fe8d6a4"
+    },
+    {
+      "fileId": "runs/baseline/server-profile/terminal-state.tsv",
+      "bytes": 11894,
+      "sha256": "84cf682df7fe684af98ca168e670b241a8b930bbc1d683d04e566799dc8bd965"
+    },
+    {
+      "fileId": "runs/baseline/server-profile/mixed-hosts.tsv",
+      "bytes": 343728,
+      "sha256": "62c8f8bad8a170f9d1c94ce416e46631f1b23ef932f79d037fa5d3bbf666ec68"
+    },
+    {
+      "fileId": "runs/baseline/server-profile/milestones.tsv",
+      "bytes": 13143,
+      "sha256": "ce89d63f43afa1f8b5ad52d05359c1cc4db144fbd34d96fb4f8e67cf78d91202"
+    },
+    {
+      "fileId": "runs/baseline/server-profile/server-frame.tsv",
+      "bytes": 196243,
+      "sha256": "20888b8577814022fe3376d5f4272da0640c19ba2db0b0311787e35722ba7e7f"
+    },
+    {
+      "fileId": "runs/baseline/server-profile/part-command-clock.tsv",
+      "bytes": 230545,
+      "sha256": "a089206542a2d97254c32bbc585756a1e78f7ab9eb3b87036d55775c2481342a"
+    },
+    {
+      "fileId": "runs/baseline/client-profile/visual-app-frames.tsv",
+      "bytes": 179902,
+      "sha256": "e0687a956f3066f331f0cb8dc6bfe6f789b43b7ef53e80f668143506626af1df"
+    },
+    {
+      "fileId": "runs/baseline/server-profile/script_2026-11-12_21-11-21.log",
+      "bytes": 91776,
+      "sha256": "9ead4014c70d52999969d9bd6bfb6a694e6268682b31c30e7c3a5f4709aa742a"
+    },
+    {
+      "fileId": "runs/on/server-launch.json",
+      "bytes": 295,
+      "sha256": "c7c3104dde286717284c3caa0cb7cb161a0e557518647a498ca3ea30f8f79674"
+    },
+    {
+      "fileId": "runs/on/server-terminal.json",
+      "bytes": 167,
+      "sha256": "f33a06907fad52d63c5b70a5689c94ff31b7d4bdb3e66905a0ebc7d039daac9d"
+    },
+    {
+      "fileId": "runs/on/client-launch.json",
+      "bytes": 119,
+      "sha256": "9e6d801e07e22f0aa762f38041f27a78984a4c25a229a7cf96ebd3ab3b741d45"
+    },
+    {
+      "fileId": "runs/on/client-closed.json",
+      "bytes": 70,
+      "sha256": "a475a9d3fef96632a92d676b47645ce6ebf4e9f61ccb6fd76cdcd50304f4cc36"
+    },
+    {
+      "fileId": "runs/on/capture-trigger.json",
+      "bytes": 129,
+      "sha256": "679fa32ca8ac900144caaaef20d78d95cc9ebff45283ad7960db40922cdd3376"
+    },
+    {
+      "fileId": "runs/on/server-cpu.csv",
+      "bytes": 4535,
+      "sha256": "1f2ead0dd76961431f6f87cfcbff4bd39e4a562d5d86fe16ed56abfe97b2448b"
+    },
+    {
+      "fileId": "runs/on/start-receipt.json",
+      "bytes": 162,
+      "sha256": "0698ae7ccd870077f1fb4eabf6c46313b53412a8b3ca9af5f3f86af3ae124ca5"
+    },
+    {
+      "fileId": "runs/on/client-readiness-observations.jsonl",
+      "bytes": 10411,
+      "sha256": "ae60e266d7facbdcb5485352fc375308d5c5d6a8035a8566dbf2c7f666cf66d6"
+    },
+    {
+      "fileId": "runs/on/server-profile/gameplay-eight.tsv",
+      "bytes": 6537453,
+      "sha256": "baca43ce7b85a84370e564d821ed9142a7e681efc2f79b106423c0da38459bec"
+    },
+    {
+      "fileId": "runs/on/server-profile/terminal-state.tsv",
+      "bytes": 11687,
+      "sha256": "d94b5a8137450aee64f3aa218f204f2e0a6d80c6f468f91c729a91a835c8e3a4"
+    },
+    {
+      "fileId": "runs/on/server-profile/mixed-hosts.tsv",
+      "bytes": 340851,
+      "sha256": "dee6f3112399b962cdd29d9a0e21958c90f245ca0f0f9ee3318e86e1a208f78c"
+    },
+    {
+      "fileId": "runs/on/server-profile/milestones.tsv",
+      "bytes": 15757,
+      "sha256": "88f96a144c2de9ddd3be2fa88af4a3fb80eb2a0fb5a4201905b6711b3e488eda"
+    },
+    {
+      "fileId": "runs/on/server-profile/server-frame.tsv",
+      "bytes": 196507,
+      "sha256": "7f7235de4ee9e2834f40c50f25ae38ce6dfd53138ff9e0eb9b5fc441dd56eefc"
+    },
+    {
+      "fileId": "runs/on/server-profile/part-command-clock.tsv",
+      "bytes": 229396,
+      "sha256": "fe0a60b23d2fe48a6941109da09b997f4a52b686201542d8939074f52f82c582"
+    },
+    {
+      "fileId": "runs/on/client-profile/visual-app-frames.tsv",
+      "bytes": 180145,
+      "sha256": "88868bd298028f62a3bd7aa94cfa64963b64f9d82481a82b75c125b8d1ec47ba"
+    },
+    {
+      "fileId": "runs/on/server-profile/script_2026-11-12_21-14-38.log",
+      "bytes": 93058,
+      "sha256": "592fc9d4023533956311ac4c8e60302cc1f376c15e041f3a935b2cc32fde46cb"
+    }
+  ],
+  "candidateSource": "class NFLazyEligibilityCrowd: DGBNativeCrowd\n{\n    ref array<int> NFLStamps={};ref array<bool> NFLValues={};\n    int NFLGeneration;int NFLComputed;bool NFLActive;bool NFLEnabled;int NFLLiveCalls;int NFLLiveComputed;float NFLLiveUpdateTicks;\n    void NFLColdStorage(){NFLStamps.Clear();NFLValues.Clear();NFLGeneration=0;NFLActive=false;}\n    override void Update(float timeslice)\n    {\n        int liveStarted=TickCount(0);NFLLiveCalls++;NFLComputed=0;\n        if(!NFLEnabled){super.Update(timeslice);NFLLiveUpdateTicks+=TickCount(liveStarted);return;}\n        if(NFLActive){NFLActive=false;super.Update(timeslice);return;}\n        if(!Director.OpenTraversal){super.Update(timeslice);return;}\n        int count=Director.Bodies.Count();\n        if(NFLStamps.Count()!=count){NFLStamps.Clear();NFLStamps.Resize(count);NFLValues.Resize(count);}\n        if(NFLGeneration>=2147483646){NFLStamps.Clear();NFLStamps.Resize(count);NFLGeneration=1;}\n        else NFLGeneration++;\n        NFLActive=true;super.Update(timeslice);NFLActive=false;NFLLiveComputed+=NFLComputed;NFLLiveUpdateTicks+=TickCount(liveStarted);\n    }\n    override void AccumulatePair(int a,int b)\n    {\n        if(!NFLActive){super.AccumulatePair(a,b);return;}\n        PairCandidates++;\n        DGBNativeGroundBody first=Director.Bodies[a];DGBNativeGroundBody second=Director.Bodies[b];\n        if(first.Agent.State==\"DEAD\" || second.Agent.State==\"DEAD\")return;\n        if(Math.AbsFloat(first.Agent.Position[1] - second.Agent.Position[1])>=1)return;\n        if(NFLStamps[a]!=NFLGeneration)\n        {NFLValues[a]=Movable(first) && !first.EntryPressurePriority;NFLStamps[a]=NFLGeneration;NFLComputed++;}\n        if(NFLStamps[b]!=NFLGeneration)\n        {NFLValues[b]=Movable(second) && !second.EntryPressurePriority;NFLStamps[b]=NFLGeneration;NFLComputed++;}\n        bool canA=NFLValues[a];bool canB=NFLValues[b];\n        if(!canA && !canB)return;\n        vector relative=first.NativeVelocity+first.ContactVelocity - second.NativeVelocity - second.ContactVelocity;\n        vector force=ContactForce(first.Agent.Position,second.Agent.Position,relative,a*131+b);\n        if(force.Length()<0.00001)return;\n        ContactPairs++;\n        if(canA)first.ContactForce+=force;\n        if(canB)second.ContactForce-=force;\n    }\n}\n\n",
+  "decision": {
+    "sourceRunId": "LAZY-ELIGIBILITY-cost64-1",
+    "adopted": false,
+    "next": "Repeat matched pair with reversed ON/OFF order; no functional repair expansion",
+    "numericalPilotThresholdMet": true,
+    "thresholdMarginPercentagePoints": 0.01501135896206307,
+    "hostForegroundGates": "PASS; not full functional regression",
+    "functionalRegression": "UNDETERMINED: cutoff outcomes differ; shared LANDING_SPACE_BLOCKED/CONTACT_SUPPORT_LOST exists in baseline",
+    "baselineLongFallStateSeconds": 36.8362,
+    "candidateLongFallStateSeconds": 6.7699,
+    "crowdInclusiveElapsedWallShareChangePercent": -16.08068356782416,
+    "footRayPerGameSecondChangePercent": 1.5473340440511851,
+    "jointSweepPerGameSecondChangePercent": 1.6393864346925913,
+    "wholeCpuAttribution": "Observed difference not fully attributable to eligibility cache: trajectories/phase mix vary; inclusive timer not self-time",
+    "finalAcceptance": false
+  },
+  "limitations": [
+    "One pair cannot prove repeatability",
+    "Game trajectories and contact workloads may differ; raw physical rates and phases retained",
+    "Mission dt is not Present",
+    "Crowd elapsed range is not CPU self-time",
+    "No GPU/heap/GC breakdown measured"
+  ],
+  "cpuSamples": {
+    "baseline": [
+      {
+        "sampleIndex": 0,
+        "elapsedWallSeconds": 0.0,
+        "cpuDeltaMs": null,
+        "wallDeltaMs": null,
+        "cpuMsPerWallSecond": null,
+        "serverGameSeconds": 40.6888
+      },
+      {
+        "sampleIndex": 1,
+        "elapsedWallSeconds": 1.0172216,
+        "cpuDeltaMs": 546.875,
+        "wallDeltaMs": 1015.25225,
+        "cpuMsPerWallSecond": 538.659234687734,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 2,
+        "elapsedWallSeconds": 2.0073254,
+        "cpuDeltaMs": 609.375,
+        "wallDeltaMs": 991.39375,
+        "cpuMsPerWallSecond": 614.6649603147085,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 3,
+        "elapsedWallSeconds": 3.0016858,
+        "cpuDeltaMs": 609.375,
+        "wallDeltaMs": 992.8857,
+        "cpuMsPerWallSecond": 613.7413400152706,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 4,
+        "elapsedWallSeconds": 4.0034627,
+        "cpuDeltaMs": 718.75,
+        "wallDeltaMs": 1002.28575,
+        "cpuMsPerWallSecond": 717.110863842971,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 5,
+        "elapsedWallSeconds": 5.0059567,
+        "cpuDeltaMs": 828.125,
+        "wallDeltaMs": 1002.98705,
+        "cpuMsPerWallSecond": 825.658716131978,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 6,
+        "elapsedWallSeconds": 5.9981379,
+        "cpuDeltaMs": 718.75,
+        "wallDeltaMs": 991.1603,
+        "cpuMsPerWallSecond": 725.1601986076319,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 7,
+        "elapsedWallSeconds": 7.0029675,
+        "cpuDeltaMs": 640.625,
+        "wallDeltaMs": 1004.7744,
+        "cpuMsPerWallSecond": 637.5809335906647,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 8,
+        "elapsedWallSeconds": 8.0044145,
+        "cpuDeltaMs": 718.75,
+        "wallDeltaMs": 1001.53015,
+        "cpuMsPerWallSecond": 717.6518849682159,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 9,
+        "elapsedWallSeconds": 9.0124205,
+        "cpuDeltaMs": 656.25,
+        "wallDeltaMs": 1008.49785,
+        "cpuMsPerWallSecond": 650.7202766966732,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 10,
+        "elapsedWallSeconds": 9.9983549,
+        "cpuDeltaMs": 656.25,
+        "wallDeltaMs": 985.4543,
+        "cpuMsPerWallSecond": 665.9365127332643,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 11,
+        "elapsedWallSeconds": 11.0042979,
+        "cpuDeltaMs": 687.5,
+        "wallDeltaMs": 1005.8562,
+        "cpuMsPerWallSecond": 683.4973030936231,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 12,
+        "elapsedWallSeconds": 12.0095433,
+        "cpuDeltaMs": 718.75,
+        "wallDeltaMs": 1006.05005,
+        "cpuMsPerWallSecond": 714.4276768337718,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 13,
+        "elapsedWallSeconds": 13.0020584,
+        "cpuDeltaMs": 609.375,
+        "wallDeltaMs": 991.69825,
+        "cpuMsPerWallSecond": 614.476228026015,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 14,
+        "elapsedWallSeconds": 14.0090469,
+        "cpuDeltaMs": 765.625,
+        "wallDeltaMs": 1007.894,
+        "cpuMsPerWallSecond": 759.6284926787936,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 15,
+        "elapsedWallSeconds": 15.0101681,
+        "cpuDeltaMs": 687.5,
+        "wallDeltaMs": 1000.68065,
+        "cpuMsPerWallSecond": 687.0323714163954,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 16,
+        "elapsedWallSeconds": 15.9999415,
+        "cpuDeltaMs": 703.125,
+        "wallDeltaMs": 989.35715,
+        "cpuMsPerWallSecond": 710.6887538034167,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 17,
+        "elapsedWallSeconds": 17.0090989,
+        "cpuDeltaMs": 656.25,
+        "wallDeltaMs": 1009.7063,
+        "cpuMsPerWallSecond": 649.9414730798451,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 18,
+        "elapsedWallSeconds": 18.0123418,
+        "cpuDeltaMs": 656.25,
+        "wallDeltaMs": 1002.9403,
+        "cpuMsPerWallSecond": 654.3260850122385,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 19,
+        "elapsedWallSeconds": 19.0008822,
+        "cpuDeltaMs": 609.375,
+        "wallDeltaMs": 989.0309,
+        "cpuMsPerWallSecond": 616.1334291982182,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 20,
+        "elapsedWallSeconds": 20.0074204,
+        "cpuDeltaMs": 640.625,
+        "wallDeltaMs": 1005.8581,
+        "cpuMsPerWallSecond": 636.8940111930301,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 21,
+        "elapsedWallSeconds": 21.012136,
+        "cpuDeltaMs": 656.25,
+        "wallDeltaMs": 1004.8722,
+        "cpuMsPerWallSecond": 653.0681214984353,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 22,
+        "elapsedWallSeconds": 21.9984544,
+        "cpuDeltaMs": 671.875,
+        "wallDeltaMs": 986.7666,
+        "cpuMsPerWallSecond": 680.8854292392953,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 23,
+        "elapsedWallSeconds": 23.0046017,
+        "cpuDeltaMs": 531.25,
+        "wallDeltaMs": 1005.56745,
+        "cpuMsPerWallSecond": 528.308667906862,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 24,
+        "elapsedWallSeconds": 24.0123505,
+        "cpuDeltaMs": 515.625,
+        "wallDeltaMs": 1008.10525,
+        "cpuMsPerWallSecond": 511.4793321431468,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 25,
+        "elapsedWallSeconds": 25.0021451,
+        "cpuDeltaMs": 546.875,
+        "wallDeltaMs": 990.032,
+        "cpuMsPerWallSecond": 552.3811351552273,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 26,
+        "elapsedWallSeconds": 26.009012,
+        "cpuDeltaMs": 468.75,
+        "wallDeltaMs": 1006.4551,
+        "cpuMsPerWallSecond": 465.7435786256138,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 27,
+        "elapsedWallSeconds": 27.0004691,
+        "cpuDeltaMs": 468.75,
+        "wallDeltaMs": 991.9148,
+        "cpuMsPerWallSecond": 472.5708296720646,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 28,
+        "elapsedWallSeconds": 28.0060439,
+        "cpuDeltaMs": 484.375,
+        "wallDeltaMs": 1004.874,
+        "cpuMsPerWallSecond": 482.0256071905532,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 29,
+        "elapsedWallSeconds": 29.0121105,
+        "cpuDeltaMs": 500.0,
+        "wallDeltaMs": 1006.0729,
+        "cpuMsPerWallSecond": 496.98187874854796,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 30,
+        "elapsedWallSeconds": 30.0052282,
+        "cpuDeltaMs": 484.375,
+        "wallDeltaMs": 993.11765,
+        "cpuMsPerWallSecond": 487.7317405445367,
+        "serverGameSeconds": 70.6545
+      }
+    ],
+    "on": [
+      {
+        "sampleIndex": 0,
+        "elapsedWallSeconds": 0.0,
+        "cpuDeltaMs": null,
+        "wallDeltaMs": null,
+        "cpuMsPerWallSecond": null,
+        "serverGameSeconds": 41.1135
+      },
+      {
+        "sampleIndex": 1,
+        "elapsedWallSeconds": 1.0315311,
+        "cpuDeltaMs": 562.5,
+        "wallDeltaMs": 1029.79465,
+        "cpuMsPerWallSecond": 546.225405230062,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 2,
+        "elapsedWallSeconds": 2.0097374,
+        "cpuDeltaMs": 562.5,
+        "wallDeltaMs": 978.21745,
+        "cpuMsPerWallSecond": 575.0255221883438,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 3,
+        "elapsedWallSeconds": 3.01503,
+        "cpuDeltaMs": 640.625,
+        "wallDeltaMs": 1005.00415,
+        "cpuMsPerWallSecond": 637.4351787502569,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 4,
+        "elapsedWallSeconds": 4.0038472,
+        "cpuDeltaMs": 671.875,
+        "wallDeltaMs": 988.77155,
+        "cpuMsPerWallSecond": 679.5047855088468,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 5,
+        "elapsedWallSeconds": 5.0086145,
+        "cpuDeltaMs": 734.375,
+        "wallDeltaMs": 1005.27985,
+        "cpuMsPerWallSecond": 730.517974671431,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 6,
+        "elapsedWallSeconds": 5.9998444,
+        "cpuDeltaMs": 609.375,
+        "wallDeltaMs": 990.3334,
+        "cpuMsPerWallSecond": 615.3230821054808,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 7,
+        "elapsedWallSeconds": 7.0085804,
+        "cpuDeltaMs": 562.5,
+        "wallDeltaMs": 1008.8836,
+        "cpuMsPerWallSecond": 557.5469756867889,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 8,
+        "elapsedWallSeconds": 7.9994391,
+        "cpuDeltaMs": 578.125,
+        "wallDeltaMs": 990.69315,
+        "cpuMsPerWallSecond": 583.556068798901,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 9,
+        "elapsedWallSeconds": 9.0043438,
+        "cpuDeltaMs": 562.5,
+        "wallDeltaMs": 1005.05155,
+        "cpuMsPerWallSecond": 559.6727849432201,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 10,
+        "elapsedWallSeconds": 10.0087385,
+        "cpuDeltaMs": 671.875,
+        "wallDeltaMs": 1004.616,
+        "cpuMsPerWallSecond": 668.7878751682235,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 11,
+        "elapsedWallSeconds": 11.0044276,
+        "cpuDeltaMs": 625.0,
+        "wallDeltaMs": 995.5045,
+        "cpuMsPerWallSecond": 627.8223754890108,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 12,
+        "elapsedWallSeconds": 12.0122885,
+        "cpuDeltaMs": 671.875,
+        "wallDeltaMs": 1008.30855,
+        "cpuMsPerWallSecond": 666.3386916633802,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 13,
+        "elapsedWallSeconds": 13.0026078,
+        "cpuDeltaMs": 625.0,
+        "wallDeltaMs": 990.14065,
+        "cpuMsPerWallSecond": 631.223452950851,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 14,
+        "elapsedWallSeconds": 14.0031137,
+        "cpuDeltaMs": 687.5,
+        "wallDeltaMs": 1000.51405,
+        "cpuMsPerWallSecond": 687.1467722017497,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 15,
+        "elapsedWallSeconds": 15.0105658,
+        "cpuDeltaMs": 671.875,
+        "wallDeltaMs": 1007.27845,
+        "cpuMsPerWallSecond": 667.0201273540598,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 16,
+        "elapsedWallSeconds": 16.0051132,
+        "cpuDeltaMs": 593.75,
+        "wallDeltaMs": 994.42635,
+        "cpuMsPerWallSecond": 597.0779032554799,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 17,
+        "elapsedWallSeconds": 17.0086803,
+        "cpuDeltaMs": 671.875,
+        "wallDeltaMs": 1004.12575,
+        "cpuMsPerWallSecond": 669.1144012590056,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 18,
+        "elapsedWallSeconds": 18.0095096,
+        "cpuDeltaMs": 578.125,
+        "wallDeltaMs": 1000.40365,
+        "cpuMsPerWallSecond": 577.8917340015703,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 19,
+        "elapsedWallSeconds": 18.9994485,
+        "cpuDeltaMs": 718.75,
+        "wallDeltaMs": 989.55405,
+        "cpuMsPerWallSecond": 726.3372829407348,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 20,
+        "elapsedWallSeconds": 20.0037041,
+        "cpuDeltaMs": 609.375,
+        "wallDeltaMs": 1004.33325,
+        "cpuMsPerWallSecond": 606.7458186811997,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 21,
+        "elapsedWallSeconds": 21.0073612,
+        "cpuDeltaMs": 656.25,
+        "wallDeltaMs": 1003.76425,
+        "cpuMsPerWallSecond": 653.7889748514156,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 22,
+        "elapsedWallSeconds": 22.0109121,
+        "cpuDeltaMs": 609.375,
+        "wallDeltaMs": 1003.60745,
+        "cpuMsPerWallSecond": 607.1846118719027,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 23,
+        "elapsedWallSeconds": 23.000565,
+        "cpuDeltaMs": 515.625,
+        "wallDeltaMs": 989.6127,
+        "cpuMsPerWallSecond": 521.0371693896005,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 24,
+        "elapsedWallSeconds": 24.0048694,
+        "cpuDeltaMs": 484.375,
+        "wallDeltaMs": 1004.2496,
+        "cpuMsPerWallSecond": 482.3253103610895,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 25,
+        "elapsedWallSeconds": 25.0025941,
+        "cpuDeltaMs": 531.25,
+        "wallDeltaMs": 997.8635,
+        "cpuMsPerWallSecond": 532.3874457779044,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 26,
+        "elapsedWallSeconds": 26.0083842,
+        "cpuDeltaMs": 531.25,
+        "wallDeltaMs": 1006.2305,
+        "cpuMsPerWallSecond": 527.9605418440407,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 27,
+        "elapsedWallSeconds": 26.996932,
+        "cpuDeltaMs": 546.875,
+        "wallDeltaMs": 988.12935,
+        "cpuMsPerWallSecond": 553.4447489086323,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 28,
+        "elapsedWallSeconds": 28.0010847,
+        "cpuDeltaMs": 468.75,
+        "wallDeltaMs": 1003.84105,
+        "cpuMsPerWallSecond": 466.9563971308007,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 29,
+        "elapsedWallSeconds": 29.0043929,
+        "cpuDeltaMs": 390.625,
+        "wallDeltaMs": 1003.9335,
+        "cpuMsPerWallSecond": 389.0944967968496,
+        "serverGameSeconds": null
+      },
+      {
+        "sampleIndex": 30,
+        "elapsedWallSeconds": 30.0112564,
+        "cpuDeltaMs": 484.375,
+        "wallDeltaMs": 1006.66155,
+        "cpuMsPerWallSecond": 481.1696642232933,
+        "serverGameSeconds": 71.0901
+      }
+    ]
+  }
+}

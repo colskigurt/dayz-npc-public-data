@@ -1,90 +1,236 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-12T12:08:11.654Z",
-  "sourceRunId": "LAZY-ELIGIBILITY-eight-shadow1",
-  "buildId": "single224-13mods-lazy-shadow-26f4dca03252ac77",
+  "generatedAt": "2026-11-12T12:21:38.292Z",
+  "sourceRunId": "LAZY-ELIGIBILITY-cost64-1",
+  "buildId": "single224-13mods-lazy-02782be7b3ef1a4a",
   "verificationStatus": {
     "diagnosisSucceeded": true,
     "experimentSuccess": true,
     "finalAccepted": false,
-    "functional": "LIVE8_90S_TERMINAL8of8_PREDICATE_SHADOW_MATCH_NOT_PAIRED_REGRESSION",
+    "functional": "ALL64_ALIVE_ACQUIRED_MOVED_CUTOFF_OUTCOMES_DIFFER_FULL_REGRESSION_OPEN",
     "visual": "NOT_MEASURED",
-    "performance": "NOT_MEASURED_SHADOW_INSTRUMENTATION",
+    "performance": "SINGLE_PAIR_MINUS5_015_PERCENT_NOT_REPRODUCED",
     "adopted": false
   },
   "metrics": {
     "schemaVersion": 1,
-    "sourceRunId": "LAZY-ELIGIBILITY-eight-shadow1",
-    "buildId": "single224-13mods-lazy-shadow-26f4dca03252ac77",
-    "verificationStatus": "LIVE8_PREDICATE_SHADOW_DIAGNOSIS_NOT_FULL_REGRESSION",
-    "logicalAgents": 8,
-    "renderHosts": 8,
-    "damageReceivers": 8,
-    "independentRuns": 1,
-    "shadowChecks": 57428,
-    "computedEligibility": 23620,
-    "crowdUpdates": 4502,
-    "mismatches": 0,
-    "lastShadowGameSeconds": 90.0182,
-    "gameplayRows": 2776,
-    "allAcquiredAndMoved2m": true,
-    "observedPhases": [
-      "EGRESS",
-      "FALL",
-      "FOLLOW",
-      "LAND",
-      "MOTION",
-      "SETTLE"
-    ],
-    "terminalOutcomes": {
-      "VALID_TERMINAL": 8
+    "sourceRunId": "LAZY-ELIGIBILITY-cost64-1",
+    "verificationStatus": "PILOT_ONLY_NOT_ACCEPTED",
+    "independentPairs": 1,
+    "newPbo": false,
+    "cases": {
+      "baseline": {
+        "runId": "LAZY-ELIGIBILITY-cost64-1-baseline",
+        "samples": 30,
+        "cpuMsPerWallSecond": {
+          "weightedMean": 625.4568001085662,
+          "p50": 643.7612033352549,
+          "p95": 744.1177603467708,
+          "p99": 806.5099513305546,
+          "meaning": "process aggregate CPU across threads / wall time; not ms/frame"
+        },
+        "captureGameWindow": [
+          40.6888,
+          70.6545
+        ],
+        "captureWallSeconds": 30.003071350000003,
+        "serverMissionDtMs": {
+          "p50": 23,
+          "p95": 33,
+          "p99": 40.200000000000045,
+          "n": 1381,
+          "meaning": "mission OnUpdate dt, not Present"
+        },
+        "all64AcquiredAndMoved2m": true,
+        "allObservedHostsAlive": true,
+        "windowPhasesByRow": {
+          "FOLLOW": 6620,
+          "FALL": 147,
+          "MOTION": 275,
+          "SETTLE": 64,
+          "EGRESS": 47,
+          "LAND": 207
+        },
+        "windowPhysicalWorkDelta": {
+          "contactSolves": 73346,
+          "contactFailures": 611,
+          "jointSweeps": 292539,
+          "footRays": 733460,
+          "plans": 1028,
+          "planFailures": 300,
+          "climbs": 33,
+          "drops": 17,
+          "landings": 21
+        },
+        "windowPhysicalWorkPerGameSecond": {
+          "contactSolves": 2447.665163837321,
+          "contactFailures": 20.389979209562934,
+          "jointSweeps": 9762.461747931802,
+          "footRays": 24476.65163837321,
+          "plans": 34.30588973392913,
+          "planFailures": 10.011446420407333,
+          "climbs": 1.1012591062448067,
+          "drops": 0.5673152971564155,
+          "landings": 0.7008012494285133
+        },
+        "wholeRunTerminalOutcomes": {
+          "INCOMPLETE_MILESTONES": 57,
+          "VALID_TERMINAL": 5,
+          "UNRESOLVED_STATE": 1,
+          "UNRESOLVED_FALL": 1
+        },
+        "crowd": {
+          "samples": 115,
+          "meanPairCandidates": 645.9565217391304,
+          "maxPairCandidates": 1137,
+          "eligibilityComputationsDelta": 0,
+          "updateCallsDelta": 1371,
+          "inclusiveElapsedWallPercent": 7.964016394157193,
+          "meaning": "timer range includes original Crowd.Update; not self-time or additive CPU decomposition"
+        },
+        "clientForegroundSamples": 25,
+        "clientWholeTraceAppFrames": 5261,
+        "clientWholeTraceAllActive": true,
+        "clientAppAgeRange": [
+          0.3,
+          105.677
+        ],
+        "clientTraceBroadGameplayCoverage": true,
+        "clientForegroundAndCountGate": true,
+        "nativeCrash": false,
+        "shadowChecksEnabled": false
+      },
+      "on": {
+        "runId": "LAZY-ELIGIBILITY-cost64-1-on",
+        "samples": 30,
+        "cpuMsPerWallSecond": {
+          "weightedMean": 594.090070537721,
+          "p50": 601.9118609683399,
+          "p95": 708.7015531081914,
+          "p99": 729.3055740695291,
+          "meaning": "process aggregate CPU across threads / wall time; not ms/frame"
+        },
+        "captureGameWindow": [
+          41.1135,
+          71.0901
+        ],
+        "captureWallSeconds": 30.00912805,
+        "serverMissionDtMs": {
+          "p50": 22,
+          "p95": 32.049999999999955,
+          "p99": 37.00999999999999,
+          "n": 1400,
+          "meaning": "mission OnUpdate dt, not Present"
+        },
+        "all64AcquiredAndMoved2m": true,
+        "allObservedHostsAlive": true,
+        "windowPhasesByRow": {
+          "FOLLOW": 6636,
+          "LAND": 192,
+          "EGRESS": 74,
+          "MOTION": 279,
+          "SETTLE": 67,
+          "FALL": 48
+        },
+        "windowPhysicalWorkDelta": {
+          "contactSolves": 74508,
+          "contactFailures": 481,
+          "jointSweeps": 297443,
+          "footRays": 745080,
+          "plans": 1062,
+          "planFailures": 332,
+          "climbs": 34,
+          "drops": 18,
+          "landings": 20
+        },
+        "windowPhysicalWorkPerGameSecond": {
+          "contactSolves": 2485.538720201757,
+          "contactFailures": 16.045849095627922,
+          "jointSweeps": 9922.50622151945,
+          "footRays": 24855.38720201757,
+          "plans": 35.427633554172246,
+          "planFailures": 11.075305404882473,
+          "climbs": 1.1342180233915786,
+          "drops": 0.6004683653249534,
+          "landings": 0.6671870725832815
+        },
+        "wholeRunTerminalOutcomes": {
+          "INCOMPLETE_MILESTONES": 47,
+          "UNRESOLVED_FALL": 2,
+          "VALID_TERMINAL": 12,
+          "UNRESOLVED_STATE": 3
+        },
+        "crowd": {
+          "samples": 114,
+          "meanPairCandidates": 668.0438596491229,
+          "maxPairCandidates": 1023,
+          "eligibilityComputationsDelta": 86893,
+          "updateCallsDelta": 1379,
+          "inclusiveElapsedWallPercent": 6.683348118523135,
+          "meaning": "timer range includes original Crowd.Update; not self-time or additive CPU decomposition"
+        },
+        "clientForegroundSamples": 29,
+        "clientWholeTraceAppFrames": 5264,
+        "clientWholeTraceAllActive": true,
+        "clientAppAgeRange": [
+          0.3,
+          105.748
+        ],
+        "clientTraceBroadGameplayCoverage": true,
+        "clientForegroundAndCountGate": true,
+        "nativeCrash": false,
+        "shadowChecksEnabled": false
+      }
     },
-    "totals": {
-      "climbs": 42,
-      "drops": 9,
-      "landings": 15,
-      "contactSolves": 32773,
-      "contactFailures": 395,
-      "plans": 204,
-      "planFailures": 35
-    },
-    "renderAndReceiverAliveAllObserved": true,
-    "nativeCrash": false,
-    "cpuSaving": null,
+    "wholeServerCpuMeanChangePercent": -5.015011358962063,
+    "conditionGatesPassed": true,
+    "captureGameEndpointsWithin1second": true,
+    "pilotAtLeast5PercentLower": true,
     "presentP95Ms": null,
     "visualQuality": "NOT_MEASURED",
-    "baselinePerformancePairs": 0,
-    "readinessException": "Observer expected64 because eight flag missing; actual8 visible and server8render8receiver host-ready verified. Shadow only; not performance evidence. Correct eight seed flag retained for next run."
+    "finalAccepted": false,
+    "limitations": [
+      "One pair cannot prove repeatability",
+      "Game trajectories and contact workloads may differ; raw physical rates and phases retained",
+      "Mission dt is not Present",
+      "Crowd elapsed range is not CPU self-time",
+      "No GPU/heap/GC breakdown measured"
+    ]
   },
   "blockers": [
-    "No paired whole CPU measurement; shadow recomputes original predicates and adds diagnostics.",
-    "One independent live8 run, not exhaustive hit/death or native reentry coverage.",
-    "Observer expected64/actual8 readiness exception crosschecked and documented; next eight seed corrected.",
-    "64-agent performance and current visual smoothness not verified;20ms p95 remains target."
+    "One matched pair;5.015% is only0.015percentage-point above5% pilot threshold.",
+    "Terminal counts differ:baseline valid5/incomplete57/state1/fall1,ON valid12/incomplete47/state3/fall2; no full functional regression pass.",
+    "Actual trajectories, phase mix and physical work differ; full CPU delta not proven pure eligibility-cache cost.",
+    "Mission dt is not Present. Visual/Present/GPU/GC and repeatability not measured.",
+    "Transient empty status-read helper failure corrected without game restart; full client-frame active trace used to crosscheck gap."
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/lazy-crowd-eligibility-live8-20261112.md",
-      "sha256": "5880c52d25d848b3b0128b71c90eb243f39e15b0c0e8432a11eabfbfecf96e66"
+      "report": "reports/operations/lazy-crowd-eligibility-cost64-pilot-20261112.md",
+      "sha256": "eb3bd2cc5fb41cbe4ed73df57f57f367722193c5658dead549fdbc9ee455d25d"
     },
     {
-      "data": "data/lazy-crowd-eligibility-live8-20261112.json",
-      "sha256": "3dda7dc0dce61db851361386e095b26ffdad747eab8a2a4a5e13cc3e967db1e6"
+      "data": "data/lazy-crowd-eligibility-cost64-pilot-20261112.json",
+      "sha256": "fd915300b76cbe9b89618e5455bb3f1bb16b91e87ed7ef9066c724e5643c5f58"
     },
     {
-      "evidence": "data/lazy-crowd-eligibility-live8-20261112-evidence.txt",
-      "sha256": "edaf1b3a91f371fd40508d8c639927e0997c4f325ebf1fa1894eb6eba79d9bf5"
+      "evidence": "data/lazy-crowd-eligibility-cost64-pilot-20261112-evidence.txt",
+      "sha256": "de6032a981f2d4cf73587726abcbfefefbcb1e547037732c365a453e74e735f1"
+    },
+    {
+      "decision": "data/lazy-crowd-eligibility-cost64-pilot-20261112-decision.json",
+      "sha256": "561ca692a82c911671526a827dbd0ac7e169c4ecfba6e520b559a0cf47d3f964"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-11-12T12:08:11.654Z",
-    "staleAfter": "2026-11-13T12:08:11.654Z",
+    "sourceUpdatedAt": "2026-11-12T12:21:38.292Z",
+    "staleAfter": "2026-11-13T12:21:38.292Z",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
-    "consumerRule": "Live8 predicate shadow only; not paired performance or final acceptance."
+    "consumerRule": "Single64 CPU pair; not repeated improvement/full function/visual acceptance."
   },
   "updateState": {
-    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T12:08:11.654Z",
+    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T12:21:38.292Z",
     "lastUpdateFailure": null
   }
 }

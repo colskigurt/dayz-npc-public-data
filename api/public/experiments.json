@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "lazy-crowd-eligibility-live8-20261112",
-  "generatedAt": "2026-11-12T12:08:11.654Z",
+  "snapshotId": "lazy-crowd-eligibility-cost64-pilot-20261112",
+  "generatedAt": "2026-11-12T12:21:38.292Z",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -67,7 +67,8 @@
     "RECEIVER-native-move1",
     "CPU-CURRENT-single64-1",
     "LAZY-ELIGIBILITY-method1-r2",
-    "LAZY-ELIGIBILITY-eight-shadow1"
+    "LAZY-ELIGIBILITY-eight-shadow1",
+    "LAZY-ELIGIBILITY-cost64-1"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -93,15 +94,16 @@
     "ed0e9d4c2d95cff14f4ce61d085941654b7454c03c5a3c4644340076a5abe142",
     "single224-13mods-f7b8a62845396922",
     "single224-13mods-lazy-bfebeccec02c2b38",
-    "single224-13mods-lazy-shadow-26f4dca03252ac77"
+    "single224-13mods-lazy-shadow-26f4dca03252ac77",
+    "single224-13mods-lazy-02782be7b3ef1a4a"
   ],
   "verificationStatus": {
     "diagnosisSucceeded": true,
     "experimentSuccess": true,
     "finalAccepted": false,
-    "functional": "LIVE8_90S_TERMINAL8of8_PREDICATE_SHADOW_MATCH_NOT_PAIRED_REGRESSION",
+    "functional": "ALL64_ALIVE_ACQUIRED_MOVED_CUTOFF_OUTCOMES_DIFFER_FULL_REGRESSION_OPEN",
     "visual": "NOT_MEASURED",
-    "performance": "NOT_MEASURED_SHADOW_INSTRUMENTATION",
+    "performance": "SINGLE_PAIR_MINUS5_015_PERCENT_NOT_REPRODUCED",
     "adopted": false
   },
   "metrics": [
@@ -13647,37 +13649,65 @@
       "conditions": "Live8 single render+receiver;90game seconds fixed ground/low/high; shadow compares cached vs original predicates per eligible pair; no CPU acceptance.",
       "repetitions": 1,
       "verificationStatus": "ONE_SCENARIO_NOT_PAIRED_REGRESSION"
+    },
+    {
+      "metricId": "lazy-crowd-eligibility-cost64-pilot-20261112-whole-cpu-mean",
+      "sourceRunId": "LAZY-ELIGIBILITY-cost64-1",
+      "buildId": "single224-13mods-lazy-02782be7b3ef1a4a",
+      "value": -5.015011358962063,
+      "unit": "percent/process-CPU-ms-per-wall-second",
+      "conditions": "Live64 single render+receiver;13 existing PBOs;90game seconds fixed ground/low/high;OFF thenON;30wall-second process CPU after40game-second warmup;shadow disabled.",
+      "repetitions": 1,
+      "verificationStatus": "OBSERVED_SINGLE_PAIR_NOT_ACCEPTED",
+      "baseline": 625.4568001085662,
+      "candidate": 594.090070537721
+    },
+    {
+      "metricId": "lazy-crowd-eligibility-cost64-pilot-20261112-mission-dt-p95",
+      "sourceRunId": "LAZY-ELIGIBILITY-cost64-1",
+      "buildId": "single224-13mods-lazy-02782be7b3ef1a4a",
+      "value": 32.049999999999955,
+      "baseline": 33,
+      "unit": "ms/mission-OnUpdate-dt-p95-NOT-Present",
+      "conditions": "Live64 single render+receiver;13 existing PBOs;90game seconds fixed ground/low/high;OFF thenON;30wall-second process CPU after40game-second warmup;shadow disabled.",
+      "repetitions": 1,
+      "verificationStatus": "OBSERVED_SINGLE_PAIR_NOT_ACCEPTED"
     }
   ],
   "blockers": [
-    "No paired whole CPU measurement; shadow recomputes original predicates and adds diagnostics.",
-    "One independent live8 run, not exhaustive hit/death or native reentry coverage.",
-    "Observer expected64/actual8 readiness exception crosschecked and documented; next eight seed corrected.",
-    "64-agent performance and current visual smoothness not verified;20ms p95 remains target."
+    "One matched pair;5.015% is only0.015percentage-point above5% pilot threshold.",
+    "Terminal counts differ:baseline valid5/incomplete57/state1/fall1,ON valid12/incomplete47/state3/fall2; no full functional regression pass.",
+    "Actual trajectories, phase mix and physical work differ; full CPU delta not proven pure eligibility-cache cost.",
+    "Mission dt is not Present. Visual/Present/GPU/GC and repeatability not measured.",
+    "Transient empty status-read helper failure corrected without game restart; full client-frame active trace used to crosscheck gap."
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/lazy-crowd-eligibility-live8-20261112.md",
-      "sha256": "5880c52d25d848b3b0128b71c90eb243f39e15b0c0e8432a11eabfbfecf96e66"
+      "report": "reports/operations/lazy-crowd-eligibility-cost64-pilot-20261112.md",
+      "sha256": "eb3bd2cc5fb41cbe4ed73df57f57f367722193c5658dead549fdbc9ee455d25d"
     },
     {
-      "data": "data/lazy-crowd-eligibility-live8-20261112.json",
-      "sha256": "3dda7dc0dce61db851361386e095b26ffdad747eab8a2a4a5e13cc3e967db1e6"
+      "data": "data/lazy-crowd-eligibility-cost64-pilot-20261112.json",
+      "sha256": "fd915300b76cbe9b89618e5455bb3f1bb16b91e87ed7ef9066c724e5643c5f58"
     },
     {
-      "evidence": "data/lazy-crowd-eligibility-live8-20261112-evidence.txt",
-      "sha256": "edaf1b3a91f371fd40508d8c639927e0997c4f325ebf1fa1894eb6eba79d9bf5"
+      "evidence": "data/lazy-crowd-eligibility-cost64-pilot-20261112-evidence.txt",
+      "sha256": "de6032a981f2d4cf73587726abcbfefefbcb1e547037732c365a453e74e735f1"
+    },
+    {
+      "decision": "data/lazy-crowd-eligibility-cost64-pilot-20261112-decision.json",
+      "sha256": "561ca692a82c911671526a827dbd0ac7e169c4ecfba6e520b559a0cf47d3f964"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-11-12T12:08:11.654Z",
-    "staleAfter": "2026-11-13T12:08:11.654Z",
+    "sourceUpdatedAt": "2026-11-12T12:21:38.292Z",
+    "staleAfter": "2026-11-13T12:21:38.292Z",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
-    "consumerRule": "Live8 predicate shadow only; not paired performance or final acceptance."
+    "consumerRule": "Single64 CPU pair; not repeated improvement/full function/visual acceptance."
   },
   "updateState": {
-    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T12:08:11.654Z",
+    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T12:21:38.292Z",
     "lastUpdateFailure": null
   },
   "links": {
@@ -15500,55 +15530,108 @@
         "independentRuns": 1,
         "performancePairs": 0
       }
+    },
+    {
+      "id": "lazy-crowd-eligibility-cost64-pilot-20261112",
+      "title": "Live64 lazy eligibility whole CPU pilot:625.46 to594.09ms/wall-second; not accepted",
+      "track": "matched-cpu-pilot",
+      "sourceRunId": [
+        "LAZY-ELIGIBILITY-cost64-1"
+      ],
+      "buildId": "single224-13mods-lazy-02782be7b3ef1a4a",
+      "verificationStatus": {
+        "diagnosisSucceeded": true,
+        "experimentSuccess": true,
+        "finalAccepted": false,
+        "functional": "ALL64_ALIVE_ACQUIRED_MOVED_CUTOFF_OUTCOMES_DIFFER_FULL_REGRESSION_OPEN",
+        "visual": "NOT_MEASURED",
+        "performance": "SINGLE_PAIR_MINUS5_015_PERCENT_NOT_REPRODUCED",
+        "adopted": false
+      },
+      "conditions": "Live64 single render+receiver;13 existing PBOs;90game seconds fixed ground/low/high;OFF thenON;30wall-second process CPU after40game-second warmup;shadow disabled.",
+      "evidenceReferences": [
+        {
+          "report": "reports/operations/lazy-crowd-eligibility-cost64-pilot-20261112.md",
+          "sha256": "eb3bd2cc5fb41cbe4ed73df57f57f367722193c5658dead549fdbc9ee455d25d"
+        },
+        {
+          "data": "data/lazy-crowd-eligibility-cost64-pilot-20261112.json",
+          "sha256": "fd915300b76cbe9b89618e5455bb3f1bb16b91e87ed7ef9066c724e5643c5f58"
+        },
+        {
+          "evidence": "data/lazy-crowd-eligibility-cost64-pilot-20261112-evidence.txt",
+          "sha256": "de6032a981f2d4cf73587726abcbfefefbcb1e547037732c365a453e74e735f1"
+        },
+        {
+          "decision": "data/lazy-crowd-eligibility-cost64-pilot-20261112-decision.json",
+          "sha256": "561ca692a82c911671526a827dbd0ac7e169c4ecfba6e520b559a0cf47d3f964"
+        }
+      ],
+      "blockers": [
+        "One matched pair;5.015% is only0.015percentage-point above5% pilot threshold.",
+        "Terminal counts differ:baseline valid5/incomplete57/state1/fall1,ON valid12/incomplete47/state3/fall2; no full functional regression pass.",
+        "Actual trajectories, phase mix and physical work differ; full CPU delta not proven pure eligibility-cache cost.",
+        "Mission dt is not Present. Visual/Present/GPU/GC and repeatability not measured.",
+        "Transient empty status-read helper failure corrected without game restart; full client-frame active trace used to crosscheck gap."
+      ],
+      "replication": {
+        "independentPairs": 1,
+        "comparableRepeatedPerformanceTrials": 0
+      }
     }
   ],
   "kind": "experiments",
   "latestComparison": {
-    "id": "lazy-crowd-eligibility-live8-20261112",
-    "title": "Live8 lazy predicate shadow:57428 checks,0 mismatch,8/8 terminal",
-    "track": "live-shadow",
+    "id": "lazy-crowd-eligibility-cost64-pilot-20261112",
+    "title": "Live64 lazy eligibility whole CPU pilot:625.46 to594.09ms/wall-second; not accepted",
+    "track": "matched-cpu-pilot",
     "sourceRunId": [
-      "LAZY-ELIGIBILITY-eight-shadow1"
+      "LAZY-ELIGIBILITY-cost64-1"
     ],
-    "buildId": "single224-13mods-lazy-shadow-26f4dca03252ac77",
+    "buildId": "single224-13mods-lazy-02782be7b3ef1a4a",
     "verificationStatus": {
       "diagnosisSucceeded": true,
       "experimentSuccess": true,
       "finalAccepted": false,
-      "functional": "LIVE8_90S_TERMINAL8of8_PREDICATE_SHADOW_MATCH_NOT_PAIRED_REGRESSION",
+      "functional": "ALL64_ALIVE_ACQUIRED_MOVED_CUTOFF_OUTCOMES_DIFFER_FULL_REGRESSION_OPEN",
       "visual": "NOT_MEASURED",
-      "performance": "NOT_MEASURED_SHADOW_INSTRUMENTATION",
+      "performance": "SINGLE_PAIR_MINUS5_015_PERCENT_NOT_REPRODUCED",
       "adopted": false
     },
-    "conditions": "Live8 single render+receiver;90game seconds fixed ground/low/high; shadow compares cached vs original predicates per eligible pair; no CPU acceptance.",
+    "conditions": "Live64 single render+receiver;13 existing PBOs;90game seconds fixed ground/low/high;OFF thenON;30wall-second process CPU after40game-second warmup;shadow disabled.",
     "evidenceReferences": [
       {
-        "report": "reports/operations/lazy-crowd-eligibility-live8-20261112.md",
-        "sha256": "5880c52d25d848b3b0128b71c90eb243f39e15b0c0e8432a11eabfbfecf96e66"
+        "report": "reports/operations/lazy-crowd-eligibility-cost64-pilot-20261112.md",
+        "sha256": "eb3bd2cc5fb41cbe4ed73df57f57f367722193c5658dead549fdbc9ee455d25d"
       },
       {
-        "data": "data/lazy-crowd-eligibility-live8-20261112.json",
-        "sha256": "3dda7dc0dce61db851361386e095b26ffdad747eab8a2a4a5e13cc3e967db1e6"
+        "data": "data/lazy-crowd-eligibility-cost64-pilot-20261112.json",
+        "sha256": "fd915300b76cbe9b89618e5455bb3f1bb16b91e87ed7ef9066c724e5643c5f58"
       },
       {
-        "evidence": "data/lazy-crowd-eligibility-live8-20261112-evidence.txt",
-        "sha256": "edaf1b3a91f371fd40508d8c639927e0997c4f325ebf1fa1894eb6eba79d9bf5"
+        "evidence": "data/lazy-crowd-eligibility-cost64-pilot-20261112-evidence.txt",
+        "sha256": "de6032a981f2d4cf73587726abcbfefefbcb1e547037732c365a453e74e735f1"
+      },
+      {
+        "decision": "data/lazy-crowd-eligibility-cost64-pilot-20261112-decision.json",
+        "sha256": "561ca692a82c911671526a827dbd0ac7e169c4ecfba6e520b559a0cf47d3f964"
       }
     ],
     "blockers": [
-      "No paired whole CPU measurement; shadow recomputes original predicates and adds diagnostics.",
-      "One independent live8 run, not exhaustive hit/death or native reentry coverage.",
-      "Observer expected64/actual8 readiness exception crosschecked and documented; next eight seed corrected.",
-      "64-agent performance and current visual smoothness not verified;20ms p95 remains target."
+      "One matched pair;5.015% is only0.015percentage-point above5% pilot threshold.",
+      "Terminal counts differ:baseline valid5/incomplete57/state1/fall1,ON valid12/incomplete47/state3/fall2; no full functional regression pass.",
+      "Actual trajectories, phase mix and physical work differ; full CPU delta not proven pure eligibility-cache cost.",
+      "Mission dt is not Present. Visual/Present/GPU/GC and repeatability not measured.",
+      "Transient empty status-read helper failure corrected without game restart; full client-frame active trace used to crosscheck gap."
     ],
     "replication": {
-      "independentRuns": 1,
-      "performancePairs": 0
+      "independentPairs": 1,
+      "comparableRepeatedPerformanceTrials": 0
     }
   },
   "latestReview": {
-    "sourceRunId": "LAZY-ELIGIBILITY-eight-shadow1",
-    "status": "LIVE8_PREDICATE_SHADOW_DIAGNOSIS_NOT_FULL_REGRESSION",
-    "next": "Shadow-OFF matched whole CPU comparison"
+    "sourceRunId": "LAZY-ELIGIBILITY-cost64-1",
+    "status": "PILOT_ONLY_NOT_ACCEPTED",
+    "next": "Repeat matched pair with reversed ON/OFF order; no functional repair expansion"
   }
 }
