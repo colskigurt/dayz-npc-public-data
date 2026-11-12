@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-12T08:18:42.127094+00:00",
+  "sourceRunId": "RATE100-joint-eight1",
+  "buildId": "41AD23C3DD3031B42291CFB875BB4147384B11F4D43E1C5CCE4EE6633EBA604C",
+  "verificationStatus": {
+    "diagnosisSucceeded": true,
+    "experimentSuccess": false,
+    "finalAccepted": false,
+    "functional": "PARTIAL_MILESTONES_6_OF_8_VALID_TERMINAL_BOTH",
+    "visual": "NOT_MEASURED",
+    "performance": "ONE_PAIR_NO_CONSISTENT_WHOLE_CPU_GAIN",
+    "adopted": false
+  },
+  "metrics": {
+    "logicalAgents": 8,
+    "renderHosts": 8,
+    "damageReceivers": 8,
+    "independentPairs": 1,
+    "order": [
+      "baseline",
+      "joint-world"
+    ],
+    "cpuWindow": "30 wall seconds after game second40",
+    "cpuMeanMsPerWallSecond": [
+      165.74095958472643,
+      164.3901644888328
+    ],
+    "cpuP50MsPerWallSecond": [
+      173.00991647609138,
+      157.891355377114
+    ],
+    "cpuP95MsPerWallSecond": [
+      218.40186352013345,
+      250.1437383629858
+    ],
+    "observedMeanChangePercent": -0.8150037861963222,
+    "primarySweepsPerSolve": [
+      3.9862948960302456,
+      0.04011207786462174
+    ],
+    "footRaysPerSolve": [
+      10,
+      10
+    ],
+    "alive": [
+      8,
+      8
+    ],
+    "acquiredMoved": [
+      8,
+      8
+    ],
+    "validTerminal": [
+      6,
+      6
+    ],
+    "finalFalls": [
+      0,
+      0
+    ],
+    "presentP95Ms": null,
+    "escalatedTo64": false
+  },
+  "blockers": [
+    "Mean CPU reduction only0.815%; p95 increased in one ordered pair; no repeat proof",
+    "Both6/8 valid terminal at90-game-second budget; incomplete transition states remain",
+    "Sweep omission is diagnostic and not a safety-preserving operational candidate",
+    "Visible smoothness, Present/GPU, allocation/GC self-time unmeasured",
+    "8-agent result cannot establish64-agent crowded physics cost"
+  ],
+  "evidenceReferences": [
+    {
+      "report": "reports/operations/joint-only-eight-diagnostic-20261112.md",
+      "sha256": "5840d723078cd2527ee111e99f7461e3a5363362108682cda66e4734874054da"
+    },
+    {
+      "evidence": "data/joint-only-eight-20261112-evidence.txt",
+      "sha256": "3ca54f2448726274739ba5ed2141c99eb6fcfefd9898e5b8f873aea35cbb3b2a"
+    }
+  ],
+  "diagnosticData": {
+    "schemaVersion": 1,
+    "independentPairs": 1,
+    "verificationStatus": "DIAGNOSTIC_NOT_ACCEPTANCE",
+    "observedCpuMeanChangePercent": -0.8150037861963222,
+    "observedCpuMedianChangePercent": -8.738551758717627,
+    "gateSummary": {
+      "bothAllAlive": true,
+      "both8AcquiredMoved": true,
+      "both30CpuIntervals": true,
+      "clockSpansNear30": true,
+      "candidateNoUnresolvedFinalFall": true,
+      "candidateNoDeepUnderground": true,
+      "cpuScreenOnly": false,
+      "operationalAcceptance": false
+    },
+    "conditions": {
+      "baseline": {
+        "condition": "baseline",
+        "aliveSingleHostSetup": true,
+        "observedIds": 8,
+        "acquiredMoved2m": 8,
+        "windowGameSeconds": [
+          40.0842,
+          69.7701
+        ],
+        "delta": {
+          "contactSolves": 6348,
+          "jointSweeps": 25305,
+          "footRays": 63480,
+          "contactFailures": 43,
+          "plans": 46,
+          "planFailures": 7,
+          "animUpdates": 4752,
+          "physicsUpdates": 4752,
+          "climbs": 13,
+          "landings": 6
+        },
+        "perGameSecond": {
+          "contactSolves": 213.83889321192893,
+          "jointSweeps": 852.424888583469,
+          "footRays": 2138.388932119289,
+          "contactFailures": 1.4484991191104195,
+          "plans": 1.5495571971878908,
+          "planFailures": 0.23580218218076598,
+          "animUpdates": 160.07599567471428,
+          "physicsUpdates": 160.07599567471428,
+          "climbs": 0.43791833833570826,
+          "landings": 0.20211615615494227
+        },
+        "cpuMsPerWallSecond": {
+          "n": 30,
+          "p50": 173.00991647609138,
+          "p95": 218.40186352013345,
+          "p99": 229.46255020676878,
+          "mean": 165.74095958472643
+        },
+        "cpuGameClockSpan": 30.002000000000002,
+        "missionDtMs": {
+          "n": 1501,
+          "p50": 16,
+          "p95": 31,
+          "p99": 31,
+          "mean": 19.999333777481677
+        },
+        "minimumObservedY": 339.058319,
+        "lastPhases": {
+          "FOLLOW": 7,
+          "MOTION": 1
+        },
+        "finalFalls": [],
+        "milestones": {
+          "LOW_COMPLETED": 8,
+          "HIGH_COMPLETED": 8,
+          "DESCENT_RECOVERED": 7,
+          "RECLIMB_COMPLETED": 7
+        },
+        "lastReasons": {
+          "": 2,
+          "NATIVE_COMBAT": 2,
+          "ALIGN_HEADING": 2,
+          "NATIVE_MOTION": 1,
+          "COMBAT_ROOT_BLOCKED_PLAYER_CORE": 1
+        },
+        "scriptErrors": 0,
+        "teardownMarker": true,
+        "primaryFootRaysPerSolve": 10,
+        "primarySweepsPerSolve": 3.9862948960302456
+      },
+      "joint-world": {
+        "condition": "joint-world",
+        "aliveSingleHostSetup": true,
+        "observedIds": 8,
+        "acquiredMoved2m": 8,
+        "windowGameSeconds": [
+          40.0272,
+          69.7709
+        ],
+        "delta": {
+          "contactSolves": 6781,
+          "jointSweeps": 272,
+          "footRays": 67810,
+          "contactFailures": 0,
+          "plans": 36,
+          "planFailures": 7,
+          "animUpdates": 4760,
+          "physicsUpdates": 4760,
+          "climbs": 15,
+          "landings": 7
+        },
+        "perGameSecond": {
+          "contactSolves": 227.98105144955068,
+          "jointSweeps": 9.14479368740271,
+          "footRays": 2279.810514495507,
+          "contactFailures": 0,
+          "plans": 1.2103403409797706,
+          "planFailures": 0.23534395519051096,
+          "animUpdates": 160.03388952954745,
+          "physicsUpdates": 160.03388952954745,
+          "climbs": 0.5043084754082378,
+          "landings": 0.23534395519051096
+        },
+        "cpuMsPerWallSecond": {
+          "n": 30,
+          "p50": 157.891355377114,
+          "p95": 250.1437383629858,
+          "p99": 270.41238315823796,
+          "mean": 164.3901644888328
+        },
+        "cpuGameClockSpan": 29.98380000000001,
+        "missionDtMs": {
+          "n": 1500,
+          "p50": 16,
+          "p95": 31,
+          "p99": 31,
+          "mean": 20.000666666666667
+        },
+        "minimumObservedY": 339.058319,
+        "lastPhases": {
+          "FOLLOW": 6,
+          "EGRESS": 1,
+          "MOTION": 1
+        },
+        "finalFalls": [],
+        "milestones": {
+          "LOW_COMPLETED": 8,
+          "HIGH_COMPLETED": 8,
+          "DESCENT_RECOVERED": 8,
+          "RECLIMB_COMPLETED": 8
+        },
+        "lastReasons": {
+          "LINK_ALIGN": 1,
+          "ALIGN_HEADING": 1,
+          "RECOVERY_REPLAN_WAIT": 1,
+          "SETTLE": 1,
+          "NATIVE_COMBAT": 1,
+          "NATIVE_MOTION": 1,
+          "COMBAT_ROOT_BLOCKED_PLAYER_CORE": 1,
+          "COMBAT_ROOT_BLOCKED_SUPPORT": 1
+        },
+        "scriptErrors": 0,
+        "teardownMarker": true,
+        "primaryFootRaysPerSolve": 10,
+        "primarySweepsPerSolve": 0.04011207786462174
+      }
+    },
+    "hostSetupProof": {
+      "baseline": {
+        "rows": 720,
+        "ids": 8,
+        "allAliveSingleRenderReceiver": true
+      },
+      "joint-world": {
+        "rows": 720,
+        "ids": 8,
+        "allAliveSingleRenderReceiver": true
+      }
+    }
+  }
+}

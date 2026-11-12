@@ -1,0 +1,181 @@
+선정 증거 — 전체 원시 로그 아님
+두조건 공통게임창40~70의누적카운터차분,30벽초CPU와종결상태를선택.시각품질미측정.
+{
+  "schemaVersion": 1,
+  "independentPairs": 1,
+  "verificationStatus": "DIAGNOSTIC_NOT_ACCEPTANCE",
+  "observedCpuMeanChangePercent": -0.8150037861963222,
+  "observedCpuMedianChangePercent": -8.738551758717627,
+  "gateSummary": {
+    "bothAllAlive": true,
+    "both8AcquiredMoved": true,
+    "both30CpuIntervals": true,
+    "clockSpansNear30": true,
+    "candidateNoUnresolvedFinalFall": true,
+    "candidateNoDeepUnderground": true,
+    "cpuScreenOnly": false,
+    "operationalAcceptance": false
+  },
+  "conditions": {
+    "baseline": {
+      "condition": "baseline",
+      "aliveSingleHostSetup": true,
+      "observedIds": 8,
+      "acquiredMoved2m": 8,
+      "windowGameSeconds": [
+        40.0842,
+        69.7701
+      ],
+      "delta": {
+        "contactSolves": 6348.0,
+        "jointSweeps": 25305.0,
+        "footRays": 63480.0,
+        "contactFailures": 43.0,
+        "plans": 46.0,
+        "planFailures": 7.0,
+        "animUpdates": 4752.0,
+        "physicsUpdates": 4752.0,
+        "climbs": 13.0,
+        "landings": 6.0
+      },
+      "perGameSecond": {
+        "contactSolves": 213.83889321192893,
+        "jointSweeps": 852.424888583469,
+        "footRays": 2138.388932119289,
+        "contactFailures": 1.4484991191104195,
+        "plans": 1.5495571971878908,
+        "planFailures": 0.23580218218076598,
+        "animUpdates": 160.07599567471428,
+        "physicsUpdates": 160.07599567471428,
+        "climbs": 0.43791833833570826,
+        "landings": 0.20211615615494227
+      },
+      "cpuMsPerWallSecond": {
+        "n": 30,
+        "p50": 173.00991647609138,
+        "p95": 218.40186352013345,
+        "p99": 229.46255020676878,
+        "mean": 165.74095958472643
+      },
+      "cpuGameClockSpan": 30.002000000000002,
+      "missionDtMs": {
+        "n": 1501,
+        "p50": 16.0,
+        "p95": 31.0,
+        "p99": 31.0,
+        "mean": 19.999333777481677
+      },
+      "minimumObservedY": 339.058319,
+      "lastPhases": {
+        "FOLLOW": 7,
+        "MOTION": 1
+      },
+      "finalFalls": [],
+      "milestones": {
+        "LOW_COMPLETED": 8,
+        "HIGH_COMPLETED": 8,
+        "DESCENT_RECOVERED": 7,
+        "RECLIMB_COMPLETED": 7
+      },
+      "lastReasons": {
+        "": 2,
+        "NATIVE_COMBAT": 2,
+        "ALIGN_HEADING": 2,
+        "NATIVE_MOTION": 1,
+        "COMBAT_ROOT_BLOCKED_PLAYER_CORE": 1
+      },
+      "scriptErrors": 0,
+      "teardownMarker": true,
+      "primaryFootRaysPerSolve": 10.0,
+      "primarySweepsPerSolve": 3.9862948960302456
+    },
+    "joint-world": {
+      "condition": "joint-world",
+      "aliveSingleHostSetup": true,
+      "observedIds": 8,
+      "acquiredMoved2m": 8,
+      "windowGameSeconds": [
+        40.0272,
+        69.7709
+      ],
+      "delta": {
+        "contactSolves": 6781.0,
+        "jointSweeps": 272.0,
+        "footRays": 67810.0,
+        "contactFailures": 0.0,
+        "plans": 36.0,
+        "planFailures": 7.0,
+        "animUpdates": 4760.0,
+        "physicsUpdates": 4760.0,
+        "climbs": 15.0,
+        "landings": 7.0
+      },
+      "perGameSecond": {
+        "contactSolves": 227.98105144955068,
+        "jointSweeps": 9.14479368740271,
+        "footRays": 2279.810514495507,
+        "contactFailures": 0.0,
+        "plans": 1.2103403409797706,
+        "planFailures": 0.23534395519051096,
+        "animUpdates": 160.03388952954745,
+        "physicsUpdates": 160.03388952954745,
+        "climbs": 0.5043084754082378,
+        "landings": 0.23534395519051096
+      },
+      "cpuMsPerWallSecond": {
+        "n": 30,
+        "p50": 157.891355377114,
+        "p95": 250.1437383629858,
+        "p99": 270.41238315823796,
+        "mean": 164.3901644888328
+      },
+      "cpuGameClockSpan": 29.98380000000001,
+      "missionDtMs": {
+        "n": 1500,
+        "p50": 16.0,
+        "p95": 31.0,
+        "p99": 31.0,
+        "mean": 20.000666666666667
+      },
+      "minimumObservedY": 339.058319,
+      "lastPhases": {
+        "FOLLOW": 6,
+        "EGRESS": 1,
+        "MOTION": 1
+      },
+      "finalFalls": [],
+      "milestones": {
+        "LOW_COMPLETED": 8,
+        "HIGH_COMPLETED": 8,
+        "DESCENT_RECOVERED": 8,
+        "RECLIMB_COMPLETED": 8
+      },
+      "lastReasons": {
+        "LINK_ALIGN": 1,
+        "ALIGN_HEADING": 1,
+        "RECOVERY_REPLAN_WAIT": 1,
+        "SETTLE": 1,
+        "NATIVE_COMBAT": 1,
+        "NATIVE_MOTION": 1,
+        "COMBAT_ROOT_BLOCKED_PLAYER_CORE": 1,
+        "COMBAT_ROOT_BLOCKED_SUPPORT": 1
+      },
+      "scriptErrors": 0,
+      "teardownMarker": true,
+      "primaryFootRaysPerSolve": 10.0,
+      "primarySweepsPerSolve": 0.04011207786462174
+    }
+  },
+  "hostSetupProof": {
+    "baseline": {
+      "rows": 720,
+      "ids": 8,
+      "allAliveSingleRenderReceiver": true
+    },
+    "joint-world": {
+      "rows": 720,
+      "ids": 8,
+      "allAliveSingleRenderReceiver": true
+    }
+  }
+}

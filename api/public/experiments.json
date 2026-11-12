@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "snapshot-20261112-rate100-200-comparison",
-  "generatedAt": "2026-11-12T07:59:00Z",
+  "snapshotId": "snapshot-20261112-joint-only-eight",
+  "generatedAt": "2026-11-12T08:18:42.127094+00:00",
   "sourceRunId": [
     "runtime-20261028-013539",
     "runtime-20261028-013820",
@@ -55,7 +55,9 @@
     "runtime-20261030-084554",
     "runtime-20261030-092351",
     "runtime-20261030-093001",
-    "RATE100-all-reduced-20261112-160346"
+    "RATE100-all-reduced-20261112-160346",
+    "RATE100-joint-eight1-baseline",
+    "RATE100-joint-eight1-joint-world"
   ],
   "buildId": [
     "102757EC9542DEFBB1EE65BDD18FFC7429DD62171B3B5DBECF3227CC43A17461",
@@ -74,15 +76,17 @@
     "453D6A9E688D7BF14C5B98C305DD5A45200EC52156949C10691839B43C58BC9A",
     "F139EB3C6114253EF0F3159A05E7F4386643D27A75C2E839DC4E6B6BD65D170C",
     "2FB65EB1FD77E334F8A36CF7ED5E4F4F0439C6B8CDD56976ECBDB13C0F70D226",
-    "5CFC142DBBCBD6C19BD7FA42D06D3B6D0E4A338A55337FE73E5A161B004C88D3"
+    "5CFC142DBBCBD6C19BD7FA42D06D3B6D0E4A338A55337FE73E5A161B004C88D3",
+    "41AD23C3DD3031B42291CFB875BB4147384B11F4D43E1C5CCE4EE6633EBA604C"
   ],
   "verificationStatus": {
     "diagnosisSucceeded": true,
     "experimentSuccess": false,
     "finalAccepted": false,
-    "functional": "FAILED_15_UNRESOLVED_UNDERGROUND_FALLS",
-    "visual": "NOT_ASSESSED",
-    "performance": "SINGLE_MANUAL_RUN_OBSERVED_REDUCTION_NOT_REPEATED"
+    "functional": "PARTIAL_MILESTONES_6_OF_8_VALID_TERMINAL_BOTH",
+    "visual": "NOT_MEASURED",
+    "performance": "ONE_PAIR_NO_CONSISTENT_WHOLE_CPU_GAIN",
+    "adopted": false
   },
   "metrics": [
     {
@@ -13315,14 +13319,46 @@
       },
       "repetitions": 1,
       "verificationStatus": "single_observation_not_accepted"
+    },
+    {
+      "metricId": "joint-only-eight-cpu-mean-baseline",
+      "sourceRunId": "RATE100-joint-eight1-baseline",
+      "buildId": "41AD23C3DD3031B42291CFB875BB4147384B11F4D43E1C5CCE4EE6633EBA604C",
+      "value": 165.74095958472643,
+      "unit": "ms/wall-second",
+      "conditions": {
+        "logicalAgents": 8,
+        "condition": "baseline",
+        "scripted": true,
+        "window": "40game-second trigger /30wall-second capture",
+        "samples": 30
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnostic_not_accepted"
+    },
+    {
+      "metricId": "joint-only-eight-cpu-mean-joint-world",
+      "sourceRunId": "RATE100-joint-eight1-joint-world",
+      "buildId": "41AD23C3DD3031B42291CFB875BB4147384B11F4D43E1C5CCE4EE6633EBA604C",
+      "value": 164.3901644888328,
+      "unit": "ms/wall-second",
+      "conditions": {
+        "logicalAgents": 8,
+        "condition": "joint-world",
+        "scripted": true,
+        "window": "40game-second trigger /30wall-second capture",
+        "samples": 30
+      },
+      "repetitions": 1,
+      "verificationStatus": "diagnostic_not_accepted"
     }
   ],
   "blockers": [
-    "15 agents remained FALL for 272.6–284.3 game seconds, Y approximately -3743 to -3920",
-    "Nested throttling yielded zero primary foot rays and joint sweeps in the early comparison interval; zero failures is not safety proof",
-    "One manual run per condition; different routes, combat and lifetimes; no causal attribution among combined changes",
-    "Foot-only ray reduction did not demonstrate whole-server CPU savings",
-    "Present, RTT, pure animation self-time, allocation and GC unavailable"
+    "Mean CPU reduction only0.815%; p95 increased in one ordered pair; no repeat proof",
+    "Both6/8 valid terminal at90-game-second budget; incomplete transition states remain",
+    "Sweep omission is diagnostic and not a safety-preserving operational candidate",
+    "Visible smoothness, Present/GPU, allocation/GC self-time unmeasured",
+    "8-agent result cannot establish64-agent crowded physics cost"
   ],
   "evidenceReferences": [
     {
@@ -14052,17 +14088,25 @@
     {
       "evidence": "data/rate100-200-evidence-20261112.txt",
       "sha256": "217916154eed9281df49c67ca897653fd61f612d3ecf1d01083eb4152e18c6cc"
+    },
+    {
+      "report": "reports/operations/joint-only-eight-diagnostic-20261112.md",
+      "sha256": "5840d723078cd2527ee111e99f7461e3a5363362108682cda66e4734874054da"
+    },
+    {
+      "evidence": "data/joint-only-eight-20261112-evidence.txt",
+      "sha256": "3ca54f2448726274739ba5ed2141c99eb6fcfefd9898e5b8f873aea35cbb3b2a"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-11-12T07:10:57Z",
-    "staleAfter": "2026-11-13T07:10:57Z",
+    "sourceUpdatedAt": "2026-11-12T08:10:42.6238420+00:00",
+    "staleAfter": "2026-11-13T08:10:42.623Z",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
-    "consumerRule": "Each metric retains its own clock/window/repetitions; compare current time to staleAfter"
+    "consumerRule": "Do not confuse wall-clock CPU and game-clock query counters; one pair is not repeated validation."
   },
   "updateState": {
-    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T07:21:30Z",
+    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T08:18:42.127094+00:00",
     "lastUpdateFailure": null
   },
   "links": {
@@ -15390,38 +15434,100 @@
         "trials": 3,
         "comparableRepeatedPerformanceTrials": 0
       }
+    },
+    {
+      "id": "joint-only-eight-20261112",
+      "title": "Primary joint sweep isolation; whole CPU gain not demonstrated",
+      "track": "diagnostic",
+      "sourceRunId": [
+        "RATE100-joint-eight1-baseline",
+        "RATE100-joint-eight1-joint-world"
+      ],
+      "buildId": "41AD23C3DD3031B42291CFB875BB4147384B11F4D43E1C5CCE4EE6633EBA604C",
+      "verificationStatus": {
+        "diagnosisSucceeded": true,
+        "experimentSuccess": false,
+        "finalAccepted": false,
+        "functional": "PARTIAL_MILESTONES_6_OF_8_VALID_TERMINAL_BOTH",
+        "visual": "NOT_MEASURED",
+        "performance": "ONE_PAIR_NO_CONSISTENT_WHOLE_CPU_GAIN",
+        "adopted": false
+      },
+      "conditions": "8 logical agents, one render+one receiver each; scripted30-second route repeated to90game seconds; same mission/PBO; mode0/4",
+      "evidenceReferences": [
+        {
+          "report": "reports/operations/joint-only-eight-diagnostic-20261112.md",
+          "sha256": "5840d723078cd2527ee111e99f7461e3a5363362108682cda66e4734874054da"
+        },
+        {
+          "evidence": "data/joint-only-eight-20261112-evidence.txt",
+          "sha256": "3ca54f2448726274739ba5ed2141c99eb6fcfefd9898e5b8f873aea35cbb3b2a"
+        }
+      ],
+      "blockers": [
+        "Mean CPU reduction only0.815%; p95 increased in one ordered pair; no repeat proof",
+        "Both6/8 valid terminal at90-game-second budget; incomplete transition states remain",
+        "Sweep omission is diagnostic and not a safety-preserving operational candidate",
+        "Visible smoothness, Present/GPU, allocation/GC self-time unmeasured",
+        "8-agent result cannot establish64-agent crowded physics cost"
+      ],
+      "replication": {
+        "independentPairs": 1,
+        "trials": 2,
+        "comparableRepeatedPerformanceTrials": 0
+      }
     }
   ],
   "kind": "experiments",
   "latestComparison": {
-    "logicalAgents": 200,
-    "independentRunsPerCondition": 1,
-    "cpuEarlyWindow": {
-      "clock": "wall",
-      "startAfterReadySeconds": 5,
-      "endAfterReadySeconds": 30,
-      "unit": "ms/wall-second",
-      "originalP50": 998.4835531037238,
-      "footOnlyP50": 999.601908539924,
-      "combinedP50": 584.0801940464687,
-      "observedCombinedChangePercent": -41.503273415882326
-    },
-    "queryWindow": {
-      "clock": "game",
-      "rangeApproxSeconds": [
-        5.3,
-        18.3
-      ],
-      "originalSolvesPerSecond": 4303.461234467557,
-      "combinedSolvesPerSecond": 46.396252647093235,
-      "combinedPrimaryFootRays": 0,
-      "combinedPrimaryJointSweeps": 0
-    },
-    "unresolvedUndergroundFalls": 15,
-    "climbMotionCompletions": 22,
+    "logicalAgents": 8,
+    "renderHosts": 8,
+    "damageReceivers": 8,
+    "independentPairs": 1,
+    "order": [
+      "baseline",
+      "joint-world"
+    ],
+    "cpuWindow": "30 wall seconds after game second40",
+    "cpuMeanMsPerWallSecond": [
+      165.74095958472643,
+      164.3901644888328
+    ],
+    "cpuP50MsPerWallSecond": [
+      173.00991647609138,
+      157.891355377114
+    ],
+    "cpuP95MsPerWallSecond": [
+      218.40186352013345,
+      250.1437383629858
+    ],
+    "observedMeanChangePercent": -0.8150037861963222,
+    "primarySweepsPerSolve": [
+      3.9862948960302456,
+      0.04011207786462174
+    ],
+    "footRaysPerSolve": [
+      10,
+      10
+    ],
+    "alive": [
+      8,
+      8
+    ],
+    "acquiredMoved": [
+      8,
+      8
+    ],
+    "validTerminal": [
+      6,
+      6
+    ],
+    "finalFalls": [
+      0,
+      0
+    ],
     "presentP95Ms": null,
-    "animationChanged": false,
-    "comparisonRepeats": 0
+    "escalatedTo64": false
   },
   "latestReview": {
     "sourceRunId": "MANUAL-vanilla200-20261112-launch3",
