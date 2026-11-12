@@ -1,70 +1,111 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-12T11:13:42.856Z",
-  "sourceRunId": "RECEIVER-native-move1",
-  "buildId": "5d7184ef91b44ff4a4a5ffb0ccca918cf20b46a75324d24af78cabc49f651db8",
+  "generatedAt": "2026-11-12T11:41:01.483Z",
+  "sourceRunId": "CPU-CURRENT-single64-1",
+  "buildId": "single224-13mods-f7b8a62845396922",
   "verificationStatus": {
     "diagnosisSucceeded": true,
-    "experimentSuccess": false,
+    "experimentSuccess": true,
     "finalAccepted": false,
-    "functional": "STATIONARITY_FAILED_AND_NATIVE_TERMINATION_CRASH",
+    "functional": "ALL64_ALIVE_ACQUIRED_MOVED_SHORT_ATTRIBUTION_RUN_NOT_FULL_REGRESSION",
     "visual": "NOT_MEASURED",
-    "performance": "NOT_MEASURED",
+    "performance": "ATTRIBUTION_ONLY_NO_IMPROVEMENT_COMPARISON",
     "adopted": false
   },
   "metrics": {
-    "scope": "2 unmanaged current receiver hosts, script root0 vs native Move, same pose requests with native movement input0",
-    "logicalAgents": null,
-    "customAnimalHosts": 2,
+    "scope": "Current retail server64 logical,64single render+64receiver; original mixed mission;8s WPR request, recorder-inclusive sampled event interval",
+    "logicalAgents": 64,
+    "renderHosts": 64,
+    "damageReceivers": 64,
     "independentTrials": 1,
     "independentPairs": 0,
-    "trialGameSeconds": 12,
-    "observedRows": 378,
-    "scriptRootHorizontalDriftMetres": 0,
-    "nativeMaxActiveHorizontalDriftMetres": 27.533278439524153,
-    "nativeWalkNetMetres": 8.395686109307947,
-    "nativeRunNetMetres": 18.961914509105192,
-    "headCpuPoseMaxDifferenceMetres": 0,
-    "hipsCpuPoseMaxDifferenceMetres": 0,
-    "stationarityGatePassed": false,
-    "scriptErrors": 0,
-    "allAlive": true,
-    "nativeCrash": true,
-    "serverExitHex": "0xC0000005",
-    "safeLifecyclePassed": false,
+    "requestedCaptureSeconds": 8,
+    "analyzedEventSpanSeconds": 10.786316,
+    "traceBytes": 8102068,
+    "targetSampleWeight": 7179,
+    "queryBoundary": {
+      "rayInclusiveWeight": 684,
+      "sphereInclusiveWeight": 597,
+      "unionWeight": 1281,
+      "bothWeight": 0,
+      "percentOfAllTargetSamples": 17.843710823234435
+    },
+    "selectedVmExecutor": {
+      "leafWeight": 1972,
+      "leafUsableStack": 1462,
+      "leafWithRaySphere": 0,
+      "leafWithExecutor": 1462,
+      "inclusiveWeight": 4124,
+      "inclusiveWithRaySphere": 1281,
+      "leafPercent": 27.469006825463158,
+      "inclusivePercent": 57.445326647165345,
+      "inclusiveWithoutSelectedQueryBoundaryWeight": 2843,
+      "inclusiveWithoutSelectedQueryBoundaryPercent": 39.601615823930906
+    },
+    "missingStackPercent": 26.131773227469008,
+    "lostEvents": 0,
+    "lostBuffers": 0,
+    "largestAnonymousThreadPercent": 98.10558573617496,
+    "allObservedHostsAlive": true,
+    "allAcquiredAndMoved2m": true,
+    "terminalOutcomes": {
+      "INCOMPLETE_MILESTONES": 56,
+      "UNRESOLVED_FALL": 2,
+      "UNRESOLVED_STATE": 4,
+      "VALID_TERMINAL": 2
+    },
+    "wholeObservedGameplayMissionDtMs": {
+      "n": 2889,
+      "p50": 22,
+      "p95": 32.59999999999991,
+      "p99": 38,
+      "scope": "whole gameplay recording, NOT exact ETL join or Present frame time"
+    },
     "cpuSaving": null,
     "presentP95Ms": null,
-    "fullNpcIntegration": false
+    "nativeCrash": false,
+    "captureEvidence": {
+      "wprStartExitCode": 0,
+      "wprStopExitCode": 0,
+      "legacyRunnerCaptureRequested": false,
+      "legacyRunnerFieldMeaning": "old process-accounting CSV sampler disabled; WPR is independently proven by controller/admin/cpu-result/ETL receipts"
+    },
+    "fullNpcAcceptance": false
   },
   "blockers": [
-    "NativeMove pose walk/run caused27.53m horizontal drift despite movement input0; direct receiver command replacement rejected.",
-    "Matching Head/Hips local poses do not establish world hitbox alignment.",
-    "Alive-only Finish also crashed: death-specific root cause not established; same raw stack top candidate0x220989, not causal unwind proof.",
-    "No position correction/new interpolation added, no64 escalation, no measured CPU saving."
+    "26.13% target sample weight lacks stacks; complete cost decomposition not available.",
+    "Inclusive VM/query groups overlap; do not sum or convert to exact self-time or saving.",
+    "Mission dt is whole observed gameplay, not exact ETL join/Present; exact phase-only attribution unavailable.",
+    "Short diagnostic stopped around62game seconds:2valid,56incomplete,2fall,4unresolved; not64 functional acceptance.",
+    "Lazy eligibility alternative is source review only; earlier eager cache failed sparse cost."
   ],
   "evidenceReferences": [
     {
-      "report": "reports/operations/receiver-native-move-stationarity-20261112.md",
-      "sha256": "eece934019330ecc23518813698f78ceea9181acff5ebd1cc3a76dcd05f18b5c"
+      "report": "reports/operations/current-single64-cpu-attribution-20261112.md",
+      "sha256": "88deb44ad852cab7acd99ec4a0691abb670aa8f323db090b573a427c0bd65744"
     },
     {
-      "data": "data/receiver-native-move-stationarity-20261112.json",
-      "sha256": "6f32f86f71568b812ecfde957c060ed9bc12cd7a07dfdc1b7eb656625649f983"
+      "data": "data/current-single64-cpu-attribution-20261112.json",
+      "sha256": "3b4c88d1e42fbec1be81be8c45f2ece4d3e0798e69d9003ac7dd2d4364392988"
     },
     {
-      "evidence": "data/receiver-native-move-stationarity-20261112-evidence.txt",
-      "sha256": "62662d2b7368680621cf29be16455e8865ec0d810e3523d8d765ba8199b2d2ac"
+      "evidence": "data/current-single64-cpu-attribution-20261112-evidence.txt",
+      "sha256": "bec776713b60ed7f29073ffc67675b0a3c0cf2b472337685d8dde1b39c8c2913"
+    },
+    {
+      "report": "reports/operations/lazy-crowd-eligibility-review-20261112.md",
+      "sha256": "b981298a720ea7c37d51189704336d845468a6fc116276d53033b4d8ce1eab62"
     }
   ],
   "freshness": {
-    "sourceUpdatedAt": "2026-11-12T11:10:25.4565874+00:00",
-    "staleAfter": "2026-11-13T11:10:25.456Z",
+    "sourceUpdatedAt": "2026-11-12T11:28:10.5435838+00:00",
+    "staleAfter": "2026-11-13T11:28:10.543Z",
     "staleAtGeneration": false,
     "maxAgeSeconds": 86400,
-    "consumerRule": "Reject direct replacement. Root movement, local CPU pose, safe teardown and performance are independent judgments."
+    "consumerRule": "Current topology partial attribution only. No paired performance improvement or visual/full-function acceptance."
   },
   "updateState": {
-    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T11:13:42.856Z",
+    "lastSuccessfulSnapshotGeneratedAt": "2026-11-12T11:41:01.483Z",
     "lastUpdateFailure": null
   }
 }

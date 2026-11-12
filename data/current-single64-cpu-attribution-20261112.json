@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "sourceRunId": "CPU-CURRENT-single64-1",
+  "verificationStatus": "CURRENT_TOPOLOGY_CPU_PARTIAL_ATTRIBUTION_NOT_OPTIMIZATION",
+  "independentTrials": 1,
+  "independentPerformancePairs": 0,
+  "logicalAgents": 64,
+  "renderHosts": 64,
+  "damageReceivers": 64,
+  "allObservedHostsAlive": true,
+  "allAcquiredAndMoved2m": true,
+  "terminalOutcomes": {
+    "INCOMPLETE_MILESTONES": 56,
+    "UNRESOLVED_FALL": 2,
+    "UNRESOLVED_STATE": 4,
+    "VALID_TERMINAL": 2
+  },
+  "nativeCrash": false,
+  "serverExitCode": -1,
+  "scriptErrors": 0,
+  "requestedCaptureSeconds": 8,
+  "analyzedEventSpanSeconds": 10.786316,
+  "rawSampleSpanSeconds": 11.786316,
+  "traceBytes": 8102068,
+  "targetSampleWeight": 7179,
+  "samplePeriodMicroseconds": 1000.0,
+  "missingStackWeight": 1876,
+  "missingStackPercent": 26.131773227469008,
+  "firstIpMismatchWeight": 0,
+  "lostEvents": 0,
+  "lostBuffers": 0,
+  "queryBoundary": {
+    "rayInclusiveWeight": 684,
+    "sphereInclusiveWeight": 597,
+    "unionWeight": 1281,
+    "bothWeight": 0,
+    "percentOfAllTargetSamples": 17.843710823234435
+  },
+  "selectedVmExecutor": {
+    "leafWeight": 1972,
+    "leafUsableStack": 1462,
+    "leafWithRaySphere": 0,
+    "leafWithExecutor": 1462,
+    "inclusiveWeight": 4124,
+    "inclusiveWithRaySphere": 1281,
+    "leafPercent": 27.469006825463158,
+    "inclusivePercent": 57.445326647165345,
+    "inclusiveWithoutSelectedQueryBoundaryWeight": 2843,
+    "inclusiveWithoutSelectedQueryBoundaryPercent": 39.601615823930906
+  },
+  "largestAnonymousThreadPercent": 98.10558573617496,
+  "nativeOwnerGroups": {
+    "rva454970_454510": {
+      "leafWeight": 203,
+      "leafUsableStack": 158,
+      "leafWithRaySphere": 0,
+      "leafWithExecutor": 0,
+      "inclusiveWeight": 214,
+      "inclusiveWithRaySphere": 0
+    },
+    "rvaCF_family": {
+      "leafWeight": 851,
+      "leafUsableStack": 615,
+      "leafWithRaySphere": 527,
+      "leafWithExecutor": 527,
+      "inclusiveWeight": 1068,
+      "inclusiveWithRaySphere": 957
+    },
+    "rvaA52_A55780": {
+      "leafWeight": 396,
+      "leafUsableStack": 304,
+      "leafWithRaySphere": 0,
+      "leafWithExecutor": 78,
+      "inclusiveWeight": 311,
+      "inclusiveWithRaySphere": 0
+    },
+    "script_executor_selected": {
+      "leafWeight": 1972,
+      "leafUsableStack": 1462,
+      "leafWithRaySphere": 0,
+      "leafWithExecutor": 1462,
+      "inclusiveWeight": 4124,
+      "inclusiveWithRaySphere": 1281
+    }
+  },
+  "wholeObservedGameplayMissionDtMs": {
+    "n": 2889,
+    "p50": 22.0,
+    "p95": 32.59999999999991,
+    "p99": 38.0,
+    "scope": "whole gameplay recording, NOT exact ETL join or Present frame time"
+  },
+  "evidenceJoinLimit": "Capture requested near40game sec in LOW, but ETL event interval includes recorder overhead and is not exactly QPC-joined to all state rows. Do not label entire trace LOW-only.",
+  "presentP95Ms": null,
+  "cpuSaving": null,
+  "visualQuality": "NOT_MEASURED",
+  "adopted": false,
+  "nextCandidateReview": "Lazy per-Crowd.Update eligibility reuse to avoid failed eager sparse prepass; source feasibility and prior-method reuse only, not implemented or selected for production.",
+  "evidence": [
+    {
+      "file": "contract.json",
+      "bytes": 12097,
+      "sha256": "f7b8a628453969220518cab6d196e8023b81a2f0107fea0badfd3c122afa65d7"
+    },
+    {
+      "file": "diagnostic-plan.json",
+      "bytes": 971,
+      "sha256": "5c3d21163b9c2515c8386fff05f67b634bb58929f05e23f37fcd916a26e7c822"
+    },
+    {
+      "file": "capture-readiness.json",
+      "bytes": 108909,
+      "sha256": "409aff7d9bd464eef2ecc6450a153834597b7496cbab595154ca5589b3624187"
+    },
+    {
+      "file": "controller-terminal.json",
+      "bytes": 135,
+      "sha256": "9327d09b48ba9bcee20eb46c6da650bc1284385df10fee705e880f32f3e2cac9"
+    },
+    {
+      "file": "admin-ready.json",
+      "bytes": 168,
+      "sha256": "5714f74fc34f0c2484163e3cebcc64f1511c7e054fc7ad116108c534eef51deb"
+    },
+    {
+      "file": "admin-terminal.json",
+      "bytes": 136,
+      "sha256": "c31c55b8c9e3307ee17ad6e31236c964ed7043f9427b7167844e4a13b2174351"
+    },
+    {
+      "file": "capture-1/cpu-1-result.json",
+      "bytes": 405,
+      "sha256": "e65d0f219c211862328c43e6b9272059988ebee85887277b147162c0dedc9cb7"
+    },
+    {
+      "file": "capture-1/cpu-1-owner-cooccurrence-v1.json",
+      "bytes": 14493,
+      "sha256": "11104552d0e98e3e9dd86e75dd228b19a642043b4d9f8db67306262b85ffede7"
+    },
+    {
+      "file": "capture-1/cpu-1.etl",
+      "bytes": 8102068,
+      "sha256": "8eb46c9466fda232699a2c89f851c487cca250f6964646c36f08e2d950625c95"
+    },
+    {
+      "file": "runs/baseline/server-terminal.json",
+      "bytes": 162,
+      "sha256": "47098dfa76a80b874262d0933cfefb85ee438d67ee927eaa20bba187f5439c22"
+    },
+    {
+      "file": "runs/baseline/client-closed.json",
+      "bytes": 70,
+      "sha256": "bb2b2bbcd10265abede7e6781a394e45d1f415d9df716e50734a4c080c9cdfdf"
+    },
+    {
+      "file": "runs/baseline/server-profile/gameplay-eight.tsv",
+      "bytes": 4435417,
+      "sha256": "d034e2f2d05a5f9bc3de350c96d971cb2c2bdee61e06ce8048f45efd7fe35443"
+    },
+    {
+      "file": "runs/baseline/server-profile/mixed-hosts.tsv",
+      "bytes": 236419,
+      "sha256": "f30194f33c022dc537adfd38c72212951c0d3bd23f946603121a229f55323c0f"
+    },
+    {
+      "file": "runs/baseline/server-profile/server-frame.tsv",
+      "bytes": 133567,
+      "sha256": "10684057d8b90a42898e26240fee65ee3da4d9532f04e9cb112b7164b099d450"
+    },
+    {
+      "file": "runs/baseline/server-profile/terminal-state.tsv",
+      "bytes": 11871,
+      "sha256": "20e1fd7f09b1b128d5dc604b2288e5ea2b8c2e6856f19ef8c3de45e6fab0c560"
+    }
+  ],
+  "sourceAudit": {
+    "schemaVersion": 1,
+    "scope": "13 pinned original PBO script members; class-name matching is bounded ownership inventory, not full call graph",
+    "sourceMatchesPackedBase": true,
+    "baseCrowdSha256": "8b3145c67444b5185e4a44dcb051dc118405d9cb2268c752b3abc65daeeaddf9",
+    "owners": [
+      {
+        "mod": "dg_lab_inputs",
+        "member": "Scripts\\4_World\\DGBNativeCrowd.c",
+        "sha256": "8b3145c67444b5185e4a44dcb051dc118405d9cb2268c752b3abc65daeeaddf9",
+        "declarations": [
+          {
+            "line": 3,
+            "text": "class DGBNativeCrowdCell"
+          },
+          {
+            "line": 7,
+            "text": "class DGBNativeCrowd"
+          },
+          {
+            "line": 24,
+            "text": "static bool Movable(DGBNativeGroundBody body)"
+          },
+          {
+            "line": 55,
+            "text": "if(!Movable(body) || body.Traversal.PendingGoal)return false;"
+          },
+          {
+            "line": 91,
+            "text": "bool Displace(DGBNativeGroundBody body,vector displacement,float dt)"
+          },
+          {
+            "line": 93,
+            "text": "if(!Movable(body) || displacement.Length()<0.00001)return false;"
+          },
+          {
+            "line": 164,
+            "text": "if(!Movable(body))return;"
+          },
+          {
+            "line": 170,
+            "text": "void AccumulatePair(int a,int b)"
+          },
+          {
+            "line": 176,
+            "text": "bool canA=Movable(first) && !first.EntryPressurePriority;"
+          },
+          {
+            "line": 177,
+            "text": "bool canB=Movable(second) && !second.EntryPressurePriority;"
+          },
+          {
+            "line": 186,
+            "text": "void Update(float timeslice)"
+          },
+          {
+            "line": 193,
+            "text": "if(!Movable(reset))reset.ContactVelocity=vector.Zero;"
+          },
+          {
+            "line": 208,
+            "text": "foreach(int earlier:nearby.Members)AccumulatePair(earlier,a);"
+          },
+          {
+            "line": 217,
+            "text": "if(!Movable(body))continue;"
+          }
+        ]
+      },
+      {
+        "mod": "dg_subset_integration",
+        "member": "Scripts\\4_World\\DGSubsetDriveAttribution.c",
+        "sha256": "ef33d7ee1851344baefd7099eb5f487127de954e6333e3996a1ace38c205800b",
+        "declarations": [
+          {
+            "line": 114,
+            "text": "modded class DGBNativeCrowd"
+          }
+        ]
+      },
+      {
+        "mod": "dg_subset_integration",
+        "member": "Scripts\\4_World\\DGSubsetMotionContracts.c",
+        "sha256": "9c2e4ef49539d2abdb400b0bd9504d1fe8e8da0e5619c8e101aed071988188cd",
+        "declarations": [
+          {
+            "line": 3,
+            "text": "modded class DGBNativeCrowd"
+          },
+          {
+            "line": 6,
+            "text": "override bool Displace(DGBNativeGroundBody body,vector displacement,float dt)"
+          }
+        ]
+      }
+    ],
+    "candidateImplemented": false
+  }
+}

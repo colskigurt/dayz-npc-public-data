@@ -1,0 +1,311 @@
+Selected target-only aggregates and source ownership; not full raw ETL.
+{
+  "schemaVersion": 1,
+  "sourceRunId": "CPU-CURRENT-single64-1",
+  "verificationStatus": "CURRENT_TOPOLOGY_CPU_PARTIAL_ATTRIBUTION_NOT_OPTIMIZATION",
+  "independentTrials": 1,
+  "independentPerformancePairs": 0,
+  "logicalAgents": 64,
+  "renderHosts": 64,
+  "damageReceivers": 64,
+  "allObservedHostsAlive": true,
+  "allAcquiredAndMoved2m": true,
+  "terminalOutcomes": {
+    "INCOMPLETE_MILESTONES": 56,
+    "UNRESOLVED_FALL": 2,
+    "UNRESOLVED_STATE": 4,
+    "VALID_TERMINAL": 2
+  },
+  "nativeCrash": false,
+  "serverExitCode": -1,
+  "scriptErrors": 0,
+  "requestedCaptureSeconds": 8,
+  "analyzedEventSpanSeconds": 10.786316,
+  "rawSampleSpanSeconds": 11.786316,
+  "traceBytes": 8102068,
+  "targetSampleWeight": 7179,
+  "samplePeriodMicroseconds": 1000.0,
+  "missingStackWeight": 1876,
+  "missingStackPercent": 26.131773227469008,
+  "firstIpMismatchWeight": 0,
+  "lostEvents": 0,
+  "lostBuffers": 0,
+  "queryBoundary": {
+    "rayInclusiveWeight": 684,
+    "sphereInclusiveWeight": 597,
+    "unionWeight": 1281,
+    "bothWeight": 0,
+    "percentOfAllTargetSamples": 17.843710823234435
+  },
+  "selectedVmExecutor": {
+    "leafWeight": 1972,
+    "leafUsableStack": 1462,
+    "leafWithRaySphere": 0,
+    "leafWithExecutor": 1462,
+    "inclusiveWeight": 4124,
+    "inclusiveWithRaySphere": 1281,
+    "leafPercent": 27.469006825463158,
+    "inclusivePercent": 57.445326647165345,
+    "inclusiveWithoutSelectedQueryBoundaryWeight": 2843,
+    "inclusiveWithoutSelectedQueryBoundaryPercent": 39.601615823930906
+  },
+  "largestAnonymousThreadPercent": 98.10558573617496,
+  "nativeOwnerGroups": {
+    "rva454970_454510": {
+      "leafWeight": 203,
+      "leafUsableStack": 158,
+      "leafWithRaySphere": 0,
+      "leafWithExecutor": 0,
+      "inclusiveWeight": 214,
+      "inclusiveWithRaySphere": 0
+    },
+    "rvaCF_family": {
+      "leafWeight": 851,
+      "leafUsableStack": 615,
+      "leafWithRaySphere": 527,
+      "leafWithExecutor": 527,
+      "inclusiveWeight": 1068,
+      "inclusiveWithRaySphere": 957
+    },
+    "rvaA52_A55780": {
+      "leafWeight": 396,
+      "leafUsableStack": 304,
+      "leafWithRaySphere": 0,
+      "leafWithExecutor": 78,
+      "inclusiveWeight": 311,
+      "inclusiveWithRaySphere": 0
+    },
+    "script_executor_selected": {
+      "leafWeight": 1972,
+      "leafUsableStack": 1462,
+      "leafWithRaySphere": 0,
+      "leafWithExecutor": 1462,
+      "inclusiveWeight": 4124,
+      "inclusiveWithRaySphere": 1281
+    }
+  },
+  "wholeObservedGameplayMissionDtMs": {
+    "n": 2889,
+    "p50": 22.0,
+    "p95": 32.59999999999991,
+    "p99": 38.0,
+    "scope": "whole gameplay recording, NOT exact ETL join or Present frame time"
+  },
+  "evidenceJoinLimit": "Capture requested near40game sec in LOW, but ETL event interval includes recorder overhead and is not exactly QPC-joined to all state rows. Do not label entire trace LOW-only.",
+  "presentP95Ms": null,
+  "cpuSaving": null,
+  "visualQuality": "NOT_MEASURED",
+  "adopted": false,
+  "nextCandidateReview": "Lazy per-Crowd.Update eligibility reuse to avoid failed eager sparse prepass; source feasibility and prior-method reuse only, not implemented or selected for production.",
+  "evidence": [
+    {
+      "file": "contract.json",
+      "bytes": 12097,
+      "sha256": "f7b8a628453969220518cab6d196e8023b81a2f0107fea0badfd3c122afa65d7"
+    },
+    {
+      "file": "diagnostic-plan.json",
+      "bytes": 971,
+      "sha256": "5c3d21163b9c2515c8386fff05f67b634bb58929f05e23f37fcd916a26e7c822"
+    },
+    {
+      "file": "capture-readiness.json",
+      "bytes": 108909,
+      "sha256": "409aff7d9bd464eef2ecc6450a153834597b7496cbab595154ca5589b3624187"
+    },
+    {
+      "file": "controller-terminal.json",
+      "bytes": 135,
+      "sha256": "9327d09b48ba9bcee20eb46c6da650bc1284385df10fee705e880f32f3e2cac9"
+    },
+    {
+      "file": "admin-ready.json",
+      "bytes": 168,
+      "sha256": "5714f74fc34f0c2484163e3cebcc64f1511c7e054fc7ad116108c534eef51deb"
+    },
+    {
+      "file": "admin-terminal.json",
+      "bytes": 136,
+      "sha256": "c31c55b8c9e3307ee17ad6e31236c964ed7043f9427b7167844e4a13b2174351"
+    },
+    {
+      "file": "capture-1/cpu-1-result.json",
+      "bytes": 405,
+      "sha256": "e65d0f219c211862328c43e6b9272059988ebee85887277b147162c0dedc9cb7"
+    },
+    {
+      "file": "capture-1/cpu-1-owner-cooccurrence-v1.json",
+      "bytes": 14493,
+      "sha256": "11104552d0e98e3e9dd86e75dd228b19a642043b4d9f8db67306262b85ffede7"
+    },
+    {
+      "file": "capture-1/cpu-1.etl",
+      "bytes": 8102068,
+      "sha256": "8eb46c9466fda232699a2c89f851c487cca250f6964646c36f08e2d950625c95"
+    },
+    {
+      "file": "runs/baseline/server-terminal.json",
+      "bytes": 162,
+      "sha256": "47098dfa76a80b874262d0933cfefb85ee438d67ee927eaa20bba187f5439c22"
+    },
+    {
+      "file": "runs/baseline/client-closed.json",
+      "bytes": 70,
+      "sha256": "bb2b2bbcd10265abede7e6781a394e45d1f415d9df716e50734a4c080c9cdfdf"
+    },
+    {
+      "file": "runs/baseline/server-profile/gameplay-eight.tsv",
+      "bytes": 4435417,
+      "sha256": "d034e2f2d05a5f9bc3de350c96d971cb2c2bdee61e06ce8048f45efd7fe35443"
+    },
+    {
+      "file": "runs/baseline/server-profile/mixed-hosts.tsv",
+      "bytes": 236419,
+      "sha256": "f30194f33c022dc537adfd38c72212951c0d3bd23f946603121a229f55323c0f"
+    },
+    {
+      "file": "runs/baseline/server-profile/server-frame.tsv",
+      "bytes": 133567,
+      "sha256": "10684057d8b90a42898e26240fee65ee3da4d9532f04e9cb112b7164b099d450"
+    },
+    {
+      "file": "runs/baseline/server-profile/terminal-state.tsv",
+      "bytes": 11871,
+      "sha256": "20e1fd7f09b1b128d5dc604b2288e5ea2b8c2e6856f19ef8c3de45e6fab0c560"
+    }
+  ],
+  "sourceAudit": {
+    "schemaVersion": 1,
+    "scope": "13 pinned original PBO script members; class-name matching is bounded ownership inventory, not full call graph",
+    "sourceMatchesPackedBase": true,
+    "baseCrowdSha256": "8b3145c67444b5185e4a44dcb051dc118405d9cb2268c752b3abc65daeeaddf9",
+    "owners": [
+      {
+        "mod": "dg_lab_inputs",
+        "member": "Scripts\\4_World\\DGBNativeCrowd.c",
+        "sha256": "8b3145c67444b5185e4a44dcb051dc118405d9cb2268c752b3abc65daeeaddf9",
+        "declarations": [
+          {
+            "line": 3,
+            "text": "class DGBNativeCrowdCell"
+          },
+          {
+            "line": 7,
+            "text": "class DGBNativeCrowd"
+          },
+          {
+            "line": 24,
+            "text": "static bool Movable(DGBNativeGroundBody body)"
+          },
+          {
+            "line": 55,
+            "text": "if(!Movable(body) || body.Traversal.PendingGoal)return false;"
+          },
+          {
+            "line": 91,
+            "text": "bool Displace(DGBNativeGroundBody body,vector displacement,float dt)"
+          },
+          {
+            "line": 93,
+            "text": "if(!Movable(body) || displacement.Length()<0.00001)return false;"
+          },
+          {
+            "line": 164,
+            "text": "if(!Movable(body))return;"
+          },
+          {
+            "line": 170,
+            "text": "void AccumulatePair(int a,int b)"
+          },
+          {
+            "line": 176,
+            "text": "bool canA=Movable(first) && !first.EntryPressurePriority;"
+          },
+          {
+            "line": 177,
+            "text": "bool canB=Movable(second) && !second.EntryPressurePriority;"
+          },
+          {
+            "line": 186,
+            "text": "void Update(float timeslice)"
+          },
+          {
+            "line": 193,
+            "text": "if(!Movable(reset))reset.ContactVelocity=vector.Zero;"
+          },
+          {
+            "line": 208,
+            "text": "foreach(int earlier:nearby.Members)AccumulatePair(earlier,a);"
+          },
+          {
+            "line": 217,
+            "text": "if(!Movable(body))continue;"
+          }
+        ]
+      },
+      {
+        "mod": "dg_subset_integration",
+        "member": "Scripts\\4_World\\DGSubsetDriveAttribution.c",
+        "sha256": "ef33d7ee1851344baefd7099eb5f487127de954e6333e3996a1ace38c205800b",
+        "declarations": [
+          {
+            "line": 114,
+            "text": "modded class DGBNativeCrowd"
+          }
+        ]
+      },
+      {
+        "mod": "dg_subset_integration",
+        "member": "Scripts\\4_World\\DGSubsetMotionContracts.c",
+        "sha256": "9c2e4ef49539d2abdb400b0bd9504d1fe8e8da0e5619c8e101aed071988188cd",
+        "declarations": [
+          {
+            "line": 3,
+            "text": "modded class DGBNativeCrowd"
+          },
+          {
+            "line": 6,
+            "text": "override bool Displace(DGBNativeGroundBody body,vector displacement,float dt)"
+          }
+        ]
+      }
+    ],
+    "candidateImplemented": false
+  }
+}
+
+Next candidate review:
+# 다음 단일 후보: 군집 갱신 안에서 필요할 때만 이동 가능 상태 재사용
+
+상태: 구현 전 소스 검토. 아직 구현·컴파일·비용 시험·채택하지 않았다.
+
+## 기존 연구와 차이
+
+`work-reduction-review1/crowd-eligibility-factor1`은 같은 상태 재사용 계열이다. 512 합성 입력에서 결과가 같았고 밀집 국소 중앙 약20.57% 이득이 있었지만, 희박에서는 약5.60% 악화해 일반 적용 gate를 통과하지 못했다. 이 기록을 새 아이디어로 포장하거나 그대로 재시험하지 않는다.
+
+검토할 차이는 **모든 개체를 매번 미리 판정·저장하는 전처리를 없애는 것**이다. 실제 쌍이 DEAD/높이 필터를 통과해 처음 상태가 필요할 때만 그 개체의 `Movable && !EntryPressurePriority`를 계산하고 같은 `Crowd.Update` 안에서 재사용한다. 개체 쌍이0이면 상태 판정이나 배열 재초기화 전처리를 하지 않는 것이 핵심 의무다. 거리·위치·속도·힘·물리 질의 결과는 캐시하지 않는다.
+
+## 수정 가능한 범위와 안전 계약
+
+- 현재13개 PBO의 Crowd 정의를 확인했고 base source가 패킹 원문과 같다. 추가 계층은 ConsumeContact/Displace를 확장하며 AccumulatePair/Update의 다른 구현은 이 제한된 소유자 검색에서 확인되지 않았다.
+- AccumulatePair는 현재 base Update에서만 호출된다. 후보가 활성화된 해당 호출 구간에서만 재사용한다. 다른 호출 문맥과 OpenTraversal=false는 원래 경로로 돌린다.
+- DEAD/높이 조기 반환, 격자 열거 순서, PairCandidates/ContactPairs, 힘 계산·누적 순서, 최종 플레이어 처리는 그대로 둔다. 그 부분의 Movable은 캐시로 바꾸지 않는다.
+- 캐시는 개체 배열 인덱스와 갱신 세대에 묶고, Body 수 변경·세대 넘침·재진입·갱신 밖 접근에 안전한 무효화가 필요하다. 새 per-frame 배열 할당·N개 prefill을 넣으면 기존 희박 실패 원인을 되풀이하므로 거부한다.
+- 재사용되는 입력은 Agent.State, Combat Active/Dead/PendingDeath, Traversal Phase/Active/Action, ManagedPeerContacts와 EntryPressurePriority다. 해당 쌍 루프가 이 필드를 바꾸거나 재진입 callback을 실행하는지 source proof를 먼저 마쳐야 한다. 증명되지 않으면 runtime 구현으로 넘어가지 않는다.
+- 물리·발 지지·낙하·착지·등반 재시도·애니메이션 갱신율은 변경하지 않는다. 이동/접촉 제안을 합치지 않는다.
+
+## 예상 이점과 비용
+
+이웃 쌍이 많은 경우 반복 스크립트 상태 조회를 줄일 수 있다. 이전5파트 진단의 Movable946861회/30게임초는 호출 규모의 근거이며 현재 빈도나 순수 CPU 비용이 아니다. 현행 단일 파트 CPU 스택에서도 VM 실행 경로가 관찰되지만 이 메서드의 전체 CPU 기여는 아직 분리되지 않았다. 성능 절감률은 제시하지 않는다.
+
+세대 검사·배열 접근·조건 분기와 상태 보관 비용이 새로 생긴다. 중간 밀집도에서는 cache miss가 많아 원래보다 느릴 수 있다. 그래서 밀집 결과만으로 통과시키면 안 된다.
+
+## 최소 실험과 사전 중단 조건
+
+1. 기존 합성 하네스·512 상태 행렬을 재사용해 국소 prototype의 force/velocity/pressure/pair/entry 결과와 순서를 대조한다. 실패하면 중단한다.
+2. 기존 밀집2016쌍·희박0쌍 외에 일부 쌍만 있는 중간 배치를 포함하고, 초기 준비와 세대 검사까지 같은 시간 범위에 넣는다. 코드 작성 전 기준을 동결한다. 제안 기준은 밀집 중앙10% 이상 감소, 희박·중간 중앙2% 이내 악화 및 유의한 일관된 악화가 없는 것이다. 최종 기준은 첫 측정 전에 계약으로 확정하며 결과를 보고 완화하지 않는다.
+3. 희박에서 판정 prepass0, pair가 실제 소비한 distinct body만 계산하는 것을 counters로 검증한다. 단순 함수 재호출을 캐시 적중으로 잘못 세지 않는다.
+4. 국소 기준이 충족될 때만 격리 opt-in8개체의 shadow/ON 결과와 이후64의 전체 CPU 비교를 검토한다. 기존 공통 정체는 별도 결함으로 보존한다.
+5. 국소 퍼센트를 전체 CPU 개선으로 바꾸지 않는다. 64개체 기능·시각·성능은 독립 판정한다. 효과가 부족하면 큰 회귀시험을 만들지 않는다.
+
+이번 문서는 후보 채택이 아니라 다음 소스 증명·국소 선별의 범위다. 현행 CPU 프로파일을 재수집하거나 이전 eager 후보를 그대로 재실행하는 계획이 아니다.
