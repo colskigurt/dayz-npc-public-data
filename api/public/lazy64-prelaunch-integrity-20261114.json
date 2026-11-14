@@ -1,0 +1,123 @@
+{
+  "generatedAt": "2026-11-14T21:46:46.255521+09:00",
+  "stage": "PREPARED_NOT_LAUNCHED",
+  "newGameRuns": 0,
+  "correctedFiles": [
+    {
+      "file": "contract.json",
+      "beforeSha256": "71e3ff6817b908abf07100a4ff547128ba888daab6b33544e2ebcad01fcd454d",
+      "afterUtf8Sha256": "f5d6ce9c1a3421a1cd9bb4162d7b6ed3aa8cb52214a311768e8c6037490ac704"
+    },
+    {
+      "file": "analyze-pair.py",
+      "beforeSha256": "1b768b8052ae0ee022f3e512ed0f1a3baa60d881d2735195b4d853f03671bd6c",
+      "afterUtf8Sha256": "9c74ffd336dd5adb75038b7a48bf45a5f7c521898bc2d6d2e6368c4b95b3c7cd"
+    }
+  ],
+  "inputChecks": [
+    {
+      "name": "dg_lab_inputs",
+      "sha256": "453d6a9e688d7bf14c5b98c305dd5a45200ec52156949c10691839b43c58bc9a",
+      "matchesContract": true
+    },
+    {
+      "name": "dg_subset_inputs",
+      "sha256": "0c6e1855e7b24f038b165003352f1122936e8aed17242661a9a7ac927125c002",
+      "matchesContract": true
+    },
+    {
+      "name": "dg_subset_integration",
+      "sha256": "b8fbab746f50cb7c8bdbb23e059c308298cea5f57b4ac6bd0f2ddebc55b8c185",
+      "matchesContract": true
+    },
+    {
+      "name": "nf_net_parts",
+      "sha256": "8bda6b7a8c95962ef0fda6bbc6aa228906504c3130d4597070ed2e1e53f7df9c",
+      "matchesContract": true
+    },
+    {
+      "name": "nf_visual_match",
+      "sha256": "87442808975539355cb720f88927ff69ff451a92c2df49394a4f70c89c0247b4",
+      "matchesContract": true
+    },
+    {
+      "name": "nf_network_body",
+      "sha256": "765e61b0b2e20ea3c7977ff17316808d99d8cdd94ddfbce7a95f8829cad6eed8",
+      "matchesContract": true
+    },
+    {
+      "name": "nf_palette64_probe",
+      "sha256": "c1a651bd6e57bb73d8b68722e2dedf9361b0bdface1ecf1ae03bbab6f6c6f190",
+      "matchesContract": true
+    },
+    {
+      "name": "nf_palette64_five",
+      "sha256": "ef23b8d3da2404462efa337be6cedf4c1ae88d3b2d4a1924ae6a5760406a0552",
+      "matchesContract": true
+    },
+    {
+      "name": "nf_palette64_fullclips",
+      "sha256": "bdc04e801e2da8d82d80027b8385e78daf91cbafdcc95cf9fdcf457b25e8605b",
+      "matchesContract": true
+    },
+    {
+      "name": "nf_palette_five_gameplay",
+      "sha256": "5a0eed07e1f75fb347085387aa9edbac70659391bd45b42153071dfdb7500a0e",
+      "matchesContract": true
+    },
+    {
+      "name": "nf_weighted224",
+      "sha256": "b1061583930133675c37b73ed08502b0e5d442a6be724c2f4bb997c6c37399f0",
+      "matchesContract": true
+    },
+    {
+      "name": "nf_single224_gameplay",
+      "sha256": "fa0a07f5163e80ca86eba328066c0282394b641c89911438d451ff77717529d9",
+      "matchesContract": true
+    },
+    {
+      "name": "nf_single_cost_observer",
+      "sha256": "f6a5ef2aed7ed2dbcd9c75a440b398c30dea69666748d4965a4a03e100c56ba4",
+      "matchesContract": true
+    },
+    {
+      "name": "server",
+      "sha256": "987fbc47bab1dab37f74d7f700aa2e5b6af936a7181a62f5ba9f0090aebba805",
+      "matchesContract": true
+    },
+    {
+      "name": "client",
+      "sha256": "e3ba9660a1fa7ec24046fe298a387662dab0c8830aad3851a8133f8c3c2cfbe6",
+      "matchesContract": true
+    },
+    {
+      "name": "sampler",
+      "sha256": "53d9f47a23881bf0512733f6ebfd745881b054023c30cb0fb8e296f302ad35d0",
+      "matchesContract": true
+    },
+    {
+      "name": "mission",
+      "sha256": "02782be7b3ef1a4a86c8e8b0d487bc7e461a8b8e721a579d21655bd99e12342d",
+      "matchesContract": true
+    }
+  ],
+  "tests": [
+    "Revised analyzer Python compile passed; not executed on live data"
+  ],
+  "reason": "Stale inherited contract wording and misattributed analysis run ID",
+  "launchBlockedUntilDedicatedForegroundSlot": true,
+  "schemaVersion": "1.0",
+  "sourceRunId": "PRELAUNCH-AUDIT-20261114",
+  "buildId": "UNCHANGED_FIXED_13_PBOS",
+  "verificationStatus": "PREPARED_NOT_LAUNCHED",
+  "metrics": {
+    "newGameRuns": 0,
+    "inputHashMatches": 17
+  },
+  "blockers": [
+    "Dedicated foreground slot confirmation pending"
+  ],
+  "evidenceReferences": [
+    "reports/operations/lazy64-prelaunch-integrity-20261114.md"
+  ]
+}

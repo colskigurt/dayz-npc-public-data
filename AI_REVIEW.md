@@ -1,6 +1,8 @@
 # DayZ NPC — 현재 비용 최적화와 검증 상태
 
-최신 정적 조사: [Dark Horde 내부 코드·LG 다운로드 결과](reports/operations/community-horde-package-review-20261114.md). Dark Horde V1.30.t23 패키지/Enforce 코드 확인, LG는 공식 Steam File Not Found(9)로 내부 미확인. 근거리 대체 솔버 미발견, 새 게임·성능 측정0회.
+최신 준비 점검: [64개체 비용 비교 입력·기록 정정](reports/operations/lazy64-prelaunch-integrity-20261114.md). 입력17개 SHA 일치, 준비본의 과거8개체/검사생략 문구와 run ID 정정. 새 게임0회, 전용 foreground 시간 답변 대기.
+
+최근 정적 조사: [Dark Horde 내부 코드·LG 다운로드 결과](reports/operations/community-horde-package-review-20261114.md). 성능 개선 입증 아님.
 
 최근 성능 실험: [제외 관측 수 정정·재측정 준비](reports/operations/lazy-crowd-eligibility-exclusion-correction-20261112.md)
 
