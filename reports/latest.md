@@ -1,3 +1,5 @@
+> 운영 점검(새 실험 아님): [2026-11-18 준비·분석](operations/dayz-repeat-state-preparation-20261118.md).19/19 해시 일치, 실행 보류. 아래 실험 수치·시각은 그대로 보존합니다.
+
 # Lazy eligibility — 제외 관측 수 정정·재측정 준비
 
 ## 1. 작업 목표

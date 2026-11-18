@@ -1,6 +1,6 @@
 # DayZ NPC — 현재 비용 최적화와 검증 상태
 
-최신 준비 점검: [64개체 비용 비교 입력·기록 정정](reports/operations/lazy64-prelaunch-integrity-20261114.md). 입력17개 SHA 일치, 준비본의 과거8개체/검사생략 문구와 run ID 정정. 새 게임0회, 전용 foreground 시간 답변 대기.
+최신 준비 점검: [DayZ 반복 상태 판정 후보·입력 정합성](reports/operations/dayz-repeat-state-preparation-20261118.md).19/19 SHA 일치·새 게임0회·신규 코드 변경0개. 기존 유효2쌍/제외1쌍·미수용 유지. 사용자 요청으로 현재는 준비·분석만 진행하며 실행 보류.
 
 최근 정적 조사: [Dark Horde 내부 코드·LG 다운로드 결과](reports/operations/community-horde-package-review-20261114.md). 성능 개선 입증 아님.
 

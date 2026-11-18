@@ -1,0 +1,120 @@
+READ-ONLY PREPARATION; no new game run; selected excerpts, not complete source.
+
+Source\DGOriginalSample\Scripts\4_World\DGBNativeCrowd.c SHA256 8b3145c67444b5185e4a44dcb051dc118405d9cb2268c752b3abc65daeeaddf9
+24:     static bool Movable(DGBNativeGroundBody body)
+25:     {
+26:         if(!body || !body.Traversal || body.Agent.State=="DEAD")return false;
+27:         if(body.Combat && (body.Combat.Active || body.Combat.Dead || body.Combat.PendingDeath))return false;
+28:         if(body.Traversal.Phase=="FOLLOW")return true;
+29:         return body.Agent.ManagedPeerContacts && body.Traversal.Phase=="MOTION" && body.Traversal.Active && body.Traversal.Active.Action=="CLIMB";
+30:     }
+31:     static vector ContactForce(vector from,vector other,vector relativeVelocity,int identity)
+32:     {
+33:         vector away=from - other;away[1]=0;float gap=away.Length();
+
+Source\DGOriginalSample\Scripts\4_World\DGBNativeCrowd.c SHA256 8b3145c67444b5185e4a44dcb051dc118405d9cb2268c752b3abc65daeeaddf9
+166:         vector proposal=body.ContactVelocity*dt;body.PressureProposal=proposal;
+167:         if(proposal.Length()>0.00001 && !Displace(body,proposal,dt))body.ContactVelocity=body.ContactVelocity*0.25;
+168:     }
+169:     static string CellKey(int x,int z){return x.ToString()+":"+z.ToString();}
+170:     void AccumulatePair(int a,int b)
+171:     {
+172:         PairCandidates++;
+173:         DGBNativeGroundBody first=Director.Bodies[a];DGBNativeGroundBody second=Director.Bodies[b];
+174:         if(first.Agent.State=="DEAD" || second.Agent.State=="DEAD")return;
+175:         if(Math.AbsFloat(first.Agent.Position[1] - second.Agent.Position[1])>=1)return;
+176:         bool canA=Movable(first) && !first.EntryPressurePriority;
+177:         bool canB=Movable(second) && !second.EntryPressurePriority;
+178:         if(!canA && !canB)return;
+179:         vector relative=first.NativeVelocity+first.ContactVelocity - second.NativeVelocity - second.ContactVelocity;
+180:         vector force=ContactForce(first.Agent.Position,second.Agent.Position,relative,a*131+b);
+181:         if(force.Length()<0.00001)return;
+182:         ContactPairs++;
+183:         if(canA)first.ContactForce+=force;
+184:         if(canB)second.ContactForce-=force;
+185:     }
+186:     void Update(float timeslice)
+187:     {
+188:         float dt=Math.Clamp(timeslice,0,0.05);if(dt<=0)return;
+189:         int started=TickCount(0);PairCandidates=0;ContactPairs=0;Cells.Clear();
+190:         foreach(DGBNativeGroundBody reset:Director.Bodies)
+191:         {
+192:             reset.PressureProposal=vector.Zero;reset.ContactForce=vector.Zero;reset.PressureRejectReason="";
+193:             if(!Movable(reset))reset.ContactVelocity=vector.Zero;
+194:             reset.EntryPressurePriority=EntryPriority(reset);
+195:             if(reset.EntryPressurePriority)reset.EntryPriorityFrames++;
+196:         }
+197:         for(int a=0;a<Director.Bodies.Count();a++)
+198:         {
+199:             DGBNativeGroundBody first=Director.Bodies[a];
+200:             if(first.Agent.State=="DEAD")continue;
+201:             int cellX=Math.Floor(first.Agent.Position[0]);int cellZ=Math.Floor(first.Agent.Position[2]);
+202:             for(int dx=-1;dx<=1;dx++)
+203:             {
+204:                 for(int dz=-1;dz<=1;dz++)
+205:                 {
+206:                     DGBNativeCrowdCell nearby;
+207:                     if(!Cells.Find(CellKey(cellX+dx,cellZ+dz),nearby))continue;
+208:                     foreach(int earlier:nearby.Members)AccumulatePair(earlier,a);
+209:                 }
+210:             }
+211:             string key=CellKey(cellX,cellZ);DGBNativeCrowdCell own;
+212:             if(!Cells.Find(key,own)){own=new DGBNativeCrowdCell;Cells.Insert(key,own);}
+213:             own.Members.Insert(a);
+214:         }
+215:         foreach(DGBNativeGroundBody body:Director.Bodies)
+216:         {
+217:             if(!Movable(body))continue;
+218:             // Player position is collision evidence, never a perception/goal update.
+219:             foreach(Man contactPlayer:Director.PerceivedPlayers)
+220:             {
+221:                 if(!contactPlayer || !contactPlayer.IsAlive())continue;
+222:                 vector playerPoint=contactPlayer.GetPosition();
+223:                 if(Math.AbsFloat(playerPoint[1] - body.Agent.Position[1])<1.4 && DGBGroundAgent.FlatDistance(playerPoint,body.Agent.Position)<0.86)
+224:                 {
+225:                     body.PlayerContacts++;
+226:                     vector playerVelocity=GetVelocity(contactPlayer);
+227:                     vector relativePlayer=body.NativeVelocity+body.ContactVelocity - playerVelocity;
+228:                     vector playerForce=ContactForce(body.Agent.Position,playerPoint,relativePlayer,body.Id+1000);
+229:                     body.ContactForce+=playerForce;
+230:                 }
+231:             }
+
+research\rate100-isolation-20261112\lazy-eligibility-cost64-replacement1\mission\server-role-lod0.chernarusplus\init.c SHA256 02782be7b3ef1a4a86c8e8b0d487bc7e461a8b8e721a579d21655bd99e12342d
+1: class NFLazyEligibilityCrowd: DGBNativeCrowd
+2: {
+3:     ref array<int> NFLStamps={};ref array<bool> NFLValues={};
+4:     int NFLGeneration;int NFLComputed;bool NFLActive;bool NFLEnabled;int NFLLiveCalls;int NFLLiveComputed;float NFLLiveUpdateTicks;
+5:     void NFLColdStorage(){NFLStamps.Clear();NFLValues.Clear();NFLGeneration=0;NFLActive=false;}
+6:     override void Update(float timeslice)
+7:     {
+8:         int liveStarted=TickCount(0);NFLLiveCalls++;NFLComputed=0;
+9:         if(!NFLEnabled){super.Update(timeslice);NFLLiveUpdateTicks+=TickCount(liveStarted);return;}
+10:         if(NFLActive){NFLActive=false;super.Update(timeslice);return;}
+11:         if(!Director.OpenTraversal){super.Update(timeslice);return;}
+12:         int count=Director.Bodies.Count();
+13:         if(NFLStamps.Count()!=count){NFLStamps.Clear();NFLStamps.Resize(count);NFLValues.Resize(count);}
+14:         if(NFLGeneration>=2147483646){NFLStamps.Clear();NFLStamps.Resize(count);NFLGeneration=1;}
+15:         else NFLGeneration++;
+16:         NFLActive=true;super.Update(timeslice);NFLActive=false;NFLLiveComputed+=NFLComputed;NFLLiveUpdateTicks+=TickCount(liveStarted);
+17:     }
+18:     override void AccumulatePair(int a,int b)
+19:     {
+20:         if(!NFLActive){super.AccumulatePair(a,b);return;}
+21:         PairCandidates++;
+22:         DGBNativeGroundBody first=Director.Bodies[a];DGBNativeGroundBody second=Director.Bodies[b];
+23:         if(first.Agent.State=="DEAD" || second.Agent.State=="DEAD")return;
+24:         if(Math.AbsFloat(first.Agent.Position[1] - second.Agent.Position[1])>=1)return;
+25:         if(NFLStamps[a]!=NFLGeneration)
+26:         {NFLValues[a]=Movable(first) && !first.EntryPressurePriority;NFLStamps[a]=NFLGeneration;NFLComputed++;}
+27:         if(NFLStamps[b]!=NFLGeneration)
+28:         {NFLValues[b]=Movable(second) && !second.EntryPressurePriority;NFLStamps[b]=NFLGeneration;NFLComputed++;}
+29:         bool canA=NFLValues[a];bool canB=NFLValues[b];
+30:         if(!canA && !canB)return;
+31:         vector relative=first.NativeVelocity+first.ContactVelocity - second.NativeVelocity - second.ContactVelocity;
+32:         vector force=ContactForce(first.Agent.Position,second.Agent.Position,relative,a*131+b);
+33:         if(force.Length()<0.00001)return;
+34:         ContactPairs++;
+35:         if(canA)first.ContactForce+=force;
+36:         if(canB)second.ContactForce-=force;
+37:     }
